@@ -13,7 +13,7 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0187 import CustomPropertyType, CustomPropertyTypeForResponse
+from .group_0186 import CustomPropertyType, CustomPropertyTypeForResponse
 from .group_0502 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
 from .group_0503 import SimpleInstallationType, SimpleInstallationTypeForResponse
 from .group_0504 import (

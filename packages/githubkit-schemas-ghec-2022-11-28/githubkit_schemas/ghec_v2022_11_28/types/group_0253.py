@@ -13,27 +13,21 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsOrganizationPermissionsType(TypedDict):
-    """ActionsOrganizationPermissions"""
+class SelfHostedRunnersSettingsType(TypedDict):
+    """SelfHostedRunnersSettings"""
 
-    enabled_repositories: Literal["all", "none", "selected"]
+    enabled_repositories: Literal["all", "selected", "none"]
     selected_repositories_url: NotRequired[str]
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    selected_actions_url: NotRequired[str]
-    sha_pinning_required: NotRequired[bool]
 
 
-class ActionsOrganizationPermissionsTypeForResponse(TypedDict):
-    """ActionsOrganizationPermissions"""
+class SelfHostedRunnersSettingsTypeForResponse(TypedDict):
+    """SelfHostedRunnersSettings"""
 
-    enabled_repositories: Literal["all", "none", "selected"]
+    enabled_repositories: Literal["all", "selected", "none"]
     selected_repositories_url: NotRequired[str]
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    selected_actions_url: NotRequired[str]
-    sha_pinning_required: NotRequired[bool]
 
 
 __all__ = (
-    "ActionsOrganizationPermissionsType",
-    "ActionsOrganizationPermissionsTypeForResponse",
+    "SelfHostedRunnersSettingsType",
+    "SelfHostedRunnersSettingsTypeForResponse",
 )

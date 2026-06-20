@@ -341,8 +341,11 @@ class BillingClient:
             Literal["organization", "repository", "multi_user_customer", "user"]
         ] = UNSET,
         budget_entity_name: Missing[str] = UNSET,
-        budget_type: Missing[Literal["ProductPricing", "SkuPricing"]] = UNSET,
+        budget_type: Missing[
+            Literal["BundlePricing", "ProductPricing", "SkuPricing"]
+        ] = UNSET,
         budget_product_sku: Missing[str] = UNSET,
+        user: Missing[str] = UNSET,
     ) -> Response[CreateBudget, CreateBudgetTypeForResponse]: ...
 
     def create_organization_budget(
@@ -430,8 +433,11 @@ class BillingClient:
             Literal["organization", "repository", "multi_user_customer", "user"]
         ] = UNSET,
         budget_entity_name: Missing[str] = UNSET,
-        budget_type: Missing[Literal["ProductPricing", "SkuPricing"]] = UNSET,
+        budget_type: Missing[
+            Literal["BundlePricing", "ProductPricing", "SkuPricing"]
+        ] = UNSET,
         budget_product_sku: Missing[str] = UNSET,
+        user: Missing[str] = UNSET,
     ) -> Response[CreateBudget, CreateBudgetTypeForResponse]: ...
 
     async def async_create_organization_budget(
@@ -680,8 +686,11 @@ class BillingClient:
             ]
         ] = UNSET,
         budget_entity_name: Missing[str] = UNSET,
-        budget_type: Missing[Literal["ProductPricing", "SkuPricing"]] = UNSET,
+        budget_type: Missing[
+            Literal["BundlePricing", "ProductPricing", "SkuPricing"]
+        ] = UNSET,
         budget_product_sku: Missing[str] = UNSET,
+        user: Missing[str] = UNSET,
     ) -> Response[UpdateBudget, UpdateBudgetTypeForResponse]: ...
 
     def update_budget_org(
@@ -780,8 +789,11 @@ class BillingClient:
             ]
         ] = UNSET,
         budget_entity_name: Missing[str] = UNSET,
-        budget_type: Missing[Literal["ProductPricing", "SkuPricing"]] = UNSET,
+        budget_type: Missing[
+            Literal["BundlePricing", "ProductPricing", "SkuPricing"]
+        ] = UNSET,
         budget_product_sku: Missing[str] = UNSET,
+        user: Missing[str] = UNSET,
     ) -> Response[UpdateBudget, UpdateBudgetTypeForResponse]: ...
 
     async def async_update_budget_org(

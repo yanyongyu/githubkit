@@ -1006,45 +1006,6 @@ if TYPE_CHECKING or is_lazy_disabled():
         ConvertedNoteToIssueIssueEventType as ConvertedNoteToIssueIssueEventType,
     )
     from githubkit_schemas.v2026_03_10.types import (
-        CopilotDotcomChatPropModelsItemsType as CopilotDotcomChatPropModelsItemsType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        CopilotDotcomChatType as CopilotDotcomChatType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        CopilotDotcomPullRequestsPropRepositoriesItemsPropModelsItemsType as CopilotDotcomPullRequestsPropRepositoriesItemsPropModelsItemsType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        CopilotDotcomPullRequestsPropRepositoriesItemsType as CopilotDotcomPullRequestsPropRepositoriesItemsType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        CopilotDotcomPullRequestsType as CopilotDotcomPullRequestsType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        CopilotIdeChatPropEditorsItemsPropModelsItemsType as CopilotIdeChatPropEditorsItemsPropModelsItemsType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        CopilotIdeChatPropEditorsItemsType as CopilotIdeChatPropEditorsItemsType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        CopilotIdeChatType as CopilotIdeChatType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsPropLanguagesItemsType as CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsPropLanguagesItemsType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsType as CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        CopilotIdeCodeCompletionsPropEditorsItemsType as CopilotIdeCodeCompletionsPropEditorsItemsType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        CopilotIdeCodeCompletionsPropLanguagesItemsType as CopilotIdeCodeCompletionsPropLanguagesItemsType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        CopilotIdeCodeCompletionsType as CopilotIdeCodeCompletionsType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
         CopilotOrganizationContentExclusionDetailsType as CopilotOrganizationContentExclusionDetailsType,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -1083,9 +1044,6 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.types import (
         CopilotUsageMetrics28DayReportType as CopilotUsageMetrics28DayReportType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        CopilotUsageMetricsDayType as CopilotUsageMetricsDayType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         CreateBudgetPropBudgetPropBudgetAlertingType as CreateBudgetPropBudgetPropBudgetAlertingType,
@@ -1551,6 +1509,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         IntegrationPropPermissionsType as IntegrationPropPermissionsType,
     )
     from githubkit_schemas.v2026_03_10.types import IntegrationType as IntegrationType
+    from githubkit_schemas.v2026_03_10.types import (
+        InteractionLimitPullRequestBypassListType as InteractionLimitPullRequestBypassListType,
+    )
     from githubkit_schemas.v2026_03_10.types import (
         InteractionLimitResponseType as InteractionLimitResponseType,
     )
@@ -11375,20 +11336,6 @@ else:
             "EnterpriseTeamType",
             "OrgsOrgCopilotBillingSeatsGetResponse200Type",
             "CopilotOrganizationContentExclusionDetailsType",
-            "CopilotUsageMetricsDayType",
-            "CopilotDotcomChatType",
-            "CopilotDotcomChatPropModelsItemsType",
-            "CopilotIdeChatType",
-            "CopilotIdeChatPropEditorsItemsType",
-            "CopilotIdeChatPropEditorsItemsPropModelsItemsType",
-            "CopilotDotcomPullRequestsType",
-            "CopilotDotcomPullRequestsPropRepositoriesItemsType",
-            "CopilotDotcomPullRequestsPropRepositoriesItemsPropModelsItemsType",
-            "CopilotIdeCodeCompletionsType",
-            "CopilotIdeCodeCompletionsPropLanguagesItemsType",
-            "CopilotIdeCodeCompletionsPropEditorsItemsType",
-            "CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsType",
-            "CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsPropLanguagesItemsType",
             "DependabotPublicKeyType",
             "PackageType",
             "OrganizationInvitationType",
@@ -11821,6 +11768,7 @@ else:
             "ImportPropProjectChoicesItemsType",
             "PorterAuthorType",
             "PorterLargeFileType",
+            "InteractionLimitPullRequestBypassListType",
             "IssueEventType",
             "IssueEventLabelType",
             "IssueEventDismissedReviewType",

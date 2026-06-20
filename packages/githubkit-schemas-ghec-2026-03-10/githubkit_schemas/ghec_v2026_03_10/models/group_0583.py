@@ -19,8 +19,8 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0010 import Integration
-from .group_0213 import PullRequestMinimal
-from .group_0375 import DeploymentSimple
+from .group_0212 import PullRequestMinimal
+from .group_0374 import DeploymentSimple
 from .group_0582 import SimpleCheckSuite
 
 

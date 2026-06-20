@@ -20,8 +20,8 @@ from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0010 import Integration
-from .group_0207 import ReactionRollup
-from .group_0209 import PinnedIssueComment
+from .group_0206 import ReactionRollup
+from .group_0208 import PinnedIssueComment
 
 
 class TimelineCommentEvent(GitHubModel):

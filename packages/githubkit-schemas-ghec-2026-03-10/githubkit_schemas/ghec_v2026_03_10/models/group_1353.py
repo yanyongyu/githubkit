@@ -13,7 +13,7 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0335 import Artifact
+from .group_0334 import Artifact
 
 
 class ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200(GitHubModel):

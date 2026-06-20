@@ -18,7 +18,7 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0446 import HookResponse
+from .group_0445 import HookResponse
 
 
 class WebhookPingPropHook(GitHubModel):

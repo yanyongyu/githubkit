@@ -18,31 +18,30 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrganizationCreateIssueField(GitHubModel):
-    """OrganizationCreateIssueField"""
+class OrganizationUpdateIssueField(GitHubModel):
+    """OrganizationUpdateIssueField"""
 
-    name: str = Field(description="Name of the issue field.")
+    name: Missing[str] = Field(default=UNSET, description="Name of the issue field.")
     description: Missing[Union[str, None]] = Field(
         default=UNSET, description="Description of the issue field."
     )
-    data_type: Literal["text", "date", "single_select", "multi_select", "number"] = (
-        Field(description="The data type of the issue field.")
-    )
     visibility: Missing[Literal["organization_members_only", "all"]] = Field(
         default=UNSET,
-        description="The visibility of the issue field. Can be `organization_members_only` (visible only within the organization) or `all` (visible to all users who can see issues). Only used when the visibility settings feature is enabled. Defaults to `organization_members_only`.",
+        description="The visibility of the issue field. Can be `organization_members_only` (visible only within the organization) or `all` (visible to all users who can see issues). Only used when the visibility settings feature is enabled.",
     )
-    options: Missing[
-        Union[list[OrganizationCreateIssueFieldPropOptionsItems], None]
-    ] = Field(
+    options: Missing[list[OrganizationUpdateIssueFieldPropOptionsItems]] = Field(
         default=UNSET,
-        description="Options for select fields. Required when data_type is 'single_select' or 'multi_select'.",
+        description="Options for select fields. Only applicable when updating single_select or multi_select fields. When provided, this array **replaces** the entire existing set of options rather than adding to or updating individual options. To retain or update an existing option, include it in the array with its `id`. Options sent without an `id` are treated as new options and may cause existing options to be deleted and recreated.",
     )
 
 
-class OrganizationCreateIssueFieldPropOptionsItems(GitHubModel):
-    """OrganizationCreateIssueFieldPropOptionsItems"""
+class OrganizationUpdateIssueFieldPropOptionsItems(GitHubModel):
+    """OrganizationUpdateIssueFieldPropOptionsItems"""
 
+    id: Missing[int] = Field(
+        default=UNSET,
+        description="The id of an existing option to retain or update. Omit this when creating a new option.",
+    )
     name: str = Field(description="Name of the option.")
     description: Missing[Union[str, None]] = Field(
         default=UNSET, description="Description of the option."
@@ -53,10 +52,10 @@ class OrganizationCreateIssueFieldPropOptionsItems(GitHubModel):
     priority: int = Field(description="Priority of the option for ordering.")
 
 
-model_rebuild(OrganizationCreateIssueField)
-model_rebuild(OrganizationCreateIssueFieldPropOptionsItems)
+model_rebuild(OrganizationUpdateIssueField)
+model_rebuild(OrganizationUpdateIssueFieldPropOptionsItems)
 
 __all__ = (
-    "OrganizationCreateIssueField",
-    "OrganizationCreateIssueFieldPropOptionsItems",
+    "OrganizationUpdateIssueField",
+    "OrganizationUpdateIssueFieldPropOptionsItems",
 )

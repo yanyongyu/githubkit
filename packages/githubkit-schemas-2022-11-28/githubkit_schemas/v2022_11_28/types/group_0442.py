@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0215 import (
+from .group_0214 import (
     RepositoryRulePullRequestPropParametersType,
     RepositoryRulePullRequestPropParametersTypeForResponse,
 )

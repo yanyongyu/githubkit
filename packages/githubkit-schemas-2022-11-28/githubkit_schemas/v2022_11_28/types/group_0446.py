@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0221 import (
+from .group_0220 import (
     RepositoryRuleCommitAuthorEmailPatternPropParametersType,
     RepositoryRuleCommitAuthorEmailPatternPropParametersTypeForResponse,
 )

@@ -1969,9 +1969,9 @@ class OrgsClient:
 
         GET /orgs/{org}/artifacts/{subject_digest}/metadata/storage-records
 
-        List a collection of artifact storage records with a given subject digest that are associated with repositories owned by an organization.
+        List artifact storage records with a given subject digest for repositories owned by an organization.
 
-        The collection of storage records returned by this endpoint is filtered according to the authenticated user's permissions; if the authenticated user cannot read a repository, the attestations associated with that repository will not be included in the response. In addition, when using a fine-grained access token the `content:read` permission is required.
+        Results are filtered by the authenticated user's permissions; records for repositories the user cannot read are omitted. Fine-grained access tokens require the `artifact-metadata:read` permission.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/artifact-metadata#list-artifact-storage-records
         """
@@ -2007,9 +2007,9 @@ class OrgsClient:
 
         GET /orgs/{org}/artifacts/{subject_digest}/metadata/storage-records
 
-        List a collection of artifact storage records with a given subject digest that are associated with repositories owned by an organization.
+        List artifact storage records with a given subject digest for repositories owned by an organization.
 
-        The collection of storage records returned by this endpoint is filtered according to the authenticated user's permissions; if the authenticated user cannot read a repository, the attestations associated with that repository will not be included in the response. In addition, when using a fine-grained access token the `content:read` permission is required.
+        Results are filtered by the authenticated user's permissions; records for repositories the user cannot read are omitted. Fine-grained access tokens require the `artifact-metadata:read` permission.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/artifact-metadata#list-artifact-storage-records
         """

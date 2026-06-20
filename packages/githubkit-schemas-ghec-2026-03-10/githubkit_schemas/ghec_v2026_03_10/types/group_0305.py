@@ -10,129 +10,53 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
-class OrgPrivateRegistryConfigurationWithSelectedRepositoriesType(TypedDict):
-    """Organization private registry
 
-    Private registry configuration for an organization
+class ProjectsV2StatusUpdateType(TypedDict):
+    """Projects v2 Status Update
+
+    An status update belonging to a project
     """
 
-    name: str
-    registry_type: Literal[
-        "maven_repository",
-        "nuget_feed",
-        "goproxy_server",
-        "npm_registry",
-        "rubygems_server",
-        "cargo_registry",
-        "composer_repository",
-        "docker_registry",
-        "git_source",
-        "helm_registry",
-        "hex_organization",
-        "hex_repository",
-        "pub_repository",
-        "python_index",
-        "terraform_registry",
-    ]
-    auth_type: NotRequired[
-        Literal[
-            "token",
-            "username_password",
-            "oidc_azure",
-            "oidc_aws",
-            "oidc_jfrog",
-            "oidc_cloudsmith",
-            "oidc_gcp",
-        ]
-    ]
-    url: NotRequired[str]
-    username: NotRequired[str]
-    replaces_base: NotRequired[bool]
-    visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
-    tenant_id: NotRequired[str]
-    client_id: NotRequired[str]
-    aws_region: NotRequired[str]
-    account_id: NotRequired[str]
-    role_name: NotRequired[str]
-    domain: NotRequired[str]
-    domain_owner: NotRequired[str]
-    jfrog_oidc_provider_name: NotRequired[str]
-    audience: NotRequired[str]
-    identity_mapping_name: NotRequired[str]
-    namespace: NotRequired[str]
-    service_slug: NotRequired[str]
-    api_host: NotRequired[str]
-    workload_identity_provider: NotRequired[str]
-    service_account: NotRequired[str]
+    id: float
+    node_id: str
+    project_node_id: NotRequired[str]
+    creator: NotRequired[SimpleUserType]
     created_at: _dt.datetime
     updated_at: _dt.datetime
+    status: NotRequired[
+        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
+    ]
+    start_date: NotRequired[_dt.date]
+    target_date: NotRequired[_dt.date]
+    body: NotRequired[Union[str, None]]
 
 
-class OrgPrivateRegistryConfigurationWithSelectedRepositoriesTypeForResponse(TypedDict):
-    """Organization private registry
+class ProjectsV2StatusUpdateTypeForResponse(TypedDict):
+    """Projects v2 Status Update
 
-    Private registry configuration for an organization
+    An status update belonging to a project
     """
 
-    name: str
-    registry_type: Literal[
-        "maven_repository",
-        "nuget_feed",
-        "goproxy_server",
-        "npm_registry",
-        "rubygems_server",
-        "cargo_registry",
-        "composer_repository",
-        "docker_registry",
-        "git_source",
-        "helm_registry",
-        "hex_organization",
-        "hex_repository",
-        "pub_repository",
-        "python_index",
-        "terraform_registry",
-    ]
-    auth_type: NotRequired[
-        Literal[
-            "token",
-            "username_password",
-            "oidc_azure",
-            "oidc_aws",
-            "oidc_jfrog",
-            "oidc_cloudsmith",
-            "oidc_gcp",
-        ]
-    ]
-    url: NotRequired[str]
-    username: NotRequired[str]
-    replaces_base: NotRequired[bool]
-    visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
-    tenant_id: NotRequired[str]
-    client_id: NotRequired[str]
-    aws_region: NotRequired[str]
-    account_id: NotRequired[str]
-    role_name: NotRequired[str]
-    domain: NotRequired[str]
-    domain_owner: NotRequired[str]
-    jfrog_oidc_provider_name: NotRequired[str]
-    audience: NotRequired[str]
-    identity_mapping_name: NotRequired[str]
-    namespace: NotRequired[str]
-    service_slug: NotRequired[str]
-    api_host: NotRequired[str]
-    workload_identity_provider: NotRequired[str]
-    service_account: NotRequired[str]
+    id: float
+    node_id: str
+    project_node_id: NotRequired[str]
+    creator: NotRequired[SimpleUserTypeForResponse]
     created_at: str
     updated_at: str
+    status: NotRequired[
+        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
+    ]
+    start_date: NotRequired[str]
+    target_date: NotRequired[str]
+    body: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "OrgPrivateRegistryConfigurationWithSelectedRepositoriesType",
-    "OrgPrivateRegistryConfigurationWithSelectedRepositoriesTypeForResponse",
+    "ProjectsV2StatusUpdateType",
+    "ProjectsV2StatusUpdateTypeForResponse",
 )

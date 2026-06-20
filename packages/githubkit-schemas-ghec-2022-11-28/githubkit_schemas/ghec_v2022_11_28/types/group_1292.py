@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0245 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0244 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
 class OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):

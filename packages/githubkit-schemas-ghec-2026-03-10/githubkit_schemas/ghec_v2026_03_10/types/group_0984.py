@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0322 import FullRepositoryType, FullRepositoryTypeForResponse
+from .group_0321 import FullRepositoryType, FullRepositoryTypeForResponse
 from .group_0575 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
 from .group_0576 import SimpleInstallationType, SimpleInstallationTypeForResponse
 from .group_0577 import (

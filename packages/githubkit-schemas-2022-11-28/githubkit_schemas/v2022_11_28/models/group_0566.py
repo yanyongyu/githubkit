@@ -188,6 +188,7 @@ class WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropPermissions(GitHubMod
     copilot_requests: Missing[Literal["write"]] = Field(default=UNSET)
     deployments: Missing[Literal["read", "write"]] = Field(default=UNSET)
     discussions: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    drives: Missing[Literal["read", "write"]] = Field(default=UNSET)
     emails: Missing[Literal["read", "write"]] = Field(default=UNSET)
     environments: Missing[Literal["read", "write"]] = Field(default=UNSET)
     issues: Missing[Literal["read", "write"]] = Field(default=UNSET)

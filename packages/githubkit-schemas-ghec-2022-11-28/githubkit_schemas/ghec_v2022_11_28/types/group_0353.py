@@ -9,24 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReviewCustomGatesCommentRequiredType(TypedDict):
-    """ReviewCustomGatesCommentRequired"""
-
-    environment_name: str
-    comment: str
-
-
-class ReviewCustomGatesCommentRequiredTypeForResponse(TypedDict):
-    """ReviewCustomGatesCommentRequired"""
+class ReviewCustomGatesStateRequiredType(TypedDict):
+    """ReviewCustomGatesStateRequired"""
 
     environment_name: str
-    comment: str
+    state: Literal["approved", "rejected"]
+    comment: NotRequired[str]
+
+
+class ReviewCustomGatesStateRequiredTypeForResponse(TypedDict):
+    """ReviewCustomGatesStateRequired"""
+
+    environment_name: str
+    state: Literal["approved", "rejected"]
+    comment: NotRequired[str]
 
 
 __all__ = (
-    "ReviewCustomGatesCommentRequiredType",
-    "ReviewCustomGatesCommentRequiredTypeForResponse",
+    "ReviewCustomGatesStateRequiredType",
+    "ReviewCustomGatesStateRequiredTypeForResponse",
 )

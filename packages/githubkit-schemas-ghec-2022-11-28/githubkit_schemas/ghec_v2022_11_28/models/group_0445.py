@@ -9,24 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class RepositoryHashAlgorithm(GitHubModel):
-    """Repository hash algorithm
+class HookResponse(GitHubModel):
+    """Hook Response"""
 
-    Repository hash algorithm
-    """
-
-    hash_algorithm: Literal["sha1", "sha256"] = Field(
-        description="The Git hash algorithm used by this repository."
-    )
+    code: Union[int, None] = Field()
+    status: Union[str, None] = Field()
+    message: Union[str, None] = Field()
 
 
-model_rebuild(RepositoryHashAlgorithm)
+model_rebuild(HookResponse)
 
-__all__ = ("RepositoryHashAlgorithm",)
+__all__ = ("HookResponse",)

@@ -9,37 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodeQualitySetupUpdateAnyof3Type(TypedDict):
-    """CodeQualitySetupUpdateAnyof3"""
+class CodeQualitySetupUpdateResponseType(TypedDict):
+    """CodeQualitySetupUpdateResponse
 
-    state: NotRequired[Literal["configured", "not-configured"]]
-    runner_type: NotRequired[Literal["standard", "labeled"]]
-    runner_label: NotRequired[Union[str, None]]
-    languages: list[
-        Literal[
-            "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
-        ]
-    ]
+    You can use `run_url` to track the status of the run. This includes a property
+    status and conclusion.
+    You should not rely on this always being an actions workflow run object.
+    """
+
+    run_id: NotRequired[int]
+    run_url: NotRequired[str]
 
 
-class CodeQualitySetupUpdateAnyof3TypeForResponse(TypedDict):
-    """CodeQualitySetupUpdateAnyof3"""
+class CodeQualitySetupUpdateResponseTypeForResponse(TypedDict):
+    """CodeQualitySetupUpdateResponse
 
-    state: NotRequired[Literal["configured", "not-configured"]]
-    runner_type: NotRequired[Literal["standard", "labeled"]]
-    runner_label: NotRequired[Union[str, None]]
-    languages: list[
-        Literal[
-            "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
-        ]
-    ]
+    You can use `run_url` to track the status of the run. This includes a property
+    status and conclusion.
+    You should not rely on this always being an actions workflow run object.
+    """
+
+    run_id: NotRequired[int]
+    run_url: NotRequired[str]
 
 
 __all__ = (
-    "CodeQualitySetupUpdateAnyof3Type",
-    "CodeQualitySetupUpdateAnyof3TypeForResponse",
+    "CodeQualitySetupUpdateResponseType",
+    "CodeQualitySetupUpdateResponseTypeForResponse",
 )

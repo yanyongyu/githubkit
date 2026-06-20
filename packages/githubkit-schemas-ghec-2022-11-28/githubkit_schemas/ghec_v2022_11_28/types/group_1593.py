@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0266 import CopilotSpaceResourceType, CopilotSpaceResourceTypeForResponse
+from .group_0265 import CopilotSpaceResourceType, CopilotSpaceResourceTypeForResponse
 
 
 class UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200Type(TypedDict):

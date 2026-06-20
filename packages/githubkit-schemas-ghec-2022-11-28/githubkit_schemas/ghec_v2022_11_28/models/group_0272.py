@@ -9,21 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class DependabotPublicKey(GitHubModel):
-    """DependabotPublicKey
+class DismissalRequestResponse(GitHubModel):
+    """Dismissal request response
 
-    The public key used for setting Dependabot Secrets.
+    A response made by a requester to dismiss the request.
     """
 
-    key_id: str = Field(description="The identifier for the key.")
-    key: str = Field(description="The Base64 encoded public key.")
+    id: Missing[int] = Field(
+        default=UNSET, description="The ID of the response to the dismissal request."
+    )
+    reviewer: Missing[DismissalRequestResponsePropReviewer] = Field(
+        default=UNSET, description="The user who reviewed the dismissal request."
+    )
+    message: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The response comment of the reviewer."
+    )
+    status: Missing[Literal["approved", "denied", "dismissed"]] = Field(
+        default=UNSET,
+        description="The response status to the dismissal request until dismissed.",
+    )
+    created_at: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="The date and time the response to the dismissal request was created.",
+    )
 
 
-model_rebuild(DependabotPublicKey)
+class DismissalRequestResponsePropReviewer(GitHubModel):
+    """DismissalRequestResponsePropReviewer
 
-__all__ = ("DependabotPublicKey",)
+    The user who reviewed the dismissal request.
+    """
+
+    actor_id: Missing[int] = Field(
+        default=UNSET,
+        description="The ID of the GitHub user who reviewed the dismissal request.",
+    )
+    actor_name: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the GitHub user who reviewed the dismissal request.",
+    )
+
+
+model_rebuild(DismissalRequestResponse)
+model_rebuild(DismissalRequestResponsePropReviewer)
+
+__all__ = (
+    "DismissalRequestResponse",
+    "DismissalRequestResponsePropReviewer",
+)

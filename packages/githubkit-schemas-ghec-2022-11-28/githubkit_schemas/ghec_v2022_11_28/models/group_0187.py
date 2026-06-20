@@ -16,46 +16,93 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AdvancedSecurityActiveCommitters(GitHubModel):
-    """AdvancedSecurityActiveCommitters"""
+class BillingAiCreditUsageReportGhe(GitHubModel):
+    """BillingAiCreditUsageReportGhe"""
 
-    total_advanced_security_committers: Missing[int] = Field(default=UNSET)
-    total_count: Missing[int] = Field(default=UNSET)
-    maximum_advanced_security_committers: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of GitHub Advanced Security licences required if all repositories were to enable GitHub Advanced Security",
+    time_period: BillingAiCreditUsageReportGhePropTimePeriod = Field(alias="timePeriod")
+    enterprise: str = Field(
+        description="The name of the enterprise for the usage report."
     )
-    purchased_advanced_security_committers: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of GitHub Advanced Security licences purchased",
+    user: Missing[str] = Field(
+        default=UNSET, description="The name of the user for the usage report."
     )
-    repositories: list[AdvancedSecurityActiveCommittersRepository] = Field()
+    organization: Missing[str] = Field(
+        default=UNSET, description="The name of the organization for the usage report."
+    )
+    product: Missing[str] = Field(
+        default=UNSET, description="The product for the usage report."
+    )
+    model: Missing[str] = Field(
+        default=UNSET, description="The model for the usage report."
+    )
+    cost_center: Missing[BillingAiCreditUsageReportGhePropCostCenter] = Field(
+        default=UNSET, alias="costCenter"
+    )
+    usage_items: list[BillingAiCreditUsageReportGhePropUsageItemsItems] = Field(
+        alias="usageItems"
+    )
 
 
-class AdvancedSecurityActiveCommittersRepository(GitHubModel):
-    """AdvancedSecurityActiveCommittersRepository"""
+class BillingAiCreditUsageReportGhePropTimePeriod(GitHubModel):
+    """BillingAiCreditUsageReportGhePropTimePeriod"""
 
-    name: str = Field()
-    advanced_security_committers: int = Field()
-    advanced_security_committers_breakdown: list[
-        AdvancedSecurityActiveCommittersUser
-    ] = Field()
-
-
-class AdvancedSecurityActiveCommittersUser(GitHubModel):
-    """AdvancedSecurityActiveCommittersUser"""
-
-    user_login: str = Field()
-    last_pushed_date: str = Field()
-    last_pushed_email: str = Field()
+    year: int = Field(description="The year for the usage report.")
+    month: Missing[int] = Field(
+        default=UNSET, description="The month for the usage report."
+    )
+    day: Missing[int] = Field(
+        default=UNSET, description="The day for the usage report."
+    )
 
 
-model_rebuild(AdvancedSecurityActiveCommitters)
-model_rebuild(AdvancedSecurityActiveCommittersRepository)
-model_rebuild(AdvancedSecurityActiveCommittersUser)
+class BillingAiCreditUsageReportGhePropCostCenter(GitHubModel):
+    """BillingAiCreditUsageReportGhePropCostCenter"""
+
+    id: str = Field(description="The unique identifier of the cost center.")
+    name: str = Field(description="The name of the cost center.")
+
+
+class BillingAiCreditUsageReportGhePropUsageItemsItems(GitHubModel):
+    """BillingAiCreditUsageReportGhePropUsageItemsItems"""
+
+    product: str = Field(description="Product name.")
+    sku: str = Field(description="SKU name.")
+    model: str = Field(description="Model name.")
+    unit_type: str = Field(
+        alias="unitType", description="Unit type of the usage line item."
+    )
+    price_per_unit: float = Field(
+        alias="pricePerUnit", description="Price per unit of the usage line item."
+    )
+    gross_quantity: float = Field(
+        alias="grossQuantity", description="Gross quantity of the usage line item."
+    )
+    gross_amount: float = Field(
+        alias="grossAmount", description="Gross amount of the usage line item."
+    )
+    discount_quantity: float = Field(
+        alias="discountQuantity",
+        description="Discount quantity of the usage line item.",
+    )
+    discount_amount: float = Field(
+        alias="discountAmount", description="Discount amount of the usage line item."
+    )
+    net_quantity: float = Field(
+        alias="netQuantity", description="Net quantity of the usage line item."
+    )
+    net_amount: float = Field(
+        alias="netAmount", description="Net amount of the usage line item."
+    )
+
+
+model_rebuild(BillingAiCreditUsageReportGhe)
+model_rebuild(BillingAiCreditUsageReportGhePropTimePeriod)
+model_rebuild(BillingAiCreditUsageReportGhePropCostCenter)
+model_rebuild(BillingAiCreditUsageReportGhePropUsageItemsItems)
 
 __all__ = (
-    "AdvancedSecurityActiveCommitters",
-    "AdvancedSecurityActiveCommittersRepository",
-    "AdvancedSecurityActiveCommittersUser",
+    "BillingAiCreditUsageReportGhe",
+    "BillingAiCreditUsageReportGhePropCostCenter",
+    "BillingAiCreditUsageReportGhePropTimePeriod",
+    "BillingAiCreditUsageReportGhePropUsageItemsItems",
 )

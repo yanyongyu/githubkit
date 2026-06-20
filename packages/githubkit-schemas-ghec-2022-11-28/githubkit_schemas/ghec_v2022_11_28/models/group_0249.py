@@ -16,18 +16,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ActionsCacheRetentionLimitForOrganization(GitHubModel):
-    """Actions cache retention limit for an organization
+class ActionsCacheStorageLimitForOrganization(GitHubModel):
+    """Actions cache storage limit for an organization
 
-    GitHub Actions cache retention policy for an organization.
+    GitHub Actions cache storage policy for an organization.
     """
 
-    max_cache_retention_days: Missing[int] = Field(
+    max_cache_size_gb: Missing[int] = Field(
         default=UNSET,
-        description="For repositories in this organization, the maximum duration, in days, for which caches in a repository may be retained.",
+        description="For repositories in the organization, the maximum size limit for the sum of all caches in a repository, in gigabytes.",
     )
 
 
-model_rebuild(ActionsCacheRetentionLimitForOrganization)
+model_rebuild(ActionsCacheStorageLimitForOrganization)
 
-__all__ = ("ActionsCacheRetentionLimitForOrganization",)
+__all__ = ("ActionsCacheStorageLimitForOrganization",)

@@ -18,146 +18,54 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0069 import BypassResponse
+from .group_0008 import Enterprise
 
 
-class SecretScanningDismissalRequest(GitHubModel):
-    """Secret scanning alert dismissal request
+class EnterpriseRole(GitHubModel):
+    """Enterprise Role
 
-    A dismissal request made by a user asking to close a secret scanning alert in
-    this repository.
+    Enterprise custom roles
     """
 
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the dismissal request."
-    )
-    number: Missing[int] = Field(
+    id: int = Field(description="The unique identifier of the role.")
+    name: str = Field(description="The name of the role.")
+    description: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The number uniquely identifying the dismissal request within its repository.",
+        description="A short description about who this role is for or what permissions it grants.",
     )
-    repository: Missing[SecretScanningDismissalRequestPropRepository] = Field(
-        default=UNSET, description="The repository the dismissal request is for."
-    )
-    organization: Missing[SecretScanningDismissalRequestPropOrganization] = Field(
+    source: Missing[Union[None, Literal["Enterprise", "Predefined"]]] = Field(
         default=UNSET,
-        description="The organization associated with the repository the dismissal request is for.",
+        description='Source answers the question, "where did this role come from?"',
     )
-    requester: Missing[SecretScanningDismissalRequestPropRequester] = Field(
-        default=UNSET, description="The user who requested the dismissal."
+    permissions: list[str] = Field(
+        description="A list of permissions included in this role."
     )
-    request_type: Missing[str] = Field(
-        default=UNSET, description="The type of request."
+    enterprise: Union[None, Enterprise] = Field()
+    created_at: _dt.datetime = Field(
+        description="The date and time the role was created."
     )
-    data: Missing[Union[list[SecretScanningDismissalRequestPropDataItems], None]] = (
-        Field(
-            default=UNSET,
-            description="Data describing the secret alert that is being requested to be dismissed.",
-        )
+    updated_at: _dt.datetime = Field(
+        description="The date and time the role was last updated."
     )
-    resource_identifier: Missing[str] = Field(
+
+
+class EnterprisesEnterpriseEnterpriseRolesGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseEnterpriseRolesGetResponse200"""
+
+    total_count: Missing[int] = Field(
         default=UNSET,
-        description="The number of the secret scanning alert that was detected.",
+        description="The total number of enterprise roles available to the enterprise.",
     )
-    status: Missing[
-        Literal["pending", "denied", "approved", "cancelled", "expired"]
-    ] = Field(default=UNSET, description="The status of the dismissal request.")
-    requester_comment: Missing[Union[str, None]] = Field(
+    roles: Missing[list[EnterpriseRole]] = Field(
         default=UNSET,
-        description="The comment the requester provided when creating the dismissal request.",
-    )
-    expires_at: Missing[_dt.datetime] = Field(
-        default=UNSET,
-        description="The date and time the dismissal request will expire.",
-    )
-    created_at: Missing[_dt.datetime] = Field(
-        default=UNSET,
-        description="The date and time the dismissal request was created.",
-    )
-    responses: Missing[Union[list[BypassResponse], None]] = Field(
-        default=UNSET, description="The responses to the dismissal request."
-    )
-    url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(
-        default=UNSET, description="The URL to view the dismissal request in a browser."
+        description="The list of enterprise roles available to the enterprise.",
     )
 
 
-class SecretScanningDismissalRequestPropRepository(GitHubModel):
-    """SecretScanningDismissalRequestPropRepository
-
-    The repository the dismissal request is for.
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET,
-        description="The ID of the repository the dismissal request is for.",
-    )
-    name: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the repository the dismissal request is for.",
-    )
-    full_name: Missing[str] = Field(
-        default=UNSET,
-        description="The full name of the repository the dismissal request is for.",
-    )
-
-
-class SecretScanningDismissalRequestPropOrganization(GitHubModel):
-    """SecretScanningDismissalRequestPropOrganization
-
-    The organization associated with the repository the dismissal request is for.
-    """
-
-    id: Missing[int] = Field(default=UNSET, description="The ID of the organization.")
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the organization."
-    )
-
-
-class SecretScanningDismissalRequestPropRequester(GitHubModel):
-    """SecretScanningDismissalRequestPropRequester
-
-    The user who requested the dismissal.
-    """
-
-    actor_id: Missing[int] = Field(
-        default=UNSET,
-        description="The ID of the GitHub user who requested the dismissal.",
-    )
-    actor_name: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the GitHub user who requested the dismissal.",
-    )
-
-
-class SecretScanningDismissalRequestPropDataItems(GitHubModel):
-    """SecretScanningDismissalRequestPropDataItems"""
-
-    secret_type: Missing[str] = Field(
-        default=UNSET, description="The type of secret that secret scanning detected."
-    )
-    alert_number: Missing[str] = Field(
-        default=UNSET,
-        description="The number of the secret scanning alert that was detected.",
-    )
-    reason: Missing[Literal["fixed_later", "false_positive", "tests", "revoked"]] = (
-        Field(
-            default=UNSET,
-            description="The reason the user provided for requesting the dismissal.",
-        )
-    )
-
-
-model_rebuild(SecretScanningDismissalRequest)
-model_rebuild(SecretScanningDismissalRequestPropRepository)
-model_rebuild(SecretScanningDismissalRequestPropOrganization)
-model_rebuild(SecretScanningDismissalRequestPropRequester)
-model_rebuild(SecretScanningDismissalRequestPropDataItems)
+model_rebuild(EnterpriseRole)
+model_rebuild(EnterprisesEnterpriseEnterpriseRolesGetResponse200)
 
 __all__ = (
-    "SecretScanningDismissalRequest",
-    "SecretScanningDismissalRequestPropDataItems",
-    "SecretScanningDismissalRequestPropOrganization",
-    "SecretScanningDismissalRequestPropRepository",
-    "SecretScanningDismissalRequestPropRequester",
+    "EnterpriseRole",
+    "EnterprisesEnterpriseEnterpriseRolesGetResponse200",
 )

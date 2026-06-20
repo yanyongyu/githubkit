@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0309 import CheckRunType, CheckRunTypeForResponse
+from .group_0308 import CheckRunType, CheckRunTypeForResponse
 
 
 class ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Type(TypedDict):

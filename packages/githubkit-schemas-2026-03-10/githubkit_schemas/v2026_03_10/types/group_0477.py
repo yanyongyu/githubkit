@@ -14,7 +14,7 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0090 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
-from .group_0297 import GitUserType, GitUserTypeForResponse
+from .group_0296 import GitUserType, GitUserTypeForResponse
 from .group_0475 import (
     SearchResultTextMatchesItemsType,
     SearchResultTextMatchesItemsTypeForResponse,

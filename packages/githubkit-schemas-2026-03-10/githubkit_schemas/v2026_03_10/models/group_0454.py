@@ -17,7 +17,7 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0242 import RepositoryRuleMaxFileSizePropParameters
+from .group_0241 import RepositoryRuleMaxFileSizePropParameters
 
 
 class RepositoryRuleDetailedOneof21(GitHubModel):

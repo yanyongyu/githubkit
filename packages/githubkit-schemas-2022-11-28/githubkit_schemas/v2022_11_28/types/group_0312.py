@@ -9,70 +9,64 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0090 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
+class CodeQualitySetupType(TypedDict):
+    """CodeQualitySetup
 
-class CheckSuitePreferenceType(TypedDict):
-    """Check Suite Preference
-
-    Check suite configuration preferences for a repository.
+    Configuration for code quality setup.
     """
 
-    preferences: CheckSuitePreferencePropPreferencesType
-    repository: MinimalRepositoryType
-
-
-class CheckSuitePreferenceTypeForResponse(TypedDict):
-    """Check Suite Preference
-
-    Check suite configuration preferences for a repository.
-    """
-
-    preferences: CheckSuitePreferencePropPreferencesTypeForResponse
-    repository: MinimalRepositoryTypeForResponse
-
-
-class CheckSuitePreferencePropPreferencesType(TypedDict):
-    """CheckSuitePreferencePropPreferences"""
-
-    auto_trigger_checks: NotRequired[
-        list[CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType]
-    ]
-
-
-class CheckSuitePreferencePropPreferencesTypeForResponse(TypedDict):
-    """CheckSuitePreferencePropPreferences"""
-
-    auto_trigger_checks: NotRequired[
+    state: NotRequired[Literal["configured", "not-configured"]]
+    languages: NotRequired[
         list[
-            CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsTypeForResponse
+            Literal[
+                "csharp",
+                "go",
+                "java-kotlin",
+                "javascript-typescript",
+                "python",
+                "ruby",
+                "rust",
+            ]
         ]
     ]
+    runner_type: NotRequired[Union[None, Literal["standard", "labeled"]]]
+    runner_label: NotRequired[Union[str, None]]
+    updated_at: NotRequired[Union[_dt.datetime, None]]
+    schedule: NotRequired[Union[None, Literal["weekly"]]]
 
 
-class CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType(TypedDict):
-    """CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems"""
+class CodeQualitySetupTypeForResponse(TypedDict):
+    """CodeQualitySetup
 
-    app_id: int
-    setting: bool
+    Configuration for code quality setup.
+    """
 
-
-class CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsTypeForResponse(
-    TypedDict
-):
-    """CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems"""
-
-    app_id: int
-    setting: bool
+    state: NotRequired[Literal["configured", "not-configured"]]
+    languages: NotRequired[
+        list[
+            Literal[
+                "csharp",
+                "go",
+                "java-kotlin",
+                "javascript-typescript",
+                "python",
+                "ruby",
+                "rust",
+            ]
+        ]
+    ]
+    runner_type: NotRequired[Union[None, Literal["standard", "labeled"]]]
+    runner_label: NotRequired[Union[str, None]]
+    updated_at: NotRequired[Union[str, None]]
+    schedule: NotRequired[Union[None, Literal["weekly"]]]
 
 
 __all__ = (
-    "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType",
-    "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsTypeForResponse",
-    "CheckSuitePreferencePropPreferencesType",
-    "CheckSuitePreferencePropPreferencesTypeForResponse",
-    "CheckSuitePreferenceType",
-    "CheckSuitePreferenceTypeForResponse",
+    "CodeQualitySetupType",
+    "CodeQualitySetupTypeForResponse",
 )

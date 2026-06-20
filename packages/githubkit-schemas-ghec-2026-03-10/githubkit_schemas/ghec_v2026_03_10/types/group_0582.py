@@ -14,8 +14,8 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0213 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
-from .group_0245 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0212 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
+from .group_0244 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
 class SimpleCheckSuiteType(TypedDict):

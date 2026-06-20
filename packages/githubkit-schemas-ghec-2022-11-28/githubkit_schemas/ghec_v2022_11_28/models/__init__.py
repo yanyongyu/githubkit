@@ -302,1401 +302,1372 @@ if TYPE_CHECKING or is_lazy_disabled():
     from .group_0088 import (
         CopilotEnterpriseContentExclusionDetails as CopilotEnterpriseContentExclusionDetails,
     )
-    from .group_0089 import CopilotDotcomChat as CopilotDotcomChat
     from .group_0089 import (
-        CopilotDotcomChatPropModelsItems as CopilotDotcomChatPropModelsItems,
-    )
-    from .group_0089 import CopilotDotcomPullRequests as CopilotDotcomPullRequests
-    from .group_0089 import (
-        CopilotDotcomPullRequestsPropRepositoriesItems as CopilotDotcomPullRequestsPropRepositoriesItems,
-    )
-    from .group_0089 import (
-        CopilotDotcomPullRequestsPropRepositoriesItemsPropModelsItems as CopilotDotcomPullRequestsPropRepositoriesItemsPropModelsItems,
-    )
-    from .group_0089 import CopilotIdeChat as CopilotIdeChat
-    from .group_0089 import (
-        CopilotIdeChatPropEditorsItems as CopilotIdeChatPropEditorsItems,
-    )
-    from .group_0089 import (
-        CopilotIdeChatPropEditorsItemsPropModelsItems as CopilotIdeChatPropEditorsItemsPropModelsItems,
-    )
-    from .group_0089 import CopilotIdeCodeCompletions as CopilotIdeCodeCompletions
-    from .group_0089 import (
-        CopilotIdeCodeCompletionsPropEditorsItems as CopilotIdeCodeCompletionsPropEditorsItems,
-    )
-    from .group_0089 import (
-        CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItems as CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItems,
-    )
-    from .group_0089 import (
-        CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsPropLanguagesItems as CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsPropLanguagesItems,
-    )
-    from .group_0089 import (
-        CopilotIdeCodeCompletionsPropLanguagesItems as CopilotIdeCodeCompletionsPropLanguagesItems,
-    )
-    from .group_0089 import CopilotUsageMetricsDay as CopilotUsageMetricsDay
-    from .group_0090 import (
         CopilotUsageMetrics1DayReport as CopilotUsageMetrics1DayReport,
     )
-    from .group_0091 import (
+    from .group_0090 import (
         CopilotUsageMetrics28DayReport as CopilotUsageMetrics28DayReport,
     )
-    from .group_0092 import DependabotAlertPackage as DependabotAlertPackage
-    from .group_0093 import (
+    from .group_0091 import DependabotAlertPackage as DependabotAlertPackage
+    from .group_0092 import (
         DependabotAlertSecurityVulnerability as DependabotAlertSecurityVulnerability,
     )
-    from .group_0093 import (
+    from .group_0092 import (
         DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion as DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion,
     )
-    from .group_0094 import (
+    from .group_0093 import (
         DependabotAlertSecurityAdvisory as DependabotAlertSecurityAdvisory,
     )
-    from .group_0094 import (
+    from .group_0093 import (
         DependabotAlertSecurityAdvisoryPropCvss as DependabotAlertSecurityAdvisoryPropCvss,
     )
-    from .group_0094 import (
+    from .group_0093 import (
         DependabotAlertSecurityAdvisoryPropCwesItems as DependabotAlertSecurityAdvisoryPropCwesItems,
     )
-    from .group_0094 import (
+    from .group_0093 import (
         DependabotAlertSecurityAdvisoryPropIdentifiersItems as DependabotAlertSecurityAdvisoryPropIdentifiersItems,
     )
-    from .group_0094 import (
+    from .group_0093 import (
         DependabotAlertSecurityAdvisoryPropReferencesItems as DependabotAlertSecurityAdvisoryPropReferencesItems,
     )
-    from .group_0095 import (
+    from .group_0094 import (
         DependabotAlertDismissalRequestSimple as DependabotAlertDismissalRequestSimple,
     )
-    from .group_0095 import (
+    from .group_0094 import (
         DependabotAlertDismissalRequestSimplePropRequester as DependabotAlertDismissalRequestSimplePropRequester,
     )
-    from .group_0096 import (
+    from .group_0095 import (
         DependabotAlertWithRepository as DependabotAlertWithRepository,
     )
-    from .group_0097 import (
+    from .group_0096 import (
         DependabotAlertWithRepositoryPropDependency as DependabotAlertWithRepositoryPropDependency,
     )
-    from .group_0098 import (
+    from .group_0097 import (
         DependabotRepositoryAccessDetails as DependabotRepositoryAccessDetails,
     )
-    from .group_0099 import (
+    from .group_0098 import (
         SecretScanningDismissalRequest as SecretScanningDismissalRequest,
     )
-    from .group_0099 import (
+    from .group_0098 import (
         SecretScanningDismissalRequestPropDataItems as SecretScanningDismissalRequestPropDataItems,
     )
-    from .group_0099 import (
+    from .group_0098 import (
         SecretScanningDismissalRequestPropOrganization as SecretScanningDismissalRequestPropOrganization,
     )
-    from .group_0099 import (
+    from .group_0098 import (
         SecretScanningDismissalRequestPropRepository as SecretScanningDismissalRequestPropRepository,
     )
-    from .group_0099 import (
+    from .group_0098 import (
         SecretScanningDismissalRequestPropRequester as SecretScanningDismissalRequestPropRequester,
     )
-    from .group_0100 import EnterpriseRole as EnterpriseRole
-    from .group_0100 import (
+    from .group_0099 import EnterpriseRole as EnterpriseRole
+    from .group_0099 import (
         EnterprisesEnterpriseEnterpriseRolesGetResponse200 as EnterprisesEnterpriseEnterpriseRolesGetResponse200,
     )
-    from .group_0101 import EnterpriseUserRoleAssignment as EnterpriseUserRoleAssignment
-    from .group_0102 import (
+    from .group_0100 import EnterpriseUserRoleAssignment as EnterpriseUserRoleAssignment
+    from .group_0101 import (
         EnterpriseUserRoleAssignmentAllof1 as EnterpriseUserRoleAssignmentAllof1,
     )
-    from .group_0103 import GetLicenseSyncStatus as GetLicenseSyncStatus
-    from .group_0103 import (
+    from .group_0102 import GetLicenseSyncStatus as GetLicenseSyncStatus
+    from .group_0102 import (
         GetLicenseSyncStatusPropServerInstancesItems as GetLicenseSyncStatusPropServerInstancesItems,
     )
-    from .group_0103 import (
+    from .group_0102 import (
         GetLicenseSyncStatusPropServerInstancesItemsPropLastSync as GetLicenseSyncStatusPropServerInstancesItemsPropLastSync,
     )
-    from .group_0104 import NetworkConfiguration as NetworkConfiguration
-    from .group_0105 import NetworkSettings as NetworkSettings
-    from .group_0106 import CustomPropertyBase as CustomPropertyBase
-    from .group_0107 import OrganizationCustomProperty as OrganizationCustomProperty
-    from .group_0108 import (
+    from .group_0103 import NetworkConfiguration as NetworkConfiguration
+    from .group_0104 import NetworkSettings as NetworkSettings
+    from .group_0105 import CustomPropertyBase as CustomPropertyBase
+    from .group_0106 import OrganizationCustomProperty as OrganizationCustomProperty
+    from .group_0107 import (
         OrganizationCustomPropertyAllof1 as OrganizationCustomPropertyAllof1,
     )
-    from .group_0109 import (
+    from .group_0108 import (
         OrganizationCustomPropertyPayload as OrganizationCustomPropertyPayload,
     )
-    from .group_0110 import CustomPropertyValue as CustomPropertyValue
-    from .group_0111 import (
+    from .group_0109 import CustomPropertyValue as CustomPropertyValue
+    from .group_0110 import (
         CustomPropertiesForOrgsGetEnterprisePropertyValues as CustomPropertiesForOrgsGetEnterprisePropertyValues,
     )
-    from .group_0112 import CustomProperty as CustomProperty
-    from .group_0113 import CustomPropertySetPayload as CustomPropertySetPayload
-    from .group_0114 import RepositoryRulesetBypassActor as RepositoryRulesetBypassActor
-    from .group_0115 import (
+    from .group_0111 import CustomProperty as CustomProperty
+    from .group_0112 import CustomPropertySetPayload as CustomPropertySetPayload
+    from .group_0113 import RepositoryRulesetBypassActor as RepositoryRulesetBypassActor
+    from .group_0114 import (
         EnterpriseRulesetConditionsOrganizationNameTarget as EnterpriseRulesetConditionsOrganizationNameTarget,
     )
-    from .group_0116 import (
+    from .group_0115 import (
         EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName as EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName,
     )
-    from .group_0117 import (
+    from .group_0116 import (
         RepositoryRulesetConditionsRepositoryNameTarget as RepositoryRulesetConditionsRepositoryNameTarget,
     )
-    from .group_0118 import (
+    from .group_0117 import (
         RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName as RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName,
     )
-    from .group_0119 import RepositoryRulesetConditions as RepositoryRulesetConditions
-    from .group_0120 import (
+    from .group_0118 import RepositoryRulesetConditions as RepositoryRulesetConditions
+    from .group_0119 import (
         RepositoryRulesetConditionsPropRefName as RepositoryRulesetConditionsPropRefName,
     )
-    from .group_0121 import (
+    from .group_0120 import (
         RepositoryRulesetConditionsRepositoryPropertyTarget as RepositoryRulesetConditionsRepositoryPropertyTarget,
     )
-    from .group_0122 import (
+    from .group_0121 import (
         RepositoryRulesetConditionsRepositoryPropertySpec as RepositoryRulesetConditionsRepositoryPropertySpec,
     )
-    from .group_0122 import (
+    from .group_0121 import (
         RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty as RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty,
     )
-    from .group_0123 import (
+    from .group_0122 import (
         EnterpriseRulesetConditionsOrganizationIdTarget as EnterpriseRulesetConditionsOrganizationIdTarget,
     )
-    from .group_0124 import (
+    from .group_0123 import (
         EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId as EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId,
     )
-    from .group_0125 import (
+    from .group_0124 import (
         EnterpriseRulesetConditionsOrganizationPropertyTarget as EnterpriseRulesetConditionsOrganizationPropertyTarget,
     )
-    from .group_0126 import (
+    from .group_0125 import (
         EnterpriseRulesetConditionsOrganizationPropertySpec as EnterpriseRulesetConditionsOrganizationPropertySpec,
     )
-    from .group_0126 import (
+    from .group_0125 import (
         EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty as EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty,
     )
-    from .group_0127 import (
+    from .group_0126 import (
         EnterpriseRulesetConditionsOneof0 as EnterpriseRulesetConditionsOneof0,
     )
-    from .group_0128 import (
+    from .group_0127 import (
         EnterpriseRulesetConditionsOneof1 as EnterpriseRulesetConditionsOneof1,
     )
-    from .group_0129 import (
+    from .group_0128 import (
         EnterpriseRulesetConditionsOneof2 as EnterpriseRulesetConditionsOneof2,
     )
-    from .group_0130 import (
+    from .group_0129 import (
         EnterpriseRulesetConditionsOneof3 as EnterpriseRulesetConditionsOneof3,
     )
-    from .group_0131 import (
+    from .group_0130 import (
         EnterpriseRulesetConditionsOneof4 as EnterpriseRulesetConditionsOneof4,
     )
-    from .group_0132 import (
+    from .group_0131 import (
         EnterpriseRulesetConditionsOneof5 as EnterpriseRulesetConditionsOneof5,
     )
-    from .group_0133 import RepositoryRuleCreation as RepositoryRuleCreation
-    from .group_0133 import RepositoryRuleDeletion as RepositoryRuleDeletion
-    from .group_0133 import RepositoryRuleNonFastForward as RepositoryRuleNonFastForward
-    from .group_0133 import (
+    from .group_0132 import RepositoryRuleCreation as RepositoryRuleCreation
+    from .group_0132 import RepositoryRuleDeletion as RepositoryRuleDeletion
+    from .group_0132 import RepositoryRuleNonFastForward as RepositoryRuleNonFastForward
+    from .group_0132 import (
         RepositoryRuleRequiredSignatures as RepositoryRuleRequiredSignatures,
     )
-    from .group_0134 import RepositoryRuleUpdate as RepositoryRuleUpdate
-    from .group_0135 import (
+    from .group_0133 import RepositoryRuleUpdate as RepositoryRuleUpdate
+    from .group_0134 import (
         RepositoryRuleUpdatePropParameters as RepositoryRuleUpdatePropParameters,
     )
-    from .group_0136 import (
+    from .group_0135 import (
         RepositoryRuleRequiredLinearHistory as RepositoryRuleRequiredLinearHistory,
     )
-    from .group_0137 import (
+    from .group_0136 import (
         RepositoryRuleRequiredDeployments as RepositoryRuleRequiredDeployments,
     )
-    from .group_0138 import (
+    from .group_0137 import (
         RepositoryRuleRequiredDeploymentsPropParameters as RepositoryRuleRequiredDeploymentsPropParameters,
     )
-    from .group_0139 import RepositoryRuleParamsActor as RepositoryRuleParamsActor
-    from .group_0139 import (
+    from .group_0138 import RepositoryRuleParamsActor as RepositoryRuleParamsActor
+    from .group_0138 import (
         RepositoryRuleParamsDismissalRestriction as RepositoryRuleParamsDismissalRestriction,
     )
-    from .group_0140 import RepositoryRulePullRequest as RepositoryRulePullRequest
-    from .group_0141 import (
+    from .group_0139 import RepositoryRulePullRequest as RepositoryRulePullRequest
+    from .group_0140 import (
         RepositoryRuleParamsRequiredReviewerConfiguration as RepositoryRuleParamsRequiredReviewerConfiguration,
     )
-    from .group_0141 import RepositoryRuleParamsReviewer as RepositoryRuleParamsReviewer
-    from .group_0141 import (
+    from .group_0140 import RepositoryRuleParamsReviewer as RepositoryRuleParamsReviewer
+    from .group_0140 import (
         RepositoryRulePullRequestPropParameters as RepositoryRulePullRequestPropParameters,
     )
-    from .group_0142 import (
+    from .group_0141 import (
         RepositoryRuleRequiredStatusChecks as RepositoryRuleRequiredStatusChecks,
     )
-    from .group_0143 import (
+    from .group_0142 import (
         RepositoryRuleParamsStatusCheckConfiguration as RepositoryRuleParamsStatusCheckConfiguration,
     )
-    from .group_0143 import (
+    from .group_0142 import (
         RepositoryRuleRequiredStatusChecksPropParameters as RepositoryRuleRequiredStatusChecksPropParameters,
     )
-    from .group_0144 import (
+    from .group_0143 import (
         RepositoryRuleCommitMessagePattern as RepositoryRuleCommitMessagePattern,
     )
-    from .group_0145 import (
+    from .group_0144 import (
         RepositoryRuleCommitMessagePatternPropParameters as RepositoryRuleCommitMessagePatternPropParameters,
     )
-    from .group_0146 import (
+    from .group_0145 import (
         RepositoryRuleCommitAuthorEmailPattern as RepositoryRuleCommitAuthorEmailPattern,
     )
-    from .group_0147 import (
+    from .group_0146 import (
         RepositoryRuleCommitAuthorEmailPatternPropParameters as RepositoryRuleCommitAuthorEmailPatternPropParameters,
     )
-    from .group_0148 import (
+    from .group_0147 import (
         RepositoryRuleCommitterEmailPattern as RepositoryRuleCommitterEmailPattern,
     )
-    from .group_0149 import (
+    from .group_0148 import (
         RepositoryRuleCommitterEmailPatternPropParameters as RepositoryRuleCommitterEmailPatternPropParameters,
     )
-    from .group_0150 import (
+    from .group_0149 import (
         RepositoryRuleBranchNamePattern as RepositoryRuleBranchNamePattern,
     )
-    from .group_0151 import (
+    from .group_0150 import (
         RepositoryRuleBranchNamePatternPropParameters as RepositoryRuleBranchNamePatternPropParameters,
     )
-    from .group_0152 import RepositoryRuleTagNamePattern as RepositoryRuleTagNamePattern
-    from .group_0153 import (
+    from .group_0151 import RepositoryRuleTagNamePattern as RepositoryRuleTagNamePattern
+    from .group_0152 import (
         RepositoryRuleTagNamePatternPropParameters as RepositoryRuleTagNamePatternPropParameters,
     )
-    from .group_0154 import (
+    from .group_0153 import (
         RepositoryRuleFilePathRestriction as RepositoryRuleFilePathRestriction,
     )
-    from .group_0155 import (
+    from .group_0154 import (
         RepositoryRuleFilePathRestrictionPropParameters as RepositoryRuleFilePathRestrictionPropParameters,
     )
-    from .group_0156 import (
+    from .group_0155 import (
         RepositoryRuleMaxFilePathLength as RepositoryRuleMaxFilePathLength,
     )
-    from .group_0157 import (
+    from .group_0156 import (
         RepositoryRuleMaxFilePathLengthPropParameters as RepositoryRuleMaxFilePathLengthPropParameters,
     )
-    from .group_0158 import (
+    from .group_0157 import (
         RepositoryRuleFileExtensionRestriction as RepositoryRuleFileExtensionRestriction,
     )
-    from .group_0159 import (
+    from .group_0158 import (
         RepositoryRuleFileExtensionRestrictionPropParameters as RepositoryRuleFileExtensionRestrictionPropParameters,
     )
-    from .group_0160 import RepositoryRuleMaxFileSize as RepositoryRuleMaxFileSize
-    from .group_0161 import (
+    from .group_0159 import RepositoryRuleMaxFileSize as RepositoryRuleMaxFileSize
+    from .group_0160 import (
         RepositoryRuleMaxFileSizePropParameters as RepositoryRuleMaxFileSizePropParameters,
     )
-    from .group_0162 import (
+    from .group_0161 import (
         RepositoryRuleParamsRestrictedCommits as RepositoryRuleParamsRestrictedCommits,
     )
-    from .group_0163 import RepositoryRuleWorkflows as RepositoryRuleWorkflows
-    from .group_0164 import (
+    from .group_0162 import RepositoryRuleWorkflows as RepositoryRuleWorkflows
+    from .group_0163 import (
         RepositoryRuleParamsWorkflowFileReference as RepositoryRuleParamsWorkflowFileReference,
     )
-    from .group_0164 import (
+    from .group_0163 import (
         RepositoryRuleWorkflowsPropParameters as RepositoryRuleWorkflowsPropParameters,
     )
-    from .group_0165 import RepositoryRuleCodeScanning as RepositoryRuleCodeScanning
-    from .group_0166 import (
+    from .group_0164 import RepositoryRuleCodeScanning as RepositoryRuleCodeScanning
+    from .group_0165 import (
         RepositoryRuleCodeScanningPropParameters as RepositoryRuleCodeScanningPropParameters,
     )
-    from .group_0166 import (
+    from .group_0165 import (
         RepositoryRuleParamsCodeScanningTool as RepositoryRuleParamsCodeScanningTool,
     )
-    from .group_0167 import (
+    from .group_0166 import (
         RepositoryRuleCopilotCodeReview as RepositoryRuleCopilotCodeReview,
     )
-    from .group_0168 import (
+    from .group_0167 import (
         RepositoryRuleCopilotCodeReviewPropParameters as RepositoryRuleCopilotCodeReviewPropParameters,
     )
-    from .group_0169 import (
+    from .group_0168 import (
         RepositoryRulesetConditionsRepositoryIdTarget as RepositoryRulesetConditionsRepositoryIdTarget,
     )
-    from .group_0170 import (
+    from .group_0169 import (
         RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId as RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId,
     )
-    from .group_0171 import OrgRulesetConditionsOneof0 as OrgRulesetConditionsOneof0
-    from .group_0172 import OrgRulesetConditionsOneof1 as OrgRulesetConditionsOneof1
-    from .group_0173 import OrgRulesetConditionsOneof2 as OrgRulesetConditionsOneof2
-    from .group_0174 import RepositoryRuleMergeQueue as RepositoryRuleMergeQueue
-    from .group_0175 import (
+    from .group_0170 import OrgRulesetConditionsOneof0 as OrgRulesetConditionsOneof0
+    from .group_0171 import OrgRulesetConditionsOneof1 as OrgRulesetConditionsOneof1
+    from .group_0172 import OrgRulesetConditionsOneof2 as OrgRulesetConditionsOneof2
+    from .group_0173 import RepositoryRuleMergeQueue as RepositoryRuleMergeQueue
+    from .group_0174 import (
         RepositoryRuleMergeQueuePropParameters as RepositoryRuleMergeQueuePropParameters,
     )
-    from .group_0176 import RepositoryRuleset as RepositoryRuleset
-    from .group_0176 import RepositoryRulesetPropLinks as RepositoryRulesetPropLinks
-    from .group_0176 import (
+    from .group_0175 import RepositoryRuleset as RepositoryRuleset
+    from .group_0175 import RepositoryRulesetPropLinks as RepositoryRulesetPropLinks
+    from .group_0175 import (
         RepositoryRulesetPropLinksPropHtml as RepositoryRulesetPropLinksPropHtml,
     )
-    from .group_0176 import (
+    from .group_0175 import (
         RepositoryRulesetPropLinksPropSelf as RepositoryRulesetPropLinksPropSelf,
     )
-    from .group_0177 import RulesetVersion as RulesetVersion
-    from .group_0178 import RulesetVersionPropActor as RulesetVersionPropActor
-    from .group_0179 import RulesetVersionWithState as RulesetVersionWithState
-    from .group_0180 import (
+    from .group_0176 import RulesetVersion as RulesetVersion
+    from .group_0177 import RulesetVersionPropActor as RulesetVersionPropActor
+    from .group_0178 import RulesetVersionWithState as RulesetVersionWithState
+    from .group_0179 import (
         RulesetVersionWithStateAllof1 as RulesetVersionWithStateAllof1,
     )
-    from .group_0181 import (
+    from .group_0180 import (
         RulesetVersionWithStateAllof1PropState as RulesetVersionWithStateAllof1PropState,
     )
-    from .group_0182 import SecretScanningLocationCommit as SecretScanningLocationCommit
-    from .group_0182 import (
+    from .group_0181 import SecretScanningLocationCommit as SecretScanningLocationCommit
+    from .group_0181 import (
         SecretScanningLocationDiscussionComment as SecretScanningLocationDiscussionComment,
     )
-    from .group_0182 import (
+    from .group_0181 import (
         SecretScanningLocationDiscussionTitle as SecretScanningLocationDiscussionTitle,
     )
-    from .group_0182 import (
+    from .group_0181 import (
         SecretScanningLocationIssueBody as SecretScanningLocationIssueBody,
     )
-    from .group_0182 import (
+    from .group_0181 import (
         SecretScanningLocationPullRequestBody as SecretScanningLocationPullRequestBody,
     )
-    from .group_0182 import (
+    from .group_0181 import (
         SecretScanningLocationPullRequestReview as SecretScanningLocationPullRequestReview,
     )
-    from .group_0182 import (
+    from .group_0181 import (
         SecretScanningLocationWikiCommit as SecretScanningLocationWikiCommit,
     )
-    from .group_0183 import (
+    from .group_0182 import (
         SecretScanningLocationIssueComment as SecretScanningLocationIssueComment,
     )
-    from .group_0183 import (
+    from .group_0182 import (
         SecretScanningLocationIssueTitle as SecretScanningLocationIssueTitle,
     )
-    from .group_0183 import (
+    from .group_0182 import (
         SecretScanningLocationPullRequestReviewComment as SecretScanningLocationPullRequestReviewComment,
     )
-    from .group_0183 import (
+    from .group_0182 import (
         SecretScanningLocationPullRequestTitle as SecretScanningLocationPullRequestTitle,
     )
-    from .group_0184 import (
+    from .group_0183 import (
         SecretScanningLocationDiscussionBody as SecretScanningLocationDiscussionBody,
     )
-    from .group_0184 import (
+    from .group_0183 import (
         SecretScanningLocationPullRequestComment as SecretScanningLocationPullRequestComment,
     )
-    from .group_0185 import (
+    from .group_0184 import (
         OrganizationSecretScanningAlert as OrganizationSecretScanningAlert,
     )
-    from .group_0186 import (
+    from .group_0185 import (
         SecretScanningPatternConfiguration as SecretScanningPatternConfiguration,
     )
-    from .group_0186 import (
+    from .group_0185 import (
         SecretScanningPatternOverride as SecretScanningPatternOverride,
     )
-    from .group_0187 import (
+    from .group_0186 import (
         AdvancedSecurityActiveCommitters as AdvancedSecurityActiveCommitters,
     )
-    from .group_0187 import (
+    from .group_0186 import (
         AdvancedSecurityActiveCommittersRepository as AdvancedSecurityActiveCommittersRepository,
     )
-    from .group_0187 import (
+    from .group_0186 import (
         AdvancedSecurityActiveCommittersUser as AdvancedSecurityActiveCommittersUser,
     )
-    from .group_0188 import (
+    from .group_0187 import (
         BillingAiCreditUsageReportGhe as BillingAiCreditUsageReportGhe,
     )
-    from .group_0188 import (
+    from .group_0187 import (
         BillingAiCreditUsageReportGhePropCostCenter as BillingAiCreditUsageReportGhePropCostCenter,
     )
-    from .group_0188 import (
+    from .group_0187 import (
         BillingAiCreditUsageReportGhePropTimePeriod as BillingAiCreditUsageReportGhePropTimePeriod,
     )
-    from .group_0188 import (
+    from .group_0187 import (
         BillingAiCreditUsageReportGhePropUsageItemsItems as BillingAiCreditUsageReportGhePropUsageItemsItems,
     )
-    from .group_0189 import Budget as Budget
-    from .group_0189 import BudgetPropBudgetAlerting as BudgetPropBudgetAlerting
-    from .group_0189 import GetAllBudgets as GetAllBudgets
-    from .group_0189 import (
+    from .group_0188 import Budget as Budget
+    from .group_0188 import BudgetPropBudgetAlerting as BudgetPropBudgetAlerting
+    from .group_0188 import GetAllBudgets as GetAllBudgets
+    from .group_0188 import (
         GetAllBudgetsPropEffectiveBudget as GetAllBudgetsPropEffectiveBudget,
     )
-    from .group_0190 import CreateBudget as CreateBudget
-    from .group_0190 import CreateBudgetPropBudget as CreateBudgetPropBudget
-    from .group_0190 import (
+    from .group_0189 import CreateBudget as CreateBudget
+    from .group_0189 import CreateBudgetPropBudget as CreateBudgetPropBudget
+    from .group_0189 import (
         CreateBudgetPropBudgetPropBudgetAlerting as CreateBudgetPropBudgetPropBudgetAlerting,
     )
-    from .group_0191 import GetBudget as GetBudget
-    from .group_0191 import GetBudgetPropBudgetAlerting as GetBudgetPropBudgetAlerting
-    from .group_0192 import UpdateBudget as UpdateBudget
-    from .group_0192 import UpdateBudgetPropBudget as UpdateBudgetPropBudget
-    from .group_0192 import (
+    from .group_0190 import GetBudget as GetBudget
+    from .group_0190 import GetBudgetPropBudgetAlerting as GetBudgetPropBudgetAlerting
+    from .group_0191 import UpdateBudget as UpdateBudget
+    from .group_0191 import UpdateBudgetPropBudget as UpdateBudgetPropBudget
+    from .group_0191 import (
         UpdateBudgetPropBudgetPropBudgetAlerting as UpdateBudgetPropBudgetPropBudgetAlerting,
     )
-    from .group_0193 import DeleteBudget as DeleteBudget
-    from .group_0194 import GetAllCostCenters as GetAllCostCenters
-    from .group_0194 import (
+    from .group_0192 import DeleteBudget as DeleteBudget
+    from .group_0193 import GetAllCostCenters as GetAllCostCenters
+    from .group_0193 import (
         GetAllCostCentersPropCostCentersItems as GetAllCostCentersPropCostCentersItems,
     )
-    from .group_0194 import (
+    from .group_0193 import (
         GetAllCostCentersPropCostCentersItemsPropResourcesItems as GetAllCostCentersPropCostCentersItemsPropResourcesItems,
     )
-    from .group_0195 import GetCostCenter as GetCostCenter
-    from .group_0195 import (
+    from .group_0194 import GetCostCenter as GetCostCenter
+    from .group_0194 import (
         GetCostCenterPropResourcesItems as GetCostCenterPropResourcesItems,
     )
-    from .group_0196 import UpdateCostCenter as UpdateCostCenter
-    from .group_0196 import (
+    from .group_0195 import UpdateCostCenter as UpdateCostCenter
+    from .group_0195 import (
         UpdateCostCenterPropResourcesItems as UpdateCostCenterPropResourcesItems,
     )
-    from .group_0197 import DeleteCostCenter as DeleteCostCenter
-    from .group_0198 import (
+    from .group_0196 import DeleteCostCenter as DeleteCostCenter
+    from .group_0197 import (
         BillingPremiumRequestUsageReportGhe as BillingPremiumRequestUsageReportGhe,
     )
-    from .group_0198 import (
+    from .group_0197 import (
         BillingPremiumRequestUsageReportGhePropCostCenter as BillingPremiumRequestUsageReportGhePropCostCenter,
     )
-    from .group_0198 import (
+    from .group_0197 import (
         BillingPremiumRequestUsageReportGhePropTimePeriod as BillingPremiumRequestUsageReportGhePropTimePeriod,
     )
-    from .group_0198 import (
+    from .group_0197 import (
         BillingPremiumRequestUsageReportGhePropUsageItemsItems as BillingPremiumRequestUsageReportGhePropUsageItemsItems,
     )
-    from .group_0199 import UsageReportExport as UsageReportExport
-    from .group_0199 import UsageReportExportList as UsageReportExportList
-    from .group_0200 import UsageReportExportRequest as UsageReportExportRequest
-    from .group_0201 import BillingUsageReport as BillingUsageReport
-    from .group_0201 import (
+    from .group_0198 import UsageReportExport as UsageReportExport
+    from .group_0198 import UsageReportExportList as UsageReportExportList
+    from .group_0199 import UsageReportExportRequest as UsageReportExportRequest
+    from .group_0200 import BillingUsageReport as BillingUsageReport
+    from .group_0200 import (
         BillingUsageReportPropUsageItemsItems as BillingUsageReportPropUsageItemsItems,
     )
-    from .group_0202 import BillingUsageSummaryReportGhe as BillingUsageSummaryReportGhe
-    from .group_0202 import (
+    from .group_0201 import BillingUsageSummaryReportGhe as BillingUsageSummaryReportGhe
+    from .group_0201 import (
         BillingUsageSummaryReportGhePropCostCenter as BillingUsageSummaryReportGhePropCostCenter,
     )
-    from .group_0202 import (
+    from .group_0201 import (
         BillingUsageSummaryReportGhePropTimePeriod as BillingUsageSummaryReportGhePropTimePeriod,
     )
-    from .group_0202 import (
+    from .group_0201 import (
         BillingUsageSummaryReportGhePropUsageItemsItems as BillingUsageSummaryReportGhePropUsageItemsItems,
     )
-    from .group_0203 import Label as Label
-    from .group_0204 import Discussion as Discussion
-    from .group_0204 import DiscussionPropAnswerChosenBy as DiscussionPropAnswerChosenBy
-    from .group_0204 import DiscussionPropCategory as DiscussionPropCategory
-    from .group_0204 import DiscussionPropReactions as DiscussionPropReactions
-    from .group_0204 import DiscussionPropUser as DiscussionPropUser
-    from .group_0205 import Milestone as Milestone
-    from .group_0206 import IssueType as IssueType
-    from .group_0207 import ReactionRollup as ReactionRollup
-    from .group_0208 import IssueDependenciesSummary as IssueDependenciesSummary
-    from .group_0208 import SubIssuesSummary as SubIssuesSummary
-    from .group_0209 import PinnedIssueComment as PinnedIssueComment
-    from .group_0210 import IssueComment as IssueComment
-    from .group_0211 import IssueFieldValue as IssueFieldValue
-    from .group_0211 import (
+    from .group_0202 import Label as Label
+    from .group_0203 import Discussion as Discussion
+    from .group_0203 import DiscussionPropAnswerChosenBy as DiscussionPropAnswerChosenBy
+    from .group_0203 import DiscussionPropCategory as DiscussionPropCategory
+    from .group_0203 import DiscussionPropReactions as DiscussionPropReactions
+    from .group_0203 import DiscussionPropUser as DiscussionPropUser
+    from .group_0204 import Milestone as Milestone
+    from .group_0205 import IssueType as IssueType
+    from .group_0206 import ReactionRollup as ReactionRollup
+    from .group_0207 import IssueDependenciesSummary as IssueDependenciesSummary
+    from .group_0207 import SubIssuesSummary as SubIssuesSummary
+    from .group_0208 import PinnedIssueComment as PinnedIssueComment
+    from .group_0209 import IssueComment as IssueComment
+    from .group_0210 import IssueFieldValue as IssueFieldValue
+    from .group_0210 import (
         IssueFieldValuePropMultiSelectOptionsItems as IssueFieldValuePropMultiSelectOptionsItems,
     )
-    from .group_0211 import (
+    from .group_0210 import (
         IssueFieldValuePropSingleSelectOption as IssueFieldValuePropSingleSelectOption,
     )
-    from .group_0212 import Issue as Issue
-    from .group_0212 import IssuePropLabelsItemsOneof1 as IssuePropLabelsItemsOneof1
-    from .group_0212 import IssuePropPullRequest as IssuePropPullRequest
-    from .group_0213 import PullRequestMinimal as PullRequestMinimal
-    from .group_0213 import PullRequestMinimalPropBase as PullRequestMinimalPropBase
-    from .group_0213 import (
+    from .group_0211 import Issue as Issue
+    from .group_0211 import IssuePropLabelsItemsOneof1 as IssuePropLabelsItemsOneof1
+    from .group_0211 import IssuePropPullRequest as IssuePropPullRequest
+    from .group_0212 import PullRequestMinimal as PullRequestMinimal
+    from .group_0212 import PullRequestMinimalPropBase as PullRequestMinimalPropBase
+    from .group_0212 import (
         PullRequestMinimalPropBasePropRepo as PullRequestMinimalPropBasePropRepo,
     )
-    from .group_0213 import PullRequestMinimalPropHead as PullRequestMinimalPropHead
-    from .group_0213 import (
+    from .group_0212 import PullRequestMinimalPropHead as PullRequestMinimalPropHead
+    from .group_0212 import (
         PullRequestMinimalPropHeadPropRepo as PullRequestMinimalPropHeadPropRepo,
     )
-    from .group_0214 import ReleaseAsset as ReleaseAsset
-    from .group_0215 import Release as Release
-    from .group_0216 import Actor as Actor
-    from .group_0216 import CreateEvent as CreateEvent
-    from .group_0216 import DeleteEvent as DeleteEvent
-    from .group_0216 import Event as Event
-    from .group_0216 import EventPropRepo as EventPropRepo
-    from .group_0216 import GollumEvent as GollumEvent
-    from .group_0216 import GollumEventPropPagesItems as GollumEventPropPagesItems
-    from .group_0216 import PublicEvent as PublicEvent
-    from .group_0216 import PushEvent as PushEvent
-    from .group_0216 import WatchEvent as WatchEvent
-    from .group_0217 import DiscussionEvent as DiscussionEvent
-    from .group_0218 import IssuesEvent as IssuesEvent
-    from .group_0219 import IssueCommentEvent as IssueCommentEvent
-    from .group_0220 import ForkEvent as ForkEvent
-    from .group_0221 import ForkEventPropForkee as ForkEventPropForkee
-    from .group_0222 import MemberEvent as MemberEvent
-    from .group_0223 import PullRequestEvent as PullRequestEvent
-    from .group_0224 import (
+    from .group_0213 import ReleaseAsset as ReleaseAsset
+    from .group_0214 import Release as Release
+    from .group_0215 import Actor as Actor
+    from .group_0215 import CreateEvent as CreateEvent
+    from .group_0215 import DeleteEvent as DeleteEvent
+    from .group_0215 import Event as Event
+    from .group_0215 import EventPropRepo as EventPropRepo
+    from .group_0215 import GollumEvent as GollumEvent
+    from .group_0215 import GollumEventPropPagesItems as GollumEventPropPagesItems
+    from .group_0215 import PublicEvent as PublicEvent
+    from .group_0215 import PushEvent as PushEvent
+    from .group_0215 import WatchEvent as WatchEvent
+    from .group_0216 import DiscussionEvent as DiscussionEvent
+    from .group_0217 import IssuesEvent as IssuesEvent
+    from .group_0218 import IssueCommentEvent as IssueCommentEvent
+    from .group_0219 import ForkEvent as ForkEvent
+    from .group_0220 import ForkEventPropForkee as ForkEventPropForkee
+    from .group_0221 import MemberEvent as MemberEvent
+    from .group_0222 import PullRequestEvent as PullRequestEvent
+    from .group_0223 import (
         PullRequestReviewCommentEvent as PullRequestReviewCommentEvent,
     )
-    from .group_0224 import (
+    from .group_0223 import (
         PullRequestReviewCommentEventPropComment as PullRequestReviewCommentEventPropComment,
     )
-    from .group_0224 import (
+    from .group_0223 import (
         PullRequestReviewCommentEventPropCommentPropLinks as PullRequestReviewCommentEventPropCommentPropLinks,
     )
-    from .group_0224 import (
+    from .group_0223 import (
         PullRequestReviewCommentEventPropCommentPropLinksPropHtml as PullRequestReviewCommentEventPropCommentPropLinksPropHtml,
     )
-    from .group_0224 import (
+    from .group_0223 import (
         PullRequestReviewCommentEventPropCommentPropLinksPropPullRequest as PullRequestReviewCommentEventPropCommentPropLinksPropPullRequest,
     )
-    from .group_0224 import (
+    from .group_0223 import (
         PullRequestReviewCommentEventPropCommentPropLinksPropSelf as PullRequestReviewCommentEventPropCommentPropLinksPropSelf,
     )
-    from .group_0224 import (
+    from .group_0223 import (
         PullRequestReviewCommentEventPropCommentPropReactions as PullRequestReviewCommentEventPropCommentPropReactions,
     )
-    from .group_0224 import (
+    from .group_0223 import (
         PullRequestReviewCommentEventPropCommentPropUser as PullRequestReviewCommentEventPropCommentPropUser,
     )
-    from .group_0225 import PullRequestReviewEvent as PullRequestReviewEvent
-    from .group_0226 import (
+    from .group_0224 import PullRequestReviewEvent as PullRequestReviewEvent
+    from .group_0225 import (
         PullRequestReviewEventPropReview as PullRequestReviewEventPropReview,
     )
-    from .group_0226 import (
+    from .group_0225 import (
         PullRequestReviewEventPropReviewPropLinks as PullRequestReviewEventPropReviewPropLinks,
     )
-    from .group_0226 import (
+    from .group_0225 import (
         PullRequestReviewEventPropReviewPropLinksPropHtml as PullRequestReviewEventPropReviewPropLinksPropHtml,
     )
-    from .group_0226 import (
+    from .group_0225 import (
         PullRequestReviewEventPropReviewPropLinksPropPullRequest as PullRequestReviewEventPropReviewPropLinksPropPullRequest,
     )
-    from .group_0227 import CommitCommentEvent as CommitCommentEvent
-    from .group_0228 import (
+    from .group_0226 import CommitCommentEvent as CommitCommentEvent
+    from .group_0227 import (
         CommitCommentEventPropComment as CommitCommentEventPropComment,
     )
-    from .group_0229 import ReleaseEvent as ReleaseEvent
-    from .group_0230 import ReleaseEventPropRelease as ReleaseEventPropRelease
-    from .group_0231 import (
+    from .group_0228 import ReleaseEvent as ReleaseEvent
+    from .group_0229 import ReleaseEventPropRelease as ReleaseEventPropRelease
+    from .group_0230 import (
         ReleaseEventPropReleaseAllof1 as ReleaseEventPropReleaseAllof1,
     )
-    from .group_0232 import Feed as Feed
-    from .group_0232 import FeedPropLinks as FeedPropLinks
-    from .group_0232 import LinkWithType as LinkWithType
-    from .group_0233 import BaseGist as BaseGist
-    from .group_0233 import BaseGistPropFiles as BaseGistPropFiles
-    from .group_0234 import GistHistory as GistHistory
-    from .group_0234 import GistHistoryPropChangeStatus as GistHistoryPropChangeStatus
-    from .group_0234 import GistSimplePropForkOf as GistSimplePropForkOf
-    from .group_0234 import (
+    from .group_0231 import Feed as Feed
+    from .group_0231 import FeedPropLinks as FeedPropLinks
+    from .group_0231 import LinkWithType as LinkWithType
+    from .group_0232 import BaseGist as BaseGist
+    from .group_0232 import BaseGistPropFiles as BaseGistPropFiles
+    from .group_0233 import GistHistory as GistHistory
+    from .group_0233 import GistHistoryPropChangeStatus as GistHistoryPropChangeStatus
+    from .group_0233 import GistSimplePropForkOf as GistSimplePropForkOf
+    from .group_0233 import (
         GistSimplePropForkOfPropFiles as GistSimplePropForkOfPropFiles,
     )
-    from .group_0235 import GistSimple as GistSimple
-    from .group_0235 import GistSimplePropFiles as GistSimplePropFiles
-    from .group_0235 import GistSimplePropForksItems as GistSimplePropForksItems
-    from .group_0235 import PublicUser as PublicUser
-    from .group_0235 import PublicUserPropPlan as PublicUserPropPlan
-    from .group_0236 import GistComment as GistComment
-    from .group_0237 import GistCommit as GistCommit
-    from .group_0237 import GistCommitPropChangeStatus as GistCommitPropChangeStatus
-    from .group_0238 import GitignoreTemplate as GitignoreTemplate
-    from .group_0239 import License as License
-    from .group_0240 import MarketplaceListingPlan as MarketplaceListingPlan
-    from .group_0241 import MarketplacePurchase as MarketplacePurchase
-    from .group_0242 import (
+    from .group_0234 import GistSimple as GistSimple
+    from .group_0234 import GistSimplePropFiles as GistSimplePropFiles
+    from .group_0234 import GistSimplePropForksItems as GistSimplePropForksItems
+    from .group_0234 import PublicUser as PublicUser
+    from .group_0234 import PublicUserPropPlan as PublicUserPropPlan
+    from .group_0235 import GistComment as GistComment
+    from .group_0236 import GistCommit as GistCommit
+    from .group_0236 import GistCommitPropChangeStatus as GistCommitPropChangeStatus
+    from .group_0237 import GitignoreTemplate as GitignoreTemplate
+    from .group_0238 import License as License
+    from .group_0239 import MarketplaceListingPlan as MarketplaceListingPlan
+    from .group_0240 import MarketplacePurchase as MarketplacePurchase
+    from .group_0241 import (
         MarketplacePurchasePropMarketplacePendingChange as MarketplacePurchasePropMarketplacePendingChange,
     )
-    from .group_0242 import (
+    from .group_0241 import (
         MarketplacePurchasePropMarketplacePurchase as MarketplacePurchasePropMarketplacePurchase,
     )
-    from .group_0243 import ApiOverview as ApiOverview
-    from .group_0243 import ApiOverviewPropDomains as ApiOverviewPropDomains
-    from .group_0243 import (
+    from .group_0242 import ApiOverview as ApiOverview
+    from .group_0242 import ApiOverviewPropDomains as ApiOverviewPropDomains
+    from .group_0242 import (
         ApiOverviewPropDomainsPropActionsInbound as ApiOverviewPropDomainsPropActionsInbound,
     )
-    from .group_0243 import (
+    from .group_0242 import (
         ApiOverviewPropDomainsPropArtifactAttestations as ApiOverviewPropDomainsPropArtifactAttestations,
     )
-    from .group_0243 import (
+    from .group_0242 import (
         ApiOverviewPropSshKeyFingerprints as ApiOverviewPropSshKeyFingerprints,
     )
-    from .group_0244 import SecurityAndAnalysis as SecurityAndAnalysis
-    from .group_0244 import (
+    from .group_0243 import SecurityAndAnalysis as SecurityAndAnalysis
+    from .group_0243 import (
         SecurityAndAnalysisPropAdvancedSecurity as SecurityAndAnalysisPropAdvancedSecurity,
     )
-    from .group_0244 import (
+    from .group_0243 import (
         SecurityAndAnalysisPropCodeSecurity as SecurityAndAnalysisPropCodeSecurity,
     )
-    from .group_0244 import (
+    from .group_0243 import (
         SecurityAndAnalysisPropDependabotSecurityUpdates as SecurityAndAnalysisPropDependabotSecurityUpdates,
     )
-    from .group_0244 import (
+    from .group_0243 import (
         SecurityAndAnalysisPropSecretScanning as SecurityAndAnalysisPropSecretScanning,
     )
-    from .group_0244 import (
+    from .group_0243 import (
         SecurityAndAnalysisPropSecretScanningAiDetection as SecurityAndAnalysisPropSecretScanningAiDetection,
     )
-    from .group_0244 import (
+    from .group_0243 import (
         SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissal as SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissal,
     )
-    from .group_0244 import (
+    from .group_0243 import (
         SecurityAndAnalysisPropSecretScanningDelegatedBypass as SecurityAndAnalysisPropSecretScanningDelegatedBypass,
     )
-    from .group_0244 import (
+    from .group_0243 import (
         SecurityAndAnalysisPropSecretScanningDelegatedBypassOptions as SecurityAndAnalysisPropSecretScanningDelegatedBypassOptions,
     )
-    from .group_0244 import (
+    from .group_0243 import (
         SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItems as SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItems,
     )
-    from .group_0244 import (
+    from .group_0243 import (
         SecurityAndAnalysisPropSecretScanningNonProviderPatterns as SecurityAndAnalysisPropSecretScanningNonProviderPatterns,
     )
-    from .group_0244 import (
+    from .group_0243 import (
         SecurityAndAnalysisPropSecretScanningPushProtection as SecurityAndAnalysisPropSecretScanningPushProtection,
     )
-    from .group_0244 import (
+    from .group_0243 import (
         SecurityAndAnalysisPropSecretScanningValidityChecks as SecurityAndAnalysisPropSecretScanningValidityChecks,
     )
-    from .group_0245 import CodeOfConduct as CodeOfConduct
-    from .group_0245 import MinimalRepository as MinimalRepository
-    from .group_0245 import (
+    from .group_0244 import CodeOfConduct as CodeOfConduct
+    from .group_0244 import MinimalRepository as MinimalRepository
+    from .group_0244 import (
         MinimalRepositoryPropCustomProperties as MinimalRepositoryPropCustomProperties,
     )
-    from .group_0245 import MinimalRepositoryPropLicense as MinimalRepositoryPropLicense
-    from .group_0245 import (
+    from .group_0244 import MinimalRepositoryPropLicense as MinimalRepositoryPropLicense
+    from .group_0244 import (
         MinimalRepositoryPropPermissions as MinimalRepositoryPropPermissions,
     )
-    from .group_0246 import Thread as Thread
-    from .group_0246 import ThreadPropSubject as ThreadPropSubject
-    from .group_0247 import ThreadSubscription as ThreadSubscription
-    from .group_0248 import (
+    from .group_0245 import Thread as Thread
+    from .group_0245 import ThreadPropSubject as ThreadPropSubject
+    from .group_0246 import ThreadSubscription as ThreadSubscription
+    from .group_0247 import (
         OrganizationCustomRepositoryRole as OrganizationCustomRepositoryRole,
     )
-    from .group_0249 import (
+    from .group_0248 import (
         ActionsCacheRetentionLimitForOrganization as ActionsCacheRetentionLimitForOrganization,
     )
-    from .group_0250 import (
+    from .group_0249 import (
         ActionsCacheStorageLimitForOrganization as ActionsCacheStorageLimitForOrganization,
     )
-    from .group_0251 import OrganizationFull as OrganizationFull
-    from .group_0251 import OrganizationFullPropPlan as OrganizationFullPropPlan
-    from .group_0252 import OidcCustomSub as OidcCustomSub
-    from .group_0253 import (
+    from .group_0250 import OrganizationFull as OrganizationFull
+    from .group_0250 import OrganizationFullPropPlan as OrganizationFullPropPlan
+    from .group_0251 import OidcCustomSub as OidcCustomSub
+    from .group_0252 import (
         ActionsOrganizationPermissions as ActionsOrganizationPermissions,
     )
-    from .group_0254 import SelfHostedRunnersSettings as SelfHostedRunnersSettings
-    from .group_0255 import OrganizationActionsSecret as OrganizationActionsSecret
-    from .group_0256 import ActionsPublicKey as ActionsPublicKey
-    from .group_0257 import OrganizationActionsVariable as OrganizationActionsVariable
-    from .group_0258 import ArtifactDeploymentRecord as ArtifactDeploymentRecord
-    from .group_0258 import (
+    from .group_0253 import SelfHostedRunnersSettings as SelfHostedRunnersSettings
+    from .group_0254 import OrganizationActionsSecret as OrganizationActionsSecret
+    from .group_0255 import ActionsPublicKey as ActionsPublicKey
+    from .group_0256 import OrganizationActionsVariable as OrganizationActionsVariable
+    from .group_0257 import ArtifactDeploymentRecord as ArtifactDeploymentRecord
+    from .group_0257 import (
         ArtifactDeploymentRecordPropTags as ArtifactDeploymentRecordPropTags,
     )
-    from .group_0259 import CampaignSummary as CampaignSummary
-    from .group_0259 import (
+    from .group_0258 import CampaignSummary as CampaignSummary
+    from .group_0258 import (
         CampaignSummaryPropAlertStats as CampaignSummaryPropAlertStats,
     )
-    from .group_0260 import CodespaceMachine as CodespaceMachine
-    from .group_0261 import Codespace as Codespace
-    from .group_0261 import CodespacePropGitStatus as CodespacePropGitStatus
-    from .group_0261 import (
+    from .group_0259 import CodespaceMachine as CodespaceMachine
+    from .group_0260 import Codespace as Codespace
+    from .group_0260 import CodespacePropGitStatus as CodespacePropGitStatus
+    from .group_0260 import (
         CodespacePropRuntimeConstraints as CodespacePropRuntimeConstraints,
     )
-    from .group_0262 import CodespacesPublicKey as CodespacesPublicKey
-    from .group_0263 import CopilotSpace as CopilotSpace
-    from .group_0263 import (
+    from .group_0261 import CodespacesPublicKey as CodespacesPublicKey
+    from .group_0262 import CopilotSpace as CopilotSpace
+    from .group_0262 import (
         CopilotSpacePropResourcesAttributesItems as CopilotSpacePropResourcesAttributesItems,
     )
-    from .group_0263 import (
+    from .group_0262 import (
         CopilotSpacePropResourcesAttributesItemsPropMetadata as CopilotSpacePropResourcesAttributesItemsPropMetadata,
     )
-    from .group_0264 import (
+    from .group_0263 import (
         CopilotSpaceCollaboratorAnyof0 as CopilotSpaceCollaboratorAnyof0,
     )
-    from .group_0264 import (
+    from .group_0263 import (
         CopilotSpaceCollaboratorAnyof1 as CopilotSpaceCollaboratorAnyof1,
     )
-    from .group_0265 import (
+    from .group_0264 import (
         CopilotSpaceCollaboratorAnyof0Allof1 as CopilotSpaceCollaboratorAnyof0Allof1,
     )
-    from .group_0266 import CopilotSpaceResource as CopilotSpaceResource
-    from .group_0266 import (
+    from .group_0265 import CopilotSpaceResource as CopilotSpaceResource
+    from .group_0265 import (
         CopilotSpaceResourcePropMetadata as CopilotSpaceResourcePropMetadata,
     )
-    from .group_0267 import CopilotOrganizationDetails as CopilotOrganizationDetails
-    from .group_0267 import (
+    from .group_0266 import CopilotOrganizationDetails as CopilotOrganizationDetails
+    from .group_0266 import (
         CopilotOrganizationSeatBreakdown as CopilotOrganizationSeatBreakdown,
     )
-    from .group_0268 import (
+    from .group_0267 import (
         CopilotOrganizationContentExclusionDetails as CopilotOrganizationContentExclusionDetails,
     )
-    from .group_0269 import CredentialAuthorization as CredentialAuthorization
-    from .group_0270 import (
+    from .group_0268 import CredentialAuthorization as CredentialAuthorization
+    from .group_0269 import (
         OrganizationCustomRepositoryRoleCreateSchema as OrganizationCustomRepositoryRoleCreateSchema,
     )
-    from .group_0271 import (
+    from .group_0270 import (
         OrganizationCustomRepositoryRoleUpdateSchema as OrganizationCustomRepositoryRoleUpdateSchema,
     )
-    from .group_0272 import DependabotPublicKey as DependabotPublicKey
-    from .group_0273 import DismissalRequestResponse as DismissalRequestResponse
-    from .group_0273 import (
+    from .group_0271 import DependabotPublicKey as DependabotPublicKey
+    from .group_0272 import DismissalRequestResponse as DismissalRequestResponse
+    from .group_0272 import (
         DismissalRequestResponsePropReviewer as DismissalRequestResponsePropReviewer,
     )
-    from .group_0274 import (
+    from .group_0273 import (
         CodeScanningAlertDismissalRequest as CodeScanningAlertDismissalRequest,
     )
-    from .group_0274 import (
+    from .group_0273 import (
         CodeScanningAlertDismissalRequestPropDataItems as CodeScanningAlertDismissalRequestPropDataItems,
     )
-    from .group_0274 import (
+    from .group_0273 import (
         CodeScanningAlertDismissalRequestPropOrganization as CodeScanningAlertDismissalRequestPropOrganization,
     )
-    from .group_0274 import (
+    from .group_0273 import (
         CodeScanningAlertDismissalRequestPropRepository as CodeScanningAlertDismissalRequestPropRepository,
     )
-    from .group_0274 import (
+    from .group_0273 import (
         CodeScanningAlertDismissalRequestPropRequester as CodeScanningAlertDismissalRequestPropRequester,
     )
-    from .group_0275 import (
+    from .group_0274 import (
         DependabotAlertDismissalRequest as DependabotAlertDismissalRequest,
     )
-    from .group_0275 import (
+    from .group_0274 import (
         DependabotAlertDismissalRequestPropDataItems as DependabotAlertDismissalRequestPropDataItems,
     )
-    from .group_0275 import (
+    from .group_0274 import (
         DependabotAlertDismissalRequestPropOrganization as DependabotAlertDismissalRequestPropOrganization,
     )
-    from .group_0275 import (
+    from .group_0274 import (
         DependabotAlertDismissalRequestPropRepository as DependabotAlertDismissalRequestPropRepository,
     )
-    from .group_0275 import (
+    from .group_0274 import (
         DependabotAlertDismissalRequestPropRequester as DependabotAlertDismissalRequestPropRequester,
     )
-    from .group_0276 import Package as Package
-    from .group_0277 import ExternalGroup as ExternalGroup
-    from .group_0277 import (
+    from .group_0275 import Package as Package
+    from .group_0276 import ExternalGroup as ExternalGroup
+    from .group_0276 import (
         ExternalGroupPropMembersItems as ExternalGroupPropMembersItems,
     )
-    from .group_0277 import ExternalGroupPropTeamsItems as ExternalGroupPropTeamsItems
-    from .group_0278 import ExternalGroups as ExternalGroups
-    from .group_0278 import (
+    from .group_0276 import ExternalGroupPropTeamsItems as ExternalGroupPropTeamsItems
+    from .group_0277 import ExternalGroups as ExternalGroups
+    from .group_0277 import (
         ExternalGroupsPropGroupsItems as ExternalGroupsPropGroupsItems,
     )
-    from .group_0279 import OrganizationInvitation as OrganizationInvitation
-    from .group_0280 import (
+    from .group_0278 import OrganizationInvitation as OrganizationInvitation
+    from .group_0279 import (
         RepositoryFineGrainedPermission as RepositoryFineGrainedPermission,
     )
-    from .group_0281 import OrgHook as OrgHook
-    from .group_0281 import OrgHookPropConfig as OrgHookPropConfig
-    from .group_0282 import ApiInsightsRouteStatsItems as ApiInsightsRouteStatsItems
-    from .group_0283 import ApiInsightsSubjectStatsItems as ApiInsightsSubjectStatsItems
-    from .group_0284 import ApiInsightsSummaryStats as ApiInsightsSummaryStats
-    from .group_0285 import ApiInsightsTimeStatsItems as ApiInsightsTimeStatsItems
-    from .group_0286 import ApiInsightsUserStatsItems as ApiInsightsUserStatsItems
-    from .group_0287 import InteractionLimitResponse as InteractionLimitResponse
-    from .group_0288 import InteractionLimit as InteractionLimit
-    from .group_0289 import IssueField as IssueField
-    from .group_0289 import IssueFieldPropOptionsItems as IssueFieldPropOptionsItems
-    from .group_0290 import OrganizationCreateIssueField as OrganizationCreateIssueField
-    from .group_0290 import (
+    from .group_0280 import OrgHook as OrgHook
+    from .group_0280 import OrgHookPropConfig as OrgHookPropConfig
+    from .group_0281 import ApiInsightsRouteStatsItems as ApiInsightsRouteStatsItems
+    from .group_0282 import ApiInsightsSubjectStatsItems as ApiInsightsSubjectStatsItems
+    from .group_0283 import ApiInsightsSummaryStats as ApiInsightsSummaryStats
+    from .group_0284 import ApiInsightsTimeStatsItems as ApiInsightsTimeStatsItems
+    from .group_0285 import ApiInsightsUserStatsItems as ApiInsightsUserStatsItems
+    from .group_0286 import InteractionLimitResponse as InteractionLimitResponse
+    from .group_0287 import InteractionLimit as InteractionLimit
+    from .group_0288 import IssueField as IssueField
+    from .group_0288 import IssueFieldPropOptionsItems as IssueFieldPropOptionsItems
+    from .group_0289 import OrganizationCreateIssueField as OrganizationCreateIssueField
+    from .group_0289 import (
         OrganizationCreateIssueFieldPropOptionsItems as OrganizationCreateIssueFieldPropOptionsItems,
     )
-    from .group_0291 import OrganizationUpdateIssueField as OrganizationUpdateIssueField
-    from .group_0291 import (
+    from .group_0290 import OrganizationUpdateIssueField as OrganizationUpdateIssueField
+    from .group_0290 import (
         OrganizationUpdateIssueFieldPropOptionsItems as OrganizationUpdateIssueFieldPropOptionsItems,
     )
-    from .group_0292 import OrganizationCreateIssueType as OrganizationCreateIssueType
-    from .group_0293 import OrganizationUpdateIssueType as OrganizationUpdateIssueType
-    from .group_0294 import OrgMembership as OrgMembership
-    from .group_0294 import OrgMembershipPropPermissions as OrgMembershipPropPermissions
-    from .group_0295 import Migration as Migration
-    from .group_0296 import (
+    from .group_0291 import OrganizationCreateIssueType as OrganizationCreateIssueType
+    from .group_0292 import OrganizationUpdateIssueType as OrganizationUpdateIssueType
+    from .group_0293 import OrgMembership as OrgMembership
+    from .group_0293 import OrgMembershipPropPermissions as OrgMembershipPropPermissions
+    from .group_0294 import Migration as Migration
+    from .group_0295 import (
         OrganizationFineGrainedPermission as OrganizationFineGrainedPermission,
     )
-    from .group_0297 import OrganizationRole as OrganizationRole
-    from .group_0297 import (
+    from .group_0296 import OrganizationRole as OrganizationRole
+    from .group_0296 import (
         OrgsOrgOrganizationRolesGetResponse200 as OrgsOrgOrganizationRolesGetResponse200,
     )
-    from .group_0298 import (
+    from .group_0297 import (
         OrganizationCustomOrganizationRoleCreateSchema as OrganizationCustomOrganizationRoleCreateSchema,
     )
-    from .group_0299 import (
+    from .group_0298 import (
         OrganizationCustomOrganizationRoleUpdateSchema as OrganizationCustomOrganizationRoleUpdateSchema,
     )
-    from .group_0300 import TeamRoleAssignment as TeamRoleAssignment
-    from .group_0300 import (
+    from .group_0299 import TeamRoleAssignment as TeamRoleAssignment
+    from .group_0299 import (
         TeamRoleAssignmentPropPermissions as TeamRoleAssignmentPropPermissions,
     )
-    from .group_0301 import UserRoleAssignment as UserRoleAssignment
-    from .group_0302 import PackageVersion as PackageVersion
-    from .group_0302 import PackageVersionPropMetadata as PackageVersionPropMetadata
-    from .group_0302 import (
+    from .group_0300 import UserRoleAssignment as UserRoleAssignment
+    from .group_0301 import PackageVersion as PackageVersion
+    from .group_0301 import PackageVersionPropMetadata as PackageVersionPropMetadata
+    from .group_0301 import (
         PackageVersionPropMetadataPropContainer as PackageVersionPropMetadataPropContainer,
     )
-    from .group_0302 import (
+    from .group_0301 import (
         PackageVersionPropMetadataPropDocker as PackageVersionPropMetadataPropDocker,
     )
-    from .group_0303 import (
+    from .group_0302 import (
         OrganizationProgrammaticAccessGrantRequest as OrganizationProgrammaticAccessGrantRequest,
     )
-    from .group_0303 import (
+    from .group_0302 import (
         OrganizationProgrammaticAccessGrantRequestPropPermissions as OrganizationProgrammaticAccessGrantRequestPropPermissions,
     )
-    from .group_0303 import (
+    from .group_0302 import (
         OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization as OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization,
     )
-    from .group_0303 import (
+    from .group_0302 import (
         OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther as OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther,
     )
-    from .group_0303 import (
+    from .group_0302 import (
         OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository as OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository,
     )
-    from .group_0304 import (
+    from .group_0303 import (
         OrganizationProgrammaticAccessGrant as OrganizationProgrammaticAccessGrant,
     )
-    from .group_0304 import (
+    from .group_0303 import (
         OrganizationProgrammaticAccessGrantPropPermissions as OrganizationProgrammaticAccessGrantPropPermissions,
     )
-    from .group_0304 import (
+    from .group_0303 import (
         OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization as OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization,
     )
-    from .group_0304 import (
+    from .group_0303 import (
         OrganizationProgrammaticAccessGrantPropPermissionsPropOther as OrganizationProgrammaticAccessGrantPropPermissionsPropOther,
     )
-    from .group_0304 import (
+    from .group_0303 import (
         OrganizationProgrammaticAccessGrantPropPermissionsPropRepository as OrganizationProgrammaticAccessGrantPropPermissionsPropRepository,
     )
-    from .group_0305 import (
+    from .group_0304 import (
         OrgPrivateRegistryConfigurationWithSelectedRepositories as OrgPrivateRegistryConfigurationWithSelectedRepositories,
     )
-    from .group_0306 import ProjectsV2StatusUpdate as ProjectsV2StatusUpdate
-    from .group_0307 import ProjectsV2 as ProjectsV2
-    from .group_0308 import Link as Link
-    from .group_0309 import AutoMerge as AutoMerge
-    from .group_0310 import PullRequestSimple as PullRequestSimple
-    from .group_0310 import (
+    from .group_0305 import ProjectsV2StatusUpdate as ProjectsV2StatusUpdate
+    from .group_0306 import ProjectsV2 as ProjectsV2
+    from .group_0307 import Link as Link
+    from .group_0308 import AutoMerge as AutoMerge
+    from .group_0309 import PullRequestSimple as PullRequestSimple
+    from .group_0309 import (
         PullRequestSimplePropLabelsItems as PullRequestSimplePropLabelsItems,
     )
-    from .group_0311 import PullRequestSimplePropBase as PullRequestSimplePropBase
-    from .group_0311 import PullRequestSimplePropHead as PullRequestSimplePropHead
-    from .group_0312 import PullRequestSimplePropLinks as PullRequestSimplePropLinks
-    from .group_0313 import ProjectsV2DraftIssue as ProjectsV2DraftIssue
-    from .group_0314 import ProjectsV2ItemSimple as ProjectsV2ItemSimple
-    from .group_0315 import ProjectsV2Field as ProjectsV2Field
-    from .group_0315 import (
+    from .group_0310 import PullRequestSimplePropBase as PullRequestSimplePropBase
+    from .group_0310 import PullRequestSimplePropHead as PullRequestSimplePropHead
+    from .group_0311 import PullRequestSimplePropLinks as PullRequestSimplePropLinks
+    from .group_0312 import ProjectsV2DraftIssue as ProjectsV2DraftIssue
+    from .group_0313 import ProjectsV2ItemSimple as ProjectsV2ItemSimple
+    from .group_0314 import ProjectsV2Field as ProjectsV2Field
+    from .group_0314 import (
         ProjectsV2FieldPropConfiguration as ProjectsV2FieldPropConfiguration,
     )
-    from .group_0315 import ProjectsV2IterationSettings as ProjectsV2IterationSettings
-    from .group_0315 import (
+    from .group_0314 import ProjectsV2IterationSettings as ProjectsV2IterationSettings
+    from .group_0314 import (
         ProjectsV2IterationSettingsPropTitle as ProjectsV2IterationSettingsPropTitle,
     )
-    from .group_0315 import (
+    from .group_0314 import (
         ProjectsV2SingleSelectOptions as ProjectsV2SingleSelectOptions,
     )
-    from .group_0315 import (
+    from .group_0314 import (
         ProjectsV2SingleSelectOptionsPropDescription as ProjectsV2SingleSelectOptionsPropDescription,
     )
-    from .group_0315 import (
+    from .group_0314 import (
         ProjectsV2SingleSelectOptionsPropName as ProjectsV2SingleSelectOptionsPropName,
     )
-    from .group_0316 import (
+    from .group_0315 import (
         ProjectsV2FieldSingleSelectOption as ProjectsV2FieldSingleSelectOption,
     )
-    from .group_0317 import (
+    from .group_0316 import (
         ProjectsV2FieldIterationConfiguration as ProjectsV2FieldIterationConfiguration,
     )
-    from .group_0317 import (
+    from .group_0316 import (
         ProjectsV2FieldIterationConfigurationPropIterationsItems as ProjectsV2FieldIterationConfigurationPropIterationsItems,
     )
-    from .group_0318 import ProjectsV2ItemWithContent as ProjectsV2ItemWithContent
-    from .group_0318 import (
+    from .group_0317 import ProjectsV2ItemWithContent as ProjectsV2ItemWithContent
+    from .group_0317 import (
         ProjectsV2ItemWithContentPropContent as ProjectsV2ItemWithContentPropContent,
     )
-    from .group_0318 import (
+    from .group_0317 import (
         ProjectsV2ItemWithContentPropFieldsItems as ProjectsV2ItemWithContentPropFieldsItems,
     )
-    from .group_0319 import ProjectsV2View as ProjectsV2View
-    from .group_0319 import ProjectsV2ViewPropCreator as ProjectsV2ViewPropCreator
-    from .group_0320 import OrgRepoCustomPropertyValues as OrgRepoCustomPropertyValues
-    from .group_0321 import CodeOfConductSimple as CodeOfConductSimple
-    from .group_0322 import FullRepository as FullRepository
-    from .group_0322 import (
+    from .group_0318 import ProjectsV2View as ProjectsV2View
+    from .group_0318 import ProjectsV2ViewPropCreator as ProjectsV2ViewPropCreator
+    from .group_0319 import OrgRepoCustomPropertyValues as OrgRepoCustomPropertyValues
+    from .group_0320 import CodeOfConductSimple as CodeOfConductSimple
+    from .group_0321 import FullRepository as FullRepository
+    from .group_0321 import (
         FullRepositoryPropCustomProperties as FullRepositoryPropCustomProperties,
     )
-    from .group_0322 import (
+    from .group_0321 import (
         FullRepositoryPropPermissions as FullRepositoryPropPermissions,
     )
-    from .group_0323 import RuleSuitesItems as RuleSuitesItems
-    from .group_0324 import RuleSuitePullRequest as RuleSuitePullRequest
-    from .group_0324 import (
+    from .group_0322 import RuleSuitesItems as RuleSuitesItems
+    from .group_0323 import RuleSuitePullRequest as RuleSuitePullRequest
+    from .group_0323 import (
         RuleSuitePullRequestPropPullRequest as RuleSuitePullRequestPropPullRequest,
     )
-    from .group_0324 import (
+    from .group_0323 import (
         RuleSuitePullRequestPropPullRequestPropReviewsItems as RuleSuitePullRequestPropPullRequestPropReviewsItems,
     )
-    from .group_0324 import (
+    from .group_0323 import (
         RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser as RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser,
     )
-    from .group_0324 import (
+    from .group_0323 import (
         RuleSuitePullRequestPropPullRequestPropUser as RuleSuitePullRequestPropPullRequestPropUser,
     )
-    from .group_0325 import (
+    from .group_0324 import (
         RuleSuiteRequiredStatusChecks as RuleSuiteRequiredStatusChecks,
     )
-    from .group_0325 import (
+    from .group_0324 import (
         RuleSuiteRequiredStatusChecksPropChecksItems as RuleSuiteRequiredStatusChecksPropChecksItems,
     )
-    from .group_0325 import (
+    from .group_0324 import (
         RuleSuiteRequiredStatusChecksPropChecksItemsPropApp as RuleSuiteRequiredStatusChecksPropChecksItemsPropApp,
     )
-    from .group_0326 import RuleSuite as RuleSuite
-    from .group_0326 import (
+    from .group_0325 import RuleSuite as RuleSuite
+    from .group_0325 import (
         RuleSuitePropRuleEvaluationsItems as RuleSuitePropRuleEvaluationsItems,
     )
-    from .group_0326 import (
+    from .group_0325 import (
         RuleSuitePropRuleEvaluationsItemsPropRuleSource as RuleSuitePropRuleEvaluationsItemsPropRuleSource,
     )
-    from .group_0327 import RepositoryAdvisoryCredit as RepositoryAdvisoryCredit
-    from .group_0328 import RepositoryAdvisory as RepositoryAdvisory
-    from .group_0328 import (
+    from .group_0326 import RepositoryAdvisoryCredit as RepositoryAdvisoryCredit
+    from .group_0327 import RepositoryAdvisory as RepositoryAdvisory
+    from .group_0327 import (
         RepositoryAdvisoryPropCreditsItems as RepositoryAdvisoryPropCreditsItems,
     )
-    from .group_0328 import RepositoryAdvisoryPropCvss as RepositoryAdvisoryPropCvss
-    from .group_0328 import (
+    from .group_0327 import RepositoryAdvisoryPropCvss as RepositoryAdvisoryPropCvss
+    from .group_0327 import (
         RepositoryAdvisoryPropCwesItems as RepositoryAdvisoryPropCwesItems,
     )
-    from .group_0328 import (
+    from .group_0327 import (
         RepositoryAdvisoryPropIdentifiersItems as RepositoryAdvisoryPropIdentifiersItems,
     )
-    from .group_0328 import (
+    from .group_0327 import (
         RepositoryAdvisoryPropSubmission as RepositoryAdvisoryPropSubmission,
     )
-    from .group_0328 import (
+    from .group_0327 import (
         RepositoryAdvisoryVulnerability as RepositoryAdvisoryVulnerability,
     )
-    from .group_0328 import (
+    from .group_0327 import (
         RepositoryAdvisoryVulnerabilityPropPackage as RepositoryAdvisoryVulnerabilityPropPackage,
     )
-    from .group_0329 import (
+    from .group_0328 import (
         ImmutableReleasesOrganizationSettings as ImmutableReleasesOrganizationSettings,
     )
-    from .group_0330 import GroupMapping as GroupMapping
-    from .group_0330 import GroupMappingPropGroupsItems as GroupMappingPropGroupsItems
-    from .group_0331 import TeamFull as TeamFull
-    from .group_0331 import TeamOrganization as TeamOrganization
-    from .group_0331 import TeamOrganizationPropPlan as TeamOrganizationPropPlan
-    from .group_0332 import TeamMembership as TeamMembership
-    from .group_0333 import TeamRepository as TeamRepository
-    from .group_0333 import (
+    from .group_0329 import GroupMapping as GroupMapping
+    from .group_0329 import GroupMappingPropGroupsItems as GroupMappingPropGroupsItems
+    from .group_0330 import TeamFull as TeamFull
+    from .group_0330 import TeamOrganization as TeamOrganization
+    from .group_0330 import TeamOrganizationPropPlan as TeamOrganizationPropPlan
+    from .group_0331 import TeamMembership as TeamMembership
+    from .group_0332 import TeamRepository as TeamRepository
+    from .group_0332 import (
         TeamRepositoryPropPermissions as TeamRepositoryPropPermissions,
     )
-    from .group_0334 import RateLimit as RateLimit
-    from .group_0335 import RateLimitOverview as RateLimitOverview
-    from .group_0336 import (
+    from .group_0333 import RateLimit as RateLimit
+    from .group_0334 import RateLimitOverview as RateLimitOverview
+    from .group_0335 import (
         RateLimitOverviewPropResources as RateLimitOverviewPropResources,
     )
-    from .group_0337 import Artifact as Artifact
-    from .group_0337 import ArtifactPropWorkflowRun as ArtifactPropWorkflowRun
-    from .group_0338 import (
+    from .group_0336 import Artifact as Artifact
+    from .group_0336 import ArtifactPropWorkflowRun as ArtifactPropWorkflowRun
+    from .group_0337 import (
         ActionsCacheRetentionLimitForRepository as ActionsCacheRetentionLimitForRepository,
     )
-    from .group_0339 import (
+    from .group_0338 import (
         ActionsCacheStorageLimitForRepository as ActionsCacheStorageLimitForRepository,
     )
-    from .group_0340 import ActionsCacheList as ActionsCacheList
-    from .group_0340 import (
+    from .group_0339 import ActionsCacheList as ActionsCacheList
+    from .group_0339 import (
         ActionsCacheListPropActionsCachesItems as ActionsCacheListPropActionsCachesItems,
     )
-    from .group_0341 import ConcurrencyGroupList as ConcurrencyGroupList
-    from .group_0341 import (
+    from .group_0340 import ConcurrencyGroupList as ConcurrencyGroupList
+    from .group_0340 import (
         ConcurrencyGroupListPropConcurrencyGroupsItems as ConcurrencyGroupListPropConcurrencyGroupsItems,
     )
-    from .group_0342 import ConcurrencyGroup as ConcurrencyGroup
-    from .group_0342 import (
+    from .group_0341 import ConcurrencyGroup as ConcurrencyGroup
+    from .group_0341 import (
         ConcurrencyGroupPropGroupMembersItems as ConcurrencyGroupPropGroupMembersItems,
     )
-    from .group_0343 import Job as Job
-    from .group_0343 import JobPropStepsItems as JobPropStepsItems
-    from .group_0344 import OidcCustomSubRepo as OidcCustomSubRepo
-    from .group_0345 import ActionsSecret as ActionsSecret
-    from .group_0346 import ActionsVariable as ActionsVariable
-    from .group_0347 import ActionsRepositoryPermissions as ActionsRepositoryPermissions
-    from .group_0348 import (
+    from .group_0342 import Job as Job
+    from .group_0342 import JobPropStepsItems as JobPropStepsItems
+    from .group_0343 import OidcCustomSubRepo as OidcCustomSubRepo
+    from .group_0344 import ActionsSecret as ActionsSecret
+    from .group_0345 import ActionsVariable as ActionsVariable
+    from .group_0346 import ActionsRepositoryPermissions as ActionsRepositoryPermissions
+    from .group_0347 import (
         ActionsWorkflowAccessToRepository as ActionsWorkflowAccessToRepository,
     )
-    from .group_0349 import SimpleCommit as SimpleCommit
-    from .group_0349 import SimpleCommitPropAuthor as SimpleCommitPropAuthor
-    from .group_0349 import SimpleCommitPropCommitter as SimpleCommitPropCommitter
-    from .group_0350 import ReferencedWorkflow as ReferencedWorkflow
-    from .group_0350 import WorkflowRun as WorkflowRun
-    from .group_0351 import EnvironmentApprovals as EnvironmentApprovals
-    from .group_0351 import (
+    from .group_0348 import SimpleCommit as SimpleCommit
+    from .group_0348 import SimpleCommitPropAuthor as SimpleCommitPropAuthor
+    from .group_0348 import SimpleCommitPropCommitter as SimpleCommitPropCommitter
+    from .group_0349 import ReferencedWorkflow as ReferencedWorkflow
+    from .group_0349 import WorkflowRun as WorkflowRun
+    from .group_0350 import EnvironmentApprovals as EnvironmentApprovals
+    from .group_0350 import (
         EnvironmentApprovalsPropEnvironmentsItems as EnvironmentApprovalsPropEnvironmentsItems,
     )
-    from .group_0352 import ConcurrencyGroupRunList as ConcurrencyGroupRunList
-    from .group_0352 import (
+    from .group_0351 import ConcurrencyGroupRunList as ConcurrencyGroupRunList
+    from .group_0351 import (
         ConcurrencyGroupRunListPropConcurrencyGroupsItems as ConcurrencyGroupRunListPropConcurrencyGroupsItems,
     )
-    from .group_0352 import (
+    from .group_0351 import (
         ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItems as ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItems,
     )
-    from .group_0353 import (
+    from .group_0352 import (
         ReviewCustomGatesCommentRequired as ReviewCustomGatesCommentRequired,
     )
-    from .group_0354 import (
+    from .group_0353 import (
         ReviewCustomGatesStateRequired as ReviewCustomGatesStateRequired,
     )
-    from .group_0355 import PendingDeployment as PendingDeployment
-    from .group_0355 import (
+    from .group_0354 import PendingDeployment as PendingDeployment
+    from .group_0354 import (
         PendingDeploymentPropEnvironment as PendingDeploymentPropEnvironment,
     )
-    from .group_0355 import (
+    from .group_0354 import (
         PendingDeploymentPropReviewersItems as PendingDeploymentPropReviewersItems,
     )
-    from .group_0356 import Deployment as Deployment
-    from .group_0356 import DeploymentPropPayloadOneof0 as DeploymentPropPayloadOneof0
-    from .group_0357 import WorkflowRunUsage as WorkflowRunUsage
-    from .group_0357 import WorkflowRunUsagePropBillable as WorkflowRunUsagePropBillable
-    from .group_0357 import (
+    from .group_0355 import Deployment as Deployment
+    from .group_0355 import DeploymentPropPayloadOneof0 as DeploymentPropPayloadOneof0
+    from .group_0356 import WorkflowRunUsage as WorkflowRunUsage
+    from .group_0356 import WorkflowRunUsagePropBillable as WorkflowRunUsagePropBillable
+    from .group_0356 import (
         WorkflowRunUsagePropBillablePropMacos as WorkflowRunUsagePropBillablePropMacos,
     )
-    from .group_0357 import (
+    from .group_0356 import (
         WorkflowRunUsagePropBillablePropMacosPropJobRunsItems as WorkflowRunUsagePropBillablePropMacosPropJobRunsItems,
     )
-    from .group_0357 import (
+    from .group_0356 import (
         WorkflowRunUsagePropBillablePropUbuntu as WorkflowRunUsagePropBillablePropUbuntu,
     )
-    from .group_0357 import (
+    from .group_0356 import (
         WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems as WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems,
     )
-    from .group_0357 import (
+    from .group_0356 import (
         WorkflowRunUsagePropBillablePropWindows as WorkflowRunUsagePropBillablePropWindows,
     )
-    from .group_0357 import (
+    from .group_0356 import (
         WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems as WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems,
     )
-    from .group_0358 import WorkflowDispatchResponse as WorkflowDispatchResponse
-    from .group_0359 import WorkflowUsage as WorkflowUsage
-    from .group_0359 import WorkflowUsagePropBillable as WorkflowUsagePropBillable
-    from .group_0359 import (
+    from .group_0357 import WorkflowDispatchResponse as WorkflowDispatchResponse
+    from .group_0358 import WorkflowUsage as WorkflowUsage
+    from .group_0358 import WorkflowUsagePropBillable as WorkflowUsagePropBillable
+    from .group_0358 import (
         WorkflowUsagePropBillablePropMacos as WorkflowUsagePropBillablePropMacos,
     )
-    from .group_0359 import (
+    from .group_0358 import (
         WorkflowUsagePropBillablePropUbuntu as WorkflowUsagePropBillablePropUbuntu,
     )
-    from .group_0359 import (
+    from .group_0358 import (
         WorkflowUsagePropBillablePropWindows as WorkflowUsagePropBillablePropWindows,
     )
-    from .group_0360 import Activity as Activity
-    from .group_0361 import Autolink as Autolink
-    from .group_0362 import CheckAutomatedSecurityFixes as CheckAutomatedSecurityFixes
-    from .group_0363 import (
+    from .group_0359 import Activity as Activity
+    from .group_0360 import Autolink as Autolink
+    from .group_0361 import CheckAutomatedSecurityFixes as CheckAutomatedSecurityFixes
+    from .group_0362 import (
         ProtectedBranchPullRequestReview as ProtectedBranchPullRequestReview,
     )
-    from .group_0364 import (
+    from .group_0363 import (
         ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances as ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances,
     )
-    from .group_0364 import (
+    from .group_0363 import (
         ProtectedBranchPullRequestReviewPropDismissalRestrictions as ProtectedBranchPullRequestReviewPropDismissalRestrictions,
     )
-    from .group_0365 import BranchRestrictionPolicy as BranchRestrictionPolicy
-    from .group_0365 import (
+    from .group_0364 import BranchRestrictionPolicy as BranchRestrictionPolicy
+    from .group_0364 import (
         BranchRestrictionPolicyPropAppsItems as BranchRestrictionPolicyPropAppsItems,
     )
-    from .group_0365 import (
+    from .group_0364 import (
         BranchRestrictionPolicyPropAppsItemsPropOwner as BranchRestrictionPolicyPropAppsItemsPropOwner,
     )
-    from .group_0365 import (
+    from .group_0364 import (
         BranchRestrictionPolicyPropAppsItemsPropPermissions as BranchRestrictionPolicyPropAppsItemsPropPermissions,
     )
-    from .group_0365 import (
+    from .group_0364 import (
         BranchRestrictionPolicyPropUsersItems as BranchRestrictionPolicyPropUsersItems,
     )
-    from .group_0366 import BranchProtection as BranchProtection
-    from .group_0366 import (
+    from .group_0365 import BranchProtection as BranchProtection
+    from .group_0365 import (
         BranchProtectionPropAllowDeletions as BranchProtectionPropAllowDeletions,
     )
-    from .group_0366 import (
+    from .group_0365 import (
         BranchProtectionPropAllowForcePushes as BranchProtectionPropAllowForcePushes,
     )
-    from .group_0366 import (
+    from .group_0365 import (
         BranchProtectionPropAllowForkSyncing as BranchProtectionPropAllowForkSyncing,
     )
-    from .group_0366 import (
+    from .group_0365 import (
         BranchProtectionPropBlockCreations as BranchProtectionPropBlockCreations,
     )
-    from .group_0366 import (
+    from .group_0365 import (
         BranchProtectionPropLockBranch as BranchProtectionPropLockBranch,
     )
-    from .group_0366 import (
+    from .group_0365 import (
         BranchProtectionPropRequiredConversationResolution as BranchProtectionPropRequiredConversationResolution,
     )
-    from .group_0366 import (
+    from .group_0365 import (
         BranchProtectionPropRequiredLinearHistory as BranchProtectionPropRequiredLinearHistory,
     )
-    from .group_0366 import (
+    from .group_0365 import (
         BranchProtectionPropRequiredSignatures as BranchProtectionPropRequiredSignatures,
     )
-    from .group_0366 import ProtectedBranchAdminEnforced as ProtectedBranchAdminEnforced
-    from .group_0366 import (
+    from .group_0365 import ProtectedBranchAdminEnforced as ProtectedBranchAdminEnforced
+    from .group_0365 import (
         ProtectedBranchRequiredStatusCheck as ProtectedBranchRequiredStatusCheck,
     )
-    from .group_0366 import (
+    from .group_0365 import (
         ProtectedBranchRequiredStatusCheckPropChecksItems as ProtectedBranchRequiredStatusCheckPropChecksItems,
     )
-    from .group_0367 import ShortBranch as ShortBranch
-    from .group_0367 import ShortBranchPropCommit as ShortBranchPropCommit
-    from .group_0368 import GitUser as GitUser
-    from .group_0369 import Verification as Verification
-    from .group_0370 import DiffEntry as DiffEntry
-    from .group_0371 import Commit as Commit
-    from .group_0371 import CommitPropParentsItems as CommitPropParentsItems
-    from .group_0371 import CommitPropStats as CommitPropStats
-    from .group_0371 import EmptyObject as EmptyObject
-    from .group_0372 import CommitPropCommit as CommitPropCommit
-    from .group_0372 import CommitPropCommitPropTree as CommitPropCommitPropTree
-    from .group_0373 import BranchWithProtection as BranchWithProtection
-    from .group_0373 import (
+    from .group_0366 import ShortBranch as ShortBranch
+    from .group_0366 import ShortBranchPropCommit as ShortBranchPropCommit
+    from .group_0367 import GitUser as GitUser
+    from .group_0368 import Verification as Verification
+    from .group_0369 import DiffEntry as DiffEntry
+    from .group_0370 import Commit as Commit
+    from .group_0370 import CommitPropParentsItems as CommitPropParentsItems
+    from .group_0370 import CommitPropStats as CommitPropStats
+    from .group_0370 import EmptyObject as EmptyObject
+    from .group_0371 import CommitPropCommit as CommitPropCommit
+    from .group_0371 import CommitPropCommitPropTree as CommitPropCommitPropTree
+    from .group_0372 import BranchWithProtection as BranchWithProtection
+    from .group_0372 import (
         BranchWithProtectionPropLinks as BranchWithProtectionPropLinks,
     )
-    from .group_0374 import ProtectedBranch as ProtectedBranch
-    from .group_0374 import (
+    from .group_0373 import ProtectedBranch as ProtectedBranch
+    from .group_0373 import (
         ProtectedBranchPropAllowDeletions as ProtectedBranchPropAllowDeletions,
     )
-    from .group_0374 import (
+    from .group_0373 import (
         ProtectedBranchPropAllowForcePushes as ProtectedBranchPropAllowForcePushes,
     )
-    from .group_0374 import (
+    from .group_0373 import (
         ProtectedBranchPropAllowForkSyncing as ProtectedBranchPropAllowForkSyncing,
     )
-    from .group_0374 import (
+    from .group_0373 import (
         ProtectedBranchPropBlockCreations as ProtectedBranchPropBlockCreations,
     )
-    from .group_0374 import (
+    from .group_0373 import (
         ProtectedBranchPropEnforceAdmins as ProtectedBranchPropEnforceAdmins,
     )
-    from .group_0374 import (
+    from .group_0373 import (
         ProtectedBranchPropLockBranch as ProtectedBranchPropLockBranch,
     )
-    from .group_0374 import (
+    from .group_0373 import (
         ProtectedBranchPropRequiredConversationResolution as ProtectedBranchPropRequiredConversationResolution,
     )
-    from .group_0374 import (
+    from .group_0373 import (
         ProtectedBranchPropRequiredLinearHistory as ProtectedBranchPropRequiredLinearHistory,
     )
-    from .group_0374 import (
+    from .group_0373 import (
         ProtectedBranchPropRequiredSignatures as ProtectedBranchPropRequiredSignatures,
     )
-    from .group_0374 import StatusCheckPolicy as StatusCheckPolicy
-    from .group_0374 import (
+    from .group_0373 import StatusCheckPolicy as StatusCheckPolicy
+    from .group_0373 import (
         StatusCheckPolicyPropChecksItems as StatusCheckPolicyPropChecksItems,
     )
-    from .group_0375 import (
+    from .group_0374 import (
         ProtectedBranchPropRequiredPullRequestReviews as ProtectedBranchPropRequiredPullRequestReviews,
     )
-    from .group_0376 import (
+    from .group_0375 import (
         ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances as ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances,
     )
-    from .group_0376 import (
+    from .group_0375 import (
         ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions as ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions,
     )
-    from .group_0377 import DeploymentSimple as DeploymentSimple
-    from .group_0378 import CheckRun as CheckRun
-    from .group_0378 import CheckRunPropCheckSuite as CheckRunPropCheckSuite
-    from .group_0378 import CheckRunPropOutput as CheckRunPropOutput
-    from .group_0379 import CheckAnnotation as CheckAnnotation
-    from .group_0380 import CheckSuite as CheckSuite
-    from .group_0380 import (
+    from .group_0376 import DeploymentSimple as DeploymentSimple
+    from .group_0377 import CheckRun as CheckRun
+    from .group_0377 import CheckRunPropCheckSuite as CheckRunPropCheckSuite
+    from .group_0377 import CheckRunPropOutput as CheckRunPropOutput
+    from .group_0378 import CheckAnnotation as CheckAnnotation
+    from .group_0379 import CheckSuite as CheckSuite
+    from .group_0379 import (
         ReposOwnerRepoCommitsRefCheckSuitesGetResponse200 as ReposOwnerRepoCommitsRefCheckSuitesGetResponse200,
     )
-    from .group_0381 import CheckSuitePreference as CheckSuitePreference
-    from .group_0381 import (
+    from .group_0380 import CheckSuitePreference as CheckSuitePreference
+    from .group_0380 import (
         CheckSuitePreferencePropPreferences as CheckSuitePreferencePropPreferences,
     )
-    from .group_0381 import (
+    from .group_0380 import (
         CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems as CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems,
     )
-    from .group_0382 import CodeScanningAlertItems as CodeScanningAlertItems
-    from .group_0383 import CodeScanningAlert as CodeScanningAlert
-    from .group_0383 import CodeScanningAlertRule as CodeScanningAlertRule
-    from .group_0384 import CodeScanningAutofix as CodeScanningAutofix
-    from .group_0385 import CodeScanningAutofixCommits as CodeScanningAutofixCommits
-    from .group_0386 import (
+    from .group_0381 import CodeScanningAlertItems as CodeScanningAlertItems
+    from .group_0382 import CodeScanningAlert as CodeScanningAlert
+    from .group_0382 import CodeScanningAlertRule as CodeScanningAlertRule
+    from .group_0383 import CodeScanningAutofix as CodeScanningAutofix
+    from .group_0384 import CodeScanningAutofixCommits as CodeScanningAutofixCommits
+    from .group_0385 import (
         CodeScanningAutofixCommitsResponse as CodeScanningAutofixCommitsResponse,
     )
-    from .group_0387 import (
+    from .group_0386 import (
         CodeScanningAlertInstanceList as CodeScanningAlertInstanceList,
     )
-    from .group_0387 import (
+    from .group_0386 import (
         CodeScanningAlertInstanceListPropMessage as CodeScanningAlertInstanceListPropMessage,
     )
-    from .group_0388 import CodeScanningAnalysis as CodeScanningAnalysis
-    from .group_0389 import CodeScanningAnalysisDeletion as CodeScanningAnalysisDeletion
-    from .group_0390 import CodeScanningCodeqlDatabase as CodeScanningCodeqlDatabase
-    from .group_0391 import (
+    from .group_0387 import CodeScanningAnalysis as CodeScanningAnalysis
+    from .group_0388 import CodeScanningAnalysisDeletion as CodeScanningAnalysisDeletion
+    from .group_0389 import CodeScanningCodeqlDatabase as CodeScanningCodeqlDatabase
+    from .group_0390 import (
         CodeScanningVariantAnalysisRepository as CodeScanningVariantAnalysisRepository,
     )
-    from .group_0392 import (
+    from .group_0391 import (
         CodeScanningVariantAnalysisSkippedRepoGroup as CodeScanningVariantAnalysisSkippedRepoGroup,
     )
-    from .group_0393 import CodeScanningVariantAnalysis as CodeScanningVariantAnalysis
-    from .group_0394 import (
+    from .group_0392 import CodeScanningVariantAnalysis as CodeScanningVariantAnalysis
+    from .group_0393 import (
         CodeScanningVariantAnalysisPropScannedRepositoriesItems as CodeScanningVariantAnalysisPropScannedRepositoriesItems,
     )
-    from .group_0395 import (
+    from .group_0394 import (
         CodeScanningVariantAnalysisPropSkippedRepositories as CodeScanningVariantAnalysisPropSkippedRepositories,
     )
-    from .group_0395 import (
+    from .group_0394 import (
         CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos as CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos,
     )
-    from .group_0396 import (
+    from .group_0395 import (
         CodeScanningVariantAnalysisRepoTask as CodeScanningVariantAnalysisRepoTask,
     )
-    from .group_0397 import CodeScanningDefaultSetup as CodeScanningDefaultSetup
-    from .group_0398 import (
+    from .group_0396 import CodeScanningDefaultSetup as CodeScanningDefaultSetup
+    from .group_0397 import (
         CodeScanningDefaultSetupUpdate as CodeScanningDefaultSetupUpdate,
     )
-    from .group_0399 import (
+    from .group_0398 import (
         CodeScanningDefaultSetupUpdateResponse as CodeScanningDefaultSetupUpdateResponse,
     )
-    from .group_0400 import CodeScanningSarifsReceipt as CodeScanningSarifsReceipt
-    from .group_0401 import CodeScanningSarifsStatus as CodeScanningSarifsStatus
-    from .group_0402 import (
+    from .group_0399 import CodeScanningSarifsReceipt as CodeScanningSarifsReceipt
+    from .group_0400 import CodeScanningSarifsStatus as CodeScanningSarifsStatus
+    from .group_0401 import (
         CodeSecurityConfigurationForRepository as CodeSecurityConfigurationForRepository,
     )
-    from .group_0403 import CodeownersErrors as CodeownersErrors
-    from .group_0403 import (
+    from .group_0402 import CodeownersErrors as CodeownersErrors
+    from .group_0402 import (
         CodeownersErrorsPropErrorsItems as CodeownersErrorsPropErrorsItems,
     )
-    from .group_0404 import (
+    from .group_0403 import (
         CodespacesPermissionsCheckForDevcontainer as CodespacesPermissionsCheckForDevcontainer,
     )
-    from .group_0405 import RepositoryInvitation as RepositoryInvitation
-    from .group_0406 import Collaborator as Collaborator
-    from .group_0406 import CollaboratorPropPermissions as CollaboratorPropPermissions
-    from .group_0406 import (
+    from .group_0404 import RepositoryInvitation as RepositoryInvitation
+    from .group_0405 import Collaborator as Collaborator
+    from .group_0405 import CollaboratorPropPermissions as CollaboratorPropPermissions
+    from .group_0405 import (
         RepositoryCollaboratorPermission as RepositoryCollaboratorPermission,
     )
-    from .group_0407 import CommitComment as CommitComment
-    from .group_0407 import TimelineCommitCommentedEvent as TimelineCommitCommentedEvent
-    from .group_0408 import Reaction as Reaction
-    from .group_0409 import BranchShort as BranchShort
-    from .group_0409 import BranchShortPropCommit as BranchShortPropCommit
-    from .group_0410 import CombinedCommitStatus as CombinedCommitStatus
-    from .group_0410 import SimpleCommitStatus as SimpleCommitStatus
-    from .group_0411 import Status as Status
-    from .group_0412 import CommunityHealthFile as CommunityHealthFile
-    from .group_0412 import CommunityProfile as CommunityProfile
-    from .group_0412 import CommunityProfilePropFiles as CommunityProfilePropFiles
-    from .group_0413 import CommitComparison as CommitComparison
-    from .group_0414 import ContentTree as ContentTree
-    from .group_0414 import ContentTreePropEntriesItems as ContentTreePropEntriesItems
-    from .group_0414 import (
+    from .group_0406 import CommitComment as CommitComment
+    from .group_0406 import TimelineCommitCommentedEvent as TimelineCommitCommentedEvent
+    from .group_0407 import Reaction as Reaction
+    from .group_0408 import BranchShort as BranchShort
+    from .group_0408 import BranchShortPropCommit as BranchShortPropCommit
+    from .group_0409 import CombinedCommitStatus as CombinedCommitStatus
+    from .group_0409 import SimpleCommitStatus as SimpleCommitStatus
+    from .group_0410 import Status as Status
+    from .group_0411 import CommunityHealthFile as CommunityHealthFile
+    from .group_0411 import CommunityProfile as CommunityProfile
+    from .group_0411 import CommunityProfilePropFiles as CommunityProfilePropFiles
+    from .group_0412 import CommitComparison as CommitComparison
+    from .group_0413 import ContentTree as ContentTree
+    from .group_0413 import ContentTreePropEntriesItems as ContentTreePropEntriesItems
+    from .group_0413 import (
         ContentTreePropEntriesItemsPropLinks as ContentTreePropEntriesItemsPropLinks,
     )
-    from .group_0414 import ContentTreePropLinks as ContentTreePropLinks
-    from .group_0415 import ContentDirectoryItems as ContentDirectoryItems
-    from .group_0415 import (
+    from .group_0413 import ContentTreePropLinks as ContentTreePropLinks
+    from .group_0414 import ContentDirectoryItems as ContentDirectoryItems
+    from .group_0414 import (
         ContentDirectoryItemsPropLinks as ContentDirectoryItemsPropLinks,
     )
-    from .group_0416 import ContentFile as ContentFile
-    from .group_0416 import ContentFilePropLinks as ContentFilePropLinks
-    from .group_0417 import ContentSymlink as ContentSymlink
-    from .group_0417 import ContentSymlinkPropLinks as ContentSymlinkPropLinks
-    from .group_0418 import ContentSubmodule as ContentSubmodule
-    from .group_0418 import ContentSubmodulePropLinks as ContentSubmodulePropLinks
-    from .group_0419 import FileCommit as FileCommit
-    from .group_0419 import FileCommitPropCommit as FileCommitPropCommit
-    from .group_0419 import (
+    from .group_0415 import ContentFile as ContentFile
+    from .group_0415 import ContentFilePropLinks as ContentFilePropLinks
+    from .group_0416 import ContentSymlink as ContentSymlink
+    from .group_0416 import ContentSymlinkPropLinks as ContentSymlinkPropLinks
+    from .group_0417 import ContentSubmodule as ContentSubmodule
+    from .group_0417 import ContentSubmodulePropLinks as ContentSubmodulePropLinks
+    from .group_0418 import FileCommit as FileCommit
+    from .group_0418 import FileCommitPropCommit as FileCommitPropCommit
+    from .group_0418 import (
         FileCommitPropCommitPropAuthor as FileCommitPropCommitPropAuthor,
     )
-    from .group_0419 import (
+    from .group_0418 import (
         FileCommitPropCommitPropCommitter as FileCommitPropCommitPropCommitter,
     )
-    from .group_0419 import (
+    from .group_0418 import (
         FileCommitPropCommitPropParentsItems as FileCommitPropCommitPropParentsItems,
     )
-    from .group_0419 import FileCommitPropCommitPropTree as FileCommitPropCommitPropTree
-    from .group_0419 import (
+    from .group_0418 import FileCommitPropCommitPropTree as FileCommitPropCommitPropTree
+    from .group_0418 import (
         FileCommitPropCommitPropVerification as FileCommitPropCommitPropVerification,
     )
-    from .group_0419 import FileCommitPropContent as FileCommitPropContent
-    from .group_0419 import (
+    from .group_0418 import FileCommitPropContent as FileCommitPropContent
+    from .group_0418 import (
         FileCommitPropContentPropLinks as FileCommitPropContentPropLinks,
     )
-    from .group_0420 import RepositoryRuleViolationError as RepositoryRuleViolationError
-    from .group_0420 import (
+    from .group_0419 import RepositoryRuleViolationError as RepositoryRuleViolationError
+    from .group_0419 import (
         RepositoryRuleViolationErrorPropMetadata as RepositoryRuleViolationErrorPropMetadata,
     )
-    from .group_0420 import (
+    from .group_0419 import (
         RepositoryRuleViolationErrorPropMetadataPropSecretScanning as RepositoryRuleViolationErrorPropMetadataPropSecretScanning,
     )
-    from .group_0420 import (
+    from .group_0419 import (
         RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems as RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems,
     )
-    from .group_0421 import Contributor as Contributor
-    from .group_0422 import DependabotAlert as DependabotAlert
-    from .group_0423 import (
+    from .group_0420 import Contributor as Contributor
+    from .group_0421 import DependabotAlert as DependabotAlert
+    from .group_0422 import (
         DependabotAlertPropDependency as DependabotAlertPropDependency,
     )
-    from .group_0424 import DependencyGraphDiffItems as DependencyGraphDiffItems
-    from .group_0424 import (
+    from .group_0423 import DependencyGraphDiffItems as DependencyGraphDiffItems
+    from .group_0423 import (
         DependencyGraphDiffItemsPropVulnerabilitiesItems as DependencyGraphDiffItemsPropVulnerabilitiesItems,
     )
-    from .group_0425 import DependencyGraphSpdxSbom as DependencyGraphSpdxSbom
-    from .group_0425 import (
+    from .group_0424 import DependencyGraphSpdxSbom as DependencyGraphSpdxSbom
+    from .group_0424 import (
         DependencyGraphSpdxSbomPropSbom as DependencyGraphSpdxSbomPropSbom,
     )
-    from .group_0425 import (
+    from .group_0424 import (
         DependencyGraphSpdxSbomPropSbomPropCreationInfo as DependencyGraphSpdxSbomPropSbomPropCreationInfo,
     )
-    from .group_0425 import (
+    from .group_0424 import (
         DependencyGraphSpdxSbomPropSbomPropPackagesItems as DependencyGraphSpdxSbomPropSbomPropPackagesItems,
     )
-    from .group_0425 import (
+    from .group_0424 import (
         DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItems as DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItems,
     )
-    from .group_0425 import (
+    from .group_0424 import (
         DependencyGraphSpdxSbomPropSbomPropRelationshipsItems as DependencyGraphSpdxSbomPropSbomPropRelationshipsItems,
     )
-    from .group_0426 import Metadata as Metadata
-    from .group_0427 import Dependency as Dependency
-    from .group_0428 import Manifest as Manifest
-    from .group_0428 import ManifestPropFile as ManifestPropFile
-    from .group_0428 import ManifestPropResolved as ManifestPropResolved
-    from .group_0429 import Snapshot as Snapshot
-    from .group_0429 import SnapshotPropDetector as SnapshotPropDetector
-    from .group_0429 import SnapshotPropJob as SnapshotPropJob
-    from .group_0429 import SnapshotPropManifests as SnapshotPropManifests
-    from .group_0430 import DeploymentStatus as DeploymentStatus
-    from .group_0431 import (
+    from .group_0425 import Metadata as Metadata
+    from .group_0426 import Dependency as Dependency
+    from .group_0427 import Manifest as Manifest
+    from .group_0427 import ManifestPropFile as ManifestPropFile
+    from .group_0427 import ManifestPropResolved as ManifestPropResolved
+    from .group_0428 import Snapshot as Snapshot
+    from .group_0428 import SnapshotPropDetector as SnapshotPropDetector
+    from .group_0428 import SnapshotPropJob as SnapshotPropJob
+    from .group_0428 import SnapshotPropManifests as SnapshotPropManifests
+    from .group_0429 import DeploymentStatus as DeploymentStatus
+    from .group_0430 import (
         DeploymentBranchPolicySettings as DeploymentBranchPolicySettings,
     )
-    from .group_0432 import Environment as Environment
-    from .group_0432 import (
+    from .group_0431 import Environment as Environment
+    from .group_0431 import (
         EnvironmentPropProtectionRulesItemsAnyof0 as EnvironmentPropProtectionRulesItemsAnyof0,
     )
-    from .group_0432 import (
+    from .group_0431 import (
         EnvironmentPropProtectionRulesItemsAnyof2 as EnvironmentPropProtectionRulesItemsAnyof2,
     )
-    from .group_0432 import (
+    from .group_0431 import (
         ReposOwnerRepoEnvironmentsGetResponse200 as ReposOwnerRepoEnvironmentsGetResponse200,
     )
-    from .group_0433 import (
+    from .group_0432 import (
         EnvironmentPropProtectionRulesItemsAnyof1 as EnvironmentPropProtectionRulesItemsAnyof1,
     )
-    from .group_0434 import (
+    from .group_0433 import (
         EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems as EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems,
     )
-    from .group_0435 import (
+    from .group_0434 import (
         DeploymentBranchPolicyNamePatternWithType as DeploymentBranchPolicyNamePatternWithType,
     )
-    from .group_0436 import (
+    from .group_0435 import (
         DeploymentBranchPolicyNamePattern as DeploymentBranchPolicyNamePattern,
     )
-    from .group_0437 import CustomDeploymentRuleApp as CustomDeploymentRuleApp
-    from .group_0438 import DeploymentProtectionRule as DeploymentProtectionRule
-    from .group_0438 import (
+    from .group_0436 import CustomDeploymentRuleApp as CustomDeploymentRuleApp
+    from .group_0437 import DeploymentProtectionRule as DeploymentProtectionRule
+    from .group_0437 import (
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200 as ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200,
     )
-    from .group_0439 import ShortBlob as ShortBlob
-    from .group_0440 import Blob as Blob
-    from .group_0441 import GitCommit as GitCommit
-    from .group_0441 import GitCommitPropAuthor as GitCommitPropAuthor
-    from .group_0441 import GitCommitPropCommitter as GitCommitPropCommitter
-    from .group_0441 import GitCommitPropParentsItems as GitCommitPropParentsItems
-    from .group_0441 import GitCommitPropTree as GitCommitPropTree
-    from .group_0441 import GitCommitPropVerification as GitCommitPropVerification
-    from .group_0442 import GitRef as GitRef
-    from .group_0442 import GitRefPropObject as GitRefPropObject
-    from .group_0443 import GitTag as GitTag
-    from .group_0443 import GitTagPropObject as GitTagPropObject
-    from .group_0443 import GitTagPropTagger as GitTagPropTagger
-    from .group_0444 import GitTree as GitTree
-    from .group_0444 import GitTreePropTreeItems as GitTreePropTreeItems
-    from .group_0445 import RepositoryHashAlgorithm as RepositoryHashAlgorithm
-    from .group_0446 import HookResponse as HookResponse
-    from .group_0447 import Hook as Hook
-    from .group_0448 import CheckImmutableReleases as CheckImmutableReleases
-    from .group_0449 import Import as Import
-    from .group_0449 import (
+    from .group_0438 import ShortBlob as ShortBlob
+    from .group_0439 import Blob as Blob
+    from .group_0440 import GitCommit as GitCommit
+    from .group_0440 import GitCommitPropAuthor as GitCommitPropAuthor
+    from .group_0440 import GitCommitPropCommitter as GitCommitPropCommitter
+    from .group_0440 import GitCommitPropParentsItems as GitCommitPropParentsItems
+    from .group_0440 import GitCommitPropTree as GitCommitPropTree
+    from .group_0440 import GitCommitPropVerification as GitCommitPropVerification
+    from .group_0441 import GitRef as GitRef
+    from .group_0441 import GitRefPropObject as GitRefPropObject
+    from .group_0442 import GitTag as GitTag
+    from .group_0442 import GitTagPropObject as GitTagPropObject
+    from .group_0442 import GitTagPropTagger as GitTagPropTagger
+    from .group_0443 import GitTree as GitTree
+    from .group_0443 import GitTreePropTreeItems as GitTreePropTreeItems
+    from .group_0444 import RepositoryHashAlgorithm as RepositoryHashAlgorithm
+    from .group_0445 import HookResponse as HookResponse
+    from .group_0446 import Hook as Hook
+    from .group_0447 import CheckImmutableReleases as CheckImmutableReleases
+    from .group_0448 import Import as Import
+    from .group_0448 import (
         ImportPropProjectChoicesItems as ImportPropProjectChoicesItems,
     )
-    from .group_0450 import PorterAuthor as PorterAuthor
-    from .group_0451 import PorterLargeFile as PorterLargeFile
+    from .group_0449 import PorterAuthor as PorterAuthor
+    from .group_0450 import PorterLargeFile as PorterLargeFile
+    from .group_0451 import (
+        InteractionLimitPullRequestBypassList as InteractionLimitPullRequestBypassList,
+    )
     from .group_0452 import IssueEvent as IssueEvent
     from .group_0452 import IssueEventDismissedReview as IssueEventDismissedReview
     from .group_0452 import IssueEventLabel as IssueEventLabel
@@ -10685,180 +10656,164 @@ else:
         ".group_0086": ("EnterpriseTeam",),
         ".group_0087": ("CopilotSeatDetails",),
         ".group_0088": ("CopilotEnterpriseContentExclusionDetails",),
-        ".group_0089": (
-            "CopilotUsageMetricsDay",
-            "CopilotDotcomChat",
-            "CopilotDotcomChatPropModelsItems",
-            "CopilotIdeChat",
-            "CopilotIdeChatPropEditorsItems",
-            "CopilotIdeChatPropEditorsItemsPropModelsItems",
-            "CopilotDotcomPullRequests",
-            "CopilotDotcomPullRequestsPropRepositoriesItems",
-            "CopilotDotcomPullRequestsPropRepositoriesItemsPropModelsItems",
-            "CopilotIdeCodeCompletions",
-            "CopilotIdeCodeCompletionsPropLanguagesItems",
-            "CopilotIdeCodeCompletionsPropEditorsItems",
-            "CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItems",
-            "CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsPropLanguagesItems",
-        ),
-        ".group_0090": ("CopilotUsageMetrics1DayReport",),
-        ".group_0091": ("CopilotUsageMetrics28DayReport",),
-        ".group_0092": ("DependabotAlertPackage",),
-        ".group_0093": (
+        ".group_0089": ("CopilotUsageMetrics1DayReport",),
+        ".group_0090": ("CopilotUsageMetrics28DayReport",),
+        ".group_0091": ("DependabotAlertPackage",),
+        ".group_0092": (
             "DependabotAlertSecurityVulnerability",
             "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion",
         ),
-        ".group_0094": (
+        ".group_0093": (
             "DependabotAlertSecurityAdvisory",
             "DependabotAlertSecurityAdvisoryPropCvss",
             "DependabotAlertSecurityAdvisoryPropCwesItems",
             "DependabotAlertSecurityAdvisoryPropIdentifiersItems",
             "DependabotAlertSecurityAdvisoryPropReferencesItems",
         ),
-        ".group_0095": (
+        ".group_0094": (
             "DependabotAlertDismissalRequestSimple",
             "DependabotAlertDismissalRequestSimplePropRequester",
         ),
-        ".group_0096": ("DependabotAlertWithRepository",),
-        ".group_0097": ("DependabotAlertWithRepositoryPropDependency",),
-        ".group_0098": ("DependabotRepositoryAccessDetails",),
-        ".group_0099": (
+        ".group_0095": ("DependabotAlertWithRepository",),
+        ".group_0096": ("DependabotAlertWithRepositoryPropDependency",),
+        ".group_0097": ("DependabotRepositoryAccessDetails",),
+        ".group_0098": (
             "SecretScanningDismissalRequest",
             "SecretScanningDismissalRequestPropRepository",
             "SecretScanningDismissalRequestPropOrganization",
             "SecretScanningDismissalRequestPropRequester",
             "SecretScanningDismissalRequestPropDataItems",
         ),
-        ".group_0100": (
+        ".group_0099": (
             "EnterpriseRole",
             "EnterprisesEnterpriseEnterpriseRolesGetResponse200",
         ),
-        ".group_0101": ("EnterpriseUserRoleAssignment",),
-        ".group_0102": ("EnterpriseUserRoleAssignmentAllof1",),
-        ".group_0103": (
+        ".group_0100": ("EnterpriseUserRoleAssignment",),
+        ".group_0101": ("EnterpriseUserRoleAssignmentAllof1",),
+        ".group_0102": (
             "GetLicenseSyncStatus",
             "GetLicenseSyncStatusPropServerInstancesItems",
             "GetLicenseSyncStatusPropServerInstancesItemsPropLastSync",
         ),
-        ".group_0104": ("NetworkConfiguration",),
-        ".group_0105": ("NetworkSettings",),
-        ".group_0106": ("CustomPropertyBase",),
-        ".group_0107": ("OrganizationCustomProperty",),
-        ".group_0108": ("OrganizationCustomPropertyAllof1",),
-        ".group_0109": ("OrganizationCustomPropertyPayload",),
-        ".group_0110": ("CustomPropertyValue",),
-        ".group_0111": ("CustomPropertiesForOrgsGetEnterprisePropertyValues",),
-        ".group_0112": ("CustomProperty",),
-        ".group_0113": ("CustomPropertySetPayload",),
-        ".group_0114": ("RepositoryRulesetBypassActor",),
-        ".group_0115": ("EnterpriseRulesetConditionsOrganizationNameTarget",),
-        ".group_0116": (
+        ".group_0103": ("NetworkConfiguration",),
+        ".group_0104": ("NetworkSettings",),
+        ".group_0105": ("CustomPropertyBase",),
+        ".group_0106": ("OrganizationCustomProperty",),
+        ".group_0107": ("OrganizationCustomPropertyAllof1",),
+        ".group_0108": ("OrganizationCustomPropertyPayload",),
+        ".group_0109": ("CustomPropertyValue",),
+        ".group_0110": ("CustomPropertiesForOrgsGetEnterprisePropertyValues",),
+        ".group_0111": ("CustomProperty",),
+        ".group_0112": ("CustomPropertySetPayload",),
+        ".group_0113": ("RepositoryRulesetBypassActor",),
+        ".group_0114": ("EnterpriseRulesetConditionsOrganizationNameTarget",),
+        ".group_0115": (
             "EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName",
         ),
-        ".group_0117": ("RepositoryRulesetConditionsRepositoryNameTarget",),
-        ".group_0118": (
+        ".group_0116": ("RepositoryRulesetConditionsRepositoryNameTarget",),
+        ".group_0117": (
             "RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName",
         ),
-        ".group_0119": ("RepositoryRulesetConditions",),
-        ".group_0120": ("RepositoryRulesetConditionsPropRefName",),
-        ".group_0121": ("RepositoryRulesetConditionsRepositoryPropertyTarget",),
-        ".group_0122": (
+        ".group_0118": ("RepositoryRulesetConditions",),
+        ".group_0119": ("RepositoryRulesetConditionsPropRefName",),
+        ".group_0120": ("RepositoryRulesetConditionsRepositoryPropertyTarget",),
+        ".group_0121": (
             "RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty",
             "RepositoryRulesetConditionsRepositoryPropertySpec",
         ),
-        ".group_0123": ("EnterpriseRulesetConditionsOrganizationIdTarget",),
-        ".group_0124": (
+        ".group_0122": ("EnterpriseRulesetConditionsOrganizationIdTarget",),
+        ".group_0123": (
             "EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId",
         ),
-        ".group_0125": ("EnterpriseRulesetConditionsOrganizationPropertyTarget",),
-        ".group_0126": (
+        ".group_0124": ("EnterpriseRulesetConditionsOrganizationPropertyTarget",),
+        ".group_0125": (
             "EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty",
             "EnterpriseRulesetConditionsOrganizationPropertySpec",
         ),
-        ".group_0127": ("EnterpriseRulesetConditionsOneof0",),
-        ".group_0128": ("EnterpriseRulesetConditionsOneof1",),
-        ".group_0129": ("EnterpriseRulesetConditionsOneof2",),
-        ".group_0130": ("EnterpriseRulesetConditionsOneof3",),
-        ".group_0131": ("EnterpriseRulesetConditionsOneof4",),
-        ".group_0132": ("EnterpriseRulesetConditionsOneof5",),
-        ".group_0133": (
+        ".group_0126": ("EnterpriseRulesetConditionsOneof0",),
+        ".group_0127": ("EnterpriseRulesetConditionsOneof1",),
+        ".group_0128": ("EnterpriseRulesetConditionsOneof2",),
+        ".group_0129": ("EnterpriseRulesetConditionsOneof3",),
+        ".group_0130": ("EnterpriseRulesetConditionsOneof4",),
+        ".group_0131": ("EnterpriseRulesetConditionsOneof5",),
+        ".group_0132": (
             "RepositoryRuleCreation",
             "RepositoryRuleDeletion",
             "RepositoryRuleRequiredSignatures",
             "RepositoryRuleNonFastForward",
         ),
-        ".group_0134": ("RepositoryRuleUpdate",),
-        ".group_0135": ("RepositoryRuleUpdatePropParameters",),
-        ".group_0136": ("RepositoryRuleRequiredLinearHistory",),
-        ".group_0137": ("RepositoryRuleRequiredDeployments",),
-        ".group_0138": ("RepositoryRuleRequiredDeploymentsPropParameters",),
-        ".group_0139": (
+        ".group_0133": ("RepositoryRuleUpdate",),
+        ".group_0134": ("RepositoryRuleUpdatePropParameters",),
+        ".group_0135": ("RepositoryRuleRequiredLinearHistory",),
+        ".group_0136": ("RepositoryRuleRequiredDeployments",),
+        ".group_0137": ("RepositoryRuleRequiredDeploymentsPropParameters",),
+        ".group_0138": (
             "RepositoryRuleParamsDismissalRestriction",
             "RepositoryRuleParamsActor",
         ),
-        ".group_0140": ("RepositoryRulePullRequest",),
-        ".group_0141": (
+        ".group_0139": ("RepositoryRulePullRequest",),
+        ".group_0140": (
             "RepositoryRulePullRequestPropParameters",
             "RepositoryRuleParamsRequiredReviewerConfiguration",
             "RepositoryRuleParamsReviewer",
         ),
-        ".group_0142": ("RepositoryRuleRequiredStatusChecks",),
-        ".group_0143": (
+        ".group_0141": ("RepositoryRuleRequiredStatusChecks",),
+        ".group_0142": (
             "RepositoryRuleRequiredStatusChecksPropParameters",
             "RepositoryRuleParamsStatusCheckConfiguration",
         ),
-        ".group_0144": ("RepositoryRuleCommitMessagePattern",),
-        ".group_0145": ("RepositoryRuleCommitMessagePatternPropParameters",),
-        ".group_0146": ("RepositoryRuleCommitAuthorEmailPattern",),
-        ".group_0147": ("RepositoryRuleCommitAuthorEmailPatternPropParameters",),
-        ".group_0148": ("RepositoryRuleCommitterEmailPattern",),
-        ".group_0149": ("RepositoryRuleCommitterEmailPatternPropParameters",),
-        ".group_0150": ("RepositoryRuleBranchNamePattern",),
-        ".group_0151": ("RepositoryRuleBranchNamePatternPropParameters",),
-        ".group_0152": ("RepositoryRuleTagNamePattern",),
-        ".group_0153": ("RepositoryRuleTagNamePatternPropParameters",),
-        ".group_0154": ("RepositoryRuleFilePathRestriction",),
-        ".group_0155": ("RepositoryRuleFilePathRestrictionPropParameters",),
-        ".group_0156": ("RepositoryRuleMaxFilePathLength",),
-        ".group_0157": ("RepositoryRuleMaxFilePathLengthPropParameters",),
-        ".group_0158": ("RepositoryRuleFileExtensionRestriction",),
-        ".group_0159": ("RepositoryRuleFileExtensionRestrictionPropParameters",),
-        ".group_0160": ("RepositoryRuleMaxFileSize",),
-        ".group_0161": ("RepositoryRuleMaxFileSizePropParameters",),
-        ".group_0162": ("RepositoryRuleParamsRestrictedCommits",),
-        ".group_0163": ("RepositoryRuleWorkflows",),
-        ".group_0164": (
+        ".group_0143": ("RepositoryRuleCommitMessagePattern",),
+        ".group_0144": ("RepositoryRuleCommitMessagePatternPropParameters",),
+        ".group_0145": ("RepositoryRuleCommitAuthorEmailPattern",),
+        ".group_0146": ("RepositoryRuleCommitAuthorEmailPatternPropParameters",),
+        ".group_0147": ("RepositoryRuleCommitterEmailPattern",),
+        ".group_0148": ("RepositoryRuleCommitterEmailPatternPropParameters",),
+        ".group_0149": ("RepositoryRuleBranchNamePattern",),
+        ".group_0150": ("RepositoryRuleBranchNamePatternPropParameters",),
+        ".group_0151": ("RepositoryRuleTagNamePattern",),
+        ".group_0152": ("RepositoryRuleTagNamePatternPropParameters",),
+        ".group_0153": ("RepositoryRuleFilePathRestriction",),
+        ".group_0154": ("RepositoryRuleFilePathRestrictionPropParameters",),
+        ".group_0155": ("RepositoryRuleMaxFilePathLength",),
+        ".group_0156": ("RepositoryRuleMaxFilePathLengthPropParameters",),
+        ".group_0157": ("RepositoryRuleFileExtensionRestriction",),
+        ".group_0158": ("RepositoryRuleFileExtensionRestrictionPropParameters",),
+        ".group_0159": ("RepositoryRuleMaxFileSize",),
+        ".group_0160": ("RepositoryRuleMaxFileSizePropParameters",),
+        ".group_0161": ("RepositoryRuleParamsRestrictedCommits",),
+        ".group_0162": ("RepositoryRuleWorkflows",),
+        ".group_0163": (
             "RepositoryRuleWorkflowsPropParameters",
             "RepositoryRuleParamsWorkflowFileReference",
         ),
-        ".group_0165": ("RepositoryRuleCodeScanning",),
-        ".group_0166": (
+        ".group_0164": ("RepositoryRuleCodeScanning",),
+        ".group_0165": (
             "RepositoryRuleCodeScanningPropParameters",
             "RepositoryRuleParamsCodeScanningTool",
         ),
-        ".group_0167": ("RepositoryRuleCopilotCodeReview",),
-        ".group_0168": ("RepositoryRuleCopilotCodeReviewPropParameters",),
-        ".group_0169": ("RepositoryRulesetConditionsRepositoryIdTarget",),
-        ".group_0170": (
+        ".group_0166": ("RepositoryRuleCopilotCodeReview",),
+        ".group_0167": ("RepositoryRuleCopilotCodeReviewPropParameters",),
+        ".group_0168": ("RepositoryRulesetConditionsRepositoryIdTarget",),
+        ".group_0169": (
             "RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId",
         ),
-        ".group_0171": ("OrgRulesetConditionsOneof0",),
-        ".group_0172": ("OrgRulesetConditionsOneof1",),
-        ".group_0173": ("OrgRulesetConditionsOneof2",),
-        ".group_0174": ("RepositoryRuleMergeQueue",),
-        ".group_0175": ("RepositoryRuleMergeQueuePropParameters",),
-        ".group_0176": (
+        ".group_0170": ("OrgRulesetConditionsOneof0",),
+        ".group_0171": ("OrgRulesetConditionsOneof1",),
+        ".group_0172": ("OrgRulesetConditionsOneof2",),
+        ".group_0173": ("RepositoryRuleMergeQueue",),
+        ".group_0174": ("RepositoryRuleMergeQueuePropParameters",),
+        ".group_0175": (
             "RepositoryRuleset",
             "RepositoryRulesetPropLinks",
             "RepositoryRulesetPropLinksPropSelf",
             "RepositoryRulesetPropLinksPropHtml",
         ),
-        ".group_0177": ("RulesetVersion",),
-        ".group_0178": ("RulesetVersionPropActor",),
-        ".group_0179": ("RulesetVersionWithState",),
-        ".group_0180": ("RulesetVersionWithStateAllof1",),
-        ".group_0181": ("RulesetVersionWithStateAllof1PropState",),
-        ".group_0182": (
+        ".group_0176": ("RulesetVersion",),
+        ".group_0177": ("RulesetVersionPropActor",),
+        ".group_0178": ("RulesetVersionWithState",),
+        ".group_0179": ("RulesetVersionWithStateAllof1",),
+        ".group_0180": ("RulesetVersionWithStateAllof1PropState",),
+        ".group_0181": (
             "SecretScanningLocationCommit",
             "SecretScanningLocationWikiCommit",
             "SecretScanningLocationIssueBody",
@@ -10867,125 +10822,125 @@ else:
             "SecretScanningLocationPullRequestBody",
             "SecretScanningLocationPullRequestReview",
         ),
-        ".group_0183": (
+        ".group_0182": (
             "SecretScanningLocationIssueTitle",
             "SecretScanningLocationIssueComment",
             "SecretScanningLocationPullRequestTitle",
             "SecretScanningLocationPullRequestReviewComment",
         ),
-        ".group_0184": (
+        ".group_0183": (
             "SecretScanningLocationDiscussionBody",
             "SecretScanningLocationPullRequestComment",
         ),
-        ".group_0185": ("OrganizationSecretScanningAlert",),
-        ".group_0186": (
+        ".group_0184": ("OrganizationSecretScanningAlert",),
+        ".group_0185": (
             "SecretScanningPatternConfiguration",
             "SecretScanningPatternOverride",
         ),
-        ".group_0187": (
+        ".group_0186": (
             "AdvancedSecurityActiveCommitters",
             "AdvancedSecurityActiveCommittersRepository",
             "AdvancedSecurityActiveCommittersUser",
         ),
-        ".group_0188": (
+        ".group_0187": (
             "BillingAiCreditUsageReportGhe",
             "BillingAiCreditUsageReportGhePropTimePeriod",
             "BillingAiCreditUsageReportGhePropCostCenter",
             "BillingAiCreditUsageReportGhePropUsageItemsItems",
         ),
-        ".group_0189": (
+        ".group_0188": (
             "GetAllBudgets",
             "GetAllBudgetsPropEffectiveBudget",
             "Budget",
             "BudgetPropBudgetAlerting",
         ),
-        ".group_0190": (
+        ".group_0189": (
             "CreateBudget",
             "CreateBudgetPropBudget",
             "CreateBudgetPropBudgetPropBudgetAlerting",
         ),
-        ".group_0191": (
+        ".group_0190": (
             "GetBudget",
             "GetBudgetPropBudgetAlerting",
         ),
-        ".group_0192": (
+        ".group_0191": (
             "UpdateBudget",
             "UpdateBudgetPropBudget",
             "UpdateBudgetPropBudgetPropBudgetAlerting",
         ),
-        ".group_0193": ("DeleteBudget",),
-        ".group_0194": (
+        ".group_0192": ("DeleteBudget",),
+        ".group_0193": (
             "GetAllCostCenters",
             "GetAllCostCentersPropCostCentersItems",
             "GetAllCostCentersPropCostCentersItemsPropResourcesItems",
         ),
-        ".group_0195": (
+        ".group_0194": (
             "GetCostCenter",
             "GetCostCenterPropResourcesItems",
         ),
-        ".group_0196": (
+        ".group_0195": (
             "UpdateCostCenter",
             "UpdateCostCenterPropResourcesItems",
         ),
-        ".group_0197": ("DeleteCostCenter",),
-        ".group_0198": (
+        ".group_0196": ("DeleteCostCenter",),
+        ".group_0197": (
             "BillingPremiumRequestUsageReportGhe",
             "BillingPremiumRequestUsageReportGhePropTimePeriod",
             "BillingPremiumRequestUsageReportGhePropCostCenter",
             "BillingPremiumRequestUsageReportGhePropUsageItemsItems",
         ),
-        ".group_0199": (
+        ".group_0198": (
             "UsageReportExportList",
             "UsageReportExport",
         ),
-        ".group_0200": ("UsageReportExportRequest",),
-        ".group_0201": (
+        ".group_0199": ("UsageReportExportRequest",),
+        ".group_0200": (
             "BillingUsageReport",
             "BillingUsageReportPropUsageItemsItems",
         ),
-        ".group_0202": (
+        ".group_0201": (
             "BillingUsageSummaryReportGhe",
             "BillingUsageSummaryReportGhePropTimePeriod",
             "BillingUsageSummaryReportGhePropCostCenter",
             "BillingUsageSummaryReportGhePropUsageItemsItems",
         ),
-        ".group_0203": ("Label",),
-        ".group_0204": (
+        ".group_0202": ("Label",),
+        ".group_0203": (
             "Discussion",
             "DiscussionPropAnswerChosenBy",
             "DiscussionPropCategory",
             "DiscussionPropReactions",
             "DiscussionPropUser",
         ),
-        ".group_0205": ("Milestone",),
-        ".group_0206": ("IssueType",),
-        ".group_0207": ("ReactionRollup",),
-        ".group_0208": (
+        ".group_0204": ("Milestone",),
+        ".group_0205": ("IssueType",),
+        ".group_0206": ("ReactionRollup",),
+        ".group_0207": (
             "SubIssuesSummary",
             "IssueDependenciesSummary",
         ),
-        ".group_0209": ("PinnedIssueComment",),
-        ".group_0210": ("IssueComment",),
-        ".group_0211": (
+        ".group_0208": ("PinnedIssueComment",),
+        ".group_0209": ("IssueComment",),
+        ".group_0210": (
             "IssueFieldValue",
             "IssueFieldValuePropSingleSelectOption",
             "IssueFieldValuePropMultiSelectOptionsItems",
         ),
-        ".group_0212": (
+        ".group_0211": (
             "Issue",
             "IssuePropLabelsItemsOneof1",
             "IssuePropPullRequest",
         ),
-        ".group_0213": (
+        ".group_0212": (
             "PullRequestMinimal",
             "PullRequestMinimalPropHead",
             "PullRequestMinimalPropHeadPropRepo",
             "PullRequestMinimalPropBase",
             "PullRequestMinimalPropBasePropRepo",
         ),
-        ".group_0214": ("ReleaseAsset",),
-        ".group_0215": ("Release",),
-        ".group_0216": (
+        ".group_0213": ("ReleaseAsset",),
+        ".group_0214": ("Release",),
+        ".group_0215": (
             "Event",
             "Actor",
             "EventPropRepo",
@@ -10997,14 +10952,14 @@ else:
             "GollumEvent",
             "GollumEventPropPagesItems",
         ),
-        ".group_0217": ("DiscussionEvent",),
-        ".group_0218": ("IssuesEvent",),
-        ".group_0219": ("IssueCommentEvent",),
-        ".group_0220": ("ForkEvent",),
-        ".group_0221": ("ForkEventPropForkee",),
-        ".group_0222": ("MemberEvent",),
-        ".group_0223": ("PullRequestEvent",),
-        ".group_0224": (
+        ".group_0216": ("DiscussionEvent",),
+        ".group_0217": ("IssuesEvent",),
+        ".group_0218": ("IssueCommentEvent",),
+        ".group_0219": ("ForkEvent",),
+        ".group_0220": ("ForkEventPropForkee",),
+        ".group_0221": ("MemberEvent",),
+        ".group_0222": ("PullRequestEvent",),
+        ".group_0223": (
             "PullRequestReviewCommentEvent",
             "PullRequestReviewCommentEventPropComment",
             "PullRequestReviewCommentEventPropCommentPropUser",
@@ -11014,61 +10969,61 @@ else:
             "PullRequestReviewCommentEventPropCommentPropLinksPropPullRequest",
             "PullRequestReviewCommentEventPropCommentPropLinksPropSelf",
         ),
-        ".group_0225": ("PullRequestReviewEvent",),
-        ".group_0226": (
+        ".group_0224": ("PullRequestReviewEvent",),
+        ".group_0225": (
             "PullRequestReviewEventPropReview",
             "PullRequestReviewEventPropReviewPropLinks",
             "PullRequestReviewEventPropReviewPropLinksPropHtml",
             "PullRequestReviewEventPropReviewPropLinksPropPullRequest",
         ),
-        ".group_0227": ("CommitCommentEvent",),
-        ".group_0228": ("CommitCommentEventPropComment",),
-        ".group_0229": ("ReleaseEvent",),
-        ".group_0230": ("ReleaseEventPropRelease",),
-        ".group_0231": ("ReleaseEventPropReleaseAllof1",),
-        ".group_0232": (
+        ".group_0226": ("CommitCommentEvent",),
+        ".group_0227": ("CommitCommentEventPropComment",),
+        ".group_0228": ("ReleaseEvent",),
+        ".group_0229": ("ReleaseEventPropRelease",),
+        ".group_0230": ("ReleaseEventPropReleaseAllof1",),
+        ".group_0231": (
             "Feed",
             "FeedPropLinks",
             "LinkWithType",
         ),
-        ".group_0233": (
+        ".group_0232": (
             "BaseGist",
             "BaseGistPropFiles",
         ),
-        ".group_0234": (
+        ".group_0233": (
             "GistHistory",
             "GistHistoryPropChangeStatus",
             "GistSimplePropForkOf",
             "GistSimplePropForkOfPropFiles",
         ),
-        ".group_0235": (
+        ".group_0234": (
             "GistSimple",
             "GistSimplePropFiles",
             "GistSimplePropForksItems",
             "PublicUser",
             "PublicUserPropPlan",
         ),
-        ".group_0236": ("GistComment",),
-        ".group_0237": (
+        ".group_0235": ("GistComment",),
+        ".group_0236": (
             "GistCommit",
             "GistCommitPropChangeStatus",
         ),
-        ".group_0238": ("GitignoreTemplate",),
-        ".group_0239": ("License",),
-        ".group_0240": ("MarketplaceListingPlan",),
-        ".group_0241": ("MarketplacePurchase",),
-        ".group_0242": (
+        ".group_0237": ("GitignoreTemplate",),
+        ".group_0238": ("License",),
+        ".group_0239": ("MarketplaceListingPlan",),
+        ".group_0240": ("MarketplacePurchase",),
+        ".group_0241": (
             "MarketplacePurchasePropMarketplacePendingChange",
             "MarketplacePurchasePropMarketplacePurchase",
         ),
-        ".group_0243": (
+        ".group_0242": (
             "ApiOverview",
             "ApiOverviewPropSshKeyFingerprints",
             "ApiOverviewPropDomains",
             "ApiOverviewPropDomainsPropActionsInbound",
             "ApiOverviewPropDomainsPropArtifactAttestations",
         ),
-        ".group_0244": (
+        ".group_0243": (
             "SecurityAndAnalysis",
             "SecurityAndAnalysisPropAdvancedSecurity",
             "SecurityAndAnalysisPropCodeSecurity",
@@ -11083,178 +11038,178 @@ else:
             "SecurityAndAnalysisPropSecretScanningDelegatedBypassOptions",
             "SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItems",
         ),
-        ".group_0245": (
+        ".group_0244": (
             "MinimalRepository",
             "CodeOfConduct",
             "MinimalRepositoryPropPermissions",
             "MinimalRepositoryPropLicense",
             "MinimalRepositoryPropCustomProperties",
         ),
-        ".group_0246": (
+        ".group_0245": (
             "Thread",
             "ThreadPropSubject",
         ),
-        ".group_0247": ("ThreadSubscription",),
-        ".group_0248": ("OrganizationCustomRepositoryRole",),
-        ".group_0249": ("ActionsCacheRetentionLimitForOrganization",),
-        ".group_0250": ("ActionsCacheStorageLimitForOrganization",),
-        ".group_0251": (
+        ".group_0246": ("ThreadSubscription",),
+        ".group_0247": ("OrganizationCustomRepositoryRole",),
+        ".group_0248": ("ActionsCacheRetentionLimitForOrganization",),
+        ".group_0249": ("ActionsCacheStorageLimitForOrganization",),
+        ".group_0250": (
             "OrganizationFull",
             "OrganizationFullPropPlan",
         ),
-        ".group_0252": ("OidcCustomSub",),
-        ".group_0253": ("ActionsOrganizationPermissions",),
-        ".group_0254": ("SelfHostedRunnersSettings",),
-        ".group_0255": ("OrganizationActionsSecret",),
-        ".group_0256": ("ActionsPublicKey",),
-        ".group_0257": ("OrganizationActionsVariable",),
-        ".group_0258": (
+        ".group_0251": ("OidcCustomSub",),
+        ".group_0252": ("ActionsOrganizationPermissions",),
+        ".group_0253": ("SelfHostedRunnersSettings",),
+        ".group_0254": ("OrganizationActionsSecret",),
+        ".group_0255": ("ActionsPublicKey",),
+        ".group_0256": ("OrganizationActionsVariable",),
+        ".group_0257": (
             "ArtifactDeploymentRecord",
             "ArtifactDeploymentRecordPropTags",
         ),
-        ".group_0259": (
+        ".group_0258": (
             "CampaignSummary",
             "CampaignSummaryPropAlertStats",
         ),
-        ".group_0260": ("CodespaceMachine",),
-        ".group_0261": (
+        ".group_0259": ("CodespaceMachine",),
+        ".group_0260": (
             "Codespace",
             "CodespacePropGitStatus",
             "CodespacePropRuntimeConstraints",
         ),
-        ".group_0262": ("CodespacesPublicKey",),
-        ".group_0263": (
+        ".group_0261": ("CodespacesPublicKey",),
+        ".group_0262": (
             "CopilotSpace",
             "CopilotSpacePropResourcesAttributesItems",
             "CopilotSpacePropResourcesAttributesItemsPropMetadata",
         ),
-        ".group_0264": (
+        ".group_0263": (
             "CopilotSpaceCollaboratorAnyof0",
             "CopilotSpaceCollaboratorAnyof1",
         ),
-        ".group_0265": ("CopilotSpaceCollaboratorAnyof0Allof1",),
-        ".group_0266": (
+        ".group_0264": ("CopilotSpaceCollaboratorAnyof0Allof1",),
+        ".group_0265": (
             "CopilotSpaceResource",
             "CopilotSpaceResourcePropMetadata",
         ),
-        ".group_0267": (
+        ".group_0266": (
             "CopilotOrganizationDetails",
             "CopilotOrganizationSeatBreakdown",
         ),
-        ".group_0268": ("CopilotOrganizationContentExclusionDetails",),
-        ".group_0269": ("CredentialAuthorization",),
-        ".group_0270": ("OrganizationCustomRepositoryRoleCreateSchema",),
-        ".group_0271": ("OrganizationCustomRepositoryRoleUpdateSchema",),
-        ".group_0272": ("DependabotPublicKey",),
-        ".group_0273": (
+        ".group_0267": ("CopilotOrganizationContentExclusionDetails",),
+        ".group_0268": ("CredentialAuthorization",),
+        ".group_0269": ("OrganizationCustomRepositoryRoleCreateSchema",),
+        ".group_0270": ("OrganizationCustomRepositoryRoleUpdateSchema",),
+        ".group_0271": ("DependabotPublicKey",),
+        ".group_0272": (
             "DismissalRequestResponse",
             "DismissalRequestResponsePropReviewer",
         ),
-        ".group_0274": (
+        ".group_0273": (
             "CodeScanningAlertDismissalRequest",
             "CodeScanningAlertDismissalRequestPropRepository",
             "CodeScanningAlertDismissalRequestPropOrganization",
             "CodeScanningAlertDismissalRequestPropRequester",
             "CodeScanningAlertDismissalRequestPropDataItems",
         ),
-        ".group_0275": (
+        ".group_0274": (
             "DependabotAlertDismissalRequest",
             "DependabotAlertDismissalRequestPropRepository",
             "DependabotAlertDismissalRequestPropOrganization",
             "DependabotAlertDismissalRequestPropRequester",
             "DependabotAlertDismissalRequestPropDataItems",
         ),
-        ".group_0276": ("Package",),
-        ".group_0277": (
+        ".group_0275": ("Package",),
+        ".group_0276": (
             "ExternalGroup",
             "ExternalGroupPropTeamsItems",
             "ExternalGroupPropMembersItems",
         ),
-        ".group_0278": (
+        ".group_0277": (
             "ExternalGroups",
             "ExternalGroupsPropGroupsItems",
         ),
-        ".group_0279": ("OrganizationInvitation",),
-        ".group_0280": ("RepositoryFineGrainedPermission",),
-        ".group_0281": (
+        ".group_0278": ("OrganizationInvitation",),
+        ".group_0279": ("RepositoryFineGrainedPermission",),
+        ".group_0280": (
             "OrgHook",
             "OrgHookPropConfig",
         ),
-        ".group_0282": ("ApiInsightsRouteStatsItems",),
-        ".group_0283": ("ApiInsightsSubjectStatsItems",),
-        ".group_0284": ("ApiInsightsSummaryStats",),
-        ".group_0285": ("ApiInsightsTimeStatsItems",),
-        ".group_0286": ("ApiInsightsUserStatsItems",),
-        ".group_0287": ("InteractionLimitResponse",),
-        ".group_0288": ("InteractionLimit",),
-        ".group_0289": (
+        ".group_0281": ("ApiInsightsRouteStatsItems",),
+        ".group_0282": ("ApiInsightsSubjectStatsItems",),
+        ".group_0283": ("ApiInsightsSummaryStats",),
+        ".group_0284": ("ApiInsightsTimeStatsItems",),
+        ".group_0285": ("ApiInsightsUserStatsItems",),
+        ".group_0286": ("InteractionLimitResponse",),
+        ".group_0287": ("InteractionLimit",),
+        ".group_0288": (
             "IssueField",
             "IssueFieldPropOptionsItems",
         ),
-        ".group_0290": (
+        ".group_0289": (
             "OrganizationCreateIssueField",
             "OrganizationCreateIssueFieldPropOptionsItems",
         ),
-        ".group_0291": (
+        ".group_0290": (
             "OrganizationUpdateIssueField",
             "OrganizationUpdateIssueFieldPropOptionsItems",
         ),
-        ".group_0292": ("OrganizationCreateIssueType",),
-        ".group_0293": ("OrganizationUpdateIssueType",),
-        ".group_0294": (
+        ".group_0291": ("OrganizationCreateIssueType",),
+        ".group_0292": ("OrganizationUpdateIssueType",),
+        ".group_0293": (
             "OrgMembership",
             "OrgMembershipPropPermissions",
         ),
-        ".group_0295": ("Migration",),
-        ".group_0296": ("OrganizationFineGrainedPermission",),
-        ".group_0297": (
+        ".group_0294": ("Migration",),
+        ".group_0295": ("OrganizationFineGrainedPermission",),
+        ".group_0296": (
             "OrganizationRole",
             "OrgsOrgOrganizationRolesGetResponse200",
         ),
-        ".group_0298": ("OrganizationCustomOrganizationRoleCreateSchema",),
-        ".group_0299": ("OrganizationCustomOrganizationRoleUpdateSchema",),
-        ".group_0300": (
+        ".group_0297": ("OrganizationCustomOrganizationRoleCreateSchema",),
+        ".group_0298": ("OrganizationCustomOrganizationRoleUpdateSchema",),
+        ".group_0299": (
             "TeamRoleAssignment",
             "TeamRoleAssignmentPropPermissions",
         ),
-        ".group_0301": ("UserRoleAssignment",),
-        ".group_0302": (
+        ".group_0300": ("UserRoleAssignment",),
+        ".group_0301": (
             "PackageVersion",
             "PackageVersionPropMetadata",
             "PackageVersionPropMetadataPropContainer",
             "PackageVersionPropMetadataPropDocker",
         ),
-        ".group_0303": (
+        ".group_0302": (
             "OrganizationProgrammaticAccessGrantRequest",
             "OrganizationProgrammaticAccessGrantRequestPropPermissions",
             "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization",
             "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository",
             "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther",
         ),
-        ".group_0304": (
+        ".group_0303": (
             "OrganizationProgrammaticAccessGrant",
             "OrganizationProgrammaticAccessGrantPropPermissions",
             "OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization",
             "OrganizationProgrammaticAccessGrantPropPermissionsPropRepository",
             "OrganizationProgrammaticAccessGrantPropPermissionsPropOther",
         ),
-        ".group_0305": ("OrgPrivateRegistryConfigurationWithSelectedRepositories",),
-        ".group_0306": ("ProjectsV2StatusUpdate",),
-        ".group_0307": ("ProjectsV2",),
-        ".group_0308": ("Link",),
-        ".group_0309": ("AutoMerge",),
-        ".group_0310": (
+        ".group_0304": ("OrgPrivateRegistryConfigurationWithSelectedRepositories",),
+        ".group_0305": ("ProjectsV2StatusUpdate",),
+        ".group_0306": ("ProjectsV2",),
+        ".group_0307": ("Link",),
+        ".group_0308": ("AutoMerge",),
+        ".group_0309": (
             "PullRequestSimple",
             "PullRequestSimplePropLabelsItems",
         ),
-        ".group_0311": (
+        ".group_0310": (
             "PullRequestSimplePropHead",
             "PullRequestSimplePropBase",
         ),
-        ".group_0312": ("PullRequestSimplePropLinks",),
-        ".group_0313": ("ProjectsV2DraftIssue",),
-        ".group_0314": ("ProjectsV2ItemSimple",),
-        ".group_0315": (
+        ".group_0311": ("PullRequestSimplePropLinks",),
+        ".group_0312": ("ProjectsV2DraftIssue",),
+        ".group_0313": ("ProjectsV2ItemSimple",),
+        ".group_0314": (
             "ProjectsV2Field",
             "ProjectsV2SingleSelectOptions",
             "ProjectsV2SingleSelectOptionsPropName",
@@ -11263,47 +11218,47 @@ else:
             "ProjectsV2IterationSettings",
             "ProjectsV2IterationSettingsPropTitle",
         ),
-        ".group_0316": ("ProjectsV2FieldSingleSelectOption",),
-        ".group_0317": (
+        ".group_0315": ("ProjectsV2FieldSingleSelectOption",),
+        ".group_0316": (
             "ProjectsV2FieldIterationConfiguration",
             "ProjectsV2FieldIterationConfigurationPropIterationsItems",
         ),
-        ".group_0318": (
+        ".group_0317": (
             "ProjectsV2ItemWithContent",
             "ProjectsV2ItemWithContentPropContent",
             "ProjectsV2ItemWithContentPropFieldsItems",
         ),
-        ".group_0319": (
+        ".group_0318": (
             "ProjectsV2View",
             "ProjectsV2ViewPropCreator",
         ),
-        ".group_0320": ("OrgRepoCustomPropertyValues",),
-        ".group_0321": ("CodeOfConductSimple",),
-        ".group_0322": (
+        ".group_0319": ("OrgRepoCustomPropertyValues",),
+        ".group_0320": ("CodeOfConductSimple",),
+        ".group_0321": (
             "FullRepository",
             "FullRepositoryPropPermissions",
             "FullRepositoryPropCustomProperties",
         ),
-        ".group_0323": ("RuleSuitesItems",),
-        ".group_0324": (
+        ".group_0322": ("RuleSuitesItems",),
+        ".group_0323": (
             "RuleSuitePullRequest",
             "RuleSuitePullRequestPropPullRequest",
             "RuleSuitePullRequestPropPullRequestPropUser",
             "RuleSuitePullRequestPropPullRequestPropReviewsItems",
             "RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser",
         ),
-        ".group_0325": (
+        ".group_0324": (
             "RuleSuiteRequiredStatusChecks",
             "RuleSuiteRequiredStatusChecksPropChecksItems",
             "RuleSuiteRequiredStatusChecksPropChecksItemsPropApp",
         ),
-        ".group_0326": (
+        ".group_0325": (
             "RuleSuite",
             "RuleSuitePropRuleEvaluationsItems",
             "RuleSuitePropRuleEvaluationsItemsPropRuleSource",
         ),
-        ".group_0327": ("RepositoryAdvisoryCredit",),
-        ".group_0328": (
+        ".group_0326": ("RepositoryAdvisoryCredit",),
+        ".group_0327": (
             "RepositoryAdvisory",
             "RepositoryAdvisoryPropIdentifiersItems",
             "RepositoryAdvisoryPropSubmission",
@@ -11313,81 +11268,81 @@ else:
             "RepositoryAdvisoryVulnerability",
             "RepositoryAdvisoryVulnerabilityPropPackage",
         ),
-        ".group_0329": ("ImmutableReleasesOrganizationSettings",),
-        ".group_0330": (
+        ".group_0328": ("ImmutableReleasesOrganizationSettings",),
+        ".group_0329": (
             "GroupMapping",
             "GroupMappingPropGroupsItems",
         ),
-        ".group_0331": (
+        ".group_0330": (
             "TeamFull",
             "TeamOrganization",
             "TeamOrganizationPropPlan",
         ),
-        ".group_0332": ("TeamMembership",),
-        ".group_0333": (
+        ".group_0331": ("TeamMembership",),
+        ".group_0332": (
             "TeamRepository",
             "TeamRepositoryPropPermissions",
         ),
-        ".group_0334": ("RateLimit",),
-        ".group_0335": ("RateLimitOverview",),
-        ".group_0336": ("RateLimitOverviewPropResources",),
-        ".group_0337": (
+        ".group_0333": ("RateLimit",),
+        ".group_0334": ("RateLimitOverview",),
+        ".group_0335": ("RateLimitOverviewPropResources",),
+        ".group_0336": (
             "Artifact",
             "ArtifactPropWorkflowRun",
         ),
-        ".group_0338": ("ActionsCacheRetentionLimitForRepository",),
-        ".group_0339": ("ActionsCacheStorageLimitForRepository",),
-        ".group_0340": (
+        ".group_0337": ("ActionsCacheRetentionLimitForRepository",),
+        ".group_0338": ("ActionsCacheStorageLimitForRepository",),
+        ".group_0339": (
             "ActionsCacheList",
             "ActionsCacheListPropActionsCachesItems",
         ),
-        ".group_0341": (
+        ".group_0340": (
             "ConcurrencyGroupList",
             "ConcurrencyGroupListPropConcurrencyGroupsItems",
         ),
-        ".group_0342": (
+        ".group_0341": (
             "ConcurrencyGroup",
             "ConcurrencyGroupPropGroupMembersItems",
         ),
-        ".group_0343": (
+        ".group_0342": (
             "Job",
             "JobPropStepsItems",
         ),
-        ".group_0344": ("OidcCustomSubRepo",),
-        ".group_0345": ("ActionsSecret",),
-        ".group_0346": ("ActionsVariable",),
-        ".group_0347": ("ActionsRepositoryPermissions",),
-        ".group_0348": ("ActionsWorkflowAccessToRepository",),
-        ".group_0349": (
+        ".group_0343": ("OidcCustomSubRepo",),
+        ".group_0344": ("ActionsSecret",),
+        ".group_0345": ("ActionsVariable",),
+        ".group_0346": ("ActionsRepositoryPermissions",),
+        ".group_0347": ("ActionsWorkflowAccessToRepository",),
+        ".group_0348": (
             "SimpleCommit",
             "SimpleCommitPropAuthor",
             "SimpleCommitPropCommitter",
         ),
-        ".group_0350": (
+        ".group_0349": (
             "WorkflowRun",
             "ReferencedWorkflow",
         ),
-        ".group_0351": (
+        ".group_0350": (
             "EnvironmentApprovals",
             "EnvironmentApprovalsPropEnvironmentsItems",
         ),
-        ".group_0352": (
+        ".group_0351": (
             "ConcurrencyGroupRunList",
             "ConcurrencyGroupRunListPropConcurrencyGroupsItems",
             "ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItems",
         ),
-        ".group_0353": ("ReviewCustomGatesCommentRequired",),
-        ".group_0354": ("ReviewCustomGatesStateRequired",),
-        ".group_0355": (
+        ".group_0352": ("ReviewCustomGatesCommentRequired",),
+        ".group_0353": ("ReviewCustomGatesStateRequired",),
+        ".group_0354": (
             "PendingDeploymentPropReviewersItems",
             "PendingDeployment",
             "PendingDeploymentPropEnvironment",
         ),
-        ".group_0356": (
+        ".group_0355": (
             "Deployment",
             "DeploymentPropPayloadOneof0",
         ),
-        ".group_0357": (
+        ".group_0356": (
             "WorkflowRunUsage",
             "WorkflowRunUsagePropBillable",
             "WorkflowRunUsagePropBillablePropUbuntu",
@@ -11397,30 +11352,30 @@ else:
             "WorkflowRunUsagePropBillablePropWindows",
             "WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems",
         ),
-        ".group_0358": ("WorkflowDispatchResponse",),
-        ".group_0359": (
+        ".group_0357": ("WorkflowDispatchResponse",),
+        ".group_0358": (
             "WorkflowUsage",
             "WorkflowUsagePropBillable",
             "WorkflowUsagePropBillablePropUbuntu",
             "WorkflowUsagePropBillablePropMacos",
             "WorkflowUsagePropBillablePropWindows",
         ),
-        ".group_0360": ("Activity",),
-        ".group_0361": ("Autolink",),
-        ".group_0362": ("CheckAutomatedSecurityFixes",),
-        ".group_0363": ("ProtectedBranchPullRequestReview",),
-        ".group_0364": (
+        ".group_0359": ("Activity",),
+        ".group_0360": ("Autolink",),
+        ".group_0361": ("CheckAutomatedSecurityFixes",),
+        ".group_0362": ("ProtectedBranchPullRequestReview",),
+        ".group_0363": (
             "ProtectedBranchPullRequestReviewPropDismissalRestrictions",
             "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances",
         ),
-        ".group_0365": (
+        ".group_0364": (
             "BranchRestrictionPolicy",
             "BranchRestrictionPolicyPropUsersItems",
             "BranchRestrictionPolicyPropAppsItems",
             "BranchRestrictionPolicyPropAppsItemsPropOwner",
             "BranchRestrictionPolicyPropAppsItemsPropPermissions",
         ),
-        ".group_0366": (
+        ".group_0365": (
             "BranchProtection",
             "ProtectedBranchAdminEnforced",
             "BranchProtectionPropRequiredLinearHistory",
@@ -11434,28 +11389,28 @@ else:
             "ProtectedBranchRequiredStatusCheck",
             "ProtectedBranchRequiredStatusCheckPropChecksItems",
         ),
-        ".group_0367": (
+        ".group_0366": (
             "ShortBranch",
             "ShortBranchPropCommit",
         ),
-        ".group_0368": ("GitUser",),
-        ".group_0369": ("Verification",),
-        ".group_0370": ("DiffEntry",),
-        ".group_0371": (
+        ".group_0367": ("GitUser",),
+        ".group_0368": ("Verification",),
+        ".group_0369": ("DiffEntry",),
+        ".group_0370": (
             "Commit",
             "EmptyObject",
             "CommitPropParentsItems",
             "CommitPropStats",
         ),
-        ".group_0372": (
+        ".group_0371": (
             "CommitPropCommit",
             "CommitPropCommitPropTree",
         ),
-        ".group_0373": (
+        ".group_0372": (
             "BranchWithProtection",
             "BranchWithProtectionPropLinks",
         ),
-        ".group_0374": (
+        ".group_0373": (
             "ProtectedBranch",
             "ProtectedBranchPropRequiredSignatures",
             "ProtectedBranchPropEnforceAdmins",
@@ -11469,111 +11424,111 @@ else:
             "StatusCheckPolicy",
             "StatusCheckPolicyPropChecksItems",
         ),
-        ".group_0375": ("ProtectedBranchPropRequiredPullRequestReviews",),
-        ".group_0376": (
+        ".group_0374": ("ProtectedBranchPropRequiredPullRequestReviews",),
+        ".group_0375": (
             "ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions",
             "ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances",
         ),
-        ".group_0377": ("DeploymentSimple",),
-        ".group_0378": (
+        ".group_0376": ("DeploymentSimple",),
+        ".group_0377": (
             "CheckRun",
             "CheckRunPropOutput",
             "CheckRunPropCheckSuite",
         ),
-        ".group_0379": ("CheckAnnotation",),
-        ".group_0380": (
+        ".group_0378": ("CheckAnnotation",),
+        ".group_0379": (
             "CheckSuite",
             "ReposOwnerRepoCommitsRefCheckSuitesGetResponse200",
         ),
-        ".group_0381": (
+        ".group_0380": (
             "CheckSuitePreference",
             "CheckSuitePreferencePropPreferences",
             "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems",
         ),
-        ".group_0382": ("CodeScanningAlertItems",),
-        ".group_0383": (
+        ".group_0381": ("CodeScanningAlertItems",),
+        ".group_0382": (
             "CodeScanningAlert",
             "CodeScanningAlertRule",
         ),
-        ".group_0384": ("CodeScanningAutofix",),
-        ".group_0385": ("CodeScanningAutofixCommits",),
-        ".group_0386": ("CodeScanningAutofixCommitsResponse",),
-        ".group_0387": (
+        ".group_0383": ("CodeScanningAutofix",),
+        ".group_0384": ("CodeScanningAutofixCommits",),
+        ".group_0385": ("CodeScanningAutofixCommitsResponse",),
+        ".group_0386": (
             "CodeScanningAlertInstanceList",
             "CodeScanningAlertInstanceListPropMessage",
         ),
-        ".group_0388": ("CodeScanningAnalysis",),
-        ".group_0389": ("CodeScanningAnalysisDeletion",),
-        ".group_0390": ("CodeScanningCodeqlDatabase",),
-        ".group_0391": ("CodeScanningVariantAnalysisRepository",),
-        ".group_0392": ("CodeScanningVariantAnalysisSkippedRepoGroup",),
-        ".group_0393": ("CodeScanningVariantAnalysis",),
-        ".group_0394": ("CodeScanningVariantAnalysisPropScannedRepositoriesItems",),
-        ".group_0395": (
+        ".group_0387": ("CodeScanningAnalysis",),
+        ".group_0388": ("CodeScanningAnalysisDeletion",),
+        ".group_0389": ("CodeScanningCodeqlDatabase",),
+        ".group_0390": ("CodeScanningVariantAnalysisRepository",),
+        ".group_0391": ("CodeScanningVariantAnalysisSkippedRepoGroup",),
+        ".group_0392": ("CodeScanningVariantAnalysis",),
+        ".group_0393": ("CodeScanningVariantAnalysisPropScannedRepositoriesItems",),
+        ".group_0394": (
             "CodeScanningVariantAnalysisPropSkippedRepositories",
             "CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos",
         ),
-        ".group_0396": ("CodeScanningVariantAnalysisRepoTask",),
-        ".group_0397": ("CodeScanningDefaultSetup",),
-        ".group_0398": ("CodeScanningDefaultSetupUpdate",),
-        ".group_0399": ("CodeScanningDefaultSetupUpdateResponse",),
-        ".group_0400": ("CodeScanningSarifsReceipt",),
-        ".group_0401": ("CodeScanningSarifsStatus",),
-        ".group_0402": ("CodeSecurityConfigurationForRepository",),
-        ".group_0403": (
+        ".group_0395": ("CodeScanningVariantAnalysisRepoTask",),
+        ".group_0396": ("CodeScanningDefaultSetup",),
+        ".group_0397": ("CodeScanningDefaultSetupUpdate",),
+        ".group_0398": ("CodeScanningDefaultSetupUpdateResponse",),
+        ".group_0399": ("CodeScanningSarifsReceipt",),
+        ".group_0400": ("CodeScanningSarifsStatus",),
+        ".group_0401": ("CodeSecurityConfigurationForRepository",),
+        ".group_0402": (
             "CodeownersErrors",
             "CodeownersErrorsPropErrorsItems",
         ),
-        ".group_0404": ("CodespacesPermissionsCheckForDevcontainer",),
-        ".group_0405": ("RepositoryInvitation",),
-        ".group_0406": (
+        ".group_0403": ("CodespacesPermissionsCheckForDevcontainer",),
+        ".group_0404": ("RepositoryInvitation",),
+        ".group_0405": (
             "RepositoryCollaboratorPermission",
             "Collaborator",
             "CollaboratorPropPermissions",
         ),
-        ".group_0407": (
+        ".group_0406": (
             "CommitComment",
             "TimelineCommitCommentedEvent",
         ),
-        ".group_0408": ("Reaction",),
-        ".group_0409": (
+        ".group_0407": ("Reaction",),
+        ".group_0408": (
             "BranchShort",
             "BranchShortPropCommit",
         ),
-        ".group_0410": (
+        ".group_0409": (
             "CombinedCommitStatus",
             "SimpleCommitStatus",
         ),
-        ".group_0411": ("Status",),
-        ".group_0412": (
+        ".group_0410": ("Status",),
+        ".group_0411": (
             "CommunityProfilePropFiles",
             "CommunityHealthFile",
             "CommunityProfile",
         ),
-        ".group_0413": ("CommitComparison",),
-        ".group_0414": (
+        ".group_0412": ("CommitComparison",),
+        ".group_0413": (
             "ContentTree",
             "ContentTreePropLinks",
             "ContentTreePropEntriesItems",
             "ContentTreePropEntriesItemsPropLinks",
         ),
-        ".group_0415": (
+        ".group_0414": (
             "ContentDirectoryItems",
             "ContentDirectoryItemsPropLinks",
         ),
-        ".group_0416": (
+        ".group_0415": (
             "ContentFile",
             "ContentFilePropLinks",
         ),
-        ".group_0417": (
+        ".group_0416": (
             "ContentSymlink",
             "ContentSymlinkPropLinks",
         ),
-        ".group_0418": (
+        ".group_0417": (
             "ContentSubmodule",
             "ContentSubmodulePropLinks",
         ),
-        ".group_0419": (
+        ".group_0418": (
             "FileCommit",
             "FileCommitPropContent",
             "FileCommitPropContentPropLinks",
@@ -11584,20 +11539,20 @@ else:
             "FileCommitPropCommitPropParentsItems",
             "FileCommitPropCommitPropVerification",
         ),
-        ".group_0420": (
+        ".group_0419": (
             "RepositoryRuleViolationError",
             "RepositoryRuleViolationErrorPropMetadata",
             "RepositoryRuleViolationErrorPropMetadataPropSecretScanning",
             "RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems",
         ),
-        ".group_0421": ("Contributor",),
-        ".group_0422": ("DependabotAlert",),
-        ".group_0423": ("DependabotAlertPropDependency",),
-        ".group_0424": (
+        ".group_0420": ("Contributor",),
+        ".group_0421": ("DependabotAlert",),
+        ".group_0422": ("DependabotAlertPropDependency",),
+        ".group_0423": (
             "DependencyGraphDiffItems",
             "DependencyGraphDiffItemsPropVulnerabilitiesItems",
         ),
-        ".group_0425": (
+        ".group_0424": (
             "DependencyGraphSpdxSbom",
             "DependencyGraphSpdxSbomPropSbom",
             "DependencyGraphSpdxSbomPropSbomPropCreationInfo",
@@ -11605,39 +11560,39 @@ else:
             "DependencyGraphSpdxSbomPropSbomPropPackagesItems",
             "DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItems",
         ),
-        ".group_0426": ("Metadata",),
-        ".group_0427": ("Dependency",),
-        ".group_0428": (
+        ".group_0425": ("Metadata",),
+        ".group_0426": ("Dependency",),
+        ".group_0427": (
             "Manifest",
             "ManifestPropFile",
             "ManifestPropResolved",
         ),
-        ".group_0429": (
+        ".group_0428": (
             "Snapshot",
             "SnapshotPropJob",
             "SnapshotPropDetector",
             "SnapshotPropManifests",
         ),
-        ".group_0430": ("DeploymentStatus",),
-        ".group_0431": ("DeploymentBranchPolicySettings",),
-        ".group_0432": (
+        ".group_0429": ("DeploymentStatus",),
+        ".group_0430": ("DeploymentBranchPolicySettings",),
+        ".group_0431": (
             "Environment",
             "EnvironmentPropProtectionRulesItemsAnyof0",
             "EnvironmentPropProtectionRulesItemsAnyof2",
             "ReposOwnerRepoEnvironmentsGetResponse200",
         ),
-        ".group_0433": ("EnvironmentPropProtectionRulesItemsAnyof1",),
-        ".group_0434": ("EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems",),
-        ".group_0435": ("DeploymentBranchPolicyNamePatternWithType",),
-        ".group_0436": ("DeploymentBranchPolicyNamePattern",),
-        ".group_0437": ("CustomDeploymentRuleApp",),
-        ".group_0438": (
+        ".group_0432": ("EnvironmentPropProtectionRulesItemsAnyof1",),
+        ".group_0433": ("EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems",),
+        ".group_0434": ("DeploymentBranchPolicyNamePatternWithType",),
+        ".group_0435": ("DeploymentBranchPolicyNamePattern",),
+        ".group_0436": ("CustomDeploymentRuleApp",),
+        ".group_0437": (
             "DeploymentProtectionRule",
             "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200",
         ),
-        ".group_0439": ("ShortBlob",),
-        ".group_0440": ("Blob",),
-        ".group_0441": (
+        ".group_0438": ("ShortBlob",),
+        ".group_0439": ("Blob",),
+        ".group_0440": (
             "GitCommit",
             "GitCommitPropAuthor",
             "GitCommitPropCommitter",
@@ -11645,29 +11600,30 @@ else:
             "GitCommitPropParentsItems",
             "GitCommitPropVerification",
         ),
-        ".group_0442": (
+        ".group_0441": (
             "GitRef",
             "GitRefPropObject",
         ),
-        ".group_0443": (
+        ".group_0442": (
             "GitTag",
             "GitTagPropTagger",
             "GitTagPropObject",
         ),
-        ".group_0444": (
+        ".group_0443": (
             "GitTree",
             "GitTreePropTreeItems",
         ),
-        ".group_0445": ("RepositoryHashAlgorithm",),
-        ".group_0446": ("HookResponse",),
-        ".group_0447": ("Hook",),
-        ".group_0448": ("CheckImmutableReleases",),
-        ".group_0449": (
+        ".group_0444": ("RepositoryHashAlgorithm",),
+        ".group_0445": ("HookResponse",),
+        ".group_0446": ("Hook",),
+        ".group_0447": ("CheckImmutableReleases",),
+        ".group_0448": (
             "Import",
             "ImportPropProjectChoicesItems",
         ),
-        ".group_0450": ("PorterAuthor",),
-        ".group_0451": ("PorterLargeFile",),
+        ".group_0449": ("PorterAuthor",),
+        ".group_0450": ("PorterLargeFile",),
+        ".group_0451": ("InteractionLimitPullRequestBypassList",),
         ".group_0452": (
             "IssueEvent",
             "IssueEventLabel",

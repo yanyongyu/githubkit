@@ -25,8 +25,9 @@ class OrganizationsOrgSettingsBillingBudgetsPostBodyType(TypedDict):
         Literal["organization", "repository", "multi_user_customer", "user"]
     ]
     budget_entity_name: NotRequired[str]
-    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing"]]
+    budget_type: NotRequired[Literal["BundlePricing", "ProductPricing", "SkuPricing"]]
     budget_product_sku: NotRequired[str]
+    user: NotRequired[str]
 
 
 class OrganizationsOrgSettingsBillingBudgetsPostBodyTypeForResponse(TypedDict):
@@ -41,8 +42,9 @@ class OrganizationsOrgSettingsBillingBudgetsPostBodyTypeForResponse(TypedDict):
         Literal["organization", "repository", "multi_user_customer", "user"]
     ]
     budget_entity_name: NotRequired[str]
-    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing"]]
+    budget_type: NotRequired[Literal["BundlePricing", "ProductPricing", "SkuPricing"]]
     budget_product_sku: NotRequired[str]
+    user: NotRequired[str]
 
 
 class OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlertingType(TypedDict):

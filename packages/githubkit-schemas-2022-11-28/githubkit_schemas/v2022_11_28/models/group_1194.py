@@ -13,7 +13,7 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0281 import WorkflowRun
+from .group_0280 import WorkflowRun
 
 
 class ReposOwnerRepoActionsRunsGetResponse200(GitHubModel):

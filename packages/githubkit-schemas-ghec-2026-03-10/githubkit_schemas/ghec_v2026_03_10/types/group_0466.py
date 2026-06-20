@@ -15,8 +15,8 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0207 import ReactionRollupType, ReactionRollupTypeForResponse
-from .group_0209 import PinnedIssueCommentType, PinnedIssueCommentTypeForResponse
+from .group_0206 import ReactionRollupType, ReactionRollupTypeForResponse
+from .group_0208 import PinnedIssueCommentType, PinnedIssueCommentTypeForResponse
 
 
 class TimelineCommentEventType(TypedDict):

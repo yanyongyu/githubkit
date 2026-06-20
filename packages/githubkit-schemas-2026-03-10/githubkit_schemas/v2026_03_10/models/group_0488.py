@@ -20,7 +20,7 @@ from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0137 import CodespaceMachine
-from .group_0192 import FullRepository
+from .group_0191 import FullRepository
 
 
 class CodespaceWithFullRepository(GitHubModel):

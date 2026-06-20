@@ -9,40 +9,81 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
+from typing import Any, Literal, TypeAlias, Union
 from typing_extensions import NotRequired, TypedDict
 
+from githubkit.typing import UniqueList
 
-class OrganizationActionsVariableType(TypedDict):
-    """Actions Variable for an Organization
 
-    Organization variable for GitHub Actions.
+class ArtifactDeploymentRecordType(TypedDict):
+    """Artifact Deployment Record
+
+    Artifact Metadata Deployment Record
     """
 
-    name: str
-    value: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: NotRequired[str]
+    id: NotRequired[int]
+    digest: NotRequired[str]
+    logical_environment: NotRequired[str]
+    physical_environment: NotRequired[str]
+    cluster: NotRequired[str]
+    deployment_name: NotRequired[str]
+    tags: NotRequired[ArtifactDeploymentRecordPropTagsType]
+    runtime_risks: NotRequired[
+        UniqueList[
+            Literal[
+                "critical-resource",
+                "internet-exposed",
+                "lateral-movement",
+                "sensitive-data",
+            ]
+        ]
+    ]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    attestation_id: NotRequired[Union[int, None]]
 
 
-class OrganizationActionsVariableTypeForResponse(TypedDict):
-    """Actions Variable for an Organization
+class ArtifactDeploymentRecordTypeForResponse(TypedDict):
+    """Artifact Deployment Record
 
-    Organization variable for GitHub Actions.
+    Artifact Metadata Deployment Record
     """
 
-    name: str
-    value: str
-    created_at: str
-    updated_at: str
-    visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: NotRequired[str]
+    id: NotRequired[int]
+    digest: NotRequired[str]
+    logical_environment: NotRequired[str]
+    physical_environment: NotRequired[str]
+    cluster: NotRequired[str]
+    deployment_name: NotRequired[str]
+    tags: NotRequired[ArtifactDeploymentRecordPropTagsTypeForResponse]
+    runtime_risks: NotRequired[
+        UniqueList[
+            Literal[
+                "critical-resource",
+                "internet-exposed",
+                "lateral-movement",
+                "sensitive-data",
+            ]
+        ]
+    ]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    attestation_id: NotRequired[Union[int, None]]
+
+
+ArtifactDeploymentRecordPropTagsType: TypeAlias = dict[str, Any]
+"""ArtifactDeploymentRecordPropTags
+"""
+
+
+ArtifactDeploymentRecordPropTagsTypeForResponse: TypeAlias = dict[str, Any]
+"""ArtifactDeploymentRecordPropTags
+"""
 
 
 __all__ = (
-    "OrganizationActionsVariableType",
-    "OrganizationActionsVariableTypeForResponse",
+    "ArtifactDeploymentRecordPropTagsType",
+    "ArtifactDeploymentRecordPropTagsTypeForResponse",
+    "ArtifactDeploymentRecordType",
+    "ArtifactDeploymentRecordTypeForResponse",
 )

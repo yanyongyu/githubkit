@@ -10,83 +10,63 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Any, TypeAlias, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class GistSimplePropForkOfType(TypedDict):
-    """Gist
+class GistCommentType(TypedDict):
+    """Gist Comment
 
-    Gist
+    A comment made to a gist.
     """
 
-    url: str
-    forks_url: str
-    commits_url: str
-    id: str
+    id: int
     node_id: str
-    git_pull_url: str
-    git_push_url: str
-    html_url: str
-    files: GistSimplePropForkOfPropFilesType
-    public: bool
+    url: str
+    body: str
+    user: Union[None, SimpleUserType]
     created_at: _dt.datetime
     updated_at: _dt.datetime
-    description: Union[str, None]
-    comments: int
-    comments_enabled: NotRequired[bool]
-    user: Union[None, SimpleUserType]
-    comments_url: str
-    owner: NotRequired[Union[None, SimpleUserType]]
-    truncated: NotRequired[bool]
-    forks: NotRequired[list[Any]]
-    history: NotRequired[list[Any]]
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
 
 
-class GistSimplePropForkOfTypeForResponse(TypedDict):
-    """Gist
+class GistCommentTypeForResponse(TypedDict):
+    """Gist Comment
 
-    Gist
+    A comment made to a gist.
     """
 
-    url: str
-    forks_url: str
-    commits_url: str
-    id: str
+    id: int
     node_id: str
-    git_pull_url: str
-    git_push_url: str
-    html_url: str
-    files: GistSimplePropForkOfPropFilesTypeForResponse
-    public: bool
+    url: str
+    body: str
+    user: Union[None, SimpleUserTypeForResponse]
     created_at: str
     updated_at: str
-    description: Union[str, None]
-    comments: int
-    comments_enabled: NotRequired[bool]
-    user: Union[None, SimpleUserTypeForResponse]
-    comments_url: str
-    owner: NotRequired[Union[None, SimpleUserTypeForResponse]]
-    truncated: NotRequired[bool]
-    forks: NotRequired[list[Any]]
-    history: NotRequired[list[Any]]
-
-
-GistSimplePropForkOfPropFilesType: TypeAlias = dict[str, Any]
-"""GistSimplePropForkOfPropFiles
-"""
-
-
-GistSimplePropForkOfPropFilesTypeForResponse: TypeAlias = dict[str, Any]
-"""GistSimplePropForkOfPropFiles
-"""
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
 
 
 __all__ = (
-    "GistSimplePropForkOfPropFilesType",
-    "GistSimplePropForkOfPropFilesTypeForResponse",
-    "GistSimplePropForkOfType",
-    "GistSimplePropForkOfTypeForResponse",
+    "GistCommentType",
+    "GistCommentTypeForResponse",
 )

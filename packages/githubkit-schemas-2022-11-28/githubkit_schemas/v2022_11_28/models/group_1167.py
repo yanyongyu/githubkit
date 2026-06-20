@@ -17,33 +17,33 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0193 import RepositoryRulesetBypassActor
-from .group_0202 import OrgRulesetConditionsOneof0
-from .group_0203 import OrgRulesetConditionsOneof1
-from .group_0204 import OrgRulesetConditionsOneof2
-from .group_0205 import (
+from .group_0192 import RepositoryRulesetBypassActor
+from .group_0201 import OrgRulesetConditionsOneof0
+from .group_0202 import OrgRulesetConditionsOneof1
+from .group_0203 import OrgRulesetConditionsOneof2
+from .group_0204 import (
     RepositoryRuleCreation,
     RepositoryRuleDeletion,
     RepositoryRuleNonFastForward,
     RepositoryRuleRequiredSignatures,
 )
-from .group_0206 import RepositoryRuleUpdate
-from .group_0208 import RepositoryRuleRequiredLinearHistory
-from .group_0211 import RepositoryRuleRequiredDeployments
-from .group_0214 import RepositoryRulePullRequest
-from .group_0216 import RepositoryRuleRequiredStatusChecks
-from .group_0218 import RepositoryRuleCommitMessagePattern
-from .group_0220 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0222 import RepositoryRuleCommitterEmailPattern
-from .group_0224 import RepositoryRuleBranchNamePattern
-from .group_0226 import RepositoryRuleTagNamePattern
-from .group_0229 import RepositoryRuleWorkflows
-from .group_0231 import RepositoryRuleCodeScanning
-from .group_0233 import RepositoryRuleCopilotCodeReview
-from .group_0235 import RepositoryRuleFilePathRestriction
-from .group_0237 import RepositoryRuleMaxFilePathLength
-from .group_0239 import RepositoryRuleFileExtensionRestriction
-from .group_0241 import RepositoryRuleMaxFileSize
+from .group_0205 import RepositoryRuleUpdate
+from .group_0207 import RepositoryRuleRequiredLinearHistory
+from .group_0210 import RepositoryRuleRequiredDeployments
+from .group_0213 import RepositoryRulePullRequest
+from .group_0215 import RepositoryRuleRequiredStatusChecks
+from .group_0217 import RepositoryRuleCommitMessagePattern
+from .group_0219 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0221 import RepositoryRuleCommitterEmailPattern
+from .group_0223 import RepositoryRuleBranchNamePattern
+from .group_0225 import RepositoryRuleTagNamePattern
+from .group_0228 import RepositoryRuleWorkflows
+from .group_0230 import RepositoryRuleCodeScanning
+from .group_0232 import RepositoryRuleCopilotCodeReview
+from .group_0234 import RepositoryRuleFilePathRestriction
+from .group_0236 import RepositoryRuleMaxFilePathLength
+from .group_0238 import RepositoryRuleFileExtensionRestriction
+from .group_0240 import RepositoryRuleMaxFileSize
 
 
 class OrgsOrgRulesetsPostBody(GitHubModel):

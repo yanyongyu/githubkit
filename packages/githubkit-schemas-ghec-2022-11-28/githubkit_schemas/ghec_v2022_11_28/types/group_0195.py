@@ -13,45 +13,43 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class GetCostCenterType(TypedDict):
-    """GetCostCenter"""
+class UpdateCostCenterType(TypedDict):
+    """UpdateCostCenter"""
 
     id: str
     name: str
     azure_subscription: NotRequired[Union[str, None]]
     state: NotRequired[Literal["active", "deleted"]]
-    resources: list[GetCostCenterPropResourcesItemsType]
-    has_next_page: NotRequired[bool]
+    resources: list[UpdateCostCenterPropResourcesItemsType]
 
 
-class GetCostCenterTypeForResponse(TypedDict):
-    """GetCostCenter"""
+class UpdateCostCenterTypeForResponse(TypedDict):
+    """UpdateCostCenter"""
 
     id: str
     name: str
     azure_subscription: NotRequired[Union[str, None]]
     state: NotRequired[Literal["active", "deleted"]]
-    resources: list[GetCostCenterPropResourcesItemsTypeForResponse]
-    has_next_page: NotRequired[bool]
+    resources: list[UpdateCostCenterPropResourcesItemsTypeForResponse]
 
 
-class GetCostCenterPropResourcesItemsType(TypedDict):
-    """GetCostCenterPropResourcesItems"""
+class UpdateCostCenterPropResourcesItemsType(TypedDict):
+    """UpdateCostCenterPropResourcesItems"""
 
     type: str
     name: str
 
 
-class GetCostCenterPropResourcesItemsTypeForResponse(TypedDict):
-    """GetCostCenterPropResourcesItems"""
+class UpdateCostCenterPropResourcesItemsTypeForResponse(TypedDict):
+    """UpdateCostCenterPropResourcesItems"""
 
     type: str
     name: str
 
 
 __all__ = (
-    "GetCostCenterPropResourcesItemsType",
-    "GetCostCenterPropResourcesItemsTypeForResponse",
-    "GetCostCenterType",
-    "GetCostCenterTypeForResponse",
+    "UpdateCostCenterPropResourcesItemsType",
+    "UpdateCostCenterPropResourcesItemsTypeForResponse",
+    "UpdateCostCenterType",
+    "UpdateCostCenterTypeForResponse",
 )

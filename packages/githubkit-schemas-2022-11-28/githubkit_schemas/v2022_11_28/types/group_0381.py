@@ -9,58 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class GitTreeType(TypedDict):
-    """Git Tree
+class RepositoryHashAlgorithmType(TypedDict):
+    """Repository hash algorithm
 
-    The hierarchy between files in a Git repository.
+    Repository hash algorithm
     """
 
-    sha: str
-    url: NotRequired[str]
-    truncated: bool
-    tree: list[GitTreePropTreeItemsType]
+    hash_algorithm: Literal["sha1", "sha256"]
 
 
-class GitTreeTypeForResponse(TypedDict):
-    """Git Tree
+class RepositoryHashAlgorithmTypeForResponse(TypedDict):
+    """Repository hash algorithm
 
-    The hierarchy between files in a Git repository.
+    Repository hash algorithm
     """
 
-    sha: str
-    url: NotRequired[str]
-    truncated: bool
-    tree: list[GitTreePropTreeItemsTypeForResponse]
-
-
-class GitTreePropTreeItemsType(TypedDict):
-    """GitTreePropTreeItems"""
-
-    path: str
-    mode: str
-    type: str
-    sha: str
-    size: NotRequired[int]
-    url: NotRequired[str]
-
-
-class GitTreePropTreeItemsTypeForResponse(TypedDict):
-    """GitTreePropTreeItems"""
-
-    path: str
-    mode: str
-    type: str
-    sha: str
-    size: NotRequired[int]
-    url: NotRequired[str]
+    hash_algorithm: Literal["sha1", "sha256"]
 
 
 __all__ = (
-    "GitTreePropTreeItemsType",
-    "GitTreePropTreeItemsTypeForResponse",
-    "GitTreeType",
-    "GitTreeTypeForResponse",
+    "RepositoryHashAlgorithmType",
+    "RepositoryHashAlgorithmTypeForResponse",
 )

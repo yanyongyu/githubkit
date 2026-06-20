@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0183 import (
+from .group_0182 import (
     ProjectsV2FieldSingleSelectOptionType,
     ProjectsV2FieldSingleSelectOptionTypeForResponse,
 )

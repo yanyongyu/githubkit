@@ -19,8 +19,8 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0010 import Integration
-from .group_0213 import PullRequestMinimal
-from .group_0245 import MinimalRepository
+from .group_0212 import PullRequestMinimal
+from .group_0244 import MinimalRepository
 
 
 class SimpleCheckSuite(GitHubModel):

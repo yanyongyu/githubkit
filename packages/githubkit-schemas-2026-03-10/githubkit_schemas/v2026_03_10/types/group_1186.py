@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0274 import ActionsSecretType, ActionsSecretTypeForResponse
+from .group_0273 import ActionsSecretType, ActionsSecretTypeForResponse
 
 
 class ReposOwnerRepoActionsOrganizationSecretsGetResponse200Type(TypedDict):

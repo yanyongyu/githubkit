@@ -13,7 +13,7 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0359 import DependabotAlertType, DependabotAlertTypeForResponse
+from .group_0358 import DependabotAlertType, DependabotAlertTypeForResponse
 from .group_0503 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
 from .group_0504 import SimpleInstallationType, SimpleInstallationTypeForResponse
 from .group_0505 import (

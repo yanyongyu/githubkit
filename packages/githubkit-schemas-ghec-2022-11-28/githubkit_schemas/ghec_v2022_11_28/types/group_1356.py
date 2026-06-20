@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0337 import ArtifactType, ArtifactTypeForResponse
+from .group_0336 import ArtifactType, ArtifactTypeForResponse
 
 
 class ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200Type(TypedDict):

@@ -12,19 +12,31 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class DeploymentBranchPolicyNamePatternType(TypedDict):
-    """Deployment branch policy name pattern"""
+class CustomDeploymentRuleAppType(TypedDict):
+    """Custom deployment protection rule app
 
-    name: str
+    A GitHub App that is providing a custom deployment protection rule.
+    """
+
+    id: int
+    slug: str
+    integration_url: str
+    node_id: str
 
 
-class DeploymentBranchPolicyNamePatternTypeForResponse(TypedDict):
-    """Deployment branch policy name pattern"""
+class CustomDeploymentRuleAppTypeForResponse(TypedDict):
+    """Custom deployment protection rule app
 
-    name: str
+    A GitHub App that is providing a custom deployment protection rule.
+    """
+
+    id: int
+    slug: str
+    integration_url: str
+    node_id: str
 
 
 __all__ = (
-    "DeploymentBranchPolicyNamePatternType",
-    "DeploymentBranchPolicyNamePatternTypeForResponse",
+    "CustomDeploymentRuleAppType",
+    "CustomDeploymentRuleAppTypeForResponse",
 )

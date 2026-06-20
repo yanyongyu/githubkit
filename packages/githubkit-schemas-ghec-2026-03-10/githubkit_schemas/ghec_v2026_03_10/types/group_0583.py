@@ -14,8 +14,8 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0213 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
-from .group_0375 import DeploymentSimpleType, DeploymentSimpleTypeForResponse
+from .group_0212 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
+from .group_0374 import DeploymentSimpleType, DeploymentSimpleTypeForResponse
 from .group_0582 import SimpleCheckSuiteType, SimpleCheckSuiteTypeForResponse
 
 

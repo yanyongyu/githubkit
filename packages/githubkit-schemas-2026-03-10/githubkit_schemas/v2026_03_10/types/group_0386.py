@@ -12,31 +12,27 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class PorterLargeFileType(TypedDict):
-    """Porter Large File
+class InteractionLimitPullRequestBypassListType(TypedDict):
+    """Interaction Limits Pull Request Bypass List
 
-    Porter Large File
+    A list of user logins to add or remove from the pull request creation cap bypass
+    list.
     """
 
-    ref_name: str
-    path: str
-    oid: str
-    size: int
+    users: list[str]
 
 
-class PorterLargeFileTypeForResponse(TypedDict):
-    """Porter Large File
+class InteractionLimitPullRequestBypassListTypeForResponse(TypedDict):
+    """Interaction Limits Pull Request Bypass List
 
-    Porter Large File
+    A list of user logins to add or remove from the pull request creation cap bypass
+    list.
     """
 
-    ref_name: str
-    path: str
-    oid: str
-    size: int
+    users: list[str]
 
 
 __all__ = (
-    "PorterLargeFileType",
-    "PorterLargeFileTypeForResponse",
+    "InteractionLimitPullRequestBypassListType",
+    "InteractionLimitPullRequestBypassListTypeForResponse",
 )

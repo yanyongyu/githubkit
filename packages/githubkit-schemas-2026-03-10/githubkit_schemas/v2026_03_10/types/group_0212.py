@@ -9,22 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRuleRequiredDeploymentsPropParametersType(TypedDict):
-    """RepositoryRuleRequiredDeploymentsPropParameters"""
+class RepositoryRuleParamsDismissalRestrictionType(TypedDict):
+    """DismissalRestriction
 
-    required_deployment_environments: list[str]
+    Specify people, teams, or apps allowed to dismiss pull request reviews.
+    """
+
+    allowed_actors: NotRequired[list[RepositoryRuleParamsActorType]]
+    enabled: bool
 
 
-class RepositoryRuleRequiredDeploymentsPropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleRequiredDeploymentsPropParameters"""
+class RepositoryRuleParamsDismissalRestrictionTypeForResponse(TypedDict):
+    """DismissalRestriction
 
-    required_deployment_environments: list[str]
+    Specify people, teams, or apps allowed to dismiss pull request reviews.
+    """
+
+    allowed_actors: NotRequired[list[RepositoryRuleParamsActorTypeForResponse]]
+    enabled: bool
+
+
+class RepositoryRuleParamsActorType(TypedDict):
+    """Actor
+
+    An actor allowed to dismiss pull request reviews
+    """
+
+    id: int
+    type: Literal["User", "Team", "IntegrationInstallation", "RepositoryRole"]
+
+
+class RepositoryRuleParamsActorTypeForResponse(TypedDict):
+    """Actor
+
+    An actor allowed to dismiss pull request reviews
+    """
+
+    id: int
+    type: Literal["User", "Team", "IntegrationInstallation", "RepositoryRole"]
 
 
 __all__ = (
-    "RepositoryRuleRequiredDeploymentsPropParametersType",
-    "RepositoryRuleRequiredDeploymentsPropParametersTypeForResponse",
+    "RepositoryRuleParamsActorType",
+    "RepositoryRuleParamsActorTypeForResponse",
+    "RepositoryRuleParamsDismissalRestrictionType",
+    "RepositoryRuleParamsDismissalRestrictionTypeForResponse",
 )

@@ -13,48 +13,60 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ContentDirectoryItemsType(TypedDict):
-    """ContentDirectoryItems"""
+class ContentFileType(TypedDict):
+    """Content File
 
-    type: Literal["dir", "file", "submodule", "symlink"]
+    Content File
+    """
+
+    type: Literal["file"]
+    encoding: str
     size: int
     name: str
     path: str
-    content: NotRequired[str]
+    content: str
     sha: str
     url: str
     git_url: Union[str, None]
     html_url: Union[str, None]
     download_url: Union[str, None]
-    links: ContentDirectoryItemsPropLinksType
+    links: ContentFilePropLinksType
+    target: NotRequired[str]
+    submodule_git_url: NotRequired[str]
 
 
-class ContentDirectoryItemsTypeForResponse(TypedDict):
-    """ContentDirectoryItems"""
+class ContentFileTypeForResponse(TypedDict):
+    """Content File
 
-    type: Literal["dir", "file", "submodule", "symlink"]
+    Content File
+    """
+
+    type: Literal["file"]
+    encoding: str
     size: int
     name: str
     path: str
-    content: NotRequired[str]
+    content: str
     sha: str
     url: str
     git_url: Union[str, None]
     html_url: Union[str, None]
     download_url: Union[str, None]
-    links: ContentDirectoryItemsPropLinksTypeForResponse
+    links: ContentFilePropLinksTypeForResponse
+    target: NotRequired[str]
+    submodule_git_url: NotRequired[str]
 
 
-class ContentDirectoryItemsPropLinksType(TypedDict):
-    """ContentDirectoryItemsPropLinks"""
+class ContentFilePropLinksType(TypedDict):
+    """ContentFilePropLinks"""
 
     git: Union[str, None]
     html: Union[str, None]
     self_: str
 
 
-class ContentDirectoryItemsPropLinksTypeForResponse(TypedDict):
-    """ContentDirectoryItemsPropLinks"""
+class ContentFilePropLinksTypeForResponse(TypedDict):
+    """ContentFilePropLinks"""
 
     git: Union[str, None]
     html: Union[str, None]
@@ -62,8 +74,8 @@ class ContentDirectoryItemsPropLinksTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "ContentDirectoryItemsPropLinksType",
-    "ContentDirectoryItemsPropLinksTypeForResponse",
-    "ContentDirectoryItemsType",
-    "ContentDirectoryItemsTypeForResponse",
+    "ContentFilePropLinksType",
+    "ContentFilePropLinksTypeForResponse",
+    "ContentFileType",
+    "ContentFileTypeForResponse",
 )

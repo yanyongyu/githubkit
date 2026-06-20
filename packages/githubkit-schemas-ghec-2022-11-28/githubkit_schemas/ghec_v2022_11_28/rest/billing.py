@@ -466,8 +466,9 @@ class BillingClient:
             "user",
         ],
         budget_entity_name: Missing[str] = UNSET,
-        budget_type: Literal["ProductPricing", "SkuPricing"],
+        budget_type: Literal["BundlePricing", "ProductPricing", "SkuPricing"],
         budget_product_sku: Missing[str] = UNSET,
+        user: Missing[str] = UNSET,
     ) -> Response[CreateBudget, CreateBudgetTypeForResponse]: ...
 
     def create_budget(
@@ -557,8 +558,9 @@ class BillingClient:
             "user",
         ],
         budget_entity_name: Missing[str] = UNSET,
-        budget_type: Literal["ProductPricing", "SkuPricing"],
+        budget_type: Literal["BundlePricing", "ProductPricing", "SkuPricing"],
         budget_product_sku: Missing[str] = UNSET,
+        user: Missing[str] = UNSET,
     ) -> Response[CreateBudget, CreateBudgetTypeForResponse]: ...
 
     async def async_create_budget(
@@ -822,8 +824,11 @@ class BillingClient:
             ]
         ] = UNSET,
         budget_entity_name: Missing[str] = UNSET,
-        budget_type: Missing[Literal["ProductPricing", "SkuPricing"]] = UNSET,
+        budget_type: Missing[
+            Literal["BundlePricing", "ProductPricing", "SkuPricing"]
+        ] = UNSET,
         budget_product_sku: Missing[str] = UNSET,
+        user: Missing[str] = UNSET,
     ) -> Response[UpdateBudget, UpdateBudgetTypeForResponse]: ...
 
     def update_budget(
@@ -923,8 +928,11 @@ class BillingClient:
             ]
         ] = UNSET,
         budget_entity_name: Missing[str] = UNSET,
-        budget_type: Missing[Literal["ProductPricing", "SkuPricing"]] = UNSET,
+        budget_type: Missing[
+            Literal["BundlePricing", "ProductPricing", "SkuPricing"]
+        ] = UNSET,
         budget_product_sku: Missing[str] = UNSET,
+        user: Missing[str] = UNSET,
     ) -> Response[UpdateBudget, UpdateBudgetTypeForResponse]: ...
 
     async def async_update_budget(

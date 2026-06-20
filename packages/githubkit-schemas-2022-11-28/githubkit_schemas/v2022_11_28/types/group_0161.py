@@ -13,49 +13,39 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationUpdateIssueFieldType(TypedDict):
-    """OrganizationUpdateIssueField"""
+class OrganizationCreateIssueTypeType(TypedDict):
+    """OrganizationCreateIssueType"""
 
-    name: NotRequired[str]
+    name: str
+    is_enabled: bool
     description: NotRequired[Union[str, None]]
-    visibility: NotRequired[Literal["organization_members_only", "all"]]
-    options: NotRequired[list[OrganizationUpdateIssueFieldPropOptionsItemsType]]
-
-
-class OrganizationUpdateIssueFieldTypeForResponse(TypedDict):
-    """OrganizationUpdateIssueField"""
-
-    name: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    visibility: NotRequired[Literal["organization_members_only", "all"]]
-    options: NotRequired[
-        list[OrganizationUpdateIssueFieldPropOptionsItemsTypeForResponse]
+    color: NotRequired[
+        Union[
+            None,
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+        ]
     ]
 
 
-class OrganizationUpdateIssueFieldPropOptionsItemsType(TypedDict):
-    """OrganizationUpdateIssueFieldPropOptionsItems"""
+class OrganizationCreateIssueTypeTypeForResponse(TypedDict):
+    """OrganizationCreateIssueType"""
 
-    id: NotRequired[int]
     name: str
+    is_enabled: bool
     description: NotRequired[Union[str, None]]
-    color: Literal["gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"]
-    priority: int
-
-
-class OrganizationUpdateIssueFieldPropOptionsItemsTypeForResponse(TypedDict):
-    """OrganizationUpdateIssueFieldPropOptionsItems"""
-
-    id: NotRequired[int]
-    name: str
-    description: NotRequired[Union[str, None]]
-    color: Literal["gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"]
-    priority: int
+    color: NotRequired[
+        Union[
+            None,
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+        ]
+    ]
 
 
 __all__ = (
-    "OrganizationUpdateIssueFieldPropOptionsItemsType",
-    "OrganizationUpdateIssueFieldPropOptionsItemsTypeForResponse",
-    "OrganizationUpdateIssueFieldType",
-    "OrganizationUpdateIssueFieldTypeForResponse",
+    "OrganizationCreateIssueTypeType",
+    "OrganizationCreateIssueTypeTypeForResponse",
 )

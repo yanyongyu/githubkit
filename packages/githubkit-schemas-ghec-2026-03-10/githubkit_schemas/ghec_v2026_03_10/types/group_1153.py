@@ -32,8 +32,9 @@ class EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyType(TypedDict
         ]
     ]
     budget_entity_name: NotRequired[str]
-    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing"]]
+    budget_type: NotRequired[Literal["BundlePricing", "ProductPricing", "SkuPricing"]]
     budget_product_sku: NotRequired[str]
+    user: NotRequired[str]
 
 
 class EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyTypeForResponse(
@@ -57,8 +58,9 @@ class EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyTypeForRespons
         ]
     ]
     budget_entity_name: NotRequired[str]
-    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing"]]
+    budget_type: NotRequired[Literal["BundlePricing", "ProductPricing", "SkuPricing"]]
     budget_product_sku: NotRequired[str]
+    user: NotRequired[str]
 
 
 class EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType(

@@ -17,36 +17,36 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0114 import RepositoryRulesetBypassActor
-from .group_0127 import EnterpriseRulesetConditionsOneof0
-from .group_0128 import EnterpriseRulesetConditionsOneof1
-from .group_0129 import EnterpriseRulesetConditionsOneof2
-from .group_0130 import EnterpriseRulesetConditionsOneof3
-from .group_0131 import EnterpriseRulesetConditionsOneof4
-from .group_0132 import EnterpriseRulesetConditionsOneof5
-from .group_0133 import (
+from .group_0113 import RepositoryRulesetBypassActor
+from .group_0126 import EnterpriseRulesetConditionsOneof0
+from .group_0127 import EnterpriseRulesetConditionsOneof1
+from .group_0128 import EnterpriseRulesetConditionsOneof2
+from .group_0129 import EnterpriseRulesetConditionsOneof3
+from .group_0130 import EnterpriseRulesetConditionsOneof4
+from .group_0131 import EnterpriseRulesetConditionsOneof5
+from .group_0132 import (
     RepositoryRuleCreation,
     RepositoryRuleDeletion,
     RepositoryRuleNonFastForward,
     RepositoryRuleRequiredSignatures,
 )
-from .group_0134 import RepositoryRuleUpdate
-from .group_0136 import RepositoryRuleRequiredLinearHistory
-from .group_0137 import RepositoryRuleRequiredDeployments
-from .group_0140 import RepositoryRulePullRequest
-from .group_0142 import RepositoryRuleRequiredStatusChecks
-from .group_0144 import RepositoryRuleCommitMessagePattern
-from .group_0146 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0148 import RepositoryRuleCommitterEmailPattern
-from .group_0150 import RepositoryRuleBranchNamePattern
-from .group_0152 import RepositoryRuleTagNamePattern
-from .group_0154 import RepositoryRuleFilePathRestriction
-from .group_0156 import RepositoryRuleMaxFilePathLength
-from .group_0158 import RepositoryRuleFileExtensionRestriction
-from .group_0160 import RepositoryRuleMaxFileSize
-from .group_0163 import RepositoryRuleWorkflows
-from .group_0165 import RepositoryRuleCodeScanning
-from .group_0167 import RepositoryRuleCopilotCodeReview
+from .group_0133 import RepositoryRuleUpdate
+from .group_0135 import RepositoryRuleRequiredLinearHistory
+from .group_0136 import RepositoryRuleRequiredDeployments
+from .group_0139 import RepositoryRulePullRequest
+from .group_0141 import RepositoryRuleRequiredStatusChecks
+from .group_0143 import RepositoryRuleCommitMessagePattern
+from .group_0145 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0147 import RepositoryRuleCommitterEmailPattern
+from .group_0149 import RepositoryRuleBranchNamePattern
+from .group_0151 import RepositoryRuleTagNamePattern
+from .group_0153 import RepositoryRuleFilePathRestriction
+from .group_0155 import RepositoryRuleMaxFilePathLength
+from .group_0157 import RepositoryRuleFileExtensionRestriction
+from .group_0159 import RepositoryRuleMaxFileSize
+from .group_0162 import RepositoryRuleWorkflows
+from .group_0164 import RepositoryRuleCodeScanning
+from .group_0166 import RepositoryRuleCopilotCodeReview
 
 
 class EnterprisesEnterpriseRulesetsRulesetIdPutBody(GitHubModel):

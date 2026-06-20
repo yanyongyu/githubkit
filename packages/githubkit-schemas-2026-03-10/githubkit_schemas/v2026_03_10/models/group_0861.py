@@ -18,7 +18,7 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0259 import RepositoryAdvisory
+from .group_0258 import RepositoryAdvisory
 from .group_0502 import EnterpriseWebhooks
 from .group_0503 import SimpleInstallation
 from .group_0504 import OrganizationSimpleWebhooks

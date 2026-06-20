@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0308 import LinkType, LinkTypeForResponse
+from .group_0307 import LinkType, LinkTypeForResponse
 
 
 class PullRequestPropLinksType(TypedDict):

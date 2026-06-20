@@ -10,59 +10,37 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class ActivityType(TypedDict):
-    """Activity
+class AutolinkType(TypedDict):
+    """Autolink reference
 
-    Activity
+    An autolink reference.
     """
 
     id: int
-    node_id: str
-    before: str
-    after: str
-    ref: str
-    timestamp: _dt.datetime
-    activity_type: Literal[
-        "push",
-        "force_push",
-        "branch_deletion",
-        "branch_creation",
-        "pr_merge",
-        "merge_queue_merge",
-    ]
-    actor: Union[None, SimpleUserType]
+    key_prefix: str
+    url_template: str
+    is_alphanumeric: bool
+    updated_at: NotRequired[Union[_dt.datetime, None]]
 
 
-class ActivityTypeForResponse(TypedDict):
-    """Activity
+class AutolinkTypeForResponse(TypedDict):
+    """Autolink reference
 
-    Activity
+    An autolink reference.
     """
 
     id: int
-    node_id: str
-    before: str
-    after: str
-    ref: str
-    timestamp: str
-    activity_type: Literal[
-        "push",
-        "force_push",
-        "branch_deletion",
-        "branch_creation",
-        "pr_merge",
-        "merge_queue_merge",
-    ]
-    actor: Union[None, SimpleUserTypeForResponse]
+    key_prefix: str
+    url_template: str
+    is_alphanumeric: bool
+    updated_at: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "ActivityType",
-    "ActivityTypeForResponse",
+    "AutolinkType",
+    "AutolinkTypeForResponse",
 )

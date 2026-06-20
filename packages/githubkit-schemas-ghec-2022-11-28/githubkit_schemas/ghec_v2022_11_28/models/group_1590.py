@@ -15,7 +15,7 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0264 import CopilotSpaceCollaboratorAnyof0, CopilotSpaceCollaboratorAnyof1
+from .group_0263 import CopilotSpaceCollaboratorAnyof0, CopilotSpaceCollaboratorAnyof1
 
 
 class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200(GitHubModel):

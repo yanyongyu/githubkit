@@ -17,7 +17,7 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0238 import RepositoryRuleMaxFilePathLengthPropParameters
+from .group_0237 import RepositoryRuleMaxFilePathLengthPropParameters
 
 
 class RepositoryRuleDetailedOneof19(GitHubModel):

@@ -13,7 +13,7 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0254 import OrganizationActionsSecret
+from .group_0253 import OrganizationActionsSecret
 
 
 class OrgsOrgActionsSecretsGetResponse200(GitHubModel):

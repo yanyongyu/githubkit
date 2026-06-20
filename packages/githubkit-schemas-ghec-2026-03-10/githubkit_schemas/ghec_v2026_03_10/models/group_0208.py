@@ -9,32 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class SubIssuesSummary(GitHubModel):
-    """Sub-issues Summary"""
-
-    total: int = Field()
-    completed: int = Field()
-    percent_completed: int = Field()
+from .group_0003 import SimpleUser
 
 
-class IssueDependenciesSummary(GitHubModel):
-    """Issue Dependencies Summary"""
+class PinnedIssueComment(GitHubModel):
+    """Pinned Issue Comment
 
-    blocked_by: int = Field()
-    blocking: int = Field()
-    total_blocked_by: int = Field()
-    total_blocking: int = Field()
+    Context around who pinned an issue comment and when it was pinned.
+    """
+
+    pinned_at: _dt.datetime = Field()
+    pinned_by: Union[None, SimpleUser] = Field()
 
 
-model_rebuild(SubIssuesSummary)
-model_rebuild(IssueDependenciesSummary)
+model_rebuild(PinnedIssueComment)
 
-__all__ = (
-    "IssueDependenciesSummary",
-    "SubIssuesSummary",
-)
+__all__ = ("PinnedIssueComment",)

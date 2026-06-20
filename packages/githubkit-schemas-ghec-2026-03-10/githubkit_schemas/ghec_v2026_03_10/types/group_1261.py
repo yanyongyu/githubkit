@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0262 import CopilotSpaceType, CopilotSpaceTypeForResponse
+from .group_0261 import CopilotSpaceType, CopilotSpaceTypeForResponse
 
 
 class OrgsOrgCopilotSpacesGetResponse200Type(TypedDict):

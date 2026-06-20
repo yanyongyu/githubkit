@@ -13,8 +13,8 @@ from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0245 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
-from .group_0368 import GitUserType, GitUserTypeForResponse
+from .group_0244 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0367 import GitUserType, GitUserTypeForResponse
 from .group_0554 import (
     SearchResultTextMatchesItemsType,
     SearchResultTextMatchesItemsTypeForResponse,

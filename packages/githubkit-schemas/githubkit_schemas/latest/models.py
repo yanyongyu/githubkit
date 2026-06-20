@@ -982,43 +982,6 @@ if TYPE_CHECKING or is_lazy_disabled():
         ConvertedNoteToIssueIssueEventPropProjectCard as ConvertedNoteToIssueIssueEventPropProjectCard,
     )
     from githubkit_schemas.v2026_03_10.models import (
-        CopilotDotcomChat as CopilotDotcomChat,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
-        CopilotDotcomChatPropModelsItems as CopilotDotcomChatPropModelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
-        CopilotDotcomPullRequests as CopilotDotcomPullRequests,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
-        CopilotDotcomPullRequestsPropRepositoriesItems as CopilotDotcomPullRequestsPropRepositoriesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
-        CopilotDotcomPullRequestsPropRepositoriesItemsPropModelsItems as CopilotDotcomPullRequestsPropRepositoriesItemsPropModelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import CopilotIdeChat as CopilotIdeChat
-    from githubkit_schemas.v2026_03_10.models import (
-        CopilotIdeChatPropEditorsItems as CopilotIdeChatPropEditorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
-        CopilotIdeChatPropEditorsItemsPropModelsItems as CopilotIdeChatPropEditorsItemsPropModelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
-        CopilotIdeCodeCompletions as CopilotIdeCodeCompletions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
-        CopilotIdeCodeCompletionsPropEditorsItems as CopilotIdeCodeCompletionsPropEditorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
-        CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItems as CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
-        CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsPropLanguagesItems as CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsPropLanguagesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
-        CopilotIdeCodeCompletionsPropLanguagesItems as CopilotIdeCodeCompletionsPropLanguagesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CopilotOrganizationContentExclusionDetails as CopilotOrganizationContentExclusionDetails,
     )
     from githubkit_schemas.v2026_03_10.models import (
@@ -1057,9 +1020,6 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.models import (
         CopilotUsageMetrics28DayReport as CopilotUsageMetrics28DayReport,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
-        CopilotUsageMetricsDay as CopilotUsageMetricsDay,
     )
     from githubkit_schemas.v2026_03_10.models import CreateBudget as CreateBudget
     from githubkit_schemas.v2026_03_10.models import (
@@ -1505,6 +1465,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.models import (
         InteractionLimit as InteractionLimit,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        InteractionLimitPullRequestBypassList as InteractionLimitPullRequestBypassList,
     )
     from githubkit_schemas.v2026_03_10.models import (
         InteractionLimitResponse as InteractionLimitResponse,
@@ -11221,20 +11184,6 @@ else:
             "EnterpriseTeam",
             "OrgsOrgCopilotBillingSeatsGetResponse200",
             "CopilotOrganizationContentExclusionDetails",
-            "CopilotUsageMetricsDay",
-            "CopilotDotcomChat",
-            "CopilotDotcomChatPropModelsItems",
-            "CopilotIdeChat",
-            "CopilotIdeChatPropEditorsItems",
-            "CopilotIdeChatPropEditorsItemsPropModelsItems",
-            "CopilotDotcomPullRequests",
-            "CopilotDotcomPullRequestsPropRepositoriesItems",
-            "CopilotDotcomPullRequestsPropRepositoriesItemsPropModelsItems",
-            "CopilotIdeCodeCompletions",
-            "CopilotIdeCodeCompletionsPropLanguagesItems",
-            "CopilotIdeCodeCompletionsPropEditorsItems",
-            "CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItems",
-            "CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsPropLanguagesItems",
             "DependabotPublicKey",
             "Package",
             "OrganizationInvitation",
@@ -11667,6 +11616,7 @@ else:
             "ImportPropProjectChoicesItems",
             "PorterAuthor",
             "PorterLargeFile",
+            "InteractionLimitPullRequestBypassList",
             "IssueEvent",
             "IssueEventLabel",
             "IssueEventDismissedReview",

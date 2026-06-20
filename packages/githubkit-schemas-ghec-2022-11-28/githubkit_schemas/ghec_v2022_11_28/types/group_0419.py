@@ -9,205 +9,100 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class FileCommitType(TypedDict):
-    """File Commit
+class RepositoryRuleViolationErrorType(TypedDict):
+    """RepositoryRuleViolationError
 
-    File Commit
+    Repository rule violation was detected
     """
 
-    content: Union[FileCommitPropContentType, None]
-    commit: FileCommitPropCommitType
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
+    status: NotRequired[str]
+    metadata: NotRequired[RepositoryRuleViolationErrorPropMetadataType]
 
 
-class FileCommitTypeForResponse(TypedDict):
-    """File Commit
+class RepositoryRuleViolationErrorTypeForResponse(TypedDict):
+    """RepositoryRuleViolationError
 
-    File Commit
+    Repository rule violation was detected
     """
 
-    content: Union[FileCommitPropContentTypeForResponse, None]
-    commit: FileCommitPropCommitTypeForResponse
-
-
-class FileCommitPropContentType(TypedDict):
-    """FileCommitPropContent"""
-
-    name: NotRequired[str]
-    path: NotRequired[str]
-    sha: NotRequired[str]
-    size: NotRequired[int]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    git_url: NotRequired[str]
-    download_url: NotRequired[str]
-    type: NotRequired[str]
-    links: NotRequired[FileCommitPropContentPropLinksType]
-
-
-class FileCommitPropContentTypeForResponse(TypedDict):
-    """FileCommitPropContent"""
-
-    name: NotRequired[str]
-    path: NotRequired[str]
-    sha: NotRequired[str]
-    size: NotRequired[int]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    git_url: NotRequired[str]
-    download_url: NotRequired[str]
-    type: NotRequired[str]
-    links: NotRequired[FileCommitPropContentPropLinksTypeForResponse]
-
-
-class FileCommitPropContentPropLinksType(TypedDict):
-    """FileCommitPropContentPropLinks"""
-
-    self_: NotRequired[str]
-    git: NotRequired[str]
-    html: NotRequired[str]
-
-
-class FileCommitPropContentPropLinksTypeForResponse(TypedDict):
-    """FileCommitPropContentPropLinks"""
-
-    self_: NotRequired[str]
-    git: NotRequired[str]
-    html: NotRequired[str]
-
-
-class FileCommitPropCommitType(TypedDict):
-    """FileCommitPropCommit"""
-
-    sha: NotRequired[str]
-    node_id: NotRequired[str]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    author: NotRequired[FileCommitPropCommitPropAuthorType]
-    committer: NotRequired[FileCommitPropCommitPropCommitterType]
     message: NotRequired[str]
-    tree: NotRequired[FileCommitPropCommitPropTreeType]
-    parents: NotRequired[list[FileCommitPropCommitPropParentsItemsType]]
-    verification: NotRequired[FileCommitPropCommitPropVerificationType]
+    documentation_url: NotRequired[str]
+    status: NotRequired[str]
+    metadata: NotRequired[RepositoryRuleViolationErrorPropMetadataTypeForResponse]
 
 
-class FileCommitPropCommitTypeForResponse(TypedDict):
-    """FileCommitPropCommit"""
+class RepositoryRuleViolationErrorPropMetadataType(TypedDict):
+    """RepositoryRuleViolationErrorPropMetadata"""
 
-    sha: NotRequired[str]
-    node_id: NotRequired[str]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    author: NotRequired[FileCommitPropCommitPropAuthorTypeForResponse]
-    committer: NotRequired[FileCommitPropCommitPropCommitterTypeForResponse]
-    message: NotRequired[str]
-    tree: NotRequired[FileCommitPropCommitPropTreeTypeForResponse]
-    parents: NotRequired[list[FileCommitPropCommitPropParentsItemsTypeForResponse]]
-    verification: NotRequired[FileCommitPropCommitPropVerificationTypeForResponse]
+    secret_scanning: NotRequired[
+        RepositoryRuleViolationErrorPropMetadataPropSecretScanningType
+    ]
 
 
-class FileCommitPropCommitPropAuthorType(TypedDict):
-    """FileCommitPropCommitPropAuthor"""
+class RepositoryRuleViolationErrorPropMetadataTypeForResponse(TypedDict):
+    """RepositoryRuleViolationErrorPropMetadata"""
 
-    date: NotRequired[str]
-    name: NotRequired[str]
-    email: NotRequired[str]
-
-
-class FileCommitPropCommitPropAuthorTypeForResponse(TypedDict):
-    """FileCommitPropCommitPropAuthor"""
-
-    date: NotRequired[str]
-    name: NotRequired[str]
-    email: NotRequired[str]
+    secret_scanning: NotRequired[
+        RepositoryRuleViolationErrorPropMetadataPropSecretScanningTypeForResponse
+    ]
 
 
-class FileCommitPropCommitPropCommitterType(TypedDict):
-    """FileCommitPropCommitPropCommitter"""
+class RepositoryRuleViolationErrorPropMetadataPropSecretScanningType(TypedDict):
+    """RepositoryRuleViolationErrorPropMetadataPropSecretScanning"""
 
-    date: NotRequired[str]
-    name: NotRequired[str]
-    email: NotRequired[str]
-
-
-class FileCommitPropCommitPropCommitterTypeForResponse(TypedDict):
-    """FileCommitPropCommitPropCommitter"""
-
-    date: NotRequired[str]
-    name: NotRequired[str]
-    email: NotRequired[str]
+    bypass_placeholders: NotRequired[
+        list[
+            RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsType
+        ]
+    ]
 
 
-class FileCommitPropCommitPropTreeType(TypedDict):
-    """FileCommitPropCommitPropTree"""
+class RepositoryRuleViolationErrorPropMetadataPropSecretScanningTypeForResponse(
+    TypedDict
+):
+    """RepositoryRuleViolationErrorPropMetadataPropSecretScanning"""
 
-    url: NotRequired[str]
-    sha: NotRequired[str]
-
-
-class FileCommitPropCommitPropTreeTypeForResponse(TypedDict):
-    """FileCommitPropCommitPropTree"""
-
-    url: NotRequired[str]
-    sha: NotRequired[str]
+    bypass_placeholders: NotRequired[
+        list[
+            RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsTypeForResponse
+        ]
+    ]
 
 
-class FileCommitPropCommitPropParentsItemsType(TypedDict):
-    """FileCommitPropCommitPropParentsItems"""
+class RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsType(
+    TypedDict
+):
+    """RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholders
+    Items
+    """
 
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    sha: NotRequired[str]
-
-
-class FileCommitPropCommitPropParentsItemsTypeForResponse(TypedDict):
-    """FileCommitPropCommitPropParentsItems"""
-
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    sha: NotRequired[str]
+    placeholder_id: NotRequired[str]
+    token_type: NotRequired[str]
 
 
-class FileCommitPropCommitPropVerificationType(TypedDict):
-    """FileCommitPropCommitPropVerification"""
+class RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsTypeForResponse(
+    TypedDict
+):
+    """RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholders
+    Items
+    """
 
-    verified: NotRequired[bool]
-    reason: NotRequired[str]
-    signature: NotRequired[Union[str, None]]
-    payload: NotRequired[Union[str, None]]
-    verified_at: NotRequired[Union[str, None]]
-
-
-class FileCommitPropCommitPropVerificationTypeForResponse(TypedDict):
-    """FileCommitPropCommitPropVerification"""
-
-    verified: NotRequired[bool]
-    reason: NotRequired[str]
-    signature: NotRequired[Union[str, None]]
-    payload: NotRequired[Union[str, None]]
-    verified_at: NotRequired[Union[str, None]]
+    placeholder_id: NotRequired[str]
+    token_type: NotRequired[str]
 
 
 __all__ = (
-    "FileCommitPropCommitPropAuthorType",
-    "FileCommitPropCommitPropAuthorTypeForResponse",
-    "FileCommitPropCommitPropCommitterType",
-    "FileCommitPropCommitPropCommitterTypeForResponse",
-    "FileCommitPropCommitPropParentsItemsType",
-    "FileCommitPropCommitPropParentsItemsTypeForResponse",
-    "FileCommitPropCommitPropTreeType",
-    "FileCommitPropCommitPropTreeTypeForResponse",
-    "FileCommitPropCommitPropVerificationType",
-    "FileCommitPropCommitPropVerificationTypeForResponse",
-    "FileCommitPropCommitType",
-    "FileCommitPropCommitTypeForResponse",
-    "FileCommitPropContentPropLinksType",
-    "FileCommitPropContentPropLinksTypeForResponse",
-    "FileCommitPropContentType",
-    "FileCommitPropContentTypeForResponse",
-    "FileCommitType",
-    "FileCommitTypeForResponse",
+    "RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsType",
+    "RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsTypeForResponse",
+    "RepositoryRuleViolationErrorPropMetadataPropSecretScanningType",
+    "RepositoryRuleViolationErrorPropMetadataPropSecretScanningTypeForResponse",
+    "RepositoryRuleViolationErrorPropMetadataType",
+    "RepositoryRuleViolationErrorPropMetadataTypeForResponse",
+    "RepositoryRuleViolationErrorType",
+    "RepositoryRuleViolationErrorTypeForResponse",
 )

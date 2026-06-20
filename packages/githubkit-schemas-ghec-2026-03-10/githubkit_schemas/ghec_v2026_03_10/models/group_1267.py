@@ -13,7 +13,7 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0265 import CopilotSpaceResource
+from .group_0264 import CopilotSpaceResource
 
 
 class OrgsOrgCopilotSpacesSpaceNumberResourcesGetResponse200(GitHubModel):

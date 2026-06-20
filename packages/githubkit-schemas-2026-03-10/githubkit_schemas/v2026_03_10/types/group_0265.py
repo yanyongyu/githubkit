@@ -9,84 +9,74 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class RateLimitOverviewType(TypedDict):
-    """Rate Limit Overview
+class ArtifactType(TypedDict):
+    """Artifact
 
-    Rate Limit Overview
+    An artifact
     """
 
-    resources: RateLimitOverviewPropResourcesType
+    id: int
+    node_id: str
+    name: str
+    size_in_bytes: int
+    url: str
+    archive_download_url: str
+    expired: bool
+    created_at: Union[_dt.datetime, None]
+    expires_at: Union[_dt.datetime, None]
+    updated_at: Union[_dt.datetime, None]
+    digest: NotRequired[Union[str, None]]
+    workflow_run: NotRequired[Union[ArtifactPropWorkflowRunType, None]]
 
 
-class RateLimitOverviewTypeForResponse(TypedDict):
-    """Rate Limit Overview
+class ArtifactTypeForResponse(TypedDict):
+    """Artifact
 
-    Rate Limit Overview
+    An artifact
     """
 
-    resources: RateLimitOverviewPropResourcesTypeForResponse
+    id: int
+    node_id: str
+    name: str
+    size_in_bytes: int
+    url: str
+    archive_download_url: str
+    expired: bool
+    created_at: Union[str, None]
+    expires_at: Union[str, None]
+    updated_at: Union[str, None]
+    digest: NotRequired[Union[str, None]]
+    workflow_run: NotRequired[Union[ArtifactPropWorkflowRunTypeForResponse, None]]
 
 
-class RateLimitOverviewPropResourcesType(TypedDict):
-    """RateLimitOverviewPropResources"""
+class ArtifactPropWorkflowRunType(TypedDict):
+    """ArtifactPropWorkflowRun"""
 
-    core: RateLimitType
-    graphql: NotRequired[RateLimitType]
-    search: RateLimitType
-    code_search: NotRequired[RateLimitType]
-    source_import: NotRequired[RateLimitType]
-    integration_manifest: NotRequired[RateLimitType]
-    code_scanning_upload: NotRequired[RateLimitType]
-    actions_runner_registration: NotRequired[RateLimitType]
-    scim: NotRequired[RateLimitType]
-    dependency_snapshots: NotRequired[RateLimitType]
-    dependency_sbom: NotRequired[RateLimitType]
-    code_scanning_autofix: NotRequired[RateLimitType]
+    id: NotRequired[int]
+    repository_id: NotRequired[int]
+    head_repository_id: NotRequired[int]
+    head_branch: NotRequired[str]
+    head_sha: NotRequired[str]
 
 
-class RateLimitOverviewPropResourcesTypeForResponse(TypedDict):
-    """RateLimitOverviewPropResources"""
+class ArtifactPropWorkflowRunTypeForResponse(TypedDict):
+    """ArtifactPropWorkflowRun"""
 
-    core: RateLimitTypeForResponse
-    graphql: NotRequired[RateLimitTypeForResponse]
-    search: RateLimitTypeForResponse
-    code_search: NotRequired[RateLimitTypeForResponse]
-    source_import: NotRequired[RateLimitTypeForResponse]
-    integration_manifest: NotRequired[RateLimitTypeForResponse]
-    code_scanning_upload: NotRequired[RateLimitTypeForResponse]
-    actions_runner_registration: NotRequired[RateLimitTypeForResponse]
-    scim: NotRequired[RateLimitTypeForResponse]
-    dependency_snapshots: NotRequired[RateLimitTypeForResponse]
-    dependency_sbom: NotRequired[RateLimitTypeForResponse]
-    code_scanning_autofix: NotRequired[RateLimitTypeForResponse]
-
-
-class RateLimitType(TypedDict):
-    """Rate Limit"""
-
-    limit: int
-    remaining: int
-    reset: int
-    used: int
-
-
-class RateLimitTypeForResponse(TypedDict):
-    """Rate Limit"""
-
-    limit: int
-    remaining: int
-    reset: int
-    used: int
+    id: NotRequired[int]
+    repository_id: NotRequired[int]
+    head_repository_id: NotRequired[int]
+    head_branch: NotRequired[str]
+    head_sha: NotRequired[str]
 
 
 __all__ = (
-    "RateLimitOverviewPropResourcesType",
-    "RateLimitOverviewPropResourcesTypeForResponse",
-    "RateLimitOverviewType",
-    "RateLimitOverviewTypeForResponse",
-    "RateLimitType",
-    "RateLimitTypeForResponse",
+    "ArtifactPropWorkflowRunType",
+    "ArtifactPropWorkflowRunTypeForResponse",
+    "ArtifactType",
+    "ArtifactTypeForResponse",
 )

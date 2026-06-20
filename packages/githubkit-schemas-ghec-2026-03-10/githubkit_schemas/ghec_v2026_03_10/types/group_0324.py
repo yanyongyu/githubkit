@@ -9,126 +9,81 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class RuleSuitePullRequestType(TypedDict):
-    """Pull request rule suite metadata
+class RuleSuiteRequiredStatusChecksType(TypedDict):
+    """Required status checks rule suite metadata
 
-    Metadata for a pull request rule evaluation result.
+    Metadata for a required status checks rule evaluation result.
     """
 
-    pull_request: NotRequired[RuleSuitePullRequestPropPullRequestType]
+    checks: NotRequired[list[RuleSuiteRequiredStatusChecksPropChecksItemsType]]
 
 
-class RuleSuitePullRequestTypeForResponse(TypedDict):
-    """Pull request rule suite metadata
+class RuleSuiteRequiredStatusChecksTypeForResponse(TypedDict):
+    """Required status checks rule suite metadata
 
-    Metadata for a pull request rule evaluation result.
+    Metadata for a required status checks rule evaluation result.
     """
 
-    pull_request: NotRequired[RuleSuitePullRequestPropPullRequestTypeForResponse]
-
-
-class RuleSuitePullRequestPropPullRequestType(TypedDict):
-    """RuleSuitePullRequestPropPullRequest
-
-    The pull request associated with the rule evaluation.
-    """
-
-    id: NotRequired[int]
-    number: NotRequired[int]
-    user: NotRequired[RuleSuitePullRequestPropPullRequestPropUserType]
-    reviews: NotRequired[list[RuleSuitePullRequestPropPullRequestPropReviewsItemsType]]
-
-
-class RuleSuitePullRequestPropPullRequestTypeForResponse(TypedDict):
-    """RuleSuitePullRequestPropPullRequest
-
-    The pull request associated with the rule evaluation.
-    """
-
-    id: NotRequired[int]
-    number: NotRequired[int]
-    user: NotRequired[RuleSuitePullRequestPropPullRequestPropUserTypeForResponse]
-    reviews: NotRequired[
-        list[RuleSuitePullRequestPropPullRequestPropReviewsItemsTypeForResponse]
+    checks: NotRequired[
+        list[RuleSuiteRequiredStatusChecksPropChecksItemsTypeForResponse]
     ]
 
 
-class RuleSuitePullRequestPropPullRequestPropUserType(TypedDict):
-    """RuleSuitePullRequestPropPullRequestPropUser
-
-    The user who created the pull request.
-    """
+class RuleSuiteRequiredStatusChecksPropChecksItemsType(TypedDict):
+    """RuleSuiteRequiredStatusChecksPropChecksItems"""
 
     id: NotRequired[int]
-    login: NotRequired[str]
-    type: NotRequired[str]
-
-
-class RuleSuitePullRequestPropPullRequestPropUserTypeForResponse(TypedDict):
-    """RuleSuitePullRequestPropPullRequestPropUser
-
-    The user who created the pull request.
-    """
-
-    id: NotRequired[int]
-    login: NotRequired[str]
-    type: NotRequired[str]
-
-
-class RuleSuitePullRequestPropPullRequestPropReviewsItemsType(TypedDict):
-    """RuleSuitePullRequestPropPullRequestPropReviewsItems"""
-
-    id: NotRequired[int]
-    user: NotRequired[RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserType]
+    context: NotRequired[str]
     state: NotRequired[str]
-
-
-class RuleSuitePullRequestPropPullRequestPropReviewsItemsTypeForResponse(TypedDict):
-    """RuleSuitePullRequestPropPullRequestPropReviewsItems"""
-
-    id: NotRequired[int]
-    user: NotRequired[
-        RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserTypeForResponse
+    type: NotRequired[str]
+    app: NotRequired[
+        Union[RuleSuiteRequiredStatusChecksPropChecksItemsPropAppType, None]
     ]
+
+
+class RuleSuiteRequiredStatusChecksPropChecksItemsTypeForResponse(TypedDict):
+    """RuleSuiteRequiredStatusChecksPropChecksItems"""
+
+    id: NotRequired[int]
+    context: NotRequired[str]
     state: NotRequired[str]
+    type: NotRequired[str]
+    app: NotRequired[
+        Union[RuleSuiteRequiredStatusChecksPropChecksItemsPropAppTypeForResponse, None]
+    ]
 
 
-class RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserType(TypedDict):
-    """RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser
+class RuleSuiteRequiredStatusChecksPropChecksItemsPropAppType(TypedDict):
+    """RuleSuiteRequiredStatusChecksPropChecksItemsPropApp
 
-    The user who submitted the review.
+    The GitHub App associated with the status check.
     """
 
     id: NotRequired[int]
-    login: NotRequired[str]
-    type: NotRequired[str]
+    slug: NotRequired[str]
+    name: NotRequired[str]
 
 
-class RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserTypeForResponse(
-    TypedDict
-):
-    """RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser
+class RuleSuiteRequiredStatusChecksPropChecksItemsPropAppTypeForResponse(TypedDict):
+    """RuleSuiteRequiredStatusChecksPropChecksItemsPropApp
 
-    The user who submitted the review.
+    The GitHub App associated with the status check.
     """
 
     id: NotRequired[int]
-    login: NotRequired[str]
-    type: NotRequired[str]
+    slug: NotRequired[str]
+    name: NotRequired[str]
 
 
 __all__ = (
-    "RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserType",
-    "RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserTypeForResponse",
-    "RuleSuitePullRequestPropPullRequestPropReviewsItemsType",
-    "RuleSuitePullRequestPropPullRequestPropReviewsItemsTypeForResponse",
-    "RuleSuitePullRequestPropPullRequestPropUserType",
-    "RuleSuitePullRequestPropPullRequestPropUserTypeForResponse",
-    "RuleSuitePullRequestPropPullRequestType",
-    "RuleSuitePullRequestPropPullRequestTypeForResponse",
-    "RuleSuitePullRequestType",
-    "RuleSuitePullRequestTypeForResponse",
+    "RuleSuiteRequiredStatusChecksPropChecksItemsPropAppType",
+    "RuleSuiteRequiredStatusChecksPropChecksItemsPropAppTypeForResponse",
+    "RuleSuiteRequiredStatusChecksPropChecksItemsType",
+    "RuleSuiteRequiredStatusChecksPropChecksItemsTypeForResponse",
+    "RuleSuiteRequiredStatusChecksType",
+    "RuleSuiteRequiredStatusChecksTypeForResponse",
 )

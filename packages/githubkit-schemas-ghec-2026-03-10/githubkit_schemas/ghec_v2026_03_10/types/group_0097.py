@@ -12,41 +12,34 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0092 import (
-    DependabotAlertPackageType,
-    DependabotAlertPackageTypeForResponse,
-)
+from .group_0076 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
 
 
-class DependabotAlertWithRepositoryPropDependencyType(TypedDict):
-    """DependabotAlertWithRepositoryPropDependency
+class DependabotRepositoryAccessDetailsType(TypedDict):
+    """Dependabot Repository Access Details
 
-    Details for the vulnerable dependency.
+    Information about repositories that Dependabot is able to access in an
+    organization
     """
 
-    package: NotRequired[DependabotAlertPackageType]
-    manifest_path: NotRequired[str]
-    scope: NotRequired[Union[None, Literal["development", "runtime"]]]
-    relationship: NotRequired[
-        Union[None, Literal["unknown", "direct", "transitive", "inconclusive"]]
-    ]
+    default_level: NotRequired[Union[None, Literal["public", "internal"]]]
+    accessible_repositories: NotRequired[list[Union[None, SimpleRepositoryType]]]
 
 
-class DependabotAlertWithRepositoryPropDependencyTypeForResponse(TypedDict):
-    """DependabotAlertWithRepositoryPropDependency
+class DependabotRepositoryAccessDetailsTypeForResponse(TypedDict):
+    """Dependabot Repository Access Details
 
-    Details for the vulnerable dependency.
+    Information about repositories that Dependabot is able to access in an
+    organization
     """
 
-    package: NotRequired[DependabotAlertPackageTypeForResponse]
-    manifest_path: NotRequired[str]
-    scope: NotRequired[Union[None, Literal["development", "runtime"]]]
-    relationship: NotRequired[
-        Union[None, Literal["unknown", "direct", "transitive", "inconclusive"]]
+    default_level: NotRequired[Union[None, Literal["public", "internal"]]]
+    accessible_repositories: NotRequired[
+        list[Union[None, SimpleRepositoryTypeForResponse]]
     ]
 
 
 __all__ = (
-    "DependabotAlertWithRepositoryPropDependencyType",
-    "DependabotAlertWithRepositoryPropDependencyTypeForResponse",
+    "DependabotRepositoryAccessDetailsType",
+    "DependabotRepositoryAccessDetailsTypeForResponse",
 )

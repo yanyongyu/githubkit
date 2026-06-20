@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0349 import SimpleCommitType, SimpleCommitTypeForResponse
+from .group_0348 import SimpleCommitType, SimpleCommitTypeForResponse
 
 
 class MergeGroupType(TypedDict):

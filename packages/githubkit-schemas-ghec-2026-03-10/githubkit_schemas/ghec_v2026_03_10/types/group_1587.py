@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0263 import (
+from .group_0262 import (
     CopilotSpaceCollaboratorAnyof0Type,
     CopilotSpaceCollaboratorAnyof0TypeForResponse,
     CopilotSpaceCollaboratorAnyof1Type,

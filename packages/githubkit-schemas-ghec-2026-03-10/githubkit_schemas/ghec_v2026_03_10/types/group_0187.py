@@ -12,67 +12,101 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class AdvancedSecurityActiveCommittersType(TypedDict):
-    """AdvancedSecurityActiveCommitters"""
+class BillingAiCreditUsageReportGheType(TypedDict):
+    """BillingAiCreditUsageReportGhe"""
 
-    total_advanced_security_committers: NotRequired[int]
-    total_count: NotRequired[int]
-    maximum_advanced_security_committers: NotRequired[int]
-    purchased_advanced_security_committers: NotRequired[int]
-    repositories: list[AdvancedSecurityActiveCommittersRepositoryType]
-
-
-class AdvancedSecurityActiveCommittersTypeForResponse(TypedDict):
-    """AdvancedSecurityActiveCommitters"""
-
-    total_advanced_security_committers: NotRequired[int]
-    total_count: NotRequired[int]
-    maximum_advanced_security_committers: NotRequired[int]
-    purchased_advanced_security_committers: NotRequired[int]
-    repositories: list[AdvancedSecurityActiveCommittersRepositoryTypeForResponse]
+    time_period: BillingAiCreditUsageReportGhePropTimePeriodType
+    enterprise: str
+    user: NotRequired[str]
+    organization: NotRequired[str]
+    product: NotRequired[str]
+    model: NotRequired[str]
+    cost_center: NotRequired[BillingAiCreditUsageReportGhePropCostCenterType]
+    usage_items: list[BillingAiCreditUsageReportGhePropUsageItemsItemsType]
 
 
-class AdvancedSecurityActiveCommittersRepositoryType(TypedDict):
-    """AdvancedSecurityActiveCommittersRepository"""
+class BillingAiCreditUsageReportGheTypeForResponse(TypedDict):
+    """BillingAiCreditUsageReportGhe"""
 
+    time_period: BillingAiCreditUsageReportGhePropTimePeriodTypeForResponse
+    enterprise: str
+    user: NotRequired[str]
+    organization: NotRequired[str]
+    product: NotRequired[str]
+    model: NotRequired[str]
+    cost_center: NotRequired[BillingAiCreditUsageReportGhePropCostCenterTypeForResponse]
+    usage_items: list[BillingAiCreditUsageReportGhePropUsageItemsItemsTypeForResponse]
+
+
+class BillingAiCreditUsageReportGhePropTimePeriodType(TypedDict):
+    """BillingAiCreditUsageReportGhePropTimePeriod"""
+
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
+
+
+class BillingAiCreditUsageReportGhePropTimePeriodTypeForResponse(TypedDict):
+    """BillingAiCreditUsageReportGhePropTimePeriod"""
+
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
+
+
+class BillingAiCreditUsageReportGhePropCostCenterType(TypedDict):
+    """BillingAiCreditUsageReportGhePropCostCenter"""
+
+    id: str
     name: str
-    advanced_security_committers: int
-    advanced_security_committers_breakdown: list[
-        AdvancedSecurityActiveCommittersUserType
-    ]
 
 
-class AdvancedSecurityActiveCommittersRepositoryTypeForResponse(TypedDict):
-    """AdvancedSecurityActiveCommittersRepository"""
+class BillingAiCreditUsageReportGhePropCostCenterTypeForResponse(TypedDict):
+    """BillingAiCreditUsageReportGhePropCostCenter"""
 
+    id: str
     name: str
-    advanced_security_committers: int
-    advanced_security_committers_breakdown: list[
-        AdvancedSecurityActiveCommittersUserTypeForResponse
-    ]
 
 
-class AdvancedSecurityActiveCommittersUserType(TypedDict):
-    """AdvancedSecurityActiveCommittersUser"""
+class BillingAiCreditUsageReportGhePropUsageItemsItemsType(TypedDict):
+    """BillingAiCreditUsageReportGhePropUsageItemsItems"""
 
-    user_login: str
-    last_pushed_date: str
-    last_pushed_email: str
+    product: str
+    sku: str
+    model: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: float
+    gross_amount: float
+    discount_quantity: float
+    discount_amount: float
+    net_quantity: float
+    net_amount: float
 
 
-class AdvancedSecurityActiveCommittersUserTypeForResponse(TypedDict):
-    """AdvancedSecurityActiveCommittersUser"""
+class BillingAiCreditUsageReportGhePropUsageItemsItemsTypeForResponse(TypedDict):
+    """BillingAiCreditUsageReportGhePropUsageItemsItems"""
 
-    user_login: str
-    last_pushed_date: str
-    last_pushed_email: str
+    product: str
+    sku: str
+    model: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: float
+    gross_amount: float
+    discount_quantity: float
+    discount_amount: float
+    net_quantity: float
+    net_amount: float
 
 
 __all__ = (
-    "AdvancedSecurityActiveCommittersRepositoryType",
-    "AdvancedSecurityActiveCommittersRepositoryTypeForResponse",
-    "AdvancedSecurityActiveCommittersType",
-    "AdvancedSecurityActiveCommittersTypeForResponse",
-    "AdvancedSecurityActiveCommittersUserType",
-    "AdvancedSecurityActiveCommittersUserTypeForResponse",
+    "BillingAiCreditUsageReportGhePropCostCenterType",
+    "BillingAiCreditUsageReportGhePropCostCenterTypeForResponse",
+    "BillingAiCreditUsageReportGhePropTimePeriodType",
+    "BillingAiCreditUsageReportGhePropTimePeriodTypeForResponse",
+    "BillingAiCreditUsageReportGhePropUsageItemsItemsType",
+    "BillingAiCreditUsageReportGhePropUsageItemsItemsTypeForResponse",
+    "BillingAiCreditUsageReportGheType",
+    "BillingAiCreditUsageReportGheTypeForResponse",
 )

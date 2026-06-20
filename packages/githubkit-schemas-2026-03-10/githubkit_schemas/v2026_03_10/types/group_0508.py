@@ -15,7 +15,7 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
 from .group_0058 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
-from .group_0306 import DeploymentSimpleType, DeploymentSimpleTypeForResponse
+from .group_0305 import DeploymentSimpleType, DeploymentSimpleTypeForResponse
 from .group_0507 import SimpleCheckSuiteType, SimpleCheckSuiteTypeForResponse
 
 

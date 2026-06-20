@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0253 import (
+from .group_0252 import (
     SecretScanningLocationCommitType,
     SecretScanningLocationCommitTypeForResponse,
     SecretScanningLocationDiscussionCommentType,
@@ -28,7 +28,7 @@ from .group_0253 import (
     SecretScanningLocationWikiCommitType,
     SecretScanningLocationWikiCommitTypeForResponse,
 )
-from .group_0254 import (
+from .group_0253 import (
     SecretScanningLocationIssueCommentType,
     SecretScanningLocationIssueCommentTypeForResponse,
     SecretScanningLocationIssueTitleType,
@@ -38,7 +38,7 @@ from .group_0254 import (
     SecretScanningLocationPullRequestTitleType,
     SecretScanningLocationPullRequestTitleTypeForResponse,
 )
-from .group_0255 import (
+from .group_0254 import (
     SecretScanningLocationDiscussionBodyType,
     SecretScanningLocationDiscussionBodyTypeForResponse,
     SecretScanningLocationPullRequestCommentType,

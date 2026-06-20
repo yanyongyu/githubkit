@@ -67,6 +67,7 @@ if TYPE_CHECKING:
         HookDelivery,
         HookDeliveryItem,
         Integration,
+        IssueType,
         Language,
         MergedUpstream,
         MinimalRepository,
@@ -176,6 +177,7 @@ if TYPE_CHECKING:
         HookDeliveryTypeForResponse,
         HookTypeForResponse,
         IntegrationTypeForResponse,
+        IssueTypeTypeForResponse,
         LanguageTypeForResponse,
         MergedUpstreamTypeForResponse,
         MinimalRepositoryTypeForResponse,
@@ -14748,6 +14750,86 @@ class ReposClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=RepositoryInvitation,
+        )
+
+    def list_issue_types(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        list[Union[IssueType, None]], list[Union[IssueTypeTypeForResponse, None]]
+    ]:
+        """repos/list-issue-types
+
+        GET /repos/{owner}/{repo}/issue-types
+
+        Lists issue types available for a repository (inherited from its organization owner, with any per-repository overrides applied).
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+        Fine-grained access tokens require the "Metadata" repository permission (read).
+
+        See also: https://docs.github.com/rest/repos/issue-types#list-issue-types-for-a-repository
+        """
+
+        from typing import Union
+
+        from ..models import BasicError, IssueType
+
+        url = f"/repos/{owner}/{repo}/issue-types"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[Union[IssueType, None]],
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_list_issue_types(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        list[Union[IssueType, None]], list[Union[IssueTypeTypeForResponse, None]]
+    ]:
+        """repos/list-issue-types
+
+        GET /repos/{owner}/{repo}/issue-types
+
+        Lists issue types available for a repository (inherited from its organization owner, with any per-repository overrides applied).
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+        Fine-grained access tokens require the "Metadata" repository permission (read).
+
+        See also: https://docs.github.com/rest/repos/issue-types#list-issue-types-for-a-repository
+        """
+
+        from typing import Union
+
+        from ..models import BasicError, IssueType
+
+        url = f"/repos/{owner}/{repo}/issue-types"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[Union[IssueType, None]],
+            error_models={
+                "404": BasicError,
+            },
         )
 
     def list_deploy_keys(

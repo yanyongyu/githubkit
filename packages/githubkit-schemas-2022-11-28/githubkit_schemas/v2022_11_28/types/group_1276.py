@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0368 import (
+from .group_0367 import (
     DeploymentBranchPolicySettingsType,
     DeploymentBranchPolicySettingsTypeForResponse,
 )

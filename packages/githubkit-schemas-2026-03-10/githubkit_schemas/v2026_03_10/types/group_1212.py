@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0275 import ActionsVariableType, ActionsVariableTypeForResponse
+from .group_0274 import ActionsVariableType, ActionsVariableTypeForResponse
 
 
 class ReposOwnerRepoAgentsVariablesGetResponse200Type(TypedDict):

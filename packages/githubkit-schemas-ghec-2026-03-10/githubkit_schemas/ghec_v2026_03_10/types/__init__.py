@@ -765,3412 +765,3340 @@ if TYPE_CHECKING or is_lazy_disabled():
         CopilotEnterpriseContentExclusionDetailsTypeForResponse as CopilotEnterpriseContentExclusionDetailsTypeForResponse,
     )
     from .group_0089 import (
-        CopilotDotcomChatPropModelsItemsType as CopilotDotcomChatPropModelsItemsType,
-    )
-    from .group_0089 import (
-        CopilotDotcomChatPropModelsItemsTypeForResponse as CopilotDotcomChatPropModelsItemsTypeForResponse,
-    )
-    from .group_0089 import CopilotDotcomChatType as CopilotDotcomChatType
-    from .group_0089 import (
-        CopilotDotcomChatTypeForResponse as CopilotDotcomChatTypeForResponse,
-    )
-    from .group_0089 import (
-        CopilotDotcomPullRequestsPropRepositoriesItemsPropModelsItemsType as CopilotDotcomPullRequestsPropRepositoriesItemsPropModelsItemsType,
-    )
-    from .group_0089 import (
-        CopilotDotcomPullRequestsPropRepositoriesItemsPropModelsItemsTypeForResponse as CopilotDotcomPullRequestsPropRepositoriesItemsPropModelsItemsTypeForResponse,
-    )
-    from .group_0089 import (
-        CopilotDotcomPullRequestsPropRepositoriesItemsType as CopilotDotcomPullRequestsPropRepositoriesItemsType,
-    )
-    from .group_0089 import (
-        CopilotDotcomPullRequestsPropRepositoriesItemsTypeForResponse as CopilotDotcomPullRequestsPropRepositoriesItemsTypeForResponse,
-    )
-    from .group_0089 import (
-        CopilotDotcomPullRequestsType as CopilotDotcomPullRequestsType,
-    )
-    from .group_0089 import (
-        CopilotDotcomPullRequestsTypeForResponse as CopilotDotcomPullRequestsTypeForResponse,
-    )
-    from .group_0089 import (
-        CopilotIdeChatPropEditorsItemsPropModelsItemsType as CopilotIdeChatPropEditorsItemsPropModelsItemsType,
-    )
-    from .group_0089 import (
-        CopilotIdeChatPropEditorsItemsPropModelsItemsTypeForResponse as CopilotIdeChatPropEditorsItemsPropModelsItemsTypeForResponse,
-    )
-    from .group_0089 import (
-        CopilotIdeChatPropEditorsItemsType as CopilotIdeChatPropEditorsItemsType,
-    )
-    from .group_0089 import (
-        CopilotIdeChatPropEditorsItemsTypeForResponse as CopilotIdeChatPropEditorsItemsTypeForResponse,
-    )
-    from .group_0089 import CopilotIdeChatType as CopilotIdeChatType
-    from .group_0089 import (
-        CopilotIdeChatTypeForResponse as CopilotIdeChatTypeForResponse,
-    )
-    from .group_0089 import (
-        CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsPropLanguagesItemsType as CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsPropLanguagesItemsType,
-    )
-    from .group_0089 import (
-        CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsPropLanguagesItemsTypeForResponse as CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsPropLanguagesItemsTypeForResponse,
-    )
-    from .group_0089 import (
-        CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsType as CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsType,
-    )
-    from .group_0089 import (
-        CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsTypeForResponse as CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsTypeForResponse,
-    )
-    from .group_0089 import (
-        CopilotIdeCodeCompletionsPropEditorsItemsType as CopilotIdeCodeCompletionsPropEditorsItemsType,
-    )
-    from .group_0089 import (
-        CopilotIdeCodeCompletionsPropEditorsItemsTypeForResponse as CopilotIdeCodeCompletionsPropEditorsItemsTypeForResponse,
-    )
-    from .group_0089 import (
-        CopilotIdeCodeCompletionsPropLanguagesItemsType as CopilotIdeCodeCompletionsPropLanguagesItemsType,
-    )
-    from .group_0089 import (
-        CopilotIdeCodeCompletionsPropLanguagesItemsTypeForResponse as CopilotIdeCodeCompletionsPropLanguagesItemsTypeForResponse,
-    )
-    from .group_0089 import (
-        CopilotIdeCodeCompletionsType as CopilotIdeCodeCompletionsType,
-    )
-    from .group_0089 import (
-        CopilotIdeCodeCompletionsTypeForResponse as CopilotIdeCodeCompletionsTypeForResponse,
-    )
-    from .group_0089 import CopilotUsageMetricsDayType as CopilotUsageMetricsDayType
-    from .group_0089 import (
-        CopilotUsageMetricsDayTypeForResponse as CopilotUsageMetricsDayTypeForResponse,
-    )
-    from .group_0090 import (
         CopilotUsageMetrics1DayReportType as CopilotUsageMetrics1DayReportType,
     )
-    from .group_0090 import (
+    from .group_0089 import (
         CopilotUsageMetrics1DayReportTypeForResponse as CopilotUsageMetrics1DayReportTypeForResponse,
     )
-    from .group_0091 import (
+    from .group_0090 import (
         CopilotUsageMetrics28DayReportType as CopilotUsageMetrics28DayReportType,
     )
-    from .group_0091 import (
+    from .group_0090 import (
         CopilotUsageMetrics28DayReportTypeForResponse as CopilotUsageMetrics28DayReportTypeForResponse,
     )
-    from .group_0092 import DependabotAlertPackageType as DependabotAlertPackageType
-    from .group_0092 import (
+    from .group_0091 import DependabotAlertPackageType as DependabotAlertPackageType
+    from .group_0091 import (
         DependabotAlertPackageTypeForResponse as DependabotAlertPackageTypeForResponse,
     )
-    from .group_0093 import (
+    from .group_0092 import (
         DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType as DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType,
     )
-    from .group_0093 import (
+    from .group_0092 import (
         DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionTypeForResponse as DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionTypeForResponse,
     )
-    from .group_0093 import (
+    from .group_0092 import (
         DependabotAlertSecurityVulnerabilityType as DependabotAlertSecurityVulnerabilityType,
     )
-    from .group_0093 import (
+    from .group_0092 import (
         DependabotAlertSecurityVulnerabilityTypeForResponse as DependabotAlertSecurityVulnerabilityTypeForResponse,
     )
-    from .group_0094 import (
+    from .group_0093 import (
         DependabotAlertSecurityAdvisoryPropCwesItemsType as DependabotAlertSecurityAdvisoryPropCwesItemsType,
     )
-    from .group_0094 import (
+    from .group_0093 import (
         DependabotAlertSecurityAdvisoryPropCwesItemsTypeForResponse as DependabotAlertSecurityAdvisoryPropCwesItemsTypeForResponse,
     )
-    from .group_0094 import (
+    from .group_0093 import (
         DependabotAlertSecurityAdvisoryPropIdentifiersItemsType as DependabotAlertSecurityAdvisoryPropIdentifiersItemsType,
     )
-    from .group_0094 import (
+    from .group_0093 import (
         DependabotAlertSecurityAdvisoryPropIdentifiersItemsTypeForResponse as DependabotAlertSecurityAdvisoryPropIdentifiersItemsTypeForResponse,
     )
-    from .group_0094 import (
+    from .group_0093 import (
         DependabotAlertSecurityAdvisoryPropReferencesItemsType as DependabotAlertSecurityAdvisoryPropReferencesItemsType,
     )
-    from .group_0094 import (
+    from .group_0093 import (
         DependabotAlertSecurityAdvisoryPropReferencesItemsTypeForResponse as DependabotAlertSecurityAdvisoryPropReferencesItemsTypeForResponse,
     )
-    from .group_0094 import (
+    from .group_0093 import (
         DependabotAlertSecurityAdvisoryType as DependabotAlertSecurityAdvisoryType,
     )
-    from .group_0094 import (
+    from .group_0093 import (
         DependabotAlertSecurityAdvisoryTypeForResponse as DependabotAlertSecurityAdvisoryTypeForResponse,
     )
-    from .group_0095 import (
+    from .group_0094 import (
         DependabotAlertDismissalRequestSimplePropRequesterType as DependabotAlertDismissalRequestSimplePropRequesterType,
     )
-    from .group_0095 import (
+    from .group_0094 import (
         DependabotAlertDismissalRequestSimplePropRequesterTypeForResponse as DependabotAlertDismissalRequestSimplePropRequesterTypeForResponse,
     )
-    from .group_0095 import (
+    from .group_0094 import (
         DependabotAlertDismissalRequestSimpleType as DependabotAlertDismissalRequestSimpleType,
     )
-    from .group_0095 import (
+    from .group_0094 import (
         DependabotAlertDismissalRequestSimpleTypeForResponse as DependabotAlertDismissalRequestSimpleTypeForResponse,
     )
-    from .group_0096 import (
+    from .group_0095 import (
         DependabotAlertWithRepositoryType as DependabotAlertWithRepositoryType,
     )
-    from .group_0096 import (
+    from .group_0095 import (
         DependabotAlertWithRepositoryTypeForResponse as DependabotAlertWithRepositoryTypeForResponse,
     )
-    from .group_0097 import (
+    from .group_0096 import (
         DependabotAlertWithRepositoryPropDependencyType as DependabotAlertWithRepositoryPropDependencyType,
     )
-    from .group_0097 import (
+    from .group_0096 import (
         DependabotAlertWithRepositoryPropDependencyTypeForResponse as DependabotAlertWithRepositoryPropDependencyTypeForResponse,
     )
-    from .group_0098 import (
+    from .group_0097 import (
         DependabotRepositoryAccessDetailsType as DependabotRepositoryAccessDetailsType,
     )
-    from .group_0098 import (
+    from .group_0097 import (
         DependabotRepositoryAccessDetailsTypeForResponse as DependabotRepositoryAccessDetailsTypeForResponse,
     )
-    from .group_0099 import (
+    from .group_0098 import (
         SecretScanningDismissalRequestPropDataItemsType as SecretScanningDismissalRequestPropDataItemsType,
     )
-    from .group_0099 import (
+    from .group_0098 import (
         SecretScanningDismissalRequestPropDataItemsTypeForResponse as SecretScanningDismissalRequestPropDataItemsTypeForResponse,
     )
-    from .group_0099 import (
+    from .group_0098 import (
         SecretScanningDismissalRequestPropOrganizationType as SecretScanningDismissalRequestPropOrganizationType,
     )
-    from .group_0099 import (
+    from .group_0098 import (
         SecretScanningDismissalRequestPropOrganizationTypeForResponse as SecretScanningDismissalRequestPropOrganizationTypeForResponse,
     )
-    from .group_0099 import (
+    from .group_0098 import (
         SecretScanningDismissalRequestPropRepositoryType as SecretScanningDismissalRequestPropRepositoryType,
     )
-    from .group_0099 import (
+    from .group_0098 import (
         SecretScanningDismissalRequestPropRepositoryTypeForResponse as SecretScanningDismissalRequestPropRepositoryTypeForResponse,
     )
-    from .group_0099 import (
+    from .group_0098 import (
         SecretScanningDismissalRequestPropRequesterType as SecretScanningDismissalRequestPropRequesterType,
     )
-    from .group_0099 import (
+    from .group_0098 import (
         SecretScanningDismissalRequestPropRequesterTypeForResponse as SecretScanningDismissalRequestPropRequesterTypeForResponse,
     )
-    from .group_0099 import (
+    from .group_0098 import (
         SecretScanningDismissalRequestType as SecretScanningDismissalRequestType,
     )
-    from .group_0099 import (
+    from .group_0098 import (
         SecretScanningDismissalRequestTypeForResponse as SecretScanningDismissalRequestTypeForResponse,
     )
-    from .group_0100 import EnterpriseRoleType as EnterpriseRoleType
-    from .group_0100 import (
+    from .group_0099 import EnterpriseRoleType as EnterpriseRoleType
+    from .group_0099 import (
         EnterpriseRoleTypeForResponse as EnterpriseRoleTypeForResponse,
     )
-    from .group_0100 import (
+    from .group_0099 import (
         EnterprisesEnterpriseEnterpriseRolesGetResponse200Type as EnterprisesEnterpriseEnterpriseRolesGetResponse200Type,
     )
-    from .group_0100 import (
+    from .group_0099 import (
         EnterprisesEnterpriseEnterpriseRolesGetResponse200TypeForResponse as EnterprisesEnterpriseEnterpriseRolesGetResponse200TypeForResponse,
     )
-    from .group_0101 import (
+    from .group_0100 import (
         EnterpriseUserRoleAssignmentType as EnterpriseUserRoleAssignmentType,
     )
-    from .group_0101 import (
+    from .group_0100 import (
         EnterpriseUserRoleAssignmentTypeForResponse as EnterpriseUserRoleAssignmentTypeForResponse,
     )
-    from .group_0102 import (
+    from .group_0101 import (
         EnterpriseUserRoleAssignmentAllof1Type as EnterpriseUserRoleAssignmentAllof1Type,
     )
-    from .group_0102 import (
+    from .group_0101 import (
         EnterpriseUserRoleAssignmentAllof1TypeForResponse as EnterpriseUserRoleAssignmentAllof1TypeForResponse,
     )
-    from .group_0103 import (
+    from .group_0102 import (
         GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncType as GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncType,
     )
-    from .group_0103 import (
+    from .group_0102 import (
         GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncTypeForResponse as GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncTypeForResponse,
     )
-    from .group_0103 import (
+    from .group_0102 import (
         GetLicenseSyncStatusPropServerInstancesItemsType as GetLicenseSyncStatusPropServerInstancesItemsType,
     )
-    from .group_0103 import (
+    from .group_0102 import (
         GetLicenseSyncStatusPropServerInstancesItemsTypeForResponse as GetLicenseSyncStatusPropServerInstancesItemsTypeForResponse,
     )
-    from .group_0103 import GetLicenseSyncStatusType as GetLicenseSyncStatusType
-    from .group_0103 import (
+    from .group_0102 import GetLicenseSyncStatusType as GetLicenseSyncStatusType
+    from .group_0102 import (
         GetLicenseSyncStatusTypeForResponse as GetLicenseSyncStatusTypeForResponse,
     )
-    from .group_0104 import NetworkConfigurationType as NetworkConfigurationType
-    from .group_0104 import (
+    from .group_0103 import NetworkConfigurationType as NetworkConfigurationType
+    from .group_0103 import (
         NetworkConfigurationTypeForResponse as NetworkConfigurationTypeForResponse,
     )
-    from .group_0105 import NetworkSettingsType as NetworkSettingsType
-    from .group_0105 import (
+    from .group_0104 import NetworkSettingsType as NetworkSettingsType
+    from .group_0104 import (
         NetworkSettingsTypeForResponse as NetworkSettingsTypeForResponse,
     )
-    from .group_0106 import CustomPropertyBaseType as CustomPropertyBaseType
-    from .group_0106 import (
+    from .group_0105 import CustomPropertyBaseType as CustomPropertyBaseType
+    from .group_0105 import (
         CustomPropertyBaseTypeForResponse as CustomPropertyBaseTypeForResponse,
     )
-    from .group_0107 import (
+    from .group_0106 import (
         OrganizationCustomPropertyType as OrganizationCustomPropertyType,
     )
-    from .group_0107 import (
+    from .group_0106 import (
         OrganizationCustomPropertyTypeForResponse as OrganizationCustomPropertyTypeForResponse,
     )
-    from .group_0108 import (
+    from .group_0107 import (
         OrganizationCustomPropertyAllof1Type as OrganizationCustomPropertyAllof1Type,
     )
-    from .group_0108 import (
+    from .group_0107 import (
         OrganizationCustomPropertyAllof1TypeForResponse as OrganizationCustomPropertyAllof1TypeForResponse,
     )
-    from .group_0109 import (
+    from .group_0108 import (
         OrganizationCustomPropertyPayloadType as OrganizationCustomPropertyPayloadType,
     )
-    from .group_0109 import (
+    from .group_0108 import (
         OrganizationCustomPropertyPayloadTypeForResponse as OrganizationCustomPropertyPayloadTypeForResponse,
     )
-    from .group_0110 import CustomPropertyValueType as CustomPropertyValueType
-    from .group_0110 import (
+    from .group_0109 import CustomPropertyValueType as CustomPropertyValueType
+    from .group_0109 import (
         CustomPropertyValueTypeForResponse as CustomPropertyValueTypeForResponse,
     )
-    from .group_0111 import (
+    from .group_0110 import (
         CustomPropertiesForOrgsGetEnterprisePropertyValuesType as CustomPropertiesForOrgsGetEnterprisePropertyValuesType,
     )
-    from .group_0111 import (
+    from .group_0110 import (
         CustomPropertiesForOrgsGetEnterprisePropertyValuesTypeForResponse as CustomPropertiesForOrgsGetEnterprisePropertyValuesTypeForResponse,
     )
-    from .group_0112 import CustomPropertyType as CustomPropertyType
-    from .group_0112 import (
+    from .group_0111 import CustomPropertyType as CustomPropertyType
+    from .group_0111 import (
         CustomPropertyTypeForResponse as CustomPropertyTypeForResponse,
     )
-    from .group_0113 import CustomPropertySetPayloadType as CustomPropertySetPayloadType
-    from .group_0113 import (
+    from .group_0112 import CustomPropertySetPayloadType as CustomPropertySetPayloadType
+    from .group_0112 import (
         CustomPropertySetPayloadTypeForResponse as CustomPropertySetPayloadTypeForResponse,
     )
-    from .group_0114 import (
+    from .group_0113 import (
         RepositoryRulesetBypassActorType as RepositoryRulesetBypassActorType,
     )
-    from .group_0114 import (
+    from .group_0113 import (
         RepositoryRulesetBypassActorTypeForResponse as RepositoryRulesetBypassActorTypeForResponse,
     )
-    from .group_0115 import (
+    from .group_0114 import (
         EnterpriseRulesetConditionsOrganizationNameTargetType as EnterpriseRulesetConditionsOrganizationNameTargetType,
     )
-    from .group_0115 import (
+    from .group_0114 import (
         EnterpriseRulesetConditionsOrganizationNameTargetTypeForResponse as EnterpriseRulesetConditionsOrganizationNameTargetTypeForResponse,
     )
-    from .group_0116 import (
+    from .group_0115 import (
         EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType as EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType,
     )
-    from .group_0116 import (
+    from .group_0115 import (
         EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameTypeForResponse as EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameTypeForResponse,
     )
-    from .group_0117 import (
+    from .group_0116 import (
         RepositoryRulesetConditionsRepositoryNameTargetType as RepositoryRulesetConditionsRepositoryNameTargetType,
     )
-    from .group_0117 import (
+    from .group_0116 import (
         RepositoryRulesetConditionsRepositoryNameTargetTypeForResponse as RepositoryRulesetConditionsRepositoryNameTargetTypeForResponse,
     )
-    from .group_0118 import (
+    from .group_0117 import (
         RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType as RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
     )
-    from .group_0118 import (
+    from .group_0117 import (
         RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse as RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse,
     )
-    from .group_0119 import (
+    from .group_0118 import (
         RepositoryRulesetConditionsType as RepositoryRulesetConditionsType,
     )
-    from .group_0119 import (
+    from .group_0118 import (
         RepositoryRulesetConditionsTypeForResponse as RepositoryRulesetConditionsTypeForResponse,
     )
-    from .group_0120 import (
+    from .group_0119 import (
         RepositoryRulesetConditionsPropRefNameType as RepositoryRulesetConditionsPropRefNameType,
     )
-    from .group_0120 import (
+    from .group_0119 import (
         RepositoryRulesetConditionsPropRefNameTypeForResponse as RepositoryRulesetConditionsPropRefNameTypeForResponse,
     )
-    from .group_0121 import (
+    from .group_0120 import (
         RepositoryRulesetConditionsRepositoryPropertyTargetType as RepositoryRulesetConditionsRepositoryPropertyTargetType,
     )
-    from .group_0121 import (
+    from .group_0120 import (
         RepositoryRulesetConditionsRepositoryPropertyTargetTypeForResponse as RepositoryRulesetConditionsRepositoryPropertyTargetTypeForResponse,
     )
-    from .group_0122 import (
+    from .group_0121 import (
         RepositoryRulesetConditionsRepositoryPropertySpecType as RepositoryRulesetConditionsRepositoryPropertySpecType,
     )
-    from .group_0122 import (
+    from .group_0121 import (
         RepositoryRulesetConditionsRepositoryPropertySpecTypeForResponse as RepositoryRulesetConditionsRepositoryPropertySpecTypeForResponse,
     )
-    from .group_0122 import (
+    from .group_0121 import (
         RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType as RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
     )
-    from .group_0122 import (
+    from .group_0121 import (
         RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse as RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse,
     )
-    from .group_0123 import (
+    from .group_0122 import (
         EnterpriseRulesetConditionsOrganizationIdTargetType as EnterpriseRulesetConditionsOrganizationIdTargetType,
     )
-    from .group_0123 import (
+    from .group_0122 import (
         EnterpriseRulesetConditionsOrganizationIdTargetTypeForResponse as EnterpriseRulesetConditionsOrganizationIdTargetTypeForResponse,
     )
-    from .group_0124 import (
+    from .group_0123 import (
         EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType as EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType,
     )
-    from .group_0124 import (
+    from .group_0123 import (
         EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdTypeForResponse as EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdTypeForResponse,
     )
-    from .group_0125 import (
+    from .group_0124 import (
         EnterpriseRulesetConditionsOrganizationPropertyTargetType as EnterpriseRulesetConditionsOrganizationPropertyTargetType,
     )
-    from .group_0125 import (
+    from .group_0124 import (
         EnterpriseRulesetConditionsOrganizationPropertyTargetTypeForResponse as EnterpriseRulesetConditionsOrganizationPropertyTargetTypeForResponse,
     )
-    from .group_0126 import (
+    from .group_0125 import (
         EnterpriseRulesetConditionsOrganizationPropertySpecType as EnterpriseRulesetConditionsOrganizationPropertySpecType,
     )
-    from .group_0126 import (
+    from .group_0125 import (
         EnterpriseRulesetConditionsOrganizationPropertySpecTypeForResponse as EnterpriseRulesetConditionsOrganizationPropertySpecTypeForResponse,
     )
-    from .group_0126 import (
+    from .group_0125 import (
         EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType as EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType,
     )
-    from .group_0126 import (
+    from .group_0125 import (
         EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse as EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse,
     )
-    from .group_0127 import (
+    from .group_0126 import (
         EnterpriseRulesetConditionsOneof0Type as EnterpriseRulesetConditionsOneof0Type,
     )
-    from .group_0127 import (
+    from .group_0126 import (
         EnterpriseRulesetConditionsOneof0TypeForResponse as EnterpriseRulesetConditionsOneof0TypeForResponse,
     )
-    from .group_0128 import (
+    from .group_0127 import (
         EnterpriseRulesetConditionsOneof1Type as EnterpriseRulesetConditionsOneof1Type,
     )
-    from .group_0128 import (
+    from .group_0127 import (
         EnterpriseRulesetConditionsOneof1TypeForResponse as EnterpriseRulesetConditionsOneof1TypeForResponse,
     )
-    from .group_0129 import (
+    from .group_0128 import (
         EnterpriseRulesetConditionsOneof2Type as EnterpriseRulesetConditionsOneof2Type,
     )
-    from .group_0129 import (
+    from .group_0128 import (
         EnterpriseRulesetConditionsOneof2TypeForResponse as EnterpriseRulesetConditionsOneof2TypeForResponse,
     )
-    from .group_0130 import (
+    from .group_0129 import (
         EnterpriseRulesetConditionsOneof3Type as EnterpriseRulesetConditionsOneof3Type,
     )
-    from .group_0130 import (
+    from .group_0129 import (
         EnterpriseRulesetConditionsOneof3TypeForResponse as EnterpriseRulesetConditionsOneof3TypeForResponse,
     )
-    from .group_0131 import (
+    from .group_0130 import (
         EnterpriseRulesetConditionsOneof4Type as EnterpriseRulesetConditionsOneof4Type,
     )
-    from .group_0131 import (
+    from .group_0130 import (
         EnterpriseRulesetConditionsOneof4TypeForResponse as EnterpriseRulesetConditionsOneof4TypeForResponse,
     )
-    from .group_0132 import (
+    from .group_0131 import (
         EnterpriseRulesetConditionsOneof5Type as EnterpriseRulesetConditionsOneof5Type,
     )
-    from .group_0132 import (
+    from .group_0131 import (
         EnterpriseRulesetConditionsOneof5TypeForResponse as EnterpriseRulesetConditionsOneof5TypeForResponse,
     )
-    from .group_0133 import RepositoryRuleCreationType as RepositoryRuleCreationType
-    from .group_0133 import (
+    from .group_0132 import RepositoryRuleCreationType as RepositoryRuleCreationType
+    from .group_0132 import (
         RepositoryRuleCreationTypeForResponse as RepositoryRuleCreationTypeForResponse,
     )
-    from .group_0133 import RepositoryRuleDeletionType as RepositoryRuleDeletionType
-    from .group_0133 import (
+    from .group_0132 import RepositoryRuleDeletionType as RepositoryRuleDeletionType
+    from .group_0132 import (
         RepositoryRuleDeletionTypeForResponse as RepositoryRuleDeletionTypeForResponse,
     )
-    from .group_0133 import (
+    from .group_0132 import (
         RepositoryRuleNonFastForwardType as RepositoryRuleNonFastForwardType,
     )
-    from .group_0133 import (
+    from .group_0132 import (
         RepositoryRuleNonFastForwardTypeForResponse as RepositoryRuleNonFastForwardTypeForResponse,
     )
-    from .group_0133 import (
+    from .group_0132 import (
         RepositoryRuleRequiredSignaturesType as RepositoryRuleRequiredSignaturesType,
     )
-    from .group_0133 import (
+    from .group_0132 import (
         RepositoryRuleRequiredSignaturesTypeForResponse as RepositoryRuleRequiredSignaturesTypeForResponse,
     )
-    from .group_0134 import RepositoryRuleUpdateType as RepositoryRuleUpdateType
-    from .group_0134 import (
+    from .group_0133 import RepositoryRuleUpdateType as RepositoryRuleUpdateType
+    from .group_0133 import (
         RepositoryRuleUpdateTypeForResponse as RepositoryRuleUpdateTypeForResponse,
     )
-    from .group_0135 import (
+    from .group_0134 import (
         RepositoryRuleUpdatePropParametersType as RepositoryRuleUpdatePropParametersType,
     )
-    from .group_0135 import (
+    from .group_0134 import (
         RepositoryRuleUpdatePropParametersTypeForResponse as RepositoryRuleUpdatePropParametersTypeForResponse,
     )
-    from .group_0136 import (
+    from .group_0135 import (
         RepositoryRuleRequiredLinearHistoryType as RepositoryRuleRequiredLinearHistoryType,
     )
-    from .group_0136 import (
+    from .group_0135 import (
         RepositoryRuleRequiredLinearHistoryTypeForResponse as RepositoryRuleRequiredLinearHistoryTypeForResponse,
     )
-    from .group_0137 import (
+    from .group_0136 import (
         RepositoryRuleRequiredDeploymentsType as RepositoryRuleRequiredDeploymentsType,
     )
-    from .group_0137 import (
+    from .group_0136 import (
         RepositoryRuleRequiredDeploymentsTypeForResponse as RepositoryRuleRequiredDeploymentsTypeForResponse,
     )
-    from .group_0138 import (
+    from .group_0137 import (
         RepositoryRuleRequiredDeploymentsPropParametersType as RepositoryRuleRequiredDeploymentsPropParametersType,
     )
-    from .group_0138 import (
+    from .group_0137 import (
         RepositoryRuleRequiredDeploymentsPropParametersTypeForResponse as RepositoryRuleRequiredDeploymentsPropParametersTypeForResponse,
     )
-    from .group_0139 import (
+    from .group_0138 import (
         RepositoryRuleParamsActorType as RepositoryRuleParamsActorType,
     )
-    from .group_0139 import (
+    from .group_0138 import (
         RepositoryRuleParamsActorTypeForResponse as RepositoryRuleParamsActorTypeForResponse,
     )
-    from .group_0139 import (
+    from .group_0138 import (
         RepositoryRuleParamsDismissalRestrictionType as RepositoryRuleParamsDismissalRestrictionType,
     )
-    from .group_0139 import (
+    from .group_0138 import (
         RepositoryRuleParamsDismissalRestrictionTypeForResponse as RepositoryRuleParamsDismissalRestrictionTypeForResponse,
     )
-    from .group_0140 import (
+    from .group_0139 import (
         RepositoryRulePullRequestType as RepositoryRulePullRequestType,
     )
-    from .group_0140 import (
+    from .group_0139 import (
         RepositoryRulePullRequestTypeForResponse as RepositoryRulePullRequestTypeForResponse,
     )
-    from .group_0141 import (
+    from .group_0140 import (
         RepositoryRuleParamsRequiredReviewerConfigurationType as RepositoryRuleParamsRequiredReviewerConfigurationType,
     )
-    from .group_0141 import (
+    from .group_0140 import (
         RepositoryRuleParamsRequiredReviewerConfigurationTypeForResponse as RepositoryRuleParamsRequiredReviewerConfigurationTypeForResponse,
     )
-    from .group_0141 import (
+    from .group_0140 import (
         RepositoryRuleParamsReviewerType as RepositoryRuleParamsReviewerType,
     )
-    from .group_0141 import (
+    from .group_0140 import (
         RepositoryRuleParamsReviewerTypeForResponse as RepositoryRuleParamsReviewerTypeForResponse,
     )
-    from .group_0141 import (
+    from .group_0140 import (
         RepositoryRulePullRequestPropParametersType as RepositoryRulePullRequestPropParametersType,
     )
-    from .group_0141 import (
+    from .group_0140 import (
         RepositoryRulePullRequestPropParametersTypeForResponse as RepositoryRulePullRequestPropParametersTypeForResponse,
     )
-    from .group_0142 import (
+    from .group_0141 import (
         RepositoryRuleRequiredStatusChecksType as RepositoryRuleRequiredStatusChecksType,
     )
-    from .group_0142 import (
+    from .group_0141 import (
         RepositoryRuleRequiredStatusChecksTypeForResponse as RepositoryRuleRequiredStatusChecksTypeForResponse,
     )
-    from .group_0143 import (
+    from .group_0142 import (
         RepositoryRuleParamsStatusCheckConfigurationType as RepositoryRuleParamsStatusCheckConfigurationType,
     )
-    from .group_0143 import (
+    from .group_0142 import (
         RepositoryRuleParamsStatusCheckConfigurationTypeForResponse as RepositoryRuleParamsStatusCheckConfigurationTypeForResponse,
     )
-    from .group_0143 import (
+    from .group_0142 import (
         RepositoryRuleRequiredStatusChecksPropParametersType as RepositoryRuleRequiredStatusChecksPropParametersType,
     )
-    from .group_0143 import (
+    from .group_0142 import (
         RepositoryRuleRequiredStatusChecksPropParametersTypeForResponse as RepositoryRuleRequiredStatusChecksPropParametersTypeForResponse,
     )
-    from .group_0144 import (
+    from .group_0143 import (
         RepositoryRuleCommitMessagePatternType as RepositoryRuleCommitMessagePatternType,
     )
-    from .group_0144 import (
+    from .group_0143 import (
         RepositoryRuleCommitMessagePatternTypeForResponse as RepositoryRuleCommitMessagePatternTypeForResponse,
     )
-    from .group_0145 import (
+    from .group_0144 import (
         RepositoryRuleCommitMessagePatternPropParametersType as RepositoryRuleCommitMessagePatternPropParametersType,
     )
-    from .group_0145 import (
+    from .group_0144 import (
         RepositoryRuleCommitMessagePatternPropParametersTypeForResponse as RepositoryRuleCommitMessagePatternPropParametersTypeForResponse,
     )
-    from .group_0146 import (
+    from .group_0145 import (
         RepositoryRuleCommitAuthorEmailPatternType as RepositoryRuleCommitAuthorEmailPatternType,
     )
-    from .group_0146 import (
+    from .group_0145 import (
         RepositoryRuleCommitAuthorEmailPatternTypeForResponse as RepositoryRuleCommitAuthorEmailPatternTypeForResponse,
     )
-    from .group_0147 import (
+    from .group_0146 import (
         RepositoryRuleCommitAuthorEmailPatternPropParametersType as RepositoryRuleCommitAuthorEmailPatternPropParametersType,
     )
-    from .group_0147 import (
+    from .group_0146 import (
         RepositoryRuleCommitAuthorEmailPatternPropParametersTypeForResponse as RepositoryRuleCommitAuthorEmailPatternPropParametersTypeForResponse,
     )
-    from .group_0148 import (
+    from .group_0147 import (
         RepositoryRuleCommitterEmailPatternType as RepositoryRuleCommitterEmailPatternType,
     )
-    from .group_0148 import (
+    from .group_0147 import (
         RepositoryRuleCommitterEmailPatternTypeForResponse as RepositoryRuleCommitterEmailPatternTypeForResponse,
     )
-    from .group_0149 import (
+    from .group_0148 import (
         RepositoryRuleCommitterEmailPatternPropParametersType as RepositoryRuleCommitterEmailPatternPropParametersType,
     )
-    from .group_0149 import (
+    from .group_0148 import (
         RepositoryRuleCommitterEmailPatternPropParametersTypeForResponse as RepositoryRuleCommitterEmailPatternPropParametersTypeForResponse,
     )
-    from .group_0150 import (
+    from .group_0149 import (
         RepositoryRuleBranchNamePatternType as RepositoryRuleBranchNamePatternType,
     )
-    from .group_0150 import (
+    from .group_0149 import (
         RepositoryRuleBranchNamePatternTypeForResponse as RepositoryRuleBranchNamePatternTypeForResponse,
     )
-    from .group_0151 import (
+    from .group_0150 import (
         RepositoryRuleBranchNamePatternPropParametersType as RepositoryRuleBranchNamePatternPropParametersType,
     )
-    from .group_0151 import (
+    from .group_0150 import (
         RepositoryRuleBranchNamePatternPropParametersTypeForResponse as RepositoryRuleBranchNamePatternPropParametersTypeForResponse,
     )
-    from .group_0152 import (
+    from .group_0151 import (
         RepositoryRuleTagNamePatternType as RepositoryRuleTagNamePatternType,
     )
-    from .group_0152 import (
+    from .group_0151 import (
         RepositoryRuleTagNamePatternTypeForResponse as RepositoryRuleTagNamePatternTypeForResponse,
     )
-    from .group_0153 import (
+    from .group_0152 import (
         RepositoryRuleTagNamePatternPropParametersType as RepositoryRuleTagNamePatternPropParametersType,
     )
-    from .group_0153 import (
+    from .group_0152 import (
         RepositoryRuleTagNamePatternPropParametersTypeForResponse as RepositoryRuleTagNamePatternPropParametersTypeForResponse,
     )
-    from .group_0154 import (
+    from .group_0153 import (
         RepositoryRuleFilePathRestrictionType as RepositoryRuleFilePathRestrictionType,
     )
-    from .group_0154 import (
+    from .group_0153 import (
         RepositoryRuleFilePathRestrictionTypeForResponse as RepositoryRuleFilePathRestrictionTypeForResponse,
     )
-    from .group_0155 import (
+    from .group_0154 import (
         RepositoryRuleFilePathRestrictionPropParametersType as RepositoryRuleFilePathRestrictionPropParametersType,
     )
-    from .group_0155 import (
+    from .group_0154 import (
         RepositoryRuleFilePathRestrictionPropParametersTypeForResponse as RepositoryRuleFilePathRestrictionPropParametersTypeForResponse,
     )
-    from .group_0156 import (
+    from .group_0155 import (
         RepositoryRuleMaxFilePathLengthType as RepositoryRuleMaxFilePathLengthType,
     )
-    from .group_0156 import (
+    from .group_0155 import (
         RepositoryRuleMaxFilePathLengthTypeForResponse as RepositoryRuleMaxFilePathLengthTypeForResponse,
     )
-    from .group_0157 import (
+    from .group_0156 import (
         RepositoryRuleMaxFilePathLengthPropParametersType as RepositoryRuleMaxFilePathLengthPropParametersType,
     )
-    from .group_0157 import (
+    from .group_0156 import (
         RepositoryRuleMaxFilePathLengthPropParametersTypeForResponse as RepositoryRuleMaxFilePathLengthPropParametersTypeForResponse,
     )
-    from .group_0158 import (
+    from .group_0157 import (
         RepositoryRuleFileExtensionRestrictionType as RepositoryRuleFileExtensionRestrictionType,
     )
-    from .group_0158 import (
+    from .group_0157 import (
         RepositoryRuleFileExtensionRestrictionTypeForResponse as RepositoryRuleFileExtensionRestrictionTypeForResponse,
     )
-    from .group_0159 import (
+    from .group_0158 import (
         RepositoryRuleFileExtensionRestrictionPropParametersType as RepositoryRuleFileExtensionRestrictionPropParametersType,
     )
-    from .group_0159 import (
+    from .group_0158 import (
         RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse as RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse,
     )
-    from .group_0160 import (
+    from .group_0159 import (
         RepositoryRuleMaxFileSizeType as RepositoryRuleMaxFileSizeType,
     )
-    from .group_0160 import (
+    from .group_0159 import (
         RepositoryRuleMaxFileSizeTypeForResponse as RepositoryRuleMaxFileSizeTypeForResponse,
     )
-    from .group_0161 import (
+    from .group_0160 import (
         RepositoryRuleMaxFileSizePropParametersType as RepositoryRuleMaxFileSizePropParametersType,
     )
-    from .group_0161 import (
+    from .group_0160 import (
         RepositoryRuleMaxFileSizePropParametersTypeForResponse as RepositoryRuleMaxFileSizePropParametersTypeForResponse,
     )
-    from .group_0162 import (
+    from .group_0161 import (
         RepositoryRuleParamsRestrictedCommitsType as RepositoryRuleParamsRestrictedCommitsType,
     )
-    from .group_0162 import (
+    from .group_0161 import (
         RepositoryRuleParamsRestrictedCommitsTypeForResponse as RepositoryRuleParamsRestrictedCommitsTypeForResponse,
     )
-    from .group_0163 import RepositoryRuleWorkflowsType as RepositoryRuleWorkflowsType
-    from .group_0163 import (
+    from .group_0162 import RepositoryRuleWorkflowsType as RepositoryRuleWorkflowsType
+    from .group_0162 import (
         RepositoryRuleWorkflowsTypeForResponse as RepositoryRuleWorkflowsTypeForResponse,
     )
-    from .group_0164 import (
+    from .group_0163 import (
         RepositoryRuleParamsWorkflowFileReferenceType as RepositoryRuleParamsWorkflowFileReferenceType,
     )
-    from .group_0164 import (
+    from .group_0163 import (
         RepositoryRuleParamsWorkflowFileReferenceTypeForResponse as RepositoryRuleParamsWorkflowFileReferenceTypeForResponse,
     )
-    from .group_0164 import (
+    from .group_0163 import (
         RepositoryRuleWorkflowsPropParametersType as RepositoryRuleWorkflowsPropParametersType,
     )
-    from .group_0164 import (
+    from .group_0163 import (
         RepositoryRuleWorkflowsPropParametersTypeForResponse as RepositoryRuleWorkflowsPropParametersTypeForResponse,
     )
-    from .group_0165 import (
+    from .group_0164 import (
         RepositoryRuleCodeScanningType as RepositoryRuleCodeScanningType,
     )
-    from .group_0165 import (
+    from .group_0164 import (
         RepositoryRuleCodeScanningTypeForResponse as RepositoryRuleCodeScanningTypeForResponse,
     )
-    from .group_0166 import (
+    from .group_0165 import (
         RepositoryRuleCodeScanningPropParametersType as RepositoryRuleCodeScanningPropParametersType,
     )
-    from .group_0166 import (
+    from .group_0165 import (
         RepositoryRuleCodeScanningPropParametersTypeForResponse as RepositoryRuleCodeScanningPropParametersTypeForResponse,
     )
-    from .group_0166 import (
+    from .group_0165 import (
         RepositoryRuleParamsCodeScanningToolType as RepositoryRuleParamsCodeScanningToolType,
     )
-    from .group_0166 import (
+    from .group_0165 import (
         RepositoryRuleParamsCodeScanningToolTypeForResponse as RepositoryRuleParamsCodeScanningToolTypeForResponse,
     )
-    from .group_0167 import (
+    from .group_0166 import (
         RepositoryRuleCopilotCodeReviewType as RepositoryRuleCopilotCodeReviewType,
     )
-    from .group_0167 import (
+    from .group_0166 import (
         RepositoryRuleCopilotCodeReviewTypeForResponse as RepositoryRuleCopilotCodeReviewTypeForResponse,
     )
-    from .group_0168 import (
+    from .group_0167 import (
         RepositoryRuleCopilotCodeReviewPropParametersType as RepositoryRuleCopilotCodeReviewPropParametersType,
     )
-    from .group_0168 import (
+    from .group_0167 import (
         RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse as RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse,
     )
-    from .group_0169 import (
+    from .group_0168 import (
         RepositoryRulesetConditionsRepositoryIdTargetType as RepositoryRulesetConditionsRepositoryIdTargetType,
     )
-    from .group_0169 import (
+    from .group_0168 import (
         RepositoryRulesetConditionsRepositoryIdTargetTypeForResponse as RepositoryRulesetConditionsRepositoryIdTargetTypeForResponse,
     )
-    from .group_0170 import (
+    from .group_0169 import (
         RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType as RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType,
     )
-    from .group_0170 import (
+    from .group_0169 import (
         RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdTypeForResponse as RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdTypeForResponse,
     )
-    from .group_0171 import (
+    from .group_0170 import (
         OrgRulesetConditionsOneof0Type as OrgRulesetConditionsOneof0Type,
     )
-    from .group_0171 import (
+    from .group_0170 import (
         OrgRulesetConditionsOneof0TypeForResponse as OrgRulesetConditionsOneof0TypeForResponse,
     )
-    from .group_0172 import (
+    from .group_0171 import (
         OrgRulesetConditionsOneof1Type as OrgRulesetConditionsOneof1Type,
     )
-    from .group_0172 import (
+    from .group_0171 import (
         OrgRulesetConditionsOneof1TypeForResponse as OrgRulesetConditionsOneof1TypeForResponse,
     )
-    from .group_0173 import (
+    from .group_0172 import (
         OrgRulesetConditionsOneof2Type as OrgRulesetConditionsOneof2Type,
     )
-    from .group_0173 import (
+    from .group_0172 import (
         OrgRulesetConditionsOneof2TypeForResponse as OrgRulesetConditionsOneof2TypeForResponse,
     )
-    from .group_0174 import RepositoryRuleMergeQueueType as RepositoryRuleMergeQueueType
-    from .group_0174 import (
+    from .group_0173 import RepositoryRuleMergeQueueType as RepositoryRuleMergeQueueType
+    from .group_0173 import (
         RepositoryRuleMergeQueueTypeForResponse as RepositoryRuleMergeQueueTypeForResponse,
     )
-    from .group_0175 import (
+    from .group_0174 import (
         RepositoryRuleMergeQueuePropParametersType as RepositoryRuleMergeQueuePropParametersType,
     )
-    from .group_0175 import (
+    from .group_0174 import (
         RepositoryRuleMergeQueuePropParametersTypeForResponse as RepositoryRuleMergeQueuePropParametersTypeForResponse,
     )
-    from .group_0176 import (
+    from .group_0175 import (
         RepositoryRulesetPropLinksPropHtmlType as RepositoryRulesetPropLinksPropHtmlType,
     )
-    from .group_0176 import (
+    from .group_0175 import (
         RepositoryRulesetPropLinksPropHtmlTypeForResponse as RepositoryRulesetPropLinksPropHtmlTypeForResponse,
     )
-    from .group_0176 import (
+    from .group_0175 import (
         RepositoryRulesetPropLinksPropSelfType as RepositoryRulesetPropLinksPropSelfType,
     )
-    from .group_0176 import (
+    from .group_0175 import (
         RepositoryRulesetPropLinksPropSelfTypeForResponse as RepositoryRulesetPropLinksPropSelfTypeForResponse,
     )
-    from .group_0176 import (
+    from .group_0175 import (
         RepositoryRulesetPropLinksType as RepositoryRulesetPropLinksType,
     )
-    from .group_0176 import (
+    from .group_0175 import (
         RepositoryRulesetPropLinksTypeForResponse as RepositoryRulesetPropLinksTypeForResponse,
     )
-    from .group_0176 import RepositoryRulesetType as RepositoryRulesetType
-    from .group_0176 import (
+    from .group_0175 import RepositoryRulesetType as RepositoryRulesetType
+    from .group_0175 import (
         RepositoryRulesetTypeForResponse as RepositoryRulesetTypeForResponse,
     )
-    from .group_0177 import RulesetVersionType as RulesetVersionType
-    from .group_0177 import (
+    from .group_0176 import RulesetVersionType as RulesetVersionType
+    from .group_0176 import (
         RulesetVersionTypeForResponse as RulesetVersionTypeForResponse,
     )
-    from .group_0178 import RulesetVersionPropActorType as RulesetVersionPropActorType
-    from .group_0178 import (
+    from .group_0177 import RulesetVersionPropActorType as RulesetVersionPropActorType
+    from .group_0177 import (
         RulesetVersionPropActorTypeForResponse as RulesetVersionPropActorTypeForResponse,
     )
-    from .group_0179 import RulesetVersionWithStateType as RulesetVersionWithStateType
-    from .group_0179 import (
+    from .group_0178 import RulesetVersionWithStateType as RulesetVersionWithStateType
+    from .group_0178 import (
         RulesetVersionWithStateTypeForResponse as RulesetVersionWithStateTypeForResponse,
     )
-    from .group_0180 import (
+    from .group_0179 import (
         RulesetVersionWithStateAllof1Type as RulesetVersionWithStateAllof1Type,
     )
-    from .group_0180 import (
+    from .group_0179 import (
         RulesetVersionWithStateAllof1TypeForResponse as RulesetVersionWithStateAllof1TypeForResponse,
     )
-    from .group_0181 import (
+    from .group_0180 import (
         RulesetVersionWithStateAllof1PropStateType as RulesetVersionWithStateAllof1PropStateType,
     )
-    from .group_0181 import (
+    from .group_0180 import (
         RulesetVersionWithStateAllof1PropStateTypeForResponse as RulesetVersionWithStateAllof1PropStateTypeForResponse,
     )
-    from .group_0182 import (
+    from .group_0181 import (
         SecretScanningLocationCommitType as SecretScanningLocationCommitType,
     )
-    from .group_0182 import (
+    from .group_0181 import (
         SecretScanningLocationCommitTypeForResponse as SecretScanningLocationCommitTypeForResponse,
     )
-    from .group_0182 import (
+    from .group_0181 import (
         SecretScanningLocationDiscussionCommentType as SecretScanningLocationDiscussionCommentType,
     )
-    from .group_0182 import (
+    from .group_0181 import (
         SecretScanningLocationDiscussionCommentTypeForResponse as SecretScanningLocationDiscussionCommentTypeForResponse,
     )
-    from .group_0182 import (
+    from .group_0181 import (
         SecretScanningLocationDiscussionTitleType as SecretScanningLocationDiscussionTitleType,
     )
-    from .group_0182 import (
+    from .group_0181 import (
         SecretScanningLocationDiscussionTitleTypeForResponse as SecretScanningLocationDiscussionTitleTypeForResponse,
     )
-    from .group_0182 import (
+    from .group_0181 import (
         SecretScanningLocationIssueBodyType as SecretScanningLocationIssueBodyType,
     )
-    from .group_0182 import (
+    from .group_0181 import (
         SecretScanningLocationIssueBodyTypeForResponse as SecretScanningLocationIssueBodyTypeForResponse,
     )
-    from .group_0182 import (
+    from .group_0181 import (
         SecretScanningLocationPullRequestBodyType as SecretScanningLocationPullRequestBodyType,
     )
-    from .group_0182 import (
+    from .group_0181 import (
         SecretScanningLocationPullRequestBodyTypeForResponse as SecretScanningLocationPullRequestBodyTypeForResponse,
     )
-    from .group_0182 import (
+    from .group_0181 import (
         SecretScanningLocationPullRequestReviewType as SecretScanningLocationPullRequestReviewType,
     )
-    from .group_0182 import (
+    from .group_0181 import (
         SecretScanningLocationPullRequestReviewTypeForResponse as SecretScanningLocationPullRequestReviewTypeForResponse,
     )
-    from .group_0182 import (
+    from .group_0181 import (
         SecretScanningLocationWikiCommitType as SecretScanningLocationWikiCommitType,
     )
-    from .group_0182 import (
+    from .group_0181 import (
         SecretScanningLocationWikiCommitTypeForResponse as SecretScanningLocationWikiCommitTypeForResponse,
     )
-    from .group_0183 import (
+    from .group_0182 import (
         SecretScanningLocationIssueCommentType as SecretScanningLocationIssueCommentType,
     )
-    from .group_0183 import (
+    from .group_0182 import (
         SecretScanningLocationIssueCommentTypeForResponse as SecretScanningLocationIssueCommentTypeForResponse,
     )
-    from .group_0183 import (
+    from .group_0182 import (
         SecretScanningLocationIssueTitleType as SecretScanningLocationIssueTitleType,
     )
-    from .group_0183 import (
+    from .group_0182 import (
         SecretScanningLocationIssueTitleTypeForResponse as SecretScanningLocationIssueTitleTypeForResponse,
     )
-    from .group_0183 import (
+    from .group_0182 import (
         SecretScanningLocationPullRequestReviewCommentType as SecretScanningLocationPullRequestReviewCommentType,
     )
-    from .group_0183 import (
+    from .group_0182 import (
         SecretScanningLocationPullRequestReviewCommentTypeForResponse as SecretScanningLocationPullRequestReviewCommentTypeForResponse,
     )
-    from .group_0183 import (
+    from .group_0182 import (
         SecretScanningLocationPullRequestTitleType as SecretScanningLocationPullRequestTitleType,
     )
-    from .group_0183 import (
+    from .group_0182 import (
         SecretScanningLocationPullRequestTitleTypeForResponse as SecretScanningLocationPullRequestTitleTypeForResponse,
     )
-    from .group_0184 import (
+    from .group_0183 import (
         SecretScanningLocationDiscussionBodyType as SecretScanningLocationDiscussionBodyType,
     )
-    from .group_0184 import (
+    from .group_0183 import (
         SecretScanningLocationDiscussionBodyTypeForResponse as SecretScanningLocationDiscussionBodyTypeForResponse,
     )
-    from .group_0184 import (
+    from .group_0183 import (
         SecretScanningLocationPullRequestCommentType as SecretScanningLocationPullRequestCommentType,
     )
-    from .group_0184 import (
+    from .group_0183 import (
         SecretScanningLocationPullRequestCommentTypeForResponse as SecretScanningLocationPullRequestCommentTypeForResponse,
     )
-    from .group_0185 import (
+    from .group_0184 import (
         OrganizationSecretScanningAlertType as OrganizationSecretScanningAlertType,
     )
-    from .group_0185 import (
+    from .group_0184 import (
         OrganizationSecretScanningAlertTypeForResponse as OrganizationSecretScanningAlertTypeForResponse,
     )
-    from .group_0186 import (
+    from .group_0185 import (
         SecretScanningPatternConfigurationType as SecretScanningPatternConfigurationType,
     )
-    from .group_0186 import (
+    from .group_0185 import (
         SecretScanningPatternConfigurationTypeForResponse as SecretScanningPatternConfigurationTypeForResponse,
     )
-    from .group_0186 import (
+    from .group_0185 import (
         SecretScanningPatternOverrideType as SecretScanningPatternOverrideType,
     )
-    from .group_0186 import (
+    from .group_0185 import (
         SecretScanningPatternOverrideTypeForResponse as SecretScanningPatternOverrideTypeForResponse,
     )
-    from .group_0187 import (
+    from .group_0186 import (
         AdvancedSecurityActiveCommittersRepositoryType as AdvancedSecurityActiveCommittersRepositoryType,
     )
-    from .group_0187 import (
+    from .group_0186 import (
         AdvancedSecurityActiveCommittersRepositoryTypeForResponse as AdvancedSecurityActiveCommittersRepositoryTypeForResponse,
     )
-    from .group_0187 import (
+    from .group_0186 import (
         AdvancedSecurityActiveCommittersType as AdvancedSecurityActiveCommittersType,
     )
-    from .group_0187 import (
+    from .group_0186 import (
         AdvancedSecurityActiveCommittersTypeForResponse as AdvancedSecurityActiveCommittersTypeForResponse,
     )
-    from .group_0187 import (
+    from .group_0186 import (
         AdvancedSecurityActiveCommittersUserType as AdvancedSecurityActiveCommittersUserType,
     )
-    from .group_0187 import (
+    from .group_0186 import (
         AdvancedSecurityActiveCommittersUserTypeForResponse as AdvancedSecurityActiveCommittersUserTypeForResponse,
     )
-    from .group_0188 import (
+    from .group_0187 import (
         BillingAiCreditUsageReportGhePropCostCenterType as BillingAiCreditUsageReportGhePropCostCenterType,
     )
-    from .group_0188 import (
+    from .group_0187 import (
         BillingAiCreditUsageReportGhePropCostCenterTypeForResponse as BillingAiCreditUsageReportGhePropCostCenterTypeForResponse,
     )
-    from .group_0188 import (
+    from .group_0187 import (
         BillingAiCreditUsageReportGhePropTimePeriodType as BillingAiCreditUsageReportGhePropTimePeriodType,
     )
-    from .group_0188 import (
+    from .group_0187 import (
         BillingAiCreditUsageReportGhePropTimePeriodTypeForResponse as BillingAiCreditUsageReportGhePropTimePeriodTypeForResponse,
     )
-    from .group_0188 import (
+    from .group_0187 import (
         BillingAiCreditUsageReportGhePropUsageItemsItemsType as BillingAiCreditUsageReportGhePropUsageItemsItemsType,
     )
-    from .group_0188 import (
+    from .group_0187 import (
         BillingAiCreditUsageReportGhePropUsageItemsItemsTypeForResponse as BillingAiCreditUsageReportGhePropUsageItemsItemsTypeForResponse,
     )
-    from .group_0188 import (
+    from .group_0187 import (
         BillingAiCreditUsageReportGheType as BillingAiCreditUsageReportGheType,
     )
-    from .group_0188 import (
+    from .group_0187 import (
         BillingAiCreditUsageReportGheTypeForResponse as BillingAiCreditUsageReportGheTypeForResponse,
     )
-    from .group_0189 import BudgetPropBudgetAlertingType as BudgetPropBudgetAlertingType
-    from .group_0189 import (
+    from .group_0188 import BudgetPropBudgetAlertingType as BudgetPropBudgetAlertingType
+    from .group_0188 import (
         BudgetPropBudgetAlertingTypeForResponse as BudgetPropBudgetAlertingTypeForResponse,
     )
-    from .group_0189 import BudgetType as BudgetType
-    from .group_0189 import BudgetTypeForResponse as BudgetTypeForResponse
-    from .group_0189 import (
+    from .group_0188 import BudgetType as BudgetType
+    from .group_0188 import BudgetTypeForResponse as BudgetTypeForResponse
+    from .group_0188 import (
         GetAllBudgetsPropEffectiveBudgetType as GetAllBudgetsPropEffectiveBudgetType,
     )
-    from .group_0189 import (
+    from .group_0188 import (
         GetAllBudgetsPropEffectiveBudgetTypeForResponse as GetAllBudgetsPropEffectiveBudgetTypeForResponse,
     )
-    from .group_0189 import GetAllBudgetsType as GetAllBudgetsType
-    from .group_0189 import GetAllBudgetsTypeForResponse as GetAllBudgetsTypeForResponse
-    from .group_0190 import (
+    from .group_0188 import GetAllBudgetsType as GetAllBudgetsType
+    from .group_0188 import GetAllBudgetsTypeForResponse as GetAllBudgetsTypeForResponse
+    from .group_0189 import (
         CreateBudgetPropBudgetPropBudgetAlertingType as CreateBudgetPropBudgetPropBudgetAlertingType,
     )
-    from .group_0190 import (
+    from .group_0189 import (
         CreateBudgetPropBudgetPropBudgetAlertingTypeForResponse as CreateBudgetPropBudgetPropBudgetAlertingTypeForResponse,
     )
-    from .group_0190 import CreateBudgetPropBudgetType as CreateBudgetPropBudgetType
-    from .group_0190 import (
+    from .group_0189 import CreateBudgetPropBudgetType as CreateBudgetPropBudgetType
+    from .group_0189 import (
         CreateBudgetPropBudgetTypeForResponse as CreateBudgetPropBudgetTypeForResponse,
     )
-    from .group_0190 import CreateBudgetType as CreateBudgetType
-    from .group_0190 import CreateBudgetTypeForResponse as CreateBudgetTypeForResponse
-    from .group_0191 import (
+    from .group_0189 import CreateBudgetType as CreateBudgetType
+    from .group_0189 import CreateBudgetTypeForResponse as CreateBudgetTypeForResponse
+    from .group_0190 import (
         GetBudgetPropBudgetAlertingType as GetBudgetPropBudgetAlertingType,
     )
-    from .group_0191 import (
+    from .group_0190 import (
         GetBudgetPropBudgetAlertingTypeForResponse as GetBudgetPropBudgetAlertingTypeForResponse,
     )
-    from .group_0191 import GetBudgetType as GetBudgetType
-    from .group_0191 import GetBudgetTypeForResponse as GetBudgetTypeForResponse
-    from .group_0192 import (
+    from .group_0190 import GetBudgetType as GetBudgetType
+    from .group_0190 import GetBudgetTypeForResponse as GetBudgetTypeForResponse
+    from .group_0191 import (
         UpdateBudgetPropBudgetPropBudgetAlertingType as UpdateBudgetPropBudgetPropBudgetAlertingType,
     )
-    from .group_0192 import (
+    from .group_0191 import (
         UpdateBudgetPropBudgetPropBudgetAlertingTypeForResponse as UpdateBudgetPropBudgetPropBudgetAlertingTypeForResponse,
     )
-    from .group_0192 import UpdateBudgetPropBudgetType as UpdateBudgetPropBudgetType
-    from .group_0192 import (
+    from .group_0191 import UpdateBudgetPropBudgetType as UpdateBudgetPropBudgetType
+    from .group_0191 import (
         UpdateBudgetPropBudgetTypeForResponse as UpdateBudgetPropBudgetTypeForResponse,
     )
-    from .group_0192 import UpdateBudgetType as UpdateBudgetType
-    from .group_0192 import UpdateBudgetTypeForResponse as UpdateBudgetTypeForResponse
-    from .group_0193 import DeleteBudgetType as DeleteBudgetType
-    from .group_0193 import DeleteBudgetTypeForResponse as DeleteBudgetTypeForResponse
-    from .group_0194 import (
+    from .group_0191 import UpdateBudgetType as UpdateBudgetType
+    from .group_0191 import UpdateBudgetTypeForResponse as UpdateBudgetTypeForResponse
+    from .group_0192 import DeleteBudgetType as DeleteBudgetType
+    from .group_0192 import DeleteBudgetTypeForResponse as DeleteBudgetTypeForResponse
+    from .group_0193 import (
         GetAllCostCentersPropCostCentersItemsPropResourcesItemsType as GetAllCostCentersPropCostCentersItemsPropResourcesItemsType,
     )
-    from .group_0194 import (
+    from .group_0193 import (
         GetAllCostCentersPropCostCentersItemsPropResourcesItemsTypeForResponse as GetAllCostCentersPropCostCentersItemsPropResourcesItemsTypeForResponse,
     )
-    from .group_0194 import (
+    from .group_0193 import (
         GetAllCostCentersPropCostCentersItemsType as GetAllCostCentersPropCostCentersItemsType,
     )
-    from .group_0194 import (
+    from .group_0193 import (
         GetAllCostCentersPropCostCentersItemsTypeForResponse as GetAllCostCentersPropCostCentersItemsTypeForResponse,
     )
-    from .group_0194 import GetAllCostCentersType as GetAllCostCentersType
-    from .group_0194 import (
+    from .group_0193 import GetAllCostCentersType as GetAllCostCentersType
+    from .group_0193 import (
         GetAllCostCentersTypeForResponse as GetAllCostCentersTypeForResponse,
     )
-    from .group_0195 import (
+    from .group_0194 import (
         GetCostCenterPropResourcesItemsType as GetCostCenterPropResourcesItemsType,
     )
-    from .group_0195 import (
+    from .group_0194 import (
         GetCostCenterPropResourcesItemsTypeForResponse as GetCostCenterPropResourcesItemsTypeForResponse,
     )
-    from .group_0195 import GetCostCenterType as GetCostCenterType
-    from .group_0195 import GetCostCenterTypeForResponse as GetCostCenterTypeForResponse
-    from .group_0196 import (
+    from .group_0194 import GetCostCenterType as GetCostCenterType
+    from .group_0194 import GetCostCenterTypeForResponse as GetCostCenterTypeForResponse
+    from .group_0195 import (
         UpdateCostCenterPropResourcesItemsType as UpdateCostCenterPropResourcesItemsType,
     )
-    from .group_0196 import (
+    from .group_0195 import (
         UpdateCostCenterPropResourcesItemsTypeForResponse as UpdateCostCenterPropResourcesItemsTypeForResponse,
     )
-    from .group_0196 import UpdateCostCenterType as UpdateCostCenterType
-    from .group_0196 import (
+    from .group_0195 import UpdateCostCenterType as UpdateCostCenterType
+    from .group_0195 import (
         UpdateCostCenterTypeForResponse as UpdateCostCenterTypeForResponse,
     )
-    from .group_0197 import DeleteCostCenterType as DeleteCostCenterType
-    from .group_0197 import (
+    from .group_0196 import DeleteCostCenterType as DeleteCostCenterType
+    from .group_0196 import (
         DeleteCostCenterTypeForResponse as DeleteCostCenterTypeForResponse,
     )
-    from .group_0198 import (
+    from .group_0197 import (
         BillingPremiumRequestUsageReportGhePropCostCenterType as BillingPremiumRequestUsageReportGhePropCostCenterType,
     )
-    from .group_0198 import (
+    from .group_0197 import (
         BillingPremiumRequestUsageReportGhePropCostCenterTypeForResponse as BillingPremiumRequestUsageReportGhePropCostCenterTypeForResponse,
     )
-    from .group_0198 import (
+    from .group_0197 import (
         BillingPremiumRequestUsageReportGhePropTimePeriodType as BillingPremiumRequestUsageReportGhePropTimePeriodType,
     )
-    from .group_0198 import (
+    from .group_0197 import (
         BillingPremiumRequestUsageReportGhePropTimePeriodTypeForResponse as BillingPremiumRequestUsageReportGhePropTimePeriodTypeForResponse,
     )
-    from .group_0198 import (
+    from .group_0197 import (
         BillingPremiumRequestUsageReportGhePropUsageItemsItemsType as BillingPremiumRequestUsageReportGhePropUsageItemsItemsType,
     )
-    from .group_0198 import (
+    from .group_0197 import (
         BillingPremiumRequestUsageReportGhePropUsageItemsItemsTypeForResponse as BillingPremiumRequestUsageReportGhePropUsageItemsItemsTypeForResponse,
     )
-    from .group_0198 import (
+    from .group_0197 import (
         BillingPremiumRequestUsageReportGheType as BillingPremiumRequestUsageReportGheType,
     )
-    from .group_0198 import (
+    from .group_0197 import (
         BillingPremiumRequestUsageReportGheTypeForResponse as BillingPremiumRequestUsageReportGheTypeForResponse,
     )
-    from .group_0199 import UsageReportExportListType as UsageReportExportListType
-    from .group_0199 import (
+    from .group_0198 import UsageReportExportListType as UsageReportExportListType
+    from .group_0198 import (
         UsageReportExportListTypeForResponse as UsageReportExportListTypeForResponse,
     )
-    from .group_0199 import UsageReportExportType as UsageReportExportType
-    from .group_0199 import (
+    from .group_0198 import UsageReportExportType as UsageReportExportType
+    from .group_0198 import (
         UsageReportExportTypeForResponse as UsageReportExportTypeForResponse,
     )
-    from .group_0200 import UsageReportExportRequestType as UsageReportExportRequestType
-    from .group_0200 import (
+    from .group_0199 import UsageReportExportRequestType as UsageReportExportRequestType
+    from .group_0199 import (
         UsageReportExportRequestTypeForResponse as UsageReportExportRequestTypeForResponse,
     )
-    from .group_0201 import (
+    from .group_0200 import (
         BillingUsageReportPropUsageItemsItemsType as BillingUsageReportPropUsageItemsItemsType,
     )
-    from .group_0201 import (
+    from .group_0200 import (
         BillingUsageReportPropUsageItemsItemsTypeForResponse as BillingUsageReportPropUsageItemsItemsTypeForResponse,
     )
-    from .group_0201 import BillingUsageReportType as BillingUsageReportType
-    from .group_0201 import (
+    from .group_0200 import BillingUsageReportType as BillingUsageReportType
+    from .group_0200 import (
         BillingUsageReportTypeForResponse as BillingUsageReportTypeForResponse,
     )
-    from .group_0202 import (
+    from .group_0201 import (
         BillingUsageSummaryReportGhePropCostCenterType as BillingUsageSummaryReportGhePropCostCenterType,
     )
-    from .group_0202 import (
+    from .group_0201 import (
         BillingUsageSummaryReportGhePropCostCenterTypeForResponse as BillingUsageSummaryReportGhePropCostCenterTypeForResponse,
     )
-    from .group_0202 import (
+    from .group_0201 import (
         BillingUsageSummaryReportGhePropTimePeriodType as BillingUsageSummaryReportGhePropTimePeriodType,
     )
-    from .group_0202 import (
+    from .group_0201 import (
         BillingUsageSummaryReportGhePropTimePeriodTypeForResponse as BillingUsageSummaryReportGhePropTimePeriodTypeForResponse,
     )
-    from .group_0202 import (
+    from .group_0201 import (
         BillingUsageSummaryReportGhePropUsageItemsItemsType as BillingUsageSummaryReportGhePropUsageItemsItemsType,
     )
-    from .group_0202 import (
+    from .group_0201 import (
         BillingUsageSummaryReportGhePropUsageItemsItemsTypeForResponse as BillingUsageSummaryReportGhePropUsageItemsItemsTypeForResponse,
     )
-    from .group_0202 import (
+    from .group_0201 import (
         BillingUsageSummaryReportGheType as BillingUsageSummaryReportGheType,
     )
-    from .group_0202 import (
+    from .group_0201 import (
         BillingUsageSummaryReportGheTypeForResponse as BillingUsageSummaryReportGheTypeForResponse,
     )
-    from .group_0203 import LabelType as LabelType
-    from .group_0203 import LabelTypeForResponse as LabelTypeForResponse
-    from .group_0204 import (
+    from .group_0202 import LabelType as LabelType
+    from .group_0202 import LabelTypeForResponse as LabelTypeForResponse
+    from .group_0203 import (
         DiscussionPropAnswerChosenByType as DiscussionPropAnswerChosenByType,
     )
-    from .group_0204 import (
+    from .group_0203 import (
         DiscussionPropAnswerChosenByTypeForResponse as DiscussionPropAnswerChosenByTypeForResponse,
     )
-    from .group_0204 import DiscussionPropCategoryType as DiscussionPropCategoryType
-    from .group_0204 import (
+    from .group_0203 import DiscussionPropCategoryType as DiscussionPropCategoryType
+    from .group_0203 import (
         DiscussionPropCategoryTypeForResponse as DiscussionPropCategoryTypeForResponse,
     )
-    from .group_0204 import DiscussionPropReactionsType as DiscussionPropReactionsType
-    from .group_0204 import (
+    from .group_0203 import DiscussionPropReactionsType as DiscussionPropReactionsType
+    from .group_0203 import (
         DiscussionPropReactionsTypeForResponse as DiscussionPropReactionsTypeForResponse,
     )
-    from .group_0204 import DiscussionPropUserType as DiscussionPropUserType
-    from .group_0204 import (
+    from .group_0203 import DiscussionPropUserType as DiscussionPropUserType
+    from .group_0203 import (
         DiscussionPropUserTypeForResponse as DiscussionPropUserTypeForResponse,
     )
-    from .group_0204 import DiscussionType as DiscussionType
-    from .group_0204 import DiscussionTypeForResponse as DiscussionTypeForResponse
-    from .group_0205 import MilestoneType as MilestoneType
-    from .group_0205 import MilestoneTypeForResponse as MilestoneTypeForResponse
-    from .group_0206 import IssueTypeType as IssueTypeType
-    from .group_0206 import IssueTypeTypeForResponse as IssueTypeTypeForResponse
-    from .group_0207 import ReactionRollupType as ReactionRollupType
-    from .group_0207 import (
+    from .group_0203 import DiscussionType as DiscussionType
+    from .group_0203 import DiscussionTypeForResponse as DiscussionTypeForResponse
+    from .group_0204 import MilestoneType as MilestoneType
+    from .group_0204 import MilestoneTypeForResponse as MilestoneTypeForResponse
+    from .group_0205 import IssueTypeType as IssueTypeType
+    from .group_0205 import IssueTypeTypeForResponse as IssueTypeTypeForResponse
+    from .group_0206 import ReactionRollupType as ReactionRollupType
+    from .group_0206 import (
         ReactionRollupTypeForResponse as ReactionRollupTypeForResponse,
     )
-    from .group_0208 import IssueDependenciesSummaryType as IssueDependenciesSummaryType
-    from .group_0208 import (
+    from .group_0207 import IssueDependenciesSummaryType as IssueDependenciesSummaryType
+    from .group_0207 import (
         IssueDependenciesSummaryTypeForResponse as IssueDependenciesSummaryTypeForResponse,
     )
-    from .group_0208 import SubIssuesSummaryType as SubIssuesSummaryType
-    from .group_0208 import (
+    from .group_0207 import SubIssuesSummaryType as SubIssuesSummaryType
+    from .group_0207 import (
         SubIssuesSummaryTypeForResponse as SubIssuesSummaryTypeForResponse,
     )
-    from .group_0209 import PinnedIssueCommentType as PinnedIssueCommentType
-    from .group_0209 import (
+    from .group_0208 import PinnedIssueCommentType as PinnedIssueCommentType
+    from .group_0208 import (
         PinnedIssueCommentTypeForResponse as PinnedIssueCommentTypeForResponse,
     )
-    from .group_0210 import IssueCommentType as IssueCommentType
-    from .group_0210 import IssueCommentTypeForResponse as IssueCommentTypeForResponse
-    from .group_0211 import (
+    from .group_0209 import IssueCommentType as IssueCommentType
+    from .group_0209 import IssueCommentTypeForResponse as IssueCommentTypeForResponse
+    from .group_0210 import (
         IssueFieldValuePropMultiSelectOptionsItemsType as IssueFieldValuePropMultiSelectOptionsItemsType,
     )
-    from .group_0211 import (
+    from .group_0210 import (
         IssueFieldValuePropMultiSelectOptionsItemsTypeForResponse as IssueFieldValuePropMultiSelectOptionsItemsTypeForResponse,
     )
-    from .group_0211 import (
+    from .group_0210 import (
         IssueFieldValuePropSingleSelectOptionType as IssueFieldValuePropSingleSelectOptionType,
     )
-    from .group_0211 import (
+    from .group_0210 import (
         IssueFieldValuePropSingleSelectOptionTypeForResponse as IssueFieldValuePropSingleSelectOptionTypeForResponse,
     )
-    from .group_0211 import IssueFieldValueType as IssueFieldValueType
-    from .group_0211 import (
+    from .group_0210 import IssueFieldValueType as IssueFieldValueType
+    from .group_0210 import (
         IssueFieldValueTypeForResponse as IssueFieldValueTypeForResponse,
     )
-    from .group_0212 import (
+    from .group_0211 import (
         IssuePropLabelsItemsOneof1Type as IssuePropLabelsItemsOneof1Type,
     )
-    from .group_0212 import (
+    from .group_0211 import (
         IssuePropLabelsItemsOneof1TypeForResponse as IssuePropLabelsItemsOneof1TypeForResponse,
     )
-    from .group_0212 import IssuePropPullRequestType as IssuePropPullRequestType
-    from .group_0212 import (
+    from .group_0211 import IssuePropPullRequestType as IssuePropPullRequestType
+    from .group_0211 import (
         IssuePropPullRequestTypeForResponse as IssuePropPullRequestTypeForResponse,
     )
-    from .group_0212 import IssueType as IssueType
-    from .group_0212 import IssueTypeForResponse as IssueTypeForResponse
-    from .group_0213 import (
+    from .group_0211 import IssueType as IssueType
+    from .group_0211 import IssueTypeForResponse as IssueTypeForResponse
+    from .group_0212 import (
         PullRequestMinimalPropBasePropRepoType as PullRequestMinimalPropBasePropRepoType,
     )
-    from .group_0213 import (
+    from .group_0212 import (
         PullRequestMinimalPropBasePropRepoTypeForResponse as PullRequestMinimalPropBasePropRepoTypeForResponse,
     )
-    from .group_0213 import (
+    from .group_0212 import (
         PullRequestMinimalPropBaseType as PullRequestMinimalPropBaseType,
     )
-    from .group_0213 import (
+    from .group_0212 import (
         PullRequestMinimalPropBaseTypeForResponse as PullRequestMinimalPropBaseTypeForResponse,
     )
-    from .group_0213 import (
+    from .group_0212 import (
         PullRequestMinimalPropHeadPropRepoType as PullRequestMinimalPropHeadPropRepoType,
     )
-    from .group_0213 import (
+    from .group_0212 import (
         PullRequestMinimalPropHeadPropRepoTypeForResponse as PullRequestMinimalPropHeadPropRepoTypeForResponse,
     )
-    from .group_0213 import (
+    from .group_0212 import (
         PullRequestMinimalPropHeadType as PullRequestMinimalPropHeadType,
     )
-    from .group_0213 import (
+    from .group_0212 import (
         PullRequestMinimalPropHeadTypeForResponse as PullRequestMinimalPropHeadTypeForResponse,
     )
-    from .group_0213 import PullRequestMinimalType as PullRequestMinimalType
-    from .group_0213 import (
+    from .group_0212 import PullRequestMinimalType as PullRequestMinimalType
+    from .group_0212 import (
         PullRequestMinimalTypeForResponse as PullRequestMinimalTypeForResponse,
     )
-    from .group_0214 import ReleaseAssetType as ReleaseAssetType
-    from .group_0214 import ReleaseAssetTypeForResponse as ReleaseAssetTypeForResponse
-    from .group_0215 import ReleaseType as ReleaseType
-    from .group_0215 import ReleaseTypeForResponse as ReleaseTypeForResponse
-    from .group_0216 import ActorType as ActorType
-    from .group_0216 import ActorTypeForResponse as ActorTypeForResponse
-    from .group_0216 import CreateEventType as CreateEventType
-    from .group_0216 import CreateEventTypeForResponse as CreateEventTypeForResponse
-    from .group_0216 import DeleteEventType as DeleteEventType
-    from .group_0216 import DeleteEventTypeForResponse as DeleteEventTypeForResponse
-    from .group_0216 import EventPropRepoType as EventPropRepoType
-    from .group_0216 import EventPropRepoTypeForResponse as EventPropRepoTypeForResponse
-    from .group_0216 import EventType as EventType
-    from .group_0216 import EventTypeForResponse as EventTypeForResponse
-    from .group_0216 import (
+    from .group_0213 import ReleaseAssetType as ReleaseAssetType
+    from .group_0213 import ReleaseAssetTypeForResponse as ReleaseAssetTypeForResponse
+    from .group_0214 import ReleaseType as ReleaseType
+    from .group_0214 import ReleaseTypeForResponse as ReleaseTypeForResponse
+    from .group_0215 import ActorType as ActorType
+    from .group_0215 import ActorTypeForResponse as ActorTypeForResponse
+    from .group_0215 import CreateEventType as CreateEventType
+    from .group_0215 import CreateEventTypeForResponse as CreateEventTypeForResponse
+    from .group_0215 import DeleteEventType as DeleteEventType
+    from .group_0215 import DeleteEventTypeForResponse as DeleteEventTypeForResponse
+    from .group_0215 import EventPropRepoType as EventPropRepoType
+    from .group_0215 import EventPropRepoTypeForResponse as EventPropRepoTypeForResponse
+    from .group_0215 import EventType as EventType
+    from .group_0215 import EventTypeForResponse as EventTypeForResponse
+    from .group_0215 import (
         GollumEventPropPagesItemsType as GollumEventPropPagesItemsType,
     )
-    from .group_0216 import (
+    from .group_0215 import (
         GollumEventPropPagesItemsTypeForResponse as GollumEventPropPagesItemsTypeForResponse,
     )
-    from .group_0216 import GollumEventType as GollumEventType
-    from .group_0216 import GollumEventTypeForResponse as GollumEventTypeForResponse
-    from .group_0216 import PublicEventType as PublicEventType
-    from .group_0216 import PublicEventTypeForResponse as PublicEventTypeForResponse
-    from .group_0216 import PushEventType as PushEventType
-    from .group_0216 import PushEventTypeForResponse as PushEventTypeForResponse
-    from .group_0216 import WatchEventType as WatchEventType
-    from .group_0216 import WatchEventTypeForResponse as WatchEventTypeForResponse
-    from .group_0217 import DiscussionEventType as DiscussionEventType
-    from .group_0217 import (
+    from .group_0215 import GollumEventType as GollumEventType
+    from .group_0215 import GollumEventTypeForResponse as GollumEventTypeForResponse
+    from .group_0215 import PublicEventType as PublicEventType
+    from .group_0215 import PublicEventTypeForResponse as PublicEventTypeForResponse
+    from .group_0215 import PushEventType as PushEventType
+    from .group_0215 import PushEventTypeForResponse as PushEventTypeForResponse
+    from .group_0215 import WatchEventType as WatchEventType
+    from .group_0215 import WatchEventTypeForResponse as WatchEventTypeForResponse
+    from .group_0216 import DiscussionEventType as DiscussionEventType
+    from .group_0216 import (
         DiscussionEventTypeForResponse as DiscussionEventTypeForResponse,
     )
-    from .group_0218 import IssuesEventType as IssuesEventType
-    from .group_0218 import IssuesEventTypeForResponse as IssuesEventTypeForResponse
-    from .group_0219 import IssueCommentEventType as IssueCommentEventType
-    from .group_0219 import (
+    from .group_0217 import IssuesEventType as IssuesEventType
+    from .group_0217 import IssuesEventTypeForResponse as IssuesEventTypeForResponse
+    from .group_0218 import IssueCommentEventType as IssueCommentEventType
+    from .group_0218 import (
         IssueCommentEventTypeForResponse as IssueCommentEventTypeForResponse,
     )
-    from .group_0220 import ForkEventType as ForkEventType
-    from .group_0220 import ForkEventTypeForResponse as ForkEventTypeForResponse
-    from .group_0221 import ForkEventPropForkeeType as ForkEventPropForkeeType
-    from .group_0221 import (
+    from .group_0219 import ForkEventType as ForkEventType
+    from .group_0219 import ForkEventTypeForResponse as ForkEventTypeForResponse
+    from .group_0220 import ForkEventPropForkeeType as ForkEventPropForkeeType
+    from .group_0220 import (
         ForkEventPropForkeeTypeForResponse as ForkEventPropForkeeTypeForResponse,
     )
-    from .group_0222 import MemberEventType as MemberEventType
-    from .group_0222 import MemberEventTypeForResponse as MemberEventTypeForResponse
-    from .group_0223 import PullRequestEventType as PullRequestEventType
-    from .group_0223 import (
+    from .group_0221 import MemberEventType as MemberEventType
+    from .group_0221 import MemberEventTypeForResponse as MemberEventTypeForResponse
+    from .group_0222 import PullRequestEventType as PullRequestEventType
+    from .group_0222 import (
         PullRequestEventTypeForResponse as PullRequestEventTypeForResponse,
     )
-    from .group_0224 import (
+    from .group_0223 import (
         PullRequestReviewCommentEventPropCommentPropLinksPropHtmlType as PullRequestReviewCommentEventPropCommentPropLinksPropHtmlType,
     )
-    from .group_0224 import (
+    from .group_0223 import (
         PullRequestReviewCommentEventPropCommentPropLinksPropHtmlTypeForResponse as PullRequestReviewCommentEventPropCommentPropLinksPropHtmlTypeForResponse,
     )
-    from .group_0224 import (
+    from .group_0223 import (
         PullRequestReviewCommentEventPropCommentPropLinksPropPullRequestType as PullRequestReviewCommentEventPropCommentPropLinksPropPullRequestType,
     )
-    from .group_0224 import (
+    from .group_0223 import (
         PullRequestReviewCommentEventPropCommentPropLinksPropPullRequestTypeForResponse as PullRequestReviewCommentEventPropCommentPropLinksPropPullRequestTypeForResponse,
     )
-    from .group_0224 import (
+    from .group_0223 import (
         PullRequestReviewCommentEventPropCommentPropLinksPropSelfType as PullRequestReviewCommentEventPropCommentPropLinksPropSelfType,
     )
-    from .group_0224 import (
+    from .group_0223 import (
         PullRequestReviewCommentEventPropCommentPropLinksPropSelfTypeForResponse as PullRequestReviewCommentEventPropCommentPropLinksPropSelfTypeForResponse,
     )
-    from .group_0224 import (
+    from .group_0223 import (
         PullRequestReviewCommentEventPropCommentPropLinksType as PullRequestReviewCommentEventPropCommentPropLinksType,
     )
-    from .group_0224 import (
+    from .group_0223 import (
         PullRequestReviewCommentEventPropCommentPropLinksTypeForResponse as PullRequestReviewCommentEventPropCommentPropLinksTypeForResponse,
     )
-    from .group_0224 import (
+    from .group_0223 import (
         PullRequestReviewCommentEventPropCommentPropReactionsType as PullRequestReviewCommentEventPropCommentPropReactionsType,
     )
-    from .group_0224 import (
+    from .group_0223 import (
         PullRequestReviewCommentEventPropCommentPropReactionsTypeForResponse as PullRequestReviewCommentEventPropCommentPropReactionsTypeForResponse,
     )
-    from .group_0224 import (
+    from .group_0223 import (
         PullRequestReviewCommentEventPropCommentPropUserType as PullRequestReviewCommentEventPropCommentPropUserType,
     )
-    from .group_0224 import (
+    from .group_0223 import (
         PullRequestReviewCommentEventPropCommentPropUserTypeForResponse as PullRequestReviewCommentEventPropCommentPropUserTypeForResponse,
     )
-    from .group_0224 import (
+    from .group_0223 import (
         PullRequestReviewCommentEventPropCommentType as PullRequestReviewCommentEventPropCommentType,
     )
-    from .group_0224 import (
+    from .group_0223 import (
         PullRequestReviewCommentEventPropCommentTypeForResponse as PullRequestReviewCommentEventPropCommentTypeForResponse,
     )
-    from .group_0224 import (
+    from .group_0223 import (
         PullRequestReviewCommentEventType as PullRequestReviewCommentEventType,
     )
-    from .group_0224 import (
+    from .group_0223 import (
         PullRequestReviewCommentEventTypeForResponse as PullRequestReviewCommentEventTypeForResponse,
     )
-    from .group_0225 import PullRequestReviewEventType as PullRequestReviewEventType
-    from .group_0225 import (
+    from .group_0224 import PullRequestReviewEventType as PullRequestReviewEventType
+    from .group_0224 import (
         PullRequestReviewEventTypeForResponse as PullRequestReviewEventTypeForResponse,
     )
-    from .group_0226 import (
+    from .group_0225 import (
         PullRequestReviewEventPropReviewPropLinksPropHtmlType as PullRequestReviewEventPropReviewPropLinksPropHtmlType,
     )
-    from .group_0226 import (
+    from .group_0225 import (
         PullRequestReviewEventPropReviewPropLinksPropHtmlTypeForResponse as PullRequestReviewEventPropReviewPropLinksPropHtmlTypeForResponse,
     )
-    from .group_0226 import (
+    from .group_0225 import (
         PullRequestReviewEventPropReviewPropLinksPropPullRequestType as PullRequestReviewEventPropReviewPropLinksPropPullRequestType,
     )
-    from .group_0226 import (
+    from .group_0225 import (
         PullRequestReviewEventPropReviewPropLinksPropPullRequestTypeForResponse as PullRequestReviewEventPropReviewPropLinksPropPullRequestTypeForResponse,
     )
-    from .group_0226 import (
+    from .group_0225 import (
         PullRequestReviewEventPropReviewPropLinksType as PullRequestReviewEventPropReviewPropLinksType,
     )
-    from .group_0226 import (
+    from .group_0225 import (
         PullRequestReviewEventPropReviewPropLinksTypeForResponse as PullRequestReviewEventPropReviewPropLinksTypeForResponse,
     )
-    from .group_0226 import (
+    from .group_0225 import (
         PullRequestReviewEventPropReviewType as PullRequestReviewEventPropReviewType,
     )
-    from .group_0226 import (
+    from .group_0225 import (
         PullRequestReviewEventPropReviewTypeForResponse as PullRequestReviewEventPropReviewTypeForResponse,
     )
-    from .group_0227 import CommitCommentEventType as CommitCommentEventType
-    from .group_0227 import (
+    from .group_0226 import CommitCommentEventType as CommitCommentEventType
+    from .group_0226 import (
         CommitCommentEventTypeForResponse as CommitCommentEventTypeForResponse,
     )
-    from .group_0228 import (
+    from .group_0227 import (
         CommitCommentEventPropCommentType as CommitCommentEventPropCommentType,
     )
-    from .group_0228 import (
+    from .group_0227 import (
         CommitCommentEventPropCommentTypeForResponse as CommitCommentEventPropCommentTypeForResponse,
     )
-    from .group_0229 import ReleaseEventType as ReleaseEventType
-    from .group_0229 import ReleaseEventTypeForResponse as ReleaseEventTypeForResponse
-    from .group_0230 import ReleaseEventPropReleaseType as ReleaseEventPropReleaseType
-    from .group_0230 import (
+    from .group_0228 import ReleaseEventType as ReleaseEventType
+    from .group_0228 import ReleaseEventTypeForResponse as ReleaseEventTypeForResponse
+    from .group_0229 import ReleaseEventPropReleaseType as ReleaseEventPropReleaseType
+    from .group_0229 import (
         ReleaseEventPropReleaseTypeForResponse as ReleaseEventPropReleaseTypeForResponse,
     )
-    from .group_0231 import (
+    from .group_0230 import (
         ReleaseEventPropReleaseAllof1Type as ReleaseEventPropReleaseAllof1Type,
     )
-    from .group_0231 import (
+    from .group_0230 import (
         ReleaseEventPropReleaseAllof1TypeForResponse as ReleaseEventPropReleaseAllof1TypeForResponse,
     )
-    from .group_0232 import FeedPropLinksType as FeedPropLinksType
-    from .group_0232 import FeedPropLinksTypeForResponse as FeedPropLinksTypeForResponse
-    from .group_0232 import FeedType as FeedType
-    from .group_0232 import FeedTypeForResponse as FeedTypeForResponse
-    from .group_0232 import LinkWithTypeType as LinkWithTypeType
-    from .group_0232 import LinkWithTypeTypeForResponse as LinkWithTypeTypeForResponse
-    from .group_0233 import BaseGistPropFilesType as BaseGistPropFilesType
-    from .group_0233 import (
+    from .group_0231 import FeedPropLinksType as FeedPropLinksType
+    from .group_0231 import FeedPropLinksTypeForResponse as FeedPropLinksTypeForResponse
+    from .group_0231 import FeedType as FeedType
+    from .group_0231 import FeedTypeForResponse as FeedTypeForResponse
+    from .group_0231 import LinkWithTypeType as LinkWithTypeType
+    from .group_0231 import LinkWithTypeTypeForResponse as LinkWithTypeTypeForResponse
+    from .group_0232 import BaseGistPropFilesType as BaseGistPropFilesType
+    from .group_0232 import (
         BaseGistPropFilesTypeForResponse as BaseGistPropFilesTypeForResponse,
     )
-    from .group_0233 import BaseGistType as BaseGistType
-    from .group_0233 import BaseGistTypeForResponse as BaseGistTypeForResponse
-    from .group_0234 import GistSimplePropFilesType as GistSimplePropFilesType
-    from .group_0234 import (
+    from .group_0232 import BaseGistType as BaseGistType
+    from .group_0232 import BaseGistTypeForResponse as BaseGistTypeForResponse
+    from .group_0233 import GistSimplePropFilesType as GistSimplePropFilesType
+    from .group_0233 import (
         GistSimplePropFilesTypeForResponse as GistSimplePropFilesTypeForResponse,
     )
-    from .group_0234 import GistSimpleType as GistSimpleType
-    from .group_0234 import GistSimpleTypeForResponse as GistSimpleTypeForResponse
-    from .group_0235 import (
+    from .group_0233 import GistSimpleType as GistSimpleType
+    from .group_0233 import GistSimpleTypeForResponse as GistSimpleTypeForResponse
+    from .group_0234 import (
         GistSimplePropForkOfPropFilesType as GistSimplePropForkOfPropFilesType,
     )
-    from .group_0235 import (
+    from .group_0234 import (
         GistSimplePropForkOfPropFilesTypeForResponse as GistSimplePropForkOfPropFilesTypeForResponse,
     )
-    from .group_0235 import GistSimplePropForkOfType as GistSimplePropForkOfType
-    from .group_0235 import (
+    from .group_0234 import GistSimplePropForkOfType as GistSimplePropForkOfType
+    from .group_0234 import (
         GistSimplePropForkOfTypeForResponse as GistSimplePropForkOfTypeForResponse,
     )
-    from .group_0236 import GistCommentType as GistCommentType
-    from .group_0236 import GistCommentTypeForResponse as GistCommentTypeForResponse
-    from .group_0237 import (
+    from .group_0235 import GistCommentType as GistCommentType
+    from .group_0235 import GistCommentTypeForResponse as GistCommentTypeForResponse
+    from .group_0236 import (
         GistCommitPropChangeStatusType as GistCommitPropChangeStatusType,
     )
-    from .group_0237 import (
+    from .group_0236 import (
         GistCommitPropChangeStatusTypeForResponse as GistCommitPropChangeStatusTypeForResponse,
     )
-    from .group_0237 import GistCommitType as GistCommitType
-    from .group_0237 import GistCommitTypeForResponse as GistCommitTypeForResponse
-    from .group_0238 import GitignoreTemplateType as GitignoreTemplateType
-    from .group_0238 import (
+    from .group_0236 import GistCommitType as GistCommitType
+    from .group_0236 import GistCommitTypeForResponse as GistCommitTypeForResponse
+    from .group_0237 import GitignoreTemplateType as GitignoreTemplateType
+    from .group_0237 import (
         GitignoreTemplateTypeForResponse as GitignoreTemplateTypeForResponse,
     )
-    from .group_0239 import LicenseType as LicenseType
-    from .group_0239 import LicenseTypeForResponse as LicenseTypeForResponse
-    from .group_0240 import MarketplaceListingPlanType as MarketplaceListingPlanType
-    from .group_0240 import (
+    from .group_0238 import LicenseType as LicenseType
+    from .group_0238 import LicenseTypeForResponse as LicenseTypeForResponse
+    from .group_0239 import MarketplaceListingPlanType as MarketplaceListingPlanType
+    from .group_0239 import (
         MarketplaceListingPlanTypeForResponse as MarketplaceListingPlanTypeForResponse,
     )
-    from .group_0241 import MarketplacePurchaseType as MarketplacePurchaseType
-    from .group_0241 import (
+    from .group_0240 import MarketplacePurchaseType as MarketplacePurchaseType
+    from .group_0240 import (
         MarketplacePurchaseTypeForResponse as MarketplacePurchaseTypeForResponse,
     )
-    from .group_0242 import (
+    from .group_0241 import (
         MarketplacePurchasePropMarketplacePendingChangeType as MarketplacePurchasePropMarketplacePendingChangeType,
     )
-    from .group_0242 import (
+    from .group_0241 import (
         MarketplacePurchasePropMarketplacePendingChangeTypeForResponse as MarketplacePurchasePropMarketplacePendingChangeTypeForResponse,
     )
-    from .group_0242 import (
+    from .group_0241 import (
         MarketplacePurchasePropMarketplacePurchaseType as MarketplacePurchasePropMarketplacePurchaseType,
     )
-    from .group_0242 import (
+    from .group_0241 import (
         MarketplacePurchasePropMarketplacePurchaseTypeForResponse as MarketplacePurchasePropMarketplacePurchaseTypeForResponse,
     )
-    from .group_0243 import (
+    from .group_0242 import (
         ApiOverviewPropDomainsPropActionsInboundType as ApiOverviewPropDomainsPropActionsInboundType,
     )
-    from .group_0243 import (
+    from .group_0242 import (
         ApiOverviewPropDomainsPropActionsInboundTypeForResponse as ApiOverviewPropDomainsPropActionsInboundTypeForResponse,
     )
-    from .group_0243 import (
+    from .group_0242 import (
         ApiOverviewPropDomainsPropArtifactAttestationsType as ApiOverviewPropDomainsPropArtifactAttestationsType,
     )
-    from .group_0243 import (
+    from .group_0242 import (
         ApiOverviewPropDomainsPropArtifactAttestationsTypeForResponse as ApiOverviewPropDomainsPropArtifactAttestationsTypeForResponse,
     )
-    from .group_0243 import ApiOverviewPropDomainsType as ApiOverviewPropDomainsType
-    from .group_0243 import (
+    from .group_0242 import ApiOverviewPropDomainsType as ApiOverviewPropDomainsType
+    from .group_0242 import (
         ApiOverviewPropDomainsTypeForResponse as ApiOverviewPropDomainsTypeForResponse,
     )
-    from .group_0243 import (
+    from .group_0242 import (
         ApiOverviewPropSshKeyFingerprintsType as ApiOverviewPropSshKeyFingerprintsType,
     )
-    from .group_0243 import (
+    from .group_0242 import (
         ApiOverviewPropSshKeyFingerprintsTypeForResponse as ApiOverviewPropSshKeyFingerprintsTypeForResponse,
     )
-    from .group_0243 import ApiOverviewType as ApiOverviewType
-    from .group_0243 import ApiOverviewTypeForResponse as ApiOverviewTypeForResponse
-    from .group_0244 import (
+    from .group_0242 import ApiOverviewType as ApiOverviewType
+    from .group_0242 import ApiOverviewTypeForResponse as ApiOverviewTypeForResponse
+    from .group_0243 import (
         SecurityAndAnalysisPropAdvancedSecurityType as SecurityAndAnalysisPropAdvancedSecurityType,
     )
-    from .group_0244 import (
+    from .group_0243 import (
         SecurityAndAnalysisPropAdvancedSecurityTypeForResponse as SecurityAndAnalysisPropAdvancedSecurityTypeForResponse,
     )
-    from .group_0244 import (
+    from .group_0243 import (
         SecurityAndAnalysisPropCodeSecurityType as SecurityAndAnalysisPropCodeSecurityType,
     )
-    from .group_0244 import (
+    from .group_0243 import (
         SecurityAndAnalysisPropCodeSecurityTypeForResponse as SecurityAndAnalysisPropCodeSecurityTypeForResponse,
     )
-    from .group_0244 import (
+    from .group_0243 import (
         SecurityAndAnalysisPropDependabotSecurityUpdatesType as SecurityAndAnalysisPropDependabotSecurityUpdatesType,
     )
-    from .group_0244 import (
+    from .group_0243 import (
         SecurityAndAnalysisPropDependabotSecurityUpdatesTypeForResponse as SecurityAndAnalysisPropDependabotSecurityUpdatesTypeForResponse,
     )
-    from .group_0244 import (
+    from .group_0243 import (
         SecurityAndAnalysisPropSecretScanningAiDetectionType as SecurityAndAnalysisPropSecretScanningAiDetectionType,
     )
-    from .group_0244 import (
+    from .group_0243 import (
         SecurityAndAnalysisPropSecretScanningAiDetectionTypeForResponse as SecurityAndAnalysisPropSecretScanningAiDetectionTypeForResponse,
     )
-    from .group_0244 import (
+    from .group_0243 import (
         SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissalType as SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissalType,
     )
-    from .group_0244 import (
+    from .group_0243 import (
         SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissalTypeForResponse as SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissalTypeForResponse,
     )
-    from .group_0244 import (
+    from .group_0243 import (
         SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType as SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType,
     )
-    from .group_0244 import (
+    from .group_0243 import (
         SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItemsTypeForResponse as SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItemsTypeForResponse,
     )
-    from .group_0244 import (
+    from .group_0243 import (
         SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsType as SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsType,
     )
-    from .group_0244 import (
+    from .group_0243 import (
         SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsTypeForResponse as SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsTypeForResponse,
     )
-    from .group_0244 import (
+    from .group_0243 import (
         SecurityAndAnalysisPropSecretScanningDelegatedBypassType as SecurityAndAnalysisPropSecretScanningDelegatedBypassType,
     )
-    from .group_0244 import (
+    from .group_0243 import (
         SecurityAndAnalysisPropSecretScanningDelegatedBypassTypeForResponse as SecurityAndAnalysisPropSecretScanningDelegatedBypassTypeForResponse,
     )
-    from .group_0244 import (
+    from .group_0243 import (
         SecurityAndAnalysisPropSecretScanningNonProviderPatternsType as SecurityAndAnalysisPropSecretScanningNonProviderPatternsType,
     )
-    from .group_0244 import (
+    from .group_0243 import (
         SecurityAndAnalysisPropSecretScanningNonProviderPatternsTypeForResponse as SecurityAndAnalysisPropSecretScanningNonProviderPatternsTypeForResponse,
     )
-    from .group_0244 import (
+    from .group_0243 import (
         SecurityAndAnalysisPropSecretScanningPushProtectionType as SecurityAndAnalysisPropSecretScanningPushProtectionType,
     )
-    from .group_0244 import (
+    from .group_0243 import (
         SecurityAndAnalysisPropSecretScanningPushProtectionTypeForResponse as SecurityAndAnalysisPropSecretScanningPushProtectionTypeForResponse,
     )
-    from .group_0244 import (
+    from .group_0243 import (
         SecurityAndAnalysisPropSecretScanningType as SecurityAndAnalysisPropSecretScanningType,
     )
-    from .group_0244 import (
+    from .group_0243 import (
         SecurityAndAnalysisPropSecretScanningTypeForResponse as SecurityAndAnalysisPropSecretScanningTypeForResponse,
     )
-    from .group_0244 import (
+    from .group_0243 import (
         SecurityAndAnalysisPropSecretScanningValidityChecksType as SecurityAndAnalysisPropSecretScanningValidityChecksType,
     )
-    from .group_0244 import (
+    from .group_0243 import (
         SecurityAndAnalysisPropSecretScanningValidityChecksTypeForResponse as SecurityAndAnalysisPropSecretScanningValidityChecksTypeForResponse,
     )
-    from .group_0244 import SecurityAndAnalysisType as SecurityAndAnalysisType
-    from .group_0244 import (
+    from .group_0243 import SecurityAndAnalysisType as SecurityAndAnalysisType
+    from .group_0243 import (
         SecurityAndAnalysisTypeForResponse as SecurityAndAnalysisTypeForResponse,
     )
-    from .group_0245 import CodeOfConductType as CodeOfConductType
-    from .group_0245 import CodeOfConductTypeForResponse as CodeOfConductTypeForResponse
-    from .group_0245 import (
+    from .group_0244 import CodeOfConductType as CodeOfConductType
+    from .group_0244 import CodeOfConductTypeForResponse as CodeOfConductTypeForResponse
+    from .group_0244 import (
         MinimalRepositoryPropCustomPropertiesType as MinimalRepositoryPropCustomPropertiesType,
     )
-    from .group_0245 import (
+    from .group_0244 import (
         MinimalRepositoryPropCustomPropertiesTypeForResponse as MinimalRepositoryPropCustomPropertiesTypeForResponse,
     )
-    from .group_0245 import (
+    from .group_0244 import (
         MinimalRepositoryPropLicenseType as MinimalRepositoryPropLicenseType,
     )
-    from .group_0245 import (
+    from .group_0244 import (
         MinimalRepositoryPropLicenseTypeForResponse as MinimalRepositoryPropLicenseTypeForResponse,
     )
-    from .group_0245 import (
+    from .group_0244 import (
         MinimalRepositoryPropPermissionsType as MinimalRepositoryPropPermissionsType,
     )
-    from .group_0245 import (
+    from .group_0244 import (
         MinimalRepositoryPropPermissionsTypeForResponse as MinimalRepositoryPropPermissionsTypeForResponse,
     )
-    from .group_0245 import MinimalRepositoryType as MinimalRepositoryType
-    from .group_0245 import (
+    from .group_0244 import MinimalRepositoryType as MinimalRepositoryType
+    from .group_0244 import (
         MinimalRepositoryTypeForResponse as MinimalRepositoryTypeForResponse,
     )
-    from .group_0246 import ThreadPropSubjectType as ThreadPropSubjectType
-    from .group_0246 import (
+    from .group_0245 import ThreadPropSubjectType as ThreadPropSubjectType
+    from .group_0245 import (
         ThreadPropSubjectTypeForResponse as ThreadPropSubjectTypeForResponse,
     )
-    from .group_0246 import ThreadType as ThreadType
-    from .group_0246 import ThreadTypeForResponse as ThreadTypeForResponse
-    from .group_0247 import ThreadSubscriptionType as ThreadSubscriptionType
-    from .group_0247 import (
+    from .group_0245 import ThreadType as ThreadType
+    from .group_0245 import ThreadTypeForResponse as ThreadTypeForResponse
+    from .group_0246 import ThreadSubscriptionType as ThreadSubscriptionType
+    from .group_0246 import (
         ThreadSubscriptionTypeForResponse as ThreadSubscriptionTypeForResponse,
     )
-    from .group_0248 import (
+    from .group_0247 import (
         ActionsCacheRetentionLimitForOrganizationType as ActionsCacheRetentionLimitForOrganizationType,
     )
-    from .group_0248 import (
+    from .group_0247 import (
         ActionsCacheRetentionLimitForOrganizationTypeForResponse as ActionsCacheRetentionLimitForOrganizationTypeForResponse,
     )
-    from .group_0249 import (
+    from .group_0248 import (
         ActionsCacheStorageLimitForOrganizationType as ActionsCacheStorageLimitForOrganizationType,
     )
-    from .group_0249 import (
+    from .group_0248 import (
         ActionsCacheStorageLimitForOrganizationTypeForResponse as ActionsCacheStorageLimitForOrganizationTypeForResponse,
     )
-    from .group_0250 import OrganizationFullPropPlanType as OrganizationFullPropPlanType
-    from .group_0250 import (
+    from .group_0249 import OrganizationFullPropPlanType as OrganizationFullPropPlanType
+    from .group_0249 import (
         OrganizationFullPropPlanTypeForResponse as OrganizationFullPropPlanTypeForResponse,
     )
-    from .group_0250 import OrganizationFullType as OrganizationFullType
-    from .group_0250 import (
+    from .group_0249 import OrganizationFullType as OrganizationFullType
+    from .group_0249 import (
         OrganizationFullTypeForResponse as OrganizationFullTypeForResponse,
     )
-    from .group_0251 import OidcCustomSubType as OidcCustomSubType
-    from .group_0251 import OidcCustomSubTypeForResponse as OidcCustomSubTypeForResponse
-    from .group_0252 import (
+    from .group_0250 import OidcCustomSubType as OidcCustomSubType
+    from .group_0250 import OidcCustomSubTypeForResponse as OidcCustomSubTypeForResponse
+    from .group_0251 import (
         ActionsOrganizationPermissionsType as ActionsOrganizationPermissionsType,
     )
-    from .group_0252 import (
+    from .group_0251 import (
         ActionsOrganizationPermissionsTypeForResponse as ActionsOrganizationPermissionsTypeForResponse,
     )
-    from .group_0253 import (
+    from .group_0252 import (
         SelfHostedRunnersSettingsType as SelfHostedRunnersSettingsType,
     )
-    from .group_0253 import (
+    from .group_0252 import (
         SelfHostedRunnersSettingsTypeForResponse as SelfHostedRunnersSettingsTypeForResponse,
     )
-    from .group_0254 import (
+    from .group_0253 import (
         OrganizationActionsSecretType as OrganizationActionsSecretType,
     )
-    from .group_0254 import (
+    from .group_0253 import (
         OrganizationActionsSecretTypeForResponse as OrganizationActionsSecretTypeForResponse,
     )
-    from .group_0255 import ActionsPublicKeyType as ActionsPublicKeyType
-    from .group_0255 import (
+    from .group_0254 import ActionsPublicKeyType as ActionsPublicKeyType
+    from .group_0254 import (
         ActionsPublicKeyTypeForResponse as ActionsPublicKeyTypeForResponse,
     )
-    from .group_0256 import (
+    from .group_0255 import (
         OrganizationActionsVariableType as OrganizationActionsVariableType,
     )
-    from .group_0256 import (
+    from .group_0255 import (
         OrganizationActionsVariableTypeForResponse as OrganizationActionsVariableTypeForResponse,
     )
-    from .group_0257 import (
+    from .group_0256 import (
         ArtifactDeploymentRecordPropTagsType as ArtifactDeploymentRecordPropTagsType,
     )
-    from .group_0257 import (
+    from .group_0256 import (
         ArtifactDeploymentRecordPropTagsTypeForResponse as ArtifactDeploymentRecordPropTagsTypeForResponse,
     )
-    from .group_0257 import ArtifactDeploymentRecordType as ArtifactDeploymentRecordType
-    from .group_0257 import (
+    from .group_0256 import ArtifactDeploymentRecordType as ArtifactDeploymentRecordType
+    from .group_0256 import (
         ArtifactDeploymentRecordTypeForResponse as ArtifactDeploymentRecordTypeForResponse,
     )
-    from .group_0258 import (
+    from .group_0257 import (
         CampaignSummaryPropAlertStatsType as CampaignSummaryPropAlertStatsType,
     )
-    from .group_0258 import (
+    from .group_0257 import (
         CampaignSummaryPropAlertStatsTypeForResponse as CampaignSummaryPropAlertStatsTypeForResponse,
     )
-    from .group_0258 import CampaignSummaryType as CampaignSummaryType
-    from .group_0258 import (
+    from .group_0257 import CampaignSummaryType as CampaignSummaryType
+    from .group_0257 import (
         CampaignSummaryTypeForResponse as CampaignSummaryTypeForResponse,
     )
-    from .group_0259 import CodespaceMachineType as CodespaceMachineType
-    from .group_0259 import (
+    from .group_0258 import CodespaceMachineType as CodespaceMachineType
+    from .group_0258 import (
         CodespaceMachineTypeForResponse as CodespaceMachineTypeForResponse,
     )
-    from .group_0260 import CodespacePropGitStatusType as CodespacePropGitStatusType
-    from .group_0260 import (
+    from .group_0259 import CodespacePropGitStatusType as CodespacePropGitStatusType
+    from .group_0259 import (
         CodespacePropGitStatusTypeForResponse as CodespacePropGitStatusTypeForResponse,
     )
-    from .group_0260 import (
+    from .group_0259 import (
         CodespacePropRuntimeConstraintsType as CodespacePropRuntimeConstraintsType,
     )
-    from .group_0260 import (
+    from .group_0259 import (
         CodespacePropRuntimeConstraintsTypeForResponse as CodespacePropRuntimeConstraintsTypeForResponse,
     )
-    from .group_0260 import CodespaceType as CodespaceType
-    from .group_0260 import CodespaceTypeForResponse as CodespaceTypeForResponse
-    from .group_0261 import CodespacesPublicKeyType as CodespacesPublicKeyType
-    from .group_0261 import (
+    from .group_0259 import CodespaceType as CodespaceType
+    from .group_0259 import CodespaceTypeForResponse as CodespaceTypeForResponse
+    from .group_0260 import CodespacesPublicKeyType as CodespacesPublicKeyType
+    from .group_0260 import (
         CodespacesPublicKeyTypeForResponse as CodespacesPublicKeyTypeForResponse,
     )
-    from .group_0262 import (
+    from .group_0261 import (
         CopilotSpacePropResourcesAttributesItemsPropMetadataType as CopilotSpacePropResourcesAttributesItemsPropMetadataType,
     )
-    from .group_0262 import (
+    from .group_0261 import (
         CopilotSpacePropResourcesAttributesItemsPropMetadataTypeForResponse as CopilotSpacePropResourcesAttributesItemsPropMetadataTypeForResponse,
     )
-    from .group_0262 import (
+    from .group_0261 import (
         CopilotSpacePropResourcesAttributesItemsType as CopilotSpacePropResourcesAttributesItemsType,
     )
-    from .group_0262 import (
+    from .group_0261 import (
         CopilotSpacePropResourcesAttributesItemsTypeForResponse as CopilotSpacePropResourcesAttributesItemsTypeForResponse,
     )
-    from .group_0262 import CopilotSpaceType as CopilotSpaceType
-    from .group_0262 import CopilotSpaceTypeForResponse as CopilotSpaceTypeForResponse
-    from .group_0263 import (
+    from .group_0261 import CopilotSpaceType as CopilotSpaceType
+    from .group_0261 import CopilotSpaceTypeForResponse as CopilotSpaceTypeForResponse
+    from .group_0262 import (
         CopilotSpaceCollaboratorAnyof0Type as CopilotSpaceCollaboratorAnyof0Type,
     )
-    from .group_0263 import (
+    from .group_0262 import (
         CopilotSpaceCollaboratorAnyof0TypeForResponse as CopilotSpaceCollaboratorAnyof0TypeForResponse,
     )
-    from .group_0263 import (
+    from .group_0262 import (
         CopilotSpaceCollaboratorAnyof1Type as CopilotSpaceCollaboratorAnyof1Type,
     )
-    from .group_0263 import (
+    from .group_0262 import (
         CopilotSpaceCollaboratorAnyof1TypeForResponse as CopilotSpaceCollaboratorAnyof1TypeForResponse,
     )
-    from .group_0264 import (
+    from .group_0263 import (
         CopilotSpaceCollaboratorAnyof0Allof1Type as CopilotSpaceCollaboratorAnyof0Allof1Type,
     )
-    from .group_0264 import (
+    from .group_0263 import (
         CopilotSpaceCollaboratorAnyof0Allof1TypeForResponse as CopilotSpaceCollaboratorAnyof0Allof1TypeForResponse,
     )
-    from .group_0265 import (
+    from .group_0264 import (
         CopilotSpaceResourcePropMetadataType as CopilotSpaceResourcePropMetadataType,
     )
-    from .group_0265 import (
+    from .group_0264 import (
         CopilotSpaceResourcePropMetadataTypeForResponse as CopilotSpaceResourcePropMetadataTypeForResponse,
     )
-    from .group_0265 import CopilotSpaceResourceType as CopilotSpaceResourceType
-    from .group_0265 import (
+    from .group_0264 import CopilotSpaceResourceType as CopilotSpaceResourceType
+    from .group_0264 import (
         CopilotSpaceResourceTypeForResponse as CopilotSpaceResourceTypeForResponse,
     )
-    from .group_0266 import (
+    from .group_0265 import (
         CopilotOrganizationDetailsType as CopilotOrganizationDetailsType,
     )
-    from .group_0266 import (
+    from .group_0265 import (
         CopilotOrganizationDetailsTypeForResponse as CopilotOrganizationDetailsTypeForResponse,
     )
-    from .group_0266 import (
+    from .group_0265 import (
         CopilotOrganizationSeatBreakdownType as CopilotOrganizationSeatBreakdownType,
     )
-    from .group_0266 import (
+    from .group_0265 import (
         CopilotOrganizationSeatBreakdownTypeForResponse as CopilotOrganizationSeatBreakdownTypeForResponse,
     )
-    from .group_0267 import (
+    from .group_0266 import (
         CopilotOrganizationContentExclusionDetailsType as CopilotOrganizationContentExclusionDetailsType,
     )
-    from .group_0267 import (
+    from .group_0266 import (
         CopilotOrganizationContentExclusionDetailsTypeForResponse as CopilotOrganizationContentExclusionDetailsTypeForResponse,
     )
-    from .group_0268 import CredentialAuthorizationType as CredentialAuthorizationType
-    from .group_0268 import (
+    from .group_0267 import CredentialAuthorizationType as CredentialAuthorizationType
+    from .group_0267 import (
         CredentialAuthorizationTypeForResponse as CredentialAuthorizationTypeForResponse,
     )
-    from .group_0269 import (
+    from .group_0268 import (
         OrganizationCustomRepositoryRoleType as OrganizationCustomRepositoryRoleType,
     )
-    from .group_0269 import (
+    from .group_0268 import (
         OrganizationCustomRepositoryRoleTypeForResponse as OrganizationCustomRepositoryRoleTypeForResponse,
     )
-    from .group_0269 import (
+    from .group_0268 import (
         OrgsOrgCustomRepositoryRolesGetResponse200Type as OrgsOrgCustomRepositoryRolesGetResponse200Type,
     )
-    from .group_0269 import (
+    from .group_0268 import (
         OrgsOrgCustomRepositoryRolesGetResponse200TypeForResponse as OrgsOrgCustomRepositoryRolesGetResponse200TypeForResponse,
     )
-    from .group_0270 import (
+    from .group_0269 import (
         OrganizationCustomRepositoryRoleCreateSchemaType as OrganizationCustomRepositoryRoleCreateSchemaType,
     )
-    from .group_0270 import (
+    from .group_0269 import (
         OrganizationCustomRepositoryRoleCreateSchemaTypeForResponse as OrganizationCustomRepositoryRoleCreateSchemaTypeForResponse,
     )
-    from .group_0271 import (
+    from .group_0270 import (
         OrganizationCustomRepositoryRoleUpdateSchemaType as OrganizationCustomRepositoryRoleUpdateSchemaType,
     )
-    from .group_0271 import (
+    from .group_0270 import (
         OrganizationCustomRepositoryRoleUpdateSchemaTypeForResponse as OrganizationCustomRepositoryRoleUpdateSchemaTypeForResponse,
     )
-    from .group_0272 import DependabotPublicKeyType as DependabotPublicKeyType
-    from .group_0272 import (
+    from .group_0271 import DependabotPublicKeyType as DependabotPublicKeyType
+    from .group_0271 import (
         DependabotPublicKeyTypeForResponse as DependabotPublicKeyTypeForResponse,
     )
-    from .group_0273 import (
+    from .group_0272 import (
         DismissalRequestResponsePropReviewerType as DismissalRequestResponsePropReviewerType,
     )
-    from .group_0273 import (
+    from .group_0272 import (
         DismissalRequestResponsePropReviewerTypeForResponse as DismissalRequestResponsePropReviewerTypeForResponse,
     )
-    from .group_0273 import DismissalRequestResponseType as DismissalRequestResponseType
-    from .group_0273 import (
+    from .group_0272 import DismissalRequestResponseType as DismissalRequestResponseType
+    from .group_0272 import (
         DismissalRequestResponseTypeForResponse as DismissalRequestResponseTypeForResponse,
     )
-    from .group_0274 import (
+    from .group_0273 import (
         CodeScanningAlertDismissalRequestPropDataItemsType as CodeScanningAlertDismissalRequestPropDataItemsType,
     )
-    from .group_0274 import (
+    from .group_0273 import (
         CodeScanningAlertDismissalRequestPropDataItemsTypeForResponse as CodeScanningAlertDismissalRequestPropDataItemsTypeForResponse,
     )
-    from .group_0274 import (
+    from .group_0273 import (
         CodeScanningAlertDismissalRequestPropOrganizationType as CodeScanningAlertDismissalRequestPropOrganizationType,
     )
-    from .group_0274 import (
+    from .group_0273 import (
         CodeScanningAlertDismissalRequestPropOrganizationTypeForResponse as CodeScanningAlertDismissalRequestPropOrganizationTypeForResponse,
     )
-    from .group_0274 import (
+    from .group_0273 import (
         CodeScanningAlertDismissalRequestPropRepositoryType as CodeScanningAlertDismissalRequestPropRepositoryType,
     )
-    from .group_0274 import (
+    from .group_0273 import (
         CodeScanningAlertDismissalRequestPropRepositoryTypeForResponse as CodeScanningAlertDismissalRequestPropRepositoryTypeForResponse,
     )
-    from .group_0274 import (
+    from .group_0273 import (
         CodeScanningAlertDismissalRequestPropRequesterType as CodeScanningAlertDismissalRequestPropRequesterType,
     )
-    from .group_0274 import (
+    from .group_0273 import (
         CodeScanningAlertDismissalRequestPropRequesterTypeForResponse as CodeScanningAlertDismissalRequestPropRequesterTypeForResponse,
     )
-    from .group_0274 import (
+    from .group_0273 import (
         CodeScanningAlertDismissalRequestType as CodeScanningAlertDismissalRequestType,
     )
-    from .group_0274 import (
+    from .group_0273 import (
         CodeScanningAlertDismissalRequestTypeForResponse as CodeScanningAlertDismissalRequestTypeForResponse,
     )
-    from .group_0275 import (
+    from .group_0274 import (
         DependabotAlertDismissalRequestPropDataItemsType as DependabotAlertDismissalRequestPropDataItemsType,
     )
-    from .group_0275 import (
+    from .group_0274 import (
         DependabotAlertDismissalRequestPropDataItemsTypeForResponse as DependabotAlertDismissalRequestPropDataItemsTypeForResponse,
     )
-    from .group_0275 import (
+    from .group_0274 import (
         DependabotAlertDismissalRequestPropOrganizationType as DependabotAlertDismissalRequestPropOrganizationType,
     )
-    from .group_0275 import (
+    from .group_0274 import (
         DependabotAlertDismissalRequestPropOrganizationTypeForResponse as DependabotAlertDismissalRequestPropOrganizationTypeForResponse,
     )
-    from .group_0275 import (
+    from .group_0274 import (
         DependabotAlertDismissalRequestPropRepositoryType as DependabotAlertDismissalRequestPropRepositoryType,
     )
-    from .group_0275 import (
+    from .group_0274 import (
         DependabotAlertDismissalRequestPropRepositoryTypeForResponse as DependabotAlertDismissalRequestPropRepositoryTypeForResponse,
     )
-    from .group_0275 import (
+    from .group_0274 import (
         DependabotAlertDismissalRequestPropRequesterType as DependabotAlertDismissalRequestPropRequesterType,
     )
-    from .group_0275 import (
+    from .group_0274 import (
         DependabotAlertDismissalRequestPropRequesterTypeForResponse as DependabotAlertDismissalRequestPropRequesterTypeForResponse,
     )
-    from .group_0275 import (
+    from .group_0274 import (
         DependabotAlertDismissalRequestType as DependabotAlertDismissalRequestType,
     )
-    from .group_0275 import (
+    from .group_0274 import (
         DependabotAlertDismissalRequestTypeForResponse as DependabotAlertDismissalRequestTypeForResponse,
     )
-    from .group_0276 import PackageType as PackageType
-    from .group_0276 import PackageTypeForResponse as PackageTypeForResponse
-    from .group_0277 import (
+    from .group_0275 import PackageType as PackageType
+    from .group_0275 import PackageTypeForResponse as PackageTypeForResponse
+    from .group_0276 import (
         ExternalGroupPropMembersItemsType as ExternalGroupPropMembersItemsType,
     )
-    from .group_0277 import (
+    from .group_0276 import (
         ExternalGroupPropMembersItemsTypeForResponse as ExternalGroupPropMembersItemsTypeForResponse,
     )
-    from .group_0277 import (
+    from .group_0276 import (
         ExternalGroupPropTeamsItemsType as ExternalGroupPropTeamsItemsType,
     )
-    from .group_0277 import (
+    from .group_0276 import (
         ExternalGroupPropTeamsItemsTypeForResponse as ExternalGroupPropTeamsItemsTypeForResponse,
     )
-    from .group_0277 import ExternalGroupType as ExternalGroupType
-    from .group_0277 import ExternalGroupTypeForResponse as ExternalGroupTypeForResponse
-    from .group_0278 import (
+    from .group_0276 import ExternalGroupType as ExternalGroupType
+    from .group_0276 import ExternalGroupTypeForResponse as ExternalGroupTypeForResponse
+    from .group_0277 import (
         ExternalGroupsPropGroupsItemsType as ExternalGroupsPropGroupsItemsType,
     )
-    from .group_0278 import (
+    from .group_0277 import (
         ExternalGroupsPropGroupsItemsTypeForResponse as ExternalGroupsPropGroupsItemsTypeForResponse,
     )
-    from .group_0278 import ExternalGroupsType as ExternalGroupsType
-    from .group_0278 import (
+    from .group_0277 import ExternalGroupsType as ExternalGroupsType
+    from .group_0277 import (
         ExternalGroupsTypeForResponse as ExternalGroupsTypeForResponse,
     )
-    from .group_0279 import OrganizationInvitationType as OrganizationInvitationType
-    from .group_0279 import (
+    from .group_0278 import OrganizationInvitationType as OrganizationInvitationType
+    from .group_0278 import (
         OrganizationInvitationTypeForResponse as OrganizationInvitationTypeForResponse,
     )
-    from .group_0280 import (
+    from .group_0279 import (
         RepositoryFineGrainedPermissionType as RepositoryFineGrainedPermissionType,
     )
-    from .group_0280 import (
+    from .group_0279 import (
         RepositoryFineGrainedPermissionTypeForResponse as RepositoryFineGrainedPermissionTypeForResponse,
     )
-    from .group_0281 import OrgHookPropConfigType as OrgHookPropConfigType
-    from .group_0281 import (
+    from .group_0280 import OrgHookPropConfigType as OrgHookPropConfigType
+    from .group_0280 import (
         OrgHookPropConfigTypeForResponse as OrgHookPropConfigTypeForResponse,
     )
-    from .group_0281 import OrgHookType as OrgHookType
-    from .group_0281 import OrgHookTypeForResponse as OrgHookTypeForResponse
-    from .group_0282 import (
+    from .group_0280 import OrgHookType as OrgHookType
+    from .group_0280 import OrgHookTypeForResponse as OrgHookTypeForResponse
+    from .group_0281 import (
         ApiInsightsRouteStatsItemsType as ApiInsightsRouteStatsItemsType,
     )
-    from .group_0282 import (
+    from .group_0281 import (
         ApiInsightsRouteStatsItemsTypeForResponse as ApiInsightsRouteStatsItemsTypeForResponse,
     )
-    from .group_0283 import (
+    from .group_0282 import (
         ApiInsightsSubjectStatsItemsType as ApiInsightsSubjectStatsItemsType,
     )
-    from .group_0283 import (
+    from .group_0282 import (
         ApiInsightsSubjectStatsItemsTypeForResponse as ApiInsightsSubjectStatsItemsTypeForResponse,
     )
-    from .group_0284 import ApiInsightsSummaryStatsType as ApiInsightsSummaryStatsType
-    from .group_0284 import (
+    from .group_0283 import ApiInsightsSummaryStatsType as ApiInsightsSummaryStatsType
+    from .group_0283 import (
         ApiInsightsSummaryStatsTypeForResponse as ApiInsightsSummaryStatsTypeForResponse,
     )
-    from .group_0285 import (
+    from .group_0284 import (
         ApiInsightsTimeStatsItemsType as ApiInsightsTimeStatsItemsType,
     )
-    from .group_0285 import (
+    from .group_0284 import (
         ApiInsightsTimeStatsItemsTypeForResponse as ApiInsightsTimeStatsItemsTypeForResponse,
     )
-    from .group_0286 import (
+    from .group_0285 import (
         ApiInsightsUserStatsItemsType as ApiInsightsUserStatsItemsType,
     )
-    from .group_0286 import (
+    from .group_0285 import (
         ApiInsightsUserStatsItemsTypeForResponse as ApiInsightsUserStatsItemsTypeForResponse,
     )
-    from .group_0287 import InteractionLimitResponseType as InteractionLimitResponseType
-    from .group_0287 import (
+    from .group_0286 import InteractionLimitResponseType as InteractionLimitResponseType
+    from .group_0286 import (
         InteractionLimitResponseTypeForResponse as InteractionLimitResponseTypeForResponse,
     )
-    from .group_0288 import InteractionLimitType as InteractionLimitType
-    from .group_0288 import (
+    from .group_0287 import InteractionLimitType as InteractionLimitType
+    from .group_0287 import (
         InteractionLimitTypeForResponse as InteractionLimitTypeForResponse,
     )
-    from .group_0289 import (
+    from .group_0288 import (
         IssueFieldPropOptionsItemsType as IssueFieldPropOptionsItemsType,
     )
-    from .group_0289 import (
+    from .group_0288 import (
         IssueFieldPropOptionsItemsTypeForResponse as IssueFieldPropOptionsItemsTypeForResponse,
     )
-    from .group_0289 import IssueFieldType as IssueFieldType
-    from .group_0289 import IssueFieldTypeForResponse as IssueFieldTypeForResponse
-    from .group_0290 import (
+    from .group_0288 import IssueFieldType as IssueFieldType
+    from .group_0288 import IssueFieldTypeForResponse as IssueFieldTypeForResponse
+    from .group_0289 import (
         OrganizationCreateIssueFieldPropOptionsItemsType as OrganizationCreateIssueFieldPropOptionsItemsType,
     )
-    from .group_0290 import (
+    from .group_0289 import (
         OrganizationCreateIssueFieldPropOptionsItemsTypeForResponse as OrganizationCreateIssueFieldPropOptionsItemsTypeForResponse,
     )
-    from .group_0290 import (
+    from .group_0289 import (
         OrganizationCreateIssueFieldType as OrganizationCreateIssueFieldType,
     )
-    from .group_0290 import (
+    from .group_0289 import (
         OrganizationCreateIssueFieldTypeForResponse as OrganizationCreateIssueFieldTypeForResponse,
     )
-    from .group_0291 import (
+    from .group_0290 import (
         OrganizationUpdateIssueFieldPropOptionsItemsType as OrganizationUpdateIssueFieldPropOptionsItemsType,
     )
-    from .group_0291 import (
+    from .group_0290 import (
         OrganizationUpdateIssueFieldPropOptionsItemsTypeForResponse as OrganizationUpdateIssueFieldPropOptionsItemsTypeForResponse,
     )
-    from .group_0291 import (
+    from .group_0290 import (
         OrganizationUpdateIssueFieldType as OrganizationUpdateIssueFieldType,
     )
-    from .group_0291 import (
+    from .group_0290 import (
         OrganizationUpdateIssueFieldTypeForResponse as OrganizationUpdateIssueFieldTypeForResponse,
     )
-    from .group_0292 import (
+    from .group_0291 import (
         OrganizationCreateIssueTypeType as OrganizationCreateIssueTypeType,
     )
-    from .group_0292 import (
+    from .group_0291 import (
         OrganizationCreateIssueTypeTypeForResponse as OrganizationCreateIssueTypeTypeForResponse,
     )
-    from .group_0293 import (
+    from .group_0292 import (
         OrganizationUpdateIssueTypeType as OrganizationUpdateIssueTypeType,
     )
-    from .group_0293 import (
+    from .group_0292 import (
         OrganizationUpdateIssueTypeTypeForResponse as OrganizationUpdateIssueTypeTypeForResponse,
     )
-    from .group_0294 import (
+    from .group_0293 import (
         OrgMembershipPropPermissionsType as OrgMembershipPropPermissionsType,
     )
-    from .group_0294 import (
+    from .group_0293 import (
         OrgMembershipPropPermissionsTypeForResponse as OrgMembershipPropPermissionsTypeForResponse,
     )
-    from .group_0294 import OrgMembershipType as OrgMembershipType
-    from .group_0294 import OrgMembershipTypeForResponse as OrgMembershipTypeForResponse
-    from .group_0295 import MigrationType as MigrationType
-    from .group_0295 import MigrationTypeForResponse as MigrationTypeForResponse
-    from .group_0296 import (
+    from .group_0293 import OrgMembershipType as OrgMembershipType
+    from .group_0293 import OrgMembershipTypeForResponse as OrgMembershipTypeForResponse
+    from .group_0294 import MigrationType as MigrationType
+    from .group_0294 import MigrationTypeForResponse as MigrationTypeForResponse
+    from .group_0295 import (
         OrganizationFineGrainedPermissionType as OrganizationFineGrainedPermissionType,
     )
-    from .group_0296 import (
+    from .group_0295 import (
         OrganizationFineGrainedPermissionTypeForResponse as OrganizationFineGrainedPermissionTypeForResponse,
     )
-    from .group_0297 import OrganizationRoleType as OrganizationRoleType
-    from .group_0297 import (
+    from .group_0296 import OrganizationRoleType as OrganizationRoleType
+    from .group_0296 import (
         OrganizationRoleTypeForResponse as OrganizationRoleTypeForResponse,
     )
-    from .group_0297 import (
+    from .group_0296 import (
         OrgsOrgOrganizationRolesGetResponse200Type as OrgsOrgOrganizationRolesGetResponse200Type,
     )
-    from .group_0297 import (
+    from .group_0296 import (
         OrgsOrgOrganizationRolesGetResponse200TypeForResponse as OrgsOrgOrganizationRolesGetResponse200TypeForResponse,
     )
-    from .group_0298 import (
+    from .group_0297 import (
         OrganizationCustomOrganizationRoleCreateSchemaType as OrganizationCustomOrganizationRoleCreateSchemaType,
     )
-    from .group_0298 import (
+    from .group_0297 import (
         OrganizationCustomOrganizationRoleCreateSchemaTypeForResponse as OrganizationCustomOrganizationRoleCreateSchemaTypeForResponse,
     )
-    from .group_0299 import (
+    from .group_0298 import (
         OrganizationCustomOrganizationRoleUpdateSchemaType as OrganizationCustomOrganizationRoleUpdateSchemaType,
     )
-    from .group_0299 import (
+    from .group_0298 import (
         OrganizationCustomOrganizationRoleUpdateSchemaTypeForResponse as OrganizationCustomOrganizationRoleUpdateSchemaTypeForResponse,
     )
-    from .group_0300 import (
+    from .group_0299 import (
         TeamRoleAssignmentPropPermissionsType as TeamRoleAssignmentPropPermissionsType,
     )
-    from .group_0300 import (
+    from .group_0299 import (
         TeamRoleAssignmentPropPermissionsTypeForResponse as TeamRoleAssignmentPropPermissionsTypeForResponse,
     )
-    from .group_0300 import TeamRoleAssignmentType as TeamRoleAssignmentType
-    from .group_0300 import (
+    from .group_0299 import TeamRoleAssignmentType as TeamRoleAssignmentType
+    from .group_0299 import (
         TeamRoleAssignmentTypeForResponse as TeamRoleAssignmentTypeForResponse,
     )
-    from .group_0301 import UserRoleAssignmentType as UserRoleAssignmentType
-    from .group_0301 import (
+    from .group_0300 import UserRoleAssignmentType as UserRoleAssignmentType
+    from .group_0300 import (
         UserRoleAssignmentTypeForResponse as UserRoleAssignmentTypeForResponse,
     )
-    from .group_0302 import (
+    from .group_0301 import (
         PackageVersionPropMetadataPropContainerType as PackageVersionPropMetadataPropContainerType,
     )
-    from .group_0302 import (
+    from .group_0301 import (
         PackageVersionPropMetadataPropContainerTypeForResponse as PackageVersionPropMetadataPropContainerTypeForResponse,
     )
-    from .group_0302 import (
+    from .group_0301 import (
         PackageVersionPropMetadataPropDockerType as PackageVersionPropMetadataPropDockerType,
     )
-    from .group_0302 import (
+    from .group_0301 import (
         PackageVersionPropMetadataPropDockerTypeForResponse as PackageVersionPropMetadataPropDockerTypeForResponse,
     )
-    from .group_0302 import (
+    from .group_0301 import (
         PackageVersionPropMetadataType as PackageVersionPropMetadataType,
     )
-    from .group_0302 import (
+    from .group_0301 import (
         PackageVersionPropMetadataTypeForResponse as PackageVersionPropMetadataTypeForResponse,
     )
-    from .group_0302 import PackageVersionType as PackageVersionType
-    from .group_0302 import (
+    from .group_0301 import PackageVersionType as PackageVersionType
+    from .group_0301 import (
         PackageVersionTypeForResponse as PackageVersionTypeForResponse,
     )
-    from .group_0303 import (
+    from .group_0302 import (
         OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationType as OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationType,
     )
-    from .group_0303 import (
+    from .group_0302 import (
         OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationTypeForResponse as OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationTypeForResponse,
     )
-    from .group_0303 import (
+    from .group_0302 import (
         OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherType as OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherType,
     )
-    from .group_0303 import (
+    from .group_0302 import (
         OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherTypeForResponse as OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherTypeForResponse,
     )
-    from .group_0303 import (
+    from .group_0302 import (
         OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepositoryType as OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepositoryType,
     )
-    from .group_0303 import (
+    from .group_0302 import (
         OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepositoryTypeForResponse as OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepositoryTypeForResponse,
     )
-    from .group_0303 import (
+    from .group_0302 import (
         OrganizationProgrammaticAccessGrantRequestPropPermissionsType as OrganizationProgrammaticAccessGrantRequestPropPermissionsType,
     )
-    from .group_0303 import (
+    from .group_0302 import (
         OrganizationProgrammaticAccessGrantRequestPropPermissionsTypeForResponse as OrganizationProgrammaticAccessGrantRequestPropPermissionsTypeForResponse,
     )
-    from .group_0303 import (
+    from .group_0302 import (
         OrganizationProgrammaticAccessGrantRequestType as OrganizationProgrammaticAccessGrantRequestType,
     )
-    from .group_0303 import (
+    from .group_0302 import (
         OrganizationProgrammaticAccessGrantRequestTypeForResponse as OrganizationProgrammaticAccessGrantRequestTypeForResponse,
     )
-    from .group_0304 import (
+    from .group_0303 import (
         OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationType as OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationType,
     )
-    from .group_0304 import (
+    from .group_0303 import (
         OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationTypeForResponse as OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationTypeForResponse,
     )
-    from .group_0304 import (
+    from .group_0303 import (
         OrganizationProgrammaticAccessGrantPropPermissionsPropOtherType as OrganizationProgrammaticAccessGrantPropPermissionsPropOtherType,
     )
-    from .group_0304 import (
+    from .group_0303 import (
         OrganizationProgrammaticAccessGrantPropPermissionsPropOtherTypeForResponse as OrganizationProgrammaticAccessGrantPropPermissionsPropOtherTypeForResponse,
     )
-    from .group_0304 import (
+    from .group_0303 import (
         OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryType as OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryType,
     )
-    from .group_0304 import (
+    from .group_0303 import (
         OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryTypeForResponse as OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryTypeForResponse,
     )
-    from .group_0304 import (
+    from .group_0303 import (
         OrganizationProgrammaticAccessGrantPropPermissionsType as OrganizationProgrammaticAccessGrantPropPermissionsType,
     )
-    from .group_0304 import (
+    from .group_0303 import (
         OrganizationProgrammaticAccessGrantPropPermissionsTypeForResponse as OrganizationProgrammaticAccessGrantPropPermissionsTypeForResponse,
     )
-    from .group_0304 import (
+    from .group_0303 import (
         OrganizationProgrammaticAccessGrantType as OrganizationProgrammaticAccessGrantType,
     )
-    from .group_0304 import (
+    from .group_0303 import (
         OrganizationProgrammaticAccessGrantTypeForResponse as OrganizationProgrammaticAccessGrantTypeForResponse,
     )
-    from .group_0305 import (
+    from .group_0304 import (
         OrgPrivateRegistryConfigurationWithSelectedRepositoriesType as OrgPrivateRegistryConfigurationWithSelectedRepositoriesType,
     )
-    from .group_0305 import (
+    from .group_0304 import (
         OrgPrivateRegistryConfigurationWithSelectedRepositoriesTypeForResponse as OrgPrivateRegistryConfigurationWithSelectedRepositoriesTypeForResponse,
     )
-    from .group_0306 import ProjectsV2StatusUpdateType as ProjectsV2StatusUpdateType
-    from .group_0306 import (
+    from .group_0305 import ProjectsV2StatusUpdateType as ProjectsV2StatusUpdateType
+    from .group_0305 import (
         ProjectsV2StatusUpdateTypeForResponse as ProjectsV2StatusUpdateTypeForResponse,
     )
-    from .group_0307 import ProjectsV2Type as ProjectsV2Type
-    from .group_0307 import ProjectsV2TypeForResponse as ProjectsV2TypeForResponse
-    from .group_0308 import LinkType as LinkType
-    from .group_0308 import LinkTypeForResponse as LinkTypeForResponse
-    from .group_0309 import AutoMergeType as AutoMergeType
-    from .group_0309 import AutoMergeTypeForResponse as AutoMergeTypeForResponse
-    from .group_0310 import (
+    from .group_0306 import ProjectsV2Type as ProjectsV2Type
+    from .group_0306 import ProjectsV2TypeForResponse as ProjectsV2TypeForResponse
+    from .group_0307 import LinkType as LinkType
+    from .group_0307 import LinkTypeForResponse as LinkTypeForResponse
+    from .group_0308 import AutoMergeType as AutoMergeType
+    from .group_0308 import AutoMergeTypeForResponse as AutoMergeTypeForResponse
+    from .group_0309 import (
         PullRequestSimplePropLabelsItemsType as PullRequestSimplePropLabelsItemsType,
     )
-    from .group_0310 import (
+    from .group_0309 import (
         PullRequestSimplePropLabelsItemsTypeForResponse as PullRequestSimplePropLabelsItemsTypeForResponse,
     )
-    from .group_0310 import PullRequestSimpleType as PullRequestSimpleType
-    from .group_0310 import (
+    from .group_0309 import PullRequestSimpleType as PullRequestSimpleType
+    from .group_0309 import (
         PullRequestSimpleTypeForResponse as PullRequestSimpleTypeForResponse,
     )
-    from .group_0311 import (
+    from .group_0310 import (
         PullRequestSimplePropBaseType as PullRequestSimplePropBaseType,
     )
-    from .group_0311 import (
+    from .group_0310 import (
         PullRequestSimplePropBaseTypeForResponse as PullRequestSimplePropBaseTypeForResponse,
     )
-    from .group_0311 import (
+    from .group_0310 import (
         PullRequestSimplePropHeadType as PullRequestSimplePropHeadType,
     )
-    from .group_0311 import (
+    from .group_0310 import (
         PullRequestSimplePropHeadTypeForResponse as PullRequestSimplePropHeadTypeForResponse,
     )
-    from .group_0312 import (
+    from .group_0311 import (
         PullRequestSimplePropLinksType as PullRequestSimplePropLinksType,
     )
-    from .group_0312 import (
+    from .group_0311 import (
         PullRequestSimplePropLinksTypeForResponse as PullRequestSimplePropLinksTypeForResponse,
     )
-    from .group_0313 import ProjectsV2DraftIssueType as ProjectsV2DraftIssueType
-    from .group_0313 import (
+    from .group_0312 import ProjectsV2DraftIssueType as ProjectsV2DraftIssueType
+    from .group_0312 import (
         ProjectsV2DraftIssueTypeForResponse as ProjectsV2DraftIssueTypeForResponse,
     )
-    from .group_0314 import ProjectsV2ItemSimpleType as ProjectsV2ItemSimpleType
-    from .group_0314 import (
+    from .group_0313 import ProjectsV2ItemSimpleType as ProjectsV2ItemSimpleType
+    from .group_0313 import (
         ProjectsV2ItemSimpleTypeForResponse as ProjectsV2ItemSimpleTypeForResponse,
     )
-    from .group_0315 import (
+    from .group_0314 import (
         ProjectsV2FieldPropConfigurationType as ProjectsV2FieldPropConfigurationType,
     )
-    from .group_0315 import (
+    from .group_0314 import (
         ProjectsV2FieldPropConfigurationTypeForResponse as ProjectsV2FieldPropConfigurationTypeForResponse,
     )
-    from .group_0315 import ProjectsV2FieldType as ProjectsV2FieldType
-    from .group_0315 import (
+    from .group_0314 import ProjectsV2FieldType as ProjectsV2FieldType
+    from .group_0314 import (
         ProjectsV2FieldTypeForResponse as ProjectsV2FieldTypeForResponse,
     )
-    from .group_0315 import (
+    from .group_0314 import (
         ProjectsV2IterationSettingsPropTitleType as ProjectsV2IterationSettingsPropTitleType,
     )
-    from .group_0315 import (
+    from .group_0314 import (
         ProjectsV2IterationSettingsPropTitleTypeForResponse as ProjectsV2IterationSettingsPropTitleTypeForResponse,
     )
-    from .group_0315 import (
+    from .group_0314 import (
         ProjectsV2IterationSettingsType as ProjectsV2IterationSettingsType,
     )
-    from .group_0315 import (
+    from .group_0314 import (
         ProjectsV2IterationSettingsTypeForResponse as ProjectsV2IterationSettingsTypeForResponse,
     )
-    from .group_0315 import (
+    from .group_0314 import (
         ProjectsV2SingleSelectOptionsPropDescriptionType as ProjectsV2SingleSelectOptionsPropDescriptionType,
     )
-    from .group_0315 import (
+    from .group_0314 import (
         ProjectsV2SingleSelectOptionsPropDescriptionTypeForResponse as ProjectsV2SingleSelectOptionsPropDescriptionTypeForResponse,
     )
-    from .group_0315 import (
+    from .group_0314 import (
         ProjectsV2SingleSelectOptionsPropNameType as ProjectsV2SingleSelectOptionsPropNameType,
     )
-    from .group_0315 import (
+    from .group_0314 import (
         ProjectsV2SingleSelectOptionsPropNameTypeForResponse as ProjectsV2SingleSelectOptionsPropNameTypeForResponse,
     )
-    from .group_0315 import (
+    from .group_0314 import (
         ProjectsV2SingleSelectOptionsType as ProjectsV2SingleSelectOptionsType,
     )
-    from .group_0315 import (
+    from .group_0314 import (
         ProjectsV2SingleSelectOptionsTypeForResponse as ProjectsV2SingleSelectOptionsTypeForResponse,
     )
-    from .group_0316 import (
+    from .group_0315 import (
         ProjectsV2FieldSingleSelectOptionType as ProjectsV2FieldSingleSelectOptionType,
     )
-    from .group_0316 import (
+    from .group_0315 import (
         ProjectsV2FieldSingleSelectOptionTypeForResponse as ProjectsV2FieldSingleSelectOptionTypeForResponse,
     )
-    from .group_0317 import (
+    from .group_0316 import (
         ProjectsV2FieldIterationConfigurationPropIterationsItemsType as ProjectsV2FieldIterationConfigurationPropIterationsItemsType,
     )
-    from .group_0317 import (
+    from .group_0316 import (
         ProjectsV2FieldIterationConfigurationPropIterationsItemsTypeForResponse as ProjectsV2FieldIterationConfigurationPropIterationsItemsTypeForResponse,
     )
-    from .group_0317 import (
+    from .group_0316 import (
         ProjectsV2FieldIterationConfigurationType as ProjectsV2FieldIterationConfigurationType,
     )
-    from .group_0317 import (
+    from .group_0316 import (
         ProjectsV2FieldIterationConfigurationTypeForResponse as ProjectsV2FieldIterationConfigurationTypeForResponse,
     )
-    from .group_0318 import (
+    from .group_0317 import (
         ProjectsV2ItemWithContentPropContentType as ProjectsV2ItemWithContentPropContentType,
     )
-    from .group_0318 import (
+    from .group_0317 import (
         ProjectsV2ItemWithContentPropContentTypeForResponse as ProjectsV2ItemWithContentPropContentTypeForResponse,
     )
-    from .group_0318 import (
+    from .group_0317 import (
         ProjectsV2ItemWithContentPropFieldsItemsType as ProjectsV2ItemWithContentPropFieldsItemsType,
     )
-    from .group_0318 import (
+    from .group_0317 import (
         ProjectsV2ItemWithContentPropFieldsItemsTypeForResponse as ProjectsV2ItemWithContentPropFieldsItemsTypeForResponse,
     )
-    from .group_0318 import (
+    from .group_0317 import (
         ProjectsV2ItemWithContentType as ProjectsV2ItemWithContentType,
     )
-    from .group_0318 import (
+    from .group_0317 import (
         ProjectsV2ItemWithContentTypeForResponse as ProjectsV2ItemWithContentTypeForResponse,
     )
-    from .group_0319 import (
+    from .group_0318 import (
         ProjectsV2ViewPropCreatorType as ProjectsV2ViewPropCreatorType,
     )
-    from .group_0319 import (
+    from .group_0318 import (
         ProjectsV2ViewPropCreatorTypeForResponse as ProjectsV2ViewPropCreatorTypeForResponse,
     )
-    from .group_0319 import ProjectsV2ViewType as ProjectsV2ViewType
-    from .group_0319 import (
+    from .group_0318 import ProjectsV2ViewType as ProjectsV2ViewType
+    from .group_0318 import (
         ProjectsV2ViewTypeForResponse as ProjectsV2ViewTypeForResponse,
     )
-    from .group_0320 import (
+    from .group_0319 import (
         OrgRepoCustomPropertyValuesType as OrgRepoCustomPropertyValuesType,
     )
-    from .group_0320 import (
+    from .group_0319 import (
         OrgRepoCustomPropertyValuesTypeForResponse as OrgRepoCustomPropertyValuesTypeForResponse,
     )
-    from .group_0321 import CodeOfConductSimpleType as CodeOfConductSimpleType
-    from .group_0321 import (
+    from .group_0320 import CodeOfConductSimpleType as CodeOfConductSimpleType
+    from .group_0320 import (
         CodeOfConductSimpleTypeForResponse as CodeOfConductSimpleTypeForResponse,
     )
-    from .group_0322 import (
+    from .group_0321 import (
         FullRepositoryPropCustomPropertiesType as FullRepositoryPropCustomPropertiesType,
     )
-    from .group_0322 import (
+    from .group_0321 import (
         FullRepositoryPropCustomPropertiesTypeForResponse as FullRepositoryPropCustomPropertiesTypeForResponse,
     )
-    from .group_0322 import (
+    from .group_0321 import (
         FullRepositoryPropPermissionsType as FullRepositoryPropPermissionsType,
     )
-    from .group_0322 import (
+    from .group_0321 import (
         FullRepositoryPropPermissionsTypeForResponse as FullRepositoryPropPermissionsTypeForResponse,
     )
-    from .group_0322 import FullRepositoryType as FullRepositoryType
-    from .group_0322 import (
+    from .group_0321 import FullRepositoryType as FullRepositoryType
+    from .group_0321 import (
         FullRepositoryTypeForResponse as FullRepositoryTypeForResponse,
     )
-    from .group_0323 import RuleSuitesItemsType as RuleSuitesItemsType
-    from .group_0323 import (
+    from .group_0322 import RuleSuitesItemsType as RuleSuitesItemsType
+    from .group_0322 import (
         RuleSuitesItemsTypeForResponse as RuleSuitesItemsTypeForResponse,
     )
-    from .group_0324 import (
+    from .group_0323 import (
         RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserType as RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserType,
     )
-    from .group_0324 import (
+    from .group_0323 import (
         RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserTypeForResponse as RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserTypeForResponse,
     )
-    from .group_0324 import (
+    from .group_0323 import (
         RuleSuitePullRequestPropPullRequestPropReviewsItemsType as RuleSuitePullRequestPropPullRequestPropReviewsItemsType,
     )
-    from .group_0324 import (
+    from .group_0323 import (
         RuleSuitePullRequestPropPullRequestPropReviewsItemsTypeForResponse as RuleSuitePullRequestPropPullRequestPropReviewsItemsTypeForResponse,
     )
-    from .group_0324 import (
+    from .group_0323 import (
         RuleSuitePullRequestPropPullRequestPropUserType as RuleSuitePullRequestPropPullRequestPropUserType,
     )
-    from .group_0324 import (
+    from .group_0323 import (
         RuleSuitePullRequestPropPullRequestPropUserTypeForResponse as RuleSuitePullRequestPropPullRequestPropUserTypeForResponse,
     )
-    from .group_0324 import (
+    from .group_0323 import (
         RuleSuitePullRequestPropPullRequestType as RuleSuitePullRequestPropPullRequestType,
     )
-    from .group_0324 import (
+    from .group_0323 import (
         RuleSuitePullRequestPropPullRequestTypeForResponse as RuleSuitePullRequestPropPullRequestTypeForResponse,
     )
-    from .group_0324 import RuleSuitePullRequestType as RuleSuitePullRequestType
-    from .group_0324 import (
+    from .group_0323 import RuleSuitePullRequestType as RuleSuitePullRequestType
+    from .group_0323 import (
         RuleSuitePullRequestTypeForResponse as RuleSuitePullRequestTypeForResponse,
     )
-    from .group_0325 import (
+    from .group_0324 import (
         RuleSuiteRequiredStatusChecksPropChecksItemsPropAppType as RuleSuiteRequiredStatusChecksPropChecksItemsPropAppType,
     )
-    from .group_0325 import (
+    from .group_0324 import (
         RuleSuiteRequiredStatusChecksPropChecksItemsPropAppTypeForResponse as RuleSuiteRequiredStatusChecksPropChecksItemsPropAppTypeForResponse,
     )
-    from .group_0325 import (
+    from .group_0324 import (
         RuleSuiteRequiredStatusChecksPropChecksItemsType as RuleSuiteRequiredStatusChecksPropChecksItemsType,
     )
-    from .group_0325 import (
+    from .group_0324 import (
         RuleSuiteRequiredStatusChecksPropChecksItemsTypeForResponse as RuleSuiteRequiredStatusChecksPropChecksItemsTypeForResponse,
     )
-    from .group_0325 import (
+    from .group_0324 import (
         RuleSuiteRequiredStatusChecksType as RuleSuiteRequiredStatusChecksType,
     )
-    from .group_0325 import (
+    from .group_0324 import (
         RuleSuiteRequiredStatusChecksTypeForResponse as RuleSuiteRequiredStatusChecksTypeForResponse,
     )
-    from .group_0326 import (
+    from .group_0325 import (
         RuleSuitePropRuleEvaluationsItemsPropRuleSourceType as RuleSuitePropRuleEvaluationsItemsPropRuleSourceType,
     )
-    from .group_0326 import (
+    from .group_0325 import (
         RuleSuitePropRuleEvaluationsItemsPropRuleSourceTypeForResponse as RuleSuitePropRuleEvaluationsItemsPropRuleSourceTypeForResponse,
     )
-    from .group_0326 import (
+    from .group_0325 import (
         RuleSuitePropRuleEvaluationsItemsType as RuleSuitePropRuleEvaluationsItemsType,
     )
-    from .group_0326 import (
+    from .group_0325 import (
         RuleSuitePropRuleEvaluationsItemsTypeForResponse as RuleSuitePropRuleEvaluationsItemsTypeForResponse,
     )
-    from .group_0326 import RuleSuiteType as RuleSuiteType
-    from .group_0326 import RuleSuiteTypeForResponse as RuleSuiteTypeForResponse
-    from .group_0327 import RepositoryAdvisoryCreditType as RepositoryAdvisoryCreditType
-    from .group_0327 import (
+    from .group_0325 import RuleSuiteType as RuleSuiteType
+    from .group_0325 import RuleSuiteTypeForResponse as RuleSuiteTypeForResponse
+    from .group_0326 import RepositoryAdvisoryCreditType as RepositoryAdvisoryCreditType
+    from .group_0326 import (
         RepositoryAdvisoryCreditTypeForResponse as RepositoryAdvisoryCreditTypeForResponse,
     )
-    from .group_0328 import (
+    from .group_0327 import (
         RepositoryAdvisoryPropCreditsItemsType as RepositoryAdvisoryPropCreditsItemsType,
     )
-    from .group_0328 import (
+    from .group_0327 import (
         RepositoryAdvisoryPropCreditsItemsTypeForResponse as RepositoryAdvisoryPropCreditsItemsTypeForResponse,
     )
-    from .group_0328 import (
+    from .group_0327 import (
         RepositoryAdvisoryPropCwesItemsType as RepositoryAdvisoryPropCwesItemsType,
     )
-    from .group_0328 import (
+    from .group_0327 import (
         RepositoryAdvisoryPropCwesItemsTypeForResponse as RepositoryAdvisoryPropCwesItemsTypeForResponse,
     )
-    from .group_0328 import (
+    from .group_0327 import (
         RepositoryAdvisoryPropIdentifiersItemsType as RepositoryAdvisoryPropIdentifiersItemsType,
     )
-    from .group_0328 import (
+    from .group_0327 import (
         RepositoryAdvisoryPropIdentifiersItemsTypeForResponse as RepositoryAdvisoryPropIdentifiersItemsTypeForResponse,
     )
-    from .group_0328 import (
+    from .group_0327 import (
         RepositoryAdvisoryPropSubmissionType as RepositoryAdvisoryPropSubmissionType,
     )
-    from .group_0328 import (
+    from .group_0327 import (
         RepositoryAdvisoryPropSubmissionTypeForResponse as RepositoryAdvisoryPropSubmissionTypeForResponse,
     )
-    from .group_0328 import RepositoryAdvisoryType as RepositoryAdvisoryType
-    from .group_0328 import (
+    from .group_0327 import RepositoryAdvisoryType as RepositoryAdvisoryType
+    from .group_0327 import (
         RepositoryAdvisoryTypeForResponse as RepositoryAdvisoryTypeForResponse,
     )
-    from .group_0328 import (
+    from .group_0327 import (
         RepositoryAdvisoryVulnerabilityPropPackageType as RepositoryAdvisoryVulnerabilityPropPackageType,
     )
-    from .group_0328 import (
+    from .group_0327 import (
         RepositoryAdvisoryVulnerabilityPropPackageTypeForResponse as RepositoryAdvisoryVulnerabilityPropPackageTypeForResponse,
     )
-    from .group_0328 import (
+    from .group_0327 import (
         RepositoryAdvisoryVulnerabilityType as RepositoryAdvisoryVulnerabilityType,
     )
-    from .group_0328 import (
+    from .group_0327 import (
         RepositoryAdvisoryVulnerabilityTypeForResponse as RepositoryAdvisoryVulnerabilityTypeForResponse,
     )
-    from .group_0329 import (
+    from .group_0328 import (
         ImmutableReleasesOrganizationSettingsType as ImmutableReleasesOrganizationSettingsType,
     )
-    from .group_0329 import (
+    from .group_0328 import (
         ImmutableReleasesOrganizationSettingsTypeForResponse as ImmutableReleasesOrganizationSettingsTypeForResponse,
     )
-    from .group_0330 import (
+    from .group_0329 import (
         GroupMappingPropGroupsItemsType as GroupMappingPropGroupsItemsType,
     )
-    from .group_0330 import (
+    from .group_0329 import (
         GroupMappingPropGroupsItemsTypeForResponse as GroupMappingPropGroupsItemsTypeForResponse,
     )
-    from .group_0330 import GroupMappingType as GroupMappingType
-    from .group_0330 import GroupMappingTypeForResponse as GroupMappingTypeForResponse
-    from .group_0331 import TeamFullType as TeamFullType
-    from .group_0331 import TeamFullTypeForResponse as TeamFullTypeForResponse
-    from .group_0331 import TeamOrganizationPropPlanType as TeamOrganizationPropPlanType
-    from .group_0331 import (
+    from .group_0329 import GroupMappingType as GroupMappingType
+    from .group_0329 import GroupMappingTypeForResponse as GroupMappingTypeForResponse
+    from .group_0330 import TeamFullType as TeamFullType
+    from .group_0330 import TeamFullTypeForResponse as TeamFullTypeForResponse
+    from .group_0330 import TeamOrganizationPropPlanType as TeamOrganizationPropPlanType
+    from .group_0330 import (
         TeamOrganizationPropPlanTypeForResponse as TeamOrganizationPropPlanTypeForResponse,
     )
-    from .group_0331 import TeamOrganizationType as TeamOrganizationType
-    from .group_0331 import (
+    from .group_0330 import TeamOrganizationType as TeamOrganizationType
+    from .group_0330 import (
         TeamOrganizationTypeForResponse as TeamOrganizationTypeForResponse,
     )
-    from .group_0332 import TeamMembershipType as TeamMembershipType
-    from .group_0332 import (
+    from .group_0331 import TeamMembershipType as TeamMembershipType
+    from .group_0331 import (
         TeamMembershipTypeForResponse as TeamMembershipTypeForResponse,
     )
-    from .group_0333 import (
+    from .group_0332 import (
         TeamRepositoryPropPermissionsType as TeamRepositoryPropPermissionsType,
     )
-    from .group_0333 import (
+    from .group_0332 import (
         TeamRepositoryPropPermissionsTypeForResponse as TeamRepositoryPropPermissionsTypeForResponse,
     )
-    from .group_0333 import TeamRepositoryType as TeamRepositoryType
-    from .group_0333 import (
+    from .group_0332 import TeamRepositoryType as TeamRepositoryType
+    from .group_0332 import (
         TeamRepositoryTypeForResponse as TeamRepositoryTypeForResponse,
     )
-    from .group_0334 import (
+    from .group_0333 import (
         RateLimitOverviewPropResourcesType as RateLimitOverviewPropResourcesType,
     )
-    from .group_0334 import (
+    from .group_0333 import (
         RateLimitOverviewPropResourcesTypeForResponse as RateLimitOverviewPropResourcesTypeForResponse,
     )
-    from .group_0334 import RateLimitOverviewType as RateLimitOverviewType
-    from .group_0334 import (
+    from .group_0333 import RateLimitOverviewType as RateLimitOverviewType
+    from .group_0333 import (
         RateLimitOverviewTypeForResponse as RateLimitOverviewTypeForResponse,
     )
-    from .group_0334 import RateLimitType as RateLimitType
-    from .group_0334 import RateLimitTypeForResponse as RateLimitTypeForResponse
-    from .group_0335 import ArtifactPropWorkflowRunType as ArtifactPropWorkflowRunType
-    from .group_0335 import (
+    from .group_0333 import RateLimitType as RateLimitType
+    from .group_0333 import RateLimitTypeForResponse as RateLimitTypeForResponse
+    from .group_0334 import ArtifactPropWorkflowRunType as ArtifactPropWorkflowRunType
+    from .group_0334 import (
         ArtifactPropWorkflowRunTypeForResponse as ArtifactPropWorkflowRunTypeForResponse,
     )
-    from .group_0335 import ArtifactType as ArtifactType
-    from .group_0335 import ArtifactTypeForResponse as ArtifactTypeForResponse
-    from .group_0336 import (
+    from .group_0334 import ArtifactType as ArtifactType
+    from .group_0334 import ArtifactTypeForResponse as ArtifactTypeForResponse
+    from .group_0335 import (
         ActionsCacheRetentionLimitForRepositoryType as ActionsCacheRetentionLimitForRepositoryType,
     )
-    from .group_0336 import (
+    from .group_0335 import (
         ActionsCacheRetentionLimitForRepositoryTypeForResponse as ActionsCacheRetentionLimitForRepositoryTypeForResponse,
     )
-    from .group_0337 import (
+    from .group_0336 import (
         ActionsCacheStorageLimitForRepositoryType as ActionsCacheStorageLimitForRepositoryType,
     )
-    from .group_0337 import (
+    from .group_0336 import (
         ActionsCacheStorageLimitForRepositoryTypeForResponse as ActionsCacheStorageLimitForRepositoryTypeForResponse,
     )
-    from .group_0338 import (
+    from .group_0337 import (
         ActionsCacheListPropActionsCachesItemsType as ActionsCacheListPropActionsCachesItemsType,
     )
-    from .group_0338 import (
+    from .group_0337 import (
         ActionsCacheListPropActionsCachesItemsTypeForResponse as ActionsCacheListPropActionsCachesItemsTypeForResponse,
     )
-    from .group_0338 import ActionsCacheListType as ActionsCacheListType
-    from .group_0338 import (
+    from .group_0337 import ActionsCacheListType as ActionsCacheListType
+    from .group_0337 import (
         ActionsCacheListTypeForResponse as ActionsCacheListTypeForResponse,
     )
-    from .group_0339 import (
+    from .group_0338 import (
         ConcurrencyGroupListPropConcurrencyGroupsItemsType as ConcurrencyGroupListPropConcurrencyGroupsItemsType,
     )
-    from .group_0339 import (
+    from .group_0338 import (
         ConcurrencyGroupListPropConcurrencyGroupsItemsTypeForResponse as ConcurrencyGroupListPropConcurrencyGroupsItemsTypeForResponse,
     )
-    from .group_0339 import ConcurrencyGroupListType as ConcurrencyGroupListType
-    from .group_0339 import (
+    from .group_0338 import ConcurrencyGroupListType as ConcurrencyGroupListType
+    from .group_0338 import (
         ConcurrencyGroupListTypeForResponse as ConcurrencyGroupListTypeForResponse,
     )
-    from .group_0340 import (
+    from .group_0339 import (
         ConcurrencyGroupPropGroupMembersItemsType as ConcurrencyGroupPropGroupMembersItemsType,
     )
-    from .group_0340 import (
+    from .group_0339 import (
         ConcurrencyGroupPropGroupMembersItemsTypeForResponse as ConcurrencyGroupPropGroupMembersItemsTypeForResponse,
     )
-    from .group_0340 import ConcurrencyGroupType as ConcurrencyGroupType
-    from .group_0340 import (
+    from .group_0339 import ConcurrencyGroupType as ConcurrencyGroupType
+    from .group_0339 import (
         ConcurrencyGroupTypeForResponse as ConcurrencyGroupTypeForResponse,
     )
-    from .group_0341 import JobPropStepsItemsType as JobPropStepsItemsType
-    from .group_0341 import (
+    from .group_0340 import JobPropStepsItemsType as JobPropStepsItemsType
+    from .group_0340 import (
         JobPropStepsItemsTypeForResponse as JobPropStepsItemsTypeForResponse,
     )
-    from .group_0341 import JobType as JobType
-    from .group_0341 import JobTypeForResponse as JobTypeForResponse
-    from .group_0342 import OidcCustomSubRepoType as OidcCustomSubRepoType
-    from .group_0342 import (
+    from .group_0340 import JobType as JobType
+    from .group_0340 import JobTypeForResponse as JobTypeForResponse
+    from .group_0341 import OidcCustomSubRepoType as OidcCustomSubRepoType
+    from .group_0341 import (
         OidcCustomSubRepoTypeForResponse as OidcCustomSubRepoTypeForResponse,
     )
-    from .group_0343 import ActionsSecretType as ActionsSecretType
-    from .group_0343 import ActionsSecretTypeForResponse as ActionsSecretTypeForResponse
-    from .group_0344 import ActionsVariableType as ActionsVariableType
-    from .group_0344 import (
+    from .group_0342 import ActionsSecretType as ActionsSecretType
+    from .group_0342 import ActionsSecretTypeForResponse as ActionsSecretTypeForResponse
+    from .group_0343 import ActionsVariableType as ActionsVariableType
+    from .group_0343 import (
         ActionsVariableTypeForResponse as ActionsVariableTypeForResponse,
     )
-    from .group_0345 import (
+    from .group_0344 import (
         ActionsRepositoryPermissionsType as ActionsRepositoryPermissionsType,
     )
-    from .group_0345 import (
+    from .group_0344 import (
         ActionsRepositoryPermissionsTypeForResponse as ActionsRepositoryPermissionsTypeForResponse,
     )
-    from .group_0346 import (
+    from .group_0345 import (
         ActionsWorkflowAccessToRepositoryType as ActionsWorkflowAccessToRepositoryType,
     )
-    from .group_0346 import (
+    from .group_0345 import (
         ActionsWorkflowAccessToRepositoryTypeForResponse as ActionsWorkflowAccessToRepositoryTypeForResponse,
     )
-    from .group_0347 import SimpleCommitPropAuthorType as SimpleCommitPropAuthorType
-    from .group_0347 import (
+    from .group_0346 import SimpleCommitPropAuthorType as SimpleCommitPropAuthorType
+    from .group_0346 import (
         SimpleCommitPropAuthorTypeForResponse as SimpleCommitPropAuthorTypeForResponse,
     )
-    from .group_0347 import (
+    from .group_0346 import (
         SimpleCommitPropCommitterType as SimpleCommitPropCommitterType,
     )
-    from .group_0347 import (
+    from .group_0346 import (
         SimpleCommitPropCommitterTypeForResponse as SimpleCommitPropCommitterTypeForResponse,
     )
-    from .group_0347 import SimpleCommitType as SimpleCommitType
-    from .group_0347 import SimpleCommitTypeForResponse as SimpleCommitTypeForResponse
-    from .group_0348 import ReferencedWorkflowType as ReferencedWorkflowType
-    from .group_0348 import (
+    from .group_0346 import SimpleCommitType as SimpleCommitType
+    from .group_0346 import SimpleCommitTypeForResponse as SimpleCommitTypeForResponse
+    from .group_0347 import ReferencedWorkflowType as ReferencedWorkflowType
+    from .group_0347 import (
         ReferencedWorkflowTypeForResponse as ReferencedWorkflowTypeForResponse,
     )
-    from .group_0348 import WorkflowRunType as WorkflowRunType
-    from .group_0348 import WorkflowRunTypeForResponse as WorkflowRunTypeForResponse
-    from .group_0349 import (
+    from .group_0347 import WorkflowRunType as WorkflowRunType
+    from .group_0347 import WorkflowRunTypeForResponse as WorkflowRunTypeForResponse
+    from .group_0348 import (
         EnvironmentApprovalsPropEnvironmentsItemsType as EnvironmentApprovalsPropEnvironmentsItemsType,
     )
-    from .group_0349 import (
+    from .group_0348 import (
         EnvironmentApprovalsPropEnvironmentsItemsTypeForResponse as EnvironmentApprovalsPropEnvironmentsItemsTypeForResponse,
     )
-    from .group_0349 import EnvironmentApprovalsType as EnvironmentApprovalsType
-    from .group_0349 import (
+    from .group_0348 import EnvironmentApprovalsType as EnvironmentApprovalsType
+    from .group_0348 import (
         EnvironmentApprovalsTypeForResponse as EnvironmentApprovalsTypeForResponse,
     )
-    from .group_0350 import (
+    from .group_0349 import (
         ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItemsType as ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItemsType,
     )
-    from .group_0350 import (
+    from .group_0349 import (
         ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItemsTypeForResponse as ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItemsTypeForResponse,
     )
-    from .group_0350 import (
+    from .group_0349 import (
         ConcurrencyGroupRunListPropConcurrencyGroupsItemsType as ConcurrencyGroupRunListPropConcurrencyGroupsItemsType,
     )
-    from .group_0350 import (
+    from .group_0349 import (
         ConcurrencyGroupRunListPropConcurrencyGroupsItemsTypeForResponse as ConcurrencyGroupRunListPropConcurrencyGroupsItemsTypeForResponse,
     )
-    from .group_0350 import ConcurrencyGroupRunListType as ConcurrencyGroupRunListType
-    from .group_0350 import (
+    from .group_0349 import ConcurrencyGroupRunListType as ConcurrencyGroupRunListType
+    from .group_0349 import (
         ConcurrencyGroupRunListTypeForResponse as ConcurrencyGroupRunListTypeForResponse,
     )
-    from .group_0351 import (
+    from .group_0350 import (
         ReviewCustomGatesCommentRequiredType as ReviewCustomGatesCommentRequiredType,
     )
-    from .group_0351 import (
+    from .group_0350 import (
         ReviewCustomGatesCommentRequiredTypeForResponse as ReviewCustomGatesCommentRequiredTypeForResponse,
     )
-    from .group_0352 import (
+    from .group_0351 import (
         ReviewCustomGatesStateRequiredType as ReviewCustomGatesStateRequiredType,
     )
-    from .group_0352 import (
+    from .group_0351 import (
         ReviewCustomGatesStateRequiredTypeForResponse as ReviewCustomGatesStateRequiredTypeForResponse,
     )
-    from .group_0353 import (
+    from .group_0352 import (
         PendingDeploymentPropEnvironmentType as PendingDeploymentPropEnvironmentType,
     )
-    from .group_0353 import (
+    from .group_0352 import (
         PendingDeploymentPropEnvironmentTypeForResponse as PendingDeploymentPropEnvironmentTypeForResponse,
     )
-    from .group_0353 import (
+    from .group_0352 import (
         PendingDeploymentPropReviewersItemsType as PendingDeploymentPropReviewersItemsType,
     )
-    from .group_0353 import (
+    from .group_0352 import (
         PendingDeploymentPropReviewersItemsTypeForResponse as PendingDeploymentPropReviewersItemsTypeForResponse,
     )
-    from .group_0353 import PendingDeploymentType as PendingDeploymentType
-    from .group_0353 import (
+    from .group_0352 import PendingDeploymentType as PendingDeploymentType
+    from .group_0352 import (
         PendingDeploymentTypeForResponse as PendingDeploymentTypeForResponse,
     )
-    from .group_0354 import (
+    from .group_0353 import (
         DeploymentPropPayloadOneof0Type as DeploymentPropPayloadOneof0Type,
     )
-    from .group_0354 import (
+    from .group_0353 import (
         DeploymentPropPayloadOneof0TypeForResponse as DeploymentPropPayloadOneof0TypeForResponse,
     )
-    from .group_0354 import DeploymentType as DeploymentType
-    from .group_0354 import DeploymentTypeForResponse as DeploymentTypeForResponse
-    from .group_0355 import (
+    from .group_0353 import DeploymentType as DeploymentType
+    from .group_0353 import DeploymentTypeForResponse as DeploymentTypeForResponse
+    from .group_0354 import (
         WorkflowRunUsagePropBillablePropMacosPropJobRunsItemsType as WorkflowRunUsagePropBillablePropMacosPropJobRunsItemsType,
     )
-    from .group_0355 import (
+    from .group_0354 import (
         WorkflowRunUsagePropBillablePropMacosPropJobRunsItemsTypeForResponse as WorkflowRunUsagePropBillablePropMacosPropJobRunsItemsTypeForResponse,
     )
-    from .group_0355 import (
+    from .group_0354 import (
         WorkflowRunUsagePropBillablePropMacosType as WorkflowRunUsagePropBillablePropMacosType,
     )
-    from .group_0355 import (
+    from .group_0354 import (
         WorkflowRunUsagePropBillablePropMacosTypeForResponse as WorkflowRunUsagePropBillablePropMacosTypeForResponse,
     )
-    from .group_0355 import (
+    from .group_0354 import (
         WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItemsType as WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItemsType,
     )
-    from .group_0355 import (
+    from .group_0354 import (
         WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItemsTypeForResponse as WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItemsTypeForResponse,
     )
-    from .group_0355 import (
+    from .group_0354 import (
         WorkflowRunUsagePropBillablePropUbuntuType as WorkflowRunUsagePropBillablePropUbuntuType,
     )
-    from .group_0355 import (
+    from .group_0354 import (
         WorkflowRunUsagePropBillablePropUbuntuTypeForResponse as WorkflowRunUsagePropBillablePropUbuntuTypeForResponse,
     )
-    from .group_0355 import (
+    from .group_0354 import (
         WorkflowRunUsagePropBillablePropWindowsPropJobRunsItemsType as WorkflowRunUsagePropBillablePropWindowsPropJobRunsItemsType,
     )
-    from .group_0355 import (
+    from .group_0354 import (
         WorkflowRunUsagePropBillablePropWindowsPropJobRunsItemsTypeForResponse as WorkflowRunUsagePropBillablePropWindowsPropJobRunsItemsTypeForResponse,
     )
-    from .group_0355 import (
+    from .group_0354 import (
         WorkflowRunUsagePropBillablePropWindowsType as WorkflowRunUsagePropBillablePropWindowsType,
     )
-    from .group_0355 import (
+    from .group_0354 import (
         WorkflowRunUsagePropBillablePropWindowsTypeForResponse as WorkflowRunUsagePropBillablePropWindowsTypeForResponse,
     )
-    from .group_0355 import (
+    from .group_0354 import (
         WorkflowRunUsagePropBillableType as WorkflowRunUsagePropBillableType,
     )
-    from .group_0355 import (
+    from .group_0354 import (
         WorkflowRunUsagePropBillableTypeForResponse as WorkflowRunUsagePropBillableTypeForResponse,
     )
-    from .group_0355 import WorkflowRunUsageType as WorkflowRunUsageType
-    from .group_0355 import (
+    from .group_0354 import WorkflowRunUsageType as WorkflowRunUsageType
+    from .group_0354 import (
         WorkflowRunUsageTypeForResponse as WorkflowRunUsageTypeForResponse,
     )
-    from .group_0356 import WorkflowDispatchResponseType as WorkflowDispatchResponseType
-    from .group_0356 import (
+    from .group_0355 import WorkflowDispatchResponseType as WorkflowDispatchResponseType
+    from .group_0355 import (
         WorkflowDispatchResponseTypeForResponse as WorkflowDispatchResponseTypeForResponse,
     )
-    from .group_0357 import (
+    from .group_0356 import (
         WorkflowUsagePropBillablePropMacosType as WorkflowUsagePropBillablePropMacosType,
     )
-    from .group_0357 import (
+    from .group_0356 import (
         WorkflowUsagePropBillablePropMacosTypeForResponse as WorkflowUsagePropBillablePropMacosTypeForResponse,
     )
-    from .group_0357 import (
+    from .group_0356 import (
         WorkflowUsagePropBillablePropUbuntuType as WorkflowUsagePropBillablePropUbuntuType,
     )
-    from .group_0357 import (
+    from .group_0356 import (
         WorkflowUsagePropBillablePropUbuntuTypeForResponse as WorkflowUsagePropBillablePropUbuntuTypeForResponse,
     )
-    from .group_0357 import (
+    from .group_0356 import (
         WorkflowUsagePropBillablePropWindowsType as WorkflowUsagePropBillablePropWindowsType,
     )
-    from .group_0357 import (
+    from .group_0356 import (
         WorkflowUsagePropBillablePropWindowsTypeForResponse as WorkflowUsagePropBillablePropWindowsTypeForResponse,
     )
-    from .group_0357 import (
+    from .group_0356 import (
         WorkflowUsagePropBillableType as WorkflowUsagePropBillableType,
     )
-    from .group_0357 import (
+    from .group_0356 import (
         WorkflowUsagePropBillableTypeForResponse as WorkflowUsagePropBillableTypeForResponse,
     )
-    from .group_0357 import WorkflowUsageType as WorkflowUsageType
-    from .group_0357 import WorkflowUsageTypeForResponse as WorkflowUsageTypeForResponse
-    from .group_0358 import ActivityType as ActivityType
-    from .group_0358 import ActivityTypeForResponse as ActivityTypeForResponse
-    from .group_0359 import AutolinkType as AutolinkType
-    from .group_0359 import AutolinkTypeForResponse as AutolinkTypeForResponse
-    from .group_0360 import (
+    from .group_0356 import WorkflowUsageType as WorkflowUsageType
+    from .group_0356 import WorkflowUsageTypeForResponse as WorkflowUsageTypeForResponse
+    from .group_0357 import ActivityType as ActivityType
+    from .group_0357 import ActivityTypeForResponse as ActivityTypeForResponse
+    from .group_0358 import AutolinkType as AutolinkType
+    from .group_0358 import AutolinkTypeForResponse as AutolinkTypeForResponse
+    from .group_0359 import (
         CheckAutomatedSecurityFixesType as CheckAutomatedSecurityFixesType,
     )
-    from .group_0360 import (
+    from .group_0359 import (
         CheckAutomatedSecurityFixesTypeForResponse as CheckAutomatedSecurityFixesTypeForResponse,
     )
-    from .group_0361 import (
+    from .group_0360 import (
         ProtectedBranchPullRequestReviewType as ProtectedBranchPullRequestReviewType,
     )
-    from .group_0361 import (
+    from .group_0360 import (
         ProtectedBranchPullRequestReviewTypeForResponse as ProtectedBranchPullRequestReviewTypeForResponse,
     )
-    from .group_0362 import (
+    from .group_0361 import (
         ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType as ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType,
     )
-    from .group_0362 import (
+    from .group_0361 import (
         ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesTypeForResponse as ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesTypeForResponse,
     )
-    from .group_0362 import (
+    from .group_0361 import (
         ProtectedBranchPullRequestReviewPropDismissalRestrictionsType as ProtectedBranchPullRequestReviewPropDismissalRestrictionsType,
     )
-    from .group_0362 import (
+    from .group_0361 import (
         ProtectedBranchPullRequestReviewPropDismissalRestrictionsTypeForResponse as ProtectedBranchPullRequestReviewPropDismissalRestrictionsTypeForResponse,
     )
-    from .group_0363 import (
+    from .group_0362 import (
         BranchRestrictionPolicyPropAppsItemsPropOwnerType as BranchRestrictionPolicyPropAppsItemsPropOwnerType,
     )
-    from .group_0363 import (
+    from .group_0362 import (
         BranchRestrictionPolicyPropAppsItemsPropOwnerTypeForResponse as BranchRestrictionPolicyPropAppsItemsPropOwnerTypeForResponse,
     )
-    from .group_0363 import (
+    from .group_0362 import (
         BranchRestrictionPolicyPropAppsItemsPropPermissionsType as BranchRestrictionPolicyPropAppsItemsPropPermissionsType,
     )
-    from .group_0363 import (
+    from .group_0362 import (
         BranchRestrictionPolicyPropAppsItemsPropPermissionsTypeForResponse as BranchRestrictionPolicyPropAppsItemsPropPermissionsTypeForResponse,
     )
-    from .group_0363 import (
+    from .group_0362 import (
         BranchRestrictionPolicyPropAppsItemsType as BranchRestrictionPolicyPropAppsItemsType,
     )
-    from .group_0363 import (
+    from .group_0362 import (
         BranchRestrictionPolicyPropAppsItemsTypeForResponse as BranchRestrictionPolicyPropAppsItemsTypeForResponse,
     )
-    from .group_0363 import (
+    from .group_0362 import (
         BranchRestrictionPolicyPropUsersItemsType as BranchRestrictionPolicyPropUsersItemsType,
     )
-    from .group_0363 import (
+    from .group_0362 import (
         BranchRestrictionPolicyPropUsersItemsTypeForResponse as BranchRestrictionPolicyPropUsersItemsTypeForResponse,
     )
-    from .group_0363 import BranchRestrictionPolicyType as BranchRestrictionPolicyType
-    from .group_0363 import (
+    from .group_0362 import BranchRestrictionPolicyType as BranchRestrictionPolicyType
+    from .group_0362 import (
         BranchRestrictionPolicyTypeForResponse as BranchRestrictionPolicyTypeForResponse,
     )
-    from .group_0364 import (
+    from .group_0363 import (
         BranchProtectionPropAllowDeletionsType as BranchProtectionPropAllowDeletionsType,
     )
-    from .group_0364 import (
+    from .group_0363 import (
         BranchProtectionPropAllowDeletionsTypeForResponse as BranchProtectionPropAllowDeletionsTypeForResponse,
     )
-    from .group_0364 import (
+    from .group_0363 import (
         BranchProtectionPropAllowForcePushesType as BranchProtectionPropAllowForcePushesType,
     )
-    from .group_0364 import (
+    from .group_0363 import (
         BranchProtectionPropAllowForcePushesTypeForResponse as BranchProtectionPropAllowForcePushesTypeForResponse,
     )
-    from .group_0364 import (
+    from .group_0363 import (
         BranchProtectionPropAllowForkSyncingType as BranchProtectionPropAllowForkSyncingType,
     )
-    from .group_0364 import (
+    from .group_0363 import (
         BranchProtectionPropAllowForkSyncingTypeForResponse as BranchProtectionPropAllowForkSyncingTypeForResponse,
     )
-    from .group_0364 import (
+    from .group_0363 import (
         BranchProtectionPropBlockCreationsType as BranchProtectionPropBlockCreationsType,
     )
-    from .group_0364 import (
+    from .group_0363 import (
         BranchProtectionPropBlockCreationsTypeForResponse as BranchProtectionPropBlockCreationsTypeForResponse,
     )
-    from .group_0364 import (
+    from .group_0363 import (
         BranchProtectionPropLockBranchType as BranchProtectionPropLockBranchType,
     )
-    from .group_0364 import (
+    from .group_0363 import (
         BranchProtectionPropLockBranchTypeForResponse as BranchProtectionPropLockBranchTypeForResponse,
     )
-    from .group_0364 import (
+    from .group_0363 import (
         BranchProtectionPropRequiredConversationResolutionType as BranchProtectionPropRequiredConversationResolutionType,
     )
-    from .group_0364 import (
+    from .group_0363 import (
         BranchProtectionPropRequiredConversationResolutionTypeForResponse as BranchProtectionPropRequiredConversationResolutionTypeForResponse,
     )
-    from .group_0364 import (
+    from .group_0363 import (
         BranchProtectionPropRequiredLinearHistoryType as BranchProtectionPropRequiredLinearHistoryType,
     )
-    from .group_0364 import (
+    from .group_0363 import (
         BranchProtectionPropRequiredLinearHistoryTypeForResponse as BranchProtectionPropRequiredLinearHistoryTypeForResponse,
     )
-    from .group_0364 import (
+    from .group_0363 import (
         BranchProtectionPropRequiredSignaturesType as BranchProtectionPropRequiredSignaturesType,
     )
-    from .group_0364 import (
+    from .group_0363 import (
         BranchProtectionPropRequiredSignaturesTypeForResponse as BranchProtectionPropRequiredSignaturesTypeForResponse,
     )
-    from .group_0364 import BranchProtectionType as BranchProtectionType
-    from .group_0364 import (
+    from .group_0363 import BranchProtectionType as BranchProtectionType
+    from .group_0363 import (
         BranchProtectionTypeForResponse as BranchProtectionTypeForResponse,
     )
-    from .group_0364 import (
+    from .group_0363 import (
         ProtectedBranchAdminEnforcedType as ProtectedBranchAdminEnforcedType,
     )
-    from .group_0364 import (
+    from .group_0363 import (
         ProtectedBranchAdminEnforcedTypeForResponse as ProtectedBranchAdminEnforcedTypeForResponse,
     )
-    from .group_0364 import (
+    from .group_0363 import (
         ProtectedBranchRequiredStatusCheckPropChecksItemsType as ProtectedBranchRequiredStatusCheckPropChecksItemsType,
     )
-    from .group_0364 import (
+    from .group_0363 import (
         ProtectedBranchRequiredStatusCheckPropChecksItemsTypeForResponse as ProtectedBranchRequiredStatusCheckPropChecksItemsTypeForResponse,
     )
-    from .group_0364 import (
+    from .group_0363 import (
         ProtectedBranchRequiredStatusCheckType as ProtectedBranchRequiredStatusCheckType,
     )
-    from .group_0364 import (
+    from .group_0363 import (
         ProtectedBranchRequiredStatusCheckTypeForResponse as ProtectedBranchRequiredStatusCheckTypeForResponse,
     )
-    from .group_0365 import ShortBranchPropCommitType as ShortBranchPropCommitType
-    from .group_0365 import (
+    from .group_0364 import ShortBranchPropCommitType as ShortBranchPropCommitType
+    from .group_0364 import (
         ShortBranchPropCommitTypeForResponse as ShortBranchPropCommitTypeForResponse,
     )
-    from .group_0365 import ShortBranchType as ShortBranchType
-    from .group_0365 import ShortBranchTypeForResponse as ShortBranchTypeForResponse
-    from .group_0366 import GitUserType as GitUserType
-    from .group_0366 import GitUserTypeForResponse as GitUserTypeForResponse
-    from .group_0367 import VerificationType as VerificationType
-    from .group_0367 import VerificationTypeForResponse as VerificationTypeForResponse
-    from .group_0368 import DiffEntryType as DiffEntryType
-    from .group_0368 import DiffEntryTypeForResponse as DiffEntryTypeForResponse
-    from .group_0369 import CommitPropParentsItemsType as CommitPropParentsItemsType
-    from .group_0369 import (
+    from .group_0364 import ShortBranchType as ShortBranchType
+    from .group_0364 import ShortBranchTypeForResponse as ShortBranchTypeForResponse
+    from .group_0365 import GitUserType as GitUserType
+    from .group_0365 import GitUserTypeForResponse as GitUserTypeForResponse
+    from .group_0366 import VerificationType as VerificationType
+    from .group_0366 import VerificationTypeForResponse as VerificationTypeForResponse
+    from .group_0367 import DiffEntryType as DiffEntryType
+    from .group_0367 import DiffEntryTypeForResponse as DiffEntryTypeForResponse
+    from .group_0368 import CommitPropParentsItemsType as CommitPropParentsItemsType
+    from .group_0368 import (
         CommitPropParentsItemsTypeForResponse as CommitPropParentsItemsTypeForResponse,
     )
-    from .group_0369 import CommitPropStatsType as CommitPropStatsType
-    from .group_0369 import (
+    from .group_0368 import CommitPropStatsType as CommitPropStatsType
+    from .group_0368 import (
         CommitPropStatsTypeForResponse as CommitPropStatsTypeForResponse,
     )
-    from .group_0369 import CommitType as CommitType
-    from .group_0369 import CommitTypeForResponse as CommitTypeForResponse
-    from .group_0369 import EmptyObjectType as EmptyObjectType
-    from .group_0369 import EmptyObjectTypeForResponse as EmptyObjectTypeForResponse
-    from .group_0370 import CommitPropCommitPropTreeType as CommitPropCommitPropTreeType
-    from .group_0370 import (
+    from .group_0368 import CommitType as CommitType
+    from .group_0368 import CommitTypeForResponse as CommitTypeForResponse
+    from .group_0368 import EmptyObjectType as EmptyObjectType
+    from .group_0368 import EmptyObjectTypeForResponse as EmptyObjectTypeForResponse
+    from .group_0369 import CommitPropCommitPropTreeType as CommitPropCommitPropTreeType
+    from .group_0369 import (
         CommitPropCommitPropTreeTypeForResponse as CommitPropCommitPropTreeTypeForResponse,
     )
-    from .group_0370 import CommitPropCommitType as CommitPropCommitType
-    from .group_0370 import (
+    from .group_0369 import CommitPropCommitType as CommitPropCommitType
+    from .group_0369 import (
         CommitPropCommitTypeForResponse as CommitPropCommitTypeForResponse,
     )
-    from .group_0371 import (
+    from .group_0370 import (
         BranchWithProtectionPropLinksType as BranchWithProtectionPropLinksType,
     )
-    from .group_0371 import (
+    from .group_0370 import (
         BranchWithProtectionPropLinksTypeForResponse as BranchWithProtectionPropLinksTypeForResponse,
     )
-    from .group_0371 import BranchWithProtectionType as BranchWithProtectionType
-    from .group_0371 import (
+    from .group_0370 import BranchWithProtectionType as BranchWithProtectionType
+    from .group_0370 import (
         BranchWithProtectionTypeForResponse as BranchWithProtectionTypeForResponse,
     )
-    from .group_0372 import (
+    from .group_0371 import (
         ProtectedBranchPropAllowDeletionsType as ProtectedBranchPropAllowDeletionsType,
     )
-    from .group_0372 import (
+    from .group_0371 import (
         ProtectedBranchPropAllowDeletionsTypeForResponse as ProtectedBranchPropAllowDeletionsTypeForResponse,
     )
-    from .group_0372 import (
+    from .group_0371 import (
         ProtectedBranchPropAllowForcePushesType as ProtectedBranchPropAllowForcePushesType,
     )
-    from .group_0372 import (
+    from .group_0371 import (
         ProtectedBranchPropAllowForcePushesTypeForResponse as ProtectedBranchPropAllowForcePushesTypeForResponse,
     )
-    from .group_0372 import (
+    from .group_0371 import (
         ProtectedBranchPropAllowForkSyncingType as ProtectedBranchPropAllowForkSyncingType,
     )
-    from .group_0372 import (
+    from .group_0371 import (
         ProtectedBranchPropAllowForkSyncingTypeForResponse as ProtectedBranchPropAllowForkSyncingTypeForResponse,
     )
-    from .group_0372 import (
+    from .group_0371 import (
         ProtectedBranchPropBlockCreationsType as ProtectedBranchPropBlockCreationsType,
     )
-    from .group_0372 import (
+    from .group_0371 import (
         ProtectedBranchPropBlockCreationsTypeForResponse as ProtectedBranchPropBlockCreationsTypeForResponse,
     )
-    from .group_0372 import (
+    from .group_0371 import (
         ProtectedBranchPropEnforceAdminsType as ProtectedBranchPropEnforceAdminsType,
     )
-    from .group_0372 import (
+    from .group_0371 import (
         ProtectedBranchPropEnforceAdminsTypeForResponse as ProtectedBranchPropEnforceAdminsTypeForResponse,
     )
-    from .group_0372 import (
+    from .group_0371 import (
         ProtectedBranchPropLockBranchType as ProtectedBranchPropLockBranchType,
     )
-    from .group_0372 import (
+    from .group_0371 import (
         ProtectedBranchPropLockBranchTypeForResponse as ProtectedBranchPropLockBranchTypeForResponse,
     )
-    from .group_0372 import (
+    from .group_0371 import (
         ProtectedBranchPropRequiredConversationResolutionType as ProtectedBranchPropRequiredConversationResolutionType,
     )
-    from .group_0372 import (
+    from .group_0371 import (
         ProtectedBranchPropRequiredConversationResolutionTypeForResponse as ProtectedBranchPropRequiredConversationResolutionTypeForResponse,
     )
-    from .group_0372 import (
+    from .group_0371 import (
         ProtectedBranchPropRequiredLinearHistoryType as ProtectedBranchPropRequiredLinearHistoryType,
     )
-    from .group_0372 import (
+    from .group_0371 import (
         ProtectedBranchPropRequiredLinearHistoryTypeForResponse as ProtectedBranchPropRequiredLinearHistoryTypeForResponse,
     )
-    from .group_0372 import (
+    from .group_0371 import (
         ProtectedBranchPropRequiredSignaturesType as ProtectedBranchPropRequiredSignaturesType,
     )
-    from .group_0372 import (
+    from .group_0371 import (
         ProtectedBranchPropRequiredSignaturesTypeForResponse as ProtectedBranchPropRequiredSignaturesTypeForResponse,
     )
-    from .group_0372 import ProtectedBranchType as ProtectedBranchType
-    from .group_0372 import (
+    from .group_0371 import ProtectedBranchType as ProtectedBranchType
+    from .group_0371 import (
         ProtectedBranchTypeForResponse as ProtectedBranchTypeForResponse,
     )
-    from .group_0372 import (
+    from .group_0371 import (
         StatusCheckPolicyPropChecksItemsType as StatusCheckPolicyPropChecksItemsType,
     )
-    from .group_0372 import (
+    from .group_0371 import (
         StatusCheckPolicyPropChecksItemsTypeForResponse as StatusCheckPolicyPropChecksItemsTypeForResponse,
     )
-    from .group_0372 import StatusCheckPolicyType as StatusCheckPolicyType
-    from .group_0372 import (
+    from .group_0371 import StatusCheckPolicyType as StatusCheckPolicyType
+    from .group_0371 import (
         StatusCheckPolicyTypeForResponse as StatusCheckPolicyTypeForResponse,
     )
-    from .group_0373 import (
+    from .group_0372 import (
         ProtectedBranchPropRequiredPullRequestReviewsType as ProtectedBranchPropRequiredPullRequestReviewsType,
     )
-    from .group_0373 import (
+    from .group_0372 import (
         ProtectedBranchPropRequiredPullRequestReviewsTypeForResponse as ProtectedBranchPropRequiredPullRequestReviewsTypeForResponse,
     )
-    from .group_0374 import (
+    from .group_0373 import (
         ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType as ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType,
     )
-    from .group_0374 import (
+    from .group_0373 import (
         ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesTypeForResponse as ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesTypeForResponse,
     )
-    from .group_0374 import (
+    from .group_0373 import (
         ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType as ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType,
     )
-    from .group_0374 import (
+    from .group_0373 import (
         ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsTypeForResponse as ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsTypeForResponse,
     )
-    from .group_0375 import DeploymentSimpleType as DeploymentSimpleType
-    from .group_0375 import (
+    from .group_0374 import DeploymentSimpleType as DeploymentSimpleType
+    from .group_0374 import (
         DeploymentSimpleTypeForResponse as DeploymentSimpleTypeForResponse,
     )
-    from .group_0376 import CheckRunPropCheckSuiteType as CheckRunPropCheckSuiteType
-    from .group_0376 import (
+    from .group_0375 import CheckRunPropCheckSuiteType as CheckRunPropCheckSuiteType
+    from .group_0375 import (
         CheckRunPropCheckSuiteTypeForResponse as CheckRunPropCheckSuiteTypeForResponse,
     )
-    from .group_0376 import CheckRunPropOutputType as CheckRunPropOutputType
-    from .group_0376 import (
+    from .group_0375 import CheckRunPropOutputType as CheckRunPropOutputType
+    from .group_0375 import (
         CheckRunPropOutputTypeForResponse as CheckRunPropOutputTypeForResponse,
     )
-    from .group_0376 import CheckRunType as CheckRunType
-    from .group_0376 import CheckRunTypeForResponse as CheckRunTypeForResponse
-    from .group_0377 import CheckAnnotationType as CheckAnnotationType
-    from .group_0377 import (
+    from .group_0375 import CheckRunType as CheckRunType
+    from .group_0375 import CheckRunTypeForResponse as CheckRunTypeForResponse
+    from .group_0376 import CheckAnnotationType as CheckAnnotationType
+    from .group_0376 import (
         CheckAnnotationTypeForResponse as CheckAnnotationTypeForResponse,
     )
-    from .group_0378 import CheckSuiteType as CheckSuiteType
-    from .group_0378 import CheckSuiteTypeForResponse as CheckSuiteTypeForResponse
-    from .group_0378 import (
+    from .group_0377 import CheckSuiteType as CheckSuiteType
+    from .group_0377 import CheckSuiteTypeForResponse as CheckSuiteTypeForResponse
+    from .group_0377 import (
         ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Type as ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Type,
     )
-    from .group_0378 import (
+    from .group_0377 import (
         ReposOwnerRepoCommitsRefCheckSuitesGetResponse200TypeForResponse as ReposOwnerRepoCommitsRefCheckSuitesGetResponse200TypeForResponse,
     )
-    from .group_0379 import (
+    from .group_0378 import (
         CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType as CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType,
     )
-    from .group_0379 import (
+    from .group_0378 import (
         CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsTypeForResponse as CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsTypeForResponse,
     )
-    from .group_0379 import (
+    from .group_0378 import (
         CheckSuitePreferencePropPreferencesType as CheckSuitePreferencePropPreferencesType,
     )
-    from .group_0379 import (
+    from .group_0378 import (
         CheckSuitePreferencePropPreferencesTypeForResponse as CheckSuitePreferencePropPreferencesTypeForResponse,
     )
-    from .group_0379 import CheckSuitePreferenceType as CheckSuitePreferenceType
-    from .group_0379 import (
+    from .group_0378 import CheckSuitePreferenceType as CheckSuitePreferenceType
+    from .group_0378 import (
         CheckSuitePreferenceTypeForResponse as CheckSuitePreferenceTypeForResponse,
     )
-    from .group_0380 import CodeScanningAlertItemsType as CodeScanningAlertItemsType
-    from .group_0380 import (
+    from .group_0379 import CodeScanningAlertItemsType as CodeScanningAlertItemsType
+    from .group_0379 import (
         CodeScanningAlertItemsTypeForResponse as CodeScanningAlertItemsTypeForResponse,
     )
-    from .group_0381 import CodeScanningAlertRuleType as CodeScanningAlertRuleType
-    from .group_0381 import (
+    from .group_0380 import CodeScanningAlertRuleType as CodeScanningAlertRuleType
+    from .group_0380 import (
         CodeScanningAlertRuleTypeForResponse as CodeScanningAlertRuleTypeForResponse,
     )
-    from .group_0381 import CodeScanningAlertType as CodeScanningAlertType
-    from .group_0381 import (
+    from .group_0380 import CodeScanningAlertType as CodeScanningAlertType
+    from .group_0380 import (
         CodeScanningAlertTypeForResponse as CodeScanningAlertTypeForResponse,
     )
-    from .group_0382 import CodeScanningAutofixType as CodeScanningAutofixType
-    from .group_0382 import (
+    from .group_0381 import CodeScanningAutofixType as CodeScanningAutofixType
+    from .group_0381 import (
         CodeScanningAutofixTypeForResponse as CodeScanningAutofixTypeForResponse,
     )
-    from .group_0383 import (
+    from .group_0382 import (
         CodeScanningAutofixCommitsType as CodeScanningAutofixCommitsType,
     )
-    from .group_0383 import (
+    from .group_0382 import (
         CodeScanningAutofixCommitsTypeForResponse as CodeScanningAutofixCommitsTypeForResponse,
     )
-    from .group_0384 import (
+    from .group_0383 import (
         CodeScanningAutofixCommitsResponseType as CodeScanningAutofixCommitsResponseType,
     )
-    from .group_0384 import (
+    from .group_0383 import (
         CodeScanningAutofixCommitsResponseTypeForResponse as CodeScanningAutofixCommitsResponseTypeForResponse,
     )
-    from .group_0385 import (
+    from .group_0384 import (
         CodeScanningAlertInstanceListPropMessageType as CodeScanningAlertInstanceListPropMessageType,
     )
-    from .group_0385 import (
+    from .group_0384 import (
         CodeScanningAlertInstanceListPropMessageTypeForResponse as CodeScanningAlertInstanceListPropMessageTypeForResponse,
     )
-    from .group_0385 import (
+    from .group_0384 import (
         CodeScanningAlertInstanceListType as CodeScanningAlertInstanceListType,
     )
-    from .group_0385 import (
+    from .group_0384 import (
         CodeScanningAlertInstanceListTypeForResponse as CodeScanningAlertInstanceListTypeForResponse,
     )
-    from .group_0386 import CodeScanningAnalysisType as CodeScanningAnalysisType
-    from .group_0386 import (
+    from .group_0385 import CodeScanningAnalysisType as CodeScanningAnalysisType
+    from .group_0385 import (
         CodeScanningAnalysisTypeForResponse as CodeScanningAnalysisTypeForResponse,
     )
-    from .group_0387 import (
+    from .group_0386 import (
         CodeScanningAnalysisDeletionType as CodeScanningAnalysisDeletionType,
     )
-    from .group_0387 import (
+    from .group_0386 import (
         CodeScanningAnalysisDeletionTypeForResponse as CodeScanningAnalysisDeletionTypeForResponse,
     )
-    from .group_0388 import (
+    from .group_0387 import (
         CodeScanningCodeqlDatabaseType as CodeScanningCodeqlDatabaseType,
     )
-    from .group_0388 import (
+    from .group_0387 import (
         CodeScanningCodeqlDatabaseTypeForResponse as CodeScanningCodeqlDatabaseTypeForResponse,
     )
-    from .group_0389 import (
+    from .group_0388 import (
         CodeScanningVariantAnalysisRepositoryType as CodeScanningVariantAnalysisRepositoryType,
     )
-    from .group_0389 import (
+    from .group_0388 import (
         CodeScanningVariantAnalysisRepositoryTypeForResponse as CodeScanningVariantAnalysisRepositoryTypeForResponse,
     )
-    from .group_0390 import (
+    from .group_0389 import (
         CodeScanningVariantAnalysisSkippedRepoGroupType as CodeScanningVariantAnalysisSkippedRepoGroupType,
     )
-    from .group_0390 import (
+    from .group_0389 import (
         CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse as CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse,
     )
-    from .group_0391 import (
+    from .group_0390 import (
         CodeScanningVariantAnalysisType as CodeScanningVariantAnalysisType,
     )
-    from .group_0391 import (
+    from .group_0390 import (
         CodeScanningVariantAnalysisTypeForResponse as CodeScanningVariantAnalysisTypeForResponse,
     )
-    from .group_0392 import (
+    from .group_0391 import (
         CodeScanningVariantAnalysisPropScannedRepositoriesItemsType as CodeScanningVariantAnalysisPropScannedRepositoriesItemsType,
     )
-    from .group_0392 import (
+    from .group_0391 import (
         CodeScanningVariantAnalysisPropScannedRepositoriesItemsTypeForResponse as CodeScanningVariantAnalysisPropScannedRepositoriesItemsTypeForResponse,
     )
-    from .group_0393 import (
+    from .group_0392 import (
         CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposType as CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposType,
     )
-    from .group_0393 import (
+    from .group_0392 import (
         CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposTypeForResponse as CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposTypeForResponse,
     )
-    from .group_0393 import (
+    from .group_0392 import (
         CodeScanningVariantAnalysisPropSkippedRepositoriesType as CodeScanningVariantAnalysisPropSkippedRepositoriesType,
     )
-    from .group_0393 import (
+    from .group_0392 import (
         CodeScanningVariantAnalysisPropSkippedRepositoriesTypeForResponse as CodeScanningVariantAnalysisPropSkippedRepositoriesTypeForResponse,
     )
-    from .group_0394 import (
+    from .group_0393 import (
         CodeScanningVariantAnalysisRepoTaskType as CodeScanningVariantAnalysisRepoTaskType,
     )
-    from .group_0394 import (
+    from .group_0393 import (
         CodeScanningVariantAnalysisRepoTaskTypeForResponse as CodeScanningVariantAnalysisRepoTaskTypeForResponse,
     )
-    from .group_0395 import CodeScanningDefaultSetupType as CodeScanningDefaultSetupType
-    from .group_0395 import (
+    from .group_0394 import CodeScanningDefaultSetupType as CodeScanningDefaultSetupType
+    from .group_0394 import (
         CodeScanningDefaultSetupTypeForResponse as CodeScanningDefaultSetupTypeForResponse,
     )
-    from .group_0396 import (
+    from .group_0395 import (
         CodeScanningDefaultSetupUpdateType as CodeScanningDefaultSetupUpdateType,
     )
-    from .group_0396 import (
+    from .group_0395 import (
         CodeScanningDefaultSetupUpdateTypeForResponse as CodeScanningDefaultSetupUpdateTypeForResponse,
     )
-    from .group_0397 import (
+    from .group_0396 import (
         CodeScanningDefaultSetupUpdateResponseType as CodeScanningDefaultSetupUpdateResponseType,
     )
-    from .group_0397 import (
+    from .group_0396 import (
         CodeScanningDefaultSetupUpdateResponseTypeForResponse as CodeScanningDefaultSetupUpdateResponseTypeForResponse,
     )
-    from .group_0398 import (
+    from .group_0397 import (
         CodeScanningSarifsReceiptType as CodeScanningSarifsReceiptType,
     )
-    from .group_0398 import (
+    from .group_0397 import (
         CodeScanningSarifsReceiptTypeForResponse as CodeScanningSarifsReceiptTypeForResponse,
     )
-    from .group_0399 import CodeScanningSarifsStatusType as CodeScanningSarifsStatusType
-    from .group_0399 import (
+    from .group_0398 import CodeScanningSarifsStatusType as CodeScanningSarifsStatusType
+    from .group_0398 import (
         CodeScanningSarifsStatusTypeForResponse as CodeScanningSarifsStatusTypeForResponse,
     )
-    from .group_0400 import (
+    from .group_0399 import (
         CodeSecurityConfigurationForRepositoryType as CodeSecurityConfigurationForRepositoryType,
     )
-    from .group_0400 import (
+    from .group_0399 import (
         CodeSecurityConfigurationForRepositoryTypeForResponse as CodeSecurityConfigurationForRepositoryTypeForResponse,
     )
-    from .group_0401 import (
+    from .group_0400 import (
         CodeownersErrorsPropErrorsItemsType as CodeownersErrorsPropErrorsItemsType,
     )
-    from .group_0401 import (
+    from .group_0400 import (
         CodeownersErrorsPropErrorsItemsTypeForResponse as CodeownersErrorsPropErrorsItemsTypeForResponse,
     )
-    from .group_0401 import CodeownersErrorsType as CodeownersErrorsType
-    from .group_0401 import (
+    from .group_0400 import CodeownersErrorsType as CodeownersErrorsType
+    from .group_0400 import (
         CodeownersErrorsTypeForResponse as CodeownersErrorsTypeForResponse,
     )
-    from .group_0402 import (
+    from .group_0401 import (
         CodespacesPermissionsCheckForDevcontainerType as CodespacesPermissionsCheckForDevcontainerType,
     )
-    from .group_0402 import (
+    from .group_0401 import (
         CodespacesPermissionsCheckForDevcontainerTypeForResponse as CodespacesPermissionsCheckForDevcontainerTypeForResponse,
     )
-    from .group_0403 import RepositoryInvitationType as RepositoryInvitationType
-    from .group_0403 import (
+    from .group_0402 import RepositoryInvitationType as RepositoryInvitationType
+    from .group_0402 import (
         RepositoryInvitationTypeForResponse as RepositoryInvitationTypeForResponse,
     )
-    from .group_0404 import (
+    from .group_0403 import (
         CollaboratorPropPermissionsType as CollaboratorPropPermissionsType,
     )
-    from .group_0404 import (
+    from .group_0403 import (
         CollaboratorPropPermissionsTypeForResponse as CollaboratorPropPermissionsTypeForResponse,
     )
-    from .group_0404 import CollaboratorType as CollaboratorType
-    from .group_0404 import CollaboratorTypeForResponse as CollaboratorTypeForResponse
-    from .group_0404 import (
+    from .group_0403 import CollaboratorType as CollaboratorType
+    from .group_0403 import CollaboratorTypeForResponse as CollaboratorTypeForResponse
+    from .group_0403 import (
         RepositoryCollaboratorPermissionType as RepositoryCollaboratorPermissionType,
     )
-    from .group_0404 import (
+    from .group_0403 import (
         RepositoryCollaboratorPermissionTypeForResponse as RepositoryCollaboratorPermissionTypeForResponse,
     )
-    from .group_0405 import CommitCommentType as CommitCommentType
-    from .group_0405 import CommitCommentTypeForResponse as CommitCommentTypeForResponse
-    from .group_0405 import (
+    from .group_0404 import CommitCommentType as CommitCommentType
+    from .group_0404 import CommitCommentTypeForResponse as CommitCommentTypeForResponse
+    from .group_0404 import (
         TimelineCommitCommentedEventType as TimelineCommitCommentedEventType,
     )
-    from .group_0405 import (
+    from .group_0404 import (
         TimelineCommitCommentedEventTypeForResponse as TimelineCommitCommentedEventTypeForResponse,
     )
-    from .group_0406 import ReactionType as ReactionType
-    from .group_0406 import ReactionTypeForResponse as ReactionTypeForResponse
-    from .group_0407 import BranchShortPropCommitType as BranchShortPropCommitType
-    from .group_0407 import (
+    from .group_0405 import ReactionType as ReactionType
+    from .group_0405 import ReactionTypeForResponse as ReactionTypeForResponse
+    from .group_0406 import BranchShortPropCommitType as BranchShortPropCommitType
+    from .group_0406 import (
         BranchShortPropCommitTypeForResponse as BranchShortPropCommitTypeForResponse,
     )
-    from .group_0407 import BranchShortType as BranchShortType
-    from .group_0407 import BranchShortTypeForResponse as BranchShortTypeForResponse
-    from .group_0408 import CombinedCommitStatusType as CombinedCommitStatusType
-    from .group_0408 import (
+    from .group_0406 import BranchShortType as BranchShortType
+    from .group_0406 import BranchShortTypeForResponse as BranchShortTypeForResponse
+    from .group_0407 import CombinedCommitStatusType as CombinedCommitStatusType
+    from .group_0407 import (
         CombinedCommitStatusTypeForResponse as CombinedCommitStatusTypeForResponse,
     )
-    from .group_0408 import SimpleCommitStatusType as SimpleCommitStatusType
-    from .group_0408 import (
+    from .group_0407 import SimpleCommitStatusType as SimpleCommitStatusType
+    from .group_0407 import (
         SimpleCommitStatusTypeForResponse as SimpleCommitStatusTypeForResponse,
     )
-    from .group_0409 import StatusType as StatusType
-    from .group_0409 import StatusTypeForResponse as StatusTypeForResponse
-    from .group_0410 import CommunityHealthFileType as CommunityHealthFileType
-    from .group_0410 import (
+    from .group_0408 import StatusType as StatusType
+    from .group_0408 import StatusTypeForResponse as StatusTypeForResponse
+    from .group_0409 import CommunityHealthFileType as CommunityHealthFileType
+    from .group_0409 import (
         CommunityHealthFileTypeForResponse as CommunityHealthFileTypeForResponse,
     )
-    from .group_0410 import (
+    from .group_0409 import (
         CommunityProfilePropFilesType as CommunityProfilePropFilesType,
     )
-    from .group_0410 import (
+    from .group_0409 import (
         CommunityProfilePropFilesTypeForResponse as CommunityProfilePropFilesTypeForResponse,
     )
-    from .group_0410 import CommunityProfileType as CommunityProfileType
-    from .group_0410 import (
+    from .group_0409 import CommunityProfileType as CommunityProfileType
+    from .group_0409 import (
         CommunityProfileTypeForResponse as CommunityProfileTypeForResponse,
     )
-    from .group_0411 import CommitComparisonType as CommitComparisonType
-    from .group_0411 import (
+    from .group_0410 import CommitComparisonType as CommitComparisonType
+    from .group_0410 import (
         CommitComparisonTypeForResponse as CommitComparisonTypeForResponse,
     )
-    from .group_0412 import (
+    from .group_0411 import (
         ContentTreePropEntriesItemsPropLinksType as ContentTreePropEntriesItemsPropLinksType,
     )
-    from .group_0412 import (
+    from .group_0411 import (
         ContentTreePropEntriesItemsPropLinksTypeForResponse as ContentTreePropEntriesItemsPropLinksTypeForResponse,
     )
-    from .group_0412 import (
+    from .group_0411 import (
         ContentTreePropEntriesItemsType as ContentTreePropEntriesItemsType,
     )
-    from .group_0412 import (
+    from .group_0411 import (
         ContentTreePropEntriesItemsTypeForResponse as ContentTreePropEntriesItemsTypeForResponse,
     )
-    from .group_0412 import ContentTreePropLinksType as ContentTreePropLinksType
-    from .group_0412 import (
+    from .group_0411 import ContentTreePropLinksType as ContentTreePropLinksType
+    from .group_0411 import (
         ContentTreePropLinksTypeForResponse as ContentTreePropLinksTypeForResponse,
     )
-    from .group_0412 import ContentTreeType as ContentTreeType
-    from .group_0412 import ContentTreeTypeForResponse as ContentTreeTypeForResponse
-    from .group_0413 import (
+    from .group_0411 import ContentTreeType as ContentTreeType
+    from .group_0411 import ContentTreeTypeForResponse as ContentTreeTypeForResponse
+    from .group_0412 import (
         ContentDirectoryItemsPropLinksType as ContentDirectoryItemsPropLinksType,
     )
-    from .group_0413 import (
+    from .group_0412 import (
         ContentDirectoryItemsPropLinksTypeForResponse as ContentDirectoryItemsPropLinksTypeForResponse,
     )
-    from .group_0413 import ContentDirectoryItemsType as ContentDirectoryItemsType
-    from .group_0413 import (
+    from .group_0412 import ContentDirectoryItemsType as ContentDirectoryItemsType
+    from .group_0412 import (
         ContentDirectoryItemsTypeForResponse as ContentDirectoryItemsTypeForResponse,
     )
-    from .group_0414 import ContentFilePropLinksType as ContentFilePropLinksType
-    from .group_0414 import (
+    from .group_0413 import ContentFilePropLinksType as ContentFilePropLinksType
+    from .group_0413 import (
         ContentFilePropLinksTypeForResponse as ContentFilePropLinksTypeForResponse,
     )
-    from .group_0414 import ContentFileType as ContentFileType
-    from .group_0414 import ContentFileTypeForResponse as ContentFileTypeForResponse
-    from .group_0415 import ContentSymlinkPropLinksType as ContentSymlinkPropLinksType
-    from .group_0415 import (
+    from .group_0413 import ContentFileType as ContentFileType
+    from .group_0413 import ContentFileTypeForResponse as ContentFileTypeForResponse
+    from .group_0414 import ContentSymlinkPropLinksType as ContentSymlinkPropLinksType
+    from .group_0414 import (
         ContentSymlinkPropLinksTypeForResponse as ContentSymlinkPropLinksTypeForResponse,
     )
-    from .group_0415 import ContentSymlinkType as ContentSymlinkType
-    from .group_0415 import (
+    from .group_0414 import ContentSymlinkType as ContentSymlinkType
+    from .group_0414 import (
         ContentSymlinkTypeForResponse as ContentSymlinkTypeForResponse,
     )
-    from .group_0416 import (
+    from .group_0415 import (
         ContentSubmodulePropLinksType as ContentSubmodulePropLinksType,
     )
-    from .group_0416 import (
+    from .group_0415 import (
         ContentSubmodulePropLinksTypeForResponse as ContentSubmodulePropLinksTypeForResponse,
     )
-    from .group_0416 import ContentSubmoduleType as ContentSubmoduleType
-    from .group_0416 import (
+    from .group_0415 import ContentSubmoduleType as ContentSubmoduleType
+    from .group_0415 import (
         ContentSubmoduleTypeForResponse as ContentSubmoduleTypeForResponse,
     )
-    from .group_0417 import (
+    from .group_0416 import (
         FileCommitPropCommitPropAuthorType as FileCommitPropCommitPropAuthorType,
     )
-    from .group_0417 import (
+    from .group_0416 import (
         FileCommitPropCommitPropAuthorTypeForResponse as FileCommitPropCommitPropAuthorTypeForResponse,
     )
-    from .group_0417 import (
+    from .group_0416 import (
         FileCommitPropCommitPropCommitterType as FileCommitPropCommitPropCommitterType,
     )
-    from .group_0417 import (
+    from .group_0416 import (
         FileCommitPropCommitPropCommitterTypeForResponse as FileCommitPropCommitPropCommitterTypeForResponse,
     )
-    from .group_0417 import (
+    from .group_0416 import (
         FileCommitPropCommitPropParentsItemsType as FileCommitPropCommitPropParentsItemsType,
     )
-    from .group_0417 import (
+    from .group_0416 import (
         FileCommitPropCommitPropParentsItemsTypeForResponse as FileCommitPropCommitPropParentsItemsTypeForResponse,
     )
-    from .group_0417 import (
+    from .group_0416 import (
         FileCommitPropCommitPropTreeType as FileCommitPropCommitPropTreeType,
     )
-    from .group_0417 import (
+    from .group_0416 import (
         FileCommitPropCommitPropTreeTypeForResponse as FileCommitPropCommitPropTreeTypeForResponse,
     )
-    from .group_0417 import (
+    from .group_0416 import (
         FileCommitPropCommitPropVerificationType as FileCommitPropCommitPropVerificationType,
     )
-    from .group_0417 import (
+    from .group_0416 import (
         FileCommitPropCommitPropVerificationTypeForResponse as FileCommitPropCommitPropVerificationTypeForResponse,
     )
-    from .group_0417 import FileCommitPropCommitType as FileCommitPropCommitType
-    from .group_0417 import (
+    from .group_0416 import FileCommitPropCommitType as FileCommitPropCommitType
+    from .group_0416 import (
         FileCommitPropCommitTypeForResponse as FileCommitPropCommitTypeForResponse,
     )
-    from .group_0417 import (
+    from .group_0416 import (
         FileCommitPropContentPropLinksType as FileCommitPropContentPropLinksType,
     )
-    from .group_0417 import (
+    from .group_0416 import (
         FileCommitPropContentPropLinksTypeForResponse as FileCommitPropContentPropLinksTypeForResponse,
     )
-    from .group_0417 import FileCommitPropContentType as FileCommitPropContentType
-    from .group_0417 import (
+    from .group_0416 import FileCommitPropContentType as FileCommitPropContentType
+    from .group_0416 import (
         FileCommitPropContentTypeForResponse as FileCommitPropContentTypeForResponse,
     )
-    from .group_0417 import FileCommitType as FileCommitType
-    from .group_0417 import FileCommitTypeForResponse as FileCommitTypeForResponse
-    from .group_0418 import (
+    from .group_0416 import FileCommitType as FileCommitType
+    from .group_0416 import FileCommitTypeForResponse as FileCommitTypeForResponse
+    from .group_0417 import (
         RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsType as RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsType,
     )
-    from .group_0418 import (
+    from .group_0417 import (
         RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsTypeForResponse as RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsTypeForResponse,
     )
-    from .group_0418 import (
+    from .group_0417 import (
         RepositoryRuleViolationErrorPropMetadataPropSecretScanningType as RepositoryRuleViolationErrorPropMetadataPropSecretScanningType,
     )
-    from .group_0418 import (
+    from .group_0417 import (
         RepositoryRuleViolationErrorPropMetadataPropSecretScanningTypeForResponse as RepositoryRuleViolationErrorPropMetadataPropSecretScanningTypeForResponse,
     )
-    from .group_0418 import (
+    from .group_0417 import (
         RepositoryRuleViolationErrorPropMetadataType as RepositoryRuleViolationErrorPropMetadataType,
     )
-    from .group_0418 import (
+    from .group_0417 import (
         RepositoryRuleViolationErrorPropMetadataTypeForResponse as RepositoryRuleViolationErrorPropMetadataTypeForResponse,
     )
-    from .group_0418 import (
+    from .group_0417 import (
         RepositoryRuleViolationErrorType as RepositoryRuleViolationErrorType,
     )
-    from .group_0418 import (
+    from .group_0417 import (
         RepositoryRuleViolationErrorTypeForResponse as RepositoryRuleViolationErrorTypeForResponse,
     )
-    from .group_0419 import ContributorType as ContributorType
-    from .group_0419 import ContributorTypeForResponse as ContributorTypeForResponse
-    from .group_0420 import DependabotAlertType as DependabotAlertType
-    from .group_0420 import (
+    from .group_0418 import ContributorType as ContributorType
+    from .group_0418 import ContributorTypeForResponse as ContributorTypeForResponse
+    from .group_0419 import DependabotAlertType as DependabotAlertType
+    from .group_0419 import (
         DependabotAlertTypeForResponse as DependabotAlertTypeForResponse,
     )
-    from .group_0421 import (
+    from .group_0420 import (
         DependabotAlertPropDependencyType as DependabotAlertPropDependencyType,
     )
-    from .group_0421 import (
+    from .group_0420 import (
         DependabotAlertPropDependencyTypeForResponse as DependabotAlertPropDependencyTypeForResponse,
     )
-    from .group_0422 import (
+    from .group_0421 import (
         DependencyGraphDiffItemsPropVulnerabilitiesItemsType as DependencyGraphDiffItemsPropVulnerabilitiesItemsType,
     )
-    from .group_0422 import (
+    from .group_0421 import (
         DependencyGraphDiffItemsPropVulnerabilitiesItemsTypeForResponse as DependencyGraphDiffItemsPropVulnerabilitiesItemsTypeForResponse,
     )
-    from .group_0422 import DependencyGraphDiffItemsType as DependencyGraphDiffItemsType
-    from .group_0422 import (
+    from .group_0421 import DependencyGraphDiffItemsType as DependencyGraphDiffItemsType
+    from .group_0421 import (
         DependencyGraphDiffItemsTypeForResponse as DependencyGraphDiffItemsTypeForResponse,
     )
-    from .group_0423 import (
+    from .group_0422 import (
         DependencyGraphSpdxSbomPropSbomPropCreationInfoType as DependencyGraphSpdxSbomPropSbomPropCreationInfoType,
     )
-    from .group_0423 import (
+    from .group_0422 import (
         DependencyGraphSpdxSbomPropSbomPropCreationInfoTypeForResponse as DependencyGraphSpdxSbomPropSbomPropCreationInfoTypeForResponse,
     )
-    from .group_0423 import (
+    from .group_0422 import (
         DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsType as DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsType,
     )
-    from .group_0423 import (
+    from .group_0422 import (
         DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsTypeForResponse as DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsTypeForResponse,
     )
-    from .group_0423 import (
+    from .group_0422 import (
         DependencyGraphSpdxSbomPropSbomPropPackagesItemsType as DependencyGraphSpdxSbomPropSbomPropPackagesItemsType,
     )
-    from .group_0423 import (
+    from .group_0422 import (
         DependencyGraphSpdxSbomPropSbomPropPackagesItemsTypeForResponse as DependencyGraphSpdxSbomPropSbomPropPackagesItemsTypeForResponse,
     )
-    from .group_0423 import (
+    from .group_0422 import (
         DependencyGraphSpdxSbomPropSbomPropRelationshipsItemsType as DependencyGraphSpdxSbomPropSbomPropRelationshipsItemsType,
     )
-    from .group_0423 import (
+    from .group_0422 import (
         DependencyGraphSpdxSbomPropSbomPropRelationshipsItemsTypeForResponse as DependencyGraphSpdxSbomPropSbomPropRelationshipsItemsTypeForResponse,
     )
-    from .group_0423 import (
+    from .group_0422 import (
         DependencyGraphSpdxSbomPropSbomType as DependencyGraphSpdxSbomPropSbomType,
     )
-    from .group_0423 import (
+    from .group_0422 import (
         DependencyGraphSpdxSbomPropSbomTypeForResponse as DependencyGraphSpdxSbomPropSbomTypeForResponse,
     )
-    from .group_0423 import DependencyGraphSpdxSbomType as DependencyGraphSpdxSbomType
-    from .group_0423 import (
+    from .group_0422 import DependencyGraphSpdxSbomType as DependencyGraphSpdxSbomType
+    from .group_0422 import (
         DependencyGraphSpdxSbomTypeForResponse as DependencyGraphSpdxSbomTypeForResponse,
     )
-    from .group_0424 import MetadataType as MetadataType
-    from .group_0424 import MetadataTypeForResponse as MetadataTypeForResponse
-    from .group_0425 import DependencyType as DependencyType
-    from .group_0425 import DependencyTypeForResponse as DependencyTypeForResponse
-    from .group_0426 import ManifestPropFileType as ManifestPropFileType
-    from .group_0426 import (
+    from .group_0423 import MetadataType as MetadataType
+    from .group_0423 import MetadataTypeForResponse as MetadataTypeForResponse
+    from .group_0424 import DependencyType as DependencyType
+    from .group_0424 import DependencyTypeForResponse as DependencyTypeForResponse
+    from .group_0425 import ManifestPropFileType as ManifestPropFileType
+    from .group_0425 import (
         ManifestPropFileTypeForResponse as ManifestPropFileTypeForResponse,
     )
-    from .group_0426 import ManifestPropResolvedType as ManifestPropResolvedType
-    from .group_0426 import (
+    from .group_0425 import ManifestPropResolvedType as ManifestPropResolvedType
+    from .group_0425 import (
         ManifestPropResolvedTypeForResponse as ManifestPropResolvedTypeForResponse,
     )
-    from .group_0426 import ManifestType as ManifestType
-    from .group_0426 import ManifestTypeForResponse as ManifestTypeForResponse
-    from .group_0427 import SnapshotPropDetectorType as SnapshotPropDetectorType
-    from .group_0427 import (
+    from .group_0425 import ManifestType as ManifestType
+    from .group_0425 import ManifestTypeForResponse as ManifestTypeForResponse
+    from .group_0426 import SnapshotPropDetectorType as SnapshotPropDetectorType
+    from .group_0426 import (
         SnapshotPropDetectorTypeForResponse as SnapshotPropDetectorTypeForResponse,
     )
-    from .group_0427 import SnapshotPropJobType as SnapshotPropJobType
-    from .group_0427 import (
+    from .group_0426 import SnapshotPropJobType as SnapshotPropJobType
+    from .group_0426 import (
         SnapshotPropJobTypeForResponse as SnapshotPropJobTypeForResponse,
     )
-    from .group_0427 import SnapshotPropManifestsType as SnapshotPropManifestsType
-    from .group_0427 import (
+    from .group_0426 import SnapshotPropManifestsType as SnapshotPropManifestsType
+    from .group_0426 import (
         SnapshotPropManifestsTypeForResponse as SnapshotPropManifestsTypeForResponse,
     )
-    from .group_0427 import SnapshotType as SnapshotType
-    from .group_0427 import SnapshotTypeForResponse as SnapshotTypeForResponse
-    from .group_0428 import DeploymentStatusType as DeploymentStatusType
-    from .group_0428 import (
+    from .group_0426 import SnapshotType as SnapshotType
+    from .group_0426 import SnapshotTypeForResponse as SnapshotTypeForResponse
+    from .group_0427 import DeploymentStatusType as DeploymentStatusType
+    from .group_0427 import (
         DeploymentStatusTypeForResponse as DeploymentStatusTypeForResponse,
     )
-    from .group_0429 import (
+    from .group_0428 import (
         DeploymentBranchPolicySettingsType as DeploymentBranchPolicySettingsType,
     )
-    from .group_0429 import (
+    from .group_0428 import (
         DeploymentBranchPolicySettingsTypeForResponse as DeploymentBranchPolicySettingsTypeForResponse,
     )
-    from .group_0430 import (
+    from .group_0429 import (
         EnvironmentPropProtectionRulesItemsAnyof0Type as EnvironmentPropProtectionRulesItemsAnyof0Type,
     )
-    from .group_0430 import (
+    from .group_0429 import (
         EnvironmentPropProtectionRulesItemsAnyof0TypeForResponse as EnvironmentPropProtectionRulesItemsAnyof0TypeForResponse,
     )
-    from .group_0430 import (
+    from .group_0429 import (
         EnvironmentPropProtectionRulesItemsAnyof2Type as EnvironmentPropProtectionRulesItemsAnyof2Type,
     )
-    from .group_0430 import (
+    from .group_0429 import (
         EnvironmentPropProtectionRulesItemsAnyof2TypeForResponse as EnvironmentPropProtectionRulesItemsAnyof2TypeForResponse,
     )
-    from .group_0430 import EnvironmentType as EnvironmentType
-    from .group_0430 import EnvironmentTypeForResponse as EnvironmentTypeForResponse
-    from .group_0430 import (
+    from .group_0429 import EnvironmentType as EnvironmentType
+    from .group_0429 import EnvironmentTypeForResponse as EnvironmentTypeForResponse
+    from .group_0429 import (
         ReposOwnerRepoEnvironmentsGetResponse200Type as ReposOwnerRepoEnvironmentsGetResponse200Type,
     )
-    from .group_0430 import (
+    from .group_0429 import (
         ReposOwnerRepoEnvironmentsGetResponse200TypeForResponse as ReposOwnerRepoEnvironmentsGetResponse200TypeForResponse,
     )
-    from .group_0431 import (
+    from .group_0430 import (
         EnvironmentPropProtectionRulesItemsAnyof1Type as EnvironmentPropProtectionRulesItemsAnyof1Type,
     )
-    from .group_0431 import (
+    from .group_0430 import (
         EnvironmentPropProtectionRulesItemsAnyof1TypeForResponse as EnvironmentPropProtectionRulesItemsAnyof1TypeForResponse,
     )
-    from .group_0432 import (
+    from .group_0431 import (
         EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType as EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType,
     )
-    from .group_0432 import (
+    from .group_0431 import (
         EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsTypeForResponse as EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsTypeForResponse,
     )
-    from .group_0433 import (
+    from .group_0432 import (
         DeploymentBranchPolicyNamePatternWithTypeType as DeploymentBranchPolicyNamePatternWithTypeType,
     )
-    from .group_0433 import (
+    from .group_0432 import (
         DeploymentBranchPolicyNamePatternWithTypeTypeForResponse as DeploymentBranchPolicyNamePatternWithTypeTypeForResponse,
     )
-    from .group_0434 import (
+    from .group_0433 import (
         DeploymentBranchPolicyNamePatternType as DeploymentBranchPolicyNamePatternType,
     )
-    from .group_0434 import (
+    from .group_0433 import (
         DeploymentBranchPolicyNamePatternTypeForResponse as DeploymentBranchPolicyNamePatternTypeForResponse,
     )
-    from .group_0435 import CustomDeploymentRuleAppType as CustomDeploymentRuleAppType
-    from .group_0435 import (
+    from .group_0434 import CustomDeploymentRuleAppType as CustomDeploymentRuleAppType
+    from .group_0434 import (
         CustomDeploymentRuleAppTypeForResponse as CustomDeploymentRuleAppTypeForResponse,
     )
-    from .group_0436 import DeploymentProtectionRuleType as DeploymentProtectionRuleType
-    from .group_0436 import (
+    from .group_0435 import DeploymentProtectionRuleType as DeploymentProtectionRuleType
+    from .group_0435 import (
         DeploymentProtectionRuleTypeForResponse as DeploymentProtectionRuleTypeForResponse,
     )
-    from .group_0436 import (
+    from .group_0435 import (
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type as ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type,
     )
-    from .group_0436 import (
+    from .group_0435 import (
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200TypeForResponse as ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200TypeForResponse,
     )
-    from .group_0437 import ShortBlobType as ShortBlobType
-    from .group_0437 import ShortBlobTypeForResponse as ShortBlobTypeForResponse
-    from .group_0438 import BlobType as BlobType
-    from .group_0438 import BlobTypeForResponse as BlobTypeForResponse
-    from .group_0439 import GitCommitPropAuthorType as GitCommitPropAuthorType
-    from .group_0439 import (
+    from .group_0436 import ShortBlobType as ShortBlobType
+    from .group_0436 import ShortBlobTypeForResponse as ShortBlobTypeForResponse
+    from .group_0437 import BlobType as BlobType
+    from .group_0437 import BlobTypeForResponse as BlobTypeForResponse
+    from .group_0438 import GitCommitPropAuthorType as GitCommitPropAuthorType
+    from .group_0438 import (
         GitCommitPropAuthorTypeForResponse as GitCommitPropAuthorTypeForResponse,
     )
-    from .group_0439 import GitCommitPropCommitterType as GitCommitPropCommitterType
-    from .group_0439 import (
+    from .group_0438 import GitCommitPropCommitterType as GitCommitPropCommitterType
+    from .group_0438 import (
         GitCommitPropCommitterTypeForResponse as GitCommitPropCommitterTypeForResponse,
     )
-    from .group_0439 import (
+    from .group_0438 import (
         GitCommitPropParentsItemsType as GitCommitPropParentsItemsType,
     )
-    from .group_0439 import (
+    from .group_0438 import (
         GitCommitPropParentsItemsTypeForResponse as GitCommitPropParentsItemsTypeForResponse,
     )
-    from .group_0439 import GitCommitPropTreeType as GitCommitPropTreeType
-    from .group_0439 import (
+    from .group_0438 import GitCommitPropTreeType as GitCommitPropTreeType
+    from .group_0438 import (
         GitCommitPropTreeTypeForResponse as GitCommitPropTreeTypeForResponse,
     )
-    from .group_0439 import (
+    from .group_0438 import (
         GitCommitPropVerificationType as GitCommitPropVerificationType,
     )
-    from .group_0439 import (
+    from .group_0438 import (
         GitCommitPropVerificationTypeForResponse as GitCommitPropVerificationTypeForResponse,
     )
-    from .group_0439 import GitCommitType as GitCommitType
-    from .group_0439 import GitCommitTypeForResponse as GitCommitTypeForResponse
-    from .group_0440 import GitRefPropObjectType as GitRefPropObjectType
-    from .group_0440 import (
+    from .group_0438 import GitCommitType as GitCommitType
+    from .group_0438 import GitCommitTypeForResponse as GitCommitTypeForResponse
+    from .group_0439 import GitRefPropObjectType as GitRefPropObjectType
+    from .group_0439 import (
         GitRefPropObjectTypeForResponse as GitRefPropObjectTypeForResponse,
     )
-    from .group_0440 import GitRefType as GitRefType
-    from .group_0440 import GitRefTypeForResponse as GitRefTypeForResponse
-    from .group_0441 import GitTagPropObjectType as GitTagPropObjectType
-    from .group_0441 import (
+    from .group_0439 import GitRefType as GitRefType
+    from .group_0439 import GitRefTypeForResponse as GitRefTypeForResponse
+    from .group_0440 import GitTagPropObjectType as GitTagPropObjectType
+    from .group_0440 import (
         GitTagPropObjectTypeForResponse as GitTagPropObjectTypeForResponse,
     )
-    from .group_0441 import GitTagPropTaggerType as GitTagPropTaggerType
-    from .group_0441 import (
+    from .group_0440 import GitTagPropTaggerType as GitTagPropTaggerType
+    from .group_0440 import (
         GitTagPropTaggerTypeForResponse as GitTagPropTaggerTypeForResponse,
     )
-    from .group_0441 import GitTagType as GitTagType
-    from .group_0441 import GitTagTypeForResponse as GitTagTypeForResponse
-    from .group_0442 import GitTreePropTreeItemsType as GitTreePropTreeItemsType
-    from .group_0442 import (
+    from .group_0440 import GitTagType as GitTagType
+    from .group_0440 import GitTagTypeForResponse as GitTagTypeForResponse
+    from .group_0441 import GitTreePropTreeItemsType as GitTreePropTreeItemsType
+    from .group_0441 import (
         GitTreePropTreeItemsTypeForResponse as GitTreePropTreeItemsTypeForResponse,
     )
-    from .group_0442 import GitTreeType as GitTreeType
-    from .group_0442 import GitTreeTypeForResponse as GitTreeTypeForResponse
-    from .group_0443 import RepositoryHashAlgorithmType as RepositoryHashAlgorithmType
-    from .group_0443 import (
+    from .group_0441 import GitTreeType as GitTreeType
+    from .group_0441 import GitTreeTypeForResponse as GitTreeTypeForResponse
+    from .group_0442 import RepositoryHashAlgorithmType as RepositoryHashAlgorithmType
+    from .group_0442 import (
         RepositoryHashAlgorithmTypeForResponse as RepositoryHashAlgorithmTypeForResponse,
     )
-    from .group_0444 import HookResponseType as HookResponseType
-    from .group_0444 import HookResponseTypeForResponse as HookResponseTypeForResponse
-    from .group_0445 import HookType as HookType
-    from .group_0445 import HookTypeForResponse as HookTypeForResponse
-    from .group_0446 import CheckImmutableReleasesType as CheckImmutableReleasesType
-    from .group_0446 import (
+    from .group_0443 import HookResponseType as HookResponseType
+    from .group_0443 import HookResponseTypeForResponse as HookResponseTypeForResponse
+    from .group_0444 import HookType as HookType
+    from .group_0444 import HookTypeForResponse as HookTypeForResponse
+    from .group_0445 import CheckImmutableReleasesType as CheckImmutableReleasesType
+    from .group_0445 import (
         CheckImmutableReleasesTypeForResponse as CheckImmutableReleasesTypeForResponse,
     )
-    from .group_0447 import (
+    from .group_0446 import (
         ImportPropProjectChoicesItemsType as ImportPropProjectChoicesItemsType,
     )
-    from .group_0447 import (
+    from .group_0446 import (
         ImportPropProjectChoicesItemsTypeForResponse as ImportPropProjectChoicesItemsTypeForResponse,
     )
-    from .group_0447 import ImportType as ImportType
-    from .group_0447 import ImportTypeForResponse as ImportTypeForResponse
-    from .group_0448 import PorterAuthorType as PorterAuthorType
-    from .group_0448 import PorterAuthorTypeForResponse as PorterAuthorTypeForResponse
-    from .group_0449 import PorterLargeFileType as PorterLargeFileType
-    from .group_0449 import (
+    from .group_0446 import ImportType as ImportType
+    from .group_0446 import ImportTypeForResponse as ImportTypeForResponse
+    from .group_0447 import PorterAuthorType as PorterAuthorType
+    from .group_0447 import PorterAuthorTypeForResponse as PorterAuthorTypeForResponse
+    from .group_0448 import PorterLargeFileType as PorterLargeFileType
+    from .group_0448 import (
         PorterLargeFileTypeForResponse as PorterLargeFileTypeForResponse,
+    )
+    from .group_0449 import (
+        InteractionLimitPullRequestBypassListType as InteractionLimitPullRequestBypassListType,
+    )
+    from .group_0449 import (
+        InteractionLimitPullRequestBypassListTypeForResponse as InteractionLimitPullRequestBypassListTypeForResponse,
     )
     from .group_0450 import (
         IssueEventDismissedReviewType as IssueEventDismissedReviewType,
@@ -23335,54 +23263,24 @@ else:
             "CopilotEnterpriseContentExclusionDetailsTypeForResponse",
         ),
         ".group_0089": (
-            "CopilotUsageMetricsDayType",
-            "CopilotUsageMetricsDayTypeForResponse",
-            "CopilotDotcomChatType",
-            "CopilotDotcomChatTypeForResponse",
-            "CopilotDotcomChatPropModelsItemsType",
-            "CopilotDotcomChatPropModelsItemsTypeForResponse",
-            "CopilotIdeChatType",
-            "CopilotIdeChatTypeForResponse",
-            "CopilotIdeChatPropEditorsItemsType",
-            "CopilotIdeChatPropEditorsItemsTypeForResponse",
-            "CopilotIdeChatPropEditorsItemsPropModelsItemsType",
-            "CopilotIdeChatPropEditorsItemsPropModelsItemsTypeForResponse",
-            "CopilotDotcomPullRequestsType",
-            "CopilotDotcomPullRequestsTypeForResponse",
-            "CopilotDotcomPullRequestsPropRepositoriesItemsType",
-            "CopilotDotcomPullRequestsPropRepositoriesItemsTypeForResponse",
-            "CopilotDotcomPullRequestsPropRepositoriesItemsPropModelsItemsType",
-            "CopilotDotcomPullRequestsPropRepositoriesItemsPropModelsItemsTypeForResponse",
-            "CopilotIdeCodeCompletionsType",
-            "CopilotIdeCodeCompletionsTypeForResponse",
-            "CopilotIdeCodeCompletionsPropLanguagesItemsType",
-            "CopilotIdeCodeCompletionsPropLanguagesItemsTypeForResponse",
-            "CopilotIdeCodeCompletionsPropEditorsItemsType",
-            "CopilotIdeCodeCompletionsPropEditorsItemsTypeForResponse",
-            "CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsType",
-            "CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsTypeForResponse",
-            "CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsPropLanguagesItemsType",
-            "CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsPropLanguagesItemsTypeForResponse",
-        ),
-        ".group_0090": (
             "CopilotUsageMetrics1DayReportType",
             "CopilotUsageMetrics1DayReportTypeForResponse",
         ),
-        ".group_0091": (
+        ".group_0090": (
             "CopilotUsageMetrics28DayReportType",
             "CopilotUsageMetrics28DayReportTypeForResponse",
         ),
-        ".group_0092": (
+        ".group_0091": (
             "DependabotAlertPackageType",
             "DependabotAlertPackageTypeForResponse",
         ),
-        ".group_0093": (
+        ".group_0092": (
             "DependabotAlertSecurityVulnerabilityType",
             "DependabotAlertSecurityVulnerabilityTypeForResponse",
             "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType",
             "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionTypeForResponse",
         ),
-        ".group_0094": (
+        ".group_0093": (
             "DependabotAlertSecurityAdvisoryType",
             "DependabotAlertSecurityAdvisoryTypeForResponse",
             "DependabotAlertSecurityAdvisoryPropCwesItemsType",
@@ -23392,25 +23290,25 @@ else:
             "DependabotAlertSecurityAdvisoryPropReferencesItemsType",
             "DependabotAlertSecurityAdvisoryPropReferencesItemsTypeForResponse",
         ),
-        ".group_0095": (
+        ".group_0094": (
             "DependabotAlertDismissalRequestSimpleType",
             "DependabotAlertDismissalRequestSimpleTypeForResponse",
             "DependabotAlertDismissalRequestSimplePropRequesterType",
             "DependabotAlertDismissalRequestSimplePropRequesterTypeForResponse",
         ),
-        ".group_0096": (
+        ".group_0095": (
             "DependabotAlertWithRepositoryType",
             "DependabotAlertWithRepositoryTypeForResponse",
         ),
-        ".group_0097": (
+        ".group_0096": (
             "DependabotAlertWithRepositoryPropDependencyType",
             "DependabotAlertWithRepositoryPropDependencyTypeForResponse",
         ),
-        ".group_0098": (
+        ".group_0097": (
             "DependabotRepositoryAccessDetailsType",
             "DependabotRepositoryAccessDetailsTypeForResponse",
         ),
-        ".group_0099": (
+        ".group_0098": (
             "SecretScanningDismissalRequestType",
             "SecretScanningDismissalRequestTypeForResponse",
             "SecretScanningDismissalRequestPropRepositoryType",
@@ -23422,21 +23320,21 @@ else:
             "SecretScanningDismissalRequestPropDataItemsType",
             "SecretScanningDismissalRequestPropDataItemsTypeForResponse",
         ),
-        ".group_0100": (
+        ".group_0099": (
             "EnterpriseRoleType",
             "EnterpriseRoleTypeForResponse",
             "EnterprisesEnterpriseEnterpriseRolesGetResponse200Type",
             "EnterprisesEnterpriseEnterpriseRolesGetResponse200TypeForResponse",
         ),
-        ".group_0101": (
+        ".group_0100": (
             "EnterpriseUserRoleAssignmentType",
             "EnterpriseUserRoleAssignmentTypeForResponse",
         ),
-        ".group_0102": (
+        ".group_0101": (
             "EnterpriseUserRoleAssignmentAllof1Type",
             "EnterpriseUserRoleAssignmentAllof1TypeForResponse",
         ),
-        ".group_0103": (
+        ".group_0102": (
             "GetLicenseSyncStatusType",
             "GetLicenseSyncStatusTypeForResponse",
             "GetLicenseSyncStatusPropServerInstancesItemsType",
@@ -23444,127 +23342,127 @@ else:
             "GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncType",
             "GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncTypeForResponse",
         ),
-        ".group_0104": (
+        ".group_0103": (
             "NetworkConfigurationType",
             "NetworkConfigurationTypeForResponse",
         ),
-        ".group_0105": (
+        ".group_0104": (
             "NetworkSettingsType",
             "NetworkSettingsTypeForResponse",
         ),
-        ".group_0106": (
+        ".group_0105": (
             "CustomPropertyBaseType",
             "CustomPropertyBaseTypeForResponse",
         ),
-        ".group_0107": (
+        ".group_0106": (
             "OrganizationCustomPropertyType",
             "OrganizationCustomPropertyTypeForResponse",
         ),
-        ".group_0108": (
+        ".group_0107": (
             "OrganizationCustomPropertyAllof1Type",
             "OrganizationCustomPropertyAllof1TypeForResponse",
         ),
-        ".group_0109": (
+        ".group_0108": (
             "OrganizationCustomPropertyPayloadType",
             "OrganizationCustomPropertyPayloadTypeForResponse",
         ),
-        ".group_0110": (
+        ".group_0109": (
             "CustomPropertyValueType",
             "CustomPropertyValueTypeForResponse",
         ),
-        ".group_0111": (
+        ".group_0110": (
             "CustomPropertiesForOrgsGetEnterprisePropertyValuesType",
             "CustomPropertiesForOrgsGetEnterprisePropertyValuesTypeForResponse",
         ),
-        ".group_0112": (
+        ".group_0111": (
             "CustomPropertyType",
             "CustomPropertyTypeForResponse",
         ),
-        ".group_0113": (
+        ".group_0112": (
             "CustomPropertySetPayloadType",
             "CustomPropertySetPayloadTypeForResponse",
         ),
-        ".group_0114": (
+        ".group_0113": (
             "RepositoryRulesetBypassActorType",
             "RepositoryRulesetBypassActorTypeForResponse",
         ),
-        ".group_0115": (
+        ".group_0114": (
             "EnterpriseRulesetConditionsOrganizationNameTargetType",
             "EnterpriseRulesetConditionsOrganizationNameTargetTypeForResponse",
         ),
-        ".group_0116": (
+        ".group_0115": (
             "EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType",
             "EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameTypeForResponse",
         ),
-        ".group_0117": (
+        ".group_0116": (
             "RepositoryRulesetConditionsRepositoryNameTargetType",
             "RepositoryRulesetConditionsRepositoryNameTargetTypeForResponse",
         ),
-        ".group_0118": (
+        ".group_0117": (
             "RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType",
             "RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse",
         ),
-        ".group_0119": (
+        ".group_0118": (
             "RepositoryRulesetConditionsType",
             "RepositoryRulesetConditionsTypeForResponse",
         ),
-        ".group_0120": (
+        ".group_0119": (
             "RepositoryRulesetConditionsPropRefNameType",
             "RepositoryRulesetConditionsPropRefNameTypeForResponse",
         ),
-        ".group_0121": (
+        ".group_0120": (
             "RepositoryRulesetConditionsRepositoryPropertyTargetType",
             "RepositoryRulesetConditionsRepositoryPropertyTargetTypeForResponse",
         ),
-        ".group_0122": (
+        ".group_0121": (
             "RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType",
             "RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse",
             "RepositoryRulesetConditionsRepositoryPropertySpecType",
             "RepositoryRulesetConditionsRepositoryPropertySpecTypeForResponse",
         ),
-        ".group_0123": (
+        ".group_0122": (
             "EnterpriseRulesetConditionsOrganizationIdTargetType",
             "EnterpriseRulesetConditionsOrganizationIdTargetTypeForResponse",
         ),
-        ".group_0124": (
+        ".group_0123": (
             "EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType",
             "EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdTypeForResponse",
         ),
-        ".group_0125": (
+        ".group_0124": (
             "EnterpriseRulesetConditionsOrganizationPropertyTargetType",
             "EnterpriseRulesetConditionsOrganizationPropertyTargetTypeForResponse",
         ),
-        ".group_0126": (
+        ".group_0125": (
             "EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType",
             "EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse",
             "EnterpriseRulesetConditionsOrganizationPropertySpecType",
             "EnterpriseRulesetConditionsOrganizationPropertySpecTypeForResponse",
         ),
-        ".group_0127": (
+        ".group_0126": (
             "EnterpriseRulesetConditionsOneof0Type",
             "EnterpriseRulesetConditionsOneof0TypeForResponse",
         ),
-        ".group_0128": (
+        ".group_0127": (
             "EnterpriseRulesetConditionsOneof1Type",
             "EnterpriseRulesetConditionsOneof1TypeForResponse",
         ),
-        ".group_0129": (
+        ".group_0128": (
             "EnterpriseRulesetConditionsOneof2Type",
             "EnterpriseRulesetConditionsOneof2TypeForResponse",
         ),
-        ".group_0130": (
+        ".group_0129": (
             "EnterpriseRulesetConditionsOneof3Type",
             "EnterpriseRulesetConditionsOneof3TypeForResponse",
         ),
-        ".group_0131": (
+        ".group_0130": (
             "EnterpriseRulesetConditionsOneof4Type",
             "EnterpriseRulesetConditionsOneof4TypeForResponse",
         ),
-        ".group_0132": (
+        ".group_0131": (
             "EnterpriseRulesetConditionsOneof5Type",
             "EnterpriseRulesetConditionsOneof5TypeForResponse",
         ),
-        ".group_0133": (
+        ".group_0132": (
             "RepositoryRuleCreationType",
             "RepositoryRuleCreationTypeForResponse",
             "RepositoryRuleDeletionType",
@@ -23574,37 +23472,37 @@ else:
             "RepositoryRuleNonFastForwardType",
             "RepositoryRuleNonFastForwardTypeForResponse",
         ),
-        ".group_0134": (
+        ".group_0133": (
             "RepositoryRuleUpdateType",
             "RepositoryRuleUpdateTypeForResponse",
         ),
-        ".group_0135": (
+        ".group_0134": (
             "RepositoryRuleUpdatePropParametersType",
             "RepositoryRuleUpdatePropParametersTypeForResponse",
         ),
-        ".group_0136": (
+        ".group_0135": (
             "RepositoryRuleRequiredLinearHistoryType",
             "RepositoryRuleRequiredLinearHistoryTypeForResponse",
         ),
-        ".group_0137": (
+        ".group_0136": (
             "RepositoryRuleRequiredDeploymentsType",
             "RepositoryRuleRequiredDeploymentsTypeForResponse",
         ),
-        ".group_0138": (
+        ".group_0137": (
             "RepositoryRuleRequiredDeploymentsPropParametersType",
             "RepositoryRuleRequiredDeploymentsPropParametersTypeForResponse",
         ),
-        ".group_0139": (
+        ".group_0138": (
             "RepositoryRuleParamsDismissalRestrictionType",
             "RepositoryRuleParamsDismissalRestrictionTypeForResponse",
             "RepositoryRuleParamsActorType",
             "RepositoryRuleParamsActorTypeForResponse",
         ),
-        ".group_0140": (
+        ".group_0139": (
             "RepositoryRulePullRequestType",
             "RepositoryRulePullRequestTypeForResponse",
         ),
-        ".group_0141": (
+        ".group_0140": (
             "RepositoryRulePullRequestPropParametersType",
             "RepositoryRulePullRequestPropParametersTypeForResponse",
             "RepositoryRuleParamsRequiredReviewerConfigurationType",
@@ -23612,149 +23510,149 @@ else:
             "RepositoryRuleParamsReviewerType",
             "RepositoryRuleParamsReviewerTypeForResponse",
         ),
-        ".group_0142": (
+        ".group_0141": (
             "RepositoryRuleRequiredStatusChecksType",
             "RepositoryRuleRequiredStatusChecksTypeForResponse",
         ),
-        ".group_0143": (
+        ".group_0142": (
             "RepositoryRuleRequiredStatusChecksPropParametersType",
             "RepositoryRuleRequiredStatusChecksPropParametersTypeForResponse",
             "RepositoryRuleParamsStatusCheckConfigurationType",
             "RepositoryRuleParamsStatusCheckConfigurationTypeForResponse",
         ),
-        ".group_0144": (
+        ".group_0143": (
             "RepositoryRuleCommitMessagePatternType",
             "RepositoryRuleCommitMessagePatternTypeForResponse",
         ),
-        ".group_0145": (
+        ".group_0144": (
             "RepositoryRuleCommitMessagePatternPropParametersType",
             "RepositoryRuleCommitMessagePatternPropParametersTypeForResponse",
         ),
-        ".group_0146": (
+        ".group_0145": (
             "RepositoryRuleCommitAuthorEmailPatternType",
             "RepositoryRuleCommitAuthorEmailPatternTypeForResponse",
         ),
-        ".group_0147": (
+        ".group_0146": (
             "RepositoryRuleCommitAuthorEmailPatternPropParametersType",
             "RepositoryRuleCommitAuthorEmailPatternPropParametersTypeForResponse",
         ),
-        ".group_0148": (
+        ".group_0147": (
             "RepositoryRuleCommitterEmailPatternType",
             "RepositoryRuleCommitterEmailPatternTypeForResponse",
         ),
-        ".group_0149": (
+        ".group_0148": (
             "RepositoryRuleCommitterEmailPatternPropParametersType",
             "RepositoryRuleCommitterEmailPatternPropParametersTypeForResponse",
         ),
-        ".group_0150": (
+        ".group_0149": (
             "RepositoryRuleBranchNamePatternType",
             "RepositoryRuleBranchNamePatternTypeForResponse",
         ),
-        ".group_0151": (
+        ".group_0150": (
             "RepositoryRuleBranchNamePatternPropParametersType",
             "RepositoryRuleBranchNamePatternPropParametersTypeForResponse",
         ),
-        ".group_0152": (
+        ".group_0151": (
             "RepositoryRuleTagNamePatternType",
             "RepositoryRuleTagNamePatternTypeForResponse",
         ),
-        ".group_0153": (
+        ".group_0152": (
             "RepositoryRuleTagNamePatternPropParametersType",
             "RepositoryRuleTagNamePatternPropParametersTypeForResponse",
         ),
-        ".group_0154": (
+        ".group_0153": (
             "RepositoryRuleFilePathRestrictionType",
             "RepositoryRuleFilePathRestrictionTypeForResponse",
         ),
-        ".group_0155": (
+        ".group_0154": (
             "RepositoryRuleFilePathRestrictionPropParametersType",
             "RepositoryRuleFilePathRestrictionPropParametersTypeForResponse",
         ),
-        ".group_0156": (
+        ".group_0155": (
             "RepositoryRuleMaxFilePathLengthType",
             "RepositoryRuleMaxFilePathLengthTypeForResponse",
         ),
-        ".group_0157": (
+        ".group_0156": (
             "RepositoryRuleMaxFilePathLengthPropParametersType",
             "RepositoryRuleMaxFilePathLengthPropParametersTypeForResponse",
         ),
-        ".group_0158": (
+        ".group_0157": (
             "RepositoryRuleFileExtensionRestrictionType",
             "RepositoryRuleFileExtensionRestrictionTypeForResponse",
         ),
-        ".group_0159": (
+        ".group_0158": (
             "RepositoryRuleFileExtensionRestrictionPropParametersType",
             "RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse",
         ),
-        ".group_0160": (
+        ".group_0159": (
             "RepositoryRuleMaxFileSizeType",
             "RepositoryRuleMaxFileSizeTypeForResponse",
         ),
-        ".group_0161": (
+        ".group_0160": (
             "RepositoryRuleMaxFileSizePropParametersType",
             "RepositoryRuleMaxFileSizePropParametersTypeForResponse",
         ),
-        ".group_0162": (
+        ".group_0161": (
             "RepositoryRuleParamsRestrictedCommitsType",
             "RepositoryRuleParamsRestrictedCommitsTypeForResponse",
         ),
-        ".group_0163": (
+        ".group_0162": (
             "RepositoryRuleWorkflowsType",
             "RepositoryRuleWorkflowsTypeForResponse",
         ),
-        ".group_0164": (
+        ".group_0163": (
             "RepositoryRuleWorkflowsPropParametersType",
             "RepositoryRuleWorkflowsPropParametersTypeForResponse",
             "RepositoryRuleParamsWorkflowFileReferenceType",
             "RepositoryRuleParamsWorkflowFileReferenceTypeForResponse",
         ),
-        ".group_0165": (
+        ".group_0164": (
             "RepositoryRuleCodeScanningType",
             "RepositoryRuleCodeScanningTypeForResponse",
         ),
-        ".group_0166": (
+        ".group_0165": (
             "RepositoryRuleCodeScanningPropParametersType",
             "RepositoryRuleCodeScanningPropParametersTypeForResponse",
             "RepositoryRuleParamsCodeScanningToolType",
             "RepositoryRuleParamsCodeScanningToolTypeForResponse",
         ),
-        ".group_0167": (
+        ".group_0166": (
             "RepositoryRuleCopilotCodeReviewType",
             "RepositoryRuleCopilotCodeReviewTypeForResponse",
         ),
-        ".group_0168": (
+        ".group_0167": (
             "RepositoryRuleCopilotCodeReviewPropParametersType",
             "RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse",
         ),
-        ".group_0169": (
+        ".group_0168": (
             "RepositoryRulesetConditionsRepositoryIdTargetType",
             "RepositoryRulesetConditionsRepositoryIdTargetTypeForResponse",
         ),
-        ".group_0170": (
+        ".group_0169": (
             "RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType",
             "RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdTypeForResponse",
         ),
-        ".group_0171": (
+        ".group_0170": (
             "OrgRulesetConditionsOneof0Type",
             "OrgRulesetConditionsOneof0TypeForResponse",
         ),
-        ".group_0172": (
+        ".group_0171": (
             "OrgRulesetConditionsOneof1Type",
             "OrgRulesetConditionsOneof1TypeForResponse",
         ),
-        ".group_0173": (
+        ".group_0172": (
             "OrgRulesetConditionsOneof2Type",
             "OrgRulesetConditionsOneof2TypeForResponse",
         ),
-        ".group_0174": (
+        ".group_0173": (
             "RepositoryRuleMergeQueueType",
             "RepositoryRuleMergeQueueTypeForResponse",
         ),
-        ".group_0175": (
+        ".group_0174": (
             "RepositoryRuleMergeQueuePropParametersType",
             "RepositoryRuleMergeQueuePropParametersTypeForResponse",
         ),
-        ".group_0176": (
+        ".group_0175": (
             "RepositoryRulesetType",
             "RepositoryRulesetTypeForResponse",
             "RepositoryRulesetPropLinksType",
@@ -23764,27 +23662,27 @@ else:
             "RepositoryRulesetPropLinksPropHtmlType",
             "RepositoryRulesetPropLinksPropHtmlTypeForResponse",
         ),
-        ".group_0177": (
+        ".group_0176": (
             "RulesetVersionType",
             "RulesetVersionTypeForResponse",
         ),
-        ".group_0178": (
+        ".group_0177": (
             "RulesetVersionPropActorType",
             "RulesetVersionPropActorTypeForResponse",
         ),
-        ".group_0179": (
+        ".group_0178": (
             "RulesetVersionWithStateType",
             "RulesetVersionWithStateTypeForResponse",
         ),
-        ".group_0180": (
+        ".group_0179": (
             "RulesetVersionWithStateAllof1Type",
             "RulesetVersionWithStateAllof1TypeForResponse",
         ),
-        ".group_0181": (
+        ".group_0180": (
             "RulesetVersionWithStateAllof1PropStateType",
             "RulesetVersionWithStateAllof1PropStateTypeForResponse",
         ),
-        ".group_0182": (
+        ".group_0181": (
             "SecretScanningLocationCommitType",
             "SecretScanningLocationCommitTypeForResponse",
             "SecretScanningLocationWikiCommitType",
@@ -23800,7 +23698,7 @@ else:
             "SecretScanningLocationPullRequestReviewType",
             "SecretScanningLocationPullRequestReviewTypeForResponse",
         ),
-        ".group_0183": (
+        ".group_0182": (
             "SecretScanningLocationIssueTitleType",
             "SecretScanningLocationIssueTitleTypeForResponse",
             "SecretScanningLocationIssueCommentType",
@@ -23810,23 +23708,23 @@ else:
             "SecretScanningLocationPullRequestReviewCommentType",
             "SecretScanningLocationPullRequestReviewCommentTypeForResponse",
         ),
-        ".group_0184": (
+        ".group_0183": (
             "SecretScanningLocationDiscussionBodyType",
             "SecretScanningLocationDiscussionBodyTypeForResponse",
             "SecretScanningLocationPullRequestCommentType",
             "SecretScanningLocationPullRequestCommentTypeForResponse",
         ),
-        ".group_0185": (
+        ".group_0184": (
             "OrganizationSecretScanningAlertType",
             "OrganizationSecretScanningAlertTypeForResponse",
         ),
-        ".group_0186": (
+        ".group_0185": (
             "SecretScanningPatternConfigurationType",
             "SecretScanningPatternConfigurationTypeForResponse",
             "SecretScanningPatternOverrideType",
             "SecretScanningPatternOverrideTypeForResponse",
         ),
-        ".group_0187": (
+        ".group_0186": (
             "AdvancedSecurityActiveCommittersType",
             "AdvancedSecurityActiveCommittersTypeForResponse",
             "AdvancedSecurityActiveCommittersRepositoryType",
@@ -23834,7 +23732,7 @@ else:
             "AdvancedSecurityActiveCommittersUserType",
             "AdvancedSecurityActiveCommittersUserTypeForResponse",
         ),
-        ".group_0188": (
+        ".group_0187": (
             "BillingAiCreditUsageReportGheType",
             "BillingAiCreditUsageReportGheTypeForResponse",
             "BillingAiCreditUsageReportGhePropTimePeriodType",
@@ -23844,7 +23742,7 @@ else:
             "BillingAiCreditUsageReportGhePropUsageItemsItemsType",
             "BillingAiCreditUsageReportGhePropUsageItemsItemsTypeForResponse",
         ),
-        ".group_0189": (
+        ".group_0188": (
             "GetAllBudgetsType",
             "GetAllBudgetsTypeForResponse",
             "GetAllBudgetsPropEffectiveBudgetType",
@@ -23854,7 +23752,7 @@ else:
             "BudgetPropBudgetAlertingType",
             "BudgetPropBudgetAlertingTypeForResponse",
         ),
-        ".group_0190": (
+        ".group_0189": (
             "CreateBudgetType",
             "CreateBudgetTypeForResponse",
             "CreateBudgetPropBudgetType",
@@ -23862,13 +23760,13 @@ else:
             "CreateBudgetPropBudgetPropBudgetAlertingType",
             "CreateBudgetPropBudgetPropBudgetAlertingTypeForResponse",
         ),
-        ".group_0191": (
+        ".group_0190": (
             "GetBudgetType",
             "GetBudgetTypeForResponse",
             "GetBudgetPropBudgetAlertingType",
             "GetBudgetPropBudgetAlertingTypeForResponse",
         ),
-        ".group_0192": (
+        ".group_0191": (
             "UpdateBudgetType",
             "UpdateBudgetTypeForResponse",
             "UpdateBudgetPropBudgetType",
@@ -23876,11 +23774,11 @@ else:
             "UpdateBudgetPropBudgetPropBudgetAlertingType",
             "UpdateBudgetPropBudgetPropBudgetAlertingTypeForResponse",
         ),
-        ".group_0193": (
+        ".group_0192": (
             "DeleteBudgetType",
             "DeleteBudgetTypeForResponse",
         ),
-        ".group_0194": (
+        ".group_0193": (
             "GetAllCostCentersType",
             "GetAllCostCentersTypeForResponse",
             "GetAllCostCentersPropCostCentersItemsType",
@@ -23888,23 +23786,23 @@ else:
             "GetAllCostCentersPropCostCentersItemsPropResourcesItemsType",
             "GetAllCostCentersPropCostCentersItemsPropResourcesItemsTypeForResponse",
         ),
-        ".group_0195": (
+        ".group_0194": (
             "GetCostCenterType",
             "GetCostCenterTypeForResponse",
             "GetCostCenterPropResourcesItemsType",
             "GetCostCenterPropResourcesItemsTypeForResponse",
         ),
-        ".group_0196": (
+        ".group_0195": (
             "UpdateCostCenterType",
             "UpdateCostCenterTypeForResponse",
             "UpdateCostCenterPropResourcesItemsType",
             "UpdateCostCenterPropResourcesItemsTypeForResponse",
         ),
-        ".group_0197": (
+        ".group_0196": (
             "DeleteCostCenterType",
             "DeleteCostCenterTypeForResponse",
         ),
-        ".group_0198": (
+        ".group_0197": (
             "BillingPremiumRequestUsageReportGheType",
             "BillingPremiumRequestUsageReportGheTypeForResponse",
             "BillingPremiumRequestUsageReportGhePropTimePeriodType",
@@ -23914,23 +23812,23 @@ else:
             "BillingPremiumRequestUsageReportGhePropUsageItemsItemsType",
             "BillingPremiumRequestUsageReportGhePropUsageItemsItemsTypeForResponse",
         ),
-        ".group_0199": (
+        ".group_0198": (
             "UsageReportExportListType",
             "UsageReportExportListTypeForResponse",
             "UsageReportExportType",
             "UsageReportExportTypeForResponse",
         ),
-        ".group_0200": (
+        ".group_0199": (
             "UsageReportExportRequestType",
             "UsageReportExportRequestTypeForResponse",
         ),
-        ".group_0201": (
+        ".group_0200": (
             "BillingUsageReportType",
             "BillingUsageReportTypeForResponse",
             "BillingUsageReportPropUsageItemsItemsType",
             "BillingUsageReportPropUsageItemsItemsTypeForResponse",
         ),
-        ".group_0202": (
+        ".group_0201": (
             "BillingUsageSummaryReportGheType",
             "BillingUsageSummaryReportGheTypeForResponse",
             "BillingUsageSummaryReportGhePropTimePeriodType",
@@ -23940,11 +23838,11 @@ else:
             "BillingUsageSummaryReportGhePropUsageItemsItemsType",
             "BillingUsageSummaryReportGhePropUsageItemsItemsTypeForResponse",
         ),
-        ".group_0203": (
+        ".group_0202": (
             "LabelType",
             "LabelTypeForResponse",
         ),
-        ".group_0204": (
+        ".group_0203": (
             "DiscussionType",
             "DiscussionTypeForResponse",
             "DiscussionPropAnswerChosenByType",
@@ -23956,33 +23854,33 @@ else:
             "DiscussionPropUserType",
             "DiscussionPropUserTypeForResponse",
         ),
-        ".group_0205": (
+        ".group_0204": (
             "MilestoneType",
             "MilestoneTypeForResponse",
         ),
-        ".group_0206": (
+        ".group_0205": (
             "IssueTypeType",
             "IssueTypeTypeForResponse",
         ),
-        ".group_0207": (
+        ".group_0206": (
             "ReactionRollupType",
             "ReactionRollupTypeForResponse",
         ),
-        ".group_0208": (
+        ".group_0207": (
             "SubIssuesSummaryType",
             "SubIssuesSummaryTypeForResponse",
             "IssueDependenciesSummaryType",
             "IssueDependenciesSummaryTypeForResponse",
         ),
-        ".group_0209": (
+        ".group_0208": (
             "PinnedIssueCommentType",
             "PinnedIssueCommentTypeForResponse",
         ),
-        ".group_0210": (
+        ".group_0209": (
             "IssueCommentType",
             "IssueCommentTypeForResponse",
         ),
-        ".group_0211": (
+        ".group_0210": (
             "IssueFieldValueType",
             "IssueFieldValueTypeForResponse",
             "IssueFieldValuePropSingleSelectOptionType",
@@ -23990,7 +23888,7 @@ else:
             "IssueFieldValuePropMultiSelectOptionsItemsType",
             "IssueFieldValuePropMultiSelectOptionsItemsTypeForResponse",
         ),
-        ".group_0212": (
+        ".group_0211": (
             "IssueType",
             "IssueTypeForResponse",
             "IssuePropLabelsItemsOneof1Type",
@@ -23998,7 +23896,7 @@ else:
             "IssuePropPullRequestType",
             "IssuePropPullRequestTypeForResponse",
         ),
-        ".group_0213": (
+        ".group_0212": (
             "PullRequestMinimalType",
             "PullRequestMinimalTypeForResponse",
             "PullRequestMinimalPropHeadType",
@@ -24010,15 +23908,15 @@ else:
             "PullRequestMinimalPropBasePropRepoType",
             "PullRequestMinimalPropBasePropRepoTypeForResponse",
         ),
-        ".group_0214": (
+        ".group_0213": (
             "ReleaseAssetType",
             "ReleaseAssetTypeForResponse",
         ),
-        ".group_0215": (
+        ".group_0214": (
             "ReleaseType",
             "ReleaseTypeForResponse",
         ),
-        ".group_0216": (
+        ".group_0215": (
             "EventType",
             "EventTypeForResponse",
             "ActorType",
@@ -24040,35 +23938,35 @@ else:
             "GollumEventPropPagesItemsType",
             "GollumEventPropPagesItemsTypeForResponse",
         ),
-        ".group_0217": (
+        ".group_0216": (
             "DiscussionEventType",
             "DiscussionEventTypeForResponse",
         ),
-        ".group_0218": (
+        ".group_0217": (
             "IssuesEventType",
             "IssuesEventTypeForResponse",
         ),
-        ".group_0219": (
+        ".group_0218": (
             "IssueCommentEventType",
             "IssueCommentEventTypeForResponse",
         ),
-        ".group_0220": (
+        ".group_0219": (
             "ForkEventType",
             "ForkEventTypeForResponse",
         ),
-        ".group_0221": (
+        ".group_0220": (
             "ForkEventPropForkeeType",
             "ForkEventPropForkeeTypeForResponse",
         ),
-        ".group_0222": (
+        ".group_0221": (
             "MemberEventType",
             "MemberEventTypeForResponse",
         ),
-        ".group_0223": (
+        ".group_0222": (
             "PullRequestEventType",
             "PullRequestEventTypeForResponse",
         ),
-        ".group_0224": (
+        ".group_0223": (
             "PullRequestReviewCommentEventType",
             "PullRequestReviewCommentEventTypeForResponse",
             "PullRequestReviewCommentEventPropCommentType",
@@ -24086,11 +23984,11 @@ else:
             "PullRequestReviewCommentEventPropCommentPropLinksPropSelfType",
             "PullRequestReviewCommentEventPropCommentPropLinksPropSelfTypeForResponse",
         ),
-        ".group_0225": (
+        ".group_0224": (
             "PullRequestReviewEventType",
             "PullRequestReviewEventTypeForResponse",
         ),
-        ".group_0226": (
+        ".group_0225": (
             "PullRequestReviewEventPropReviewType",
             "PullRequestReviewEventPropReviewTypeForResponse",
             "PullRequestReviewEventPropReviewPropLinksType",
@@ -24100,27 +23998,27 @@ else:
             "PullRequestReviewEventPropReviewPropLinksPropPullRequestType",
             "PullRequestReviewEventPropReviewPropLinksPropPullRequestTypeForResponse",
         ),
-        ".group_0227": (
+        ".group_0226": (
             "CommitCommentEventType",
             "CommitCommentEventTypeForResponse",
         ),
-        ".group_0228": (
+        ".group_0227": (
             "CommitCommentEventPropCommentType",
             "CommitCommentEventPropCommentTypeForResponse",
         ),
-        ".group_0229": (
+        ".group_0228": (
             "ReleaseEventType",
             "ReleaseEventTypeForResponse",
         ),
-        ".group_0230": (
+        ".group_0229": (
             "ReleaseEventPropReleaseType",
             "ReleaseEventPropReleaseTypeForResponse",
         ),
-        ".group_0231": (
+        ".group_0230": (
             "ReleaseEventPropReleaseAllof1Type",
             "ReleaseEventPropReleaseAllof1TypeForResponse",
         ),
-        ".group_0232": (
+        ".group_0231": (
             "FeedType",
             "FeedTypeForResponse",
             "FeedPropLinksType",
@@ -24128,57 +24026,57 @@ else:
             "LinkWithTypeType",
             "LinkWithTypeTypeForResponse",
         ),
-        ".group_0233": (
+        ".group_0232": (
             "BaseGistType",
             "BaseGistTypeForResponse",
             "BaseGistPropFilesType",
             "BaseGistPropFilesTypeForResponse",
         ),
-        ".group_0234": (
+        ".group_0233": (
             "GistSimpleType",
             "GistSimpleTypeForResponse",
             "GistSimplePropFilesType",
             "GistSimplePropFilesTypeForResponse",
         ),
-        ".group_0235": (
+        ".group_0234": (
             "GistSimplePropForkOfType",
             "GistSimplePropForkOfTypeForResponse",
             "GistSimplePropForkOfPropFilesType",
             "GistSimplePropForkOfPropFilesTypeForResponse",
         ),
-        ".group_0236": (
+        ".group_0235": (
             "GistCommentType",
             "GistCommentTypeForResponse",
         ),
-        ".group_0237": (
+        ".group_0236": (
             "GistCommitType",
             "GistCommitTypeForResponse",
             "GistCommitPropChangeStatusType",
             "GistCommitPropChangeStatusTypeForResponse",
         ),
-        ".group_0238": (
+        ".group_0237": (
             "GitignoreTemplateType",
             "GitignoreTemplateTypeForResponse",
         ),
-        ".group_0239": (
+        ".group_0238": (
             "LicenseType",
             "LicenseTypeForResponse",
         ),
-        ".group_0240": (
+        ".group_0239": (
             "MarketplaceListingPlanType",
             "MarketplaceListingPlanTypeForResponse",
         ),
-        ".group_0241": (
+        ".group_0240": (
             "MarketplacePurchaseType",
             "MarketplacePurchaseTypeForResponse",
         ),
-        ".group_0242": (
+        ".group_0241": (
             "MarketplacePurchasePropMarketplacePendingChangeType",
             "MarketplacePurchasePropMarketplacePendingChangeTypeForResponse",
             "MarketplacePurchasePropMarketplacePurchaseType",
             "MarketplacePurchasePropMarketplacePurchaseTypeForResponse",
         ),
-        ".group_0243": (
+        ".group_0242": (
             "ApiOverviewType",
             "ApiOverviewTypeForResponse",
             "ApiOverviewPropSshKeyFingerprintsType",
@@ -24190,7 +24088,7 @@ else:
             "ApiOverviewPropDomainsPropArtifactAttestationsType",
             "ApiOverviewPropDomainsPropArtifactAttestationsTypeForResponse",
         ),
-        ".group_0244": (
+        ".group_0243": (
             "SecurityAndAnalysisType",
             "SecurityAndAnalysisTypeForResponse",
             "SecurityAndAnalysisPropAdvancedSecurityType",
@@ -24218,7 +24116,7 @@ else:
             "SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType",
             "SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItemsTypeForResponse",
         ),
-        ".group_0245": (
+        ".group_0244": (
             "MinimalRepositoryType",
             "MinimalRepositoryTypeForResponse",
             "CodeOfConductType",
@@ -24230,71 +24128,71 @@ else:
             "MinimalRepositoryPropCustomPropertiesType",
             "MinimalRepositoryPropCustomPropertiesTypeForResponse",
         ),
-        ".group_0246": (
+        ".group_0245": (
             "ThreadType",
             "ThreadTypeForResponse",
             "ThreadPropSubjectType",
             "ThreadPropSubjectTypeForResponse",
         ),
-        ".group_0247": (
+        ".group_0246": (
             "ThreadSubscriptionType",
             "ThreadSubscriptionTypeForResponse",
         ),
-        ".group_0248": (
+        ".group_0247": (
             "ActionsCacheRetentionLimitForOrganizationType",
             "ActionsCacheRetentionLimitForOrganizationTypeForResponse",
         ),
-        ".group_0249": (
+        ".group_0248": (
             "ActionsCacheStorageLimitForOrganizationType",
             "ActionsCacheStorageLimitForOrganizationTypeForResponse",
         ),
-        ".group_0250": (
+        ".group_0249": (
             "OrganizationFullType",
             "OrganizationFullTypeForResponse",
             "OrganizationFullPropPlanType",
             "OrganizationFullPropPlanTypeForResponse",
         ),
-        ".group_0251": (
+        ".group_0250": (
             "OidcCustomSubType",
             "OidcCustomSubTypeForResponse",
         ),
-        ".group_0252": (
+        ".group_0251": (
             "ActionsOrganizationPermissionsType",
             "ActionsOrganizationPermissionsTypeForResponse",
         ),
-        ".group_0253": (
+        ".group_0252": (
             "SelfHostedRunnersSettingsType",
             "SelfHostedRunnersSettingsTypeForResponse",
         ),
-        ".group_0254": (
+        ".group_0253": (
             "OrganizationActionsSecretType",
             "OrganizationActionsSecretTypeForResponse",
         ),
-        ".group_0255": (
+        ".group_0254": (
             "ActionsPublicKeyType",
             "ActionsPublicKeyTypeForResponse",
         ),
-        ".group_0256": (
+        ".group_0255": (
             "OrganizationActionsVariableType",
             "OrganizationActionsVariableTypeForResponse",
         ),
-        ".group_0257": (
+        ".group_0256": (
             "ArtifactDeploymentRecordType",
             "ArtifactDeploymentRecordTypeForResponse",
             "ArtifactDeploymentRecordPropTagsType",
             "ArtifactDeploymentRecordPropTagsTypeForResponse",
         ),
-        ".group_0258": (
+        ".group_0257": (
             "CampaignSummaryType",
             "CampaignSummaryTypeForResponse",
             "CampaignSummaryPropAlertStatsType",
             "CampaignSummaryPropAlertStatsTypeForResponse",
         ),
-        ".group_0259": (
+        ".group_0258": (
             "CodespaceMachineType",
             "CodespaceMachineTypeForResponse",
         ),
-        ".group_0260": (
+        ".group_0259": (
             "CodespaceType",
             "CodespaceTypeForResponse",
             "CodespacePropGitStatusType",
@@ -24302,11 +24200,11 @@ else:
             "CodespacePropRuntimeConstraintsType",
             "CodespacePropRuntimeConstraintsTypeForResponse",
         ),
-        ".group_0261": (
+        ".group_0260": (
             "CodespacesPublicKeyType",
             "CodespacesPublicKeyTypeForResponse",
         ),
-        ".group_0262": (
+        ".group_0261": (
             "CopilotSpaceType",
             "CopilotSpaceTypeForResponse",
             "CopilotSpacePropResourcesAttributesItemsType",
@@ -24314,61 +24212,61 @@ else:
             "CopilotSpacePropResourcesAttributesItemsPropMetadataType",
             "CopilotSpacePropResourcesAttributesItemsPropMetadataTypeForResponse",
         ),
-        ".group_0263": (
+        ".group_0262": (
             "CopilotSpaceCollaboratorAnyof0Type",
             "CopilotSpaceCollaboratorAnyof0TypeForResponse",
             "CopilotSpaceCollaboratorAnyof1Type",
             "CopilotSpaceCollaboratorAnyof1TypeForResponse",
         ),
-        ".group_0264": (
+        ".group_0263": (
             "CopilotSpaceCollaboratorAnyof0Allof1Type",
             "CopilotSpaceCollaboratorAnyof0Allof1TypeForResponse",
         ),
-        ".group_0265": (
+        ".group_0264": (
             "CopilotSpaceResourceType",
             "CopilotSpaceResourceTypeForResponse",
             "CopilotSpaceResourcePropMetadataType",
             "CopilotSpaceResourcePropMetadataTypeForResponse",
         ),
-        ".group_0266": (
+        ".group_0265": (
             "CopilotOrganizationDetailsType",
             "CopilotOrganizationDetailsTypeForResponse",
             "CopilotOrganizationSeatBreakdownType",
             "CopilotOrganizationSeatBreakdownTypeForResponse",
         ),
-        ".group_0267": (
+        ".group_0266": (
             "CopilotOrganizationContentExclusionDetailsType",
             "CopilotOrganizationContentExclusionDetailsTypeForResponse",
         ),
-        ".group_0268": (
+        ".group_0267": (
             "CredentialAuthorizationType",
             "CredentialAuthorizationTypeForResponse",
         ),
-        ".group_0269": (
+        ".group_0268": (
             "OrganizationCustomRepositoryRoleType",
             "OrganizationCustomRepositoryRoleTypeForResponse",
             "OrgsOrgCustomRepositoryRolesGetResponse200Type",
             "OrgsOrgCustomRepositoryRolesGetResponse200TypeForResponse",
         ),
-        ".group_0270": (
+        ".group_0269": (
             "OrganizationCustomRepositoryRoleCreateSchemaType",
             "OrganizationCustomRepositoryRoleCreateSchemaTypeForResponse",
         ),
-        ".group_0271": (
+        ".group_0270": (
             "OrganizationCustomRepositoryRoleUpdateSchemaType",
             "OrganizationCustomRepositoryRoleUpdateSchemaTypeForResponse",
         ),
-        ".group_0272": (
+        ".group_0271": (
             "DependabotPublicKeyType",
             "DependabotPublicKeyTypeForResponse",
         ),
-        ".group_0273": (
+        ".group_0272": (
             "DismissalRequestResponseType",
             "DismissalRequestResponseTypeForResponse",
             "DismissalRequestResponsePropReviewerType",
             "DismissalRequestResponsePropReviewerTypeForResponse",
         ),
-        ".group_0274": (
+        ".group_0273": (
             "CodeScanningAlertDismissalRequestType",
             "CodeScanningAlertDismissalRequestTypeForResponse",
             "CodeScanningAlertDismissalRequestPropRepositoryType",
@@ -24380,7 +24278,7 @@ else:
             "CodeScanningAlertDismissalRequestPropDataItemsType",
             "CodeScanningAlertDismissalRequestPropDataItemsTypeForResponse",
         ),
-        ".group_0275": (
+        ".group_0274": (
             "DependabotAlertDismissalRequestType",
             "DependabotAlertDismissalRequestTypeForResponse",
             "DependabotAlertDismissalRequestPropRepositoryType",
@@ -24392,11 +24290,11 @@ else:
             "DependabotAlertDismissalRequestPropDataItemsType",
             "DependabotAlertDismissalRequestPropDataItemsTypeForResponse",
         ),
-        ".group_0276": (
+        ".group_0275": (
             "PackageType",
             "PackageTypeForResponse",
         ),
-        ".group_0277": (
+        ".group_0276": (
             "ExternalGroupType",
             "ExternalGroupTypeForResponse",
             "ExternalGroupPropTeamsItemsType",
@@ -24404,119 +24302,119 @@ else:
             "ExternalGroupPropMembersItemsType",
             "ExternalGroupPropMembersItemsTypeForResponse",
         ),
-        ".group_0278": (
+        ".group_0277": (
             "ExternalGroupsType",
             "ExternalGroupsTypeForResponse",
             "ExternalGroupsPropGroupsItemsType",
             "ExternalGroupsPropGroupsItemsTypeForResponse",
         ),
-        ".group_0279": (
+        ".group_0278": (
             "OrganizationInvitationType",
             "OrganizationInvitationTypeForResponse",
         ),
-        ".group_0280": (
+        ".group_0279": (
             "RepositoryFineGrainedPermissionType",
             "RepositoryFineGrainedPermissionTypeForResponse",
         ),
-        ".group_0281": (
+        ".group_0280": (
             "OrgHookType",
             "OrgHookTypeForResponse",
             "OrgHookPropConfigType",
             "OrgHookPropConfigTypeForResponse",
         ),
-        ".group_0282": (
+        ".group_0281": (
             "ApiInsightsRouteStatsItemsType",
             "ApiInsightsRouteStatsItemsTypeForResponse",
         ),
-        ".group_0283": (
+        ".group_0282": (
             "ApiInsightsSubjectStatsItemsType",
             "ApiInsightsSubjectStatsItemsTypeForResponse",
         ),
-        ".group_0284": (
+        ".group_0283": (
             "ApiInsightsSummaryStatsType",
             "ApiInsightsSummaryStatsTypeForResponse",
         ),
-        ".group_0285": (
+        ".group_0284": (
             "ApiInsightsTimeStatsItemsType",
             "ApiInsightsTimeStatsItemsTypeForResponse",
         ),
-        ".group_0286": (
+        ".group_0285": (
             "ApiInsightsUserStatsItemsType",
             "ApiInsightsUserStatsItemsTypeForResponse",
         ),
-        ".group_0287": (
+        ".group_0286": (
             "InteractionLimitResponseType",
             "InteractionLimitResponseTypeForResponse",
         ),
-        ".group_0288": (
+        ".group_0287": (
             "InteractionLimitType",
             "InteractionLimitTypeForResponse",
         ),
-        ".group_0289": (
+        ".group_0288": (
             "IssueFieldType",
             "IssueFieldTypeForResponse",
             "IssueFieldPropOptionsItemsType",
             "IssueFieldPropOptionsItemsTypeForResponse",
         ),
-        ".group_0290": (
+        ".group_0289": (
             "OrganizationCreateIssueFieldType",
             "OrganizationCreateIssueFieldTypeForResponse",
             "OrganizationCreateIssueFieldPropOptionsItemsType",
             "OrganizationCreateIssueFieldPropOptionsItemsTypeForResponse",
         ),
-        ".group_0291": (
+        ".group_0290": (
             "OrganizationUpdateIssueFieldType",
             "OrganizationUpdateIssueFieldTypeForResponse",
             "OrganizationUpdateIssueFieldPropOptionsItemsType",
             "OrganizationUpdateIssueFieldPropOptionsItemsTypeForResponse",
         ),
-        ".group_0292": (
+        ".group_0291": (
             "OrganizationCreateIssueTypeType",
             "OrganizationCreateIssueTypeTypeForResponse",
         ),
-        ".group_0293": (
+        ".group_0292": (
             "OrganizationUpdateIssueTypeType",
             "OrganizationUpdateIssueTypeTypeForResponse",
         ),
-        ".group_0294": (
+        ".group_0293": (
             "OrgMembershipType",
             "OrgMembershipTypeForResponse",
             "OrgMembershipPropPermissionsType",
             "OrgMembershipPropPermissionsTypeForResponse",
         ),
-        ".group_0295": (
+        ".group_0294": (
             "MigrationType",
             "MigrationTypeForResponse",
         ),
-        ".group_0296": (
+        ".group_0295": (
             "OrganizationFineGrainedPermissionType",
             "OrganizationFineGrainedPermissionTypeForResponse",
         ),
-        ".group_0297": (
+        ".group_0296": (
             "OrganizationRoleType",
             "OrganizationRoleTypeForResponse",
             "OrgsOrgOrganizationRolesGetResponse200Type",
             "OrgsOrgOrganizationRolesGetResponse200TypeForResponse",
         ),
-        ".group_0298": (
+        ".group_0297": (
             "OrganizationCustomOrganizationRoleCreateSchemaType",
             "OrganizationCustomOrganizationRoleCreateSchemaTypeForResponse",
         ),
-        ".group_0299": (
+        ".group_0298": (
             "OrganizationCustomOrganizationRoleUpdateSchemaType",
             "OrganizationCustomOrganizationRoleUpdateSchemaTypeForResponse",
         ),
-        ".group_0300": (
+        ".group_0299": (
             "TeamRoleAssignmentType",
             "TeamRoleAssignmentTypeForResponse",
             "TeamRoleAssignmentPropPermissionsType",
             "TeamRoleAssignmentPropPermissionsTypeForResponse",
         ),
-        ".group_0301": (
+        ".group_0300": (
             "UserRoleAssignmentType",
             "UserRoleAssignmentTypeForResponse",
         ),
-        ".group_0302": (
+        ".group_0301": (
             "PackageVersionType",
             "PackageVersionTypeForResponse",
             "PackageVersionPropMetadataType",
@@ -24526,7 +24424,7 @@ else:
             "PackageVersionPropMetadataPropDockerType",
             "PackageVersionPropMetadataPropDockerTypeForResponse",
         ),
-        ".group_0303": (
+        ".group_0302": (
             "OrganizationProgrammaticAccessGrantRequestType",
             "OrganizationProgrammaticAccessGrantRequestTypeForResponse",
             "OrganizationProgrammaticAccessGrantRequestPropPermissionsType",
@@ -24538,7 +24436,7 @@ else:
             "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherType",
             "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherTypeForResponse",
         ),
-        ".group_0304": (
+        ".group_0303": (
             "OrganizationProgrammaticAccessGrantType",
             "OrganizationProgrammaticAccessGrantTypeForResponse",
             "OrganizationProgrammaticAccessGrantPropPermissionsType",
@@ -24550,51 +24448,51 @@ else:
             "OrganizationProgrammaticAccessGrantPropPermissionsPropOtherType",
             "OrganizationProgrammaticAccessGrantPropPermissionsPropOtherTypeForResponse",
         ),
-        ".group_0305": (
+        ".group_0304": (
             "OrgPrivateRegistryConfigurationWithSelectedRepositoriesType",
             "OrgPrivateRegistryConfigurationWithSelectedRepositoriesTypeForResponse",
         ),
-        ".group_0306": (
+        ".group_0305": (
             "ProjectsV2StatusUpdateType",
             "ProjectsV2StatusUpdateTypeForResponse",
         ),
-        ".group_0307": (
+        ".group_0306": (
             "ProjectsV2Type",
             "ProjectsV2TypeForResponse",
         ),
-        ".group_0308": (
+        ".group_0307": (
             "LinkType",
             "LinkTypeForResponse",
         ),
-        ".group_0309": (
+        ".group_0308": (
             "AutoMergeType",
             "AutoMergeTypeForResponse",
         ),
-        ".group_0310": (
+        ".group_0309": (
             "PullRequestSimpleType",
             "PullRequestSimpleTypeForResponse",
             "PullRequestSimplePropLabelsItemsType",
             "PullRequestSimplePropLabelsItemsTypeForResponse",
         ),
-        ".group_0311": (
+        ".group_0310": (
             "PullRequestSimplePropHeadType",
             "PullRequestSimplePropHeadTypeForResponse",
             "PullRequestSimplePropBaseType",
             "PullRequestSimplePropBaseTypeForResponse",
         ),
-        ".group_0312": (
+        ".group_0311": (
             "PullRequestSimplePropLinksType",
             "PullRequestSimplePropLinksTypeForResponse",
         ),
-        ".group_0313": (
+        ".group_0312": (
             "ProjectsV2DraftIssueType",
             "ProjectsV2DraftIssueTypeForResponse",
         ),
-        ".group_0314": (
+        ".group_0313": (
             "ProjectsV2ItemSimpleType",
             "ProjectsV2ItemSimpleTypeForResponse",
         ),
-        ".group_0315": (
+        ".group_0314": (
             "ProjectsV2FieldType",
             "ProjectsV2FieldTypeForResponse",
             "ProjectsV2SingleSelectOptionsType",
@@ -24610,17 +24508,17 @@ else:
             "ProjectsV2IterationSettingsPropTitleType",
             "ProjectsV2IterationSettingsPropTitleTypeForResponse",
         ),
-        ".group_0316": (
+        ".group_0315": (
             "ProjectsV2FieldSingleSelectOptionType",
             "ProjectsV2FieldSingleSelectOptionTypeForResponse",
         ),
-        ".group_0317": (
+        ".group_0316": (
             "ProjectsV2FieldIterationConfigurationType",
             "ProjectsV2FieldIterationConfigurationTypeForResponse",
             "ProjectsV2FieldIterationConfigurationPropIterationsItemsType",
             "ProjectsV2FieldIterationConfigurationPropIterationsItemsTypeForResponse",
         ),
-        ".group_0318": (
+        ".group_0317": (
             "ProjectsV2ItemWithContentType",
             "ProjectsV2ItemWithContentTypeForResponse",
             "ProjectsV2ItemWithContentPropContentType",
@@ -24628,21 +24526,21 @@ else:
             "ProjectsV2ItemWithContentPropFieldsItemsType",
             "ProjectsV2ItemWithContentPropFieldsItemsTypeForResponse",
         ),
-        ".group_0319": (
+        ".group_0318": (
             "ProjectsV2ViewType",
             "ProjectsV2ViewTypeForResponse",
             "ProjectsV2ViewPropCreatorType",
             "ProjectsV2ViewPropCreatorTypeForResponse",
         ),
-        ".group_0320": (
+        ".group_0319": (
             "OrgRepoCustomPropertyValuesType",
             "OrgRepoCustomPropertyValuesTypeForResponse",
         ),
-        ".group_0321": (
+        ".group_0320": (
             "CodeOfConductSimpleType",
             "CodeOfConductSimpleTypeForResponse",
         ),
-        ".group_0322": (
+        ".group_0321": (
             "FullRepositoryType",
             "FullRepositoryTypeForResponse",
             "FullRepositoryPropPermissionsType",
@@ -24650,11 +24548,11 @@ else:
             "FullRepositoryPropCustomPropertiesType",
             "FullRepositoryPropCustomPropertiesTypeForResponse",
         ),
-        ".group_0323": (
+        ".group_0322": (
             "RuleSuitesItemsType",
             "RuleSuitesItemsTypeForResponse",
         ),
-        ".group_0324": (
+        ".group_0323": (
             "RuleSuitePullRequestType",
             "RuleSuitePullRequestTypeForResponse",
             "RuleSuitePullRequestPropPullRequestType",
@@ -24666,7 +24564,7 @@ else:
             "RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserType",
             "RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserTypeForResponse",
         ),
-        ".group_0325": (
+        ".group_0324": (
             "RuleSuiteRequiredStatusChecksType",
             "RuleSuiteRequiredStatusChecksTypeForResponse",
             "RuleSuiteRequiredStatusChecksPropChecksItemsType",
@@ -24674,7 +24572,7 @@ else:
             "RuleSuiteRequiredStatusChecksPropChecksItemsPropAppType",
             "RuleSuiteRequiredStatusChecksPropChecksItemsPropAppTypeForResponse",
         ),
-        ".group_0326": (
+        ".group_0325": (
             "RuleSuiteType",
             "RuleSuiteTypeForResponse",
             "RuleSuitePropRuleEvaluationsItemsType",
@@ -24682,11 +24580,11 @@ else:
             "RuleSuitePropRuleEvaluationsItemsPropRuleSourceType",
             "RuleSuitePropRuleEvaluationsItemsPropRuleSourceTypeForResponse",
         ),
-        ".group_0327": (
+        ".group_0326": (
             "RepositoryAdvisoryCreditType",
             "RepositoryAdvisoryCreditTypeForResponse",
         ),
-        ".group_0328": (
+        ".group_0327": (
             "RepositoryAdvisoryType",
             "RepositoryAdvisoryTypeForResponse",
             "RepositoryAdvisoryPropIdentifiersItemsType",
@@ -24702,17 +24600,17 @@ else:
             "RepositoryAdvisoryVulnerabilityPropPackageType",
             "RepositoryAdvisoryVulnerabilityPropPackageTypeForResponse",
         ),
-        ".group_0329": (
+        ".group_0328": (
             "ImmutableReleasesOrganizationSettingsType",
             "ImmutableReleasesOrganizationSettingsTypeForResponse",
         ),
-        ".group_0330": (
+        ".group_0329": (
             "GroupMappingType",
             "GroupMappingTypeForResponse",
             "GroupMappingPropGroupsItemsType",
             "GroupMappingPropGroupsItemsTypeForResponse",
         ),
-        ".group_0331": (
+        ".group_0330": (
             "TeamFullType",
             "TeamFullTypeForResponse",
             "TeamOrganizationType",
@@ -24720,17 +24618,17 @@ else:
             "TeamOrganizationPropPlanType",
             "TeamOrganizationPropPlanTypeForResponse",
         ),
-        ".group_0332": (
+        ".group_0331": (
             "TeamMembershipType",
             "TeamMembershipTypeForResponse",
         ),
-        ".group_0333": (
+        ".group_0332": (
             "TeamRepositoryType",
             "TeamRepositoryTypeForResponse",
             "TeamRepositoryPropPermissionsType",
             "TeamRepositoryPropPermissionsTypeForResponse",
         ),
-        ".group_0334": (
+        ".group_0333": (
             "RateLimitOverviewType",
             "RateLimitOverviewTypeForResponse",
             "RateLimitOverviewPropResourcesType",
@@ -24738,65 +24636,65 @@ else:
             "RateLimitType",
             "RateLimitTypeForResponse",
         ),
-        ".group_0335": (
+        ".group_0334": (
             "ArtifactType",
             "ArtifactTypeForResponse",
             "ArtifactPropWorkflowRunType",
             "ArtifactPropWorkflowRunTypeForResponse",
         ),
-        ".group_0336": (
+        ".group_0335": (
             "ActionsCacheRetentionLimitForRepositoryType",
             "ActionsCacheRetentionLimitForRepositoryTypeForResponse",
         ),
-        ".group_0337": (
+        ".group_0336": (
             "ActionsCacheStorageLimitForRepositoryType",
             "ActionsCacheStorageLimitForRepositoryTypeForResponse",
         ),
-        ".group_0338": (
+        ".group_0337": (
             "ActionsCacheListType",
             "ActionsCacheListTypeForResponse",
             "ActionsCacheListPropActionsCachesItemsType",
             "ActionsCacheListPropActionsCachesItemsTypeForResponse",
         ),
-        ".group_0339": (
+        ".group_0338": (
             "ConcurrencyGroupListType",
             "ConcurrencyGroupListTypeForResponse",
             "ConcurrencyGroupListPropConcurrencyGroupsItemsType",
             "ConcurrencyGroupListPropConcurrencyGroupsItemsTypeForResponse",
         ),
-        ".group_0340": (
+        ".group_0339": (
             "ConcurrencyGroupType",
             "ConcurrencyGroupTypeForResponse",
             "ConcurrencyGroupPropGroupMembersItemsType",
             "ConcurrencyGroupPropGroupMembersItemsTypeForResponse",
         ),
-        ".group_0341": (
+        ".group_0340": (
             "JobType",
             "JobTypeForResponse",
             "JobPropStepsItemsType",
             "JobPropStepsItemsTypeForResponse",
         ),
-        ".group_0342": (
+        ".group_0341": (
             "OidcCustomSubRepoType",
             "OidcCustomSubRepoTypeForResponse",
         ),
-        ".group_0343": (
+        ".group_0342": (
             "ActionsSecretType",
             "ActionsSecretTypeForResponse",
         ),
-        ".group_0344": (
+        ".group_0343": (
             "ActionsVariableType",
             "ActionsVariableTypeForResponse",
         ),
-        ".group_0345": (
+        ".group_0344": (
             "ActionsRepositoryPermissionsType",
             "ActionsRepositoryPermissionsTypeForResponse",
         ),
-        ".group_0346": (
+        ".group_0345": (
             "ActionsWorkflowAccessToRepositoryType",
             "ActionsWorkflowAccessToRepositoryTypeForResponse",
         ),
-        ".group_0347": (
+        ".group_0346": (
             "SimpleCommitType",
             "SimpleCommitTypeForResponse",
             "SimpleCommitPropAuthorType",
@@ -24804,19 +24702,19 @@ else:
             "SimpleCommitPropCommitterType",
             "SimpleCommitPropCommitterTypeForResponse",
         ),
-        ".group_0348": (
+        ".group_0347": (
             "WorkflowRunType",
             "WorkflowRunTypeForResponse",
             "ReferencedWorkflowType",
             "ReferencedWorkflowTypeForResponse",
         ),
-        ".group_0349": (
+        ".group_0348": (
             "EnvironmentApprovalsType",
             "EnvironmentApprovalsTypeForResponse",
             "EnvironmentApprovalsPropEnvironmentsItemsType",
             "EnvironmentApprovalsPropEnvironmentsItemsTypeForResponse",
         ),
-        ".group_0350": (
+        ".group_0349": (
             "ConcurrencyGroupRunListType",
             "ConcurrencyGroupRunListTypeForResponse",
             "ConcurrencyGroupRunListPropConcurrencyGroupsItemsType",
@@ -24824,15 +24722,15 @@ else:
             "ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItemsType",
             "ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItemsTypeForResponse",
         ),
-        ".group_0351": (
+        ".group_0350": (
             "ReviewCustomGatesCommentRequiredType",
             "ReviewCustomGatesCommentRequiredTypeForResponse",
         ),
-        ".group_0352": (
+        ".group_0351": (
             "ReviewCustomGatesStateRequiredType",
             "ReviewCustomGatesStateRequiredTypeForResponse",
         ),
-        ".group_0353": (
+        ".group_0352": (
             "PendingDeploymentPropReviewersItemsType",
             "PendingDeploymentPropReviewersItemsTypeForResponse",
             "PendingDeploymentType",
@@ -24840,13 +24738,13 @@ else:
             "PendingDeploymentPropEnvironmentType",
             "PendingDeploymentPropEnvironmentTypeForResponse",
         ),
-        ".group_0354": (
+        ".group_0353": (
             "DeploymentType",
             "DeploymentTypeForResponse",
             "DeploymentPropPayloadOneof0Type",
             "DeploymentPropPayloadOneof0TypeForResponse",
         ),
-        ".group_0355": (
+        ".group_0354": (
             "WorkflowRunUsageType",
             "WorkflowRunUsageTypeForResponse",
             "WorkflowRunUsagePropBillableType",
@@ -24864,11 +24762,11 @@ else:
             "WorkflowRunUsagePropBillablePropWindowsPropJobRunsItemsType",
             "WorkflowRunUsagePropBillablePropWindowsPropJobRunsItemsTypeForResponse",
         ),
-        ".group_0356": (
+        ".group_0355": (
             "WorkflowDispatchResponseType",
             "WorkflowDispatchResponseTypeForResponse",
         ),
-        ".group_0357": (
+        ".group_0356": (
             "WorkflowUsageType",
             "WorkflowUsageTypeForResponse",
             "WorkflowUsagePropBillableType",
@@ -24880,29 +24778,29 @@ else:
             "WorkflowUsagePropBillablePropWindowsType",
             "WorkflowUsagePropBillablePropWindowsTypeForResponse",
         ),
-        ".group_0358": (
+        ".group_0357": (
             "ActivityType",
             "ActivityTypeForResponse",
         ),
-        ".group_0359": (
+        ".group_0358": (
             "AutolinkType",
             "AutolinkTypeForResponse",
         ),
-        ".group_0360": (
+        ".group_0359": (
             "CheckAutomatedSecurityFixesType",
             "CheckAutomatedSecurityFixesTypeForResponse",
         ),
-        ".group_0361": (
+        ".group_0360": (
             "ProtectedBranchPullRequestReviewType",
             "ProtectedBranchPullRequestReviewTypeForResponse",
         ),
-        ".group_0362": (
+        ".group_0361": (
             "ProtectedBranchPullRequestReviewPropDismissalRestrictionsType",
             "ProtectedBranchPullRequestReviewPropDismissalRestrictionsTypeForResponse",
             "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType",
             "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesTypeForResponse",
         ),
-        ".group_0363": (
+        ".group_0362": (
             "BranchRestrictionPolicyType",
             "BranchRestrictionPolicyTypeForResponse",
             "BranchRestrictionPolicyPropUsersItemsType",
@@ -24914,7 +24812,7 @@ else:
             "BranchRestrictionPolicyPropAppsItemsPropPermissionsType",
             "BranchRestrictionPolicyPropAppsItemsPropPermissionsTypeForResponse",
         ),
-        ".group_0364": (
+        ".group_0363": (
             "BranchProtectionType",
             "BranchProtectionTypeForResponse",
             "ProtectedBranchAdminEnforcedType",
@@ -24940,25 +24838,25 @@ else:
             "ProtectedBranchRequiredStatusCheckPropChecksItemsType",
             "ProtectedBranchRequiredStatusCheckPropChecksItemsTypeForResponse",
         ),
-        ".group_0365": (
+        ".group_0364": (
             "ShortBranchType",
             "ShortBranchTypeForResponse",
             "ShortBranchPropCommitType",
             "ShortBranchPropCommitTypeForResponse",
         ),
-        ".group_0366": (
+        ".group_0365": (
             "GitUserType",
             "GitUserTypeForResponse",
         ),
-        ".group_0367": (
+        ".group_0366": (
             "VerificationType",
             "VerificationTypeForResponse",
         ),
-        ".group_0368": (
+        ".group_0367": (
             "DiffEntryType",
             "DiffEntryTypeForResponse",
         ),
-        ".group_0369": (
+        ".group_0368": (
             "CommitType",
             "CommitTypeForResponse",
             "EmptyObjectType",
@@ -24968,19 +24866,19 @@ else:
             "CommitPropStatsType",
             "CommitPropStatsTypeForResponse",
         ),
-        ".group_0370": (
+        ".group_0369": (
             "CommitPropCommitType",
             "CommitPropCommitTypeForResponse",
             "CommitPropCommitPropTreeType",
             "CommitPropCommitPropTreeTypeForResponse",
         ),
-        ".group_0371": (
+        ".group_0370": (
             "BranchWithProtectionType",
             "BranchWithProtectionTypeForResponse",
             "BranchWithProtectionPropLinksType",
             "BranchWithProtectionPropLinksTypeForResponse",
         ),
-        ".group_0372": (
+        ".group_0371": (
             "ProtectedBranchType",
             "ProtectedBranchTypeForResponse",
             "ProtectedBranchPropRequiredSignaturesType",
@@ -25006,21 +24904,21 @@ else:
             "StatusCheckPolicyPropChecksItemsType",
             "StatusCheckPolicyPropChecksItemsTypeForResponse",
         ),
-        ".group_0373": (
+        ".group_0372": (
             "ProtectedBranchPropRequiredPullRequestReviewsType",
             "ProtectedBranchPropRequiredPullRequestReviewsTypeForResponse",
         ),
-        ".group_0374": (
+        ".group_0373": (
             "ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType",
             "ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsTypeForResponse",
             "ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType",
             "ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesTypeForResponse",
         ),
-        ".group_0375": (
+        ".group_0374": (
             "DeploymentSimpleType",
             "DeploymentSimpleTypeForResponse",
         ),
-        ".group_0376": (
+        ".group_0375": (
             "CheckRunType",
             "CheckRunTypeForResponse",
             "CheckRunPropOutputType",
@@ -25028,17 +24926,17 @@ else:
             "CheckRunPropCheckSuiteType",
             "CheckRunPropCheckSuiteTypeForResponse",
         ),
-        ".group_0377": (
+        ".group_0376": (
             "CheckAnnotationType",
             "CheckAnnotationTypeForResponse",
         ),
-        ".group_0378": (
+        ".group_0377": (
             "CheckSuiteType",
             "CheckSuiteTypeForResponse",
             "ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Type",
             "ReposOwnerRepoCommitsRefCheckSuitesGetResponse200TypeForResponse",
         ),
-        ".group_0379": (
+        ".group_0378": (
             "CheckSuitePreferenceType",
             "CheckSuitePreferenceTypeForResponse",
             "CheckSuitePreferencePropPreferencesType",
@@ -25046,111 +24944,111 @@ else:
             "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType",
             "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsTypeForResponse",
         ),
-        ".group_0380": (
+        ".group_0379": (
             "CodeScanningAlertItemsType",
             "CodeScanningAlertItemsTypeForResponse",
         ),
-        ".group_0381": (
+        ".group_0380": (
             "CodeScanningAlertType",
             "CodeScanningAlertTypeForResponse",
             "CodeScanningAlertRuleType",
             "CodeScanningAlertRuleTypeForResponse",
         ),
-        ".group_0382": (
+        ".group_0381": (
             "CodeScanningAutofixType",
             "CodeScanningAutofixTypeForResponse",
         ),
-        ".group_0383": (
+        ".group_0382": (
             "CodeScanningAutofixCommitsType",
             "CodeScanningAutofixCommitsTypeForResponse",
         ),
-        ".group_0384": (
+        ".group_0383": (
             "CodeScanningAutofixCommitsResponseType",
             "CodeScanningAutofixCommitsResponseTypeForResponse",
         ),
-        ".group_0385": (
+        ".group_0384": (
             "CodeScanningAlertInstanceListType",
             "CodeScanningAlertInstanceListTypeForResponse",
             "CodeScanningAlertInstanceListPropMessageType",
             "CodeScanningAlertInstanceListPropMessageTypeForResponse",
         ),
-        ".group_0386": (
+        ".group_0385": (
             "CodeScanningAnalysisType",
             "CodeScanningAnalysisTypeForResponse",
         ),
-        ".group_0387": (
+        ".group_0386": (
             "CodeScanningAnalysisDeletionType",
             "CodeScanningAnalysisDeletionTypeForResponse",
         ),
-        ".group_0388": (
+        ".group_0387": (
             "CodeScanningCodeqlDatabaseType",
             "CodeScanningCodeqlDatabaseTypeForResponse",
         ),
-        ".group_0389": (
+        ".group_0388": (
             "CodeScanningVariantAnalysisRepositoryType",
             "CodeScanningVariantAnalysisRepositoryTypeForResponse",
         ),
-        ".group_0390": (
+        ".group_0389": (
             "CodeScanningVariantAnalysisSkippedRepoGroupType",
             "CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse",
         ),
-        ".group_0391": (
+        ".group_0390": (
             "CodeScanningVariantAnalysisType",
             "CodeScanningVariantAnalysisTypeForResponse",
         ),
-        ".group_0392": (
+        ".group_0391": (
             "CodeScanningVariantAnalysisPropScannedRepositoriesItemsType",
             "CodeScanningVariantAnalysisPropScannedRepositoriesItemsTypeForResponse",
         ),
-        ".group_0393": (
+        ".group_0392": (
             "CodeScanningVariantAnalysisPropSkippedRepositoriesType",
             "CodeScanningVariantAnalysisPropSkippedRepositoriesTypeForResponse",
             "CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposType",
             "CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposTypeForResponse",
         ),
-        ".group_0394": (
+        ".group_0393": (
             "CodeScanningVariantAnalysisRepoTaskType",
             "CodeScanningVariantAnalysisRepoTaskTypeForResponse",
         ),
-        ".group_0395": (
+        ".group_0394": (
             "CodeScanningDefaultSetupType",
             "CodeScanningDefaultSetupTypeForResponse",
         ),
-        ".group_0396": (
+        ".group_0395": (
             "CodeScanningDefaultSetupUpdateType",
             "CodeScanningDefaultSetupUpdateTypeForResponse",
         ),
-        ".group_0397": (
+        ".group_0396": (
             "CodeScanningDefaultSetupUpdateResponseType",
             "CodeScanningDefaultSetupUpdateResponseTypeForResponse",
         ),
-        ".group_0398": (
+        ".group_0397": (
             "CodeScanningSarifsReceiptType",
             "CodeScanningSarifsReceiptTypeForResponse",
         ),
-        ".group_0399": (
+        ".group_0398": (
             "CodeScanningSarifsStatusType",
             "CodeScanningSarifsStatusTypeForResponse",
         ),
-        ".group_0400": (
+        ".group_0399": (
             "CodeSecurityConfigurationForRepositoryType",
             "CodeSecurityConfigurationForRepositoryTypeForResponse",
         ),
-        ".group_0401": (
+        ".group_0400": (
             "CodeownersErrorsType",
             "CodeownersErrorsTypeForResponse",
             "CodeownersErrorsPropErrorsItemsType",
             "CodeownersErrorsPropErrorsItemsTypeForResponse",
         ),
-        ".group_0402": (
+        ".group_0401": (
             "CodespacesPermissionsCheckForDevcontainerType",
             "CodespacesPermissionsCheckForDevcontainerTypeForResponse",
         ),
-        ".group_0403": (
+        ".group_0402": (
             "RepositoryInvitationType",
             "RepositoryInvitationTypeForResponse",
         ),
-        ".group_0404": (
+        ".group_0403": (
             "RepositoryCollaboratorPermissionType",
             "RepositoryCollaboratorPermissionTypeForResponse",
             "CollaboratorType",
@@ -25158,33 +25056,33 @@ else:
             "CollaboratorPropPermissionsType",
             "CollaboratorPropPermissionsTypeForResponse",
         ),
-        ".group_0405": (
+        ".group_0404": (
             "CommitCommentType",
             "CommitCommentTypeForResponse",
             "TimelineCommitCommentedEventType",
             "TimelineCommitCommentedEventTypeForResponse",
         ),
-        ".group_0406": (
+        ".group_0405": (
             "ReactionType",
             "ReactionTypeForResponse",
         ),
-        ".group_0407": (
+        ".group_0406": (
             "BranchShortType",
             "BranchShortTypeForResponse",
             "BranchShortPropCommitType",
             "BranchShortPropCommitTypeForResponse",
         ),
-        ".group_0408": (
+        ".group_0407": (
             "CombinedCommitStatusType",
             "CombinedCommitStatusTypeForResponse",
             "SimpleCommitStatusType",
             "SimpleCommitStatusTypeForResponse",
         ),
-        ".group_0409": (
+        ".group_0408": (
             "StatusType",
             "StatusTypeForResponse",
         ),
-        ".group_0410": (
+        ".group_0409": (
             "CommunityProfilePropFilesType",
             "CommunityProfilePropFilesTypeForResponse",
             "CommunityHealthFileType",
@@ -25192,11 +25090,11 @@ else:
             "CommunityProfileType",
             "CommunityProfileTypeForResponse",
         ),
-        ".group_0411": (
+        ".group_0410": (
             "CommitComparisonType",
             "CommitComparisonTypeForResponse",
         ),
-        ".group_0412": (
+        ".group_0411": (
             "ContentTreeType",
             "ContentTreeTypeForResponse",
             "ContentTreePropLinksType",
@@ -25206,31 +25104,31 @@ else:
             "ContentTreePropEntriesItemsPropLinksType",
             "ContentTreePropEntriesItemsPropLinksTypeForResponse",
         ),
-        ".group_0413": (
+        ".group_0412": (
             "ContentDirectoryItemsType",
             "ContentDirectoryItemsTypeForResponse",
             "ContentDirectoryItemsPropLinksType",
             "ContentDirectoryItemsPropLinksTypeForResponse",
         ),
-        ".group_0414": (
+        ".group_0413": (
             "ContentFileType",
             "ContentFileTypeForResponse",
             "ContentFilePropLinksType",
             "ContentFilePropLinksTypeForResponse",
         ),
-        ".group_0415": (
+        ".group_0414": (
             "ContentSymlinkType",
             "ContentSymlinkTypeForResponse",
             "ContentSymlinkPropLinksType",
             "ContentSymlinkPropLinksTypeForResponse",
         ),
-        ".group_0416": (
+        ".group_0415": (
             "ContentSubmoduleType",
             "ContentSubmoduleTypeForResponse",
             "ContentSubmodulePropLinksType",
             "ContentSubmodulePropLinksTypeForResponse",
         ),
-        ".group_0417": (
+        ".group_0416": (
             "FileCommitType",
             "FileCommitTypeForResponse",
             "FileCommitPropContentType",
@@ -25250,7 +25148,7 @@ else:
             "FileCommitPropCommitPropVerificationType",
             "FileCommitPropCommitPropVerificationTypeForResponse",
         ),
-        ".group_0418": (
+        ".group_0417": (
             "RepositoryRuleViolationErrorType",
             "RepositoryRuleViolationErrorTypeForResponse",
             "RepositoryRuleViolationErrorPropMetadataType",
@@ -25260,25 +25158,25 @@ else:
             "RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsType",
             "RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsTypeForResponse",
         ),
-        ".group_0419": (
+        ".group_0418": (
             "ContributorType",
             "ContributorTypeForResponse",
         ),
-        ".group_0420": (
+        ".group_0419": (
             "DependabotAlertType",
             "DependabotAlertTypeForResponse",
         ),
-        ".group_0421": (
+        ".group_0420": (
             "DependabotAlertPropDependencyType",
             "DependabotAlertPropDependencyTypeForResponse",
         ),
-        ".group_0422": (
+        ".group_0421": (
             "DependencyGraphDiffItemsType",
             "DependencyGraphDiffItemsTypeForResponse",
             "DependencyGraphDiffItemsPropVulnerabilitiesItemsType",
             "DependencyGraphDiffItemsPropVulnerabilitiesItemsTypeForResponse",
         ),
-        ".group_0423": (
+        ".group_0422": (
             "DependencyGraphSpdxSbomType",
             "DependencyGraphSpdxSbomTypeForResponse",
             "DependencyGraphSpdxSbomPropSbomType",
@@ -25292,15 +25190,15 @@ else:
             "DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsType",
             "DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsTypeForResponse",
         ),
-        ".group_0424": (
+        ".group_0423": (
             "MetadataType",
             "MetadataTypeForResponse",
         ),
-        ".group_0425": (
+        ".group_0424": (
             "DependencyType",
             "DependencyTypeForResponse",
         ),
-        ".group_0426": (
+        ".group_0425": (
             "ManifestType",
             "ManifestTypeForResponse",
             "ManifestPropFileType",
@@ -25308,7 +25206,7 @@ else:
             "ManifestPropResolvedType",
             "ManifestPropResolvedTypeForResponse",
         ),
-        ".group_0427": (
+        ".group_0426": (
             "SnapshotType",
             "SnapshotTypeForResponse",
             "SnapshotPropJobType",
@@ -25318,15 +25216,15 @@ else:
             "SnapshotPropManifestsType",
             "SnapshotPropManifestsTypeForResponse",
         ),
-        ".group_0428": (
+        ".group_0427": (
             "DeploymentStatusType",
             "DeploymentStatusTypeForResponse",
         ),
-        ".group_0429": (
+        ".group_0428": (
             "DeploymentBranchPolicySettingsType",
             "DeploymentBranchPolicySettingsTypeForResponse",
         ),
-        ".group_0430": (
+        ".group_0429": (
             "EnvironmentType",
             "EnvironmentTypeForResponse",
             "EnvironmentPropProtectionRulesItemsAnyof0Type",
@@ -25336,41 +25234,41 @@ else:
             "ReposOwnerRepoEnvironmentsGetResponse200Type",
             "ReposOwnerRepoEnvironmentsGetResponse200TypeForResponse",
         ),
-        ".group_0431": (
+        ".group_0430": (
             "EnvironmentPropProtectionRulesItemsAnyof1Type",
             "EnvironmentPropProtectionRulesItemsAnyof1TypeForResponse",
         ),
-        ".group_0432": (
+        ".group_0431": (
             "EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType",
             "EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsTypeForResponse",
         ),
-        ".group_0433": (
+        ".group_0432": (
             "DeploymentBranchPolicyNamePatternWithTypeType",
             "DeploymentBranchPolicyNamePatternWithTypeTypeForResponse",
         ),
-        ".group_0434": (
+        ".group_0433": (
             "DeploymentBranchPolicyNamePatternType",
             "DeploymentBranchPolicyNamePatternTypeForResponse",
         ),
-        ".group_0435": (
+        ".group_0434": (
             "CustomDeploymentRuleAppType",
             "CustomDeploymentRuleAppTypeForResponse",
         ),
-        ".group_0436": (
+        ".group_0435": (
             "DeploymentProtectionRuleType",
             "DeploymentProtectionRuleTypeForResponse",
             "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type",
             "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200TypeForResponse",
         ),
-        ".group_0437": (
+        ".group_0436": (
             "ShortBlobType",
             "ShortBlobTypeForResponse",
         ),
-        ".group_0438": (
+        ".group_0437": (
             "BlobType",
             "BlobTypeForResponse",
         ),
-        ".group_0439": (
+        ".group_0438": (
             "GitCommitType",
             "GitCommitTypeForResponse",
             "GitCommitPropAuthorType",
@@ -25384,13 +25282,13 @@ else:
             "GitCommitPropVerificationType",
             "GitCommitPropVerificationTypeForResponse",
         ),
-        ".group_0440": (
+        ".group_0439": (
             "GitRefType",
             "GitRefTypeForResponse",
             "GitRefPropObjectType",
             "GitRefPropObjectTypeForResponse",
         ),
-        ".group_0441": (
+        ".group_0440": (
             "GitTagType",
             "GitTagTypeForResponse",
             "GitTagPropTaggerType",
@@ -25398,41 +25296,45 @@ else:
             "GitTagPropObjectType",
             "GitTagPropObjectTypeForResponse",
         ),
-        ".group_0442": (
+        ".group_0441": (
             "GitTreeType",
             "GitTreeTypeForResponse",
             "GitTreePropTreeItemsType",
             "GitTreePropTreeItemsTypeForResponse",
         ),
-        ".group_0443": (
+        ".group_0442": (
             "RepositoryHashAlgorithmType",
             "RepositoryHashAlgorithmTypeForResponse",
         ),
-        ".group_0444": (
+        ".group_0443": (
             "HookResponseType",
             "HookResponseTypeForResponse",
         ),
-        ".group_0445": (
+        ".group_0444": (
             "HookType",
             "HookTypeForResponse",
         ),
-        ".group_0446": (
+        ".group_0445": (
             "CheckImmutableReleasesType",
             "CheckImmutableReleasesTypeForResponse",
         ),
-        ".group_0447": (
+        ".group_0446": (
             "ImportType",
             "ImportTypeForResponse",
             "ImportPropProjectChoicesItemsType",
             "ImportPropProjectChoicesItemsTypeForResponse",
         ),
-        ".group_0448": (
+        ".group_0447": (
             "PorterAuthorType",
             "PorterAuthorTypeForResponse",
         ),
-        ".group_0449": (
+        ".group_0448": (
             "PorterLargeFileType",
             "PorterLargeFileTypeForResponse",
+        ),
+        ".group_0449": (
+            "InteractionLimitPullRequestBypassListType",
+            "InteractionLimitPullRequestBypassListTypeForResponse",
         ),
         ".group_0450": (
             "IssueEventType",

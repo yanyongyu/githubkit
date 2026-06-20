@@ -15,7 +15,7 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0137 import CodespaceMachineType, CodespaceMachineTypeForResponse
-from .group_0192 import FullRepositoryType, FullRepositoryTypeForResponse
+from .group_0191 import FullRepositoryType, FullRepositoryTypeForResponse
 
 
 class CodespaceWithFullRepositoryType(TypedDict):

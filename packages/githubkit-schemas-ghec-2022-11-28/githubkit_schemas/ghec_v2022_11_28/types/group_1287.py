@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0248 import (
+from .group_0247 import (
     OrganizationCustomRepositoryRoleType,
     OrganizationCustomRepositoryRoleTypeForResponse,
 )

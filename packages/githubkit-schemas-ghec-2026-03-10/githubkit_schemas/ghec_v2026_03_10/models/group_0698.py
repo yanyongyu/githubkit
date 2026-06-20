@@ -13,7 +13,7 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0204 import Discussion
+from .group_0203 import Discussion
 from .group_0578 import RepositoryWebhooks
 
 

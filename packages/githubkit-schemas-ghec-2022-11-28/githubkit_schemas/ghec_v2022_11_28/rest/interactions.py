@@ -31,13 +31,16 @@ if TYPE_CHECKING:
         InteractionLimitResponse,
         OrgsOrgInteractionLimitsGetResponse200Anyof1,
         ReposOwnerRepoInteractionLimitsGetResponse200Anyof1,
+        SimpleUser,
         UserInteractionLimitsGetResponse200Anyof1,
     )
     from ..types import (
+        InteractionLimitPullRequestBypassListType,
         InteractionLimitResponseTypeForResponse,
         InteractionLimitType,
         OrgsOrgInteractionLimitsGetResponse200Anyof1TypeForResponse,
         ReposOwnerRepoInteractionLimitsGetResponse200Anyof1TypeForResponse,
+        SimpleUserTypeForResponse,
         UserInteractionLimitsGetResponse200Anyof1TypeForResponse,
     )
 
@@ -643,6 +646,400 @@ class InteractionsClient:
             headers=exclude_unset(headers),
             stream=stream,
             error_models={},
+        )
+
+    def get_pull_request_bypass_list_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
+        """interactions/get-pull-request-bypass-list-for-repo
+
+        GET /repos/{owner}/{repo}/interaction-limits/pulls/bypass-list
+
+        Lists the users that are on the pull request creation cap bypass list for a
+        repository. Users on this list can create pull requests regardless of any
+        configured pull request creation cap.
+
+        Only repository admins can view the bypass list.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/interactions/repos#get-pull-request-creation-cap-bypass-list-for-a-repository
+        """
+
+        from ..models import BasicError, SimpleUser
+
+        url = f"/repos/{owner}/{repo}/interaction-limits/pulls/bypass-list"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[SimpleUser],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_pull_request_bypass_list_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
+        """interactions/get-pull-request-bypass-list-for-repo
+
+        GET /repos/{owner}/{repo}/interaction-limits/pulls/bypass-list
+
+        Lists the users that are on the pull request creation cap bypass list for a
+        repository. Users on this list can create pull requests regardless of any
+        configured pull request creation cap.
+
+        Only repository admins can view the bypass list.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/interactions/repos#get-pull-request-creation-cap-bypass-list-for-a-repository
+        """
+
+        from ..models import BasicError, SimpleUser
+
+        url = f"/repos/{owner}/{repo}/interaction-limits/pulls/bypass-list"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[SimpleUser],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def set_pull_request_bypass_list_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: InteractionLimitPullRequestBypassListType,
+    ) -> Response: ...
+
+    @overload
+    def set_pull_request_bypass_list_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        users: list[str],
+    ) -> Response: ...
+
+    def set_pull_request_bypass_list_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[InteractionLimitPullRequestBypassListType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """interactions/set-pull-request-bypass-list-for-repo
+
+        PUT /repos/{owner}/{repo}/interaction-limits/pulls/bypass-list
+
+        Adds users to the pull request creation cap bypass list for a repository.
+        Users on this list can create pull requests regardless of any configured
+        pull request creation cap.
+
+        Only repository admins can modify the bypass list.
+        You can add a maximum of 100 users per request.
+        The bypass list can only hold a maximum of 100 users.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/interactions/repos#add-users-to-the-pull-request-creation-cap-bypass-list-for-a-repository
+        """
+
+        from ..models import (
+            BasicError,
+            InteractionLimitPullRequestBypassList,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/interaction-limits/pulls/bypass-list"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(InteractionLimitPullRequestBypassList, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    async def async_set_pull_request_bypass_list_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: InteractionLimitPullRequestBypassListType,
+    ) -> Response: ...
+
+    @overload
+    async def async_set_pull_request_bypass_list_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        users: list[str],
+    ) -> Response: ...
+
+    async def async_set_pull_request_bypass_list_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[InteractionLimitPullRequestBypassListType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """interactions/set-pull-request-bypass-list-for-repo
+
+        PUT /repos/{owner}/{repo}/interaction-limits/pulls/bypass-list
+
+        Adds users to the pull request creation cap bypass list for a repository.
+        Users on this list can create pull requests regardless of any configured
+        pull request creation cap.
+
+        Only repository admins can modify the bypass list.
+        You can add a maximum of 100 users per request.
+        The bypass list can only hold a maximum of 100 users.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/interactions/repos#add-users-to-the-pull-request-creation-cap-bypass-list-for-a-repository
+        """
+
+        from ..models import (
+            BasicError,
+            InteractionLimitPullRequestBypassList,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/interaction-limits/pulls/bypass-list"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(InteractionLimitPullRequestBypassList, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    def remove_pull_request_bypass_list_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: InteractionLimitPullRequestBypassListType,
+    ) -> Response: ...
+
+    @overload
+    def remove_pull_request_bypass_list_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        users: list[str],
+    ) -> Response: ...
+
+    def remove_pull_request_bypass_list_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[InteractionLimitPullRequestBypassListType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """interactions/remove-pull-request-bypass-list-for-repo
+
+        DELETE /repos/{owner}/{repo}/interaction-limits/pulls/bypass-list
+
+        Removes users from the pull request creation cap bypass list for a repository.
+        Removed users will be subject to any configured pull request creation cap.
+
+        Only repository admins can modify the bypass list.
+        You can remove a maximum of 100 users per request.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/interactions/repos#remove-users-from-the-pull-request-creation-cap-bypass-list-for-a-repository
+        """
+
+        from ..models import (
+            BasicError,
+            InteractionLimitPullRequestBypassList,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/interaction-limits/pulls/bypass-list"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(InteractionLimitPullRequestBypassList, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "DELETE",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    async def async_remove_pull_request_bypass_list_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: InteractionLimitPullRequestBypassListType,
+    ) -> Response: ...
+
+    @overload
+    async def async_remove_pull_request_bypass_list_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        users: list[str],
+    ) -> Response: ...
+
+    async def async_remove_pull_request_bypass_list_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[InteractionLimitPullRequestBypassListType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """interactions/remove-pull-request-bypass-list-for-repo
+
+        DELETE /repos/{owner}/{repo}/interaction-limits/pulls/bypass-list
+
+        Removes users from the pull request creation cap bypass list for a repository.
+        Removed users will be subject to any configured pull request creation cap.
+
+        Only repository admins can modify the bypass list.
+        You can remove a maximum of 100 users per request.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/interactions/repos#remove-users-from-the-pull-request-creation-cap-bypass-list-for-a-repository
+        """
+
+        from ..models import (
+            BasicError,
+            InteractionLimitPullRequestBypassList,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/interaction-limits/pulls/bypass-list"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(InteractionLimitPullRequestBypassList, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
         )
 
     def get_restrictions_for_authenticated_user(

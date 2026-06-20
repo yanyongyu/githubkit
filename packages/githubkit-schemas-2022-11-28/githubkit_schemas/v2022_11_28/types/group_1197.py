@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0274 import JobType, JobTypeForResponse
+from .group_0273 import JobType, JobTypeForResponse
 
 
 class ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Type(TypedDict):

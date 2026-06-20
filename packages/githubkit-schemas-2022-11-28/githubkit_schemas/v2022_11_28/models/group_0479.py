@@ -19,7 +19,7 @@ from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0090 import MinimalRepository
-from .group_0299 import GitUser
+from .group_0298 import GitUser
 from .group_0477 import SearchResultTextMatchesItems
 from .group_0480 import CommitSearchResultItemPropCommit
 

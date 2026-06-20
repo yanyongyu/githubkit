@@ -10,40 +10,32 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
 
+class Autolink(GitHubModel):
+    """Autolink reference
 
-class Activity(GitHubModel):
-    """Activity
-
-    Activity
+    An autolink reference.
     """
 
     id: int = Field()
-    node_id: str = Field()
-    before: str = Field(description="The SHA of the commit before the activity.")
-    after: str = Field(description="The SHA of the commit after the activity.")
-    ref: str = Field(
-        description="The full Git reference, formatted as `refs/heads/<branch name>`."
+    key_prefix: str = Field(description="The prefix of a key that is linkified.")
+    url_template: str = Field(
+        description="A template for the target URL that is generated if a key was found."
     )
-    timestamp: _dt.datetime = Field(description="The time when the activity occurred.")
-    activity_type: Literal[
-        "push",
-        "force_push",
-        "branch_deletion",
-        "branch_creation",
-        "pr_merge",
-        "merge_queue_merge",
-    ] = Field(description="The type of the activity that was performed.")
-    actor: Union[None, SimpleUser] = Field()
+    is_alphanumeric: bool = Field(
+        description="Whether this autolink reference matches alphanumeric characters. If false, this autolink reference only matches numeric characters."
+    )
+    updated_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
 
 
-model_rebuild(Activity)
+model_rebuild(Autolink)
 
-__all__ = ("Activity",)
+__all__ = ("Autolink",)

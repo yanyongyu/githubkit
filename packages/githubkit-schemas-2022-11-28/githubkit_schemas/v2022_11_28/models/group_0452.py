@@ -17,7 +17,7 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0234 import RepositoryRuleCopilotCodeReviewPropParameters
+from .group_0233 import RepositoryRuleCopilotCodeReviewPropParameters
 
 
 class RepositoryRuleDetailedOneof17(GitHubModel):

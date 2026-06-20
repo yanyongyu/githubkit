@@ -9,82 +9,84 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Any, TypeAlias, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0235 import GistSimplePropForkOfType, GistSimplePropForkOfTypeForResponse
 
 
-class GistSimpleType(TypedDict):
-    """Gist Simple
+class GistSimplePropForkOfType(TypedDict):
+    """Gist
 
-    Gist Simple
+    Gist
     """
 
-    fork_of: NotRequired[Union[GistSimplePropForkOfType, None]]
-    url: NotRequired[str]
-    forks_url: NotRequired[str]
-    commits_url: NotRequired[str]
-    id: NotRequired[str]
-    node_id: NotRequired[str]
-    git_pull_url: NotRequired[str]
-    git_push_url: NotRequired[str]
-    html_url: NotRequired[str]
-    files: NotRequired[GistSimplePropFilesType]
-    public: NotRequired[bool]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    comments: NotRequired[int]
+    url: str
+    forks_url: str
+    commits_url: str
+    id: str
+    node_id: str
+    git_pull_url: str
+    git_push_url: str
+    html_url: str
+    files: GistSimplePropForkOfPropFilesType
+    public: bool
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    description: Union[str, None]
+    comments: int
     comments_enabled: NotRequired[bool]
-    user: NotRequired[Union[str, None]]
-    comments_url: NotRequired[str]
-    owner: NotRequired[SimpleUserType]
+    user: Union[None, SimpleUserType]
+    comments_url: str
+    owner: NotRequired[Union[None, SimpleUserType]]
     truncated: NotRequired[bool]
+    forks: NotRequired[list[Any]]
+    history: NotRequired[list[Any]]
 
 
-class GistSimpleTypeForResponse(TypedDict):
-    """Gist Simple
+class GistSimplePropForkOfTypeForResponse(TypedDict):
+    """Gist
 
-    Gist Simple
+    Gist
     """
 
-    fork_of: NotRequired[Union[GistSimplePropForkOfTypeForResponse, None]]
-    url: NotRequired[str]
-    forks_url: NotRequired[str]
-    commits_url: NotRequired[str]
-    id: NotRequired[str]
-    node_id: NotRequired[str]
-    git_pull_url: NotRequired[str]
-    git_push_url: NotRequired[str]
-    html_url: NotRequired[str]
-    files: NotRequired[GistSimplePropFilesTypeForResponse]
-    public: NotRequired[bool]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    comments: NotRequired[int]
+    url: str
+    forks_url: str
+    commits_url: str
+    id: str
+    node_id: str
+    git_pull_url: str
+    git_push_url: str
+    html_url: str
+    files: GistSimplePropForkOfPropFilesTypeForResponse
+    public: bool
+    created_at: str
+    updated_at: str
+    description: Union[str, None]
+    comments: int
     comments_enabled: NotRequired[bool]
-    user: NotRequired[Union[str, None]]
-    comments_url: NotRequired[str]
-    owner: NotRequired[SimpleUserTypeForResponse]
+    user: Union[None, SimpleUserTypeForResponse]
+    comments_url: str
+    owner: NotRequired[Union[None, SimpleUserTypeForResponse]]
     truncated: NotRequired[bool]
+    forks: NotRequired[list[Any]]
+    history: NotRequired[list[Any]]
 
 
-GistSimplePropFilesType: TypeAlias = dict[str, Any]
-"""GistSimplePropFiles
+GistSimplePropForkOfPropFilesType: TypeAlias = dict[str, Any]
+"""GistSimplePropForkOfPropFiles
 """
 
 
-GistSimplePropFilesTypeForResponse: TypeAlias = dict[str, Any]
-"""GistSimplePropFiles
+GistSimplePropForkOfPropFilesTypeForResponse: TypeAlias = dict[str, Any]
+"""GistSimplePropForkOfPropFiles
 """
 
 
 __all__ = (
-    "GistSimplePropFilesType",
-    "GistSimplePropFilesTypeForResponse",
-    "GistSimpleType",
-    "GistSimpleTypeForResponse",
+    "GistSimplePropForkOfPropFilesType",
+    "GistSimplePropForkOfPropFilesTypeForResponse",
+    "GistSimplePropForkOfType",
+    "GistSimplePropForkOfTypeForResponse",
 )

@@ -13,7 +13,7 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0349 import SimpleCommit
+from .group_0348 import SimpleCommit
 
 
 class MergeGroup(GitHubModel):

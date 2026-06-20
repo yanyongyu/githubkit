@@ -10,42 +10,35 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ActionsCacheList(GitHubModel):
-    """Repository actions caches
+class ConcurrencyGroupList(GitHubModel):
+    """Concurrency Group List
 
-    Repository actions caches
+    A list of active concurrency groups for a repository.
     """
 
-    total_count: int = Field(description="Total number of caches")
-    actions_caches: list[ActionsCacheListPropActionsCachesItems] = Field(
-        description="Array of caches"
-    )
+    total_count: int = Field()
+    concurrency_groups: list[ConcurrencyGroupListPropConcurrencyGroupsItems] = Field()
 
 
-class ActionsCacheListPropActionsCachesItems(GitHubModel):
-    """ActionsCacheListPropActionsCachesItems"""
+class ConcurrencyGroupListPropConcurrencyGroupsItems(GitHubModel):
+    """ConcurrencyGroupListPropConcurrencyGroupsItems"""
 
-    id: Missing[int] = Field(default=UNSET)
-    ref: Missing[str] = Field(default=UNSET)
-    key: Missing[str] = Field(default=UNSET)
-    version: Missing[str] = Field(default=UNSET)
-    last_accessed_at: Missing[_dt.datetime] = Field(default=UNSET)
-    created_at: Missing[_dt.datetime] = Field(default=UNSET)
-    size_in_bytes: Missing[int] = Field(default=UNSET)
+    group_name: str = Field(description="The name of the concurrency group.")
+    group_url: str = Field(description="API URL for this concurrency group.")
+    last_acquired_at: Union[_dt.datetime, None] = Field()
 
 
-model_rebuild(ActionsCacheList)
-model_rebuild(ActionsCacheListPropActionsCachesItems)
+model_rebuild(ConcurrencyGroupList)
+model_rebuild(ConcurrencyGroupListPropConcurrencyGroupsItems)
 
 __all__ = (
-    "ActionsCacheList",
-    "ActionsCacheListPropActionsCachesItems",
+    "ConcurrencyGroupList",
+    "ConcurrencyGroupListPropConcurrencyGroupsItems",
 )

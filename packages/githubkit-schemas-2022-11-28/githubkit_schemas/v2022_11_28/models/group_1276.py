@@ -17,7 +17,7 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0368 import DeploymentBranchPolicySettings
+from .group_0367 import DeploymentBranchPolicySettings
 
 
 class ReposOwnerRepoEnvironmentsEnvironmentNamePutBody(GitHubModel):

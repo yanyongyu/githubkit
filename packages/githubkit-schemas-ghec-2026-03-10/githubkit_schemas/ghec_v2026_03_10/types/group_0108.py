@@ -13,23 +13,41 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationCustomPropertyAllof1Type(TypedDict):
-    """OrganizationCustomPropertyAllof1"""
+class OrganizationCustomPropertyPayloadType(TypedDict):
+    """Organization Custom Property Payload
 
+    Payload for creating or updating an organization custom property definition on
+    an enterprise.
+    """
+
+    value_type: Literal["string", "single_select", "multi_select", "true_false", "url"]
+    required: NotRequired[bool]
+    default_value: NotRequired[Union[str, list[str], None]]
+    description: NotRequired[Union[str, None]]
+    allowed_values: NotRequired[Union[list[str], None]]
     values_editable_by: NotRequired[
         Union[None, Literal["enterprise_actors", "enterprise_and_org_actors"]]
     ]
 
 
-class OrganizationCustomPropertyAllof1TypeForResponse(TypedDict):
-    """OrganizationCustomPropertyAllof1"""
+class OrganizationCustomPropertyPayloadTypeForResponse(TypedDict):
+    """Organization Custom Property Payload
 
+    Payload for creating or updating an organization custom property definition on
+    an enterprise.
+    """
+
+    value_type: Literal["string", "single_select", "multi_select", "true_false", "url"]
+    required: NotRequired[bool]
+    default_value: NotRequired[Union[str, list[str], None]]
+    description: NotRequired[Union[str, None]]
+    allowed_values: NotRequired[Union[list[str], None]]
     values_editable_by: NotRequired[
         Union[None, Literal["enterprise_actors", "enterprise_and_org_actors"]]
     ]
 
 
 __all__ = (
-    "OrganizationCustomPropertyAllof1Type",
-    "OrganizationCustomPropertyAllof1TypeForResponse",
+    "OrganizationCustomPropertyPayloadType",
+    "OrganizationCustomPropertyPayloadTypeForResponse",
 )

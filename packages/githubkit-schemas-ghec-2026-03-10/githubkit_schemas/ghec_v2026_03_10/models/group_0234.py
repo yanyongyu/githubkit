@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Any, Union
 
 from pydantic import Field
 
@@ -18,49 +19,45 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0235 import GistSimplePropForkOf
 
 
-class GistSimple(GitHubModel):
-    """Gist Simple
+class GistSimplePropForkOf(GitHubModel):
+    """Gist
 
-    Gist Simple
+    Gist
     """
 
-    fork_of: Missing[Union[GistSimplePropForkOf, None]] = Field(
-        default=UNSET, title="Gist", description="Gist"
-    )
-    url: Missing[str] = Field(default=UNSET)
-    forks_url: Missing[str] = Field(default=UNSET)
-    commits_url: Missing[str] = Field(default=UNSET)
-    id: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    git_pull_url: Missing[str] = Field(default=UNSET)
-    git_push_url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    files: Missing[GistSimplePropFiles] = Field(default=UNSET)
-    public: Missing[bool] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
-    updated_at: Missing[str] = Field(default=UNSET)
-    description: Missing[Union[str, None]] = Field(default=UNSET)
-    comments: Missing[int] = Field(default=UNSET)
+    url: str = Field()
+    forks_url: str = Field()
+    commits_url: str = Field()
+    id: str = Field()
+    node_id: str = Field()
+    git_pull_url: str = Field()
+    git_push_url: str = Field()
+    html_url: str = Field()
+    files: GistSimplePropForkOfPropFiles = Field()
+    public: bool = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    description: Union[str, None] = Field()
+    comments: int = Field()
     comments_enabled: Missing[bool] = Field(default=UNSET)
-    user: Missing[Union[str, None]] = Field(default=UNSET)
-    comments_url: Missing[str] = Field(default=UNSET)
-    owner: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
+    user: Union[None, SimpleUser] = Field()
+    comments_url: str = Field()
+    owner: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
     truncated: Missing[bool] = Field(default=UNSET)
+    forks: Missing[list[Any]] = Field(default=UNSET)
+    history: Missing[list[Any]] = Field(default=UNSET)
 
 
-class GistSimplePropFiles(ExtraGitHubModel):
-    """GistSimplePropFiles"""
+class GistSimplePropForkOfPropFiles(ExtraGitHubModel):
+    """GistSimplePropForkOfPropFiles"""
 
 
-model_rebuild(GistSimple)
-model_rebuild(GistSimplePropFiles)
+model_rebuild(GistSimplePropForkOf)
+model_rebuild(GistSimplePropForkOfPropFiles)
 
 __all__ = (
-    "GistSimple",
-    "GistSimplePropFiles",
+    "GistSimplePropForkOf",
+    "GistSimplePropForkOfPropFiles",
 )

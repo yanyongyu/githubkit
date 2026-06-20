@@ -9,81 +9,96 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class RuleSuiteRequiredStatusChecksType(TypedDict):
-    """Required status checks rule suite metadata
+class RuleSuiteType(TypedDict):
+    """Rule Suite
 
-    Metadata for a required status checks rule evaluation result.
+    Response
     """
 
-    checks: NotRequired[list[RuleSuiteRequiredStatusChecksPropChecksItemsType]]
+    id: NotRequired[int]
+    actor_id: NotRequired[Union[int, None]]
+    actor_name: NotRequired[Union[str, None]]
+    before_sha: NotRequired[str]
+    after_sha: NotRequired[str]
+    ref: NotRequired[str]
+    repository_id: NotRequired[int]
+    repository_name: NotRequired[str]
+    pushed_at: NotRequired[_dt.datetime]
+    result: NotRequired[Literal["pass", "fail", "bypass"]]
+    evaluation_result: NotRequired[Union[None, Literal["pass", "fail", "bypass"]]]
+    rule_evaluations: NotRequired[list[RuleSuitePropRuleEvaluationsItemsType]]
 
 
-class RuleSuiteRequiredStatusChecksTypeForResponse(TypedDict):
-    """Required status checks rule suite metadata
+class RuleSuiteTypeForResponse(TypedDict):
+    """Rule Suite
 
-    Metadata for a required status checks rule evaluation result.
+    Response
     """
 
-    checks: NotRequired[
-        list[RuleSuiteRequiredStatusChecksPropChecksItemsTypeForResponse]
+    id: NotRequired[int]
+    actor_id: NotRequired[Union[int, None]]
+    actor_name: NotRequired[Union[str, None]]
+    before_sha: NotRequired[str]
+    after_sha: NotRequired[str]
+    ref: NotRequired[str]
+    repository_id: NotRequired[int]
+    repository_name: NotRequired[str]
+    pushed_at: NotRequired[str]
+    result: NotRequired[Literal["pass", "fail", "bypass"]]
+    evaluation_result: NotRequired[Union[None, Literal["pass", "fail", "bypass"]]]
+    rule_evaluations: NotRequired[
+        list[RuleSuitePropRuleEvaluationsItemsTypeForResponse]
     ]
 
 
-class RuleSuiteRequiredStatusChecksPropChecksItemsType(TypedDict):
-    """RuleSuiteRequiredStatusChecksPropChecksItems"""
+class RuleSuitePropRuleEvaluationsItemsType(TypedDict):
+    """RuleSuitePropRuleEvaluationsItems"""
 
-    id: NotRequired[int]
-    context: NotRequired[str]
-    state: NotRequired[str]
+    rule_source: NotRequired[RuleSuitePropRuleEvaluationsItemsPropRuleSourceType]
+    enforcement: NotRequired[Literal["active", "evaluate", "deleted ruleset"]]
+    result: NotRequired[Literal["pass", "fail"]]
+    rule_type: NotRequired[str]
+    details: NotRequired[Union[str, None]]
+
+
+class RuleSuitePropRuleEvaluationsItemsTypeForResponse(TypedDict):
+    """RuleSuitePropRuleEvaluationsItems"""
+
+    rule_source: NotRequired[
+        RuleSuitePropRuleEvaluationsItemsPropRuleSourceTypeForResponse
+    ]
+    enforcement: NotRequired[Literal["active", "evaluate", "deleted ruleset"]]
+    result: NotRequired[Literal["pass", "fail"]]
+    rule_type: NotRequired[str]
+    details: NotRequired[Union[str, None]]
+
+
+class RuleSuitePropRuleEvaluationsItemsPropRuleSourceType(TypedDict):
+    """RuleSuitePropRuleEvaluationsItemsPropRuleSource"""
+
     type: NotRequired[str]
-    app: NotRequired[
-        Union[RuleSuiteRequiredStatusChecksPropChecksItemsPropAppType, None]
-    ]
+    id: NotRequired[Union[int, None]]
+    name: NotRequired[Union[str, None]]
 
 
-class RuleSuiteRequiredStatusChecksPropChecksItemsTypeForResponse(TypedDict):
-    """RuleSuiteRequiredStatusChecksPropChecksItems"""
+class RuleSuitePropRuleEvaluationsItemsPropRuleSourceTypeForResponse(TypedDict):
+    """RuleSuitePropRuleEvaluationsItemsPropRuleSource"""
 
-    id: NotRequired[int]
-    context: NotRequired[str]
-    state: NotRequired[str]
     type: NotRequired[str]
-    app: NotRequired[
-        Union[RuleSuiteRequiredStatusChecksPropChecksItemsPropAppTypeForResponse, None]
-    ]
-
-
-class RuleSuiteRequiredStatusChecksPropChecksItemsPropAppType(TypedDict):
-    """RuleSuiteRequiredStatusChecksPropChecksItemsPropApp
-
-    The GitHub App associated with the status check.
-    """
-
-    id: NotRequired[int]
-    slug: NotRequired[str]
-    name: NotRequired[str]
-
-
-class RuleSuiteRequiredStatusChecksPropChecksItemsPropAppTypeForResponse(TypedDict):
-    """RuleSuiteRequiredStatusChecksPropChecksItemsPropApp
-
-    The GitHub App associated with the status check.
-    """
-
-    id: NotRequired[int]
-    slug: NotRequired[str]
-    name: NotRequired[str]
+    id: NotRequired[Union[int, None]]
+    name: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "RuleSuiteRequiredStatusChecksPropChecksItemsPropAppType",
-    "RuleSuiteRequiredStatusChecksPropChecksItemsPropAppTypeForResponse",
-    "RuleSuiteRequiredStatusChecksPropChecksItemsType",
-    "RuleSuiteRequiredStatusChecksPropChecksItemsTypeForResponse",
-    "RuleSuiteRequiredStatusChecksType",
-    "RuleSuiteRequiredStatusChecksTypeForResponse",
+    "RuleSuitePropRuleEvaluationsItemsPropRuleSourceType",
+    "RuleSuitePropRuleEvaluationsItemsPropRuleSourceTypeForResponse",
+    "RuleSuitePropRuleEvaluationsItemsType",
+    "RuleSuitePropRuleEvaluationsItemsTypeForResponse",
+    "RuleSuiteType",
+    "RuleSuiteTypeForResponse",
 )

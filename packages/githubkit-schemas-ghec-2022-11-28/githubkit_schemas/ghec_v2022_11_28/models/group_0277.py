@@ -16,47 +16,30 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ExternalGroup(GitHubModel):
-    """ExternalGroup
+class ExternalGroups(GitHubModel):
+    """ExternalGroups
 
-    Information about an external group's usage and its members
+    A list of external groups available to be connected to a team
     """
 
+    groups: Missing[list[ExternalGroupsPropGroupsItems]] = Field(
+        default=UNSET,
+        description="An array of external groups available to be mapped to a team",
+    )
+
+
+class ExternalGroupsPropGroupsItems(GitHubModel):
+    """ExternalGroupsPropGroupsItems"""
+
     group_id: int = Field(description="The internal ID of the group")
-    group_name: str = Field(description="The display name for the group")
-    updated_at: Missing[str] = Field(
-        default=UNSET, description="The date when the group was last updated_at"
-    )
-    teams: list[ExternalGroupPropTeamsItems] = Field(
-        description="An array of teams linked to this group"
-    )
-    members: list[ExternalGroupPropMembersItems] = Field(
-        description="An array of external members linked to this group"
-    )
+    group_name: str = Field(description="The display name of the group")
+    updated_at: str = Field(description="The time of the last update for this group")
 
 
-class ExternalGroupPropTeamsItems(GitHubModel):
-    """ExternalGroupPropTeamsItems"""
-
-    team_id: int = Field(description="The id for a team")
-    team_name: str = Field(description="The name of the team")
-
-
-class ExternalGroupPropMembersItems(GitHubModel):
-    """ExternalGroupPropMembersItems"""
-
-    member_id: int = Field(description="The internal user ID of the identity")
-    member_login: str = Field(description="The handle/login for the user")
-    member_name: str = Field(description="The user display name/profile name")
-    member_email: str = Field(description="An email attached to a user")
-
-
-model_rebuild(ExternalGroup)
-model_rebuild(ExternalGroupPropTeamsItems)
-model_rebuild(ExternalGroupPropMembersItems)
+model_rebuild(ExternalGroups)
+model_rebuild(ExternalGroupsPropGroupsItems)
 
 __all__ = (
-    "ExternalGroup",
-    "ExternalGroupPropMembersItems",
-    "ExternalGroupPropTeamsItems",
+    "ExternalGroups",
+    "ExternalGroupsPropGroupsItems",
 )

@@ -9,31 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ImmutableReleasesOrganizationSettingsType(TypedDict):
-    """Check immutable releases organization settings
+class NetworkSettingsType(TypedDict):
+    """Hosted compute network settings resource
 
-    Check immutable releases settings for an organization.
+    A hosted compute network settings resource.
     """
 
-    enforced_repositories: Literal["all", "none", "selected"]
-    selected_repositories_url: NotRequired[str]
+    id: str
+    network_configuration_id: NotRequired[str]
+    name: str
+    subnet_id: str
+    region: str
 
 
-class ImmutableReleasesOrganizationSettingsTypeForResponse(TypedDict):
-    """Check immutable releases organization settings
+class NetworkSettingsTypeForResponse(TypedDict):
+    """Hosted compute network settings resource
 
-    Check immutable releases settings for an organization.
+    A hosted compute network settings resource.
     """
 
-    enforced_repositories: Literal["all", "none", "selected"]
-    selected_repositories_url: NotRequired[str]
+    id: str
+    network_configuration_id: NotRequired[str]
+    name: str
+    subnet_id: str
+    region: str
 
 
 __all__ = (
-    "ImmutableReleasesOrganizationSettingsType",
-    "ImmutableReleasesOrganizationSettingsTypeForResponse",
+    "NetworkSettingsType",
+    "NetworkSettingsTypeForResponse",
 )

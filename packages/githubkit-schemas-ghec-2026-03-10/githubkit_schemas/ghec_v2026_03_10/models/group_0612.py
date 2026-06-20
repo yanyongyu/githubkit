@@ -20,8 +20,8 @@ from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0084 import TeamSimple
-from .group_0205 import Milestone
-from .group_0309 import AutoMerge
+from .group_0204 import Milestone
+from .group_0308 import AutoMerge
 from .group_0486 import PullRequestPropLabelsItems
 from .group_0487 import PullRequestPropBase, PullRequestPropHead
 from .group_0488 import PullRequestPropLinks

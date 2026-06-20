@@ -30,8 +30,9 @@ class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyType(TypedDict):
         "user",
     ]
     budget_entity_name: NotRequired[str]
-    budget_type: Literal["ProductPricing", "SkuPricing"]
+    budget_type: Literal["BundlePricing", "ProductPricing", "SkuPricing"]
     budget_product_sku: NotRequired[str]
+    user: NotRequired[str]
 
 
 class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyTypeForResponse(TypedDict):
@@ -49,8 +50,9 @@ class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyTypeForResponse(TypedDi
         "user",
     ]
     budget_entity_name: NotRequired[str]
-    budget_type: Literal["ProductPricing", "SkuPricing"]
+    budget_type: Literal["BundlePricing", "ProductPricing", "SkuPricing"]
     budget_product_sku: NotRequired[str]
+    user: NotRequired[str]
 
 
 class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingType(

@@ -18,8 +18,11 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CustomPropertyBase(GitHubModel):
-    """CustomPropertyBase"""
+class OrganizationCustomProperty(GitHubModel):
+    """Custom Property for Organization
+
+    Custom property defined for an organization
+    """
 
     property_name: Missing[str] = Field(
         default=UNSET, description="The name of the property"
@@ -47,8 +50,11 @@ class CustomPropertyBase(GitHubModel):
         default=UNSET,
         description="An ordered list of the allowed values of the property.\nThe property can have up to 200 allowed values.",
     )
+    values_editable_by: Missing[
+        Union[None, Literal["enterprise_actors", "enterprise_and_org_actors"]]
+    ] = Field(default=UNSET, description="Who can edit the values of the property")
 
 
-model_rebuild(CustomPropertyBase)
+model_rebuild(OrganizationCustomProperty)
 
-__all__ = ("CustomPropertyBase",)
+__all__ = ("OrganizationCustomProperty",)

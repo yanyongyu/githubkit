@@ -41,12 +41,19 @@ class OrganizationsOrgSettingsBillingBudgetsPostBody(GitHubModel):
     budget_entity_name: Missing[str] = Field(
         default=UNSET, description="The name of the entity to apply the budget to"
     )
-    budget_type: Missing[Literal["ProductPricing", "SkuPricing"]] = Field(
-        default=UNSET, description="The type of pricing for the budget"
+    budget_type: Missing[Literal["BundlePricing", "ProductPricing", "SkuPricing"]] = (
+        Field(
+            default=UNSET,
+            description="The type of pricing model used by the budget. Determines how `budget_product_sku` is interpreted.\n\n- `BundlePricing`: Covers all AI credit SKUs. Set `budget_product_sku` to `ai_credits`.\n- `ProductPricing`: Covers all SKUs that belong to a product. Set `budget_product_sku` to a product such as `actions` or `packages`.\n- `SkuPricing`: Covers a single, specific SKU. Set `budget_product_sku` to a SKU such as `actions_linux`.",
+        )
     )
     budget_product_sku: Missing[str] = Field(
         default=UNSET,
         description="A single product or SKU that will be covered in the budget",
+    )
+    user: Missing[str] = Field(
+        default=UNSET,
+        description="The username of the user for `user` scope budgets. This field is required when `budget_scope` is `user`.",
     )
 
 

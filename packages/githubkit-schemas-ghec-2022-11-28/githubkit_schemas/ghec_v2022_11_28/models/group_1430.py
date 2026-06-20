@@ -39,7 +39,7 @@ class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1(GitHubModel):
         description="An optional comment associated with dismissing the alert.",
     )
     assignees: list[str] = Field(
-        description="Usernames to assign to this Dependabot Alert.\nPass one or more user logins to _replace_ the set of assignees on this alert.\nSend an empty array (`[]`) to clear all assignees from the alert."
+        description="Usernames to assign to this Dependabot Alert.\nPass one or more user logins to _replace_ the set of assignees on this alert.\nSend an empty array (`[]`) to clear all assignees from the alert.\nTo assign an AI agent, include the bot login (for example, `copilot-swe-agent[bot]`)."
     )
 
 

@@ -18,8 +18,8 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0297 import GitUser
-from .group_0298 import Verification
+from .group_0296 import GitUser
+from .group_0297 import Verification
 
 
 class CommitSearchResultItemPropCommit(GitHubModel):

@@ -17,33 +17,25 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0092 import DependabotAlertPackage
+from .group_0076 import SimpleRepository
 
 
-class DependabotAlertWithRepositoryPropDependency(GitHubModel):
-    """DependabotAlertWithRepositoryPropDependency
+class DependabotRepositoryAccessDetails(GitHubModel):
+    """Dependabot Repository Access Details
 
-    Details for the vulnerable dependency.
+    Information about repositories that Dependabot is able to access in an
+    organization
     """
 
-    package: Missing[DependabotAlertPackage] = Field(
-        default=UNSET, description="Details for the vulnerable package."
-    )
-    manifest_path: Missing[str] = Field(
+    default_level: Missing[Union[None, Literal["public", "internal"]]] = Field(
         default=UNSET,
-        description="The full path to the dependency manifest file, relative to the root of the repository.",
+        description="The default repository access level for Dependabot updates.",
     )
-    scope: Missing[Union[None, Literal["development", "runtime"]]] = Field(
-        default=UNSET, description="The execution scope of the vulnerable dependency."
-    )
-    relationship: Missing[
-        Union[None, Literal["unknown", "direct", "transitive", "inconclusive"]]
-    ] = Field(
-        default=UNSET,
-        description='The vulnerable dependency\'s relationship to your project.\n\n> [!NOTE]\n> We are rolling out support for dependency relationship across ecosystems. This value will be "unknown" for all dependencies in unsupported ecosystems.\n',
+    accessible_repositories: Missing[list[Union[None, SimpleRepository]]] = Field(
+        default=UNSET
     )
 
 
-model_rebuild(DependabotAlertWithRepositoryPropDependency)
+model_rebuild(DependabotRepositoryAccessDetails)
 
-__all__ = ("DependabotAlertWithRepositoryPropDependency",)
+__all__ = ("DependabotRepositoryAccessDetails",)

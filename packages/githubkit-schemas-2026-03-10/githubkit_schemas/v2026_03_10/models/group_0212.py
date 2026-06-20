@@ -9,19 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class RepositoryRuleRequiredDeploymentsPropParameters(GitHubModel):
-    """RepositoryRuleRequiredDeploymentsPropParameters"""
+class RepositoryRuleParamsDismissalRestriction(GitHubModel):
+    """DismissalRestriction
 
-    required_deployment_environments: list[str] = Field(
-        description="The environments that must be successfully deployed to before branches can be merged."
+    Specify people, teams, or apps allowed to dismiss pull request reviews.
+    """
+
+    allowed_actors: Missing[list[RepositoryRuleParamsActor]] = Field(
+        default=UNSET,
+        description="Specify people, teams, or apps allowed to dismiss pull request reviews.",
+    )
+    enabled: bool = Field(
+        description="Whether to restrict review dismissal to specific actors."
     )
 
 
-model_rebuild(RepositoryRuleRequiredDeploymentsPropParameters)
+class RepositoryRuleParamsActor(GitHubModel):
+    """Actor
 
-__all__ = ("RepositoryRuleRequiredDeploymentsPropParameters",)
+    An actor allowed to dismiss pull request reviews
+    """
+
+    id: int = Field(description="ID of the actor that can dismiss reviews.")
+    type: Literal["User", "Team", "IntegrationInstallation", "RepositoryRole"] = Field(
+        description="The type of the actor"
+    )
+
+
+model_rebuild(RepositoryRuleParamsDismissalRestriction)
+model_rebuild(RepositoryRuleParamsActor)
+
+__all__ = (
+    "RepositoryRuleParamsActor",
+    "RepositoryRuleParamsDismissalRestriction",
+)

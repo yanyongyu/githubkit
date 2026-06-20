@@ -13,8 +13,8 @@ import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0299 import GitUserType, GitUserTypeForResponse
-from .group_0300 import VerificationType, VerificationTypeForResponse
+from .group_0298 import GitUserType, GitUserTypeForResponse
+from .group_0299 import VerificationType, VerificationTypeForResponse
 
 
 class CommitSearchResultItemPropCommitType(TypedDict):

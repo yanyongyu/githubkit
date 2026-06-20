@@ -17,7 +17,7 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0230 import RepositoryRuleWorkflowsPropParameters
+from .group_0229 import RepositoryRuleWorkflowsPropParameters
 
 
 class RepositoryRuleDetailedOneof15(GitHubModel):

@@ -14,7 +14,7 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0204 import DiscussionType, DiscussionTypeForResponse
+from .group_0203 import DiscussionType, DiscussionTypeForResponse
 from .group_0576 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
 from .group_0577 import SimpleInstallationType, SimpleInstallationTypeForResponse
 from .group_0578 import (

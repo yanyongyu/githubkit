@@ -9,35 +9,88 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class InteractionLimitType(TypedDict):
-    """Interaction Restrictions
+class IssueFieldType(TypedDict):
+    """Issue Field
 
-    Limit interactions to a specific type of user for a specified duration
+    A custom attribute defined at the organization level for attaching structured
+    data to issues.
     """
 
-    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
-    expiry: NotRequired[
-        Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
-    ]
+    id: int
+    node_id: str
+    name: str
+    description: NotRequired[Union[str, None]]
+    data_type: Literal["text", "date", "single_select", "multi_select", "number"]
+    visibility: NotRequired[Literal["organization_members_only", "all"]]
+    options: NotRequired[Union[list[IssueFieldPropOptionsItemsType], None]]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
 
 
-class InteractionLimitTypeForResponse(TypedDict):
-    """Interaction Restrictions
+class IssueFieldTypeForResponse(TypedDict):
+    """Issue Field
 
-    Limit interactions to a specific type of user for a specified duration
+    A custom attribute defined at the organization level for attaching structured
+    data to issues.
     """
 
-    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
-    expiry: NotRequired[
-        Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
+    id: int
+    node_id: str
+    name: str
+    description: NotRequired[Union[str, None]]
+    data_type: Literal["text", "date", "single_select", "multi_select", "number"]
+    visibility: NotRequired[Literal["organization_members_only", "all"]]
+    options: NotRequired[Union[list[IssueFieldPropOptionsItemsTypeForResponse], None]]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+
+
+class IssueFieldPropOptionsItemsType(TypedDict):
+    """IssueFieldPropOptionsItems"""
+
+    id: int
+    name: str
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[
+        Union[
+            None,
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+        ]
     ]
+    priority: NotRequired[Union[int, None]]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
+
+
+class IssueFieldPropOptionsItemsTypeForResponse(TypedDict):
+    """IssueFieldPropOptionsItems"""
+
+    id: int
+    name: str
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[
+        Union[
+            None,
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+        ]
+    ]
+    priority: NotRequired[Union[int, None]]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
 
 
 __all__ = (
-    "InteractionLimitType",
-    "InteractionLimitTypeForResponse",
+    "IssueFieldPropOptionsItemsType",
+    "IssueFieldPropOptionsItemsTypeForResponse",
+    "IssueFieldType",
+    "IssueFieldTypeForResponse",
 )

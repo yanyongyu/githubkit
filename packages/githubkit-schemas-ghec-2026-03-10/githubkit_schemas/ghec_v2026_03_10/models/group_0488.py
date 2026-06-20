@@ -13,7 +13,7 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0308 import Link
+from .group_0307 import Link
 
 
 class PullRequestPropLinks(GitHubModel):

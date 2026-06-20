@@ -20,7 +20,7 @@ from githubkit.utils import UNSET
 
 from .group_0010 import Integration
 from .group_0058 import PullRequestMinimal
-from .group_0308 import DeploymentSimple
+from .group_0307 import DeploymentSimple
 from .group_0508 import SimpleCheckSuite
 
 

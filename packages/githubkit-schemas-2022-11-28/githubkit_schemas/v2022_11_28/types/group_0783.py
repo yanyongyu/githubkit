@@ -13,7 +13,7 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0383 import HookResponseType, HookResponseTypeForResponse
+from .group_0382 import HookResponseType, HookResponseTypeForResponse
 
 
 class WebhookPingPropHookType(TypedDict):
