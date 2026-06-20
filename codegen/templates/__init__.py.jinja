@@ -1,3 +1,7 @@
 {% from "header.jinja" import header %}
 
 """{{ header() }}"""
+
+# ensure the main package is imported
+# so the lazy hooks are registered
+import githubkit  # noqa: F401
