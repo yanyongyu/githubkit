@@ -9,52 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0503 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0504 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0505 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0506 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0574 import (
-    WebhookCodeScanningAlertFixedPropAlertType,
-    WebhookCodeScanningAlertFixedPropAlertTypeForResponse,
-)
+from typing_extensions import TypedDict
 
 
-class WebhookCodeScanningAlertFixedType(TypedDict):
-    """code_scanning_alert fixed event"""
+class WebhookCheckRunRequestedActionFormEncodedType(TypedDict):
+    """Check Run Requested Action Event
 
-    action: Literal["fixed"]
-    alert: WebhookCodeScanningAlertFixedPropAlertType
-    commit_oid: str
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    ref: str
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    The check_run.requested_action webhook encoded with URL encoding
+    """
+
+    payload: str
 
 
-class WebhookCodeScanningAlertFixedTypeForResponse(TypedDict):
-    """code_scanning_alert fixed event"""
+class WebhookCheckRunRequestedActionFormEncodedTypeForResponse(TypedDict):
+    """Check Run Requested Action Event
 
-    action: Literal["fixed"]
-    alert: WebhookCodeScanningAlertFixedPropAlertTypeForResponse
-    commit_oid: str
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    ref: str
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    The check_run.requested_action webhook encoded with URL encoding
+    """
+
+    payload: str
 
 
 __all__ = (
-    "WebhookCodeScanningAlertFixedType",
-    "WebhookCodeScanningAlertFixedTypeForResponse",
+    "WebhookCheckRunRequestedActionFormEncodedType",
+    "WebhookCheckRunRequestedActionFormEncodedTypeForResponse",
 )

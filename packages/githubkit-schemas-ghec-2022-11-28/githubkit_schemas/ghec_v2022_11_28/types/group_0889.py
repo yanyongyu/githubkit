@@ -13,41 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0577 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0578 import (
+from .group_0588 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0589 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0590 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0611 import (
-    WebhooksProjectChangesType,
-    WebhooksProjectChangesTypeForResponse,
-)
-from .group_0612 import ProjectsV2ItemType, ProjectsV2ItemTypeForResponse
+from .group_0591 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0622 import WebhooksProjectColumnType, WebhooksProjectColumnTypeForResponse
 
 
-class WebhookProjectsV2ItemArchivedType(TypedDict):
-    """Projects v2 Item Archived Event"""
+class WebhookProjectColumnCreatedType(TypedDict):
+    """project_column created event"""
 
-    action: Literal["archived"]
-    changes: WebhooksProjectChangesType
+    action: Literal["created"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
-    projects_v2_item: ProjectsV2ItemType
-    sender: SimpleUserType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    project_column: WebhooksProjectColumnType
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookProjectsV2ItemArchivedTypeForResponse(TypedDict):
-    """Projects v2 Item Archived Event"""
+class WebhookProjectColumnCreatedTypeForResponse(TypedDict):
+    """project_column created event"""
 
-    action: Literal["archived"]
-    changes: WebhooksProjectChangesTypeForResponse
+    action: Literal["created"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: OrganizationSimpleWebhooksTypeForResponse
-    projects_v2_item: ProjectsV2ItemTypeForResponse
-    sender: SimpleUserTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    project_column: WebhooksProjectColumnTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookProjectsV2ItemArchivedType",
-    "WebhookProjectsV2ItemArchivedTypeForResponse",
+    "WebhookProjectColumnCreatedType",
+    "WebhookProjectColumnCreatedTypeForResponse",
 )

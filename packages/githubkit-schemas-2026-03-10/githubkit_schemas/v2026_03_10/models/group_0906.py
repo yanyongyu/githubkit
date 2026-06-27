@@ -18,21 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0502 import EnterpriseWebhooks
-from .group_0503 import SimpleInstallation
-from .group_0504 import OrganizationSimpleWebhooks
-from .group_0505 import RepositoryWebhooks
-from .group_0547 import WebhooksSponsorship
+from .group_0514 import EnterpriseWebhooks
+from .group_0515 import SimpleInstallation
+from .group_0516 import OrganizationSimpleWebhooks
+from .group_0517 import RepositoryWebhooks
+from .group_0557 import SecretScanningAlertWebhook
 
 
-class WebhookSponsorshipPendingCancellation(GitHubModel):
-    """sponsorship pending_cancellation event"""
+class WebhookSecretScanningAlertValidated(GitHubModel):
+    """secret_scanning_alert validated event"""
 
-    action: Literal["pending_cancellation"] = Field()
-    effective_date: Missing[str] = Field(
-        default=UNSET,
-        description="The `pending_cancellation` and `pending_tier_change` event types will include the date the cancellation or tier change will take effect.",
-    )
+    action: Literal["validated"] = Field()
+    alert: SecretScanningAlertWebhook = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -48,15 +45,15 @@ class WebhookSponsorshipPendingCancellation(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
+    repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    sponsorship: WebhooksSponsorship = Field()
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
 
 
-model_rebuild(WebhookSponsorshipPendingCancellation)
+model_rebuild(WebhookSecretScanningAlertValidated)
 
-__all__ = ("WebhookSponsorshipPendingCancellation",)
+__all__ = ("WebhookSecretScanningAlertValidated",)

@@ -686,6 +686,18 @@ if TYPE_CHECKING or is_lazy_disabled():
         CodeownersErrorsPropErrorsItems as CodeownersErrorsPropErrorsItems,
     )
     from githubkit_schemas.v2026_03_10.models import (
+        CodeQualityFinding as CodeQualityFinding,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        CodeQualityFindingLocation as CodeQualityFindingLocation,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        CodeQualityFindingMessage as CodeQualityFindingMessage,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        CodeQualityFindingRule as CodeQualityFindingRule,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
         CodeQualitySetup as CodeQualitySetup,
     )
     from githubkit_schemas.v2026_03_10.models import (
@@ -1478,6 +1490,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         IssueCommentEvent as IssueCommentEvent,
     )
     from githubkit_schemas.v2026_03_10.models import (
+        IssueCommentMinimized as IssueCommentMinimized,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
         IssueDependenciesSummary as IssueDependenciesSummary,
     )
     from githubkit_schemas.v2026_03_10.models import IssueEvent as IssueEvent
@@ -1511,6 +1526,10 @@ if TYPE_CHECKING or is_lazy_disabled():
     from githubkit_schemas.v2026_03_10.models import (
         IssuePropPullRequest as IssuePropPullRequest,
     )
+    from githubkit_schemas.v2026_03_10.models import IssueReference as IssueReference
+    from githubkit_schemas.v2026_03_10.models import (
+        IssueReferencePropIssueType as IssueReferencePropIssueType,
+    )
     from githubkit_schemas.v2026_03_10.models import (
         IssueSearchResultItem as IssueSearchResultItem,
     )
@@ -1522,6 +1541,18 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.models import IssuesEvent as IssuesEvent
     from githubkit_schemas.v2026_03_10.models import IssueType as IssueType
+    from githubkit_schemas.v2026_03_10.models import (
+        IssueTypeAddedIssueEvent as IssueTypeAddedIssueEvent,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        IssueTypeChangedIssueEvent as IssueTypeChangedIssueEvent,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        IssueTypeRemovedIssueEvent as IssueTypeRemovedIssueEvent,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        IssueTypeWebhook as IssueTypeWebhook,
+    )
     from githubkit_schemas.v2026_03_10.models import Job as Job
     from githubkit_schemas.v2026_03_10.models import (
         JobPropStepsItems as JobPropStepsItems,
@@ -2342,6 +2373,12 @@ if TYPE_CHECKING or is_lazy_disabled():
         PagesHttpsCertificate as PagesHttpsCertificate,
     )
     from githubkit_schemas.v2026_03_10.models import PagesSourceHash as PagesSourceHash
+    from githubkit_schemas.v2026_03_10.models import (
+        ParentIssueAddedIssueEvent as ParentIssueAddedIssueEvent,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        ParentIssueRemovedIssueEvent as ParentIssueRemovedIssueEvent,
+    )
     from githubkit_schemas.v2026_03_10.models import (
         ParticipationStats as ParticipationStats,
     )
@@ -3582,10 +3619,19 @@ if TYPE_CHECKING or is_lazy_disabled():
         ReposOwnerRepoIssuesIssueNumberPatchBody as ReposOwnerRepoIssuesIssueNumberPatchBody,
     )
     from githubkit_schemas.v2026_03_10.models import (
+        ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1 as ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems as ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems,
     )
     from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1 as ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        ReposOwnerRepoIssuesIssueNumberPatchResponse200 as ReposOwnerRepoIssuesIssueNumberPatchResponse200,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1 as ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1,
     )
     from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoIssuesIssueNumberReactionsPostBody as ReposOwnerRepoIssuesIssueNumberReactionsPostBody,
@@ -4093,6 +4139,12 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.models import (
         StatusCheckPolicyPropChecksItems as StatusCheckPolicyPropChecksItems,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        SubIssueAddedIssueEvent as SubIssueAddedIssueEvent,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        SubIssueRemovedIssueEvent as SubIssueRemovedIssueEvent,
     )
     from githubkit_schemas.v2026_03_10.models import (
         SubIssuesSummary as SubIssuesSummary,
@@ -11005,6 +11057,7 @@ else:
             "SubIssuesSummary",
             "IssueDependenciesSummary",
             "PinnedIssueComment",
+            "IssueCommentMinimized",
             "IssueComment",
             "IssueFieldValue",
             "IssueFieldValuePropSingleSelectOption",
@@ -11486,6 +11539,10 @@ else:
             "CheckSuitePreference",
             "CheckSuitePreferencePropPreferences",
             "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems",
+            "CodeQualityFinding",
+            "CodeQualityFindingRule",
+            "CodeQualityFindingLocation",
+            "CodeQualityFindingMessage",
             "CodeQualitySetup",
             "CodeQualitySetupUpdateAnyof0",
             "CodeQualitySetupUpdateAnyof1",
@@ -11617,6 +11674,9 @@ else:
             "PorterAuthor",
             "PorterLargeFile",
             "InteractionLimitPullRequestBypassList",
+            "IssueTypeWebhook",
+            "IssueReference",
+            "IssueReferencePropIssueType",
             "IssueEvent",
             "IssueEventLabel",
             "IssueEventDismissedReview",
@@ -11648,6 +11708,13 @@ else:
             "RemovedFromProjectIssueEventPropProjectCard",
             "ConvertedNoteToIssueIssueEvent",
             "ConvertedNoteToIssueIssueEventPropProjectCard",
+            "IssueTypeAddedIssueEvent",
+            "IssueTypeRemovedIssueEvent",
+            "IssueTypeChangedIssueEvent",
+            "SubIssueAddedIssueEvent",
+            "SubIssueRemovedIssueEvent",
+            "ParentIssueAddedIssueEvent",
+            "ParentIssueRemovedIssueEvent",
             "TimelineCommentEvent",
             "TimelineCrossReferencedEvent",
             "TimelineCrossReferencedEventPropSource",
@@ -14541,7 +14608,10 @@ else:
             "ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody",
             "ReposOwnerRepoIssuesIssueNumberPatchBody",
             "ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1",
+            "ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1",
             "ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems",
+            "ReposOwnerRepoIssuesIssueNumberPatchResponse200",
+            "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1",
             "ReposOwnerRepoIssuesIssueNumberAssigneesPostBody",
             "ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody",
             "ReposOwnerRepoIssuesIssueNumberCommentsPostBody",

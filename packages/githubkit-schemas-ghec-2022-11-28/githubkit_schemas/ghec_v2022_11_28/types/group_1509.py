@@ -12,21 +12,19 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200Type(TypedDict):
-    """ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200"""
+class ReposOwnerRepoMergeUpstreamPostBodyType(TypedDict):
+    """ReposOwnerRepoMergeUpstreamPostBody"""
 
-    enabled: bool
+    branch: str
 
 
-class ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200"""
+class ReposOwnerRepoMergeUpstreamPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoMergeUpstreamPostBody"""
 
-    enabled: bool
+    branch: str
 
 
 __all__ = (
-    "ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200Type",
-    "ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200TypeForResponse",
+    "ReposOwnerRepoMergeUpstreamPostBodyType",
+    "ReposOwnerRepoMergeUpstreamPostBodyTypeForResponse",
 )

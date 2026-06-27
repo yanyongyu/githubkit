@@ -32,10 +32,25 @@ class UpdateBudgetPropBudget(GitHubModel):
 
     id: Missing[str] = Field(default=UNSET, description="ID of the budget.")
     budget_scope: Missing[
-        Literal["enterprise", "organization", "repository", "cost_center"]
+        Literal[
+            "enterprise",
+            "organization",
+            "repository",
+            "cost_center",
+            "multi_user_customer",
+            "user",
+        ]
     ] = Field(default=UNSET, description="The type of scope for the budget")
     budget_entity_name: Missing[str] = Field(
         default=UNSET, description="The name of the entity to apply the budget to"
+    )
+    user: Missing[str] = Field(
+        default=UNSET,
+        description="The user login when the budget is scoped to a single user (`user` scope).",
+    )
+    consumed_amount: Missing[float] = Field(
+        default=UNSET,
+        description="The consumed amount for the specified user within the budget. Only included for `user`-scoped budgets.",
     )
     budget_amount: Missing[int] = Field(
         default=UNSET,

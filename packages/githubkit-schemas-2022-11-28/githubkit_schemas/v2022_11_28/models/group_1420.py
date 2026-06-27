@@ -12,18 +12,22 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0143 import CopilotSpaceResource
 
+class UserSshSigningKeysPostBody(GitHubModel):
+    """UserSshSigningKeysPostBody"""
 
-class UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200(GitHubModel):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200"""
-
-    resources: list[CopilotSpaceResource] = Field(
-        description="The list of resources attached to this Copilot Space."
+    title: Missing[str] = Field(
+        default=UNSET, description="A descriptive name for the new key."
+    )
+    key: str = Field(
+        pattern="^ssh-(rsa|dss|ed25519) |^ecdsa-sha2-nistp(256|384|521) |^(sk-ssh-ed25519|sk-ecdsa-sha2-nistp256)@openssh.com ",
+        description='The public SSH key to add to your GitHub account. For more information, see "[Checking for existing SSH keys](https://docs.github.com/authentication/connecting-to-github-with-ssh/checking-for-existing-ssh-keys)."',
     )
 
 
-model_rebuild(UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200)
+model_rebuild(UserSshSigningKeysPostBody)
 
-__all__ = ("UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200",)
+__all__ = ("UserSshSigningKeysPostBody",)

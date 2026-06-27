@@ -13,41 +13,38 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0503 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0504 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0505 import (
+from .group_0188 import CustomPropertyType, CustomPropertyTypeForResponse
+from .group_0515 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0516 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0517 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0506 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0510 import WebhooksDeployKeyType, WebhooksDeployKeyTypeForResponse
 
 
-class WebhookDeployKeyCreatedType(TypedDict):
-    """deploy_key created event"""
+class WebhookCustomPropertyPromotedToEnterpriseType(TypedDict):
+    """custom property promoted to business event"""
 
-    action: Literal["created"]
+    action: Literal["promote_to_enterprise"]
+    definition: CustomPropertyType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    key: WebhooksDeployKeyType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookDeployKeyCreatedTypeForResponse(TypedDict):
-    """deploy_key created event"""
+class WebhookCustomPropertyPromotedToEnterpriseTypeForResponse(TypedDict):
+    """custom property promoted to business event"""
 
-    action: Literal["created"]
+    action: Literal["promote_to_enterprise"]
+    definition: CustomPropertyTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    key: WebhooksDeployKeyTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookDeployKeyCreatedType",
-    "WebhookDeployKeyCreatedTypeForResponse",
+    "WebhookCustomPropertyPromotedToEnterpriseType",
+    "WebhookCustomPropertyPromotedToEnterpriseTypeForResponse",
 )

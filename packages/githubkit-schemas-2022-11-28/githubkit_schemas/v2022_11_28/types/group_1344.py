@@ -13,23 +13,27 @@ from typing import Literal
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType(TypedDict):
-    """ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody"""
+class ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type(TypedDict):
+    """ReposOwnerRepoPagesPutBodyPropSourceAnyof1
 
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ]
+    Update the source for the repository. Must include the branch name and path.
+    """
+
+    branch: str
+    path: Literal["/", "/docs"]
 
 
-class ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody"""
+class ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse(TypedDict):
+    """ReposOwnerRepoPagesPutBodyPropSourceAnyof1
 
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ]
+    Update the source for the repository. Must include the branch name and path.
+    """
+
+    branch: str
+    path: Literal["/", "/docs"]
 
 
 __all__ = (
-    "ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType",
-    "ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyTypeForResponse",
+    "ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type",
+    "ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse",
 )

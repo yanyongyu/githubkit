@@ -9,34 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0472 import TrafficType, TrafficTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class CloneTrafficType(TypedDict):
-    """Clone Traffic
+class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1Type(TypedDict):
+    """SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1"""
 
-    Clone Traffic
-    """
-
-    count: int
-    uniques: int
-    clones: list[TrafficType]
+    pattern_name: NotRequired[str]
+    pattern_scope: NotRequired[str]
 
 
-class CloneTrafficTypeForResponse(TypedDict):
-    """Clone Traffic
+class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1TypeForResponse(
+    TypedDict
+):
+    """SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1"""
 
-    Clone Traffic
-    """
-
-    count: int
-    uniques: int
-    clones: list[TrafficTypeForResponse]
+    pattern_name: NotRequired[str]
+    pattern_scope: NotRequired[str]
 
 
 __all__ = (
-    "CloneTrafficType",
-    "CloneTrafficTypeForResponse",
+    "SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1Type",
+    "SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1TypeForResponse",
 )

@@ -12,20 +12,34 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0(
+class ReposOwnerRepoAttestationsSubjectDigestGetResponse200(GitHubModel):
+    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200"""
+
+    attestations: Missing[
+        list[ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems]
+    ] = Field(default=UNSET)
+
+
+class ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems(
     GitHubModel
 ):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0
+    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
 
-    Examples:
-        {'teams': ['my-team']}
-    """
-
-    teams: list[str] = Field(description="The slug values for teams")
+    repository_id: Missing[int] = Field(default=UNSET)
+    bundle_url: Missing[str] = Field(default=UNSET)
+    initiator: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0)
+model_rebuild(ReposOwnerRepoAttestationsSubjectDigestGetResponse200)
+model_rebuild(
+    ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems
+)
 
-__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0",)
+__all__ = (
+    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200",
+    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems",
+)

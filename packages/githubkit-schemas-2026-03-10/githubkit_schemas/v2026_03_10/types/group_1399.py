@@ -9,24 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0092 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
-class UserKeysPostBodyType(TypedDict):
-    """UserKeysPostBody"""
+class UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
+    """UserCodespacesSecretsSecretNameRepositoriesGetResponse200"""
 
-    title: NotRequired[str]
-    key: str
+    total_count: int
+    repositories: list[MinimalRepositoryType]
 
 
-class UserKeysPostBodyTypeForResponse(TypedDict):
-    """UserKeysPostBody"""
+class UserCodespacesSecretsSecretNameRepositoriesGetResponse200TypeForResponse(
+    TypedDict
+):
+    """UserCodespacesSecretsSecretNameRepositoriesGetResponse200"""
 
-    title: NotRequired[str]
-    key: str
+    total_count: int
+    repositories: list[MinimalRepositoryTypeForResponse]
 
 
 __all__ = (
-    "UserKeysPostBodyType",
-    "UserKeysPostBodyTypeForResponse",
+    "UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type",
+    "UserCodespacesSecretsSecretNameRepositoriesGetResponse200TypeForResponse",
 )

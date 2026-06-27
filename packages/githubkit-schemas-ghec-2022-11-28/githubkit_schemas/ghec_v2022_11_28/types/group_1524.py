@@ -9,63 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberReviewsPostBodyType(TypedDict):
-    """ReposOwnerRepoPullsPullNumberReviewsPostBody"""
+class ReposOwnerRepoPagesDeploymentsPostBodyType(TypedDict):
+    """ReposOwnerRepoPagesDeploymentsPostBody
 
-    commit_id: NotRequired[str]
-    body: NotRequired[str]
-    event: NotRequired[Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]]
-    comments: NotRequired[
-        list[ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsType]
-    ]
+    The object used to create GitHub Pages deployment
+    """
 
-
-class ReposOwnerRepoPullsPullNumberReviewsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoPullsPullNumberReviewsPostBody"""
-
-    commit_id: NotRequired[str]
-    body: NotRequired[str]
-    event: NotRequired[Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]]
-    comments: NotRequired[
-        list[
-            ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsTypeForResponse
-        ]
-    ]
+    artifact_id: NotRequired[int]
+    artifact_url: NotRequired[str]
+    environment: NotRequired[str]
+    pages_build_version: str
+    oidc_token: str
 
 
-class ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsType(TypedDict):
-    """ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems"""
+class ReposOwnerRepoPagesDeploymentsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPagesDeploymentsPostBody
 
-    path: str
-    position: NotRequired[int]
-    body: str
-    line: NotRequired[int]
-    side: NotRequired[str]
-    start_line: NotRequired[int]
-    start_side: NotRequired[str]
+    The object used to create GitHub Pages deployment
+    """
 
-
-class ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems"""
-
-    path: str
-    position: NotRequired[int]
-    body: str
-    line: NotRequired[int]
-    side: NotRequired[str]
-    start_line: NotRequired[int]
-    start_side: NotRequired[str]
+    artifact_id: NotRequired[int]
+    artifact_url: NotRequired[str]
+    environment: NotRequired[str]
+    pages_build_version: str
+    oidc_token: str
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsType",
-    "ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsTypeForResponse",
-    "ReposOwnerRepoPullsPullNumberReviewsPostBodyType",
-    "ReposOwnerRepoPullsPullNumberReviewsPostBodyTypeForResponse",
+    "ReposOwnerRepoPagesDeploymentsPostBodyType",
+    "ReposOwnerRepoPagesDeploymentsPostBodyTypeForResponse",
 )

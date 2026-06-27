@@ -13,16 +13,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0090 import MinimalRepository
+from .group_0123 import RunnerLabel
 
 
-class OrgsOrgAgentsSecretsSecretNameRepositoriesGetResponse200(GitHubModel):
-    """OrgsOrgAgentsSecretsSecretNameRepositoriesGetResponse200"""
+class OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200(GitHubModel):
+    """OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200"""
 
     total_count: int = Field()
-    repositories: list[MinimalRepository] = Field()
+    labels: list[RunnerLabel] = Field()
 
 
-model_rebuild(OrgsOrgAgentsSecretsSecretNameRepositoriesGetResponse200)
+model_rebuild(OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200)
 
-__all__ = ("OrgsOrgAgentsSecretsSecretNameRepositoriesGetResponse200",)
+__all__ = ("OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200",)

@@ -1,13 +1,13 @@
 [project]
 name = "GitHubKit-schemas-ghec-2026-03-10"
-version = "26.6.20"
+version = "26.6.27"
 description = "GitHub Schemas for GitHubKit"
 authors = [{ name = "yanyongyu", email = "yyy@yyydl.top" }]
 license = "MIT"
 readme = "README.md"
 keywords = ["github", "octokit"]
 requires-python = ">=3.10, <4.0"
-dependencies = ["githubkit-schemas ==26.6.20"]
+dependencies = ["githubkit-schemas ==26.6.27"]
 
 [project.optional-dependencies]
 

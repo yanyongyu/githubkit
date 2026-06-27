@@ -9,40 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class SimpleInstallationType(TypedDict):
-    """Simple Installation
+class CodespaceExportDetailsType(TypedDict):
+    """Fetches information about an export of a codespace.
 
-    The GitHub App installation. Webhook payloads contain the `installation`
-    property when the event is configured
-    for and sent to a GitHub App. For more information,
-    see "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-
-    cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-
-    with-github-apps)."
+    An export of a codespace. Also, latest export details for a codespace can be
+    fetched with id = latest
     """
 
-    id: int
-    node_id: str
+    state: NotRequired[Union[str, None]]
+    completed_at: NotRequired[Union[_dt.datetime, None]]
+    branch: NotRequired[Union[str, None]]
+    sha: NotRequired[Union[str, None]]
+    id: NotRequired[str]
+    export_url: NotRequired[str]
+    html_url: NotRequired[Union[str, None]]
 
 
-class SimpleInstallationTypeForResponse(TypedDict):
-    """Simple Installation
+class CodespaceExportDetailsTypeForResponse(TypedDict):
+    """Fetches information about an export of a codespace.
 
-    The GitHub App installation. Webhook payloads contain the `installation`
-    property when the event is configured
-    for and sent to a GitHub App. For more information,
-    see "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-
-    cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-
-    with-github-apps)."
+    An export of a codespace. Also, latest export details for a codespace can be
+    fetched with id = latest
     """
 
-    id: int
-    node_id: str
+    state: NotRequired[Union[str, None]]
+    completed_at: NotRequired[Union[str, None]]
+    branch: NotRequired[Union[str, None]]
+    sha: NotRequired[Union[str, None]]
+    id: NotRequired[str]
+    export_url: NotRequired[str]
+    html_url: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "SimpleInstallationType",
-    "SimpleInstallationTypeForResponse",
+    "CodespaceExportDetailsType",
+    "CodespaceExportDetailsTypeForResponse",
 )

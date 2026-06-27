@@ -9,29 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0256 import (
-    OrganizationActionsVariableType,
-    OrganizationActionsVariableTypeForResponse,
-)
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsVariablesGetResponse200Type(TypedDict):
-    """OrgsOrgActionsVariablesGetResponse200"""
+class OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType(TypedDict):
+    """OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody"""
 
-    total_count: int
-    variables: list[OrganizationActionsVariableType]
+    name: str
+    visibility: NotRequired[Literal["selected", "all", "private"]]
+    allows_public_repositories: NotRequired[bool]
+    restricted_to_workflows: NotRequired[bool]
+    selected_workflows: NotRequired[list[str]]
+    network_configuration_id: NotRequired[Union[str, None]]
 
 
-class OrgsOrgActionsVariablesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsVariablesGetResponse200"""
+class OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody"""
 
-    total_count: int
-    variables: list[OrganizationActionsVariableTypeForResponse]
+    name: str
+    visibility: NotRequired[Literal["selected", "all", "private"]]
+    allows_public_repositories: NotRequired[bool]
+    restricted_to_workflows: NotRequired[bool]
+    selected_workflows: NotRequired[list[str]]
+    network_configuration_id: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "OrgsOrgActionsVariablesGetResponse200Type",
-    "OrgsOrgActionsVariablesGetResponse200TypeForResponse",
+    "OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType",
+    "OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyTypeForResponse",
 )

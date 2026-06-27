@@ -9,49 +9,81 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, Literal, TypeAlias, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class GistsPostBodyType(TypedDict):
-    """GistsPostBody"""
+class EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyType(TypedDict):
+    """EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBody"""
 
-    description: NotRequired[str]
-    files: GistsPostBodyPropFilesType
-    public: NotRequired[Union[bool, Literal["true", "false"]]]
-
-
-class GistsPostBodyTypeForResponse(TypedDict):
-    """GistsPostBody"""
-
-    description: NotRequired[str]
-    files: GistsPostBodyPropFilesTypeForResponse
-    public: NotRequired[Union[bool, Literal["true", "false"]]]
-
-
-GistsPostBodyPropFilesType: TypeAlias = dict[str, Any]
-"""GistsPostBodyPropFiles
-
-Names and content for the files that make up the gist
-
-Examples:
-    {'hello.rb': {'content': 'puts "Hello, World!"'}}
-"""
+    budget_amount: NotRequired[int]
+    prevent_further_usage: NotRequired[bool]
+    budget_alerting: NotRequired[
+        EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType
+    ]
+    budget_scope: NotRequired[
+        Literal[
+            "enterprise",
+            "organization",
+            "repository",
+            "cost_center",
+            "multi_user_customer",
+            "user",
+        ]
+    ]
+    budget_entity_name: NotRequired[str]
+    budget_type: NotRequired[Literal["BundlePricing", "ProductPricing", "SkuPricing"]]
+    budget_product_sku: NotRequired[str]
+    user: NotRequired[str]
 
 
-GistsPostBodyPropFilesTypeForResponse: TypeAlias = dict[str, Any]
-"""GistsPostBodyPropFiles
+class EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBody"""
 
-Names and content for the files that make up the gist
+    budget_amount: NotRequired[int]
+    prevent_further_usage: NotRequired[bool]
+    budget_alerting: NotRequired[
+        EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingTypeForResponse
+    ]
+    budget_scope: NotRequired[
+        Literal[
+            "enterprise",
+            "organization",
+            "repository",
+            "cost_center",
+            "multi_user_customer",
+            "user",
+        ]
+    ]
+    budget_entity_name: NotRequired[str]
+    budget_type: NotRequired[Literal["BundlePricing", "ProductPricing", "SkuPricing"]]
+    budget_product_sku: NotRequired[str]
+    user: NotRequired[str]
 
-Examples:
-    {'hello.rb': {'content': 'puts "Hello, World!"'}}
-"""
+
+class EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType(
+    TypedDict
+):
+    """EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting"""
+
+    will_alert: NotRequired[bool]
+    alert_recipients: NotRequired[list[str]]
+
+
+class EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting"""
+
+    will_alert: NotRequired[bool]
+    alert_recipients: NotRequired[list[str]]
 
 
 __all__ = (
-    "GistsPostBodyPropFilesType",
-    "GistsPostBodyPropFilesTypeForResponse",
-    "GistsPostBodyType",
-    "GistsPostBodyTypeForResponse",
+    "EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType",
+    "EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingTypeForResponse",
+    "EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyType",
+    "EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyTypeForResponse",
 )

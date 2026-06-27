@@ -12,35 +12,32 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0220 import (
-    RepositoryRuleCommitAuthorEmailPatternPropParametersType,
-    RepositoryRuleCommitAuthorEmailPatternPropParametersTypeForResponse,
-)
 
+class RepositoryRuleRulesetInfoType(TypedDict):
+    """repository ruleset data for rule
 
-class RepositoryRuleDetailedOneof11Type(TypedDict):
-    """RepositoryRuleDetailedOneof11"""
+    User-defined metadata to store domain-specific information limited to 8 keys
+    with scalar values.
+    """
 
-    type: Literal["commit_author_email_pattern"]
-    parameters: NotRequired[RepositoryRuleCommitAuthorEmailPatternPropParametersType]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
-class RepositoryRuleDetailedOneof11TypeForResponse(TypedDict):
-    """RepositoryRuleDetailedOneof11"""
+class RepositoryRuleRulesetInfoTypeForResponse(TypedDict):
+    """repository ruleset data for rule
 
-    type: Literal["commit_author_email_pattern"]
-    parameters: NotRequired[
-        RepositoryRuleCommitAuthorEmailPatternPropParametersTypeForResponse
-    ]
+    User-defined metadata to store domain-specific information limited to 8 keys
+    with scalar values.
+    """
+
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
 __all__ = (
-    "RepositoryRuleDetailedOneof11Type",
-    "RepositoryRuleDetailedOneof11TypeForResponse",
+    "RepositoryRuleRulesetInfoType",
+    "RepositoryRuleRulesetInfoTypeForResponse",
 )

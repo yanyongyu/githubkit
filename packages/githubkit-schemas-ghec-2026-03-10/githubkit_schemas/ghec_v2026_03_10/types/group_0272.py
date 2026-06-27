@@ -9,60 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class DismissalRequestResponseType(TypedDict):
-    """Dismissal request response
+class OrganizationCustomRepositoryRoleCreateSchemaType(TypedDict):
+    """OrganizationCustomRepositoryRoleCreateSchema"""
 
-    A response made by a requester to dismiss the request.
-    """
-
-    id: NotRequired[int]
-    reviewer: NotRequired[DismissalRequestResponsePropReviewerType]
-    message: NotRequired[Union[str, None]]
-    status: NotRequired[Literal["approved", "denied", "dismissed"]]
-    created_at: NotRequired[_dt.datetime]
+    name: str
+    description: NotRequired[Union[str, None]]
+    base_role: Literal["read", "triage", "write", "maintain"]
+    permissions: list[str]
 
 
-class DismissalRequestResponseTypeForResponse(TypedDict):
-    """Dismissal request response
+class OrganizationCustomRepositoryRoleCreateSchemaTypeForResponse(TypedDict):
+    """OrganizationCustomRepositoryRoleCreateSchema"""
 
-    A response made by a requester to dismiss the request.
-    """
-
-    id: NotRequired[int]
-    reviewer: NotRequired[DismissalRequestResponsePropReviewerTypeForResponse]
-    message: NotRequired[Union[str, None]]
-    status: NotRequired[Literal["approved", "denied", "dismissed"]]
-    created_at: NotRequired[str]
-
-
-class DismissalRequestResponsePropReviewerType(TypedDict):
-    """DismissalRequestResponsePropReviewer
-
-    The user who reviewed the dismissal request.
-    """
-
-    actor_id: NotRequired[int]
-    actor_name: NotRequired[str]
-
-
-class DismissalRequestResponsePropReviewerTypeForResponse(TypedDict):
-    """DismissalRequestResponsePropReviewer
-
-    The user who reviewed the dismissal request.
-    """
-
-    actor_id: NotRequired[int]
-    actor_name: NotRequired[str]
+    name: str
+    description: NotRequired[Union[str, None]]
+    base_role: Literal["read", "triage", "write", "maintain"]
+    permissions: list[str]
 
 
 __all__ = (
-    "DismissalRequestResponsePropReviewerType",
-    "DismissalRequestResponsePropReviewerTypeForResponse",
-    "DismissalRequestResponseType",
-    "DismissalRequestResponseTypeForResponse",
+    "OrganizationCustomRepositoryRoleCreateSchemaType",
+    "OrganizationCustomRepositoryRoleCreateSchemaTypeForResponse",
 )

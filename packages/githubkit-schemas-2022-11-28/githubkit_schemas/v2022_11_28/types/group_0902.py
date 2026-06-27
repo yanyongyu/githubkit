@@ -9,27 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0903 import (
-    WebhookSecurityAndAnalysisPropChangesPropFromType,
-    WebhookSecurityAndAnalysisPropChangesPropFromTypeForResponse,
-)
+from typing_extensions import TypedDict
 
 
-class WebhookSecurityAndAnalysisPropChangesType(TypedDict):
-    """WebhookSecurityAndAnalysisPropChanges"""
+class WebhookSecretScanningAlertLocationCreatedFormEncodedType(TypedDict):
+    """Secret Scanning Alert Location Created Event"""
 
-    from_: NotRequired[WebhookSecurityAndAnalysisPropChangesPropFromType]
+    payload: str
 
 
-class WebhookSecurityAndAnalysisPropChangesTypeForResponse(TypedDict):
-    """WebhookSecurityAndAnalysisPropChanges"""
+class WebhookSecretScanningAlertLocationCreatedFormEncodedTypeForResponse(TypedDict):
+    """Secret Scanning Alert Location Created Event"""
 
-    from_: NotRequired[WebhookSecurityAndAnalysisPropChangesPropFromTypeForResponse]
+    payload: str
 
 
 __all__ = (
-    "WebhookSecurityAndAnalysisPropChangesType",
-    "WebhookSecurityAndAnalysisPropChangesTypeForResponse",
+    "WebhookSecretScanningAlertLocationCreatedFormEncodedType",
+    "WebhookSecretScanningAlertLocationCreatedFormEncodedTypeForResponse",
 )

@@ -9,65 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class GetAllCostCentersType(TypedDict):
-    """GetAllCostCenters"""
+class GetBudgetUserStatesType(TypedDict):
+    """GetBudgetUserStates"""
 
-    cost_centers: NotRequired[list[GetAllCostCentersPropCostCentersItemsType]]
-
-
-class GetAllCostCentersTypeForResponse(TypedDict):
-    """GetAllCostCenters"""
-
-    cost_centers: NotRequired[
-        list[GetAllCostCentersPropCostCentersItemsTypeForResponse]
-    ]
+    user_states: list[GetBudgetUserStatesPropUserStatesItemsType]
+    has_next_page: bool
+    total_count: int
 
 
-class GetAllCostCentersPropCostCentersItemsType(TypedDict):
-    """GetAllCostCentersPropCostCentersItems"""
+class GetBudgetUserStatesTypeForResponse(TypedDict):
+    """GetBudgetUserStates"""
 
-    id: str
-    name: str
-    state: NotRequired[Literal["active", "deleted"]]
-    azure_subscription: NotRequired[Union[str, None]]
-    resources: list[GetAllCostCentersPropCostCentersItemsPropResourcesItemsType]
+    user_states: list[GetBudgetUserStatesPropUserStatesItemsTypeForResponse]
+    has_next_page: bool
+    total_count: int
 
 
-class GetAllCostCentersPropCostCentersItemsTypeForResponse(TypedDict):
-    """GetAllCostCentersPropCostCentersItems"""
+class GetBudgetUserStatesPropUserStatesItemsType(TypedDict):
+    """GetBudgetUserStatesPropUserStatesItems"""
 
-    id: str
-    name: str
-    state: NotRequired[Literal["active", "deleted"]]
-    azure_subscription: NotRequired[Union[str, None]]
-    resources: list[
-        GetAllCostCentersPropCostCentersItemsPropResourcesItemsTypeForResponse
-    ]
+    user: NotRequired[str]
+    consumed_amount: float
+    target_amount: float
+    override_budget_id: NotRequired[str]
 
 
-class GetAllCostCentersPropCostCentersItemsPropResourcesItemsType(TypedDict):
-    """GetAllCostCentersPropCostCentersItemsPropResourcesItems"""
+class GetBudgetUserStatesPropUserStatesItemsTypeForResponse(TypedDict):
+    """GetBudgetUserStatesPropUserStatesItems"""
 
-    type: str
-    name: str
-
-
-class GetAllCostCentersPropCostCentersItemsPropResourcesItemsTypeForResponse(TypedDict):
-    """GetAllCostCentersPropCostCentersItemsPropResourcesItems"""
-
-    type: str
-    name: str
+    user: NotRequired[str]
+    consumed_amount: float
+    target_amount: float
+    override_budget_id: NotRequired[str]
 
 
 __all__ = (
-    "GetAllCostCentersPropCostCentersItemsPropResourcesItemsType",
-    "GetAllCostCentersPropCostCentersItemsPropResourcesItemsTypeForResponse",
-    "GetAllCostCentersPropCostCentersItemsType",
-    "GetAllCostCentersPropCostCentersItemsTypeForResponse",
-    "GetAllCostCentersType",
-    "GetAllCostCentersTypeForResponse",
+    "GetBudgetUserStatesPropUserStatesItemsType",
+    "GetBudgetUserStatesPropUserStatesItemsTypeForResponse",
+    "GetBudgetUserStatesType",
+    "GetBudgetUserStatesTypeForResponse",
 )

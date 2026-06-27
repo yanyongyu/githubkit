@@ -12,33 +12,23 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPagesDeploymentsPostBodyType(TypedDict):
-    """ReposOwnerRepoPagesDeploymentsPostBody
+class ReposOwnerRepoMergesPostBodyType(TypedDict):
+    """ReposOwnerRepoMergesPostBody"""
 
-    The object used to create GitHub Pages deployment
-    """
-
-    artifact_id: NotRequired[int]
-    artifact_url: NotRequired[str]
-    environment: NotRequired[str]
-    pages_build_version: str
-    oidc_token: str
+    base: str
+    head: str
+    commit_message: NotRequired[str]
 
 
-class ReposOwnerRepoPagesDeploymentsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoPagesDeploymentsPostBody
+class ReposOwnerRepoMergesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoMergesPostBody"""
 
-    The object used to create GitHub Pages deployment
-    """
-
-    artifact_id: NotRequired[int]
-    artifact_url: NotRequired[str]
-    environment: NotRequired[str]
-    pages_build_version: str
-    oidc_token: str
+    base: str
+    head: str
+    commit_message: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoPagesDeploymentsPostBodyType",
-    "ReposOwnerRepoPagesDeploymentsPostBodyTypeForResponse",
+    "ReposOwnerRepoMergesPostBodyType",
+    "ReposOwnerRepoMergesPostBodyTypeForResponse",
 )

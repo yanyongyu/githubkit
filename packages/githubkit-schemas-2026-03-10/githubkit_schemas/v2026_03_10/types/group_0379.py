@@ -9,29 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
 
-class RepositoryHashAlgorithmType(TypedDict):
-    """Repository hash algorithm
+class GitRefType(TypedDict):
+    """Git Reference
 
-    Repository hash algorithm
+    Git references within a repository
     """
 
-    hash_algorithm: Literal["sha1", "sha256"]
+    ref: str
+    node_id: str
+    url: str
+    object_: GitRefPropObjectType
 
 
-class RepositoryHashAlgorithmTypeForResponse(TypedDict):
-    """Repository hash algorithm
+class GitRefTypeForResponse(TypedDict):
+    """Git Reference
 
-    Repository hash algorithm
+    Git references within a repository
     """
 
-    hash_algorithm: Literal["sha1", "sha256"]
+    ref: str
+    node_id: str
+    url: str
+    object_: GitRefPropObjectTypeForResponse
+
+
+class GitRefPropObjectType(TypedDict):
+    """GitRefPropObject"""
+
+    type: str
+    sha: str
+    url: str
+
+
+class GitRefPropObjectTypeForResponse(TypedDict):
+    """GitRefPropObject"""
+
+    type: str
+    sha: str
+    url: str
 
 
 __all__ = (
-    "RepositoryHashAlgorithmType",
-    "RepositoryHashAlgorithmTypeForResponse",
+    "GitRefPropObjectType",
+    "GitRefPropObjectTypeForResponse",
+    "GitRefType",
+    "GitRefTypeForResponse",
 )

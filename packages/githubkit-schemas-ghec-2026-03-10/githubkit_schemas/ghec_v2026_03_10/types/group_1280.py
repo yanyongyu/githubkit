@@ -13,19 +13,23 @@ from typing import Literal
 from typing_extensions import TypedDict
 
 
-class OrgsOrgCopilotCodingAgentPermissionsPutBodyType(TypedDict):
-    """OrgsOrgCopilotCodingAgentPermissionsPutBody"""
+class OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBodyType(
+    TypedDict
+):
+    """OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody"""
 
-    enabled_repositories: Literal["all", "selected", "none"]
+    role: Literal["reader", "writer", "admin", "no_access"]
 
 
-class OrgsOrgCopilotCodingAgentPermissionsPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgCopilotCodingAgentPermissionsPutBody"""
+class OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBodyTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody"""
 
-    enabled_repositories: Literal["all", "selected", "none"]
+    role: Literal["reader", "writer", "admin", "no_access"]
 
 
 __all__ = (
-    "OrgsOrgCopilotCodingAgentPermissionsPutBodyType",
-    "OrgsOrgCopilotCodingAgentPermissionsPutBodyTypeForResponse",
+    "OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBodyType",
+    "OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBodyTypeForResponse",
 )

@@ -9,37 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class UsersUsernameCopilotSpacesSpaceNumberResourcesPostBody(GitHubModel):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesPostBody"""
+class UserSocialAccountsDeleteBody(GitHubModel):
+    """UserSocialAccountsDeleteBody
 
-    resource_type: Literal[
-        "repository", "github_file", "free_text", "github_issue", "github_pull_request"
-    ] = Field(description="The type of resource to create.")
-    metadata: UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata = (
-        Field(description="Resource-specific metadata.")
+    Examples:
+        {'account_urls': ['https://www.linkedin.com/company/github/',
+    'https://twitter.com/github']}
+    """
+
+    account_urls: list[str] = Field(
+        description="Full URLs for the social media profiles to delete."
     )
 
 
-class UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata(
-    ExtraGitHubModel
-):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata
+model_rebuild(UserSocialAccountsDeleteBody)
 
-    Resource-specific metadata.
-    """
-
-
-model_rebuild(UsersUsernameCopilotSpacesSpaceNumberResourcesPostBody)
-model_rebuild(UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata)
-
-__all__ = (
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesPostBody",
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata",
-)
+__all__ = ("UserSocialAccountsDeleteBody",)

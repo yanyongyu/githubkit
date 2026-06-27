@@ -9,59 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class EnterprisesEnterpriseCopilotCustomAgentsGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse200"""
-
-    custom_agents: NotRequired[
-        Union[
-            list[
-                EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItemsType
-            ],
-            None,
-        ]
-    ]
+from .group_0087 import CopilotSeatDetailsType, CopilotSeatDetailsTypeForResponse
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsGetResponse200TypeForResponse(TypedDict):
-    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse200"""
+class EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseCopilotBillingSeatsGetResponse200"""
 
-    custom_agents: NotRequired[
-        Union[
-            list[
-                EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItemsTypeForResponse
-            ],
-            None,
-        ]
-    ]
+    total_seats: NotRequired[int]
+    seats: NotRequired[list[CopilotSeatDetailsType]]
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItemsType(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems"""
+class EnterprisesEnterpriseCopilotBillingSeatsGetResponse200TypeForResponse(TypedDict):
+    """EnterprisesEnterpriseCopilotBillingSeatsGetResponse200"""
 
-    name: NotRequired[str]
-    file_path: NotRequired[str]
-    url: NotRequired[str]
-
-
-class EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItemsTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems"""
-
-    name: NotRequired[str]
-    file_path: NotRequired[str]
-    url: NotRequired[str]
+    total_seats: NotRequired[int]
+    seats: NotRequired[list[CopilotSeatDetailsTypeForResponse]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItemsType",
-    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItemsTypeForResponse",
-    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse200Type",
-    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type",
+    "EnterprisesEnterpriseCopilotBillingSeatsGetResponse200TypeForResponse",
 )

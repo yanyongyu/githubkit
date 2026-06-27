@@ -12,33 +12,33 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0165 import (
-    RepositoryRuleCodeScanningPropParametersType,
-    RepositoryRuleCodeScanningPropParametersTypeForResponse,
+from .group_0174 import (
+    RepositoryRuleMergeQueuePropParametersType,
+    RepositoryRuleMergeQueuePropParametersTypeForResponse,
 )
 
 
-class RepositoryRuleDetailedOneof16Type(TypedDict):
-    """RepositoryRuleDetailedOneof16"""
+class RepositoryRuleDetailedOneof4Type(TypedDict):
+    """RepositoryRuleDetailedOneof4"""
 
-    type: Literal["code_scanning"]
-    parameters: NotRequired[RepositoryRuleCodeScanningPropParametersType]
+    type: Literal["merge_queue"]
+    parameters: NotRequired[RepositoryRuleMergeQueuePropParametersType]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
-class RepositoryRuleDetailedOneof16TypeForResponse(TypedDict):
-    """RepositoryRuleDetailedOneof16"""
+class RepositoryRuleDetailedOneof4TypeForResponse(TypedDict):
+    """RepositoryRuleDetailedOneof4"""
 
-    type: Literal["code_scanning"]
-    parameters: NotRequired[RepositoryRuleCodeScanningPropParametersTypeForResponse]
+    type: Literal["merge_queue"]
+    parameters: NotRequired[RepositoryRuleMergeQueuePropParametersTypeForResponse]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
 __all__ = (
-    "RepositoryRuleDetailedOneof16Type",
-    "RepositoryRuleDetailedOneof16TypeForResponse",
+    "RepositoryRuleDetailedOneof4Type",
+    "RepositoryRuleDetailedOneof4TypeForResponse",
 )

@@ -13,47 +13,73 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
-from .group_0211 import IssueType, IssueTypeForResponse
-from .group_0577 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0578 import (
+from .group_0588 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0589 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0590 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0579 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0591 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0635 import WebhooksSponsorshipType, WebhooksSponsorshipTypeForResponse
 
 
-class WebhookSubIssuesParentIssueRemovedType(TypedDict):
-    """parent issue removed event"""
+class WebhookSponsorshipEditedType(TypedDict):
+    """sponsorship edited event"""
 
-    action: Literal["parent_issue_removed"]
-    parent_issue_id: NotRequired[float]
-    parent_issue: NotRequired[IssueType]
-    parent_issue_repo: NotRequired[RepositoryType]
-    sub_issue_id: float
-    sub_issue: IssueType
+    action: Literal["edited"]
+    changes: WebhookSponsorshipEditedPropChangesType
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
+    repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserType
+    sponsorship: WebhooksSponsorshipType
 
 
-class WebhookSubIssuesParentIssueRemovedTypeForResponse(TypedDict):
-    """parent issue removed event"""
+class WebhookSponsorshipEditedTypeForResponse(TypedDict):
+    """sponsorship edited event"""
 
-    action: Literal["parent_issue_removed"]
-    parent_issue_id: NotRequired[float]
-    parent_issue: NotRequired[IssueTypeForResponse]
-    parent_issue_repo: NotRequired[RepositoryTypeForResponse]
-    sub_issue_id: float
-    sub_issue: IssueTypeForResponse
+    action: Literal["edited"]
+    changes: WebhookSponsorshipEditedPropChangesTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
     sender: SimpleUserTypeForResponse
+    sponsorship: WebhooksSponsorshipTypeForResponse
+
+
+class WebhookSponsorshipEditedPropChangesType(TypedDict):
+    """WebhookSponsorshipEditedPropChanges"""
+
+    privacy_level: NotRequired[WebhookSponsorshipEditedPropChangesPropPrivacyLevelType]
+
+
+class WebhookSponsorshipEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookSponsorshipEditedPropChanges"""
+
+    privacy_level: NotRequired[
+        WebhookSponsorshipEditedPropChangesPropPrivacyLevelTypeForResponse
+    ]
+
+
+class WebhookSponsorshipEditedPropChangesPropPrivacyLevelType(TypedDict):
+    """WebhookSponsorshipEditedPropChangesPropPrivacyLevel"""
+
+    from_: str
+
+
+class WebhookSponsorshipEditedPropChangesPropPrivacyLevelTypeForResponse(TypedDict):
+    """WebhookSponsorshipEditedPropChangesPropPrivacyLevel"""
+
+    from_: str
 
 
 __all__ = (
-    "WebhookSubIssuesParentIssueRemovedType",
-    "WebhookSubIssuesParentIssueRemovedTypeForResponse",
+    "WebhookSponsorshipEditedPropChangesPropPrivacyLevelType",
+    "WebhookSponsorshipEditedPropChangesPropPrivacyLevelTypeForResponse",
+    "WebhookSponsorshipEditedPropChangesType",
+    "WebhookSponsorshipEditedPropChangesTypeForResponse",
+    "WebhookSponsorshipEditedType",
+    "WebhookSponsorshipEditedTypeForResponse",
 )

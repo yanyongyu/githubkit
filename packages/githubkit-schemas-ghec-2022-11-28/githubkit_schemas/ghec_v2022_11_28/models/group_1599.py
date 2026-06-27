@@ -9,33 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0(GitHubModel):
-    """UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0"""
+class UsersUsernameAttestationsBulkListPostResponse200(GitHubModel):
+    """UsersUsernameAttestationsBulkListPostResponse200"""
 
-    type: Literal["Issue", "PullRequest"] = Field(
-        description="The type of item to add to the project. Must be either Issue or PullRequest."
-    )
-    id: int = Field(
-        description="The unique identifier of the issue or pull request to add to the project."
-    )
-    owner: Missing[str] = Field(
-        default=UNSET, description="The repository owner login."
-    )
-    repo: Missing[str] = Field(default=UNSET, description="The repository name.")
-    number: Missing[int] = Field(
-        default=UNSET, description="The issue or pull request number."
+    attestations_subject_digests: Missing[
+        UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
+    ] = Field(default=UNSET, description="Mapping of subject digest to bundles.")
+    page_info: Missing[UsersUsernameAttestationsBulkListPostResponse200PropPageInfo] = (
+        Field(default=UNSET, description="Information about the current page.")
     )
 
 
-model_rebuild(UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0)
+class UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigests(
+    ExtraGitHubModel
+):
+    """UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
 
-__all__ = ("UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0",)
+    Mapping of subject digest to bundles.
+    """
+
+
+class UsersUsernameAttestationsBulkListPostResponse200PropPageInfo(GitHubModel):
+    """UsersUsernameAttestationsBulkListPostResponse200PropPageInfo
+
+    Information about the current page.
+    """
+
+    has_next: Missing[bool] = Field(
+        default=UNSET, description="Indicates whether there is a next page."
+    )
+    has_previous: Missing[bool] = Field(
+        default=UNSET, description="Indicates whether there is a previous page."
+    )
+    next_: Missing[str] = Field(
+        default=UNSET, alias="next", description="The cursor to the next page."
+    )
+    previous: Missing[str] = Field(
+        default=UNSET, description="The cursor to the previous page."
+    )
+
+
+model_rebuild(UsersUsernameAttestationsBulkListPostResponse200)
+model_rebuild(
+    UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
+)
+model_rebuild(UsersUsernameAttestationsBulkListPostResponse200PropPageInfo)
+
+__all__ = (
+    "UsersUsernameAttestationsBulkListPostResponse200",
+    "UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigests",
+    "UsersUsernameAttestationsBulkListPostResponse200PropPageInfo",
+)

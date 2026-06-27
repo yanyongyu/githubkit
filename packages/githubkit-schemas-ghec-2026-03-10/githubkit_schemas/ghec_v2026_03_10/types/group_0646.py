@@ -13,48 +13,44 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0575 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0576 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0577 import (
+from .group_0587 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0588 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0589 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0578 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0647 import (
-    WebhookCodeScanningAlertAppearedInBranchPropAlertType,
-    WebhookCodeScanningAlertAppearedInBranchPropAlertTypeForResponse,
-)
+from .group_0590 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0592 import ExemptionResponseType, ExemptionResponseTypeForResponse
+from .group_0593 import ExemptionRequestType, ExemptionRequestTypeForResponse
 
 
-class WebhookCodeScanningAlertAppearedInBranchType(TypedDict):
-    """code_scanning_alert appeared_in_branch event"""
+class WebhookExemptionRequestResponseSubmittedType(TypedDict):
+    """Exemption response submitted event"""
 
-    action: Literal["appeared_in_branch"]
-    alert: WebhookCodeScanningAlertAppearedInBranchPropAlertType
-    commit_oid: str
+    action: Literal["response_submitted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    ref: str
-    repository: RepositoryWebhooksType
+    repository: NotRequired[RepositoryWebhooksType]
+    exemption_request: ExemptionRequestType
+    exemption_response: ExemptionResponseType
     sender: SimpleUserType
 
 
-class WebhookCodeScanningAlertAppearedInBranchTypeForResponse(TypedDict):
-    """code_scanning_alert appeared_in_branch event"""
+class WebhookExemptionRequestResponseSubmittedTypeForResponse(TypedDict):
+    """Exemption response submitted event"""
 
-    action: Literal["appeared_in_branch"]
-    alert: WebhookCodeScanningAlertAppearedInBranchPropAlertTypeForResponse
-    commit_oid: str
+    action: Literal["response_submitted"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    ref: str
-    repository: RepositoryWebhooksTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    exemption_request: ExemptionRequestTypeForResponse
+    exemption_response: ExemptionResponseTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookCodeScanningAlertAppearedInBranchType",
-    "WebhookCodeScanningAlertAppearedInBranchTypeForResponse",
+    "WebhookExemptionRequestResponseSubmittedType",
+    "WebhookExemptionRequestResponseSubmittedTypeForResponse",
 )

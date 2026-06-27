@@ -12,99 +12,53 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class BillingUsageSummaryReportGheType(TypedDict):
-    """BillingUsageSummaryReportGhe"""
+class BillingUsageReportType(TypedDict):
+    """BillingUsageReport"""
 
-    time_period: BillingUsageSummaryReportGhePropTimePeriodType
-    enterprise: str
-    organization: NotRequired[str]
-    repository: NotRequired[str]
-    product: NotRequired[str]
-    sku: NotRequired[str]
-    cost_center: NotRequired[BillingUsageSummaryReportGhePropCostCenterType]
-    usage_items: list[BillingUsageSummaryReportGhePropUsageItemsItemsType]
+    usage_items: NotRequired[list[BillingUsageReportPropUsageItemsItemsType]]
 
 
-class BillingUsageSummaryReportGheTypeForResponse(TypedDict):
-    """BillingUsageSummaryReportGhe"""
+class BillingUsageReportTypeForResponse(TypedDict):
+    """BillingUsageReport"""
 
-    time_period: BillingUsageSummaryReportGhePropTimePeriodTypeForResponse
-    enterprise: str
-    organization: NotRequired[str]
-    repository: NotRequired[str]
-    product: NotRequired[str]
-    sku: NotRequired[str]
-    cost_center: NotRequired[BillingUsageSummaryReportGhePropCostCenterTypeForResponse]
-    usage_items: list[BillingUsageSummaryReportGhePropUsageItemsItemsTypeForResponse]
+    usage_items: NotRequired[list[BillingUsageReportPropUsageItemsItemsTypeForResponse]]
 
 
-class BillingUsageSummaryReportGhePropTimePeriodType(TypedDict):
-    """BillingUsageSummaryReportGhePropTimePeriod"""
+class BillingUsageReportPropUsageItemsItemsType(TypedDict):
+    """BillingUsageReportPropUsageItemsItems"""
 
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
-
-
-class BillingUsageSummaryReportGhePropTimePeriodTypeForResponse(TypedDict):
-    """BillingUsageSummaryReportGhePropTimePeriod"""
-
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
-
-
-class BillingUsageSummaryReportGhePropCostCenterType(TypedDict):
-    """BillingUsageSummaryReportGhePropCostCenter"""
-
-    id: str
-    name: str
-
-
-class BillingUsageSummaryReportGhePropCostCenterTypeForResponse(TypedDict):
-    """BillingUsageSummaryReportGhePropCostCenter"""
-
-    id: str
-    name: str
-
-
-class BillingUsageSummaryReportGhePropUsageItemsItemsType(TypedDict):
-    """BillingUsageSummaryReportGhePropUsageItemsItems"""
-
+    date: str
     product: str
     sku: str
+    quantity: int
     unit_type: str
     price_per_unit: float
-    gross_quantity: float
     gross_amount: float
-    discount_quantity: float
     discount_amount: float
-    net_quantity: float
     net_amount: float
+    organization_name: str
+    repository_name: NotRequired[str]
 
 
-class BillingUsageSummaryReportGhePropUsageItemsItemsTypeForResponse(TypedDict):
-    """BillingUsageSummaryReportGhePropUsageItemsItems"""
+class BillingUsageReportPropUsageItemsItemsTypeForResponse(TypedDict):
+    """BillingUsageReportPropUsageItemsItems"""
 
+    date: str
     product: str
     sku: str
+    quantity: int
     unit_type: str
     price_per_unit: float
-    gross_quantity: float
     gross_amount: float
-    discount_quantity: float
     discount_amount: float
-    net_quantity: float
     net_amount: float
+    organization_name: str
+    repository_name: NotRequired[str]
 
 
 __all__ = (
-    "BillingUsageSummaryReportGhePropCostCenterType",
-    "BillingUsageSummaryReportGhePropCostCenterTypeForResponse",
-    "BillingUsageSummaryReportGhePropTimePeriodType",
-    "BillingUsageSummaryReportGhePropTimePeriodTypeForResponse",
-    "BillingUsageSummaryReportGhePropUsageItemsItemsType",
-    "BillingUsageSummaryReportGhePropUsageItemsItemsTypeForResponse",
-    "BillingUsageSummaryReportGheType",
-    "BillingUsageSummaryReportGheTypeForResponse",
+    "BillingUsageReportPropUsageItemsItemsType",
+    "BillingUsageReportPropUsageItemsItemsTypeForResponse",
+    "BillingUsageReportType",
+    "BillingUsageReportTypeForResponse",
 )

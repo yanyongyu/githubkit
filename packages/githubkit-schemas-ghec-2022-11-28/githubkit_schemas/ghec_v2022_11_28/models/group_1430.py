@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,31 +16,29 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1(GitHubModel):
-    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1"""
+class ReposOwnerRepoCodespacesDevcontainersGetResponse200(GitHubModel):
+    """ReposOwnerRepoCodespacesDevcontainersGetResponse200"""
 
-    state: Missing[Literal["dismissed", "open"]] = Field(
-        default=UNSET,
-        description="The state of the Dependabot alert.\nA `dismissed_reason` must be provided when setting the state to `dismissed`.",
-    )
-    dismissed_reason: Missing[
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ]
-    ] = Field(
-        default=UNSET,
-        description="**Required when `state` is `dismissed`.** A reason for dismissing the alert.",
-    )
-    dismissed_comment: Missing[str] = Field(
-        max_length=280,
-        default=UNSET,
-        description="An optional comment associated with dismissing the alert.",
-    )
-    assignees: list[str] = Field(
-        description="Usernames to assign to this Dependabot Alert.\nPass one or more user logins to _replace_ the set of assignees on this alert.\nSend an empty array (`[]`) to clear all assignees from the alert.\nTo assign an AI agent, include the bot login (for example, `copilot-swe-agent[bot]`)."
-    )
+    total_count: int = Field()
+    devcontainers: list[
+        ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems
+    ] = Field()
 
 
-model_rebuild(ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1)
+class ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems(
+    GitHubModel
+):
+    """ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems"""
 
-__all__ = ("ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1",)
+    path: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    display_name: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(ReposOwnerRepoCodespacesDevcontainersGetResponse200)
+model_rebuild(ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems)
+
+__all__ = (
+    "ReposOwnerRepoCodespacesDevcontainersGetResponse200",
+    "ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems",
+)

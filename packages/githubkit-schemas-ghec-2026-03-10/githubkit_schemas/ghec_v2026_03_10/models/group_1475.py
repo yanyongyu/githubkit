@@ -9,46 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBody(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBody"""
+class ReposOwnerRepoImportPutBody(GitHubModel):
+    """ReposOwnerRepoImportPutBody"""
 
-    issue_field_values: Missing[
-        list[
-            ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems
-        ]
-    ] = Field(
-        max_length=25 if PYDANTIC_V2 else None,
+    vcs_url: str = Field(description="The URL of the originating repository.")
+    vcs: Missing[Literal["subversion", "git", "mercurial", "tfvc"]] = Field(
         default=UNSET,
-        description="An array of issue field values to set for this issue. Each field value must include the field ID and the value to set. All existing field values will be replaced.",
+        description="The originating VCS type. Without this parameter, the import job will take additional time to detect the VCS type before beginning the import. This detection step will be reflected in the response.",
+    )
+    vcs_username: Missing[str] = Field(
+        default=UNSET,
+        description="If authentication is required, the username to provide to `vcs_url`.",
+    )
+    vcs_password: Missing[str] = Field(
+        default=UNSET,
+        description="If authentication is required, the password to provide to `vcs_url`.",
+    )
+    tfvc_project: Missing[str] = Field(
+        default=UNSET,
+        description="For a tfvc import, the name of the project that is being imported.",
     )
 
 
-class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems(
-    GitHubModel
-):
-    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems"""
+model_rebuild(ReposOwnerRepoImportPutBody)
 
-    field_id: int = Field(description="The ID of the issue field to set")
-    value: Union[str, float] = Field(
-        description="The value to set for the field. The type depends on the field's data type:\n- For text fields: provide a string value\n- For single_select fields: provide the option name as a string (must match an existing option)\n- For number fields: provide a numeric value\n- For date fields: provide an ISO 8601 date string"
-    )
-
-
-model_rebuild(ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBody)
-model_rebuild(
-    ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems
-)
-
-__all__ = (
-    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBody",
-    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems",
-)
+__all__ = ("ReposOwnerRepoImportPutBody",)

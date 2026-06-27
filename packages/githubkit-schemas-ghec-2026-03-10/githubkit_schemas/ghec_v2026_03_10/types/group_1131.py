@@ -9,24 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsSourcePutBodyType(TypedDict):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody"""
+class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBodyType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBody"""
 
-    organization_id: int
-    create_ruleset: NotRequired[bool]
+    selected_enterprise_teams: list[str]
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsSourcePutBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody"""
+class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBody"""
 
-    organization_id: int
-    create_ruleset: NotRequired[bool]
+    selected_enterprise_teams: list[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutBodyType",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBodyType",
+    "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBodyTypeForResponse",
 )

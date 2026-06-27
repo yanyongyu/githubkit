@@ -9,60 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyType(
+class EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBodyType(TypedDict):
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBody"""
+
+    selected_usernames: list[str]
+
+
+class EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBodyTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody"""
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBody"""
 
-    organizations: NotRequired[list[str]]
-    custom_properties: NotRequired[
-        list[
-            EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsType
-        ]
-    ]
-
-
-class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody"""
-
-    organizations: NotRequired[list[str]]
-    custom_properties: NotRequired[
-        list[
-            EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsTypeForResponse
-        ]
-    ]
-
-
-class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsType(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustom
-    PropertiesItems
-    """
-
-    property_name: str
-    values: list[str]
-
-
-class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustom
-    PropertiesItems
-    """
-
-    property_name: str
-    values: list[str]
+    selected_usernames: list[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsType",
-    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsTypeForResponse",
-    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyType",
-    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBodyType",
+    "EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBodyTypeForResponse",
 )

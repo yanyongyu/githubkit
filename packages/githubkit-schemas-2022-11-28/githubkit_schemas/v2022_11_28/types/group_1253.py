@@ -9,50 +9,75 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_1251 import (
+    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType,
+    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsTypeForResponse,
+    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType,
+    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputTypeForResponse,
+)
 
-class ReposOwnerRepoCodespacesDevcontainersGetResponse200Type(TypedDict):
-    """ReposOwnerRepoCodespacesDevcontainersGetResponse200"""
 
-    total_count: int
-    devcontainers: list[
-        ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsType
+class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1Type(TypedDict):
+    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1"""
+
+    name: NotRequired[str]
+    details_url: NotRequired[str]
+    external_id: NotRequired[str]
+    started_at: NotRequired[_dt.datetime]
+    status: NotRequired[Literal["queued", "in_progress"]]
+    conclusion: NotRequired[
+        Literal[
+            "action_required",
+            "cancelled",
+            "failure",
+            "neutral",
+            "success",
+            "skipped",
+            "stale",
+            "timed_out",
+        ]
+    ]
+    completed_at: NotRequired[_dt.datetime]
+    output: NotRequired[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType]
+    actions: NotRequired[
+        list[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType]
     ]
 
 
-class ReposOwnerRepoCodespacesDevcontainersGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoCodespacesDevcontainersGetResponse200"""
+class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1TypeForResponse(TypedDict):
+    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1"""
 
-    total_count: int
-    devcontainers: list[
-        ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsTypeForResponse
+    name: NotRequired[str]
+    details_url: NotRequired[str]
+    external_id: NotRequired[str]
+    started_at: NotRequired[str]
+    status: NotRequired[Literal["queued", "in_progress"]]
+    conclusion: NotRequired[
+        Literal[
+            "action_required",
+            "cancelled",
+            "failure",
+            "neutral",
+            "success",
+            "skipped",
+            "stale",
+            "timed_out",
+        ]
     ]
-
-
-class ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsType(
-    TypedDict
-):
-    """ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems"""
-
-    path: str
-    name: NotRequired[str]
-    display_name: NotRequired[str]
-
-
-class ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems"""
-
-    path: str
-    name: NotRequired[str]
-    display_name: NotRequired[str]
+    completed_at: NotRequired[str]
+    output: NotRequired[
+        ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputTypeForResponse
+    ]
+    actions: NotRequired[
+        list[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsTypeForResponse]
+    ]
 
 
 __all__ = (
-    "ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsType",
-    "ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsTypeForResponse",
-    "ReposOwnerRepoCodespacesDevcontainersGetResponse200Type",
-    "ReposOwnerRepoCodespacesDevcontainersGetResponse200TypeForResponse",
+    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1Type",
+    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1TypeForResponse",
 )

@@ -9,73 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyType(TypedDict):
-    """EnterprisesEnterpriseSettingsBillingBudgetsPostBody"""
-
-    budget_amount: int
-    prevent_further_usage: bool
-    budget_alerting: (
-        EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingType
-    )
-    budget_scope: Literal[
-        "enterprise",
-        "organization",
-        "repository",
-        "cost_center",
-        "multi_user_customer",
-        "user",
-    ]
-    budget_entity_name: NotRequired[str]
-    budget_type: Literal["BundlePricing", "ProductPricing", "SkuPricing"]
-    budget_product_sku: NotRequired[str]
-    user: NotRequired[str]
-
-
-class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseSettingsBillingBudgetsPostBody"""
-
-    budget_amount: int
-    prevent_further_usage: bool
-    budget_alerting: EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingTypeForResponse
-    budget_scope: Literal[
-        "enterprise",
-        "organization",
-        "repository",
-        "cost_center",
-        "multi_user_customer",
-        "user",
-    ]
-    budget_entity_name: NotRequired[str]
-    budget_type: Literal["BundlePricing", "ProductPricing", "SkuPricing"]
-    budget_product_sku: NotRequired[str]
-    user: NotRequired[str]
-
-
-class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingType(
+class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202Type(
     TypedDict
 ):
-    """EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting"""
+    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202"""
 
-    will_alert: bool
-    alert_recipients: list[str]
+    message: NotRequired[str]
+    warning: NotRequired[str]
 
 
-class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingTypeForResponse(
+class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting"""
+    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202"""
 
-    will_alert: bool
-    alert_recipients: list[str]
+    message: NotRequired[str]
+    warning: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingType",
-    "EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingTypeForResponse",
-    "EnterprisesEnterpriseSettingsBillingBudgetsPostBodyType",
-    "EnterprisesEnterpriseSettingsBillingBudgetsPostBodyTypeForResponse",
+    "EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202Type",
+    "EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202TypeForResponse",
 )

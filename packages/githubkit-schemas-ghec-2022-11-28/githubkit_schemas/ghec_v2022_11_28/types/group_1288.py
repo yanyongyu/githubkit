@@ -9,32 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class OrgsOrgDependabotRepositoryAccessPatchBodyType(TypedDict):
-    """OrgsOrgDependabotRepositoryAccessPatchBody
+class OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type(TypedDict):
+    """OrgsOrgCopilotBillingSelectedTeamsPostResponse201
 
-    Examples:
-        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
+    The total number of seats created for members of the specified team(s).
     """
 
-    repository_ids_to_add: NotRequired[list[int]]
-    repository_ids_to_remove: NotRequired[list[int]]
+    seats_created: int
 
 
-class OrgsOrgDependabotRepositoryAccessPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgDependabotRepositoryAccessPatchBody
+class OrgsOrgCopilotBillingSelectedTeamsPostResponse201TypeForResponse(TypedDict):
+    """OrgsOrgCopilotBillingSelectedTeamsPostResponse201
 
-    Examples:
-        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
+    The total number of seats created for members of the specified team(s).
     """
 
-    repository_ids_to_add: NotRequired[list[int]]
-    repository_ids_to_remove: NotRequired[list[int]]
+    seats_created: int
 
 
 __all__ = (
-    "OrgsOrgDependabotRepositoryAccessPatchBodyType",
-    "OrgsOrgDependabotRepositoryAccessPatchBodyTypeForResponse",
+    "OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type",
+    "OrgsOrgCopilotBillingSelectedTeamsPostResponse201TypeForResponse",
 )

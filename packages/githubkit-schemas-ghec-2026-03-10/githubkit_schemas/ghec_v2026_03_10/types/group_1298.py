@@ -9,23 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgMembershipsUsernamePutBodyType(TypedDict):
-    """OrgsOrgMembershipsUsernamePutBody"""
+class OrgsOrgCopilotContentExclusionPutResponse200Type(TypedDict):
+    """OrgsOrgCopilotContentExclusionPutResponse200"""
 
-    role: NotRequired[Literal["admin", "member"]]
+    message: NotRequired[str]
 
 
-class OrgsOrgMembershipsUsernamePutBodyTypeForResponse(TypedDict):
-    """OrgsOrgMembershipsUsernamePutBody"""
+class OrgsOrgCopilotContentExclusionPutResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCopilotContentExclusionPutResponse200"""
 
-    role: NotRequired[Literal["admin", "member"]]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgMembershipsUsernamePutBodyType",
-    "OrgsOrgMembershipsUsernamePutBodyTypeForResponse",
+    "OrgsOrgCopilotContentExclusionPutResponse200Type",
+    "OrgsOrgCopilotContentExclusionPutResponse200TypeForResponse",
 )

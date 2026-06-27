@@ -9,29 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Any, TypeAlias
 
-from .group_0034 import (
-    ActionsHostedRunnerMachineSpecType,
-    ActionsHostedRunnerMachineSpecTypeForResponse,
-)
+InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType: TypeAlias = dict[
+    str, Any
+]
+"""InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPrope
+rties
+
+The custom properties that were defined for the repository. The keys are the
+custom property names, and the values are the corresponding custom property
+values. Present for org repos only.
+"""
 
 
-class OrgsOrgActionsHostedRunnersMachineSizesGetResponse200Type(TypedDict):
-    """OrgsOrgActionsHostedRunnersMachineSizesGetResponse200"""
+InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPrope
+rties
 
-    total_count: int
-    machine_specs: list[ActionsHostedRunnerMachineSpecType]
-
-
-class OrgsOrgActionsHostedRunnersMachineSizesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsHostedRunnersMachineSizesGetResponse200"""
-
-    total_count: int
-    machine_specs: list[ActionsHostedRunnerMachineSpecTypeForResponse]
+The custom properties that were defined for the repository. The keys are the
+custom property names, and the values are the corresponding custom property
+values. Present for org repos only.
+"""
 
 
 __all__ = (
-    "OrgsOrgActionsHostedRunnersMachineSizesGetResponse200Type",
-    "OrgsOrgActionsHostedRunnersMachineSizesGetResponse200TypeForResponse",
+    "InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType",
+    "InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse",
 )

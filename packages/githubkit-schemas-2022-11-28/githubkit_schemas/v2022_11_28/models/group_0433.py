@@ -9,23 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReleaseNotesContent(GitHubModel):
-    """Generated Release Notes Content
+class PageDeployment(GitHubModel):
+    """GitHub Pages
 
-    Generated name and body describing a release
+    The GitHub Pages deployment status.
     """
 
-    name: str = Field(description="The generated name of the release")
-    body: str = Field(
-        description="The generated body describing the contents of the release supporting markdown formatting"
+    id: Union[int, str] = Field(
+        description="The ID of the GitHub Pages deployment. This is the Git SHA of the deployed commit."
+    )
+    status_url: str = Field(
+        description="The URI to monitor GitHub Pages deployment status."
+    )
+    page_url: str = Field(description="The URI to the deployed GitHub Pages.")
+    preview_url: Missing[str] = Field(
+        default=UNSET, description="The URI to the deployed GitHub Pages preview."
     )
 
 
-model_rebuild(ReleaseNotesContent)
+model_rebuild(PageDeployment)
 
-__all__ = ("ReleaseNotesContent",)
+__all__ = ("PageDeployment",)

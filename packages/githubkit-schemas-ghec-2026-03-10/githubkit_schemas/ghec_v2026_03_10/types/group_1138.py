@@ -9,28 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, TypeAlias
+
+EnterprisesEnterpriseCopilotContentExclusionPutBodyType: TypeAlias = dict[str, Any]
+"""EnterprisesEnterpriseCopilotContentExclusionPutBody
+"""
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202Type(
-    TypedDict
-):
-    """EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202"""
-
-    message: NotRequired[str]
-    warning: NotRequired[str]
-
-
-class EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202"""
-
-    message: NotRequired[str]
-    warning: NotRequired[str]
+EnterprisesEnterpriseCopilotContentExclusionPutBodyTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""EnterprisesEnterpriseCopilotContentExclusionPutBody
+"""
 
 
 __all__ = (
-    "EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202Type",
-    "EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202TypeForResponse",
+    "EnterprisesEnterpriseCopilotContentExclusionPutBodyType",
+    "EnterprisesEnterpriseCopilotContentExclusionPutBodyTypeForResponse",
 )

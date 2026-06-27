@@ -9,31 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType(
-    TypedDict
-):
-    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBody"""
-
-    default_for_new_repos: NotRequired[
-        Literal["all", "none", "private_and_internal", "public"]
-    ]
+class AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type(TypedDict):
+    """AppHookDeliveriesDeliveryIdAttemptsPostResponse202"""
 
 
-class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBody"""
-
-    default_for_new_repos: NotRequired[
-        Literal["all", "none", "private_and_internal", "public"]
-    ]
+class AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse(TypedDict):
+    """AppHookDeliveriesDeliveryIdAttemptsPostResponse202"""
 
 
 __all__ = (
-    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType",
-    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyTypeForResponse",
+    "AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type",
+    "AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse",
 )

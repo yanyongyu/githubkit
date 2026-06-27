@@ -11,24 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200Type(
-    TypedDict
-):
-    """EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200"""
-
-    disable_self_hosted_runners_for_all_orgs: bool
+from .group_0035 import ActionsHostedRunnerType, ActionsHostedRunnerTypeForResponse
 
 
-class EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200"""
+class EnterprisesEnterpriseActionsHostedRunnersGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseActionsHostedRunnersGetResponse200"""
 
-    disable_self_hosted_runners_for_all_orgs: bool
+    total_count: int
+    runners: list[ActionsHostedRunnerType]
+
+
+class EnterprisesEnterpriseActionsHostedRunnersGetResponse200TypeForResponse(TypedDict):
+    """EnterprisesEnterpriseActionsHostedRunnersGetResponse200"""
+
+    total_count: int
+    runners: list[ActionsHostedRunnerTypeForResponse]
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200Type",
-    "EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseActionsHostedRunnersGetResponse200Type",
+    "EnterprisesEnterpriseActionsHostedRunnersGetResponse200TypeForResponse",
 )

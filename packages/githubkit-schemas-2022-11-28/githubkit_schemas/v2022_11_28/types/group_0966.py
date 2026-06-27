@@ -9,75 +9,78 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class AgentsTasksGetResponse403Type(TypedDict):
-    """AgentsTasksGetResponse403
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0Type(
+    TypedDict
+):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
+    A GitHub user
     """
 
-    message: str
-    errors: NotRequired[list[AgentsTasksGetResponse403PropErrorsItemsType]]
-    documentation_url: str
+    id: NotRequired[int]
 
 
-class AgentsTasksGetResponse403TypeForResponse(TypedDict):
-    """AgentsTasksGetResponse403
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0TypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
+    A GitHub user
     """
 
-    message: str
-    errors: NotRequired[list[AgentsTasksGetResponse403PropErrorsItemsTypeForResponse]]
-    documentation_url: str
+    id: NotRequired[int]
 
 
-class AgentsTasksGetResponse403PropErrorsItemsType(TypedDict):
-    """AgentsTasksGetResponse403PropErrorsItems
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems
 
-    A single validation error
+    A GitHub user
     """
 
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
+    id: NotRequired[int]
 
 
-class AgentsTasksGetResponse403PropErrorsItemsTypeForResponse(TypedDict):
-    """AgentsTasksGetResponse403PropErrorsItems
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems
 
-    A single validation error
+    A GitHub user
     """
 
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
+    id: NotRequired[int]
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepositoryType(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository
+
+    The repository this task belongs to
+    """
+
+    id: NotRequired[int]
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepositoryTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository
+
+    The repository this task belongs to
+    """
+
+    id: NotRequired[int]
 
 
 __all__ = (
-    "AgentsTasksGetResponse403PropErrorsItemsType",
-    "AgentsTasksGetResponse403PropErrorsItemsTypeForResponse",
-    "AgentsTasksGetResponse403Type",
-    "AgentsTasksGetResponse403TypeForResponse",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0Type",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0TypeForResponse",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepositoryType",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepositoryTypeForResponse",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsType",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsTypeForResponse",
 )

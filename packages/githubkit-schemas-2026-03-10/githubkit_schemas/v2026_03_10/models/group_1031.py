@@ -12,15 +12,18 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsHostedRunnersPlatformsGetResponse200(GitHubModel):
-    """OrgsOrgActionsHostedRunnersPlatformsGetResponse200"""
+class NotificationsThreadsThreadIdSubscriptionPutBody(GitHubModel):
+    """NotificationsThreadsThreadIdSubscriptionPutBody"""
 
-    total_count: int = Field()
-    platforms: list[str] = Field()
+    ignored: Missing[bool] = Field(
+        default=UNSET, description="Whether to block all notifications from a thread."
+    )
 
 
-model_rebuild(OrgsOrgActionsHostedRunnersPlatformsGetResponse200)
+model_rebuild(NotificationsThreadsThreadIdSubscriptionPutBody)
 
-__all__ = ("OrgsOrgActionsHostedRunnersPlatformsGetResponse200",)
+__all__ = ("NotificationsThreadsThreadIdSubscriptionPutBody",)

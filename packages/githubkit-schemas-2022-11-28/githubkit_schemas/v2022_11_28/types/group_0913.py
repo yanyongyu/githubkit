@@ -9,36 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0193 import FullRepositoryType, FullRepositoryTypeForResponse
+from .group_0515 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0516 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0517 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0914 import (
+    WebhookSecurityAndAnalysisPropChangesType,
+    WebhookSecurityAndAnalysisPropChangesTypeForResponse,
+)
 
-class WebhookStatusPropCommitPropCommitPropAuthorAllof0Type(TypedDict):
-    """Committer
 
-    Metaproperties for Git author/committer information.
-    """
+class WebhookSecurityAndAnalysisType(TypedDict):
+    """security_and_analysis event"""
 
-    date: NotRequired[_dt.datetime]
-    email: Union[str, None]
-    name: str
-    username: NotRequired[str]
+    changes: WebhookSecurityAndAnalysisPropChangesType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: FullRepositoryType
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookStatusPropCommitPropCommitPropAuthorAllof0TypeForResponse(TypedDict):
-    """Committer
+class WebhookSecurityAndAnalysisTypeForResponse(TypedDict):
+    """security_and_analysis event"""
 
-    Metaproperties for Git author/committer information.
-    """
-
-    date: NotRequired[str]
-    email: Union[str, None]
-    name: str
-    username: NotRequired[str]
+    changes: WebhookSecurityAndAnalysisPropChangesTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: FullRepositoryTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookStatusPropCommitPropCommitPropAuthorAllof0Type",
-    "WebhookStatusPropCommitPropCommitPropAuthorAllof0TypeForResponse",
+    "WebhookSecurityAndAnalysisType",
+    "WebhookSecurityAndAnalysisTypeForResponse",
 )

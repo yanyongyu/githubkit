@@ -9,54 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class WebhooksChanges8(GitHubModel):
-    """WebhooksChanges8"""
-
-    tier: WebhooksChanges8PropTier = Field()
+from .group_0003 import SimpleUser
 
 
-class WebhooksChanges8PropTier(GitHubModel):
-    """WebhooksChanges8PropTier"""
+class ProjectsV2Item(GitHubModel):
+    """Projects v2 Item
 
-    from_: WebhooksChanges8PropTierPropFrom = Field(
-        alias="from",
-        title="Sponsorship Tier",
-        description="The `tier_changed` and `pending_tier_change` will include the original tier before the change or pending change. For more information, see the pending tier change payload.",
+    An item belonging to a project
+    """
+
+    id: float = Field(description="The unique identifier of the project item.")
+    node_id: Missing[str] = Field(
+        default=UNSET, description="The node ID of the project item."
+    )
+    project_node_id: Missing[str] = Field(
+        default=UNSET, description="The node ID of the project that contains this item."
+    )
+    content_node_id: str = Field(
+        description="The node ID of the content represented by this item."
+    )
+    content_type: Literal["Issue", "PullRequest", "DraftIssue"] = Field(
+        title="Projects v2 Item Content Type",
+        description="The type of content tracked in a project item",
+    )
+    creator: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
+    created_at: _dt.datetime = Field(description="The time when the item was created.")
+    updated_at: _dt.datetime = Field(
+        description="The time when the item was last updated."
+    )
+    archived_at: Union[_dt.datetime, None] = Field(
+        description="The time when the item was archived."
     )
 
 
-class WebhooksChanges8PropTierPropFrom(GitHubModel):
-    """Sponsorship Tier
+model_rebuild(ProjectsV2Item)
 
-    The `tier_changed` and `pending_tier_change` will include the original tier
-    before the change or pending change. For more information, see the pending tier
-    change payload.
-    """
-
-    created_at: str = Field()
-    description: str = Field()
-    is_custom_ammount: Missing[bool] = Field(default=UNSET)
-    is_custom_amount: Missing[bool] = Field(default=UNSET)
-    is_one_time: bool = Field()
-    monthly_price_in_cents: int = Field()
-    monthly_price_in_dollars: int = Field()
-    name: str = Field()
-    node_id: str = Field()
-
-
-model_rebuild(WebhooksChanges8)
-model_rebuild(WebhooksChanges8PropTier)
-model_rebuild(WebhooksChanges8PropTierPropFrom)
-
-__all__ = (
-    "WebhooksChanges8",
-    "WebhooksChanges8PropTier",
-    "WebhooksChanges8PropTierPropFrom",
-)
+__all__ = ("ProjectsV2Item",)

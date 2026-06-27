@@ -12,21 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0128 import ArtifactDeploymentRecord
+from .group_0127 import OrganizationActionsSecret
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200(
-    GitHubModel
-):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200"""
+class OrgsOrgAgentsSecretsGetResponse200(GitHubModel):
+    """OrgsOrgAgentsSecretsGetResponse200"""
 
-    total_count: int = Field(description="The number of deployment records created")
-    deployment_records: Missing[list[ArtifactDeploymentRecord]] = Field(default=UNSET)
+    total_count: int = Field()
+    secrets: list[OrganizationActionsSecret] = Field()
 
 
-model_rebuild(OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200)
+model_rebuild(OrgsOrgAgentsSecretsGetResponse200)
 
-__all__ = ("OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200",)
+__all__ = ("OrgsOrgAgentsSecretsGetResponse200",)

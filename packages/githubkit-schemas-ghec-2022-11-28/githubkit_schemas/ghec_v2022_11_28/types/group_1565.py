@@ -9,30 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class UserEmailsPostBodyOneof0Type(TypedDict):
-    """UserEmailsPostBodyOneof0
+class TeamsTeamIdPatchBodyType(TypedDict):
+    """TeamsTeamIdPatchBody"""
 
-    Examples:
-        {'emails': ['octocat@github.com', 'mona@github.com']}
-    """
+    name: str
+    description: NotRequired[str]
+    privacy: NotRequired[Literal["secret", "closed"]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
+    permission: NotRequired[Literal["pull", "push", "admin"]]
+    parent_team_id: NotRequired[Union[int, None]]
 
-    emails: list[str]
 
+class TeamsTeamIdPatchBodyTypeForResponse(TypedDict):
+    """TeamsTeamIdPatchBody"""
 
-class UserEmailsPostBodyOneof0TypeForResponse(TypedDict):
-    """UserEmailsPostBodyOneof0
-
-    Examples:
-        {'emails': ['octocat@github.com', 'mona@github.com']}
-    """
-
-    emails: list[str]
+    name: str
+    description: NotRequired[str]
+    privacy: NotRequired[Literal["secret", "closed"]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
+    permission: NotRequired[Literal["pull", "push", "admin"]]
+    parent_team_id: NotRequired[Union[int, None]]
 
 
 __all__ = (
-    "UserEmailsPostBodyOneof0Type",
-    "UserEmailsPostBodyOneof0TypeForResponse",
+    "TeamsTeamIdPatchBodyType",
+    "TeamsTeamIdPatchBodyTypeForResponse",
 )

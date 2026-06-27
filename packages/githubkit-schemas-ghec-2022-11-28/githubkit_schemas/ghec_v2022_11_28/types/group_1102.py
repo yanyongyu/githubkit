@@ -9,28 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0053 import RunnerLabelType, RunnerLabelTypeForResponse
-
-
-class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200Type(TypedDict):
-    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200"""
-
-    total_count: int
-    labels: list[RunnerLabelType]
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200"""
+class EnterprisesEnterpriseActionsRunnerGroupsPostBodyType(TypedDict):
+    """EnterprisesEnterpriseActionsRunnerGroupsPostBody"""
 
-    total_count: int
-    labels: list[RunnerLabelTypeForResponse]
+    name: str
+    visibility: NotRequired[Literal["selected", "all"]]
+    selected_organization_ids: NotRequired[list[int]]
+    runners: NotRequired[list[int]]
+    allows_public_repositories: NotRequired[bool]
+    restricted_to_workflows: NotRequired[bool]
+    selected_workflows: NotRequired[list[str]]
+    network_configuration_id: NotRequired[str]
+
+
+class EnterprisesEnterpriseActionsRunnerGroupsPostBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseActionsRunnerGroupsPostBody"""
+
+    name: str
+    visibility: NotRequired[Literal["selected", "all"]]
+    selected_organization_ids: NotRequired[list[int]]
+    runners: NotRequired[list[int]]
+    allows_public_repositories: NotRequired[bool]
+    restricted_to_workflows: NotRequired[bool]
+    selected_workflows: NotRequired[list[str]]
+    network_configuration_id: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200Type",
-    "EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200TypeForResponse",
+    "EnterprisesEnterpriseActionsRunnerGroupsPostBodyType",
+    "EnterprisesEnterpriseActionsRunnerGroupsPostBodyTypeForResponse",
 )

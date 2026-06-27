@@ -9,89 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class IssueFieldValueType(TypedDict):
-    """Issue Field Value
+class IssueCommentMinimizedType(TypedDict):
+    """Minimized Issue Comment
 
-    A value assigned to an issue field
+    Details about why an issue comment was minimized.
     """
 
-    issue_field_id: int
-    node_id: str
-    data_type: Literal["text", "single_select", "multi_select", "number", "date"]
-    value: Union[str, float, int, None]
-    single_select_option: NotRequired[
-        Union[IssueFieldValuePropSingleSelectOptionType, None]
-    ]
-    multi_select_options: NotRequired[
-        Union[list[IssueFieldValuePropMultiSelectOptionsItemsType], None]
-    ]
+    reason: Union[str, None]
 
 
-class IssueFieldValueTypeForResponse(TypedDict):
-    """Issue Field Value
+class IssueCommentMinimizedTypeForResponse(TypedDict):
+    """Minimized Issue Comment
 
-    A value assigned to an issue field
+    Details about why an issue comment was minimized.
     """
 
-    issue_field_id: int
-    node_id: str
-    data_type: Literal["text", "single_select", "multi_select", "number", "date"]
-    value: Union[str, float, int, None]
-    single_select_option: NotRequired[
-        Union[IssueFieldValuePropSingleSelectOptionTypeForResponse, None]
-    ]
-    multi_select_options: NotRequired[
-        Union[list[IssueFieldValuePropMultiSelectOptionsItemsTypeForResponse], None]
-    ]
-
-
-class IssueFieldValuePropSingleSelectOptionType(TypedDict):
-    """IssueFieldValuePropSingleSelectOption
-
-    Details about the selected option (only present for single_select fields)
-    """
-
-    id: int
-    name: str
-    color: str
-
-
-class IssueFieldValuePropSingleSelectOptionTypeForResponse(TypedDict):
-    """IssueFieldValuePropSingleSelectOption
-
-    Details about the selected option (only present for single_select fields)
-    """
-
-    id: int
-    name: str
-    color: str
-
-
-class IssueFieldValuePropMultiSelectOptionsItemsType(TypedDict):
-    """IssueFieldValuePropMultiSelectOptionsItems"""
-
-    id: int
-    name: str
-    color: str
-
-
-class IssueFieldValuePropMultiSelectOptionsItemsTypeForResponse(TypedDict):
-    """IssueFieldValuePropMultiSelectOptionsItems"""
-
-    id: int
-    name: str
-    color: str
+    reason: Union[str, None]
 
 
 __all__ = (
-    "IssueFieldValuePropMultiSelectOptionsItemsType",
-    "IssueFieldValuePropMultiSelectOptionsItemsTypeForResponse",
-    "IssueFieldValuePropSingleSelectOptionType",
-    "IssueFieldValuePropSingleSelectOptionTypeForResponse",
-    "IssueFieldValueType",
-    "IssueFieldValueTypeForResponse",
+    "IssueCommentMinimizedType",
+    "IssueCommentMinimizedTypeForResponse",
 )

@@ -9,48 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0205 import IssueTypeType, IssueTypeTypeForResponse
-from .group_0576 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0577 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0578 import (
+from .group_0588 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0589 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0590 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0579 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0597 import WebhooksIssueType, WebhooksIssueTypeForResponse
+from .group_0591 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0610 import WebhooksMilestoneType, WebhooksMilestoneTypeForResponse
+from .group_0816 import (
+    WebhookIssuesMilestonedPropIssueType,
+    WebhookIssuesMilestonedPropIssueTypeForResponse,
+)
 
 
-class WebhookIssuesTypedType(TypedDict):
-    """issues typed event"""
+class WebhookIssuesMilestonedType(TypedDict):
+    """issues milestoned event"""
 
-    action: Literal["typed"]
+    action: Literal["milestoned"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhooksIssueType
-    type: Union[IssueTypeType, None]
+    issue: WebhookIssuesMilestonedPropIssueType
+    milestone: WebhooksMilestoneType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookIssuesTypedTypeForResponse(TypedDict):
-    """issues typed event"""
+class WebhookIssuesMilestonedTypeForResponse(TypedDict):
+    """issues milestoned event"""
 
-    action: Literal["typed"]
+    action: Literal["milestoned"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhooksIssueTypeForResponse
-    type: Union[IssueTypeTypeForResponse, None]
+    issue: WebhookIssuesMilestonedPropIssueTypeForResponse
+    milestone: WebhooksMilestoneTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookIssuesTypedType",
-    "WebhookIssuesTypedTypeForResponse",
+    "WebhookIssuesMilestonedType",
+    "WebhookIssuesMilestonedTypeForResponse",
 )

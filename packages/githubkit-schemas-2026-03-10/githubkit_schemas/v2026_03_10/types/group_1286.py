@@ -9,89 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
+from typing import Any, TypeAlias
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoGitCommitsPostBodyType(TypedDict):
-    """ReposOwnerRepoGitCommitsPostBody"""
+class ReposOwnerRepoDispatchesPostBodyType(TypedDict):
+    """ReposOwnerRepoDispatchesPostBody"""
 
-    message: str
-    tree: str
-    parents: NotRequired[list[str]]
-    author: NotRequired[ReposOwnerRepoGitCommitsPostBodyPropAuthorType]
-    committer: NotRequired[ReposOwnerRepoGitCommitsPostBodyPropCommitterType]
-    signature: NotRequired[str]
+    event_type: str
+    client_payload: NotRequired[ReposOwnerRepoDispatchesPostBodyPropClientPayloadType]
 
 
-class ReposOwnerRepoGitCommitsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoGitCommitsPostBody"""
+class ReposOwnerRepoDispatchesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoDispatchesPostBody"""
 
-    message: str
-    tree: str
-    parents: NotRequired[list[str]]
-    author: NotRequired[ReposOwnerRepoGitCommitsPostBodyPropAuthorTypeForResponse]
-    committer: NotRequired[ReposOwnerRepoGitCommitsPostBodyPropCommitterTypeForResponse]
-    signature: NotRequired[str]
+    event_type: str
+    client_payload: NotRequired[
+        ReposOwnerRepoDispatchesPostBodyPropClientPayloadTypeForResponse
+    ]
 
 
-class ReposOwnerRepoGitCommitsPostBodyPropAuthorType(TypedDict):
-    """ReposOwnerRepoGitCommitsPostBodyPropAuthor
+ReposOwnerRepoDispatchesPostBodyPropClientPayloadType: TypeAlias = dict[str, Any]
+"""ReposOwnerRepoDispatchesPostBodyPropClientPayload
 
-    Information about the author of the commit. By default, the `author` will be the
-    authenticated user and the current date. See the `author` and `committer` object
-    below for details.
-    """
-
-    name: str
-    email: str
-    date: NotRequired[_dt.datetime]
+JSON payload with extra information about the webhook event that your action or
+workflow may use. The maximum number of top-level properties is 10. The total
+size of the JSON payload must be less than 64KB.
+"""
 
 
-class ReposOwnerRepoGitCommitsPostBodyPropAuthorTypeForResponse(TypedDict):
-    """ReposOwnerRepoGitCommitsPostBodyPropAuthor
+ReposOwnerRepoDispatchesPostBodyPropClientPayloadTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""ReposOwnerRepoDispatchesPostBodyPropClientPayload
 
-    Information about the author of the commit. By default, the `author` will be the
-    authenticated user and the current date. See the `author` and `committer` object
-    below for details.
-    """
-
-    name: str
-    email: str
-    date: NotRequired[str]
-
-
-class ReposOwnerRepoGitCommitsPostBodyPropCommitterType(TypedDict):
-    """ReposOwnerRepoGitCommitsPostBodyPropCommitter
-
-    Information about the person who is making the commit. By default, `committer`
-    will use the information set in `author`. See the `author` and `committer`
-    object below for details.
-    """
-
-    name: NotRequired[str]
-    email: NotRequired[str]
-    date: NotRequired[_dt.datetime]
-
-
-class ReposOwnerRepoGitCommitsPostBodyPropCommitterTypeForResponse(TypedDict):
-    """ReposOwnerRepoGitCommitsPostBodyPropCommitter
-
-    Information about the person who is making the commit. By default, `committer`
-    will use the information set in `author`. See the `author` and `committer`
-    object below for details.
-    """
-
-    name: NotRequired[str]
-    email: NotRequired[str]
-    date: NotRequired[str]
+JSON payload with extra information about the webhook event that your action or
+workflow may use. The maximum number of top-level properties is 10. The total
+size of the JSON payload must be less than 64KB.
+"""
 
 
 __all__ = (
-    "ReposOwnerRepoGitCommitsPostBodyPropAuthorType",
-    "ReposOwnerRepoGitCommitsPostBodyPropAuthorTypeForResponse",
-    "ReposOwnerRepoGitCommitsPostBodyPropCommitterType",
-    "ReposOwnerRepoGitCommitsPostBodyPropCommitterTypeForResponse",
-    "ReposOwnerRepoGitCommitsPostBodyType",
-    "ReposOwnerRepoGitCommitsPostBodyTypeForResponse",
+    "ReposOwnerRepoDispatchesPostBodyPropClientPayloadType",
+    "ReposOwnerRepoDispatchesPostBodyPropClientPayloadTypeForResponse",
+    "ReposOwnerRepoDispatchesPostBodyType",
+    "ReposOwnerRepoDispatchesPostBodyTypeForResponse",
 )

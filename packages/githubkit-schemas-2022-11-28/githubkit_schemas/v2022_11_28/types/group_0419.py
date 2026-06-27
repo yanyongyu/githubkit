@@ -9,60 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0058 import IssueType, IssueTypeForResponse
 
 
-class PageBuildType(TypedDict):
-    """Page Build
+class TimelineCrossReferencedEventPropSourceType(TypedDict):
+    """TimelineCrossReferencedEventPropSource"""
 
-    Page Build
-    """
-
-    url: str
-    status: str
-    error: PageBuildPropErrorType
-    pusher: Union[None, SimpleUserType]
-    commit: str
-    duration: int
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+    type: NotRequired[str]
+    issue: NotRequired[IssueType]
 
 
-class PageBuildTypeForResponse(TypedDict):
-    """Page Build
+class TimelineCrossReferencedEventPropSourceTypeForResponse(TypedDict):
+    """TimelineCrossReferencedEventPropSource"""
 
-    Page Build
-    """
-
-    url: str
-    status: str
-    error: PageBuildPropErrorTypeForResponse
-    pusher: Union[None, SimpleUserTypeForResponse]
-    commit: str
-    duration: int
-    created_at: str
-    updated_at: str
-
-
-class PageBuildPropErrorType(TypedDict):
-    """PageBuildPropError"""
-
-    message: Union[str, None]
-
-
-class PageBuildPropErrorTypeForResponse(TypedDict):
-    """PageBuildPropError"""
-
-    message: Union[str, None]
+    type: NotRequired[str]
+    issue: NotRequired[IssueTypeForResponse]
 
 
 __all__ = (
-    "PageBuildPropErrorType",
-    "PageBuildPropErrorTypeForResponse",
-    "PageBuildType",
-    "PageBuildTypeForResponse",
+    "TimelineCrossReferencedEventPropSourceType",
+    "TimelineCrossReferencedEventPropSourceTypeForResponse",
 )

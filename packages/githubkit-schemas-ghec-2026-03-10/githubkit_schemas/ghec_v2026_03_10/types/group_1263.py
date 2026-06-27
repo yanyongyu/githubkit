@@ -9,111 +9,228 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0079 import (
+    CodeScanningDefaultSetupOptionsType,
+    CodeScanningDefaultSetupOptionsTypeForResponse,
+    CodeScanningOptionsType,
+    CodeScanningOptionsTypeForResponse,
+)
 
-class OrgsOrgCopilotSpacesSpaceNumberPutBodyType(TypedDict):
-    """OrgsOrgCopilotSpacesSpaceNumberPutBody"""
+
+class OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyType(TypedDict):
+    """OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody"""
 
     name: NotRequired[str]
     description: NotRequired[str]
-    general_instructions: NotRequired[str]
-    base_role: NotRequired[Literal["reader", "writer", "admin", "no_access"]]
-    resources_attributes: NotRequired[
-        list[OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsType]
+    advanced_security: NotRequired[
+        Literal["enabled", "disabled", "code_security", "secret_protection"]
     ]
+    code_security: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    dependency_graph: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    dependency_graph_autosubmit_action: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    dependency_graph_autosubmit_action_options: NotRequired[
+        OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsType
+    ]
+    dependabot_alerts: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    dependabot_security_updates: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    dependabot_delegated_alert_dismissal: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    code_scanning_default_setup: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    code_scanning_default_setup_options: NotRequired[
+        Union[CodeScanningDefaultSetupOptionsType, None]
+    ]
+    code_scanning_options: NotRequired[Union[CodeScanningOptionsType, None]]
+    code_scanning_delegated_alert_dismissal: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_protection: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    secret_scanning: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    secret_scanning_push_protection: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_delegated_bypass: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_delegated_bypass_options: NotRequired[
+        OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptionsType
+    ]
+    secret_scanning_validity_checks: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_non_provider_patterns: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_generic_secrets: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_delegated_alert_dismissal: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_extended_metadata: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    private_vulnerability_reporting: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    enforcement: NotRequired[Literal["enforced", "unenforced"]]
 
 
-class OrgsOrgCopilotSpacesSpaceNumberPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgCopilotSpacesSpaceNumberPutBody"""
+class OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody"""
 
     name: NotRequired[str]
     description: NotRequired[str]
-    general_instructions: NotRequired[str]
-    base_role: NotRequired[Literal["reader", "writer", "admin", "no_access"]]
-    resources_attributes: NotRequired[
+    advanced_security: NotRequired[
+        Literal["enabled", "disabled", "code_security", "secret_protection"]
+    ]
+    code_security: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    dependency_graph: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    dependency_graph_autosubmit_action: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    dependency_graph_autosubmit_action_options: NotRequired[
+        OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsTypeForResponse
+    ]
+    dependabot_alerts: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    dependabot_security_updates: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    dependabot_delegated_alert_dismissal: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    code_scanning_default_setup: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    code_scanning_default_setup_options: NotRequired[
+        Union[CodeScanningDefaultSetupOptionsTypeForResponse, None]
+    ]
+    code_scanning_options: NotRequired[Union[CodeScanningOptionsTypeForResponse, None]]
+    code_scanning_delegated_alert_dismissal: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_protection: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    secret_scanning: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    secret_scanning_push_protection: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_delegated_bypass: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_delegated_bypass_options: NotRequired[
+        OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptionsTypeForResponse
+    ]
+    secret_scanning_validity_checks: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_non_provider_patterns: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_generic_secrets: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_delegated_alert_dismissal: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_extended_metadata: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    private_vulnerability_reporting: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    enforcement: NotRequired[Literal["enforced", "unenforced"]]
+
+
+class OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsType(
+    TypedDict
+):
+    """OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAuto
+    submitActionOptions
+
+    Feature options for Automatic dependency submission
+    """
+
+    labeled_runners: NotRequired[bool]
+
+
+class OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAuto
+    submitActionOptions
+
+    Feature options for Automatic dependency submission
+    """
+
+    labeled_runners: NotRequired[bool]
+
+
+class OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptionsType(
+    TypedDict
+):
+    """OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDeleg
+    atedBypassOptions
+
+    Feature options for secret scanning delegated bypass
+    """
+
+    reviewers: NotRequired[
         list[
-            OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsTypeForResponse
+            OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType
         ]
     ]
 
 
-class OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsType(TypedDict):
-    """OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems"""
-
-    resource_type: NotRequired[
-        Literal[
-            "repository",
-            "github_file",
-            "free_text",
-            "github_issue",
-            "github_pull_request",
-            "media_content",
-            "uploaded_text_file",
-        ]
-    ]
-    metadata: NotRequired[
-        OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataType
-    ]
-
-
-class OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsTypeForResponse(
+class OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptionsTypeForResponse(
     TypedDict
 ):
-    """OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems"""
+    """OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDeleg
+    atedBypassOptions
 
-    resource_type: NotRequired[
-        Literal[
-            "repository",
-            "github_file",
-            "free_text",
-            "github_issue",
-            "github_pull_request",
-            "media_content",
-            "uploaded_text_file",
-        ]
-    ]
-    metadata: NotRequired[
-        OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataTypeForResponse
-    ]
-
-
-class OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataType(
-    TypedDict
-):
-    """OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata
-
-    Metadata specific to the resource type.
+    Feature options for secret scanning delegated bypass
     """
 
-    repository_id: NotRequired[int]
-    file_path: NotRequired[str]
-    text: NotRequired[str]
-    name: NotRequired[str]
-    number: NotRequired[int]
+    reviewers: NotRequired[
+        list[
+            OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItemsTypeForResponse
+        ]
+    ]
 
 
-class OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataTypeForResponse(
+class OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType(
     TypedDict
 ):
-    """OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata
-
-    Metadata specific to the resource type.
+    """OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDeleg
+    atedBypassOptionsPropReviewersItems
     """
 
-    repository_id: NotRequired[int]
-    file_path: NotRequired[str]
-    text: NotRequired[str]
-    name: NotRequired[str]
-    number: NotRequired[int]
+    reviewer_id: int
+    reviewer_type: Literal["TEAM", "ROLE"]
+    mode: NotRequired[Literal["ALWAYS", "EXEMPT"]]
+
+
+class OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItemsTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDeleg
+    atedBypassOptionsPropReviewersItems
+    """
+
+    reviewer_id: int
+    reviewer_type: Literal["TEAM", "ROLE"]
+    mode: NotRequired[Literal["ALWAYS", "EXEMPT"]]
 
 
 __all__ = (
-    "OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataType",
-    "OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataTypeForResponse",
-    "OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsType",
-    "OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsTypeForResponse",
-    "OrgsOrgCopilotSpacesSpaceNumberPutBodyType",
-    "OrgsOrgCopilotSpacesSpaceNumberPutBodyTypeForResponse",
+    "OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsType",
+    "OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsTypeForResponse",
+    "OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType",
+    "OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItemsTypeForResponse",
+    "OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptionsType",
+    "OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptionsTypeForResponse",
+    "OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyType",
+    "OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyTypeForResponse",
 )

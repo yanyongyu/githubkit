@@ -9,26 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0273 import ActionsSecretType, ActionsSecretTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoAgentsSecretsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoAgentsSecretsGetResponse200"""
+class ReposOwnerRepoActionsRunsRunIdRerunPostBodyType(TypedDict):
+    """ReposOwnerRepoActionsRunsRunIdRerunPostBody"""
 
-    total_count: int
-    secrets: list[ActionsSecretType]
+    enable_debug_logging: NotRequired[bool]
 
 
-class ReposOwnerRepoAgentsSecretsGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoAgentsSecretsGetResponse200"""
+class ReposOwnerRepoActionsRunsRunIdRerunPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsRunsRunIdRerunPostBody"""
 
-    total_count: int
-    secrets: list[ActionsSecretTypeForResponse]
+    enable_debug_logging: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoAgentsSecretsGetResponse200Type",
-    "ReposOwnerRepoAgentsSecretsGetResponse200TypeForResponse",
+    "ReposOwnerRepoActionsRunsRunIdRerunPostBodyType",
+    "ReposOwnerRepoActionsRunsRunIdRerunPostBodyTypeForResponse",
 )

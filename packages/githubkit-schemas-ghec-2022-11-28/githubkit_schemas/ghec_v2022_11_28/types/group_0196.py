@@ -9,29 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class DeleteCostCenterType(TypedDict):
-    """DeleteCostCenter"""
+class UpdateCostCenterType(TypedDict):
+    """UpdateCostCenter"""
 
-    message: str
     id: str
     name: str
-    cost_center_state: Literal["CostCenterArchived"]
+    azure_subscription: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["active", "deleted"]]
+    resources: list[UpdateCostCenterPropResourcesItemsType]
 
 
-class DeleteCostCenterTypeForResponse(TypedDict):
-    """DeleteCostCenter"""
+class UpdateCostCenterTypeForResponse(TypedDict):
+    """UpdateCostCenter"""
 
-    message: str
     id: str
     name: str
-    cost_center_state: Literal["CostCenterArchived"]
+    azure_subscription: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["active", "deleted"]]
+    resources: list[UpdateCostCenterPropResourcesItemsTypeForResponse]
+
+
+class UpdateCostCenterPropResourcesItemsType(TypedDict):
+    """UpdateCostCenterPropResourcesItems"""
+
+    type: str
+    name: str
+
+
+class UpdateCostCenterPropResourcesItemsTypeForResponse(TypedDict):
+    """UpdateCostCenterPropResourcesItems"""
+
+    type: str
+    name: str
 
 
 __all__ = (
-    "DeleteCostCenterType",
-    "DeleteCostCenterTypeForResponse",
+    "UpdateCostCenterPropResourcesItemsType",
+    "UpdateCostCenterPropResourcesItemsTypeForResponse",
+    "UpdateCostCenterType",
+    "UpdateCostCenterTypeForResponse",
 )

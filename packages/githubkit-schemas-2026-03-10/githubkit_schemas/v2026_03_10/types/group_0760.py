@@ -13,111 +13,54 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0502 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0503 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0504 import (
+from .group_0514 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0515 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0516 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0505 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0522 import WebhooksMilestoneType, WebhooksMilestoneTypeForResponse
+from .group_0517 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0537 import (
+    WebhooksMarketplacePurchaseType,
+    WebhooksMarketplacePurchaseTypeForResponse,
+)
+from .group_0538 import (
+    WebhooksPreviousMarketplacePurchaseType,
+    WebhooksPreviousMarketplacePurchaseTypeForResponse,
+)
 
 
-class WebhookMilestoneEditedType(TypedDict):
-    """milestone edited event"""
+class WebhookMarketplacePurchasePurchasedType(TypedDict):
+    """marketplace_purchase purchased event"""
 
-    action: Literal["edited"]
-    changes: WebhookMilestoneEditedPropChangesType
+    action: Literal["purchased"]
+    effective_date: str
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    milestone: WebhooksMilestoneType
+    marketplace_purchase: WebhooksMarketplacePurchaseType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
+    previous_marketplace_purchase: NotRequired[WebhooksPreviousMarketplacePurchaseType]
+    repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserType
 
 
-class WebhookMilestoneEditedTypeForResponse(TypedDict):
-    """milestone edited event"""
+class WebhookMarketplacePurchasePurchasedTypeForResponse(TypedDict):
+    """marketplace_purchase purchased event"""
 
-    action: Literal["edited"]
-    changes: WebhookMilestoneEditedPropChangesTypeForResponse
+    action: Literal["purchased"]
+    effective_date: str
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    milestone: WebhooksMilestoneTypeForResponse
+    marketplace_purchase: WebhooksMarketplacePurchaseTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
+    previous_marketplace_purchase: NotRequired[
+        WebhooksPreviousMarketplacePurchaseTypeForResponse
+    ]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
     sender: SimpleUserTypeForResponse
 
 
-class WebhookMilestoneEditedPropChangesType(TypedDict):
-    """WebhookMilestoneEditedPropChanges
-
-    The changes to the milestone if the action was `edited`.
-    """
-
-    description: NotRequired[WebhookMilestoneEditedPropChangesPropDescriptionType]
-    due_on: NotRequired[WebhookMilestoneEditedPropChangesPropDueOnType]
-    title: NotRequired[WebhookMilestoneEditedPropChangesPropTitleType]
-
-
-class WebhookMilestoneEditedPropChangesTypeForResponse(TypedDict):
-    """WebhookMilestoneEditedPropChanges
-
-    The changes to the milestone if the action was `edited`.
-    """
-
-    description: NotRequired[
-        WebhookMilestoneEditedPropChangesPropDescriptionTypeForResponse
-    ]
-    due_on: NotRequired[WebhookMilestoneEditedPropChangesPropDueOnTypeForResponse]
-    title: NotRequired[WebhookMilestoneEditedPropChangesPropTitleTypeForResponse]
-
-
-class WebhookMilestoneEditedPropChangesPropDescriptionType(TypedDict):
-    """WebhookMilestoneEditedPropChangesPropDescription"""
-
-    from_: str
-
-
-class WebhookMilestoneEditedPropChangesPropDescriptionTypeForResponse(TypedDict):
-    """WebhookMilestoneEditedPropChangesPropDescription"""
-
-    from_: str
-
-
-class WebhookMilestoneEditedPropChangesPropDueOnType(TypedDict):
-    """WebhookMilestoneEditedPropChangesPropDueOn"""
-
-    from_: str
-
-
-class WebhookMilestoneEditedPropChangesPropDueOnTypeForResponse(TypedDict):
-    """WebhookMilestoneEditedPropChangesPropDueOn"""
-
-    from_: str
-
-
-class WebhookMilestoneEditedPropChangesPropTitleType(TypedDict):
-    """WebhookMilestoneEditedPropChangesPropTitle"""
-
-    from_: str
-
-
-class WebhookMilestoneEditedPropChangesPropTitleTypeForResponse(TypedDict):
-    """WebhookMilestoneEditedPropChangesPropTitle"""
-
-    from_: str
-
-
 __all__ = (
-    "WebhookMilestoneEditedPropChangesPropDescriptionType",
-    "WebhookMilestoneEditedPropChangesPropDescriptionTypeForResponse",
-    "WebhookMilestoneEditedPropChangesPropDueOnType",
-    "WebhookMilestoneEditedPropChangesPropDueOnTypeForResponse",
-    "WebhookMilestoneEditedPropChangesPropTitleType",
-    "WebhookMilestoneEditedPropChangesPropTitleTypeForResponse",
-    "WebhookMilestoneEditedPropChangesType",
-    "WebhookMilestoneEditedPropChangesTypeForResponse",
-    "WebhookMilestoneEditedType",
-    "WebhookMilestoneEditedTypeForResponse",
+    "WebhookMarketplacePurchasePurchasedType",
+    "WebhookMarketplacePurchasePurchasedTypeForResponse",
 )

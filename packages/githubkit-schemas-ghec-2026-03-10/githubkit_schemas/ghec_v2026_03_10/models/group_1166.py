@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,37 +18,57 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseTeamsTeamSlugPatchBody(GitHubModel):
-    """EnterprisesEnterpriseTeamsTeamSlugPatchBody"""
+class EnterprisesEnterpriseSettingsBillingBudgetsPostBody(GitHubModel):
+    """EnterprisesEnterpriseSettingsBillingBudgetsPostBody"""
 
-    name: Missing[Union[str, None]] = Field(
-        default=UNSET, description="A new name for the team."
+    budget_amount: int = Field(
+        description="The budget amount in whole dollars. For license-based products, this represents the number of licenses."
     )
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="A new description for the team."
+    prevent_further_usage: bool = Field(
+        description="Whether to prevent additional spending once the budget is exceeded. For `user` and `multi_user_customer` scopes, this must be `true`."
     )
-    sync_to_organizations: Missing[Literal["all", "disabled"]] = Field(
-        default=UNSET,
-        description="Retired: this field is no longer supported.\nWhether the enterprise team should be reflected in each organization.\nThis value cannot be changed.\n",
-    )
-    organization_selection_type: Missing[Literal["disabled", "selected", "all"]] = (
-        Field(
-            default=UNSET,
-            description="Specifies which organizations in the enterprise should have access to this team. Can be one of `disabled`, `selected`, or `all`.\n`disabled`: The team is not assigned to any organizations. This is the default when you create a new team.\n`selected`: The team is assigned to specific organizations. You can then use the [add organization assignments API](https://docs.github.com/enterprise-cloud@latest/rest/enterprise-teams/enterprise-team-organizations#add-organization-assignments).\n`all`: The team is assigned to all current and future organizations in the enterprise.\n",
-        )
-    )
-    group_id: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The ID of the IdP group to assign team membership with. The new IdP group will replace the existing one, or replace existing direct members if the team isn't currently linked to an IdP group.",
-    )
-    notification_setting: Missing[
-        Literal["notifications_enabled", "notifications_disabled"]
+    budget_alerting: EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting = Field()
+    budget_scope: Literal[
+        "enterprise",
+        "organization",
+        "repository",
+        "cost_center",
+        "multi_user_customer",
+        "user",
     ] = Field(
+        description="The scope of the budget. `user` and `multi_user_customer` scopes are only supported when `budget_product_sku` is `ai_credits` or `premium_requests`."
+    )
+    budget_entity_name: Missing[str] = Field(
+        default=UNSET, description="The name of the entity to apply the budget to"
+    )
+    budget_type: Literal["BundlePricing", "ProductPricing", "SkuPricing"] = Field(
+        description="The type of pricing model used by the budget. Determines how `budget_product_sku` is interpreted.\n\n- `BundlePricing`: Covers all AI credit SKUs. Set `budget_product_sku` to `ai_credits`.\n- `ProductPricing`: Covers all SKUs that belong to a product. Set `budget_product_sku` to a product such as `actions` or `packages`.\n- `SkuPricing`: Covers a single, specific SKU. Set `budget_product_sku` to a SKU such as `actions_linux`."
+    )
+    budget_product_sku: Missing[str] = Field(
         default=UNSET,
-        description="The notification setting the team is set to. The options are:\n\n* `notifications_enabled` - team members receive notifications when the team is @mentioned.\n* `notifications_disabled` - no one receives notifications.\n",
+        description="A single product or SKU that will be covered in the budget",
+    )
+    user: Missing[str] = Field(
+        default=UNSET,
+        description="The username of the user for `user` scope budgets. This field is required when `budget_scope` is `user`.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseTeamsTeamSlugPatchBody)
+class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting(
+    GitHubModel
+):
+    """EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting"""
 
-__all__ = ("EnterprisesEnterpriseTeamsTeamSlugPatchBody",)
+    will_alert: bool = Field(description="Whether alerts are enabled for this budget")
+    alert_recipients: list[str] = Field(
+        description="Array of user login names who will receive alerts"
+    )
+
+
+model_rebuild(EnterprisesEnterpriseSettingsBillingBudgetsPostBody)
+model_rebuild(EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting)
+
+__all__ = (
+    "EnterprisesEnterpriseSettingsBillingBudgetsPostBody",
+    "EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting",
+)

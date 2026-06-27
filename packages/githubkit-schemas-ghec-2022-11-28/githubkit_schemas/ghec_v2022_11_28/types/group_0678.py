@@ -13,41 +13,38 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0576 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0577 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0578 import (
+from .group_0111 import CustomPropertyType, CustomPropertyTypeForResponse
+from .group_0588 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0589 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0590 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0579 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0585 import WebhooksDeployKeyType, WebhooksDeployKeyTypeForResponse
 
 
-class WebhookDeployKeyDeletedType(TypedDict):
-    """deploy_key deleted event"""
+class WebhookCustomPropertyUpdatedType(TypedDict):
+    """custom property updated event"""
 
-    action: Literal["deleted"]
+    action: Literal["updated"]
+    definition: CustomPropertyType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    key: WebhooksDeployKeyType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookDeployKeyDeletedTypeForResponse(TypedDict):
-    """deploy_key deleted event"""
+class WebhookCustomPropertyUpdatedTypeForResponse(TypedDict):
+    """custom property updated event"""
 
-    action: Literal["deleted"]
+    action: Literal["updated"]
+    definition: CustomPropertyTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    key: WebhooksDeployKeyTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookDeployKeyDeletedType",
-    "WebhookDeployKeyDeletedTypeForResponse",
+    "WebhookCustomPropertyUpdatedType",
+    "WebhookCustomPropertyUpdatedTypeForResponse",
 )

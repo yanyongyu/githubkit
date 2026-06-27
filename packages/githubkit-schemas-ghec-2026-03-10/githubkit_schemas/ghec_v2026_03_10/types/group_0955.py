@@ -13,84 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0575 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0576 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0577 import (
+from .group_0587 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0588 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0589 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0578 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0590 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0629 import WebhooksReleaseType, WebhooksReleaseTypeForResponse
 
 
-class WebhookRepositoryRenamedType(TypedDict):
-    """repository renamed event"""
+class WebhookReleaseReleasedType(TypedDict):
+    """release released event"""
 
-    action: Literal["renamed"]
-    changes: WebhookRepositoryRenamedPropChangesType
+    action: Literal["released"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
+    release: WebhooksReleaseType
     repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookRepositoryRenamedTypeForResponse(TypedDict):
-    """repository renamed event"""
+class WebhookReleaseReleasedTypeForResponse(TypedDict):
+    """release released event"""
 
-    action: Literal["renamed"]
-    changes: WebhookRepositoryRenamedPropChangesTypeForResponse
+    action: Literal["released"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    release: WebhooksReleaseTypeForResponse
     repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
-
-
-class WebhookRepositoryRenamedPropChangesType(TypedDict):
-    """WebhookRepositoryRenamedPropChanges"""
-
-    repository: WebhookRepositoryRenamedPropChangesPropRepositoryType
-
-
-class WebhookRepositoryRenamedPropChangesTypeForResponse(TypedDict):
-    """WebhookRepositoryRenamedPropChanges"""
-
-    repository: WebhookRepositoryRenamedPropChangesPropRepositoryTypeForResponse
-
-
-class WebhookRepositoryRenamedPropChangesPropRepositoryType(TypedDict):
-    """WebhookRepositoryRenamedPropChangesPropRepository"""
-
-    name: WebhookRepositoryRenamedPropChangesPropRepositoryPropNameType
-
-
-class WebhookRepositoryRenamedPropChangesPropRepositoryTypeForResponse(TypedDict):
-    """WebhookRepositoryRenamedPropChangesPropRepository"""
-
-    name: WebhookRepositoryRenamedPropChangesPropRepositoryPropNameTypeForResponse
-
-
-class WebhookRepositoryRenamedPropChangesPropRepositoryPropNameType(TypedDict):
-    """WebhookRepositoryRenamedPropChangesPropRepositoryPropName"""
-
-    from_: str
-
-
-class WebhookRepositoryRenamedPropChangesPropRepositoryPropNameTypeForResponse(
-    TypedDict
-):
-    """WebhookRepositoryRenamedPropChangesPropRepositoryPropName"""
-
-    from_: str
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookRepositoryRenamedPropChangesPropRepositoryPropNameType",
-    "WebhookRepositoryRenamedPropChangesPropRepositoryPropNameTypeForResponse",
-    "WebhookRepositoryRenamedPropChangesPropRepositoryType",
-    "WebhookRepositoryRenamedPropChangesPropRepositoryTypeForResponse",
-    "WebhookRepositoryRenamedPropChangesType",
-    "WebhookRepositoryRenamedPropChangesTypeForResponse",
-    "WebhookRepositoryRenamedType",
-    "WebhookRepositoryRenamedTypeForResponse",
+    "WebhookReleaseReleasedType",
+    "WebhookReleaseReleasedTypeForResponse",
 )

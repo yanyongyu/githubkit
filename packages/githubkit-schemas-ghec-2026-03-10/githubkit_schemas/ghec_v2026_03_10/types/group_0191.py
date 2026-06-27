@@ -32,9 +32,18 @@ class UpdateBudgetPropBudgetType(TypedDict):
 
     id: NotRequired[str]
     budget_scope: NotRequired[
-        Literal["enterprise", "organization", "repository", "cost_center"]
+        Literal[
+            "enterprise",
+            "organization",
+            "repository",
+            "cost_center",
+            "multi_user_customer",
+            "user",
+        ]
     ]
     budget_entity_name: NotRequired[str]
+    user: NotRequired[str]
+    consumed_amount: NotRequired[float]
     budget_amount: NotRequired[int]
     prevent_further_usage: NotRequired[bool]
     budget_product_sku: NotRequired[str]
@@ -47,9 +56,18 @@ class UpdateBudgetPropBudgetTypeForResponse(TypedDict):
 
     id: NotRequired[str]
     budget_scope: NotRequired[
-        Literal["enterprise", "organization", "repository", "cost_center"]
+        Literal[
+            "enterprise",
+            "organization",
+            "repository",
+            "cost_center",
+            "multi_user_customer",
+            "user",
+        ]
     ]
     budget_entity_name: NotRequired[str]
+    user: NotRequired[str]
+    consumed_amount: NotRequired[float]
     budget_amount: NotRequired[int]
     prevent_further_usage: NotRequired[bool]
     budget_product_sku: NotRequired[str]

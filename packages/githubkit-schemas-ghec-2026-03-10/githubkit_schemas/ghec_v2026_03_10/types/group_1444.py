@@ -12,23 +12,21 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType(
+class ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201Type(TypedDict):
+    """ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201"""
+
+    sbom_url: NotRequired[str]
+
+
+class ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201TypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody"""
+    """ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201"""
 
-    integration_id: NotRequired[int]
-
-
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody"""
-
-    integration_id: NotRequired[int]
+    sbom_url: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType",
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyTypeForResponse",
+    "ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201Type",
+    "ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201TypeForResponse",
 )

@@ -9,33 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0036 import (
-    ActionsHostedRunnerCustomImageType,
-    ActionsHostedRunnerCustomImageTypeForResponse,
-)
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200Type(
-    TypedDict
-):
-    """EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200"""
+class AppHookConfigPatchBodyType(TypedDict):
+    """AppHookConfigPatchBody"""
 
-    total_count: int
-    images: list[ActionsHostedRunnerCustomImageType]
+    url: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
 
 
-class EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200"""
+class AppHookConfigPatchBodyTypeForResponse(TypedDict):
+    """AppHookConfigPatchBody"""
 
-    total_count: int
-    images: list[ActionsHostedRunnerCustomImageTypeForResponse]
+    url: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200Type",
-    "EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200TypeForResponse",
+    "AppHookConfigPatchBodyType",
+    "AppHookConfigPatchBodyTypeForResponse",
 )

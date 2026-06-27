@@ -13,21 +13,21 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsSetDefaultWorkflowPermissionsType(TypedDict):
-    """ActionsSetDefaultWorkflowPermissions"""
+class SelfHostedRunnersSettingsType(TypedDict):
+    """SelfHostedRunnersSettings"""
 
-    default_workflow_permissions: NotRequired[Literal["read", "write"]]
-    can_approve_pull_request_reviews: NotRequired[bool]
+    enabled_repositories: Literal["all", "selected", "none"]
+    selected_repositories_url: NotRequired[str]
 
 
-class ActionsSetDefaultWorkflowPermissionsTypeForResponse(TypedDict):
-    """ActionsSetDefaultWorkflowPermissions"""
+class SelfHostedRunnersSettingsTypeForResponse(TypedDict):
+    """SelfHostedRunnersSettings"""
 
-    default_workflow_permissions: NotRequired[Literal["read", "write"]]
-    can_approve_pull_request_reviews: NotRequired[bool]
+    enabled_repositories: Literal["all", "selected", "none"]
+    selected_repositories_url: NotRequired[str]
 
 
 __all__ = (
-    "ActionsSetDefaultWorkflowPermissionsType",
-    "ActionsSetDefaultWorkflowPermissionsTypeForResponse",
+    "SelfHostedRunnersSettingsType",
+    "SelfHostedRunnersSettingsTypeForResponse",
 )

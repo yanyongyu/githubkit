@@ -9,41 +9,64 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodeQualitySetupUpdateAnyof2Type(TypedDict):
-    """CodeQualitySetupUpdateAnyof2"""
+class CodeQualitySetupType(TypedDict):
+    """CodeQualitySetup
+
+    Configuration for code quality setup.
+    """
 
     state: NotRequired[Literal["configured", "not-configured"]]
-    runner_type: NotRequired[Literal["standard", "labeled"]]
-    runner_label: Union[str, None]
     languages: NotRequired[
         list[
             Literal[
-                "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
+                "csharp",
+                "go",
+                "java-kotlin",
+                "javascript-typescript",
+                "python",
+                "ruby",
+                "rust",
             ]
         ]
     ]
+    runner_type: NotRequired[Union[None, Literal["standard", "labeled"]]]
+    runner_label: NotRequired[Union[str, None]]
+    updated_at: NotRequired[Union[_dt.datetime, None]]
+    schedule: NotRequired[Union[None, Literal["weekly"]]]
 
 
-class CodeQualitySetupUpdateAnyof2TypeForResponse(TypedDict):
-    """CodeQualitySetupUpdateAnyof2"""
+class CodeQualitySetupTypeForResponse(TypedDict):
+    """CodeQualitySetup
+
+    Configuration for code quality setup.
+    """
 
     state: NotRequired[Literal["configured", "not-configured"]]
-    runner_type: NotRequired[Literal["standard", "labeled"]]
-    runner_label: Union[str, None]
     languages: NotRequired[
         list[
             Literal[
-                "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
+                "csharp",
+                "go",
+                "java-kotlin",
+                "javascript-typescript",
+                "python",
+                "ruby",
+                "rust",
             ]
         ]
     ]
+    runner_type: NotRequired[Union[None, Literal["standard", "labeled"]]]
+    runner_label: NotRequired[Union[str, None]]
+    updated_at: NotRequired[Union[str, None]]
+    schedule: NotRequired[Union[None, Literal["weekly"]]]
 
 
 __all__ = (
-    "CodeQualitySetupUpdateAnyof2Type",
-    "CodeQualitySetupUpdateAnyof2TypeForResponse",
+    "CodeQualitySetupType",
+    "CodeQualitySetupTypeForResponse",
 )

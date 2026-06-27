@@ -9,24 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Any, TypeAlias
 
-from .group_0261 import CopilotSpaceType, CopilotSpaceTypeForResponse
+UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType: TypeAlias = dict[
+    str, Any
+]
+"""UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAl
+lof1PropCustomProperties
+
+The custom properties that were defined for the repository. The keys are the
+custom property names, and the values are the corresponding custom property
+values. Present for org repos only.
+"""
 
 
-class UsersUsernameCopilotSpacesGetResponse200Type(TypedDict):
-    """UsersUsernameCopilotSpacesGetResponse200"""
+UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAl
+lof1PropCustomProperties
 
-    spaces: list[CopilotSpaceType]
-
-
-class UsersUsernameCopilotSpacesGetResponse200TypeForResponse(TypedDict):
-    """UsersUsernameCopilotSpacesGetResponse200"""
-
-    spaces: list[CopilotSpaceTypeForResponse]
+The custom properties that were defined for the repository. The keys are the
+custom property names, and the values are the corresponding custom property
+values. Present for org repos only.
+"""
 
 
 __all__ = (
-    "UsersUsernameCopilotSpacesGetResponse200Type",
-    "UsersUsernameCopilotSpacesGetResponse200TypeForResponse",
+    "UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType",
+    "UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse",
 )

@@ -13,44 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0049 import DiscussionType, DiscussionTypeForResponse
-from .group_0502 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0503 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0504 import (
+from .group_0359 import DependabotAlertType, DependabotAlertTypeForResponse
+from .group_0514 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0515 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0516 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0505 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0514 import WebhooksAnswerType, WebhooksAnswerTypeForResponse
+from .group_0517 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDiscussionAnsweredType(TypedDict):
-    """discussion answered event"""
+class WebhookDependabotAlertDismissedType(TypedDict):
+    """Dependabot alert dismissed event"""
 
-    action: Literal["answered"]
-    answer: WebhooksAnswerType
-    discussion: DiscussionType
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["dismissed"]
+    alert: DependabotAlertType
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookDiscussionAnsweredTypeForResponse(TypedDict):
-    """discussion answered event"""
+class WebhookDependabotAlertDismissedTypeForResponse(TypedDict):
+    """Dependabot alert dismissed event"""
 
-    action: Literal["answered"]
-    answer: WebhooksAnswerTypeForResponse
-    discussion: DiscussionTypeForResponse
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    action: Literal["dismissed"]
+    alert: DependabotAlertTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookDiscussionAnsweredType",
-    "WebhookDiscussionAnsweredTypeForResponse",
+    "WebhookDependabotAlertDismissedType",
+    "WebhookDependabotAlertDismissedTypeForResponse",
 )

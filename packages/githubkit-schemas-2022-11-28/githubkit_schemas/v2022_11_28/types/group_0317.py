@@ -9,34 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodeQualitySetupUpdateResponseType(TypedDict):
-    """CodeQualitySetupUpdateResponse
+class CodeQualitySetupUpdateAnyof1Type(TypedDict):
+    """CodeQualitySetupUpdateAnyof1"""
 
-    You can use `run_url` to track the status of the run. This includes a property
-    status and conclusion.
-    You should not rely on this always being an actions workflow run object.
-    """
+    state: NotRequired[Literal["configured", "not-configured"]]
+    runner_type: Literal["standard", "labeled"]
+    runner_label: NotRequired[Union[str, None]]
+    languages: NotRequired[
+        list[
+            Literal[
+                "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
+            ]
+        ]
+    ]
 
-    run_id: NotRequired[int]
-    run_url: NotRequired[str]
 
+class CodeQualitySetupUpdateAnyof1TypeForResponse(TypedDict):
+    """CodeQualitySetupUpdateAnyof1"""
 
-class CodeQualitySetupUpdateResponseTypeForResponse(TypedDict):
-    """CodeQualitySetupUpdateResponse
-
-    You can use `run_url` to track the status of the run. This includes a property
-    status and conclusion.
-    You should not rely on this always being an actions workflow run object.
-    """
-
-    run_id: NotRequired[int]
-    run_url: NotRequired[str]
+    state: NotRequired[Literal["configured", "not-configured"]]
+    runner_type: Literal["standard", "labeled"]
+    runner_label: NotRequired[Union[str, None]]
+    languages: NotRequired[
+        list[
+            Literal[
+                "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
+            ]
+        ]
+    ]
 
 
 __all__ = (
-    "CodeQualitySetupUpdateResponseType",
-    "CodeQualitySetupUpdateResponseTypeForResponse",
+    "CodeQualitySetupUpdateAnyof1Type",
+    "CodeQualitySetupUpdateAnyof1TypeForResponse",
 )

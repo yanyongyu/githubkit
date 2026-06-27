@@ -9,24 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0109 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
-
-
-class OrganizationsOrgOrgPropertiesValuesPatchBodyType(TypedDict):
-    """OrganizationsOrgOrgPropertiesValuesPatchBody"""
-
-    properties: list[CustomPropertyValueType]
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationsOrgOrgPropertiesValuesPatchBodyTypeForResponse(TypedDict):
-    """OrganizationsOrgOrgPropertiesValuesPatchBody"""
+class EnterprisesEnterpriseTeamsTeamSlugPatchBodyType(TypedDict):
+    """EnterprisesEnterpriseTeamsTeamSlugPatchBody"""
 
-    properties: list[CustomPropertyValueTypeForResponse]
+    name: NotRequired[Union[str, None]]
+    description: NotRequired[Union[str, None]]
+    sync_to_organizations: NotRequired[Literal["all", "disabled"]]
+    organization_selection_type: NotRequired[Literal["disabled", "selected", "all"]]
+    group_id: NotRequired[Union[str, None]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
+
+
+class EnterprisesEnterpriseTeamsTeamSlugPatchBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseTeamsTeamSlugPatchBody"""
+
+    name: NotRequired[Union[str, None]]
+    description: NotRequired[Union[str, None]]
+    sync_to_organizations: NotRequired[Literal["all", "disabled"]]
+    organization_selection_type: NotRequired[Literal["disabled", "selected", "all"]]
+    group_id: NotRequired[Union[str, None]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
 
 
 __all__ = (
-    "OrganizationsOrgOrgPropertiesValuesPatchBodyType",
-    "OrganizationsOrgOrgPropertiesValuesPatchBodyTypeForResponse",
+    "EnterprisesEnterpriseTeamsTeamSlugPatchBodyType",
+    "EnterprisesEnterpriseTeamsTeamSlugPatchBodyTypeForResponse",
 )

@@ -9,25 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0575 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0576 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0577 import (
+from .group_0587 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0588 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0589 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0578 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0590 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookRepositoryVulnerabilityAlertDismissType(TypedDict):
-    """repository_vulnerability_alert dismiss event"""
+class WebhookRepositoryRenamedType(TypedDict):
+    """repository renamed event"""
 
-    action: Literal["dismiss"]
-    alert: WebhookRepositoryVulnerabilityAlertDismissPropAlertType
+    action: Literal["renamed"]
+    changes: WebhookRepositoryRenamedPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -35,11 +34,11 @@ class WebhookRepositoryVulnerabilityAlertDismissType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookRepositoryVulnerabilityAlertDismissTypeForResponse(TypedDict):
-    """repository_vulnerability_alert dismiss event"""
+class WebhookRepositoryRenamedTypeForResponse(TypedDict):
+    """repository renamed event"""
 
-    action: Literal["dismiss"]
-    alert: WebhookRepositoryVulnerabilityAlertDismissPropAlertTypeForResponse
+    action: Literal["renamed"]
+    changes: WebhookRepositoryRenamedPropChangesTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
@@ -47,124 +46,51 @@ class WebhookRepositoryVulnerabilityAlertDismissTypeForResponse(TypedDict):
     sender: SimpleUserTypeForResponse
 
 
-class WebhookRepositoryVulnerabilityAlertDismissPropAlertType(TypedDict):
-    """Repository Vulnerability Alert Alert
+class WebhookRepositoryRenamedPropChangesType(TypedDict):
+    """WebhookRepositoryRenamedPropChanges"""
 
-    The security alert of the vulnerable dependency.
-    """
-
-    affected_package_name: str
-    affected_range: str
-    created_at: str
-    dismiss_comment: NotRequired[Union[str, None]]
-    dismiss_reason: str
-    dismissed_at: str
-    dismisser: Union[
-        WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisserType, None
-    ]
-    external_identifier: str
-    external_reference: Union[str, None]
-    fix_reason: NotRequired[str]
-    fixed_at: NotRequired[_dt.datetime]
-    fixed_in: NotRequired[str]
-    ghsa_id: str
-    id: int
-    node_id: str
-    number: int
-    severity: str
-    state: Literal["dismissed"]
+    repository: WebhookRepositoryRenamedPropChangesPropRepositoryType
 
 
-class WebhookRepositoryVulnerabilityAlertDismissPropAlertTypeForResponse(TypedDict):
-    """Repository Vulnerability Alert Alert
+class WebhookRepositoryRenamedPropChangesTypeForResponse(TypedDict):
+    """WebhookRepositoryRenamedPropChanges"""
 
-    The security alert of the vulnerable dependency.
-    """
-
-    affected_package_name: str
-    affected_range: str
-    created_at: str
-    dismiss_comment: NotRequired[Union[str, None]]
-    dismiss_reason: str
-    dismissed_at: str
-    dismisser: Union[
-        WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisserTypeForResponse,
-        None,
-    ]
-    external_identifier: str
-    external_reference: Union[str, None]
-    fix_reason: NotRequired[str]
-    fixed_at: NotRequired[str]
-    fixed_in: NotRequired[str]
-    ghsa_id: str
-    id: int
-    node_id: str
-    number: int
-    severity: str
-    state: Literal["dismissed"]
+    repository: WebhookRepositoryRenamedPropChangesPropRepositoryTypeForResponse
 
 
-class WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisserType(TypedDict):
-    """User"""
+class WebhookRepositoryRenamedPropChangesPropRepositoryType(TypedDict):
+    """WebhookRepositoryRenamedPropChangesPropRepository"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    name: WebhookRepositoryRenamedPropChangesPropRepositoryPropNameType
 
 
-class WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisserTypeForResponse(
+class WebhookRepositoryRenamedPropChangesPropRepositoryTypeForResponse(TypedDict):
+    """WebhookRepositoryRenamedPropChangesPropRepository"""
+
+    name: WebhookRepositoryRenamedPropChangesPropRepositoryPropNameTypeForResponse
+
+
+class WebhookRepositoryRenamedPropChangesPropRepositoryPropNameType(TypedDict):
+    """WebhookRepositoryRenamedPropChangesPropRepositoryPropName"""
+
+    from_: str
+
+
+class WebhookRepositoryRenamedPropChangesPropRepositoryPropNameTypeForResponse(
     TypedDict
 ):
-    """User"""
+    """WebhookRepositoryRenamedPropChangesPropRepositoryPropName"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    from_: str
 
 
 __all__ = (
-    "WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisserType",
-    "WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisserTypeForResponse",
-    "WebhookRepositoryVulnerabilityAlertDismissPropAlertType",
-    "WebhookRepositoryVulnerabilityAlertDismissPropAlertTypeForResponse",
-    "WebhookRepositoryVulnerabilityAlertDismissType",
-    "WebhookRepositoryVulnerabilityAlertDismissTypeForResponse",
+    "WebhookRepositoryRenamedPropChangesPropRepositoryPropNameType",
+    "WebhookRepositoryRenamedPropChangesPropRepositoryPropNameTypeForResponse",
+    "WebhookRepositoryRenamedPropChangesPropRepositoryType",
+    "WebhookRepositoryRenamedPropChangesPropRepositoryTypeForResponse",
+    "WebhookRepositoryRenamedPropChangesType",
+    "WebhookRepositoryRenamedPropChangesTypeForResponse",
+    "WebhookRepositoryRenamedType",
+    "WebhookRepositoryRenamedTypeForResponse",
 )

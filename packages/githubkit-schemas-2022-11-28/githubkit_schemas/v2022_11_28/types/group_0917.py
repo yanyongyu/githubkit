@@ -13,47 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
-from .group_0057 import IssueType, IssueTypeForResponse
-from .group_0504 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0505 import (
+from .group_0515 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0516 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0517 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0506 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0518 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0560 import WebhooksSponsorshipType, WebhooksSponsorshipTypeForResponse
 
 
-class WebhookSubIssuesParentIssueAddedType(TypedDict):
-    """parent issue added event"""
+class WebhookSponsorshipCreatedType(TypedDict):
+    """sponsorship created event"""
 
-    action: Literal["parent_issue_added"]
-    parent_issue_id: NotRequired[float]
-    parent_issue: NotRequired[IssueType]
-    parent_issue_repo: NotRequired[RepositoryType]
-    sub_issue_id: float
-    sub_issue: IssueType
+    action: Literal["created"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
+    repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserType
+    sponsorship: WebhooksSponsorshipType
 
 
-class WebhookSubIssuesParentIssueAddedTypeForResponse(TypedDict):
-    """parent issue added event"""
+class WebhookSponsorshipCreatedTypeForResponse(TypedDict):
+    """sponsorship created event"""
 
-    action: Literal["parent_issue_added"]
-    parent_issue_id: NotRequired[float]
-    parent_issue: NotRequired[IssueTypeForResponse]
-    parent_issue_repo: NotRequired[RepositoryTypeForResponse]
-    sub_issue_id: float
-    sub_issue: IssueTypeForResponse
+    action: Literal["created"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
     sender: SimpleUserTypeForResponse
+    sponsorship: WebhooksSponsorshipTypeForResponse
 
 
 __all__ = (
-    "WebhookSubIssuesParentIssueAddedType",
-    "WebhookSubIssuesParentIssueAddedTypeForResponse",
+    "WebhookSponsorshipCreatedType",
+    "WebhookSponsorshipCreatedTypeForResponse",
 )

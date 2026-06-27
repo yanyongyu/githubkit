@@ -18,80 +18,42 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UsersUsernameCopilotSpacesSpaceNumberPutBody(GitHubModel):
-    """UsersUsernameCopilotSpacesSpaceNumberPutBody"""
+class UserMigrationsPostBody(GitHubModel):
+    """UserMigrationsPostBody"""
 
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the Copilot Space."
-    )
-    description: Missing[str] = Field(
-        default=UNSET, description="A description of the Copilot Space."
-    )
-    general_instructions: Missing[str] = Field(
-        max_length=4000,
+    lock_repositories: Missing[bool] = Field(
         default=UNSET,
-        description="General instructions for the Copilot Space.",
+        description="Lock the repositories being migrated at the start of the migration",
     )
-    base_role: Missing[Literal["reader", "no_access"]] = Field(
+    exclude_metadata: Missing[bool] = Field(
         default=UNSET,
-        description="The base role that determines default permissions for the space. Changing this field requires admin permissions.\n- `no_access`: No default access (default)\n- `reader`: Makes the space publicly readable\nNote: User spaces do not support writer or admin base roles.",
+        description="Indicates whether metadata should be excluded and only git source should be included for the migration.",
     )
-    resources_attributes: Missing[
-        list[UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems]
-    ] = Field(default=UNSET, description="Resources to attach to the space.")
-
-
-class UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems(
-    GitHubModel
-):
-    """UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems"""
-
-    resource_type: Missing[
-        Literal[
-            "repository",
-            "github_file",
-            "free_text",
-            "github_issue",
-            "github_pull_request",
-            "media_content",
-            "uploaded_text_file",
-        ]
-    ] = Field(default=UNSET, description="The type of resource.")
-    metadata: Missing[
-        UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata
-    ] = Field(default=UNSET, description="Metadata specific to the resource type.")
-
-
-class UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata(
-    GitHubModel
-):
-    """UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMeta
-    data
-
-    Metadata specific to the resource type.
-    """
-
-    repository_id: Missing[int] = Field(
-        default=UNSET, description="Repository ID for repository or file resources."
+    exclude_git_data: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether the repository git data should be excluded from the migration.",
     )
-    file_path: Missing[str] = Field(
-        default=UNSET, description="File path for file resources."
+    exclude_attachments: Missing[bool] = Field(
+        default=UNSET, description="Do not include attachments in the migration"
     )
-    text: Missing[str] = Field(
-        default=UNSET, description="Text content for free text resources."
+    exclude_releases: Missing[bool] = Field(
+        default=UNSET, description="Do not include releases in the migration"
     )
-    name: Missing[str] = Field(default=UNSET, description="Name for the resource.")
-    number: Missing[int] = Field(default=UNSET, description="Issue or PR number.")
+    exclude_owner_projects: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether projects owned by the organization or users should be excluded.",
+    )
+    org_metadata_only: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether this should only include organization metadata (repositories array should be empty and will ignore other flags).",
+    )
+    exclude: Missing[list[Literal["repositories"]]] = Field(
+        default=UNSET,
+        description="Exclude attributes from the API response to improve performance",
+    )
+    repositories: list[str] = Field()
 
 
-model_rebuild(UsersUsernameCopilotSpacesSpaceNumberPutBody)
-model_rebuild(UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems)
-model_rebuild(
-    UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata
-)
+model_rebuild(UserMigrationsPostBody)
 
-__all__ = (
-    "UsersUsernameCopilotSpacesSpaceNumberPutBody",
-    "UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems",
-    "UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata",
-)
+__all__ = ("UserMigrationsPostBody",)

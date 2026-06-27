@@ -11,34 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0Type(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneo
-    f0
-
-    Examples:
-        {'contexts': ['contexts']}
-    """
-
-    contexts: list[str]
+from .group_0278 import ActionsVariableType, ActionsVariableTypeForResponse
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneo
-    f0
+class ReposOwnerRepoAgentsVariablesGetResponse200Type(TypedDict):
+    """ReposOwnerRepoAgentsVariablesGetResponse200"""
 
-    Examples:
-        {'contexts': ['contexts']}
-    """
+    total_count: int
+    variables: list[ActionsVariableType]
 
-    contexts: list[str]
+
+class ReposOwnerRepoAgentsVariablesGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoAgentsVariablesGetResponse200"""
+
+    total_count: int
+    variables: list[ActionsVariableTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0Type",
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0TypeForResponse",
+    "ReposOwnerRepoAgentsVariablesGetResponse200Type",
+    "ReposOwnerRepoAgentsVariablesGetResponse200TypeForResponse",
 )

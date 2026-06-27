@@ -11,26 +11,20 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0087 import CopilotSeatDetailsType, CopilotSeatDetailsTypeForResponse
+
+class EnterprisesEnterpriseCopilotCustomAgentsGetResponse404Type(TypedDict):
+    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse404"""
+
+    message: NotRequired[str]
 
 
-class EnterprisesEnterpriseMembersUsernameCopilotGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseMembersUsernameCopilotGetResponse200"""
+class EnterprisesEnterpriseCopilotCustomAgentsGetResponse404TypeForResponse(TypedDict):
+    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse404"""
 
-    total_seats: NotRequired[int]
-    seats: NotRequired[list[CopilotSeatDetailsType]]
-
-
-class EnterprisesEnterpriseMembersUsernameCopilotGetResponse200TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseMembersUsernameCopilotGetResponse200"""
-
-    total_seats: NotRequired[int]
-    seats: NotRequired[list[CopilotSeatDetailsTypeForResponse]]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseMembersUsernameCopilotGetResponse200Type",
-    "EnterprisesEnterpriseMembersUsernameCopilotGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse404Type",
+    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse404TypeForResponse",
 )

@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,43 +17,31 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0367 import GitUser
-from .group_0368 import Verification
+
+class PatchSchema(GitHubModel):
+    """PatchSchema"""
+
+    operations: list[PatchSchemaPropOperationsItems] = Field(
+        alias="Operations", description="patch operations list"
+    )
+    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]] = Field()
 
 
-class CommitSearchResultItemPropCommit(GitHubModel):
-    """CommitSearchResultItemPropCommit"""
+class PatchSchemaPropOperationsItems(GitHubModel):
+    """PatchSchemaPropOperationsItems"""
 
-    author: CommitSearchResultItemPropCommitPropAuthor = Field()
-    committer: Union[None, GitUser] = Field()
-    comment_count: int = Field()
-    message: str = Field()
-    tree: CommitSearchResultItemPropCommitPropTree = Field()
-    url: str = Field()
-    verification: Missing[Verification] = Field(default=UNSET, title="Verification")
-
-
-class CommitSearchResultItemPropCommitPropAuthor(GitHubModel):
-    """CommitSearchResultItemPropCommitPropAuthor"""
-
-    name: str = Field()
-    email: str = Field()
-    date: _dt.datetime = Field()
+    op: Literal["add", "replace", "remove"] = Field()
+    path: Missing[str] = Field(default=UNSET)
+    value: Missing[str] = Field(
+        default=UNSET,
+        description="Corresponding 'value' of that field specified by 'path'",
+    )
 
 
-class CommitSearchResultItemPropCommitPropTree(GitHubModel):
-    """CommitSearchResultItemPropCommitPropTree"""
-
-    sha: str = Field()
-    url: str = Field()
-
-
-model_rebuild(CommitSearchResultItemPropCommit)
-model_rebuild(CommitSearchResultItemPropCommitPropAuthor)
-model_rebuild(CommitSearchResultItemPropCommitPropTree)
+model_rebuild(PatchSchema)
+model_rebuild(PatchSchemaPropOperationsItems)
 
 __all__ = (
-    "CommitSearchResultItemPropCommit",
-    "CommitSearchResultItemPropCommitPropAuthor",
-    "CommitSearchResultItemPropCommitPropTree",
+    "PatchSchema",
+    "PatchSchemaPropOperationsItems",
 )

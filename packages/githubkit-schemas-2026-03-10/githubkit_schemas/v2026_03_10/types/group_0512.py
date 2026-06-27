@@ -9,36 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksWorkflowJobRunType(TypedDict):
-    """WebhooksWorkflowJobRun"""
+class BillingUsageReportUserType(TypedDict):
+    """BillingUsageReportUser"""
 
-    conclusion: None
-    created_at: str
-    environment: str
-    html_url: str
-    id: int
-    name: None
-    status: str
-    updated_at: str
+    usage_items: NotRequired[list[BillingUsageReportUserPropUsageItemsItemsType]]
 
 
-class WebhooksWorkflowJobRunTypeForResponse(TypedDict):
-    """WebhooksWorkflowJobRun"""
+class BillingUsageReportUserTypeForResponse(TypedDict):
+    """BillingUsageReportUser"""
 
-    conclusion: None
-    created_at: str
-    environment: str
-    html_url: str
-    id: int
-    name: None
-    status: str
-    updated_at: str
+    usage_items: NotRequired[
+        list[BillingUsageReportUserPropUsageItemsItemsTypeForResponse]
+    ]
+
+
+class BillingUsageReportUserPropUsageItemsItemsType(TypedDict):
+    """BillingUsageReportUserPropUsageItemsItems"""
+
+    date: str
+    product: str
+    sku: str
+    quantity: int
+    unit_type: str
+    price_per_unit: float
+    gross_amount: float
+    discount_amount: float
+    net_amount: float
+    repository_name: NotRequired[str]
+
+
+class BillingUsageReportUserPropUsageItemsItemsTypeForResponse(TypedDict):
+    """BillingUsageReportUserPropUsageItemsItems"""
+
+    date: str
+    product: str
+    sku: str
+    quantity: int
+    unit_type: str
+    price_per_unit: float
+    gross_amount: float
+    discount_amount: float
+    net_amount: float
+    repository_name: NotRequired[str]
 
 
 __all__ = (
-    "WebhooksWorkflowJobRunType",
-    "WebhooksWorkflowJobRunTypeForResponse",
+    "BillingUsageReportUserPropUsageItemsItemsType",
+    "BillingUsageReportUserPropUsageItemsItemsTypeForResponse",
+    "BillingUsageReportUserType",
+    "BillingUsageReportUserTypeForResponse",
 )

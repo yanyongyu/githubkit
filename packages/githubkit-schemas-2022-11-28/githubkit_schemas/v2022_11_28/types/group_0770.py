@@ -9,81 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class WebhookRubygemsMetadataType(TypedDict):
-    """Ruby Gems metadata"""
-
-    name: NotRequired[str]
-    description: NotRequired[str]
-    readme: NotRequired[str]
-    homepage: NotRequired[str]
-    version_info: NotRequired[WebhookRubygemsMetadataPropVersionInfoType]
-    platform: NotRequired[str]
-    metadata: NotRequired[WebhookRubygemsMetadataPropMetadataType]
-    repo: NotRequired[str]
-    dependencies: NotRequired[list[WebhookRubygemsMetadataPropDependenciesItemsType]]
-    commit_oid: NotRequired[str]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0515 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0516 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0517 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0518 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0535 import WebhooksMilestoneType, WebhooksMilestoneTypeForResponse
 
 
-class WebhookRubygemsMetadataTypeForResponse(TypedDict):
-    """Ruby Gems metadata"""
+class WebhookMilestoneClosedType(TypedDict):
+    """milestone closed event"""
 
-    name: NotRequired[str]
-    description: NotRequired[str]
-    readme: NotRequired[str]
-    homepage: NotRequired[str]
-    version_info: NotRequired[WebhookRubygemsMetadataPropVersionInfoTypeForResponse]
-    platform: NotRequired[str]
-    metadata: NotRequired[WebhookRubygemsMetadataPropMetadataTypeForResponse]
-    repo: NotRequired[str]
-    dependencies: NotRequired[
-        list[WebhookRubygemsMetadataPropDependenciesItemsTypeForResponse]
-    ]
-    commit_oid: NotRequired[str]
+    action: Literal["closed"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    milestone: WebhooksMilestoneType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class WebhookRubygemsMetadataPropVersionInfoType(TypedDict):
-    """WebhookRubygemsMetadataPropVersionInfo"""
+class WebhookMilestoneClosedTypeForResponse(TypedDict):
+    """milestone closed event"""
 
-    version: NotRequired[str]
-
-
-class WebhookRubygemsMetadataPropVersionInfoTypeForResponse(TypedDict):
-    """WebhookRubygemsMetadataPropVersionInfo"""
-
-    version: NotRequired[str]
-
-
-WebhookRubygemsMetadataPropMetadataType: TypeAlias = dict[str, Any]
-"""WebhookRubygemsMetadataPropMetadata
-"""
-
-
-WebhookRubygemsMetadataPropMetadataTypeForResponse: TypeAlias = dict[str, Any]
-"""WebhookRubygemsMetadataPropMetadata
-"""
-
-
-WebhookRubygemsMetadataPropDependenciesItemsType: TypeAlias = dict[str, Any]
-"""WebhookRubygemsMetadataPropDependenciesItems
-"""
-
-
-WebhookRubygemsMetadataPropDependenciesItemsTypeForResponse: TypeAlias = dict[str, Any]
-"""WebhookRubygemsMetadataPropDependenciesItems
-"""
+    action: Literal["closed"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    milestone: WebhooksMilestoneTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookRubygemsMetadataPropDependenciesItemsType",
-    "WebhookRubygemsMetadataPropDependenciesItemsTypeForResponse",
-    "WebhookRubygemsMetadataPropMetadataType",
-    "WebhookRubygemsMetadataPropMetadataTypeForResponse",
-    "WebhookRubygemsMetadataPropVersionInfoType",
-    "WebhookRubygemsMetadataPropVersionInfoTypeForResponse",
-    "WebhookRubygemsMetadataType",
-    "WebhookRubygemsMetadataTypeForResponse",
+    "WebhookMilestoneClosedType",
+    "WebhookMilestoneClosedTypeForResponse",
 )

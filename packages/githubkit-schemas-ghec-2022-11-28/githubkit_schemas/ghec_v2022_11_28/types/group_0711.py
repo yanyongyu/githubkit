@@ -9,51 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0018 import InstallationType, InstallationTypeForResponse
-from .group_0576 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0578 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0579 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0589 import WebhooksUserType, WebhooksUserTypeForResponse
-from .group_0593 import (
-    WebhooksRepositoriesItemsType,
-    WebhooksRepositoriesItemsTypeForResponse,
-)
+from .group_0204 import DiscussionType, DiscussionTypeForResponse
+from .group_0591 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookInstallationCreatedType(TypedDict):
-    """installation created event"""
+class WebhookDiscussionTransferredPropChangesType(TypedDict):
+    """WebhookDiscussionTransferredPropChanges"""
 
-    action: Literal["created"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: InstallationType
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repositories: NotRequired[list[WebhooksRepositoriesItemsType]]
-    repository: NotRequired[RepositoryWebhooksType]
-    requester: NotRequired[Union[WebhooksUserType, None]]
-    sender: SimpleUserType
+    new_discussion: DiscussionType
+    new_repository: RepositoryWebhooksType
 
 
-class WebhookInstallationCreatedTypeForResponse(TypedDict):
-    """installation created event"""
+class WebhookDiscussionTransferredPropChangesTypeForResponse(TypedDict):
+    """WebhookDiscussionTransferredPropChanges"""
 
-    action: Literal["created"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: InstallationTypeForResponse
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repositories: NotRequired[list[WebhooksRepositoriesItemsTypeForResponse]]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    requester: NotRequired[Union[WebhooksUserTypeForResponse, None]]
-    sender: SimpleUserTypeForResponse
+    new_discussion: DiscussionTypeForResponse
+    new_repository: RepositoryWebhooksTypeForResponse
 
 
 __all__ = (
-    "WebhookInstallationCreatedType",
-    "WebhookInstallationCreatedTypeForResponse",
+    "WebhookDiscussionTransferredPropChangesType",
+    "WebhookDiscussionTransferredPropChangesTypeForResponse",
 )

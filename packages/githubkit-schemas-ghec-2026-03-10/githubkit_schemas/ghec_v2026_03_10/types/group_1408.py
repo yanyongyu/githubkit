@@ -10,54 +10,28 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1Type(TypedDict):
-    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1"""
-
-    language: Literal[
-        "actions",
-        "cpp",
-        "csharp",
-        "go",
-        "java",
-        "javascript",
-        "python",
-        "ruby",
-        "rust",
-        "swift",
-    ]
-    query_pack: str
-    repositories: NotRequired[list[str]]
-    repository_lists: list[str]
-    repository_owners: NotRequired[list[str]]
-
-
-class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1TypeForResponse(
+class ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBodyType(
     TypedDict
 ):
-    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1"""
+    """ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBody"""
 
-    language: Literal[
-        "actions",
-        "cpp",
-        "csharp",
-        "go",
-        "java",
-        "javascript",
-        "python",
-        "ruby",
-        "rust",
-        "swift",
-    ]
-    query_pack: str
-    repositories: NotRequired[list[str]]
-    repository_lists: list[str]
-    repository_owners: NotRequired[list[str]]
+    status: Literal["approve", "reject"]
+    message: str
+
+
+class ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBody"""
+
+    status: Literal["approve", "reject"]
+    message: str
 
 
 __all__ = (
-    "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1Type",
-    "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1TypeForResponse",
+    "ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBodyType",
+    "ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBodyTypeForResponse",
 )

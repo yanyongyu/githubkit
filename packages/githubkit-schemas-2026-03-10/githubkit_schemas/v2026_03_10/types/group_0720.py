@@ -9,48 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0502 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0503 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0504 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0505 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0721 import (
-    WebhookIssuesLockedPropIssueType,
-    WebhookIssuesLockedPropIssueTypeForResponse,
+from .group_0714 import (
+    WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreatorType,
+    WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
 )
 
 
-class WebhookIssuesLockedType(TypedDict):
-    """issues locked event"""
+class WebhookIssuesClosedPropIssueMergedMilestoneType(TypedDict):
+    """WebhookIssuesClosedPropIssueMergedMilestone"""
 
-    action: Literal["locked"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssuesLockedPropIssueType
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    closed_at: Union[_dt.datetime, None]
+    closed_issues: int
+    created_at: _dt.datetime
+    creator: Union[WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreatorType, None]
+    description: Union[str, None]
+    due_on: Union[_dt.datetime, None]
+    html_url: str
+    id: int
+    labels_url: str
+    node_id: str
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: _dt.datetime
+    url: str
 
 
-class WebhookIssuesLockedTypeForResponse(TypedDict):
-    """issues locked event"""
+class WebhookIssuesClosedPropIssueMergedMilestoneTypeForResponse(TypedDict):
+    """WebhookIssuesClosedPropIssueMergedMilestone"""
 
-    action: Literal["locked"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhookIssuesLockedPropIssueTypeForResponse
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    closed_at: Union[str, None]
+    closed_issues: int
+    created_at: str
+    creator: Union[
+        WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreatorTypeForResponse, None
+    ]
+    description: Union[str, None]
+    due_on: Union[str, None]
+    html_url: str
+    id: int
+    labels_url: str
+    node_id: str
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: str
+    url: str
 
 
 __all__ = (
-    "WebhookIssuesLockedType",
-    "WebhookIssuesLockedTypeForResponse",
+    "WebhookIssuesClosedPropIssueMergedMilestoneType",
+    "WebhookIssuesClosedPropIssueMergedMilestoneTypeForResponse",
 )

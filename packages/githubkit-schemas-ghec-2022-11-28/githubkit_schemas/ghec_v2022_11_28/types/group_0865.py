@@ -13,41 +13,71 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0576 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0577 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0578 import (
+from .group_0588 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0589 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0590 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0607 import (
-    PersonalAccessTokenRequestType,
-    PersonalAccessTokenRequestTypeForResponse,
-)
+from .group_0591 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0618 import WebhooksMembershipType, WebhooksMembershipTypeForResponse
 
 
-class WebhookPersonalAccessTokenRequestDeniedType(TypedDict):
-    """personal_access_token_request denied event"""
+class WebhookOrganizationRenamedType(TypedDict):
+    """organization renamed event"""
 
-    action: Literal["denied"]
-    personal_access_token_request: PersonalAccessTokenRequestType
-    organization: OrganizationSimpleWebhooksType
+    action: Literal["renamed"]
+    changes: NotRequired[WebhookOrganizationRenamedPropChangesType]
     enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    membership: NotRequired[WebhooksMembershipType]
+    organization: OrganizationSimpleWebhooksType
+    repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserType
-    installation: SimpleInstallationType
 
 
-class WebhookPersonalAccessTokenRequestDeniedTypeForResponse(TypedDict):
-    """personal_access_token_request denied event"""
+class WebhookOrganizationRenamedTypeForResponse(TypedDict):
+    """organization renamed event"""
 
-    action: Literal["denied"]
-    personal_access_token_request: PersonalAccessTokenRequestTypeForResponse
-    organization: OrganizationSimpleWebhooksTypeForResponse
+    action: Literal["renamed"]
+    changes: NotRequired[WebhookOrganizationRenamedPropChangesTypeForResponse]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    membership: NotRequired[WebhooksMembershipTypeForResponse]
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
     sender: SimpleUserTypeForResponse
-    installation: SimpleInstallationTypeForResponse
+
+
+class WebhookOrganizationRenamedPropChangesType(TypedDict):
+    """WebhookOrganizationRenamedPropChanges"""
+
+    login: NotRequired[WebhookOrganizationRenamedPropChangesPropLoginType]
+
+
+class WebhookOrganizationRenamedPropChangesTypeForResponse(TypedDict):
+    """WebhookOrganizationRenamedPropChanges"""
+
+    login: NotRequired[WebhookOrganizationRenamedPropChangesPropLoginTypeForResponse]
+
+
+class WebhookOrganizationRenamedPropChangesPropLoginType(TypedDict):
+    """WebhookOrganizationRenamedPropChangesPropLogin"""
+
+    from_: NotRequired[str]
+
+
+class WebhookOrganizationRenamedPropChangesPropLoginTypeForResponse(TypedDict):
+    """WebhookOrganizationRenamedPropChangesPropLogin"""
+
+    from_: NotRequired[str]
 
 
 __all__ = (
-    "WebhookPersonalAccessTokenRequestDeniedType",
-    "WebhookPersonalAccessTokenRequestDeniedTypeForResponse",
+    "WebhookOrganizationRenamedPropChangesPropLoginType",
+    "WebhookOrganizationRenamedPropChangesPropLoginTypeForResponse",
+    "WebhookOrganizationRenamedPropChangesType",
+    "WebhookOrganizationRenamedPropChangesTypeForResponse",
+    "WebhookOrganizationRenamedType",
+    "WebhookOrganizationRenamedTypeForResponse",
 )

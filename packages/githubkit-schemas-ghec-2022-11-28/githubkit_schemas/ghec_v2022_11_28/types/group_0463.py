@@ -16,43 +16,57 @@ from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
 
-class LockedIssueEventType(TypedDict):
-    """Locked Issue Event
+class DemilestonedIssueEventType(TypedDict):
+    """Demilestoned Issue Event
 
-    Locked Issue Event
+    Demilestoned Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["locked"]
+    event: Literal["demilestoned"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    lock_reason: Union[str, None]
+    milestone: DemilestonedIssueEventPropMilestoneType
 
 
-class LockedIssueEventTypeForResponse(TypedDict):
-    """Locked Issue Event
+class DemilestonedIssueEventTypeForResponse(TypedDict):
+    """Demilestoned Issue Event
 
-    Locked Issue Event
+    Demilestoned Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserTypeForResponse
-    event: Literal["locked"]
+    event: Literal["demilestoned"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    lock_reason: Union[str, None]
+    milestone: DemilestonedIssueEventPropMilestoneTypeForResponse
+
+
+class DemilestonedIssueEventPropMilestoneType(TypedDict):
+    """DemilestonedIssueEventPropMilestone"""
+
+    title: str
+
+
+class DemilestonedIssueEventPropMilestoneTypeForResponse(TypedDict):
+    """DemilestonedIssueEventPropMilestone"""
+
+    title: str
 
 
 __all__ = (
-    "LockedIssueEventType",
-    "LockedIssueEventTypeForResponse",
+    "DemilestonedIssueEventPropMilestoneType",
+    "DemilestonedIssueEventPropMilestoneTypeForResponse",
+    "DemilestonedIssueEventType",
+    "DemilestonedIssueEventTypeForResponse",
 )

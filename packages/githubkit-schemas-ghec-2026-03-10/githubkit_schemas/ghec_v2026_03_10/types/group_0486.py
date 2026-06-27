@@ -10,34 +10,49 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
 
-class PullRequestPropLabelsItemsType(TypedDict):
-    """PullRequestPropLabelsItems"""
+class StateChangeIssueEventType(TypedDict):
+    """State Change Issue Event
 
-    id: int
-    node_id: str
-    url: str
-    name: str
-    description: Union[str, None]
-    color: str
-    default: bool
-
-
-class PullRequestPropLabelsItemsTypeForResponse(TypedDict):
-    """PullRequestPropLabelsItems"""
+    State Change Issue Event
+    """
 
     id: int
     node_id: str
     url: str
-    name: str
-    description: Union[str, None]
-    color: str
-    default: bool
+    actor: SimpleUserType
+    event: str
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationType, None]
+    state_reason: NotRequired[Union[str, None]]
+
+
+class StateChangeIssueEventTypeForResponse(TypedDict):
+    """State Change Issue Event
+
+    State Change Issue Event
+    """
+
+    id: int
+    node_id: str
+    url: str
+    actor: SimpleUserTypeForResponse
+    event: str
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
+    state_reason: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "PullRequestPropLabelsItemsType",
-    "PullRequestPropLabelsItemsTypeForResponse",
+    "StateChangeIssueEventType",
+    "StateChangeIssueEventTypeForResponse",
 )

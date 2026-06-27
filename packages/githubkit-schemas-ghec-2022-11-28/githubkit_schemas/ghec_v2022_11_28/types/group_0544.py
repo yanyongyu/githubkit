@@ -9,45 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class GroupType(TypedDict):
-    """Group"""
+class RepositorySubscriptionType(TypedDict):
+    """Repository Invitation
 
-    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:Group"]]
-    external_id: str
-    display_name: str
-    members: NotRequired[list[GroupPropMembersItemsType]]
+    Repository invitations let you manage who you collaborate with.
+    """
 
-
-class GroupTypeForResponse(TypedDict):
-    """Group"""
-
-    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:Group"]]
-    external_id: str
-    display_name: str
-    members: NotRequired[list[GroupPropMembersItemsTypeForResponse]]
+    subscribed: bool
+    ignored: bool
+    reason: Union[str, None]
+    created_at: _dt.datetime
+    url: str
+    repository_url: str
 
 
-class GroupPropMembersItemsType(TypedDict):
-    """GroupPropMembersItems"""
+class RepositorySubscriptionTypeForResponse(TypedDict):
+    """Repository Invitation
 
-    value: str
-    display_name: str
+    Repository invitations let you manage who you collaborate with.
+    """
 
-
-class GroupPropMembersItemsTypeForResponse(TypedDict):
-    """GroupPropMembersItems"""
-
-    value: str
-    display_name: str
+    subscribed: bool
+    ignored: bool
+    reason: Union[str, None]
+    created_at: str
+    url: str
+    repository_url: str
 
 
 __all__ = (
-    "GroupPropMembersItemsType",
-    "GroupPropMembersItemsTypeForResponse",
-    "GroupType",
-    "GroupTypeForResponse",
+    "RepositorySubscriptionType",
+    "RepositorySubscriptionTypeForResponse",
 )

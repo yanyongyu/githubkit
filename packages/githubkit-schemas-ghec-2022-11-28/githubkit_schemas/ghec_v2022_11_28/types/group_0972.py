@@ -9,48 +9,75 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0576 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0577 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0578 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
+from .group_0973 import (
+    WebhookRepositoryRulesetEditedPropChangesPropConditionsType,
+    WebhookRepositoryRulesetEditedPropChangesPropConditionsTypeForResponse,
 )
-from .group_0579 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0621 import (
-    SecretScanningAlertWebhookType,
-    SecretScanningAlertWebhookTypeForResponse,
+from .group_0975 import (
+    WebhookRepositoryRulesetEditedPropChangesPropRulesType,
+    WebhookRepositoryRulesetEditedPropChangesPropRulesTypeForResponse,
 )
 
 
-class WebhookSecretScanningAlertCreatedType(TypedDict):
-    """secret_scanning_alert created event"""
+class WebhookRepositoryRulesetEditedPropChangesType(TypedDict):
+    """WebhookRepositoryRulesetEditedPropChanges"""
 
-    action: Literal["created"]
-    alert: SecretScanningAlertWebhookType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserType]
+    name: NotRequired[WebhookRepositoryRulesetEditedPropChangesPropNameType]
+    enforcement: NotRequired[
+        WebhookRepositoryRulesetEditedPropChangesPropEnforcementType
+    ]
+    conditions: NotRequired[WebhookRepositoryRulesetEditedPropChangesPropConditionsType]
+    rules: NotRequired[WebhookRepositoryRulesetEditedPropChangesPropRulesType]
 
 
-class WebhookSecretScanningAlertCreatedTypeForResponse(TypedDict):
-    """secret_scanning_alert created event"""
+class WebhookRepositoryRulesetEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookRepositoryRulesetEditedPropChanges"""
 
-    action: Literal["created"]
-    alert: SecretScanningAlertWebhookTypeForResponse
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: NotRequired[SimpleUserTypeForResponse]
+    name: NotRequired[WebhookRepositoryRulesetEditedPropChangesPropNameTypeForResponse]
+    enforcement: NotRequired[
+        WebhookRepositoryRulesetEditedPropChangesPropEnforcementTypeForResponse
+    ]
+    conditions: NotRequired[
+        WebhookRepositoryRulesetEditedPropChangesPropConditionsTypeForResponse
+    ]
+    rules: NotRequired[
+        WebhookRepositoryRulesetEditedPropChangesPropRulesTypeForResponse
+    ]
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropNameType(TypedDict):
+    """WebhookRepositoryRulesetEditedPropChangesPropName"""
+
+    from_: NotRequired[str]
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropNameTypeForResponse(TypedDict):
+    """WebhookRepositoryRulesetEditedPropChangesPropName"""
+
+    from_: NotRequired[str]
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropEnforcementType(TypedDict):
+    """WebhookRepositoryRulesetEditedPropChangesPropEnforcement"""
+
+    from_: NotRequired[str]
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropEnforcementTypeForResponse(
+    TypedDict
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropEnforcement"""
+
+    from_: NotRequired[str]
 
 
 __all__ = (
-    "WebhookSecretScanningAlertCreatedType",
-    "WebhookSecretScanningAlertCreatedTypeForResponse",
+    "WebhookRepositoryRulesetEditedPropChangesPropEnforcementType",
+    "WebhookRepositoryRulesetEditedPropChangesPropEnforcementTypeForResponse",
+    "WebhookRepositoryRulesetEditedPropChangesPropNameType",
+    "WebhookRepositoryRulesetEditedPropChangesPropNameTypeForResponse",
+    "WebhookRepositoryRulesetEditedPropChangesType",
+    "WebhookRepositoryRulesetEditedPropChangesTypeForResponse",
 )

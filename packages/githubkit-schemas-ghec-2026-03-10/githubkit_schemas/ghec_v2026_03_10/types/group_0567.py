@@ -10,129 +10,72 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Any, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class GpgKeyType(TypedDict):
-    """GPG Key
-
-    A unique encryption key
-    """
-
-    id: int
-    name: NotRequired[Union[str, None]]
-    primary_key_id: Union[int, None]
-    key_id: str
-    public_key: str
-    emails: list[GpgKeyPropEmailsItemsType]
-    subkeys: list[GpgKeyPropSubkeysItemsType]
-    can_sign: bool
-    can_encrypt_comms: bool
-    can_encrypt_storage: bool
-    can_certify: bool
-    created_at: _dt.datetime
-    expires_at: Union[_dt.datetime, None]
-    revoked: bool
-    raw_key: Union[str, None]
+from .group_0368 import GitUserType, GitUserTypeForResponse
+from .group_0369 import VerificationType, VerificationTypeForResponse
 
 
-class GpgKeyTypeForResponse(TypedDict):
-    """GPG Key
+class CommitSearchResultItemPropCommitType(TypedDict):
+    """CommitSearchResultItemPropCommit"""
 
-    A unique encryption key
-    """
-
-    id: int
-    name: NotRequired[Union[str, None]]
-    primary_key_id: Union[int, None]
-    key_id: str
-    public_key: str
-    emails: list[GpgKeyPropEmailsItemsTypeForResponse]
-    subkeys: list[GpgKeyPropSubkeysItemsTypeForResponse]
-    can_sign: bool
-    can_encrypt_comms: bool
-    can_encrypt_storage: bool
-    can_certify: bool
-    created_at: str
-    expires_at: Union[str, None]
-    revoked: bool
-    raw_key: Union[str, None]
+    author: CommitSearchResultItemPropCommitPropAuthorType
+    committer: Union[None, GitUserType]
+    comment_count: int
+    message: str
+    tree: CommitSearchResultItemPropCommitPropTreeType
+    url: str
+    verification: NotRequired[VerificationType]
 
 
-class GpgKeyPropEmailsItemsType(TypedDict):
-    """GpgKeyPropEmailsItems"""
+class CommitSearchResultItemPropCommitTypeForResponse(TypedDict):
+    """CommitSearchResultItemPropCommit"""
 
-    email: NotRequired[str]
-    verified: NotRequired[bool]
-
-
-class GpgKeyPropEmailsItemsTypeForResponse(TypedDict):
-    """GpgKeyPropEmailsItems"""
-
-    email: NotRequired[str]
-    verified: NotRequired[bool]
+    author: CommitSearchResultItemPropCommitPropAuthorTypeForResponse
+    committer: Union[None, GitUserTypeForResponse]
+    comment_count: int
+    message: str
+    tree: CommitSearchResultItemPropCommitPropTreeTypeForResponse
+    url: str
+    verification: NotRequired[VerificationTypeForResponse]
 
 
-class GpgKeyPropSubkeysItemsType(TypedDict):
-    """GpgKeyPropSubkeysItems"""
+class CommitSearchResultItemPropCommitPropAuthorType(TypedDict):
+    """CommitSearchResultItemPropCommitPropAuthor"""
 
-    id: NotRequired[int]
-    primary_key_id: NotRequired[int]
-    key_id: NotRequired[str]
-    public_key: NotRequired[str]
-    emails: NotRequired[list[GpgKeyPropSubkeysItemsPropEmailsItemsType]]
-    subkeys: NotRequired[list[Any]]
-    can_sign: NotRequired[bool]
-    can_encrypt_comms: NotRequired[bool]
-    can_encrypt_storage: NotRequired[bool]
-    can_certify: NotRequired[bool]
-    created_at: NotRequired[str]
-    expires_at: NotRequired[Union[str, None]]
-    raw_key: NotRequired[Union[str, None]]
-    revoked: NotRequired[bool]
+    name: str
+    email: str
+    date: _dt.datetime
 
 
-class GpgKeyPropSubkeysItemsTypeForResponse(TypedDict):
-    """GpgKeyPropSubkeysItems"""
+class CommitSearchResultItemPropCommitPropAuthorTypeForResponse(TypedDict):
+    """CommitSearchResultItemPropCommitPropAuthor"""
 
-    id: NotRequired[int]
-    primary_key_id: NotRequired[int]
-    key_id: NotRequired[str]
-    public_key: NotRequired[str]
-    emails: NotRequired[list[GpgKeyPropSubkeysItemsPropEmailsItemsTypeForResponse]]
-    subkeys: NotRequired[list[Any]]
-    can_sign: NotRequired[bool]
-    can_encrypt_comms: NotRequired[bool]
-    can_encrypt_storage: NotRequired[bool]
-    can_certify: NotRequired[bool]
-    created_at: NotRequired[str]
-    expires_at: NotRequired[Union[str, None]]
-    raw_key: NotRequired[Union[str, None]]
-    revoked: NotRequired[bool]
+    name: str
+    email: str
+    date: str
 
 
-class GpgKeyPropSubkeysItemsPropEmailsItemsType(TypedDict):
-    """GpgKeyPropSubkeysItemsPropEmailsItems"""
+class CommitSearchResultItemPropCommitPropTreeType(TypedDict):
+    """CommitSearchResultItemPropCommitPropTree"""
 
-    email: NotRequired[str]
-    verified: NotRequired[bool]
+    sha: str
+    url: str
 
 
-class GpgKeyPropSubkeysItemsPropEmailsItemsTypeForResponse(TypedDict):
-    """GpgKeyPropSubkeysItemsPropEmailsItems"""
+class CommitSearchResultItemPropCommitPropTreeTypeForResponse(TypedDict):
+    """CommitSearchResultItemPropCommitPropTree"""
 
-    email: NotRequired[str]
-    verified: NotRequired[bool]
+    sha: str
+    url: str
 
 
 __all__ = (
-    "GpgKeyPropEmailsItemsType",
-    "GpgKeyPropEmailsItemsTypeForResponse",
-    "GpgKeyPropSubkeysItemsPropEmailsItemsType",
-    "GpgKeyPropSubkeysItemsPropEmailsItemsTypeForResponse",
-    "GpgKeyPropSubkeysItemsType",
-    "GpgKeyPropSubkeysItemsTypeForResponse",
-    "GpgKeyType",
-    "GpgKeyTypeForResponse",
+    "CommitSearchResultItemPropCommitPropAuthorType",
+    "CommitSearchResultItemPropCommitPropAuthorTypeForResponse",
+    "CommitSearchResultItemPropCommitPropTreeType",
+    "CommitSearchResultItemPropCommitPropTreeTypeForResponse",
+    "CommitSearchResultItemPropCommitType",
+    "CommitSearchResultItemPropCommitTypeForResponse",
 )

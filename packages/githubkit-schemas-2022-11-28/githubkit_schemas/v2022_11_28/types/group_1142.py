@@ -10,22 +10,22 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class OrgsOrgMembershipsUsernamePutBodyType(TypedDict):
-    """OrgsOrgMembershipsUsernamePutBody"""
+class OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyType(TypedDict):
+    """OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody"""
 
-    role: NotRequired[Literal["admin", "member"]]
+    default_level: Literal["public", "internal"]
 
 
-class OrgsOrgMembershipsUsernamePutBodyTypeForResponse(TypedDict):
-    """OrgsOrgMembershipsUsernamePutBody"""
+class OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody"""
 
-    role: NotRequired[Literal["admin", "member"]]
+    default_level: Literal["public", "internal"]
 
 
 __all__ = (
-    "OrgsOrgMembershipsUsernamePutBodyType",
-    "OrgsOrgMembershipsUsernamePutBodyTypeForResponse",
+    "OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyType",
+    "OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyTypeForResponse",
 )

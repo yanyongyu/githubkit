@@ -12,17 +12,25 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0138 import Codespace
-
-
-class OrgsOrgMembersUsernameCodespacesGetResponse200(GitHubModel):
-    """OrgsOrgMembersUsernameCodespacesGetResponse200"""
-
-    total_count: int = Field()
-    codespaces: list[Codespace] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(OrgsOrgMembersUsernameCodespacesGetResponse200)
+class OrgsOrgDependabotRepositoryAccessPatchBody(GitHubModel):
+    """OrgsOrgDependabotRepositoryAccessPatchBody
 
-__all__ = ("OrgsOrgMembersUsernameCodespacesGetResponse200",)
+    Examples:
+        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
+    """
+
+    repository_ids_to_add: Missing[list[int]] = Field(
+        default=UNSET, description="List of repository IDs to add."
+    )
+    repository_ids_to_remove: Missing[list[int]] = Field(
+        default=UNSET, description="List of repository IDs to remove."
+    )
+
+
+model_rebuild(OrgsOrgDependabotRepositoryAccessPatchBody)
+
+__all__ = ("OrgsOrgDependabotRepositoryAccessPatchBody",)

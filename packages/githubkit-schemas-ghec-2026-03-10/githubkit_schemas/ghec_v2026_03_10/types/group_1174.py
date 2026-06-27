@@ -11,31 +11,28 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_1175 import (
-    InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType,
-    InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse,
-)
 
-
-class InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1Type(TypedDict):
-    """InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1"""
-
-    custom_properties: NotRequired[
-        InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType
-    ]
-
-
-class InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1TypeForResponse(
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200Type(
     TypedDict
 ):
-    """InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1"""
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteRespons
+    e200
+    """
 
-    custom_properties: NotRequired[
-        InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse
-    ]
+    message: NotRequired[str]
+
+
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteRespons
+    e200
+    """
+
+    message: NotRequired[str]
 
 
 __all__ = (
-    "InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1Type",
-    "InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1TypeForResponse",
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200Type",
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200TypeForResponse",
 )

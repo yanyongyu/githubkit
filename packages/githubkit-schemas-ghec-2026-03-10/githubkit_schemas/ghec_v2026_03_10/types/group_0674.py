@@ -13,41 +13,38 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0419 import DependabotAlertType, DependabotAlertTypeForResponse
-from .group_0575 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0576 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0577 import (
+from .group_0111 import CustomPropertyType, CustomPropertyTypeForResponse
+from .group_0587 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0588 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0589 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0578 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDependabotAlertReintroducedType(TypedDict):
-    """Dependabot alert reintroduced event"""
+class WebhookCustomPropertyCreatedType(TypedDict):
+    """custom property created event"""
 
-    action: Literal["reintroduced"]
-    alert: DependabotAlertType
+    action: Literal["created"]
+    definition: CustomPropertyType
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookDependabotAlertReintroducedTypeForResponse(TypedDict):
-    """Dependabot alert reintroduced event"""
+class WebhookCustomPropertyCreatedTypeForResponse(TypedDict):
+    """custom property created event"""
 
-    action: Literal["reintroduced"]
-    alert: DependabotAlertTypeForResponse
+    action: Literal["created"]
+    definition: CustomPropertyTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookDependabotAlertReintroducedType",
-    "WebhookDependabotAlertReintroducedTypeForResponse",
+    "WebhookCustomPropertyCreatedType",
+    "WebhookCustomPropertyCreatedTypeForResponse",
 )

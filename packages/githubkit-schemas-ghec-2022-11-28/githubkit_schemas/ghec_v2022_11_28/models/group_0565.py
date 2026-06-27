@@ -10,43 +10,148 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Any, Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CodespaceExportDetails(GitHubModel):
-    """Fetches information about an export of a codespace.
+class ScimUserList(GitHubModel):
+    """SCIM User List
 
-    An export of a codespace. Also, latest export details for a codespace can be
-    fetched with id = latest
+    SCIM User List
     """
 
-    state: Missing[Union[str, None]] = Field(
-        default=UNSET, description="State of the latest export"
+    schemas: list[str] = Field(
+        min_length=1 if PYDANTIC_V2 else None, description="SCIM schema used."
     )
-    completed_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET, description="Completion time of the last export operation"
-    )
-    branch: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Name of the exported branch"
-    )
-    sha: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Git commit SHA of the exported branch"
-    )
-    id: Missing[str] = Field(default=UNSET, description="Id for the export details")
-    export_url: Missing[str] = Field(
-        default=UNSET, description="Url for fetching export details"
-    )
-    html_url: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Web url for the exported branch"
-    )
+    total_results: int = Field(alias="totalResults")
+    items_per_page: int = Field(alias="itemsPerPage")
+    start_index: int = Field(alias="startIndex")
+    resources: list[ScimUser] = Field(alias="Resources")
 
 
-model_rebuild(CodespaceExportDetails)
+class ScimUser(GitHubModel):
+    """SCIM /Users
 
-__all__ = ("CodespaceExportDetails",)
+    SCIM /Users provisioning endpoints
+    """
+
+    schemas: list[str] = Field(
+        min_length=1 if PYDANTIC_V2 else None, description="SCIM schema used."
+    )
+    id: str = Field(description="Unique identifier of an external identity")
+    external_id: Missing[Union[str, None]] = Field(
+        default=UNSET, alias="externalId", description="The ID of the User."
+    )
+    user_name: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        alias="userName",
+        description="Configured by the admin. Could be an email, login, or username",
+    )
+    display_name: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        alias="displayName",
+        description="The name of the user, suitable for display to end-users",
+    )
+    name: Missing[ScimUserPropName] = Field(default=UNSET)
+    emails: list[ScimUserPropEmailsItems] = Field(description="user emails")
+    active: bool = Field(description="The active status of the User.")
+    meta: ScimUserPropMeta = Field()
+    organization_id: Missing[int] = Field(
+        default=UNSET, description="The ID of the organization."
+    )
+    operations: Missing[list[ScimUserPropOperationsItems]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="Set of operations to be performed",
+    )
+    groups: Missing[list[ScimUserPropGroupsItems]] = Field(
+        default=UNSET, description="associated groups"
+    )
+    roles: Missing[list[ScimUserPropRolesItems]] = Field(default=UNSET)
+
+
+class ScimUserPropName(GitHubModel):
+    """ScimUserPropName
+
+    Examples:
+        {'givenName': 'Jane', 'familyName': 'User'}
+    """
+
+    given_name: Missing[Union[str, None]] = Field(default=UNSET, alias="givenName")
+    family_name: Missing[Union[str, None]] = Field(default=UNSET, alias="familyName")
+    formatted: Missing[Union[str, None]] = Field(default=UNSET)
+
+
+class ScimUserPropEmailsItems(GitHubModel):
+    """ScimUserPropEmailsItems"""
+
+    value: str = Field()
+    primary: Missing[bool] = Field(default=UNSET)
+    type: Missing[str] = Field(default=UNSET)
+
+
+class ScimUserPropMeta(GitHubModel):
+    """ScimUserPropMeta"""
+
+    resource_type: Missing[str] = Field(default=UNSET, alias="resourceType")
+    created: Missing[_dt.datetime] = Field(default=UNSET)
+    last_modified: Missing[_dt.datetime] = Field(default=UNSET, alias="lastModified")
+    location: Missing[str] = Field(default=UNSET)
+
+
+class ScimUserPropGroupsItems(GitHubModel):
+    """ScimUserPropGroupsItems"""
+
+    value: Missing[str] = Field(default=UNSET)
+    display: Missing[str] = Field(default=UNSET)
+
+
+class ScimUserPropRolesItems(GitHubModel):
+    """ScimUserPropRolesItems"""
+
+    value: Missing[str] = Field(default=UNSET)
+    primary: Missing[bool] = Field(default=UNSET)
+    type: Missing[str] = Field(default=UNSET)
+    display: Missing[str] = Field(default=UNSET)
+
+
+class ScimUserPropOperationsItems(GitHubModel):
+    """ScimUserPropOperationsItems"""
+
+    op: Literal["add", "remove", "replace"] = Field()
+    path: Missing[str] = Field(default=UNSET)
+    value: Missing[
+        Union[str, ScimUserPropOperationsItemsPropValueOneof1, list[Any]]
+    ] = Field(default=UNSET)
+
+
+class ScimUserPropOperationsItemsPropValueOneof1(GitHubModel):
+    """ScimUserPropOperationsItemsPropValueOneof1"""
+
+
+model_rebuild(ScimUserList)
+model_rebuild(ScimUser)
+model_rebuild(ScimUserPropName)
+model_rebuild(ScimUserPropEmailsItems)
+model_rebuild(ScimUserPropMeta)
+model_rebuild(ScimUserPropGroupsItems)
+model_rebuild(ScimUserPropRolesItems)
+model_rebuild(ScimUserPropOperationsItems)
+model_rebuild(ScimUserPropOperationsItemsPropValueOneof1)
+
+__all__ = (
+    "ScimUser",
+    "ScimUserList",
+    "ScimUserPropEmailsItems",
+    "ScimUserPropGroupsItems",
+    "ScimUserPropMeta",
+    "ScimUserPropName",
+    "ScimUserPropOperationsItems",
+    "ScimUserPropOperationsItemsPropValueOneof1",
+    "ScimUserPropRolesItems",
+)

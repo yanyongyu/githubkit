@@ -13,103 +13,149 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksTeamType(TypedDict):
-    """Team
+class WebhooksCommentType(TypedDict):
+    """WebhooksComment"""
 
-    Groups of organization members that gives permissions on specified repositories.
-    """
-
-    deleted: NotRequired[bool]
-    description: NotRequired[Union[str, None]]
-    html_url: NotRequired[str]
-    id: int
-    members_url: NotRequired[str]
-    name: str
-    node_id: NotRequired[str]
-    parent: NotRequired[Union[WebhooksTeamPropParentType, None]]
-    permission: NotRequired[str]
-    privacy: NotRequired[Literal["open", "closed", "secret"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
     ]
-    repositories_url: NotRequired[str]
-    slug: NotRequired[str]
-    url: NotRequired[str]
-    type: NotRequired[Literal["enterprise", "organization"]]
-    organization_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
-
-
-class WebhooksTeamTypeForResponse(TypedDict):
-    """Team
-
-    Groups of organization members that gives permissions on specified repositories.
-    """
-
-    deleted: NotRequired[bool]
-    description: NotRequired[Union[str, None]]
-    html_url: NotRequired[str]
-    id: int
-    members_url: NotRequired[str]
-    name: str
-    node_id: NotRequired[str]
-    parent: NotRequired[Union[WebhooksTeamPropParentTypeForResponse, None]]
-    permission: NotRequired[str]
-    privacy: NotRequired[Literal["open", "closed", "secret"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ]
-    repositories_url: NotRequired[str]
-    slug: NotRequired[str]
-    url: NotRequired[str]
-    type: NotRequired[Literal["enterprise", "organization"]]
-    organization_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
-
-
-class WebhooksTeamPropParentType(TypedDict):
-    """WebhooksTeamPropParent"""
-
-    description: Union[str, None]
+    body: str
+    child_comment_count: int
+    created_at: str
+    discussion_id: int
     html_url: str
     id: int
-    members_url: str
-    name: str
     node_id: str
-    permission: str
-    privacy: Literal["open", "closed", "secret"]
-    notification_setting: Literal["notifications_enabled", "notifications_disabled"]
-    repositories_url: str
-    slug: str
-    url: str
-    type: Literal["enterprise", "organization"]
-    organization_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
+    parent_id: Union[int, None]
+    reactions: WebhooksCommentPropReactionsType
+    repository_url: str
+    updated_at: str
+    user: Union[WebhooksCommentPropUserType, None]
 
 
-class WebhooksTeamPropParentTypeForResponse(TypedDict):
-    """WebhooksTeamPropParent"""
+class WebhooksCommentTypeForResponse(TypedDict):
+    """WebhooksComment"""
 
-    description: Union[str, None]
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    body: str
+    child_comment_count: int
+    created_at: str
+    discussion_id: int
     html_url: str
     id: int
-    members_url: str
-    name: str
     node_id: str
-    permission: str
-    privacy: Literal["open", "closed", "secret"]
-    notification_setting: Literal["notifications_enabled", "notifications_disabled"]
-    repositories_url: str
-    slug: str
+    parent_id: Union[int, None]
+    reactions: WebhooksCommentPropReactionsTypeForResponse
+    repository_url: str
+    updated_at: str
+    user: Union[WebhooksCommentPropUserTypeForResponse, None]
+
+
+class WebhooksCommentPropReactionsType(TypedDict):
+    """Reactions"""
+
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
     url: str
-    type: Literal["enterprise", "organization"]
-    organization_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
+
+
+class WebhooksCommentPropReactionsTypeForResponse(TypedDict):
+    """Reactions"""
+
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
+    url: str
+
+
+class WebhooksCommentPropUserType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhooksCommentPropUserTypeForResponse(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "WebhooksTeamPropParentType",
-    "WebhooksTeamPropParentTypeForResponse",
-    "WebhooksTeamType",
-    "WebhooksTeamTypeForResponse",
+    "WebhooksCommentPropReactionsType",
+    "WebhooksCommentPropReactionsTypeForResponse",
+    "WebhooksCommentPropUserType",
+    "WebhooksCommentPropUserTypeForResponse",
+    "WebhooksCommentType",
+    "WebhooksCommentTypeForResponse",
 )

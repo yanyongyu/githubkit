@@ -13,35 +13,71 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0577 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0578 import (
+from .group_0588 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0589 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0590 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0612 import ProjectsV2ItemType, ProjectsV2ItemTypeForResponse
+from .group_0591 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0622 import WebhooksProjectColumnType, WebhooksProjectColumnTypeForResponse
 
 
-class WebhookProjectsV2ItemCreatedType(TypedDict):
-    """Projects v2 Item Created Event"""
+class WebhookProjectColumnEditedType(TypedDict):
+    """project_column edited event"""
 
-    action: Literal["created"]
+    action: Literal["edited"]
+    changes: WebhookProjectColumnEditedPropChangesType
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
-    projects_v2_item: ProjectsV2ItemType
-    sender: SimpleUserType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    project_column: WebhooksProjectColumnType
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookProjectsV2ItemCreatedTypeForResponse(TypedDict):
-    """Projects v2 Item Created Event"""
+class WebhookProjectColumnEditedTypeForResponse(TypedDict):
+    """project_column edited event"""
 
-    action: Literal["created"]
+    action: Literal["edited"]
+    changes: WebhookProjectColumnEditedPropChangesTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: OrganizationSimpleWebhooksTypeForResponse
-    projects_v2_item: ProjectsV2ItemTypeForResponse
-    sender: SimpleUserTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    project_column: WebhooksProjectColumnTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: NotRequired[SimpleUserTypeForResponse]
+
+
+class WebhookProjectColumnEditedPropChangesType(TypedDict):
+    """WebhookProjectColumnEditedPropChanges"""
+
+    name: NotRequired[WebhookProjectColumnEditedPropChangesPropNameType]
+
+
+class WebhookProjectColumnEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookProjectColumnEditedPropChanges"""
+
+    name: NotRequired[WebhookProjectColumnEditedPropChangesPropNameTypeForResponse]
+
+
+class WebhookProjectColumnEditedPropChangesPropNameType(TypedDict):
+    """WebhookProjectColumnEditedPropChangesPropName"""
+
+    from_: str
+
+
+class WebhookProjectColumnEditedPropChangesPropNameTypeForResponse(TypedDict):
+    """WebhookProjectColumnEditedPropChangesPropName"""
+
+    from_: str
 
 
 __all__ = (
-    "WebhookProjectsV2ItemCreatedType",
-    "WebhookProjectsV2ItemCreatedTypeForResponse",
+    "WebhookProjectColumnEditedPropChangesPropNameType",
+    "WebhookProjectColumnEditedPropChangesPropNameTypeForResponse",
+    "WebhookProjectColumnEditedPropChangesType",
+    "WebhookProjectColumnEditedPropChangesTypeForResponse",
+    "WebhookProjectColumnEditedType",
+    "WebhookProjectColumnEditedTypeForResponse",
 )

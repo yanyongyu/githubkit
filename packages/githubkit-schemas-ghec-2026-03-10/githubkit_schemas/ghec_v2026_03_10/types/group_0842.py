@@ -13,41 +13,97 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0575 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0576 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0577 import (
+from .group_0587 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0588 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0589 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0578 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0588 import WebhooksUserType, WebhooksUserTypeForResponse
+from .group_0590 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0600 import WebhooksUserType, WebhooksUserTypeForResponse
 
 
-class WebhookOrgBlockBlockedType(TypedDict):
-    """org_block blocked event"""
+class WebhookMemberEditedType(TypedDict):
+    """member edited event"""
 
-    action: Literal["blocked"]
-    blocked_user: Union[WebhooksUserType, None]
+    action: Literal["edited"]
+    changes: WebhookMemberEditedPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
-    repository: NotRequired[RepositoryWebhooksType]
+    member: Union[WebhooksUserType, None]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookOrgBlockBlockedTypeForResponse(TypedDict):
-    """org_block blocked event"""
+class WebhookMemberEditedTypeForResponse(TypedDict):
+    """member edited event"""
 
-    action: Literal["blocked"]
-    blocked_user: Union[WebhooksUserTypeForResponse, None]
+    action: Literal["edited"]
+    changes: WebhookMemberEditedPropChangesTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: OrganizationSimpleWebhooksTypeForResponse
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    member: Union[WebhooksUserTypeForResponse, None]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
+class WebhookMemberEditedPropChangesType(TypedDict):
+    """WebhookMemberEditedPropChanges
+
+    The changes to the collaborator permissions
+    """
+
+    old_permission: NotRequired[WebhookMemberEditedPropChangesPropOldPermissionType]
+    permission: NotRequired[WebhookMemberEditedPropChangesPropPermissionType]
+
+
+class WebhookMemberEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookMemberEditedPropChanges
+
+    The changes to the collaborator permissions
+    """
+
+    old_permission: NotRequired[
+        WebhookMemberEditedPropChangesPropOldPermissionTypeForResponse
+    ]
+    permission: NotRequired[WebhookMemberEditedPropChangesPropPermissionTypeForResponse]
+
+
+class WebhookMemberEditedPropChangesPropOldPermissionType(TypedDict):
+    """WebhookMemberEditedPropChangesPropOldPermission"""
+
+    from_: str
+
+
+class WebhookMemberEditedPropChangesPropOldPermissionTypeForResponse(TypedDict):
+    """WebhookMemberEditedPropChangesPropOldPermission"""
+
+    from_: str
+
+
+class WebhookMemberEditedPropChangesPropPermissionType(TypedDict):
+    """WebhookMemberEditedPropChangesPropPermission"""
+
+    from_: NotRequired[Union[str, None]]
+    to: NotRequired[Union[str, None]]
+
+
+class WebhookMemberEditedPropChangesPropPermissionTypeForResponse(TypedDict):
+    """WebhookMemberEditedPropChangesPropPermission"""
+
+    from_: NotRequired[Union[str, None]]
+    to: NotRequired[Union[str, None]]
+
+
 __all__ = (
-    "WebhookOrgBlockBlockedType",
-    "WebhookOrgBlockBlockedTypeForResponse",
+    "WebhookMemberEditedPropChangesPropOldPermissionType",
+    "WebhookMemberEditedPropChangesPropOldPermissionTypeForResponse",
+    "WebhookMemberEditedPropChangesPropPermissionType",
+    "WebhookMemberEditedPropChangesPropPermissionTypeForResponse",
+    "WebhookMemberEditedPropChangesType",
+    "WebhookMemberEditedPropChangesTypeForResponse",
+    "WebhookMemberEditedType",
+    "WebhookMemberEditedTypeForResponse",
 )

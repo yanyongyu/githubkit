@@ -9,23 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
-
-class OrgsOrgCopilotCodingAgentPermissionsPutBodyType(TypedDict):
-    """OrgsOrgCopilotCodingAgentPermissionsPutBody"""
-
-    enabled_repositories: Literal["all", "selected", "none"]
+from .group_0145 import CopilotSpaceResourceType, CopilotSpaceResourceTypeForResponse
 
 
-class OrgsOrgCopilotCodingAgentPermissionsPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgCopilotCodingAgentPermissionsPutBody"""
+class OrgsOrgCopilotSpacesSpaceNumberResourcesGetResponse200Type(TypedDict):
+    """OrgsOrgCopilotSpacesSpaceNumberResourcesGetResponse200"""
 
-    enabled_repositories: Literal["all", "selected", "none"]
+    resources: list[CopilotSpaceResourceType]
+
+
+class OrgsOrgCopilotSpacesSpaceNumberResourcesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCopilotSpacesSpaceNumberResourcesGetResponse200"""
+
+    resources: list[CopilotSpaceResourceTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgCopilotCodingAgentPermissionsPutBodyType",
-    "OrgsOrgCopilotCodingAgentPermissionsPutBodyTypeForResponse",
+    "OrgsOrgCopilotSpacesSpaceNumberResourcesGetResponse200Type",
+    "OrgsOrgCopilotSpacesSpaceNumberResourcesGetResponse200TypeForResponse",
 )

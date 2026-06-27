@@ -9,55 +9,101 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, TypeAlias, Union
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200Type(
+class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200"""
+
+    mcp_configuration: Union[
+        ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfigurationType,
+        None,
+    ]
+    enabled_tools: (
+        ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledToolsType
+    )
+    require_actions_workflow_approval: bool
+    is_firewall_enabled: bool
+    is_firewall_recommended_allowlist_enabled: bool
+    custom_allowlist: list[str]
+
+
+class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200TypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200"""
+    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200"""
 
-    total_count: int
-    branch_policies: list[DeploymentBranchPolicyType]
+    mcp_configuration: Union[
+        ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfigurationTypeForResponse,
+        None,
+    ]
+    enabled_tools: ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledToolsTypeForResponse
+    require_actions_workflow_approval: bool
+    is_firewall_enabled: bool
+    is_firewall_recommended_allowlist_enabled: bool
+    custom_allowlist: list[str]
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200TypeForResponse(
+ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfigurationType: TypeAlias = dict[
+    str, Any
+]
+"""ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration
+
+The user-supplied MCP server configuration for the repository, as a free-form
+JSON object. This will be set to `null` if no configuration has been set.
+
+The shape of a valid MCP configuration may evolve over time, so this property is
+intentionally not strictly typed. Clients should not assume a fixed schema.
+"""
+
+
+ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfigurationTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration
+
+The user-supplied MCP server configuration for the repository, as a free-form
+JSON object. This will be set to `null` if no configuration has been set.
+
+The shape of a valid MCP configuration may evolve over time, so this property is
+intentionally not strictly typed. Clients should not assume a fixed schema.
+"""
+
+
+class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledToolsType(
     TypedDict
 ):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200"""
+    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools
 
-    total_count: int
-    branch_policies: list[DeploymentBranchPolicyTypeForResponse]
-
-
-class DeploymentBranchPolicyType(TypedDict):
-    """Deployment branch policy
-
-    Details of a deployment branch or tag policy.
+    The enabled review tools for Copilot cloud agent.
     """
 
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    name: NotRequired[str]
-    type: NotRequired[Literal["branch", "tag"]]
+    codeql: bool
+    copilot_code_review: bool
+    secret_scanning: bool
+    dependency_vulnerability_checks: bool
 
 
-class DeploymentBranchPolicyTypeForResponse(TypedDict):
-    """Deployment branch policy
+class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledToolsTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools
 
-    Details of a deployment branch or tag policy.
+    The enabled review tools for Copilot cloud agent.
     """
 
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    name: NotRequired[str]
-    type: NotRequired[Literal["branch", "tag"]]
+    codeql: bool
+    copilot_code_review: bool
+    secret_scanning: bool
+    dependency_vulnerability_checks: bool
 
 
 __all__ = (
-    "DeploymentBranchPolicyType",
-    "DeploymentBranchPolicyTypeForResponse",
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200Type",
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200TypeForResponse",
+    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledToolsType",
+    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledToolsTypeForResponse",
+    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfigurationType",
+    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfigurationTypeForResponse",
+    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200Type",
+    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200TypeForResponse",
 )

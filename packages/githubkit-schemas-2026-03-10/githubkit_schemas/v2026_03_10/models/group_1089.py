@@ -9,61 +9,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Annotated, Union
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_1087 import OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems
 
-
-class OrgsOrgCampaignsPostBodyOneof1(GitHubModel):
-    """OrgsOrgCampaignsPostBodyOneof1"""
+class OrgsOrgArtifactsMetadataStorageRecordPostBody(GitHubModel):
+    """OrgsOrgArtifactsMetadataStorageRecordPostBody"""
 
     name: str = Field(
-        min_length=1, max_length=50, description="The name of the campaign"
+        min_length=1, max_length=256, description="The name of the artifact."
     )
-    description: str = Field(
-        min_length=1, max_length=255, description="A description for the campaign"
+    digest: str = Field(
+        min_length=71,
+        max_length=71,
+        pattern="^sha256:[a-f0-9]{64}$",
+        description="The digest of the artifact (algorithm:hex-encoded-digest).",
     )
-    managers: Missing[list[str]] = Field(
-        max_length=10 if PYDANTIC_V2 else None,
+    version: Missing[str] = Field(
+        min_length=1, max_length=100, default=UNSET, description="The artifact version."
+    )
+    artifact_url: Missing[str] = Field(
+        max_length=152,
+        pattern="^https://",
         default=UNSET,
-        description="The logins of the users to set as the campaign managers. At this time, only a single manager can be supplied.",
+        description="The URL where the artifact is stored.",
     )
-    team_managers: Missing[list[str]] = Field(
-        max_length=10 if PYDANTIC_V2 else None,
+    path: Missing[str] = Field(
+        max_length=512, default=UNSET, description="The path of the artifact."
+    )
+    registry_url: str = Field(
+        min_length=1,
+        max_length=256,
+        pattern="^https://",
+        description="The base URL of the artifact registry.",
+    )
+    repository: Missing[str] = Field(
+        max_length=128,
         default=UNSET,
-        description="The slugs of the teams to set as the campaign managers.",
+        description="The repository name within the registry.",
     )
-    ends_at: _dt.datetime = Field(
-        description="The end date and time of the campaign. The date must be in the future."
-    )
-    contact_link: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The contact link of the campaign. Must be a URI."
-    )
-    code_scanning_alerts: Missing[
-        Union[
-            Annotated[
-                list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems],
-                Field(min_length=1 if PYDANTIC_V2 else None),
-            ],
-            None,
-        ]
-    ] = Field(
+    status: Missing[Literal["active", "eol", "deleted"]] = Field(
         default=UNSET,
-        description="The code scanning alerts to include in this campaign",
+        description="The status of the artifact (e.g., active, inactive).",
     )
-    generate_issues: Missing[bool] = Field(
+    github_repository: Missing[str] = Field(
+        min_length=1,
+        max_length=100,
+        pattern="^[A-Za-z0-9.\\-_]+$",
         default=UNSET,
-        description="If true, will automatically generate issues for the campaign. The default is false.",
+        description="The name of the GitHub repository associated with the artifact. This should be used\nwhen there are no provenance attestations available for the artifact. The repository\nmust belong to the organization specified in the path parameter.\n\nIf a provenance attestation is available for the artifact, the API will use\nthe repository information from the attestation instead of this parameter.",
+    )
+    return_records: Missing[bool] = Field(
+        default=UNSET,
+        description="If true, the endpoint will return the created record in the response body.\n",
     )
 
 
-model_rebuild(OrgsOrgCampaignsPostBodyOneof1)
+model_rebuild(OrgsOrgArtifactsMetadataStorageRecordPostBody)
 
-__all__ = ("OrgsOrgCampaignsPostBodyOneof1",)
+__all__ = ("OrgsOrgArtifactsMetadataStorageRecordPostBody",)

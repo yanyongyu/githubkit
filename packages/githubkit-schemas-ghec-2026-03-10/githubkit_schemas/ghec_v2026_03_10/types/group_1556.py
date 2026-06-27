@@ -11,26 +11,20 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0244 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+
+class ReposOwnerRepoTopicsPutBodyType(TypedDict):
+    """ReposOwnerRepoTopicsPutBody"""
+
+    names: list[str]
 
 
-class UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
-    """UserCodespacesSecretsSecretNameRepositoriesGetResponse200"""
+class ReposOwnerRepoTopicsPutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoTopicsPutBody"""
 
-    total_count: int
-    repositories: list[MinimalRepositoryType]
-
-
-class UserCodespacesSecretsSecretNameRepositoriesGetResponse200TypeForResponse(
-    TypedDict
-):
-    """UserCodespacesSecretsSecretNameRepositoriesGetResponse200"""
-
-    total_count: int
-    repositories: list[MinimalRepositoryTypeForResponse]
+    names: list[str]
 
 
 __all__ = (
-    "UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type",
-    "UserCodespacesSecretsSecretNameRepositoriesGetResponse200TypeForResponse",
+    "ReposOwnerRepoTopicsPutBodyType",
+    "ReposOwnerRepoTopicsPutBodyTypeForResponse",
 )

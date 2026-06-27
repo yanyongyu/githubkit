@@ -9,24 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType(TypedDict):
-    """ReposOwnerRepoImportAuthorsAuthorIdPatchBody"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyType(TypedDict):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBody"""
 
-    email: NotRequired[str]
-    name: NotRequired[str]
+    name: str
+    value: str
 
 
-class ReposOwnerRepoImportAuthorsAuthorIdPatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoImportAuthorsAuthorIdPatchBody"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBody"""
 
-    email: NotRequired[str]
-    name: NotRequired[str]
+    name: str
+    value: str
 
 
 __all__ = (
-    "ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType",
-    "ReposOwnerRepoImportAuthorsAuthorIdPatchBodyTypeForResponse",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyType",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyTypeForResponse",
 )

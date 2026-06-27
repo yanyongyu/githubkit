@@ -9,26 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from pydantic import Field
-
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0037 import ActionsHostedRunnerCustomImageVersion
+
+class GistsGistIdStarGetResponse404(GitHubModel):
+    """GistsGistIdStarGetResponse404"""
 
 
-class OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200(
-    GitHubModel
-):
-    """OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200"""
+model_rebuild(GistsGistIdStarGetResponse404)
 
-    total_count: int = Field()
-    image_versions: list[ActionsHostedRunnerCustomImageVersion] = Field()
-
-
-model_rebuild(
-    OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200
-)
-
-__all__ = (
-    "OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200",
-)
+__all__ = ("GistsGistIdStarGetResponse404",)

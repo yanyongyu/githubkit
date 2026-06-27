@@ -12,23 +12,27 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class UserCodespacesCodespaceNamePatchBodyType(TypedDict):
-    """UserCodespacesCodespaceNamePatchBody"""
+class ReposTemplateOwnerTemplateRepoGeneratePostBodyType(TypedDict):
+    """ReposTemplateOwnerTemplateRepoGeneratePostBody"""
 
-    machine: NotRequired[str]
-    display_name: NotRequired[str]
-    recent_folders: NotRequired[list[str]]
+    owner: NotRequired[str]
+    name: str
+    description: NotRequired[str]
+    include_all_branches: NotRequired[bool]
+    private: NotRequired[bool]
 
 
-class UserCodespacesCodespaceNamePatchBodyTypeForResponse(TypedDict):
-    """UserCodespacesCodespaceNamePatchBody"""
+class ReposTemplateOwnerTemplateRepoGeneratePostBodyTypeForResponse(TypedDict):
+    """ReposTemplateOwnerTemplateRepoGeneratePostBody"""
 
-    machine: NotRequired[str]
-    display_name: NotRequired[str]
-    recent_folders: NotRequired[list[str]]
+    owner: NotRequired[str]
+    name: str
+    description: NotRequired[str]
+    include_all_branches: NotRequired[bool]
+    private: NotRequired[bool]
 
 
 __all__ = (
-    "UserCodespacesCodespaceNamePatchBodyType",
-    "UserCodespacesCodespaceNamePatchBodyTypeForResponse",
+    "ReposTemplateOwnerTemplateRepoGeneratePostBodyType",
+    "ReposTemplateOwnerTemplateRepoGeneratePostBodyTypeForResponse",
 )

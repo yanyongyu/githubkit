@@ -11,24 +11,28 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0343 import ActionsVariableType, ActionsVariableTypeForResponse
+from .group_0343 import JobType, JobTypeForResponse
 
 
-class ReposOwnerRepoAgentsOrganizationVariablesGetResponse200Type(TypedDict):
-    """ReposOwnerRepoAgentsOrganizationVariablesGetResponse200"""
-
-    total_count: int
-    variables: list[ActionsVariableType]
-
-
-class ReposOwnerRepoAgentsOrganizationVariablesGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoAgentsOrganizationVariablesGetResponse200"""
+class ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200Type(
+    TypedDict
+):
+    """ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200"""
 
     total_count: int
-    variables: list[ActionsVariableTypeForResponse]
+    jobs: list[JobType]
+
+
+class ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200"""
+
+    total_count: int
+    jobs: list[JobTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoAgentsOrganizationVariablesGetResponse200Type",
-    "ReposOwnerRepoAgentsOrganizationVariablesGetResponse200TypeForResponse",
+    "ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200Type",
+    "ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200TypeForResponse",
 )

@@ -12,158 +12,80 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0018 import InstallationType, InstallationTypeForResponse
+from .group_0515 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0517 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0518 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0526 import WebhooksUserType, WebhooksUserTypeForResponse
+from .group_0531 import (
+    WebhooksRepositoriesAddedItemsType,
+    WebhooksRepositoriesAddedItemsTypeForResponse,
+)
 
-class WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType(
-    TypedDict
-):
-    """User"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
+class WebhookInstallationRepositoriesAddedType(TypedDict):
+    """installation_repositories added event"""
+
+    action: Literal["added"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: InstallationType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repositories_added: list[WebhooksRepositoriesAddedItemsType]
+    repositories_removed: list[
+        WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItemsType
+    ]
+    repository: NotRequired[RepositoryWebhooksType]
+    repository_selection: Literal["all", "selected"]
+    requester: Union[WebhooksUserType, None]
+    sender: SimpleUserType
+
+
+class WebhookInstallationRepositoriesAddedTypeForResponse(TypedDict):
+    """installation_repositories added event"""
+
+    action: Literal["added"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: InstallationTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repositories_added: list[WebhooksRepositoriesAddedItemsTypeForResponse]
+    repositories_removed: list[
+        WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItemsTypeForResponse
+    ]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    repository_selection: Literal["all", "selected"]
+    requester: Union[WebhooksUserTypeForResponse, None]
+    sender: SimpleUserTypeForResponse
+
+
+class WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItemsType(TypedDict):
+    """WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItems"""
+
+    full_name: NotRequired[str]
+    id: NotRequired[int]
     name: NotRequired[str]
     node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    private: NotRequired[bool]
 
 
-class WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse(
+class WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItemsTypeForResponse(
     TypedDict
 ):
-    """User"""
+    """WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItems"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
+    full_name: NotRequired[str]
+    id: NotRequired[int]
     name: NotRequired[str]
     node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType(
-    TypedDict
-):
-    """WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropPermission
-    s
-
-    The set of permissions for the GitHub app
-    """
-
-    actions: NotRequired[Literal["read", "write"]]
-    administration: NotRequired[Literal["read", "write"]]
-    checks: NotRequired[Literal["read", "write"]]
-    content_references: NotRequired[Literal["read", "write"]]
-    contents: NotRequired[Literal["read", "write"]]
-    deployments: NotRequired[Literal["read", "write"]]
-    discussions: NotRequired[Literal["read", "write"]]
-    emails: NotRequired[Literal["read", "write"]]
-    environments: NotRequired[Literal["read", "write"]]
-    issues: NotRequired[Literal["read", "write"]]
-    keys: NotRequired[Literal["read", "write"]]
-    members: NotRequired[Literal["read", "write"]]
-    metadata: NotRequired[Literal["read", "write"]]
-    organization_administration: NotRequired[Literal["read", "write"]]
-    organization_hooks: NotRequired[Literal["read", "write"]]
-    organization_packages: NotRequired[Literal["read", "write"]]
-    organization_plan: NotRequired[Literal["read", "write"]]
-    organization_projects: NotRequired[Literal["read", "write", "admin"]]
-    organization_secrets: NotRequired[Literal["read", "write"]]
-    organization_self_hosted_runners: NotRequired[Literal["read", "write"]]
-    organization_user_blocking: NotRequired[Literal["read", "write"]]
-    packages: NotRequired[Literal["read", "write"]]
-    pages: NotRequired[Literal["read", "write"]]
-    pull_requests: NotRequired[Literal["read", "write"]]
-    repository_hooks: NotRequired[Literal["read", "write"]]
-    repository_projects: NotRequired[Literal["read", "write", "admin"]]
-    secret_scanning_alerts: NotRequired[Literal["read", "write"]]
-    secrets: NotRequired[Literal["read", "write"]]
-    security_events: NotRequired[Literal["read", "write"]]
-    security_scanning_alert: NotRequired[Literal["read", "write"]]
-    single_file: NotRequired[Literal["read", "write"]]
-    statuses: NotRequired[Literal["read", "write"]]
-    vulnerability_alerts: NotRequired[Literal["read", "write"]]
-    workflows: NotRequired[Literal["read", "write"]]
-
-
-class WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse(
-    TypedDict
-):
-    """WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropPermission
-    s
-
-    The set of permissions for the GitHub app
-    """
-
-    actions: NotRequired[Literal["read", "write"]]
-    administration: NotRequired[Literal["read", "write"]]
-    checks: NotRequired[Literal["read", "write"]]
-    content_references: NotRequired[Literal["read", "write"]]
-    contents: NotRequired[Literal["read", "write"]]
-    deployments: NotRequired[Literal["read", "write"]]
-    discussions: NotRequired[Literal["read", "write"]]
-    emails: NotRequired[Literal["read", "write"]]
-    environments: NotRequired[Literal["read", "write"]]
-    issues: NotRequired[Literal["read", "write"]]
-    keys: NotRequired[Literal["read", "write"]]
-    members: NotRequired[Literal["read", "write"]]
-    metadata: NotRequired[Literal["read", "write"]]
-    organization_administration: NotRequired[Literal["read", "write"]]
-    organization_hooks: NotRequired[Literal["read", "write"]]
-    organization_packages: NotRequired[Literal["read", "write"]]
-    organization_plan: NotRequired[Literal["read", "write"]]
-    organization_projects: NotRequired[Literal["read", "write", "admin"]]
-    organization_secrets: NotRequired[Literal["read", "write"]]
-    organization_self_hosted_runners: NotRequired[Literal["read", "write"]]
-    organization_user_blocking: NotRequired[Literal["read", "write"]]
-    packages: NotRequired[Literal["read", "write"]]
-    pages: NotRequired[Literal["read", "write"]]
-    pull_requests: NotRequired[Literal["read", "write"]]
-    repository_hooks: NotRequired[Literal["read", "write"]]
-    repository_projects: NotRequired[Literal["read", "write", "admin"]]
-    secret_scanning_alerts: NotRequired[Literal["read", "write"]]
-    secrets: NotRequired[Literal["read", "write"]]
-    security_events: NotRequired[Literal["read", "write"]]
-    security_scanning_alert: NotRequired[Literal["read", "write"]]
-    single_file: NotRequired[Literal["read", "write"]]
-    statuses: NotRequired[Literal["read", "write"]]
-    vulnerability_alerts: NotRequired[Literal["read", "write"]]
-    workflows: NotRequired[Literal["read", "write"]]
+    private: NotRequired[bool]
 
 
 __all__ = (
-    "WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType",
-    "WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse",
-    "WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType",
-    "WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse",
+    "WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItemsType",
+    "WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItemsTypeForResponse",
+    "WebhookInstallationRepositoriesAddedType",
+    "WebhookInstallationRepositoriesAddedTypeForResponse",
 )

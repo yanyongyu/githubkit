@@ -12,21 +12,23 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422Type(TypedDict):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422"""
+class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202Type(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202"""
 
     message: NotRequired[str]
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422TypeForResponse(
+class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422"""
+    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202"""
 
     message: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422Type",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422TypeForResponse",
+    "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202Type",
+    "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202TypeForResponse",
 )

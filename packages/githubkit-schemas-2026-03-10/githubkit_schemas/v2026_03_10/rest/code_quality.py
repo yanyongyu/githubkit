@@ -17,7 +17,7 @@ from pydantic import BaseModel
 
 from githubkit.compat import model_dump, type_validate_python
 from githubkit.typing import Missing, UnsetType
-from githubkit.utils import UNSET, exclude_unset
+from githubkit.utils import UNSET, exclude_unset, parse_query_params
 
 if TYPE_CHECKING:
     from typing import Literal, Union
@@ -27,8 +27,9 @@ if TYPE_CHECKING:
     from githubkit.typing import Missing
     from githubkit.utils import UNSET
 
-    from ..models import CodeQualitySetup, EmptyObject
+    from ..models import CodeQualityFinding, CodeQualitySetup, EmptyObject
     from ..types import (
+        CodeQualityFindingTypeForResponse,
         CodeQualitySetupTypeForResponse,
         CodeQualitySetupUpdateAnyof0Type,
         CodeQualitySetupUpdateAnyof1Type,
@@ -51,6 +52,188 @@ class CodeQualityClient:
         raise RuntimeError(
             "GitHub client has already been collected. "
             "Do not use this client after the client has been collected."
+        )
+
+    def list_findings_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        direction: Missing[Literal["asc", "desc"]] = UNSET,
+        before: Missing[str] = UNSET,
+        after: Missing[str] = UNSET,
+        state: Missing[Literal["open", "dismissed"]] = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[list[CodeQualityFinding], list[CodeQualityFindingTypeForResponse]]:
+        """code-quality/list-findings-for-repo
+
+        GET /repos/{owner}/{repo}/code-quality/findings
+
+        Lists code quality findings for a repository.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
+
+        See also: https://docs.github.com/rest/code-quality/code-quality#list-code-quality-findings-for-a-repository
+        """
+
+        from ..models import BasicError, CodeQualityFinding, EventsGetResponse503
+
+        url = f"/repos/{owner}/{repo}/code-quality/findings"
+
+        params = {
+            "per_page": per_page,
+            "direction": direction,
+            "before": before,
+            "after": after,
+            "state": state,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[CodeQualityFinding],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "503": EventsGetResponse503,
+            },
+        )
+
+    async def async_list_findings_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        direction: Missing[Literal["asc", "desc"]] = UNSET,
+        before: Missing[str] = UNSET,
+        after: Missing[str] = UNSET,
+        state: Missing[Literal["open", "dismissed"]] = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[list[CodeQualityFinding], list[CodeQualityFindingTypeForResponse]]:
+        """code-quality/list-findings-for-repo
+
+        GET /repos/{owner}/{repo}/code-quality/findings
+
+        Lists code quality findings for a repository.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
+
+        See also: https://docs.github.com/rest/code-quality/code-quality#list-code-quality-findings-for-a-repository
+        """
+
+        from ..models import BasicError, CodeQualityFinding, EventsGetResponse503
+
+        url = f"/repos/{owner}/{repo}/code-quality/findings"
+
+        params = {
+            "per_page": per_page,
+            "direction": direction,
+            "before": before,
+            "after": after,
+            "state": state,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[CodeQualityFinding],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "503": EventsGetResponse503,
+            },
+        )
+
+    def get_finding(
+        self,
+        owner: str,
+        repo: str,
+        finding_number: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[CodeQualityFinding, CodeQualityFindingTypeForResponse]:
+        """code-quality/get-finding
+
+        GET /repos/{owner}/{repo}/code-quality/findings/{finding_number}
+
+        Gets a single code quality finding.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
+
+        See also: https://docs.github.com/rest/code-quality/code-quality#get-a-code-quality-finding
+        """
+
+        from ..models import BasicError, CodeQualityFinding, EventsGetResponse503
+
+        url = f"/repos/{owner}/{repo}/code-quality/findings/{finding_number}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CodeQualityFinding,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "503": EventsGetResponse503,
+            },
+        )
+
+    async def async_get_finding(
+        self,
+        owner: str,
+        repo: str,
+        finding_number: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[CodeQualityFinding, CodeQualityFindingTypeForResponse]:
+        """code-quality/get-finding
+
+        GET /repos/{owner}/{repo}/code-quality/findings/{finding_number}
+
+        Gets a single code quality finding.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
+
+        See also: https://docs.github.com/rest/code-quality/code-quality#get-a-code-quality-finding
+        """
+
+        from ..models import BasicError, CodeQualityFinding, EventsGetResponse503
+
+        url = f"/repos/{owner}/{repo}/code-quality/findings/{finding_number}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CodeQualityFinding,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "503": EventsGetResponse503,
+            },
         )
 
     def get_setup(

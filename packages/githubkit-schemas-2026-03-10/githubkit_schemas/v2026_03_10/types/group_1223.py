@@ -12,31 +12,21 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0Type(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0
+class ReposOwnerRepoAgentsSecretsSecretNamePutBodyType(TypedDict):
+    """ReposOwnerRepoAgentsSecretsSecretNamePutBody"""
 
-    Examples:
-        {'contexts': ['contexts']}
-    """
-
-    contexts: list[str]
+    encrypted_value: str
+    key_id: str
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0
+class ReposOwnerRepoAgentsSecretsSecretNamePutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoAgentsSecretsSecretNamePutBody"""
 
-    Examples:
-        {'contexts': ['contexts']}
-    """
-
-    contexts: list[str]
+    encrypted_value: str
+    key_id: str
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0Type",
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0TypeForResponse",
+    "ReposOwnerRepoAgentsSecretsSecretNamePutBodyType",
+    "ReposOwnerRepoAgentsSecretsSecretNamePutBodyTypeForResponse",
 )

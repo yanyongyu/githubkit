@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0576 import EnterpriseWebhooks
-from .group_0577 import SimpleInstallation
-from .group_0578 import OrganizationSimpleWebhooks
-from .group_0579 import RepositoryWebhooks
-from .group_0811 import WebhookIssuesReopenedPropIssue
+from .group_0588 import EnterpriseWebhooks
+from .group_0589 import SimpleInstallation
+from .group_0590 import OrganizationSimpleWebhooks
+from .group_0591 import RepositoryWebhooks
+from .group_0609 import WebhooksIssue
 
 
-class WebhookIssuesReopened(GitHubModel):
-    """issues reopened event"""
+class WebhookIssuesFieldRemoved(GitHubModel):
+    """issues field_removed event"""
 
-    action: Literal["reopened"] = Field()
+    action: Literal["field_removed"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -39,9 +39,15 @@ class WebhookIssuesReopened(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    issue: WebhookIssuesReopenedPropIssue = Field(
+    issue: WebhooksIssue = Field(
         title="Issue",
         description="The [issue](https://docs.github.com/enterprise-cloud@latest/rest/issues/issues#get-an-issue) itself.",
+    )
+    issue_field: WebhookIssuesFieldRemovedPropIssueField = Field(
+        description="The issue field whose value was cleared from the issue."
+    )
+    issue_field_value: Missing[WebhookIssuesFieldRemovedPropIssueFieldValue] = Field(
+        default=UNSET, description="The value that was cleared from the issue field."
     )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
@@ -55,6 +61,81 @@ class WebhookIssuesReopened(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookIssuesReopened)
+class WebhookIssuesFieldRemovedPropIssueField(GitHubModel):
+    """WebhookIssuesFieldRemovedPropIssueField
 
-__all__ = ("WebhookIssuesReopened",)
+    The issue field whose value was cleared from the issue.
+    """
+
+    id: int = Field(description="The unique identifier of the issue field.")
+    name: str = Field(description="The name of the issue field.")
+    field_type: Literal["text", "date", "single_select", "multi_select", "number"] = (
+        Field(description="The data type of the issue field.")
+    )
+
+
+class WebhookIssuesFieldRemovedPropIssueFieldValue(GitHubModel):
+    """WebhookIssuesFieldRemovedPropIssueFieldValue
+
+    The value that was cleared from the issue field.
+    """
+
+    id: int = Field(description="The unique identifier of the issue field value.")
+    value: Missing[Union[str, float, int, None]] = Field(
+        default=UNSET,
+        description="The value of the field. Present for text, date, and number field types.",
+    )
+    value_id: Missing[int] = Field(
+        default=UNSET,
+        description="The identifier of the selected option. Present for single_select field types.",
+    )
+    option: Missing[WebhookIssuesFieldRemovedPropIssueFieldValuePropOption] = Field(
+        default=UNSET,
+        description="The selected option details. Present for single_select field types.",
+    )
+    value_ids: Missing[list[int]] = Field(
+        default=UNSET,
+        description="The identifiers of the selected options. Present for multi_select field types.",
+    )
+    options: Missing[
+        list[WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItems]
+    ] = Field(
+        default=UNSET,
+        description="The selected option details. Present for multi_select field types.",
+    )
+
+
+class WebhookIssuesFieldRemovedPropIssueFieldValuePropOption(GitHubModel):
+    """WebhookIssuesFieldRemovedPropIssueFieldValuePropOption
+
+    The selected option details. Present for single_select field types.
+    """
+
+    id: Missing[int] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    color: Missing[str] = Field(default=UNSET)
+    description: Missing[Union[str, None]] = Field(default=UNSET)
+
+
+class WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItems(GitHubModel):
+    """WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItems"""
+
+    id: Missing[int] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    color: Missing[str] = Field(default=UNSET)
+    description: Missing[Union[str, None]] = Field(default=UNSET)
+
+
+model_rebuild(WebhookIssuesFieldRemoved)
+model_rebuild(WebhookIssuesFieldRemovedPropIssueField)
+model_rebuild(WebhookIssuesFieldRemovedPropIssueFieldValue)
+model_rebuild(WebhookIssuesFieldRemovedPropIssueFieldValuePropOption)
+model_rebuild(WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItems)
+
+__all__ = (
+    "WebhookIssuesFieldRemoved",
+    "WebhookIssuesFieldRemovedPropIssueField",
+    "WebhookIssuesFieldRemovedPropIssueFieldValue",
+    "WebhookIssuesFieldRemovedPropIssueFieldValuePropOption",
+    "WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItems",
+)

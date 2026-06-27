@@ -9,28 +9,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
+
+from .group_0247 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
-class ActionsCacheStorageLimitForOrganizationType(TypedDict):
-    """Actions cache storage limit for an organization
+class ThreadType(TypedDict):
+    """Thread
 
-    GitHub Actions cache storage policy for an organization.
+    Thread
     """
 
-    max_cache_size_gb: NotRequired[int]
+    id: str
+    repository: MinimalRepositoryType
+    subject: ThreadPropSubjectType
+    reason: str
+    unread: bool
+    updated_at: str
+    last_read_at: Union[str, None]
+    url: str
+    subscription_url: str
 
 
-class ActionsCacheStorageLimitForOrganizationTypeForResponse(TypedDict):
-    """Actions cache storage limit for an organization
+class ThreadTypeForResponse(TypedDict):
+    """Thread
 
-    GitHub Actions cache storage policy for an organization.
+    Thread
     """
 
-    max_cache_size_gb: NotRequired[int]
+    id: str
+    repository: MinimalRepositoryTypeForResponse
+    subject: ThreadPropSubjectTypeForResponse
+    reason: str
+    unread: bool
+    updated_at: str
+    last_read_at: Union[str, None]
+    url: str
+    subscription_url: str
+
+
+class ThreadPropSubjectType(TypedDict):
+    """ThreadPropSubject"""
+
+    title: str
+    url: str
+    latest_comment_url: str
+    type: str
+
+
+class ThreadPropSubjectTypeForResponse(TypedDict):
+    """ThreadPropSubject"""
+
+    title: str
+    url: str
+    latest_comment_url: str
+    type: str
 
 
 __all__ = (
-    "ActionsCacheStorageLimitForOrganizationType",
-    "ActionsCacheStorageLimitForOrganizationTypeForResponse",
+    "ThreadPropSubjectType",
+    "ThreadPropSubjectTypeForResponse",
+    "ThreadType",
+    "ThreadTypeForResponse",
 )

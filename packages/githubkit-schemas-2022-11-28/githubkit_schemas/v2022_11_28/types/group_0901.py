@@ -9,45 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0191 import FullRepositoryType, FullRepositoryTypeForResponse
-from .group_0503 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0504 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0505 import (
+from .group_0470 import (
+    SecretScanningLocationType,
+    SecretScanningLocationTypeForResponse,
+)
+from .group_0516 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0517 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0902 import (
-    WebhookSecurityAndAnalysisPropChangesType,
-    WebhookSecurityAndAnalysisPropChangesTypeForResponse,
+from .group_0518 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0558 import (
+    SecretScanningAlertWebhookType,
+    SecretScanningAlertWebhookTypeForResponse,
 )
 
 
-class WebhookSecurityAndAnalysisType(TypedDict):
-    """security_and_analysis event"""
+class WebhookSecretScanningAlertLocationCreatedType(TypedDict):
+    """Secret Scanning Alert Location Created Event"""
 
-    changes: WebhookSecurityAndAnalysisPropChangesType
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["created"]
+    alert: SecretScanningAlertWebhookType
     installation: NotRequired[SimpleInstallationType]
+    location: SecretScanningLocationType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: FullRepositoryType
-    sender: NotRequired[SimpleUserType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class WebhookSecurityAndAnalysisTypeForResponse(TypedDict):
-    """security_and_analysis event"""
+class WebhookSecretScanningAlertLocationCreatedTypeForResponse(TypedDict):
+    """Secret Scanning Alert Location Created Event"""
 
-    changes: WebhookSecurityAndAnalysisPropChangesTypeForResponse
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    action: Literal["created"]
+    alert: SecretScanningAlertWebhookTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
+    location: SecretScanningLocationTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: FullRepositoryTypeForResponse
-    sender: NotRequired[SimpleUserTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookSecurityAndAnalysisType",
-    "WebhookSecurityAndAnalysisTypeForResponse",
+    "WebhookSecretScanningAlertLocationCreatedType",
+    "WebhookSecretScanningAlertLocationCreatedTypeForResponse",
 )

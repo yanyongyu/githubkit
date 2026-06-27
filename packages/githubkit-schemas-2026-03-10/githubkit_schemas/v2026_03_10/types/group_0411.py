@@ -10,16 +10,17 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0391 import IssueReferenceType, IssueReferenceTypeForResponse
 
 
-class StateChangeIssueEventType(TypedDict):
-    """State Change Issue Event
+class SubIssueAddedIssueEventType(TypedDict):
+    """Sub-issue Added Issue Event
 
-    State Change Issue Event
+    Sub-issue Added Issue Event
     """
 
     id: int
@@ -31,13 +32,13 @@ class StateChangeIssueEventType(TypedDict):
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    state_reason: NotRequired[Union[str, None]]
+    sub_issue: Union[IssueReferenceType, None]
 
 
-class StateChangeIssueEventTypeForResponse(TypedDict):
-    """State Change Issue Event
+class SubIssueAddedIssueEventTypeForResponse(TypedDict):
+    """Sub-issue Added Issue Event
 
-    State Change Issue Event
+    Sub-issue Added Issue Event
     """
 
     id: int
@@ -49,10 +50,10 @@ class StateChangeIssueEventTypeForResponse(TypedDict):
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    state_reason: NotRequired[Union[str, None]]
+    sub_issue: Union[IssueReferenceTypeForResponse, None]
 
 
 __all__ = (
-    "StateChangeIssueEventType",
-    "StateChangeIssueEventTypeForResponse",
+    "SubIssueAddedIssueEventType",
+    "SubIssueAddedIssueEventTypeForResponse",
 )

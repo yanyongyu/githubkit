@@ -9,26 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class SelectedActionsType(TypedDict):
-    """SelectedActions"""
+class ActionsForkPrWorkflowsPrivateReposType(TypedDict):
+    """ActionsForkPrWorkflowsPrivateRepos"""
 
-    github_owned_allowed: NotRequired[bool]
-    verified_allowed: NotRequired[bool]
-    patterns_allowed: NotRequired[list[str]]
+    run_workflows_from_fork_pull_requests: bool
+    send_write_tokens_to_workflows: bool
+    send_secrets_and_variables: bool
+    require_approval_for_fork_pr_workflows: bool
 
 
-class SelectedActionsTypeForResponse(TypedDict):
-    """SelectedActions"""
+class ActionsForkPrWorkflowsPrivateReposTypeForResponse(TypedDict):
+    """ActionsForkPrWorkflowsPrivateRepos"""
 
-    github_owned_allowed: NotRequired[bool]
-    verified_allowed: NotRequired[bool]
-    patterns_allowed: NotRequired[list[str]]
+    run_workflows_from_fork_pull_requests: bool
+    send_write_tokens_to_workflows: bool
+    send_secrets_and_variables: bool
+    require_approval_for_fork_pr_workflows: bool
 
 
 __all__ = (
-    "SelectedActionsType",
-    "SelectedActionsTypeForResponse",
+    "ActionsForkPrWorkflowsPrivateReposType",
+    "ActionsForkPrWorkflowsPrivateReposTypeForResponse",
 )

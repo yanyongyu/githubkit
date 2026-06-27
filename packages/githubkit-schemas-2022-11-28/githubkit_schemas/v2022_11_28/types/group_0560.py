@@ -9,72 +9,237 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0503 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0504 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0505 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0506 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0509 import (
-    CheckRunWithSimpleCheckSuiteType,
-    CheckRunWithSimpleCheckSuiteTypeForResponse,
-)
+
+class WebhooksSponsorshipType(TypedDict):
+    """WebhooksSponsorship"""
+
+    created_at: str
+    maintainer: NotRequired[WebhooksSponsorshipPropMaintainerType]
+    node_id: str
+    privacy_level: str
+    sponsor: Union[WebhooksSponsorshipPropSponsorType, None]
+    sponsorable: Union[WebhooksSponsorshipPropSponsorableType, None]
+    tier: WebhooksSponsorshipPropTierType
 
 
-class WebhookCheckRunRequestedActionType(TypedDict):
-    """Check Run Requested Action Event"""
+class WebhooksSponsorshipTypeForResponse(TypedDict):
+    """WebhooksSponsorship"""
 
-    action: Literal["requested_action"]
-    check_run: CheckRunWithSimpleCheckSuiteType
-    installation: NotRequired[SimpleInstallationType]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    requested_action: NotRequired[WebhookCheckRunRequestedActionPropRequestedActionType]
-    sender: SimpleUserType
-
-
-class WebhookCheckRunRequestedActionTypeForResponse(TypedDict):
-    """Check Run Requested Action Event"""
-
-    action: Literal["requested_action"]
-    check_run: CheckRunWithSimpleCheckSuiteTypeForResponse
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    requested_action: NotRequired[
-        WebhookCheckRunRequestedActionPropRequestedActionTypeForResponse
-    ]
-    sender: SimpleUserTypeForResponse
+    created_at: str
+    maintainer: NotRequired[WebhooksSponsorshipPropMaintainerTypeForResponse]
+    node_id: str
+    privacy_level: str
+    sponsor: Union[WebhooksSponsorshipPropSponsorTypeForResponse, None]
+    sponsorable: Union[WebhooksSponsorshipPropSponsorableTypeForResponse, None]
+    tier: WebhooksSponsorshipPropTierTypeForResponse
 
 
-class WebhookCheckRunRequestedActionPropRequestedActionType(TypedDict):
-    """WebhookCheckRunRequestedActionPropRequestedAction
+class WebhooksSponsorshipPropMaintainerType(TypedDict):
+    """WebhooksSponsorshipPropMaintainer"""
 
-    The action requested by the user.
+    avatar_url: NotRequired[str]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    login: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[str]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhooksSponsorshipPropMaintainerTypeForResponse(TypedDict):
+    """WebhooksSponsorshipPropMaintainer"""
+
+    avatar_url: NotRequired[str]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    login: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[str]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhooksSponsorshipPropSponsorType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhooksSponsorshipPropSponsorTypeForResponse(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhooksSponsorshipPropSponsorableType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhooksSponsorshipPropSponsorableTypeForResponse(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhooksSponsorshipPropTierType(TypedDict):
+    """Sponsorship Tier
+
+    The `tier_changed` and `pending_tier_change` will include the original tier
+    before the change or pending change. For more information, see the pending tier
+    change payload.
     """
 
-    identifier: NotRequired[str]
+    created_at: str
+    description: str
+    is_custom_ammount: NotRequired[bool]
+    is_custom_amount: NotRequired[bool]
+    is_one_time: bool
+    monthly_price_in_cents: int
+    monthly_price_in_dollars: int
+    name: str
+    node_id: str
 
 
-class WebhookCheckRunRequestedActionPropRequestedActionTypeForResponse(TypedDict):
-    """WebhookCheckRunRequestedActionPropRequestedAction
+class WebhooksSponsorshipPropTierTypeForResponse(TypedDict):
+    """Sponsorship Tier
 
-    The action requested by the user.
+    The `tier_changed` and `pending_tier_change` will include the original tier
+    before the change or pending change. For more information, see the pending tier
+    change payload.
     """
 
-    identifier: NotRequired[str]
+    created_at: str
+    description: str
+    is_custom_ammount: NotRequired[bool]
+    is_custom_amount: NotRequired[bool]
+    is_one_time: bool
+    monthly_price_in_cents: int
+    monthly_price_in_dollars: int
+    name: str
+    node_id: str
 
 
 __all__ = (
-    "WebhookCheckRunRequestedActionPropRequestedActionType",
-    "WebhookCheckRunRequestedActionPropRequestedActionTypeForResponse",
-    "WebhookCheckRunRequestedActionType",
-    "WebhookCheckRunRequestedActionTypeForResponse",
+    "WebhooksSponsorshipPropMaintainerType",
+    "WebhooksSponsorshipPropMaintainerTypeForResponse",
+    "WebhooksSponsorshipPropSponsorType",
+    "WebhooksSponsorshipPropSponsorTypeForResponse",
+    "WebhooksSponsorshipPropSponsorableType",
+    "WebhooksSponsorshipPropSponsorableTypeForResponse",
+    "WebhooksSponsorshipPropTierType",
+    "WebhooksSponsorshipPropTierTypeForResponse",
+    "WebhooksSponsorshipType",
+    "WebhooksSponsorshipTypeForResponse",
 )

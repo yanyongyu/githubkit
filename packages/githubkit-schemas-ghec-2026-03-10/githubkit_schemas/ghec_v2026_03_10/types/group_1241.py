@@ -9,24 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0247 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
-class OrgsOrgAttestationsRepositoriesGetResponse200ItemsType(TypedDict):
-    """OrgsOrgAttestationsRepositoriesGetResponse200Items"""
+class OrgsOrgAgentsVariablesNameRepositoriesGetResponse200Type(TypedDict):
+    """OrgsOrgAgentsVariablesNameRepositoriesGetResponse200"""
 
-    id: NotRequired[int]
-    name: NotRequired[str]
+    total_count: int
+    repositories: list[MinimalRepositoryType]
 
 
-class OrgsOrgAttestationsRepositoriesGetResponse200ItemsTypeForResponse(TypedDict):
-    """OrgsOrgAttestationsRepositoriesGetResponse200Items"""
+class OrgsOrgAgentsVariablesNameRepositoriesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgAgentsVariablesNameRepositoriesGetResponse200"""
 
-    id: NotRequired[int]
-    name: NotRequired[str]
+    total_count: int
+    repositories: list[MinimalRepositoryTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgAttestationsRepositoriesGetResponse200ItemsType",
-    "OrgsOrgAttestationsRepositoriesGetResponse200ItemsTypeForResponse",
+    "OrgsOrgAgentsVariablesNameRepositoriesGetResponse200Type",
+    "OrgsOrgAgentsVariablesNameRepositoriesGetResponse200TypeForResponse",
 )

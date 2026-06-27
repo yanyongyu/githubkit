@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
 
 from pydantic import Field
 
@@ -18,58 +18,74 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesPostBody(GitHubModel):
-    """ReposOwnerRepoIssuesPostBody"""
+class ReposOwnerRepoGitCommitsPostBody(GitHubModel):
+    """ReposOwnerRepoGitCommitsPostBody"""
 
-    title: Union[str, int] = Field(description="The title of the issue.")
-    body: Missing[str] = Field(default=UNSET, description="The contents of the issue.")
-    milestone: Missing[Union[str, int, None]] = Field(default=UNSET)
-    labels: Missing[
-        list[Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1]]
-    ] = Field(
+    message: str = Field(description="The commit message")
+    tree: str = Field(description="The SHA of the tree object this commit points to")
+    parents: Missing[list[str]] = Field(
         default=UNSET,
-        description="Labels to associate with this issue. _NOTE: Only users with push access can set labels for new issues. Labels are silently dropped otherwise._",
+        description="The full SHAs of the commits that were the parents of this commit. If omitted or empty, the commit will be written as a root commit. For a single parent, an array of one SHA should be provided; for a merge commit, an array of more than one should be provided.",
     )
-    assignees: Missing[list[str]] = Field(
+    author: Missing[ReposOwnerRepoGitCommitsPostBodyPropAuthor] = Field(
         default=UNSET,
-        description="Logins for Users to assign to this issue. _NOTE: Only users with push access can set assignees for new issues. Assignees are silently dropped otherwise._",
+        description="Information about the author of the commit. By default, the `author` will be the authenticated user and the current date. See the `author` and `committer` object below for details.",
     )
-    issue_field_values: Missing[
-        list[ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems]
-    ] = Field(
+    committer: Missing[ReposOwnerRepoGitCommitsPostBodyPropCommitter] = Field(
         default=UNSET,
-        description="An array of issue field values to set on this issue. Each field value must include the field ID and the value to set. Issue fields are only available for organization-owned repositories with the feature enabled. Field values are silently dropped otherwise.",
+        description="Information about the person who is making the commit. By default, `committer` will use the information set in `author`. See the `author` and `committer` object below for details.",
     )
-    type: Missing[Union[str, None]] = Field(
+    signature: Missing[str] = Field(
         default=UNSET,
-        description="The name of the issue type to associate with this issue. _NOTE: Only users with push access can set the type for new issues. The type is silently dropped otherwise._",
+        description="The [PGP signature](https://en.wikipedia.org/wiki/Pretty_Good_Privacy) of the commit. GitHub adds the signature to the `gpgsig` header of the created commit. For a commit signature to be verifiable by Git or GitHub, it must be an ASCII-armored detached PGP signature over the string commit as it would be written to the object database. To pass a `signature` parameter, you need to first manually create a valid PGP signature, which can be complicated. You may find it easier to [use the command line](https://git-scm.com/book/id/v2/Git-Tools-Signing-Your-Work) to create signed commits.",
     )
 
 
-class ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1(GitHubModel):
-    """ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1"""
+class ReposOwnerRepoGitCommitsPostBodyPropAuthor(GitHubModel):
+    """ReposOwnerRepoGitCommitsPostBodyPropAuthor
 
-    id: Missing[int] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    description: Missing[Union[str, None]] = Field(default=UNSET)
-    color: Missing[Union[str, None]] = Field(default=UNSET)
+    Information about the author of the commit. By default, the `author` will be the
+    authenticated user and the current date. See the `author` and `committer` object
+    below for details.
+    """
 
-
-class ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems(GitHubModel):
-    """ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems"""
-
-    field_id: int = Field(description="The ID of the issue field to set")
-    value: Union[str, float, list[str]] = Field(
-        description="The value to set for the field. For multi-select fields, provide an array of option names."
+    name: str = Field(description="The name of the author (or committer) of the commit")
+    email: str = Field(
+        description="The email of the author (or committer) of the commit"
+    )
+    date: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="Indicates when this commit was authored (or committed). This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
 
 
-model_rebuild(ReposOwnerRepoIssuesPostBody)
-model_rebuild(ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1)
-model_rebuild(ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems)
+class ReposOwnerRepoGitCommitsPostBodyPropCommitter(GitHubModel):
+    """ReposOwnerRepoGitCommitsPostBodyPropCommitter
+
+    Information about the person who is making the commit. By default, `committer`
+    will use the information set in `author`. See the `author` and `committer`
+    object below for details.
+    """
+
+    name: Missing[str] = Field(
+        default=UNSET, description="The name of the author (or committer) of the commit"
+    )
+    email: Missing[str] = Field(
+        default=UNSET,
+        description="The email of the author (or committer) of the commit",
+    )
+    date: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="Indicates when this commit was authored (or committed). This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    )
+
+
+model_rebuild(ReposOwnerRepoGitCommitsPostBody)
+model_rebuild(ReposOwnerRepoGitCommitsPostBodyPropAuthor)
+model_rebuild(ReposOwnerRepoGitCommitsPostBodyPropCommitter)
 
 __all__ = (
-    "ReposOwnerRepoIssuesPostBody",
-    "ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems",
-    "ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1",
+    "ReposOwnerRepoGitCommitsPostBody",
+    "ReposOwnerRepoGitCommitsPostBodyPropAuthor",
+    "ReposOwnerRepoGitCommitsPostBodyPropCommitter",
 )

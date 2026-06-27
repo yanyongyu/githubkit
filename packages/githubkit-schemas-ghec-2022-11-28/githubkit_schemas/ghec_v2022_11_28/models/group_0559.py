@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,40 +17,29 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0554 import SearchResultTextMatchesItems
 
+class UserRoleItems(GitHubModel):
+    """UserRoleItems"""
 
-class LabelSearchResultItem(GitHubModel):
-    """Label Search Result Item
-
-    Label Search Result Item
-    """
-
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    name: str = Field()
-    color: str = Field()
-    default: bool = Field()
-    description: Union[str, None] = Field()
-    score: float = Field()
-    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
-        default=UNSET, title="Search Result Text Matches"
+    display: Missing[str] = Field(default=UNSET)
+    type: Missing[str] = Field(default=UNSET)
+    value: Literal[
+        "user",
+        "27d9891d-2c17-4f45-a262-781a0e55c80a",
+        "guest_collaborator",
+        "1ebc4a02-e56c-43a6-92a5-02ee09b90824",
+        "enterprise_owner",
+        "981df190-8801-4618-a08a-d91f6206c954",
+        "ba4987ab-a1c3-412a-b58c-360fc407cb10",
+        "billing_manager",
+        "0e338b8c-cc7f-498a-928d-ea3470d7e7e3",
+        "e6be2762-e4ad-4108-b72d-1bbe884a0f91",
+    ] = Field(description="The role value representing a user role in GitHub.")
+    primary: Missing[bool] = Field(
+        default=UNSET, description="Is the role a primary role for the user."
     )
 
 
-class SearchLabelsGetResponse200(GitHubModel):
-    """SearchLabelsGetResponse200"""
+model_rebuild(UserRoleItems)
 
-    total_count: int = Field()
-    incomplete_results: bool = Field()
-    items: list[LabelSearchResultItem] = Field()
-
-
-model_rebuild(LabelSearchResultItem)
-model_rebuild(SearchLabelsGetResponse200)
-
-__all__ = (
-    "LabelSearchResultItem",
-    "SearchLabelsGetResponse200",
-)
+__all__ = ("UserRoleItems",)

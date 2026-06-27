@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,24 +19,109 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgProjectsV2ProjectNumberViewsPostBody(GitHubModel):
-    """OrgsOrgProjectsV2ProjectNumberViewsPostBody"""
+class OrgsOrgPrivateRegistriesGetResponse200(GitHubModel):
+    """OrgsOrgPrivateRegistriesGetResponse200"""
 
-    name: str = Field(description="The name of the view.")
-    layout: Literal["table", "board", "roadmap"] = Field(
-        description="The layout of the view."
+    total_count: int = Field()
+    configurations: list[OrgPrivateRegistryConfiguration] = Field()
+
+
+class OrgPrivateRegistryConfiguration(GitHubModel):
+    """Organization private registry
+
+    Private registry configuration for an organization
+    """
+
+    name: str = Field(description="The name of the private registry configuration.")
+    registry_type: Literal[
+        "maven_repository",
+        "nuget_feed",
+        "goproxy_server",
+        "npm_registry",
+        "rubygems_server",
+        "cargo_registry",
+        "composer_repository",
+        "docker_registry",
+        "git_source",
+        "helm_registry",
+        "hex_organization",
+        "hex_repository",
+        "pub_repository",
+        "python_index",
+        "terraform_registry",
+    ] = Field(description="The registry type.")
+    auth_type: Missing[
+        Literal[
+            "token",
+            "username_password",
+            "oidc_azure",
+            "oidc_aws",
+            "oidc_jfrog",
+            "oidc_cloudsmith",
+            "oidc_gcp",
+        ]
+    ] = Field(
+        default=UNSET, description="The authentication type for the private registry."
     )
-    filter_: Missing[str] = Field(
+    url: Missing[str] = Field(
+        default=UNSET, description="The URL of the private registry."
+    )
+    username: Missing[Union[str, None]] = Field(
         default=UNSET,
-        alias="filter",
-        description="The filter query for the view. See [Filtering projects](https://docs.github.com/issues/planning-and-tracking-with-projects/customizing-views-in-your-project/filtering-projects) for more information.",
+        description="The username to use when authenticating with the private registry.",
     )
-    visible_fields: Missing[list[int]] = Field(
+    replaces_base: Missing[bool] = Field(
         default=UNSET,
-        description="`visible_fields` is not applicable to `roadmap` layout views.\nFor `table` and `board` layouts, this represents the field IDs that should be visible in the view. If not provided, the default visible fields will be used.",
+        description="Whether this private registry replaces the base registry (e.g., npmjs.org for npm, rubygems.org for rubygems). When `true`, Dependabot will only use this registry and will not fall back to the public registry. When `false` (default), Dependabot will use this registry for scoped packages but may fall back to the public registry for other packages.",
     )
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="Which type of organization repositories have access to the private registry."
+    )
+    tenant_id: Missing[str] = Field(
+        default=UNSET, description="The tenant ID of the Azure AD application."
+    )
+    client_id: Missing[str] = Field(
+        default=UNSET, description="The client ID of the Azure AD application."
+    )
+    aws_region: Missing[str] = Field(default=UNSET, description="The AWS region.")
+    account_id: Missing[str] = Field(default=UNSET, description="The AWS account ID.")
+    role_name: Missing[str] = Field(default=UNSET, description="The AWS IAM role name.")
+    domain: Missing[str] = Field(default=UNSET, description="The CodeArtifact domain.")
+    domain_owner: Missing[str] = Field(
+        default=UNSET, description="The CodeArtifact domain owner."
+    )
+    jfrog_oidc_provider_name: Missing[str] = Field(
+        default=UNSET, description="The JFrog OIDC provider name."
+    )
+    audience: Missing[str] = Field(default=UNSET, description="The OIDC audience.")
+    identity_mapping_name: Missing[str] = Field(
+        default=UNSET, description="The JFrog identity mapping name."
+    )
+    namespace: Missing[str] = Field(
+        default=UNSET, description="The Cloudsmith organization namespace."
+    )
+    service_slug: Missing[str] = Field(
+        default=UNSET, description="The Cloudsmith service account slug."
+    )
+    api_host: Missing[str] = Field(
+        default=UNSET, description="The Cloudsmith API host."
+    )
+    workload_identity_provider: Missing[str] = Field(
+        default=UNSET,
+        description="The full resource name of the GCP Workload Identity Provider (e.g. `projects/<NUM>/locations/global/workloadIdentityPools/<POOL>/providers/<PROVIDER>`).",
+    )
+    service_account: Missing[str] = Field(
+        default=UNSET,
+        description="The GCP service account email to impersonate. If omitted, the federated token is used directly (direct WIF).",
+    )
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
 
 
-model_rebuild(OrgsOrgProjectsV2ProjectNumberViewsPostBody)
+model_rebuild(OrgsOrgPrivateRegistriesGetResponse200)
+model_rebuild(OrgPrivateRegistryConfiguration)
 
-__all__ = ("OrgsOrgProjectsV2ProjectNumberViewsPostBody",)
+__all__ = (
+    "OrgPrivateRegistryConfiguration",
+    "OrgsOrgPrivateRegistriesGetResponse200",
+)

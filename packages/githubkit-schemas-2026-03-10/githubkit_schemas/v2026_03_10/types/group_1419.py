@@ -9,26 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0143 import CopilotSpaceResourceType, CopilotSpaceResourceTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200Type(TypedDict):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200"""
+class UserSshSigningKeysPostBodyType(TypedDict):
+    """UserSshSigningKeysPostBody"""
 
-    resources: list[CopilotSpaceResourceType]
+    title: NotRequired[str]
+    key: str
 
 
-class UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200TypeForResponse(
-    TypedDict
-):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200"""
+class UserSshSigningKeysPostBodyTypeForResponse(TypedDict):
+    """UserSshSigningKeysPostBody"""
 
-    resources: list[CopilotSpaceResourceTypeForResponse]
+    title: NotRequired[str]
+    key: str
 
 
 __all__ = (
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200Type",
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200TypeForResponse",
+    "UserSshSigningKeysPostBodyType",
+    "UserSshSigningKeysPostBodyTypeForResponse",
 )

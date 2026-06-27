@@ -9,30 +9,68 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0566 import (
+    SearchResultTextMatchesItemsType,
+    SearchResultTextMatchesItemsTypeForResponse,
+)
 
 
-class SocialAccountType(TypedDict):
-    """Social account
+class LabelSearchResultItemType(TypedDict):
+    """Label Search Result Item
 
-    Social media account
+    Label Search Result Item
     """
 
-    provider: str
+    id: int
+    node_id: str
     url: str
+    name: str
+    color: str
+    default: bool
+    description: Union[str, None]
+    score: float
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
 
 
-class SocialAccountTypeForResponse(TypedDict):
-    """Social account
+class LabelSearchResultItemTypeForResponse(TypedDict):
+    """Label Search Result Item
 
-    Social media account
+    Label Search Result Item
     """
 
-    provider: str
+    id: int
+    node_id: str
     url: str
+    name: str
+    color: str
+    default: bool
+    description: Union[str, None]
+    score: float
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
+
+
+class SearchLabelsGetResponse200Type(TypedDict):
+    """SearchLabelsGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[LabelSearchResultItemType]
+
+
+class SearchLabelsGetResponse200TypeForResponse(TypedDict):
+    """SearchLabelsGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[LabelSearchResultItemTypeForResponse]
 
 
 __all__ = (
-    "SocialAccountType",
-    "SocialAccountTypeForResponse",
+    "LabelSearchResultItemType",
+    "LabelSearchResultItemTypeForResponse",
+    "SearchLabelsGetResponse200Type",
+    "SearchLabelsGetResponse200TypeForResponse",
 )

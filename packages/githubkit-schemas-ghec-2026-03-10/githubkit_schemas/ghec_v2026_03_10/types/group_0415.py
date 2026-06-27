@@ -10,57 +10,51 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ContentSubmoduleType(TypedDict):
-    """Submodule Content
+class ContentDirectoryItemsType(TypedDict):
+    """ContentDirectoryItems"""
 
-    An object describing a submodule
-    """
-
-    type: Literal["submodule"]
-    submodule_git_url: str
+    type: Literal["dir", "file", "submodule", "symlink"]
     size: int
     name: str
     path: str
+    content: NotRequired[str]
     sha: str
     url: str
     git_url: Union[str, None]
     html_url: Union[str, None]
     download_url: Union[str, None]
-    links: ContentSubmodulePropLinksType
+    links: ContentDirectoryItemsPropLinksType
 
 
-class ContentSubmoduleTypeForResponse(TypedDict):
-    """Submodule Content
+class ContentDirectoryItemsTypeForResponse(TypedDict):
+    """ContentDirectoryItems"""
 
-    An object describing a submodule
-    """
-
-    type: Literal["submodule"]
-    submodule_git_url: str
+    type: Literal["dir", "file", "submodule", "symlink"]
     size: int
     name: str
     path: str
+    content: NotRequired[str]
     sha: str
     url: str
     git_url: Union[str, None]
     html_url: Union[str, None]
     download_url: Union[str, None]
-    links: ContentSubmodulePropLinksTypeForResponse
+    links: ContentDirectoryItemsPropLinksTypeForResponse
 
 
-class ContentSubmodulePropLinksType(TypedDict):
-    """ContentSubmodulePropLinks"""
+class ContentDirectoryItemsPropLinksType(TypedDict):
+    """ContentDirectoryItemsPropLinks"""
 
     git: Union[str, None]
     html: Union[str, None]
     self_: str
 
 
-class ContentSubmodulePropLinksTypeForResponse(TypedDict):
-    """ContentSubmodulePropLinks"""
+class ContentDirectoryItemsPropLinksTypeForResponse(TypedDict):
+    """ContentDirectoryItemsPropLinks"""
 
     git: Union[str, None]
     html: Union[str, None]
@@ -68,8 +62,8 @@ class ContentSubmodulePropLinksTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "ContentSubmodulePropLinksType",
-    "ContentSubmodulePropLinksTypeForResponse",
-    "ContentSubmoduleType",
-    "ContentSubmoduleTypeForResponse",
+    "ContentDirectoryItemsPropLinksType",
+    "ContentDirectoryItemsPropLinksTypeForResponse",
+    "ContentDirectoryItemsType",
+    "ContentDirectoryItemsTypeForResponse",
 )

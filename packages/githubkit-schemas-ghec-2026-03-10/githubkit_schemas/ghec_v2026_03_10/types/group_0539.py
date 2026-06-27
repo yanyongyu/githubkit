@@ -9,35 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class MetaType(TypedDict):
-    """Meta
+class CommitActivityType(TypedDict):
+    """Commit Activity
 
-    The metadata associated with the creation/updates to the user.
+    Commit Activity
     """
 
-    resource_type: Literal["User", "Group"]
-    created: NotRequired[str]
-    last_modified: NotRequired[str]
-    location: NotRequired[str]
+    days: list[int]
+    total: int
+    week: int
 
 
-class MetaTypeForResponse(TypedDict):
-    """Meta
+class CommitActivityTypeForResponse(TypedDict):
+    """Commit Activity
 
-    The metadata associated with the creation/updates to the user.
+    Commit Activity
     """
 
-    resource_type: Literal["User", "Group"]
-    created: NotRequired[str]
-    last_modified: NotRequired[str]
-    location: NotRequired[str]
+    days: list[int]
+    total: int
+    week: int
 
 
 __all__ = (
-    "MetaType",
-    "MetaTypeForResponse",
+    "CommitActivityType",
+    "CommitActivityTypeForResponse",
 )

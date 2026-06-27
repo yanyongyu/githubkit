@@ -9,27 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyType(
+class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBodyType(TypedDict):
+    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody"""
+
+    labels: list[str]
+
+
+class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBodyTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBody"""
+    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody"""
 
-    scope: Literal["all", "all_without_configurations"]
-
-
-class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBody"""
-
-    scope: Literal["all", "all_without_configurations"]
+    labels: list[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyType",
-    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyTypeForResponse",
+    "EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBodyType",
+    "EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBodyTypeForResponse",
 )

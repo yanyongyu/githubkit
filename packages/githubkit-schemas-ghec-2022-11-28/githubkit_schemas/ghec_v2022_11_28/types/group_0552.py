@@ -9,77 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0547 import UserRoleItemsType, UserRoleItemsTypeForResponse
+
+class GroupResponseType(TypedDict):
+    """GroupResponse"""
+
+    schemas: list[
+        Literal[
+            "urn:ietf:params:scim:schemas:core:2.0:Group",
+            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
+        ]
+    ]
+    external_id: NotRequired[Union[str, None]]
+    display_name: NotRequired[Union[str, None]]
+    members: NotRequired[list[GroupResponsePropMembersItemsType]]
 
 
-class UserType(TypedDict):
-    """User"""
+class GroupResponseTypeForResponse(TypedDict):
+    """GroupResponse"""
 
-    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
-    external_id: str
-    active: bool
-    user_name: str
-    name: NotRequired[UserNameType]
-    display_name: str
-    emails: list[UserEmailsItemsType]
-    roles: NotRequired[list[UserRoleItemsType]]
-
-
-class UserTypeForResponse(TypedDict):
-    """User"""
-
-    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
-    external_id: str
-    active: bool
-    user_name: str
-    name: NotRequired[UserNameTypeForResponse]
-    display_name: str
-    emails: list[UserEmailsItemsTypeForResponse]
-    roles: NotRequired[list[UserRoleItemsTypeForResponse]]
+    schemas: list[
+        Literal[
+            "urn:ietf:params:scim:schemas:core:2.0:Group",
+            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
+        ]
+    ]
+    external_id: NotRequired[Union[str, None]]
+    display_name: NotRequired[Union[str, None]]
+    members: NotRequired[list[GroupResponsePropMembersItemsTypeForResponse]]
 
 
-class UserNameType(TypedDict):
-    """UserName"""
-
-    formatted: NotRequired[str]
-    family_name: str
-    given_name: str
-    middle_name: NotRequired[str]
-
-
-class UserNameTypeForResponse(TypedDict):
-    """UserName"""
-
-    formatted: NotRequired[str]
-    family_name: str
-    given_name: str
-    middle_name: NotRequired[str]
-
-
-class UserEmailsItemsType(TypedDict):
-    """UserEmailsItems"""
+class GroupResponsePropMembersItemsType(TypedDict):
+    """GroupResponsePropMembersItems"""
 
     value: str
-    type: str
-    primary: bool
+    ref: str
+    display: NotRequired[str]
 
 
-class UserEmailsItemsTypeForResponse(TypedDict):
-    """UserEmailsItems"""
+class GroupResponsePropMembersItemsTypeForResponse(TypedDict):
+    """GroupResponsePropMembersItems"""
 
     value: str
-    type: str
-    primary: bool
+    ref: str
+    display: NotRequired[str]
 
 
 __all__ = (
-    "UserEmailsItemsType",
-    "UserEmailsItemsTypeForResponse",
-    "UserNameType",
-    "UserNameTypeForResponse",
-    "UserType",
-    "UserTypeForResponse",
+    "GroupResponsePropMembersItemsType",
+    "GroupResponsePropMembersItemsTypeForResponse",
+    "GroupResponseType",
+    "GroupResponseTypeForResponse",
 )

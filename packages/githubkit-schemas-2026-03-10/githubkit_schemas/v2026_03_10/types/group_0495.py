@@ -10,32 +10,120 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
+from .group_0487 import (
+    SearchResultTextMatchesItemsType,
+    SearchResultTextMatchesItemsTypeForResponse,
+)
 
 
-class StarredRepositoryType(TypedDict):
-    """Starred Repository
+class UserSearchResultItemType(TypedDict):
+    """User Search Result Item
 
-    Starred Repository
+    User Search Result Item
     """
 
-    starred_at: _dt.datetime
-    repo: RepositoryType
+    login: str
+    id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    received_events_url: str
+    type: str
+    score: float
+    following_url: str
+    gists_url: str
+    starred_url: str
+    events_url: str
+    public_repos: NotRequired[int]
+    public_gists: NotRequired[int]
+    followers: NotRequired[int]
+    following: NotRequired[int]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
+    name: NotRequired[Union[str, None]]
+    bio: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    location: NotRequired[Union[str, None]]
+    site_admin: bool
+    hireable: NotRequired[Union[bool, None]]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
+    blog: NotRequired[Union[str, None]]
+    company: NotRequired[Union[str, None]]
+    suspended_at: NotRequired[Union[_dt.datetime, None]]
+    user_view_type: NotRequired[str]
 
 
-class StarredRepositoryTypeForResponse(TypedDict):
-    """Starred Repository
+class UserSearchResultItemTypeForResponse(TypedDict):
+    """User Search Result Item
 
-    Starred Repository
+    User Search Result Item
     """
 
-    starred_at: str
-    repo: RepositoryTypeForResponse
+    login: str
+    id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    received_events_url: str
+    type: str
+    score: float
+    following_url: str
+    gists_url: str
+    starred_url: str
+    events_url: str
+    public_repos: NotRequired[int]
+    public_gists: NotRequired[int]
+    followers: NotRequired[int]
+    following: NotRequired[int]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    name: NotRequired[Union[str, None]]
+    bio: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    location: NotRequired[Union[str, None]]
+    site_admin: bool
+    hireable: NotRequired[Union[bool, None]]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
+    blog: NotRequired[Union[str, None]]
+    company: NotRequired[Union[str, None]]
+    suspended_at: NotRequired[Union[str, None]]
+    user_view_type: NotRequired[str]
+
+
+class SearchUsersGetResponse200Type(TypedDict):
+    """SearchUsersGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[UserSearchResultItemType]
+
+
+class SearchUsersGetResponse200TypeForResponse(TypedDict):
+    """SearchUsersGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[UserSearchResultItemTypeForResponse]
 
 
 __all__ = (
-    "StarredRepositoryType",
-    "StarredRepositoryTypeForResponse",
+    "SearchUsersGetResponse200Type",
+    "SearchUsersGetResponse200TypeForResponse",
+    "UserSearchResultItemType",
+    "UserSearchResultItemTypeForResponse",
 )

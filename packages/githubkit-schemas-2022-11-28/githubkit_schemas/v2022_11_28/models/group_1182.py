@@ -16,13 +16,14 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoDeleteResponse403(GitHubModel):
-    """ReposOwnerRepoDeleteResponse403"""
+class OrgsOrgSecretScanningPatternConfigurationsPatchResponse200(GitHubModel):
+    """OrgsOrgSecretScanningPatternConfigurationsPatchResponse200"""
 
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
+    pattern_config_version: Missing[str] = Field(
+        default=UNSET, description="The updated pattern configuration version."
+    )
 
 
-model_rebuild(ReposOwnerRepoDeleteResponse403)
+model_rebuild(OrgsOrgSecretScanningPatternConfigurationsPatchResponse200)
 
-__all__ = ("ReposOwnerRepoDeleteResponse403",)
+__all__ = ("OrgsOrgSecretScanningPatternConfigurationsPatchResponse200",)

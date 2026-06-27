@@ -9,36 +9,59 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_1398 import (
-    UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties,
-)
 
+class UserCodespacesPostBodyOneof1(GitHubModel):
+    """UserCodespacesPostBodyOneof1"""
 
-class UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1(
-    GitHubModel
-):
-    """UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAl
-    lof1
-    """
-
-    custom_properties: Missing[
-        UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties
-    ] = Field(
+    pull_request: UserCodespacesPostBodyOneof1PropPullRequest = Field(
+        description="Pull request number for this codespace"
+    )
+    location: Missing[str] = Field(
         default=UNSET,
-        description="The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. Present for org repos only.",
+        description="The requested location for a new codespace. Best efforts are made to respect this upon creation. Assigned by IP if not provided.",
+    )
+    geo: Missing[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]] = Field(
+        default=UNSET,
+        description="The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is closing down.",
+    )
+    machine: Missing[str] = Field(
+        default=UNSET, description="Machine type to use for this codespace"
+    )
+    devcontainer_path: Missing[str] = Field(
+        default=UNSET,
+        description="Path to devcontainer.json config to use for this codespace",
+    )
+    working_directory: Missing[str] = Field(
+        default=UNSET, description="Working directory for this codespace"
+    )
+    idle_timeout_minutes: Missing[int] = Field(
+        default=UNSET,
+        description="Time in minutes before codespace stops from inactivity",
     )
 
 
-model_rebuild(
-    UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1
-)
+class UserCodespacesPostBodyOneof1PropPullRequest(GitHubModel):
+    """UserCodespacesPostBodyOneof1PropPullRequest
+
+    Pull request number for this codespace
+    """
+
+    pull_request_number: int = Field(description="Pull request number")
+    repository_id: int = Field(description="Repository id for this codespace")
+
+
+model_rebuild(UserCodespacesPostBodyOneof1)
+model_rebuild(UserCodespacesPostBodyOneof1PropPullRequest)
 
 __all__ = (
-    "UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1",
+    "UserCodespacesPostBodyOneof1",
+    "UserCodespacesPostBodyOneof1PropPullRequest",
 )

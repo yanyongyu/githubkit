@@ -42,6 +42,10 @@ class Team(GitHubModel):
     type: Literal["enterprise", "organization"] = Field(
         description="The ownership type of the team"
     )
+    access_source: Missing[Literal["direct", "organization", "enterprise"]] = Field(
+        default=UNSET,
+        description="How the team's access to the repository was granted. This property is only\npresent when the team is returned in a repository context, such as\n`GET /repos/{owner}/{repo}/teams`.",
+    )
     organization_id: Missing[int] = Field(
         default=UNSET,
         description="Unique identifier of the organization to which this team belongs",

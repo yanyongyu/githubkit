@@ -15,29 +15,30 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class UsersUsernameAttestationsSubjectDigestGetResponse200(GitHubModel):
-    """UsersUsernameAttestationsSubjectDigestGetResponse200"""
-
-    attestations: Missing[
-        list[UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems]
-    ] = Field(default=UNSET)
+from .group_1584 import (
+    UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties,
+)
 
 
-class UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems(
+class UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1(
     GitHubModel
 ):
-    """UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
+    """UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAl
+    lof1
+    """
 
-    repository_id: Missing[int] = Field(default=UNSET)
-    bundle_url: Missing[str] = Field(default=UNSET)
-    initiator: Missing[str] = Field(default=UNSET)
+    custom_properties: Missing[
+        UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties
+    ] = Field(
+        default=UNSET,
+        description="The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. Present for org repos only.",
+    )
 
 
-model_rebuild(UsersUsernameAttestationsSubjectDigestGetResponse200)
-model_rebuild(UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems)
+model_rebuild(
+    UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1
+)
 
 __all__ = (
-    "UsersUsernameAttestationsSubjectDigestGetResponse200",
-    "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems",
+    "UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1",
 )

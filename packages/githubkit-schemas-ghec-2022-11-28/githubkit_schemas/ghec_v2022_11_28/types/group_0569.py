@@ -13,40 +13,69 @@ import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0370 import GitUserType, GitUserTypeForResponse
+from .group_0371 import VerificationType, VerificationTypeForResponse
 
-class KeyType(TypedDict):
-    """Key
 
-    Key
-    """
+class CommitSearchResultItemPropCommitType(TypedDict):
+    """CommitSearchResultItemPropCommit"""
 
-    key: str
-    id: int
+    author: CommitSearchResultItemPropCommitPropAuthorType
+    committer: Union[None, GitUserType]
+    comment_count: int
+    message: str
+    tree: CommitSearchResultItemPropCommitPropTreeType
     url: str
-    title: str
-    created_at: _dt.datetime
-    verified: bool
-    read_only: bool
-    last_used: NotRequired[Union[_dt.datetime, None]]
+    verification: NotRequired[VerificationType]
 
 
-class KeyTypeForResponse(TypedDict):
-    """Key
+class CommitSearchResultItemPropCommitTypeForResponse(TypedDict):
+    """CommitSearchResultItemPropCommit"""
 
-    Key
-    """
-
-    key: str
-    id: int
+    author: CommitSearchResultItemPropCommitPropAuthorTypeForResponse
+    committer: Union[None, GitUserTypeForResponse]
+    comment_count: int
+    message: str
+    tree: CommitSearchResultItemPropCommitPropTreeTypeForResponse
     url: str
-    title: str
-    created_at: str
-    verified: bool
-    read_only: bool
-    last_used: NotRequired[Union[str, None]]
+    verification: NotRequired[VerificationTypeForResponse]
+
+
+class CommitSearchResultItemPropCommitPropAuthorType(TypedDict):
+    """CommitSearchResultItemPropCommitPropAuthor"""
+
+    name: str
+    email: str
+    date: _dt.datetime
+
+
+class CommitSearchResultItemPropCommitPropAuthorTypeForResponse(TypedDict):
+    """CommitSearchResultItemPropCommitPropAuthor"""
+
+    name: str
+    email: str
+    date: str
+
+
+class CommitSearchResultItemPropCommitPropTreeType(TypedDict):
+    """CommitSearchResultItemPropCommitPropTree"""
+
+    sha: str
+    url: str
+
+
+class CommitSearchResultItemPropCommitPropTreeTypeForResponse(TypedDict):
+    """CommitSearchResultItemPropCommitPropTree"""
+
+    sha: str
+    url: str
 
 
 __all__ = (
-    "KeyType",
-    "KeyTypeForResponse",
+    "CommitSearchResultItemPropCommitPropAuthorType",
+    "CommitSearchResultItemPropCommitPropAuthorTypeForResponse",
+    "CommitSearchResultItemPropCommitPropTreeType",
+    "CommitSearchResultItemPropCommitPropTreeTypeForResponse",
+    "CommitSearchResultItemPropCommitType",
+    "CommitSearchResultItemPropCommitTypeForResponse",
 )

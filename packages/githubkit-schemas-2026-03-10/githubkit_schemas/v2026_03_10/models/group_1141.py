@@ -14,19 +14,16 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class OrgsOrgMembershipsUsernamePutBody(GitHubModel):
-    """OrgsOrgMembershipsUsernamePutBody"""
+class OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody(GitHubModel):
+    """OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody"""
 
-    role: Missing[Literal["admin", "member"]] = Field(
-        default=UNSET,
-        description="The role to give the user in the organization. Can be one of:  \n * `admin` - The user will become an owner of the organization.  \n * `member` - The user will become a non-owner member of the organization.",
+    default_level: Literal["public", "internal"] = Field(
+        description="The default repository access level for Dependabot updates."
     )
 
 
-model_rebuild(OrgsOrgMembershipsUsernamePutBody)
+model_rebuild(OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody)
 
-__all__ = ("OrgsOrgMembershipsUsernamePutBody",)
+__all__ = ("OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody",)

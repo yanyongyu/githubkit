@@ -9,32 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0239 import (
+    RepositoryRuleMaxFilePathLengthPropParametersType,
+    RepositoryRuleMaxFilePathLengthPropParametersTypeForResponse,
+)
 
 
-class CommitActivityType(TypedDict):
-    """Commit Activity
+class RepositoryRuleDetailedOneof19Type(TypedDict):
+    """RepositoryRuleDetailedOneof19"""
 
-    Commit Activity
-    """
+    type: Literal["max_file_path_length"]
+    parameters: NotRequired[RepositoryRuleMaxFilePathLengthPropParametersType]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
-    days: list[int]
-    total: int
-    week: int
 
+class RepositoryRuleDetailedOneof19TypeForResponse(TypedDict):
+    """RepositoryRuleDetailedOneof19"""
 
-class CommitActivityTypeForResponse(TypedDict):
-    """Commit Activity
-
-    Commit Activity
-    """
-
-    days: list[int]
-    total: int
-    week: int
+    type: Literal["max_file_path_length"]
+    parameters: NotRequired[
+        RepositoryRuleMaxFilePathLengthPropParametersTypeForResponse
+    ]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
 
 __all__ = (
-    "CommitActivityType",
-    "CommitActivityTypeForResponse",
+    "RepositoryRuleDetailedOneof19Type",
+    "RepositoryRuleDetailedOneof19TypeForResponse",
 )

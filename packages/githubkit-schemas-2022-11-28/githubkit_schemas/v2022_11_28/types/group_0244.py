@@ -9,126 +9,274 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0194 import (
+    RepositoryRulesetBypassActorType,
+    RepositoryRulesetBypassActorTypeForResponse,
+)
+from .group_0195 import (
+    RepositoryRulesetConditionsType,
+    RepositoryRulesetConditionsTypeForResponse,
+)
+from .group_0203 import (
+    OrgRulesetConditionsOneof0Type,
+    OrgRulesetConditionsOneof0TypeForResponse,
+)
+from .group_0204 import (
+    OrgRulesetConditionsOneof1Type,
+    OrgRulesetConditionsOneof1TypeForResponse,
+)
+from .group_0205 import (
+    OrgRulesetConditionsOneof2Type,
+    OrgRulesetConditionsOneof2TypeForResponse,
+)
+from .group_0206 import (
+    RepositoryRuleCreationType,
+    RepositoryRuleCreationTypeForResponse,
+    RepositoryRuleDeletionType,
+    RepositoryRuleDeletionTypeForResponse,
+    RepositoryRuleNonFastForwardType,
+    RepositoryRuleNonFastForwardTypeForResponse,
+    RepositoryRuleRequiredSignaturesType,
+    RepositoryRuleRequiredSignaturesTypeForResponse,
+)
+from .group_0207 import RepositoryRuleUpdateType, RepositoryRuleUpdateTypeForResponse
+from .group_0209 import (
+    RepositoryRuleRequiredLinearHistoryType,
+    RepositoryRuleRequiredLinearHistoryTypeForResponse,
+)
+from .group_0210 import (
+    RepositoryRuleMergeQueueType,
+    RepositoryRuleMergeQueueTypeForResponse,
+)
+from .group_0212 import (
+    RepositoryRuleRequiredDeploymentsType,
+    RepositoryRuleRequiredDeploymentsTypeForResponse,
+)
+from .group_0215 import (
+    RepositoryRulePullRequestType,
+    RepositoryRulePullRequestTypeForResponse,
+)
+from .group_0217 import (
+    RepositoryRuleRequiredStatusChecksType,
+    RepositoryRuleRequiredStatusChecksTypeForResponse,
+)
+from .group_0219 import (
+    RepositoryRuleCommitMessagePatternType,
+    RepositoryRuleCommitMessagePatternTypeForResponse,
+)
+from .group_0221 import (
+    RepositoryRuleCommitAuthorEmailPatternType,
+    RepositoryRuleCommitAuthorEmailPatternTypeForResponse,
+)
+from .group_0223 import (
+    RepositoryRuleCommitterEmailPatternType,
+    RepositoryRuleCommitterEmailPatternTypeForResponse,
+)
+from .group_0225 import (
+    RepositoryRuleBranchNamePatternType,
+    RepositoryRuleBranchNamePatternTypeForResponse,
+)
+from .group_0227 import (
+    RepositoryRuleTagNamePatternType,
+    RepositoryRuleTagNamePatternTypeForResponse,
+)
+from .group_0230 import (
+    RepositoryRuleWorkflowsType,
+    RepositoryRuleWorkflowsTypeForResponse,
+)
+from .group_0232 import (
+    RepositoryRuleCodeScanningType,
+    RepositoryRuleCodeScanningTypeForResponse,
+)
+from .group_0234 import (
+    RepositoryRuleCopilotCodeReviewType,
+    RepositoryRuleCopilotCodeReviewTypeForResponse,
+)
+from .group_0236 import (
+    RepositoryRuleFilePathRestrictionType,
+    RepositoryRuleFilePathRestrictionTypeForResponse,
+)
+from .group_0238 import (
+    RepositoryRuleMaxFilePathLengthType,
+    RepositoryRuleMaxFilePathLengthTypeForResponse,
+)
+from .group_0240 import (
+    RepositoryRuleFileExtensionRestrictionType,
+    RepositoryRuleFileExtensionRestrictionTypeForResponse,
+)
+from .group_0242 import (
+    RepositoryRuleMaxFileSizeType,
+    RepositoryRuleMaxFileSizeTypeForResponse,
+)
 
-class RuleSuitePullRequestType(TypedDict):
-    """Pull request rule suite metadata
 
-    Metadata for a pull request rule evaluation result.
+class RepositoryRulesetType(TypedDict):
+    """Repository ruleset
+
+    A set of rules to apply when specified conditions are met.
     """
 
-    pull_request: NotRequired[RuleSuitePullRequestPropPullRequestType]
-
-
-class RuleSuitePullRequestTypeForResponse(TypedDict):
-    """Pull request rule suite metadata
-
-    Metadata for a pull request rule evaluation result.
-    """
-
-    pull_request: NotRequired[RuleSuitePullRequestPropPullRequestTypeForResponse]
-
-
-class RuleSuitePullRequestPropPullRequestType(TypedDict):
-    """RuleSuitePullRequestPropPullRequest
-
-    The pull request associated with the rule evaluation.
-    """
-
-    id: NotRequired[int]
-    number: NotRequired[int]
-    user: NotRequired[RuleSuitePullRequestPropPullRequestPropUserType]
-    reviews: NotRequired[list[RuleSuitePullRequestPropPullRequestPropReviewsItemsType]]
-
-
-class RuleSuitePullRequestPropPullRequestTypeForResponse(TypedDict):
-    """RuleSuitePullRequestPropPullRequest
-
-    The pull request associated with the rule evaluation.
-    """
-
-    id: NotRequired[int]
-    number: NotRequired[int]
-    user: NotRequired[RuleSuitePullRequestPropPullRequestPropUserTypeForResponse]
-    reviews: NotRequired[
-        list[RuleSuitePullRequestPropPullRequestPropReviewsItemsTypeForResponse]
+    id: int
+    name: str
+    target: NotRequired[Literal["branch", "tag", "push", "repository"]]
+    source_type: NotRequired[Literal["Repository", "Organization", "Enterprise"]]
+    source: str
+    enforcement: Literal["disabled", "active", "evaluate"]
+    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorType]]
+    current_user_can_bypass: NotRequired[
+        Literal["always", "pull_requests_only", "never", "exempt"]
     ]
-
-
-class RuleSuitePullRequestPropPullRequestPropUserType(TypedDict):
-    """RuleSuitePullRequestPropPullRequestPropUser
-
-    The user who created the pull request.
-    """
-
-    id: NotRequired[int]
-    login: NotRequired[str]
-    type: NotRequired[str]
-
-
-class RuleSuitePullRequestPropPullRequestPropUserTypeForResponse(TypedDict):
-    """RuleSuitePullRequestPropPullRequestPropUser
-
-    The user who created the pull request.
-    """
-
-    id: NotRequired[int]
-    login: NotRequired[str]
-    type: NotRequired[str]
-
-
-class RuleSuitePullRequestPropPullRequestPropReviewsItemsType(TypedDict):
-    """RuleSuitePullRequestPropPullRequestPropReviewsItems"""
-
-    id: NotRequired[int]
-    user: NotRequired[RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserType]
-    state: NotRequired[str]
-
-
-class RuleSuitePullRequestPropPullRequestPropReviewsItemsTypeForResponse(TypedDict):
-    """RuleSuitePullRequestPropPullRequestPropReviewsItems"""
-
-    id: NotRequired[int]
-    user: NotRequired[
-        RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserTypeForResponse
+    node_id: NotRequired[str]
+    links: NotRequired[RepositoryRulesetPropLinksType]
+    conditions: NotRequired[
+        Union[
+            RepositoryRulesetConditionsType,
+            OrgRulesetConditionsOneof0Type,
+            OrgRulesetConditionsOneof1Type,
+            OrgRulesetConditionsOneof2Type,
+            None,
+        ]
     ]
-    state: NotRequired[str]
+    rules: NotRequired[
+        list[
+            Union[
+                RepositoryRuleCreationType,
+                RepositoryRuleUpdateType,
+                RepositoryRuleDeletionType,
+                RepositoryRuleRequiredLinearHistoryType,
+                RepositoryRuleMergeQueueType,
+                RepositoryRuleRequiredDeploymentsType,
+                RepositoryRuleRequiredSignaturesType,
+                RepositoryRulePullRequestType,
+                RepositoryRuleRequiredStatusChecksType,
+                RepositoryRuleNonFastForwardType,
+                RepositoryRuleCommitMessagePatternType,
+                RepositoryRuleCommitAuthorEmailPatternType,
+                RepositoryRuleCommitterEmailPatternType,
+                RepositoryRuleBranchNamePatternType,
+                RepositoryRuleTagNamePatternType,
+                RepositoryRuleWorkflowsType,
+                RepositoryRuleCodeScanningType,
+                RepositoryRuleCopilotCodeReviewType,
+                RepositoryRuleFilePathRestrictionType,
+                RepositoryRuleMaxFilePathLengthType,
+                RepositoryRuleFileExtensionRestrictionType,
+                RepositoryRuleMaxFileSizeType,
+            ]
+        ]
+    ]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
 
 
-class RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserType(TypedDict):
-    """RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser
+class RepositoryRulesetTypeForResponse(TypedDict):
+    """Repository ruleset
 
-    The user who submitted the review.
+    A set of rules to apply when specified conditions are met.
     """
 
-    id: NotRequired[int]
-    login: NotRequired[str]
-    type: NotRequired[str]
+    id: int
+    name: str
+    target: NotRequired[Literal["branch", "tag", "push", "repository"]]
+    source_type: NotRequired[Literal["Repository", "Organization", "Enterprise"]]
+    source: str
+    enforcement: Literal["disabled", "active", "evaluate"]
+    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorTypeForResponse]]
+    current_user_can_bypass: NotRequired[
+        Literal["always", "pull_requests_only", "never", "exempt"]
+    ]
+    node_id: NotRequired[str]
+    links: NotRequired[RepositoryRulesetPropLinksTypeForResponse]
+    conditions: NotRequired[
+        Union[
+            RepositoryRulesetConditionsTypeForResponse,
+            OrgRulesetConditionsOneof0TypeForResponse,
+            OrgRulesetConditionsOneof1TypeForResponse,
+            OrgRulesetConditionsOneof2TypeForResponse,
+            None,
+        ]
+    ]
+    rules: NotRequired[
+        list[
+            Union[
+                RepositoryRuleCreationTypeForResponse,
+                RepositoryRuleUpdateTypeForResponse,
+                RepositoryRuleDeletionTypeForResponse,
+                RepositoryRuleRequiredLinearHistoryTypeForResponse,
+                RepositoryRuleMergeQueueTypeForResponse,
+                RepositoryRuleRequiredDeploymentsTypeForResponse,
+                RepositoryRuleRequiredSignaturesTypeForResponse,
+                RepositoryRulePullRequestTypeForResponse,
+                RepositoryRuleRequiredStatusChecksTypeForResponse,
+                RepositoryRuleNonFastForwardTypeForResponse,
+                RepositoryRuleCommitMessagePatternTypeForResponse,
+                RepositoryRuleCommitAuthorEmailPatternTypeForResponse,
+                RepositoryRuleCommitterEmailPatternTypeForResponse,
+                RepositoryRuleBranchNamePatternTypeForResponse,
+                RepositoryRuleTagNamePatternTypeForResponse,
+                RepositoryRuleWorkflowsTypeForResponse,
+                RepositoryRuleCodeScanningTypeForResponse,
+                RepositoryRuleCopilotCodeReviewTypeForResponse,
+                RepositoryRuleFilePathRestrictionTypeForResponse,
+                RepositoryRuleMaxFilePathLengthTypeForResponse,
+                RepositoryRuleFileExtensionRestrictionTypeForResponse,
+                RepositoryRuleMaxFileSizeTypeForResponse,
+            ]
+        ]
+    ]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
 
 
-class RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserTypeForResponse(
-    TypedDict
-):
-    """RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser
+class RepositoryRulesetPropLinksType(TypedDict):
+    """RepositoryRulesetPropLinks"""
 
-    The user who submitted the review.
-    """
+    self_: NotRequired[RepositoryRulesetPropLinksPropSelfType]
+    html: NotRequired[Union[RepositoryRulesetPropLinksPropHtmlType, None]]
 
-    id: NotRequired[int]
-    login: NotRequired[str]
-    type: NotRequired[str]
+
+class RepositoryRulesetPropLinksTypeForResponse(TypedDict):
+    """RepositoryRulesetPropLinks"""
+
+    self_: NotRequired[RepositoryRulesetPropLinksPropSelfTypeForResponse]
+    html: NotRequired[Union[RepositoryRulesetPropLinksPropHtmlTypeForResponse, None]]
+
+
+class RepositoryRulesetPropLinksPropSelfType(TypedDict):
+    """RepositoryRulesetPropLinksPropSelf"""
+
+    href: NotRequired[str]
+
+
+class RepositoryRulesetPropLinksPropSelfTypeForResponse(TypedDict):
+    """RepositoryRulesetPropLinksPropSelf"""
+
+    href: NotRequired[str]
+
+
+class RepositoryRulesetPropLinksPropHtmlType(TypedDict):
+    """RepositoryRulesetPropLinksPropHtml"""
+
+    href: NotRequired[str]
+
+
+class RepositoryRulesetPropLinksPropHtmlTypeForResponse(TypedDict):
+    """RepositoryRulesetPropLinksPropHtml"""
+
+    href: NotRequired[str]
 
 
 __all__ = (
-    "RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserType",
-    "RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserTypeForResponse",
-    "RuleSuitePullRequestPropPullRequestPropReviewsItemsType",
-    "RuleSuitePullRequestPropPullRequestPropReviewsItemsTypeForResponse",
-    "RuleSuitePullRequestPropPullRequestPropUserType",
-    "RuleSuitePullRequestPropPullRequestPropUserTypeForResponse",
-    "RuleSuitePullRequestPropPullRequestType",
-    "RuleSuitePullRequestPropPullRequestTypeForResponse",
-    "RuleSuitePullRequestType",
-    "RuleSuitePullRequestTypeForResponse",
+    "RepositoryRulesetPropLinksPropHtmlType",
+    "RepositoryRulesetPropLinksPropHtmlTypeForResponse",
+    "RepositoryRulesetPropLinksPropSelfType",
+    "RepositoryRulesetPropLinksPropSelfTypeForResponse",
+    "RepositoryRulesetPropLinksType",
+    "RepositoryRulesetPropLinksTypeForResponse",
+    "RepositoryRulesetType",
+    "RepositoryRulesetTypeForResponse",
 )

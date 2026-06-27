@@ -9,51 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0575 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0576 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0577 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0578 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0591 import WebhooksLabelType, WebhooksLabelTypeForResponse
-from .group_0799 import (
-    WebhookIssuesLabeledPropIssueType,
-    WebhookIssuesLabeledPropIssueTypeForResponse,
-)
+
+class WebhookIssuesClosedPropIssueAllof0PropPullRequestType(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof0PropPullRequest"""
+
+    diff_url: NotRequired[str]
+    html_url: NotRequired[str]
+    merged_at: NotRequired[Union[_dt.datetime, None]]
+    patch_url: NotRequired[str]
+    url: NotRequired[str]
 
 
-class WebhookIssuesLabeledType(TypedDict):
-    """issues labeled event"""
+class WebhookIssuesClosedPropIssueAllof0PropPullRequestTypeForResponse(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof0PropPullRequest"""
 
-    action: Literal["labeled"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssuesLabeledPropIssueType
-    label: NotRequired[WebhooksLabelType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
-
-
-class WebhookIssuesLabeledTypeForResponse(TypedDict):
-    """issues labeled event"""
-
-    action: Literal["labeled"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhookIssuesLabeledPropIssueTypeForResponse
-    label: NotRequired[WebhooksLabelTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    diff_url: NotRequired[str]
+    html_url: NotRequired[str]
+    merged_at: NotRequired[Union[str, None]]
+    patch_url: NotRequired[str]
+    url: NotRequired[str]
 
 
 __all__ = (
-    "WebhookIssuesLabeledType",
-    "WebhookIssuesLabeledTypeForResponse",
+    "WebhookIssuesClosedPropIssueAllof0PropPullRequestType",
+    "WebhookIssuesClosedPropIssueAllof0PropPullRequestTypeForResponse",
 )

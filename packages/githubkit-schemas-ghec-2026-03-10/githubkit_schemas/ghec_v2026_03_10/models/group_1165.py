@@ -12,16 +12,20 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBody(GitHubModel):
-    """EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBody"""
+class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200(
+    GitHubModel
+):
+    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200"""
 
-    organization_slugs: list[str] = Field(
-        description="Organization slug to unassign the team from."
+    pattern_config_version: Missing[str] = Field(
+        default=UNSET, description="The updated pattern configuration version."
     )
 
 
-model_rebuild(EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBody)
+model_rebuild(EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200)
 
-__all__ = ("EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBody",)
+__all__ = ("EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200",)

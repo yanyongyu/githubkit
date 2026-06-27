@@ -9,73 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0365 import GitUserType, GitUserTypeForResponse
-from .group_0366 import VerificationType, VerificationTypeForResponse
+
+class PatchSchemaType(TypedDict):
+    """PatchSchema"""
+
+    operations: list[PatchSchemaPropOperationsItemsType]
+    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]]
 
 
-class CommitSearchResultItemPropCommitType(TypedDict):
-    """CommitSearchResultItemPropCommit"""
+class PatchSchemaTypeForResponse(TypedDict):
+    """PatchSchema"""
 
-    author: CommitSearchResultItemPropCommitPropAuthorType
-    committer: Union[None, GitUserType]
-    comment_count: int
-    message: str
-    tree: CommitSearchResultItemPropCommitPropTreeType
-    url: str
-    verification: NotRequired[VerificationType]
+    operations: list[PatchSchemaPropOperationsItemsTypeForResponse]
+    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]]
 
 
-class CommitSearchResultItemPropCommitTypeForResponse(TypedDict):
-    """CommitSearchResultItemPropCommit"""
+class PatchSchemaPropOperationsItemsType(TypedDict):
+    """PatchSchemaPropOperationsItems"""
 
-    author: CommitSearchResultItemPropCommitPropAuthorTypeForResponse
-    committer: Union[None, GitUserTypeForResponse]
-    comment_count: int
-    message: str
-    tree: CommitSearchResultItemPropCommitPropTreeTypeForResponse
-    url: str
-    verification: NotRequired[VerificationTypeForResponse]
+    op: Literal["add", "replace", "remove"]
+    path: NotRequired[str]
+    value: NotRequired[str]
 
 
-class CommitSearchResultItemPropCommitPropAuthorType(TypedDict):
-    """CommitSearchResultItemPropCommitPropAuthor"""
+class PatchSchemaPropOperationsItemsTypeForResponse(TypedDict):
+    """PatchSchemaPropOperationsItems"""
 
-    name: str
-    email: str
-    date: _dt.datetime
-
-
-class CommitSearchResultItemPropCommitPropAuthorTypeForResponse(TypedDict):
-    """CommitSearchResultItemPropCommitPropAuthor"""
-
-    name: str
-    email: str
-    date: str
-
-
-class CommitSearchResultItemPropCommitPropTreeType(TypedDict):
-    """CommitSearchResultItemPropCommitPropTree"""
-
-    sha: str
-    url: str
-
-
-class CommitSearchResultItemPropCommitPropTreeTypeForResponse(TypedDict):
-    """CommitSearchResultItemPropCommitPropTree"""
-
-    sha: str
-    url: str
+    op: Literal["add", "replace", "remove"]
+    path: NotRequired[str]
+    value: NotRequired[str]
 
 
 __all__ = (
-    "CommitSearchResultItemPropCommitPropAuthorType",
-    "CommitSearchResultItemPropCommitPropAuthorTypeForResponse",
-    "CommitSearchResultItemPropCommitPropTreeType",
-    "CommitSearchResultItemPropCommitPropTreeTypeForResponse",
-    "CommitSearchResultItemPropCommitType",
-    "CommitSearchResultItemPropCommitTypeForResponse",
+    "PatchSchemaPropOperationsItemsType",
+    "PatchSchemaPropOperationsItemsTypeForResponse",
+    "PatchSchemaType",
+    "PatchSchemaTypeForResponse",
 )

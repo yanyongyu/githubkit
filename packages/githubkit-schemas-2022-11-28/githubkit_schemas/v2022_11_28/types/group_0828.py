@@ -9,47 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0050 import MilestoneType, MilestoneTypeForResponse
-from .group_0503 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0505 import (
+from .group_0515 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0516 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0517 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0506 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0540 import WebhooksPullRequest5Type, WebhooksPullRequest5TypeForResponse
+from .group_0518 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookPullRequestMilestonedType(TypedDict):
-    """pull_request milestoned event"""
+class WebhookPublicType(TypedDict):
+    """public event"""
 
-    action: Literal["milestoned"]
     enterprise: NotRequired[EnterpriseWebhooksType]
-    milestone: NotRequired[MilestoneType]
-    number: int
+    installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    pull_request: WebhooksPullRequest5Type
     repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserType]
+    sender: SimpleUserType
 
 
-class WebhookPullRequestMilestonedTypeForResponse(TypedDict):
-    """pull_request milestoned event"""
+class WebhookPublicTypeForResponse(TypedDict):
+    """public event"""
 
-    action: Literal["milestoned"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    milestone: NotRequired[MilestoneTypeForResponse]
-    number: int
+    installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    pull_request: WebhooksPullRequest5TypeForResponse
     repository: RepositoryWebhooksTypeForResponse
-    sender: NotRequired[SimpleUserTypeForResponse]
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookPullRequestMilestonedType",
-    "WebhookPullRequestMilestonedTypeForResponse",
+    "WebhookPublicType",
+    "WebhookPublicTypeForResponse",
 )

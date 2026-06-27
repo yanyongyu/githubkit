@@ -14,22 +14,28 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0078 import CodeSecurityConfiguration
 
 
-class OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody(
+class OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200(
     GitHubModel
 ):
-    """OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody"""
+    """OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200"""
 
-    role: Literal["reader", "writer", "admin", "no_access"] = Field(
-        description="The new role to grant to the collaborator. Use `no_access` to remove the collaborator."
+    default_for_new_repos: Missing[
+        Literal["all", "none", "private_and_internal", "public"]
+    ] = Field(
+        default=UNSET,
+        description="Specifies which types of repository this security configuration is applied to by default.",
+    )
+    configuration: Missing[CodeSecurityConfiguration] = Field(
+        default=UNSET, description="A code security configuration"
     )
 
 
-model_rebuild(
-    OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody
-)
+model_rebuild(OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200)
 
-__all__ = (
-    "OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody",
-)
+__all__ = ("OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200",)

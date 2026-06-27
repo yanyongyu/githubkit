@@ -11,26 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0053 import RunnerLabelType, RunnerLabelTypeForResponse
 
-
-class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200"""
-
-    total_count: int
-    labels: list[RunnerLabelType]
-
-
-class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse(
+class EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200Type(
     TypedDict
 ):
-    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200"""
+    """EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200"""
 
-    total_count: int
-    labels: list[RunnerLabelTypeForResponse]
+    disable_self_hosted_runners_for_all_orgs: bool
+
+
+class EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200"""
+
+    disable_self_hosted_runners_for_all_orgs: bool
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type",
-    "EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200Type",
+    "EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200TypeForResponse",
 )

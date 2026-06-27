@@ -9,81 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyType(TypedDict):
-    """EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBody"""
+class EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyType(TypedDict):
+    """EnterprisesEnterpriseDependabotRepositoryAccessPatchBody
 
-    budget_amount: NotRequired[int]
-    prevent_further_usage: NotRequired[bool]
-    budget_alerting: NotRequired[
-        EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType
-    ]
-    budget_scope: NotRequired[
-        Literal[
-            "enterprise",
-            "organization",
-            "repository",
-            "cost_center",
-            "multi_user_customer",
-            "user",
-        ]
-    ]
-    budget_entity_name: NotRequired[str]
-    budget_type: NotRequired[Literal["BundlePricing", "ProductPricing", "SkuPricing"]]
-    budget_product_sku: NotRequired[str]
-    user: NotRequired[str]
+    Examples:
+        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
+    """
+
+    repository_ids_to_add: NotRequired[list[int]]
+    repository_ids_to_remove: NotRequired[list[int]]
 
 
-class EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyTypeForResponse(
+class EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBody"""
+    """EnterprisesEnterpriseDependabotRepositoryAccessPatchBody
 
-    budget_amount: NotRequired[int]
-    prevent_further_usage: NotRequired[bool]
-    budget_alerting: NotRequired[
-        EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingTypeForResponse
-    ]
-    budget_scope: NotRequired[
-        Literal[
-            "enterprise",
-            "organization",
-            "repository",
-            "cost_center",
-            "multi_user_customer",
-            "user",
-        ]
-    ]
-    budget_entity_name: NotRequired[str]
-    budget_type: NotRequired[Literal["BundlePricing", "ProductPricing", "SkuPricing"]]
-    budget_product_sku: NotRequired[str]
-    user: NotRequired[str]
+    Examples:
+        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
+    """
 
-
-class EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType(
-    TypedDict
-):
-    """EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting"""
-
-    will_alert: NotRequired[bool]
-    alert_recipients: NotRequired[list[str]]
-
-
-class EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting"""
-
-    will_alert: NotRequired[bool]
-    alert_recipients: NotRequired[list[str]]
+    repository_ids_to_add: NotRequired[list[int]]
+    repository_ids_to_remove: NotRequired[list[int]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType",
-    "EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingTypeForResponse",
-    "EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyType",
-    "EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyTypeForResponse",
+    "EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyType",
+    "EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyTypeForResponse",
 )

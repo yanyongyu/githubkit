@@ -12,19 +12,21 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType(TypedDict):
-    """ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody"""
+class ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200Type(TypedDict):
+    """ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200"""
 
-    body: str
+    enabled: bool
 
 
-class ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody"""
+class ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200"""
 
-    body: str
+    enabled: bool
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType",
-    "ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyTypeForResponse",
+    "ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200Type",
+    "ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200TypeForResponse",
 )

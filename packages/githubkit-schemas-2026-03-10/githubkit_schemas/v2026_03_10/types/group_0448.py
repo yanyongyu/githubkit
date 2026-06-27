@@ -12,33 +12,26 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0229 import (
-    RepositoryRuleWorkflowsPropParametersType,
-    RepositoryRuleWorkflowsPropParametersTypeForResponse,
-)
 
+class RepositoryRuleDetailedOneof3Type(TypedDict):
+    """RepositoryRuleDetailedOneof3"""
 
-class RepositoryRuleDetailedOneof15Type(TypedDict):
-    """RepositoryRuleDetailedOneof15"""
-
-    type: Literal["workflows"]
-    parameters: NotRequired[RepositoryRuleWorkflowsPropParametersType]
+    type: Literal["required_linear_history"]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
-class RepositoryRuleDetailedOneof15TypeForResponse(TypedDict):
-    """RepositoryRuleDetailedOneof15"""
+class RepositoryRuleDetailedOneof3TypeForResponse(TypedDict):
+    """RepositoryRuleDetailedOneof3"""
 
-    type: Literal["workflows"]
-    parameters: NotRequired[RepositoryRuleWorkflowsPropParametersTypeForResponse]
+    type: Literal["required_linear_history"]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
 __all__ = (
-    "RepositoryRuleDetailedOneof15Type",
-    "RepositoryRuleDetailedOneof15TypeForResponse",
+    "RepositoryRuleDetailedOneof3Type",
+    "RepositoryRuleDetailedOneof3TypeForResponse",
 )

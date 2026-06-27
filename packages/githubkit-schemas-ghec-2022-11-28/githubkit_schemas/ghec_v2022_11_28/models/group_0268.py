@@ -10,62 +10,56 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CredentialAuthorization(GitHubModel):
-    """Credential Authorization
+class CopilotSpaceResource(GitHubModel):
+    """Copilot Space Resource
 
-    Credential Authorization
+    A resource attached to a Copilot Space.
     """
 
-    login: str = Field(description="User login that owns the underlying credential.")
-    credential_id: int = Field(
-        description="Unique identifier for the authorization of the credential. Use this to revoke authorization of the underlying token or key."
+    id: int = Field(description="The unique identifier of the resource.")
+    resource_type: Literal[
+        "repository",
+        "github_file",
+        "free_text",
+        "github_issue",
+        "github_pull_request",
+        "media_content",
+        "uploaded_text_file",
+    ] = Field(description="The type of the resource.")
+    copilot_chat_attachment_id: Missing[Union[int, None]] = Field(
+        default=UNSET, description="The ID of the associated chat attachment, if any."
     )
-    credential_type: str = Field(
-        description="Human-readable description of the credential type."
+    metadata: CopilotSpaceResourcePropMetadata = Field(
+        description="Resource-specific metadata. The keys and values depend on the resource type."
     )
-    token_last_eight: Missing[str] = Field(
-        default=UNSET,
-        description="Last eight characters of the credential. Only included in responses with credential_type of personal access token.",
+    created_at: _dt.datetime = Field(
+        description="The date and time the resource was created."
     )
-    credential_authorized_at: _dt.datetime = Field(
-        description="Date when the credential was authorized for use."
-    )
-    scopes: Missing[list[str]] = Field(
-        default=UNSET, description="List of oauth scopes the token has been granted."
-    )
-    fingerprint: Missing[str] = Field(
-        default=UNSET,
-        description="Unique string to distinguish the credential. Only included in responses with credential_type of SSH Key.",
-    )
-    credential_accessed_at: Union[_dt.datetime, None] = Field(
-        description="Date when the credential was last accessed. May be null if it was never accessed"
-    )
-    authorized_credential_id: Union[int, None] = Field(
-        description="The ID of the underlying token that was authorized by the user. This will remain unchanged across authorizations of the token."
-    )
-    authorized_credential_title: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The title given to the ssh key. This will only be present when the credential is an ssh key.",
-    )
-    authorized_credential_note: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The note given to the token. This will only be present when the credential is a token.",
-    )
-    authorized_credential_expires_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET,
-        description="The expiry for the token. This will only be present when the credential is a token.",
+    updated_at: _dt.datetime = Field(
+        description="The date and time the resource was last updated."
     )
 
 
-model_rebuild(CredentialAuthorization)
+class CopilotSpaceResourcePropMetadata(ExtraGitHubModel):
+    """CopilotSpaceResourcePropMetadata
 
-__all__ = ("CredentialAuthorization",)
+    Resource-specific metadata. The keys and values depend on the resource type.
+    """
+
+
+model_rebuild(CopilotSpaceResource)
+model_rebuild(CopilotSpaceResourcePropMetadata)
+
+__all__ = (
+    "CopilotSpaceResource",
+    "CopilotSpaceResourcePropMetadata",
+)

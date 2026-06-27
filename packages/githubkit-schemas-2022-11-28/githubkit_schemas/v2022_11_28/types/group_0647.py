@@ -9,77 +9,83 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0646 import (
-    WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
-    WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
-    WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType,
-    WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse,
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0018 import InstallationType, InstallationTypeForResponse
+from .group_0515 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0517 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0518 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0526 import WebhooksUserType, WebhooksUserTypeForResponse
+from .group_0531 import (
+    WebhooksRepositoriesAddedItemsType,
+    WebhooksRepositoriesAddedItemsTypeForResponse,
 )
 
 
-class WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppType(TypedDict):
-    """App
+class WebhookInstallationRepositoriesRemovedType(TypedDict):
+    """installation_repositories removed event"""
 
-    GitHub apps are a new way to extend GitHub. They can be installed directly on
-    organizations and user accounts and granted access to specific repositories.
-    They come with granular permissions and built-in webhooks. GitHub apps are first
-    class actors within GitHub.
-    """
+    action: Literal["removed"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: InstallationType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repositories_added: list[WebhooksRepositoriesAddedItemsType]
+    repositories_removed: list[
+        WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItemsType
+    ]
+    repository: NotRequired[RepositoryWebhooksType]
+    repository_selection: Literal["all", "selected"]
+    requester: Union[WebhooksUserType, None]
+    sender: SimpleUserType
 
-    created_at: Union[_dt.datetime, None]
-    description: Union[str, None]
-    events: NotRequired[list[str]]
-    external_url: Union[str, None]
-    html_url: str
-    id: Union[int, None]
+
+class WebhookInstallationRepositoriesRemovedTypeForResponse(TypedDict):
+    """installation_repositories removed event"""
+
+    action: Literal["removed"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: InstallationTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repositories_added: list[WebhooksRepositoriesAddedItemsTypeForResponse]
+    repositories_removed: list[
+        WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItemsTypeForResponse
+    ]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    repository_selection: Literal["all", "selected"]
+    requester: Union[WebhooksUserTypeForResponse, None]
+    sender: SimpleUserTypeForResponse
+
+
+class WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItemsType(TypedDict):
+    """WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItems"""
+
+    full_name: str
+    id: int
     name: str
     node_id: str
-    owner: Union[
-        WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
-        None,
-    ]
-    permissions: NotRequired[
-        WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType
-    ]
-    slug: NotRequired[str]
-    updated_at: Union[_dt.datetime, None]
+    private: bool
 
 
-class WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppTypeForResponse(
+class WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItemsTypeForResponse(
     TypedDict
 ):
-    """App
+    """WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItems"""
 
-    GitHub apps are a new way to extend GitHub. They can be installed directly on
-    organizations and user accounts and granted access to specific repositories.
-    They come with granular permissions and built-in webhooks. GitHub apps are first
-    class actors within GitHub.
-    """
-
-    created_at: Union[str, None]
-    description: Union[str, None]
-    events: NotRequired[list[str]]
-    external_url: Union[str, None]
-    html_url: str
-    id: Union[int, None]
+    full_name: str
+    id: int
     name: str
     node_id: str
-    owner: Union[
-        WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
-        None,
-    ]
-    permissions: NotRequired[
-        WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse
-    ]
-    slug: NotRequired[str]
-    updated_at: Union[str, None]
+    private: bool
 
 
 __all__ = (
-    "WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppType",
-    "WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppTypeForResponse",
+    "WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItemsType",
+    "WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItemsTypeForResponse",
+    "WebhookInstallationRepositoriesRemovedType",
+    "WebhookInstallationRepositoriesRemovedTypeForResponse",
 )

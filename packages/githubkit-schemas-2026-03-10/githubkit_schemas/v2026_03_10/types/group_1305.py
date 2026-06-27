@@ -9,22 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody"""
+class ReposOwnerRepoHooksHookIdConfigPatchBodyType(TypedDict):
+    """ReposOwnerRepoHooksHookIdConfigPatchBody"""
 
-    assignees: NotRequired[list[str]]
+    url: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
 
 
-class ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody"""
+class ReposOwnerRepoHooksHookIdConfigPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoHooksHookIdConfigPatchBody"""
 
-    assignees: NotRequired[list[str]]
+    url: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType",
-    "ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyTypeForResponse",
+    "ReposOwnerRepoHooksHookIdConfigPatchBodyType",
+    "ReposOwnerRepoHooksHookIdConfigPatchBodyTypeForResponse",
 )

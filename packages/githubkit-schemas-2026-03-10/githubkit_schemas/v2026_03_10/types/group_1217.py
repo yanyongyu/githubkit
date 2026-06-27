@@ -9,52 +9,70 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoAttestationsSubjectDigestGetResponse200Type(TypedDict):
-    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200"""
+class ReposOwnerRepoActionsWorkflowsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsWorkflowsGetResponse200"""
 
-    attestations: NotRequired[
-        list[
-            ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsType
-        ]
+    total_count: int
+    workflows: list[WorkflowType]
+
+
+class ReposOwnerRepoActionsWorkflowsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsWorkflowsGetResponse200"""
+
+    total_count: int
+    workflows: list[WorkflowTypeForResponse]
+
+
+class WorkflowType(TypedDict):
+    """Workflow
+
+    A GitHub Actions workflow
+    """
+
+    id: int
+    node_id: str
+    name: str
+    path: str
+    state: Literal[
+        "active", "deleted", "disabled_fork", "disabled_inactivity", "disabled_manually"
     ]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    url: str
+    html_url: str
+    badge_url: str
+    deleted_at: NotRequired[_dt.datetime]
 
 
-class ReposOwnerRepoAttestationsSubjectDigestGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200"""
+class WorkflowTypeForResponse(TypedDict):
+    """Workflow
 
-    attestations: NotRequired[
-        list[
-            ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse
-        ]
+    A GitHub Actions workflow
+    """
+
+    id: int
+    node_id: str
+    name: str
+    path: str
+    state: Literal[
+        "active", "deleted", "disabled_fork", "disabled_inactivity", "disabled_manually"
     ]
-
-
-class ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsType(
-    TypedDict
-):
-    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
-
-    repository_id: NotRequired[int]
-    bundle_url: NotRequired[str]
-    initiator: NotRequired[str]
-
-
-class ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
-
-    repository_id: NotRequired[int]
-    bundle_url: NotRequired[str]
-    initiator: NotRequired[str]
+    created_at: str
+    updated_at: str
+    url: str
+    html_url: str
+    badge_url: str
+    deleted_at: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsType",
-    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse",
-    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200Type",
-    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200TypeForResponse",
+    "ReposOwnerRepoActionsWorkflowsGetResponse200Type",
+    "ReposOwnerRepoActionsWorkflowsGetResponse200TypeForResponse",
+    "WorkflowType",
+    "WorkflowTypeForResponse",
 )

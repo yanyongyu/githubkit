@@ -9,57 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing import Union
+from typing_extensions import TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class GroupResponseType(TypedDict):
-    """GroupResponse"""
+class StargazerType(TypedDict):
+    """Stargazer
 
-    schemas: list[
-        Literal[
-            "urn:ietf:params:scim:schemas:core:2.0:Group",
-            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
-        ]
-    ]
-    external_id: NotRequired[Union[str, None]]
-    display_name: NotRequired[Union[str, None]]
-    members: NotRequired[list[GroupResponsePropMembersItemsType]]
+    Stargazer
+    """
+
+    starred_at: _dt.datetime
+    user: Union[None, SimpleUserType]
 
 
-class GroupResponseTypeForResponse(TypedDict):
-    """GroupResponse"""
+class StargazerTypeForResponse(TypedDict):
+    """Stargazer
 
-    schemas: list[
-        Literal[
-            "urn:ietf:params:scim:schemas:core:2.0:Group",
-            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
-        ]
-    ]
-    external_id: NotRequired[Union[str, None]]
-    display_name: NotRequired[Union[str, None]]
-    members: NotRequired[list[GroupResponsePropMembersItemsTypeForResponse]]
+    Stargazer
+    """
 
-
-class GroupResponsePropMembersItemsType(TypedDict):
-    """GroupResponsePropMembersItems"""
-
-    value: str
-    ref: str
-    display: NotRequired[str]
-
-
-class GroupResponsePropMembersItemsTypeForResponse(TypedDict):
-    """GroupResponsePropMembersItems"""
-
-    value: str
-    ref: str
-    display: NotRequired[str]
+    starred_at: str
+    user: Union[None, SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "GroupResponsePropMembersItemsType",
-    "GroupResponsePropMembersItemsTypeForResponse",
-    "GroupResponseType",
-    "GroupResponseTypeForResponse",
+    "StargazerType",
+    "StargazerTypeForResponse",
 )

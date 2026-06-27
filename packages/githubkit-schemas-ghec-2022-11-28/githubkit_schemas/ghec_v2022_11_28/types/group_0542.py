@@ -9,85 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0541 import MetaType, MetaTypeForResponse
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class ScimEnterpriseGroupResponseType(TypedDict):
-    """ScimEnterpriseGroupResponse"""
+class ContributorActivityType(TypedDict):
+    """Contributor Activity
 
-    schemas: list[
-        Literal[
-            "urn:ietf:params:scim:schemas:core:2.0:Group",
-            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
-        ]
-    ]
-    external_id: NotRequired[Union[str, None]]
-    display_name: NotRequired[Union[str, None]]
-    members: NotRequired[list[ScimEnterpriseGroupResponseMergedMembersType]]
-    id: NotRequired[str]
-    meta: NotRequired[MetaType]
+    Contributor Activity
+    """
+
+    author: Union[None, SimpleUserType]
+    total: int
+    weeks: list[ContributorActivityPropWeeksItemsType]
 
 
-class ScimEnterpriseGroupResponseTypeForResponse(TypedDict):
-    """ScimEnterpriseGroupResponse"""
+class ContributorActivityTypeForResponse(TypedDict):
+    """Contributor Activity
 
-    schemas: list[
-        Literal[
-            "urn:ietf:params:scim:schemas:core:2.0:Group",
-            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
-        ]
-    ]
-    external_id: NotRequired[Union[str, None]]
-    display_name: NotRequired[Union[str, None]]
-    members: NotRequired[list[ScimEnterpriseGroupResponseMergedMembersTypeForResponse]]
-    id: NotRequired[str]
-    meta: NotRequired[MetaTypeForResponse]
+    Contributor Activity
+    """
+
+    author: Union[None, SimpleUserTypeForResponse]
+    total: int
+    weeks: list[ContributorActivityPropWeeksItemsTypeForResponse]
 
 
-class ScimEnterpriseGroupResponseMergedMembersType(TypedDict):
-    """ScimEnterpriseGroupResponseMergedMembers"""
+class ContributorActivityPropWeeksItemsType(TypedDict):
+    """ContributorActivityPropWeeksItems"""
 
-    value: str
-    ref: str
-    display: NotRequired[str]
-
-
-class ScimEnterpriseGroupResponseMergedMembersTypeForResponse(TypedDict):
-    """ScimEnterpriseGroupResponseMergedMembers"""
-
-    value: str
-    ref: str
-    display: NotRequired[str]
+    w: NotRequired[int]
+    a: NotRequired[int]
+    d: NotRequired[int]
+    c: NotRequired[int]
 
 
-class ScimEnterpriseGroupListType(TypedDict):
-    """ScimEnterpriseGroupList"""
+class ContributorActivityPropWeeksItemsTypeForResponse(TypedDict):
+    """ContributorActivityPropWeeksItems"""
 
-    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:ListResponse"]]
-    total_results: int
-    resources: list[ScimEnterpriseGroupResponseType]
-    start_index: int
-    items_per_page: int
-
-
-class ScimEnterpriseGroupListTypeForResponse(TypedDict):
-    """ScimEnterpriseGroupList"""
-
-    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:ListResponse"]]
-    total_results: int
-    resources: list[ScimEnterpriseGroupResponseTypeForResponse]
-    start_index: int
-    items_per_page: int
+    w: NotRequired[int]
+    a: NotRequired[int]
+    d: NotRequired[int]
+    c: NotRequired[int]
 
 
 __all__ = (
-    "ScimEnterpriseGroupListType",
-    "ScimEnterpriseGroupListTypeForResponse",
-    "ScimEnterpriseGroupResponseMergedMembersType",
-    "ScimEnterpriseGroupResponseMergedMembersTypeForResponse",
-    "ScimEnterpriseGroupResponseType",
-    "ScimEnterpriseGroupResponseTypeForResponse",
+    "ContributorActivityPropWeeksItemsType",
+    "ContributorActivityPropWeeksItemsTypeForResponse",
+    "ContributorActivityType",
+    "ContributorActivityTypeForResponse",
 )

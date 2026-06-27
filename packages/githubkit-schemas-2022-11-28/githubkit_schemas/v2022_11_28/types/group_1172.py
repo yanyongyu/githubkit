@@ -9,28 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0090 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
-
-
-class OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200Type(TypedDict):
-    """OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200"""
-
-    total_count: int
-    repositories: list[MinimalRepositoryType]
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200TypeForResponse(
-    TypedDict
-):
-    """OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200"""
+class OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0Type(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0"""
 
-    total_count: int
-    repositories: list[MinimalRepositoryTypeForResponse]
+    type: Literal["Issue", "PullRequest"]
+    id: int
+    owner: NotRequired[str]
+    repo: NotRequired[str]
+    number: NotRequired[int]
+
+
+class OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0TypeForResponse(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0"""
+
+    type: Literal["Issue", "PullRequest"]
+    id: int
+    owner: NotRequired[str]
+    repo: NotRequired[str]
+    number: NotRequired[int]
 
 
 __all__ = (
-    "OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200Type",
-    "OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200TypeForResponse",
+    "OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0Type",
+    "OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0TypeForResponse",
 )

@@ -10,286 +10,122 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Any, Literal, TypeAlias, Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0576 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0577 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0578 import (
+from .group_0588 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0589 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0590 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0625 import WebhooksTeam1Type, WebhooksTeam1TypeForResponse
+from .group_0591 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookTeamDeletedType(TypedDict):
-    """team deleted event"""
+class WebhookStatusType(TypedDict):
+    """status event"""
 
-    action: Literal["deleted"]
+    avatar_url: NotRequired[Union[str, None]]
+    branches: list[WebhookStatusPropBranchesItemsType]
+    commit: WebhookStatusPropCommitType
+    context: str
+    created_at: str
+    description: Union[str, None]
     enterprise: NotRequired[EnterpriseWebhooksType]
+    id: int
     installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
-    repository: NotRequired[WebhookTeamDeletedPropRepositoryType]
-    sender: NotRequired[SimpleUserType]
-    team: WebhooksTeam1Type
-
-
-class WebhookTeamDeletedTypeForResponse(TypedDict):
-    """team deleted event"""
-
-    action: Literal["deleted"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: OrganizationSimpleWebhooksTypeForResponse
-    repository: NotRequired[WebhookTeamDeletedPropRepositoryTypeForResponse]
-    sender: NotRequired[SimpleUserTypeForResponse]
-    team: WebhooksTeam1TypeForResponse
-
-
-class WebhookTeamDeletedPropRepositoryType(TypedDict):
-    """Repository
-
-    A git repository
-    """
-
-    allow_auto_merge: NotRequired[bool]
-    allow_forking: NotRequired[bool]
-    allow_merge_commit: NotRequired[bool]
-    allow_rebase_merge: NotRequired[bool]
-    allow_squash_merge: NotRequired[bool]
-    allow_update_branch: NotRequired[bool]
-    archive_url: str
-    archived: bool
-    assignees_url: str
-    blobs_url: str
-    branches_url: str
-    clone_url: str
-    collaborators_url: str
-    comments_url: str
-    commits_url: str
-    compare_url: str
-    contents_url: str
-    contributors_url: str
-    created_at: Union[int, _dt.datetime]
-    custom_properties: NotRequired[
-        WebhookTeamDeletedPropRepositoryPropCustomPropertiesType
-    ]
-    default_branch: str
-    delete_branch_on_merge: NotRequired[bool]
-    deployments_url: str
-    description: Union[str, None]
-    disabled: NotRequired[bool]
-    downloads_url: str
-    events_url: str
-    fork: bool
-    forks: int
-    forks_count: int
-    forks_url: str
-    full_name: str
-    git_commits_url: str
-    git_refs_url: str
-    git_tags_url: str
-    git_url: str
-    has_downloads: bool
-    has_issues: bool
-    has_pages: bool
-    has_projects: bool
-    has_wiki: bool
-    homepage: Union[str, None]
-    hooks_url: str
-    html_url: str
-    id: int
-    is_template: NotRequired[bool]
-    issue_comment_url: str
-    issue_events_url: str
-    issues_url: str
-    keys_url: str
-    labels_url: str
-    language: Union[str, None]
-    languages_url: str
-    license_: Union[WebhookTeamDeletedPropRepositoryPropLicenseType, None]
-    master_branch: NotRequired[str]
-    merges_url: str
-    milestones_url: str
-    mirror_url: Union[str, None]
     name: str
-    node_id: str
-    notifications_url: str
-    open_issues: int
-    open_issues_count: int
-    organization: NotRequired[str]
-    owner: Union[WebhookTeamDeletedPropRepositoryPropOwnerType, None]
-    permissions: NotRequired[WebhookTeamDeletedPropRepositoryPropPermissionsType]
-    private: bool
-    public: NotRequired[bool]
-    pulls_url: str
-    pushed_at: Union[int, _dt.datetime, None]
-    releases_url: str
-    role_name: NotRequired[Union[str, None]]
-    size: int
-    ssh_url: str
-    stargazers: NotRequired[int]
-    stargazers_count: int
-    stargazers_url: str
-    statuses_url: str
-    subscribers_url: str
-    subscription_url: str
-    svn_url: str
-    tags_url: str
-    teams_url: str
-    topics: list[str]
-    trees_url: str
-    updated_at: _dt.datetime
-    url: str
-    visibility: Literal["public", "private", "internal"]
-    watchers: int
-    watchers_count: int
-
-
-class WebhookTeamDeletedPropRepositoryTypeForResponse(TypedDict):
-    """Repository
-
-    A git repository
-    """
-
-    allow_auto_merge: NotRequired[bool]
-    allow_forking: NotRequired[bool]
-    allow_merge_commit: NotRequired[bool]
-    allow_rebase_merge: NotRequired[bool]
-    allow_squash_merge: NotRequired[bool]
-    allow_update_branch: NotRequired[bool]
-    archive_url: str
-    archived: bool
-    assignees_url: str
-    blobs_url: str
-    branches_url: str
-    clone_url: str
-    collaborators_url: str
-    comments_url: str
-    commits_url: str
-    compare_url: str
-    contents_url: str
-    contributors_url: str
-    created_at: Union[int, str]
-    custom_properties: NotRequired[
-        WebhookTeamDeletedPropRepositoryPropCustomPropertiesTypeForResponse
-    ]
-    default_branch: str
-    delete_branch_on_merge: NotRequired[bool]
-    deployments_url: str
-    description: Union[str, None]
-    disabled: NotRequired[bool]
-    downloads_url: str
-    events_url: str
-    fork: bool
-    forks: int
-    forks_count: int
-    forks_url: str
-    full_name: str
-    git_commits_url: str
-    git_refs_url: str
-    git_tags_url: str
-    git_url: str
-    has_downloads: bool
-    has_issues: bool
-    has_pages: bool
-    has_projects: bool
-    has_wiki: bool
-    homepage: Union[str, None]
-    hooks_url: str
-    html_url: str
-    id: int
-    is_template: NotRequired[bool]
-    issue_comment_url: str
-    issue_events_url: str
-    issues_url: str
-    keys_url: str
-    labels_url: str
-    language: Union[str, None]
-    languages_url: str
-    license_: Union[WebhookTeamDeletedPropRepositoryPropLicenseTypeForResponse, None]
-    master_branch: NotRequired[str]
-    merges_url: str
-    milestones_url: str
-    mirror_url: Union[str, None]
-    name: str
-    node_id: str
-    notifications_url: str
-    open_issues: int
-    open_issues_count: int
-    organization: NotRequired[str]
-    owner: Union[WebhookTeamDeletedPropRepositoryPropOwnerTypeForResponse, None]
-    permissions: NotRequired[
-        WebhookTeamDeletedPropRepositoryPropPermissionsTypeForResponse
-    ]
-    private: bool
-    public: NotRequired[bool]
-    pulls_url: str
-    pushed_at: Union[int, str, None]
-    releases_url: str
-    role_name: NotRequired[Union[str, None]]
-    size: int
-    ssh_url: str
-    stargazers: NotRequired[int]
-    stargazers_count: int
-    stargazers_url: str
-    statuses_url: str
-    subscribers_url: str
-    subscription_url: str
-    svn_url: str
-    tags_url: str
-    teams_url: str
-    topics: list[str]
-    trees_url: str
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
+    sha: str
+    state: Literal["pending", "success", "failure", "error"]
+    target_url: Union[str, None]
     updated_at: str
+
+
+class WebhookStatusTypeForResponse(TypedDict):
+    """status event"""
+
+    avatar_url: NotRequired[Union[str, None]]
+    branches: list[WebhookStatusPropBranchesItemsTypeForResponse]
+    commit: WebhookStatusPropCommitTypeForResponse
+    context: str
+    created_at: str
+    description: Union[str, None]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    id: int
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    name: str
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+    sha: str
+    state: Literal["pending", "success", "failure", "error"]
+    target_url: Union[str, None]
+    updated_at: str
+
+
+class WebhookStatusPropBranchesItemsType(TypedDict):
+    """WebhookStatusPropBranchesItems"""
+
+    commit: WebhookStatusPropBranchesItemsPropCommitType
+    name: str
+    protected: bool
+
+
+class WebhookStatusPropBranchesItemsTypeForResponse(TypedDict):
+    """WebhookStatusPropBranchesItems"""
+
+    commit: WebhookStatusPropBranchesItemsPropCommitTypeForResponse
+    name: str
+    protected: bool
+
+
+class WebhookStatusPropBranchesItemsPropCommitType(TypedDict):
+    """WebhookStatusPropBranchesItemsPropCommit"""
+
+    sha: Union[str, None]
+    url: Union[str, None]
+
+
+class WebhookStatusPropBranchesItemsPropCommitTypeForResponse(TypedDict):
+    """WebhookStatusPropBranchesItemsPropCommit"""
+
+    sha: Union[str, None]
+    url: Union[str, None]
+
+
+class WebhookStatusPropCommitType(TypedDict):
+    """WebhookStatusPropCommit"""
+
+    author: Union[WebhookStatusPropCommitPropAuthorType, None]
+    comments_url: str
+    commit: WebhookStatusPropCommitPropCommitType
+    committer: Union[WebhookStatusPropCommitPropCommitterType, None]
+    html_url: str
+    node_id: str
+    parents: list[WebhookStatusPropCommitPropParentsItemsType]
+    sha: str
     url: str
-    visibility: Literal["public", "private", "internal"]
-    watchers: int
-    watchers_count: int
 
 
-WebhookTeamDeletedPropRepositoryPropCustomPropertiesType: TypeAlias = dict[str, Any]
-"""WebhookTeamDeletedPropRepositoryPropCustomProperties
+class WebhookStatusPropCommitTypeForResponse(TypedDict):
+    """WebhookStatusPropCommit"""
 
-The custom properties that were defined for the repository. The keys are the
-custom property names, and the values are the corresponding custom property
-values.
-"""
-
-
-WebhookTeamDeletedPropRepositoryPropCustomPropertiesTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""WebhookTeamDeletedPropRepositoryPropCustomProperties
-
-The custom properties that were defined for the repository. The keys are the
-custom property names, and the values are the corresponding custom property
-values.
-"""
-
-
-class WebhookTeamDeletedPropRepositoryPropLicenseType(TypedDict):
-    """License"""
-
-    key: str
-    name: str
+    author: Union[WebhookStatusPropCommitPropAuthorTypeForResponse, None]
+    comments_url: str
+    commit: WebhookStatusPropCommitPropCommitTypeForResponse
+    committer: Union[WebhookStatusPropCommitPropCommitterTypeForResponse, None]
+    html_url: str
     node_id: str
-    spdx_id: str
-    url: Union[str, None]
+    parents: list[WebhookStatusPropCommitPropParentsItemsTypeForResponse]
+    sha: str
+    url: str
 
 
-class WebhookTeamDeletedPropRepositoryPropLicenseTypeForResponse(TypedDict):
-    """License"""
-
-    key: str
-    name: str
-    node_id: str
-    spdx_id: str
-    url: Union[str, None]
-
-
-class WebhookTeamDeletedPropRepositoryPropOwnerType(TypedDict):
+class WebhookStatusPropCommitPropAuthorType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -301,8 +137,8 @@ class WebhookTeamDeletedPropRepositoryPropOwnerType(TypedDict):
     gists_url: NotRequired[str]
     gravatar_id: NotRequired[str]
     html_url: NotRequired[str]
-    id: int
-    login: str
+    id: NotRequired[int]
+    login: NotRequired[str]
     name: NotRequired[str]
     node_id: NotRequired[str]
     organizations_url: NotRequired[str]
@@ -313,10 +149,9 @@ class WebhookTeamDeletedPropRepositoryPropOwnerType(TypedDict):
     subscriptions_url: NotRequired[str]
     type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
-    user_view_type: NotRequired[str]
 
 
-class WebhookTeamDeletedPropRepositoryPropOwnerTypeForResponse(TypedDict):
+class WebhookStatusPropCommitPropAuthorTypeForResponse(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -328,8 +163,8 @@ class WebhookTeamDeletedPropRepositoryPropOwnerTypeForResponse(TypedDict):
     gists_url: NotRequired[str]
     gravatar_id: NotRequired[str]
     html_url: NotRequired[str]
-    id: int
-    login: str
+    id: NotRequired[int]
+    login: NotRequired[str]
     name: NotRequired[str]
     node_id: NotRequired[str]
     organizations_url: NotRequired[str]
@@ -340,40 +175,225 @@ class WebhookTeamDeletedPropRepositoryPropOwnerTypeForResponse(TypedDict):
     subscriptions_url: NotRequired[str]
     type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
-    user_view_type: NotRequired[str]
 
 
-class WebhookTeamDeletedPropRepositoryPropPermissionsType(TypedDict):
-    """WebhookTeamDeletedPropRepositoryPropPermissions"""
+class WebhookStatusPropCommitPropCommitterType(TypedDict):
+    """User"""
 
-    admin: bool
-    maintain: NotRequired[bool]
-    pull: bool
-    push: bool
-    triage: NotRequired[bool]
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    login: NotRequired[str]
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
 
 
-class WebhookTeamDeletedPropRepositoryPropPermissionsTypeForResponse(TypedDict):
-    """WebhookTeamDeletedPropRepositoryPropPermissions"""
+class WebhookStatusPropCommitPropCommitterTypeForResponse(TypedDict):
+    """User"""
 
-    admin: bool
-    maintain: NotRequired[bool]
-    pull: bool
-    push: bool
-    triage: NotRequired[bool]
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    login: NotRequired[str]
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+
+
+class WebhookStatusPropCommitPropParentsItemsType(TypedDict):
+    """WebhookStatusPropCommitPropParentsItems"""
+
+    html_url: str
+    sha: str
+    url: str
+
+
+class WebhookStatusPropCommitPropParentsItemsTypeForResponse(TypedDict):
+    """WebhookStatusPropCommitPropParentsItems"""
+
+    html_url: str
+    sha: str
+    url: str
+
+
+class WebhookStatusPropCommitPropCommitType(TypedDict):
+    """WebhookStatusPropCommitPropCommit"""
+
+    author: WebhookStatusPropCommitPropCommitPropAuthorType
+    comment_count: int
+    committer: WebhookStatusPropCommitPropCommitPropCommitterType
+    message: str
+    tree: WebhookStatusPropCommitPropCommitPropTreeType
+    url: str
+    verification: WebhookStatusPropCommitPropCommitPropVerificationType
+
+
+class WebhookStatusPropCommitPropCommitTypeForResponse(TypedDict):
+    """WebhookStatusPropCommitPropCommit"""
+
+    author: WebhookStatusPropCommitPropCommitPropAuthorTypeForResponse
+    comment_count: int
+    committer: WebhookStatusPropCommitPropCommitPropCommitterTypeForResponse
+    message: str
+    tree: WebhookStatusPropCommitPropCommitPropTreeTypeForResponse
+    url: str
+    verification: WebhookStatusPropCommitPropCommitPropVerificationTypeForResponse
+
+
+class WebhookStatusPropCommitPropCommitPropAuthorType(TypedDict):
+    """WebhookStatusPropCommitPropCommitPropAuthor"""
+
+    date: _dt.datetime
+    email: str
+    name: str
+    username: NotRequired[str]
+
+
+class WebhookStatusPropCommitPropCommitPropAuthorTypeForResponse(TypedDict):
+    """WebhookStatusPropCommitPropCommitPropAuthor"""
+
+    date: str
+    email: str
+    name: str
+    username: NotRequired[str]
+
+
+class WebhookStatusPropCommitPropCommitPropCommitterType(TypedDict):
+    """WebhookStatusPropCommitPropCommitPropCommitter"""
+
+    date: _dt.datetime
+    email: str
+    name: str
+    username: NotRequired[str]
+
+
+class WebhookStatusPropCommitPropCommitPropCommitterTypeForResponse(TypedDict):
+    """WebhookStatusPropCommitPropCommitPropCommitter"""
+
+    date: str
+    email: str
+    name: str
+    username: NotRequired[str]
+
+
+class WebhookStatusPropCommitPropCommitPropTreeType(TypedDict):
+    """WebhookStatusPropCommitPropCommitPropTree"""
+
+    sha: str
+    url: str
+
+
+class WebhookStatusPropCommitPropCommitPropTreeTypeForResponse(TypedDict):
+    """WebhookStatusPropCommitPropCommitPropTree"""
+
+    sha: str
+    url: str
+
+
+class WebhookStatusPropCommitPropCommitPropVerificationType(TypedDict):
+    """WebhookStatusPropCommitPropCommitPropVerification"""
+
+    payload: Union[str, None]
+    reason: Literal[
+        "expired_key",
+        "not_signing_key",
+        "gpgverify_error",
+        "gpgverify_unavailable",
+        "unsigned",
+        "unknown_signature_type",
+        "no_user",
+        "unverified_email",
+        "bad_email",
+        "unknown_key",
+        "malformed_signature",
+        "invalid",
+        "valid",
+        "bad_cert",
+        "ocsp_pending",
+    ]
+    signature: Union[str, None]
+    verified: bool
+    verified_at: Union[str, None]
+
+
+class WebhookStatusPropCommitPropCommitPropVerificationTypeForResponse(TypedDict):
+    """WebhookStatusPropCommitPropCommitPropVerification"""
+
+    payload: Union[str, None]
+    reason: Literal[
+        "expired_key",
+        "not_signing_key",
+        "gpgverify_error",
+        "gpgverify_unavailable",
+        "unsigned",
+        "unknown_signature_type",
+        "no_user",
+        "unverified_email",
+        "bad_email",
+        "unknown_key",
+        "malformed_signature",
+        "invalid",
+        "valid",
+        "bad_cert",
+        "ocsp_pending",
+    ]
+    signature: Union[str, None]
+    verified: bool
+    verified_at: Union[str, None]
 
 
 __all__ = (
-    "WebhookTeamDeletedPropRepositoryPropCustomPropertiesType",
-    "WebhookTeamDeletedPropRepositoryPropCustomPropertiesTypeForResponse",
-    "WebhookTeamDeletedPropRepositoryPropLicenseType",
-    "WebhookTeamDeletedPropRepositoryPropLicenseTypeForResponse",
-    "WebhookTeamDeletedPropRepositoryPropOwnerType",
-    "WebhookTeamDeletedPropRepositoryPropOwnerTypeForResponse",
-    "WebhookTeamDeletedPropRepositoryPropPermissionsType",
-    "WebhookTeamDeletedPropRepositoryPropPermissionsTypeForResponse",
-    "WebhookTeamDeletedPropRepositoryType",
-    "WebhookTeamDeletedPropRepositoryTypeForResponse",
-    "WebhookTeamDeletedType",
-    "WebhookTeamDeletedTypeForResponse",
+    "WebhookStatusPropBranchesItemsPropCommitType",
+    "WebhookStatusPropBranchesItemsPropCommitTypeForResponse",
+    "WebhookStatusPropBranchesItemsType",
+    "WebhookStatusPropBranchesItemsTypeForResponse",
+    "WebhookStatusPropCommitPropAuthorType",
+    "WebhookStatusPropCommitPropAuthorTypeForResponse",
+    "WebhookStatusPropCommitPropCommitPropAuthorType",
+    "WebhookStatusPropCommitPropCommitPropAuthorTypeForResponse",
+    "WebhookStatusPropCommitPropCommitPropCommitterType",
+    "WebhookStatusPropCommitPropCommitPropCommitterTypeForResponse",
+    "WebhookStatusPropCommitPropCommitPropTreeType",
+    "WebhookStatusPropCommitPropCommitPropTreeTypeForResponse",
+    "WebhookStatusPropCommitPropCommitPropVerificationType",
+    "WebhookStatusPropCommitPropCommitPropVerificationTypeForResponse",
+    "WebhookStatusPropCommitPropCommitType",
+    "WebhookStatusPropCommitPropCommitTypeForResponse",
+    "WebhookStatusPropCommitPropCommitterType",
+    "WebhookStatusPropCommitPropCommitterTypeForResponse",
+    "WebhookStatusPropCommitPropParentsItemsType",
+    "WebhookStatusPropCommitPropParentsItemsTypeForResponse",
+    "WebhookStatusPropCommitType",
+    "WebhookStatusPropCommitTypeForResponse",
+    "WebhookStatusType",
+    "WebhookStatusTypeForResponse",
 )

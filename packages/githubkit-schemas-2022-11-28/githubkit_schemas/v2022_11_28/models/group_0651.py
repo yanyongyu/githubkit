@@ -18,19 +18,19 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0503 import EnterpriseWebhooks
-from .group_0504 import SimpleInstallation
-from .group_0505 import OrganizationSimpleWebhooks
-from .group_0506 import RepositoryWebhooks
-from .group_0520 import WebhooksIssueComment
-from .group_0652 import WebhookIssueCommentDeletedPropIssue
+from .group_0515 import EnterpriseWebhooks
+from .group_0516 import SimpleInstallation
+from .group_0517 import OrganizationSimpleWebhooks
+from .group_0518 import RepositoryWebhooks
+from .group_0652 import WebhookIssueCommentCreatedPropComment
+from .group_0653 import WebhookIssueCommentCreatedPropIssue
 
 
-class WebhookIssueCommentDeleted(GitHubModel):
-    """issue_comment deleted event"""
+class WebhookIssueCommentCreated(GitHubModel):
+    """issue_comment created event"""
 
-    action: Literal["deleted"] = Field()
-    comment: WebhooksIssueComment = Field(
+    action: Literal["created"] = Field()
+    comment: WebhookIssueCommentCreatedPropComment = Field(
         title="issue comment",
         description="The [comment](https://docs.github.com/rest/issues/comments#get-an-issue-comment) itself.",
     )
@@ -44,7 +44,7 @@ class WebhookIssueCommentDeleted(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    issue: WebhookIssueCommentDeletedPropIssue = Field(
+    issue: WebhookIssueCommentCreatedPropIssue = Field(
         description="The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) the comment belongs to."
     )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
@@ -59,6 +59,6 @@ class WebhookIssueCommentDeleted(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookIssueCommentDeleted)
+model_rebuild(WebhookIssueCommentCreated)
 
-__all__ = ("WebhookIssueCommentDeleted",)
+__all__ = ("WebhookIssueCommentCreated",)

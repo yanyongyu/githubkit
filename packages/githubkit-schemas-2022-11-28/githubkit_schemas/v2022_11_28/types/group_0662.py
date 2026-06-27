@@ -9,54 +9,65 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0503 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0504 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0505 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0506 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0520 import WebhooksIssueCommentType, WebhooksIssueCommentTypeForResponse
-from .group_0521 import WebhooksChangesType, WebhooksChangesTypeForResponse
-from .group_0663 import (
-    WebhookIssueCommentEditedPropIssueType,
-    WebhookIssueCommentEditedPropIssueTypeForResponse,
+from .group_0658 import (
+    WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
+    WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
+    WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType,
+    WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse,
 )
 
 
-class WebhookIssueCommentEditedType(TypedDict):
-    """issue_comment edited event"""
+class WebhookIssueCommentCreatedPropIssueMergedPerformedViaGithubAppType(TypedDict):
+    """WebhookIssueCommentCreatedPropIssueMergedPerformedViaGithubApp"""
 
-    action: Literal["edited"]
-    changes: WebhooksChangesType
-    comment: WebhooksIssueCommentType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssueCommentEditedPropIssueType
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    created_at: Union[_dt.datetime, None]
+    description: Union[str, None]
+    events: NotRequired[list[str]]
+    external_url: Union[str, None]
+    html_url: str
+    id: Union[int, None]
+    name: str
+    node_id: str
+    owner: Union[
+        WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
+        None,
+    ]
+    permissions: NotRequired[
+        WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType
+    ]
+    slug: NotRequired[str]
+    updated_at: Union[_dt.datetime, None]
 
 
-class WebhookIssueCommentEditedTypeForResponse(TypedDict):
-    """issue_comment edited event"""
+class WebhookIssueCommentCreatedPropIssueMergedPerformedViaGithubAppTypeForResponse(
+    TypedDict
+):
+    """WebhookIssueCommentCreatedPropIssueMergedPerformedViaGithubApp"""
 
-    action: Literal["edited"]
-    changes: WebhooksChangesTypeForResponse
-    comment: WebhooksIssueCommentTypeForResponse
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhookIssueCommentEditedPropIssueTypeForResponse
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    created_at: Union[str, None]
+    description: Union[str, None]
+    events: NotRequired[list[str]]
+    external_url: Union[str, None]
+    html_url: str
+    id: Union[int, None]
+    name: str
+    node_id: str
+    owner: Union[
+        WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
+        None,
+    ]
+    permissions: NotRequired[
+        WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse
+    ]
+    slug: NotRequired[str]
+    updated_at: Union[str, None]
 
 
 __all__ = (
-    "WebhookIssueCommentEditedType",
-    "WebhookIssueCommentEditedTypeForResponse",
+    "WebhookIssueCommentCreatedPropIssueMergedPerformedViaGithubAppType",
+    "WebhookIssueCommentCreatedPropIssueMergedPerformedViaGithubAppTypeForResponse",
 )

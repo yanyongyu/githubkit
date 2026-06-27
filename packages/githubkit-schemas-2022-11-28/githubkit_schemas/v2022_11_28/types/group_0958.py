@@ -9,83 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse400Type(TypedDict):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse400
+class AgentsReposOwnerRepoTasksPostBodyType(TypedDict):
+    """AgentsReposOwnerRepoTasksPostBody"""
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[
-        list[AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItemsType]
-    ]
-    documentation_url: str
+    prompt: str
+    model: NotRequired[str]
+    create_pull_request: NotRequired[bool]
+    base_ref: NotRequired[str]
+    head_ref: NotRequired[str]
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse400TypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse400
+class AgentsReposOwnerRepoTasksPostBodyTypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoTasksPostBody"""
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[
-        list[
-            AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItemsTypeForResponse
-        ]
-    ]
-    documentation_url: str
-
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItemsType(TypedDict):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItems
-
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
-
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItemsTypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItems
-
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
+    prompt: str
+    model: NotRequired[str]
+    create_pull_request: NotRequired[bool]
+    base_ref: NotRequired[str]
+    head_ref: NotRequired[str]
 
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItemsType",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItemsTypeForResponse",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse400Type",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse400TypeForResponse",
+    "AgentsReposOwnerRepoTasksPostBodyType",
+    "AgentsReposOwnerRepoTasksPostBodyTypeForResponse",
 )

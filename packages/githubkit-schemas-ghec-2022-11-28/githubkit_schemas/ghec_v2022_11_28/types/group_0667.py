@@ -9,47 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0109 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
-from .group_0576 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0577 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0578 import (
+from .group_0588 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0589 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0590 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0579 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0591 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0668 import (
+    WebhookCodeScanningAlertReopenedPropAlertType,
+    WebhookCodeScanningAlertReopenedPropAlertTypeForResponse,
+)
 
 
-class WebhookCustomPropertyValuesUpdatedType(TypedDict):
-    """Custom property values updated event"""
+class WebhookCodeScanningAlertReopenedType(TypedDict):
+    """code_scanning_alert reopened event"""
 
-    action: Literal["updated"]
+    action: Literal["reopened"]
+    alert: WebhookCodeScanningAlertReopenedPropAlertType
+    commit_oid: Union[str, None]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    ref: Union[str, None]
     repository: RepositoryWebhooksType
-    organization: OrganizationSimpleWebhooksType
-    sender: NotRequired[SimpleUserType]
-    new_property_values: list[CustomPropertyValueType]
-    old_property_values: list[CustomPropertyValueType]
+    sender: SimpleUserType
 
 
-class WebhookCustomPropertyValuesUpdatedTypeForResponse(TypedDict):
-    """Custom property values updated event"""
+class WebhookCodeScanningAlertReopenedTypeForResponse(TypedDict):
+    """code_scanning_alert reopened event"""
 
-    action: Literal["updated"]
+    action: Literal["reopened"]
+    alert: WebhookCodeScanningAlertReopenedPropAlertTypeForResponse
+    commit_oid: Union[str, None]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    ref: Union[str, None]
     repository: RepositoryWebhooksTypeForResponse
-    organization: OrganizationSimpleWebhooksTypeForResponse
-    sender: NotRequired[SimpleUserTypeForResponse]
-    new_property_values: list[CustomPropertyValueTypeForResponse]
-    old_property_values: list[CustomPropertyValueTypeForResponse]
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookCustomPropertyValuesUpdatedType",
-    "WebhookCustomPropertyValuesUpdatedTypeForResponse",
+    "WebhookCodeScanningAlertReopenedType",
+    "WebhookCodeScanningAlertReopenedTypeForResponse",
 )

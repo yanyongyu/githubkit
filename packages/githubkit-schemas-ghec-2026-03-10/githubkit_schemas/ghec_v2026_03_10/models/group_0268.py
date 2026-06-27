@@ -9,54 +9,85 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
 
+class CopilotOrganizationDetails(ExtraGitHubModel):
+    """Copilot Organization Details
 
-class OrganizationCustomRepositoryRole(GitHubModel):
-    """Organization Custom Repository Role
-
-    Custom repository roles created by organization owners
+    Information about the seat breakdown and policies set for an organization with a
+    Copilot Business or Copilot Enterprise subscription.
     """
 
-    id: int = Field(description="The unique identifier of the custom role.")
-    name: str = Field(description="The name of the custom role.")
-    description: Missing[Union[str, None]] = Field(
+    seat_breakdown: CopilotOrganizationSeatBreakdown = Field(
+        title="Copilot Seat Breakdown",
+        description="The breakdown of Copilot Business seats for the organization.",
+    )
+    public_code_suggestions: Literal["allow", "block", "unconfigured"] = Field(
+        description="The organization policy for allowing or blocking suggestions matching public code (duplication detection filter)."
+    )
+    ide_chat: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
         default=UNSET,
-        description="A short description about who this role is for or what permissions it grants.",
+        description="The organization policy for allowing or disallowing Copilot Chat in the IDE.",
     )
-    base_role: Literal["read", "triage", "write", "maintain"] = Field(
-        description="The system role from which this role inherits permissions."
+    platform_chat: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
+        default=UNSET,
+        description="The organization policy for allowing or disallowing Copilot features on GitHub.com.",
     )
-    permissions: list[str] = Field(
-        description="A list of additional permissions included in this role."
+    cli: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
+        default=UNSET,
+        description="The organization policy for allowing or disallowing Copilot CLI.",
     )
-    organization: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-
-
-class OrgsOrgCustomRepositoryRolesGetResponse200(GitHubModel):
-    """OrgsOrgCustomRepositoryRolesGetResponse200"""
-
-    total_count: Missing[int] = Field(
-        default=UNSET, description="The number of custom roles in this organization"
+    seat_management_setting: Literal[
+        "assign_all", "assign_selected", "disabled", "unconfigured"
+    ] = Field(description="The mode of assigning new seats.")
+    plan_type: Missing[Literal["business", "enterprise"]] = Field(
+        default=UNSET,
+        description="The Copilot plan of the organization, or the parent enterprise, when applicable.",
     )
-    custom_roles: Missing[list[OrganizationCustomRepositoryRole]] = Field(default=UNSET)
 
 
-model_rebuild(OrganizationCustomRepositoryRole)
-model_rebuild(OrgsOrgCustomRepositoryRolesGetResponse200)
+class CopilotOrganizationSeatBreakdown(GitHubModel):
+    """Copilot Seat Breakdown
+
+    The breakdown of Copilot Business seats for the organization.
+    """
+
+    total: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of seats being billed for the organization as of the current billing cycle.",
+    )
+    added_this_cycle: Missing[int] = Field(
+        default=UNSET, description="Seats added during the current billing cycle."
+    )
+    pending_cancellation: Missing[int] = Field(
+        default=UNSET,
+        description="The number of seats that are pending cancellation at the end of the current billing cycle.",
+    )
+    pending_invitation: Missing[int] = Field(
+        default=UNSET,
+        description="The number of users who have been invited to receive a Copilot seat through this organization.",
+    )
+    active_this_cycle: Missing[int] = Field(
+        default=UNSET,
+        description="The number of seats that have used Copilot during the current billing cycle.",
+    )
+    inactive_this_cycle: Missing[int] = Field(
+        default=UNSET,
+        description="The number of seats that have not used Copilot during the current billing cycle.",
+    )
+
+
+model_rebuild(CopilotOrganizationDetails)
+model_rebuild(CopilotOrganizationSeatBreakdown)
 
 __all__ = (
-    "OrganizationCustomRepositoryRole",
-    "OrgsOrgCustomRepositoryRolesGetResponse200",
+    "CopilotOrganizationDetails",
+    "CopilotOrganizationSeatBreakdown",
 )

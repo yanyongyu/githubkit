@@ -11,26 +11,20 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0049 import OrganizationSimpleType, OrganizationSimpleTypeForResponse
+
+class CredentialsRevokePostBodyType(TypedDict):
+    """CredentialsRevokePostBody"""
+
+    credentials: list[str]
 
 
-class EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200"""
+class CredentialsRevokePostBodyTypeForResponse(TypedDict):
+    """CredentialsRevokePostBody"""
 
-    total_count: float
-    organizations: list[OrganizationSimpleType]
-
-
-class EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200"""
-
-    total_count: float
-    organizations: list[OrganizationSimpleTypeForResponse]
+    credentials: list[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200Type",
-    "EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200TypeForResponse",
+    "CredentialsRevokePostBodyType",
+    "CredentialsRevokePostBodyTypeForResponse",
 )

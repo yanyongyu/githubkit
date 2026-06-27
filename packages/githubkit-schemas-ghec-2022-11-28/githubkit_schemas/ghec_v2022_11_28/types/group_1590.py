@@ -9,39 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0263 import (
-    CopilotSpaceCollaboratorAnyof0Type,
-    CopilotSpaceCollaboratorAnyof0TypeForResponse,
-    CopilotSpaceCollaboratorAnyof1Type,
-    CopilotSpaceCollaboratorAnyof1TypeForResponse,
-)
+
+class UserMembershipsOrgsOrgPatchBodyType(TypedDict):
+    """UserMembershipsOrgsOrgPatchBody"""
+
+    state: Literal["active"]
 
 
-class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200Type(TypedDict):
-    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200"""
+class UserMembershipsOrgsOrgPatchBodyTypeForResponse(TypedDict):
+    """UserMembershipsOrgsOrgPatchBody"""
 
-    collaborators: list[
-        Union[CopilotSpaceCollaboratorAnyof0Type, CopilotSpaceCollaboratorAnyof1Type]
-    ]
-
-
-class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200TypeForResponse(
-    TypedDict
-):
-    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200"""
-
-    collaborators: list[
-        Union[
-            CopilotSpaceCollaboratorAnyof0TypeForResponse,
-            CopilotSpaceCollaboratorAnyof1TypeForResponse,
-        ]
-    ]
+    state: Literal["active"]
 
 
 __all__ = (
-    "UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200Type",
-    "UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200TypeForResponse",
+    "UserMembershipsOrgsOrgPatchBodyType",
+    "UserMembershipsOrgsOrgPatchBodyTypeForResponse",
 )

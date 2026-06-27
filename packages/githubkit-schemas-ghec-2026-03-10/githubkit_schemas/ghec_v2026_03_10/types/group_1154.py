@@ -9,22 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersPostBodyType(TypedDict):
-    """EnterprisesEnterpriseSettingsBillingCostCentersPostBody"""
+class EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBodyType(TypedDict):
+    """EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBody"""
 
-    name: str
+    default_level: Literal["public", "internal"]
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersPostBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseSettingsBillingCostCentersPostBody"""
+class EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBody"""
 
-    name: str
+    default_level: Literal["public", "internal"]
 
 
 __all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersPostBodyType",
-    "EnterprisesEnterpriseSettingsBillingCostCentersPostBodyTypeForResponse",
+    "EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBodyType",
+    "EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBodyTypeForResponse",
 )

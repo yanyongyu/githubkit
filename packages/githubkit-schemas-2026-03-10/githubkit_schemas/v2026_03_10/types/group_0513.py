@@ -9,65 +9,82 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksUserType(TypedDict):
-    """User"""
+class BillingUsageSummaryReportUserType(TypedDict):
+    """BillingUsageSummaryReportUser"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    time_period: BillingUsageSummaryReportUserPropTimePeriodType
+    user: str
+    repository: NotRequired[str]
+    product: NotRequired[str]
+    sku: NotRequired[str]
+    usage_items: list[BillingUsageSummaryReportUserPropUsageItemsItemsType]
 
 
-class WebhooksUserTypeForResponse(TypedDict):
-    """User"""
+class BillingUsageSummaryReportUserTypeForResponse(TypedDict):
+    """BillingUsageSummaryReportUser"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    time_period: BillingUsageSummaryReportUserPropTimePeriodTypeForResponse
+    user: str
+    repository: NotRequired[str]
+    product: NotRequired[str]
+    sku: NotRequired[str]
+    usage_items: list[BillingUsageSummaryReportUserPropUsageItemsItemsTypeForResponse]
+
+
+class BillingUsageSummaryReportUserPropTimePeriodType(TypedDict):
+    """BillingUsageSummaryReportUserPropTimePeriod"""
+
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
+
+
+class BillingUsageSummaryReportUserPropTimePeriodTypeForResponse(TypedDict):
+    """BillingUsageSummaryReportUserPropTimePeriod"""
+
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
+
+
+class BillingUsageSummaryReportUserPropUsageItemsItemsType(TypedDict):
+    """BillingUsageSummaryReportUserPropUsageItemsItems"""
+
+    product: str
+    sku: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: float
+    gross_amount: float
+    discount_quantity: float
+    discount_amount: float
+    net_quantity: float
+    net_amount: float
+
+
+class BillingUsageSummaryReportUserPropUsageItemsItemsTypeForResponse(TypedDict):
+    """BillingUsageSummaryReportUserPropUsageItemsItems"""
+
+    product: str
+    sku: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: float
+    gross_amount: float
+    discount_quantity: float
+    discount_amount: float
+    net_quantity: float
+    net_amount: float
 
 
 __all__ = (
-    "WebhooksUserType",
-    "WebhooksUserTypeForResponse",
+    "BillingUsageSummaryReportUserPropTimePeriodType",
+    "BillingUsageSummaryReportUserPropTimePeriodTypeForResponse",
+    "BillingUsageSummaryReportUserPropUsageItemsItemsType",
+    "BillingUsageSummaryReportUserPropUsageItemsItemsTypeForResponse",
+    "BillingUsageSummaryReportUserType",
+    "BillingUsageSummaryReportUserTypeForResponse",
 )

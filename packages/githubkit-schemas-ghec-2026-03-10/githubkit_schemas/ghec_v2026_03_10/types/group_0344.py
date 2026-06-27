@@ -9,29 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsRepositoryPermissionsType(TypedDict):
-    """ActionsRepositoryPermissions"""
+class OidcCustomSubRepoType(TypedDict):
+    """Actions OIDC subject customization for a repository
 
-    enabled: bool
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    selected_actions_url: NotRequired[str]
-    sha_pinning_required: NotRequired[bool]
+    Actions OIDC subject customization for a repository
+    """
+
+    use_default: bool
+    include_claim_keys: NotRequired[list[str]]
+    use_immutable_subject: NotRequired[bool]
+    sub_claim_prefix: NotRequired[str]
 
 
-class ActionsRepositoryPermissionsTypeForResponse(TypedDict):
-    """ActionsRepositoryPermissions"""
+class OidcCustomSubRepoTypeForResponse(TypedDict):
+    """Actions OIDC subject customization for a repository
 
-    enabled: bool
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    selected_actions_url: NotRequired[str]
-    sha_pinning_required: NotRequired[bool]
+    Actions OIDC subject customization for a repository
+    """
+
+    use_default: bool
+    include_claim_keys: NotRequired[list[str]]
+    use_immutable_subject: NotRequired[bool]
+    sub_claim_prefix: NotRequired[str]
 
 
 __all__ = (
-    "ActionsRepositoryPermissionsType",
-    "ActionsRepositoryPermissionsTypeForResponse",
+    "OidcCustomSubRepoType",
+    "OidcCustomSubRepoTypeForResponse",
 )

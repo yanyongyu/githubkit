@@ -16,22 +16,12 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsOidcCustomizationSubPutBody(GitHubModel):
-    """Actions OIDC Subject customization
+class NotificationsPutResponse202(GitHubModel):
+    """NotificationsPutResponse202"""
 
-    Actions OIDC Subject customization
-    """
-
-    include_claim_keys: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores.",
-    )
-    use_immutable_subject: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to opt in to the immutable OIDC subject claim format for the organization. When `true`, new OIDC tokens will use a stable, repository-ID-based `sub` claim instead of the name-based format.",
-    )
+    message: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgActionsOidcCustomizationSubPutBody)
+model_rebuild(NotificationsPutResponse202)
 
-__all__ = ("OrgsOrgActionsOidcCustomizationSubPutBody",)
+__all__ = ("NotificationsPutResponse202",)

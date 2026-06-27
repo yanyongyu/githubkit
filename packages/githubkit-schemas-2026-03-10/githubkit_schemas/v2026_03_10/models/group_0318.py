@@ -9,26 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class CodeScanningAutofix(GitHubModel):
-    """CodeScanningAutofix"""
+class CodeQualitySetupUpdateResponse(GitHubModel):
+    """CodeQualitySetupUpdateResponse
 
-    status: Literal["pending", "error", "success", "outdated"] = Field(
-        description="The status of an autofix."
+    You can use `run_url` to track the status of the run. This includes a property
+    status and conclusion.
+    You should not rely on this always being an actions workflow run object.
+    """
+
+    run_id: Missing[int] = Field(
+        default=UNSET, description="ID of the corresponding run."
     )
-    description: Union[str, None] = Field(description="The description of an autofix.")
-    started_at: _dt.datetime = Field(
-        description="The start time of an autofix in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    run_url: Missing[str] = Field(
+        default=UNSET, description="URL of the corresponding run."
     )
 
 
-model_rebuild(CodeScanningAutofix)
+model_rebuild(CodeQualitySetupUpdateResponse)
 
-__all__ = ("CodeScanningAutofix",)
+__all__ = ("CodeQualitySetupUpdateResponse",)

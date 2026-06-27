@@ -13,41 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0175 import RepositoryRulesetType, RepositoryRulesetTypeForResponse
-from .group_0575 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0576 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0577 import (
+from .group_0587 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0588 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0589 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0578 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0590 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0630 import WebhooksRelease1Type, WebhooksRelease1TypeForResponse
 
 
-class WebhookRepositoryRulesetCreatedType(TypedDict):
-    """repository ruleset created event"""
+class WebhookReleaseUnpublishedType(TypedDict):
+    """release unpublished event"""
 
-    action: Literal["created"]
+    action: Literal["unpublished"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    repository_ruleset: RepositoryRulesetType
-    sender: SimpleUserType
+    release: WebhooksRelease1Type
+    repository: RepositoryWebhooksType
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookRepositoryRulesetCreatedTypeForResponse(TypedDict):
-    """repository ruleset created event"""
+class WebhookReleaseUnpublishedTypeForResponse(TypedDict):
+    """release unpublished event"""
 
-    action: Literal["created"]
+    action: Literal["unpublished"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    repository_ruleset: RepositoryRulesetTypeForResponse
-    sender: SimpleUserTypeForResponse
+    release: WebhooksRelease1TypeForResponse
+    repository: RepositoryWebhooksTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookRepositoryRulesetCreatedType",
-    "WebhookRepositoryRulesetCreatedTypeForResponse",
+    "WebhookReleaseUnpublishedType",
+    "WebhookReleaseUnpublishedTypeForResponse",
 )

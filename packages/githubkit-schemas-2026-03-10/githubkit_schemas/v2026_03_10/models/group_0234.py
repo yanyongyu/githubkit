@@ -17,23 +17,23 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0235 import RepositoryRuleFilePathRestrictionPropParameters
+from .group_0235 import RepositoryRuleCopilotCodeReviewPropParameters
 
 
-class RepositoryRuleFilePathRestriction(GitHubModel):
-    """file_path_restriction
+class RepositoryRuleCopilotCodeReview(GitHubModel):
+    """copilot_code_review
 
-    Prevent commits that include changes in specified file and folder paths from
-    being pushed to the commit graph. This includes absolute paths that contain file
-    names.
+    Request Copilot code review for new pull requests automatically if the author
+    has access to Copilot code review and their premium requests quota has not
+    reached the limit.
     """
 
-    type: Literal["file_path_restriction"] = Field()
-    parameters: Missing[RepositoryRuleFilePathRestrictionPropParameters] = Field(
+    type: Literal["copilot_code_review"] = Field()
+    parameters: Missing[RepositoryRuleCopilotCodeReviewPropParameters] = Field(
         default=UNSET
     )
 
 
-model_rebuild(RepositoryRuleFilePathRestriction)
+model_rebuild(RepositoryRuleCopilotCodeReview)
 
-__all__ = ("RepositoryRuleFilePathRestriction",)
+__all__ = ("RepositoryRuleCopilotCodeReview",)

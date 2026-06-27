@@ -700,6 +700,18 @@ if TYPE_CHECKING or is_lazy_disabled():
         CodeownersErrorsType as CodeownersErrorsType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        CodeQualityFindingLocationType as CodeQualityFindingLocationType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        CodeQualityFindingMessageType as CodeQualityFindingMessageType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        CodeQualityFindingRuleType as CodeQualityFindingRuleType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        CodeQualityFindingType as CodeQualityFindingType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         CodeQualitySetupType as CodeQualitySetupType,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -1521,6 +1533,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     from githubkit_schemas.v2026_03_10.types import (
         IssueCommentEventType as IssueCommentEventType,
     )
+    from githubkit_schemas.v2026_03_10.types import (
+        IssueCommentMinimizedType as IssueCommentMinimizedType,
+    )
     from githubkit_schemas.v2026_03_10.types import IssueCommentType as IssueCommentType
     from githubkit_schemas.v2026_03_10.types import (
         IssueDependenciesSummaryType as IssueDependenciesSummaryType,
@@ -1561,6 +1576,12 @@ if TYPE_CHECKING or is_lazy_disabled():
         IssuePropPullRequestType as IssuePropPullRequestType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        IssueReferencePropIssueTypeType as IssueReferencePropIssueTypeType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        IssueReferenceType as IssueReferenceType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         IssueSearchResultItemPropLabelsItemsType as IssueSearchResultItemPropLabelsItemsType,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -1571,7 +1592,19 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.types import IssuesEventType as IssuesEventType
     from githubkit_schemas.v2026_03_10.types import IssueType as IssueType
+    from githubkit_schemas.v2026_03_10.types import (
+        IssueTypeAddedIssueEventType as IssueTypeAddedIssueEventType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        IssueTypeChangedIssueEventType as IssueTypeChangedIssueEventType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        IssueTypeRemovedIssueEventType as IssueTypeRemovedIssueEventType,
+    )
     from githubkit_schemas.v2026_03_10.types import IssueTypeType as IssueTypeType
+    from githubkit_schemas.v2026_03_10.types import (
+        IssueTypeWebhookType as IssueTypeWebhookType,
+    )
     from githubkit_schemas.v2026_03_10.types import (
         JobPropStepsItemsType as JobPropStepsItemsType,
     )
@@ -2412,6 +2445,12 @@ if TYPE_CHECKING or is_lazy_disabled():
         PagesSourceHashType as PagesSourceHashType,
     )
     from githubkit_schemas.v2026_03_10.types import PageType as PageType
+    from githubkit_schemas.v2026_03_10.types import (
+        ParentIssueAddedIssueEventType as ParentIssueAddedIssueEventType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        ParentIssueRemovedIssueEventType as ParentIssueRemovedIssueEventType,
+    )
     from githubkit_schemas.v2026_03_10.types import (
         ParticipationStatsType as ParticipationStatsType,
     )
@@ -3663,6 +3702,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         ReposOwnerRepoIssuesIssueNumberLockPutBodyType as ReposOwnerRepoIssuesIssueNumberLockPutBodyType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1Type as ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsType as ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsType,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -3670,6 +3712,12 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.types import (
         ReposOwnerRepoIssuesIssueNumberPatchBodyType as ReposOwnerRepoIssuesIssueNumberPatchBodyType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1Type as ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        ReposOwnerRepoIssuesIssueNumberPatchResponse200Type as ReposOwnerRepoIssuesIssueNumberPatchResponse200Type,
     )
     from githubkit_schemas.v2026_03_10.types import (
         ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType as ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType,
@@ -4196,6 +4244,12 @@ if TYPE_CHECKING or is_lazy_disabled():
         StatusCheckPolicyType as StatusCheckPolicyType,
     )
     from githubkit_schemas.v2026_03_10.types import StatusType as StatusType
+    from githubkit_schemas.v2026_03_10.types import (
+        SubIssueAddedIssueEventType as SubIssueAddedIssueEventType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        SubIssueRemovedIssueEventType as SubIssueRemovedIssueEventType,
+    )
     from githubkit_schemas.v2026_03_10.types import (
         SubIssuesSummaryType as SubIssuesSummaryType,
     )
@@ -11157,6 +11211,7 @@ else:
             "SubIssuesSummaryType",
             "IssueDependenciesSummaryType",
             "PinnedIssueCommentType",
+            "IssueCommentMinimizedType",
             "IssueCommentType",
             "IssueFieldValueType",
             "IssueFieldValuePropSingleSelectOptionType",
@@ -11638,6 +11693,10 @@ else:
             "CheckSuitePreferenceType",
             "CheckSuitePreferencePropPreferencesType",
             "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType",
+            "CodeQualityFindingType",
+            "CodeQualityFindingRuleType",
+            "CodeQualityFindingLocationType",
+            "CodeQualityFindingMessageType",
             "CodeQualitySetupType",
             "CodeQualitySetupUpdateAnyof0Type",
             "CodeQualitySetupUpdateAnyof1Type",
@@ -11769,6 +11828,9 @@ else:
             "PorterAuthorType",
             "PorterLargeFileType",
             "InteractionLimitPullRequestBypassListType",
+            "IssueTypeWebhookType",
+            "IssueReferenceType",
+            "IssueReferencePropIssueTypeType",
             "IssueEventType",
             "IssueEventLabelType",
             "IssueEventDismissedReviewType",
@@ -11800,6 +11862,13 @@ else:
             "RemovedFromProjectIssueEventPropProjectCardType",
             "ConvertedNoteToIssueIssueEventType",
             "ConvertedNoteToIssueIssueEventPropProjectCardType",
+            "IssueTypeAddedIssueEventType",
+            "IssueTypeRemovedIssueEventType",
+            "IssueTypeChangedIssueEventType",
+            "SubIssueAddedIssueEventType",
+            "SubIssueRemovedIssueEventType",
+            "ParentIssueAddedIssueEventType",
+            "ParentIssueRemovedIssueEventType",
             "TimelineCommentEventType",
             "TimelineCrossReferencedEventType",
             "TimelineCrossReferencedEventPropSourceType",
@@ -14693,7 +14762,10 @@ else:
             "ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType",
             "ReposOwnerRepoIssuesIssueNumberPatchBodyType",
             "ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type",
+            "ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1Type",
             "ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsType",
+            "ReposOwnerRepoIssuesIssueNumberPatchResponse200Type",
+            "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1Type",
             "ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType",
             "ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType",
             "ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType",

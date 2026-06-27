@@ -11,28 +11,22 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0054 import RunnerType, RunnerTypeForResponse
+
+class EnterprisesEnterpriseActionsPermissionsOrganizationsPutBodyType(TypedDict):
+    """EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody"""
+
+    selected_organization_ids: list[int]
 
 
-class EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type(
+class EnterprisesEnterpriseActionsPermissionsOrganizationsPutBodyTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201"""
+    """EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody"""
 
-    runner: RunnerType
-    encoded_jit_config: str
-
-
-class EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201"""
-
-    runner: RunnerTypeForResponse
-    encoded_jit_config: str
+    selected_organization_ids: list[int]
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type",
-    "EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201TypeForResponse",
+    "EnterprisesEnterpriseActionsPermissionsOrganizationsPutBodyType",
+    "EnterprisesEnterpriseActionsPermissionsOrganizationsPutBodyTypeForResponse",
 )

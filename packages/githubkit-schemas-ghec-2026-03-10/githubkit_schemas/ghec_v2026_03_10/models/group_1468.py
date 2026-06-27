@@ -14,12 +14,15 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoIssuesCommentsCommentIdPatchBody(GitHubModel):
-    """ReposOwnerRepoIssuesCommentsCommentIdPatchBody"""
+class ReposOwnerRepoGitRefsPostBody(GitHubModel):
+    """ReposOwnerRepoGitRefsPostBody"""
 
-    body: str = Field(description="The contents of the comment.")
+    ref: str = Field(
+        description="The name of the fully qualified reference (ie: `refs/heads/master`). If it doesn't start with 'refs' and have at least two slashes, it will be rejected."
+    )
+    sha: str = Field(description="The SHA1 value for this reference.")
 
 
-model_rebuild(ReposOwnerRepoIssuesCommentsCommentIdPatchBody)
+model_rebuild(ReposOwnerRepoGitRefsPostBody)
 
-__all__ = ("ReposOwnerRepoIssuesCommentsCommentIdPatchBody",)
+__all__ = ("ReposOwnerRepoGitRefsPostBody",)

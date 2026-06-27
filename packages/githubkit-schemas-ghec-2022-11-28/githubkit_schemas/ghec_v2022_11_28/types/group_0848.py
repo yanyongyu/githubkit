@@ -13,40 +13,40 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0109 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
-from .group_0576 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0577 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0578 import (
+from .group_0589 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0590 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
+from .group_0591 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0616 import MergeGroupType, MergeGroupTypeForResponse
 
 
-class WebhookOrganizationCustomPropertyValuesUpdatedType(TypedDict):
-    """Custom property values updated event"""
+class WebhookMergeGroupDestroyedType(TypedDict):
+    """WebhookMergeGroupDestroyed"""
 
-    action: Literal["updated"]
-    enterprise: EnterpriseWebhooksType
+    action: Literal["destroyed"]
+    reason: NotRequired[Literal["merged", "invalidated", "dequeued"]]
     installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
+    merge_group: MergeGroupType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: NotRequired[RepositoryWebhooksType]
     sender: NotRequired[SimpleUserType]
-    new_property_values: list[CustomPropertyValueType]
-    old_property_values: list[CustomPropertyValueType]
 
 
-class WebhookOrganizationCustomPropertyValuesUpdatedTypeForResponse(TypedDict):
-    """Custom property values updated event"""
+class WebhookMergeGroupDestroyedTypeForResponse(TypedDict):
+    """WebhookMergeGroupDestroyed"""
 
-    action: Literal["updated"]
-    enterprise: EnterpriseWebhooksTypeForResponse
+    action: Literal["destroyed"]
+    reason: NotRequired[Literal["merged", "invalidated", "dequeued"]]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: OrganizationSimpleWebhooksTypeForResponse
+    merge_group: MergeGroupTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
     sender: NotRequired[SimpleUserTypeForResponse]
-    new_property_values: list[CustomPropertyValueTypeForResponse]
-    old_property_values: list[CustomPropertyValueTypeForResponse]
 
 
 __all__ = (
-    "WebhookOrganizationCustomPropertyValuesUpdatedType",
-    "WebhookOrganizationCustomPropertyValuesUpdatedTypeForResponse",
+    "WebhookMergeGroupDestroyedType",
+    "WebhookMergeGroupDestroyedTypeForResponse",
 )

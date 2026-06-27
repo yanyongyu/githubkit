@@ -11,32 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0Type(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0
-
-    Examples:
-        {'contexts': ['contexts']}
-    """
-
-    contexts: list[str]
+from .group_0275 import ActionsSecretType, ActionsSecretTypeForResponse
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0
+class ReposOwnerRepoAgentsSecretsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoAgentsSecretsGetResponse200"""
 
-    Examples:
-        {'contexts': ['contexts']}
-    """
+    total_count: int
+    secrets: list[ActionsSecretType]
 
-    contexts: list[str]
+
+class ReposOwnerRepoAgentsSecretsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoAgentsSecretsGetResponse200"""
+
+    total_count: int
+    secrets: list[ActionsSecretTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0Type",
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0TypeForResponse",
+    "ReposOwnerRepoAgentsSecretsGetResponse200Type",
+    "ReposOwnerRepoAgentsSecretsGetResponse200TypeForResponse",
 )

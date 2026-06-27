@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Any, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -18,71 +17,59 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0092 import MinimalRepository
+from .group_0300 import GitUser
+from .group_0489 import SearchResultTextMatchesItems
+from .group_0492 import CommitSearchResultItemPropCommit
 
-class GpgKey(GitHubModel):
-    """GPG Key
 
-    A unique encryption key
+class CommitSearchResultItem(GitHubModel):
+    """Commit Search Result Item
+
+    Commit Search Result Item
     """
 
-    id: int = Field()
-    name: Missing[Union[str, None]] = Field(default=UNSET)
-    primary_key_id: Union[int, None] = Field()
-    key_id: str = Field()
-    public_key: str = Field()
-    emails: list[GpgKeyPropEmailsItems] = Field()
-    subkeys: list[GpgKeyPropSubkeysItems] = Field()
-    can_sign: bool = Field()
-    can_encrypt_comms: bool = Field()
-    can_encrypt_storage: bool = Field()
-    can_certify: bool = Field()
-    created_at: _dt.datetime = Field()
-    expires_at: Union[_dt.datetime, None] = Field()
-    revoked: bool = Field()
-    raw_key: Union[str, None] = Field()
+    url: str = Field()
+    sha: str = Field()
+    html_url: str = Field()
+    comments_url: str = Field()
+    commit: CommitSearchResultItemPropCommit = Field()
+    author: Union[None, SimpleUser] = Field()
+    committer: Union[None, GitUser] = Field()
+    parents: list[CommitSearchResultItemPropParentsItems] = Field()
+    repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository"
+    )
+    score: float = Field()
+    node_id: str = Field()
+    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
+        default=UNSET, title="Search Result Text Matches"
+    )
 
 
-class GpgKeyPropEmailsItems(GitHubModel):
-    """GpgKeyPropEmailsItems"""
+class CommitSearchResultItemPropParentsItems(GitHubModel):
+    """CommitSearchResultItemPropParentsItems"""
 
-    email: Missing[str] = Field(default=UNSET)
-    verified: Missing[bool] = Field(default=UNSET)
-
-
-class GpgKeyPropSubkeysItems(GitHubModel):
-    """GpgKeyPropSubkeysItems"""
-
-    id: Missing[int] = Field(default=UNSET)
-    primary_key_id: Missing[int] = Field(default=UNSET)
-    key_id: Missing[str] = Field(default=UNSET)
-    public_key: Missing[str] = Field(default=UNSET)
-    emails: Missing[list[GpgKeyPropSubkeysItemsPropEmailsItems]] = Field(default=UNSET)
-    subkeys: Missing[list[Any]] = Field(default=UNSET)
-    can_sign: Missing[bool] = Field(default=UNSET)
-    can_encrypt_comms: Missing[bool] = Field(default=UNSET)
-    can_encrypt_storage: Missing[bool] = Field(default=UNSET)
-    can_certify: Missing[bool] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
-    expires_at: Missing[Union[str, None]] = Field(default=UNSET)
-    raw_key: Missing[Union[str, None]] = Field(default=UNSET)
-    revoked: Missing[bool] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    sha: Missing[str] = Field(default=UNSET)
 
 
-class GpgKeyPropSubkeysItemsPropEmailsItems(GitHubModel):
-    """GpgKeyPropSubkeysItemsPropEmailsItems"""
+class SearchCommitsGetResponse200(GitHubModel):
+    """SearchCommitsGetResponse200"""
 
-    email: Missing[str] = Field(default=UNSET)
-    verified: Missing[bool] = Field(default=UNSET)
+    total_count: int = Field()
+    incomplete_results: bool = Field()
+    items: list[CommitSearchResultItem] = Field()
 
 
-model_rebuild(GpgKey)
-model_rebuild(GpgKeyPropEmailsItems)
-model_rebuild(GpgKeyPropSubkeysItems)
-model_rebuild(GpgKeyPropSubkeysItemsPropEmailsItems)
+model_rebuild(CommitSearchResultItem)
+model_rebuild(CommitSearchResultItemPropParentsItems)
+model_rebuild(SearchCommitsGetResponse200)
 
 __all__ = (
-    "GpgKey",
-    "GpgKeyPropEmailsItems",
-    "GpgKeyPropSubkeysItems",
-    "GpgKeyPropSubkeysItemsPropEmailsItems",
+    "CommitSearchResultItem",
+    "CommitSearchResultItemPropParentsItems",
+    "SearchCommitsGetResponse200",
 )

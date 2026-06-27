@@ -37,19 +37,27 @@ if TYPE_CHECKING:
         IssueComment,
         IssueEvent,
         IssueFieldValue,
+        IssueTypeAddedIssueEvent,
+        IssueTypeChangedIssueEvent,
+        IssueTypeRemovedIssueEvent,
         Label,
         LabeledIssueEvent,
         LockedIssueEvent,
         Milestone,
         MilestonedIssueEvent,
         MovedColumnInProjectIssueEvent,
+        ParentIssueAddedIssueEvent,
+        ParentIssueRemovedIssueEvent,
         RemovedFromProjectIssueEvent,
         RenamedIssueEvent,
+        ReposOwnerRepoIssuesIssueNumberPatchResponse200,
         ReviewDismissedIssueEvent,
         ReviewRequestedIssueEvent,
         ReviewRequestRemovedIssueEvent,
         SimpleUser,
         StateChangeIssueEvent,
+        SubIssueAddedIssueEvent,
+        SubIssueRemovedIssueEvent,
         TimelineAssignedIssueEvent,
         TimelineCommentEvent,
         TimelineCommitCommentedEvent,
@@ -69,13 +77,18 @@ if TYPE_CHECKING:
         IssueCommentTypeForResponse,
         IssueEventTypeForResponse,
         IssueFieldValueTypeForResponse,
+        IssueTypeAddedIssueEventTypeForResponse,
+        IssueTypeChangedIssueEventTypeForResponse,
         IssueTypeForResponse,
+        IssueTypeRemovedIssueEventTypeForResponse,
         LabeledIssueEventTypeForResponse,
         LabelTypeForResponse,
         LockedIssueEventTypeForResponse,
         MilestonedIssueEventTypeForResponse,
         MilestoneTypeForResponse,
         MovedColumnInProjectIssueEventTypeForResponse,
+        ParentIssueAddedIssueEventTypeForResponse,
+        ParentIssueRemovedIssueEventTypeForResponse,
         RemovedFromProjectIssueEventTypeForResponse,
         RenamedIssueEventTypeForResponse,
         ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType,
@@ -94,9 +107,11 @@ if TYPE_CHECKING:
         ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2Type,
         ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3ItemsType,
         ReposOwnerRepoIssuesIssueNumberLockPutBodyType,
+        ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1Type,
         ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsType,
         ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type,
         ReposOwnerRepoIssuesIssueNumberPatchBodyType,
+        ReposOwnerRepoIssuesIssueNumberPatchResponse200TypeForResponse,
         ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyType,
         ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyType,
         ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyType,
@@ -112,6 +127,8 @@ if TYPE_CHECKING:
         ReviewRequestRemovedIssueEventTypeForResponse,
         SimpleUserTypeForResponse,
         StateChangeIssueEventTypeForResponse,
+        SubIssueAddedIssueEventTypeForResponse,
+        SubIssueRemovedIssueEventTypeForResponse,
         TimelineAssignedIssueEventTypeForResponse,
         TimelineCommentEventTypeForResponse,
         TimelineCommitCommentedEventTypeForResponse,
@@ -1800,7 +1817,10 @@ class IssuesClient:
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberPatchBodyType] = UNSET,
-    ) -> Response[Issue, IssueTypeForResponse]: ...
+    ) -> Response[
+        ReposOwnerRepoIssuesIssueNumberPatchResponse200,
+        ReposOwnerRepoIssuesIssueNumberPatchResponse200TypeForResponse,
+    ]: ...
 
     @overload
     def update(
@@ -1827,12 +1847,22 @@ class IssuesClient:
                 ]
             ]
         ] = UNSET,
-        assignees: Missing[list[str]] = UNSET,
+        assignees: Missing[
+            list[
+                Union[
+                    str,
+                    ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1Type,
+                ]
+            ]
+        ] = UNSET,
         issue_field_values: Missing[
             list[ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsType]
         ] = UNSET,
         type: Missing[Union[str, None]] = UNSET,
-    ) -> Response[Issue, IssueTypeForResponse]: ...
+    ) -> Response[
+        ReposOwnerRepoIssuesIssueNumberPatchResponse200,
+        ReposOwnerRepoIssuesIssueNumberPatchResponse200TypeForResponse,
+    ]: ...
 
     def update(
         self,
@@ -1844,7 +1874,10 @@ class IssuesClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Issue, IssueTypeForResponse]:
+    ) -> Response[
+        ReposOwnerRepoIssuesIssueNumberPatchResponse200,
+        ReposOwnerRepoIssuesIssueNumberPatchResponse200TypeForResponse,
+    ]:
         """issues/update
 
         PATCH /repos/{owner}/{repo}/issues/{issue_number}
@@ -1864,8 +1897,8 @@ class IssuesClient:
         from ..models import (
             BasicError,
             EventsGetResponse503,
-            Issue,
             ReposOwnerRepoIssuesIssueNumberPatchBody,
+            ReposOwnerRepoIssuesIssueNumberPatchResponse200,
             ValidationError,
         )
 
@@ -1888,7 +1921,7 @@ class IssuesClient:
             json=exclude_unset(json),
             headers=exclude_unset(headers),
             stream=stream,
-            response_model=Issue,
+            response_model=ReposOwnerRepoIssuesIssueNumberPatchResponse200,
             error_models={
                 "422": ValidationError,
                 "503": EventsGetResponse503,
@@ -1908,7 +1941,10 @@ class IssuesClient:
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberPatchBodyType] = UNSET,
-    ) -> Response[Issue, IssueTypeForResponse]: ...
+    ) -> Response[
+        ReposOwnerRepoIssuesIssueNumberPatchResponse200,
+        ReposOwnerRepoIssuesIssueNumberPatchResponse200TypeForResponse,
+    ]: ...
 
     @overload
     async def async_update(
@@ -1935,12 +1971,22 @@ class IssuesClient:
                 ]
             ]
         ] = UNSET,
-        assignees: Missing[list[str]] = UNSET,
+        assignees: Missing[
+            list[
+                Union[
+                    str,
+                    ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1Type,
+                ]
+            ]
+        ] = UNSET,
         issue_field_values: Missing[
             list[ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsType]
         ] = UNSET,
         type: Missing[Union[str, None]] = UNSET,
-    ) -> Response[Issue, IssueTypeForResponse]: ...
+    ) -> Response[
+        ReposOwnerRepoIssuesIssueNumberPatchResponse200,
+        ReposOwnerRepoIssuesIssueNumberPatchResponse200TypeForResponse,
+    ]: ...
 
     async def async_update(
         self,
@@ -1952,7 +1998,10 @@ class IssuesClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Issue, IssueTypeForResponse]:
+    ) -> Response[
+        ReposOwnerRepoIssuesIssueNumberPatchResponse200,
+        ReposOwnerRepoIssuesIssueNumberPatchResponse200TypeForResponse,
+    ]:
         """issues/update
 
         PATCH /repos/{owner}/{repo}/issues/{issue_number}
@@ -1972,8 +2021,8 @@ class IssuesClient:
         from ..models import (
             BasicError,
             EventsGetResponse503,
-            Issue,
             ReposOwnerRepoIssuesIssueNumberPatchBody,
+            ReposOwnerRepoIssuesIssueNumberPatchResponse200,
             ValidationError,
         )
 
@@ -1996,7 +2045,7 @@ class IssuesClient:
             json=exclude_unset(json),
             headers=exclude_unset(headers),
             stream=stream,
-            response_model=Issue,
+            response_model=ReposOwnerRepoIssuesIssueNumberPatchResponse200,
             error_models={
                 "422": ValidationError,
                 "503": EventsGetResponse503,
@@ -3188,6 +3237,13 @@ class IssuesClient:
                 MovedColumnInProjectIssueEvent,
                 RemovedFromProjectIssueEvent,
                 ConvertedNoteToIssueIssueEvent,
+                IssueTypeAddedIssueEvent,
+                IssueTypeRemovedIssueEvent,
+                IssueTypeChangedIssueEvent,
+                SubIssueAddedIssueEvent,
+                SubIssueRemovedIssueEvent,
+                ParentIssueAddedIssueEvent,
+                ParentIssueRemovedIssueEvent,
             ]
         ],
         list[
@@ -3207,6 +3263,13 @@ class IssuesClient:
                 MovedColumnInProjectIssueEventTypeForResponse,
                 RemovedFromProjectIssueEventTypeForResponse,
                 ConvertedNoteToIssueIssueEventTypeForResponse,
+                IssueTypeAddedIssueEventTypeForResponse,
+                IssueTypeRemovedIssueEventTypeForResponse,
+                IssueTypeChangedIssueEventTypeForResponse,
+                SubIssueAddedIssueEventTypeForResponse,
+                SubIssueRemovedIssueEventTypeForResponse,
+                ParentIssueAddedIssueEventTypeForResponse,
+                ParentIssueRemovedIssueEventTypeForResponse,
             ]
         ],
     ]:
@@ -3227,15 +3290,22 @@ class IssuesClient:
             BasicError,
             ConvertedNoteToIssueIssueEvent,
             DemilestonedIssueEvent,
+            IssueTypeAddedIssueEvent,
+            IssueTypeChangedIssueEvent,
+            IssueTypeRemovedIssueEvent,
             LabeledIssueEvent,
             LockedIssueEvent,
             MilestonedIssueEvent,
             MovedColumnInProjectIssueEvent,
+            ParentIssueAddedIssueEvent,
+            ParentIssueRemovedIssueEvent,
             RemovedFromProjectIssueEvent,
             RenamedIssueEvent,
             ReviewDismissedIssueEvent,
             ReviewRequestedIssueEvent,
             ReviewRequestRemovedIssueEvent,
+            SubIssueAddedIssueEvent,
+            SubIssueRemovedIssueEvent,
             UnassignedIssueEvent,
             UnlabeledIssueEvent,
         )
@@ -3272,6 +3342,13 @@ class IssuesClient:
                     MovedColumnInProjectIssueEvent,
                     RemovedFromProjectIssueEvent,
                     ConvertedNoteToIssueIssueEvent,
+                    IssueTypeAddedIssueEvent,
+                    IssueTypeRemovedIssueEvent,
+                    IssueTypeChangedIssueEvent,
+                    SubIssueAddedIssueEvent,
+                    SubIssueRemovedIssueEvent,
+                    ParentIssueAddedIssueEvent,
+                    ParentIssueRemovedIssueEvent,
                 ]
             ],
             error_models={
@@ -3307,6 +3384,13 @@ class IssuesClient:
                 MovedColumnInProjectIssueEvent,
                 RemovedFromProjectIssueEvent,
                 ConvertedNoteToIssueIssueEvent,
+                IssueTypeAddedIssueEvent,
+                IssueTypeRemovedIssueEvent,
+                IssueTypeChangedIssueEvent,
+                SubIssueAddedIssueEvent,
+                SubIssueRemovedIssueEvent,
+                ParentIssueAddedIssueEvent,
+                ParentIssueRemovedIssueEvent,
             ]
         ],
         list[
@@ -3326,6 +3410,13 @@ class IssuesClient:
                 MovedColumnInProjectIssueEventTypeForResponse,
                 RemovedFromProjectIssueEventTypeForResponse,
                 ConvertedNoteToIssueIssueEventTypeForResponse,
+                IssueTypeAddedIssueEventTypeForResponse,
+                IssueTypeRemovedIssueEventTypeForResponse,
+                IssueTypeChangedIssueEventTypeForResponse,
+                SubIssueAddedIssueEventTypeForResponse,
+                SubIssueRemovedIssueEventTypeForResponse,
+                ParentIssueAddedIssueEventTypeForResponse,
+                ParentIssueRemovedIssueEventTypeForResponse,
             ]
         ],
     ]:
@@ -3346,15 +3437,22 @@ class IssuesClient:
             BasicError,
             ConvertedNoteToIssueIssueEvent,
             DemilestonedIssueEvent,
+            IssueTypeAddedIssueEvent,
+            IssueTypeChangedIssueEvent,
+            IssueTypeRemovedIssueEvent,
             LabeledIssueEvent,
             LockedIssueEvent,
             MilestonedIssueEvent,
             MovedColumnInProjectIssueEvent,
+            ParentIssueAddedIssueEvent,
+            ParentIssueRemovedIssueEvent,
             RemovedFromProjectIssueEvent,
             RenamedIssueEvent,
             ReviewDismissedIssueEvent,
             ReviewRequestedIssueEvent,
             ReviewRequestRemovedIssueEvent,
+            SubIssueAddedIssueEvent,
+            SubIssueRemovedIssueEvent,
             UnassignedIssueEvent,
             UnlabeledIssueEvent,
         )
@@ -3391,6 +3489,13 @@ class IssuesClient:
                     MovedColumnInProjectIssueEvent,
                     RemovedFromProjectIssueEvent,
                     ConvertedNoteToIssueIssueEvent,
+                    IssueTypeAddedIssueEvent,
+                    IssueTypeRemovedIssueEvent,
+                    IssueTypeChangedIssueEvent,
+                    SubIssueAddedIssueEvent,
+                    SubIssueRemovedIssueEvent,
+                    ParentIssueAddedIssueEvent,
+                    ParentIssueRemovedIssueEvent,
                 ]
             ],
             error_models={
@@ -5685,6 +5790,13 @@ class IssuesClient:
                 TimelineAssignedIssueEvent,
                 TimelineUnassignedIssueEvent,
                 StateChangeIssueEvent,
+                IssueTypeAddedIssueEvent,
+                IssueTypeRemovedIssueEvent,
+                IssueTypeChangedIssueEvent,
+                SubIssueAddedIssueEvent,
+                SubIssueRemovedIssueEvent,
+                ParentIssueAddedIssueEvent,
+                ParentIssueRemovedIssueEvent,
             ]
         ],
         list[
@@ -5711,6 +5823,13 @@ class IssuesClient:
                 TimelineAssignedIssueEventTypeForResponse,
                 TimelineUnassignedIssueEventTypeForResponse,
                 StateChangeIssueEventTypeForResponse,
+                IssueTypeAddedIssueEventTypeForResponse,
+                IssueTypeRemovedIssueEventTypeForResponse,
+                IssueTypeChangedIssueEventTypeForResponse,
+                SubIssueAddedIssueEventTypeForResponse,
+                SubIssueRemovedIssueEventTypeForResponse,
+                ParentIssueAddedIssueEventTypeForResponse,
+                ParentIssueRemovedIssueEventTypeForResponse,
             ]
         ],
     ]:
@@ -5730,16 +5849,23 @@ class IssuesClient:
             BasicError,
             ConvertedNoteToIssueIssueEvent,
             DemilestonedIssueEvent,
+            IssueTypeAddedIssueEvent,
+            IssueTypeChangedIssueEvent,
+            IssueTypeRemovedIssueEvent,
             LabeledIssueEvent,
             LockedIssueEvent,
             MilestonedIssueEvent,
             MovedColumnInProjectIssueEvent,
+            ParentIssueAddedIssueEvent,
+            ParentIssueRemovedIssueEvent,
             RemovedFromProjectIssueEvent,
             RenamedIssueEvent,
             ReviewDismissedIssueEvent,
             ReviewRequestedIssueEvent,
             ReviewRequestRemovedIssueEvent,
             StateChangeIssueEvent,
+            SubIssueAddedIssueEvent,
+            SubIssueRemovedIssueEvent,
             TimelineAssignedIssueEvent,
             TimelineCommentEvent,
             TimelineCommitCommentedEvent,
@@ -5790,6 +5916,13 @@ class IssuesClient:
                     TimelineAssignedIssueEvent,
                     TimelineUnassignedIssueEvent,
                     StateChangeIssueEvent,
+                    IssueTypeAddedIssueEvent,
+                    IssueTypeRemovedIssueEvent,
+                    IssueTypeChangedIssueEvent,
+                    SubIssueAddedIssueEvent,
+                    SubIssueRemovedIssueEvent,
+                    ParentIssueAddedIssueEvent,
+                    ParentIssueRemovedIssueEvent,
                 ]
             ],
             error_models={
@@ -5833,6 +5966,13 @@ class IssuesClient:
                 TimelineAssignedIssueEvent,
                 TimelineUnassignedIssueEvent,
                 StateChangeIssueEvent,
+                IssueTypeAddedIssueEvent,
+                IssueTypeRemovedIssueEvent,
+                IssueTypeChangedIssueEvent,
+                SubIssueAddedIssueEvent,
+                SubIssueRemovedIssueEvent,
+                ParentIssueAddedIssueEvent,
+                ParentIssueRemovedIssueEvent,
             ]
         ],
         list[
@@ -5859,6 +5999,13 @@ class IssuesClient:
                 TimelineAssignedIssueEventTypeForResponse,
                 TimelineUnassignedIssueEventTypeForResponse,
                 StateChangeIssueEventTypeForResponse,
+                IssueTypeAddedIssueEventTypeForResponse,
+                IssueTypeRemovedIssueEventTypeForResponse,
+                IssueTypeChangedIssueEventTypeForResponse,
+                SubIssueAddedIssueEventTypeForResponse,
+                SubIssueRemovedIssueEventTypeForResponse,
+                ParentIssueAddedIssueEventTypeForResponse,
+                ParentIssueRemovedIssueEventTypeForResponse,
             ]
         ],
     ]:
@@ -5878,16 +6025,23 @@ class IssuesClient:
             BasicError,
             ConvertedNoteToIssueIssueEvent,
             DemilestonedIssueEvent,
+            IssueTypeAddedIssueEvent,
+            IssueTypeChangedIssueEvent,
+            IssueTypeRemovedIssueEvent,
             LabeledIssueEvent,
             LockedIssueEvent,
             MilestonedIssueEvent,
             MovedColumnInProjectIssueEvent,
+            ParentIssueAddedIssueEvent,
+            ParentIssueRemovedIssueEvent,
             RemovedFromProjectIssueEvent,
             RenamedIssueEvent,
             ReviewDismissedIssueEvent,
             ReviewRequestedIssueEvent,
             ReviewRequestRemovedIssueEvent,
             StateChangeIssueEvent,
+            SubIssueAddedIssueEvent,
+            SubIssueRemovedIssueEvent,
             TimelineAssignedIssueEvent,
             TimelineCommentEvent,
             TimelineCommitCommentedEvent,
@@ -5938,6 +6092,13 @@ class IssuesClient:
                     TimelineAssignedIssueEvent,
                     TimelineUnassignedIssueEvent,
                     StateChangeIssueEvent,
+                    IssueTypeAddedIssueEvent,
+                    IssueTypeRemovedIssueEvent,
+                    IssueTypeChangedIssueEvent,
+                    SubIssueAddedIssueEvent,
+                    SubIssueRemovedIssueEvent,
+                    ParentIssueAddedIssueEvent,
+                    ParentIssueRemovedIssueEvent,
                 ]
             ],
             error_models={

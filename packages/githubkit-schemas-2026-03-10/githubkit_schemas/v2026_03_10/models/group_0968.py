@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,40 +18,26 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0969 import (
-    AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0,
-    AgentsTasksTaskIdGetResponse200Allof0PropRepository,
-    AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems,
-)
-from .group_0970 import (
-    AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItems,
-    AgentsTasksTaskIdGetResponse200Allof0PropOwner,
-)
 
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItems(GitHubModel):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItems
 
-class AgentsTasksTaskIdGetResponse200Allof0(GitHubModel):
-    """AgentsTasksTaskIdGetResponse200Allof0"""
+    Full session details within a task
+    """
 
-    id: str = Field(description="Unique task identifier")
-    url: Missing[str] = Field(default=UNSET, description="API URL for this task")
-    html_url: Missing[str] = Field(default=UNSET, description="Web URL for this task")
-    name: Missing[str] = Field(
-        default=UNSET, description="Human-readable name derived from the task prompt"
-    )
-    creator: Missing[AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0] = Field(
-        default=UNSET, description="The entity who created this task"
-    )
-    creator_type: Missing[Literal["user", "organization"]] = Field(
-        default=UNSET, description="Type of the task creator"
-    )
-    user_collaborators: Missing[
-        list[AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems]
-    ] = Field(default=UNSET, description="User objects of collaborators on this task")
-    owner: Missing[AgentsTasksTaskIdGetResponse200Allof0PropOwner] = Field(
-        default=UNSET, description="The owner of the repository"
-    )
-    repository: Missing[AgentsTasksTaskIdGetResponse200Allof0PropRepository] = Field(
-        default=UNSET, description="The repository this task belongs to"
+    id: str = Field(description="Session ID")
+    name: Missing[str] = Field(default=UNSET, description="Session name")
+    user: Missing[
+        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser
+    ] = Field(default=UNSET, description="The user who created this session")
+    owner: Missing[
+        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner
+    ] = Field(default=UNSET, description="The owner of the repository")
+    repository: Missing[
+        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepository
+    ] = Field(default=UNSET, description="The repository this session belongs to")
+    task_id: Missing[str] = Field(
+        default=UNSET, description="Task ID this session belongs to"
     )
     state: Literal[
         "queued",
@@ -62,28 +48,96 @@ class AgentsTasksTaskIdGetResponse200Allof0(GitHubModel):
         "waiting_for_user",
         "timed_out",
         "cancelled",
-    ] = Field(
-        description="Current state of the task, derived from its most recent session"
-    )
-    session_count: Missing[int] = Field(
-        default=UNSET, description="Number of sessions in this task"
-    )
-    artifacts: Missing[
-        list[AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItems]
-    ] = Field(
-        default=UNSET,
-        description="Resources created by this task (PRs, branches, etc.)",
-    )
-    archived_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET,
-        description="Timestamp when the task was archived, null if not archived",
-    )
+    ] = Field(description="Current state of a session")
+    created_at: _dt.datetime = Field(description="Creation timestamp")
     updated_at: Missing[_dt.datetime] = Field(
-        default=UNSET, description="Timestamp of the most recent update"
+        default=UNSET, description="Last update timestamp"
     )
-    created_at: _dt.datetime = Field(description="Timestamp when the task was created")
+    completed_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="Completion timestamp"
+    )
+    prompt: Missing[str] = Field(
+        default=UNSET, description="Content of the triggering event"
+    )
+    head_ref: Missing[str] = Field(default=UNSET, description="Head branch name")
+    base_ref: Missing[str] = Field(default=UNSET, description="Base branch name")
+    model: Missing[str] = Field(
+        default=UNSET, description="Model used for this session"
+    )
+    error: Missing[
+        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError
+    ] = Field(default=UNSET, description="Error details for a failed session")
 
 
-model_rebuild(AgentsTasksTaskIdGetResponse200Allof0)
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser
 
-__all__ = ("AgentsTasksTaskIdGetResponse200Allof0",)
+    The user who created this session
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the user"
+    )
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner
+
+    The owner of the repository
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the user"
+    )
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepository(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropReposito
+    ry
+
+    The repository this session belongs to
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the repository"
+    )
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError
+
+    Error details for a failed session
+    """
+
+    message: Missing[str] = Field(default=UNSET, description="Error message")
+
+
+model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItems)
+model_rebuild(
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser
+)
+model_rebuild(
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner
+)
+model_rebuild(
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepository
+)
+model_rebuild(
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError
+)
+
+__all__ = (
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItems",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepository",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser",
+)

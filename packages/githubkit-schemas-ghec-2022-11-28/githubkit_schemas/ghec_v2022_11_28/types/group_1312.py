@@ -12,21 +12,15 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class OrgsOrgPrivateRegistriesPublicKeyGetResponse200Type(TypedDict):
-    """OrgsOrgPrivateRegistriesPublicKeyGetResponse200"""
-
-    key_id: str
-    key: str
+class OrgsOrgInteractionLimitsGetResponse200Anyof1Type(TypedDict):
+    """OrgsOrgInteractionLimitsGetResponse200Anyof1"""
 
 
-class OrgsOrgPrivateRegistriesPublicKeyGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgPrivateRegistriesPublicKeyGetResponse200"""
-
-    key_id: str
-    key: str
+class OrgsOrgInteractionLimitsGetResponse200Anyof1TypeForResponse(TypedDict):
+    """OrgsOrgInteractionLimitsGetResponse200Anyof1"""
 
 
 __all__ = (
-    "OrgsOrgPrivateRegistriesPublicKeyGetResponse200Type",
-    "OrgsOrgPrivateRegistriesPublicKeyGetResponse200TypeForResponse",
+    "OrgsOrgInteractionLimitsGetResponse200Anyof1Type",
+    "OrgsOrgInteractionLimitsGetResponse200Anyof1TypeForResponse",
 )

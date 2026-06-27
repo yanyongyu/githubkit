@@ -18,21 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0575 import EnterpriseWebhooks
-from .group_0576 import SimpleInstallation
-from .group_0577 import OrganizationSimpleWebhooks
-from .group_0578 import RepositoryWebhooks
-from .group_0619 import WebhooksAlert
+from .group_0175 import RepositoryRuleset
+from .group_0587 import EnterpriseWebhooks
+from .group_0588 import SimpleInstallation
+from .group_0589 import OrganizationSimpleWebhooks
+from .group_0590 import RepositoryWebhooks
 
 
-class WebhookRepositoryVulnerabilityAlertReopen(GitHubModel):
-    """repository_vulnerability_alert reopen event"""
+class WebhookRepositoryRulesetCreated(GitHubModel):
+    """repository ruleset created event"""
 
-    action: Literal["reopen"] = Field()
-    alert: WebhooksAlert = Field(
-        title="Repository Vulnerability Alert Alert",
-        description="The security alert of the vulnerable dependency.",
-    )
+    action: Literal["created"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -48,13 +44,18 @@ class WebhookRepositoryVulnerabilityAlertReopen(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: RepositoryWebhooks = Field(
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    repository_ruleset: RepositoryRuleset = Field(
+        title="Repository ruleset",
+        description="A set of rules to apply when specified conditions are met.",
     )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookRepositoryVulnerabilityAlertReopen)
+model_rebuild(WebhookRepositoryRulesetCreated)
 
-__all__ = ("WebhookRepositoryVulnerabilityAlertReopen",)
+__all__ = ("WebhookRepositoryRulesetCreated",)

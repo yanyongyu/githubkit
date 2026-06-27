@@ -9,22 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0278 import ActionsVariableType, ActionsVariableTypeForResponse
 
 
-class ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType(TypedDict):
-    """ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody"""
+class ReposOwnerRepoActionsOrganizationVariablesGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsOrganizationVariablesGetResponse200"""
 
-    enable_debug_logging: NotRequired[bool]
+    total_count: int
+    variables: list[ActionsVariableType]
 
 
-class ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody"""
+class ReposOwnerRepoActionsOrganizationVariablesGetResponse200TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoActionsOrganizationVariablesGetResponse200"""
 
-    enable_debug_logging: NotRequired[bool]
+    total_count: int
+    variables: list[ActionsVariableTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType",
-    "ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyTypeForResponse",
+    "ReposOwnerRepoActionsOrganizationVariablesGetResponse200Type",
+    "ReposOwnerRepoActionsOrganizationVariablesGetResponse200TypeForResponse",
 )

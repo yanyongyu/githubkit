@@ -9,53 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, TypeAlias
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0090 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+CopilotOrganizationContentExclusionDetailsType: TypeAlias = dict[str, Any]
+"""Copilot Organization Content Exclusion Details
 
-
-class PackageType(TypedDict):
-    """Package
-
-    A software package
-    """
-
-    id: int
-    name: str
-    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
-    url: str
-    html_url: str
-    version_count: int
-    visibility: Literal["private", "public"]
-    owner: NotRequired[Union[None, SimpleUserType]]
-    repository: NotRequired[Union[None, MinimalRepositoryType]]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+List all Copilot Content Exclusion rules for an organization.
+"""
 
 
-class PackageTypeForResponse(TypedDict):
-    """Package
+CopilotOrganizationContentExclusionDetailsTypeForResponse: TypeAlias = dict[str, Any]
+"""Copilot Organization Content Exclusion Details
 
-    A software package
-    """
-
-    id: int
-    name: str
-    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
-    url: str
-    html_url: str
-    version_count: int
-    visibility: Literal["private", "public"]
-    owner: NotRequired[Union[None, SimpleUserTypeForResponse]]
-    repository: NotRequired[Union[None, MinimalRepositoryTypeForResponse]]
-    created_at: str
-    updated_at: str
+List all Copilot Content Exclusion rules for an organization.
+"""
 
 
 __all__ = (
-    "PackageType",
-    "PackageTypeForResponse",
+    "CopilotOrganizationContentExclusionDetailsType",
+    "CopilotOrganizationContentExclusionDetailsTypeForResponse",
 )

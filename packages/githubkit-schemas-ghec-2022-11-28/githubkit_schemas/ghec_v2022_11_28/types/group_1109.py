@@ -12,21 +12,27 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422Type(TypedDict):
-    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422"""
+class EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBodyType(TypedDict):
+    """EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBody"""
 
-    errors: NotRequired[list[str]]
+    name: str
+    runner_group_id: int
+    labels: list[str]
+    work_folder: NotRequired[str]
 
 
-class EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422TypeForResponse(
+class EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBodyTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422"""
+    """EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBody"""
 
-    errors: NotRequired[list[str]]
+    name: str
+    runner_group_id: int
+    labels: list[str]
+    work_folder: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422Type",
-    "EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422TypeForResponse",
+    "EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBodyType",
+    "EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBodyTypeForResponse",
 )

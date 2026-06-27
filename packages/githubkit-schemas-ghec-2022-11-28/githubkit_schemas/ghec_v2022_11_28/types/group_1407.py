@@ -11,26 +11,30 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0377 import CheckRunType, CheckRunTypeForResponse
+
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyType(TypedDict):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody
+
+    Examples:
+        {'users': ['mona']}
+    """
+
+    users: list[str]
 
 
-class ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200"""
-
-    total_count: int
-    check_runs: list[CheckRunType]
-
-
-class ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200TypeForResponse(
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyTypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200"""
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody
 
-    total_count: int
-    check_runs: list[CheckRunTypeForResponse]
+    Examples:
+        {'users': ['mona']}
+    """
+
+    users: list[str]
 
 
 __all__ = (
-    "ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Type",
-    "ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200TypeForResponse",
+    "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyType",
+    "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyTypeForResponse",
 )

@@ -10,97 +10,129 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal
+from typing import Any, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksRuleType(TypedDict):
-    """branch protection rule
+class GpgKeyType(TypedDict):
+    """GPG Key
 
-    The branch protection rule. Includes a `name` and all the [branch protection
-    settings](https://docs.github.com/enterprise-cloud@latest/github/administering-
-    a-repository/defining-the-mergeability-of-pull-requests/about-protected-
-    branches#about-branch-protection-settings) applied to branches that match the
-    name. Binary settings are boolean. Multi-level configurations are one of `off`,
-    `non_admins`, or `everyone`. Actor and build lists are arrays of strings.
+    A unique encryption key
     """
 
-    admin_enforced: bool
-    allow_deletions_enforcement_level: Literal["off", "non_admins", "everyone"]
-    allow_force_pushes_enforcement_level: Literal["off", "non_admins", "everyone"]
-    authorized_actor_names: list[str]
-    authorized_actors_only: bool
-    authorized_dismissal_actors_only: bool
-    create_protected: NotRequired[bool]
+    id: int
+    name: NotRequired[Union[str, None]]
+    primary_key_id: Union[int, None]
+    key_id: str
+    public_key: str
+    emails: list[GpgKeyPropEmailsItemsType]
+    subkeys: list[GpgKeyPropSubkeysItemsType]
+    can_sign: bool
+    can_encrypt_comms: bool
+    can_encrypt_storage: bool
+    can_certify: bool
     created_at: _dt.datetime
-    dismiss_stale_reviews_on_push: bool
-    id: int
-    ignore_approvals_from_contributors: bool
-    linear_history_requirement_enforcement_level: Literal[
-        "off", "non_admins", "everyone"
-    ]
-    lock_branch_enforcement_level: Literal["off", "non_admins", "everyone"]
-    lock_allows_fork_sync: NotRequired[bool]
-    merge_queue_enforcement_level: Literal["off", "non_admins", "everyone"]
-    name: str
-    pull_request_reviews_enforcement_level: Literal["off", "non_admins", "everyone"]
-    repository_id: int
-    require_code_owner_review: bool
-    require_last_push_approval: NotRequired[bool]
-    required_approving_review_count: int
-    required_conversation_resolution_level: Literal["off", "non_admins", "everyone"]
-    required_deployments_enforcement_level: Literal["off", "non_admins", "everyone"]
-    required_status_checks: list[str]
-    required_status_checks_enforcement_level: Literal["off", "non_admins", "everyone"]
-    signature_requirement_enforcement_level: Literal["off", "non_admins", "everyone"]
-    strict_required_status_checks_policy: bool
-    updated_at: _dt.datetime
+    expires_at: Union[_dt.datetime, None]
+    revoked: bool
+    raw_key: Union[str, None]
 
 
-class WebhooksRuleTypeForResponse(TypedDict):
-    """branch protection rule
+class GpgKeyTypeForResponse(TypedDict):
+    """GPG Key
 
-    The branch protection rule. Includes a `name` and all the [branch protection
-    settings](https://docs.github.com/enterprise-cloud@latest/github/administering-
-    a-repository/defining-the-mergeability-of-pull-requests/about-protected-
-    branches#about-branch-protection-settings) applied to branches that match the
-    name. Binary settings are boolean. Multi-level configurations are one of `off`,
-    `non_admins`, or `everyone`. Actor and build lists are arrays of strings.
+    A unique encryption key
     """
 
-    admin_enforced: bool
-    allow_deletions_enforcement_level: Literal["off", "non_admins", "everyone"]
-    allow_force_pushes_enforcement_level: Literal["off", "non_admins", "everyone"]
-    authorized_actor_names: list[str]
-    authorized_actors_only: bool
-    authorized_dismissal_actors_only: bool
-    create_protected: NotRequired[bool]
-    created_at: str
-    dismiss_stale_reviews_on_push: bool
     id: int
-    ignore_approvals_from_contributors: bool
-    linear_history_requirement_enforcement_level: Literal[
-        "off", "non_admins", "everyone"
-    ]
-    lock_branch_enforcement_level: Literal["off", "non_admins", "everyone"]
-    lock_allows_fork_sync: NotRequired[bool]
-    merge_queue_enforcement_level: Literal["off", "non_admins", "everyone"]
-    name: str
-    pull_request_reviews_enforcement_level: Literal["off", "non_admins", "everyone"]
-    repository_id: int
-    require_code_owner_review: bool
-    require_last_push_approval: NotRequired[bool]
-    required_approving_review_count: int
-    required_conversation_resolution_level: Literal["off", "non_admins", "everyone"]
-    required_deployments_enforcement_level: Literal["off", "non_admins", "everyone"]
-    required_status_checks: list[str]
-    required_status_checks_enforcement_level: Literal["off", "non_admins", "everyone"]
-    signature_requirement_enforcement_level: Literal["off", "non_admins", "everyone"]
-    strict_required_status_checks_policy: bool
-    updated_at: str
+    name: NotRequired[Union[str, None]]
+    primary_key_id: Union[int, None]
+    key_id: str
+    public_key: str
+    emails: list[GpgKeyPropEmailsItemsTypeForResponse]
+    subkeys: list[GpgKeyPropSubkeysItemsTypeForResponse]
+    can_sign: bool
+    can_encrypt_comms: bool
+    can_encrypt_storage: bool
+    can_certify: bool
+    created_at: str
+    expires_at: Union[str, None]
+    revoked: bool
+    raw_key: Union[str, None]
+
+
+class GpgKeyPropEmailsItemsType(TypedDict):
+    """GpgKeyPropEmailsItems"""
+
+    email: NotRequired[str]
+    verified: NotRequired[bool]
+
+
+class GpgKeyPropEmailsItemsTypeForResponse(TypedDict):
+    """GpgKeyPropEmailsItems"""
+
+    email: NotRequired[str]
+    verified: NotRequired[bool]
+
+
+class GpgKeyPropSubkeysItemsType(TypedDict):
+    """GpgKeyPropSubkeysItems"""
+
+    id: NotRequired[int]
+    primary_key_id: NotRequired[int]
+    key_id: NotRequired[str]
+    public_key: NotRequired[str]
+    emails: NotRequired[list[GpgKeyPropSubkeysItemsPropEmailsItemsType]]
+    subkeys: NotRequired[list[Any]]
+    can_sign: NotRequired[bool]
+    can_encrypt_comms: NotRequired[bool]
+    can_encrypt_storage: NotRequired[bool]
+    can_certify: NotRequired[bool]
+    created_at: NotRequired[str]
+    expires_at: NotRequired[Union[str, None]]
+    raw_key: NotRequired[Union[str, None]]
+    revoked: NotRequired[bool]
+
+
+class GpgKeyPropSubkeysItemsTypeForResponse(TypedDict):
+    """GpgKeyPropSubkeysItems"""
+
+    id: NotRequired[int]
+    primary_key_id: NotRequired[int]
+    key_id: NotRequired[str]
+    public_key: NotRequired[str]
+    emails: NotRequired[list[GpgKeyPropSubkeysItemsPropEmailsItemsTypeForResponse]]
+    subkeys: NotRequired[list[Any]]
+    can_sign: NotRequired[bool]
+    can_encrypt_comms: NotRequired[bool]
+    can_encrypt_storage: NotRequired[bool]
+    can_certify: NotRequired[bool]
+    created_at: NotRequired[str]
+    expires_at: NotRequired[Union[str, None]]
+    raw_key: NotRequired[Union[str, None]]
+    revoked: NotRequired[bool]
+
+
+class GpgKeyPropSubkeysItemsPropEmailsItemsType(TypedDict):
+    """GpgKeyPropSubkeysItemsPropEmailsItems"""
+
+    email: NotRequired[str]
+    verified: NotRequired[bool]
+
+
+class GpgKeyPropSubkeysItemsPropEmailsItemsTypeForResponse(TypedDict):
+    """GpgKeyPropSubkeysItemsPropEmailsItems"""
+
+    email: NotRequired[str]
+    verified: NotRequired[bool]
 
 
 __all__ = (
-    "WebhooksRuleType",
-    "WebhooksRuleTypeForResponse",
+    "GpgKeyPropEmailsItemsType",
+    "GpgKeyPropEmailsItemsTypeForResponse",
+    "GpgKeyPropSubkeysItemsPropEmailsItemsType",
+    "GpgKeyPropSubkeysItemsPropEmailsItemsTypeForResponse",
+    "GpgKeyPropSubkeysItemsType",
+    "GpgKeyPropSubkeysItemsTypeForResponse",
+    "GpgKeyType",
+    "GpgKeyTypeForResponse",
 )

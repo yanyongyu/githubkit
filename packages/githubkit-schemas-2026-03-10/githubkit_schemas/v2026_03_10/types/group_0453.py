@@ -12,28 +12,28 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0239 import (
-    RepositoryRuleFileExtensionRestrictionPropParametersType,
-    RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse,
+from .group_0218 import (
+    RepositoryRuleRequiredStatusChecksPropParametersType,
+    RepositoryRuleRequiredStatusChecksPropParametersTypeForResponse,
 )
 
 
-class RepositoryRuleDetailedOneof20Type(TypedDict):
-    """RepositoryRuleDetailedOneof20"""
+class RepositoryRuleDetailedOneof8Type(TypedDict):
+    """RepositoryRuleDetailedOneof8"""
 
-    type: Literal["file_extension_restriction"]
-    parameters: NotRequired[RepositoryRuleFileExtensionRestrictionPropParametersType]
+    type: Literal["required_status_checks"]
+    parameters: NotRequired[RepositoryRuleRequiredStatusChecksPropParametersType]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
-class RepositoryRuleDetailedOneof20TypeForResponse(TypedDict):
-    """RepositoryRuleDetailedOneof20"""
+class RepositoryRuleDetailedOneof8TypeForResponse(TypedDict):
+    """RepositoryRuleDetailedOneof8"""
 
-    type: Literal["file_extension_restriction"]
+    type: Literal["required_status_checks"]
     parameters: NotRequired[
-        RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse
+        RepositoryRuleRequiredStatusChecksPropParametersTypeForResponse
     ]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
@@ -41,6 +41,6 @@ class RepositoryRuleDetailedOneof20TypeForResponse(TypedDict):
 
 
 __all__ = (
-    "RepositoryRuleDetailedOneof20Type",
-    "RepositoryRuleDetailedOneof20TypeForResponse",
+    "RepositoryRuleDetailedOneof8Type",
+    "RepositoryRuleDetailedOneof8TypeForResponse",
 )

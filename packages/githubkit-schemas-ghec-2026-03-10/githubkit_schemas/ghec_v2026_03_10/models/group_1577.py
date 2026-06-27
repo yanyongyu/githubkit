@@ -9,25 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class UserUserIdProjectsV2ProjectNumberDraftsPostBody(GitHubModel):
-    """UserUserIdProjectsV2ProjectNumberDraftsPostBody"""
+class UserEmailVisibilityPatchBody(GitHubModel):
+    """UserEmailVisibilityPatchBody"""
 
-    title: str = Field(
-        description="The title of the draft issue item to create in the project."
-    )
-    body: Missing[str] = Field(
-        default=UNSET,
-        description="The body content of the draft issue item to create in the project.",
+    visibility: Literal["public", "private"] = Field(
+        description="Denotes whether an email is publicly visible."
     )
 
 
-model_rebuild(UserUserIdProjectsV2ProjectNumberDraftsPostBody)
+model_rebuild(UserEmailVisibilityPatchBody)
 
-__all__ = ("UserUserIdProjectsV2ProjectNumberDraftsPostBody",)
+__all__ = ("UserEmailVisibilityPatchBody",)

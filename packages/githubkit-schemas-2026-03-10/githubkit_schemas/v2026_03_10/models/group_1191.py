@@ -11,18 +11,20 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody(GitHubModel):
-    """ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody"""
+class OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody(GitHubModel):
+    """OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody"""
 
-    labels: list[str] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        description="The names of the custom labels to set for the runner. You can pass an empty array to remove all custom labels.",
+    permission: Missing[str] = Field(
+        default=UNSET,
+        description="The permission to grant the team on this repository. We accept the following permissions to be set: `pull`, `triage`, `push`, `maintain`, `admin` and you can also specify a custom repository role name, if the owning organization has defined any. If no permission is specified, the team's `permission` attribute will be used to determine what permission to grant the team on this repository.",
     )
 
 
-model_rebuild(ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody)
+model_rebuild(OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody)
 
-__all__ = ("ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody",)
+__all__ = ("OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody",)

@@ -12,21 +12,19 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0122 import Runner
-
-
-class OrgsOrgActionsRunnersGenerateJitconfigPostResponse201(GitHubModel):
-    """OrgsOrgActionsRunnersGenerateJitconfigPostResponse201"""
-
-    runner: Runner = Field(
-        title="Self hosted runners", description="A self hosted runner"
-    )
-    encoded_jit_config: str = Field(
-        description="The base64 encoded runner configuration."
-    )
+from .group_0020 import Repository
 
 
-model_rebuild(OrgsOrgActionsRunnersGenerateJitconfigPostResponse201)
+class OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200(GitHubModel):
+    """OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200"""
 
-__all__ = ("OrgsOrgActionsRunnersGenerateJitconfigPostResponse201",)
+    total_count: Missing[int] = Field(default=UNSET)
+    repositories: Missing[list[Repository]] = Field(default=UNSET)
+
+
+model_rebuild(OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200)
+
+__all__ = ("OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200",)

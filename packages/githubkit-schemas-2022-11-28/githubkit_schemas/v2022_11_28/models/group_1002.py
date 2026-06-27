@@ -9,19 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from pydantic import Field
-
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBody(GitHubModel):
-    """EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBody"""
-
-    usernames: list[str] = Field(
-        description="The GitHub user handles to add to the team."
-    )
+class EmojisGetResponse200(ExtraGitHubModel):
+    """EmojisGetResponse200"""
 
 
-model_rebuild(EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBody)
+model_rebuild(EmojisGetResponse200)
 
-__all__ = ("EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBody",)
+__all__ = ("EmojisGetResponse200",)

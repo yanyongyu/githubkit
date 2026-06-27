@@ -13,41 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0575 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0576 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0577 import (
+from .group_0587 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0588 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0589 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0606 import (
-    PersonalAccessTokenRequestType,
-    PersonalAccessTokenRequestTypeForResponse,
-)
+from .group_0590 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0617 import WebhooksMembershipType, WebhooksMembershipTypeForResponse
 
 
-class WebhookPersonalAccessTokenRequestCreatedType(TypedDict):
-    """personal_access_token_request created event"""
+class WebhookOrganizationMemberRemovedType(TypedDict):
+    """organization member_removed event"""
 
-    action: Literal["created"]
-    personal_access_token_request: PersonalAccessTokenRequestType
+    action: Literal["member_removed"]
     enterprise: NotRequired[EnterpriseWebhooksType]
-    organization: OrganizationSimpleWebhooksType
-    sender: SimpleUserType
     installation: NotRequired[SimpleInstallationType]
+    membership: WebhooksMembershipType
+    organization: OrganizationSimpleWebhooksType
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserType
 
 
-class WebhookPersonalAccessTokenRequestCreatedTypeForResponse(TypedDict):
-    """personal_access_token_request created event"""
+class WebhookOrganizationMemberRemovedTypeForResponse(TypedDict):
+    """organization member_removed event"""
 
-    action: Literal["created"]
-    personal_access_token_request: PersonalAccessTokenRequestTypeForResponse
+    action: Literal["member_removed"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    organization: OrganizationSimpleWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
+    membership: WebhooksMembershipTypeForResponse
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookPersonalAccessTokenRequestCreatedType",
-    "WebhookPersonalAccessTokenRequestCreatedTypeForResponse",
+    "WebhookOrganizationMemberRemovedType",
+    "WebhookOrganizationMemberRemovedTypeForResponse",
 )

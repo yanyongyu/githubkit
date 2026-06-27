@@ -9,30 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class CheckImmutableReleasesType(TypedDict):
-    """Check immutable releases
+class RepositoryHashAlgorithmType(TypedDict):
+    """Repository hash algorithm
 
-    Check immutable releases
+    Repository hash algorithm
     """
 
-    enabled: bool
-    enforced_by_owner: bool
+    hash_algorithm: Literal["sha1", "sha256"]
 
 
-class CheckImmutableReleasesTypeForResponse(TypedDict):
-    """Check immutable releases
+class RepositoryHashAlgorithmTypeForResponse(TypedDict):
+    """Repository hash algorithm
 
-    Check immutable releases
+    Repository hash algorithm
     """
 
-    enabled: bool
-    enforced_by_owner: bool
+    hash_algorithm: Literal["sha1", "sha256"]
 
 
 __all__ = (
-    "CheckImmutableReleasesType",
-    "CheckImmutableReleasesTypeForResponse",
+    "RepositoryHashAlgorithmType",
+    "RepositoryHashAlgorithmTypeForResponse",
 )

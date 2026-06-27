@@ -9,53 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from typing_extensions import TypedDict
 
 
-class OrganizationInvitationType(TypedDict):
-    """Organization Invitation
+class DependabotPublicKeyType(TypedDict):
+    """DependabotPublicKey
 
-    Organization Invitation
+    The public key used for setting Dependabot Secrets.
     """
 
-    id: int
-    login: Union[str, None]
-    email: Union[str, None]
-    role: str
-    created_at: str
-    failed_at: NotRequired[Union[str, None]]
-    failed_reason: NotRequired[Union[str, None]]
-    inviter: SimpleUserType
-    team_count: int
-    node_id: str
-    invitation_teams_url: str
-    invitation_source: NotRequired[str]
+    key_id: str
+    key: str
 
 
-class OrganizationInvitationTypeForResponse(TypedDict):
-    """Organization Invitation
+class DependabotPublicKeyTypeForResponse(TypedDict):
+    """DependabotPublicKey
 
-    Organization Invitation
+    The public key used for setting Dependabot Secrets.
     """
 
-    id: int
-    login: Union[str, None]
-    email: Union[str, None]
-    role: str
-    created_at: str
-    failed_at: NotRequired[Union[str, None]]
-    failed_reason: NotRequired[Union[str, None]]
-    inviter: SimpleUserTypeForResponse
-    team_count: int
-    node_id: str
-    invitation_teams_url: str
-    invitation_source: NotRequired[str]
+    key_id: str
+    key: str
 
 
 __all__ = (
-    "OrganizationInvitationType",
-    "OrganizationInvitationTypeForResponse",
+    "DependabotPublicKeyType",
+    "DependabotPublicKeyTypeForResponse",
 )

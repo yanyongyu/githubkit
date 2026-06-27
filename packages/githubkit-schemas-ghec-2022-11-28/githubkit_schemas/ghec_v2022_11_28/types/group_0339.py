@@ -10,56 +10,73 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsCacheListType(TypedDict):
-    """Repository actions caches
+class ArtifactType(TypedDict):
+    """Artifact
 
-    Repository actions caches
+    An artifact
     """
 
-    total_count: int
-    actions_caches: list[ActionsCacheListPropActionsCachesItemsType]
+    id: int
+    node_id: str
+    name: str
+    size_in_bytes: int
+    url: str
+    archive_download_url: str
+    expired: bool
+    created_at: Union[_dt.datetime, None]
+    expires_at: Union[_dt.datetime, None]
+    updated_at: Union[_dt.datetime, None]
+    digest: NotRequired[Union[str, None]]
+    workflow_run: NotRequired[Union[ArtifactPropWorkflowRunType, None]]
 
 
-class ActionsCacheListTypeForResponse(TypedDict):
-    """Repository actions caches
+class ArtifactTypeForResponse(TypedDict):
+    """Artifact
 
-    Repository actions caches
+    An artifact
     """
 
-    total_count: int
-    actions_caches: list[ActionsCacheListPropActionsCachesItemsTypeForResponse]
+    id: int
+    node_id: str
+    name: str
+    size_in_bytes: int
+    url: str
+    archive_download_url: str
+    expired: bool
+    created_at: Union[str, None]
+    expires_at: Union[str, None]
+    updated_at: Union[str, None]
+    digest: NotRequired[Union[str, None]]
+    workflow_run: NotRequired[Union[ArtifactPropWorkflowRunTypeForResponse, None]]
 
 
-class ActionsCacheListPropActionsCachesItemsType(TypedDict):
-    """ActionsCacheListPropActionsCachesItems"""
-
-    id: NotRequired[int]
-    ref: NotRequired[str]
-    key: NotRequired[str]
-    version: NotRequired[str]
-    last_accessed_at: NotRequired[_dt.datetime]
-    created_at: NotRequired[_dt.datetime]
-    size_in_bytes: NotRequired[int]
-
-
-class ActionsCacheListPropActionsCachesItemsTypeForResponse(TypedDict):
-    """ActionsCacheListPropActionsCachesItems"""
+class ArtifactPropWorkflowRunType(TypedDict):
+    """ArtifactPropWorkflowRun"""
 
     id: NotRequired[int]
-    ref: NotRequired[str]
-    key: NotRequired[str]
-    version: NotRequired[str]
-    last_accessed_at: NotRequired[str]
-    created_at: NotRequired[str]
-    size_in_bytes: NotRequired[int]
+    repository_id: NotRequired[int]
+    head_repository_id: NotRequired[int]
+    head_branch: NotRequired[str]
+    head_sha: NotRequired[str]
+
+
+class ArtifactPropWorkflowRunTypeForResponse(TypedDict):
+    """ArtifactPropWorkflowRun"""
+
+    id: NotRequired[int]
+    repository_id: NotRequired[int]
+    head_repository_id: NotRequired[int]
+    head_branch: NotRequired[str]
+    head_sha: NotRequired[str]
 
 
 __all__ = (
-    "ActionsCacheListPropActionsCachesItemsType",
-    "ActionsCacheListPropActionsCachesItemsTypeForResponse",
-    "ActionsCacheListType",
-    "ActionsCacheListTypeForResponse",
+    "ArtifactPropWorkflowRunType",
+    "ArtifactPropWorkflowRunTypeForResponse",
+    "ArtifactType",
+    "ArtifactTypeForResponse",
 )

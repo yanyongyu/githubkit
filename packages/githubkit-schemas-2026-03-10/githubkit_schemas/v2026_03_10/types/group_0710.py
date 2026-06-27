@@ -9,48 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0502 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0503 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0504 import (
+from .group_0514 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0515 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0516 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0505 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0711 import (
-    WebhookIssuesDeletedPropIssueType,
-    WebhookIssuesDeletedPropIssueTypeForResponse,
-)
+from .group_0517 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0525 import WebhooksUserType, WebhooksUserTypeForResponse
+from .group_0533 import WebhooksIssueType, WebhooksIssueTypeForResponse
 
 
-class WebhookIssuesDeletedType(TypedDict):
-    """issues deleted event"""
+class WebhookIssuesAssignedType(TypedDict):
+    """issues assigned event"""
 
-    action: Literal["deleted"]
+    action: Literal["assigned"]
+    assignee: NotRequired[Union[WebhooksUserType, None]]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssuesDeletedPropIssueType
+    issue: WebhooksIssueType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookIssuesDeletedTypeForResponse(TypedDict):
-    """issues deleted event"""
+class WebhookIssuesAssignedTypeForResponse(TypedDict):
+    """issues assigned event"""
 
-    action: Literal["deleted"]
+    action: Literal["assigned"]
+    assignee: NotRequired[Union[WebhooksUserTypeForResponse, None]]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhookIssuesDeletedPropIssueTypeForResponse
+    issue: WebhooksIssueTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookIssuesDeletedType",
-    "WebhookIssuesDeletedTypeForResponse",
+    "WebhookIssuesAssignedType",
+    "WebhookIssuesAssignedTypeForResponse",
 )

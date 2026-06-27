@@ -13,17 +13,20 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0264 import CopilotSpaceResource
 
+class UserSocialAccountsPostBody(GitHubModel):
+    """UserSocialAccountsPostBody
 
-class UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200(GitHubModel):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200"""
+    Examples:
+        {'account_urls': ['https://www.linkedin.com/company/github/',
+    'https://twitter.com/github']}
+    """
 
-    resources: list[CopilotSpaceResource] = Field(
-        description="The list of resources attached to this Copilot Space."
+    account_urls: list[str] = Field(
+        description="Full URLs for the social media profiles to add."
     )
 
 
-model_rebuild(UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200)
+model_rebuild(UserSocialAccountsPostBody)
 
-__all__ = ("UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200",)
+__all__ = ("UserSocialAccountsPostBody",)

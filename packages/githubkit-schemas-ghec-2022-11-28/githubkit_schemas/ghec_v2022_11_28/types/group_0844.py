@@ -13,41 +13,41 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0576 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0577 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0578 import (
+from .group_0588 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0589 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0590 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0579 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0589 import WebhooksUserType, WebhooksUserTypeForResponse
+from .group_0591 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0601 import WebhooksUserType, WebhooksUserTypeForResponse
 
 
-class WebhookOrgBlockUnblockedType(TypedDict):
-    """org_block unblocked event"""
+class WebhookMemberRemovedType(TypedDict):
+    """member removed event"""
 
-    action: Literal["unblocked"]
-    blocked_user: Union[WebhooksUserType, None]
+    action: Literal["removed"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
-    repository: NotRequired[RepositoryWebhooksType]
+    member: Union[WebhooksUserType, None]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookOrgBlockUnblockedTypeForResponse(TypedDict):
-    """org_block unblocked event"""
+class WebhookMemberRemovedTypeForResponse(TypedDict):
+    """member removed event"""
 
-    action: Literal["unblocked"]
-    blocked_user: Union[WebhooksUserTypeForResponse, None]
+    action: Literal["removed"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: OrganizationSimpleWebhooksTypeForResponse
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    member: Union[WebhooksUserTypeForResponse, None]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookOrgBlockUnblockedType",
-    "WebhookOrgBlockUnblockedTypeForResponse",
+    "WebhookMemberRemovedType",
+    "WebhookMemberRemovedTypeForResponse",
 )

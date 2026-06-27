@@ -11,18 +11,18 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgCodespacesAccessSelectedUsersPostBody(GitHubModel):
-    """OrgsOrgCodespacesAccessSelectedUsersPostBody"""
+class OrgsOrgAttestationsRepositoriesGetResponse200Items(GitHubModel):
+    """OrgsOrgAttestationsRepositoriesGetResponse200Items"""
 
-    selected_usernames: list[str] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        description="The usernames of the organization members and outside collaborators whose codespaces should be billed to the organization.",
-    )
+    id: Missing[int] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgCodespacesAccessSelectedUsersPostBody)
+model_rebuild(OrgsOrgAttestationsRepositoriesGetResponse200Items)
 
-__all__ = ("OrgsOrgCodespacesAccessSelectedUsersPostBody",)
+__all__ = ("OrgsOrgAttestationsRepositoriesGetResponse200Items",)

@@ -9,161 +9,76 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0502 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0503 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0504 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
+from .group_0716 import (
+    WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
+    WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
+    WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType,
+    WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse,
 )
-from .group_0505 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0521 import WebhooksIssueType, WebhooksIssueTypeForResponse
 
 
-class WebhookIssuesFieldRemovedType(TypedDict):
-    """issues field_removed event"""
+class WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppType(TypedDict):
+    """App
 
-    action: Literal["field_removed"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    issue: WebhooksIssueType
-    issue_field: WebhookIssuesFieldRemovedPropIssueFieldType
-    issue_field_value: NotRequired[WebhookIssuesFieldRemovedPropIssueFieldValueType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
-
-
-class WebhookIssuesFieldRemovedTypeForResponse(TypedDict):
-    """issues field_removed event"""
-
-    action: Literal["field_removed"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhooksIssueTypeForResponse
-    issue_field: WebhookIssuesFieldRemovedPropIssueFieldTypeForResponse
-    issue_field_value: NotRequired[
-        WebhookIssuesFieldRemovedPropIssueFieldValueTypeForResponse
-    ]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
-
-
-class WebhookIssuesFieldRemovedPropIssueFieldType(TypedDict):
-    """WebhookIssuesFieldRemovedPropIssueField
-
-    The issue field whose value was cleared from the issue.
+    GitHub apps are a new way to extend GitHub. They can be installed directly on
+    organizations and user accounts and granted access to specific repositories.
+    They come with granular permissions and built-in webhooks. GitHub apps are first
+    class actors within GitHub.
     """
 
-    id: int
+    created_at: Union[_dt.datetime, None]
+    description: Union[str, None]
+    events: NotRequired[list[str]]
+    external_url: Union[str, None]
+    html_url: str
+    id: Union[int, None]
     name: str
-    field_type: Literal["text", "date", "single_select", "multi_select", "number"]
-
-
-class WebhookIssuesFieldRemovedPropIssueFieldTypeForResponse(TypedDict):
-    """WebhookIssuesFieldRemovedPropIssueField
-
-    The issue field whose value was cleared from the issue.
-    """
-
-    id: int
-    name: str
-    field_type: Literal["text", "date", "single_select", "multi_select", "number"]
-
-
-class WebhookIssuesFieldRemovedPropIssueFieldValueType(TypedDict):
-    """WebhookIssuesFieldRemovedPropIssueFieldValue
-
-    The value that was cleared from the issue field.
-    """
-
-    id: int
-    value: NotRequired[Union[str, float, int, None]]
-    value_id: NotRequired[int]
-    option: NotRequired[WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionType]
-    value_ids: NotRequired[list[int]]
-    options: NotRequired[
-        list[WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItemsType]
+    node_id: str
+    owner: Union[
+        WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType, None
     ]
-
-
-class WebhookIssuesFieldRemovedPropIssueFieldValueTypeForResponse(TypedDict):
-    """WebhookIssuesFieldRemovedPropIssueFieldValue
-
-    The value that was cleared from the issue field.
-    """
-
-    id: int
-    value: NotRequired[Union[str, float, int, None]]
-    value_id: NotRequired[int]
-    option: NotRequired[
-        WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionTypeForResponse
+    permissions: NotRequired[
+        WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType
     ]
-    value_ids: NotRequired[list[int]]
-    options: NotRequired[
-        list[
-            WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItemsTypeForResponse
-        ]
-    ]
+    slug: NotRequired[str]
+    updated_at: Union[_dt.datetime, None]
 
 
-class WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionType(TypedDict):
-    """WebhookIssuesFieldRemovedPropIssueFieldValuePropOption
-
-    The selected option details. Present for single_select field types.
-    """
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    color: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-
-
-class WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionTypeForResponse(TypedDict):
-    """WebhookIssuesFieldRemovedPropIssueFieldValuePropOption
-
-    The selected option details. Present for single_select field types.
-    """
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    color: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-
-
-class WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItemsType(TypedDict):
-    """WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItems"""
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    color: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-
-
-class WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItemsTypeForResponse(
+class WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppTypeForResponse(
     TypedDict
 ):
-    """WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItems"""
+    """App
 
-    id: NotRequired[int]
-    name: NotRequired[str]
-    color: NotRequired[str]
-    description: NotRequired[Union[str, None]]
+    GitHub apps are a new way to extend GitHub. They can be installed directly on
+    organizations and user accounts and granted access to specific repositories.
+    They come with granular permissions and built-in webhooks. GitHub apps are first
+    class actors within GitHub.
+    """
+
+    created_at: Union[str, None]
+    description: Union[str, None]
+    events: NotRequired[list[str]]
+    external_url: Union[str, None]
+    html_url: str
+    id: Union[int, None]
+    name: str
+    node_id: str
+    owner: Union[
+        WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
+        None,
+    ]
+    permissions: NotRequired[
+        WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse
+    ]
+    slug: NotRequired[str]
+    updated_at: Union[str, None]
 
 
 __all__ = (
-    "WebhookIssuesFieldRemovedPropIssueFieldType",
-    "WebhookIssuesFieldRemovedPropIssueFieldTypeForResponse",
-    "WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionType",
-    "WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionTypeForResponse",
-    "WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItemsType",
-    "WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItemsTypeForResponse",
-    "WebhookIssuesFieldRemovedPropIssueFieldValueType",
-    "WebhookIssuesFieldRemovedPropIssueFieldValueTypeForResponse",
-    "WebhookIssuesFieldRemovedType",
-    "WebhookIssuesFieldRemovedTypeForResponse",
+    "WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppType",
+    "WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppTypeForResponse",
 )

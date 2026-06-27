@@ -9,39 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_1568 import (
-    UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType,
-    UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse,
-)
+from .group_0262 import CodespaceType, CodespaceTypeForResponse
 
 
-class UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1Type(
-    TypedDict
-):
-    """UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAl
-    lof1
-    """
+class UserCodespacesGetResponse200Type(TypedDict):
+    """UserCodespacesGetResponse200"""
 
-    custom_properties: NotRequired[
-        UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType
-    ]
+    total_count: int
+    codespaces: list[CodespaceType]
 
 
-class UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1TypeForResponse(
-    TypedDict
-):
-    """UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAl
-    lof1
-    """
+class UserCodespacesGetResponse200TypeForResponse(TypedDict):
+    """UserCodespacesGetResponse200"""
 
-    custom_properties: NotRequired[
-        UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse
-    ]
+    total_count: int
+    codespaces: list[CodespaceTypeForResponse]
 
 
 __all__ = (
-    "UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1Type",
-    "UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1TypeForResponse",
+    "UserCodespacesGetResponse200Type",
+    "UserCodespacesGetResponse200TypeForResponse",
 )

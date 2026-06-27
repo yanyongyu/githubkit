@@ -18,15 +18,15 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0305 import ProjectsV2StatusUpdate
-from .group_0576 import SimpleInstallation
-from .group_0577 import OrganizationSimpleWebhooks
+from .group_0309 import ProjectsV2
+from .group_0588 import SimpleInstallation
+from .group_0589 import OrganizationSimpleWebhooks
 
 
-class WebhookProjectsV2StatusUpdateCreated(GitHubModel):
-    """Projects v2 Status Update Created Event"""
+class WebhookProjectsV2ProjectClosed(GitHubModel):
+    """Projects v2 Project Closed Event"""
 
-    action: Literal["created"] = Field()
+    action: Literal["closed"] = Field()
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
@@ -36,13 +36,12 @@ class WebhookProjectsV2StatusUpdateCreated(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    projects_v2_status_update: ProjectsV2StatusUpdate = Field(
-        title="Projects v2 Status Update",
-        description="An status update belonging to a project",
+    projects_v2: ProjectsV2 = Field(
+        title="Projects v2 Project", description="A projects v2 project"
     )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookProjectsV2StatusUpdateCreated)
+model_rebuild(WebhookProjectsV2ProjectClosed)
 
-__all__ = ("WebhookProjectsV2StatusUpdateCreated",)
+__all__ = ("WebhookProjectsV2ProjectClosed",)

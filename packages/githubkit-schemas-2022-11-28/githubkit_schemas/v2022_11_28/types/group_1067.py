@@ -11,26 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0090 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0123 import RunnerLabelType, RunnerLabelTypeForResponse
 
 
-class OrgsOrgAgentsSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
-    """OrgsOrgAgentsSecretsSecretNameRepositoriesGetResponse200"""
-
-    total_count: int
-    repositories: list[MinimalRepositoryType]
-
-
-class OrgsOrgAgentsSecretsSecretNameRepositoriesGetResponse200TypeForResponse(
-    TypedDict
-):
-    """OrgsOrgAgentsSecretsSecretNameRepositoriesGetResponse200"""
+class OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200Type(TypedDict):
+    """OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200"""
 
     total_count: int
-    repositories: list[MinimalRepositoryTypeForResponse]
+    labels: list[RunnerLabelType]
+
+
+class OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200"""
+
+    total_count: int
+    labels: list[RunnerLabelTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgAgentsSecretsSecretNameRepositoriesGetResponse200Type",
-    "OrgsOrgAgentsSecretsSecretNameRepositoriesGetResponse200TypeForResponse",
+    "OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200Type",
+    "OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200TypeForResponse",
 )

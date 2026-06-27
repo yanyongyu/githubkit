@@ -9,52 +9,122 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0181 import (
+    SecretScanningLocationCommitType,
+    SecretScanningLocationCommitTypeForResponse,
+    SecretScanningLocationDiscussionCommentType,
+    SecretScanningLocationDiscussionCommentTypeForResponse,
+    SecretScanningLocationDiscussionTitleType,
+    SecretScanningLocationDiscussionTitleTypeForResponse,
+    SecretScanningLocationIssueBodyType,
+    SecretScanningLocationIssueBodyTypeForResponse,
+    SecretScanningLocationPullRequestBodyType,
+    SecretScanningLocationPullRequestBodyTypeForResponse,
+    SecretScanningLocationPullRequestReviewType,
+    SecretScanningLocationPullRequestReviewTypeForResponse,
+    SecretScanningLocationWikiCommitType,
+    SecretScanningLocationWikiCommitTypeForResponse,
+)
+from .group_0182 import (
+    SecretScanningLocationIssueCommentType,
+    SecretScanningLocationIssueCommentTypeForResponse,
+    SecretScanningLocationIssueTitleType,
+    SecretScanningLocationIssueTitleTypeForResponse,
+    SecretScanningLocationPullRequestReviewCommentType,
+    SecretScanningLocationPullRequestReviewCommentTypeForResponse,
+    SecretScanningLocationPullRequestTitleType,
+    SecretScanningLocationPullRequestTitleTypeForResponse,
+)
+from .group_0183 import (
+    SecretScanningLocationDiscussionBodyType,
+    SecretScanningLocationDiscussionBodyTypeForResponse,
+    SecretScanningLocationPullRequestCommentType,
+    SecretScanningLocationPullRequestCommentTypeForResponse,
+)
 
 
-class TagType(TypedDict):
-    """Tag
+class SecretScanningLocationType(TypedDict):
+    """SecretScanningLocation"""
 
-    Tag
-    """
+    type: NotRequired[
+        Literal[
+            "commit",
+            "wiki_commit",
+            "issue_title",
+            "issue_body",
+            "issue_comment",
+            "discussion_title",
+            "discussion_body",
+            "discussion_comment",
+            "pull_request_title",
+            "pull_request_body",
+            "pull_request_comment",
+            "pull_request_review",
+            "pull_request_review_comment",
+        ]
+    ]
+    details: NotRequired[
+        Union[
+            SecretScanningLocationCommitType,
+            SecretScanningLocationWikiCommitType,
+            SecretScanningLocationIssueTitleType,
+            SecretScanningLocationIssueBodyType,
+            SecretScanningLocationIssueCommentType,
+            SecretScanningLocationDiscussionTitleType,
+            SecretScanningLocationDiscussionBodyType,
+            SecretScanningLocationDiscussionCommentType,
+            SecretScanningLocationPullRequestTitleType,
+            SecretScanningLocationPullRequestBodyType,
+            SecretScanningLocationPullRequestCommentType,
+            SecretScanningLocationPullRequestReviewType,
+            SecretScanningLocationPullRequestReviewCommentType,
+        ]
+    ]
 
-    name: str
-    commit: TagPropCommitType
-    zipball_url: str
-    tarball_url: str
-    node_id: str
 
+class SecretScanningLocationTypeForResponse(TypedDict):
+    """SecretScanningLocation"""
 
-class TagTypeForResponse(TypedDict):
-    """Tag
-
-    Tag
-    """
-
-    name: str
-    commit: TagPropCommitTypeForResponse
-    zipball_url: str
-    tarball_url: str
-    node_id: str
-
-
-class TagPropCommitType(TypedDict):
-    """TagPropCommit"""
-
-    sha: str
-    url: str
-
-
-class TagPropCommitTypeForResponse(TypedDict):
-    """TagPropCommit"""
-
-    sha: str
-    url: str
+    type: NotRequired[
+        Literal[
+            "commit",
+            "wiki_commit",
+            "issue_title",
+            "issue_body",
+            "issue_comment",
+            "discussion_title",
+            "discussion_body",
+            "discussion_comment",
+            "pull_request_title",
+            "pull_request_body",
+            "pull_request_comment",
+            "pull_request_review",
+            "pull_request_review_comment",
+        ]
+    ]
+    details: NotRequired[
+        Union[
+            SecretScanningLocationCommitTypeForResponse,
+            SecretScanningLocationWikiCommitTypeForResponse,
+            SecretScanningLocationIssueTitleTypeForResponse,
+            SecretScanningLocationIssueBodyTypeForResponse,
+            SecretScanningLocationIssueCommentTypeForResponse,
+            SecretScanningLocationDiscussionTitleTypeForResponse,
+            SecretScanningLocationDiscussionBodyTypeForResponse,
+            SecretScanningLocationDiscussionCommentTypeForResponse,
+            SecretScanningLocationPullRequestTitleTypeForResponse,
+            SecretScanningLocationPullRequestBodyTypeForResponse,
+            SecretScanningLocationPullRequestCommentTypeForResponse,
+            SecretScanningLocationPullRequestReviewTypeForResponse,
+            SecretScanningLocationPullRequestReviewCommentTypeForResponse,
+        ]
+    ]
 
 
 __all__ = (
-    "TagPropCommitType",
-    "TagPropCommitTypeForResponse",
-    "TagType",
-    "TagTypeForResponse",
+    "SecretScanningLocationType",
+    "SecretScanningLocationTypeForResponse",
 )

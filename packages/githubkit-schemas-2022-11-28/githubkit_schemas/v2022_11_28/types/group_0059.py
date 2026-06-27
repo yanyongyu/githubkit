@@ -10,57 +10,57 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReleaseAssetType(TypedDict):
-    """Release Asset
+class IssuePropLabelsItemsOneof1Type(TypedDict):
+    """IssuePropLabelsItemsOneof1"""
 
-    Data related to a release.
-    """
-
-    url: str
-    browser_download_url: str
-    id: int
-    node_id: str
-    name: str
-    label: Union[str, None]
-    state: Literal["uploaded", "open"]
-    content_type: str
-    size: int
-    digest: Union[str, None]
-    download_count: int
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    uploader: Union[None, SimpleUserType]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    url: NotRequired[str]
+    name: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[Union[str, None]]
+    default: NotRequired[bool]
 
 
-class ReleaseAssetTypeForResponse(TypedDict):
-    """Release Asset
+class IssuePropLabelsItemsOneof1TypeForResponse(TypedDict):
+    """IssuePropLabelsItemsOneof1"""
 
-    Data related to a release.
-    """
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    url: NotRequired[str]
+    name: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[Union[str, None]]
+    default: NotRequired[bool]
 
-    url: str
-    browser_download_url: str
-    id: int
-    node_id: str
-    name: str
-    label: Union[str, None]
-    state: Literal["uploaded", "open"]
-    content_type: str
-    size: int
-    digest: Union[str, None]
-    download_count: int
-    created_at: str
-    updated_at: str
-    uploader: Union[None, SimpleUserTypeForResponse]
+
+class IssuePropPullRequestType(TypedDict):
+    """IssuePropPullRequest"""
+
+    merged_at: NotRequired[Union[_dt.datetime, None]]
+    diff_url: Union[str, None]
+    html_url: Union[str, None]
+    patch_url: Union[str, None]
+    url: Union[str, None]
+
+
+class IssuePropPullRequestTypeForResponse(TypedDict):
+    """IssuePropPullRequest"""
+
+    merged_at: NotRequired[Union[str, None]]
+    diff_url: Union[str, None]
+    html_url: Union[str, None]
+    patch_url: Union[str, None]
+    url: Union[str, None]
 
 
 __all__ = (
-    "ReleaseAssetType",
-    "ReleaseAssetTypeForResponse",
+    "IssuePropLabelsItemsOneof1Type",
+    "IssuePropLabelsItemsOneof1TypeForResponse",
+    "IssuePropPullRequestType",
+    "IssuePropPullRequestTypeForResponse",
 )

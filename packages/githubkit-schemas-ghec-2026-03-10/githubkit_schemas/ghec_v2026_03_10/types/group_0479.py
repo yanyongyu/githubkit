@@ -10,117 +10,43 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0480 import (
+    TimelineCrossReferencedEventPropSourceType,
+    TimelineCrossReferencedEventPropSourceTypeForResponse,
+)
 
-class PageType(TypedDict):
-    """GitHub Pages
 
-    The configuration for GitHub Pages for a repository.
+class TimelineCrossReferencedEventType(TypedDict):
+    """Timeline Cross Referenced Event
+
+    Timeline Cross Referenced Event
     """
 
-    url: str
-    status: Union[None, Literal["built", "building", "errored"]]
-    cname: Union[str, None]
-    protected_domain_state: NotRequired[
-        Union[None, Literal["pending", "verified", "unverified"]]
-    ]
-    pending_domain_unverified_at: NotRequired[Union[_dt.datetime, None]]
-    custom_404: bool
-    html_url: NotRequired[str]
-    build_type: NotRequired[Union[None, Literal["legacy", "workflow"]]]
-    source: NotRequired[PagesSourceHashType]
-    public: bool
-    https_certificate: NotRequired[PagesHttpsCertificateType]
-    https_enforced: NotRequired[bool]
+    event: Literal["cross-referenced"]
+    actor: NotRequired[SimpleUserType]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    source: TimelineCrossReferencedEventPropSourceType
 
 
-class PageTypeForResponse(TypedDict):
-    """GitHub Pages
+class TimelineCrossReferencedEventTypeForResponse(TypedDict):
+    """Timeline Cross Referenced Event
 
-    The configuration for GitHub Pages for a repository.
+    Timeline Cross Referenced Event
     """
 
-    url: str
-    status: Union[None, Literal["built", "building", "errored"]]
-    cname: Union[str, None]
-    protected_domain_state: NotRequired[
-        Union[None, Literal["pending", "verified", "unverified"]]
-    ]
-    pending_domain_unverified_at: NotRequired[Union[str, None]]
-    custom_404: bool
-    html_url: NotRequired[str]
-    build_type: NotRequired[Union[None, Literal["legacy", "workflow"]]]
-    source: NotRequired[PagesSourceHashTypeForResponse]
-    public: bool
-    https_certificate: NotRequired[PagesHttpsCertificateTypeForResponse]
-    https_enforced: NotRequired[bool]
-
-
-class PagesSourceHashType(TypedDict):
-    """Pages Source Hash"""
-
-    branch: str
-    path: str
-
-
-class PagesSourceHashTypeForResponse(TypedDict):
-    """Pages Source Hash"""
-
-    branch: str
-    path: str
-
-
-class PagesHttpsCertificateType(TypedDict):
-    """Pages Https Certificate"""
-
-    state: Literal[
-        "new",
-        "authorization_created",
-        "authorization_pending",
-        "authorized",
-        "authorization_revoked",
-        "issued",
-        "uploaded",
-        "approved",
-        "errored",
-        "bad_authz",
-        "destroy_pending",
-        "dns_changed",
-    ]
-    description: str
-    domains: list[str]
-    expires_at: NotRequired[_dt.date]
-
-
-class PagesHttpsCertificateTypeForResponse(TypedDict):
-    """Pages Https Certificate"""
-
-    state: Literal[
-        "new",
-        "authorization_created",
-        "authorization_pending",
-        "authorized",
-        "authorization_revoked",
-        "issued",
-        "uploaded",
-        "approved",
-        "errored",
-        "bad_authz",
-        "destroy_pending",
-        "dns_changed",
-    ]
-    description: str
-    domains: list[str]
-    expires_at: NotRequired[str]
+    event: Literal["cross-referenced"]
+    actor: NotRequired[SimpleUserTypeForResponse]
+    created_at: str
+    updated_at: str
+    source: TimelineCrossReferencedEventPropSourceTypeForResponse
 
 
 __all__ = (
-    "PageType",
-    "PageTypeForResponse",
-    "PagesHttpsCertificateType",
-    "PagesHttpsCertificateTypeForResponse",
-    "PagesSourceHashType",
-    "PagesSourceHashTypeForResponse",
+    "TimelineCrossReferencedEventType",
+    "TimelineCrossReferencedEventTypeForResponse",
 )

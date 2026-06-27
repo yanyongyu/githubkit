@@ -11,16 +11,18 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoActionsVariablesPostBody(GitHubModel):
-    """ReposOwnerRepoActionsVariablesPostBody"""
+class ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody(GitHubModel):
+    """ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody"""
 
-    name: str = Field(description="The name of the variable.")
-    value: str = Field(description="The value of the variable.")
+    labels: list[str] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        description="The names of the custom labels to set for the runner. You can pass an empty array to remove all custom labels.",
+    )
 
 
-model_rebuild(ReposOwnerRepoActionsVariablesPostBody)
+model_rebuild(ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody)
 
-__all__ = ("ReposOwnerRepoActionsVariablesPostBody",)
+__all__ = ("ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody",)

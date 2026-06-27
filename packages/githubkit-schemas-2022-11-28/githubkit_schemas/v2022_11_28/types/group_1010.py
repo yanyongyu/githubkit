@@ -9,61 +9,60 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias
 from typing_extensions import NotRequired, TypedDict
 
 
-class GistsGistIdPatchBodyType(TypedDict):
-    """GistsGistIdPatchBody"""
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody"""
 
-    description: NotRequired[str]
-    files: NotRequired[GistsGistIdPatchBodyPropFilesType]
-
-
-class GistsGistIdPatchBodyTypeForResponse(TypedDict):
-    """GistsGistIdPatchBody"""
-
-    description: NotRequired[str]
-    files: NotRequired[GistsGistIdPatchBodyPropFilesTypeForResponse]
-
-
-GistsGistIdPatchBodyPropFilesType: TypeAlias = dict[str, Any]
-"""GistsGistIdPatchBodyPropFiles
-
-The gist files to be updated, renamed, or deleted. Each `key` must match the
-current filename
-(including extension) of the targeted gist file. For example: `hello.py`.
-
-To delete a file, set the whole file to null. For example: `hello.py : null`.
-The file will also be
-deleted if the specified object does not contain at least one of `content` or
-`filename`.
-
-Examples:
-    {'hello.rb': {'content': 'blah', 'filename': 'goodbye.rb'}}
-"""
+    organizations: NotRequired[list[str]]
+    custom_properties: NotRequired[
+        list[
+            EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsType
+        ]
+    ]
 
 
-GistsGistIdPatchBodyPropFilesTypeForResponse: TypeAlias = dict[str, Any]
-"""GistsGistIdPatchBodyPropFiles
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody"""
 
-The gist files to be updated, renamed, or deleted. Each `key` must match the
-current filename
-(including extension) of the targeted gist file. For example: `hello.py`.
+    organizations: NotRequired[list[str]]
+    custom_properties: NotRequired[
+        list[
+            EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsTypeForResponse
+        ]
+    ]
 
-To delete a file, set the whole file to null. For example: `hello.py : null`.
-The file will also be
-deleted if the specified object does not contain at least one of `content` or
-`filename`.
 
-Examples:
-    {'hello.rb': {'content': 'blah', 'filename': 'goodbye.rb'}}
-"""
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustom
+    PropertiesItems
+    """
+
+    property_name: str
+    values: list[str]
+
+
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustom
+    PropertiesItems
+    """
+
+    property_name: str
+    values: list[str]
 
 
 __all__ = (
-    "GistsGistIdPatchBodyPropFilesType",
-    "GistsGistIdPatchBodyPropFilesTypeForResponse",
-    "GistsGistIdPatchBodyType",
-    "GistsGistIdPatchBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsType",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsTypeForResponse",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyType",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyTypeForResponse",
 )

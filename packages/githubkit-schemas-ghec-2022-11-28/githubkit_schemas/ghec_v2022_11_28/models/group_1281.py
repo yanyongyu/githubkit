@@ -14,22 +14,22 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class OrgsOrgCopilotCodingAgentPermissionsGetResponse200(GitHubModel):
-    """OrgsOrgCopilotCodingAgentPermissionsGetResponse200"""
+class OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBody(GitHubModel):
+    """OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBody"""
 
-    enabled_repositories: Literal["all", "selected", "none"] = Field(
-        description="The policy for which repositories can use Copilot cloud agent. Can be one of `all`, `selected`, or `none`."
+    actor_type: Literal["User", "Team"] = Field(
+        description="The type of actor (user or team)."
     )
-    selected_repositories_url: Missing[str] = Field(
-        default=UNSET,
-        description="The URL for the selected repositories endpoint. Only present when `enabled_repositories` is `selected`.",
+    actor_identifier: str = Field(
+        description="The username (for users) or team slug (for teams). The numeric ID of a user or team is also accepted."
+    )
+    role: Literal["reader", "writer", "admin"] = Field(
+        description="The role to grant to the collaborator."
     )
 
 
-model_rebuild(OrgsOrgCopilotCodingAgentPermissionsGetResponse200)
+model_rebuild(OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBody)
 
-__all__ = ("OrgsOrgCopilotCodingAgentPermissionsGetResponse200",)
+__all__ = ("OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBody",)

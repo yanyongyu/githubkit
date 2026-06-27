@@ -18,26 +18,27 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RepositoryRuleRulesetInfo(GitHubModel):
-    """repository ruleset data for rule
+class PagesDeploymentStatus(GitHubModel):
+    """GitHub Pages deployment status"""
 
-    User-defined metadata to store domain-specific information limited to 8 keys
-    with scalar values.
-    """
+    status: Missing[
+        Literal[
+            "deployment_in_progress",
+            "syncing_files",
+            "finished_file_sync",
+            "updating_pages",
+            "purging_cdn",
+            "deployment_cancelled",
+            "deployment_failed",
+            "deployment_content_failed",
+            "deployment_attempt_error",
+            "deployment_lost",
+            "succeed",
+            "deployment_queued",
+        ]
+    ] = Field(default=UNSET, description="The current status of the deployment.")
 
-    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
-        default=UNSET,
-        description="The type of source for the ruleset that includes this rule.",
-    )
-    ruleset_source: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the source of the ruleset that includes this rule.",
-    )
-    ruleset_id: Missing[int] = Field(
-        default=UNSET, description="The ID of the ruleset that includes this rule."
-    )
 
+model_rebuild(PagesDeploymentStatus)
 
-model_rebuild(RepositoryRuleRulesetInfo)
-
-__all__ = ("RepositoryRuleRulesetInfo",)
+__all__ = ("PagesDeploymentStatus",)

@@ -9,45 +9,60 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class GistsGistIdGetResponse403Type(TypedDict):
-    """GistsGistIdGetResponse403"""
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBody"""
 
-    block: NotRequired[GistsGistIdGetResponse403PropBlockType]
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
-
-
-class GistsGistIdGetResponse403TypeForResponse(TypedDict):
-    """GistsGistIdGetResponse403"""
-
-    block: NotRequired[GistsGistIdGetResponse403PropBlockTypeForResponse]
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    organizations: NotRequired[list[str]]
+    custom_properties: NotRequired[
+        list[
+            EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItemsType
+        ]
+    ]
 
 
-class GistsGistIdGetResponse403PropBlockType(TypedDict):
-    """GistsGistIdGetResponse403PropBlock"""
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBody"""
 
-    reason: NotRequired[str]
-    created_at: NotRequired[str]
-    html_url: NotRequired[Union[str, None]]
+    organizations: NotRequired[list[str]]
+    custom_properties: NotRequired[
+        list[
+            EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItemsTypeForResponse
+        ]
+    ]
 
 
-class GistsGistIdGetResponse403PropBlockTypeForResponse(TypedDict):
-    """GistsGistIdGetResponse403PropBlock"""
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItemsType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPr
+    opertiesItems
+    """
 
-    reason: NotRequired[str]
-    created_at: NotRequired[str]
-    html_url: NotRequired[Union[str, None]]
+    property_name: str
+    values: list[str]
+
+
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItemsTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPr
+    opertiesItems
+    """
+
+    property_name: str
+    values: list[str]
 
 
 __all__ = (
-    "GistsGistIdGetResponse403PropBlockType",
-    "GistsGistIdGetResponse403PropBlockTypeForResponse",
-    "GistsGistIdGetResponse403Type",
-    "GistsGistIdGetResponse403TypeForResponse",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItemsType",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItemsTypeForResponse",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyType",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyTypeForResponse",
 )

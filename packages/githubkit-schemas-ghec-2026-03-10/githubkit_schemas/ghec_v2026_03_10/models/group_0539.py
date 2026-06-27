@@ -9,37 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class Meta(GitHubModel):
-    """Meta
+class CommitActivity(GitHubModel):
+    """Commit Activity
 
-    The metadata associated with the creation/updates to the user.
+    Commit Activity
     """
 
-    resource_type: Literal["User", "Group"] = Field(
-        alias="resourceType", description="A type of a resource"
-    )
-    created: Missing[str] = Field(
-        default=UNSET, description="A date and time when the user was created."
-    )
-    last_modified: Missing[str] = Field(
-        default=UNSET,
-        alias="lastModified",
-        description="A data and time when the user was last modified.",
-    )
-    location: Missing[str] = Field(
-        default=UNSET, description="A URL location of an object"
-    )
+    days: list[int] = Field()
+    total: int = Field()
+    week: int = Field()
 
 
-model_rebuild(Meta)
+model_rebuild(CommitActivity)
 
-__all__ = ("Meta",)
+__all__ = ("CommitActivity",)

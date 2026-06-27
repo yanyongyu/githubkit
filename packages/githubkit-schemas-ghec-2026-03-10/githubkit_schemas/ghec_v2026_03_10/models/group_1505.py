@@ -16,33 +16,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPagesDeploymentsPostBody(GitHubModel):
-    """ReposOwnerRepoPagesDeploymentsPostBody
+class ReposOwnerRepoLabelsNamePatchBody(GitHubModel):
+    """ReposOwnerRepoLabelsNamePatchBody"""
 
-    The object used to create GitHub Pages deployment
-    """
-
-    artifact_id: Missing[int] = Field(
+    new_name: Missing[str] = Field(
         default=UNSET,
-        description="The ID of an artifact that contains the .zip or .tar of static assets to deploy. The artifact belongs to the repository. Either `artifact_id` or `artifact_url` are required.",
+        description='The new name of the label. Emoji can be added to label names, using either native emoji or colon-style markup. For example, typing `:strawberry:` will render the emoji ![:strawberry:](https://github.githubassets.com/images/icons/emoji/unicode/1f353.png ":strawberry:"). For a full list of available emoji and codes, see "[Emoji cheat sheet](https://github.com/ikatyang/emoji-cheat-sheet)."',
     )
-    artifact_url: Missing[str] = Field(
+    color: Missing[str] = Field(
         default=UNSET,
-        description="The URL of an artifact that contains the .zip or .tar of static assets to deploy. The artifact belongs to the repository. Either `artifact_id` or `artifact_url` are required.",
+        description="The [hexadecimal color code](http://www.color-hex.com/) for the label, without the leading `#`.",
     )
-    environment: Missing[str] = Field(
+    description: Missing[str] = Field(
         default=UNSET,
-        description="The target environment for this GitHub Pages deployment.",
-    )
-    pages_build_version: str = Field(
-        default="GITHUB_SHA",
-        description="A unique string that represents the version of the build for this deployment.",
-    )
-    oidc_token: str = Field(
-        description="The OIDC token issued by GitHub Actions certifying the origin of the deployment."
+        description="A short description of the label. Must be 100 characters or fewer.",
     )
 
 
-model_rebuild(ReposOwnerRepoPagesDeploymentsPostBody)
+model_rebuild(ReposOwnerRepoLabelsNamePatchBody)
 
-__all__ = ("ReposOwnerRepoPagesDeploymentsPostBody",)
+__all__ = ("ReposOwnerRepoLabelsNamePatchBody",)

@@ -9,38 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0211 import (
-    RepositoryRuleRequiredDeploymentsPropParametersType,
-    RepositoryRuleRequiredDeploymentsPropParametersTypeForResponse,
-)
+from typing_extensions import TypedDict
 
 
-class RepositoryRuleDetailedOneof5Type(TypedDict):
-    """RepositoryRuleDetailedOneof5"""
+class PullRequestMergeResultType(TypedDict):
+    """Pull Request Merge Result
 
-    type: Literal["required_deployments"]
-    parameters: NotRequired[RepositoryRuleRequiredDeploymentsPropParametersType]
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    Pull Request Merge Result
+    """
+
+    sha: str
+    merged: bool
+    message: str
 
 
-class RepositoryRuleDetailedOneof5TypeForResponse(TypedDict):
-    """RepositoryRuleDetailedOneof5"""
+class PullRequestMergeResultTypeForResponse(TypedDict):
+    """Pull Request Merge Result
 
-    type: Literal["required_deployments"]
-    parameters: NotRequired[
-        RepositoryRuleRequiredDeploymentsPropParametersTypeForResponse
-    ]
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    Pull Request Merge Result
+    """
+
+    sha: str
+    merged: bool
+    message: str
 
 
 __all__ = (
-    "RepositoryRuleDetailedOneof5Type",
-    "RepositoryRuleDetailedOneof5TypeForResponse",
+    "PullRequestMergeResultType",
+    "PullRequestMergeResultTypeForResponse",
 )

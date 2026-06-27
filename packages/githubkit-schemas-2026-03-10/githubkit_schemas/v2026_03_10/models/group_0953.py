@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,49 +18,51 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0(GitHubModel):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0
+class AgentsReposOwnerRepoTasksGetResponse401(GitHubModel):
+    """AgentsReposOwnerRepoTasksGetResponse401
 
-    A GitHub user
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
     """
 
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the user"
+    message: str = Field(
+        description='Summary message (e.g. "Validation Failed", "Not Found")'
+    )
+    errors: Missing[list[AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems]] = (
+        Field(
+            default=UNSET,
+            description="List of validation errors (present only for 422 responses)",
+        )
+    )
+    documentation_url: str = Field(description="URL to relevant API documentation")
+
+
+class AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems(GitHubModel):
+    """AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ] = Field(description="Machine-readable error code")
+    message: Missing[str] = Field(
+        default=UNSET,
+        description='Human-readable message (populated when code is "custom")',
     )
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems(
-    GitHubModel
-):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems
-
-    A GitHub user
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the user"
-    )
-
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository(GitHubModel):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository
-
-    The repository this task belongs to
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the repository"
-    )
-
-
-model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0)
-model_rebuild(
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems
-)
-model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository)
+model_rebuild(AgentsReposOwnerRepoTasksGetResponse401)
+model_rebuild(AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems)
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems",
+    "AgentsReposOwnerRepoTasksGetResponse401",
+    "AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems",
 )

@@ -11,24 +11,30 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0264 import CopilotSpaceResourceType, CopilotSpaceResourceTypeForResponse
+
+class UserSocialAccountsPostBodyType(TypedDict):
+    """UserSocialAccountsPostBody
+
+    Examples:
+        {'account_urls': ['https://www.linkedin.com/company/github/',
+    'https://twitter.com/github']}
+    """
+
+    account_urls: list[str]
 
 
-class UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200Type(TypedDict):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200"""
+class UserSocialAccountsPostBodyTypeForResponse(TypedDict):
+    """UserSocialAccountsPostBody
 
-    resources: list[CopilotSpaceResourceType]
+    Examples:
+        {'account_urls': ['https://www.linkedin.com/company/github/',
+    'https://twitter.com/github']}
+    """
 
-
-class UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200TypeForResponse(
-    TypedDict
-):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200"""
-
-    resources: list[CopilotSpaceResourceTypeForResponse]
+    account_urls: list[str]
 
 
 __all__ = (
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200Type",
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200TypeForResponse",
+    "UserSocialAccountsPostBodyType",
+    "UserSocialAccountsPostBodyTypeForResponse",
 )

@@ -9,41 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class ReposOwnerRepoPullsPullNumberCommentsPostBodyType(TypedDict):
-    """ReposOwnerRepoPullsPullNumberCommentsPostBody"""
-
-    body: str
-    commit_id: str
-    path: str
-    position: NotRequired[int]
-    side: NotRequired[Literal["LEFT", "RIGHT"]]
-    line: NotRequired[int]
-    start_line: NotRequired[int]
-    start_side: NotRequired[Literal["LEFT", "RIGHT", "side"]]
-    in_reply_to: NotRequired[int]
-    subject_type: NotRequired[Literal["line", "file"]]
+from .group_1344 import (
+    ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+    ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
+)
 
 
-class ReposOwnerRepoPullsPullNumberCommentsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoPullsPullNumberCommentsPostBody"""
+class ReposOwnerRepoPagesPutBodyAnyof2Type(TypedDict):
+    """ReposOwnerRepoPagesPutBodyAnyof2"""
 
-    body: str
-    commit_id: str
-    path: str
-    position: NotRequired[int]
-    side: NotRequired[Literal["LEFT", "RIGHT"]]
-    line: NotRequired[int]
-    start_line: NotRequired[int]
-    start_side: NotRequired[Literal["LEFT", "RIGHT", "side"]]
-    in_reply_to: NotRequired[int]
-    subject_type: NotRequired[Literal["line", "file"]]
+    cname: Union[str, None]
+    https_enforced: NotRequired[bool]
+    build_type: NotRequired[Literal["legacy", "workflow"]]
+    source: NotRequired[
+        Union[
+            Literal["gh-pages", "master", "master /docs"],
+            ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+        ]
+    ]
+
+
+class ReposOwnerRepoPagesPutBodyAnyof2TypeForResponse(TypedDict):
+    """ReposOwnerRepoPagesPutBodyAnyof2"""
+
+    cname: Union[str, None]
+    https_enforced: NotRequired[bool]
+    build_type: NotRequired[Literal["legacy", "workflow"]]
+    source: NotRequired[
+        Union[
+            Literal["gh-pages", "master", "master /docs"],
+            ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
+        ]
+    ]
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberCommentsPostBodyType",
-    "ReposOwnerRepoPullsPullNumberCommentsPostBodyTypeForResponse",
+    "ReposOwnerRepoPagesPutBodyAnyof2Type",
+    "ReposOwnerRepoPagesPutBodyAnyof2TypeForResponse",
 )

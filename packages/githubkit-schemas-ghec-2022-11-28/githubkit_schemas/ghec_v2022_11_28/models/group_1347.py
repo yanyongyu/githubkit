@@ -12,29 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0103 import NetworkConfiguration
 
 
-class ReposOwnerRepoActionsOidcCustomizationSubPutBody(GitHubModel):
-    """Actions OIDC subject customization for a repository
+class OrgsOrgSettingsNetworkConfigurationsGetResponse200(GitHubModel):
+    """OrgsOrgSettingsNetworkConfigurationsGetResponse200"""
 
-    Actions OIDC subject customization for a repository
-    """
-
-    use_default: bool = Field(
-        description="Whether to use the default template or not. If `true`, the `include_claim_keys` field is ignored."
-    )
-    include_claim_keys: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores.",
-    )
-    use_immutable_subject: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to opt in to the immutable OIDC subject claim format for this repository. When `true`, OIDC tokens will use a stable, repository-ID-based `sub` claim.",
-    )
+    total_count: int = Field()
+    network_configurations: list[NetworkConfiguration] = Field()
 
 
-model_rebuild(ReposOwnerRepoActionsOidcCustomizationSubPutBody)
+model_rebuild(OrgsOrgSettingsNetworkConfigurationsGetResponse200)
 
-__all__ = ("ReposOwnerRepoActionsOidcCustomizationSubPutBody",)
+__all__ = ("OrgsOrgSettingsNetworkConfigurationsGetResponse200",)

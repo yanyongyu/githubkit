@@ -16,27 +16,29 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class BillingUsageSummaryReportOrg(GitHubModel):
-    """BillingUsageSummaryReportOrg"""
+class BillingPremiumRequestUsageReportOrg(GitHubModel):
+    """BillingPremiumRequestUsageReportOrg"""
 
-    time_period: BillingUsageSummaryReportOrgPropTimePeriod = Field(alias="timePeriod")
+    time_period: BillingPremiumRequestUsageReportOrgPropTimePeriod = Field(
+        alias="timePeriod"
+    )
     organization: str = Field(description="The unique identifier of the organization.")
-    repository: Missing[str] = Field(
-        default=UNSET, description="The name of the repository for the usage report."
+    user: Missing[str] = Field(
+        default=UNSET, description="The name of the user for the usage report."
     )
     product: Missing[str] = Field(
         default=UNSET, description="The product for the usage report."
     )
-    sku: Missing[str] = Field(
-        default=UNSET, description="The SKU for the usage report."
+    model: Missing[str] = Field(
+        default=UNSET, description="The model for the usage report."
     )
-    usage_items: list[BillingUsageSummaryReportOrgPropUsageItemsItems] = Field(
+    usage_items: list[BillingPremiumRequestUsageReportOrgPropUsageItemsItems] = Field(
         alias="usageItems"
     )
 
 
-class BillingUsageSummaryReportOrgPropTimePeriod(GitHubModel):
-    """BillingUsageSummaryReportOrgPropTimePeriod"""
+class BillingPremiumRequestUsageReportOrgPropTimePeriod(GitHubModel):
+    """BillingPremiumRequestUsageReportOrgPropTimePeriod"""
 
     year: int = Field(description="The year for the usage report.")
     month: Missing[int] = Field(
@@ -47,11 +49,12 @@ class BillingUsageSummaryReportOrgPropTimePeriod(GitHubModel):
     )
 
 
-class BillingUsageSummaryReportOrgPropUsageItemsItems(GitHubModel):
-    """BillingUsageSummaryReportOrgPropUsageItemsItems"""
+class BillingPremiumRequestUsageReportOrgPropUsageItemsItems(GitHubModel):
+    """BillingPremiumRequestUsageReportOrgPropUsageItemsItems"""
 
     product: str = Field(description="Product name.")
     sku: str = Field(description="SKU name.")
+    model: str = Field(description="Model name.")
     unit_type: str = Field(
         alias="unitType", description="Unit type of the usage line item."
     )
@@ -79,12 +82,12 @@ class BillingUsageSummaryReportOrgPropUsageItemsItems(GitHubModel):
     )
 
 
-model_rebuild(BillingUsageSummaryReportOrg)
-model_rebuild(BillingUsageSummaryReportOrgPropTimePeriod)
-model_rebuild(BillingUsageSummaryReportOrgPropUsageItemsItems)
+model_rebuild(BillingPremiumRequestUsageReportOrg)
+model_rebuild(BillingPremiumRequestUsageReportOrgPropTimePeriod)
+model_rebuild(BillingPremiumRequestUsageReportOrgPropUsageItemsItems)
 
 __all__ = (
-    "BillingUsageSummaryReportOrg",
-    "BillingUsageSummaryReportOrgPropTimePeriod",
-    "BillingUsageSummaryReportOrgPropUsageItemsItems",
+    "BillingPremiumRequestUsageReportOrg",
+    "BillingPremiumRequestUsageReportOrgPropTimePeriod",
+    "BillingPremiumRequestUsageReportOrgPropUsageItemsItems",
 )

@@ -9,34 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200Type(
+class EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422Type(TypedDict):
+    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422"""
+
+    errors: NotRequired[list[str]]
+
+
+class EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200
+    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422"""
 
-    The total number of seats set to "pending cancellation" for the members of the
-    specified enterprise team(s).
-    """
-
-    seats_cancelled: int
-
-
-class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200
-
-    The total number of seats set to "pending cancellation" for the members of the
-    specified enterprise team(s).
-    """
-
-    seats_cancelled: int
+    errors: NotRequired[list[str]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200Type",
-    "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200TypeForResponse",
+    "EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422Type",
+    "EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422TypeForResponse",
 )

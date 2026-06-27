@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,71 +19,43 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberPatchBody(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberPatchBody"""
+class ReposOwnerRepoGitTagsPostBody(GitHubModel):
+    """ReposOwnerRepoGitTagsPostBody"""
 
-    title: Missing[Union[str, int, None]] = Field(
-        default=UNSET, description="The title of the issue."
+    tag: str = Field(
+        description='The tag\'s name. This is typically a version (e.g., "v0.0.1").'
     )
-    body: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The contents of the issue."
+    message: str = Field(description="The tag message.")
+    object_: str = Field(
+        alias="object", description="The SHA of the git object this is tagging."
     )
-    state: Missing[Literal["open", "closed"]] = Field(
-        default=UNSET, description="The open or closed state of the issue."
+    type: Literal["commit", "tree", "blob"] = Field(
+        description="The type of the object we're tagging. Normally this is a `commit` but it can also be a `tree` or a `blob`."
     )
-    state_reason: Missing[
-        Union[None, Literal["completed", "not_planned", "duplicate", "reopened"]]
-    ] = Field(
+    tagger: Missing[ReposOwnerRepoGitTagsPostBodyPropTagger] = Field(
         default=UNSET,
-        description="The reason for the state change. Ignored unless `state` is changed.",
+        description="An object with information about the individual creating the tag.",
     )
-    milestone: Missing[Union[str, int, None]] = Field(default=UNSET)
-    labels: Missing[
-        list[Union[str, ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1]]
-    ] = Field(
+
+
+class ReposOwnerRepoGitTagsPostBodyPropTagger(GitHubModel):
+    """ReposOwnerRepoGitTagsPostBodyPropTagger
+
+    An object with information about the individual creating the tag.
+    """
+
+    name: str = Field(description="The name of the author of the tag")
+    email: str = Field(description="The email of the author of the tag")
+    date: Missing[_dt.datetime] = Field(
         default=UNSET,
-        description="Labels to associate with this issue. Pass one or more labels to _replace_ the set of labels on this issue. Send an empty array (`[]`) to clear all labels from the issue. Only users with push access can set labels for issues. Without push access to the repository, label changes are silently dropped.",
-    )
-    assignees: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Usernames to assign to this issue. Pass one or more user logins to _replace_ the set of assignees on this issue. Send an empty array (`[]`) to clear all assignees from the issue. Only users with push access can set assignees for new issues. Without push access to the repository, assignee changes are silently dropped.",
-    )
-    issue_field_values: Missing[
-        list[ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems]
-    ] = Field(
-        default=UNSET,
-        description="An array of issue field values to set on this issue. Each field value must include the field ID and the value to set. Only users with push access can set field values for issues",
-    )
-    type: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The name of the issue type to associate with this issue or use `null` to remove the current issue type. Only users with push access can set the type for issues. Without push access to the repository, type changes are silently dropped.",
+        description="When this object was tagged. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
 
 
-class ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1"""
-
-    id: Missing[int] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    description: Missing[Union[str, None]] = Field(default=UNSET)
-    color: Missing[Union[str, None]] = Field(default=UNSET)
-
-
-class ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems"""
-
-    field_id: int = Field(description="The ID of the issue field to set")
-    value: Union[str, float, list[str]] = Field(
-        description="The value to set for the field. For multi-select fields, provide an array of option names."
-    )
-
-
-model_rebuild(ReposOwnerRepoIssuesIssueNumberPatchBody)
-model_rebuild(ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1)
-model_rebuild(ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems)
+model_rebuild(ReposOwnerRepoGitTagsPostBody)
+model_rebuild(ReposOwnerRepoGitTagsPostBodyPropTagger)
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberPatchBody",
-    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems",
-    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1",
+    "ReposOwnerRepoGitTagsPostBody",
+    "ReposOwnerRepoGitTagsPostBodyPropTagger",
 )

@@ -9,28 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Any, Literal, TypeAlias
 from typing_extensions import TypedDict
 
-from .group_0090 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+
+class OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyType(TypedDict):
+    """OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody"""
+
+    resource_type: Literal[
+        "repository", "github_file", "free_text", "github_issue", "github_pull_request"
+    ]
+    metadata: OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataType
 
 
-class OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200Type(TypedDict):
-    """OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200"""
+class OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody"""
 
-    total_count: int
-    repositories: list[MinimalRepositoryType]
+    resource_type: Literal[
+        "repository", "github_file", "free_text", "github_issue", "github_pull_request"
+    ]
+    metadata: (
+        OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataTypeForResponse
+    )
 
 
-class OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200TypeForResponse(
-    TypedDict
-):
-    """OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200"""
+OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataType: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata
 
-    total_count: int
-    repositories: list[MinimalRepositoryTypeForResponse]
+Resource-specific metadata.
+"""
+
+
+OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata
+
+Resource-specific metadata.
+"""
 
 
 __all__ = (
-    "OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200Type",
-    "OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200TypeForResponse",
+    "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataType",
+    "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataTypeForResponse",
+    "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyType",
+    "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyTypeForResponse",
 )

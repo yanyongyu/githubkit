@@ -9,68 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0502 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0503 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0504 import (
+from .group_0514 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0515 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0516 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0505 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0517 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0554 import WebhooksReleaseType, WebhooksReleaseTypeForResponse
 
 
-class WebhookRepositoryDispatchSampleType(TypedDict):
-    """repository_dispatch event"""
+class WebhookReleaseCreatedType(TypedDict):
+    """release created event"""
 
-    action: str
-    branch: str
-    client_payload: Union[WebhookRepositoryDispatchSamplePropClientPayloadType, None]
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: SimpleInstallationType
+    installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
+    release: WebhooksReleaseType
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookRepositoryDispatchSampleTypeForResponse(TypedDict):
-    """repository_dispatch event"""
+class WebhookReleaseCreatedTypeForResponse(TypedDict):
+    """release created event"""
 
-    action: str
-    branch: str
-    client_payload: Union[
-        WebhookRepositoryDispatchSamplePropClientPayloadTypeForResponse, None
-    ]
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: SimpleInstallationTypeForResponse
+    installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    release: WebhooksReleaseTypeForResponse
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
-WebhookRepositoryDispatchSamplePropClientPayloadType: TypeAlias = dict[str, Any]
-"""WebhookRepositoryDispatchSamplePropClientPayload
-
-The `client_payload` that was specified in the `POST
-/repos/{owner}/{repo}/dispatches` request body.
-"""
-
-
-WebhookRepositoryDispatchSamplePropClientPayloadTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""WebhookRepositoryDispatchSamplePropClientPayload
-
-The `client_payload` that was specified in the `POST
-/repos/{owner}/{repo}/dispatches` request body.
-"""
-
-
 __all__ = (
-    "WebhookRepositoryDispatchSamplePropClientPayloadType",
-    "WebhookRepositoryDispatchSamplePropClientPayloadTypeForResponse",
-    "WebhookRepositoryDispatchSampleType",
-    "WebhookRepositoryDispatchSampleTypeForResponse",
+    "WebhookReleaseCreatedType",
+    "WebhookReleaseCreatedTypeForResponse",
 )

@@ -9,81 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class RuleSuiteRequiredStatusChecksType(TypedDict):
-    """Required status checks rule suite metadata
-
-    Metadata for a required status checks rule evaluation result.
-    """
-
-    checks: NotRequired[list[RuleSuiteRequiredStatusChecksPropChecksItemsType]]
-
-
-class RuleSuiteRequiredStatusChecksTypeForResponse(TypedDict):
-    """Required status checks rule suite metadata
-
-    Metadata for a required status checks rule evaluation result.
-    """
-
-    checks: NotRequired[
-        list[RuleSuiteRequiredStatusChecksPropChecksItemsTypeForResponse]
-    ]
-
-
-class RuleSuiteRequiredStatusChecksPropChecksItemsType(TypedDict):
-    """RuleSuiteRequiredStatusChecksPropChecksItems"""
+class RuleSuitesItemsType(TypedDict):
+    """RuleSuitesItems"""
 
     id: NotRequired[int]
-    context: NotRequired[str]
-    state: NotRequired[str]
-    type: NotRequired[str]
-    app: NotRequired[
-        Union[RuleSuiteRequiredStatusChecksPropChecksItemsPropAppType, None]
-    ]
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
+    before_sha: NotRequired[str]
+    after_sha: NotRequired[str]
+    ref: NotRequired[str]
+    repository_id: NotRequired[int]
+    repository_name: NotRequired[str]
+    pushed_at: NotRequired[_dt.datetime]
+    result: NotRequired[Literal["pass", "fail", "bypass"]]
+    evaluation_result: NotRequired[Literal["pass", "fail", "bypass"]]
 
 
-class RuleSuiteRequiredStatusChecksPropChecksItemsTypeForResponse(TypedDict):
-    """RuleSuiteRequiredStatusChecksPropChecksItems"""
-
-    id: NotRequired[int]
-    context: NotRequired[str]
-    state: NotRequired[str]
-    type: NotRequired[str]
-    app: NotRequired[
-        Union[RuleSuiteRequiredStatusChecksPropChecksItemsPropAppTypeForResponse, None]
-    ]
-
-
-class RuleSuiteRequiredStatusChecksPropChecksItemsPropAppType(TypedDict):
-    """RuleSuiteRequiredStatusChecksPropChecksItemsPropApp
-
-    The GitHub App associated with the status check.
-    """
+class RuleSuitesItemsTypeForResponse(TypedDict):
+    """RuleSuitesItems"""
 
     id: NotRequired[int]
-    slug: NotRequired[str]
-    name: NotRequired[str]
-
-
-class RuleSuiteRequiredStatusChecksPropChecksItemsPropAppTypeForResponse(TypedDict):
-    """RuleSuiteRequiredStatusChecksPropChecksItemsPropApp
-
-    The GitHub App associated with the status check.
-    """
-
-    id: NotRequired[int]
-    slug: NotRequired[str]
-    name: NotRequired[str]
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
+    before_sha: NotRequired[str]
+    after_sha: NotRequired[str]
+    ref: NotRequired[str]
+    repository_id: NotRequired[int]
+    repository_name: NotRequired[str]
+    pushed_at: NotRequired[str]
+    result: NotRequired[Literal["pass", "fail", "bypass"]]
+    evaluation_result: NotRequired[Literal["pass", "fail", "bypass"]]
 
 
 __all__ = (
-    "RuleSuiteRequiredStatusChecksPropChecksItemsPropAppType",
-    "RuleSuiteRequiredStatusChecksPropChecksItemsPropAppTypeForResponse",
-    "RuleSuiteRequiredStatusChecksPropChecksItemsType",
-    "RuleSuiteRequiredStatusChecksPropChecksItemsTypeForResponse",
-    "RuleSuiteRequiredStatusChecksType",
-    "RuleSuiteRequiredStatusChecksTypeForResponse",
+    "RuleSuitesItemsType",
+    "RuleSuitesItemsTypeForResponse",
 )

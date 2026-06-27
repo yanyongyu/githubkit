@@ -13,41 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0502 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0503 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0504 import (
+from .group_0514 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0515 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0516 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0505 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0533 import WebhooksProjectType, WebhooksProjectTypeForResponse
+from .group_0543 import (
+    PersonalAccessTokenRequestType,
+    PersonalAccessTokenRequestTypeForResponse,
+)
 
 
-class WebhookProjectClosedType(TypedDict):
-    """project closed event"""
+class WebhookPersonalAccessTokenRequestCreatedType(TypedDict):
+    """personal_access_token_request created event"""
 
-    action: Literal["closed"]
+    action: Literal["created"]
+    personal_access_token_request: PersonalAccessTokenRequestType
     enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    project: WebhooksProjectType
-    repository: NotRequired[RepositoryWebhooksType]
+    organization: OrganizationSimpleWebhooksType
     sender: SimpleUserType
+    installation: NotRequired[SimpleInstallationType]
 
 
-class WebhookProjectClosedTypeForResponse(TypedDict):
-    """project closed event"""
+class WebhookPersonalAccessTokenRequestCreatedTypeForResponse(TypedDict):
+    """personal_access_token_request created event"""
 
-    action: Literal["closed"]
+    action: Literal["created"]
+    personal_access_token_request: PersonalAccessTokenRequestTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    project: WebhooksProjectTypeForResponse
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    organization: OrganizationSimpleWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
+    installation: NotRequired[SimpleInstallationTypeForResponse]
 
 
 __all__ = (
-    "WebhookProjectClosedType",
-    "WebhookProjectClosedTypeForResponse",
+    "WebhookPersonalAccessTokenRequestCreatedType",
+    "WebhookPersonalAccessTokenRequestCreatedTypeForResponse",
 )

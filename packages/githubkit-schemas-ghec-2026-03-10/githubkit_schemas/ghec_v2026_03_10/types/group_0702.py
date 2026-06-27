@@ -13,20 +13,20 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0203 import DiscussionType, DiscussionTypeForResponse
-from .group_0575 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0576 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0577 import (
+from .group_0204 import DiscussionType, DiscussionTypeForResponse
+from .group_0587 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0588 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0589 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0578 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0590 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDiscussionUnpinnedType(TypedDict):
-    """discussion unpinned event"""
+class WebhookDiscussionCreatedType(TypedDict):
+    """discussion created event"""
 
-    action: Literal["unpinned"]
+    action: Literal["created"]
     discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -35,10 +35,10 @@ class WebhookDiscussionUnpinnedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookDiscussionUnpinnedTypeForResponse(TypedDict):
-    """discussion unpinned event"""
+class WebhookDiscussionCreatedTypeForResponse(TypedDict):
+    """discussion created event"""
 
-    action: Literal["unpinned"]
+    action: Literal["created"]
     discussion: DiscussionTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
@@ -48,6 +48,6 @@ class WebhookDiscussionUnpinnedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookDiscussionUnpinnedType",
-    "WebhookDiscussionUnpinnedTypeForResponse",
+    "WebhookDiscussionCreatedType",
+    "WebhookDiscussionCreatedTypeForResponse",
 )

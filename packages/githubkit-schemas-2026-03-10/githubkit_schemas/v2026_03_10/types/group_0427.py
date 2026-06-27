@@ -9,33 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0130 import TeamType, TeamTypeForResponse
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class PullRequestReviewRequestType(TypedDict):
-    """Pull Request Review Request
+class MergedUpstreamType(TypedDict):
+    """Merged upstream
 
-    Pull Request Review Request
+    Results of a successful merge upstream request
     """
 
-    users: list[SimpleUserType]
-    teams: list[TeamType]
+    message: NotRequired[str]
+    merge_type: NotRequired[Literal["merge", "fast-forward", "none"]]
+    base_branch: NotRequired[str]
 
 
-class PullRequestReviewRequestTypeForResponse(TypedDict):
-    """Pull Request Review Request
+class MergedUpstreamTypeForResponse(TypedDict):
+    """Merged upstream
 
-    Pull Request Review Request
+    Results of a successful merge upstream request
     """
 
-    users: list[SimpleUserTypeForResponse]
-    teams: list[TeamTypeForResponse]
+    message: NotRequired[str]
+    merge_type: NotRequired[Literal["merge", "fast-forward", "none"]]
+    base_branch: NotRequired[str]
 
 
 __all__ = (
-    "PullRequestReviewRequestType",
-    "PullRequestReviewRequestTypeForResponse",
+    "MergedUpstreamType",
+    "MergedUpstreamTypeForResponse",
 )

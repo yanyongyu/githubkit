@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,17 +18,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0109 import CustomPropertyValue
-from .group_0576 import EnterpriseWebhooks
-from .group_0577 import SimpleInstallation
-from .group_0578 import OrganizationSimpleWebhooks
-from .group_0579 import RepositoryWebhooks
+from .group_0588 import EnterpriseWebhooks
+from .group_0589 import SimpleInstallation
+from .group_0590 import OrganizationSimpleWebhooks
+from .group_0591 import RepositoryWebhooks
+from .group_0668 import WebhookCodeScanningAlertReopenedPropAlert
 
 
-class WebhookCustomPropertyValuesUpdated(GitHubModel):
-    """Custom property values updated event"""
+class WebhookCodeScanningAlertReopened(GitHubModel):
+    """code_scanning_alert reopened event"""
 
-    action: Literal["updated"] = Field()
+    action: Literal["reopened"] = Field()
+    alert: WebhookCodeScanningAlertReopenedPropAlert = Field(
+        description="The code scanning alert involved in the event."
+    )
+    commit_oid: Union[str, None] = Field(
+        description="The commit SHA of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty."
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -39,25 +45,21 @@ class WebhookCustomPropertyValuesUpdated(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    ref: Union[str, None] = Field(
+        description="The Git reference of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty."
+    )
     repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    organization: OrganizationSimpleWebhooks = Field(
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
-    )
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
-    new_property_values: list[CustomPropertyValue] = Field(
-        description="The new custom property values for the repository."
-    )
-    old_property_values: list[CustomPropertyValue] = Field(
-        description="The old custom property values for the repository."
-    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookCustomPropertyValuesUpdated)
+model_rebuild(WebhookCodeScanningAlertReopened)
 
-__all__ = ("WebhookCustomPropertyValuesUpdated",)
+__all__ = ("WebhookCodeScanningAlertReopened",)

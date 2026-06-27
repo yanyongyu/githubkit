@@ -9,28 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoMergesPostBody(GitHubModel):
-    """ReposOwnerRepoMergesPostBody"""
+class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBody(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBody"""
 
-    base: str = Field(
-        description="The name of the base branch that the head will be merged into."
-    )
-    head: str = Field(
-        description="The head to merge. This can be a branch name or a commit SHA1."
-    )
-    commit_message: Missing[str] = Field(
+    issue_field_values: Missing[
+        list[
+            ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems
+        ]
+    ] = Field(
+        max_length=25 if PYDANTIC_V2 else None,
         default=UNSET,
-        description="Commit message to use for the merge commit. If omitted, a default message will be used.",
+        description="An array of issue field values to set for this issue. Each field value must include the field ID and the value to set. All existing field values will be replaced.",
     )
 
 
-model_rebuild(ReposOwnerRepoMergesPostBody)
+class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems(
+    GitHubModel
+):
+    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems"""
 
-__all__ = ("ReposOwnerRepoMergesPostBody",)
+    field_id: int = Field(description="The ID of the issue field to set")
+    value: Union[str, float] = Field(
+        description="The value to set for the field. The type depends on the field's data type:\n- For text fields: provide a string value\n- For single_select fields: provide the option name as a string (must match an existing option)\n- For number fields: provide a numeric value\n- For date fields: provide an ISO 8601 date string"
+    )
+
+
+model_rebuild(ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBody)
+model_rebuild(
+    ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems
+)
+
+__all__ = (
+    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBody",
+    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems",
+)

@@ -9,55 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodeownersErrorsType(TypedDict):
-    """CODEOWNERS errors
+class CodeScanningSarifsReceiptType(TypedDict):
+    """CodeScanningSarifsReceipt"""
 
-    A list of errors found in a repo's CODEOWNERS file
-    """
-
-    errors: list[CodeownersErrorsPropErrorsItemsType]
+    id: NotRequired[str]
+    url: NotRequired[str]
 
 
-class CodeownersErrorsTypeForResponse(TypedDict):
-    """CODEOWNERS errors
+class CodeScanningSarifsReceiptTypeForResponse(TypedDict):
+    """CodeScanningSarifsReceipt"""
 
-    A list of errors found in a repo's CODEOWNERS file
-    """
-
-    errors: list[CodeownersErrorsPropErrorsItemsTypeForResponse]
-
-
-class CodeownersErrorsPropErrorsItemsType(TypedDict):
-    """CodeownersErrorsPropErrorsItems"""
-
-    line: int
-    column: int
-    source: NotRequired[str]
-    kind: str
-    suggestion: NotRequired[Union[str, None]]
-    message: str
-    path: str
-
-
-class CodeownersErrorsPropErrorsItemsTypeForResponse(TypedDict):
-    """CodeownersErrorsPropErrorsItems"""
-
-    line: int
-    column: int
-    source: NotRequired[str]
-    kind: str
-    suggestion: NotRequired[Union[str, None]]
-    message: str
-    path: str
+    id: NotRequired[str]
+    url: NotRequired[str]
 
 
 __all__ = (
-    "CodeownersErrorsPropErrorsItemsType",
-    "CodeownersErrorsPropErrorsItemsTypeForResponse",
-    "CodeownersErrorsType",
-    "CodeownersErrorsTypeForResponse",
+    "CodeScanningSarifsReceiptType",
+    "CodeScanningSarifsReceiptTypeForResponse",
 )

@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,42 +17,50 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0008 import Enterprise
-from .group_0009 import IntegrationPropPermissions
 
+class AgentsTasksGetResponse422(GitHubModel):
+    """AgentsTasksGetResponse422
 
-class AppManifestsCodeConversionsPostResponse201(GitHubModel):
-    """AppManifestsCodeConversionsPostResponse201"""
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
 
-    id: int = Field(description="Unique identifier of the GitHub app")
-    slug: Missing[str] = Field(
-        default=UNSET, description="The slug name of the GitHub app"
+    message: str = Field(
+        description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
-    node_id: str = Field()
-    client_id: str = Field()
-    owner: Union[SimpleUser, Enterprise] = Field()
-    name: str = Field(description="The name of the GitHub app")
-    description: Union[str, None] = Field()
-    external_url: str = Field()
-    html_url: str = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    permissions: IntegrationPropPermissions = Field(
-        description="The set of permissions for the GitHub app"
-    )
-    events: list[str] = Field(
-        description="The list of events for the GitHub app. Note that the `installation_target`, `security_advisory`, and `meta` events are not included because they are global events and not specific to an installation."
-    )
-    installations_count: Missing[int] = Field(
+    errors: Missing[list[AgentsTasksGetResponse422PropErrorsItems]] = Field(
         default=UNSET,
-        description="The number of installations associated with the GitHub app. Only returned when the integration is requesting details about itself.",
+        description="List of validation errors (present only for 422 responses)",
     )
-    client_secret: str = Field()
-    webhook_secret: Union[str, None] = Field()
-    pem: str = Field()
+    documentation_url: str = Field(description="URL to relevant API documentation")
 
 
-model_rebuild(AppManifestsCodeConversionsPostResponse201)
+class AgentsTasksGetResponse422PropErrorsItems(GitHubModel):
+    """AgentsTasksGetResponse422PropErrorsItems
 
-__all__ = ("AppManifestsCodeConversionsPostResponse201",)
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ] = Field(description="Machine-readable error code")
+    message: Missing[str] = Field(
+        default=UNSET,
+        description='Human-readable message (populated when code is "custom")',
+    )
+
+
+model_rebuild(AgentsTasksGetResponse422)
+model_rebuild(AgentsTasksGetResponse422PropErrorsItems)
+
+__all__ = (
+    "AgentsTasksGetResponse422",
+    "AgentsTasksGetResponse422PropErrorsItems",
+)

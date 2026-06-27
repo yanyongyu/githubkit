@@ -9,45 +9,116 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0575 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0576 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0577 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0578 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0581 import ExemptionRequestType, ExemptionRequestTypeForResponse
+
+class WebhooksAlertType(TypedDict):
+    """Repository Vulnerability Alert Alert
+
+    The security alert of the vulnerable dependency.
+    """
+
+    affected_package_name: str
+    affected_range: str
+    created_at: str
+    dismiss_reason: NotRequired[str]
+    dismissed_at: NotRequired[str]
+    dismisser: NotRequired[Union[WebhooksAlertPropDismisserType, None]]
+    external_identifier: str
+    external_reference: Union[str, None]
+    fix_reason: NotRequired[str]
+    fixed_at: NotRequired[_dt.datetime]
+    fixed_in: NotRequired[str]
+    ghsa_id: str
+    id: int
+    node_id: str
+    number: int
+    severity: str
+    state: Literal["auto_dismissed", "open"]
 
 
-class WebhookExemptionRequestCompletedType(TypedDict):
-    """Exemption request completed event"""
+class WebhooksAlertTypeForResponse(TypedDict):
+    """Repository Vulnerability Alert Alert
 
-    action: Literal["completed"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    exemption_request: ExemptionRequestType
-    sender: SimpleUserType
+    The security alert of the vulnerable dependency.
+    """
+
+    affected_package_name: str
+    affected_range: str
+    created_at: str
+    dismiss_reason: NotRequired[str]
+    dismissed_at: NotRequired[str]
+    dismisser: NotRequired[Union[WebhooksAlertPropDismisserTypeForResponse, None]]
+    external_identifier: str
+    external_reference: Union[str, None]
+    fix_reason: NotRequired[str]
+    fixed_at: NotRequired[str]
+    fixed_in: NotRequired[str]
+    ghsa_id: str
+    id: int
+    node_id: str
+    number: int
+    severity: str
+    state: Literal["auto_dismissed", "open"]
 
 
-class WebhookExemptionRequestCompletedTypeForResponse(TypedDict):
-    """Exemption request completed event"""
+class WebhooksAlertPropDismisserType(TypedDict):
+    """User"""
 
-    action: Literal["completed"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    exemption_request: ExemptionRequestTypeForResponse
-    sender: SimpleUserTypeForResponse
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+
+
+class WebhooksAlertPropDismisserTypeForResponse(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
 
 
 __all__ = (
-    "WebhookExemptionRequestCompletedType",
-    "WebhookExemptionRequestCompletedTypeForResponse",
+    "WebhooksAlertPropDismisserType",
+    "WebhooksAlertPropDismisserTypeForResponse",
+    "WebhooksAlertType",
+    "WebhooksAlertTypeForResponse",
 )

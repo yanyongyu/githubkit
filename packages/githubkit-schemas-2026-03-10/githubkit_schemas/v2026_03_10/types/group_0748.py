@@ -13,54 +13,44 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0502 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0503 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0504 import (
+from .group_0514 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0515 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0516 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0505 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0525 import (
-    WebhooksMarketplacePurchaseType,
-    WebhooksMarketplacePurchaseTypeForResponse,
-)
-from .group_0526 import (
-    WebhooksPreviousMarketplacePurchaseType,
-    WebhooksPreviousMarketplacePurchaseTypeForResponse,
-)
+from .group_0517 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0528 import WebhooksLabelType, WebhooksLabelTypeForResponse
+from .group_0533 import WebhooksIssueType, WebhooksIssueTypeForResponse
 
 
-class WebhookMarketplacePurchasePurchasedType(TypedDict):
-    """marketplace_purchase purchased event"""
+class WebhookIssuesUnlabeledType(TypedDict):
+    """issues unlabeled event"""
 
-    action: Literal["purchased"]
-    effective_date: str
+    action: Literal["unlabeled"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    marketplace_purchase: WebhooksMarketplacePurchaseType
+    issue: WebhooksIssueType
+    label: NotRequired[WebhooksLabelType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    previous_marketplace_purchase: NotRequired[WebhooksPreviousMarketplacePurchaseType]
-    repository: NotRequired[RepositoryWebhooksType]
+    repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookMarketplacePurchasePurchasedTypeForResponse(TypedDict):
-    """marketplace_purchase purchased event"""
+class WebhookIssuesUnlabeledTypeForResponse(TypedDict):
+    """issues unlabeled event"""
 
-    action: Literal["purchased"]
-    effective_date: str
+    action: Literal["unlabeled"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    marketplace_purchase: WebhooksMarketplacePurchaseTypeForResponse
+    issue: WebhooksIssueTypeForResponse
+    label: NotRequired[WebhooksLabelTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    previous_marketplace_purchase: NotRequired[
-        WebhooksPreviousMarketplacePurchaseTypeForResponse
-    ]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookMarketplacePurchasePurchasedType",
-    "WebhookMarketplacePurchasePurchasedTypeForResponse",
+    "WebhookIssuesUnlabeledType",
+    "WebhookIssuesUnlabeledTypeForResponse",
 )

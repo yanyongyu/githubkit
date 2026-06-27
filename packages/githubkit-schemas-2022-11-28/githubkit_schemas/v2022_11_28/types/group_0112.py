@@ -9,24 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsArtifactAndLogRetentionResponseType(TypedDict):
-    """ActionsArtifactAndLogRetentionResponse"""
+class OidcCustomSubType(TypedDict):
+    """Actions OIDC Subject customization
 
-    days: int
-    maximum_allowed_days: int
+    Actions OIDC Subject customization
+    """
+
+    include_claim_keys: list[str]
+    use_immutable_subject: NotRequired[bool]
 
 
-class ActionsArtifactAndLogRetentionResponseTypeForResponse(TypedDict):
-    """ActionsArtifactAndLogRetentionResponse"""
+class OidcCustomSubTypeForResponse(TypedDict):
+    """Actions OIDC Subject customization
 
-    days: int
-    maximum_allowed_days: int
+    Actions OIDC Subject customization
+    """
+
+    include_claim_keys: list[str]
+    use_immutable_subject: NotRequired[bool]
 
 
 __all__ = (
-    "ActionsArtifactAndLogRetentionResponseType",
-    "ActionsArtifactAndLogRetentionResponseTypeForResponse",
+    "OidcCustomSubType",
+    "OidcCustomSubTypeForResponse",
 )

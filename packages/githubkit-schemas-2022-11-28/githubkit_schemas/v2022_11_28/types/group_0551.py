@@ -12,39 +12,38 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0503 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0504 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0505 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0506 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+
+class PullRequestWebhookAllof1Type(TypedDict):
+    """PullRequestWebhookAllof1"""
+
+    allow_auto_merge: NotRequired[bool]
+    allow_update_branch: NotRequired[bool]
+    delete_branch_on_merge: NotRequired[bool]
+    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
+    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
+    squash_merge_commit_message: NotRequired[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    ]
+    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
+    use_squash_pr_title_as_default: NotRequired[bool]
 
 
-class WebhookBranchProtectionConfigurationDisabledType(TypedDict):
-    """branch protection configuration disabled event"""
+class PullRequestWebhookAllof1TypeForResponse(TypedDict):
+    """PullRequestWebhookAllof1"""
 
-    action: Literal["disabled"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
-
-
-class WebhookBranchProtectionConfigurationDisabledTypeForResponse(TypedDict):
-    """branch protection configuration disabled event"""
-
-    action: Literal["disabled"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    allow_auto_merge: NotRequired[bool]
+    allow_update_branch: NotRequired[bool]
+    delete_branch_on_merge: NotRequired[bool]
+    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
+    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
+    squash_merge_commit_message: NotRequired[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    ]
+    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
+    use_squash_pr_title_as_default: NotRequired[bool]
 
 
 __all__ = (
-    "WebhookBranchProtectionConfigurationDisabledType",
-    "WebhookBranchProtectionConfigurationDisabledTypeForResponse",
+    "PullRequestWebhookAllof1Type",
+    "PullRequestWebhookAllof1TypeForResponse",
 )

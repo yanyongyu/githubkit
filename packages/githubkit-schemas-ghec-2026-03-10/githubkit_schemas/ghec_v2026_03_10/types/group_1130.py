@@ -9,81 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200"""
-
-    organization: Union[
-        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganizationType,
-        None,
-    ]
-    repository: Union[
-        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepositoryType,
-        None,
-    ]
-
-
-class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200TypeForResponse(
+class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201Type(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200"""
+    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201
 
-    organization: Union[
-        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganizationTypeForResponse,
-        None,
-    ]
-    repository: Union[
-        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepositoryTypeForResponse,
-        None,
-    ]
+    The total number of seats created for the members of the specified enterprise
+    team(s).
+    """
+
+    seats_created: int
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganizationType(
+class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization"""
+    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201
 
-    id: int
-    login: str
+    The total number of seats created for the members of the specified enterprise
+    team(s).
+    """
 
-
-class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganizationTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization"""
-
-    id: int
-    login: str
-
-
-class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepositoryType(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository"""
-
-    id: int
-    name: str
-    full_name: str
-
-
-class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepositoryTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository"""
-
-    id: int
-    name: str
-    full_name: str
+    seats_created: int
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganizationType",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganizationTypeForResponse",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepositoryType",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepositoryTypeForResponse",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200Type",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201Type",
+    "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201TypeForResponse",
 )

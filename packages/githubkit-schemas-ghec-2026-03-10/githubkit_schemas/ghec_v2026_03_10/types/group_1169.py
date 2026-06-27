@@ -9,61 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class GistsGistIdPatchBodyType(TypedDict):
-    """GistsGistIdPatchBody"""
+class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200Type(TypedDict):
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200"""
 
-    description: NotRequired[str]
-    files: NotRequired[GistsGistIdPatchBodyPropFilesType]
-
-
-class GistsGistIdPatchBodyTypeForResponse(TypedDict):
-    """GistsGistIdPatchBody"""
-
-    description: NotRequired[str]
-    files: NotRequired[GistsGistIdPatchBodyPropFilesTypeForResponse]
-
-
-GistsGistIdPatchBodyPropFilesType: TypeAlias = dict[str, Any]
-"""GistsGistIdPatchBodyPropFiles
-
-The gist files to be updated, renamed, or deleted. Each `key` must match the
-current filename
-(including extension) of the targeted gist file. For example: `hello.py`.
-
-To delete a file, set the whole file to null. For example: `hello.py : null`.
-The file will also be
-deleted if the specified object does not contain at least one of `content` or
-`filename`.
-
-Examples:
-    {'hello.rb': {'content': 'blah', 'filename': 'goodbye.rb'}}
-"""
+    id: NotRequired[str]
+    name: NotRequired[str]
+    azure_subscription: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["active", "deleted"]]
+    resources: NotRequired[
+        list[
+            EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsType
+        ]
+    ]
 
 
-GistsGistIdPatchBodyPropFilesTypeForResponse: TypeAlias = dict[str, Any]
-"""GistsGistIdPatchBodyPropFiles
+class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200"""
 
-The gist files to be updated, renamed, or deleted. Each `key` must match the
-current filename
-(including extension) of the targeted gist file. For example: `hello.py`.
+    id: NotRequired[str]
+    name: NotRequired[str]
+    azure_subscription: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["active", "deleted"]]
+    resources: NotRequired[
+        list[
+            EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsTypeForResponse
+        ]
+    ]
 
-To delete a file, set the whole file to null. For example: `hello.py : null`.
-The file will also be
-deleted if the specified object does not contain at least one of `content` or
-`filename`.
 
-Examples:
-    {'hello.rb': {'content': 'blah', 'filename': 'goodbye.rb'}}
-"""
+class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsType(
+    TypedDict
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems"""
+
+    type: NotRequired[str]
+    name: NotRequired[str]
+
+
+class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems"""
+
+    type: NotRequired[str]
+    name: NotRequired[str]
 
 
 __all__ = (
-    "GistsGistIdPatchBodyPropFilesType",
-    "GistsGistIdPatchBodyPropFilesTypeForResponse",
-    "GistsGistIdPatchBodyType",
-    "GistsGistIdPatchBodyTypeForResponse",
+    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsType",
+    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsTypeForResponse",
+    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200Type",
+    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200TypeForResponse",
 )

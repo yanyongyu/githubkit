@@ -9,29 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0257 import (
-    ArtifactDeploymentRecordType,
-    ArtifactDeploymentRecordTypeForResponse,
-)
+
+class OrgsOrgActionsVariablesPostBodyType(TypedDict):
+    """OrgsOrgActionsVariablesPostBody"""
+
+    name: str
+    value: str
+    visibility: Literal["all", "private", "selected"]
+    selected_repository_ids: NotRequired[list[int]]
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200Type(TypedDict):
-    """OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200"""
+class OrgsOrgActionsVariablesPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsVariablesPostBody"""
 
-    total_count: int
-    deployment_records: NotRequired[list[ArtifactDeploymentRecordType]]
-
-
-class OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200TypeForResponse(TypedDict):
-    """OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200"""
-
-    total_count: int
-    deployment_records: NotRequired[list[ArtifactDeploymentRecordTypeForResponse]]
+    name: str
+    value: str
+    visibility: Literal["all", "private", "selected"]
+    selected_repository_ids: NotRequired[list[int]]
 
 
 __all__ = (
-    "OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200Type",
-    "OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200TypeForResponse",
+    "OrgsOrgActionsVariablesPostBodyType",
+    "OrgsOrgActionsVariablesPostBodyTypeForResponse",
 )

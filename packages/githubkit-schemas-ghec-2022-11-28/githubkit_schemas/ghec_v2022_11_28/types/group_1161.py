@@ -9,30 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0109 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200Type(
-    TypedDict
-):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteRespons
-    e200
-    """
+class EnterprisesEnterpriseOrgPropertiesValuesPatchBodyType(TypedDict):
+    """EnterprisesEnterpriseOrgPropertiesValuesPatchBody"""
 
-    message: NotRequired[str]
+    organization_logins: list[str]
+    properties: list[CustomPropertyValueType]
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteRespons
-    e200
-    """
+class EnterprisesEnterpriseOrgPropertiesValuesPatchBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseOrgPropertiesValuesPatchBody"""
 
-    message: NotRequired[str]
+    organization_logins: list[str]
+    properties: list[CustomPropertyValueTypeForResponse]
 
 
 __all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200Type",
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200TypeForResponse",
+    "EnterprisesEnterpriseOrgPropertiesValuesPatchBodyType",
+    "EnterprisesEnterpriseOrgPropertiesValuesPatchBodyTypeForResponse",
 )

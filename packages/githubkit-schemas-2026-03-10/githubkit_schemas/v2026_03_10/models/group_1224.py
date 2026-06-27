@@ -13,24 +13,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0(
-    GitHubModel
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneo
-    f0
-
-    Examples:
-        {'contexts': ['contexts']}
-    """
-
-    contexts: list[str] = Field(description="The name of the status checks")
+from .group_0276 import ActionsVariable
 
 
-model_rebuild(
-    ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0
-)
+class ReposOwnerRepoAgentsVariablesGetResponse200(GitHubModel):
+    """ReposOwnerRepoAgentsVariablesGetResponse200"""
 
-__all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0",
-)
+    total_count: int = Field()
+    variables: list[ActionsVariable] = Field()
+
+
+model_rebuild(ReposOwnerRepoAgentsVariablesGetResponse200)
+
+__all__ = ("ReposOwnerRepoAgentsVariablesGetResponse200",)

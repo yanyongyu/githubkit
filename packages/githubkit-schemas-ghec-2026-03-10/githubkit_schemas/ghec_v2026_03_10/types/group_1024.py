@@ -9,79 +9,145 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0356 import DeploymentType, DeploymentTypeForResponse
+from .group_0587 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0588 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0589 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0590 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
-class AgentsReposOwnerRepoTasksGetResponse400Type(TypedDict):
-    """AgentsReposOwnerRepoTasksGetResponse400
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
+class WebhookWorkflowJobCompletedType(TypedDict):
+    """workflow_job completed event"""
 
-    message: str
-    errors: NotRequired[
-        list[AgentsReposOwnerRepoTasksGetResponse400PropErrorsItemsType]
+    action: Literal["completed"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
+    workflow_job: WebhookWorkflowJobCompletedPropWorkflowJobType
+    deployment: NotRequired[DeploymentType]
+
+
+class WebhookWorkflowJobCompletedTypeForResponse(TypedDict):
+    """workflow_job completed event"""
+
+    action: Literal["completed"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+    workflow_job: WebhookWorkflowJobCompletedPropWorkflowJobTypeForResponse
+    deployment: NotRequired[DeploymentTypeForResponse]
+
+
+class WebhookWorkflowJobCompletedPropWorkflowJobType(TypedDict):
+    """WebhookWorkflowJobCompletedPropWorkflowJob"""
+
+    check_run_url: str
+    completed_at: str
+    conclusion: Literal[
+        "success",
+        "failure",
+        "skipped",
+        "cancelled",
+        "action_required",
+        "neutral",
+        "timed_out",
     ]
-    documentation_url: str
+    created_at: str
+    head_sha: str
+    html_url: str
+    id: int
+    labels: list[str]
+    name: str
+    node_id: str
+    run_attempt: int
+    run_id: int
+    run_url: str
+    runner_group_id: Union[Union[int, None], None]
+    runner_group_name: Union[Union[str, None], None]
+    runner_id: Union[Union[int, None], None]
+    runner_name: Union[Union[str, None], None]
+    started_at: str
+    status: Literal["queued", "in_progress", "completed", "waiting"]
+    head_branch: Union[Union[str, None], None]
+    workflow_name: Union[Union[str, None], None]
+    steps: list[WebhookWorkflowJobCompletedPropWorkflowJobMergedStepsType]
+    url: str
 
 
-class AgentsReposOwnerRepoTasksGetResponse400TypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksGetResponse400
+class WebhookWorkflowJobCompletedPropWorkflowJobTypeForResponse(TypedDict):
+    """WebhookWorkflowJobCompletedPropWorkflowJob"""
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[
-        list[AgentsReposOwnerRepoTasksGetResponse400PropErrorsItemsTypeForResponse]
+    check_run_url: str
+    completed_at: str
+    conclusion: Literal[
+        "success",
+        "failure",
+        "skipped",
+        "cancelled",
+        "action_required",
+        "neutral",
+        "timed_out",
     ]
-    documentation_url: str
+    created_at: str
+    head_sha: str
+    html_url: str
+    id: int
+    labels: list[str]
+    name: str
+    node_id: str
+    run_attempt: int
+    run_id: int
+    run_url: str
+    runner_group_id: Union[Union[int, None], None]
+    runner_group_name: Union[Union[str, None], None]
+    runner_id: Union[Union[int, None], None]
+    runner_name: Union[Union[str, None], None]
+    started_at: str
+    status: Literal["queued", "in_progress", "completed", "waiting"]
+    head_branch: Union[Union[str, None], None]
+    workflow_name: Union[Union[str, None], None]
+    steps: list[WebhookWorkflowJobCompletedPropWorkflowJobMergedStepsTypeForResponse]
+    url: str
 
 
-class AgentsReposOwnerRepoTasksGetResponse400PropErrorsItemsType(TypedDict):
-    """AgentsReposOwnerRepoTasksGetResponse400PropErrorsItems
+class WebhookWorkflowJobCompletedPropWorkflowJobMergedStepsType(TypedDict):
+    """WebhookWorkflowJobCompletedPropWorkflowJobMergedSteps"""
 
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
+    completed_at: Union[str, None]
+    conclusion: Union[None, Literal["failure", "skipped", "success", "cancelled"]]
+    name: str
+    number: int
+    started_at: Union[str, None]
+    status: Literal["in_progress", "completed", "queued"]
 
 
-class AgentsReposOwnerRepoTasksGetResponse400PropErrorsItemsTypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksGetResponse400PropErrorsItems
+class WebhookWorkflowJobCompletedPropWorkflowJobMergedStepsTypeForResponse(TypedDict):
+    """WebhookWorkflowJobCompletedPropWorkflowJobMergedSteps"""
 
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
+    completed_at: Union[str, None]
+    conclusion: Union[None, Literal["failure", "skipped", "success", "cancelled"]]
+    name: str
+    number: int
+    started_at: Union[str, None]
+    status: Literal["in_progress", "completed", "queued"]
 
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksGetResponse400PropErrorsItemsType",
-    "AgentsReposOwnerRepoTasksGetResponse400PropErrorsItemsTypeForResponse",
-    "AgentsReposOwnerRepoTasksGetResponse400Type",
-    "AgentsReposOwnerRepoTasksGetResponse400TypeForResponse",
+    "WebhookWorkflowJobCompletedPropWorkflowJobMergedStepsType",
+    "WebhookWorkflowJobCompletedPropWorkflowJobMergedStepsTypeForResponse",
+    "WebhookWorkflowJobCompletedPropWorkflowJobType",
+    "WebhookWorkflowJobCompletedPropWorkflowJobTypeForResponse",
+    "WebhookWorkflowJobCompletedType",
+    "WebhookWorkflowJobCompletedTypeForResponse",
 )

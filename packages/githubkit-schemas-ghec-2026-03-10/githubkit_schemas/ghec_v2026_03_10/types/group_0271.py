@@ -9,30 +9,62 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class DependabotPublicKeyType(TypedDict):
-    """DependabotPublicKey
+class OrganizationCustomRepositoryRoleType(TypedDict):
+    """Organization Custom Repository Role
 
-    The public key used for setting Dependabot Secrets.
+    Custom repository roles created by organization owners
     """
 
-    key_id: str
-    key: str
+    id: int
+    name: str
+    description: NotRequired[Union[str, None]]
+    base_role: Literal["read", "triage", "write", "maintain"]
+    permissions: list[str]
+    organization: SimpleUserType
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-class DependabotPublicKeyTypeForResponse(TypedDict):
-    """DependabotPublicKey
+class OrganizationCustomRepositoryRoleTypeForResponse(TypedDict):
+    """Organization Custom Repository Role
 
-    The public key used for setting Dependabot Secrets.
+    Custom repository roles created by organization owners
     """
 
-    key_id: str
-    key: str
+    id: int
+    name: str
+    description: NotRequired[Union[str, None]]
+    base_role: Literal["read", "triage", "write", "maintain"]
+    permissions: list[str]
+    organization: SimpleUserTypeForResponse
+    created_at: str
+    updated_at: str
+
+
+class OrgsOrgCustomRepositoryRolesGetResponse200Type(TypedDict):
+    """OrgsOrgCustomRepositoryRolesGetResponse200"""
+
+    total_count: NotRequired[int]
+    custom_roles: NotRequired[list[OrganizationCustomRepositoryRoleType]]
+
+
+class OrgsOrgCustomRepositoryRolesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCustomRepositoryRolesGetResponse200"""
+
+    total_count: NotRequired[int]
+    custom_roles: NotRequired[list[OrganizationCustomRepositoryRoleTypeForResponse]]
 
 
 __all__ = (
-    "DependabotPublicKeyType",
-    "DependabotPublicKeyTypeForResponse",
+    "OrganizationCustomRepositoryRoleType",
+    "OrganizationCustomRepositoryRoleTypeForResponse",
+    "OrgsOrgCustomRepositoryRolesGetResponse200Type",
+    "OrgsOrgCustomRepositoryRolesGetResponse200TypeForResponse",
 )

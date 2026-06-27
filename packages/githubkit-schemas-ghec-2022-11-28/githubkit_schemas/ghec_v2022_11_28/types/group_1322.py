@@ -10,28 +10,24 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class OrgsOrgProjectsV2ProjectNumberViewsPostBodyType(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberViewsPostBody"""
+class OrgsOrgPersonalAccessTokensPostBodyType(TypedDict):
+    """OrgsOrgPersonalAccessTokensPostBody"""
 
-    name: str
-    layout: Literal["table", "board", "roadmap"]
-    filter_: NotRequired[str]
-    visible_fields: NotRequired[list[int]]
+    action: Literal["revoke"]
+    pat_ids: list[int]
 
 
-class OrgsOrgProjectsV2ProjectNumberViewsPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberViewsPostBody"""
+class OrgsOrgPersonalAccessTokensPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgPersonalAccessTokensPostBody"""
 
-    name: str
-    layout: Literal["table", "board", "roadmap"]
-    filter_: NotRequired[str]
-    visible_fields: NotRequired[list[int]]
+    action: Literal["revoke"]
+    pat_ids: list[int]
 
 
 __all__ = (
-    "OrgsOrgProjectsV2ProjectNumberViewsPostBodyType",
-    "OrgsOrgProjectsV2ProjectNumberViewsPostBodyTypeForResponse",
+    "OrgsOrgPersonalAccessTokensPostBodyType",
+    "OrgsOrgPersonalAccessTokensPostBodyTypeForResponse",
 )

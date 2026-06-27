@@ -9,22 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Any, Literal, TypeAlias
 from typing_extensions import TypedDict
 
 
-class OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBodyType(TypedDict):
-    """OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody"""
+class OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyType(TypedDict):
+    """OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody"""
 
-    selected_repository_ids: list[int]
+    resource_type: Literal[
+        "repository", "github_file", "free_text", "github_issue", "github_pull_request"
+    ]
+    metadata: OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataType
 
 
-class OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody"""
+class OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody"""
 
-    selected_repository_ids: list[int]
+    resource_type: Literal[
+        "repository", "github_file", "free_text", "github_issue", "github_pull_request"
+    ]
+    metadata: (
+        OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataTypeForResponse
+    )
+
+
+OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataType: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata
+
+Resource-specific metadata.
+"""
+
+
+OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata
+
+Resource-specific metadata.
+"""
 
 
 __all__ = (
-    "OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBodyType",
-    "OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBodyTypeForResponse",
+    "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataType",
+    "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataTypeForResponse",
+    "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyType",
+    "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyTypeForResponse",
 )

@@ -43,6 +43,7 @@ if TYPE_CHECKING:
         GetAllBudgets,
         GetAllCostCenters,
         GetBudget,
+        GetBudgetUserStates,
         GetCostCenter,
         UpdateBudget,
         UpdateCostCenter,
@@ -72,6 +73,7 @@ if TYPE_CHECKING:
         GetAllBudgetsTypeForResponse,
         GetAllCostCentersTypeForResponse,
         GetBudgetTypeForResponse,
+        GetBudgetUserStatesTypeForResponse,
         GetCostCenterTypeForResponse,
         UpdateBudgetTypeForResponse,
         UpdateCostCenterTypeForResponse,
@@ -993,6 +995,120 @@ class BillingClient:
                 "422": ValidationError,
                 "500": BasicError,
                 "503": BasicError,
+            },
+        )
+
+    def get_budget_user_states(
+        self,
+        enterprise: str,
+        budget_id: str,
+        *,
+        page: Missing[int] = UNSET,
+        per_page: Missing[int] = UNSET,
+        sort_order: Missing[Literal["0", "1"]] = UNSET,
+        user: Missing[str] = UNSET,
+        threshold_lower_bound: Missing[int] = UNSET,
+        threshold_upper_bound: Missing[int] = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[GetBudgetUserStates, GetBudgetUserStatesTypeForResponse]:
+        """billing/get-budget-user-states
+
+        GET /enterprises/{enterprise}/settings/billing/budgets/{budget_id}/user-states
+
+        Lists per-user budget state for a multi-user customer scoped budget. The authenticated user must be an enterprise admin or billing manager.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/budgets#get-user-states-for-a-multi-user-budget
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            GetBudgetUserStates,
+        )
+
+        url = f"/enterprises/{enterprise}/settings/billing/budgets/{budget_id}/user-states"
+
+        params = {
+            "page": page,
+            "per_page": per_page,
+            "sort_order": sort_order,
+            "user": user,
+            "threshold_lower_bound": threshold_lower_bound,
+            "threshold_upper_bound": threshold_upper_bound,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=GetBudgetUserStates,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "500": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    async def async_get_budget_user_states(
+        self,
+        enterprise: str,
+        budget_id: str,
+        *,
+        page: Missing[int] = UNSET,
+        per_page: Missing[int] = UNSET,
+        sort_order: Missing[Literal["0", "1"]] = UNSET,
+        user: Missing[str] = UNSET,
+        threshold_lower_bound: Missing[int] = UNSET,
+        threshold_upper_bound: Missing[int] = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[GetBudgetUserStates, GetBudgetUserStatesTypeForResponse]:
+        """billing/get-budget-user-states
+
+        GET /enterprises/{enterprise}/settings/billing/budgets/{budget_id}/user-states
+
+        Lists per-user budget state for a multi-user customer scoped budget. The authenticated user must be an enterprise admin or billing manager.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/budgets#get-user-states-for-a-multi-user-budget
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            GetBudgetUserStates,
+        )
+
+        url = f"/enterprises/{enterprise}/settings/billing/budgets/{budget_id}/user-states"
+
+        params = {
+            "page": page,
+            "per_page": per_page,
+            "sort_order": sort_order,
+            "user": user,
+            "threshold_lower_bound": threshold_lower_bound,
+            "threshold_upper_bound": threshold_upper_bound,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=GetBudgetUserStates,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "500": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
             },
         )
 

@@ -9,29 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0108 import (
-    ActionsHostedRunnerCuratedImageType,
-    ActionsHostedRunnerCuratedImageTypeForResponse,
-)
+import datetime as _dt
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200Type(TypedDict):
-    """OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200"""
+class NotificationsPutBodyType(TypedDict):
+    """NotificationsPutBody"""
 
-    total_count: int
-    images: list[ActionsHostedRunnerCuratedImageType]
+    last_read_at: NotRequired[_dt.datetime]
+    read: NotRequired[bool]
 
 
-class OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200"""
+class NotificationsPutBodyTypeForResponse(TypedDict):
+    """NotificationsPutBody"""
 
-    total_count: int
-    images: list[ActionsHostedRunnerCuratedImageTypeForResponse]
+    last_read_at: NotRequired[str]
+    read: NotRequired[bool]
 
 
 __all__ = (
-    "OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200Type",
-    "OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200TypeForResponse",
+    "NotificationsPutBodyType",
+    "NotificationsPutBodyTypeForResponse",
 )

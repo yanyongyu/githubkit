@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,18 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0205 import IssueType
-from .group_0576 import EnterpriseWebhooks
-from .group_0577 import SimpleInstallation
-from .group_0578 import OrganizationSimpleWebhooks
-from .group_0579 import RepositoryWebhooks
-from .group_0597 import WebhooksIssue
+from .group_0588 import EnterpriseWebhooks
+from .group_0589 import SimpleInstallation
+from .group_0590 import OrganizationSimpleWebhooks
+from .group_0591 import RepositoryWebhooks
+from .group_0610 import WebhooksMilestone
+from .group_0816 import WebhookIssuesMilestonedPropIssue
 
 
-class WebhookIssuesTyped(GitHubModel):
-    """issues typed event"""
+class WebhookIssuesMilestoned(GitHubModel):
+    """issues milestoned event"""
 
-    action: Literal["typed"] = Field()
+    action: Literal["milestoned"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -40,13 +40,13 @@ class WebhookIssuesTyped(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    issue: WebhooksIssue = Field(
+    issue: WebhookIssuesMilestonedPropIssue = Field(
         title="Issue",
         description="The [issue](https://docs.github.com/enterprise-cloud@latest/rest/issues/issues#get-an-issue) itself.",
     )
-    type: Union[IssueType, None] = Field(
-        title="Issue Type",
-        description="The type assigned to the issue. This is only present for issues in repositories where issue types are supported.",
+    milestone: WebhooksMilestone = Field(
+        title="Milestone",
+        description="A collection of related issues and pull requests.",
     )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
@@ -60,6 +60,6 @@ class WebhookIssuesTyped(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookIssuesTyped)
+model_rebuild(WebhookIssuesMilestoned)
 
-__all__ = ("WebhookIssuesTyped",)
+__all__ = ("WebhookIssuesMilestoned",)

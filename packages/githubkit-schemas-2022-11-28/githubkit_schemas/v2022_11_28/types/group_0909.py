@@ -13,44 +13,44 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0503 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0504 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0505 import (
+from .group_0515 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0516 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0517 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0506 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0548 import WebhooksSponsorshipType, WebhooksSponsorshipTypeForResponse
-from .group_0549 import WebhooksChanges8Type, WebhooksChanges8TypeForResponse
+from .group_0518 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0559 import (
+    WebhooksSecurityAdvisoryType,
+    WebhooksSecurityAdvisoryTypeForResponse,
+)
 
 
-class WebhookSponsorshipTierChangedType(TypedDict):
-    """sponsorship tier_changed event"""
+class WebhookSecurityAdvisoryPublishedType(TypedDict):
+    """security_advisory published event"""
 
-    action: Literal["tier_changed"]
-    changes: WebhooksChanges8Type
+    action: Literal["published"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserType
-    sponsorship: WebhooksSponsorshipType
+    security_advisory: WebhooksSecurityAdvisoryType
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookSponsorshipTierChangedTypeForResponse(TypedDict):
-    """sponsorship tier_changed event"""
+class WebhookSecurityAdvisoryPublishedTypeForResponse(TypedDict):
+    """security_advisory published event"""
 
-    action: Literal["tier_changed"]
-    changes: WebhooksChanges8TypeForResponse
+    action: Literal["published"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    sender: SimpleUserTypeForResponse
-    sponsorship: WebhooksSponsorshipTypeForResponse
+    security_advisory: WebhooksSecurityAdvisoryTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookSponsorshipTierChangedType",
-    "WebhookSponsorshipTierChangedTypeForResponse",
+    "WebhookSecurityAdvisoryPublishedType",
+    "WebhookSecurityAdvisoryPublishedTypeForResponse",
 )

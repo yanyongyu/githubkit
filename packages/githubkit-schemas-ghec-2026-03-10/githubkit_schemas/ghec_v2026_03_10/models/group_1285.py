@@ -11,26 +11,18 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class OrgsOrgDependabotRepositoryAccessPatchBody(GitHubModel):
-    """OrgsOrgDependabotRepositoryAccessPatchBody
+class OrgsOrgCopilotBillingSelectedTeamsPostBody(GitHubModel):
+    """OrgsOrgCopilotBillingSelectedTeamsPostBody"""
 
-    Examples:
-        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
-    """
-
-    repository_ids_to_add: Missing[list[int]] = Field(
-        default=UNSET, description="List of repository IDs to add."
-    )
-    repository_ids_to_remove: Missing[list[int]] = Field(
-        default=UNSET, description="List of repository IDs to remove."
+    selected_teams: list[str] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        description="List of team names within the organization to which to grant access to GitHub Copilot.",
     )
 
 
-model_rebuild(OrgsOrgDependabotRepositoryAccessPatchBody)
+model_rebuild(OrgsOrgCopilotBillingSelectedTeamsPostBody)
 
-__all__ = ("OrgsOrgDependabotRepositoryAccessPatchBody",)
+__all__ = ("OrgsOrgCopilotBillingSelectedTeamsPostBody",)

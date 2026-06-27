@@ -9,31 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0017 import AppPermissions
 
-class EnterprisesEnterpriseActionsPermissionsPutBody(GitHubModel):
-    """EnterprisesEnterpriseActionsPermissionsPutBody"""
 
-    enabled_organizations: Literal["all", "none", "selected"] = Field(
-        description="The policy that controls the organizations in the enterprise that are allowed to run GitHub Actions."
+class ApplicationsClientIdTokenScopedPostBody(GitHubModel):
+    """ApplicationsClientIdTokenScopedPostBody"""
+
+    access_token: str = Field(
+        description="The access token used to authenticate to the GitHub API."
     )
-    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
+    target: Missing[str] = Field(
         default=UNSET,
-        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
+        description="The name of the user or organization to scope the user access token to. **Required** unless `target_id` is specified.",
     )
-    sha_pinning_required: Missing[bool] = Field(
+    target_id: Missing[int] = Field(
         default=UNSET,
-        description="Whether actions must be pinned to a full-length commit SHA.",
+        description="The ID of the user or organization to scope the user access token to. **Required** unless `target` is specified.",
+    )
+    repositories: Missing[list[str]] = Field(
+        default=UNSET,
+        description="The list of repository names to scope the user access token to. `repositories` may not be specified if `repository_ids` is specified.",
+    )
+    repository_ids: Missing[list[int]] = Field(
+        default=UNSET,
+        description="The list of repository IDs to scope the user access token to. `repository_ids` may not be specified if `repositories` is specified.",
+    )
+    permissions: Missing[AppPermissions] = Field(
+        default=UNSET,
+        title="App Permissions",
+        description="The permissions granted to the user access token.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseActionsPermissionsPutBody)
+model_rebuild(ApplicationsClientIdTokenScopedPostBody)
 
-__all__ = ("EnterprisesEnterpriseActionsPermissionsPutBody",)
+__all__ = ("ApplicationsClientIdTokenScopedPostBody",)

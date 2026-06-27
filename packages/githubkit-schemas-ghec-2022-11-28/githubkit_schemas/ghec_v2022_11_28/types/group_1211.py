@@ -12,19 +12,19 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType(TypedDict):
-    """OrgsOrgActionsRunnersRunnerIdLabelsPutBody"""
+class OrgsOrgActionsPermissionsRepositoriesPutBodyType(TypedDict):
+    """OrgsOrgActionsPermissionsRepositoriesPutBody"""
 
-    labels: list[str]
+    selected_repository_ids: list[int]
 
 
-class OrgsOrgActionsRunnersRunnerIdLabelsPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgActionsRunnersRunnerIdLabelsPutBody"""
+class OrgsOrgActionsPermissionsRepositoriesPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsPermissionsRepositoriesPutBody"""
 
-    labels: list[str]
+    selected_repository_ids: list[int]
 
 
 __all__ = (
-    "OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType",
-    "OrgsOrgActionsRunnersRunnerIdLabelsPutBodyTypeForResponse",
+    "OrgsOrgActionsPermissionsRepositoriesPutBodyType",
+    "OrgsOrgActionsPermissionsRepositoriesPutBodyTypeForResponse",
 )

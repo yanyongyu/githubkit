@@ -9,25 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class SelfHostedRunnersSettingsType(TypedDict):
-    """SelfHostedRunnersSettings"""
+class ActionsForkPrWorkflowsPrivateReposRequestType(TypedDict):
+    """ActionsForkPrWorkflowsPrivateReposRequest"""
 
-    enabled_repositories: Literal["all", "selected", "none"]
-    selected_repositories_url: NotRequired[str]
+    run_workflows_from_fork_pull_requests: bool
+    send_write_tokens_to_workflows: NotRequired[bool]
+    send_secrets_and_variables: NotRequired[bool]
+    require_approval_for_fork_pr_workflows: NotRequired[bool]
 
 
-class SelfHostedRunnersSettingsTypeForResponse(TypedDict):
-    """SelfHostedRunnersSettings"""
+class ActionsForkPrWorkflowsPrivateReposRequestTypeForResponse(TypedDict):
+    """ActionsForkPrWorkflowsPrivateReposRequest"""
 
-    enabled_repositories: Literal["all", "selected", "none"]
-    selected_repositories_url: NotRequired[str]
+    run_workflows_from_fork_pull_requests: bool
+    send_write_tokens_to_workflows: NotRequired[bool]
+    send_secrets_and_variables: NotRequired[bool]
+    require_approval_for_fork_pr_workflows: NotRequired[bool]
 
 
 __all__ = (
-    "SelfHostedRunnersSettingsType",
-    "SelfHostedRunnersSettingsTypeForResponse",
+    "ActionsForkPrWorkflowsPrivateReposRequestType",
+    "ActionsForkPrWorkflowsPrivateReposRequestTypeForResponse",
 )

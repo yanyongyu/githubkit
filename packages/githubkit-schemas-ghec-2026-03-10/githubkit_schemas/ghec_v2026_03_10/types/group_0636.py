@@ -9,28 +9,107 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class WebhookCheckRunCompletedFormEncodedType(TypedDict):
-    """Check Run Completed Event
+class WebhooksTeam1Type(TypedDict):
+    """Team
 
-    The check_run.completed webhook encoded with URL encoding
+    Groups of organization members that gives permissions on specified repositories.
     """
 
-    payload: str
+    deleted: NotRequired[bool]
+    description: NotRequired[Union[str, None]]
+    html_url: NotRequired[str]
+    id: int
+    members_url: NotRequired[str]
+    name: str
+    node_id: NotRequired[str]
+    parent: NotRequired[Union[WebhooksTeam1PropParentType, None]]
+    permission: NotRequired[str]
+    privacy: NotRequired[Literal["open", "closed", "secret"]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
+    repositories_url: NotRequired[str]
+    slug: NotRequired[str]
+    url: NotRequired[str]
+    type: NotRequired[Literal["enterprise", "organization"]]
+    organization_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
 
 
-class WebhookCheckRunCompletedFormEncodedTypeForResponse(TypedDict):
-    """Check Run Completed Event
+class WebhooksTeam1TypeForResponse(TypedDict):
+    """Team
 
-    The check_run.completed webhook encoded with URL encoding
+    Groups of organization members that gives permissions on specified repositories.
     """
 
-    payload: str
+    deleted: NotRequired[bool]
+    description: NotRequired[Union[str, None]]
+    html_url: NotRequired[str]
+    id: int
+    members_url: NotRequired[str]
+    name: str
+    node_id: NotRequired[str]
+    parent: NotRequired[Union[WebhooksTeam1PropParentTypeForResponse, None]]
+    permission: NotRequired[str]
+    privacy: NotRequired[Literal["open", "closed", "secret"]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
+    repositories_url: NotRequired[str]
+    slug: NotRequired[str]
+    url: NotRequired[str]
+    type: NotRequired[Literal["enterprise", "organization"]]
+    organization_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
+
+
+class WebhooksTeam1PropParentType(TypedDict):
+    """WebhooksTeam1PropParent"""
+
+    description: Union[str, None]
+    html_url: str
+    id: int
+    members_url: str
+    name: str
+    node_id: str
+    permission: str
+    privacy: Literal["open", "closed", "secret"]
+    notification_setting: Literal["notifications_enabled", "notifications_disabled"]
+    repositories_url: str
+    slug: str
+    url: str
+    type: Literal["enterprise", "organization"]
+    organization_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
+
+
+class WebhooksTeam1PropParentTypeForResponse(TypedDict):
+    """WebhooksTeam1PropParent"""
+
+    description: Union[str, None]
+    html_url: str
+    id: int
+    members_url: str
+    name: str
+    node_id: str
+    permission: str
+    privacy: Literal["open", "closed", "secret"]
+    notification_setting: Literal["notifications_enabled", "notifications_disabled"]
+    repositories_url: str
+    slug: str
+    url: str
+    type: Literal["enterprise", "organization"]
+    organization_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
 
 
 __all__ = (
-    "WebhookCheckRunCompletedFormEncodedType",
-    "WebhookCheckRunCompletedFormEncodedTypeForResponse",
+    "WebhooksTeam1PropParentType",
+    "WebhooksTeam1PropParentTypeForResponse",
+    "WebhooksTeam1Type",
+    "WebhooksTeam1TypeForResponse",
 )

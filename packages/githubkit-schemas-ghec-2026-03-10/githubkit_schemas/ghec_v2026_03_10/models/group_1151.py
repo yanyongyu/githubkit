@@ -16,16 +16,15 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200(
-    GitHubModel
-):
-    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200"""
+class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBody(GitHubModel):
+    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBody"""
 
-    pattern_config_version: Missing[str] = Field(
-        default=UNSET, description="The updated pattern configuration version."
+    revoke_credentials: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to also destroy the actual credentials (PATs and SSH keys) owned by\nthe user. This option is only available for Enterprise Managed User (EMU)\nenterprises. When set to `true`, all PATs (v1 and v2) and SSH keys owned\nby the user will be destroyed in addition to the credential authorizations.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200)
+model_rebuild(EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBody)
 
-__all__ = ("EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200",)
+__all__ = ("EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBody",)

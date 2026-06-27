@@ -9,30 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_1502 import (
-    ReposOwnerRepoPagesPostBodyPropSourceType,
-    ReposOwnerRepoPagesPostBodyPropSourceTypeForResponse,
-)
+
+class ReposOwnerRepoLabelsPostBodyType(TypedDict):
+    """ReposOwnerRepoLabelsPostBody"""
+
+    name: str
+    color: NotRequired[str]
+    description: NotRequired[str]
 
 
-class ReposOwnerRepoPagesPostBodyAnyof1Type(TypedDict):
-    """ReposOwnerRepoPagesPostBodyAnyof1"""
+class ReposOwnerRepoLabelsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoLabelsPostBody"""
 
-    build_type: Literal["legacy", "workflow"]
-    source: NotRequired[ReposOwnerRepoPagesPostBodyPropSourceType]
-
-
-class ReposOwnerRepoPagesPostBodyAnyof1TypeForResponse(TypedDict):
-    """ReposOwnerRepoPagesPostBodyAnyof1"""
-
-    build_type: Literal["legacy", "workflow"]
-    source: NotRequired[ReposOwnerRepoPagesPostBodyPropSourceTypeForResponse]
+    name: str
+    color: NotRequired[str]
+    description: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoPagesPostBodyAnyof1Type",
-    "ReposOwnerRepoPagesPostBodyAnyof1TypeForResponse",
+    "ReposOwnerRepoLabelsPostBodyType",
+    "ReposOwnerRepoLabelsPostBodyTypeForResponse",
 )

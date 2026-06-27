@@ -9,86 +9,93 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class BillingPremiumRequestUsageReportOrgType(TypedDict):
-    """BillingPremiumRequestUsageReportOrg"""
+class UpdateBudgetType(TypedDict):
+    """UpdateBudget"""
 
-    time_period: BillingPremiumRequestUsageReportOrgPropTimePeriodType
-    organization: str
+    message: str
+    budget: UpdateBudgetPropBudgetType
+
+
+class UpdateBudgetTypeForResponse(TypedDict):
+    """UpdateBudget"""
+
+    message: str
+    budget: UpdateBudgetPropBudgetTypeForResponse
+
+
+class UpdateBudgetPropBudgetType(TypedDict):
+    """UpdateBudgetPropBudget"""
+
+    id: NotRequired[str]
+    budget_scope: NotRequired[
+        Literal[
+            "enterprise",
+            "organization",
+            "repository",
+            "cost_center",
+            "multi_user_customer",
+            "user",
+        ]
+    ]
+    budget_entity_name: NotRequired[str]
     user: NotRequired[str]
-    product: NotRequired[str]
-    model: NotRequired[str]
-    usage_items: list[BillingPremiumRequestUsageReportOrgPropUsageItemsItemsType]
+    consumed_amount: NotRequired[float]
+    budget_amount: NotRequired[int]
+    prevent_further_usage: NotRequired[bool]
+    budget_product_sku: NotRequired[str]
+    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing"]]
+    budget_alerting: NotRequired[UpdateBudgetPropBudgetPropBudgetAlertingType]
 
 
-class BillingPremiumRequestUsageReportOrgTypeForResponse(TypedDict):
-    """BillingPremiumRequestUsageReportOrg"""
+class UpdateBudgetPropBudgetTypeForResponse(TypedDict):
+    """UpdateBudgetPropBudget"""
 
-    time_period: BillingPremiumRequestUsageReportOrgPropTimePeriodTypeForResponse
-    organization: str
+    id: NotRequired[str]
+    budget_scope: NotRequired[
+        Literal[
+            "enterprise",
+            "organization",
+            "repository",
+            "cost_center",
+            "multi_user_customer",
+            "user",
+        ]
+    ]
+    budget_entity_name: NotRequired[str]
     user: NotRequired[str]
-    product: NotRequired[str]
-    model: NotRequired[str]
-    usage_items: list[
-        BillingPremiumRequestUsageReportOrgPropUsageItemsItemsTypeForResponse
+    consumed_amount: NotRequired[float]
+    budget_amount: NotRequired[int]
+    prevent_further_usage: NotRequired[bool]
+    budget_product_sku: NotRequired[str]
+    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing"]]
+    budget_alerting: NotRequired[
+        UpdateBudgetPropBudgetPropBudgetAlertingTypeForResponse
     ]
 
 
-class BillingPremiumRequestUsageReportOrgPropTimePeriodType(TypedDict):
-    """BillingPremiumRequestUsageReportOrgPropTimePeriod"""
+class UpdateBudgetPropBudgetPropBudgetAlertingType(TypedDict):
+    """UpdateBudgetPropBudgetPropBudgetAlerting"""
 
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
-
-
-class BillingPremiumRequestUsageReportOrgPropTimePeriodTypeForResponse(TypedDict):
-    """BillingPremiumRequestUsageReportOrgPropTimePeriod"""
-
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
+    will_alert: NotRequired[bool]
+    alert_recipients: NotRequired[list[str]]
 
 
-class BillingPremiumRequestUsageReportOrgPropUsageItemsItemsType(TypedDict):
-    """BillingPremiumRequestUsageReportOrgPropUsageItemsItems"""
+class UpdateBudgetPropBudgetPropBudgetAlertingTypeForResponse(TypedDict):
+    """UpdateBudgetPropBudgetPropBudgetAlerting"""
 
-    product: str
-    sku: str
-    model: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
-
-
-class BillingPremiumRequestUsageReportOrgPropUsageItemsItemsTypeForResponse(TypedDict):
-    """BillingPremiumRequestUsageReportOrgPropUsageItemsItems"""
-
-    product: str
-    sku: str
-    model: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
+    will_alert: NotRequired[bool]
+    alert_recipients: NotRequired[list[str]]
 
 
 __all__ = (
-    "BillingPremiumRequestUsageReportOrgPropTimePeriodType",
-    "BillingPremiumRequestUsageReportOrgPropTimePeriodTypeForResponse",
-    "BillingPremiumRequestUsageReportOrgPropUsageItemsItemsType",
-    "BillingPremiumRequestUsageReportOrgPropUsageItemsItemsTypeForResponse",
-    "BillingPremiumRequestUsageReportOrgType",
-    "BillingPremiumRequestUsageReportOrgTypeForResponse",
+    "UpdateBudgetPropBudgetPropBudgetAlertingType",
+    "UpdateBudgetPropBudgetPropBudgetAlertingTypeForResponse",
+    "UpdateBudgetPropBudgetType",
+    "UpdateBudgetPropBudgetTypeForResponse",
+    "UpdateBudgetType",
+    "UpdateBudgetTypeForResponse",
 )

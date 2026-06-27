@@ -11,26 +11,28 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0174 import LinkType, LinkTypeForResponse
+
+class PageBuildStatusType(TypedDict):
+    """Page Build Status
+
+    Page Build Status
+    """
+
+    url: str
+    status: str
 
 
-class ReviewCommentPropLinksType(TypedDict):
-    """ReviewCommentPropLinks"""
+class PageBuildStatusTypeForResponse(TypedDict):
+    """Page Build Status
 
-    self_: LinkType
-    html: LinkType
-    pull_request: LinkType
+    Page Build Status
+    """
 
-
-class ReviewCommentPropLinksTypeForResponse(TypedDict):
-    """ReviewCommentPropLinks"""
-
-    self_: LinkTypeForResponse
-    html: LinkTypeForResponse
-    pull_request: LinkTypeForResponse
+    url: str
+    status: str
 
 
 __all__ = (
-    "ReviewCommentPropLinksType",
-    "ReviewCommentPropLinksTypeForResponse",
+    "PageBuildStatusType",
+    "PageBuildStatusTypeForResponse",
 )

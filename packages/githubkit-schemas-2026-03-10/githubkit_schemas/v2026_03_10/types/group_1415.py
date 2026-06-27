@@ -13,113 +13,35 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameCopilotSpacesSpaceNumberPutBodyType(TypedDict):
-    """UsersUsernameCopilotSpacesSpaceNumberPutBody"""
+class UserMigrationsPostBodyType(TypedDict):
+    """UserMigrationsPostBody"""
 
-    name: NotRequired[str]
-    description: NotRequired[str]
-    general_instructions: NotRequired[str]
-    base_role: NotRequired[Literal["reader", "no_access"]]
-    resources_attributes: NotRequired[
-        list[
-            UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsType
-        ]
-    ]
-
-
-class UsersUsernameCopilotSpacesSpaceNumberPutBodyTypeForResponse(TypedDict):
-    """UsersUsernameCopilotSpacesSpaceNumberPutBody"""
-
-    name: NotRequired[str]
-    description: NotRequired[str]
-    general_instructions: NotRequired[str]
-    base_role: NotRequired[Literal["reader", "no_access"]]
-    resources_attributes: NotRequired[
-        list[
-            UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsTypeForResponse
-        ]
-    ]
+    lock_repositories: NotRequired[bool]
+    exclude_metadata: NotRequired[bool]
+    exclude_git_data: NotRequired[bool]
+    exclude_attachments: NotRequired[bool]
+    exclude_releases: NotRequired[bool]
+    exclude_owner_projects: NotRequired[bool]
+    org_metadata_only: NotRequired[bool]
+    exclude: NotRequired[list[Literal["repositories"]]]
+    repositories: list[str]
 
 
-class UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsType(
-    TypedDict
-):
-    """UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems"""
+class UserMigrationsPostBodyTypeForResponse(TypedDict):
+    """UserMigrationsPostBody"""
 
-    resource_type: NotRequired[
-        Literal[
-            "repository",
-            "github_file",
-            "free_text",
-            "github_issue",
-            "github_pull_request",
-            "media_content",
-            "uploaded_text_file",
-        ]
-    ]
-    metadata: NotRequired[
-        UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataType
-    ]
-
-
-class UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsTypeForResponse(
-    TypedDict
-):
-    """UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems"""
-
-    resource_type: NotRequired[
-        Literal[
-            "repository",
-            "github_file",
-            "free_text",
-            "github_issue",
-            "github_pull_request",
-            "media_content",
-            "uploaded_text_file",
-        ]
-    ]
-    metadata: NotRequired[
-        UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataTypeForResponse
-    ]
-
-
-class UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataType(
-    TypedDict
-):
-    """UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMeta
-    data
-
-    Metadata specific to the resource type.
-    """
-
-    repository_id: NotRequired[int]
-    file_path: NotRequired[str]
-    text: NotRequired[str]
-    name: NotRequired[str]
-    number: NotRequired[int]
-
-
-class UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataTypeForResponse(
-    TypedDict
-):
-    """UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMeta
-    data
-
-    Metadata specific to the resource type.
-    """
-
-    repository_id: NotRequired[int]
-    file_path: NotRequired[str]
-    text: NotRequired[str]
-    name: NotRequired[str]
-    number: NotRequired[int]
+    lock_repositories: NotRequired[bool]
+    exclude_metadata: NotRequired[bool]
+    exclude_git_data: NotRequired[bool]
+    exclude_attachments: NotRequired[bool]
+    exclude_releases: NotRequired[bool]
+    exclude_owner_projects: NotRequired[bool]
+    org_metadata_only: NotRequired[bool]
+    exclude: NotRequired[list[Literal["repositories"]]]
+    repositories: list[str]
 
 
 __all__ = (
-    "UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataType",
-    "UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataTypeForResponse",
-    "UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsType",
-    "UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsTypeForResponse",
-    "UsersUsernameCopilotSpacesSpaceNumberPutBodyType",
-    "UsersUsernameCopilotSpacesSpaceNumberPutBodyTypeForResponse",
+    "UserMigrationsPostBodyType",
+    "UserMigrationsPostBodyTypeForResponse",
 )

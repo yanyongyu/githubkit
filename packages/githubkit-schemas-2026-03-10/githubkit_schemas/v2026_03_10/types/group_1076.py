@@ -9,33 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0128 import (
-    ArtifactDeploymentRecordType,
-    ArtifactDeploymentRecordTypeForResponse,
+from .group_0127 import (
+    OrganizationActionsSecretType,
+    OrganizationActionsSecretTypeForResponse,
 )
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200Type(
-    TypedDict
-):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200"""
+class OrgsOrgAgentsSecretsGetResponse200Type(TypedDict):
+    """OrgsOrgAgentsSecretsGetResponse200"""
 
     total_count: int
-    deployment_records: NotRequired[list[ArtifactDeploymentRecordType]]
+    secrets: list[OrganizationActionsSecretType]
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200TypeForResponse(
-    TypedDict
-):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200"""
+class OrgsOrgAgentsSecretsGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgAgentsSecretsGetResponse200"""
 
     total_count: int
-    deployment_records: NotRequired[list[ArtifactDeploymentRecordTypeForResponse]]
+    secrets: list[OrganizationActionsSecretTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200Type",
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200TypeForResponse",
+    "OrgsOrgAgentsSecretsGetResponse200Type",
+    "OrgsOrgAgentsSecretsGetResponse200TypeForResponse",
 )

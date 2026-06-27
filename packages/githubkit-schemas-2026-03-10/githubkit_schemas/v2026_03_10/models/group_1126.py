@@ -9,13 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from githubkit.compat import ExtraGitHubModel, model_rebuild
+from pydantic import Field
+
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class OrgsOrgCopilotContentExclusionPutBody(ExtraGitHubModel):
-    """OrgsOrgCopilotContentExclusionPutBody"""
+class OrgsOrgCopilotBillingSelectedTeamsPostBody(GitHubModel):
+    """OrgsOrgCopilotBillingSelectedTeamsPostBody"""
+
+    selected_teams: list[str] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        description="List of team names within the organization to which to grant access to GitHub Copilot.",
+    )
 
 
-model_rebuild(OrgsOrgCopilotContentExclusionPutBody)
+model_rebuild(OrgsOrgCopilotBillingSelectedTeamsPostBody)
 
-__all__ = ("OrgsOrgCopilotContentExclusionPutBody",)
+__all__ = ("OrgsOrgCopilotBillingSelectedTeamsPostBody",)

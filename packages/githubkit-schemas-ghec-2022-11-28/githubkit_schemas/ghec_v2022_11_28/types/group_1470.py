@@ -9,83 +9,89 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoIssuesPostBodyType(TypedDict):
-    """ReposOwnerRepoIssuesPostBody"""
+class ReposOwnerRepoGitCommitsPostBodyType(TypedDict):
+    """ReposOwnerRepoGitCommitsPostBody"""
 
-    title: Union[str, int]
-    body: NotRequired[str]
-    assignee: NotRequired[Union[str, None]]
-    milestone: NotRequired[Union[str, int, None]]
-    labels: NotRequired[
-        list[Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type]]
-    ]
-    assignees: NotRequired[list[str]]
-    issue_field_values: NotRequired[
-        list[ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItemsType]
-    ]
-    type: NotRequired[Union[str, None]]
+    message: str
+    tree: str
+    parents: NotRequired[list[str]]
+    author: NotRequired[ReposOwnerRepoGitCommitsPostBodyPropAuthorType]
+    committer: NotRequired[ReposOwnerRepoGitCommitsPostBodyPropCommitterType]
+    signature: NotRequired[str]
 
 
-class ReposOwnerRepoIssuesPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesPostBody"""
+class ReposOwnerRepoGitCommitsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoGitCommitsPostBody"""
 
-    title: Union[str, int]
-    body: NotRequired[str]
-    assignee: NotRequired[Union[str, None]]
-    milestone: NotRequired[Union[str, int, None]]
-    labels: NotRequired[
-        list[
-            Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1TypeForResponse]
-        ]
-    ]
-    assignees: NotRequired[list[str]]
-    issue_field_values: NotRequired[
-        list[ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItemsTypeForResponse]
-    ]
-    type: NotRequired[Union[str, None]]
+    message: str
+    tree: str
+    parents: NotRequired[list[str]]
+    author: NotRequired[ReposOwnerRepoGitCommitsPostBodyPropAuthorTypeForResponse]
+    committer: NotRequired[ReposOwnerRepoGitCommitsPostBodyPropCommitterTypeForResponse]
+    signature: NotRequired[str]
 
 
-class ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type(TypedDict):
-    """ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1"""
+class ReposOwnerRepoGitCommitsPostBodyPropAuthorType(TypedDict):
+    """ReposOwnerRepoGitCommitsPostBodyPropAuthor
 
-    id: NotRequired[int]
+    Information about the author of the commit. By default, the `author` will be the
+    authenticated user and the current date. See the `author` and `committer` object
+    below for details.
+    """
+
+    name: str
+    email: str
+    date: NotRequired[_dt.datetime]
+
+
+class ReposOwnerRepoGitCommitsPostBodyPropAuthorTypeForResponse(TypedDict):
+    """ReposOwnerRepoGitCommitsPostBodyPropAuthor
+
+    Information about the author of the commit. By default, the `author` will be the
+    authenticated user and the current date. See the `author` and `committer` object
+    below for details.
+    """
+
+    name: str
+    email: str
+    date: NotRequired[str]
+
+
+class ReposOwnerRepoGitCommitsPostBodyPropCommitterType(TypedDict):
+    """ReposOwnerRepoGitCommitsPostBodyPropCommitter
+
+    Information about the person who is making the commit. By default, `committer`
+    will use the information set in `author`. See the `author` and `committer`
+    object below for details.
+    """
+
     name: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    color: NotRequired[Union[str, None]]
+    email: NotRequired[str]
+    date: NotRequired[_dt.datetime]
 
 
-class ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1TypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1"""
+class ReposOwnerRepoGitCommitsPostBodyPropCommitterTypeForResponse(TypedDict):
+    """ReposOwnerRepoGitCommitsPostBodyPropCommitter
 
-    id: NotRequired[int]
+    Information about the person who is making the commit. By default, `committer`
+    will use the information set in `author`. See the `author` and `committer`
+    object below for details.
+    """
+
     name: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    color: NotRequired[Union[str, None]]
-
-
-class ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItemsType(TypedDict):
-    """ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems"""
-
-    field_id: int
-    value: Union[str, float, list[str]]
-
-
-class ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItemsTypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems"""
-
-    field_id: int
-    value: Union[str, float, list[str]]
+    email: NotRequired[str]
+    date: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItemsType",
-    "ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItemsTypeForResponse",
-    "ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type",
-    "ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1TypeForResponse",
-    "ReposOwnerRepoIssuesPostBodyType",
-    "ReposOwnerRepoIssuesPostBodyTypeForResponse",
+    "ReposOwnerRepoGitCommitsPostBodyPropAuthorType",
+    "ReposOwnerRepoGitCommitsPostBodyPropAuthorTypeForResponse",
+    "ReposOwnerRepoGitCommitsPostBodyPropCommitterType",
+    "ReposOwnerRepoGitCommitsPostBodyPropCommitterTypeForResponse",
+    "ReposOwnerRepoGitCommitsPostBodyType",
+    "ReposOwnerRepoGitCommitsPostBodyTypeForResponse",
 )

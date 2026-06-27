@@ -12,35 +12,26 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0154 import (
-    RepositoryRuleFilePathRestrictionPropParametersType,
-    RepositoryRuleFilePathRestrictionPropParametersTypeForResponse,
-)
 
+class RepositoryRuleDetailedOneof6Type(TypedDict):
+    """RepositoryRuleDetailedOneof6"""
 
-class RepositoryRuleDetailedOneof18Type(TypedDict):
-    """RepositoryRuleDetailedOneof18"""
-
-    type: Literal["file_path_restriction"]
-    parameters: NotRequired[RepositoryRuleFilePathRestrictionPropParametersType]
+    type: Literal["required_signatures"]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
-class RepositoryRuleDetailedOneof18TypeForResponse(TypedDict):
-    """RepositoryRuleDetailedOneof18"""
+class RepositoryRuleDetailedOneof6TypeForResponse(TypedDict):
+    """RepositoryRuleDetailedOneof6"""
 
-    type: Literal["file_path_restriction"]
-    parameters: NotRequired[
-        RepositoryRuleFilePathRestrictionPropParametersTypeForResponse
-    ]
+    type: Literal["required_signatures"]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
 __all__ = (
-    "RepositoryRuleDetailedOneof18Type",
-    "RepositoryRuleDetailedOneof18TypeForResponse",
+    "RepositoryRuleDetailedOneof6Type",
+    "RepositoryRuleDetailedOneof6TypeForResponse",
 )

@@ -9,60 +9,87 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoTasksGetResponse401(GitHubModel):
-    """AgentsReposOwnerRepoTasksGetResponse401
+class WebhookWorkflowJobCompletedPropWorkflowJobAllof0(GitHubModel):
+    """Workflow Job
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
+    The workflow job. Many `workflow_job` keys, such as `head_sha`, `conclusion`,
+    and `started_at` are the same as those in a [`check_run`](#check_run) object.
     """
 
-    message: str = Field(
-        description='Summary message (e.g. "Validation Failed", "Not Found")'
+    check_run_url: str = Field()
+    completed_at: Union[str, None] = Field()
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "skipped",
+            "cancelled",
+            "action_required",
+            "neutral",
+            "timed_out",
+        ],
+    ] = Field()
+    created_at: str = Field(description="The time that the job created.")
+    head_sha: str = Field()
+    html_url: str = Field()
+    id: int = Field()
+    labels: list[str] = Field(
+        description='Custom labels for the job. Specified by the [`"runs-on"` attribute](https://docs.github.com/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on) in the workflow YAML.'
     )
-    errors: Missing[list[AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems]] = (
-        Field(
-            default=UNSET,
-            description="List of validation errors (present only for 422 responses)",
-        )
+    name: str = Field()
+    node_id: str = Field()
+    run_attempt: int = Field()
+    run_id: int = Field()
+    run_url: str = Field()
+    runner_group_id: Union[int, None] = Field(
+        description="The ID of the runner group that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`."
     )
-    documentation_url: str = Field(description="URL to relevant API documentation")
-
-
-class AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems(GitHubModel):
-    """AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems
-
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ] = Field(description="Machine-readable error code")
-    message: Missing[str] = Field(
-        default=UNSET,
-        description='Human-readable message (populated when code is "custom")',
+    runner_group_name: Union[str, None] = Field(
+        description="The name of the runner group that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`."
     )
+    runner_id: Union[int, None] = Field(
+        description="The ID of the runner that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`."
+    )
+    runner_name: Union[str, None] = Field(
+        description="The name of the runner that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`."
+    )
+    started_at: str = Field()
+    status: Literal["queued", "in_progress", "completed", "waiting"] = Field(
+        description="The current status of the job. Can be `queued`, `in_progress`, `waiting`, or `completed`."
+    )
+    head_branch: Union[str, None] = Field(description="The name of the current branch.")
+    workflow_name: Union[str, None] = Field(description="The name of the workflow.")
+    steps: list[WebhookWorkflowJobCompletedPropWorkflowJobAllof0PropStepsItems] = (
+        Field()
+    )
+    url: str = Field()
 
 
-model_rebuild(AgentsReposOwnerRepoTasksGetResponse401)
-model_rebuild(AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems)
+class WebhookWorkflowJobCompletedPropWorkflowJobAllof0PropStepsItems(GitHubModel):
+    """Workflow Step"""
+
+    completed_at: Union[str, None] = Field()
+    conclusion: Union[None, Literal["failure", "skipped", "success", "cancelled"]] = (
+        Field()
+    )
+    name: str = Field()
+    number: int = Field()
+    started_at: Union[str, None] = Field()
+    status: Literal["in_progress", "completed", "queued"] = Field()
+
+
+model_rebuild(WebhookWorkflowJobCompletedPropWorkflowJobAllof0)
+model_rebuild(WebhookWorkflowJobCompletedPropWorkflowJobAllof0PropStepsItems)
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksGetResponse401",
-    "AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems",
+    "WebhookWorkflowJobCompletedPropWorkflowJobAllof0",
+    "WebhookWorkflowJobCompletedPropWorkflowJobAllof0PropStepsItems",
 )

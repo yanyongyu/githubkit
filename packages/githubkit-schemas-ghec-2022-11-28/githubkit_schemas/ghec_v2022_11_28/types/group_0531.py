@@ -9,24 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0160 import (
+    RepositoryRuleMaxFileSizePropParametersType,
+    RepositoryRuleMaxFileSizePropParametersTypeForResponse,
+)
 
 
-class ParticipationStatsType(TypedDict):
-    """Participation Stats"""
+class RepositoryRuleDetailedOneof21Type(TypedDict):
+    """RepositoryRuleDetailedOneof21"""
 
-    all_: list[int]
-    owner: list[int]
+    type: Literal["max_file_size"]
+    parameters: NotRequired[RepositoryRuleMaxFileSizePropParametersType]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
 
-class ParticipationStatsTypeForResponse(TypedDict):
-    """Participation Stats"""
+class RepositoryRuleDetailedOneof21TypeForResponse(TypedDict):
+    """RepositoryRuleDetailedOneof21"""
 
-    all_: list[int]
-    owner: list[int]
+    type: Literal["max_file_size"]
+    parameters: NotRequired[RepositoryRuleMaxFileSizePropParametersTypeForResponse]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
 
 __all__ = (
-    "ParticipationStatsType",
-    "ParticipationStatsTypeForResponse",
+    "RepositoryRuleDetailedOneof21Type",
+    "RepositoryRuleDetailedOneof21TypeForResponse",
 )

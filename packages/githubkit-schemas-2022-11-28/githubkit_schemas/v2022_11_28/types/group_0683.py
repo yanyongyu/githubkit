@@ -11,163 +11,62 @@ from __future__ import annotations
 
 import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0679 import (
-    WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
-    WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
-    WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType,
-    WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse,
+from .group_0678 import (
+    WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreatorType,
+    WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
 )
 
 
-class WebhookIssueCommentPinnedPropIssueMergedPerformedViaGithubAppType(TypedDict):
-    """WebhookIssueCommentPinnedPropIssueMergedPerformedViaGithubApp"""
+class WebhookIssueCommentEditedPropIssueMergedMilestoneType(TypedDict):
+    """WebhookIssueCommentEditedPropIssueMergedMilestone"""
 
-    created_at: Union[_dt.datetime, None]
-    description: Union[str, None]
-    events: NotRequired[
-        list[
-            Literal[
-                "branch_protection_rule",
-                "check_run",
-                "check_suite",
-                "code_scanning_alert",
-                "commit_comment",
-                "content_reference",
-                "create",
-                "delete",
-                "deployment",
-                "deployment_review",
-                "deployment_status",
-                "deploy_key",
-                "discussion",
-                "discussion_comment",
-                "fork",
-                "gollum",
-                "issues",
-                "issue_comment",
-                "label",
-                "member",
-                "membership",
-                "milestone",
-                "organization",
-                "org_block",
-                "page_build",
-                "project",
-                "project_card",
-                "project_column",
-                "public",
-                "pull_request",
-                "pull_request_review",
-                "pull_request_review_comment",
-                "push",
-                "registry_package",
-                "release",
-                "repository",
-                "repository_dispatch",
-                "secret_scanning_alert",
-                "star",
-                "status",
-                "team",
-                "team_add",
-                "watch",
-                "workflow_dispatch",
-                "workflow_run",
-            ]
-        ]
+    closed_at: Union[_dt.datetime, None]
+    closed_issues: int
+    created_at: _dt.datetime
+    creator: Union[
+        WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreatorType, None
     ]
-    external_url: Union[str, None]
+    description: Union[str, None]
+    due_on: Union[_dt.datetime, None]
     html_url: str
-    id: Union[int, None]
-    name: str
+    id: int
+    labels_url: str
     node_id: str
-    owner: Union[
-        WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: _dt.datetime
+    url: str
+
+
+class WebhookIssueCommentEditedPropIssueMergedMilestoneTypeForResponse(TypedDict):
+    """WebhookIssueCommentEditedPropIssueMergedMilestone"""
+
+    closed_at: Union[str, None]
+    closed_issues: int
+    created_at: str
+    creator: Union[
+        WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
         None,
     ]
-    permissions: NotRequired[
-        WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType
-    ]
-    slug: NotRequired[str]
-    updated_at: Union[_dt.datetime, None]
-
-
-class WebhookIssueCommentPinnedPropIssueMergedPerformedViaGithubAppTypeForResponse(
-    TypedDict
-):
-    """WebhookIssueCommentPinnedPropIssueMergedPerformedViaGithubApp"""
-
-    created_at: Union[str, None]
     description: Union[str, None]
-    events: NotRequired[
-        list[
-            Literal[
-                "branch_protection_rule",
-                "check_run",
-                "check_suite",
-                "code_scanning_alert",
-                "commit_comment",
-                "content_reference",
-                "create",
-                "delete",
-                "deployment",
-                "deployment_review",
-                "deployment_status",
-                "deploy_key",
-                "discussion",
-                "discussion_comment",
-                "fork",
-                "gollum",
-                "issues",
-                "issue_comment",
-                "label",
-                "member",
-                "membership",
-                "milestone",
-                "organization",
-                "org_block",
-                "page_build",
-                "project",
-                "project_card",
-                "project_column",
-                "public",
-                "pull_request",
-                "pull_request_review",
-                "pull_request_review_comment",
-                "push",
-                "registry_package",
-                "release",
-                "repository",
-                "repository_dispatch",
-                "secret_scanning_alert",
-                "star",
-                "status",
-                "team",
-                "team_add",
-                "watch",
-                "workflow_dispatch",
-                "workflow_run",
-            ]
-        ]
-    ]
-    external_url: Union[str, None]
+    due_on: Union[str, None]
     html_url: str
-    id: Union[int, None]
-    name: str
+    id: int
+    labels_url: str
     node_id: str
-    owner: Union[
-        WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
-        None,
-    ]
-    permissions: NotRequired[
-        WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse
-    ]
-    slug: NotRequired[str]
-    updated_at: Union[str, None]
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: str
+    url: str
 
 
 __all__ = (
-    "WebhookIssueCommentPinnedPropIssueMergedPerformedViaGithubAppType",
-    "WebhookIssueCommentPinnedPropIssueMergedPerformedViaGithubAppTypeForResponse",
+    "WebhookIssueCommentEditedPropIssueMergedMilestoneType",
+    "WebhookIssueCommentEditedPropIssueMergedMilestoneTypeForResponse",
 )

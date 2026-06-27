@@ -9,76 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoContentsPathDeleteBodyType(TypedDict):
-    """ReposOwnerRepoContentsPathDeleteBody"""
+class ReposOwnerRepoCodeScanningSarifsPostBodyType(TypedDict):
+    """ReposOwnerRepoCodeScanningSarifsPostBody"""
 
-    message: str
-    sha: str
-    branch: NotRequired[str]
-    committer: NotRequired[ReposOwnerRepoContentsPathDeleteBodyPropCommitterType]
-    author: NotRequired[ReposOwnerRepoContentsPathDeleteBodyPropAuthorType]
-
-
-class ReposOwnerRepoContentsPathDeleteBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoContentsPathDeleteBody"""
-
-    message: str
-    sha: str
-    branch: NotRequired[str]
-    committer: NotRequired[
-        ReposOwnerRepoContentsPathDeleteBodyPropCommitterTypeForResponse
-    ]
-    author: NotRequired[ReposOwnerRepoContentsPathDeleteBodyPropAuthorTypeForResponse]
+    commit_sha: str
+    ref: str
+    sarif: str
+    checkout_uri: NotRequired[str]
+    started_at: NotRequired[_dt.datetime]
+    tool_name: NotRequired[str]
+    validate_: NotRequired[bool]
 
 
-class ReposOwnerRepoContentsPathDeleteBodyPropCommitterType(TypedDict):
-    """ReposOwnerRepoContentsPathDeleteBodyPropCommitter
+class ReposOwnerRepoCodeScanningSarifsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoCodeScanningSarifsPostBody"""
 
-    object containing information about the committer.
-    """
-
-    name: NotRequired[str]
-    email: NotRequired[str]
-
-
-class ReposOwnerRepoContentsPathDeleteBodyPropCommitterTypeForResponse(TypedDict):
-    """ReposOwnerRepoContentsPathDeleteBodyPropCommitter
-
-    object containing information about the committer.
-    """
-
-    name: NotRequired[str]
-    email: NotRequired[str]
-
-
-class ReposOwnerRepoContentsPathDeleteBodyPropAuthorType(TypedDict):
-    """ReposOwnerRepoContentsPathDeleteBodyPropAuthor
-
-    object containing information about the author.
-    """
-
-    name: NotRequired[str]
-    email: NotRequired[str]
-
-
-class ReposOwnerRepoContentsPathDeleteBodyPropAuthorTypeForResponse(TypedDict):
-    """ReposOwnerRepoContentsPathDeleteBodyPropAuthor
-
-    object containing information about the author.
-    """
-
-    name: NotRequired[str]
-    email: NotRequired[str]
+    commit_sha: str
+    ref: str
+    sarif: str
+    checkout_uri: NotRequired[str]
+    started_at: NotRequired[str]
+    tool_name: NotRequired[str]
+    validate_: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoContentsPathDeleteBodyPropAuthorType",
-    "ReposOwnerRepoContentsPathDeleteBodyPropAuthorTypeForResponse",
-    "ReposOwnerRepoContentsPathDeleteBodyPropCommitterType",
-    "ReposOwnerRepoContentsPathDeleteBodyPropCommitterTypeForResponse",
-    "ReposOwnerRepoContentsPathDeleteBodyType",
-    "ReposOwnerRepoContentsPathDeleteBodyTypeForResponse",
+    "ReposOwnerRepoCodeScanningSarifsPostBodyType",
+    "ReposOwnerRepoCodeScanningSarifsPostBodyTypeForResponse",
 )

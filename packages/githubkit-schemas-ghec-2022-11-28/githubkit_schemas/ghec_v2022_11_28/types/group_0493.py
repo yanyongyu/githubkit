@@ -13,114 +13,114 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
+class PageType(TypedDict):
+    """GitHub Pages
 
-class PullRequestReviewType(TypedDict):
-    """Pull Request Review
-
-    Pull Request Reviews are reviews on pull requests.
+    The configuration for GitHub Pages for a repository.
     """
 
-    id: int
-    node_id: str
-    user: Union[None, SimpleUserType]
-    body: str
-    state: str
-    html_url: str
-    pull_request_url: str
-    links: PullRequestReviewPropLinksType
-    submitted_at: NotRequired[_dt.datetime]
-    commit_id: Union[str, None]
-    body_html: NotRequired[str]
-    body_text: NotRequired[str]
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
+    url: str
+    status: Union[None, Literal["built", "building", "errored"]]
+    cname: Union[str, None]
+    protected_domain_state: NotRequired[
+        Union[None, Literal["pending", "verified", "unverified"]]
     ]
+    pending_domain_unverified_at: NotRequired[Union[_dt.datetime, None]]
+    custom_404: bool
+    html_url: NotRequired[str]
+    build_type: NotRequired[Union[None, Literal["legacy", "workflow"]]]
+    source: NotRequired[PagesSourceHashType]
+    public: bool
+    https_certificate: NotRequired[PagesHttpsCertificateType]
+    https_enforced: NotRequired[bool]
 
 
-class PullRequestReviewTypeForResponse(TypedDict):
-    """Pull Request Review
+class PageTypeForResponse(TypedDict):
+    """GitHub Pages
 
-    Pull Request Reviews are reviews on pull requests.
+    The configuration for GitHub Pages for a repository.
     """
 
-    id: int
-    node_id: str
-    user: Union[None, SimpleUserTypeForResponse]
-    body: str
-    state: str
-    html_url: str
-    pull_request_url: str
-    links: PullRequestReviewPropLinksTypeForResponse
-    submitted_at: NotRequired[str]
-    commit_id: Union[str, None]
-    body_html: NotRequired[str]
-    body_text: NotRequired[str]
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
+    url: str
+    status: Union[None, Literal["built", "building", "errored"]]
+    cname: Union[str, None]
+    protected_domain_state: NotRequired[
+        Union[None, Literal["pending", "verified", "unverified"]]
     ]
+    pending_domain_unverified_at: NotRequired[Union[str, None]]
+    custom_404: bool
+    html_url: NotRequired[str]
+    build_type: NotRequired[Union[None, Literal["legacy", "workflow"]]]
+    source: NotRequired[PagesSourceHashTypeForResponse]
+    public: bool
+    https_certificate: NotRequired[PagesHttpsCertificateTypeForResponse]
+    https_enforced: NotRequired[bool]
 
 
-class PullRequestReviewPropLinksType(TypedDict):
-    """PullRequestReviewPropLinks"""
+class PagesSourceHashType(TypedDict):
+    """Pages Source Hash"""
 
-    html: PullRequestReviewPropLinksPropHtmlType
-    pull_request: PullRequestReviewPropLinksPropPullRequestType
-
-
-class PullRequestReviewPropLinksTypeForResponse(TypedDict):
-    """PullRequestReviewPropLinks"""
-
-    html: PullRequestReviewPropLinksPropHtmlTypeForResponse
-    pull_request: PullRequestReviewPropLinksPropPullRequestTypeForResponse
+    branch: str
+    path: str
 
 
-class PullRequestReviewPropLinksPropHtmlType(TypedDict):
-    """PullRequestReviewPropLinksPropHtml"""
+class PagesSourceHashTypeForResponse(TypedDict):
+    """Pages Source Hash"""
 
-    href: str
-
-
-class PullRequestReviewPropLinksPropHtmlTypeForResponse(TypedDict):
-    """PullRequestReviewPropLinksPropHtml"""
-
-    href: str
+    branch: str
+    path: str
 
 
-class PullRequestReviewPropLinksPropPullRequestType(TypedDict):
-    """PullRequestReviewPropLinksPropPullRequest"""
+class PagesHttpsCertificateType(TypedDict):
+    """Pages Https Certificate"""
 
-    href: str
+    state: Literal[
+        "new",
+        "authorization_created",
+        "authorization_pending",
+        "authorized",
+        "authorization_revoked",
+        "issued",
+        "uploaded",
+        "approved",
+        "errored",
+        "bad_authz",
+        "destroy_pending",
+        "dns_changed",
+    ]
+    description: str
+    domains: list[str]
+    expires_at: NotRequired[_dt.date]
 
 
-class PullRequestReviewPropLinksPropPullRequestTypeForResponse(TypedDict):
-    """PullRequestReviewPropLinksPropPullRequest"""
+class PagesHttpsCertificateTypeForResponse(TypedDict):
+    """Pages Https Certificate"""
 
-    href: str
+    state: Literal[
+        "new",
+        "authorization_created",
+        "authorization_pending",
+        "authorized",
+        "authorization_revoked",
+        "issued",
+        "uploaded",
+        "approved",
+        "errored",
+        "bad_authz",
+        "destroy_pending",
+        "dns_changed",
+    ]
+    description: str
+    domains: list[str]
+    expires_at: NotRequired[str]
 
 
 __all__ = (
-    "PullRequestReviewPropLinksPropHtmlType",
-    "PullRequestReviewPropLinksPropHtmlTypeForResponse",
-    "PullRequestReviewPropLinksPropPullRequestType",
-    "PullRequestReviewPropLinksPropPullRequestTypeForResponse",
-    "PullRequestReviewPropLinksType",
-    "PullRequestReviewPropLinksTypeForResponse",
-    "PullRequestReviewType",
-    "PullRequestReviewTypeForResponse",
+    "PageType",
+    "PageTypeForResponse",
+    "PagesHttpsCertificateType",
+    "PagesHttpsCertificateTypeForResponse",
+    "PagesSourceHashType",
+    "PagesSourceHashTypeForResponse",
 )

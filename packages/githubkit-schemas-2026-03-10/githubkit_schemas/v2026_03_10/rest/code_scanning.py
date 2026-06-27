@@ -802,7 +802,7 @@ class CodeScanningClient:
 
         POST /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/autofix
 
-        Creates an autofix for a code scanning alert.
+        Creates an autofix for a code scanning alert from the repository's default branch.
 
         If a new autofix is to be created as a result of this request or is currently being generated, then this endpoint will return a 202 Accepted response.
 
@@ -846,7 +846,7 @@ class CodeScanningClient:
 
         POST /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/autofix
 
-        Creates an autofix for a code scanning alert.
+        Creates an autofix for a code scanning alert from the repository's default branch.
 
         If a new autofix is to be created as a result of this request or is currently being generated, then this endpoint will return a 202 Accepted response.
 

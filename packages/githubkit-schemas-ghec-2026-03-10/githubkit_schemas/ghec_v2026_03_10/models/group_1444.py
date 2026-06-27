@@ -16,21 +16,14 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody(
-    GitHubModel
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody"""
+class ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201(GitHubModel):
+    """ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201"""
 
-    integration_id: Missing[int] = Field(
-        default=UNSET,
-        description="The ID of the custom app that will be enabled on the environment.",
+    sbom_url: Missing[str] = Field(
+        default=UNSET, description="URL to poll for the SBOM export result."
     )
 
 
-model_rebuild(
-    ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody
-)
+model_rebuild(ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201)
 
-__all__ = (
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody",
-)
+__all__ = ("ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201",)

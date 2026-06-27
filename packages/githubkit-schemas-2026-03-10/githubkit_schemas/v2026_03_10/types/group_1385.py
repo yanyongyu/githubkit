@@ -9,28 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0090 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
-
-
-class UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
-    """UserCodespacesSecretsSecretNameRepositoriesGetResponse200"""
-
-    total_count: int
-    repositories: list[MinimalRepositoryType]
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class UserCodespacesSecretsSecretNameRepositoriesGetResponse200TypeForResponse(
-    TypedDict
-):
-    """UserCodespacesSecretsSecretNameRepositoriesGetResponse200"""
+class ReposOwnerRepoStatusesShaPostBodyType(TypedDict):
+    """ReposOwnerRepoStatusesShaPostBody"""
 
-    total_count: int
-    repositories: list[MinimalRepositoryTypeForResponse]
+    state: Literal["error", "failure", "pending", "success"]
+    target_url: NotRequired[Union[str, None]]
+    description: NotRequired[Union[str, None]]
+    context: NotRequired[str]
+
+
+class ReposOwnerRepoStatusesShaPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoStatusesShaPostBody"""
+
+    state: Literal["error", "failure", "pending", "success"]
+    target_url: NotRequired[Union[str, None]]
+    description: NotRequired[Union[str, None]]
+    context: NotRequired[str]
 
 
 __all__ = (
-    "UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type",
-    "UserCodespacesSecretsSecretNameRepositoriesGetResponse200TypeForResponse",
+    "ReposOwnerRepoStatusesShaPostBodyType",
+    "ReposOwnerRepoStatusesShaPostBodyTypeForResponse",
 )

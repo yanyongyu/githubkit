@@ -16,20 +16,29 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class WebhooksLabel(GitHubModel):
-    """Label"""
+class OrganizationSimpleWebhooks(GitHubModel):
+    """Organization Simple
 
-    color: str = Field(
-        description="6-character hex code, without the leading #, identifying the color"
-    )
-    default: bool = Field()
-    description: Union[str, None] = Field()
+    A GitHub organization. Webhook payloads contain the `organization` property when
+    the webhook is configured for an
+    organization, or when the event occurs from activity in a repository owned by an
+    organization.
+    """
+
+    login: str = Field()
     id: int = Field()
-    name: str = Field(description="The name of the label.")
     node_id: str = Field()
-    url: str = Field(description="URL for the label")
+    url: str = Field()
+    repos_url: str = Field()
+    events_url: str = Field()
+    hooks_url: str = Field()
+    issues_url: str = Field()
+    members_url: str = Field()
+    public_members_url: str = Field()
+    avatar_url: str = Field()
+    description: Union[str, None] = Field()
 
 
-model_rebuild(WebhooksLabel)
+model_rebuild(OrganizationSimpleWebhooks)
 
-__all__ = ("WebhooksLabel",)
+__all__ = ("OrganizationSimpleWebhooks",)

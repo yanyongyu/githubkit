@@ -17,14 +17,14 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0233 import RepositoryRuleCopilotCodeReviewPropParameters
+from .group_0213 import RepositoryRuleRequiredDeploymentsPropParameters
 
 
-class RepositoryRuleDetailedOneof17(GitHubModel):
-    """RepositoryRuleDetailedOneof17"""
+class RepositoryRuleDetailedOneof5(GitHubModel):
+    """RepositoryRuleDetailedOneof5"""
 
-    type: Literal["copilot_code_review"] = Field()
-    parameters: Missing[RepositoryRuleCopilotCodeReviewPropParameters] = Field(
+    type: Literal["required_deployments"] = Field()
+    parameters: Missing[RepositoryRuleRequiredDeploymentsPropParameters] = Field(
         default=UNSET
     )
     ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
@@ -40,6 +40,6 @@ class RepositoryRuleDetailedOneof17(GitHubModel):
     )
 
 
-model_rebuild(RepositoryRuleDetailedOneof17)
+model_rebuild(RepositoryRuleDetailedOneof5)
 
-__all__ = ("RepositoryRuleDetailedOneof17",)
+__all__ = ("RepositoryRuleDetailedOneof5",)

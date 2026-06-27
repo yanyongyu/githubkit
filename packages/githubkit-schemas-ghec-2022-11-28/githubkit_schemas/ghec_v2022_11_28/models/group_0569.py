@@ -18,23 +18,43 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0370 import GitUser
+from .group_0371 import Verification
 
-class Key(GitHubModel):
-    """Key
 
-    Key
-    """
+class CommitSearchResultItemPropCommit(GitHubModel):
+    """CommitSearchResultItemPropCommit"""
 
-    key: str = Field()
-    id: int = Field()
+    author: CommitSearchResultItemPropCommitPropAuthor = Field()
+    committer: Union[None, GitUser] = Field()
+    comment_count: int = Field()
+    message: str = Field()
+    tree: CommitSearchResultItemPropCommitPropTree = Field()
     url: str = Field()
-    title: str = Field()
-    created_at: _dt.datetime = Field()
-    verified: bool = Field()
-    read_only: bool = Field()
-    last_used: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+    verification: Missing[Verification] = Field(default=UNSET, title="Verification")
 
 
-model_rebuild(Key)
+class CommitSearchResultItemPropCommitPropAuthor(GitHubModel):
+    """CommitSearchResultItemPropCommitPropAuthor"""
 
-__all__ = ("Key",)
+    name: str = Field()
+    email: str = Field()
+    date: _dt.datetime = Field()
+
+
+class CommitSearchResultItemPropCommitPropTree(GitHubModel):
+    """CommitSearchResultItemPropCommitPropTree"""
+
+    sha: str = Field()
+    url: str = Field()
+
+
+model_rebuild(CommitSearchResultItemPropCommit)
+model_rebuild(CommitSearchResultItemPropCommitPropAuthor)
+model_rebuild(CommitSearchResultItemPropCommitPropTree)
+
+__all__ = (
+    "CommitSearchResultItemPropCommit",
+    "CommitSearchResultItemPropCommitPropAuthor",
+    "CommitSearchResultItemPropCommitPropTree",
+)

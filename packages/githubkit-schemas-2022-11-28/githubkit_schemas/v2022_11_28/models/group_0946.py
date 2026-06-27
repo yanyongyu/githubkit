@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,26 +18,57 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoTasksPostBody(GitHubModel):
-    """AgentsReposOwnerRepoTasksPostBody"""
+class WebhookWorkflowJobInProgressPropWorkflowJobAllof1(GitHubModel):
+    """WebhookWorkflowJobInProgressPropWorkflowJobAllof1"""
 
-    prompt: str = Field(description="The user's prompt for the agent")
-    model: Missing[str] = Field(
-        default=UNSET,
-        description="The model to use for this task. The allowed models may change over time and depend on the user's GitHub Copilot plan and organization policies. Currently supported values: `claude-sonnet-4.6`, `claude-opus-4.6`, `gpt-5.2-codex`, `gpt-5.3-codex`, `gpt-5.4`, `claude-sonnet-4.5`, `claude-opus-4.5`",
+    check_run_url: Missing[str] = Field(default=UNSET)
+    completed_at: Missing[Union[str, None]] = Field(default=UNSET)
+    conclusion: Missing[Union[str, None]] = Field(default=UNSET)
+    created_at: Missing[str] = Field(
+        default=UNSET, description="The time that the job created."
     )
-    create_pull_request: Missing[bool] = Field(
-        default=UNSET, description="Whether to create a PR."
+    head_sha: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    labels: Missing[list[str]] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    run_attempt: Missing[int] = Field(default=UNSET)
+    run_id: Missing[int] = Field(default=UNSET)
+    run_url: Missing[str] = Field(default=UNSET)
+    runner_group_id: Missing[Union[int, None]] = Field(default=UNSET)
+    runner_group_name: Missing[Union[str, None]] = Field(default=UNSET)
+    runner_id: Missing[Union[int, None]] = Field(default=UNSET)
+    runner_name: Missing[Union[str, None]] = Field(default=UNSET)
+    started_at: Missing[str] = Field(default=UNSET)
+    status: Literal["in_progress", "completed", "queued"] = Field()
+    head_branch: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The name of the current branch."
     )
-    base_ref: Missing[str] = Field(
-        default=UNSET, description="Base ref for new branch/PR"
+    workflow_name: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The name of the workflow."
     )
-    head_ref: Missing[str] = Field(
-        default=UNSET,
-        description="Head ref for existing branch/PR. If provided with `base_ref`, the agent looks up open PR context for `head_ref` targeting `base_ref` and commits to `head_ref` instead of creating a new branch.",
+    steps: list[WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItems] = (
+        Field()
     )
+    url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(AgentsReposOwnerRepoTasksPostBody)
+class WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItems(GitHubModel):
+    """Workflow Step"""
 
-__all__ = ("AgentsReposOwnerRepoTasksPostBody",)
+    completed_at: Union[str, None] = Field()
+    conclusion: Union[str, None] = Field()
+    name: str = Field()
+    number: int = Field()
+    started_at: Union[str, None] = Field()
+    status: Literal["in_progress", "completed", "pending", "queued"] = Field()
+
+
+model_rebuild(WebhookWorkflowJobInProgressPropWorkflowJobAllof1)
+model_rebuild(WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItems)
+
+__all__ = (
+    "WebhookWorkflowJobInProgressPropWorkflowJobAllof1",
+    "WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItems",
+)

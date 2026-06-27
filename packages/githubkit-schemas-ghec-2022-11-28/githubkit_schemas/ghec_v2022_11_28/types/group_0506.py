@@ -9,38 +9,111 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0142 import (
-    RepositoryRuleRequiredStatusChecksPropParametersType,
-    RepositoryRuleRequiredStatusChecksPropParametersTypeForResponse,
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0207 import ReactionRollupType, ReactionRollupTypeForResponse
+from .group_0507 import (
+    ReviewCommentPropLinksType,
+    ReviewCommentPropLinksTypeForResponse,
 )
 
 
-class RepositoryRuleDetailedOneof8Type(TypedDict):
-    """RepositoryRuleDetailedOneof8"""
+class ReviewCommentType(TypedDict):
+    """Legacy Review Comment
 
-    type: Literal["required_status_checks"]
-    parameters: NotRequired[RepositoryRuleRequiredStatusChecksPropParametersType]
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    Legacy Review Comment
+    """
 
-
-class RepositoryRuleDetailedOneof8TypeForResponse(TypedDict):
-    """RepositoryRuleDetailedOneof8"""
-
-    type: Literal["required_status_checks"]
-    parameters: NotRequired[
-        RepositoryRuleRequiredStatusChecksPropParametersTypeForResponse
+    url: str
+    pull_request_review_id: Union[int, None]
+    id: int
+    node_id: str
+    diff_hunk: str
+    path: str
+    position: Union[int, None]
+    original_position: int
+    commit_id: str
+    original_commit_id: str
+    in_reply_to_id: NotRequired[int]
+    user: Union[None, SimpleUserType]
+    body: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    html_url: str
+    pull_request_url: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
     ]
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    links: ReviewCommentPropLinksType
+    body_text: NotRequired[str]
+    body_html: NotRequired[str]
+    reactions: NotRequired[ReactionRollupType]
+    side: NotRequired[Literal["LEFT", "RIGHT"]]
+    start_side: NotRequired[Union[None, Literal["LEFT", "RIGHT"]]]
+    line: NotRequired[int]
+    original_line: NotRequired[int]
+    start_line: NotRequired[Union[int, None]]
+    original_start_line: NotRequired[Union[int, None]]
+    subject_type: NotRequired[Literal["line", "file"]]
+
+
+class ReviewCommentTypeForResponse(TypedDict):
+    """Legacy Review Comment
+
+    Legacy Review Comment
+    """
+
+    url: str
+    pull_request_review_id: Union[int, None]
+    id: int
+    node_id: str
+    diff_hunk: str
+    path: str
+    position: Union[int, None]
+    original_position: int
+    commit_id: str
+    original_commit_id: str
+    in_reply_to_id: NotRequired[int]
+    user: Union[None, SimpleUserTypeForResponse]
+    body: str
+    created_at: str
+    updated_at: str
+    html_url: str
+    pull_request_url: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    links: ReviewCommentPropLinksTypeForResponse
+    body_text: NotRequired[str]
+    body_html: NotRequired[str]
+    reactions: NotRequired[ReactionRollupTypeForResponse]
+    side: NotRequired[Literal["LEFT", "RIGHT"]]
+    start_side: NotRequired[Union[None, Literal["LEFT", "RIGHT"]]]
+    line: NotRequired[int]
+    original_line: NotRequired[int]
+    start_line: NotRequired[Union[int, None]]
+    original_start_line: NotRequired[Union[int, None]]
+    subject_type: NotRequired[Literal["line", "file"]]
 
 
 __all__ = (
-    "RepositoryRuleDetailedOneof8Type",
-    "RepositoryRuleDetailedOneof8TypeForResponse",
+    "ReviewCommentType",
+    "ReviewCommentTypeForResponse",
 )

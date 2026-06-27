@@ -12,25 +12,16 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseDependabotRepositoryAccessPatchBody(GitHubModel):
-    """EnterprisesEnterpriseDependabotRepositoryAccessPatchBody
+class ApplicationsClientIdTokenPatchBody(GitHubModel):
+    """ApplicationsClientIdTokenPatchBody"""
 
-    Examples:
-        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
-    """
-
-    repository_ids_to_add: Missing[list[int]] = Field(
-        default=UNSET, description="List of repository IDs to add."
-    )
-    repository_ids_to_remove: Missing[list[int]] = Field(
-        default=UNSET, description="List of repository IDs to remove."
+    access_token: str = Field(
+        description="The access_token of the OAuth or GitHub application."
     )
 
 
-model_rebuild(EnterprisesEnterpriseDependabotRepositoryAccessPatchBody)
+model_rebuild(ApplicationsClientIdTokenPatchBody)
 
-__all__ = ("EnterprisesEnterpriseDependabotRepositoryAccessPatchBody",)
+__all__ = ("ApplicationsClientIdTokenPatchBody",)

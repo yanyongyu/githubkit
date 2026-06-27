@@ -13,19 +13,19 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0575 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0576 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0577 import (
+from .group_0587 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0588 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0589 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0578 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0590 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookRepositoryUnarchivedType(TypedDict):
-    """repository unarchived event"""
+class WebhookRepositoryPrivatizedType(TypedDict):
+    """repository privatized event"""
 
-    action: Literal["unarchived"]
+    action: Literal["privatized"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -33,10 +33,10 @@ class WebhookRepositoryUnarchivedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookRepositoryUnarchivedTypeForResponse(TypedDict):
-    """repository unarchived event"""
+class WebhookRepositoryPrivatizedTypeForResponse(TypedDict):
+    """repository privatized event"""
 
-    action: Literal["unarchived"]
+    action: Literal["privatized"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
@@ -45,6 +45,6 @@ class WebhookRepositoryUnarchivedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookRepositoryUnarchivedType",
-    "WebhookRepositoryUnarchivedTypeForResponse",
+    "WebhookRepositoryPrivatizedType",
+    "WebhookRepositoryPrivatizedTypeForResponse",
 )

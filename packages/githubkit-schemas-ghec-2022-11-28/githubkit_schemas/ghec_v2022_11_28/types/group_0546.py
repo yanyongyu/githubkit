@@ -9,46 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class UserNameResponseType(TypedDict):
-    """UserNameResponse"""
+class TopicType(TypedDict):
+    """Topic
 
-    formatted: NotRequired[str]
-    family_name: NotRequired[str]
-    given_name: NotRequired[str]
-    middle_name: NotRequired[str]
+    A topic aggregates entities that are related to a subject.
+    """
 
-
-class UserNameResponseTypeForResponse(TypedDict):
-    """UserNameResponse"""
-
-    formatted: NotRequired[str]
-    family_name: NotRequired[str]
-    given_name: NotRequired[str]
-    middle_name: NotRequired[str]
+    names: list[str]
 
 
-class UserEmailsResponseItemsType(TypedDict):
-    """UserEmailsResponseItems"""
+class TopicTypeForResponse(TypedDict):
+    """Topic
 
-    value: str
-    type: NotRequired[str]
-    primary: NotRequired[bool]
+    A topic aggregates entities that are related to a subject.
+    """
 
-
-class UserEmailsResponseItemsTypeForResponse(TypedDict):
-    """UserEmailsResponseItems"""
-
-    value: str
-    type: NotRequired[str]
-    primary: NotRequired[bool]
+    names: list[str]
 
 
 __all__ = (
-    "UserEmailsResponseItemsType",
-    "UserEmailsResponseItemsTypeForResponse",
-    "UserNameResponseType",
-    "UserNameResponseTypeForResponse",
+    "TopicType",
+    "TopicTypeForResponse",
 )

@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0502 import EnterpriseWebhooks
-from .group_0503 import SimpleInstallation
-from .group_0504 import OrganizationSimpleWebhooks
-from .group_0505 import RepositoryWebhooks
-from .group_0532 import WebhooksProjectCard
+from .group_0514 import EnterpriseWebhooks
+from .group_0515 import SimpleInstallation
+from .group_0516 import OrganizationSimpleWebhooks
+from .group_0517 import RepositoryWebhooks
+from .group_0786 import WebhookPackageUpdatedPropPackage
 
 
-class WebhookProjectCardCreated(GitHubModel):
-    """project_card created event"""
+class WebhookPackageUpdated(GitHubModel):
+    """package updated event"""
 
-    action: Literal["created"] = Field()
+    action: Literal["updated"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -44,15 +44,16 @@ class WebhookProjectCardCreated(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    project_card: WebhooksProjectCard = Field(title="Project Card")
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
+    package: WebhookPackageUpdatedPropPackage = Field(
+        description="Information about the package."
+    )
+    repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookProjectCardCreated)
+model_rebuild(WebhookPackageUpdated)
 
-__all__ = ("WebhookProjectCardCreated",)
+__all__ = ("WebhookPackageUpdated",)

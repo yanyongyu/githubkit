@@ -9,75 +9,68 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0239 import (
-    MarketplaceListingPlanType,
-    MarketplaceListingPlanTypeForResponse,
+from .group_0564 import (
+    SearchResultTextMatchesItemsType,
+    SearchResultTextMatchesItemsTypeForResponse,
 )
 
 
-class UserMarketplacePurchaseType(TypedDict):
-    """User Marketplace Purchase
+class LabelSearchResultItemType(TypedDict):
+    """Label Search Result Item
 
-    User Marketplace Purchase
+    Label Search Result Item
     """
 
-    billing_cycle: str
-    next_billing_date: Union[_dt.datetime, None]
-    unit_count: Union[int, None]
-    on_free_trial: bool
-    free_trial_ends_on: Union[_dt.datetime, None]
-    updated_at: Union[_dt.datetime, None]
-    account: MarketplaceAccountType
-    plan: MarketplaceListingPlanType
+    id: int
+    node_id: str
+    url: str
+    name: str
+    color: str
+    default: bool
+    description: Union[str, None]
+    score: float
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
 
 
-class UserMarketplacePurchaseTypeForResponse(TypedDict):
-    """User Marketplace Purchase
+class LabelSearchResultItemTypeForResponse(TypedDict):
+    """Label Search Result Item
 
-    User Marketplace Purchase
+    Label Search Result Item
     """
 
-    billing_cycle: str
-    next_billing_date: Union[str, None]
-    unit_count: Union[int, None]
-    on_free_trial: bool
-    free_trial_ends_on: Union[str, None]
-    updated_at: Union[str, None]
-    account: MarketplaceAccountTypeForResponse
-    plan: MarketplaceListingPlanTypeForResponse
-
-
-class MarketplaceAccountType(TypedDict):
-    """Marketplace Account"""
-
-    url: str
     id: int
-    type: str
-    node_id: NotRequired[str]
-    login: str
-    email: NotRequired[Union[str, None]]
-    organization_billing_email: NotRequired[Union[str, None]]
-
-
-class MarketplaceAccountTypeForResponse(TypedDict):
-    """Marketplace Account"""
-
+    node_id: str
     url: str
-    id: int
-    type: str
-    node_id: NotRequired[str]
-    login: str
-    email: NotRequired[Union[str, None]]
-    organization_billing_email: NotRequired[Union[str, None]]
+    name: str
+    color: str
+    default: bool
+    description: Union[str, None]
+    score: float
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
+
+
+class SearchLabelsGetResponse200Type(TypedDict):
+    """SearchLabelsGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[LabelSearchResultItemType]
+
+
+class SearchLabelsGetResponse200TypeForResponse(TypedDict):
+    """SearchLabelsGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[LabelSearchResultItemTypeForResponse]
 
 
 __all__ = (
-    "MarketplaceAccountType",
-    "MarketplaceAccountTypeForResponse",
-    "UserMarketplacePurchaseType",
-    "UserMarketplacePurchaseTypeForResponse",
+    "LabelSearchResultItemType",
+    "LabelSearchResultItemTypeForResponse",
+    "SearchLabelsGetResponse200Type",
+    "SearchLabelsGetResponse200TypeForResponse",
 )

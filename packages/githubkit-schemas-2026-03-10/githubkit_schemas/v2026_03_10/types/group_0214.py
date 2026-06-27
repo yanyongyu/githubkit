@@ -13,83 +13,49 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRulePullRequestPropParametersType(TypedDict):
-    """RepositoryRulePullRequestPropParameters"""
+class RepositoryRuleParamsDismissalRestrictionType(TypedDict):
+    """DismissalRestriction
 
-    allowed_merge_methods: NotRequired[list[Literal["merge", "squash", "rebase"]]]
-    dismiss_stale_reviews_on_push: bool
-    require_code_owner_review: bool
-    require_last_push_approval: bool
-    required_approving_review_count: int
-    required_review_thread_resolution: bool
-    required_reviewers: NotRequired[
-        list[RepositoryRuleParamsRequiredReviewerConfigurationType]
-    ]
-
-
-class RepositoryRulePullRequestPropParametersTypeForResponse(TypedDict):
-    """RepositoryRulePullRequestPropParameters"""
-
-    allowed_merge_methods: NotRequired[list[Literal["merge", "squash", "rebase"]]]
-    dismiss_stale_reviews_on_push: bool
-    require_code_owner_review: bool
-    require_last_push_approval: bool
-    required_approving_review_count: int
-    required_review_thread_resolution: bool
-    required_reviewers: NotRequired[
-        list[RepositoryRuleParamsRequiredReviewerConfigurationTypeForResponse]
-    ]
-
-
-class RepositoryRuleParamsRequiredReviewerConfigurationType(TypedDict):
-    """RequiredReviewerConfiguration
-
-    A reviewing team, and file patterns describing which files they must approve
-    changes to.
+    Specify people, teams, or apps allowed to dismiss pull request reviews.
     """
 
-    file_patterns: list[str]
-    minimum_approvals: int
-    reviewer: RepositoryRuleParamsReviewerType
+    allowed_actors: NotRequired[list[RepositoryRuleParamsActorType]]
+    enabled: bool
 
 
-class RepositoryRuleParamsRequiredReviewerConfigurationTypeForResponse(TypedDict):
-    """RequiredReviewerConfiguration
+class RepositoryRuleParamsDismissalRestrictionTypeForResponse(TypedDict):
+    """DismissalRestriction
 
-    A reviewing team, and file patterns describing which files they must approve
-    changes to.
+    Specify people, teams, or apps allowed to dismiss pull request reviews.
     """
 
-    file_patterns: list[str]
-    minimum_approvals: int
-    reviewer: RepositoryRuleParamsReviewerTypeForResponse
+    allowed_actors: NotRequired[list[RepositoryRuleParamsActorTypeForResponse]]
+    enabled: bool
 
 
-class RepositoryRuleParamsReviewerType(TypedDict):
-    """Reviewer
+class RepositoryRuleParamsActorType(TypedDict):
+    """Actor
 
-    A required reviewing team
+    An actor allowed to dismiss pull request reviews
     """
 
     id: int
-    type: Literal["Team"]
+    type: Literal["User", "Team", "IntegrationInstallation", "RepositoryRole"]
 
 
-class RepositoryRuleParamsReviewerTypeForResponse(TypedDict):
-    """Reviewer
+class RepositoryRuleParamsActorTypeForResponse(TypedDict):
+    """Actor
 
-    A required reviewing team
+    An actor allowed to dismiss pull request reviews
     """
 
     id: int
-    type: Literal["Team"]
+    type: Literal["User", "Team", "IntegrationInstallation", "RepositoryRole"]
 
 
 __all__ = (
-    "RepositoryRuleParamsRequiredReviewerConfigurationType",
-    "RepositoryRuleParamsRequiredReviewerConfigurationTypeForResponse",
-    "RepositoryRuleParamsReviewerType",
-    "RepositoryRuleParamsReviewerTypeForResponse",
-    "RepositoryRulePullRequestPropParametersType",
-    "RepositoryRulePullRequestPropParametersTypeForResponse",
+    "RepositoryRuleParamsActorType",
+    "RepositoryRuleParamsActorTypeForResponse",
+    "RepositoryRuleParamsDismissalRestrictionType",
+    "RepositoryRuleParamsDismissalRestrictionTypeForResponse",
 )

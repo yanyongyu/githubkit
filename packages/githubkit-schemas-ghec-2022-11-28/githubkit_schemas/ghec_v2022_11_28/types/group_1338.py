@@ -11,20 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class OrgsOrgTeamsTeamSlugExternalGroupsPatchBodyType(TypedDict):
-    """OrgsOrgTeamsTeamSlugExternalGroupsPatchBody"""
-
-    group_id: int
+from .group_0109 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
 
 
-class OrgsOrgTeamsTeamSlugExternalGroupsPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgTeamsTeamSlugExternalGroupsPatchBody"""
+class OrgsOrgPropertiesValuesPatchBodyType(TypedDict):
+    """OrgsOrgPropertiesValuesPatchBody"""
 
-    group_id: int
+    repository_names: list[str]
+    properties: list[CustomPropertyValueType]
+
+
+class OrgsOrgPropertiesValuesPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgPropertiesValuesPatchBody"""
+
+    repository_names: list[str]
+    properties: list[CustomPropertyValueTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgTeamsTeamSlugExternalGroupsPatchBodyType",
-    "OrgsOrgTeamsTeamSlugExternalGroupsPatchBodyTypeForResponse",
+    "OrgsOrgPropertiesValuesPatchBodyType",
+    "OrgsOrgPropertiesValuesPatchBodyTypeForResponse",
 )

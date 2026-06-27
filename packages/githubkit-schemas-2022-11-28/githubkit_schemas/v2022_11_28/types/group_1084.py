@@ -11,20 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class OrgsOrgAttestationsDeleteRequestPostBodyOneof0Type(TypedDict):
-    """OrgsOrgAttestationsDeleteRequestPostBodyOneof0"""
-
-    subject_digests: list[str]
+from .group_0092 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
-class OrgsOrgAttestationsDeleteRequestPostBodyOneof0TypeForResponse(TypedDict):
-    """OrgsOrgAttestationsDeleteRequestPostBodyOneof0"""
+class OrgsOrgAgentsVariablesNameRepositoriesGetResponse200Type(TypedDict):
+    """OrgsOrgAgentsVariablesNameRepositoriesGetResponse200"""
 
-    subject_digests: list[str]
+    total_count: int
+    repositories: list[MinimalRepositoryType]
+
+
+class OrgsOrgAgentsVariablesNameRepositoriesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgAgentsVariablesNameRepositoriesGetResponse200"""
+
+    total_count: int
+    repositories: list[MinimalRepositoryTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgAttestationsDeleteRequestPostBodyOneof0Type",
-    "OrgsOrgAttestationsDeleteRequestPostBodyOneof0TypeForResponse",
+    "OrgsOrgAgentsVariablesNameRepositoriesGetResponse200Type",
+    "OrgsOrgAgentsVariablesNameRepositoriesGetResponse200TypeForResponse",
 )

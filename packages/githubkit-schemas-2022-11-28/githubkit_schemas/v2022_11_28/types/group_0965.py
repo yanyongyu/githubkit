@@ -9,75 +9,109 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class AgentsTasksGetResponse401Type(TypedDict):
-    """AgentsTasksGetResponse401
-
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[list[AgentsTasksGetResponse401PropErrorsItemsType]]
-    documentation_url: str
-
-
-class AgentsTasksGetResponse401TypeForResponse(TypedDict):
-    """AgentsTasksGetResponse401
-
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[list[AgentsTasksGetResponse401PropErrorsItemsTypeForResponse]]
-    documentation_url: str
+from .group_0966 import (
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0Type,
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0TypeForResponse,
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepositoryType,
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepositoryTypeForResponse,
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsType,
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsTypeForResponse,
+)
+from .group_0967 import (
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItemsType,
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItemsTypeForResponse,
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropOwnerType,
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropOwnerTypeForResponse,
+)
 
 
-class AgentsTasksGetResponse401PropErrorsItemsType(TypedDict):
-    """AgentsTasksGetResponse401PropErrorsItems
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0Type(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0"""
 
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
+    id: str
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    name: NotRequired[str]
+    creator: NotRequired[
+        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0Type
     ]
-    message: NotRequired[str]
-
-
-class AgentsTasksGetResponse401PropErrorsItemsTypeForResponse(TypedDict):
-    """AgentsTasksGetResponse401PropErrorsItems
-
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
+    creator_type: NotRequired[Literal["user", "organization"]]
+    user_collaborators: NotRequired[
+        list[
+            AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsType
+        ]
     ]
-    message: NotRequired[str]
+    owner: NotRequired[AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropOwnerType]
+    repository: NotRequired[
+        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepositoryType
+    ]
+    state: Literal[
+        "queued",
+        "in_progress",
+        "completed",
+        "failed",
+        "idle",
+        "waiting_for_user",
+        "timed_out",
+        "cancelled",
+    ]
+    session_count: NotRequired[int]
+    artifacts: NotRequired[
+        list[AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItemsType]
+    ]
+    archived_at: NotRequired[Union[_dt.datetime, None]]
+    updated_at: NotRequired[_dt.datetime]
+    created_at: _dt.datetime
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0TypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0"""
+
+    id: str
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    name: NotRequired[str]
+    creator: NotRequired[
+        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0TypeForResponse
+    ]
+    creator_type: NotRequired[Literal["user", "organization"]]
+    user_collaborators: NotRequired[
+        list[
+            AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsTypeForResponse
+        ]
+    ]
+    owner: NotRequired[
+        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropOwnerTypeForResponse
+    ]
+    repository: NotRequired[
+        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepositoryTypeForResponse
+    ]
+    state: Literal[
+        "queued",
+        "in_progress",
+        "completed",
+        "failed",
+        "idle",
+        "waiting_for_user",
+        "timed_out",
+        "cancelled",
+    ]
+    session_count: NotRequired[int]
+    artifacts: NotRequired[
+        list[
+            AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItemsTypeForResponse
+        ]
+    ]
+    archived_at: NotRequired[Union[str, None]]
+    updated_at: NotRequired[str]
+    created_at: str
 
 
 __all__ = (
-    "AgentsTasksGetResponse401PropErrorsItemsType",
-    "AgentsTasksGetResponse401PropErrorsItemsTypeForResponse",
-    "AgentsTasksGetResponse401Type",
-    "AgentsTasksGetResponse401TypeForResponse",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0Type",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0TypeForResponse",
 )

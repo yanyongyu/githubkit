@@ -52,6 +52,7 @@ if TYPE_CHECKING:
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200,
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
         EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202,
+        EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202,
         EnterprisesEnterpriseEnterpriseRolesGetResponse200,
         EnterprisesEnterpriseNetworkConfigurationsGetResponse200,
         EnterpriseTeam,
@@ -123,6 +124,8 @@ if TYPE_CHECKING:
         EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBodyType,
         EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBodyType,
         EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202TypeForResponse,
+        EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBodyType,
+        EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202TypeForResponse,
         EnterprisesEnterpriseEnterpriseRolesGetResponse200TypeForResponse,
         EnterprisesEnterpriseNetworkConfigurationsGetResponse200TypeForResponse,
         EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyType,
@@ -5981,6 +5984,222 @@ class EnterpriseAdminClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": BasicError,
+            },
+        )
+
+    @overload
+    def revoke_credential_authorizations_for_user(
+        self,
+        enterprise: str,
+        username: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBodyType
+        ] = UNSET,
+    ) -> Response[
+        EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202,
+        EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202TypeForResponse,
+    ]: ...
+
+    @overload
+    def revoke_credential_authorizations_for_user(
+        self,
+        enterprise: str,
+        username: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        revoke_credentials: Missing[bool] = UNSET,
+    ) -> Response[
+        EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202,
+        EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202TypeForResponse,
+    ]: ...
+
+    def revoke_credential_authorizations_for_user(
+        self,
+        enterprise: str,
+        username: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202,
+        EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202TypeForResponse,
+    ]:
+        """enterprise-admin/revoke-credential-authorizations-for-user
+
+        POST /enterprises/{enterprise}/credential-authorizations/{username}/revoke
+
+        Revokes all credential authorizations for a single user within the enterprise.
+        This includes any credential authorizations the user has across all organizations
+        in the enterprise.
+
+        For Enterprise Managed User (EMU) enterprises, you can optionally also destroy all
+        credentials (PATs v1, PATs v2, and SSH keys) owned by the user by setting
+        the `revoke_credentials` parameter to `true`.
+
+        This operation is performed asynchronously. A background job will be queued to process
+        the revocations.
+
+        > [!WARNING]
+        > If you use a personal access token to call this endpoint and target yourself, that
+        > token may also be revoked or destroyed as part of this operation.
+
+        The authenticated user must be an enterprise owner or have the `write_enterprise_credentials` permission to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/credential-authorizations#revoke-credential-authorizations-for-a-user-in-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBody,
+            EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202,
+        )
+
+        url = f"/enterprises/{enterprise}/credential-authorizations/{username}/revoke"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBody,
+                json,
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": BasicError,
+            },
+        )
+
+    @overload
+    async def async_revoke_credential_authorizations_for_user(
+        self,
+        enterprise: str,
+        username: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBodyType
+        ] = UNSET,
+    ) -> Response[
+        EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202,
+        EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202TypeForResponse,
+    ]: ...
+
+    @overload
+    async def async_revoke_credential_authorizations_for_user(
+        self,
+        enterprise: str,
+        username: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        revoke_credentials: Missing[bool] = UNSET,
+    ) -> Response[
+        EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202,
+        EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202TypeForResponse,
+    ]: ...
+
+    async def async_revoke_credential_authorizations_for_user(
+        self,
+        enterprise: str,
+        username: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202,
+        EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202TypeForResponse,
+    ]:
+        """enterprise-admin/revoke-credential-authorizations-for-user
+
+        POST /enterprises/{enterprise}/credential-authorizations/{username}/revoke
+
+        Revokes all credential authorizations for a single user within the enterprise.
+        This includes any credential authorizations the user has across all organizations
+        in the enterprise.
+
+        For Enterprise Managed User (EMU) enterprises, you can optionally also destroy all
+        credentials (PATs v1, PATs v2, and SSH keys) owned by the user by setting
+        the `revoke_credentials` parameter to `true`.
+
+        This operation is performed asynchronously. A background job will be queued to process
+        the revocations.
+
+        > [!WARNING]
+        > If you use a personal access token to call this endpoint and target yourself, that
+        > token may also be revoked or destroyed as part of this operation.
+
+        The authenticated user must be an enterprise owner or have the `write_enterprise_credentials` permission to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/credential-authorizations#revoke-credential-authorizations-for-a-user-in-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBody,
+            EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202,
+        )
+
+        url = f"/enterprises/{enterprise}/credential-authorizations/{username}/revoke"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBody,
+                json,
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202,
             error_models={
                 "403": BasicError,
                 "404": BasicError,

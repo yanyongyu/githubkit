@@ -9,36 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class OrgsOrgCampaignsCampaignNumberPatchBodyType(TypedDict):
-    """OrgsOrgCampaignsCampaignNumberPatchBody"""
-
-    name: NotRequired[str]
-    description: NotRequired[str]
-    managers: NotRequired[list[str]]
-    team_managers: NotRequired[list[str]]
-    ends_at: NotRequired[_dt.datetime]
-    contact_link: NotRequired[Union[str, None]]
-    state: NotRequired[Literal["open", "closed"]]
+from .group_0259 import (
+    ArtifactDeploymentRecordType,
+    ArtifactDeploymentRecordTypeForResponse,
+)
 
 
-class OrgsOrgCampaignsCampaignNumberPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgCampaignsCampaignNumberPatchBody"""
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200Type(
+    TypedDict
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200"""
 
-    name: NotRequired[str]
-    description: NotRequired[str]
-    managers: NotRequired[list[str]]
-    team_managers: NotRequired[list[str]]
-    ends_at: NotRequired[str]
-    contact_link: NotRequired[Union[str, None]]
-    state: NotRequired[Literal["open", "closed"]]
+    total_count: int
+    deployment_records: NotRequired[list[ArtifactDeploymentRecordType]]
+
+
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200"""
+
+    total_count: int
+    deployment_records: NotRequired[list[ArtifactDeploymentRecordTypeForResponse]]
 
 
 __all__ = (
-    "OrgsOrgCampaignsCampaignNumberPatchBodyType",
-    "OrgsOrgCampaignsCampaignNumberPatchBodyTypeForResponse",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200Type",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200TypeForResponse",
 )

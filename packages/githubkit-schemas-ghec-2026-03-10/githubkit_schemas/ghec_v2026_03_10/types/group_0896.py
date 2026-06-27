@@ -13,38 +13,35 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0305 import (
-    ProjectsV2StatusUpdateType,
-    ProjectsV2StatusUpdateTypeForResponse,
-)
-from .group_0576 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0577 import (
+from .group_0309 import ProjectsV2Type, ProjectsV2TypeForResponse
+from .group_0588 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0589 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
 
 
-class WebhookProjectsV2StatusUpdateCreatedType(TypedDict):
-    """Projects v2 Status Update Created Event"""
+class WebhookProjectsV2ProjectClosedType(TypedDict):
+    """Projects v2 Project Closed Event"""
 
-    action: Literal["created"]
+    action: Literal["closed"]
     installation: NotRequired[SimpleInstallationType]
     organization: OrganizationSimpleWebhooksType
-    projects_v2_status_update: ProjectsV2StatusUpdateType
+    projects_v2: ProjectsV2Type
     sender: SimpleUserType
 
 
-class WebhookProjectsV2StatusUpdateCreatedTypeForResponse(TypedDict):
-    """Projects v2 Status Update Created Event"""
+class WebhookProjectsV2ProjectClosedTypeForResponse(TypedDict):
+    """Projects v2 Project Closed Event"""
 
-    action: Literal["created"]
+    action: Literal["closed"]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: OrganizationSimpleWebhooksTypeForResponse
-    projects_v2_status_update: ProjectsV2StatusUpdateTypeForResponse
+    projects_v2: ProjectsV2TypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookProjectsV2StatusUpdateCreatedType",
-    "WebhookProjectsV2StatusUpdateCreatedTypeForResponse",
+    "WebhookProjectsV2ProjectClosedType",
+    "WebhookProjectsV2ProjectClosedTypeForResponse",
 )

@@ -12,21 +12,23 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType(TypedDict):
-    """ReposOwnerRepoImportAuthorsAuthorIdPatchBody"""
+class ReposOwnerRepoForksPostBodyType(TypedDict):
+    """ReposOwnerRepoForksPostBody"""
 
-    email: NotRequired[str]
+    organization: NotRequired[str]
     name: NotRequired[str]
+    default_branch_only: NotRequired[bool]
 
 
-class ReposOwnerRepoImportAuthorsAuthorIdPatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoImportAuthorsAuthorIdPatchBody"""
+class ReposOwnerRepoForksPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoForksPostBody"""
 
-    email: NotRequired[str]
+    organization: NotRequired[str]
     name: NotRequired[str]
+    default_branch_only: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType",
-    "ReposOwnerRepoImportAuthorsAuthorIdPatchBodyTypeForResponse",
+    "ReposOwnerRepoForksPostBodyType",
+    "ReposOwnerRepoForksPostBodyTypeForResponse",
 )

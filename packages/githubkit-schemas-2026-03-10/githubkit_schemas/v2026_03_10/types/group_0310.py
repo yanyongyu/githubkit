@@ -13,60 +13,119 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0060 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
+from .group_0092 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0279 import SimpleCommitType, SimpleCommitTypeForResponse
 
-class CodeQualitySetupType(TypedDict):
-    """CodeQualitySetup
 
-    Configuration for code quality setup.
+class CheckSuiteType(TypedDict):
+    """CheckSuite
+
+    A suite of checks performed on the code of a given code change
     """
 
-    state: NotRequired[Literal["configured", "not-configured"]]
-    languages: NotRequired[
-        list[
-            Literal[
-                "csharp",
-                "go",
-                "java-kotlin",
-                "javascript-typescript",
-                "python",
-                "ruby",
-                "rust",
-            ]
-        ]
+    id: int
+    node_id: str
+    head_branch: Union[str, None]
+    head_sha: str
+    status: Union[
+        None,
+        Literal[
+            "queued", "in_progress", "completed", "waiting", "requested", "pending"
+        ],
     ]
-    runner_type: NotRequired[Union[None, Literal["standard", "labeled"]]]
-    runner_label: NotRequired[Union[str, None]]
-    updated_at: NotRequired[Union[_dt.datetime, None]]
-    schedule: NotRequired[Union[None, Literal["weekly"]]]
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+            "startup_failure",
+            "stale",
+        ],
+    ]
+    url: Union[str, None]
+    before: Union[str, None]
+    after: Union[str, None]
+    pull_requests: Union[list[PullRequestMinimalType], None]
+    app: Union[None, IntegrationType, None]
+    repository: MinimalRepositoryType
+    created_at: Union[_dt.datetime, None]
+    updated_at: Union[_dt.datetime, None]
+    head_commit: SimpleCommitType
+    latest_check_runs_count: int
+    check_runs_url: str
+    rerequestable: NotRequired[bool]
+    runs_rerequestable: NotRequired[bool]
 
 
-class CodeQualitySetupTypeForResponse(TypedDict):
-    """CodeQualitySetup
+class CheckSuiteTypeForResponse(TypedDict):
+    """CheckSuite
 
-    Configuration for code quality setup.
+    A suite of checks performed on the code of a given code change
     """
 
-    state: NotRequired[Literal["configured", "not-configured"]]
-    languages: NotRequired[
-        list[
-            Literal[
-                "csharp",
-                "go",
-                "java-kotlin",
-                "javascript-typescript",
-                "python",
-                "ruby",
-                "rust",
-            ]
-        ]
+    id: int
+    node_id: str
+    head_branch: Union[str, None]
+    head_sha: str
+    status: Union[
+        None,
+        Literal[
+            "queued", "in_progress", "completed", "waiting", "requested", "pending"
+        ],
     ]
-    runner_type: NotRequired[Union[None, Literal["standard", "labeled"]]]
-    runner_label: NotRequired[Union[str, None]]
-    updated_at: NotRequired[Union[str, None]]
-    schedule: NotRequired[Union[None, Literal["weekly"]]]
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+            "startup_failure",
+            "stale",
+        ],
+    ]
+    url: Union[str, None]
+    before: Union[str, None]
+    after: Union[str, None]
+    pull_requests: Union[list[PullRequestMinimalTypeForResponse], None]
+    app: Union[None, IntegrationTypeForResponse, None]
+    repository: MinimalRepositoryTypeForResponse
+    created_at: Union[str, None]
+    updated_at: Union[str, None]
+    head_commit: SimpleCommitTypeForResponse
+    latest_check_runs_count: int
+    check_runs_url: str
+    rerequestable: NotRequired[bool]
+    runs_rerequestable: NotRequired[bool]
+
+
+class ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCommitsRefCheckSuitesGetResponse200"""
+
+    total_count: int
+    check_suites: list[CheckSuiteType]
+
+
+class ReposOwnerRepoCommitsRefCheckSuitesGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoCommitsRefCheckSuitesGetResponse200"""
+
+    total_count: int
+    check_suites: list[CheckSuiteTypeForResponse]
 
 
 __all__ = (
-    "CodeQualitySetupType",
-    "CodeQualitySetupTypeForResponse",
+    "CheckSuiteType",
+    "CheckSuiteTypeForResponse",
+    "ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Type",
+    "ReposOwnerRepoCommitsRefCheckSuitesGetResponse200TypeForResponse",
 )

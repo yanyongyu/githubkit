@@ -9,51 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class StatusType(TypedDict):
-    """Status
+class ReactionType(TypedDict):
+    """Reaction
 
-    The status of a commit.
+    Reactions to conversations provide a way to help people express their feelings
+    more simply and effectively.
     """
 
-    url: str
-    avatar_url: Union[str, None]
     id: int
     node_id: str
-    state: str
-    description: Union[str, None]
-    target_url: Union[str, None]
-    context: str
-    created_at: str
-    updated_at: str
-    creator: Union[None, SimpleUserType]
+    user: Union[None, SimpleUserType]
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ]
+    created_at: _dt.datetime
 
 
-class StatusTypeForResponse(TypedDict):
-    """Status
+class ReactionTypeForResponse(TypedDict):
+    """Reaction
 
-    The status of a commit.
+    Reactions to conversations provide a way to help people express their feelings
+    more simply and effectively.
     """
 
-    url: str
-    avatar_url: Union[str, None]
     id: int
     node_id: str
-    state: str
-    description: Union[str, None]
-    target_url: Union[str, None]
-    context: str
+    user: Union[None, SimpleUserTypeForResponse]
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ]
     created_at: str
-    updated_at: str
-    creator: Union[None, SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "StatusType",
-    "StatusTypeForResponse",
+    "ReactionType",
+    "ReactionTypeForResponse",
 )

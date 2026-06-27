@@ -12,22 +12,16 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0128 import ArtifactDeploymentRecord
 
 
-class OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200(GitHubModel):
-    """OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200"""
+class OrgsOrgAgentsSecretsSecretNameRepositoriesPutBody(GitHubModel):
+    """OrgsOrgAgentsSecretsSecretNameRepositoriesPutBody"""
 
-    total_count: Missing[int] = Field(
-        default=UNSET,
-        description="The number of deployment records for this digest and organization",
+    selected_repository_ids: list[int] = Field(
+        description="An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can add and remove individual repositories using the [Add selected repository to an organization secret](https://docs.github.com/rest/agents/secrets#add-selected-repository-to-an-organization-secret) and [Remove selected repository from an organization secret](https://docs.github.com/rest/agents/secrets#remove-selected-repository-from-an-organization-secret) endpoints."
     )
-    deployment_records: Missing[list[ArtifactDeploymentRecord]] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200)
+model_rebuild(OrgsOrgAgentsSecretsSecretNameRepositoriesPutBody)
 
-__all__ = ("OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200",)
+__all__ = ("OrgsOrgAgentsSecretsSecretNameRepositoriesPutBody",)

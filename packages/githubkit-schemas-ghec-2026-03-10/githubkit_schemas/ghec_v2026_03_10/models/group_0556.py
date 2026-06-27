@@ -9,158 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
-from .group_0020 import Repository
-from .group_0204 import Milestone
-from .group_0205 import IssueType
-from .group_0206 import ReactionRollup
-from .group_0207 import IssueDependenciesSummary, SubIssuesSummary
-from .group_0209 import IssueComment
-from .group_0210 import IssueFieldValue
-from .group_0552 import SearchResultTextMatchesItems
 
+class UserNameResponse(GitHubModel):
+    """UserNameResponse"""
 
-class IssueSearchResultItem(GitHubModel):
-    """Issue Search Result Item
-
-    Issue Search Result Item
-    """
-
-    url: str = Field()
-    repository_url: str = Field()
-    labels_url: str = Field()
-    comments_url: str = Field()
-    events_url: str = Field()
-    html_url: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    number: int = Field()
-    title: str = Field()
-    locked: bool = Field()
-    active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
-    assignees: Missing[Union[list[SimpleUser], None]] = Field(default=UNSET)
-    user: Union[None, SimpleUser] = Field()
-    labels: list[IssueSearchResultItemPropLabelsItems] = Field()
-    sub_issues_summary: Missing[SubIssuesSummary] = Field(
-        default=UNSET, title="Sub-issues Summary"
-    )
-    issue_dependencies_summary: Missing[IssueDependenciesSummary] = Field(
-        default=UNSET, title="Issue Dependencies Summary"
-    )
-    issue_field_values: Missing[list[IssueFieldValue]] = Field(default=UNSET)
-    state: str = Field()
-    state_reason: Missing[Union[str, None]] = Field(default=UNSET)
-    milestone: Union[None, Milestone] = Field()
-    comments: int = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    closed_at: Union[_dt.datetime, None] = Field()
-    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
-        default=UNSET, title="Search Result Text Matches"
-    )
-    pull_request: Missing[IssueSearchResultItemPropPullRequest] = Field(default=UNSET)
-    body: Missing[str] = Field(default=UNSET)
-    score: float = Field()
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="author_association",
-        description="How the author is associated with the repository.",
-    )
-    draft: Missing[bool] = Field(default=UNSET)
-    repository: Missing[Repository] = Field(
-        default=UNSET, title="Repository", description="A repository on GitHub."
-    )
-    body_html: Missing[str] = Field(default=UNSET)
-    body_text: Missing[str] = Field(default=UNSET)
-    timeline_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Union[IssueType, None]] = Field(
+    formatted: Missing[str] = Field(
         default=UNSET,
-        title="Issue Type",
-        description="The type assigned to the issue. This is only present for issues in repositories where issue types are supported.",
+        description="The full name, including all middle names, titles, and suffixes as appropriate, formatted for display.",
     )
-    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
-        default=UNSET
+    family_name: Missing[str] = Field(
+        default=UNSET, alias="familyName", description="The family name of the user."
     )
-    pinned_comment: Missing[Union[None, IssueComment]] = Field(default=UNSET)
-    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
-
-
-class IssueSearchResultItemPropLabelsItems(GitHubModel):
-    """IssueSearchResultItemPropLabelsItems"""
-
-    id: Missing[int] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    color: Missing[str] = Field(default=UNSET)
-    default: Missing[bool] = Field(default=UNSET)
-    description: Missing[Union[str, None]] = Field(default=UNSET)
-
-
-class IssueSearchResultItemPropPullRequest(GitHubModel):
-    """IssueSearchResultItemPropPullRequest"""
-
-    merged_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
-    diff_url: Union[str, None] = Field()
-    html_url: Union[str, None] = Field()
-    patch_url: Union[str, None] = Field()
-    url: Union[str, None] = Field()
-
-
-class SearchIssuesGetResponse200(GitHubModel):
-    """SearchIssuesGetResponse200"""
-
-    total_count: int = Field()
-    incomplete_results: bool = Field()
-    items: list[IssueSearchResultItem] = Field()
-    search_type: Literal["lexical", "semantic", "hybrid"] = Field(
-        description="The type of search that was performed. Possible values are `lexical`, `semantic`, or `hybrid`."
+    given_name: Missing[str] = Field(
+        default=UNSET, alias="givenName", description="The given name of the user."
     )
-    lexical_fallback_reason: Missing[
-        list[
-            Literal[
-                "no_text_terms",
-                "quoted_text",
-                "non_issue_target",
-                "or_boolean_not_supported",
-                "no_accessible_repos",
-                "server_error",
-                "only_non_semantic_fields_requested",
-                "service_unavailable",
-            ]
-        ]
-    ] = Field(
-        default=UNSET,
-        description="When a semantic or hybrid search falls back to lexical search, this field contains the reasons for the fallback. Only present when a fallback occurred.",
+    middle_name: Missing[str] = Field(
+        default=UNSET, alias="middleName", description="The middle name(s) of the user."
     )
 
 
-model_rebuild(IssueSearchResultItem)
-model_rebuild(IssueSearchResultItemPropLabelsItems)
-model_rebuild(IssueSearchResultItemPropPullRequest)
-model_rebuild(SearchIssuesGetResponse200)
+class UserEmailsResponseItems(GitHubModel):
+    """UserEmailsResponseItems"""
+
+    value: str = Field(description="The email address.")
+    type: Missing[str] = Field(default=UNSET, description="The type of email address.")
+    primary: Missing[bool] = Field(
+        default=UNSET, description="Whether this email address is the primary address."
+    )
+
+
+model_rebuild(UserNameResponse)
+model_rebuild(UserEmailsResponseItems)
 
 __all__ = (
-    "IssueSearchResultItem",
-    "IssueSearchResultItemPropLabelsItems",
-    "IssueSearchResultItemPropPullRequest",
-    "SearchIssuesGetResponse200",
+    "UserEmailsResponseItems",
+    "UserNameResponse",
 )

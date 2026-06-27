@@ -9,38 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0346 import SimpleCommitType, SimpleCommitTypeForResponse
+
+class WebhooksLabelType(TypedDict):
+    """Label"""
+
+    color: str
+    default: bool
+    description: Union[str, None]
+    id: int
+    name: str
+    node_id: str
+    url: str
 
 
-class MergeGroupType(TypedDict):
-    """Merge Group
+class WebhooksLabelTypeForResponse(TypedDict):
+    """Label"""
 
-    A group of pull requests that the merge queue has grouped together to be merged.
-    """
-
-    head_sha: str
-    head_ref: str
-    base_sha: str
-    base_ref: str
-    head_commit: SimpleCommitType
-
-
-class MergeGroupTypeForResponse(TypedDict):
-    """Merge Group
-
-    A group of pull requests that the merge queue has grouped together to be merged.
-    """
-
-    head_sha: str
-    head_ref: str
-    base_sha: str
-    base_ref: str
-    head_commit: SimpleCommitTypeForResponse
+    color: str
+    default: bool
+    description: Union[str, None]
+    id: int
+    name: str
+    node_id: str
+    url: str
 
 
 __all__ = (
-    "MergeGroupType",
-    "MergeGroupTypeForResponse",
+    "WebhooksLabelType",
+    "WebhooksLabelTypeForResponse",
 )

@@ -13,44 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0502 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0503 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0504 import (
+from .group_0514 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0515 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0516 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0505 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0771 import (
-    WebhookPackagePublishedPropPackageType,
-    WebhookPackagePublishedPropPackageTypeForResponse,
-)
+from .group_0517 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0541 import WebhooksMilestone3Type, WebhooksMilestone3TypeForResponse
 
 
-class WebhookPackagePublishedType(TypedDict):
-    """package published event"""
+class WebhookMilestoneCreatedType(TypedDict):
+    """milestone created event"""
 
-    action: Literal["published"]
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
+    milestone: WebhooksMilestone3Type
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    package: WebhookPackagePublishedPropPackageType
-    repository: NotRequired[RepositoryWebhooksType]
+    repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookPackagePublishedTypeForResponse(TypedDict):
-    """package published event"""
+class WebhookMilestoneCreatedTypeForResponse(TypedDict):
+    """milestone created event"""
 
-    action: Literal["published"]
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
+    milestone: WebhooksMilestone3TypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    package: WebhookPackagePublishedPropPackageTypeForResponse
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookPackagePublishedType",
-    "WebhookPackagePublishedTypeForResponse",
+    "WebhookMilestoneCreatedType",
+    "WebhookMilestoneCreatedTypeForResponse",
 )

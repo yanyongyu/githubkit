@@ -9,28 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0587 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0588 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0589 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0590 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookCheckRunCreatedFormEncodedType(TypedDict):
-    """Check Run Created Event
+class WebhookBranchProtectionConfigurationEnabledType(TypedDict):
+    """branch protection configuration enabled event"""
 
-    The check_run.created webhook encoded with URL encoding
-    """
+    action: Literal["enabled"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
-    payload: str
 
+class WebhookBranchProtectionConfigurationEnabledTypeForResponse(TypedDict):
+    """branch protection configuration enabled event"""
 
-class WebhookCheckRunCreatedFormEncodedTypeForResponse(TypedDict):
-    """Check Run Created Event
-
-    The check_run.created webhook encoded with URL encoding
-    """
-
-    payload: str
+    action: Literal["enabled"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookCheckRunCreatedFormEncodedType",
-    "WebhookCheckRunCreatedFormEncodedTypeForResponse",
+    "WebhookBranchProtectionConfigurationEnabledType",
+    "WebhookBranchProtectionConfigurationEnabledTypeForResponse",
 )

@@ -9,103 +9,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0576 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0577 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0578 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0579 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0592 import WebhooksLabelType, WebhooksLabelTypeForResponse
-from .group_0796 import (
-    WebhookIssuesEditedPropIssueType,
-    WebhookIssuesEditedPropIssueTypeForResponse,
-)
+
+class WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreatorType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-class WebhookIssuesEditedType(TypedDict):
-    """issues edited event"""
+class WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreatorTypeForResponse(
+    TypedDict
+):
+    """User"""
 
-    action: Literal["edited"]
-    changes: WebhookIssuesEditedPropChangesType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssuesEditedPropIssueType
-    label: NotRequired[WebhooksLabelType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
-
-
-class WebhookIssuesEditedTypeForResponse(TypedDict):
-    """issues edited event"""
-
-    action: Literal["edited"]
-    changes: WebhookIssuesEditedPropChangesTypeForResponse
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhookIssuesEditedPropIssueTypeForResponse
-    label: NotRequired[WebhooksLabelTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
-
-
-class WebhookIssuesEditedPropChangesType(TypedDict):
-    """WebhookIssuesEditedPropChanges
-
-    The changes to the issue.
-    """
-
-    body: NotRequired[WebhookIssuesEditedPropChangesPropBodyType]
-    title: NotRequired[WebhookIssuesEditedPropChangesPropTitleType]
-
-
-class WebhookIssuesEditedPropChangesTypeForResponse(TypedDict):
-    """WebhookIssuesEditedPropChanges
-
-    The changes to the issue.
-    """
-
-    body: NotRequired[WebhookIssuesEditedPropChangesPropBodyTypeForResponse]
-    title: NotRequired[WebhookIssuesEditedPropChangesPropTitleTypeForResponse]
-
-
-class WebhookIssuesEditedPropChangesPropBodyType(TypedDict):
-    """WebhookIssuesEditedPropChangesPropBody"""
-
-    from_: str
-
-
-class WebhookIssuesEditedPropChangesPropBodyTypeForResponse(TypedDict):
-    """WebhookIssuesEditedPropChangesPropBody"""
-
-    from_: str
-
-
-class WebhookIssuesEditedPropChangesPropTitleType(TypedDict):
-    """WebhookIssuesEditedPropChangesPropTitle"""
-
-    from_: str
-
-
-class WebhookIssuesEditedPropChangesPropTitleTypeForResponse(TypedDict):
-    """WebhookIssuesEditedPropChangesPropTitle"""
-
-    from_: str
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "WebhookIssuesEditedPropChangesPropBodyType",
-    "WebhookIssuesEditedPropChangesPropBodyTypeForResponse",
-    "WebhookIssuesEditedPropChangesPropTitleType",
-    "WebhookIssuesEditedPropChangesPropTitleTypeForResponse",
-    "WebhookIssuesEditedPropChangesType",
-    "WebhookIssuesEditedPropChangesTypeForResponse",
-    "WebhookIssuesEditedType",
-    "WebhookIssuesEditedTypeForResponse",
+    "WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreatorType",
+    "WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreatorTypeForResponse",
 )

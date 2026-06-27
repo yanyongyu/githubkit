@@ -12,26 +12,19 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0539 import Meta
-from .group_0549 import ScimEnterpriseUserResponseAllof1PropGroupsItems
 
 
-class ScimEnterpriseUserResponseAllof1(GitHubModel):
-    """ScimEnterpriseUserResponseAllof1"""
+class ReferrerTraffic(GitHubModel):
+    """Referrer Traffic
 
-    id: str = Field(description="The internally generated id for the user object.")
-    groups: Missing[list[ScimEnterpriseUserResponseAllof1PropGroupsItems]] = Field(
-        default=UNSET,
-        description="Provisioned SCIM groups that the user is a member of.",
-    )
-    meta: Meta = Field(
-        description="The metadata associated with the creation/updates to the user."
-    )
+    Referrer Traffic
+    """
+
+    referrer: str = Field()
+    count: int = Field()
+    uniques: int = Field()
 
 
-model_rebuild(ScimEnterpriseUserResponseAllof1)
+model_rebuild(ReferrerTraffic)
 
-__all__ = ("ScimEnterpriseUserResponseAllof1",)
+__all__ = ("ReferrerTraffic",)

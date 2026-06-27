@@ -18,58 +18,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgArtifactsMetadataStorageRecordPostBody(GitHubModel):
-    """OrgsOrgArtifactsMetadataStorageRecordPostBody"""
+class OrgsOrgAgentsSecretsSecretNamePutBody(GitHubModel):
+    """OrgsOrgAgentsSecretsSecretNamePutBody"""
 
-    name: str = Field(
-        min_length=1, max_length=256, description="The name of the artifact."
+    encrypted_value: str = Field(
+        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
+        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an organization public key](https://docs.github.com/rest/agents/secrets#get-an-organization-public-key) endpoint.",
     )
-    digest: str = Field(
-        min_length=71,
-        max_length=71,
-        pattern="^sha256:[a-f0-9]{64}$",
-        description="The digest of the artifact (algorithm:hex-encoded-digest).",
+    key_id: str = Field(description="ID of the key you used to encrypt the secret.")
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="Which type of organization repositories have access to the organization secret. `selected` means only the repositories specified by `selected_repository_ids` can access the secret."
     )
-    version: Missing[str] = Field(
-        min_length=1, max_length=100, default=UNSET, description="The artifact version."
-    )
-    artifact_url: Missing[str] = Field(
-        max_length=152,
-        pattern="^https://",
+    selected_repository_ids: Missing[list[int]] = Field(
         default=UNSET,
-        description="The URL where the artifact is stored.",
-    )
-    path: Missing[str] = Field(
-        max_length=512, default=UNSET, description="The path of the artifact."
-    )
-    registry_url: str = Field(
-        min_length=1,
-        max_length=256,
-        pattern="^https://",
-        description="The base URL of the artifact registry.",
-    )
-    repository: Missing[str] = Field(
-        max_length=128,
-        default=UNSET,
-        description="The repository name within the registry.",
-    )
-    status: Missing[Literal["active", "eol", "deleted"]] = Field(
-        default=UNSET,
-        description="The status of the artifact (e.g., active, inactive).",
-    )
-    github_repository: Missing[str] = Field(
-        min_length=1,
-        max_length=100,
-        pattern="^[A-Za-z0-9.\\-_]+$",
-        default=UNSET,
-        description="The name of the GitHub repository associated with the artifact. This should be used\nwhen there are no provenance attestations available for the artifact. The repository\nmust belong to the organization specified in the path parameter.\n\nIf a provenance attestation is available for the artifact, the API will use\nthe repository information from the attestation instead of this parameter.",
-    )
-    return_records: Missing[bool] = Field(
-        default=UNSET,
-        description="If true, the endpoint will return the created record in the response body.\n",
+        description="An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can manage the list of selected repositories using the [List selected repositories for an organization secret](https://docs.github.com/rest/agents/secrets#list-selected-repositories-for-an-organization-secret), [Set selected repositories for an organization secret](https://docs.github.com/rest/agents/secrets#set-selected-repositories-for-an-organization-secret), and [Remove selected repository from an organization secret](https://docs.github.com/rest/agents/secrets#remove-selected-repository-from-an-organization-secret) endpoints.",
     )
 
 
-model_rebuild(OrgsOrgArtifactsMetadataStorageRecordPostBody)
+model_rebuild(OrgsOrgAgentsSecretsSecretNamePutBody)
 
-__all__ = ("OrgsOrgArtifactsMetadataStorageRecordPostBody",)
+__all__ = ("OrgsOrgAgentsSecretsSecretNamePutBody",)

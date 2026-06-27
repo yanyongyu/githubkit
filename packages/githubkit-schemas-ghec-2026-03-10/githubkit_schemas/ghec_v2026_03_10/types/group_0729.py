@@ -9,65 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0725 import (
-    WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
-    WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
-    WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType,
-    WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse,
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0018 import InstallationType, InstallationTypeForResponse
+from .group_0587 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0589 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0590 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0604 import (
+    WebhooksRepositoriesItemsType,
+    WebhooksRepositoriesItemsTypeForResponse,
 )
 
 
-class WebhookIssueCommentCreatedPropIssueMergedPerformedViaGithubAppType(TypedDict):
-    """WebhookIssueCommentCreatedPropIssueMergedPerformedViaGithubApp"""
+class WebhookInstallationUnsuspendType(TypedDict):
+    """installation unsuspend event"""
 
-    created_at: Union[_dt.datetime, None]
-    description: Union[str, None]
-    events: NotRequired[list[str]]
-    external_url: Union[str, None]
-    html_url: str
-    id: Union[int, None]
-    name: str
-    node_id: str
-    owner: Union[
-        WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
-        None,
-    ]
-    permissions: NotRequired[
-        WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType
-    ]
-    slug: NotRequired[str]
-    updated_at: Union[_dt.datetime, None]
+    action: Literal["unsuspend"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: InstallationType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repositories: NotRequired[list[WebhooksRepositoriesItemsType]]
+    repository: NotRequired[RepositoryWebhooksType]
+    requester: NotRequired[None]
+    sender: SimpleUserType
 
 
-class WebhookIssueCommentCreatedPropIssueMergedPerformedViaGithubAppTypeForResponse(
-    TypedDict
-):
-    """WebhookIssueCommentCreatedPropIssueMergedPerformedViaGithubApp"""
+class WebhookInstallationUnsuspendTypeForResponse(TypedDict):
+    """installation unsuspend event"""
 
-    created_at: Union[str, None]
-    description: Union[str, None]
-    events: NotRequired[list[str]]
-    external_url: Union[str, None]
-    html_url: str
-    id: Union[int, None]
-    name: str
-    node_id: str
-    owner: Union[
-        WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
-        None,
-    ]
-    permissions: NotRequired[
-        WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse
-    ]
-    slug: NotRequired[str]
-    updated_at: Union[str, None]
+    action: Literal["unsuspend"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: InstallationTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repositories: NotRequired[list[WebhooksRepositoriesItemsTypeForResponse]]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    requester: NotRequired[None]
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookIssueCommentCreatedPropIssueMergedPerformedViaGithubAppType",
-    "WebhookIssueCommentCreatedPropIssueMergedPerformedViaGithubAppTypeForResponse",
+    "WebhookInstallationUnsuspendType",
+    "WebhookInstallationUnsuspendTypeForResponse",
 )

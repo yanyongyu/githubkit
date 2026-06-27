@@ -11,22 +11,20 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0143 import CopilotSpaceResourceType, CopilotSpaceResourceTypeForResponse
+
+class OrgsOrgCodespacesAccessSelectedUsersPostBodyType(TypedDict):
+    """OrgsOrgCodespacesAccessSelectedUsersPostBody"""
+
+    selected_usernames: list[str]
 
 
-class OrgsOrgCopilotSpacesSpaceNumberResourcesGetResponse200Type(TypedDict):
-    """OrgsOrgCopilotSpacesSpaceNumberResourcesGetResponse200"""
+class OrgsOrgCodespacesAccessSelectedUsersPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgCodespacesAccessSelectedUsersPostBody"""
 
-    resources: list[CopilotSpaceResourceType]
-
-
-class OrgsOrgCopilotSpacesSpaceNumberResourcesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgCopilotSpacesSpaceNumberResourcesGetResponse200"""
-
-    resources: list[CopilotSpaceResourceTypeForResponse]
+    selected_usernames: list[str]
 
 
 __all__ = (
-    "OrgsOrgCopilotSpacesSpaceNumberResourcesGetResponse200Type",
-    "OrgsOrgCopilotSpacesSpaceNumberResourcesGetResponse200TypeForResponse",
+    "OrgsOrgCodespacesAccessSelectedUsersPostBodyType",
+    "OrgsOrgCodespacesAccessSelectedUsersPostBodyTypeForResponse",
 )

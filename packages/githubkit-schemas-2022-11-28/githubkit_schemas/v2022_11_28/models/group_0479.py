@@ -18,58 +18,32 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0090 import MinimalRepository
-from .group_0298 import GitUser
-from .group_0477 import SearchResultTextMatchesItems
-from .group_0480 import CommitSearchResultItemPropCommit
 
 
-class CommitSearchResultItem(GitHubModel):
-    """Commit Search Result Item
+class ContributorActivity(GitHubModel):
+    """Contributor Activity
 
-    Commit Search Result Item
+    Contributor Activity
     """
 
-    url: str = Field()
-    sha: str = Field()
-    html_url: str = Field()
-    comments_url: str = Field()
-    commit: CommitSearchResultItemPropCommit = Field()
     author: Union[None, SimpleUser] = Field()
-    committer: Union[None, GitUser] = Field()
-    parents: list[CommitSearchResultItemPropParentsItems] = Field()
-    repository: MinimalRepository = Field(
-        title="Minimal Repository", description="Minimal Repository"
-    )
-    score: float = Field()
-    node_id: str = Field()
-    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
-        default=UNSET, title="Search Result Text Matches"
-    )
+    total: int = Field()
+    weeks: list[ContributorActivityPropWeeksItems] = Field()
 
 
-class CommitSearchResultItemPropParentsItems(GitHubModel):
-    """CommitSearchResultItemPropParentsItems"""
+class ContributorActivityPropWeeksItems(GitHubModel):
+    """ContributorActivityPropWeeksItems"""
 
-    url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    sha: Missing[str] = Field(default=UNSET)
-
-
-class SearchCommitsGetResponse200(GitHubModel):
-    """SearchCommitsGetResponse200"""
-
-    total_count: int = Field()
-    incomplete_results: bool = Field()
-    items: list[CommitSearchResultItem] = Field()
+    w: Missing[int] = Field(default=UNSET)
+    a: Missing[int] = Field(default=UNSET)
+    d: Missing[int] = Field(default=UNSET)
+    c: Missing[int] = Field(default=UNSET)
 
 
-model_rebuild(CommitSearchResultItem)
-model_rebuild(CommitSearchResultItemPropParentsItems)
-model_rebuild(SearchCommitsGetResponse200)
+model_rebuild(ContributorActivity)
+model_rebuild(ContributorActivityPropWeeksItems)
 
 __all__ = (
-    "CommitSearchResultItem",
-    "CommitSearchResultItemPropParentsItems",
-    "SearchCommitsGetResponse200",
+    "ContributorActivity",
+    "ContributorActivityPropWeeksItems",
 )

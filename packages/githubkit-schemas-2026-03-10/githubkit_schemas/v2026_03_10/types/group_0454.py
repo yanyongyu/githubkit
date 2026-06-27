@@ -12,33 +12,26 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0241 import (
-    RepositoryRuleMaxFileSizePropParametersType,
-    RepositoryRuleMaxFileSizePropParametersTypeForResponse,
-)
 
+class RepositoryRuleDetailedOneof9Type(TypedDict):
+    """RepositoryRuleDetailedOneof9"""
 
-class RepositoryRuleDetailedOneof21Type(TypedDict):
-    """RepositoryRuleDetailedOneof21"""
-
-    type: Literal["max_file_size"]
-    parameters: NotRequired[RepositoryRuleMaxFileSizePropParametersType]
+    type: Literal["non_fast_forward"]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
-class RepositoryRuleDetailedOneof21TypeForResponse(TypedDict):
-    """RepositoryRuleDetailedOneof21"""
+class RepositoryRuleDetailedOneof9TypeForResponse(TypedDict):
+    """RepositoryRuleDetailedOneof9"""
 
-    type: Literal["max_file_size"]
-    parameters: NotRequired[RepositoryRuleMaxFileSizePropParametersTypeForResponse]
+    type: Literal["non_fast_forward"]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
 __all__ = (
-    "RepositoryRuleDetailedOneof21Type",
-    "RepositoryRuleDetailedOneof21TypeForResponse",
+    "RepositoryRuleDetailedOneof9Type",
+    "RepositoryRuleDetailedOneof9TypeForResponse",
 )

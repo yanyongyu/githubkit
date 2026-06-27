@@ -13,33 +13,37 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodeQualitySetupUpdateAnyof3Type(TypedDict):
-    """CodeQualitySetupUpdateAnyof3"""
+class CodeQualitySetupUpdateAnyof0Type(TypedDict):
+    """CodeQualitySetupUpdateAnyof0"""
 
-    state: NotRequired[Literal["configured", "not-configured"]]
+    state: Literal["configured", "not-configured"]
     runner_type: NotRequired[Literal["standard", "labeled"]]
     runner_label: NotRequired[Union[str, None]]
-    languages: list[
-        Literal[
-            "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
+    languages: NotRequired[
+        list[
+            Literal[
+                "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
+            ]
         ]
     ]
 
 
-class CodeQualitySetupUpdateAnyof3TypeForResponse(TypedDict):
-    """CodeQualitySetupUpdateAnyof3"""
+class CodeQualitySetupUpdateAnyof0TypeForResponse(TypedDict):
+    """CodeQualitySetupUpdateAnyof0"""
 
-    state: NotRequired[Literal["configured", "not-configured"]]
+    state: Literal["configured", "not-configured"]
     runner_type: NotRequired[Literal["standard", "labeled"]]
     runner_label: NotRequired[Union[str, None]]
-    languages: list[
-        Literal[
-            "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
+    languages: NotRequired[
+        list[
+            Literal[
+                "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
+            ]
         ]
     ]
 
 
 __all__ = (
-    "CodeQualitySetupUpdateAnyof3Type",
-    "CodeQualitySetupUpdateAnyof3TypeForResponse",
+    "CodeQualitySetupUpdateAnyof0Type",
+    "CodeQualitySetupUpdateAnyof0TypeForResponse",
 )

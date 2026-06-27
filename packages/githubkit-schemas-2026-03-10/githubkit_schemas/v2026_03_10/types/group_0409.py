@@ -9,50 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0390 import IssueTypeWebhookType, IssueTypeWebhookTypeForResponse
 
 
-class TimelineAssignedIssueEventType(TypedDict):
-    """Timeline Assigned Issue Event
+class IssueTypeRemovedIssueEventType(TypedDict):
+    """Issue Type Removed Issue Event
 
-    Timeline Assigned Issue Event
+    Issue Type Removed Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["assigned"]
+    event: str
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    assignee: SimpleUserType
+    prev_issue_type: Union[IssueTypeWebhookType, None]
 
 
-class TimelineAssignedIssueEventTypeForResponse(TypedDict):
-    """Timeline Assigned Issue Event
+class IssueTypeRemovedIssueEventTypeForResponse(TypedDict):
+    """Issue Type Removed Issue Event
 
-    Timeline Assigned Issue Event
+    Issue Type Removed Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserTypeForResponse
-    event: Literal["assigned"]
+    event: str
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    assignee: SimpleUserTypeForResponse
+    prev_issue_type: Union[IssueTypeWebhookTypeForResponse, None]
 
 
 __all__ = (
-    "TimelineAssignedIssueEventType",
-    "TimelineAssignedIssueEventTypeForResponse",
+    "IssueTypeRemovedIssueEventType",
+    "IssueTypeRemovedIssueEventTypeForResponse",
 )

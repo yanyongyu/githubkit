@@ -9,64 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0110 import (
+    ActionsHostedRunnerCuratedImageType,
+    ActionsHostedRunnerCuratedImageTypeForResponse,
+)
 
 
-class OrgsOrgActionsRunnerGroupsGetResponse200Type(TypedDict):
-    """OrgsOrgActionsRunnerGroupsGetResponse200"""
+class OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200Type(TypedDict):
+    """OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200"""
 
-    total_count: float
-    runner_groups: list[RunnerGroupsOrgType]
-
-
-class OrgsOrgActionsRunnerGroupsGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsRunnerGroupsGetResponse200"""
-
-    total_count: float
-    runner_groups: list[RunnerGroupsOrgTypeForResponse]
+    total_count: int
+    images: list[ActionsHostedRunnerCuratedImageType]
 
 
-class RunnerGroupsOrgType(TypedDict):
-    """RunnerGroupsOrg"""
+class OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200"""
 
-    id: float
-    name: str
-    visibility: str
-    default: bool
-    selected_repositories_url: NotRequired[str]
-    runners_url: str
-    hosted_runners_url: NotRequired[str]
-    network_configuration_id: NotRequired[str]
-    inherited: bool
-    inherited_allows_public_repositories: NotRequired[bool]
-    allows_public_repositories: bool
-    workflow_restrictions_read_only: NotRequired[bool]
-    restricted_to_workflows: NotRequired[bool]
-    selected_workflows: NotRequired[list[str]]
-
-
-class RunnerGroupsOrgTypeForResponse(TypedDict):
-    """RunnerGroupsOrg"""
-
-    id: float
-    name: str
-    visibility: str
-    default: bool
-    selected_repositories_url: NotRequired[str]
-    runners_url: str
-    hosted_runners_url: NotRequired[str]
-    network_configuration_id: NotRequired[str]
-    inherited: bool
-    inherited_allows_public_repositories: NotRequired[bool]
-    allows_public_repositories: bool
-    workflow_restrictions_read_only: NotRequired[bool]
-    restricted_to_workflows: NotRequired[bool]
-    selected_workflows: NotRequired[list[str]]
+    total_count: int
+    images: list[ActionsHostedRunnerCuratedImageTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgActionsRunnerGroupsGetResponse200Type",
-    "OrgsOrgActionsRunnerGroupsGetResponse200TypeForResponse",
-    "RunnerGroupsOrgType",
-    "RunnerGroupsOrgTypeForResponse",
+    "OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200Type",
+    "OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200TypeForResponse",
 )

@@ -14,37 +14,43 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0049 import DiscussionType, DiscussionTypeForResponse
-from .group_0505 import (
+from .group_0515 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0516 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0517 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0506 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0515 import WebhooksAnswerType, WebhooksAnswerTypeForResponse
+from .group_0518 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0528 import WebhooksCommentType, WebhooksCommentTypeForResponse
 
 
-class WebhookDiscussionUnansweredType(TypedDict):
-    """discussion unanswered event"""
+class WebhookDiscussionCommentCreatedType(TypedDict):
+    """discussion_comment created event"""
 
-    action: Literal["unanswered"]
+    action: Literal["created"]
+    comment: WebhooksCommentType
     discussion: DiscussionType
-    old_answer: WebhooksAnswerType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserType]
+    sender: SimpleUserType
 
 
-class WebhookDiscussionUnansweredTypeForResponse(TypedDict):
-    """discussion unanswered event"""
+class WebhookDiscussionCommentCreatedTypeForResponse(TypedDict):
+    """discussion_comment created event"""
 
-    action: Literal["unanswered"]
+    action: Literal["created"]
+    comment: WebhooksCommentTypeForResponse
     discussion: DiscussionTypeForResponse
-    old_answer: WebhooksAnswerTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
-    sender: NotRequired[SimpleUserTypeForResponse]
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookDiscussionUnansweredType",
-    "WebhookDiscussionUnansweredTypeForResponse",
+    "WebhookDiscussionCommentCreatedType",
+    "WebhookDiscussionCommentCreatedTypeForResponse",
 )

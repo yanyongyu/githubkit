@@ -9,24 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBodyType(TypedDict):
-    """EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBody"""
-
-    selected_usernames: list[str]
-
-
-class EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBodyTypeForResponse(
+class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyType(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBody"""
+    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBody"""
 
-    selected_usernames: list[str]
+    scope: Literal["all", "all_without_configurations"]
+
+
+class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBody"""
+
+    scope: Literal["all", "all_without_configurations"]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBodyType",
-    "EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBodyTypeForResponse",
+    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyType",
+    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyTypeForResponse",
 )

@@ -9,23 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
 
-class OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyType(TypedDict):
-    """OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody"""
+class OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type(TypedDict):
+    """OrgsOrgCopilotBillingSelectedTeamsPostResponse201
 
-    default_level: Literal["public", "internal"]
+    The total number of seats created for members of the specified team(s).
+    """
+
+    seats_created: int
 
 
-class OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody"""
+class OrgsOrgCopilotBillingSelectedTeamsPostResponse201TypeForResponse(TypedDict):
+    """OrgsOrgCopilotBillingSelectedTeamsPostResponse201
 
-    default_level: Literal["public", "internal"]
+    The total number of seats created for members of the specified team(s).
+    """
+
+    seats_created: int
 
 
 __all__ = (
-    "OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyType",
-    "OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyTypeForResponse",
+    "OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type",
+    "OrgsOrgCopilotBillingSelectedTeamsPostResponse201TypeForResponse",
 )

@@ -12,46 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBody(GitHubModel):
-    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBody"""
+class EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201(GitHubModel):
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201
 
-    organizations: Missing[list[str]] = Field(
-        default=UNSET,
-        description="List of organization logins within the enterprise to enable Copilot cloud agent for.",
-    )
-    custom_properties: Missing[
-        list[
-            EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItems
-        ]
-    ] = Field(
-        default=UNSET,
-        description="List of custom property filters to match organizations. Organizations matching any of the specified property name/value pairs will be included. This is a one-time operation, setting the property on an organization in the future will not automatically update its coding agent policy.",
-    )
-
-
-class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItems(
-    GitHubModel
-):
-    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPr
-    opertiesItems
+    The total number of seats created for the specified user(s).
     """
 
-    property_name: str = Field(
-        description="The name of the custom property to filter by."
-    )
-    values: list[str] = Field(description="The values of the custom property to match.")
+    seats_created: int = Field()
 
 
-model_rebuild(EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBody)
-model_rebuild(
-    EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItems
-)
+model_rebuild(EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201)
 
-__all__ = (
-    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBody",
-    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItems",
-)
+__all__ = ("EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201",)

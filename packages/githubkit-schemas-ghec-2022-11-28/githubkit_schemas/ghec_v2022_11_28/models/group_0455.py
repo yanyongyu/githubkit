@@ -9,38 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
 
+class IssueTypeWebhook(GitHubModel):
+    """Issue Type
 
-class AssignedIssueEvent(GitHubModel):
-    """Assigned Issue Event
-
-    Assigned Issue Event
+    The type of issue.
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: str = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: str = Field()
-    performed_via_github_app: Union[Integration, None] = Field(
-        title="GitHub app",
-        description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
-    )
-    assignee: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    assigner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    id: int = Field(description="The unique identifier of the issue type.")
+    name: str = Field(description="The name of the issue type.")
+    color: Missing[
+        Union[
+            None,
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+        ]
+    ] = Field(default=UNSET, description="The color of the issue type.")
 
 
-model_rebuild(AssignedIssueEvent)
+model_rebuild(IssueTypeWebhook)
 
-__all__ = ("AssignedIssueEvent",)
+__all__ = ("IssueTypeWebhook",)

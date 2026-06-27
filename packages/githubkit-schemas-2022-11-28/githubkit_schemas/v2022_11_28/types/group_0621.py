@@ -14,43 +14,43 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0049 import DiscussionType, DiscussionTypeForResponse
-from .group_0503 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0504 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0505 import (
+from .group_0515 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0516 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0517 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0506 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0517 import WebhooksLabelType, WebhooksLabelTypeForResponse
+from .group_0518 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0528 import WebhooksCommentType, WebhooksCommentTypeForResponse
 
 
-class WebhookDiscussionUnlabeledType(TypedDict):
-    """discussion unlabeled event"""
+class WebhookDiscussionCommentDeletedType(TypedDict):
+    """discussion_comment deleted event"""
 
-    action: Literal["unlabeled"]
+    action: Literal["deleted"]
+    comment: WebhooksCommentType
     discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    label: WebhooksLabelType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookDiscussionUnlabeledTypeForResponse(TypedDict):
-    """discussion unlabeled event"""
+class WebhookDiscussionCommentDeletedTypeForResponse(TypedDict):
+    """discussion_comment deleted event"""
 
-    action: Literal["unlabeled"]
+    action: Literal["deleted"]
+    comment: WebhooksCommentTypeForResponse
     discussion: DiscussionTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    label: WebhooksLabelTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookDiscussionUnlabeledType",
-    "WebhookDiscussionUnlabeledTypeForResponse",
+    "WebhookDiscussionCommentDeletedType",
+    "WebhookDiscussionCommentDeletedTypeForResponse",
 )

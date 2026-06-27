@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Union
 
 from pydantic import Field
 
@@ -17,73 +18,107 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0060 import PullRequestMinimal
+from .group_0092 import MinimalRepository
+from .group_0279 import SimpleCommit
 
-class ConcurrencyGroupRunList(GitHubModel):
-    """Concurrency Group Run List
 
-    A list of concurrency groups associated with a workflow run.
+class WorkflowRun(GitHubModel):
+    """Workflow Run
+
+    An invocation of a workflow
     """
 
-    total_count: int = Field(
-        description="The total number of concurrency groups this workflow run participates in,\nderived from the run's configuration. This count is not filtered by\nwhether the run currently holds or is waiting in each group, so it can\ninclude groups whose `group_members` array is empty (for example, when\nthe run has already released its lease in that group)."
+    id: int = Field(description="The ID of the workflow run.")
+    name: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The name of the workflow run."
     )
-    concurrency_groups: list[ConcurrencyGroupRunListPropConcurrencyGroupsItems] = (
-        Field()
+    node_id: str = Field()
+    check_suite_id: Missing[int] = Field(
+        default=UNSET, description="The ID of the associated check suite."
     )
-
-
-class ConcurrencyGroupRunListPropConcurrencyGroupsItems(GitHubModel):
-    """ConcurrencyGroupRunListPropConcurrencyGroupsItems"""
-
-    group_name: str = Field(description="The name of the concurrency group.")
-    group_url: str = Field(
-        description="API URL for this concurrency group. May return 404 if the group\nhas no active items at the time it is requested, since the\nget-by-name endpoint reports the live repo-wide state of a group\nwhile this endpoint lists groups associated with a run by\nconfiguration."
+    check_suite_node_id: Missing[str] = Field(
+        default=UNSET, description="The node ID of the associated check suite."
     )
-    group_members: list[
-        ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItems
-    ] = Field(
-        description="Items belonging to this workflow run that are either currently holding or\nwaiting for the concurrency group lease. May be empty if the run no\nlonger has any active or queued items in this group."
+    head_branch: Union[str, None] = Field()
+    head_sha: str = Field(
+        description="The SHA of the head commit that points to the version of the workflow being run."
     )
-
-
-class ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItems(
-    GitHubModel
-):
-    """ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItems"""
-
-    run_id: int = Field(description="The ID of the workflow run.")
-    run_name: str = Field(description="The name of the workflow run.")
-    run_url: Union[str, None] = Field(description="API URL for the workflow run.")
-    run_html_url: Union[str, None] = Field(description="Web URL for the workflow run.")
-    position: int = Field(
-        description="Queue position. 0 means the item holds the concurrency lease (in_progress), 1 or higher means queued (pending)."
+    path: str = Field(description="The full path of the workflow")
+    run_number: int = Field(
+        description="The auto incrementing run number for the workflow run."
     )
-    position_url: str = Field(
-        description="API URL to get items ahead of this item in the concurrency group."
-    )
-    job_id: Missing[Union[int, None]] = Field(
+    run_attempt: Missing[int] = Field(
         default=UNSET,
-        description="The ID of the job, when the item represents a job-level or reusable-workflow-level lease.",
+        description="Attempt number of the run, 1 for first attempt and higher if the workflow was re-run.",
     )
-    job_name: Missing[Union[str, None]] = Field(
+    referenced_workflows: Missing[Union[list[ReferencedWorkflow], None]] = Field(
+        default=UNSET
+    )
+    event: str = Field()
+    status: Union[str, None] = Field()
+    conclusion: Union[str, None] = Field()
+    workflow_id: int = Field(description="The ID of the parent workflow.")
+    url: str = Field(description="The URL to the workflow run.")
+    html_url: str = Field()
+    pull_requests: Union[list[PullRequestMinimal], None] = Field(
+        description="Pull requests that are open with a `head_sha` or `head_branch` that matches the workflow run. The returned pull requests do not necessarily indicate pull requests that triggered the run."
+    )
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    actor: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
+    triggering_actor: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
+    run_started_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="The start time of the latest run. Resets on re-run."
+    )
+    jobs_url: str = Field(description="The URL to the jobs for the workflow run.")
+    logs_url: str = Field(
+        description="The URL to download the logs for the workflow run."
+    )
+    check_suite_url: str = Field(description="The URL to the associated check suite.")
+    artifacts_url: str = Field(
+        description="The URL to the artifacts for the workflow run."
+    )
+    cancel_url: str = Field(description="The URL to cancel the workflow run.")
+    rerun_url: str = Field(description="The URL to rerun the workflow run.")
+    previous_attempt_url: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The display name of the job, when the item represents a job-level or reusable-workflow-level lease.",
+        description="The URL to the previous attempted run of this workflow, if one exists.",
     )
-    job_url: Missing[Union[str, None]] = Field(
-        default=UNSET, description="API URL for the job."
+    workflow_url: str = Field(description="The URL to the workflow.")
+    head_commit: Union[None, SimpleCommit] = Field()
+    repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository"
     )
-    job_html_url: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Web URL for the job."
+    head_repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository"
     )
-    status: Literal["in_progress", "pending"] = Field()
+    head_repository_id: Missing[int] = Field(default=UNSET)
+    display_title: str = Field(
+        description="The event-specific title associated with the run or the run-name if set, or the value of `run-name` if it is set in the workflow."
+    )
 
 
-model_rebuild(ConcurrencyGroupRunList)
-model_rebuild(ConcurrencyGroupRunListPropConcurrencyGroupsItems)
-model_rebuild(ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItems)
+class ReferencedWorkflow(GitHubModel):
+    """Referenced workflow
+
+    A workflow referenced/reused by the initial caller workflow
+    """
+
+    path: str = Field()
+    sha: str = Field()
+    ref: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(WorkflowRun)
+model_rebuild(ReferencedWorkflow)
 
 __all__ = (
-    "ConcurrencyGroupRunList",
-    "ConcurrencyGroupRunListPropConcurrencyGroupsItems",
-    "ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItems",
+    "ReferencedWorkflow",
+    "WorkflowRun",
 )

@@ -9,34 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0Type(
+class ReposOwnerRepoAttestationsSubjectDigestGetResponse200Type(TypedDict):
+    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200"""
+
+    attestations: NotRequired[
+        list[
+            ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsType
+        ]
+    ]
+
+
+class ReposOwnerRepoAttestationsSubjectDigestGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200"""
+
+    attestations: NotRequired[
+        list[
+            ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse
+        ]
+    ]
+
+
+class ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsType(
     TypedDict
 ):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0
+    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
 
-    Examples:
-        {'teams': ['my-team']}
-    """
-
-    teams: list[str]
+    repository_id: NotRequired[int]
+    bundle_url: NotRequired[str]
+    initiator: NotRequired[str]
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0TypeForResponse(
+class ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0
+    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
 
-    Examples:
-        {'teams': ['my-team']}
-    """
-
-    teams: list[str]
+    repository_id: NotRequired[int]
+    bundle_url: NotRequired[str]
+    initiator: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0Type",
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0TypeForResponse",
+    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsType",
+    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse",
+    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200Type",
+    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200TypeForResponse",
 )

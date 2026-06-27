@@ -9,21 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from pydantic import Field
-
-from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0261 import CopilotSpace
+from githubkit.compat import ExtraGitHubModel, model_rebuild
 
 
-class UsersUsernameCopilotSpacesGetResponse200(GitHubModel):
-    """UsersUsernameCopilotSpacesGetResponse200"""
+class UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties(
+    ExtraGitHubModel
+):
+    """UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAl
+    lof1PropCustomProperties
 
-    spaces: list[CopilotSpace] = Field(
-        description="The list of Copilot Spaces on this page of results."
-    )
+    The custom properties that were defined for the repository. The keys are the
+    custom property names, and the values are the corresponding custom property
+    values. Present for org repos only.
+    """
 
 
-model_rebuild(UsersUsernameCopilotSpacesGetResponse200)
+model_rebuild(
+    UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties
+)
 
-__all__ = ("UsersUsernameCopilotSpacesGetResponse200",)
+__all__ = (
+    "UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties",
+)

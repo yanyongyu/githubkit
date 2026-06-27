@@ -12,81 +12,25 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class BillingAiCreditUsageReportOrgType(TypedDict):
-    """BillingAiCreditUsageReportOrg"""
+class ActionsCacheRetentionLimitForOrganizationType(TypedDict):
+    """Actions cache retention limit for an organization
 
-    time_period: BillingAiCreditUsageReportOrgPropTimePeriodType
-    organization: str
-    user: NotRequired[str]
-    product: NotRequired[str]
-    model: NotRequired[str]
-    usage_items: list[BillingAiCreditUsageReportOrgPropUsageItemsItemsType]
+    GitHub Actions cache retention policy for an organization.
+    """
+
+    max_cache_retention_days: NotRequired[int]
 
 
-class BillingAiCreditUsageReportOrgTypeForResponse(TypedDict):
-    """BillingAiCreditUsageReportOrg"""
+class ActionsCacheRetentionLimitForOrganizationTypeForResponse(TypedDict):
+    """Actions cache retention limit for an organization
 
-    time_period: BillingAiCreditUsageReportOrgPropTimePeriodTypeForResponse
-    organization: str
-    user: NotRequired[str]
-    product: NotRequired[str]
-    model: NotRequired[str]
-    usage_items: list[BillingAiCreditUsageReportOrgPropUsageItemsItemsTypeForResponse]
+    GitHub Actions cache retention policy for an organization.
+    """
 
-
-class BillingAiCreditUsageReportOrgPropTimePeriodType(TypedDict):
-    """BillingAiCreditUsageReportOrgPropTimePeriod"""
-
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
-
-
-class BillingAiCreditUsageReportOrgPropTimePeriodTypeForResponse(TypedDict):
-    """BillingAiCreditUsageReportOrgPropTimePeriod"""
-
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
-
-
-class BillingAiCreditUsageReportOrgPropUsageItemsItemsType(TypedDict):
-    """BillingAiCreditUsageReportOrgPropUsageItemsItems"""
-
-    product: str
-    sku: str
-    model: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
-
-
-class BillingAiCreditUsageReportOrgPropUsageItemsItemsTypeForResponse(TypedDict):
-    """BillingAiCreditUsageReportOrgPropUsageItemsItems"""
-
-    product: str
-    sku: str
-    model: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
+    max_cache_retention_days: NotRequired[int]
 
 
 __all__ = (
-    "BillingAiCreditUsageReportOrgPropTimePeriodType",
-    "BillingAiCreditUsageReportOrgPropTimePeriodTypeForResponse",
-    "BillingAiCreditUsageReportOrgPropUsageItemsItemsType",
-    "BillingAiCreditUsageReportOrgPropUsageItemsItemsTypeForResponse",
-    "BillingAiCreditUsageReportOrgType",
-    "BillingAiCreditUsageReportOrgTypeForResponse",
+    "ActionsCacheRetentionLimitForOrganizationType",
+    "ActionsCacheRetentionLimitForOrganizationTypeForResponse",
 )

@@ -13,44 +13,45 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0575 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0576 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0577 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0578 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0858 import (
-    WebhookPackageUpdatedPropPackageType,
-    WebhookPackageUpdatedPropPackageTypeForResponse,
-)
+from .group_0587 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0588 import SimpleInstallationType, SimpleInstallationTypeForResponse
 
 
-class WebhookPackageUpdatedType(TypedDict):
-    """package updated event"""
+class WebhookOrganizationCustomPropertyDeletedType(TypedDict):
+    """organization custom property deleted event"""
 
-    action: Literal["updated"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["deleted"]
+    definition: WebhookOrganizationCustomPropertyDeletedPropDefinitionType
+    enterprise: EnterpriseWebhooksType
     installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    package: WebhookPackageUpdatedPropPackageType
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookPackageUpdatedTypeForResponse(TypedDict):
-    """package updated event"""
+class WebhookOrganizationCustomPropertyDeletedTypeForResponse(TypedDict):
+    """organization custom property deleted event"""
 
-    action: Literal["updated"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    action: Literal["deleted"]
+    definition: WebhookOrganizationCustomPropertyDeletedPropDefinitionTypeForResponse
+    enterprise: EnterpriseWebhooksTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    package: WebhookPackageUpdatedPropPackageTypeForResponse
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
+
+
+class WebhookOrganizationCustomPropertyDeletedPropDefinitionType(TypedDict):
+    """WebhookOrganizationCustomPropertyDeletedPropDefinition"""
+
+    property_name: str
+
+
+class WebhookOrganizationCustomPropertyDeletedPropDefinitionTypeForResponse(TypedDict):
+    """WebhookOrganizationCustomPropertyDeletedPropDefinition"""
+
+    property_name: str
 
 
 __all__ = (
-    "WebhookPackageUpdatedType",
-    "WebhookPackageUpdatedTypeForResponse",
+    "WebhookOrganizationCustomPropertyDeletedPropDefinitionType",
+    "WebhookOrganizationCustomPropertyDeletedPropDefinitionTypeForResponse",
+    "WebhookOrganizationCustomPropertyDeletedType",
+    "WebhookOrganizationCustomPropertyDeletedTypeForResponse",
 )

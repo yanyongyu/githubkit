@@ -9,37 +9,73 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseTeamsTeamSlugPatchBodyType(TypedDict):
-    """EnterprisesEnterpriseTeamsTeamSlugPatchBody"""
+class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyType(TypedDict):
+    """EnterprisesEnterpriseSettingsBillingBudgetsPostBody"""
 
-    name: NotRequired[Union[str, None]]
-    description: NotRequired[Union[str, None]]
-    sync_to_organizations: NotRequired[Literal["all", "disabled"]]
-    organization_selection_type: NotRequired[Literal["disabled", "selected", "all"]]
-    group_id: NotRequired[Union[str, None]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
+    budget_amount: int
+    prevent_further_usage: bool
+    budget_alerting: (
+        EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingType
+    )
+    budget_scope: Literal[
+        "enterprise",
+        "organization",
+        "repository",
+        "cost_center",
+        "multi_user_customer",
+        "user",
     ]
+    budget_entity_name: NotRequired[str]
+    budget_type: Literal["BundlePricing", "ProductPricing", "SkuPricing"]
+    budget_product_sku: NotRequired[str]
+    user: NotRequired[str]
 
 
-class EnterprisesEnterpriseTeamsTeamSlugPatchBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseTeamsTeamSlugPatchBody"""
+class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseSettingsBillingBudgetsPostBody"""
 
-    name: NotRequired[Union[str, None]]
-    description: NotRequired[Union[str, None]]
-    sync_to_organizations: NotRequired[Literal["all", "disabled"]]
-    organization_selection_type: NotRequired[Literal["disabled", "selected", "all"]]
-    group_id: NotRequired[Union[str, None]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
+    budget_amount: int
+    prevent_further_usage: bool
+    budget_alerting: EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingTypeForResponse
+    budget_scope: Literal[
+        "enterprise",
+        "organization",
+        "repository",
+        "cost_center",
+        "multi_user_customer",
+        "user",
     ]
+    budget_entity_name: NotRequired[str]
+    budget_type: Literal["BundlePricing", "ProductPricing", "SkuPricing"]
+    budget_product_sku: NotRequired[str]
+    user: NotRequired[str]
+
+
+class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingType(
+    TypedDict
+):
+    """EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting"""
+
+    will_alert: bool
+    alert_recipients: list[str]
+
+
+class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting"""
+
+    will_alert: bool
+    alert_recipients: list[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseTeamsTeamSlugPatchBodyType",
-    "EnterprisesEnterpriseTeamsTeamSlugPatchBodyTypeForResponse",
+    "EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingType",
+    "EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingTypeForResponse",
+    "EnterprisesEnterpriseSettingsBillingBudgetsPostBodyType",
+    "EnterprisesEnterpriseSettingsBillingBudgetsPostBodyTypeForResponse",
 )

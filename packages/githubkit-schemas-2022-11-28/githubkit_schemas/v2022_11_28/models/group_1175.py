@@ -13,37 +13,29 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgSettingsNetworkConfigurationsPostBody(GitHubModel):
-    """OrgsOrgSettingsNetworkConfigurationsPostBody"""
+class OrgsOrgProjectsV2ProjectNumberViewsPostBody(GitHubModel):
+    """OrgsOrgProjectsV2ProjectNumberViewsPostBody"""
 
-    name: str = Field(
-        description="Name of the network configuration. Must be between 1 and 100 characters and may only contain upper and lowercase letters a-z, numbers 0-9, '.', '-', and '_'."
+    name: str = Field(description="The name of the view.")
+    layout: Literal["table", "board", "roadmap"] = Field(
+        description="The layout of the view."
     )
-    compute_service: Missing[Literal["none", "actions"]] = Field(
+    filter_: Missing[str] = Field(
         default=UNSET,
-        description="The hosted compute service to use for the network configuration.",
+        alias="filter",
+        description="The filter query for the view. See [Filtering projects](https://docs.github.com/issues/planning-and-tracking-with-projects/customizing-views-in-your-project/filtering-projects) for more information.",
     )
-    network_settings_ids: list[str] = Field(
-        max_length=1 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="A list of identifiers of the network settings resources to use for the network configuration. Exactly one resource identifier must be specified in the list.",
-    )
-    failover_network_settings_ids: Missing[list[str]] = Field(
-        max_length=1 if PYDANTIC_V2 else None,
+    visible_fields: Missing[list[int]] = Field(
         default=UNSET,
-        description="A list of identifiers of the failover network settings resources to use for the network configuration. Exactly one resource identifier must be specified in the list.",
-    )
-    failover_network_enabled: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether the failover network resource is enabled.",
+        description="`visible_fields` is not applicable to `roadmap` layout views.\nFor `table` and `board` layouts, this represents the field IDs that should be visible in the view. If not provided, the default visible fields will be used.",
     )
 
 
-model_rebuild(OrgsOrgSettingsNetworkConfigurationsPostBody)
+model_rebuild(OrgsOrgProjectsV2ProjectNumberViewsPostBody)
 
-__all__ = ("OrgsOrgSettingsNetworkConfigurationsPostBody",)
+__all__ = ("OrgsOrgProjectsV2ProjectNumberViewsPostBody",)

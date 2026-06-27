@@ -11,18 +11,17 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody(GitHubModel):
-    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody"""
+class EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBody(GitHubModel):
+    """EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBody"""
 
-    labels: list[str] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        description="The names of the custom labels to set for the runner. You can pass an empty array to remove all custom labels.",
+    disable_self_hosted_runners_for_all_orgs: bool = Field(
+        description="When true, repository-level runners will be disabled across all organizations in the enterprise"
     )
 
 
-model_rebuild(EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody)
+model_rebuild(EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBody)
 
-__all__ = ("EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody",)
+__all__ = ("EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBody",)

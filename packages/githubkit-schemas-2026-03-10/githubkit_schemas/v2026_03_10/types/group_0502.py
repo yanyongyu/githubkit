@@ -10,57 +10,129 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Any, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterpriseWebhooksType(TypedDict):
-    """Enterprise
+class GpgKeyType(TypedDict):
+    """GPG Key
 
-    An enterprise on GitHub. Webhook payloads contain the `enterprise` property when
-    the webhook is configured
-    on an enterprise account or an organization that's part of an enterprise
-    account. For more information,
-    see "[About enterprise accounts](https://docs.github.com/admin/overview/about-
-    enterprise-accounts)."
+    A unique encryption key
     """
 
-    description: NotRequired[Union[str, None]]
-    html_url: str
-    website_url: NotRequired[Union[str, None]]
     id: int
-    node_id: str
-    name: str
-    slug: str
-    created_at: Union[_dt.datetime, None]
-    updated_at: Union[_dt.datetime, None]
-    avatar_url: str
+    name: NotRequired[Union[str, None]]
+    primary_key_id: Union[int, None]
+    key_id: str
+    public_key: str
+    emails: list[GpgKeyPropEmailsItemsType]
+    subkeys: list[GpgKeyPropSubkeysItemsType]
+    can_sign: bool
+    can_encrypt_comms: bool
+    can_encrypt_storage: bool
+    can_certify: bool
+    created_at: _dt.datetime
+    expires_at: Union[_dt.datetime, None]
+    revoked: bool
+    raw_key: Union[str, None]
 
 
-class EnterpriseWebhooksTypeForResponse(TypedDict):
-    """Enterprise
+class GpgKeyTypeForResponse(TypedDict):
+    """GPG Key
 
-    An enterprise on GitHub. Webhook payloads contain the `enterprise` property when
-    the webhook is configured
-    on an enterprise account or an organization that's part of an enterprise
-    account. For more information,
-    see "[About enterprise accounts](https://docs.github.com/admin/overview/about-
-    enterprise-accounts)."
+    A unique encryption key
     """
 
-    description: NotRequired[Union[str, None]]
-    html_url: str
-    website_url: NotRequired[Union[str, None]]
     id: int
-    node_id: str
-    name: str
-    slug: str
-    created_at: Union[str, None]
-    updated_at: Union[str, None]
-    avatar_url: str
+    name: NotRequired[Union[str, None]]
+    primary_key_id: Union[int, None]
+    key_id: str
+    public_key: str
+    emails: list[GpgKeyPropEmailsItemsTypeForResponse]
+    subkeys: list[GpgKeyPropSubkeysItemsTypeForResponse]
+    can_sign: bool
+    can_encrypt_comms: bool
+    can_encrypt_storage: bool
+    can_certify: bool
+    created_at: str
+    expires_at: Union[str, None]
+    revoked: bool
+    raw_key: Union[str, None]
+
+
+class GpgKeyPropEmailsItemsType(TypedDict):
+    """GpgKeyPropEmailsItems"""
+
+    email: NotRequired[str]
+    verified: NotRequired[bool]
+
+
+class GpgKeyPropEmailsItemsTypeForResponse(TypedDict):
+    """GpgKeyPropEmailsItems"""
+
+    email: NotRequired[str]
+    verified: NotRequired[bool]
+
+
+class GpgKeyPropSubkeysItemsType(TypedDict):
+    """GpgKeyPropSubkeysItems"""
+
+    id: NotRequired[int]
+    primary_key_id: NotRequired[int]
+    key_id: NotRequired[str]
+    public_key: NotRequired[str]
+    emails: NotRequired[list[GpgKeyPropSubkeysItemsPropEmailsItemsType]]
+    subkeys: NotRequired[list[Any]]
+    can_sign: NotRequired[bool]
+    can_encrypt_comms: NotRequired[bool]
+    can_encrypt_storage: NotRequired[bool]
+    can_certify: NotRequired[bool]
+    created_at: NotRequired[str]
+    expires_at: NotRequired[Union[str, None]]
+    raw_key: NotRequired[Union[str, None]]
+    revoked: NotRequired[bool]
+
+
+class GpgKeyPropSubkeysItemsTypeForResponse(TypedDict):
+    """GpgKeyPropSubkeysItems"""
+
+    id: NotRequired[int]
+    primary_key_id: NotRequired[int]
+    key_id: NotRequired[str]
+    public_key: NotRequired[str]
+    emails: NotRequired[list[GpgKeyPropSubkeysItemsPropEmailsItemsTypeForResponse]]
+    subkeys: NotRequired[list[Any]]
+    can_sign: NotRequired[bool]
+    can_encrypt_comms: NotRequired[bool]
+    can_encrypt_storage: NotRequired[bool]
+    can_certify: NotRequired[bool]
+    created_at: NotRequired[str]
+    expires_at: NotRequired[Union[str, None]]
+    raw_key: NotRequired[Union[str, None]]
+    revoked: NotRequired[bool]
+
+
+class GpgKeyPropSubkeysItemsPropEmailsItemsType(TypedDict):
+    """GpgKeyPropSubkeysItemsPropEmailsItems"""
+
+    email: NotRequired[str]
+    verified: NotRequired[bool]
+
+
+class GpgKeyPropSubkeysItemsPropEmailsItemsTypeForResponse(TypedDict):
+    """GpgKeyPropSubkeysItemsPropEmailsItems"""
+
+    email: NotRequired[str]
+    verified: NotRequired[bool]
 
 
 __all__ = (
-    "EnterpriseWebhooksType",
-    "EnterpriseWebhooksTypeForResponse",
+    "GpgKeyPropEmailsItemsType",
+    "GpgKeyPropEmailsItemsTypeForResponse",
+    "GpgKeyPropSubkeysItemsPropEmailsItemsType",
+    "GpgKeyPropSubkeysItemsPropEmailsItemsTypeForResponse",
+    "GpgKeyPropSubkeysItemsType",
+    "GpgKeyPropSubkeysItemsTypeForResponse",
+    "GpgKeyType",
+    "GpgKeyTypeForResponse",
 )

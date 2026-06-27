@@ -9,141 +9,134 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0502 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0503 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0504 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
+from .group_0787 import (
+    WebhookPackageUpdatedPropPackagePropPackageVersionType,
+    WebhookPackageUpdatedPropPackagePropPackageVersionTypeForResponse,
 )
-from .group_0505 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookProjectCardDeletedType(TypedDict):
-    """project_card deleted event"""
+class WebhookPackageUpdatedPropPackageType(TypedDict):
+    """WebhookPackageUpdatedPropPackage
 
-    action: Literal["deleted"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    project_card: WebhookProjectCardDeletedPropProjectCardType
-    repository: NotRequired[Union[None, RepositoryWebhooksType]]
-    sender: SimpleUserType
+    Information about the package.
+    """
 
-
-class WebhookProjectCardDeletedTypeForResponse(TypedDict):
-    """project_card deleted event"""
-
-    action: Literal["deleted"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    project_card: WebhookProjectCardDeletedPropProjectCardTypeForResponse
-    repository: NotRequired[Union[None, RepositoryWebhooksTypeForResponse]]
-    sender: SimpleUserTypeForResponse
-
-
-class WebhookProjectCardDeletedPropProjectCardType(TypedDict):
-    """Project Card"""
-
-    after_id: NotRequired[Union[int, None]]
-    archived: bool
-    column_id: Union[int, None]
-    column_url: str
-    content_url: NotRequired[str]
-    created_at: _dt.datetime
-    creator: Union[WebhookProjectCardDeletedPropProjectCardPropCreatorType, None]
-    id: int
-    node_id: str
-    note: Union[str, None]
-    project_url: str
-    updated_at: _dt.datetime
-    url: str
-
-
-class WebhookProjectCardDeletedPropProjectCardTypeForResponse(TypedDict):
-    """Project Card"""
-
-    after_id: NotRequired[Union[int, None]]
-    archived: bool
-    column_id: Union[int, None]
-    column_url: str
-    content_url: NotRequired[str]
     created_at: str
-    creator: Union[
-        WebhookProjectCardDeletedPropProjectCardPropCreatorTypeForResponse, None
-    ]
+    description: Union[str, None]
+    ecosystem: str
+    html_url: str
     id: int
-    node_id: str
-    note: Union[str, None]
-    project_url: str
+    name: str
+    namespace: str
+    owner: Union[WebhookPackageUpdatedPropPackagePropOwnerType, None]
+    package_type: str
+    package_version: WebhookPackageUpdatedPropPackagePropPackageVersionType
+    registry: Union[WebhookPackageUpdatedPropPackagePropRegistryType, None]
     updated_at: str
+
+
+class WebhookPackageUpdatedPropPackageTypeForResponse(TypedDict):
+    """WebhookPackageUpdatedPropPackage
+
+    Information about the package.
+    """
+
+    created_at: str
+    description: Union[str, None]
+    ecosystem: str
+    html_url: str
+    id: int
+    name: str
+    namespace: str
+    owner: Union[WebhookPackageUpdatedPropPackagePropOwnerTypeForResponse, None]
+    package_type: str
+    package_version: WebhookPackageUpdatedPropPackagePropPackageVersionTypeForResponse
+    registry: Union[WebhookPackageUpdatedPropPackagePropRegistryTypeForResponse, None]
+    updated_at: str
+
+
+class WebhookPackageUpdatedPropPackagePropOwnerType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookPackageUpdatedPropPackagePropOwnerTypeForResponse(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookPackageUpdatedPropPackagePropRegistryType(TypedDict):
+    """WebhookPackageUpdatedPropPackagePropRegistry"""
+
+    about_url: str
+    name: str
+    type: str
     url: str
+    vendor: str
 
 
-class WebhookProjectCardDeletedPropProjectCardPropCreatorType(TypedDict):
-    """User"""
+class WebhookPackageUpdatedPropPackagePropRegistryTypeForResponse(TypedDict):
+    """WebhookPackageUpdatedPropPackagePropRegistry"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookProjectCardDeletedPropProjectCardPropCreatorTypeForResponse(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    about_url: str
+    name: str
+    type: str
+    url: str
+    vendor: str
 
 
 __all__ = (
-    "WebhookProjectCardDeletedPropProjectCardPropCreatorType",
-    "WebhookProjectCardDeletedPropProjectCardPropCreatorTypeForResponse",
-    "WebhookProjectCardDeletedPropProjectCardType",
-    "WebhookProjectCardDeletedPropProjectCardTypeForResponse",
-    "WebhookProjectCardDeletedType",
-    "WebhookProjectCardDeletedTypeForResponse",
+    "WebhookPackageUpdatedPropPackagePropOwnerType",
+    "WebhookPackageUpdatedPropPackagePropOwnerTypeForResponse",
+    "WebhookPackageUpdatedPropPackagePropRegistryType",
+    "WebhookPackageUpdatedPropPackagePropRegistryTypeForResponse",
+    "WebhookPackageUpdatedPropPackageType",
+    "WebhookPackageUpdatedPropPackageTypeForResponse",
 )

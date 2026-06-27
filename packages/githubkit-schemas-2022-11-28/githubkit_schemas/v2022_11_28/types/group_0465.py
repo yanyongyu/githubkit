@@ -9,34 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-
-
-class StargazerType(TypedDict):
-    """Stargazer
-
-    Stargazer
-    """
-
-    starred_at: _dt.datetime
-    user: Union[None, SimpleUserType]
+from .group_0237 import (
+    RepositoryRuleFilePathRestrictionPropParametersType,
+    RepositoryRuleFilePathRestrictionPropParametersTypeForResponse,
+)
 
 
-class StargazerTypeForResponse(TypedDict):
-    """Stargazer
+class RepositoryRuleDetailedOneof18Type(TypedDict):
+    """RepositoryRuleDetailedOneof18"""
 
-    Stargazer
-    """
+    type: Literal["file_path_restriction"]
+    parameters: NotRequired[RepositoryRuleFilePathRestrictionPropParametersType]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
-    starred_at: str
-    user: Union[None, SimpleUserTypeForResponse]
+
+class RepositoryRuleDetailedOneof18TypeForResponse(TypedDict):
+    """RepositoryRuleDetailedOneof18"""
+
+    type: Literal["file_path_restriction"]
+    parameters: NotRequired[
+        RepositoryRuleFilePathRestrictionPropParametersTypeForResponse
+    ]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
 
 __all__ = (
-    "StargazerType",
-    "StargazerTypeForResponse",
+    "RepositoryRuleDetailedOneof18Type",
+    "RepositoryRuleDetailedOneof18TypeForResponse",
 )

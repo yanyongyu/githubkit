@@ -9,39 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0310 import CheckRunType, CheckRunTypeForResponse
 
 
-class ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType(TypedDict):
-    """ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody"""
+class ReposOwnerRepoCommitsRefCheckRunsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCommitsRefCheckRunsGetResponse200"""
 
-    state: Literal[
-        "error", "failure", "inactive", "in_progress", "queued", "pending", "success"
-    ]
-    target_url: NotRequired[str]
-    log_url: NotRequired[str]
-    description: NotRequired[str]
-    environment: NotRequired[str]
-    environment_url: NotRequired[str]
-    auto_inactive: NotRequired[bool]
+    total_count: int
+    check_runs: list[CheckRunType]
 
 
-class ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody"""
+class ReposOwnerRepoCommitsRefCheckRunsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoCommitsRefCheckRunsGetResponse200"""
 
-    state: Literal[
-        "error", "failure", "inactive", "in_progress", "queued", "pending", "success"
-    ]
-    target_url: NotRequired[str]
-    log_url: NotRequired[str]
-    description: NotRequired[str]
-    environment: NotRequired[str]
-    environment_url: NotRequired[str]
-    auto_inactive: NotRequired[bool]
+    total_count: int
+    check_runs: list[CheckRunTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType",
-    "ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyTypeForResponse",
+    "ReposOwnerRepoCommitsRefCheckRunsGetResponse200Type",
+    "ReposOwnerRepoCommitsRefCheckRunsGetResponse200TypeForResponse",
 )

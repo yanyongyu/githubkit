@@ -9,49 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksDeployKeyType(TypedDict):
-    """WebhooksDeployKey
+class KeySimpleType(TypedDict):
+    """Key Simple
 
-    The [`deploy key`](https://docs.github.com/rest/deploy-keys/deploy-keys#get-a-
-    deploy-key) resource.
+    Key Simple
     """
 
-    added_by: NotRequired[Union[str, None]]
-    created_at: str
     id: int
     key: str
-    last_used: NotRequired[Union[str, None]]
-    read_only: bool
-    title: str
-    url: str
-    verified: bool
-    enabled: NotRequired[bool]
+    created_at: NotRequired[_dt.datetime]
+    last_used: NotRequired[Union[_dt.datetime, None]]
 
 
-class WebhooksDeployKeyTypeForResponse(TypedDict):
-    """WebhooksDeployKey
+class KeySimpleTypeForResponse(TypedDict):
+    """Key Simple
 
-    The [`deploy key`](https://docs.github.com/rest/deploy-keys/deploy-keys#get-a-
-    deploy-key) resource.
+    Key Simple
     """
 
-    added_by: NotRequired[Union[str, None]]
-    created_at: str
     id: int
     key: str
+    created_at: NotRequired[str]
     last_used: NotRequired[Union[str, None]]
-    read_only: bool
-    title: str
-    url: str
-    verified: bool
-    enabled: NotRequired[bool]
 
 
 __all__ = (
-    "WebhooksDeployKeyType",
-    "WebhooksDeployKeyTypeForResponse",
+    "KeySimpleType",
+    "KeySimpleTypeForResponse",
 )

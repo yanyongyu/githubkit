@@ -9,51 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0519 import (
-    SecretScanningLocationType,
-    SecretScanningLocationTypeForResponse,
+from .group_0118 import (
+    RepositoryRulesetConditionsType,
+    RepositoryRulesetConditionsTypeForResponse,
 )
-from .group_0576 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0577 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0578 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0620 import (
-    SecretScanningAlertWebhookType,
-    SecretScanningAlertWebhookTypeForResponse,
+from .group_0973 import (
+    WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsType,
+    WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsTypeForResponse,
 )
 
 
-class WebhookSecretScanningAlertLocationCreatedType(TypedDict):
-    """Secret Scanning Alert Location Created Event"""
+class WebhookRepositoryRulesetEditedPropChangesPropConditionsType(TypedDict):
+    """WebhookRepositoryRulesetEditedPropChangesPropConditions"""
 
-    action: Literal["created"]
-    alert: SecretScanningAlertWebhookType
-    installation: NotRequired[SimpleInstallationType]
-    location: SecretScanningLocationType
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    added: NotRequired[list[RepositoryRulesetConditionsType]]
+    deleted: NotRequired[list[RepositoryRulesetConditionsType]]
+    updated: NotRequired[
+        list[
+            WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsType
+        ]
+    ]
 
 
-class WebhookSecretScanningAlertLocationCreatedTypeForResponse(TypedDict):
-    """Secret Scanning Alert Location Created Event"""
+class WebhookRepositoryRulesetEditedPropChangesPropConditionsTypeForResponse(TypedDict):
+    """WebhookRepositoryRulesetEditedPropChangesPropConditions"""
 
-    action: Literal["created"]
-    alert: SecretScanningAlertWebhookTypeForResponse
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    location: SecretScanningLocationTypeForResponse
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    added: NotRequired[list[RepositoryRulesetConditionsTypeForResponse]]
+    deleted: NotRequired[list[RepositoryRulesetConditionsTypeForResponse]]
+    updated: NotRequired[
+        list[
+            WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsTypeForResponse
+        ]
+    ]
 
 
 __all__ = (
-    "WebhookSecretScanningAlertLocationCreatedType",
-    "WebhookSecretScanningAlertLocationCreatedTypeForResponse",
+    "WebhookRepositoryRulesetEditedPropChangesPropConditionsType",
+    "WebhookRepositoryRulesetEditedPropChangesPropConditionsTypeForResponse",
 )

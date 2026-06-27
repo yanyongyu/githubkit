@@ -9,43 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class PatchSchemaType(TypedDict):
-    """PatchSchema"""
+class TagType(TypedDict):
+    """Tag
 
-    operations: list[PatchSchemaPropOperationsItemsType]
-    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]]
+    Tag
+    """
 
-
-class PatchSchemaTypeForResponse(TypedDict):
-    """PatchSchema"""
-
-    operations: list[PatchSchemaPropOperationsItemsTypeForResponse]
-    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]]
-
-
-class PatchSchemaPropOperationsItemsType(TypedDict):
-    """PatchSchemaPropOperationsItems"""
-
-    op: Literal["add", "replace", "remove"]
-    path: NotRequired[str]
-    value: NotRequired[str]
+    name: str
+    commit: TagPropCommitType
+    zipball_url: str
+    tarball_url: str
+    node_id: str
 
 
-class PatchSchemaPropOperationsItemsTypeForResponse(TypedDict):
-    """PatchSchemaPropOperationsItems"""
+class TagTypeForResponse(TypedDict):
+    """Tag
 
-    op: Literal["add", "replace", "remove"]
-    path: NotRequired[str]
-    value: NotRequired[str]
+    Tag
+    """
+
+    name: str
+    commit: TagPropCommitTypeForResponse
+    zipball_url: str
+    tarball_url: str
+    node_id: str
+
+
+class TagPropCommitType(TypedDict):
+    """TagPropCommit"""
+
+    sha: str
+    url: str
+
+
+class TagPropCommitTypeForResponse(TypedDict):
+    """TagPropCommit"""
+
+    sha: str
+    url: str
 
 
 __all__ = (
-    "PatchSchemaPropOperationsItemsType",
-    "PatchSchemaPropOperationsItemsTypeForResponse",
-    "PatchSchemaType",
-    "PatchSchemaTypeForResponse",
+    "TagPropCommitType",
+    "TagPropCommitTypeForResponse",
+    "TagType",
+    "TagTypeForResponse",
 )

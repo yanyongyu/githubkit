@@ -14,30 +14,16 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class GitRef(GitHubModel):
-    """Git Reference
+class ShortBlob(GitHubModel):
+    """Short Blob
 
-    Git references within a repository
+    Short Blob
     """
 
-    ref: str = Field()
-    node_id: str = Field()
     url: str = Field()
-    object_: GitRefPropObject = Field(alias="object")
+    sha: str = Field()
 
 
-class GitRefPropObject(GitHubModel):
-    """GitRefPropObject"""
+model_rebuild(ShortBlob)
 
-    type: str = Field()
-    sha: str = Field(min_length=40, max_length=40, description="SHA for the reference")
-    url: str = Field()
-
-
-model_rebuild(GitRef)
-model_rebuild(GitRefPropObject)
-
-__all__ = (
-    "GitRef",
-    "GitRefPropObject",
-)
+__all__ = ("ShortBlob",)

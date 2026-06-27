@@ -12,50 +12,37 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0213 import (
+    RepositoryRuleRequiredDeploymentsPropParametersType,
+    RepositoryRuleRequiredDeploymentsPropParametersTypeForResponse,
+)
 
-class RepositoryRuleParamsDismissalRestrictionType(TypedDict):
-    """DismissalRestriction
 
-    Specify people, teams, or apps allowed to dismiss pull request reviews.
+class RepositoryRuleRequiredDeploymentsType(TypedDict):
+    """required_deployments
+
+    Choose which environments must be successfully deployed to before refs can be
+    pushed into a ref that matches this rule.
     """
 
-    allowed_actors: NotRequired[list[RepositoryRuleParamsActorType]]
-    enabled: bool
+    type: Literal["required_deployments"]
+    parameters: NotRequired[RepositoryRuleRequiredDeploymentsPropParametersType]
 
 
-class RepositoryRuleParamsDismissalRestrictionTypeForResponse(TypedDict):
-    """DismissalRestriction
+class RepositoryRuleRequiredDeploymentsTypeForResponse(TypedDict):
+    """required_deployments
 
-    Specify people, teams, or apps allowed to dismiss pull request reviews.
+    Choose which environments must be successfully deployed to before refs can be
+    pushed into a ref that matches this rule.
     """
 
-    allowed_actors: NotRequired[list[RepositoryRuleParamsActorTypeForResponse]]
-    enabled: bool
-
-
-class RepositoryRuleParamsActorType(TypedDict):
-    """Actor
-
-    An actor allowed to dismiss pull request reviews
-    """
-
-    id: int
-    type: Literal["User", "Team", "IntegrationInstallation", "RepositoryRole"]
-
-
-class RepositoryRuleParamsActorTypeForResponse(TypedDict):
-    """Actor
-
-    An actor allowed to dismiss pull request reviews
-    """
-
-    id: int
-    type: Literal["User", "Team", "IntegrationInstallation", "RepositoryRole"]
+    type: Literal["required_deployments"]
+    parameters: NotRequired[
+        RepositoryRuleRequiredDeploymentsPropParametersTypeForResponse
+    ]
 
 
 __all__ = (
-    "RepositoryRuleParamsActorType",
-    "RepositoryRuleParamsActorTypeForResponse",
-    "RepositoryRuleParamsDismissalRestrictionType",
-    "RepositoryRuleParamsDismissalRestrictionTypeForResponse",
+    "RepositoryRuleRequiredDeploymentsType",
+    "RepositoryRuleRequiredDeploymentsTypeForResponse",
 )

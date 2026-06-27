@@ -9,121 +9,198 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0054 import PinnedIssueCommentType, PinnedIssueCommentTypeForResponse
+
+class WebhookForkPropForkeeAllof1Type(TypedDict):
+    """WebhookForkPropForkeeAllof1"""
+
+    allow_forking: NotRequired[bool]
+    archive_url: NotRequired[str]
+    archived: NotRequired[bool]
+    assignees_url: NotRequired[str]
+    blobs_url: NotRequired[str]
+    branches_url: NotRequired[str]
+    clone_url: NotRequired[str]
+    collaborators_url: NotRequired[str]
+    comments_url: NotRequired[str]
+    commits_url: NotRequired[str]
+    compare_url: NotRequired[str]
+    contents_url: NotRequired[str]
+    contributors_url: NotRequired[str]
+    created_at: NotRequired[str]
+    default_branch: NotRequired[str]
+    deployments_url: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    disabled: NotRequired[bool]
+    downloads_url: NotRequired[str]
+    events_url: NotRequired[str]
+    fork: NotRequired[Literal[True]]
+    forks: NotRequired[int]
+    forks_count: NotRequired[int]
+    forks_url: NotRequired[str]
+    full_name: NotRequired[str]
+    git_commits_url: NotRequired[str]
+    git_refs_url: NotRequired[str]
+    git_tags_url: NotRequired[str]
+    git_url: NotRequired[str]
+    has_downloads: NotRequired[bool]
+    has_issues: NotRequired[bool]
+    has_pages: NotRequired[bool]
+    has_projects: NotRequired[bool]
+    has_wiki: NotRequired[bool]
+    homepage: NotRequired[Union[str, None]]
+    hooks_url: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    is_template: NotRequired[bool]
+    issue_comment_url: NotRequired[str]
+    issue_events_url: NotRequired[str]
+    issues_url: NotRequired[str]
+    keys_url: NotRequired[str]
+    labels_url: NotRequired[str]
+    language: NotRequired[None]
+    languages_url: NotRequired[str]
+    license_: NotRequired[Union[WebhookForkPropForkeeAllof1PropLicenseType, None]]
+    merges_url: NotRequired[str]
+    milestones_url: NotRequired[str]
+    mirror_url: NotRequired[None]
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    notifications_url: NotRequired[str]
+    open_issues: NotRequired[int]
+    open_issues_count: NotRequired[int]
+    owner: NotRequired[WebhookForkPropForkeeAllof1PropOwnerType]
+    private: NotRequired[bool]
+    public: NotRequired[bool]
+    pulls_url: NotRequired[str]
+    pushed_at: NotRequired[str]
+    releases_url: NotRequired[str]
+    size: NotRequired[int]
+    ssh_url: NotRequired[str]
+    stargazers_count: NotRequired[int]
+    stargazers_url: NotRequired[str]
+    statuses_url: NotRequired[str]
+    subscribers_url: NotRequired[str]
+    subscription_url: NotRequired[str]
+    svn_url: NotRequired[str]
+    tags_url: NotRequired[str]
+    teams_url: NotRequired[str]
+    topics: NotRequired[list[Union[str, None]]]
+    trees_url: NotRequired[str]
+    updated_at: NotRequired[str]
+    url: NotRequired[str]
+    visibility: NotRequired[str]
+    watchers: NotRequired[int]
+    watchers_count: NotRequired[int]
 
 
-class WebhookIssueCommentCreatedPropCommentType(TypedDict):
-    """issue comment
+class WebhookForkPropForkeeAllof1TypeForResponse(TypedDict):
+    """WebhookForkPropForkeeAllof1"""
 
-    The [comment](https://docs.github.com/rest/issues/comments#get-an-issue-comment)
-    itself.
-    """
-
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
+    allow_forking: NotRequired[bool]
+    archive_url: NotRequired[str]
+    archived: NotRequired[bool]
+    assignees_url: NotRequired[str]
+    blobs_url: NotRequired[str]
+    branches_url: NotRequired[str]
+    clone_url: NotRequired[str]
+    collaborators_url: NotRequired[str]
+    comments_url: NotRequired[str]
+    commits_url: NotRequired[str]
+    compare_url: NotRequired[str]
+    contents_url: NotRequired[str]
+    contributors_url: NotRequired[str]
+    created_at: NotRequired[str]
+    default_branch: NotRequired[str]
+    deployments_url: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    disabled: NotRequired[bool]
+    downloads_url: NotRequired[str]
+    events_url: NotRequired[str]
+    fork: NotRequired[Literal[True]]
+    forks: NotRequired[int]
+    forks_count: NotRequired[int]
+    forks_url: NotRequired[str]
+    full_name: NotRequired[str]
+    git_commits_url: NotRequired[str]
+    git_refs_url: NotRequired[str]
+    git_tags_url: NotRequired[str]
+    git_url: NotRequired[str]
+    has_downloads: NotRequired[bool]
+    has_issues: NotRequired[bool]
+    has_pages: NotRequired[bool]
+    has_projects: NotRequired[bool]
+    has_wiki: NotRequired[bool]
+    homepage: NotRequired[Union[str, None]]
+    hooks_url: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    is_template: NotRequired[bool]
+    issue_comment_url: NotRequired[str]
+    issue_events_url: NotRequired[str]
+    issues_url: NotRequired[str]
+    keys_url: NotRequired[str]
+    labels_url: NotRequired[str]
+    language: NotRequired[None]
+    languages_url: NotRequired[str]
+    license_: NotRequired[
+        Union[WebhookForkPropForkeeAllof1PropLicenseTypeForResponse, None]
     ]
-    body: str
-    created_at: _dt.datetime
-    html_url: str
-    id: int
-    issue_url: str
-    node_id: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    reactions: WebhookIssueCommentCreatedPropCommentPropReactionsType
-    updated_at: _dt.datetime
-    url: str
-    pin: NotRequired[Union[None, PinnedIssueCommentType]]
-    user: Union[WebhookIssueCommentCreatedPropCommentPropUserType, None]
+    merges_url: NotRequired[str]
+    milestones_url: NotRequired[str]
+    mirror_url: NotRequired[None]
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    notifications_url: NotRequired[str]
+    open_issues: NotRequired[int]
+    open_issues_count: NotRequired[int]
+    owner: NotRequired[WebhookForkPropForkeeAllof1PropOwnerTypeForResponse]
+    private: NotRequired[bool]
+    public: NotRequired[bool]
+    pulls_url: NotRequired[str]
+    pushed_at: NotRequired[str]
+    releases_url: NotRequired[str]
+    size: NotRequired[int]
+    ssh_url: NotRequired[str]
+    stargazers_count: NotRequired[int]
+    stargazers_url: NotRequired[str]
+    statuses_url: NotRequired[str]
+    subscribers_url: NotRequired[str]
+    subscription_url: NotRequired[str]
+    svn_url: NotRequired[str]
+    tags_url: NotRequired[str]
+    teams_url: NotRequired[str]
+    topics: NotRequired[list[Union[str, None]]]
+    trees_url: NotRequired[str]
+    updated_at: NotRequired[str]
+    url: NotRequired[str]
+    visibility: NotRequired[str]
+    watchers: NotRequired[int]
+    watchers_count: NotRequired[int]
 
 
-class WebhookIssueCommentCreatedPropCommentTypeForResponse(TypedDict):
-    """issue comment
-
-    The [comment](https://docs.github.com/rest/issues/comments#get-an-issue-comment)
-    itself.
-    """
-
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    body: str
-    created_at: str
-    html_url: str
-    id: int
-    issue_url: str
-    node_id: str
-    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    reactions: WebhookIssueCommentCreatedPropCommentPropReactionsTypeForResponse
-    updated_at: str
-    url: str
-    pin: NotRequired[Union[None, PinnedIssueCommentTypeForResponse]]
-    user: Union[WebhookIssueCommentCreatedPropCommentPropUserTypeForResponse, None]
+class WebhookForkPropForkeeAllof1PropLicenseType(TypedDict):
+    """WebhookForkPropForkeeAllof1PropLicense"""
 
 
-class WebhookIssueCommentCreatedPropCommentPropReactionsType(TypedDict):
-    """Reactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
+class WebhookForkPropForkeeAllof1PropLicenseTypeForResponse(TypedDict):
+    """WebhookForkPropForkeeAllof1PropLicense"""
 
 
-class WebhookIssueCommentCreatedPropCommentPropReactionsTypeForResponse(TypedDict):
-    """Reactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
-
-
-class WebhookIssueCommentCreatedPropCommentPropUserType(TypedDict):
-    """User"""
+class WebhookForkPropForkeeAllof1PropOwnerType(TypedDict):
+    """WebhookForkPropForkeeAllof1PropOwner"""
 
     avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
     events_url: NotRequired[str]
     followers_url: NotRequired[str]
     following_url: NotRequired[str]
     gists_url: NotRequired[str]
     gravatar_id: NotRequired[str]
     html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
+    id: NotRequired[int]
+    login: NotRequired[str]
     node_id: NotRequired[str]
     organizations_url: NotRequired[str]
     received_events_url: NotRequired[str]
@@ -131,26 +208,22 @@ class WebhookIssueCommentCreatedPropCommentPropUserType(TypedDict):
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    type: NotRequired[str]
     url: NotRequired[str]
-    user_view_type: NotRequired[str]
 
 
-class WebhookIssueCommentCreatedPropCommentPropUserTypeForResponse(TypedDict):
-    """User"""
+class WebhookForkPropForkeeAllof1PropOwnerTypeForResponse(TypedDict):
+    """WebhookForkPropForkeeAllof1PropOwner"""
 
     avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
     events_url: NotRequired[str]
     followers_url: NotRequired[str]
     following_url: NotRequired[str]
     gists_url: NotRequired[str]
     gravatar_id: NotRequired[str]
     html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
+    id: NotRequired[int]
+    login: NotRequired[str]
     node_id: NotRequired[str]
     organizations_url: NotRequired[str]
     received_events_url: NotRequired[str]
@@ -158,16 +231,15 @@ class WebhookIssueCommentCreatedPropCommentPropUserTypeForResponse(TypedDict):
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    type: NotRequired[str]
     url: NotRequired[str]
-    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "WebhookIssueCommentCreatedPropCommentPropReactionsType",
-    "WebhookIssueCommentCreatedPropCommentPropReactionsTypeForResponse",
-    "WebhookIssueCommentCreatedPropCommentPropUserType",
-    "WebhookIssueCommentCreatedPropCommentPropUserTypeForResponse",
-    "WebhookIssueCommentCreatedPropCommentType",
-    "WebhookIssueCommentCreatedPropCommentTypeForResponse",
+    "WebhookForkPropForkeeAllof1PropLicenseType",
+    "WebhookForkPropForkeeAllof1PropLicenseTypeForResponse",
+    "WebhookForkPropForkeeAllof1PropOwnerType",
+    "WebhookForkPropForkeeAllof1PropOwnerTypeForResponse",
+    "WebhookForkPropForkeeAllof1Type",
+    "WebhookForkPropForkeeAllof1TypeForResponse",
 )

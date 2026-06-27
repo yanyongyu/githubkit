@@ -9,32 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class UserSocialAccountsDeleteBodyType(TypedDict):
-    """UserSocialAccountsDeleteBody
+class UserEmailVisibilityPatchBodyType(TypedDict):
+    """UserEmailVisibilityPatchBody"""
 
-    Examples:
-        {'account_urls': ['https://www.linkedin.com/company/github/',
-    'https://twitter.com/github']}
-    """
-
-    account_urls: list[str]
+    visibility: Literal["public", "private"]
 
 
-class UserSocialAccountsDeleteBodyTypeForResponse(TypedDict):
-    """UserSocialAccountsDeleteBody
+class UserEmailVisibilityPatchBodyTypeForResponse(TypedDict):
+    """UserEmailVisibilityPatchBody"""
 
-    Examples:
-        {'account_urls': ['https://www.linkedin.com/company/github/',
-    'https://twitter.com/github']}
-    """
-
-    account_urls: list[str]
+    visibility: Literal["public", "private"]
 
 
 __all__ = (
-    "UserSocialAccountsDeleteBodyType",
-    "UserSocialAccountsDeleteBodyTypeForResponse",
+    "UserEmailVisibilityPatchBodyType",
+    "UserEmailVisibilityPatchBodyTypeForResponse",
 )

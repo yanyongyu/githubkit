@@ -9,60 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyType(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBody"""
+class EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201Type(TypedDict):
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201
 
-    organizations: NotRequired[list[str]]
-    custom_properties: NotRequired[
-        list[
-            EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItemsType
-        ]
-    ]
-
-
-class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBody"""
-
-    organizations: NotRequired[list[str]]
-    custom_properties: NotRequired[
-        list[
-            EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItemsTypeForResponse
-        ]
-    ]
-
-
-class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItemsType(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPr
-    opertiesItems
+    The total number of seats created for the specified user(s).
     """
 
-    property_name: str
-    values: list[str]
+    seats_created: int
 
 
-class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItemsTypeForResponse(
+class EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPr
-    opertiesItems
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201
+
+    The total number of seats created for the specified user(s).
     """
 
-    property_name: str
-    values: list[str]
+    seats_created: int
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItemsType",
-    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItemsTypeForResponse",
-    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyType",
-    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201Type",
+    "EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201TypeForResponse",
 )

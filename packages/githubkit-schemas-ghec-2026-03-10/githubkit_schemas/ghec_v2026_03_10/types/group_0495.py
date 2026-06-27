@@ -13,31 +13,49 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRuleRulesetInfoType(TypedDict):
-    """repository ruleset data for rule
+class PagesDeploymentStatusType(TypedDict):
+    """GitHub Pages deployment status"""
 
-    User-defined metadata to store domain-specific information limited to 8 keys
-    with scalar values.
-    """
+    status: NotRequired[
+        Literal[
+            "deployment_in_progress",
+            "syncing_files",
+            "finished_file_sync",
+            "updating_pages",
+            "purging_cdn",
+            "deployment_cancelled",
+            "deployment_failed",
+            "deployment_content_failed",
+            "deployment_attempt_error",
+            "deployment_lost",
+            "succeed",
+            "deployment_queued",
+        ]
+    ]
 
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
 
+class PagesDeploymentStatusTypeForResponse(TypedDict):
+    """GitHub Pages deployment status"""
 
-class RepositoryRuleRulesetInfoTypeForResponse(TypedDict):
-    """repository ruleset data for rule
-
-    User-defined metadata to store domain-specific information limited to 8 keys
-    with scalar values.
-    """
-
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    status: NotRequired[
+        Literal[
+            "deployment_in_progress",
+            "syncing_files",
+            "finished_file_sync",
+            "updating_pages",
+            "purging_cdn",
+            "deployment_cancelled",
+            "deployment_failed",
+            "deployment_content_failed",
+            "deployment_attempt_error",
+            "deployment_lost",
+            "succeed",
+            "deployment_queued",
+        ]
+    ]
 
 
 __all__ = (
-    "RepositoryRuleRulesetInfoType",
-    "RepositoryRuleRulesetInfoTypeForResponse",
+    "PagesDeploymentStatusType",
+    "PagesDeploymentStatusTypeForResponse",
 )

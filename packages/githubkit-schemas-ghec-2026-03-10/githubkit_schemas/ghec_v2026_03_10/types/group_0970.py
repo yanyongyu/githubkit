@@ -13,46 +13,47 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0575 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0576 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0577 import (
+from .group_0175 import RepositoryRulesetType, RepositoryRulesetTypeForResponse
+from .group_0587 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0588 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0589 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0578 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0620 import (
-    SecretScanningAlertWebhookType,
-    SecretScanningAlertWebhookTypeForResponse,
+from .group_0590 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0971 import (
+    WebhookRepositoryRulesetEditedPropChangesType,
+    WebhookRepositoryRulesetEditedPropChangesTypeForResponse,
 )
 
 
-class WebhookSecretScanningAlertAssignedType(TypedDict):
-    """secret_scanning_alert assigned event"""
+class WebhookRepositoryRulesetEditedType(TypedDict):
+    """repository ruleset edited event"""
 
-    action: Literal["assigned"]
-    alert: SecretScanningAlertWebhookType
-    assignee: NotRequired[SimpleUserType]
+    action: Literal["edited"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserType]
+    repository: NotRequired[RepositoryWebhooksType]
+    repository_ruleset: RepositoryRulesetType
+    changes: NotRequired[WebhookRepositoryRulesetEditedPropChangesType]
+    sender: SimpleUserType
 
 
-class WebhookSecretScanningAlertAssignedTypeForResponse(TypedDict):
-    """secret_scanning_alert assigned event"""
+class WebhookRepositoryRulesetEditedTypeForResponse(TypedDict):
+    """repository ruleset edited event"""
 
-    action: Literal["assigned"]
-    alert: SecretScanningAlertWebhookTypeForResponse
-    assignee: NotRequired[SimpleUserTypeForResponse]
+    action: Literal["edited"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: NotRequired[SimpleUserTypeForResponse]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    repository_ruleset: RepositoryRulesetTypeForResponse
+    changes: NotRequired[WebhookRepositoryRulesetEditedPropChangesTypeForResponse]
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookSecretScanningAlertAssignedType",
-    "WebhookSecretScanningAlertAssignedTypeForResponse",
+    "WebhookRepositoryRulesetEditedType",
+    "WebhookRepositoryRulesetEditedTypeForResponse",
 )

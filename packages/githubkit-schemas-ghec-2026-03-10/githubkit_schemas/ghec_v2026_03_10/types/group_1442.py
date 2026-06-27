@@ -9,70 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0428 import (
-    DeploymentBranchPolicySettingsType,
-    DeploymentBranchPolicySettingsTypeForResponse,
-)
+import datetime as _dt
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType(TypedDict):
-    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBody"""
+class ReposOwnerRepoDependabotSecretsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoDependabotSecretsGetResponse200"""
 
-    wait_timer: NotRequired[int]
-    prevent_self_review: NotRequired[bool]
-    reviewers: NotRequired[
-        Union[
-            list[
-                ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType
-            ],
-            None,
-        ]
-    ]
-    deployment_branch_policy: NotRequired[
-        Union[DeploymentBranchPolicySettingsType, None]
-    ]
+    total_count: int
+    secrets: list[DependabotSecretType]
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBody"""
+class ReposOwnerRepoDependabotSecretsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoDependabotSecretsGetResponse200"""
 
-    wait_timer: NotRequired[int]
-    prevent_self_review: NotRequired[bool]
-    reviewers: NotRequired[
-        Union[
-            list[
-                ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsTypeForResponse
-            ],
-            None,
-        ]
-    ]
-    deployment_branch_policy: NotRequired[
-        Union[DeploymentBranchPolicySettingsTypeForResponse, None]
-    ]
+    total_count: int
+    secrets: list[DependabotSecretTypeForResponse]
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType(TypedDict):
-    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems"""
+class DependabotSecretType(TypedDict):
+    """Dependabot Secret
 
-    type: NotRequired[Literal["User", "Team"]]
-    id: NotRequired[int]
+    Set secrets for Dependabot.
+    """
+
+    name: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems"""
+class DependabotSecretTypeForResponse(TypedDict):
+    """Dependabot Secret
 
-    type: NotRequired[Literal["User", "Team"]]
-    id: NotRequired[int]
+    Set secrets for Dependabot.
+    """
+
+    name: str
+    created_at: str
+    updated_at: str
 
 
 __all__ = (
-    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType",
-    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsTypeForResponse",
-    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType",
-    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyTypeForResponse",
+    "DependabotSecretType",
+    "DependabotSecretTypeForResponse",
+    "ReposOwnerRepoDependabotSecretsGetResponse200Type",
+    "ReposOwnerRepoDependabotSecretsGetResponse200TypeForResponse",
 )

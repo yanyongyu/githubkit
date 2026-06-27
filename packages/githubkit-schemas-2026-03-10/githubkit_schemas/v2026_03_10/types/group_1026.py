@@ -9,58 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_1027 import (
+    InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType,
+    InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse,
+)
 
 
-class OrgsOrgActionsHostedRunnersImagesCustomGetResponse200Type(TypedDict):
-    """OrgsOrgActionsHostedRunnersImagesCustomGetResponse200"""
+class InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1Type(TypedDict):
+    """InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1"""
 
-    total_count: int
-    images: list[ActionsHostedRunnerCustomImageType]
-
-
-class OrgsOrgActionsHostedRunnersImagesCustomGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsHostedRunnersImagesCustomGetResponse200"""
-
-    total_count: int
-    images: list[ActionsHostedRunnerCustomImageTypeForResponse]
+    custom_properties: NotRequired[
+        InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType
+    ]
 
 
-class ActionsHostedRunnerCustomImageType(TypedDict):
-    """GitHub-hosted runner custom image details
+class InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1TypeForResponse(
+    TypedDict
+):
+    """InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1"""
 
-    Provides details of a custom runner image
-    """
-
-    id: int
-    platform: str
-    total_versions_size: int
-    name: str
-    source: str
-    versions_count: int
-    latest_version: str
-    state: str
-
-
-class ActionsHostedRunnerCustomImageTypeForResponse(TypedDict):
-    """GitHub-hosted runner custom image details
-
-    Provides details of a custom runner image
-    """
-
-    id: int
-    platform: str
-    total_versions_size: int
-    name: str
-    source: str
-    versions_count: int
-    latest_version: str
-    state: str
+    custom_properties: NotRequired[
+        InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse
+    ]
 
 
 __all__ = (
-    "ActionsHostedRunnerCustomImageType",
-    "ActionsHostedRunnerCustomImageTypeForResponse",
-    "OrgsOrgActionsHostedRunnersImagesCustomGetResponse200Type",
-    "OrgsOrgActionsHostedRunnersImagesCustomGetResponse200TypeForResponse",
+    "InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1Type",
+    "InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1TypeForResponse",
 )

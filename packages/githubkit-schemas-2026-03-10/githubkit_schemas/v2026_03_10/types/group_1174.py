@@ -13,27 +13,25 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgSettingsNetworkConfigurationsPostBodyType(TypedDict):
-    """OrgsOrgSettingsNetworkConfigurationsPostBody"""
+class OrgsOrgProjectsV2ProjectNumberViewsPostBodyType(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberViewsPostBody"""
 
     name: str
-    compute_service: NotRequired[Literal["none", "actions"]]
-    network_settings_ids: list[str]
-    failover_network_settings_ids: NotRequired[list[str]]
-    failover_network_enabled: NotRequired[bool]
+    layout: Literal["table", "board", "roadmap"]
+    filter_: NotRequired[str]
+    visible_fields: NotRequired[list[int]]
 
 
-class OrgsOrgSettingsNetworkConfigurationsPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgSettingsNetworkConfigurationsPostBody"""
+class OrgsOrgProjectsV2ProjectNumberViewsPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberViewsPostBody"""
 
     name: str
-    compute_service: NotRequired[Literal["none", "actions"]]
-    network_settings_ids: list[str]
-    failover_network_settings_ids: NotRequired[list[str]]
-    failover_network_enabled: NotRequired[bool]
+    layout: Literal["table", "board", "roadmap"]
+    filter_: NotRequired[str]
+    visible_fields: NotRequired[list[int]]
 
 
 __all__ = (
-    "OrgsOrgSettingsNetworkConfigurationsPostBodyType",
-    "OrgsOrgSettingsNetworkConfigurationsPostBodyTypeForResponse",
+    "OrgsOrgProjectsV2ProjectNumberViewsPostBodyType",
+    "OrgsOrgProjectsV2ProjectNumberViewsPostBodyTypeForResponse",
 )

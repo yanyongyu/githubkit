@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -17,88 +18,124 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0050 import Milestone
+from .group_0131 import TeamSimple
+from .group_0177 import AutoMerge
+from .group_0435 import PullRequestPropLabelsItems
+from .group_0436 import PullRequestPropBase, PullRequestPropHead
+from .group_0437 import PullRequestPropLinks
 
-class WebhooksTeam1(GitHubModel):
-    """Team
 
-    Groups of organization members that gives permissions on specified repositories.
-    """
+class PullRequestWebhook(GitHubModel):
+    """PullRequestWebhook"""
 
-    deleted: Missing[bool] = Field(default=UNSET)
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Description of the team"
+    url: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    html_url: str = Field()
+    diff_url: str = Field()
+    patch_url: str = Field()
+    issue_url: str = Field()
+    commits_url: str = Field()
+    review_comments_url: str = Field()
+    review_comment_url: str = Field()
+    comments_url: str = Field()
+    statuses_url: str = Field()
+    number: int = Field(
+        description="Number uniquely identifying the pull request within its repository."
     )
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field(description="Unique identifier of the team")
-    members_url: Missing[str] = Field(default=UNSET)
-    name: str = Field(description="Name of the team")
-    node_id: Missing[str] = Field(default=UNSET)
-    parent: Missing[Union[WebhooksTeam1PropParent, None]] = Field(default=UNSET)
-    permission: Missing[str] = Field(
+    state: Literal["open", "closed"] = Field(
+        description="State of this Pull Request. Either `open` or `closed`."
+    )
+    locked: bool = Field()
+    title: str = Field(description="The title of the pull request.")
+    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    body: Union[str, None] = Field()
+    labels: list[PullRequestPropLabelsItems] = Field()
+    milestone: Union[None, Milestone] = Field()
+    active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    closed_at: Union[_dt.datetime, None] = Field()
+    merged_at: Union[_dt.datetime, None] = Field()
+    assignees: Missing[list[SimpleUser]] = Field(default=UNSET)
+    requested_reviewers: Missing[list[SimpleUser]] = Field(default=UNSET)
+    requested_teams: Missing[list[TeamSimple]] = Field(default=UNSET)
+    head: PullRequestPropHead = Field()
+    base: PullRequestPropBase = Field()
+    links: PullRequestPropLinks = Field(alias="_links")
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="author_association",
+        description="How the author is associated with the repository.",
+    )
+    auto_merge: Union[AutoMerge, None] = Field(
+        title="Auto merge", description="The status of auto merging a pull request."
+    )
+    draft: Missing[bool] = Field(
         default=UNSET,
-        description="Permission that the team will have for its repositories",
+        description="Indicates whether or not the pull request is a draft.",
     )
-    privacy: Missing[Literal["open", "closed", "secret"]] = Field(default=UNSET)
-    notification_setting: Missing[
-        Literal["notifications_enabled", "notifications_disabled"]
+    merged: bool = Field()
+    mergeable: Union[bool, None] = Field()
+    rebaseable: Missing[Union[bool, None]] = Field(default=UNSET)
+    mergeable_state: str = Field()
+    merged_by: Union[None, SimpleUser] = Field()
+    comments: int = Field()
+    review_comments: int = Field()
+    maintainer_can_modify: bool = Field(
+        description="Indicates whether maintainers can modify the pull request."
+    )
+    commits: int = Field()
+    additions: int = Field()
+    deletions: int = Field()
+    changed_files: int = Field()
+    allow_auto_merge: Missing[bool] = Field(
+        default=UNSET, description="Whether to allow auto-merge for pull requests."
+    )
+    allow_update_branch: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to allow updating the pull request's branch.",
+    )
+    delete_branch_on_merge: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to delete head branches when pull requests are merged.",
+    )
+    merge_commit_message: Missing[Literal["PR_BODY", "PR_TITLE", "BLANK"]] = Field(
+        default=UNSET,
+        description="The default value for a merge commit message.\n- `PR_TITLE` - default to the pull request's title.\n- `PR_BODY` - default to the pull request's body.\n- `BLANK` - default to a blank commit message.",
+    )
+    merge_commit_title: Missing[Literal["PR_TITLE", "MERGE_MESSAGE"]] = Field(
+        default=UNSET,
+        description='The default value for a merge commit title.\n- `PR_TITLE` - default to the pull request\'s title.\n- `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., "Merge pull request #123 from branch-name").',
+    )
+    squash_merge_commit_message: Missing[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
     ] = Field(
         default=UNSET,
-        description="Whether team members will receive notifications when their team is @mentioned",
+        description="The default value for a squash merge commit message:\n- `PR_BODY` - default to the pull request's body.\n- `COMMIT_MESSAGES` - default to the branch's commit messages.\n- `BLANK` - default to a blank commit message.",
     )
-    repositories_url: Missing[str] = Field(default=UNSET)
-    slug: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET, description="URL for the team")
-    type: Missing[Literal["enterprise", "organization"]] = Field(
-        default=UNSET, description="The ownership type of the team"
-    )
-    organization_id: Missing[int] = Field(
-        default=UNSET,
-        description="Unique identifier of the organization to which this team belongs",
-    )
-    enterprise_id: Missing[int] = Field(
-        default=UNSET,
-        description="Unique identifier of the enterprise to which this team belongs",
-    )
-
-
-class WebhooksTeam1PropParent(GitHubModel):
-    """WebhooksTeam1PropParent"""
-
-    description: Union[str, None] = Field(description="Description of the team")
-    html_url: str = Field()
-    id: int = Field(description="Unique identifier of the team")
-    members_url: str = Field()
-    name: str = Field(description="Name of the team")
-    node_id: str = Field()
-    permission: str = Field(
-        description="Permission that the team will have for its repositories"
-    )
-    privacy: Literal["open", "closed", "secret"] = Field()
-    notification_setting: Literal["notifications_enabled", "notifications_disabled"] = (
+    squash_merge_commit_title: Missing[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]] = (
         Field(
-            description="Whether team members will receive notifications when their team is @mentioned"
+            default=UNSET,
+            description="The default value for a squash merge commit title:\n- `PR_TITLE` - default to the pull request's title.\n- `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
         )
     )
-    repositories_url: str = Field()
-    slug: str = Field()
-    url: str = Field(description="URL for the team")
-    type: Literal["enterprise", "organization"] = Field(
-        description="The ownership type of the team"
-    )
-    organization_id: Missing[int] = Field(
+    use_squash_pr_title_as_default: Missing[bool] = Field(
         default=UNSET,
-        description="Unique identifier of the organization to which this team belongs",
-    )
-    enterprise_id: Missing[int] = Field(
-        default=UNSET,
-        description="Unique identifier of the enterprise to which this team belongs",
+        description="Whether a squash merge commit can use the pull request title as default. **This property is closing down. Please use `squash_merge_commit_title` instead.**",
     )
 
 
-model_rebuild(WebhooksTeam1)
-model_rebuild(WebhooksTeam1PropParent)
+model_rebuild(PullRequestWebhook)
 
-__all__ = (
-    "WebhooksTeam1",
-    "WebhooksTeam1PropParent",
-)
+__all__ = ("PullRequestWebhook",)

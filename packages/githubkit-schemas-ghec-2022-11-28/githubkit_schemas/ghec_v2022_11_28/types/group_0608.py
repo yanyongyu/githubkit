@@ -9,104 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksProjectCardType(TypedDict):
-    """Project Card"""
+class WebhooksChangesType(TypedDict):
+    """WebhooksChanges
 
-    after_id: NotRequired[Union[int, None]]
-    archived: bool
-    column_id: int
-    column_url: str
-    content_url: NotRequired[str]
-    created_at: _dt.datetime
-    creator: Union[WebhooksProjectCardPropCreatorType, None]
-    id: int
-    node_id: str
-    note: Union[str, None]
-    project_url: str
-    updated_at: _dt.datetime
-    url: str
+    The changes to the comment.
+    """
+
+    body: NotRequired[WebhooksChangesPropBodyType]
 
 
-class WebhooksProjectCardTypeForResponse(TypedDict):
-    """Project Card"""
+class WebhooksChangesTypeForResponse(TypedDict):
+    """WebhooksChanges
 
-    after_id: NotRequired[Union[int, None]]
-    archived: bool
-    column_id: int
-    column_url: str
-    content_url: NotRequired[str]
-    created_at: str
-    creator: Union[WebhooksProjectCardPropCreatorTypeForResponse, None]
-    id: int
-    node_id: str
-    note: Union[str, None]
-    project_url: str
-    updated_at: str
-    url: str
+    The changes to the comment.
+    """
+
+    body: NotRequired[WebhooksChangesPropBodyTypeForResponse]
 
 
-class WebhooksProjectCardPropCreatorType(TypedDict):
-    """User"""
+class WebhooksChangesPropBodyType(TypedDict):
+    """WebhooksChangesPropBody"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    from_: str
 
 
-class WebhooksProjectCardPropCreatorTypeForResponse(TypedDict):
-    """User"""
+class WebhooksChangesPropBodyTypeForResponse(TypedDict):
+    """WebhooksChangesPropBody"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    from_: str
 
 
 __all__ = (
-    "WebhooksProjectCardPropCreatorType",
-    "WebhooksProjectCardPropCreatorTypeForResponse",
-    "WebhooksProjectCardType",
-    "WebhooksProjectCardTypeForResponse",
+    "WebhooksChangesPropBodyType",
+    "WebhooksChangesPropBodyTypeForResponse",
+    "WebhooksChangesType",
+    "WebhooksChangesTypeForResponse",
 )

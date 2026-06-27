@@ -9,31 +9,81 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Any, TypeAlias
 from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0Type(TypedDict):
-    """UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0"""
+class UsersUsernameAttestationsBulkListPostResponse200Type(TypedDict):
+    """UsersUsernameAttestationsBulkListPostResponse200"""
 
-    type: Literal["Issue", "PullRequest"]
-    id: int
-    owner: NotRequired[str]
-    repo: NotRequired[str]
-    number: NotRequired[int]
+    attestations_subject_digests: NotRequired[
+        UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType
+    ]
+    page_info: NotRequired[
+        UsersUsernameAttestationsBulkListPostResponse200PropPageInfoType
+    ]
 
 
-class UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0TypeForResponse(TypedDict):
-    """UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0"""
+class UsersUsernameAttestationsBulkListPostResponse200TypeForResponse(TypedDict):
+    """UsersUsernameAttestationsBulkListPostResponse200"""
 
-    type: Literal["Issue", "PullRequest"]
-    id: int
-    owner: NotRequired[str]
-    repo: NotRequired[str]
-    number: NotRequired[int]
+    attestations_subject_digests: NotRequired[
+        UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsTypeForResponse
+    ]
+    page_info: NotRequired[
+        UsersUsernameAttestationsBulkListPostResponse200PropPageInfoTypeForResponse
+    ]
+
+
+UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType: TypeAlias = dict[
+    str, Any
+]
+"""UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
+
+Mapping of subject digest to bundles.
+"""
+
+
+UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
+
+Mapping of subject digest to bundles.
+"""
+
+
+class UsersUsernameAttestationsBulkListPostResponse200PropPageInfoType(TypedDict):
+    """UsersUsernameAttestationsBulkListPostResponse200PropPageInfo
+
+    Information about the current page.
+    """
+
+    has_next: NotRequired[bool]
+    has_previous: NotRequired[bool]
+    next_: NotRequired[str]
+    previous: NotRequired[str]
+
+
+class UsersUsernameAttestationsBulkListPostResponse200PropPageInfoTypeForResponse(
+    TypedDict
+):
+    """UsersUsernameAttestationsBulkListPostResponse200PropPageInfo
+
+    Information about the current page.
+    """
+
+    has_next: NotRequired[bool]
+    has_previous: NotRequired[bool]
+    next_: NotRequired[str]
+    previous: NotRequired[str]
 
 
 __all__ = (
-    "UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0Type",
-    "UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0TypeForResponse",
+    "UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType",
+    "UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsTypeForResponse",
+    "UsersUsernameAttestationsBulkListPostResponse200PropPageInfoType",
+    "UsersUsernameAttestationsBulkListPostResponse200PropPageInfoTypeForResponse",
+    "UsersUsernameAttestationsBulkListPostResponse200Type",
+    "UsersUsernameAttestationsBulkListPostResponse200TypeForResponse",
 )

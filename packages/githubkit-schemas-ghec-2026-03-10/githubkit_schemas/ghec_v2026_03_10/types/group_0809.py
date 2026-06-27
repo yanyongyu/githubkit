@@ -9,48 +9,161 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0575 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0576 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0577 import (
+from .group_0587 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0588 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0589 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0578 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0810 import (
-    WebhookIssuesReopenedPropIssueType,
-    WebhookIssuesReopenedPropIssueTypeForResponse,
-)
+from .group_0590 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0608 import WebhooksIssueType, WebhooksIssueTypeForResponse
 
 
-class WebhookIssuesReopenedType(TypedDict):
-    """issues reopened event"""
+class WebhookIssuesFieldRemovedType(TypedDict):
+    """issues field_removed event"""
 
-    action: Literal["reopened"]
+    action: Literal["field_removed"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssuesReopenedPropIssueType
+    issue: WebhooksIssueType
+    issue_field: WebhookIssuesFieldRemovedPropIssueFieldType
+    issue_field_value: NotRequired[WebhookIssuesFieldRemovedPropIssueFieldValueType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookIssuesReopenedTypeForResponse(TypedDict):
-    """issues reopened event"""
+class WebhookIssuesFieldRemovedTypeForResponse(TypedDict):
+    """issues field_removed event"""
 
-    action: Literal["reopened"]
+    action: Literal["field_removed"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhookIssuesReopenedPropIssueTypeForResponse
+    issue: WebhooksIssueTypeForResponse
+    issue_field: WebhookIssuesFieldRemovedPropIssueFieldTypeForResponse
+    issue_field_value: NotRequired[
+        WebhookIssuesFieldRemovedPropIssueFieldValueTypeForResponse
+    ]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
+class WebhookIssuesFieldRemovedPropIssueFieldType(TypedDict):
+    """WebhookIssuesFieldRemovedPropIssueField
+
+    The issue field whose value was cleared from the issue.
+    """
+
+    id: int
+    name: str
+    field_type: Literal["text", "date", "single_select", "multi_select", "number"]
+
+
+class WebhookIssuesFieldRemovedPropIssueFieldTypeForResponse(TypedDict):
+    """WebhookIssuesFieldRemovedPropIssueField
+
+    The issue field whose value was cleared from the issue.
+    """
+
+    id: int
+    name: str
+    field_type: Literal["text", "date", "single_select", "multi_select", "number"]
+
+
+class WebhookIssuesFieldRemovedPropIssueFieldValueType(TypedDict):
+    """WebhookIssuesFieldRemovedPropIssueFieldValue
+
+    The value that was cleared from the issue field.
+    """
+
+    id: int
+    value: NotRequired[Union[str, float, int, None]]
+    value_id: NotRequired[int]
+    option: NotRequired[WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionType]
+    value_ids: NotRequired[list[int]]
+    options: NotRequired[
+        list[WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItemsType]
+    ]
+
+
+class WebhookIssuesFieldRemovedPropIssueFieldValueTypeForResponse(TypedDict):
+    """WebhookIssuesFieldRemovedPropIssueFieldValue
+
+    The value that was cleared from the issue field.
+    """
+
+    id: int
+    value: NotRequired[Union[str, float, int, None]]
+    value_id: NotRequired[int]
+    option: NotRequired[
+        WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionTypeForResponse
+    ]
+    value_ids: NotRequired[list[int]]
+    options: NotRequired[
+        list[
+            WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItemsTypeForResponse
+        ]
+    ]
+
+
+class WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionType(TypedDict):
+    """WebhookIssuesFieldRemovedPropIssueFieldValuePropOption
+
+    The selected option details. Present for single_select field types.
+    """
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    color: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+
+
+class WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionTypeForResponse(TypedDict):
+    """WebhookIssuesFieldRemovedPropIssueFieldValuePropOption
+
+    The selected option details. Present for single_select field types.
+    """
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    color: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+
+
+class WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItemsType(TypedDict):
+    """WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItems"""
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    color: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+
+
+class WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItemsTypeForResponse(
+    TypedDict
+):
+    """WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItems"""
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    color: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+
+
 __all__ = (
-    "WebhookIssuesReopenedType",
-    "WebhookIssuesReopenedTypeForResponse",
+    "WebhookIssuesFieldRemovedPropIssueFieldType",
+    "WebhookIssuesFieldRemovedPropIssueFieldTypeForResponse",
+    "WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionType",
+    "WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionTypeForResponse",
+    "WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItemsType",
+    "WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItemsTypeForResponse",
+    "WebhookIssuesFieldRemovedPropIssueFieldValueType",
+    "WebhookIssuesFieldRemovedPropIssueFieldValueTypeForResponse",
+    "WebhookIssuesFieldRemovedType",
+    "WebhookIssuesFieldRemovedTypeForResponse",
 )

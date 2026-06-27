@@ -13,17 +13,20 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0482 import Traffic
 
-class CodespacesUserPublicKey(GitHubModel):
-    """CodespacesUserPublicKey
 
-    The public key used for setting user Codespaces' Secrets.
+class ViewTraffic(GitHubModel):
+    """View Traffic
+
+    View Traffic
     """
 
-    key_id: str = Field(description="The identifier for the key.")
-    key: str = Field(description="The Base64 encoded public key.")
+    count: int = Field()
+    uniques: int = Field()
+    views: list[Traffic] = Field()
 
 
-model_rebuild(CodespacesUserPublicKey)
+model_rebuild(ViewTraffic)
 
-__all__ = ("CodespacesUserPublicKey",)
+__all__ = ("ViewTraffic",)

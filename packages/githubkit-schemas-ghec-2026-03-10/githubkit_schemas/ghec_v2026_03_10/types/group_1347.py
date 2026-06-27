@@ -13,23 +13,35 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoActionsPermissionsPutBodyType(TypedDict):
-    """ReposOwnerRepoActionsPermissionsPutBody"""
+class OrgsOrgTeamsPostBodyType(TypedDict):
+    """OrgsOrgTeamsPostBody"""
 
-    enabled: bool
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    sha_pinning_required: NotRequired[bool]
+    name: str
+    description: NotRequired[str]
+    maintainers: NotRequired[list[str]]
+    repo_names: NotRequired[list[str]]
+    privacy: NotRequired[Literal["secret", "closed"]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
+    parent_team_id: NotRequired[int]
 
 
-class ReposOwnerRepoActionsPermissionsPutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsPermissionsPutBody"""
+class OrgsOrgTeamsPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgTeamsPostBody"""
 
-    enabled: bool
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    sha_pinning_required: NotRequired[bool]
+    name: str
+    description: NotRequired[str]
+    maintainers: NotRequired[list[str]]
+    repo_names: NotRequired[list[str]]
+    privacy: NotRequired[Literal["secret", "closed"]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
+    parent_team_id: NotRequired[int]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsPermissionsPutBodyType",
-    "ReposOwnerRepoActionsPermissionsPutBodyTypeForResponse",
+    "OrgsOrgTeamsPostBodyType",
+    "OrgsOrgTeamsPostBodyTypeForResponse",
 )

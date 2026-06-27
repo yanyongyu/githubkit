@@ -12,17 +12,18 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0274 import ActionsVariable
-
-
-class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200(GitHubModel):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200"""
-
-    total_count: int = Field()
-    variables: list[ActionsVariable] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200)
+class ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201(GitHubModel):
+    """ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201"""
 
-__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200",)
+    sbom_url: Missing[str] = Field(
+        default=UNSET, description="URL to poll for the SBOM export result."
+    )
+
+
+model_rebuild(ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201)
+
+__all__ = ("ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201",)

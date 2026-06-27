@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,78 +17,212 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0079 import CodeScanningDefaultSetupOptions, CodeScanningOptions
 
-class OrgsOrgCopilotSpacesSpaceNumberPutBody(GitHubModel):
-    """OrgsOrgCopilotSpacesSpaceNumberPutBody"""
+
+class OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody(GitHubModel):
+    """OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody"""
 
     name: Missing[str] = Field(
-        default=UNSET, description="The name of the Copilot Space."
+        default=UNSET,
+        description="The name of the code security configuration. Must be unique within the organization.",
     )
     description: Missing[str] = Field(
-        default=UNSET, description="A description of the Copilot Space."
-    )
-    general_instructions: Missing[str] = Field(
-        max_length=4000,
+        max_length=255,
         default=UNSET,
-        description="General instructions for the Copilot Space.",
+        description="A description of the code security configuration",
     )
-    base_role: Missing[Literal["reader", "writer", "admin", "no_access"]] = Field(
+    advanced_security: Missing[
+        Literal["enabled", "disabled", "code_security", "secret_protection"]
+    ] = Field(
         default=UNSET,
-        description="The base role that determines default permissions for organization members. Changing this field requires admin permissions.\n- `no_access`: No default access (default)\n- `reader`: Organization members can read the space\n- `writer`: Organization members can read and edit the space\n- `admin`: Organization members have full admin access to the space",
+        description="The enablement status of GitHub Advanced Security features. `enabled` will enable both Code Security and Secret Protection features.\n\n> [!WARNING]\n> `code_security` and `secret_protection` are deprecated values for this field. Prefer the individual `code_security` and `secret_protection` fields to set the status of these features.\n",
     )
-    resources_attributes: Missing[
-        list[OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems]
-    ] = Field(default=UNSET, description="Resources to attach to the space.")
+    code_security: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
+        default=UNSET,
+        description="The enablement status of GitHub Code Security features.",
+    )
+    dependency_graph: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
+        default=UNSET, description="The enablement status of Dependency Graph"
+    )
+    dependency_graph_autosubmit_action: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of Automatic dependency submission",
+    )
+    dependency_graph_autosubmit_action_options: Missing[
+        OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions
+    ] = Field(
+        default=UNSET, description="Feature options for Automatic dependency submission"
+    )
+    dependabot_alerts: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
+        default=UNSET, description="The enablement status of Dependabot alerts"
+    )
+    dependabot_security_updates: Missing[Literal["enabled", "disabled", "not_set"]] = (
+        Field(
+            default=UNSET,
+            description="The enablement status of Dependabot security updates",
+        )
+    )
+    dependabot_delegated_alert_dismissal: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of Dependabot delegated alert dismissal. Requires Dependabot alerts to be enabled.",
+    )
+    code_scanning_default_setup: Missing[Literal["enabled", "disabled", "not_set"]] = (
+        Field(
+            default=UNSET,
+            description="The enablement status of code scanning default setup",
+        )
+    )
+    code_scanning_default_setup_options: Missing[
+        Union[CodeScanningDefaultSetupOptions, None]
+    ] = Field(
+        default=UNSET, description="Feature options for code scanning default setup"
+    )
+    code_scanning_options: Missing[Union[CodeScanningOptions, None]] = Field(
+        default=UNSET,
+        description="Security Configuration feature options for code scanning",
+    )
+    code_scanning_delegated_alert_dismissal: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of code scanning delegated alert dismissal",
+    )
+    secret_protection: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
+        default=UNSET,
+        description="The enablement status of GitHub Secret Protection features.",
+    )
+    secret_scanning: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
+        default=UNSET, description="The enablement status of secret scanning"
+    )
+    secret_scanning_push_protection: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of secret scanning push protection",
+    )
+    secret_scanning_delegated_bypass: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of secret scanning delegated bypass",
+    )
+    secret_scanning_delegated_bypass_options: Missing[
+        OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptions
+    ] = Field(
+        default=UNSET,
+        description="Feature options for secret scanning delegated bypass",
+    )
+    secret_scanning_validity_checks: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of secret scanning validity checks",
+    )
+    secret_scanning_non_provider_patterns: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of secret scanning non-provider patterns",
+    )
+    secret_scanning_generic_secrets: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET, description="The enablement status of Copilot secret scanning"
+    )
+    secret_scanning_delegated_alert_dismissal: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of secret scanning delegated alert dismissal",
+    )
+    secret_scanning_extended_metadata: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of secret scanning extended metadata",
+    )
+    private_vulnerability_reporting: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of private vulnerability reporting",
+    )
+    enforcement: Missing[Literal["enforced", "unenforced"]] = Field(
+        default=UNSET, description="The enforcement status for a security configuration"
+    )
 
 
-class OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems(GitHubModel):
-    """OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems"""
-
-    resource_type: Missing[
-        Literal[
-            "repository",
-            "github_file",
-            "free_text",
-            "github_issue",
-            "github_pull_request",
-            "media_content",
-            "uploaded_text_file",
-        ]
-    ] = Field(default=UNSET, description="The type of resource.")
-    metadata: Missing[
-        OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata
-    ] = Field(default=UNSET, description="Metadata specific to the resource type.")
-
-
-class OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata(
+class OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions(
     GitHubModel
 ):
-    """OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata
+    """OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAuto
+    submitActionOptions
 
-    Metadata specific to the resource type.
+    Feature options for Automatic dependency submission
     """
 
-    repository_id: Missing[int] = Field(
-        default=UNSET, description="Repository ID for repository or file resources."
+    labeled_runners: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to use runners labeled with 'dependency-submission' or standard GitHub runners.",
     )
-    file_path: Missing[str] = Field(
-        default=UNSET, description="File path for file resources."
-    )
-    text: Missing[str] = Field(
-        default=UNSET, description="Text content for free text resources."
-    )
-    name: Missing[str] = Field(default=UNSET, description="Name for the resource.")
-    number: Missing[int] = Field(default=UNSET, description="Issue or PR number.")
 
 
-model_rebuild(OrgsOrgCopilotSpacesSpaceNumberPutBody)
-model_rebuild(OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems)
+class OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptions(
+    GitHubModel
+):
+    """OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDeleg
+    atedBypassOptions
+
+    Feature options for secret scanning delegated bypass
+    """
+
+    reviewers: Missing[
+        list[
+            OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItems
+        ]
+    ] = Field(
+        default=UNSET,
+        description="The bypass reviewers for secret scanning delegated bypass",
+    )
+
+
+class OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItems(
+    GitHubModel
+):
+    """OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDeleg
+    atedBypassOptionsPropReviewersItems
+    """
+
+    reviewer_id: int = Field(
+        description="The ID of the team or role selected as a bypass reviewer"
+    )
+    reviewer_type: Literal["TEAM", "ROLE"] = Field(
+        description="The type of the bypass reviewer"
+    )
+    mode: Missing[Literal["ALWAYS", "EXEMPT"]] = Field(
+        default=UNSET, description="The bypass mode for the reviewer"
+    )
+
+
+model_rebuild(OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody)
 model_rebuild(
-    OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata
+    OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions
+)
+model_rebuild(
+    OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptions
+)
+model_rebuild(
+    OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItems
 )
 
 __all__ = (
-    "OrgsOrgCopilotSpacesSpaceNumberPutBody",
-    "OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems",
-    "OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata",
+    "OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody",
+    "OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions",
+    "OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptions",
+    "OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItems",
 )

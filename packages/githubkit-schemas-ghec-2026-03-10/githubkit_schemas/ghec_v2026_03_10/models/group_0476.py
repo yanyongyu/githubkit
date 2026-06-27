@@ -9,16 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from githubkit.compat import ExtraGitHubModel, model_rebuild
+from typing import Union
+
+from pydantic import Field
+
+from githubkit.compat import GitHubModel, model_rebuild
+
+from .group_0003 import SimpleUser
+from .group_0010 import Integration
+from .group_0454 import IssueReference
 
 
-class Language(ExtraGitHubModel):
-    """Language
+class ParentIssueAddedIssueEvent(GitHubModel):
+    """Parent-issue Added Issue Event
 
-    Language
+    Parent-issue Added Issue Event
     """
 
+    id: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    event: str = Field()
+    commit_id: Union[str, None] = Field()
+    commit_url: Union[str, None] = Field()
+    created_at: str = Field()
+    performed_via_github_app: Union[None, Integration, None] = Field()
+    parent_issue: Union[IssueReference, None] = Field(
+        title="Issue Reference",
+        description="A minimal reference to an issue linked from a timeline event (e.g. sub-issue, parent-issue, or dependency events).",
+    )
 
-model_rebuild(Language)
 
-__all__ = ("Language",)
+model_rebuild(ParentIssueAddedIssueEvent)
+
+__all__ = ("ParentIssueAddedIssueEvent",)

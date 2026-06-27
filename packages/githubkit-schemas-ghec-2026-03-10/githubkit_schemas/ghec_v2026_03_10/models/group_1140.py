@@ -9,21 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBody(GitHubModel):
-    """EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBody"""
+class EnterprisesEnterpriseCopilotCustomAgentsGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse200"""
 
-    default_level: Literal["public", "internal"] = Field(
-        description="The default repository access level for Dependabot updates."
+    custom_agents: Missing[
+        Union[
+            list[
+                EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems
+            ],
+            None,
+        ]
+    ] = Field(
+        default=UNSET,
+        description="List of custom agents defined in the repository. Returns `null` if no source repository is configured.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBody)
+class EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems"""
 
-__all__ = ("EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBody",)
+    name: Missing[str] = Field(
+        default=UNSET,
+        description="The display name of the custom agent (derived from filename).",
+    )
+    file_path: Missing[str] = Field(
+        default=UNSET, description="The path to the agent definition file."
+    )
+    url: Missing[str] = Field(
+        default=UNSET, description="The URL to view the agent definition file."
+    )
+
+
+model_rebuild(EnterprisesEnterpriseCopilotCustomAgentsGetResponse200)
+model_rebuild(
+    EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems
+)
+
+__all__ = (
+    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse200",
+    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems",
+)

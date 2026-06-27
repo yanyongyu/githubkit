@@ -13,38 +13,38 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0235 import (
-    RepositoryRuleFilePathRestrictionPropParametersType,
-    RepositoryRuleFilePathRestrictionPropParametersTypeForResponse,
+    RepositoryRuleCopilotCodeReviewPropParametersType,
+    RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse,
 )
 
 
-class RepositoryRuleFilePathRestrictionType(TypedDict):
-    """file_path_restriction
+class RepositoryRuleCopilotCodeReviewType(TypedDict):
+    """copilot_code_review
 
-    Prevent commits that include changes in specified file and folder paths from
-    being pushed to the commit graph. This includes absolute paths that contain file
-    names.
+    Request Copilot code review for new pull requests automatically if the author
+    has access to Copilot code review and their premium requests quota has not
+    reached the limit.
     """
 
-    type: Literal["file_path_restriction"]
-    parameters: NotRequired[RepositoryRuleFilePathRestrictionPropParametersType]
+    type: Literal["copilot_code_review"]
+    parameters: NotRequired[RepositoryRuleCopilotCodeReviewPropParametersType]
 
 
-class RepositoryRuleFilePathRestrictionTypeForResponse(TypedDict):
-    """file_path_restriction
+class RepositoryRuleCopilotCodeReviewTypeForResponse(TypedDict):
+    """copilot_code_review
 
-    Prevent commits that include changes in specified file and folder paths from
-    being pushed to the commit graph. This includes absolute paths that contain file
-    names.
+    Request Copilot code review for new pull requests automatically if the author
+    has access to Copilot code review and their premium requests quota has not
+    reached the limit.
     """
 
-    type: Literal["file_path_restriction"]
+    type: Literal["copilot_code_review"]
     parameters: NotRequired[
-        RepositoryRuleFilePathRestrictionPropParametersTypeForResponse
+        RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse
     ]
 
 
 __all__ = (
-    "RepositoryRuleFilePathRestrictionType",
-    "RepositoryRuleFilePathRestrictionTypeForResponse",
+    "RepositoryRuleCopilotCodeReviewType",
+    "RepositoryRuleCopilotCodeReviewTypeForResponse",
 )

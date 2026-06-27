@@ -9,36 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0087 import MarketplaceListingPlan
 
 
-class OrganizationSimpleWebhooks(GitHubModel):
-    """Organization Simple
+class UserMarketplacePurchase(GitHubModel):
+    """User Marketplace Purchase
 
-    A GitHub organization. Webhook payloads contain the `organization` property when
-    the webhook is configured for an
-    organization, or when the event occurs from activity in a repository owned by an
-    organization.
+    User Marketplace Purchase
     """
 
-    login: str = Field()
-    id: int = Field()
-    node_id: str = Field()
+    billing_cycle: str = Field()
+    next_billing_date: Union[_dt.datetime, None] = Field()
+    unit_count: Union[int, None] = Field()
+    on_free_trial: bool = Field()
+    free_trial_ends_on: Union[_dt.datetime, None] = Field()
+    updated_at: Union[_dt.datetime, None] = Field()
+    account: MarketplaceAccount = Field(title="Marketplace Account")
+    plan: MarketplaceListingPlan = Field(
+        title="Marketplace Listing Plan", description="Marketplace Listing Plan"
+    )
+
+
+class MarketplaceAccount(GitHubModel):
+    """Marketplace Account"""
+
     url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    hooks_url: str = Field()
-    issues_url: str = Field()
-    members_url: str = Field()
-    public_members_url: str = Field()
-    avatar_url: str = Field()
-    description: Union[str, None] = Field()
+    id: int = Field()
+    type: str = Field()
+    node_id: Missing[str] = Field(default=UNSET)
+    login: str = Field()
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    organization_billing_email: Missing[Union[str, None]] = Field(default=UNSET)
 
 
-model_rebuild(OrganizationSimpleWebhooks)
+model_rebuild(UserMarketplacePurchase)
+model_rebuild(MarketplaceAccount)
 
-__all__ = ("OrganizationSimpleWebhooks",)
+__all__ = (
+    "MarketplaceAccount",
+    "UserMarketplacePurchase",
+)

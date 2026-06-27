@@ -11,28 +11,32 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
+from .group_0482 import TrafficType, TrafficTypeForResponse
 
-class CodespacesUserPublicKeyType(TypedDict):
-    """CodespacesUserPublicKey
 
-    The public key used for setting user Codespaces' Secrets.
+class ViewTrafficType(TypedDict):
+    """View Traffic
+
+    View Traffic
     """
 
-    key_id: str
-    key: str
+    count: int
+    uniques: int
+    views: list[TrafficType]
 
 
-class CodespacesUserPublicKeyTypeForResponse(TypedDict):
-    """CodespacesUserPublicKey
+class ViewTrafficTypeForResponse(TypedDict):
+    """View Traffic
 
-    The public key used for setting user Codespaces' Secrets.
+    View Traffic
     """
 
-    key_id: str
-    key: str
+    count: int
+    uniques: int
+    views: list[TrafficTypeForResponse]
 
 
 __all__ = (
-    "CodespacesUserPublicKeyType",
-    "CodespacesUserPublicKeyTypeForResponse",
+    "ViewTrafficType",
+    "ViewTrafficTypeForResponse",
 )

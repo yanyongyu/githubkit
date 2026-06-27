@@ -9,128 +9,136 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgReposPostBody(GitHubModel):
-    """OrgsOrgReposPostBody"""
+class OrgsOrgPrivateRegistriesPostBody(GitHubModel):
+    """OrgsOrgPrivateRegistriesPostBody"""
 
-    name: str = Field(description="The name of the repository.")
-    description: Missing[str] = Field(
-        default=UNSET, description="A short description of the repository."
-    )
-    homepage: Missing[str] = Field(
-        default=UNSET, description="A URL with more information about the repository."
-    )
-    private: Missing[bool] = Field(
-        default=UNSET, description="Whether the repository is private."
-    )
-    visibility: Missing[Literal["public", "private", "internal"]] = Field(
-        default=UNSET, description="The visibility of the repository."
-    )
-    has_issues: Missing[bool] = Field(
+    registry_type: Literal[
+        "maven_repository",
+        "nuget_feed",
+        "goproxy_server",
+        "npm_registry",
+        "rubygems_server",
+        "cargo_registry",
+        "composer_repository",
+        "docker_registry",
+        "git_source",
+        "helm_registry",
+        "hex_organization",
+        "hex_repository",
+        "pub_repository",
+        "python_index",
+        "terraform_registry",
+    ] = Field(description="The registry type.")
+    url: str = Field(description="The URL of the private registry.")
+    username: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="Either `true` to enable issues for this repository or `false` to disable them.",
+        description="The username to use when authenticating with the private registry. This field should be omitted if the private registry does not require a username for authentication.",
     )
-    has_projects: Missing[bool] = Field(
+    replaces_base: Missing[bool] = Field(
         default=UNSET,
-        description="Either `true` to enable projects for this repository or `false` to disable them. **Note:** If you're creating a repository in an organization that has disabled repository projects, the default is `false`, and if you pass `true`, the API returns an error.",
+        description="Whether this private registry should replace the base registry (e.g., npmjs.org for npm, rubygems.org for rubygems). When set to `true`, Dependabot will only use this registry and will not fall back to the public registry. When set to `false` (default), Dependabot will use this registry for scoped packages but may fall back to the public registry for other packages.",
     )
-    has_wiki: Missing[bool] = Field(
+    encrypted_value: Missing[str] = Field(
+        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
         default=UNSET,
-        description="Either `true` to enable the wiki for this repository or `false` to disable it.",
+        description="The value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get private registries public key for an organization](https://docs.github.com/enterprise-cloud@latest/rest/private-registries/organization-configurations#get-private-registries-public-key-for-an-organization) endpoint. Required when `auth_type` is `token` or `username_password`. Should be omitted for OIDC auth types.",
     )
-    has_downloads: Missing[bool] = Field(
-        default=UNSET, description="Whether downloads are enabled."
-    )
-    is_template: Missing[bool] = Field(
+    key_id: Missing[str] = Field(
         default=UNSET,
-        description="Either `true` to make this repo available as a template repository or `false` to prevent it.",
+        description="The ID of the key you used to encrypt the secret. Required when `auth_type` is `token` or `username_password`. Should be omitted for OIDC auth types.",
     )
-    team_id: Missing[int] = Field(
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="Which type of organization repositories have access to the private registry. `selected` means only the repositories specified by `selected_repository_ids` can access the private registry."
+    )
+    selected_repository_ids: Missing[list[int]] = Field(
         default=UNSET,
-        description="The id of the team that will be granted access to this repository. This is only valid when creating a repository in an organization.",
+        description="An array of repository IDs that can access the organization private registry. You can only provide a list of repository IDs when `visibility` is set to `selected`. You can manage the list of selected repositories using the [Update a private registry for an organization](https://docs.github.com/enterprise-cloud@latest/rest/private-registries/organization-configurations#update-a-private-registry-for-an-organization) endpoint. This field should be omitted if `visibility` is set to `all` or `private`.",
     )
-    auto_init: Missing[bool] = Field(
-        default=UNSET,
-        description="Pass `true` to create an initial commit with empty README.",
-    )
-    gitignore_template: Missing[str] = Field(
-        default=UNSET,
-        description='Desired language or platform [.gitignore template](https://github.com/github/gitignore) to apply. Use the name of the template without the extension. For example, "Haskell".',
-    )
-    license_template: Missing[str] = Field(
-        default=UNSET,
-        description='Choose an [open source license template](https://choosealicense.com/) that best suits your needs, and then use the [license keyword](https://docs.github.com/enterprise-cloud@latest/articles/licensing-a-repository/#searching-github-by-license-type) as the `license_template` string. For example, "mit" or "mpl-2.0".',
-    )
-    allow_squash_merge: Missing[bool] = Field(
-        default=UNSET,
-        description="Either `true` to allow squash-merging pull requests, or `false` to prevent squash-merging.",
-    )
-    allow_merge_commit: Missing[bool] = Field(
-        default=UNSET,
-        description="Either `true` to allow merging pull requests with a merge commit, or `false` to prevent merging pull requests with merge commits.",
-    )
-    allow_rebase_merge: Missing[bool] = Field(
-        default=UNSET,
-        description="Either `true` to allow rebase-merging pull requests, or `false` to prevent rebase-merging.",
-    )
-    allow_auto_merge: Missing[bool] = Field(
-        default=UNSET,
-        description="Either `true` to allow auto-merge on pull requests, or `false` to disallow auto-merge.",
-    )
-    delete_branch_on_merge: Missing[bool] = Field(
-        default=UNSET,
-        description="Either `true` to allow automatically deleting head branches when pull requests are merged, or `false` to prevent automatic deletion. **The authenticated user must be an organization owner to set this property to `true`.**",
-    )
-    use_squash_pr_title_as_default: Missing[bool] = Field(
-        default=UNSET,
-        description="Either `true` to allow squash-merge commits to use pull request title, or `false` to use commit message. **This property is closing down. Please use `squash_merge_commit_title` instead.",
-    )
-    squash_merge_commit_title: Missing[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]] = (
-        Field(
-            default=UNSET,
-            description="Required when using `squash_merge_commit_message`.\n\nThe default value for a squash merge commit title:\n\n- `PR_TITLE` - default to the pull request's title.\n- `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
-        )
-    )
-    squash_merge_commit_message: Missing[
-        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    auth_type: Missing[
+        Literal[
+            "token",
+            "username_password",
+            "oidc_azure",
+            "oidc_aws",
+            "oidc_jfrog",
+            "oidc_cloudsmith",
+            "oidc_gcp",
+        ]
     ] = Field(
         default=UNSET,
-        description="The default value for a squash merge commit message:\n\n- `PR_BODY` - default to the pull request's body.\n- `COMMIT_MESSAGES` - default to the branch's commit messages.\n- `BLANK` - default to a blank commit message.",
+        description="The authentication type for the private registry. Defaults to `token` if not specified. Use `oidc_azure`, `oidc_aws`, `oidc_jfrog`, `oidc_cloudsmith`, or `oidc_gcp` for OIDC authentication.",
     )
-    merge_commit_title: Missing[Literal["PR_TITLE", "MERGE_MESSAGE"]] = Field(
+    tenant_id: Missing[str] = Field(
         default=UNSET,
-        description="Required when using `merge_commit_message`.\n\nThe default value for a merge commit title.\n\n- `PR_TITLE` - default to the pull request's title.\n- `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).",
+        description="The tenant ID of the Azure AD application. Required when `auth_type` is `oidc_azure`.",
     )
-    merge_commit_message: Missing[Literal["PR_BODY", "PR_TITLE", "BLANK"]] = Field(
+    client_id: Missing[str] = Field(
         default=UNSET,
-        description="The default value for a merge commit message.\n\n- `PR_TITLE` - default to the pull request's title.\n- `PR_BODY` - default to the pull request's body.\n- `BLANK` - default to a blank commit message.",
+        description="The client ID of the Azure AD application. Required when `auth_type` is `oidc_azure`.",
     )
-    custom_properties: Missing[OrgsOrgReposPostBodyPropCustomProperties] = Field(
+    aws_region: Missing[str] = Field(
         default=UNSET,
-        description="The custom properties for the new repository. The keys are the custom property names, and the values are the corresponding custom property values.",
+        description="The AWS region. Required when `auth_type` is `oidc_aws`.",
+    )
+    account_id: Missing[str] = Field(
+        default=UNSET,
+        description="The AWS account ID. Required when `auth_type` is `oidc_aws`.",
+    )
+    role_name: Missing[str] = Field(
+        default=UNSET,
+        description="The AWS IAM role name. Required when `auth_type` is `oidc_aws`.",
+    )
+    domain: Missing[str] = Field(
+        default=UNSET,
+        description="The CodeArtifact domain. Required when `auth_type` is `oidc_aws`.",
+    )
+    domain_owner: Missing[str] = Field(
+        default=UNSET,
+        description="The CodeArtifact domain owner (AWS account ID). Required when `auth_type` is `oidc_aws`.",
+    )
+    jfrog_oidc_provider_name: Missing[str] = Field(
+        default=UNSET,
+        description="The JFrog OIDC provider name. Required when `auth_type` is `oidc_jfrog`.",
+    )
+    audience: Missing[str] = Field(
+        default=UNSET,
+        description="The OIDC audience. Optional for `oidc_aws`, `oidc_jfrog`, and `oidc_gcp`, and required for `oidc_cloudsmith` auth types.",
+    )
+    identity_mapping_name: Missing[str] = Field(
+        default=UNSET,
+        description="The JFrog identity mapping name. Optional for `oidc_jfrog` auth type.",
+    )
+    namespace: Missing[str] = Field(
+        default=UNSET,
+        description="The Cloudsmith organization namespace. Required when `auth_type` is `oidc_cloudsmith`.",
+    )
+    service_slug: Missing[str] = Field(
+        default=UNSET,
+        description="The Cloudsmith service account slug. Required when `auth_type` is `oidc_cloudsmith`.",
+    )
+    api_host: Missing[str] = Field(
+        default=UNSET,
+        description="The Cloudsmith API host. Optional for `oidc_cloudsmith` auth type. If omitted, `api.cloudsmith.io` is used by default.",
+    )
+    workload_identity_provider: Missing[str] = Field(
+        default=UNSET,
+        description="The full resource name of the GCP Workload Identity Provider (e.g. `projects/<NUM>/locations/global/workloadIdentityPools/<POOL>/providers/<PROVIDER>`). Required when `auth_type` is `oidc_gcp`.",
+    )
+    service_account: Missing[str] = Field(
+        default=UNSET,
+        description="The GCP service account email to impersonate. Optional for `oidc_gcp` auth type. If omitted, the federated token is used directly (direct WIF).",
     )
 
 
-class OrgsOrgReposPostBodyPropCustomProperties(ExtraGitHubModel):
-    """OrgsOrgReposPostBodyPropCustomProperties
+model_rebuild(OrgsOrgPrivateRegistriesPostBody)
 
-    The custom properties for the new repository. The keys are the custom property
-    names, and the values are the corresponding custom property values.
-    """
-
-
-model_rebuild(OrgsOrgReposPostBody)
-model_rebuild(OrgsOrgReposPostBodyPropCustomProperties)
-
-__all__ = (
-    "OrgsOrgReposPostBody",
-    "OrgsOrgReposPostBodyPropCustomProperties",
-)
+__all__ = ("OrgsOrgPrivateRegistriesPostBody",)

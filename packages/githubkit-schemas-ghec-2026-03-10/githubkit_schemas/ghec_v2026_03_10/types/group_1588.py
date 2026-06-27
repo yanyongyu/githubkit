@@ -10,28 +10,38 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBodyType(TypedDict):
-    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody"""
+class UserMigrationsPostBodyType(TypedDict):
+    """UserMigrationsPostBody"""
 
-    actor_type: Literal["User", "Team"]
-    actor_identifier: str
-    role: Literal["reader", "writer", "admin"]
+    lock_repositories: NotRequired[bool]
+    exclude_metadata: NotRequired[bool]
+    exclude_git_data: NotRequired[bool]
+    exclude_attachments: NotRequired[bool]
+    exclude_releases: NotRequired[bool]
+    exclude_owner_projects: NotRequired[bool]
+    org_metadata_only: NotRequired[bool]
+    exclude: NotRequired[list[Literal["repositories"]]]
+    repositories: list[str]
 
 
-class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBodyTypeForResponse(
-    TypedDict
-):
-    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody"""
+class UserMigrationsPostBodyTypeForResponse(TypedDict):
+    """UserMigrationsPostBody"""
 
-    actor_type: Literal["User", "Team"]
-    actor_identifier: str
-    role: Literal["reader", "writer", "admin"]
+    lock_repositories: NotRequired[bool]
+    exclude_metadata: NotRequired[bool]
+    exclude_git_data: NotRequired[bool]
+    exclude_attachments: NotRequired[bool]
+    exclude_releases: NotRequired[bool]
+    exclude_owner_projects: NotRequired[bool]
+    org_metadata_only: NotRequired[bool]
+    exclude: NotRequired[list[Literal["repositories"]]]
+    repositories: list[str]
 
 
 __all__ = (
-    "UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBodyType",
-    "UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBodyTypeForResponse",
+    "UserMigrationsPostBodyType",
+    "UserMigrationsPostBodyTypeForResponse",
 )

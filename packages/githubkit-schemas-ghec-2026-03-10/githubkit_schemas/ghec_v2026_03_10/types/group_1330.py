@@ -9,26 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0103 import NetworkConfigurationType, NetworkConfigurationTypeForResponse
-
-
-class OrgsOrgSettingsNetworkConfigurationsGetResponse200Type(TypedDict):
-    """OrgsOrgSettingsNetworkConfigurationsGetResponse200"""
-
-    total_count: int
-    network_configurations: list[NetworkConfigurationType]
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgSettingsNetworkConfigurationsGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgSettingsNetworkConfigurationsGetResponse200"""
+class OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0Type(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0"""
 
-    total_count: int
-    network_configurations: list[NetworkConfigurationTypeForResponse]
+    type: Literal["Issue", "PullRequest"]
+    id: int
+    owner: NotRequired[str]
+    repo: NotRequired[str]
+    number: NotRequired[int]
+
+
+class OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0TypeForResponse(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0"""
+
+    type: Literal["Issue", "PullRequest"]
+    id: int
+    owner: NotRequired[str]
+    repo: NotRequired[str]
+    number: NotRequired[int]
 
 
 __all__ = (
-    "OrgsOrgSettingsNetworkConfigurationsGetResponse200Type",
-    "OrgsOrgSettingsNetworkConfigurationsGetResponse200TypeForResponse",
+    "OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0Type",
+    "OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0TypeForResponse",
 )

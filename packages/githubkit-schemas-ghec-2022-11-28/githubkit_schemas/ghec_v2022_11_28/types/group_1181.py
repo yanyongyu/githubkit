@@ -9,29 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0247 import (
-    OrganizationCustomRepositoryRoleType,
-    OrganizationCustomRepositoryRoleTypeForResponse,
-)
+
+class EnterprisesEnterpriseTeamsTeamSlugPatchBodyType(TypedDict):
+    """EnterprisesEnterpriseTeamsTeamSlugPatchBody"""
+
+    name: NotRequired[Union[str, None]]
+    description: NotRequired[Union[str, None]]
+    sync_to_organizations: NotRequired[Literal["all", "disabled"]]
+    organization_selection_type: NotRequired[Literal["disabled", "selected", "all"]]
+    group_id: NotRequired[Union[str, None]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
 
 
-class OrganizationsOrganizationIdCustomRolesGetResponse200Type(TypedDict):
-    """OrganizationsOrganizationIdCustomRolesGetResponse200"""
+class EnterprisesEnterpriseTeamsTeamSlugPatchBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseTeamsTeamSlugPatchBody"""
 
-    total_count: NotRequired[int]
-    custom_roles: NotRequired[list[OrganizationCustomRepositoryRoleType]]
-
-
-class OrganizationsOrganizationIdCustomRolesGetResponse200TypeForResponse(TypedDict):
-    """OrganizationsOrganizationIdCustomRolesGetResponse200"""
-
-    total_count: NotRequired[int]
-    custom_roles: NotRequired[list[OrganizationCustomRepositoryRoleTypeForResponse]]
+    name: NotRequired[Union[str, None]]
+    description: NotRequired[Union[str, None]]
+    sync_to_organizations: NotRequired[Literal["all", "disabled"]]
+    organization_selection_type: NotRequired[Literal["disabled", "selected", "all"]]
+    group_id: NotRequired[Union[str, None]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
 
 
 __all__ = (
-    "OrganizationsOrganizationIdCustomRolesGetResponse200Type",
-    "OrganizationsOrganizationIdCustomRolesGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseTeamsTeamSlugPatchBodyType",
+    "EnterprisesEnterpriseTeamsTeamSlugPatchBodyTypeForResponse",
 )

@@ -11,24 +11,20 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0137 import CodespaceMachineType, CodespaceMachineTypeForResponse
+
+class ReposOwnerRepoCheckSuitesPostBodyType(TypedDict):
+    """ReposOwnerRepoCheckSuitesPostBody"""
+
+    head_sha: str
 
 
-class ReposOwnerRepoCodespacesMachinesGetResponse200Type(TypedDict):
-    """ReposOwnerRepoCodespacesMachinesGetResponse200"""
+class ReposOwnerRepoCheckSuitesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoCheckSuitesPostBody"""
 
-    total_count: int
-    machines: list[CodespaceMachineType]
-
-
-class ReposOwnerRepoCodespacesMachinesGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoCodespacesMachinesGetResponse200"""
-
-    total_count: int
-    machines: list[CodespaceMachineTypeForResponse]
+    head_sha: str
 
 
 __all__ = (
-    "ReposOwnerRepoCodespacesMachinesGetResponse200Type",
-    "ReposOwnerRepoCodespacesMachinesGetResponse200TypeForResponse",
+    "ReposOwnerRepoCheckSuitesPostBodyType",
+    "ReposOwnerRepoCheckSuitesPostBodyTypeForResponse",
 )

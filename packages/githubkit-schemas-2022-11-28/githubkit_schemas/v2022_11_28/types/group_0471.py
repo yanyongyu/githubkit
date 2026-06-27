@@ -9,28 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class TopicType(TypedDict):
-    """Topic
+class SecretScanningPushProtectionBypassType(TypedDict):
+    """SecretScanningPushProtectionBypass"""
 
-    A topic aggregates entities that are related to a subject.
-    """
+    reason: NotRequired[Literal["false_positive", "used_in_tests", "will_fix_later"]]
+    expire_at: NotRequired[Union[_dt.datetime, None]]
+    token_type: NotRequired[str]
 
-    names: list[str]
 
+class SecretScanningPushProtectionBypassTypeForResponse(TypedDict):
+    """SecretScanningPushProtectionBypass"""
 
-class TopicTypeForResponse(TypedDict):
-    """Topic
-
-    A topic aggregates entities that are related to a subject.
-    """
-
-    names: list[str]
+    reason: NotRequired[Literal["false_positive", "used_in_tests", "will_fix_later"]]
+    expire_at: NotRequired[Union[str, None]]
+    token_type: NotRequired[str]
 
 
 __all__ = (
-    "TopicType",
-    "TopicTypeForResponse",
+    "SecretScanningPushProtectionBypassType",
+    "SecretScanningPushProtectionBypassTypeForResponse",
 )

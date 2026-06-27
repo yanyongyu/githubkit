@@ -9,26 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0054 import RunnerType, RunnerTypeForResponse
+
+class EnterprisesEnterpriseActionsPermissionsPutBodyType(TypedDict):
+    """EnterprisesEnterpriseActionsPermissionsPutBody"""
+
+    enabled_organizations: Literal["all", "none", "selected"]
+    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
+    sha_pinning_required: NotRequired[bool]
 
 
-class EnterprisesEnterpriseActionsRunnersGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseActionsRunnersGetResponse200"""
+class EnterprisesEnterpriseActionsPermissionsPutBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseActionsPermissionsPutBody"""
 
-    total_count: NotRequired[float]
-    runners: NotRequired[list[RunnerType]]
-
-
-class EnterprisesEnterpriseActionsRunnersGetResponse200TypeForResponse(TypedDict):
-    """EnterprisesEnterpriseActionsRunnersGetResponse200"""
-
-    total_count: NotRequired[float]
-    runners: NotRequired[list[RunnerTypeForResponse]]
+    enabled_organizations: Literal["all", "none", "selected"]
+    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
+    sha_pinning_required: NotRequired[bool]
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsRunnersGetResponse200Type",
-    "EnterprisesEnterpriseActionsRunnersGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseActionsPermissionsPutBodyType",
+    "EnterprisesEnterpriseActionsPermissionsPutBodyTypeForResponse",
 )

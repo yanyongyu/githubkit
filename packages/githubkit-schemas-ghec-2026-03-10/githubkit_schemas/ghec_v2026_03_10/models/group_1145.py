@@ -11,21 +11,17 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
-
-from .group_0106 import OrganizationCustomProperty
-
-
-class EnterprisesEnterpriseOrgPropertiesSchemaPatchBody(GitHubModel):
-    """EnterprisesEnterpriseOrgPropertiesSchemaPatchBody"""
-
-    properties: list[OrganizationCustomProperty] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="The array of organization custom properties to create or update.",
-    )
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(EnterprisesEnterpriseOrgPropertiesSchemaPatchBody)
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422(GitHubModel):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422"""
 
-__all__ = ("EnterprisesEnterpriseOrgPropertiesSchemaPatchBody",)
+    message: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422)
+
+__all__ = ("EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422",)

@@ -12,23 +12,23 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202Type(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202"""
+class EnterprisesEnterpriseCodeScanningAlertsGetResponse503Type(TypedDict):
+    """EnterprisesEnterpriseCodeScanningAlertsGetResponse503"""
 
+    code: NotRequired[str]
     message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
-class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202"""
+class EnterprisesEnterpriseCodeScanningAlertsGetResponse503TypeForResponse(TypedDict):
+    """EnterprisesEnterpriseCodeScanningAlertsGetResponse503"""
 
+    code: NotRequired[str]
     message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202Type",
-    "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202TypeForResponse",
+    "EnterprisesEnterpriseCodeScanningAlertsGetResponse503Type",
+    "EnterprisesEnterpriseCodeScanningAlertsGetResponse503TypeForResponse",
 )

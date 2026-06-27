@@ -9,30 +9,77 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0559 import UserRoleItemsType, UserRoleItemsTypeForResponse
 
 
-class CodespacesUserPublicKeyType(TypedDict):
-    """CodespacesUserPublicKey
+class UserType(TypedDict):
+    """User"""
 
-    The public key used for setting user Codespaces' Secrets.
-    """
+    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
+    external_id: str
+    active: bool
+    user_name: str
+    name: NotRequired[UserNameType]
+    display_name: str
+    emails: list[UserEmailsItemsType]
+    roles: NotRequired[list[UserRoleItemsType]]
 
-    key_id: str
-    key: str
+
+class UserTypeForResponse(TypedDict):
+    """User"""
+
+    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
+    external_id: str
+    active: bool
+    user_name: str
+    name: NotRequired[UserNameTypeForResponse]
+    display_name: str
+    emails: list[UserEmailsItemsTypeForResponse]
+    roles: NotRequired[list[UserRoleItemsTypeForResponse]]
 
 
-class CodespacesUserPublicKeyTypeForResponse(TypedDict):
-    """CodespacesUserPublicKey
+class UserNameType(TypedDict):
+    """UserName"""
 
-    The public key used for setting user Codespaces' Secrets.
-    """
+    formatted: NotRequired[str]
+    family_name: str
+    given_name: str
+    middle_name: NotRequired[str]
 
-    key_id: str
-    key: str
+
+class UserNameTypeForResponse(TypedDict):
+    """UserName"""
+
+    formatted: NotRequired[str]
+    family_name: str
+    given_name: str
+    middle_name: NotRequired[str]
+
+
+class UserEmailsItemsType(TypedDict):
+    """UserEmailsItems"""
+
+    value: str
+    type: str
+    primary: bool
+
+
+class UserEmailsItemsTypeForResponse(TypedDict):
+    """UserEmailsItems"""
+
+    value: str
+    type: str
+    primary: bool
 
 
 __all__ = (
-    "CodespacesUserPublicKeyType",
-    "CodespacesUserPublicKeyTypeForResponse",
+    "UserEmailsItemsType",
+    "UserEmailsItemsTypeForResponse",
+    "UserNameType",
+    "UserNameTypeForResponse",
+    "UserType",
+    "UserTypeForResponse",
 )

@@ -14,30 +14,51 @@ from typing import Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
+from .group_0036 import SimpleRepository
 
 
-class UnassignedIssueEvent(GitHubModel):
-    """Unassigned Issue Event
+class IssueReference(GitHubModel):
+    """Issue Reference
 
-    Unassigned Issue Event
+    A minimal reference to an issue linked from a timeline event (e.g. sub-issue,
+    parent-issue, or dependency events).
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: str = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: str = Field()
-    performed_via_github_app: Union[None, Integration, None] = Field()
-    assignee: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    assigner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    number: int = Field(description="The number of the referenced issue.")
+    title: str = Field(description="The title of the referenced issue.")
+    state: str = Field(description="The state of the referenced issue.")
+    state_reason: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The reason for the referenced issue's state."
+    )
+    repository: SimpleRepository = Field(
+        title="Simple Repository", description="A GitHub repository."
+    )
+    issue_type: Union[IssueReferencePropIssueType, None] = Field(
+        title="Issue Type", description="The type of the referenced issue."
+    )
 
 
-model_rebuild(UnassignedIssueEvent)
+class IssueReferencePropIssueType(GitHubModel):
+    """Issue Type
 
-__all__ = ("UnassignedIssueEvent",)
+    The type of the referenced issue.
+    """
+
+    id: int = Field(description="The unique identifier of the issue type.")
+    node_id: str = Field(description="The node identifier of the issue type.")
+    name: str = Field(description="The name of the issue type.")
+    color: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The color of the issue type."
+    )
+
+
+model_rebuild(IssueReference)
+model_rebuild(IssueReferencePropIssueType)
+
+__all__ = (
+    "IssueReference",
+    "IssueReferencePropIssueType",
+)

@@ -15,22 +15,21 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_1175 import (
-    InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties,
+
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200(
+    GitHubModel
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteRespons
+    e200
+    """
+
+    message: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(
+    EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200
 )
 
-
-class InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1(GitHubModel):
-    """InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1"""
-
-    custom_properties: Missing[
-        InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties
-    ] = Field(
-        default=UNSET,
-        description="The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. Present for org repos only.",
-    )
-
-
-model_rebuild(InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1)
-
-__all__ = ("InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1",)
+__all__ = (
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200",
+)

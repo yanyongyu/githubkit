@@ -9,48 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Any, TypeAlias
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type(TypedDict):
-    """OrgsOrgActionsCacheUsageByRepositoryGetResponse200"""
+class GistsGistIdPatchBodyType(TypedDict):
+    """GistsGistIdPatchBody"""
 
-    total_count: int
-    repository_cache_usages: list[ActionsCacheUsageByRepositoryType]
-
-
-class OrgsOrgActionsCacheUsageByRepositoryGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsCacheUsageByRepositoryGetResponse200"""
-
-    total_count: int
-    repository_cache_usages: list[ActionsCacheUsageByRepositoryTypeForResponse]
+    description: NotRequired[str]
+    files: NotRequired[GistsGistIdPatchBodyPropFilesType]
 
 
-class ActionsCacheUsageByRepositoryType(TypedDict):
-    """Actions Cache Usage by repository
+class GistsGistIdPatchBodyTypeForResponse(TypedDict):
+    """GistsGistIdPatchBody"""
 
-    GitHub Actions Cache Usage by repository.
-    """
-
-    full_name: str
-    active_caches_size_in_bytes: int
-    active_caches_count: int
+    description: NotRequired[str]
+    files: NotRequired[GistsGistIdPatchBodyPropFilesTypeForResponse]
 
 
-class ActionsCacheUsageByRepositoryTypeForResponse(TypedDict):
-    """Actions Cache Usage by repository
+GistsGistIdPatchBodyPropFilesType: TypeAlias = dict[str, Any]
+"""GistsGistIdPatchBodyPropFiles
 
-    GitHub Actions Cache Usage by repository.
-    """
+The gist files to be updated, renamed, or deleted. Each `key` must match the
+current filename
+(including extension) of the targeted gist file. For example: `hello.py`.
 
-    full_name: str
-    active_caches_size_in_bytes: int
-    active_caches_count: int
+To delete a file, set the whole file to null. For example: `hello.py : null`.
+The file will also be
+deleted if the specified object does not contain at least one of `content` or
+`filename`.
+
+Examples:
+    {'hello.rb': {'content': 'blah', 'filename': 'goodbye.rb'}}
+"""
+
+
+GistsGistIdPatchBodyPropFilesTypeForResponse: TypeAlias = dict[str, Any]
+"""GistsGistIdPatchBodyPropFiles
+
+The gist files to be updated, renamed, or deleted. Each `key` must match the
+current filename
+(including extension) of the targeted gist file. For example: `hello.py`.
+
+To delete a file, set the whole file to null. For example: `hello.py : null`.
+The file will also be
+deleted if the specified object does not contain at least one of `content` or
+`filename`.
+
+Examples:
+    {'hello.rb': {'content': 'blah', 'filename': 'goodbye.rb'}}
+"""
 
 
 __all__ = (
-    "ActionsCacheUsageByRepositoryType",
-    "ActionsCacheUsageByRepositoryTypeForResponse",
-    "OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type",
-    "OrgsOrgActionsCacheUsageByRepositoryGetResponse200TypeForResponse",
+    "GistsGistIdPatchBodyPropFilesType",
+    "GistsGistIdPatchBodyPropFilesTypeForResponse",
+    "GistsGistIdPatchBodyType",
+    "GistsGistIdPatchBodyTypeForResponse",
 )

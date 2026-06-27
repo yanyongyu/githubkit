@@ -9,58 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0502 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0503 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0504 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0505 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+
+class WebhookStatusPropCommitPropCommitPropCommitterAllof1Type(TypedDict):
+    """WebhookStatusPropCommitPropCommitPropCommitterAllof1"""
+
+    date: str
+    email: NotRequired[str]
+    name: NotRequired[str]
 
 
-class WebhookWorkflowDispatchType(TypedDict):
-    """workflow_dispatch event"""
+class WebhookStatusPropCommitPropCommitPropCommitterAllof1TypeForResponse(TypedDict):
+    """WebhookStatusPropCommitPropCommitPropCommitterAllof1"""
 
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    inputs: Union[WebhookWorkflowDispatchPropInputsType, None]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    ref: str
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
-    workflow: str
-
-
-class WebhookWorkflowDispatchTypeForResponse(TypedDict):
-    """workflow_dispatch event"""
-
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    inputs: Union[WebhookWorkflowDispatchPropInputsTypeForResponse, None]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    ref: str
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
-    workflow: str
-
-
-WebhookWorkflowDispatchPropInputsType: TypeAlias = dict[str, Any]
-"""WebhookWorkflowDispatchPropInputs
-"""
-
-
-WebhookWorkflowDispatchPropInputsTypeForResponse: TypeAlias = dict[str, Any]
-"""WebhookWorkflowDispatchPropInputs
-"""
+    date: str
+    email: NotRequired[str]
+    name: NotRequired[str]
 
 
 __all__ = (
-    "WebhookWorkflowDispatchPropInputsType",
-    "WebhookWorkflowDispatchPropInputsTypeForResponse",
-    "WebhookWorkflowDispatchType",
-    "WebhookWorkflowDispatchTypeForResponse",
+    "WebhookStatusPropCommitPropCommitPropCommitterAllof1Type",
+    "WebhookStatusPropCommitPropCommitPropCommitterAllof1TypeForResponse",
 )

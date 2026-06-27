@@ -20,32 +20,29 @@ from githubkit.utils import UNSET
 
 from .group_0051 import IssueType
 from .group_0053 import IssueDependenciesSummary, SubIssuesSummary
-from .group_0664 import (
-    WebhookIssueCommentEditedPropIssueAllof0PropAssignee,
-    WebhookIssueCommentEditedPropIssueAllof0PropLabelsItems,
-    WebhookIssueCommentEditedPropIssueAllof0PropPullRequest,
+from .group_0665 import (
+    WebhookIssueCommentDeletedPropIssueAllof0PropAssignee,
+    WebhookIssueCommentDeletedPropIssueAllof0PropLabelsItems,
+    WebhookIssueCommentDeletedPropIssueAllof0PropPullRequest,
 )
-from .group_0666 import WebhookIssueCommentEditedPropIssueAllof0PropMilestone
-from .group_0668 import (
-    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubApp,
-)
+from .group_0671 import WebhookIssueCommentDeletedPropIssueMergedMilestone
+from .group_0672 import WebhookIssueCommentDeletedPropIssueMergedPerformedViaGithubApp
 
 
-class WebhookIssueCommentEditedPropIssueAllof0(GitHubModel):
-    """Issue
+class WebhookIssueCommentDeletedPropIssue(GitHubModel):
+    """WebhookIssueCommentDeletedPropIssue
 
-    The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself.
+    The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) the comment
+    belongs to.
     """
 
     active_lock_reason: Union[
-        None, Literal["resolved", "off-topic", "too heated", "spam"]
+        Literal["resolved", "off-topic", "too heated", "spam"], None
     ] = Field()
-    assignee: Missing[
-        Union[WebhookIssueCommentEditedPropIssueAllof0PropAssignee, None]
-    ] = Field(default=UNSET, title="User")
-    assignees: list[
-        Union[WebhookIssueCommentEditedPropIssueAllof0PropAssigneesItems, None]
-    ] = Field()
+    assignee: Union[
+        Union[WebhookIssueCommentDeletedPropIssueAllof0PropAssignee, None], None
+    ] = Field(title="User")
+    assignees: list[WebhookIssueCommentDeletedPropIssueMergedAssignees] = Field()
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -59,7 +56,7 @@ class WebhookIssueCommentEditedPropIssueAllof0(GitHubModel):
         title="AuthorAssociation",
         description="How the author is associated with the repository.",
     )
-    body: Union[str, None] = Field(description="Contents of the issue")
+    body: Union[Union[str, None], None] = Field(description="Contents of the issue")
     closed_at: Union[_dt.datetime, None] = Field()
     comments: int = Field()
     comments_url: str = Field()
@@ -68,32 +65,19 @@ class WebhookIssueCommentEditedPropIssueAllof0(GitHubModel):
     events_url: str = Field()
     html_url: str = Field()
     id: int = Field()
-    labels: Missing[list[WebhookIssueCommentEditedPropIssueAllof0PropLabelsItems]] = (
-        Field(default=UNSET)
-    )
+    labels: list[WebhookIssueCommentDeletedPropIssueAllof0PropLabelsItems] = Field()
     labels_url: str = Field()
-    locked: Missing[bool] = Field(default=UNSET)
-    milestone: Union[WebhookIssueCommentEditedPropIssueAllof0PropMilestone, None] = (
-        Field(
-            title="Milestone",
-            description="A collection of related issues and pull requests.",
-        )
-    )
+    locked: bool = Field()
+    milestone: Union[WebhookIssueCommentDeletedPropIssueMergedMilestone, None] = Field()
     node_id: str = Field()
     number: int = Field()
     performed_via_github_app: Missing[
-        Union[WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubApp, None]
-    ] = Field(
-        default=UNSET,
-        title="App",
-        description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
-    )
-    pull_request: Missing[WebhookIssueCommentEditedPropIssueAllof0PropPullRequest] = (
+        Union[WebhookIssueCommentDeletedPropIssueMergedPerformedViaGithubApp, None]
+    ] = Field(default=UNSET)
+    pull_request: Missing[WebhookIssueCommentDeletedPropIssueAllof0PropPullRequest] = (
         Field(default=UNSET)
     )
-    reactions: WebhookIssueCommentEditedPropIssueAllof0PropReactions = Field(
-        title="Reactions"
-    )
+    reactions: WebhookIssueCommentDeletedPropIssueMergedReactions = Field()
     repository_url: str = Field()
     sub_issues_summary: Missing[SubIssuesSummary] = Field(
         default=UNSET, title="Sub-issues Summary"
@@ -101,8 +85,8 @@ class WebhookIssueCommentEditedPropIssueAllof0(GitHubModel):
     issue_dependencies_summary: Missing[IssueDependenciesSummary] = Field(
         default=UNSET, title="Issue Dependencies Summary"
     )
-    state: Missing[Literal["open", "closed"]] = Field(
-        default=UNSET, description="State of the issue; either 'open' or 'closed'"
+    state: Literal["open", "closed"] = Field(
+        description="State of the issue; either 'open' or 'closed'"
     )
     state_reason: Missing[Union[str, None]] = Field(default=UNSET)
     timeline_url: Missing[str] = Field(default=UNSET)
@@ -114,13 +98,11 @@ class WebhookIssueCommentEditedPropIssueAllof0(GitHubModel):
     )
     updated_at: _dt.datetime = Field()
     url: str = Field(description="URL for the issue")
-    user: Union[WebhookIssueCommentEditedPropIssueAllof0PropUser, None] = Field(
-        title="User"
-    )
+    user: WebhookIssueCommentDeletedPropIssueMergedUser = Field()
 
 
-class WebhookIssueCommentEditedPropIssueAllof0PropAssigneesItems(GitHubModel):
-    """User"""
+class WebhookIssueCommentDeletedPropIssueMergedAssignees(GitHubModel):
+    """WebhookIssueCommentDeletedPropIssueMergedAssignees"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
     deleted: Missing[bool] = Field(default=UNSET)
@@ -148,8 +130,8 @@ class WebhookIssueCommentEditedPropIssueAllof0PropAssigneesItems(GitHubModel):
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookIssueCommentEditedPropIssueAllof0PropReactions(GitHubModel):
-    """Reactions"""
+class WebhookIssueCommentDeletedPropIssueMergedReactions(GitHubModel):
+    """WebhookIssueCommentDeletedPropIssueMergedReactions"""
 
     plus_one: int = Field(alias="+1")
     minus_one: int = Field(alias="-1")
@@ -163,8 +145,8 @@ class WebhookIssueCommentEditedPropIssueAllof0PropReactions(GitHubModel):
     url: str = Field()
 
 
-class WebhookIssueCommentEditedPropIssueAllof0PropUser(GitHubModel):
-    """User"""
+class WebhookIssueCommentDeletedPropIssueMergedUser(GitHubModel):
+    """WebhookIssueCommentDeletedPropIssueMergedUser"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
     deleted: Missing[bool] = Field(default=UNSET)
@@ -192,14 +174,14 @@ class WebhookIssueCommentEditedPropIssueAllof0PropUser(GitHubModel):
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookIssueCommentEditedPropIssueAllof0)
-model_rebuild(WebhookIssueCommentEditedPropIssueAllof0PropAssigneesItems)
-model_rebuild(WebhookIssueCommentEditedPropIssueAllof0PropReactions)
-model_rebuild(WebhookIssueCommentEditedPropIssueAllof0PropUser)
+model_rebuild(WebhookIssueCommentDeletedPropIssue)
+model_rebuild(WebhookIssueCommentDeletedPropIssueMergedAssignees)
+model_rebuild(WebhookIssueCommentDeletedPropIssueMergedReactions)
+model_rebuild(WebhookIssueCommentDeletedPropIssueMergedUser)
 
 __all__ = (
-    "WebhookIssueCommentEditedPropIssueAllof0",
-    "WebhookIssueCommentEditedPropIssueAllof0PropAssigneesItems",
-    "WebhookIssueCommentEditedPropIssueAllof0PropReactions",
-    "WebhookIssueCommentEditedPropIssueAllof0PropUser",
+    "WebhookIssueCommentDeletedPropIssue",
+    "WebhookIssueCommentDeletedPropIssueMergedAssignees",
+    "WebhookIssueCommentDeletedPropIssueMergedReactions",
+    "WebhookIssueCommentDeletedPropIssueMergedUser",
 )

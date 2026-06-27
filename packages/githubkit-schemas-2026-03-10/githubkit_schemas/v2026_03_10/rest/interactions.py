@@ -767,7 +767,7 @@ class InteractionsClient:
         Users on this list can create pull requests regardless of any configured
         pull request creation cap.
 
-        Only repository admins can modify the bypass list.
+        Only users with maintainer permissions can modify the bypass list.
         You can add a maximum of 100 users per request.
         The bypass list can only hold a maximum of 100 users.
 
@@ -847,7 +847,7 @@ class InteractionsClient:
         Users on this list can create pull requests regardless of any configured
         pull request creation cap.
 
-        Only repository admins can modify the bypass list.
+        Only users with maintainer permissions can modify the bypass list.
         You can add a maximum of 100 users per request.
         The bypass list can only hold a maximum of 100 users.
 
@@ -926,7 +926,7 @@ class InteractionsClient:
         Removes users from the pull request creation cap bypass list for a repository.
         Removed users will be subject to any configured pull request creation cap.
 
-        Only repository admins can modify the bypass list.
+        Only users with maintainer permissions can modify the bypass list.
         You can remove a maximum of 100 users per request.
 
         See also: https://docs.github.com/rest/interactions/repos#remove-users-from-the-pull-request-creation-cap-bypass-list-for-a-repository
@@ -1004,7 +1004,7 @@ class InteractionsClient:
         Removes users from the pull request creation cap bypass list for a repository.
         Removed users will be subject to any configured pull request creation cap.
 
-        Only repository admins can modify the bypass list.
+        Only users with maintainer permissions can modify the bypass list.
         You can remove a maximum of 100 users per request.
 
         See also: https://docs.github.com/rest/interactions/repos#remove-users-from-the-pull-request-creation-cap-bypass-list-for-a-repository

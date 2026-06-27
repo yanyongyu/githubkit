@@ -9,28 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0244 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0318 import (
+    ProjectsV2FieldSingleSelectOptionType,
+    ProjectsV2FieldSingleSelectOptionTypeForResponse,
+)
 
 
-class OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200Type(TypedDict):
-    """OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200"""
+class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2Type(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2"""
 
-    total_count: int
-    repositories: list[MinimalRepositoryType]
+    name: str
+    data_type: Literal["single_select"]
+    single_select_options: list[ProjectsV2FieldSingleSelectOptionType]
 
 
-class OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200TypeForResponse(
-    TypedDict
-):
-    """OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200"""
+class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2TypeForResponse(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2"""
 
-    total_count: int
-    repositories: list[MinimalRepositoryTypeForResponse]
+    name: str
+    data_type: Literal["single_select"]
+    single_select_options: list[ProjectsV2FieldSingleSelectOptionTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200Type",
-    "OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200TypeForResponse",
+    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2Type",
+    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2TypeForResponse",
 )

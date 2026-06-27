@@ -13,46 +13,38 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0018 import InstallationType, InstallationTypeForResponse
-from .group_0576 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0578 import (
+from .group_0204 import DiscussionType, DiscussionTypeForResponse
+from .group_0590 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0579 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0593 import (
-    WebhooksRepositoriesItemsType,
-    WebhooksRepositoriesItemsTypeForResponse,
-)
+from .group_0591 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0602 import WebhooksAnswerType, WebhooksAnswerTypeForResponse
 
 
-class WebhookInstallationDeletedType(TypedDict):
-    """installation deleted event"""
+class WebhookDiscussionUnansweredType(TypedDict):
+    """discussion unanswered event"""
 
-    action: Literal["deleted"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: InstallationType
+    action: Literal["unanswered"]
+    discussion: DiscussionType
+    old_answer: WebhooksAnswerType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repositories: NotRequired[list[WebhooksRepositoriesItemsType]]
-    repository: NotRequired[RepositoryWebhooksType]
-    requester: NotRequired[None]
-    sender: SimpleUserType
+    repository: RepositoryWebhooksType
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookInstallationDeletedTypeForResponse(TypedDict):
-    """installation deleted event"""
+class WebhookDiscussionUnansweredTypeForResponse(TypedDict):
+    """discussion unanswered event"""
 
-    action: Literal["deleted"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: InstallationTypeForResponse
+    action: Literal["unanswered"]
+    discussion: DiscussionTypeForResponse
+    old_answer: WebhooksAnswerTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repositories: NotRequired[list[WebhooksRepositoriesItemsTypeForResponse]]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    requester: NotRequired[None]
-    sender: SimpleUserTypeForResponse
+    repository: RepositoryWebhooksTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookInstallationDeletedType",
-    "WebhookInstallationDeletedTypeForResponse",
+    "WebhookDiscussionUnansweredType",
+    "WebhookDiscussionUnansweredTypeForResponse",
 )

@@ -11,18 +11,31 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgCodespacesAccessSelectedUsersDeleteBody(GitHubModel):
-    """OrgsOrgCodespacesAccessSelectedUsersDeleteBody"""
+class OrgsOrgAttestationsSubjectDigestGetResponse200(GitHubModel):
+    """OrgsOrgAttestationsSubjectDigestGetResponse200"""
 
-    selected_usernames: list[str] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        description="The usernames of the organization members and outside collaborators whose codespaces should not be billed to the organization.",
-    )
+    attestations: Missing[
+        list[OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems]
+    ] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgCodespacesAccessSelectedUsersDeleteBody)
+class OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems(GitHubModel):
+    """OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
 
-__all__ = ("OrgsOrgCodespacesAccessSelectedUsersDeleteBody",)
+    repository_id: Missing[int] = Field(default=UNSET)
+    bundle_url: Missing[str] = Field(default=UNSET)
+    initiator: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(OrgsOrgAttestationsSubjectDigestGetResponse200)
+model_rebuild(OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems)
+
+__all__ = (
+    "OrgsOrgAttestationsSubjectDigestGetResponse200",
+    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems",
+)

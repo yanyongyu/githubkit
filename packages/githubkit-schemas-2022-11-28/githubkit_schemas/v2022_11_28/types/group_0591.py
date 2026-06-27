@@ -13,41 +13,44 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0358 import DependabotAlertType, DependabotAlertTypeForResponse
-from .group_0503 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0504 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0505 import (
+from .group_0515 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0516 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0517 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0506 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0518 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0592 import (
+    WebhookCodeScanningAlertUpdatedAssignmentPropAlertType,
+    WebhookCodeScanningAlertUpdatedAssignmentPropAlertTypeForResponse,
+)
 
 
-class WebhookDependabotAlertAutoReopenedType(TypedDict):
-    """Dependabot alert auto-reopened event"""
+class WebhookCodeScanningAlertUpdatedAssignmentType(TypedDict):
+    """code_scanning_alert updated_assignment event"""
 
-    action: Literal["auto_reopened"]
-    alert: DependabotAlertType
+    action: Literal["updated_assignment"]
+    alert: WebhookCodeScanningAlertUpdatedAssignmentPropAlertType
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    enterprise: NotRequired[EnterpriseWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookDependabotAlertAutoReopenedTypeForResponse(TypedDict):
-    """Dependabot alert auto-reopened event"""
+class WebhookCodeScanningAlertUpdatedAssignmentTypeForResponse(TypedDict):
+    """code_scanning_alert updated_assignment event"""
 
-    action: Literal["auto_reopened"]
-    alert: DependabotAlertTypeForResponse
+    action: Literal["updated_assignment"]
+    alert: WebhookCodeScanningAlertUpdatedAssignmentPropAlertTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookDependabotAlertAutoReopenedType",
-    "WebhookDependabotAlertAutoReopenedTypeForResponse",
+    "WebhookCodeScanningAlertUpdatedAssignmentType",
+    "WebhookCodeScanningAlertUpdatedAssignmentTypeForResponse",
 )

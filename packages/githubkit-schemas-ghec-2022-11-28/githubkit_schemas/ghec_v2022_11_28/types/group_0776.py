@@ -13,47 +13,47 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
-from .group_0211 import IssueType, IssueTypeForResponse
-from .group_0577 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0578 import (
+from .group_0588 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0589 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0590 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0579 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0591 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0607 import WebhooksIssueCommentType, WebhooksIssueCommentTypeForResponse
+from .group_0777 import (
+    WebhookIssueCommentUnpinnedPropIssueType,
+    WebhookIssueCommentUnpinnedPropIssueTypeForResponse,
+)
 
 
-class WebhookIssueDependenciesBlockedByRemovedType(TypedDict):
-    """blocked by issue removed event"""
+class WebhookIssueCommentUnpinnedType(TypedDict):
+    """issue_comment unpinned event"""
 
-    action: Literal["blocked_by_removed"]
-    blocked_issue_id: NotRequired[float]
-    blocked_issue: NotRequired[IssueType]
-    blocking_issue_id: NotRequired[float]
-    blocking_issue: NotRequired[IssueType]
-    blocking_issue_repo: NotRequired[RepositoryType]
+    action: Literal["unpinned"]
+    comment: WebhooksIssueCommentType
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
+    issue: WebhookIssueCommentUnpinnedPropIssueType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookIssueDependenciesBlockedByRemovedTypeForResponse(TypedDict):
-    """blocked by issue removed event"""
+class WebhookIssueCommentUnpinnedTypeForResponse(TypedDict):
+    """issue_comment unpinned event"""
 
-    action: Literal["blocked_by_removed"]
-    blocked_issue_id: NotRequired[float]
-    blocked_issue: NotRequired[IssueTypeForResponse]
-    blocking_issue_id: NotRequired[float]
-    blocking_issue: NotRequired[IssueTypeForResponse]
-    blocking_issue_repo: NotRequired[RepositoryTypeForResponse]
+    action: Literal["unpinned"]
+    comment: WebhooksIssueCommentTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: OrganizationSimpleWebhooksTypeForResponse
+    issue: WebhookIssueCommentUnpinnedPropIssueTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookIssueDependenciesBlockedByRemovedType",
-    "WebhookIssueDependenciesBlockedByRemovedTypeForResponse",
+    "WebhookIssueCommentUnpinnedType",
+    "WebhookIssueCommentUnpinnedTypeForResponse",
 )

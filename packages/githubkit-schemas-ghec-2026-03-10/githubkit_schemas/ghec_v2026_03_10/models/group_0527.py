@@ -9,22 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0156 import RepositoryRuleMaxFilePathLengthPropParameters
 
 
-class CommitActivity(GitHubModel):
-    """Commit Activity
+class RepositoryRuleDetailedOneof19(GitHubModel):
+    """RepositoryRuleDetailedOneof19"""
 
-    Commit Activity
-    """
+    type: Literal["max_file_path_length"] = Field()
+    parameters: Missing[RepositoryRuleMaxFilePathLengthPropParameters] = Field(
+        default=UNSET
+    )
+    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
+        default=UNSET,
+        description="The type of source for the ruleset that includes this rule.",
+    )
+    ruleset_source: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the source of the ruleset that includes this rule.",
+    )
+    ruleset_id: Missing[int] = Field(
+        default=UNSET, description="The ID of the ruleset that includes this rule."
+    )
 
-    days: list[int] = Field()
-    total: int = Field()
-    week: int = Field()
 
+model_rebuild(RepositoryRuleDetailedOneof19)
 
-model_rebuild(CommitActivity)
-
-__all__ = ("CommitActivity",)
+__all__ = ("RepositoryRuleDetailedOneof19",)

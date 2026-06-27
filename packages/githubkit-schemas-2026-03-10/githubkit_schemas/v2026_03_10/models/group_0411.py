@@ -14,17 +14,16 @@ from typing import Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0010 import Integration
+from .group_0391 import IssueReference
 
 
-class StateChangeIssueEvent(GitHubModel):
-    """State Change Issue Event
+class SubIssueAddedIssueEvent(GitHubModel):
+    """Sub-issue Added Issue Event
 
-    State Change Issue Event
+    Sub-issue Added Issue Event
     """
 
     id: int = Field()
@@ -36,9 +35,12 @@ class StateChangeIssueEvent(GitHubModel):
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
     performed_via_github_app: Union[None, Integration, None] = Field()
-    state_reason: Missing[Union[str, None]] = Field(default=UNSET)
+    sub_issue: Union[IssueReference, None] = Field(
+        title="Issue Reference",
+        description="A minimal reference to an issue linked from a timeline event (e.g. sub-issue, parent-issue, or dependency events).",
+    )
 
 
-model_rebuild(StateChangeIssueEvent)
+model_rebuild(SubIssueAddedIssueEvent)
 
-__all__ = ("StateChangeIssueEvent",)
+__all__ = ("SubIssueAddedIssueEvent",)

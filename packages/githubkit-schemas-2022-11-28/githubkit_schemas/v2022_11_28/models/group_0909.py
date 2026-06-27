@@ -18,19 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0503 import EnterpriseWebhooks
-from .group_0504 import SimpleInstallation
-from .group_0505 import OrganizationSimpleWebhooks
-from .group_0506 import RepositoryWebhooks
-from .group_0548 import WebhooksSponsorship
-from .group_0549 import WebhooksChanges8
+from .group_0515 import EnterpriseWebhooks
+from .group_0516 import SimpleInstallation
+from .group_0517 import OrganizationSimpleWebhooks
+from .group_0518 import RepositoryWebhooks
+from .group_0559 import WebhooksSecurityAdvisory
 
 
-class WebhookSponsorshipTierChanged(GitHubModel):
-    """sponsorship tier_changed event"""
+class WebhookSecurityAdvisoryPublished(GitHubModel):
+    """security_advisory published event"""
 
-    action: Literal["tier_changed"] = Field()
-    changes: WebhooksChanges8 = Field()
+    action: Literal["published"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -51,10 +49,14 @@ class WebhookSponsorshipTierChanged(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    sponsorship: WebhooksSponsorship = Field()
+    security_advisory: WebhooksSecurityAdvisory = Field(
+        description="The details of the security advisory, including summary, description, and severity."
+    )
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
 
 
-model_rebuild(WebhookSponsorshipTierChanged)
+model_rebuild(WebhookSecurityAdvisoryPublished)
 
-__all__ = ("WebhookSponsorshipTierChanged",)
+__all__ = ("WebhookSecurityAdvisoryPublished",)

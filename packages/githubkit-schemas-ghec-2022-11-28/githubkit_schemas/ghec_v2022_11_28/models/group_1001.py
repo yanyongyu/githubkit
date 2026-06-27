@@ -18,32 +18,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0020 import Repository
-from .group_0211 import Issue
-from .group_0577 import SimpleInstallation
-from .group_0578 import OrganizationSimpleWebhooks
-from .group_0579 import RepositoryWebhooks
+from .group_0588 import EnterpriseWebhooks
+from .group_0589 import SimpleInstallation
+from .group_0590 import OrganizationSimpleWebhooks
+from .group_0591 import RepositoryWebhooks
+from .group_0635 import WebhooksSponsorship
 
 
-class WebhookSubIssuesParentIssueAdded(GitHubModel):
-    """parent issue added event"""
+class WebhookSponsorshipCreated(GitHubModel):
+    """sponsorship created event"""
 
-    action: Literal["parent_issue_added"] = Field()
-    parent_issue_id: Missing[float] = Field(
-        default=UNSET, description="The ID of the parent issue."
-    )
-    parent_issue: Missing[Issue] = Field(
+    action: Literal["created"] = Field()
+    enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
-        title="Issue",
-        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
-    )
-    parent_issue_repo: Missing[Repository] = Field(
-        default=UNSET, title="Repository", description="A repository on GitHub."
-    )
-    sub_issue_id: float = Field(description="The ID of the sub-issue.")
-    sub_issue: Issue = Field(
-        title="Issue",
-        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest/admin/overview/about-enterprise-accounts)."',
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
@@ -55,13 +44,15 @@ class WebhookSubIssuesParentIssueAdded(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: RepositoryWebhooks = Field(
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    sponsorship: WebhooksSponsorship = Field()
 
 
-model_rebuild(WebhookSubIssuesParentIssueAdded)
+model_rebuild(WebhookSponsorshipCreated)
 
-__all__ = ("WebhookSubIssuesParentIssueAdded",)
+__all__ = ("WebhookSponsorshipCreated",)

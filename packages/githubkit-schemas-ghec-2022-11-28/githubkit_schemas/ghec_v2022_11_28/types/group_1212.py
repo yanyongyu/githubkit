@@ -9,22 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class OrgsOrgActionsRunnersRunnerIdLabelsPostBodyType(TypedDict):
-    """OrgsOrgActionsRunnersRunnerIdLabelsPostBody"""
+class OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyType(TypedDict):
+    """OrgsOrgActionsPermissionsSelfHostedRunnersPutBody"""
 
-    labels: list[str]
+    enabled_repositories: Literal["all", "selected", "none"]
 
 
-class OrgsOrgActionsRunnersRunnerIdLabelsPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgActionsRunnersRunnerIdLabelsPostBody"""
+class OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsPermissionsSelfHostedRunnersPutBody"""
 
-    labels: list[str]
+    enabled_repositories: Literal["all", "selected", "none"]
 
 
 __all__ = (
-    "OrgsOrgActionsRunnersRunnerIdLabelsPostBodyType",
-    "OrgsOrgActionsRunnersRunnerIdLabelsPostBodyTypeForResponse",
+    "OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyType",
+    "OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyTypeForResponse",
 )

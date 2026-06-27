@@ -9,63 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationsOrgSettingsBillingBudgetsPostBodyType(TypedDict):
-    """OrganizationsOrgSettingsBillingBudgetsPostBody"""
+class GistsGistIdGetResponse403Type(TypedDict):
+    """GistsGistIdGetResponse403"""
 
-    budget_amount: NotRequired[int]
-    prevent_further_usage: NotRequired[bool]
-    budget_alerting: NotRequired[
-        OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlertingType
-    ]
-    budget_scope: NotRequired[
-        Literal["organization", "repository", "multi_user_customer", "user"]
-    ]
-    budget_entity_name: NotRequired[str]
-    budget_type: NotRequired[Literal["BundlePricing", "ProductPricing", "SkuPricing"]]
-    budget_product_sku: NotRequired[str]
-    user: NotRequired[str]
+    block: NotRequired[GistsGistIdGetResponse403PropBlockType]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
-class OrganizationsOrgSettingsBillingBudgetsPostBodyTypeForResponse(TypedDict):
-    """OrganizationsOrgSettingsBillingBudgetsPostBody"""
+class GistsGistIdGetResponse403TypeForResponse(TypedDict):
+    """GistsGistIdGetResponse403"""
 
-    budget_amount: NotRequired[int]
-    prevent_further_usage: NotRequired[bool]
-    budget_alerting: NotRequired[
-        OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlertingTypeForResponse
-    ]
-    budget_scope: NotRequired[
-        Literal["organization", "repository", "multi_user_customer", "user"]
-    ]
-    budget_entity_name: NotRequired[str]
-    budget_type: NotRequired[Literal["BundlePricing", "ProductPricing", "SkuPricing"]]
-    budget_product_sku: NotRequired[str]
-    user: NotRequired[str]
+    block: NotRequired[GistsGistIdGetResponse403PropBlockTypeForResponse]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
-class OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlertingType(TypedDict):
-    """OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlerting"""
+class GistsGistIdGetResponse403PropBlockType(TypedDict):
+    """GistsGistIdGetResponse403PropBlock"""
 
-    will_alert: NotRequired[bool]
-    alert_recipients: NotRequired[list[str]]
+    reason: NotRequired[str]
+    created_at: NotRequired[str]
+    html_url: NotRequired[Union[str, None]]
 
 
-class OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlertingTypeForResponse(
-    TypedDict
-):
-    """OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlerting"""
+class GistsGistIdGetResponse403PropBlockTypeForResponse(TypedDict):
+    """GistsGistIdGetResponse403PropBlock"""
 
-    will_alert: NotRequired[bool]
-    alert_recipients: NotRequired[list[str]]
+    reason: NotRequired[str]
+    created_at: NotRequired[str]
+    html_url: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlertingType",
-    "OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlertingTypeForResponse",
-    "OrganizationsOrgSettingsBillingBudgetsPostBodyType",
-    "OrganizationsOrgSettingsBillingBudgetsPostBodyTypeForResponse",
+    "GistsGistIdGetResponse403PropBlockType",
+    "GistsGistIdGetResponse403PropBlockTypeForResponse",
+    "GistsGistIdGetResponse403Type",
+    "GistsGistIdGetResponse403TypeForResponse",
 )

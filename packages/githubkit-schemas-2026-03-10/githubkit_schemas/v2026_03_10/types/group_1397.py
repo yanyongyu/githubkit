@@ -9,33 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias
-
-UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType: TypeAlias = dict[
-    str, Any
-]
-"""UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAl
-lof1PropCustomProperties
-
-The custom properties that were defined for the repository. The keys are the
-custom property names, and the values are the corresponding custom property
-values. Present for org repos only.
-"""
+import datetime as _dt
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAl
-lof1PropCustomProperties
+class UserCodespacesSecretsGetResponse200Type(TypedDict):
+    """UserCodespacesSecretsGetResponse200"""
 
-The custom properties that were defined for the repository. The keys are the
-custom property names, and the values are the corresponding custom property
-values. Present for org repos only.
-"""
+    total_count: int
+    secrets: list[CodespacesSecretType]
+
+
+class UserCodespacesSecretsGetResponse200TypeForResponse(TypedDict):
+    """UserCodespacesSecretsGetResponse200"""
+
+    total_count: int
+    secrets: list[CodespacesSecretTypeForResponse]
+
+
+class CodespacesSecretType(TypedDict):
+    """Codespaces Secret
+
+    Secrets for a GitHub Codespace.
+    """
+
+    name: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: str
+
+
+class CodespacesSecretTypeForResponse(TypedDict):
+    """Codespaces Secret
+
+    Secrets for a GitHub Codespace.
+    """
+
+    name: str
+    created_at: str
+    updated_at: str
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: str
 
 
 __all__ = (
-    "UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType",
-    "UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse",
+    "CodespacesSecretType",
+    "CodespacesSecretTypeForResponse",
+    "UserCodespacesSecretsGetResponse200Type",
+    "UserCodespacesSecretsGetResponse200TypeForResponse",
 )

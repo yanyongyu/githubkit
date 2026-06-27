@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,56 +17,73 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0085 import Team
 
+class ConcurrencyGroupRunList(GitHubModel):
+    """Concurrency Group Run List
 
-class PendingDeploymentPropReviewersItems(GitHubModel):
-    """PendingDeploymentPropReviewersItems"""
-
-    type: Missing[Literal["User", "Team"]] = Field(
-        default=UNSET, description="The type of reviewer."
-    )
-    reviewer: Missing[Union[SimpleUser, Team]] = Field(default=UNSET)
-
-
-class PendingDeployment(GitHubModel):
-    """Pending Deployment
-
-    Details of a deployment that is waiting for protection rules to pass
+    A list of concurrency groups associated with a workflow run.
     """
 
-    environment: PendingDeploymentPropEnvironment = Field()
-    wait_timer: int = Field(description="The set duration of the wait timer")
-    wait_timer_started_at: Union[_dt.datetime, None] = Field(
-        description="The time that the wait timer began."
+    total_count: int = Field(
+        description="The total number of concurrency groups this workflow run participates in,\nderived from the run's configuration. This count is not filtered by\nwhether the run currently holds or is waiting in each group, so it can\ninclude groups whose `group_members` array is empty (for example, when\nthe run has already released its lease in that group)."
     )
-    current_user_can_approve: bool = Field(
-        description="Whether the currently authenticated user can approve the deployment"
-    )
-    reviewers: list[PendingDeploymentPropReviewersItems] = Field(
-        description="The people or teams that may approve jobs that reference the environment. You can list up to six users or teams as reviewers. The reviewers must have at least read access to the repository. Only one of the required reviewers needs to approve the job for it to proceed."
+    concurrency_groups: list[ConcurrencyGroupRunListPropConcurrencyGroupsItems] = (
+        Field()
     )
 
 
-class PendingDeploymentPropEnvironment(GitHubModel):
-    """PendingDeploymentPropEnvironment"""
+class ConcurrencyGroupRunListPropConcurrencyGroupsItems(GitHubModel):
+    """ConcurrencyGroupRunListPropConcurrencyGroupsItems"""
 
-    id: Missing[int] = Field(default=UNSET, description="The id of the environment.")
-    node_id: Missing[str] = Field(default=UNSET)
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the environment."
+    group_name: str = Field(description="The name of the concurrency group.")
+    group_url: str = Field(
+        description="API URL for this concurrency group. May return 404 if the group\nhas no active items at the time it is requested, since the\nget-by-name endpoint reports the live repo-wide state of a group\nwhile this endpoint lists groups associated with a run by\nconfiguration."
     )
-    url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
+    group_members: list[
+        ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItems
+    ] = Field(
+        description="Items belonging to this workflow run that are either currently holding or\nwaiting for the concurrency group lease. May be empty if the run no\nlonger has any active or queued items in this group."
+    )
 
 
-model_rebuild(PendingDeploymentPropReviewersItems)
-model_rebuild(PendingDeployment)
-model_rebuild(PendingDeploymentPropEnvironment)
+class ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItems(
+    GitHubModel
+):
+    """ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItems"""
+
+    run_id: int = Field(description="The ID of the workflow run.")
+    run_name: str = Field(description="The name of the workflow run.")
+    run_url: Union[str, None] = Field(description="API URL for the workflow run.")
+    run_html_url: Union[str, None] = Field(description="Web URL for the workflow run.")
+    position: int = Field(
+        description="Queue position. 0 means the item holds the concurrency lease (in_progress), 1 or higher means queued (pending)."
+    )
+    position_url: str = Field(
+        description="API URL to get items ahead of this item in the concurrency group."
+    )
+    job_id: Missing[Union[int, None]] = Field(
+        default=UNSET,
+        description="The ID of the job, when the item represents a job-level or reusable-workflow-level lease.",
+    )
+    job_name: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The display name of the job, when the item represents a job-level or reusable-workflow-level lease.",
+    )
+    job_url: Missing[Union[str, None]] = Field(
+        default=UNSET, description="API URL for the job."
+    )
+    job_html_url: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Web URL for the job."
+    )
+    status: Literal["in_progress", "pending"] = Field()
+
+
+model_rebuild(ConcurrencyGroupRunList)
+model_rebuild(ConcurrencyGroupRunListPropConcurrencyGroupsItems)
+model_rebuild(ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItems)
 
 __all__ = (
-    "PendingDeployment",
-    "PendingDeploymentPropEnvironment",
-    "PendingDeploymentPropReviewersItems",
+    "ConcurrencyGroupRunList",
+    "ConcurrencyGroupRunListPropConcurrencyGroupsItems",
+    "ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItems",
 )

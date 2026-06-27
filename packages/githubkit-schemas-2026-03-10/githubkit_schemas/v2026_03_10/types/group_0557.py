@@ -9,48 +9,106 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0502 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0503 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0504 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0505 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0508 import (
-    CheckRunWithSimpleCheckSuiteType,
-    CheckRunWithSimpleCheckSuiteTypeForResponse,
-)
 
 
-class WebhookCheckRunCreatedType(TypedDict):
-    """Check Run Created Event"""
+class SecretScanningAlertWebhookType(TypedDict):
+    """SecretScanningAlertWebhook"""
 
-    action: Literal["created"]
-    check_run: CheckRunWithSimpleCheckSuiteType
-    installation: NotRequired[SimpleInstallationType]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    number: NotRequired[int]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[Union[None, _dt.datetime]]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    locations_url: NotRequired[str]
+    resolution: NotRequired[
+        Union[
+            None,
+            Literal[
+                "false_positive",
+                "wont_fix",
+                "revoked",
+                "used_in_tests",
+                "pattern_deleted",
+                "pattern_edited",
+            ],
+        ]
+    ]
+    resolved_at: NotRequired[Union[_dt.datetime, None]]
+    resolved_by: NotRequired[Union[None, SimpleUserType]]
+    resolution_comment: NotRequired[Union[str, None]]
+    secret_type: NotRequired[str]
+    secret_type_display_name: NotRequired[str]
+    provider: NotRequired[Union[str, None]]
+    provider_slug: NotRequired[Union[str, None]]
+    validity: NotRequired[Literal["active", "inactive", "unknown"]]
+    push_protection_bypassed: NotRequired[Union[bool, None]]
+    push_protection_bypassed_by: NotRequired[Union[None, SimpleUserType]]
+    push_protection_bypassed_at: NotRequired[Union[_dt.datetime, None]]
+    push_protection_bypass_request_reviewer: NotRequired[Union[None, SimpleUserType]]
+    push_protection_bypass_request_reviewer_comment: NotRequired[Union[str, None]]
+    push_protection_bypass_request_comment: NotRequired[Union[str, None]]
+    push_protection_bypass_request_html_url: NotRequired[Union[str, None]]
+    publicly_leaked: NotRequired[Union[bool, None]]
+    multi_repo: NotRequired[Union[bool, None]]
+    assigned_to: NotRequired[Union[None, SimpleUserType]]
+    closure_request_comment: NotRequired[Union[str, None]]
+    closure_request_reviewer_comment: NotRequired[Union[str, None]]
+    closure_request_reviewer: NotRequired[Union[None, SimpleUserType]]
 
 
-class WebhookCheckRunCreatedTypeForResponse(TypedDict):
-    """Check Run Created Event"""
+class SecretScanningAlertWebhookTypeForResponse(TypedDict):
+    """SecretScanningAlertWebhook"""
 
-    action: Literal["created"]
-    check_run: CheckRunWithSimpleCheckSuiteTypeForResponse
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    number: NotRequired[int]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[Union[None, str]]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    locations_url: NotRequired[str]
+    resolution: NotRequired[
+        Union[
+            None,
+            Literal[
+                "false_positive",
+                "wont_fix",
+                "revoked",
+                "used_in_tests",
+                "pattern_deleted",
+                "pattern_edited",
+            ],
+        ]
+    ]
+    resolved_at: NotRequired[Union[str, None]]
+    resolved_by: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    resolution_comment: NotRequired[Union[str, None]]
+    secret_type: NotRequired[str]
+    secret_type_display_name: NotRequired[str]
+    provider: NotRequired[Union[str, None]]
+    provider_slug: NotRequired[Union[str, None]]
+    validity: NotRequired[Literal["active", "inactive", "unknown"]]
+    push_protection_bypassed: NotRequired[Union[bool, None]]
+    push_protection_bypassed_by: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    push_protection_bypassed_at: NotRequired[Union[str, None]]
+    push_protection_bypass_request_reviewer: NotRequired[
+        Union[None, SimpleUserTypeForResponse]
+    ]
+    push_protection_bypass_request_reviewer_comment: NotRequired[Union[str, None]]
+    push_protection_bypass_request_comment: NotRequired[Union[str, None]]
+    push_protection_bypass_request_html_url: NotRequired[Union[str, None]]
+    publicly_leaked: NotRequired[Union[bool, None]]
+    multi_repo: NotRequired[Union[bool, None]]
+    assigned_to: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    closure_request_comment: NotRequired[Union[str, None]]
+    closure_request_reviewer_comment: NotRequired[Union[str, None]]
+    closure_request_reviewer: NotRequired[Union[None, SimpleUserTypeForResponse]]
 
 
 __all__ = (
-    "WebhookCheckRunCreatedType",
-    "WebhookCheckRunCreatedTypeForResponse",
+    "SecretScanningAlertWebhookType",
+    "SecretScanningAlertWebhookTypeForResponse",
 )

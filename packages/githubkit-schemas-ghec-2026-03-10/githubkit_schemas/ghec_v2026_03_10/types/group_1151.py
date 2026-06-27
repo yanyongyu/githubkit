@@ -12,23 +12,23 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200Type(
+class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBodyType(
     TypedDict
 ):
-    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200"""
+    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBody"""
 
-    pattern_config_version: NotRequired[str]
+    revoke_credentials: NotRequired[bool]
 
 
-class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200TypeForResponse(
+class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBodyTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200"""
+    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBody"""
 
-    pattern_config_version: NotRequired[str]
+    revoke_credentials: NotRequired[bool]
 
 
 __all__ = (
-    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200Type",
-    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200TypeForResponse",
+    "EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBodyType",
+    "EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBodyTypeForResponse",
 )

@@ -10,175 +10,77 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0137 import CodespaceMachineType, CodespaceMachineTypeForResponse
-from .group_0191 import FullRepositoryType, FullRepositoryTypeForResponse
+from .group_0092 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0487 import (
+    SearchResultTextMatchesItemsType,
+    SearchResultTextMatchesItemsTypeForResponse,
+)
 
 
-class CodespaceWithFullRepositoryType(TypedDict):
-    """Codespace
+class CodeSearchResultItemType(TypedDict):
+    """Code Search Result Item
 
-    A codespace.
+    Code Search Result Item
     """
 
-    id: int
     name: str
-    display_name: NotRequired[Union[str, None]]
-    environment_id: Union[str, None]
-    owner: SimpleUserType
-    billable_owner: SimpleUserType
-    repository: FullRepositoryType
-    machine: Union[None, CodespaceMachineType]
-    devcontainer_path: NotRequired[Union[str, None]]
-    prebuild: Union[bool, None]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    last_used_at: _dt.datetime
-    state: Literal[
-        "Unknown",
-        "Created",
-        "Queued",
-        "Provisioning",
-        "Available",
-        "Awaiting",
-        "Unavailable",
-        "Deleted",
-        "Moved",
-        "Shutdown",
-        "Archived",
-        "Starting",
-        "ShuttingDown",
-        "Failed",
-        "Exporting",
-        "Updating",
-        "Rebuilding",
-    ]
+    path: str
+    sha: str
     url: str
-    git_status: CodespaceWithFullRepositoryPropGitStatusType
-    location: Literal["EastUs", "SouthEastAsia", "WestEurope", "WestUs2"]
-    idle_timeout_minutes: Union[int, None]
-    web_url: str
-    machines_url: str
-    start_url: str
-    stop_url: str
-    publish_url: NotRequired[Union[str, None]]
-    pulls_url: Union[str, None]
-    recent_folders: list[str]
-    runtime_constraints: NotRequired[
-        CodespaceWithFullRepositoryPropRuntimeConstraintsType
-    ]
-    pending_operation: NotRequired[Union[bool, None]]
-    pending_operation_disabled_reason: NotRequired[Union[str, None]]
-    idle_timeout_notice: NotRequired[Union[str, None]]
-    retention_period_minutes: NotRequired[Union[int, None]]
-    retention_expires_at: NotRequired[Union[_dt.datetime, None]]
+    git_url: str
+    html_url: str
+    repository: MinimalRepositoryType
+    score: float
+    file_size: NotRequired[int]
+    language: NotRequired[Union[str, None]]
+    last_modified_at: NotRequired[_dt.datetime]
+    line_numbers: NotRequired[list[str]]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
 
 
-class CodespaceWithFullRepositoryTypeForResponse(TypedDict):
-    """Codespace
+class CodeSearchResultItemTypeForResponse(TypedDict):
+    """Code Search Result Item
 
-    A codespace.
+    Code Search Result Item
     """
 
-    id: int
     name: str
-    display_name: NotRequired[Union[str, None]]
-    environment_id: Union[str, None]
-    owner: SimpleUserTypeForResponse
-    billable_owner: SimpleUserTypeForResponse
-    repository: FullRepositoryTypeForResponse
-    machine: Union[None, CodespaceMachineTypeForResponse]
-    devcontainer_path: NotRequired[Union[str, None]]
-    prebuild: Union[bool, None]
-    created_at: str
-    updated_at: str
-    last_used_at: str
-    state: Literal[
-        "Unknown",
-        "Created",
-        "Queued",
-        "Provisioning",
-        "Available",
-        "Awaiting",
-        "Unavailable",
-        "Deleted",
-        "Moved",
-        "Shutdown",
-        "Archived",
-        "Starting",
-        "ShuttingDown",
-        "Failed",
-        "Exporting",
-        "Updating",
-        "Rebuilding",
-    ]
+    path: str
+    sha: str
     url: str
-    git_status: CodespaceWithFullRepositoryPropGitStatusTypeForResponse
-    location: Literal["EastUs", "SouthEastAsia", "WestEurope", "WestUs2"]
-    idle_timeout_minutes: Union[int, None]
-    web_url: str
-    machines_url: str
-    start_url: str
-    stop_url: str
-    publish_url: NotRequired[Union[str, None]]
-    pulls_url: Union[str, None]
-    recent_folders: list[str]
-    runtime_constraints: NotRequired[
-        CodespaceWithFullRepositoryPropRuntimeConstraintsTypeForResponse
-    ]
-    pending_operation: NotRequired[Union[bool, None]]
-    pending_operation_disabled_reason: NotRequired[Union[str, None]]
-    idle_timeout_notice: NotRequired[Union[str, None]]
-    retention_period_minutes: NotRequired[Union[int, None]]
-    retention_expires_at: NotRequired[Union[str, None]]
+    git_url: str
+    html_url: str
+    repository: MinimalRepositoryTypeForResponse
+    score: float
+    file_size: NotRequired[int]
+    language: NotRequired[Union[str, None]]
+    last_modified_at: NotRequired[str]
+    line_numbers: NotRequired[list[str]]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
 
 
-class CodespaceWithFullRepositoryPropGitStatusType(TypedDict):
-    """CodespaceWithFullRepositoryPropGitStatus
+class SearchCodeGetResponse200Type(TypedDict):
+    """SearchCodeGetResponse200"""
 
-    Details about the codespace's git repository.
-    """
-
-    ahead: NotRequired[int]
-    behind: NotRequired[int]
-    has_unpushed_changes: NotRequired[bool]
-    has_uncommitted_changes: NotRequired[bool]
-    ref: NotRequired[str]
+    total_count: int
+    incomplete_results: bool
+    items: list[CodeSearchResultItemType]
 
 
-class CodespaceWithFullRepositoryPropGitStatusTypeForResponse(TypedDict):
-    """CodespaceWithFullRepositoryPropGitStatus
+class SearchCodeGetResponse200TypeForResponse(TypedDict):
+    """SearchCodeGetResponse200"""
 
-    Details about the codespace's git repository.
-    """
-
-    ahead: NotRequired[int]
-    behind: NotRequired[int]
-    has_unpushed_changes: NotRequired[bool]
-    has_uncommitted_changes: NotRequired[bool]
-    ref: NotRequired[str]
-
-
-class CodespaceWithFullRepositoryPropRuntimeConstraintsType(TypedDict):
-    """CodespaceWithFullRepositoryPropRuntimeConstraints"""
-
-    allowed_port_privacy_settings: NotRequired[Union[list[str], None]]
-
-
-class CodespaceWithFullRepositoryPropRuntimeConstraintsTypeForResponse(TypedDict):
-    """CodespaceWithFullRepositoryPropRuntimeConstraints"""
-
-    allowed_port_privacy_settings: NotRequired[Union[list[str], None]]
+    total_count: int
+    incomplete_results: bool
+    items: list[CodeSearchResultItemTypeForResponse]
 
 
 __all__ = (
-    "CodespaceWithFullRepositoryPropGitStatusType",
-    "CodespaceWithFullRepositoryPropGitStatusTypeForResponse",
-    "CodespaceWithFullRepositoryPropRuntimeConstraintsType",
-    "CodespaceWithFullRepositoryPropRuntimeConstraintsTypeForResponse",
-    "CodespaceWithFullRepositoryType",
-    "CodespaceWithFullRepositoryTypeForResponse",
+    "CodeSearchResultItemType",
+    "CodeSearchResultItemTypeForResponse",
+    "SearchCodeGetResponse200Type",
+    "SearchCodeGetResponse200TypeForResponse",
 )

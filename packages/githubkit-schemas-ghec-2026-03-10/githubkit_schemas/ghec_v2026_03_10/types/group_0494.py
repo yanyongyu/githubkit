@@ -9,30 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReleaseNotesContentType(TypedDict):
-    """Generated Release Notes Content
+class PageDeploymentType(TypedDict):
+    """GitHub Pages
 
-    Generated name and body describing a release
+    The GitHub Pages deployment status.
     """
 
-    name: str
-    body: str
+    id: Union[int, str]
+    status_url: str
+    page_url: str
+    preview_url: NotRequired[str]
 
 
-class ReleaseNotesContentTypeForResponse(TypedDict):
-    """Generated Release Notes Content
+class PageDeploymentTypeForResponse(TypedDict):
+    """GitHub Pages
 
-    Generated name and body describing a release
+    The GitHub Pages deployment status.
     """
 
-    name: str
-    body: str
+    id: Union[int, str]
+    status_url: str
+    page_url: str
+    preview_url: NotRequired[str]
 
 
 __all__ = (
-    "ReleaseNotesContentType",
-    "ReleaseNotesContentTypeForResponse",
+    "PageDeploymentType",
+    "PageDeploymentTypeForResponse",
 )

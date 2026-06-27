@@ -9,40 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0003 import SimpleUser
-from .group_0020 import Repository
-
-
-class PullRequestPropHead(GitHubModel):
-    """PullRequestPropHead"""
-
-    label: Union[str, None] = Field()
-    ref: str = Field()
-    repo: Union[None, Repository] = Field()
-    sha: str = Field()
-    user: Union[None, SimpleUser] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class PullRequestPropBase(GitHubModel):
-    """PullRequestPropBase"""
+class DeployKey(GitHubModel):
+    """Deploy Key
 
-    label: str = Field()
-    ref: str = Field()
-    repo: Repository = Field(title="Repository", description="A repository on GitHub.")
-    sha: str = Field()
-    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    An SSH key granting access to a single repository.
+    """
+
+    id: int = Field()
+    key: str = Field()
+    url: str = Field()
+    title: str = Field()
+    verified: bool = Field()
+    created_at: str = Field()
+    read_only: bool = Field()
+    added_by: Missing[Union[str, None]] = Field(default=UNSET)
+    last_used: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+    enabled: Missing[bool] = Field(default=UNSET)
 
 
-model_rebuild(PullRequestPropHead)
-model_rebuild(PullRequestPropBase)
+model_rebuild(DeployKey)
 
-__all__ = (
-    "PullRequestPropBase",
-    "PullRequestPropHead",
-)
+__all__ = ("DeployKey",)

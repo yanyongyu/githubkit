@@ -9,72 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0247 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
-class OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200Type(TypedDict):
-    """OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200"""
+class OrgsOrgAgentsSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
+    """OrgsOrgAgentsSecretsSecretNameRepositoriesGetResponse200"""
 
-    total_count: NotRequired[int]
-    storage_records: NotRequired[
-        list[
-            OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItemsType
-        ]
-    ]
+    total_count: int
+    repositories: list[MinimalRepositoryType]
 
 
-class OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200TypeForResponse(
+class OrgsOrgAgentsSecretsSecretNameRepositoriesGetResponse200TypeForResponse(
     TypedDict
 ):
-    """OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200"""
+    """OrgsOrgAgentsSecretsSecretNameRepositoriesGetResponse200"""
 
-    total_count: NotRequired[int]
-    storage_records: NotRequired[
-        list[
-            OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItemsTypeForResponse
-        ]
-    ]
-
-
-class OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItemsType(
-    TypedDict
-):
-    """OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageReco
-    rdsItems
-    """
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    digest: NotRequired[str]
-    artifact_url: NotRequired[str]
-    registry_url: NotRequired[str]
-    repository: NotRequired[str]
-    status: NotRequired[str]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-
-
-class OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItemsTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageReco
-    rdsItems
-    """
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    digest: NotRequired[str]
-    artifact_url: NotRequired[str]
-    registry_url: NotRequired[str]
-    repository: NotRequired[str]
-    status: NotRequired[str]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
+    total_count: int
+    repositories: list[MinimalRepositoryTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItemsType",
-    "OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItemsTypeForResponse",
-    "OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200Type",
-    "OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200TypeForResponse",
+    "OrgsOrgAgentsSecretsSecretNameRepositoriesGetResponse200Type",
+    "OrgsOrgAgentsSecretsSecretNameRepositoriesGetResponse200TypeForResponse",
 )

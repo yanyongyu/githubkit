@@ -9,29 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0254 import (
-    OrganizationActionsSecretType,
-    OrganizationActionsSecretTypeForResponse,
-)
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
 
-class OrgsOrgActionsSecretsGetResponse200Type(TypedDict):
-    """OrgsOrgActionsSecretsGetResponse200"""
+class OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200Type(
+    TypedDict
+):
+    """OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200"""
 
-    total_count: int
-    secrets: list[OrganizationActionsSecretType]
+    total_count: NotRequired[int]
+    repositories: NotRequired[list[RepositoryType]]
 
 
-class OrgsOrgActionsSecretsGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsSecretsGetResponse200"""
+class OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200"""
 
-    total_count: int
-    secrets: list[OrganizationActionsSecretTypeForResponse]
+    total_count: NotRequired[int]
+    repositories: NotRequired[list[RepositoryTypeForResponse]]
 
 
 __all__ = (
-    "OrgsOrgActionsSecretsGetResponse200Type",
-    "OrgsOrgActionsSecretsGetResponse200TypeForResponse",
+    "OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200Type",
+    "OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200TypeForResponse",
 )

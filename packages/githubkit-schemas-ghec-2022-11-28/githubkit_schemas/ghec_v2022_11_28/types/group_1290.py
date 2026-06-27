@@ -9,54 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class OrgsOrgDependabotSecretsGetResponse200Type(TypedDict):
-    """OrgsOrgDependabotSecretsGetResponse200"""
+class OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200Type(TypedDict):
+    """OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200
 
-    total_count: int
-    secrets: list[OrganizationDependabotSecretType]
-
-
-class OrgsOrgDependabotSecretsGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgDependabotSecretsGetResponse200"""
-
-    total_count: int
-    secrets: list[OrganizationDependabotSecretTypeForResponse]
-
-
-class OrganizationDependabotSecretType(TypedDict):
-    """Dependabot Secret for an Organization
-
-    Secrets for GitHub Dependabot for an organization.
+    The total number of seats set to "pending cancellation" for members of the
+    specified team(s).
     """
 
-    name: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: NotRequired[str]
+    seats_cancelled: int
 
 
-class OrganizationDependabotSecretTypeForResponse(TypedDict):
-    """Dependabot Secret for an Organization
+class OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200
 
-    Secrets for GitHub Dependabot for an organization.
+    The total number of seats set to "pending cancellation" for members of the
+    specified team(s).
     """
 
-    name: str
-    created_at: str
-    updated_at: str
-    visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: NotRequired[str]
+    seats_cancelled: int
 
 
 __all__ = (
-    "OrganizationDependabotSecretType",
-    "OrganizationDependabotSecretTypeForResponse",
-    "OrgsOrgDependabotSecretsGetResponse200Type",
-    "OrgsOrgDependabotSecretsGetResponse200TypeForResponse",
+    "OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200Type",
+    "OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200TypeForResponse",
 )

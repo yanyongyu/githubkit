@@ -12,17 +12,25 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ActionsArtifactAndLogRetentionResponse(GitHubModel):
-    """ActionsArtifactAndLogRetentionResponse"""
+class OidcCustomSub(GitHubModel):
+    """Actions OIDC Subject customization
 
-    days: int = Field(description="The number of days artifacts and logs are retained")
-    maximum_allowed_days: int = Field(
-        description="The maximum number of days that can be configured"
+    Actions OIDC Subject customization
+    """
+
+    include_claim_keys: list[str] = Field(
+        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores."
+    )
+    use_immutable_subject: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to opt in to the immutable OIDC subject claim format for the organization. When `true`, new OIDC tokens will use a stable, repository-ID-based `sub` claim instead of the name-based format.",
     )
 
 
-model_rebuild(ActionsArtifactAndLogRetentionResponse)
+model_rebuild(OidcCustomSub)
 
-__all__ = ("ActionsArtifactAndLogRetentionResponse",)
+__all__ = ("OidcCustomSub",)

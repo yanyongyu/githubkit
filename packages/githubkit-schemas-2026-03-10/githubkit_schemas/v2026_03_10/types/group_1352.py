@@ -12,23 +12,33 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1Type(TypedDict):
-    """ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1"""
+class ReposOwnerRepoPagesDeploymentsPostBodyType(TypedDict):
+    """ReposOwnerRepoPagesDeploymentsPostBody
 
-    reviewers: NotRequired[list[str]]
-    team_reviewers: list[str]
+    The object used to create GitHub Pages deployment
+    """
+
+    artifact_id: NotRequired[int]
+    artifact_url: NotRequired[str]
+    environment: NotRequired[str]
+    pages_build_version: str
+    oidc_token: str
 
 
-class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1"""
+class ReposOwnerRepoPagesDeploymentsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPagesDeploymentsPostBody
 
-    reviewers: NotRequired[list[str]]
-    team_reviewers: list[str]
+    The object used to create GitHub Pages deployment
+    """
+
+    artifact_id: NotRequired[int]
+    artifact_url: NotRequired[str]
+    environment: NotRequired[str]
+    pages_build_version: str
+    oidc_token: str
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1Type",
-    "ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1TypeForResponse",
+    "ReposOwnerRepoPagesDeploymentsPostBodyType",
+    "ReposOwnerRepoPagesDeploymentsPostBodyTypeForResponse",
 )

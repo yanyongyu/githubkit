@@ -9,42 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-
-
-class PageBuild(GitHubModel):
-    """Page Build
-
-    Page Build
-    """
-
-    url: str = Field()
-    status: str = Field()
-    error: PageBuildPropError = Field()
-    pusher: Union[None, SimpleUser] = Field()
-    commit: str = Field()
-    duration: int = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
+from .group_0058 import Issue
 
 
-class PageBuildPropError(GitHubModel):
-    """PageBuildPropError"""
+class TimelineCrossReferencedEventPropSource(GitHubModel):
+    """TimelineCrossReferencedEventPropSource"""
 
-    message: Union[str, None] = Field()
+    type: Missing[str] = Field(default=UNSET)
+    issue: Missing[Issue] = Field(
+        default=UNSET,
+        title="Issue",
+        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
+    )
 
 
-model_rebuild(PageBuild)
-model_rebuild(PageBuildPropError)
+model_rebuild(TimelineCrossReferencedEventPropSource)
 
-__all__ = (
-    "PageBuild",
-    "PageBuildPropError",
-)
+__all__ = ("TimelineCrossReferencedEventPropSource",)

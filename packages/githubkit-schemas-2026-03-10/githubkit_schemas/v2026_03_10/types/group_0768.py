@@ -9,75 +9,102 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0502 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0503 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0504 import (
+from .group_0514 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0515 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0516 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0505 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0530 import WebhooksMembershipType, WebhooksMembershipTypeForResponse
+from .group_0517 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookOrganizationRenamedType(TypedDict):
-    """organization renamed event"""
+class WebhookMetaDeletedType(TypedDict):
+    """meta deleted event"""
 
-    action: Literal["renamed"]
-    changes: NotRequired[WebhookOrganizationRenamedPropChangesType]
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
+    hook: WebhookMetaDeletedPropHookType
+    hook_id: int
     installation: NotRequired[SimpleInstallationType]
-    membership: NotRequired[WebhooksMembershipType]
-    organization: OrganizationSimpleWebhooksType
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: NotRequired[Union[None, RepositoryWebhooksType]]
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookOrganizationRenamedTypeForResponse(TypedDict):
-    """organization renamed event"""
+class WebhookMetaDeletedTypeForResponse(TypedDict):
+    """meta deleted event"""
 
-    action: Literal["renamed"]
-    changes: NotRequired[WebhookOrganizationRenamedPropChangesTypeForResponse]
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    hook: WebhookMetaDeletedPropHookTypeForResponse
+    hook_id: int
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    membership: NotRequired[WebhooksMembershipTypeForResponse]
-    organization: OrganizationSimpleWebhooksTypeForResponse
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    sender: SimpleUserTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: NotRequired[Union[None, RepositoryWebhooksTypeForResponse]]
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
-class WebhookOrganizationRenamedPropChangesType(TypedDict):
-    """WebhookOrganizationRenamedPropChanges"""
+class WebhookMetaDeletedPropHookType(TypedDict):
+    """WebhookMetaDeletedPropHook
 
-    login: NotRequired[WebhookOrganizationRenamedPropChangesPropLoginType]
+    The deleted webhook. This will contain different keys based on the type of
+    webhook it is: repository, organization, business, app, or GitHub Marketplace.
+    """
+
+    active: bool
+    config: WebhookMetaDeletedPropHookPropConfigType
+    created_at: str
+    events: list[str]
+    id: int
+    name: str
+    type: str
+    updated_at: str
 
 
-class WebhookOrganizationRenamedPropChangesTypeForResponse(TypedDict):
-    """WebhookOrganizationRenamedPropChanges"""
+class WebhookMetaDeletedPropHookTypeForResponse(TypedDict):
+    """WebhookMetaDeletedPropHook
 
-    login: NotRequired[WebhookOrganizationRenamedPropChangesPropLoginTypeForResponse]
+    The deleted webhook. This will contain different keys based on the type of
+    webhook it is: repository, organization, business, app, or GitHub Marketplace.
+    """
+
+    active: bool
+    config: WebhookMetaDeletedPropHookPropConfigTypeForResponse
+    created_at: str
+    events: list[str]
+    id: int
+    name: str
+    type: str
+    updated_at: str
 
 
-class WebhookOrganizationRenamedPropChangesPropLoginType(TypedDict):
-    """WebhookOrganizationRenamedPropChangesPropLogin"""
+class WebhookMetaDeletedPropHookPropConfigType(TypedDict):
+    """WebhookMetaDeletedPropHookPropConfig"""
 
-    from_: NotRequired[str]
+    content_type: Literal["json", "form"]
+    insecure_ssl: str
+    secret: NotRequired[str]
+    url: str
 
 
-class WebhookOrganizationRenamedPropChangesPropLoginTypeForResponse(TypedDict):
-    """WebhookOrganizationRenamedPropChangesPropLogin"""
+class WebhookMetaDeletedPropHookPropConfigTypeForResponse(TypedDict):
+    """WebhookMetaDeletedPropHookPropConfig"""
 
-    from_: NotRequired[str]
+    content_type: Literal["json", "form"]
+    insecure_ssl: str
+    secret: NotRequired[str]
+    url: str
 
 
 __all__ = (
-    "WebhookOrganizationRenamedPropChangesPropLoginType",
-    "WebhookOrganizationRenamedPropChangesPropLoginTypeForResponse",
-    "WebhookOrganizationRenamedPropChangesType",
-    "WebhookOrganizationRenamedPropChangesTypeForResponse",
-    "WebhookOrganizationRenamedType",
-    "WebhookOrganizationRenamedTypeForResponse",
+    "WebhookMetaDeletedPropHookPropConfigType",
+    "WebhookMetaDeletedPropHookPropConfigTypeForResponse",
+    "WebhookMetaDeletedPropHookType",
+    "WebhookMetaDeletedPropHookTypeForResponse",
+    "WebhookMetaDeletedType",
+    "WebhookMetaDeletedTypeForResponse",
 )

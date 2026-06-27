@@ -35,6 +35,7 @@ class TeamType(TypedDict):
     members_url: str
     repositories_url: str
     type: Literal["enterprise", "organization"]
+    access_source: NotRequired[Literal["direct", "organization", "enterprise"]]
     organization_id: NotRequired[int]
     enterprise_id: NotRequired[int]
     parent: Union[None, TeamSimpleType]
@@ -60,6 +61,7 @@ class TeamTypeForResponse(TypedDict):
     members_url: str
     repositories_url: str
     type: Literal["enterprise", "organization"]
+    access_source: NotRequired[Literal["direct", "organization", "enterprise"]]
     organization_id: NotRequired[int]
     enterprise_id: NotRequired[int]
     parent: Union[None, TeamSimpleTypeForResponse]

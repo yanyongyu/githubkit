@@ -16,14 +16,20 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgCopilotCodingAgentPermissionsPutBody(GitHubModel):
-    """OrgsOrgCopilotCodingAgentPermissionsPutBody"""
+class OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody(
+    GitHubModel
+):
+    """OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody"""
 
-    enabled_repositories: Literal["all", "selected", "none"] = Field(
-        description="The policy for which repositories can use Copilot cloud agent. Can be one of `all`, `selected`, or `none`."
+    role: Literal["reader", "writer", "admin", "no_access"] = Field(
+        description="The new role to grant to the collaborator. Use `no_access` to remove the collaborator."
     )
 
 
-model_rebuild(OrgsOrgCopilotCodingAgentPermissionsPutBody)
+model_rebuild(
+    OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody
+)
 
-__all__ = ("OrgsOrgCopilotCodingAgentPermissionsPutBody",)
+__all__ = (
+    "OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody",
+)

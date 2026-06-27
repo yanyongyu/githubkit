@@ -9,51 +9,82 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200(
-    GitHubModel
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200"""
+class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200(GitHubModel):
+    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200"""
 
-    total_count: int = Field(
-        description="The number of deployment branch policies for the environment."
+    mcp_configuration: Union[
+        ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration,
+        None,
+    ] = Field(
+        description="The user-supplied MCP server configuration for the repository, as a free-form JSON object. This will be set to `null` if no configuration has been set.\n\nThe shape of a valid MCP configuration may evolve over time, so this property is intentionally not strictly typed. Clients should not assume a fixed schema."
     )
-    branch_policies: list[DeploymentBranchPolicy] = Field()
+    enabled_tools: ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools = Field(
+        description="The enabled review tools for Copilot cloud agent."
+    )
+    require_actions_workflow_approval: bool = Field(
+        description="Whether Actions workflow approval is required for Copilot cloud agent pull requests."
+    )
+    is_firewall_enabled: bool = Field(description="Whether the firewall is enabled.")
+    is_firewall_recommended_allowlist_enabled: bool = Field(
+        description="Whether the firewall recommended allowlist is enabled."
+    )
+    custom_allowlist: list[str] = Field(
+        description="A list of custom allowlist entries, as hosts or URLs, that the firewall will allow the Copilot cloud agent to access."
+    )
 
 
-class DeploymentBranchPolicy(GitHubModel):
-    """Deployment branch policy
+class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration(
+    ExtraGitHubModel
+):
+    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration
 
-    Details of a deployment branch or tag policy.
+    The user-supplied MCP server configuration for the repository, as a free-form
+    JSON object. This will be set to `null` if no configuration has been set.
+
+    The shape of a valid MCP configuration may evolve over time, so this property is
+    intentionally not strictly typed. Clients should not assume a fixed schema.
     """
 
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the branch or tag policy."
+
+class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools(
+    GitHubModel
+):
+    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools
+
+    The enabled review tools for Copilot cloud agent.
+    """
+
+    codeql: bool = Field(
+        description="Whether the CodeQL tool is enabled for the Copilot cloud agent."
     )
-    node_id: Missing[str] = Field(default=UNSET)
-    name: Missing[str] = Field(
-        default=UNSET,
-        description="The name pattern that branches or tags must match in order to deploy to the environment.",
+    copilot_code_review: bool = Field(
+        description="Whether the Copilot code review tool is enabled for the Copilot cloud agent."
     )
-    type: Missing[Literal["branch", "tag"]] = Field(
-        default=UNSET, description="Whether this rule targets a branch or tag."
+    secret_scanning: bool = Field(
+        description="Whether the secret scanning tool is enabled for the Copilot cloud agent."
+    )
+    dependency_vulnerability_checks: bool = Field(
+        description="Whether the dependency vulnerability checks tool is enabled for the Copilot cloud agent."
     )
 
 
+model_rebuild(ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200)
 model_rebuild(
-    ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200
+    ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration
 )
-model_rebuild(DeploymentBranchPolicy)
+model_rebuild(
+    ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools
+)
 
 __all__ = (
-    "DeploymentBranchPolicy",
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200",
+    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200",
+    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools",
+    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration",
 )

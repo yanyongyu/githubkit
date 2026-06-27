@@ -9,46 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_1496 import (
-    ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
-    ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
-)
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoPagesPutBodyAnyof2Type(TypedDict):
-    """ReposOwnerRepoPagesPutBodyAnyof2"""
+class ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberReactionsPostBody"""
 
-    cname: Union[str, None]
-    https_enforced: NotRequired[bool]
-    build_type: NotRequired[Literal["legacy", "workflow"]]
-    source: NotRequired[
-        Union[
-            Literal["gh-pages", "master", "master /docs"],
-            ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
-        ]
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
     ]
-    public: NotRequired[bool]
 
 
-class ReposOwnerRepoPagesPutBodyAnyof2TypeForResponse(TypedDict):
-    """ReposOwnerRepoPagesPutBodyAnyof2"""
+class ReposOwnerRepoIssuesIssueNumberReactionsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberReactionsPostBody"""
 
-    cname: Union[str, None]
-    https_enforced: NotRequired[bool]
-    build_type: NotRequired[Literal["legacy", "workflow"]]
-    source: NotRequired[
-        Union[
-            Literal["gh-pages", "master", "master /docs"],
-            ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
-        ]
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
     ]
-    public: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoPagesPutBodyAnyof2Type",
-    "ReposOwnerRepoPagesPutBodyAnyof2TypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType",
+    "ReposOwnerRepoIssuesIssueNumberReactionsPostBodyTypeForResponse",
 )

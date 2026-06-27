@@ -10,83 +10,28 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
 from typing_extensions import TypedDict
 
 
-class SimpleCommitType(TypedDict):
-    """Simple Commit
-
-    A commit.
-    """
-
-    id: str
-    tree_id: str
-    message: str
-    timestamp: _dt.datetime
-    author: Union[SimpleCommitPropAuthorType, None]
-    committer: Union[SimpleCommitPropCommitterType, None]
-
-
-class SimpleCommitTypeForResponse(TypedDict):
-    """Simple Commit
-
-    A commit.
-    """
-
-    id: str
-    tree_id: str
-    message: str
-    timestamp: str
-    author: Union[SimpleCommitPropAuthorTypeForResponse, None]
-    committer: Union[SimpleCommitPropCommitterTypeForResponse, None]
-
-
-class SimpleCommitPropAuthorType(TypedDict):
-    """SimpleCommitPropAuthor
-
-    Information about the Git author
-    """
+class ActionsVariableType(TypedDict):
+    """Actions Variable"""
 
     name: str
-    email: str
+    value: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-class SimpleCommitPropAuthorTypeForResponse(TypedDict):
-    """SimpleCommitPropAuthor
-
-    Information about the Git author
-    """
-
-    name: str
-    email: str
-
-
-class SimpleCommitPropCommitterType(TypedDict):
-    """SimpleCommitPropCommitter
-
-    Information about the Git committer
-    """
+class ActionsVariableTypeForResponse(TypedDict):
+    """Actions Variable"""
 
     name: str
-    email: str
-
-
-class SimpleCommitPropCommitterTypeForResponse(TypedDict):
-    """SimpleCommitPropCommitter
-
-    Information about the Git committer
-    """
-
-    name: str
-    email: str
+    value: str
+    created_at: str
+    updated_at: str
 
 
 __all__ = (
-    "SimpleCommitPropAuthorType",
-    "SimpleCommitPropAuthorTypeForResponse",
-    "SimpleCommitPropCommitterType",
-    "SimpleCommitPropCommitterTypeForResponse",
-    "SimpleCommitType",
-    "SimpleCommitTypeForResponse",
+    "ActionsVariableType",
+    "ActionsVariableTypeForResponse",
 )

@@ -9,27 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody(GitHubModel):
-    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody"""
+class UserSocialAccountsPostBody(GitHubModel):
+    """UserSocialAccountsPostBody
 
-    actor_type: Literal["User", "Team"] = Field(
-        description="The type of actor (must be `User` for user-owned spaces; `Team` will be rejected)."
+    Examples:
+        {'account_urls': ['https://www.linkedin.com/company/github/',
+    'https://twitter.com/github']}
+    """
+
+    account_urls: list[str] = Field(
+        description="Full URLs for the social media profiles to add."
     )
-    actor_identifier: str = Field(
-        description="The username of the collaborator. The numeric user ID is also accepted."
-    )
-    role: Literal["reader", "writer", "admin"] = Field(
-        description="The role to grant to the collaborator."
-    )
 
 
-model_rebuild(UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody)
+model_rebuild(UserSocialAccountsPostBody)
 
-__all__ = ("UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody",)
+__all__ = ("UserSocialAccountsPostBody",)

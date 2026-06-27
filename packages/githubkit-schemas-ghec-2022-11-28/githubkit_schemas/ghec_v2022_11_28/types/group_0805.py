@@ -13,50 +13,47 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0576 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0577 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0578 import (
+from .group_0588 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0589 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0590 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0579 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0591 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0610 import WebhooksMilestoneType, WebhooksMilestoneTypeForResponse
 from .group_0806 import (
-    WebhookIssuesOpenedPropChangesType,
-    WebhookIssuesOpenedPropChangesTypeForResponse,
-)
-from .group_0808 import (
-    WebhookIssuesOpenedPropIssueType,
-    WebhookIssuesOpenedPropIssueTypeForResponse,
+    WebhookIssuesDemilestonedPropIssueType,
+    WebhookIssuesDemilestonedPropIssueTypeForResponse,
 )
 
 
-class WebhookIssuesOpenedType(TypedDict):
-    """issues opened event"""
+class WebhookIssuesDemilestonedType(TypedDict):
+    """issues demilestoned event"""
 
-    action: Literal["opened"]
-    changes: NotRequired[WebhookIssuesOpenedPropChangesType]
+    action: Literal["demilestoned"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssuesOpenedPropIssueType
+    issue: WebhookIssuesDemilestonedPropIssueType
+    milestone: NotRequired[WebhooksMilestoneType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookIssuesOpenedTypeForResponse(TypedDict):
-    """issues opened event"""
+class WebhookIssuesDemilestonedTypeForResponse(TypedDict):
+    """issues demilestoned event"""
 
-    action: Literal["opened"]
-    changes: NotRequired[WebhookIssuesOpenedPropChangesTypeForResponse]
+    action: Literal["demilestoned"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhookIssuesOpenedPropIssueTypeForResponse
+    issue: WebhookIssuesDemilestonedPropIssueTypeForResponse
+    milestone: NotRequired[WebhooksMilestoneTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookIssuesOpenedType",
-    "WebhookIssuesOpenedTypeForResponse",
+    "WebhookIssuesDemilestonedType",
+    "WebhookIssuesDemilestonedTypeForResponse",
 )

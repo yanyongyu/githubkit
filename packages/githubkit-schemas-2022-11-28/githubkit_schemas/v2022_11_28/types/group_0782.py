@@ -9,40 +9,81 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Any, TypeAlias
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0505 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0506 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0783 import WebhookPingPropHookType, WebhookPingPropHookTypeForResponse
+
+class WebhookRubygemsMetadataType(TypedDict):
+    """Ruby Gems metadata"""
+
+    name: NotRequired[str]
+    description: NotRequired[str]
+    readme: NotRequired[str]
+    homepage: NotRequired[str]
+    version_info: NotRequired[WebhookRubygemsMetadataPropVersionInfoType]
+    platform: NotRequired[str]
+    metadata: NotRequired[WebhookRubygemsMetadataPropMetadataType]
+    repo: NotRequired[str]
+    dependencies: NotRequired[list[WebhookRubygemsMetadataPropDependenciesItemsType]]
+    commit_oid: NotRequired[str]
 
 
-class WebhookPingType(TypedDict):
-    """WebhookPing"""
+class WebhookRubygemsMetadataTypeForResponse(TypedDict):
+    """Ruby Gems metadata"""
 
-    hook: NotRequired[WebhookPingPropHookType]
-    hook_id: NotRequired[int]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: NotRequired[SimpleUserType]
-    zen: NotRequired[str]
+    name: NotRequired[str]
+    description: NotRequired[str]
+    readme: NotRequired[str]
+    homepage: NotRequired[str]
+    version_info: NotRequired[WebhookRubygemsMetadataPropVersionInfoTypeForResponse]
+    platform: NotRequired[str]
+    metadata: NotRequired[WebhookRubygemsMetadataPropMetadataTypeForResponse]
+    repo: NotRequired[str]
+    dependencies: NotRequired[
+        list[WebhookRubygemsMetadataPropDependenciesItemsTypeForResponse]
+    ]
+    commit_oid: NotRequired[str]
 
 
-class WebhookPingTypeForResponse(TypedDict):
-    """WebhookPing"""
+class WebhookRubygemsMetadataPropVersionInfoType(TypedDict):
+    """WebhookRubygemsMetadataPropVersionInfo"""
 
-    hook: NotRequired[WebhookPingPropHookTypeForResponse]
-    hook_id: NotRequired[int]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    sender: NotRequired[SimpleUserTypeForResponse]
-    zen: NotRequired[str]
+    version: NotRequired[str]
+
+
+class WebhookRubygemsMetadataPropVersionInfoTypeForResponse(TypedDict):
+    """WebhookRubygemsMetadataPropVersionInfo"""
+
+    version: NotRequired[str]
+
+
+WebhookRubygemsMetadataPropMetadataType: TypeAlias = dict[str, Any]
+"""WebhookRubygemsMetadataPropMetadata
+"""
+
+
+WebhookRubygemsMetadataPropMetadataTypeForResponse: TypeAlias = dict[str, Any]
+"""WebhookRubygemsMetadataPropMetadata
+"""
+
+
+WebhookRubygemsMetadataPropDependenciesItemsType: TypeAlias = dict[str, Any]
+"""WebhookRubygemsMetadataPropDependenciesItems
+"""
+
+
+WebhookRubygemsMetadataPropDependenciesItemsTypeForResponse: TypeAlias = dict[str, Any]
+"""WebhookRubygemsMetadataPropDependenciesItems
+"""
 
 
 __all__ = (
-    "WebhookPingType",
-    "WebhookPingTypeForResponse",
+    "WebhookRubygemsMetadataPropDependenciesItemsType",
+    "WebhookRubygemsMetadataPropDependenciesItemsTypeForResponse",
+    "WebhookRubygemsMetadataPropMetadataType",
+    "WebhookRubygemsMetadataPropMetadataTypeForResponse",
+    "WebhookRubygemsMetadataPropVersionInfoType",
+    "WebhookRubygemsMetadataPropVersionInfoTypeForResponse",
+    "WebhookRubygemsMetadataType",
+    "WebhookRubygemsMetadataTypeForResponse",
 )

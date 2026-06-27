@@ -9,34 +9,81 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import TypedDict
 
+from .group_0065 import (
+    AmazonS3AccessKeysConfigType,
+    AmazonS3AccessKeysConfigTypeForResponse,
+    AzureBlobConfigType,
+    AzureBlobConfigTypeForResponse,
+    AzureHubConfigType,
+    AzureHubConfigTypeForResponse,
+    DatadogConfigType,
+    DatadogConfigTypeForResponse,
+    HecConfigType,
+    HecConfigTypeForResponse,
+)
+from .group_0066 import (
+    AmazonS3OidcConfigType,
+    AmazonS3OidcConfigTypeForResponse,
+    SplunkConfigType,
+    SplunkConfigTypeForResponse,
+)
+from .group_0067 import GoogleCloudConfigType, GoogleCloudConfigTypeForResponse
 
-class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201Type(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201
 
-    The total number of seats created for the members of the specified enterprise
-    team(s).
-    """
+class EnterprisesEnterpriseAuditLogStreamsPostBodyType(TypedDict):
+    """EnterprisesEnterpriseAuditLogStreamsPostBody"""
 
-    seats_created: int
+    enabled: bool
+    stream_type: Literal[
+        "Azure Blob Storage",
+        "Azure Event Hubs",
+        "Amazon S3",
+        "Splunk",
+        "HTTPS Event Collector",
+        "Google Cloud Storage",
+        "Datadog",
+    ]
+    vendor_specific: Union[
+        AzureBlobConfigType,
+        AzureHubConfigType,
+        AmazonS3OidcConfigType,
+        AmazonS3AccessKeysConfigType,
+        SplunkConfigType,
+        HecConfigType,
+        GoogleCloudConfigType,
+        DatadogConfigType,
+    ]
 
 
-class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201
+class EnterprisesEnterpriseAuditLogStreamsPostBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseAuditLogStreamsPostBody"""
 
-    The total number of seats created for the members of the specified enterprise
-    team(s).
-    """
-
-    seats_created: int
+    enabled: bool
+    stream_type: Literal[
+        "Azure Blob Storage",
+        "Azure Event Hubs",
+        "Amazon S3",
+        "Splunk",
+        "HTTPS Event Collector",
+        "Google Cloud Storage",
+        "Datadog",
+    ]
+    vendor_specific: Union[
+        AzureBlobConfigTypeForResponse,
+        AzureHubConfigTypeForResponse,
+        AmazonS3OidcConfigTypeForResponse,
+        AmazonS3AccessKeysConfigTypeForResponse,
+        SplunkConfigTypeForResponse,
+        HecConfigTypeForResponse,
+        GoogleCloudConfigTypeForResponse,
+        DatadogConfigTypeForResponse,
+    ]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201Type",
-    "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201TypeForResponse",
+    "EnterprisesEnterpriseAuditLogStreamsPostBodyType",
+    "EnterprisesEnterpriseAuditLogStreamsPostBodyTypeForResponse",
 )

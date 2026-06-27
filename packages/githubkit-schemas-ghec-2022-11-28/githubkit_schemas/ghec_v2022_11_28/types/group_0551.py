@@ -9,26 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0547 import TrafficType, TrafficTypeForResponse
 
 
-class ScimEnterpriseUserResponseAllof1PropGroupsItemsType(TypedDict):
-    """ScimEnterpriseUserResponseAllof1PropGroupsItems"""
+class ViewTrafficType(TypedDict):
+    """View Traffic
 
-    value: NotRequired[str]
-    ref: NotRequired[str]
-    display: NotRequired[str]
+    View Traffic
+    """
+
+    count: int
+    uniques: int
+    views: list[TrafficType]
 
 
-class ScimEnterpriseUserResponseAllof1PropGroupsItemsTypeForResponse(TypedDict):
-    """ScimEnterpriseUserResponseAllof1PropGroupsItems"""
+class ViewTrafficTypeForResponse(TypedDict):
+    """View Traffic
 
-    value: NotRequired[str]
-    ref: NotRequired[str]
-    display: NotRequired[str]
+    View Traffic
+    """
+
+    count: int
+    uniques: int
+    views: list[TrafficTypeForResponse]
 
 
 __all__ = (
-    "ScimEnterpriseUserResponseAllof1PropGroupsItemsType",
-    "ScimEnterpriseUserResponseAllof1PropGroupsItemsTypeForResponse",
+    "ViewTrafficType",
+    "ViewTrafficTypeForResponse",
 )

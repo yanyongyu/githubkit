@@ -14,14 +14,14 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200(GitHubModel):
-    """ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200"""
+class ReposOwnerRepoMergeUpstreamPostBody(GitHubModel):
+    """ReposOwnerRepoMergeUpstreamPostBody"""
 
-    enabled: bool = Field(
-        description="Whether or not private vulnerability reporting is enabled for the repository."
+    branch: str = Field(
+        description="The name of the branch which should be updated to match upstream."
     )
 
 
-model_rebuild(ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200)
+model_rebuild(ReposOwnerRepoMergeUpstreamPostBody)
 
-__all__ = ("ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200",)
+__all__ = ("ReposOwnerRepoMergeUpstreamPostBody",)

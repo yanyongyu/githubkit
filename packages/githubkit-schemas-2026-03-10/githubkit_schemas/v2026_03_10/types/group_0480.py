@@ -9,68 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0475 import (
-    SearchResultTextMatchesItemsType,
-    SearchResultTextMatchesItemsTypeForResponse,
-)
+from typing_extensions import TypedDict
 
 
-class LabelSearchResultItemType(TypedDict):
-    """Label Search Result Item
+class TagType(TypedDict):
+    """Tag
 
-    Label Search Result Item
+    Tag
     """
 
-    id: int
-    node_id: str
-    url: str
     name: str
-    color: str
-    default: bool
-    description: Union[str, None]
-    score: float
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
+    commit: TagPropCommitType
+    zipball_url: str
+    tarball_url: str
+    node_id: str
 
 
-class LabelSearchResultItemTypeForResponse(TypedDict):
-    """Label Search Result Item
+class TagTypeForResponse(TypedDict):
+    """Tag
 
-    Label Search Result Item
+    Tag
     """
 
-    id: int
-    node_id: str
-    url: str
     name: str
-    color: str
-    default: bool
-    description: Union[str, None]
-    score: float
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
+    commit: TagPropCommitTypeForResponse
+    zipball_url: str
+    tarball_url: str
+    node_id: str
 
 
-class SearchLabelsGetResponse200Type(TypedDict):
-    """SearchLabelsGetResponse200"""
+class TagPropCommitType(TypedDict):
+    """TagPropCommit"""
 
-    total_count: int
-    incomplete_results: bool
-    items: list[LabelSearchResultItemType]
+    sha: str
+    url: str
 
 
-class SearchLabelsGetResponse200TypeForResponse(TypedDict):
-    """SearchLabelsGetResponse200"""
+class TagPropCommitTypeForResponse(TypedDict):
+    """TagPropCommit"""
 
-    total_count: int
-    incomplete_results: bool
-    items: list[LabelSearchResultItemTypeForResponse]
+    sha: str
+    url: str
 
 
 __all__ = (
-    "LabelSearchResultItemType",
-    "LabelSearchResultItemTypeForResponse",
-    "SearchLabelsGetResponse200Type",
-    "SearchLabelsGetResponse200TypeForResponse",
+    "TagPropCommitType",
+    "TagPropCommitTypeForResponse",
+    "TagType",
+    "TagTypeForResponse",
 )

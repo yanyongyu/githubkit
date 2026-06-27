@@ -9,28 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType(TypedDict):
-    """ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody"""
+class OrgsOrgTeamsTeamSlugExternalGroupsPatchBodyType(TypedDict):
+    """OrgsOrgTeamsTeamSlugExternalGroupsPatchBody"""
 
-    name: str
-    runner_group_id: int
-    labels: list[str]
-    work_folder: NotRequired[str]
+    group_id: int
 
 
-class ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody"""
+class OrgsOrgTeamsTeamSlugExternalGroupsPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgTeamsTeamSlugExternalGroupsPatchBody"""
 
-    name: str
-    runner_group_id: int
-    labels: list[str]
-    work_folder: NotRequired[str]
+    group_id: int
 
 
 __all__ = (
-    "ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType",
-    "ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyTypeForResponse",
+    "OrgsOrgTeamsTeamSlugExternalGroupsPatchBodyType",
+    "OrgsOrgTeamsTeamSlugExternalGroupsPatchBodyTypeForResponse",
 )

@@ -9,25 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0247 import MinimalRepository
 
 
-class ActionsCacheStorageLimitForOrganization(GitHubModel):
-    """Actions cache storage limit for an organization
+class Thread(GitHubModel):
+    """Thread
 
-    GitHub Actions cache storage policy for an organization.
+    Thread
     """
 
-    max_cache_size_gb: Missing[int] = Field(
-        default=UNSET,
-        description="For repositories in the organization, the maximum size limit for the sum of all caches in a repository, in gigabytes.",
+    id: str = Field()
+    repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository"
     )
+    subject: ThreadPropSubject = Field()
+    reason: str = Field()
+    unread: bool = Field()
+    updated_at: str = Field()
+    last_read_at: Union[str, None] = Field()
+    url: str = Field()
+    subscription_url: str = Field()
 
 
-model_rebuild(ActionsCacheStorageLimitForOrganization)
+class ThreadPropSubject(GitHubModel):
+    """ThreadPropSubject"""
 
-__all__ = ("ActionsCacheStorageLimitForOrganization",)
+    title: str = Field()
+    url: str = Field()
+    latest_comment_url: str = Field()
+    type: str = Field()
+
+
+model_rebuild(Thread)
+model_rebuild(ThreadPropSubject)
+
+__all__ = (
+    "Thread",
+    "ThreadPropSubject",
+)

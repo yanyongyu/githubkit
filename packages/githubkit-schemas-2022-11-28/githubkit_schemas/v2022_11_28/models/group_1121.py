@@ -9,20 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+
+from .group_0143 import CopilotSpaceCollaboratorAnyof0, CopilotSpaceCollaboratorAnyof1
 
 
-class OrgsOrgCopilotBillingSelectedUsersDeleteBody(GitHubModel):
-    """OrgsOrgCopilotBillingSelectedUsersDeleteBody"""
+class OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200(GitHubModel):
+    """OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200"""
 
-    selected_usernames: list[str] = Field(
-        min_length=1 if PYDANTIC_V2 else None,
-        description="The usernames of the organization members for which to revoke access to GitHub Copilot.",
-    )
+    collaborators: list[
+        Union[CopilotSpaceCollaboratorAnyof0, CopilotSpaceCollaboratorAnyof1]
+    ] = Field(description="The list of collaborators for this Copilot Space.")
 
 
-model_rebuild(OrgsOrgCopilotBillingSelectedUsersDeleteBody)
+model_rebuild(OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200)
 
-__all__ = ("OrgsOrgCopilotBillingSelectedUsersDeleteBody",)
+__all__ = ("OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200",)

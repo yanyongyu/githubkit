@@ -14,22 +14,46 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody(GitHubModel):
-    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody"""
+class UserMigrationsPostBody(GitHubModel):
+    """UserMigrationsPostBody"""
 
-    actor_type: Literal["User", "Team"] = Field(
-        description="The type of actor (must be `User` for user-owned spaces; `Team` will be rejected)."
+    lock_repositories: Missing[bool] = Field(
+        default=UNSET,
+        description="Lock the repositories being migrated at the start of the migration",
     )
-    actor_identifier: str = Field(
-        description="The username of the collaborator. The numeric user ID is also accepted."
+    exclude_metadata: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether metadata should be excluded and only git source should be included for the migration.",
     )
-    role: Literal["reader", "writer", "admin"] = Field(
-        description="The role to grant to the collaborator."
+    exclude_git_data: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether the repository git data should be excluded from the migration.",
     )
+    exclude_attachments: Missing[bool] = Field(
+        default=UNSET, description="Do not include attachments in the migration"
+    )
+    exclude_releases: Missing[bool] = Field(
+        default=UNSET, description="Do not include releases in the migration"
+    )
+    exclude_owner_projects: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether projects owned by the organization or users should be excluded.",
+    )
+    org_metadata_only: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether this should only include organization metadata (repositories array should be empty and will ignore other flags).",
+    )
+    exclude: Missing[list[Literal["repositories"]]] = Field(
+        default=UNSET,
+        description="Exclude attributes from the API response to improve performance",
+    )
+    repositories: list[str] = Field()
 
 
-model_rebuild(UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody)
+model_rebuild(UserMigrationsPostBody)
 
-__all__ = ("UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody",)
+__all__ = ("UserMigrationsPostBody",)

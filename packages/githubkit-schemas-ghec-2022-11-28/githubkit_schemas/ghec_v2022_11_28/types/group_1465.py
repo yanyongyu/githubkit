@@ -9,29 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0348 import ActionsVariableType, ActionsVariableTypeForResponse
 
 
-class ReposOwnerRepoImportPatchBodyType(TypedDict):
-    """ReposOwnerRepoImportPatchBody"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200Type(TypedDict):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200"""
 
-    vcs_username: NotRequired[str]
-    vcs_password: NotRequired[str]
-    vcs: NotRequired[Literal["subversion", "tfvc", "git", "mercurial"]]
-    tfvc_project: NotRequired[str]
+    total_count: int
+    variables: list[ActionsVariableType]
 
 
-class ReposOwnerRepoImportPatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoImportPatchBody"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200"""
 
-    vcs_username: NotRequired[str]
-    vcs_password: NotRequired[str]
-    vcs: NotRequired[Literal["subversion", "tfvc", "git", "mercurial"]]
-    tfvc_project: NotRequired[str]
+    total_count: int
+    variables: list[ActionsVariableTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoImportPatchBodyType",
-    "ReposOwnerRepoImportPatchBodyTypeForResponse",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200Type",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200TypeForResponse",
 )

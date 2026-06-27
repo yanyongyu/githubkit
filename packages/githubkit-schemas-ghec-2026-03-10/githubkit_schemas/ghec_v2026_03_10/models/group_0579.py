@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal
+from typing import Any, Union
 
 from pydantic import Field
 
@@ -19,71 +19,70 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhooksRule(GitHubModel):
-    """branch protection rule
+class GpgKey(GitHubModel):
+    """GPG Key
 
-    The branch protection rule. Includes a `name` and all the [branch protection
-    settings](https://docs.github.com/enterprise-cloud@latest/github/administering-
-    a-repository/defining-the-mergeability-of-pull-requests/about-protected-
-    branches#about-branch-protection-settings) applied to branches that match the
-    name. Binary settings are boolean. Multi-level configurations are one of `off`,
-    `non_admins`, or `everyone`. Actor and build lists are arrays of strings.
+    A unique encryption key
     """
 
-    admin_enforced: bool = Field()
-    allow_deletions_enforcement_level: Literal["off", "non_admins", "everyone"] = (
-        Field()
-    )
-    allow_force_pushes_enforcement_level: Literal["off", "non_admins", "everyone"] = (
-        Field()
-    )
-    authorized_actor_names: list[str] = Field()
-    authorized_actors_only: bool = Field()
-    authorized_dismissal_actors_only: bool = Field()
-    create_protected: Missing[bool] = Field(default=UNSET)
-    created_at: _dt.datetime = Field()
-    dismiss_stale_reviews_on_push: bool = Field()
     id: int = Field()
-    ignore_approvals_from_contributors: bool = Field()
-    linear_history_requirement_enforcement_level: Literal[
-        "off", "non_admins", "everyone"
-    ] = Field()
-    lock_branch_enforcement_level: Literal["off", "non_admins", "everyone"] = Field(
-        description="The enforcement level of the branch lock setting. `off` means the branch is not locked, `non_admins` means the branch is read-only for non_admins, and `everyone` means the branch is read-only for everyone."
-    )
-    lock_allows_fork_sync: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether users can pull changes from upstream when the branch is locked. Set to `true` to allow users to pull changes from upstream when the branch is locked. This setting is only applicable for forks.",
-    )
-    merge_queue_enforcement_level: Literal["off", "non_admins", "everyone"] = Field()
-    name: str = Field()
-    pull_request_reviews_enforcement_level: Literal["off", "non_admins", "everyone"] = (
-        Field()
-    )
-    repository_id: int = Field()
-    require_code_owner_review: bool = Field()
-    require_last_push_approval: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the most recent push must be approved by someone other than the person who pushed it",
-    )
-    required_approving_review_count: int = Field()
-    required_conversation_resolution_level: Literal["off", "non_admins", "everyone"] = (
-        Field()
-    )
-    required_deployments_enforcement_level: Literal["off", "non_admins", "everyone"] = (
-        Field()
-    )
-    required_status_checks: list[str] = Field()
-    required_status_checks_enforcement_level: Literal[
-        "off", "non_admins", "everyone"
-    ] = Field()
-    signature_requirement_enforcement_level: Literal[
-        "off", "non_admins", "everyone"
-    ] = Field()
-    strict_required_status_checks_policy: bool = Field()
-    updated_at: _dt.datetime = Field()
+    name: Missing[Union[str, None]] = Field(default=UNSET)
+    primary_key_id: Union[int, None] = Field()
+    key_id: str = Field()
+    public_key: str = Field()
+    emails: list[GpgKeyPropEmailsItems] = Field()
+    subkeys: list[GpgKeyPropSubkeysItems] = Field()
+    can_sign: bool = Field()
+    can_encrypt_comms: bool = Field()
+    can_encrypt_storage: bool = Field()
+    can_certify: bool = Field()
+    created_at: _dt.datetime = Field()
+    expires_at: Union[_dt.datetime, None] = Field()
+    revoked: bool = Field()
+    raw_key: Union[str, None] = Field()
 
 
-model_rebuild(WebhooksRule)
+class GpgKeyPropEmailsItems(GitHubModel):
+    """GpgKeyPropEmailsItems"""
 
-__all__ = ("WebhooksRule",)
+    email: Missing[str] = Field(default=UNSET)
+    verified: Missing[bool] = Field(default=UNSET)
+
+
+class GpgKeyPropSubkeysItems(GitHubModel):
+    """GpgKeyPropSubkeysItems"""
+
+    id: Missing[int] = Field(default=UNSET)
+    primary_key_id: Missing[int] = Field(default=UNSET)
+    key_id: Missing[str] = Field(default=UNSET)
+    public_key: Missing[str] = Field(default=UNSET)
+    emails: Missing[list[GpgKeyPropSubkeysItemsPropEmailsItems]] = Field(default=UNSET)
+    subkeys: Missing[list[Any]] = Field(default=UNSET)
+    can_sign: Missing[bool] = Field(default=UNSET)
+    can_encrypt_comms: Missing[bool] = Field(default=UNSET)
+    can_encrypt_storage: Missing[bool] = Field(default=UNSET)
+    can_certify: Missing[bool] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
+    expires_at: Missing[Union[str, None]] = Field(default=UNSET)
+    raw_key: Missing[Union[str, None]] = Field(default=UNSET)
+    revoked: Missing[bool] = Field(default=UNSET)
+
+
+class GpgKeyPropSubkeysItemsPropEmailsItems(GitHubModel):
+    """GpgKeyPropSubkeysItemsPropEmailsItems"""
+
+    email: Missing[str] = Field(default=UNSET)
+    verified: Missing[bool] = Field(default=UNSET)
+
+
+model_rebuild(GpgKey)
+model_rebuild(GpgKeyPropEmailsItems)
+model_rebuild(GpgKeyPropSubkeysItems)
+model_rebuild(GpgKeyPropSubkeysItemsPropEmailsItems)
+
+__all__ = (
+    "GpgKey",
+    "GpgKeyPropEmailsItems",
+    "GpgKeyPropSubkeysItems",
+    "GpgKeyPropSubkeysItemsPropEmailsItems",
+)

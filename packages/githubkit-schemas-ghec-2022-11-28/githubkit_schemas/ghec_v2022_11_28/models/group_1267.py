@@ -14,22 +14,21 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBody(GitHubModel):
-    """OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBody"""
+class OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody(GitHubModel):
+    """OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody"""
 
-    actor_type: Literal["User", "Team"] = Field(
-        description="The type of actor (user or team)."
+    default_for_new_repos: Missing[
+        Literal["all", "none", "private_and_internal", "public"]
+    ] = Field(
+        default=UNSET,
+        description="Specify which types of repository this security configuration should be applied to by default.",
     )
-    actor_identifier: str = Field(
-        description="The username (for users) or team slug (for teams). The numeric ID of a user or team is also accepted."
-    )
-    role: Literal["reader", "writer", "admin"] = Field(
-        description="The role to grant to the collaborator."
-    )
 
 
-model_rebuild(OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBody)
+model_rebuild(OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody)
 
-__all__ = ("OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBody",)
+__all__ = ("OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody",)

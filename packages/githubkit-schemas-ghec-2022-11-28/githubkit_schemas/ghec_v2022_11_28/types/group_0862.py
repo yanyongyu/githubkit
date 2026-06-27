@@ -13,41 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0576 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0577 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0578 import (
+from .group_0588 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0589 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0590 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0607 import (
-    PersonalAccessTokenRequestType,
-    PersonalAccessTokenRequestTypeForResponse,
-)
+from .group_0591 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0618 import WebhooksMembershipType, WebhooksMembershipTypeForResponse
 
 
-class WebhookPersonalAccessTokenRequestApprovedType(TypedDict):
-    """personal_access_token_request approved event"""
+class WebhookOrganizationMemberAddedType(TypedDict):
+    """organization member_added event"""
 
-    action: Literal["approved"]
-    personal_access_token_request: PersonalAccessTokenRequestType
+    action: Literal["member_added"]
     enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    membership: WebhooksMembershipType
     organization: OrganizationSimpleWebhooksType
+    repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserType
-    installation: SimpleInstallationType
 
 
-class WebhookPersonalAccessTokenRequestApprovedTypeForResponse(TypedDict):
-    """personal_access_token_request approved event"""
+class WebhookOrganizationMemberAddedTypeForResponse(TypedDict):
+    """organization member_added event"""
 
-    action: Literal["approved"]
-    personal_access_token_request: PersonalAccessTokenRequestTypeForResponse
+    action: Literal["member_added"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    membership: WebhooksMembershipTypeForResponse
     organization: OrganizationSimpleWebhooksTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
     sender: SimpleUserTypeForResponse
-    installation: SimpleInstallationTypeForResponse
 
 
 __all__ = (
-    "WebhookPersonalAccessTokenRequestApprovedType",
-    "WebhookPersonalAccessTokenRequestApprovedTypeForResponse",
+    "WebhookOrganizationMemberAddedType",
+    "WebhookOrganizationMemberAddedTypeForResponse",
 )

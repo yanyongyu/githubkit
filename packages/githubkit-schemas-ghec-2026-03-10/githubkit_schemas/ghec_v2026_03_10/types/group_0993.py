@@ -9,44 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0575 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0576 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0577 import (
+from .group_0587 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0588 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0589 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0578 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0590 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0633 import (
+    WebhooksSecurityAdvisoryType,
+    WebhooksSecurityAdvisoryTypeForResponse,
+)
 
 
-class WebhookStarCreatedType(TypedDict):
-    """star created event"""
+class WebhookSecurityAdvisoryUpdatedType(TypedDict):
+    """security_advisory updated event"""
 
-    action: Literal["created"]
+    action: Literal["updated"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
-    starred_at: Union[str, None]
+    repository: NotRequired[RepositoryWebhooksType]
+    security_advisory: WebhooksSecurityAdvisoryType
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookStarCreatedTypeForResponse(TypedDict):
-    """star created event"""
+class WebhookSecurityAdvisoryUpdatedTypeForResponse(TypedDict):
+    """security_advisory updated event"""
 
-    action: Literal["created"]
+    action: Literal["updated"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
-    starred_at: Union[str, None]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    security_advisory: WebhooksSecurityAdvisoryTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookStarCreatedType",
-    "WebhookStarCreatedTypeForResponse",
+    "WebhookSecurityAdvisoryUpdatedType",
+    "WebhookSecurityAdvisoryUpdatedTypeForResponse",
 )

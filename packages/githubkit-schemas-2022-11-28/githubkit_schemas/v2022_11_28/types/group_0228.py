@@ -12,35 +12,26 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0229 import (
-    RepositoryRuleWorkflowsPropParametersType,
-    RepositoryRuleWorkflowsPropParametersTypeForResponse,
-)
+
+class RepositoryRuleTagNamePatternPropParametersType(TypedDict):
+    """RepositoryRuleTagNamePatternPropParameters"""
+
+    name: NotRequired[str]
+    negate: NotRequired[bool]
+    operator: Literal["starts_with", "ends_with", "contains", "regex"]
+    pattern: str
 
 
-class RepositoryRuleWorkflowsType(TypedDict):
-    """workflows
+class RepositoryRuleTagNamePatternPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleTagNamePatternPropParameters"""
 
-    Require all changes made to a targeted branch to pass the specified workflows
-    before they can be merged.
-    """
-
-    type: Literal["workflows"]
-    parameters: NotRequired[RepositoryRuleWorkflowsPropParametersType]
-
-
-class RepositoryRuleWorkflowsTypeForResponse(TypedDict):
-    """workflows
-
-    Require all changes made to a targeted branch to pass the specified workflows
-    before they can be merged.
-    """
-
-    type: Literal["workflows"]
-    parameters: NotRequired[RepositoryRuleWorkflowsPropParametersTypeForResponse]
+    name: NotRequired[str]
+    negate: NotRequired[bool]
+    operator: Literal["starts_with", "ends_with", "contains", "regex"]
+    pattern: str
 
 
 __all__ = (
-    "RepositoryRuleWorkflowsType",
-    "RepositoryRuleWorkflowsTypeForResponse",
+    "RepositoryRuleTagNamePatternPropParametersType",
+    "RepositoryRuleTagNamePatternPropParametersTypeForResponse",
 )

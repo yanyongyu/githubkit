@@ -9,89 +9,84 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class CreateBudgetType(TypedDict):
-    """CreateBudget"""
+class BillingAiCreditUsageReportOrgType(TypedDict):
+    """BillingAiCreditUsageReportOrg"""
 
-    message: str
-    budget: CreateBudgetPropBudgetType
-
-
-class CreateBudgetTypeForResponse(TypedDict):
-    """CreateBudget"""
-
-    message: str
-    budget: CreateBudgetPropBudgetTypeForResponse
+    time_period: BillingAiCreditUsageReportOrgPropTimePeriodType
+    organization: str
+    user: NotRequired[str]
+    product: NotRequired[str]
+    model: NotRequired[str]
+    usage_items: list[BillingAiCreditUsageReportOrgPropUsageItemsItemsType]
 
 
-class CreateBudgetPropBudgetType(TypedDict):
-    """CreateBudgetPropBudget"""
+class BillingAiCreditUsageReportOrgTypeForResponse(TypedDict):
+    """BillingAiCreditUsageReportOrg"""
 
-    id: NotRequired[str]
-    budget_scope: NotRequired[
-        Literal[
-            "enterprise",
-            "organization",
-            "repository",
-            "cost_center",
-            "multi_user_customer",
-            "user",
-        ]
-    ]
-    budget_entity_name: NotRequired[str]
-    budget_amount: NotRequired[int]
-    prevent_further_usage: NotRequired[bool]
-    budget_product_sku: NotRequired[str]
-    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing"]]
-    budget_alerting: NotRequired[CreateBudgetPropBudgetPropBudgetAlertingType]
+    time_period: BillingAiCreditUsageReportOrgPropTimePeriodTypeForResponse
+    organization: str
+    user: NotRequired[str]
+    product: NotRequired[str]
+    model: NotRequired[str]
+    usage_items: list[BillingAiCreditUsageReportOrgPropUsageItemsItemsTypeForResponse]
 
 
-class CreateBudgetPropBudgetTypeForResponse(TypedDict):
-    """CreateBudgetPropBudget"""
+class BillingAiCreditUsageReportOrgPropTimePeriodType(TypedDict):
+    """BillingAiCreditUsageReportOrgPropTimePeriod"""
 
-    id: NotRequired[str]
-    budget_scope: NotRequired[
-        Literal[
-            "enterprise",
-            "organization",
-            "repository",
-            "cost_center",
-            "multi_user_customer",
-            "user",
-        ]
-    ]
-    budget_entity_name: NotRequired[str]
-    budget_amount: NotRequired[int]
-    prevent_further_usage: NotRequired[bool]
-    budget_product_sku: NotRequired[str]
-    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing"]]
-    budget_alerting: NotRequired[
-        CreateBudgetPropBudgetPropBudgetAlertingTypeForResponse
-    ]
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
 
 
-class CreateBudgetPropBudgetPropBudgetAlertingType(TypedDict):
-    """CreateBudgetPropBudgetPropBudgetAlerting"""
+class BillingAiCreditUsageReportOrgPropTimePeriodTypeForResponse(TypedDict):
+    """BillingAiCreditUsageReportOrgPropTimePeriod"""
 
-    will_alert: NotRequired[bool]
-    alert_recipients: NotRequired[list[str]]
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
 
 
-class CreateBudgetPropBudgetPropBudgetAlertingTypeForResponse(TypedDict):
-    """CreateBudgetPropBudgetPropBudgetAlerting"""
+class BillingAiCreditUsageReportOrgPropUsageItemsItemsType(TypedDict):
+    """BillingAiCreditUsageReportOrgPropUsageItemsItems"""
 
-    will_alert: NotRequired[bool]
-    alert_recipients: NotRequired[list[str]]
+    product: str
+    sku: str
+    model: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: float
+    gross_amount: float
+    discount_quantity: float
+    discount_amount: float
+    net_quantity: float
+    net_amount: float
+
+
+class BillingAiCreditUsageReportOrgPropUsageItemsItemsTypeForResponse(TypedDict):
+    """BillingAiCreditUsageReportOrgPropUsageItemsItems"""
+
+    product: str
+    sku: str
+    model: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: float
+    gross_amount: float
+    discount_quantity: float
+    discount_amount: float
+    net_quantity: float
+    net_amount: float
 
 
 __all__ = (
-    "CreateBudgetPropBudgetPropBudgetAlertingType",
-    "CreateBudgetPropBudgetPropBudgetAlertingTypeForResponse",
-    "CreateBudgetPropBudgetType",
-    "CreateBudgetPropBudgetTypeForResponse",
-    "CreateBudgetType",
-    "CreateBudgetTypeForResponse",
+    "BillingAiCreditUsageReportOrgPropTimePeriodType",
+    "BillingAiCreditUsageReportOrgPropTimePeriodTypeForResponse",
+    "BillingAiCreditUsageReportOrgPropUsageItemsItemsType",
+    "BillingAiCreditUsageReportOrgPropUsageItemsItemsTypeForResponse",
+    "BillingAiCreditUsageReportOrgType",
+    "BillingAiCreditUsageReportOrgTypeForResponse",
 )

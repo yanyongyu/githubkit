@@ -9,32 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0316 import (
-    ProjectsV2FieldIterationConfigurationType,
-    ProjectsV2FieldIterationConfigurationTypeForResponse,
-)
+
+class OrgsOrgOutsideCollaboratorsUsernamePutResponse202Type(TypedDict):
+    """OrgsOrgOutsideCollaboratorsUsernamePutResponse202"""
 
 
-class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3Type(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3"""
-
-    name: str
-    data_type: Literal["iteration"]
-    iteration_configuration: ProjectsV2FieldIterationConfigurationType
-
-
-class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3TypeForResponse(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3"""
-
-    name: str
-    data_type: Literal["iteration"]
-    iteration_configuration: ProjectsV2FieldIterationConfigurationTypeForResponse
+class OrgsOrgOutsideCollaboratorsUsernamePutResponse202TypeForResponse(TypedDict):
+    """OrgsOrgOutsideCollaboratorsUsernamePutResponse202"""
 
 
 __all__ = (
-    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3Type",
-    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3TypeForResponse",
+    "OrgsOrgOutsideCollaboratorsUsernamePutResponse202Type",
+    "OrgsOrgOutsideCollaboratorsUsernamePutResponse202TypeForResponse",
 )

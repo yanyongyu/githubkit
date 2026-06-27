@@ -9,35 +9,78 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0247 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0566 import (
+    SearchResultTextMatchesItemsType,
+    SearchResultTextMatchesItemsTypeForResponse,
+)
 
 
-class EmailType(TypedDict):
-    """Email
+class CodeSearchResultItemType(TypedDict):
+    """Code Search Result Item
 
-    Email
+    Code Search Result Item
     """
 
-    email: str
-    primary: bool
-    verified: bool
-    visibility: Union[str, None]
+    name: str
+    path: str
+    sha: str
+    url: str
+    git_url: str
+    html_url: str
+    repository: MinimalRepositoryType
+    score: float
+    file_size: NotRequired[int]
+    language: NotRequired[Union[str, None]]
+    last_modified_at: NotRequired[_dt.datetime]
+    line_numbers: NotRequired[list[str]]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
 
 
-class EmailTypeForResponse(TypedDict):
-    """Email
+class CodeSearchResultItemTypeForResponse(TypedDict):
+    """Code Search Result Item
 
-    Email
+    Code Search Result Item
     """
 
-    email: str
-    primary: bool
-    verified: bool
-    visibility: Union[str, None]
+    name: str
+    path: str
+    sha: str
+    url: str
+    git_url: str
+    html_url: str
+    repository: MinimalRepositoryTypeForResponse
+    score: float
+    file_size: NotRequired[int]
+    language: NotRequired[Union[str, None]]
+    last_modified_at: NotRequired[str]
+    line_numbers: NotRequired[list[str]]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
+
+
+class SearchCodeGetResponse200Type(TypedDict):
+    """SearchCodeGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[CodeSearchResultItemType]
+
+
+class SearchCodeGetResponse200TypeForResponse(TypedDict):
+    """SearchCodeGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[CodeSearchResultItemTypeForResponse]
 
 
 __all__ = (
-    "EmailType",
-    "EmailTypeForResponse",
+    "CodeSearchResultItemType",
+    "CodeSearchResultItemTypeForResponse",
+    "SearchCodeGetResponse200Type",
+    "SearchCodeGetResponse200TypeForResponse",
 )

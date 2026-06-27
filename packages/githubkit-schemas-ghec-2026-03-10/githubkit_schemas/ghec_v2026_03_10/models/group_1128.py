@@ -9,54 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0087 import CopilotSeatDetails
 
-class EnterprisesEnterpriseCopilotCustomAgentsGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse200"""
 
-    custom_agents: Missing[
-        Union[
-            list[
-                EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems
-            ],
-            None,
-        ]
-    ] = Field(
+class EnterprisesEnterpriseCopilotBillingSeatsGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseCopilotBillingSeatsGetResponse200"""
+
+    total_seats: Missing[int] = Field(
         default=UNSET,
-        description="List of custom agents defined in the repository. Returns `null` if no source repository is configured.",
+        description="The total number of Copilot seats the enterprise is being billed for. Users with access through multiple organizations or enterprise teams are only counted once.",
     )
+    seats: Missing[list[CopilotSeatDetails]] = Field(default=UNSET)
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems(
-    GitHubModel
-):
-    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems"""
+model_rebuild(EnterprisesEnterpriseCopilotBillingSeatsGetResponse200)
 
-    name: Missing[str] = Field(
-        default=UNSET,
-        description="The display name of the custom agent (derived from filename).",
-    )
-    file_path: Missing[str] = Field(
-        default=UNSET, description="The path to the agent definition file."
-    )
-    url: Missing[str] = Field(
-        default=UNSET, description="The URL to view the agent definition file."
-    )
-
-
-model_rebuild(EnterprisesEnterpriseCopilotCustomAgentsGetResponse200)
-model_rebuild(
-    EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems
-)
-
-__all__ = (
-    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse200",
-    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems",
-)
+__all__ = ("EnterprisesEnterpriseCopilotBillingSeatsGetResponse200",)

@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoAgentsVariablesPostBodyType(TypedDict):
-    """ReposOwnerRepoAgentsVariablesPostBody"""
+class ReposOwnerRepoActionsSecretsSecretNamePutBodyType(TypedDict):
+    """ReposOwnerRepoActionsSecretsSecretNamePutBody"""
 
-    name: str
-    value: str
+    encrypted_value: str
+    key_id: str
 
 
-class ReposOwnerRepoAgentsVariablesPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoAgentsVariablesPostBody"""
+class ReposOwnerRepoActionsSecretsSecretNamePutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsSecretsSecretNamePutBody"""
 
-    name: str
-    value: str
+    encrypted_value: str
+    key_id: str
 
 
 __all__ = (
-    "ReposOwnerRepoAgentsVariablesPostBodyType",
-    "ReposOwnerRepoAgentsVariablesPostBodyTypeForResponse",
+    "ReposOwnerRepoActionsSecretsSecretNamePutBodyType",
+    "ReposOwnerRepoActionsSecretsSecretNamePutBodyTypeForResponse",
 )

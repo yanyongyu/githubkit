@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,46 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgHooksHookIdPatchBody(GitHubModel):
-    """OrgsOrgHooksHookIdPatchBody"""
+class OrgsOrgCopilotCodingAgentPermissionsGetResponse200(GitHubModel):
+    """OrgsOrgCopilotCodingAgentPermissionsGetResponse200"""
 
-    config: Missing[OrgsOrgHooksHookIdPatchBodyPropConfig] = Field(
-        default=UNSET,
-        description="Key/value pairs to provide settings for this webhook.",
+    enabled_repositories: Literal["all", "selected", "none"] = Field(
+        description="The policy for which repositories can use Copilot cloud agent. Can be one of `all`, `selected`, or `none`."
     )
-    events: Missing[list[str]] = Field(
+    selected_repositories_url: Missing[str] = Field(
         default=UNSET,
-        description="Determines what [events](https://docs.github.com/enterprise-cloud@latest/webhooks/event-payloads) the hook is triggered for.",
+        description="The URL for the selected repositories endpoint. Only present when `enabled_repositories` is `selected`.",
     )
-    active: Missing[bool] = Field(
-        default=UNSET,
-        description="Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications.",
-    )
-    name: Missing[str] = Field(default=UNSET)
 
 
-class OrgsOrgHooksHookIdPatchBodyPropConfig(GitHubModel):
-    """OrgsOrgHooksHookIdPatchBodyPropConfig
+model_rebuild(OrgsOrgCopilotCodingAgentPermissionsGetResponse200)
 
-    Key/value pairs to provide settings for this webhook.
-    """
-
-    url: str = Field(description="The URL to which the payloads will be delivered.")
-    content_type: Missing[str] = Field(
-        default=UNSET,
-        description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
-    )
-    secret: Missing[str] = Field(
-        default=UNSET,
-        description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/enterprise-cloud@latest/webhooks/event-payloads/#delivery-headers).",
-    )
-    insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
-
-
-model_rebuild(OrgsOrgHooksHookIdPatchBody)
-model_rebuild(OrgsOrgHooksHookIdPatchBodyPropConfig)
-
-__all__ = (
-    "OrgsOrgHooksHookIdPatchBody",
-    "OrgsOrgHooksHookIdPatchBodyPropConfig",
-)
+__all__ = ("OrgsOrgCopilotCodingAgentPermissionsGetResponse200",)

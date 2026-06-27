@@ -9,32 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoActionsOidcCustomizationSubPutBodyType(TypedDict):
-    """Actions OIDC subject customization for a repository
+class OrgsOrgSettingsNetworkConfigurationsGetResponse200Type(TypedDict):
+    """OrgsOrgSettingsNetworkConfigurationsGetResponse200"""
 
-    Actions OIDC subject customization for a repository
+    total_count: int
+    network_configurations: list[NetworkConfigurationType]
+
+
+class OrgsOrgSettingsNetworkConfigurationsGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgSettingsNetworkConfigurationsGetResponse200"""
+
+    total_count: int
+    network_configurations: list[NetworkConfigurationTypeForResponse]
+
+
+class NetworkConfigurationType(TypedDict):
+    """Hosted compute network configuration
+
+    A hosted compute network configuration.
     """
 
-    use_default: bool
-    include_claim_keys: NotRequired[list[str]]
-    use_immutable_subject: NotRequired[bool]
+    id: str
+    name: str
+    compute_service: NotRequired[Literal["none", "actions", "codespaces"]]
+    network_settings_ids: NotRequired[list[str]]
+    failover_network_settings_ids: NotRequired[list[str]]
+    failover_network_enabled: NotRequired[bool]
+    created_on: Union[_dt.datetime, None]
 
 
-class ReposOwnerRepoActionsOidcCustomizationSubPutBodyTypeForResponse(TypedDict):
-    """Actions OIDC subject customization for a repository
+class NetworkConfigurationTypeForResponse(TypedDict):
+    """Hosted compute network configuration
 
-    Actions OIDC subject customization for a repository
+    A hosted compute network configuration.
     """
 
-    use_default: bool
-    include_claim_keys: NotRequired[list[str]]
-    use_immutable_subject: NotRequired[bool]
+    id: str
+    name: str
+    compute_service: NotRequired[Literal["none", "actions", "codespaces"]]
+    network_settings_ids: NotRequired[list[str]]
+    failover_network_settings_ids: NotRequired[list[str]]
+    failover_network_enabled: NotRequired[bool]
+    created_on: Union[str, None]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsOidcCustomizationSubPutBodyType",
-    "ReposOwnerRepoActionsOidcCustomizationSubPutBodyTypeForResponse",
+    "NetworkConfigurationType",
+    "NetworkConfigurationTypeForResponse",
+    "OrgsOrgSettingsNetworkConfigurationsGetResponse200Type",
+    "OrgsOrgSettingsNetworkConfigurationsGetResponse200TypeForResponse",
 )

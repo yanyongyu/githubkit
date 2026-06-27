@@ -9,34 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
-
-from .group_0316 import (
-    ProjectsV2FieldIterationConfigurationType,
-    ProjectsV2FieldIterationConfigurationTypeForResponse,
-)
+from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2Type(TypedDict):
-    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2"""
+class UsersUsernameAttestationsBulkListPostBodyType(TypedDict):
+    """UsersUsernameAttestationsBulkListPostBody"""
 
-    name: str
-    data_type: Literal["iteration"]
-    iteration_configuration: ProjectsV2FieldIterationConfigurationType
+    subject_digests: list[str]
+    predicate_type: NotRequired[str]
 
 
-class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2TypeForResponse(
-    TypedDict
-):
-    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2"""
+class UsersUsernameAttestationsBulkListPostBodyTypeForResponse(TypedDict):
+    """UsersUsernameAttestationsBulkListPostBody"""
 
-    name: str
-    data_type: Literal["iteration"]
-    iteration_configuration: ProjectsV2FieldIterationConfigurationTypeForResponse
+    subject_digests: list[str]
+    predicate_type: NotRequired[str]
 
 
 __all__ = (
-    "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2Type",
-    "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2TypeForResponse",
+    "UsersUsernameAttestationsBulkListPostBodyType",
+    "UsersUsernameAttestationsBulkListPostBodyTypeForResponse",
 )

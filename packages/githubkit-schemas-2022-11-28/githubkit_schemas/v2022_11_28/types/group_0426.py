@@ -9,56 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Union
-from typing_extensions import TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class PullRequestPropHeadType(TypedDict):
-    """PullRequestPropHead"""
+class DeployKeyType(TypedDict):
+    """Deploy Key
 
-    label: Union[str, None]
-    ref: str
-    repo: Union[None, RepositoryType]
-    sha: str
-    user: Union[None, SimpleUserType]
+    An SSH key granting access to a single repository.
+    """
 
-
-class PullRequestPropHeadTypeForResponse(TypedDict):
-    """PullRequestPropHead"""
-
-    label: Union[str, None]
-    ref: str
-    repo: Union[None, RepositoryTypeForResponse]
-    sha: str
-    user: Union[None, SimpleUserTypeForResponse]
+    id: int
+    key: str
+    url: str
+    title: str
+    verified: bool
+    created_at: str
+    read_only: bool
+    added_by: NotRequired[Union[str, None]]
+    last_used: NotRequired[Union[_dt.datetime, None]]
+    enabled: NotRequired[bool]
 
 
-class PullRequestPropBaseType(TypedDict):
-    """PullRequestPropBase"""
+class DeployKeyTypeForResponse(TypedDict):
+    """Deploy Key
 
-    label: str
-    ref: str
-    repo: RepositoryType
-    sha: str
-    user: SimpleUserType
+    An SSH key granting access to a single repository.
+    """
 
-
-class PullRequestPropBaseTypeForResponse(TypedDict):
-    """PullRequestPropBase"""
-
-    label: str
-    ref: str
-    repo: RepositoryTypeForResponse
-    sha: str
-    user: SimpleUserTypeForResponse
+    id: int
+    key: str
+    url: str
+    title: str
+    verified: bool
+    created_at: str
+    read_only: bool
+    added_by: NotRequired[Union[str, None]]
+    last_used: NotRequired[Union[str, None]]
+    enabled: NotRequired[bool]
 
 
 __all__ = (
-    "PullRequestPropBaseType",
-    "PullRequestPropBaseTypeForResponse",
-    "PullRequestPropHeadType",
-    "PullRequestPropHeadTypeForResponse",
+    "DeployKeyType",
+    "DeployKeyTypeForResponse",
 )

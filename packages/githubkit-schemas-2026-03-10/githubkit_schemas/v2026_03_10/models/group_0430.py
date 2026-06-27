@@ -13,17 +13,17 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0174 import Link
+
+class PageBuildStatus(GitHubModel):
+    """Page Build Status
+
+    Page Build Status
+    """
+
+    url: str = Field()
+    status: str = Field()
 
 
-class ReviewCommentPropLinks(GitHubModel):
-    """ReviewCommentPropLinks"""
+model_rebuild(PageBuildStatus)
 
-    self_: Link = Field(alias="self", title="Link", description="Hypermedia Link")
-    html: Link = Field(title="Link", description="Hypermedia Link")
-    pull_request: Link = Field(title="Link", description="Hypermedia Link")
-
-
-model_rebuild(ReviewCommentPropLinks)
-
-__all__ = ("ReviewCommentPropLinks",)
+__all__ = ("PageBuildStatus",)

@@ -9,112 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200Type(TypedDict):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200"""
-
-    organization: NotRequired[
-        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganizationType
-    ]
-    repository: NotRequired[
-        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepositoryType
-    ]
-    ruleset: NotRequired[
-        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRulesetType
-    ]
-
-
-class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200TypeForResponse(
+class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200Type(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200"""
+    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200
 
-    organization: NotRequired[
-        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganizationTypeForResponse
-    ]
-    repository: NotRequired[
-        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepositoryTypeForResponse
-    ]
-    ruleset: NotRequired[
-        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRulesetTypeForResponse
-    ]
-
-
-class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganizationType(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganization"""
-
-    id: NotRequired[int]
-    login: NotRequired[str]
-    avatar_url: NotRequired[str]
-
-
-class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganizationTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganization"""
-
-    id: NotRequired[int]
-    login: NotRequired[str]
-    avatar_url: NotRequired[str]
-
-
-class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepositoryType(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepository"""
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    full_name: NotRequired[str]
-
-
-class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepositoryTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepository"""
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    full_name: NotRequired[str]
-
-
-class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRulesetType(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRuleset
-
-    The created or existing ruleset (if create_ruleset was true).
+    The total number of seats set to "pending cancellation" for the members of the
+    specified enterprise team(s).
     """
 
-    id: NotRequired[int]
-    name: NotRequired[str]
-    enforcement: NotRequired[str]
+    seats_cancelled: int
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRulesetTypeForResponse(
+class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRuleset
+    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200
 
-    The created or existing ruleset (if create_ruleset was true).
+    The total number of seats set to "pending cancellation" for the members of the
+    specified enterprise team(s).
     """
 
-    id: NotRequired[int]
-    name: NotRequired[str]
-    enforcement: NotRequired[str]
+    seats_cancelled: int
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganizationType",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganizationTypeForResponse",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepositoryType",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepositoryTypeForResponse",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRulesetType",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRulesetTypeForResponse",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200Type",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200TypeForResponse",
+    "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200Type",
+    "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200TypeForResponse",
 )

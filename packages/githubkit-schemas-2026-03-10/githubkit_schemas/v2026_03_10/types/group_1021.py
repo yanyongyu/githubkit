@@ -9,79 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Any, TypeAlias
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyType(TypedDict):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody"""
+class GistsGistIdPatchBodyType(TypedDict):
+    """GistsGistIdPatchBody"""
 
-    budget_amount: NotRequired[int]
-    prevent_further_usage: NotRequired[bool]
-    budget_alerting: NotRequired[
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType
-    ]
-    budget_scope: NotRequired[
-        Literal[
-            "enterprise",
-            "organization",
-            "repository",
-            "cost_center",
-            "multi_user_customer",
-            "user",
-        ]
-    ]
-    budget_entity_name: NotRequired[str]
-    budget_type: NotRequired[Literal["BundlePricing", "ProductPricing", "SkuPricing"]]
-    budget_product_sku: NotRequired[str]
-    user: NotRequired[str]
+    description: NotRequired[str]
+    files: NotRequired[GistsGistIdPatchBodyPropFilesType]
 
 
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyTypeForResponse(TypedDict):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody"""
+class GistsGistIdPatchBodyTypeForResponse(TypedDict):
+    """GistsGistIdPatchBody"""
 
-    budget_amount: NotRequired[int]
-    prevent_further_usage: NotRequired[bool]
-    budget_alerting: NotRequired[
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingTypeForResponse
-    ]
-    budget_scope: NotRequired[
-        Literal[
-            "enterprise",
-            "organization",
-            "repository",
-            "cost_center",
-            "multi_user_customer",
-            "user",
-        ]
-    ]
-    budget_entity_name: NotRequired[str]
-    budget_type: NotRequired[Literal["BundlePricing", "ProductPricing", "SkuPricing"]]
-    budget_product_sku: NotRequired[str]
-    user: NotRequired[str]
+    description: NotRequired[str]
+    files: NotRequired[GistsGistIdPatchBodyPropFilesTypeForResponse]
 
 
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType(
-    TypedDict
-):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting"""
+GistsGistIdPatchBodyPropFilesType: TypeAlias = dict[str, Any]
+"""GistsGistIdPatchBodyPropFiles
 
-    will_alert: NotRequired[bool]
-    alert_recipients: NotRequired[list[str]]
+The gist files to be updated, renamed, or deleted. Each `key` must match the
+current filename
+(including extension) of the targeted gist file. For example: `hello.py`.
+
+To delete a file, set the whole file to null. For example: `hello.py : null`.
+The file will also be
+deleted if the specified object does not contain at least one of `content` or
+`filename`.
+
+Examples:
+    {'hello.rb': {'content': 'blah', 'filename': 'goodbye.rb'}}
+"""
 
 
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingTypeForResponse(
-    TypedDict
-):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting"""
+GistsGistIdPatchBodyPropFilesTypeForResponse: TypeAlias = dict[str, Any]
+"""GistsGistIdPatchBodyPropFiles
 
-    will_alert: NotRequired[bool]
-    alert_recipients: NotRequired[list[str]]
+The gist files to be updated, renamed, or deleted. Each `key` must match the
+current filename
+(including extension) of the targeted gist file. For example: `hello.py`.
+
+To delete a file, set the whole file to null. For example: `hello.py : null`.
+The file will also be
+deleted if the specified object does not contain at least one of `content` or
+`filename`.
+
+Examples:
+    {'hello.rb': {'content': 'blah', 'filename': 'goodbye.rb'}}
+"""
 
 
 __all__ = (
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType",
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingTypeForResponse",
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyType",
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyTypeForResponse",
+    "GistsGistIdPatchBodyPropFilesType",
+    "GistsGistIdPatchBodyPropFilesTypeForResponse",
+    "GistsGistIdPatchBodyType",
+    "GistsGistIdPatchBodyTypeForResponse",
 )

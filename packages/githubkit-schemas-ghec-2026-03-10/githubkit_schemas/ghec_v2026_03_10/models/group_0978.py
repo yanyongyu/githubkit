@@ -18,18 +18,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0575 import EnterpriseWebhooks
-from .group_0576 import SimpleInstallation
-from .group_0577 import OrganizationSimpleWebhooks
-from .group_0578 import RepositoryWebhooks
-from .group_0620 import SecretScanningAlertWebhook
+from .group_0587 import EnterpriseWebhooks
+from .group_0588 import SimpleInstallation
+from .group_0589 import OrganizationSimpleWebhooks
+from .group_0590 import RepositoryWebhooks
+from .group_0631 import WebhooksAlert
 
 
-class WebhookSecretScanningAlertValidated(GitHubModel):
-    """secret_scanning_alert validated event"""
+class WebhookRepositoryVulnerabilityAlertCreate(GitHubModel):
+    """repository_vulnerability_alert create event"""
 
-    action: Literal["validated"] = Field()
-    alert: SecretScanningAlertWebhook = Field()
+    action: Literal["create"] = Field()
+    alert: WebhooksAlert = Field(
+        title="Repository Vulnerability Alert Alert",
+        description="The security alert of the vulnerable dependency.",
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -49,11 +52,9 @@ class WebhookSecretScanningAlertValidated(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookSecretScanningAlertValidated)
+model_rebuild(WebhookRepositoryVulnerabilityAlertCreate)
 
-__all__ = ("WebhookSecretScanningAlertValidated",)
+__all__ = ("WebhookRepositoryVulnerabilityAlertCreate",)

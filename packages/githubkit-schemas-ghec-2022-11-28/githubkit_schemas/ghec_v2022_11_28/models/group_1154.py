@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,67 +16,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBody(GitHubModel):
-    """EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBody"""
+class EnterprisesEnterpriseDependabotRepositoryAccessPatchBody(GitHubModel):
+    """EnterprisesEnterpriseDependabotRepositoryAccessPatchBody
 
-    budget_amount: Missing[int] = Field(
-        default=UNSET,
-        description="The budget amount in whole dollars. For license-based products, this represents the number of licenses.",
+    Examples:
+        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
+    """
+
+    repository_ids_to_add: Missing[list[int]] = Field(
+        default=UNSET, description="List of repository IDs to add."
     )
-    prevent_further_usage: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to prevent additional spending once the budget is exceeded. For budgets with `user` or `multi_user_customer` scope, this must remain `true`.",
-    )
-    budget_alerting: Missing[
-        EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting
-    ] = Field(default=UNSET)
-    budget_scope: Missing[
-        Literal[
-            "enterprise",
-            "organization",
-            "repository",
-            "cost_center",
-            "multi_user_customer",
-            "user",
-        ]
-    ] = Field(default=UNSET, description="The scope of the budget")
-    budget_entity_name: Missing[str] = Field(
-        default=UNSET, description="The name of the entity to apply the budget to"
-    )
-    budget_type: Missing[Literal["BundlePricing", "ProductPricing", "SkuPricing"]] = (
-        Field(
-            default=UNSET,
-            description="The type of pricing model used by the budget. Determines how `budget_product_sku` is interpreted.\n\n- `BundlePricing`: Covers all AI credit SKUs. Set `budget_product_sku` to `ai_credits`.\n- `ProductPricing`: Covers all SKUs that belong to a product. Set `budget_product_sku` to a product such as `actions` or `packages`.\n- `SkuPricing`: Covers a single, specific SKU. Set `budget_product_sku` to a SKU such as `actions_linux`.",
-        )
-    )
-    budget_product_sku: Missing[str] = Field(
-        default=UNSET,
-        description="A single product or SKU that will be covered in the budget",
-    )
-    user: Missing[str] = Field(
-        default=UNSET, description="The username of the user for `user` scope budgets."
+    repository_ids_to_remove: Missing[list[int]] = Field(
+        default=UNSET, description="List of repository IDs to remove."
     )
 
 
-class EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting(
-    GitHubModel
-):
-    """EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting"""
+model_rebuild(EnterprisesEnterpriseDependabotRepositoryAccessPatchBody)
 
-    will_alert: Missing[bool] = Field(
-        default=UNSET, description="Whether alerts are enabled for this budget"
-    )
-    alert_recipients: Missing[list[str]] = Field(
-        default=UNSET, description="Array of user login names who will receive alerts"
-    )
-
-
-model_rebuild(EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBody)
-model_rebuild(
-    EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting
-)
-
-__all__ = (
-    "EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBody",
-    "EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting",
-)
+__all__ = ("EnterprisesEnterpriseDependabotRepositoryAccessPatchBody",)

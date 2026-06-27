@@ -9,26 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0018 import InstallationType, InstallationTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class UserInstallationsGetResponse200Type(TypedDict):
-    """UserInstallationsGetResponse200"""
+class TeamsTeamIdTeamSyncGroupMappingsPatchBodyType(TypedDict):
+    """TeamsTeamIdTeamSyncGroupMappingsPatchBody"""
 
-    total_count: int
-    installations: list[InstallationType]
+    groups: list[TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsType]
+    synced_at: NotRequired[str]
 
 
-class UserInstallationsGetResponse200TypeForResponse(TypedDict):
-    """UserInstallationsGetResponse200"""
+class TeamsTeamIdTeamSyncGroupMappingsPatchBodyTypeForResponse(TypedDict):
+    """TeamsTeamIdTeamSyncGroupMappingsPatchBody"""
 
-    total_count: int
-    installations: list[InstallationTypeForResponse]
+    groups: list[
+        TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsTypeForResponse
+    ]
+    synced_at: NotRequired[str]
+
+
+class TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsType(TypedDict):
+    """TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems"""
+
+    group_id: str
+    group_name: str
+    group_description: str
+    id: NotRequired[str]
+    name: NotRequired[str]
+    description: NotRequired[str]
+
+
+class TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsTypeForResponse(
+    TypedDict
+):
+    """TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems"""
+
+    group_id: str
+    group_name: str
+    group_description: str
+    id: NotRequired[str]
+    name: NotRequired[str]
+    description: NotRequired[str]
 
 
 __all__ = (
-    "UserInstallationsGetResponse200Type",
-    "UserInstallationsGetResponse200TypeForResponse",
+    "TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsType",
+    "TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsTypeForResponse",
+    "TeamsTeamIdTeamSyncGroupMappingsPatchBodyType",
+    "TeamsTeamIdTeamSyncGroupMappingsPatchBodyTypeForResponse",
 )

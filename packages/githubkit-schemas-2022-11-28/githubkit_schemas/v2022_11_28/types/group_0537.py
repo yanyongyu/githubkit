@@ -9,48 +9,65 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
+class WebhooksUserMannequinType(TypedDict):
+    """User"""
 
-class ProjectsV2ItemType(TypedDict):
-    """Projects v2 Item
-
-    An item belonging to a project
-    """
-
-    id: float
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
     node_id: NotRequired[str]
-    project_node_id: NotRequired[str]
-    content_node_id: str
-    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
-    creator: NotRequired[SimpleUserType]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    archived_at: Union[_dt.datetime, None]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-class ProjectsV2ItemTypeForResponse(TypedDict):
-    """Projects v2 Item
+class WebhooksUserMannequinTypeForResponse(TypedDict):
+    """User"""
 
-    An item belonging to a project
-    """
-
-    id: float
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
     node_id: NotRequired[str]
-    project_node_id: NotRequired[str]
-    content_node_id: str
-    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
-    creator: NotRequired[SimpleUserTypeForResponse]
-    created_at: str
-    updated_at: str
-    archived_at: Union[str, None]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "ProjectsV2ItemType",
-    "ProjectsV2ItemTypeForResponse",
+    "WebhooksUserMannequinType",
+    "WebhooksUserMannequinTypeForResponse",
 )

@@ -9,26 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody(GitHubModel):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody"""
+class OrgsOrgAttestationsDeleteRequestPostBodyOneof0(GitHubModel):
+    """OrgsOrgAttestationsDeleteRequestPostBodyOneof0"""
 
-    default_for_new_repos: Missing[
-        Literal["all", "none", "private_and_internal", "public"]
-    ] = Field(
-        default=UNSET,
-        description="Specify which types of repository this security configuration should be applied to by default.",
+    subject_digests: list[str] = Field(
+        max_length=1024 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="List of subject digests associated with the artifact attestations to delete.",
     )
 
 
-model_rebuild(OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody)
+model_rebuild(OrgsOrgAttestationsDeleteRequestPostBodyOneof0)
 
-__all__ = ("OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody",)
+__all__ = ("OrgsOrgAttestationsDeleteRequestPostBodyOneof0",)

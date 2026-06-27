@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -19,109 +18,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgPrivateRegistriesGetResponse200(GitHubModel):
-    """OrgsOrgPrivateRegistriesGetResponse200"""
+class OrgsOrgHooksHookIdConfigPatchBody(GitHubModel):
+    """OrgsOrgHooksHookIdConfigPatchBody"""
 
-    total_count: int = Field()
-    configurations: list[OrgPrivateRegistryConfiguration] = Field()
-
-
-class OrgPrivateRegistryConfiguration(GitHubModel):
-    """Organization private registry
-
-    Private registry configuration for an organization
-    """
-
-    name: str = Field(description="The name of the private registry configuration.")
-    registry_type: Literal[
-        "maven_repository",
-        "nuget_feed",
-        "goproxy_server",
-        "npm_registry",
-        "rubygems_server",
-        "cargo_registry",
-        "composer_repository",
-        "docker_registry",
-        "git_source",
-        "helm_registry",
-        "hex_organization",
-        "hex_repository",
-        "pub_repository",
-        "python_index",
-        "terraform_registry",
-    ] = Field(description="The registry type.")
-    auth_type: Missing[
-        Literal[
-            "token",
-            "username_password",
-            "oidc_azure",
-            "oidc_aws",
-            "oidc_jfrog",
-            "oidc_cloudsmith",
-            "oidc_gcp",
-        ]
-    ] = Field(
-        default=UNSET, description="The authentication type for the private registry."
-    )
     url: Missing[str] = Field(
-        default=UNSET, description="The URL of the private registry."
+        default=UNSET, description="The URL to which the payloads will be delivered."
     )
-    username: Missing[Union[str, None]] = Field(
+    content_type: Missing[str] = Field(
         default=UNSET,
-        description="The username to use when authenticating with the private registry.",
+        description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
     )
-    replaces_base: Missing[bool] = Field(
+    secret: Missing[str] = Field(
         default=UNSET,
-        description="Whether this private registry replaces the base registry (e.g., npmjs.org for npm, rubygems.org for rubygems). When `true`, Dependabot will only use this registry and will not fall back to the public registry. When `false` (default), Dependabot will use this registry for scoped packages but may fall back to the public registry for other packages.",
+        description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/enterprise-cloud@latest/webhooks/event-payloads/#delivery-headers).",
     )
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="Which type of organization repositories have access to the private registry."
-    )
-    tenant_id: Missing[str] = Field(
-        default=UNSET, description="The tenant ID of the Azure AD application."
-    )
-    client_id: Missing[str] = Field(
-        default=UNSET, description="The client ID of the Azure AD application."
-    )
-    aws_region: Missing[str] = Field(default=UNSET, description="The AWS region.")
-    account_id: Missing[str] = Field(default=UNSET, description="The AWS account ID.")
-    role_name: Missing[str] = Field(default=UNSET, description="The AWS IAM role name.")
-    domain: Missing[str] = Field(default=UNSET, description="The CodeArtifact domain.")
-    domain_owner: Missing[str] = Field(
-        default=UNSET, description="The CodeArtifact domain owner."
-    )
-    jfrog_oidc_provider_name: Missing[str] = Field(
-        default=UNSET, description="The JFrog OIDC provider name."
-    )
-    audience: Missing[str] = Field(default=UNSET, description="The OIDC audience.")
-    identity_mapping_name: Missing[str] = Field(
-        default=UNSET, description="The JFrog identity mapping name."
-    )
-    namespace: Missing[str] = Field(
-        default=UNSET, description="The Cloudsmith organization namespace."
-    )
-    service_slug: Missing[str] = Field(
-        default=UNSET, description="The Cloudsmith service account slug."
-    )
-    api_host: Missing[str] = Field(
-        default=UNSET, description="The Cloudsmith API host."
-    )
-    workload_identity_provider: Missing[str] = Field(
-        default=UNSET,
-        description="The full resource name of the GCP Workload Identity Provider (e.g. `projects/<NUM>/locations/global/workloadIdentityPools/<POOL>/providers/<PROVIDER>`).",
-    )
-    service_account: Missing[str] = Field(
-        default=UNSET,
-        description="The GCP service account email to impersonate. If omitted, the federated token is used directly (direct WIF).",
-    )
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
+    insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgPrivateRegistriesGetResponse200)
-model_rebuild(OrgPrivateRegistryConfiguration)
+model_rebuild(OrgsOrgHooksHookIdConfigPatchBody)
 
-__all__ = (
-    "OrgPrivateRegistryConfiguration",
-    "OrgsOrgPrivateRegistriesGetResponse200",
-)
+__all__ = ("OrgsOrgHooksHookIdConfigPatchBody",)

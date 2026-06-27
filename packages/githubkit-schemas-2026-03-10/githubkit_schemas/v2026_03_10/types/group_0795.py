@@ -9,45 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0502 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0503 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0504 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0505 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0534 import WebhooksProjectColumnType, WebhooksProjectColumnTypeForResponse
+from typing_extensions import TypedDict
 
 
-class WebhookProjectColumnMovedType(TypedDict):
-    """project_column moved event"""
+class WebhookPingFormEncodedType(TypedDict):
+    """WebhookPingFormEncoded
 
-    action: Literal["moved"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    project_column: WebhooksProjectColumnType
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserType
+    The webhooks ping payload encoded with URL encoding.
+    """
+
+    payload: str
 
 
-class WebhookProjectColumnMovedTypeForResponse(TypedDict):
-    """project_column moved event"""
+class WebhookPingFormEncodedTypeForResponse(TypedDict):
+    """WebhookPingFormEncoded
 
-    action: Literal["moved"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    project_column: WebhooksProjectColumnTypeForResponse
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    sender: SimpleUserTypeForResponse
+    The webhooks ping payload encoded with URL encoding.
+    """
+
+    payload: str
 
 
 __all__ = (
-    "WebhookProjectColumnMovedType",
-    "WebhookProjectColumnMovedTypeForResponse",
+    "WebhookPingFormEncodedType",
+    "WebhookPingFormEncodedTypeForResponse",
 )

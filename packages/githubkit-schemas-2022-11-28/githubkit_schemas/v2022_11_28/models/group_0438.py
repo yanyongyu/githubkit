@@ -9,32 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0003 import SimpleUser
+from .group_0020 import Repository
 
 
-class RepositoryRuleDetailedOneof3(GitHubModel):
-    """RepositoryRuleDetailedOneof3"""
+class PullRequestPropHead(GitHubModel):
+    """PullRequestPropHead"""
 
-    type: Literal["required_linear_history"] = Field()
-    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
-        default=UNSET,
-        description="The type of source for the ruleset that includes this rule.",
-    )
-    ruleset_source: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the source of the ruleset that includes this rule.",
-    )
-    ruleset_id: Missing[int] = Field(
-        default=UNSET, description="The ID of the ruleset that includes this rule."
-    )
+    label: Union[str, None] = Field()
+    ref: str = Field()
+    repo: Union[None, Repository] = Field()
+    sha: str = Field()
+    user: Union[None, SimpleUser] = Field()
 
 
-model_rebuild(RepositoryRuleDetailedOneof3)
+class PullRequestPropBase(GitHubModel):
+    """PullRequestPropBase"""
 
-__all__ = ("RepositoryRuleDetailedOneof3",)
+    label: str = Field()
+    ref: str = Field()
+    repo: Repository = Field(title="Repository", description="A repository on GitHub.")
+    sha: str = Field()
+    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+
+
+model_rebuild(PullRequestPropHead)
+model_rebuild(PullRequestPropBase)
+
+__all__ = (
+    "PullRequestPropBase",
+    "PullRequestPropHead",
+)

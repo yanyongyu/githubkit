@@ -9,9 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -19,21 +16,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrganizationActionsSecret(GitHubModel):
-    """Actions Secret for an Organization
+class OidcCustomSub(GitHubModel):
+    """Actions OIDC Subject customization
 
-    Secrets for GitHub Actions for an organization.
+    Actions OIDC Subject customization
     """
 
-    name: str = Field(description="The name of the secret.")
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="Visibility of a secret"
+    include_claim_keys: list[str] = Field(
+        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores."
     )
-    selected_repositories_url: Missing[str] = Field(default=UNSET)
+    use_immutable_subject: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to opt in to the immutable OIDC subject claim format for the organization. When `true`, new OIDC tokens will use a stable, repository-ID-based `sub` claim instead of the name-based format.",
+    )
 
 
-model_rebuild(OrganizationActionsSecret)
+model_rebuild(OidcCustomSub)
 
-__all__ = ("OrganizationActionsSecret",)
+__all__ = ("OidcCustomSub",)

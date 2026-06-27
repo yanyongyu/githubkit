@@ -9,28 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoReleasesGenerateNotesPostBodyType(TypedDict):
-    """ReposOwnerRepoReleasesGenerateNotesPostBody"""
+class ReposOwnerRepoPullsPullNumberCommentsPostBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberCommentsPostBody"""
 
-    tag_name: str
-    target_commitish: NotRequired[str]
-    previous_tag_name: NotRequired[str]
-    configuration_file_path: NotRequired[str]
+    body: str
+    commit_id: str
+    path: str
+    position: NotRequired[int]
+    side: NotRequired[Literal["LEFT", "RIGHT"]]
+    line: NotRequired[int]
+    start_line: NotRequired[int]
+    start_side: NotRequired[Literal["LEFT", "RIGHT", "side"]]
+    in_reply_to: NotRequired[int]
+    subject_type: NotRequired[Literal["line", "file"]]
 
 
-class ReposOwnerRepoReleasesGenerateNotesPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoReleasesGenerateNotesPostBody"""
+class ReposOwnerRepoPullsPullNumberCommentsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPullNumberCommentsPostBody"""
 
-    tag_name: str
-    target_commitish: NotRequired[str]
-    previous_tag_name: NotRequired[str]
-    configuration_file_path: NotRequired[str]
+    body: str
+    commit_id: str
+    path: str
+    position: NotRequired[int]
+    side: NotRequired[Literal["LEFT", "RIGHT"]]
+    line: NotRequired[int]
+    start_line: NotRequired[int]
+    start_side: NotRequired[Literal["LEFT", "RIGHT", "side"]]
+    in_reply_to: NotRequired[int]
+    subject_type: NotRequired[Literal["line", "file"]]
 
 
 __all__ = (
-    "ReposOwnerRepoReleasesGenerateNotesPostBodyType",
-    "ReposOwnerRepoReleasesGenerateNotesPostBodyTypeForResponse",
+    "ReposOwnerRepoPullsPullNumberCommentsPostBodyType",
+    "ReposOwnerRepoPullsPullNumberCommentsPostBodyTypeForResponse",
 )

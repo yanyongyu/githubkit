@@ -3262,7 +3262,7 @@ class OrgsClient:
 
         GET /orgs/{org}/credential-authorizations
 
-        Lists all credential authorizations for an organization that uses SAML single sign-on (SSO). The credentials are either personal access tokens or SSH keys that organization members have authorized for the organization. For more information, see [About authentication with SAML single sign-on](https://docs.github.com/enterprise-cloud@latest/articles/about-authentication-with-saml-single-sign-on).
+        Lists all credential authorizations for an organization that uses SAML single sign-on (SSO). The credentials can be personal access tokens, SSH keys, OAuth app access tokens, or user-to-server tokens from GitHub Apps that organization members have authorized for the organization. For more information, see [About authentication with SAML single sign-on](https://docs.github.com/enterprise-cloud@latest/articles/about-authentication-with-saml-single-sign-on).
 
         The authenticated user must be an organization owner to use this endpoint.
 
@@ -3308,7 +3308,7 @@ class OrgsClient:
 
         GET /orgs/{org}/credential-authorizations
 
-        Lists all credential authorizations for an organization that uses SAML single sign-on (SSO). The credentials are either personal access tokens or SSH keys that organization members have authorized for the organization. For more information, see [About authentication with SAML single sign-on](https://docs.github.com/enterprise-cloud@latest/articles/about-authentication-with-saml-single-sign-on).
+        Lists all credential authorizations for an organization that uses SAML single sign-on (SSO). The credentials can be personal access tokens, SSH keys, OAuth app access tokens, or user-to-server tokens from GitHub Apps that organization members have authorized for the organization. For more information, see [About authentication with SAML single sign-on](https://docs.github.com/enterprise-cloud@latest/articles/about-authentication-with-saml-single-sign-on).
 
         The authenticated user must be an organization owner to use this endpoint.
 
@@ -3350,7 +3350,7 @@ class OrgsClient:
 
         DELETE /orgs/{org}/credential-authorizations/{credential_id}
 
-        Removes a credential authorization for an organization that uses SAML SSO. Once you remove someone's credential authorization, they will need to create a new personal access token or SSH key and authorize it for the organization they want to access.
+        Removes a credential authorization for an organization that uses SAML SSO. The credential can be a personal access token, an SSH key, an OAuth app access token, or a user-to-server token from a GitHub App. Once you remove someone's credential authorization, they will need to authorize the credential again for the organization they want to access.
 
         The authenticated user must be an organization owner to use this endpoint.
 
@@ -3387,7 +3387,7 @@ class OrgsClient:
 
         DELETE /orgs/{org}/credential-authorizations/{credential_id}
 
-        Removes a credential authorization for an organization that uses SAML SSO. Once you remove someone's credential authorization, they will need to create a new personal access token or SSH key and authorize it for the organization they want to access.
+        Removes a credential authorization for an organization that uses SAML SSO. The credential can be a personal access token, an SSH key, an OAuth app access token, or a user-to-server token from a GitHub App. Once you remove someone's credential authorization, they will need to authorize the credential again for the organization they want to access.
 
         The authenticated user must be an organization owner to use this endpoint.
 

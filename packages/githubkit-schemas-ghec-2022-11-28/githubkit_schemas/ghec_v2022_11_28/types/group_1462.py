@@ -11,30 +11,39 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0011 import WebhookConfigType, WebhookConfigTypeForResponse
+from .group_0439 import (
+    CustomDeploymentRuleAppType,
+    CustomDeploymentRuleAppTypeForResponse,
+)
 
 
-class ReposOwnerRepoHooksHookIdPatchBodyType(TypedDict):
-    """ReposOwnerRepoHooksHookIdPatchBody"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200Type(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetRespons
+    e200
+    """
 
-    config: NotRequired[WebhookConfigType]
-    events: NotRequired[list[str]]
-    add_events: NotRequired[list[str]]
-    remove_events: NotRequired[list[str]]
-    active: NotRequired[bool]
+    total_count: NotRequired[int]
+    available_custom_deployment_protection_rule_integrations: NotRequired[
+        list[CustomDeploymentRuleAppType]
+    ]
 
 
-class ReposOwnerRepoHooksHookIdPatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoHooksHookIdPatchBody"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetRespons
+    e200
+    """
 
-    config: NotRequired[WebhookConfigTypeForResponse]
-    events: NotRequired[list[str]]
-    add_events: NotRequired[list[str]]
-    remove_events: NotRequired[list[str]]
-    active: NotRequired[bool]
+    total_count: NotRequired[int]
+    available_custom_deployment_protection_rule_integrations: NotRequired[
+        list[CustomDeploymentRuleAppTypeForResponse]
+    ]
 
 
 __all__ = (
-    "ReposOwnerRepoHooksHookIdPatchBodyType",
-    "ReposOwnerRepoHooksHookIdPatchBodyTypeForResponse",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200Type",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200TypeForResponse",
 )

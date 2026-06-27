@@ -12,19 +12,21 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoMergeUpstreamPostBodyType(TypedDict):
-    """ReposOwnerRepoMergeUpstreamPostBody"""
+class ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody"""
 
-    branch: str
+    issue_id: int
 
 
-class ReposOwnerRepoMergeUpstreamPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoMergeUpstreamPostBody"""
+class ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody"""
 
-    branch: str
+    issue_id: int
 
 
 __all__ = (
-    "ReposOwnerRepoMergeUpstreamPostBodyType",
-    "ReposOwnerRepoMergeUpstreamPostBodyTypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyType",
+    "ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyTypeForResponse",
 )

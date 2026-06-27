@@ -9,25 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class NotificationsPutBodyType(TypedDict):
-    """NotificationsPutBody"""
+class EnterprisesEnterpriseTeamsTeamSlugPatchBodyType(TypedDict):
+    """EnterprisesEnterpriseTeamsTeamSlugPatchBody"""
 
-    last_read_at: NotRequired[_dt.datetime]
-    read: NotRequired[bool]
+    name: NotRequired[Union[str, None]]
+    description: NotRequired[Union[str, None]]
+    sync_to_organizations: NotRequired[Literal["all", "disabled"]]
+    organization_selection_type: NotRequired[Literal["disabled", "selected", "all"]]
+    group_id: NotRequired[Union[str, None]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
 
 
-class NotificationsPutBodyTypeForResponse(TypedDict):
-    """NotificationsPutBody"""
+class EnterprisesEnterpriseTeamsTeamSlugPatchBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseTeamsTeamSlugPatchBody"""
 
-    last_read_at: NotRequired[str]
-    read: NotRequired[bool]
+    name: NotRequired[Union[str, None]]
+    description: NotRequired[Union[str, None]]
+    sync_to_organizations: NotRequired[Literal["all", "disabled"]]
+    organization_selection_type: NotRequired[Literal["disabled", "selected", "all"]]
+    group_id: NotRequired[Union[str, None]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
 
 
 __all__ = (
-    "NotificationsPutBodyType",
-    "NotificationsPutBodyTypeForResponse",
+    "EnterprisesEnterpriseTeamsTeamSlugPatchBodyType",
+    "EnterprisesEnterpriseTeamsTeamSlugPatchBodyTypeForResponse",
 )

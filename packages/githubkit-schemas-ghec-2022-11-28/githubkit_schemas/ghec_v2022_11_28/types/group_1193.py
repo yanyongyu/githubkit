@@ -9,39 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyType(TypedDict):
-    """OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody"""
+class NotificationsPutResponse202Type(TypedDict):
+    """NotificationsPutResponse202"""
 
-    name: NotRequired[str]
-    runner_group_id: NotRequired[int]
-    maximum_runners: NotRequired[int]
-    enable_static_ip: NotRequired[bool]
-    size: NotRequired[str]
-    image_source: NotRequired[Literal["github", "partner", "custom"]]
-    image_id: NotRequired[str]
-    image_version: NotRequired[Union[str, None]]
-    image_gen: NotRequired[bool]
+    message: NotRequired[str]
 
 
-class OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody"""
+class NotificationsPutResponse202TypeForResponse(TypedDict):
+    """NotificationsPutResponse202"""
 
-    name: NotRequired[str]
-    runner_group_id: NotRequired[int]
-    maximum_runners: NotRequired[int]
-    enable_static_ip: NotRequired[bool]
-    size: NotRequired[str]
-    image_source: NotRequired[Literal["github", "partner", "custom"]]
-    image_id: NotRequired[str]
-    image_version: NotRequired[Union[str, None]]
-    image_gen: NotRequired[bool]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyType",
-    "OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyTypeForResponse",
+    "NotificationsPutResponse202Type",
+    "NotificationsPutResponse202TypeForResponse",
 )

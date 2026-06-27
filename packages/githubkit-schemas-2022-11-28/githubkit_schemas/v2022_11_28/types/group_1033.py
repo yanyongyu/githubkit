@@ -9,39 +9,63 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyType(TypedDict):
-    """OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody"""
+class OrganizationsOrgSettingsBillingBudgetsPostBodyType(TypedDict):
+    """OrganizationsOrgSettingsBillingBudgetsPostBody"""
 
-    name: NotRequired[str]
-    runner_group_id: NotRequired[int]
-    maximum_runners: NotRequired[int]
-    enable_static_ip: NotRequired[bool]
-    size: NotRequired[str]
-    image_source: NotRequired[Literal["github", "partner", "custom"]]
-    image_id: NotRequired[str]
-    image_version: NotRequired[Union[str, None]]
-    image_gen: NotRequired[bool]
+    budget_amount: NotRequired[int]
+    prevent_further_usage: NotRequired[bool]
+    budget_alerting: NotRequired[
+        OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlertingType
+    ]
+    budget_scope: NotRequired[
+        Literal["organization", "repository", "multi_user_customer", "user"]
+    ]
+    budget_entity_name: NotRequired[str]
+    budget_type: NotRequired[Literal["BundlePricing", "ProductPricing", "SkuPricing"]]
+    budget_product_sku: NotRequired[str]
+    user: NotRequired[str]
 
 
-class OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody"""
+class OrganizationsOrgSettingsBillingBudgetsPostBodyTypeForResponse(TypedDict):
+    """OrganizationsOrgSettingsBillingBudgetsPostBody"""
 
-    name: NotRequired[str]
-    runner_group_id: NotRequired[int]
-    maximum_runners: NotRequired[int]
-    enable_static_ip: NotRequired[bool]
-    size: NotRequired[str]
-    image_source: NotRequired[Literal["github", "partner", "custom"]]
-    image_id: NotRequired[str]
-    image_version: NotRequired[Union[str, None]]
-    image_gen: NotRequired[bool]
+    budget_amount: NotRequired[int]
+    prevent_further_usage: NotRequired[bool]
+    budget_alerting: NotRequired[
+        OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlertingTypeForResponse
+    ]
+    budget_scope: NotRequired[
+        Literal["organization", "repository", "multi_user_customer", "user"]
+    ]
+    budget_entity_name: NotRequired[str]
+    budget_type: NotRequired[Literal["BundlePricing", "ProductPricing", "SkuPricing"]]
+    budget_product_sku: NotRequired[str]
+    user: NotRequired[str]
+
+
+class OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlertingType(TypedDict):
+    """OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlerting"""
+
+    will_alert: NotRequired[bool]
+    alert_recipients: NotRequired[list[str]]
+
+
+class OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlertingTypeForResponse(
+    TypedDict
+):
+    """OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlerting"""
+
+    will_alert: NotRequired[bool]
+    alert_recipients: NotRequired[list[str]]
 
 
 __all__ = (
-    "OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyType",
-    "OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyTypeForResponse",
+    "OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlertingType",
+    "OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlertingTypeForResponse",
+    "OrganizationsOrgSettingsBillingBudgetsPostBodyType",
+    "OrganizationsOrgSettingsBillingBudgetsPostBodyTypeForResponse",
 )

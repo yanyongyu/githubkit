@@ -9,17 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from pydantic import Field
-
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody"""
-
-    sub_issue_id: int = Field(description="The id of the sub-issue to remove")
+class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1"""
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1)
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1",)

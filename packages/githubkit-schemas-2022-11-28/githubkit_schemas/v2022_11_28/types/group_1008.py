@@ -9,49 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, Literal, TypeAlias, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class GistsPostBodyType(TypedDict):
-    """GistsPostBody"""
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyType(TypedDict):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody"""
 
-    description: NotRequired[str]
-    files: GistsPostBodyPropFilesType
-    public: NotRequired[Union[bool, Literal["true", "false"]]]
-
-
-class GistsPostBodyTypeForResponse(TypedDict):
-    """GistsPostBody"""
-
-    description: NotRequired[str]
-    files: GistsPostBodyPropFilesTypeForResponse
-    public: NotRequired[Union[bool, Literal["true", "false"]]]
+    policy_state: Literal[
+        "enabled_for_all_orgs",
+        "disabled_for_all_orgs",
+        "enabled_for_selected_orgs",
+        "configured_by_org_admins",
+    ]
 
 
-GistsPostBodyPropFilesType: TypeAlias = dict[str, Any]
-"""GistsPostBodyPropFiles
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody"""
 
-Names and content for the files that make up the gist
-
-Examples:
-    {'hello.rb': {'content': 'puts "Hello, World!"'}}
-"""
-
-
-GistsPostBodyPropFilesTypeForResponse: TypeAlias = dict[str, Any]
-"""GistsPostBodyPropFiles
-
-Names and content for the files that make up the gist
-
-Examples:
-    {'hello.rb': {'content': 'puts "Hello, World!"'}}
-"""
+    policy_state: Literal[
+        "enabled_for_all_orgs",
+        "disabled_for_all_orgs",
+        "enabled_for_selected_orgs",
+        "configured_by_org_admins",
+    ]
 
 
 __all__ = (
-    "GistsPostBodyPropFilesType",
-    "GistsPostBodyPropFilesTypeForResponse",
-    "GistsPostBodyType",
-    "GistsPostBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyType",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyTypeForResponse",
 )

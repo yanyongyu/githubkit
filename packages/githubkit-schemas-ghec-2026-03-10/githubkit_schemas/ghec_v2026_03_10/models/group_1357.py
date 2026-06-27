@@ -16,14 +16,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoActionsRunsRunIdRerunPostBody(GitHubModel):
-    """ReposOwnerRepoActionsRunsRunIdRerunPostBody"""
+class ReposOwnerRepoActionsJobsJobIdRerunPostBody(GitHubModel):
+    """ReposOwnerRepoActionsJobsJobIdRerunPostBody"""
 
     enable_debug_logging: Missing[bool] = Field(
         default=UNSET, description="Whether to enable debug logging for the re-run."
     )
+    enable_debugger: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to enable the debugger for the re-run of this job.",
+    )
 
 
-model_rebuild(ReposOwnerRepoActionsRunsRunIdRerunPostBody)
+model_rebuild(ReposOwnerRepoActionsJobsJobIdRerunPostBody)
 
-__all__ = ("ReposOwnerRepoActionsRunsRunIdRerunPostBody",)
+__all__ = ("ReposOwnerRepoActionsJobsJobIdRerunPostBody",)

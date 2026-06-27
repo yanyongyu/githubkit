@@ -9,31 +9,83 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_1057 import (
-    AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsType,
-    AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse,
-)
 
+class AgentsReposOwnerRepoTasksTaskIdGetResponse403Type(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse403
 
-class AgentsTasksTaskIdGetResponse200Allof1Type(TypedDict):
-    """AgentsTasksTaskIdGetResponse200Allof1"""
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
 
-    sessions: NotRequired[
-        list[AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsType]
+    message: str
+    errors: NotRequired[
+        list[AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItemsType]
     ]
+    documentation_url: str
 
 
-class AgentsTasksTaskIdGetResponse200Allof1TypeForResponse(TypedDict):
-    """AgentsTasksTaskIdGetResponse200Allof1"""
+class AgentsReposOwnerRepoTasksTaskIdGetResponse403TypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse403
 
-    sessions: NotRequired[
-        list[AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse]
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[
+        list[
+            AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItemsTypeForResponse
+        ]
     ]
+    documentation_url: str
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItemsType(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItemsTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "AgentsTasksTaskIdGetResponse200Allof1Type",
-    "AgentsTasksTaskIdGetResponse200Allof1TypeForResponse",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItemsType",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItemsTypeForResponse",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse403Type",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse403TypeForResponse",
 )

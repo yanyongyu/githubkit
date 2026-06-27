@@ -9,63 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseActionsHostedRunnersPostBodyType(TypedDict):
-    """EnterprisesEnterpriseActionsHostedRunnersPostBody"""
+class AppManifestsCodeConversionsPostResponse201Allof1Type(TypedDict):
+    """AppManifestsCodeConversionsPostResponse201Allof1"""
 
-    name: str
-    image: EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImageType
-    size: str
-    runner_group_id: int
-    maximum_runners: NotRequired[int]
-    enable_static_ip: NotRequired[bool]
-    image_gen: NotRequired[bool]
+    client_id: str
+    client_secret: str
+    webhook_secret: Union[str, None]
+    pem: str
 
 
-class EnterprisesEnterpriseActionsHostedRunnersPostBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseActionsHostedRunnersPostBody"""
+class AppManifestsCodeConversionsPostResponse201Allof1TypeForResponse(TypedDict):
+    """AppManifestsCodeConversionsPostResponse201Allof1"""
 
-    name: str
-    image: EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImageTypeForResponse
-    size: str
-    runner_group_id: int
-    maximum_runners: NotRequired[int]
-    enable_static_ip: NotRequired[bool]
-    image_gen: NotRequired[bool]
-
-
-class EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImageType(TypedDict):
-    """EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImage
-
-    The image of runner. To list all available images, use `GET /actions/hosted-
-    runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`.
-    """
-
-    id: NotRequired[str]
-    source: NotRequired[Literal["github", "partner", "custom"]]
-    version: NotRequired[Union[str, None]]
-
-
-class EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImageTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImage
-
-    The image of runner. To list all available images, use `GET /actions/hosted-
-    runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`.
-    """
-
-    id: NotRequired[str]
-    source: NotRequired[Literal["github", "partner", "custom"]]
-    version: NotRequired[Union[str, None]]
+    client_id: str
+    client_secret: str
+    webhook_secret: Union[str, None]
+    pem: str
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImageType",
-    "EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImageTypeForResponse",
-    "EnterprisesEnterpriseActionsHostedRunnersPostBodyType",
-    "EnterprisesEnterpriseActionsHostedRunnersPostBodyTypeForResponse",
+    "AppManifestsCodeConversionsPostResponse201Allof1Type",
+    "AppManifestsCodeConversionsPostResponse201Allof1TypeForResponse",
 )

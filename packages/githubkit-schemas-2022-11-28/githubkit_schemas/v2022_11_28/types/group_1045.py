@@ -9,28 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0090 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
-
-
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200Type(TypedDict):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200"""
-
-    total_count: float
-    repositories: list[MinimalRepositoryType]
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200TypeForResponse(
-    TypedDict
-):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200"""
+class OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyType(TypedDict):
+    """OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody"""
 
-    total_count: float
-    repositories: list[MinimalRepositoryTypeForResponse]
+    name: NotRequired[str]
+    runner_group_id: NotRequired[int]
+    maximum_runners: NotRequired[int]
+    enable_static_ip: NotRequired[bool]
+    size: NotRequired[str]
+    image_source: NotRequired[Literal["github", "partner", "custom"]]
+    image_id: NotRequired[str]
+    image_version: NotRequired[Union[str, None]]
+    image_gen: NotRequired[bool]
+
+
+class OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody"""
+
+    name: NotRequired[str]
+    runner_group_id: NotRequired[int]
+    maximum_runners: NotRequired[int]
+    enable_static_ip: NotRequired[bool]
+    size: NotRequired[str]
+    image_source: NotRequired[Literal["github", "partner", "custom"]]
+    image_id: NotRequired[str]
+    image_version: NotRequired[Union[str, None]]
+    image_gen: NotRequired[bool]
 
 
 __all__ = (
-    "OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200Type",
-    "OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200TypeForResponse",
+    "OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyType",
+    "OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyTypeForResponse",
 )

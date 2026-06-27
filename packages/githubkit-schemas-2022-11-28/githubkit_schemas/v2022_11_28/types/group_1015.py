@@ -9,33 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
-
-from .group_1016 import (
-    InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType,
-    InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse,
-)
+from typing_extensions import TypedDict
 
 
-class InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1Type(TypedDict):
-    """InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1"""
+class EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBodyType(TypedDict):
+    """EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBody"""
 
-    custom_properties: NotRequired[
-        InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType
-    ]
+    usernames: list[str]
 
 
-class InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1TypeForResponse(
+class EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBodyTypeForResponse(
     TypedDict
 ):
-    """InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1"""
+    """EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBody"""
 
-    custom_properties: NotRequired[
-        InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse
-    ]
+    usernames: list[str]
 
 
 __all__ = (
-    "InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1Type",
-    "InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1TypeForResponse",
+    "EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBodyType",
+    "EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBodyTypeForResponse",
 )

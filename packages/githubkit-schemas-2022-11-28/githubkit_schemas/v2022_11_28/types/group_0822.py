@@ -9,47 +9,79 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0050 import MilestoneType, MilestoneTypeForResponse
-from .group_0503 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0505 import (
+from .group_0516 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0517 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0506 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0540 import WebhooksPullRequest5Type, WebhooksPullRequest5TypeForResponse
+from .group_0549 import ProjectsV2ItemType, ProjectsV2ItemTypeForResponse
 
 
-class WebhookPullRequestDemilestonedType(TypedDict):
-    """pull_request demilestoned event"""
+class WebhookProjectsV2ItemReorderedType(TypedDict):
+    """Projects v2 Item Reordered Event"""
 
-    action: Literal["demilestoned"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    milestone: NotRequired[MilestoneType]
-    number: int
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    pull_request: WebhooksPullRequest5Type
-    repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserType]
+    action: Literal["reordered"]
+    changes: WebhookProjectsV2ItemReorderedPropChangesType
+    installation: NotRequired[SimpleInstallationType]
+    organization: OrganizationSimpleWebhooksType
+    projects_v2_item: ProjectsV2ItemType
+    sender: SimpleUserType
 
 
-class WebhookPullRequestDemilestonedTypeForResponse(TypedDict):
-    """pull_request demilestoned event"""
+class WebhookProjectsV2ItemReorderedTypeForResponse(TypedDict):
+    """Projects v2 Item Reordered Event"""
 
-    action: Literal["demilestoned"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    milestone: NotRequired[MilestoneTypeForResponse]
-    number: int
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    pull_request: WebhooksPullRequest5TypeForResponse
-    repository: RepositoryWebhooksTypeForResponse
-    sender: NotRequired[SimpleUserTypeForResponse]
+    action: Literal["reordered"]
+    changes: WebhookProjectsV2ItemReorderedPropChangesTypeForResponse
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    projects_v2_item: ProjectsV2ItemTypeForResponse
+    sender: SimpleUserTypeForResponse
+
+
+class WebhookProjectsV2ItemReorderedPropChangesType(TypedDict):
+    """WebhookProjectsV2ItemReorderedPropChanges"""
+
+    previous_projects_v2_item_node_id: NotRequired[
+        WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdType
+    ]
+
+
+class WebhookProjectsV2ItemReorderedPropChangesTypeForResponse(TypedDict):
+    """WebhookProjectsV2ItemReorderedPropChanges"""
+
+    previous_projects_v2_item_node_id: NotRequired[
+        WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdTypeForResponse
+    ]
+
+
+class WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdType(
+    TypedDict
+):
+    """WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId"""
+
+    from_: NotRequired[Union[str, None]]
+    to: NotRequired[Union[str, None]]
+
+
+class WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdTypeForResponse(
+    TypedDict
+):
+    """WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId"""
+
+    from_: NotRequired[Union[str, None]]
+    to: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "WebhookPullRequestDemilestonedType",
-    "WebhookPullRequestDemilestonedTypeForResponse",
+    "WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdType",
+    "WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdTypeForResponse",
+    "WebhookProjectsV2ItemReorderedPropChangesType",
+    "WebhookProjectsV2ItemReorderedPropChangesTypeForResponse",
+    "WebhookProjectsV2ItemReorderedType",
+    "WebhookProjectsV2ItemReorderedTypeForResponse",
 )

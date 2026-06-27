@@ -12,45 +12,25 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-
-class OrgsOrgActionsHostedRunnersImagesCustomGetResponse200(GitHubModel):
-    """OrgsOrgActionsHostedRunnersImagesCustomGetResponse200"""
-
-    total_count: int = Field()
-    images: list[ActionsHostedRunnerCustomImage] = Field()
-
-
-class ActionsHostedRunnerCustomImage(GitHubModel):
-    """GitHub-hosted runner custom image details
-
-    Provides details of a custom runner image
-    """
-
-    id: int = Field(
-        description="The ID of the image. Use this ID for the `image` parameter when creating a new larger runner."
-    )
-    platform: str = Field(description="The operating system of the image.")
-    total_versions_size: int = Field(
-        description="Total size of all the image versions in GB."
-    )
-    name: str = Field(description="Display name for this image.")
-    source: str = Field(description="The image provider.")
-    versions_count: int = Field(
-        description="The number of image versions associated with the image."
-    )
-    latest_version: str = Field(
-        description="The latest image version associated with the image."
-    )
-    state: str = Field(
-        description="The number of image versions associated with the image."
-    )
-
-
-model_rebuild(OrgsOrgActionsHostedRunnersImagesCustomGetResponse200)
-model_rebuild(ActionsHostedRunnerCustomImage)
-
-__all__ = (
-    "ActionsHostedRunnerCustomImage",
-    "OrgsOrgActionsHostedRunnersImagesCustomGetResponse200",
+from .group_1027 import (
+    InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties,
 )
+
+
+class InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1(GitHubModel):
+    """InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1"""
+
+    custom_properties: Missing[
+        InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties
+    ] = Field(
+        default=UNSET,
+        description="The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. Present for org repos only.",
+    )
+
+
+model_rebuild(InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1)
+
+__all__ = ("InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1",)

@@ -9,23 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoImportLfsPatchBodyType(TypedDict):
-    """ReposOwnerRepoImportLfsPatchBody"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyType(TypedDict):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody"""
 
-    use_lfs: Literal["opt_in", "opt_out"]
+    name: NotRequired[str]
+    value: NotRequired[str]
 
 
-class ReposOwnerRepoImportLfsPatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoImportLfsPatchBody"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody"""
 
-    use_lfs: Literal["opt_in", "opt_out"]
+    name: NotRequired[str]
+    value: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoImportLfsPatchBodyType",
-    "ReposOwnerRepoImportLfsPatchBodyTypeForResponse",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyType",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyTypeForResponse",
 )

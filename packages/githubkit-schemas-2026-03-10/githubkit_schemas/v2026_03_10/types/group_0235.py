@@ -9,22 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRuleFilePathRestrictionPropParametersType(TypedDict):
-    """RepositoryRuleFilePathRestrictionPropParameters"""
+class RepositoryRuleCopilotCodeReviewPropParametersType(TypedDict):
+    """RepositoryRuleCopilotCodeReviewPropParameters"""
 
-    restricted_file_paths: list[str]
+    review_draft_pull_requests: NotRequired[bool]
+    review_on_push: NotRequired[bool]
 
 
-class RepositoryRuleFilePathRestrictionPropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleFilePathRestrictionPropParameters"""
+class RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleCopilotCodeReviewPropParameters"""
 
-    restricted_file_paths: list[str]
+    review_draft_pull_requests: NotRequired[bool]
+    review_on_push: NotRequired[bool]
 
 
 __all__ = (
-    "RepositoryRuleFilePathRestrictionPropParametersType",
-    "RepositoryRuleFilePathRestrictionPropParametersTypeForResponse",
+    "RepositoryRuleCopilotCodeReviewPropParametersType",
+    "RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse",
 )

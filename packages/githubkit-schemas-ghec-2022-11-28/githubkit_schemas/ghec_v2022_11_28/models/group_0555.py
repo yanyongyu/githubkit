@@ -9,56 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0244 import MinimalRepository
-from .group_0554 import SearchResultTextMatchesItems
+from .group_0553 import Meta
 
 
-class CodeSearchResultItem(GitHubModel):
-    """Code Search Result Item
+class ScimEnterpriseGroupResponseAllof1(GitHubModel):
+    """ScimEnterpriseGroupResponseAllof1"""
 
-    Code Search Result Item
-    """
-
-    name: str = Field()
-    path: str = Field()
-    sha: str = Field()
-    url: str = Field()
-    git_url: str = Field()
-    html_url: str = Field()
-    repository: MinimalRepository = Field(
-        title="Minimal Repository", description="Minimal Repository"
+    id: Missing[str] = Field(
+        default=UNSET, description="The internally generated id for the group object."
     )
-    score: float = Field()
-    file_size: Missing[int] = Field(default=UNSET)
-    language: Missing[Union[str, None]] = Field(default=UNSET)
-    last_modified_at: Missing[_dt.datetime] = Field(default=UNSET)
-    line_numbers: Missing[list[str]] = Field(default=UNSET)
-    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
-        default=UNSET, title="Search Result Text Matches"
+    members: Missing[list[ScimEnterpriseGroupResponseAllof1PropMembersItems]] = Field(
+        default=UNSET, description="The security group members."
+    )
+    meta: Missing[Meta] = Field(
+        default=UNSET,
+        description="The metadata associated with the creation/updates to the user.",
     )
 
 
-class SearchCodeGetResponse200(GitHubModel):
-    """SearchCodeGetResponse200"""
+class ScimEnterpriseGroupResponseAllof1PropMembersItems(GitHubModel):
+    """ScimEnterpriseGroupResponseAllof1PropMembersItems"""
 
-    total_count: int = Field()
-    incomplete_results: bool = Field()
-    items: list[CodeSearchResultItem] = Field()
+    value: Missing[str] = Field(default=UNSET)
+    ref: Missing[str] = Field(default=UNSET, alias="$ref")
+    display: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(CodeSearchResultItem)
-model_rebuild(SearchCodeGetResponse200)
+model_rebuild(ScimEnterpriseGroupResponseAllof1)
+model_rebuild(ScimEnterpriseGroupResponseAllof1PropMembersItems)
 
 __all__ = (
-    "CodeSearchResultItem",
-    "SearchCodeGetResponse200",
+    "ScimEnterpriseGroupResponseAllof1",
+    "ScimEnterpriseGroupResponseAllof1PropMembersItems",
 )

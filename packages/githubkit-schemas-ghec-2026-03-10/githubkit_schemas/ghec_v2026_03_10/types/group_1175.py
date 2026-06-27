@@ -9,33 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias
-
-InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType: TypeAlias = dict[
-    str, Any
-]
-"""InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPrope
-rties
-
-The custom properties that were defined for the repository. The keys are the
-custom property names, and the values are the corresponding custom property
-values. Present for org repos only.
-"""
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPrope
-rties
+class EnterprisesEnterpriseTeamsPostBodyType(TypedDict):
+    """EnterprisesEnterpriseTeamsPostBody"""
 
-The custom properties that were defined for the repository. The keys are the
-custom property names, and the values are the corresponding custom property
-values. Present for org repos only.
-"""
+    name: str
+    description: NotRequired[Union[str, None]]
+    sync_to_organizations: NotRequired[Literal["all", "disabled"]]
+    organization_selection_type: NotRequired[Literal["disabled", "selected", "all"]]
+    group_id: NotRequired[Union[str, None]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
+
+
+class EnterprisesEnterpriseTeamsPostBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseTeamsPostBody"""
+
+    name: str
+    description: NotRequired[Union[str, None]]
+    sync_to_organizations: NotRequired[Literal["all", "disabled"]]
+    organization_selection_type: NotRequired[Literal["disabled", "selected", "all"]]
+    group_id: NotRequired[Union[str, None]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
 
 
 __all__ = (
-    "InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType",
-    "InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse",
+    "EnterprisesEnterpriseTeamsPostBodyType",
+    "EnterprisesEnterpriseTeamsPostBodyTypeForResponse",
 )

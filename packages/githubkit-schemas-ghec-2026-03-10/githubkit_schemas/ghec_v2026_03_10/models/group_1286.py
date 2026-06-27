@@ -9,21 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody(GitHubModel):
-    """OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody"""
+class OrgsOrgCopilotBillingSelectedTeamsPostResponse201(GitHubModel):
+    """OrgsOrgCopilotBillingSelectedTeamsPostResponse201
 
-    default_level: Literal["public", "internal"] = Field(
-        description="The default repository access level for Dependabot updates."
-    )
+    The total number of seats created for members of the specified team(s).
+    """
+
+    seats_created: int = Field()
 
 
-model_rebuild(OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody)
+model_rebuild(OrgsOrgCopilotBillingSelectedTeamsPostResponse201)
 
-__all__ = ("OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody",)
+__all__ = ("OrgsOrgCopilotBillingSelectedTeamsPostResponse201",)

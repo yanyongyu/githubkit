@@ -9,65 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class IssueFieldValue(GitHubModel):
-    """Issue Field Value
+class IssueCommentMinimized(GitHubModel):
+    """Minimized Issue Comment
 
-    A value assigned to an issue field
+    Details about why an issue comment was minimized.
     """
 
-    issue_field_id: int = Field(description="Unique identifier for the issue field.")
-    node_id: str = Field()
-    data_type: Literal["text", "single_select", "multi_select", "number", "date"] = (
-        Field(description="The data type of the issue field")
+    reason: Union[str, None] = Field(
+        description="The reason the comment was minimized."
     )
-    value: Union[str, float, int, None] = Field(
-        description="The value of the issue field"
-    )
-    single_select_option: Missing[
-        Union[IssueFieldValuePropSingleSelectOption, None]
-    ] = Field(
-        default=UNSET,
-        description="Details about the selected option (only present for single_select fields)",
-    )
-    multi_select_options: Missing[
-        Union[list[IssueFieldValuePropMultiSelectOptionsItems], None]
-    ] = Field(default=UNSET, description="Details about the selected options")
 
 
-class IssueFieldValuePropSingleSelectOption(GitHubModel):
-    """IssueFieldValuePropSingleSelectOption
+model_rebuild(IssueCommentMinimized)
 
-    Details about the selected option (only present for single_select fields)
-    """
-
-    id: int = Field(description="Unique identifier for the option.")
-    name: str = Field(description="The name of the option")
-    color: str = Field(description="The color of the option")
-
-
-class IssueFieldValuePropMultiSelectOptionsItems(GitHubModel):
-    """IssueFieldValuePropMultiSelectOptionsItems"""
-
-    id: int = Field(description="Unique identifier for the option.")
-    name: str = Field(description="The name of the option")
-    color: str = Field(description="The color of the option")
-
-
-model_rebuild(IssueFieldValue)
-model_rebuild(IssueFieldValuePropSingleSelectOption)
-model_rebuild(IssueFieldValuePropMultiSelectOptionsItems)
-
-__all__ = (
-    "IssueFieldValue",
-    "IssueFieldValuePropMultiSelectOptionsItems",
-    "IssueFieldValuePropSingleSelectOption",
-)
+__all__ = ("IssueCommentMinimized",)

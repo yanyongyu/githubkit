@@ -11,44 +11,49 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class GistsGistIdPatchBody(GitHubModel):
-    """GistsGistIdPatchBody"""
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody"""
 
-    description: Missing[str] = Field(
-        default=UNSET, description="The description of the gist."
-    )
-    files: Missing[GistsGistIdPatchBodyPropFiles] = Field(
+    organizations: Missing[list[str]] = Field(
         default=UNSET,
-        description="The gist files to be updated, renamed, or deleted. Each `key` must match the current filename\n(including extension) of the targeted gist file. For example: `hello.py`.\n\nTo delete a file, set the whole file to null. For example: `hello.py : null`. The file will also be\ndeleted if the specified object does not contain at least one of `content` or `filename`.",
+        description="List of organization logins within the enterprise to disable Copilot cloud agent for.",
+    )
+    custom_properties: Missing[
+        list[
+            EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItems
+        ]
+    ] = Field(
+        default=UNSET,
+        description="List of custom property filters to match organizations. Organizations matching any of the specified property name/value pairs will be included. This is a one-time operation, setting the property on an organization in the future will not automatically update its coding agent policy.",
     )
 
 
-class GistsGistIdPatchBodyPropFiles(ExtraGitHubModel):
-    """GistsGistIdPatchBodyPropFiles
-
-    The gist files to be updated, renamed, or deleted. Each `key` must match the
-    current filename
-    (including extension) of the targeted gist file. For example: `hello.py`.
-
-    To delete a file, set the whole file to null. For example: `hello.py : null`.
-    The file will also be
-    deleted if the specified object does not contain at least one of `content` or
-    `filename`.
-
-    Examples:
-        {'hello.rb': {'content': 'blah', 'filename': 'goodbye.rb'}}
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItems(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustom
+    PropertiesItems
     """
 
+    property_name: str = Field(
+        description="The name of the custom property to filter by."
+    )
+    values: list[str] = Field(description="The values of the custom property to match.")
 
-model_rebuild(GistsGistIdPatchBody)
-model_rebuild(GistsGistIdPatchBodyPropFiles)
+
+model_rebuild(EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody)
+model_rebuild(
+    EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItems
+)
 
 __all__ = (
-    "GistsGistIdPatchBody",
-    "GistsGistIdPatchBodyPropFiles",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItems",
 )

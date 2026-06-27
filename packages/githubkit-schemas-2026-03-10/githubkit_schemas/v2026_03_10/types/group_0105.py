@@ -9,24 +9,82 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsCacheUsageOrgEnterpriseType(TypedDict):
-    """ActionsCacheUsageOrgEnterprise"""
+class BillingUsageSummaryReportOrgType(TypedDict):
+    """BillingUsageSummaryReportOrg"""
 
-    total_active_caches_count: int
-    total_active_caches_size_in_bytes: int
+    time_period: BillingUsageSummaryReportOrgPropTimePeriodType
+    organization: str
+    repository: NotRequired[str]
+    product: NotRequired[str]
+    sku: NotRequired[str]
+    usage_items: list[BillingUsageSummaryReportOrgPropUsageItemsItemsType]
 
 
-class ActionsCacheUsageOrgEnterpriseTypeForResponse(TypedDict):
-    """ActionsCacheUsageOrgEnterprise"""
+class BillingUsageSummaryReportOrgTypeForResponse(TypedDict):
+    """BillingUsageSummaryReportOrg"""
 
-    total_active_caches_count: int
-    total_active_caches_size_in_bytes: int
+    time_period: BillingUsageSummaryReportOrgPropTimePeriodTypeForResponse
+    organization: str
+    repository: NotRequired[str]
+    product: NotRequired[str]
+    sku: NotRequired[str]
+    usage_items: list[BillingUsageSummaryReportOrgPropUsageItemsItemsTypeForResponse]
+
+
+class BillingUsageSummaryReportOrgPropTimePeriodType(TypedDict):
+    """BillingUsageSummaryReportOrgPropTimePeriod"""
+
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
+
+
+class BillingUsageSummaryReportOrgPropTimePeriodTypeForResponse(TypedDict):
+    """BillingUsageSummaryReportOrgPropTimePeriod"""
+
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
+
+
+class BillingUsageSummaryReportOrgPropUsageItemsItemsType(TypedDict):
+    """BillingUsageSummaryReportOrgPropUsageItemsItems"""
+
+    product: str
+    sku: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: float
+    gross_amount: float
+    discount_quantity: float
+    discount_amount: float
+    net_quantity: float
+    net_amount: float
+
+
+class BillingUsageSummaryReportOrgPropUsageItemsItemsTypeForResponse(TypedDict):
+    """BillingUsageSummaryReportOrgPropUsageItemsItems"""
+
+    product: str
+    sku: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: float
+    gross_amount: float
+    discount_quantity: float
+    discount_amount: float
+    net_quantity: float
+    net_amount: float
 
 
 __all__ = (
-    "ActionsCacheUsageOrgEnterpriseType",
-    "ActionsCacheUsageOrgEnterpriseTypeForResponse",
+    "BillingUsageSummaryReportOrgPropTimePeriodType",
+    "BillingUsageSummaryReportOrgPropTimePeriodTypeForResponse",
+    "BillingUsageSummaryReportOrgPropUsageItemsItemsType",
+    "BillingUsageSummaryReportOrgPropUsageItemsItemsTypeForResponse",
+    "BillingUsageSummaryReportOrgType",
+    "BillingUsageSummaryReportOrgTypeForResponse",
 )

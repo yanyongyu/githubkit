@@ -13,41 +13,44 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0576 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0577 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0578 import (
+from .group_0588 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0589 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0590 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0579 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0608 import WebhooksProjectCardType, WebhooksProjectCardTypeForResponse
+from .group_0591 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0871 import (
+    WebhookPackageUpdatedPropPackageType,
+    WebhookPackageUpdatedPropPackageTypeForResponse,
+)
 
 
-class WebhookProjectCardCreatedType(TypedDict):
-    """project_card created event"""
+class WebhookPackageUpdatedType(TypedDict):
+    """package updated event"""
 
-    action: Literal["created"]
+    action: Literal["updated"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    project_card: WebhooksProjectCardType
-    repository: NotRequired[RepositoryWebhooksType]
+    package: WebhookPackageUpdatedPropPackageType
+    repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookProjectCardCreatedTypeForResponse(TypedDict):
-    """project_card created event"""
+class WebhookPackageUpdatedTypeForResponse(TypedDict):
+    """package updated event"""
 
-    action: Literal["created"]
+    action: Literal["updated"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    project_card: WebhooksProjectCardTypeForResponse
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    package: WebhookPackageUpdatedPropPackageTypeForResponse
+    repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookProjectCardCreatedType",
-    "WebhookProjectCardCreatedTypeForResponse",
+    "WebhookPackageUpdatedType",
+    "WebhookPackageUpdatedTypeForResponse",
 )
