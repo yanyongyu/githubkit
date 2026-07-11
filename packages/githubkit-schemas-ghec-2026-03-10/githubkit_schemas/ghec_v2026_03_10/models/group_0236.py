@@ -9,58 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0237 import GistSimplePropForkOf
+
+class ReleaseEventPropReleaseAllof1(GitHubModel):
+    """ReleaseEventPropReleaseAllof1"""
+
+    is_short_description_html_truncated: Missing[bool] = Field(default=UNSET)
+    short_description_html: Missing[str] = Field(default=UNSET)
 
 
-class GistSimple(GitHubModel):
-    """Gist Simple
+model_rebuild(ReleaseEventPropReleaseAllof1)
 
-    Gist Simple
-    """
-
-    fork_of: Missing[Union[GistSimplePropForkOf, None]] = Field(
-        default=UNSET, title="Gist", description="Gist"
-    )
-    url: Missing[str] = Field(default=UNSET)
-    forks_url: Missing[str] = Field(default=UNSET)
-    commits_url: Missing[str] = Field(default=UNSET)
-    id: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    git_pull_url: Missing[str] = Field(default=UNSET)
-    git_push_url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    files: Missing[GistSimplePropFiles] = Field(default=UNSET)
-    public: Missing[bool] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
-    updated_at: Missing[str] = Field(default=UNSET)
-    description: Missing[Union[str, None]] = Field(default=UNSET)
-    comments: Missing[int] = Field(default=UNSET)
-    comments_enabled: Missing[bool] = Field(default=UNSET)
-    user: Missing[Union[str, None]] = Field(default=UNSET)
-    comments_url: Missing[str] = Field(default=UNSET)
-    owner: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
-    truncated: Missing[bool] = Field(default=UNSET)
-
-
-class GistSimplePropFiles(ExtraGitHubModel):
-    """GistSimplePropFiles"""
-
-
-model_rebuild(GistSimple)
-model_rebuild(GistSimplePropFiles)
-
-__all__ = (
-    "GistSimple",
-    "GistSimplePropFiles",
-)
+__all__ = ("ReleaseEventPropReleaseAllof1",)

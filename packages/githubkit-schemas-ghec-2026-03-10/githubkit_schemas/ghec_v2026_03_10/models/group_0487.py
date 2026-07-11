@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,25 +18,25 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0488 import TimelineCrossReferencedEventPropSource
 
-class DeployKey(GitHubModel):
-    """Deploy Key
 
-    An SSH key granting access to a single repository.
+class TimelineCrossReferencedEvent(GitHubModel):
+    """Timeline Cross Referenced Event
+
+    Timeline Cross Referenced Event
     """
 
-    id: int = Field()
-    key: str = Field()
-    url: str = Field()
-    title: str = Field()
-    verified: bool = Field()
-    created_at: str = Field()
-    read_only: bool = Field()
-    added_by: Missing[Union[str, None]] = Field(default=UNSET)
-    last_used: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
-    enabled: Missing[bool] = Field(default=UNSET)
+    event: Literal["cross-referenced"] = Field()
+    actor: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    source: TimelineCrossReferencedEventPropSource = Field()
 
 
-model_rebuild(DeployKey)
+model_rebuild(TimelineCrossReferencedEvent)
 
-__all__ = ("DeployKey",)
+__all__ = ("TimelineCrossReferencedEvent",)

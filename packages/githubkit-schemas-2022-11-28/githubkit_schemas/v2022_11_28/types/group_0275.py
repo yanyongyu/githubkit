@@ -9,124 +9,69 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class JobType(TypedDict):
-    """Job
+class ConcurrencyGroupType(TypedDict):
+    """Concurrency Group
 
-    Information of a job execution in a workflow run
+    A concurrency group with the workflow runs and jobs that are either currently
+    holding
+    or waiting for the concurrency group lease.
     """
 
-    id: int
-    run_id: int
-    run_url: str
-    run_attempt: NotRequired[int]
-    node_id: str
-    head_sha: str
-    url: str
-    html_url: Union[str, None]
-    status: Literal[
-        "queued", "in_progress", "completed", "waiting", "requested", "pending"
-    ]
-    conclusion: Union[
-        None,
-        Literal[
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "skipped",
-            "timed_out",
-            "action_required",
-        ],
-    ]
-    created_at: _dt.datetime
-    started_at: _dt.datetime
-    completed_at: Union[_dt.datetime, None]
-    name: str
-    steps: NotRequired[list[JobPropStepsItemsType]]
-    check_run_url: str
-    labels: list[str]
-    runner_id: Union[int, None]
-    runner_name: Union[str, None]
-    runner_group_id: Union[int, None]
-    runner_group_name: Union[str, None]
-    workflow_name: Union[str, None]
-    head_branch: Union[str, None]
+    group_name: str
+    group_url: str
+    total_count: int
+    group_members: list[ConcurrencyGroupPropGroupMembersItemsType]
 
 
-class JobTypeForResponse(TypedDict):
-    """Job
+class ConcurrencyGroupTypeForResponse(TypedDict):
+    """Concurrency Group
 
-    Information of a job execution in a workflow run
+    A concurrency group with the workflow runs and jobs that are either currently
+    holding
+    or waiting for the concurrency group lease.
     """
 
-    id: int
+    group_name: str
+    group_url: str
+    total_count: int
+    group_members: list[ConcurrencyGroupPropGroupMembersItemsTypeForResponse]
+
+
+class ConcurrencyGroupPropGroupMembersItemsType(TypedDict):
+    """ConcurrencyGroupPropGroupMembersItems"""
+
     run_id: int
-    run_url: str
-    run_attempt: NotRequired[int]
-    node_id: str
-    head_sha: str
-    url: str
-    html_url: Union[str, None]
-    status: Literal[
-        "queued", "in_progress", "completed", "waiting", "requested", "pending"
-    ]
-    conclusion: Union[
-        None,
-        Literal[
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "skipped",
-            "timed_out",
-            "action_required",
-        ],
-    ]
-    created_at: str
-    started_at: str
-    completed_at: Union[str, None]
-    name: str
-    steps: NotRequired[list[JobPropStepsItemsTypeForResponse]]
-    check_run_url: str
-    labels: list[str]
-    runner_id: Union[int, None]
-    runner_name: Union[str, None]
-    runner_group_id: Union[int, None]
-    runner_group_name: Union[str, None]
-    workflow_name: Union[str, None]
-    head_branch: Union[str, None]
+    run_name: str
+    run_url: Union[str, None]
+    run_html_url: Union[str, None]
+    job_id: NotRequired[int]
+    job_name: NotRequired[str]
+    job_url: NotRequired[Union[str, None]]
+    job_html_url: NotRequired[Union[str, None]]
+    status: Literal["in_progress", "pending"]
 
 
-class JobPropStepsItemsType(TypedDict):
-    """JobPropStepsItems"""
+class ConcurrencyGroupPropGroupMembersItemsTypeForResponse(TypedDict):
+    """ConcurrencyGroupPropGroupMembersItems"""
 
-    status: Literal["queued", "in_progress", "completed"]
-    conclusion: Union[str, None]
-    name: str
-    number: int
-    started_at: NotRequired[Union[_dt.datetime, None]]
-    completed_at: NotRequired[Union[_dt.datetime, None]]
-
-
-class JobPropStepsItemsTypeForResponse(TypedDict):
-    """JobPropStepsItems"""
-
-    status: Literal["queued", "in_progress", "completed"]
-    conclusion: Union[str, None]
-    name: str
-    number: int
-    started_at: NotRequired[Union[str, None]]
-    completed_at: NotRequired[Union[str, None]]
+    run_id: int
+    run_name: str
+    run_url: Union[str, None]
+    run_html_url: Union[str, None]
+    job_id: NotRequired[int]
+    job_name: NotRequired[str]
+    job_url: NotRequired[Union[str, None]]
+    job_html_url: NotRequired[Union[str, None]]
+    status: Literal["in_progress", "pending"]
 
 
 __all__ = (
-    "JobPropStepsItemsType",
-    "JobPropStepsItemsTypeForResponse",
-    "JobType",
-    "JobTypeForResponse",
+    "ConcurrencyGroupPropGroupMembersItemsType",
+    "ConcurrencyGroupPropGroupMembersItemsTypeForResponse",
+    "ConcurrencyGroupType",
+    "ConcurrencyGroupTypeForResponse",
 )

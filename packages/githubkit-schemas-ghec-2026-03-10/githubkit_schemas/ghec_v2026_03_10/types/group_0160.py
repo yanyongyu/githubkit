@@ -12,19 +12,19 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class RepositoryRuleMaxFileSizePropParametersType(TypedDict):
-    """RepositoryRuleMaxFileSizePropParameters"""
+class RepositoryRuleFileExtensionRestrictionPropParametersType(TypedDict):
+    """RepositoryRuleFileExtensionRestrictionPropParameters"""
 
-    max_file_size: int
+    restricted_file_extensions: list[str]
 
 
-class RepositoryRuleMaxFileSizePropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleMaxFileSizePropParameters"""
+class RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleFileExtensionRestrictionPropParameters"""
 
-    max_file_size: int
+    restricted_file_extensions: list[str]
 
 
 __all__ = (
-    "RepositoryRuleMaxFileSizePropParametersType",
-    "RepositoryRuleMaxFileSizePropParametersTypeForResponse",
+    "RepositoryRuleFileExtensionRestrictionPropParametersType",
+    "RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse",
 )

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,22 +18,32 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoActionsPermissionsPutBody(GitHubModel):
-    """ReposOwnerRepoActionsPermissionsPutBody"""
+class OrgsOrgTeamsTeamSlugPatchBody(GitHubModel):
+    """OrgsOrgTeamsTeamSlugPatchBody"""
 
-    enabled: bool = Field(
-        description="Whether GitHub Actions is enabled on the repository."
+    name: Missing[str] = Field(default=UNSET, description="The name of the team.")
+    description: Missing[str] = Field(
+        default=UNSET, description="The description of the team."
     )
-    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
+    privacy: Missing[Literal["secret", "closed"]] = Field(
         default=UNSET,
-        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
+        description="The level of privacy this team should have. Editing teams without specifying this parameter leaves `privacy` intact. When a team is nested, the `privacy` for parent teams cannot be `secret`. The options are:  \n**For a non-nested team:**  \n * `secret` - only visible to organization owners and members of this team.  \n * `closed` - visible to all members of this organization.  \n**For a parent or child team:**  \n * `closed` - visible to all members of this organization.",
     )
-    sha_pinning_required: Missing[bool] = Field(
+    notification_setting: Missing[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ] = Field(
         default=UNSET,
-        description="Whether actions must be pinned to a full-length commit SHA.",
+        description="The notification setting the team has chosen. Editing teams without specifying this parameter leaves `notification_setting` intact. The options are: \n * `notifications_enabled` - team members receive notifications when the team is @mentioned.  \n * `notifications_disabled` - no one receives notifications.",
+    )
+    permission: Missing[Literal["pull", "push", "admin"]] = Field(
+        default=UNSET,
+        description="**Closing down notice**. The permission that new repositories will be added to the team with when none is specified.",
+    )
+    parent_team_id: Missing[Union[int, None]] = Field(
+        default=UNSET, description="The ID of a team to set as the parent team."
     )
 
 
-model_rebuild(ReposOwnerRepoActionsPermissionsPutBody)
+model_rebuild(OrgsOrgTeamsTeamSlugPatchBody)
 
-__all__ = ("ReposOwnerRepoActionsPermissionsPutBody",)
+__all__ = ("OrgsOrgTeamsTeamSlugPatchBody",)

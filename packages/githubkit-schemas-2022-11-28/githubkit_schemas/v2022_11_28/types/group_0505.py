@@ -13,71 +13,117 @@ import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0087 import (
-    MarketplaceListingPlanType,
-    MarketplaceListingPlanTypeForResponse,
+from .group_0497 import (
+    SearchResultTextMatchesItemsType,
+    SearchResultTextMatchesItemsTypeForResponse,
 )
 
 
-class UserMarketplacePurchaseType(TypedDict):
-    """User Marketplace Purchase
+class UserSearchResultItemType(TypedDict):
+    """User Search Result Item
 
-    User Marketplace Purchase
+    User Search Result Item
     """
 
-    billing_cycle: str
-    next_billing_date: Union[_dt.datetime, None]
-    unit_count: Union[int, None]
-    on_free_trial: bool
-    free_trial_ends_on: Union[_dt.datetime, None]
-    updated_at: Union[_dt.datetime, None]
-    account: MarketplaceAccountType
-    plan: MarketplaceListingPlanType
+    login: str
+    id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    received_events_url: str
+    type: str
+    score: float
+    following_url: str
+    gists_url: str
+    starred_url: str
+    events_url: str
+    public_repos: NotRequired[int]
+    public_gists: NotRequired[int]
+    followers: NotRequired[int]
+    following: NotRequired[int]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
+    name: NotRequired[Union[str, None]]
+    bio: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    location: NotRequired[Union[str, None]]
+    site_admin: bool
+    hireable: NotRequired[Union[bool, None]]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
+    blog: NotRequired[Union[str, None]]
+    company: NotRequired[Union[str, None]]
+    suspended_at: NotRequired[Union[_dt.datetime, None]]
+    user_view_type: NotRequired[str]
 
 
-class UserMarketplacePurchaseTypeForResponse(TypedDict):
-    """User Marketplace Purchase
+class UserSearchResultItemTypeForResponse(TypedDict):
+    """User Search Result Item
 
-    User Marketplace Purchase
+    User Search Result Item
     """
 
-    billing_cycle: str
-    next_billing_date: Union[str, None]
-    unit_count: Union[int, None]
-    on_free_trial: bool
-    free_trial_ends_on: Union[str, None]
-    updated_at: Union[str, None]
-    account: MarketplaceAccountTypeForResponse
-    plan: MarketplaceListingPlanTypeForResponse
-
-
-class MarketplaceAccountType(TypedDict):
-    """Marketplace Account"""
-
-    url: str
-    id: int
-    type: str
-    node_id: NotRequired[str]
     login: str
-    email: NotRequired[Union[str, None]]
-    organization_billing_email: NotRequired[Union[str, None]]
-
-
-class MarketplaceAccountTypeForResponse(TypedDict):
-    """Marketplace Account"""
-
-    url: str
     id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    received_events_url: str
     type: str
-    node_id: NotRequired[str]
-    login: str
+    score: float
+    following_url: str
+    gists_url: str
+    starred_url: str
+    events_url: str
+    public_repos: NotRequired[int]
+    public_gists: NotRequired[int]
+    followers: NotRequired[int]
+    following: NotRequired[int]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    name: NotRequired[Union[str, None]]
+    bio: NotRequired[Union[str, None]]
     email: NotRequired[Union[str, None]]
-    organization_billing_email: NotRequired[Union[str, None]]
+    location: NotRequired[Union[str, None]]
+    site_admin: bool
+    hireable: NotRequired[Union[bool, None]]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
+    blog: NotRequired[Union[str, None]]
+    company: NotRequired[Union[str, None]]
+    suspended_at: NotRequired[Union[str, None]]
+    user_view_type: NotRequired[str]
+
+
+class SearchUsersGetResponse200Type(TypedDict):
+    """SearchUsersGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[UserSearchResultItemType]
+
+
+class SearchUsersGetResponse200TypeForResponse(TypedDict):
+    """SearchUsersGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[UserSearchResultItemTypeForResponse]
 
 
 __all__ = (
-    "MarketplaceAccountType",
-    "MarketplaceAccountTypeForResponse",
-    "UserMarketplacePurchaseType",
-    "UserMarketplacePurchaseTypeForResponse",
+    "SearchUsersGetResponse200Type",
+    "SearchUsersGetResponse200TypeForResponse",
+    "UserSearchResultItemType",
+    "UserSearchResultItemTypeForResponse",
 )

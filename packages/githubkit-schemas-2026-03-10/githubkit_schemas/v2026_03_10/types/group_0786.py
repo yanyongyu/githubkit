@@ -9,56 +9,90 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0787 import (
-    WebhookPackageUpdatedPropPackagePropPackageVersionType,
-    WebhookPackageUpdatedPropPackagePropPackageVersionTypeForResponse,
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0522 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0523 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0524 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
 )
+from .group_0525 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0533 import WebhooksUserType, WebhooksUserTypeForResponse
 
 
-class WebhookPackageUpdatedPropPackageType(TypedDict):
-    """WebhookPackageUpdatedPropPackage
+class WebhookOrganizationMemberInvitedType(TypedDict):
+    """organization member_invited event"""
 
-    Information about the package.
+    action: Literal["member_invited"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    invitation: WebhookOrganizationMemberInvitedPropInvitationType
+    organization: OrganizationSimpleWebhooksType
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserType
+    user: NotRequired[Union[WebhooksUserType, None]]
+
+
+class WebhookOrganizationMemberInvitedTypeForResponse(TypedDict):
+    """organization member_invited event"""
+
+    action: Literal["member_invited"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    invitation: WebhookOrganizationMemberInvitedPropInvitationTypeForResponse
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: SimpleUserTypeForResponse
+    user: NotRequired[Union[WebhooksUserTypeForResponse, None]]
+
+
+class WebhookOrganizationMemberInvitedPropInvitationType(TypedDict):
+    """WebhookOrganizationMemberInvitedPropInvitation
+
+    The invitation for the user or email if the action is `member_invited`.
+    """
+
+    created_at: _dt.datetime
+    email: Union[str, None]
+    failed_at: Union[_dt.datetime, None]
+    failed_reason: Union[str, None]
+    id: float
+    invitation_teams_url: str
+    inviter: Union[WebhookOrganizationMemberInvitedPropInvitationPropInviterType, None]
+    login: Union[str, None]
+    node_id: str
+    role: str
+    team_count: float
+    invitation_source: NotRequired[str]
+
+
+class WebhookOrganizationMemberInvitedPropInvitationTypeForResponse(TypedDict):
+    """WebhookOrganizationMemberInvitedPropInvitation
+
+    The invitation for the user or email if the action is `member_invited`.
     """
 
     created_at: str
-    description: Union[str, None]
-    ecosystem: str
-    html_url: str
-    id: int
-    name: str
-    namespace: str
-    owner: Union[WebhookPackageUpdatedPropPackagePropOwnerType, None]
-    package_type: str
-    package_version: WebhookPackageUpdatedPropPackagePropPackageVersionType
-    registry: Union[WebhookPackageUpdatedPropPackagePropRegistryType, None]
-    updated_at: str
+    email: Union[str, None]
+    failed_at: Union[str, None]
+    failed_reason: Union[str, None]
+    id: float
+    invitation_teams_url: str
+    inviter: Union[
+        WebhookOrganizationMemberInvitedPropInvitationPropInviterTypeForResponse, None
+    ]
+    login: Union[str, None]
+    node_id: str
+    role: str
+    team_count: float
+    invitation_source: NotRequired[str]
 
 
-class WebhookPackageUpdatedPropPackageTypeForResponse(TypedDict):
-    """WebhookPackageUpdatedPropPackage
-
-    Information about the package.
-    """
-
-    created_at: str
-    description: Union[str, None]
-    ecosystem: str
-    html_url: str
-    id: int
-    name: str
-    namespace: str
-    owner: Union[WebhookPackageUpdatedPropPackagePropOwnerTypeForResponse, None]
-    package_type: str
-    package_version: WebhookPackageUpdatedPropPackagePropPackageVersionTypeForResponse
-    registry: Union[WebhookPackageUpdatedPropPackagePropRegistryTypeForResponse, None]
-    updated_at: str
-
-
-class WebhookPackageUpdatedPropPackagePropOwnerType(TypedDict):
+class WebhookOrganizationMemberInvitedPropInvitationPropInviterType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -85,7 +119,9 @@ class WebhookPackageUpdatedPropPackagePropOwnerType(TypedDict):
     user_view_type: NotRequired[str]
 
 
-class WebhookPackageUpdatedPropPackagePropOwnerTypeForResponse(TypedDict):
+class WebhookOrganizationMemberInvitedPropInvitationPropInviterTypeForResponse(
+    TypedDict
+):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -110,33 +146,13 @@ class WebhookPackageUpdatedPropPackagePropOwnerTypeForResponse(TypedDict):
     type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
     user_view_type: NotRequired[str]
-
-
-class WebhookPackageUpdatedPropPackagePropRegistryType(TypedDict):
-    """WebhookPackageUpdatedPropPackagePropRegistry"""
-
-    about_url: str
-    name: str
-    type: str
-    url: str
-    vendor: str
-
-
-class WebhookPackageUpdatedPropPackagePropRegistryTypeForResponse(TypedDict):
-    """WebhookPackageUpdatedPropPackagePropRegistry"""
-
-    about_url: str
-    name: str
-    type: str
-    url: str
-    vendor: str
 
 
 __all__ = (
-    "WebhookPackageUpdatedPropPackagePropOwnerType",
-    "WebhookPackageUpdatedPropPackagePropOwnerTypeForResponse",
-    "WebhookPackageUpdatedPropPackagePropRegistryType",
-    "WebhookPackageUpdatedPropPackagePropRegistryTypeForResponse",
-    "WebhookPackageUpdatedPropPackageType",
-    "WebhookPackageUpdatedPropPackageTypeForResponse",
+    "WebhookOrganizationMemberInvitedPropInvitationPropInviterType",
+    "WebhookOrganizationMemberInvitedPropInvitationPropInviterTypeForResponse",
+    "WebhookOrganizationMemberInvitedPropInvitationType",
+    "WebhookOrganizationMemberInvitedPropInvitationTypeForResponse",
+    "WebhookOrganizationMemberInvitedType",
+    "WebhookOrganizationMemberInvitedTypeForResponse",
 )

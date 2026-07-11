@@ -19,12 +19,12 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0760 import (
-    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
-    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissions,
+    WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
+    WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPermissions,
 )
 
 
-class WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubApp(GitHubModel):
+class WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubApp(GitHubModel):
     """App
 
     GitHub apps are a new way to extend GitHub. They can be installed directly on
@@ -44,10 +44,11 @@ class WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubApp(GitHubMo
     name: str = Field(description="The name of the GitHub app")
     node_id: str = Field()
     owner: Union[
-        WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwner, None
+        WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
+        None,
     ] = Field(title="User")
     permissions: Missing[
-        WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
+        WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
     ] = Field(default=UNSET, description="The set of permissions for the GitHub app")
     slug: Missing[str] = Field(
         default=UNSET, description="The slug name of the GitHub app"
@@ -55,6 +56,6 @@ class WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubApp(GitHubMo
     updated_at: Union[_dt.datetime, None] = Field()
 
 
-model_rebuild(WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubApp)
+model_rebuild(WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubApp)
 
-__all__ = ("WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubApp",)
+__all__ = ("WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubApp",)

@@ -31,6 +31,10 @@ if TYPE_CHECKING:
     from ..models import (
         AddedToProjectIssueEvent,
         AssignedIssueEvent,
+        BlockedByAddedIssueEvent,
+        BlockedByRemovedIssueEvent,
+        BlockingAddedIssueEvent,
+        BlockingRemovedIssueEvent,
         ConvertedNoteToIssueIssueEvent,
         DemilestonedIssueEvent,
         Issue,
@@ -72,6 +76,10 @@ if TYPE_CHECKING:
     from ..types import (
         AddedToProjectIssueEventTypeForResponse,
         AssignedIssueEventTypeForResponse,
+        BlockedByAddedIssueEventTypeForResponse,
+        BlockedByRemovedIssueEventTypeForResponse,
+        BlockingAddedIssueEventTypeForResponse,
+        BlockingRemovedIssueEventTypeForResponse,
         ConvertedNoteToIssueIssueEventTypeForResponse,
         DemilestonedIssueEventTypeForResponse,
         IssueCommentTypeForResponse,
@@ -1838,6 +1846,7 @@ class IssuesClient:
         state_reason: Missing[
             Union[None, Literal["completed", "not_planned", "duplicate", "reopened"]]
         ] = UNSET,
+        duplicate_issue_id: Missing[int] = UNSET,
         milestone: Missing[Union[str, int, None]] = UNSET,
         labels: Missing[
             list[
@@ -1962,6 +1971,7 @@ class IssuesClient:
         state_reason: Missing[
             Union[None, Literal["completed", "not_planned", "duplicate", "reopened"]]
         ] = UNSET,
+        duplicate_issue_id: Missing[int] = UNSET,
         milestone: Missing[Union[str, int, None]] = UNSET,
         labels: Missing[
             list[
@@ -3244,6 +3254,10 @@ class IssuesClient:
                 SubIssueRemovedIssueEvent,
                 ParentIssueAddedIssueEvent,
                 ParentIssueRemovedIssueEvent,
+                BlockedByAddedIssueEvent,
+                BlockedByRemovedIssueEvent,
+                BlockingAddedIssueEvent,
+                BlockingRemovedIssueEvent,
             ]
         ],
         list[
@@ -3270,6 +3284,10 @@ class IssuesClient:
                 SubIssueRemovedIssueEventTypeForResponse,
                 ParentIssueAddedIssueEventTypeForResponse,
                 ParentIssueRemovedIssueEventTypeForResponse,
+                BlockedByAddedIssueEventTypeForResponse,
+                BlockedByRemovedIssueEventTypeForResponse,
+                BlockingAddedIssueEventTypeForResponse,
+                BlockingRemovedIssueEventTypeForResponse,
             ]
         ],
     ]:
@@ -3288,6 +3306,10 @@ class IssuesClient:
             AddedToProjectIssueEvent,
             AssignedIssueEvent,
             BasicError,
+            BlockedByAddedIssueEvent,
+            BlockedByRemovedIssueEvent,
+            BlockingAddedIssueEvent,
+            BlockingRemovedIssueEvent,
             ConvertedNoteToIssueIssueEvent,
             DemilestonedIssueEvent,
             IssueTypeAddedIssueEvent,
@@ -3349,6 +3371,10 @@ class IssuesClient:
                     SubIssueRemovedIssueEvent,
                     ParentIssueAddedIssueEvent,
                     ParentIssueRemovedIssueEvent,
+                    BlockedByAddedIssueEvent,
+                    BlockedByRemovedIssueEvent,
+                    BlockingAddedIssueEvent,
+                    BlockingRemovedIssueEvent,
                 ]
             ],
             error_models={
@@ -3391,6 +3417,10 @@ class IssuesClient:
                 SubIssueRemovedIssueEvent,
                 ParentIssueAddedIssueEvent,
                 ParentIssueRemovedIssueEvent,
+                BlockedByAddedIssueEvent,
+                BlockedByRemovedIssueEvent,
+                BlockingAddedIssueEvent,
+                BlockingRemovedIssueEvent,
             ]
         ],
         list[
@@ -3417,6 +3447,10 @@ class IssuesClient:
                 SubIssueRemovedIssueEventTypeForResponse,
                 ParentIssueAddedIssueEventTypeForResponse,
                 ParentIssueRemovedIssueEventTypeForResponse,
+                BlockedByAddedIssueEventTypeForResponse,
+                BlockedByRemovedIssueEventTypeForResponse,
+                BlockingAddedIssueEventTypeForResponse,
+                BlockingRemovedIssueEventTypeForResponse,
             ]
         ],
     ]:
@@ -3435,6 +3469,10 @@ class IssuesClient:
             AddedToProjectIssueEvent,
             AssignedIssueEvent,
             BasicError,
+            BlockedByAddedIssueEvent,
+            BlockedByRemovedIssueEvent,
+            BlockingAddedIssueEvent,
+            BlockingRemovedIssueEvent,
             ConvertedNoteToIssueIssueEvent,
             DemilestonedIssueEvent,
             IssueTypeAddedIssueEvent,
@@ -3496,6 +3534,10 @@ class IssuesClient:
                     SubIssueRemovedIssueEvent,
                     ParentIssueAddedIssueEvent,
                     ParentIssueRemovedIssueEvent,
+                    BlockedByAddedIssueEvent,
+                    BlockedByRemovedIssueEvent,
+                    BlockingAddedIssueEvent,
+                    BlockingRemovedIssueEvent,
                 ]
             ],
             error_models={
@@ -5797,6 +5839,10 @@ class IssuesClient:
                 SubIssueRemovedIssueEvent,
                 ParentIssueAddedIssueEvent,
                 ParentIssueRemovedIssueEvent,
+                BlockedByAddedIssueEvent,
+                BlockedByRemovedIssueEvent,
+                BlockingAddedIssueEvent,
+                BlockingRemovedIssueEvent,
             ]
         ],
         list[
@@ -5830,6 +5876,10 @@ class IssuesClient:
                 SubIssueRemovedIssueEventTypeForResponse,
                 ParentIssueAddedIssueEventTypeForResponse,
                 ParentIssueRemovedIssueEventTypeForResponse,
+                BlockedByAddedIssueEventTypeForResponse,
+                BlockedByRemovedIssueEventTypeForResponse,
+                BlockingAddedIssueEventTypeForResponse,
+                BlockingRemovedIssueEventTypeForResponse,
             ]
         ],
     ]:
@@ -5847,6 +5897,10 @@ class IssuesClient:
         from ..models import (
             AddedToProjectIssueEvent,
             BasicError,
+            BlockedByAddedIssueEvent,
+            BlockedByRemovedIssueEvent,
+            BlockingAddedIssueEvent,
+            BlockingRemovedIssueEvent,
             ConvertedNoteToIssueIssueEvent,
             DemilestonedIssueEvent,
             IssueTypeAddedIssueEvent,
@@ -5923,10 +5977,15 @@ class IssuesClient:
                     SubIssueRemovedIssueEvent,
                     ParentIssueAddedIssueEvent,
                     ParentIssueRemovedIssueEvent,
+                    BlockedByAddedIssueEvent,
+                    BlockedByRemovedIssueEvent,
+                    BlockingAddedIssueEvent,
+                    BlockingRemovedIssueEvent,
                 ]
             ],
             error_models={
                 "404": BasicError,
+                "400": BasicError,
                 "410": BasicError,
             },
         )
@@ -5973,6 +6032,10 @@ class IssuesClient:
                 SubIssueRemovedIssueEvent,
                 ParentIssueAddedIssueEvent,
                 ParentIssueRemovedIssueEvent,
+                BlockedByAddedIssueEvent,
+                BlockedByRemovedIssueEvent,
+                BlockingAddedIssueEvent,
+                BlockingRemovedIssueEvent,
             ]
         ],
         list[
@@ -6006,6 +6069,10 @@ class IssuesClient:
                 SubIssueRemovedIssueEventTypeForResponse,
                 ParentIssueAddedIssueEventTypeForResponse,
                 ParentIssueRemovedIssueEventTypeForResponse,
+                BlockedByAddedIssueEventTypeForResponse,
+                BlockedByRemovedIssueEventTypeForResponse,
+                BlockingAddedIssueEventTypeForResponse,
+                BlockingRemovedIssueEventTypeForResponse,
             ]
         ],
     ]:
@@ -6023,6 +6090,10 @@ class IssuesClient:
         from ..models import (
             AddedToProjectIssueEvent,
             BasicError,
+            BlockedByAddedIssueEvent,
+            BlockedByRemovedIssueEvent,
+            BlockingAddedIssueEvent,
+            BlockingRemovedIssueEvent,
             ConvertedNoteToIssueIssueEvent,
             DemilestonedIssueEvent,
             IssueTypeAddedIssueEvent,
@@ -6099,10 +6170,15 @@ class IssuesClient:
                     SubIssueRemovedIssueEvent,
                     ParentIssueAddedIssueEvent,
                     ParentIssueRemovedIssueEvent,
+                    BlockedByAddedIssueEvent,
+                    BlockedByRemovedIssueEvent,
+                    BlockingAddedIssueEvent,
+                    BlockingRemovedIssueEvent,
                 ]
             ],
             error_models={
                 "404": BasicError,
+                "400": BasicError,
                 "410": BasicError,
             },
         )

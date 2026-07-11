@@ -15,27 +15,17 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0017 import AppPermissions
+from .group_0996 import AgentsTasksTaskIdGetResponse200Allof1PropSessionsItems
 
 
-class AppInstallationsInstallationIdAccessTokensPostBody(GitHubModel):
-    """AppInstallationsInstallationIdAccessTokensPostBody"""
+class AgentsTasksTaskIdGetResponse200Allof1(GitHubModel):
+    """AgentsTasksTaskIdGetResponse200Allof1"""
 
-    repositories: Missing[list[str]] = Field(
-        default=UNSET,
-        description="List of repository names that the token should have access to",
-    )
-    repository_ids: Missing[list[int]] = Field(
-        default=UNSET,
-        description="List of repository IDs that the token should have access to",
-    )
-    permissions: Missing[AppPermissions] = Field(
-        default=UNSET,
-        title="App Permissions",
-        description="The permissions granted to the user access token.",
+    sessions: Missing[list[AgentsTasksTaskIdGetResponse200Allof1PropSessionsItems]] = (
+        Field(default=UNSET, description="Sessions associated with this task")
     )
 
 
-model_rebuild(AppInstallationsInstallationIdAccessTokensPostBody)
+model_rebuild(AgentsTasksTaskIdGetResponse200Allof1)
 
-__all__ = ("AppInstallationsInstallationIdAccessTokensPostBody",)
+__all__ = ("AgentsTasksTaskIdGetResponse200Allof1",)

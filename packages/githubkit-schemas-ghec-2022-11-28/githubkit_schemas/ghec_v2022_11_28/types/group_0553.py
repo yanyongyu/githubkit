@@ -9,35 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
-class MetaType(TypedDict):
-    """Meta
 
-    The metadata associated with the creation/updates to the user.
+class ContributorActivityType(TypedDict):
+    """Contributor Activity
+
+    Contributor Activity
     """
 
-    resource_type: Literal["User", "Group"]
-    created: NotRequired[str]
-    last_modified: NotRequired[str]
-    location: NotRequired[str]
+    author: Union[None, SimpleUserType]
+    total: int
+    weeks: list[ContributorActivityPropWeeksItemsType]
 
 
-class MetaTypeForResponse(TypedDict):
-    """Meta
+class ContributorActivityTypeForResponse(TypedDict):
+    """Contributor Activity
 
-    The metadata associated with the creation/updates to the user.
+    Contributor Activity
     """
 
-    resource_type: Literal["User", "Group"]
-    created: NotRequired[str]
-    last_modified: NotRequired[str]
-    location: NotRequired[str]
+    author: Union[None, SimpleUserTypeForResponse]
+    total: int
+    weeks: list[ContributorActivityPropWeeksItemsTypeForResponse]
+
+
+class ContributorActivityPropWeeksItemsType(TypedDict):
+    """ContributorActivityPropWeeksItems"""
+
+    w: NotRequired[int]
+    a: NotRequired[int]
+    d: NotRequired[int]
+    c: NotRequired[int]
+
+
+class ContributorActivityPropWeeksItemsTypeForResponse(TypedDict):
+    """ContributorActivityPropWeeksItems"""
+
+    w: NotRequired[int]
+    a: NotRequired[int]
+    d: NotRequired[int]
+    c: NotRequired[int]
 
 
 __all__ = (
-    "MetaType",
-    "MetaTypeForResponse",
+    "ContributorActivityPropWeeksItemsType",
+    "ContributorActivityPropWeeksItemsTypeForResponse",
+    "ContributorActivityType",
+    "ContributorActivityTypeForResponse",
 )

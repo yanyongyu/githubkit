@@ -17,13 +17,13 @@ from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0003 import SimpleUser
 from .group_0010 import Integration
-from .group_0391 import IssueReference
+from .group_0392 import IssueReference
 
 
-class SubIssueRemovedIssueEvent(GitHubModel):
-    """Sub-issue Removed Issue Event
+class SubIssueAddedIssueEvent(GitHubModel):
+    """Sub-issue Added Issue Event
 
-    Sub-issue Removed Issue Event
+    Sub-issue Added Issue Event
     """
 
     id: int = Field()
@@ -35,12 +35,9 @@ class SubIssueRemovedIssueEvent(GitHubModel):
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
     performed_via_github_app: Union[None, Integration, None] = Field()
-    sub_issue: Union[IssueReference, None] = Field(
-        title="Issue Reference",
-        description="A minimal reference to an issue linked from a timeline event (e.g. sub-issue, parent-issue, or dependency events).",
-    )
+    sub_issue: Union[None, IssueReference, None] = Field()
 
 
-model_rebuild(SubIssueRemovedIssueEvent)
+model_rebuild(SubIssueAddedIssueEvent)
 
-__all__ = ("SubIssueRemovedIssueEvent",)
+__all__ = ("SubIssueAddedIssueEvent",)

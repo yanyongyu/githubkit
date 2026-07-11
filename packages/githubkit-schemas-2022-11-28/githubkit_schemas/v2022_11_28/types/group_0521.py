@@ -9,119 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0060 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
-from .group_0309 import DeploymentSimpleType, DeploymentSimpleTypeForResponse
-from .group_0520 import SimpleCheckSuiteType, SimpleCheckSuiteTypeForResponse
+
+class BillingUsageReportUserType(TypedDict):
+    """BillingUsageReportUser"""
+
+    usage_items: NotRequired[list[BillingUsageReportUserPropUsageItemsItemsType]]
 
 
-class CheckRunWithSimpleCheckSuiteType(TypedDict):
-    """CheckRun
+class BillingUsageReportUserTypeForResponse(TypedDict):
+    """BillingUsageReportUser"""
 
-    A check performed on the code of a given code change
-    """
-
-    app: Union[IntegrationType, None]
-    check_suite: SimpleCheckSuiteType
-    completed_at: Union[_dt.datetime, None]
-    conclusion: Union[
-        None,
-        Literal[
-            "waiting",
-            "pending",
-            "startup_failure",
-            "stale",
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "skipped",
-            "timed_out",
-            "action_required",
-        ],
+    usage_items: NotRequired[
+        list[BillingUsageReportUserPropUsageItemsItemsTypeForResponse]
     ]
-    deployment: NotRequired[DeploymentSimpleType]
-    details_url: str
-    external_id: str
-    head_sha: str
-    html_url: str
-    id: int
-    name: str
-    node_id: str
-    output: CheckRunWithSimpleCheckSuitePropOutputType
-    pull_requests: list[PullRequestMinimalType]
-    started_at: _dt.datetime
-    status: Literal["queued", "in_progress", "completed", "pending"]
-    url: str
 
 
-class CheckRunWithSimpleCheckSuiteTypeForResponse(TypedDict):
-    """CheckRun
+class BillingUsageReportUserPropUsageItemsItemsType(TypedDict):
+    """BillingUsageReportUserPropUsageItemsItems"""
 
-    A check performed on the code of a given code change
-    """
-
-    app: Union[IntegrationTypeForResponse, None]
-    check_suite: SimpleCheckSuiteTypeForResponse
-    completed_at: Union[str, None]
-    conclusion: Union[
-        None,
-        Literal[
-            "waiting",
-            "pending",
-            "startup_failure",
-            "stale",
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "skipped",
-            "timed_out",
-            "action_required",
-        ],
-    ]
-    deployment: NotRequired[DeploymentSimpleTypeForResponse]
-    details_url: str
-    external_id: str
-    head_sha: str
-    html_url: str
-    id: int
-    name: str
-    node_id: str
-    output: CheckRunWithSimpleCheckSuitePropOutputTypeForResponse
-    pull_requests: list[PullRequestMinimalTypeForResponse]
-    started_at: str
-    status: Literal["queued", "in_progress", "completed", "pending"]
-    url: str
+    date: str
+    product: str
+    sku: str
+    quantity: int
+    unit_type: str
+    price_per_unit: float
+    gross_amount: float
+    discount_amount: float
+    net_amount: float
+    repository_name: NotRequired[str]
 
 
-class CheckRunWithSimpleCheckSuitePropOutputType(TypedDict):
-    """CheckRunWithSimpleCheckSuitePropOutput"""
+class BillingUsageReportUserPropUsageItemsItemsTypeForResponse(TypedDict):
+    """BillingUsageReportUserPropUsageItemsItems"""
 
-    annotations_count: int
-    annotations_url: str
-    summary: Union[str, None]
-    text: Union[str, None]
-    title: Union[str, None]
-
-
-class CheckRunWithSimpleCheckSuitePropOutputTypeForResponse(TypedDict):
-    """CheckRunWithSimpleCheckSuitePropOutput"""
-
-    annotations_count: int
-    annotations_url: str
-    summary: Union[str, None]
-    text: Union[str, None]
-    title: Union[str, None]
+    date: str
+    product: str
+    sku: str
+    quantity: int
+    unit_type: str
+    price_per_unit: float
+    gross_amount: float
+    discount_amount: float
+    net_amount: float
+    repository_name: NotRequired[str]
 
 
 __all__ = (
-    "CheckRunWithSimpleCheckSuitePropOutputType",
-    "CheckRunWithSimpleCheckSuitePropOutputTypeForResponse",
-    "CheckRunWithSimpleCheckSuiteType",
-    "CheckRunWithSimpleCheckSuiteTypeForResponse",
+    "BillingUsageReportUserPropUsageItemsItemsType",
+    "BillingUsageReportUserPropUsageItemsItemsTypeForResponse",
+    "BillingUsageReportUserType",
+    "BillingUsageReportUserTypeForResponse",
 )

@@ -13,24 +13,24 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0514 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0515 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0516 import (
+from .group_0522 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0523 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0524 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0517 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0525 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 from .group_0589 import (
-    WebhookCodeScanningAlertReopenedByUserPropAlertType,
-    WebhookCodeScanningAlertReopenedByUserPropAlertTypeForResponse,
+    WebhookCodeScanningAlertClosedByUserPropAlertType,
+    WebhookCodeScanningAlertClosedByUserPropAlertTypeForResponse,
 )
 
 
-class WebhookCodeScanningAlertReopenedByUserType(TypedDict):
-    """code_scanning_alert reopened_by_user event"""
+class WebhookCodeScanningAlertClosedByUserType(TypedDict):
+    """code_scanning_alert closed_by_user event"""
 
-    action: Literal["reopened_by_user"]
-    alert: WebhookCodeScanningAlertReopenedByUserPropAlertType
+    action: Literal["closed_by_user"]
+    alert: WebhookCodeScanningAlertClosedByUserPropAlertType
     commit_oid: str
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -40,11 +40,11 @@ class WebhookCodeScanningAlertReopenedByUserType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookCodeScanningAlertReopenedByUserTypeForResponse(TypedDict):
-    """code_scanning_alert reopened_by_user event"""
+class WebhookCodeScanningAlertClosedByUserTypeForResponse(TypedDict):
+    """code_scanning_alert closed_by_user event"""
 
-    action: Literal["reopened_by_user"]
-    alert: WebhookCodeScanningAlertReopenedByUserPropAlertTypeForResponse
+    action: Literal["closed_by_user"]
+    alert: WebhookCodeScanningAlertClosedByUserPropAlertTypeForResponse
     commit_oid: str
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
@@ -55,6 +55,6 @@ class WebhookCodeScanningAlertReopenedByUserTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookCodeScanningAlertReopenedByUserType",
-    "WebhookCodeScanningAlertReopenedByUserTypeForResponse",
+    "WebhookCodeScanningAlertClosedByUserType",
+    "WebhookCodeScanningAlertClosedByUserTypeForResponse",
 )

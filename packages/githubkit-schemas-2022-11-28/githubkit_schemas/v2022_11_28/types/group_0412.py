@@ -14,13 +14,13 @@ from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0392 import IssueTypeWebhookType, IssueTypeWebhookTypeForResponse
+from .group_0393 import IssueTypeWebhookType, IssueTypeWebhookTypeForResponse
 
 
-class IssueTypeChangedIssueEventType(TypedDict):
-    """Issue Type Changed Issue Event
+class IssueTypeRemovedIssueEventType(TypedDict):
+    """Issue Type Removed Issue Event
 
-    Issue Type Changed Issue Event
+    Issue Type Removed Issue Event
     """
 
     id: int
@@ -32,14 +32,13 @@ class IssueTypeChangedIssueEventType(TypedDict):
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    issue_type: Union[IssueTypeWebhookType, None]
     prev_issue_type: Union[IssueTypeWebhookType, None]
 
 
-class IssueTypeChangedIssueEventTypeForResponse(TypedDict):
-    """Issue Type Changed Issue Event
+class IssueTypeRemovedIssueEventTypeForResponse(TypedDict):
+    """Issue Type Removed Issue Event
 
-    Issue Type Changed Issue Event
+    Issue Type Removed Issue Event
     """
 
     id: int
@@ -51,11 +50,10 @@ class IssueTypeChangedIssueEventTypeForResponse(TypedDict):
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    issue_type: Union[IssueTypeWebhookTypeForResponse, None]
     prev_issue_type: Union[IssueTypeWebhookTypeForResponse, None]
 
 
 __all__ = (
-    "IssueTypeChangedIssueEventType",
-    "IssueTypeChangedIssueEventTypeForResponse",
+    "IssueTypeRemovedIssueEventType",
+    "IssueTypeRemovedIssueEventTypeForResponse",
 )

@@ -9,47 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class UpdateCostCenterType(TypedDict):
-    """UpdateCostCenter"""
+class GetBudgetUserStatesType(TypedDict):
+    """GetBudgetUserStates"""
 
-    id: str
-    name: str
-    azure_subscription: NotRequired[Union[str, None]]
-    state: NotRequired[Literal["active", "deleted"]]
-    resources: list[UpdateCostCenterPropResourcesItemsType]
+    user_states: list[GetBudgetUserStatesPropUserStatesItemsType]
+    has_next_page: bool
+    total_count: int
 
 
-class UpdateCostCenterTypeForResponse(TypedDict):
-    """UpdateCostCenter"""
+class GetBudgetUserStatesTypeForResponse(TypedDict):
+    """GetBudgetUserStates"""
 
-    id: str
-    name: str
-    azure_subscription: NotRequired[Union[str, None]]
-    state: NotRequired[Literal["active", "deleted"]]
-    resources: list[UpdateCostCenterPropResourcesItemsTypeForResponse]
+    user_states: list[GetBudgetUserStatesPropUserStatesItemsTypeForResponse]
+    has_next_page: bool
+    total_count: int
 
 
-class UpdateCostCenterPropResourcesItemsType(TypedDict):
-    """UpdateCostCenterPropResourcesItems"""
+class GetBudgetUserStatesPropUserStatesItemsType(TypedDict):
+    """GetBudgetUserStatesPropUserStatesItems"""
 
-    type: str
-    name: str
+    user: NotRequired[str]
+    consumed_amount: float
+    target_amount: float
+    override_budget_id: NotRequired[str]
 
 
-class UpdateCostCenterPropResourcesItemsTypeForResponse(TypedDict):
-    """UpdateCostCenterPropResourcesItems"""
+class GetBudgetUserStatesPropUserStatesItemsTypeForResponse(TypedDict):
+    """GetBudgetUserStatesPropUserStatesItems"""
 
-    type: str
-    name: str
+    user: NotRequired[str]
+    consumed_amount: float
+    target_amount: float
+    override_budget_id: NotRequired[str]
 
 
 __all__ = (
-    "UpdateCostCenterPropResourcesItemsType",
-    "UpdateCostCenterPropResourcesItemsTypeForResponse",
-    "UpdateCostCenterType",
-    "UpdateCostCenterTypeForResponse",
+    "GetBudgetUserStatesPropUserStatesItemsType",
+    "GetBudgetUserStatesPropUserStatesItemsTypeForResponse",
+    "GetBudgetUserStatesType",
+    "GetBudgetUserStatesTypeForResponse",
 )

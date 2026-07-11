@@ -9,108 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class WebhookWorkflowJobCompletedPropWorkflowJobAllof1Type(TypedDict):
-    """WebhookWorkflowJobCompletedPropWorkflowJobAllof1"""
-
-    check_run_url: NotRequired[str]
-    completed_at: NotRequired[str]
-    conclusion: Literal[
-        "success",
-        "failure",
-        "skipped",
-        "cancelled",
-        "action_required",
-        "neutral",
-        "timed_out",
-    ]
-    created_at: NotRequired[str]
-    head_sha: NotRequired[str]
-    html_url: NotRequired[str]
-    id: NotRequired[int]
-    labels: NotRequired[list[Union[str, None]]]
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    run_attempt: NotRequired[int]
-    run_id: NotRequired[int]
-    run_url: NotRequired[str]
-    runner_group_id: NotRequired[Union[int, None]]
-    runner_group_name: NotRequired[Union[str, None]]
-    runner_id: NotRequired[Union[int, None]]
-    runner_name: NotRequired[Union[str, None]]
-    started_at: NotRequired[str]
-    status: NotRequired[str]
-    head_branch: NotRequired[Union[str, None]]
-    workflow_name: NotRequired[Union[str, None]]
-    steps: NotRequired[
-        list[
-            Union[
-                WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItemsType, None
-            ]
-        ]
-    ]
-    url: NotRequired[str]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
+from .group_0058 import IssueType, IssueTypeForResponse
+from .group_0524 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0525 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0526 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookWorkflowJobCompletedPropWorkflowJobAllof1TypeForResponse(TypedDict):
-    """WebhookWorkflowJobCompletedPropWorkflowJobAllof1"""
+class WebhookSubIssuesSubIssueRemovedType(TypedDict):
+    """sub-issue removed event"""
 
-    check_run_url: NotRequired[str]
-    completed_at: NotRequired[str]
-    conclusion: Literal[
-        "success",
-        "failure",
-        "skipped",
-        "cancelled",
-        "action_required",
-        "neutral",
-        "timed_out",
-    ]
-    created_at: NotRequired[str]
-    head_sha: NotRequired[str]
-    html_url: NotRequired[str]
-    id: NotRequired[int]
-    labels: NotRequired[list[Union[str, None]]]
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    run_attempt: NotRequired[int]
-    run_id: NotRequired[int]
-    run_url: NotRequired[str]
-    runner_group_id: NotRequired[Union[int, None]]
-    runner_group_name: NotRequired[Union[str, None]]
-    runner_id: NotRequired[Union[int, None]]
-    runner_name: NotRequired[Union[str, None]]
-    started_at: NotRequired[str]
-    status: NotRequired[str]
-    head_branch: NotRequired[Union[str, None]]
-    workflow_name: NotRequired[Union[str, None]]
-    steps: NotRequired[
-        list[
-            Union[
-                WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItemsTypeForResponse,
-                None,
-            ]
-        ]
-    ]
-    url: NotRequired[str]
+    action: Literal["sub_issue_removed"]
+    sub_issue_id: NotRequired[float]
+    sub_issue: NotRequired[IssueType]
+    sub_issue_repo: NotRequired[RepositoryType]
+    parent_issue_id: float
+    parent_issue: IssueType
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItemsType(TypedDict):
-    """WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItems"""
+class WebhookSubIssuesSubIssueRemovedTypeForResponse(TypedDict):
+    """sub-issue removed event"""
 
-
-class WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItemsTypeForResponse(
-    TypedDict
-):
-    """WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItems"""
+    action: Literal["sub_issue_removed"]
+    sub_issue_id: NotRequired[float]
+    sub_issue: NotRequired[IssueTypeForResponse]
+    sub_issue_repo: NotRequired[RepositoryTypeForResponse]
+    parent_issue_id: float
+    parent_issue: IssueTypeForResponse
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItemsType",
-    "WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItemsTypeForResponse",
-    "WebhookWorkflowJobCompletedPropWorkflowJobAllof1Type",
-    "WebhookWorkflowJobCompletedPropWorkflowJobAllof1TypeForResponse",
+    "WebhookSubIssuesSubIssueRemovedType",
+    "WebhookSubIssuesSubIssueRemovedTypeForResponse",
 )

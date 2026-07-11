@@ -9,35 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
 
-class RepositoryRuleRulesetInfoType(TypedDict):
-    """repository ruleset data for rule
+class PullRequestPropHeadType(TypedDict):
+    """PullRequestPropHead"""
 
-    User-defined metadata to store domain-specific information limited to 8 keys
-    with scalar values.
-    """
-
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    label: Union[str, None]
+    ref: str
+    repo: Union[None, RepositoryType]
+    sha: str
+    user: Union[None, SimpleUserType]
 
 
-class RepositoryRuleRulesetInfoTypeForResponse(TypedDict):
-    """repository ruleset data for rule
+class PullRequestPropHeadTypeForResponse(TypedDict):
+    """PullRequestPropHead"""
 
-    User-defined metadata to store domain-specific information limited to 8 keys
-    with scalar values.
-    """
+    label: Union[str, None]
+    ref: str
+    repo: Union[None, RepositoryTypeForResponse]
+    sha: str
+    user: Union[None, SimpleUserTypeForResponse]
 
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+
+class PullRequestPropBaseType(TypedDict):
+    """PullRequestPropBase"""
+
+    label: str
+    ref: str
+    repo: RepositoryType
+    sha: str
+    user: SimpleUserType
+
+
+class PullRequestPropBaseTypeForResponse(TypedDict):
+    """PullRequestPropBase"""
+
+    label: str
+    ref: str
+    repo: RepositoryTypeForResponse
+    sha: str
+    user: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "RepositoryRuleRulesetInfoType",
-    "RepositoryRuleRulesetInfoTypeForResponse",
+    "PullRequestPropBaseType",
+    "PullRequestPropBaseTypeForResponse",
+    "PullRequestPropHeadType",
+    "PullRequestPropHeadTypeForResponse",
 )

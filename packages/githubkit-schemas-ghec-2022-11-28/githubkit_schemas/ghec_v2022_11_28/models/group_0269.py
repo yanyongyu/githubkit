@@ -9,85 +9,73 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CopilotOrganizationDetails(ExtraGitHubModel):
-    """Copilot Organization Details
+class CopilotSpaceCollaboratorAnyof0(GitHubModel):
+    """CopilotSpaceCollaboratorAnyof0"""
 
-    Information about the seat breakdown and policies set for an organization with a
-    Copilot Business or Copilot Enterprise subscription.
-    """
-
-    seat_breakdown: CopilotOrganizationSeatBreakdown = Field(
-        title="Copilot Seat Breakdown",
-        description="The breakdown of Copilot Business seats for the organization.",
-    )
-    public_code_suggestions: Literal["allow", "block", "unconfigured"] = Field(
-        description="The organization policy for allowing or blocking suggestions matching public code (duplication detection filter)."
-    )
-    ide_chat: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
-        default=UNSET,
-        description="The organization policy for allowing or disallowing Copilot Chat in the IDE.",
-    )
-    platform_chat: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
-        default=UNSET,
-        description="The organization policy for allowing or disallowing Copilot features on GitHub.com.",
-    )
-    cli: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
-        default=UNSET,
-        description="The organization policy for allowing or disallowing Copilot CLI.",
-    )
-    seat_management_setting: Literal[
-        "assign_all", "assign_selected", "disabled", "unconfigured"
-    ] = Field(description="The mode of assigning new seats.")
-    plan_type: Missing[Literal["business", "enterprise"]] = Field(
-        default=UNSET,
-        description="The Copilot plan of the organization, or the parent enterprise, when applicable.",
+    name: Missing[Union[str, None]] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    login: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    avatar_url: str = Field()
+    gravatar_id: Union[str, None] = Field()
+    url: str = Field()
+    html_url: str = Field()
+    followers_url: str = Field()
+    following_url: str = Field()
+    gists_url: str = Field()
+    starred_url: str = Field()
+    subscriptions_url: str = Field()
+    organizations_url: str = Field()
+    repos_url: str = Field()
+    events_url: str = Field()
+    received_events_url: str = Field()
+    type: str = Field()
+    site_admin: bool = Field()
+    starred_at: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+    actor_type: Literal["User"] = Field(description="The collaborator actor type.")
+    role: Literal["reader", "writer", "admin"] = Field(
+        description="The role granted to the collaborator"
     )
 
 
-class CopilotOrganizationSeatBreakdown(GitHubModel):
-    """Copilot Seat Breakdown
+class CopilotSpaceCollaboratorAnyof1(GitHubModel):
+    """CopilotSpaceCollaboratorAnyof1"""
 
-    The breakdown of Copilot Business seats for the organization.
-    """
-
-    total: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of seats being billed for the organization as of the current billing cycle.",
+    actor_type: Literal["Team"] = Field(description="The collaborator actor type.")
+    role: Literal["reader", "writer", "admin"] = Field(
+        description="The role granted to the collaborator"
     )
-    added_this_cycle: Missing[int] = Field(
-        default=UNSET, description="Seats added during the current billing cycle."
-    )
-    pending_cancellation: Missing[int] = Field(
-        default=UNSET,
-        description="The number of seats that are pending cancellation at the end of the current billing cycle.",
-    )
-    pending_invitation: Missing[int] = Field(
-        default=UNSET,
-        description="The number of users who have been invited to receive a Copilot seat through this organization.",
-    )
-    active_this_cycle: Missing[int] = Field(
-        default=UNSET,
-        description="The number of seats that have used Copilot during the current billing cycle.",
-    )
-    inactive_this_cycle: Missing[int] = Field(
-        default=UNSET,
-        description="The number of seats that have not used Copilot during the current billing cycle.",
-    )
+    id: int = Field()
+    node_id: str = Field()
+    name: str = Field()
+    slug: str = Field()
+    type: Literal["Team"] = Field()
+    description: Missing[Union[str, None]] = Field(default=UNSET)
+    privacy: Missing[str] = Field(default=UNSET)
+    notification_setting: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    members_url: Missing[str] = Field(default=UNSET)
+    repositories_url: Missing[str] = Field(default=UNSET)
+    organization_id: Missing[int] = Field(default=UNSET)
+    parent: Missing[None] = Field(default=UNSET)
 
 
-model_rebuild(CopilotOrganizationDetails)
-model_rebuild(CopilotOrganizationSeatBreakdown)
+model_rebuild(CopilotSpaceCollaboratorAnyof0)
+model_rebuild(CopilotSpaceCollaboratorAnyof1)
 
 __all__ = (
-    "CopilotOrganizationDetails",
-    "CopilotOrganizationSeatBreakdown",
+    "CopilotSpaceCollaboratorAnyof0",
+    "CopilotSpaceCollaboratorAnyof1",
 )

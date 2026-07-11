@@ -9,48 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0515 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0516 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0517 import (
+from .group_0523 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0524 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0525 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0518 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0784 import (
-    WebhookPackagePublishedPropPackageType,
-    WebhookPackagePublishedPropPackageTypeForResponse,
-)
+from .group_0526 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0534 import WebhooksUserType, WebhooksUserTypeForResponse
 
 
-class WebhookPackagePublishedType(TypedDict):
-    """package published event"""
+class WebhookOrgBlockBlockedType(TypedDict):
+    """org_block blocked event"""
 
-    action: Literal["published"]
+    action: Literal["blocked"]
+    blocked_user: Union[WebhooksUserType, None]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    package: WebhookPackagePublishedPropPackageType
+    organization: OrganizationSimpleWebhooksType
     repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserType
 
 
-class WebhookPackagePublishedTypeForResponse(TypedDict):
-    """package published event"""
+class WebhookOrgBlockBlockedTypeForResponse(TypedDict):
+    """org_block blocked event"""
 
-    action: Literal["published"]
+    action: Literal["blocked"]
+    blocked_user: Union[WebhooksUserTypeForResponse, None]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    package: WebhookPackagePublishedPropPackageTypeForResponse
+    organization: OrganizationSimpleWebhooksTypeForResponse
     repository: NotRequired[RepositoryWebhooksTypeForResponse]
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookPackagePublishedType",
-    "WebhookPackagePublishedTypeForResponse",
+    "WebhookOrgBlockBlockedType",
+    "WebhookOrgBlockBlockedTypeForResponse",
 )

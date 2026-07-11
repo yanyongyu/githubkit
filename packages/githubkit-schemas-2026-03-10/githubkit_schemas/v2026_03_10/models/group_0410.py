@@ -17,13 +17,13 @@ from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0003 import SimpleUser
 from .group_0010 import Integration
-from .group_0390 import IssueTypeWebhook
+from .group_0391 import IssueTypeWebhook
 
 
-class IssueTypeChangedIssueEvent(GitHubModel):
-    """Issue Type Changed Issue Event
+class IssueTypeRemovedIssueEvent(GitHubModel):
+    """Issue Type Removed Issue Event
 
-    Issue Type Changed Issue Event
+    Issue Type Removed Issue Event
     """
 
     id: int = Field()
@@ -35,14 +35,11 @@ class IssueTypeChangedIssueEvent(GitHubModel):
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
     performed_via_github_app: Union[None, Integration, None] = Field()
-    issue_type: Union[IssueTypeWebhook, None] = Field(
-        title="Issue Type", description="The type of issue."
-    )
     prev_issue_type: Union[IssueTypeWebhook, None] = Field(
         title="Issue Type", description="The type of issue."
     )
 
 
-model_rebuild(IssueTypeChangedIssueEvent)
+model_rebuild(IssueTypeRemovedIssueEvent)
 
-__all__ = ("IssueTypeChangedIssueEvent",)
+__all__ = ("IssueTypeRemovedIssueEvent",)

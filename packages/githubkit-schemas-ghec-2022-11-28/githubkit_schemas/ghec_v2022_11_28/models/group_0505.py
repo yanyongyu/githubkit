@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,71 +17,28 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
+
+class PagesDeploymentStatus(GitHubModel):
+    """GitHub Pages deployment status"""
+
+    status: Missing[
+        Literal[
+            "deployment_in_progress",
+            "syncing_files",
+            "finished_file_sync",
+            "updating_pages",
+            "purging_cdn",
+            "deployment_cancelled",
+            "deployment_failed",
+            "deployment_content_failed",
+            "deployment_attempt_error",
+            "deployment_lost",
+            "succeed",
+            "deployment_queued",
+        ]
+    ] = Field(default=UNSET, description="The current status of the deployment.")
 
 
-class PullRequestReview(GitHubModel):
-    """Pull Request Review
+model_rebuild(PagesDeploymentStatus)
 
-    Pull Request Reviews are reviews on pull requests.
-    """
-
-    id: int = Field(description="Unique identifier of the review")
-    node_id: str = Field()
-    user: Union[None, SimpleUser] = Field()
-    body: str = Field(description="The text of the review.")
-    state: str = Field()
-    html_url: str = Field()
-    pull_request_url: str = Field()
-    links: PullRequestReviewPropLinks = Field(alias="_links")
-    submitted_at: Missing[_dt.datetime] = Field(default=UNSET)
-    commit_id: Union[str, None] = Field(
-        description="A commit SHA for the review. If the commit object was garbage collected or forcibly deleted, then it no longer exists in Git and this value will be `null`."
-    )
-    body_html: Missing[str] = Field(default=UNSET)
-    body_text: Missing[str] = Field(default=UNSET)
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="author_association",
-        description="How the author is associated with the repository.",
-    )
-
-
-class PullRequestReviewPropLinks(GitHubModel):
-    """PullRequestReviewPropLinks"""
-
-    html: PullRequestReviewPropLinksPropHtml = Field()
-    pull_request: PullRequestReviewPropLinksPropPullRequest = Field()
-
-
-class PullRequestReviewPropLinksPropHtml(GitHubModel):
-    """PullRequestReviewPropLinksPropHtml"""
-
-    href: str = Field()
-
-
-class PullRequestReviewPropLinksPropPullRequest(GitHubModel):
-    """PullRequestReviewPropLinksPropPullRequest"""
-
-    href: str = Field()
-
-
-model_rebuild(PullRequestReview)
-model_rebuild(PullRequestReviewPropLinks)
-model_rebuild(PullRequestReviewPropLinksPropHtml)
-model_rebuild(PullRequestReviewPropLinksPropPullRequest)
-
-__all__ = (
-    "PullRequestReview",
-    "PullRequestReviewPropLinks",
-    "PullRequestReviewPropLinksPropHtml",
-    "PullRequestReviewPropLinksPropPullRequest",
-)
+__all__ = ("PagesDeploymentStatus",)

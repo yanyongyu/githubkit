@@ -9,103 +9,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0588 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0589 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0590 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0591 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0604 import WebhooksLabelType, WebhooksLabelTypeForResponse
-from .group_0808 import (
-    WebhookIssuesEditedPropIssueType,
-    WebhookIssuesEditedPropIssueTypeForResponse,
+from .group_0806 import (
+    WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreatorType,
+    WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
 )
 
 
-class WebhookIssuesEditedType(TypedDict):
-    """issues edited event"""
+class WebhookIssuesClosedPropIssueAllof0PropMilestoneType(TypedDict):
+    """Milestone
 
-    action: Literal["edited"]
-    changes: WebhookIssuesEditedPropChangesType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssuesEditedPropIssueType
-    label: NotRequired[WebhooksLabelType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
-
-
-class WebhookIssuesEditedTypeForResponse(TypedDict):
-    """issues edited event"""
-
-    action: Literal["edited"]
-    changes: WebhookIssuesEditedPropChangesTypeForResponse
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhookIssuesEditedPropIssueTypeForResponse
-    label: NotRequired[WebhooksLabelTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
-
-
-class WebhookIssuesEditedPropChangesType(TypedDict):
-    """WebhookIssuesEditedPropChanges
-
-    The changes to the issue.
+    A collection of related issues and pull requests.
     """
 
-    body: NotRequired[WebhookIssuesEditedPropChangesPropBodyType]
-    title: NotRequired[WebhookIssuesEditedPropChangesPropTitleType]
+    closed_at: Union[_dt.datetime, None]
+    closed_issues: int
+    created_at: _dt.datetime
+    creator: Union[WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreatorType, None]
+    description: Union[str, None]
+    due_on: Union[_dt.datetime, None]
+    html_url: str
+    id: int
+    labels_url: str
+    node_id: str
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: _dt.datetime
+    url: str
 
 
-class WebhookIssuesEditedPropChangesTypeForResponse(TypedDict):
-    """WebhookIssuesEditedPropChanges
+class WebhookIssuesClosedPropIssueAllof0PropMilestoneTypeForResponse(TypedDict):
+    """Milestone
 
-    The changes to the issue.
+    A collection of related issues and pull requests.
     """
 
-    body: NotRequired[WebhookIssuesEditedPropChangesPropBodyTypeForResponse]
-    title: NotRequired[WebhookIssuesEditedPropChangesPropTitleTypeForResponse]
-
-
-class WebhookIssuesEditedPropChangesPropBodyType(TypedDict):
-    """WebhookIssuesEditedPropChangesPropBody"""
-
-    from_: str
-
-
-class WebhookIssuesEditedPropChangesPropBodyTypeForResponse(TypedDict):
-    """WebhookIssuesEditedPropChangesPropBody"""
-
-    from_: str
-
-
-class WebhookIssuesEditedPropChangesPropTitleType(TypedDict):
-    """WebhookIssuesEditedPropChangesPropTitle"""
-
-    from_: str
-
-
-class WebhookIssuesEditedPropChangesPropTitleTypeForResponse(TypedDict):
-    """WebhookIssuesEditedPropChangesPropTitle"""
-
-    from_: str
+    closed_at: Union[str, None]
+    closed_issues: int
+    created_at: str
+    creator: Union[
+        WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreatorTypeForResponse, None
+    ]
+    description: Union[str, None]
+    due_on: Union[str, None]
+    html_url: str
+    id: int
+    labels_url: str
+    node_id: str
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: str
+    url: str
 
 
 __all__ = (
-    "WebhookIssuesEditedPropChangesPropBodyType",
-    "WebhookIssuesEditedPropChangesPropBodyTypeForResponse",
-    "WebhookIssuesEditedPropChangesPropTitleType",
-    "WebhookIssuesEditedPropChangesPropTitleTypeForResponse",
-    "WebhookIssuesEditedPropChangesType",
-    "WebhookIssuesEditedPropChangesTypeForResponse",
-    "WebhookIssuesEditedType",
-    "WebhookIssuesEditedTypeForResponse",
+    "WebhookIssuesClosedPropIssueAllof0PropMilestoneType",
+    "WebhookIssuesClosedPropIssueAllof0PropMilestoneTypeForResponse",
 )

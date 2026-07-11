@@ -9,45 +9,81 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Any, TypeAlias
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0514 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0515 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0516 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0543 import (
-    PersonalAccessTokenRequestType,
-    PersonalAccessTokenRequestTypeForResponse,
-)
+
+class WebhookRubygemsMetadataType(TypedDict):
+    """Ruby Gems metadata"""
+
+    name: NotRequired[str]
+    description: NotRequired[str]
+    readme: NotRequired[str]
+    homepage: NotRequired[str]
+    version_info: NotRequired[WebhookRubygemsMetadataPropVersionInfoType]
+    platform: NotRequired[str]
+    metadata: NotRequired[WebhookRubygemsMetadataPropMetadataType]
+    repo: NotRequired[str]
+    dependencies: NotRequired[list[WebhookRubygemsMetadataPropDependenciesItemsType]]
+    commit_oid: NotRequired[str]
 
 
-class WebhookPersonalAccessTokenRequestApprovedType(TypedDict):
-    """personal_access_token_request approved event"""
+class WebhookRubygemsMetadataTypeForResponse(TypedDict):
+    """Ruby Gems metadata"""
 
-    action: Literal["approved"]
-    personal_access_token_request: PersonalAccessTokenRequestType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    organization: OrganizationSimpleWebhooksType
-    sender: SimpleUserType
-    installation: SimpleInstallationType
+    name: NotRequired[str]
+    description: NotRequired[str]
+    readme: NotRequired[str]
+    homepage: NotRequired[str]
+    version_info: NotRequired[WebhookRubygemsMetadataPropVersionInfoTypeForResponse]
+    platform: NotRequired[str]
+    metadata: NotRequired[WebhookRubygemsMetadataPropMetadataTypeForResponse]
+    repo: NotRequired[str]
+    dependencies: NotRequired[
+        list[WebhookRubygemsMetadataPropDependenciesItemsTypeForResponse]
+    ]
+    commit_oid: NotRequired[str]
 
 
-class WebhookPersonalAccessTokenRequestApprovedTypeForResponse(TypedDict):
-    """personal_access_token_request approved event"""
+class WebhookRubygemsMetadataPropVersionInfoType(TypedDict):
+    """WebhookRubygemsMetadataPropVersionInfo"""
 
-    action: Literal["approved"]
-    personal_access_token_request: PersonalAccessTokenRequestTypeForResponse
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    organization: OrganizationSimpleWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
-    installation: SimpleInstallationTypeForResponse
+    version: NotRequired[str]
+
+
+class WebhookRubygemsMetadataPropVersionInfoTypeForResponse(TypedDict):
+    """WebhookRubygemsMetadataPropVersionInfo"""
+
+    version: NotRequired[str]
+
+
+WebhookRubygemsMetadataPropMetadataType: TypeAlias = dict[str, Any]
+"""WebhookRubygemsMetadataPropMetadata
+"""
+
+
+WebhookRubygemsMetadataPropMetadataTypeForResponse: TypeAlias = dict[str, Any]
+"""WebhookRubygemsMetadataPropMetadata
+"""
+
+
+WebhookRubygemsMetadataPropDependenciesItemsType: TypeAlias = dict[str, Any]
+"""WebhookRubygemsMetadataPropDependenciesItems
+"""
+
+
+WebhookRubygemsMetadataPropDependenciesItemsTypeForResponse: TypeAlias = dict[str, Any]
+"""WebhookRubygemsMetadataPropDependenciesItems
+"""
 
 
 __all__ = (
-    "WebhookPersonalAccessTokenRequestApprovedType",
-    "WebhookPersonalAccessTokenRequestApprovedTypeForResponse",
+    "WebhookRubygemsMetadataPropDependenciesItemsType",
+    "WebhookRubygemsMetadataPropDependenciesItemsTypeForResponse",
+    "WebhookRubygemsMetadataPropMetadataType",
+    "WebhookRubygemsMetadataPropMetadataTypeForResponse",
+    "WebhookRubygemsMetadataPropVersionInfoType",
+    "WebhookRubygemsMetadataPropVersionInfoTypeForResponse",
+    "WebhookRubygemsMetadataType",
+    "WebhookRubygemsMetadataTypeForResponse",
 )

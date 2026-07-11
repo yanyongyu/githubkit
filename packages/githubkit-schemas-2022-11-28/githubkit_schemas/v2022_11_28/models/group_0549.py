@@ -9,50 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
+from .group_0282 import SimpleCommit
 
 
-class ProjectsV2Item(GitHubModel):
-    """Projects v2 Item
+class MergeGroup(GitHubModel):
+    """Merge Group
 
-    An item belonging to a project
+    A group of pull requests that the merge queue has grouped together to be merged.
     """
 
-    id: float = Field(description="The unique identifier of the project item.")
-    node_id: Missing[str] = Field(
-        default=UNSET, description="The node ID of the project item."
+    head_sha: str = Field(description="The SHA of the merge group.")
+    head_ref: str = Field(description="The full ref of the merge group.")
+    base_sha: str = Field(description="The SHA of the merge group's parent commit.")
+    base_ref: str = Field(
+        description="The full ref of the branch the merge group will be merged into."
     )
-    project_node_id: Missing[str] = Field(
-        default=UNSET, description="The node ID of the project that contains this item."
-    )
-    content_node_id: str = Field(
-        description="The node ID of the content represented by this item."
-    )
-    content_type: Literal["Issue", "PullRequest", "DraftIssue"] = Field(
-        title="Projects v2 Item Content Type",
-        description="The type of content tracked in a project item",
-    )
-    creator: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
-    created_at: _dt.datetime = Field(description="The time when the item was created.")
-    updated_at: _dt.datetime = Field(
-        description="The time when the item was last updated."
-    )
-    archived_at: Union[_dt.datetime, None] = Field(
-        description="The time when the item was archived."
-    )
+    head_commit: SimpleCommit = Field(title="Simple Commit", description="A commit.")
 
 
-model_rebuild(ProjectsV2Item)
+model_rebuild(MergeGroup)
 
-__all__ = ("ProjectsV2Item",)
+__all__ = ("MergeGroup",)

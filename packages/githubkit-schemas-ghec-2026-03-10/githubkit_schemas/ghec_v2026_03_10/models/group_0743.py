@@ -18,19 +18,19 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0206 import IssueType
-from .group_0208 import IssueDependenciesSummary, SubIssuesSummary
+from .group_0209 import IssueType
+from .group_0211 import IssueDependenciesSummary, SubIssuesSummary
 from .group_0745 import (
-    WebhookIssueCommentDeletedPropIssueAllof0PropAssignee,
-    WebhookIssueCommentDeletedPropIssueAllof0PropLabelsItems,
-    WebhookIssueCommentDeletedPropIssueAllof0PropPullRequest,
+    WebhookIssueCommentCreatedPropIssueAllof0PropAssignee,
+    WebhookIssueCommentCreatedPropIssueAllof0PropLabelsItems,
+    WebhookIssueCommentCreatedPropIssueAllof0PropPullRequest,
 )
-from .group_0751 import WebhookIssueCommentDeletedPropIssueMergedMilestone
-from .group_0752 import WebhookIssueCommentDeletedPropIssueMergedPerformedViaGithubApp
+from .group_0751 import WebhookIssueCommentCreatedPropIssueMergedMilestone
+from .group_0752 import WebhookIssueCommentCreatedPropIssueMergedPerformedViaGithubApp
 
 
-class WebhookIssueCommentDeletedPropIssue(GitHubModel):
-    """WebhookIssueCommentDeletedPropIssue
+class WebhookIssueCommentCreatedPropIssue(GitHubModel):
+    """WebhookIssueCommentCreatedPropIssue
 
     The [issue](https://docs.github.com/enterprise-
     cloud@latest/rest/issues/issues#get-an-issue) the comment belongs to.
@@ -40,9 +40,9 @@ class WebhookIssueCommentDeletedPropIssue(GitHubModel):
         Literal["resolved", "off-topic", "too heated", "spam"], None
     ] = Field()
     assignee: Union[
-        Union[WebhookIssueCommentDeletedPropIssueAllof0PropAssignee, None], None
+        Union[WebhookIssueCommentCreatedPropIssueAllof0PropAssignee, None], None
     ] = Field(title="User")
-    assignees: list[WebhookIssueCommentDeletedPropIssueMergedAssignees] = Field()
+    assignees: list[WebhookIssueCommentCreatedPropIssueMergedAssignees] = Field()
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -65,19 +65,19 @@ class WebhookIssueCommentDeletedPropIssue(GitHubModel):
     events_url: str = Field()
     html_url: str = Field()
     id: int = Field()
-    labels: list[WebhookIssueCommentDeletedPropIssueAllof0PropLabelsItems] = Field()
+    labels: list[WebhookIssueCommentCreatedPropIssueAllof0PropLabelsItems] = Field()
     labels_url: str = Field()
     locked: bool = Field()
-    milestone: Union[WebhookIssueCommentDeletedPropIssueMergedMilestone, None] = Field()
+    milestone: Union[WebhookIssueCommentCreatedPropIssueMergedMilestone, None] = Field()
     node_id: str = Field()
     number: int = Field()
     performed_via_github_app: Missing[
-        Union[WebhookIssueCommentDeletedPropIssueMergedPerformedViaGithubApp, None]
+        Union[WebhookIssueCommentCreatedPropIssueMergedPerformedViaGithubApp, None]
     ] = Field(default=UNSET)
-    pull_request: Missing[WebhookIssueCommentDeletedPropIssueAllof0PropPullRequest] = (
+    pull_request: Missing[WebhookIssueCommentCreatedPropIssueAllof0PropPullRequest] = (
         Field(default=UNSET)
     )
-    reactions: WebhookIssueCommentDeletedPropIssueMergedReactions = Field()
+    reactions: WebhookIssueCommentCreatedPropIssueMergedReactions = Field()
     repository_url: str = Field()
     sub_issues_summary: Missing[SubIssuesSummary] = Field(
         default=UNSET, title="Sub-issues Summary"
@@ -98,11 +98,11 @@ class WebhookIssueCommentDeletedPropIssue(GitHubModel):
     )
     updated_at: _dt.datetime = Field()
     url: str = Field(description="URL for the issue")
-    user: WebhookIssueCommentDeletedPropIssueMergedUser = Field()
+    user: WebhookIssueCommentCreatedPropIssueMergedUser = Field()
 
 
-class WebhookIssueCommentDeletedPropIssueMergedAssignees(GitHubModel):
-    """WebhookIssueCommentDeletedPropIssueMergedAssignees"""
+class WebhookIssueCommentCreatedPropIssueMergedAssignees(GitHubModel):
+    """WebhookIssueCommentCreatedPropIssueMergedAssignees"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
     deleted: Missing[bool] = Field(default=UNSET)
@@ -130,8 +130,8 @@ class WebhookIssueCommentDeletedPropIssueMergedAssignees(GitHubModel):
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookIssueCommentDeletedPropIssueMergedReactions(GitHubModel):
-    """WebhookIssueCommentDeletedPropIssueMergedReactions"""
+class WebhookIssueCommentCreatedPropIssueMergedReactions(GitHubModel):
+    """WebhookIssueCommentCreatedPropIssueMergedReactions"""
 
     plus_one: int = Field(alias="+1")
     minus_one: int = Field(alias="-1")
@@ -145,8 +145,8 @@ class WebhookIssueCommentDeletedPropIssueMergedReactions(GitHubModel):
     url: str = Field()
 
 
-class WebhookIssueCommentDeletedPropIssueMergedUser(GitHubModel):
-    """WebhookIssueCommentDeletedPropIssueMergedUser"""
+class WebhookIssueCommentCreatedPropIssueMergedUser(GitHubModel):
+    """WebhookIssueCommentCreatedPropIssueMergedUser"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
     deleted: Missing[bool] = Field(default=UNSET)
@@ -174,14 +174,14 @@ class WebhookIssueCommentDeletedPropIssueMergedUser(GitHubModel):
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookIssueCommentDeletedPropIssue)
-model_rebuild(WebhookIssueCommentDeletedPropIssueMergedAssignees)
-model_rebuild(WebhookIssueCommentDeletedPropIssueMergedReactions)
-model_rebuild(WebhookIssueCommentDeletedPropIssueMergedUser)
+model_rebuild(WebhookIssueCommentCreatedPropIssue)
+model_rebuild(WebhookIssueCommentCreatedPropIssueMergedAssignees)
+model_rebuild(WebhookIssueCommentCreatedPropIssueMergedReactions)
+model_rebuild(WebhookIssueCommentCreatedPropIssueMergedUser)
 
 __all__ = (
-    "WebhookIssueCommentDeletedPropIssue",
-    "WebhookIssueCommentDeletedPropIssueMergedAssignees",
-    "WebhookIssueCommentDeletedPropIssueMergedReactions",
-    "WebhookIssueCommentDeletedPropIssueMergedUser",
+    "WebhookIssueCommentCreatedPropIssue",
+    "WebhookIssueCommentCreatedPropIssueMergedAssignees",
+    "WebhookIssueCommentCreatedPropIssueMergedReactions",
+    "WebhookIssueCommentCreatedPropIssueMergedUser",
 )

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -17,26 +17,27 @@ from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0003 import SimpleUser
 from .group_0010 import Integration
+from .group_0460 import IssueReference
 
 
-class TimelineUnassignedIssueEvent(GitHubModel):
-    """Timeline Unassigned Issue Event
+class BlockingRemovedIssueEvent(GitHubModel):
+    """Blocking Removed Issue Event
 
-    Timeline Unassigned Issue Event
+    Blocking Removed Issue Event
     """
 
     id: int = Field()
     node_id: str = Field()
     url: str = Field()
     actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["unassigned"] = Field()
+    event: str = Field()
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
     performed_via_github_app: Union[None, Integration, None] = Field()
-    assignee: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    blocking: Union[None, IssueReference, None] = Field()
 
 
-model_rebuild(TimelineUnassignedIssueEvent)
+model_rebuild(BlockingRemovedIssueEvent)
 
-__all__ = ("TimelineUnassignedIssueEvent",)
+__all__ = ("BlockingRemovedIssueEvent",)

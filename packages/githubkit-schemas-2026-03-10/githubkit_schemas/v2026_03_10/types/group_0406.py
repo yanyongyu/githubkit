@@ -16,46 +16,46 @@ from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
 
-class RemovedFromProjectIssueEventType(TypedDict):
-    """Removed from Project Issue Event
+class MovedColumnInProjectIssueEventType(TypedDict):
+    """Moved Column in Project Issue Event
 
-    Removed from Project Issue Event
+    Moved Column in Project Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["removed_from_project"]
+    event: Literal["moved_columns_in_project"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    project_card: NotRequired[RemovedFromProjectIssueEventPropProjectCardType]
+    project_card: NotRequired[MovedColumnInProjectIssueEventPropProjectCardType]
 
 
-class RemovedFromProjectIssueEventTypeForResponse(TypedDict):
-    """Removed from Project Issue Event
+class MovedColumnInProjectIssueEventTypeForResponse(TypedDict):
+    """Moved Column in Project Issue Event
 
-    Removed from Project Issue Event
+    Moved Column in Project Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserTypeForResponse
-    event: Literal["removed_from_project"]
+    event: Literal["moved_columns_in_project"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
     project_card: NotRequired[
-        RemovedFromProjectIssueEventPropProjectCardTypeForResponse
+        MovedColumnInProjectIssueEventPropProjectCardTypeForResponse
     ]
 
 
-class RemovedFromProjectIssueEventPropProjectCardType(TypedDict):
-    """RemovedFromProjectIssueEventPropProjectCard"""
+class MovedColumnInProjectIssueEventPropProjectCardType(TypedDict):
+    """MovedColumnInProjectIssueEventPropProjectCard"""
 
     id: int
     url: str
@@ -65,8 +65,8 @@ class RemovedFromProjectIssueEventPropProjectCardType(TypedDict):
     previous_column_name: NotRequired[str]
 
 
-class RemovedFromProjectIssueEventPropProjectCardTypeForResponse(TypedDict):
-    """RemovedFromProjectIssueEventPropProjectCard"""
+class MovedColumnInProjectIssueEventPropProjectCardTypeForResponse(TypedDict):
+    """MovedColumnInProjectIssueEventPropProjectCard"""
 
     id: int
     url: str
@@ -77,8 +77,8 @@ class RemovedFromProjectIssueEventPropProjectCardTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "RemovedFromProjectIssueEventPropProjectCardType",
-    "RemovedFromProjectIssueEventPropProjectCardTypeForResponse",
-    "RemovedFromProjectIssueEventType",
-    "RemovedFromProjectIssueEventTypeForResponse",
+    "MovedColumnInProjectIssueEventPropProjectCardType",
+    "MovedColumnInProjectIssueEventPropProjectCardTypeForResponse",
+    "MovedColumnInProjectIssueEventType",
+    "MovedColumnInProjectIssueEventTypeForResponse",
 )

@@ -9,107 +9,168 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0054 import PinnedIssueCommentType, PinnedIssueCommentTypeForResponse
+from .group_0055 import IssueCommentMinimizedType, IssueCommentMinimizedTypeForResponse
 
-class WebhooksTeamType(TypedDict):
-    """Team
 
-    Groups of organization members that gives permissions on specified repositories.
+class WebhooksIssueCommentType(TypedDict):
+    """issue comment
+
+    The [comment](https://docs.github.com/rest/issues/comments#get-an-issue-comment)
+    itself.
     """
 
-    deleted: NotRequired[bool]
-    description: NotRequired[Union[str, None]]
-    html_url: NotRequired[str]
-    id: int
-    members_url: NotRequired[str]
-    name: str
-    node_id: NotRequired[str]
-    parent: NotRequired[Union[WebhooksTeamPropParentType, None]]
-    permission: NotRequired[str]
-    privacy: NotRequired[Literal["open", "closed", "secret"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
     ]
-    repositories_url: NotRequired[str]
-    slug: NotRequired[str]
-    url: NotRequired[str]
-    type: NotRequired[Literal["enterprise", "organization"]]
-    organization_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
+    body: str
+    created_at: _dt.datetime
+    html_url: str
+    id: int
+    issue_url: str
+    node_id: str
+    performed_via_github_app: Union[IntegrationType, None]
+    reactions: WebhooksIssueCommentPropReactionsType
+    updated_at: _dt.datetime
+    url: str
+    user: Union[WebhooksIssueCommentPropUserType, None]
+    pin: NotRequired[Union[None, PinnedIssueCommentType]]
+    minimized: NotRequired[Union[None, IssueCommentMinimizedType]]
 
 
-class WebhooksTeamTypeForResponse(TypedDict):
-    """Team
+class WebhooksIssueCommentTypeForResponse(TypedDict):
+    """issue comment
 
-    Groups of organization members that gives permissions on specified repositories.
+    The [comment](https://docs.github.com/rest/issues/comments#get-an-issue-comment)
+    itself.
     """
 
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    body: str
+    created_at: str
+    html_url: str
+    id: int
+    issue_url: str
+    node_id: str
+    performed_via_github_app: Union[IntegrationTypeForResponse, None]
+    reactions: WebhooksIssueCommentPropReactionsTypeForResponse
+    updated_at: str
+    url: str
+    user: Union[WebhooksIssueCommentPropUserTypeForResponse, None]
+    pin: NotRequired[Union[None, PinnedIssueCommentTypeForResponse]]
+    minimized: NotRequired[Union[None, IssueCommentMinimizedTypeForResponse]]
+
+
+class WebhooksIssueCommentPropReactionsType(TypedDict):
+    """Reactions"""
+
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
+    url: str
+
+
+class WebhooksIssueCommentPropReactionsTypeForResponse(TypedDict):
+    """Reactions"""
+
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
+    url: str
+
+
+class WebhooksIssueCommentPropUserType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
     deleted: NotRequired[bool]
-    description: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
     html_url: NotRequired[str]
     id: int
-    members_url: NotRequired[str]
-    name: str
+    login: str
+    name: NotRequired[str]
     node_id: NotRequired[str]
-    parent: NotRequired[Union[WebhooksTeamPropParentTypeForResponse, None]]
-    permission: NotRequired[str]
-    privacy: NotRequired[Literal["open", "closed", "secret"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ]
-    repositories_url: NotRequired[str]
-    slug: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
     url: NotRequired[str]
-    type: NotRequired[Literal["enterprise", "organization"]]
-    organization_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
+    user_view_type: NotRequired[str]
 
 
-class WebhooksTeamPropParentType(TypedDict):
-    """WebhooksTeamPropParent"""
+class WebhooksIssueCommentPropUserTypeForResponse(TypedDict):
+    """User"""
 
-    description: Union[str, None]
-    html_url: str
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
     id: int
-    members_url: str
-    name: str
-    node_id: str
-    permission: str
-    privacy: Literal["open", "closed", "secret"]
-    notification_setting: Literal["notifications_enabled", "notifications_disabled"]
-    repositories_url: str
-    slug: str
-    url: str
-    type: Literal["enterprise", "organization"]
-    organization_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
-
-
-class WebhooksTeamPropParentTypeForResponse(TypedDict):
-    """WebhooksTeamPropParent"""
-
-    description: Union[str, None]
-    html_url: str
-    id: int
-    members_url: str
-    name: str
-    node_id: str
-    permission: str
-    privacy: Literal["open", "closed", "secret"]
-    notification_setting: Literal["notifications_enabled", "notifications_disabled"]
-    repositories_url: str
-    slug: str
-    url: str
-    type: Literal["enterprise", "organization"]
-    organization_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "WebhooksTeamPropParentType",
-    "WebhooksTeamPropParentTypeForResponse",
-    "WebhooksTeamType",
-    "WebhooksTeamTypeForResponse",
+    "WebhooksIssueCommentPropReactionsType",
+    "WebhooksIssueCommentPropReactionsTypeForResponse",
+    "WebhooksIssueCommentPropUserType",
+    "WebhooksIssueCommentPropUserTypeForResponse",
+    "WebhooksIssueCommentType",
+    "WebhooksIssueCommentTypeForResponse",
 )

@@ -9,52 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0368 import GitUser
-from .group_0369 import Verification
+
+class UserNameResponse(GitHubModel):
+    """UserNameResponse"""
+
+    formatted: Missing[str] = Field(
+        default=UNSET,
+        description="The full name, including all middle names, titles, and suffixes as appropriate, formatted for display.",
+    )
+    family_name: Missing[str] = Field(
+        default=UNSET, alias="familyName", description="The family name of the user."
+    )
+    given_name: Missing[str] = Field(
+        default=UNSET, alias="givenName", description="The given name of the user."
+    )
+    middle_name: Missing[str] = Field(
+        default=UNSET, alias="middleName", description="The middle name(s) of the user."
+    )
 
 
-class CommitSearchResultItemPropCommit(GitHubModel):
-    """CommitSearchResultItemPropCommit"""
+class UserEmailsResponseItems(GitHubModel):
+    """UserEmailsResponseItems"""
 
-    author: CommitSearchResultItemPropCommitPropAuthor = Field()
-    committer: Union[None, GitUser] = Field()
-    comment_count: int = Field()
-    message: str = Field()
-    tree: CommitSearchResultItemPropCommitPropTree = Field()
-    url: str = Field()
-    verification: Missing[Verification] = Field(default=UNSET, title="Verification")
+    value: str = Field(description="The email address.")
+    type: Missing[str] = Field(default=UNSET, description="The type of email address.")
+    primary: Missing[bool] = Field(
+        default=UNSET, description="Whether this email address is the primary address."
+    )
 
 
-class CommitSearchResultItemPropCommitPropAuthor(GitHubModel):
-    """CommitSearchResultItemPropCommitPropAuthor"""
-
-    name: str = Field()
-    email: str = Field()
-    date: _dt.datetime = Field()
-
-
-class CommitSearchResultItemPropCommitPropTree(GitHubModel):
-    """CommitSearchResultItemPropCommitPropTree"""
-
-    sha: str = Field()
-    url: str = Field()
-
-
-model_rebuild(CommitSearchResultItemPropCommit)
-model_rebuild(CommitSearchResultItemPropCommitPropAuthor)
-model_rebuild(CommitSearchResultItemPropCommitPropTree)
+model_rebuild(UserNameResponse)
+model_rebuild(UserEmailsResponseItems)
 
 __all__ = (
-    "CommitSearchResultItemPropCommit",
-    "CommitSearchResultItemPropCommitPropAuthor",
-    "CommitSearchResultItemPropCommitPropTree",
+    "UserEmailsResponseItems",
+    "UserNameResponse",
 )

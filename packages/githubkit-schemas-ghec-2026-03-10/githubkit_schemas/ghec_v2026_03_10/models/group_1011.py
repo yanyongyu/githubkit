@@ -15,15 +15,17 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class WebhookStatusPropCommitPropCommitPropCommitterAllof1(GitHubModel):
-    """WebhookStatusPropCommitPropCommitPropCommitterAllof1"""
-
-    date: str = Field()
-    email: Missing[str] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
+from .group_1012 import WebhookSecurityAndAnalysisPropChangesPropFrom
 
 
-model_rebuild(WebhookStatusPropCommitPropCommitPropCommitterAllof1)
+class WebhookSecurityAndAnalysisPropChanges(GitHubModel):
+    """WebhookSecurityAndAnalysisPropChanges"""
 
-__all__ = ("WebhookStatusPropCommitPropCommitPropCommitterAllof1",)
+    from_: Missing[WebhookSecurityAndAnalysisPropChangesPropFrom] = Field(
+        default=UNSET, alias="from"
+    )
+
+
+model_rebuild(WebhookSecurityAndAnalysisPropChanges)
+
+__all__ = ("WebhookSecurityAndAnalysisPropChanges",)

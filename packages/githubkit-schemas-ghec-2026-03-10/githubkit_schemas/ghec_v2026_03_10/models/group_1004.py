@@ -18,19 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0587 import EnterpriseWebhooks
-from .group_0588 import SimpleInstallation
-from .group_0589 import OrganizationSimpleWebhooks
-from .group_0590 import RepositoryWebhooks
-from .group_0634 import WebhooksSponsorship
-from .group_0635 import WebhooksChanges8
+from .group_0598 import EnterpriseWebhooks
+from .group_0599 import SimpleInstallation
+from .group_0600 import OrganizationSimpleWebhooks
+from .group_0601 import RepositoryWebhooks
+from .group_0643 import SecretScanningAlertWebhook
 
 
-class WebhookSponsorshipTierChanged(GitHubModel):
-    """sponsorship tier_changed event"""
+class WebhookSecretScanningAlertValidated(GitHubModel):
+    """secret_scanning_alert validated event"""
 
-    action: Literal["tier_changed"] = Field()
-    changes: WebhooksChanges8 = Field()
+    action: Literal["validated"] = Field()
+    alert: SecretScanningAlertWebhook = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -46,15 +45,15 @@ class WebhookSponsorshipTierChanged(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
+    repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    sponsorship: WebhooksSponsorship = Field()
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
 
 
-model_rebuild(WebhookSponsorshipTierChanged)
+model_rebuild(WebhookSecretScanningAlertValidated)
 
-__all__ = ("WebhookSponsorshipTierChanged",)
+__all__ = ("WebhookSecretScanningAlertValidated",)

@@ -9,28 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0523 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0524 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0525 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0526 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0527 import WebhooksRuleType, WebhooksRuleTypeForResponse
 
 
-class WebhookCheckRunRequestedActionFormEncodedType(TypedDict):
-    """Check Run Requested Action Event
+class WebhookBranchProtectionRuleCreatedType(TypedDict):
+    """branch protection rule created event"""
 
-    The check_run.requested_action webhook encoded with URL encoding
-    """
+    action: Literal["created"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    rule: WebhooksRuleType
+    sender: SimpleUserType
 
-    payload: str
 
+class WebhookBranchProtectionRuleCreatedTypeForResponse(TypedDict):
+    """branch protection rule created event"""
 
-class WebhookCheckRunRequestedActionFormEncodedTypeForResponse(TypedDict):
-    """Check Run Requested Action Event
-
-    The check_run.requested_action webhook encoded with URL encoding
-    """
-
-    payload: str
+    action: Literal["created"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    rule: WebhooksRuleTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookCheckRunRequestedActionFormEncodedType",
-    "WebhookCheckRunRequestedActionFormEncodedTypeForResponse",
+    "WebhookBranchProtectionRuleCreatedType",
+    "WebhookBranchProtectionRuleCreatedTypeForResponse",
 )

@@ -10,65 +10,46 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal, Union
-from typing_extensions import TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class UnlabeledIssueEventType(TypedDict):
-    """Unlabeled Issue Event
+class IssueTypeWebhookType(TypedDict):
+    """Issue Type
 
-    Unlabeled Issue Event
+    The type of issue.
     """
 
     id: int
-    node_id: str
-    url: str
-    actor: SimpleUserType
-    event: Literal["unlabeled"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    label: UnlabeledIssueEventPropLabelType
+    name: str
+    color: NotRequired[
+        Union[
+            None,
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+        ]
+    ]
 
 
-class UnlabeledIssueEventTypeForResponse(TypedDict):
-    """Unlabeled Issue Event
+class IssueTypeWebhookTypeForResponse(TypedDict):
+    """Issue Type
 
-    Unlabeled Issue Event
+    The type of issue.
     """
 
     id: int
-    node_id: str
-    url: str
-    actor: SimpleUserTypeForResponse
-    event: Literal["unlabeled"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    label: UnlabeledIssueEventPropLabelTypeForResponse
-
-
-class UnlabeledIssueEventPropLabelType(TypedDict):
-    """UnlabeledIssueEventPropLabel"""
-
     name: str
-    color: str
-
-
-class UnlabeledIssueEventPropLabelTypeForResponse(TypedDict):
-    """UnlabeledIssueEventPropLabel"""
-
-    name: str
-    color: str
+    color: NotRequired[
+        Union[
+            None,
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+        ]
+    ]
 
 
 __all__ = (
-    "UnlabeledIssueEventPropLabelType",
-    "UnlabeledIssueEventPropLabelTypeForResponse",
-    "UnlabeledIssueEventType",
-    "UnlabeledIssueEventTypeForResponse",
+    "IssueTypeWebhookType",
+    "IssueTypeWebhookTypeForResponse",
 )

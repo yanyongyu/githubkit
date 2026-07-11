@@ -12,27 +12,27 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class InteractionLimitPullRequestBypassListType(TypedDict):
-    """Interaction Limits Pull Request Bypass List
+class CheckImmutableReleasesType(TypedDict):
+    """Check immutable releases
 
-    A list of user logins to add or remove from the pull request creation cap bypass
-    list.
+    Check immutable releases
     """
 
-    users: list[str]
+    enabled: bool
+    enforced_by_owner: bool
 
 
-class InteractionLimitPullRequestBypassListTypeForResponse(TypedDict):
-    """Interaction Limits Pull Request Bypass List
+class CheckImmutableReleasesTypeForResponse(TypedDict):
+    """Check immutable releases
 
-    A list of user logins to add or remove from the pull request creation cap bypass
-    list.
+    Check immutable releases
     """
 
-    users: list[str]
+    enabled: bool
+    enforced_by_owner: bool
 
 
 __all__ = (
-    "InteractionLimitPullRequestBypassListType",
-    "InteractionLimitPullRequestBypassListTypeForResponse",
+    "CheckImmutableReleasesType",
+    "CheckImmutableReleasesTypeForResponse",
 )

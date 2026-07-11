@@ -9,22 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_1539 import ReposOwnerRepoPagesPostBodyPropSource
 
-class ReposOwnerRepoPullsPullNumberUpdateBranchPutBody(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberUpdateBranchPutBody"""
 
-    expected_head_sha: Missing[str] = Field(
+class ReposOwnerRepoPagesPostBodyAnyof1(GitHubModel):
+    """ReposOwnerRepoPagesPostBodyAnyof1"""
+
+    build_type: Literal["legacy", "workflow"] = Field(
+        description='The process in which the Page will be built. Possible values are `"legacy"` and `"workflow"`.'
+    )
+    source: Missing[ReposOwnerRepoPagesPostBodyPropSource] = Field(
         default=UNSET,
-        description="The expected SHA of the pull request's HEAD ref. This is the most recent commit on the pull request's branch. If the expected SHA does not match the pull request's HEAD, you will receive a `422 Unprocessable Entity` status. You can use the \"[List commits](https://docs.github.com/enterprise-cloud@latest/rest/commits/commits#list-commits)\" endpoint to find the most recent commit SHA. Default: SHA of the pull request's current HEAD ref.",
+        description="The source branch and directory used to publish your Pages site.",
     )
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberUpdateBranchPutBody)
+model_rebuild(ReposOwnerRepoPagesPostBodyAnyof1)
 
-__all__ = ("ReposOwnerRepoPullsPullNumberUpdateBranchPutBody",)
+__all__ = ("ReposOwnerRepoPagesPostBodyAnyof1",)

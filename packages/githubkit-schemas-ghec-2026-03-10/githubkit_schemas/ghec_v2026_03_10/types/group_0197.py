@@ -9,29 +9,99 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class DeleteCostCenterType(TypedDict):
-    """DeleteCostCenter"""
+class GetAllCostCentersType(TypedDict):
+    """GetAllCostCenters"""
 
-    message: str
+    cost_centers: NotRequired[list[GetAllCostCentersPropCostCentersItemsType]]
+
+
+class GetAllCostCentersTypeForResponse(TypedDict):
+    """GetAllCostCenters"""
+
+    cost_centers: NotRequired[
+        list[GetAllCostCentersPropCostCentersItemsTypeForResponse]
+    ]
+
+
+class GetAllCostCentersPropCostCentersItemsType(TypedDict):
+    """GetAllCostCentersPropCostCentersItems"""
+
     id: str
     name: str
-    cost_center_state: Literal["CostCenterArchived"]
+    state: NotRequired[Literal["active", "deleted"]]
+    azure_subscription: NotRequired[Union[str, None]]
+    ai_credit_pool_enabled: NotRequired[bool]
+    ai_credit_pool_state: NotRequired[
+        GetAllCostCentersPropCostCentersItemsPropAiCreditPoolStateType
+    ]
+    resources: list[GetAllCostCentersPropCostCentersItemsPropResourcesItemsType]
 
 
-class DeleteCostCenterTypeForResponse(TypedDict):
-    """DeleteCostCenter"""
+class GetAllCostCentersPropCostCentersItemsTypeForResponse(TypedDict):
+    """GetAllCostCentersPropCostCentersItems"""
 
-    message: str
     id: str
     name: str
-    cost_center_state: Literal["CostCenterArchived"]
+    state: NotRequired[Literal["active", "deleted"]]
+    azure_subscription: NotRequired[Union[str, None]]
+    ai_credit_pool_enabled: NotRequired[bool]
+    ai_credit_pool_state: NotRequired[
+        GetAllCostCentersPropCostCentersItemsPropAiCreditPoolStateTypeForResponse
+    ]
+    resources: list[
+        GetAllCostCentersPropCostCentersItemsPropResourcesItemsTypeForResponse
+    ]
+
+
+class GetAllCostCentersPropCostCentersItemsPropAiCreditPoolStateType(TypedDict):
+    """GetAllCostCentersPropCostCentersItemsPropAiCreditPoolState
+
+    Read-only cap-budget projection for the cost center. Only present when the cost
+    center draws from the AI credit pool.
+    """
+
+    target_amount: NotRequired[Union[float, None]]
+    current_amount: NotRequired[Union[float, None]]
+
+
+class GetAllCostCentersPropCostCentersItemsPropAiCreditPoolStateTypeForResponse(
+    TypedDict
+):
+    """GetAllCostCentersPropCostCentersItemsPropAiCreditPoolState
+
+    Read-only cap-budget projection for the cost center. Only present when the cost
+    center draws from the AI credit pool.
+    """
+
+    target_amount: NotRequired[Union[float, None]]
+    current_amount: NotRequired[Union[float, None]]
+
+
+class GetAllCostCentersPropCostCentersItemsPropResourcesItemsType(TypedDict):
+    """GetAllCostCentersPropCostCentersItemsPropResourcesItems"""
+
+    type: str
+    name: str
+
+
+class GetAllCostCentersPropCostCentersItemsPropResourcesItemsTypeForResponse(TypedDict):
+    """GetAllCostCentersPropCostCentersItemsPropResourcesItems"""
+
+    type: str
+    name: str
 
 
 __all__ = (
-    "DeleteCostCenterType",
-    "DeleteCostCenterTypeForResponse",
+    "GetAllCostCentersPropCostCentersItemsPropAiCreditPoolStateType",
+    "GetAllCostCentersPropCostCentersItemsPropAiCreditPoolStateTypeForResponse",
+    "GetAllCostCentersPropCostCentersItemsPropResourcesItemsType",
+    "GetAllCostCentersPropCostCentersItemsPropResourcesItemsTypeForResponse",
+    "GetAllCostCentersPropCostCentersItemsType",
+    "GetAllCostCentersPropCostCentersItemsTypeForResponse",
+    "GetAllCostCentersType",
+    "GetAllCostCentersTypeForResponse",
 )

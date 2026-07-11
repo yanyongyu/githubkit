@@ -9,70 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksReviewType(TypedDict):
-    """WebhooksReview
+class WebhooksMembershipType(TypedDict):
+    """Membership
 
-    The review that was affected.
+    The membership between the user and the organization. Not present when the
+    action is `member_invited`.
     """
 
-    links: WebhooksReviewPropLinksType
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    body: Union[str, None]
-    commit_id: str
-    html_url: str
-    id: int
-    node_id: str
-    pull_request_url: str
+    organization_url: str
+    role: str
+    direct_membership: NotRequired[bool]
+    enterprise_teams_providing_indirect_membership: NotRequired[list[str]]
     state: str
-    submitted_at: Union[_dt.datetime, None]
-    updated_at: NotRequired[Union[_dt.datetime, None]]
-    user: Union[WebhooksReviewPropUserType, None]
+    url: str
+    user: Union[WebhooksMembershipPropUserType, None]
 
 
-class WebhooksReviewTypeForResponse(TypedDict):
-    """WebhooksReview
+class WebhooksMembershipTypeForResponse(TypedDict):
+    """Membership
 
-    The review that was affected.
+    The membership between the user and the organization. Not present when the
+    action is `member_invited`.
     """
 
-    links: WebhooksReviewPropLinksTypeForResponse
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    body: Union[str, None]
-    commit_id: str
-    html_url: str
-    id: int
-    node_id: str
-    pull_request_url: str
+    organization_url: str
+    role: str
+    direct_membership: NotRequired[bool]
+    enterprise_teams_providing_indirect_membership: NotRequired[list[str]]
     state: str
-    submitted_at: Union[str, None]
-    updated_at: NotRequired[Union[str, None]]
-    user: Union[WebhooksReviewPropUserTypeForResponse, None]
+    url: str
+    user: Union[WebhooksMembershipPropUserTypeForResponse, None]
 
 
-class WebhooksReviewPropUserType(TypedDict):
+class WebhooksMembershipPropUserType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -99,7 +72,7 @@ class WebhooksReviewPropUserType(TypedDict):
     user_view_type: NotRequired[str]
 
 
-class WebhooksReviewPropUserTypeForResponse(TypedDict):
+class WebhooksMembershipPropUserTypeForResponse(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -124,55 +97,11 @@ class WebhooksReviewPropUserTypeForResponse(TypedDict):
     type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
     user_view_type: NotRequired[str]
-
-
-class WebhooksReviewPropLinksType(TypedDict):
-    """WebhooksReviewPropLinks"""
-
-    html: WebhooksReviewPropLinksPropHtmlType
-    pull_request: WebhooksReviewPropLinksPropPullRequestType
-
-
-class WebhooksReviewPropLinksTypeForResponse(TypedDict):
-    """WebhooksReviewPropLinks"""
-
-    html: WebhooksReviewPropLinksPropHtmlTypeForResponse
-    pull_request: WebhooksReviewPropLinksPropPullRequestTypeForResponse
-
-
-class WebhooksReviewPropLinksPropHtmlType(TypedDict):
-    """Link"""
-
-    href: str
-
-
-class WebhooksReviewPropLinksPropHtmlTypeForResponse(TypedDict):
-    """Link"""
-
-    href: str
-
-
-class WebhooksReviewPropLinksPropPullRequestType(TypedDict):
-    """Link"""
-
-    href: str
-
-
-class WebhooksReviewPropLinksPropPullRequestTypeForResponse(TypedDict):
-    """Link"""
-
-    href: str
 
 
 __all__ = (
-    "WebhooksReviewPropLinksPropHtmlType",
-    "WebhooksReviewPropLinksPropHtmlTypeForResponse",
-    "WebhooksReviewPropLinksPropPullRequestType",
-    "WebhooksReviewPropLinksPropPullRequestTypeForResponse",
-    "WebhooksReviewPropLinksType",
-    "WebhooksReviewPropLinksTypeForResponse",
-    "WebhooksReviewPropUserType",
-    "WebhooksReviewPropUserTypeForResponse",
-    "WebhooksReviewType",
-    "WebhooksReviewTypeForResponse",
+    "WebhooksMembershipPropUserType",
+    "WebhooksMembershipPropUserTypeForResponse",
+    "WebhooksMembershipType",
+    "WebhooksMembershipTypeForResponse",
 )

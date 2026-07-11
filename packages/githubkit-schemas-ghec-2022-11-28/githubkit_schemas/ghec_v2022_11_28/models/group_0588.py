@@ -19,33 +19,34 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterpriseWebhooks(GitHubModel):
-    """Enterprise
+class CodespaceExportDetails(GitHubModel):
+    """Fetches information about an export of a codespace.
 
-    An enterprise on GitHub. Webhook payloads contain the `enterprise` property when
-    the webhook is configured
-    on an enterprise account or an organization that's part of an enterprise
-    account. For more information,
-    see "[About enterprise accounts](https://docs.github.com/enterprise-
-    cloud@latest/admin/overview/about-enterprise-accounts)."
+    An export of a codespace. Also, latest export details for a codespace can be
+    fetched with id = latest
     """
 
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="A short description of the enterprise."
+    state: Missing[Union[str, None]] = Field(
+        default=UNSET, description="State of the latest export"
     )
-    html_url: str = Field()
-    website_url: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The enterprise's website URL."
+    completed_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET, description="Completion time of the last export operation"
     )
-    id: int = Field(description="Unique identifier of the enterprise")
-    node_id: str = Field()
-    name: str = Field(description="The name of the enterprise.")
-    slug: str = Field(description="The slug url identifier for the enterprise.")
-    created_at: Union[_dt.datetime, None] = Field()
-    updated_at: Union[_dt.datetime, None] = Field()
-    avatar_url: str = Field()
+    branch: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Name of the exported branch"
+    )
+    sha: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Git commit SHA of the exported branch"
+    )
+    id: Missing[str] = Field(default=UNSET, description="Id for the export details")
+    export_url: Missing[str] = Field(
+        default=UNSET, description="Url for fetching export details"
+    )
+    html_url: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Web url for the exported branch"
+    )
 
 
-model_rebuild(EnterpriseWebhooks)
+model_rebuild(CodespaceExportDetails)
 
-__all__ = ("EnterpriseWebhooks",)
+__all__ = ("CodespaceExportDetails",)

@@ -12,32 +12,47 @@ from __future__ import annotations
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
-class PageDeploymentType(TypedDict):
-    """GitHub Pages
 
-    The GitHub Pages deployment status.
+class StateChangeIssueEventType(TypedDict):
+    """State Change Issue Event
+
+    State Change Issue Event
     """
 
-    id: Union[int, str]
-    status_url: str
-    page_url: str
-    preview_url: NotRequired[str]
+    id: int
+    node_id: str
+    url: str
+    actor: SimpleUserType
+    event: str
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationType, None]
+    state_reason: NotRequired[Union[str, None]]
 
 
-class PageDeploymentTypeForResponse(TypedDict):
-    """GitHub Pages
+class StateChangeIssueEventTypeForResponse(TypedDict):
+    """State Change Issue Event
 
-    The GitHub Pages deployment status.
+    State Change Issue Event
     """
 
-    id: Union[int, str]
-    status_url: str
-    page_url: str
-    preview_url: NotRequired[str]
+    id: int
+    node_id: str
+    url: str
+    actor: SimpleUserTypeForResponse
+    event: str
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
+    state_reason: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "PageDeploymentType",
-    "PageDeploymentTypeForResponse",
+    "StateChangeIssueEventType",
+    "StateChangeIssueEventTypeForResponse",
 )

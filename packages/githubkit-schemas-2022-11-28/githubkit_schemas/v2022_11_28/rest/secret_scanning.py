@@ -31,6 +31,7 @@ if TYPE_CHECKING:
         OrganizationSecretScanningAlert,
         OrgsOrgSecretScanningPatternConfigurationsPatchResponse200,
         SecretScanningAlert,
+        SecretScanningAlertWithMetadata,
         SecretScanningLocation,
         SecretScanningPatternConfiguration,
         SecretScanningPushProtectionBypass,
@@ -47,6 +48,7 @@ if TYPE_CHECKING:
         ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2Type,
         ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType,
         SecretScanningAlertTypeForResponse,
+        SecretScanningAlertWithMetadataTypeForResponse,
         SecretScanningLocationTypeForResponse,
         SecretScanningPatternConfigurationTypeForResponse,
         SecretScanningPushProtectionBypassTypeForResponse,
@@ -91,6 +93,8 @@ class SecretScanningClient:
         is_multi_repo: Missing[bool] = UNSET,
         hide_secret: Missing[bool] = UNSET,
         is_bypassed: Missing[bool] = UNSET,
+        included_metadata: Missing[str] = UNSET,
+        owner_email_hash: Missing[str] = UNSET,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
@@ -137,6 +141,8 @@ class SecretScanningClient:
             "is_multi_repo": is_multi_repo,
             "hide_secret": hide_secret,
             "is_bypassed": is_bypassed,
+            "included_metadata": included_metadata,
+            "owner_email_hash": owner_email_hash,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -176,6 +182,8 @@ class SecretScanningClient:
         is_multi_repo: Missing[bool] = UNSET,
         hide_secret: Missing[bool] = UNSET,
         is_bypassed: Missing[bool] = UNSET,
+        included_metadata: Missing[str] = UNSET,
+        owner_email_hash: Missing[str] = UNSET,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
@@ -222,6 +230,8 @@ class SecretScanningClient:
             "is_multi_repo": is_multi_repo,
             "hide_secret": hide_secret,
             "is_bypassed": is_bypassed,
+            "included_metadata": included_metadata,
+            "owner_email_hash": owner_email_hash,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -536,6 +546,8 @@ class SecretScanningClient:
         is_multi_repo: Missing[bool] = UNSET,
         hide_secret: Missing[bool] = UNSET,
         is_bypassed: Missing[bool] = UNSET,
+        included_metadata: Missing[str] = UNSET,
+        owner_email_hash: Missing[str] = UNSET,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[SecretScanningAlert], list[SecretScanningAlertTypeForResponse]]:
@@ -575,6 +587,8 @@ class SecretScanningClient:
             "is_multi_repo": is_multi_repo,
             "hide_secret": hide_secret,
             "is_bypassed": is_bypassed,
+            "included_metadata": included_metadata,
+            "owner_email_hash": owner_email_hash,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -614,6 +628,8 @@ class SecretScanningClient:
         is_multi_repo: Missing[bool] = UNSET,
         hide_secret: Missing[bool] = UNSET,
         is_bypassed: Missing[bool] = UNSET,
+        included_metadata: Missing[str] = UNSET,
+        owner_email_hash: Missing[str] = UNSET,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[SecretScanningAlert], list[SecretScanningAlertTypeForResponse]]:
@@ -653,6 +669,8 @@ class SecretScanningClient:
             "is_multi_repo": is_multi_repo,
             "hide_secret": hide_secret,
             "is_bypassed": is_bypassed,
+            "included_metadata": included_metadata,
+            "owner_email_hash": owner_email_hash,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -678,7 +696,9 @@ class SecretScanningClient:
         hide_secret: Missing[bool] = UNSET,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
-    ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]:
+    ) -> Response[
+        SecretScanningAlertWithMetadata, SecretScanningAlertWithMetadataTypeForResponse
+    ]:
         """secret-scanning/get-alert
 
         GET /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}
@@ -692,7 +712,7 @@ class SecretScanningClient:
         See also: https://docs.github.com/rest/secret-scanning/secret-scanning#get-a-secret-scanning-alert
         """
 
-        from ..models import EventsGetResponse503, SecretScanningAlert
+        from ..models import EventsGetResponse503, SecretScanningAlertWithMetadata
 
         url = f"/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}"
 
@@ -708,7 +728,7 @@ class SecretScanningClient:
             params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
-            response_model=SecretScanningAlert,
+            response_model=SecretScanningAlertWithMetadata,
             error_models={
                 "503": EventsGetResponse503,
             },
@@ -723,7 +743,9 @@ class SecretScanningClient:
         hide_secret: Missing[bool] = UNSET,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
-    ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]:
+    ) -> Response[
+        SecretScanningAlertWithMetadata, SecretScanningAlertWithMetadataTypeForResponse
+    ]:
         """secret-scanning/get-alert
 
         GET /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}
@@ -737,7 +759,7 @@ class SecretScanningClient:
         See also: https://docs.github.com/rest/secret-scanning/secret-scanning#get-a-secret-scanning-alert
         """
 
-        from ..models import EventsGetResponse503, SecretScanningAlert
+        from ..models import EventsGetResponse503, SecretScanningAlertWithMetadata
 
         url = f"/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}"
 
@@ -753,7 +775,7 @@ class SecretScanningClient:
             params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
-            response_model=SecretScanningAlert,
+            response_model=SecretScanningAlertWithMetadata,
             error_models={
                 "503": EventsGetResponse503,
             },
@@ -773,7 +795,9 @@ class SecretScanningClient:
             ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1Type,
             ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2Type,
         ],
-    ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]: ...
+    ) -> Response[
+        SecretScanningAlertWithMetadata, SecretScanningAlertWithMetadataTypeForResponse
+    ]: ...
 
     @overload
     def update_alert(
@@ -794,7 +818,9 @@ class SecretScanningClient:
         resolution_comment: Missing[Union[str, None]] = UNSET,
         assignee: Missing[Union[str, None]] = UNSET,
         validity: Missing[Union[None, Literal["active", "inactive"]]] = UNSET,
-    ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]: ...
+    ) -> Response[
+        SecretScanningAlertWithMetadata, SecretScanningAlertWithMetadataTypeForResponse
+    ]: ...
 
     @overload
     def update_alert(
@@ -815,7 +841,9 @@ class SecretScanningClient:
         resolution_comment: Missing[Union[str, None]] = UNSET,
         assignee: Union[str, None],
         validity: Missing[Union[None, Literal["active", "inactive"]]] = UNSET,
-    ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]: ...
+    ) -> Response[
+        SecretScanningAlertWithMetadata, SecretScanningAlertWithMetadataTypeForResponse
+    ]: ...
 
     @overload
     def update_alert(
@@ -836,7 +864,9 @@ class SecretScanningClient:
         resolution_comment: Missing[Union[str, None]] = UNSET,
         assignee: Missing[Union[str, None]] = UNSET,
         validity: Union[None, Literal["active", "inactive"]],
-    ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]: ...
+    ) -> Response[
+        SecretScanningAlertWithMetadata, SecretScanningAlertWithMetadataTypeForResponse
+    ]: ...
 
     def update_alert(
         self,
@@ -854,7 +884,9 @@ class SecretScanningClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]:
+    ) -> Response[
+        SecretScanningAlertWithMetadata, SecretScanningAlertWithMetadataTypeForResponse
+    ]:
         """secret-scanning/update-alert
 
         PATCH /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}
@@ -877,7 +909,7 @@ class SecretScanningClient:
             ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0,
             ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1,
             ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2,
-            SecretScanningAlert,
+            SecretScanningAlertWithMetadata,
         )
 
         url = f"/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}"
@@ -906,7 +938,7 @@ class SecretScanningClient:
             json=exclude_unset(json),
             headers=exclude_unset(headers),
             stream=stream,
-            response_model=SecretScanningAlert,
+            response_model=SecretScanningAlertWithMetadata,
             error_models={
                 "503": EventsGetResponse503,
             },
@@ -926,7 +958,9 @@ class SecretScanningClient:
             ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1Type,
             ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2Type,
         ],
-    ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]: ...
+    ) -> Response[
+        SecretScanningAlertWithMetadata, SecretScanningAlertWithMetadataTypeForResponse
+    ]: ...
 
     @overload
     async def async_update_alert(
@@ -947,7 +981,9 @@ class SecretScanningClient:
         resolution_comment: Missing[Union[str, None]] = UNSET,
         assignee: Missing[Union[str, None]] = UNSET,
         validity: Missing[Union[None, Literal["active", "inactive"]]] = UNSET,
-    ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]: ...
+    ) -> Response[
+        SecretScanningAlertWithMetadata, SecretScanningAlertWithMetadataTypeForResponse
+    ]: ...
 
     @overload
     async def async_update_alert(
@@ -968,7 +1004,9 @@ class SecretScanningClient:
         resolution_comment: Missing[Union[str, None]] = UNSET,
         assignee: Union[str, None],
         validity: Missing[Union[None, Literal["active", "inactive"]]] = UNSET,
-    ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]: ...
+    ) -> Response[
+        SecretScanningAlertWithMetadata, SecretScanningAlertWithMetadataTypeForResponse
+    ]: ...
 
     @overload
     async def async_update_alert(
@@ -989,7 +1027,9 @@ class SecretScanningClient:
         resolution_comment: Missing[Union[str, None]] = UNSET,
         assignee: Missing[Union[str, None]] = UNSET,
         validity: Union[None, Literal["active", "inactive"]],
-    ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]: ...
+    ) -> Response[
+        SecretScanningAlertWithMetadata, SecretScanningAlertWithMetadataTypeForResponse
+    ]: ...
 
     async def async_update_alert(
         self,
@@ -1007,7 +1047,9 @@ class SecretScanningClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]:
+    ) -> Response[
+        SecretScanningAlertWithMetadata, SecretScanningAlertWithMetadataTypeForResponse
+    ]:
         """secret-scanning/update-alert
 
         PATCH /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}
@@ -1030,7 +1072,7 @@ class SecretScanningClient:
             ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0,
             ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1,
             ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2,
-            SecretScanningAlert,
+            SecretScanningAlertWithMetadata,
         )
 
         url = f"/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}"
@@ -1059,7 +1101,7 @@ class SecretScanningClient:
             json=exclude_unset(json),
             headers=exclude_unset(headers),
             stream=stream,
-            response_model=SecretScanningAlert,
+            response_model=SecretScanningAlertWithMetadata,
             error_models={
                 "503": EventsGetResponse503,
             },

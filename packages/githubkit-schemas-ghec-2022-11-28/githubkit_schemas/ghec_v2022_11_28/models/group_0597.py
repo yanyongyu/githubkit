@@ -9,34 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class WebhooksDeployKey(GitHubModel):
-    """WebhooksDeployKey
+class Hovercard(GitHubModel):
+    """Hovercard
 
-    The [`deploy key`](https://docs.github.com/enterprise-cloud@latest/rest/deploy-
-    keys/deploy-keys#get-a-deploy-key) resource.
+    Hovercard
     """
 
-    added_by: Missing[Union[str, None]] = Field(default=UNSET)
-    created_at: str = Field()
-    id: int = Field()
-    key: str = Field()
-    last_used: Missing[Union[str, None]] = Field(default=UNSET)
-    read_only: bool = Field()
-    title: str = Field()
-    url: str = Field()
-    verified: bool = Field()
-    enabled: Missing[bool] = Field(default=UNSET)
+    contexts: list[HovercardPropContextsItems] = Field()
 
 
-model_rebuild(WebhooksDeployKey)
+class HovercardPropContextsItems(GitHubModel):
+    """HovercardPropContextsItems"""
 
-__all__ = ("WebhooksDeployKey",)
+    message: str = Field()
+    octicon: str = Field()
+
+
+model_rebuild(Hovercard)
+model_rebuild(HovercardPropContextsItems)
+
+__all__ = (
+    "Hovercard",
+    "HovercardPropContextsItems",
+)

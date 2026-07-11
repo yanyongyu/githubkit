@@ -9,22 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0122 import (
+    RepositoryRulesetConditionsPropRefNameType,
+    RepositoryRulesetConditionsPropRefNameTypeForResponse,
+)
+from .group_0124 import (
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse,
+)
+from .group_0128 import (
+    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType,
+    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse,
+)
 
 
-class RepositoryRuleUpdatePropParametersType(TypedDict):
-    """RepositoryRuleUpdatePropParameters"""
+class EnterpriseRulesetConditionsOneof5Type(TypedDict):
+    """organization_property_and_repository_property
 
-    update_allows_fetch_and_merge: bool
+    Conditions to target organizations by property and repositories by property
+    """
+
+    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType
+    repository_property: (
+        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
+    )
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
 
 
-class RepositoryRuleUpdatePropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleUpdatePropParameters"""
+class EnterpriseRulesetConditionsOneof5TypeForResponse(TypedDict):
+    """organization_property_and_repository_property
 
-    update_allows_fetch_and_merge: bool
+    Conditions to target organizations by property and repositories by property
+    """
+
+    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse
+    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
 
 
 __all__ = (
-    "RepositoryRuleUpdatePropParametersType",
-    "RepositoryRuleUpdatePropParametersTypeForResponse",
+    "EnterpriseRulesetConditionsOneof5Type",
+    "EnterpriseRulesetConditionsOneof5TypeForResponse",
 )

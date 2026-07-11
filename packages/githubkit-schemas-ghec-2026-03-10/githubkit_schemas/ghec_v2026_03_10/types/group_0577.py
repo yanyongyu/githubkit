@@ -9,176 +9,99 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0261 import CodespaceMachineType, CodespaceMachineTypeForResponse
-from .group_0324 import FullRepositoryType, FullRepositoryTypeForResponse
+from .group_0250 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0372 import GitUserType, GitUserTypeForResponse
+from .group_0575 import (
+    SearchResultTextMatchesItemsType,
+    SearchResultTextMatchesItemsTypeForResponse,
+)
+from .group_0578 import (
+    CommitSearchResultItemPropCommitType,
+    CommitSearchResultItemPropCommitTypeForResponse,
+)
 
 
-class CodespaceWithFullRepositoryType(TypedDict):
-    """Codespace
+class CommitSearchResultItemType(TypedDict):
+    """Commit Search Result Item
 
-    A codespace.
+    Commit Search Result Item
     """
 
-    id: int
-    name: str
-    display_name: NotRequired[Union[str, None]]
-    environment_id: Union[str, None]
-    owner: SimpleUserType
-    billable_owner: SimpleUserType
-    repository: FullRepositoryType
-    machine: Union[None, CodespaceMachineType]
-    devcontainer_path: NotRequired[Union[str, None]]
-    prebuild: Union[bool, None]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    last_used_at: _dt.datetime
-    state: Literal[
-        "Unknown",
-        "Created",
-        "Queued",
-        "Provisioning",
-        "Available",
-        "Awaiting",
-        "Unavailable",
-        "Deleted",
-        "Moved",
-        "Shutdown",
-        "Archived",
-        "Starting",
-        "ShuttingDown",
-        "Failed",
-        "Exporting",
-        "Updating",
-        "Rebuilding",
-    ]
     url: str
-    git_status: CodespaceWithFullRepositoryPropGitStatusType
-    location: Literal["EastUs", "SouthEastAsia", "WestEurope", "WestUs2"]
-    idle_timeout_minutes: Union[int, None]
-    web_url: str
-    machines_url: str
-    start_url: str
-    stop_url: str
-    publish_url: NotRequired[Union[str, None]]
-    pulls_url: Union[str, None]
-    recent_folders: list[str]
-    runtime_constraints: NotRequired[
-        CodespaceWithFullRepositoryPropRuntimeConstraintsType
-    ]
-    pending_operation: NotRequired[Union[bool, None]]
-    pending_operation_disabled_reason: NotRequired[Union[str, None]]
-    idle_timeout_notice: NotRequired[Union[str, None]]
-    retention_period_minutes: NotRequired[Union[int, None]]
-    retention_expires_at: NotRequired[Union[_dt.datetime, None]]
+    sha: str
+    html_url: str
+    comments_url: str
+    commit: CommitSearchResultItemPropCommitType
+    author: Union[None, SimpleUserType]
+    committer: Union[None, GitUserType]
+    parents: list[CommitSearchResultItemPropParentsItemsType]
+    repository: MinimalRepositoryType
+    score: float
+    node_id: str
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
 
 
-class CodespaceWithFullRepositoryTypeForResponse(TypedDict):
-    """Codespace
+class CommitSearchResultItemTypeForResponse(TypedDict):
+    """Commit Search Result Item
 
-    A codespace.
+    Commit Search Result Item
     """
 
-    id: int
-    name: str
-    display_name: NotRequired[Union[str, None]]
-    environment_id: Union[str, None]
-    owner: SimpleUserTypeForResponse
-    billable_owner: SimpleUserTypeForResponse
-    repository: FullRepositoryTypeForResponse
-    machine: Union[None, CodespaceMachineTypeForResponse]
-    devcontainer_path: NotRequired[Union[str, None]]
-    prebuild: Union[bool, None]
-    created_at: str
-    updated_at: str
-    last_used_at: str
-    state: Literal[
-        "Unknown",
-        "Created",
-        "Queued",
-        "Provisioning",
-        "Available",
-        "Awaiting",
-        "Unavailable",
-        "Deleted",
-        "Moved",
-        "Shutdown",
-        "Archived",
-        "Starting",
-        "ShuttingDown",
-        "Failed",
-        "Exporting",
-        "Updating",
-        "Rebuilding",
-    ]
     url: str
-    git_status: CodespaceWithFullRepositoryPropGitStatusTypeForResponse
-    location: Literal["EastUs", "SouthEastAsia", "WestEurope", "WestUs2"]
-    idle_timeout_minutes: Union[int, None]
-    web_url: str
-    machines_url: str
-    start_url: str
-    stop_url: str
-    publish_url: NotRequired[Union[str, None]]
-    pulls_url: Union[str, None]
-    recent_folders: list[str]
-    runtime_constraints: NotRequired[
-        CodespaceWithFullRepositoryPropRuntimeConstraintsTypeForResponse
-    ]
-    pending_operation: NotRequired[Union[bool, None]]
-    pending_operation_disabled_reason: NotRequired[Union[str, None]]
-    idle_timeout_notice: NotRequired[Union[str, None]]
-    retention_period_minutes: NotRequired[Union[int, None]]
-    retention_expires_at: NotRequired[Union[str, None]]
+    sha: str
+    html_url: str
+    comments_url: str
+    commit: CommitSearchResultItemPropCommitTypeForResponse
+    author: Union[None, SimpleUserTypeForResponse]
+    committer: Union[None, GitUserTypeForResponse]
+    parents: list[CommitSearchResultItemPropParentsItemsTypeForResponse]
+    repository: MinimalRepositoryTypeForResponse
+    score: float
+    node_id: str
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
 
 
-class CodespaceWithFullRepositoryPropGitStatusType(TypedDict):
-    """CodespaceWithFullRepositoryPropGitStatus
+class CommitSearchResultItemPropParentsItemsType(TypedDict):
+    """CommitSearchResultItemPropParentsItems"""
 
-    Details about the codespace's git repository.
-    """
-
-    ahead: NotRequired[int]
-    behind: NotRequired[int]
-    has_unpushed_changes: NotRequired[bool]
-    has_uncommitted_changes: NotRequired[bool]
-    ref: NotRequired[str]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    sha: NotRequired[str]
 
 
-class CodespaceWithFullRepositoryPropGitStatusTypeForResponse(TypedDict):
-    """CodespaceWithFullRepositoryPropGitStatus
+class CommitSearchResultItemPropParentsItemsTypeForResponse(TypedDict):
+    """CommitSearchResultItemPropParentsItems"""
 
-    Details about the codespace's git repository.
-    """
-
-    ahead: NotRequired[int]
-    behind: NotRequired[int]
-    has_unpushed_changes: NotRequired[bool]
-    has_uncommitted_changes: NotRequired[bool]
-    ref: NotRequired[str]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    sha: NotRequired[str]
 
 
-class CodespaceWithFullRepositoryPropRuntimeConstraintsType(TypedDict):
-    """CodespaceWithFullRepositoryPropRuntimeConstraints"""
+class SearchCommitsGetResponse200Type(TypedDict):
+    """SearchCommitsGetResponse200"""
 
-    allowed_port_privacy_settings: NotRequired[Union[list[str], None]]
+    total_count: int
+    incomplete_results: bool
+    items: list[CommitSearchResultItemType]
 
 
-class CodespaceWithFullRepositoryPropRuntimeConstraintsTypeForResponse(TypedDict):
-    """CodespaceWithFullRepositoryPropRuntimeConstraints"""
+class SearchCommitsGetResponse200TypeForResponse(TypedDict):
+    """SearchCommitsGetResponse200"""
 
-    allowed_port_privacy_settings: NotRequired[Union[list[str], None]]
+    total_count: int
+    incomplete_results: bool
+    items: list[CommitSearchResultItemTypeForResponse]
 
 
 __all__ = (
-    "CodespaceWithFullRepositoryPropGitStatusType",
-    "CodespaceWithFullRepositoryPropGitStatusTypeForResponse",
-    "CodespaceWithFullRepositoryPropRuntimeConstraintsType",
-    "CodespaceWithFullRepositoryPropRuntimeConstraintsTypeForResponse",
-    "CodespaceWithFullRepositoryType",
-    "CodespaceWithFullRepositoryTypeForResponse",
+    "CommitSearchResultItemPropParentsItemsType",
+    "CommitSearchResultItemPropParentsItemsTypeForResponse",
+    "CommitSearchResultItemType",
+    "CommitSearchResultItemTypeForResponse",
+    "SearchCommitsGetResponse200Type",
+    "SearchCommitsGetResponse200TypeForResponse",
 )

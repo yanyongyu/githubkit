@@ -12,18 +12,24 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0109 import CustomPropertyValue
 
+class ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody"""
 
-class ReposOwnerRepoPropertiesValuesPatchBody(GitHubModel):
-    """ReposOwnerRepoPropertiesValuesPatchBody"""
-
-    properties: list[CustomPropertyValue] = Field(
-        description="A list of custom property names and associated values to apply to the repositories."
+    sub_issue_id: int = Field(description="The id of the sub-issue to reprioritize")
+    after_id: Missing[int] = Field(
+        default=UNSET,
+        description="The id of the sub-issue to be prioritized after (either positional argument after OR before should be specified).",
+    )
+    before_id: Missing[int] = Field(
+        default=UNSET,
+        description="The id of the sub-issue to be prioritized before (either positional argument after OR before should be specified).",
     )
 
 
-model_rebuild(ReposOwnerRepoPropertiesValuesPatchBody)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody)
 
-__all__ = ("ReposOwnerRepoPropertiesValuesPatchBody",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody",)

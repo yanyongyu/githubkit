@@ -9,23 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias
+from typing_extensions import NotRequired, TypedDict
 
-LanguageType: TypeAlias = dict[str, Any]
-"""Language
-
-Language
-"""
+from .group_0216 import IssueType, IssueTypeForResponse
 
 
-LanguageTypeForResponse: TypeAlias = dict[str, Any]
-"""Language
+class TimelineCrossReferencedEventPropSourceType(TypedDict):
+    """TimelineCrossReferencedEventPropSource"""
 
-Language
-"""
+    type: NotRequired[str]
+    issue: NotRequired[IssueType]
+
+
+class TimelineCrossReferencedEventPropSourceTypeForResponse(TypedDict):
+    """TimelineCrossReferencedEventPropSource"""
+
+    type: NotRequired[str]
+    issue: NotRequired[IssueTypeForResponse]
 
 
 __all__ = (
-    "LanguageType",
-    "LanguageTypeForResponse",
+    "TimelineCrossReferencedEventPropSourceType",
+    "TimelineCrossReferencedEventPropSourceTypeForResponse",
 )

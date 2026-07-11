@@ -18,19 +18,19 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0206 import IssueType
-from .group_0208 import IssueDependenciesSummary, SubIssuesSummary
+from .group_0209 import IssueType
+from .group_0211 import IssueDependenciesSummary, SubIssuesSummary
 from .group_0779 import (
-    WebhookIssueCommentUnpinnedPropIssueAllof0PropAssignee,
-    WebhookIssueCommentUnpinnedPropIssueAllof0PropLabelsItems,
-    WebhookIssueCommentUnpinnedPropIssueAllof0PropPullRequest,
+    WebhookIssueCommentPinnedPropIssueAllof0PropAssignee,
+    WebhookIssueCommentPinnedPropIssueAllof0PropLabelsItems,
+    WebhookIssueCommentPinnedPropIssueAllof0PropPullRequest,
 )
-from .group_0785 import WebhookIssueCommentUnpinnedPropIssueMergedMilestone
-from .group_0786 import WebhookIssueCommentUnpinnedPropIssueMergedPerformedViaGithubApp
+from .group_0785 import WebhookIssueCommentPinnedPropIssueMergedMilestone
+from .group_0786 import WebhookIssueCommentPinnedPropIssueMergedPerformedViaGithubApp
 
 
-class WebhookIssueCommentUnpinnedPropIssue(GitHubModel):
-    """WebhookIssueCommentUnpinnedPropIssue
+class WebhookIssueCommentPinnedPropIssue(GitHubModel):
+    """WebhookIssueCommentPinnedPropIssue
 
     The [issue](https://docs.github.com/enterprise-
     cloud@latest/rest/issues/issues#get-an-issue) the comment belongs to.
@@ -40,9 +40,9 @@ class WebhookIssueCommentUnpinnedPropIssue(GitHubModel):
         Literal["resolved", "off-topic", "too heated", "spam"], None
     ] = Field()
     assignee: Union[
-        Union[WebhookIssueCommentUnpinnedPropIssueAllof0PropAssignee, None], None
+        Union[WebhookIssueCommentPinnedPropIssueAllof0PropAssignee, None], None
     ] = Field(title="User")
-    assignees: list[WebhookIssueCommentUnpinnedPropIssueMergedAssignees] = Field()
+    assignees: list[WebhookIssueCommentPinnedPropIssueMergedAssignees] = Field()
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -65,21 +65,19 @@ class WebhookIssueCommentUnpinnedPropIssue(GitHubModel):
     events_url: str = Field()
     html_url: str = Field()
     id: int = Field()
-    labels: list[WebhookIssueCommentUnpinnedPropIssueAllof0PropLabelsItems] = Field()
+    labels: list[WebhookIssueCommentPinnedPropIssueAllof0PropLabelsItems] = Field()
     labels_url: str = Field()
     locked: bool = Field()
-    milestone: Union[WebhookIssueCommentUnpinnedPropIssueMergedMilestone, None] = (
-        Field()
-    )
+    milestone: Union[WebhookIssueCommentPinnedPropIssueMergedMilestone, None] = Field()
     node_id: str = Field()
     number: int = Field()
     performed_via_github_app: Missing[
-        Union[WebhookIssueCommentUnpinnedPropIssueMergedPerformedViaGithubApp, None]
+        Union[WebhookIssueCommentPinnedPropIssueMergedPerformedViaGithubApp, None]
     ] = Field(default=UNSET)
-    pull_request: Missing[WebhookIssueCommentUnpinnedPropIssueAllof0PropPullRequest] = (
+    pull_request: Missing[WebhookIssueCommentPinnedPropIssueAllof0PropPullRequest] = (
         Field(default=UNSET)
     )
-    reactions: WebhookIssueCommentUnpinnedPropIssueMergedReactions = Field()
+    reactions: WebhookIssueCommentPinnedPropIssueMergedReactions = Field()
     repository_url: str = Field()
     sub_issues_summary: Missing[SubIssuesSummary] = Field(
         default=UNSET, title="Sub-issues Summary"
@@ -100,11 +98,11 @@ class WebhookIssueCommentUnpinnedPropIssue(GitHubModel):
     )
     updated_at: _dt.datetime = Field()
     url: str = Field(description="URL for the issue")
-    user: WebhookIssueCommentUnpinnedPropIssueMergedUser = Field()
+    user: WebhookIssueCommentPinnedPropIssueMergedUser = Field()
 
 
-class WebhookIssueCommentUnpinnedPropIssueMergedAssignees(GitHubModel):
-    """WebhookIssueCommentUnpinnedPropIssueMergedAssignees"""
+class WebhookIssueCommentPinnedPropIssueMergedAssignees(GitHubModel):
+    """WebhookIssueCommentPinnedPropIssueMergedAssignees"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
     deleted: Missing[bool] = Field(default=UNSET)
@@ -132,8 +130,8 @@ class WebhookIssueCommentUnpinnedPropIssueMergedAssignees(GitHubModel):
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookIssueCommentUnpinnedPropIssueMergedReactions(GitHubModel):
-    """WebhookIssueCommentUnpinnedPropIssueMergedReactions"""
+class WebhookIssueCommentPinnedPropIssueMergedReactions(GitHubModel):
+    """WebhookIssueCommentPinnedPropIssueMergedReactions"""
 
     plus_one: int = Field(alias="+1")
     minus_one: int = Field(alias="-1")
@@ -147,8 +145,8 @@ class WebhookIssueCommentUnpinnedPropIssueMergedReactions(GitHubModel):
     url: str = Field()
 
 
-class WebhookIssueCommentUnpinnedPropIssueMergedUser(GitHubModel):
-    """WebhookIssueCommentUnpinnedPropIssueMergedUser"""
+class WebhookIssueCommentPinnedPropIssueMergedUser(GitHubModel):
+    """WebhookIssueCommentPinnedPropIssueMergedUser"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
     deleted: Missing[bool] = Field(default=UNSET)
@@ -176,14 +174,14 @@ class WebhookIssueCommentUnpinnedPropIssueMergedUser(GitHubModel):
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookIssueCommentUnpinnedPropIssue)
-model_rebuild(WebhookIssueCommentUnpinnedPropIssueMergedAssignees)
-model_rebuild(WebhookIssueCommentUnpinnedPropIssueMergedReactions)
-model_rebuild(WebhookIssueCommentUnpinnedPropIssueMergedUser)
+model_rebuild(WebhookIssueCommentPinnedPropIssue)
+model_rebuild(WebhookIssueCommentPinnedPropIssueMergedAssignees)
+model_rebuild(WebhookIssueCommentPinnedPropIssueMergedReactions)
+model_rebuild(WebhookIssueCommentPinnedPropIssueMergedUser)
 
 __all__ = (
-    "WebhookIssueCommentUnpinnedPropIssue",
-    "WebhookIssueCommentUnpinnedPropIssueMergedAssignees",
-    "WebhookIssueCommentUnpinnedPropIssueMergedReactions",
-    "WebhookIssueCommentUnpinnedPropIssueMergedUser",
+    "WebhookIssueCommentPinnedPropIssue",
+    "WebhookIssueCommentPinnedPropIssueMergedAssignees",
+    "WebhookIssueCommentPinnedPropIssueMergedReactions",
+    "WebhookIssueCommentPinnedPropIssueMergedUser",
 )

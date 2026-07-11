@@ -575,6 +575,18 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.models import Blob as Blob
     from githubkit_schemas.v2026_03_10.models import (
+        BlockedByAddedIssueEvent as BlockedByAddedIssueEvent,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        BlockedByRemovedIssueEvent as BlockedByRemovedIssueEvent,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        BlockingAddedIssueEvent as BlockingAddedIssueEvent,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        BlockingRemovedIssueEvent as BlockingRemovedIssueEvent,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
         BranchProtection as BranchProtection,
     )
     from githubkit_schemas.v2026_03_10.models import (
@@ -2914,6 +2926,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         RepositoryRuleDetailedOneof21 as RepositoryRuleDetailedOneof21,
     )
     from githubkit_schemas.v2026_03_10.models import (
+        RepositoryRuleDetailedOneof22 as RepositoryRuleDetailedOneof22,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleFileExtensionRestriction as RepositoryRuleFileExtensionRestriction,
     )
     from githubkit_schemas.v2026_03_10.models import (
@@ -2924,6 +2939,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleFilePathRestrictionPropParameters as RepositoryRuleFilePathRestrictionPropParameters,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        RepositoryRuleLicenseComplianceScanning as RepositoryRuleLicenseComplianceScanning,
     )
     from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleMaxFilePathLength as RepositoryRuleMaxFilePathLength,
@@ -3436,6 +3454,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1 as ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1,
     )
     from githubkit_schemas.v2026_03_10.models import (
+        ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment as ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoDependabotSecretsGetResponse200 as ReposOwnerRepoDependabotSecretsGetResponse200,
     )
     from githubkit_schemas.v2026_03_10.models import (
@@ -3560,6 +3581,15 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoInteractionLimitsGetResponse200Anyof1 as ReposOwnerRepoInteractionLimitsGetResponse200Anyof1,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200 as ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody as ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200 as ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200,
     )
     from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoInvitationsInvitationIdPatchBody as ReposOwnerRepoInvitationsInvitationIdPatchBody,
@@ -3970,7 +4000,13 @@ if TYPE_CHECKING or is_lazy_disabled():
         SecretScanningAlert as SecretScanningAlert,
     )
     from githubkit_schemas.v2026_03_10.models import (
+        SecretScanningAlertMetadataItems as SecretScanningAlertMetadataItems,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
         SecretScanningAlertWebhook as SecretScanningAlertWebhook,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        SecretScanningAlertWithMetadata as SecretScanningAlertWithMetadata,
     )
     from githubkit_schemas.v2026_03_10.models import (
         SecretScanningLocation as SecretScanningLocation,
@@ -4153,6 +4189,7 @@ if TYPE_CHECKING or is_lazy_disabled():
     from githubkit_schemas.v2026_03_10.models import TagPropCommit as TagPropCommit
     from githubkit_schemas.v2026_03_10.models import Team as Team
     from githubkit_schemas.v2026_03_10.models import TeamFull as TeamFull
+    from githubkit_schemas.v2026_03_10.models import TeamMember as TeamMember
     from githubkit_schemas.v2026_03_10.models import TeamMembership as TeamMembership
     from githubkit_schemas.v2026_03_10.models import (
         TeamOrganization as TeamOrganization,
@@ -9184,6 +9221,117 @@ if TYPE_CHECKING or is_lazy_disabled():
         WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropUser as WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropUser,
     )
     from githubkit_schemas.v2026_03_10.models import (
+        WebhookPullRequestStacked as WebhookPullRequestStacked,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookPullRequestStackedPropPullRequest as WebhookPullRequestStackedPropPullRequest,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookPullRequestStackedPropPullRequestPropAssignee as WebhookPullRequestStackedPropPullRequestPropAssignee,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookPullRequestStackedPropPullRequestPropAssigneesItems as WebhookPullRequestStackedPropPullRequestPropAssigneesItems,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookPullRequestStackedPropPullRequestPropAutoMerge as WebhookPullRequestStackedPropPullRequestPropAutoMerge,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookPullRequestStackedPropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestStackedPropPullRequestPropAutoMergePropEnabledBy,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookPullRequestStackedPropPullRequestPropBase as WebhookPullRequestStackedPropPullRequestPropBase,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookPullRequestStackedPropPullRequestPropBasePropRepo as WebhookPullRequestStackedPropPullRequestPropBasePropRepo,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookPullRequestStackedPropPullRequestPropBasePropRepoPropLicense as WebhookPullRequestStackedPropPullRequestPropBasePropRepoPropLicense,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookPullRequestStackedPropPullRequestPropBasePropRepoPropOwner as WebhookPullRequestStackedPropPullRequestPropBasePropRepoPropOwner,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookPullRequestStackedPropPullRequestPropBasePropRepoPropPermissions as WebhookPullRequestStackedPropPullRequestPropBasePropRepoPropPermissions,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookPullRequestStackedPropPullRequestPropBasePropUser as WebhookPullRequestStackedPropPullRequestPropBasePropUser,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookPullRequestStackedPropPullRequestPropHead as WebhookPullRequestStackedPropPullRequestPropHead,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookPullRequestStackedPropPullRequestPropHeadPropRepo as WebhookPullRequestStackedPropPullRequestPropHeadPropRepo,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookPullRequestStackedPropPullRequestPropHeadPropRepoPropLicense as WebhookPullRequestStackedPropPullRequestPropHeadPropRepoPropLicense,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookPullRequestStackedPropPullRequestPropHeadPropRepoPropOwner as WebhookPullRequestStackedPropPullRequestPropHeadPropRepoPropOwner,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookPullRequestStackedPropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestStackedPropPullRequestPropHeadPropRepoPropPermissions,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookPullRequestStackedPropPullRequestPropHeadPropUser as WebhookPullRequestStackedPropPullRequestPropHeadPropUser,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookPullRequestStackedPropPullRequestPropLabelsItems as WebhookPullRequestStackedPropPullRequestPropLabelsItems,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookPullRequestStackedPropPullRequestPropLinks as WebhookPullRequestStackedPropPullRequestPropLinks,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookPullRequestStackedPropPullRequestPropLinksPropComments as WebhookPullRequestStackedPropPullRequestPropLinksPropComments,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookPullRequestStackedPropPullRequestPropLinksPropCommits as WebhookPullRequestStackedPropPullRequestPropLinksPropCommits,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookPullRequestStackedPropPullRequestPropLinksPropHtml as WebhookPullRequestStackedPropPullRequestPropLinksPropHtml,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookPullRequestStackedPropPullRequestPropLinksPropIssue as WebhookPullRequestStackedPropPullRequestPropLinksPropIssue,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookPullRequestStackedPropPullRequestPropLinksPropReviewComment as WebhookPullRequestStackedPropPullRequestPropLinksPropReviewComment,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookPullRequestStackedPropPullRequestPropLinksPropReviewComments as WebhookPullRequestStackedPropPullRequestPropLinksPropReviewComments,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookPullRequestStackedPropPullRequestPropLinksPropSelf as WebhookPullRequestStackedPropPullRequestPropLinksPropSelf,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookPullRequestStackedPropPullRequestPropLinksPropStatuses as WebhookPullRequestStackedPropPullRequestPropLinksPropStatuses,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookPullRequestStackedPropPullRequestPropMergedBy as WebhookPullRequestStackedPropPullRequestPropMergedBy,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookPullRequestStackedPropPullRequestPropMilestone as WebhookPullRequestStackedPropPullRequestPropMilestone,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookPullRequestStackedPropPullRequestPropMilestonePropCreator as WebhookPullRequestStackedPropPullRequestPropMilestonePropCreator,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookPullRequestStackedPropPullRequestPropRequestedReviewersItemsOneof0 as WebhookPullRequestStackedPropPullRequestPropRequestedReviewersItemsOneof0,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookPullRequestStackedPropPullRequestPropRequestedReviewersItemsOneof1 as WebhookPullRequestStackedPropPullRequestPropRequestedReviewersItemsOneof1,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookPullRequestStackedPropPullRequestPropRequestedReviewersItemsOneof1PropParent as WebhookPullRequestStackedPropPullRequestPropRequestedReviewersItemsOneof1PropParent,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookPullRequestStackedPropPullRequestPropRequestedTeamsItems as WebhookPullRequestStackedPropPullRequestPropRequestedTeamsItems,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookPullRequestStackedPropPullRequestPropRequestedTeamsItemsPropParent as WebhookPullRequestStackedPropPullRequestPropRequestedTeamsItemsPropParent,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookPullRequestStackedPropPullRequestPropUser as WebhookPullRequestStackedPropPullRequestPropUser,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestSynchronize as WebhookPullRequestSynchronize,
     )
     from githubkit_schemas.v2026_03_10.models import (
@@ -10069,6 +10217,12 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.models import (
         WebhookSecretScanningAlertLocationCreatedFormEncoded as WebhookSecretScanningAlertLocationCreatedFormEncoded,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookSecretScanningAlertMetadataCreated as WebhookSecretScanningAlertMetadataCreated,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookSecretScanningAlertMetadataRemoved as WebhookSecretScanningAlertMetadataRemoved,
     )
     from githubkit_schemas.v2026_03_10.models import (
         WebhookSecretScanningAlertPubliclyLeaked as WebhookSecretScanningAlertPubliclyLeaked,
@@ -11338,10 +11492,10 @@ else:
             "RepositoryRuleMergeQueuePropParameters",
             "RepositoryRuleRequiredDeployments",
             "RepositoryRuleRequiredDeploymentsPropParameters",
-            "RepositoryRuleParamsDismissalRestriction",
-            "RepositoryRuleParamsActor",
             "RepositoryRulePullRequest",
             "RepositoryRulePullRequestPropParameters",
+            "RepositoryRuleParamsDismissalRestriction",
+            "RepositoryRuleParamsActor",
             "RepositoryRuleParamsRequiredReviewerConfiguration",
             "RepositoryRuleParamsReviewer",
             "RepositoryRuleRequiredStatusChecks",
@@ -11366,6 +11520,7 @@ else:
             "RepositoryRuleParamsCodeScanningTool",
             "RepositoryRuleCopilotCodeReview",
             "RepositoryRuleCopilotCodeReviewPropParameters",
+            "RepositoryRuleLicenseComplianceScanning",
             "RepositoryRuleFilePathRestriction",
             "RepositoryRuleFilePathRestrictionPropParameters",
             "RepositoryRuleMaxFilePathLength",
@@ -11424,6 +11579,7 @@ else:
             "TeamFull",
             "TeamOrganization",
             "TeamOrganizationPropPlan",
+            "TeamMember",
             "TeamMembership",
             "TeamRepository",
             "TeamRepositoryPropPermissions",
@@ -11715,6 +11871,10 @@ else:
             "SubIssueRemovedIssueEvent",
             "ParentIssueAddedIssueEvent",
             "ParentIssueRemovedIssueEvent",
+            "BlockedByAddedIssueEvent",
+            "BlockedByRemovedIssueEvent",
+            "BlockingAddedIssueEvent",
+            "BlockingRemovedIssueEvent",
             "TimelineCommentEvent",
             "TimelineCrossReferencedEvent",
             "TimelineCrossReferencedEventPropSource",
@@ -11790,7 +11950,10 @@ else:
             "RepositoryRuleDetailedOneof19",
             "RepositoryRuleDetailedOneof20",
             "RepositoryRuleDetailedOneof21",
+            "RepositoryRuleDetailedOneof22",
             "SecretScanningAlert",
+            "SecretScanningAlertMetadataItems",
+            "SecretScanningAlertWithMetadata",
             "SecretScanningLocation",
             "SecretScanningPushProtectionBypass",
             "SecretScanningScanHistory",
@@ -13637,6 +13800,43 @@ else:
             "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropHtml",
             "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropPullRequest",
             "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropSelf",
+            "WebhookPullRequestStacked",
+            "WebhookPullRequestStackedPropPullRequest",
+            "WebhookPullRequestStackedPropPullRequestPropAssignee",
+            "WebhookPullRequestStackedPropPullRequestPropAssigneesItems",
+            "WebhookPullRequestStackedPropPullRequestPropAutoMerge",
+            "WebhookPullRequestStackedPropPullRequestPropAutoMergePropEnabledBy",
+            "WebhookPullRequestStackedPropPullRequestPropLabelsItems",
+            "WebhookPullRequestStackedPropPullRequestPropMergedBy",
+            "WebhookPullRequestStackedPropPullRequestPropMilestone",
+            "WebhookPullRequestStackedPropPullRequestPropMilestonePropCreator",
+            "WebhookPullRequestStackedPropPullRequestPropRequestedReviewersItemsOneof0",
+            "WebhookPullRequestStackedPropPullRequestPropUser",
+            "WebhookPullRequestStackedPropPullRequestPropLinks",
+            "WebhookPullRequestStackedPropPullRequestPropLinksPropComments",
+            "WebhookPullRequestStackedPropPullRequestPropLinksPropCommits",
+            "WebhookPullRequestStackedPropPullRequestPropLinksPropHtml",
+            "WebhookPullRequestStackedPropPullRequestPropLinksPropIssue",
+            "WebhookPullRequestStackedPropPullRequestPropLinksPropReviewComment",
+            "WebhookPullRequestStackedPropPullRequestPropLinksPropReviewComments",
+            "WebhookPullRequestStackedPropPullRequestPropLinksPropSelf",
+            "WebhookPullRequestStackedPropPullRequestPropLinksPropStatuses",
+            "WebhookPullRequestStackedPropPullRequestPropBase",
+            "WebhookPullRequestStackedPropPullRequestPropBasePropUser",
+            "WebhookPullRequestStackedPropPullRequestPropBasePropRepo",
+            "WebhookPullRequestStackedPropPullRequestPropBasePropRepoPropLicense",
+            "WebhookPullRequestStackedPropPullRequestPropBasePropRepoPropOwner",
+            "WebhookPullRequestStackedPropPullRequestPropBasePropRepoPropPermissions",
+            "WebhookPullRequestStackedPropPullRequestPropHead",
+            "WebhookPullRequestStackedPropPullRequestPropHeadPropRepo",
+            "WebhookPullRequestStackedPropPullRequestPropHeadPropRepoPropLicense",
+            "WebhookPullRequestStackedPropPullRequestPropHeadPropRepoPropOwner",
+            "WebhookPullRequestStackedPropPullRequestPropHeadPropRepoPropPermissions",
+            "WebhookPullRequestStackedPropPullRequestPropHeadPropUser",
+            "WebhookPullRequestStackedPropPullRequestPropRequestedReviewersItemsOneof1",
+            "WebhookPullRequestStackedPropPullRequestPropRequestedReviewersItemsOneof1PropParent",
+            "WebhookPullRequestStackedPropPullRequestPropRequestedTeamsItems",
+            "WebhookPullRequestStackedPropPullRequestPropRequestedTeamsItemsPropParent",
             "WebhookPullRequestSynchronize",
             "WebhookPullRequestSynchronizePropPullRequest",
             "WebhookPullRequestSynchronizePropPullRequestPropAssignee",
@@ -13917,6 +14117,8 @@ else:
             "WebhookSecretScanningAlertCreated",
             "WebhookSecretScanningAlertLocationCreated",
             "WebhookSecretScanningAlertLocationCreatedFormEncoded",
+            "WebhookSecretScanningAlertMetadataCreated",
+            "WebhookSecretScanningAlertMetadataRemoved",
             "WebhookSecretScanningAlertPubliclyLeaked",
             "WebhookSecretScanningAlertReopened",
             "WebhookSecretScanningAlertResolved",
@@ -14556,6 +14758,7 @@ else:
             "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200",
             "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration",
             "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools",
+            "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment",
             "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0",
             "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1",
             "ReposOwnerRepoDependabotSecretsGetResponse200",
@@ -14600,6 +14803,9 @@ else:
             "ReposOwnerRepoImportAuthorsAuthorIdPatchBody",
             "ReposOwnerRepoImportLfsPatchBody",
             "ReposOwnerRepoInteractionLimitsGetResponse200Anyof1",
+            "ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200",
+            "ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody",
+            "ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200",
             "ReposOwnerRepoInvitationsInvitationIdPatchBody",
             "ReposOwnerRepoIssuesPostBody",
             "ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1",

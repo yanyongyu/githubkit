@@ -9,29 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBody(GitHubModel):
-    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBody"""
+class EnterprisesEnterpriseActionsRunnerGroupsGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseActionsRunnerGroupsGetResponse200"""
 
-    client_id: str = Field(description="The Client ID of the GitHub App to install.")
-    repository_selection: Literal["all", "selected", "none"] = Field(
-        description="The repository selection for the GitHub App. Must be one of:\n* `all` - the installation can access all repositories in the organization.\n* `selected` - the installation can access only the listed repositories.\n* `none` - no repository permissions are requested. Only use when the app does not request repository permissions."
-    )
-    repositories: Missing[list[str]] = Field(
-        max_length=50 if PYDANTIC_V2 else None,
+    total_count: float = Field()
+    runner_groups: list[RunnerGroupsEnterprise] = Field()
+
+
+class RunnerGroupsEnterprise(GitHubModel):
+    """RunnerGroupsEnterprise"""
+
+    id: float = Field()
+    name: str = Field()
+    visibility: str = Field()
+    default: bool = Field()
+    selected_organizations_url: Missing[str] = Field(default=UNSET)
+    runners_url: str = Field()
+    hosted_runners_url: Missing[str] = Field(default=UNSET)
+    network_configuration_id: Missing[str] = Field(
         default=UNSET,
-        description="The names of the repositories to which the installation will be granted access. This is the simple name of the repository, not the full name (e.g., `hello-world` not `octocat/hello-world`). This is only required when `repository_selection` is `selected`.",
+        description="The identifier of a hosted compute network configuration.",
+    )
+    allows_public_repositories: bool = Field()
+    workflow_restrictions_read_only: Missing[bool] = Field(
+        default=UNSET,
+        description="If `true`, the `restricted_to_workflows` and `selected_workflows` fields cannot be modified.",
+    )
+    restricted_to_workflows: Missing[bool] = Field(
+        default=UNSET,
+        description="If `true`, the runner group will be restricted to running only the workflows specified in the `selected_workflows` array.",
+    )
+    selected_workflows: Missing[list[str]] = Field(
+        default=UNSET,
+        description="List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBody)
+model_rebuild(EnterprisesEnterpriseActionsRunnerGroupsGetResponse200)
+model_rebuild(RunnerGroupsEnterprise)
 
-__all__ = ("EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBody",)
+__all__ = (
+    "EnterprisesEnterpriseActionsRunnerGroupsGetResponse200",
+    "RunnerGroupsEnterprise",
+)

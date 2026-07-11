@@ -9,74 +9,77 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ArtifactType(TypedDict):
-    """Artifact
+class TeamMemberType(TypedDict):
+    """Team Member
 
-    An artifact
+    A user that is a member of a team, including their role on the team and whether
+    the membership is inherited from a child team.
     """
 
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
     id: int
     node_id: str
-    name: str
-    size_in_bytes: int
+    avatar_url: str
+    gravatar_id: Union[str, None]
     url: str
-    archive_download_url: str
-    expired: bool
-    created_at: Union[_dt.datetime, None]
-    expires_at: Union[_dt.datetime, None]
-    updated_at: Union[_dt.datetime, None]
-    digest: NotRequired[Union[str, None]]
-    workflow_run: NotRequired[Union[ArtifactPropWorkflowRunType, None]]
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
+    role: NotRequired[Literal["member", "maintainer"]]
+    inherited: NotRequired[bool]
 
 
-class ArtifactTypeForResponse(TypedDict):
-    """Artifact
+class TeamMemberTypeForResponse(TypedDict):
+    """Team Member
 
-    An artifact
+    A user that is a member of a team, including their role on the team and whether
+    the membership is inherited from a child team.
     """
 
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
     id: int
     node_id: str
-    name: str
-    size_in_bytes: int
+    avatar_url: str
+    gravatar_id: Union[str, None]
     url: str
-    archive_download_url: str
-    expired: bool
-    created_at: Union[str, None]
-    expires_at: Union[str, None]
-    updated_at: Union[str, None]
-    digest: NotRequired[Union[str, None]]
-    workflow_run: NotRequired[Union[ArtifactPropWorkflowRunTypeForResponse, None]]
-
-
-class ArtifactPropWorkflowRunType(TypedDict):
-    """ArtifactPropWorkflowRun"""
-
-    id: NotRequired[int]
-    repository_id: NotRequired[int]
-    head_repository_id: NotRequired[int]
-    head_branch: NotRequired[str]
-    head_sha: NotRequired[str]
-
-
-class ArtifactPropWorkflowRunTypeForResponse(TypedDict):
-    """ArtifactPropWorkflowRun"""
-
-    id: NotRequired[int]
-    repository_id: NotRequired[int]
-    head_repository_id: NotRequired[int]
-    head_branch: NotRequired[str]
-    head_sha: NotRequired[str]
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
+    role: NotRequired[Literal["member", "maintainer"]]
+    inherited: NotRequired[bool]
 
 
 __all__ = (
-    "ArtifactPropWorkflowRunType",
-    "ArtifactPropWorkflowRunTypeForResponse",
-    "ArtifactType",
-    "ArtifactTypeForResponse",
+    "TeamMemberType",
+    "TeamMemberTypeForResponse",
 )

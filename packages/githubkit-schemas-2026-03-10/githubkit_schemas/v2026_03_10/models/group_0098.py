@@ -76,6 +76,7 @@ class Budget(GitHubModel):
         "repository",
         "cost_center",
         "multi_user_customer",
+        "multi_user_cost_center",
         "user",
     ] = Field(description="The scope of the budget")
     budget_entity_name: Missing[str] = Field(

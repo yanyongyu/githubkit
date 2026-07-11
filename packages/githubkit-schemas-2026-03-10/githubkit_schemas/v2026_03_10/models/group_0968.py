@@ -9,9 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -19,125 +16,26 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItems(GitHubModel):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItems
+class AgentsReposOwnerRepoTasksPostBody(GitHubModel):
+    """AgentsReposOwnerRepoTasksPostBody"""
 
-    Full session details within a task
-    """
-
-    id: str = Field(description="Session ID")
-    name: Missing[str] = Field(default=UNSET, description="Session name")
-    user: Missing[
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser
-    ] = Field(default=UNSET, description="The user who created this session")
-    owner: Missing[
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner
-    ] = Field(default=UNSET, description="The owner of the repository")
-    repository: Missing[
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepository
-    ] = Field(default=UNSET, description="The repository this session belongs to")
-    task_id: Missing[str] = Field(
-        default=UNSET, description="Task ID this session belongs to"
-    )
-    state: Literal[
-        "queued",
-        "in_progress",
-        "completed",
-        "failed",
-        "idle",
-        "waiting_for_user",
-        "timed_out",
-        "cancelled",
-    ] = Field(description="Current state of a session")
-    created_at: _dt.datetime = Field(description="Creation timestamp")
-    updated_at: Missing[_dt.datetime] = Field(
-        default=UNSET, description="Last update timestamp"
-    )
-    completed_at: Missing[_dt.datetime] = Field(
-        default=UNSET, description="Completion timestamp"
-    )
-    prompt: Missing[str] = Field(
-        default=UNSET, description="Content of the triggering event"
-    )
-    head_ref: Missing[str] = Field(default=UNSET, description="Head branch name")
-    base_ref: Missing[str] = Field(default=UNSET, description="Base branch name")
+    prompt: str = Field(description="The user's prompt for the agent")
     model: Missing[str] = Field(
-        default=UNSET, description="Model used for this session"
+        default=UNSET,
+        description="The model to use for this task. The allowed models may change over time and depend on the user's GitHub Copilot plan and organization policies. Currently supported values: `claude-sonnet-4.6`, `claude-opus-4.6`, `gpt-5.2-codex`, `gpt-5.3-codex`, `gpt-5.4`, `claude-sonnet-4.5`, `claude-opus-4.5`",
     )
-    error: Missing[
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError
-    ] = Field(default=UNSET, description="Error details for a failed session")
-
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser(
-    GitHubModel
-):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser
-
-    The user who created this session
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the user"
+    create_pull_request: Missing[bool] = Field(
+        default=UNSET, description="Whether to create a PR."
+    )
+    base_ref: Missing[str] = Field(
+        default=UNSET, description="Base ref for new branch/PR"
+    )
+    head_ref: Missing[str] = Field(
+        default=UNSET,
+        description="Head ref for existing branch/PR. If provided with `base_ref`, the agent looks up open PR context for `head_ref` targeting `base_ref` and commits to `head_ref` instead of creating a new branch.",
     )
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner(
-    GitHubModel
-):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner
+model_rebuild(AgentsReposOwnerRepoTasksPostBody)
 
-    The owner of the repository
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the user"
-    )
-
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepository(
-    GitHubModel
-):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropReposito
-    ry
-
-    The repository this session belongs to
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the repository"
-    )
-
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError(
-    GitHubModel
-):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError
-
-    Error details for a failed session
-    """
-
-    message: Missing[str] = Field(default=UNSET, description="Error message")
-
-
-model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItems)
-model_rebuild(
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser
-)
-model_rebuild(
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner
-)
-model_rebuild(
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepository
-)
-model_rebuild(
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError
-)
-
-__all__ = (
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItems",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepository",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser",
-)
+__all__ = ("AgentsReposOwnerRepoTasksPostBody",)

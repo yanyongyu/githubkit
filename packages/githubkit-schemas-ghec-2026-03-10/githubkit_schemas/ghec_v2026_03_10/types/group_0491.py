@@ -13,114 +13,189 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0210 import ReactionRollupType, ReactionRollupTypeForResponse
 
-class PageType(TypedDict):
-    """GitHub Pages
 
-    The configuration for GitHub Pages for a repository.
+class PullRequestReviewCommentType(TypedDict):
+    """Pull Request Review Comment
+
+    Pull Request Review Comments are comments on a portion of the Pull Request's
+    diff.
     """
 
     url: str
-    status: Union[None, Literal["built", "building", "errored"]]
-    cname: Union[str, None]
-    protected_domain_state: NotRequired[
-        Union[None, Literal["pending", "verified", "unverified"]]
+    pull_request_review_id: Union[int, None]
+    id: int
+    node_id: str
+    diff_hunk: str
+    path: str
+    position: NotRequired[int]
+    original_position: NotRequired[int]
+    commit_id: str
+    original_commit_id: str
+    in_reply_to_id: NotRequired[int]
+    user: Union[None, SimpleUserType]
+    body: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    html_url: str
+    pull_request_url: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
     ]
-    pending_domain_unverified_at: NotRequired[Union[_dt.datetime, None]]
-    custom_404: bool
-    html_url: NotRequired[str]
-    build_type: NotRequired[Union[None, Literal["legacy", "workflow"]]]
-    source: NotRequired[PagesSourceHashType]
-    public: bool
-    https_certificate: NotRequired[PagesHttpsCertificateType]
-    https_enforced: NotRequired[bool]
+    links: PullRequestReviewCommentPropLinksType
+    start_line: NotRequired[Union[int, None]]
+    original_start_line: NotRequired[Union[int, None]]
+    start_side: NotRequired[Union[None, Literal["LEFT", "RIGHT"]]]
+    line: NotRequired[int]
+    original_line: NotRequired[int]
+    side: NotRequired[Literal["LEFT", "RIGHT"]]
+    subject_type: NotRequired[Literal["line", "file"]]
+    reactions: NotRequired[ReactionRollupType]
+    body_html: NotRequired[str]
+    body_text: NotRequired[str]
 
 
-class PageTypeForResponse(TypedDict):
-    """GitHub Pages
+class PullRequestReviewCommentTypeForResponse(TypedDict):
+    """Pull Request Review Comment
 
-    The configuration for GitHub Pages for a repository.
+    Pull Request Review Comments are comments on a portion of the Pull Request's
+    diff.
     """
 
     url: str
-    status: Union[None, Literal["built", "building", "errored"]]
-    cname: Union[str, None]
-    protected_domain_state: NotRequired[
-        Union[None, Literal["pending", "verified", "unverified"]]
-    ]
-    pending_domain_unverified_at: NotRequired[Union[str, None]]
-    custom_404: bool
-    html_url: NotRequired[str]
-    build_type: NotRequired[Union[None, Literal["legacy", "workflow"]]]
-    source: NotRequired[PagesSourceHashTypeForResponse]
-    public: bool
-    https_certificate: NotRequired[PagesHttpsCertificateTypeForResponse]
-    https_enforced: NotRequired[bool]
-
-
-class PagesSourceHashType(TypedDict):
-    """Pages Source Hash"""
-
-    branch: str
+    pull_request_review_id: Union[int, None]
+    id: int
+    node_id: str
+    diff_hunk: str
     path: str
-
-
-class PagesSourceHashTypeForResponse(TypedDict):
-    """Pages Source Hash"""
-
-    branch: str
-    path: str
-
-
-class PagesHttpsCertificateType(TypedDict):
-    """Pages Https Certificate"""
-
-    state: Literal[
-        "new",
-        "authorization_created",
-        "authorization_pending",
-        "authorized",
-        "authorization_revoked",
-        "issued",
-        "uploaded",
-        "approved",
-        "errored",
-        "bad_authz",
-        "destroy_pending",
-        "dns_changed",
+    position: NotRequired[int]
+    original_position: NotRequired[int]
+    commit_id: str
+    original_commit_id: str
+    in_reply_to_id: NotRequired[int]
+    user: Union[None, SimpleUserTypeForResponse]
+    body: str
+    created_at: str
+    updated_at: str
+    html_url: str
+    pull_request_url: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
     ]
-    description: str
-    domains: list[str]
-    expires_at: NotRequired[_dt.date]
+    links: PullRequestReviewCommentPropLinksTypeForResponse
+    start_line: NotRequired[Union[int, None]]
+    original_start_line: NotRequired[Union[int, None]]
+    start_side: NotRequired[Union[None, Literal["LEFT", "RIGHT"]]]
+    line: NotRequired[int]
+    original_line: NotRequired[int]
+    side: NotRequired[Literal["LEFT", "RIGHT"]]
+    subject_type: NotRequired[Literal["line", "file"]]
+    reactions: NotRequired[ReactionRollupTypeForResponse]
+    body_html: NotRequired[str]
+    body_text: NotRequired[str]
 
 
-class PagesHttpsCertificateTypeForResponse(TypedDict):
-    """Pages Https Certificate"""
+class PullRequestReviewCommentPropLinksType(TypedDict):
+    """PullRequestReviewCommentPropLinks"""
 
-    state: Literal[
-        "new",
-        "authorization_created",
-        "authorization_pending",
-        "authorized",
-        "authorization_revoked",
-        "issued",
-        "uploaded",
-        "approved",
-        "errored",
-        "bad_authz",
-        "destroy_pending",
-        "dns_changed",
-    ]
-    description: str
-    domains: list[str]
-    expires_at: NotRequired[str]
+    self_: PullRequestReviewCommentPropLinksPropSelfType
+    html: PullRequestReviewCommentPropLinksPropHtmlType
+    pull_request: PullRequestReviewCommentPropLinksPropPullRequestType
+
+
+class PullRequestReviewCommentPropLinksTypeForResponse(TypedDict):
+    """PullRequestReviewCommentPropLinks"""
+
+    self_: PullRequestReviewCommentPropLinksPropSelfTypeForResponse
+    html: PullRequestReviewCommentPropLinksPropHtmlTypeForResponse
+    pull_request: PullRequestReviewCommentPropLinksPropPullRequestTypeForResponse
+
+
+class PullRequestReviewCommentPropLinksPropSelfType(TypedDict):
+    """PullRequestReviewCommentPropLinksPropSelf"""
+
+    href: str
+
+
+class PullRequestReviewCommentPropLinksPropSelfTypeForResponse(TypedDict):
+    """PullRequestReviewCommentPropLinksPropSelf"""
+
+    href: str
+
+
+class PullRequestReviewCommentPropLinksPropHtmlType(TypedDict):
+    """PullRequestReviewCommentPropLinksPropHtml"""
+
+    href: str
+
+
+class PullRequestReviewCommentPropLinksPropHtmlTypeForResponse(TypedDict):
+    """PullRequestReviewCommentPropLinksPropHtml"""
+
+    href: str
+
+
+class PullRequestReviewCommentPropLinksPropPullRequestType(TypedDict):
+    """PullRequestReviewCommentPropLinksPropPullRequest"""
+
+    href: str
+
+
+class PullRequestReviewCommentPropLinksPropPullRequestTypeForResponse(TypedDict):
+    """PullRequestReviewCommentPropLinksPropPullRequest"""
+
+    href: str
+
+
+class TimelineLineCommentedEventType(TypedDict):
+    """Timeline Line Commented Event
+
+    Timeline Line Commented Event
+    """
+
+    event: NotRequired[Literal["line_commented"]]
+    node_id: NotRequired[str]
+    comments: NotRequired[list[PullRequestReviewCommentType]]
+
+
+class TimelineLineCommentedEventTypeForResponse(TypedDict):
+    """Timeline Line Commented Event
+
+    Timeline Line Commented Event
+    """
+
+    event: NotRequired[Literal["line_commented"]]
+    node_id: NotRequired[str]
+    comments: NotRequired[list[PullRequestReviewCommentTypeForResponse]]
 
 
 __all__ = (
-    "PageType",
-    "PageTypeForResponse",
-    "PagesHttpsCertificateType",
-    "PagesHttpsCertificateTypeForResponse",
-    "PagesSourceHashType",
-    "PagesSourceHashTypeForResponse",
+    "PullRequestReviewCommentPropLinksPropHtmlType",
+    "PullRequestReviewCommentPropLinksPropHtmlTypeForResponse",
+    "PullRequestReviewCommentPropLinksPropPullRequestType",
+    "PullRequestReviewCommentPropLinksPropPullRequestTypeForResponse",
+    "PullRequestReviewCommentPropLinksPropSelfType",
+    "PullRequestReviewCommentPropLinksPropSelfTypeForResponse",
+    "PullRequestReviewCommentPropLinksType",
+    "PullRequestReviewCommentPropLinksTypeForResponse",
+    "PullRequestReviewCommentType",
+    "PullRequestReviewCommentTypeForResponse",
+    "TimelineLineCommentedEventType",
+    "TimelineLineCommentedEventTypeForResponse",
 )

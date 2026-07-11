@@ -12,14 +12,22 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class GistsGistIdCommentsCommentIdPatchBody(GitHubModel):
-    """GistsGistIdCommentsCommentIdPatchBody"""
+class EnterprisesEnterpriseSettingsBillingCostCentersPostBody(GitHubModel):
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostBody"""
 
-    body: str = Field(max_length=65535, description="The comment text.")
+    name: str = Field(
+        description="The name of the cost center (max length 255 characters)"
+    )
+    ai_credit_pool_enabled: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether the cost center draws from the AI credit pool.\n- `false` — no cap; the cost center draws from the shared enterprise pool.\n- `true` — the cost center is capped at an amount derived from its members' license entitlements. Only User and Team resources are allowed.",
+    )
 
 
-model_rebuild(GistsGistIdCommentsCommentIdPatchBody)
+model_rebuild(EnterprisesEnterpriseSettingsBillingCostCentersPostBody)
 
-__all__ = ("GistsGistIdCommentsCommentIdPatchBody",)
+__all__ = ("EnterprisesEnterpriseSettingsBillingCostCentersPostBody",)

@@ -9,102 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0515 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0516 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0517 import (
+from .group_0523 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0524 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0525 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0518 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0526 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0546 import (
+    WebhooksMarketplacePurchaseType,
+    WebhooksMarketplacePurchaseTypeForResponse,
+)
+from .group_0547 import (
+    WebhooksPreviousMarketplacePurchaseType,
+    WebhooksPreviousMarketplacePurchaseTypeForResponse,
+)
 
 
-class WebhookMetaDeletedType(TypedDict):
-    """meta deleted event"""
+class WebhookMarketplacePurchasePurchasedType(TypedDict):
+    """marketplace_purchase purchased event"""
 
-    action: Literal["deleted"]
+    action: Literal["purchased"]
+    effective_date: str
     enterprise: NotRequired[EnterpriseWebhooksType]
-    hook: WebhookMetaDeletedPropHookType
-    hook_id: int
     installation: NotRequired[SimpleInstallationType]
+    marketplace_purchase: WebhooksMarketplacePurchaseType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[Union[None, RepositoryWebhooksType]]
-    sender: NotRequired[SimpleUserType]
+    previous_marketplace_purchase: NotRequired[WebhooksPreviousMarketplacePurchaseType]
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserType
 
 
-class WebhookMetaDeletedTypeForResponse(TypedDict):
-    """meta deleted event"""
+class WebhookMarketplacePurchasePurchasedTypeForResponse(TypedDict):
+    """marketplace_purchase purchased event"""
 
-    action: Literal["deleted"]
+    action: Literal["purchased"]
+    effective_date: str
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    hook: WebhookMetaDeletedPropHookTypeForResponse
-    hook_id: int
     installation: NotRequired[SimpleInstallationTypeForResponse]
+    marketplace_purchase: WebhooksMarketplacePurchaseTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: NotRequired[Union[None, RepositoryWebhooksTypeForResponse]]
-    sender: NotRequired[SimpleUserTypeForResponse]
-
-
-class WebhookMetaDeletedPropHookType(TypedDict):
-    """WebhookMetaDeletedPropHook
-
-    The deleted webhook. This will contain different keys based on the type of
-    webhook it is: repository, organization, business, app, or GitHub Marketplace.
-    """
-
-    active: bool
-    config: WebhookMetaDeletedPropHookPropConfigType
-    created_at: str
-    events: list[str]
-    id: int
-    name: str
-    type: str
-    updated_at: str
-
-
-class WebhookMetaDeletedPropHookTypeForResponse(TypedDict):
-    """WebhookMetaDeletedPropHook
-
-    The deleted webhook. This will contain different keys based on the type of
-    webhook it is: repository, organization, business, app, or GitHub Marketplace.
-    """
-
-    active: bool
-    config: WebhookMetaDeletedPropHookPropConfigTypeForResponse
-    created_at: str
-    events: list[str]
-    id: int
-    name: str
-    type: str
-    updated_at: str
-
-
-class WebhookMetaDeletedPropHookPropConfigType(TypedDict):
-    """WebhookMetaDeletedPropHookPropConfig"""
-
-    content_type: Literal["json", "form"]
-    insecure_ssl: str
-    secret: NotRequired[str]
-    url: str
-
-
-class WebhookMetaDeletedPropHookPropConfigTypeForResponse(TypedDict):
-    """WebhookMetaDeletedPropHookPropConfig"""
-
-    content_type: Literal["json", "form"]
-    insecure_ssl: str
-    secret: NotRequired[str]
-    url: str
+    previous_marketplace_purchase: NotRequired[
+        WebhooksPreviousMarketplacePurchaseTypeForResponse
+    ]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookMetaDeletedPropHookPropConfigType",
-    "WebhookMetaDeletedPropHookPropConfigTypeForResponse",
-    "WebhookMetaDeletedPropHookType",
-    "WebhookMetaDeletedPropHookTypeForResponse",
-    "WebhookMetaDeletedType",
-    "WebhookMetaDeletedTypeForResponse",
+    "WebhookMarketplacePurchasePurchasedType",
+    "WebhookMarketplacePurchasePurchasedTypeForResponse",
 )

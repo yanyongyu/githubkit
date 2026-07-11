@@ -9,36 +9,105 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0106 import (
-    OrganizationCustomPropertyType,
-    OrganizationCustomPropertyTypeForResponse,
+from .group_0599 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0600 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0601 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0588 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0602 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0612 import WebhooksUserType, WebhooksUserTypeForResponse
+from .group_0626 import WebhooksTeamType, WebhooksTeamTypeForResponse
 
 
-class WebhookOrganizationCustomPropertyCreatedType(TypedDict):
-    """organization custom property created event"""
+class WebhookMembershipRemovedType(TypedDict):
+    """membership removed event"""
 
-    action: Literal["created"]
-    definition: OrganizationCustomPropertyType
-    enterprise: EnterpriseWebhooksType
-    sender: NotRequired[SimpleUserType]
+    action: Literal["removed"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    member: Union[WebhooksUserType, None]
+    organization: OrganizationSimpleWebhooksType
+    repository: NotRequired[RepositoryWebhooksType]
+    scope: Literal["team", "organization"]
+    sender: Union[WebhookMembershipRemovedPropSenderType, None]
+    team: WebhooksTeamType
 
 
-class WebhookOrganizationCustomPropertyCreatedTypeForResponse(TypedDict):
-    """organization custom property created event"""
+class WebhookMembershipRemovedTypeForResponse(TypedDict):
+    """membership removed event"""
 
-    action: Literal["created"]
-    definition: OrganizationCustomPropertyTypeForResponse
-    enterprise: EnterpriseWebhooksTypeForResponse
-    sender: NotRequired[SimpleUserTypeForResponse]
+    action: Literal["removed"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    member: Union[WebhooksUserTypeForResponse, None]
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    scope: Literal["team", "organization"]
+    sender: Union[WebhookMembershipRemovedPropSenderTypeForResponse, None]
+    team: WebhooksTeamTypeForResponse
+
+
+class WebhookMembershipRemovedPropSenderType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookMembershipRemovedPropSenderTypeForResponse(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "WebhookOrganizationCustomPropertyCreatedType",
-    "WebhookOrganizationCustomPropertyCreatedTypeForResponse",
+    "WebhookMembershipRemovedPropSenderType",
+    "WebhookMembershipRemovedPropSenderTypeForResponse",
+    "WebhookMembershipRemovedType",
+    "WebhookMembershipRemovedTypeForResponse",
 )

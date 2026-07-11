@@ -9,31 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class CustomPropertyValueType(TypedDict):
-    """Custom Property Value
+class OrganizationCustomPropertyType(TypedDict):
+    """Custom Property for Organization
 
-    Custom property name and associated value
+    Custom property defined for an organization
     """
 
-    property_name: str
-    value: Union[str, list[str], None]
+    property_name: NotRequired[str]
+    url: NotRequired[str]
+    source_type: NotRequired[Literal["organization", "enterprise"]]
+    value_type: NotRequired[
+        Literal["string", "single_select", "multi_select", "true_false", "url"]
+    ]
+    required: NotRequired[bool]
+    default_value: NotRequired[Union[str, list[str], None]]
+    description: NotRequired[Union[str, None]]
+    allowed_values: NotRequired[Union[list[str], None]]
+    values_editable_by: NotRequired[
+        Union[None, Literal["enterprise_actors", "enterprise_and_org_actors"]]
+    ]
 
 
-class CustomPropertyValueTypeForResponse(TypedDict):
-    """Custom Property Value
+class OrganizationCustomPropertyTypeForResponse(TypedDict):
+    """Custom Property for Organization
 
-    Custom property name and associated value
+    Custom property defined for an organization
     """
 
-    property_name: str
-    value: Union[str, list[str], None]
+    property_name: NotRequired[str]
+    url: NotRequired[str]
+    source_type: NotRequired[Literal["organization", "enterprise"]]
+    value_type: NotRequired[
+        Literal["string", "single_select", "multi_select", "true_false", "url"]
+    ]
+    required: NotRequired[bool]
+    default_value: NotRequired[Union[str, list[str], None]]
+    description: NotRequired[Union[str, None]]
+    allowed_values: NotRequired[Union[list[str], None]]
+    values_editable_by: NotRequired[
+        Union[None, Literal["enterprise_actors", "enterprise_and_org_actors"]]
+    ]
 
 
 __all__ = (
-    "CustomPropertyValueType",
-    "CustomPropertyValueTypeForResponse",
+    "OrganizationCustomPropertyType",
+    "OrganizationCustomPropertyTypeForResponse",
 )

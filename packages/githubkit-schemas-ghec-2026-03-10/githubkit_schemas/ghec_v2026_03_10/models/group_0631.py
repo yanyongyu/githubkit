@@ -19,34 +19,27 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhooksAlert(GitHubModel):
-    """Repository Vulnerability Alert Alert
+class WebhooksProject(GitHubModel):
+    """Project"""
 
-    The security alert of the vulnerable dependency.
-    """
-
-    affected_package_name: str = Field()
-    affected_range: str = Field()
-    created_at: str = Field()
-    dismiss_reason: Missing[str] = Field(default=UNSET)
-    dismissed_at: Missing[str] = Field(default=UNSET)
-    dismisser: Missing[Union[WebhooksAlertPropDismisser, None]] = Field(
-        default=UNSET, title="User"
-    )
-    external_identifier: str = Field()
-    external_reference: Union[str, None] = Field()
-    fix_reason: Missing[str] = Field(default=UNSET)
-    fixed_at: Missing[_dt.datetime] = Field(default=UNSET)
-    fixed_in: Missing[str] = Field(default=UNSET)
-    ghsa_id: str = Field()
+    body: Union[str, None] = Field(description="Body of the project")
+    columns_url: str = Field()
+    created_at: _dt.datetime = Field()
+    creator: Union[WebhooksProjectPropCreator, None] = Field(title="User")
+    html_url: str = Field()
     id: int = Field()
+    name: str = Field(description="Name of the project")
     node_id: str = Field()
     number: int = Field()
-    severity: str = Field()
-    state: Literal["auto_dismissed", "open"] = Field()
+    owner_url: str = Field()
+    state: Literal["open", "closed"] = Field(
+        description="State of the project; either 'open' or 'closed'"
+    )
+    updated_at: _dt.datetime = Field()
+    url: str = Field()
 
 
-class WebhooksAlertPropDismisser(GitHubModel):
+class WebhooksProjectPropCreator(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -70,12 +63,13 @@ class WebhooksAlertPropDismisser(GitHubModel):
     subscriptions_url: Missing[str] = Field(default=UNSET)
     type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
     url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhooksAlert)
-model_rebuild(WebhooksAlertPropDismisser)
+model_rebuild(WebhooksProject)
+model_rebuild(WebhooksProjectPropCreator)
 
 __all__ = (
-    "WebhooksAlert",
-    "WebhooksAlertPropDismisser",
+    "WebhooksProject",
+    "WebhooksProjectPropCreator",
 )

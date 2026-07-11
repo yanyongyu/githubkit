@@ -13,47 +13,41 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CustomPropertyType(TypedDict):
-    """Organization Custom Property
+class OrganizationCustomPropertyPayloadType(TypedDict):
+    """Organization Custom Property Payload
 
-    Custom property defined on an organization
+    Payload for creating or updating an organization custom property definition on
+    an enterprise.
     """
 
-    property_name: str
-    url: NotRequired[str]
-    source_type: NotRequired[Literal["organization", "enterprise"]]
     value_type: Literal["string", "single_select", "multi_select", "true_false", "url"]
     required: NotRequired[bool]
     default_value: NotRequired[Union[str, list[str], None]]
     description: NotRequired[Union[str, None]]
     allowed_values: NotRequired[Union[list[str], None]]
     values_editable_by: NotRequired[
-        Union[None, Literal["org_actors", "org_and_repo_actors"]]
+        Union[None, Literal["enterprise_actors", "enterprise_and_org_actors"]]
     ]
-    require_explicit_values: NotRequired[bool]
 
 
-class CustomPropertyTypeForResponse(TypedDict):
-    """Organization Custom Property
+class OrganizationCustomPropertyPayloadTypeForResponse(TypedDict):
+    """Organization Custom Property Payload
 
-    Custom property defined on an organization
+    Payload for creating or updating an organization custom property definition on
+    an enterprise.
     """
 
-    property_name: str
-    url: NotRequired[str]
-    source_type: NotRequired[Literal["organization", "enterprise"]]
     value_type: Literal["string", "single_select", "multi_select", "true_false", "url"]
     required: NotRequired[bool]
     default_value: NotRequired[Union[str, list[str], None]]
     description: NotRequired[Union[str, None]]
     allowed_values: NotRequired[Union[list[str], None]]
     values_editable_by: NotRequired[
-        Union[None, Literal["org_actors", "org_and_repo_actors"]]
+        Union[None, Literal["enterprise_actors", "enterprise_and_org_actors"]]
     ]
-    require_explicit_values: NotRequired[bool]
 
 
 __all__ = (
-    "CustomPropertyType",
-    "CustomPropertyTypeForResponse",
+    "OrganizationCustomPropertyPayloadType",
+    "OrganizationCustomPropertyPayloadTypeForResponse",
 )

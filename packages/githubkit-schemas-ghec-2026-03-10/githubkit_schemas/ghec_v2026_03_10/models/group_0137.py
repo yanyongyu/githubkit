@@ -14,14 +14,14 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class RepositoryRuleRequiredDeploymentsPropParameters(GitHubModel):
-    """RepositoryRuleRequiredDeploymentsPropParameters"""
+class RepositoryRuleUpdatePropParameters(GitHubModel):
+    """RepositoryRuleUpdatePropParameters"""
 
-    required_deployment_environments: list[str] = Field(
-        description="The environments that must be successfully deployed to before branches can be merged."
+    update_allows_fetch_and_merge: bool = Field(
+        description="Branch can pull changes from its upstream repository"
     )
 
 
-model_rebuild(RepositoryRuleRequiredDeploymentsPropParameters)
+model_rebuild(RepositoryRuleUpdatePropParameters)
 
-__all__ = ("RepositoryRuleRequiredDeploymentsPropParameters",)
+__all__ = ("RepositoryRuleUpdatePropParameters",)

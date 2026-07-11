@@ -9,48 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0551 import MetaType, MetaTypeForResponse
-
-
-class ScimEnterpriseGroupResponseAllof1Type(TypedDict):
-    """ScimEnterpriseGroupResponseAllof1"""
-
-    id: NotRequired[str]
-    members: NotRequired[list[ScimEnterpriseGroupResponseAllof1PropMembersItemsType]]
-    meta: NotRequired[MetaType]
+import datetime as _dt
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class ScimEnterpriseGroupResponseAllof1TypeForResponse(TypedDict):
-    """ScimEnterpriseGroupResponseAllof1"""
+class RepositorySubscriptionType(TypedDict):
+    """Repository Invitation
 
-    id: NotRequired[str]
-    members: NotRequired[
-        list[ScimEnterpriseGroupResponseAllof1PropMembersItemsTypeForResponse]
-    ]
-    meta: NotRequired[MetaTypeForResponse]
+    Repository invitations let you manage who you collaborate with.
+    """
 
-
-class ScimEnterpriseGroupResponseAllof1PropMembersItemsType(TypedDict):
-    """ScimEnterpriseGroupResponseAllof1PropMembersItems"""
-
-    value: NotRequired[str]
-    ref: NotRequired[str]
-    display: NotRequired[str]
+    subscribed: bool
+    ignored: bool
+    reason: Union[str, None]
+    created_at: _dt.datetime
+    url: str
+    repository_url: str
 
 
-class ScimEnterpriseGroupResponseAllof1PropMembersItemsTypeForResponse(TypedDict):
-    """ScimEnterpriseGroupResponseAllof1PropMembersItems"""
+class RepositorySubscriptionTypeForResponse(TypedDict):
+    """Repository Invitation
 
-    value: NotRequired[str]
-    ref: NotRequired[str]
-    display: NotRequired[str]
+    Repository invitations let you manage who you collaborate with.
+    """
+
+    subscribed: bool
+    ignored: bool
+    reason: Union[str, None]
+    created_at: str
+    url: str
+    repository_url: str
 
 
 __all__ = (
-    "ScimEnterpriseGroupResponseAllof1PropMembersItemsType",
-    "ScimEnterpriseGroupResponseAllof1PropMembersItemsTypeForResponse",
-    "ScimEnterpriseGroupResponseAllof1Type",
-    "ScimEnterpriseGroupResponseAllof1TypeForResponse",
+    "RepositorySubscriptionType",
+    "RepositorySubscriptionTypeForResponse",
 )

@@ -18,20 +18,20 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0206 import IssueType
-from .group_0208 import IssueDependenciesSummary, SubIssuesSummary
+from .group_0209 import IssueType
+from .group_0211 import IssueDependenciesSummary, SubIssuesSummary
 from .group_0746 import (
-    WebhookIssueCommentDeletedPropIssueAllof0PropAssignee,
-    WebhookIssueCommentDeletedPropIssueAllof0PropLabelsItems,
-    WebhookIssueCommentDeletedPropIssueAllof0PropPullRequest,
+    WebhookIssueCommentCreatedPropIssueAllof0PropAssignee,
+    WebhookIssueCommentCreatedPropIssueAllof0PropLabelsItems,
+    WebhookIssueCommentCreatedPropIssueAllof0PropPullRequest,
 )
-from .group_0748 import WebhookIssueCommentDeletedPropIssueAllof0PropMilestone
+from .group_0748 import WebhookIssueCommentCreatedPropIssueAllof0PropMilestone
 from .group_0750 import (
-    WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubApp,
+    WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubApp,
 )
 
 
-class WebhookIssueCommentDeletedPropIssueAllof0(GitHubModel):
+class WebhookIssueCommentCreatedPropIssueAllof0(GitHubModel):
     """Issue
 
     The [issue](https://docs.github.com/enterprise-
@@ -42,10 +42,10 @@ class WebhookIssueCommentDeletedPropIssueAllof0(GitHubModel):
         None, Literal["resolved", "off-topic", "too heated", "spam"]
     ] = Field()
     assignee: Missing[
-        Union[WebhookIssueCommentDeletedPropIssueAllof0PropAssignee, None]
+        Union[WebhookIssueCommentCreatedPropIssueAllof0PropAssignee, None]
     ] = Field(default=UNSET, title="User")
     assignees: list[
-        Union[WebhookIssueCommentDeletedPropIssueAllof0PropAssigneesItems, None]
+        Union[WebhookIssueCommentCreatedPropIssueAllof0PropAssigneesItems, None]
     ] = Field()
     author_association: Literal[
         "COLLABORATOR",
@@ -69,12 +69,12 @@ class WebhookIssueCommentDeletedPropIssueAllof0(GitHubModel):
     events_url: str = Field()
     html_url: str = Field()
     id: int = Field()
-    labels: Missing[list[WebhookIssueCommentDeletedPropIssueAllof0PropLabelsItems]] = (
+    labels: Missing[list[WebhookIssueCommentCreatedPropIssueAllof0PropLabelsItems]] = (
         Field(default=UNSET)
     )
     labels_url: str = Field()
     locked: Missing[bool] = Field(default=UNSET)
-    milestone: Union[WebhookIssueCommentDeletedPropIssueAllof0PropMilestone, None] = (
+    milestone: Union[WebhookIssueCommentCreatedPropIssueAllof0PropMilestone, None] = (
         Field(
             title="Milestone",
             description="A collection of related issues and pull requests.",
@@ -83,16 +83,16 @@ class WebhookIssueCommentDeletedPropIssueAllof0(GitHubModel):
     node_id: str = Field()
     number: int = Field()
     performed_via_github_app: Missing[
-        Union[WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubApp, None]
+        Union[WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubApp, None]
     ] = Field(
         default=UNSET,
         title="App",
         description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
     )
-    pull_request: Missing[WebhookIssueCommentDeletedPropIssueAllof0PropPullRequest] = (
+    pull_request: Missing[WebhookIssueCommentCreatedPropIssueAllof0PropPullRequest] = (
         Field(default=UNSET)
     )
-    reactions: WebhookIssueCommentDeletedPropIssueAllof0PropReactions = Field(
+    reactions: WebhookIssueCommentCreatedPropIssueAllof0PropReactions = Field(
         title="Reactions"
     )
     repository_url: str = Field()
@@ -115,12 +115,12 @@ class WebhookIssueCommentDeletedPropIssueAllof0(GitHubModel):
     )
     updated_at: _dt.datetime = Field()
     url: str = Field(description="URL for the issue")
-    user: Union[WebhookIssueCommentDeletedPropIssueAllof0PropUser, None] = Field(
+    user: Union[WebhookIssueCommentCreatedPropIssueAllof0PropUser, None] = Field(
         title="User"
     )
 
 
-class WebhookIssueCommentDeletedPropIssueAllof0PropAssigneesItems(GitHubModel):
+class WebhookIssueCommentCreatedPropIssueAllof0PropAssigneesItems(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -149,7 +149,7 @@ class WebhookIssueCommentDeletedPropIssueAllof0PropAssigneesItems(GitHubModel):
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookIssueCommentDeletedPropIssueAllof0PropReactions(GitHubModel):
+class WebhookIssueCommentCreatedPropIssueAllof0PropReactions(GitHubModel):
     """Reactions"""
 
     plus_one: int = Field(alias="+1")
@@ -164,7 +164,7 @@ class WebhookIssueCommentDeletedPropIssueAllof0PropReactions(GitHubModel):
     url: str = Field()
 
 
-class WebhookIssueCommentDeletedPropIssueAllof0PropUser(GitHubModel):
+class WebhookIssueCommentCreatedPropIssueAllof0PropUser(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -193,14 +193,14 @@ class WebhookIssueCommentDeletedPropIssueAllof0PropUser(GitHubModel):
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookIssueCommentDeletedPropIssueAllof0)
-model_rebuild(WebhookIssueCommentDeletedPropIssueAllof0PropAssigneesItems)
-model_rebuild(WebhookIssueCommentDeletedPropIssueAllof0PropReactions)
-model_rebuild(WebhookIssueCommentDeletedPropIssueAllof0PropUser)
+model_rebuild(WebhookIssueCommentCreatedPropIssueAllof0)
+model_rebuild(WebhookIssueCommentCreatedPropIssueAllof0PropAssigneesItems)
+model_rebuild(WebhookIssueCommentCreatedPropIssueAllof0PropReactions)
+model_rebuild(WebhookIssueCommentCreatedPropIssueAllof0PropUser)
 
 __all__ = (
-    "WebhookIssueCommentDeletedPropIssueAllof0",
-    "WebhookIssueCommentDeletedPropIssueAllof0PropAssigneesItems",
-    "WebhookIssueCommentDeletedPropIssueAllof0PropReactions",
-    "WebhookIssueCommentDeletedPropIssueAllof0PropUser",
+    "WebhookIssueCommentCreatedPropIssueAllof0",
+    "WebhookIssueCommentCreatedPropIssueAllof0PropAssigneesItems",
+    "WebhookIssueCommentCreatedPropIssueAllof0PropReactions",
+    "WebhookIssueCommentCreatedPropIssueAllof0PropUser",
 )

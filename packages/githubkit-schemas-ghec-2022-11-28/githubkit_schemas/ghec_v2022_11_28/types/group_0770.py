@@ -14,12 +14,12 @@ from typing import Literal, Union
 from typing_extensions import TypedDict
 
 from .group_0769 import (
-    WebhookIssueCommentPinnedPropIssueAllof0PropMilestonePropCreatorType,
-    WebhookIssueCommentPinnedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
+    WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreatorType,
+    WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
 )
 
 
-class WebhookIssueCommentPinnedPropIssueAllof0PropMilestoneType(TypedDict):
+class WebhookIssueCommentEditedPropIssueAllof0PropMilestoneType(TypedDict):
     """Milestone
 
     A collection of related issues and pull requests.
@@ -29,7 +29,7 @@ class WebhookIssueCommentPinnedPropIssueAllof0PropMilestoneType(TypedDict):
     closed_issues: int
     created_at: _dt.datetime
     creator: Union[
-        WebhookIssueCommentPinnedPropIssueAllof0PropMilestonePropCreatorType, None
+        WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreatorType, None
     ]
     description: Union[str, None]
     due_on: Union[_dt.datetime, None]
@@ -45,7 +45,7 @@ class WebhookIssueCommentPinnedPropIssueAllof0PropMilestoneType(TypedDict):
     url: str
 
 
-class WebhookIssueCommentPinnedPropIssueAllof0PropMilestoneTypeForResponse(TypedDict):
+class WebhookIssueCommentEditedPropIssueAllof0PropMilestoneTypeForResponse(TypedDict):
     """Milestone
 
     A collection of related issues and pull requests.
@@ -55,7 +55,7 @@ class WebhookIssueCommentPinnedPropIssueAllof0PropMilestoneTypeForResponse(Typed
     closed_issues: int
     created_at: str
     creator: Union[
-        WebhookIssueCommentPinnedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
+        WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
         None,
     ]
     description: Union[str, None]
@@ -73,6 +73,6 @@ class WebhookIssueCommentPinnedPropIssueAllof0PropMilestoneTypeForResponse(Typed
 
 
 __all__ = (
-    "WebhookIssueCommentPinnedPropIssueAllof0PropMilestoneType",
-    "WebhookIssueCommentPinnedPropIssueAllof0PropMilestoneTypeForResponse",
+    "WebhookIssueCommentEditedPropIssueAllof0PropMilestoneType",
+    "WebhookIssueCommentEditedPropIssueAllof0PropMilestoneTypeForResponse",
 )

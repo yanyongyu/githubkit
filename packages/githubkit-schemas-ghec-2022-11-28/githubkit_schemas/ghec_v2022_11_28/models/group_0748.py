@@ -17,11 +17,11 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0747 import (
-    WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreator,
+    WebhookIssueCommentCreatedPropIssueAllof0PropMilestonePropCreator,
 )
 
 
-class WebhookIssueCommentDeletedPropIssueAllof0PropMilestone(GitHubModel):
+class WebhookIssueCommentCreatedPropIssueAllof0PropMilestone(GitHubModel):
     """Milestone
 
     A collection of related issues and pull requests.
@@ -31,7 +31,7 @@ class WebhookIssueCommentDeletedPropIssueAllof0PropMilestone(GitHubModel):
     closed_issues: int = Field()
     created_at: _dt.datetime = Field()
     creator: Union[
-        WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreator, None
+        WebhookIssueCommentCreatedPropIssueAllof0PropMilestonePropCreator, None
     ] = Field(title="User")
     description: Union[str, None] = Field()
     due_on: Union[_dt.datetime, None] = Field()
@@ -47,6 +47,6 @@ class WebhookIssueCommentDeletedPropIssueAllof0PropMilestone(GitHubModel):
     url: str = Field()
 
 
-model_rebuild(WebhookIssueCommentDeletedPropIssueAllof0PropMilestone)
+model_rebuild(WebhookIssueCommentCreatedPropIssueAllof0PropMilestone)
 
-__all__ = ("WebhookIssueCommentDeletedPropIssueAllof0PropMilestone",)
+__all__ = ("WebhookIssueCommentCreatedPropIssueAllof0PropMilestone",)

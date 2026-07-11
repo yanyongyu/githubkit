@@ -9,381 +9,161 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Any, Literal, TypeAlias, Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0738 import (
-    WebhookIssuesOpenedPropChangesPropOldIssueType,
-    WebhookIssuesOpenedPropChangesPropOldIssueTypeForResponse,
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0522 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0523 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0524 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
 )
+from .group_0525 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0541 import WebhooksIssueType, WebhooksIssueTypeForResponse
 
 
-class WebhookIssuesOpenedPropChangesType(TypedDict):
-    """WebhookIssuesOpenedPropChanges"""
+class WebhookIssuesFieldRemovedType(TypedDict):
+    """issues field_removed event"""
 
-    old_issue: Union[WebhookIssuesOpenedPropChangesPropOldIssueType, None]
-    old_repository: WebhookIssuesOpenedPropChangesPropOldRepositoryType
+    action: Literal["field_removed"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    issue: WebhooksIssueType
+    issue_field: WebhookIssuesFieldRemovedPropIssueFieldType
+    issue_field_value: NotRequired[WebhookIssuesFieldRemovedPropIssueFieldValueType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class WebhookIssuesOpenedPropChangesTypeForResponse(TypedDict):
-    """WebhookIssuesOpenedPropChanges"""
+class WebhookIssuesFieldRemovedTypeForResponse(TypedDict):
+    """issues field_removed event"""
 
-    old_issue: Union[WebhookIssuesOpenedPropChangesPropOldIssueTypeForResponse, None]
-    old_repository: WebhookIssuesOpenedPropChangesPropOldRepositoryTypeForResponse
+    action: Literal["field_removed"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    issue: WebhooksIssueTypeForResponse
+    issue_field: WebhookIssuesFieldRemovedPropIssueFieldTypeForResponse
+    issue_field_value: NotRequired[
+        WebhookIssuesFieldRemovedPropIssueFieldValueTypeForResponse
+    ]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
-class WebhookIssuesOpenedPropChangesPropOldRepositoryType(TypedDict):
-    """Repository
+class WebhookIssuesFieldRemovedPropIssueFieldType(TypedDict):
+    """WebhookIssuesFieldRemovedPropIssueField
 
-    A git repository
+    The issue field whose value was cleared from the issue.
     """
 
-    allow_auto_merge: NotRequired[bool]
-    allow_forking: NotRequired[bool]
-    allow_merge_commit: NotRequired[bool]
-    allow_rebase_merge: NotRequired[bool]
-    allow_squash_merge: NotRequired[bool]
-    allow_update_branch: NotRequired[bool]
-    archive_url: str
-    archived: bool
-    assignees_url: str
-    blobs_url: str
-    branches_url: str
-    clone_url: str
-    collaborators_url: str
-    comments_url: str
-    commits_url: str
-    compare_url: str
-    contents_url: str
-    contributors_url: str
-    created_at: Union[int, _dt.datetime]
-    custom_properties: NotRequired[
-        WebhookIssuesOpenedPropChangesPropOldRepositoryPropCustomPropertiesType
-    ]
-    default_branch: str
-    delete_branch_on_merge: NotRequired[bool]
-    deployments_url: str
-    description: Union[str, None]
-    disabled: NotRequired[bool]
-    downloads_url: str
-    events_url: str
-    fork: bool
-    forks: int
-    forks_count: int
-    forks_url: str
-    full_name: str
-    git_commits_url: str
-    git_refs_url: str
-    git_tags_url: str
-    git_url: str
-    has_discussions: NotRequired[bool]
-    has_pull_requests: NotRequired[bool]
-    pull_request_creation_policy: NotRequired[Literal["all", "collaborators_only"]]
-    has_downloads: bool
-    has_issues: bool
-    has_pages: bool
-    has_projects: bool
-    has_wiki: bool
-    homepage: Union[str, None]
-    hooks_url: str
-    html_url: str
     id: int
-    is_template: NotRequired[bool]
-    issue_comment_url: str
-    issue_events_url: str
-    issues_url: str
-    keys_url: str
-    labels_url: str
-    language: Union[str, None]
-    languages_url: str
-    license_: Union[
-        WebhookIssuesOpenedPropChangesPropOldRepositoryPropLicenseType, None
-    ]
-    master_branch: NotRequired[str]
-    merges_url: str
-    milestones_url: str
-    mirror_url: Union[str, None]
     name: str
-    node_id: str
-    notifications_url: str
-    open_issues: int
-    open_issues_count: int
-    organization: NotRequired[str]
-    owner: Union[WebhookIssuesOpenedPropChangesPropOldRepositoryPropOwnerType, None]
-    permissions: NotRequired[
-        WebhookIssuesOpenedPropChangesPropOldRepositoryPropPermissionsType
-    ]
-    private: bool
-    public: NotRequired[bool]
-    pulls_url: str
-    pushed_at: Union[int, _dt.datetime, None]
-    releases_url: str
-    role_name: NotRequired[Union[str, None]]
-    size: int
-    ssh_url: str
-    stargazers: NotRequired[int]
-    stargazers_count: int
-    stargazers_url: str
-    statuses_url: str
-    subscribers_url: str
-    subscription_url: str
-    svn_url: str
-    tags_url: str
-    teams_url: str
-    topics: list[str]
-    trees_url: str
-    updated_at: _dt.datetime
-    url: str
-    visibility: Literal["public", "private", "internal"]
-    watchers: int
-    watchers_count: int
-    web_commit_signoff_required: NotRequired[bool]
+    field_type: Literal["text", "date", "single_select", "multi_select", "number"]
 
 
-class WebhookIssuesOpenedPropChangesPropOldRepositoryTypeForResponse(TypedDict):
-    """Repository
+class WebhookIssuesFieldRemovedPropIssueFieldTypeForResponse(TypedDict):
+    """WebhookIssuesFieldRemovedPropIssueField
 
-    A git repository
+    The issue field whose value was cleared from the issue.
     """
 
-    allow_auto_merge: NotRequired[bool]
-    allow_forking: NotRequired[bool]
-    allow_merge_commit: NotRequired[bool]
-    allow_rebase_merge: NotRequired[bool]
-    allow_squash_merge: NotRequired[bool]
-    allow_update_branch: NotRequired[bool]
-    archive_url: str
-    archived: bool
-    assignees_url: str
-    blobs_url: str
-    branches_url: str
-    clone_url: str
-    collaborators_url: str
-    comments_url: str
-    commits_url: str
-    compare_url: str
-    contents_url: str
-    contributors_url: str
-    created_at: Union[int, str]
-    custom_properties: NotRequired[
-        WebhookIssuesOpenedPropChangesPropOldRepositoryPropCustomPropertiesTypeForResponse
-    ]
-    default_branch: str
-    delete_branch_on_merge: NotRequired[bool]
-    deployments_url: str
-    description: Union[str, None]
-    disabled: NotRequired[bool]
-    downloads_url: str
-    events_url: str
-    fork: bool
-    forks: int
-    forks_count: int
-    forks_url: str
-    full_name: str
-    git_commits_url: str
-    git_refs_url: str
-    git_tags_url: str
-    git_url: str
-    has_discussions: NotRequired[bool]
-    has_pull_requests: NotRequired[bool]
-    pull_request_creation_policy: NotRequired[Literal["all", "collaborators_only"]]
-    has_downloads: bool
-    has_issues: bool
-    has_pages: bool
-    has_projects: bool
-    has_wiki: bool
-    homepage: Union[str, None]
-    hooks_url: str
-    html_url: str
     id: int
-    is_template: NotRequired[bool]
-    issue_comment_url: str
-    issue_events_url: str
-    issues_url: str
-    keys_url: str
-    labels_url: str
-    language: Union[str, None]
-    languages_url: str
-    license_: Union[
-        WebhookIssuesOpenedPropChangesPropOldRepositoryPropLicenseTypeForResponse, None
-    ]
-    master_branch: NotRequired[str]
-    merges_url: str
-    milestones_url: str
-    mirror_url: Union[str, None]
     name: str
-    node_id: str
-    notifications_url: str
-    open_issues: int
-    open_issues_count: int
-    organization: NotRequired[str]
-    owner: Union[
-        WebhookIssuesOpenedPropChangesPropOldRepositoryPropOwnerTypeForResponse, None
-    ]
-    permissions: NotRequired[
-        WebhookIssuesOpenedPropChangesPropOldRepositoryPropPermissionsTypeForResponse
-    ]
-    private: bool
-    public: NotRequired[bool]
-    pulls_url: str
-    pushed_at: Union[int, str, None]
-    releases_url: str
-    role_name: NotRequired[Union[str, None]]
-    size: int
-    ssh_url: str
-    stargazers: NotRequired[int]
-    stargazers_count: int
-    stargazers_url: str
-    statuses_url: str
-    subscribers_url: str
-    subscription_url: str
-    svn_url: str
-    tags_url: str
-    teams_url: str
-    topics: list[str]
-    trees_url: str
-    updated_at: str
-    url: str
-    visibility: Literal["public", "private", "internal"]
-    watchers: int
-    watchers_count: int
-    web_commit_signoff_required: NotRequired[bool]
+    field_type: Literal["text", "date", "single_select", "multi_select", "number"]
 
 
-WebhookIssuesOpenedPropChangesPropOldRepositoryPropCustomPropertiesType: TypeAlias = (
-    dict[str, Any]
-)
-"""WebhookIssuesOpenedPropChangesPropOldRepositoryPropCustomProperties
+class WebhookIssuesFieldRemovedPropIssueFieldValueType(TypedDict):
+    """WebhookIssuesFieldRemovedPropIssueFieldValue
 
-The custom properties that were defined for the repository. The keys are the
-custom property names, and the values are the corresponding custom property
-values.
-"""
+    The value that was cleared from the issue field.
+    """
 
-
-WebhookIssuesOpenedPropChangesPropOldRepositoryPropCustomPropertiesTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""WebhookIssuesOpenedPropChangesPropOldRepositoryPropCustomProperties
-
-The custom properties that were defined for the repository. The keys are the
-custom property names, and the values are the corresponding custom property
-values.
-"""
-
-
-class WebhookIssuesOpenedPropChangesPropOldRepositoryPropLicenseType(TypedDict):
-    """License"""
-
-    key: str
-    name: str
-    node_id: str
-    spdx_id: str
-    url: Union[str, None]
-
-
-class WebhookIssuesOpenedPropChangesPropOldRepositoryPropLicenseTypeForResponse(
-    TypedDict
-):
-    """License"""
-
-    key: str
-    name: str
-    node_id: str
-    spdx_id: str
-    url: Union[str, None]
-
-
-class WebhookIssuesOpenedPropChangesPropOldRepositoryPropOwnerType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
     id: int
-    login: str
+    value: NotRequired[Union[str, float, int, None]]
+    value_id: NotRequired[int]
+    option: NotRequired[WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionType]
+    value_ids: NotRequired[list[int]]
+    options: NotRequired[
+        list[WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItemsType]
+    ]
+
+
+class WebhookIssuesFieldRemovedPropIssueFieldValueTypeForResponse(TypedDict):
+    """WebhookIssuesFieldRemovedPropIssueFieldValue
+
+    The value that was cleared from the issue field.
+    """
+
+    id: int
+    value: NotRequired[Union[str, float, int, None]]
+    value_id: NotRequired[int]
+    option: NotRequired[
+        WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionTypeForResponse
+    ]
+    value_ids: NotRequired[list[int]]
+    options: NotRequired[
+        list[
+            WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItemsTypeForResponse
+        ]
+    ]
+
+
+class WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionType(TypedDict):
+    """WebhookIssuesFieldRemovedPropIssueFieldValuePropOption
+
+    The selected option details. Present for single_select field types.
+    """
+
+    id: NotRequired[int]
     name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    color: NotRequired[str]
+    description: NotRequired[Union[str, None]]
 
 
-class WebhookIssuesOpenedPropChangesPropOldRepositoryPropOwnerTypeForResponse(
-    TypedDict
-):
-    """User"""
+class WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionTypeForResponse(TypedDict):
+    """WebhookIssuesFieldRemovedPropIssueFieldValuePropOption
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
+    The selected option details. Present for single_select field types.
+    """
+
+    id: NotRequired[int]
     name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    color: NotRequired[str]
+    description: NotRequired[Union[str, None]]
 
 
-class WebhookIssuesOpenedPropChangesPropOldRepositoryPropPermissionsType(TypedDict):
-    """WebhookIssuesOpenedPropChangesPropOldRepositoryPropPermissions"""
+class WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItemsType(TypedDict):
+    """WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItems"""
 
-    admin: bool
-    maintain: NotRequired[bool]
-    pull: bool
-    push: bool
-    triage: NotRequired[bool]
+    id: NotRequired[int]
+    name: NotRequired[str]
+    color: NotRequired[str]
+    description: NotRequired[Union[str, None]]
 
 
-class WebhookIssuesOpenedPropChangesPropOldRepositoryPropPermissionsTypeForResponse(
+class WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItemsTypeForResponse(
     TypedDict
 ):
-    """WebhookIssuesOpenedPropChangesPropOldRepositoryPropPermissions"""
+    """WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItems"""
 
-    admin: bool
-    maintain: NotRequired[bool]
-    pull: bool
-    push: bool
-    triage: NotRequired[bool]
+    id: NotRequired[int]
+    name: NotRequired[str]
+    color: NotRequired[str]
+    description: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "WebhookIssuesOpenedPropChangesPropOldRepositoryPropCustomPropertiesType",
-    "WebhookIssuesOpenedPropChangesPropOldRepositoryPropCustomPropertiesTypeForResponse",
-    "WebhookIssuesOpenedPropChangesPropOldRepositoryPropLicenseType",
-    "WebhookIssuesOpenedPropChangesPropOldRepositoryPropLicenseTypeForResponse",
-    "WebhookIssuesOpenedPropChangesPropOldRepositoryPropOwnerType",
-    "WebhookIssuesOpenedPropChangesPropOldRepositoryPropOwnerTypeForResponse",
-    "WebhookIssuesOpenedPropChangesPropOldRepositoryPropPermissionsType",
-    "WebhookIssuesOpenedPropChangesPropOldRepositoryPropPermissionsTypeForResponse",
-    "WebhookIssuesOpenedPropChangesPropOldRepositoryType",
-    "WebhookIssuesOpenedPropChangesPropOldRepositoryTypeForResponse",
-    "WebhookIssuesOpenedPropChangesType",
-    "WebhookIssuesOpenedPropChangesTypeForResponse",
+    "WebhookIssuesFieldRemovedPropIssueFieldType",
+    "WebhookIssuesFieldRemovedPropIssueFieldTypeForResponse",
+    "WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionType",
+    "WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionTypeForResponse",
+    "WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItemsType",
+    "WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItemsTypeForResponse",
+    "WebhookIssuesFieldRemovedPropIssueFieldValueType",
+    "WebhookIssuesFieldRemovedPropIssueFieldValueTypeForResponse",
+    "WebhookIssuesFieldRemovedType",
+    "WebhookIssuesFieldRemovedTypeForResponse",
 )

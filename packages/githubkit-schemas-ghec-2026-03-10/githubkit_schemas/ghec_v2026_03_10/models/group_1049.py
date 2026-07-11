@@ -9,6 +9,9 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,21 +19,81 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0(GitHubModel):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0
+class AgentsReposOwnerRepoTasksGetResponse200(GitHubModel):
+    """AgentsReposOwnerRepoTasksGetResponse200"""
 
-    A GitHub user
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the user"
+    tasks: list[AgentsReposOwnerRepoTasksGetResponse200PropTasksItems] = Field(
+        description="List of tasks"
+    )
+    total_active_count: Missing[int] = Field(
+        default=UNSET, description="Total count of active (non-archived) tasks"
+    )
+    total_archived_count: Missing[int] = Field(
+        default=UNSET, description="Total count of archived tasks"
     )
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems(
+class AgentsReposOwnerRepoTasksGetResponse200PropTasksItems(GitHubModel):
+    """AgentsReposOwnerRepoTasksGetResponse200PropTasksItems"""
+
+    id: str = Field(description="Unique task identifier")
+    url: Missing[str] = Field(default=UNSET, description="API URL for this task")
+    html_url: Missing[str] = Field(default=UNSET, description="Web URL for this task")
+    name: Missing[str] = Field(
+        default=UNSET, description="Human-readable name derived from the task prompt"
+    )
+    creator: Missing[
+        AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropCreatorOneof0
+    ] = Field(default=UNSET, description="The entity who created this task")
+    creator_type: Missing[Literal["user", "organization"]] = Field(
+        default=UNSET, description="Type of the task creator"
+    )
+    user_collaborators: Missing[
+        list[
+            AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropUserCollaboratorsItems
+        ]
+    ] = Field(default=UNSET, description="User objects of collaborators on this task")
+    owner: Missing[AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropOwner] = (
+        Field(default=UNSET, description="The owner of the repository")
+    )
+    repository: Missing[
+        AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropRepository
+    ] = Field(default=UNSET, description="The repository this task belongs to")
+    state: Literal[
+        "queued",
+        "in_progress",
+        "completed",
+        "failed",
+        "idle",
+        "waiting_for_user",
+        "timed_out",
+        "cancelled",
+    ] = Field(
+        description="Current state of the task, derived from its most recent session"
+    )
+    session_count: Missing[int] = Field(
+        default=UNSET, description="Number of sessions in this task"
+    )
+    artifacts: Missing[
+        list[AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItems]
+    ] = Field(
+        default=UNSET,
+        description="Resources created by this task (PRs, branches, etc.)",
+    )
+    archived_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="Timestamp when the task was archived, null if not archived",
+    )
+    updated_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="Timestamp of the most recent update"
+    )
+    created_at: _dt.datetime = Field(description="Timestamp when the task was created")
+
+
+class AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropCreatorOneof0(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems
+    """AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropCreatorOneof0
 
     A GitHub user
     """
@@ -40,8 +103,32 @@ class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsIt
     )
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository(GitHubModel):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository
+class AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropUserCollaboratorsItems(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropUserCollaboratorsItems
+
+    A GitHub user
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the user"
+    )
+
+
+class AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropOwner(GitHubModel):
+    """AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropOwner
+
+    The owner of the repository
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the user"
+    )
+
+
+class AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropRepository(GitHubModel):
+    """AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropRepository
 
     The repository this task belongs to
     """
@@ -51,14 +138,74 @@ class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository(GitHubMo
     )
 
 
-model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0)
+class AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItems(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItems
+
+    A resource generated by the task
+    """
+
+    provider: Literal["github"] = Field(description="Provider namespace")
+    type: Literal["pull", "branch"] = Field(
+        description="Type of artifact. Available Values: `pull`, `branch`.\n"
+    )
+    data: Union[
+        AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0,
+        AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1,
+    ] = Field(description="Resource data (shape depends on type)")
+
+
+class AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataO
+    neof0
+
+    A GitHub resource (pull request, issue, etc.)
+    """
+
+    id: int = Field(description="GitHub resource ID")
+    global_id: Missing[str] = Field(default=UNSET, description="GraphQL global ID")
+
+
+class AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataO
+    neof1
+
+    A Git branch reference
+    """
+
+    head_ref: str = Field(description="Head branch name")
+    base_ref: str = Field(description="Base branch name")
+
+
+model_rebuild(AgentsReposOwnerRepoTasksGetResponse200)
+model_rebuild(AgentsReposOwnerRepoTasksGetResponse200PropTasksItems)
+model_rebuild(AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropCreatorOneof0)
 model_rebuild(
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems
+    AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropUserCollaboratorsItems
 )
-model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository)
+model_rebuild(AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropOwner)
+model_rebuild(AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropRepository)
+model_rebuild(AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItems)
+model_rebuild(
+    AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0
+)
+model_rebuild(
+    AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1
+)
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems",
+    "AgentsReposOwnerRepoTasksGetResponse200",
+    "AgentsReposOwnerRepoTasksGetResponse200PropTasksItems",
+    "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItems",
+    "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0",
+    "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1",
+    "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropCreatorOneof0",
+    "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropOwner",
+    "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropRepository",
+    "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropUserCollaboratorsItems",
 )

@@ -9,30 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class UsageReportExportRequestType(TypedDict):
-    """UsageReportExportRequest"""
+class DeleteCostCenterType(TypedDict):
+    """DeleteCostCenter"""
 
-    report_type: Literal["detailed", "summarized", "premium_request", "ai_credit"]
-    start_date: _dt.date
-    end_date: NotRequired[_dt.date]
-    send_email: NotRequired[bool]
+    message: str
+    id: str
+    name: str
+    cost_center_state: Literal["CostCenterArchived"]
 
 
-class UsageReportExportRequestTypeForResponse(TypedDict):
-    """UsageReportExportRequest"""
+class DeleteCostCenterTypeForResponse(TypedDict):
+    """DeleteCostCenter"""
 
-    report_type: Literal["detailed", "summarized", "premium_request", "ai_credit"]
-    start_date: str
-    end_date: NotRequired[str]
-    send_email: NotRequired[bool]
+    message: str
+    id: str
+    name: str
+    cost_center_state: Literal["CostCenterArchived"]
 
 
 __all__ = (
-    "UsageReportExportRequestType",
-    "UsageReportExportRequestTypeForResponse",
+    "DeleteCostCenterType",
+    "DeleteCostCenterTypeForResponse",
 )

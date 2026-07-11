@@ -13,47 +13,47 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0588 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0589 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0590 import (
+from .group_0599 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0600 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0601 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0591 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0607 import WebhooksIssueCommentType, WebhooksIssueCommentTypeForResponse
+from .group_0602 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0618 import WebhooksIssueCommentType, WebhooksIssueCommentTypeForResponse
 from .group_0777 import (
-    WebhookIssueCommentUnpinnedPropIssueType,
-    WebhookIssueCommentUnpinnedPropIssueTypeForResponse,
+    WebhookIssueCommentPinnedPropIssueType,
+    WebhookIssueCommentPinnedPropIssueTypeForResponse,
 )
 
 
-class WebhookIssueCommentUnpinnedType(TypedDict):
-    """issue_comment unpinned event"""
+class WebhookIssueCommentPinnedType(TypedDict):
+    """issue_comment pinned event"""
 
-    action: Literal["unpinned"]
+    action: Literal["pinned"]
     comment: WebhooksIssueCommentType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssueCommentUnpinnedPropIssueType
+    issue: WebhookIssueCommentPinnedPropIssueType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookIssueCommentUnpinnedTypeForResponse(TypedDict):
-    """issue_comment unpinned event"""
+class WebhookIssueCommentPinnedTypeForResponse(TypedDict):
+    """issue_comment pinned event"""
 
-    action: Literal["unpinned"]
+    action: Literal["pinned"]
     comment: WebhooksIssueCommentTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhookIssueCommentUnpinnedPropIssueTypeForResponse
+    issue: WebhookIssueCommentPinnedPropIssueTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookIssueCommentUnpinnedType",
-    "WebhookIssueCommentUnpinnedTypeForResponse",
+    "WebhookIssueCommentPinnedType",
+    "WebhookIssueCommentPinnedTypeForResponse",
 )

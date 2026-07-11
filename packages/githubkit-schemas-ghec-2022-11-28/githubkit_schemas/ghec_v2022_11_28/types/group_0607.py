@@ -14,163 +14,114 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0209 import PinnedIssueCommentType, PinnedIssueCommentTypeForResponse
-from .group_0210 import IssueCommentMinimizedType, IssueCommentMinimizedTypeForResponse
+from .group_0218 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
+from .group_0383 import DeploymentSimpleType, DeploymentSimpleTypeForResponse
+from .group_0606 import SimpleCheckSuiteType, SimpleCheckSuiteTypeForResponse
 
 
-class WebhooksIssueCommentType(TypedDict):
-    """issue comment
+class CheckRunWithSimpleCheckSuiteType(TypedDict):
+    """CheckRun
 
-    The [comment](https://docs.github.com/enterprise-
-    cloud@latest/rest/issues/comments#get-an-issue-comment) itself.
+    A check performed on the code of a given code change
     """
 
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
+    app: Union[IntegrationType, None]
+    check_suite: SimpleCheckSuiteType
+    completed_at: Union[_dt.datetime, None]
+    conclusion: Union[
+        None,
+        Literal[
+            "waiting",
+            "pending",
+            "startup_failure",
+            "stale",
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+        ],
     ]
-    body: str
-    created_at: _dt.datetime
+    deployment: NotRequired[DeploymentSimpleType]
+    details_url: str
+    external_id: str
+    head_sha: str
     html_url: str
     id: int
-    issue_url: str
+    name: str
     node_id: str
-    performed_via_github_app: Union[IntegrationType, None]
-    reactions: WebhooksIssueCommentPropReactionsType
-    updated_at: _dt.datetime
+    output: CheckRunWithSimpleCheckSuitePropOutputType
+    pull_requests: list[PullRequestMinimalType]
+    started_at: _dt.datetime
+    status: Literal["queued", "in_progress", "completed", "pending"]
     url: str
-    user: Union[WebhooksIssueCommentPropUserType, None]
-    pin: NotRequired[Union[None, PinnedIssueCommentType]]
-    minimized: NotRequired[Union[None, IssueCommentMinimizedType]]
 
 
-class WebhooksIssueCommentTypeForResponse(TypedDict):
-    """issue comment
+class CheckRunWithSimpleCheckSuiteTypeForResponse(TypedDict):
+    """CheckRun
 
-    The [comment](https://docs.github.com/enterprise-
-    cloud@latest/rest/issues/comments#get-an-issue-comment) itself.
+    A check performed on the code of a given code change
     """
 
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
+    app: Union[IntegrationTypeForResponse, None]
+    check_suite: SimpleCheckSuiteTypeForResponse
+    completed_at: Union[str, None]
+    conclusion: Union[
+        None,
+        Literal[
+            "waiting",
+            "pending",
+            "startup_failure",
+            "stale",
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+        ],
     ]
-    body: str
-    created_at: str
+    deployment: NotRequired[DeploymentSimpleTypeForResponse]
+    details_url: str
+    external_id: str
+    head_sha: str
     html_url: str
     id: int
-    issue_url: str
+    name: str
     node_id: str
-    performed_via_github_app: Union[IntegrationTypeForResponse, None]
-    reactions: WebhooksIssueCommentPropReactionsTypeForResponse
-    updated_at: str
-    url: str
-    user: Union[WebhooksIssueCommentPropUserTypeForResponse, None]
-    pin: NotRequired[Union[None, PinnedIssueCommentTypeForResponse]]
-    minimized: NotRequired[Union[None, IssueCommentMinimizedTypeForResponse]]
-
-
-class WebhooksIssueCommentPropReactionsType(TypedDict):
-    """Reactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
+    output: CheckRunWithSimpleCheckSuitePropOutputTypeForResponse
+    pull_requests: list[PullRequestMinimalTypeForResponse]
+    started_at: str
+    status: Literal["queued", "in_progress", "completed", "pending"]
     url: str
 
 
-class WebhooksIssueCommentPropReactionsTypeForResponse(TypedDict):
-    """Reactions"""
+class CheckRunWithSimpleCheckSuitePropOutputType(TypedDict):
+    """CheckRunWithSimpleCheckSuitePropOutput"""
 
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
+    annotations_count: int
+    annotations_url: str
+    summary: Union[str, None]
+    text: Union[str, None]
+    title: Union[str, None]
 
 
-class WebhooksIssueCommentPropUserType(TypedDict):
-    """User"""
+class CheckRunWithSimpleCheckSuitePropOutputTypeForResponse(TypedDict):
+    """CheckRunWithSimpleCheckSuitePropOutput"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhooksIssueCommentPropUserTypeForResponse(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    annotations_count: int
+    annotations_url: str
+    summary: Union[str, None]
+    text: Union[str, None]
+    title: Union[str, None]
 
 
 __all__ = (
-    "WebhooksIssueCommentPropReactionsType",
-    "WebhooksIssueCommentPropReactionsTypeForResponse",
-    "WebhooksIssueCommentPropUserType",
-    "WebhooksIssueCommentPropUserTypeForResponse",
-    "WebhooksIssueCommentType",
-    "WebhooksIssueCommentTypeForResponse",
+    "CheckRunWithSimpleCheckSuitePropOutputType",
+    "CheckRunWithSimpleCheckSuitePropOutputTypeForResponse",
+    "CheckRunWithSimpleCheckSuiteType",
+    "CheckRunWithSimpleCheckSuiteTypeForResponse",
 )

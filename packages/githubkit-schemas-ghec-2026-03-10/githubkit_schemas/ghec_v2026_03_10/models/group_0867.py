@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,76 +17,28 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0868 import WebhookPackagePublishedPropPackagePropPackageVersion
+from .group_0003 import SimpleUser
+from .group_0109 import OrganizationCustomProperty
+from .group_0598 import EnterpriseWebhooks
 
 
-class WebhookPackagePublishedPropPackage(GitHubModel):
-    """WebhookPackagePublishedPropPackage
+class WebhookOrganizationCustomPropertyCreated(GitHubModel):
+    """organization custom property created event"""
 
-    Information about the package.
-    """
-
-    created_at: Union[str, None] = Field()
-    description: Union[str, None] = Field()
-    ecosystem: str = Field()
-    html_url: str = Field()
-    id: int = Field()
-    name: str = Field()
-    namespace: str = Field()
-    owner: Union[WebhookPackagePublishedPropPackagePropOwner, None] = Field(
-        title="User"
+    action: Literal["created"] = Field()
+    definition: OrganizationCustomProperty = Field(
+        title="Custom Property for Organization",
+        description="Custom property defined for an organization",
     )
-    package_type: str = Field()
-    package_version: Union[
-        WebhookPackagePublishedPropPackagePropPackageVersion, None
-    ] = Field()
-    registry: Union[WebhookPackagePublishedPropPackagePropRegistry, None] = Field()
-    updated_at: Union[str, None] = Field()
+    enterprise: EnterpriseWebhooks = Field(
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest/admin/overview/about-enterprise-accounts)."',
+    )
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
 
 
-class WebhookPackagePublishedPropPackagePropOwner(GitHubModel):
-    """User"""
+model_rebuild(WebhookOrganizationCustomPropertyCreated)
 
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
-
-
-class WebhookPackagePublishedPropPackagePropRegistry(GitHubModel):
-    """WebhookPackagePublishedPropPackagePropRegistry"""
-
-    about_url: str = Field()
-    name: str = Field()
-    type: str = Field()
-    url: str = Field()
-    vendor: str = Field()
-
-
-model_rebuild(WebhookPackagePublishedPropPackage)
-model_rebuild(WebhookPackagePublishedPropPackagePropOwner)
-model_rebuild(WebhookPackagePublishedPropPackagePropRegistry)
-
-__all__ = (
-    "WebhookPackagePublishedPropPackage",
-    "WebhookPackagePublishedPropPackagePropOwner",
-    "WebhookPackagePublishedPropPackagePropRegistry",
-)
+__all__ = ("WebhookOrganizationCustomPropertyCreated",)

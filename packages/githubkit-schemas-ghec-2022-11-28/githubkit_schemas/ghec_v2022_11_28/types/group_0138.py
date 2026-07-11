@@ -10,52 +10,28 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class RepositoryRuleParamsDismissalRestrictionType(TypedDict):
-    """DismissalRestriction
+class RepositoryRuleRequiredLinearHistoryType(TypedDict):
+    """required_linear_history
 
-    Specify people, teams, or apps allowed to dismiss pull request reviews.
+    Prevent merge commits from being pushed to matching refs.
     """
 
-    allowed_actors: NotRequired[list[RepositoryRuleParamsActorType]]
-    enabled: bool
+    type: Literal["required_linear_history"]
 
 
-class RepositoryRuleParamsDismissalRestrictionTypeForResponse(TypedDict):
-    """DismissalRestriction
+class RepositoryRuleRequiredLinearHistoryTypeForResponse(TypedDict):
+    """required_linear_history
 
-    Specify people, teams, or apps allowed to dismiss pull request reviews.
+    Prevent merge commits from being pushed to matching refs.
     """
 
-    allowed_actors: NotRequired[list[RepositoryRuleParamsActorTypeForResponse]]
-    enabled: bool
-
-
-class RepositoryRuleParamsActorType(TypedDict):
-    """Actor
-
-    An actor allowed to dismiss pull request reviews
-    """
-
-    id: int
-    type: Literal["User", "Team", "IntegrationInstallation", "RepositoryRole"]
-
-
-class RepositoryRuleParamsActorTypeForResponse(TypedDict):
-    """Actor
-
-    An actor allowed to dismiss pull request reviews
-    """
-
-    id: int
-    type: Literal["User", "Team", "IntegrationInstallation", "RepositoryRole"]
+    type: Literal["required_linear_history"]
 
 
 __all__ = (
-    "RepositoryRuleParamsActorType",
-    "RepositoryRuleParamsActorTypeForResponse",
-    "RepositoryRuleParamsDismissalRestrictionType",
-    "RepositoryRuleParamsDismissalRestrictionTypeForResponse",
+    "RepositoryRuleRequiredLinearHistoryType",
+    "RepositoryRuleRequiredLinearHistoryTypeForResponse",
 )

@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Union
 
 from pydantic import Field
 
@@ -18,71 +19,33 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhooksApprover(GitHubModel):
-    """WebhooksApprover"""
+class EnterpriseWebhooks(GitHubModel):
+    """Enterprise
 
-    avatar_url: Missing[str] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    login: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
+    An enterprise on GitHub. Webhook payloads contain the `enterprise` property when
+    the webhook is configured
+    on an enterprise account or an organization that's part of an enterprise
+    account. For more information,
+    see "[About enterprise accounts](https://docs.github.com/enterprise-
+    cloud@latest/admin/overview/about-enterprise-accounts)."
+    """
 
-
-class WebhooksReviewersItems(GitHubModel):
-    """WebhooksReviewersItems"""
-
-    reviewer: Missing[Union[WebhooksReviewersItemsPropReviewer, None]] = Field(
-        default=UNSET, title="User"
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="A short description of the enterprise."
     )
-    type: Missing[Literal["User"]] = Field(default=UNSET)
+    html_url: str = Field()
+    website_url: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The enterprise's website URL."
+    )
+    id: int = Field(description="Unique identifier of the enterprise")
+    node_id: str = Field()
+    name: str = Field(description="The name of the enterprise.")
+    slug: str = Field(description="The slug url identifier for the enterprise.")
+    created_at: Union[_dt.datetime, None] = Field()
+    updated_at: Union[_dt.datetime, None] = Field()
+    avatar_url: str = Field()
 
 
-class WebhooksReviewersItemsPropReviewer(GitHubModel):
-    """User"""
+model_rebuild(EnterpriseWebhooks)
 
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(WebhooksApprover)
-model_rebuild(WebhooksReviewersItems)
-model_rebuild(WebhooksReviewersItemsPropReviewer)
-
-__all__ = (
-    "WebhooksApprover",
-    "WebhooksReviewersItems",
-    "WebhooksReviewersItemsPropReviewer",
-)
+__all__ = ("EnterpriseWebhooks",)

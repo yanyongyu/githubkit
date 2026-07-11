@@ -9,83 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0018 import InstallationType, InstallationTypeForResponse
-from .group_0587 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0589 import (
+from .group_0207 import DiscussionType, DiscussionTypeForResponse
+from .group_0598 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0599 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0600 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0590 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0600 import WebhooksUserType, WebhooksUserTypeForResponse
-from .group_0605 import (
-    WebhooksRepositoriesAddedItemsType,
-    WebhooksRepositoriesAddedItemsTypeForResponse,
-)
+from .group_0601 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookInstallationRepositoriesAddedType(TypedDict):
-    """installation_repositories added event"""
+class WebhookDiscussionUnpinnedType(TypedDict):
+    """discussion unpinned event"""
 
-    action: Literal["added"]
+    action: Literal["unpinned"]
+    discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: InstallationType
+    installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repositories_added: list[WebhooksRepositoriesAddedItemsType]
-    repositories_removed: list[
-        WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItemsType
-    ]
-    repository: NotRequired[RepositoryWebhooksType]
-    repository_selection: Literal["all", "selected"]
-    requester: Union[WebhooksUserType, None]
+    repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookInstallationRepositoriesAddedTypeForResponse(TypedDict):
-    """installation_repositories added event"""
+class WebhookDiscussionUnpinnedTypeForResponse(TypedDict):
+    """discussion unpinned event"""
 
-    action: Literal["added"]
+    action: Literal["unpinned"]
+    discussion: DiscussionTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: InstallationTypeForResponse
+    installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repositories_added: list[WebhooksRepositoriesAddedItemsTypeForResponse]
-    repositories_removed: list[
-        WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItemsTypeForResponse
-    ]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    repository_selection: Literal["all", "selected"]
-    requester: Union[WebhooksUserTypeForResponse, None]
+    repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
-class WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItemsType(TypedDict):
-    """WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItems"""
-
-    full_name: NotRequired[str]
-    id: NotRequired[int]
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    private: NotRequired[bool]
-
-
-class WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItemsTypeForResponse(
-    TypedDict
-):
-    """WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItems"""
-
-    full_name: NotRequired[str]
-    id: NotRequired[int]
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    private: NotRequired[bool]
-
-
 __all__ = (
-    "WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItemsType",
-    "WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItemsTypeForResponse",
-    "WebhookInstallationRepositoriesAddedType",
-    "WebhookInstallationRepositoriesAddedTypeForResponse",
+    "WebhookDiscussionUnpinnedType",
+    "WebhookDiscussionUnpinnedTypeForResponse",
 )

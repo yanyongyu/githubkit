@@ -9,26 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
 
-from .group_0213 import IssueType, IssueTypeForResponse
-
-
-class TimelineCrossReferencedEventPropSourceType(TypedDict):
-    """TimelineCrossReferencedEventPropSource"""
-
-    type: NotRequired[str]
-    issue: NotRequired[IssueType]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0460 import IssueReferenceType, IssueReferenceTypeForResponse
 
 
-class TimelineCrossReferencedEventPropSourceTypeForResponse(TypedDict):
-    """TimelineCrossReferencedEventPropSource"""
+class ParentIssueAddedIssueEventType(TypedDict):
+    """Parent-issue Added Issue Event
 
-    type: NotRequired[str]
-    issue: NotRequired[IssueTypeForResponse]
+    Parent-issue Added Issue Event
+    """
+
+    id: int
+    node_id: str
+    url: str
+    actor: SimpleUserType
+    event: str
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationType, None]
+    parent_issue: Union[None, IssueReferenceType, None]
+
+
+class ParentIssueAddedIssueEventTypeForResponse(TypedDict):
+    """Parent-issue Added Issue Event
+
+    Parent-issue Added Issue Event
+    """
+
+    id: int
+    node_id: str
+    url: str
+    actor: SimpleUserTypeForResponse
+    event: str
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
+    parent_issue: Union[None, IssueReferenceTypeForResponse, None]
 
 
 __all__ = (
-    "TimelineCrossReferencedEventPropSourceType",
-    "TimelineCrossReferencedEventPropSourceTypeForResponse",
+    "ParentIssueAddedIssueEventType",
+    "ParentIssueAddedIssueEventTypeForResponse",
 )

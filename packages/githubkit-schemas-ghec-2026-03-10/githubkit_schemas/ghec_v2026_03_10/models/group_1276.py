@@ -9,80 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Annotated, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_1274 import OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems
 
-class OrgsOrgCopilotSpacesPostBody(GitHubModel):
-    """OrgsOrgCopilotSpacesPostBody"""
 
-    name: str = Field(description="The name of the Copilot Space.")
-    description: Missing[str] = Field(
-        default=UNSET, description="A description of the Copilot Space."
+class OrgsOrgCampaignsPostBodyOneof1(GitHubModel):
+    """OrgsOrgCampaignsPostBodyOneof1"""
+
+    name: str = Field(
+        min_length=1, max_length=50, description="The name of the campaign"
     )
-    general_instructions: Missing[str] = Field(
-        max_length=4000,
+    description: str = Field(
+        min_length=1, max_length=255, description="A description for the campaign"
+    )
+    managers: Missing[list[str]] = Field(
+        max_length=10 if PYDANTIC_V2 else None,
         default=UNSET,
-        description="General instructions for the Copilot Space.",
+        description="The logins of the users to set as the campaign managers. At this time, only a single manager can be supplied.",
     )
-    base_role: Missing[Literal["reader", "writer", "admin", "no_access"]] = Field(
+    team_managers: Missing[list[str]] = Field(
+        max_length=10 if PYDANTIC_V2 else None,
         default=UNSET,
-        description="The base role that determines default permissions for organization members.\n- `no_access`: No default access (default)\n- `reader`: Organization members can read the space\n- `writer`: Organization members can read and edit the space\n- `admin`: Organization members have full admin access to the space",
+        description="The slugs of the teams to set as the campaign managers.",
     )
-    resources_attributes: Missing[
-        list[OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItems]
-    ] = Field(default=UNSET, description="Resources to attach to the space.")
-
-
-class OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItems(GitHubModel):
-    """OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItems"""
-
-    resource_type: Missing[
-        Literal[
-            "repository",
-            "github_file",
-            "free_text",
-            "github_issue",
-            "github_pull_request",
-            "media_content",
-            "uploaded_text_file",
+    ends_at: _dt.datetime = Field(
+        description="The end date and time of the campaign. The date must be in the future."
+    )
+    contact_link: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The contact link of the campaign. Must be a URI."
+    )
+    code_scanning_alerts: Missing[
+        Union[
+            Annotated[
+                list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems],
+                Field(min_length=1 if PYDANTIC_V2 else None),
+            ],
+            None,
         ]
-    ] = Field(default=UNSET, description="The type of resource.")
-    metadata: Missing[
-        OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata
-    ] = Field(default=UNSET, description="Metadata specific to the resource type.")
-
-
-class OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata(GitHubModel):
-    """OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata
-
-    Metadata specific to the resource type.
-    """
-
-    repository_id: Missing[int] = Field(
-        default=UNSET, description="Repository ID for repository or file resources."
+    ] = Field(
+        default=UNSET,
+        description="The code scanning alerts to include in this campaign",
     )
-    file_path: Missing[str] = Field(
-        default=UNSET, description="File path for file resources."
+    generate_issues: Missing[bool] = Field(
+        default=UNSET,
+        description="If true, will automatically generate issues for the campaign. The default is false.",
     )
-    text: Missing[str] = Field(
-        default=UNSET, description="Text content for free text resources."
-    )
-    name: Missing[str] = Field(default=UNSET, description="Name for the resource.")
-    number: Missing[int] = Field(default=UNSET, description="Issue or PR number.")
 
 
-model_rebuild(OrgsOrgCopilotSpacesPostBody)
-model_rebuild(OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItems)
-model_rebuild(OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata)
+model_rebuild(OrgsOrgCampaignsPostBodyOneof1)
 
-__all__ = (
-    "OrgsOrgCopilotSpacesPostBody",
-    "OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItems",
-    "OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata",
-)
+__all__ = ("OrgsOrgCampaignsPostBodyOneof1",)

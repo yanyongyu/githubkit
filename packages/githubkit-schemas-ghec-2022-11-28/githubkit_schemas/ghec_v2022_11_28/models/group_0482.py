@@ -9,26 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0213 import Issue
-
-
-class TimelineCrossReferencedEventPropSource(GitHubModel):
-    """TimelineCrossReferencedEventPropSource"""
-
-    type: Missing[str] = Field(default=UNSET)
-    issue: Missing[Issue] = Field(
-        default=UNSET,
-        title="Issue",
-        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
-    )
+from .group_0003 import SimpleUser
+from .group_0010 import Integration
+from .group_0460 import IssueReference
 
 
-model_rebuild(TimelineCrossReferencedEventPropSource)
+class ParentIssueAddedIssueEvent(GitHubModel):
+    """Parent-issue Added Issue Event
 
-__all__ = ("TimelineCrossReferencedEventPropSource",)
+    Parent-issue Added Issue Event
+    """
+
+    id: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    event: str = Field()
+    commit_id: Union[str, None] = Field()
+    commit_url: Union[str, None] = Field()
+    created_at: str = Field()
+    performed_via_github_app: Union[None, Integration, None] = Field()
+    parent_issue: Union[None, IssueReference, None] = Field()
+
+
+model_rebuild(ParentIssueAddedIssueEvent)
+
+__all__ = ("ParentIssueAddedIssueEvent",)

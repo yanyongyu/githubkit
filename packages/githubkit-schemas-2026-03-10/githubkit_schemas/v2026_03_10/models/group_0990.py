@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,42 +18,76 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0008 import Enterprise
-from .group_0009 import IntegrationPropPermissions
+from .group_0992 import (
+    AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0,
+    AgentsTasksTaskIdGetResponse200Allof0PropRepository,
+    AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems,
+)
+from .group_0993 import (
+    AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItems,
+    AgentsTasksTaskIdGetResponse200Allof0PropOwner,
+)
+from .group_0995 import AgentsTasksTaskIdGetResponse200Allof1PropSessionsItems
 
 
-class AppManifestsCodeConversionsPostResponse201(GitHubModel):
-    """AppManifestsCodeConversionsPostResponse201"""
+class AgentsTasksTaskIdGetResponse200(GitHubModel):
+    """AgentsTasksTaskIdGetResponse200"""
 
-    id: int = Field(description="Unique identifier of the GitHub app")
-    slug: Missing[str] = Field(
-        default=UNSET, description="The slug name of the GitHub app"
+    id: str = Field(description="Unique task identifier")
+    url: Missing[str] = Field(default=UNSET, description="API URL for this task")
+    html_url: Missing[str] = Field(default=UNSET, description="Web URL for this task")
+    name: Missing[str] = Field(
+        default=UNSET, description="Human-readable name derived from the task prompt"
     )
-    node_id: str = Field()
-    client_id: str = Field()
-    owner: Union[SimpleUser, Enterprise] = Field()
-    name: str = Field(description="The name of the GitHub app")
-    description: Union[str, None] = Field()
-    external_url: str = Field()
-    html_url: str = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    permissions: IntegrationPropPermissions = Field(
-        description="The set of permissions for the GitHub app"
+    creator: Missing[AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0] = Field(
+        default=UNSET, description="The entity who created this task"
     )
-    events: list[str] = Field(
-        description="The list of events for the GitHub app. Note that the `installation_target`, `security_advisory`, and `meta` events are not included because they are global events and not specific to an installation."
+    creator_type: Missing[Literal["user", "organization"]] = Field(
+        default=UNSET, description="Type of the task creator"
     )
-    installations_count: Missing[int] = Field(
+    user_collaborators: Missing[
+        list[AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems]
+    ] = Field(default=UNSET, description="User objects of collaborators on this task")
+    owner: Missing[AgentsTasksTaskIdGetResponse200Allof0PropOwner] = Field(
+        default=UNSET, description="The owner of the repository"
+    )
+    repository: Missing[AgentsTasksTaskIdGetResponse200Allof0PropRepository] = Field(
+        default=UNSET, description="The repository this task belongs to"
+    )
+    state: Literal[
+        "queued",
+        "in_progress",
+        "completed",
+        "failed",
+        "idle",
+        "waiting_for_user",
+        "timed_out",
+        "cancelled",
+    ] = Field(
+        description="Current state of the task, derived from its most recent session"
+    )
+    session_count: Missing[int] = Field(
+        default=UNSET, description="Number of sessions in this task"
+    )
+    artifacts: Missing[
+        list[AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItems]
+    ] = Field(
         default=UNSET,
-        description="The number of installations associated with the GitHub app. Only returned when the integration is requesting details about itself.",
+        description="Resources created by this task (PRs, branches, etc.)",
     )
-    client_secret: str = Field()
-    webhook_secret: Union[str, None] = Field()
-    pem: str = Field()
+    archived_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="Timestamp when the task was archived, null if not archived",
+    )
+    updated_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="Timestamp of the most recent update"
+    )
+    created_at: _dt.datetime = Field(description="Timestamp when the task was created")
+    sessions: Missing[list[AgentsTasksTaskIdGetResponse200Allof1PropSessionsItems]] = (
+        Field(default=UNSET, description="Sessions associated with this task")
+    )
 
 
-model_rebuild(AppManifestsCodeConversionsPostResponse201)
+model_rebuild(AgentsTasksTaskIdGetResponse200)
 
-__all__ = ("AppManifestsCodeConversionsPostResponse201",)
+__all__ = ("AgentsTasksTaskIdGetResponse200",)

@@ -9,42 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class WebhooksChangesType(TypedDict):
-    """WebhooksChanges
+class WebhooksWorkflowJobRunType(TypedDict):
+    """WebhooksWorkflowJobRun"""
 
-    The changes to the comment.
-    """
-
-    body: NotRequired[WebhooksChangesPropBodyType]
-
-
-class WebhooksChangesTypeForResponse(TypedDict):
-    """WebhooksChanges
-
-    The changes to the comment.
-    """
-
-    body: NotRequired[WebhooksChangesPropBodyTypeForResponse]
+    conclusion: None
+    created_at: str
+    environment: str
+    html_url: str
+    id: int
+    name: None
+    status: str
+    updated_at: str
 
 
-class WebhooksChangesPropBodyType(TypedDict):
-    """WebhooksChangesPropBody"""
+class WebhooksWorkflowJobRunTypeForResponse(TypedDict):
+    """WebhooksWorkflowJobRun"""
 
-    from_: str
-
-
-class WebhooksChangesPropBodyTypeForResponse(TypedDict):
-    """WebhooksChangesPropBody"""
-
-    from_: str
+    conclusion: None
+    created_at: str
+    environment: str
+    html_url: str
+    id: int
+    name: None
+    status: str
+    updated_at: str
 
 
 __all__ = (
-    "WebhooksChangesPropBodyType",
-    "WebhooksChangesPropBodyTypeForResponse",
-    "WebhooksChangesType",
-    "WebhooksChangesTypeForResponse",
+    "WebhooksWorkflowJobRunType",
+    "WebhooksWorkflowJobRunTypeForResponse",
 )

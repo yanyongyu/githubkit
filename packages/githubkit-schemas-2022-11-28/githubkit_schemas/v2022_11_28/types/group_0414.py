@@ -14,13 +14,13 @@ from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0393 import IssueReferenceType, IssueReferenceTypeForResponse
+from .group_0394 import IssueReferenceType, IssueReferenceTypeForResponse
 
 
-class SubIssueRemovedIssueEventType(TypedDict):
-    """Sub-issue Removed Issue Event
+class SubIssueAddedIssueEventType(TypedDict):
+    """Sub-issue Added Issue Event
 
-    Sub-issue Removed Issue Event
+    Sub-issue Added Issue Event
     """
 
     id: int
@@ -32,13 +32,13 @@ class SubIssueRemovedIssueEventType(TypedDict):
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    sub_issue: Union[IssueReferenceType, None]
+    sub_issue: Union[None, IssueReferenceType, None]
 
 
-class SubIssueRemovedIssueEventTypeForResponse(TypedDict):
-    """Sub-issue Removed Issue Event
+class SubIssueAddedIssueEventTypeForResponse(TypedDict):
+    """Sub-issue Added Issue Event
 
-    Sub-issue Removed Issue Event
+    Sub-issue Added Issue Event
     """
 
     id: int
@@ -50,10 +50,10 @@ class SubIssueRemovedIssueEventTypeForResponse(TypedDict):
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    sub_issue: Union[IssueReferenceTypeForResponse, None]
+    sub_issue: Union[None, IssueReferenceTypeForResponse, None]
 
 
 __all__ = (
-    "SubIssueRemovedIssueEventType",
-    "SubIssueRemovedIssueEventTypeForResponse",
+    "SubIssueAddedIssueEventType",
+    "SubIssueAddedIssueEventTypeForResponse",
 )

@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -18,37 +18,43 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0245 import MarketplaceListingPlan
 
-class ExemptionResponse(GitHubModel):
-    """Exemption response
 
-    A response to an exemption request by a delegated bypasser.
+class UserMarketplacePurchase(GitHubModel):
+    """User Marketplace Purchase
+
+    User Marketplace Purchase
     """
 
-    id: Missing[int] = Field(
-        default=UNSET, description="The ID of the exemption response."
-    )
-    reviewer_id: Missing[int] = Field(
-        default=UNSET,
-        description="The ID of the user who reviewed the exemption request.",
-    )
-    reviewer_login: Missing[str] = Field(
-        default=UNSET,
-        description="The login of the user who reviewed the exemption request.",
-    )
-    status: Missing[Literal["approved", "rejected", "dismissed"]] = Field(
-        default=UNSET, description="The status of the exemption response."
-    )
-    reviewer_comment: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The comment the reviewer provided when responding to the exemption request.",
-    )
-    created_at: Missing[_dt.datetime] = Field(
-        default=UNSET,
-        description="The date and time the exemption request was created.",
+    billing_cycle: str = Field()
+    next_billing_date: Union[_dt.datetime, None] = Field()
+    unit_count: Union[int, None] = Field()
+    on_free_trial: bool = Field()
+    free_trial_ends_on: Union[_dt.datetime, None] = Field()
+    updated_at: Union[_dt.datetime, None] = Field()
+    account: MarketplaceAccount = Field(title="Marketplace Account")
+    plan: MarketplaceListingPlan = Field(
+        title="Marketplace Listing Plan", description="Marketplace Listing Plan"
     )
 
 
-model_rebuild(ExemptionResponse)
+class MarketplaceAccount(GitHubModel):
+    """Marketplace Account"""
 
-__all__ = ("ExemptionResponse",)
+    url: str = Field()
+    id: int = Field()
+    type: str = Field()
+    node_id: Missing[str] = Field(default=UNSET)
+    login: str = Field()
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    organization_billing_email: Missing[Union[str, None]] = Field(default=UNSET)
+
+
+model_rebuild(UserMarketplacePurchase)
+model_rebuild(MarketplaceAccount)
+
+__all__ = (
+    "MarketplaceAccount",
+    "UserMarketplacePurchase",
+)

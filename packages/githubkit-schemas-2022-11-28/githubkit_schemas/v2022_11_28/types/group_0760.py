@@ -9,150 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0515 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0516 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0517 import (
+from .group_0523 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0524 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0525 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0518 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0539 import (
-    WebhooksPreviousMarketplacePurchaseType,
-    WebhooksPreviousMarketplacePurchaseTypeForResponse,
-)
+from .group_0526 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0544 import WebhooksIssue2Type, WebhooksIssue2TypeForResponse
 
 
-class WebhookMarketplacePurchasePendingChangeCancelledType(TypedDict):
-    """marketplace_purchase pending_change_cancelled event"""
+class WebhookIssuesUnpinnedType(TypedDict):
+    """issues unpinned event"""
 
-    action: Literal["pending_change_cancelled"]
-    effective_date: str
+    action: Literal["unpinned"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    marketplace_purchase: (
-        WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseType
-    )
+    issue: WebhooksIssue2Type
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    previous_marketplace_purchase: NotRequired[WebhooksPreviousMarketplacePurchaseType]
-    repository: NotRequired[RepositoryWebhooksType]
+    repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookMarketplacePurchasePendingChangeCancelledTypeForResponse(TypedDict):
-    """marketplace_purchase pending_change_cancelled event"""
+class WebhookIssuesUnpinnedTypeForResponse(TypedDict):
+    """issues unpinned event"""
 
-    action: Literal["pending_change_cancelled"]
-    effective_date: str
+    action: Literal["unpinned"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    marketplace_purchase: WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseTypeForResponse
+    issue: WebhooksIssue2TypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    previous_marketplace_purchase: NotRequired[
-        WebhooksPreviousMarketplacePurchaseTypeForResponse
-    ]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
-class WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseType(
-    TypedDict
-):
-    """Marketplace Purchase"""
-
-    account: WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropAccountType
-    billing_cycle: str
-    free_trial_ends_on: None
-    next_billing_date: Union[str, None]
-    on_free_trial: bool
-    plan: WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropPlanType
-    unit_count: int
-
-
-class WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseTypeForResponse(
-    TypedDict
-):
-    """Marketplace Purchase"""
-
-    account: WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropAccountTypeForResponse
-    billing_cycle: str
-    free_trial_ends_on: None
-    next_billing_date: Union[str, None]
-    on_free_trial: bool
-    plan: WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropPlanTypeForResponse
-    unit_count: int
-
-
-class WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropAccountType(
-    TypedDict
-):
-    """WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropAccou
-    nt
-    """
-
-    id: int
-    login: str
-    node_id: str
-    organization_billing_email: Union[str, None]
-    type: str
-
-
-class WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropAccountTypeForResponse(
-    TypedDict
-):
-    """WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropAccou
-    nt
-    """
-
-    id: int
-    login: str
-    node_id: str
-    organization_billing_email: Union[str, None]
-    type: str
-
-
-class WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropPlanType(
-    TypedDict
-):
-    """WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropPlan"""
-
-    bullets: list[str]
-    description: str
-    has_free_trial: bool
-    id: int
-    monthly_price_in_cents: int
-    name: str
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
-    unit_name: Union[str, None]
-    yearly_price_in_cents: int
-
-
-class WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropPlanTypeForResponse(
-    TypedDict
-):
-    """WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropPlan"""
-
-    bullets: list[str]
-    description: str
-    has_free_trial: bool
-    id: int
-    monthly_price_in_cents: int
-    name: str
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
-    unit_name: Union[str, None]
-    yearly_price_in_cents: int
-
-
 __all__ = (
-    "WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropAccountType",
-    "WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropAccountTypeForResponse",
-    "WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropPlanType",
-    "WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropPlanTypeForResponse",
-    "WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseType",
-    "WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseTypeForResponse",
-    "WebhookMarketplacePurchasePendingChangeCancelledType",
-    "WebhookMarketplacePurchasePendingChangeCancelledTypeForResponse",
+    "WebhookIssuesUnpinnedType",
+    "WebhookIssuesUnpinnedTypeForResponse",
 )

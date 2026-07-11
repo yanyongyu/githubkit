@@ -13,22 +13,16 @@ import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0679 import (
-    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
-    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
-    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType,
-    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse,
+from .group_0676 import (
+    WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
+    WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
+    WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType,
+    WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse,
 )
 
 
-class WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppType(TypedDict):
-    """App
-
-    GitHub apps are a new way to extend GitHub. They can be installed directly on
-    organizations and user accounts and granted access to specific repositories.
-    They come with granular permissions and built-in webhooks. GitHub apps are first
-    class actors within GitHub.
-    """
+class WebhookIssueCommentDeletedPropIssueMergedPerformedViaGithubAppType(TypedDict):
+    """WebhookIssueCommentDeletedPropIssueMergedPerformedViaGithubApp"""
 
     created_at: Union[_dt.datetime, None]
     description: Union[str, None]
@@ -39,26 +33,20 @@ class WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppType(Type
     name: str
     node_id: str
     owner: Union[
-        WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
+        WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
         None,
     ]
     permissions: NotRequired[
-        WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType
+        WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType
     ]
     slug: NotRequired[str]
     updated_at: Union[_dt.datetime, None]
 
 
-class WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppTypeForResponse(
+class WebhookIssueCommentDeletedPropIssueMergedPerformedViaGithubAppTypeForResponse(
     TypedDict
 ):
-    """App
-
-    GitHub apps are a new way to extend GitHub. They can be installed directly on
-    organizations and user accounts and granted access to specific repositories.
-    They come with granular permissions and built-in webhooks. GitHub apps are first
-    class actors within GitHub.
-    """
+    """WebhookIssueCommentDeletedPropIssueMergedPerformedViaGithubApp"""
 
     created_at: Union[str, None]
     description: Union[str, None]
@@ -69,17 +57,17 @@ class WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppTypeForRe
     name: str
     node_id: str
     owner: Union[
-        WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
+        WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
         None,
     ]
     permissions: NotRequired[
-        WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse
+        WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse
     ]
     slug: NotRequired[str]
     updated_at: Union[str, None]
 
 
 __all__ = (
-    "WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppType",
-    "WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppTypeForResponse",
+    "WebhookIssueCommentDeletedPropIssueMergedPerformedViaGithubAppType",
+    "WebhookIssueCommentDeletedPropIssueMergedPerformedViaGithubAppTypeForResponse",
 )

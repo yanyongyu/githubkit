@@ -9,128 +9,77 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0568 import UserRoleItemsType, UserRoleItemsTypeForResponse
 
-class PublicUserType(TypedDict):
-    """Public User
 
-    Public User
-    """
+class UserType(TypedDict):
+    """User"""
 
-    login: str
-    id: int
-    user_view_type: NotRequired[str]
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
-    url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
+    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
+    external_id: str
+    active: bool
+    user_name: str
+    name: NotRequired[UserNameType]
+    display_name: str
+    emails: list[UserEmailsItemsType]
+    roles: NotRequired[list[UserRoleItemsType]]
+
+
+class UserTypeForResponse(TypedDict):
+    """User"""
+
+    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
+    external_id: str
+    active: bool
+    user_name: str
+    name: NotRequired[UserNameTypeForResponse]
+    display_name: str
+    emails: list[UserEmailsItemsTypeForResponse]
+    roles: NotRequired[list[UserRoleItemsTypeForResponse]]
+
+
+class UserNameType(TypedDict):
+    """UserName"""
+
+    formatted: NotRequired[str]
+    family_name: str
+    given_name: str
+    middle_name: NotRequired[str]
+
+
+class UserNameTypeForResponse(TypedDict):
+    """UserName"""
+
+    formatted: NotRequired[str]
+    family_name: str
+    given_name: str
+    middle_name: NotRequired[str]
+
+
+class UserEmailsItemsType(TypedDict):
+    """UserEmailsItems"""
+
+    value: str
     type: str
-    site_admin: bool
-    name: Union[str, None]
-    company: Union[str, None]
-    blog: Union[str, None]
-    location: Union[str, None]
-    email: Union[str, None]
-    notification_email: NotRequired[Union[str, None]]
-    hireable: Union[bool, None]
-    bio: Union[str, None]
-    twitter_username: NotRequired[Union[str, None]]
-    public_repos: int
-    public_gists: int
-    followers: int
-    following: int
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    plan: NotRequired[PublicUserPropPlanType]
-    private_gists: NotRequired[int]
-    total_private_repos: NotRequired[int]
-    owned_private_repos: NotRequired[int]
-    disk_usage: NotRequired[int]
-    collaborators: NotRequired[int]
+    primary: bool
 
 
-class PublicUserTypeForResponse(TypedDict):
-    """Public User
+class UserEmailsItemsTypeForResponse(TypedDict):
+    """UserEmailsItems"""
 
-    Public User
-    """
-
-    login: str
-    id: int
-    user_view_type: NotRequired[str]
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
-    url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
+    value: str
     type: str
-    site_admin: bool
-    name: Union[str, None]
-    company: Union[str, None]
-    blog: Union[str, None]
-    location: Union[str, None]
-    email: Union[str, None]
-    notification_email: NotRequired[Union[str, None]]
-    hireable: Union[bool, None]
-    bio: Union[str, None]
-    twitter_username: NotRequired[Union[str, None]]
-    public_repos: int
-    public_gists: int
-    followers: int
-    following: int
-    created_at: str
-    updated_at: str
-    plan: NotRequired[PublicUserPropPlanTypeForResponse]
-    private_gists: NotRequired[int]
-    total_private_repos: NotRequired[int]
-    owned_private_repos: NotRequired[int]
-    disk_usage: NotRequired[int]
-    collaborators: NotRequired[int]
-
-
-class PublicUserPropPlanType(TypedDict):
-    """PublicUserPropPlan"""
-
-    collaborators: int
-    name: str
-    space: int
-    private_repos: int
-
-
-class PublicUserPropPlanTypeForResponse(TypedDict):
-    """PublicUserPropPlan"""
-
-    collaborators: int
-    name: str
-    space: int
-    private_repos: int
+    primary: bool
 
 
 __all__ = (
-    "PublicUserPropPlanType",
-    "PublicUserPropPlanTypeForResponse",
-    "PublicUserType",
-    "PublicUserTypeForResponse",
+    "UserEmailsItemsType",
+    "UserEmailsItemsTypeForResponse",
+    "UserNameType",
+    "UserNameTypeForResponse",
+    "UserType",
+    "UserTypeForResponse",
 )

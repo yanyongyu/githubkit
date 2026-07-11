@@ -18,7 +18,7 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropOwner(
+class WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropOwner(
     GitHubModel
 ):
     """User"""
@@ -47,11 +47,10 @@ class WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropOwn
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissions(
+class WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissions(
     GitHubModel
 ):
-    """WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissio
-    ns
+    """WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
 
     The set of permissions for the GitHub app
     """
@@ -98,13 +97,13 @@ class WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropPer
 
 
 model_rebuild(
-    WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropOwner
+    WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropOwner
 )
 model_rebuild(
-    WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
+    WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
 )
 
 __all__ = (
-    "WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropOwner",
-    "WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissions",
+    "WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropOwner",
+    "WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissions",
 )

@@ -11,19 +11,27 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0265 import CopilotSpace
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class UsersUsernameCopilotSpacesGetResponse200(GitHubModel):
-    """UsersUsernameCopilotSpacesGetResponse200"""
+class UserEmailsDeleteBodyOneof0(GitHubModel):
+    """UserEmailsDeleteBodyOneof0
 
-    spaces: list[CopilotSpace] = Field(
-        description="The list of Copilot Spaces on this page of results."
+    Deletes one or more email addresses from your GitHub account. Must contain at
+    least one email address. **Note:** Alternatively, you can pass a single email
+    address or an `array` of emails addresses directly, but we recommend that you
+    pass an object using the `emails` key.
+
+    Examples:
+        {'emails': ['octocat@github.com', 'mona@github.com']}
+    """
+
+    emails: list[str] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        description="Email addresses associated with the GitHub user account.",
     )
 
 
-model_rebuild(UsersUsernameCopilotSpacesGetResponse200)
+model_rebuild(UserEmailsDeleteBodyOneof0)
 
-__all__ = ("UsersUsernameCopilotSpacesGetResponse200",)
+__all__ = ("UserEmailsDeleteBodyOneof0",)

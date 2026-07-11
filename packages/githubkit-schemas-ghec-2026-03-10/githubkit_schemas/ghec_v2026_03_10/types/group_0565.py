@@ -9,78 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0247 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
-from .group_0564 import (
-    SearchResultTextMatchesItemsType,
-    SearchResultTextMatchesItemsTypeForResponse,
-)
+
+class GroupType(TypedDict):
+    """Group"""
+
+    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:Group"]]
+    external_id: str
+    display_name: str
+    members: NotRequired[list[GroupPropMembersItemsType]]
 
 
-class CodeSearchResultItemType(TypedDict):
-    """Code Search Result Item
+class GroupTypeForResponse(TypedDict):
+    """Group"""
 
-    Code Search Result Item
-    """
-
-    name: str
-    path: str
-    sha: str
-    url: str
-    git_url: str
-    html_url: str
-    repository: MinimalRepositoryType
-    score: float
-    file_size: NotRequired[int]
-    language: NotRequired[Union[str, None]]
-    last_modified_at: NotRequired[_dt.datetime]
-    line_numbers: NotRequired[list[str]]
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
+    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:Group"]]
+    external_id: str
+    display_name: str
+    members: NotRequired[list[GroupPropMembersItemsTypeForResponse]]
 
 
-class CodeSearchResultItemTypeForResponse(TypedDict):
-    """Code Search Result Item
+class GroupPropMembersItemsType(TypedDict):
+    """GroupPropMembersItems"""
 
-    Code Search Result Item
-    """
-
-    name: str
-    path: str
-    sha: str
-    url: str
-    git_url: str
-    html_url: str
-    repository: MinimalRepositoryTypeForResponse
-    score: float
-    file_size: NotRequired[int]
-    language: NotRequired[Union[str, None]]
-    last_modified_at: NotRequired[str]
-    line_numbers: NotRequired[list[str]]
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
+    value: str
+    display_name: str
 
 
-class SearchCodeGetResponse200Type(TypedDict):
-    """SearchCodeGetResponse200"""
+class GroupPropMembersItemsTypeForResponse(TypedDict):
+    """GroupPropMembersItems"""
 
-    total_count: int
-    incomplete_results: bool
-    items: list[CodeSearchResultItemType]
-
-
-class SearchCodeGetResponse200TypeForResponse(TypedDict):
-    """SearchCodeGetResponse200"""
-
-    total_count: int
-    incomplete_results: bool
-    items: list[CodeSearchResultItemTypeForResponse]
+    value: str
+    display_name: str
 
 
 __all__ = (
-    "CodeSearchResultItemType",
-    "CodeSearchResultItemTypeForResponse",
-    "SearchCodeGetResponse200Type",
-    "SearchCodeGetResponse200TypeForResponse",
+    "GroupPropMembersItemsType",
+    "GroupPropMembersItemsTypeForResponse",
+    "GroupType",
+    "GroupTypeForResponse",
 )

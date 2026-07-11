@@ -9,24 +9,90 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class ParticipationStatsType(TypedDict):
-    """Participation Stats"""
+class SecretScanningScanHistoryType(TypedDict):
+    """SecretScanningScanHistory"""
 
-    all_: list[int]
-    owner: list[int]
+    incremental_scans: NotRequired[list[SecretScanningScanType]]
+    pattern_update_scans: NotRequired[list[SecretScanningScanType]]
+    backfill_scans: NotRequired[list[SecretScanningScanType]]
+    custom_pattern_backfill_scans: NotRequired[
+        list[SecretScanningScanHistoryPropCustomPatternBackfillScansItemsType]
+    ]
+    generic_secrets_backfill_scans: NotRequired[list[SecretScanningScanType]]
 
 
-class ParticipationStatsTypeForResponse(TypedDict):
-    """Participation Stats"""
+class SecretScanningScanHistoryTypeForResponse(TypedDict):
+    """SecretScanningScanHistory"""
 
-    all_: list[int]
-    owner: list[int]
+    incremental_scans: NotRequired[list[SecretScanningScanTypeForResponse]]
+    pattern_update_scans: NotRequired[list[SecretScanningScanTypeForResponse]]
+    backfill_scans: NotRequired[list[SecretScanningScanTypeForResponse]]
+    custom_pattern_backfill_scans: NotRequired[
+        list[
+            SecretScanningScanHistoryPropCustomPatternBackfillScansItemsTypeForResponse
+        ]
+    ]
+    generic_secrets_backfill_scans: NotRequired[list[SecretScanningScanTypeForResponse]]
+
+
+class SecretScanningScanType(TypedDict):
+    """SecretScanningScan
+
+    Information on a single scan performed by secret scanning on the repository
+    """
+
+    type: NotRequired[str]
+    status: NotRequired[str]
+    completed_at: NotRequired[Union[_dt.datetime, None]]
+    started_at: NotRequired[Union[_dt.datetime, None]]
+
+
+class SecretScanningScanTypeForResponse(TypedDict):
+    """SecretScanningScan
+
+    Information on a single scan performed by secret scanning on the repository
+    """
+
+    type: NotRequired[str]
+    status: NotRequired[str]
+    completed_at: NotRequired[Union[str, None]]
+    started_at: NotRequired[Union[str, None]]
+
+
+class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsType(TypedDict):
+    """SecretScanningScanHistoryPropCustomPatternBackfillScansItems"""
+
+    type: NotRequired[str]
+    status: NotRequired[str]
+    completed_at: NotRequired[Union[_dt.datetime, None]]
+    started_at: NotRequired[Union[_dt.datetime, None]]
+    pattern_name: NotRequired[str]
+    pattern_scope: NotRequired[str]
+
+
+class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsTypeForResponse(
+    TypedDict
+):
+    """SecretScanningScanHistoryPropCustomPatternBackfillScansItems"""
+
+    type: NotRequired[str]
+    status: NotRequired[str]
+    completed_at: NotRequired[Union[str, None]]
+    started_at: NotRequired[Union[str, None]]
+    pattern_name: NotRequired[str]
+    pattern_scope: NotRequired[str]
 
 
 __all__ = (
-    "ParticipationStatsType",
-    "ParticipationStatsTypeForResponse",
+    "SecretScanningScanHistoryPropCustomPatternBackfillScansItemsType",
+    "SecretScanningScanHistoryPropCustomPatternBackfillScansItemsTypeForResponse",
+    "SecretScanningScanHistoryType",
+    "SecretScanningScanHistoryTypeForResponse",
+    "SecretScanningScanType",
+    "SecretScanningScanTypeForResponse",
 )

@@ -11,49 +11,22 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0115 import (
-    EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType,
-    EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameTypeForResponse,
-)
-from .group_0117 import (
-    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
-    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse,
-)
-from .group_0119 import (
-    RepositoryRulesetConditionsPropRefNameType,
-    RepositoryRulesetConditionsPropRefNameTypeForResponse,
-)
+
+class EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType(TypedDict):
+    """EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId"""
+
+    organization_ids: NotRequired[list[int]]
 
 
-class EnterpriseRulesetConditionsOneof0Type(TypedDict):
-    """organization_name_and_repository_name
+class EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdTypeForResponse(
+    TypedDict
+):
+    """EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId"""
 
-    Conditions to target organizations by name and all repositories
-    """
-
-    organization_name: (
-        EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType
-    )
-    repository_name: (
-        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
-    )
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
-
-
-class EnterpriseRulesetConditionsOneof0TypeForResponse(TypedDict):
-    """organization_name_and_repository_name
-
-    Conditions to target organizations by name and all repositories
-    """
-
-    organization_name: EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameTypeForResponse
-    repository_name: (
-        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse
-    )
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
+    organization_ids: NotRequired[list[int]]
 
 
 __all__ = (
-    "EnterpriseRulesetConditionsOneof0Type",
-    "EnterpriseRulesetConditionsOneof0TypeForResponse",
+    "EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType",
+    "EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdTypeForResponse",
 )

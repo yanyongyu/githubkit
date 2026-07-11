@@ -13,11 +13,11 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodeQualitySetupUpdateAnyof1Type(TypedDict):
-    """CodeQualitySetupUpdateAnyof1"""
+class CodeQualitySetupUpdateAnyof0Type(TypedDict):
+    """CodeQualitySetupUpdateAnyof0"""
 
-    state: NotRequired[Literal["configured", "not-configured"]]
-    runner_type: Literal["standard", "labeled"]
+    state: Literal["configured", "not-configured"]
+    runner_type: NotRequired[Literal["standard", "labeled"]]
     runner_label: NotRequired[Union[str, None]]
     languages: NotRequired[
         list[
@@ -28,11 +28,11 @@ class CodeQualitySetupUpdateAnyof1Type(TypedDict):
     ]
 
 
-class CodeQualitySetupUpdateAnyof1TypeForResponse(TypedDict):
-    """CodeQualitySetupUpdateAnyof1"""
+class CodeQualitySetupUpdateAnyof0TypeForResponse(TypedDict):
+    """CodeQualitySetupUpdateAnyof0"""
 
-    state: NotRequired[Literal["configured", "not-configured"]]
-    runner_type: Literal["standard", "labeled"]
+    state: Literal["configured", "not-configured"]
+    runner_type: NotRequired[Literal["standard", "labeled"]]
     runner_label: NotRequired[Union[str, None]]
     languages: NotRequired[
         list[
@@ -44,6 +44,6 @@ class CodeQualitySetupUpdateAnyof1TypeForResponse(TypedDict):
 
 
 __all__ = (
-    "CodeQualitySetupUpdateAnyof1Type",
-    "CodeQualitySetupUpdateAnyof1TypeForResponse",
+    "CodeQualitySetupUpdateAnyof0Type",
+    "CodeQualitySetupUpdateAnyof0TypeForResponse",
 )

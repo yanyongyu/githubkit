@@ -14,12 +14,12 @@ from typing import Literal, Union
 from typing_extensions import TypedDict
 
 from .group_0747 import (
-    WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreatorType,
-    WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
+    WebhookIssueCommentCreatedPropIssueAllof0PropMilestonePropCreatorType,
+    WebhookIssueCommentCreatedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
 )
 
 
-class WebhookIssueCommentDeletedPropIssueAllof0PropMilestoneType(TypedDict):
+class WebhookIssueCommentCreatedPropIssueAllof0PropMilestoneType(TypedDict):
     """Milestone
 
     A collection of related issues and pull requests.
@@ -29,7 +29,7 @@ class WebhookIssueCommentDeletedPropIssueAllof0PropMilestoneType(TypedDict):
     closed_issues: int
     created_at: _dt.datetime
     creator: Union[
-        WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreatorType, None
+        WebhookIssueCommentCreatedPropIssueAllof0PropMilestonePropCreatorType, None
     ]
     description: Union[str, None]
     due_on: Union[_dt.datetime, None]
@@ -45,7 +45,7 @@ class WebhookIssueCommentDeletedPropIssueAllof0PropMilestoneType(TypedDict):
     url: str
 
 
-class WebhookIssueCommentDeletedPropIssueAllof0PropMilestoneTypeForResponse(TypedDict):
+class WebhookIssueCommentCreatedPropIssueAllof0PropMilestoneTypeForResponse(TypedDict):
     """Milestone
 
     A collection of related issues and pull requests.
@@ -55,7 +55,7 @@ class WebhookIssueCommentDeletedPropIssueAllof0PropMilestoneTypeForResponse(Type
     closed_issues: int
     created_at: str
     creator: Union[
-        WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
+        WebhookIssueCommentCreatedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
         None,
     ]
     description: Union[str, None]
@@ -73,6 +73,6 @@ class WebhookIssueCommentDeletedPropIssueAllof0PropMilestoneTypeForResponse(Type
 
 
 __all__ = (
-    "WebhookIssueCommentDeletedPropIssueAllof0PropMilestoneType",
-    "WebhookIssueCommentDeletedPropIssueAllof0PropMilestoneTypeForResponse",
+    "WebhookIssueCommentCreatedPropIssueAllof0PropMilestoneType",
+    "WebhookIssueCommentCreatedPropIssueAllof0PropMilestoneTypeForResponse",
 )

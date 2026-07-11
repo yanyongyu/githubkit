@@ -9,73 +9,154 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0019 import LicenseSimpleType, LicenseSimpleTypeForResponse
 
+class TimelineCommittedEventType(TypedDict):
+    """Timeline Committed Event
 
-class LicenseContentType(TypedDict):
-    """License Content
-
-    License Content
+    Timeline Committed Event
     """
 
-    name: str
-    path: str
+    event: NotRequired[Literal["committed"]]
     sha: str
-    size: int
+    node_id: str
     url: str
-    html_url: Union[str, None]
-    git_url: Union[str, None]
-    download_url: Union[str, None]
-    type: str
-    content: str
-    encoding: str
-    links: LicenseContentPropLinksType
-    license_: Union[None, LicenseSimpleType]
+    author: TimelineCommittedEventPropAuthorType
+    committer: TimelineCommittedEventPropCommitterType
+    message: str
+    tree: TimelineCommittedEventPropTreeType
+    parents: list[TimelineCommittedEventPropParentsItemsType]
+    verification: TimelineCommittedEventPropVerificationType
+    html_url: str
 
 
-class LicenseContentTypeForResponse(TypedDict):
-    """License Content
+class TimelineCommittedEventTypeForResponse(TypedDict):
+    """Timeline Committed Event
 
-    License Content
+    Timeline Committed Event
     """
 
-    name: str
-    path: str
+    event: NotRequired[Literal["committed"]]
     sha: str
-    size: int
+    node_id: str
     url: str
-    html_url: Union[str, None]
-    git_url: Union[str, None]
-    download_url: Union[str, None]
-    type: str
-    content: str
-    encoding: str
-    links: LicenseContentPropLinksTypeForResponse
-    license_: Union[None, LicenseSimpleTypeForResponse]
+    author: TimelineCommittedEventPropAuthorTypeForResponse
+    committer: TimelineCommittedEventPropCommitterTypeForResponse
+    message: str
+    tree: TimelineCommittedEventPropTreeTypeForResponse
+    parents: list[TimelineCommittedEventPropParentsItemsTypeForResponse]
+    verification: TimelineCommittedEventPropVerificationTypeForResponse
+    html_url: str
 
 
-class LicenseContentPropLinksType(TypedDict):
-    """LicenseContentPropLinks"""
+class TimelineCommittedEventPropAuthorType(TypedDict):
+    """TimelineCommittedEventPropAuthor
 
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
+    Identifying information for the git-user
+    """
+
+    date: _dt.datetime
+    email: str
+    name: str
 
 
-class LicenseContentPropLinksTypeForResponse(TypedDict):
-    """LicenseContentPropLinks"""
+class TimelineCommittedEventPropAuthorTypeForResponse(TypedDict):
+    """TimelineCommittedEventPropAuthor
 
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
+    Identifying information for the git-user
+    """
+
+    date: str
+    email: str
+    name: str
+
+
+class TimelineCommittedEventPropCommitterType(TypedDict):
+    """TimelineCommittedEventPropCommitter
+
+    Identifying information for the git-user
+    """
+
+    date: _dt.datetime
+    email: str
+    name: str
+
+
+class TimelineCommittedEventPropCommitterTypeForResponse(TypedDict):
+    """TimelineCommittedEventPropCommitter
+
+    Identifying information for the git-user
+    """
+
+    date: str
+    email: str
+    name: str
+
+
+class TimelineCommittedEventPropTreeType(TypedDict):
+    """TimelineCommittedEventPropTree"""
+
+    sha: str
+    url: str
+
+
+class TimelineCommittedEventPropTreeTypeForResponse(TypedDict):
+    """TimelineCommittedEventPropTree"""
+
+    sha: str
+    url: str
+
+
+class TimelineCommittedEventPropParentsItemsType(TypedDict):
+    """TimelineCommittedEventPropParentsItems"""
+
+    sha: str
+    url: str
+    html_url: str
+
+
+class TimelineCommittedEventPropParentsItemsTypeForResponse(TypedDict):
+    """TimelineCommittedEventPropParentsItems"""
+
+    sha: str
+    url: str
+    html_url: str
+
+
+class TimelineCommittedEventPropVerificationType(TypedDict):
+    """TimelineCommittedEventPropVerification"""
+
+    verified: bool
+    reason: str
+    signature: Union[str, None]
+    payload: Union[str, None]
+    verified_at: Union[str, None]
+
+
+class TimelineCommittedEventPropVerificationTypeForResponse(TypedDict):
+    """TimelineCommittedEventPropVerification"""
+
+    verified: bool
+    reason: str
+    signature: Union[str, None]
+    payload: Union[str, None]
+    verified_at: Union[str, None]
 
 
 __all__ = (
-    "LicenseContentPropLinksType",
-    "LicenseContentPropLinksTypeForResponse",
-    "LicenseContentType",
-    "LicenseContentTypeForResponse",
+    "TimelineCommittedEventPropAuthorType",
+    "TimelineCommittedEventPropAuthorTypeForResponse",
+    "TimelineCommittedEventPropCommitterType",
+    "TimelineCommittedEventPropCommitterTypeForResponse",
+    "TimelineCommittedEventPropParentsItemsType",
+    "TimelineCommittedEventPropParentsItemsTypeForResponse",
+    "TimelineCommittedEventPropTreeType",
+    "TimelineCommittedEventPropTreeTypeForResponse",
+    "TimelineCommittedEventPropVerificationType",
+    "TimelineCommittedEventPropVerificationTypeForResponse",
+    "TimelineCommittedEventType",
+    "TimelineCommittedEventTypeForResponse",
 )

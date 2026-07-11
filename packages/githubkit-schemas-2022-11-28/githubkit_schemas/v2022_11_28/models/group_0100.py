@@ -28,6 +28,7 @@ class GetBudget(GitHubModel):
         "repository",
         "cost_center",
         "multi_user_customer",
+        "multi_user_cost_center",
         "user",
     ] = Field(description="The type of scope for the budget")
     budget_entity_name: str = Field(

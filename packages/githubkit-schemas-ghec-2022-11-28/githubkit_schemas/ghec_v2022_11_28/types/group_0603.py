@@ -9,153 +9,98 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksCommentType(TypedDict):
-    """WebhooksComment"""
+class WebhooksRuleType(TypedDict):
+    """branch protection rule
 
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
+    The branch protection rule. Includes a `name` and all the [branch protection
+    settings](https://docs.github.com/enterprise-cloud@latest/github/administering-
+    a-repository/defining-the-mergeability-of-pull-requests/about-protected-
+    branches#about-branch-protection-settings) applied to branches that match the
+    name. Binary settings are boolean. Multi-level configurations are one of `off`,
+    `non_admins`, or `everyone`. Actor and build lists are arrays of strings.
+    """
+
+    admin_enforced: bool
+    allow_deletions_enforcement_level: Literal["off", "non_admins", "everyone"]
+    allow_force_pushes_enforcement_level: Literal["off", "non_admins", "everyone"]
+    authorized_actor_names: list[str]
+    authorized_actors_only: bool
+    authorized_dismissal_actors_only: bool
+    create_protected: NotRequired[bool]
+    created_at: _dt.datetime
+    dismiss_stale_reviews_on_push: bool
+    id: int
+    ignore_approvals_from_contributors: bool
+    linear_history_requirement_enforcement_level: Literal[
+        "off", "non_admins", "everyone"
     ]
-    body: str
-    child_comment_count: int
+    lock_branch_enforcement_level: Literal["off", "non_admins", "everyone"]
+    lock_allows_fork_sync: NotRequired[bool]
+    merge_queue_enforcement_level: Literal["off", "non_admins", "everyone"]
+    name: str
+    pull_request_reviews_enforcement_level: Literal["off", "non_admins", "everyone"]
+    repository_id: int
+    require_code_owner_review: bool
+    require_last_push_approval: NotRequired[bool]
+    required_approving_review_count: int
+    required_conversation_resolution_level: Literal["off", "non_admins", "everyone"]
+    required_deployments_enforcement_level: Literal["off", "non_admins", "everyone"]
+    required_status_checks: list[str]
+    required_status_checks_enforcement_level: Literal["off", "non_admins", "everyone"]
+    signature_requirement_enforcement_level: Literal["off", "non_admins", "everyone"]
+    strict_required_status_checks_policy: bool
+    updated_at: _dt.datetime
+
+
+class WebhooksRuleTypeForResponse(TypedDict):
+    """branch protection rule
+
+    The branch protection rule. Includes a `name` and all the [branch protection
+    settings](https://docs.github.com/enterprise-cloud@latest/github/administering-
+    a-repository/defining-the-mergeability-of-pull-requests/about-protected-
+    branches#about-branch-protection-settings) applied to branches that match the
+    name. Binary settings are boolean. Multi-level configurations are one of `off`,
+    `non_admins`, or `everyone`. Actor and build lists are arrays of strings.
+    """
+
+    admin_enforced: bool
+    allow_deletions_enforcement_level: Literal["off", "non_admins", "everyone"]
+    allow_force_pushes_enforcement_level: Literal["off", "non_admins", "everyone"]
+    authorized_actor_names: list[str]
+    authorized_actors_only: bool
+    authorized_dismissal_actors_only: bool
+    create_protected: NotRequired[bool]
     created_at: str
-    discussion_id: int
-    html_url: str
+    dismiss_stale_reviews_on_push: bool
     id: int
-    node_id: str
-    parent_id: Union[int, None]
-    reactions: WebhooksCommentPropReactionsType
-    repository_url: str
-    updated_at: str
-    user: Union[WebhooksCommentPropUserType, None]
-
-
-class WebhooksCommentTypeForResponse(TypedDict):
-    """WebhooksComment"""
-
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
+    ignore_approvals_from_contributors: bool
+    linear_history_requirement_enforcement_level: Literal[
+        "off", "non_admins", "everyone"
     ]
-    body: str
-    child_comment_count: int
-    created_at: str
-    discussion_id: int
-    html_url: str
-    id: int
-    node_id: str
-    parent_id: Union[int, None]
-    reactions: WebhooksCommentPropReactionsTypeForResponse
-    repository_url: str
+    lock_branch_enforcement_level: Literal["off", "non_admins", "everyone"]
+    lock_allows_fork_sync: NotRequired[bool]
+    merge_queue_enforcement_level: Literal["off", "non_admins", "everyone"]
+    name: str
+    pull_request_reviews_enforcement_level: Literal["off", "non_admins", "everyone"]
+    repository_id: int
+    require_code_owner_review: bool
+    require_last_push_approval: NotRequired[bool]
+    required_approving_review_count: int
+    required_conversation_resolution_level: Literal["off", "non_admins", "everyone"]
+    required_deployments_enforcement_level: Literal["off", "non_admins", "everyone"]
+    required_status_checks: list[str]
+    required_status_checks_enforcement_level: Literal["off", "non_admins", "everyone"]
+    signature_requirement_enforcement_level: Literal["off", "non_admins", "everyone"]
+    strict_required_status_checks_policy: bool
     updated_at: str
-    user: Union[WebhooksCommentPropUserTypeForResponse, None]
-
-
-class WebhooksCommentPropReactionsType(TypedDict):
-    """Reactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
-
-
-class WebhooksCommentPropReactionsTypeForResponse(TypedDict):
-    """Reactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
-
-
-class WebhooksCommentPropUserType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhooksCommentPropUserTypeForResponse(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "WebhooksCommentPropReactionsType",
-    "WebhooksCommentPropReactionsTypeForResponse",
-    "WebhooksCommentPropUserType",
-    "WebhooksCommentPropUserTypeForResponse",
-    "WebhooksCommentType",
-    "WebhooksCommentTypeForResponse",
+    "WebhooksRuleType",
+    "WebhooksRuleTypeForResponse",
 )

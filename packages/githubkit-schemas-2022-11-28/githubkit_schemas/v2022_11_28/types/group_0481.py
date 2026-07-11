@@ -9,40 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class RepositorySubscriptionType(TypedDict):
-    """Repository Invitation
+class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1Type(TypedDict):
+    """SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1"""
 
-    Repository invitations let you manage who you collaborate with.
-    """
-
-    subscribed: bool
-    ignored: bool
-    reason: Union[str, None]
-    created_at: _dt.datetime
-    url: str
-    repository_url: str
+    pattern_name: NotRequired[str]
+    pattern_scope: NotRequired[str]
 
 
-class RepositorySubscriptionTypeForResponse(TypedDict):
-    """Repository Invitation
+class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1TypeForResponse(
+    TypedDict
+):
+    """SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1"""
 
-    Repository invitations let you manage who you collaborate with.
-    """
-
-    subscribed: bool
-    ignored: bool
-    reason: Union[str, None]
-    created_at: str
-    url: str
-    repository_url: str
+    pattern_name: NotRequired[str]
+    pattern_scope: NotRequired[str]
 
 
 __all__ = (
-    "RepositorySubscriptionType",
-    "RepositorySubscriptionTypeForResponse",
+    "SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1Type",
+    "SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1TypeForResponse",
 )

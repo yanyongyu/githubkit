@@ -19,12 +19,12 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0748 import (
-    WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
-    WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPermissions,
+    WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
+    WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropPermissions,
 )
 
 
-class WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubApp(GitHubModel):
+class WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubApp(GitHubModel):
     """App
 
     GitHub apps are a new way to extend GitHub. They can be installed directly on
@@ -44,11 +44,11 @@ class WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubApp(GitHubM
     name: str = Field(description="The name of the GitHub app")
     node_id: str = Field()
     owner: Union[
-        WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
+        WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
         None,
     ] = Field(title="User")
     permissions: Missing[
-        WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
+        WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
     ] = Field(default=UNSET, description="The set of permissions for the GitHub app")
     slug: Missing[str] = Field(
         default=UNSET, description="The slug name of the GitHub app"
@@ -56,6 +56,6 @@ class WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubApp(GitHubM
     updated_at: Union[_dt.datetime, None] = Field()
 
 
-model_rebuild(WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubApp)
+model_rebuild(WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubApp)
 
-__all__ = ("WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubApp",)
+__all__ = ("WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubApp",)

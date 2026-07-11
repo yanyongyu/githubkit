@@ -9,53 +9,64 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
-class LicenseType(TypedDict):
-    """License
 
-    License
+class GistCommentType(TypedDict):
+    """Gist Comment
+
+    A comment made to a gist.
     """
 
-    key: str
-    name: str
-    spdx_id: Union[str, None]
-    url: Union[str, None]
+    id: int
     node_id: str
-    html_url: str
-    description: str
-    implementation: str
-    permissions: list[str]
-    conditions: list[str]
-    limitations: list[str]
+    url: str
     body: str
-    featured: bool
+    user: Union[None, SimpleUserType]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
 
 
-class LicenseTypeForResponse(TypedDict):
-    """License
+class GistCommentTypeForResponse(TypedDict):
+    """Gist Comment
 
-    License
+    A comment made to a gist.
     """
 
-    key: str
-    name: str
-    spdx_id: Union[str, None]
-    url: Union[str, None]
+    id: int
     node_id: str
-    html_url: str
-    description: str
-    implementation: str
-    permissions: list[str]
-    conditions: list[str]
-    limitations: list[str]
+    url: str
     body: str
-    featured: bool
+    user: Union[None, SimpleUserTypeForResponse]
+    created_at: str
+    updated_at: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
 
 
 __all__ = (
-    "LicenseType",
-    "LicenseTypeForResponse",
+    "GistCommentType",
+    "GistCommentTypeForResponse",
 )

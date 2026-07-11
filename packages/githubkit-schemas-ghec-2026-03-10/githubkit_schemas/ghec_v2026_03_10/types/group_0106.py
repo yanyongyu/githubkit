@@ -9,53 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationCustomPropertyType(TypedDict):
-    """Custom Property for Organization
+class NetworkConfigurationType(TypedDict):
+    """Hosted compute network configuration
 
-    Custom property defined for an organization
+    A hosted compute network configuration.
     """
 
-    property_name: NotRequired[str]
-    url: NotRequired[str]
-    source_type: NotRequired[Literal["organization", "enterprise"]]
-    value_type: NotRequired[
-        Literal["string", "single_select", "multi_select", "true_false", "url"]
-    ]
-    required: NotRequired[bool]
-    default_value: NotRequired[Union[str, list[str], None]]
-    description: NotRequired[Union[str, None]]
-    allowed_values: NotRequired[Union[list[str], None]]
-    values_editable_by: NotRequired[
-        Union[None, Literal["enterprise_actors", "enterprise_and_org_actors"]]
-    ]
+    id: str
+    name: str
+    compute_service: NotRequired[Literal["none", "actions", "codespaces"]]
+    network_settings_ids: NotRequired[list[str]]
+    failover_network_settings_ids: NotRequired[list[str]]
+    failover_network_enabled: NotRequired[bool]
+    created_on: Union[_dt.datetime, None]
 
 
-class OrganizationCustomPropertyTypeForResponse(TypedDict):
-    """Custom Property for Organization
+class NetworkConfigurationTypeForResponse(TypedDict):
+    """Hosted compute network configuration
 
-    Custom property defined for an organization
+    A hosted compute network configuration.
     """
 
-    property_name: NotRequired[str]
-    url: NotRequired[str]
-    source_type: NotRequired[Literal["organization", "enterprise"]]
-    value_type: NotRequired[
-        Literal["string", "single_select", "multi_select", "true_false", "url"]
-    ]
-    required: NotRequired[bool]
-    default_value: NotRequired[Union[str, list[str], None]]
-    description: NotRequired[Union[str, None]]
-    allowed_values: NotRequired[Union[list[str], None]]
-    values_editable_by: NotRequired[
-        Union[None, Literal["enterprise_actors", "enterprise_and_org_actors"]]
-    ]
+    id: str
+    name: str
+    compute_service: NotRequired[Literal["none", "actions", "codespaces"]]
+    network_settings_ids: NotRequired[list[str]]
+    failover_network_settings_ids: NotRequired[list[str]]
+    failover_network_enabled: NotRequired[bool]
+    created_on: Union[str, None]
 
 
 __all__ = (
-    "OrganizationCustomPropertyType",
-    "OrganizationCustomPropertyTypeForResponse",
+    "NetworkConfigurationType",
+    "NetworkConfigurationTypeForResponse",
 )

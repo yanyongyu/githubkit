@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal
 
 from pydantic import Field
@@ -19,26 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrganizationActionsVariable(GitHubModel):
-    """Actions Variable for an Organization
+class SelfHostedRunnersSettings(GitHubModel):
+    """SelfHostedRunnersSettings"""
 
-    Organization variable for GitHub Actions.
-    """
-
-    name: str = Field(description="The name of the variable.")
-    value: str = Field(description="The value of the variable.")
-    created_at: _dt.datetime = Field(
-        description="The date and time at which the variable was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    enabled_repositories: Literal["all", "selected", "none"] = Field(
+        description="The policy that controls whether self-hosted runners can be used by repositories in the organization"
     )
-    updated_at: _dt.datetime = Field(
-        description="The date and time at which the variable was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    selected_repositories_url: Missing[str] = Field(
+        default=UNSET,
+        description="The URL to the endpoint for managing selected repositories for self-hosted runners in the organization",
     )
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="Visibility of a variable"
-    )
-    selected_repositories_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(OrganizationActionsVariable)
+model_rebuild(SelfHostedRunnersSettings)
 
-__all__ = ("OrganizationActionsVariable",)
+__all__ = ("SelfHostedRunnersSettings",)

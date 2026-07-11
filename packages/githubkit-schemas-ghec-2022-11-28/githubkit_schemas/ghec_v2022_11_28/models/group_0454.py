@@ -14,18 +14,20 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class InteractionLimitPullRequestBypassList(GitHubModel):
-    """Interaction Limits Pull Request Bypass List
+class CheckImmutableReleases(GitHubModel):
+    """Check immutable releases
 
-    A list of user logins to add or remove from the pull request creation cap bypass
-    list.
+    Check immutable releases
     """
 
-    users: list[str] = Field(
-        description="A list of user logins to add or remove from the bypass list."
+    enabled: bool = Field(
+        description="Whether immutable releases are enabled for the repository."
+    )
+    enforced_by_owner: bool = Field(
+        description="Whether immutable releases are enforced by the repository owner."
     )
 
 
-model_rebuild(InteractionLimitPullRequestBypassList)
+model_rebuild(CheckImmutableReleases)
 
-__all__ = ("InteractionLimitPullRequestBypassList",)
+__all__ = ("CheckImmutableReleases",)

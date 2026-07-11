@@ -18,36 +18,24 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgTeamsPostBody(GitHubModel):
-    """OrgsOrgTeamsPostBody"""
+class OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0(GitHubModel):
+    """OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0"""
 
-    name: str = Field(description="The name of the team.")
-    description: Missing[str] = Field(
-        default=UNSET, description="The description of the team."
+    type: Literal["Issue", "PullRequest"] = Field(
+        description="The type of item to add to the project. Must be either Issue or PullRequest."
     )
-    maintainers: Missing[list[str]] = Field(
-        default=UNSET,
-        description="List GitHub usernames for organization members who will become team maintainers.",
+    id: int = Field(
+        description="The unique identifier of the issue or pull request to add to the project."
     )
-    repo_names: Missing[list[str]] = Field(
-        default=UNSET,
-        description='The full name (e.g., "organization-name/repository-name") of repositories to add the team to.',
+    owner: Missing[str] = Field(
+        default=UNSET, description="The repository owner login."
     )
-    privacy: Missing[Literal["secret", "closed"]] = Field(
-        default=UNSET,
-        description="The level of privacy this team should have. The options are:  \n**For a non-nested team:**  \n * `secret` - only visible to organization owners and members of this team.  \n * `closed` - visible to all members of this organization.  \nDefault: `secret`  \n**For a parent or child team:**  \n * `closed` - visible to all members of this organization.  \nDefault for child team: `closed`",
-    )
-    notification_setting: Missing[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ] = Field(
-        default=UNSET,
-        description="The notification setting the team has chosen. The options are:  \n * `notifications_enabled` - team members receive notifications when the team is @mentioned.  \n * `notifications_disabled` - no one receives notifications.  \nDefault: `notifications_enabled`",
-    )
-    parent_team_id: Missing[int] = Field(
-        default=UNSET, description="The ID of a team to set as the parent team."
+    repo: Missing[str] = Field(default=UNSET, description="The repository name.")
+    number: Missing[int] = Field(
+        default=UNSET, description="The issue or pull request number."
     )
 
 
-model_rebuild(OrgsOrgTeamsPostBody)
+model_rebuild(OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0)
 
-__all__ = ("OrgsOrgTeamsPostBody",)
+__all__ = ("OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0",)

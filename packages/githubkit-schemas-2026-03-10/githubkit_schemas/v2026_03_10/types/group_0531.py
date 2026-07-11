@@ -9,110 +9,75 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0054 import PinnedIssueCommentType, PinnedIssueCommentTypeForResponse
-from .group_0055 import IssueCommentMinimizedType, IssueCommentMinimizedTypeForResponse
+
+class WebhooksApproverType(TypedDict):
+    """WebhooksApprover"""
+
+    avatar_url: NotRequired[str]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    login: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[str]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-class WebhooksIssueCommentType(TypedDict):
-    """issue comment
+class WebhooksApproverTypeForResponse(TypedDict):
+    """WebhooksApprover"""
 
-    The [comment](https://docs.github.com/rest/issues/comments#get-an-issue-comment)
-    itself.
-    """
+    avatar_url: NotRequired[str]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    login: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[str]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
+
+class WebhooksReviewersItemsType(TypedDict):
+    """WebhooksReviewersItems"""
+
+    reviewer: NotRequired[Union[WebhooksReviewersItemsPropReviewerType, None]]
+    type: NotRequired[Literal["User"]]
+
+
+class WebhooksReviewersItemsTypeForResponse(TypedDict):
+    """WebhooksReviewersItems"""
+
+    reviewer: NotRequired[
+        Union[WebhooksReviewersItemsPropReviewerTypeForResponse, None]
     ]
-    body: str
-    created_at: _dt.datetime
-    html_url: str
-    id: int
-    issue_url: str
-    node_id: str
-    performed_via_github_app: Union[IntegrationType, None]
-    reactions: WebhooksIssueCommentPropReactionsType
-    updated_at: _dt.datetime
-    url: str
-    user: Union[WebhooksIssueCommentPropUserType, None]
-    pin: NotRequired[Union[None, PinnedIssueCommentType]]
-    minimized: NotRequired[Union[None, IssueCommentMinimizedType]]
+    type: NotRequired[Literal["User"]]
 
 
-class WebhooksIssueCommentTypeForResponse(TypedDict):
-    """issue comment
-
-    The [comment](https://docs.github.com/rest/issues/comments#get-an-issue-comment)
-    itself.
-    """
-
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    body: str
-    created_at: str
-    html_url: str
-    id: int
-    issue_url: str
-    node_id: str
-    performed_via_github_app: Union[IntegrationTypeForResponse, None]
-    reactions: WebhooksIssueCommentPropReactionsTypeForResponse
-    updated_at: str
-    url: str
-    user: Union[WebhooksIssueCommentPropUserTypeForResponse, None]
-    pin: NotRequired[Union[None, PinnedIssueCommentTypeForResponse]]
-    minimized: NotRequired[Union[None, IssueCommentMinimizedTypeForResponse]]
-
-
-class WebhooksIssueCommentPropReactionsType(TypedDict):
-    """Reactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
-
-
-class WebhooksIssueCommentPropReactionsTypeForResponse(TypedDict):
-    """Reactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
-
-
-class WebhooksIssueCommentPropUserType(TypedDict):
+class WebhooksReviewersItemsPropReviewerType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -134,12 +99,11 @@ class WebhooksIssueCommentPropUserType(TypedDict):
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
-    user_view_type: NotRequired[str]
 
 
-class WebhooksIssueCommentPropUserTypeForResponse(TypedDict):
+class WebhooksReviewersItemsPropReviewerTypeForResponse(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -161,16 +125,15 @@ class WebhooksIssueCommentPropUserTypeForResponse(TypedDict):
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
-    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "WebhooksIssueCommentPropReactionsType",
-    "WebhooksIssueCommentPropReactionsTypeForResponse",
-    "WebhooksIssueCommentPropUserType",
-    "WebhooksIssueCommentPropUserTypeForResponse",
-    "WebhooksIssueCommentType",
-    "WebhooksIssueCommentTypeForResponse",
+    "WebhooksApproverType",
+    "WebhooksApproverTypeForResponse",
+    "WebhooksReviewersItemsPropReviewerType",
+    "WebhooksReviewersItemsPropReviewerTypeForResponse",
+    "WebhooksReviewersItemsType",
+    "WebhooksReviewersItemsTypeForResponse",
 )

@@ -12,29 +12,27 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class PullRequestMergeResultType(TypedDict):
-    """Pull Request Merge Result
+class PageBuildStatusType(TypedDict):
+    """Page Build Status
 
-    Pull Request Merge Result
+    Page Build Status
     """
 
-    sha: str
-    merged: bool
-    message: str
+    url: str
+    status: str
 
 
-class PullRequestMergeResultTypeForResponse(TypedDict):
-    """Pull Request Merge Result
+class PageBuildStatusTypeForResponse(TypedDict):
+    """Page Build Status
 
-    Pull Request Merge Result
+    Page Build Status
     """
 
-    sha: str
-    merged: bool
-    message: str
+    url: str
+    status: str
 
 
 __all__ = (
-    "PullRequestMergeResultType",
-    "PullRequestMergeResultTypeForResponse",
+    "PageBuildStatusType",
+    "PageBuildStatusTypeForResponse",
 )

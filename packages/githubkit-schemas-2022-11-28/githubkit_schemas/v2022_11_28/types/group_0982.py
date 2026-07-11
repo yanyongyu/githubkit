@@ -9,70 +9,83 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0Type(TypedDict):
-    """AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0
+class AgentsReposOwnerRepoTasksTaskIdGetResponse401Type(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse401
 
-    A GitHub user
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
     """
 
-    id: NotRequired[int]
+    message: str
+    errors: NotRequired[
+        list[AgentsReposOwnerRepoTasksTaskIdGetResponse401PropErrorsItemsType]
+    ]
+    documentation_url: str
 
 
-class AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0TypeForResponse(TypedDict):
-    """AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0
+class AgentsReposOwnerRepoTasksTaskIdGetResponse401TypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse401
 
-    A GitHub user
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
     """
 
-    id: NotRequired[int]
+    message: str
+    errors: NotRequired[
+        list[
+            AgentsReposOwnerRepoTasksTaskIdGetResponse401PropErrorsItemsTypeForResponse
+        ]
+    ]
+    documentation_url: str
 
 
-class AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsType(TypedDict):
-    """AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems
+class AgentsReposOwnerRepoTasksTaskIdGetResponse401PropErrorsItemsType(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse401PropErrorsItems
 
-    A GitHub user
+    A single validation error
     """
 
-    id: NotRequired[int]
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
 
 
-class AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsTypeForResponse(
+class AgentsReposOwnerRepoTasksTaskIdGetResponse401PropErrorsItemsTypeForResponse(
     TypedDict
 ):
-    """AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse401PropErrorsItems
 
-    A GitHub user
+    A single validation error
     """
 
-    id: NotRequired[int]
-
-
-class AgentsTasksTaskIdGetResponse200Allof0PropRepositoryType(TypedDict):
-    """AgentsTasksTaskIdGetResponse200Allof0PropRepository
-
-    The repository this task belongs to
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsTasksTaskIdGetResponse200Allof0PropRepositoryTypeForResponse(TypedDict):
-    """AgentsTasksTaskIdGetResponse200Allof0PropRepository
-
-    The repository this task belongs to
-    """
-
-    id: NotRequired[int]
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0Type",
-    "AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0TypeForResponse",
-    "AgentsTasksTaskIdGetResponse200Allof0PropRepositoryType",
-    "AgentsTasksTaskIdGetResponse200Allof0PropRepositoryTypeForResponse",
-    "AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsType",
-    "AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsTypeForResponse",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse401PropErrorsItemsType",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse401PropErrorsItemsTypeForResponse",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse401Type",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse401TypeForResponse",
 )

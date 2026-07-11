@@ -13,20 +13,20 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0588 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0589 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0590 import (
+from .group_0599 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0600 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0601 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0591 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0625 import PullRequestWebhookType, PullRequestWebhookTypeForResponse
+from .group_0602 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0636 import PullRequestWebhookType, PullRequestWebhookTypeForResponse
 
 
-class WebhookPullRequestReopenedType(TypedDict):
-    """pull_request reopened event"""
+class WebhookPullRequestClosedType(TypedDict):
+    """pull_request closed event"""
 
-    action: Literal["reopened"]
+    action: Literal["closed"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     number: int
@@ -36,10 +36,10 @@ class WebhookPullRequestReopenedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookPullRequestReopenedTypeForResponse(TypedDict):
-    """pull_request reopened event"""
+class WebhookPullRequestClosedTypeForResponse(TypedDict):
+    """pull_request closed event"""
 
-    action: Literal["reopened"]
+    action: Literal["closed"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     number: int
@@ -50,6 +50,6 @@ class WebhookPullRequestReopenedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookPullRequestReopenedType",
-    "WebhookPullRequestReopenedTypeForResponse",
+    "WebhookPullRequestClosedType",
+    "WebhookPullRequestClosedTypeForResponse",
 )

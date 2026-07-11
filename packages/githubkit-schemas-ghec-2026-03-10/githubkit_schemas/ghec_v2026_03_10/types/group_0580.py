@@ -9,44 +9,68 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0575 import (
+    SearchResultTextMatchesItemsType,
+    SearchResultTextMatchesItemsTypeForResponse,
+)
 
-class KeyType(TypedDict):
-    """Key
 
-    Key
+class LabelSearchResultItemType(TypedDict):
+    """Label Search Result Item
+
+    Label Search Result Item
     """
 
-    key: str
     id: int
+    node_id: str
     url: str
-    title: str
-    created_at: _dt.datetime
-    verified: bool
-    read_only: bool
-    last_used: NotRequired[Union[_dt.datetime, None]]
+    name: str
+    color: str
+    default: bool
+    description: Union[str, None]
+    score: float
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
 
 
-class KeyTypeForResponse(TypedDict):
-    """Key
+class LabelSearchResultItemTypeForResponse(TypedDict):
+    """Label Search Result Item
 
-    Key
+    Label Search Result Item
     """
 
-    key: str
     id: int
+    node_id: str
     url: str
-    title: str
-    created_at: str
-    verified: bool
-    read_only: bool
-    last_used: NotRequired[Union[str, None]]
+    name: str
+    color: str
+    default: bool
+    description: Union[str, None]
+    score: float
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
+
+
+class SearchLabelsGetResponse200Type(TypedDict):
+    """SearchLabelsGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[LabelSearchResultItemType]
+
+
+class SearchLabelsGetResponse200TypeForResponse(TypedDict):
+    """SearchLabelsGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[LabelSearchResultItemTypeForResponse]
 
 
 __all__ = (
-    "KeyType",
-    "KeyTypeForResponse",
+    "LabelSearchResultItemType",
+    "LabelSearchResultItemTypeForResponse",
+    "SearchLabelsGetResponse200Type",
+    "SearchLabelsGetResponse200TypeForResponse",
 )

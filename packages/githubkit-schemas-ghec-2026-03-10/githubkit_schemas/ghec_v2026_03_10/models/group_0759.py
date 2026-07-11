@@ -18,7 +18,7 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwner(
+class WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropOwner(
     GitHubModel
 ):
     """User"""
@@ -47,10 +47,11 @@ class WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwner
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissions(
+class WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPermissions(
     GitHubModel
 ):
-    """WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
+    """WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPermission
+    s
 
     The set of permissions for the GitHub app
     """
@@ -74,9 +75,7 @@ class WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermi
     organization_hooks: Missing[Literal["read", "write"]] = Field(default=UNSET)
     organization_packages: Missing[Literal["read", "write"]] = Field(default=UNSET)
     organization_plan: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    organization_projects: Missing[Literal["read", "write", "admin"]] = Field(
-        default=UNSET
-    )
+    organization_projects: Missing[Literal["read", "write"]] = Field(default=UNSET)
     organization_secrets: Missing[Literal["read", "write"]] = Field(default=UNSET)
     organization_self_hosted_runners: Missing[Literal["read", "write"]] = Field(
         default=UNSET
@@ -98,13 +97,13 @@ class WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermi
 
 
 model_rebuild(
-    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwner
+    WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropOwner
 )
 model_rebuild(
-    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
+    WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
 )
 
 __all__ = (
-    "WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwner",
-    "WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissions",
+    "WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropOwner",
+    "WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPermissions",
 )

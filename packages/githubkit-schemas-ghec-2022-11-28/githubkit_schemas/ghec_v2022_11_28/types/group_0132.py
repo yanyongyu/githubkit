@@ -9,89 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0122 import (
+    RepositoryRulesetConditionsPropRefNameType,
+    RepositoryRulesetConditionsPropRefNameTypeForResponse,
+)
+from .group_0124 import (
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse,
+)
+from .group_0126 import (
+    EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType,
+    EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdTypeForResponse,
+)
 
 
-class RepositoryRuleCreationType(TypedDict):
-    """creation
+class EnterpriseRulesetConditionsOneof3Type(TypedDict):
+    """organization_id_and_repository_property
 
-    Only allow users with bypass permission to create matching refs.
+    Conditions to target organization by id and repositories by property
     """
 
-    type: Literal["creation"]
+    organization_id: (
+        EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType
+    )
+    repository_property: (
+        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
+    )
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
 
 
-class RepositoryRuleCreationTypeForResponse(TypedDict):
-    """creation
+class EnterpriseRulesetConditionsOneof3TypeForResponse(TypedDict):
+    """organization_id_and_repository_property
 
-    Only allow users with bypass permission to create matching refs.
+    Conditions to target organization by id and repositories by property
     """
 
-    type: Literal["creation"]
-
-
-class RepositoryRuleDeletionType(TypedDict):
-    """deletion
-
-    Only allow users with bypass permissions to delete matching refs.
-    """
-
-    type: Literal["deletion"]
-
-
-class RepositoryRuleDeletionTypeForResponse(TypedDict):
-    """deletion
-
-    Only allow users with bypass permissions to delete matching refs.
-    """
-
-    type: Literal["deletion"]
-
-
-class RepositoryRuleRequiredSignaturesType(TypedDict):
-    """required_signatures
-
-    Commits pushed to matching refs must have verified signatures.
-    """
-
-    type: Literal["required_signatures"]
-
-
-class RepositoryRuleRequiredSignaturesTypeForResponse(TypedDict):
-    """required_signatures
-
-    Commits pushed to matching refs must have verified signatures.
-    """
-
-    type: Literal["required_signatures"]
-
-
-class RepositoryRuleNonFastForwardType(TypedDict):
-    """non_fast_forward
-
-    Prevent users with push access from force pushing to refs.
-    """
-
-    type: Literal["non_fast_forward"]
-
-
-class RepositoryRuleNonFastForwardTypeForResponse(TypedDict):
-    """non_fast_forward
-
-    Prevent users with push access from force pushing to refs.
-    """
-
-    type: Literal["non_fast_forward"]
+    organization_id: (
+        EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdTypeForResponse
+    )
+    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
 
 
 __all__ = (
-    "RepositoryRuleCreationType",
-    "RepositoryRuleCreationTypeForResponse",
-    "RepositoryRuleDeletionType",
-    "RepositoryRuleDeletionTypeForResponse",
-    "RepositoryRuleNonFastForwardType",
-    "RepositoryRuleNonFastForwardTypeForResponse",
-    "RepositoryRuleRequiredSignaturesType",
-    "RepositoryRuleRequiredSignaturesTypeForResponse",
+    "EnterpriseRulesetConditionsOneof3Type",
+    "EnterpriseRulesetConditionsOneof3TypeForResponse",
 )

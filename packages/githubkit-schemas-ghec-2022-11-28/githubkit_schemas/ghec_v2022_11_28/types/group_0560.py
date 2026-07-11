@@ -9,45 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0558 import (
-    UserEmailsResponseItemsType,
-    UserEmailsResponseItemsTypeForResponse,
-    UserNameResponseType,
-    UserNameResponseTypeForResponse,
-)
-from .group_0559 import UserRoleItemsType, UserRoleItemsTypeForResponse
+from typing_extensions import TypedDict
 
 
-class UserResponseType(TypedDict):
-    """UserResponse"""
+class ContentTrafficType(TypedDict):
+    """Content Traffic
 
-    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
-    external_id: NotRequired[Union[str, None]]
-    active: bool
-    user_name: NotRequired[str]
-    name: NotRequired[UserNameResponseType]
-    display_name: NotRequired[Union[str, None]]
-    emails: list[UserEmailsResponseItemsType]
-    roles: NotRequired[list[UserRoleItemsType]]
+    Content Traffic
+    """
+
+    path: str
+    title: str
+    count: int
+    uniques: int
 
 
-class UserResponseTypeForResponse(TypedDict):
-    """UserResponse"""
+class ContentTrafficTypeForResponse(TypedDict):
+    """Content Traffic
 
-    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
-    external_id: NotRequired[Union[str, None]]
-    active: bool
-    user_name: NotRequired[str]
-    name: NotRequired[UserNameResponseTypeForResponse]
-    display_name: NotRequired[Union[str, None]]
-    emails: list[UserEmailsResponseItemsTypeForResponse]
-    roles: NotRequired[list[UserRoleItemsTypeForResponse]]
+    Content Traffic
+    """
+
+    path: str
+    title: str
+    count: int
+    uniques: int
 
 
 __all__ = (
-    "UserResponseType",
-    "UserResponseTypeForResponse",
+    "ContentTrafficType",
+    "ContentTrafficTypeForResponse",
 )

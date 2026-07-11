@@ -12,17 +12,18 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0275 import ActionsSecret
-
-
-class ReposOwnerRepoAgentsSecretsGetResponse200(GitHubModel):
-    """ReposOwnerRepoAgentsSecretsGetResponse200"""
-
-    total_count: int = Field()
-    secrets: list[ActionsSecret] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(ReposOwnerRepoAgentsSecretsGetResponse200)
+class ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody(GitHubModel):
+    """ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody"""
 
-__all__ = ("ReposOwnerRepoAgentsSecretsGetResponse200",)
+    enable_debug_logging: Missing[bool] = Field(
+        default=UNSET, description="Whether to enable debug logging for the re-run."
+    )
+
+
+model_rebuild(ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody)
+
+__all__ = ("ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody",)

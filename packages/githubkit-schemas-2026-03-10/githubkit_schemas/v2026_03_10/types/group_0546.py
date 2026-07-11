@@ -9,40 +9,87 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksProjectColumnType(TypedDict):
-    """Project Column"""
+class WebhooksPreviousMarketplacePurchaseType(TypedDict):
+    """Marketplace Purchase"""
 
-    after_id: NotRequired[Union[int, None]]
-    cards_url: str
-    created_at: _dt.datetime
+    account: WebhooksPreviousMarketplacePurchasePropAccountType
+    billing_cycle: str
+    free_trial_ends_on: None
+    next_billing_date: NotRequired[Union[str, None]]
+    on_free_trial: bool
+    plan: WebhooksPreviousMarketplacePurchasePropPlanType
+    unit_count: int
+
+
+class WebhooksPreviousMarketplacePurchaseTypeForResponse(TypedDict):
+    """Marketplace Purchase"""
+
+    account: WebhooksPreviousMarketplacePurchasePropAccountTypeForResponse
+    billing_cycle: str
+    free_trial_ends_on: None
+    next_billing_date: NotRequired[Union[str, None]]
+    on_free_trial: bool
+    plan: WebhooksPreviousMarketplacePurchasePropPlanTypeForResponse
+    unit_count: int
+
+
+class WebhooksPreviousMarketplacePurchasePropAccountType(TypedDict):
+    """WebhooksPreviousMarketplacePurchasePropAccount"""
+
     id: int
-    name: str
+    login: str
     node_id: str
-    project_url: str
-    updated_at: _dt.datetime
-    url: str
+    organization_billing_email: Union[str, None]
+    type: str
 
 
-class WebhooksProjectColumnTypeForResponse(TypedDict):
-    """Project Column"""
+class WebhooksPreviousMarketplacePurchasePropAccountTypeForResponse(TypedDict):
+    """WebhooksPreviousMarketplacePurchasePropAccount"""
 
-    after_id: NotRequired[Union[int, None]]
-    cards_url: str
-    created_at: str
     id: int
-    name: str
+    login: str
     node_id: str
-    project_url: str
-    updated_at: str
-    url: str
+    organization_billing_email: Union[str, None]
+    type: str
+
+
+class WebhooksPreviousMarketplacePurchasePropPlanType(TypedDict):
+    """WebhooksPreviousMarketplacePurchasePropPlan"""
+
+    bullets: list[str]
+    description: str
+    has_free_trial: bool
+    id: int
+    monthly_price_in_cents: int
+    name: str
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
+    unit_name: Union[str, None]
+    yearly_price_in_cents: int
+
+
+class WebhooksPreviousMarketplacePurchasePropPlanTypeForResponse(TypedDict):
+    """WebhooksPreviousMarketplacePurchasePropPlan"""
+
+    bullets: list[str]
+    description: str
+    has_free_trial: bool
+    id: int
+    monthly_price_in_cents: int
+    name: str
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
+    unit_name: Union[str, None]
+    yearly_price_in_cents: int
 
 
 __all__ = (
-    "WebhooksProjectColumnType",
-    "WebhooksProjectColumnTypeForResponse",
+    "WebhooksPreviousMarketplacePurchasePropAccountType",
+    "WebhooksPreviousMarketplacePurchasePropAccountTypeForResponse",
+    "WebhooksPreviousMarketplacePurchasePropPlanType",
+    "WebhooksPreviousMarketplacePurchasePropPlanTypeForResponse",
+    "WebhooksPreviousMarketplacePurchaseType",
+    "WebhooksPreviousMarketplacePurchaseTypeForResponse",
 )

@@ -13,8 +13,8 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class AgentsTasksTaskIdGetResponse422Type(TypedDict):
-    """AgentsTasksTaskIdGetResponse422
+class AgentsTasksGetResponse422Type(TypedDict):
+    """AgentsTasksGetResponse422
 
     Structured error response following GitHub REST API conventions.
     For 422 Unprocessable Entity the errors array contains validation
@@ -23,12 +23,12 @@ class AgentsTasksTaskIdGetResponse422Type(TypedDict):
     """
 
     message: str
-    errors: NotRequired[list[AgentsTasksTaskIdGetResponse422PropErrorsItemsType]]
+    errors: NotRequired[list[AgentsTasksGetResponse422PropErrorsItemsType]]
     documentation_url: str
 
 
-class AgentsTasksTaskIdGetResponse422TypeForResponse(TypedDict):
-    """AgentsTasksTaskIdGetResponse422
+class AgentsTasksGetResponse422TypeForResponse(TypedDict):
+    """AgentsTasksGetResponse422
 
     Structured error response following GitHub REST API conventions.
     For 422 Unprocessable Entity the errors array contains validation
@@ -37,14 +37,12 @@ class AgentsTasksTaskIdGetResponse422TypeForResponse(TypedDict):
     """
 
     message: str
-    errors: NotRequired[
-        list[AgentsTasksTaskIdGetResponse422PropErrorsItemsTypeForResponse]
-    ]
+    errors: NotRequired[list[AgentsTasksGetResponse422PropErrorsItemsTypeForResponse]]
     documentation_url: str
 
 
-class AgentsTasksTaskIdGetResponse422PropErrorsItemsType(TypedDict):
-    """AgentsTasksTaskIdGetResponse422PropErrorsItems
+class AgentsTasksGetResponse422PropErrorsItemsType(TypedDict):
+    """AgentsTasksGetResponse422PropErrorsItems
 
     A single validation error
     """
@@ -60,8 +58,8 @@ class AgentsTasksTaskIdGetResponse422PropErrorsItemsType(TypedDict):
     message: NotRequired[str]
 
 
-class AgentsTasksTaskIdGetResponse422PropErrorsItemsTypeForResponse(TypedDict):
-    """AgentsTasksTaskIdGetResponse422PropErrorsItems
+class AgentsTasksGetResponse422PropErrorsItemsTypeForResponse(TypedDict):
+    """AgentsTasksGetResponse422PropErrorsItems
 
     A single validation error
     """
@@ -78,8 +76,8 @@ class AgentsTasksTaskIdGetResponse422PropErrorsItemsTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "AgentsTasksTaskIdGetResponse422PropErrorsItemsType",
-    "AgentsTasksTaskIdGetResponse422PropErrorsItemsTypeForResponse",
-    "AgentsTasksTaskIdGetResponse422Type",
-    "AgentsTasksTaskIdGetResponse422TypeForResponse",
+    "AgentsTasksGetResponse422PropErrorsItemsType",
+    "AgentsTasksGetResponse422PropErrorsItemsTypeForResponse",
+    "AgentsTasksGetResponse422Type",
+    "AgentsTasksGetResponse422TypeForResponse",
 )

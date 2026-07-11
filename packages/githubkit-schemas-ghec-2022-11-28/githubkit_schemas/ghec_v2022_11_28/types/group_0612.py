@@ -13,7 +13,7 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksUserMannequinType(TypedDict):
+class WebhooksUserType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -35,12 +35,12 @@ class WebhooksUserMannequinType(TypedDict):
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
     user_view_type: NotRequired[str]
 
 
-class WebhooksUserMannequinTypeForResponse(TypedDict):
+class WebhooksUserTypeForResponse(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -62,12 +62,12 @@ class WebhooksUserMannequinTypeForResponse(TypedDict):
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
     user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "WebhooksUserMannequinType",
-    "WebhooksUserMannequinTypeForResponse",
+    "WebhooksUserType",
+    "WebhooksUserTypeForResponse",
 )

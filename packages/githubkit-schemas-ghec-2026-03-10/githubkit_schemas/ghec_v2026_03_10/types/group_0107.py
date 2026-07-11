@@ -9,27 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationCustomPropertyAllof1Type(TypedDict):
-    """OrganizationCustomPropertyAllof1"""
+class NetworkSettingsType(TypedDict):
+    """Hosted compute network settings resource
 
-    values_editable_by: NotRequired[
-        Union[None, Literal["enterprise_actors", "enterprise_and_org_actors"]]
-    ]
+    A hosted compute network settings resource.
+    """
+
+    id: str
+    network_configuration_id: NotRequired[str]
+    name: str
+    subnet_id: str
+    region: str
 
 
-class OrganizationCustomPropertyAllof1TypeForResponse(TypedDict):
-    """OrganizationCustomPropertyAllof1"""
+class NetworkSettingsTypeForResponse(TypedDict):
+    """Hosted compute network settings resource
 
-    values_editable_by: NotRequired[
-        Union[None, Literal["enterprise_actors", "enterprise_and_org_actors"]]
-    ]
+    A hosted compute network settings resource.
+    """
+
+    id: str
+    network_configuration_id: NotRequired[str]
+    name: str
+    subnet_id: str
+    region: str
 
 
 __all__ = (
-    "OrganizationCustomPropertyAllof1Type",
-    "OrganizationCustomPropertyAllof1TypeForResponse",
+    "NetworkSettingsType",
+    "NetworkSettingsTypeForResponse",
 )

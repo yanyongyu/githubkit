@@ -9,50 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0458 import IssueReferenceType, IssueReferenceTypeForResponse
 
 
-class TimelineUnassignedIssueEventType(TypedDict):
-    """Timeline Unassigned Issue Event
+class BlockingRemovedIssueEventType(TypedDict):
+    """Blocking Removed Issue Event
 
-    Timeline Unassigned Issue Event
+    Blocking Removed Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["unassigned"]
+    event: str
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    assignee: SimpleUserType
+    blocking: Union[None, IssueReferenceType, None]
 
 
-class TimelineUnassignedIssueEventTypeForResponse(TypedDict):
-    """Timeline Unassigned Issue Event
+class BlockingRemovedIssueEventTypeForResponse(TypedDict):
+    """Blocking Removed Issue Event
 
-    Timeline Unassigned Issue Event
+    Blocking Removed Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserTypeForResponse
-    event: Literal["unassigned"]
+    event: str
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    assignee: SimpleUserTypeForResponse
+    blocking: Union[None, IssueReferenceTypeForResponse, None]
 
 
 __all__ = (
-    "TimelineUnassignedIssueEventType",
-    "TimelineUnassignedIssueEventTypeForResponse",
+    "BlockingRemovedIssueEventType",
+    "BlockingRemovedIssueEventTypeForResponse",
 )

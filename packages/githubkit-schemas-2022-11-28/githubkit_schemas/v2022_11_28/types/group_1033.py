@@ -9,63 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Any, TypeAlias
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationsOrgSettingsBillingBudgetsPostBodyType(TypedDict):
-    """OrganizationsOrgSettingsBillingBudgetsPostBody"""
+class GistsGistIdPatchBodyType(TypedDict):
+    """GistsGistIdPatchBody"""
 
-    budget_amount: NotRequired[int]
-    prevent_further_usage: NotRequired[bool]
-    budget_alerting: NotRequired[
-        OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlertingType
-    ]
-    budget_scope: NotRequired[
-        Literal["organization", "repository", "multi_user_customer", "user"]
-    ]
-    budget_entity_name: NotRequired[str]
-    budget_type: NotRequired[Literal["BundlePricing", "ProductPricing", "SkuPricing"]]
-    budget_product_sku: NotRequired[str]
-    user: NotRequired[str]
+    description: NotRequired[str]
+    files: NotRequired[GistsGistIdPatchBodyPropFilesType]
 
 
-class OrganizationsOrgSettingsBillingBudgetsPostBodyTypeForResponse(TypedDict):
-    """OrganizationsOrgSettingsBillingBudgetsPostBody"""
+class GistsGistIdPatchBodyTypeForResponse(TypedDict):
+    """GistsGistIdPatchBody"""
 
-    budget_amount: NotRequired[int]
-    prevent_further_usage: NotRequired[bool]
-    budget_alerting: NotRequired[
-        OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlertingTypeForResponse
-    ]
-    budget_scope: NotRequired[
-        Literal["organization", "repository", "multi_user_customer", "user"]
-    ]
-    budget_entity_name: NotRequired[str]
-    budget_type: NotRequired[Literal["BundlePricing", "ProductPricing", "SkuPricing"]]
-    budget_product_sku: NotRequired[str]
-    user: NotRequired[str]
+    description: NotRequired[str]
+    files: NotRequired[GistsGistIdPatchBodyPropFilesTypeForResponse]
 
 
-class OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlertingType(TypedDict):
-    """OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlerting"""
+GistsGistIdPatchBodyPropFilesType: TypeAlias = dict[str, Any]
+"""GistsGistIdPatchBodyPropFiles
 
-    will_alert: NotRequired[bool]
-    alert_recipients: NotRequired[list[str]]
+The gist files to be updated, renamed, or deleted. Each `key` must match the
+current filename
+(including extension) of the targeted gist file. For example: `hello.py`.
+
+To delete a file, set the whole file to null. For example: `hello.py : null`.
+The file will also be
+deleted if the specified object does not contain at least one of `content` or
+`filename`.
+
+Examples:
+    {'hello.rb': {'content': 'blah', 'filename': 'goodbye.rb'}}
+"""
 
 
-class OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlertingTypeForResponse(
-    TypedDict
-):
-    """OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlerting"""
+GistsGistIdPatchBodyPropFilesTypeForResponse: TypeAlias = dict[str, Any]
+"""GistsGistIdPatchBodyPropFiles
 
-    will_alert: NotRequired[bool]
-    alert_recipients: NotRequired[list[str]]
+The gist files to be updated, renamed, or deleted. Each `key` must match the
+current filename
+(including extension) of the targeted gist file. For example: `hello.py`.
+
+To delete a file, set the whole file to null. For example: `hello.py : null`.
+The file will also be
+deleted if the specified object does not contain at least one of `content` or
+`filename`.
+
+Examples:
+    {'hello.rb': {'content': 'blah', 'filename': 'goodbye.rb'}}
+"""
 
 
 __all__ = (
-    "OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlertingType",
-    "OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlertingTypeForResponse",
-    "OrganizationsOrgSettingsBillingBudgetsPostBodyType",
-    "OrganizationsOrgSettingsBillingBudgetsPostBodyTypeForResponse",
+    "GistsGistIdPatchBodyPropFilesType",
+    "GistsGistIdPatchBodyPropFilesTypeForResponse",
+    "GistsGistIdPatchBodyType",
+    "GistsGistIdPatchBodyTypeForResponse",
 )

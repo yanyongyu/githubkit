@@ -9,134 +9,99 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0092 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0299 import GitUserType, GitUserTypeForResponse
+from .group_0495 import (
+    SearchResultTextMatchesItemsType,
+    SearchResultTextMatchesItemsTypeForResponse,
+)
+from .group_0498 import (
+    CommitSearchResultItemPropCommitType,
+    CommitSearchResultItemPropCommitTypeForResponse,
+)
 
-class PrivateUserType(TypedDict):
-    """Private User
 
-    Private User
+class CommitSearchResultItemType(TypedDict):
+    """Commit Search Result Item
+
+    Commit Search Result Item
     """
 
-    login: str
-    id: int
-    user_view_type: NotRequired[str]
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
     url: str
+    sha: str
     html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    name: Union[str, None]
-    company: Union[str, None]
-    blog: Union[str, None]
-    location: Union[str, None]
-    email: Union[str, None]
-    notification_email: NotRequired[Union[str, None]]
-    hireable: Union[bool, None]
-    bio: Union[str, None]
-    twitter_username: NotRequired[Union[str, None]]
-    public_repos: int
-    public_gists: int
-    followers: int
-    following: int
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    private_gists: int
-    total_private_repos: int
-    owned_private_repos: int
-    disk_usage: int
-    collaborators: int
-    two_factor_authentication: bool
-    plan: NotRequired[PrivateUserPropPlanType]
-    business_plus: NotRequired[bool]
-    ldap_dn: NotRequired[str]
+    comments_url: str
+    commit: CommitSearchResultItemPropCommitType
+    author: Union[None, SimpleUserType]
+    committer: Union[None, GitUserType]
+    parents: list[CommitSearchResultItemPropParentsItemsType]
+    repository: MinimalRepositoryType
+    score: float
+    node_id: str
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
 
 
-class PrivateUserTypeForResponse(TypedDict):
-    """Private User
+class CommitSearchResultItemTypeForResponse(TypedDict):
+    """Commit Search Result Item
 
-    Private User
+    Commit Search Result Item
     """
 
-    login: str
-    id: int
-    user_view_type: NotRequired[str]
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
     url: str
+    sha: str
     html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    name: Union[str, None]
-    company: Union[str, None]
-    blog: Union[str, None]
-    location: Union[str, None]
-    email: Union[str, None]
-    notification_email: NotRequired[Union[str, None]]
-    hireable: Union[bool, None]
-    bio: Union[str, None]
-    twitter_username: NotRequired[Union[str, None]]
-    public_repos: int
-    public_gists: int
-    followers: int
-    following: int
-    created_at: str
-    updated_at: str
-    private_gists: int
-    total_private_repos: int
-    owned_private_repos: int
-    disk_usage: int
-    collaborators: int
-    two_factor_authentication: bool
-    plan: NotRequired[PrivateUserPropPlanTypeForResponse]
-    business_plus: NotRequired[bool]
-    ldap_dn: NotRequired[str]
+    comments_url: str
+    commit: CommitSearchResultItemPropCommitTypeForResponse
+    author: Union[None, SimpleUserTypeForResponse]
+    committer: Union[None, GitUserTypeForResponse]
+    parents: list[CommitSearchResultItemPropParentsItemsTypeForResponse]
+    repository: MinimalRepositoryTypeForResponse
+    score: float
+    node_id: str
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
 
 
-class PrivateUserPropPlanType(TypedDict):
-    """PrivateUserPropPlan"""
+class CommitSearchResultItemPropParentsItemsType(TypedDict):
+    """CommitSearchResultItemPropParentsItems"""
 
-    collaborators: int
-    name: str
-    space: int
-    private_repos: int
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    sha: NotRequired[str]
 
 
-class PrivateUserPropPlanTypeForResponse(TypedDict):
-    """PrivateUserPropPlan"""
+class CommitSearchResultItemPropParentsItemsTypeForResponse(TypedDict):
+    """CommitSearchResultItemPropParentsItems"""
 
-    collaborators: int
-    name: str
-    space: int
-    private_repos: int
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    sha: NotRequired[str]
+
+
+class SearchCommitsGetResponse200Type(TypedDict):
+    """SearchCommitsGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[CommitSearchResultItemType]
+
+
+class SearchCommitsGetResponse200TypeForResponse(TypedDict):
+    """SearchCommitsGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[CommitSearchResultItemTypeForResponse]
 
 
 __all__ = (
-    "PrivateUserPropPlanType",
-    "PrivateUserPropPlanTypeForResponse",
-    "PrivateUserType",
-    "PrivateUserTypeForResponse",
+    "CommitSearchResultItemPropParentsItemsType",
+    "CommitSearchResultItemPropParentsItemsTypeForResponse",
+    "CommitSearchResultItemType",
+    "CommitSearchResultItemTypeForResponse",
+    "SearchCommitsGetResponse200Type",
+    "SearchCommitsGetResponse200TypeForResponse",
 )

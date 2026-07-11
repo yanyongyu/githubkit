@@ -9,69 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0076 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
+from typing_extensions import TypedDict
 
 
-class IssueReferenceType(TypedDict):
-    """Issue Reference
+class PorterAuthorType(TypedDict):
+    """Porter Author
 
-    A minimal reference to an issue linked from a timeline event (e.g. sub-issue,
-    parent-issue, or dependency events).
-    """
-
-    number: int
-    title: str
-    state: str
-    state_reason: NotRequired[Union[str, None]]
-    repository: SimpleRepositoryType
-    issue_type: Union[IssueReferencePropIssueTypeType, None]
-
-
-class IssueReferenceTypeForResponse(TypedDict):
-    """Issue Reference
-
-    A minimal reference to an issue linked from a timeline event (e.g. sub-issue,
-    parent-issue, or dependency events).
-    """
-
-    number: int
-    title: str
-    state: str
-    state_reason: NotRequired[Union[str, None]]
-    repository: SimpleRepositoryTypeForResponse
-    issue_type: Union[IssueReferencePropIssueTypeTypeForResponse, None]
-
-
-class IssueReferencePropIssueTypeType(TypedDict):
-    """Issue Type
-
-    The type of the referenced issue.
+    Porter Author
     """
 
     id: int
-    node_id: str
+    remote_id: str
+    remote_name: str
+    email: str
     name: str
-    color: NotRequired[Union[str, None]]
+    url: str
+    import_url: str
 
 
-class IssueReferencePropIssueTypeTypeForResponse(TypedDict):
-    """Issue Type
+class PorterAuthorTypeForResponse(TypedDict):
+    """Porter Author
 
-    The type of the referenced issue.
+    Porter Author
     """
 
     id: int
-    node_id: str
+    remote_id: str
+    remote_name: str
+    email: str
     name: str
-    color: NotRequired[Union[str, None]]
+    url: str
+    import_url: str
 
 
 __all__ = (
-    "IssueReferencePropIssueTypeType",
-    "IssueReferencePropIssueTypeTypeForResponse",
-    "IssueReferenceType",
-    "IssueReferenceTypeForResponse",
+    "PorterAuthorType",
+    "PorterAuthorTypeForResponse",
 )

@@ -10,63 +10,121 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodeQualitySetupType(TypedDict):
-    """CodeQualitySetup
+class CodeQualityFindingType(TypedDict):
+    """CodeQualityFinding
 
-    Configuration for code quality setup.
+    Code quality finding
     """
 
-    state: NotRequired[Literal["configured", "not-configured"]]
-    languages: NotRequired[
-        list[
-            Literal[
-                "csharp",
-                "go",
-                "java-kotlin",
-                "javascript-typescript",
-                "python",
-                "ruby",
-                "rust",
-            ]
-        ]
-    ]
-    runner_type: NotRequired[Union[None, Literal["standard", "labeled"]]]
-    runner_label: NotRequired[Union[str, None]]
-    updated_at: NotRequired[Union[_dt.datetime, None]]
-    schedule: NotRequired[Union[None, Literal["weekly"]]]
+    number: int
+    state: Literal["open", "dismissed"]
+    url: str
+    rule: CodeQualityFindingRuleType
+    location: CodeQualityFindingLocationType
+    message: CodeQualityFindingMessageType
+    created_at: NotRequired[_dt.datetime]
 
 
-class CodeQualitySetupTypeForResponse(TypedDict):
-    """CodeQualitySetup
+class CodeQualityFindingTypeForResponse(TypedDict):
+    """CodeQualityFinding
 
-    Configuration for code quality setup.
+    Code quality finding
     """
 
-    state: NotRequired[Literal["configured", "not-configured"]]
-    languages: NotRequired[
-        list[
-            Literal[
-                "csharp",
-                "go",
-                "java-kotlin",
-                "javascript-typescript",
-                "python",
-                "ruby",
-                "rust",
-            ]
-        ]
-    ]
-    runner_type: NotRequired[Union[None, Literal["standard", "labeled"]]]
-    runner_label: NotRequired[Union[str, None]]
-    updated_at: NotRequired[Union[str, None]]
-    schedule: NotRequired[Union[None, Literal["weekly"]]]
+    number: int
+    state: Literal["open", "dismissed"]
+    url: str
+    rule: CodeQualityFindingRuleTypeForResponse
+    location: CodeQualityFindingLocationTypeForResponse
+    message: CodeQualityFindingMessageTypeForResponse
+    created_at: NotRequired[str]
+
+
+class CodeQualityFindingRuleType(TypedDict):
+    """CodeQualityFindingRule
+
+    Code quality rule
+    """
+
+    id: str
+    title: str
+    description: str
+    help_: NotRequired[str]
+    severity: Literal["error", "warning", "note", "none"]
+    category: Literal["none", "maintainability", "reliability"]
+
+
+class CodeQualityFindingRuleTypeForResponse(TypedDict):
+    """CodeQualityFindingRule
+
+    Code quality rule
+    """
+
+    id: str
+    title: str
+    description: str
+    help_: NotRequired[str]
+    severity: Literal["error", "warning", "note", "none"]
+    category: Literal["none", "maintainability", "reliability"]
+
+
+class CodeQualityFindingLocationType(TypedDict):
+    """CodeQualityFindingLocation
+
+    Code quality file location
+    """
+
+    path: str
+    start_line: NotRequired[int]
+    start_column: NotRequired[int]
+    end_line: NotRequired[int]
+    end_column: NotRequired[int]
+
+
+class CodeQualityFindingLocationTypeForResponse(TypedDict):
+    """CodeQualityFindingLocation
+
+    Code quality file location
+    """
+
+    path: str
+    start_line: NotRequired[int]
+    start_column: NotRequired[int]
+    end_line: NotRequired[int]
+    end_column: NotRequired[int]
+
+
+class CodeQualityFindingMessageType(TypedDict):
+    """CodeQualityFindingMessage
+
+    Code quality finding message
+    """
+
+    text: str
+    markdown: str
+
+
+class CodeQualityFindingMessageTypeForResponse(TypedDict):
+    """CodeQualityFindingMessage
+
+    Code quality finding message
+    """
+
+    text: str
+    markdown: str
 
 
 __all__ = (
-    "CodeQualitySetupType",
-    "CodeQualitySetupTypeForResponse",
+    "CodeQualityFindingLocationType",
+    "CodeQualityFindingLocationTypeForResponse",
+    "CodeQualityFindingMessageType",
+    "CodeQualityFindingMessageTypeForResponse",
+    "CodeQualityFindingRuleType",
+    "CodeQualityFindingRuleTypeForResponse",
+    "CodeQualityFindingType",
+    "CodeQualityFindingTypeForResponse",
 )

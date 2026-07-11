@@ -14,33 +14,22 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPullsPullNumberPatchBody(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberPatchBody"""
+class ReposOwnerRepoPagesPutBodyPropSourceAnyof1(GitHubModel):
+    """ReposOwnerRepoPagesPutBodyPropSourceAnyof1
 
-    title: Missing[str] = Field(
-        default=UNSET, description="The title of the pull request."
+    Update the source for the repository. Must include the branch name and path.
+    """
+
+    branch: str = Field(
+        description="The repository branch used to publish your site's source files."
     )
-    body: Missing[str] = Field(
-        default=UNSET, description="The contents of the pull request."
-    )
-    state: Missing[Literal["open", "closed"]] = Field(
-        default=UNSET,
-        description="State of this Pull Request. Either `open` or `closed`.",
-    )
-    base: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the branch you want your changes pulled into. This should be an existing branch on the current repository. You cannot update the base branch on a pull request to point to another repository.",
-    )
-    maintainer_can_modify: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether [maintainers can modify](https://docs.github.com/articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork/) the pull request.",
+    path: Literal["/", "/docs"] = Field(
+        description="The repository directory that includes the source files for the Pages site. Allowed paths are `/` or `/docs`."
     )
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberPatchBody)
+model_rebuild(ReposOwnerRepoPagesPutBodyPropSourceAnyof1)
 
-__all__ = ("ReposOwnerRepoPullsPullNumberPatchBody",)
+__all__ = ("ReposOwnerRepoPagesPutBodyPropSourceAnyof1",)

@@ -14,19 +14,21 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class WebhooksWorkflowJobRun(GitHubModel):
-    """WebhooksWorkflowJobRun"""
+class SimpleInstallation(GitHubModel):
+    """Simple Installation
 
-    conclusion: None = Field()
-    created_at: str = Field()
-    environment: str = Field()
-    html_url: str = Field()
-    id: int = Field()
-    name: None = Field()
-    status: str = Field()
-    updated_at: str = Field()
+    The GitHub App installation. Webhook payloads contain the `installation`
+    property when the event is configured
+    for and sent to a GitHub App. For more information,
+    see "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-
+    cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-
+    with-github-apps)."
+    """
+
+    id: int = Field(description="The ID of the installation.")
+    node_id: str = Field(description="The global node ID of the installation.")
 
 
-model_rebuild(WebhooksWorkflowJobRun)
+model_rebuild(SimpleInstallation)
 
-__all__ = ("WebhooksWorkflowJobRun",)
+__all__ = ("SimpleInstallation",)

@@ -13,7 +13,7 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreatorType(TypedDict):
+class WebhookIssueCommentCreatedPropIssueAllof0PropMilestonePropCreatorType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -40,7 +40,7 @@ class WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreatorType(Type
     user_view_type: NotRequired[str]
 
 
-class WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreatorTypeForResponse(
+class WebhookIssueCommentCreatedPropIssueAllof0PropMilestonePropCreatorTypeForResponse(
     TypedDict
 ):
     """User"""
@@ -70,6 +70,6 @@ class WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreatorTypeForRe
 
 
 __all__ = (
-    "WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreatorType",
-    "WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreatorTypeForResponse",
+    "WebhookIssueCommentCreatedPropIssueAllof0PropMilestonePropCreatorType",
+    "WebhookIssueCommentCreatedPropIssueAllof0PropMilestonePropCreatorTypeForResponse",
 )

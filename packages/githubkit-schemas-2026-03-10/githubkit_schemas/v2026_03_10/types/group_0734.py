@@ -13,47 +13,99 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0514 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0515 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0516 import (
+from .group_0522 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0523 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0524 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0517 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0534 import WebhooksMilestoneType, WebhooksMilestoneTypeForResponse
+from .group_0525 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0536 import WebhooksLabelType, WebhooksLabelTypeForResponse
 from .group_0735 import (
-    WebhookIssuesMilestonedPropIssueType,
-    WebhookIssuesMilestonedPropIssueTypeForResponse,
+    WebhookIssuesEditedPropIssueType,
+    WebhookIssuesEditedPropIssueTypeForResponse,
 )
 
 
-class WebhookIssuesMilestonedType(TypedDict):
-    """issues milestoned event"""
+class WebhookIssuesEditedType(TypedDict):
+    """issues edited event"""
 
-    action: Literal["milestoned"]
+    action: Literal["edited"]
+    changes: WebhookIssuesEditedPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssuesMilestonedPropIssueType
-    milestone: WebhooksMilestoneType
+    issue: WebhookIssuesEditedPropIssueType
+    label: NotRequired[WebhooksLabelType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookIssuesMilestonedTypeForResponse(TypedDict):
-    """issues milestoned event"""
+class WebhookIssuesEditedTypeForResponse(TypedDict):
+    """issues edited event"""
 
-    action: Literal["milestoned"]
+    action: Literal["edited"]
+    changes: WebhookIssuesEditedPropChangesTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhookIssuesMilestonedPropIssueTypeForResponse
-    milestone: WebhooksMilestoneTypeForResponse
+    issue: WebhookIssuesEditedPropIssueTypeForResponse
+    label: NotRequired[WebhooksLabelTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
+class WebhookIssuesEditedPropChangesType(TypedDict):
+    """WebhookIssuesEditedPropChanges
+
+    The changes to the issue.
+    """
+
+    body: NotRequired[WebhookIssuesEditedPropChangesPropBodyType]
+    title: NotRequired[WebhookIssuesEditedPropChangesPropTitleType]
+
+
+class WebhookIssuesEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookIssuesEditedPropChanges
+
+    The changes to the issue.
+    """
+
+    body: NotRequired[WebhookIssuesEditedPropChangesPropBodyTypeForResponse]
+    title: NotRequired[WebhookIssuesEditedPropChangesPropTitleTypeForResponse]
+
+
+class WebhookIssuesEditedPropChangesPropBodyType(TypedDict):
+    """WebhookIssuesEditedPropChangesPropBody"""
+
+    from_: str
+
+
+class WebhookIssuesEditedPropChangesPropBodyTypeForResponse(TypedDict):
+    """WebhookIssuesEditedPropChangesPropBody"""
+
+    from_: str
+
+
+class WebhookIssuesEditedPropChangesPropTitleType(TypedDict):
+    """WebhookIssuesEditedPropChangesPropTitle"""
+
+    from_: str
+
+
+class WebhookIssuesEditedPropChangesPropTitleTypeForResponse(TypedDict):
+    """WebhookIssuesEditedPropChangesPropTitle"""
+
+    from_: str
+
+
 __all__ = (
-    "WebhookIssuesMilestonedType",
-    "WebhookIssuesMilestonedTypeForResponse",
+    "WebhookIssuesEditedPropChangesPropBodyType",
+    "WebhookIssuesEditedPropChangesPropBodyTypeForResponse",
+    "WebhookIssuesEditedPropChangesPropTitleType",
+    "WebhookIssuesEditedPropChangesPropTitleTypeForResponse",
+    "WebhookIssuesEditedPropChangesType",
+    "WebhookIssuesEditedPropChangesTypeForResponse",
+    "WebhookIssuesEditedType",
+    "WebhookIssuesEditedTypeForResponse",
 )

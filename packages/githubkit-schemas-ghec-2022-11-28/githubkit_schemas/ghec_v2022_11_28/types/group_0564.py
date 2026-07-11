@@ -12,74 +12,32 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0559 import UserRoleItemsType, UserRoleItemsTypeForResponse
+
+class MetaType(TypedDict):
+    """Meta
+
+    The metadata associated with the creation/updates to the user.
+    """
+
+    resource_type: Literal["User", "Group"]
+    created: NotRequired[str]
+    last_modified: NotRequired[str]
+    location: NotRequired[str]
 
 
-class UserType(TypedDict):
-    """User"""
+class MetaTypeForResponse(TypedDict):
+    """Meta
 
-    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
-    external_id: str
-    active: bool
-    user_name: str
-    name: NotRequired[UserNameType]
-    display_name: str
-    emails: list[UserEmailsItemsType]
-    roles: NotRequired[list[UserRoleItemsType]]
+    The metadata associated with the creation/updates to the user.
+    """
 
-
-class UserTypeForResponse(TypedDict):
-    """User"""
-
-    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
-    external_id: str
-    active: bool
-    user_name: str
-    name: NotRequired[UserNameTypeForResponse]
-    display_name: str
-    emails: list[UserEmailsItemsTypeForResponse]
-    roles: NotRequired[list[UserRoleItemsTypeForResponse]]
-
-
-class UserNameType(TypedDict):
-    """UserName"""
-
-    formatted: NotRequired[str]
-    family_name: str
-    given_name: str
-    middle_name: NotRequired[str]
-
-
-class UserNameTypeForResponse(TypedDict):
-    """UserName"""
-
-    formatted: NotRequired[str]
-    family_name: str
-    given_name: str
-    middle_name: NotRequired[str]
-
-
-class UserEmailsItemsType(TypedDict):
-    """UserEmailsItems"""
-
-    value: str
-    type: str
-    primary: bool
-
-
-class UserEmailsItemsTypeForResponse(TypedDict):
-    """UserEmailsItems"""
-
-    value: str
-    type: str
-    primary: bool
+    resource_type: Literal["User", "Group"]
+    created: NotRequired[str]
+    last_modified: NotRequired[str]
+    location: NotRequired[str]
 
 
 __all__ = (
-    "UserEmailsItemsType",
-    "UserEmailsItemsTypeForResponse",
-    "UserNameType",
-    "UserNameTypeForResponse",
-    "UserType",
-    "UserTypeForResponse",
+    "MetaType",
+    "MetaTypeForResponse",
 )

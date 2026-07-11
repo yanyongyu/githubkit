@@ -13,130 +13,74 @@ import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0092 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0497 import (
+    SearchResultTextMatchesItemsType,
+    SearchResultTextMatchesItemsTypeForResponse,
+)
 
-class PrivateUserType(TypedDict):
-    """Private User
 
-    Private User
+class CodeSearchResultItemType(TypedDict):
+    """Code Search Result Item
+
+    Code Search Result Item
     """
 
-    login: str
-    id: int
-    user_view_type: NotRequired[str]
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
+    name: str
+    path: str
+    sha: str
     url: str
+    git_url: str
     html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    name: Union[str, None]
-    company: Union[str, None]
-    blog: Union[str, None]
-    location: Union[str, None]
-    email: Union[str, None]
-    notification_email: NotRequired[Union[str, None]]
-    hireable: Union[bool, None]
-    bio: Union[str, None]
-    twitter_username: NotRequired[Union[str, None]]
-    public_repos: int
-    public_gists: int
-    followers: int
-    following: int
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    private_gists: int
-    total_private_repos: int
-    owned_private_repos: int
-    disk_usage: int
-    collaborators: int
-    two_factor_authentication: bool
-    plan: NotRequired[PrivateUserPropPlanType]
-    business_plus: NotRequired[bool]
-    ldap_dn: NotRequired[str]
+    repository: MinimalRepositoryType
+    score: float
+    file_size: NotRequired[int]
+    language: NotRequired[Union[str, None]]
+    last_modified_at: NotRequired[_dt.datetime]
+    line_numbers: NotRequired[list[str]]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
 
 
-class PrivateUserTypeForResponse(TypedDict):
-    """Private User
+class CodeSearchResultItemTypeForResponse(TypedDict):
+    """Code Search Result Item
 
-    Private User
+    Code Search Result Item
     """
 
-    login: str
-    id: int
-    user_view_type: NotRequired[str]
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
+    name: str
+    path: str
+    sha: str
     url: str
+    git_url: str
     html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    name: Union[str, None]
-    company: Union[str, None]
-    blog: Union[str, None]
-    location: Union[str, None]
-    email: Union[str, None]
-    notification_email: NotRequired[Union[str, None]]
-    hireable: Union[bool, None]
-    bio: Union[str, None]
-    twitter_username: NotRequired[Union[str, None]]
-    public_repos: int
-    public_gists: int
-    followers: int
-    following: int
-    created_at: str
-    updated_at: str
-    private_gists: int
-    total_private_repos: int
-    owned_private_repos: int
-    disk_usage: int
-    collaborators: int
-    two_factor_authentication: bool
-    plan: NotRequired[PrivateUserPropPlanTypeForResponse]
-    business_plus: NotRequired[bool]
-    ldap_dn: NotRequired[str]
+    repository: MinimalRepositoryTypeForResponse
+    score: float
+    file_size: NotRequired[int]
+    language: NotRequired[Union[str, None]]
+    last_modified_at: NotRequired[str]
+    line_numbers: NotRequired[list[str]]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
 
 
-class PrivateUserPropPlanType(TypedDict):
-    """PrivateUserPropPlan"""
+class SearchCodeGetResponse200Type(TypedDict):
+    """SearchCodeGetResponse200"""
 
-    collaborators: int
-    name: str
-    space: int
-    private_repos: int
+    total_count: int
+    incomplete_results: bool
+    items: list[CodeSearchResultItemType]
 
 
-class PrivateUserPropPlanTypeForResponse(TypedDict):
-    """PrivateUserPropPlan"""
+class SearchCodeGetResponse200TypeForResponse(TypedDict):
+    """SearchCodeGetResponse200"""
 
-    collaborators: int
-    name: str
-    space: int
-    private_repos: int
+    total_count: int
+    incomplete_results: bool
+    items: list[CodeSearchResultItemTypeForResponse]
 
 
 __all__ = (
-    "PrivateUserPropPlanType",
-    "PrivateUserPropPlanTypeForResponse",
-    "PrivateUserType",
-    "PrivateUserTypeForResponse",
+    "CodeSearchResultItemType",
+    "CodeSearchResultItemTypeForResponse",
+    "SearchCodeGetResponse200Type",
+    "SearchCodeGetResponse200TypeForResponse",
 )

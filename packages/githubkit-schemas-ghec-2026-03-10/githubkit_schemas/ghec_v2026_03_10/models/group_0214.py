@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,33 +18,56 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class IssuePropLabelsItemsOneof1(GitHubModel):
-    """IssuePropLabelsItemsOneof1"""
-
-    id: Missing[int] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    description: Missing[Union[str, None]] = Field(default=UNSET)
-    color: Missing[Union[str, None]] = Field(default=UNSET)
-    default: Missing[bool] = Field(default=UNSET)
+from .group_0003 import SimpleUser
+from .group_0010 import Integration
+from .group_0210 import ReactionRollup
+from .group_0212 import PinnedIssueComment
+from .group_0213 import IssueCommentMinimized
 
 
-class IssuePropPullRequest(GitHubModel):
-    """IssuePropPullRequest"""
+class IssueComment(GitHubModel):
+    """Issue Comment
 
-    merged_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
-    diff_url: Union[str, None] = Field()
-    html_url: Union[str, None] = Field()
-    patch_url: Union[str, None] = Field()
-    url: Union[str, None] = Field()
+    Comments provide a way for people to collaborate on an issue.
+    """
+
+    id: int = Field(description="Unique identifier of the issue comment")
+    node_id: str = Field()
+    url: str = Field(description="URL for the issue comment")
+    body: Missing[str] = Field(
+        default=UNSET, description="Contents of the issue comment"
+    )
+    body_text: Missing[str] = Field(default=UNSET)
+    body_html: Missing[str] = Field(default=UNSET)
+    html_url: str = Field()
+    user: Union[None, SimpleUser] = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    issue_url: str = Field()
+    author_association: Missing[
+        Literal[
+            "COLLABORATOR",
+            "CONTRIBUTOR",
+            "FIRST_TIMER",
+            "FIRST_TIME_CONTRIBUTOR",
+            "MANNEQUIN",
+            "MEMBER",
+            "NONE",
+            "OWNER",
+        ]
+    ] = Field(
+        default=UNSET,
+        title="author_association",
+        description="How the author is associated with the repository.",
+    )
+    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
+        default=UNSET
+    )
+    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
+    pin: Missing[Union[None, PinnedIssueComment]] = Field(default=UNSET)
+    minimized: Missing[Union[None, IssueCommentMinimized]] = Field(default=UNSET)
 
 
-model_rebuild(IssuePropLabelsItemsOneof1)
-model_rebuild(IssuePropPullRequest)
+model_rebuild(IssueComment)
 
-__all__ = (
-    "IssuePropLabelsItemsOneof1",
-    "IssuePropPullRequest",
-)
+__all__ = ("IssueComment",)

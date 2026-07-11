@@ -9,28 +9,90 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class TopicType(TypedDict):
-    """Topic
+class SecretScanningScanHistoryType(TypedDict):
+    """SecretScanningScanHistory"""
 
-    A topic aggregates entities that are related to a subject.
+    incremental_scans: NotRequired[list[SecretScanningScanType]]
+    pattern_update_scans: NotRequired[list[SecretScanningScanType]]
+    backfill_scans: NotRequired[list[SecretScanningScanType]]
+    custom_pattern_backfill_scans: NotRequired[
+        list[SecretScanningScanHistoryPropCustomPatternBackfillScansItemsType]
+    ]
+    generic_secrets_backfill_scans: NotRequired[list[SecretScanningScanType]]
+
+
+class SecretScanningScanHistoryTypeForResponse(TypedDict):
+    """SecretScanningScanHistory"""
+
+    incremental_scans: NotRequired[list[SecretScanningScanTypeForResponse]]
+    pattern_update_scans: NotRequired[list[SecretScanningScanTypeForResponse]]
+    backfill_scans: NotRequired[list[SecretScanningScanTypeForResponse]]
+    custom_pattern_backfill_scans: NotRequired[
+        list[
+            SecretScanningScanHistoryPropCustomPatternBackfillScansItemsTypeForResponse
+        ]
+    ]
+    generic_secrets_backfill_scans: NotRequired[list[SecretScanningScanTypeForResponse]]
+
+
+class SecretScanningScanType(TypedDict):
+    """SecretScanningScan
+
+    Information on a single scan performed by secret scanning on the repository
     """
 
-    names: list[str]
+    type: NotRequired[str]
+    status: NotRequired[str]
+    completed_at: NotRequired[Union[_dt.datetime, None]]
+    started_at: NotRequired[Union[_dt.datetime, None]]
 
 
-class TopicTypeForResponse(TypedDict):
-    """Topic
+class SecretScanningScanTypeForResponse(TypedDict):
+    """SecretScanningScan
 
-    A topic aggregates entities that are related to a subject.
+    Information on a single scan performed by secret scanning on the repository
     """
 
-    names: list[str]
+    type: NotRequired[str]
+    status: NotRequired[str]
+    completed_at: NotRequired[Union[str, None]]
+    started_at: NotRequired[Union[str, None]]
+
+
+class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsType(TypedDict):
+    """SecretScanningScanHistoryPropCustomPatternBackfillScansItems"""
+
+    type: NotRequired[str]
+    status: NotRequired[str]
+    completed_at: NotRequired[Union[_dt.datetime, None]]
+    started_at: NotRequired[Union[_dt.datetime, None]]
+    pattern_name: NotRequired[str]
+    pattern_scope: NotRequired[str]
+
+
+class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsTypeForResponse(
+    TypedDict
+):
+    """SecretScanningScanHistoryPropCustomPatternBackfillScansItems"""
+
+    type: NotRequired[str]
+    status: NotRequired[str]
+    completed_at: NotRequired[Union[str, None]]
+    started_at: NotRequired[Union[str, None]]
+    pattern_name: NotRequired[str]
+    pattern_scope: NotRequired[str]
 
 
 __all__ = (
-    "TopicType",
-    "TopicTypeForResponse",
+    "SecretScanningScanHistoryPropCustomPatternBackfillScansItemsType",
+    "SecretScanningScanHistoryPropCustomPatternBackfillScansItemsTypeForResponse",
+    "SecretScanningScanHistoryType",
+    "SecretScanningScanHistoryTypeForResponse",
+    "SecretScanningScanType",
+    "SecretScanningScanTypeForResponse",
 )

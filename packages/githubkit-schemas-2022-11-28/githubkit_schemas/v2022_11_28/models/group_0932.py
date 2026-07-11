@@ -18,32 +18,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0020 import Repository
-from .group_0058 import Issue
-from .group_0516 import SimpleInstallation
-from .group_0517 import OrganizationSimpleWebhooks
-from .group_0518 import RepositoryWebhooks
+from .group_0523 import EnterpriseWebhooks
+from .group_0524 import SimpleInstallation
+from .group_0525 import OrganizationSimpleWebhooks
+from .group_0526 import RepositoryWebhooks
+from .group_0568 import WebhooksSponsorship
+from .group_0569 import WebhooksChanges8
 
 
-class WebhookSubIssuesSubIssueRemoved(GitHubModel):
-    """sub-issue removed event"""
+class WebhookSponsorshipTierChanged(GitHubModel):
+    """sponsorship tier_changed event"""
 
-    action: Literal["sub_issue_removed"] = Field()
-    sub_issue_id: Missing[float] = Field(
-        default=UNSET, description="The ID of the sub-issue."
-    )
-    sub_issue: Missing[Issue] = Field(
+    action: Literal["tier_changed"] = Field()
+    changes: WebhooksChanges8 = Field()
+    enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
-        title="Issue",
-        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
-    )
-    sub_issue_repo: Missing[Repository] = Field(
-        default=UNSET, title="Repository", description="A repository on GitHub."
-    )
-    parent_issue_id: float = Field(description="The ID of the parent issue.")
-    parent_issue: Issue = Field(
-        title="Issue",
-        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
@@ -55,13 +46,15 @@ class WebhookSubIssuesSubIssueRemoved(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: RepositoryWebhooks = Field(
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    sponsorship: WebhooksSponsorship = Field()
 
 
-model_rebuild(WebhookSubIssuesSubIssueRemoved)
+model_rebuild(WebhookSponsorshipTierChanged)
 
-__all__ = ("WebhookSubIssuesSubIssueRemoved",)
+__all__ = ("WebhookSponsorshipTierChanged",)

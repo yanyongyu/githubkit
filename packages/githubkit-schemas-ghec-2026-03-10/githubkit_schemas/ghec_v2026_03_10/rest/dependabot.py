@@ -60,6 +60,7 @@ if TYPE_CHECKING:
         OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyType,
         ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0Type,
         ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1Type,
+        ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentType,
         ReposOwnerRepoDependabotSecretsGetResponse200TypeForResponse,
         ReposOwnerRepoDependabotSecretsSecretNamePutBodyType,
         ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBodyType,
@@ -2432,6 +2433,9 @@ class DependabotClient:
         ] = UNSET,
         dismissed_comment: Missing[str] = UNSET,
         assignees: Missing[list[str]] = UNSET,
+        agent_assignment: Missing[
+            ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentType
+        ] = UNSET,
     ) -> Response[DependabotAlert, DependabotAlertTypeForResponse]: ...
 
     @overload
@@ -2456,6 +2460,9 @@ class DependabotClient:
         ] = UNSET,
         dismissed_comment: Missing[str] = UNSET,
         assignees: list[str],
+        agent_assignment: Missing[
+            ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentType
+        ] = UNSET,
     ) -> Response[DependabotAlert, DependabotAlertTypeForResponse]: ...
 
     def update_alert(
@@ -2567,6 +2574,9 @@ class DependabotClient:
         ] = UNSET,
         dismissed_comment: Missing[str] = UNSET,
         assignees: Missing[list[str]] = UNSET,
+        agent_assignment: Missing[
+            ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentType
+        ] = UNSET,
     ) -> Response[DependabotAlert, DependabotAlertTypeForResponse]: ...
 
     @overload
@@ -2591,6 +2601,9 @@ class DependabotClient:
         ] = UNSET,
         dismissed_comment: Missing[str] = UNSET,
         assignees: list[str],
+        agent_assignment: Missing[
+            ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentType
+        ] = UNSET,
     ) -> Response[DependabotAlert, DependabotAlertTypeForResponse]: ...
 
     async def async_update_alert(

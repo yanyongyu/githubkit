@@ -18,19 +18,19 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0206 import IssueType
-from .group_0208 import IssueDependenciesSummary, SubIssuesSummary
+from .group_0209 import IssueType
+from .group_0211 import IssueDependenciesSummary, SubIssuesSummary
 from .group_0756 import (
-    WebhookIssueCommentEditedPropIssueAllof0PropAssignee,
-    WebhookIssueCommentEditedPropIssueAllof0PropLabelsItems,
-    WebhookIssueCommentEditedPropIssueAllof0PropPullRequest,
+    WebhookIssueCommentDeletedPropIssueAllof0PropAssignee,
+    WebhookIssueCommentDeletedPropIssueAllof0PropLabelsItems,
+    WebhookIssueCommentDeletedPropIssueAllof0PropPullRequest,
 )
-from .group_0762 import WebhookIssueCommentEditedPropIssueMergedMilestone
-from .group_0763 import WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubApp
+from .group_0762 import WebhookIssueCommentDeletedPropIssueMergedMilestone
+from .group_0763 import WebhookIssueCommentDeletedPropIssueMergedPerformedViaGithubApp
 
 
-class WebhookIssueCommentEditedPropIssue(GitHubModel):
-    """WebhookIssueCommentEditedPropIssue
+class WebhookIssueCommentDeletedPropIssue(GitHubModel):
+    """WebhookIssueCommentDeletedPropIssue
 
     The [issue](https://docs.github.com/enterprise-
     cloud@latest/rest/issues/issues#get-an-issue) the comment belongs to.
@@ -40,9 +40,9 @@ class WebhookIssueCommentEditedPropIssue(GitHubModel):
         Literal["resolved", "off-topic", "too heated", "spam"], None
     ] = Field()
     assignee: Union[
-        Union[WebhookIssueCommentEditedPropIssueAllof0PropAssignee, None], None
+        Union[WebhookIssueCommentDeletedPropIssueAllof0PropAssignee, None], None
     ] = Field(title="User")
-    assignees: list[WebhookIssueCommentEditedPropIssueMergedAssignees] = Field()
+    assignees: list[WebhookIssueCommentDeletedPropIssueMergedAssignees] = Field()
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -65,19 +65,19 @@ class WebhookIssueCommentEditedPropIssue(GitHubModel):
     events_url: str = Field()
     html_url: str = Field()
     id: int = Field()
-    labels: list[WebhookIssueCommentEditedPropIssueAllof0PropLabelsItems] = Field()
+    labels: list[WebhookIssueCommentDeletedPropIssueAllof0PropLabelsItems] = Field()
     labels_url: str = Field()
     locked: bool = Field()
-    milestone: Union[WebhookIssueCommentEditedPropIssueMergedMilestone, None] = Field()
+    milestone: Union[WebhookIssueCommentDeletedPropIssueMergedMilestone, None] = Field()
     node_id: str = Field()
     number: int = Field()
     performed_via_github_app: Missing[
-        Union[WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubApp, None]
+        Union[WebhookIssueCommentDeletedPropIssueMergedPerformedViaGithubApp, None]
     ] = Field(default=UNSET)
-    pull_request: Missing[WebhookIssueCommentEditedPropIssueAllof0PropPullRequest] = (
+    pull_request: Missing[WebhookIssueCommentDeletedPropIssueAllof0PropPullRequest] = (
         Field(default=UNSET)
     )
-    reactions: WebhookIssueCommentEditedPropIssueMergedReactions = Field()
+    reactions: WebhookIssueCommentDeletedPropIssueMergedReactions = Field()
     repository_url: str = Field()
     sub_issues_summary: Missing[SubIssuesSummary] = Field(
         default=UNSET, title="Sub-issues Summary"
@@ -98,11 +98,11 @@ class WebhookIssueCommentEditedPropIssue(GitHubModel):
     )
     updated_at: _dt.datetime = Field()
     url: str = Field(description="URL for the issue")
-    user: WebhookIssueCommentEditedPropIssueMergedUser = Field()
+    user: WebhookIssueCommentDeletedPropIssueMergedUser = Field()
 
 
-class WebhookIssueCommentEditedPropIssueMergedAssignees(GitHubModel):
-    """WebhookIssueCommentEditedPropIssueMergedAssignees"""
+class WebhookIssueCommentDeletedPropIssueMergedAssignees(GitHubModel):
+    """WebhookIssueCommentDeletedPropIssueMergedAssignees"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
     deleted: Missing[bool] = Field(default=UNSET)
@@ -130,8 +130,8 @@ class WebhookIssueCommentEditedPropIssueMergedAssignees(GitHubModel):
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookIssueCommentEditedPropIssueMergedReactions(GitHubModel):
-    """WebhookIssueCommentEditedPropIssueMergedReactions"""
+class WebhookIssueCommentDeletedPropIssueMergedReactions(GitHubModel):
+    """WebhookIssueCommentDeletedPropIssueMergedReactions"""
 
     plus_one: int = Field(alias="+1")
     minus_one: int = Field(alias="-1")
@@ -145,8 +145,8 @@ class WebhookIssueCommentEditedPropIssueMergedReactions(GitHubModel):
     url: str = Field()
 
 
-class WebhookIssueCommentEditedPropIssueMergedUser(GitHubModel):
-    """WebhookIssueCommentEditedPropIssueMergedUser"""
+class WebhookIssueCommentDeletedPropIssueMergedUser(GitHubModel):
+    """WebhookIssueCommentDeletedPropIssueMergedUser"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
     deleted: Missing[bool] = Field(default=UNSET)
@@ -174,14 +174,14 @@ class WebhookIssueCommentEditedPropIssueMergedUser(GitHubModel):
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookIssueCommentEditedPropIssue)
-model_rebuild(WebhookIssueCommentEditedPropIssueMergedAssignees)
-model_rebuild(WebhookIssueCommentEditedPropIssueMergedReactions)
-model_rebuild(WebhookIssueCommentEditedPropIssueMergedUser)
+model_rebuild(WebhookIssueCommentDeletedPropIssue)
+model_rebuild(WebhookIssueCommentDeletedPropIssueMergedAssignees)
+model_rebuild(WebhookIssueCommentDeletedPropIssueMergedReactions)
+model_rebuild(WebhookIssueCommentDeletedPropIssueMergedUser)
 
 __all__ = (
-    "WebhookIssueCommentEditedPropIssue",
-    "WebhookIssueCommentEditedPropIssueMergedAssignees",
-    "WebhookIssueCommentEditedPropIssueMergedReactions",
-    "WebhookIssueCommentEditedPropIssueMergedUser",
+    "WebhookIssueCommentDeletedPropIssue",
+    "WebhookIssueCommentDeletedPropIssueMergedAssignees",
+    "WebhookIssueCommentDeletedPropIssueMergedReactions",
+    "WebhookIssueCommentDeletedPropIssueMergedUser",
 )

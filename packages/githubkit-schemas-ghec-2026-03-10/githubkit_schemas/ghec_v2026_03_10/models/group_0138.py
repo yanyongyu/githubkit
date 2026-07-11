@@ -14,41 +14,17 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class RepositoryRuleParamsDismissalRestriction(GitHubModel):
-    """DismissalRestriction
+class RepositoryRuleRequiredLinearHistory(GitHubModel):
+    """required_linear_history
 
-    Specify people, teams, or apps allowed to dismiss pull request reviews.
+    Prevent merge commits from being pushed to matching refs.
     """
 
-    allowed_actors: Missing[list[RepositoryRuleParamsActor]] = Field(
-        default=UNSET,
-        description="Specify people, teams, or apps allowed to dismiss pull request reviews.",
-    )
-    enabled: bool = Field(
-        description="Whether to restrict review dismissal to specific actors."
-    )
+    type: Literal["required_linear_history"] = Field()
 
 
-class RepositoryRuleParamsActor(GitHubModel):
-    """Actor
+model_rebuild(RepositoryRuleRequiredLinearHistory)
 
-    An actor allowed to dismiss pull request reviews
-    """
-
-    id: int = Field(description="ID of the actor that can dismiss reviews.")
-    type: Literal["User", "Team", "IntegrationInstallation", "RepositoryRole"] = Field(
-        description="The type of the actor"
-    )
-
-
-model_rebuild(RepositoryRuleParamsDismissalRestriction)
-model_rebuild(RepositoryRuleParamsActor)
-
-__all__ = (
-    "RepositoryRuleParamsActor",
-    "RepositoryRuleParamsDismissalRestriction",
-)
+__all__ = ("RepositoryRuleRequiredLinearHistory",)

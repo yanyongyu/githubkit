@@ -12,16 +12,22 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200(GitHubModel):
-    """ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200"""
+class ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody"""
 
-    enabled: bool = Field(
-        description="Whether or not private vulnerability reporting is enabled for the repository."
+    sub_issue_id: int = Field(
+        description="The id of the sub-issue to add. The sub-issue must belong to the same repository owner as the parent issue"
+    )
+    replace_parent: Missing[bool] = Field(
+        default=UNSET,
+        description="Option that, when true, instructs the operation to replace the sub-issues current parent issue",
     )
 
 
-model_rebuild(ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody)
 
-__all__ = ("ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody",)

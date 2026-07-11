@@ -9,134 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0871 import (
-    WebhookPackageUpdatedPropPackagePropPackageVersionType,
-    WebhookPackageUpdatedPropPackagePropPackageVersionTypeForResponse,
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0112 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
+from .group_0598 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0599 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0600 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
 )
 
 
-class WebhookPackageUpdatedPropPackageType(TypedDict):
-    """WebhookPackageUpdatedPropPackage
+class WebhookOrganizationCustomPropertyValuesUpdatedType(TypedDict):
+    """Custom property values updated event"""
 
-    Information about the package.
-    """
-
-    created_at: str
-    description: Union[str, None]
-    ecosystem: str
-    html_url: str
-    id: int
-    name: str
-    namespace: str
-    owner: Union[WebhookPackageUpdatedPropPackagePropOwnerType, None]
-    package_type: str
-    package_version: WebhookPackageUpdatedPropPackagePropPackageVersionType
-    registry: Union[WebhookPackageUpdatedPropPackagePropRegistryType, None]
-    updated_at: str
+    action: Literal["updated"]
+    enterprise: EnterpriseWebhooksType
+    installation: NotRequired[SimpleInstallationType]
+    organization: OrganizationSimpleWebhooksType
+    sender: NotRequired[SimpleUserType]
+    new_property_values: list[CustomPropertyValueType]
+    old_property_values: list[CustomPropertyValueType]
 
 
-class WebhookPackageUpdatedPropPackageTypeForResponse(TypedDict):
-    """WebhookPackageUpdatedPropPackage
+class WebhookOrganizationCustomPropertyValuesUpdatedTypeForResponse(TypedDict):
+    """Custom property values updated event"""
 
-    Information about the package.
-    """
-
-    created_at: str
-    description: Union[str, None]
-    ecosystem: str
-    html_url: str
-    id: int
-    name: str
-    namespace: str
-    owner: Union[WebhookPackageUpdatedPropPackagePropOwnerTypeForResponse, None]
-    package_type: str
-    package_version: WebhookPackageUpdatedPropPackagePropPackageVersionTypeForResponse
-    registry: Union[WebhookPackageUpdatedPropPackagePropRegistryTypeForResponse, None]
-    updated_at: str
-
-
-class WebhookPackageUpdatedPropPackagePropOwnerType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookPackageUpdatedPropPackagePropOwnerTypeForResponse(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookPackageUpdatedPropPackagePropRegistryType(TypedDict):
-    """WebhookPackageUpdatedPropPackagePropRegistry"""
-
-    about_url: str
-    name: str
-    type: str
-    url: str
-    vendor: str
-
-
-class WebhookPackageUpdatedPropPackagePropRegistryTypeForResponse(TypedDict):
-    """WebhookPackageUpdatedPropPackagePropRegistry"""
-
-    about_url: str
-    name: str
-    type: str
-    url: str
-    vendor: str
+    action: Literal["updated"]
+    enterprise: EnterpriseWebhooksTypeForResponse
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
+    new_property_values: list[CustomPropertyValueTypeForResponse]
+    old_property_values: list[CustomPropertyValueTypeForResponse]
 
 
 __all__ = (
-    "WebhookPackageUpdatedPropPackagePropOwnerType",
-    "WebhookPackageUpdatedPropPackagePropOwnerTypeForResponse",
-    "WebhookPackageUpdatedPropPackagePropRegistryType",
-    "WebhookPackageUpdatedPropPackagePropRegistryTypeForResponse",
-    "WebhookPackageUpdatedPropPackageType",
-    "WebhookPackageUpdatedPropPackageTypeForResponse",
+    "WebhookOrganizationCustomPropertyValuesUpdatedType",
+    "WebhookOrganizationCustomPropertyValuesUpdatedTypeForResponse",
 )

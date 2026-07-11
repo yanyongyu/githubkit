@@ -9,38 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0281 import SimpleCommitType, SimpleCommitTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class MergeGroupType(TypedDict):
-    """Merge Group
+class WebhooksChangesType(TypedDict):
+    """WebhooksChanges
 
-    A group of pull requests that the merge queue has grouped together to be merged.
+    The changes to the comment.
     """
 
-    head_sha: str
-    head_ref: str
-    base_sha: str
-    base_ref: str
-    head_commit: SimpleCommitType
+    body: NotRequired[WebhooksChangesPropBodyType]
 
 
-class MergeGroupTypeForResponse(TypedDict):
-    """Merge Group
+class WebhooksChangesTypeForResponse(TypedDict):
+    """WebhooksChanges
 
-    A group of pull requests that the merge queue has grouped together to be merged.
+    The changes to the comment.
     """
 
-    head_sha: str
-    head_ref: str
-    base_sha: str
-    base_ref: str
-    head_commit: SimpleCommitTypeForResponse
+    body: NotRequired[WebhooksChangesPropBodyTypeForResponse]
+
+
+class WebhooksChangesPropBodyType(TypedDict):
+    """WebhooksChangesPropBody"""
+
+    from_: str
+
+
+class WebhooksChangesPropBodyTypeForResponse(TypedDict):
+    """WebhooksChangesPropBody"""
+
+    from_: str
 
 
 __all__ = (
-    "MergeGroupType",
-    "MergeGroupTypeForResponse",
+    "WebhooksChangesPropBodyType",
+    "WebhooksChangesPropBodyTypeForResponse",
+    "WebhooksChangesType",
+    "WebhooksChangesTypeForResponse",
 )

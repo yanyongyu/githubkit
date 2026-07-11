@@ -14,55 +14,91 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksMilestoneType(TypedDict):
-    """Milestone
+class WebhooksAnswerType(TypedDict):
+    """WebhooksAnswer"""
 
-    A collection of related issues and pull requests.
-    """
-
-    closed_at: Union[_dt.datetime, None]
-    closed_issues: int
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    body: str
+    child_comment_count: int
     created_at: _dt.datetime
-    creator: Union[WebhooksMilestonePropCreatorType, None]
-    description: Union[str, None]
-    due_on: Union[_dt.datetime, None]
+    discussion_id: int
     html_url: str
     id: int
-    labels_url: str
     node_id: str
-    number: int
-    open_issues: int
-    state: Literal["open", "closed"]
-    title: str
+    parent_id: Union[int, None]
+    reactions: NotRequired[WebhooksAnswerPropReactionsType]
+    repository_url: str
     updated_at: _dt.datetime
-    url: str
+    user: Union[WebhooksAnswerPropUserType, None]
 
 
-class WebhooksMilestoneTypeForResponse(TypedDict):
-    """Milestone
+class WebhooksAnswerTypeForResponse(TypedDict):
+    """WebhooksAnswer"""
 
-    A collection of related issues and pull requests.
-    """
-
-    closed_at: Union[str, None]
-    closed_issues: int
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    body: str
+    child_comment_count: int
     created_at: str
-    creator: Union[WebhooksMilestonePropCreatorTypeForResponse, None]
-    description: Union[str, None]
-    due_on: Union[str, None]
+    discussion_id: int
     html_url: str
     id: int
-    labels_url: str
     node_id: str
-    number: int
-    open_issues: int
-    state: Literal["open", "closed"]
-    title: str
+    parent_id: Union[int, None]
+    reactions: NotRequired[WebhooksAnswerPropReactionsTypeForResponse]
+    repository_url: str
     updated_at: str
+    user: Union[WebhooksAnswerPropUserTypeForResponse, None]
+
+
+class WebhooksAnswerPropReactionsType(TypedDict):
+    """Reactions"""
+
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
     url: str
 
 
-class WebhooksMilestonePropCreatorType(TypedDict):
+class WebhooksAnswerPropReactionsTypeForResponse(TypedDict):
+    """Reactions"""
+
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
+    url: str
+
+
+class WebhooksAnswerPropUserType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -84,12 +120,12 @@ class WebhooksMilestonePropCreatorType(TypedDict):
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
     user_view_type: NotRequired[str]
 
 
-class WebhooksMilestonePropCreatorTypeForResponse(TypedDict):
+class WebhooksAnswerPropUserTypeForResponse(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -111,14 +147,16 @@ class WebhooksMilestonePropCreatorTypeForResponse(TypedDict):
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
     user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "WebhooksMilestonePropCreatorType",
-    "WebhooksMilestonePropCreatorTypeForResponse",
-    "WebhooksMilestoneType",
-    "WebhooksMilestoneTypeForResponse",
+    "WebhooksAnswerPropReactionsType",
+    "WebhooksAnswerPropReactionsTypeForResponse",
+    "WebhooksAnswerPropUserType",
+    "WebhooksAnswerPropUserTypeForResponse",
+    "WebhooksAnswerType",
+    "WebhooksAnswerTypeForResponse",
 )

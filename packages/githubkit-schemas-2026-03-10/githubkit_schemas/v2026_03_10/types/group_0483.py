@@ -9,34 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0482 import TrafficType, TrafficTypeForResponse
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class CloneTrafficType(TypedDict):
-    """Clone Traffic
+class StargazerType(TypedDict):
+    """Stargazer
 
-    Clone Traffic
+    Stargazer
     """
 
-    count: int
-    uniques: int
-    clones: list[TrafficType]
+    starred_at: _dt.datetime
+    user: Union[None, SimpleUserType]
 
 
-class CloneTrafficTypeForResponse(TypedDict):
-    """Clone Traffic
+class StargazerTypeForResponse(TypedDict):
+    """Stargazer
 
-    Clone Traffic
+    Stargazer
     """
 
-    count: int
-    uniques: int
-    clones: list[TrafficTypeForResponse]
+    starred_at: str
+    user: Union[None, SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "CloneTrafficType",
-    "CloneTrafficTypeForResponse",
+    "StargazerType",
+    "StargazerTypeForResponse",
 )

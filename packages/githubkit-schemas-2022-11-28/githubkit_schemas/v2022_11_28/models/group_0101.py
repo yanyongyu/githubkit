@@ -38,6 +38,7 @@ class UpdateBudgetPropBudget(GitHubModel):
             "repository",
             "cost_center",
             "multi_user_customer",
+            "multi_user_cost_center",
             "user",
         ]
     ] = Field(default=UNSET, description="The type of scope for the budget")

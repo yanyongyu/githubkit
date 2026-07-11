@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -19,43 +18,45 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class Artifact(GitHubModel):
-    """Artifact
+class TeamMember(GitHubModel):
+    """Team Member
 
-    An artifact
+    A user that is a member of a team, including their role on the team and whether
+    the membership is inherited from a child team.
     """
 
+    name: Missing[Union[str, None]] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    login: str = Field()
     id: int = Field()
     node_id: str = Field()
-    name: str = Field(description="The name of the artifact.")
-    size_in_bytes: int = Field(description="The size in bytes of the artifact.")
+    avatar_url: str = Field()
+    gravatar_id: Union[str, None] = Field()
     url: str = Field()
-    archive_download_url: str = Field()
-    expired: bool = Field(description="Whether or not the artifact has expired.")
-    created_at: Union[_dt.datetime, None] = Field()
-    expires_at: Union[_dt.datetime, None] = Field()
-    updated_at: Union[_dt.datetime, None] = Field()
-    digest: Missing[Union[str, None]] = Field(
+    html_url: str = Field()
+    followers_url: str = Field()
+    following_url: str = Field()
+    gists_url: str = Field()
+    starred_url: str = Field()
+    subscriptions_url: str = Field()
+    organizations_url: str = Field()
+    repos_url: str = Field()
+    events_url: str = Field()
+    received_events_url: str = Field()
+    type: str = Field()
+    site_admin: bool = Field()
+    starred_at: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+    role: Missing[Literal["member", "maintainer"]] = Field(
         default=UNSET,
-        description="The SHA256 digest of the artifact. This field will only be populated on artifacts uploaded with upload-artifact v4 or newer. For older versions, this field will be null.",
+        description="The member's role on the team. Only present on the `List team members` endpoint, and only when the feature is enabled for the organization.",
     )
-    workflow_run: Missing[Union[ArtifactPropWorkflowRun, None]] = Field(default=UNSET)
+    inherited: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether the user is a member of the team only through a child team. `true` means the membership is inherited from a child team; `false` means the user is a direct (immediate) member of the team. Only present on the `List team members` endpoint, and only when the feature is enabled for the organization.",
+    )
 
 
-class ArtifactPropWorkflowRun(GitHubModel):
-    """ArtifactPropWorkflowRun"""
+model_rebuild(TeamMember)
 
-    id: Missing[int] = Field(default=UNSET)
-    repository_id: Missing[int] = Field(default=UNSET)
-    head_repository_id: Missing[int] = Field(default=UNSET)
-    head_branch: Missing[str] = Field(default=UNSET)
-    head_sha: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(Artifact)
-model_rebuild(ArtifactPropWorkflowRun)
-
-__all__ = (
-    "Artifact",
-    "ArtifactPropWorkflowRun",
-)
+__all__ = ("TeamMember",)

@@ -9,26 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
-
-from .group_0109 import CustomPropertyValue
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseOrgPropertiesValuesPatchBody(GitHubModel):
-    """EnterprisesEnterpriseOrgPropertiesValuesPatchBody"""
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody(GitHubModel):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody"""
 
-    organization_logins: list[str] = Field(
-        max_length=30 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="The names of organizations that the custom property values will be applied to.",
-    )
-    properties: list[CustomPropertyValue] = Field(
-        description="List of custom property names and associated values to apply to the organizations."
+    policy_state: Literal[
+        "enabled_for_all_orgs",
+        "disabled_for_all_orgs",
+        "enabled_for_selected_orgs",
+        "configured_by_org_admins",
+    ] = Field(
+        description="The policy state for Copilot cloud agent in the enterprise. Can be one of `enabled_for_all_orgs`, `disabled_for_all_orgs`, `enabled_for_selected_orgs`, or `configured_by_org_admins`."
     )
 
 
-model_rebuild(EnterprisesEnterpriseOrgPropertiesValuesPatchBody)
+model_rebuild(EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody)
 
-__all__ = ("EnterprisesEnterpriseOrgPropertiesValuesPatchBody",)
+__all__ = ("EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody",)

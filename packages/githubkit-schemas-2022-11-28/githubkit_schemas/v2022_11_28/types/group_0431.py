@@ -11,58 +11,46 @@ from __future__ import annotations
 
 import datetime as _dt
 from typing import Union
-from typing_extensions import TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class PageBuildType(TypedDict):
-    """Page Build
+class DeployKeyType(TypedDict):
+    """Deploy Key
 
-    Page Build
+    An SSH key granting access to a single repository.
     """
 
+    id: int
+    key: str
     url: str
-    status: str
-    error: PageBuildPropErrorType
-    pusher: Union[None, SimpleUserType]
-    commit: str
-    duration: int
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-
-
-class PageBuildTypeForResponse(TypedDict):
-    """Page Build
-
-    Page Build
-    """
-
-    url: str
-    status: str
-    error: PageBuildPropErrorTypeForResponse
-    pusher: Union[None, SimpleUserTypeForResponse]
-    commit: str
-    duration: int
+    title: str
+    verified: bool
     created_at: str
-    updated_at: str
+    read_only: bool
+    added_by: NotRequired[Union[str, None]]
+    last_used: NotRequired[Union[_dt.datetime, None]]
+    enabled: NotRequired[bool]
 
 
-class PageBuildPropErrorType(TypedDict):
-    """PageBuildPropError"""
+class DeployKeyTypeForResponse(TypedDict):
+    """Deploy Key
 
-    message: Union[str, None]
+    An SSH key granting access to a single repository.
+    """
 
-
-class PageBuildPropErrorTypeForResponse(TypedDict):
-    """PageBuildPropError"""
-
-    message: Union[str, None]
+    id: int
+    key: str
+    url: str
+    title: str
+    verified: bool
+    created_at: str
+    read_only: bool
+    added_by: NotRequired[Union[str, None]]
+    last_used: NotRequired[Union[str, None]]
+    enabled: NotRequired[bool]
 
 
 __all__ = (
-    "PageBuildPropErrorType",
-    "PageBuildPropErrorTypeForResponse",
-    "PageBuildType",
-    "PageBuildTypeForResponse",
+    "DeployKeyType",
+    "DeployKeyTypeForResponse",
 )

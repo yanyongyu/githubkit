@@ -9,48 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from pydantic import Field
-
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, model_rebuild
 
 
-class OrgsOrgActionsHostedRunnersImagesCustomGetResponse200(GitHubModel):
-    """OrgsOrgActionsHostedRunnersImagesCustomGetResponse200"""
+class InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties(
+    ExtraGitHubModel
+):
+    """InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPrope
+    rties
 
-    total_count: int = Field()
-    images: list[ActionsHostedRunnerCustomImage] = Field()
-
-
-class ActionsHostedRunnerCustomImage(GitHubModel):
-    """GitHub-hosted runner custom image details
-
-    Provides details of a custom runner image
+    The custom properties that were defined for the repository. The keys are the
+    custom property names, and the values are the corresponding custom property
+    values. Present for org repos only.
     """
 
-    id: int = Field(
-        description="The ID of the image. Use this ID for the `image` parameter when creating a new larger runner."
-    )
-    platform: str = Field(description="The operating system of the image.")
-    total_versions_size: int = Field(
-        description="Total size of all the image versions in GB."
-    )
-    name: str = Field(description="Display name for this image.")
-    source: str = Field(description="The image provider.")
-    versions_count: int = Field(
-        description="The number of image versions associated with the image."
-    )
-    latest_version: str = Field(
-        description="The latest image version associated with the image."
-    )
-    state: str = Field(
-        description="The number of image versions associated with the image."
-    )
 
-
-model_rebuild(OrgsOrgActionsHostedRunnersImagesCustomGetResponse200)
-model_rebuild(ActionsHostedRunnerCustomImage)
+model_rebuild(
+    InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties
+)
 
 __all__ = (
-    "ActionsHostedRunnerCustomImage",
-    "OrgsOrgActionsHostedRunnersImagesCustomGetResponse200",
+    "InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties",
 )

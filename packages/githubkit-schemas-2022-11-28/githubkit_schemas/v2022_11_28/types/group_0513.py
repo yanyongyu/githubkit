@@ -9,56 +9,75 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class BillingUsageReportUserType(TypedDict):
-    """BillingUsageReportUser"""
-
-    usage_items: NotRequired[list[BillingUsageReportUserPropUsageItemsItemsType]]
-
-
-class BillingUsageReportUserTypeForResponse(TypedDict):
-    """BillingUsageReportUser"""
-
-    usage_items: NotRequired[
-        list[BillingUsageReportUserPropUsageItemsItemsTypeForResponse]
-    ]
+from .group_0087 import (
+    MarketplaceListingPlanType,
+    MarketplaceListingPlanTypeForResponse,
+)
 
 
-class BillingUsageReportUserPropUsageItemsItemsType(TypedDict):
-    """BillingUsageReportUserPropUsageItemsItems"""
+class UserMarketplacePurchaseType(TypedDict):
+    """User Marketplace Purchase
 
-    date: str
-    product: str
-    sku: str
-    quantity: int
-    unit_type: str
-    price_per_unit: float
-    gross_amount: float
-    discount_amount: float
-    net_amount: float
-    repository_name: NotRequired[str]
+    User Marketplace Purchase
+    """
+
+    billing_cycle: str
+    next_billing_date: Union[_dt.datetime, None]
+    unit_count: Union[int, None]
+    on_free_trial: bool
+    free_trial_ends_on: Union[_dt.datetime, None]
+    updated_at: Union[_dt.datetime, None]
+    account: MarketplaceAccountType
+    plan: MarketplaceListingPlanType
 
 
-class BillingUsageReportUserPropUsageItemsItemsTypeForResponse(TypedDict):
-    """BillingUsageReportUserPropUsageItemsItems"""
+class UserMarketplacePurchaseTypeForResponse(TypedDict):
+    """User Marketplace Purchase
 
-    date: str
-    product: str
-    sku: str
-    quantity: int
-    unit_type: str
-    price_per_unit: float
-    gross_amount: float
-    discount_amount: float
-    net_amount: float
-    repository_name: NotRequired[str]
+    User Marketplace Purchase
+    """
+
+    billing_cycle: str
+    next_billing_date: Union[str, None]
+    unit_count: Union[int, None]
+    on_free_trial: bool
+    free_trial_ends_on: Union[str, None]
+    updated_at: Union[str, None]
+    account: MarketplaceAccountTypeForResponse
+    plan: MarketplaceListingPlanTypeForResponse
+
+
+class MarketplaceAccountType(TypedDict):
+    """Marketplace Account"""
+
+    url: str
+    id: int
+    type: str
+    node_id: NotRequired[str]
+    login: str
+    email: NotRequired[Union[str, None]]
+    organization_billing_email: NotRequired[Union[str, None]]
+
+
+class MarketplaceAccountTypeForResponse(TypedDict):
+    """Marketplace Account"""
+
+    url: str
+    id: int
+    type: str
+    node_id: NotRequired[str]
+    login: str
+    email: NotRequired[Union[str, None]]
+    organization_billing_email: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "BillingUsageReportUserPropUsageItemsItemsType",
-    "BillingUsageReportUserPropUsageItemsItemsTypeForResponse",
-    "BillingUsageReportUserType",
-    "BillingUsageReportUserTypeForResponse",
+    "MarketplaceAccountType",
+    "MarketplaceAccountTypeForResponse",
+    "UserMarketplacePurchaseType",
+    "UserMarketplacePurchaseTypeForResponse",
 )

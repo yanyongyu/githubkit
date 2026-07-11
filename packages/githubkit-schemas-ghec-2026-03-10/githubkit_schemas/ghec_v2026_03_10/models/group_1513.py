@@ -9,43 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_1512 import ReposOwnerRepoPagesPutBodyPropSourceAnyof1
 
+class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBody(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBody"""
 
-class ReposOwnerRepoPagesPutBodyAnyof0(GitHubModel):
-    """ReposOwnerRepoPagesPutBodyAnyof0"""
-
-    cname: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description='Specify a custom domain for the repository. Sending a `null` value will remove the custom domain. For more about custom domains, see "[Using a custom domain with GitHub Pages](https://docs.github.com/enterprise-cloud@latest/pages/configuring-a-custom-domain-for-your-github-pages-site)."',
-    )
-    https_enforced: Missing[bool] = Field(
-        default=UNSET,
-        description="Specify whether HTTPS should be enforced for the repository.",
-    )
-    build_type: Literal["legacy", "workflow"] = Field(
-        description="The process by which the GitHub Pages site will be built. `workflow` means that the site is built by a custom GitHub Actions workflow. `legacy` means that the site is built by GitHub when changes are pushed to a specific branch."
-    )
-    source: Missing[
-        Union[
-            Literal["gh-pages", "master", "master /docs"],
-            ReposOwnerRepoPagesPutBodyPropSourceAnyof1,
+    issue_field_values: Missing[
+        list[
+            ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems
         ]
-    ] = Field(default=UNSET)
-    public: Missing[bool] = Field(
+    ] = Field(
+        max_length=25 if PYDANTIC_V2 else None,
         default=UNSET,
-        description="Configures access controls for the GitHub Pages site. If public is set to `true`, the site is accessible to anyone on the internet. If set to `false`, the site will only be accessible to users who have at least `read` access to the repository that published the site. This includes anyone in your Enterprise if the repository is set to `internal` visibility.",
+        description="An array of issue field values to add to this issue. Each field value must include the field ID and the value to set.",
     )
 
 
-model_rebuild(ReposOwnerRepoPagesPutBodyAnyof0)
+class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems(
+    GitHubModel
+):
+    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems"""
 
-__all__ = ("ReposOwnerRepoPagesPutBodyAnyof0",)
+    field_id: int = Field(description="The ID of the issue field to set")
+    value: Union[str, float, list[str]] = Field(
+        description="The value to set for the field. The type depends on the field's data type:\n- For text fields: provide a string value\n- For single_select fields: provide the option name as a string (must match an existing option)\n- For number fields: provide a numeric value\n- For multi_select fields: provide an array of option names (must match existing options)\n- For date fields: provide an ISO 8601 date string"
+    )
+
+
+model_rebuild(ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBody)
+model_rebuild(
+    ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems
+)
+
+__all__ = (
+    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBody",
+    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems",
+)

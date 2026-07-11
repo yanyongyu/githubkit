@@ -10,47 +10,43 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0490 import (
+    TimelineCrossReferencedEventPropSourceType,
+    TimelineCrossReferencedEventPropSourceTypeForResponse,
+)
 
-class DeployKeyType(TypedDict):
-    """Deploy Key
 
-    An SSH key granting access to a single repository.
+class TimelineCrossReferencedEventType(TypedDict):
+    """Timeline Cross Referenced Event
+
+    Timeline Cross Referenced Event
     """
 
-    id: int
-    key: str
-    url: str
-    title: str
-    verified: bool
-    created_at: str
-    read_only: bool
-    added_by: NotRequired[Union[str, None]]
-    last_used: NotRequired[Union[_dt.datetime, None]]
-    enabled: NotRequired[bool]
+    event: Literal["cross-referenced"]
+    actor: NotRequired[SimpleUserType]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    source: TimelineCrossReferencedEventPropSourceType
 
 
-class DeployKeyTypeForResponse(TypedDict):
-    """Deploy Key
+class TimelineCrossReferencedEventTypeForResponse(TypedDict):
+    """Timeline Cross Referenced Event
 
-    An SSH key granting access to a single repository.
+    Timeline Cross Referenced Event
     """
 
-    id: int
-    key: str
-    url: str
-    title: str
-    verified: bool
+    event: Literal["cross-referenced"]
+    actor: NotRequired[SimpleUserTypeForResponse]
     created_at: str
-    read_only: bool
-    added_by: NotRequired[Union[str, None]]
-    last_used: NotRequired[Union[str, None]]
-    enabled: NotRequired[bool]
+    updated_at: str
+    source: TimelineCrossReferencedEventPropSourceTypeForResponse
 
 
 __all__ = (
-    "DeployKeyType",
-    "DeployKeyTypeForResponse",
+    "TimelineCrossReferencedEventType",
+    "TimelineCrossReferencedEventTypeForResponse",
 )

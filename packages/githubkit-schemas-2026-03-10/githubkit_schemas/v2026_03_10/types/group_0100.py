@@ -23,6 +23,7 @@ class GetBudgetType(TypedDict):
         "repository",
         "cost_center",
         "multi_user_customer",
+        "multi_user_cost_center",
         "user",
     ]
     budget_entity_name: str
@@ -44,6 +45,7 @@ class GetBudgetTypeForResponse(TypedDict):
         "repository",
         "cost_center",
         "multi_user_customer",
+        "multi_user_cost_center",
         "user",
     ]
     budget_entity_name: str

@@ -17,14 +17,14 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0158 import RepositoryRuleFileExtensionRestrictionPropParameters
+from .group_0150 import RepositoryRuleCommitterEmailPatternPropParameters
 
 
-class RepositoryRuleDetailedOneof20(GitHubModel):
-    """RepositoryRuleDetailedOneof20"""
+class RepositoryRuleDetailedOneof12(GitHubModel):
+    """RepositoryRuleDetailedOneof12"""
 
-    type: Literal["file_extension_restriction"] = Field()
-    parameters: Missing[RepositoryRuleFileExtensionRestrictionPropParameters] = Field(
+    type: Literal["committer_email_pattern"] = Field()
+    parameters: Missing[RepositoryRuleCommitterEmailPatternPropParameters] = Field(
         default=UNSET
     )
     ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
@@ -40,6 +40,6 @@ class RepositoryRuleDetailedOneof20(GitHubModel):
     )
 
 
-model_rebuild(RepositoryRuleDetailedOneof20)
+model_rebuild(RepositoryRuleDetailedOneof12)
 
-__all__ = ("RepositoryRuleDetailedOneof20",)
+__all__ = ("RepositoryRuleDetailedOneof12",)

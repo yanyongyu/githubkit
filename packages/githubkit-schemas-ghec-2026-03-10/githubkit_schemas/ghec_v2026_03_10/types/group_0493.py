@@ -9,30 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
-class PageBuildStatusType(TypedDict):
-    """Page Build Status
 
-    Page Build Status
+class TimelineUnassignedIssueEventType(TypedDict):
+    """Timeline Unassigned Issue Event
+
+    Timeline Unassigned Issue Event
     """
 
+    id: int
+    node_id: str
     url: str
-    status: str
+    actor: SimpleUserType
+    event: Literal["unassigned"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationType, None]
+    assignee: SimpleUserType
 
 
-class PageBuildStatusTypeForResponse(TypedDict):
-    """Page Build Status
+class TimelineUnassignedIssueEventTypeForResponse(TypedDict):
+    """Timeline Unassigned Issue Event
 
-    Page Build Status
+    Timeline Unassigned Issue Event
     """
 
+    id: int
+    node_id: str
     url: str
-    status: str
+    actor: SimpleUserTypeForResponse
+    event: Literal["unassigned"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
+    assignee: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "PageBuildStatusType",
-    "PageBuildStatusTypeForResponse",
+    "TimelineUnassignedIssueEventType",
+    "TimelineUnassignedIssueEventTypeForResponse",
 )

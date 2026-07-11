@@ -9,36 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class NetworkSettingsType(TypedDict):
-    """Hosted compute network settings resource
+class ExternalVulnerabilitySyncStatusType(TypedDict):
+    """External Vulnerability Sync Status
 
-    A hosted compute network settings resource.
+    Status of an in-progress external vulnerability sync operation
     """
 
     id: str
-    network_configuration_id: NotRequired[str]
-    name: str
-    subnet_id: str
-    region: str
+    status: Literal["processing"]
 
 
-class NetworkSettingsTypeForResponse(TypedDict):
-    """Hosted compute network settings resource
+class ExternalVulnerabilitySyncStatusTypeForResponse(TypedDict):
+    """External Vulnerability Sync Status
 
-    A hosted compute network settings resource.
+    Status of an in-progress external vulnerability sync operation
     """
 
     id: str
-    network_configuration_id: NotRequired[str]
-    name: str
-    subnet_id: str
-    region: str
+    status: Literal["processing"]
 
 
 __all__ = (
-    "NetworkSettingsType",
-    "NetworkSettingsTypeForResponse",
+    "ExternalVulnerabilitySyncStatusType",
+    "ExternalVulnerabilitySyncStatusTypeForResponse",
 )

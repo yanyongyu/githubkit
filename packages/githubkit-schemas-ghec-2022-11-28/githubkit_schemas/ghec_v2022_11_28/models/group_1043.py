@@ -9,171 +9,78 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoTasksPostResponse201(GitHubModel):
-    """AgentsReposOwnerRepoTasksPostResponse201"""
+class WebhookWorkflowJobInProgressPropWorkflowJobAllof0(GitHubModel):
+    """Workflow Job
 
-    id: str = Field(description="Unique task identifier")
-    url: Missing[str] = Field(default=UNSET, description="API URL for this task")
-    html_url: Missing[str] = Field(default=UNSET, description="Web URL for this task")
-    name: Missing[str] = Field(
-        default=UNSET, description="Human-readable name derived from the task prompt"
-    )
-    creator: Missing[AgentsReposOwnerRepoTasksPostResponse201PropCreatorOneof0] = Field(
-        default=UNSET, description="The entity who created this task"
-    )
-    creator_type: Missing[Literal["user", "organization"]] = Field(
-        default=UNSET, description="Type of the task creator"
-    )
-    user_collaborators: Missing[
-        list[AgentsReposOwnerRepoTasksPostResponse201PropUserCollaboratorsItems]
-    ] = Field(default=UNSET, description="User objects of collaborators on this task")
-    owner: Missing[AgentsReposOwnerRepoTasksPostResponse201PropOwner] = Field(
-        default=UNSET, description="The owner of the repository"
-    )
-    repository: Missing[AgentsReposOwnerRepoTasksPostResponse201PropRepository] = Field(
-        default=UNSET, description="The repository this task belongs to"
-    )
-    state: Literal[
-        "queued",
-        "in_progress",
-        "completed",
-        "failed",
-        "idle",
-        "waiting_for_user",
-        "timed_out",
-        "cancelled",
-    ] = Field(
-        description="Current state of the task, derived from its most recent session"
-    )
-    session_count: Missing[int] = Field(
-        default=UNSET, description="Number of sessions in this task"
-    )
-    artifacts: Missing[
-        list[AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItems]
-    ] = Field(
-        default=UNSET,
-        description="Resources created by this task (PRs, branches, etc.)",
-    )
-    archived_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET,
-        description="Timestamp when the task was archived, null if not archived",
-    )
-    updated_at: Missing[_dt.datetime] = Field(
-        default=UNSET, description="Timestamp of the most recent update"
-    )
-    created_at: _dt.datetime = Field(description="Timestamp when the task was created")
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropCreatorOneof0(GitHubModel):
-    """AgentsReposOwnerRepoTasksPostResponse201PropCreatorOneof0
-
-    A GitHub user
+    The workflow job. Many `workflow_job` keys, such as `head_sha`, `conclusion`,
+    and `started_at` are the same as those in a [`check_run`](#check_run) object.
     """
 
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the user"
+    check_run_url: str = Field()
+    completed_at: Union[str, None] = Field()
+    conclusion: Union[None, Literal["success", "failure", "cancelled", "neutral"]] = (
+        Field()
     )
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropUserCollaboratorsItems(GitHubModel):
-    """AgentsReposOwnerRepoTasksPostResponse201PropUserCollaboratorsItems
-
-    A GitHub user
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the user"
+    created_at: str = Field(description="The time that the job created.")
+    head_sha: str = Field()
+    html_url: str = Field()
+    id: int = Field()
+    labels: list[str] = Field(
+        description='Custom labels for the job. Specified by the [`"runs-on"` attribute](https://docs.github.com/enterprise-cloud@latest/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on) in the workflow YAML.'
     )
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropOwner(GitHubModel):
-    """AgentsReposOwnerRepoTasksPostResponse201PropOwner
-
-    The owner of the repository
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the user"
+    name: str = Field()
+    node_id: str = Field()
+    run_attempt: int = Field()
+    run_id: int = Field()
+    run_url: str = Field()
+    runner_group_id: Union[int, None] = Field(
+        description="The ID of the runner group that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`."
     )
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropRepository(GitHubModel):
-    """AgentsReposOwnerRepoTasksPostResponse201PropRepository
-
-    The repository this task belongs to
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the repository"
+    runner_group_name: Union[str, None] = Field(
+        description="The name of the runner group that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`."
     )
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItems(GitHubModel):
-    """AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItems
-
-    A resource generated by the task
-    """
-
-    provider: Literal["github"] = Field(description="Provider namespace")
-    type: Literal["pull", "branch"] = Field(
-        description="Type of artifact. Available Values: `pull`, `branch`.\n"
+    runner_id: Union[int, None] = Field(
+        description="The ID of the runner that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`."
     )
-    data: Union[
-        AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof0,
-        AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof1,
-    ] = Field(description="Resource data (shape depends on type)")
+    runner_name: Union[str, None] = Field(
+        description="The name of the runner that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`."
+    )
+    started_at: str = Field()
+    status: Literal["queued", "in_progress", "completed"] = Field(
+        description="The current status of the job. Can be `queued`, `in_progress`, or `completed`."
+    )
+    head_branch: Union[str, None] = Field(description="The name of the current branch.")
+    workflow_name: Union[str, None] = Field(description="The name of the workflow.")
+    steps: list[WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItems] = (
+        Field()
+    )
+    url: str = Field()
 
 
-class AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof0(
-    GitHubModel
-):
-    """AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof0
+class WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItems(GitHubModel):
+    """Workflow Step"""
 
-    A GitHub resource (pull request, issue, etc.)
-    """
-
-    id: int = Field(description="GitHub resource ID")
-    global_id: Missing[str] = Field(default=UNSET, description="GraphQL global ID")
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof1(
-    GitHubModel
-):
-    """AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof1
-
-    A Git branch reference
-    """
-
-    head_ref: str = Field(description="Head branch name")
-    base_ref: str = Field(description="Base branch name")
+    completed_at: Union[str, None] = Field()
+    conclusion: Union[None, Literal["failure", "skipped", "success", "cancelled"]] = (
+        Field()
+    )
+    name: str = Field()
+    number: int = Field()
+    started_at: Union[str, None] = Field()
+    status: Literal["in_progress", "completed", "queued", "pending"] = Field()
 
 
-model_rebuild(AgentsReposOwnerRepoTasksPostResponse201)
-model_rebuild(AgentsReposOwnerRepoTasksPostResponse201PropCreatorOneof0)
-model_rebuild(AgentsReposOwnerRepoTasksPostResponse201PropUserCollaboratorsItems)
-model_rebuild(AgentsReposOwnerRepoTasksPostResponse201PropOwner)
-model_rebuild(AgentsReposOwnerRepoTasksPostResponse201PropRepository)
-model_rebuild(AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItems)
-model_rebuild(AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof0)
-model_rebuild(AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof1)
+model_rebuild(WebhookWorkflowJobInProgressPropWorkflowJobAllof0)
+model_rebuild(WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItems)
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksPostResponse201",
-    "AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItems",
-    "AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof0",
-    "AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof1",
-    "AgentsReposOwnerRepoTasksPostResponse201PropCreatorOneof0",
-    "AgentsReposOwnerRepoTasksPostResponse201PropOwner",
-    "AgentsReposOwnerRepoTasksPostResponse201PropRepository",
-    "AgentsReposOwnerRepoTasksPostResponse201PropUserCollaboratorsItems",
+    "WebhookWorkflowJobInProgressPropWorkflowJobAllof0",
+    "WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItems",
 )

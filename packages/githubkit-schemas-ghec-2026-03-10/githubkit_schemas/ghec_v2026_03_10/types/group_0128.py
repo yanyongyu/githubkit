@@ -11,51 +11,52 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0117 import (
-    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
-    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse,
-)
-from .group_0119 import (
-    RepositoryRulesetConditionsPropRefNameType,
-    RepositoryRulesetConditionsPropRefNameTypeForResponse,
-)
-from .group_0123 import (
-    EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType,
-    EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdTypeForResponse,
-)
+
+class EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType(
+    TypedDict
+):
+    """EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty"""
+
+    include: NotRequired[list[EnterpriseRulesetConditionsOrganizationPropertySpecType]]
+    exclude: NotRequired[list[EnterpriseRulesetConditionsOrganizationPropertySpecType]]
 
 
-class EnterpriseRulesetConditionsOneof2Type(TypedDict):
-    """organization_id_and_repository_name
+class EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse(
+    TypedDict
+):
+    """EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty"""
 
-    Conditions to target organizations by id and all repositories
+    include: NotRequired[
+        list[EnterpriseRulesetConditionsOrganizationPropertySpecTypeForResponse]
+    ]
+    exclude: NotRequired[
+        list[EnterpriseRulesetConditionsOrganizationPropertySpecTypeForResponse]
+    ]
+
+
+class EnterpriseRulesetConditionsOrganizationPropertySpecType(TypedDict):
+    """Repository ruleset property targeting definition
+
+    Parameters for a targeting a organization property
     """
 
-    organization_id: (
-        EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType
-    )
-    repository_name: (
-        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
-    )
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
+    name: str
+    property_values: list[str]
 
 
-class EnterpriseRulesetConditionsOneof2TypeForResponse(TypedDict):
-    """organization_id_and_repository_name
+class EnterpriseRulesetConditionsOrganizationPropertySpecTypeForResponse(TypedDict):
+    """Repository ruleset property targeting definition
 
-    Conditions to target organizations by id and all repositories
+    Parameters for a targeting a organization property
     """
 
-    organization_id: (
-        EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdTypeForResponse
-    )
-    repository_name: (
-        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse
-    )
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
+    name: str
+    property_values: list[str]
 
 
 __all__ = (
-    "EnterpriseRulesetConditionsOneof2Type",
-    "EnterpriseRulesetConditionsOneof2TypeForResponse",
+    "EnterpriseRulesetConditionsOrganizationPropertySpecType",
+    "EnterpriseRulesetConditionsOrganizationPropertySpecTypeForResponse",
+    "EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType",
+    "EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse",
 )

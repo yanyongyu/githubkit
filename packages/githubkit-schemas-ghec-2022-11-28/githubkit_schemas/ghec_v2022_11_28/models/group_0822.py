@@ -18,17 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0588 import EnterpriseWebhooks
-from .group_0589 import SimpleInstallation
-from .group_0590 import OrganizationSimpleWebhooks
-from .group_0591 import RepositoryWebhooks
-from .group_0823 import WebhookIssuesReopenedPropIssue
+from .group_0599 import EnterpriseWebhooks
+from .group_0600 import SimpleInstallation
+from .group_0601 import OrganizationSimpleWebhooks
+from .group_0602 import RepositoryWebhooks
+from .group_0615 import WebhooksLabel
+from .group_0823 import WebhookIssuesLabeledPropIssue
 
 
-class WebhookIssuesReopened(GitHubModel):
-    """issues reopened event"""
+class WebhookIssuesLabeled(GitHubModel):
+    """issues labeled event"""
 
-    action: Literal["reopened"] = Field()
+    action: Literal["labeled"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -39,10 +40,11 @@ class WebhookIssuesReopened(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    issue: WebhookIssuesReopenedPropIssue = Field(
+    issue: WebhookIssuesLabeledPropIssue = Field(
         title="Issue",
         description="The [issue](https://docs.github.com/enterprise-cloud@latest/rest/issues/issues#get-an-issue) itself.",
     )
+    label: Missing[WebhooksLabel] = Field(default=UNSET, title="Label")
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
@@ -55,6 +57,6 @@ class WebhookIssuesReopened(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookIssuesReopened)
+model_rebuild(WebhookIssuesLabeled)
 
-__all__ = ("WebhookIssuesReopened",)
+__all__ = ("WebhookIssuesLabeled",)

@@ -9,42 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0588 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0589 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0590 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0591 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+
+class WebhookStatusPropCommitPropCommitPropAuthorAllof0Type(TypedDict):
+    """Committer
+
+    Metaproperties for Git author/committer information.
+    """
+
+    date: NotRequired[_dt.datetime]
+    email: Union[str, None]
+    name: str
+    username: NotRequired[str]
 
 
-class WebhookWatchStartedType(TypedDict):
-    """watch started event"""
+class WebhookStatusPropCommitPropCommitPropAuthorAllof0TypeForResponse(TypedDict):
+    """Committer
 
-    action: Literal["started"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    Metaproperties for Git author/committer information.
+    """
 
-
-class WebhookWatchStartedTypeForResponse(TypedDict):
-    """watch started event"""
-
-    action: Literal["started"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    date: NotRequired[str]
+    email: Union[str, None]
+    name: str
+    username: NotRequired[str]
 
 
 __all__ = (
-    "WebhookWatchStartedType",
-    "WebhookWatchStartedTypeForResponse",
+    "WebhookStatusPropCommitPropCommitPropAuthorAllof0Type",
+    "WebhookStatusPropCommitPropCommitPropAuthorAllof0TypeForResponse",
 )

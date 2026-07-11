@@ -9,78 +9,138 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0448 import HookResponseType, HookResponseTypeForResponse
+from .group_0880 import (
+    WebhookPackagePublishedPropPackagePropPackageVersionType,
+    WebhookPackagePublishedPropPackagePropPackageVersionTypeForResponse,
+)
 
 
-class WebhookPingPropHookType(TypedDict):
-    """Webhook
+class WebhookPackagePublishedPropPackageType(TypedDict):
+    """WebhookPackagePublishedPropPackage
 
-    The webhook that is being pinged
+    Information about the package.
     """
 
-    active: bool
-    app_id: NotRequired[int]
-    config: WebhookPingPropHookPropConfigType
-    created_at: _dt.datetime
-    deliveries_url: NotRequired[str]
-    events: list[str]
+    created_at: Union[str, None]
+    description: Union[str, None]
+    ecosystem: str
+    html_url: str
     id: int
-    last_response: NotRequired[HookResponseType]
-    name: Literal["web"]
-    ping_url: NotRequired[str]
-    test_url: NotRequired[str]
-    type: str
-    updated_at: _dt.datetime
-    url: NotRequired[str]
+    name: str
+    namespace: str
+    owner: Union[WebhookPackagePublishedPropPackagePropOwnerType, None]
+    package_type: str
+    package_version: Union[
+        WebhookPackagePublishedPropPackagePropPackageVersionType, None
+    ]
+    registry: Union[WebhookPackagePublishedPropPackagePropRegistryType, None]
+    updated_at: Union[str, None]
 
 
-class WebhookPingPropHookTypeForResponse(TypedDict):
-    """Webhook
+class WebhookPackagePublishedPropPackageTypeForResponse(TypedDict):
+    """WebhookPackagePublishedPropPackage
 
-    The webhook that is being pinged
+    Information about the package.
     """
 
-    active: bool
-    app_id: NotRequired[int]
-    config: WebhookPingPropHookPropConfigTypeForResponse
-    created_at: str
-    deliveries_url: NotRequired[str]
-    events: list[str]
+    created_at: Union[str, None]
+    description: Union[str, None]
+    ecosystem: str
+    html_url: str
     id: int
-    last_response: NotRequired[HookResponseTypeForResponse]
-    name: Literal["web"]
-    ping_url: NotRequired[str]
-    test_url: NotRequired[str]
+    name: str
+    namespace: str
+    owner: Union[WebhookPackagePublishedPropPackagePropOwnerTypeForResponse, None]
+    package_type: str
+    package_version: Union[
+        WebhookPackagePublishedPropPackagePropPackageVersionTypeForResponse, None
+    ]
+    registry: Union[WebhookPackagePublishedPropPackagePropRegistryTypeForResponse, None]
+    updated_at: Union[str, None]
+
+
+class WebhookPackagePublishedPropPackagePropOwnerType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookPackagePublishedPropPackagePropOwnerTypeForResponse(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookPackagePublishedPropPackagePropRegistryType(TypedDict):
+    """WebhookPackagePublishedPropPackagePropRegistry"""
+
+    about_url: str
+    name: str
     type: str
-    updated_at: str
-    url: NotRequired[str]
+    url: str
+    vendor: str
 
 
-class WebhookPingPropHookPropConfigType(TypedDict):
-    """WebhookPingPropHookPropConfig"""
+class WebhookPackagePublishedPropPackagePropRegistryTypeForResponse(TypedDict):
+    """WebhookPackagePublishedPropPackagePropRegistry"""
 
-    content_type: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
-    secret: NotRequired[str]
-    url: NotRequired[str]
-
-
-class WebhookPingPropHookPropConfigTypeForResponse(TypedDict):
-    """WebhookPingPropHookPropConfig"""
-
-    content_type: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
-    secret: NotRequired[str]
-    url: NotRequired[str]
+    about_url: str
+    name: str
+    type: str
+    url: str
+    vendor: str
 
 
 __all__ = (
-    "WebhookPingPropHookPropConfigType",
-    "WebhookPingPropHookPropConfigTypeForResponse",
-    "WebhookPingPropHookType",
-    "WebhookPingPropHookTypeForResponse",
+    "WebhookPackagePublishedPropPackagePropOwnerType",
+    "WebhookPackagePublishedPropPackagePropOwnerTypeForResponse",
+    "WebhookPackagePublishedPropPackagePropRegistryType",
+    "WebhookPackagePublishedPropPackagePropRegistryTypeForResponse",
+    "WebhookPackagePublishedPropPackageType",
+    "WebhookPackagePublishedPropPackageTypeForResponse",
 )

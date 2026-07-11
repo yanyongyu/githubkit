@@ -9,48 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class GetLicenseSyncStatus(GitHubModel):
-    """License Sync Status
+class ExternalVulnerabilitySyncAccepted(GitHubModel):
+    """External Vulnerability Sync Accepted
 
-    Information about the status of a license sync job for an enterprise.
+    Response when an external vulnerability sync request is accepted for
+    asynchronous processing
     """
 
-    server_instances: Missing[list[GetLicenseSyncStatusPropServerInstancesItems]] = (
-        Field(default=UNSET)
-    )
+    id: str = Field(description="Job status ID for polling")
+    url: str = Field(description="URL to poll for sync results")
+    status: Literal["queued"] = Field(description="Initial job status")
 
 
-class GetLicenseSyncStatusPropServerInstancesItems(GitHubModel):
-    """GetLicenseSyncStatusPropServerInstancesItems"""
+model_rebuild(ExternalVulnerabilitySyncAccepted)
 
-    server_id: Missing[str] = Field(default=UNSET)
-    hostname: Missing[str] = Field(default=UNSET)
-    last_sync: Missing[GetLicenseSyncStatusPropServerInstancesItemsPropLastSync] = (
-        Field(default=UNSET)
-    )
-
-
-class GetLicenseSyncStatusPropServerInstancesItemsPropLastSync(GitHubModel):
-    """GetLicenseSyncStatusPropServerInstancesItemsPropLastSync"""
-
-    date: Missing[str] = Field(default=UNSET)
-    status: Missing[str] = Field(default=UNSET)
-    error: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(GetLicenseSyncStatus)
-model_rebuild(GetLicenseSyncStatusPropServerInstancesItems)
-model_rebuild(GetLicenseSyncStatusPropServerInstancesItemsPropLastSync)
-
-__all__ = (
-    "GetLicenseSyncStatus",
-    "GetLicenseSyncStatusPropServerInstancesItems",
-    "GetLicenseSyncStatusPropServerInstancesItemsPropLastSync",
-)
+__all__ = ("ExternalVulnerabilitySyncAccepted",)

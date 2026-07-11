@@ -38,6 +38,7 @@ class UpdateBudgetPropBudgetType(TypedDict):
             "repository",
             "cost_center",
             "multi_user_customer",
+            "multi_user_cost_center",
             "user",
         ]
     ]
@@ -62,6 +63,7 @@ class UpdateBudgetPropBudgetTypeForResponse(TypedDict):
             "repository",
             "cost_center",
             "multi_user_customer",
+            "multi_user_cost_center",
             "user",
         ]
     ]

@@ -9,150 +9,75 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0515 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0516 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0517 import (
+from .group_0523 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0524 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0525 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0518 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0526 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0551 import WebhooksMembershipType, WebhooksMembershipTypeForResponse
 
 
-class WebhookPageBuildType(TypedDict):
-    """page_build event"""
+class WebhookOrganizationRenamedType(TypedDict):
+    """organization renamed event"""
 
-    build: WebhookPageBuildPropBuildType
+    action: Literal["renamed"]
+    changes: NotRequired[WebhookOrganizationRenamedPropChangesType]
     enterprise: NotRequired[EnterpriseWebhooksType]
-    id: int
     installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
+    membership: NotRequired[WebhooksMembershipType]
+    organization: OrganizationSimpleWebhooksType
+    repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserType
 
 
-class WebhookPageBuildTypeForResponse(TypedDict):
-    """page_build event"""
+class WebhookOrganizationRenamedTypeForResponse(TypedDict):
+    """organization renamed event"""
 
-    build: WebhookPageBuildPropBuildTypeForResponse
+    action: Literal["renamed"]
+    changes: NotRequired[WebhookOrganizationRenamedPropChangesTypeForResponse]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    id: int
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
+    membership: NotRequired[WebhooksMembershipTypeForResponse]
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
     sender: SimpleUserTypeForResponse
 
 
-class WebhookPageBuildPropBuildType(TypedDict):
-    """WebhookPageBuildPropBuild
+class WebhookOrganizationRenamedPropChangesType(TypedDict):
+    """WebhookOrganizationRenamedPropChanges"""
 
-    The [List GitHub Pages builds](https://docs.github.com/rest/pages/pages#list-
-    github-pages-builds) itself.
-    """
-
-    commit: Union[str, None]
-    created_at: str
-    duration: int
-    error: WebhookPageBuildPropBuildPropErrorType
-    pusher: Union[WebhookPageBuildPropBuildPropPusherType, None]
-    status: str
-    updated_at: str
-    url: str
+    login: NotRequired[WebhookOrganizationRenamedPropChangesPropLoginType]
 
 
-class WebhookPageBuildPropBuildTypeForResponse(TypedDict):
-    """WebhookPageBuildPropBuild
+class WebhookOrganizationRenamedPropChangesTypeForResponse(TypedDict):
+    """WebhookOrganizationRenamedPropChanges"""
 
-    The [List GitHub Pages builds](https://docs.github.com/rest/pages/pages#list-
-    github-pages-builds) itself.
-    """
-
-    commit: Union[str, None]
-    created_at: str
-    duration: int
-    error: WebhookPageBuildPropBuildPropErrorTypeForResponse
-    pusher: Union[WebhookPageBuildPropBuildPropPusherTypeForResponse, None]
-    status: str
-    updated_at: str
-    url: str
+    login: NotRequired[WebhookOrganizationRenamedPropChangesPropLoginTypeForResponse]
 
 
-class WebhookPageBuildPropBuildPropErrorType(TypedDict):
-    """WebhookPageBuildPropBuildPropError"""
+class WebhookOrganizationRenamedPropChangesPropLoginType(TypedDict):
+    """WebhookOrganizationRenamedPropChangesPropLogin"""
 
-    message: Union[str, None]
-
-
-class WebhookPageBuildPropBuildPropErrorTypeForResponse(TypedDict):
-    """WebhookPageBuildPropBuildPropError"""
-
-    message: Union[str, None]
+    from_: NotRequired[str]
 
 
-class WebhookPageBuildPropBuildPropPusherType(TypedDict):
-    """User"""
+class WebhookOrganizationRenamedPropChangesPropLoginTypeForResponse(TypedDict):
+    """WebhookOrganizationRenamedPropChangesPropLogin"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookPageBuildPropBuildPropPusherTypeForResponse(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    from_: NotRequired[str]
 
 
 __all__ = (
-    "WebhookPageBuildPropBuildPropErrorType",
-    "WebhookPageBuildPropBuildPropErrorTypeForResponse",
-    "WebhookPageBuildPropBuildPropPusherType",
-    "WebhookPageBuildPropBuildPropPusherTypeForResponse",
-    "WebhookPageBuildPropBuildType",
-    "WebhookPageBuildPropBuildTypeForResponse",
-    "WebhookPageBuildType",
-    "WebhookPageBuildTypeForResponse",
+    "WebhookOrganizationRenamedPropChangesPropLoginType",
+    "WebhookOrganizationRenamedPropChangesPropLoginTypeForResponse",
+    "WebhookOrganizationRenamedPropChangesType",
+    "WebhookOrganizationRenamedPropChangesTypeForResponse",
+    "WebhookOrganizationRenamedType",
+    "WebhookOrganizationRenamedTypeForResponse",
 )

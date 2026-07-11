@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -19,43 +19,98 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CodeQualitySetup(GitHubModel):
-    """CodeQualitySetup
+class CodeQualityFinding(GitHubModel):
+    """CodeQualityFinding
 
-    Configuration for code quality setup.
+    Code quality finding
     """
 
-    state: Missing[Literal["configured", "not-configured"]] = Field(
-        default=UNSET, description="Code quality setup has been configured or not."
+    number: int = Field(description="The finding number.")
+    state: Literal["open", "dismissed"] = Field(
+        description="State of the code quality finding."
     )
-    languages: Missing[
-        list[
-            Literal[
-                "csharp",
-                "go",
-                "java-kotlin",
-                "javascript-typescript",
-                "python",
-                "ruby",
-                "rust",
-            ]
-        ]
-    ] = Field(default=UNSET, description="Languages to be analyzed.")
-    runner_type: Missing[Union[None, Literal["standard", "labeled"]]] = Field(
-        default=UNSET, description="Runner type to be used."
+    url: str = Field(
+        description="The REST API URL of the code quality finding resource."
     )
-    runner_label: Missing[Union[str, None]] = Field(
+    rule: CodeQualityFindingRule = Field(description="Code quality rule")
+    location: CodeQualityFindingLocation = Field(
+        description="Code quality file location"
+    )
+    message: CodeQualityFindingMessage = Field(
+        description="Code quality finding message"
+    )
+    created_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="The time the code quality finding was created."
+    )
+
+
+class CodeQualityFindingRule(GitHubModel):
+    """CodeQualityFindingRule
+
+    Code quality rule
+    """
+
+    id: str = Field(
+        description="A unique identifier for the rule used to detect the finding."
+    )
+    title: str = Field(description="The name of the rule used to detect the finding.")
+    description: str = Field(
+        description="A short description of the rule used to detect the finding."
+    )
+    help_: Missing[str] = Field(
         default=UNSET,
-        description="Runner label to be used if the runner type is labeled.",
+        alias="help",
+        description="A detailed description of the rule used to detect the finding.",
     )
-    updated_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET, description="Timestamp of latest configuration update."
+    severity: Literal["error", "warning", "note", "none"] = Field(
+        description="The severity of the rule used to detect the finding."
     )
-    schedule: Missing[Union[None, Literal["weekly"]]] = Field(
-        default=UNSET, description="The frequency of the periodic analysis."
+    category: Literal["none", "maintainability", "reliability"] = Field(
+        description="The category of the rule used to detect the finding."
     )
 
 
-model_rebuild(CodeQualitySetup)
+class CodeQualityFindingLocation(GitHubModel):
+    """CodeQualityFindingLocation
 
-__all__ = ("CodeQualitySetup",)
+    Code quality file location
+    """
+
+    path: str = Field(description="The file path where the finding was detected.")
+    start_line: Missing[int] = Field(
+        default=UNSET, description="The line number where the finding starts."
+    )
+    start_column: Missing[int] = Field(
+        default=UNSET, description="The column number where the finding starts."
+    )
+    end_line: Missing[int] = Field(
+        default=UNSET, description="The line number where the finding ends."
+    )
+    end_column: Missing[int] = Field(
+        default=UNSET, description="The column number where the finding ends."
+    )
+
+
+class CodeQualityFindingMessage(GitHubModel):
+    """CodeQualityFindingMessage
+
+    Code quality finding message
+    """
+
+    text: str = Field(description="The message text of the code quality finding.")
+    markdown: str = Field(
+        description="The message text of the code quality finding in markdown format."
+    )
+
+
+model_rebuild(CodeQualityFinding)
+model_rebuild(CodeQualityFindingRule)
+model_rebuild(CodeQualityFindingLocation)
+model_rebuild(CodeQualityFindingMessage)
+
+__all__ = (
+    "CodeQualityFinding",
+    "CodeQualityFindingLocation",
+    "CodeQualityFindingMessage",
+    "CodeQualityFindingRule",
+)

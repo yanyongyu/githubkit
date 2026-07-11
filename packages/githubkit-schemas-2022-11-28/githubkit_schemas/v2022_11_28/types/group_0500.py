@@ -13,40 +13,69 @@ import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class CodespaceExportDetailsType(TypedDict):
-    """Fetches information about an export of a codespace.
-
-    An export of a codespace. Also, latest export details for a codespace can be
-    fetched with id = latest
-    """
-
-    state: NotRequired[Union[str, None]]
-    completed_at: NotRequired[Union[_dt.datetime, None]]
-    branch: NotRequired[Union[str, None]]
-    sha: NotRequired[Union[str, None]]
-    id: NotRequired[str]
-    export_url: NotRequired[str]
-    html_url: NotRequired[Union[str, None]]
+from .group_0301 import GitUserType, GitUserTypeForResponse
+from .group_0302 import VerificationType, VerificationTypeForResponse
 
 
-class CodespaceExportDetailsTypeForResponse(TypedDict):
-    """Fetches information about an export of a codespace.
+class CommitSearchResultItemPropCommitType(TypedDict):
+    """CommitSearchResultItemPropCommit"""
 
-    An export of a codespace. Also, latest export details for a codespace can be
-    fetched with id = latest
-    """
+    author: CommitSearchResultItemPropCommitPropAuthorType
+    committer: Union[None, GitUserType]
+    comment_count: int
+    message: str
+    tree: CommitSearchResultItemPropCommitPropTreeType
+    url: str
+    verification: NotRequired[VerificationType]
 
-    state: NotRequired[Union[str, None]]
-    completed_at: NotRequired[Union[str, None]]
-    branch: NotRequired[Union[str, None]]
-    sha: NotRequired[Union[str, None]]
-    id: NotRequired[str]
-    export_url: NotRequired[str]
-    html_url: NotRequired[Union[str, None]]
+
+class CommitSearchResultItemPropCommitTypeForResponse(TypedDict):
+    """CommitSearchResultItemPropCommit"""
+
+    author: CommitSearchResultItemPropCommitPropAuthorTypeForResponse
+    committer: Union[None, GitUserTypeForResponse]
+    comment_count: int
+    message: str
+    tree: CommitSearchResultItemPropCommitPropTreeTypeForResponse
+    url: str
+    verification: NotRequired[VerificationTypeForResponse]
+
+
+class CommitSearchResultItemPropCommitPropAuthorType(TypedDict):
+    """CommitSearchResultItemPropCommitPropAuthor"""
+
+    name: str
+    email: str
+    date: _dt.datetime
+
+
+class CommitSearchResultItemPropCommitPropAuthorTypeForResponse(TypedDict):
+    """CommitSearchResultItemPropCommitPropAuthor"""
+
+    name: str
+    email: str
+    date: str
+
+
+class CommitSearchResultItemPropCommitPropTreeType(TypedDict):
+    """CommitSearchResultItemPropCommitPropTree"""
+
+    sha: str
+    url: str
+
+
+class CommitSearchResultItemPropCommitPropTreeTypeForResponse(TypedDict):
+    """CommitSearchResultItemPropCommitPropTree"""
+
+    sha: str
+    url: str
 
 
 __all__ = (
-    "CodespaceExportDetailsType",
-    "CodespaceExportDetailsTypeForResponse",
+    "CommitSearchResultItemPropCommitPropAuthorType",
+    "CommitSearchResultItemPropCommitPropAuthorTypeForResponse",
+    "CommitSearchResultItemPropCommitPropTreeType",
+    "CommitSearchResultItemPropCommitPropTreeTypeForResponse",
+    "CommitSearchResultItemPropCommitType",
+    "CommitSearchResultItemPropCommitTypeForResponse",
 )

@@ -14,196 +14,526 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0523 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0524 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0525 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0526 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookCodeScanningAlertCreatedPropAlertType(TypedDict):
-    """WebhookCodeScanningAlertCreatedPropAlert
+class WebhookCheckSuiteCompletedType(TypedDict):
+    """check_suite completed event"""
 
-    The code scanning alert involved in the event.
+    action: Literal["completed"]
+    check_suite: WebhookCheckSuiteCompletedPropCheckSuiteType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
+
+
+class WebhookCheckSuiteCompletedTypeForResponse(TypedDict):
+    """check_suite completed event"""
+
+    action: Literal["completed"]
+    check_suite: WebhookCheckSuiteCompletedPropCheckSuiteTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+
+
+class WebhookCheckSuiteCompletedPropCheckSuiteType(TypedDict):
+    """WebhookCheckSuiteCompletedPropCheckSuite
+
+    The [check_suite](https://docs.github.com/rest/checks/suites#get-a-check-suite).
+    """
+
+    after: Union[str, None]
+    app: WebhookCheckSuiteCompletedPropCheckSuitePropAppType
+    before: Union[str, None]
+    check_runs_url: str
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "timed_out",
+            "action_required",
+            "stale",
+            "skipped",
+            "startup_failure",
+        ],
+    ]
+    created_at: _dt.datetime
+    head_branch: Union[str, None]
+    head_commit: WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitType
+    head_sha: str
+    id: int
+    latest_check_runs_count: int
+    node_id: str
+    pull_requests: list[
+        WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsType
+    ]
+    rerequestable: NotRequired[bool]
+    runs_rerequestable: NotRequired[bool]
+    status: Union[
+        None, Literal["requested", "in_progress", "completed", "queued", "pending"]
+    ]
+    updated_at: _dt.datetime
+    url: str
+
+
+class WebhookCheckSuiteCompletedPropCheckSuiteTypeForResponse(TypedDict):
+    """WebhookCheckSuiteCompletedPropCheckSuite
+
+    The [check_suite](https://docs.github.com/rest/checks/suites#get-a-check-suite).
+    """
+
+    after: Union[str, None]
+    app: WebhookCheckSuiteCompletedPropCheckSuitePropAppTypeForResponse
+    before: Union[str, None]
+    check_runs_url: str
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "timed_out",
+            "action_required",
+            "stale",
+            "skipped",
+            "startup_failure",
+        ],
+    ]
+    created_at: str
+    head_branch: Union[str, None]
+    head_commit: WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitTypeForResponse
+    head_sha: str
+    id: int
+    latest_check_runs_count: int
+    node_id: str
+    pull_requests: list[
+        WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsTypeForResponse
+    ]
+    rerequestable: NotRequired[bool]
+    runs_rerequestable: NotRequired[bool]
+    status: Union[
+        None, Literal["requested", "in_progress", "completed", "queued", "pending"]
+    ]
+    updated_at: str
+    url: str
+
+
+class WebhookCheckSuiteCompletedPropCheckSuitePropAppType(TypedDict):
+    """App
+
+    GitHub apps are a new way to extend GitHub. They can be installed directly on
+    organizations and user accounts and granted access to specific repositories.
+    They come with granular permissions and built-in webhooks. GitHub apps are first
+    class actors within GitHub.
     """
 
     created_at: Union[_dt.datetime, None]
-    dismissed_at: None
-    dismissed_by: None
-    dismissed_comment: NotRequired[Union[str, None]]
-    dismissed_reason: None
-    fixed_at: NotRequired[None]
+    description: Union[str, None]
+    events: NotRequired[list[str]]
+    external_url: Union[str, None]
     html_url: str
-    instances_url: NotRequired[str]
-    most_recent_instance: NotRequired[
-        Union[WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstanceType, None]
+    id: Union[int, None]
+    client_id: NotRequired[Union[str, None]]
+    name: str
+    node_id: str
+    owner: Union[WebhookCheckSuiteCompletedPropCheckSuitePropAppPropOwnerType, None]
+    permissions: NotRequired[
+        WebhookCheckSuiteCompletedPropCheckSuitePropAppPropPermissionsType
     ]
-    number: int
-    rule: WebhookCodeScanningAlertCreatedPropAlertPropRuleType
-    state: Union[None, Literal["open", "dismissed"]]
-    tool: Union[WebhookCodeScanningAlertCreatedPropAlertPropToolType, None]
-    updated_at: NotRequired[Union[str, None]]
-    url: str
-    dismissal_approved_by: NotRequired[None]
-    assignees: NotRequired[list[SimpleUserType]]
+    slug: NotRequired[str]
+    updated_at: Union[_dt.datetime, None]
 
 
-class WebhookCodeScanningAlertCreatedPropAlertTypeForResponse(TypedDict):
-    """WebhookCodeScanningAlertCreatedPropAlert
+class WebhookCheckSuiteCompletedPropCheckSuitePropAppTypeForResponse(TypedDict):
+    """App
 
-    The code scanning alert involved in the event.
+    GitHub apps are a new way to extend GitHub. They can be installed directly on
+    organizations and user accounts and granted access to specific repositories.
+    They come with granular permissions and built-in webhooks. GitHub apps are first
+    class actors within GitHub.
     """
 
     created_at: Union[str, None]
-    dismissed_at: None
-    dismissed_by: None
-    dismissed_comment: NotRequired[Union[str, None]]
-    dismissed_reason: None
-    fixed_at: NotRequired[None]
+    description: Union[str, None]
+    events: NotRequired[list[str]]
+    external_url: Union[str, None]
     html_url: str
-    instances_url: NotRequired[str]
-    most_recent_instance: NotRequired[
-        Union[
-            WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstanceTypeForResponse,
-            None,
-        ]
+    id: Union[int, None]
+    client_id: NotRequired[Union[str, None]]
+    name: str
+    node_id: str
+    owner: Union[
+        WebhookCheckSuiteCompletedPropCheckSuitePropAppPropOwnerTypeForResponse, None
     ]
+    permissions: NotRequired[
+        WebhookCheckSuiteCompletedPropCheckSuitePropAppPropPermissionsTypeForResponse
+    ]
+    slug: NotRequired[str]
+    updated_at: Union[str, None]
+
+
+class WebhookCheckSuiteCompletedPropCheckSuitePropAppPropOwnerType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookCheckSuiteCompletedPropCheckSuitePropAppPropOwnerTypeForResponse(
+    TypedDict
+):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookCheckSuiteCompletedPropCheckSuitePropAppPropPermissionsType(TypedDict):
+    """WebhookCheckSuiteCompletedPropCheckSuitePropAppPropPermissions
+
+    The set of permissions for the GitHub app
+    """
+
+    actions: NotRequired[Literal["read", "write"]]
+    administration: NotRequired[Literal["read", "write"]]
+    checks: NotRequired[Literal["read", "write"]]
+    content_references: NotRequired[Literal["read", "write"]]
+    contents: NotRequired[Literal["read", "write"]]
+    deployments: NotRequired[Literal["read", "write"]]
+    discussions: NotRequired[Literal["read", "write"]]
+    emails: NotRequired[Literal["read", "write"]]
+    environments: NotRequired[Literal["read", "write"]]
+    issues: NotRequired[Literal["read", "write"]]
+    keys: NotRequired[Literal["read", "write"]]
+    members: NotRequired[Literal["read", "write"]]
+    metadata: NotRequired[Literal["read", "write"]]
+    organization_administration: NotRequired[Literal["read", "write"]]
+    organization_hooks: NotRequired[Literal["read", "write"]]
+    organization_packages: NotRequired[Literal["read", "write"]]
+    organization_plan: NotRequired[Literal["read", "write"]]
+    organization_projects: NotRequired[Literal["read", "write", "admin"]]
+    organization_secrets: NotRequired[Literal["read", "write"]]
+    organization_self_hosted_runners: NotRequired[Literal["read", "write"]]
+    organization_user_blocking: NotRequired[Literal["read", "write"]]
+    packages: NotRequired[Literal["read", "write"]]
+    pages: NotRequired[Literal["read", "write"]]
+    pull_requests: NotRequired[Literal["read", "write"]]
+    repository_hooks: NotRequired[Literal["read", "write"]]
+    repository_projects: NotRequired[Literal["read", "write", "admin"]]
+    secret_scanning_alerts: NotRequired[Literal["read", "write"]]
+    secrets: NotRequired[Literal["read", "write"]]
+    security_events: NotRequired[Literal["read", "write"]]
+    security_scanning_alert: NotRequired[Literal["read", "write"]]
+    single_file: NotRequired[Literal["read", "write"]]
+    statuses: NotRequired[Literal["read", "write"]]
+    vulnerability_alerts: NotRequired[Literal["read", "write"]]
+    workflows: NotRequired[Literal["read", "write"]]
+
+
+class WebhookCheckSuiteCompletedPropCheckSuitePropAppPropPermissionsTypeForResponse(
+    TypedDict
+):
+    """WebhookCheckSuiteCompletedPropCheckSuitePropAppPropPermissions
+
+    The set of permissions for the GitHub app
+    """
+
+    actions: NotRequired[Literal["read", "write"]]
+    administration: NotRequired[Literal["read", "write"]]
+    checks: NotRequired[Literal["read", "write"]]
+    content_references: NotRequired[Literal["read", "write"]]
+    contents: NotRequired[Literal["read", "write"]]
+    deployments: NotRequired[Literal["read", "write"]]
+    discussions: NotRequired[Literal["read", "write"]]
+    emails: NotRequired[Literal["read", "write"]]
+    environments: NotRequired[Literal["read", "write"]]
+    issues: NotRequired[Literal["read", "write"]]
+    keys: NotRequired[Literal["read", "write"]]
+    members: NotRequired[Literal["read", "write"]]
+    metadata: NotRequired[Literal["read", "write"]]
+    organization_administration: NotRequired[Literal["read", "write"]]
+    organization_hooks: NotRequired[Literal["read", "write"]]
+    organization_packages: NotRequired[Literal["read", "write"]]
+    organization_plan: NotRequired[Literal["read", "write"]]
+    organization_projects: NotRequired[Literal["read", "write", "admin"]]
+    organization_secrets: NotRequired[Literal["read", "write"]]
+    organization_self_hosted_runners: NotRequired[Literal["read", "write"]]
+    organization_user_blocking: NotRequired[Literal["read", "write"]]
+    packages: NotRequired[Literal["read", "write"]]
+    pages: NotRequired[Literal["read", "write"]]
+    pull_requests: NotRequired[Literal["read", "write"]]
+    repository_hooks: NotRequired[Literal["read", "write"]]
+    repository_projects: NotRequired[Literal["read", "write", "admin"]]
+    secret_scanning_alerts: NotRequired[Literal["read", "write"]]
+    secrets: NotRequired[Literal["read", "write"]]
+    security_events: NotRequired[Literal["read", "write"]]
+    security_scanning_alert: NotRequired[Literal["read", "write"]]
+    single_file: NotRequired[Literal["read", "write"]]
+    statuses: NotRequired[Literal["read", "write"]]
+    vulnerability_alerts: NotRequired[Literal["read", "write"]]
+    workflows: NotRequired[Literal["read", "write"]]
+
+
+class WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitType(TypedDict):
+    """SimpleCommit"""
+
+    author: WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitPropAuthorType
+    committer: WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitPropCommitterType
+    id: str
+    message: str
+    timestamp: str
+    tree_id: str
+
+
+class WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitTypeForResponse(TypedDict):
+    """SimpleCommit"""
+
+    author: (
+        WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitPropAuthorTypeForResponse
+    )
+    committer: WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitPropCommitterTypeForResponse
+    id: str
+    message: str
+    timestamp: str
+    tree_id: str
+
+
+class WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitPropAuthorType(TypedDict):
+    """Committer
+
+    Metaproperties for Git author/committer information.
+    """
+
+    date: NotRequired[_dt.datetime]
+    email: Union[str, None]
+    name: str
+    username: NotRequired[str]
+
+
+class WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitPropAuthorTypeForResponse(
+    TypedDict
+):
+    """Committer
+
+    Metaproperties for Git author/committer information.
+    """
+
+    date: NotRequired[str]
+    email: Union[str, None]
+    name: str
+    username: NotRequired[str]
+
+
+class WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitPropCommitterType(
+    TypedDict
+):
+    """Committer
+
+    Metaproperties for Git author/committer information.
+    """
+
+    date: NotRequired[_dt.datetime]
+    email: Union[str, None]
+    name: str
+    username: NotRequired[str]
+
+
+class WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitPropCommitterTypeForResponse(
+    TypedDict
+):
+    """Committer
+
+    Metaproperties for Git author/committer information.
+    """
+
+    date: NotRequired[str]
+    email: Union[str, None]
+    name: str
+    username: NotRequired[str]
+
+
+class WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsType(TypedDict):
+    """Check Run Pull Request"""
+
+    base: WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBaseType
+    head: WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHeadType
+    id: int
     number: int
-    rule: WebhookCodeScanningAlertCreatedPropAlertPropRuleTypeForResponse
-    state: Union[None, Literal["open", "dismissed"]]
-    tool: Union[WebhookCodeScanningAlertCreatedPropAlertPropToolTypeForResponse, None]
-    updated_at: NotRequired[Union[str, None]]
     url: str
-    dismissal_approved_by: NotRequired[None]
-    assignees: NotRequired[list[SimpleUserTypeForResponse]]
 
 
-class WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstanceType(TypedDict):
-    """Alert Instance"""
+class WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsTypeForResponse(
+    TypedDict
+):
+    """Check Run Pull Request"""
 
-    analysis_key: str
-    category: NotRequired[str]
-    classifications: NotRequired[list[str]]
-    commit_sha: NotRequired[str]
-    environment: str
-    location: NotRequired[
-        WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocationType
-    ]
-    message: NotRequired[
-        WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessageType
-    ]
+    base: WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBaseTypeForResponse
+    head: WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHeadTypeForResponse
+    id: int
+    number: int
+    url: str
+
+
+class WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBaseType(
+    TypedDict
+):
+    """WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBase"""
+
     ref: str
-    state: Literal["open", "dismissed", "fixed"]
+    repo: WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBasePropRepoType
+    sha: str
 
 
-class WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstanceTypeForResponse(
+class WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBaseTypeForResponse(
     TypedDict
 ):
-    """Alert Instance"""
+    """WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBase"""
 
-    analysis_key: str
-    category: NotRequired[str]
-    classifications: NotRequired[list[str]]
-    commit_sha: NotRequired[str]
-    environment: str
-    location: NotRequired[
-        WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocationTypeForResponse
-    ]
-    message: NotRequired[
-        WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessageTypeForResponse
-    ]
     ref: str
-    state: Literal["open", "dismissed", "fixed"]
+    repo: WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBasePropRepoTypeForResponse
+    sha: str
 
 
-class WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocationType(
+class WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBasePropRepoType(
     TypedDict
 ):
-    """WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocation"""
+    """Repo Ref"""
 
-    end_column: NotRequired[int]
-    end_line: NotRequired[int]
-    path: NotRequired[str]
-    start_column: NotRequired[int]
-    start_line: NotRequired[int]
-
-
-class WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocationTypeForResponse(
-    TypedDict
-):
-    """WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocation"""
-
-    end_column: NotRequired[int]
-    end_line: NotRequired[int]
-    path: NotRequired[str]
-    start_column: NotRequired[int]
-    start_line: NotRequired[int]
-
-
-class WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessageType(
-    TypedDict
-):
-    """WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessage"""
-
-    text: NotRequired[str]
-
-
-class WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessageTypeForResponse(
-    TypedDict
-):
-    """WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessage"""
-
-    text: NotRequired[str]
-
-
-class WebhookCodeScanningAlertCreatedPropAlertPropRuleType(TypedDict):
-    """WebhookCodeScanningAlertCreatedPropAlertPropRule"""
-
-    description: str
-    full_description: NotRequired[str]
-    help_: NotRequired[Union[str, None]]
-    help_uri: NotRequired[Union[str, None]]
-    id: str
-    name: NotRequired[str]
-    severity: Union[None, Literal["none", "note", "warning", "error"]]
-    tags: NotRequired[Union[list[str], None]]
-
-
-class WebhookCodeScanningAlertCreatedPropAlertPropRuleTypeForResponse(TypedDict):
-    """WebhookCodeScanningAlertCreatedPropAlertPropRule"""
-
-    description: str
-    full_description: NotRequired[str]
-    help_: NotRequired[Union[str, None]]
-    help_uri: NotRequired[Union[str, None]]
-    id: str
-    name: NotRequired[str]
-    severity: Union[None, Literal["none", "note", "warning", "error"]]
-    tags: NotRequired[Union[list[str], None]]
-
-
-class WebhookCodeScanningAlertCreatedPropAlertPropToolType(TypedDict):
-    """WebhookCodeScanningAlertCreatedPropAlertPropTool"""
-
-    guid: NotRequired[Union[str, None]]
+    id: int
     name: str
-    version: Union[str, None]
+    url: str
 
 
-class WebhookCodeScanningAlertCreatedPropAlertPropToolTypeForResponse(TypedDict):
-    """WebhookCodeScanningAlertCreatedPropAlertPropTool"""
+class WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBasePropRepoTypeForResponse(
+    TypedDict
+):
+    """Repo Ref"""
 
-    guid: NotRequired[Union[str, None]]
+    id: int
     name: str
-    version: Union[str, None]
+    url: str
+
+
+class WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHeadType(
+    TypedDict
+):
+    """WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHead"""
+
+    ref: str
+    repo: WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHeadPropRepoType
+    sha: str
+
+
+class WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHeadTypeForResponse(
+    TypedDict
+):
+    """WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHead"""
+
+    ref: str
+    repo: WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHeadPropRepoTypeForResponse
+    sha: str
+
+
+class WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHeadPropRepoType(
+    TypedDict
+):
+    """Repo Ref"""
+
+    id: int
+    name: str
+    url: str
+
+
+class WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHeadPropRepoTypeForResponse(
+    TypedDict
+):
+    """Repo Ref"""
+
+    id: int
+    name: str
+    url: str
 
 
 __all__ = (
-    "WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocationType",
-    "WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocationTypeForResponse",
-    "WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessageType",
-    "WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessageTypeForResponse",
-    "WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstanceType",
-    "WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstanceTypeForResponse",
-    "WebhookCodeScanningAlertCreatedPropAlertPropRuleType",
-    "WebhookCodeScanningAlertCreatedPropAlertPropRuleTypeForResponse",
-    "WebhookCodeScanningAlertCreatedPropAlertPropToolType",
-    "WebhookCodeScanningAlertCreatedPropAlertPropToolTypeForResponse",
-    "WebhookCodeScanningAlertCreatedPropAlertType",
-    "WebhookCodeScanningAlertCreatedPropAlertTypeForResponse",
+    "WebhookCheckSuiteCompletedPropCheckSuitePropAppPropOwnerType",
+    "WebhookCheckSuiteCompletedPropCheckSuitePropAppPropOwnerTypeForResponse",
+    "WebhookCheckSuiteCompletedPropCheckSuitePropAppPropPermissionsType",
+    "WebhookCheckSuiteCompletedPropCheckSuitePropAppPropPermissionsTypeForResponse",
+    "WebhookCheckSuiteCompletedPropCheckSuitePropAppType",
+    "WebhookCheckSuiteCompletedPropCheckSuitePropAppTypeForResponse",
+    "WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitPropAuthorType",
+    "WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitPropAuthorTypeForResponse",
+    "WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitPropCommitterType",
+    "WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitPropCommitterTypeForResponse",
+    "WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitType",
+    "WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitTypeForResponse",
+    "WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBasePropRepoType",
+    "WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBasePropRepoTypeForResponse",
+    "WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBaseType",
+    "WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBaseTypeForResponse",
+    "WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHeadPropRepoType",
+    "WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHeadPropRepoTypeForResponse",
+    "WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHeadType",
+    "WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHeadTypeForResponse",
+    "WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsType",
+    "WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsTypeForResponse",
+    "WebhookCheckSuiteCompletedPropCheckSuiteType",
+    "WebhookCheckSuiteCompletedPropCheckSuiteTypeForResponse",
+    "WebhookCheckSuiteCompletedType",
+    "WebhookCheckSuiteCompletedTypeForResponse",
 )

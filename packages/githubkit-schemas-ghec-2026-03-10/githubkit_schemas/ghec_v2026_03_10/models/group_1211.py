@@ -12,19 +12,18 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0020 import Repository
+from .group_0112 import CustomPropertyValue
 
 
-class OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200(GitHubModel):
-    """OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200"""
+class OrganizationsOrgOrgPropertiesValuesPatchBody(GitHubModel):
+    """OrganizationsOrgOrgPropertiesValuesPatchBody"""
 
-    total_count: Missing[int] = Field(default=UNSET)
-    repositories: Missing[list[Repository]] = Field(default=UNSET)
+    properties: list[CustomPropertyValue] = Field(
+        description="A list of custom property names and associated values to apply to the organization."
+    )
 
 
-model_rebuild(OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200)
+model_rebuild(OrganizationsOrgOrgPropertiesValuesPatchBody)
 
-__all__ = ("OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200",)
+__all__ = ("OrganizationsOrgOrgPropertiesValuesPatchBody",)

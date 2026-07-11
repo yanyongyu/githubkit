@@ -13,16 +13,15 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0139 import CodespaceMachine
+
+class ReposOwnerRepoTopicsPutBody(GitHubModel):
+    """ReposOwnerRepoTopicsPutBody"""
+
+    names: list[str] = Field(
+        description="An array of topics to add to the repository. Pass one or more topics to _replace_ the set of existing topics. Send an empty array (`[]`) to clear all topics from the repository. **Note:** Topic `names` will be saved as lowercase."
+    )
 
 
-class UserCodespacesCodespaceNameMachinesGetResponse200(GitHubModel):
-    """UserCodespacesCodespaceNameMachinesGetResponse200"""
+model_rebuild(ReposOwnerRepoTopicsPutBody)
 
-    total_count: int = Field()
-    machines: list[CodespaceMachine] = Field()
-
-
-model_rebuild(UserCodespacesCodespaceNameMachinesGetResponse200)
-
-__all__ = ("UserCodespacesCodespaceNameMachinesGetResponse200",)
+__all__ = ("ReposOwnerRepoTopicsPutBody",)

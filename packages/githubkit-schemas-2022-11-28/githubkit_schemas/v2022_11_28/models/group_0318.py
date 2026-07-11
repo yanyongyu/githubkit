@@ -18,17 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CodeQualitySetupUpdateAnyof2(GitHubModel):
-    """CodeQualitySetupUpdateAnyof2"""
+class CodeQualitySetupUpdateAnyof1(GitHubModel):
+    """CodeQualitySetupUpdateAnyof1"""
 
     state: Missing[Literal["configured", "not-configured"]] = Field(
         default=UNSET, description="The desired state of code quality setup."
     )
-    runner_type: Missing[Literal["standard", "labeled"]] = Field(
-        default=UNSET, description="Runner type to be used."
+    runner_type: Literal["standard", "labeled"] = Field(
+        description="Runner type to be used."
     )
-    runner_label: Union[str, None] = Field(
-        description="Runner label to be used if the runner type is labeled."
+    runner_label: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="Runner label to be used if the runner type is labeled.",
     )
     languages: Missing[
         list[
@@ -39,6 +40,6 @@ class CodeQualitySetupUpdateAnyof2(GitHubModel):
     ] = Field(default=UNSET, description="Languages to be analyzed.")
 
 
-model_rebuild(CodeQualitySetupUpdateAnyof2)
+model_rebuild(CodeQualitySetupUpdateAnyof1)
 
-__all__ = ("CodeQualitySetupUpdateAnyof2",)
+__all__ = ("CodeQualitySetupUpdateAnyof1",)

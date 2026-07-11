@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,19 +18,22 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0188 import CustomProperty
-from .group_0514 import EnterpriseWebhooks
-from .group_0515 import SimpleInstallation
-from .group_0516 import OrganizationSimpleWebhooks
+from .group_0522 import EnterpriseWebhooks
+from .group_0523 import SimpleInstallation
+from .group_0524 import OrganizationSimpleWebhooks
+from .group_0525 import RepositoryWebhooks
+from .group_0595 import WebhookCodeScanningAlertReopenedPropAlert
 
 
-class WebhookCustomPropertyCreated(GitHubModel):
-    """custom property created event"""
+class WebhookCodeScanningAlertReopened(GitHubModel):
+    """code_scanning_alert reopened event"""
 
-    action: Literal["created"] = Field()
-    definition: CustomProperty = Field(
-        title="Organization Custom Property",
-        description="Custom property defined on an organization",
+    action: Literal["reopened"] = Field()
+    alert: WebhookCodeScanningAlertReopenedPropAlert = Field(
+        description="The code scanning alert involved in the event."
+    )
+    commit_oid: Union[str, None] = Field(
+        description="The commit SHA of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty."
     )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
@@ -47,11 +50,16 @@ class WebhookCustomPropertyCreated(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
+    ref: Union[str, None] = Field(
+        description="The Git reference of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty."
     )
+    repository: RepositoryWebhooks = Field(
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookCustomPropertyCreated)
+model_rebuild(WebhookCodeScanningAlertReopened)
 
-__all__ = ("WebhookCustomPropertyCreated",)
+__all__ = ("WebhookCodeScanningAlertReopened",)

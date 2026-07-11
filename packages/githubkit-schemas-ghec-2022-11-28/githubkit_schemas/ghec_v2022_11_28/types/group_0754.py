@@ -13,50 +13,47 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0588 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0589 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0590 import (
+from .group_0599 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0600 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0601 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0591 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0607 import WebhooksIssueCommentType, WebhooksIssueCommentTypeForResponse
-from .group_0608 import WebhooksChangesType, WebhooksChangesTypeForResponse
+from .group_0602 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0618 import WebhooksIssueCommentType, WebhooksIssueCommentTypeForResponse
 from .group_0755 import (
-    WebhookIssueCommentEditedPropIssueType,
-    WebhookIssueCommentEditedPropIssueTypeForResponse,
+    WebhookIssueCommentDeletedPropIssueType,
+    WebhookIssueCommentDeletedPropIssueTypeForResponse,
 )
 
 
-class WebhookIssueCommentEditedType(TypedDict):
-    """issue_comment edited event"""
+class WebhookIssueCommentDeletedType(TypedDict):
+    """issue_comment deleted event"""
 
-    action: Literal["edited"]
-    changes: WebhooksChangesType
+    action: Literal["deleted"]
     comment: WebhooksIssueCommentType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssueCommentEditedPropIssueType
+    issue: WebhookIssueCommentDeletedPropIssueType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookIssueCommentEditedTypeForResponse(TypedDict):
-    """issue_comment edited event"""
+class WebhookIssueCommentDeletedTypeForResponse(TypedDict):
+    """issue_comment deleted event"""
 
-    action: Literal["edited"]
-    changes: WebhooksChangesTypeForResponse
+    action: Literal["deleted"]
     comment: WebhooksIssueCommentTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhookIssueCommentEditedPropIssueTypeForResponse
+    issue: WebhookIssueCommentDeletedPropIssueTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookIssueCommentEditedType",
-    "WebhookIssueCommentEditedTypeForResponse",
+    "WebhookIssueCommentDeletedType",
+    "WebhookIssueCommentDeletedTypeForResponse",
 )

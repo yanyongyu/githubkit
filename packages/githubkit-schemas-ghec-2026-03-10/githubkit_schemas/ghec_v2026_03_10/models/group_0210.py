@@ -9,24 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class IssueCommentMinimized(GitHubModel):
-    """Minimized Issue Comment
+class ReactionRollup(GitHubModel):
+    """Reaction Rollup"""
 
-    Details about why an issue comment was minimized.
-    """
+    url: str = Field()
+    total_count: int = Field()
+    plus_one: int = Field(alias="+1")
+    minus_one: int = Field(alias="-1")
+    laugh: int = Field()
+    confused: int = Field()
+    heart: int = Field()
+    hooray: int = Field()
+    eyes: int = Field()
+    rocket: int = Field()
 
-    reason: Union[str, None] = Field(
-        description="The reason the comment was minimized."
-    )
 
+model_rebuild(ReactionRollup)
 
-model_rebuild(IssueCommentMinimized)
-
-__all__ = ("IssueCommentMinimized",)
+__all__ = ("ReactionRollup",)

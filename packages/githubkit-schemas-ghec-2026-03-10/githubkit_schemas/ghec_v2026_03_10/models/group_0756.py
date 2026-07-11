@@ -19,7 +19,7 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhookIssueCommentEditedPropIssueAllof0PropAssignee(GitHubModel):
+class WebhookIssueCommentDeletedPropIssueAllof0PropAssignee(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -48,7 +48,7 @@ class WebhookIssueCommentEditedPropIssueAllof0PropAssignee(GitHubModel):
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookIssueCommentEditedPropIssueAllof0PropLabelsItems(GitHubModel):
+class WebhookIssueCommentDeletedPropIssueAllof0PropLabelsItems(GitHubModel):
     """Label"""
 
     color: str = Field(
@@ -62,8 +62,8 @@ class WebhookIssueCommentEditedPropIssueAllof0PropLabelsItems(GitHubModel):
     url: str = Field(description="URL for the label")
 
 
-class WebhookIssueCommentEditedPropIssueAllof0PropPullRequest(GitHubModel):
-    """WebhookIssueCommentEditedPropIssueAllof0PropPullRequest"""
+class WebhookIssueCommentDeletedPropIssueAllof0PropPullRequest(GitHubModel):
+    """WebhookIssueCommentDeletedPropIssueAllof0PropPullRequest"""
 
     diff_url: Missing[str] = Field(default=UNSET)
     html_url: Missing[str] = Field(default=UNSET)
@@ -72,12 +72,12 @@ class WebhookIssueCommentEditedPropIssueAllof0PropPullRequest(GitHubModel):
     url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookIssueCommentEditedPropIssueAllof0PropAssignee)
-model_rebuild(WebhookIssueCommentEditedPropIssueAllof0PropLabelsItems)
-model_rebuild(WebhookIssueCommentEditedPropIssueAllof0PropPullRequest)
+model_rebuild(WebhookIssueCommentDeletedPropIssueAllof0PropAssignee)
+model_rebuild(WebhookIssueCommentDeletedPropIssueAllof0PropLabelsItems)
+model_rebuild(WebhookIssueCommentDeletedPropIssueAllof0PropPullRequest)
 
 __all__ = (
-    "WebhookIssueCommentEditedPropIssueAllof0PropAssignee",
-    "WebhookIssueCommentEditedPropIssueAllof0PropLabelsItems",
-    "WebhookIssueCommentEditedPropIssueAllof0PropPullRequest",
+    "WebhookIssueCommentDeletedPropIssueAllof0PropAssignee",
+    "WebhookIssueCommentDeletedPropIssueAllof0PropLabelsItems",
+    "WebhookIssueCommentDeletedPropIssueAllof0PropPullRequest",
 )

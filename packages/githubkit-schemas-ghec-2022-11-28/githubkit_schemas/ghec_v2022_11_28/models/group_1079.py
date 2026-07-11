@@ -9,33 +9,81 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0017 import AppPermissions
+from .group_1080 import (
+    AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0,
+    AgentsTasksTaskIdGetResponse200Allof0PropRepository,
+    AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems,
+)
+from .group_1081 import (
+    AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItems,
+    AgentsTasksTaskIdGetResponse200Allof0PropOwner,
+)
 
 
-class AppInstallationsInstallationIdAccessTokensPostBody(GitHubModel):
-    """AppInstallationsInstallationIdAccessTokensPostBody"""
+class AgentsTasksTaskIdGetResponse200Allof0(GitHubModel):
+    """AgentsTasksTaskIdGetResponse200Allof0"""
 
-    repositories: Missing[list[str]] = Field(
-        default=UNSET,
-        description="List of repository names that the token should have access to",
+    id: str = Field(description="Unique task identifier")
+    url: Missing[str] = Field(default=UNSET, description="API URL for this task")
+    html_url: Missing[str] = Field(default=UNSET, description="Web URL for this task")
+    name: Missing[str] = Field(
+        default=UNSET, description="Human-readable name derived from the task prompt"
     )
-    repository_ids: Missing[list[int]] = Field(
-        default=UNSET,
-        description="List of repository IDs that the token should have access to",
+    creator: Missing[AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0] = Field(
+        default=UNSET, description="The entity who created this task"
     )
-    permissions: Missing[AppPermissions] = Field(
-        default=UNSET,
-        title="App Permissions",
-        description="The permissions granted to the user access token.",
+    creator_type: Missing[Literal["user", "organization"]] = Field(
+        default=UNSET, description="Type of the task creator"
     )
+    user_collaborators: Missing[
+        list[AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems]
+    ] = Field(default=UNSET, description="User objects of collaborators on this task")
+    owner: Missing[AgentsTasksTaskIdGetResponse200Allof0PropOwner] = Field(
+        default=UNSET, description="The owner of the repository"
+    )
+    repository: Missing[AgentsTasksTaskIdGetResponse200Allof0PropRepository] = Field(
+        default=UNSET, description="The repository this task belongs to"
+    )
+    state: Literal[
+        "queued",
+        "in_progress",
+        "completed",
+        "failed",
+        "idle",
+        "waiting_for_user",
+        "timed_out",
+        "cancelled",
+    ] = Field(
+        description="Current state of the task, derived from its most recent session"
+    )
+    session_count: Missing[int] = Field(
+        default=UNSET, description="Number of sessions in this task"
+    )
+    artifacts: Missing[
+        list[AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItems]
+    ] = Field(
+        default=UNSET,
+        description="Resources created by this task (PRs, branches, etc.)",
+    )
+    archived_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="Timestamp when the task was archived, null if not archived",
+    )
+    updated_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="Timestamp of the most recent update"
+    )
+    created_at: _dt.datetime = Field(description="Timestamp when the task was created")
 
 
-model_rebuild(AppInstallationsInstallationIdAccessTokensPostBody)
+model_rebuild(AgentsTasksTaskIdGetResponse200Allof0)
 
-__all__ = ("AppInstallationsInstallationIdAccessTokensPostBody",)
+__all__ = ("AgentsTasksTaskIdGetResponse200Allof0",)

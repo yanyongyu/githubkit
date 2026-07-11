@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -17,90 +18,24 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0001 import CvssSeverities
+
+class WebhooksProjectChanges(GitHubModel):
+    """WebhooksProjectChanges"""
+
+    archived_at: Missing[WebhooksProjectChangesPropArchivedAt] = Field(default=UNSET)
 
 
-class WebhooksSecurityAdvisory(GitHubModel):
-    """WebhooksSecurityAdvisory
+class WebhooksProjectChangesPropArchivedAt(GitHubModel):
+    """WebhooksProjectChangesPropArchivedAt"""
 
-    The details of the security advisory, including summary, description, and
-    severity.
-    """
-
-    cvss_severities: Missing[Union[CvssSeverities, None]] = Field(default=UNSET)
-    cwes: list[WebhooksSecurityAdvisoryPropCwesItems] = Field()
-    description: str = Field()
-    ghsa_id: str = Field()
-    identifiers: list[WebhooksSecurityAdvisoryPropIdentifiersItems] = Field()
-    published_at: str = Field()
-    references: list[WebhooksSecurityAdvisoryPropReferencesItems] = Field()
-    severity: str = Field()
-    summary: str = Field()
-    updated_at: str = Field()
-    vulnerabilities: list[WebhooksSecurityAdvisoryPropVulnerabilitiesItems] = Field()
-    withdrawn_at: Union[str, None] = Field()
+    from_: Missing[Union[_dt.datetime, None]] = Field(default=UNSET, alias="from")
+    to: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
 
 
-class WebhooksSecurityAdvisoryPropCwesItems(GitHubModel):
-    """WebhooksSecurityAdvisoryPropCwesItems"""
-
-    cwe_id: str = Field()
-    name: str = Field()
-
-
-class WebhooksSecurityAdvisoryPropIdentifiersItems(GitHubModel):
-    """WebhooksSecurityAdvisoryPropIdentifiersItems"""
-
-    type: str = Field()
-    value: str = Field()
-
-
-class WebhooksSecurityAdvisoryPropReferencesItems(GitHubModel):
-    """WebhooksSecurityAdvisoryPropReferencesItems"""
-
-    url: str = Field()
-
-
-class WebhooksSecurityAdvisoryPropVulnerabilitiesItems(GitHubModel):
-    """WebhooksSecurityAdvisoryPropVulnerabilitiesItems"""
-
-    first_patched_version: Union[
-        WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion, None
-    ] = Field()
-    package: WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage = Field()
-    severity: str = Field()
-    vulnerable_version_range: str = Field()
-
-
-class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion(
-    GitHubModel
-):
-    """WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion"""
-
-    identifier: str = Field()
-
-
-class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage(GitHubModel):
-    """WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage"""
-
-    ecosystem: str = Field()
-    name: str = Field()
-
-
-model_rebuild(WebhooksSecurityAdvisory)
-model_rebuild(WebhooksSecurityAdvisoryPropCwesItems)
-model_rebuild(WebhooksSecurityAdvisoryPropIdentifiersItems)
-model_rebuild(WebhooksSecurityAdvisoryPropReferencesItems)
-model_rebuild(WebhooksSecurityAdvisoryPropVulnerabilitiesItems)
-model_rebuild(WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion)
-model_rebuild(WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage)
+model_rebuild(WebhooksProjectChanges)
+model_rebuild(WebhooksProjectChangesPropArchivedAt)
 
 __all__ = (
-    "WebhooksSecurityAdvisory",
-    "WebhooksSecurityAdvisoryPropCwesItems",
-    "WebhooksSecurityAdvisoryPropIdentifiersItems",
-    "WebhooksSecurityAdvisoryPropReferencesItems",
-    "WebhooksSecurityAdvisoryPropVulnerabilitiesItems",
-    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion",
-    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage",
+    "WebhooksProjectChanges",
+    "WebhooksProjectChangesPropArchivedAt",
 )

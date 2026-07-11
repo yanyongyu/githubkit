@@ -13,71 +13,124 @@ import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0087 import (
-    MarketplaceListingPlanType,
-    MarketplaceListingPlanTypeForResponse,
-)
 
+class PublicUserType(TypedDict):
+    """Public User
 
-class UserMarketplacePurchaseType(TypedDict):
-    """User Marketplace Purchase
-
-    User Marketplace Purchase
+    Public User
     """
 
-    billing_cycle: str
-    next_billing_date: Union[_dt.datetime, None]
-    unit_count: Union[int, None]
-    on_free_trial: bool
-    free_trial_ends_on: Union[_dt.datetime, None]
-    updated_at: Union[_dt.datetime, None]
-    account: MarketplaceAccountType
-    plan: MarketplaceListingPlanType
+    login: str
+    id: int
+    user_view_type: NotRequired[str]
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    name: Union[str, None]
+    company: Union[str, None]
+    blog: Union[str, None]
+    location: Union[str, None]
+    email: Union[str, None]
+    notification_email: NotRequired[Union[str, None]]
+    hireable: Union[bool, None]
+    bio: Union[str, None]
+    twitter_username: NotRequired[Union[str, None]]
+    public_repos: int
+    public_gists: int
+    followers: int
+    following: int
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    plan: NotRequired[PublicUserPropPlanType]
+    private_gists: NotRequired[int]
+    total_private_repos: NotRequired[int]
+    owned_private_repos: NotRequired[int]
+    disk_usage: NotRequired[int]
+    collaborators: NotRequired[int]
 
 
-class UserMarketplacePurchaseTypeForResponse(TypedDict):
-    """User Marketplace Purchase
+class PublicUserTypeForResponse(TypedDict):
+    """Public User
 
-    User Marketplace Purchase
+    Public User
     """
 
-    billing_cycle: str
-    next_billing_date: Union[str, None]
-    unit_count: Union[int, None]
-    on_free_trial: bool
-    free_trial_ends_on: Union[str, None]
-    updated_at: Union[str, None]
-    account: MarketplaceAccountTypeForResponse
-    plan: MarketplaceListingPlanTypeForResponse
-
-
-class MarketplaceAccountType(TypedDict):
-    """Marketplace Account"""
-
-    url: str
-    id: int
-    type: str
-    node_id: NotRequired[str]
     login: str
-    email: NotRequired[Union[str, None]]
-    organization_billing_email: NotRequired[Union[str, None]]
-
-
-class MarketplaceAccountTypeForResponse(TypedDict):
-    """Marketplace Account"""
-
-    url: str
     id: int
+    user_view_type: NotRequired[str]
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
     type: str
-    node_id: NotRequired[str]
-    login: str
-    email: NotRequired[Union[str, None]]
-    organization_billing_email: NotRequired[Union[str, None]]
+    site_admin: bool
+    name: Union[str, None]
+    company: Union[str, None]
+    blog: Union[str, None]
+    location: Union[str, None]
+    email: Union[str, None]
+    notification_email: NotRequired[Union[str, None]]
+    hireable: Union[bool, None]
+    bio: Union[str, None]
+    twitter_username: NotRequired[Union[str, None]]
+    public_repos: int
+    public_gists: int
+    followers: int
+    following: int
+    created_at: str
+    updated_at: str
+    plan: NotRequired[PublicUserPropPlanTypeForResponse]
+    private_gists: NotRequired[int]
+    total_private_repos: NotRequired[int]
+    owned_private_repos: NotRequired[int]
+    disk_usage: NotRequired[int]
+    collaborators: NotRequired[int]
+
+
+class PublicUserPropPlanType(TypedDict):
+    """PublicUserPropPlan"""
+
+    collaborators: int
+    name: str
+    space: int
+    private_repos: int
+
+
+class PublicUserPropPlanTypeForResponse(TypedDict):
+    """PublicUserPropPlan"""
+
+    collaborators: int
+    name: str
+    space: int
+    private_repos: int
 
 
 __all__ = (
-    "MarketplaceAccountType",
-    "MarketplaceAccountTypeForResponse",
-    "UserMarketplacePurchaseType",
-    "UserMarketplacePurchaseTypeForResponse",
+    "PublicUserPropPlanType",
+    "PublicUserPropPlanTypeForResponse",
+    "PublicUserType",
+    "PublicUserTypeForResponse",
 )

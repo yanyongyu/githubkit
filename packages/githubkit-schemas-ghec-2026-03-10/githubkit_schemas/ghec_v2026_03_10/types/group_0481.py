@@ -9,154 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0458 import IssueReferenceType, IssueReferenceTypeForResponse
 
 
-class TimelineCommittedEventType(TypedDict):
-    """Timeline Committed Event
+class ParentIssueRemovedIssueEventType(TypedDict):
+    """Parent-issue Removed Issue Event
 
-    Timeline Committed Event
+    Parent-issue Removed Issue Event
     """
 
-    event: NotRequired[Literal["committed"]]
-    sha: str
+    id: int
     node_id: str
     url: str
-    author: TimelineCommittedEventPropAuthorType
-    committer: TimelineCommittedEventPropCommitterType
-    message: str
-    tree: TimelineCommittedEventPropTreeType
-    parents: list[TimelineCommittedEventPropParentsItemsType]
-    verification: TimelineCommittedEventPropVerificationType
-    html_url: str
+    actor: SimpleUserType
+    event: str
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationType, None]
+    parent_issue: Union[None, IssueReferenceType, None]
 
 
-class TimelineCommittedEventTypeForResponse(TypedDict):
-    """Timeline Committed Event
+class ParentIssueRemovedIssueEventTypeForResponse(TypedDict):
+    """Parent-issue Removed Issue Event
 
-    Timeline Committed Event
+    Parent-issue Removed Issue Event
     """
 
-    event: NotRequired[Literal["committed"]]
-    sha: str
+    id: int
     node_id: str
     url: str
-    author: TimelineCommittedEventPropAuthorTypeForResponse
-    committer: TimelineCommittedEventPropCommitterTypeForResponse
-    message: str
-    tree: TimelineCommittedEventPropTreeTypeForResponse
-    parents: list[TimelineCommittedEventPropParentsItemsTypeForResponse]
-    verification: TimelineCommittedEventPropVerificationTypeForResponse
-    html_url: str
-
-
-class TimelineCommittedEventPropAuthorType(TypedDict):
-    """TimelineCommittedEventPropAuthor
-
-    Identifying information for the git-user
-    """
-
-    date: _dt.datetime
-    email: str
-    name: str
-
-
-class TimelineCommittedEventPropAuthorTypeForResponse(TypedDict):
-    """TimelineCommittedEventPropAuthor
-
-    Identifying information for the git-user
-    """
-
-    date: str
-    email: str
-    name: str
-
-
-class TimelineCommittedEventPropCommitterType(TypedDict):
-    """TimelineCommittedEventPropCommitter
-
-    Identifying information for the git-user
-    """
-
-    date: _dt.datetime
-    email: str
-    name: str
-
-
-class TimelineCommittedEventPropCommitterTypeForResponse(TypedDict):
-    """TimelineCommittedEventPropCommitter
-
-    Identifying information for the git-user
-    """
-
-    date: str
-    email: str
-    name: str
-
-
-class TimelineCommittedEventPropTreeType(TypedDict):
-    """TimelineCommittedEventPropTree"""
-
-    sha: str
-    url: str
-
-
-class TimelineCommittedEventPropTreeTypeForResponse(TypedDict):
-    """TimelineCommittedEventPropTree"""
-
-    sha: str
-    url: str
-
-
-class TimelineCommittedEventPropParentsItemsType(TypedDict):
-    """TimelineCommittedEventPropParentsItems"""
-
-    sha: str
-    url: str
-    html_url: str
-
-
-class TimelineCommittedEventPropParentsItemsTypeForResponse(TypedDict):
-    """TimelineCommittedEventPropParentsItems"""
-
-    sha: str
-    url: str
-    html_url: str
-
-
-class TimelineCommittedEventPropVerificationType(TypedDict):
-    """TimelineCommittedEventPropVerification"""
-
-    verified: bool
-    reason: str
-    signature: Union[str, None]
-    payload: Union[str, None]
-    verified_at: Union[str, None]
-
-
-class TimelineCommittedEventPropVerificationTypeForResponse(TypedDict):
-    """TimelineCommittedEventPropVerification"""
-
-    verified: bool
-    reason: str
-    signature: Union[str, None]
-    payload: Union[str, None]
-    verified_at: Union[str, None]
+    actor: SimpleUserTypeForResponse
+    event: str
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
+    parent_issue: Union[None, IssueReferenceTypeForResponse, None]
 
 
 __all__ = (
-    "TimelineCommittedEventPropAuthorType",
-    "TimelineCommittedEventPropAuthorTypeForResponse",
-    "TimelineCommittedEventPropCommitterType",
-    "TimelineCommittedEventPropCommitterTypeForResponse",
-    "TimelineCommittedEventPropParentsItemsType",
-    "TimelineCommittedEventPropParentsItemsTypeForResponse",
-    "TimelineCommittedEventPropTreeType",
-    "TimelineCommittedEventPropTreeTypeForResponse",
-    "TimelineCommittedEventPropVerificationType",
-    "TimelineCommittedEventPropVerificationTypeForResponse",
-    "TimelineCommittedEventType",
-    "TimelineCommittedEventTypeForResponse",
+    "ParentIssueRemovedIssueEventType",
+    "ParentIssueRemovedIssueEventTypeForResponse",
 )

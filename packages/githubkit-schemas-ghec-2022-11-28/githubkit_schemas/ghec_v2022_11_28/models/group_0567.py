@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,47 +17,38 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0247 import MinimalRepository
-from .group_0566 import SearchResultTextMatchesItems
 
+class Group(GitHubModel):
+    """Group"""
 
-class CodeSearchResultItem(GitHubModel):
-    """Code Search Result Item
-
-    Code Search Result Item
-    """
-
-    name: str = Field()
-    path: str = Field()
-    sha: str = Field()
-    url: str = Field()
-    git_url: str = Field()
-    html_url: str = Field()
-    repository: MinimalRepository = Field(
-        title="Minimal Repository", description="Minimal Repository"
+    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:Group"]] = Field(
+        description="The URIs that are used to indicate the namespaces of the SCIM schemas."
     )
-    score: float = Field()
-    file_size: Missing[int] = Field(default=UNSET)
-    language: Missing[Union[str, None]] = Field(default=UNSET)
-    last_modified_at: Missing[_dt.datetime] = Field(default=UNSET)
-    line_numbers: Missing[list[str]] = Field(default=UNSET)
-    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
-        default=UNSET, title="Search Result Text Matches"
+    external_id: str = Field(
+        alias="externalId",
+        description="A unique identifier for the resource as defined by the provisioning client.",
+    )
+    display_name: str = Field(
+        alias="displayName", description="A human-readable name for a security group."
+    )
+    members: Missing[list[GroupPropMembersItems]] = Field(
+        default=UNSET, description="The group members."
     )
 
 
-class SearchCodeGetResponse200(GitHubModel):
-    """SearchCodeGetResponse200"""
+class GroupPropMembersItems(GitHubModel):
+    """GroupPropMembersItems"""
 
-    total_count: int = Field()
-    incomplete_results: bool = Field()
-    items: list[CodeSearchResultItem] = Field()
+    value: str = Field(description="The local unique identifier for the member")
+    display_name: str = Field(
+        alias="displayName", description="The display name associated with the member"
+    )
 
 
-model_rebuild(CodeSearchResultItem)
-model_rebuild(SearchCodeGetResponse200)
+model_rebuild(Group)
+model_rebuild(GroupPropMembersItems)
 
 __all__ = (
-    "CodeSearchResultItem",
-    "SearchCodeGetResponse200",
+    "Group",
+    "GroupPropMembersItems",
 )

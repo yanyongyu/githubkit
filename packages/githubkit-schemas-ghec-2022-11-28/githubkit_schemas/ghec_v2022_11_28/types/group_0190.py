@@ -9,69 +9,104 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class GetBudgetType(TypedDict):
-    """GetBudget"""
+class BillingAiCreditUsageReportGheType(TypedDict):
+    """BillingAiCreditUsageReportGhe"""
+
+    time_period: BillingAiCreditUsageReportGhePropTimePeriodType
+    enterprise: str
+    user: NotRequired[str]
+    organization: NotRequired[str]
+    product: NotRequired[str]
+    model: NotRequired[str]
+    cost_center: NotRequired[BillingAiCreditUsageReportGhePropCostCenterType]
+    usage_items: list[BillingAiCreditUsageReportGhePropUsageItemsItemsType]
+
+
+class BillingAiCreditUsageReportGheTypeForResponse(TypedDict):
+    """BillingAiCreditUsageReportGhe"""
+
+    time_period: BillingAiCreditUsageReportGhePropTimePeriodTypeForResponse
+    enterprise: str
+    user: NotRequired[str]
+    organization: NotRequired[str]
+    product: NotRequired[str]
+    model: NotRequired[str]
+    cost_center: NotRequired[BillingAiCreditUsageReportGhePropCostCenterTypeForResponse]
+    usage_items: list[BillingAiCreditUsageReportGhePropUsageItemsItemsTypeForResponse]
+
+
+class BillingAiCreditUsageReportGhePropTimePeriodType(TypedDict):
+    """BillingAiCreditUsageReportGhePropTimePeriod"""
+
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
+
+
+class BillingAiCreditUsageReportGhePropTimePeriodTypeForResponse(TypedDict):
+    """BillingAiCreditUsageReportGhePropTimePeriod"""
+
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
+
+
+class BillingAiCreditUsageReportGhePropCostCenterType(TypedDict):
+    """BillingAiCreditUsageReportGhePropCostCenter"""
 
     id: str
-    budget_scope: Literal[
-        "enterprise",
-        "organization",
-        "repository",
-        "cost_center",
-        "multi_user_customer",
-        "user",
-    ]
-    budget_entity_name: str
-    user: NotRequired[str]
-    budget_amount: int
-    prevent_further_usage: bool
-    budget_product_sku: str
-    budget_type: Literal["ProductPricing", "SkuPricing"]
-    budget_alerting: GetBudgetPropBudgetAlertingType
+    name: str
 
 
-class GetBudgetTypeForResponse(TypedDict):
-    """GetBudget"""
+class BillingAiCreditUsageReportGhePropCostCenterTypeForResponse(TypedDict):
+    """BillingAiCreditUsageReportGhePropCostCenter"""
 
     id: str
-    budget_scope: Literal[
-        "enterprise",
-        "organization",
-        "repository",
-        "cost_center",
-        "multi_user_customer",
-        "user",
-    ]
-    budget_entity_name: str
-    user: NotRequired[str]
-    budget_amount: int
-    prevent_further_usage: bool
-    budget_product_sku: str
-    budget_type: Literal["ProductPricing", "SkuPricing"]
-    budget_alerting: GetBudgetPropBudgetAlertingTypeForResponse
+    name: str
 
 
-class GetBudgetPropBudgetAlertingType(TypedDict):
-    """GetBudgetPropBudgetAlerting"""
+class BillingAiCreditUsageReportGhePropUsageItemsItemsType(TypedDict):
+    """BillingAiCreditUsageReportGhePropUsageItemsItems"""
 
-    will_alert: NotRequired[bool]
-    alert_recipients: NotRequired[list[str]]
+    product: str
+    sku: str
+    model: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: float
+    gross_amount: float
+    discount_quantity: float
+    discount_amount: float
+    net_quantity: float
+    net_amount: float
 
 
-class GetBudgetPropBudgetAlertingTypeForResponse(TypedDict):
-    """GetBudgetPropBudgetAlerting"""
+class BillingAiCreditUsageReportGhePropUsageItemsItemsTypeForResponse(TypedDict):
+    """BillingAiCreditUsageReportGhePropUsageItemsItems"""
 
-    will_alert: NotRequired[bool]
-    alert_recipients: NotRequired[list[str]]
+    product: str
+    sku: str
+    model: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: float
+    gross_amount: float
+    discount_quantity: float
+    discount_amount: float
+    net_quantity: float
+    net_amount: float
 
 
 __all__ = (
-    "GetBudgetPropBudgetAlertingType",
-    "GetBudgetPropBudgetAlertingTypeForResponse",
-    "GetBudgetType",
-    "GetBudgetTypeForResponse",
+    "BillingAiCreditUsageReportGhePropCostCenterType",
+    "BillingAiCreditUsageReportGhePropCostCenterTypeForResponse",
+    "BillingAiCreditUsageReportGhePropTimePeriodType",
+    "BillingAiCreditUsageReportGhePropTimePeriodTypeForResponse",
+    "BillingAiCreditUsageReportGhePropUsageItemsItemsType",
+    "BillingAiCreditUsageReportGhePropUsageItemsItemsTypeForResponse",
+    "BillingAiCreditUsageReportGheType",
+    "BillingAiCreditUsageReportGheTypeForResponse",
 )

@@ -11,18 +11,27 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsRunnersRunnerIdLabelsPutBody(GitHubModel):
-    """OrgsOrgActionsRunnersRunnerIdLabelsPutBody"""
+class OrgsOrgActionsOidcCustomizationSubPutBody(GitHubModel):
+    """Actions OIDC Subject customization
 
-    labels: list[str] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        description="The names of the custom labels to set for the runner. You can pass an empty array to remove all custom labels.",
+    Actions OIDC Subject customization
+    """
+
+    include_claim_keys: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores.",
+    )
+    use_immutable_subject: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to opt in to the immutable OIDC subject claim format for the organization. When `true`, new OIDC tokens will use a stable, repository-ID-based `sub` claim instead of the name-based format.",
     )
 
 
-model_rebuild(OrgsOrgActionsRunnersRunnerIdLabelsPutBody)
+model_rebuild(OrgsOrgActionsOidcCustomizationSubPutBody)
 
-__all__ = ("OrgsOrgActionsRunnersRunnerIdLabelsPutBody",)
+__all__ = ("OrgsOrgActionsOidcCustomizationSubPutBody",)

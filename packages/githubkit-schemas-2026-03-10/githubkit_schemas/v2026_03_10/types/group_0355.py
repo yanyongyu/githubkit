@@ -13,14 +13,14 @@ from typing import Literal, Union
 from typing_extensions import TypedDict
 
 
-class ContentSubmoduleType(TypedDict):
-    """Submodule Content
+class ContentSymlinkType(TypedDict):
+    """Symlink Content
 
-    An object describing a submodule
+    An object describing a symlink
     """
 
-    type: Literal["submodule"]
-    submodule_git_url: str
+    type: Literal["symlink"]
+    target: str
     size: int
     name: str
     path: str
@@ -29,17 +29,17 @@ class ContentSubmoduleType(TypedDict):
     git_url: Union[str, None]
     html_url: Union[str, None]
     download_url: Union[str, None]
-    links: ContentSubmodulePropLinksType
+    links: ContentSymlinkPropLinksType
 
 
-class ContentSubmoduleTypeForResponse(TypedDict):
-    """Submodule Content
+class ContentSymlinkTypeForResponse(TypedDict):
+    """Symlink Content
 
-    An object describing a submodule
+    An object describing a symlink
     """
 
-    type: Literal["submodule"]
-    submodule_git_url: str
+    type: Literal["symlink"]
+    target: str
     size: int
     name: str
     path: str
@@ -48,19 +48,19 @@ class ContentSubmoduleTypeForResponse(TypedDict):
     git_url: Union[str, None]
     html_url: Union[str, None]
     download_url: Union[str, None]
-    links: ContentSubmodulePropLinksTypeForResponse
+    links: ContentSymlinkPropLinksTypeForResponse
 
 
-class ContentSubmodulePropLinksType(TypedDict):
-    """ContentSubmodulePropLinks"""
+class ContentSymlinkPropLinksType(TypedDict):
+    """ContentSymlinkPropLinks"""
 
     git: Union[str, None]
     html: Union[str, None]
     self_: str
 
 
-class ContentSubmodulePropLinksTypeForResponse(TypedDict):
-    """ContentSubmodulePropLinks"""
+class ContentSymlinkPropLinksTypeForResponse(TypedDict):
+    """ContentSymlinkPropLinks"""
 
     git: Union[str, None]
     html: Union[str, None]
@@ -68,8 +68,8 @@ class ContentSubmodulePropLinksTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "ContentSubmodulePropLinksType",
-    "ContentSubmodulePropLinksTypeForResponse",
-    "ContentSubmoduleType",
-    "ContentSubmoduleTypeForResponse",
+    "ContentSymlinkPropLinksType",
+    "ContentSymlinkPropLinksTypeForResponse",
+    "ContentSymlinkType",
+    "ContentSymlinkTypeForResponse",
 )

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,46 +17,31 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class EnterprisesEnterpriseCopilotCustomAgentsGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse200"""
-
-    custom_agents: Missing[
-        Union[
-            list[
-                EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems
-            ],
-            None,
-        ]
-    ] = Field(
-        default=UNSET,
-        description="List of custom agents defined in the repository. Returns `null` if no source repository is configured.",
-    )
+from .group_0078 import CodeSecurityConfiguration
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems(
+class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200(
     GitHubModel
 ):
-    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems"""
+    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutRespons
+    e200
+    """
 
-    name: Missing[str] = Field(
+    default_for_new_repos: Missing[
+        Literal["all", "none", "private_and_internal", "public"]
+    ] = Field(
         default=UNSET,
-        description="The display name of the custom agent (derived from filename).",
+        description="Specifies which types of repository this security configuration is applied to by default.",
     )
-    file_path: Missing[str] = Field(
-        default=UNSET, description="The path to the agent definition file."
-    )
-    url: Missing[str] = Field(
-        default=UNSET, description="The URL to view the agent definition file."
+    configuration: Missing[CodeSecurityConfiguration] = Field(
+        default=UNSET, description="A code security configuration"
     )
 
 
-model_rebuild(EnterprisesEnterpriseCopilotCustomAgentsGetResponse200)
 model_rebuild(
-    EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems
+    EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200
 )
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse200",
-    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems",
+    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200",
 )

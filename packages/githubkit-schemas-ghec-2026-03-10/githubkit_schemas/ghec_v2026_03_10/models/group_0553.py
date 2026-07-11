@@ -9,42 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0551 import Meta
 
 
-class ScimEnterpriseGroupResponseAllof1(GitHubModel):
-    """ScimEnterpriseGroupResponseAllof1"""
+class RepositorySubscription(GitHubModel):
+    """Repository Invitation
 
-    id: Missing[str] = Field(
-        default=UNSET, description="The internally generated id for the group object."
+    Repository invitations let you manage who you collaborate with.
+    """
+
+    subscribed: bool = Field(
+        description="Determines if notifications should be received from this repository."
     )
-    members: Missing[list[ScimEnterpriseGroupResponseAllof1PropMembersItems]] = Field(
-        default=UNSET, description="The security group members."
+    ignored: bool = Field(
+        description="Determines if all notifications should be blocked from this repository."
     )
-    meta: Missing[Meta] = Field(
-        default=UNSET,
-        description="The metadata associated with the creation/updates to the user.",
-    )
+    reason: Union[str, None] = Field()
+    created_at: _dt.datetime = Field()
+    url: str = Field()
+    repository_url: str = Field()
 
 
-class ScimEnterpriseGroupResponseAllof1PropMembersItems(GitHubModel):
-    """ScimEnterpriseGroupResponseAllof1PropMembersItems"""
+model_rebuild(RepositorySubscription)
 
-    value: Missing[str] = Field(default=UNSET)
-    ref: Missing[str] = Field(default=UNSET, alias="$ref")
-    display: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(ScimEnterpriseGroupResponseAllof1)
-model_rebuild(ScimEnterpriseGroupResponseAllof1PropMembersItems)
-
-__all__ = (
-    "ScimEnterpriseGroupResponseAllof1",
-    "ScimEnterpriseGroupResponseAllof1PropMembersItems",
-)
+__all__ = ("RepositorySubscription",)

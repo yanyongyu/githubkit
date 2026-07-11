@@ -11,17 +11,21 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+
+from .group_0109 import OrganizationCustomProperty
 
 
-class EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBody(GitHubModel):
-    """EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBody"""
+class EnterprisesEnterpriseOrgPropertiesSchemaPatchBody(GitHubModel):
+    """EnterprisesEnterpriseOrgPropertiesSchemaPatchBody"""
 
-    usernames: list[str] = Field(
-        description="The GitHub user handles to add to the team."
+    properties: list[OrganizationCustomProperty] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The array of organization custom properties to create or update.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBody)
+model_rebuild(EnterprisesEnterpriseOrgPropertiesSchemaPatchBody)
 
-__all__ = ("EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBody",)
+__all__ = ("EnterprisesEnterpriseOrgPropertiesSchemaPatchBody",)

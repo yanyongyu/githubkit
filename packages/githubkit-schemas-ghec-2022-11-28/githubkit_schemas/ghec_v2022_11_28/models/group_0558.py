@@ -9,45 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class UserNameResponse(GitHubModel):
-    """UserNameResponse"""
+class Traffic(GitHubModel):
+    """Traffic"""
 
-    formatted: Missing[str] = Field(
-        default=UNSET,
-        description="The full name, including all middle names, titles, and suffixes as appropriate, formatted for display.",
-    )
-    family_name: Missing[str] = Field(
-        default=UNSET, alias="familyName", description="The family name of the user."
-    )
-    given_name: Missing[str] = Field(
-        default=UNSET, alias="givenName", description="The given name of the user."
-    )
-    middle_name: Missing[str] = Field(
-        default=UNSET, alias="middleName", description="The middle name(s) of the user."
-    )
+    timestamp: _dt.datetime = Field()
+    uniques: int = Field()
+    count: int = Field()
 
 
-class UserEmailsResponseItems(GitHubModel):
-    """UserEmailsResponseItems"""
+model_rebuild(Traffic)
 
-    value: str = Field(description="The email address.")
-    type: Missing[str] = Field(default=UNSET, description="The type of email address.")
-    primary: Missing[bool] = Field(
-        default=UNSET, description="Whether this email address is the primary address."
-    )
-
-
-model_rebuild(UserNameResponse)
-model_rebuild(UserEmailsResponseItems)
-
-__all__ = (
-    "UserEmailsResponseItems",
-    "UserNameResponse",
-)
+__all__ = ("Traffic",)

@@ -18,18 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0587 import EnterpriseWebhooks
-from .group_0588 import SimpleInstallation
-from .group_0589 import OrganizationSimpleWebhooks
-from .group_0590 import RepositoryWebhooks
-from .group_0606 import WebhooksIssueComment
-from .group_0776 import WebhookIssueCommentUnpinnedPropIssue
+from .group_0598 import EnterpriseWebhooks
+from .group_0599 import SimpleInstallation
+from .group_0600 import OrganizationSimpleWebhooks
+from .group_0601 import RepositoryWebhooks
+from .group_0617 import WebhooksIssueComment
+from .group_0776 import WebhookIssueCommentPinnedPropIssue
 
 
-class WebhookIssueCommentUnpinned(GitHubModel):
-    """issue_comment unpinned event"""
+class WebhookIssueCommentPinned(GitHubModel):
+    """issue_comment pinned event"""
 
-    action: Literal["unpinned"] = Field()
+    action: Literal["pinned"] = Field()
     comment: WebhooksIssueComment = Field(
         title="issue comment",
         description="The [comment](https://docs.github.com/enterprise-cloud@latest/rest/issues/comments#get-an-issue-comment) itself.",
@@ -44,7 +44,7 @@ class WebhookIssueCommentUnpinned(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    issue: WebhookIssueCommentUnpinnedPropIssue = Field(
+    issue: WebhookIssueCommentPinnedPropIssue = Field(
         description="The [issue](https://docs.github.com/enterprise-cloud@latest/rest/issues/issues#get-an-issue) the comment belongs to."
     )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
@@ -59,6 +59,6 @@ class WebhookIssueCommentUnpinned(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookIssueCommentUnpinned)
+model_rebuild(WebhookIssueCommentPinned)
 
-__all__ = ("WebhookIssueCommentUnpinned",)
+__all__ = ("WebhookIssueCommentPinned",)

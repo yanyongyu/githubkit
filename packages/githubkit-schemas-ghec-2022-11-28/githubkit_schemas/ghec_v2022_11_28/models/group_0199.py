@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -19,42 +18,59 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UsageReportExportList(GitHubModel):
-    """UsageReportExportList"""
+class UpdateCostCenter(GitHubModel):
+    """UpdateCostCenter"""
 
-    usage_report_exports: list[UsageReportExport] = Field(
-        description="List of usage report exports"
-    )
-
-
-class UsageReportExport(GitHubModel):
-    """UsageReportExport"""
-
-    id: str = Field(description="Unique identifier for the usage report export")
-    report_type: Literal["detailed", "summarized", "premium_request", "ai_credit"] = (
-        Field(description="The type of usage report")
-    )
-    start_date: _dt.date = Field(description="The start date for the report")
-    end_date: _dt.date = Field(description="The end date for the report")
-    status: Literal["processing", "completed", "failed"] = Field(
-        description="The current status of the report export"
-    )
-    download_urls: Missing[list[str]] = Field(
+    id: str = Field(description="ID of the cost center.")
+    name: str = Field(description="Name of the cost center.")
+    azure_subscription: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="URLs to download the completed report. Only present when the report status is `completed`.",
+        description="Azure subscription ID associated with the cost center. Only present for cost centers linked to Azure subscriptions.",
     )
-    created_at: Missing[_dt.datetime] = Field(
-        default=UNSET, description="When the report export was created"
+    state: Missing[Literal["active", "deleted"]] = Field(
+        default=UNSET, description="State of the cost center."
     )
-    actor: Missing[str] = Field(
-        default=UNSET, description="The login of the user who requested the export"
+    resources: list[UpdateCostCenterPropResourcesItems] = Field()
+    ai_credit_pool_enabled: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether the cost center draws from the AI credit pool (capped from member license entitlements).",
+    )
+    ai_credit_pool_state: Missing[UpdateCostCenterPropAiCreditPoolState] = Field(
+        default=UNSET,
+        description="Read-only cap-budget projection for the cost center. Only present when the cost center draws from the AI credit pool.",
     )
 
 
-model_rebuild(UsageReportExportList)
-model_rebuild(UsageReportExport)
+class UpdateCostCenterPropResourcesItems(GitHubModel):
+    """UpdateCostCenterPropResourcesItems"""
+
+    type: str = Field(description="Type of the resource.")
+    name: str = Field(description="Name of the resource.")
+
+
+class UpdateCostCenterPropAiCreditPoolState(GitHubModel):
+    """UpdateCostCenterPropAiCreditPoolState
+
+    Read-only cap-budget projection for the cost center. Only present when the cost
+    center draws from the AI credit pool.
+    """
+
+    target_amount: Missing[Union[float, None]] = Field(
+        default=UNSET,
+        description="The AI credit pool cap target amount, in dollars. Null when the cap budget has not been materialized yet.",
+    )
+    current_amount: Missing[Union[float, None]] = Field(
+        default=UNSET,
+        description="The current-month applied amount against the AI credit pool cap, in dollars. Null when the cap budget has not been materialized yet.",
+    )
+
+
+model_rebuild(UpdateCostCenter)
+model_rebuild(UpdateCostCenterPropResourcesItems)
+model_rebuild(UpdateCostCenterPropAiCreditPoolState)
 
 __all__ = (
-    "UsageReportExport",
-    "UsageReportExportList",
+    "UpdateCostCenter",
+    "UpdateCostCenterPropAiCreditPoolState",
+    "UpdateCostCenterPropResourcesItems",
 )

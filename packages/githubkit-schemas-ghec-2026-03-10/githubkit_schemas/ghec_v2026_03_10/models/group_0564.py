@@ -9,38 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0562 import Meta
 
-class SearchResultTextMatchesItems(GitHubModel):
-    """SearchResultTextMatchesItems"""
 
-    object_url: Missing[str] = Field(default=UNSET)
-    object_type: Missing[Union[str, None]] = Field(default=UNSET)
-    property_: Missing[str] = Field(default=UNSET, alias="property")
-    fragment: Missing[str] = Field(default=UNSET)
-    matches: Missing[list[SearchResultTextMatchesItemsPropMatchesItems]] = Field(
-        default=UNSET
+class ScimEnterpriseGroupResponseAllof1(GitHubModel):
+    """ScimEnterpriseGroupResponseAllof1"""
+
+    id: Missing[str] = Field(
+        default=UNSET, description="The internally generated id for the group object."
+    )
+    members: Missing[list[ScimEnterpriseGroupResponseAllof1PropMembersItems]] = Field(
+        default=UNSET, description="The security group members."
+    )
+    meta: Missing[Meta] = Field(
+        default=UNSET,
+        description="The metadata associated with the creation/updates to the user.",
     )
 
 
-class SearchResultTextMatchesItemsPropMatchesItems(GitHubModel):
-    """SearchResultTextMatchesItemsPropMatchesItems"""
+class ScimEnterpriseGroupResponseAllof1PropMembersItems(GitHubModel):
+    """ScimEnterpriseGroupResponseAllof1PropMembersItems"""
 
-    text: Missing[str] = Field(default=UNSET)
-    indices: Missing[list[int]] = Field(default=UNSET)
+    value: Missing[str] = Field(default=UNSET)
+    ref: Missing[str] = Field(default=UNSET, alias="$ref")
+    display: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(SearchResultTextMatchesItems)
-model_rebuild(SearchResultTextMatchesItemsPropMatchesItems)
+model_rebuild(ScimEnterpriseGroupResponseAllof1)
+model_rebuild(ScimEnterpriseGroupResponseAllof1PropMembersItems)
 
 __all__ = (
-    "SearchResultTextMatchesItems",
-    "SearchResultTextMatchesItemsPropMatchesItems",
+    "ScimEnterpriseGroupResponseAllof1",
+    "ScimEnterpriseGroupResponseAllof1PropMembersItems",
 )

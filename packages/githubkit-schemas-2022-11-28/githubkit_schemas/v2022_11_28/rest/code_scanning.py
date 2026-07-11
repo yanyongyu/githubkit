@@ -729,7 +729,7 @@ class CodeScanningClient:
         See also: https://docs.github.com/rest/code-scanning/code-scanning#get-the-status-of-an-autofix-for-a-code-scanning-alert
         """
 
-        from ..models import BasicError, CodeScanningAutofix, EventsGetResponse503
+        from ..models import BasicError, CodeScanningAutofix
 
         url = f"/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/autofix"
 
@@ -745,7 +745,7 @@ class CodeScanningClient:
                 "400": BasicError,
                 "403": BasicError,
                 "404": BasicError,
-                "503": EventsGetResponse503,
+                "500": BasicError,
             },
         )
 
@@ -769,7 +769,7 @@ class CodeScanningClient:
         See also: https://docs.github.com/rest/code-scanning/code-scanning#get-the-status-of-an-autofix-for-a-code-scanning-alert
         """
 
-        from ..models import BasicError, CodeScanningAutofix, EventsGetResponse503
+        from ..models import BasicError, CodeScanningAutofix
 
         url = f"/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/autofix"
 
@@ -785,7 +785,7 @@ class CodeScanningClient:
                 "400": BasicError,
                 "403": BasicError,
                 "404": BasicError,
-                "503": EventsGetResponse503,
+                "500": BasicError,
             },
         )
 
@@ -813,7 +813,7 @@ class CodeScanningClient:
         See also: https://docs.github.com/rest/code-scanning/code-scanning#create-an-autofix-for-a-code-scanning-alert
         """
 
-        from ..models import BasicError, CodeScanningAutofix, EventsGetResponse503
+        from ..models import BasicError, CodeScanningAutofix
 
         url = f"/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/autofix"
 
@@ -829,7 +829,7 @@ class CodeScanningClient:
                 "400": BasicError,
                 "403": BasicError,
                 "404": BasicError,
-                "503": EventsGetResponse503,
+                "500": BasicError,
             },
         )
 
@@ -857,7 +857,7 @@ class CodeScanningClient:
         See also: https://docs.github.com/rest/code-scanning/code-scanning#create-an-autofix-for-a-code-scanning-alert
         """
 
-        from ..models import BasicError, CodeScanningAutofix, EventsGetResponse503
+        from ..models import BasicError, CodeScanningAutofix
 
         url = f"/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/autofix"
 
@@ -873,7 +873,7 @@ class CodeScanningClient:
                 "400": BasicError,
                 "403": BasicError,
                 "404": BasicError,
-                "503": EventsGetResponse503,
+                "500": BasicError,
             },
         )
 

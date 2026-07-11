@@ -12,67 +12,51 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class AdvancedSecurityActiveCommittersType(TypedDict):
-    """AdvancedSecurityActiveCommitters"""
+class SecretScanningLocationDiscussionBodyType(TypedDict):
+    """SecretScanningLocationDiscussionBody
 
-    total_advanced_security_committers: NotRequired[int]
-    total_count: NotRequired[int]
-    maximum_advanced_security_committers: NotRequired[int]
-    purchased_advanced_security_committers: NotRequired[int]
-    repositories: list[AdvancedSecurityActiveCommittersRepositoryType]
+    Represents a 'discussion_body' secret scanning location type. This location type
+    shows that a secret was detected in the body of a discussion.
+    """
 
-
-class AdvancedSecurityActiveCommittersTypeForResponse(TypedDict):
-    """AdvancedSecurityActiveCommitters"""
-
-    total_advanced_security_committers: NotRequired[int]
-    total_count: NotRequired[int]
-    maximum_advanced_security_committers: NotRequired[int]
-    purchased_advanced_security_committers: NotRequired[int]
-    repositories: list[AdvancedSecurityActiveCommittersRepositoryTypeForResponse]
+    discussion_body_url: str
 
 
-class AdvancedSecurityActiveCommittersRepositoryType(TypedDict):
-    """AdvancedSecurityActiveCommittersRepository"""
+class SecretScanningLocationDiscussionBodyTypeForResponse(TypedDict):
+    """SecretScanningLocationDiscussionBody
 
-    name: str
-    advanced_security_committers: int
-    advanced_security_committers_breakdown: list[
-        AdvancedSecurityActiveCommittersUserType
-    ]
+    Represents a 'discussion_body' secret scanning location type. This location type
+    shows that a secret was detected in the body of a discussion.
+    """
 
-
-class AdvancedSecurityActiveCommittersRepositoryTypeForResponse(TypedDict):
-    """AdvancedSecurityActiveCommittersRepository"""
-
-    name: str
-    advanced_security_committers: int
-    advanced_security_committers_breakdown: list[
-        AdvancedSecurityActiveCommittersUserTypeForResponse
-    ]
+    discussion_body_url: str
 
 
-class AdvancedSecurityActiveCommittersUserType(TypedDict):
-    """AdvancedSecurityActiveCommittersUser"""
+class SecretScanningLocationPullRequestCommentType(TypedDict):
+    """SecretScanningLocationPullRequestComment
 
-    user_login: str
-    last_pushed_date: str
-    last_pushed_email: str
+    Represents a 'pull_request_comment' secret scanning location type. This location
+    type shows that a secret was detected in a comment on a pull request.
+    """
+
+    pull_request_comment_url: str
+    html_url: NotRequired[str]
 
 
-class AdvancedSecurityActiveCommittersUserTypeForResponse(TypedDict):
-    """AdvancedSecurityActiveCommittersUser"""
+class SecretScanningLocationPullRequestCommentTypeForResponse(TypedDict):
+    """SecretScanningLocationPullRequestComment
 
-    user_login: str
-    last_pushed_date: str
-    last_pushed_email: str
+    Represents a 'pull_request_comment' secret scanning location type. This location
+    type shows that a secret was detected in a comment on a pull request.
+    """
+
+    pull_request_comment_url: str
+    html_url: NotRequired[str]
 
 
 __all__ = (
-    "AdvancedSecurityActiveCommittersRepositoryType",
-    "AdvancedSecurityActiveCommittersRepositoryTypeForResponse",
-    "AdvancedSecurityActiveCommittersType",
-    "AdvancedSecurityActiveCommittersTypeForResponse",
-    "AdvancedSecurityActiveCommittersUserType",
-    "AdvancedSecurityActiveCommittersUserTypeForResponse",
+    "SecretScanningLocationDiscussionBodyType",
+    "SecretScanningLocationDiscussionBodyTypeForResponse",
+    "SecretScanningLocationPullRequestCommentType",
+    "SecretScanningLocationPullRequestCommentTypeForResponse",
 )

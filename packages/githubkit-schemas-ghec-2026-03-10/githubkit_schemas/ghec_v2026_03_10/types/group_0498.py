@@ -9,35 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class PullRequestPropLabelsItemsType(TypedDict):
-    """PullRequestPropLabelsItems"""
+class MergedUpstreamType(TypedDict):
+    """Merged upstream
 
-    id: int
-    node_id: str
-    url: str
-    name: str
-    description: Union[str, None]
-    color: str
-    default: bool
+    Results of a successful merge upstream request
+    """
+
+    message: NotRequired[str]
+    merge_type: NotRequired[Literal["merge", "fast-forward", "none"]]
+    base_branch: NotRequired[str]
 
 
-class PullRequestPropLabelsItemsTypeForResponse(TypedDict):
-    """PullRequestPropLabelsItems"""
+class MergedUpstreamTypeForResponse(TypedDict):
+    """Merged upstream
 
-    id: int
-    node_id: str
-    url: str
-    name: str
-    description: Union[str, None]
-    color: str
-    default: bool
+    Results of a successful merge upstream request
+    """
+
+    message: NotRequired[str]
+    merge_type: NotRequired[Literal["merge", "fast-forward", "none"]]
+    base_branch: NotRequired[str]
 
 
 __all__ = (
-    "PullRequestPropLabelsItemsType",
-    "PullRequestPropLabelsItemsTypeForResponse",
+    "MergedUpstreamType",
+    "MergedUpstreamTypeForResponse",
 )

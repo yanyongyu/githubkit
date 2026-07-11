@@ -17,13 +17,13 @@ from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0003 import SimpleUser
 from .group_0010 import Integration
-from .group_0456 import IssueReference
+from .group_0459 import IssueTypeWebhook
 
 
-class ParentIssueAddedIssueEvent(GitHubModel):
-    """Parent-issue Added Issue Event
+class IssueTypeRemovedIssueEvent(GitHubModel):
+    """Issue Type Removed Issue Event
 
-    Parent-issue Added Issue Event
+    Issue Type Removed Issue Event
     """
 
     id: int = Field()
@@ -35,12 +35,11 @@ class ParentIssueAddedIssueEvent(GitHubModel):
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
     performed_via_github_app: Union[None, Integration, None] = Field()
-    parent_issue: Union[IssueReference, None] = Field(
-        title="Issue Reference",
-        description="A minimal reference to an issue linked from a timeline event (e.g. sub-issue, parent-issue, or dependency events).",
+    prev_issue_type: Union[IssueTypeWebhook, None] = Field(
+        title="Issue Type", description="The type of issue."
     )
 
 
-model_rebuild(ParentIssueAddedIssueEvent)
+model_rebuild(IssueTypeRemovedIssueEvent)
 
-__all__ = ("ParentIssueAddedIssueEvent",)
+__all__ = ("IssueTypeRemovedIssueEvent",)

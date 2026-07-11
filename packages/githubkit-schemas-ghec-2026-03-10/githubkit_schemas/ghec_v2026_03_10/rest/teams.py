@@ -34,9 +34,9 @@ if TYPE_CHECKING:
         GroupMapping,
         MinimalRepository,
         OrganizationInvitation,
-        SimpleUser,
         Team,
         TeamFull,
+        TeamMember,
         TeamMembership,
         TeamRepository,
     )
@@ -53,9 +53,9 @@ if TYPE_CHECKING:
         OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType,
         OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType,
         OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType,
-        SimpleUserTypeForResponse,
         TeamFullTypeForResponse,
         TeamMembershipTypeForResponse,
+        TeamMemberTypeForResponse,
         TeamRepositoryTypeForResponse,
         TeamsTeamIdMembershipsUsernamePutBodyType,
         TeamsTeamIdPatchBodyType,
@@ -1253,19 +1253,21 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
-    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
+    ) -> Response[list[TeamMember], list[TeamMemberTypeForResponse]]:
         """teams/list-members-in-org
 
         GET /orgs/{org}/teams/{team_slug}/members
 
         Team members will include the members of child teams.
 
+        Each member includes their `role` on the team (`member` or `maintainer`) and an `inherited` flag indicating whether the membership is inherited from a child team (`true`) or is a direct membership (`false`). These fields let you read a member's role and direct/inherited status without additional requests.
+
         To list members in a team, the team must be visible to the authenticated user.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/teams/members#list-team-members
         """
 
-        from ..models import SimpleUser
+        from ..models import TeamMember
 
         url = f"/orgs/{org}/teams/{team_slug}/members"
 
@@ -1283,7 +1285,7 @@ class TeamsClient:
             params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
-            response_model=list[SimpleUser],
+            response_model=list[TeamMember],
         )
 
     async def async_list_members_in_org(
@@ -1296,19 +1298,21 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
-    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
+    ) -> Response[list[TeamMember], list[TeamMemberTypeForResponse]]:
         """teams/list-members-in-org
 
         GET /orgs/{org}/teams/{team_slug}/members
 
         Team members will include the members of child teams.
 
+        Each member includes their `role` on the team (`member` or `maintainer`) and an `inherited` flag indicating whether the membership is inherited from a child team (`true`) or is a direct membership (`false`). These fields let you read a member's role and direct/inherited status without additional requests.
+
         To list members in a team, the team must be visible to the authenticated user.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/teams/members#list-team-members
         """
 
-        from ..models import SimpleUser
+        from ..models import TeamMember
 
         url = f"/orgs/{org}/teams/{team_slug}/members"
 
@@ -1326,7 +1330,7 @@ class TeamsClient:
             params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
-            response_model=list[SimpleUser],
+            response_model=list[TeamMember],
         )
 
     def get_membership_for_user_in_org(
@@ -2783,7 +2787,7 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
-    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
+    ) -> Response[list[TeamMember], list[TeamMemberTypeForResponse]]:
         """DEPRECATED teams/list-members-legacy
 
         GET /teams/{team_id}/members
@@ -2793,10 +2797,12 @@ class TeamsClient:
 
         Team members will include the members of child teams.
 
+        Each member includes their `role` on the team (`member` or `maintainer`) and an `inherited` flag indicating whether the membership is inherited from a child team (`true`) or is a direct membership (`false`).
+
         See also: https://docs.github.com/enterprise-cloud@latest/rest/teams/members#list-team-members-legacy
         """
 
-        from ..models import BasicError, SimpleUser
+        from ..models import BasicError, TeamMember
 
         url = f"/teams/{team_id}/members"
 
@@ -2814,7 +2820,7 @@ class TeamsClient:
             params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
-            response_model=list[SimpleUser],
+            response_model=list[TeamMember],
             error_models={
                 "404": BasicError,
             },
@@ -2830,7 +2836,7 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
-    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
+    ) -> Response[list[TeamMember], list[TeamMemberTypeForResponse]]:
         """DEPRECATED teams/list-members-legacy
 
         GET /teams/{team_id}/members
@@ -2840,10 +2846,12 @@ class TeamsClient:
 
         Team members will include the members of child teams.
 
+        Each member includes their `role` on the team (`member` or `maintainer`) and an `inherited` flag indicating whether the membership is inherited from a child team (`true`) or is a direct membership (`false`).
+
         See also: https://docs.github.com/enterprise-cloud@latest/rest/teams/members#list-team-members-legacy
         """
 
-        from ..models import BasicError, SimpleUser
+        from ..models import BasicError, TeamMember
 
         url = f"/teams/{team_id}/members"
 
@@ -2861,7 +2869,7 @@ class TeamsClient:
             params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
-            response_model=list[SimpleUser],
+            response_model=list[TeamMember],
             error_models={
                 "404": BasicError,
             },

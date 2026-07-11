@@ -19,18 +19,19 @@ from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0049 import Discussion
-from .group_0515 import EnterpriseWebhooks
-from .group_0516 import SimpleInstallation
-from .group_0517 import OrganizationSimpleWebhooks
-from .group_0518 import RepositoryWebhooks
-from .group_0631 import WebhookDiscussionTransferredPropChanges
+from .group_0523 import EnterpriseWebhooks
+from .group_0524 import SimpleInstallation
+from .group_0525 import OrganizationSimpleWebhooks
+from .group_0526 import RepositoryWebhooks
+from .group_0536 import WebhooksComment
 
 
-class WebhookDiscussionTransferred(GitHubModel):
-    """discussion transferred event"""
+class WebhookDiscussionCommentEdited(GitHubModel):
+    """discussion_comment edited event"""
 
-    action: Literal["transferred"] = Field()
-    changes: WebhookDiscussionTransferredPropChanges = Field()
+    action: Literal["edited"] = Field()
+    changes: WebhookDiscussionCommentEditedPropChanges = Field()
+    comment: WebhooksComment = Field()
     discussion: Discussion = Field(
         title="Discussion", description="A Discussion in a repository."
     )
@@ -56,6 +57,24 @@ class WebhookDiscussionTransferred(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookDiscussionTransferred)
+class WebhookDiscussionCommentEditedPropChanges(GitHubModel):
+    """WebhookDiscussionCommentEditedPropChanges"""
 
-__all__ = ("WebhookDiscussionTransferred",)
+    body: WebhookDiscussionCommentEditedPropChangesPropBody = Field()
+
+
+class WebhookDiscussionCommentEditedPropChangesPropBody(GitHubModel):
+    """WebhookDiscussionCommentEditedPropChangesPropBody"""
+
+    from_: str = Field(alias="from")
+
+
+model_rebuild(WebhookDiscussionCommentEdited)
+model_rebuild(WebhookDiscussionCommentEditedPropChanges)
+model_rebuild(WebhookDiscussionCommentEditedPropChangesPropBody)
+
+__all__ = (
+    "WebhookDiscussionCommentEdited",
+    "WebhookDiscussionCommentEditedPropChanges",
+    "WebhookDiscussionCommentEditedPropChangesPropBody",
+)

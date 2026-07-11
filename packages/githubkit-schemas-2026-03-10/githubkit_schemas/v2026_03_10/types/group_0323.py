@@ -12,21 +12,27 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodeScanningAutofixCommitsResponseType(TypedDict):
-    """CodeScanningAutofixCommitsResponse"""
+class CodeScanningAutofixCommitsType(TypedDict):
+    """CodeScanningAutofixCommits
+
+    Commit an autofix for a code scanning alert
+    """
 
     target_ref: NotRequired[str]
-    sha: NotRequired[str]
+    message: NotRequired[str]
 
 
-class CodeScanningAutofixCommitsResponseTypeForResponse(TypedDict):
-    """CodeScanningAutofixCommitsResponse"""
+class CodeScanningAutofixCommitsTypeForResponse(TypedDict):
+    """CodeScanningAutofixCommits
+
+    Commit an autofix for a code scanning alert
+    """
 
     target_ref: NotRequired[str]
-    sha: NotRequired[str]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "CodeScanningAutofixCommitsResponseType",
-    "CodeScanningAutofixCommitsResponseTypeForResponse",
+    "CodeScanningAutofixCommitsType",
+    "CodeScanningAutofixCommitsTypeForResponse",
 )

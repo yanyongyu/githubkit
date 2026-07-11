@@ -9,47 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class IssueTypeWebhookType(TypedDict):
-    """Issue Type
+class InteractionLimitPullRequestBypassListType(TypedDict):
+    """Interaction Limits Pull Request Bypass List
 
-    The type of issue.
+    A list of user logins to add or remove from the pull request creation cap bypass
+    list.
     """
 
-    id: int
-    name: str
-    color: NotRequired[
-        Union[
-            None,
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-        ]
-    ]
+    users: list[str]
 
 
-class IssueTypeWebhookTypeForResponse(TypedDict):
-    """Issue Type
+class InteractionLimitPullRequestBypassListTypeForResponse(TypedDict):
+    """Interaction Limits Pull Request Bypass List
 
-    The type of issue.
+    A list of user logins to add or remove from the pull request creation cap bypass
+    list.
     """
 
-    id: int
-    name: str
-    color: NotRequired[
-        Union[
-            None,
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-        ]
-    ]
+    users: list[str]
 
 
 __all__ = (
-    "IssueTypeWebhookType",
-    "IssueTypeWebhookTypeForResponse",
+    "InteractionLimitPullRequestBypassListType",
+    "InteractionLimitPullRequestBypassListTypeForResponse",
 )

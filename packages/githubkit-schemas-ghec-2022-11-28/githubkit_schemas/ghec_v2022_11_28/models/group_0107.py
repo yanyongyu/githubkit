@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,14 +16,28 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrganizationCustomPropertyAllof1(GitHubModel):
-    """OrganizationCustomPropertyAllof1"""
+class NetworkSettings(GitHubModel):
+    """Hosted compute network settings resource
 
-    values_editable_by: Missing[
-        Union[None, Literal["enterprise_actors", "enterprise_and_org_actors"]]
-    ] = Field(default=UNSET, description="Who can edit the values of the property")
+    A hosted compute network settings resource.
+    """
+
+    id: str = Field(
+        description="The unique identifier of the network settings resource."
+    )
+    network_configuration_id: Missing[str] = Field(
+        default=UNSET,
+        description="The identifier of the network configuration that is using this settings resource.",
+    )
+    name: str = Field(description="The name of the network settings resource.")
+    subnet_id: str = Field(
+        description="The subnet this network settings resource is configured for."
+    )
+    region: str = Field(
+        description="The location of the subnet this network settings resource is configured for."
+    )
 
 
-model_rebuild(OrganizationCustomPropertyAllof1)
+model_rebuild(NetworkSettings)
 
-__all__ = ("OrganizationCustomPropertyAllof1",)
+__all__ = ("NetworkSettings",)

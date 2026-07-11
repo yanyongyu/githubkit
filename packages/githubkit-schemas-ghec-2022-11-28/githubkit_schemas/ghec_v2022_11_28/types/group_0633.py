@@ -10,105 +10,39 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+
+class WebhooksProjectColumnType(TypedDict):
+    """Project Column"""
+
+    after_id: NotRequired[Union[int, None]]
+    cards_url: str
+    created_at: _dt.datetime
+    id: int
+    name: str
+    node_id: str
+    project_url: str
+    updated_at: _dt.datetime
+    url: str
 
 
-class SecretScanningAlertWebhookType(TypedDict):
-    """SecretScanningAlertWebhook"""
+class WebhooksProjectColumnTypeForResponse(TypedDict):
+    """Project Column"""
 
-    number: NotRequired[int]
-    created_at: NotRequired[_dt.datetime]
-    updated_at: NotRequired[Union[None, _dt.datetime]]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    locations_url: NotRequired[str]
-    resolution: NotRequired[
-        Union[
-            None,
-            Literal[
-                "false_positive",
-                "wont_fix",
-                "revoked",
-                "used_in_tests",
-                "pattern_deleted",
-                "pattern_edited",
-            ],
-        ]
-    ]
-    resolved_at: NotRequired[Union[_dt.datetime, None]]
-    resolved_by: NotRequired[Union[None, SimpleUserType]]
-    resolution_comment: NotRequired[Union[str, None]]
-    secret_type: NotRequired[str]
-    secret_type_display_name: NotRequired[str]
-    provider: NotRequired[Union[str, None]]
-    provider_slug: NotRequired[Union[str, None]]
-    validity: NotRequired[Literal["active", "inactive", "unknown"]]
-    push_protection_bypassed: NotRequired[Union[bool, None]]
-    push_protection_bypassed_by: NotRequired[Union[None, SimpleUserType]]
-    push_protection_bypassed_at: NotRequired[Union[_dt.datetime, None]]
-    push_protection_bypass_request_reviewer: NotRequired[Union[None, SimpleUserType]]
-    push_protection_bypass_request_reviewer_comment: NotRequired[Union[str, None]]
-    push_protection_bypass_request_comment: NotRequired[Union[str, None]]
-    push_protection_bypass_request_html_url: NotRequired[Union[str, None]]
-    publicly_leaked: NotRequired[Union[bool, None]]
-    multi_repo: NotRequired[Union[bool, None]]
-    assigned_to: NotRequired[Union[None, SimpleUserType]]
-    closure_request_comment: NotRequired[Union[str, None]]
-    closure_request_reviewer_comment: NotRequired[Union[str, None]]
-    closure_request_reviewer: NotRequired[Union[None, SimpleUserType]]
-
-
-class SecretScanningAlertWebhookTypeForResponse(TypedDict):
-    """SecretScanningAlertWebhook"""
-
-    number: NotRequired[int]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[Union[None, str]]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    locations_url: NotRequired[str]
-    resolution: NotRequired[
-        Union[
-            None,
-            Literal[
-                "false_positive",
-                "wont_fix",
-                "revoked",
-                "used_in_tests",
-                "pattern_deleted",
-                "pattern_edited",
-            ],
-        ]
-    ]
-    resolved_at: NotRequired[Union[str, None]]
-    resolved_by: NotRequired[Union[None, SimpleUserTypeForResponse]]
-    resolution_comment: NotRequired[Union[str, None]]
-    secret_type: NotRequired[str]
-    secret_type_display_name: NotRequired[str]
-    provider: NotRequired[Union[str, None]]
-    provider_slug: NotRequired[Union[str, None]]
-    validity: NotRequired[Literal["active", "inactive", "unknown"]]
-    push_protection_bypassed: NotRequired[Union[bool, None]]
-    push_protection_bypassed_by: NotRequired[Union[None, SimpleUserTypeForResponse]]
-    push_protection_bypassed_at: NotRequired[Union[str, None]]
-    push_protection_bypass_request_reviewer: NotRequired[
-        Union[None, SimpleUserTypeForResponse]
-    ]
-    push_protection_bypass_request_reviewer_comment: NotRequired[Union[str, None]]
-    push_protection_bypass_request_comment: NotRequired[Union[str, None]]
-    push_protection_bypass_request_html_url: NotRequired[Union[str, None]]
-    publicly_leaked: NotRequired[Union[bool, None]]
-    multi_repo: NotRequired[Union[bool, None]]
-    assigned_to: NotRequired[Union[None, SimpleUserTypeForResponse]]
-    closure_request_comment: NotRequired[Union[str, None]]
-    closure_request_reviewer_comment: NotRequired[Union[str, None]]
-    closure_request_reviewer: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    after_id: NotRequired[Union[int, None]]
+    cards_url: str
+    created_at: str
+    id: int
+    name: str
+    node_id: str
+    project_url: str
+    updated_at: str
+    url: str
 
 
 __all__ = (
-    "SecretScanningAlertWebhookType",
-    "SecretScanningAlertWebhookTypeForResponse",
+    "WebhooksProjectColumnType",
+    "WebhooksProjectColumnTypeForResponse",
 )

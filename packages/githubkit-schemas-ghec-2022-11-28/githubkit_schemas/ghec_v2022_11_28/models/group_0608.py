@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,25 +18,25 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhooksChanges(GitHubModel):
-    """WebhooksChanges
+class WebhooksDeployKey(GitHubModel):
+    """WebhooksDeployKey
 
-    The changes to the comment.
+    The [`deploy key`](https://docs.github.com/enterprise-cloud@latest/rest/deploy-
+    keys/deploy-keys#get-a-deploy-key) resource.
     """
 
-    body: Missing[WebhooksChangesPropBody] = Field(default=UNSET)
+    added_by: Missing[Union[str, None]] = Field(default=UNSET)
+    created_at: str = Field()
+    id: int = Field()
+    key: str = Field()
+    last_used: Missing[Union[str, None]] = Field(default=UNSET)
+    read_only: bool = Field()
+    title: str = Field()
+    url: str = Field()
+    verified: bool = Field()
+    enabled: Missing[bool] = Field(default=UNSET)
 
 
-class WebhooksChangesPropBody(GitHubModel):
-    """WebhooksChangesPropBody"""
+model_rebuild(WebhooksDeployKey)
 
-    from_: str = Field(alias="from", description="The previous version of the body.")
-
-
-model_rebuild(WebhooksChanges)
-model_rebuild(WebhooksChangesPropBody)
-
-__all__ = (
-    "WebhooksChanges",
-    "WebhooksChangesPropBody",
-)
+__all__ = ("WebhooksDeployKey",)

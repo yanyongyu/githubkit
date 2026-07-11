@@ -9,21 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class Traffic(GitHubModel):
-    """Traffic"""
+class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1(GitHubModel):
+    """SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1"""
 
-    timestamp: _dt.datetime = Field()
-    uniques: int = Field()
-    count: int = Field()
+    pattern_name: Missing[str] = Field(
+        default=UNSET, description="Name of the custom pattern for custom pattern scans"
+    )
+    pattern_scope: Missing[str] = Field(
+        default=UNSET,
+        description='Level at which the custom pattern is defined, one of "repository", "organization", or "enterprise"',
+    )
 
 
-model_rebuild(Traffic)
+model_rebuild(SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1)
 
-__all__ = ("Traffic",)
+__all__ = ("SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1",)

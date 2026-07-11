@@ -9,111 +9,167 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0207 import ReactionRollupType, ReactionRollupTypeForResponse
-from .group_0507 import (
-    ReviewCommentPropLinksType,
-    ReviewCommentPropLinksTypeForResponse,
-)
 
+class PagesHealthCheckType(TypedDict):
+    """Pages Health Check Status
 
-class ReviewCommentType(TypedDict):
-    """Legacy Review Comment
-
-    Legacy Review Comment
+    Pages Health Check Status
     """
 
-    url: str
-    pull_request_review_id: Union[int, None]
-    id: int
-    node_id: str
-    diff_hunk: str
-    path: str
-    position: Union[int, None]
-    original_position: int
-    commit_id: str
-    original_commit_id: str
-    in_reply_to_id: NotRequired[int]
-    user: Union[None, SimpleUserType]
-    body: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    html_url: str
-    pull_request_url: str
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    links: ReviewCommentPropLinksType
-    body_text: NotRequired[str]
-    body_html: NotRequired[str]
-    reactions: NotRequired[ReactionRollupType]
-    side: NotRequired[Literal["LEFT", "RIGHT"]]
-    start_side: NotRequired[Union[None, Literal["LEFT", "RIGHT"]]]
-    line: NotRequired[int]
-    original_line: NotRequired[int]
-    start_line: NotRequired[Union[int, None]]
-    original_start_line: NotRequired[Union[int, None]]
-    subject_type: NotRequired[Literal["line", "file"]]
+    domain: NotRequired[PagesHealthCheckPropDomainType]
+    alt_domain: NotRequired[Union[PagesHealthCheckPropAltDomainType, None]]
 
 
-class ReviewCommentTypeForResponse(TypedDict):
-    """Legacy Review Comment
+class PagesHealthCheckTypeForResponse(TypedDict):
+    """Pages Health Check Status
 
-    Legacy Review Comment
+    Pages Health Check Status
     """
 
-    url: str
-    pull_request_review_id: Union[int, None]
-    id: int
-    node_id: str
-    diff_hunk: str
-    path: str
-    position: Union[int, None]
-    original_position: int
-    commit_id: str
-    original_commit_id: str
-    in_reply_to_id: NotRequired[int]
-    user: Union[None, SimpleUserTypeForResponse]
-    body: str
-    created_at: str
-    updated_at: str
-    html_url: str
-    pull_request_url: str
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    links: ReviewCommentPropLinksTypeForResponse
-    body_text: NotRequired[str]
-    body_html: NotRequired[str]
-    reactions: NotRequired[ReactionRollupTypeForResponse]
-    side: NotRequired[Literal["LEFT", "RIGHT"]]
-    start_side: NotRequired[Union[None, Literal["LEFT", "RIGHT"]]]
-    line: NotRequired[int]
-    original_line: NotRequired[int]
-    start_line: NotRequired[Union[int, None]]
-    original_start_line: NotRequired[Union[int, None]]
-    subject_type: NotRequired[Literal["line", "file"]]
+    domain: NotRequired[PagesHealthCheckPropDomainTypeForResponse]
+    alt_domain: NotRequired[Union[PagesHealthCheckPropAltDomainTypeForResponse, None]]
+
+
+class PagesHealthCheckPropDomainType(TypedDict):
+    """PagesHealthCheckPropDomain"""
+
+    host: NotRequired[str]
+    uri: NotRequired[str]
+    nameservers: NotRequired[str]
+    dns_resolves: NotRequired[bool]
+    is_proxied: NotRequired[Union[bool, None]]
+    is_cloudflare_ip: NotRequired[Union[bool, None]]
+    is_fastly_ip: NotRequired[Union[bool, None]]
+    is_old_ip_address: NotRequired[Union[bool, None]]
+    is_a_record: NotRequired[Union[bool, None]]
+    has_cname_record: NotRequired[Union[bool, None]]
+    has_mx_records_present: NotRequired[Union[bool, None]]
+    is_valid_domain: NotRequired[bool]
+    is_apex_domain: NotRequired[bool]
+    should_be_a_record: NotRequired[Union[bool, None]]
+    is_cname_to_github_user_domain: NotRequired[Union[bool, None]]
+    is_cname_to_pages_dot_github_dot_com: NotRequired[Union[bool, None]]
+    is_cname_to_fastly: NotRequired[Union[bool, None]]
+    is_pointed_to_github_pages_ip: NotRequired[Union[bool, None]]
+    is_non_github_pages_ip_present: NotRequired[Union[bool, None]]
+    is_pages_domain: NotRequired[bool]
+    is_served_by_pages: NotRequired[Union[bool, None]]
+    is_valid: NotRequired[bool]
+    reason: NotRequired[Union[str, None]]
+    responds_to_https: NotRequired[bool]
+    enforces_https: NotRequired[bool]
+    https_error: NotRequired[Union[str, None]]
+    is_https_eligible: NotRequired[Union[bool, None]]
+    caa_error: NotRequired[Union[str, None]]
+
+
+class PagesHealthCheckPropDomainTypeForResponse(TypedDict):
+    """PagesHealthCheckPropDomain"""
+
+    host: NotRequired[str]
+    uri: NotRequired[str]
+    nameservers: NotRequired[str]
+    dns_resolves: NotRequired[bool]
+    is_proxied: NotRequired[Union[bool, None]]
+    is_cloudflare_ip: NotRequired[Union[bool, None]]
+    is_fastly_ip: NotRequired[Union[bool, None]]
+    is_old_ip_address: NotRequired[Union[bool, None]]
+    is_a_record: NotRequired[Union[bool, None]]
+    has_cname_record: NotRequired[Union[bool, None]]
+    has_mx_records_present: NotRequired[Union[bool, None]]
+    is_valid_domain: NotRequired[bool]
+    is_apex_domain: NotRequired[bool]
+    should_be_a_record: NotRequired[Union[bool, None]]
+    is_cname_to_github_user_domain: NotRequired[Union[bool, None]]
+    is_cname_to_pages_dot_github_dot_com: NotRequired[Union[bool, None]]
+    is_cname_to_fastly: NotRequired[Union[bool, None]]
+    is_pointed_to_github_pages_ip: NotRequired[Union[bool, None]]
+    is_non_github_pages_ip_present: NotRequired[Union[bool, None]]
+    is_pages_domain: NotRequired[bool]
+    is_served_by_pages: NotRequired[Union[bool, None]]
+    is_valid: NotRequired[bool]
+    reason: NotRequired[Union[str, None]]
+    responds_to_https: NotRequired[bool]
+    enforces_https: NotRequired[bool]
+    https_error: NotRequired[Union[str, None]]
+    is_https_eligible: NotRequired[Union[bool, None]]
+    caa_error: NotRequired[Union[str, None]]
+
+
+class PagesHealthCheckPropAltDomainType(TypedDict):
+    """PagesHealthCheckPropAltDomain"""
+
+    host: NotRequired[str]
+    uri: NotRequired[str]
+    nameservers: NotRequired[str]
+    dns_resolves: NotRequired[bool]
+    is_proxied: NotRequired[Union[bool, None]]
+    is_cloudflare_ip: NotRequired[Union[bool, None]]
+    is_fastly_ip: NotRequired[Union[bool, None]]
+    is_old_ip_address: NotRequired[Union[bool, None]]
+    is_a_record: NotRequired[Union[bool, None]]
+    has_cname_record: NotRequired[Union[bool, None]]
+    has_mx_records_present: NotRequired[Union[bool, None]]
+    is_valid_domain: NotRequired[bool]
+    is_apex_domain: NotRequired[bool]
+    should_be_a_record: NotRequired[Union[bool, None]]
+    is_cname_to_github_user_domain: NotRequired[Union[bool, None]]
+    is_cname_to_pages_dot_github_dot_com: NotRequired[Union[bool, None]]
+    is_cname_to_fastly: NotRequired[Union[bool, None]]
+    is_pointed_to_github_pages_ip: NotRequired[Union[bool, None]]
+    is_non_github_pages_ip_present: NotRequired[Union[bool, None]]
+    is_pages_domain: NotRequired[bool]
+    is_served_by_pages: NotRequired[Union[bool, None]]
+    is_valid: NotRequired[bool]
+    reason: NotRequired[Union[str, None]]
+    responds_to_https: NotRequired[bool]
+    enforces_https: NotRequired[bool]
+    https_error: NotRequired[Union[str, None]]
+    is_https_eligible: NotRequired[Union[bool, None]]
+    caa_error: NotRequired[Union[str, None]]
+
+
+class PagesHealthCheckPropAltDomainTypeForResponse(TypedDict):
+    """PagesHealthCheckPropAltDomain"""
+
+    host: NotRequired[str]
+    uri: NotRequired[str]
+    nameservers: NotRequired[str]
+    dns_resolves: NotRequired[bool]
+    is_proxied: NotRequired[Union[bool, None]]
+    is_cloudflare_ip: NotRequired[Union[bool, None]]
+    is_fastly_ip: NotRequired[Union[bool, None]]
+    is_old_ip_address: NotRequired[Union[bool, None]]
+    is_a_record: NotRequired[Union[bool, None]]
+    has_cname_record: NotRequired[Union[bool, None]]
+    has_mx_records_present: NotRequired[Union[bool, None]]
+    is_valid_domain: NotRequired[bool]
+    is_apex_domain: NotRequired[bool]
+    should_be_a_record: NotRequired[Union[bool, None]]
+    is_cname_to_github_user_domain: NotRequired[Union[bool, None]]
+    is_cname_to_pages_dot_github_dot_com: NotRequired[Union[bool, None]]
+    is_cname_to_fastly: NotRequired[Union[bool, None]]
+    is_pointed_to_github_pages_ip: NotRequired[Union[bool, None]]
+    is_non_github_pages_ip_present: NotRequired[Union[bool, None]]
+    is_pages_domain: NotRequired[bool]
+    is_served_by_pages: NotRequired[Union[bool, None]]
+    is_valid: NotRequired[bool]
+    reason: NotRequired[Union[str, None]]
+    responds_to_https: NotRequired[bool]
+    enforces_https: NotRequired[bool]
+    https_error: NotRequired[Union[str, None]]
+    is_https_eligible: NotRequired[Union[bool, None]]
+    caa_error: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "ReviewCommentType",
-    "ReviewCommentTypeForResponse",
+    "PagesHealthCheckPropAltDomainType",
+    "PagesHealthCheckPropAltDomainTypeForResponse",
+    "PagesHealthCheckPropDomainType",
+    "PagesHealthCheckPropDomainTypeForResponse",
+    "PagesHealthCheckType",
+    "PagesHealthCheckTypeForResponse",
 )

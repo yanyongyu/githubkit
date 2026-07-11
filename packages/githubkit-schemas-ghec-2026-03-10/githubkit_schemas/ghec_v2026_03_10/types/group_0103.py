@@ -9,42 +9,59 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class NetworkConfigurationType(TypedDict):
-    """Hosted compute network configuration
+class ExternalVulnerabilitySyncResultType(TypedDict):
+    """External Vulnerability Sync Result
 
-    A hosted compute network configuration.
+    Result of an external vulnerability synchronization operation
     """
 
-    id: str
-    name: str
-    compute_service: NotRequired[Literal["none", "actions", "codespaces"]]
-    network_settings_ids: NotRequired[list[str]]
-    failover_network_settings_ids: NotRequired[list[str]]
-    failover_network_enabled: NotRequired[bool]
-    created_on: Union[_dt.datetime, None]
+    processed: int
+    created: int
+    updated: int
+    withdrawn: int
+    errors: int
+    results: list[ExternalVulnerabilitySyncResultPropResultsItemsType]
 
 
-class NetworkConfigurationTypeForResponse(TypedDict):
-    """Hosted compute network configuration
+class ExternalVulnerabilitySyncResultTypeForResponse(TypedDict):
+    """External Vulnerability Sync Result
 
-    A hosted compute network configuration.
+    Result of an external vulnerability synchronization operation
     """
 
-    id: str
-    name: str
-    compute_service: NotRequired[Literal["none", "actions", "codespaces"]]
-    network_settings_ids: NotRequired[list[str]]
-    failover_network_settings_ids: NotRequired[list[str]]
-    failover_network_enabled: NotRequired[bool]
-    created_on: Union[str, None]
+    processed: int
+    created: int
+    updated: int
+    withdrawn: int
+    errors: int
+    results: list[ExternalVulnerabilitySyncResultPropResultsItemsTypeForResponse]
+
+
+class ExternalVulnerabilitySyncResultPropResultsItemsType(TypedDict):
+    """ExternalVulnerabilitySyncResultPropResultsItems"""
+
+    external_id: str
+    status: Literal["created", "updated", "withdrawn", "error"]
+    ghsa_id: NotRequired[str]
+    error: NotRequired[str]
+
+
+class ExternalVulnerabilitySyncResultPropResultsItemsTypeForResponse(TypedDict):
+    """ExternalVulnerabilitySyncResultPropResultsItems"""
+
+    external_id: str
+    status: Literal["created", "updated", "withdrawn", "error"]
+    ghsa_id: NotRequired[str]
+    error: NotRequired[str]
 
 
 __all__ = (
-    "NetworkConfigurationType",
-    "NetworkConfigurationTypeForResponse",
+    "ExternalVulnerabilitySyncResultPropResultsItemsType",
+    "ExternalVulnerabilitySyncResultPropResultsItemsTypeForResponse",
+    "ExternalVulnerabilitySyncResultType",
+    "ExternalVulnerabilitySyncResultTypeForResponse",
 )

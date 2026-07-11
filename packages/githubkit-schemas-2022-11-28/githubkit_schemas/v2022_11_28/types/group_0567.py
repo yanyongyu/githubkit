@@ -9,337 +9,183 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0515 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0516 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0517 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0518 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0519 import WebhooksRuleType, WebhooksRuleTypeForResponse
+from .group_0001 import CvssSeveritiesType, CvssSeveritiesTypeForResponse
 
 
-class WebhookBranchProtectionRuleEditedType(TypedDict):
-    """branch protection rule edited event"""
+class WebhooksSecurityAdvisoryType(TypedDict):
+    """WebhooksSecurityAdvisory
 
-    action: Literal["edited"]
-    changes: NotRequired[WebhookBranchProtectionRuleEditedPropChangesType]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    rule: WebhooksRuleType
-    sender: SimpleUserType
-
-
-class WebhookBranchProtectionRuleEditedTypeForResponse(TypedDict):
-    """branch protection rule edited event"""
-
-    action: Literal["edited"]
-    changes: NotRequired[WebhookBranchProtectionRuleEditedPropChangesTypeForResponse]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    rule: WebhooksRuleTypeForResponse
-    sender: SimpleUserTypeForResponse
-
-
-class WebhookBranchProtectionRuleEditedPropChangesType(TypedDict):
-    """WebhookBranchProtectionRuleEditedPropChanges
-
-    If the action was `edited`, the changes to the rule.
+    The details of the security advisory, including summary, description, and
+    severity.
     """
 
-    admin_enforced: NotRequired[
-        WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforcedType
-    ]
-    authorized_actor_names: NotRequired[
-        WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNamesType
-    ]
-    authorized_actors_only: NotRequired[
-        WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnlyType
-    ]
-    authorized_dismissal_actors_only: NotRequired[
-        WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnlyType
-    ]
-    linear_history_requirement_enforcement_level: NotRequired[
-        WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevelType
-    ]
-    lock_branch_enforcement_level: NotRequired[
-        WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevelType
-    ]
-    lock_allows_fork_sync: NotRequired[
-        WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSyncType
-    ]
-    pull_request_reviews_enforcement_level: NotRequired[
-        WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevelType
-    ]
-    require_last_push_approval: NotRequired[
-        WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApprovalType
-    ]
-    required_status_checks: NotRequired[
-        WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksType
-    ]
-    required_status_checks_enforcement_level: NotRequired[
-        WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevelType
-    ]
+    cvss: WebhooksSecurityAdvisoryPropCvssType
+    cvss_severities: NotRequired[Union[CvssSeveritiesType, None]]
+    cwes: list[WebhooksSecurityAdvisoryPropCwesItemsType]
+    description: str
+    ghsa_id: str
+    identifiers: list[WebhooksSecurityAdvisoryPropIdentifiersItemsType]
+    published_at: str
+    references: list[WebhooksSecurityAdvisoryPropReferencesItemsType]
+    severity: str
+    summary: str
+    updated_at: str
+    vulnerabilities: list[WebhooksSecurityAdvisoryPropVulnerabilitiesItemsType]
+    withdrawn_at: Union[str, None]
 
 
-class WebhookBranchProtectionRuleEditedPropChangesTypeForResponse(TypedDict):
-    """WebhookBranchProtectionRuleEditedPropChanges
+class WebhooksSecurityAdvisoryTypeForResponse(TypedDict):
+    """WebhooksSecurityAdvisory
 
-    If the action was `edited`, the changes to the rule.
+    The details of the security advisory, including summary, description, and
+    severity.
     """
 
-    admin_enforced: NotRequired[
-        WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforcedTypeForResponse
+    cvss: WebhooksSecurityAdvisoryPropCvssTypeForResponse
+    cvss_severities: NotRequired[Union[CvssSeveritiesTypeForResponse, None]]
+    cwes: list[WebhooksSecurityAdvisoryPropCwesItemsTypeForResponse]
+    description: str
+    ghsa_id: str
+    identifiers: list[WebhooksSecurityAdvisoryPropIdentifiersItemsTypeForResponse]
+    published_at: str
+    references: list[WebhooksSecurityAdvisoryPropReferencesItemsTypeForResponse]
+    severity: str
+    summary: str
+    updated_at: str
+    vulnerabilities: list[
+        WebhooksSecurityAdvisoryPropVulnerabilitiesItemsTypeForResponse
     ]
-    authorized_actor_names: NotRequired[
-        WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNamesTypeForResponse
+    withdrawn_at: Union[str, None]
+
+
+class WebhooksSecurityAdvisoryPropCvssType(TypedDict):
+    """WebhooksSecurityAdvisoryPropCvss"""
+
+    score: float
+    vector_string: Union[str, None]
+
+
+class WebhooksSecurityAdvisoryPropCvssTypeForResponse(TypedDict):
+    """WebhooksSecurityAdvisoryPropCvss"""
+
+    score: float
+    vector_string: Union[str, None]
+
+
+class WebhooksSecurityAdvisoryPropCwesItemsType(TypedDict):
+    """WebhooksSecurityAdvisoryPropCwesItems"""
+
+    cwe_id: str
+    name: str
+
+
+class WebhooksSecurityAdvisoryPropCwesItemsTypeForResponse(TypedDict):
+    """WebhooksSecurityAdvisoryPropCwesItems"""
+
+    cwe_id: str
+    name: str
+
+
+class WebhooksSecurityAdvisoryPropIdentifiersItemsType(TypedDict):
+    """WebhooksSecurityAdvisoryPropIdentifiersItems"""
+
+    type: str
+    value: str
+
+
+class WebhooksSecurityAdvisoryPropIdentifiersItemsTypeForResponse(TypedDict):
+    """WebhooksSecurityAdvisoryPropIdentifiersItems"""
+
+    type: str
+    value: str
+
+
+class WebhooksSecurityAdvisoryPropReferencesItemsType(TypedDict):
+    """WebhooksSecurityAdvisoryPropReferencesItems"""
+
+    url: str
+
+
+class WebhooksSecurityAdvisoryPropReferencesItemsTypeForResponse(TypedDict):
+    """WebhooksSecurityAdvisoryPropReferencesItems"""
+
+    url: str
+
+
+class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsType(TypedDict):
+    """WebhooksSecurityAdvisoryPropVulnerabilitiesItems"""
+
+    first_patched_version: Union[
+        WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType,
+        None,
     ]
-    authorized_actors_only: NotRequired[
-        WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnlyTypeForResponse
+    package: WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType
+    severity: str
+    vulnerable_version_range: str
+
+
+class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsTypeForResponse(TypedDict):
+    """WebhooksSecurityAdvisoryPropVulnerabilitiesItems"""
+
+    first_patched_version: Union[
+        WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionTypeForResponse,
+        None,
     ]
-    authorized_dismissal_actors_only: NotRequired[
-        WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnlyTypeForResponse
-    ]
-    linear_history_requirement_enforcement_level: NotRequired[
-        WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevelTypeForResponse
-    ]
-    lock_branch_enforcement_level: NotRequired[
-        WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevelTypeForResponse
-    ]
-    lock_allows_fork_sync: NotRequired[
-        WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSyncTypeForResponse
-    ]
-    pull_request_reviews_enforcement_level: NotRequired[
-        WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevelTypeForResponse
-    ]
-    require_last_push_approval: NotRequired[
-        WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApprovalTypeForResponse
-    ]
-    required_status_checks: NotRequired[
-        WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksTypeForResponse
-    ]
-    required_status_checks_enforcement_level: NotRequired[
-        WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevelTypeForResponse
-    ]
+    package: WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageTypeForResponse
+    severity: str
+    vulnerable_version_range: str
 
 
-class WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforcedType(TypedDict):
-    """WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforced"""
-
-    from_: Union[bool, None]
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforcedTypeForResponse(
+class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType(
     TypedDict
 ):
-    """WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforced"""
+    """WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion"""
 
-    from_: Union[bool, None]
+    identifier: str
 
 
-class WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNamesType(
+class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionTypeForResponse(
     TypedDict
 ):
-    """WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNames"""
+    """WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion"""
 
-    from_: list[str]
+    identifier: str
 
 
-class WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNamesTypeForResponse(
+class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType(TypedDict):
+    """WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage"""
+
+    ecosystem: str
+    name: str
+
+
+class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageTypeForResponse(
     TypedDict
 ):
-    """WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNames"""
+    """WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage"""
 
-    from_: list[str]
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnlyType(
-    TypedDict
-):
-    """WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly"""
-
-    from_: Union[bool, None]
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnlyTypeForResponse(
-    TypedDict
-):
-    """WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly"""
-
-    from_: Union[bool, None]
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnlyType(
-    TypedDict
-):
-    """WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnly"""
-
-    from_: Union[bool, None]
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnlyTypeForResponse(
-    TypedDict
-):
-    """WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnly"""
-
-    from_: Union[bool, None]
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevelType(
-    TypedDict
-):
-    """WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcem
-    entLevel
-    """
-
-    from_: Literal["off", "non_admins", "everyone"]
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevelTypeForResponse(
-    TypedDict
-):
-    """WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcem
-    entLevel
-    """
-
-    from_: Literal["off", "non_admins", "everyone"]
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevelType(
-    TypedDict
-):
-    """WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevel"""
-
-    from_: Literal["off", "non_admins", "everyone"]
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevelTypeForResponse(
-    TypedDict
-):
-    """WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevel"""
-
-    from_: Literal["off", "non_admins", "everyone"]
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSyncType(TypedDict):
-    """WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSync"""
-
-    from_: Union[bool, None]
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSyncTypeForResponse(
-    TypedDict
-):
-    """WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSync"""
-
-    from_: Union[bool, None]
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevelType(
-    TypedDict
-):
-    """WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLev
-    el
-    """
-
-    from_: Literal["off", "non_admins", "everyone"]
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevelTypeForResponse(
-    TypedDict
-):
-    """WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLev
-    el
-    """
-
-    from_: Literal["off", "non_admins", "everyone"]
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApprovalType(
-    TypedDict
-):
-    """WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApproval"""
-
-    from_: Union[bool, None]
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApprovalTypeForResponse(
-    TypedDict
-):
-    """WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApproval"""
-
-    from_: Union[bool, None]
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksType(
-    TypedDict
-):
-    """WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecks"""
-
-    from_: list[str]
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksTypeForResponse(
-    TypedDict
-):
-    """WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecks"""
-
-    from_: list[str]
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevelType(
-    TypedDict
-):
-    """WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementL
-    evel
-    """
-
-    from_: Literal["off", "non_admins", "everyone"]
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevelTypeForResponse(
-    TypedDict
-):
-    """WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementL
-    evel
-    """
-
-    from_: Literal["off", "non_admins", "everyone"]
+    ecosystem: str
+    name: str
 
 
 __all__ = (
-    "WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforcedType",
-    "WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforcedTypeForResponse",
-    "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNamesType",
-    "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNamesTypeForResponse",
-    "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnlyType",
-    "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnlyTypeForResponse",
-    "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnlyType",
-    "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnlyTypeForResponse",
-    "WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevelType",
-    "WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevelTypeForResponse",
-    "WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSyncType",
-    "WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSyncTypeForResponse",
-    "WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevelType",
-    "WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevelTypeForResponse",
-    "WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevelType",
-    "WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevelTypeForResponse",
-    "WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApprovalType",
-    "WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApprovalTypeForResponse",
-    "WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevelType",
-    "WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevelTypeForResponse",
-    "WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksType",
-    "WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksTypeForResponse",
-    "WebhookBranchProtectionRuleEditedPropChangesType",
-    "WebhookBranchProtectionRuleEditedPropChangesTypeForResponse",
-    "WebhookBranchProtectionRuleEditedType",
-    "WebhookBranchProtectionRuleEditedTypeForResponse",
+    "WebhooksSecurityAdvisoryPropCvssType",
+    "WebhooksSecurityAdvisoryPropCvssTypeForResponse",
+    "WebhooksSecurityAdvisoryPropCwesItemsType",
+    "WebhooksSecurityAdvisoryPropCwesItemsTypeForResponse",
+    "WebhooksSecurityAdvisoryPropIdentifiersItemsType",
+    "WebhooksSecurityAdvisoryPropIdentifiersItemsTypeForResponse",
+    "WebhooksSecurityAdvisoryPropReferencesItemsType",
+    "WebhooksSecurityAdvisoryPropReferencesItemsTypeForResponse",
+    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType",
+    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionTypeForResponse",
+    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType",
+    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageTypeForResponse",
+    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsType",
+    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsTypeForResponse",
+    "WebhooksSecurityAdvisoryType",
+    "WebhooksSecurityAdvisoryTypeForResponse",
 )

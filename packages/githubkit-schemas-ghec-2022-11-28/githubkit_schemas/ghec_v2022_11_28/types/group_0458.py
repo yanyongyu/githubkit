@@ -9,66 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
+class InteractionLimitPullRequestBypassListType(TypedDict):
+    """Interaction Limits Pull Request Bypass List
 
-class LabeledIssueEventType(TypedDict):
-    """Labeled Issue Event
-
-    Labeled Issue Event
+    A list of user logins to add or remove from the pull request creation cap bypass
+    list.
     """
 
-    id: int
-    node_id: str
-    url: str
-    actor: SimpleUserType
-    event: Literal["labeled"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    label: LabeledIssueEventPropLabelType
+    users: list[str]
 
 
-class LabeledIssueEventTypeForResponse(TypedDict):
-    """Labeled Issue Event
+class InteractionLimitPullRequestBypassListTypeForResponse(TypedDict):
+    """Interaction Limits Pull Request Bypass List
 
-    Labeled Issue Event
+    A list of user logins to add or remove from the pull request creation cap bypass
+    list.
     """
 
-    id: int
-    node_id: str
-    url: str
-    actor: SimpleUserTypeForResponse
-    event: Literal["labeled"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    label: LabeledIssueEventPropLabelTypeForResponse
-
-
-class LabeledIssueEventPropLabelType(TypedDict):
-    """LabeledIssueEventPropLabel"""
-
-    name: str
-    color: str
-
-
-class LabeledIssueEventPropLabelTypeForResponse(TypedDict):
-    """LabeledIssueEventPropLabel"""
-
-    name: str
-    color: str
+    users: list[str]
 
 
 __all__ = (
-    "LabeledIssueEventPropLabelType",
-    "LabeledIssueEventPropLabelTypeForResponse",
-    "LabeledIssueEventType",
-    "LabeledIssueEventTypeForResponse",
+    "InteractionLimitPullRequestBypassListType",
+    "InteractionLimitPullRequestBypassListTypeForResponse",
 )

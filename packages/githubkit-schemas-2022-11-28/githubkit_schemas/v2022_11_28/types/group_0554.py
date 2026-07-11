@@ -14,65 +14,43 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksReviewType(TypedDict):
-    """WebhooksReview
+class WebhooksProjectType(TypedDict):
+    """Project"""
 
-    The review that was affected.
-    """
-
-    links: WebhooksReviewPropLinksType
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
     body: Union[str, None]
-    commit_id: str
+    columns_url: str
+    created_at: _dt.datetime
+    creator: Union[WebhooksProjectPropCreatorType, None]
     html_url: str
     id: int
+    name: str
     node_id: str
-    pull_request_url: str
-    state: str
-    submitted_at: Union[_dt.datetime, None]
-    updated_at: NotRequired[Union[_dt.datetime, None]]
-    user: Union[WebhooksReviewPropUserType, None]
+    number: int
+    owner_url: str
+    state: Literal["open", "closed"]
+    updated_at: _dt.datetime
+    url: str
 
 
-class WebhooksReviewTypeForResponse(TypedDict):
-    """WebhooksReview
+class WebhooksProjectTypeForResponse(TypedDict):
+    """Project"""
 
-    The review that was affected.
-    """
-
-    links: WebhooksReviewPropLinksTypeForResponse
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
     body: Union[str, None]
-    commit_id: str
+    columns_url: str
+    created_at: str
+    creator: Union[WebhooksProjectPropCreatorTypeForResponse, None]
     html_url: str
     id: int
+    name: str
     node_id: str
-    pull_request_url: str
-    state: str
-    submitted_at: Union[str, None]
-    updated_at: NotRequired[Union[str, None]]
-    user: Union[WebhooksReviewPropUserTypeForResponse, None]
+    number: int
+    owner_url: str
+    state: Literal["open", "closed"]
+    updated_at: str
+    url: str
 
 
-class WebhooksReviewPropUserType(TypedDict):
+class WebhooksProjectPropCreatorType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -99,7 +77,7 @@ class WebhooksReviewPropUserType(TypedDict):
     user_view_type: NotRequired[str]
 
 
-class WebhooksReviewPropUserTypeForResponse(TypedDict):
+class WebhooksProjectPropCreatorTypeForResponse(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -124,55 +102,11 @@ class WebhooksReviewPropUserTypeForResponse(TypedDict):
     type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
     user_view_type: NotRequired[str]
-
-
-class WebhooksReviewPropLinksType(TypedDict):
-    """WebhooksReviewPropLinks"""
-
-    html: WebhooksReviewPropLinksPropHtmlType
-    pull_request: WebhooksReviewPropLinksPropPullRequestType
-
-
-class WebhooksReviewPropLinksTypeForResponse(TypedDict):
-    """WebhooksReviewPropLinks"""
-
-    html: WebhooksReviewPropLinksPropHtmlTypeForResponse
-    pull_request: WebhooksReviewPropLinksPropPullRequestTypeForResponse
-
-
-class WebhooksReviewPropLinksPropHtmlType(TypedDict):
-    """Link"""
-
-    href: str
-
-
-class WebhooksReviewPropLinksPropHtmlTypeForResponse(TypedDict):
-    """Link"""
-
-    href: str
-
-
-class WebhooksReviewPropLinksPropPullRequestType(TypedDict):
-    """Link"""
-
-    href: str
-
-
-class WebhooksReviewPropLinksPropPullRequestTypeForResponse(TypedDict):
-    """Link"""
-
-    href: str
 
 
 __all__ = (
-    "WebhooksReviewPropLinksPropHtmlType",
-    "WebhooksReviewPropLinksPropHtmlTypeForResponse",
-    "WebhooksReviewPropLinksPropPullRequestType",
-    "WebhooksReviewPropLinksPropPullRequestTypeForResponse",
-    "WebhooksReviewPropLinksType",
-    "WebhooksReviewPropLinksTypeForResponse",
-    "WebhooksReviewPropUserType",
-    "WebhooksReviewPropUserTypeForResponse",
-    "WebhooksReviewType",
-    "WebhooksReviewTypeForResponse",
+    "WebhooksProjectPropCreatorType",
+    "WebhooksProjectPropCreatorTypeForResponse",
+    "WebhooksProjectType",
+    "WebhooksProjectTypeForResponse",
 )

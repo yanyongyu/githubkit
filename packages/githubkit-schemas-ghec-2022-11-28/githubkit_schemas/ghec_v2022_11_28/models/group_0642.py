@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -17,209 +18,146 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0588 import EnterpriseWebhooks
-from .group_0589 import SimpleInstallation
-from .group_0590 import OrganizationSimpleWebhooks
-from .group_0591 import RepositoryWebhooks
-from .group_0592 import WebhooksRule
 
+class WebhooksRelease1(GitHubModel):
+    """Release
 
-class WebhookBranchProtectionRuleEdited(GitHubModel):
-    """branch protection rule edited event"""
-
-    action: Literal["edited"] = Field()
-    changes: Missing[WebhookBranchProtectionRuleEditedPropChanges] = Field(
-        default=UNSET,
-        description="If the action was `edited`, the changes to the rule.",
-    )
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest/admin/overview/about-enterprise-accounts)."',
-    )
-    installation: Missing[SimpleInstallation] = Field(
-        default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
-    )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
-    )
-    repository: RepositoryWebhooks = Field(
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    rule: WebhooksRule = Field(
-        title="branch protection rule",
-        description="The branch protection rule. Includes a `name` and all the [branch protection settings](https://docs.github.com/enterprise-cloud@latest/github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-settings) applied to branches that match the name. Binary settings are boolean. Multi-level configurations are one of `off`, `non_admins`, or `everyone`. Actor and build lists are arrays of strings.",
-    )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-
-
-class WebhookBranchProtectionRuleEditedPropChanges(GitHubModel):
-    """WebhookBranchProtectionRuleEditedPropChanges
-
-    If the action was `edited`, the changes to the rule.
+    The [release](https://docs.github.com/enterprise-
+    cloud@latest/rest/releases/releases/#get-a-release) object.
     """
 
-    admin_enforced: Missing[
-        WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforced
-    ] = Field(default=UNSET)
-    authorized_actor_names: Missing[
-        WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNames
-    ] = Field(default=UNSET)
-    authorized_actors_only: Missing[
-        WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly
-    ] = Field(default=UNSET)
-    authorized_dismissal_actors_only: Missing[
-        WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnly
-    ] = Field(default=UNSET)
-    linear_history_requirement_enforcement_level: Missing[
-        WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevel
-    ] = Field(default=UNSET)
-    lock_branch_enforcement_level: Missing[
-        WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevel
-    ] = Field(default=UNSET)
-    lock_allows_fork_sync: Missing[
-        WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSync
-    ] = Field(default=UNSET)
-    pull_request_reviews_enforcement_level: Missing[
-        WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevel
-    ] = Field(default=UNSET)
-    require_last_push_approval: Missing[
-        WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApproval
-    ] = Field(default=UNSET)
-    required_status_checks: Missing[
-        WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecks
-    ] = Field(default=UNSET)
-    required_status_checks_enforcement_level: Missing[
-        WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevel
-    ] = Field(default=UNSET)
+    assets: list[Union[WebhooksRelease1PropAssetsItems, None]] = Field()
+    assets_url: str = Field()
+    author: Union[WebhooksRelease1PropAuthor, None] = Field(title="User")
+    body: Union[str, None] = Field()
+    created_at: Union[_dt.datetime, None] = Field()
+    discussion_url: Missing[str] = Field(default=UNSET)
+    draft: bool = Field(description="Whether the release is a draft or published")
+    html_url: str = Field()
+    id: int = Field()
+    immutable: bool = Field(description="Whether or not the release is immutable.")
+    name: Union[str, None] = Field()
+    node_id: str = Field()
+    prerelease: bool = Field(
+        description="Whether the release is identified as a prerelease or a full release."
+    )
+    published_at: Union[_dt.datetime, None] = Field()
+    reactions: Missing[WebhooksRelease1PropReactions] = Field(
+        default=UNSET, title="Reactions"
+    )
+    tag_name: str = Field(description="The name of the tag.")
+    tarball_url: Union[str, None] = Field()
+    target_commitish: str = Field(
+        description="Specifies the commitish value that determines where the Git tag is created from."
+    )
+    updated_at: Union[_dt.datetime, None] = Field()
+    upload_url: str = Field()
+    url: str = Field()
+    zipball_url: Union[str, None] = Field()
 
 
-class WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforced(GitHubModel):
-    """WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforced"""
+class WebhooksRelease1PropAssetsItems(GitHubModel):
+    """Release Asset
 
-    from_: Union[bool, None] = Field(alias="from")
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNames(GitHubModel):
-    """WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNames"""
-
-    from_: list[str] = Field(alias="from")
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly(GitHubModel):
-    """WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly"""
-
-    from_: Union[bool, None] = Field(alias="from")
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnly(
-    GitHubModel
-):
-    """WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnly"""
-
-    from_: Union[bool, None] = Field(alias="from")
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevel(
-    GitHubModel
-):
-    """WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcem
-    entLevel
+    Data related to a release.
     """
 
-    from_: Literal["off", "non_admins", "everyone"] = Field(alias="from")
+    browser_download_url: str = Field()
+    content_type: str = Field()
+    created_at: _dt.datetime = Field()
+    download_count: int = Field()
+    id: int = Field()
+    label: Union[str, None] = Field()
+    name: str = Field(description="The file name of the asset.")
+    node_id: str = Field()
+    size: int = Field()
+    digest: Union[str, None] = Field()
+    state: Literal["uploaded"] = Field(description="State of the release asset.")
+    updated_at: _dt.datetime = Field()
+    uploader: Missing[Union[WebhooksRelease1PropAssetsItemsPropUploader, None]] = Field(
+        default=UNSET, title="User"
+    )
+    url: str = Field()
 
 
-class WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevel(
-    GitHubModel
-):
-    """WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevel"""
+class WebhooksRelease1PropAssetsItemsPropUploader(GitHubModel):
+    """User"""
 
-    from_: Literal["off", "non_admins", "everyone"] = Field(alias="from")
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSync(GitHubModel):
-    """WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSync"""
-
-    from_: Union[bool, None] = Field(alias="from")
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevel(
-    GitHubModel
-):
-    """WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLev
-    el
-    """
-
-    from_: Literal["off", "non_admins", "everyone"] = Field(alias="from")
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApproval(
-    GitHubModel
-):
-    """WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApproval"""
-
-    from_: Union[bool, None] = Field(alias="from")
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
 
 
-class WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecks(GitHubModel):
-    """WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecks"""
+class WebhooksRelease1PropAuthor(GitHubModel):
+    """User"""
 
-    from_: list[str] = Field(alias="from")
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevel(
-    GitHubModel
-):
-    """WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementL
-    evel
-    """
+class WebhooksRelease1PropReactions(GitHubModel):
+    """Reactions"""
 
-    from_: Literal["off", "non_admins", "everyone"] = Field(alias="from")
+    plus_one: int = Field(alias="+1")
+    minus_one: int = Field(alias="-1")
+    confused: int = Field()
+    eyes: int = Field()
+    heart: int = Field()
+    hooray: int = Field()
+    laugh: int = Field()
+    rocket: int = Field()
+    total_count: int = Field()
+    url: str = Field()
 
 
-model_rebuild(WebhookBranchProtectionRuleEdited)
-model_rebuild(WebhookBranchProtectionRuleEditedPropChanges)
-model_rebuild(WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforced)
-model_rebuild(WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNames)
-model_rebuild(WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly)
-model_rebuild(
-    WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnly
-)
-model_rebuild(
-    WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevel
-)
-model_rebuild(
-    WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevel
-)
-model_rebuild(WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSync)
-model_rebuild(
-    WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevel
-)
-model_rebuild(WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApproval)
-model_rebuild(WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecks)
-model_rebuild(
-    WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevel
-)
+model_rebuild(WebhooksRelease1)
+model_rebuild(WebhooksRelease1PropAssetsItems)
+model_rebuild(WebhooksRelease1PropAssetsItemsPropUploader)
+model_rebuild(WebhooksRelease1PropAuthor)
+model_rebuild(WebhooksRelease1PropReactions)
 
 __all__ = (
-    "WebhookBranchProtectionRuleEdited",
-    "WebhookBranchProtectionRuleEditedPropChanges",
-    "WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforced",
-    "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNames",
-    "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly",
-    "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnly",
-    "WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevel",
-    "WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSync",
-    "WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevel",
-    "WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevel",
-    "WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApproval",
-    "WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecks",
-    "WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevel",
+    "WebhooksRelease1",
+    "WebhooksRelease1PropAssetsItems",
+    "WebhooksRelease1PropAssetsItemsPropUploader",
+    "WebhooksRelease1PropAuthor",
+    "WebhooksRelease1PropReactions",
 )

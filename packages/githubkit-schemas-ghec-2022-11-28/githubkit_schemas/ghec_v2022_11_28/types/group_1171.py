@@ -9,26 +9,175 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyType(
+class EnterprisesEnterpriseInnersourceVulnerabilitiesSyncPostBodyType(TypedDict):
+    """EnterprisesEnterpriseInnersourceVulnerabilitiesSyncPostBody"""
+
+    vulnerabilities: list[OsvVulnerabilityType]
+
+
+class EnterprisesEnterpriseInnersourceVulnerabilitiesSyncPostBodyTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBody"""
+    """EnterprisesEnterpriseInnersourceVulnerabilitiesSyncPostBody"""
 
-    name: str
+    vulnerabilities: list[OsvVulnerabilityTypeForResponse]
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyTypeForResponse(
+class OsvVulnerabilityType(TypedDict):
+    """OSV Vulnerability
+
+    A vulnerability in OSV (Open Source Vulnerability) format
+    """
+
+    id: str
+    schema_version: NotRequired[str]
+    summary: NotRequired[str]
+    details: NotRequired[str]
+    aliases: NotRequired[list[str]]
+    severity: NotRequired[list[OsvVulnerabilityPropSeverityItemsType]]
+    affected: NotRequired[list[OsvVulnerabilityPropAffectedItemsType]]
+    references: NotRequired[list[OsvVulnerabilityPropReferencesItemsType]]
+    published: NotRequired[_dt.datetime]
+    modified: NotRequired[_dt.datetime]
+    withdrawn: NotRequired[_dt.datetime]
+
+
+class OsvVulnerabilityTypeForResponse(TypedDict):
+    """OSV Vulnerability
+
+    A vulnerability in OSV (Open Source Vulnerability) format
+    """
+
+    id: str
+    schema_version: NotRequired[str]
+    summary: NotRequired[str]
+    details: NotRequired[str]
+    aliases: NotRequired[list[str]]
+    severity: NotRequired[list[OsvVulnerabilityPropSeverityItemsTypeForResponse]]
+    affected: NotRequired[list[OsvVulnerabilityPropAffectedItemsTypeForResponse]]
+    references: NotRequired[list[OsvVulnerabilityPropReferencesItemsTypeForResponse]]
+    published: NotRequired[str]
+    modified: NotRequired[str]
+    withdrawn: NotRequired[str]
+
+
+class OsvVulnerabilityPropSeverityItemsType(TypedDict):
+    """OsvVulnerabilityPropSeverityItems"""
+
+    type: NotRequired[str]
+    score: NotRequired[str]
+
+
+class OsvVulnerabilityPropSeverityItemsTypeForResponse(TypedDict):
+    """OsvVulnerabilityPropSeverityItems"""
+
+    type: NotRequired[str]
+    score: NotRequired[str]
+
+
+class OsvVulnerabilityPropReferencesItemsType(TypedDict):
+    """OsvVulnerabilityPropReferencesItems"""
+
+    type: NotRequired[str]
+    url: NotRequired[str]
+
+
+class OsvVulnerabilityPropReferencesItemsTypeForResponse(TypedDict):
+    """OsvVulnerabilityPropReferencesItems"""
+
+    type: NotRequired[str]
+    url: NotRequired[str]
+
+
+class OsvVulnerabilityPropAffectedItemsType(TypedDict):
+    """OsvVulnerabilityPropAffectedItems"""
+
+    package: NotRequired[OsvVulnerabilityPropAffectedItemsPropPackageType]
+    ranges: NotRequired[list[OsvVulnerabilityPropAffectedItemsPropRangesItemsType]]
+
+
+class OsvVulnerabilityPropAffectedItemsTypeForResponse(TypedDict):
+    """OsvVulnerabilityPropAffectedItems"""
+
+    package: NotRequired[OsvVulnerabilityPropAffectedItemsPropPackageTypeForResponse]
+    ranges: NotRequired[
+        list[OsvVulnerabilityPropAffectedItemsPropRangesItemsTypeForResponse]
+    ]
+
+
+class OsvVulnerabilityPropAffectedItemsPropPackageType(TypedDict):
+    """OsvVulnerabilityPropAffectedItemsPropPackage"""
+
+    ecosystem: NotRequired[str]
+    name: NotRequired[str]
+
+
+class OsvVulnerabilityPropAffectedItemsPropPackageTypeForResponse(TypedDict):
+    """OsvVulnerabilityPropAffectedItemsPropPackage"""
+
+    ecosystem: NotRequired[str]
+    name: NotRequired[str]
+
+
+class OsvVulnerabilityPropAffectedItemsPropRangesItemsType(TypedDict):
+    """OsvVulnerabilityPropAffectedItemsPropRangesItems"""
+
+    type: NotRequired[str]
+    events: NotRequired[
+        list[OsvVulnerabilityPropAffectedItemsPropRangesItemsPropEventsItemsType]
+    ]
+
+
+class OsvVulnerabilityPropAffectedItemsPropRangesItemsTypeForResponse(TypedDict):
+    """OsvVulnerabilityPropAffectedItemsPropRangesItems"""
+
+    type: NotRequired[str]
+    events: NotRequired[
+        list[
+            OsvVulnerabilityPropAffectedItemsPropRangesItemsPropEventsItemsTypeForResponse
+        ]
+    ]
+
+
+class OsvVulnerabilityPropAffectedItemsPropRangesItemsPropEventsItemsType(TypedDict):
+    """OsvVulnerabilityPropAffectedItemsPropRangesItemsPropEventsItems"""
+
+    introduced: NotRequired[str]
+    fixed: NotRequired[str]
+    last_affected: NotRequired[str]
+    limit: NotRequired[str]
+
+
+class OsvVulnerabilityPropAffectedItemsPropRangesItemsPropEventsItemsTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBody"""
+    """OsvVulnerabilityPropAffectedItemsPropRangesItemsPropEventsItems"""
 
-    name: str
+    introduced: NotRequired[str]
+    fixed: NotRequired[str]
+    last_affected: NotRequired[str]
+    limit: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyType",
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyTypeForResponse",
+    "EnterprisesEnterpriseInnersourceVulnerabilitiesSyncPostBodyType",
+    "EnterprisesEnterpriseInnersourceVulnerabilitiesSyncPostBodyTypeForResponse",
+    "OsvVulnerabilityPropAffectedItemsPropPackageType",
+    "OsvVulnerabilityPropAffectedItemsPropPackageTypeForResponse",
+    "OsvVulnerabilityPropAffectedItemsPropRangesItemsPropEventsItemsType",
+    "OsvVulnerabilityPropAffectedItemsPropRangesItemsPropEventsItemsTypeForResponse",
+    "OsvVulnerabilityPropAffectedItemsPropRangesItemsType",
+    "OsvVulnerabilityPropAffectedItemsPropRangesItemsTypeForResponse",
+    "OsvVulnerabilityPropAffectedItemsType",
+    "OsvVulnerabilityPropAffectedItemsTypeForResponse",
+    "OsvVulnerabilityPropReferencesItemsType",
+    "OsvVulnerabilityPropReferencesItemsTypeForResponse",
+    "OsvVulnerabilityPropSeverityItemsType",
+    "OsvVulnerabilityPropSeverityItemsTypeForResponse",
+    "OsvVulnerabilityType",
+    "OsvVulnerabilityTypeForResponse",
 )

@@ -34,6 +34,7 @@ from ..models import (
     WebhookPullRequestReviewRequestedOneof1,
     WebhookPullRequestReviewRequestRemovedOneof0,
     WebhookPullRequestReviewRequestRemovedOneof1,
+    WebhookPullRequestStacked,
     WebhookPullRequestSynchronize,
     WebhookPullRequestUnassigned,
     WebhookPullRequestUnlabeled,
@@ -85,6 +86,7 @@ Event: TypeAlias = Annotated[
                 "review_requested",
             ),
         ],
+        WebhookPullRequestStacked,
         WebhookPullRequestSynchronize,
         WebhookPullRequestUnassigned,
         WebhookPullRequestUnlabeled,
@@ -118,6 +120,7 @@ action_types: dict[str, type[GitHubModel]] = {
     "review_requested": Union[
         WebhookPullRequestReviewRequestedOneof0, WebhookPullRequestReviewRequestedOneof1
     ],
+    "stacked": WebhookPullRequestStacked,
     "synchronize": WebhookPullRequestSynchronize,
     "unassigned": WebhookPullRequestUnassigned,
     "unlabeled": WebhookPullRequestUnlabeled,

@@ -9,44 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0017 import AppPermissions
 
+class AgentsTasksTaskIdGetResponse400(GitHubModel):
+    """AgentsTasksTaskIdGetResponse400
 
-class ApplicationsClientIdTokenScopedPostBody(GitHubModel):
-    """ApplicationsClientIdTokenScopedPostBody"""
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
 
-    access_token: str = Field(
-        description="The access token used to authenticate to the GitHub API."
+    message: str = Field(
+        description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
-    target: Missing[str] = Field(
+    errors: Missing[list[AgentsTasksTaskIdGetResponse400PropErrorsItems]] = Field(
         default=UNSET,
-        description="The name of the user or organization to scope the user access token to. **Required** unless `target_id` is specified.",
+        description="List of validation errors (present only for 422 responses)",
     )
-    target_id: Missing[int] = Field(
+    documentation_url: str = Field(description="URL to relevant API documentation")
+
+
+class AgentsTasksTaskIdGetResponse400PropErrorsItems(GitHubModel):
+    """AgentsTasksTaskIdGetResponse400PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ] = Field(description="Machine-readable error code")
+    message: Missing[str] = Field(
         default=UNSET,
-        description="The ID of the user or organization to scope the user access token to. **Required** unless `target` is specified.",
-    )
-    repositories: Missing[list[str]] = Field(
-        default=UNSET,
-        description="The list of repository names to scope the user access token to. `repositories` may not be specified if `repository_ids` is specified.",
-    )
-    repository_ids: Missing[list[int]] = Field(
-        default=UNSET,
-        description="The list of repository IDs to scope the user access token to. `repository_ids` may not be specified if `repositories` is specified.",
-    )
-    permissions: Missing[AppPermissions] = Field(
-        default=UNSET,
-        title="App Permissions",
-        description="The permissions granted to the user access token.",
+        description='Human-readable message (populated when code is "custom")',
     )
 
 
-model_rebuild(ApplicationsClientIdTokenScopedPostBody)
+model_rebuild(AgentsTasksTaskIdGetResponse400)
+model_rebuild(AgentsTasksTaskIdGetResponse400PropErrorsItems)
 
-__all__ = ("ApplicationsClientIdTokenScopedPostBody",)
+__all__ = (
+    "AgentsTasksTaskIdGetResponse400",
+    "AgentsTasksTaskIdGetResponse400PropErrorsItems",
+)

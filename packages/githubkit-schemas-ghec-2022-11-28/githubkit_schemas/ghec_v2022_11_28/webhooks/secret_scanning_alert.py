@@ -16,6 +16,8 @@ from githubkit.compat import GitHubModel
 from ..models import (
     WebhookSecretScanningAlertAssigned,
     WebhookSecretScanningAlertCreated,
+    WebhookSecretScanningAlertMetadataCreated,
+    WebhookSecretScanningAlertMetadataRemoved,
     WebhookSecretScanningAlertPubliclyLeaked,
     WebhookSecretScanningAlertReopened,
     WebhookSecretScanningAlertResolved,
@@ -27,6 +29,8 @@ Event: TypeAlias = Annotated[
     Union[
         WebhookSecretScanningAlertAssigned,
         WebhookSecretScanningAlertCreated,
+        WebhookSecretScanningAlertMetadataCreated,
+        WebhookSecretScanningAlertMetadataRemoved,
         WebhookSecretScanningAlertPubliclyLeaked,
         WebhookSecretScanningAlertReopened,
         WebhookSecretScanningAlertResolved,
@@ -41,6 +45,8 @@ SecretScanningAlertEvent: TypeAlias = Event
 action_types: dict[str, type[GitHubModel]] = {
     "assigned": WebhookSecretScanningAlertAssigned,
     "created": WebhookSecretScanningAlertCreated,
+    "metadata_created": WebhookSecretScanningAlertMetadataCreated,
+    "metadata_removed": WebhookSecretScanningAlertMetadataRemoved,
     "publicly_leaked": WebhookSecretScanningAlertPubliclyLeaked,
     "reopened": WebhookSecretScanningAlertReopened,
     "resolved": WebhookSecretScanningAlertResolved,

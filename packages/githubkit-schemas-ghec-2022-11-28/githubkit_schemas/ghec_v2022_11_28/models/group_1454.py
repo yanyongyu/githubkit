@@ -16,17 +16,16 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBody(GitHubModel):
-    """ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBody"""
+class ReposOwnerRepoCommentsCommentIdReactionsPostBody(GitHubModel):
+    """ReposOwnerRepoCommentsCommentIdReactionsPostBody"""
 
-    status: Literal["approve", "deny"] = Field(
-        description="The review action to perform on the dismissal request."
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ] = Field(
+        description="The [reaction type](https://docs.github.com/enterprise-cloud@latest/rest/reactions/reactions#about-reactions) to add to the commit comment."
     )
-    message: str = Field(
-        description="A message to include with the review. Has a maximum character length of 2048."
-    )
 
 
-model_rebuild(ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBody)
+model_rebuild(ReposOwnerRepoCommentsCommentIdReactionsPostBody)
 
-__all__ = ("ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBody",)
+__all__ = ("ReposOwnerRepoCommentsCommentIdReactionsPostBody",)

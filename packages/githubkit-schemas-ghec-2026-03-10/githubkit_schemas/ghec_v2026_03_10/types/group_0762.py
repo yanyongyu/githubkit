@@ -14,19 +14,19 @@ from typing import Literal, Union
 from typing_extensions import TypedDict
 
 from .group_0757 import (
-    WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreatorType,
-    WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
+    WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreatorType,
+    WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
 )
 
 
-class WebhookIssueCommentEditedPropIssueMergedMilestoneType(TypedDict):
-    """WebhookIssueCommentEditedPropIssueMergedMilestone"""
+class WebhookIssueCommentDeletedPropIssueMergedMilestoneType(TypedDict):
+    """WebhookIssueCommentDeletedPropIssueMergedMilestone"""
 
     closed_at: Union[_dt.datetime, None]
     closed_issues: int
     created_at: _dt.datetime
     creator: Union[
-        WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreatorType, None
+        WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreatorType, None
     ]
     description: Union[str, None]
     due_on: Union[_dt.datetime, None]
@@ -42,14 +42,14 @@ class WebhookIssueCommentEditedPropIssueMergedMilestoneType(TypedDict):
     url: str
 
 
-class WebhookIssueCommentEditedPropIssueMergedMilestoneTypeForResponse(TypedDict):
-    """WebhookIssueCommentEditedPropIssueMergedMilestone"""
+class WebhookIssueCommentDeletedPropIssueMergedMilestoneTypeForResponse(TypedDict):
+    """WebhookIssueCommentDeletedPropIssueMergedMilestone"""
 
     closed_at: Union[str, None]
     closed_issues: int
     created_at: str
     creator: Union[
-        WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
+        WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
         None,
     ]
     description: Union[str, None]
@@ -67,6 +67,6 @@ class WebhookIssueCommentEditedPropIssueMergedMilestoneTypeForResponse(TypedDict
 
 
 __all__ = (
-    "WebhookIssueCommentEditedPropIssueMergedMilestoneType",
-    "WebhookIssueCommentEditedPropIssueMergedMilestoneTypeForResponse",
+    "WebhookIssueCommentDeletedPropIssueMergedMilestoneType",
+    "WebhookIssueCommentDeletedPropIssueMergedMilestoneTypeForResponse",
 )

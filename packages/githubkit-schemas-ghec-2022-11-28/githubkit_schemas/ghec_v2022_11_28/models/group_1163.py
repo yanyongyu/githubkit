@@ -9,103 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0113 import RepositoryRulesetBypassActor
-from .group_0126 import EnterpriseRulesetConditionsOneof0
-from .group_0127 import EnterpriseRulesetConditionsOneof1
-from .group_0128 import EnterpriseRulesetConditionsOneof2
-from .group_0129 import EnterpriseRulesetConditionsOneof3
-from .group_0130 import EnterpriseRulesetConditionsOneof4
-from .group_0131 import EnterpriseRulesetConditionsOneof5
-from .group_0132 import (
-    RepositoryRuleCreation,
-    RepositoryRuleDeletion,
-    RepositoryRuleNonFastForward,
-    RepositoryRuleRequiredSignatures,
-)
-from .group_0133 import RepositoryRuleUpdate
-from .group_0135 import RepositoryRuleRequiredLinearHistory
-from .group_0136 import RepositoryRuleRequiredDeployments
-from .group_0139 import RepositoryRulePullRequest
-from .group_0141 import RepositoryRuleRequiredStatusChecks
-from .group_0143 import RepositoryRuleCommitMessagePattern
-from .group_0145 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0147 import RepositoryRuleCommitterEmailPattern
-from .group_0149 import RepositoryRuleBranchNamePattern
-from .group_0151 import RepositoryRuleTagNamePattern
-from .group_0153 import RepositoryRuleFilePathRestriction
-from .group_0155 import RepositoryRuleMaxFilePathLength
-from .group_0157 import RepositoryRuleFileExtensionRestriction
-from .group_0159 import RepositoryRuleMaxFileSize
-from .group_0162 import RepositoryRuleWorkflows
-from .group_0164 import RepositoryRuleCodeScanning
-from .group_0166 import RepositoryRuleCopilotCodeReview
 
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody"""
 
-class EnterprisesEnterpriseRulesetsPostBody(GitHubModel):
-    """EnterprisesEnterpriseRulesetsPostBody"""
-
-    name: str = Field(description="The name of the ruleset.")
-    target: Missing[Literal["branch", "tag", "push", "repository"]] = Field(
-        default=UNSET, description="The target of the ruleset"
-    )
-    enforcement: Literal["disabled", "active", "evaluate"] = Field(
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target."
-    )
-    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
+    organizations: Missing[list[str]] = Field(
         default=UNSET,
-        description="The actors that can bypass the rules in this ruleset",
+        description="List of organization logins within the enterprise to disable Copilot cloud agent for.",
     )
-    conditions: Missing[
-        Union[
-            EnterpriseRulesetConditionsOneof0,
-            EnterpriseRulesetConditionsOneof1,
-            EnterpriseRulesetConditionsOneof2,
-            EnterpriseRulesetConditionsOneof3,
-            EnterpriseRulesetConditionsOneof4,
-            EnterpriseRulesetConditionsOneof5,
+    custom_properties: Missing[
+        list[
+            EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItems
         ]
     ] = Field(
         default=UNSET,
-        title="Enterprise ruleset conditions",
-        description="Conditions for an enterprise ruleset.\nThe `conditions` object supports either of the following combinations: - `organization_id` and `repository_name` - `organization_id` and `repository_property` - `organization_name` and `repository_name` - `organization_name` and `repository_property` - `organization_property` and `repository_name` - `organization_property` and `repository_property`\nFor branch and tag rulesets, the `conditions` object should also contain the `ref_name` property.",
+        description="List of custom property filters to match organizations. Organizations matching any of the specified property name/value pairs will be included. This is a one-time operation, setting the property on an organization in the future will not automatically update its coding agent policy.",
     )
-    rules: Missing[
-        list[
-            Union[
-                RepositoryRuleCreation,
-                RepositoryRuleUpdate,
-                RepositoryRuleDeletion,
-                RepositoryRuleRequiredLinearHistory,
-                RepositoryRuleRequiredDeployments,
-                RepositoryRuleRequiredSignatures,
-                RepositoryRulePullRequest,
-                RepositoryRuleRequiredStatusChecks,
-                RepositoryRuleNonFastForward,
-                RepositoryRuleCommitMessagePattern,
-                RepositoryRuleCommitAuthorEmailPattern,
-                RepositoryRuleCommitterEmailPattern,
-                RepositoryRuleBranchNamePattern,
-                RepositoryRuleTagNamePattern,
-                RepositoryRuleFilePathRestriction,
-                RepositoryRuleMaxFilePathLength,
-                RepositoryRuleFileExtensionRestriction,
-                RepositoryRuleMaxFileSize,
-                RepositoryRuleWorkflows,
-                RepositoryRuleCodeScanning,
-                RepositoryRuleCopilotCodeReview,
-            ]
-        ]
-    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
 
 
-model_rebuild(EnterprisesEnterpriseRulesetsPostBody)
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItems(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustom
+    PropertiesItems
+    """
 
-__all__ = ("EnterprisesEnterpriseRulesetsPostBody",)
+    property_name: str = Field(
+        description="The name of the custom property to filter by."
+    )
+    values: list[str] = Field(description="The values of the custom property to match.")
+
+
+model_rebuild(EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody)
+model_rebuild(
+    EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItems
+)
+
+__all__ = (
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItems",
+)

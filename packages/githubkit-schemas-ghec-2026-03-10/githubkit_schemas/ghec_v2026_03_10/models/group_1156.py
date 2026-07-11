@@ -9,20 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0103 import NetworkConfiguration
+
+class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200"""
+
+    organization: Union[
+        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization,
+        None,
+    ] = Field()
+    repository: Union[
+        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository, None
+    ] = Field()
 
 
-class EnterprisesEnterpriseNetworkConfigurationsGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseNetworkConfigurationsGetResponse200"""
+class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization"""
 
-    total_count: int = Field()
-    network_configurations: list[NetworkConfiguration] = Field()
+    id: int = Field(description="Unique identifier of the organization")
+    login: str = Field(description="Login of the organization")
 
 
-model_rebuild(EnterprisesEnterpriseNetworkConfigurationsGetResponse200)
+class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository"""
 
-__all__ = ("EnterprisesEnterpriseNetworkConfigurationsGetResponse200",)
+    id: int = Field(description="Unique identifier of the repository")
+    name: str = Field(description="Name of the repository")
+    full_name: str = Field(description="Full name of the repository including owner")
+
+
+model_rebuild(EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200)
+model_rebuild(
+    EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization
+)
+model_rebuild(
+    EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository
+)
+
+__all__ = (
+    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository",
+)

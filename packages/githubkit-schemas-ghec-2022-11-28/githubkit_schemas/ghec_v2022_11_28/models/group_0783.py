@@ -19,12 +19,12 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0782 import (
-    WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
-    WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissions,
+    WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
+    WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissions,
 )
 
 
-class WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubApp(GitHubModel):
+class WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubApp(GitHubModel):
     """App
 
     GitHub apps are a new way to extend GitHub. They can be installed directly on
@@ -92,11 +92,10 @@ class WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubApp(GitHub
     name: str = Field(description="The name of the GitHub app")
     node_id: str = Field()
     owner: Union[
-        WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
-        None,
+        WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropOwner, None
     ] = Field(title="User")
     permissions: Missing[
-        WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
+        WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
     ] = Field(default=UNSET, description="The set of permissions for the GitHub app")
     slug: Missing[str] = Field(
         default=UNSET, description="The slug name of the GitHub app"
@@ -104,6 +103,6 @@ class WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubApp(GitHub
     updated_at: Union[_dt.datetime, None] = Field()
 
 
-model_rebuild(WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubApp)
+model_rebuild(WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubApp)
 
-__all__ = ("WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubApp",)
+__all__ = ("WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubApp",)

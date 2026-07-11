@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -19,23 +18,35 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhooksProjectChanges(GitHubModel):
-    """WebhooksProjectChanges"""
+class WebhooksUserMannequin(GitHubModel):
+    """User"""
 
-    archived_at: Missing[WebhooksProjectChangesPropArchivedAt] = Field(default=UNSET)
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization", "Mannequin"]] = Field(
+        default=UNSET
+    )
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhooksProjectChangesPropArchivedAt(GitHubModel):
-    """WebhooksProjectChangesPropArchivedAt"""
+model_rebuild(WebhooksUserMannequin)
 
-    from_: Missing[Union[_dt.datetime, None]] = Field(default=UNSET, alias="from")
-    to: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
-
-
-model_rebuild(WebhooksProjectChanges)
-model_rebuild(WebhooksProjectChangesPropArchivedAt)
-
-__all__ = (
-    "WebhooksProjectChanges",
-    "WebhooksProjectChangesPropArchivedAt",
-)
+__all__ = ("WebhooksUserMannequin",)

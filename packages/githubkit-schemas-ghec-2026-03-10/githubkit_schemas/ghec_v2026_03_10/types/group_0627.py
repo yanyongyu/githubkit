@@ -14,129 +14,55 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksReviewCommentType(TypedDict):
-    """Pull Request Review Comment
+class WebhooksMilestone3Type(TypedDict):
+    """Milestone
 
-    The [comment](https://docs.github.com/enterprise-
-    cloud@latest/rest/pulls/comments#get-a-review-comment-for-a-pull-request)
-    itself.
+    A collection of related issues and pull requests.
     """
 
-    links: WebhooksReviewCommentPropLinksType
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    body: str
-    commit_id: str
+    closed_at: Union[_dt.datetime, None]
+    closed_issues: int
     created_at: _dt.datetime
-    diff_hunk: str
+    creator: Union[WebhooksMilestone3PropCreatorType, None]
+    description: Union[str, None]
+    due_on: Union[_dt.datetime, None]
     html_url: str
     id: int
-    in_reply_to_id: NotRequired[int]
-    line: Union[int, None]
+    labels_url: str
     node_id: str
-    original_commit_id: str
-    original_line: int
-    original_position: int
-    original_start_line: Union[int, None]
-    path: str
-    position: Union[int, None]
-    pull_request_review_id: Union[int, None]
-    pull_request_url: str
-    reactions: WebhooksReviewCommentPropReactionsType
-    side: Literal["LEFT", "RIGHT"]
-    start_line: Union[int, None]
-    start_side: Union[None, Literal["LEFT", "RIGHT"]]
-    subject_type: NotRequired[Literal["line", "file"]]
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
     updated_at: _dt.datetime
     url: str
-    user: Union[WebhooksReviewCommentPropUserType, None]
 
 
-class WebhooksReviewCommentTypeForResponse(TypedDict):
-    """Pull Request Review Comment
+class WebhooksMilestone3TypeForResponse(TypedDict):
+    """Milestone
 
-    The [comment](https://docs.github.com/enterprise-
-    cloud@latest/rest/pulls/comments#get-a-review-comment-for-a-pull-request)
-    itself.
+    A collection of related issues and pull requests.
     """
 
-    links: WebhooksReviewCommentPropLinksTypeForResponse
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    body: str
-    commit_id: str
+    closed_at: Union[str, None]
+    closed_issues: int
     created_at: str
-    diff_hunk: str
+    creator: Union[WebhooksMilestone3PropCreatorTypeForResponse, None]
+    description: Union[str, None]
+    due_on: Union[str, None]
     html_url: str
     id: int
-    in_reply_to_id: NotRequired[int]
-    line: Union[int, None]
+    labels_url: str
     node_id: str
-    original_commit_id: str
-    original_line: int
-    original_position: int
-    original_start_line: Union[int, None]
-    path: str
-    position: Union[int, None]
-    pull_request_review_id: Union[int, None]
-    pull_request_url: str
-    reactions: WebhooksReviewCommentPropReactionsTypeForResponse
-    side: Literal["LEFT", "RIGHT"]
-    start_line: Union[int, None]
-    start_side: Union[None, Literal["LEFT", "RIGHT"]]
-    subject_type: NotRequired[Literal["line", "file"]]
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
     updated_at: str
     url: str
-    user: Union[WebhooksReviewCommentPropUserTypeForResponse, None]
 
 
-class WebhooksReviewCommentPropReactionsType(TypedDict):
-    """Reactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
-
-
-class WebhooksReviewCommentPropReactionsTypeForResponse(TypedDict):
-    """Reactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
-
-
-class WebhooksReviewCommentPropUserType(TypedDict):
+class WebhooksMilestone3PropCreatorType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -163,7 +89,7 @@ class WebhooksReviewCommentPropUserType(TypedDict):
     user_view_type: NotRequired[str]
 
 
-class WebhooksReviewCommentPropUserTypeForResponse(TypedDict):
+class WebhooksMilestone3PropCreatorTypeForResponse(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -188,73 +114,11 @@ class WebhooksReviewCommentPropUserTypeForResponse(TypedDict):
     type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
     user_view_type: NotRequired[str]
-
-
-class WebhooksReviewCommentPropLinksType(TypedDict):
-    """WebhooksReviewCommentPropLinks"""
-
-    html: WebhooksReviewCommentPropLinksPropHtmlType
-    pull_request: WebhooksReviewCommentPropLinksPropPullRequestType
-    self_: WebhooksReviewCommentPropLinksPropSelfType
-
-
-class WebhooksReviewCommentPropLinksTypeForResponse(TypedDict):
-    """WebhooksReviewCommentPropLinks"""
-
-    html: WebhooksReviewCommentPropLinksPropHtmlTypeForResponse
-    pull_request: WebhooksReviewCommentPropLinksPropPullRequestTypeForResponse
-    self_: WebhooksReviewCommentPropLinksPropSelfTypeForResponse
-
-
-class WebhooksReviewCommentPropLinksPropHtmlType(TypedDict):
-    """Link"""
-
-    href: str
-
-
-class WebhooksReviewCommentPropLinksPropHtmlTypeForResponse(TypedDict):
-    """Link"""
-
-    href: str
-
-
-class WebhooksReviewCommentPropLinksPropPullRequestType(TypedDict):
-    """Link"""
-
-    href: str
-
-
-class WebhooksReviewCommentPropLinksPropPullRequestTypeForResponse(TypedDict):
-    """Link"""
-
-    href: str
-
-
-class WebhooksReviewCommentPropLinksPropSelfType(TypedDict):
-    """Link"""
-
-    href: str
-
-
-class WebhooksReviewCommentPropLinksPropSelfTypeForResponse(TypedDict):
-    """Link"""
-
-    href: str
 
 
 __all__ = (
-    "WebhooksReviewCommentPropLinksPropHtmlType",
-    "WebhooksReviewCommentPropLinksPropHtmlTypeForResponse",
-    "WebhooksReviewCommentPropLinksPropPullRequestType",
-    "WebhooksReviewCommentPropLinksPropPullRequestTypeForResponse",
-    "WebhooksReviewCommentPropLinksPropSelfType",
-    "WebhooksReviewCommentPropLinksPropSelfTypeForResponse",
-    "WebhooksReviewCommentPropLinksType",
-    "WebhooksReviewCommentPropLinksTypeForResponse",
-    "WebhooksReviewCommentPropReactionsType",
-    "WebhooksReviewCommentPropReactionsTypeForResponse",
-    "WebhooksReviewCommentPropUserType",
-    "WebhooksReviewCommentPropUserTypeForResponse",
-    "WebhooksReviewCommentType",
-    "WebhooksReviewCommentTypeForResponse",
+    "WebhooksMilestone3PropCreatorType",
+    "WebhooksMilestone3PropCreatorTypeForResponse",
+    "WebhooksMilestone3Type",
+    "WebhooksMilestone3TypeForResponse",
 )

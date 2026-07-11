@@ -12,19 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBody(GitHubModel):
-    """EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBody"""
+class EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201(GitHubModel):
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201
 
-    revoke_credentials: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to also destroy the actual credentials (PATs and SSH keys) owned by\nenterprise members. This option is only available for Enterprise Managed User\n(EMU) enterprises. When set to `true`, all PATs (v1 and v2) and SSH keys owned\nby enterprise members will be destroyed in addition to the credential authorizations.",
-    )
+    The total number of seats created for the specified user(s).
+    """
+
+    seats_created: int = Field()
 
 
-model_rebuild(EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBody)
+model_rebuild(EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201)
 
-__all__ = ("EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBody",)
+__all__ = ("EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201",)

@@ -16,40 +16,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPullsPostBody(GitHubModel):
-    """ReposOwnerRepoPullsPostBody"""
+class ReposOwnerRepoKeysPostBody(GitHubModel):
+    """ReposOwnerRepoKeysPostBody"""
 
-    title: Missing[str] = Field(
+    title: Missing[str] = Field(default=UNSET, description="A name for the key.")
+    key: str = Field(description="The contents of the key.")
+    read_only: Missing[bool] = Field(
         default=UNSET,
-        description="The title of the new pull request. Required unless `issue` is specified.",
-    )
-    head: str = Field(
-        description="The name of the branch where your changes are implemented. For cross-repository pull requests in the same network, namespace `head` with a user like this: `username:branch`."
-    )
-    head_repo: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the repository where the changes in the pull request were made. This field is required for cross-repository pull requests if both repositories are owned by the same organization.",
-    )
-    base: str = Field(
-        description="The name of the branch you want the changes pulled into. This should be an existing branch on the current repository. You cannot submit a pull request to one repository that requests a merge to a base of another repository."
-    )
-    body: Missing[str] = Field(
-        default=UNSET, description="The contents of the pull request."
-    )
-    maintainer_can_modify: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether [maintainers can modify](https://docs.github.com/enterprise-cloud@latest/articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork/) the pull request.",
-    )
-    draft: Missing[bool] = Field(
-        default=UNSET,
-        description='Indicates whether the pull request is a draft. See "[Draft Pull Requests](https://docs.github.com/enterprise-cloud@latest/articles/about-pull-requests#draft-pull-requests)" in the GitHub Help documentation to learn more.',
-    )
-    issue: Missing[int] = Field(
-        default=UNSET,
-        description="An issue in the repository to convert to a pull request. The issue title, body, and comments will become the title, body, and comments on the new pull request. Required unless `title` is specified.",
+        description='If `true`, the key will only be able to read repository contents. Otherwise, the key will be able to read and write.  \n  \nDeploy keys with write access can perform the same actions as an organization member with admin access, or a collaborator on a personal repository. For more information, see "[Repository permission levels for an organization](https://docs.github.com/enterprise-cloud@latest/articles/repository-permission-levels-for-an-organization/)" and "[Permission levels for a user account repository](https://docs.github.com/enterprise-cloud@latest/articles/permission-levels-for-a-user-account-repository/)."',
     )
 
 
-model_rebuild(ReposOwnerRepoPullsPostBody)
+model_rebuild(ReposOwnerRepoKeysPostBody)
 
-__all__ = ("ReposOwnerRepoPullsPostBody",)
+__all__ = ("ReposOwnerRepoKeysPostBody",)

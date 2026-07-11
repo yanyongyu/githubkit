@@ -9,168 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0209 import PinnedIssueCommentType, PinnedIssueCommentTypeForResponse
-from .group_0210 import IssueCommentMinimizedType, IssueCommentMinimizedTypeForResponse
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class WebhookIssueCommentCreatedPropCommentType(TypedDict):
-    """issue comment
+class WebhookGithubAppAuthorizationRevokedType(TypedDict):
+    """github_app_authorization revoked event"""
 
-    The [comment](https://docs.github.com/enterprise-
-    cloud@latest/rest/issues/comments#get-an-issue-comment) itself.
-    """
-
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    body: str
-    created_at: _dt.datetime
-    html_url: str
-    id: int
-    issue_url: str
-    node_id: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    reactions: WebhookIssueCommentCreatedPropCommentPropReactionsType
-    updated_at: _dt.datetime
-    url: str
-    pin: NotRequired[Union[None, PinnedIssueCommentType]]
-    minimized: NotRequired[Union[None, IssueCommentMinimizedType]]
-    user: Union[WebhookIssueCommentCreatedPropCommentPropUserType, None]
+    action: Literal["revoked"]
+    sender: SimpleUserType
 
 
-class WebhookIssueCommentCreatedPropCommentTypeForResponse(TypedDict):
-    """issue comment
+class WebhookGithubAppAuthorizationRevokedTypeForResponse(TypedDict):
+    """github_app_authorization revoked event"""
 
-    The [comment](https://docs.github.com/enterprise-
-    cloud@latest/rest/issues/comments#get-an-issue-comment) itself.
-    """
-
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    body: str
-    created_at: str
-    html_url: str
-    id: int
-    issue_url: str
-    node_id: str
-    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    reactions: WebhookIssueCommentCreatedPropCommentPropReactionsTypeForResponse
-    updated_at: str
-    url: str
-    pin: NotRequired[Union[None, PinnedIssueCommentTypeForResponse]]
-    minimized: NotRequired[Union[None, IssueCommentMinimizedTypeForResponse]]
-    user: Union[WebhookIssueCommentCreatedPropCommentPropUserTypeForResponse, None]
-
-
-class WebhookIssueCommentCreatedPropCommentPropReactionsType(TypedDict):
-    """Reactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
-
-
-class WebhookIssueCommentCreatedPropCommentPropReactionsTypeForResponse(TypedDict):
-    """Reactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
-
-
-class WebhookIssueCommentCreatedPropCommentPropUserType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookIssueCommentCreatedPropCommentPropUserTypeForResponse(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    action: Literal["revoked"]
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookIssueCommentCreatedPropCommentPropReactionsType",
-    "WebhookIssueCommentCreatedPropCommentPropReactionsTypeForResponse",
-    "WebhookIssueCommentCreatedPropCommentPropUserType",
-    "WebhookIssueCommentCreatedPropCommentPropUserTypeForResponse",
-    "WebhookIssueCommentCreatedPropCommentType",
-    "WebhookIssueCommentCreatedPropCommentTypeForResponse",
+    "WebhookGithubAppAuthorizationRevokedType",
+    "WebhookGithubAppAuthorizationRevokedTypeForResponse",
 )

@@ -14,125 +14,91 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgPrivateRegistryConfigurationWithSelectedRepositoriesType(TypedDict):
-    """Organization private registry
+class PackageVersionType(TypedDict):
+    """Package Version
 
-    Private registry configuration for an organization
+    A version of a software package
     """
 
+    id: int
     name: str
-    registry_type: Literal[
-        "maven_repository",
-        "nuget_feed",
-        "goproxy_server",
-        "npm_registry",
-        "rubygems_server",
-        "cargo_registry",
-        "composer_repository",
-        "docker_registry",
-        "git_source",
-        "helm_registry",
-        "hex_organization",
-        "hex_repository",
-        "pub_repository",
-        "python_index",
-        "terraform_registry",
-    ]
-    auth_type: NotRequired[
-        Literal[
-            "token",
-            "username_password",
-            "oidc_azure",
-            "oidc_aws",
-            "oidc_jfrog",
-            "oidc_cloudsmith",
-            "oidc_gcp",
-        ]
-    ]
-    url: NotRequired[str]
-    username: NotRequired[str]
-    replaces_base: NotRequired[bool]
-    visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
-    tenant_id: NotRequired[str]
-    client_id: NotRequired[str]
-    aws_region: NotRequired[str]
-    account_id: NotRequired[str]
-    role_name: NotRequired[str]
-    domain: NotRequired[str]
-    domain_owner: NotRequired[str]
-    jfrog_oidc_provider_name: NotRequired[str]
-    audience: NotRequired[str]
-    identity_mapping_name: NotRequired[str]
-    namespace: NotRequired[str]
-    service_slug: NotRequired[str]
-    api_host: NotRequired[str]
-    workload_identity_provider: NotRequired[str]
-    service_account: NotRequired[str]
+    url: str
+    package_html_url: str
+    html_url: NotRequired[str]
+    license_: NotRequired[str]
+    description: NotRequired[str]
     created_at: _dt.datetime
     updated_at: _dt.datetime
+    deleted_at: NotRequired[_dt.datetime]
+    metadata: NotRequired[PackageVersionPropMetadataType]
 
 
-class OrgPrivateRegistryConfigurationWithSelectedRepositoriesTypeForResponse(TypedDict):
-    """Organization private registry
+class PackageVersionTypeForResponse(TypedDict):
+    """Package Version
 
-    Private registry configuration for an organization
+    A version of a software package
     """
 
+    id: int
     name: str
-    registry_type: Literal[
-        "maven_repository",
-        "nuget_feed",
-        "goproxy_server",
-        "npm_registry",
-        "rubygems_server",
-        "cargo_registry",
-        "composer_repository",
-        "docker_registry",
-        "git_source",
-        "helm_registry",
-        "hex_organization",
-        "hex_repository",
-        "pub_repository",
-        "python_index",
-        "terraform_registry",
-    ]
-    auth_type: NotRequired[
-        Literal[
-            "token",
-            "username_password",
-            "oidc_azure",
-            "oidc_aws",
-            "oidc_jfrog",
-            "oidc_cloudsmith",
-            "oidc_gcp",
-        ]
-    ]
-    url: NotRequired[str]
-    username: NotRequired[str]
-    replaces_base: NotRequired[bool]
-    visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
-    tenant_id: NotRequired[str]
-    client_id: NotRequired[str]
-    aws_region: NotRequired[str]
-    account_id: NotRequired[str]
-    role_name: NotRequired[str]
-    domain: NotRequired[str]
-    domain_owner: NotRequired[str]
-    jfrog_oidc_provider_name: NotRequired[str]
-    audience: NotRequired[str]
-    identity_mapping_name: NotRequired[str]
-    namespace: NotRequired[str]
-    service_slug: NotRequired[str]
-    api_host: NotRequired[str]
-    workload_identity_provider: NotRequired[str]
-    service_account: NotRequired[str]
+    url: str
+    package_html_url: str
+    html_url: NotRequired[str]
+    license_: NotRequired[str]
+    description: NotRequired[str]
     created_at: str
     updated_at: str
+    deleted_at: NotRequired[str]
+    metadata: NotRequired[PackageVersionPropMetadataTypeForResponse]
+
+
+class PackageVersionPropMetadataType(TypedDict):
+    """Package Version Metadata"""
+
+    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
+    container: NotRequired[PackageVersionPropMetadataPropContainerType]
+    docker: NotRequired[PackageVersionPropMetadataPropDockerType]
+
+
+class PackageVersionPropMetadataTypeForResponse(TypedDict):
+    """Package Version Metadata"""
+
+    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
+    container: NotRequired[PackageVersionPropMetadataPropContainerTypeForResponse]
+    docker: NotRequired[PackageVersionPropMetadataPropDockerTypeForResponse]
+
+
+class PackageVersionPropMetadataPropContainerType(TypedDict):
+    """Container Metadata"""
+
+    tags: list[str]
+
+
+class PackageVersionPropMetadataPropContainerTypeForResponse(TypedDict):
+    """Container Metadata"""
+
+    tags: list[str]
+
+
+class PackageVersionPropMetadataPropDockerType(TypedDict):
+    """Docker Metadata"""
+
+    tag: NotRequired[list[str]]
+
+
+class PackageVersionPropMetadataPropDockerTypeForResponse(TypedDict):
+    """Docker Metadata"""
+
+    tag: NotRequired[list[str]]
 
 
 __all__ = (
-    "OrgPrivateRegistryConfigurationWithSelectedRepositoriesType",
-    "OrgPrivateRegistryConfigurationWithSelectedRepositoriesTypeForResponse",
+    "PackageVersionPropMetadataPropContainerType",
+    "PackageVersionPropMetadataPropContainerTypeForResponse",
+    "PackageVersionPropMetadataPropDockerType",
+    "PackageVersionPropMetadataPropDockerTypeForResponse",
+    "PackageVersionPropMetadataType",
+    "PackageVersionPropMetadataTypeForResponse",
+    "PackageVersionType",
+    "PackageVersionTypeForResponse",
 )

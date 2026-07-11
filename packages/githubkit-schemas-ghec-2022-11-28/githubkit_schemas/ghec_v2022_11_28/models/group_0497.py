@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Union
 
 from pydantic import Field
 
@@ -18,27 +19,24 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class PagesDeploymentStatus(GitHubModel):
-    """GitHub Pages deployment status"""
+class DeployKey(GitHubModel):
+    """Deploy Key
 
-    status: Missing[
-        Literal[
-            "deployment_in_progress",
-            "syncing_files",
-            "finished_file_sync",
-            "updating_pages",
-            "purging_cdn",
-            "deployment_cancelled",
-            "deployment_failed",
-            "deployment_content_failed",
-            "deployment_attempt_error",
-            "deployment_lost",
-            "succeed",
-            "deployment_queued",
-        ]
-    ] = Field(default=UNSET, description="The current status of the deployment.")
+    An SSH key granting access to a single repository.
+    """
+
+    id: int = Field()
+    key: str = Field()
+    url: str = Field()
+    title: str = Field()
+    verified: bool = Field()
+    created_at: str = Field()
+    read_only: bool = Field()
+    added_by: Missing[Union[str, None]] = Field(default=UNSET)
+    last_used: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+    enabled: Missing[bool] = Field(default=UNSET)
 
 
-model_rebuild(PagesDeploymentStatus)
+model_rebuild(DeployKey)
 
-__all__ = ("PagesDeploymentStatus",)
+__all__ = ("DeployKey",)

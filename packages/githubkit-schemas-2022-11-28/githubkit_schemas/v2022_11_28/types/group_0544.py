@@ -9,329 +9,680 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, Literal, TypeAlias, Union
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0051 import IssueTypeType, IssueTypeTypeForResponse
+from .group_0053 import (
+    IssueDependenciesSummaryType,
+    IssueDependenciesSummaryTypeForResponse,
+    SubIssuesSummaryType,
+    SubIssuesSummaryTypeForResponse,
+)
+from .group_0056 import IssueCommentType, IssueCommentTypeForResponse
+from .group_0057 import IssueFieldValueType, IssueFieldValueTypeForResponse
 
 
-class PersonalAccessTokenRequestType(TypedDict):
-    """Personal Access Token Request
+class WebhooksIssue2Type(TypedDict):
+    """Issue
 
-    Details of a Personal Access Token Request.
+    The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself.
     """
 
-    id: int
-    owner: SimpleUserType
-    permissions_added: PersonalAccessTokenRequestPropPermissionsAddedType
-    permissions_upgraded: PersonalAccessTokenRequestPropPermissionsUpgradedType
-    permissions_result: PersonalAccessTokenRequestPropPermissionsResultType
-    repository_selection: Literal["none", "all", "subset"]
-    repository_count: Union[int, None]
-    repositories: Union[list[PersonalAccessTokenRequestPropRepositoriesItemsType], None]
-    created_at: str
-    token_id: int
-    token_name: str
-    token_expired: bool
-    token_expires_at: Union[str, None]
-    token_last_used_at: Union[str, None]
-
-
-class PersonalAccessTokenRequestTypeForResponse(TypedDict):
-    """Personal Access Token Request
-
-    Details of a Personal Access Token Request.
-    """
-
-    id: int
-    owner: SimpleUserTypeForResponse
-    permissions_added: PersonalAccessTokenRequestPropPermissionsAddedTypeForResponse
-    permissions_upgraded: (
-        PersonalAccessTokenRequestPropPermissionsUpgradedTypeForResponse
-    )
-    permissions_result: PersonalAccessTokenRequestPropPermissionsResultTypeForResponse
-    repository_selection: Literal["none", "all", "subset"]
-    repository_count: Union[int, None]
-    repositories: Union[
-        list[PersonalAccessTokenRequestPropRepositoriesItemsTypeForResponse], None
+    active_lock_reason: Union[
+        None, Literal["resolved", "off-topic", "too heated", "spam"]
     ]
+    assignee: NotRequired[Union[WebhooksIssue2PropAssigneeType, None]]
+    assignees: list[Union[WebhooksIssue2PropAssigneesItemsType, None]]
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    body: Union[str, None]
+    closed_at: Union[_dt.datetime, None]
+    comments: int
+    comments_url: str
+    created_at: _dt.datetime
+    draft: NotRequired[bool]
+    events_url: str
+    html_url: str
+    id: int
+    labels: NotRequired[list[WebhooksIssue2PropLabelsItemsType]]
+    labels_url: str
+    locked: NotRequired[bool]
+    milestone: Union[WebhooksIssue2PropMilestoneType, None]
+    node_id: str
+    number: int
+    performed_via_github_app: NotRequired[
+        Union[WebhooksIssue2PropPerformedViaGithubAppType, None]
+    ]
+    pull_request: NotRequired[WebhooksIssue2PropPullRequestType]
+    reactions: WebhooksIssue2PropReactionsType
+    repository_url: str
+    pinned_comment: NotRequired[Union[None, IssueCommentType]]
+    sub_issues_summary: NotRequired[SubIssuesSummaryType]
+    issue_dependencies_summary: NotRequired[IssueDependenciesSummaryType]
+    issue_field_values: NotRequired[list[IssueFieldValueType]]
+    state: NotRequired[Literal["open", "closed"]]
+    state_reason: NotRequired[Union[str, None]]
+    timeline_url: NotRequired[str]
+    title: str
+    type: NotRequired[Union[IssueTypeType, None]]
+    updated_at: _dt.datetime
+    url: str
+    user: Union[WebhooksIssue2PropUserType, None]
+
+
+class WebhooksIssue2TypeForResponse(TypedDict):
+    """Issue
+
+    The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself.
+    """
+
+    active_lock_reason: Union[
+        None, Literal["resolved", "off-topic", "too heated", "spam"]
+    ]
+    assignee: NotRequired[Union[WebhooksIssue2PropAssigneeTypeForResponse, None]]
+    assignees: list[Union[WebhooksIssue2PropAssigneesItemsTypeForResponse, None]]
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    body: Union[str, None]
+    closed_at: Union[str, None]
+    comments: int
+    comments_url: str
     created_at: str
-    token_id: int
-    token_name: str
-    token_expired: bool
-    token_expires_at: Union[str, None]
-    token_last_used_at: Union[str, None]
+    draft: NotRequired[bool]
+    events_url: str
+    html_url: str
+    id: int
+    labels: NotRequired[list[WebhooksIssue2PropLabelsItemsTypeForResponse]]
+    labels_url: str
+    locked: NotRequired[bool]
+    milestone: Union[WebhooksIssue2PropMilestoneTypeForResponse, None]
+    node_id: str
+    number: int
+    performed_via_github_app: NotRequired[
+        Union[WebhooksIssue2PropPerformedViaGithubAppTypeForResponse, None]
+    ]
+    pull_request: NotRequired[WebhooksIssue2PropPullRequestTypeForResponse]
+    reactions: WebhooksIssue2PropReactionsTypeForResponse
+    repository_url: str
+    pinned_comment: NotRequired[Union[None, IssueCommentTypeForResponse]]
+    sub_issues_summary: NotRequired[SubIssuesSummaryTypeForResponse]
+    issue_dependencies_summary: NotRequired[IssueDependenciesSummaryTypeForResponse]
+    issue_field_values: NotRequired[list[IssueFieldValueTypeForResponse]]
+    state: NotRequired[Literal["open", "closed"]]
+    state_reason: NotRequired[Union[str, None]]
+    timeline_url: NotRequired[str]
+    title: str
+    type: NotRequired[Union[IssueTypeTypeForResponse, None]]
+    updated_at: str
+    url: str
+    user: Union[WebhooksIssue2PropUserTypeForResponse, None]
 
 
-class PersonalAccessTokenRequestPropRepositoriesItemsType(TypedDict):
-    """PersonalAccessTokenRequestPropRepositoriesItems"""
+class WebhooksIssue2PropAssigneeType(TypedDict):
+    """User"""
 
-    full_name: str
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhooksIssue2PropAssigneeTypeForResponse(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhooksIssue2PropAssigneesItemsType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhooksIssue2PropAssigneesItemsTypeForResponse(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhooksIssue2PropLabelsItemsType(TypedDict):
+    """Label"""
+
+    color: str
+    default: bool
+    description: Union[str, None]
     id: int
     name: str
     node_id: str
-    private: bool
+    url: str
 
 
-class PersonalAccessTokenRequestPropRepositoriesItemsTypeForResponse(TypedDict):
-    """PersonalAccessTokenRequestPropRepositoriesItems"""
+class WebhooksIssue2PropLabelsItemsTypeForResponse(TypedDict):
+    """Label"""
 
-    full_name: str
+    color: str
+    default: bool
+    description: Union[str, None]
     id: int
     name: str
     node_id: str
-    private: bool
+    url: str
 
 
-class PersonalAccessTokenRequestPropPermissionsAddedType(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsAdded
+class WebhooksIssue2PropMilestoneType(TypedDict):
+    """Milestone
 
-    New requested permissions, categorized by type of permission.
+    A collection of related issues and pull requests.
     """
 
-    organization: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationType
-    ]
-    repository: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryType
-    ]
-    other: NotRequired[PersonalAccessTokenRequestPropPermissionsAddedPropOtherType]
+    closed_at: Union[_dt.datetime, None]
+    closed_issues: int
+    created_at: _dt.datetime
+    creator: Union[WebhooksIssue2PropMilestonePropCreatorType, None]
+    description: Union[str, None]
+    due_on: Union[_dt.datetime, None]
+    html_url: str
+    id: int
+    labels_url: str
+    node_id: str
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: _dt.datetime
+    url: str
 
 
-class PersonalAccessTokenRequestPropPermissionsAddedTypeForResponse(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsAdded
+class WebhooksIssue2PropMilestoneTypeForResponse(TypedDict):
+    """Milestone
 
-    New requested permissions, categorized by type of permission.
+    A collection of related issues and pull requests.
     """
 
-    organization: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationTypeForResponse
-    ]
-    repository: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryTypeForResponse
-    ]
-    other: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsAddedPropOtherTypeForResponse
-    ]
+    closed_at: Union[str, None]
+    closed_issues: int
+    created_at: str
+    creator: Union[WebhooksIssue2PropMilestonePropCreatorTypeForResponse, None]
+    description: Union[str, None]
+    due_on: Union[str, None]
+    html_url: str
+    id: int
+    labels_url: str
+    node_id: str
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: str
+    url: str
 
 
-PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationType: TypeAlias = dict[
-    str, Any
-]
-"""PersonalAccessTokenRequestPropPermissionsAddedPropOrganization
-"""
+class WebhooksIssue2PropMilestonePropCreatorType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""PersonalAccessTokenRequestPropPermissionsAddedPropOrganization
-"""
+class WebhooksIssue2PropMilestonePropCreatorTypeForResponse(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryType: TypeAlias = dict[
-    str, Any
-]
-"""PersonalAccessTokenRequestPropPermissionsAddedPropRepository
-"""
+class WebhooksIssue2PropPerformedViaGithubAppType(TypedDict):
+    """App
 
-
-PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""PersonalAccessTokenRequestPropPermissionsAddedPropRepository
-"""
-
-
-PersonalAccessTokenRequestPropPermissionsAddedPropOtherType: TypeAlias = dict[str, Any]
-"""PersonalAccessTokenRequestPropPermissionsAddedPropOther
-"""
-
-
-PersonalAccessTokenRequestPropPermissionsAddedPropOtherTypeForResponse: TypeAlias = (
-    dict[str, Any]
-)
-"""PersonalAccessTokenRequestPropPermissionsAddedPropOther
-"""
-
-
-class PersonalAccessTokenRequestPropPermissionsUpgradedType(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsUpgraded
-
-    Requested permissions that elevate access for a previously approved request for
-    access, categorized by type of permission.
+    GitHub apps are a new way to extend GitHub. They can be installed directly on
+    organizations and user accounts and granted access to specific repositories.
+    They come with granular permissions and built-in webhooks. GitHub apps are first
+    class actors within GitHub.
     """
 
-    organization: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationType
-    ]
-    repository: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsUpgradedPropRepositoryType
-    ]
-    other: NotRequired[PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherType]
+    created_at: Union[_dt.datetime, None]
+    description: Union[str, None]
+    events: NotRequired[list[str]]
+    external_url: Union[str, None]
+    html_url: str
+    id: Union[int, None]
+    name: str
+    node_id: str
+    owner: Union[WebhooksIssue2PropPerformedViaGithubAppPropOwnerType, None]
+    permissions: NotRequired[WebhooksIssue2PropPerformedViaGithubAppPropPermissionsType]
+    slug: NotRequired[str]
+    updated_at: Union[_dt.datetime, None]
 
 
-class PersonalAccessTokenRequestPropPermissionsUpgradedTypeForResponse(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsUpgraded
+class WebhooksIssue2PropPerformedViaGithubAppTypeForResponse(TypedDict):
+    """App
 
-    Requested permissions that elevate access for a previously approved request for
-    access, categorized by type of permission.
+    GitHub apps are a new way to extend GitHub. They can be installed directly on
+    organizations and user accounts and granted access to specific repositories.
+    They come with granular permissions and built-in webhooks. GitHub apps are first
+    class actors within GitHub.
     """
 
-    organization: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationTypeForResponse
+    created_at: Union[str, None]
+    description: Union[str, None]
+    events: NotRequired[list[str]]
+    external_url: Union[str, None]
+    html_url: str
+    id: Union[int, None]
+    name: str
+    node_id: str
+    owner: Union[WebhooksIssue2PropPerformedViaGithubAppPropOwnerTypeForResponse, None]
+    permissions: NotRequired[
+        WebhooksIssue2PropPerformedViaGithubAppPropPermissionsTypeForResponse
     ]
-    repository: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsUpgradedPropRepositoryTypeForResponse
-    ]
-    other: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherTypeForResponse
-    ]
+    slug: NotRequired[str]
+    updated_at: Union[str, None]
 
 
-PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationType: TypeAlias = dict[
-    str, Any
-]
-"""PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization
-"""
+class WebhooksIssue2PropPerformedViaGithubAppPropOwnerType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization
-"""
+class WebhooksIssue2PropPerformedViaGithubAppPropOwnerTypeForResponse(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-PersonalAccessTokenRequestPropPermissionsUpgradedPropRepositoryType: TypeAlias = dict[
-    str, Any
-]
-"""PersonalAccessTokenRequestPropPermissionsUpgradedPropRepository
-"""
+class WebhooksIssue2PropPerformedViaGithubAppPropPermissionsType(TypedDict):
+    """WebhooksIssue2PropPerformedViaGithubAppPropPermissions
 
-
-PersonalAccessTokenRequestPropPermissionsUpgradedPropRepositoryTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""PersonalAccessTokenRequestPropPermissionsUpgradedPropRepository
-"""
-
-
-PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherType: TypeAlias = dict[
-    str, Any
-]
-"""PersonalAccessTokenRequestPropPermissionsUpgradedPropOther
-"""
-
-
-PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherTypeForResponse: TypeAlias = (
-    dict[str, Any]
-)
-"""PersonalAccessTokenRequestPropPermissionsUpgradedPropOther
-"""
-
-
-class PersonalAccessTokenRequestPropPermissionsResultType(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsResult
-
-    Permissions requested, categorized by type of permission. This field
-    incorporates `permissions_added` and `permissions_upgraded`.
+    The set of permissions for the GitHub app
     """
 
-    organization: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsResultPropOrganizationType
-    ]
-    repository: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsResultPropRepositoryType
-    ]
-    other: NotRequired[PersonalAccessTokenRequestPropPermissionsResultPropOtherType]
+    actions: NotRequired[Literal["read", "write"]]
+    administration: NotRequired[Literal["read", "write"]]
+    checks: NotRequired[Literal["read", "write"]]
+    content_references: NotRequired[Literal["read", "write"]]
+    contents: NotRequired[Literal["read", "write"]]
+    deployments: NotRequired[Literal["read", "write"]]
+    discussions: NotRequired[Literal["read", "write"]]
+    emails: NotRequired[Literal["read", "write"]]
+    environments: NotRequired[Literal["read", "write"]]
+    issues: NotRequired[Literal["read", "write"]]
+    keys: NotRequired[Literal["read", "write"]]
+    members: NotRequired[Literal["read", "write"]]
+    metadata: NotRequired[Literal["read", "write"]]
+    organization_administration: NotRequired[Literal["read", "write"]]
+    organization_hooks: NotRequired[Literal["read", "write"]]
+    organization_packages: NotRequired[Literal["read", "write"]]
+    organization_plan: NotRequired[Literal["read", "write"]]
+    organization_projects: NotRequired[Literal["read", "write"]]
+    organization_secrets: NotRequired[Literal["read", "write"]]
+    organization_self_hosted_runners: NotRequired[Literal["read", "write"]]
+    organization_user_blocking: NotRequired[Literal["read", "write"]]
+    packages: NotRequired[Literal["read", "write"]]
+    pages: NotRequired[Literal["read", "write"]]
+    pull_requests: NotRequired[Literal["read", "write"]]
+    repository_hooks: NotRequired[Literal["read", "write"]]
+    repository_projects: NotRequired[Literal["read", "write"]]
+    secret_scanning_alerts: NotRequired[Literal["read", "write"]]
+    secrets: NotRequired[Literal["read", "write"]]
+    security_events: NotRequired[Literal["read", "write"]]
+    security_scanning_alert: NotRequired[Literal["read", "write"]]
+    single_file: NotRequired[Literal["read", "write"]]
+    statuses: NotRequired[Literal["read", "write"]]
+    vulnerability_alerts: NotRequired[Literal["read", "write"]]
+    workflows: NotRequired[Literal["read", "write"]]
 
 
-class PersonalAccessTokenRequestPropPermissionsResultTypeForResponse(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsResult
+class WebhooksIssue2PropPerformedViaGithubAppPropPermissionsTypeForResponse(TypedDict):
+    """WebhooksIssue2PropPerformedViaGithubAppPropPermissions
 
-    Permissions requested, categorized by type of permission. This field
-    incorporates `permissions_added` and `permissions_upgraded`.
+    The set of permissions for the GitHub app
     """
 
-    organization: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsResultPropOrganizationTypeForResponse
-    ]
-    repository: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsResultPropRepositoryTypeForResponse
-    ]
-    other: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsResultPropOtherTypeForResponse
-    ]
+    actions: NotRequired[Literal["read", "write"]]
+    administration: NotRequired[Literal["read", "write"]]
+    checks: NotRequired[Literal["read", "write"]]
+    content_references: NotRequired[Literal["read", "write"]]
+    contents: NotRequired[Literal["read", "write"]]
+    deployments: NotRequired[Literal["read", "write"]]
+    discussions: NotRequired[Literal["read", "write"]]
+    emails: NotRequired[Literal["read", "write"]]
+    environments: NotRequired[Literal["read", "write"]]
+    issues: NotRequired[Literal["read", "write"]]
+    keys: NotRequired[Literal["read", "write"]]
+    members: NotRequired[Literal["read", "write"]]
+    metadata: NotRequired[Literal["read", "write"]]
+    organization_administration: NotRequired[Literal["read", "write"]]
+    organization_hooks: NotRequired[Literal["read", "write"]]
+    organization_packages: NotRequired[Literal["read", "write"]]
+    organization_plan: NotRequired[Literal["read", "write"]]
+    organization_projects: NotRequired[Literal["read", "write"]]
+    organization_secrets: NotRequired[Literal["read", "write"]]
+    organization_self_hosted_runners: NotRequired[Literal["read", "write"]]
+    organization_user_blocking: NotRequired[Literal["read", "write"]]
+    packages: NotRequired[Literal["read", "write"]]
+    pages: NotRequired[Literal["read", "write"]]
+    pull_requests: NotRequired[Literal["read", "write"]]
+    repository_hooks: NotRequired[Literal["read", "write"]]
+    repository_projects: NotRequired[Literal["read", "write"]]
+    secret_scanning_alerts: NotRequired[Literal["read", "write"]]
+    secrets: NotRequired[Literal["read", "write"]]
+    security_events: NotRequired[Literal["read", "write"]]
+    security_scanning_alert: NotRequired[Literal["read", "write"]]
+    single_file: NotRequired[Literal["read", "write"]]
+    statuses: NotRequired[Literal["read", "write"]]
+    vulnerability_alerts: NotRequired[Literal["read", "write"]]
+    workflows: NotRequired[Literal["read", "write"]]
 
 
-PersonalAccessTokenRequestPropPermissionsResultPropOrganizationType: TypeAlias = dict[
-    str, Any
-]
-"""PersonalAccessTokenRequestPropPermissionsResultPropOrganization
-"""
+class WebhooksIssue2PropPullRequestType(TypedDict):
+    """WebhooksIssue2PropPullRequest"""
+
+    diff_url: NotRequired[str]
+    html_url: NotRequired[str]
+    merged_at: NotRequired[Union[_dt.datetime, None]]
+    patch_url: NotRequired[str]
+    url: NotRequired[str]
 
 
-PersonalAccessTokenRequestPropPermissionsResultPropOrganizationTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""PersonalAccessTokenRequestPropPermissionsResultPropOrganization
-"""
+class WebhooksIssue2PropPullRequestTypeForResponse(TypedDict):
+    """WebhooksIssue2PropPullRequest"""
+
+    diff_url: NotRequired[str]
+    html_url: NotRequired[str]
+    merged_at: NotRequired[Union[str, None]]
+    patch_url: NotRequired[str]
+    url: NotRequired[str]
 
 
-PersonalAccessTokenRequestPropPermissionsResultPropRepositoryType: TypeAlias = dict[
-    str, Any
-]
-"""PersonalAccessTokenRequestPropPermissionsResultPropRepository
-"""
+class WebhooksIssue2PropReactionsType(TypedDict):
+    """Reactions"""
+
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
+    url: str
 
 
-PersonalAccessTokenRequestPropPermissionsResultPropRepositoryTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""PersonalAccessTokenRequestPropPermissionsResultPropRepository
-"""
+class WebhooksIssue2PropReactionsTypeForResponse(TypedDict):
+    """Reactions"""
+
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
+    url: str
 
 
-PersonalAccessTokenRequestPropPermissionsResultPropOtherType: TypeAlias = dict[str, Any]
-"""PersonalAccessTokenRequestPropPermissionsResultPropOther
-"""
+class WebhooksIssue2PropUserType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-PersonalAccessTokenRequestPropPermissionsResultPropOtherTypeForResponse: TypeAlias = (
-    dict[str, Any]
-)
-"""PersonalAccessTokenRequestPropPermissionsResultPropOther
-"""
+class WebhooksIssue2PropUserTypeForResponse(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationType",
-    "PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationTypeForResponse",
-    "PersonalAccessTokenRequestPropPermissionsAddedPropOtherType",
-    "PersonalAccessTokenRequestPropPermissionsAddedPropOtherTypeForResponse",
-    "PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryType",
-    "PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryTypeForResponse",
-    "PersonalAccessTokenRequestPropPermissionsAddedType",
-    "PersonalAccessTokenRequestPropPermissionsAddedTypeForResponse",
-    "PersonalAccessTokenRequestPropPermissionsResultPropOrganizationType",
-    "PersonalAccessTokenRequestPropPermissionsResultPropOrganizationTypeForResponse",
-    "PersonalAccessTokenRequestPropPermissionsResultPropOtherType",
-    "PersonalAccessTokenRequestPropPermissionsResultPropOtherTypeForResponse",
-    "PersonalAccessTokenRequestPropPermissionsResultPropRepositoryType",
-    "PersonalAccessTokenRequestPropPermissionsResultPropRepositoryTypeForResponse",
-    "PersonalAccessTokenRequestPropPermissionsResultType",
-    "PersonalAccessTokenRequestPropPermissionsResultTypeForResponse",
-    "PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationType",
-    "PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationTypeForResponse",
-    "PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherType",
-    "PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherTypeForResponse",
-    "PersonalAccessTokenRequestPropPermissionsUpgradedPropRepositoryType",
-    "PersonalAccessTokenRequestPropPermissionsUpgradedPropRepositoryTypeForResponse",
-    "PersonalAccessTokenRequestPropPermissionsUpgradedType",
-    "PersonalAccessTokenRequestPropPermissionsUpgradedTypeForResponse",
-    "PersonalAccessTokenRequestPropRepositoriesItemsType",
-    "PersonalAccessTokenRequestPropRepositoriesItemsTypeForResponse",
-    "PersonalAccessTokenRequestType",
-    "PersonalAccessTokenRequestTypeForResponse",
+    "WebhooksIssue2PropAssigneeType",
+    "WebhooksIssue2PropAssigneeTypeForResponse",
+    "WebhooksIssue2PropAssigneesItemsType",
+    "WebhooksIssue2PropAssigneesItemsTypeForResponse",
+    "WebhooksIssue2PropLabelsItemsType",
+    "WebhooksIssue2PropLabelsItemsTypeForResponse",
+    "WebhooksIssue2PropMilestonePropCreatorType",
+    "WebhooksIssue2PropMilestonePropCreatorTypeForResponse",
+    "WebhooksIssue2PropMilestoneType",
+    "WebhooksIssue2PropMilestoneTypeForResponse",
+    "WebhooksIssue2PropPerformedViaGithubAppPropOwnerType",
+    "WebhooksIssue2PropPerformedViaGithubAppPropOwnerTypeForResponse",
+    "WebhooksIssue2PropPerformedViaGithubAppPropPermissionsType",
+    "WebhooksIssue2PropPerformedViaGithubAppPropPermissionsTypeForResponse",
+    "WebhooksIssue2PropPerformedViaGithubAppType",
+    "WebhooksIssue2PropPerformedViaGithubAppTypeForResponse",
+    "WebhooksIssue2PropPullRequestType",
+    "WebhooksIssue2PropPullRequestTypeForResponse",
+    "WebhooksIssue2PropReactionsType",
+    "WebhooksIssue2PropReactionsTypeForResponse",
+    "WebhooksIssue2PropUserType",
+    "WebhooksIssue2PropUserTypeForResponse",
+    "WebhooksIssue2Type",
+    "WebhooksIssue2TypeForResponse",
 )

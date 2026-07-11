@@ -9,44 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0480 import (
-    TimelineCrossReferencedEventPropSourceType,
-    TimelineCrossReferencedEventPropSourceTypeForResponse,
-)
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0458 import IssueReferenceType, IssueReferenceTypeForResponse
 
 
-class TimelineCrossReferencedEventType(TypedDict):
-    """Timeline Cross Referenced Event
+class SubIssueRemovedIssueEventType(TypedDict):
+    """Sub-issue Removed Issue Event
 
-    Timeline Cross Referenced Event
+    Sub-issue Removed Issue Event
     """
 
-    event: Literal["cross-referenced"]
-    actor: NotRequired[SimpleUserType]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    source: TimelineCrossReferencedEventPropSourceType
-
-
-class TimelineCrossReferencedEventTypeForResponse(TypedDict):
-    """Timeline Cross Referenced Event
-
-    Timeline Cross Referenced Event
-    """
-
-    event: Literal["cross-referenced"]
-    actor: NotRequired[SimpleUserTypeForResponse]
+    id: int
+    node_id: str
+    url: str
+    actor: SimpleUserType
+    event: str
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
     created_at: str
-    updated_at: str
-    source: TimelineCrossReferencedEventPropSourceTypeForResponse
+    performed_via_github_app: Union[None, IntegrationType, None]
+    sub_issue: Union[None, IssueReferenceType, None]
+
+
+class SubIssueRemovedIssueEventTypeForResponse(TypedDict):
+    """Sub-issue Removed Issue Event
+
+    Sub-issue Removed Issue Event
+    """
+
+    id: int
+    node_id: str
+    url: str
+    actor: SimpleUserTypeForResponse
+    event: str
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
+    sub_issue: Union[None, IssueReferenceTypeForResponse, None]
 
 
 __all__ = (
-    "TimelineCrossReferencedEventType",
-    "TimelineCrossReferencedEventTypeForResponse",
+    "SubIssueRemovedIssueEventType",
+    "SubIssueRemovedIssueEventTypeForResponse",
 )

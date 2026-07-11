@@ -9,30 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing_extensions import TypedDict
 
 
-class WebhooksRepositoriesAddedItemsType(TypedDict):
-    """WebhooksRepositoriesAddedItems"""
+class WebhooksWorkflowType(TypedDict):
+    """Workflow"""
 
-    full_name: str
+    badge_url: str
+    created_at: _dt.datetime
+    html_url: str
     id: int
     name: str
     node_id: str
-    private: bool
+    path: str
+    state: str
+    updated_at: _dt.datetime
+    url: str
 
 
-class WebhooksRepositoriesAddedItemsTypeForResponse(TypedDict):
-    """WebhooksRepositoriesAddedItems"""
+class WebhooksWorkflowTypeForResponse(TypedDict):
+    """Workflow"""
 
-    full_name: str
+    badge_url: str
+    created_at: str
+    html_url: str
     id: int
     name: str
     node_id: str
-    private: bool
+    path: str
+    state: str
+    updated_at: str
+    url: str
 
 
 __all__ = (
-    "WebhooksRepositoriesAddedItemsType",
-    "WebhooksRepositoriesAddedItemsTypeForResponse",
+    "WebhooksWorkflowType",
+    "WebhooksWorkflowTypeForResponse",
 )

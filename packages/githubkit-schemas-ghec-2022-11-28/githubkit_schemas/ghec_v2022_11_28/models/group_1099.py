@@ -11,19 +11,19 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200(
-    GitHubModel
-):
-    """EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200"""
+class CredentialsRevokePostBody(GitHubModel):
+    """CredentialsRevokePostBody"""
 
-    disable_self_hosted_runners_for_all_orgs: bool = Field(
-        description="When true, repository-level runners will be disabled across all organizations in the enterprise"
+    credentials: list[str] = Field(
+        max_length=1000 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="A list of credentials to be revoked, up to 1000 per request.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200)
+model_rebuild(CredentialsRevokePostBody)
 
-__all__ = ("EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200",)
+__all__ = ("CredentialsRevokePostBody",)

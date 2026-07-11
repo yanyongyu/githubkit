@@ -13,16 +13,15 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0267 import Artifact
+
+class OrgsOrgSettingsImmutableReleasesRepositoriesPutBody(GitHubModel):
+    """OrgsOrgSettingsImmutableReleasesRepositoriesPutBody"""
+
+    selected_repository_ids: list[int] = Field(
+        description="An array of repository ids for which immutable releases enforcement should be applied. You can only provide a list of repository ids when the `enforced_repositories` is set to `selected`. You can add and remove individual repositories using the [Enable a selected repository for immutable releases in an organization](https://docs.github.com/rest/orgs/orgs#enable-a-selected-repository-for-immutable-releases-in-an-organization) and [Disable a selected repository for immutable releases in an organization](https://docs.github.com/rest/orgs/orgs#disable-a-selected-repository-for-immutable-releases-in-an-organization) endpoints."
+    )
 
 
-class ReposOwnerRepoActionsArtifactsGetResponse200(GitHubModel):
-    """ReposOwnerRepoActionsArtifactsGetResponse200"""
+model_rebuild(OrgsOrgSettingsImmutableReleasesRepositoriesPutBody)
 
-    total_count: int = Field()
-    artifacts: list[Artifact] = Field()
-
-
-model_rebuild(ReposOwnerRepoActionsArtifactsGetResponse200)
-
-__all__ = ("ReposOwnerRepoActionsArtifactsGetResponse200",)
+__all__ = ("OrgsOrgSettingsImmutableReleasesRepositoriesPutBody",)

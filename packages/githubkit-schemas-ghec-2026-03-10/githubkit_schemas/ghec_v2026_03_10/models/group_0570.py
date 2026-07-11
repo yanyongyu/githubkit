@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,144 +17,75 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0019 import LicenseSimple
-from .group_0564 import SearchResultTextMatchesItems
+from .group_0562 import Meta
+from .group_0567 import UserEmailsResponseItems, UserNameResponse
+from .group_0568 import UserRoleItems
+from .group_0572 import ScimEnterpriseUserResponseAllof1PropGroupsItems
 
 
-class RepoSearchResultItem(GitHubModel):
-    """Repo Search Result Item
+class ScimEnterpriseUserResponse(GitHubModel):
+    """ScimEnterpriseUserResponse"""
 
-    Repo Search Result Item
-    """
-
-    id: int = Field()
-    node_id: str = Field()
-    name: str = Field()
-    full_name: str = Field()
-    owner: Union[None, SimpleUser] = Field()
-    private: bool = Field()
-    html_url: str = Field()
-    description: Union[str, None] = Field()
-    fork: bool = Field()
-    url: str = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    pushed_at: _dt.datetime = Field()
-    homepage: Union[str, None] = Field()
-    size: int = Field()
-    stargazers_count: int = Field()
-    watchers_count: int = Field()
-    language: Union[str, None] = Field()
-    forks_count: int = Field()
-    open_issues_count: int = Field()
-    master_branch: Missing[str] = Field(default=UNSET)
-    default_branch: str = Field()
-    score: float = Field()
-    forks_url: str = Field()
-    keys_url: str = Field()
-    collaborators_url: str = Field()
-    teams_url: str = Field()
-    hooks_url: str = Field()
-    issue_events_url: str = Field()
-    events_url: str = Field()
-    assignees_url: str = Field()
-    branches_url: str = Field()
-    tags_url: str = Field()
-    blobs_url: str = Field()
-    git_tags_url: str = Field()
-    git_refs_url: str = Field()
-    trees_url: str = Field()
-    statuses_url: str = Field()
-    languages_url: str = Field()
-    stargazers_url: str = Field()
-    contributors_url: str = Field()
-    subscribers_url: str = Field()
-    subscription_url: str = Field()
-    commits_url: str = Field()
-    git_commits_url: str = Field()
-    comments_url: str = Field()
-    issue_comment_url: str = Field()
-    contents_url: str = Field()
-    compare_url: str = Field()
-    merges_url: str = Field()
-    archive_url: str = Field()
-    downloads_url: str = Field()
-    issues_url: str = Field()
-    pulls_url: str = Field()
-    milestones_url: str = Field()
-    notifications_url: str = Field()
-    labels_url: str = Field()
-    releases_url: str = Field()
-    deployments_url: str = Field()
-    git_url: str = Field()
-    ssh_url: str = Field()
-    clone_url: str = Field()
-    svn_url: str = Field()
-    forks: int = Field()
-    open_issues: int = Field()
-    watchers: int = Field()
-    topics: Missing[list[str]] = Field(default=UNSET)
-    mirror_url: Union[str, None] = Field()
-    has_issues: bool = Field()
-    has_projects: bool = Field()
-    has_pages: bool = Field()
-    has_wiki: bool = Field()
-    has_downloads: Missing[bool] = Field(default=UNSET)
-    has_discussions: Missing[bool] = Field(default=UNSET)
-    has_pull_requests: Missing[bool] = Field(default=UNSET)
-    pull_request_creation_policy: Missing[Literal["all", "collaborators_only"]] = Field(
+    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]] = Field(
+        description="The URIs that are used to indicate the namespaces of the SCIM schemas."
+    )
+    external_id: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The policy controlling who can create pull requests: all or collaborators_only.",
+        alias="externalId",
+        description="A unique identifier for the resource as defined by the provisioning client.",
     )
-    archived: bool = Field()
-    disabled: bool = Field(
-        description="Returns whether or not this repository disabled."
+    active: bool = Field(description="Whether the user active in the IdP.")
+    user_name: Missing[str] = Field(
+        default=UNSET, alias="userName", description="The username for the user."
     )
-    visibility: Missing[str] = Field(
+    name: Missing[UserNameResponse] = Field(default=UNSET)
+    display_name: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The repository visibility: public, private, or internal.",
+        alias="displayName",
+        description="A human-readable name for the user.",
     )
-    license_: Union[None, LicenseSimple] = Field(alias="license")
-    permissions: Missing[RepoSearchResultItemPropPermissions] = Field(default=UNSET)
-    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
-        default=UNSET, title="Search Result Text Matches"
+    emails: list[UserEmailsResponseItems] = Field(
+        description="The emails for the user."
     )
-    temp_clone_token: Missing[Union[str, None]] = Field(default=UNSET)
-    allow_merge_commit: Missing[bool] = Field(default=UNSET)
-    allow_squash_merge: Missing[bool] = Field(default=UNSET)
-    allow_rebase_merge: Missing[bool] = Field(default=UNSET)
-    allow_auto_merge: Missing[bool] = Field(default=UNSET)
-    delete_branch_on_merge: Missing[bool] = Field(default=UNSET)
-    allow_forking: Missing[bool] = Field(default=UNSET)
-    is_template: Missing[bool] = Field(default=UNSET)
-    web_commit_signoff_required: Missing[bool] = Field(default=UNSET)
+    roles: Missing[list[UserRoleItems]] = Field(
+        default=UNSET, description="The roles assigned to the user."
+    )
+    id: str = Field(description="The internally generated id for the user object.")
+    groups: Missing[list[ScimEnterpriseUserResponseAllof1PropGroupsItems]] = Field(
+        default=UNSET,
+        description="Provisioned SCIM groups that the user is a member of.",
+    )
+    meta: Meta = Field(
+        description="The metadata associated with the creation/updates to the user."
+    )
 
 
-class RepoSearchResultItemPropPermissions(GitHubModel):
-    """RepoSearchResultItemPropPermissions"""
+class ScimEnterpriseUserList(GitHubModel):
+    """ScimEnterpriseUserList"""
 
-    admin: bool = Field()
-    maintain: Missing[bool] = Field(default=UNSET)
-    push: bool = Field()
-    triage: Missing[bool] = Field(default=UNSET)
-    pull: bool = Field()
+    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:ListResponse"]] = (
+        Field(
+            description="The URIs that are used to indicate the namespaces of the list SCIM schemas."
+        )
+    )
+    total_results: int = Field(
+        alias="totalResults", description="Number of results found"
+    )
+    resources: list[ScimEnterpriseUserResponse] = Field(
+        alias="Resources", description="Information about each provisioned account."
+    )
+    start_index: int = Field(
+        alias="startIndex", description="A starting index for the returned page"
+    )
+    items_per_page: int = Field(
+        alias="itemsPerPage", description="Number of objects per page"
+    )
 
 
-class SearchRepositoriesGetResponse200(GitHubModel):
-    """SearchRepositoriesGetResponse200"""
-
-    total_count: int = Field()
-    incomplete_results: bool = Field()
-    items: list[RepoSearchResultItem] = Field()
-
-
-model_rebuild(RepoSearchResultItem)
-model_rebuild(RepoSearchResultItemPropPermissions)
-model_rebuild(SearchRepositoriesGetResponse200)
+model_rebuild(ScimEnterpriseUserResponse)
+model_rebuild(ScimEnterpriseUserList)
 
 __all__ = (
-    "RepoSearchResultItem",
-    "RepoSearchResultItemPropPermissions",
-    "SearchRepositoriesGetResponse200",
+    "ScimEnterpriseUserList",
+    "ScimEnterpriseUserResponse",
 )

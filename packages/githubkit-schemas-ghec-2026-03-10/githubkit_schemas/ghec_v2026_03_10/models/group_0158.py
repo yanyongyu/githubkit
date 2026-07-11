@@ -14,14 +14,16 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class RepositoryRuleFileExtensionRestrictionPropParameters(GitHubModel):
-    """RepositoryRuleFileExtensionRestrictionPropParameters"""
+class RepositoryRuleMaxFilePathLengthPropParameters(GitHubModel):
+    """RepositoryRuleMaxFilePathLengthPropParameters"""
 
-    restricted_file_extensions: list[str] = Field(
-        description="The file extensions that are restricted from being pushed to the commit graph."
+    max_file_path_length: int = Field(
+        le=32767.0,
+        ge=1.0,
+        description="The maximum amount of characters allowed in file paths.",
     )
 
 
-model_rebuild(RepositoryRuleFileExtensionRestrictionPropParameters)
+model_rebuild(RepositoryRuleMaxFilePathLengthPropParameters)
 
-__all__ = ("RepositoryRuleFileExtensionRestrictionPropParameters",)
+__all__ = ("RepositoryRuleMaxFilePathLengthPropParameters",)

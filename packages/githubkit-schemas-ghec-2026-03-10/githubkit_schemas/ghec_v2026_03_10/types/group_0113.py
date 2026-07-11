@@ -9,51 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0112 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
 
 
-class RepositoryRulesetBypassActorType(TypedDict):
-    """Repository Ruleset Bypass Actor
+class CustomPropertiesForOrgsGetEnterprisePropertyValuesType(TypedDict):
+    """Enterprise Organization Custom Property Values
 
-    An actor that can bypass rules in a ruleset
+    List of custom property values for an organization
     """
 
-    actor_id: NotRequired[Union[int, None]]
-    actor_type: Literal[
-        "Integration",
-        "OrganizationAdmin",
-        "RepositoryRole",
-        "Team",
-        "DeployKey",
-        "EnterpriseOwner",
-        "EnterpriseRole",
-        "User",
-    ]
-    bypass_mode: NotRequired[Literal["always", "pull_request", "exempt"]]
+    organization_id: int
+    organization_login: str
+    properties: list[CustomPropertyValueType]
 
 
-class RepositoryRulesetBypassActorTypeForResponse(TypedDict):
-    """Repository Ruleset Bypass Actor
+class CustomPropertiesForOrgsGetEnterprisePropertyValuesTypeForResponse(TypedDict):
+    """Enterprise Organization Custom Property Values
 
-    An actor that can bypass rules in a ruleset
+    List of custom property values for an organization
     """
 
-    actor_id: NotRequired[Union[int, None]]
-    actor_type: Literal[
-        "Integration",
-        "OrganizationAdmin",
-        "RepositoryRole",
-        "Team",
-        "DeployKey",
-        "EnterpriseOwner",
-        "EnterpriseRole",
-        "User",
-    ]
-    bypass_mode: NotRequired[Literal["always", "pull_request", "exempt"]]
+    organization_id: int
+    organization_login: str
+    properties: list[CustomPropertyValueTypeForResponse]
 
 
 __all__ = (
-    "RepositoryRulesetBypassActorType",
-    "RepositoryRulesetBypassActorTypeForResponse",
+    "CustomPropertiesForOrgsGetEnterprisePropertyValuesType",
+    "CustomPropertiesForOrgsGetEnterprisePropertyValuesTypeForResponse",
 )

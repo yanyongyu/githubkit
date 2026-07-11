@@ -9,45 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0587 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0588 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0589 import (
+from .group_0600 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0590 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0621 import WebhooksProjectColumnType, WebhooksProjectColumnTypeForResponse
+from .group_0601 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0889 import WebhookPingPropHookType, WebhookPingPropHookTypeForResponse
 
 
-class WebhookProjectColumnCreatedType(TypedDict):
-    """project_column created event"""
+class WebhookPingType(TypedDict):
+    """WebhookPing"""
 
-    action: Literal["created"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
+    hook: NotRequired[WebhookPingPropHookType]
+    hook_id: NotRequired[int]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    project_column: WebhooksProjectColumnType
     repository: NotRequired[RepositoryWebhooksType]
     sender: NotRequired[SimpleUserType]
+    zen: NotRequired[str]
 
 
-class WebhookProjectColumnCreatedTypeForResponse(TypedDict):
-    """project_column created event"""
+class WebhookPingTypeForResponse(TypedDict):
+    """WebhookPing"""
 
-    action: Literal["created"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
+    hook: NotRequired[WebhookPingPropHookTypeForResponse]
+    hook_id: NotRequired[int]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    project_column: WebhooksProjectColumnTypeForResponse
     repository: NotRequired[RepositoryWebhooksTypeForResponse]
     sender: NotRequired[SimpleUserTypeForResponse]
+    zen: NotRequired[str]
 
 
 __all__ = (
-    "WebhookProjectColumnCreatedType",
-    "WebhookProjectColumnCreatedTypeForResponse",
+    "WebhookPingType",
+    "WebhookPingTypeForResponse",
 )

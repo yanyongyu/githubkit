@@ -13,20 +13,20 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0587 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0588 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0589 import (
+from .group_0598 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0599 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0600 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0590 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0610 import WebhooksIssue2Type, WebhooksIssue2TypeForResponse
+from .group_0601 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0621 import WebhooksIssue2Type, WebhooksIssue2TypeForResponse
 
 
-class WebhookIssuesUnpinnedType(TypedDict):
-    """issues unpinned event"""
+class WebhookIssuesPinnedType(TypedDict):
+    """issues pinned event"""
 
-    action: Literal["unpinned"]
+    action: Literal["pinned"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     issue: WebhooksIssue2Type
@@ -35,10 +35,10 @@ class WebhookIssuesUnpinnedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookIssuesUnpinnedTypeForResponse(TypedDict):
-    """issues unpinned event"""
+class WebhookIssuesPinnedTypeForResponse(TypedDict):
+    """issues pinned event"""
 
-    action: Literal["unpinned"]
+    action: Literal["pinned"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     issue: WebhooksIssue2TypeForResponse
@@ -48,6 +48,6 @@ class WebhookIssuesUnpinnedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookIssuesUnpinnedType",
-    "WebhookIssuesUnpinnedTypeForResponse",
+    "WebhookIssuesPinnedType",
+    "WebhookIssuesPinnedTypeForResponse",
 )

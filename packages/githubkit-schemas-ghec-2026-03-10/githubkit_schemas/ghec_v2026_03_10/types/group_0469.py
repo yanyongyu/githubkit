@@ -16,69 +16,63 @@ from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
 
-class RemovedFromProjectIssueEventType(TypedDict):
-    """Removed from Project Issue Event
+class ReviewDismissedIssueEventType(TypedDict):
+    """Review Dismissed Issue Event
 
-    Removed from Project Issue Event
+    Review Dismissed Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["removed_from_project"]
+    event: Literal["review_dismissed"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    project_card: NotRequired[RemovedFromProjectIssueEventPropProjectCardType]
+    dismissed_review: ReviewDismissedIssueEventPropDismissedReviewType
 
 
-class RemovedFromProjectIssueEventTypeForResponse(TypedDict):
-    """Removed from Project Issue Event
+class ReviewDismissedIssueEventTypeForResponse(TypedDict):
+    """Review Dismissed Issue Event
 
-    Removed from Project Issue Event
+    Review Dismissed Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserTypeForResponse
-    event: Literal["removed_from_project"]
+    event: Literal["review_dismissed"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    project_card: NotRequired[
-        RemovedFromProjectIssueEventPropProjectCardTypeForResponse
-    ]
+    dismissed_review: ReviewDismissedIssueEventPropDismissedReviewTypeForResponse
 
 
-class RemovedFromProjectIssueEventPropProjectCardType(TypedDict):
-    """RemovedFromProjectIssueEventPropProjectCard"""
+class ReviewDismissedIssueEventPropDismissedReviewType(TypedDict):
+    """ReviewDismissedIssueEventPropDismissedReview"""
 
-    id: int
-    url: str
-    project_id: int
-    project_url: str
-    column_name: str
-    previous_column_name: NotRequired[str]
+    state: str
+    review_id: int
+    dismissal_message: Union[str, None]
+    dismissal_commit_id: NotRequired[str]
 
 
-class RemovedFromProjectIssueEventPropProjectCardTypeForResponse(TypedDict):
-    """RemovedFromProjectIssueEventPropProjectCard"""
+class ReviewDismissedIssueEventPropDismissedReviewTypeForResponse(TypedDict):
+    """ReviewDismissedIssueEventPropDismissedReview"""
 
-    id: int
-    url: str
-    project_id: int
-    project_url: str
-    column_name: str
-    previous_column_name: NotRequired[str]
+    state: str
+    review_id: int
+    dismissal_message: Union[str, None]
+    dismissal_commit_id: NotRequired[str]
 
 
 __all__ = (
-    "RemovedFromProjectIssueEventPropProjectCardType",
-    "RemovedFromProjectIssueEventPropProjectCardTypeForResponse",
-    "RemovedFromProjectIssueEventType",
-    "RemovedFromProjectIssueEventTypeForResponse",
+    "ReviewDismissedIssueEventPropDismissedReviewType",
+    "ReviewDismissedIssueEventPropDismissedReviewTypeForResponse",
+    "ReviewDismissedIssueEventType",
+    "ReviewDismissedIssueEventTypeForResponse",
 )

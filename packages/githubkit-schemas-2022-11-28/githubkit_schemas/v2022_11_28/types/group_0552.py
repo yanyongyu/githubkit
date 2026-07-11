@@ -9,1755 +9,329 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Any, Literal, TypeAlias, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
-class WebhooksPullRequest5Type(TypedDict):
-    """Pull Request"""
 
-    links: WebhooksPullRequest5PropLinksType
-    active_lock_reason: Union[
-        None, Literal["resolved", "off-topic", "too heated", "spam"]
-    ]
-    additions: NotRequired[int]
-    assignee: Union[WebhooksPullRequest5PropAssigneeType, None]
-    assignees: list[Union[WebhooksPullRequest5PropAssigneesItemsType, None]]
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    auto_merge: Union[WebhooksPullRequest5PropAutoMergeType, None]
-    base: WebhooksPullRequest5PropBaseType
-    body: Union[str, None]
-    changed_files: NotRequired[int]
-    closed_at: Union[_dt.datetime, None]
-    comments: NotRequired[int]
-    comments_url: str
-    commits: NotRequired[int]
-    commits_url: str
-    created_at: _dt.datetime
-    deletions: NotRequired[int]
-    diff_url: str
-    draft: bool
-    head: WebhooksPullRequest5PropHeadType
-    html_url: str
+class PersonalAccessTokenRequestType(TypedDict):
+    """Personal Access Token Request
+
+    Details of a Personal Access Token Request.
+    """
+
     id: int
-    issue_url: str
-    labels: list[WebhooksPullRequest5PropLabelsItemsType]
-    locked: bool
-    maintainer_can_modify: NotRequired[bool]
-    merge_commit_sha: Union[str, None]
-    mergeable: NotRequired[Union[bool, None]]
-    mergeable_state: NotRequired[str]
-    merged: NotRequired[Union[bool, None]]
-    merged_at: Union[_dt.datetime, None]
-    merged_by: NotRequired[Union[WebhooksPullRequest5PropMergedByType, None]]
-    milestone: Union[WebhooksPullRequest5PropMilestoneType, None]
-    node_id: str
-    number: int
-    patch_url: str
-    rebaseable: NotRequired[Union[bool, None]]
-    requested_reviewers: list[
-        Union[
-            WebhooksPullRequest5PropRequestedReviewersItemsOneof0Type,
-            None,
-            WebhooksPullRequest5PropRequestedReviewersItemsOneof1Type,
-        ]
-    ]
-    requested_teams: list[WebhooksPullRequest5PropRequestedTeamsItemsType]
-    review_comment_url: str
-    review_comments: NotRequired[int]
-    review_comments_url: str
-    state: Literal["open", "closed"]
-    statuses_url: str
-    title: str
-    updated_at: _dt.datetime
-    url: str
-    user: Union[WebhooksPullRequest5PropUserType, None]
-
-
-class WebhooksPullRequest5TypeForResponse(TypedDict):
-    """Pull Request"""
-
-    links: WebhooksPullRequest5PropLinksTypeForResponse
-    active_lock_reason: Union[
-        None, Literal["resolved", "off-topic", "too heated", "spam"]
-    ]
-    additions: NotRequired[int]
-    assignee: Union[WebhooksPullRequest5PropAssigneeTypeForResponse, None]
-    assignees: list[Union[WebhooksPullRequest5PropAssigneesItemsTypeForResponse, None]]
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    auto_merge: Union[WebhooksPullRequest5PropAutoMergeTypeForResponse, None]
-    base: WebhooksPullRequest5PropBaseTypeForResponse
-    body: Union[str, None]
-    changed_files: NotRequired[int]
-    closed_at: Union[str, None]
-    comments: NotRequired[int]
-    comments_url: str
-    commits: NotRequired[int]
-    commits_url: str
+    owner: SimpleUserType
+    permissions_added: PersonalAccessTokenRequestPropPermissionsAddedType
+    permissions_upgraded: PersonalAccessTokenRequestPropPermissionsUpgradedType
+    permissions_result: PersonalAccessTokenRequestPropPermissionsResultType
+    repository_selection: Literal["none", "all", "subset"]
+    repository_count: Union[int, None]
+    repositories: Union[list[PersonalAccessTokenRequestPropRepositoriesItemsType], None]
     created_at: str
-    deletions: NotRequired[int]
-    diff_url: str
-    draft: bool
-    head: WebhooksPullRequest5PropHeadTypeForResponse
-    html_url: str
+    token_id: int
+    token_name: str
+    token_expired: bool
+    token_expires_at: Union[str, None]
+    token_last_used_at: Union[str, None]
+
+
+class PersonalAccessTokenRequestTypeForResponse(TypedDict):
+    """Personal Access Token Request
+
+    Details of a Personal Access Token Request.
+    """
+
     id: int
-    issue_url: str
-    labels: list[WebhooksPullRequest5PropLabelsItemsTypeForResponse]
-    locked: bool
-    maintainer_can_modify: NotRequired[bool]
-    merge_commit_sha: Union[str, None]
-    mergeable: NotRequired[Union[bool, None]]
-    mergeable_state: NotRequired[str]
-    merged: NotRequired[Union[bool, None]]
-    merged_at: Union[str, None]
-    merged_by: NotRequired[Union[WebhooksPullRequest5PropMergedByTypeForResponse, None]]
-    milestone: Union[WebhooksPullRequest5PropMilestoneTypeForResponse, None]
-    node_id: str
-    number: int
-    patch_url: str
-    rebaseable: NotRequired[Union[bool, None]]
-    requested_reviewers: list[
-        Union[
-            WebhooksPullRequest5PropRequestedReviewersItemsOneof0TypeForResponse,
-            None,
-            WebhooksPullRequest5PropRequestedReviewersItemsOneof1TypeForResponse,
-        ]
+    owner: SimpleUserTypeForResponse
+    permissions_added: PersonalAccessTokenRequestPropPermissionsAddedTypeForResponse
+    permissions_upgraded: (
+        PersonalAccessTokenRequestPropPermissionsUpgradedTypeForResponse
+    )
+    permissions_result: PersonalAccessTokenRequestPropPermissionsResultTypeForResponse
+    repository_selection: Literal["none", "all", "subset"]
+    repository_count: Union[int, None]
+    repositories: Union[
+        list[PersonalAccessTokenRequestPropRepositoriesItemsTypeForResponse], None
     ]
-    requested_teams: list[WebhooksPullRequest5PropRequestedTeamsItemsTypeForResponse]
-    review_comment_url: str
-    review_comments: NotRequired[int]
-    review_comments_url: str
-    state: Literal["open", "closed"]
-    statuses_url: str
-    title: str
-    updated_at: str
-    url: str
-    user: Union[WebhooksPullRequest5PropUserTypeForResponse, None]
-
-
-class WebhooksPullRequest5PropAssigneeType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhooksPullRequest5PropAssigneeTypeForResponse(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhooksPullRequest5PropAssigneesItemsType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-
-
-class WebhooksPullRequest5PropAssigneesItemsTypeForResponse(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-
-
-class WebhooksPullRequest5PropAutoMergeType(TypedDict):
-    """PullRequestAutoMerge
-
-    The status of auto merging a pull request.
-    """
-
-    commit_message: Union[str, None]
-    commit_title: Union[str, None]
-    enabled_by: Union[WebhooksPullRequest5PropAutoMergePropEnabledByType, None]
-    merge_method: Literal["merge", "squash", "rebase"]
-
-
-class WebhooksPullRequest5PropAutoMergeTypeForResponse(TypedDict):
-    """PullRequestAutoMerge
-
-    The status of auto merging a pull request.
-    """
-
-    commit_message: Union[str, None]
-    commit_title: Union[str, None]
-    enabled_by: Union[
-        WebhooksPullRequest5PropAutoMergePropEnabledByTypeForResponse, None
-    ]
-    merge_method: Literal["merge", "squash", "rebase"]
-
-
-class WebhooksPullRequest5PropAutoMergePropEnabledByType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhooksPullRequest5PropAutoMergePropEnabledByTypeForResponse(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhooksPullRequest5PropLabelsItemsType(TypedDict):
-    """Label"""
-
-    color: str
-    default: bool
-    description: Union[str, None]
-    id: int
-    name: str
-    node_id: str
-    url: str
-
-
-class WebhooksPullRequest5PropLabelsItemsTypeForResponse(TypedDict):
-    """Label"""
-
-    color: str
-    default: bool
-    description: Union[str, None]
-    id: int
-    name: str
-    node_id: str
-    url: str
-
-
-class WebhooksPullRequest5PropMergedByType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhooksPullRequest5PropMergedByTypeForResponse(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhooksPullRequest5PropMilestoneType(TypedDict):
-    """Milestone
-
-    A collection of related issues and pull requests.
-    """
-
-    closed_at: Union[_dt.datetime, None]
-    closed_issues: int
-    created_at: _dt.datetime
-    creator: Union[WebhooksPullRequest5PropMilestonePropCreatorType, None]
-    description: Union[str, None]
-    due_on: Union[_dt.datetime, None]
-    html_url: str
-    id: int
-    labels_url: str
-    node_id: str
-    number: int
-    open_issues: int
-    state: Literal["open", "closed"]
-    title: str
-    updated_at: _dt.datetime
-    url: str
-
-
-class WebhooksPullRequest5PropMilestoneTypeForResponse(TypedDict):
-    """Milestone
-
-    A collection of related issues and pull requests.
-    """
-
-    closed_at: Union[str, None]
-    closed_issues: int
     created_at: str
-    creator: Union[WebhooksPullRequest5PropMilestonePropCreatorTypeForResponse, None]
-    description: Union[str, None]
-    due_on: Union[str, None]
-    html_url: str
-    id: int
-    labels_url: str
-    node_id: str
-    number: int
-    open_issues: int
-    state: Literal["open", "closed"]
-    title: str
-    updated_at: str
-    url: str
+    token_id: int
+    token_name: str
+    token_expired: bool
+    token_expires_at: Union[str, None]
+    token_last_used_at: Union[str, None]
 
 
-class WebhooksPullRequest5PropMilestonePropCreatorType(TypedDict):
-    """User"""
+class PersonalAccessTokenRequestPropRepositoriesItemsType(TypedDict):
+    """PersonalAccessTokenRequestPropRepositoriesItems"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhooksPullRequest5PropMilestonePropCreatorTypeForResponse(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhooksPullRequest5PropRequestedReviewersItemsOneof0Type(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-
-
-class WebhooksPullRequest5PropRequestedReviewersItemsOneof0TypeForResponse(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-
-
-class WebhooksPullRequest5PropUserType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhooksPullRequest5PropUserTypeForResponse(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhooksPullRequest5PropLinksType(TypedDict):
-    """WebhooksPullRequest5PropLinks"""
-
-    comments: WebhooksPullRequest5PropLinksPropCommentsType
-    commits: WebhooksPullRequest5PropLinksPropCommitsType
-    html: WebhooksPullRequest5PropLinksPropHtmlType
-    issue: WebhooksPullRequest5PropLinksPropIssueType
-    review_comment: WebhooksPullRequest5PropLinksPropReviewCommentType
-    review_comments: WebhooksPullRequest5PropLinksPropReviewCommentsType
-    self_: WebhooksPullRequest5PropLinksPropSelfType
-    statuses: WebhooksPullRequest5PropLinksPropStatusesType
-
-
-class WebhooksPullRequest5PropLinksTypeForResponse(TypedDict):
-    """WebhooksPullRequest5PropLinks"""
-
-    comments: WebhooksPullRequest5PropLinksPropCommentsTypeForResponse
-    commits: WebhooksPullRequest5PropLinksPropCommitsTypeForResponse
-    html: WebhooksPullRequest5PropLinksPropHtmlTypeForResponse
-    issue: WebhooksPullRequest5PropLinksPropIssueTypeForResponse
-    review_comment: WebhooksPullRequest5PropLinksPropReviewCommentTypeForResponse
-    review_comments: WebhooksPullRequest5PropLinksPropReviewCommentsTypeForResponse
-    self_: WebhooksPullRequest5PropLinksPropSelfTypeForResponse
-    statuses: WebhooksPullRequest5PropLinksPropStatusesTypeForResponse
-
-
-class WebhooksPullRequest5PropLinksPropCommentsType(TypedDict):
-    """Link"""
-
-    href: str
-
-
-class WebhooksPullRequest5PropLinksPropCommentsTypeForResponse(TypedDict):
-    """Link"""
-
-    href: str
-
-
-class WebhooksPullRequest5PropLinksPropCommitsType(TypedDict):
-    """Link"""
-
-    href: str
-
-
-class WebhooksPullRequest5PropLinksPropCommitsTypeForResponse(TypedDict):
-    """Link"""
-
-    href: str
-
-
-class WebhooksPullRequest5PropLinksPropHtmlType(TypedDict):
-    """Link"""
-
-    href: str
-
-
-class WebhooksPullRequest5PropLinksPropHtmlTypeForResponse(TypedDict):
-    """Link"""
-
-    href: str
-
-
-class WebhooksPullRequest5PropLinksPropIssueType(TypedDict):
-    """Link"""
-
-    href: str
-
-
-class WebhooksPullRequest5PropLinksPropIssueTypeForResponse(TypedDict):
-    """Link"""
-
-    href: str
-
-
-class WebhooksPullRequest5PropLinksPropReviewCommentType(TypedDict):
-    """Link"""
-
-    href: str
-
-
-class WebhooksPullRequest5PropLinksPropReviewCommentTypeForResponse(TypedDict):
-    """Link"""
-
-    href: str
-
-
-class WebhooksPullRequest5PropLinksPropReviewCommentsType(TypedDict):
-    """Link"""
-
-    href: str
-
-
-class WebhooksPullRequest5PropLinksPropReviewCommentsTypeForResponse(TypedDict):
-    """Link"""
-
-    href: str
-
-
-class WebhooksPullRequest5PropLinksPropSelfType(TypedDict):
-    """Link"""
-
-    href: str
-
-
-class WebhooksPullRequest5PropLinksPropSelfTypeForResponse(TypedDict):
-    """Link"""
-
-    href: str
-
-
-class WebhooksPullRequest5PropLinksPropStatusesType(TypedDict):
-    """Link"""
-
-    href: str
-
-
-class WebhooksPullRequest5PropLinksPropStatusesTypeForResponse(TypedDict):
-    """Link"""
-
-    href: str
-
-
-class WebhooksPullRequest5PropBaseType(TypedDict):
-    """WebhooksPullRequest5PropBase"""
-
-    label: str
-    ref: str
-    repo: WebhooksPullRequest5PropBasePropRepoType
-    sha: str
-    user: Union[WebhooksPullRequest5PropBasePropUserType, None]
-
-
-class WebhooksPullRequest5PropBaseTypeForResponse(TypedDict):
-    """WebhooksPullRequest5PropBase"""
-
-    label: str
-    ref: str
-    repo: WebhooksPullRequest5PropBasePropRepoTypeForResponse
-    sha: str
-    user: Union[WebhooksPullRequest5PropBasePropUserTypeForResponse, None]
-
-
-class WebhooksPullRequest5PropBasePropUserType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhooksPullRequest5PropBasePropUserTypeForResponse(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhooksPullRequest5PropBasePropRepoType(TypedDict):
-    """Repository
-
-    A git repository
-    """
-
-    allow_auto_merge: NotRequired[bool]
-    allow_forking: NotRequired[bool]
-    allow_merge_commit: NotRequired[bool]
-    allow_rebase_merge: NotRequired[bool]
-    allow_squash_merge: NotRequired[bool]
-    allow_update_branch: NotRequired[bool]
-    archive_url: str
-    archived: bool
-    assignees_url: str
-    blobs_url: str
-    branches_url: str
-    clone_url: str
-    collaborators_url: str
-    comments_url: str
-    commits_url: str
-    compare_url: str
-    contents_url: str
-    contributors_url: str
-    created_at: Union[int, _dt.datetime]
-    default_branch: str
-    delete_branch_on_merge: NotRequired[bool]
-    deployments_url: str
-    description: Union[str, None]
-    disabled: NotRequired[bool]
-    downloads_url: str
-    events_url: str
-    fork: bool
-    forks: int
-    forks_count: int
-    forks_url: str
     full_name: str
-    git_commits_url: str
-    git_refs_url: str
-    git_tags_url: str
-    git_url: str
-    has_downloads: bool
-    has_issues: bool
-    has_pages: bool
-    has_projects: bool
-    has_wiki: bool
-    has_discussions: bool
-    has_pull_requests: NotRequired[bool]
-    pull_request_creation_policy: NotRequired[Literal["all", "collaborators_only"]]
-    homepage: Union[str, None]
-    hooks_url: str
-    html_url: str
     id: int
-    is_template: NotRequired[bool]
-    issue_comment_url: str
-    issue_events_url: str
-    issues_url: str
-    keys_url: str
-    labels_url: str
-    language: Union[str, None]
-    languages_url: str
-    license_: Union[WebhooksPullRequest5PropBasePropRepoPropLicenseType, None]
-    master_branch: NotRequired[str]
-    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
-    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
-    merges_url: str
-    milestones_url: str
-    mirror_url: Union[str, None]
     name: str
     node_id: str
-    notifications_url: str
-    open_issues: int
-    open_issues_count: int
-    organization: NotRequired[str]
-    owner: Union[WebhooksPullRequest5PropBasePropRepoPropOwnerType, None]
-    permissions: NotRequired[WebhooksPullRequest5PropBasePropRepoPropPermissionsType]
     private: bool
-    public: NotRequired[bool]
-    pulls_url: str
-    pushed_at: Union[int, _dt.datetime, None]
-    releases_url: str
-    role_name: NotRequired[Union[str, None]]
-    size: int
-    squash_merge_commit_message: NotRequired[
-        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
-    ]
-    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
-    ssh_url: str
-    stargazers: NotRequired[int]
-    stargazers_count: int
-    stargazers_url: str
-    statuses_url: str
-    subscribers_url: str
-    subscription_url: str
-    svn_url: str
-    tags_url: str
-    teams_url: str
-    topics: list[str]
-    trees_url: str
-    updated_at: _dt.datetime
-    url: str
-    use_squash_pr_title_as_default: NotRequired[bool]
-    visibility: Literal["public", "private", "internal"]
-    watchers: int
-    watchers_count: int
-    web_commit_signoff_required: NotRequired[bool]
 
 
-class WebhooksPullRequest5PropBasePropRepoTypeForResponse(TypedDict):
-    """Repository
+class PersonalAccessTokenRequestPropRepositoriesItemsTypeForResponse(TypedDict):
+    """PersonalAccessTokenRequestPropRepositoriesItems"""
 
-    A git repository
-    """
-
-    allow_auto_merge: NotRequired[bool]
-    allow_forking: NotRequired[bool]
-    allow_merge_commit: NotRequired[bool]
-    allow_rebase_merge: NotRequired[bool]
-    allow_squash_merge: NotRequired[bool]
-    allow_update_branch: NotRequired[bool]
-    archive_url: str
-    archived: bool
-    assignees_url: str
-    blobs_url: str
-    branches_url: str
-    clone_url: str
-    collaborators_url: str
-    comments_url: str
-    commits_url: str
-    compare_url: str
-    contents_url: str
-    contributors_url: str
-    created_at: Union[int, str]
-    default_branch: str
-    delete_branch_on_merge: NotRequired[bool]
-    deployments_url: str
-    description: Union[str, None]
-    disabled: NotRequired[bool]
-    downloads_url: str
-    events_url: str
-    fork: bool
-    forks: int
-    forks_count: int
-    forks_url: str
     full_name: str
-    git_commits_url: str
-    git_refs_url: str
-    git_tags_url: str
-    git_url: str
-    has_downloads: bool
-    has_issues: bool
-    has_pages: bool
-    has_projects: bool
-    has_wiki: bool
-    has_discussions: bool
-    has_pull_requests: NotRequired[bool]
-    pull_request_creation_policy: NotRequired[Literal["all", "collaborators_only"]]
-    homepage: Union[str, None]
-    hooks_url: str
-    html_url: str
     id: int
-    is_template: NotRequired[bool]
-    issue_comment_url: str
-    issue_events_url: str
-    issues_url: str
-    keys_url: str
-    labels_url: str
-    language: Union[str, None]
-    languages_url: str
-    license_: Union[
-        WebhooksPullRequest5PropBasePropRepoPropLicenseTypeForResponse, None
-    ]
-    master_branch: NotRequired[str]
-    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
-    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
-    merges_url: str
-    milestones_url: str
-    mirror_url: Union[str, None]
     name: str
     node_id: str
-    notifications_url: str
-    open_issues: int
-    open_issues_count: int
-    organization: NotRequired[str]
-    owner: Union[WebhooksPullRequest5PropBasePropRepoPropOwnerTypeForResponse, None]
-    permissions: NotRequired[
-        WebhooksPullRequest5PropBasePropRepoPropPermissionsTypeForResponse
-    ]
     private: bool
-    public: NotRequired[bool]
-    pulls_url: str
-    pushed_at: Union[int, str, None]
-    releases_url: str
-    role_name: NotRequired[Union[str, None]]
-    size: int
-    squash_merge_commit_message: NotRequired[
-        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
-    ]
-    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
-    ssh_url: str
-    stargazers: NotRequired[int]
-    stargazers_count: int
-    stargazers_url: str
-    statuses_url: str
-    subscribers_url: str
-    subscription_url: str
-    svn_url: str
-    tags_url: str
-    teams_url: str
-    topics: list[str]
-    trees_url: str
-    updated_at: str
-    url: str
-    use_squash_pr_title_as_default: NotRequired[bool]
-    visibility: Literal["public", "private", "internal"]
-    watchers: int
-    watchers_count: int
-    web_commit_signoff_required: NotRequired[bool]
 
 
-class WebhooksPullRequest5PropBasePropRepoPropLicenseType(TypedDict):
-    """License"""
+class PersonalAccessTokenRequestPropPermissionsAddedType(TypedDict):
+    """PersonalAccessTokenRequestPropPermissionsAdded
 
-    key: str
-    name: str
-    node_id: str
-    spdx_id: str
-    url: Union[str, None]
-
-
-class WebhooksPullRequest5PropBasePropRepoPropLicenseTypeForResponse(TypedDict):
-    """License"""
-
-    key: str
-    name: str
-    node_id: str
-    spdx_id: str
-    url: Union[str, None]
-
-
-class WebhooksPullRequest5PropBasePropRepoPropOwnerType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhooksPullRequest5PropBasePropRepoPropOwnerTypeForResponse(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhooksPullRequest5PropBasePropRepoPropPermissionsType(TypedDict):
-    """WebhooksPullRequest5PropBasePropRepoPropPermissions"""
-
-    admin: bool
-    maintain: NotRequired[bool]
-    pull: bool
-    push: bool
-    triage: NotRequired[bool]
-
-
-class WebhooksPullRequest5PropBasePropRepoPropPermissionsTypeForResponse(TypedDict):
-    """WebhooksPullRequest5PropBasePropRepoPropPermissions"""
-
-    admin: bool
-    maintain: NotRequired[bool]
-    pull: bool
-    push: bool
-    triage: NotRequired[bool]
-
-
-class WebhooksPullRequest5PropHeadType(TypedDict):
-    """WebhooksPullRequest5PropHead"""
-
-    label: str
-    ref: str
-    repo: WebhooksPullRequest5PropHeadPropRepoType
-    sha: str
-    user: Union[WebhooksPullRequest5PropHeadPropUserType, None]
-
-
-class WebhooksPullRequest5PropHeadTypeForResponse(TypedDict):
-    """WebhooksPullRequest5PropHead"""
-
-    label: str
-    ref: str
-    repo: WebhooksPullRequest5PropHeadPropRepoTypeForResponse
-    sha: str
-    user: Union[WebhooksPullRequest5PropHeadPropUserTypeForResponse, None]
-
-
-class WebhooksPullRequest5PropHeadPropUserType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhooksPullRequest5PropHeadPropUserTypeForResponse(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhooksPullRequest5PropHeadPropRepoType(TypedDict):
-    """Repository
-
-    A git repository
+    New requested permissions, categorized by type of permission.
     """
 
-    allow_auto_merge: NotRequired[bool]
-    allow_forking: NotRequired[bool]
-    allow_merge_commit: NotRequired[bool]
-    allow_rebase_merge: NotRequired[bool]
-    allow_squash_merge: NotRequired[bool]
-    allow_update_branch: NotRequired[bool]
-    archive_url: str
-    archived: bool
-    assignees_url: str
-    blobs_url: str
-    branches_url: str
-    clone_url: str
-    collaborators_url: str
-    comments_url: str
-    commits_url: str
-    compare_url: str
-    contents_url: str
-    contributors_url: str
-    created_at: Union[int, _dt.datetime]
-    default_branch: str
-    delete_branch_on_merge: NotRequired[bool]
-    deployments_url: str
-    description: Union[str, None]
-    disabled: NotRequired[bool]
-    downloads_url: str
-    events_url: str
-    fork: bool
-    forks: int
-    forks_count: int
-    forks_url: str
-    full_name: str
-    git_commits_url: str
-    git_refs_url: str
-    git_tags_url: str
-    git_url: str
-    has_downloads: bool
-    has_issues: bool
-    has_pages: bool
-    has_projects: bool
-    has_wiki: bool
-    has_discussions: bool
-    has_pull_requests: NotRequired[bool]
-    pull_request_creation_policy: NotRequired[Literal["all", "collaborators_only"]]
-    homepage: Union[str, None]
-    hooks_url: str
-    html_url: str
-    id: int
-    is_template: NotRequired[bool]
-    issue_comment_url: str
-    issue_events_url: str
-    issues_url: str
-    keys_url: str
-    labels_url: str
-    language: Union[str, None]
-    languages_url: str
-    license_: Union[WebhooksPullRequest5PropHeadPropRepoPropLicenseType, None]
-    master_branch: NotRequired[str]
-    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
-    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
-    merges_url: str
-    milestones_url: str
-    mirror_url: Union[str, None]
-    name: str
-    node_id: str
-    notifications_url: str
-    open_issues: int
-    open_issues_count: int
-    organization: NotRequired[str]
-    owner: Union[WebhooksPullRequest5PropHeadPropRepoPropOwnerType, None]
-    permissions: NotRequired[WebhooksPullRequest5PropHeadPropRepoPropPermissionsType]
-    private: bool
-    public: NotRequired[bool]
-    pulls_url: str
-    pushed_at: Union[int, _dt.datetime, None]
-    releases_url: str
-    role_name: NotRequired[Union[str, None]]
-    size: int
-    squash_merge_commit_message: NotRequired[
-        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    organization: NotRequired[
+        PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationType
     ]
-    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
-    ssh_url: str
-    stargazers: NotRequired[int]
-    stargazers_count: int
-    stargazers_url: str
-    statuses_url: str
-    subscribers_url: str
-    subscription_url: str
-    svn_url: str
-    tags_url: str
-    teams_url: str
-    topics: list[str]
-    trees_url: str
-    updated_at: _dt.datetime
-    url: str
-    use_squash_pr_title_as_default: NotRequired[bool]
-    visibility: Literal["public", "private", "internal"]
-    watchers: int
-    watchers_count: int
-    web_commit_signoff_required: NotRequired[bool]
+    repository: NotRequired[
+        PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryType
+    ]
+    other: NotRequired[PersonalAccessTokenRequestPropPermissionsAddedPropOtherType]
 
 
-class WebhooksPullRequest5PropHeadPropRepoTypeForResponse(TypedDict):
-    """Repository
+class PersonalAccessTokenRequestPropPermissionsAddedTypeForResponse(TypedDict):
+    """PersonalAccessTokenRequestPropPermissionsAdded
 
-    A git repository
+    New requested permissions, categorized by type of permission.
     """
 
-    allow_auto_merge: NotRequired[bool]
-    allow_forking: NotRequired[bool]
-    allow_merge_commit: NotRequired[bool]
-    allow_rebase_merge: NotRequired[bool]
-    allow_squash_merge: NotRequired[bool]
-    allow_update_branch: NotRequired[bool]
-    archive_url: str
-    archived: bool
-    assignees_url: str
-    blobs_url: str
-    branches_url: str
-    clone_url: str
-    collaborators_url: str
-    comments_url: str
-    commits_url: str
-    compare_url: str
-    contents_url: str
-    contributors_url: str
-    created_at: Union[int, str]
-    default_branch: str
-    delete_branch_on_merge: NotRequired[bool]
-    deployments_url: str
-    description: Union[str, None]
-    disabled: NotRequired[bool]
-    downloads_url: str
-    events_url: str
-    fork: bool
-    forks: int
-    forks_count: int
-    forks_url: str
-    full_name: str
-    git_commits_url: str
-    git_refs_url: str
-    git_tags_url: str
-    git_url: str
-    has_downloads: bool
-    has_issues: bool
-    has_pages: bool
-    has_projects: bool
-    has_wiki: bool
-    has_discussions: bool
-    has_pull_requests: NotRequired[bool]
-    pull_request_creation_policy: NotRequired[Literal["all", "collaborators_only"]]
-    homepage: Union[str, None]
-    hooks_url: str
-    html_url: str
-    id: int
-    is_template: NotRequired[bool]
-    issue_comment_url: str
-    issue_events_url: str
-    issues_url: str
-    keys_url: str
-    labels_url: str
-    language: Union[str, None]
-    languages_url: str
-    license_: Union[
-        WebhooksPullRequest5PropHeadPropRepoPropLicenseTypeForResponse, None
+    organization: NotRequired[
+        PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationTypeForResponse
     ]
-    master_branch: NotRequired[str]
-    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
-    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
-    merges_url: str
-    milestones_url: str
-    mirror_url: Union[str, None]
-    name: str
-    node_id: str
-    notifications_url: str
-    open_issues: int
-    open_issues_count: int
-    organization: NotRequired[str]
-    owner: Union[WebhooksPullRequest5PropHeadPropRepoPropOwnerTypeForResponse, None]
-    permissions: NotRequired[
-        WebhooksPullRequest5PropHeadPropRepoPropPermissionsTypeForResponse
+    repository: NotRequired[
+        PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryTypeForResponse
     ]
-    private: bool
-    public: NotRequired[bool]
-    pulls_url: str
-    pushed_at: Union[int, str, None]
-    releases_url: str
-    role_name: NotRequired[Union[str, None]]
-    size: int
-    squash_merge_commit_message: NotRequired[
-        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    other: NotRequired[
+        PersonalAccessTokenRequestPropPermissionsAddedPropOtherTypeForResponse
     ]
-    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
-    ssh_url: str
-    stargazers: NotRequired[int]
-    stargazers_count: int
-    stargazers_url: str
-    statuses_url: str
-    subscribers_url: str
-    subscription_url: str
-    svn_url: str
-    tags_url: str
-    teams_url: str
-    topics: list[str]
-    trees_url: str
-    updated_at: str
-    url: str
-    use_squash_pr_title_as_default: NotRequired[bool]
-    visibility: Literal["public", "private", "internal"]
-    watchers: int
-    watchers_count: int
-    web_commit_signoff_required: NotRequired[bool]
 
 
-class WebhooksPullRequest5PropHeadPropRepoPropLicenseType(TypedDict):
-    """License"""
-
-    key: str
-    name: str
-    node_id: str
-    spdx_id: str
-    url: Union[str, None]
+PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationType: TypeAlias = dict[
+    str, Any
+]
+"""PersonalAccessTokenRequestPropPermissionsAddedPropOrganization
+"""
 
 
-class WebhooksPullRequest5PropHeadPropRepoPropLicenseTypeForResponse(TypedDict):
-    """License"""
-
-    key: str
-    name: str
-    node_id: str
-    spdx_id: str
-    url: Union[str, None]
+PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""PersonalAccessTokenRequestPropPermissionsAddedPropOrganization
+"""
 
 
-class WebhooksPullRequest5PropHeadPropRepoPropOwnerType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryType: TypeAlias = dict[
+    str, Any
+]
+"""PersonalAccessTokenRequestPropPermissionsAddedPropRepository
+"""
 
 
-class WebhooksPullRequest5PropHeadPropRepoPropOwnerTypeForResponse(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""PersonalAccessTokenRequestPropPermissionsAddedPropRepository
+"""
 
 
-class WebhooksPullRequest5PropHeadPropRepoPropPermissionsType(TypedDict):
-    """WebhooksPullRequest5PropHeadPropRepoPropPermissions"""
-
-    admin: bool
-    maintain: NotRequired[bool]
-    pull: bool
-    push: bool
-    triage: NotRequired[bool]
+PersonalAccessTokenRequestPropPermissionsAddedPropOtherType: TypeAlias = dict[str, Any]
+"""PersonalAccessTokenRequestPropPermissionsAddedPropOther
+"""
 
 
-class WebhooksPullRequest5PropHeadPropRepoPropPermissionsTypeForResponse(TypedDict):
-    """WebhooksPullRequest5PropHeadPropRepoPropPermissions"""
-
-    admin: bool
-    maintain: NotRequired[bool]
-    pull: bool
-    push: bool
-    triage: NotRequired[bool]
+PersonalAccessTokenRequestPropPermissionsAddedPropOtherTypeForResponse: TypeAlias = (
+    dict[str, Any]
+)
+"""PersonalAccessTokenRequestPropPermissionsAddedPropOther
+"""
 
 
-class WebhooksPullRequest5PropRequestedReviewersItemsOneof1Type(TypedDict):
-    """Team
+class PersonalAccessTokenRequestPropPermissionsUpgradedType(TypedDict):
+    """PersonalAccessTokenRequestPropPermissionsUpgraded
 
-    Groups of organization members that gives permissions on specified repositories.
+    Requested permissions that elevate access for a previously approved request for
+    access, categorized by type of permission.
     """
 
-    deleted: NotRequired[bool]
-    description: NotRequired[Union[str, None]]
-    html_url: NotRequired[str]
-    id: int
-    members_url: NotRequired[str]
-    name: str
-    node_id: NotRequired[str]
-    parent: NotRequired[
-        Union[WebhooksPullRequest5PropRequestedReviewersItemsOneof1PropParentType, None]
+    organization: NotRequired[
+        PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationType
     ]
-    permission: NotRequired[str]
-    privacy: NotRequired[Literal["open", "closed", "secret"]]
-    repositories_url: NotRequired[str]
-    slug: NotRequired[str]
-    url: NotRequired[str]
+    repository: NotRequired[
+        PersonalAccessTokenRequestPropPermissionsUpgradedPropRepositoryType
+    ]
+    other: NotRequired[PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherType]
 
 
-class WebhooksPullRequest5PropRequestedReviewersItemsOneof1TypeForResponse(TypedDict):
-    """Team
+class PersonalAccessTokenRequestPropPermissionsUpgradedTypeForResponse(TypedDict):
+    """PersonalAccessTokenRequestPropPermissionsUpgraded
 
-    Groups of organization members that gives permissions on specified repositories.
+    Requested permissions that elevate access for a previously approved request for
+    access, categorized by type of permission.
     """
 
-    deleted: NotRequired[bool]
-    description: NotRequired[Union[str, None]]
-    html_url: NotRequired[str]
-    id: int
-    members_url: NotRequired[str]
-    name: str
-    node_id: NotRequired[str]
-    parent: NotRequired[
-        Union[
-            WebhooksPullRequest5PropRequestedReviewersItemsOneof1PropParentTypeForResponse,
-            None,
-        ]
+    organization: NotRequired[
+        PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationTypeForResponse
     ]
-    permission: NotRequired[str]
-    privacy: NotRequired[Literal["open", "closed", "secret"]]
-    repositories_url: NotRequired[str]
-    slug: NotRequired[str]
-    url: NotRequired[str]
+    repository: NotRequired[
+        PersonalAccessTokenRequestPropPermissionsUpgradedPropRepositoryTypeForResponse
+    ]
+    other: NotRequired[
+        PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherTypeForResponse
+    ]
 
 
-class WebhooksPullRequest5PropRequestedReviewersItemsOneof1PropParentType(TypedDict):
-    """WebhooksPullRequest5PropRequestedReviewersItemsOneof1PropParent"""
-
-    description: Union[str, None]
-    html_url: str
-    id: int
-    members_url: str
-    name: str
-    node_id: str
-    permission: str
-    privacy: Literal["open", "closed", "secret"]
-    repositories_url: str
-    slug: str
-    url: str
+PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationType: TypeAlias = dict[
+    str, Any
+]
+"""PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization
+"""
 
 
-class WebhooksPullRequest5PropRequestedReviewersItemsOneof1PropParentTypeForResponse(
-    TypedDict
-):
-    """WebhooksPullRequest5PropRequestedReviewersItemsOneof1PropParent"""
-
-    description: Union[str, None]
-    html_url: str
-    id: int
-    members_url: str
-    name: str
-    node_id: str
-    permission: str
-    privacy: Literal["open", "closed", "secret"]
-    repositories_url: str
-    slug: str
-    url: str
+PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization
+"""
 
 
-class WebhooksPullRequest5PropRequestedTeamsItemsType(TypedDict):
-    """Team
+PersonalAccessTokenRequestPropPermissionsUpgradedPropRepositoryType: TypeAlias = dict[
+    str, Any
+]
+"""PersonalAccessTokenRequestPropPermissionsUpgradedPropRepository
+"""
 
-    Groups of organization members that gives permissions on specified repositories.
+
+PersonalAccessTokenRequestPropPermissionsUpgradedPropRepositoryTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""PersonalAccessTokenRequestPropPermissionsUpgradedPropRepository
+"""
+
+
+PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherType: TypeAlias = dict[
+    str, Any
+]
+"""PersonalAccessTokenRequestPropPermissionsUpgradedPropOther
+"""
+
+
+PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherTypeForResponse: TypeAlias = (
+    dict[str, Any]
+)
+"""PersonalAccessTokenRequestPropPermissionsUpgradedPropOther
+"""
+
+
+class PersonalAccessTokenRequestPropPermissionsResultType(TypedDict):
+    """PersonalAccessTokenRequestPropPermissionsResult
+
+    Permissions requested, categorized by type of permission. This field
+    incorporates `permissions_added` and `permissions_upgraded`.
     """
 
-    deleted: NotRequired[bool]
-    description: NotRequired[Union[str, None]]
-    html_url: NotRequired[str]
-    id: int
-    members_url: NotRequired[str]
-    name: str
-    node_id: NotRequired[str]
-    parent: NotRequired[
-        Union[WebhooksPullRequest5PropRequestedTeamsItemsPropParentType, None]
+    organization: NotRequired[
+        PersonalAccessTokenRequestPropPermissionsResultPropOrganizationType
     ]
-    permission: NotRequired[str]
-    privacy: NotRequired[Literal["open", "closed", "secret"]]
-    repositories_url: NotRequired[str]
-    slug: NotRequired[str]
-    url: NotRequired[str]
+    repository: NotRequired[
+        PersonalAccessTokenRequestPropPermissionsResultPropRepositoryType
+    ]
+    other: NotRequired[PersonalAccessTokenRequestPropPermissionsResultPropOtherType]
 
 
-class WebhooksPullRequest5PropRequestedTeamsItemsTypeForResponse(TypedDict):
-    """Team
+class PersonalAccessTokenRequestPropPermissionsResultTypeForResponse(TypedDict):
+    """PersonalAccessTokenRequestPropPermissionsResult
 
-    Groups of organization members that gives permissions on specified repositories.
+    Permissions requested, categorized by type of permission. This field
+    incorporates `permissions_added` and `permissions_upgraded`.
     """
 
-    deleted: NotRequired[bool]
-    description: NotRequired[Union[str, None]]
-    html_url: NotRequired[str]
-    id: int
-    members_url: NotRequired[str]
-    name: str
-    node_id: NotRequired[str]
-    parent: NotRequired[
-        Union[
-            WebhooksPullRequest5PropRequestedTeamsItemsPropParentTypeForResponse, None
-        ]
+    organization: NotRequired[
+        PersonalAccessTokenRequestPropPermissionsResultPropOrganizationTypeForResponse
     ]
-    permission: NotRequired[str]
-    privacy: NotRequired[Literal["open", "closed", "secret"]]
-    repositories_url: NotRequired[str]
-    slug: NotRequired[str]
-    url: NotRequired[str]
+    repository: NotRequired[
+        PersonalAccessTokenRequestPropPermissionsResultPropRepositoryTypeForResponse
+    ]
+    other: NotRequired[
+        PersonalAccessTokenRequestPropPermissionsResultPropOtherTypeForResponse
+    ]
 
 
-class WebhooksPullRequest5PropRequestedTeamsItemsPropParentType(TypedDict):
-    """WebhooksPullRequest5PropRequestedTeamsItemsPropParent"""
-
-    description: Union[str, None]
-    html_url: str
-    id: int
-    members_url: str
-    name: str
-    node_id: str
-    permission: str
-    privacy: Literal["open", "closed", "secret"]
-    repositories_url: str
-    slug: str
-    url: str
+PersonalAccessTokenRequestPropPermissionsResultPropOrganizationType: TypeAlias = dict[
+    str, Any
+]
+"""PersonalAccessTokenRequestPropPermissionsResultPropOrganization
+"""
 
 
-class WebhooksPullRequest5PropRequestedTeamsItemsPropParentTypeForResponse(TypedDict):
-    """WebhooksPullRequest5PropRequestedTeamsItemsPropParent"""
+PersonalAccessTokenRequestPropPermissionsResultPropOrganizationTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""PersonalAccessTokenRequestPropPermissionsResultPropOrganization
+"""
 
-    description: Union[str, None]
-    html_url: str
-    id: int
-    members_url: str
-    name: str
-    node_id: str
-    permission: str
-    privacy: Literal["open", "closed", "secret"]
-    repositories_url: str
-    slug: str
-    url: str
+
+PersonalAccessTokenRequestPropPermissionsResultPropRepositoryType: TypeAlias = dict[
+    str, Any
+]
+"""PersonalAccessTokenRequestPropPermissionsResultPropRepository
+"""
+
+
+PersonalAccessTokenRequestPropPermissionsResultPropRepositoryTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""PersonalAccessTokenRequestPropPermissionsResultPropRepository
+"""
+
+
+PersonalAccessTokenRequestPropPermissionsResultPropOtherType: TypeAlias = dict[str, Any]
+"""PersonalAccessTokenRequestPropPermissionsResultPropOther
+"""
+
+
+PersonalAccessTokenRequestPropPermissionsResultPropOtherTypeForResponse: TypeAlias = (
+    dict[str, Any]
+)
+"""PersonalAccessTokenRequestPropPermissionsResultPropOther
+"""
 
 
 __all__ = (
-    "WebhooksPullRequest5PropAssigneeType",
-    "WebhooksPullRequest5PropAssigneeTypeForResponse",
-    "WebhooksPullRequest5PropAssigneesItemsType",
-    "WebhooksPullRequest5PropAssigneesItemsTypeForResponse",
-    "WebhooksPullRequest5PropAutoMergePropEnabledByType",
-    "WebhooksPullRequest5PropAutoMergePropEnabledByTypeForResponse",
-    "WebhooksPullRequest5PropAutoMergeType",
-    "WebhooksPullRequest5PropAutoMergeTypeForResponse",
-    "WebhooksPullRequest5PropBasePropRepoPropLicenseType",
-    "WebhooksPullRequest5PropBasePropRepoPropLicenseTypeForResponse",
-    "WebhooksPullRequest5PropBasePropRepoPropOwnerType",
-    "WebhooksPullRequest5PropBasePropRepoPropOwnerTypeForResponse",
-    "WebhooksPullRequest5PropBasePropRepoPropPermissionsType",
-    "WebhooksPullRequest5PropBasePropRepoPropPermissionsTypeForResponse",
-    "WebhooksPullRequest5PropBasePropRepoType",
-    "WebhooksPullRequest5PropBasePropRepoTypeForResponse",
-    "WebhooksPullRequest5PropBasePropUserType",
-    "WebhooksPullRequest5PropBasePropUserTypeForResponse",
-    "WebhooksPullRequest5PropBaseType",
-    "WebhooksPullRequest5PropBaseTypeForResponse",
-    "WebhooksPullRequest5PropHeadPropRepoPropLicenseType",
-    "WebhooksPullRequest5PropHeadPropRepoPropLicenseTypeForResponse",
-    "WebhooksPullRequest5PropHeadPropRepoPropOwnerType",
-    "WebhooksPullRequest5PropHeadPropRepoPropOwnerTypeForResponse",
-    "WebhooksPullRequest5PropHeadPropRepoPropPermissionsType",
-    "WebhooksPullRequest5PropHeadPropRepoPropPermissionsTypeForResponse",
-    "WebhooksPullRequest5PropHeadPropRepoType",
-    "WebhooksPullRequest5PropHeadPropRepoTypeForResponse",
-    "WebhooksPullRequest5PropHeadPropUserType",
-    "WebhooksPullRequest5PropHeadPropUserTypeForResponse",
-    "WebhooksPullRequest5PropHeadType",
-    "WebhooksPullRequest5PropHeadTypeForResponse",
-    "WebhooksPullRequest5PropLabelsItemsType",
-    "WebhooksPullRequest5PropLabelsItemsTypeForResponse",
-    "WebhooksPullRequest5PropLinksPropCommentsType",
-    "WebhooksPullRequest5PropLinksPropCommentsTypeForResponse",
-    "WebhooksPullRequest5PropLinksPropCommitsType",
-    "WebhooksPullRequest5PropLinksPropCommitsTypeForResponse",
-    "WebhooksPullRequest5PropLinksPropHtmlType",
-    "WebhooksPullRequest5PropLinksPropHtmlTypeForResponse",
-    "WebhooksPullRequest5PropLinksPropIssueType",
-    "WebhooksPullRequest5PropLinksPropIssueTypeForResponse",
-    "WebhooksPullRequest5PropLinksPropReviewCommentType",
-    "WebhooksPullRequest5PropLinksPropReviewCommentTypeForResponse",
-    "WebhooksPullRequest5PropLinksPropReviewCommentsType",
-    "WebhooksPullRequest5PropLinksPropReviewCommentsTypeForResponse",
-    "WebhooksPullRequest5PropLinksPropSelfType",
-    "WebhooksPullRequest5PropLinksPropSelfTypeForResponse",
-    "WebhooksPullRequest5PropLinksPropStatusesType",
-    "WebhooksPullRequest5PropLinksPropStatusesTypeForResponse",
-    "WebhooksPullRequest5PropLinksType",
-    "WebhooksPullRequest5PropLinksTypeForResponse",
-    "WebhooksPullRequest5PropMergedByType",
-    "WebhooksPullRequest5PropMergedByTypeForResponse",
-    "WebhooksPullRequest5PropMilestonePropCreatorType",
-    "WebhooksPullRequest5PropMilestonePropCreatorTypeForResponse",
-    "WebhooksPullRequest5PropMilestoneType",
-    "WebhooksPullRequest5PropMilestoneTypeForResponse",
-    "WebhooksPullRequest5PropRequestedReviewersItemsOneof0Type",
-    "WebhooksPullRequest5PropRequestedReviewersItemsOneof0TypeForResponse",
-    "WebhooksPullRequest5PropRequestedReviewersItemsOneof1PropParentType",
-    "WebhooksPullRequest5PropRequestedReviewersItemsOneof1PropParentTypeForResponse",
-    "WebhooksPullRequest5PropRequestedReviewersItemsOneof1Type",
-    "WebhooksPullRequest5PropRequestedReviewersItemsOneof1TypeForResponse",
-    "WebhooksPullRequest5PropRequestedTeamsItemsPropParentType",
-    "WebhooksPullRequest5PropRequestedTeamsItemsPropParentTypeForResponse",
-    "WebhooksPullRequest5PropRequestedTeamsItemsType",
-    "WebhooksPullRequest5PropRequestedTeamsItemsTypeForResponse",
-    "WebhooksPullRequest5PropUserType",
-    "WebhooksPullRequest5PropUserTypeForResponse",
-    "WebhooksPullRequest5Type",
-    "WebhooksPullRequest5TypeForResponse",
+    "PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationType",
+    "PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationTypeForResponse",
+    "PersonalAccessTokenRequestPropPermissionsAddedPropOtherType",
+    "PersonalAccessTokenRequestPropPermissionsAddedPropOtherTypeForResponse",
+    "PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryType",
+    "PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryTypeForResponse",
+    "PersonalAccessTokenRequestPropPermissionsAddedType",
+    "PersonalAccessTokenRequestPropPermissionsAddedTypeForResponse",
+    "PersonalAccessTokenRequestPropPermissionsResultPropOrganizationType",
+    "PersonalAccessTokenRequestPropPermissionsResultPropOrganizationTypeForResponse",
+    "PersonalAccessTokenRequestPropPermissionsResultPropOtherType",
+    "PersonalAccessTokenRequestPropPermissionsResultPropOtherTypeForResponse",
+    "PersonalAccessTokenRequestPropPermissionsResultPropRepositoryType",
+    "PersonalAccessTokenRequestPropPermissionsResultPropRepositoryTypeForResponse",
+    "PersonalAccessTokenRequestPropPermissionsResultType",
+    "PersonalAccessTokenRequestPropPermissionsResultTypeForResponse",
+    "PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationType",
+    "PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationTypeForResponse",
+    "PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherType",
+    "PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherTypeForResponse",
+    "PersonalAccessTokenRequestPropPermissionsUpgradedPropRepositoryType",
+    "PersonalAccessTokenRequestPropPermissionsUpgradedPropRepositoryTypeForResponse",
+    "PersonalAccessTokenRequestPropPermissionsUpgradedType",
+    "PersonalAccessTokenRequestPropPermissionsUpgradedTypeForResponse",
+    "PersonalAccessTokenRequestPropRepositoriesItemsType",
+    "PersonalAccessTokenRequestPropRepositoriesItemsTypeForResponse",
+    "PersonalAccessTokenRequestType",
+    "PersonalAccessTokenRequestTypeForResponse",
 )

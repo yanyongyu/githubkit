@@ -9,33 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class IssueTypeWebhook(GitHubModel):
-    """Issue Type
+class InteractionLimitPullRequestBypassList(GitHubModel):
+    """Interaction Limits Pull Request Bypass List
 
-    The type of issue.
+    A list of user logins to add or remove from the pull request creation cap bypass
+    list.
     """
 
-    id: int = Field(description="The unique identifier of the issue type.")
-    name: str = Field(description="The name of the issue type.")
-    color: Missing[
-        Union[
-            None,
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-        ]
-    ] = Field(default=UNSET, description="The color of the issue type.")
+    users: list[str] = Field(
+        description="A list of user logins to add or remove from the bypass list."
+    )
 
 
-model_rebuild(IssueTypeWebhook)
+model_rebuild(InteractionLimitPullRequestBypassList)
 
-__all__ = ("IssueTypeWebhook",)
+__all__ = ("InteractionLimitPullRequestBypassList",)

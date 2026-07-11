@@ -14,171 +14,236 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0139 import CodespaceMachineType, CodespaceMachineTypeForResponse
-from .group_0193 import FullRepositoryType, FullRepositoryTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
+from .group_0050 import MilestoneType, MilestoneTypeForResponse
+from .group_0051 import IssueTypeType, IssueTypeTypeForResponse
+from .group_0052 import ReactionRollupType, ReactionRollupTypeForResponse
+from .group_0053 import (
+    IssueDependenciesSummaryType,
+    IssueDependenciesSummaryTypeForResponse,
+    SubIssuesSummaryType,
+    SubIssuesSummaryTypeForResponse,
+)
+from .group_0056 import IssueCommentType, IssueCommentTypeForResponse
+from .group_0057 import IssueFieldValueType, IssueFieldValueTypeForResponse
+from .group_0497 import (
+    SearchResultTextMatchesItemsType,
+    SearchResultTextMatchesItemsTypeForResponse,
+)
 
 
-class CodespaceWithFullRepositoryType(TypedDict):
-    """Codespace
+class IssueSearchResultItemType(TypedDict):
+    """Issue Search Result Item
 
-    A codespace.
+    Issue Search Result Item
     """
 
+    url: str
+    repository_url: str
+    labels_url: str
+    comments_url: str
+    events_url: str
+    html_url: str
     id: int
-    name: str
-    display_name: NotRequired[Union[str, None]]
-    environment_id: Union[str, None]
-    owner: SimpleUserType
-    billable_owner: SimpleUserType
-    repository: FullRepositoryType
-    machine: Union[None, CodespaceMachineType]
-    devcontainer_path: NotRequired[Union[str, None]]
-    prebuild: Union[bool, None]
+    node_id: str
+    number: int
+    title: str
+    locked: bool
+    active_lock_reason: NotRequired[Union[str, None]]
+    assignees: NotRequired[Union[list[SimpleUserType], None]]
+    user: Union[None, SimpleUserType]
+    labels: list[IssueSearchResultItemPropLabelsItemsType]
+    sub_issues_summary: NotRequired[SubIssuesSummaryType]
+    issue_dependencies_summary: NotRequired[IssueDependenciesSummaryType]
+    issue_field_values: NotRequired[list[IssueFieldValueType]]
+    state: str
+    state_reason: NotRequired[Union[str, None]]
+    assignee: Union[None, SimpleUserType]
+    milestone: Union[None, MilestoneType]
+    comments: int
     created_at: _dt.datetime
     updated_at: _dt.datetime
-    last_used_at: _dt.datetime
-    state: Literal[
-        "Unknown",
-        "Created",
-        "Queued",
-        "Provisioning",
-        "Available",
-        "Awaiting",
-        "Unavailable",
-        "Deleted",
-        "Moved",
-        "Shutdown",
-        "Archived",
-        "Starting",
-        "ShuttingDown",
-        "Failed",
-        "Exporting",
-        "Updating",
-        "Rebuilding",
+    closed_at: Union[_dt.datetime, None]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
+    pull_request: NotRequired[IssueSearchResultItemPropPullRequestType]
+    body: NotRequired[str]
+    score: float
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
     ]
-    url: str
-    git_status: CodespaceWithFullRepositoryPropGitStatusType
-    location: Literal["EastUs", "SouthEastAsia", "WestEurope", "WestUs2"]
-    idle_timeout_minutes: Union[int, None]
-    web_url: str
-    machines_url: str
-    start_url: str
-    stop_url: str
-    publish_url: NotRequired[Union[str, None]]
-    pulls_url: Union[str, None]
-    recent_folders: list[str]
-    runtime_constraints: NotRequired[
-        CodespaceWithFullRepositoryPropRuntimeConstraintsType
-    ]
-    pending_operation: NotRequired[Union[bool, None]]
-    pending_operation_disabled_reason: NotRequired[Union[str, None]]
-    idle_timeout_notice: NotRequired[Union[str, None]]
-    retention_period_minutes: NotRequired[Union[int, None]]
-    retention_expires_at: NotRequired[Union[_dt.datetime, None]]
+    draft: NotRequired[bool]
+    repository: NotRequired[RepositoryType]
+    body_html: NotRequired[str]
+    body_text: NotRequired[str]
+    timeline_url: NotRequired[str]
+    type: NotRequired[Union[IssueTypeType, None]]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    pinned_comment: NotRequired[Union[None, IssueCommentType]]
+    reactions: NotRequired[ReactionRollupType]
 
 
-class CodespaceWithFullRepositoryTypeForResponse(TypedDict):
-    """Codespace
+class IssueSearchResultItemTypeForResponse(TypedDict):
+    """Issue Search Result Item
 
-    A codespace.
+    Issue Search Result Item
     """
 
+    url: str
+    repository_url: str
+    labels_url: str
+    comments_url: str
+    events_url: str
+    html_url: str
     id: int
-    name: str
-    display_name: NotRequired[Union[str, None]]
-    environment_id: Union[str, None]
-    owner: SimpleUserTypeForResponse
-    billable_owner: SimpleUserTypeForResponse
-    repository: FullRepositoryTypeForResponse
-    machine: Union[None, CodespaceMachineTypeForResponse]
-    devcontainer_path: NotRequired[Union[str, None]]
-    prebuild: Union[bool, None]
+    node_id: str
+    number: int
+    title: str
+    locked: bool
+    active_lock_reason: NotRequired[Union[str, None]]
+    assignees: NotRequired[Union[list[SimpleUserTypeForResponse], None]]
+    user: Union[None, SimpleUserTypeForResponse]
+    labels: list[IssueSearchResultItemPropLabelsItemsTypeForResponse]
+    sub_issues_summary: NotRequired[SubIssuesSummaryTypeForResponse]
+    issue_dependencies_summary: NotRequired[IssueDependenciesSummaryTypeForResponse]
+    issue_field_values: NotRequired[list[IssueFieldValueTypeForResponse]]
+    state: str
+    state_reason: NotRequired[Union[str, None]]
+    assignee: Union[None, SimpleUserTypeForResponse]
+    milestone: Union[None, MilestoneTypeForResponse]
+    comments: int
     created_at: str
     updated_at: str
-    last_used_at: str
-    state: Literal[
-        "Unknown",
-        "Created",
-        "Queued",
-        "Provisioning",
-        "Available",
-        "Awaiting",
-        "Unavailable",
-        "Deleted",
-        "Moved",
-        "Shutdown",
-        "Archived",
-        "Starting",
-        "ShuttingDown",
-        "Failed",
-        "Exporting",
-        "Updating",
-        "Rebuilding",
+    closed_at: Union[str, None]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
+    pull_request: NotRequired[IssueSearchResultItemPropPullRequestTypeForResponse]
+    body: NotRequired[str]
+    score: float
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
     ]
-    url: str
-    git_status: CodespaceWithFullRepositoryPropGitStatusTypeForResponse
-    location: Literal["EastUs", "SouthEastAsia", "WestEurope", "WestUs2"]
-    idle_timeout_minutes: Union[int, None]
-    web_url: str
-    machines_url: str
-    start_url: str
-    stop_url: str
-    publish_url: NotRequired[Union[str, None]]
-    pulls_url: Union[str, None]
-    recent_folders: list[str]
-    runtime_constraints: NotRequired[
-        CodespaceWithFullRepositoryPropRuntimeConstraintsTypeForResponse
+    draft: NotRequired[bool]
+    repository: NotRequired[RepositoryTypeForResponse]
+    body_html: NotRequired[str]
+    body_text: NotRequired[str]
+    timeline_url: NotRequired[str]
+    type: NotRequired[Union[IssueTypeTypeForResponse, None]]
+    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
+    pinned_comment: NotRequired[Union[None, IssueCommentTypeForResponse]]
+    reactions: NotRequired[ReactionRollupTypeForResponse]
+
+
+class IssueSearchResultItemPropLabelsItemsType(TypedDict):
+    """IssueSearchResultItemPropLabelsItems"""
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    url: NotRequired[str]
+    name: NotRequired[str]
+    color: NotRequired[str]
+    default: NotRequired[bool]
+    description: NotRequired[Union[str, None]]
+
+
+class IssueSearchResultItemPropLabelsItemsTypeForResponse(TypedDict):
+    """IssueSearchResultItemPropLabelsItems"""
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    url: NotRequired[str]
+    name: NotRequired[str]
+    color: NotRequired[str]
+    default: NotRequired[bool]
+    description: NotRequired[Union[str, None]]
+
+
+class IssueSearchResultItemPropPullRequestType(TypedDict):
+    """IssueSearchResultItemPropPullRequest"""
+
+    merged_at: NotRequired[Union[_dt.datetime, None]]
+    diff_url: Union[str, None]
+    html_url: Union[str, None]
+    patch_url: Union[str, None]
+    url: Union[str, None]
+
+
+class IssueSearchResultItemPropPullRequestTypeForResponse(TypedDict):
+    """IssueSearchResultItemPropPullRequest"""
+
+    merged_at: NotRequired[Union[str, None]]
+    diff_url: Union[str, None]
+    html_url: Union[str, None]
+    patch_url: Union[str, None]
+    url: Union[str, None]
+
+
+class SearchIssuesGetResponse200Type(TypedDict):
+    """SearchIssuesGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[IssueSearchResultItemType]
+    search_type: Literal["lexical", "semantic", "hybrid"]
+    lexical_fallback_reason: NotRequired[
+        list[
+            Literal[
+                "no_text_terms",
+                "quoted_text",
+                "non_issue_target",
+                "or_boolean_not_supported",
+                "no_accessible_repos",
+                "server_error",
+                "only_non_semantic_fields_requested",
+                "service_unavailable",
+            ]
+        ]
     ]
-    pending_operation: NotRequired[Union[bool, None]]
-    pending_operation_disabled_reason: NotRequired[Union[str, None]]
-    idle_timeout_notice: NotRequired[Union[str, None]]
-    retention_period_minutes: NotRequired[Union[int, None]]
-    retention_expires_at: NotRequired[Union[str, None]]
 
 
-class CodespaceWithFullRepositoryPropGitStatusType(TypedDict):
-    """CodespaceWithFullRepositoryPropGitStatus
+class SearchIssuesGetResponse200TypeForResponse(TypedDict):
+    """SearchIssuesGetResponse200"""
 
-    Details about the codespace's git repository.
-    """
-
-    ahead: NotRequired[int]
-    behind: NotRequired[int]
-    has_unpushed_changes: NotRequired[bool]
-    has_uncommitted_changes: NotRequired[bool]
-    ref: NotRequired[str]
-
-
-class CodespaceWithFullRepositoryPropGitStatusTypeForResponse(TypedDict):
-    """CodespaceWithFullRepositoryPropGitStatus
-
-    Details about the codespace's git repository.
-    """
-
-    ahead: NotRequired[int]
-    behind: NotRequired[int]
-    has_unpushed_changes: NotRequired[bool]
-    has_uncommitted_changes: NotRequired[bool]
-    ref: NotRequired[str]
-
-
-class CodespaceWithFullRepositoryPropRuntimeConstraintsType(TypedDict):
-    """CodespaceWithFullRepositoryPropRuntimeConstraints"""
-
-    allowed_port_privacy_settings: NotRequired[Union[list[str], None]]
-
-
-class CodespaceWithFullRepositoryPropRuntimeConstraintsTypeForResponse(TypedDict):
-    """CodespaceWithFullRepositoryPropRuntimeConstraints"""
-
-    allowed_port_privacy_settings: NotRequired[Union[list[str], None]]
+    total_count: int
+    incomplete_results: bool
+    items: list[IssueSearchResultItemTypeForResponse]
+    search_type: Literal["lexical", "semantic", "hybrid"]
+    lexical_fallback_reason: NotRequired[
+        list[
+            Literal[
+                "no_text_terms",
+                "quoted_text",
+                "non_issue_target",
+                "or_boolean_not_supported",
+                "no_accessible_repos",
+                "server_error",
+                "only_non_semantic_fields_requested",
+                "service_unavailable",
+            ]
+        ]
+    ]
 
 
 __all__ = (
-    "CodespaceWithFullRepositoryPropGitStatusType",
-    "CodespaceWithFullRepositoryPropGitStatusTypeForResponse",
-    "CodespaceWithFullRepositoryPropRuntimeConstraintsType",
-    "CodespaceWithFullRepositoryPropRuntimeConstraintsTypeForResponse",
-    "CodespaceWithFullRepositoryType",
-    "CodespaceWithFullRepositoryTypeForResponse",
+    "IssueSearchResultItemPropLabelsItemsType",
+    "IssueSearchResultItemPropLabelsItemsTypeForResponse",
+    "IssueSearchResultItemPropPullRequestType",
+    "IssueSearchResultItemPropPullRequestTypeForResponse",
+    "IssueSearchResultItemType",
+    "IssueSearchResultItemTypeForResponse",
+    "SearchIssuesGetResponse200Type",
+    "SearchIssuesGetResponse200TypeForResponse",
 )

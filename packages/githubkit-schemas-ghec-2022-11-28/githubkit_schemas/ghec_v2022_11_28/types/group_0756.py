@@ -13,32 +13,32 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0206 import IssueTypeType, IssueTypeTypeForResponse
-from .group_0208 import (
+from .group_0209 import IssueTypeType, IssueTypeTypeForResponse
+from .group_0211 import (
     IssueDependenciesSummaryType,
     IssueDependenciesSummaryTypeForResponse,
     SubIssuesSummaryType,
     SubIssuesSummaryTypeForResponse,
 )
 from .group_0757 import (
-    WebhookIssueCommentEditedPropIssueAllof0PropAssigneeType,
-    WebhookIssueCommentEditedPropIssueAllof0PropAssigneeTypeForResponse,
-    WebhookIssueCommentEditedPropIssueAllof0PropLabelsItemsType,
-    WebhookIssueCommentEditedPropIssueAllof0PropLabelsItemsTypeForResponse,
-    WebhookIssueCommentEditedPropIssueAllof0PropPullRequestType,
-    WebhookIssueCommentEditedPropIssueAllof0PropPullRequestTypeForResponse,
+    WebhookIssueCommentDeletedPropIssueAllof0PropAssigneeType,
+    WebhookIssueCommentDeletedPropIssueAllof0PropAssigneeTypeForResponse,
+    WebhookIssueCommentDeletedPropIssueAllof0PropLabelsItemsType,
+    WebhookIssueCommentDeletedPropIssueAllof0PropLabelsItemsTypeForResponse,
+    WebhookIssueCommentDeletedPropIssueAllof0PropPullRequestType,
+    WebhookIssueCommentDeletedPropIssueAllof0PropPullRequestTypeForResponse,
 )
 from .group_0759 import (
-    WebhookIssueCommentEditedPropIssueAllof0PropMilestoneType,
-    WebhookIssueCommentEditedPropIssueAllof0PropMilestoneTypeForResponse,
+    WebhookIssueCommentDeletedPropIssueAllof0PropMilestoneType,
+    WebhookIssueCommentDeletedPropIssueAllof0PropMilestoneTypeForResponse,
 )
 from .group_0761 import (
-    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppType,
-    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppTypeForResponse,
+    WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppType,
+    WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppTypeForResponse,
 )
 
 
-class WebhookIssueCommentEditedPropIssueAllof0Type(TypedDict):
+class WebhookIssueCommentDeletedPropIssueAllof0Type(TypedDict):
     """Issue
 
     The [issue](https://docs.github.com/enterprise-
@@ -49,10 +49,10 @@ class WebhookIssueCommentEditedPropIssueAllof0Type(TypedDict):
         None, Literal["resolved", "off-topic", "too heated", "spam"]
     ]
     assignee: NotRequired[
-        Union[WebhookIssueCommentEditedPropIssueAllof0PropAssigneeType, None]
+        Union[WebhookIssueCommentDeletedPropIssueAllof0PropAssigneeType, None]
     ]
     assignees: list[
-        Union[WebhookIssueCommentEditedPropIssueAllof0PropAssigneesItemsType, None]
+        Union[WebhookIssueCommentDeletedPropIssueAllof0PropAssigneesItemsType, None]
     ]
     author_association: Literal[
         "COLLABORATOR",
@@ -74,22 +74,22 @@ class WebhookIssueCommentEditedPropIssueAllof0Type(TypedDict):
     html_url: str
     id: int
     labels: NotRequired[
-        list[WebhookIssueCommentEditedPropIssueAllof0PropLabelsItemsType]
+        list[WebhookIssueCommentDeletedPropIssueAllof0PropLabelsItemsType]
     ]
     labels_url: str
     locked: NotRequired[bool]
-    milestone: Union[WebhookIssueCommentEditedPropIssueAllof0PropMilestoneType, None]
+    milestone: Union[WebhookIssueCommentDeletedPropIssueAllof0PropMilestoneType, None]
     node_id: str
     number: int
     performed_via_github_app: NotRequired[
         Union[
-            WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppType, None
+            WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppType, None
         ]
     ]
     pull_request: NotRequired[
-        WebhookIssueCommentEditedPropIssueAllof0PropPullRequestType
+        WebhookIssueCommentDeletedPropIssueAllof0PropPullRequestType
     ]
-    reactions: WebhookIssueCommentEditedPropIssueAllof0PropReactionsType
+    reactions: WebhookIssueCommentDeletedPropIssueAllof0PropReactionsType
     repository_url: str
     sub_issues_summary: NotRequired[SubIssuesSummaryType]
     issue_dependencies_summary: NotRequired[IssueDependenciesSummaryType]
@@ -100,10 +100,10 @@ class WebhookIssueCommentEditedPropIssueAllof0Type(TypedDict):
     type: NotRequired[Union[IssueTypeType, None]]
     updated_at: _dt.datetime
     url: str
-    user: Union[WebhookIssueCommentEditedPropIssueAllof0PropUserType, None]
+    user: Union[WebhookIssueCommentDeletedPropIssueAllof0PropUserType, None]
 
 
-class WebhookIssueCommentEditedPropIssueAllof0TypeForResponse(TypedDict):
+class WebhookIssueCommentDeletedPropIssueAllof0TypeForResponse(TypedDict):
     """Issue
 
     The [issue](https://docs.github.com/enterprise-
@@ -114,11 +114,13 @@ class WebhookIssueCommentEditedPropIssueAllof0TypeForResponse(TypedDict):
         None, Literal["resolved", "off-topic", "too heated", "spam"]
     ]
     assignee: NotRequired[
-        Union[WebhookIssueCommentEditedPropIssueAllof0PropAssigneeTypeForResponse, None]
+        Union[
+            WebhookIssueCommentDeletedPropIssueAllof0PropAssigneeTypeForResponse, None
+        ]
     ]
     assignees: list[
         Union[
-            WebhookIssueCommentEditedPropIssueAllof0PropAssigneesItemsTypeForResponse,
+            WebhookIssueCommentDeletedPropIssueAllof0PropAssigneesItemsTypeForResponse,
             None,
         ]
     ]
@@ -142,25 +144,25 @@ class WebhookIssueCommentEditedPropIssueAllof0TypeForResponse(TypedDict):
     html_url: str
     id: int
     labels: NotRequired[
-        list[WebhookIssueCommentEditedPropIssueAllof0PropLabelsItemsTypeForResponse]
+        list[WebhookIssueCommentDeletedPropIssueAllof0PropLabelsItemsTypeForResponse]
     ]
     labels_url: str
     locked: NotRequired[bool]
     milestone: Union[
-        WebhookIssueCommentEditedPropIssueAllof0PropMilestoneTypeForResponse, None
+        WebhookIssueCommentDeletedPropIssueAllof0PropMilestoneTypeForResponse, None
     ]
     node_id: str
     number: int
     performed_via_github_app: NotRequired[
         Union[
-            WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppTypeForResponse,
+            WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppTypeForResponse,
             None,
         ]
     ]
     pull_request: NotRequired[
-        WebhookIssueCommentEditedPropIssueAllof0PropPullRequestTypeForResponse
+        WebhookIssueCommentDeletedPropIssueAllof0PropPullRequestTypeForResponse
     ]
-    reactions: WebhookIssueCommentEditedPropIssueAllof0PropReactionsTypeForResponse
+    reactions: WebhookIssueCommentDeletedPropIssueAllof0PropReactionsTypeForResponse
     repository_url: str
     sub_issues_summary: NotRequired[SubIssuesSummaryTypeForResponse]
     issue_dependencies_summary: NotRequired[IssueDependenciesSummaryTypeForResponse]
@@ -171,10 +173,10 @@ class WebhookIssueCommentEditedPropIssueAllof0TypeForResponse(TypedDict):
     type: NotRequired[Union[IssueTypeTypeForResponse, None]]
     updated_at: str
     url: str
-    user: Union[WebhookIssueCommentEditedPropIssueAllof0PropUserTypeForResponse, None]
+    user: Union[WebhookIssueCommentDeletedPropIssueAllof0PropUserTypeForResponse, None]
 
 
-class WebhookIssueCommentEditedPropIssueAllof0PropAssigneesItemsType(TypedDict):
+class WebhookIssueCommentDeletedPropIssueAllof0PropAssigneesItemsType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -201,7 +203,7 @@ class WebhookIssueCommentEditedPropIssueAllof0PropAssigneesItemsType(TypedDict):
     user_view_type: NotRequired[str]
 
 
-class WebhookIssueCommentEditedPropIssueAllof0PropAssigneesItemsTypeForResponse(
+class WebhookIssueCommentDeletedPropIssueAllof0PropAssigneesItemsTypeForResponse(
     TypedDict
 ):
     """User"""
@@ -230,7 +232,7 @@ class WebhookIssueCommentEditedPropIssueAllof0PropAssigneesItemsTypeForResponse(
     user_view_type: NotRequired[str]
 
 
-class WebhookIssueCommentEditedPropIssueAllof0PropReactionsType(TypedDict):
+class WebhookIssueCommentDeletedPropIssueAllof0PropReactionsType(TypedDict):
     """Reactions"""
 
     plus_one: int
@@ -245,7 +247,7 @@ class WebhookIssueCommentEditedPropIssueAllof0PropReactionsType(TypedDict):
     url: str
 
 
-class WebhookIssueCommentEditedPropIssueAllof0PropReactionsTypeForResponse(TypedDict):
+class WebhookIssueCommentDeletedPropIssueAllof0PropReactionsTypeForResponse(TypedDict):
     """Reactions"""
 
     plus_one: int
@@ -260,7 +262,7 @@ class WebhookIssueCommentEditedPropIssueAllof0PropReactionsTypeForResponse(Typed
     url: str
 
 
-class WebhookIssueCommentEditedPropIssueAllof0PropUserType(TypedDict):
+class WebhookIssueCommentDeletedPropIssueAllof0PropUserType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -287,7 +289,7 @@ class WebhookIssueCommentEditedPropIssueAllof0PropUserType(TypedDict):
     user_view_type: NotRequired[str]
 
 
-class WebhookIssueCommentEditedPropIssueAllof0PropUserTypeForResponse(TypedDict):
+class WebhookIssueCommentDeletedPropIssueAllof0PropUserTypeForResponse(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -315,12 +317,12 @@ class WebhookIssueCommentEditedPropIssueAllof0PropUserTypeForResponse(TypedDict)
 
 
 __all__ = (
-    "WebhookIssueCommentEditedPropIssueAllof0PropAssigneesItemsType",
-    "WebhookIssueCommentEditedPropIssueAllof0PropAssigneesItemsTypeForResponse",
-    "WebhookIssueCommentEditedPropIssueAllof0PropReactionsType",
-    "WebhookIssueCommentEditedPropIssueAllof0PropReactionsTypeForResponse",
-    "WebhookIssueCommentEditedPropIssueAllof0PropUserType",
-    "WebhookIssueCommentEditedPropIssueAllof0PropUserTypeForResponse",
-    "WebhookIssueCommentEditedPropIssueAllof0Type",
-    "WebhookIssueCommentEditedPropIssueAllof0TypeForResponse",
+    "WebhookIssueCommentDeletedPropIssueAllof0PropAssigneesItemsType",
+    "WebhookIssueCommentDeletedPropIssueAllof0PropAssigneesItemsTypeForResponse",
+    "WebhookIssueCommentDeletedPropIssueAllof0PropReactionsType",
+    "WebhookIssueCommentDeletedPropIssueAllof0PropReactionsTypeForResponse",
+    "WebhookIssueCommentDeletedPropIssueAllof0PropUserType",
+    "WebhookIssueCommentDeletedPropIssueAllof0PropUserTypeForResponse",
+    "WebhookIssueCommentDeletedPropIssueAllof0Type",
+    "WebhookIssueCommentDeletedPropIssueAllof0TypeForResponse",
 )

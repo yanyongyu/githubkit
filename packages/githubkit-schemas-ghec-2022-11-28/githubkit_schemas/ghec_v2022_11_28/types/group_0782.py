@@ -13,7 +13,7 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType(
+class WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType(
     TypedDict
 ):
     """User"""
@@ -42,7 +42,7 @@ class WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropOwn
     user_view_type: NotRequired[str]
 
 
-class WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse(
+class WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse(
     TypedDict
 ):
     """User"""
@@ -71,11 +71,10 @@ class WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropOwn
     user_view_type: NotRequired[str]
 
 
-class WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType(
+class WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType(
     TypedDict
 ):
-    """WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissio
-    ns
+    """WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
 
     The set of permissions for the GitHub app
     """
@@ -117,11 +116,10 @@ class WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropPer
     workflows: NotRequired[Literal["read", "write"]]
 
 
-class WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse(
+class WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse(
     TypedDict
 ):
-    """WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissio
-    ns
+    """WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
 
     The set of permissions for the GitHub app
     """
@@ -164,8 +162,8 @@ class WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropPer
 
 
 __all__ = (
-    "WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType",
-    "WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse",
-    "WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType",
-    "WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse",
+    "WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType",
+    "WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse",
+    "WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType",
+    "WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse",
 )

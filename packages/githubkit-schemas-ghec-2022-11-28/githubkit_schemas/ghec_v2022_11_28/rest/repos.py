@@ -113,6 +113,7 @@ if TYPE_CHECKING:
         RepositoryRuleDetailedOneof19,
         RepositoryRuleDetailedOneof20,
         RepositoryRuleDetailedOneof21,
+        RepositoryRuleDetailedOneof22,
         RepositoryRuleset,
         ReposOwnerRepoAttestationsPostResponse201,
         ReposOwnerRepoAttestationsSubjectDigestGetResponse200,
@@ -246,8 +247,10 @@ if TYPE_CHECKING:
         RepositoryRuleDetailedOneof19TypeForResponse,
         RepositoryRuleDetailedOneof20TypeForResponse,
         RepositoryRuleDetailedOneof21TypeForResponse,
+        RepositoryRuleDetailedOneof22TypeForResponse,
         RepositoryRuleFileExtensionRestrictionType,
         RepositoryRuleFilePathRestrictionType,
+        RepositoryRuleLicenseComplianceScanningType,
         RepositoryRuleMaxFilePathLengthType,
         RepositoryRuleMaxFileSizeType,
         RepositoryRuleMergeQueueType,
@@ -19953,6 +19956,7 @@ class ReposClient:
                 RepositoryRuleDetailedOneof19,
                 RepositoryRuleDetailedOneof20,
                 RepositoryRuleDetailedOneof21,
+                RepositoryRuleDetailedOneof22,
             ]
         ],
         list[
@@ -19979,6 +19983,7 @@ class ReposClient:
                 RepositoryRuleDetailedOneof19TypeForResponse,
                 RepositoryRuleDetailedOneof20TypeForResponse,
                 RepositoryRuleDetailedOneof21TypeForResponse,
+                RepositoryRuleDetailedOneof22TypeForResponse,
             ]
         ],
     ]:
@@ -20019,6 +20024,7 @@ class ReposClient:
             RepositoryRuleDetailedOneof19,
             RepositoryRuleDetailedOneof20,
             RepositoryRuleDetailedOneof21,
+            RepositoryRuleDetailedOneof22,
         )
 
         url = f"/repos/{owner}/{repo}/rules/branches/{branch}"
@@ -20060,6 +20066,7 @@ class ReposClient:
                     RepositoryRuleDetailedOneof19,
                     RepositoryRuleDetailedOneof20,
                     RepositoryRuleDetailedOneof21,
+                    RepositoryRuleDetailedOneof22,
                 ]
             ],
         )
@@ -20099,6 +20106,7 @@ class ReposClient:
                 RepositoryRuleDetailedOneof19,
                 RepositoryRuleDetailedOneof20,
                 RepositoryRuleDetailedOneof21,
+                RepositoryRuleDetailedOneof22,
             ]
         ],
         list[
@@ -20125,6 +20133,7 @@ class ReposClient:
                 RepositoryRuleDetailedOneof19TypeForResponse,
                 RepositoryRuleDetailedOneof20TypeForResponse,
                 RepositoryRuleDetailedOneof21TypeForResponse,
+                RepositoryRuleDetailedOneof22TypeForResponse,
             ]
         ],
     ]:
@@ -20165,6 +20174,7 @@ class ReposClient:
             RepositoryRuleDetailedOneof19,
             RepositoryRuleDetailedOneof20,
             RepositoryRuleDetailedOneof21,
+            RepositoryRuleDetailedOneof22,
         )
 
         url = f"/repos/{owner}/{repo}/rules/branches/{branch}"
@@ -20206,6 +20216,7 @@ class ReposClient:
                     RepositoryRuleDetailedOneof19,
                     RepositoryRuleDetailedOneof20,
                     RepositoryRuleDetailedOneof21,
+                    RepositoryRuleDetailedOneof22,
                 ]
             ],
         )
@@ -20350,6 +20361,7 @@ class ReposClient:
                     RepositoryRuleWorkflowsType,
                     RepositoryRuleCodeScanningType,
                     RepositoryRuleCopilotCodeReviewType,
+                    RepositoryRuleLicenseComplianceScanningType,
                     RepositoryRuleFilePathRestrictionType,
                     RepositoryRuleMaxFilePathLengthType,
                     RepositoryRuleFileExtensionRestrictionType,
@@ -20458,6 +20470,7 @@ class ReposClient:
                     RepositoryRuleWorkflowsType,
                     RepositoryRuleCodeScanningType,
                     RepositoryRuleCopilotCodeReviewType,
+                    RepositoryRuleLicenseComplianceScanningType,
                     RepositoryRuleFilePathRestrictionType,
                     RepositoryRuleMaxFilePathLengthType,
                     RepositoryRuleFileExtensionRestrictionType,
@@ -20840,6 +20853,7 @@ class ReposClient:
                     RepositoryRuleWorkflowsType,
                     RepositoryRuleCodeScanningType,
                     RepositoryRuleCopilotCodeReviewType,
+                    RepositoryRuleLicenseComplianceScanningType,
                     RepositoryRuleFilePathRestrictionType,
                     RepositoryRuleMaxFilePathLengthType,
                     RepositoryRuleFileExtensionRestrictionType,
@@ -20951,6 +20965,7 @@ class ReposClient:
                     RepositoryRuleWorkflowsType,
                     RepositoryRuleCodeScanningType,
                     RepositoryRuleCopilotCodeReviewType,
+                    RepositoryRuleLicenseComplianceScanningType,
                     RepositoryRuleFilePathRestrictionType,
                     RepositoryRuleMaxFilePathLengthType,
                     RepositoryRuleFileExtensionRestrictionType,

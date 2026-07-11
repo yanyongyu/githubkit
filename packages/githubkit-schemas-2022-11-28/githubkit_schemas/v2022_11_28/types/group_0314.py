@@ -9,122 +9,70 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0092 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
-class CodeQualityFindingType(TypedDict):
-    """CodeQualityFinding
 
-    Code quality finding
+class CheckSuitePreferenceType(TypedDict):
+    """Check Suite Preference
+
+    Check suite configuration preferences for a repository.
     """
 
-    number: int
-    state: Literal["open", "dismissed"]
-    url: str
-    rule: CodeQualityFindingRuleType
-    location: CodeQualityFindingLocationType
-    message: CodeQualityFindingMessageType
-    created_at: NotRequired[_dt.datetime]
+    preferences: CheckSuitePreferencePropPreferencesType
+    repository: MinimalRepositoryType
 
 
-class CodeQualityFindingTypeForResponse(TypedDict):
-    """CodeQualityFinding
+class CheckSuitePreferenceTypeForResponse(TypedDict):
+    """Check Suite Preference
 
-    Code quality finding
+    Check suite configuration preferences for a repository.
     """
 
-    number: int
-    state: Literal["open", "dismissed"]
-    url: str
-    rule: CodeQualityFindingRuleTypeForResponse
-    location: CodeQualityFindingLocationTypeForResponse
-    message: CodeQualityFindingMessageTypeForResponse
-    created_at: NotRequired[str]
+    preferences: CheckSuitePreferencePropPreferencesTypeForResponse
+    repository: MinimalRepositoryTypeForResponse
 
 
-class CodeQualityFindingRuleType(TypedDict):
-    """CodeQualityFindingRule
+class CheckSuitePreferencePropPreferencesType(TypedDict):
+    """CheckSuitePreferencePropPreferences"""
 
-    Code quality rule
-    """
-
-    id: str
-    title: str
-    description: str
-    help_: NotRequired[str]
-    severity: Literal["error", "warning", "note", "none"]
-    category: Literal["none", "maintainability", "reliability"]
+    auto_trigger_checks: NotRequired[
+        list[CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType]
+    ]
 
 
-class CodeQualityFindingRuleTypeForResponse(TypedDict):
-    """CodeQualityFindingRule
+class CheckSuitePreferencePropPreferencesTypeForResponse(TypedDict):
+    """CheckSuitePreferencePropPreferences"""
 
-    Code quality rule
-    """
-
-    id: str
-    title: str
-    description: str
-    help_: NotRequired[str]
-    severity: Literal["error", "warning", "note", "none"]
-    category: Literal["none", "maintainability", "reliability"]
+    auto_trigger_checks: NotRequired[
+        list[
+            CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsTypeForResponse
+        ]
+    ]
 
 
-class CodeQualityFindingLocationType(TypedDict):
-    """CodeQualityFindingLocation
+class CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType(TypedDict):
+    """CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems"""
 
-    Code quality file location
-    """
-
-    path: str
-    start_line: NotRequired[int]
-    start_column: NotRequired[int]
-    end_line: NotRequired[int]
-    end_column: NotRequired[int]
+    app_id: int
+    setting: bool
 
 
-class CodeQualityFindingLocationTypeForResponse(TypedDict):
-    """CodeQualityFindingLocation
+class CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsTypeForResponse(
+    TypedDict
+):
+    """CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems"""
 
-    Code quality file location
-    """
-
-    path: str
-    start_line: NotRequired[int]
-    start_column: NotRequired[int]
-    end_line: NotRequired[int]
-    end_column: NotRequired[int]
-
-
-class CodeQualityFindingMessageType(TypedDict):
-    """CodeQualityFindingMessage
-
-    Code quality finding message
-    """
-
-    text: str
-    markdown: str
-
-
-class CodeQualityFindingMessageTypeForResponse(TypedDict):
-    """CodeQualityFindingMessage
-
-    Code quality finding message
-    """
-
-    text: str
-    markdown: str
+    app_id: int
+    setting: bool
 
 
 __all__ = (
-    "CodeQualityFindingLocationType",
-    "CodeQualityFindingLocationTypeForResponse",
-    "CodeQualityFindingMessageType",
-    "CodeQualityFindingMessageTypeForResponse",
-    "CodeQualityFindingRuleType",
-    "CodeQualityFindingRuleTypeForResponse",
-    "CodeQualityFindingType",
-    "CodeQualityFindingTypeForResponse",
+    "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType",
+    "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsTypeForResponse",
+    "CheckSuitePreferencePropPreferencesType",
+    "CheckSuitePreferencePropPreferencesTypeForResponse",
+    "CheckSuitePreferenceType",
+    "CheckSuitePreferenceTypeForResponse",
 )

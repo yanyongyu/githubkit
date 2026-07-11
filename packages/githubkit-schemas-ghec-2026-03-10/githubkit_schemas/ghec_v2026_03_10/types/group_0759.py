@@ -13,7 +13,7 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType(
+class WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType(
     TypedDict
 ):
     """User"""
@@ -42,7 +42,7 @@ class WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwner
     user_view_type: NotRequired[str]
 
 
-class WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse(
+class WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse(
     TypedDict
 ):
     """User"""
@@ -71,10 +71,11 @@ class WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwner
     user_view_type: NotRequired[str]
 
 
-class WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType(
+class WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType(
     TypedDict
 ):
-    """WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
+    """WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPermission
+    s
 
     The set of permissions for the GitHub app
     """
@@ -96,7 +97,7 @@ class WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermi
     organization_hooks: NotRequired[Literal["read", "write"]]
     organization_packages: NotRequired[Literal["read", "write"]]
     organization_plan: NotRequired[Literal["read", "write"]]
-    organization_projects: NotRequired[Literal["read", "write", "admin"]]
+    organization_projects: NotRequired[Literal["read", "write"]]
     organization_secrets: NotRequired[Literal["read", "write"]]
     organization_self_hosted_runners: NotRequired[Literal["read", "write"]]
     organization_user_blocking: NotRequired[Literal["read", "write"]]
@@ -115,10 +116,11 @@ class WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermi
     workflows: NotRequired[Literal["read", "write"]]
 
 
-class WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse(
+class WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse(
     TypedDict
 ):
-    """WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
+    """WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPermission
+    s
 
     The set of permissions for the GitHub app
     """
@@ -140,7 +142,7 @@ class WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermi
     organization_hooks: NotRequired[Literal["read", "write"]]
     organization_packages: NotRequired[Literal["read", "write"]]
     organization_plan: NotRequired[Literal["read", "write"]]
-    organization_projects: NotRequired[Literal["read", "write", "admin"]]
+    organization_projects: NotRequired[Literal["read", "write"]]
     organization_secrets: NotRequired[Literal["read", "write"]]
     organization_self_hosted_runners: NotRequired[Literal["read", "write"]]
     organization_user_blocking: NotRequired[Literal["read", "write"]]
@@ -160,8 +162,8 @@ class WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermi
 
 
 __all__ = (
-    "WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType",
-    "WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse",
-    "WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType",
-    "WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse",
+    "WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType",
+    "WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse",
+    "WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType",
+    "WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse",
 )

@@ -9,42 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksChangesType(TypedDict):
-    """WebhooksChanges
+class WebhooksDeployKeyType(TypedDict):
+    """WebhooksDeployKey
 
-    The changes to the comment.
+    The [`deploy key`](https://docs.github.com/enterprise-cloud@latest/rest/deploy-
+    keys/deploy-keys#get-a-deploy-key) resource.
     """
 
-    body: NotRequired[WebhooksChangesPropBodyType]
+    added_by: NotRequired[Union[str, None]]
+    created_at: str
+    id: int
+    key: str
+    last_used: NotRequired[Union[str, None]]
+    read_only: bool
+    title: str
+    url: str
+    verified: bool
+    enabled: NotRequired[bool]
 
 
-class WebhooksChangesTypeForResponse(TypedDict):
-    """WebhooksChanges
+class WebhooksDeployKeyTypeForResponse(TypedDict):
+    """WebhooksDeployKey
 
-    The changes to the comment.
+    The [`deploy key`](https://docs.github.com/enterprise-cloud@latest/rest/deploy-
+    keys/deploy-keys#get-a-deploy-key) resource.
     """
 
-    body: NotRequired[WebhooksChangesPropBodyTypeForResponse]
-
-
-class WebhooksChangesPropBodyType(TypedDict):
-    """WebhooksChangesPropBody"""
-
-    from_: str
-
-
-class WebhooksChangesPropBodyTypeForResponse(TypedDict):
-    """WebhooksChangesPropBody"""
-
-    from_: str
+    added_by: NotRequired[Union[str, None]]
+    created_at: str
+    id: int
+    key: str
+    last_used: NotRequired[Union[str, None]]
+    read_only: bool
+    title: str
+    url: str
+    verified: bool
+    enabled: NotRequired[bool]
 
 
 __all__ = (
-    "WebhooksChangesPropBodyType",
-    "WebhooksChangesPropBodyTypeForResponse",
-    "WebhooksChangesType",
-    "WebhooksChangesTypeForResponse",
+    "WebhooksDeployKeyType",
+    "WebhooksDeployKeyTypeForResponse",
 )

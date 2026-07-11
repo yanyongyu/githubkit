@@ -13,20 +13,20 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0514 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0515 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0516 import (
+from .group_0522 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0523 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0524 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0517 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0549 import PullRequestWebhookType, PullRequestWebhookTypeForResponse
+from .group_0525 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0557 import PullRequestWebhookType, PullRequestWebhookTypeForResponse
 
 
-class WebhookPullRequestOpenedType(TypedDict):
-    """pull_request opened event"""
+class WebhookPullRequestConvertedToDraftType(TypedDict):
+    """pull_request converted_to_draft event"""
 
-    action: Literal["opened"]
+    action: Literal["converted_to_draft"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     number: int
@@ -36,10 +36,10 @@ class WebhookPullRequestOpenedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookPullRequestOpenedTypeForResponse(TypedDict):
-    """pull_request opened event"""
+class WebhookPullRequestConvertedToDraftTypeForResponse(TypedDict):
+    """pull_request converted_to_draft event"""
 
-    action: Literal["opened"]
+    action: Literal["converted_to_draft"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     number: int
@@ -50,6 +50,6 @@ class WebhookPullRequestOpenedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookPullRequestOpenedType",
-    "WebhookPullRequestOpenedTypeForResponse",
+    "WebhookPullRequestConvertedToDraftType",
+    "WebhookPullRequestConvertedToDraftTypeForResponse",
 )

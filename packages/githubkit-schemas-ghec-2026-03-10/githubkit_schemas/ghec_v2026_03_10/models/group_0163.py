@@ -16,40 +16,16 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RepositoryRuleWorkflowsPropParameters(GitHubModel):
-    """RepositoryRuleWorkflowsPropParameters"""
+class RepositoryRuleParamsRestrictedCommits(GitHubModel):
+    """RestrictedCommits
 
-    do_not_enforce_on_create: Missing[bool] = Field(
-        default=UNSET,
-        description="Allow repositories and branches to be created if a check would otherwise prohibit it.",
-    )
-    workflows: list[RepositoryRuleParamsWorkflowFileReference] = Field(
-        description="Workflows that must pass for this rule to pass."
-    )
-
-
-class RepositoryRuleParamsWorkflowFileReference(GitHubModel):
-    """WorkflowFileReference
-
-    A workflow that must run for this rule to pass
+    Restricted commit
     """
 
-    path: str = Field(description="The path to the workflow file")
-    ref: Missing[str] = Field(
-        default=UNSET, description="The ref (branch or tag) of the workflow file to use"
-    )
-    repository_id: int = Field(
-        description="The ID of the repository where the workflow is defined"
-    )
-    sha: Missing[str] = Field(
-        default=UNSET, description="The commit SHA of the workflow file to use"
-    )
+    oid: str = Field(description="Full or abbreviated commit hash to reject")
+    reason: Missing[str] = Field(default=UNSET, description="Reason for restriction")
 
 
-model_rebuild(RepositoryRuleWorkflowsPropParameters)
-model_rebuild(RepositoryRuleParamsWorkflowFileReference)
+model_rebuild(RepositoryRuleParamsRestrictedCommits)
 
-__all__ = (
-    "RepositoryRuleParamsWorkflowFileReference",
-    "RepositoryRuleWorkflowsPropParameters",
-)
+__all__ = ("RepositoryRuleParamsRestrictedCommits",)

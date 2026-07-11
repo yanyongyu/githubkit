@@ -13,47 +13,50 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0588 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0589 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0590 import (
+from .group_0599 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0600 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0601 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0591 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0607 import WebhooksIssueCommentType, WebhooksIssueCommentTypeForResponse
+from .group_0602 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0618 import WebhooksIssueCommentType, WebhooksIssueCommentTypeForResponse
+from .group_0619 import WebhooksChangesType, WebhooksChangesTypeForResponse
 from .group_0766 import (
-    WebhookIssueCommentPinnedPropIssueType,
-    WebhookIssueCommentPinnedPropIssueTypeForResponse,
+    WebhookIssueCommentEditedPropIssueType,
+    WebhookIssueCommentEditedPropIssueTypeForResponse,
 )
 
 
-class WebhookIssueCommentPinnedType(TypedDict):
-    """issue_comment pinned event"""
+class WebhookIssueCommentEditedType(TypedDict):
+    """issue_comment edited event"""
 
-    action: Literal["pinned"]
+    action: Literal["edited"]
+    changes: WebhooksChangesType
     comment: WebhooksIssueCommentType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssueCommentPinnedPropIssueType
+    issue: WebhookIssueCommentEditedPropIssueType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookIssueCommentPinnedTypeForResponse(TypedDict):
-    """issue_comment pinned event"""
+class WebhookIssueCommentEditedTypeForResponse(TypedDict):
+    """issue_comment edited event"""
 
-    action: Literal["pinned"]
+    action: Literal["edited"]
+    changes: WebhooksChangesTypeForResponse
     comment: WebhooksIssueCommentTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhookIssueCommentPinnedPropIssueTypeForResponse
+    issue: WebhookIssueCommentEditedPropIssueTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookIssueCommentPinnedType",
-    "WebhookIssueCommentPinnedTypeForResponse",
+    "WebhookIssueCommentEditedType",
+    "WebhookIssueCommentEditedTypeForResponse",
 )

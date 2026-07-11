@@ -14,15 +14,15 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0781 import (
-    WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
-    WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
-    WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType,
-    WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse,
+    WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
+    WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
+    WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType,
+    WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse,
 )
 
 
-class WebhookIssueCommentUnpinnedPropIssueMergedPerformedViaGithubAppType(TypedDict):
-    """WebhookIssueCommentUnpinnedPropIssueMergedPerformedViaGithubApp"""
+class WebhookIssueCommentPinnedPropIssueMergedPerformedViaGithubAppType(TypedDict):
+    """WebhookIssueCommentPinnedPropIssueMergedPerformedViaGithubApp"""
 
     created_at: Union[_dt.datetime, None]
     description: Union[str, None]
@@ -83,20 +83,20 @@ class WebhookIssueCommentUnpinnedPropIssueMergedPerformedViaGithubAppType(TypedD
     name: str
     node_id: str
     owner: Union[
-        WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
+        WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
         None,
     ]
     permissions: NotRequired[
-        WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType
+        WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType
     ]
     slug: NotRequired[str]
     updated_at: Union[_dt.datetime, None]
 
 
-class WebhookIssueCommentUnpinnedPropIssueMergedPerformedViaGithubAppTypeForResponse(
+class WebhookIssueCommentPinnedPropIssueMergedPerformedViaGithubAppTypeForResponse(
     TypedDict
 ):
-    """WebhookIssueCommentUnpinnedPropIssueMergedPerformedViaGithubApp"""
+    """WebhookIssueCommentPinnedPropIssueMergedPerformedViaGithubApp"""
 
     created_at: Union[str, None]
     description: Union[str, None]
@@ -157,17 +157,17 @@ class WebhookIssueCommentUnpinnedPropIssueMergedPerformedViaGithubAppTypeForResp
     name: str
     node_id: str
     owner: Union[
-        WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
+        WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
         None,
     ]
     permissions: NotRequired[
-        WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse
+        WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse
     ]
     slug: NotRequired[str]
     updated_at: Union[str, None]
 
 
 __all__ = (
-    "WebhookIssueCommentUnpinnedPropIssueMergedPerformedViaGithubAppType",
-    "WebhookIssueCommentUnpinnedPropIssueMergedPerformedViaGithubAppTypeForResponse",
+    "WebhookIssueCommentPinnedPropIssueMergedPerformedViaGithubAppType",
+    "WebhookIssueCommentPinnedPropIssueMergedPerformedViaGithubAppTypeForResponse",
 )

@@ -14,13 +14,13 @@ from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0391 import IssueReferenceType, IssueReferenceTypeForResponse
+from .group_0392 import IssueReferenceType, IssueReferenceTypeForResponse
 
 
-class ParentIssueRemovedIssueEventType(TypedDict):
-    """Parent-issue Removed Issue Event
+class ParentIssueAddedIssueEventType(TypedDict):
+    """Parent-issue Added Issue Event
 
-    Parent-issue Removed Issue Event
+    Parent-issue Added Issue Event
     """
 
     id: int
@@ -32,13 +32,13 @@ class ParentIssueRemovedIssueEventType(TypedDict):
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    parent_issue: Union[IssueReferenceType, None]
+    parent_issue: Union[None, IssueReferenceType, None]
 
 
-class ParentIssueRemovedIssueEventTypeForResponse(TypedDict):
-    """Parent-issue Removed Issue Event
+class ParentIssueAddedIssueEventTypeForResponse(TypedDict):
+    """Parent-issue Added Issue Event
 
-    Parent-issue Removed Issue Event
+    Parent-issue Added Issue Event
     """
 
     id: int
@@ -50,10 +50,10 @@ class ParentIssueRemovedIssueEventTypeForResponse(TypedDict):
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    parent_issue: Union[IssueReferenceTypeForResponse, None]
+    parent_issue: Union[None, IssueReferenceTypeForResponse, None]
 
 
 __all__ = (
-    "ParentIssueRemovedIssueEventType",
-    "ParentIssueRemovedIssueEventTypeForResponse",
+    "ParentIssueAddedIssueEventType",
+    "ParentIssueAddedIssueEventTypeForResponse",
 )

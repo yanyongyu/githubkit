@@ -9,39 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoReleasesPostBodyType(TypedDict):
-    """ReposOwnerRepoReleasesPostBody"""
+class ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200Type(TypedDict):
+    """ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200"""
 
-    tag_name: str
-    target_commitish: NotRequired[str]
-    name: NotRequired[str]
-    body: NotRequired[str]
-    draft: NotRequired[bool]
-    prerelease: NotRequired[bool]
-    discussion_category_name: NotRequired[str]
-    generate_release_notes: NotRequired[bool]
-    make_latest: NotRequired[Literal["true", "false", "legacy"]]
+    enabled: bool
 
 
-class ReposOwnerRepoReleasesPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoReleasesPostBody"""
+class ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200"""
 
-    tag_name: str
-    target_commitish: NotRequired[str]
-    name: NotRequired[str]
-    body: NotRequired[str]
-    draft: NotRequired[bool]
-    prerelease: NotRequired[bool]
-    discussion_category_name: NotRequired[str]
-    generate_release_notes: NotRequired[bool]
-    make_latest: NotRequired[Literal["true", "false", "legacy"]]
+    enabled: bool
 
 
 __all__ = (
-    "ReposOwnerRepoReleasesPostBodyType",
-    "ReposOwnerRepoReleasesPostBodyTypeForResponse",
+    "ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200Type",
+    "ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200TypeForResponse",
 )

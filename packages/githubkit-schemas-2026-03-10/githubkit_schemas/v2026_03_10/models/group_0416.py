@@ -9,34 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0417 import TimelineCrossReferencedEventPropSource
+from .group_0010 import Integration
+from .group_0392 import IssueReference
 
 
-class TimelineCrossReferencedEvent(GitHubModel):
-    """Timeline Cross Referenced Event
+class BlockedByAddedIssueEvent(GitHubModel):
+    """Blocked-by Added Issue Event
 
-    Timeline Cross Referenced Event
+    Blocked-by Added Issue Event
     """
 
-    event: Literal["cross-referenced"] = Field()
-    actor: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    source: TimelineCrossReferencedEventPropSource = Field()
+    id: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    event: str = Field()
+    commit_id: Union[str, None] = Field()
+    commit_url: Union[str, None] = Field()
+    created_at: str = Field()
+    performed_via_github_app: Union[None, Integration, None] = Field()
+    blocked_by: Union[None, IssueReference, None] = Field()
 
 
-model_rebuild(TimelineCrossReferencedEvent)
+model_rebuild(BlockedByAddedIssueEvent)
 
-__all__ = ("TimelineCrossReferencedEvent",)
+__all__ = ("BlockedByAddedIssueEvent",)

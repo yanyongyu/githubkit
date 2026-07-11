@@ -9,23 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias
-
-CopilotOrganizationContentExclusionDetailsType: TypeAlias = dict[str, Any]
-"""Copilot Organization Content Exclusion Details
-
-List all Copilot Content Exclusion rules for an organization.
-"""
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-CopilotOrganizationContentExclusionDetailsTypeForResponse: TypeAlias = dict[str, Any]
-"""Copilot Organization Content Exclusion Details
+class CopilotSpaceCollaboratorAnyof0Allof1Type(TypedDict):
+    """CopilotSpaceCollaboratorAnyof0Allof1"""
 
-List all Copilot Content Exclusion rules for an organization.
-"""
+    actor_type: Literal["User"]
+    role: Literal["reader", "writer", "admin"]
+
+
+class CopilotSpaceCollaboratorAnyof0Allof1TypeForResponse(TypedDict):
+    """CopilotSpaceCollaboratorAnyof0Allof1"""
+
+    actor_type: Literal["User"]
+    role: Literal["reader", "writer", "admin"]
 
 
 __all__ = (
-    "CopilotOrganizationContentExclusionDetailsType",
-    "CopilotOrganizationContentExclusionDetailsTypeForResponse",
+    "CopilotSpaceCollaboratorAnyof0Allof1Type",
+    "CopilotSpaceCollaboratorAnyof0Allof1TypeForResponse",
 )

@@ -18,7 +18,7 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropOwner(
+class WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropOwner(
     GitHubModel
 ):
     """User"""
@@ -47,10 +47,10 @@ class WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropOwne
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPermissions(
+class WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropPermissions(
     GitHubModel
 ):
-    """WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPermission
+    """WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropPermission
     s
 
     The set of permissions for the GitHub app
@@ -75,7 +75,9 @@ class WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPerm
     organization_hooks: Missing[Literal["read", "write"]] = Field(default=UNSET)
     organization_packages: Missing[Literal["read", "write"]] = Field(default=UNSET)
     organization_plan: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    organization_projects: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    organization_projects: Missing[Literal["read", "write", "admin"]] = Field(
+        default=UNSET
+    )
     organization_secrets: Missing[Literal["read", "write"]] = Field(default=UNSET)
     organization_self_hosted_runners: Missing[Literal["read", "write"]] = Field(
         default=UNSET
@@ -85,7 +87,9 @@ class WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPerm
     pages: Missing[Literal["read", "write"]] = Field(default=UNSET)
     pull_requests: Missing[Literal["read", "write"]] = Field(default=UNSET)
     repository_hooks: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    repository_projects: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    repository_projects: Missing[Literal["read", "write", "admin"]] = Field(
+        default=UNSET
+    )
     secret_scanning_alerts: Missing[Literal["read", "write"]] = Field(default=UNSET)
     secrets: Missing[Literal["read", "write"]] = Field(default=UNSET)
     security_events: Missing[Literal["read", "write"]] = Field(default=UNSET)
@@ -97,13 +101,13 @@ class WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPerm
 
 
 model_rebuild(
-    WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropOwner
+    WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropOwner
 )
 model_rebuild(
-    WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
+    WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
 )
 
 __all__ = (
-    "WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropOwner",
-    "WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPermissions",
+    "WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropOwner",
+    "WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropPermissions",
 )

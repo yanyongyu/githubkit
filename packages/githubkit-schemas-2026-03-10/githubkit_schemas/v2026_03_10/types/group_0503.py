@@ -13,40 +13,117 @@ import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0495 import (
+    SearchResultTextMatchesItemsType,
+    SearchResultTextMatchesItemsTypeForResponse,
+)
 
-class KeyType(TypedDict):
-    """Key
 
-    Key
+class UserSearchResultItemType(TypedDict):
+    """User Search Result Item
+
+    User Search Result Item
     """
 
-    key: str
+    login: str
     id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
     url: str
-    title: str
-    created_at: _dt.datetime
-    verified: bool
-    read_only: bool
-    last_used: NotRequired[Union[_dt.datetime, None]]
+    html_url: str
+    followers_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    received_events_url: str
+    type: str
+    score: float
+    following_url: str
+    gists_url: str
+    starred_url: str
+    events_url: str
+    public_repos: NotRequired[int]
+    public_gists: NotRequired[int]
+    followers: NotRequired[int]
+    following: NotRequired[int]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
+    name: NotRequired[Union[str, None]]
+    bio: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    location: NotRequired[Union[str, None]]
+    site_admin: bool
+    hireable: NotRequired[Union[bool, None]]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
+    blog: NotRequired[Union[str, None]]
+    company: NotRequired[Union[str, None]]
+    suspended_at: NotRequired[Union[_dt.datetime, None]]
+    user_view_type: NotRequired[str]
 
 
-class KeyTypeForResponse(TypedDict):
-    """Key
+class UserSearchResultItemTypeForResponse(TypedDict):
+    """User Search Result Item
 
-    Key
+    User Search Result Item
     """
 
-    key: str
+    login: str
     id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
     url: str
-    title: str
-    created_at: str
-    verified: bool
-    read_only: bool
-    last_used: NotRequired[Union[str, None]]
+    html_url: str
+    followers_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    received_events_url: str
+    type: str
+    score: float
+    following_url: str
+    gists_url: str
+    starred_url: str
+    events_url: str
+    public_repos: NotRequired[int]
+    public_gists: NotRequired[int]
+    followers: NotRequired[int]
+    following: NotRequired[int]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    name: NotRequired[Union[str, None]]
+    bio: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    location: NotRequired[Union[str, None]]
+    site_admin: bool
+    hireable: NotRequired[Union[bool, None]]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
+    blog: NotRequired[Union[str, None]]
+    company: NotRequired[Union[str, None]]
+    suspended_at: NotRequired[Union[str, None]]
+    user_view_type: NotRequired[str]
+
+
+class SearchUsersGetResponse200Type(TypedDict):
+    """SearchUsersGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[UserSearchResultItemType]
+
+
+class SearchUsersGetResponse200TypeForResponse(TypedDict):
+    """SearchUsersGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[UserSearchResultItemTypeForResponse]
 
 
 __all__ = (
-    "KeyType",
-    "KeyTypeForResponse",
+    "SearchUsersGetResponse200Type",
+    "SearchUsersGetResponse200TypeForResponse",
+    "UserSearchResultItemType",
+    "UserSearchResultItemTypeForResponse",
 )

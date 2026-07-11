@@ -13,22 +13,21 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import TypedDict
 
-from .group_0794 import (
-    WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreatorType,
-    WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
+from .group_0790 import (
+    WebhookIssueCommentUnpinnedPropIssueAllof0PropMilestonePropCreatorType,
+    WebhookIssueCommentUnpinnedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
 )
 
 
-class WebhookIssuesClosedPropIssueAllof0PropMilestoneType(TypedDict):
-    """Milestone
-
-    A collection of related issues and pull requests.
-    """
+class WebhookIssueCommentUnpinnedPropIssueMergedMilestoneType(TypedDict):
+    """WebhookIssueCommentUnpinnedPropIssueMergedMilestone"""
 
     closed_at: Union[_dt.datetime, None]
     closed_issues: int
     created_at: _dt.datetime
-    creator: Union[WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreatorType, None]
+    creator: Union[
+        WebhookIssueCommentUnpinnedPropIssueAllof0PropMilestonePropCreatorType, None
+    ]
     description: Union[str, None]
     due_on: Union[_dt.datetime, None]
     html_url: str
@@ -43,17 +42,15 @@ class WebhookIssuesClosedPropIssueAllof0PropMilestoneType(TypedDict):
     url: str
 
 
-class WebhookIssuesClosedPropIssueAllof0PropMilestoneTypeForResponse(TypedDict):
-    """Milestone
-
-    A collection of related issues and pull requests.
-    """
+class WebhookIssueCommentUnpinnedPropIssueMergedMilestoneTypeForResponse(TypedDict):
+    """WebhookIssueCommentUnpinnedPropIssueMergedMilestone"""
 
     closed_at: Union[str, None]
     closed_issues: int
     created_at: str
     creator: Union[
-        WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreatorTypeForResponse, None
+        WebhookIssueCommentUnpinnedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
+        None,
     ]
     description: Union[str, None]
     due_on: Union[str, None]
@@ -70,6 +67,6 @@ class WebhookIssuesClosedPropIssueAllof0PropMilestoneTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookIssuesClosedPropIssueAllof0PropMilestoneType",
-    "WebhookIssuesClosedPropIssueAllof0PropMilestoneTypeForResponse",
+    "WebhookIssueCommentUnpinnedPropIssueMergedMilestoneType",
+    "WebhookIssueCommentUnpinnedPropIssueMergedMilestoneTypeForResponse",
 )

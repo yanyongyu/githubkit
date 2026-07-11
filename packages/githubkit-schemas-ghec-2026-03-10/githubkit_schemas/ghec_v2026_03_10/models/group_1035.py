@@ -14,198 +14,245 @@ from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class AgentsReposOwnerRepoTasksGetResponse200(GitHubModel):
-    """AgentsReposOwnerRepoTasksGetResponse200"""
-
-    tasks: list[AgentsReposOwnerRepoTasksGetResponse200PropTasksItems] = Field(
-        description="List of tasks"
-    )
-    total_active_count: Missing[int] = Field(
-        default=UNSET, description="Total count of active (non-archived) tasks"
-    )
-    total_archived_count: Missing[int] = Field(
-        default=UNSET, description="Total count of archived tasks"
-    )
+from .group_0003 import SimpleUser
+from .group_0598 import EnterpriseWebhooks
+from .group_0599 import SimpleInstallation
+from .group_0600 import OrganizationSimpleWebhooks
+from .group_0647 import WebhooksTeam1
 
 
-class AgentsReposOwnerRepoTasksGetResponse200PropTasksItems(GitHubModel):
-    """AgentsReposOwnerRepoTasksGetResponse200PropTasksItems"""
+class WebhookTeamRemovedFromRepository(GitHubModel):
+    """team removed_from_repository event"""
 
-    id: str = Field(description="Unique task identifier")
-    url: Missing[str] = Field(default=UNSET, description="API URL for this task")
-    html_url: Missing[str] = Field(default=UNSET, description="Web URL for this task")
-    name: Missing[str] = Field(
-        default=UNSET, description="Human-readable name derived from the task prompt"
+    action: Literal["removed_from_repository"] = Field()
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest/admin/overview/about-enterprise-accounts)."',
     )
-    creator: Missing[
-        AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropCreatorOneof0
-    ] = Field(default=UNSET, description="The entity who created this task")
-    creator_type: Missing[Literal["user", "organization"]] = Field(
-        default=UNSET, description="Type of the task creator"
+    installation: Missing[SimpleInstallation] = Field(
+        default=UNSET,
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    user_collaborators: Missing[
-        list[
-            AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropUserCollaboratorsItems
-        ]
-    ] = Field(default=UNSET, description="User objects of collaborators on this task")
-    owner: Missing[AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropOwner] = (
-        Field(default=UNSET, description="The owner of the repository")
+    organization: OrganizationSimpleWebhooks = Field(
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: Missing[
-        AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropRepository
-    ] = Field(default=UNSET, description="The repository this task belongs to")
-    state: Literal[
-        "queued",
-        "in_progress",
-        "completed",
-        "failed",
-        "idle",
-        "waiting_for_user",
-        "timed_out",
-        "cancelled",
-    ] = Field(
-        description="Current state of the task, derived from its most recent session"
+    repository: Missing[WebhookTeamRemovedFromRepositoryPropRepository] = Field(
+        default=UNSET, title="Repository", description="A git repository"
     )
-    session_count: Missing[int] = Field(
-        default=UNSET, description="Number of sessions in this task"
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    team: WebhooksTeam1 = Field(
+        title="Team",
+        description="Groups of organization members that gives permissions on specified repositories.",
     )
-    artifacts: Missing[
-        list[AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItems]
+
+
+class WebhookTeamRemovedFromRepositoryPropRepository(GitHubModel):
+    """Repository
+
+    A git repository
+    """
+
+    allow_auto_merge: Missing[bool] = Field(
+        default=UNSET, description="Whether to allow auto-merge for pull requests."
+    )
+    allow_forking: Missing[bool] = Field(
+        default=UNSET, description="Whether to allow private forks"
+    )
+    allow_merge_commit: Missing[bool] = Field(
+        default=UNSET, description="Whether to allow merge commits for pull requests."
+    )
+    allow_rebase_merge: Missing[bool] = Field(
+        default=UNSET, description="Whether to allow rebase merges for pull requests."
+    )
+    allow_squash_merge: Missing[bool] = Field(
+        default=UNSET, description="Whether to allow squash merges for pull requests."
+    )
+    allow_update_branch: Missing[bool] = Field(default=UNSET)
+    archive_url: str = Field()
+    archived: bool = Field(
+        default=False, description="Whether the repository is archived."
+    )
+    assignees_url: str = Field()
+    blobs_url: str = Field()
+    branches_url: str = Field()
+    clone_url: str = Field()
+    collaborators_url: str = Field()
+    comments_url: str = Field()
+    commits_url: str = Field()
+    compare_url: str = Field()
+    contents_url: str = Field()
+    contributors_url: str = Field()
+    created_at: Union[int, _dt.datetime] = Field()
+    custom_properties: Missing[
+        WebhookTeamRemovedFromRepositoryPropRepositoryPropCustomProperties
     ] = Field(
         default=UNSET,
-        description="Resources created by this task (PRs, branches, etc.)",
+        description="The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values.",
     )
-    archived_at: Missing[Union[_dt.datetime, None]] = Field(
+    default_branch: str = Field(description="The default branch of the repository.")
+    delete_branch_on_merge: Missing[bool] = Field(
         default=UNSET,
-        description="Timestamp when the task was archived, null if not archived",
+        description="Whether to delete head branches when pull requests are merged",
     )
-    updated_at: Missing[_dt.datetime] = Field(
-        default=UNSET, description="Timestamp of the most recent update"
+    deployments_url: str = Field()
+    description: Union[str, None] = Field()
+    disabled: Missing[bool] = Field(
+        default=UNSET, description="Returns whether or not this repository is disabled."
     )
-    created_at: _dt.datetime = Field(description="Timestamp when the task was created")
+    downloads_url: str = Field()
+    events_url: str = Field()
+    fork: bool = Field()
+    forks: int = Field()
+    forks_count: int = Field()
+    forks_url: str = Field()
+    full_name: str = Field()
+    git_commits_url: str = Field()
+    git_refs_url: str = Field()
+    git_tags_url: str = Field()
+    git_url: str = Field()
+    has_downloads: bool = Field(
+        default=True, description="Whether downloads are enabled."
+    )
+    has_issues: bool = Field(default=True, description="Whether issues are enabled.")
+    has_pages: bool = Field()
+    has_projects: bool = Field(
+        default=True, description="Whether projects are enabled."
+    )
+    has_wiki: bool = Field(default=True, description="Whether the wiki is enabled.")
+    homepage: Union[str, None] = Field()
+    hooks_url: str = Field()
+    html_url: str = Field()
+    id: int = Field(description="Unique identifier of the repository")
+    is_template: Missing[bool] = Field(default=UNSET)
+    issue_comment_url: str = Field()
+    issue_events_url: str = Field()
+    issues_url: str = Field()
+    keys_url: str = Field()
+    labels_url: str = Field()
+    language: Union[str, None] = Field()
+    languages_url: str = Field()
+    license_: Union[WebhookTeamRemovedFromRepositoryPropRepositoryPropLicense, None] = (
+        Field(alias="license", title="License")
+    )
+    master_branch: Missing[str] = Field(default=UNSET)
+    merges_url: str = Field()
+    milestones_url: str = Field()
+    mirror_url: Union[str, None] = Field()
+    name: str = Field(description="The name of the repository.")
+    node_id: str = Field()
+    notifications_url: str = Field()
+    open_issues: int = Field()
+    open_issues_count: int = Field()
+    organization: Missing[str] = Field(default=UNSET)
+    owner: Union[WebhookTeamRemovedFromRepositoryPropRepositoryPropOwner, None] = Field(
+        title="User"
+    )
+    permissions: Missing[
+        WebhookTeamRemovedFromRepositoryPropRepositoryPropPermissions
+    ] = Field(default=UNSET)
+    private: bool = Field(description="Whether the repository is private or public.")
+    public: Missing[bool] = Field(default=UNSET)
+    pulls_url: str = Field()
+    pushed_at: Union[int, _dt.datetime, None] = Field()
+    releases_url: str = Field()
+    role_name: Missing[Union[str, None]] = Field(default=UNSET)
+    size: int = Field()
+    ssh_url: str = Field()
+    stargazers: Missing[int] = Field(default=UNSET)
+    stargazers_count: int = Field()
+    stargazers_url: str = Field()
+    statuses_url: str = Field()
+    subscribers_url: str = Field()
+    subscription_url: str = Field()
+    svn_url: str = Field()
+    tags_url: str = Field()
+    teams_url: str = Field()
+    topics: list[str] = Field()
+    trees_url: str = Field()
+    updated_at: _dt.datetime = Field()
+    url: str = Field()
+    visibility: Literal["public", "private", "internal"] = Field()
+    watchers: int = Field()
+    watchers_count: int = Field()
 
 
-class AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropCreatorOneof0(
-    GitHubModel
+class WebhookTeamRemovedFromRepositoryPropRepositoryPropCustomProperties(
+    ExtraGitHubModel
 ):
-    """AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropCreatorOneof0
+    """WebhookTeamRemovedFromRepositoryPropRepositoryPropCustomProperties
 
-    A GitHub user
+    The custom properties that were defined for the repository. The keys are the
+    custom property names, and the values are the corresponding custom property
+    values.
     """
 
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the user"
-    )
+
+class WebhookTeamRemovedFromRepositoryPropRepositoryPropLicense(GitHubModel):
+    """License"""
+
+    key: str = Field()
+    name: str = Field()
+    node_id: str = Field()
+    spdx_id: str = Field()
+    url: Union[str, None] = Field()
 
 
-class AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropUserCollaboratorsItems(
-    GitHubModel
-):
-    """AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropUserCollaboratorsItems
+class WebhookTeamRemovedFromRepositoryPropRepositoryPropOwner(GitHubModel):
+    """User"""
 
-    A GitHub user
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the user"
-    )
-
-
-class AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropOwner(GitHubModel):
-    """AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropOwner
-
-    The owner of the repository
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the user"
-    )
-
-
-class AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropRepository(GitHubModel):
-    """AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropRepository
-
-    The repository this task belongs to
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the repository"
-    )
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItems(
-    GitHubModel
-):
-    """AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItems
+class WebhookTeamRemovedFromRepositoryPropRepositoryPropPermissions(GitHubModel):
+    """WebhookTeamRemovedFromRepositoryPropRepositoryPropPermissions"""
 
-    A resource generated by the task
-    """
-
-    provider: Literal["github"] = Field(description="Provider namespace")
-    type: Literal["pull", "branch"] = Field(
-        description="Type of artifact. Available Values: `pull`, `branch`.\n"
-    )
-    data: Union[
-        AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0,
-        AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1,
-    ] = Field(description="Resource data (shape depends on type)")
+    admin: bool = Field()
+    maintain: Missing[bool] = Field(default=UNSET)
+    pull: bool = Field()
+    push: bool = Field()
+    triage: Missing[bool] = Field(default=UNSET)
 
 
-class AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0(
-    GitHubModel
-):
-    """AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataO
-    neof0
-
-    A GitHub resource (pull request, issue, etc.)
-    """
-
-    id: int = Field(description="GitHub resource ID")
-    global_id: Missing[str] = Field(default=UNSET, description="GraphQL global ID")
-
-
-class AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1(
-    GitHubModel
-):
-    """AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataO
-    neof1
-
-    A Git branch reference
-    """
-
-    head_ref: str = Field(description="Head branch name")
-    base_ref: str = Field(description="Base branch name")
-
-
-model_rebuild(AgentsReposOwnerRepoTasksGetResponse200)
-model_rebuild(AgentsReposOwnerRepoTasksGetResponse200PropTasksItems)
-model_rebuild(AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropCreatorOneof0)
-model_rebuild(
-    AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropUserCollaboratorsItems
-)
-model_rebuild(AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropOwner)
-model_rebuild(AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropRepository)
-model_rebuild(AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItems)
-model_rebuild(
-    AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0
-)
-model_rebuild(
-    AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1
-)
+model_rebuild(WebhookTeamRemovedFromRepository)
+model_rebuild(WebhookTeamRemovedFromRepositoryPropRepository)
+model_rebuild(WebhookTeamRemovedFromRepositoryPropRepositoryPropCustomProperties)
+model_rebuild(WebhookTeamRemovedFromRepositoryPropRepositoryPropLicense)
+model_rebuild(WebhookTeamRemovedFromRepositoryPropRepositoryPropOwner)
+model_rebuild(WebhookTeamRemovedFromRepositoryPropRepositoryPropPermissions)
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksGetResponse200",
-    "AgentsReposOwnerRepoTasksGetResponse200PropTasksItems",
-    "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItems",
-    "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0",
-    "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1",
-    "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropCreatorOneof0",
-    "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropOwner",
-    "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropRepository",
-    "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropUserCollaboratorsItems",
+    "WebhookTeamRemovedFromRepository",
+    "WebhookTeamRemovedFromRepositoryPropRepository",
+    "WebhookTeamRemovedFromRepositoryPropRepositoryPropCustomProperties",
+    "WebhookTeamRemovedFromRepositoryPropRepositoryPropLicense",
+    "WebhookTeamRemovedFromRepositoryPropRepositoryPropOwner",
+    "WebhookTeamRemovedFromRepositoryPropRepositoryPropPermissions",
 )

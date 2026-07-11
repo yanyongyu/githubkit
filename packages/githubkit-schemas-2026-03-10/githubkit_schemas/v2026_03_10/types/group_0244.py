@@ -56,45 +56,49 @@ from .group_0212 import (
     RepositoryRuleRequiredDeploymentsType,
     RepositoryRuleRequiredDeploymentsTypeForResponse,
 )
-from .group_0215 import (
+from .group_0214 import (
     RepositoryRulePullRequestType,
     RepositoryRulePullRequestTypeForResponse,
 )
-from .group_0217 import (
+from .group_0216 import (
     RepositoryRuleRequiredStatusChecksType,
     RepositoryRuleRequiredStatusChecksTypeForResponse,
 )
-from .group_0219 import (
+from .group_0218 import (
     RepositoryRuleCommitMessagePatternType,
     RepositoryRuleCommitMessagePatternTypeForResponse,
 )
-from .group_0221 import (
+from .group_0220 import (
     RepositoryRuleCommitAuthorEmailPatternType,
     RepositoryRuleCommitAuthorEmailPatternTypeForResponse,
 )
-from .group_0223 import (
+from .group_0222 import (
     RepositoryRuleCommitterEmailPatternType,
     RepositoryRuleCommitterEmailPatternTypeForResponse,
 )
-from .group_0225 import (
+from .group_0224 import (
     RepositoryRuleBranchNamePatternType,
     RepositoryRuleBranchNamePatternTypeForResponse,
 )
-from .group_0227 import (
+from .group_0226 import (
     RepositoryRuleTagNamePatternType,
     RepositoryRuleTagNamePatternTypeForResponse,
 )
-from .group_0230 import (
+from .group_0229 import (
     RepositoryRuleWorkflowsType,
     RepositoryRuleWorkflowsTypeForResponse,
 )
-from .group_0232 import (
+from .group_0231 import (
     RepositoryRuleCodeScanningType,
     RepositoryRuleCodeScanningTypeForResponse,
 )
-from .group_0234 import (
+from .group_0233 import (
     RepositoryRuleCopilotCodeReviewType,
     RepositoryRuleCopilotCodeReviewTypeForResponse,
+)
+from .group_0235 import (
+    RepositoryRuleLicenseComplianceScanningType,
+    RepositoryRuleLicenseComplianceScanningTypeForResponse,
 )
 from .group_0236 import (
     RepositoryRuleFilePathRestrictionType,
@@ -162,6 +166,7 @@ class RepositoryRulesetType(TypedDict):
                 RepositoryRuleWorkflowsType,
                 RepositoryRuleCodeScanningType,
                 RepositoryRuleCopilotCodeReviewType,
+                RepositoryRuleLicenseComplianceScanningType,
                 RepositoryRuleFilePathRestrictionType,
                 RepositoryRuleMaxFilePathLengthType,
                 RepositoryRuleFileExtensionRestrictionType,
@@ -221,6 +226,7 @@ class RepositoryRulesetTypeForResponse(TypedDict):
                 RepositoryRuleWorkflowsTypeForResponse,
                 RepositoryRuleCodeScanningTypeForResponse,
                 RepositoryRuleCopilotCodeReviewTypeForResponse,
+                RepositoryRuleLicenseComplianceScanningTypeForResponse,
                 RepositoryRuleFilePathRestrictionTypeForResponse,
                 RepositoryRuleMaxFilePathLengthTypeForResponse,
                 RepositoryRuleFileExtensionRestrictionTypeForResponse,

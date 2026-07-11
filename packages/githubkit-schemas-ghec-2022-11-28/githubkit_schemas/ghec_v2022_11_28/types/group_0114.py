@@ -9,35 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0115 import (
-    EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType,
-    EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameTypeForResponse,
-)
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterpriseRulesetConditionsOrganizationNameTargetType(TypedDict):
-    """Repository ruleset conditions for organization names
+class CustomPropertyType(TypedDict):
+    """Organization Custom Property
 
-    Parameters for an organization name condition
+    Custom property defined on an organization
     """
 
-    organization_name: (
-        EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType
-    )
+    property_name: str
+    url: NotRequired[str]
+    source_type: NotRequired[Literal["organization", "enterprise"]]
+    value_type: Literal["string", "single_select", "multi_select", "true_false", "url"]
+    required: NotRequired[bool]
+    default_value: NotRequired[Union[str, list[str], None]]
+    description: NotRequired[Union[str, None]]
+    allowed_values: NotRequired[Union[list[str], None]]
+    values_editable_by: NotRequired[
+        Union[None, Literal["org_actors", "org_and_repo_actors"]]
+    ]
+    require_explicit_values: NotRequired[bool]
 
 
-class EnterpriseRulesetConditionsOrganizationNameTargetTypeForResponse(TypedDict):
-    """Repository ruleset conditions for organization names
+class CustomPropertyTypeForResponse(TypedDict):
+    """Organization Custom Property
 
-    Parameters for an organization name condition
+    Custom property defined on an organization
     """
 
-    organization_name: EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameTypeForResponse
+    property_name: str
+    url: NotRequired[str]
+    source_type: NotRequired[Literal["organization", "enterprise"]]
+    value_type: Literal["string", "single_select", "multi_select", "true_false", "url"]
+    required: NotRequired[bool]
+    default_value: NotRequired[Union[str, list[str], None]]
+    description: NotRequired[Union[str, None]]
+    allowed_values: NotRequired[Union[list[str], None]]
+    values_editable_by: NotRequired[
+        Union[None, Literal["org_actors", "org_and_repo_actors"]]
+    ]
+    require_explicit_values: NotRequired[bool]
 
 
 __all__ = (
-    "EnterpriseRulesetConditionsOrganizationNameTargetType",
-    "EnterpriseRulesetConditionsOrganizationNameTargetTypeForResponse",
+    "CustomPropertyType",
+    "CustomPropertyTypeForResponse",
 )

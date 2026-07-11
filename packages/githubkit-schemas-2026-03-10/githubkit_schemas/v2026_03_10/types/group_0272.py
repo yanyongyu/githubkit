@@ -9,69 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class ConcurrencyGroupType(TypedDict):
-    """Concurrency Group
+class ConcurrencyGroupListType(TypedDict):
+    """Concurrency Group List
 
-    A concurrency group with the workflow runs and jobs that are either currently
-    holding
-    or waiting for the concurrency group lease.
+    A list of active concurrency groups for a repository.
     """
+
+    total_count: int
+    concurrency_groups: list[ConcurrencyGroupListPropConcurrencyGroupsItemsType]
+
+
+class ConcurrencyGroupListTypeForResponse(TypedDict):
+    """Concurrency Group List
+
+    A list of active concurrency groups for a repository.
+    """
+
+    total_count: int
+    concurrency_groups: list[
+        ConcurrencyGroupListPropConcurrencyGroupsItemsTypeForResponse
+    ]
+
+
+class ConcurrencyGroupListPropConcurrencyGroupsItemsType(TypedDict):
+    """ConcurrencyGroupListPropConcurrencyGroupsItems"""
 
     group_name: str
     group_url: str
-    total_count: int
-    group_members: list[ConcurrencyGroupPropGroupMembersItemsType]
+    last_acquired_at: Union[_dt.datetime, None]
 
 
-class ConcurrencyGroupTypeForResponse(TypedDict):
-    """Concurrency Group
-
-    A concurrency group with the workflow runs and jobs that are either currently
-    holding
-    or waiting for the concurrency group lease.
-    """
+class ConcurrencyGroupListPropConcurrencyGroupsItemsTypeForResponse(TypedDict):
+    """ConcurrencyGroupListPropConcurrencyGroupsItems"""
 
     group_name: str
     group_url: str
-    total_count: int
-    group_members: list[ConcurrencyGroupPropGroupMembersItemsTypeForResponse]
-
-
-class ConcurrencyGroupPropGroupMembersItemsType(TypedDict):
-    """ConcurrencyGroupPropGroupMembersItems"""
-
-    run_id: int
-    run_name: str
-    run_url: Union[str, None]
-    run_html_url: Union[str, None]
-    job_id: NotRequired[int]
-    job_name: NotRequired[str]
-    job_url: NotRequired[Union[str, None]]
-    job_html_url: NotRequired[Union[str, None]]
-    status: Literal["in_progress", "pending"]
-
-
-class ConcurrencyGroupPropGroupMembersItemsTypeForResponse(TypedDict):
-    """ConcurrencyGroupPropGroupMembersItems"""
-
-    run_id: int
-    run_name: str
-    run_url: Union[str, None]
-    run_html_url: Union[str, None]
-    job_id: NotRequired[int]
-    job_name: NotRequired[str]
-    job_url: NotRequired[Union[str, None]]
-    job_html_url: NotRequired[Union[str, None]]
-    status: Literal["in_progress", "pending"]
+    last_acquired_at: Union[str, None]
 
 
 __all__ = (
-    "ConcurrencyGroupPropGroupMembersItemsType",
-    "ConcurrencyGroupPropGroupMembersItemsTypeForResponse",
-    "ConcurrencyGroupType",
-    "ConcurrencyGroupTypeForResponse",
+    "ConcurrencyGroupListPropConcurrencyGroupsItemsType",
+    "ConcurrencyGroupListPropConcurrencyGroupsItemsTypeForResponse",
+    "ConcurrencyGroupListType",
+    "ConcurrencyGroupListTypeForResponse",
 )

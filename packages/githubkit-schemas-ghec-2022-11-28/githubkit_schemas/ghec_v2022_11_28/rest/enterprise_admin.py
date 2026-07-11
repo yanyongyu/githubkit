@@ -54,9 +54,12 @@ if TYPE_CHECKING:
         EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202,
         EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202,
         EnterprisesEnterpriseEnterpriseRolesGetResponse200,
+        EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneof1,
         EnterprisesEnterpriseNetworkConfigurationsGetResponse200,
         EnterpriseTeam,
         EnterpriseUserRoleAssignment,
+        ExternalVulnerabilitySyncAccepted,
+        ExternalVulnerabilitySyncResult,
         GetAuditLogStreamConfig,
         GetAuditLogStreamConfigsItems,
         GetConsumedLicenses,
@@ -127,6 +130,8 @@ if TYPE_CHECKING:
         EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBodyType,
         EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202TypeForResponse,
         EnterprisesEnterpriseEnterpriseRolesGetResponse200TypeForResponse,
+        EnterprisesEnterpriseInnersourceVulnerabilitiesSyncPostBodyType,
+        EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneof1TypeForResponse,
         EnterprisesEnterpriseNetworkConfigurationsGetResponse200TypeForResponse,
         EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyType,
         EnterprisesEnterpriseNetworkConfigurationsPostBodyType,
@@ -135,6 +140,8 @@ if TYPE_CHECKING:
         EnterprisesEnterprisePropertiesSchemaPatchBodyType,
         EnterpriseTeamTypeForResponse,
         EnterpriseUserRoleAssignmentTypeForResponse,
+        ExternalVulnerabilitySyncAcceptedTypeForResponse,
+        ExternalVulnerabilitySyncResultTypeForResponse,
         GetAuditLogStreamConfigsItemsTypeForResponse,
         GetAuditLogStreamConfigTypeForResponse,
         GetConsumedLicensesTypeForResponse,
@@ -148,6 +155,7 @@ if TYPE_CHECKING:
         OrganizationCustomPropertyPayloadType,
         OrganizationCustomPropertyType,
         OrganizationCustomPropertyTypeForResponse,
+        OsvVulnerabilityType,
         PatchSchemaPropOperationsItemsType,
         PatchSchemaType,
         PushRuleBypassRequestTypeForResponse,
@@ -7110,6 +7118,320 @@ class EnterpriseAdminClient:
             stream=stream,
             response_model=list[EnterpriseUserRoleAssignment],
             error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def sync_enterprise_innersource_vulnerabilities(
+        self,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseInnersourceVulnerabilitiesSyncPostBodyType,
+    ) -> Response[
+        ExternalVulnerabilitySyncAccepted,
+        ExternalVulnerabilitySyncAcceptedTypeForResponse,
+    ]: ...
+
+    @overload
+    def sync_enterprise_innersource_vulnerabilities(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        vulnerabilities: list[OsvVulnerabilityType],
+    ) -> Response[
+        ExternalVulnerabilitySyncAccepted,
+        ExternalVulnerabilitySyncAcceptedTypeForResponse,
+    ]: ...
+
+    def sync_enterprise_innersource_vulnerabilities(
+        self,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseInnersourceVulnerabilitiesSyncPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        ExternalVulnerabilitySyncAccepted,
+        ExternalVulnerabilitySyncAcceptedTypeForResponse,
+    ]:
+        """enterprise-admin/sync-enterprise-innersource-vulnerabilities
+
+        POST /enterprises/{enterprise}/innersource-vulnerabilities/sync
+
+        Synchronize innersource vulnerability data with the Advisory Database for an enterprise.
+        This endpoint receives vulnerability data in OSV format and creates, updates, or withdraws
+        innersource vulnerabilities accordingly. Dependabot alerting is triggered for created and
+        updated vulnerabilities.
+
+        The request body accepts up to 100 vulnerabilities per call. The request is validated and
+        then queued for asynchronous processing: a successful request returns `202 Accepted` with a
+        `Location` header pointing to a status URL that you poll for the final result.
+
+        Syncing vulnerabilities too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/best-practices-for-using-the-rest-api)."
+
+        This endpoint does not support OAuth apps or personal access tokens.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/security-advisories#sync-innersource-vulnerabilities-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseInnersourceVulnerabilitiesSyncPostBody,
+            ExternalVulnerabilitySyncAccepted,
+            ValidationError,
+        )
+
+        url = f"/enterprises/{enterprise}/innersource-vulnerabilities/sync"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseInnersourceVulnerabilitiesSyncPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ExternalVulnerabilitySyncAccepted,
+            error_models={
+                "400": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    async def async_sync_enterprise_innersource_vulnerabilities(
+        self,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseInnersourceVulnerabilitiesSyncPostBodyType,
+    ) -> Response[
+        ExternalVulnerabilitySyncAccepted,
+        ExternalVulnerabilitySyncAcceptedTypeForResponse,
+    ]: ...
+
+    @overload
+    async def async_sync_enterprise_innersource_vulnerabilities(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        vulnerabilities: list[OsvVulnerabilityType],
+    ) -> Response[
+        ExternalVulnerabilitySyncAccepted,
+        ExternalVulnerabilitySyncAcceptedTypeForResponse,
+    ]: ...
+
+    async def async_sync_enterprise_innersource_vulnerabilities(
+        self,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseInnersourceVulnerabilitiesSyncPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        ExternalVulnerabilitySyncAccepted,
+        ExternalVulnerabilitySyncAcceptedTypeForResponse,
+    ]:
+        """enterprise-admin/sync-enterprise-innersource-vulnerabilities
+
+        POST /enterprises/{enterprise}/innersource-vulnerabilities/sync
+
+        Synchronize innersource vulnerability data with the Advisory Database for an enterprise.
+        This endpoint receives vulnerability data in OSV format and creates, updates, or withdraws
+        innersource vulnerabilities accordingly. Dependabot alerting is triggered for created and
+        updated vulnerabilities.
+
+        The request body accepts up to 100 vulnerabilities per call. The request is validated and
+        then queued for asynchronous processing: a successful request returns `202 Accepted` with a
+        `Location` header pointing to a status URL that you poll for the final result.
+
+        Syncing vulnerabilities too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/best-practices-for-using-the-rest-api)."
+
+        This endpoint does not support OAuth apps or personal access tokens.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/security-advisories#sync-innersource-vulnerabilities-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseInnersourceVulnerabilitiesSyncPostBody,
+            ExternalVulnerabilitySyncAccepted,
+            ValidationError,
+        )
+
+        url = f"/enterprises/{enterprise}/innersource-vulnerabilities/sync"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseInnersourceVulnerabilitiesSyncPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ExternalVulnerabilitySyncAccepted,
+            error_models={
+                "400": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    def get_enterprise_innersource_vulnerability_sync_status(
+        self,
+        enterprise: str,
+        job_id: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        Union[
+            ExternalVulnerabilitySyncResult,
+            EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneof1,
+        ],
+        Union[
+            ExternalVulnerabilitySyncResultTypeForResponse,
+            EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneof1TypeForResponse,
+        ],
+    ]:
+        """enterprise-admin/get-enterprise-innersource-vulnerability-sync-status
+
+        GET /enterprises/{enterprise}/innersource-vulnerabilities/sync/status/{job_id}
+
+        Get the status of an asynchronous innersource vulnerability sync operation for an enterprise.
+        Returns 202 with a `Retry-After` header while the sync is still processing, or 200 with
+        the full sync results once complete.
+
+        This endpoint does not support OAuth apps or personal access tokens.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/security-advisories#get-innersource-vulnerability-sync-status-for-an-enterprise
+        """
+
+        from typing import Union
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneof1,
+            ExternalVulnerabilitySyncResult,
+        )
+
+        url = f"/enterprises/{enterprise}/innersource-vulnerabilities/sync/status/{job_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=Union[
+                ExternalVulnerabilitySyncResult,
+                EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneof1,
+            ],
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_enterprise_innersource_vulnerability_sync_status(
+        self,
+        enterprise: str,
+        job_id: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        Union[
+            ExternalVulnerabilitySyncResult,
+            EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneof1,
+        ],
+        Union[
+            ExternalVulnerabilitySyncResultTypeForResponse,
+            EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneof1TypeForResponse,
+        ],
+    ]:
+        """enterprise-admin/get-enterprise-innersource-vulnerability-sync-status
+
+        GET /enterprises/{enterprise}/innersource-vulnerabilities/sync/status/{job_id}
+
+        Get the status of an asynchronous innersource vulnerability sync operation for an enterprise.
+        Returns 202 with a `Retry-After` header while the sync is still processing, or 200 with
+        the full sync results once complete.
+
+        This endpoint does not support OAuth apps or personal access tokens.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/security-advisories#get-innersource-vulnerability-sync-status-for-an-enterprise
+        """
+
+        from typing import Union
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneof1,
+            ExternalVulnerabilitySyncResult,
+        )
+
+        url = f"/enterprises/{enterprise}/innersource-vulnerabilities/sync/status/{job_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=Union[
+                ExternalVulnerabilitySyncResult,
+                EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneof1,
+            ],
+            error_models={
+                "401": BasicError,
                 "403": BasicError,
                 "404": BasicError,
             },

@@ -9,239 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
-from .group_0205 import MilestoneType, MilestoneTypeForResponse
-from .group_0206 import IssueTypeType, IssueTypeTypeForResponse
-from .group_0207 import ReactionRollupType, ReactionRollupTypeForResponse
-from .group_0208 import (
-    IssueDependenciesSummaryType,
-    IssueDependenciesSummaryTypeForResponse,
-    SubIssuesSummaryType,
-    SubIssuesSummaryTypeForResponse,
-)
-from .group_0211 import IssueCommentType, IssueCommentTypeForResponse
-from .group_0212 import IssueFieldValueType, IssueFieldValueTypeForResponse
-from .group_0564 import (
-    SearchResultTextMatchesItemsType,
-    SearchResultTextMatchesItemsTypeForResponse,
-)
 
+class UserRoleItemsType(TypedDict):
+    """UserRoleItems"""
 
-class IssueSearchResultItemType(TypedDict):
-    """Issue Search Result Item
-
-    Issue Search Result Item
-    """
-
-    url: str
-    repository_url: str
-    labels_url: str
-    comments_url: str
-    events_url: str
-    html_url: str
-    id: int
-    node_id: str
-    number: int
-    title: str
-    locked: bool
-    active_lock_reason: NotRequired[Union[str, None]]
-    assignees: NotRequired[Union[list[SimpleUserType], None]]
-    user: Union[None, SimpleUserType]
-    labels: list[IssueSearchResultItemPropLabelsItemsType]
-    sub_issues_summary: NotRequired[SubIssuesSummaryType]
-    issue_dependencies_summary: NotRequired[IssueDependenciesSummaryType]
-    issue_field_values: NotRequired[list[IssueFieldValueType]]
-    state: str
-    state_reason: NotRequired[Union[str, None]]
-    milestone: Union[None, MilestoneType]
-    comments: int
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    closed_at: Union[_dt.datetime, None]
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
-    pull_request: NotRequired[IssueSearchResultItemPropPullRequestType]
-    body: NotRequired[str]
-    score: float
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
+    display: NotRequired[str]
+    type: NotRequired[str]
+    value: Literal[
+        "user",
+        "27d9891d-2c17-4f45-a262-781a0e55c80a",
+        "guest_collaborator",
+        "1ebc4a02-e56c-43a6-92a5-02ee09b90824",
+        "enterprise_owner",
+        "981df190-8801-4618-a08a-d91f6206c954",
+        "ba4987ab-a1c3-412a-b58c-360fc407cb10",
+        "billing_manager",
+        "0e338b8c-cc7f-498a-928d-ea3470d7e7e3",
+        "e6be2762-e4ad-4108-b72d-1bbe884a0f91",
     ]
-    draft: NotRequired[bool]
-    repository: NotRequired[RepositoryType]
-    body_html: NotRequired[str]
-    body_text: NotRequired[str]
-    timeline_url: NotRequired[str]
-    type: NotRequired[Union[IssueTypeType, None]]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
-    pinned_comment: NotRequired[Union[None, IssueCommentType]]
-    reactions: NotRequired[ReactionRollupType]
+    primary: NotRequired[bool]
 
 
-class IssueSearchResultItemTypeForResponse(TypedDict):
-    """Issue Search Result Item
+class UserRoleItemsTypeForResponse(TypedDict):
+    """UserRoleItems"""
 
-    Issue Search Result Item
-    """
-
-    url: str
-    repository_url: str
-    labels_url: str
-    comments_url: str
-    events_url: str
-    html_url: str
-    id: int
-    node_id: str
-    number: int
-    title: str
-    locked: bool
-    active_lock_reason: NotRequired[Union[str, None]]
-    assignees: NotRequired[Union[list[SimpleUserTypeForResponse], None]]
-    user: Union[None, SimpleUserTypeForResponse]
-    labels: list[IssueSearchResultItemPropLabelsItemsTypeForResponse]
-    sub_issues_summary: NotRequired[SubIssuesSummaryTypeForResponse]
-    issue_dependencies_summary: NotRequired[IssueDependenciesSummaryTypeForResponse]
-    issue_field_values: NotRequired[list[IssueFieldValueTypeForResponse]]
-    state: str
-    state_reason: NotRequired[Union[str, None]]
-    milestone: Union[None, MilestoneTypeForResponse]
-    comments: int
-    created_at: str
-    updated_at: str
-    closed_at: Union[str, None]
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
-    pull_request: NotRequired[IssueSearchResultItemPropPullRequestTypeForResponse]
-    body: NotRequired[str]
-    score: float
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
+    display: NotRequired[str]
+    type: NotRequired[str]
+    value: Literal[
+        "user",
+        "27d9891d-2c17-4f45-a262-781a0e55c80a",
+        "guest_collaborator",
+        "1ebc4a02-e56c-43a6-92a5-02ee09b90824",
+        "enterprise_owner",
+        "981df190-8801-4618-a08a-d91f6206c954",
+        "ba4987ab-a1c3-412a-b58c-360fc407cb10",
+        "billing_manager",
+        "0e338b8c-cc7f-498a-928d-ea3470d7e7e3",
+        "e6be2762-e4ad-4108-b72d-1bbe884a0f91",
     ]
-    draft: NotRequired[bool]
-    repository: NotRequired[RepositoryTypeForResponse]
-    body_html: NotRequired[str]
-    body_text: NotRequired[str]
-    timeline_url: NotRequired[str]
-    type: NotRequired[Union[IssueTypeTypeForResponse, None]]
-    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
-    pinned_comment: NotRequired[Union[None, IssueCommentTypeForResponse]]
-    reactions: NotRequired[ReactionRollupTypeForResponse]
-
-
-class IssueSearchResultItemPropLabelsItemsType(TypedDict):
-    """IssueSearchResultItemPropLabelsItems"""
-
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    url: NotRequired[str]
-    name: NotRequired[str]
-    color: NotRequired[str]
-    default: NotRequired[bool]
-    description: NotRequired[Union[str, None]]
-
-
-class IssueSearchResultItemPropLabelsItemsTypeForResponse(TypedDict):
-    """IssueSearchResultItemPropLabelsItems"""
-
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    url: NotRequired[str]
-    name: NotRequired[str]
-    color: NotRequired[str]
-    default: NotRequired[bool]
-    description: NotRequired[Union[str, None]]
-
-
-class IssueSearchResultItemPropPullRequestType(TypedDict):
-    """IssueSearchResultItemPropPullRequest"""
-
-    merged_at: NotRequired[Union[_dt.datetime, None]]
-    diff_url: Union[str, None]
-    html_url: Union[str, None]
-    patch_url: Union[str, None]
-    url: Union[str, None]
-
-
-class IssueSearchResultItemPropPullRequestTypeForResponse(TypedDict):
-    """IssueSearchResultItemPropPullRequest"""
-
-    merged_at: NotRequired[Union[str, None]]
-    diff_url: Union[str, None]
-    html_url: Union[str, None]
-    patch_url: Union[str, None]
-    url: Union[str, None]
-
-
-class SearchIssuesGetResponse200Type(TypedDict):
-    """SearchIssuesGetResponse200"""
-
-    total_count: int
-    incomplete_results: bool
-    items: list[IssueSearchResultItemType]
-    search_type: Literal["lexical", "semantic", "hybrid"]
-    lexical_fallback_reason: NotRequired[
-        list[
-            Literal[
-                "no_text_terms",
-                "quoted_text",
-                "non_issue_target",
-                "or_boolean_not_supported",
-                "no_accessible_repos",
-                "server_error",
-                "only_non_semantic_fields_requested",
-                "service_unavailable",
-            ]
-        ]
-    ]
-
-
-class SearchIssuesGetResponse200TypeForResponse(TypedDict):
-    """SearchIssuesGetResponse200"""
-
-    total_count: int
-    incomplete_results: bool
-    items: list[IssueSearchResultItemTypeForResponse]
-    search_type: Literal["lexical", "semantic", "hybrid"]
-    lexical_fallback_reason: NotRequired[
-        list[
-            Literal[
-                "no_text_terms",
-                "quoted_text",
-                "non_issue_target",
-                "or_boolean_not_supported",
-                "no_accessible_repos",
-                "server_error",
-                "only_non_semantic_fields_requested",
-                "service_unavailable",
-            ]
-        ]
-    ]
+    primary: NotRequired[bool]
 
 
 __all__ = (
-    "IssueSearchResultItemPropLabelsItemsType",
-    "IssueSearchResultItemPropLabelsItemsTypeForResponse",
-    "IssueSearchResultItemPropPullRequestType",
-    "IssueSearchResultItemPropPullRequestTypeForResponse",
-    "IssueSearchResultItemType",
-    "IssueSearchResultItemTypeForResponse",
-    "SearchIssuesGetResponse200Type",
-    "SearchIssuesGetResponse200TypeForResponse",
+    "UserRoleItemsType",
+    "UserRoleItemsTypeForResponse",
 )

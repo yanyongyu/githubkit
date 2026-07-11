@@ -9,30 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class RulesetVersionPropActorType(TypedDict):
-    """RulesetVersionPropActor
+class RepositoryRuleLicenseComplianceScanningType(TypedDict):
+    """license_compliance_scanning
 
-    The actor who updated the ruleset
+    Enforce any added or changed dependencies to comply with the organization's
+    license policy.
     """
 
-    id: NotRequired[int]
-    type: NotRequired[str]
+    type: Literal["license_compliance_scanning"]
 
 
-class RulesetVersionPropActorTypeForResponse(TypedDict):
-    """RulesetVersionPropActor
+class RepositoryRuleLicenseComplianceScanningTypeForResponse(TypedDict):
+    """license_compliance_scanning
 
-    The actor who updated the ruleset
+    Enforce any added or changed dependencies to comply with the organization's
+    license policy.
     """
 
-    id: NotRequired[int]
-    type: NotRequired[str]
+    type: Literal["license_compliance_scanning"]
 
 
 __all__ = (
-    "RulesetVersionPropActorType",
-    "RulesetVersionPropActorTypeForResponse",
+    "RepositoryRuleLicenseComplianceScanningType",
+    "RepositoryRuleLicenseComplianceScanningTypeForResponse",
 )

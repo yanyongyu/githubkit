@@ -9,54 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0126 import (
+    EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType,
+    EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdTypeForResponse,
+)
 
 
-class EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType(
-    TypedDict
-):
-    """EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty"""
+class EnterpriseRulesetConditionsOrganizationIdTargetType(TypedDict):
+    """Repository ruleset conditions for organization IDs
 
-    include: NotRequired[list[EnterpriseRulesetConditionsOrganizationPropertySpecType]]
-    exclude: NotRequired[list[EnterpriseRulesetConditionsOrganizationPropertySpecType]]
-
-
-class EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse(
-    TypedDict
-):
-    """EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty"""
-
-    include: NotRequired[
-        list[EnterpriseRulesetConditionsOrganizationPropertySpecTypeForResponse]
-    ]
-    exclude: NotRequired[
-        list[EnterpriseRulesetConditionsOrganizationPropertySpecTypeForResponse]
-    ]
-
-
-class EnterpriseRulesetConditionsOrganizationPropertySpecType(TypedDict):
-    """Repository ruleset property targeting definition
-
-    Parameters for a targeting a organization property
+    Parameters for an organization ID condition
     """
 
-    name: str
-    property_values: list[str]
+    organization_id: (
+        EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType
+    )
 
 
-class EnterpriseRulesetConditionsOrganizationPropertySpecTypeForResponse(TypedDict):
-    """Repository ruleset property targeting definition
+class EnterpriseRulesetConditionsOrganizationIdTargetTypeForResponse(TypedDict):
+    """Repository ruleset conditions for organization IDs
 
-    Parameters for a targeting a organization property
+    Parameters for an organization ID condition
     """
 
-    name: str
-    property_values: list[str]
+    organization_id: (
+        EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdTypeForResponse
+    )
 
 
 __all__ = (
-    "EnterpriseRulesetConditionsOrganizationPropertySpecType",
-    "EnterpriseRulesetConditionsOrganizationPropertySpecTypeForResponse",
-    "EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType",
-    "EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse",
+    "EnterpriseRulesetConditionsOrganizationIdTargetType",
+    "EnterpriseRulesetConditionsOrganizationIdTargetTypeForResponse",
 )

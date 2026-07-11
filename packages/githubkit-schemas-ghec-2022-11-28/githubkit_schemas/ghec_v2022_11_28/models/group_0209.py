@@ -10,25 +10,47 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
 
+class IssueType(GitHubModel):
+    """Issue Type
 
-class PinnedIssueComment(GitHubModel):
-    """Pinned Issue Comment
-
-    Context around who pinned an issue comment and when it was pinned.
+    The type assigned to the issue. This is only present for issues in repositories
+    where issue types are supported.
     """
 
-    pinned_at: _dt.datetime = Field()
-    pinned_by: Union[None, SimpleUser] = Field()
+    id: int = Field(description="The unique identifier of the issue type.")
+    node_id: str = Field(description="The node identifier of the issue type.")
+    name: str = Field(description="The name of the issue type.")
+    description: Union[str, None] = Field(
+        description="The description of the issue type."
+    )
+    color: Missing[
+        Union[
+            None,
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+        ]
+    ] = Field(default=UNSET, description="The color of the issue type.")
+    created_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="The time the issue type created."
+    )
+    updated_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="The time the issue type last updated."
+    )
+    is_enabled: Missing[bool] = Field(
+        default=UNSET, description="The enabled state of the issue type."
+    )
 
 
-model_rebuild(PinnedIssueComment)
+model_rebuild(IssueType)
 
-__all__ = ("PinnedIssueComment",)
+__all__ = ("IssueType",)

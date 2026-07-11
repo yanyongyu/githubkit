@@ -9,49 +9,82 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksDeployKeyType(TypedDict):
-    """WebhooksDeployKey
+class BillingUsageSummaryReportUserType(TypedDict):
+    """BillingUsageSummaryReportUser"""
 
-    The [`deploy key`](https://docs.github.com/rest/deploy-keys/deploy-keys#get-a-
-    deploy-key) resource.
-    """
-
-    added_by: NotRequired[Union[str, None]]
-    created_at: str
-    id: int
-    key: str
-    last_used: NotRequired[Union[str, None]]
-    read_only: bool
-    title: str
-    url: str
-    verified: bool
-    enabled: NotRequired[bool]
+    time_period: BillingUsageSummaryReportUserPropTimePeriodType
+    user: str
+    repository: NotRequired[str]
+    product: NotRequired[str]
+    sku: NotRequired[str]
+    usage_items: list[BillingUsageSummaryReportUserPropUsageItemsItemsType]
 
 
-class WebhooksDeployKeyTypeForResponse(TypedDict):
-    """WebhooksDeployKey
+class BillingUsageSummaryReportUserTypeForResponse(TypedDict):
+    """BillingUsageSummaryReportUser"""
 
-    The [`deploy key`](https://docs.github.com/rest/deploy-keys/deploy-keys#get-a-
-    deploy-key) resource.
-    """
+    time_period: BillingUsageSummaryReportUserPropTimePeriodTypeForResponse
+    user: str
+    repository: NotRequired[str]
+    product: NotRequired[str]
+    sku: NotRequired[str]
+    usage_items: list[BillingUsageSummaryReportUserPropUsageItemsItemsTypeForResponse]
 
-    added_by: NotRequired[Union[str, None]]
-    created_at: str
-    id: int
-    key: str
-    last_used: NotRequired[Union[str, None]]
-    read_only: bool
-    title: str
-    url: str
-    verified: bool
-    enabled: NotRequired[bool]
+
+class BillingUsageSummaryReportUserPropTimePeriodType(TypedDict):
+    """BillingUsageSummaryReportUserPropTimePeriod"""
+
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
+
+
+class BillingUsageSummaryReportUserPropTimePeriodTypeForResponse(TypedDict):
+    """BillingUsageSummaryReportUserPropTimePeriod"""
+
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
+
+
+class BillingUsageSummaryReportUserPropUsageItemsItemsType(TypedDict):
+    """BillingUsageSummaryReportUserPropUsageItemsItems"""
+
+    product: str
+    sku: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: float
+    gross_amount: float
+    discount_quantity: float
+    discount_amount: float
+    net_quantity: float
+    net_amount: float
+
+
+class BillingUsageSummaryReportUserPropUsageItemsItemsTypeForResponse(TypedDict):
+    """BillingUsageSummaryReportUserPropUsageItemsItems"""
+
+    product: str
+    sku: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: float
+    gross_amount: float
+    discount_quantity: float
+    discount_amount: float
+    net_quantity: float
+    net_amount: float
 
 
 __all__ = (
-    "WebhooksDeployKeyType",
-    "WebhooksDeployKeyTypeForResponse",
+    "BillingUsageSummaryReportUserPropTimePeriodType",
+    "BillingUsageSummaryReportUserPropTimePeriodTypeForResponse",
+    "BillingUsageSummaryReportUserPropUsageItemsItemsType",
+    "BillingUsageSummaryReportUserPropUsageItemsItemsTypeForResponse",
+    "BillingUsageSummaryReportUserType",
+    "BillingUsageSummaryReportUserTypeForResponse",
 )

@@ -18,15 +18,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody"""
+class ReposOwnerRepoPagesPostBodyPropSource(GitHubModel):
+    """ReposOwnerRepoPagesPostBodyPropSource
 
-    message: str = Field(
-        description="The message for the pull request review dismissal"
+    The source branch and directory used to publish your Pages site.
+    """
+
+    branch: str = Field(
+        description="The repository branch used to publish your site's source files."
     )
-    event: Missing[Literal["DISMISS"]] = Field(default=UNSET)
+    path: Missing[Literal["/", "/docs"]] = Field(
+        default=UNSET,
+        description="The repository directory that includes the source files for the Pages site. Allowed paths are `/` or `/docs`. Default: `/`",
+    )
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody)
+model_rebuild(ReposOwnerRepoPagesPostBodyPropSource)
 
-__all__ = ("ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody",)
+__all__ = ("ReposOwnerRepoPagesPostBodyPropSource",)

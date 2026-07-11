@@ -19,7 +19,7 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhookIssueCommentPinnedPropIssueAllof0PropAssignee(GitHubModel):
+class WebhookIssueCommentEditedPropIssueAllof0PropAssignee(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -48,7 +48,7 @@ class WebhookIssueCommentPinnedPropIssueAllof0PropAssignee(GitHubModel):
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookIssueCommentPinnedPropIssueAllof0PropLabelsItems(GitHubModel):
+class WebhookIssueCommentEditedPropIssueAllof0PropLabelsItems(GitHubModel):
     """Label"""
 
     color: str = Field(
@@ -62,8 +62,8 @@ class WebhookIssueCommentPinnedPropIssueAllof0PropLabelsItems(GitHubModel):
     url: str = Field(description="URL for the label")
 
 
-class WebhookIssueCommentPinnedPropIssueAllof0PropPullRequest(GitHubModel):
-    """WebhookIssueCommentPinnedPropIssueAllof0PropPullRequest"""
+class WebhookIssueCommentEditedPropIssueAllof0PropPullRequest(GitHubModel):
+    """WebhookIssueCommentEditedPropIssueAllof0PropPullRequest"""
 
     diff_url: Missing[str] = Field(default=UNSET)
     html_url: Missing[str] = Field(default=UNSET)
@@ -72,12 +72,12 @@ class WebhookIssueCommentPinnedPropIssueAllof0PropPullRequest(GitHubModel):
     url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookIssueCommentPinnedPropIssueAllof0PropAssignee)
-model_rebuild(WebhookIssueCommentPinnedPropIssueAllof0PropLabelsItems)
-model_rebuild(WebhookIssueCommentPinnedPropIssueAllof0PropPullRequest)
+model_rebuild(WebhookIssueCommentEditedPropIssueAllof0PropAssignee)
+model_rebuild(WebhookIssueCommentEditedPropIssueAllof0PropLabelsItems)
+model_rebuild(WebhookIssueCommentEditedPropIssueAllof0PropPullRequest)
 
 __all__ = (
-    "WebhookIssueCommentPinnedPropIssueAllof0PropAssignee",
-    "WebhookIssueCommentPinnedPropIssueAllof0PropLabelsItems",
-    "WebhookIssueCommentPinnedPropIssueAllof0PropPullRequest",
+    "WebhookIssueCommentEditedPropIssueAllof0PropAssignee",
+    "WebhookIssueCommentEditedPropIssueAllof0PropLabelsItems",
+    "WebhookIssueCommentEditedPropIssueAllof0PropPullRequest",
 )

@@ -33,16 +33,17 @@ from .group_0207 import RepositoryRuleUpdate
 from .group_0209 import RepositoryRuleRequiredLinearHistory
 from .group_0210 import RepositoryRuleMergeQueue
 from .group_0212 import RepositoryRuleRequiredDeployments
-from .group_0215 import RepositoryRulePullRequest
-from .group_0217 import RepositoryRuleRequiredStatusChecks
-from .group_0219 import RepositoryRuleCommitMessagePattern
-from .group_0221 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0223 import RepositoryRuleCommitterEmailPattern
-from .group_0225 import RepositoryRuleBranchNamePattern
-from .group_0227 import RepositoryRuleTagNamePattern
-from .group_0230 import RepositoryRuleWorkflows
-from .group_0232 import RepositoryRuleCodeScanning
-from .group_0234 import RepositoryRuleCopilotCodeReview
+from .group_0214 import RepositoryRulePullRequest
+from .group_0216 import RepositoryRuleRequiredStatusChecks
+from .group_0218 import RepositoryRuleCommitMessagePattern
+from .group_0220 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0222 import RepositoryRuleCommitterEmailPattern
+from .group_0224 import RepositoryRuleBranchNamePattern
+from .group_0226 import RepositoryRuleTagNamePattern
+from .group_0229 import RepositoryRuleWorkflows
+from .group_0231 import RepositoryRuleCodeScanning
+from .group_0233 import RepositoryRuleCopilotCodeReview
+from .group_0235 import RepositoryRuleLicenseComplianceScanning
 from .group_0236 import RepositoryRuleFilePathRestriction
 from .group_0238 import RepositoryRuleMaxFilePathLength
 from .group_0240 import RepositoryRuleFileExtensionRestriction
@@ -109,6 +110,7 @@ class RepositoryRuleset(GitHubModel):
                 RepositoryRuleWorkflows,
                 RepositoryRuleCodeScanning,
                 RepositoryRuleCopilotCodeReview,
+                RepositoryRuleLicenseComplianceScanning,
                 RepositoryRuleFilePathRestriction,
                 RepositoryRuleMaxFilePathLength,
                 RepositoryRuleFileExtensionRestriction,

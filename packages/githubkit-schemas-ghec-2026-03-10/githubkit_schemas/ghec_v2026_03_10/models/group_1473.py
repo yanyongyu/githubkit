@@ -11,39 +11,38 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0011 import WebhookConfig
 
+class ReposOwnerRepoDispatchesPostBody(GitHubModel):
+    """ReposOwnerRepoDispatchesPostBody"""
 
-class ReposOwnerRepoHooksHookIdPatchBody(GitHubModel):
-    """ReposOwnerRepoHooksHookIdPatchBody"""
-
-    config: Missing[WebhookConfig] = Field(
-        default=UNSET,
-        title="Webhook Configuration",
-        description="Configuration object of the webhook",
+    event_type: str = Field(
+        min_length=1,
+        max_length=100,
+        description="A custom webhook event name. Must be 100 characters or fewer.",
     )
-    events: Missing[list[str]] = Field(
+    client_payload: Missing[ReposOwnerRepoDispatchesPostBodyPropClientPayload] = Field(
         default=UNSET,
-        description="Determines what [events](https://docs.github.com/enterprise-cloud@latest/webhooks/event-payloads) the hook is triggered for. This replaces the entire array of events.",
-    )
-    add_events: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Determines a list of events to be added to the list of events that the Hook triggers for.",
-    )
-    remove_events: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Determines a list of events to be removed from the list of events that the Hook triggers for.",
-    )
-    active: Missing[bool] = Field(
-        default=UNSET,
-        description="Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications.",
+        description="JSON payload with extra information about the webhook event that your action or workflow may use. The maximum number of top-level properties is 10. The total size of the JSON payload must be less than 64KB.",
     )
 
 
-model_rebuild(ReposOwnerRepoHooksHookIdPatchBody)
+class ReposOwnerRepoDispatchesPostBodyPropClientPayload(ExtraGitHubModel):
+    """ReposOwnerRepoDispatchesPostBodyPropClientPayload
 
-__all__ = ("ReposOwnerRepoHooksHookIdPatchBody",)
+    JSON payload with extra information about the webhook event that your action or
+    workflow may use. The maximum number of top-level properties is 10. The total
+    size of the JSON payload must be less than 64KB.
+    """
+
+
+model_rebuild(ReposOwnerRepoDispatchesPostBody)
+model_rebuild(ReposOwnerRepoDispatchesPostBodyPropClientPayload)
+
+__all__ = (
+    "ReposOwnerRepoDispatchesPostBody",
+    "ReposOwnerRepoDispatchesPostBodyPropClientPayload",
+)

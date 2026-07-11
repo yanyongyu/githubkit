@@ -13,17 +13,31 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 
 
-class OrgsOrgCopilotCodingAgentPermissionsPutBody(GitHubModel):
-    """OrgsOrgCopilotCodingAgentPermissionsPutBody"""
+class OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody(GitHubModel):
+    """OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody"""
 
-    enabled_repositories: Literal["all", "selected", "none"] = Field(
-        description="The policy for which repositories can use Copilot cloud agent. Can be one of `all`, `selected`, or `none`."
+    resource_type: Literal[
+        "repository", "github_file", "free_text", "github_issue", "github_pull_request"
+    ] = Field(description="The type of resource to create.")
+    metadata: OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata = Field(
+        description="Resource-specific metadata."
     )
 
 
-model_rebuild(OrgsOrgCopilotCodingAgentPermissionsPutBody)
+class OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata(ExtraGitHubModel):
+    """OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata
 
-__all__ = ("OrgsOrgCopilotCodingAgentPermissionsPutBody",)
+    Resource-specific metadata.
+    """
+
+
+model_rebuild(OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody)
+model_rebuild(OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata)
+
+__all__ = (
+    "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody",
+    "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata",
+)

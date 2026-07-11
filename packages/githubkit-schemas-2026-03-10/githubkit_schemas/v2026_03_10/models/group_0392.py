@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -18,159 +17,48 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
-from .group_0058 import Issue
-from .group_0132 import Team
-from .group_0390 import IssueTypeWebhook
-from .group_0391 import IssueReference
+from .group_0036 import SimpleRepository
 
 
-class IssueEvent(GitHubModel):
-    """Issue Event
+class IssueReference(GitHubModel):
+    """Issue Reference
 
-    Issue Event
+    A minimal reference to an issue linked from a timeline event (e.g. sub-issue,
+    parent-issue, or dependency events).
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    actor: Union[None, SimpleUser] = Field()
-    event: str = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: _dt.datetime = Field()
-    issue: Missing[Union[None, Issue]] = Field(default=UNSET)
-    label: Missing[IssueEventLabel] = Field(
-        default=UNSET, title="Issue Event Label", description="Issue Event Label"
+    number: int = Field(description="The number of the referenced issue.")
+    title: str = Field(description="The title of the referenced issue.")
+    state: str = Field(description="The state of the referenced issue.")
+    state_reason: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The reason for the referenced issue's state."
     )
-    assignee: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    assigner: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    review_requester: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    requested_reviewer: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    requested_team: Missing[Team] = Field(
-        default=UNSET,
-        title="Team",
-        description="Groups of organization members that gives permissions on specified repositories.",
+    repository: SimpleRepository = Field(
+        title="Simple Repository", description="A GitHub repository."
     )
-    dismissed_review: Missing[IssueEventDismissedReview] = Field(
-        default=UNSET, title="Issue Event Dismissed Review"
-    )
-    milestone: Missing[IssueEventMilestone] = Field(
-        default=UNSET,
-        title="Issue Event Milestone",
-        description="Issue Event Milestone",
-    )
-    project_card: Missing[IssueEventProjectCard] = Field(
-        default=UNSET,
-        title="Issue Event Project Card",
-        description="Issue Event Project Card",
-    )
-    rename: Missing[IssueEventRename] = Field(
-        default=UNSET, title="Issue Event Rename", description="Issue Event Rename"
-    )
-    issue_type: Missing[Union[IssueTypeWebhook, None]] = Field(
-        default=UNSET, title="Issue Type", description="The type of issue."
-    )
-    prev_issue_type: Missing[Union[IssueTypeWebhook, None]] = Field(
-        default=UNSET, title="Issue Type", description="The type of issue."
-    )
-    sub_issue: Missing[Union[IssueReference, None]] = Field(
-        default=UNSET,
-        title="Issue Reference",
-        description="A minimal reference to an issue linked from a timeline event (e.g. sub-issue, parent-issue, or dependency events).",
-    )
-    parent_issue: Missing[Union[IssueReference, None]] = Field(
-        default=UNSET,
-        title="Issue Reference",
-        description="A minimal reference to an issue linked from a timeline event (e.g. sub-issue, parent-issue, or dependency events).",
-    )
-    author_association: Missing[
-        Literal[
-            "COLLABORATOR",
-            "CONTRIBUTOR",
-            "FIRST_TIMER",
-            "FIRST_TIME_CONTRIBUTOR",
-            "MANNEQUIN",
-            "MEMBER",
-            "NONE",
-            "OWNER",
-        ]
-    ] = Field(
-        default=UNSET,
-        title="author_association",
-        description="How the author is associated with the repository.",
-    )
-    lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
-    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
-        default=UNSET
+    issue_type: Union[IssueReferencePropIssueType, None] = Field(
+        title="Issue Type", description="The type of the referenced issue."
     )
 
 
-class IssueEventLabel(GitHubModel):
-    """Issue Event Label
+class IssueReferencePropIssueType(GitHubModel):
+    """Issue Type
 
-    Issue Event Label
+    The type of the referenced issue.
     """
 
-    name: Union[str, None] = Field()
-    color: Union[str, None] = Field()
+    id: int = Field(description="The unique identifier of the issue type.")
+    node_id: str = Field(description="The node identifier of the issue type.")
+    name: str = Field(description="The name of the issue type.")
+    color: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The color of the issue type."
+    )
 
 
-class IssueEventDismissedReview(GitHubModel):
-    """Issue Event Dismissed Review"""
-
-    state: str = Field()
-    review_id: int = Field()
-    dismissal_message: Union[str, None] = Field()
-    dismissal_commit_id: Missing[Union[str, None]] = Field(default=UNSET)
-
-
-class IssueEventMilestone(GitHubModel):
-    """Issue Event Milestone
-
-    Issue Event Milestone
-    """
-
-    title: str = Field()
-
-
-class IssueEventProjectCard(GitHubModel):
-    """Issue Event Project Card
-
-    Issue Event Project Card
-    """
-
-    url: str = Field()
-    id: int = Field()
-    project_url: str = Field()
-    project_id: int = Field()
-    column_name: str = Field()
-    previous_column_name: Missing[str] = Field(default=UNSET)
-
-
-class IssueEventRename(GitHubModel):
-    """Issue Event Rename
-
-    Issue Event Rename
-    """
-
-    from_: str = Field(alias="from")
-    to: str = Field()
-
-
-model_rebuild(IssueEvent)
-model_rebuild(IssueEventLabel)
-model_rebuild(IssueEventDismissedReview)
-model_rebuild(IssueEventMilestone)
-model_rebuild(IssueEventProjectCard)
-model_rebuild(IssueEventRename)
+model_rebuild(IssueReference)
+model_rebuild(IssueReferencePropIssueType)
 
 __all__ = (
-    "IssueEvent",
-    "IssueEventDismissedReview",
-    "IssueEventLabel",
-    "IssueEventMilestone",
-    "IssueEventProjectCard",
-    "IssueEventRename",
+    "IssueReference",
+    "IssueReferencePropIssueType",
 )

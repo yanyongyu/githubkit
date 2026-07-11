@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,97 +18,80 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class GetAllBudgets(GitHubModel):
-    """GetAllBudgets"""
+class SecretScanningPatternConfiguration(GitHubModel):
+    """Secret scanning pattern configuration
 
-    budgets: list[Budget] = Field(
-        description="Array of budget objects for the enterprise"
-    )
-    user: Missing[str] = Field(
-        default=UNSET,
-        description="User login included when the response is scoped with the `user` query parameter.",
-    )
-    effective_budget: Missing[GetAllBudgetsPropEffectiveBudget] = Field(
-        default=UNSET,
-        description="Effective user-level budget details returned when the response is scoped with the `user` query parameter.",
-    )
-    has_next_page: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates if there are more pages of results available (maps to hasNextPage from billing platform)",
-    )
-    total_count: Missing[int] = Field(
-        default=UNSET, description="Total number of budgets matching the query"
-    )
-
-
-class GetAllBudgetsPropEffectiveBudget(GitHubModel):
-    """GetAllBudgetsPropEffectiveBudget
-
-    Effective user-level budget details returned when the response is scoped with
-    the `user` query parameter.
+    A collection of secret scanning patterns and their settings related to push
+    protection.
     """
 
-    id: str = Field(description="The unique identifier of the effective budget.")
-    budget_amount: int = Field(
-        description="The budget amount for the effective budget."
-    )
-    consumed_amount: float = Field(
-        description="The consumed amount for the specified user within the effective budget."
-    )
-
-
-class Budget(GitHubModel):
-    """Budget"""
-
-    id: str = Field(description="The unique identifier for the budget")
-    budget_type: Literal["SkuPricing", "ProductPricing"] = Field(
-        description="The type of pricing for the budget"
-    )
-    budget_amount: int = Field(
-        description="The budget amount limit in whole dollars. For license-based products, this represents the number of licenses."
-    )
-    prevent_further_usage: bool = Field(
-        description="The type of limit enforcement for the budget"
-    )
-    budget_scope: Literal[
-        "enterprise",
-        "organization",
-        "repository",
-        "cost_center",
-        "multi_user_customer",
-        "user",
-    ] = Field(description="The scope of the budget")
-    budget_entity_name: Missing[str] = Field(
+    pattern_config_version: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The name of the entity for the budget (enterprise does not require a name).",
+        description="The version of the entity. This is used to confirm you're updating the current version of the entity and mitigate unintentionally overriding someone else's update.",
     )
-    user: Missing[str] = Field(
+    provider_pattern_overrides: Missing[list[SecretScanningPatternOverride]] = Field(
+        default=UNSET, description="Overrides for partner patterns."
+    )
+    custom_pattern_overrides: Missing[list[SecretScanningPatternOverride]] = Field(
         default=UNSET,
-        description="The user login when the budget is scoped to a single user (`user` scope).",
-    )
-    budget_product_sku: str = Field(
-        description="A single product or sku to apply the budget to."
-    )
-    budget_alerting: BudgetPropBudgetAlerting = Field()
-
-
-class BudgetPropBudgetAlerting(GitHubModel):
-    """BudgetPropBudgetAlerting"""
-
-    will_alert: bool = Field(description="Whether alerts are enabled for this budget")
-    alert_recipients: list[str] = Field(
-        description="Array of user login names who will receive alerts"
+        description="Overrides for custom patterns defined by the organization.",
     )
 
 
-model_rebuild(GetAllBudgets)
-model_rebuild(GetAllBudgetsPropEffectiveBudget)
-model_rebuild(Budget)
-model_rebuild(BudgetPropBudgetAlerting)
+class SecretScanningPatternOverride(GitHubModel):
+    """SecretScanningPatternOverride"""
+
+    token_type: Missing[str] = Field(
+        default=UNSET, description="The ID of the pattern."
+    )
+    custom_pattern_version: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The version of this pattern if it's a custom pattern.",
+    )
+    slug: Missing[str] = Field(default=UNSET, description="The slug of the pattern.")
+    display_name: Missing[str] = Field(
+        default=UNSET, description="The user-friendly name for the pattern."
+    )
+    alert_total: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of alerts generated by this pattern.",
+    )
+    alert_total_percentage: Missing[int] = Field(
+        default=UNSET,
+        description="The percentage of all alerts that this pattern represents, rounded to the nearest integer.",
+    )
+    false_positives: Missing[int] = Field(
+        default=UNSET,
+        description="The number of false positive alerts generated by this pattern.",
+    )
+    false_positive_rate: Missing[int] = Field(
+        default=UNSET,
+        description="The percentage of alerts from this pattern that are false positives, rounded to the nearest integer.",
+    )
+    bypass_rate: Missing[int] = Field(
+        default=UNSET,
+        description="The percentage of blocks for this pattern that were bypassed, rounded to the nearest integer.",
+    )
+    default_setting: Missing[Literal["disabled", "enabled"]] = Field(
+        default=UNSET,
+        description="The default push protection setting for this pattern.",
+    )
+    enterprise_setting: Missing[
+        Union[None, Literal["not-set", "disabled", "enabled"]]
+    ] = Field(
+        default=UNSET,
+        description="The push protection setting for this pattern set at the enterprise level. Only present for partner patterns when the organization has a parent enterprise.",
+    )
+    setting: Missing[Literal["not-set", "disabled", "enabled"]] = Field(
+        default=UNSET,
+        description="The current push protection setting for this pattern. If this is `not-set`, then it inherits either the enterprise setting if it exists or the default setting.",
+    )
+
+
+model_rebuild(SecretScanningPatternConfiguration)
+model_rebuild(SecretScanningPatternOverride)
 
 __all__ = (
-    "Budget",
-    "BudgetPropBudgetAlerting",
-    "GetAllBudgets",
-    "GetAllBudgetsPropEffectiveBudget",
+    "SecretScanningPatternConfiguration",
+    "SecretScanningPatternOverride",
 )

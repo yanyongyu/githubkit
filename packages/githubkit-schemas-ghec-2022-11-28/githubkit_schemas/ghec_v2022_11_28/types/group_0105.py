@@ -9,41 +9,72 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CustomPropertyBaseType(TypedDict):
-    """CustomPropertyBase"""
+class GetLicenseSyncStatusType(TypedDict):
+    """License Sync Status
 
-    property_name: NotRequired[str]
-    url: NotRequired[str]
-    source_type: NotRequired[Literal["organization", "enterprise"]]
-    value_type: NotRequired[
-        Literal["string", "single_select", "multi_select", "true_false", "url"]
+    Information about the status of a license sync job for an enterprise.
+    """
+
+    server_instances: NotRequired[
+        list[GetLicenseSyncStatusPropServerInstancesItemsType]
     ]
-    required: NotRequired[bool]
-    default_value: NotRequired[Union[str, list[str], None]]
-    description: NotRequired[Union[str, None]]
-    allowed_values: NotRequired[Union[list[str], None]]
 
 
-class CustomPropertyBaseTypeForResponse(TypedDict):
-    """CustomPropertyBase"""
+class GetLicenseSyncStatusTypeForResponse(TypedDict):
+    """License Sync Status
 
-    property_name: NotRequired[str]
-    url: NotRequired[str]
-    source_type: NotRequired[Literal["organization", "enterprise"]]
-    value_type: NotRequired[
-        Literal["string", "single_select", "multi_select", "true_false", "url"]
+    Information about the status of a license sync job for an enterprise.
+    """
+
+    server_instances: NotRequired[
+        list[GetLicenseSyncStatusPropServerInstancesItemsTypeForResponse]
     ]
-    required: NotRequired[bool]
-    default_value: NotRequired[Union[str, list[str], None]]
-    description: NotRequired[Union[str, None]]
-    allowed_values: NotRequired[Union[list[str], None]]
+
+
+class GetLicenseSyncStatusPropServerInstancesItemsType(TypedDict):
+    """GetLicenseSyncStatusPropServerInstancesItems"""
+
+    server_id: NotRequired[str]
+    hostname: NotRequired[str]
+    last_sync: NotRequired[GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncType]
+
+
+class GetLicenseSyncStatusPropServerInstancesItemsTypeForResponse(TypedDict):
+    """GetLicenseSyncStatusPropServerInstancesItems"""
+
+    server_id: NotRequired[str]
+    hostname: NotRequired[str]
+    last_sync: NotRequired[
+        GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncTypeForResponse
+    ]
+
+
+class GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncType(TypedDict):
+    """GetLicenseSyncStatusPropServerInstancesItemsPropLastSync"""
+
+    date: NotRequired[str]
+    status: NotRequired[str]
+    error: NotRequired[str]
+
+
+class GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncTypeForResponse(
+    TypedDict
+):
+    """GetLicenseSyncStatusPropServerInstancesItemsPropLastSync"""
+
+    date: NotRequired[str]
+    status: NotRequired[str]
+    error: NotRequired[str]
 
 
 __all__ = (
-    "CustomPropertyBaseType",
-    "CustomPropertyBaseTypeForResponse",
+    "GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncType",
+    "GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncTypeForResponse",
+    "GetLicenseSyncStatusPropServerInstancesItemsType",
+    "GetLicenseSyncStatusPropServerInstancesItemsTypeForResponse",
+    "GetLicenseSyncStatusType",
+    "GetLicenseSyncStatusTypeForResponse",
 )

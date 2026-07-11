@@ -9,60 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class AgentsReposOwnerRepoTasksGetResponse401(GitHubModel):
-    """AgentsReposOwnerRepoTasksGetResponse401
-
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str = Field(
-        description='Summary message (e.g. "Validation Failed", "Not Found")'
-    )
-    errors: Missing[list[AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems]] = (
-        Field(
-            default=UNSET,
-            description="List of validation errors (present only for 422 responses)",
-        )
-    )
-    documentation_url: str = Field(description="URL to relevant API documentation")
+from .group_0003 import SimpleUser
+from .group_0599 import EnterpriseWebhooks
+from .group_0600 import SimpleInstallation
+from .group_0601 import OrganizationSimpleWebhooks
+from .group_0602 import RepositoryWebhooks
 
 
-class AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems(GitHubModel):
-    """AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems
+class WebhookWorkflowDispatch(GitHubModel):
+    """workflow_dispatch event"""
 
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ] = Field(description="Machine-readable error code")
-    message: Missing[str] = Field(
+    enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
-        description='Human-readable message (populated when code is "custom")',
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest/admin/overview/about-enterprise-accounts)."',
     )
+    inputs: Union[WebhookWorkflowDispatchPropInputs, None] = Field()
+    installation: Missing[SimpleInstallation] = Field(
+        default=UNSET,
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    )
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    ref: str = Field()
+    repository: RepositoryWebhooks = Field(
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    workflow: str = Field()
 
 
-model_rebuild(AgentsReposOwnerRepoTasksGetResponse401)
-model_rebuild(AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems)
+class WebhookWorkflowDispatchPropInputs(ExtraGitHubModel):
+    """WebhookWorkflowDispatchPropInputs"""
+
+
+model_rebuild(WebhookWorkflowDispatch)
+model_rebuild(WebhookWorkflowDispatchPropInputs)
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksGetResponse401",
-    "AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems",
+    "WebhookWorkflowDispatch",
+    "WebhookWorkflowDispatchPropInputs",
 )

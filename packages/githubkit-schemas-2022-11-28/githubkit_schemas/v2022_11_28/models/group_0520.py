@@ -9,67 +9,82 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0010 import Integration
-from .group_0060 import PullRequestMinimal
-from .group_0092 import MinimalRepository
 
+class BillingPremiumRequestUsageReportUser(GitHubModel):
+    """BillingPremiumRequestUsageReportUser"""
 
-class SimpleCheckSuite(GitHubModel):
-    """SimpleCheckSuite
-
-    A suite of checks performed on the code of a given code change
-    """
-
-    after: Missing[Union[str, None]] = Field(default=UNSET)
-    app: Missing[Union[Integration, None]] = Field(
-        default=UNSET,
-        title="GitHub app",
-        description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
+    time_period: BillingPremiumRequestUsageReportUserPropTimePeriod = Field(
+        alias="timePeriod"
     )
-    before: Missing[Union[str, None]] = Field(default=UNSET)
-    conclusion: Missing[
-        Union[
-            None,
-            Literal[
-                "success",
-                "failure",
-                "neutral",
-                "cancelled",
-                "skipped",
-                "timed_out",
-                "action_required",
-                "stale",
-                "startup_failure",
-            ],
-        ]
-    ] = Field(default=UNSET)
-    created_at: Missing[_dt.datetime] = Field(default=UNSET)
-    head_branch: Missing[Union[str, None]] = Field(default=UNSET)
-    head_sha: Missing[str] = Field(
-        default=UNSET, description="The SHA of the head commit that is being checked."
+    user: str = Field(description="The unique identifier of the user.")
+    product: Missing[str] = Field(
+        default=UNSET, description="The product for the usage report."
     )
-    id: Missing[int] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    pull_requests: Missing[list[PullRequestMinimal]] = Field(default=UNSET)
-    repository: Missing[MinimalRepository] = Field(
-        default=UNSET, title="Minimal Repository", description="Minimal Repository"
+    model: Missing[str] = Field(
+        default=UNSET, description="The model for the usage report."
     )
-    status: Missing[
-        Literal["queued", "in_progress", "completed", "pending", "waiting"]
-    ] = Field(default=UNSET)
-    updated_at: Missing[_dt.datetime] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
+    usage_items: list[BillingPremiumRequestUsageReportUserPropUsageItemsItems] = Field(
+        alias="usageItems"
+    )
 
 
-model_rebuild(SimpleCheckSuite)
+class BillingPremiumRequestUsageReportUserPropTimePeriod(GitHubModel):
+    """BillingPremiumRequestUsageReportUserPropTimePeriod"""
 
-__all__ = ("SimpleCheckSuite",)
+    year: int = Field(description="The year for the usage report.")
+    month: Missing[int] = Field(
+        default=UNSET, description="The month for the usage report."
+    )
+    day: Missing[int] = Field(
+        default=UNSET, description="The day for the usage report."
+    )
+
+
+class BillingPremiumRequestUsageReportUserPropUsageItemsItems(GitHubModel):
+    """BillingPremiumRequestUsageReportUserPropUsageItemsItems"""
+
+    product: str = Field(description="Product name.")
+    sku: str = Field(description="SKU name.")
+    model: str = Field(description="Model name.")
+    unit_type: str = Field(
+        alias="unitType", description="Unit type of the usage line item."
+    )
+    price_per_unit: float = Field(
+        alias="pricePerUnit", description="Price per unit of the usage line item."
+    )
+    gross_quantity: float = Field(
+        alias="grossQuantity", description="Gross quantity of the usage line item."
+    )
+    gross_amount: float = Field(
+        alias="grossAmount", description="Gross amount of the usage line item."
+    )
+    discount_quantity: float = Field(
+        alias="discountQuantity",
+        description="Discount quantity of the usage line item.",
+    )
+    discount_amount: float = Field(
+        alias="discountAmount", description="Discount amount of the usage line item."
+    )
+    net_quantity: float = Field(
+        alias="netQuantity", description="Net quantity of the usage line item."
+    )
+    net_amount: float = Field(
+        alias="netAmount", description="Net amount of the usage line item."
+    )
+
+
+model_rebuild(BillingPremiumRequestUsageReportUser)
+model_rebuild(BillingPremiumRequestUsageReportUserPropTimePeriod)
+model_rebuild(BillingPremiumRequestUsageReportUserPropUsageItemsItems)
+
+__all__ = (
+    "BillingPremiumRequestUsageReportUser",
+    "BillingPremiumRequestUsageReportUserPropTimePeriod",
+    "BillingPremiumRequestUsageReportUserPropUsageItemsItems",
+)

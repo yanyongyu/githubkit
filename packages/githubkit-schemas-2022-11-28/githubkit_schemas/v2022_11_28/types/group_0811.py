@@ -9,97 +9,99 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0515 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0516 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0517 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0518 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0546 import WebhooksProjectType, WebhooksProjectTypeForResponse
+
+class WebhookProjectCardMovedPropProjectCardAllof1Type(TypedDict):
+    """WebhookProjectCardMovedPropProjectCardAllof1"""
+
+    after_id: Union[int, None]
+    archived: NotRequired[bool]
+    column_id: NotRequired[int]
+    column_url: NotRequired[str]
+    created_at: NotRequired[str]
+    creator: NotRequired[
+        Union[WebhookProjectCardMovedPropProjectCardAllof1PropCreatorType, None]
+    ]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    note: NotRequired[Union[str, None]]
+    project_url: NotRequired[str]
+    updated_at: NotRequired[str]
+    url: NotRequired[str]
 
 
-class WebhookProjectEditedType(TypedDict):
-    """project edited event"""
+class WebhookProjectCardMovedPropProjectCardAllof1TypeForResponse(TypedDict):
+    """WebhookProjectCardMovedPropProjectCardAllof1"""
 
-    action: Literal["edited"]
-    changes: NotRequired[WebhookProjectEditedPropChangesType]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    project: WebhooksProjectType
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: NotRequired[SimpleUserType]
-
-
-class WebhookProjectEditedTypeForResponse(TypedDict):
-    """project edited event"""
-
-    action: Literal["edited"]
-    changes: NotRequired[WebhookProjectEditedPropChangesTypeForResponse]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    project: WebhooksProjectTypeForResponse
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    sender: NotRequired[SimpleUserTypeForResponse]
+    after_id: Union[int, None]
+    archived: NotRequired[bool]
+    column_id: NotRequired[int]
+    column_url: NotRequired[str]
+    created_at: NotRequired[str]
+    creator: NotRequired[
+        Union[
+            WebhookProjectCardMovedPropProjectCardAllof1PropCreatorTypeForResponse, None
+        ]
+    ]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    note: NotRequired[Union[str, None]]
+    project_url: NotRequired[str]
+    updated_at: NotRequired[str]
+    url: NotRequired[str]
 
 
-class WebhookProjectEditedPropChangesType(TypedDict):
-    """WebhookProjectEditedPropChanges
+class WebhookProjectCardMovedPropProjectCardAllof1PropCreatorType(TypedDict):
+    """WebhookProjectCardMovedPropProjectCardAllof1PropCreator"""
 
-    The changes to the project if the action was `edited`.
-    """
-
-    body: NotRequired[WebhookProjectEditedPropChangesPropBodyType]
-    name: NotRequired[WebhookProjectEditedPropChangesPropNameType]
-
-
-class WebhookProjectEditedPropChangesTypeForResponse(TypedDict):
-    """WebhookProjectEditedPropChanges
-
-    The changes to the project if the action was `edited`.
-    """
-
-    body: NotRequired[WebhookProjectEditedPropChangesPropBodyTypeForResponse]
-    name: NotRequired[WebhookProjectEditedPropChangesPropNameTypeForResponse]
-
-
-class WebhookProjectEditedPropChangesPropBodyType(TypedDict):
-    """WebhookProjectEditedPropChangesPropBody"""
-
-    from_: str
+    avatar_url: NotRequired[str]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    login: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[str]
+    url: NotRequired[str]
 
 
-class WebhookProjectEditedPropChangesPropBodyTypeForResponse(TypedDict):
-    """WebhookProjectEditedPropChangesPropBody"""
+class WebhookProjectCardMovedPropProjectCardAllof1PropCreatorTypeForResponse(TypedDict):
+    """WebhookProjectCardMovedPropProjectCardAllof1PropCreator"""
 
-    from_: str
-
-
-class WebhookProjectEditedPropChangesPropNameType(TypedDict):
-    """WebhookProjectEditedPropChangesPropName"""
-
-    from_: str
-
-
-class WebhookProjectEditedPropChangesPropNameTypeForResponse(TypedDict):
-    """WebhookProjectEditedPropChangesPropName"""
-
-    from_: str
+    avatar_url: NotRequired[str]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    login: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[str]
+    url: NotRequired[str]
 
 
 __all__ = (
-    "WebhookProjectEditedPropChangesPropBodyType",
-    "WebhookProjectEditedPropChangesPropBodyTypeForResponse",
-    "WebhookProjectEditedPropChangesPropNameType",
-    "WebhookProjectEditedPropChangesPropNameTypeForResponse",
-    "WebhookProjectEditedPropChangesType",
-    "WebhookProjectEditedPropChangesTypeForResponse",
-    "WebhookProjectEditedType",
-    "WebhookProjectEditedTypeForResponse",
+    "WebhookProjectCardMovedPropProjectCardAllof1PropCreatorType",
+    "WebhookProjectCardMovedPropProjectCardAllof1PropCreatorTypeForResponse",
+    "WebhookProjectCardMovedPropProjectCardAllof1Type",
+    "WebhookProjectCardMovedPropProjectCardAllof1TypeForResponse",
 )

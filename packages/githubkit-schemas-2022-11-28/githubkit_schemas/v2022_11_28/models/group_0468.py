@@ -17,14 +17,14 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0243 import RepositoryRuleMaxFileSizePropParameters
+from .group_0232 import RepositoryRuleCodeScanningPropParameters
 
 
-class RepositoryRuleDetailedOneof21(GitHubModel):
-    """RepositoryRuleDetailedOneof21"""
+class RepositoryRuleDetailedOneof16(GitHubModel):
+    """RepositoryRuleDetailedOneof16"""
 
-    type: Literal["max_file_size"] = Field()
-    parameters: Missing[RepositoryRuleMaxFileSizePropParameters] = Field(default=UNSET)
+    type: Literal["code_scanning"] = Field()
+    parameters: Missing[RepositoryRuleCodeScanningPropParameters] = Field(default=UNSET)
     ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
         default=UNSET,
         description="The type of source for the ruleset that includes this rule.",
@@ -38,6 +38,6 @@ class RepositoryRuleDetailedOneof21(GitHubModel):
     )
 
 
-model_rebuild(RepositoryRuleDetailedOneof21)
+model_rebuild(RepositoryRuleDetailedOneof16)
 
-__all__ = ("RepositoryRuleDetailedOneof21",)
+__all__ = ("RepositoryRuleDetailedOneof16",)

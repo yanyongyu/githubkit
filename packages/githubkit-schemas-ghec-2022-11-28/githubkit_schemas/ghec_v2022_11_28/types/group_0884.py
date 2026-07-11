@@ -13,71 +13,146 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0588 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0589 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0590 import (
+from .group_0599 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0600 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0601 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0591 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0620 import WebhooksProjectCardType, WebhooksProjectCardTypeForResponse
+from .group_0602 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookProjectCardEditedType(TypedDict):
-    """project_card edited event"""
+class WebhookPageBuildType(TypedDict):
+    """page_build event"""
 
-    action: Literal["edited"]
-    changes: WebhookProjectCardEditedPropChangesType
+    build: WebhookPageBuildPropBuildType
     enterprise: NotRequired[EnterpriseWebhooksType]
+    id: int
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    project_card: WebhooksProjectCardType
-    repository: NotRequired[RepositoryWebhooksType]
+    repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookProjectCardEditedTypeForResponse(TypedDict):
-    """project_card edited event"""
+class WebhookPageBuildTypeForResponse(TypedDict):
+    """page_build event"""
 
-    action: Literal["edited"]
-    changes: WebhookProjectCardEditedPropChangesTypeForResponse
+    build: WebhookPageBuildPropBuildTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    id: int
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    project_card: WebhooksProjectCardTypeForResponse
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
-class WebhookProjectCardEditedPropChangesType(TypedDict):
-    """WebhookProjectCardEditedPropChanges"""
+class WebhookPageBuildPropBuildType(TypedDict):
+    """WebhookPageBuildPropBuild
 
-    note: WebhookProjectCardEditedPropChangesPropNoteType
+    The [List GitHub Pages builds](https://docs.github.com/enterprise-
+    cloud@latest/rest/pages/pages#list-github-pages-builds) itself.
+    """
+
+    commit: Union[str, None]
+    created_at: str
+    duration: int
+    error: WebhookPageBuildPropBuildPropErrorType
+    pusher: Union[WebhookPageBuildPropBuildPropPusherType, None]
+    status: str
+    updated_at: str
+    url: str
 
 
-class WebhookProjectCardEditedPropChangesTypeForResponse(TypedDict):
-    """WebhookProjectCardEditedPropChanges"""
+class WebhookPageBuildPropBuildTypeForResponse(TypedDict):
+    """WebhookPageBuildPropBuild
 
-    note: WebhookProjectCardEditedPropChangesPropNoteTypeForResponse
+    The [List GitHub Pages builds](https://docs.github.com/enterprise-
+    cloud@latest/rest/pages/pages#list-github-pages-builds) itself.
+    """
+
+    commit: Union[str, None]
+    created_at: str
+    duration: int
+    error: WebhookPageBuildPropBuildPropErrorTypeForResponse
+    pusher: Union[WebhookPageBuildPropBuildPropPusherTypeForResponse, None]
+    status: str
+    updated_at: str
+    url: str
 
 
-class WebhookProjectCardEditedPropChangesPropNoteType(TypedDict):
-    """WebhookProjectCardEditedPropChangesPropNote"""
+class WebhookPageBuildPropBuildPropErrorType(TypedDict):
+    """WebhookPageBuildPropBuildPropError"""
 
-    from_: Union[str, None]
+    message: Union[str, None]
 
 
-class WebhookProjectCardEditedPropChangesPropNoteTypeForResponse(TypedDict):
-    """WebhookProjectCardEditedPropChangesPropNote"""
+class WebhookPageBuildPropBuildPropErrorTypeForResponse(TypedDict):
+    """WebhookPageBuildPropBuildPropError"""
 
-    from_: Union[str, None]
+    message: Union[str, None]
+
+
+class WebhookPageBuildPropBuildPropPusherType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookPageBuildPropBuildPropPusherTypeForResponse(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "WebhookProjectCardEditedPropChangesPropNoteType",
-    "WebhookProjectCardEditedPropChangesPropNoteTypeForResponse",
-    "WebhookProjectCardEditedPropChangesType",
-    "WebhookProjectCardEditedPropChangesTypeForResponse",
-    "WebhookProjectCardEditedType",
-    "WebhookProjectCardEditedTypeForResponse",
+    "WebhookPageBuildPropBuildPropErrorType",
+    "WebhookPageBuildPropBuildPropErrorTypeForResponse",
+    "WebhookPageBuildPropBuildPropPusherType",
+    "WebhookPageBuildPropBuildPropPusherTypeForResponse",
+    "WebhookPageBuildPropBuildType",
+    "WebhookPageBuildPropBuildTypeForResponse",
+    "WebhookPageBuildType",
+    "WebhookPageBuildTypeForResponse",
 )

@@ -44,6 +44,7 @@ if TYPE_CHECKING:
         EnterprisesEnterpriseCopilotCustomAgentsGetResponse200,
         EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200,
         EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200,
+        EnterprisesEnterpriseCopilotUsageRecordsGetResponse200Items,
         EnterprisesEnterpriseMembersUsernameCopilotGetResponse200,
         OrgsOrgCopilotBillingSeatsGetResponse200,
         OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200,
@@ -82,6 +83,7 @@ if TYPE_CHECKING:
         EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItemsType,
         EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyType,
         EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyType,
+        EnterprisesEnterpriseCopilotUsageRecordsGetResponse200ItemsTypeForResponse,
         EnterprisesEnterpriseMembersUsernameCopilotGetResponse200TypeForResponse,
         OrgsOrgCopilotBillingSeatsGetResponse200TypeForResponse,
         OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType,
@@ -2792,6 +2794,146 @@ class CopilotClient:
             stream=stream,
             error_models={
                 "400": BasicError,
+            },
+        )
+
+    def get_usage_records(
+        self,
+        enterprise: str,
+        *,
+        phrase: Missing[str] = UNSET,
+        per_page: Missing[int] = UNSET,
+        after: Missing[str] = UNSET,
+        before: Missing[str] = UNSET,
+        order: Missing[Literal["desc", "asc"]] = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        list[EnterprisesEnterpriseCopilotUsageRecordsGetResponse200Items],
+        list[
+            EnterprisesEnterpriseCopilotUsageRecordsGetResponse200ItemsTypeForResponse
+        ],
+    ]:
+        """copilot/get-usage-records
+
+        GET /enterprises/{enterprise}/copilot/usage-records
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Use this endpoint to retrieve Copilot agent session activity records for a specific enterprise. The endpoint provides comprehensive observability into Copilot session data across your enterprise.
+
+        The response includes detailed usage records aggregated and forwarded from all Copilot clients where your end users operate under enterprise-paid Copilot licenses. This includes cloud agents operating on github.com and data resident deployments on ghe.com, Copilot CLI, VS Code, Visual Studio, and partner IDEs such as those provided by JetBrains and Eclipse.
+
+        Only EMU (GHEC and GHEC with Data Residency) enterprise owners can access this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-usage-metrics#get-copilot-usage-records-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCopilotUsageRecordsGetResponse200Items,
+            ValidationError,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/usage-records"
+
+        params = {
+            "phrase": phrase,
+            "per_page": per_page,
+            "after": after,
+            "before": before,
+            "order": order,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[
+                EnterprisesEnterpriseCopilotUsageRecordsGetResponse200Items
+            ],
+            error_models={
+                "400": BasicError,
+                "422": ValidationError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_usage_records(
+        self,
+        enterprise: str,
+        *,
+        phrase: Missing[str] = UNSET,
+        per_page: Missing[int] = UNSET,
+        after: Missing[str] = UNSET,
+        before: Missing[str] = UNSET,
+        order: Missing[Literal["desc", "asc"]] = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        list[EnterprisesEnterpriseCopilotUsageRecordsGetResponse200Items],
+        list[
+            EnterprisesEnterpriseCopilotUsageRecordsGetResponse200ItemsTypeForResponse
+        ],
+    ]:
+        """copilot/get-usage-records
+
+        GET /enterprises/{enterprise}/copilot/usage-records
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Use this endpoint to retrieve Copilot agent session activity records for a specific enterprise. The endpoint provides comprehensive observability into Copilot session data across your enterprise.
+
+        The response includes detailed usage records aggregated and forwarded from all Copilot clients where your end users operate under enterprise-paid Copilot licenses. This includes cloud agents operating on github.com and data resident deployments on ghe.com, Copilot CLI, VS Code, Visual Studio, and partner IDEs such as those provided by JetBrains and Eclipse.
+
+        Only EMU (GHEC and GHEC with Data Residency) enterprise owners can access this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-usage-metrics#get-copilot-usage-records-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCopilotUsageRecordsGetResponse200Items,
+            ValidationError,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/usage-records"
+
+        params = {
+            "phrase": phrase,
+            "per_page": per_page,
+            "after": after,
+            "before": before,
+            "order": order,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[
+                EnterprisesEnterpriseCopilotUsageRecordsGetResponse200Items
+            ],
+            error_models={
+                "400": BasicError,
+                "422": ValidationError,
+                "403": BasicError,
+                "404": BasicError,
             },
         )
 

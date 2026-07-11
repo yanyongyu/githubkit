@@ -70,6 +70,7 @@ class BudgetType(TypedDict):
         "repository",
         "cost_center",
         "multi_user_customer",
+        "multi_user_cost_center",
         "user",
     ]
     budget_entity_name: NotRequired[str]
@@ -91,6 +92,7 @@ class BudgetTypeForResponse(TypedDict):
         "repository",
         "cost_center",
         "multi_user_customer",
+        "multi_user_cost_center",
         "user",
     ]
     budget_entity_name: NotRequired[str]

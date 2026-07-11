@@ -10,93 +10,34 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0215 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
-from .group_0247 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from typing_extensions import TypedDict
 
 
-class SimpleCheckSuiteType(TypedDict):
-    """SimpleCheckSuite
+class SshSigningKeyType(TypedDict):
+    """SSH Signing Key
 
-    A suite of checks performed on the code of a given code change
+    A public SSH key used to sign Git commits
     """
 
-    after: NotRequired[Union[str, None]]
-    app: NotRequired[Union[IntegrationType, None]]
-    before: NotRequired[Union[str, None]]
-    conclusion: NotRequired[
-        Union[
-            None,
-            Literal[
-                "success",
-                "failure",
-                "neutral",
-                "cancelled",
-                "skipped",
-                "timed_out",
-                "action_required",
-                "stale",
-                "startup_failure",
-            ],
-        ]
-    ]
-    created_at: NotRequired[_dt.datetime]
-    head_branch: NotRequired[Union[str, None]]
-    head_sha: NotRequired[str]
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    pull_requests: NotRequired[list[PullRequestMinimalType]]
-    repository: NotRequired[MinimalRepositoryType]
-    status: NotRequired[
-        Literal["queued", "in_progress", "completed", "pending", "waiting"]
-    ]
-    updated_at: NotRequired[_dt.datetime]
-    url: NotRequired[str]
+    key: str
+    id: int
+    title: str
+    created_at: _dt.datetime
 
 
-class SimpleCheckSuiteTypeForResponse(TypedDict):
-    """SimpleCheckSuite
+class SshSigningKeyTypeForResponse(TypedDict):
+    """SSH Signing Key
 
-    A suite of checks performed on the code of a given code change
+    A public SSH key used to sign Git commits
     """
 
-    after: NotRequired[Union[str, None]]
-    app: NotRequired[Union[IntegrationTypeForResponse, None]]
-    before: NotRequired[Union[str, None]]
-    conclusion: NotRequired[
-        Union[
-            None,
-            Literal[
-                "success",
-                "failure",
-                "neutral",
-                "cancelled",
-                "skipped",
-                "timed_out",
-                "action_required",
-                "stale",
-                "startup_failure",
-            ],
-        ]
-    ]
-    created_at: NotRequired[str]
-    head_branch: NotRequired[Union[str, None]]
-    head_sha: NotRequired[str]
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    pull_requests: NotRequired[list[PullRequestMinimalTypeForResponse]]
-    repository: NotRequired[MinimalRepositoryTypeForResponse]
-    status: NotRequired[
-        Literal["queued", "in_progress", "completed", "pending", "waiting"]
-    ]
-    updated_at: NotRequired[str]
-    url: NotRequired[str]
+    key: str
+    id: int
+    title: str
+    created_at: str
 
 
 __all__ = (
-    "SimpleCheckSuiteType",
-    "SimpleCheckSuiteTypeForResponse",
+    "SshSigningKeyType",
+    "SshSigningKeyTypeForResponse",
 )

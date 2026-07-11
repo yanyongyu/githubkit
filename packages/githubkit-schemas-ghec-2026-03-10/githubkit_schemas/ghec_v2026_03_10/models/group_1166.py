@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,57 +16,15 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseSettingsBillingBudgetsPostBody(GitHubModel):
-    """EnterprisesEnterpriseSettingsBillingBudgetsPostBody"""
+class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBody(GitHubModel):
+    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBody"""
 
-    budget_amount: int = Field(
-        description="The budget amount in whole dollars. For license-based products, this represents the number of licenses."
-    )
-    prevent_further_usage: bool = Field(
-        description="Whether to prevent additional spending once the budget is exceeded. For `user` and `multi_user_customer` scopes, this must be `true`."
-    )
-    budget_alerting: EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting = Field()
-    budget_scope: Literal[
-        "enterprise",
-        "organization",
-        "repository",
-        "cost_center",
-        "multi_user_customer",
-        "user",
-    ] = Field(
-        description="The scope of the budget. `user` and `multi_user_customer` scopes are only supported when `budget_product_sku` is `ai_credits` or `premium_requests`."
-    )
-    budget_entity_name: Missing[str] = Field(
-        default=UNSET, description="The name of the entity to apply the budget to"
-    )
-    budget_type: Literal["BundlePricing", "ProductPricing", "SkuPricing"] = Field(
-        description="The type of pricing model used by the budget. Determines how `budget_product_sku` is interpreted.\n\n- `BundlePricing`: Covers all AI credit SKUs. Set `budget_product_sku` to `ai_credits`.\n- `ProductPricing`: Covers all SKUs that belong to a product. Set `budget_product_sku` to a product such as `actions` or `packages`.\n- `SkuPricing`: Covers a single, specific SKU. Set `budget_product_sku` to a SKU such as `actions_linux`."
-    )
-    budget_product_sku: Missing[str] = Field(
+    revoke_credentials: Missing[bool] = Field(
         default=UNSET,
-        description="A single product or SKU that will be covered in the budget",
-    )
-    user: Missing[str] = Field(
-        default=UNSET,
-        description="The username of the user for `user` scope budgets. This field is required when `budget_scope` is `user`.",
+        description="Whether to also destroy the actual credentials (PATs and SSH keys) owned by\nthe user. This option is only available for Enterprise Managed User (EMU)\nenterprises. When set to `true`, all PATs (v1 and v2) and SSH keys owned\nby the user will be destroyed in addition to the credential authorizations.",
     )
 
 
-class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting(
-    GitHubModel
-):
-    """EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting"""
+model_rebuild(EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBody)
 
-    will_alert: bool = Field(description="Whether alerts are enabled for this budget")
-    alert_recipients: list[str] = Field(
-        description="Array of user login names who will receive alerts"
-    )
-
-
-model_rebuild(EnterprisesEnterpriseSettingsBillingBudgetsPostBody)
-model_rebuild(EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting)
-
-__all__ = (
-    "EnterprisesEnterpriseSettingsBillingBudgetsPostBody",
-    "EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting",
-)
+__all__ = ("EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBody",)

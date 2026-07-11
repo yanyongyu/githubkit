@@ -17,38 +17,96 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0116 import RepositoryRulesetBypassActor
+from .group_0129 import EnterpriseRulesetConditionsOneof0
+from .group_0130 import EnterpriseRulesetConditionsOneof1
+from .group_0131 import EnterpriseRulesetConditionsOneof2
+from .group_0132 import EnterpriseRulesetConditionsOneof3
+from .group_0133 import EnterpriseRulesetConditionsOneof4
+from .group_0134 import EnterpriseRulesetConditionsOneof5
+from .group_0135 import (
+    RepositoryRuleCreation,
+    RepositoryRuleDeletion,
+    RepositoryRuleNonFastForward,
+    RepositoryRuleRequiredSignatures,
+)
+from .group_0136 import RepositoryRuleUpdate
+from .group_0138 import RepositoryRuleRequiredLinearHistory
+from .group_0139 import RepositoryRuleRequiredDeployments
+from .group_0141 import RepositoryRulePullRequest
+from .group_0143 import RepositoryRuleRequiredStatusChecks
+from .group_0145 import RepositoryRuleCommitMessagePattern
+from .group_0147 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0149 import RepositoryRuleCommitterEmailPattern
+from .group_0151 import RepositoryRuleBranchNamePattern
+from .group_0153 import RepositoryRuleTagNamePattern
+from .group_0155 import RepositoryRuleFilePathRestriction
+from .group_0157 import RepositoryRuleMaxFilePathLength
+from .group_0159 import RepositoryRuleFileExtensionRestriction
+from .group_0161 import RepositoryRuleMaxFileSize
+from .group_0164 import RepositoryRuleWorkflows
+from .group_0166 import RepositoryRuleCodeScanning
+from .group_0168 import RepositoryRuleCopilotCodeReview
 
-class EnterprisesEnterpriseTeamsTeamSlugPatchBody(GitHubModel):
-    """EnterprisesEnterpriseTeamsTeamSlugPatchBody"""
 
-    name: Missing[Union[str, None]] = Field(
-        default=UNSET, description="A new name for the team."
+class EnterprisesEnterpriseRulesetsRulesetIdPutBody(GitHubModel):
+    """EnterprisesEnterpriseRulesetsRulesetIdPutBody"""
+
+    name: Missing[str] = Field(default=UNSET, description="The name of the ruleset.")
+    target: Missing[Literal["branch", "tag", "push", "repository"]] = Field(
+        default=UNSET, description="The target of the ruleset"
     )
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="A new description for the team."
-    )
-    sync_to_organizations: Missing[Literal["all", "disabled"]] = Field(
+    enforcement: Missing[Literal["disabled", "active", "evaluate"]] = Field(
         default=UNSET,
-        description="Retired: this field is no longer supported.\nWhether the enterprise team should be reflected in each organization.\nThis value cannot be changed.\n",
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target.",
     )
-    organization_selection_type: Missing[Literal["disabled", "selected", "all"]] = (
-        Field(
-            default=UNSET,
-            description="Specifies which organizations in the enterprise should have access to this team. Can be one of `disabled`, `selected`, or `all`.\n`disabled`: The team is not assigned to any organizations. This is the default when you create a new team.\n`selected`: The team is assigned to specific organizations. You can then use the [add organization assignments API](https://docs.github.com/enterprise-cloud@latest/rest/enterprise-teams/enterprise-team-organizations#add-organization-assignments).\n`all`: The team is assigned to all current and future organizations in the enterprise.\n",
-        )
-    )
-    group_id: Missing[Union[str, None]] = Field(
+    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
         default=UNSET,
-        description="The ID of the IdP group to assign team membership with. The new IdP group will replace the existing one, or replace existing direct members if the team isn't currently linked to an IdP group.",
+        description="The actors that can bypass the rules in this ruleset",
     )
-    notification_setting: Missing[
-        Literal["notifications_enabled", "notifications_disabled"]
+    conditions: Missing[
+        Union[
+            EnterpriseRulesetConditionsOneof0,
+            EnterpriseRulesetConditionsOneof1,
+            EnterpriseRulesetConditionsOneof2,
+            EnterpriseRulesetConditionsOneof3,
+            EnterpriseRulesetConditionsOneof4,
+            EnterpriseRulesetConditionsOneof5,
+        ]
     ] = Field(
         default=UNSET,
-        description="The notification setting the team is set to. The options are:\n\n* `notifications_enabled` - team members receive notifications when the team is @mentioned.\n* `notifications_disabled` - no one receives notifications.\n",
+        title="Enterprise ruleset conditions",
+        description="Conditions for an enterprise ruleset.\nThe `conditions` object supports either of the following combinations: - `organization_id` and `repository_name` - `organization_id` and `repository_property` - `organization_name` and `repository_name` - `organization_name` and `repository_property` - `organization_property` and `repository_name` - `organization_property` and `repository_property`\nFor branch and tag rulesets, the `conditions` object should also contain the `ref_name` property.",
     )
+    rules: Missing[
+        list[
+            Union[
+                RepositoryRuleCreation,
+                RepositoryRuleUpdate,
+                RepositoryRuleDeletion,
+                RepositoryRuleRequiredLinearHistory,
+                RepositoryRuleRequiredDeployments,
+                RepositoryRuleRequiredSignatures,
+                RepositoryRulePullRequest,
+                RepositoryRuleRequiredStatusChecks,
+                RepositoryRuleNonFastForward,
+                RepositoryRuleCommitMessagePattern,
+                RepositoryRuleCommitAuthorEmailPattern,
+                RepositoryRuleCommitterEmailPattern,
+                RepositoryRuleBranchNamePattern,
+                RepositoryRuleTagNamePattern,
+                RepositoryRuleFilePathRestriction,
+                RepositoryRuleMaxFilePathLength,
+                RepositoryRuleFileExtensionRestriction,
+                RepositoryRuleMaxFileSize,
+                RepositoryRuleWorkflows,
+                RepositoryRuleCodeScanning,
+                RepositoryRuleCopilotCodeReview,
+            ]
+        ]
+    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
 
 
-model_rebuild(EnterprisesEnterpriseTeamsTeamSlugPatchBody)
+model_rebuild(EnterprisesEnterpriseRulesetsRulesetIdPutBody)
 
-__all__ = ("EnterprisesEnterpriseTeamsTeamSlugPatchBody",)
+__all__ = ("EnterprisesEnterpriseRulesetsRulesetIdPutBody",)

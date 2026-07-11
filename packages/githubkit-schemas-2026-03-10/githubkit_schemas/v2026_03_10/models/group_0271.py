@@ -10,35 +10,42 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ConcurrencyGroupList(GitHubModel):
-    """Concurrency Group List
+class ActionsCacheList(GitHubModel):
+    """Repository actions caches
 
-    A list of active concurrency groups for a repository.
+    Repository actions caches
     """
 
-    total_count: int = Field()
-    concurrency_groups: list[ConcurrencyGroupListPropConcurrencyGroupsItems] = Field()
+    total_count: int = Field(description="Total number of caches")
+    actions_caches: list[ActionsCacheListPropActionsCachesItems] = Field(
+        description="Array of caches"
+    )
 
 
-class ConcurrencyGroupListPropConcurrencyGroupsItems(GitHubModel):
-    """ConcurrencyGroupListPropConcurrencyGroupsItems"""
+class ActionsCacheListPropActionsCachesItems(GitHubModel):
+    """ActionsCacheListPropActionsCachesItems"""
 
-    group_name: str = Field(description="The name of the concurrency group.")
-    group_url: str = Field(description="API URL for this concurrency group.")
-    last_acquired_at: Union[_dt.datetime, None] = Field()
+    id: Missing[int] = Field(default=UNSET)
+    ref: Missing[str] = Field(default=UNSET)
+    key: Missing[str] = Field(default=UNSET)
+    version: Missing[str] = Field(default=UNSET)
+    last_accessed_at: Missing[_dt.datetime] = Field(default=UNSET)
+    created_at: Missing[_dt.datetime] = Field(default=UNSET)
+    size_in_bytes: Missing[int] = Field(default=UNSET)
 
 
-model_rebuild(ConcurrencyGroupList)
-model_rebuild(ConcurrencyGroupListPropConcurrencyGroupsItems)
+model_rebuild(ActionsCacheList)
+model_rebuild(ActionsCacheListPropActionsCachesItems)
 
 __all__ = (
-    "ConcurrencyGroupList",
-    "ConcurrencyGroupListPropConcurrencyGroupsItems",
+    "ActionsCacheList",
+    "ActionsCacheListPropActionsCachesItems",
 )

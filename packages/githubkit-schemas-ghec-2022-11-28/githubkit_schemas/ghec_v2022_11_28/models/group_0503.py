@@ -14,17 +14,16 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class PullRequestMergeResult(GitHubModel):
-    """Pull Request Merge Result
+class PageBuildStatus(GitHubModel):
+    """Page Build Status
 
-    Pull Request Merge Result
+    Page Build Status
     """
 
-    sha: str = Field()
-    merged: bool = Field()
-    message: str = Field()
+    url: str = Field()
+    status: str = Field()
 
 
-model_rebuild(PullRequestMergeResult)
+model_rebuild(PageBuildStatus)
 
-__all__ = ("PullRequestMergeResult",)
+__all__ = ("PageBuildStatus",)

@@ -9,26 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class WebhookStatusPropCommitPropCommitPropAuthorAllof1Type(TypedDict):
-    """WebhookStatusPropCommitPropCommitPropAuthorAllof1"""
-
-    date: str
-    email: NotRequired[str]
-    name: NotRequired[str]
+from .group_0091 import SecurityAndAnalysisType, SecurityAndAnalysisTypeForResponse
 
 
-class WebhookStatusPropCommitPropCommitPropAuthorAllof1TypeForResponse(TypedDict):
-    """WebhookStatusPropCommitPropCommitPropAuthorAllof1"""
+class WebhookSecurityAndAnalysisPropChangesPropFromType(TypedDict):
+    """WebhookSecurityAndAnalysisPropChangesPropFrom"""
 
-    date: str
-    email: NotRequired[str]
-    name: NotRequired[str]
+    security_and_analysis: NotRequired[Union[SecurityAndAnalysisType, None]]
+
+
+class WebhookSecurityAndAnalysisPropChangesPropFromTypeForResponse(TypedDict):
+    """WebhookSecurityAndAnalysisPropChangesPropFrom"""
+
+    security_and_analysis: NotRequired[Union[SecurityAndAnalysisTypeForResponse, None]]
 
 
 __all__ = (
-    "WebhookStatusPropCommitPropCommitPropAuthorAllof1Type",
-    "WebhookStatusPropCommitPropCommitPropAuthorAllof1TypeForResponse",
+    "WebhookSecurityAndAnalysisPropChangesPropFromType",
+    "WebhookSecurityAndAnalysisPropChangesPropFromTypeForResponse",
 )

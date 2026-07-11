@@ -9,82 +9,130 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Any, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class BillingAiCreditUsageReportUserType(TypedDict):
-    """BillingAiCreditUsageReportUser"""
+class GpgKeyType(TypedDict):
+    """GPG Key
 
-    time_period: BillingAiCreditUsageReportUserPropTimePeriodType
-    user: str
-    product: NotRequired[str]
-    model: NotRequired[str]
-    usage_items: list[BillingAiCreditUsageReportUserPropUsageItemsItemsType]
+    A unique encryption key
+    """
 
-
-class BillingAiCreditUsageReportUserTypeForResponse(TypedDict):
-    """BillingAiCreditUsageReportUser"""
-
-    time_period: BillingAiCreditUsageReportUserPropTimePeriodTypeForResponse
-    user: str
-    product: NotRequired[str]
-    model: NotRequired[str]
-    usage_items: list[BillingAiCreditUsageReportUserPropUsageItemsItemsTypeForResponse]
-
-
-class BillingAiCreditUsageReportUserPropTimePeriodType(TypedDict):
-    """BillingAiCreditUsageReportUserPropTimePeriod"""
-
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
+    id: int
+    name: NotRequired[Union[str, None]]
+    primary_key_id: Union[int, None]
+    key_id: str
+    public_key: str
+    emails: list[GpgKeyPropEmailsItemsType]
+    subkeys: list[GpgKeyPropSubkeysItemsType]
+    can_sign: bool
+    can_encrypt_comms: bool
+    can_encrypt_storage: bool
+    can_certify: bool
+    created_at: _dt.datetime
+    expires_at: Union[_dt.datetime, None]
+    revoked: bool
+    raw_key: Union[str, None]
 
 
-class BillingAiCreditUsageReportUserPropTimePeriodTypeForResponse(TypedDict):
-    """BillingAiCreditUsageReportUserPropTimePeriod"""
+class GpgKeyTypeForResponse(TypedDict):
+    """GPG Key
 
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
+    A unique encryption key
+    """
+
+    id: int
+    name: NotRequired[Union[str, None]]
+    primary_key_id: Union[int, None]
+    key_id: str
+    public_key: str
+    emails: list[GpgKeyPropEmailsItemsTypeForResponse]
+    subkeys: list[GpgKeyPropSubkeysItemsTypeForResponse]
+    can_sign: bool
+    can_encrypt_comms: bool
+    can_encrypt_storage: bool
+    can_certify: bool
+    created_at: str
+    expires_at: Union[str, None]
+    revoked: bool
+    raw_key: Union[str, None]
 
 
-class BillingAiCreditUsageReportUserPropUsageItemsItemsType(TypedDict):
-    """BillingAiCreditUsageReportUserPropUsageItemsItems"""
+class GpgKeyPropEmailsItemsType(TypedDict):
+    """GpgKeyPropEmailsItems"""
 
-    product: str
-    sku: str
-    model: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
+    email: NotRequired[str]
+    verified: NotRequired[bool]
 
 
-class BillingAiCreditUsageReportUserPropUsageItemsItemsTypeForResponse(TypedDict):
-    """BillingAiCreditUsageReportUserPropUsageItemsItems"""
+class GpgKeyPropEmailsItemsTypeForResponse(TypedDict):
+    """GpgKeyPropEmailsItems"""
 
-    product: str
-    sku: str
-    model: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
+    email: NotRequired[str]
+    verified: NotRequired[bool]
+
+
+class GpgKeyPropSubkeysItemsType(TypedDict):
+    """GpgKeyPropSubkeysItems"""
+
+    id: NotRequired[int]
+    primary_key_id: NotRequired[int]
+    key_id: NotRequired[str]
+    public_key: NotRequired[str]
+    emails: NotRequired[list[GpgKeyPropSubkeysItemsPropEmailsItemsType]]
+    subkeys: NotRequired[list[Any]]
+    can_sign: NotRequired[bool]
+    can_encrypt_comms: NotRequired[bool]
+    can_encrypt_storage: NotRequired[bool]
+    can_certify: NotRequired[bool]
+    created_at: NotRequired[str]
+    expires_at: NotRequired[Union[str, None]]
+    raw_key: NotRequired[Union[str, None]]
+    revoked: NotRequired[bool]
+
+
+class GpgKeyPropSubkeysItemsTypeForResponse(TypedDict):
+    """GpgKeyPropSubkeysItems"""
+
+    id: NotRequired[int]
+    primary_key_id: NotRequired[int]
+    key_id: NotRequired[str]
+    public_key: NotRequired[str]
+    emails: NotRequired[list[GpgKeyPropSubkeysItemsPropEmailsItemsTypeForResponse]]
+    subkeys: NotRequired[list[Any]]
+    can_sign: NotRequired[bool]
+    can_encrypt_comms: NotRequired[bool]
+    can_encrypt_storage: NotRequired[bool]
+    can_certify: NotRequired[bool]
+    created_at: NotRequired[str]
+    expires_at: NotRequired[Union[str, None]]
+    raw_key: NotRequired[Union[str, None]]
+    revoked: NotRequired[bool]
+
+
+class GpgKeyPropSubkeysItemsPropEmailsItemsType(TypedDict):
+    """GpgKeyPropSubkeysItemsPropEmailsItems"""
+
+    email: NotRequired[str]
+    verified: NotRequired[bool]
+
+
+class GpgKeyPropSubkeysItemsPropEmailsItemsTypeForResponse(TypedDict):
+    """GpgKeyPropSubkeysItemsPropEmailsItems"""
+
+    email: NotRequired[str]
+    verified: NotRequired[bool]
 
 
 __all__ = (
-    "BillingAiCreditUsageReportUserPropTimePeriodType",
-    "BillingAiCreditUsageReportUserPropTimePeriodTypeForResponse",
-    "BillingAiCreditUsageReportUserPropUsageItemsItemsType",
-    "BillingAiCreditUsageReportUserPropUsageItemsItemsTypeForResponse",
-    "BillingAiCreditUsageReportUserType",
-    "BillingAiCreditUsageReportUserTypeForResponse",
+    "GpgKeyPropEmailsItemsType",
+    "GpgKeyPropEmailsItemsTypeForResponse",
+    "GpgKeyPropSubkeysItemsPropEmailsItemsType",
+    "GpgKeyPropSubkeysItemsPropEmailsItemsTypeForResponse",
+    "GpgKeyPropSubkeysItemsType",
+    "GpgKeyPropSubkeysItemsTypeForResponse",
+    "GpgKeyType",
+    "GpgKeyTypeForResponse",
 )

@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -19,46 +18,24 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgSettingsNetworkConfigurationsGetResponse200(GitHubModel):
-    """OrgsOrgSettingsNetworkConfigurationsGetResponse200"""
+class OrgsOrgProjectsV2ProjectNumberViewsPostBody(GitHubModel):
+    """OrgsOrgProjectsV2ProjectNumberViewsPostBody"""
 
-    total_count: int = Field()
-    network_configurations: list[NetworkConfiguration] = Field()
-
-
-class NetworkConfiguration(GitHubModel):
-    """Hosted compute network configuration
-
-    A hosted compute network configuration.
-    """
-
-    id: str = Field(description="The unique identifier of the network configuration.")
-    name: str = Field(description="The name of the network configuration.")
-    compute_service: Missing[Literal["none", "actions", "codespaces"]] = Field(
+    name: str = Field(description="The name of the view.")
+    layout: Literal["table", "board", "roadmap"] = Field(
+        description="The layout of the view."
+    )
+    filter_: Missing[str] = Field(
         default=UNSET,
-        description="The hosted compute service the network configuration supports.",
+        alias="filter",
+        description="The filter query for the view. See [Filtering projects](https://docs.github.com/issues/planning-and-tracking-with-projects/customizing-views-in-your-project/filtering-projects) for more information.",
     )
-    network_settings_ids: Missing[list[str]] = Field(
+    visible_fields: Missing[list[int]] = Field(
         default=UNSET,
-        description="The unique identifier of each network settings in the configuration.",
-    )
-    failover_network_settings_ids: Missing[list[str]] = Field(
-        default=UNSET,
-        description="The unique identifier of each failover network settings in the configuration.",
-    )
-    failover_network_enabled: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether the failover network resource is enabled.",
-    )
-    created_on: Union[_dt.datetime, None] = Field(
-        description="The time at which the network configuration was created, in ISO 8601 format."
+        description="`visible_fields` is not applicable to `roadmap` layout views.\nFor `table` and `board` layouts, this represents the field IDs that should be visible in the view. If not provided, the default visible fields will be used.",
     )
 
 
-model_rebuild(OrgsOrgSettingsNetworkConfigurationsGetResponse200)
-model_rebuild(NetworkConfiguration)
+model_rebuild(OrgsOrgProjectsV2ProjectNumberViewsPostBody)
 
-__all__ = (
-    "NetworkConfiguration",
-    "OrgsOrgSettingsNetworkConfigurationsGetResponse200",
-)
+__all__ = ("OrgsOrgProjectsV2ProjectNumberViewsPostBody",)

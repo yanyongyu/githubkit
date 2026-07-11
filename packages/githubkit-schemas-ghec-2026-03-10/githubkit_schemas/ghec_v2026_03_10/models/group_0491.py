@@ -18,83 +18,150 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0210 import ReactionRollup
 
-class Page(GitHubModel):
-    """GitHub Pages
 
-    The configuration for GitHub Pages for a repository.
+class PullRequestReviewComment(GitHubModel):
+    """Pull Request Review Comment
+
+    Pull Request Review Comments are comments on a portion of the Pull Request's
+    diff.
     """
 
-    url: str = Field(description="The API address for accessing this Page resource.")
-    status: Union[None, Literal["built", "building", "errored"]] = Field(
-        description="The status of the most recent build of the Page."
+    url: str = Field(description="URL for the pull request review comment")
+    pull_request_review_id: Union[int, None] = Field(
+        description="The ID of the pull request review to which the comment belongs."
     )
-    cname: Union[str, None] = Field(description="The Pages site's custom domain")
-    protected_domain_state: Missing[
-        Union[None, Literal["pending", "verified", "unverified"]]
-    ] = Field(default=UNSET, description="The state if the domain is verified")
-    pending_domain_unverified_at: Missing[Union[_dt.datetime, None]] = Field(
+    id: int = Field(description="The ID of the pull request review comment.")
+    node_id: str = Field(description="The node ID of the pull request review comment.")
+    diff_hunk: str = Field(
+        description="The diff of the line that the comment refers to."
+    )
+    path: str = Field(
+        description="The relative path of the file to which the comment applies."
+    )
+    position: Missing[int] = Field(
         default=UNSET,
-        description="The timestamp when a pending domain becomes unverified.",
+        description="The line index in the diff to which the comment applies. This field is closing down; use `line` instead.",
     )
-    custom_404: bool = Field(
-        default=False, description="Whether the Page has a custom 404 page."
+    original_position: Missing[int] = Field(
+        default=UNSET,
+        description="The index of the original line in the diff to which the comment applies. This field is closing down; use `original_line` instead.",
     )
-    html_url: Missing[str] = Field(
-        default=UNSET, description="The web address the Page can be accessed from."
+    commit_id: str = Field(
+        description="The SHA of the commit to which the comment applies."
     )
-    build_type: Missing[Union[None, Literal["legacy", "workflow"]]] = Field(
-        default=UNSET, description="The process in which the Page will be built."
+    original_commit_id: str = Field(
+        description="The SHA of the original commit to which the comment applies."
     )
-    source: Missing[PagesSourceHash] = Field(default=UNSET, title="Pages Source Hash")
-    public: bool = Field(
-        description="Whether the GitHub Pages site is publicly visible. If set to `true`, the site is accessible to anyone on the internet. If set to `false`, the site will only be accessible to users who have at least `read` access to the repository that published the site."
+    in_reply_to_id: Missing[int] = Field(
+        default=UNSET, description="The comment ID to reply to."
     )
-    https_certificate: Missing[PagesHttpsCertificate] = Field(
-        default=UNSET, title="Pages Https Certificate"
+    user: Union[None, SimpleUser] = Field()
+    body: str = Field(description="The text of the comment.")
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    html_url: str = Field(description="HTML URL for the pull request review comment.")
+    pull_request_url: str = Field(
+        description="URL for the pull request that the review comment belongs to."
     )
-    https_enforced: Missing[bool] = Field(
-        default=UNSET, description="Whether https is enabled on the domain"
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="author_association",
+        description="How the author is associated with the repository.",
     )
+    links: PullRequestReviewCommentPropLinks = Field(alias="_links")
+    start_line: Missing[Union[int, None]] = Field(
+        default=UNSET,
+        description="The first line of the range for a multi-line comment.",
+    )
+    original_start_line: Missing[Union[int, None]] = Field(
+        default=UNSET,
+        description="The first line of the range for a multi-line comment.",
+    )
+    start_side: Missing[Union[None, Literal["LEFT", "RIGHT"]]] = Field(
+        default=UNSET,
+        description="The side of the first line of the range for a multi-line comment.",
+    )
+    line: Missing[int] = Field(
+        default=UNSET,
+        description="The line of the blob to which the comment applies. The last line of the range for a multi-line comment",
+    )
+    original_line: Missing[int] = Field(
+        default=UNSET,
+        description="The line of the blob to which the comment applies. The last line of the range for a multi-line comment",
+    )
+    side: Missing[Literal["LEFT", "RIGHT"]] = Field(
+        default=UNSET,
+        description="The side of the diff to which the comment applies. The side of the last line of the range for a multi-line comment",
+    )
+    subject_type: Missing[Literal["line", "file"]] = Field(
+        default=UNSET,
+        description="The level at which the comment is targeted, can be a diff line or a file.",
+    )
+    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
+    body_html: Missing[str] = Field(default=UNSET)
+    body_text: Missing[str] = Field(default=UNSET)
 
 
-class PagesSourceHash(GitHubModel):
-    """Pages Source Hash"""
+class PullRequestReviewCommentPropLinks(GitHubModel):
+    """PullRequestReviewCommentPropLinks"""
 
-    branch: str = Field()
-    path: str = Field()
-
-
-class PagesHttpsCertificate(GitHubModel):
-    """Pages Https Certificate"""
-
-    state: Literal[
-        "new",
-        "authorization_created",
-        "authorization_pending",
-        "authorized",
-        "authorization_revoked",
-        "issued",
-        "uploaded",
-        "approved",
-        "errored",
-        "bad_authz",
-        "destroy_pending",
-        "dns_changed",
-    ] = Field()
-    description: str = Field()
-    domains: list[str] = Field(
-        description="Array of the domain set and its alternate name (if it is configured)"
-    )
-    expires_at: Missing[_dt.date] = Field(default=UNSET)
+    self_: PullRequestReviewCommentPropLinksPropSelf = Field(alias="self")
+    html: PullRequestReviewCommentPropLinksPropHtml = Field()
+    pull_request: PullRequestReviewCommentPropLinksPropPullRequest = Field()
 
 
-model_rebuild(Page)
-model_rebuild(PagesSourceHash)
-model_rebuild(PagesHttpsCertificate)
+class PullRequestReviewCommentPropLinksPropSelf(GitHubModel):
+    """PullRequestReviewCommentPropLinksPropSelf"""
+
+    href: str = Field()
+
+
+class PullRequestReviewCommentPropLinksPropHtml(GitHubModel):
+    """PullRequestReviewCommentPropLinksPropHtml"""
+
+    href: str = Field()
+
+
+class PullRequestReviewCommentPropLinksPropPullRequest(GitHubModel):
+    """PullRequestReviewCommentPropLinksPropPullRequest"""
+
+    href: str = Field()
+
+
+class TimelineLineCommentedEvent(GitHubModel):
+    """Timeline Line Commented Event
+
+    Timeline Line Commented Event
+    """
+
+    event: Missing[Literal["line_commented"]] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    comments: Missing[list[PullRequestReviewComment]] = Field(default=UNSET)
+
+
+model_rebuild(PullRequestReviewComment)
+model_rebuild(PullRequestReviewCommentPropLinks)
+model_rebuild(PullRequestReviewCommentPropLinksPropSelf)
+model_rebuild(PullRequestReviewCommentPropLinksPropHtml)
+model_rebuild(PullRequestReviewCommentPropLinksPropPullRequest)
+model_rebuild(TimelineLineCommentedEvent)
 
 __all__ = (
-    "Page",
-    "PagesHttpsCertificate",
-    "PagesSourceHash",
+    "PullRequestReviewComment",
+    "PullRequestReviewCommentPropLinks",
+    "PullRequestReviewCommentPropLinksPropHtml",
+    "PullRequestReviewCommentPropLinksPropPullRequest",
+    "PullRequestReviewCommentPropLinksPropSelf",
+    "TimelineLineCommentedEvent",
 )

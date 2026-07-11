@@ -12,33 +12,37 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class WebhooksWorkflowJobRunType(TypedDict):
-    """WebhooksWorkflowJobRun"""
+class SimpleInstallationType(TypedDict):
+    """Simple Installation
 
-    conclusion: None
-    created_at: str
-    environment: str
-    html_url: str
+    The GitHub App installation. Webhook payloads contain the `installation`
+    property when the event is configured
+    for and sent to a GitHub App. For more information,
+    see "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-
+    cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-
+    with-github-apps)."
+    """
+
     id: int
-    name: None
-    status: str
-    updated_at: str
+    node_id: str
 
 
-class WebhooksWorkflowJobRunTypeForResponse(TypedDict):
-    """WebhooksWorkflowJobRun"""
+class SimpleInstallationTypeForResponse(TypedDict):
+    """Simple Installation
 
-    conclusion: None
-    created_at: str
-    environment: str
-    html_url: str
+    The GitHub App installation. Webhook payloads contain the `installation`
+    property when the event is configured
+    for and sent to a GitHub App. For more information,
+    see "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-
+    cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-
+    with-github-apps)."
+    """
+
     id: int
-    name: None
-    status: str
-    updated_at: str
+    node_id: str
 
 
 __all__ = (
-    "WebhooksWorkflowJobRunType",
-    "WebhooksWorkflowJobRunTypeForResponse",
+    "SimpleInstallationType",
+    "SimpleInstallationTypeForResponse",
 )

@@ -339,6 +339,7 @@ class BillingClient:
                 "repository",
                 "cost_center",
                 "multi_user_customer",
+                "multi_user_cost_center",
                 "user",
             ]
         ] = UNSET,
@@ -395,6 +396,7 @@ class BillingClient:
                 "repository",
                 "cost_center",
                 "multi_user_customer",
+                "multi_user_cost_center",
                 "user",
             ]
         ] = UNSET,
@@ -465,6 +467,7 @@ class BillingClient:
             "repository",
             "cost_center",
             "multi_user_customer",
+            "multi_user_cost_center",
             "user",
         ],
         budget_entity_name: Missing[str] = UNSET,
@@ -557,6 +560,7 @@ class BillingClient:
             "repository",
             "cost_center",
             "multi_user_customer",
+            "multi_user_cost_center",
             "user",
         ],
         budget_entity_name: Missing[str] = UNSET,
@@ -822,6 +826,7 @@ class BillingClient:
                 "repository",
                 "cost_center",
                 "multi_user_customer",
+                "multi_user_cost_center",
                 "user",
             ]
         ] = UNSET,
@@ -926,6 +931,7 @@ class BillingClient:
                 "repository",
                 "cost_center",
                 "multi_user_customer",
+                "multi_user_cost_center",
                 "user",
             ]
         ] = UNSET,
@@ -1226,6 +1232,7 @@ class BillingClient:
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
+        ai_credit_pool_enabled: Missing[bool] = UNSET,
     ) -> Response[
         EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200,
         EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200TypeForResponse,
@@ -1306,6 +1313,7 @@ class BillingClient:
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
+        ai_credit_pool_enabled: Missing[bool] = UNSET,
     ) -> Response[
         EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200,
         EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200TypeForResponse,
@@ -1575,6 +1583,7 @@ class BillingClient:
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
+        ai_credit_pool_enabled: Missing[bool] = UNSET,
     ) -> Response[UpdateCostCenter, UpdateCostCenterTypeForResponse]: ...
 
     def update_cost_center(
@@ -1661,6 +1670,7 @@ class BillingClient:
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
+        ai_credit_pool_enabled: Missing[bool] = UNSET,
     ) -> Response[UpdateCostCenter, UpdateCostCenterTypeForResponse]: ...
 
     async def async_update_cost_center(
@@ -1752,6 +1762,7 @@ class BillingClient:
         users: Missing[list[str]] = UNSET,
         organizations: Missing[list[str]] = UNSET,
         repositories: Missing[list[str]] = UNSET,
+        enterprise_teams: Missing[list[str]] = UNSET,
     ) -> Response[
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200,
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200TypeForResponse,
@@ -1848,6 +1859,7 @@ class BillingClient:
         users: Missing[list[str]] = UNSET,
         organizations: Missing[list[str]] = UNSET,
         repositories: Missing[list[str]] = UNSET,
+        enterprise_teams: Missing[list[str]] = UNSET,
     ) -> Response[
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200,
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200TypeForResponse,
@@ -1944,6 +1956,7 @@ class BillingClient:
         users: Missing[list[str]] = UNSET,
         organizations: Missing[list[str]] = UNSET,
         repositories: Missing[list[str]] = UNSET,
+        enterprise_teams: Missing[list[str]] = UNSET,
     ) -> Response[
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200,
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200TypeForResponse,
@@ -2039,6 +2052,7 @@ class BillingClient:
         users: Missing[list[str]] = UNSET,
         organizations: Missing[list[str]] = UNSET,
         repositories: Missing[list[str]] = UNSET,
+        enterprise_teams: Missing[list[str]] = UNSET,
     ) -> Response[
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200,
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200TypeForResponse,

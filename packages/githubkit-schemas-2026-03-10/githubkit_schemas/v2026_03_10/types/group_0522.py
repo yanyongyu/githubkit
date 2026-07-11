@@ -10,40 +10,57 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksWorkflowType(TypedDict):
-    """Workflow"""
+class EnterpriseWebhooksType(TypedDict):
+    """Enterprise
 
-    badge_url: str
-    created_at: _dt.datetime
+    An enterprise on GitHub. Webhook payloads contain the `enterprise` property when
+    the webhook is configured
+    on an enterprise account or an organization that's part of an enterprise
+    account. For more information,
+    see "[About enterprise accounts](https://docs.github.com/admin/overview/about-
+    enterprise-accounts)."
+    """
+
+    description: NotRequired[Union[str, None]]
     html_url: str
+    website_url: NotRequired[Union[str, None]]
     id: int
-    name: str
     node_id: str
-    path: str
-    state: str
-    updated_at: _dt.datetime
-    url: str
+    name: str
+    slug: str
+    created_at: Union[_dt.datetime, None]
+    updated_at: Union[_dt.datetime, None]
+    avatar_url: str
 
 
-class WebhooksWorkflowTypeForResponse(TypedDict):
-    """Workflow"""
+class EnterpriseWebhooksTypeForResponse(TypedDict):
+    """Enterprise
 
-    badge_url: str
-    created_at: str
+    An enterprise on GitHub. Webhook payloads contain the `enterprise` property when
+    the webhook is configured
+    on an enterprise account or an organization that's part of an enterprise
+    account. For more information,
+    see "[About enterprise accounts](https://docs.github.com/admin/overview/about-
+    enterprise-accounts)."
+    """
+
+    description: NotRequired[Union[str, None]]
     html_url: str
+    website_url: NotRequired[Union[str, None]]
     id: int
-    name: str
     node_id: str
-    path: str
-    state: str
-    updated_at: str
-    url: str
+    name: str
+    slug: str
+    created_at: Union[str, None]
+    updated_at: Union[str, None]
+    avatar_url: str
 
 
 __all__ = (
-    "WebhooksWorkflowType",
-    "WebhooksWorkflowTypeForResponse",
+    "EnterpriseWebhooksType",
+    "EnterpriseWebhooksTypeForResponse",
 )

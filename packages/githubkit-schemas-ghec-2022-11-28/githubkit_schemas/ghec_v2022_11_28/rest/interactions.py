@@ -31,6 +31,8 @@ if TYPE_CHECKING:
         InteractionLimitResponse,
         OrgsOrgInteractionLimitsGetResponse200Anyof1,
         ReposOwnerRepoInteractionLimitsGetResponse200Anyof1,
+        ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200,
+        ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200,
         SimpleUser,
         UserInteractionLimitsGetResponse200Anyof1,
     )
@@ -40,6 +42,9 @@ if TYPE_CHECKING:
         InteractionLimitType,
         OrgsOrgInteractionLimitsGetResponse200Anyof1TypeForResponse,
         ReposOwnerRepoInteractionLimitsGetResponse200Anyof1TypeForResponse,
+        ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200TypeForResponse,
+        ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBodyType,
+        ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200TypeForResponse,
         SimpleUserTypeForResponse,
         UserInteractionLimitsGetResponse200Anyof1TypeForResponse,
     )
@@ -664,7 +669,7 @@ class InteractionsClient:
         repository. Users on this list can create pull requests regardless of any
         configured pull request creation cap.
 
-        Only repository admins can view the bypass list.
+        Only users with maintainer permissions can view the bypass list.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/interactions/repos#get-pull-request-creation-cap-bypass-list-for-a-repository
         """
@@ -703,7 +708,7 @@ class InteractionsClient:
         repository. Users on this list can create pull requests regardless of any
         configured pull request creation cap.
 
-        Only repository admins can view the bypass list.
+        Only users with maintainer permissions can view the bypass list.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/interactions/repos#get-pull-request-creation-cap-bypass-list-for-a-repository
         """
@@ -1038,6 +1043,284 @@ class InteractionsClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    def get_pull_request_creation_cap_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200,
+        ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200TypeForResponse,
+    ]:
+        """interactions/get-pull-request-creation-cap-for-repo
+
+        GET /repos/{owner}/{repo}/interaction-limits/pulls/creation-cap
+
+        Gets the pull request creation cap configuration for a repository.
+        The cap limits the number of open pull requests a user can have at one time.
+
+        Only users with admin access to the repository can view the cap configuration.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/interactions/repos#get-pull-request-creation-cap-for-a-repository
+        """
+
+        from ..models import (
+            BasicError,
+            ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200,
+        )
+
+        url = f"/repos/{owner}/{repo}/interaction-limits/pulls/creation-cap"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "405": BasicError,
+            },
+        )
+
+    async def async_get_pull_request_creation_cap_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200,
+        ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200TypeForResponse,
+    ]:
+        """interactions/get-pull-request-creation-cap-for-repo
+
+        GET /repos/{owner}/{repo}/interaction-limits/pulls/creation-cap
+
+        Gets the pull request creation cap configuration for a repository.
+        The cap limits the number of open pull requests a user can have at one time.
+
+        Only users with admin access to the repository can view the cap configuration.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/interactions/repos#get-pull-request-creation-cap-for-a-repository
+        """
+
+        from ..models import (
+            BasicError,
+            ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200,
+        )
+
+        url = f"/repos/{owner}/{repo}/interaction-limits/pulls/creation-cap"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "405": BasicError,
+            },
+        )
+
+    @overload
+    def update_pull_request_creation_cap_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBodyType,
+    ) -> Response[
+        ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200,
+        ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200TypeForResponse,
+    ]: ...
+
+    @overload
+    def update_pull_request_creation_cap_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        enabled: bool,
+        max_open_pull_requests: Missing[int] = UNSET,
+    ) -> Response[
+        ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200,
+        ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200TypeForResponse,
+    ]: ...
+
+    def update_pull_request_creation_cap_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[
+            ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200,
+        ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200TypeForResponse,
+    ]:
+        """interactions/update-pull-request-creation-cap-for-repo
+
+        PATCH /repos/{owner}/{repo}/interaction-limits/pulls/creation-cap
+
+        Updates the pull request creation cap for a repository. The cap limits the number
+        of open pull requests a user can have at one time.
+
+        Only users with admin access to the repository can configure the cap.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/interactions/repos#update-pull-request-creation-cap-for-a-repository
+        """
+
+        from ..models import (
+            BasicError,
+            ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody,
+            ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/interaction-limits/pulls/creation-cap"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "405": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    async def async_update_pull_request_creation_cap_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBodyType,
+    ) -> Response[
+        ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200,
+        ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200TypeForResponse,
+    ]: ...
+
+    @overload
+    async def async_update_pull_request_creation_cap_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        enabled: bool,
+        max_open_pull_requests: Missing[int] = UNSET,
+    ) -> Response[
+        ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200,
+        ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200TypeForResponse,
+    ]: ...
+
+    async def async_update_pull_request_creation_cap_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[
+            ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200,
+        ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200TypeForResponse,
+    ]:
+        """interactions/update-pull-request-creation-cap-for-repo
+
+        PATCH /repos/{owner}/{repo}/interaction-limits/pulls/creation-cap
+
+        Updates the pull request creation cap for a repository. The cap limits the number
+        of open pull requests a user can have at one time.
+
+        Only users with admin access to the repository can configure the cap.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/interactions/repos#update-pull-request-creation-cap-for-a-repository
+        """
+
+        from ..models import (
+            BasicError,
+            ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody,
+            ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/interaction-limits/pulls/creation-cap"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "405": BasicError,
                 "422": ValidationError,
             },
         )

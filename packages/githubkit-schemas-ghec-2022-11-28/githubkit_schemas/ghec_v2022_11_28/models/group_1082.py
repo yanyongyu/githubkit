@@ -12,16 +12,20 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_1083 import AgentsTasksTaskIdGetResponse200Allof1PropSessionsItems
 
 
-class ApplicationsClientIdTokenDeleteBody(GitHubModel):
-    """ApplicationsClientIdTokenDeleteBody"""
+class AgentsTasksTaskIdGetResponse200Allof1(GitHubModel):
+    """AgentsTasksTaskIdGetResponse200Allof1"""
 
-    access_token: str = Field(
-        description="The OAuth access token used to authenticate to the GitHub API."
+    sessions: Missing[list[AgentsTasksTaskIdGetResponse200Allof1PropSessionsItems]] = (
+        Field(default=UNSET, description="Sessions associated with this task")
     )
 
 
-model_rebuild(ApplicationsClientIdTokenDeleteBody)
+model_rebuild(AgentsTasksTaskIdGetResponse200Allof1)
 
-__all__ = ("ApplicationsClientIdTokenDeleteBody",)
+__all__ = ("AgentsTasksTaskIdGetResponse200Allof1",)

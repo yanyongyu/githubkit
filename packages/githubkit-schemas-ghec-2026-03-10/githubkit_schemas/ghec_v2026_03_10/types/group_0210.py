@@ -9,29 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import TypedDict
 
 
-class IssueCommentMinimizedType(TypedDict):
-    """Minimized Issue Comment
+class ReactionRollupType(TypedDict):
+    """Reaction Rollup"""
 
-    Details about why an issue comment was minimized.
-    """
+    url: str
+    total_count: int
+    plus_one: int
+    minus_one: int
+    laugh: int
+    confused: int
+    heart: int
+    hooray: int
+    eyes: int
+    rocket: int
 
-    reason: Union[str, None]
 
+class ReactionRollupTypeForResponse(TypedDict):
+    """Reaction Rollup"""
 
-class IssueCommentMinimizedTypeForResponse(TypedDict):
-    """Minimized Issue Comment
-
-    Details about why an issue comment was minimized.
-    """
-
-    reason: Union[str, None]
+    url: str
+    total_count: int
+    plus_one: int
+    minus_one: int
+    laugh: int
+    confused: int
+    heart: int
+    hooray: int
+    eyes: int
+    rocket: int
 
 
 __all__ = (
-    "IssueCommentMinimizedType",
-    "IssueCommentMinimizedTypeForResponse",
+    "ReactionRollupType",
+    "ReactionRollupTypeForResponse",
 )
