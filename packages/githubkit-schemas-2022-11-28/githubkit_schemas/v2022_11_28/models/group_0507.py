@@ -14,16 +14,17 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CodespacesUserPublicKey(GitHubModel):
-    """CodespacesUserPublicKey
+class ReferrerTraffic(GitHubModel):
+    """Referrer Traffic
 
-    The public key used for setting user Codespaces' Secrets.
+    Referrer Traffic
     """
 
-    key_id: str = Field(description="The identifier for the key.")
-    key: str = Field(description="The Base64 encoded public key.")
+    referrer: str = Field()
+    count: int = Field()
+    uniques: int = Field()
 
 
-model_rebuild(CodespacesUserPublicKey)
+model_rebuild(ReferrerTraffic)
 
-__all__ = ("CodespacesUserPublicKey",)
+__all__ = ("ReferrerTraffic",)

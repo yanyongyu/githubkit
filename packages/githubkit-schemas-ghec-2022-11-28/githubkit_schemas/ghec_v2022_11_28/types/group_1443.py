@@ -9,55 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0054 import RunnerType, RunnerTypeForResponse
 
 
-class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2Type(TypedDict):
-    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2"""
+class ReposOwnerRepoActionsRunnersGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsRunnersGetResponse200"""
 
-    language: Literal[
-        "actions",
-        "cpp",
-        "csharp",
-        "go",
-        "java",
-        "javascript",
-        "python",
-        "ruby",
-        "rust",
-        "swift",
-    ]
-    query_pack: str
-    repositories: NotRequired[list[str]]
-    repository_lists: NotRequired[list[str]]
-    repository_owners: list[str]
+    total_count: int
+    runners: list[RunnerType]
 
 
-class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2"""
+class ReposOwnerRepoActionsRunnersGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsRunnersGetResponse200"""
 
-    language: Literal[
-        "actions",
-        "cpp",
-        "csharp",
-        "go",
-        "java",
-        "javascript",
-        "python",
-        "ruby",
-        "rust",
-        "swift",
-    ]
-    query_pack: str
-    repositories: NotRequired[list[str]]
-    repository_lists: NotRequired[list[str]]
-    repository_owners: list[str]
+    total_count: int
+    runners: list[RunnerTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2Type",
-    "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2TypeForResponse",
+    "ReposOwnerRepoActionsRunnersGetResponse200Type",
+    "ReposOwnerRepoActionsRunnersGetResponse200TypeForResponse",
 )

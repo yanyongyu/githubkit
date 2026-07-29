@@ -12,34 +12,41 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_1403 import (
+    ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+    ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
+)
 
-class TeamsTeamIdPatchBodyType(TypedDict):
-    """TeamsTeamIdPatchBody"""
 
-    name: str
-    description: NotRequired[str]
-    privacy: NotRequired[Literal["secret", "closed"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
+class ReposOwnerRepoPagesPutBodyAnyof2Type(TypedDict):
+    """ReposOwnerRepoPagesPutBodyAnyof2"""
+
+    cname: Union[str, None]
+    https_enforced: NotRequired[bool]
+    build_type: NotRequired[Literal["legacy", "workflow"]]
+    source: NotRequired[
+        Union[
+            Literal["gh-pages", "master", "master /docs"],
+            ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+        ]
     ]
-    permission: NotRequired[Literal["pull", "push", "admin"]]
-    parent_team_id: NotRequired[Union[int, None]]
 
 
-class TeamsTeamIdPatchBodyTypeForResponse(TypedDict):
-    """TeamsTeamIdPatchBody"""
+class ReposOwnerRepoPagesPutBodyAnyof2TypeForResponse(TypedDict):
+    """ReposOwnerRepoPagesPutBodyAnyof2"""
 
-    name: str
-    description: NotRequired[str]
-    privacy: NotRequired[Literal["secret", "closed"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
+    cname: Union[str, None]
+    https_enforced: NotRequired[bool]
+    build_type: NotRequired[Literal["legacy", "workflow"]]
+    source: NotRequired[
+        Union[
+            Literal["gh-pages", "master", "master /docs"],
+            ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
+        ]
     ]
-    permission: NotRequired[Literal["pull", "push", "admin"]]
-    parent_team_id: NotRequired[Union[int, None]]
 
 
 __all__ = (
-    "TeamsTeamIdPatchBodyType",
-    "TeamsTeamIdPatchBodyTypeForResponse",
+    "ReposOwnerRepoPagesPutBodyAnyof2Type",
+    "ReposOwnerRepoPagesPutBodyAnyof2TypeForResponse",
 )

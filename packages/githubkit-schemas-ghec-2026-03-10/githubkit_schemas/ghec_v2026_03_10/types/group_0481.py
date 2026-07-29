@@ -9,51 +9,66 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0458 import IssueReferenceType, IssueReferenceTypeForResponse
 
 
-class ParentIssueRemovedIssueEventType(TypedDict):
-    """Parent-issue Removed Issue Event
+class RenamedIssueEventType(TypedDict):
+    """Renamed Issue Event
 
-    Parent-issue Removed Issue Event
+    Renamed Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: str
+    event: Literal["renamed"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    parent_issue: Union[None, IssueReferenceType, None]
+    rename: RenamedIssueEventPropRenameType
 
 
-class ParentIssueRemovedIssueEventTypeForResponse(TypedDict):
-    """Parent-issue Removed Issue Event
+class RenamedIssueEventTypeForResponse(TypedDict):
+    """Renamed Issue Event
 
-    Parent-issue Removed Issue Event
+    Renamed Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserTypeForResponse
-    event: str
+    event: Literal["renamed"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    parent_issue: Union[None, IssueReferenceTypeForResponse, None]
+    rename: RenamedIssueEventPropRenameTypeForResponse
+
+
+class RenamedIssueEventPropRenameType(TypedDict):
+    """RenamedIssueEventPropRename"""
+
+    from_: str
+    to: str
+
+
+class RenamedIssueEventPropRenameTypeForResponse(TypedDict):
+    """RenamedIssueEventPropRename"""
+
+    from_: str
+    to: str
 
 
 __all__ = (
-    "ParentIssueRemovedIssueEventType",
-    "ParentIssueRemovedIssueEventTypeForResponse",
+    "RenamedIssueEventPropRenameType",
+    "RenamedIssueEventPropRenameTypeForResponse",
+    "RenamedIssueEventType",
+    "RenamedIssueEventTypeForResponse",
 )

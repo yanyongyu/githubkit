@@ -16,13 +16,15 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPullsPullNumberMergePutResponse405(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberMergePutResponse405"""
+class ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody"""
 
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
+    assignees: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Usernames of assignees to remove from an issue. _NOTE: Only users with push access can remove assignees from an issue. Assignees are silently ignored otherwise._",
+    )
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberMergePutResponse405)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody)
 
-__all__ = ("ReposOwnerRepoPullsPullNumberMergePutResponse405",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody",)

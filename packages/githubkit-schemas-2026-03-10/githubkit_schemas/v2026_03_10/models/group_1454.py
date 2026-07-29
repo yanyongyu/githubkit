@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -18,24 +18,36 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0(GitHubModel):
-    """UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0"""
+class ReposOwnerRepoStacksStackNumberAddPostResponse422(GitHubModel):
+    """Validation Error
 
-    type: Literal["Issue", "PullRequest"] = Field(
-        description="The type of item to add to the project. Must be either Issue or PullRequest."
-    )
-    id: int = Field(
-        description="The unique identifier of the issue or pull request to add to the project."
-    )
-    owner: Missing[str] = Field(
-        default=UNSET, description="The repository owner login."
-    )
-    repo: Missing[str] = Field(default=UNSET, description="The repository name.")
-    number: Missing[int] = Field(
-        default=UNSET, description="The issue or pull request number."
-    )
+    Validation Error
+    """
+
+    message: str = Field()
+    documentation_url: str = Field()
+    errors: Missing[
+        list[ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems]
+    ] = Field(default=UNSET)
 
 
-model_rebuild(UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0)
+class ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems(GitHubModel):
+    """ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems"""
 
-__all__ = ("UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0",)
+    resource: Missing[str] = Field(default=UNSET)
+    field: Missing[str] = Field(default=UNSET)
+    message: Missing[str] = Field(default=UNSET)
+    code: str = Field()
+    index: Missing[int] = Field(default=UNSET)
+    value: Missing[Union[str, None, int, None, list[Union[str, int]], None]] = Field(
+        default=UNSET
+    )
+
+
+model_rebuild(ReposOwnerRepoStacksStackNumberAddPostResponse422)
+model_rebuild(ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems)
+
+__all__ = (
+    "ReposOwnerRepoStacksStackNumberAddPostResponse422",
+    "ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems",
+)

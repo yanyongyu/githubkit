@@ -9,27 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class MarkdownPostBodyType(TypedDict):
-    """MarkdownPostBody"""
-
-    text: str
-    mode: NotRequired[Literal["markdown", "gfm"]]
-    context: NotRequired[str]
+class AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type(TypedDict):
+    """AppHookDeliveriesDeliveryIdAttemptsPostResponse202"""
 
 
-class MarkdownPostBodyTypeForResponse(TypedDict):
-    """MarkdownPostBody"""
-
-    text: str
-    mode: NotRequired[Literal["markdown", "gfm"]]
-    context: NotRequired[str]
+class AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse(TypedDict):
+    """AppHookDeliveriesDeliveryIdAttemptsPostResponse202"""
 
 
 __all__ = (
-    "MarkdownPostBodyType",
-    "MarkdownPostBodyTypeForResponse",
+    "AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type",
+    "AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse",
 )

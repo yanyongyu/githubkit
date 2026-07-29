@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,37 +18,110 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class ReposOwnerRepoReleasesReleaseIdPatchBody(GitHubModel):
-    """ReposOwnerRepoReleasesReleaseIdPatchBody"""
-
-    tag_name: Missing[str] = Field(default=UNSET, description="The name of the tag.")
-    target_commitish: Missing[str] = Field(
-        default=UNSET,
-        description="Specifies the commitish value that determines where the Git tag is created from. Can be any branch or commit SHA. Unused if the Git tag already exists. Default: the repository's default branch.",
-    )
-    name: Missing[str] = Field(default=UNSET, description="The name of the release.")
-    body: Missing[str] = Field(
-        default=UNSET, description="Text describing the contents of the tag."
-    )
-    draft: Missing[bool] = Field(
-        default=UNSET,
-        description="`true` makes the release a draft, and `false` publishes the release.",
-    )
-    prerelease: Missing[bool] = Field(
-        default=UNSET,
-        description="`true` to identify the release as a prerelease, `false` to identify the release as a full release.",
-    )
-    make_latest: Missing[Literal["true", "false", "legacy"]] = Field(
-        default=UNSET,
-        description="Specifies whether this release should be set as the latest release for the repository. Drafts and prereleases cannot be set as latest. Defaults to `true` for newly published releases. `legacy` specifies that the latest release should be determined based on the release creation date and higher semantic version.",
-    )
-    discussion_category_name: Missing[str] = Field(
-        default=UNSET,
-        description='If specified, a discussion of the specified category is created and linked to the release. The value must be a category that already exists in the repository. If there is already a discussion linked to the release, this parameter is ignored. For more information, see "[Managing categories for discussions in your repository](https://docs.github.com/enterprise-cloud@latest/discussions/managing-discussions-for-your-community/managing-categories-for-discussions-in-your-repository)."',
-    )
+from .group_0003 import SimpleUser
+from .group_0010 import Integration
+from .group_0020 import Repository
+from .group_0212 import Milestone
+from .group_0213 import IssueType
+from .group_0214 import ReactionRollup
+from .group_0215 import IssueDependenciesSummary, SubIssuesSummary
+from .group_0218 import IssueComment
+from .group_0219 import IssueFieldValue
+from .group_0221 import IssuePropLabelsItemsOneof1, IssuePropPullRequest
+from .group_1572 import (
+    ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestions,
+)
 
 
-model_rebuild(ReposOwnerRepoReleasesReleaseIdPatchBody)
+class ReposOwnerRepoIssuesIssueNumberPatchResponse200(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberPatchResponse200"""
 
-__all__ = ("ReposOwnerRepoReleasesReleaseIdPatchBody",)
+    id: int = Field()
+    node_id: str = Field()
+    url: str = Field(description="URL for the issue")
+    repository_url: str = Field()
+    labels_url: str = Field()
+    comments_url: str = Field()
+    events_url: str = Field()
+    html_url: str = Field()
+    number: int = Field(
+        description="Number uniquely identifying the issue within its repository"
+    )
+    state: str = Field(description="State of the issue; either 'open' or 'closed'")
+    state_reason: Missing[
+        Union[None, Literal["completed", "reopened", "not_planned", "duplicate"]]
+    ] = Field(default=UNSET, description="The reason for the current state")
+    title: str = Field(description="Title of the issue")
+    body: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Contents of the issue"
+    )
+    user: Union[None, SimpleUser] = Field()
+    labels: list[Union[str, IssuePropLabelsItemsOneof1]] = Field(
+        description="Labels to associate with this issue; pass one or more label names to replace the set of labels on this issue; send an empty array to clear all labels from the issue; note that the labels are silently dropped for users without push access to the repository"
+    )
+    assignee: Union[None, SimpleUser] = Field()
+    assignees: Missing[list[SimpleUser]] = Field(default=UNSET)
+    milestone: Union[None, Milestone] = Field()
+    locked: bool = Field()
+    active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
+    comments: int = Field()
+    pull_request: Missing[IssuePropPullRequest] = Field(default=UNSET)
+    closed_at: Union[_dt.datetime, None] = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    draft: Missing[bool] = Field(default=UNSET)
+    closed_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    body_html: Missing[Union[str, None]] = Field(default=UNSET)
+    body_text: Missing[Union[str, None]] = Field(default=UNSET)
+    timeline_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Union[IssueType, None]] = Field(
+        default=UNSET,
+        title="Issue Type",
+        description="The type assigned to the issue. This is only present for issues in repositories where issue types are supported.",
+    )
+    repository: Missing[Repository] = Field(
+        default=UNSET, title="Repository", description="A repository on GitHub."
+    )
+    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
+        default=UNSET
+    )
+    author_association: Missing[
+        Literal[
+            "COLLABORATOR",
+            "CONTRIBUTOR",
+            "FIRST_TIMER",
+            "FIRST_TIME_CONTRIBUTOR",
+            "MANNEQUIN",
+            "MEMBER",
+            "NONE",
+            "OWNER",
+        ]
+    ] = Field(
+        default=UNSET,
+        title="author_association",
+        description="How the author is associated with the repository.",
+    )
+    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
+    sub_issues_summary: Missing[SubIssuesSummary] = Field(
+        default=UNSET, title="Sub-issues Summary"
+    )
+    parent_issue_url: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="URL to get the parent issue of this issue, if it is a sub-issue",
+    )
+    pinned_comment: Missing[Union[None, IssueComment]] = Field(default=UNSET)
+    issue_dependencies_summary: Missing[IssueDependenciesSummary] = Field(
+        default=UNSET, title="Issue Dependencies Summary"
+    )
+    issue_field_values: Missing[list[IssueFieldValue]] = Field(default=UNSET)
+    suggestions: Missing[
+        ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestions
+    ] = Field(
+        default=UNSET,
+        description="Pending suggestions for each suggestible field (`type`,\n`issue_field_values`, `labels`, `assignees`, `state`) the\nrequest touched. Omitted for fields not in the request or\nwith no pending suggestions. Items tagged `already_applied`\nare echoes of the current request's inputs whose target is\nalready applied to the issue; they are not persisted as\npending suggestions.\n",
+    )
+
+
+model_rebuild(ReposOwnerRepoIssuesIssueNumberPatchResponse200)
+
+__all__ = ("ReposOwnerRepoIssuesIssueNumberPatchResponse200",)

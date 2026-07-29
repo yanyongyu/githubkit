@@ -9,30 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBodyType(
-    TypedDict
-):
-    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositories
-    RemovePatchBody
-    """
+class AppManifestsCodeConversionsPostResponse201Allof1Type(TypedDict):
+    """AppManifestsCodeConversionsPostResponse201Allof1"""
 
-    repositories: list[str]
+    client_id: str
+    client_secret: str
+    webhook_secret: Union[str, None]
+    pem: str
 
 
-class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBodyTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositories
-    RemovePatchBody
-    """
+class AppManifestsCodeConversionsPostResponse201Allof1TypeForResponse(TypedDict):
+    """AppManifestsCodeConversionsPostResponse201Allof1"""
 
-    repositories: list[str]
+    client_id: str
+    client_secret: str
+    webhook_secret: Union[str, None]
+    pem: str
 
 
 __all__ = (
-    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBodyType",
-    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBodyTypeForResponse",
+    "AppManifestsCodeConversionsPostResponse201Allof1Type",
+    "AppManifestsCodeConversionsPostResponse201Allof1TypeForResponse",
 )

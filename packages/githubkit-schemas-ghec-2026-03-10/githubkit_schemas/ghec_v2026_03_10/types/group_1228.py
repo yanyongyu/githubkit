@@ -11,28 +11,27 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
+from .group_0188 import (
+    SecretScanningCustomPatternType,
+    SecretScanningCustomPatternTypeForResponse,
+)
 
 
-class OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200Type(
+class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201Type(TypedDict):
+    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201"""
+
+    created_patterns: NotRequired[list[SecretScanningCustomPatternType]]
+
+
+class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201TypeForResponse(
     TypedDict
 ):
-    """OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200"""
+    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201"""
 
-    total_count: NotRequired[int]
-    repositories: NotRequired[list[RepositoryType]]
-
-
-class OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200TypeForResponse(
-    TypedDict
-):
-    """OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200"""
-
-    total_count: NotRequired[int]
-    repositories: NotRequired[list[RepositoryTypeForResponse]]
+    created_patterns: NotRequired[list[SecretScanningCustomPatternTypeForResponse]]
 
 
 __all__ = (
-    "OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200Type",
-    "OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201Type",
+    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201TypeForResponse",
 )

@@ -13,44 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0049 import DiscussionType, DiscussionTypeForResponse
-from .group_0523 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0524 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0525 import (
+from .group_0369 import DependabotAlertType, DependabotAlertTypeForResponse
+from .group_0535 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0536 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0537 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0526 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0536 import WebhooksCommentType, WebhooksCommentTypeForResponse
+from .group_0538 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDiscussionCommentCreatedType(TypedDict):
-    """discussion_comment created event"""
+class WebhookDependabotAlertReopenedType(TypedDict):
+    """Dependabot alert reopened event"""
 
-    action: Literal["created"]
-    comment: WebhooksCommentType
-    discussion: DiscussionType
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["reopened"]
+    alert: DependabotAlertType
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookDiscussionCommentCreatedTypeForResponse(TypedDict):
-    """discussion_comment created event"""
+class WebhookDependabotAlertReopenedTypeForResponse(TypedDict):
+    """Dependabot alert reopened event"""
 
-    action: Literal["created"]
-    comment: WebhooksCommentTypeForResponse
-    discussion: DiscussionTypeForResponse
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    action: Literal["reopened"]
+    alert: DependabotAlertTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookDiscussionCommentCreatedType",
-    "WebhookDiscussionCommentCreatedTypeForResponse",
+    "WebhookDependabotAlertReopenedType",
+    "WebhookDependabotAlertReopenedTypeForResponse",
 )

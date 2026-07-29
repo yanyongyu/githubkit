@@ -9,42 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0237 import (
-    RepositoryRuleFilePathRestrictionPropParametersType,
-    RepositoryRuleFilePathRestrictionPropParametersTypeForResponse,
-)
+
+class RepositoryRuleCopilotCodeReviewPropParametersType(TypedDict):
+    """RepositoryRuleCopilotCodeReviewPropParameters"""
+
+    review_draft_pull_requests: NotRequired[bool]
+    review_on_push: NotRequired[bool]
 
 
-class RepositoryRuleFilePathRestrictionType(TypedDict):
-    """file_path_restriction
+class RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleCopilotCodeReviewPropParameters"""
 
-    Prevent commits that include changes in specified file and folder paths from
-    being pushed to the commit graph. This includes absolute paths that contain file
-    names.
-    """
-
-    type: Literal["file_path_restriction"]
-    parameters: NotRequired[RepositoryRuleFilePathRestrictionPropParametersType]
-
-
-class RepositoryRuleFilePathRestrictionTypeForResponse(TypedDict):
-    """file_path_restriction
-
-    Prevent commits that include changes in specified file and folder paths from
-    being pushed to the commit graph. This includes absolute paths that contain file
-    names.
-    """
-
-    type: Literal["file_path_restriction"]
-    parameters: NotRequired[
-        RepositoryRuleFilePathRestrictionPropParametersTypeForResponse
-    ]
+    review_draft_pull_requests: NotRequired[bool]
+    review_on_push: NotRequired[bool]
 
 
 __all__ = (
-    "RepositoryRuleFilePathRestrictionType",
-    "RepositoryRuleFilePathRestrictionTypeForResponse",
+    "RepositoryRuleCopilotCodeReviewPropParametersType",
+    "RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse",
 )

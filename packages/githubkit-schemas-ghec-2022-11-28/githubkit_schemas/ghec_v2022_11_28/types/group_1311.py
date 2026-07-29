@@ -9,28 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type(TypedDict):
-    """OrgsOrgCopilotBillingSelectedUsersDeleteResponse200
+class OrgsOrgAgentsVariablesPostBodyType(TypedDict):
+    """OrgsOrgAgentsVariablesPostBody"""
 
-    The total number of seats set to "pending cancellation" for the specified users.
-    """
+    name: str
+    value: str
+    visibility: Literal["all", "private", "selected"]
+    selected_repository_ids: NotRequired[list[int]]
 
-    seats_cancelled: int
 
+class OrgsOrgAgentsVariablesPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgAgentsVariablesPostBody"""
 
-class OrgsOrgCopilotBillingSelectedUsersDeleteResponse200TypeForResponse(TypedDict):
-    """OrgsOrgCopilotBillingSelectedUsersDeleteResponse200
-
-    The total number of seats set to "pending cancellation" for the specified users.
-    """
-
-    seats_cancelled: int
+    name: str
+    value: str
+    visibility: Literal["all", "private", "selected"]
+    selected_repository_ids: NotRequired[list[int]]
 
 
 __all__ = (
-    "OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type",
-    "OrgsOrgCopilotBillingSelectedUsersDeleteResponse200TypeForResponse",
+    "OrgsOrgAgentsVariablesPostBodyType",
+    "OrgsOrgAgentsVariablesPostBodyTypeForResponse",
 )

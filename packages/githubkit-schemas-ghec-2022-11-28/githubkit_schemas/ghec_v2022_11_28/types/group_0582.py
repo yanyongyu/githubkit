@@ -9,68 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0577 import (
-    SearchResultTextMatchesItemsType,
-    SearchResultTextMatchesItemsTypeForResponse,
-)
+
+class GroupResponseType(TypedDict):
+    """GroupResponse"""
+
+    schemas: list[
+        Literal[
+            "urn:ietf:params:scim:schemas:core:2.0:Group",
+            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
+        ]
+    ]
+    external_id: NotRequired[Union[str, None]]
+    display_name: NotRequired[Union[str, None]]
+    members: NotRequired[list[GroupResponsePropMembersItemsType]]
 
 
-class LabelSearchResultItemType(TypedDict):
-    """Label Search Result Item
+class GroupResponseTypeForResponse(TypedDict):
+    """GroupResponse"""
 
-    Label Search Result Item
-    """
-
-    id: int
-    node_id: str
-    url: str
-    name: str
-    color: str
-    default: bool
-    description: Union[str, None]
-    score: float
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
+    schemas: list[
+        Literal[
+            "urn:ietf:params:scim:schemas:core:2.0:Group",
+            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
+        ]
+    ]
+    external_id: NotRequired[Union[str, None]]
+    display_name: NotRequired[Union[str, None]]
+    members: NotRequired[list[GroupResponsePropMembersItemsTypeForResponse]]
 
 
-class LabelSearchResultItemTypeForResponse(TypedDict):
-    """Label Search Result Item
+class GroupResponsePropMembersItemsType(TypedDict):
+    """GroupResponsePropMembersItems"""
 
-    Label Search Result Item
-    """
-
-    id: int
-    node_id: str
-    url: str
-    name: str
-    color: str
-    default: bool
-    description: Union[str, None]
-    score: float
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
+    value: str
+    ref: str
+    display: NotRequired[str]
 
 
-class SearchLabelsGetResponse200Type(TypedDict):
-    """SearchLabelsGetResponse200"""
+class GroupResponsePropMembersItemsTypeForResponse(TypedDict):
+    """GroupResponsePropMembersItems"""
 
-    total_count: int
-    incomplete_results: bool
-    items: list[LabelSearchResultItemType]
-
-
-class SearchLabelsGetResponse200TypeForResponse(TypedDict):
-    """SearchLabelsGetResponse200"""
-
-    total_count: int
-    incomplete_results: bool
-    items: list[LabelSearchResultItemTypeForResponse]
+    value: str
+    ref: str
+    display: NotRequired[str]
 
 
 __all__ = (
-    "LabelSearchResultItemType",
-    "LabelSearchResultItemTypeForResponse",
-    "SearchLabelsGetResponse200Type",
-    "SearchLabelsGetResponse200TypeForResponse",
+    "GroupResponsePropMembersItemsType",
+    "GroupResponsePropMembersItemsTypeForResponse",
+    "GroupResponseType",
+    "GroupResponseTypeForResponse",
 )

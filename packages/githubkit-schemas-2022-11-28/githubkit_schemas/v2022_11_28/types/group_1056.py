@@ -9,39 +9,60 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyType(TypedDict):
-    """OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody"""
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody"""
 
-    name: NotRequired[str]
-    runner_group_id: NotRequired[int]
-    maximum_runners: NotRequired[int]
-    enable_static_ip: NotRequired[bool]
-    size: NotRequired[str]
-    image_source: NotRequired[Literal["github", "partner", "custom"]]
-    image_id: NotRequired[str]
-    image_version: NotRequired[Union[str, None]]
-    image_gen: NotRequired[bool]
+    organizations: NotRequired[list[str]]
+    custom_properties: NotRequired[
+        list[
+            EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsType
+        ]
+    ]
 
 
-class OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody"""
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody"""
 
-    name: NotRequired[str]
-    runner_group_id: NotRequired[int]
-    maximum_runners: NotRequired[int]
-    enable_static_ip: NotRequired[bool]
-    size: NotRequired[str]
-    image_source: NotRequired[Literal["github", "partner", "custom"]]
-    image_id: NotRequired[str]
-    image_version: NotRequired[Union[str, None]]
-    image_gen: NotRequired[bool]
+    organizations: NotRequired[list[str]]
+    custom_properties: NotRequired[
+        list[
+            EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsTypeForResponse
+        ]
+    ]
+
+
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustom
+    PropertiesItems
+    """
+
+    property_name: str
+    values: list[str]
+
+
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustom
+    PropertiesItems
+    """
+
+    property_name: str
+    values: list[str]
 
 
 __all__ = (
-    "OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyType",
-    "OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsType",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsTypeForResponse",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyType",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyTypeForResponse",
 )

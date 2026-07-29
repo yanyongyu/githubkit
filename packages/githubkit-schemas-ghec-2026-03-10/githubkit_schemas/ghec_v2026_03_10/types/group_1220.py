@@ -9,29 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0034 import (
-    ActionsHostedRunnerMachineSpecType,
-    ActionsHostedRunnerMachineSpecTypeForResponse,
-)
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsHostedRunnersMachineSizesGetResponse200Type(TypedDict):
-    """OrgsOrgActionsHostedRunnersMachineSizesGetResponse200"""
+class EnterprisesEnterpriseNetworkConfigurationsPostBodyType(TypedDict):
+    """EnterprisesEnterpriseNetworkConfigurationsPostBody"""
 
-    total_count: int
-    machine_specs: list[ActionsHostedRunnerMachineSpecType]
+    name: str
+    compute_service: NotRequired[Literal["none", "actions"]]
+    network_settings_ids: list[str]
+    failover_network_settings_ids: NotRequired[list[str]]
+    failover_network_enabled: NotRequired[bool]
 
 
-class OrgsOrgActionsHostedRunnersMachineSizesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsHostedRunnersMachineSizesGetResponse200"""
+class EnterprisesEnterpriseNetworkConfigurationsPostBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseNetworkConfigurationsPostBody"""
 
-    total_count: int
-    machine_specs: list[ActionsHostedRunnerMachineSpecTypeForResponse]
+    name: str
+    compute_service: NotRequired[Literal["none", "actions"]]
+    network_settings_ids: list[str]
+    failover_network_settings_ids: NotRequired[list[str]]
+    failover_network_enabled: NotRequired[bool]
 
 
 __all__ = (
-    "OrgsOrgActionsHostedRunnersMachineSizesGetResponse200Type",
-    "OrgsOrgActionsHostedRunnersMachineSizesGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseNetworkConfigurationsPostBodyType",
+    "EnterprisesEnterpriseNetworkConfigurationsPostBodyTypeForResponse",
 )

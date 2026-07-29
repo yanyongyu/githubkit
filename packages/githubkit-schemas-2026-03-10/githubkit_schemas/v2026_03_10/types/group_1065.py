@@ -9,33 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Any, Literal, TypeAlias, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType(TypedDict):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody"""
+class GistsPostBodyType(TypedDict):
+    """GistsPostBody"""
 
-    name: str
-    visibility: NotRequired[Literal["selected", "all", "private"]]
-    allows_public_repositories: NotRequired[bool]
-    restricted_to_workflows: NotRequired[bool]
-    selected_workflows: NotRequired[list[str]]
-    network_configuration_id: NotRequired[Union[str, None]]
+    description: NotRequired[str]
+    files: GistsPostBodyPropFilesType
+    public: NotRequired[Union[bool, Literal["true", "false"]]]
 
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody"""
+class GistsPostBodyTypeForResponse(TypedDict):
+    """GistsPostBody"""
 
-    name: str
-    visibility: NotRequired[Literal["selected", "all", "private"]]
-    allows_public_repositories: NotRequired[bool]
-    restricted_to_workflows: NotRequired[bool]
-    selected_workflows: NotRequired[list[str]]
-    network_configuration_id: NotRequired[Union[str, None]]
+    description: NotRequired[str]
+    files: GistsPostBodyPropFilesTypeForResponse
+    public: NotRequired[Union[bool, Literal["true", "false"]]]
+
+
+GistsPostBodyPropFilesType: TypeAlias = dict[str, Any]
+"""GistsPostBodyPropFiles
+
+Names and content for the files that make up the gist
+
+Examples:
+    {'hello.rb': {'content': 'puts "Hello, World!"'}}
+"""
+
+
+GistsPostBodyPropFilesTypeForResponse: TypeAlias = dict[str, Any]
+"""GistsPostBodyPropFiles
+
+Names and content for the files that make up the gist
+
+Examples:
+    {'hello.rb': {'content': 'puts "Hello, World!"'}}
+"""
 
 
 __all__ = (
-    "OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType",
-    "OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyTypeForResponse",
+    "GistsPostBodyPropFilesType",
+    "GistsPostBodyPropFilesTypeForResponse",
+    "GistsPostBodyType",
+    "GistsPostBodyTypeForResponse",
 )

@@ -18,16 +18,16 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0599 import EnterpriseWebhooks
-from .group_0600 import SimpleInstallation
-from .group_0601 import OrganizationSimpleWebhooks
-from .group_0602 import RepositoryWebhooks
+from .group_0618 import EnterpriseWebhooks
+from .group_0619 import SimpleInstallation
+from .group_0620 import OrganizationSimpleWebhooks
+from .group_0621 import RepositoryWebhooks
 
 
-class WebhookStarDeleted(GitHubModel):
-    """star deleted event"""
+class WebhookRepositoryPublicized(GitHubModel):
+    """repository publicized event"""
 
-    action: Literal["deleted"] = Field()
+    action: Literal["publicized"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -48,11 +48,8 @@ class WebhookStarDeleted(GitHubModel):
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    starred_at: None = Field(
-        description="The time the star was created. This is a timestamp in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. Will be `null` for the `deleted` action."
-    )
 
 
-model_rebuild(WebhookStarDeleted)
+model_rebuild(WebhookRepositoryPublicized)
 
-__all__ = ("WebhookStarDeleted",)
+__all__ = ("WebhookRepositoryPublicized",)

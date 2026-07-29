@@ -9,66 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
+class GitRefType(TypedDict):
+    """Git Reference
 
-class LabeledIssueEventType(TypedDict):
-    """Labeled Issue Event
-
-    Labeled Issue Event
+    Git references within a repository
     """
 
-    id: int
+    ref: str
     node_id: str
     url: str
-    actor: SimpleUserType
-    event: Literal["labeled"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    label: LabeledIssueEventPropLabelType
+    object_: GitRefPropObjectType
 
 
-class LabeledIssueEventTypeForResponse(TypedDict):
-    """Labeled Issue Event
+class GitRefTypeForResponse(TypedDict):
+    """Git Reference
 
-    Labeled Issue Event
+    Git references within a repository
     """
 
-    id: int
+    ref: str
     node_id: str
     url: str
-    actor: SimpleUserTypeForResponse
-    event: Literal["labeled"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    label: LabeledIssueEventPropLabelTypeForResponse
+    object_: GitRefPropObjectTypeForResponse
 
 
-class LabeledIssueEventPropLabelType(TypedDict):
-    """LabeledIssueEventPropLabel"""
+class GitRefPropObjectType(TypedDict):
+    """GitRefPropObject"""
 
-    name: str
-    color: str
+    type: str
+    sha: str
+    url: str
 
 
-class LabeledIssueEventPropLabelTypeForResponse(TypedDict):
-    """LabeledIssueEventPropLabel"""
+class GitRefPropObjectTypeForResponse(TypedDict):
+    """GitRefPropObject"""
 
-    name: str
-    color: str
+    type: str
+    sha: str
+    url: str
 
 
 __all__ = (
-    "LabeledIssueEventPropLabelType",
-    "LabeledIssueEventPropLabelTypeForResponse",
-    "LabeledIssueEventType",
-    "LabeledIssueEventTypeForResponse",
+    "GitRefPropObjectType",
+    "GitRefPropObjectTypeForResponse",
+    "GitRefType",
+    "GitRefTypeForResponse",
 )

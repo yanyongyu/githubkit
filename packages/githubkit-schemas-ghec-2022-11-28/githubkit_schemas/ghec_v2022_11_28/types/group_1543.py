@@ -9,30 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_1542 import (
-    ReposOwnerRepoPagesPostBodyPropSourceType,
-    ReposOwnerRepoPagesPostBodyPropSourceTypeForResponse,
-)
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoPagesPostBodyAnyof0Type(TypedDict):
-    """ReposOwnerRepoPagesPostBodyAnyof0"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType(TypedDict):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody"""
 
-    build_type: NotRequired[Literal["legacy", "workflow"]]
-    source: ReposOwnerRepoPagesPostBodyPropSourceType
+    encrypted_value: str
+    key_id: str
 
 
-class ReposOwnerRepoPagesPostBodyAnyof0TypeForResponse(TypedDict):
-    """ReposOwnerRepoPagesPostBodyAnyof0"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody"""
 
-    build_type: NotRequired[Literal["legacy", "workflow"]]
-    source: ReposOwnerRepoPagesPostBodyPropSourceTypeForResponse
+    encrypted_value: str
+    key_id: str
 
 
 __all__ = (
-    "ReposOwnerRepoPagesPostBodyAnyof0Type",
-    "ReposOwnerRepoPagesPostBodyAnyof0TypeForResponse",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyTypeForResponse",
 )

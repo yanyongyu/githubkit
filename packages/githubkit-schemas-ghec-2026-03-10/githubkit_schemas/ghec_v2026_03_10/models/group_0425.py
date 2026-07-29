@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,37 +18,60 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0214 import ReactionRollup
 
-class Contributor(GitHubModel):
-    """Contributor
 
-    Contributor
+class CommitComment(GitHubModel):
+    """Commit Comment
+
+    Commit Comment
     """
 
-    login: Missing[str] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
+    html_url: str = Field()
+    url: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    body: str = Field()
+    path: Union[str, None] = Field()
+    position: Union[int, None] = Field()
+    line: Union[int, None] = Field()
+    commit_id: str = Field()
+    user: Union[None, SimpleUser] = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="author_association",
+        description="How the author is associated with the repository.",
+    )
+    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
+
+
+class TimelineCommitCommentedEvent(GitHubModel):
+    """Timeline Commit Commented Event
+
+    Timeline Commit Commented Event
+    """
+
+    event: Missing[Literal["commit_commented"]] = Field(default=UNSET)
     node_id: Missing[str] = Field(default=UNSET)
-    avatar_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[Union[str, None]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    type: str = Field()
-    site_admin: Missing[bool] = Field(default=UNSET)
-    contributions: int = Field()
-    email: Missing[str] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
+    commit_id: Missing[str] = Field(default=UNSET)
+    comments: Missing[list[CommitComment]] = Field(default=UNSET)
 
 
-model_rebuild(Contributor)
+model_rebuild(CommitComment)
+model_rebuild(TimelineCommitCommentedEvent)
 
-__all__ = ("Contributor",)
+__all__ = (
+    "CommitComment",
+    "TimelineCommitCommentedEvent",
+)

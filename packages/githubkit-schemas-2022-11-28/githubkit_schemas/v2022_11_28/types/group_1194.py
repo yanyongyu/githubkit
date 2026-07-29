@@ -9,25 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgSettingsImmutableReleasesPutBodyType(TypedDict):
-    """OrgsOrgSettingsImmutableReleasesPutBody"""
+class OrgsOrgDependabotSecretsSecretNamePutBodyType(TypedDict):
+    """OrgsOrgDependabotSecretsSecretNamePutBody"""
 
-    enforced_repositories: Literal["all", "none", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
+    encrypted_value: NotRequired[str]
+    key_id: NotRequired[str]
+    visibility: Literal["all", "private", "selected"]
+    selected_repository_ids: NotRequired[list[Union[int, str]]]
 
 
-class OrgsOrgSettingsImmutableReleasesPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgSettingsImmutableReleasesPutBody"""
+class OrgsOrgDependabotSecretsSecretNamePutBodyTypeForResponse(TypedDict):
+    """OrgsOrgDependabotSecretsSecretNamePutBody"""
 
-    enforced_repositories: Literal["all", "none", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
+    encrypted_value: NotRequired[str]
+    key_id: NotRequired[str]
+    visibility: Literal["all", "private", "selected"]
+    selected_repository_ids: NotRequired[list[Union[int, str]]]
 
 
 __all__ = (
-    "OrgsOrgSettingsImmutableReleasesPutBodyType",
-    "OrgsOrgSettingsImmutableReleasesPutBodyTypeForResponse",
+    "OrgsOrgDependabotSecretsSecretNamePutBodyType",
+    "OrgsOrgDependabotSecretsSecretNamePutBodyTypeForResponse",
 )

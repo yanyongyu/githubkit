@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -17,31 +17,65 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0303 import DiffEntry
-from .group_0304 import Commit
 
+class RepositoryCollaboratorPermission(GitHubModel):
+    """Repository Collaborator Permission
 
-class CommitComparison(GitHubModel):
-    """Commit Comparison
-
-    Commit Comparison
+    Repository Collaborator Permission
     """
 
+    permission: str = Field()
+    role_name: str = Field()
+    user: Union[None, Collaborator] = Field()
+
+
+class Collaborator(GitHubModel):
+    """Collaborator
+
+    Collaborator
+    """
+
+    login: str = Field()
+    id: int = Field()
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    name: Missing[Union[str, None]] = Field(default=UNSET)
+    node_id: str = Field()
+    avatar_url: str = Field()
+    gravatar_id: Union[str, None] = Field()
     url: str = Field()
     html_url: str = Field()
-    permalink_url: str = Field()
-    diff_url: str = Field()
-    patch_url: str = Field()
-    base_commit: Commit = Field(title="Commit", description="Commit")
-    merge_base_commit: Commit = Field(title="Commit", description="Commit")
-    status: Literal["diverged", "ahead", "behind", "identical"] = Field()
-    ahead_by: int = Field()
-    behind_by: int = Field()
-    total_commits: int = Field()
-    commits: list[Commit] = Field()
-    files: Missing[list[DiffEntry]] = Field(default=UNSET)
+    followers_url: str = Field()
+    following_url: str = Field()
+    gists_url: str = Field()
+    starred_url: str = Field()
+    subscriptions_url: str = Field()
+    organizations_url: str = Field()
+    repos_url: str = Field()
+    events_url: str = Field()
+    received_events_url: str = Field()
+    type: str = Field()
+    site_admin: bool = Field()
+    permissions: Missing[CollaboratorPropPermissions] = Field(default=UNSET)
+    role_name: str = Field()
+    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(CommitComparison)
+class CollaboratorPropPermissions(GitHubModel):
+    """CollaboratorPropPermissions"""
 
-__all__ = ("CommitComparison",)
+    pull: bool = Field()
+    triage: Missing[bool] = Field(default=UNSET)
+    push: bool = Field()
+    maintain: Missing[bool] = Field(default=UNSET)
+    admin: bool = Field()
+
+
+model_rebuild(RepositoryCollaboratorPermission)
+model_rebuild(Collaborator)
+model_rebuild(CollaboratorPropPermissions)
+
+__all__ = (
+    "Collaborator",
+    "CollaboratorPropPermissions",
+    "RepositoryCollaboratorPermission",
+)

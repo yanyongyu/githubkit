@@ -9,56 +9,119 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0303 import DiffEntryType, DiffEntryTypeForResponse
-from .group_0304 import CommitType, CommitTypeForResponse
 
+class RepositoryCollaboratorPermissionType(TypedDict):
+    """Repository Collaborator Permission
 
-class CommitComparisonType(TypedDict):
-    """Commit Comparison
-
-    Commit Comparison
+    Repository Collaborator Permission
     """
 
-    url: str
-    html_url: str
-    permalink_url: str
-    diff_url: str
-    patch_url: str
-    base_commit: CommitType
-    merge_base_commit: CommitType
-    status: Literal["diverged", "ahead", "behind", "identical"]
-    ahead_by: int
-    behind_by: int
-    total_commits: int
-    commits: list[CommitType]
-    files: NotRequired[list[DiffEntryType]]
+    permission: str
+    role_name: str
+    user: Union[None, CollaboratorType]
 
 
-class CommitComparisonTypeForResponse(TypedDict):
-    """Commit Comparison
+class RepositoryCollaboratorPermissionTypeForResponse(TypedDict):
+    """Repository Collaborator Permission
 
-    Commit Comparison
+    Repository Collaborator Permission
     """
 
+    permission: str
+    role_name: str
+    user: Union[None, CollaboratorTypeForResponse]
+
+
+class CollaboratorType(TypedDict):
+    """Collaborator
+
+    Collaborator
+    """
+
+    login: str
+    id: int
+    email: NotRequired[Union[str, None]]
+    name: NotRequired[Union[str, None]]
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
     url: str
     html_url: str
-    permalink_url: str
-    diff_url: str
-    patch_url: str
-    base_commit: CommitTypeForResponse
-    merge_base_commit: CommitTypeForResponse
-    status: Literal["diverged", "ahead", "behind", "identical"]
-    ahead_by: int
-    behind_by: int
-    total_commits: int
-    commits: list[CommitTypeForResponse]
-    files: NotRequired[list[DiffEntryTypeForResponse]]
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    permissions: NotRequired[CollaboratorPropPermissionsType]
+    role_name: str
+    user_view_type: NotRequired[str]
+
+
+class CollaboratorTypeForResponse(TypedDict):
+    """Collaborator
+
+    Collaborator
+    """
+
+    login: str
+    id: int
+    email: NotRequired[Union[str, None]]
+    name: NotRequired[Union[str, None]]
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    permissions: NotRequired[CollaboratorPropPermissionsTypeForResponse]
+    role_name: str
+    user_view_type: NotRequired[str]
+
+
+class CollaboratorPropPermissionsType(TypedDict):
+    """CollaboratorPropPermissions"""
+
+    pull: bool
+    triage: NotRequired[bool]
+    push: bool
+    maintain: NotRequired[bool]
+    admin: bool
+
+
+class CollaboratorPropPermissionsTypeForResponse(TypedDict):
+    """CollaboratorPropPermissions"""
+
+    pull: bool
+    triage: NotRequired[bool]
+    push: bool
+    maintain: NotRequired[bool]
+    admin: bool
 
 
 __all__ = (
-    "CommitComparisonType",
-    "CommitComparisonTypeForResponse",
+    "CollaboratorPropPermissionsType",
+    "CollaboratorPropPermissionsTypeForResponse",
+    "CollaboratorType",
+    "CollaboratorTypeForResponse",
+    "RepositoryCollaboratorPermissionType",
+    "RepositoryCollaboratorPermissionTypeForResponse",
 )

@@ -18,17 +18,22 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0523 import EnterpriseWebhooks
-from .group_0524 import SimpleInstallation
-from .group_0525 import OrganizationSimpleWebhooks
-from .group_0526 import RepositoryWebhooks
-from .group_0874 import WebhookRegistryPackageUpdatedPropRegistryPackage
+from .group_0535 import EnterpriseWebhooks
+from .group_0536 import SimpleInstallation
+from .group_0537 import OrganizationSimpleWebhooks
+from .group_0538 import RepositoryWebhooks
+from .group_0573 import WebhooksReviewComment
+from .group_0874 import WebhookPullRequestReviewCommentDeletedPropPullRequest
 
 
-class WebhookRegistryPackageUpdated(GitHubModel):
-    """WebhookRegistryPackageUpdated"""
+class WebhookPullRequestReviewCommentDeleted(GitHubModel):
+    """pull_request_review_comment deleted event"""
 
-    action: Literal["updated"] = Field()
+    action: Literal["deleted"] = Field()
+    comment: WebhooksReviewComment = Field(
+        title="Pull Request Review Comment",
+        description="The [comment](https://docs.github.com/rest/pulls/comments#get-a-review-comment-for-a-pull-request) itself.",
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -44,15 +49,14 @@ class WebhookRegistryPackageUpdated(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    registry_package: WebhookRegistryPackageUpdatedPropRegistryPackage = Field()
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
+    pull_request: WebhookPullRequestReviewCommentDeletedPropPullRequest = Field()
+    repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookRegistryPackageUpdated)
+model_rebuild(WebhookPullRequestReviewCommentDeleted)
 
-__all__ = ("WebhookRegistryPackageUpdated",)
+__all__ = ("WebhookPullRequestReviewCommentDeleted",)

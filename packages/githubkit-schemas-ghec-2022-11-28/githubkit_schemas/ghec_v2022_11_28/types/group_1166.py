@@ -9,28 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0054 import RunnerType, RunnerTypeForResponse
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202Type(
+class EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type(
     TypedDict
 ):
-    """EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202"""
+    """EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201"""
 
-    message: NotRequired[str]
-    warning: NotRequired[str]
+    runner: RunnerType
+    encoded_jit_config: str
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202TypeForResponse(
+class EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202"""
+    """EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201"""
 
-    message: NotRequired[str]
-    warning: NotRequired[str]
+    runner: RunnerTypeForResponse
+    encoded_jit_config: str
 
 
 __all__ = (
-    "EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202Type",
-    "EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202TypeForResponse",
+    "EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type",
+    "EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201TypeForResponse",
 )

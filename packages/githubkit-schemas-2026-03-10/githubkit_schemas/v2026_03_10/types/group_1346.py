@@ -11,20 +11,26 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody"""
-
-    sub_issue_id: int
+from .group_0282 import ActionsSecretType, ActionsSecretTypeForResponse
 
 
-class ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200"""
 
-    sub_issue_id: int
+    total_count: int
+    secrets: list[ActionsSecretType]
+
+
+class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200"""
+
+    total_count: int
+    secrets: list[ActionsSecretTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyType",
-    "ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyTypeForResponse",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200Type",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200TypeForResponse",
 )

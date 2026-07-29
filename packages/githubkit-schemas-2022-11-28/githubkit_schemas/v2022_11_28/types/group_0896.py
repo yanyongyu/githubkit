@@ -13,47 +13,50 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0244 import RepositoryRulesetType, RepositoryRulesetTypeForResponse
-from .group_0523 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0524 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0525 import (
+from .group_0535 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0536 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0537 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0526 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0538 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 from .group_0897 import (
-    WebhookRepositoryRulesetEditedPropChangesType,
-    WebhookRepositoryRulesetEditedPropChangesTypeForResponse,
+    WebhookPullRequestSynchronizePropPullRequestType,
+    WebhookPullRequestSynchronizePropPullRequestTypeForResponse,
 )
 
 
-class WebhookRepositoryRulesetEditedType(TypedDict):
-    """repository ruleset edited event"""
+class WebhookPullRequestSynchronizeType(TypedDict):
+    """pull_request synchronize event"""
 
-    action: Literal["edited"]
+    action: Literal["synchronize"]
+    after: str
+    before: str
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
+    number: int
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    repository_ruleset: RepositoryRulesetType
-    changes: NotRequired[WebhookRepositoryRulesetEditedPropChangesType]
+    pull_request: WebhookPullRequestSynchronizePropPullRequestType
+    repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookRepositoryRulesetEditedTypeForResponse(TypedDict):
-    """repository ruleset edited event"""
+class WebhookPullRequestSynchronizeTypeForResponse(TypedDict):
+    """pull_request synchronize event"""
 
-    action: Literal["edited"]
+    action: Literal["synchronize"]
+    after: str
+    before: str
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
+    number: int
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    repository_ruleset: RepositoryRulesetTypeForResponse
-    changes: NotRequired[WebhookRepositoryRulesetEditedPropChangesTypeForResponse]
+    pull_request: WebhookPullRequestSynchronizePropPullRequestTypeForResponse
+    repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookRepositoryRulesetEditedType",
-    "WebhookRepositoryRulesetEditedTypeForResponse",
+    "WebhookPullRequestSynchronizeType",
+    "WebhookPullRequestSynchronizeTypeForResponse",
 )

@@ -9,34 +9,75 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyType(TypedDict):
-    """EnterprisesEnterpriseDependabotRepositoryAccessPatchBody
+class AgentsTasksGetResponse400Type(TypedDict):
+    """AgentsTasksGetResponse400
 
-    Examples:
-        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
     """
 
-    repository_ids_to_add: NotRequired[list[int]]
-    repository_ids_to_remove: NotRequired[list[int]]
+    message: str
+    errors: NotRequired[list[AgentsTasksGetResponse400PropErrorsItemsType]]
+    documentation_url: str
 
 
-class EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseDependabotRepositoryAccessPatchBody
+class AgentsTasksGetResponse400TypeForResponse(TypedDict):
+    """AgentsTasksGetResponse400
 
-    Examples:
-        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
     """
 
-    repository_ids_to_add: NotRequired[list[int]]
-    repository_ids_to_remove: NotRequired[list[int]]
+    message: str
+    errors: NotRequired[list[AgentsTasksGetResponse400PropErrorsItemsTypeForResponse]]
+    documentation_url: str
+
+
+class AgentsTasksGetResponse400PropErrorsItemsType(TypedDict):
+    """AgentsTasksGetResponse400PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
+
+
+class AgentsTasksGetResponse400PropErrorsItemsTypeForResponse(TypedDict):
+    """AgentsTasksGetResponse400PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyType",
-    "EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyTypeForResponse",
+    "AgentsTasksGetResponse400PropErrorsItemsType",
+    "AgentsTasksGetResponse400PropErrorsItemsTypeForResponse",
+    "AgentsTasksGetResponse400Type",
+    "AgentsTasksGetResponse400TypeForResponse",
 )

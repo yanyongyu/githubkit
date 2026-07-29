@@ -12,27 +12,29 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class CodespacesUserPublicKeyType(TypedDict):
-    """CodespacesUserPublicKey
+class ReferrerTrafficType(TypedDict):
+    """Referrer Traffic
 
-    The public key used for setting user Codespaces' Secrets.
+    Referrer Traffic
     """
 
-    key_id: str
-    key: str
+    referrer: str
+    count: int
+    uniques: int
 
 
-class CodespacesUserPublicKeyTypeForResponse(TypedDict):
-    """CodespacesUserPublicKey
+class ReferrerTrafficTypeForResponse(TypedDict):
+    """Referrer Traffic
 
-    The public key used for setting user Codespaces' Secrets.
+    Referrer Traffic
     """
 
-    key_id: str
-    key: str
+    referrer: str
+    count: int
+    uniques: int
 
 
 __all__ = (
-    "CodespacesUserPublicKeyType",
-    "CodespacesUserPublicKeyTypeForResponse",
+    "ReferrerTrafficType",
+    "ReferrerTrafficTypeForResponse",
 )

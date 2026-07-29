@@ -9,29 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgHooksHookIdConfigPatchBodyType(TypedDict):
-    """OrgsOrgHooksHookIdConfigPatchBody"""
+class OrgsOrgAttestationsBulkListPostBodyType(TypedDict):
+    """OrgsOrgAttestationsBulkListPostBody"""
 
-    url: NotRequired[str]
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
+    subject_digests: list[str]
+    predicate_type: NotRequired[str]
 
 
-class OrgsOrgHooksHookIdConfigPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgHooksHookIdConfigPatchBody"""
+class OrgsOrgAttestationsBulkListPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgAttestationsBulkListPostBody"""
 
-    url: NotRequired[str]
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
+    subject_digests: list[str]
+    predicate_type: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgHooksHookIdConfigPatchBodyType",
-    "OrgsOrgHooksHookIdConfigPatchBodyTypeForResponse",
+    "OrgsOrgAttestationsBulkListPostBodyType",
+    "OrgsOrgAttestationsBulkListPostBodyTypeForResponse",
 )

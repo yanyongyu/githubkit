@@ -9,28 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0087 import CopilotSeatDetailsType, CopilotSeatDetailsTypeForResponse
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseMembersUsernameCopilotGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseMembersUsernameCopilotGetResponse200"""
-
-    total_seats: NotRequired[int]
-    seats: NotRequired[list[CopilotSeatDetailsType]]
-
-
-class EnterprisesEnterpriseMembersUsernameCopilotGetResponse200TypeForResponse(
+class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesAddPatchBodyType(
     TypedDict
 ):
-    """EnterprisesEnterpriseMembersUsernameCopilotGetResponse200"""
+    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositories
+    AddPatchBody
+    """
 
-    total_seats: NotRequired[int]
-    seats: NotRequired[list[CopilotSeatDetailsTypeForResponse]]
+    repositories: list[str]
+
+
+class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesAddPatchBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositories
+    AddPatchBody
+    """
+
+    repositories: list[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseMembersUsernameCopilotGetResponse200Type",
-    "EnterprisesEnterpriseMembersUsernameCopilotGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesAddPatchBodyType",
+    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesAddPatchBodyTypeForResponse",
 )

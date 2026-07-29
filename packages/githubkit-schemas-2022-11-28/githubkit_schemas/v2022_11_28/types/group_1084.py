@@ -9,29 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsVariablesPostBodyType(TypedDict):
-    """OrgsOrgActionsVariablesPostBody"""
+class OrgsOrgActionsHostedRunnersPostBodyType(TypedDict):
+    """OrgsOrgActionsHostedRunnersPostBody"""
 
     name: str
-    value: str
-    visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
+    image: OrgsOrgActionsHostedRunnersPostBodyPropImageType
+    size: str
+    runner_group_id: int
+    maximum_runners: NotRequired[int]
+    enable_static_ip: NotRequired[bool]
+    image_gen: NotRequired[bool]
 
 
-class OrgsOrgActionsVariablesPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgActionsVariablesPostBody"""
+class OrgsOrgActionsHostedRunnersPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsHostedRunnersPostBody"""
 
     name: str
-    value: str
-    visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
+    image: OrgsOrgActionsHostedRunnersPostBodyPropImageTypeForResponse
+    size: str
+    runner_group_id: int
+    maximum_runners: NotRequired[int]
+    enable_static_ip: NotRequired[bool]
+    image_gen: NotRequired[bool]
+
+
+class OrgsOrgActionsHostedRunnersPostBodyPropImageType(TypedDict):
+    """OrgsOrgActionsHostedRunnersPostBodyPropImage
+
+    The image of runner. To list all available images, use `GET /actions/hosted-
+    runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`.
+    """
+
+    id: NotRequired[str]
+    source: NotRequired[Literal["github", "partner", "custom"]]
+    version: NotRequired[Union[str, None]]
+
+
+class OrgsOrgActionsHostedRunnersPostBodyPropImageTypeForResponse(TypedDict):
+    """OrgsOrgActionsHostedRunnersPostBodyPropImage
+
+    The image of runner. To list all available images, use `GET /actions/hosted-
+    runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`.
+    """
+
+    id: NotRequired[str]
+    source: NotRequired[Literal["github", "partner", "custom"]]
+    version: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "OrgsOrgActionsVariablesPostBodyType",
-    "OrgsOrgActionsVariablesPostBodyTypeForResponse",
+    "OrgsOrgActionsHostedRunnersPostBodyPropImageType",
+    "OrgsOrgActionsHostedRunnersPostBodyPropImageTypeForResponse",
+    "OrgsOrgActionsHostedRunnersPostBodyType",
+    "OrgsOrgActionsHostedRunnersPostBodyTypeForResponse",
 )

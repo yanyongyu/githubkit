@@ -11,37 +11,34 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_1605 import (
-    UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType,
-    UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse,
-)
 
+class ReposOwnerRepoPagesDeploymentsPostBodyType(TypedDict):
+    """ReposOwnerRepoPagesDeploymentsPostBody
 
-class UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1Type(
-    TypedDict
-):
-    """UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAl
-    lof1
+    The object used to create GitHub Pages deployment
     """
 
-    custom_properties: NotRequired[
-        UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType
-    ]
+    artifact_id: NotRequired[int]
+    artifact_url: NotRequired[str]
+    environment: NotRequired[str]
+    pages_build_version: str
+    oidc_token: str
 
 
-class UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1TypeForResponse(
-    TypedDict
-):
-    """UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAl
-    lof1
+class ReposOwnerRepoPagesDeploymentsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPagesDeploymentsPostBody
+
+    The object used to create GitHub Pages deployment
     """
 
-    custom_properties: NotRequired[
-        UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse
-    ]
+    artifact_id: NotRequired[int]
+    artifact_url: NotRequired[str]
+    environment: NotRequired[str]
+    pages_build_version: str
+    oidc_token: str
 
 
 __all__ = (
-    "UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1Type",
-    "UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1TypeForResponse",
+    "ReposOwnerRepoPagesDeploymentsPostBodyType",
+    "ReposOwnerRepoPagesDeploymentsPostBodyTypeForResponse",
 )

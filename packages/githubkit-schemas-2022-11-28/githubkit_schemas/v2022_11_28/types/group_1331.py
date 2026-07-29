@@ -9,136 +9,105 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, TypeAlias, Union
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberPatchBodyType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberPatchBody"""
+class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200"""
 
-    title: NotRequired[Union[str, int, None]]
-    body: NotRequired[Union[str, None]]
-    assignee: NotRequired[Union[str, None]]
-    state: NotRequired[Literal["open", "closed"]]
-    state_reason: NotRequired[
-        Union[None, Literal["completed", "not_planned", "duplicate", "reopened"]]
+    mcp_configuration: Union[
+        ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfigurationType,
+        None,
     ]
-    duplicate_issue_id: NotRequired[int]
-    milestone: NotRequired[Union[str, int, None]]
-    labels: NotRequired[
-        list[
-            Union[
-                str, ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type
-            ]
-        ]
-    ]
-    assignees: NotRequired[
-        list[
-            Union[
-                str,
-                ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1Type,
-            ]
-        ]
-    ]
-    issue_field_values: NotRequired[
-        list[ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsType]
-    ]
-    type: NotRequired[Union[str, None]]
+    enabled_tools: (
+        ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledToolsType
+    )
+    require_actions_workflow_approval: bool
+    is_firewall_enabled: bool
+    is_firewall_recommended_allowlist_enabled: bool
+    custom_allowlist: list[str]
+    is_automations_enabled: bool
+    require_write_access_for_automation_triggers: bool
 
 
-class ReposOwnerRepoIssuesIssueNumberPatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberPatchBody"""
-
-    title: NotRequired[Union[str, int, None]]
-    body: NotRequired[Union[str, None]]
-    assignee: NotRequired[Union[str, None]]
-    state: NotRequired[Literal["open", "closed"]]
-    state_reason: NotRequired[
-        Union[None, Literal["completed", "not_planned", "duplicate", "reopened"]]
-    ]
-    duplicate_issue_id: NotRequired[int]
-    milestone: NotRequired[Union[str, int, None]]
-    labels: NotRequired[
-        list[
-            Union[
-                str,
-                ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1TypeForResponse,
-            ]
-        ]
-    ]
-    assignees: NotRequired[
-        list[
-            Union[
-                str,
-                ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1TypeForResponse,
-            ]
-        ]
-    ]
-    issue_field_values: NotRequired[
-        list[
-            ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsTypeForResponse
-        ]
-    ]
-    type: NotRequired[Union[str, None]]
-
-
-class ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1"""
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    color: NotRequired[Union[str, None]]
-
-
-class ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1TypeForResponse(
+class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200TypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1"""
+    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200"""
 
-    id: NotRequired[int]
-    name: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    color: NotRequired[Union[str, None]]
+    mcp_configuration: Union[
+        ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfigurationTypeForResponse,
+        None,
+    ]
+    enabled_tools: ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledToolsTypeForResponse
+    require_actions_workflow_approval: bool
+    is_firewall_enabled: bool
+    is_firewall_recommended_allowlist_enabled: bool
+    custom_allowlist: list[str]
+    is_automations_enabled: bool
+    require_write_access_for_automation_triggers: bool
 
 
-class ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1Type(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1"""
+ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfigurationType: TypeAlias = dict[
+    str, Any
+]
+"""ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration
 
-    login: NotRequired[str]
+The user-supplied MCP server configuration for the repository, as a free-form
+JSON object. This will be set to `null` if no configuration has been set.
+
+The shape of a valid MCP configuration may evolve over time, so this property is
+intentionally not strictly typed. Clients should not assume a fixed schema.
+"""
 
 
-class ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1TypeForResponse(
+ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfigurationTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration
+
+The user-supplied MCP server configuration for the repository, as a free-form
+JSON object. This will be set to `null` if no configuration has been set.
+
+The shape of a valid MCP configuration may evolve over time, so this property is
+intentionally not strictly typed. Clients should not assume a fixed schema.
+"""
+
+
+class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledToolsType(
     TypedDict
 ):
-    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1"""
+    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools
 
-    login: NotRequired[str]
+    The enabled review tools for Copilot cloud agent.
+    """
+
+    codeql: bool
+    copilot_code_review: bool
+    secret_scanning: bool
+    dependency_vulnerability_checks: bool
 
 
-class ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems"""
-
-    field_id: int
-    value: Union[str, float, list[str]]
-
-
-class ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsTypeForResponse(
+class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledToolsTypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems"""
+    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools
 
-    field_id: int
-    value: Union[str, float, list[str]]
+    The enabled review tools for Copilot cloud agent.
+    """
+
+    codeql: bool
+    copilot_code_review: bool
+    secret_scanning: bool
+    dependency_vulnerability_checks: bool
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1Type",
-    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1TypeForResponse",
-    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsType",
-    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsTypeForResponse",
-    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type",
-    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1TypeForResponse",
-    "ReposOwnerRepoIssuesIssueNumberPatchBodyType",
-    "ReposOwnerRepoIssuesIssueNumberPatchBodyTypeForResponse",
+    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledToolsType",
+    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledToolsTypeForResponse",
+    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfigurationType",
+    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfigurationTypeForResponse",
+    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200Type",
+    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200TypeForResponse",
 )

@@ -9,21 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Annotated, Literal, Union
+
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoActionsSecretsSecretNamePutBody(GitHubModel):
-    """ReposOwnerRepoActionsSecretsSecretNamePutBody"""
+class OrgsOrgPersonalAccessTokenRequestsPostBody(GitHubModel):
+    """OrgsOrgPersonalAccessTokenRequestsPostBody"""
 
-    encrypted_value: str = Field(
-        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
-        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get a repository public key](https://docs.github.com/enterprise-cloud@latest/rest/actions/secrets#get-a-repository-public-key) endpoint.",
+    pat_request_ids: Missing[list[int]] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="Unique identifiers of the requests for access via fine-grained personal access token. Must be formed of between 1 and 100 `pat_request_id` values.",
     )
-    key_id: str = Field(description="ID of the key you used to encrypt the secret.")
+    action: Literal["approve", "deny"] = Field(
+        description="Action to apply to the requests."
+    )
+    reason: Missing[Union[Annotated[str, Field(max_length=1024)], None]] = Field(
+        default=UNSET,
+        description="Reason for approving or denying the requests. Max 1024 characters.",
+    )
 
 
-model_rebuild(ReposOwnerRepoActionsSecretsSecretNamePutBody)
+model_rebuild(OrgsOrgPersonalAccessTokenRequestsPostBody)
 
-__all__ = ("ReposOwnerRepoActionsSecretsSecretNamePutBody",)
+__all__ = ("OrgsOrgPersonalAccessTokenRequestsPostBody",)

@@ -9,32 +9,93 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyType(TypedDict):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBody
+class OrgsOrgSecretScanningPatternConfigurationsPatchBodyType(TypedDict):
+    """OrgsOrgSecretScanningPatternConfigurationsPatchBody"""
 
-    Examples:
-        {'apps': ['my-app']}
-    """
+    pattern_config_version: NotRequired[Union[str, None]]
+    provider_pattern_settings: NotRequired[
+        list[
+            OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType
+        ]
+    ]
+    custom_pattern_settings: NotRequired[
+        list[
+            OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType
+        ]
+    ]
 
-    apps: list[str]
+
+class OrgsOrgSecretScanningPatternConfigurationsPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgSecretScanningPatternConfigurationsPatchBody"""
+
+    pattern_config_version: NotRequired[Union[str, None]]
+    provider_pattern_settings: NotRequired[
+        list[
+            OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsTypeForResponse
+        ]
+    ]
+    custom_pattern_settings: NotRequired[
+        list[
+            OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsTypeForResponse
+        ]
+    ]
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyTypeForResponse(
+class OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType(
     TypedDict
 ):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBody
-
-    Examples:
-        {'apps': ['my-app']}
+    """OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsIt
+    ems
     """
 
-    apps: list[str]
+    token_type: NotRequired[str]
+    push_protection_setting: NotRequired[Literal["not-set", "disabled", "enabled"]]
+
+
+class OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsIt
+    ems
+    """
+
+    token_type: NotRequired[str]
+    push_protection_setting: NotRequired[Literal["not-set", "disabled", "enabled"]]
+
+
+class OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType(
+    TypedDict
+):
+    """OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItem
+    s
+    """
+
+    token_type: NotRequired[str]
+    custom_pattern_version: NotRequired[Union[str, None]]
+    push_protection_setting: NotRequired[Literal["disabled", "enabled"]]
+
+
+class OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItem
+    s
+    """
+
+    token_type: NotRequired[str]
+    custom_pattern_version: NotRequired[Union[str, None]]
+    push_protection_setting: NotRequired[Literal["disabled", "enabled"]]
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyType",
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyTypeForResponse",
+    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType",
+    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsTypeForResponse",
+    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType",
+    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsTypeForResponse",
+    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyType",
+    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyTypeForResponse",
 )

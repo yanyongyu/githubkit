@@ -9,30 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksRepositoriesAddedItemsType(TypedDict):
-    """WebhooksRepositoriesAddedItems"""
+class KeySimpleType(TypedDict):
+    """Key Simple
 
-    full_name: str
+    Key Simple
+    """
+
     id: int
-    name: str
-    node_id: str
-    private: bool
+    key: str
+    created_at: NotRequired[_dt.datetime]
+    last_used: NotRequired[Union[_dt.datetime, None]]
 
 
-class WebhooksRepositoriesAddedItemsTypeForResponse(TypedDict):
-    """WebhooksRepositoriesAddedItems"""
+class KeySimpleTypeForResponse(TypedDict):
+    """Key Simple
 
-    full_name: str
+    Key Simple
+    """
+
     id: int
-    name: str
-    node_id: str
-    private: bool
+    key: str
+    created_at: NotRequired[str]
+    last_used: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "WebhooksRepositoriesAddedItemsType",
-    "WebhooksRepositoriesAddedItemsTypeForResponse",
+    "KeySimpleType",
+    "KeySimpleTypeForResponse",
 )

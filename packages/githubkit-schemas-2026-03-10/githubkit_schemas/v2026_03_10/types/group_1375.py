@@ -9,41 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class ReposOwnerRepoPullsPullNumberCommentsPostBodyType(TypedDict):
-    """ReposOwnerRepoPullsPullNumberCommentsPostBody"""
-
-    body: str
-    commit_id: str
-    path: str
-    position: NotRequired[int]
-    side: NotRequired[Literal["LEFT", "RIGHT"]]
-    line: NotRequired[int]
-    start_line: NotRequired[int]
-    start_side: NotRequired[Literal["LEFT", "RIGHT", "side"]]
-    in_reply_to: NotRequired[int]
-    subject_type: NotRequired[Literal["line", "file"]]
+from .group_1376 import (
+    ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsType,
+    ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsTypeForResponse,
+)
 
 
-class ReposOwnerRepoPullsPullNumberCommentsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoPullsPullNumberCommentsPostBody"""
+class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1Type(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1"""
 
-    body: str
-    commit_id: str
-    path: str
-    position: NotRequired[int]
-    side: NotRequired[Literal["LEFT", "RIGHT"]]
-    line: NotRequired[int]
-    start_line: NotRequired[int]
-    start_side: NotRequired[Literal["LEFT", "RIGHT", "side"]]
-    in_reply_to: NotRequired[int]
-    subject_type: NotRequired[Literal["line", "file"]]
+    suggestions: NotRequired[
+        ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsType
+    ]
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1TypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1"""
+
+    suggestions: NotRequired[
+        ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsTypeForResponse
+    ]
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberCommentsPostBodyType",
-    "ReposOwnerRepoPullsPullNumberCommentsPostBodyTypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1Type",
+    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1TypeForResponse",
 )

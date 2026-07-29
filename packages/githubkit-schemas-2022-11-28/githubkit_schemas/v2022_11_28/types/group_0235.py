@@ -10,30 +10,41 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0236 import (
+    RepositoryRuleCopilotCodeReviewPropParametersType,
+    RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse,
+)
 
 
-class RepositoryRuleLicenseComplianceScanningType(TypedDict):
-    """license_compliance_scanning
+class RepositoryRuleCopilotCodeReviewType(TypedDict):
+    """copilot_code_review
 
-    Enforce any added or changed dependencies to comply with the organization's
-    license policy.
+    Request Copilot code review for new pull requests automatically if the author
+    has access to Copilot code review and their premium requests quota has not
+    reached the limit.
     """
 
-    type: Literal["license_compliance_scanning"]
+    type: Literal["copilot_code_review"]
+    parameters: NotRequired[RepositoryRuleCopilotCodeReviewPropParametersType]
 
 
-class RepositoryRuleLicenseComplianceScanningTypeForResponse(TypedDict):
-    """license_compliance_scanning
+class RepositoryRuleCopilotCodeReviewTypeForResponse(TypedDict):
+    """copilot_code_review
 
-    Enforce any added or changed dependencies to comply with the organization's
-    license policy.
+    Request Copilot code review for new pull requests automatically if the author
+    has access to Copilot code review and their premium requests quota has not
+    reached the limit.
     """
 
-    type: Literal["license_compliance_scanning"]
+    type: Literal["copilot_code_review"]
+    parameters: NotRequired[
+        RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse
+    ]
 
 
 __all__ = (
-    "RepositoryRuleLicenseComplianceScanningType",
-    "RepositoryRuleLicenseComplianceScanningTypeForResponse",
+    "RepositoryRuleCopilotCodeReviewType",
+    "RepositoryRuleCopilotCodeReviewTypeForResponse",
 )

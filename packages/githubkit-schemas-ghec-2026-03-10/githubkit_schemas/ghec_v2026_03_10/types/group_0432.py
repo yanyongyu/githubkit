@@ -9,61 +9,121 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0430 import MetadataType, MetadataTypeForResponse
 
+class ContentTreeType(TypedDict):
+    """Content Tree
 
-class ManifestType(TypedDict):
-    """Manifest"""
+    Content Tree
+    """
 
+    type: str
+    size: int
     name: str
-    file: NotRequired[ManifestPropFileType]
-    metadata: NotRequired[MetadataType]
-    resolved: NotRequired[ManifestPropResolvedType]
+    path: str
+    sha: str
+    content: NotRequired[str]
+    url: str
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    entries: NotRequired[list[ContentTreePropEntriesItemsType]]
+    encoding: NotRequired[str]
+    links: ContentTreePropLinksType
 
 
-class ManifestTypeForResponse(TypedDict):
-    """Manifest"""
+class ContentTreeTypeForResponse(TypedDict):
+    """Content Tree
 
+    Content Tree
+    """
+
+    type: str
+    size: int
     name: str
-    file: NotRequired[ManifestPropFileTypeForResponse]
-    metadata: NotRequired[MetadataTypeForResponse]
-    resolved: NotRequired[ManifestPropResolvedTypeForResponse]
+    path: str
+    sha: str
+    content: NotRequired[str]
+    url: str
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    entries: NotRequired[list[ContentTreePropEntriesItemsTypeForResponse]]
+    encoding: NotRequired[str]
+    links: ContentTreePropLinksTypeForResponse
 
 
-class ManifestPropFileType(TypedDict):
-    """ManifestPropFile"""
+class ContentTreePropLinksType(TypedDict):
+    """ContentTreePropLinks"""
 
-    source_location: NotRequired[str]
-
-
-class ManifestPropFileTypeForResponse(TypedDict):
-    """ManifestPropFile"""
-
-    source_location: NotRequired[str]
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
 
 
-ManifestPropResolvedType: TypeAlias = dict[str, Any]
-"""ManifestPropResolved
+class ContentTreePropLinksTypeForResponse(TypedDict):
+    """ContentTreePropLinks"""
 
-A collection of resolved package dependencies.
-"""
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
 
 
-ManifestPropResolvedTypeForResponse: TypeAlias = dict[str, Any]
-"""ManifestPropResolved
+class ContentTreePropEntriesItemsType(TypedDict):
+    """ContentTreePropEntriesItems"""
 
-A collection of resolved package dependencies.
-"""
+    type: str
+    size: int
+    name: str
+    path: str
+    sha: str
+    url: str
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentTreePropEntriesItemsPropLinksType
+
+
+class ContentTreePropEntriesItemsTypeForResponse(TypedDict):
+    """ContentTreePropEntriesItems"""
+
+    type: str
+    size: int
+    name: str
+    path: str
+    sha: str
+    url: str
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentTreePropEntriesItemsPropLinksTypeForResponse
+
+
+class ContentTreePropEntriesItemsPropLinksType(TypedDict):
+    """ContentTreePropEntriesItemsPropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
+
+
+class ContentTreePropEntriesItemsPropLinksTypeForResponse(TypedDict):
+    """ContentTreePropEntriesItemsPropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
 
 
 __all__ = (
-    "ManifestPropFileType",
-    "ManifestPropFileTypeForResponse",
-    "ManifestPropResolvedType",
-    "ManifestPropResolvedTypeForResponse",
-    "ManifestType",
-    "ManifestTypeForResponse",
+    "ContentTreePropEntriesItemsPropLinksType",
+    "ContentTreePropEntriesItemsPropLinksTypeForResponse",
+    "ContentTreePropEntriesItemsType",
+    "ContentTreePropEntriesItemsTypeForResponse",
+    "ContentTreePropLinksType",
+    "ContentTreePropLinksTypeForResponse",
+    "ContentTreeType",
+    "ContentTreeTypeForResponse",
 )

@@ -9,29 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class RepositoryRuleDetailedOneof6Type(TypedDict):
-    """RepositoryRuleDetailedOneof6"""
+class PullRequestPropLabelsItemsType(TypedDict):
+    """PullRequestPropLabelsItems"""
 
-    type: Literal["required_signatures"]
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    id: int
+    node_id: str
+    url: str
+    name: str
+    description: Union[str, None]
+    color: str
+    default: bool
 
 
-class RepositoryRuleDetailedOneof6TypeForResponse(TypedDict):
-    """RepositoryRuleDetailedOneof6"""
+class PullRequestPropLabelsItemsTypeForResponse(TypedDict):
+    """PullRequestPropLabelsItems"""
 
-    type: Literal["required_signatures"]
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    id: int
+    node_id: str
+    url: str
+    name: str
+    description: Union[str, None]
+    color: str
+    default: bool
 
 
 __all__ = (
-    "RepositoryRuleDetailedOneof6Type",
-    "RepositoryRuleDetailedOneof6TypeForResponse",
+    "PullRequestPropLabelsItemsType",
+    "PullRequestPropLabelsItemsTypeForResponse",
 )

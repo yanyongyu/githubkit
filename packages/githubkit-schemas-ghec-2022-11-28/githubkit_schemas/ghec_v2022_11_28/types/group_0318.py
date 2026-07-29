@@ -9,44 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from typing_extensions import TypedDict
 
 
-class ProjectsV2DraftIssueType(TypedDict):
-    """Draft Issue
+class LinkType(TypedDict):
+    """Link
 
-    A draft issue in a project
+    Hypermedia Link
     """
 
-    id: float
-    node_id: str
-    title: str
-    body: NotRequired[Union[str, None]]
-    user: Union[None, SimpleUserType]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+    href: str
 
 
-class ProjectsV2DraftIssueTypeForResponse(TypedDict):
-    """Draft Issue
+class LinkTypeForResponse(TypedDict):
+    """Link
 
-    A draft issue in a project
+    Hypermedia Link
     """
 
-    id: float
-    node_id: str
-    title: str
-    body: NotRequired[Union[str, None]]
-    user: Union[None, SimpleUserTypeForResponse]
-    created_at: str
-    updated_at: str
+    href: str
 
 
 __all__ = (
-    "ProjectsV2DraftIssueType",
-    "ProjectsV2DraftIssueTypeForResponse",
+    "LinkType",
+    "LinkTypeForResponse",
 )

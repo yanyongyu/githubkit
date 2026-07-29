@@ -9,77 +9,95 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class GetCostCenterType(TypedDict):
-    """GetCostCenter"""
+class UpdateBudgetType(TypedDict):
+    """UpdateBudget"""
 
-    id: str
-    name: str
-    azure_subscription: NotRequired[Union[str, None]]
-    state: NotRequired[Literal["active", "deleted"]]
-    resources: list[GetCostCenterPropResourcesItemsType]
-    has_next_page: NotRequired[bool]
-    ai_credit_pool_enabled: NotRequired[bool]
-    ai_credit_pool_state: NotRequired[GetCostCenterPropAiCreditPoolStateType]
+    message: str
+    budget: UpdateBudgetPropBudgetType
 
 
-class GetCostCenterTypeForResponse(TypedDict):
-    """GetCostCenter"""
+class UpdateBudgetTypeForResponse(TypedDict):
+    """UpdateBudget"""
 
-    id: str
-    name: str
-    azure_subscription: NotRequired[Union[str, None]]
-    state: NotRequired[Literal["active", "deleted"]]
-    resources: list[GetCostCenterPropResourcesItemsTypeForResponse]
-    has_next_page: NotRequired[bool]
-    ai_credit_pool_enabled: NotRequired[bool]
-    ai_credit_pool_state: NotRequired[GetCostCenterPropAiCreditPoolStateTypeForResponse]
+    message: str
+    budget: UpdateBudgetPropBudgetTypeForResponse
 
 
-class GetCostCenterPropResourcesItemsType(TypedDict):
-    """GetCostCenterPropResourcesItems"""
+class UpdateBudgetPropBudgetType(TypedDict):
+    """UpdateBudgetPropBudget"""
 
-    type: str
-    name: str
+    id: NotRequired[str]
+    budget_scope: NotRequired[
+        Literal[
+            "enterprise",
+            "organization",
+            "repository",
+            "cost_center",
+            "multi_user_customer",
+            "multi_user_cost_center",
+            "user",
+        ]
+    ]
+    budget_entity_name: NotRequired[str]
+    user: NotRequired[str]
+    consumed_amount: NotRequired[float]
+    budget_amount: NotRequired[int]
+    prevent_further_usage: NotRequired[bool]
+    budget_product_sku: NotRequired[str]
+    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing"]]
+    budget_alerting: NotRequired[UpdateBudgetPropBudgetPropBudgetAlertingType]
 
 
-class GetCostCenterPropResourcesItemsTypeForResponse(TypedDict):
-    """GetCostCenterPropResourcesItems"""
+class UpdateBudgetPropBudgetTypeForResponse(TypedDict):
+    """UpdateBudgetPropBudget"""
 
-    type: str
-    name: str
+    id: NotRequired[str]
+    budget_scope: NotRequired[
+        Literal[
+            "enterprise",
+            "organization",
+            "repository",
+            "cost_center",
+            "multi_user_customer",
+            "multi_user_cost_center",
+            "user",
+        ]
+    ]
+    budget_entity_name: NotRequired[str]
+    user: NotRequired[str]
+    consumed_amount: NotRequired[float]
+    budget_amount: NotRequired[int]
+    prevent_further_usage: NotRequired[bool]
+    budget_product_sku: NotRequired[str]
+    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing"]]
+    budget_alerting: NotRequired[
+        UpdateBudgetPropBudgetPropBudgetAlertingTypeForResponse
+    ]
 
 
-class GetCostCenterPropAiCreditPoolStateType(TypedDict):
-    """GetCostCenterPropAiCreditPoolState
+class UpdateBudgetPropBudgetPropBudgetAlertingType(TypedDict):
+    """UpdateBudgetPropBudgetPropBudgetAlerting"""
 
-    Read-only cap-budget projection for the cost center. Only present when the cost
-    center draws from the AI credit pool.
-    """
-
-    target_amount: NotRequired[Union[float, None]]
-    current_amount: NotRequired[Union[float, None]]
+    will_alert: NotRequired[bool]
+    alert_recipients: NotRequired[list[str]]
 
 
-class GetCostCenterPropAiCreditPoolStateTypeForResponse(TypedDict):
-    """GetCostCenterPropAiCreditPoolState
+class UpdateBudgetPropBudgetPropBudgetAlertingTypeForResponse(TypedDict):
+    """UpdateBudgetPropBudgetPropBudgetAlerting"""
 
-    Read-only cap-budget projection for the cost center. Only present when the cost
-    center draws from the AI credit pool.
-    """
-
-    target_amount: NotRequired[Union[float, None]]
-    current_amount: NotRequired[Union[float, None]]
+    will_alert: NotRequired[bool]
+    alert_recipients: NotRequired[list[str]]
 
 
 __all__ = (
-    "GetCostCenterPropAiCreditPoolStateType",
-    "GetCostCenterPropAiCreditPoolStateTypeForResponse",
-    "GetCostCenterPropResourcesItemsType",
-    "GetCostCenterPropResourcesItemsTypeForResponse",
-    "GetCostCenterType",
-    "GetCostCenterTypeForResponse",
+    "UpdateBudgetPropBudgetPropBudgetAlertingType",
+    "UpdateBudgetPropBudgetPropBudgetAlertingTypeForResponse",
+    "UpdateBudgetPropBudgetType",
+    "UpdateBudgetPropBudgetTypeForResponse",
+    "UpdateBudgetType",
+    "UpdateBudgetTypeForResponse",
 )

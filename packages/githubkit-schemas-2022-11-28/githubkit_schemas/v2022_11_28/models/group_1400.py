@@ -9,24 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody(GitHubModel):
-    """ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody"""
+class ReposOwnerRepoMilestonesMilestoneNumberPatchBody(GitHubModel):
+    """ReposOwnerRepoMilestonesMilestoneNumberPatchBody"""
 
-    reason: Literal["false_positive", "used_in_tests", "will_fix_later"] = Field(
-        description="The reason for bypassing push protection."
+    title: Missing[str] = Field(
+        default=UNSET, description="The title of the milestone."
     )
-    placeholder_id: str = Field(
-        description="The ID of the push protection bypass placeholder. This value is returned on any push protected routes."
+    state: Missing[Literal["open", "closed"]] = Field(
+        default=UNSET,
+        description="The state of the milestone. Either `open` or `closed`.",
+    )
+    description: Missing[str] = Field(
+        default=UNSET, description="A description of the milestone."
+    )
+    due_on: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="The milestone due date. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
 
 
-model_rebuild(ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody)
+model_rebuild(ReposOwnerRepoMilestonesMilestoneNumberPatchBody)
 
-__all__ = ("ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody",)
+__all__ = ("ReposOwnerRepoMilestonesMilestoneNumberPatchBody",)

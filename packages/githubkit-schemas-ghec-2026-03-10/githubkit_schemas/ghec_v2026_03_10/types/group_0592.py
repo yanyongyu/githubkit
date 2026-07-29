@@ -9,75 +9,77 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0245 import (
-    MarketplaceListingPlanType,
-    MarketplaceListingPlanTypeForResponse,
-)
+from .group_0587 import UserRoleItemsType, UserRoleItemsTypeForResponse
 
 
-class UserMarketplacePurchaseType(TypedDict):
-    """User Marketplace Purchase
+class UserType(TypedDict):
+    """User"""
 
-    User Marketplace Purchase
-    """
-
-    billing_cycle: str
-    next_billing_date: Union[_dt.datetime, None]
-    unit_count: Union[int, None]
-    on_free_trial: bool
-    free_trial_ends_on: Union[_dt.datetime, None]
-    updated_at: Union[_dt.datetime, None]
-    account: MarketplaceAccountType
-    plan: MarketplaceListingPlanType
+    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
+    external_id: str
+    active: bool
+    user_name: str
+    name: NotRequired[UserNameType]
+    display_name: str
+    emails: list[UserEmailsItemsType]
+    roles: NotRequired[list[UserRoleItemsType]]
 
 
-class UserMarketplacePurchaseTypeForResponse(TypedDict):
-    """User Marketplace Purchase
+class UserTypeForResponse(TypedDict):
+    """User"""
 
-    User Marketplace Purchase
-    """
-
-    billing_cycle: str
-    next_billing_date: Union[str, None]
-    unit_count: Union[int, None]
-    on_free_trial: bool
-    free_trial_ends_on: Union[str, None]
-    updated_at: Union[str, None]
-    account: MarketplaceAccountTypeForResponse
-    plan: MarketplaceListingPlanTypeForResponse
+    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
+    external_id: str
+    active: bool
+    user_name: str
+    name: NotRequired[UserNameTypeForResponse]
+    display_name: str
+    emails: list[UserEmailsItemsTypeForResponse]
+    roles: NotRequired[list[UserRoleItemsTypeForResponse]]
 
 
-class MarketplaceAccountType(TypedDict):
-    """Marketplace Account"""
+class UserNameType(TypedDict):
+    """UserName"""
 
-    url: str
-    id: int
+    formatted: NotRequired[str]
+    family_name: str
+    given_name: str
+    middle_name: NotRequired[str]
+
+
+class UserNameTypeForResponse(TypedDict):
+    """UserName"""
+
+    formatted: NotRequired[str]
+    family_name: str
+    given_name: str
+    middle_name: NotRequired[str]
+
+
+class UserEmailsItemsType(TypedDict):
+    """UserEmailsItems"""
+
+    value: str
     type: str
-    node_id: NotRequired[str]
-    login: str
-    email: NotRequired[Union[str, None]]
-    organization_billing_email: NotRequired[Union[str, None]]
+    primary: bool
 
 
-class MarketplaceAccountTypeForResponse(TypedDict):
-    """Marketplace Account"""
+class UserEmailsItemsTypeForResponse(TypedDict):
+    """UserEmailsItems"""
 
-    url: str
-    id: int
+    value: str
     type: str
-    node_id: NotRequired[str]
-    login: str
-    email: NotRequired[Union[str, None]]
-    organization_billing_email: NotRequired[Union[str, None]]
+    primary: bool
 
 
 __all__ = (
-    "MarketplaceAccountType",
-    "MarketplaceAccountTypeForResponse",
-    "UserMarketplacePurchaseType",
-    "UserMarketplacePurchaseTypeForResponse",
+    "UserEmailsItemsType",
+    "UserEmailsItemsTypeForResponse",
+    "UserNameType",
+    "UserNameTypeForResponse",
+    "UserType",
+    "UserTypeForResponse",
 )

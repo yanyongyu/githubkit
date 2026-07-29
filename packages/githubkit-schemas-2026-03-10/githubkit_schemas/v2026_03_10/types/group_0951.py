@@ -9,145 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0287 import DeploymentType, DeploymentTypeForResponse
-from .group_0522 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0523 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0524 import (
+from .group_0534 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0535 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0536 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0525 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0537 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0577 import (
+    SecretScanningAlertWebhookType,
+    SecretScanningAlertWebhookTypeForResponse,
+)
 
 
-class WebhookWorkflowJobCompletedType(TypedDict):
-    """workflow_job completed event"""
+class WebhookSecretScanningAlertUnassignedType(TypedDict):
+    """secret_scanning_alert unassigned event"""
 
-    action: Literal["completed"]
+    action: Literal["unassigned"]
+    alert: SecretScanningAlertWebhookType
+    assignee: NotRequired[SimpleUserType]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
-    sender: SimpleUserType
-    workflow_job: WebhookWorkflowJobCompletedPropWorkflowJobType
-    deployment: NotRequired[DeploymentType]
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookWorkflowJobCompletedTypeForResponse(TypedDict):
-    """workflow_job completed event"""
+class WebhookSecretScanningAlertUnassignedTypeForResponse(TypedDict):
+    """secret_scanning_alert unassigned event"""
 
-    action: Literal["completed"]
+    action: Literal["unassigned"]
+    alert: SecretScanningAlertWebhookTypeForResponse
+    assignee: NotRequired[SimpleUserTypeForResponse]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
-    workflow_job: WebhookWorkflowJobCompletedPropWorkflowJobTypeForResponse
-    deployment: NotRequired[DeploymentTypeForResponse]
-
-
-class WebhookWorkflowJobCompletedPropWorkflowJobType(TypedDict):
-    """WebhookWorkflowJobCompletedPropWorkflowJob"""
-
-    check_run_url: str
-    completed_at: str
-    conclusion: Literal[
-        "success",
-        "failure",
-        "skipped",
-        "cancelled",
-        "action_required",
-        "neutral",
-        "timed_out",
-    ]
-    created_at: str
-    head_sha: str
-    html_url: str
-    id: int
-    labels: list[str]
-    name: str
-    node_id: str
-    run_attempt: int
-    run_id: int
-    run_url: str
-    runner_group_id: Union[Union[int, None], None]
-    runner_group_name: Union[Union[str, None], None]
-    runner_id: Union[Union[int, None], None]
-    runner_name: Union[Union[str, None], None]
-    started_at: str
-    status: Literal["queued", "in_progress", "completed", "waiting"]
-    head_branch: Union[Union[str, None], None]
-    workflow_name: Union[Union[str, None], None]
-    steps: list[WebhookWorkflowJobCompletedPropWorkflowJobMergedStepsType]
-    url: str
-
-
-class WebhookWorkflowJobCompletedPropWorkflowJobTypeForResponse(TypedDict):
-    """WebhookWorkflowJobCompletedPropWorkflowJob"""
-
-    check_run_url: str
-    completed_at: str
-    conclusion: Literal[
-        "success",
-        "failure",
-        "skipped",
-        "cancelled",
-        "action_required",
-        "neutral",
-        "timed_out",
-    ]
-    created_at: str
-    head_sha: str
-    html_url: str
-    id: int
-    labels: list[str]
-    name: str
-    node_id: str
-    run_attempt: int
-    run_id: int
-    run_url: str
-    runner_group_id: Union[Union[int, None], None]
-    runner_group_name: Union[Union[str, None], None]
-    runner_id: Union[Union[int, None], None]
-    runner_name: Union[Union[str, None], None]
-    started_at: str
-    status: Literal["queued", "in_progress", "completed", "waiting"]
-    head_branch: Union[Union[str, None], None]
-    workflow_name: Union[Union[str, None], None]
-    steps: list[WebhookWorkflowJobCompletedPropWorkflowJobMergedStepsTypeForResponse]
-    url: str
-
-
-class WebhookWorkflowJobCompletedPropWorkflowJobMergedStepsType(TypedDict):
-    """WebhookWorkflowJobCompletedPropWorkflowJobMergedSteps"""
-
-    completed_at: Union[str, None]
-    conclusion: Union[None, Literal["failure", "skipped", "success", "cancelled"]]
-    name: str
-    number: int
-    started_at: Union[str, None]
-    status: Literal["in_progress", "completed", "queued"]
-
-
-class WebhookWorkflowJobCompletedPropWorkflowJobMergedStepsTypeForResponse(TypedDict):
-    """WebhookWorkflowJobCompletedPropWorkflowJobMergedSteps"""
-
-    completed_at: Union[str, None]
-    conclusion: Union[None, Literal["failure", "skipped", "success", "cancelled"]]
-    name: str
-    number: int
-    started_at: Union[str, None]
-    status: Literal["in_progress", "completed", "queued"]
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookWorkflowJobCompletedPropWorkflowJobMergedStepsType",
-    "WebhookWorkflowJobCompletedPropWorkflowJobMergedStepsTypeForResponse",
-    "WebhookWorkflowJobCompletedPropWorkflowJobType",
-    "WebhookWorkflowJobCompletedPropWorkflowJobTypeForResponse",
-    "WebhookWorkflowJobCompletedType",
-    "WebhookWorkflowJobCompletedTypeForResponse",
+    "WebhookSecretScanningAlertUnassignedType",
+    "WebhookSecretScanningAlertUnassignedTypeForResponse",
 )

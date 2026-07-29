@@ -11,27 +11,26 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0253 import (
-    OrganizationCustomRepositoryRoleType,
-    OrganizationCustomRepositoryRoleTypeForResponse,
-)
+
+class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202Type(
+    TypedDict
+):
+    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202"""
+
+    message: NotRequired[str]
+    warning: NotRequired[str]
 
 
-class OrganizationsOrganizationIdCustomRolesGetResponse200Type(TypedDict):
-    """OrganizationsOrganizationIdCustomRolesGetResponse200"""
+class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202"""
 
-    total_count: NotRequired[int]
-    custom_roles: NotRequired[list[OrganizationCustomRepositoryRoleType]]
-
-
-class OrganizationsOrganizationIdCustomRolesGetResponse200TypeForResponse(TypedDict):
-    """OrganizationsOrganizationIdCustomRolesGetResponse200"""
-
-    total_count: NotRequired[int]
-    custom_roles: NotRequired[list[OrganizationCustomRepositoryRoleTypeForResponse]]
+    message: NotRequired[str]
+    warning: NotRequired[str]
 
 
 __all__ = (
-    "OrganizationsOrganizationIdCustomRolesGetResponse200Type",
-    "OrganizationsOrganizationIdCustomRolesGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202Type",
+    "EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202TypeForResponse",
 )

@@ -9,92 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoAttestationsSubjectDigestGetResponse200(GitHubModel):
-    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200"""
+class OrgsOrgProjectsV2ProjectNumberViewsPostBody(GitHubModel):
+    """OrgsOrgProjectsV2ProjectNumberViewsPostBody"""
 
-    attestations: Missing[
-        list[ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems]
-    ] = Field(default=UNSET)
-
-
-class ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems(
-    GitHubModel
-):
-    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
-
-    bundle: Missing[
-        ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle
-    ] = Field(
-        default=UNSET,
-        description="The attestation's Sigstore Bundle.\nRefer to the [Sigstore Bundle Specification](https://github.com/sigstore/protobuf-specs/blob/main/protos/sigstore_bundle.proto) for more information.",
+    name: str = Field(description="The name of the view.")
+    layout: Literal["table", "board", "roadmap"] = Field(
+        description="The layout of the view."
     )
-    repository_id: Missing[int] = Field(default=UNSET)
-    bundle_url: Missing[str] = Field(default=UNSET)
-    initiator: Missing[str] = Field(default=UNSET)
+    filter_: Missing[str] = Field(
+        default=UNSET,
+        alias="filter",
+        description="The filter query for the view. See [Filtering projects](https://docs.github.com/enterprise-cloud@latest/issues/planning-and-tracking-with-projects/customizing-views-in-your-project/filtering-projects) for more information.",
+    )
+    visible_fields: Missing[list[int]] = Field(
+        default=UNSET,
+        description="`visible_fields` is not applicable to `roadmap` layout views.\nFor `table` and `board` layouts, this represents the field IDs that should be visible in the view. If not provided, the default visible fields will be used.",
+    )
 
 
-class ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle(
-    GitHubModel
-):
-    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBu
-    ndle
+model_rebuild(OrgsOrgProjectsV2ProjectNumberViewsPostBody)
 
-    The attestation's Sigstore Bundle.
-    Refer to the [Sigstore Bundle
-    Specification](https://github.com/sigstore/protobuf-
-    specs/blob/main/protos/sigstore_bundle.proto) for more information.
-    """
-
-    media_type: Missing[str] = Field(default=UNSET, alias="mediaType")
-    verification_material: Missing[
-        ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial
-    ] = Field(default=UNSET, alias="verificationMaterial")
-    dsse_envelope: Missing[
-        ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope
-    ] = Field(default=UNSET, alias="dsseEnvelope")
-
-
-class ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial(
-    ExtraGitHubModel
-):
-    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBu
-    ndlePropVerificationMaterial
-    """
-
-
-class ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope(
-    ExtraGitHubModel
-):
-    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBu
-    ndlePropDsseEnvelope
-    """
-
-
-model_rebuild(ReposOwnerRepoAttestationsSubjectDigestGetResponse200)
-model_rebuild(
-    ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems
-)
-model_rebuild(
-    ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle
-)
-model_rebuild(
-    ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial
-)
-model_rebuild(
-    ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope
-)
-
-__all__ = (
-    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200",
-    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems",
-    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle",
-    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope",
-    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial",
-)
+__all__ = ("OrgsOrgProjectsV2ProjectNumberViewsPostBody",)

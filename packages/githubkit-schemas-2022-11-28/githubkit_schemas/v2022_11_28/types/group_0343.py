@@ -9,55 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class CodeownersErrorsType(TypedDict):
-    """CODEOWNERS errors
-
-    A list of errors found in a repo's CODEOWNERS file
-    """
-
-    errors: list[CodeownersErrorsPropErrorsItemsType]
+from .group_0036 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
 
 
-class CodeownersErrorsTypeForResponse(TypedDict):
-    """CODEOWNERS errors
+class CodeScanningVariantAnalysisRepoTaskType(TypedDict):
+    """CodeScanningVariantAnalysisRepoTask"""
 
-    A list of errors found in a repo's CODEOWNERS file
-    """
-
-    errors: list[CodeownersErrorsPropErrorsItemsTypeForResponse]
-
-
-class CodeownersErrorsPropErrorsItemsType(TypedDict):
-    """CodeownersErrorsPropErrorsItems"""
-
-    line: int
-    column: int
-    source: NotRequired[str]
-    kind: str
-    suggestion: NotRequired[Union[str, None]]
-    message: str
-    path: str
+    repository: SimpleRepositoryType
+    analysis_status: Literal[
+        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
+    ]
+    artifact_size_in_bytes: NotRequired[int]
+    result_count: NotRequired[int]
+    failure_message: NotRequired[str]
+    database_commit_sha: NotRequired[str]
+    source_location_prefix: NotRequired[str]
+    artifact_url: NotRequired[str]
 
 
-class CodeownersErrorsPropErrorsItemsTypeForResponse(TypedDict):
-    """CodeownersErrorsPropErrorsItems"""
+class CodeScanningVariantAnalysisRepoTaskTypeForResponse(TypedDict):
+    """CodeScanningVariantAnalysisRepoTask"""
 
-    line: int
-    column: int
-    source: NotRequired[str]
-    kind: str
-    suggestion: NotRequired[Union[str, None]]
-    message: str
-    path: str
+    repository: SimpleRepositoryTypeForResponse
+    analysis_status: Literal[
+        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
+    ]
+    artifact_size_in_bytes: NotRequired[int]
+    result_count: NotRequired[int]
+    failure_message: NotRequired[str]
+    database_commit_sha: NotRequired[str]
+    source_location_prefix: NotRequired[str]
+    artifact_url: NotRequired[str]
 
 
 __all__ = (
-    "CodeownersErrorsPropErrorsItemsType",
-    "CodeownersErrorsPropErrorsItemsTypeForResponse",
-    "CodeownersErrorsType",
-    "CodeownersErrorsTypeForResponse",
+    "CodeScanningVariantAnalysisRepoTaskType",
+    "CodeScanningVariantAnalysisRepoTaskTypeForResponse",
 )

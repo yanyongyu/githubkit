@@ -9,22 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0274 import Job
+
+class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1(GitHubModel):
+    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1"""
+
+    name: str = Field(description="The name of the field.")
+    data_type: Literal["text", "number", "date"] = Field(
+        description="The field's data type."
+    )
 
 
-class ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200(
-    GitHubModel
-):
-    """ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200"""
+model_rebuild(OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1)
 
-    total_count: int = Field()
-    jobs: list[Job] = Field()
-
-
-model_rebuild(ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200)
-
-__all__ = ("ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200",)
+__all__ = ("OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1",)

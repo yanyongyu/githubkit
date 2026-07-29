@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,55 +18,62 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0311 import ProjectsV2StatusUpdate
 
+class PackageVersion(GitHubModel):
+    """Package Version
 
-class ProjectsV2(GitHubModel):
-    """Projects v2 Project
-
-    A projects v2 project
+    A version of a software package
     """
 
-    id: float = Field(description="The unique identifier of the project.")
-    node_id: str = Field(description="The node ID of the project.")
-    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    creator: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    title: str = Field(description="The project title.")
-    description: Union[str, None] = Field(
-        description="A short description of the project."
-    )
-    public: bool = Field(
-        description="Whether the project is visible to anyone with access to the owner."
-    )
-    closed_at: Union[_dt.datetime, None] = Field(
-        description="The time when the project was closed."
-    )
-    created_at: _dt.datetime = Field(
-        description="The time when the project was created."
-    )
-    updated_at: _dt.datetime = Field(
-        description="The time when the project was last updated."
-    )
-    number: int = Field(description="The project number.")
-    short_description: Union[str, None] = Field(
-        description="A concise summary of the project."
-    )
-    deleted_at: Union[_dt.datetime, None] = Field(
-        description="The time when the project was deleted."
-    )
-    deleted_by: Union[None, SimpleUser] = Field()
-    state: Missing[Literal["open", "closed"]] = Field(
-        default=UNSET, description="The current state of the project."
-    )
-    latest_status_update: Missing[Union[None, ProjectsV2StatusUpdate]] = Field(
-        default=UNSET
-    )
-    is_template: Missing[bool] = Field(
-        default=UNSET, description="Whether this project is a template"
+    id: int = Field(description="Unique identifier of the package version.")
+    name: str = Field(description="The name of the package version.")
+    url: str = Field()
+    package_html_url: str = Field()
+    html_url: Missing[str] = Field(default=UNSET)
+    license_: Missing[str] = Field(default=UNSET, alias="license")
+    description: Missing[str] = Field(default=UNSET)
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    deleted_at: Missing[_dt.datetime] = Field(default=UNSET)
+    metadata: Missing[PackageVersionPropMetadata] = Field(
+        default=UNSET, title="Package Version Metadata"
     )
 
 
-model_rebuild(ProjectsV2)
+class PackageVersionPropMetadata(GitHubModel):
+    """Package Version Metadata"""
 
-__all__ = ("ProjectsV2",)
+    package_type: Literal[
+        "npm", "maven", "rubygems", "docker", "nuget", "container"
+    ] = Field()
+    container: Missing[PackageVersionPropMetadataPropContainer] = Field(
+        default=UNSET, title="Container Metadata"
+    )
+    docker: Missing[PackageVersionPropMetadataPropDocker] = Field(
+        default=UNSET, title="Docker Metadata"
+    )
+
+
+class PackageVersionPropMetadataPropContainer(GitHubModel):
+    """Container Metadata"""
+
+    tags: list[str] = Field()
+
+
+class PackageVersionPropMetadataPropDocker(GitHubModel):
+    """Docker Metadata"""
+
+    tag: Missing[list[str]] = Field(default=UNSET)
+
+
+model_rebuild(PackageVersion)
+model_rebuild(PackageVersionPropMetadata)
+model_rebuild(PackageVersionPropMetadataPropContainer)
+model_rebuild(PackageVersionPropMetadataPropDocker)
+
+__all__ = (
+    "PackageVersion",
+    "PackageVersionPropMetadata",
+    "PackageVersionPropMetadataPropContainer",
+    "PackageVersionPropMetadataPropDocker",
+)

@@ -13,25 +13,49 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRuleDetailedOneof3Type(TypedDict):
-    """RepositoryRuleDetailedOneof3"""
+class PagesDeploymentStatusType(TypedDict):
+    """GitHub Pages deployment status"""
 
-    type: Literal["required_linear_history"]
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    status: NotRequired[
+        Literal[
+            "deployment_in_progress",
+            "syncing_files",
+            "finished_file_sync",
+            "updating_pages",
+            "purging_cdn",
+            "deployment_cancelled",
+            "deployment_failed",
+            "deployment_content_failed",
+            "deployment_attempt_error",
+            "deployment_lost",
+            "succeed",
+            "deployment_queued",
+        ]
+    ]
 
 
-class RepositoryRuleDetailedOneof3TypeForResponse(TypedDict):
-    """RepositoryRuleDetailedOneof3"""
+class PagesDeploymentStatusTypeForResponse(TypedDict):
+    """GitHub Pages deployment status"""
 
-    type: Literal["required_linear_history"]
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    status: NotRequired[
+        Literal[
+            "deployment_in_progress",
+            "syncing_files",
+            "finished_file_sync",
+            "updating_pages",
+            "purging_cdn",
+            "deployment_cancelled",
+            "deployment_failed",
+            "deployment_content_failed",
+            "deployment_attempt_error",
+            "deployment_lost",
+            "succeed",
+            "deployment_queued",
+        ]
+    ]
 
 
 __all__ = (
-    "RepositoryRuleDetailedOneof3Type",
-    "RepositoryRuleDetailedOneof3TypeForResponse",
+    "PagesDeploymentStatusType",
+    "PagesDeploymentStatusTypeForResponse",
 )

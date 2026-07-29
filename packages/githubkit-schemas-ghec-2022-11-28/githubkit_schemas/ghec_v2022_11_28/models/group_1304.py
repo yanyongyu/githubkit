@@ -11,18 +11,18 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+
+from .group_0255 import MinimalRepository
 
 
-class OrgsOrgCopilotBillingSelectedTeamsPostBody(GitHubModel):
-    """OrgsOrgCopilotBillingSelectedTeamsPostBody"""
+class OrgsOrgActionsVariablesNameRepositoriesGetResponse200(GitHubModel):
+    """OrgsOrgActionsVariablesNameRepositoriesGetResponse200"""
 
-    selected_teams: list[str] = Field(
-        min_length=1 if PYDANTIC_V2 else None,
-        description="List of team names within the organization to which to grant access to GitHub Copilot.",
-    )
+    total_count: int = Field()
+    repositories: list[MinimalRepository] = Field()
 
 
-model_rebuild(OrgsOrgCopilotBillingSelectedTeamsPostBody)
+model_rebuild(OrgsOrgActionsVariablesNameRepositoriesGetResponse200)
 
-__all__ = ("OrgsOrgCopilotBillingSelectedTeamsPostBody",)
+__all__ = ("OrgsOrgActionsVariablesNameRepositoriesGetResponse200",)

@@ -12,17 +12,18 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody(GitHubModel):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody"""
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody(GitHubModel):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody
 
-    name: Missing[str] = Field(default=UNSET, description="The name of the variable.")
-    value: Missing[str] = Field(default=UNSET, description="The value of the variable.")
+    Examples:
+        {'users': ['mona']}
+    """
+
+    users: list[str] = Field(description="The username for users")
 
 
-model_rebuild(ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody)
+model_rebuild(ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody)
 
-__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody",)
+__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody",)

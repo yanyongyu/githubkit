@@ -9,21 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class CodespacesUserPublicKey(GitHubModel):
-    """CodespacesUserPublicKey
+class PatchSchema(GitHubModel):
+    """PatchSchema"""
 
-    The public key used for setting user Codespaces' Secrets.
-    """
+    operations: list[PatchSchemaPropOperationsItems] = Field(
+        alias="Operations", description="patch operations list"
+    )
+    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]] = Field()
 
-    key_id: str = Field(description="The identifier for the key.")
-    key: str = Field(description="The Base64 encoded public key.")
+
+class PatchSchemaPropOperationsItems(GitHubModel):
+    """PatchSchemaPropOperationsItems"""
+
+    op: Literal["add", "replace", "remove"] = Field()
+    path: Missing[str] = Field(default=UNSET)
+    value: Missing[str] = Field(
+        default=UNSET,
+        description="Corresponding 'value' of that field specified by 'path'",
+    )
 
 
-model_rebuild(CodespacesUserPublicKey)
+model_rebuild(PatchSchema)
+model_rebuild(PatchSchemaPropOperationsItems)
 
-__all__ = ("CodespacesUserPublicKey",)
+__all__ = (
+    "PatchSchema",
+    "PatchSchemaPropOperationsItems",
+)

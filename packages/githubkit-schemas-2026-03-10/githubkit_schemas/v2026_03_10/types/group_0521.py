@@ -9,82 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class BillingUsageSummaryReportUserType(TypedDict):
-    """BillingUsageSummaryReportUser"""
+class EmailType(TypedDict):
+    """Email
 
-    time_period: BillingUsageSummaryReportUserPropTimePeriodType
-    user: str
-    repository: NotRequired[str]
-    product: NotRequired[str]
-    sku: NotRequired[str]
-    usage_items: list[BillingUsageSummaryReportUserPropUsageItemsItemsType]
+    Email
+    """
 
-
-class BillingUsageSummaryReportUserTypeForResponse(TypedDict):
-    """BillingUsageSummaryReportUser"""
-
-    time_period: BillingUsageSummaryReportUserPropTimePeriodTypeForResponse
-    user: str
-    repository: NotRequired[str]
-    product: NotRequired[str]
-    sku: NotRequired[str]
-    usage_items: list[BillingUsageSummaryReportUserPropUsageItemsItemsTypeForResponse]
+    email: str
+    primary: bool
+    verified: bool
+    visibility: Union[str, None]
 
 
-class BillingUsageSummaryReportUserPropTimePeriodType(TypedDict):
-    """BillingUsageSummaryReportUserPropTimePeriod"""
+class EmailTypeForResponse(TypedDict):
+    """Email
 
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
+    Email
+    """
 
-
-class BillingUsageSummaryReportUserPropTimePeriodTypeForResponse(TypedDict):
-    """BillingUsageSummaryReportUserPropTimePeriod"""
-
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
-
-
-class BillingUsageSummaryReportUserPropUsageItemsItemsType(TypedDict):
-    """BillingUsageSummaryReportUserPropUsageItemsItems"""
-
-    product: str
-    sku: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
-
-
-class BillingUsageSummaryReportUserPropUsageItemsItemsTypeForResponse(TypedDict):
-    """BillingUsageSummaryReportUserPropUsageItemsItems"""
-
-    product: str
-    sku: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
+    email: str
+    primary: bool
+    verified: bool
+    visibility: Union[str, None]
 
 
 __all__ = (
-    "BillingUsageSummaryReportUserPropTimePeriodType",
-    "BillingUsageSummaryReportUserPropTimePeriodTypeForResponse",
-    "BillingUsageSummaryReportUserPropUsageItemsItemsType",
-    "BillingUsageSummaryReportUserPropUsageItemsItemsTypeForResponse",
-    "BillingUsageSummaryReportUserType",
-    "BillingUsageSummaryReportUserTypeForResponse",
+    "EmailType",
+    "EmailTypeForResponse",
 )

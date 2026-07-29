@@ -9,80 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0302 import VerificationType, VerificationTypeForResponse
+from typing_extensions import TypedDict
 
 
-class GitTagType(TypedDict):
-    """Git Tag
+class DeploymentBranchPolicyNamePatternType(TypedDict):
+    """Deployment branch policy name pattern"""
 
-    Metadata for a Git tag
-    """
-
-    node_id: str
-    tag: str
-    sha: str
-    url: str
-    message: str
-    tagger: GitTagPropTaggerType
-    object_: GitTagPropObjectType
-    verification: NotRequired[VerificationType]
-
-
-class GitTagTypeForResponse(TypedDict):
-    """Git Tag
-
-    Metadata for a Git tag
-    """
-
-    node_id: str
-    tag: str
-    sha: str
-    url: str
-    message: str
-    tagger: GitTagPropTaggerTypeForResponse
-    object_: GitTagPropObjectTypeForResponse
-    verification: NotRequired[VerificationTypeForResponse]
-
-
-class GitTagPropTaggerType(TypedDict):
-    """GitTagPropTagger"""
-
-    date: str
-    email: str
     name: str
 
 
-class GitTagPropTaggerTypeForResponse(TypedDict):
-    """GitTagPropTagger"""
+class DeploymentBranchPolicyNamePatternTypeForResponse(TypedDict):
+    """Deployment branch policy name pattern"""
 
-    date: str
-    email: str
     name: str
-
-
-class GitTagPropObjectType(TypedDict):
-    """GitTagPropObject"""
-
-    sha: str
-    type: str
-    url: str
-
-
-class GitTagPropObjectTypeForResponse(TypedDict):
-    """GitTagPropObject"""
-
-    sha: str
-    type: str
-    url: str
 
 
 __all__ = (
-    "GitTagPropObjectType",
-    "GitTagPropObjectTypeForResponse",
-    "GitTagPropTaggerType",
-    "GitTagPropTaggerTypeForResponse",
-    "GitTagType",
-    "GitTagTypeForResponse",
+    "DeploymentBranchPolicyNamePatternType",
+    "DeploymentBranchPolicyNamePatternTypeForResponse",
 )

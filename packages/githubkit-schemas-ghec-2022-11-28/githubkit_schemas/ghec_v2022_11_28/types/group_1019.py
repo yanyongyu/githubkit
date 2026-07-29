@@ -13,44 +13,38 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0599 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0600 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0601 import (
+from .group_0618 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0619 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0620 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0602 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0646 import WebhooksSponsorshipType, WebhooksSponsorshipTypeForResponse
-from .group_0647 import WebhooksChanges8Type, WebhooksChanges8TypeForResponse
+from .group_0621 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookSponsorshipTierChangedType(TypedDict):
-    """sponsorship tier_changed event"""
+class WebhookRepositoryImportType(TypedDict):
+    """repository_import event"""
 
-    action: Literal["tier_changed"]
-    changes: WebhooksChanges8Type
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
+    repository: RepositoryWebhooksType
     sender: SimpleUserType
-    sponsorship: WebhooksSponsorshipType
+    status: Literal["success", "cancelled", "failure"]
 
 
-class WebhookSponsorshipTierChangedTypeForResponse(TypedDict):
-    """sponsorship tier_changed event"""
+class WebhookRepositoryImportTypeForResponse(TypedDict):
+    """repository_import event"""
 
-    action: Literal["tier_changed"]
-    changes: WebhooksChanges8TypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
-    sponsorship: WebhooksSponsorshipTypeForResponse
+    status: Literal["success", "cancelled", "failure"]
 
 
 __all__ = (
-    "WebhookSponsorshipTierChangedType",
-    "WebhookSponsorshipTierChangedTypeForResponse",
+    "WebhookRepositoryImportType",
+    "WebhookRepositoryImportTypeForResponse",
 )

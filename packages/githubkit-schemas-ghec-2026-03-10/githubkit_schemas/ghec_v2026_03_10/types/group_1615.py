@@ -9,29 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUserIdProjectsV2ProjectNumberViewsPostBodyType(TypedDict):
-    """UsersUserIdProjectsV2ProjectNumberViewsPostBody"""
+class ReposOwnerRepoPullsPullNumberMergePutResponse405Type(TypedDict):
+    """ReposOwnerRepoPullsPullNumberMergePutResponse405"""
 
-    name: str
-    layout: Literal["table", "board", "roadmap"]
-    filter_: NotRequired[str]
-    visible_fields: NotRequired[list[int]]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
-class UsersUserIdProjectsV2ProjectNumberViewsPostBodyTypeForResponse(TypedDict):
-    """UsersUserIdProjectsV2ProjectNumberViewsPostBody"""
+class ReposOwnerRepoPullsPullNumberMergePutResponse405TypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPullNumberMergePutResponse405"""
 
-    name: str
-    layout: Literal["table", "board", "roadmap"]
-    filter_: NotRequired[str]
-    visible_fields: NotRequired[list[int]]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
 __all__ = (
-    "UsersUserIdProjectsV2ProjectNumberViewsPostBodyType",
-    "UsersUserIdProjectsV2ProjectNumberViewsPostBodyTypeForResponse",
+    "ReposOwnerRepoPullsPullNumberMergePutResponse405Type",
+    "ReposOwnerRepoPullsPullNumberMergePutResponse405TypeForResponse",
 )

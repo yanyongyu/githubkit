@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,24 +18,44 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPullsPullNumberMergePutBody(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberMergePutBody"""
+class ReposOwnerRepoIssuesIssueNumberAssigneesPostBody(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberAssigneesPostBody"""
 
-    commit_title: Missing[str] = Field(
-        default=UNSET, description="Title for the automatic commit message."
-    )
-    commit_message: Missing[str] = Field(
-        default=UNSET, description="Extra detail to append to automatic commit message."
-    )
-    sha: Missing[str] = Field(
+    assignees: Missing[
+        list[
+            Union[
+                str,
+                ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyPropAssigneesItemsOneof1,
+            ]
+        ]
+    ] = Field(
         default=UNSET,
-        description="SHA that pull request head must match to allow merge.",
-    )
-    merge_method: Missing[Literal["merge", "squash", "rebase"]] = Field(
-        default=UNSET, description="The merge method to use."
+        description="Usernames of people to assign this issue to. _NOTE: Only users with push access can add assignees to an issue. Assignees are silently ignored otherwise._",
     )
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberMergePutBody)
+class ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyPropAssigneesItemsOneof1(
+    GitHubModel
+):
+    """ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyPropAssigneesItemsOneof1"""
 
-__all__ = ("ReposOwnerRepoPullsPullNumberMergePutBody",)
+    login: str = Field(description="The login of the user to assign.")
+    rationale: Missing[str] = Field(
+        default=UNSET, description="Optional reasoning for adding this assignee."
+    )
+    suggest: Missing[bool] = Field(
+        default=UNSET,
+        description="If `true`, the assignee is stored as a pending suggestion for human review rather than applied directly.",
+    )
+    confidence: Missing[Literal["low", "medium", "high"]] = Field(
+        default=UNSET, description="The confidence level for this assignee choice."
+    )
+
+
+model_rebuild(ReposOwnerRepoIssuesIssueNumberAssigneesPostBody)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyPropAssigneesItemsOneof1)
+
+__all__ = (
+    "ReposOwnerRepoIssuesIssueNumberAssigneesPostBody",
+    "ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyPropAssigneesItemsOneof1",
+)

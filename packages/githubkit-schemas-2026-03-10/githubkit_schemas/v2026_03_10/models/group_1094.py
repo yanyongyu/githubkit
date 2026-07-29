@@ -13,16 +13,15 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0092 import MinimalRepository
+
+class OrgsOrgActionsPermissionsRepositoriesPutBody(GitHubModel):
+    """OrgsOrgActionsPermissionsRepositoriesPutBody"""
+
+    selected_repository_ids: list[int] = Field(
+        description="List of repository IDs to enable for GitHub Actions."
+    )
 
 
-class OrgsOrgAgentsVariablesNameRepositoriesGetResponse200(GitHubModel):
-    """OrgsOrgAgentsVariablesNameRepositoriesGetResponse200"""
+model_rebuild(OrgsOrgActionsPermissionsRepositoriesPutBody)
 
-    total_count: int = Field()
-    repositories: list[MinimalRepository] = Field()
-
-
-model_rebuild(OrgsOrgAgentsVariablesNameRepositoriesGetResponse200)
-
-__all__ = ("OrgsOrgAgentsVariablesNameRepositoriesGetResponse200",)
+__all__ = ("OrgsOrgActionsPermissionsRepositoriesPutBody",)

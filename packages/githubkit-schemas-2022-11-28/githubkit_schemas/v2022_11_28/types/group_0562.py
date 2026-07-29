@@ -14,65 +14,55 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksReviewType(TypedDict):
-    """WebhooksReview
+class WebhooksMilestone3Type(TypedDict):
+    """Milestone
 
-    The review that was affected.
+    A collection of related issues and pull requests.
     """
 
-    links: WebhooksReviewPropLinksType
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    body: Union[str, None]
-    commit_id: str
+    closed_at: Union[_dt.datetime, None]
+    closed_issues: int
+    created_at: _dt.datetime
+    creator: Union[WebhooksMilestone3PropCreatorType, None]
+    description: Union[str, None]
+    due_on: Union[_dt.datetime, None]
     html_url: str
     id: int
+    labels_url: str
     node_id: str
-    pull_request_url: str
-    state: str
-    submitted_at: Union[_dt.datetime, None]
-    updated_at: NotRequired[Union[_dt.datetime, None]]
-    user: Union[WebhooksReviewPropUserType, None]
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: _dt.datetime
+    url: str
 
 
-class WebhooksReviewTypeForResponse(TypedDict):
-    """WebhooksReview
+class WebhooksMilestone3TypeForResponse(TypedDict):
+    """Milestone
 
-    The review that was affected.
+    A collection of related issues and pull requests.
     """
 
-    links: WebhooksReviewPropLinksTypeForResponse
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    body: Union[str, None]
-    commit_id: str
+    closed_at: Union[str, None]
+    closed_issues: int
+    created_at: str
+    creator: Union[WebhooksMilestone3PropCreatorTypeForResponse, None]
+    description: Union[str, None]
+    due_on: Union[str, None]
     html_url: str
     id: int
+    labels_url: str
     node_id: str
-    pull_request_url: str
-    state: str
-    submitted_at: Union[str, None]
-    updated_at: NotRequired[Union[str, None]]
-    user: Union[WebhooksReviewPropUserTypeForResponse, None]
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: str
+    url: str
 
 
-class WebhooksReviewPropUserType(TypedDict):
+class WebhooksMilestone3PropCreatorType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -99,7 +89,7 @@ class WebhooksReviewPropUserType(TypedDict):
     user_view_type: NotRequired[str]
 
 
-class WebhooksReviewPropUserTypeForResponse(TypedDict):
+class WebhooksMilestone3PropCreatorTypeForResponse(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -124,55 +114,11 @@ class WebhooksReviewPropUserTypeForResponse(TypedDict):
     type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
     user_view_type: NotRequired[str]
-
-
-class WebhooksReviewPropLinksType(TypedDict):
-    """WebhooksReviewPropLinks"""
-
-    html: WebhooksReviewPropLinksPropHtmlType
-    pull_request: WebhooksReviewPropLinksPropPullRequestType
-
-
-class WebhooksReviewPropLinksTypeForResponse(TypedDict):
-    """WebhooksReviewPropLinks"""
-
-    html: WebhooksReviewPropLinksPropHtmlTypeForResponse
-    pull_request: WebhooksReviewPropLinksPropPullRequestTypeForResponse
-
-
-class WebhooksReviewPropLinksPropHtmlType(TypedDict):
-    """Link"""
-
-    href: str
-
-
-class WebhooksReviewPropLinksPropHtmlTypeForResponse(TypedDict):
-    """Link"""
-
-    href: str
-
-
-class WebhooksReviewPropLinksPropPullRequestType(TypedDict):
-    """Link"""
-
-    href: str
-
-
-class WebhooksReviewPropLinksPropPullRequestTypeForResponse(TypedDict):
-    """Link"""
-
-    href: str
 
 
 __all__ = (
-    "WebhooksReviewPropLinksPropHtmlType",
-    "WebhooksReviewPropLinksPropHtmlTypeForResponse",
-    "WebhooksReviewPropLinksPropPullRequestType",
-    "WebhooksReviewPropLinksPropPullRequestTypeForResponse",
-    "WebhooksReviewPropLinksType",
-    "WebhooksReviewPropLinksTypeForResponse",
-    "WebhooksReviewPropUserType",
-    "WebhooksReviewPropUserTypeForResponse",
-    "WebhooksReviewType",
-    "WebhooksReviewTypeForResponse",
+    "WebhooksMilestone3PropCreatorType",
+    "WebhooksMilestone3PropCreatorTypeForResponse",
+    "WebhooksMilestone3Type",
+    "WebhooksMilestone3TypeForResponse",
 )

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
 
 from pydantic import Field
 
@@ -18,25 +18,15 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoStatusesShaPostBody(GitHubModel):
-    """ReposOwnerRepoStatusesShaPostBody"""
+class ReposOwnerRepoNotificationsPutBody(GitHubModel):
+    """ReposOwnerRepoNotificationsPutBody"""
 
-    state: Literal["error", "failure", "pending", "success"] = Field(
-        description="The state of the status."
-    )
-    target_url: Missing[Union[str, None]] = Field(
+    last_read_at: Missing[_dt.datetime] = Field(
         default=UNSET,
-        description="The target URL to associate with this status. This URL will be linked from the GitHub UI to allow users to easily see the source of the status.  \nFor example, if your continuous integration system is posting build status, you would want to provide the deep link for the build output for this specific SHA:  \n`http://ci.example.com/user/repo/build/sha`",
-    )
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="A short description of the status."
-    )
-    context: Missing[str] = Field(
-        default=UNSET,
-        description="A string label to differentiate this status from the status of other systems. This field is case-insensitive.",
+        description="Describes the last point that notifications were checked. Anything updated since this time will not be marked as read. If you omit this parameter, all notifications are marked as read. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. Default: The current timestamp.",
     )
 
 
-model_rebuild(ReposOwnerRepoStatusesShaPostBody)
+model_rebuild(ReposOwnerRepoNotificationsPutBody)
 
-__all__ = ("ReposOwnerRepoStatusesShaPostBody",)
+__all__ = ("ReposOwnerRepoNotificationsPutBody",)

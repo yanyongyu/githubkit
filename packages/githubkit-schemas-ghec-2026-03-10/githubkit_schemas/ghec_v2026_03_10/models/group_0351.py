@@ -9,35 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ActionsRepositoryPermissions(GitHubModel):
-    """ActionsRepositoryPermissions"""
+class ConcurrencyGroupList(GitHubModel):
+    """Concurrency Group List
 
-    enabled: bool = Field(
-        description="Whether GitHub Actions is enabled on the repository."
-    )
-    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
-        default=UNSET,
-        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
-    )
-    selected_actions_url: Missing[str] = Field(
-        default=UNSET,
-        description="The API URL to use to get or set the actions and reusable workflows that are allowed to run, when `allowed_actions` is set to `selected`.",
-    )
-    sha_pinning_required: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether actions must be pinned to a full-length commit SHA.",
-    )
+    A list of active concurrency groups for a repository.
+    """
+
+    total_count: int = Field()
+    concurrency_groups: list[ConcurrencyGroupListPropConcurrencyGroupsItems] = Field()
 
 
-model_rebuild(ActionsRepositoryPermissions)
+class ConcurrencyGroupListPropConcurrencyGroupsItems(GitHubModel):
+    """ConcurrencyGroupListPropConcurrencyGroupsItems"""
 
-__all__ = ("ActionsRepositoryPermissions",)
+    group_name: str = Field(description="The name of the concurrency group.")
+    group_url: str = Field(description="API URL for this concurrency group.")
+    last_acquired_at: Union[_dt.datetime, None] = Field()
+
+
+model_rebuild(ConcurrencyGroupList)
+model_rebuild(ConcurrencyGroupListPropConcurrencyGroupsItems)
+
+__all__ = (
+    "ConcurrencyGroupList",
+    "ConcurrencyGroupListPropConcurrencyGroupsItems",
+)

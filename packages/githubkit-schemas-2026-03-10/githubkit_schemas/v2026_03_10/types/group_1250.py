@@ -9,32 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyType(TypedDict):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBody
+class ReposOwnerRepoActionsJobsJobIdRerunPostBodyType(TypedDict):
+    """ReposOwnerRepoActionsJobsJobIdRerunPostBody"""
 
-    Examples:
-        {'apps': ['my-app']}
-    """
-
-    apps: list[str]
+    enable_debug_logging: NotRequired[bool]
+    enable_debugger: NotRequired[bool]
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBody
+class ReposOwnerRepoActionsJobsJobIdRerunPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsJobsJobIdRerunPostBody"""
 
-    Examples:
-        {'apps': ['my-app']}
-    """
-
-    apps: list[str]
+    enable_debug_logging: NotRequired[bool]
+    enable_debugger: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyType",
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyTypeForResponse",
+    "ReposOwnerRepoActionsJobsJobIdRerunPostBodyType",
+    "ReposOwnerRepoActionsJobsJobIdRerunPostBodyTypeForResponse",
 )

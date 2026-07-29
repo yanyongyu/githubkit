@@ -12,178 +12,246 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0116 import (
-    RepositoryRulesetBypassActorType,
-    RepositoryRulesetBypassActorTypeForResponse,
-)
-from .group_0121 import (
-    RepositoryRulesetConditionsType,
-    RepositoryRulesetConditionsTypeForResponse,
-)
-from .group_0135 import (
-    RepositoryRuleCreationType,
-    RepositoryRuleCreationTypeForResponse,
-    RepositoryRuleDeletionType,
-    RepositoryRuleDeletionTypeForResponse,
-    RepositoryRuleNonFastForwardType,
-    RepositoryRuleNonFastForwardTypeForResponse,
-    RepositoryRuleRequiredSignaturesType,
-    RepositoryRuleRequiredSignaturesTypeForResponse,
-)
-from .group_0136 import RepositoryRuleUpdateType, RepositoryRuleUpdateTypeForResponse
-from .group_0138 import (
-    RepositoryRuleRequiredLinearHistoryType,
-    RepositoryRuleRequiredLinearHistoryTypeForResponse,
-)
-from .group_0139 import (
-    RepositoryRuleRequiredDeploymentsType,
-    RepositoryRuleRequiredDeploymentsTypeForResponse,
-)
-from .group_0141 import (
-    RepositoryRulePullRequestType,
-    RepositoryRulePullRequestTypeForResponse,
-)
-from .group_0143 import (
-    RepositoryRuleRequiredStatusChecksType,
-    RepositoryRuleRequiredStatusChecksTypeForResponse,
-)
-from .group_0145 import (
-    RepositoryRuleCommitMessagePatternType,
-    RepositoryRuleCommitMessagePatternTypeForResponse,
-)
-from .group_0147 import (
-    RepositoryRuleCommitAuthorEmailPatternType,
-    RepositoryRuleCommitAuthorEmailPatternTypeForResponse,
-)
-from .group_0149 import (
-    RepositoryRuleCommitterEmailPatternType,
-    RepositoryRuleCommitterEmailPatternTypeForResponse,
-)
-from .group_0151 import (
-    RepositoryRuleBranchNamePatternType,
-    RepositoryRuleBranchNamePatternTypeForResponse,
-)
-from .group_0153 import (
-    RepositoryRuleTagNamePatternType,
-    RepositoryRuleTagNamePatternTypeForResponse,
-)
-from .group_0155 import (
-    RepositoryRuleFilePathRestrictionType,
-    RepositoryRuleFilePathRestrictionTypeForResponse,
-)
-from .group_0157 import (
-    RepositoryRuleMaxFilePathLengthType,
-    RepositoryRuleMaxFilePathLengthTypeForResponse,
-)
-from .group_0159 import (
-    RepositoryRuleFileExtensionRestrictionType,
-    RepositoryRuleFileExtensionRestrictionTypeForResponse,
-)
-from .group_0161 import (
-    RepositoryRuleMaxFileSizeType,
-    RepositoryRuleMaxFileSizeTypeForResponse,
-)
-from .group_0164 import (
-    RepositoryRuleWorkflowsType,
-    RepositoryRuleWorkflowsTypeForResponse,
-)
-from .group_0166 import (
-    RepositoryRuleCodeScanningType,
-    RepositoryRuleCodeScanningTypeForResponse,
-)
-from .group_0168 import (
-    RepositoryRuleCopilotCodeReviewType,
-    RepositoryRuleCopilotCodeReviewTypeForResponse,
-)
-from .group_0175 import (
-    RepositoryRuleMergeQueueType,
-    RepositoryRuleMergeQueueTypeForResponse,
-)
-from .group_0177 import (
-    RepositoryRuleLicenseComplianceScanningType,
-    RepositoryRuleLicenseComplianceScanningTypeForResponse,
-)
 
+class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsType(
+    TypedDict
+):
+    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestions
 
-class ReposOwnerRepoRulesetsPostBodyType(TypedDict):
-    """ReposOwnerRepoRulesetsPostBody"""
+    Pending suggestions for each suggestible field (`type`,
+    `issue_field_values`, `labels`, `assignees`, `state`) the
+    request touched. Omitted for fields not in the request or
+    with no pending suggestions. Items tagged `already_applied`
+    are echoes of the current request's inputs whose target is
+    already applied to the issue; they are not persisted as
+    pending suggestions.
+    """
 
-    name: str
-    target: NotRequired[Literal["branch", "tag", "push"]]
-    enforcement: Literal["disabled", "active", "evaluate"]
-    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorType]]
-    conditions: NotRequired[RepositoryRulesetConditionsType]
-    rules: NotRequired[
+    type: NotRequired[
         list[
-            Union[
-                RepositoryRuleCreationType,
-                RepositoryRuleUpdateType,
-                RepositoryRuleDeletionType,
-                RepositoryRuleRequiredLinearHistoryType,
-                RepositoryRuleMergeQueueType,
-                RepositoryRuleRequiredDeploymentsType,
-                RepositoryRuleRequiredSignaturesType,
-                RepositoryRulePullRequestType,
-                RepositoryRuleRequiredStatusChecksType,
-                RepositoryRuleNonFastForwardType,
-                RepositoryRuleCommitMessagePatternType,
-                RepositoryRuleCommitAuthorEmailPatternType,
-                RepositoryRuleCommitterEmailPatternType,
-                RepositoryRuleBranchNamePatternType,
-                RepositoryRuleTagNamePatternType,
-                RepositoryRuleWorkflowsType,
-                RepositoryRuleCodeScanningType,
-                RepositoryRuleCopilotCodeReviewType,
-                RepositoryRuleLicenseComplianceScanningType,
-                RepositoryRuleFilePathRestrictionType,
-                RepositoryRuleMaxFilePathLengthType,
-                RepositoryRuleFileExtensionRestrictionType,
-                RepositoryRuleMaxFileSizeType,
-            ]
+            ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropTypeItemsType
+        ]
+    ]
+    issue_field_values: NotRequired[
+        list[
+            ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropIssueFieldValuesItemsType
+        ]
+    ]
+    labels: NotRequired[
+        list[
+            ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropLabelsItemsType
+        ]
+    ]
+    assignees: NotRequired[
+        list[
+            ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropAssigneesItemsType
+        ]
+    ]
+    state: NotRequired[
+        list[
+            ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropStateItemsType
         ]
     ]
 
 
-class ReposOwnerRepoRulesetsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoRulesetsPostBody"""
+class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestions
 
-    name: str
-    target: NotRequired[Literal["branch", "tag", "push"]]
-    enforcement: Literal["disabled", "active", "evaluate"]
-    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorTypeForResponse]]
-    conditions: NotRequired[RepositoryRulesetConditionsTypeForResponse]
-    rules: NotRequired[
+    Pending suggestions for each suggestible field (`type`,
+    `issue_field_values`, `labels`, `assignees`, `state`) the
+    request touched. Omitted for fields not in the request or
+    with no pending suggestions. Items tagged `already_applied`
+    are echoes of the current request's inputs whose target is
+    already applied to the issue; they are not persisted as
+    pending suggestions.
+    """
+
+    type: NotRequired[
         list[
-            Union[
-                RepositoryRuleCreationTypeForResponse,
-                RepositoryRuleUpdateTypeForResponse,
-                RepositoryRuleDeletionTypeForResponse,
-                RepositoryRuleRequiredLinearHistoryTypeForResponse,
-                RepositoryRuleMergeQueueTypeForResponse,
-                RepositoryRuleRequiredDeploymentsTypeForResponse,
-                RepositoryRuleRequiredSignaturesTypeForResponse,
-                RepositoryRulePullRequestTypeForResponse,
-                RepositoryRuleRequiredStatusChecksTypeForResponse,
-                RepositoryRuleNonFastForwardTypeForResponse,
-                RepositoryRuleCommitMessagePatternTypeForResponse,
-                RepositoryRuleCommitAuthorEmailPatternTypeForResponse,
-                RepositoryRuleCommitterEmailPatternTypeForResponse,
-                RepositoryRuleBranchNamePatternTypeForResponse,
-                RepositoryRuleTagNamePatternTypeForResponse,
-                RepositoryRuleWorkflowsTypeForResponse,
-                RepositoryRuleCodeScanningTypeForResponse,
-                RepositoryRuleCopilotCodeReviewTypeForResponse,
-                RepositoryRuleLicenseComplianceScanningTypeForResponse,
-                RepositoryRuleFilePathRestrictionTypeForResponse,
-                RepositoryRuleMaxFilePathLengthTypeForResponse,
-                RepositoryRuleFileExtensionRestrictionTypeForResponse,
-                RepositoryRuleMaxFileSizeTypeForResponse,
-            ]
+            ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropTypeItemsTypeForResponse
         ]
     ]
+    issue_field_values: NotRequired[
+        list[
+            ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropIssueFieldValuesItemsTypeForResponse
+        ]
+    ]
+    labels: NotRequired[
+        list[
+            ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropLabelsItemsTypeForResponse
+        ]
+    ]
+    assignees: NotRequired[
+        list[
+            ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropAssigneesItemsTypeForResponse
+        ]
+    ]
+    state: NotRequired[
+        list[
+            ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropStateItemsTypeForResponse
+        ]
+    ]
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropTypeItemsType(
+    TypedDict
+):
+    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropTypeItem
+    s
+    """
+
+    value: NotRequired[str]
+    rationale: NotRequired[str]
+    suggest: NotRequired[bool]
+    confidence: NotRequired[Literal["low", "medium", "high"]]
+    already_applied: NotRequired[bool]
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropTypeItemsTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropTypeItem
+    s
+    """
+
+    value: NotRequired[str]
+    rationale: NotRequired[str]
+    suggest: NotRequired[bool]
+    confidence: NotRequired[Literal["low", "medium", "high"]]
+    already_applied: NotRequired[bool]
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropIssueFieldValuesItemsType(
+    TypedDict
+):
+    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropIssueFie
+    ldValuesItems
+    """
+
+    field_id: NotRequired[int]
+    value: NotRequired[Union[str, float, list[str]]]
+    rationale: NotRequired[str]
+    suggest: NotRequired[bool]
+    confidence: NotRequired[Literal["low", "medium", "high"]]
+    already_applied: NotRequired[bool]
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropIssueFieldValuesItemsTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropIssueFie
+    ldValuesItems
+    """
+
+    field_id: NotRequired[int]
+    value: NotRequired[Union[str, float, list[str]]]
+    rationale: NotRequired[str]
+    suggest: NotRequired[bool]
+    confidence: NotRequired[Literal["low", "medium", "high"]]
+    already_applied: NotRequired[bool]
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropLabelsItemsType(
+    TypedDict
+):
+    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropLabelsIt
+    ems
+    """
+
+    name: NotRequired[str]
+    rationale: NotRequired[str]
+    suggest: NotRequired[bool]
+    confidence: NotRequired[Literal["low", "medium", "high"]]
+    already_applied: NotRequired[bool]
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropLabelsItemsTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropLabelsIt
+    ems
+    """
+
+    name: NotRequired[str]
+    rationale: NotRequired[str]
+    suggest: NotRequired[bool]
+    confidence: NotRequired[Literal["low", "medium", "high"]]
+    already_applied: NotRequired[bool]
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropAssigneesItemsType(
+    TypedDict
+):
+    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropAssignee
+    sItems
+    """
+
+    login: NotRequired[str]
+    rationale: NotRequired[str]
+    suggest: NotRequired[bool]
+    confidence: NotRequired[Literal["low", "medium", "high"]]
+    already_applied: NotRequired[bool]
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropAssigneesItemsTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropAssignee
+    sItems
+    """
+
+    login: NotRequired[str]
+    rationale: NotRequired[str]
+    suggest: NotRequired[bool]
+    confidence: NotRequired[Literal["low", "medium", "high"]]
+    already_applied: NotRequired[bool]
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropStateItemsType(
+    TypedDict
+):
+    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropStateIte
+    ms
+    """
+
+    value: NotRequired[str]
+    state_reason: NotRequired[str]
+    duplicate_issue_id: NotRequired[int]
+    rationale: NotRequired[str]
+    suggest: NotRequired[bool]
+    confidence: NotRequired[Literal["low", "medium", "high"]]
+    already_applied: NotRequired[bool]
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropStateItemsTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropStateIte
+    ms
+    """
+
+    value: NotRequired[str]
+    state_reason: NotRequired[str]
+    duplicate_issue_id: NotRequired[int]
+    rationale: NotRequired[str]
+    suggest: NotRequired[bool]
+    confidence: NotRequired[Literal["low", "medium", "high"]]
+    already_applied: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoRulesetsPostBodyType",
-    "ReposOwnerRepoRulesetsPostBodyTypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropAssigneesItemsType",
+    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropAssigneesItemsTypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropIssueFieldValuesItemsType",
+    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropIssueFieldValuesItemsTypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropLabelsItemsType",
+    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropLabelsItemsTypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropStateItemsType",
+    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropStateItemsTypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropTypeItemsType",
+    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropTypeItemsTypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsType",
+    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsTypeForResponse",
 )

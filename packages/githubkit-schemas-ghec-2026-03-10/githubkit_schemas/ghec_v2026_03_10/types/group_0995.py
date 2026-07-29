@@ -13,44 +13,46 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0598 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0599 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0600 import (
+from .group_0617 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0618 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0619 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0601 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0643 import (
-    SecretScanningAlertWebhookType,
-    SecretScanningAlertWebhookTypeForResponse,
+from .group_0620 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0996 import (
+    WebhookPullRequestUnlockedPropPullRequestType,
+    WebhookPullRequestUnlockedPropPullRequestTypeForResponse,
 )
 
 
-class WebhookSecretScanningAlertCreatedType(TypedDict):
-    """secret_scanning_alert created event"""
+class WebhookPullRequestUnlockedType(TypedDict):
+    """pull_request unlocked event"""
 
-    action: Literal["created"]
-    alert: SecretScanningAlertWebhookType
+    action: Literal["unlocked"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
+    number: int
     organization: NotRequired[OrganizationSimpleWebhooksType]
+    pull_request: WebhookPullRequestUnlockedPropPullRequestType
     repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserType]
+    sender: SimpleUserType
 
 
-class WebhookSecretScanningAlertCreatedTypeForResponse(TypedDict):
-    """secret_scanning_alert created event"""
+class WebhookPullRequestUnlockedTypeForResponse(TypedDict):
+    """pull_request unlocked event"""
 
-    action: Literal["created"]
-    alert: SecretScanningAlertWebhookTypeForResponse
+    action: Literal["unlocked"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
+    number: int
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    pull_request: WebhookPullRequestUnlockedPropPullRequestTypeForResponse
     repository: RepositoryWebhooksTypeForResponse
-    sender: NotRequired[SimpleUserTypeForResponse]
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookSecretScanningAlertCreatedType",
-    "WebhookSecretScanningAlertCreatedTypeForResponse",
+    "WebhookPullRequestUnlockedType",
+    "WebhookPullRequestUnlockedTypeForResponse",
 )

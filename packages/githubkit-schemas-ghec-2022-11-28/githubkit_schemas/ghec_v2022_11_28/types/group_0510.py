@@ -9,38 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0313 import LinkType, LinkTypeForResponse
-
-
-class PullRequestPropLinksType(TypedDict):
-    """PullRequestPropLinks"""
-
-    comments: LinkType
-    commits: LinkType
-    statuses: LinkType
-    html: LinkType
-    issue: LinkType
-    review_comments: LinkType
-    review_comment: LinkType
-    self_: LinkType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0475 import IssueEventIntentType, IssueEventIntentTypeForResponse
 
 
-class PullRequestPropLinksTypeForResponse(TypedDict):
-    """PullRequestPropLinks"""
+class TimelineAssignedIssueEventType(TypedDict):
+    """Timeline Assigned Issue Event
 
-    comments: LinkTypeForResponse
-    commits: LinkTypeForResponse
-    statuses: LinkTypeForResponse
-    html: LinkTypeForResponse
-    issue: LinkTypeForResponse
-    review_comments: LinkTypeForResponse
-    review_comment: LinkTypeForResponse
-    self_: LinkTypeForResponse
+    Timeline Assigned Issue Event
+    """
+
+    id: int
+    node_id: str
+    url: str
+    actor: SimpleUserType
+    event: Literal["assigned"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationType, None]
+    assignee: SimpleUserType
+    intent: NotRequired[Union[None, IssueEventIntentType, None]]
+
+
+class TimelineAssignedIssueEventTypeForResponse(TypedDict):
+    """Timeline Assigned Issue Event
+
+    Timeline Assigned Issue Event
+    """
+
+    id: int
+    node_id: str
+    url: str
+    actor: SimpleUserTypeForResponse
+    event: Literal["assigned"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
+    assignee: SimpleUserTypeForResponse
+    intent: NotRequired[Union[None, IssueEventIntentTypeForResponse, None]]
 
 
 __all__ = (
-    "PullRequestPropLinksType",
-    "PullRequestPropLinksTypeForResponse",
+    "TimelineAssignedIssueEventType",
+    "TimelineAssignedIssueEventTypeForResponse",
 )

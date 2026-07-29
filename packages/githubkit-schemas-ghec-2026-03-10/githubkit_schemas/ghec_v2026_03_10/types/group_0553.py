@@ -9,40 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0160 import (
+    RepositoryRuleFileExtensionRestrictionPropParametersType,
+    RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse,
+)
 
 
-class RepositorySubscriptionType(TypedDict):
-    """Repository Invitation
+class RepositoryRuleDetailedOneof21Type(TypedDict):
+    """RepositoryRuleDetailedOneof21"""
 
-    Repository invitations let you manage who you collaborate with.
-    """
-
-    subscribed: bool
-    ignored: bool
-    reason: Union[str, None]
-    created_at: _dt.datetime
-    url: str
-    repository_url: str
+    type: Literal["file_extension_restriction"]
+    parameters: NotRequired[RepositoryRuleFileExtensionRestrictionPropParametersType]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
 
-class RepositorySubscriptionTypeForResponse(TypedDict):
-    """Repository Invitation
+class RepositoryRuleDetailedOneof21TypeForResponse(TypedDict):
+    """RepositoryRuleDetailedOneof21"""
 
-    Repository invitations let you manage who you collaborate with.
-    """
-
-    subscribed: bool
-    ignored: bool
-    reason: Union[str, None]
-    created_at: str
-    url: str
-    repository_url: str
+    type: Literal["file_extension_restriction"]
+    parameters: NotRequired[
+        RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse
+    ]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
 
 __all__ = (
-    "RepositorySubscriptionType",
-    "RepositorySubscriptionTypeForResponse",
+    "RepositoryRuleDetailedOneof21Type",
+    "RepositoryRuleDetailedOneof21TypeForResponse",
 )

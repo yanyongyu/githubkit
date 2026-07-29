@@ -13,47 +13,47 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0598 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0599 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0600 import (
+from .group_0617 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0618 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0619 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0601 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0621 import WebhooksIssue2Type, WebhooksIssue2TypeForResponse
+from .group_0620 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0639 import WebhooksMilestoneType, WebhooksMilestoneTypeForResponse
 from .group_0835 import (
-    WebhookIssuesTransferredPropChangesType,
-    WebhookIssuesTransferredPropChangesTypeForResponse,
+    WebhookIssuesDemilestonedPropIssueType,
+    WebhookIssuesDemilestonedPropIssueTypeForResponse,
 )
 
 
-class WebhookIssuesTransferredType(TypedDict):
-    """issues transferred event"""
+class WebhookIssuesDemilestonedType(TypedDict):
+    """issues demilestoned event"""
 
-    action: Literal["transferred"]
-    changes: WebhookIssuesTransferredPropChangesType
+    action: Literal["demilestoned"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhooksIssue2Type
+    issue: WebhookIssuesDemilestonedPropIssueType
+    milestone: NotRequired[WebhooksMilestoneType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookIssuesTransferredTypeForResponse(TypedDict):
-    """issues transferred event"""
+class WebhookIssuesDemilestonedTypeForResponse(TypedDict):
+    """issues demilestoned event"""
 
-    action: Literal["transferred"]
-    changes: WebhookIssuesTransferredPropChangesTypeForResponse
+    action: Literal["demilestoned"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhooksIssue2TypeForResponse
+    issue: WebhookIssuesDemilestonedPropIssueTypeForResponse
+    milestone: NotRequired[WebhooksMilestoneTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookIssuesTransferredType",
-    "WebhookIssuesTransferredTypeForResponse",
+    "WebhookIssuesDemilestonedType",
+    "WebhookIssuesDemilestonedTypeForResponse",
 )

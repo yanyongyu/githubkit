@@ -12,19 +12,19 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoBranchesBranchRenamePostBodyType(TypedDict):
-    """ReposOwnerRepoBranchesBranchRenamePostBody"""
+class ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType(TypedDict):
+    """ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody"""
 
-    new_name: str
+    labels: list[str]
 
 
-class ReposOwnerRepoBranchesBranchRenamePostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoBranchesBranchRenamePostBody"""
+class ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody"""
 
-    new_name: str
+    labels: list[str]
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchRenamePostBodyType",
-    "ReposOwnerRepoBranchesBranchRenamePostBodyTypeForResponse",
+    "ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType",
+    "ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyTypeForResponse",
 )

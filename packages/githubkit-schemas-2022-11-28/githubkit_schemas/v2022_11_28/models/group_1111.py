@@ -14,15 +14,15 @@ from pydantic import Field
 from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems(GitHubModel):
-    """OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems"""
+class OrgsOrgActionsRunnersRunnerIdLabelsPutBody(GitHubModel):
+    """OrgsOrgActionsRunnersRunnerIdLabelsPutBody"""
 
-    repository_id: int = Field(description="The repository id")
-    alert_numbers: list[int] = Field(
-        min_length=1 if PYDANTIC_V2 else None, description="The alert numbers"
+    labels: list[str] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        description="The names of the custom labels to set for the runner. You can pass an empty array to remove all custom labels.",
     )
 
 
-model_rebuild(OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems)
+model_rebuild(OrgsOrgActionsRunnersRunnerIdLabelsPutBody)
 
-__all__ = ("OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems",)
+__all__ = ("OrgsOrgActionsRunnersRunnerIdLabelsPutBody",)

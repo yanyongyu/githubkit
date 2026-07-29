@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,32 +19,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2(GitHubModel):
-    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2"""
+class ReposOwnerRepoMilestonesPostBody(GitHubModel):
+    """ReposOwnerRepoMilestonesPostBody"""
 
-    state: Missing[Literal["open", "resolved"]] = Field(
+    title: str = Field(description="The title of the milestone.")
+    state: Missing[Literal["open", "closed"]] = Field(
         default=UNSET,
-        description="Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`.",
+        description="The state of the milestone. Either `open` or `closed`.",
     )
-    resolution: Missing[
-        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
-    ] = Field(
+    description: Missing[str] = Field(
+        default=UNSET, description="A description of the milestone."
+    )
+    due_on: Missing[_dt.datetime] = Field(
         default=UNSET,
-        description="**Required when the `state` is `resolved`.** The reason for resolving the alert.",
-    )
-    resolution_comment: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="An optional comment when closing or reopening an alert. Cannot be updated or deleted.",
-    )
-    assignee: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The username of the user to assign to the alert. Set to `null` to unassign the alert.",
-    )
-    validity: Union[None, Literal["active", "inactive"]] = Field(
-        description="Sets the validity of the secret scanning alert. Can be `active`, `inactive`, or `null` to clear the override."
+        description="The milestone due date. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
 
 
-model_rebuild(ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2)
+model_rebuild(ReposOwnerRepoMilestonesPostBody)
 
-__all__ = ("ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2",)
+__all__ = ("ReposOwnerRepoMilestonesPostBody",)

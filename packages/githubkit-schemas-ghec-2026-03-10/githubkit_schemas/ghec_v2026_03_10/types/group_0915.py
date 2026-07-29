@@ -9,211 +9,106 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0599 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0600 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0634 import ProjectsV2ItemType, ProjectsV2ItemTypeForResponse
+
+class WebhookProjectCardMovedPropProjectCardAllof0Type(TypedDict):
+    """Project Card"""
+
+    after_id: NotRequired[Union[int, None]]
+    archived: bool
+    column_id: int
+    column_url: str
+    content_url: NotRequired[str]
+    created_at: _dt.datetime
+    creator: Union[WebhookProjectCardMovedPropProjectCardAllof0PropCreatorType, None]
+    id: int
+    node_id: str
+    note: Union[str, None]
+    project_url: str
+    updated_at: _dt.datetime
+    url: str
 
 
-class WebhookProjectsV2ItemEditedType(TypedDict):
-    """Projects v2 Item Edited Event"""
+class WebhookProjectCardMovedPropProjectCardAllof0TypeForResponse(TypedDict):
+    """Project Card"""
 
-    action: Literal["edited"]
-    changes: NotRequired[
-        Union[
-            WebhookProjectsV2ItemEditedPropChangesOneof0Type,
-            WebhookProjectsV2ItemEditedPropChangesOneof1Type,
-        ]
+    after_id: NotRequired[Union[int, None]]
+    archived: bool
+    column_id: int
+    column_url: str
+    content_url: NotRequired[str]
+    created_at: str
+    creator: Union[
+        WebhookProjectCardMovedPropProjectCardAllof0PropCreatorTypeForResponse, None
     ]
-    installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
-    projects_v2_item: ProjectsV2ItemType
-    sender: SimpleUserType
+    id: int
+    node_id: str
+    note: Union[str, None]
+    project_url: str
+    updated_at: str
+    url: str
 
 
-class WebhookProjectsV2ItemEditedTypeForResponse(TypedDict):
-    """Projects v2 Item Edited Event"""
+class WebhookProjectCardMovedPropProjectCardAllof0PropCreatorType(TypedDict):
+    """User"""
 
-    action: Literal["edited"]
-    changes: NotRequired[
-        Union[
-            WebhookProjectsV2ItemEditedPropChangesOneof0TypeForResponse,
-            WebhookProjectsV2ItemEditedPropChangesOneof1TypeForResponse,
-        ]
-    ]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: OrganizationSimpleWebhooksTypeForResponse
-    projects_v2_item: ProjectsV2ItemTypeForResponse
-    sender: SimpleUserTypeForResponse
-
-
-class WebhookProjectsV2ItemEditedPropChangesOneof0Type(TypedDict):
-    """WebhookProjectsV2ItemEditedPropChangesOneof0"""
-
-    field_value: WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValueType
-
-
-class WebhookProjectsV2ItemEditedPropChangesOneof0TypeForResponse(TypedDict):
-    """WebhookProjectsV2ItemEditedPropChangesOneof0"""
-
-    field_value: (
-        WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValueTypeForResponse
-    )
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-class WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValueType(TypedDict):
-    """WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValue"""
+class WebhookProjectCardMovedPropProjectCardAllof0PropCreatorTypeForResponse(TypedDict):
+    """User"""
 
-    field_node_id: NotRequired[str]
-    field_type: NotRequired[str]
-    field_name: NotRequired[str]
-    project_number: NotRequired[int]
-    from_: NotRequired[
-        Union[
-            str,
-            int,
-            ProjectsV2SingleSelectOptionType,
-            ProjectsV2IterationSettingType,
-            None,
-        ]
-    ]
-    to: NotRequired[
-        Union[
-            str,
-            int,
-            ProjectsV2SingleSelectOptionType,
-            ProjectsV2IterationSettingType,
-            None,
-        ]
-    ]
-
-
-class WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValueTypeForResponse(
-    TypedDict
-):
-    """WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValue"""
-
-    field_node_id: NotRequired[str]
-    field_type: NotRequired[str]
-    field_name: NotRequired[str]
-    project_number: NotRequired[int]
-    from_: NotRequired[
-        Union[
-            str,
-            int,
-            ProjectsV2SingleSelectOptionTypeForResponse,
-            ProjectsV2IterationSettingTypeForResponse,
-            None,
-        ]
-    ]
-    to: NotRequired[
-        Union[
-            str,
-            int,
-            ProjectsV2SingleSelectOptionTypeForResponse,
-            ProjectsV2IterationSettingTypeForResponse,
-            None,
-        ]
-    ]
-
-
-class ProjectsV2SingleSelectOptionType(TypedDict):
-    """Projects v2 Single Select Option
-
-    An option for a single select field
-    """
-
-    id: str
-    name: str
-    color: NotRequired[Union[str, None]]
-    description: NotRequired[Union[str, None]]
-
-
-class ProjectsV2SingleSelectOptionTypeForResponse(TypedDict):
-    """Projects v2 Single Select Option
-
-    An option for a single select field
-    """
-
-    id: str
-    name: str
-    color: NotRequired[Union[str, None]]
-    description: NotRequired[Union[str, None]]
-
-
-class ProjectsV2IterationSettingType(TypedDict):
-    """Projects v2 Iteration Setting
-
-    An iteration setting for an iteration field
-    """
-
-    id: str
-    title: str
-    title_html: NotRequired[str]
-    duration: NotRequired[Union[float, None]]
-    start_date: NotRequired[Union[str, None]]
-    completed: NotRequired[bool]
-
-
-class ProjectsV2IterationSettingTypeForResponse(TypedDict):
-    """Projects v2 Iteration Setting
-
-    An iteration setting for an iteration field
-    """
-
-    id: str
-    title: str
-    title_html: NotRequired[str]
-    duration: NotRequired[Union[float, None]]
-    start_date: NotRequired[Union[str, None]]
-    completed: NotRequired[bool]
-
-
-class WebhookProjectsV2ItemEditedPropChangesOneof1Type(TypedDict):
-    """WebhookProjectsV2ItemEditedPropChangesOneof1"""
-
-    body: WebhookProjectsV2ItemEditedPropChangesOneof1PropBodyType
-
-
-class WebhookProjectsV2ItemEditedPropChangesOneof1TypeForResponse(TypedDict):
-    """WebhookProjectsV2ItemEditedPropChangesOneof1"""
-
-    body: WebhookProjectsV2ItemEditedPropChangesOneof1PropBodyTypeForResponse
-
-
-class WebhookProjectsV2ItemEditedPropChangesOneof1PropBodyType(TypedDict):
-    """WebhookProjectsV2ItemEditedPropChangesOneof1PropBody"""
-
-    from_: NotRequired[Union[str, None]]
-    to: NotRequired[Union[str, None]]
-
-
-class WebhookProjectsV2ItemEditedPropChangesOneof1PropBodyTypeForResponse(TypedDict):
-    """WebhookProjectsV2ItemEditedPropChangesOneof1PropBody"""
-
-    from_: NotRequired[Union[str, None]]
-    to: NotRequired[Union[str, None]]
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "ProjectsV2IterationSettingType",
-    "ProjectsV2IterationSettingTypeForResponse",
-    "ProjectsV2SingleSelectOptionType",
-    "ProjectsV2SingleSelectOptionTypeForResponse",
-    "WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValueType",
-    "WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValueTypeForResponse",
-    "WebhookProjectsV2ItemEditedPropChangesOneof0Type",
-    "WebhookProjectsV2ItemEditedPropChangesOneof0TypeForResponse",
-    "WebhookProjectsV2ItemEditedPropChangesOneof1PropBodyType",
-    "WebhookProjectsV2ItemEditedPropChangesOneof1PropBodyTypeForResponse",
-    "WebhookProjectsV2ItemEditedPropChangesOneof1Type",
-    "WebhookProjectsV2ItemEditedPropChangesOneof1TypeForResponse",
-    "WebhookProjectsV2ItemEditedType",
-    "WebhookProjectsV2ItemEditedTypeForResponse",
+    "WebhookProjectCardMovedPropProjectCardAllof0PropCreatorType",
+    "WebhookProjectCardMovedPropProjectCardAllof0PropCreatorTypeForResponse",
+    "WebhookProjectCardMovedPropProjectCardAllof0Type",
+    "WebhookProjectCardMovedPropProjectCardAllof0TypeForResponse",
 )

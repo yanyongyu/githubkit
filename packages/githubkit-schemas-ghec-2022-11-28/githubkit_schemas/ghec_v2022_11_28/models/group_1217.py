@@ -9,67 +9,151 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsHostedRunnersPostBody(GitHubModel):
-    """OrgsOrgActionsHostedRunnersPostBody"""
+class EnterprisesEnterpriseInnersourceVulnerabilitiesSyncPostBody(GitHubModel):
+    """EnterprisesEnterpriseInnersourceVulnerabilitiesSyncPostBody"""
 
-    name: str = Field(
-        description="Name of the runner. Must be between 1 and 64 characters and may only contain upper and lowercase letters a-z, numbers 0-9, '.', '-', and '_'."
-    )
-    image: OrgsOrgActionsHostedRunnersPostBodyPropImage = Field(
-        description="The image of runner. To list all available images, use `GET /actions/hosted-runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`."
-    )
-    size: str = Field(
-        description="The machine size of the runner. To list available sizes, use `GET actions/hosted-runners/machine-sizes`"
-    )
-    runner_group_id: int = Field(
-        description="The existing runner group to add this runner to."
-    )
-    maximum_runners: Missing[int] = Field(
-        default=UNSET,
-        description="The maximum amount of runners to scale up to. Runners will not auto-scale above this number. Use this setting to limit your cost.",
-    )
-    enable_static_ip: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether this runner should be created with a static public IP. Note limit on account. To list limits on account, use `GET actions/hosted-runners/limits`",
-    )
-    image_gen: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether this runner should be used to generate custom images.",
+    vulnerabilities: list[OsvVulnerability] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="Array of vulnerabilities in OSV format to synchronize",
     )
 
 
-class OrgsOrgActionsHostedRunnersPostBodyPropImage(GitHubModel):
-    """OrgsOrgActionsHostedRunnersPostBodyPropImage
+class OsvVulnerability(GitHubModel):
+    """OSV Vulnerability
 
-    The image of runner. To list all available images, use `GET /actions/hosted-
-    runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`.
+    A vulnerability in OSV (Open Source Vulnerability) format
     """
 
-    id: Missing[str] = Field(
-        default=UNSET, description="The unique identifier of the runner image."
+    id: str = Field(
+        description="Unique identifier for the vulnerability from the external system"
     )
-    source: Missing[Literal["github", "partner", "custom"]] = Field(
-        default=UNSET, description="The source of the runner image."
+    schema_version: Missing[str] = Field(
+        default=UNSET, description="The OSV schema version"
     )
-    version: Missing[Union[str, None]] = Field(
+    summary: Missing[str] = Field(
+        default=UNSET, description="A short summary of the vulnerability"
+    )
+    details: Missing[str] = Field(
+        default=UNSET, description="Detailed description of the vulnerability"
+    )
+    aliases: Missing[list[str]] = Field(
         default=UNSET,
-        description="The version of the runner image to deploy. This is relevant only for runners using custom images.",
+        description="IDs for the same vulnerability in other databases. Only CVE IDs are used (to populate the vulnerability's CVE identifier); other aliases are ignored.",
+    )
+    severity: Missing[list[OsvVulnerabilityPropSeverityItems]] = Field(
+        default=UNSET, description="Severity information for the vulnerability"
+    )
+    affected: Missing[list[OsvVulnerabilityPropAffectedItems]] = Field(
+        default=UNSET, description="Packages and versions affected by the vulnerability"
+    )
+    references: Missing[list[OsvVulnerabilityPropReferencesItems]] = Field(
+        default=UNSET, description="URLs for more information about the vulnerability"
+    )
+    published: Missing[_dt.datetime] = Field(
+        default=UNSET, description="When the vulnerability was first published"
+    )
+    modified: Missing[_dt.datetime] = Field(
+        default=UNSET, description="When the vulnerability was last modified"
+    )
+    withdrawn: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="When the vulnerability was withdrawn. If present, the vulnerability will be marked as withdrawn.",
     )
 
 
-model_rebuild(OrgsOrgActionsHostedRunnersPostBody)
-model_rebuild(OrgsOrgActionsHostedRunnersPostBodyPropImage)
+class OsvVulnerabilityPropSeverityItems(GitHubModel):
+    """OsvVulnerabilityPropSeverityItems"""
+
+    type: Missing[str] = Field(
+        default=UNSET, description="The type of severity scoring (e.g., CVSS_V3)"
+    )
+    score: Missing[str] = Field(
+        default=UNSET, description="The severity score or vector string"
+    )
+
+
+class OsvVulnerabilityPropReferencesItems(GitHubModel):
+    """OsvVulnerabilityPropReferencesItems"""
+
+    type: Missing[str] = Field(
+        default=UNSET,
+        description="The type of reference. Supported values: PACKAGE, ADVISORY, WEB, FIX, ARTICLE, REPORT, EVIDENCE. References with other types are ignored.",
+    )
+    url: Missing[str] = Field(default=UNSET, description="The reference URL")
+
+
+class OsvVulnerabilityPropAffectedItems(GitHubModel):
+    """OsvVulnerabilityPropAffectedItems"""
+
+    package: Missing[OsvVulnerabilityPropAffectedItemsPropPackage] = Field(
+        default=UNSET
+    )
+    ranges: Missing[list[OsvVulnerabilityPropAffectedItemsPropRangesItems]] = Field(
+        default=UNSET
+    )
+
+
+class OsvVulnerabilityPropAffectedItemsPropPackage(GitHubModel):
+    """OsvVulnerabilityPropAffectedItemsPropPackage"""
+
+    ecosystem: Missing[str] = Field(
+        default=UNSET, description="The package ecosystem (e.g., npm, pip, maven)"
+    )
+    name: Missing[str] = Field(default=UNSET, description="The package name")
+
+
+class OsvVulnerabilityPropAffectedItemsPropRangesItems(GitHubModel):
+    """OsvVulnerabilityPropAffectedItemsPropRangesItems"""
+
+    type: Missing[str] = Field(default=UNSET)
+    events: Missing[
+        list[OsvVulnerabilityPropAffectedItemsPropRangesItemsPropEventsItems]
+    ] = Field(default=UNSET)
+
+
+class OsvVulnerabilityPropAffectedItemsPropRangesItemsPropEventsItems(GitHubModel):
+    """OsvVulnerabilityPropAffectedItemsPropRangesItemsPropEventsItems"""
+
+    introduced: Missing[str] = Field(
+        default=UNSET, description="The version that introduced the vulnerability"
+    )
+    fixed: Missing[str] = Field(
+        default=UNSET, description="The version that fixed the vulnerability"
+    )
+    last_affected: Missing[str] = Field(
+        default=UNSET, description="The last affected version"
+    )
+    limit: Missing[str] = Field(
+        default=UNSET, description="The upper limit of the affected range"
+    )
+
+
+model_rebuild(EnterprisesEnterpriseInnersourceVulnerabilitiesSyncPostBody)
+model_rebuild(OsvVulnerability)
+model_rebuild(OsvVulnerabilityPropSeverityItems)
+model_rebuild(OsvVulnerabilityPropReferencesItems)
+model_rebuild(OsvVulnerabilityPropAffectedItems)
+model_rebuild(OsvVulnerabilityPropAffectedItemsPropPackage)
+model_rebuild(OsvVulnerabilityPropAffectedItemsPropRangesItems)
+model_rebuild(OsvVulnerabilityPropAffectedItemsPropRangesItemsPropEventsItems)
 
 __all__ = (
-    "OrgsOrgActionsHostedRunnersPostBody",
-    "OrgsOrgActionsHostedRunnersPostBodyPropImage",
+    "EnterprisesEnterpriseInnersourceVulnerabilitiesSyncPostBody",
+    "OsvVulnerability",
+    "OsvVulnerabilityPropAffectedItems",
+    "OsvVulnerabilityPropAffectedItemsPropPackage",
+    "OsvVulnerabilityPropAffectedItemsPropRangesItems",
+    "OsvVulnerabilityPropAffectedItemsPropRangesItemsPropEventsItems",
+    "OsvVulnerabilityPropReferencesItems",
+    "OsvVulnerabilityPropSeverityItems",
 )

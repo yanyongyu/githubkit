@@ -9,129 +9,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0435 import (
-    DeploymentBranchPolicySettingsType,
-    DeploymentBranchPolicySettingsTypeForResponse,
-)
-from .group_0437 import (
-    EnvironmentPropProtectionRulesItemsAnyof1Type,
-    EnvironmentPropProtectionRulesItemsAnyof1TypeForResponse,
-)
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
 
-class EnvironmentType(TypedDict):
-    """Environment
+class ContentSubmoduleType(TypedDict):
+    """Submodule Content
 
-    Details of a deployment environment
+    An object describing a submodule
     """
 
-    id: int
-    node_id: str
+    type: Literal["submodule"]
+    submodule_git_url: str
+    size: int
     name: str
+    path: str
+    sha: str
     url: str
-    html_url: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    protection_rules: NotRequired[
-        list[
-            Union[
-                EnvironmentPropProtectionRulesItemsAnyof0Type,
-                EnvironmentPropProtectionRulesItemsAnyof1Type,
-                EnvironmentPropProtectionRulesItemsAnyof2Type,
-            ]
-        ]
-    ]
-    deployment_branch_policy: NotRequired[
-        Union[DeploymentBranchPolicySettingsType, None]
-    ]
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentSubmodulePropLinksType
 
 
-class EnvironmentTypeForResponse(TypedDict):
-    """Environment
+class ContentSubmoduleTypeForResponse(TypedDict):
+    """Submodule Content
 
-    Details of a deployment environment
+    An object describing a submodule
     """
 
-    id: int
-    node_id: str
+    type: Literal["submodule"]
+    submodule_git_url: str
+    size: int
     name: str
+    path: str
+    sha: str
     url: str
-    html_url: str
-    created_at: str
-    updated_at: str
-    protection_rules: NotRequired[
-        list[
-            Union[
-                EnvironmentPropProtectionRulesItemsAnyof0TypeForResponse,
-                EnvironmentPropProtectionRulesItemsAnyof1TypeForResponse,
-                EnvironmentPropProtectionRulesItemsAnyof2TypeForResponse,
-            ]
-        ]
-    ]
-    deployment_branch_policy: NotRequired[
-        Union[DeploymentBranchPolicySettingsTypeForResponse, None]
-    ]
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentSubmodulePropLinksTypeForResponse
 
 
-class EnvironmentPropProtectionRulesItemsAnyof0Type(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof0"""
+class ContentSubmodulePropLinksType(TypedDict):
+    """ContentSubmodulePropLinks"""
 
-    id: int
-    node_id: str
-    type: str
-    wait_timer: NotRequired[int]
-
-
-class EnvironmentPropProtectionRulesItemsAnyof0TypeForResponse(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof0"""
-
-    id: int
-    node_id: str
-    type: str
-    wait_timer: NotRequired[int]
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
 
 
-class EnvironmentPropProtectionRulesItemsAnyof2Type(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof2"""
+class ContentSubmodulePropLinksTypeForResponse(TypedDict):
+    """ContentSubmodulePropLinks"""
 
-    id: int
-    node_id: str
-    type: str
-
-
-class EnvironmentPropProtectionRulesItemsAnyof2TypeForResponse(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof2"""
-
-    id: int
-    node_id: str
-    type: str
-
-
-class ReposOwnerRepoEnvironmentsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoEnvironmentsGetResponse200"""
-
-    total_count: NotRequired[int]
-    environments: NotRequired[list[EnvironmentType]]
-
-
-class ReposOwnerRepoEnvironmentsGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoEnvironmentsGetResponse200"""
-
-    total_count: NotRequired[int]
-    environments: NotRequired[list[EnvironmentTypeForResponse]]
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
 
 
 __all__ = (
-    "EnvironmentPropProtectionRulesItemsAnyof0Type",
-    "EnvironmentPropProtectionRulesItemsAnyof0TypeForResponse",
-    "EnvironmentPropProtectionRulesItemsAnyof2Type",
-    "EnvironmentPropProtectionRulesItemsAnyof2TypeForResponse",
-    "EnvironmentType",
-    "EnvironmentTypeForResponse",
-    "ReposOwnerRepoEnvironmentsGetResponse200Type",
-    "ReposOwnerRepoEnvironmentsGetResponse200TypeForResponse",
+    "ContentSubmodulePropLinksType",
+    "ContentSubmodulePropLinksTypeForResponse",
+    "ContentSubmoduleType",
+    "ContentSubmoduleTypeForResponse",
 )

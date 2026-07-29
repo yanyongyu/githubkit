@@ -9,78 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0250 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0076 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
 
 
-class CombinedCommitStatusType(TypedDict):
-    """Combined Commit Status
+class CodeScanningVariantAnalysisRepoTaskType(TypedDict):
+    """CodeScanningVariantAnalysisRepoTask"""
 
-    Combined Commit Status
-    """
-
-    state: str
-    statuses: list[SimpleCommitStatusType]
-    sha: str
-    total_count: int
-    repository: MinimalRepositoryType
-    commit_url: str
-    url: str
-
-
-class CombinedCommitStatusTypeForResponse(TypedDict):
-    """Combined Commit Status
-
-    Combined Commit Status
-    """
-
-    state: str
-    statuses: list[SimpleCommitStatusTypeForResponse]
-    sha: str
-    total_count: int
-    repository: MinimalRepositoryTypeForResponse
-    commit_url: str
-    url: str
+    repository: SimpleRepositoryType
+    analysis_status: Literal[
+        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
+    ]
+    artifact_size_in_bytes: NotRequired[int]
+    result_count: NotRequired[int]
+    failure_message: NotRequired[str]
+    database_commit_sha: NotRequired[str]
+    source_location_prefix: NotRequired[str]
+    artifact_url: NotRequired[str]
 
 
-class SimpleCommitStatusType(TypedDict):
-    """Simple Commit Status"""
+class CodeScanningVariantAnalysisRepoTaskTypeForResponse(TypedDict):
+    """CodeScanningVariantAnalysisRepoTask"""
 
-    description: Union[str, None]
-    id: int
-    node_id: str
-    state: str
-    context: str
-    target_url: Union[str, None]
-    required: NotRequired[Union[bool, None]]
-    avatar_url: Union[str, None]
-    url: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-
-
-class SimpleCommitStatusTypeForResponse(TypedDict):
-    """Simple Commit Status"""
-
-    description: Union[str, None]
-    id: int
-    node_id: str
-    state: str
-    context: str
-    target_url: Union[str, None]
-    required: NotRequired[Union[bool, None]]
-    avatar_url: Union[str, None]
-    url: str
-    created_at: str
-    updated_at: str
+    repository: SimpleRepositoryTypeForResponse
+    analysis_status: Literal[
+        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
+    ]
+    artifact_size_in_bytes: NotRequired[int]
+    result_count: NotRequired[int]
+    failure_message: NotRequired[str]
+    database_commit_sha: NotRequired[str]
+    source_location_prefix: NotRequired[str]
+    artifact_url: NotRequired[str]
 
 
 __all__ = (
-    "CombinedCommitStatusType",
-    "CombinedCommitStatusTypeForResponse",
-    "SimpleCommitStatusType",
-    "SimpleCommitStatusTypeForResponse",
+    "CodeScanningVariantAnalysisRepoTaskType",
+    "CodeScanningVariantAnalysisRepoTaskTypeForResponse",
 )

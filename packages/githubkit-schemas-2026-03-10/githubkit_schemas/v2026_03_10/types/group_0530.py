@@ -9,41 +9,82 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksWorkflowType(TypedDict):
-    """Workflow"""
+class BillingAiCreditUsageReportUserType(TypedDict):
+    """BillingAiCreditUsageReportUser"""
 
-    badge_url: str
-    created_at: _dt.datetime
-    html_url: str
-    id: int
-    name: str
-    node_id: str
-    path: str
-    state: str
-    updated_at: _dt.datetime
-    url: str
+    time_period: BillingAiCreditUsageReportUserPropTimePeriodType
+    user: str
+    product: NotRequired[str]
+    model: NotRequired[str]
+    usage_items: list[BillingAiCreditUsageReportUserPropUsageItemsItemsType]
 
 
-class WebhooksWorkflowTypeForResponse(TypedDict):
-    """Workflow"""
+class BillingAiCreditUsageReportUserTypeForResponse(TypedDict):
+    """BillingAiCreditUsageReportUser"""
 
-    badge_url: str
-    created_at: str
-    html_url: str
-    id: int
-    name: str
-    node_id: str
-    path: str
-    state: str
-    updated_at: str
-    url: str
+    time_period: BillingAiCreditUsageReportUserPropTimePeriodTypeForResponse
+    user: str
+    product: NotRequired[str]
+    model: NotRequired[str]
+    usage_items: list[BillingAiCreditUsageReportUserPropUsageItemsItemsTypeForResponse]
+
+
+class BillingAiCreditUsageReportUserPropTimePeriodType(TypedDict):
+    """BillingAiCreditUsageReportUserPropTimePeriod"""
+
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
+
+
+class BillingAiCreditUsageReportUserPropTimePeriodTypeForResponse(TypedDict):
+    """BillingAiCreditUsageReportUserPropTimePeriod"""
+
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
+
+
+class BillingAiCreditUsageReportUserPropUsageItemsItemsType(TypedDict):
+    """BillingAiCreditUsageReportUserPropUsageItemsItems"""
+
+    product: str
+    sku: str
+    model: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: float
+    gross_amount: float
+    discount_quantity: float
+    discount_amount: float
+    net_quantity: float
+    net_amount: float
+
+
+class BillingAiCreditUsageReportUserPropUsageItemsItemsTypeForResponse(TypedDict):
+    """BillingAiCreditUsageReportUserPropUsageItemsItems"""
+
+    product: str
+    sku: str
+    model: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: float
+    gross_amount: float
+    discount_quantity: float
+    discount_amount: float
+    net_quantity: float
+    net_amount: float
 
 
 __all__ = (
-    "WebhooksWorkflowType",
-    "WebhooksWorkflowTypeForResponse",
+    "BillingAiCreditUsageReportUserPropTimePeriodType",
+    "BillingAiCreditUsageReportUserPropTimePeriodTypeForResponse",
+    "BillingAiCreditUsageReportUserPropUsageItemsItemsType",
+    "BillingAiCreditUsageReportUserPropUsageItemsItemsTypeForResponse",
+    "BillingAiCreditUsageReportUserType",
+    "BillingAiCreditUsageReportUserTypeForResponse",
 )

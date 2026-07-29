@@ -9,32 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0003 import SimpleUser
-
-
-class Reaction(GitHubModel):
-    """Reaction
-
-    Reactions to conversations provide a way to help people express their feelings
-    more simply and effectively.
-    """
-
-    id: int = Field()
-    node_id: str = Field()
-    user: Union[None, SimpleUser] = Field()
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ] = Field(description="The reaction to use")
-    created_at: _dt.datetime = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(Reaction)
+class CodeScanningSarifsStatus(GitHubModel):
+    """CodeScanningSarifsStatus"""
 
-__all__ = ("Reaction",)
+    processing_status: Missing[Literal["pending", "complete", "failed"]] = Field(
+        default=UNSET,
+        description="`pending` files have not yet been processed, while `complete` means results from the SARIF have been stored. `failed` files have either not been processed at all, or could only be partially processed.",
+    )
+    analyses_url: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The REST API URL for getting the analyses associated with the upload.",
+    )
+    errors: Missing[Union[list[str], None]] = Field(
+        default=UNSET,
+        description="Any errors that ocurred during processing of the delivery.",
+    )
+
+
+model_rebuild(CodeScanningSarifsStatus)
+
+__all__ = ("CodeScanningSarifsStatus",)

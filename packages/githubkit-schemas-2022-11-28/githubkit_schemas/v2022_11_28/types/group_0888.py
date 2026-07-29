@@ -9,68 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0523 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0524 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0525 import (
+from .group_0535 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0536 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0537 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0526 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0538 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0574 import WebhooksReviewType, WebhooksReviewTypeForResponse
+from .group_0889 import (
+    WebhookPullRequestReviewSubmittedPropPullRequestType,
+    WebhookPullRequestReviewSubmittedPropPullRequestTypeForResponse,
+)
 
 
-class WebhookRepositoryDispatchSampleType(TypedDict):
-    """repository_dispatch event"""
+class WebhookPullRequestReviewSubmittedType(TypedDict):
+    """pull_request_review submitted event"""
 
-    action: str
-    branch: str
-    client_payload: Union[WebhookRepositoryDispatchSamplePropClientPayloadType, None]
+    action: Literal["submitted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: SimpleInstallationType
+    installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
+    pull_request: WebhookPullRequestReviewSubmittedPropPullRequestType
     repository: RepositoryWebhooksType
+    review: WebhooksReviewType
     sender: SimpleUserType
 
 
-class WebhookRepositoryDispatchSampleTypeForResponse(TypedDict):
-    """repository_dispatch event"""
+class WebhookPullRequestReviewSubmittedTypeForResponse(TypedDict):
+    """pull_request_review submitted event"""
 
-    action: str
-    branch: str
-    client_payload: Union[
-        WebhookRepositoryDispatchSamplePropClientPayloadTypeForResponse, None
-    ]
+    action: Literal["submitted"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: SimpleInstallationTypeForResponse
+    installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    pull_request: WebhookPullRequestReviewSubmittedPropPullRequestTypeForResponse
     repository: RepositoryWebhooksTypeForResponse
+    review: WebhooksReviewTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
-WebhookRepositoryDispatchSamplePropClientPayloadType: TypeAlias = dict[str, Any]
-"""WebhookRepositoryDispatchSamplePropClientPayload
-
-The `client_payload` that was specified in the `POST
-/repos/{owner}/{repo}/dispatches` request body.
-"""
-
-
-WebhookRepositoryDispatchSamplePropClientPayloadTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""WebhookRepositoryDispatchSamplePropClientPayload
-
-The `client_payload` that was specified in the `POST
-/repos/{owner}/{repo}/dispatches` request body.
-"""
-
-
 __all__ = (
-    "WebhookRepositoryDispatchSamplePropClientPayloadType",
-    "WebhookRepositoryDispatchSamplePropClientPayloadTypeForResponse",
-    "WebhookRepositoryDispatchSampleType",
-    "WebhookRepositoryDispatchSampleTypeForResponse",
+    "WebhookPullRequestReviewSubmittedType",
+    "WebhookPullRequestReviewSubmittedTypeForResponse",
 )

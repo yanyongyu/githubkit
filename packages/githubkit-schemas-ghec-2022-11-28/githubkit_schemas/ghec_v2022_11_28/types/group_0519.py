@@ -9,36 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0137 import (
-    RepositoryRuleUpdatePropParametersType,
-    RepositoryRuleUpdatePropParametersTypeForResponse,
-)
+from typing_extensions import TypedDict
 
 
-class RepositoryRuleDetailedOneof1Type(TypedDict):
-    """RepositoryRuleDetailedOneof1"""
+class PageBuildStatusType(TypedDict):
+    """Page Build Status
 
-    type: Literal["update"]
-    parameters: NotRequired[RepositoryRuleUpdatePropParametersType]
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    Page Build Status
+    """
+
+    url: str
+    status: str
 
 
-class RepositoryRuleDetailedOneof1TypeForResponse(TypedDict):
-    """RepositoryRuleDetailedOneof1"""
+class PageBuildStatusTypeForResponse(TypedDict):
+    """Page Build Status
 
-    type: Literal["update"]
-    parameters: NotRequired[RepositoryRuleUpdatePropParametersTypeForResponse]
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    Page Build Status
+    """
+
+    url: str
+    status: str
 
 
 __all__ = (
-    "RepositoryRuleDetailedOneof1Type",
-    "RepositoryRuleDetailedOneof1TypeForResponse",
+    "PageBuildStatusType",
+    "PageBuildStatusTypeForResponse",
 )

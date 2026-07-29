@@ -12,36 +12,30 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsCacheUsageByRepositoryGetResponse200(GitHubModel):
-    """OrgsOrgActionsCacheUsageByRepositoryGetResponse200"""
-
-    total_count: int = Field()
-    repository_cache_usages: list[ActionsCacheUsageByRepository] = Field()
-
-
-class ActionsCacheUsageByRepository(GitHubModel):
-    """Actions Cache Usage by repository
-
-    GitHub Actions Cache Usage by repository.
+class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostRes
+    ponse202
     """
 
-    full_name: str = Field(
-        description="The repository owner and name for the cache usage being shown."
+    message: Missing[str] = Field(
+        default=UNSET, description="A message indicating the revocation has been queued"
     )
-    active_caches_size_in_bytes: int = Field(
-        description="The sum of the size in bytes of all the active cache items in the repository."
-    )
-    active_caches_count: int = Field(
-        description="The number of active caches in the repository."
+    warning: Missing[str] = Field(
+        default=UNSET,
+        description="A warning message if the token used for this request may be revoked",
     )
 
 
-model_rebuild(OrgsOrgActionsCacheUsageByRepositoryGetResponse200)
-model_rebuild(ActionsCacheUsageByRepository)
+model_rebuild(
+    EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202
+)
 
 __all__ = (
-    "ActionsCacheUsageByRepository",
-    "OrgsOrgActionsCacheUsageByRepositoryGetResponse200",
+    "EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202",
 )

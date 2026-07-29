@@ -11,24 +11,20 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0351 import ActionsSecretType, ActionsSecretTypeForResponse
+
+class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0Type(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0"""
+
+    issue_field_id: int
 
 
-class ReposOwnerRepoAgentsSecretsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoAgentsSecretsGetResponse200"""
+class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0TypeForResponse(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0"""
 
-    total_count: int
-    secrets: list[ActionsSecretType]
-
-
-class ReposOwnerRepoAgentsSecretsGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoAgentsSecretsGetResponse200"""
-
-    total_count: int
-    secrets: list[ActionsSecretTypeForResponse]
+    issue_field_id: int
 
 
 __all__ = (
-    "ReposOwnerRepoAgentsSecretsGetResponse200Type",
-    "ReposOwnerRepoAgentsSecretsGetResponse200TypeForResponse",
+    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0Type",
+    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0TypeForResponse",
 )

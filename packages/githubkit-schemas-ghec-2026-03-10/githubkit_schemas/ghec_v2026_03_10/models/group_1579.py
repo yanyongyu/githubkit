@@ -9,34 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposTemplateOwnerTemplateRepoGeneratePostBody(GitHubModel):
-    """ReposTemplateOwnerTemplateRepoGeneratePostBody"""
+class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0"""
 
-    owner: Missing[str] = Field(
+    labels: Missing[
+        list[
+            Union[
+                str,
+                ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0PropLabelsItemsOneof1,
+            ]
+        ]
+    ] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
         default=UNSET,
-        description="The organization or person who will own the new repository. To create a new repository in an organization, the authenticated user must be a member of the specified organization.",
+        description='The labels to add to the issue\'s existing labels. You can also pass an `array` of labels directly, but GitHub recommends passing an object with the `labels` key. To replace all of the labels for an issue, use "[Set labels for an issue](https://docs.github.com/enterprise-cloud@latest/rest/issues/labels#set-labels-for-an-issue)."',
     )
-    name: str = Field(description="The name of the new repository.")
-    description: Missing[str] = Field(
-        default=UNSET, description="A short description of the new repository."
+
+
+class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0PropLabelsItemsOneof1(
+    GitHubModel
+):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0PropLabelsItemsOneof1"""
+
+    name: str = Field(description="The name of the label to add.")
+    rationale: Missing[str] = Field(
+        default=UNSET, description="Optional reasoning for adding this label."
     )
-    include_all_branches: Missing[bool] = Field(
+    suggest: Missing[bool] = Field(
         default=UNSET,
-        description="Set to `true` to include the directory structure and files from all branches in the template repository, and not just the default branch. Default: `false`.",
+        description="If `true`, the label is stored as a pending suggestion for human review rather than applied directly.",
     )
-    private: Missing[bool] = Field(
-        default=UNSET,
-        description="Either `true` to create a new private repository or `false` to create a new public one.",
+    confidence: Missing[Literal["low", "medium", "high"]] = Field(
+        default=UNSET, description="The confidence level for this label choice."
     )
 
 
-model_rebuild(ReposTemplateOwnerTemplateRepoGeneratePostBody)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0PropLabelsItemsOneof1)
 
-__all__ = ("ReposTemplateOwnerTemplateRepoGeneratePostBody",)
+__all__ = (
+    "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0",
+    "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0PropLabelsItemsOneof1",
+)

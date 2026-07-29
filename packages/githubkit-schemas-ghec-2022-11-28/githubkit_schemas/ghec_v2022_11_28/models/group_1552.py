@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal
 
 from pydantic import Field
@@ -18,48 +19,43 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPullsPullNumberCodespacesPostBody(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberCodespacesPostBody"""
+class ReposOwnerRepoGitTagsPostBody(GitHubModel):
+    """ReposOwnerRepoGitTagsPostBody"""
 
-    location: Missing[str] = Field(
+    tag: str = Field(
+        description='The tag\'s name. This is typically a version (e.g., "v0.0.1").'
+    )
+    message: str = Field(description="The tag message.")
+    object_: str = Field(
+        alias="object", description="The SHA of the git object this is tagging."
+    )
+    type: Literal["commit", "tree", "blob"] = Field(
+        description="The type of the object we're tagging. Normally this is a `commit` but it can also be a `tree` or a `blob`."
+    )
+    tagger: Missing[ReposOwnerRepoGitTagsPostBodyPropTagger] = Field(
         default=UNSET,
-        description="The requested location for a new codespace. Best efforts are made to respect this upon creation. Assigned by IP if not provided.",
-    )
-    geo: Missing[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]] = Field(
-        default=UNSET,
-        description="The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is closing down.",
-    )
-    client_ip: Missing[str] = Field(
-        default=UNSET,
-        description="IP for location auto-detection when proxying a request",
-    )
-    machine: Missing[str] = Field(
-        default=UNSET, description="Machine type to use for this codespace"
-    )
-    devcontainer_path: Missing[str] = Field(
-        default=UNSET,
-        description="Path to devcontainer.json config to use for this codespace",
-    )
-    multi_repo_permissions_opt_out: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to authorize requested permissions from devcontainer.json",
-    )
-    working_directory: Missing[str] = Field(
-        default=UNSET, description="Working directory for this codespace"
-    )
-    idle_timeout_minutes: Missing[int] = Field(
-        default=UNSET,
-        description="Time in minutes before codespace stops from inactivity",
-    )
-    display_name: Missing[str] = Field(
-        default=UNSET, description="Display name for this codespace"
-    )
-    retention_period_minutes: Missing[int] = Field(
-        default=UNSET,
-        description="Duration in minutes after codespace has gone idle in which it will be deleted. Must be integer minutes between 0 and 43200 (30 days).",
+        description="An object with information about the individual creating the tag.",
     )
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberCodespacesPostBody)
+class ReposOwnerRepoGitTagsPostBodyPropTagger(GitHubModel):
+    """ReposOwnerRepoGitTagsPostBodyPropTagger
 
-__all__ = ("ReposOwnerRepoPullsPullNumberCodespacesPostBody",)
+    An object with information about the individual creating the tag.
+    """
+
+    name: str = Field(description="The name of the author of the tag")
+    email: str = Field(description="The email of the author of the tag")
+    date: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="When this object was tagged. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    )
+
+
+model_rebuild(ReposOwnerRepoGitTagsPostBody)
+model_rebuild(ReposOwnerRepoGitTagsPostBodyPropTagger)
+
+__all__ = (
+    "ReposOwnerRepoGitTagsPostBody",
+    "ReposOwnerRepoGitTagsPostBodyPropTagger",
+)

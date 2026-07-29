@@ -9,38 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Any, TypeAlias
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentType(
+class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType(TypedDict):
+    """ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody"""
+
+    ref: str
+    inputs: NotRequired[
+        ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType
+    ]
+
+
+class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyTypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment
+    """ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody"""
 
-    Parameters for AI agent assignment. Only used when an agent bot login is
-    included in `assignees`. Ignored when no agent is being assigned.
-    """
-
-    custom_instructions: NotRequired[str]
-    custom_agent: NotRequired[str]
-    model: NotRequired[str]
+    ref: str
+    inputs: NotRequired[
+        ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsTypeForResponse
+    ]
 
 
-class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment
+ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType: TypeAlias = (
+    dict[str, Any]
+)
+"""ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs
 
-    Parameters for AI agent assignment. Only used when an agent bot login is
-    included in `assignees`. Ignored when no agent is being assigned.
-    """
+Input keys and values configured in the workflow file. The maximum number of
+properties is 25. Any default properties configured in the workflow file will be
+used when `inputs` are omitted.
+"""
 
-    custom_instructions: NotRequired[str]
-    custom_agent: NotRequired[str]
-    model: NotRequired[str]
+
+ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs
+
+Input keys and values configured in the workflow file. The maximum number of
+properties is 25. Any default properties configured in the workflow file will be
+used when `inputs` are omitted.
+"""
 
 
 __all__ = (
-    "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentType",
-    "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentTypeForResponse",
+    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType",
+    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsTypeForResponse",
+    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType",
+    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyTypeForResponse",
 )

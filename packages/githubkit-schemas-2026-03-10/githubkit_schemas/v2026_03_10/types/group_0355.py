@@ -9,67 +9,78 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0093 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
-class ContentSymlinkType(TypedDict):
-    """Symlink Content
+class CombinedCommitStatusType(TypedDict):
+    """Combined Commit Status
 
-    An object describing a symlink
+    Combined Commit Status
     """
 
-    type: Literal["symlink"]
-    target: str
-    size: int
-    name: str
-    path: str
+    state: str
+    statuses: list[SimpleCommitStatusType]
     sha: str
+    total_count: int
+    repository: MinimalRepositoryType
+    commit_url: str
     url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    links: ContentSymlinkPropLinksType
 
 
-class ContentSymlinkTypeForResponse(TypedDict):
-    """Symlink Content
+class CombinedCommitStatusTypeForResponse(TypedDict):
+    """Combined Commit Status
 
-    An object describing a symlink
+    Combined Commit Status
     """
 
-    type: Literal["symlink"]
-    target: str
-    size: int
-    name: str
-    path: str
+    state: str
+    statuses: list[SimpleCommitStatusTypeForResponse]
     sha: str
+    total_count: int
+    repository: MinimalRepositoryTypeForResponse
+    commit_url: str
     url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    links: ContentSymlinkPropLinksTypeForResponse
 
 
-class ContentSymlinkPropLinksType(TypedDict):
-    """ContentSymlinkPropLinks"""
+class SimpleCommitStatusType(TypedDict):
+    """Simple Commit Status"""
 
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
+    description: Union[str, None]
+    id: int
+    node_id: str
+    state: str
+    context: str
+    target_url: Union[str, None]
+    required: NotRequired[Union[bool, None]]
+    avatar_url: Union[str, None]
+    url: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-class ContentSymlinkPropLinksTypeForResponse(TypedDict):
-    """ContentSymlinkPropLinks"""
+class SimpleCommitStatusTypeForResponse(TypedDict):
+    """Simple Commit Status"""
 
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
+    description: Union[str, None]
+    id: int
+    node_id: str
+    state: str
+    context: str
+    target_url: Union[str, None]
+    required: NotRequired[Union[bool, None]]
+    avatar_url: Union[str, None]
+    url: str
+    created_at: str
+    updated_at: str
 
 
 __all__ = (
-    "ContentSymlinkPropLinksType",
-    "ContentSymlinkPropLinksTypeForResponse",
-    "ContentSymlinkType",
-    "ContentSymlinkTypeForResponse",
+    "CombinedCommitStatusType",
+    "CombinedCommitStatusTypeForResponse",
+    "SimpleCommitStatusType",
+    "SimpleCommitStatusTypeForResponse",
 )

@@ -12,16 +12,16 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBody(GitHubModel):
-    """EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBody"""
+class EnterprisesEnterpriseCopilotContentExclusionPutResponse200(GitHubModel):
+    """EnterprisesEnterpriseCopilotContentExclusionPutResponse200"""
 
-    organization_slugs: list[str] = Field(
-        description="Organization slug to assign the team to."
-    )
+    message: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBody)
+model_rebuild(EnterprisesEnterpriseCopilotContentExclusionPutResponse200)
 
-__all__ = ("EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBody",)
+__all__ = ("EnterprisesEnterpriseCopilotContentExclusionPutResponse200",)

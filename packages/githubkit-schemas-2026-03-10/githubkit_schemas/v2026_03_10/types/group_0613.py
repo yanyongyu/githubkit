@@ -9,45 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0360 import DependabotAlertType, DependabotAlertTypeForResponse
-from .group_0522 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0523 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0524 import (
+from .group_0534 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0535 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0536 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0525 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0537 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDependabotAlertFixedType(TypedDict):
-    """Dependabot alert fixed event"""
+class WebhookCreateType(TypedDict):
+    """create event"""
 
-    action: Literal["fixed"]
-    alert: DependabotAlertType
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
+    description: Union[str, None]
     enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    master_branch: str
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    pusher_type: str
+    ref: str
+    ref_type: Literal["tag", "branch"]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookDependabotAlertFixedTypeForResponse(TypedDict):
-    """Dependabot alert fixed event"""
+class WebhookCreateTypeForResponse(TypedDict):
+    """create event"""
 
-    action: Literal["fixed"]
-    alert: DependabotAlertTypeForResponse
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    description: Union[str, None]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    master_branch: str
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    pusher_type: str
+    ref: str
+    ref_type: Literal["tag", "branch"]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookDependabotAlertFixedType",
-    "WebhookDependabotAlertFixedTypeForResponse",
+    "WebhookCreateType",
+    "WebhookCreateTypeForResponse",
 )

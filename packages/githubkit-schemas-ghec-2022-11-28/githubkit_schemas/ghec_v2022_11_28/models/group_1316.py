@@ -9,13 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from githubkit.compat import ExtraGitHubModel, model_rebuild
+from pydantic import Field
+
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0268 import ArtifactDeploymentRecord
 
 
-class OrgsOrgCopilotContentExclusionPutBody(ExtraGitHubModel):
-    """OrgsOrgCopilotContentExclusionPutBody"""
+class OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200(GitHubModel):
+    """OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200"""
+
+    total_count: int = Field(description="The number of deployment records created")
+    deployment_records: Missing[list[ArtifactDeploymentRecord]] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgCopilotContentExclusionPutBody)
+model_rebuild(OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200)
 
-__all__ = ("OrgsOrgCopilotContentExclusionPutBody",)
+__all__ = ("OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200",)

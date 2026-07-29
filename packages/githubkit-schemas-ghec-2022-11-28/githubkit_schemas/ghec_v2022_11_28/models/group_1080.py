@@ -9,52 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0618 import EnterpriseWebhooks
+from .group_0619 import SimpleInstallation
+from .group_0620 import OrganizationSimpleWebhooks
+from .group_0621 import RepositoryWebhooks
 
-class AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0(GitHubModel):
-    """AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0
 
-    A GitHub user
-    """
+class WebhookWorkflowDispatch(GitHubModel):
+    """workflow_dispatch event"""
 
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the user"
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest/admin/overview/about-enterprise-accounts)."',
     )
-
-
-class AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems(GitHubModel):
-    """AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems
-
-    A GitHub user
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the user"
+    inputs: Union[WebhookWorkflowDispatchPropInputs, None] = Field()
+    installation: Missing[SimpleInstallation] = Field(
+        default=UNSET,
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-
-
-class AgentsTasksTaskIdGetResponse200Allof0PropRepository(GitHubModel):
-    """AgentsTasksTaskIdGetResponse200Allof0PropRepository
-
-    The repository this task belongs to
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the repository"
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
+    ref: str = Field()
+    repository: RepositoryWebhooks = Field(
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    workflow: str = Field()
 
 
-model_rebuild(AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0)
-model_rebuild(AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems)
-model_rebuild(AgentsTasksTaskIdGetResponse200Allof0PropRepository)
+class WebhookWorkflowDispatchPropInputs(ExtraGitHubModel):
+    """WebhookWorkflowDispatchPropInputs"""
+
+
+model_rebuild(WebhookWorkflowDispatch)
+model_rebuild(WebhookWorkflowDispatchPropInputs)
 
 __all__ = (
-    "AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0",
-    "AgentsTasksTaskIdGetResponse200Allof0PropRepository",
-    "AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems",
+    "WebhookWorkflowDispatch",
+    "WebhookWorkflowDispatchPropInputs",
 )

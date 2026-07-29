@@ -9,17 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgTeamsTeamSlugExternalGroupsPatchBody(GitHubModel):
-    """OrgsOrgTeamsTeamSlugExternalGroupsPatchBody"""
+class OrgsOrgCopilotCodingAgentPermissionsGetResponse200(GitHubModel):
+    """OrgsOrgCopilotCodingAgentPermissionsGetResponse200"""
 
-    group_id: int = Field(description="External Group Id")
+    enabled_repositories: Literal["all", "selected", "none"] = Field(
+        description="The policy for which repositories can use Copilot cloud agent. Can be one of `all`, `selected`, or `none`."
+    )
+    selected_repositories_url: Missing[str] = Field(
+        default=UNSET,
+        description="The URL for the selected repositories endpoint. Only present when `enabled_repositories` is `selected`.",
+    )
 
 
-model_rebuild(OrgsOrgTeamsTeamSlugExternalGroupsPatchBody)
+model_rebuild(OrgsOrgCopilotCodingAgentPermissionsGetResponse200)
 
-__all__ = ("OrgsOrgTeamsTeamSlugExternalGroupsPatchBody",)
+__all__ = ("OrgsOrgCopilotCodingAgentPermissionsGetResponse200",)

@@ -9,31 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0255 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
-class OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0Type(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0"""
+class OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
+    """OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200"""
 
-    type: Literal["Issue", "PullRequest"]
-    id: int
-    owner: NotRequired[str]
-    repo: NotRequired[str]
-    number: NotRequired[int]
+    total_count: int
+    repositories: list[MinimalRepositoryType]
 
 
-class OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0TypeForResponse(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0"""
+class OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200"""
 
-    type: Literal["Issue", "PullRequest"]
-    id: int
-    owner: NotRequired[str]
-    repo: NotRequired[str]
-    number: NotRequired[int]
+    total_count: int
+    repositories: list[MinimalRepositoryTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0Type",
-    "OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0TypeForResponse",
+    "OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200Type",
+    "OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200TypeForResponse",
 )

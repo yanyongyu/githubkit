@@ -9,30 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationFineGrainedPermissionType(TypedDict):
-    """Organization Fine-Grained Permission
+class OrganizationUpdateIssueFieldType(TypedDict):
+    """OrganizationUpdateIssueField"""
 
-    A fine-grained permission that protects organization resources.
-    """
+    name: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    visibility: NotRequired[Literal["organization_members_only", "all"]]
+    options: NotRequired[list[OrganizationUpdateIssueFieldPropOptionsItemsType]]
 
+
+class OrganizationUpdateIssueFieldTypeForResponse(TypedDict):
+    """OrganizationUpdateIssueField"""
+
+    name: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    visibility: NotRequired[Literal["organization_members_only", "all"]]
+    options: NotRequired[
+        list[OrganizationUpdateIssueFieldPropOptionsItemsTypeForResponse]
+    ]
+
+
+class OrganizationUpdateIssueFieldPropOptionsItemsType(TypedDict):
+    """OrganizationUpdateIssueFieldPropOptionsItems"""
+
+    id: NotRequired[int]
     name: str
-    description: str
+    description: NotRequired[Union[str, None]]
+    color: Literal["gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"]
+    priority: int
 
 
-class OrganizationFineGrainedPermissionTypeForResponse(TypedDict):
-    """Organization Fine-Grained Permission
+class OrganizationUpdateIssueFieldPropOptionsItemsTypeForResponse(TypedDict):
+    """OrganizationUpdateIssueFieldPropOptionsItems"""
 
-    A fine-grained permission that protects organization resources.
-    """
-
+    id: NotRequired[int]
     name: str
-    description: str
+    description: NotRequired[Union[str, None]]
+    color: Literal["gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"]
+    priority: int
 
 
 __all__ = (
-    "OrganizationFineGrainedPermissionType",
-    "OrganizationFineGrainedPermissionTypeForResponse",
+    "OrganizationUpdateIssueFieldPropOptionsItemsType",
+    "OrganizationUpdateIssueFieldPropOptionsItemsTypeForResponse",
+    "OrganizationUpdateIssueFieldType",
+    "OrganizationUpdateIssueFieldTypeForResponse",
 )

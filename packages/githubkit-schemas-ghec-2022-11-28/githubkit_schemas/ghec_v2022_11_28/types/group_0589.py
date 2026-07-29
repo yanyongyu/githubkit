@@ -9,176 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0265 import CodespaceMachineType, CodespaceMachineTypeForResponse
-from .group_0327 import FullRepositoryType, FullRepositoryTypeForResponse
 
+class UserRoleItemsType(TypedDict):
+    """UserRoleItems"""
 
-class CodespaceWithFullRepositoryType(TypedDict):
-    """Codespace
-
-    A codespace.
-    """
-
-    id: int
-    name: str
-    display_name: NotRequired[Union[str, None]]
-    environment_id: Union[str, None]
-    owner: SimpleUserType
-    billable_owner: SimpleUserType
-    repository: FullRepositoryType
-    machine: Union[None, CodespaceMachineType]
-    devcontainer_path: NotRequired[Union[str, None]]
-    prebuild: Union[bool, None]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    last_used_at: _dt.datetime
-    state: Literal[
-        "Unknown",
-        "Created",
-        "Queued",
-        "Provisioning",
-        "Available",
-        "Awaiting",
-        "Unavailable",
-        "Deleted",
-        "Moved",
-        "Shutdown",
-        "Archived",
-        "Starting",
-        "ShuttingDown",
-        "Failed",
-        "Exporting",
-        "Updating",
-        "Rebuilding",
+    display: NotRequired[str]
+    type: NotRequired[str]
+    value: Literal[
+        "user",
+        "27d9891d-2c17-4f45-a262-781a0e55c80a",
+        "guest_collaborator",
+        "1ebc4a02-e56c-43a6-92a5-02ee09b90824",
+        "enterprise_owner",
+        "981df190-8801-4618-a08a-d91f6206c954",
+        "ba4987ab-a1c3-412a-b58c-360fc407cb10",
+        "billing_manager",
+        "0e338b8c-cc7f-498a-928d-ea3470d7e7e3",
+        "e6be2762-e4ad-4108-b72d-1bbe884a0f91",
     ]
-    url: str
-    git_status: CodespaceWithFullRepositoryPropGitStatusType
-    location: Literal["EastUs", "SouthEastAsia", "WestEurope", "WestUs2"]
-    idle_timeout_minutes: Union[int, None]
-    web_url: str
-    machines_url: str
-    start_url: str
-    stop_url: str
-    publish_url: NotRequired[Union[str, None]]
-    pulls_url: Union[str, None]
-    recent_folders: list[str]
-    runtime_constraints: NotRequired[
-        CodespaceWithFullRepositoryPropRuntimeConstraintsType
+    primary: NotRequired[bool]
+
+
+class UserRoleItemsTypeForResponse(TypedDict):
+    """UserRoleItems"""
+
+    display: NotRequired[str]
+    type: NotRequired[str]
+    value: Literal[
+        "user",
+        "27d9891d-2c17-4f45-a262-781a0e55c80a",
+        "guest_collaborator",
+        "1ebc4a02-e56c-43a6-92a5-02ee09b90824",
+        "enterprise_owner",
+        "981df190-8801-4618-a08a-d91f6206c954",
+        "ba4987ab-a1c3-412a-b58c-360fc407cb10",
+        "billing_manager",
+        "0e338b8c-cc7f-498a-928d-ea3470d7e7e3",
+        "e6be2762-e4ad-4108-b72d-1bbe884a0f91",
     ]
-    pending_operation: NotRequired[Union[bool, None]]
-    pending_operation_disabled_reason: NotRequired[Union[str, None]]
-    idle_timeout_notice: NotRequired[Union[str, None]]
-    retention_period_minutes: NotRequired[Union[int, None]]
-    retention_expires_at: NotRequired[Union[_dt.datetime, None]]
-
-
-class CodespaceWithFullRepositoryTypeForResponse(TypedDict):
-    """Codespace
-
-    A codespace.
-    """
-
-    id: int
-    name: str
-    display_name: NotRequired[Union[str, None]]
-    environment_id: Union[str, None]
-    owner: SimpleUserTypeForResponse
-    billable_owner: SimpleUserTypeForResponse
-    repository: FullRepositoryTypeForResponse
-    machine: Union[None, CodespaceMachineTypeForResponse]
-    devcontainer_path: NotRequired[Union[str, None]]
-    prebuild: Union[bool, None]
-    created_at: str
-    updated_at: str
-    last_used_at: str
-    state: Literal[
-        "Unknown",
-        "Created",
-        "Queued",
-        "Provisioning",
-        "Available",
-        "Awaiting",
-        "Unavailable",
-        "Deleted",
-        "Moved",
-        "Shutdown",
-        "Archived",
-        "Starting",
-        "ShuttingDown",
-        "Failed",
-        "Exporting",
-        "Updating",
-        "Rebuilding",
-    ]
-    url: str
-    git_status: CodespaceWithFullRepositoryPropGitStatusTypeForResponse
-    location: Literal["EastUs", "SouthEastAsia", "WestEurope", "WestUs2"]
-    idle_timeout_minutes: Union[int, None]
-    web_url: str
-    machines_url: str
-    start_url: str
-    stop_url: str
-    publish_url: NotRequired[Union[str, None]]
-    pulls_url: Union[str, None]
-    recent_folders: list[str]
-    runtime_constraints: NotRequired[
-        CodespaceWithFullRepositoryPropRuntimeConstraintsTypeForResponse
-    ]
-    pending_operation: NotRequired[Union[bool, None]]
-    pending_operation_disabled_reason: NotRequired[Union[str, None]]
-    idle_timeout_notice: NotRequired[Union[str, None]]
-    retention_period_minutes: NotRequired[Union[int, None]]
-    retention_expires_at: NotRequired[Union[str, None]]
-
-
-class CodespaceWithFullRepositoryPropGitStatusType(TypedDict):
-    """CodespaceWithFullRepositoryPropGitStatus
-
-    Details about the codespace's git repository.
-    """
-
-    ahead: NotRequired[int]
-    behind: NotRequired[int]
-    has_unpushed_changes: NotRequired[bool]
-    has_uncommitted_changes: NotRequired[bool]
-    ref: NotRequired[str]
-
-
-class CodespaceWithFullRepositoryPropGitStatusTypeForResponse(TypedDict):
-    """CodespaceWithFullRepositoryPropGitStatus
-
-    Details about the codespace's git repository.
-    """
-
-    ahead: NotRequired[int]
-    behind: NotRequired[int]
-    has_unpushed_changes: NotRequired[bool]
-    has_uncommitted_changes: NotRequired[bool]
-    ref: NotRequired[str]
-
-
-class CodespaceWithFullRepositoryPropRuntimeConstraintsType(TypedDict):
-    """CodespaceWithFullRepositoryPropRuntimeConstraints"""
-
-    allowed_port_privacy_settings: NotRequired[Union[list[str], None]]
-
-
-class CodespaceWithFullRepositoryPropRuntimeConstraintsTypeForResponse(TypedDict):
-    """CodespaceWithFullRepositoryPropRuntimeConstraints"""
-
-    allowed_port_privacy_settings: NotRequired[Union[list[str], None]]
+    primary: NotRequired[bool]
 
 
 __all__ = (
-    "CodespaceWithFullRepositoryPropGitStatusType",
-    "CodespaceWithFullRepositoryPropGitStatusTypeForResponse",
-    "CodespaceWithFullRepositoryPropRuntimeConstraintsType",
-    "CodespaceWithFullRepositoryPropRuntimeConstraintsTypeForResponse",
-    "CodespaceWithFullRepositoryType",
-    "CodespaceWithFullRepositoryTypeForResponse",
+    "UserRoleItemsType",
+    "UserRoleItemsTypeForResponse",
 )

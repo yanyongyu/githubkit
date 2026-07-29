@@ -9,36 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0267 import RateLimitType, RateLimitTypeForResponse
-from .group_0269 import (
-    RateLimitOverviewPropResourcesType,
-    RateLimitOverviewPropResourcesTypeForResponse,
-)
+from typing_extensions import NotRequired, TypedDict
 
 
-class RateLimitOverviewType(TypedDict):
-    """Rate Limit Overview
+class NetworkSettingsType(TypedDict):
+    """Hosted compute network settings resource
 
-    Rate Limit Overview
+    A hosted compute network settings resource.
     """
 
-    resources: RateLimitOverviewPropResourcesType
-    rate: RateLimitType
+    id: str
+    network_configuration_id: NotRequired[str]
+    name: str
+    subnet_id: str
+    region: str
 
 
-class RateLimitOverviewTypeForResponse(TypedDict):
-    """Rate Limit Overview
+class NetworkSettingsTypeForResponse(TypedDict):
+    """Hosted compute network settings resource
 
-    Rate Limit Overview
+    A hosted compute network settings resource.
     """
 
-    resources: RateLimitOverviewPropResourcesTypeForResponse
-    rate: RateLimitTypeForResponse
+    id: str
+    network_configuration_id: NotRequired[str]
+    name: str
+    subnet_id: str
+    region: str
 
 
 __all__ = (
-    "RateLimitOverviewType",
-    "RateLimitOverviewTypeForResponse",
+    "NetworkSettingsType",
+    "NetworkSettingsTypeForResponse",
 )

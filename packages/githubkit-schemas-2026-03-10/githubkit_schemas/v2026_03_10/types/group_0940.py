@@ -13,40 +13,34 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
-from .group_0058 import IssueType, IssueTypeForResponse
-from .group_0523 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0524 import (
+from .group_0534 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0535 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0536 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0525 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0537 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0576 import WebhooksAlertType, WebhooksAlertTypeForResponse
 
 
-class WebhookSubIssuesParentIssueRemovedType(TypedDict):
-    """parent issue removed event"""
+class WebhookRepositoryVulnerabilityAlertReopenType(TypedDict):
+    """repository_vulnerability_alert reopen event"""
 
-    action: Literal["parent_issue_removed"]
-    parent_issue_id: NotRequired[float]
-    parent_issue: NotRequired[IssueType]
-    parent_issue_repo: NotRequired[RepositoryType]
-    sub_issue_id: float
-    sub_issue: IssueType
+    action: Literal["reopen"]
+    alert: WebhooksAlertType
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookSubIssuesParentIssueRemovedTypeForResponse(TypedDict):
-    """parent issue removed event"""
+class WebhookRepositoryVulnerabilityAlertReopenTypeForResponse(TypedDict):
+    """repository_vulnerability_alert reopen event"""
 
-    action: Literal["parent_issue_removed"]
-    parent_issue_id: NotRequired[float]
-    parent_issue: NotRequired[IssueTypeForResponse]
-    parent_issue_repo: NotRequired[RepositoryTypeForResponse]
-    sub_issue_id: float
-    sub_issue: IssueTypeForResponse
+    action: Literal["reopen"]
+    alert: WebhooksAlertTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
@@ -54,6 +48,6 @@ class WebhookSubIssuesParentIssueRemovedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookSubIssuesParentIssueRemovedType",
-    "WebhookSubIssuesParentIssueRemovedTypeForResponse",
+    "WebhookRepositoryVulnerabilityAlertReopenType",
+    "WebhookRepositoryVulnerabilityAlertReopenTypeForResponse",
 )

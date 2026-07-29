@@ -9,35 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBodyType(
-    TypedDict
-):
-    """OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBody"""
+class OrgsOrgHooksHookIdConfigPatchBodyType(TypedDict):
+    """OrgsOrgHooksHookIdConfigPatchBody"""
 
-    name: NotRequired[str]
-    compute_service: NotRequired[Literal["none", "actions"]]
-    network_settings_ids: NotRequired[list[str]]
-    failover_network_settings_ids: NotRequired[list[str]]
-    failover_network_enabled: NotRequired[bool]
+    url: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
 
 
-class OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBodyTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBody"""
+class OrgsOrgHooksHookIdConfigPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgHooksHookIdConfigPatchBody"""
 
-    name: NotRequired[str]
-    compute_service: NotRequired[Literal["none", "actions"]]
-    network_settings_ids: NotRequired[list[str]]
-    failover_network_settings_ids: NotRequired[list[str]]
-    failover_network_enabled: NotRequired[bool]
+    url: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
 
 
 __all__ = (
-    "OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBodyType",
-    "OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBodyTypeForResponse",
+    "OrgsOrgHooksHookIdConfigPatchBodyType",
+    "OrgsOrgHooksHookIdConfigPatchBodyTypeForResponse",
 )

@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,62 +17,27 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
 
+class OrganizationCreateIssueType(GitHubModel):
+    """OrganizationCreateIssueType"""
 
-class OrganizationRole(GitHubModel):
-    """Organization Role
-
-    Organization roles
-    """
-
-    id: int = Field(description="The unique identifier of the role.")
-    name: str = Field(description="The name of the role.")
+    name: str = Field(description="Name of the issue type.")
+    is_enabled: bool = Field(
+        description="Whether or not the issue type is enabled at the organization level."
+    )
     description: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="A short description about who this role is for or what permissions it grants.",
+        default=UNSET, description="Description of the issue type."
     )
-    base_role: Missing[
-        Union[None, Literal["read", "triage", "write", "maintain", "admin"]]
-    ] = Field(
-        default=UNSET,
-        description="The system role from which this role inherits permissions.",
-    )
-    source: Missing[
-        Union[None, Literal["Organization", "Enterprise", "Predefined"]]
-    ] = Field(
-        default=UNSET,
-        description='Source answers the question, "where did this role come from?"',
-    )
-    permissions: list[str] = Field(
-        description="A list of permissions included in this role."
-    )
-    organization: Union[None, SimpleUser] = Field()
-    created_at: _dt.datetime = Field(
-        description="The date and time the role was created."
-    )
-    updated_at: _dt.datetime = Field(
-        description="The date and time the role was last updated."
-    )
+    color: Missing[
+        Union[
+            None,
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+        ]
+    ] = Field(default=UNSET, description="Color for the issue type.")
 
 
-class OrgsOrgOrganizationRolesGetResponse200(GitHubModel):
-    """OrgsOrgOrganizationRolesGetResponse200"""
+model_rebuild(OrganizationCreateIssueType)
 
-    total_count: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of organization roles available to the organization.",
-    )
-    roles: Missing[list[OrganizationRole]] = Field(
-        default=UNSET,
-        description="The list of organization roles available to the organization.",
-    )
-
-
-model_rebuild(OrganizationRole)
-model_rebuild(OrgsOrgOrganizationRolesGetResponse200)
-
-__all__ = (
-    "OrganizationRole",
-    "OrgsOrgOrganizationRolesGetResponse200",
-)
+__all__ = ("OrganizationCreateIssueType",)

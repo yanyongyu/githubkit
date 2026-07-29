@@ -9,28 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0250 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200Type(TypedDict):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200"""
+class EnterprisesEnterpriseSettingsBillingCostCentersPostBodyType(TypedDict):
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostBody"""
 
-    total_count: float
-    repositories: list[MinimalRepositoryType]
+    name: str
+    ai_credit_pool_enabled: NotRequired[bool]
 
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200TypeForResponse(
-    TypedDict
-):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200"""
+class EnterprisesEnterpriseSettingsBillingCostCentersPostBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostBody"""
 
-    total_count: float
-    repositories: list[MinimalRepositoryTypeForResponse]
+    name: str
+    ai_credit_pool_enabled: NotRequired[bool]
 
 
 __all__ = (
-    "OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200Type",
-    "OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseSettingsBillingCostCentersPostBodyType",
+    "EnterprisesEnterpriseSettingsBillingCostCentersPostBodyTypeForResponse",
 )

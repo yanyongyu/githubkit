@@ -9,82 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0240 import GistSimplePropForkOfType, GistSimplePropForkOfTypeForResponse
-
-
-class GistSimpleType(TypedDict):
-    """Gist Simple
-
-    Gist Simple
-    """
-
-    fork_of: NotRequired[Union[GistSimplePropForkOfType, None]]
-    url: NotRequired[str]
-    forks_url: NotRequired[str]
-    commits_url: NotRequired[str]
-    id: NotRequired[str]
-    node_id: NotRequired[str]
-    git_pull_url: NotRequired[str]
-    git_push_url: NotRequired[str]
-    html_url: NotRequired[str]
-    files: NotRequired[GistSimplePropFilesType]
-    public: NotRequired[bool]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    comments: NotRequired[int]
-    comments_enabled: NotRequired[bool]
-    user: NotRequired[Union[str, None]]
-    comments_url: NotRequired[str]
-    owner: NotRequired[SimpleUserType]
-    truncated: NotRequired[bool]
+from .group_0240 import (
+    ReleaseEventPropReleaseType,
+    ReleaseEventPropReleaseTypeForResponse,
+)
 
 
-class GistSimpleTypeForResponse(TypedDict):
-    """Gist Simple
+class ReleaseEventType(TypedDict):
+    """ReleaseEvent"""
 
-    Gist Simple
-    """
-
-    fork_of: NotRequired[Union[GistSimplePropForkOfTypeForResponse, None]]
-    url: NotRequired[str]
-    forks_url: NotRequired[str]
-    commits_url: NotRequired[str]
-    id: NotRequired[str]
-    node_id: NotRequired[str]
-    git_pull_url: NotRequired[str]
-    git_push_url: NotRequired[str]
-    html_url: NotRequired[str]
-    files: NotRequired[GistSimplePropFilesTypeForResponse]
-    public: NotRequired[bool]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    comments: NotRequired[int]
-    comments_enabled: NotRequired[bool]
-    user: NotRequired[Union[str, None]]
-    comments_url: NotRequired[str]
-    owner: NotRequired[SimpleUserTypeForResponse]
-    truncated: NotRequired[bool]
+    action: str
+    release: ReleaseEventPropReleaseType
 
 
-GistSimplePropFilesType: TypeAlias = dict[str, Any]
-"""GistSimplePropFiles
-"""
+class ReleaseEventTypeForResponse(TypedDict):
+    """ReleaseEvent"""
 
-
-GistSimplePropFilesTypeForResponse: TypeAlias = dict[str, Any]
-"""GistSimplePropFiles
-"""
+    action: str
+    release: ReleaseEventPropReleaseTypeForResponse
 
 
 __all__ = (
-    "GistSimplePropFilesType",
-    "GistSimplePropFilesTypeForResponse",
-    "GistSimpleType",
-    "GistSimpleTypeForResponse",
+    "ReleaseEventType",
+    "ReleaseEventTypeForResponse",
 )

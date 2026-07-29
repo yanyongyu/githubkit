@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Union
 
 from pydantic import Field
 
@@ -18,51 +19,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoTasksPostResponse400(GitHubModel):
-    """AgentsReposOwnerRepoTasksPostResponse400
+class WebhookStatusPropCommitPropCommitPropAuthorAllof0(GitHubModel):
+    """Committer
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
+    Metaproperties for Git author/committer information.
     """
 
-    message: str = Field(
-        description='Summary message (e.g. "Validation Failed", "Not Found")'
-    )
-    errors: Missing[list[AgentsReposOwnerRepoTasksPostResponse400PropErrorsItems]] = (
-        Field(
-            default=UNSET,
-            description="List of validation errors (present only for 422 responses)",
-        )
-    )
-    documentation_url: str = Field(description="URL to relevant API documentation")
+    date: Missing[_dt.datetime] = Field(default=UNSET)
+    email: Union[str, None] = Field()
+    name: str = Field(description="The git author's name.")
+    username: Missing[str] = Field(default=UNSET)
 
 
-class AgentsReposOwnerRepoTasksPostResponse400PropErrorsItems(GitHubModel):
-    """AgentsReposOwnerRepoTasksPostResponse400PropErrorsItems
+model_rebuild(WebhookStatusPropCommitPropCommitPropAuthorAllof0)
 
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ] = Field(description="Machine-readable error code")
-    message: Missing[str] = Field(
-        default=UNSET,
-        description='Human-readable message (populated when code is "custom")',
-    )
-
-
-model_rebuild(AgentsReposOwnerRepoTasksPostResponse400)
-model_rebuild(AgentsReposOwnerRepoTasksPostResponse400PropErrorsItems)
-
-__all__ = (
-    "AgentsReposOwnerRepoTasksPostResponse400",
-    "AgentsReposOwnerRepoTasksPostResponse400PropErrorsItems",
-)
+__all__ = ("WebhookStatusPropCommitPropCommitPropAuthorAllof0",)

@@ -9,28 +9,62 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type(TypedDict):
-    """OrgsOrgCopilotBillingSelectedTeamsPostResponse201
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200Type(
+    TypedDict
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200"""
 
-    The total number of seats created for members of the specified team(s).
+    job_id: int
+    status: Literal["pending", "processing", "completed", "failed"]
+    started_at: NotRequired[_dt.datetime]
+    total_count: NotRequired[int]
+    errors: NotRequired[
+        list[
+            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200PropErrorsItemsType
+        ]
+    ]
+
+
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200"""
+
+    job_id: int
+    status: Literal["pending", "processing", "completed", "failed"]
+    started_at: NotRequired[str]
+    total_count: NotRequired[int]
+    errors: NotRequired[
+        list[
+            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200PropErrorsItemsTypeForResponse
+        ]
+    ]
+
+
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200PropErrorsItemsType(
+    TypedDict
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200Pro
+    pErrorsItems
     """
 
-    seats_created: int
 
-
-class OrgsOrgCopilotBillingSelectedTeamsPostResponse201TypeForResponse(TypedDict):
-    """OrgsOrgCopilotBillingSelectedTeamsPostResponse201
-
-    The total number of seats created for members of the specified team(s).
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200PropErrorsItemsTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200Pro
+    pErrorsItems
     """
-
-    seats_created: int
 
 
 __all__ = (
-    "OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type",
-    "OrgsOrgCopilotBillingSelectedTeamsPostResponse201TypeForResponse",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200PropErrorsItemsType",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200PropErrorsItemsTypeForResponse",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200Type",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200TypeForResponse",
 )

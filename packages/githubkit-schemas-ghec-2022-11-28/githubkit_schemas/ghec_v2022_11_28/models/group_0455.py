@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,66 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class Import(GitHubModel):
-    """Import
+class DeploymentBranchPolicyNamePatternWithType(GitHubModel):
+    """Deployment branch and tag policy name pattern"""
 
-    A repository import from an external source.
-    """
-
-    vcs: Union[str, None] = Field()
-    use_lfs: Missing[bool] = Field(default=UNSET)
-    vcs_url: str = Field(description="The URL of the originating repository.")
-    svc_root: Missing[str] = Field(default=UNSET)
-    tfvc_project: Missing[str] = Field(default=UNSET)
-    status: Literal[
-        "auth",
-        "error",
-        "none",
-        "detecting",
-        "choose",
-        "auth_failed",
-        "importing",
-        "mapping",
-        "waiting_to_push",
-        "pushing",
-        "complete",
-        "setup",
-        "unknown",
-        "detection_found_multiple",
-        "detection_found_nothing",
-        "detection_needs_auth",
-    ] = Field()
-    status_text: Missing[Union[str, None]] = Field(default=UNSET)
-    failed_step: Missing[Union[str, None]] = Field(default=UNSET)
-    error_message: Missing[Union[str, None]] = Field(default=UNSET)
-    import_percent: Missing[Union[int, None]] = Field(default=UNSET)
-    commit_count: Missing[Union[int, None]] = Field(default=UNSET)
-    push_percent: Missing[Union[int, None]] = Field(default=UNSET)
-    has_large_files: Missing[bool] = Field(default=UNSET)
-    large_files_size: Missing[int] = Field(default=UNSET)
-    large_files_count: Missing[int] = Field(default=UNSET)
-    project_choices: Missing[list[ImportPropProjectChoicesItems]] = Field(default=UNSET)
-    message: Missing[str] = Field(default=UNSET)
-    authors_count: Missing[Union[int, None]] = Field(default=UNSET)
-    url: str = Field()
-    html_url: str = Field()
-    authors_url: str = Field()
-    repository_url: str = Field()
-    svn_root: Missing[str] = Field(default=UNSET)
+    name: str = Field(
+        description="The name pattern that branches or tags must match in order to deploy to the environment.\n\nWildcard characters will not match `/`. For example, to match branches that begin with `release/` and contain an additional single slash, use `release/*/*`.\nFor more information about pattern matching syntax, see the [Ruby File.fnmatch documentation](https://ruby-doc.org/core-2.5.1/File.html#method-c-fnmatch)."
+    )
+    type: Missing[Literal["branch", "tag"]] = Field(
+        default=UNSET, description="Whether this rule targets a branch or tag"
+    )
 
 
-class ImportPropProjectChoicesItems(GitHubModel):
-    """ImportPropProjectChoicesItems"""
+model_rebuild(DeploymentBranchPolicyNamePatternWithType)
 
-    vcs: Missing[str] = Field(default=UNSET)
-    tfvc_project: Missing[str] = Field(default=UNSET)
-    human_name: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(Import)
-model_rebuild(ImportPropProjectChoicesItems)
-
-__all__ = (
-    "Import",
-    "ImportPropProjectChoicesItems",
-)
+__all__ = ("DeploymentBranchPolicyNamePatternWithType",)

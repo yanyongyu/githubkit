@@ -9,29 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class AppHookConfigPatchBodyType(TypedDict):
-    """AppHookConfigPatchBody"""
+class AgentsReposOwnerRepoTasksPostBodyType(TypedDict):
+    """AgentsReposOwnerRepoTasksPostBody"""
 
-    url: NotRequired[str]
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
+    prompt: str
+    model: NotRequired[str]
+    custom_agent: NotRequired[str]
+    create_pull_request: NotRequired[bool]
+    base_ref: NotRequired[str]
+    head_ref: NotRequired[str]
 
 
-class AppHookConfigPatchBodyTypeForResponse(TypedDict):
-    """AppHookConfigPatchBody"""
+class AgentsReposOwnerRepoTasksPostBodyTypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoTasksPostBody"""
 
-    url: NotRequired[str]
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
+    prompt: str
+    model: NotRequired[str]
+    custom_agent: NotRequired[str]
+    create_pull_request: NotRequired[bool]
+    base_ref: NotRequired[str]
+    head_ref: NotRequired[str]
 
 
 __all__ = (
-    "AppHookConfigPatchBodyType",
-    "AppHookConfigPatchBodyTypeForResponse",
+    "AgentsReposOwnerRepoTasksPostBodyType",
+    "AgentsReposOwnerRepoTasksPostBodyTypeForResponse",
 )

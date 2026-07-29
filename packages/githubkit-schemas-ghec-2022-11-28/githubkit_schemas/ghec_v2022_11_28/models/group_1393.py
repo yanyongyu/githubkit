@@ -12,17 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0351 import ActionsSecret
-
-
-class ReposOwnerRepoActionsSecretsGetResponse200(GitHubModel):
-    """ReposOwnerRepoActionsSecretsGetResponse200"""
-
-    total_count: int = Field()
-    secrets: list[ActionsSecret] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(ReposOwnerRepoActionsSecretsGetResponse200)
+class OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422(GitHubModel):
+    """OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422"""
 
-__all__ = ("ReposOwnerRepoActionsSecretsGetResponse200",)
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422)
+
+__all__ = ("OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422",)

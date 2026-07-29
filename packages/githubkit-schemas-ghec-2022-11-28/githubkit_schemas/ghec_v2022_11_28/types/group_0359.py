@@ -9,24 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReviewCustomGatesCommentRequiredType(TypedDict):
-    """ReviewCustomGatesCommentRequired"""
+class ActionsRepositoryPermissionsType(TypedDict):
+    """ActionsRepositoryPermissions"""
 
-    environment_name: str
-    comment: str
+    enabled: bool
+    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
+    selected_actions_url: NotRequired[str]
+    sha_pinning_required: NotRequired[bool]
 
 
-class ReviewCustomGatesCommentRequiredTypeForResponse(TypedDict):
-    """ReviewCustomGatesCommentRequired"""
+class ActionsRepositoryPermissionsTypeForResponse(TypedDict):
+    """ActionsRepositoryPermissions"""
 
-    environment_name: str
-    comment: str
+    enabled: bool
+    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
+    selected_actions_url: NotRequired[str]
+    sha_pinning_required: NotRequired[bool]
 
 
 __all__ = (
-    "ReviewCustomGatesCommentRequiredType",
-    "ReviewCustomGatesCommentRequiredTypeForResponse",
+    "ActionsRepositoryPermissionsType",
+    "ActionsRepositoryPermissionsTypeForResponse",
 )

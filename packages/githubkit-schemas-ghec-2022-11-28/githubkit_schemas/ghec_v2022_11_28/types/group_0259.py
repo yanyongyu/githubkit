@@ -9,25 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class SelfHostedRunnersSettingsType(TypedDict):
-    """SelfHostedRunnersSettings"""
+class ActionsCacheRetentionLimitForOrganizationType(TypedDict):
+    """Actions cache retention limit for an organization
 
-    enabled_repositories: Literal["all", "selected", "none"]
-    selected_repositories_url: NotRequired[str]
+    GitHub Actions cache retention policy for an organization.
+    """
+
+    max_cache_retention_days: NotRequired[int]
 
 
-class SelfHostedRunnersSettingsTypeForResponse(TypedDict):
-    """SelfHostedRunnersSettings"""
+class ActionsCacheRetentionLimitForOrganizationTypeForResponse(TypedDict):
+    """Actions cache retention limit for an organization
 
-    enabled_repositories: Literal["all", "selected", "none"]
-    selected_repositories_url: NotRequired[str]
+    GitHub Actions cache retention policy for an organization.
+    """
+
+    max_cache_retention_days: NotRequired[int]
 
 
 __all__ = (
-    "SelfHostedRunnersSettingsType",
-    "SelfHostedRunnersSettingsTypeForResponse",
+    "ActionsCacheRetentionLimitForOrganizationType",
+    "ActionsCacheRetentionLimitForOrganizationTypeForResponse",
 )

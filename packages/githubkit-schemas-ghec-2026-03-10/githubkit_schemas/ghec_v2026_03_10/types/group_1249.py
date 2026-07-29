@@ -9,26 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0250 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
-
-
-class OrgsOrgActionsVariablesNameRepositoriesGetResponse200Type(TypedDict):
-    """OrgsOrgActionsVariablesNameRepositoriesGetResponse200"""
-
-    total_count: int
-    repositories: list[MinimalRepositoryType]
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsVariablesNameRepositoriesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsVariablesNameRepositoriesGetResponse200"""
+class EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200"""
 
     total_count: int
-    repositories: list[MinimalRepositoryTypeForResponse]
+    visual_studio_subscriptions: list[VisualStudioSubscriptionAssignmentType]
+
+
+class EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200"""
+
+    total_count: int
+    visual_studio_subscriptions: list[VisualStudioSubscriptionAssignmentTypeForResponse]
+
+
+class VisualStudioSubscriptionAssignmentType(TypedDict):
+    """Visual Studio Subscription Assignment
+
+    Visual Studio Subscription Assignment
+    """
+
+    visual_studio_subscription_email: NotRequired[str]
+    subscription_id: NotRequired[str]
+    username: NotRequired[Union[str, None]]
+    manual_match: NotRequired[bool]
+
+
+class VisualStudioSubscriptionAssignmentTypeForResponse(TypedDict):
+    """Visual Studio Subscription Assignment
+
+    Visual Studio Subscription Assignment
+    """
+
+    visual_studio_subscription_email: NotRequired[str]
+    subscription_id: NotRequired[str]
+    username: NotRequired[Union[str, None]]
+    manual_match: NotRequired[bool]
 
 
 __all__ = (
-    "OrgsOrgActionsVariablesNameRepositoriesGetResponse200Type",
-    "OrgsOrgActionsVariablesNameRepositoriesGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200Type",
+    "EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200TypeForResponse",
+    "VisualStudioSubscriptionAssignmentType",
+    "VisualStudioSubscriptionAssignmentTypeForResponse",
 )

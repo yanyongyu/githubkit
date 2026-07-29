@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,27 +17,36 @@ from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0003 import SimpleUser
 from .group_0010 import Integration
-from .group_0460 import IssueReference
 
 
-class ParentIssueAddedIssueEvent(GitHubModel):
-    """Parent-issue Added Issue Event
+class DemilestonedIssueEvent(GitHubModel):
+    """Demilestoned Issue Event
 
-    Parent-issue Added Issue Event
+    Demilestoned Issue Event
     """
 
     id: int = Field()
     node_id: str = Field()
     url: str = Field()
     actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: str = Field()
+    event: Literal["demilestoned"] = Field()
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
     performed_via_github_app: Union[None, Integration, None] = Field()
-    parent_issue: Union[None, IssueReference, None] = Field()
+    milestone: DemilestonedIssueEventPropMilestone = Field()
 
 
-model_rebuild(ParentIssueAddedIssueEvent)
+class DemilestonedIssueEventPropMilestone(GitHubModel):
+    """DemilestonedIssueEventPropMilestone"""
 
-__all__ = ("ParentIssueAddedIssueEvent",)
+    title: str = Field()
+
+
+model_rebuild(DemilestonedIssueEvent)
+model_rebuild(DemilestonedIssueEventPropMilestone)
+
+__all__ = (
+    "DemilestonedIssueEvent",
+    "DemilestonedIssueEventPropMilestone",
+)

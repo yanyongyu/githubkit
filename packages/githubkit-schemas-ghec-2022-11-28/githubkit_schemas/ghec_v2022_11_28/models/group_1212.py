@@ -15,18 +15,25 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0253 import OrganizationCustomRepositoryRole
 
+class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202"""
 
-class OrganizationsOrganizationIdCustomRolesGetResponse200(GitHubModel):
-    """OrganizationsOrganizationIdCustomRolesGetResponse200"""
-
-    total_count: Missing[int] = Field(
-        default=UNSET, description="The number of custom roles in this organization"
+    message: Missing[str] = Field(
+        default=UNSET, description="A message indicating the revocation has been queued"
     )
-    custom_roles: Missing[list[OrganizationCustomRepositoryRole]] = Field(default=UNSET)
+    warning: Missing[str] = Field(
+        default=UNSET,
+        description="A warning message if the token used for this request may be revoked",
+    )
 
 
-model_rebuild(OrganizationsOrganizationIdCustomRolesGetResponse200)
+model_rebuild(
+    EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202
+)
 
-__all__ = ("OrganizationsOrganizationIdCustomRolesGetResponse200",)
+__all__ = (
+    "EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202",
+)

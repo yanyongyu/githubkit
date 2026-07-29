@@ -11,27 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0129 import (
-    OrganizationActionsVariableType,
-    OrganizationActionsVariableTypeForResponse,
-)
+from .group_0110 import ActionsHostedRunnerType, ActionsHostedRunnerTypeForResponse
 
 
-class OrgsOrgActionsVariablesGetResponse200Type(TypedDict):
-    """OrgsOrgActionsVariablesGetResponse200"""
+class OrgsOrgActionsHostedRunnersGetResponse200Type(TypedDict):
+    """OrgsOrgActionsHostedRunnersGetResponse200"""
 
     total_count: int
-    variables: list[OrganizationActionsVariableType]
+    runners: list[ActionsHostedRunnerType]
 
 
-class OrgsOrgActionsVariablesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsVariablesGetResponse200"""
+class OrgsOrgActionsHostedRunnersGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsHostedRunnersGetResponse200"""
 
     total_count: int
-    variables: list[OrganizationActionsVariableTypeForResponse]
+    runners: list[ActionsHostedRunnerTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgActionsVariablesGetResponse200Type",
-    "OrgsOrgActionsVariablesGetResponse200TypeForResponse",
+    "OrgsOrgActionsHostedRunnersGetResponse200Type",
+    "OrgsOrgActionsHostedRunnersGetResponse200TypeForResponse",
 )

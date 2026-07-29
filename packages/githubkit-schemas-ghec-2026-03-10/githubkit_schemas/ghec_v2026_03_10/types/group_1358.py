@@ -9,25 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class OrgsOrgSettingsImmutableReleasesPutBodyType(TypedDict):
-    """OrgsOrgSettingsImmutableReleasesPutBody"""
-
-    enforced_repositories: Literal["all", "none", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
+from .group_0087 import CopilotSeatDetailsType, CopilotSeatDetailsTypeForResponse
 
 
-class OrgsOrgSettingsImmutableReleasesPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgSettingsImmutableReleasesPutBody"""
+class OrgsOrgCopilotBillingSeatsGetResponse200Type(TypedDict):
+    """OrgsOrgCopilotBillingSeatsGetResponse200"""
 
-    enforced_repositories: Literal["all", "none", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
+    total_seats: NotRequired[int]
+    seats: NotRequired[list[CopilotSeatDetailsType]]
+
+
+class OrgsOrgCopilotBillingSeatsGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCopilotBillingSeatsGetResponse200"""
+
+    total_seats: NotRequired[int]
+    seats: NotRequired[list[CopilotSeatDetailsTypeForResponse]]
 
 
 __all__ = (
-    "OrgsOrgSettingsImmutableReleasesPutBodyType",
-    "OrgsOrgSettingsImmutableReleasesPutBodyTypeForResponse",
+    "OrgsOrgCopilotBillingSeatsGetResponse200Type",
+    "OrgsOrgCopilotBillingSeatsGetResponse200TypeForResponse",
 )

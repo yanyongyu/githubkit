@@ -9,37 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+
+from .group_0495 import PullRequestStackPullRequest
 
 
-class UsersUsernameCopilotSpacesSpaceNumberResourcesPostBody(GitHubModel):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesPostBody"""
+class ReposOwnerRepoStacksPostResponse201(GitHubModel):
+    """ReposOwnerRepoStacksPostResponse201"""
 
-    resource_type: Literal[
-        "repository", "github_file", "free_text", "github_issue", "github_pull_request"
-    ] = Field(description="The type of resource to create.")
-    metadata: UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata = (
-        Field(description="Resource-specific metadata.")
+    id: int = Field()
+    number: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    base: ReposOwnerRepoStacksPostResponse201PropBase = Field()
+    open_: bool = Field(
+        alias="open",
+        description="Whether the stack has any open pull request. False when all pull requests are merged or closed.",
     )
+    created_at: _dt.datetime = Field()
+    pull_requests: list[PullRequestStackPullRequest] = Field()
 
 
-class UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata(
-    ExtraGitHubModel
-):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata
+class ReposOwnerRepoStacksPostResponse201PropBase(GitHubModel):
+    """ReposOwnerRepoStacksPostResponse201PropBase"""
 
-    Resource-specific metadata.
-    """
+    ref: str = Field()
 
 
-model_rebuild(UsersUsernameCopilotSpacesSpaceNumberResourcesPostBody)
-model_rebuild(UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata)
+model_rebuild(ReposOwnerRepoStacksPostResponse201)
+model_rebuild(ReposOwnerRepoStacksPostResponse201PropBase)
 
 __all__ = (
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesPostBody",
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata",
+    "ReposOwnerRepoStacksPostResponse201",
+    "ReposOwnerRepoStacksPostResponse201PropBase",
 )

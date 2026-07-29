@@ -19,39 +19,39 @@ from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0010 import Integration
+from .group_0400 import IssueEventIntent
 
 
-class ReviewDismissedIssueEvent(GitHubModel):
-    """Review Dismissed Issue Event
+class UnlabeledIssueEvent(GitHubModel):
+    """Unlabeled Issue Event
 
-    Review Dismissed Issue Event
+    Unlabeled Issue Event
     """
 
     id: int = Field()
     node_id: str = Field()
     url: str = Field()
     actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["review_dismissed"] = Field()
+    event: Literal["unlabeled"] = Field()
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
     performed_via_github_app: Union[None, Integration, None] = Field()
-    dismissed_review: ReviewDismissedIssueEventPropDismissedReview = Field()
+    label: UnlabeledIssueEventPropLabel = Field()
+    intent: Missing[Union[None, IssueEventIntent, None]] = Field(default=UNSET)
 
 
-class ReviewDismissedIssueEventPropDismissedReview(GitHubModel):
-    """ReviewDismissedIssueEventPropDismissedReview"""
+class UnlabeledIssueEventPropLabel(GitHubModel):
+    """UnlabeledIssueEventPropLabel"""
 
-    state: str = Field()
-    review_id: int = Field()
-    dismissal_message: Union[str, None] = Field()
-    dismissal_commit_id: Missing[str] = Field(default=UNSET)
+    name: str = Field()
+    color: str = Field()
 
 
-model_rebuild(ReviewDismissedIssueEvent)
-model_rebuild(ReviewDismissedIssueEventPropDismissedReview)
+model_rebuild(UnlabeledIssueEvent)
+model_rebuild(UnlabeledIssueEventPropLabel)
 
 __all__ = (
-    "ReviewDismissedIssueEvent",
-    "ReviewDismissedIssueEventPropDismissedReview",
+    "UnlabeledIssueEvent",
+    "UnlabeledIssueEventPropLabel",
 )

@@ -11,20 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType(TypedDict):
-    """ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody"""
-
-    labels: list[str]
+from .group_0018 import InstallationType, InstallationTypeForResponse
 
 
-class ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody"""
+class OrgsOrgInstallationsGetResponse200Type(TypedDict):
+    """OrgsOrgInstallationsGetResponse200"""
 
-    labels: list[str]
+    total_count: int
+    installations: list[InstallationType]
+
+
+class OrgsOrgInstallationsGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgInstallationsGetResponse200"""
+
+    total_count: int
+    installations: list[InstallationTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType",
-    "ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyTypeForResponse",
+    "OrgsOrgInstallationsGetResponse200Type",
+    "OrgsOrgInstallationsGetResponse200TypeForResponse",
 )

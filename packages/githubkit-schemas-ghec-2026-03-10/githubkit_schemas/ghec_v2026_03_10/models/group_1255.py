@@ -13,16 +13,13 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0261 import OrganizationActionsVariable
+
+class GistsGistIdCommentsCommentIdPatchBody(GitHubModel):
+    """GistsGistIdCommentsCommentIdPatchBody"""
+
+    body: str = Field(max_length=65535, description="The comment text.")
 
 
-class OrgsOrgAgentsVariablesGetResponse200(GitHubModel):
-    """OrgsOrgAgentsVariablesGetResponse200"""
+model_rebuild(GistsGistIdCommentsCommentIdPatchBody)
 
-    total_count: int = Field()
-    variables: list[OrganizationActionsVariable] = Field()
-
-
-model_rebuild(OrgsOrgAgentsVariablesGetResponse200)
-
-__all__ = ("OrgsOrgAgentsVariablesGetResponse200",)
+__all__ = ("GistsGistIdCommentsCommentIdPatchBody",)

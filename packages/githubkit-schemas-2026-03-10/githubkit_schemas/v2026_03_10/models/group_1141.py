@@ -11,18 +11,23 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0131 import ArtifactDeploymentRecord
 
 
-class OrgsOrgCopilotBillingSelectedUsersPostBody(GitHubModel):
-    """OrgsOrgCopilotBillingSelectedUsersPostBody"""
+class OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200(GitHubModel):
+    """OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200"""
 
-    selected_usernames: list[str] = Field(
-        min_length=1 if PYDANTIC_V2 else None,
-        description="The usernames of the organization members to be granted access to GitHub Copilot.",
+    total_count: Missing[int] = Field(
+        default=UNSET,
+        description="The number of deployment records for this digest and organization",
     )
+    deployment_records: Missing[list[ArtifactDeploymentRecord]] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgCopilotBillingSelectedUsersPostBody)
+model_rebuild(OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200)
 
-__all__ = ("OrgsOrgCopilotBillingSelectedUsersPostBody",)
+__all__ = ("OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200",)

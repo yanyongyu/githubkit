@@ -14,65 +14,64 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0400 import IssueEventIntentType, IssueEventIntentTypeForResponse
 
 
-class ReviewDismissedIssueEventType(TypedDict):
-    """Review Dismissed Issue Event
+class UnlabeledIssueEventType(TypedDict):
+    """Unlabeled Issue Event
 
-    Review Dismissed Issue Event
+    Unlabeled Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["review_dismissed"]
+    event: Literal["unlabeled"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    dismissed_review: ReviewDismissedIssueEventPropDismissedReviewType
+    label: UnlabeledIssueEventPropLabelType
+    intent: NotRequired[Union[None, IssueEventIntentType, None]]
 
 
-class ReviewDismissedIssueEventTypeForResponse(TypedDict):
-    """Review Dismissed Issue Event
+class UnlabeledIssueEventTypeForResponse(TypedDict):
+    """Unlabeled Issue Event
 
-    Review Dismissed Issue Event
+    Unlabeled Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserTypeForResponse
-    event: Literal["review_dismissed"]
+    event: Literal["unlabeled"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    dismissed_review: ReviewDismissedIssueEventPropDismissedReviewTypeForResponse
+    label: UnlabeledIssueEventPropLabelTypeForResponse
+    intent: NotRequired[Union[None, IssueEventIntentTypeForResponse, None]]
 
 
-class ReviewDismissedIssueEventPropDismissedReviewType(TypedDict):
-    """ReviewDismissedIssueEventPropDismissedReview"""
+class UnlabeledIssueEventPropLabelType(TypedDict):
+    """UnlabeledIssueEventPropLabel"""
 
-    state: str
-    review_id: int
-    dismissal_message: Union[str, None]
-    dismissal_commit_id: NotRequired[str]
+    name: str
+    color: str
 
 
-class ReviewDismissedIssueEventPropDismissedReviewTypeForResponse(TypedDict):
-    """ReviewDismissedIssueEventPropDismissedReview"""
+class UnlabeledIssueEventPropLabelTypeForResponse(TypedDict):
+    """UnlabeledIssueEventPropLabel"""
 
-    state: str
-    review_id: int
-    dismissal_message: Union[str, None]
-    dismissal_commit_id: NotRequired[str]
+    name: str
+    color: str
 
 
 __all__ = (
-    "ReviewDismissedIssueEventPropDismissedReviewType",
-    "ReviewDismissedIssueEventPropDismissedReviewTypeForResponse",
-    "ReviewDismissedIssueEventType",
-    "ReviewDismissedIssueEventTypeForResponse",
+    "UnlabeledIssueEventPropLabelType",
+    "UnlabeledIssueEventPropLabelTypeForResponse",
+    "UnlabeledIssueEventType",
+    "UnlabeledIssueEventTypeForResponse",
 )

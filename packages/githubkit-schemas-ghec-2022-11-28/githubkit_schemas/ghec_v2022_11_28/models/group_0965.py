@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,18 +19,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0599 import EnterpriseWebhooks
-from .group_0600 import SimpleInstallation
-from .group_0601 import OrganizationSimpleWebhooks
-from .group_0602 import RepositoryWebhooks
-from .group_0641 import WebhooksRelease
+from .group_0618 import EnterpriseWebhooks
+from .group_0619 import SimpleInstallation
+from .group_0620 import OrganizationSimpleWebhooks
+from .group_0621 import RepositoryWebhooks
+from .group_0966 import WebhookPullRequestReviewCommentCreatedPropPullRequest
 
 
-class WebhookReleaseEdited(GitHubModel):
-    """release edited event"""
+class WebhookPullRequestReviewCommentCreated(GitHubModel):
+    """pull_request_review_comment created event"""
 
-    action: Literal["edited"] = Field()
-    changes: WebhookReleaseEditedPropChanges = Field()
+    action: Literal["created"] = Field()
+    comment: WebhookPullRequestReviewCommentCreatedPropComment = Field(
+        title="Pull Request Review Comment",
+        description="The [comment](https://docs.github.com/enterprise-cloud@latest/rest/pulls/comments#get-a-review-comment-for-a-pull-request) itself.",
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -45,77 +49,195 @@ class WebhookReleaseEdited(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    release: WebhooksRelease = Field(
-        title="Release",
-        description="The [release](https://docs.github.com/enterprise-cloud@latest/rest/releases/releases/#get-a-release) object.",
-    )
+    pull_request: WebhookPullRequestReviewCommentCreatedPropPullRequest = Field()
     repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+
+
+class WebhookPullRequestReviewCommentCreatedPropComment(GitHubModel):
+    """Pull Request Review Comment
+
+    The [comment](https://docs.github.com/enterprise-
+    cloud@latest/rest/pulls/comments#get-a-review-comment-for-a-pull-request)
+    itself.
+    """
+
+    links: WebhookPullRequestReviewCommentCreatedPropCommentPropLinks = Field(
+        alias="_links"
+    )
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="AuthorAssociation",
+        description="How the author is associated with the repository.",
+    )
+    body: str = Field(description="The text of the comment.")
+    commit_id: str = Field(
+        description="The SHA of the commit to which the comment applies."
+    )
+    created_at: _dt.datetime = Field()
+    diff_hunk: str = Field(
+        description="The diff of the line that the comment refers to."
+    )
+    html_url: str = Field(description="HTML URL for the pull request review comment.")
+    id: int = Field(description="The ID of the pull request review comment.")
+    in_reply_to_id: Missing[int] = Field(
+        default=UNSET, description="The comment ID to reply to."
+    )
+    line: Union[int, None] = Field(
+        description="The line of the blob to which the comment applies. The last line of the range for a multi-line comment"
+    )
+    node_id: str = Field(description="The node ID of the pull request review comment.")
+    original_commit_id: str = Field(
+        description="The SHA of the original commit to which the comment applies."
+    )
+    original_line: Union[int, None] = Field(
+        description="The line of the blob to which the comment applies. The last line of the range for a multi-line comment"
+    )
+    original_position: int = Field(
+        description="The index of the original line in the diff to which the comment applies."
+    )
+    original_start_line: Union[int, None] = Field(
+        description="The first line of the range for a multi-line comment."
+    )
+    path: str = Field(
+        description="The relative path of the file to which the comment applies."
+    )
+    position: Union[int, None] = Field(
+        description="The line index in the diff to which the comment applies."
+    )
+    pull_request_review_id: Union[int, None] = Field(
+        description="The ID of the pull request review to which the comment belongs."
+    )
+    pull_request_url: str = Field(
+        description="URL for the pull request that the review comment belongs to."
+    )
+    reactions: WebhookPullRequestReviewCommentCreatedPropCommentPropReactions = Field(
+        title="Reactions"
+    )
+    side: Literal["LEFT", "RIGHT"] = Field(
+        description="The side of the first line of the range for a multi-line comment."
+    )
+    start_line: Union[int, None] = Field(
+        description="The first line of the range for a multi-line comment."
+    )
+    start_side: Union[None, Literal["LEFT", "RIGHT"]] = Field(
+        default="RIGHT",
+        description="The side of the first line of the range for a multi-line comment.",
+    )
+    subject_type: Missing[Literal["line", "file"]] = Field(
+        default=UNSET,
+        description="The level at which the comment is targeted, can be a diff line or a file.",
+    )
+    updated_at: _dt.datetime = Field()
+    url: str = Field(description="URL for the pull request review comment")
+    user: Union[WebhookPullRequestReviewCommentCreatedPropCommentPropUser, None] = (
+        Field(title="User")
     )
 
 
-class WebhookReleaseEditedPropChanges(GitHubModel):
-    """WebhookReleaseEditedPropChanges"""
+class WebhookPullRequestReviewCommentCreatedPropCommentPropReactions(GitHubModel):
+    """Reactions"""
 
-    body: Missing[WebhookReleaseEditedPropChangesPropBody] = Field(default=UNSET)
-    name: Missing[WebhookReleaseEditedPropChangesPropName] = Field(default=UNSET)
-    tag_name: Missing[WebhookReleaseEditedPropChangesPropTagName] = Field(default=UNSET)
-    make_latest: Missing[WebhookReleaseEditedPropChangesPropMakeLatest] = Field(
-        default=UNSET
+    plus_one: int = Field(alias="+1")
+    minus_one: int = Field(alias="-1")
+    confused: int = Field()
+    eyes: int = Field()
+    heart: int = Field()
+    hooray: int = Field()
+    laugh: int = Field()
+    rocket: int = Field()
+    total_count: int = Field()
+    url: str = Field()
+
+
+class WebhookPullRequestReviewCommentCreatedPropCommentPropUser(GitHubModel):
+    """User"""
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+
+
+class WebhookPullRequestReviewCommentCreatedPropCommentPropLinks(GitHubModel):
+    """WebhookPullRequestReviewCommentCreatedPropCommentPropLinks"""
+
+    html: WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropHtml = Field(
+        title="Link"
+    )
+    pull_request: WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropPullRequest = Field(
+        title="Link"
+    )
+    self_: WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropSelf = Field(
+        alias="self", title="Link"
     )
 
 
-class WebhookReleaseEditedPropChangesPropBody(GitHubModel):
-    """WebhookReleaseEditedPropChangesPropBody"""
+class WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropHtml(GitHubModel):
+    """Link"""
 
-    from_: str = Field(
-        alias="from",
-        description="The previous version of the body if the action was `edited`.",
-    )
+    href: str = Field()
 
 
-class WebhookReleaseEditedPropChangesPropName(GitHubModel):
-    """WebhookReleaseEditedPropChangesPropName"""
+class WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropPullRequest(
+    GitHubModel
+):
+    """Link"""
 
-    from_: str = Field(
-        alias="from",
-        description="The previous version of the name if the action was `edited`.",
-    )
-
-
-class WebhookReleaseEditedPropChangesPropTagName(GitHubModel):
-    """WebhookReleaseEditedPropChangesPropTagName"""
-
-    from_: str = Field(
-        alias="from",
-        description="The previous version of the tag_name if the action was `edited`.",
-    )
+    href: str = Field()
 
 
-class WebhookReleaseEditedPropChangesPropMakeLatest(GitHubModel):
-    """WebhookReleaseEditedPropChangesPropMakeLatest"""
+class WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropSelf(GitHubModel):
+    """Link"""
 
-    to: bool = Field(
-        description="Whether this release was explicitly `edited` to be the latest."
-    )
+    href: str = Field()
 
 
-model_rebuild(WebhookReleaseEdited)
-model_rebuild(WebhookReleaseEditedPropChanges)
-model_rebuild(WebhookReleaseEditedPropChangesPropBody)
-model_rebuild(WebhookReleaseEditedPropChangesPropName)
-model_rebuild(WebhookReleaseEditedPropChangesPropTagName)
-model_rebuild(WebhookReleaseEditedPropChangesPropMakeLatest)
+model_rebuild(WebhookPullRequestReviewCommentCreated)
+model_rebuild(WebhookPullRequestReviewCommentCreatedPropComment)
+model_rebuild(WebhookPullRequestReviewCommentCreatedPropCommentPropReactions)
+model_rebuild(WebhookPullRequestReviewCommentCreatedPropCommentPropUser)
+model_rebuild(WebhookPullRequestReviewCommentCreatedPropCommentPropLinks)
+model_rebuild(WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropHtml)
+model_rebuild(WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropPullRequest)
+model_rebuild(WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropSelf)
 
 __all__ = (
-    "WebhookReleaseEdited",
-    "WebhookReleaseEditedPropChanges",
-    "WebhookReleaseEditedPropChangesPropBody",
-    "WebhookReleaseEditedPropChangesPropMakeLatest",
-    "WebhookReleaseEditedPropChangesPropName",
-    "WebhookReleaseEditedPropChangesPropTagName",
+    "WebhookPullRequestReviewCommentCreated",
+    "WebhookPullRequestReviewCommentCreatedPropComment",
+    "WebhookPullRequestReviewCommentCreatedPropCommentPropLinks",
+    "WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropHtml",
+    "WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropPullRequest",
+    "WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropSelf",
+    "WebhookPullRequestReviewCommentCreatedPropCommentPropReactions",
+    "WebhookPullRequestReviewCommentCreatedPropCommentPropUser",
 )

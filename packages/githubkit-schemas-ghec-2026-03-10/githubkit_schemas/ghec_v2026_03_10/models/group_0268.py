@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -17,65 +18,62 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0085 import Team
 
-class CopilotSpaceCollaboratorAnyof0(GitHubModel):
-    """CopilotSpaceCollaboratorAnyof0"""
 
-    name: Missing[Union[str, None]] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    login: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    avatar_url: str = Field()
-    gravatar_id: Union[str, None] = Field()
-    url: str = Field()
-    html_url: str = Field()
-    followers_url: str = Field()
-    following_url: str = Field()
-    gists_url: str = Field()
-    starred_url: str = Field()
-    subscriptions_url: str = Field()
-    organizations_url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    received_events_url: str = Field()
-    type: str = Field()
-    site_admin: bool = Field()
-    starred_at: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
-    actor_type: Literal["User"] = Field(description="The collaborator actor type.")
-    role: Literal["reader", "writer", "admin"] = Field(
-        description="The role granted to the collaborator"
+class CampaignSummary(GitHubModel):
+    """Campaign summary
+
+    The campaign metadata and alert stats.
+    """
+
+    number: int = Field(description="The number of the newly created campaign")
+    created_at: _dt.datetime = Field(
+        description="The date and time the campaign was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
     )
-
-
-class CopilotSpaceCollaboratorAnyof1(GitHubModel):
-    """CopilotSpaceCollaboratorAnyof1"""
-
-    actor_type: Literal["Team"] = Field(description="The collaborator actor type.")
-    role: Literal["reader", "writer", "admin"] = Field(
-        description="The role granted to the collaborator"
+    updated_at: _dt.datetime = Field(
+        description="The date and time the campaign was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
     )
-    id: int = Field()
-    node_id: str = Field()
-    name: str = Field()
-    slug: str = Field()
-    type: Literal["Team"] = Field()
-    description: Missing[Union[str, None]] = Field(default=UNSET)
-    privacy: Missing[str] = Field(default=UNSET)
-    notification_setting: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    members_url: Missing[str] = Field(default=UNSET)
-    repositories_url: Missing[str] = Field(default=UNSET)
-    organization_id: Missing[int] = Field(default=UNSET)
-    parent: Missing[None] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET, description="The campaign name")
+    description: str = Field(description="The campaign description")
+    managers: list[SimpleUser] = Field(description="The campaign managers")
+    team_managers: Missing[list[Team]] = Field(
+        default=UNSET, description="The campaign team managers"
+    )
+    published_at: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="The date and time the campaign was published, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
+    )
+    ends_at: _dt.datetime = Field(
+        description="The date and time the campaign has ended, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    )
+    closed_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="The date and time the campaign was closed, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ. Will be null if the campaign is still open.",
+    )
+    state: Literal["open", "closed"] = Field(
+        title="Campaign state",
+        description="Indicates whether a campaign is open or closed",
+    )
+    contact_link: Union[str, None] = Field(
+        description="The contact link of the campaign."
+    )
+    alert_stats: Missing[CampaignSummaryPropAlertStats] = Field(default=UNSET)
 
 
-model_rebuild(CopilotSpaceCollaboratorAnyof0)
-model_rebuild(CopilotSpaceCollaboratorAnyof1)
+class CampaignSummaryPropAlertStats(GitHubModel):
+    """CampaignSummaryPropAlertStats"""
+
+    open_count: int = Field(description="The number of open alerts")
+    closed_count: int = Field(description="The number of closed alerts")
+    in_progress_count: int = Field(description="The number of in-progress alerts")
+
+
+model_rebuild(CampaignSummary)
+model_rebuild(CampaignSummaryPropAlertStats)
 
 __all__ = (
-    "CopilotSpaceCollaboratorAnyof0",
-    "CopilotSpaceCollaboratorAnyof1",
+    "CampaignSummary",
+    "CampaignSummaryPropAlertStats",
 )

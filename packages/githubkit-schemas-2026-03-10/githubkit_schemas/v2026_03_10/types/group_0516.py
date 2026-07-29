@@ -9,44 +9,128 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class HovercardType(TypedDict):
-    """Hovercard
+class PublicUserType(TypedDict):
+    """Public User
 
-    Hovercard
+    Public User
     """
 
-    contexts: list[HovercardPropContextsItemsType]
+    login: str
+    id: int
+    user_view_type: NotRequired[str]
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    name: Union[str, None]
+    company: Union[str, None]
+    blog: Union[str, None]
+    location: Union[str, None]
+    email: Union[str, None]
+    notification_email: NotRequired[Union[str, None]]
+    hireable: Union[bool, None]
+    bio: Union[str, None]
+    twitter_username: NotRequired[Union[str, None]]
+    public_repos: int
+    public_gists: int
+    followers: int
+    following: int
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    plan: NotRequired[PublicUserPropPlanType]
+    private_gists: NotRequired[int]
+    total_private_repos: NotRequired[int]
+    owned_private_repos: NotRequired[int]
+    disk_usage: NotRequired[int]
+    collaborators: NotRequired[int]
 
 
-class HovercardTypeForResponse(TypedDict):
-    """Hovercard
+class PublicUserTypeForResponse(TypedDict):
+    """Public User
 
-    Hovercard
+    Public User
     """
 
-    contexts: list[HovercardPropContextsItemsTypeForResponse]
+    login: str
+    id: int
+    user_view_type: NotRequired[str]
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    name: Union[str, None]
+    company: Union[str, None]
+    blog: Union[str, None]
+    location: Union[str, None]
+    email: Union[str, None]
+    notification_email: NotRequired[Union[str, None]]
+    hireable: Union[bool, None]
+    bio: Union[str, None]
+    twitter_username: NotRequired[Union[str, None]]
+    public_repos: int
+    public_gists: int
+    followers: int
+    following: int
+    created_at: str
+    updated_at: str
+    plan: NotRequired[PublicUserPropPlanTypeForResponse]
+    private_gists: NotRequired[int]
+    total_private_repos: NotRequired[int]
+    owned_private_repos: NotRequired[int]
+    disk_usage: NotRequired[int]
+    collaborators: NotRequired[int]
 
 
-class HovercardPropContextsItemsType(TypedDict):
-    """HovercardPropContextsItems"""
+class PublicUserPropPlanType(TypedDict):
+    """PublicUserPropPlan"""
 
-    message: str
-    octicon: str
+    collaborators: int
+    name: str
+    space: int
+    private_repos: int
 
 
-class HovercardPropContextsItemsTypeForResponse(TypedDict):
-    """HovercardPropContextsItems"""
+class PublicUserPropPlanTypeForResponse(TypedDict):
+    """PublicUserPropPlan"""
 
-    message: str
-    octicon: str
+    collaborators: int
+    name: str
+    space: int
+    private_repos: int
 
 
 __all__ = (
-    "HovercardPropContextsItemsType",
-    "HovercardPropContextsItemsTypeForResponse",
-    "HovercardType",
-    "HovercardTypeForResponse",
+    "PublicUserPropPlanType",
+    "PublicUserPropPlanTypeForResponse",
+    "PublicUserType",
+    "PublicUserTypeForResponse",
 )

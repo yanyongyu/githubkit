@@ -12,35 +12,26 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0033 import (
-    CodeSecurityConfigurationType,
-    CodeSecurityConfigurationTypeForResponse,
-)
+
+class OrgsOrgActionsVariablesNamePatchBodyType(TypedDict):
+    """OrgsOrgActionsVariablesNamePatchBody"""
+
+    name: NotRequired[str]
+    value: NotRequired[str]
+    visibility: NotRequired[Literal["all", "private", "selected"]]
+    selected_repository_ids: NotRequired[list[int]]
 
 
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type(
-    TypedDict
-):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200"""
+class OrgsOrgActionsVariablesNamePatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsVariablesNamePatchBody"""
 
-    default_for_new_repos: NotRequired[
-        Literal["all", "none", "private_and_internal", "public"]
-    ]
-    configuration: NotRequired[CodeSecurityConfigurationType]
-
-
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200TypeForResponse(
-    TypedDict
-):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200"""
-
-    default_for_new_repos: NotRequired[
-        Literal["all", "none", "private_and_internal", "public"]
-    ]
-    configuration: NotRequired[CodeSecurityConfigurationTypeForResponse]
+    name: NotRequired[str]
+    value: NotRequired[str]
+    visibility: NotRequired[Literal["all", "private", "selected"]]
+    selected_repository_ids: NotRequired[list[int]]
 
 
 __all__ = (
-    "OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type",
-    "OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200TypeForResponse",
+    "OrgsOrgActionsVariablesNamePatchBodyType",
+    "OrgsOrgActionsVariablesNamePatchBodyTypeForResponse",
 )

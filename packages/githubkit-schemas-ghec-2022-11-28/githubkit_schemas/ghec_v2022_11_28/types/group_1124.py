@@ -9,30 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0054 import RunnerType, RunnerTypeForResponse
-
-
-class EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type(
-    TypedDict
-):
-    """EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201"""
-
-    runner: RunnerType
-    encoded_jit_config: str
+from .group_1125 import (
+    AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsType,
+    AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse,
+)
 
 
-class EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201"""
+class AgentsTasksTaskIdGetResponse200Allof1Type(TypedDict):
+    """AgentsTasksTaskIdGetResponse200Allof1"""
 
-    runner: RunnerTypeForResponse
-    encoded_jit_config: str
+    sessions: NotRequired[
+        list[AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsType]
+    ]
+
+
+class AgentsTasksTaskIdGetResponse200Allof1TypeForResponse(TypedDict):
+    """AgentsTasksTaskIdGetResponse200Allof1"""
+
+    sessions: NotRequired[
+        list[AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse]
+    ]
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type",
-    "EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201TypeForResponse",
+    "AgentsTasksTaskIdGetResponse200Allof1Type",
+    "AgentsTasksTaskIdGetResponse200Allof1TypeForResponse",
 )

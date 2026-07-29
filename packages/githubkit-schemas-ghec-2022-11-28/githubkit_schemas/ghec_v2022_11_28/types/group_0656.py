@@ -12,42 +12,38 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0599 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0600 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0601 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0602 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0605 import ExemptionRequestType, ExemptionRequestTypeForResponse
+
+class PullRequestWebhookAllof1Type(TypedDict):
+    """PullRequestWebhookAllof1"""
+
+    allow_auto_merge: NotRequired[bool]
+    allow_update_branch: NotRequired[bool]
+    delete_branch_on_merge: NotRequired[bool]
+    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
+    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
+    squash_merge_commit_message: NotRequired[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    ]
+    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
+    use_squash_pr_title_as_default: NotRequired[bool]
 
 
-class WebhookExemptionRequestCreatedType(TypedDict):
-    """Exemption request created event"""
+class PullRequestWebhookAllof1TypeForResponse(TypedDict):
+    """PullRequestWebhookAllof1"""
 
-    action: Literal["created"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    exemption_request: ExemptionRequestType
-    sender: SimpleUserType
-
-
-class WebhookExemptionRequestCreatedTypeForResponse(TypedDict):
-    """Exemption request created event"""
-
-    action: Literal["created"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    exemption_request: ExemptionRequestTypeForResponse
-    sender: SimpleUserTypeForResponse
+    allow_auto_merge: NotRequired[bool]
+    allow_update_branch: NotRequired[bool]
+    delete_branch_on_merge: NotRequired[bool]
+    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
+    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
+    squash_merge_commit_message: NotRequired[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    ]
+    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
+    use_squash_pr_title_as_default: NotRequired[bool]
 
 
 __all__ = (
-    "WebhookExemptionRequestCreatedType",
-    "WebhookExemptionRequestCreatedTypeForResponse",
+    "PullRequestWebhookAllof1Type",
+    "PullRequestWebhookAllof1TypeForResponse",
 )

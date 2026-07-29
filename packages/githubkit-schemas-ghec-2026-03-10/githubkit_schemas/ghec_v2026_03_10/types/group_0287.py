@@ -9,33 +9,72 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ApiInsightsRouteStatsItemsType(TypedDict):
-    """ApiInsightsRouteStatsItems"""
+class ExternalGroupType(TypedDict):
+    """ExternalGroup
 
-    http_method: NotRequired[str]
-    api_route: NotRequired[str]
-    total_request_count: NotRequired[int]
-    rate_limited_request_count: NotRequired[int]
-    last_rate_limited_timestamp: NotRequired[Union[str, None]]
-    last_request_timestamp: NotRequired[str]
+    Information about an external group's usage and its members
+    """
+
+    group_id: int
+    group_name: str
+    updated_at: NotRequired[str]
+    teams: list[ExternalGroupPropTeamsItemsType]
+    members: list[ExternalGroupPropMembersItemsType]
 
 
-class ApiInsightsRouteStatsItemsTypeForResponse(TypedDict):
-    """ApiInsightsRouteStatsItems"""
+class ExternalGroupTypeForResponse(TypedDict):
+    """ExternalGroup
 
-    http_method: NotRequired[str]
-    api_route: NotRequired[str]
-    total_request_count: NotRequired[int]
-    rate_limited_request_count: NotRequired[int]
-    last_rate_limited_timestamp: NotRequired[Union[str, None]]
-    last_request_timestamp: NotRequired[str]
+    Information about an external group's usage and its members
+    """
+
+    group_id: int
+    group_name: str
+    updated_at: NotRequired[str]
+    teams: list[ExternalGroupPropTeamsItemsTypeForResponse]
+    members: list[ExternalGroupPropMembersItemsTypeForResponse]
+
+
+class ExternalGroupPropTeamsItemsType(TypedDict):
+    """ExternalGroupPropTeamsItems"""
+
+    team_id: int
+    team_name: str
+
+
+class ExternalGroupPropTeamsItemsTypeForResponse(TypedDict):
+    """ExternalGroupPropTeamsItems"""
+
+    team_id: int
+    team_name: str
+
+
+class ExternalGroupPropMembersItemsType(TypedDict):
+    """ExternalGroupPropMembersItems"""
+
+    member_id: int
+    member_login: str
+    member_name: str
+    member_email: str
+
+
+class ExternalGroupPropMembersItemsTypeForResponse(TypedDict):
+    """ExternalGroupPropMembersItems"""
+
+    member_id: int
+    member_login: str
+    member_name: str
+    member_email: str
 
 
 __all__ = (
-    "ApiInsightsRouteStatsItemsType",
-    "ApiInsightsRouteStatsItemsTypeForResponse",
+    "ExternalGroupPropMembersItemsType",
+    "ExternalGroupPropMembersItemsTypeForResponse",
+    "ExternalGroupPropTeamsItemsType",
+    "ExternalGroupPropTeamsItemsTypeForResponse",
+    "ExternalGroupType",
+    "ExternalGroupTypeForResponse",
 )

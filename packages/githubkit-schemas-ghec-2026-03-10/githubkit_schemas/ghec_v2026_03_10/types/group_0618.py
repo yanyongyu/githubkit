@@ -9,42 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class WebhooksChangesType(TypedDict):
-    """WebhooksChanges
+class SimpleInstallationType(TypedDict):
+    """Simple Installation
 
-    The changes to the comment.
+    The GitHub App installation. Webhook payloads contain the `installation`
+    property when the event is configured
+    for and sent to a GitHub App. For more information,
+    see "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-
+    cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-
+    with-github-apps)."
     """
 
-    body: NotRequired[WebhooksChangesPropBodyType]
+    id: int
+    node_id: str
 
 
-class WebhooksChangesTypeForResponse(TypedDict):
-    """WebhooksChanges
+class SimpleInstallationTypeForResponse(TypedDict):
+    """Simple Installation
 
-    The changes to the comment.
+    The GitHub App installation. Webhook payloads contain the `installation`
+    property when the event is configured
+    for and sent to a GitHub App. For more information,
+    see "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-
+    cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-
+    with-github-apps)."
     """
 
-    body: NotRequired[WebhooksChangesPropBodyTypeForResponse]
-
-
-class WebhooksChangesPropBodyType(TypedDict):
-    """WebhooksChangesPropBody"""
-
-    from_: str
-
-
-class WebhooksChangesPropBodyTypeForResponse(TypedDict):
-    """WebhooksChangesPropBody"""
-
-    from_: str
+    id: int
+    node_id: str
 
 
 __all__ = (
-    "WebhooksChangesPropBodyType",
-    "WebhooksChangesPropBodyTypeForResponse",
-    "WebhooksChangesType",
-    "WebhooksChangesTypeForResponse",
+    "SimpleInstallationType",
+    "SimpleInstallationTypeForResponse",
 )

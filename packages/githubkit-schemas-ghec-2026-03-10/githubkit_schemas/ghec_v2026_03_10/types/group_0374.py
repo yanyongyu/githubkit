@@ -9,53 +9,65 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0085 import TeamType, TeamTypeForResponse
 
-class DiffEntryType(TypedDict):
-    """Diff Entry
 
-    Diff Entry
+class ProtectedBranchPullRequestReviewPropDismissalRestrictionsType(TypedDict):
+    """ProtectedBranchPullRequestReviewPropDismissalRestrictions"""
+
+    users: NotRequired[list[SimpleUserType]]
+    teams: NotRequired[list[TeamType]]
+    apps: NotRequired[list[Union[IntegrationType, None]]]
+    url: NotRequired[str]
+    users_url: NotRequired[str]
+    teams_url: NotRequired[str]
+
+
+class ProtectedBranchPullRequestReviewPropDismissalRestrictionsTypeForResponse(
+    TypedDict
+):
+    """ProtectedBranchPullRequestReviewPropDismissalRestrictions"""
+
+    users: NotRequired[list[SimpleUserTypeForResponse]]
+    teams: NotRequired[list[TeamTypeForResponse]]
+    apps: NotRequired[list[Union[IntegrationTypeForResponse, None]]]
+    url: NotRequired[str]
+    users_url: NotRequired[str]
+    teams_url: NotRequired[str]
+
+
+class ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType(TypedDict):
+    """ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
+
+    Allow specific users, teams, or apps to bypass pull request requirements.
     """
 
-    sha: Union[str, None]
-    filename: str
-    status: Literal[
-        "added", "removed", "modified", "renamed", "copied", "changed", "unchanged"
-    ]
-    additions: int
-    deletions: int
-    changes: int
-    blob_url: Union[str, None]
-    raw_url: Union[str, None]
-    contents_url: str
-    patch: NotRequired[str]
-    previous_filename: NotRequired[str]
+    users: NotRequired[list[SimpleUserType]]
+    teams: NotRequired[list[TeamType]]
+    apps: NotRequired[list[Union[IntegrationType, None]]]
 
 
-class DiffEntryTypeForResponse(TypedDict):
-    """Diff Entry
+class ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesTypeForResponse(
+    TypedDict
+):
+    """ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
 
-    Diff Entry
+    Allow specific users, teams, or apps to bypass pull request requirements.
     """
 
-    sha: Union[str, None]
-    filename: str
-    status: Literal[
-        "added", "removed", "modified", "renamed", "copied", "changed", "unchanged"
-    ]
-    additions: int
-    deletions: int
-    changes: int
-    blob_url: Union[str, None]
-    raw_url: Union[str, None]
-    contents_url: str
-    patch: NotRequired[str]
-    previous_filename: NotRequired[str]
+    users: NotRequired[list[SimpleUserTypeForResponse]]
+    teams: NotRequired[list[TeamTypeForResponse]]
+    apps: NotRequired[list[Union[IntegrationTypeForResponse, None]]]
 
 
 __all__ = (
-    "DiffEntryType",
-    "DiffEntryTypeForResponse",
+    "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType",
+    "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesTypeForResponse",
+    "ProtectedBranchPullRequestReviewPropDismissalRestrictionsType",
+    "ProtectedBranchPullRequestReviewPropDismissalRestrictionsTypeForResponse",
 )

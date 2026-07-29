@@ -12,31 +12,27 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodeScanningDefaultSetupUpdateResponseType(TypedDict):
-    """CodeScanningDefaultSetupUpdateResponse
+class CodeScanningAutofixCommitsType(TypedDict):
+    """CodeScanningAutofixCommits
 
-    You can use `run_url` to track the status of the run. This includes a property
-    status and conclusion.
-    You should not rely on this always being an actions workflow run object.
+    Commit an autofix for a code scanning alert
     """
 
-    run_id: NotRequired[int]
-    run_url: NotRequired[str]
+    target_ref: NotRequired[str]
+    message: NotRequired[str]
 
 
-class CodeScanningDefaultSetupUpdateResponseTypeForResponse(TypedDict):
-    """CodeScanningDefaultSetupUpdateResponse
+class CodeScanningAutofixCommitsTypeForResponse(TypedDict):
+    """CodeScanningAutofixCommits
 
-    You can use `run_url` to track the status of the run. This includes a property
-    status and conclusion.
-    You should not rely on this always being an actions workflow run object.
+    Commit an autofix for a code scanning alert
     """
 
-    run_id: NotRequired[int]
-    run_url: NotRequired[str]
+    target_ref: NotRequired[str]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "CodeScanningDefaultSetupUpdateResponseType",
-    "CodeScanningDefaultSetupUpdateResponseTypeForResponse",
+    "CodeScanningAutofixCommitsType",
+    "CodeScanningAutofixCommitsTypeForResponse",
 )

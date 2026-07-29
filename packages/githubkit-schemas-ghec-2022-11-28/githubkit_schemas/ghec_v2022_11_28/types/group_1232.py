@@ -9,64 +9,95 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsRunnerGroupsGetResponse200Type(TypedDict):
-    """OrgsOrgActionsRunnerGroupsGetResponse200"""
+class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyType(TypedDict):
+    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBody"""
 
-    total_count: float
-    runner_groups: list[RunnerGroupsOrgType]
-
-
-class OrgsOrgActionsRunnerGroupsGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsRunnerGroupsGetResponse200"""
-
-    total_count: float
-    runner_groups: list[RunnerGroupsOrgTypeForResponse]
-
-
-class RunnerGroupsOrgType(TypedDict):
-    """RunnerGroupsOrg"""
-
-    id: float
-    name: str
-    visibility: str
-    default: bool
-    selected_repositories_url: NotRequired[str]
-    runners_url: str
-    hosted_runners_url: NotRequired[str]
-    network_configuration_id: NotRequired[str]
-    inherited: bool
-    inherited_allows_public_repositories: NotRequired[bool]
-    allows_public_repositories: bool
-    workflow_restrictions_read_only: NotRequired[bool]
-    restricted_to_workflows: NotRequired[bool]
-    selected_workflows: NotRequired[list[str]]
+    pattern_config_version: NotRequired[Union[str, None]]
+    provider_pattern_settings: NotRequired[
+        list[
+            EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType
+        ]
+    ]
+    custom_pattern_settings: NotRequired[
+        list[
+            EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType
+        ]
+    ]
 
 
-class RunnerGroupsOrgTypeForResponse(TypedDict):
-    """RunnerGroupsOrg"""
+class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBody"""
 
-    id: float
-    name: str
-    visibility: str
-    default: bool
-    selected_repositories_url: NotRequired[str]
-    runners_url: str
-    hosted_runners_url: NotRequired[str]
-    network_configuration_id: NotRequired[str]
-    inherited: bool
-    inherited_allows_public_repositories: NotRequired[bool]
-    allows_public_repositories: bool
-    workflow_restrictions_read_only: NotRequired[bool]
-    restricted_to_workflows: NotRequired[bool]
-    selected_workflows: NotRequired[list[str]]
+    pattern_config_version: NotRequired[Union[str, None]]
+    provider_pattern_settings: NotRequired[
+        list[
+            EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsTypeForResponse
+        ]
+    ]
+    custom_pattern_settings: NotRequired[
+        list[
+            EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsTypeForResponse
+        ]
+    ]
+
+
+class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType(
+    TypedDict
+):
+    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPat
+    ternSettingsItems
+    """
+
+    token_type: NotRequired[str]
+    push_protection_setting: NotRequired[Literal["not-set", "disabled", "enabled"]]
+
+
+class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPat
+    ternSettingsItems
+    """
+
+    token_type: NotRequired[str]
+    push_protection_setting: NotRequired[Literal["not-set", "disabled", "enabled"]]
+
+
+class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType(
+    TypedDict
+):
+    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatte
+    rnSettingsItems
+    """
+
+    token_type: NotRequired[str]
+    custom_pattern_version: NotRequired[Union[str, None]]
+    push_protection_setting: NotRequired[Literal["disabled", "enabled"]]
+
+
+class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatte
+    rnSettingsItems
+    """
+
+    token_type: NotRequired[str]
+    custom_pattern_version: NotRequired[Union[str, None]]
+    push_protection_setting: NotRequired[Literal["disabled", "enabled"]]
 
 
 __all__ = (
-    "OrgsOrgActionsRunnerGroupsGetResponse200Type",
-    "OrgsOrgActionsRunnerGroupsGetResponse200TypeForResponse",
-    "RunnerGroupsOrgType",
-    "RunnerGroupsOrgTypeForResponse",
+    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType",
+    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsTypeForResponse",
+    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType",
+    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsTypeForResponse",
+    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyType",
+    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyTypeForResponse",
 )

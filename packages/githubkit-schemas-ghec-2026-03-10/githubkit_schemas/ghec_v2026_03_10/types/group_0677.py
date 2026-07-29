@@ -9,52 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0598 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0599 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0600 import (
+from .group_0617 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0618 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0619 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0601 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0678 import (
-    WebhookCodeScanningAlertReopenedPropAlertType,
-    WebhookCodeScanningAlertReopenedPropAlertTypeForResponse,
+from .group_0620 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0625 import (
+    CheckRunWithSimpleCheckSuiteType,
+    CheckRunWithSimpleCheckSuiteTypeForResponse,
 )
 
 
-class WebhookCodeScanningAlertReopenedType(TypedDict):
-    """code_scanning_alert reopened event"""
+class WebhookCheckRunCompletedType(TypedDict):
+    """Check Run Completed Event"""
 
-    action: Literal["reopened"]
-    alert: WebhookCodeScanningAlertReopenedPropAlertType
-    commit_oid: Union[str, None]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["completed"]
+    check_run: CheckRunWithSimpleCheckSuiteType
     installation: NotRequired[SimpleInstallationType]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    ref: Union[str, None]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookCodeScanningAlertReopenedTypeForResponse(TypedDict):
-    """code_scanning_alert reopened event"""
+class WebhookCheckRunCompletedTypeForResponse(TypedDict):
+    """Check Run Completed Event"""
 
-    action: Literal["reopened"]
-    alert: WebhookCodeScanningAlertReopenedPropAlertTypeForResponse
-    commit_oid: Union[str, None]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    action: Literal["completed"]
+    check_run: CheckRunWithSimpleCheckSuiteTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    ref: Union[str, None]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookCodeScanningAlertReopenedType",
-    "WebhookCodeScanningAlertReopenedTypeForResponse",
+    "WebhookCheckRunCompletedType",
+    "WebhookCheckRunCompletedTypeForResponse",
 )

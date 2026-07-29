@@ -9,134 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberPatchBodyType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberPatchBody"""
+class ReposOwnerRepoCodespacesDevcontainersGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCodespacesDevcontainersGetResponse200"""
 
-    title: NotRequired[Union[str, int, None]]
-    body: NotRequired[Union[str, None]]
-    state: NotRequired[Literal["open", "closed"]]
-    state_reason: NotRequired[
-        Union[None, Literal["completed", "not_planned", "duplicate", "reopened"]]
+    total_count: int
+    devcontainers: list[
+        ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsType
     ]
-    duplicate_issue_id: NotRequired[int]
-    milestone: NotRequired[Union[str, int, None]]
-    labels: NotRequired[
-        list[
-            Union[
-                str, ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type
-            ]
-        ]
-    ]
-    assignees: NotRequired[
-        list[
-            Union[
-                str,
-                ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1Type,
-            ]
-        ]
-    ]
-    issue_field_values: NotRequired[
-        list[ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsType]
-    ]
-    type: NotRequired[Union[str, None]]
 
 
-class ReposOwnerRepoIssuesIssueNumberPatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberPatchBody"""
+class ReposOwnerRepoCodespacesDevcontainersGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoCodespacesDevcontainersGetResponse200"""
 
-    title: NotRequired[Union[str, int, None]]
-    body: NotRequired[Union[str, None]]
-    state: NotRequired[Literal["open", "closed"]]
-    state_reason: NotRequired[
-        Union[None, Literal["completed", "not_planned", "duplicate", "reopened"]]
+    total_count: int
+    devcontainers: list[
+        ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsTypeForResponse
     ]
-    duplicate_issue_id: NotRequired[int]
-    milestone: NotRequired[Union[str, int, None]]
-    labels: NotRequired[
-        list[
-            Union[
-                str,
-                ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1TypeForResponse,
-            ]
-        ]
-    ]
-    assignees: NotRequired[
-        list[
-            Union[
-                str,
-                ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1TypeForResponse,
-            ]
-        ]
-    ]
-    issue_field_values: NotRequired[
-        list[
-            ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsTypeForResponse
-        ]
-    ]
-    type: NotRequired[Union[str, None]]
 
 
-class ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1"""
+class ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsType(
+    TypedDict
+):
+    """ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems"""
 
-    id: NotRequired[int]
+    path: str
     name: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    color: NotRequired[Union[str, None]]
+    display_name: NotRequired[str]
 
 
-class ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1TypeForResponse(
+class ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsTypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1"""
+    """ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems"""
 
-    id: NotRequired[int]
+    path: str
     name: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    color: NotRequired[Union[str, None]]
-
-
-class ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1Type(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1"""
-
-    login: NotRequired[str]
-
-
-class ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1"""
-
-    login: NotRequired[str]
-
-
-class ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems"""
-
-    field_id: int
-    value: Union[str, float, list[str]]
-
-
-class ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems"""
-
-    field_id: int
-    value: Union[str, float, list[str]]
+    display_name: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1Type",
-    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1TypeForResponse",
-    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsType",
-    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsTypeForResponse",
-    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type",
-    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1TypeForResponse",
-    "ReposOwnerRepoIssuesIssueNumberPatchBodyType",
-    "ReposOwnerRepoIssuesIssueNumberPatchBodyTypeForResponse",
+    "ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsType",
+    "ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsTypeForResponse",
+    "ReposOwnerRepoCodespacesDevcontainersGetResponse200Type",
+    "ReposOwnerRepoCodespacesDevcontainersGetResponse200TypeForResponse",
 )

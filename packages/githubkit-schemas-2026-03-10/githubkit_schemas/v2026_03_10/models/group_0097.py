@@ -16,76 +16,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class BillingAiCreditUsageReportOrg(GitHubModel):
-    """BillingAiCreditUsageReportOrg"""
+class ActionsCacheStorageLimitForOrganization(GitHubModel):
+    """Actions cache storage limit for an organization
 
-    time_period: BillingAiCreditUsageReportOrgPropTimePeriod = Field(alias="timePeriod")
-    organization: str = Field(description="The unique identifier of the organization.")
-    user: Missing[str] = Field(
-        default=UNSET, description="The name of the user for the usage report."
-    )
-    product: Missing[str] = Field(
-        default=UNSET, description="The product for the usage report."
-    )
-    model: Missing[str] = Field(
-        default=UNSET, description="The model for the usage report."
-    )
-    usage_items: list[BillingAiCreditUsageReportOrgPropUsageItemsItems] = Field(
-        alias="usageItems"
+    GitHub Actions cache storage policy for an organization.
+    """
+
+    max_cache_size_gb: Missing[int] = Field(
+        default=UNSET,
+        description="For repositories in the organization, the maximum size limit for the sum of all caches in a repository, in gigabytes.",
     )
 
 
-class BillingAiCreditUsageReportOrgPropTimePeriod(GitHubModel):
-    """BillingAiCreditUsageReportOrgPropTimePeriod"""
+model_rebuild(ActionsCacheStorageLimitForOrganization)
 
-    year: int = Field(description="The year for the usage report.")
-    month: Missing[int] = Field(
-        default=UNSET, description="The month for the usage report."
-    )
-    day: Missing[int] = Field(
-        default=UNSET, description="The day for the usage report."
-    )
-
-
-class BillingAiCreditUsageReportOrgPropUsageItemsItems(GitHubModel):
-    """BillingAiCreditUsageReportOrgPropUsageItemsItems"""
-
-    product: str = Field(description="Product name.")
-    sku: str = Field(description="SKU name.")
-    model: str = Field(description="Model name.")
-    unit_type: str = Field(
-        alias="unitType", description="Unit type of the usage line item."
-    )
-    price_per_unit: float = Field(
-        alias="pricePerUnit", description="Price per unit of the usage line item."
-    )
-    gross_quantity: float = Field(
-        alias="grossQuantity", description="Gross quantity of the usage line item."
-    )
-    gross_amount: float = Field(
-        alias="grossAmount", description="Gross amount of the usage line item."
-    )
-    discount_quantity: float = Field(
-        alias="discountQuantity",
-        description="Discount quantity of the usage line item.",
-    )
-    discount_amount: float = Field(
-        alias="discountAmount", description="Discount amount of the usage line item."
-    )
-    net_quantity: float = Field(
-        alias="netQuantity", description="Net quantity of the usage line item."
-    )
-    net_amount: float = Field(
-        alias="netAmount", description="Net amount of the usage line item."
-    )
-
-
-model_rebuild(BillingAiCreditUsageReportOrg)
-model_rebuild(BillingAiCreditUsageReportOrgPropTimePeriod)
-model_rebuild(BillingAiCreditUsageReportOrgPropUsageItemsItems)
-
-__all__ = (
-    "BillingAiCreditUsageReportOrg",
-    "BillingAiCreditUsageReportOrgPropTimePeriod",
-    "BillingAiCreditUsageReportOrgPropUsageItemsItems",
-)
+__all__ = ("ActionsCacheStorageLimitForOrganization",)

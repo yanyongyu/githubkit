@@ -11,20 +11,31 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
+from .group_0037 import (
+    ActionsHostedRunnerCustomImageVersionType,
+    ActionsHostedRunnerCustomImageVersionTypeForResponse,
+)
 
-class OrgsOrgAttestationsDeleteRequestPostBodyOneof0Type(TypedDict):
-    """OrgsOrgAttestationsDeleteRequestPostBodyOneof0"""
 
-    subject_digests: list[str]
+class OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200Type(
+    TypedDict
+):
+    """OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200"""
+
+    total_count: int
+    image_versions: list[ActionsHostedRunnerCustomImageVersionType]
 
 
-class OrgsOrgAttestationsDeleteRequestPostBodyOneof0TypeForResponse(TypedDict):
-    """OrgsOrgAttestationsDeleteRequestPostBodyOneof0"""
+class OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200"""
 
-    subject_digests: list[str]
+    total_count: int
+    image_versions: list[ActionsHostedRunnerCustomImageVersionTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgAttestationsDeleteRequestPostBodyOneof0Type",
-    "OrgsOrgAttestationsDeleteRequestPostBodyOneof0TypeForResponse",
+    "OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200Type",
+    "OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200TypeForResponse",
 )

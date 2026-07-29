@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -18,46 +17,39 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0092 import MinimalRepository
 
+class CodeownersErrors(GitHubModel):
+    """CODEOWNERS errors
 
-class CombinedCommitStatus(GitHubModel):
-    """Combined Commit Status
-
-    Combined Commit Status
+    A list of errors found in a repo's CODEOWNERS file
     """
 
-    state: str = Field()
-    statuses: list[SimpleCommitStatus] = Field()
-    sha: str = Field()
-    total_count: int = Field()
-    repository: MinimalRepository = Field(
-        title="Minimal Repository", description="Minimal Repository"
+    errors: list[CodeownersErrorsPropErrorsItems] = Field()
+
+
+class CodeownersErrorsPropErrorsItems(GitHubModel):
+    """CodeownersErrorsPropErrorsItems"""
+
+    line: int = Field(description="The line number where this errors occurs.")
+    column: int = Field(description="The column number where this errors occurs.")
+    source: Missing[str] = Field(
+        default=UNSET, description="The contents of the line where the error occurs."
     )
-    commit_url: str = Field()
-    url: str = Field()
+    kind: str = Field(description="The type of error.")
+    suggestion: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="Suggested action to fix the error. This will usually be `null`, but is provided for some common errors.",
+    )
+    message: str = Field(
+        description="A human-readable description of the error, combining information from multiple fields, laid out for display in a monospaced typeface (for example, a command-line setting)."
+    )
+    path: str = Field(description="The path of the file where the error occured.")
 
 
-class SimpleCommitStatus(GitHubModel):
-    """Simple Commit Status"""
-
-    description: Union[str, None] = Field()
-    id: int = Field()
-    node_id: str = Field()
-    state: str = Field()
-    context: str = Field()
-    target_url: Union[str, None] = Field()
-    required: Missing[Union[bool, None]] = Field(default=UNSET)
-    avatar_url: Union[str, None] = Field()
-    url: str = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-
-
-model_rebuild(CombinedCommitStatus)
-model_rebuild(SimpleCommitStatus)
+model_rebuild(CodeownersErrors)
+model_rebuild(CodeownersErrorsPropErrorsItems)
 
 __all__ = (
-    "CombinedCommitStatus",
-    "SimpleCommitStatus",
+    "CodeownersErrors",
+    "CodeownersErrorsPropErrorsItems",
 )

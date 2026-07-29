@@ -9,41 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class CodespaceMachineType(TypedDict):
-    """Codespace machine
+class OrganizationActionsSecretType(TypedDict):
+    """Actions Secret for an Organization
 
-    A description of the machine powering a codespace.
+    Secrets for GitHub Actions for an organization.
     """
 
     name: str
-    display_name: str
-    operating_system: str
-    storage_in_bytes: int
-    memory_in_bytes: int
-    cpus: int
-    prebuild_availability: Union[None, Literal["none", "ready", "in_progress"]]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: NotRequired[str]
 
 
-class CodespaceMachineTypeForResponse(TypedDict):
-    """Codespace machine
+class OrganizationActionsSecretTypeForResponse(TypedDict):
+    """Actions Secret for an Organization
 
-    A description of the machine powering a codespace.
+    Secrets for GitHub Actions for an organization.
     """
 
     name: str
-    display_name: str
-    operating_system: str
-    storage_in_bytes: int
-    memory_in_bytes: int
-    cpus: int
-    prebuild_availability: Union[None, Literal["none", "ready", "in_progress"]]
+    created_at: str
+    updated_at: str
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: NotRequired[str]
 
 
 __all__ = (
-    "CodespaceMachineType",
-    "CodespaceMachineTypeForResponse",
+    "OrganizationActionsSecretType",
+    "OrganizationActionsSecretTypeForResponse",
 )

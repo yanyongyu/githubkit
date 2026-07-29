@@ -9,79 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class AgentsReposOwnerRepoTasksPostResponse422Type(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse422
+class WebhookStatusPropCommitPropCommitPropCommitterAllof1Type(TypedDict):
+    """WebhookStatusPropCommitPropCommitPropCommitterAllof1"""
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[
-        list[AgentsReposOwnerRepoTasksPostResponse422PropErrorsItemsType]
-    ]
-    documentation_url: str
+    date: str
+    email: NotRequired[str]
+    name: NotRequired[str]
 
 
-class AgentsReposOwnerRepoTasksPostResponse422TypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse422
+class WebhookStatusPropCommitPropCommitPropCommitterAllof1TypeForResponse(TypedDict):
+    """WebhookStatusPropCommitPropCommitPropCommitterAllof1"""
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[
-        list[AgentsReposOwnerRepoTasksPostResponse422PropErrorsItemsTypeForResponse]
-    ]
-    documentation_url: str
-
-
-class AgentsReposOwnerRepoTasksPostResponse422PropErrorsItemsType(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse422PropErrorsItems
-
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
-
-
-class AgentsReposOwnerRepoTasksPostResponse422PropErrorsItemsTypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse422PropErrorsItems
-
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
+    date: str
+    email: NotRequired[str]
+    name: NotRequired[str]
 
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksPostResponse422PropErrorsItemsType",
-    "AgentsReposOwnerRepoTasksPostResponse422PropErrorsItemsTypeForResponse",
-    "AgentsReposOwnerRepoTasksPostResponse422Type",
-    "AgentsReposOwnerRepoTasksPostResponse422TypeForResponse",
+    "WebhookStatusPropCommitPropCommitPropCommitterAllof1Type",
+    "WebhookStatusPropCommitPropCommitPropCommitterAllof1TypeForResponse",
 )

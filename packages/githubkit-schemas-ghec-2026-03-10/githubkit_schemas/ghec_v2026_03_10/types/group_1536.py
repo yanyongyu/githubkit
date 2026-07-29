@@ -9,46 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_1533 import (
-    ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
-    ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
-)
+
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200Type(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200"""
+
+    total_count: int
+    branch_policies: list[DeploymentBranchPolicyType]
 
 
-class ReposOwnerRepoPagesPutBodyAnyof2Type(TypedDict):
-    """ReposOwnerRepoPagesPutBodyAnyof2"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200"""
 
-    cname: Union[str, None]
-    https_enforced: NotRequired[bool]
-    build_type: NotRequired[Literal["legacy", "workflow"]]
-    source: NotRequired[
-        Union[
-            Literal["gh-pages", "master", "master /docs"],
-            ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
-        ]
-    ]
-    public: NotRequired[bool]
+    total_count: int
+    branch_policies: list[DeploymentBranchPolicyTypeForResponse]
 
 
-class ReposOwnerRepoPagesPutBodyAnyof2TypeForResponse(TypedDict):
-    """ReposOwnerRepoPagesPutBodyAnyof2"""
+class DeploymentBranchPolicyType(TypedDict):
+    """Deployment branch policy
 
-    cname: Union[str, None]
-    https_enforced: NotRequired[bool]
-    build_type: NotRequired[Literal["legacy", "workflow"]]
-    source: NotRequired[
-        Union[
-            Literal["gh-pages", "master", "master /docs"],
-            ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
-        ]
-    ]
-    public: NotRequired[bool]
+    Details of a deployment branch or tag policy.
+    """
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    name: NotRequired[str]
+    type: NotRequired[Literal["branch", "tag"]]
+
+
+class DeploymentBranchPolicyTypeForResponse(TypedDict):
+    """Deployment branch policy
+
+    Details of a deployment branch or tag policy.
+    """
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    name: NotRequired[str]
+    type: NotRequired[Literal["branch", "tag"]]
 
 
 __all__ = (
-    "ReposOwnerRepoPagesPutBodyAnyof2Type",
-    "ReposOwnerRepoPagesPutBodyAnyof2TypeForResponse",
+    "DeploymentBranchPolicyType",
+    "DeploymentBranchPolicyTypeForResponse",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200Type",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200TypeForResponse",
 )

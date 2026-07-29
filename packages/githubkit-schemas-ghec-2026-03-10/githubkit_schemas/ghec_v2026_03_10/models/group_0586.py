@@ -12,18 +12,42 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class CodespacesUserPublicKey(GitHubModel):
-    """CodespacesUserPublicKey
+class UserNameResponse(GitHubModel):
+    """UserNameResponse"""
 
-    The public key used for setting user Codespaces' Secrets.
-    """
+    formatted: Missing[str] = Field(
+        default=UNSET,
+        description="The full name, including all middle names, titles, and suffixes as appropriate, formatted for display.",
+    )
+    family_name: Missing[str] = Field(
+        default=UNSET, alias="familyName", description="The family name of the user."
+    )
+    given_name: Missing[str] = Field(
+        default=UNSET, alias="givenName", description="The given name of the user."
+    )
+    middle_name: Missing[str] = Field(
+        default=UNSET, alias="middleName", description="The middle name(s) of the user."
+    )
 
-    key_id: str = Field(description="The identifier for the key.")
-    key: str = Field(description="The Base64 encoded public key.")
+
+class UserEmailsResponseItems(GitHubModel):
+    """UserEmailsResponseItems"""
+
+    value: str = Field(description="The email address.")
+    type: Missing[str] = Field(default=UNSET, description="The type of email address.")
+    primary: Missing[bool] = Field(
+        default=UNSET, description="Whether this email address is the primary address."
+    )
 
 
-model_rebuild(CodespacesUserPublicKey)
+model_rebuild(UserNameResponse)
+model_rebuild(UserEmailsResponseItems)
 
-__all__ = ("CodespacesUserPublicKey",)
+__all__ = (
+    "UserEmailsResponseItems",
+    "UserNameResponse",
+)

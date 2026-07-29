@@ -13,48 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0599 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0600 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0601 import (
+from .group_0618 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0619 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0620 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0602 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0671 import (
-    WebhookCodeScanningAlertAppearedInBranchPropAlertType,
-    WebhookCodeScanningAlertAppearedInBranchPropAlertTypeForResponse,
-)
+from .group_0621 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0622 import WebhooksRuleType, WebhooksRuleTypeForResponse
 
 
-class WebhookCodeScanningAlertAppearedInBranchType(TypedDict):
-    """code_scanning_alert appeared_in_branch event"""
+class WebhookBranchProtectionRuleCreatedType(TypedDict):
+    """branch protection rule created event"""
 
-    action: Literal["appeared_in_branch"]
-    alert: WebhookCodeScanningAlertAppearedInBranchPropAlertType
-    commit_oid: str
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    ref: str
     repository: RepositoryWebhooksType
+    rule: WebhooksRuleType
     sender: SimpleUserType
 
 
-class WebhookCodeScanningAlertAppearedInBranchTypeForResponse(TypedDict):
-    """code_scanning_alert appeared_in_branch event"""
+class WebhookBranchProtectionRuleCreatedTypeForResponse(TypedDict):
+    """branch protection rule created event"""
 
-    action: Literal["appeared_in_branch"]
-    alert: WebhookCodeScanningAlertAppearedInBranchPropAlertTypeForResponse
-    commit_oid: str
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    ref: str
     repository: RepositoryWebhooksTypeForResponse
+    rule: WebhooksRuleTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookCodeScanningAlertAppearedInBranchType",
-    "WebhookCodeScanningAlertAppearedInBranchTypeForResponse",
+    "WebhookBranchProtectionRuleCreatedType",
+    "WebhookBranchProtectionRuleCreatedTypeForResponse",
 )

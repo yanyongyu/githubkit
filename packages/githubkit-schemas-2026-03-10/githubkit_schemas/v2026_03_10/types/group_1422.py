@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class UserGpgKeysPostBodyType(TypedDict):
-    """UserGpgKeysPostBody"""
+class ReposOwnerRepoPullsPullNumberMergePutResponse405Type(TypedDict):
+    """ReposOwnerRepoPullsPullNumberMergePutResponse405"""
 
-    name: NotRequired[str]
-    armored_public_key: str
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
-class UserGpgKeysPostBodyTypeForResponse(TypedDict):
-    """UserGpgKeysPostBody"""
+class ReposOwnerRepoPullsPullNumberMergePutResponse405TypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPullNumberMergePutResponse405"""
 
-    name: NotRequired[str]
-    armored_public_key: str
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
 __all__ = (
-    "UserGpgKeysPostBodyType",
-    "UserGpgKeysPostBodyTypeForResponse",
+    "ReposOwnerRepoPullsPullNumberMergePutResponse405Type",
+    "ReposOwnerRepoPullsPullNumberMergePutResponse405TypeForResponse",
 )

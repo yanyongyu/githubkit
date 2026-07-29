@@ -13,29 +13,37 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0412 import CodeScanningVariantAnalysisSkippedRepoGroup
 
-class BranchShort(GitHubModel):
-    """Branch Short
 
-    Branch Short
+class CodeScanningVariantAnalysisPropSkippedRepositories(GitHubModel):
+    """CodeScanningVariantAnalysisPropSkippedRepositories
+
+    Information about repositories that were skipped from processing. This
+    information is only available to the user that initiated the variant analysis.
     """
 
-    name: str = Field()
-    commit: BranchShortPropCommit = Field()
-    protected: bool = Field()
+    access_mismatch_repos: CodeScanningVariantAnalysisSkippedRepoGroup = Field()
+    not_found_repos: CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos = Field()
+    no_codeql_db_repos: CodeScanningVariantAnalysisSkippedRepoGroup = Field()
+    over_limit_repos: CodeScanningVariantAnalysisSkippedRepoGroup = Field()
 
 
-class BranchShortPropCommit(GitHubModel):
-    """BranchShortPropCommit"""
+class CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos(GitHubModel):
+    """CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos"""
 
-    sha: str = Field()
-    url: str = Field()
+    repository_count: int = Field(
+        description="The total number of repositories that were skipped for this reason."
+    )
+    repository_full_names: list[str] = Field(
+        description="A list of full repository names that were skipped. This list may not include all repositories that were skipped."
+    )
 
 
-model_rebuild(BranchShort)
-model_rebuild(BranchShortPropCommit)
+model_rebuild(CodeScanningVariantAnalysisPropSkippedRepositories)
+model_rebuild(CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos)
 
 __all__ = (
-    "BranchShort",
-    "BranchShortPropCommit",
+    "CodeScanningVariantAnalysisPropSkippedRepositories",
+    "CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos",
 )

@@ -9,30 +9,100 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0085 import TeamType, TeamTypeForResponse
+
+class RepositoryRuleViolationErrorType(TypedDict):
+    """RepositoryRuleViolationError
+
+    Repository rule violation was detected
+    """
+
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
+    status: NotRequired[str]
+    metadata: NotRequired[RepositoryRuleViolationErrorPropMetadataType]
 
 
-class EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems"""
+class RepositoryRuleViolationErrorTypeForResponse(TypedDict):
+    """RepositoryRuleViolationError
 
-    type: NotRequired[Literal["User", "Team"]]
-    reviewer: NotRequired[Union[SimpleUserType, TeamType]]
+    Repository rule violation was detected
+    """
+
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
+    status: NotRequired[str]
+    metadata: NotRequired[RepositoryRuleViolationErrorPropMetadataTypeForResponse]
 
 
-class EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsTypeForResponse(
+class RepositoryRuleViolationErrorPropMetadataType(TypedDict):
+    """RepositoryRuleViolationErrorPropMetadata"""
+
+    secret_scanning: NotRequired[
+        RepositoryRuleViolationErrorPropMetadataPropSecretScanningType
+    ]
+
+
+class RepositoryRuleViolationErrorPropMetadataTypeForResponse(TypedDict):
+    """RepositoryRuleViolationErrorPropMetadata"""
+
+    secret_scanning: NotRequired[
+        RepositoryRuleViolationErrorPropMetadataPropSecretScanningTypeForResponse
+    ]
+
+
+class RepositoryRuleViolationErrorPropMetadataPropSecretScanningType(TypedDict):
+    """RepositoryRuleViolationErrorPropMetadataPropSecretScanning"""
+
+    bypass_placeholders: NotRequired[
+        list[
+            RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsType
+        ]
+    ]
+
+
+class RepositoryRuleViolationErrorPropMetadataPropSecretScanningTypeForResponse(
     TypedDict
 ):
-    """EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems"""
+    """RepositoryRuleViolationErrorPropMetadataPropSecretScanning"""
 
-    type: NotRequired[Literal["User", "Team"]]
-    reviewer: NotRequired[Union[SimpleUserTypeForResponse, TeamTypeForResponse]]
+    bypass_placeholders: NotRequired[
+        list[
+            RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsTypeForResponse
+        ]
+    ]
+
+
+class RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsType(
+    TypedDict
+):
+    """RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholders
+    Items
+    """
+
+    placeholder_id: NotRequired[str]
+    token_type: NotRequired[str]
+
+
+class RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsTypeForResponse(
+    TypedDict
+):
+    """RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholders
+    Items
+    """
+
+    placeholder_id: NotRequired[str]
+    token_type: NotRequired[str]
 
 
 __all__ = (
-    "EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType",
-    "EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsTypeForResponse",
+    "RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsType",
+    "RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsTypeForResponse",
+    "RepositoryRuleViolationErrorPropMetadataPropSecretScanningType",
+    "RepositoryRuleViolationErrorPropMetadataPropSecretScanningTypeForResponse",
+    "RepositoryRuleViolationErrorPropMetadataType",
+    "RepositoryRuleViolationErrorPropMetadataTypeForResponse",
+    "RepositoryRuleViolationErrorType",
+    "RepositoryRuleViolationErrorTypeForResponse",
 )

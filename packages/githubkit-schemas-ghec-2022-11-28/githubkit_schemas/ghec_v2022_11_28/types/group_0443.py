@@ -9,34 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0091 import (
+    DependabotAlertPackageType,
+    DependabotAlertPackageTypeForResponse,
+)
 
 
-class CustomDeploymentRuleAppType(TypedDict):
-    """Custom deployment protection rule app
+class DependabotAlertPropDependencyType(TypedDict):
+    """DependabotAlertPropDependency
 
-    A GitHub App that is providing a custom deployment protection rule.
+    Details for the vulnerable dependency.
     """
 
-    id: int
-    slug: str
-    integration_url: str
-    node_id: str
+    package: NotRequired[DependabotAlertPackageType]
+    manifest_path: NotRequired[str]
+    scope: NotRequired[Union[None, Literal["development", "runtime"]]]
+    relationship: NotRequired[
+        Union[None, Literal["unknown", "direct", "transitive", "inconclusive"]]
+    ]
 
 
-class CustomDeploymentRuleAppTypeForResponse(TypedDict):
-    """Custom deployment protection rule app
+class DependabotAlertPropDependencyTypeForResponse(TypedDict):
+    """DependabotAlertPropDependency
 
-    A GitHub App that is providing a custom deployment protection rule.
+    Details for the vulnerable dependency.
     """
 
-    id: int
-    slug: str
-    integration_url: str
-    node_id: str
+    package: NotRequired[DependabotAlertPackageTypeForResponse]
+    manifest_path: NotRequired[str]
+    scope: NotRequired[Union[None, Literal["development", "runtime"]]]
+    relationship: NotRequired[
+        Union[None, Literal["unknown", "direct", "transitive", "inconclusive"]]
+    ]
 
 
 __all__ = (
-    "CustomDeploymentRuleAppType",
-    "CustomDeploymentRuleAppTypeForResponse",
+    "DependabotAlertPropDependencyType",
+    "DependabotAlertPropDependencyTypeForResponse",
 )

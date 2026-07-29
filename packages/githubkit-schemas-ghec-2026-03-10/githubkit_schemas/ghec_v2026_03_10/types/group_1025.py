@@ -11,24 +11,73 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
+from .group_1026 import (
+    WebhookRepositoryRulesetEditedPropChangesPropConditionsType,
+    WebhookRepositoryRulesetEditedPropChangesPropConditionsTypeForResponse,
+)
+from .group_1028 import (
+    WebhookRepositoryRulesetEditedPropChangesPropRulesType,
+    WebhookRepositoryRulesetEditedPropChangesPropRulesTypeForResponse,
+)
 
-class WebhookStatusPropCommitPropCommitPropCommitterAllof1Type(TypedDict):
-    """WebhookStatusPropCommitPropCommitPropCommitterAllof1"""
 
-    date: str
-    email: NotRequired[str]
-    name: NotRequired[str]
+class WebhookRepositoryRulesetEditedPropChangesType(TypedDict):
+    """WebhookRepositoryRulesetEditedPropChanges"""
+
+    name: NotRequired[WebhookRepositoryRulesetEditedPropChangesPropNameType]
+    enforcement: NotRequired[
+        WebhookRepositoryRulesetEditedPropChangesPropEnforcementType
+    ]
+    conditions: NotRequired[WebhookRepositoryRulesetEditedPropChangesPropConditionsType]
+    rules: NotRequired[WebhookRepositoryRulesetEditedPropChangesPropRulesType]
 
 
-class WebhookStatusPropCommitPropCommitPropCommitterAllof1TypeForResponse(TypedDict):
-    """WebhookStatusPropCommitPropCommitPropCommitterAllof1"""
+class WebhookRepositoryRulesetEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookRepositoryRulesetEditedPropChanges"""
 
-    date: str
-    email: NotRequired[str]
-    name: NotRequired[str]
+    name: NotRequired[WebhookRepositoryRulesetEditedPropChangesPropNameTypeForResponse]
+    enforcement: NotRequired[
+        WebhookRepositoryRulesetEditedPropChangesPropEnforcementTypeForResponse
+    ]
+    conditions: NotRequired[
+        WebhookRepositoryRulesetEditedPropChangesPropConditionsTypeForResponse
+    ]
+    rules: NotRequired[
+        WebhookRepositoryRulesetEditedPropChangesPropRulesTypeForResponse
+    ]
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropNameType(TypedDict):
+    """WebhookRepositoryRulesetEditedPropChangesPropName"""
+
+    from_: NotRequired[str]
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropNameTypeForResponse(TypedDict):
+    """WebhookRepositoryRulesetEditedPropChangesPropName"""
+
+    from_: NotRequired[str]
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropEnforcementType(TypedDict):
+    """WebhookRepositoryRulesetEditedPropChangesPropEnforcement"""
+
+    from_: NotRequired[str]
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropEnforcementTypeForResponse(
+    TypedDict
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropEnforcement"""
+
+    from_: NotRequired[str]
 
 
 __all__ = (
-    "WebhookStatusPropCommitPropCommitPropCommitterAllof1Type",
-    "WebhookStatusPropCommitPropCommitPropCommitterAllof1TypeForResponse",
+    "WebhookRepositoryRulesetEditedPropChangesPropEnforcementType",
+    "WebhookRepositoryRulesetEditedPropChangesPropEnforcementTypeForResponse",
+    "WebhookRepositoryRulesetEditedPropChangesPropNameType",
+    "WebhookRepositoryRulesetEditedPropChangesPropNameTypeForResponse",
+    "WebhookRepositoryRulesetEditedPropChangesType",
+    "WebhookRepositoryRulesetEditedPropChangesTypeForResponse",
 )

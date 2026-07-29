@@ -12,31 +12,31 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class PorterLargeFileType(TypedDict):
-    """Porter Large File
+class CustomDeploymentRuleAppType(TypedDict):
+    """Custom deployment protection rule app
 
-    Porter Large File
+    A GitHub App that is providing a custom deployment protection rule.
     """
 
-    ref_name: str
-    path: str
-    oid: str
-    size: int
+    id: int
+    slug: str
+    integration_url: str
+    node_id: str
 
 
-class PorterLargeFileTypeForResponse(TypedDict):
-    """Porter Large File
+class CustomDeploymentRuleAppTypeForResponse(TypedDict):
+    """Custom deployment protection rule app
 
-    Porter Large File
+    A GitHub App that is providing a custom deployment protection rule.
     """
 
-    ref_name: str
-    path: str
-    oid: str
-    size: int
+    id: int
+    slug: str
+    integration_url: str
+    node_id: str
 
 
 __all__ = (
-    "PorterLargeFileType",
-    "PorterLargeFileTypeForResponse",
+    "CustomDeploymentRuleAppType",
+    "CustomDeploymentRuleAppTypeForResponse",
 )

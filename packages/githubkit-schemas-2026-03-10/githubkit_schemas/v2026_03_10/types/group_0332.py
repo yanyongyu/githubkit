@@ -9,40 +9,72 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0329 import (
-    CodeScanningVariantAnalysisRepositoryType,
-    CodeScanningVariantAnalysisRepositoryTypeForResponse,
+from .group_0137 import (
+    CodeScanningAlertLocationType,
+    CodeScanningAlertLocationTypeForResponse,
 )
 
 
-class CodeScanningVariantAnalysisPropScannedRepositoriesItemsType(TypedDict):
-    """CodeScanningVariantAnalysisPropScannedRepositoriesItems"""
+class CodeScanningAlertInstanceListType(TypedDict):
+    """CodeScanningAlertInstanceList"""
 
-    repository: CodeScanningVariantAnalysisRepositoryType
-    analysis_status: Literal[
-        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
+    ref: NotRequired[str]
+    analysis_key: NotRequired[str]
+    environment: NotRequired[str]
+    category: NotRequired[str]
+    state: NotRequired[Union[None, Literal["open", "fixed"]]]
+    commit_sha: NotRequired[str]
+    message: NotRequired[CodeScanningAlertInstanceListPropMessageType]
+    location: NotRequired[CodeScanningAlertLocationType]
+    html_url: NotRequired[str]
+    classifications: NotRequired[
+        list[
+            Union[
+                None, Literal["source", "generated", "test", "library", "documentation"]
+            ]
+        ]
     ]
-    result_count: NotRequired[int]
-    artifact_size_in_bytes: NotRequired[int]
-    failure_message: NotRequired[str]
 
 
-class CodeScanningVariantAnalysisPropScannedRepositoriesItemsTypeForResponse(TypedDict):
-    """CodeScanningVariantAnalysisPropScannedRepositoriesItems"""
+class CodeScanningAlertInstanceListTypeForResponse(TypedDict):
+    """CodeScanningAlertInstanceList"""
 
-    repository: CodeScanningVariantAnalysisRepositoryTypeForResponse
-    analysis_status: Literal[
-        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
+    ref: NotRequired[str]
+    analysis_key: NotRequired[str]
+    environment: NotRequired[str]
+    category: NotRequired[str]
+    state: NotRequired[Union[None, Literal["open", "fixed"]]]
+    commit_sha: NotRequired[str]
+    message: NotRequired[CodeScanningAlertInstanceListPropMessageTypeForResponse]
+    location: NotRequired[CodeScanningAlertLocationTypeForResponse]
+    html_url: NotRequired[str]
+    classifications: NotRequired[
+        list[
+            Union[
+                None, Literal["source", "generated", "test", "library", "documentation"]
+            ]
+        ]
     ]
-    result_count: NotRequired[int]
-    artifact_size_in_bytes: NotRequired[int]
-    failure_message: NotRequired[str]
+
+
+class CodeScanningAlertInstanceListPropMessageType(TypedDict):
+    """CodeScanningAlertInstanceListPropMessage"""
+
+    text: NotRequired[str]
+
+
+class CodeScanningAlertInstanceListPropMessageTypeForResponse(TypedDict):
+    """CodeScanningAlertInstanceListPropMessage"""
+
+    text: NotRequired[str]
 
 
 __all__ = (
-    "CodeScanningVariantAnalysisPropScannedRepositoriesItemsType",
-    "CodeScanningVariantAnalysisPropScannedRepositoriesItemsTypeForResponse",
+    "CodeScanningAlertInstanceListPropMessageType",
+    "CodeScanningAlertInstanceListPropMessageTypeForResponse",
+    "CodeScanningAlertInstanceListType",
+    "CodeScanningAlertInstanceListTypeForResponse",
 )

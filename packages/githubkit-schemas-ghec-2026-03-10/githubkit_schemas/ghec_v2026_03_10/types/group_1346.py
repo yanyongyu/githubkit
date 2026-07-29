@@ -10,31 +10,28 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
-
-from .group_0322 import (
-    ProjectsV2FieldIterationConfigurationType,
-    ProjectsV2FieldIterationConfigurationTypeForResponse,
-)
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3Type(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3"""
+class OrgsOrgCodespacesSecretsSecretNamePutBodyType(TypedDict):
+    """OrgsOrgCodespacesSecretsSecretNamePutBody"""
 
-    name: str
-    data_type: Literal["iteration"]
-    iteration_configuration: ProjectsV2FieldIterationConfigurationType
+    encrypted_value: NotRequired[str]
+    key_id: NotRequired[str]
+    visibility: Literal["all", "private", "selected"]
+    selected_repository_ids: NotRequired[list[int]]
 
 
-class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3TypeForResponse(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3"""
+class OrgsOrgCodespacesSecretsSecretNamePutBodyTypeForResponse(TypedDict):
+    """OrgsOrgCodespacesSecretsSecretNamePutBody"""
 
-    name: str
-    data_type: Literal["iteration"]
-    iteration_configuration: ProjectsV2FieldIterationConfigurationTypeForResponse
+    encrypted_value: NotRequired[str]
+    key_id: NotRequired[str]
+    visibility: Literal["all", "private", "selected"]
+    selected_repository_ids: NotRequired[list[int]]
 
 
 __all__ = (
-    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3Type",
-    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3TypeForResponse",
+    "OrgsOrgCodespacesSecretsSecretNamePutBodyType",
+    "OrgsOrgCodespacesSecretsSecretNamePutBodyTypeForResponse",
 )

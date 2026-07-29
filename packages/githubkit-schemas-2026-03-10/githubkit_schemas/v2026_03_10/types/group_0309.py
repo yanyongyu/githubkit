@@ -9,128 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0060 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
-from .group_0308 import DeploymentSimpleType, DeploymentSimpleTypeForResponse
+from .group_0305 import GitUserType, GitUserTypeForResponse
+from .group_0306 import VerificationType, VerificationTypeForResponse
 
 
-class CheckRunType(TypedDict):
-    """CheckRun
+class CommitPropCommitType(TypedDict):
+    """CommitPropCommit"""
 
-    A check performed on the code of a given code change
-    """
-
-    id: int
-    head_sha: str
-    node_id: str
-    external_id: Union[str, None]
     url: str
-    html_url: Union[str, None]
-    details_url: Union[str, None]
-    status: Literal[
-        "queued", "in_progress", "completed", "waiting", "requested", "pending"
-    ]
-    conclusion: Union[
-        None,
-        Literal[
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "skipped",
-            "timed_out",
-            "action_required",
-        ],
-    ]
-    started_at: Union[_dt.datetime, None]
-    completed_at: Union[_dt.datetime, None]
-    output: CheckRunPropOutputType
-    name: str
-    check_suite: Union[CheckRunPropCheckSuiteType, None]
-    app: Union[None, IntegrationType, None]
-    pull_requests: list[PullRequestMinimalType]
-    deployment: NotRequired[DeploymentSimpleType]
+    author: Union[None, GitUserType]
+    committer: Union[None, GitUserType]
+    message: str
+    comment_count: int
+    tree: CommitPropCommitPropTreeType
+    verification: NotRequired[VerificationType]
 
 
-class CheckRunTypeForResponse(TypedDict):
-    """CheckRun
+class CommitPropCommitTypeForResponse(TypedDict):
+    """CommitPropCommit"""
 
-    A check performed on the code of a given code change
-    """
-
-    id: int
-    head_sha: str
-    node_id: str
-    external_id: Union[str, None]
     url: str
-    html_url: Union[str, None]
-    details_url: Union[str, None]
-    status: Literal[
-        "queued", "in_progress", "completed", "waiting", "requested", "pending"
-    ]
-    conclusion: Union[
-        None,
-        Literal[
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "skipped",
-            "timed_out",
-            "action_required",
-        ],
-    ]
-    started_at: Union[str, None]
-    completed_at: Union[str, None]
-    output: CheckRunPropOutputTypeForResponse
-    name: str
-    check_suite: Union[CheckRunPropCheckSuiteTypeForResponse, None]
-    app: Union[None, IntegrationTypeForResponse, None]
-    pull_requests: list[PullRequestMinimalTypeForResponse]
-    deployment: NotRequired[DeploymentSimpleTypeForResponse]
+    author: Union[None, GitUserTypeForResponse]
+    committer: Union[None, GitUserTypeForResponse]
+    message: str
+    comment_count: int
+    tree: CommitPropCommitPropTreeTypeForResponse
+    verification: NotRequired[VerificationTypeForResponse]
 
 
-class CheckRunPropOutputType(TypedDict):
-    """CheckRunPropOutput"""
+class CommitPropCommitPropTreeType(TypedDict):
+    """CommitPropCommitPropTree"""
 
-    title: Union[str, None]
-    summary: Union[str, None]
-    text: Union[str, None]
-    annotations_count: int
-    annotations_url: str
+    sha: str
+    url: str
 
 
-class CheckRunPropOutputTypeForResponse(TypedDict):
-    """CheckRunPropOutput"""
+class CommitPropCommitPropTreeTypeForResponse(TypedDict):
+    """CommitPropCommitPropTree"""
 
-    title: Union[str, None]
-    summary: Union[str, None]
-    text: Union[str, None]
-    annotations_count: int
-    annotations_url: str
-
-
-class CheckRunPropCheckSuiteType(TypedDict):
-    """CheckRunPropCheckSuite"""
-
-    id: int
-
-
-class CheckRunPropCheckSuiteTypeForResponse(TypedDict):
-    """CheckRunPropCheckSuite"""
-
-    id: int
+    sha: str
+    url: str
 
 
 __all__ = (
-    "CheckRunPropCheckSuiteType",
-    "CheckRunPropCheckSuiteTypeForResponse",
-    "CheckRunPropOutputType",
-    "CheckRunPropOutputTypeForResponse",
-    "CheckRunType",
-    "CheckRunTypeForResponse",
+    "CommitPropCommitPropTreeType",
+    "CommitPropCommitPropTreeTypeForResponse",
+    "CommitPropCommitType",
+    "CommitPropCommitTypeForResponse",
 )

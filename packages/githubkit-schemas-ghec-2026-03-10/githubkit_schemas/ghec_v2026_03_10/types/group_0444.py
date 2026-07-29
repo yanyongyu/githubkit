@@ -9,41 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, TypeAlias
+
+MetadataType: TypeAlias = dict[str, Any]
+"""metadata
+
+User-defined metadata to store domain-specific information limited to 8 keys
+with scalar values.
+"""
 
 
-class BlobType(TypedDict):
-    """Blob
+MetadataTypeForResponse: TypeAlias = dict[str, Any]
+"""metadata
 
-    Blob
-    """
-
-    content: str
-    encoding: str
-    url: str
-    sha: str
-    size: Union[int, None]
-    node_id: str
-    highlighted_content: NotRequired[str]
-
-
-class BlobTypeForResponse(TypedDict):
-    """Blob
-
-    Blob
-    """
-
-    content: str
-    encoding: str
-    url: str
-    sha: str
-    size: Union[int, None]
-    node_id: str
-    highlighted_content: NotRequired[str]
+User-defined metadata to store domain-specific information limited to 8 keys
+with scalar values.
+"""
 
 
 __all__ = (
-    "BlobType",
-    "BlobTypeForResponse",
+    "MetadataType",
+    "MetadataTypeForResponse",
 )

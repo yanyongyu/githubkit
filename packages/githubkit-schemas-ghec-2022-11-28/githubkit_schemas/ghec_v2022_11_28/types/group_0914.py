@@ -9,39 +9,75 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0600 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0601 import (
+from .group_0618 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0619 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0620 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0635 import ProjectsV2ItemType, ProjectsV2ItemTypeForResponse
+from .group_0621 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0650 import WebhooksProjectCardType, WebhooksProjectCardTypeForResponse
 
 
-class WebhookProjectsV2ItemCreatedType(TypedDict):
-    """Projects v2 Item Created Event"""
+class WebhookProjectCardEditedType(TypedDict):
+    """project_card edited event"""
 
-    action: Literal["created"]
+    action: Literal["edited"]
+    changes: WebhookProjectCardEditedPropChangesType
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
-    projects_v2_item: ProjectsV2ItemType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    project_card: WebhooksProjectCardType
+    repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserType
 
 
-class WebhookProjectsV2ItemCreatedTypeForResponse(TypedDict):
-    """Projects v2 Item Created Event"""
+class WebhookProjectCardEditedTypeForResponse(TypedDict):
+    """project_card edited event"""
 
-    action: Literal["created"]
+    action: Literal["edited"]
+    changes: WebhookProjectCardEditedPropChangesTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: OrganizationSimpleWebhooksTypeForResponse
-    projects_v2_item: ProjectsV2ItemTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    project_card: WebhooksProjectCardTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
     sender: SimpleUserTypeForResponse
 
 
+class WebhookProjectCardEditedPropChangesType(TypedDict):
+    """WebhookProjectCardEditedPropChanges"""
+
+    note: WebhookProjectCardEditedPropChangesPropNoteType
+
+
+class WebhookProjectCardEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookProjectCardEditedPropChanges"""
+
+    note: WebhookProjectCardEditedPropChangesPropNoteTypeForResponse
+
+
+class WebhookProjectCardEditedPropChangesPropNoteType(TypedDict):
+    """WebhookProjectCardEditedPropChangesPropNote"""
+
+    from_: Union[str, None]
+
+
+class WebhookProjectCardEditedPropChangesPropNoteTypeForResponse(TypedDict):
+    """WebhookProjectCardEditedPropChangesPropNote"""
+
+    from_: Union[str, None]
+
+
 __all__ = (
-    "WebhookProjectsV2ItemCreatedType",
-    "WebhookProjectsV2ItemCreatedTypeForResponse",
+    "WebhookProjectCardEditedPropChangesPropNoteType",
+    "WebhookProjectCardEditedPropChangesPropNoteTypeForResponse",
+    "WebhookProjectCardEditedPropChangesType",
+    "WebhookProjectCardEditedPropChangesTypeForResponse",
+    "WebhookProjectCardEditedType",
+    "WebhookProjectCardEditedTypeForResponse",
 )

@@ -13,44 +13,44 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0599 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0600 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0601 import (
+from .group_0618 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0619 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0620 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0602 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0644 import (
-    SecretScanningAlertWebhookType,
-    SecretScanningAlertWebhookTypeForResponse,
+from .group_0621 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_1003 import (
+    WebhookRegistryPackageUpdatedPropRegistryPackageType,
+    WebhookRegistryPackageUpdatedPropRegistryPackageTypeForResponse,
 )
 
 
-class WebhookSecretScanningAlertReopenedType(TypedDict):
-    """secret_scanning_alert reopened event"""
+class WebhookRegistryPackageUpdatedType(TypedDict):
+    """WebhookRegistryPackageUpdated"""
 
-    action: Literal["reopened"]
-    alert: SecretScanningAlertWebhookType
+    action: Literal["updated"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserType]
+    registry_package: WebhookRegistryPackageUpdatedPropRegistryPackageType
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserType
 
 
-class WebhookSecretScanningAlertReopenedTypeForResponse(TypedDict):
-    """secret_scanning_alert reopened event"""
+class WebhookRegistryPackageUpdatedTypeForResponse(TypedDict):
+    """WebhookRegistryPackageUpdated"""
 
-    action: Literal["reopened"]
-    alert: SecretScanningAlertWebhookTypeForResponse
+    action: Literal["updated"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: NotRequired[SimpleUserTypeForResponse]
+    registry_package: WebhookRegistryPackageUpdatedPropRegistryPackageTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookSecretScanningAlertReopenedType",
-    "WebhookSecretScanningAlertReopenedTypeForResponse",
+    "WebhookRegistryPackageUpdatedType",
+    "WebhookRegistryPackageUpdatedTypeForResponse",
 )

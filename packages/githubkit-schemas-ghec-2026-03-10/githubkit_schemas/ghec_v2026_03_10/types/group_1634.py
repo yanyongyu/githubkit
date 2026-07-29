@@ -9,31 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1Type(TypedDict):
-    """UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1"""
+class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1Type(TypedDict):
+    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1"""
 
-    type: Literal["Issue", "PullRequest"]
-    id: NotRequired[int]
-    owner: str
-    repo: str
-    number: int
+    state: NotRequired[Literal["open", "resolved"]]
+    resolution: NotRequired[
+        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
+    ]
+    resolution_comment: NotRequired[Union[str, None]]
+    assignee: Union[str, None]
+    validity: NotRequired[Union[None, Literal["active", "inactive"]]]
 
 
-class UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1TypeForResponse(TypedDict):
-    """UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1"""
+class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1"""
 
-    type: Literal["Issue", "PullRequest"]
-    id: NotRequired[int]
-    owner: str
-    repo: str
-    number: int
+    state: NotRequired[Literal["open", "resolved"]]
+    resolution: NotRequired[
+        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
+    ]
+    resolution_comment: NotRequired[Union[str, None]]
+    assignee: Union[str, None]
+    validity: NotRequired[Union[None, Literal["active", "inactive"]]]
 
 
 __all__ = (
-    "UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1Type",
-    "UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1TypeForResponse",
+    "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1Type",
+    "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1TypeForResponse",
 )

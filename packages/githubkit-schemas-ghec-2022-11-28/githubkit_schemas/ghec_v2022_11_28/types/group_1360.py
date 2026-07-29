@@ -11,22 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-
-class OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type(TypedDict):
-    """OrgsOrgSecretScanningPatternConfigurationsPatchResponse200"""
-
-    pattern_config_version: NotRequired[str]
+from .group_0087 import CopilotSeatDetailsType, CopilotSeatDetailsTypeForResponse
 
 
-class OrgsOrgSecretScanningPatternConfigurationsPatchResponse200TypeForResponse(
-    TypedDict
-):
-    """OrgsOrgSecretScanningPatternConfigurationsPatchResponse200"""
+class OrgsOrgCopilotBillingSeatsGetResponse200Type(TypedDict):
+    """OrgsOrgCopilotBillingSeatsGetResponse200"""
 
-    pattern_config_version: NotRequired[str]
+    total_seats: NotRequired[int]
+    seats: NotRequired[list[CopilotSeatDetailsType]]
+
+
+class OrgsOrgCopilotBillingSeatsGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCopilotBillingSeatsGetResponse200"""
+
+    total_seats: NotRequired[int]
+    seats: NotRequired[list[CopilotSeatDetailsTypeForResponse]]
 
 
 __all__ = (
-    "OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type",
-    "OrgsOrgSecretScanningPatternConfigurationsPatchResponse200TypeForResponse",
+    "OrgsOrgCopilotBillingSeatsGetResponse200Type",
+    "OrgsOrgCopilotBillingSeatsGetResponse200TypeForResponse",
 )

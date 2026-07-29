@@ -13,41 +13,51 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0360 import DependabotAlertType, DependabotAlertTypeForResponse
-from .group_0522 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0523 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0524 import (
+from .group_0534 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0535 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0536 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0525 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDependabotAlertReopenedType(TypedDict):
-    """Dependabot alert reopened event"""
+class WebhookCustomPropertyDeletedType(TypedDict):
+    """custom property deleted event"""
 
-    action: Literal["reopened"]
-    alert: DependabotAlertType
+    action: Literal["deleted"]
+    definition: WebhookCustomPropertyDeletedPropDefinitionType
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookDependabotAlertReopenedTypeForResponse(TypedDict):
-    """Dependabot alert reopened event"""
+class WebhookCustomPropertyDeletedTypeForResponse(TypedDict):
+    """custom property deleted event"""
 
-    action: Literal["reopened"]
-    alert: DependabotAlertTypeForResponse
+    action: Literal["deleted"]
+    definition: WebhookCustomPropertyDeletedPropDefinitionTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
+
+
+class WebhookCustomPropertyDeletedPropDefinitionType(TypedDict):
+    """WebhookCustomPropertyDeletedPropDefinition"""
+
+    property_name: str
+
+
+class WebhookCustomPropertyDeletedPropDefinitionTypeForResponse(TypedDict):
+    """WebhookCustomPropertyDeletedPropDefinition"""
+
+    property_name: str
 
 
 __all__ = (
-    "WebhookDependabotAlertReopenedType",
-    "WebhookDependabotAlertReopenedTypeForResponse",
+    "WebhookCustomPropertyDeletedPropDefinitionType",
+    "WebhookCustomPropertyDeletedPropDefinitionTypeForResponse",
+    "WebhookCustomPropertyDeletedType",
+    "WebhookCustomPropertyDeletedTypeForResponse",
 )

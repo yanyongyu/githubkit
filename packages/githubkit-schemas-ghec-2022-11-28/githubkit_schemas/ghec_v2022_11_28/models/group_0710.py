@@ -18,20 +18,15 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0207 import Discussion
-from .group_0599 import EnterpriseWebhooks
-from .group_0600 import SimpleInstallation
-from .group_0601 import OrganizationSimpleWebhooks
-from .group_0602 import RepositoryWebhooks
+from .group_0618 import EnterpriseWebhooks
+from .group_0619 import SimpleInstallation
+from .group_0620 import OrganizationSimpleWebhooks
+from .group_0621 import RepositoryWebhooks
 
 
-class WebhookDiscussionClosed(GitHubModel):
-    """discussion closed event"""
+class WebhookDelete(GitHubModel):
+    """delete event"""
 
-    action: Literal["closed"] = Field()
-    discussion: Discussion = Field(
-        title="Discussion", description="A Discussion in a repository."
-    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -47,6 +42,15 @@ class WebhookDiscussionClosed(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
+    pusher_type: str = Field(
+        description="The pusher type for the event. Can be either `user` or a deploy key."
+    )
+    ref: str = Field(
+        description="The [`git ref`](https://docs.github.com/enterprise-cloud@latest/rest/git/refs#get-a-reference) resource."
+    )
+    ref_type: Literal["tag", "branch"] = Field(
+        description="The type of Git ref object deleted in the repository."
+    )
     repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
@@ -54,6 +58,6 @@ class WebhookDiscussionClosed(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookDiscussionClosed)
+model_rebuild(WebhookDelete)
 
-__all__ = ("WebhookDiscussionClosed",)
+__all__ = ("WebhookDelete",)

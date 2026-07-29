@@ -9,27 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType(TypedDict):
-    """ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody"""
+class ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType(TypedDict):
+    """ReposOwnerRepoMilestonesMilestoneNumberPatchBody"""
 
-    reason: Literal["false_positive", "used_in_tests", "will_fix_later"]
-    placeholder_id: str
+    title: NotRequired[str]
+    state: NotRequired[Literal["open", "closed"]]
+    description: NotRequired[str]
+    due_on: NotRequired[_dt.datetime]
 
 
-class ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody"""
+class ReposOwnerRepoMilestonesMilestoneNumberPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoMilestonesMilestoneNumberPatchBody"""
 
-    reason: Literal["false_positive", "used_in_tests", "will_fix_later"]
-    placeholder_id: str
+    title: NotRequired[str]
+    state: NotRequired[Literal["open", "closed"]]
+    description: NotRequired[str]
+    due_on: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType",
-    "ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyTypeForResponse",
+    "ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType",
+    "ReposOwnerRepoMilestonesMilestoneNumberPatchBodyTypeForResponse",
 )

@@ -13,48 +13,44 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0599 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0600 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0601 import (
+from .group_0618 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0619 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0620 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0602 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0677 import (
-    WebhookCodeScanningAlertFixedPropAlertType,
-    WebhookCodeScanningAlertFixedPropAlertTypeForResponse,
-)
+from .group_0621 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0623 import ExemptionResponseType, ExemptionResponseTypeForResponse
+from .group_0624 import ExemptionRequestType, ExemptionRequestTypeForResponse
 
 
-class WebhookCodeScanningAlertFixedType(TypedDict):
-    """code_scanning_alert fixed event"""
+class WebhookExemptionRequestResponseDismissedType(TypedDict):
+    """Exemption response dismissed event"""
 
-    action: Literal["fixed"]
-    alert: WebhookCodeScanningAlertFixedPropAlertType
-    commit_oid: str
+    action: Literal["response_dismissed"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    ref: str
-    repository: RepositoryWebhooksType
+    repository: NotRequired[RepositoryWebhooksType]
+    exemption_request: ExemptionRequestType
+    exemption_response: ExemptionResponseType
     sender: SimpleUserType
 
 
-class WebhookCodeScanningAlertFixedTypeForResponse(TypedDict):
-    """code_scanning_alert fixed event"""
+class WebhookExemptionRequestResponseDismissedTypeForResponse(TypedDict):
+    """Exemption response dismissed event"""
 
-    action: Literal["fixed"]
-    alert: WebhookCodeScanningAlertFixedPropAlertTypeForResponse
-    commit_oid: str
+    action: Literal["response_dismissed"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    ref: str
-    repository: RepositoryWebhooksTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    exemption_request: ExemptionRequestTypeForResponse
+    exemption_response: ExemptionResponseTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookCodeScanningAlertFixedType",
-    "WebhookCodeScanningAlertFixedTypeForResponse",
+    "WebhookExemptionRequestResponseDismissedType",
+    "WebhookExemptionRequestResponseDismissedTypeForResponse",
 )

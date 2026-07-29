@@ -13,46 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0599 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0600 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0601 import (
+from .group_0618 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0619 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0620 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0602 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_1010 import (
-    WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryType,
-    WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryTypeForResponse,
-)
+from .group_0621 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0661 import WebhooksRelease1Type, WebhooksRelease1TypeForResponse
 
 
-class WebhookSecurityAdvisoryWithdrawnType(TypedDict):
-    """security_advisory withdrawn event"""
+class WebhookReleasePublishedType(TypedDict):
+    """release published event"""
 
-    action: Literal["withdrawn"]
+    action: Literal["published"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    security_advisory: WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryType
+    release: WebhooksRelease1Type
+    repository: RepositoryWebhooksType
     sender: NotRequired[SimpleUserType]
 
 
-class WebhookSecurityAdvisoryWithdrawnTypeForResponse(TypedDict):
-    """security_advisory withdrawn event"""
+class WebhookReleasePublishedTypeForResponse(TypedDict):
+    """release published event"""
 
-    action: Literal["withdrawn"]
+    action: Literal["published"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    security_advisory: (
-        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryTypeForResponse
-    )
+    release: WebhooksRelease1TypeForResponse
+    repository: RepositoryWebhooksTypeForResponse
     sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookSecurityAdvisoryWithdrawnType",
-    "WebhookSecurityAdvisoryWithdrawnTypeForResponse",
+    "WebhookReleasePublishedType",
+    "WebhookReleasePublishedTypeForResponse",
 )

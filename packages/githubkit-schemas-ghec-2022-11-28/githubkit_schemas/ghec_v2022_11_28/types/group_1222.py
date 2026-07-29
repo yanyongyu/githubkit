@@ -9,29 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0034 import (
-    ActionsHostedRunnerMachineSpecType,
-    ActionsHostedRunnerMachineSpecTypeForResponse,
-)
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsHostedRunnersMachineSizesGetResponse200Type(TypedDict):
-    """OrgsOrgActionsHostedRunnersMachineSizesGetResponse200"""
+class EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyType(
+    TypedDict
+):
+    """EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBody"""
 
-    total_count: int
-    machine_specs: list[ActionsHostedRunnerMachineSpecType]
+    name: NotRequired[str]
+    compute_service: NotRequired[Literal["none", "actions"]]
+    network_settings_ids: NotRequired[list[str]]
+    failover_network_settings_ids: NotRequired[list[str]]
+    failover_network_enabled: NotRequired[bool]
 
 
-class OrgsOrgActionsHostedRunnersMachineSizesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsHostedRunnersMachineSizesGetResponse200"""
+class EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBody"""
 
-    total_count: int
-    machine_specs: list[ActionsHostedRunnerMachineSpecTypeForResponse]
+    name: NotRequired[str]
+    compute_service: NotRequired[Literal["none", "actions"]]
+    network_settings_ids: NotRequired[list[str]]
+    failover_network_settings_ids: NotRequired[list[str]]
+    failover_network_enabled: NotRequired[bool]
 
 
 __all__ = (
-    "OrgsOrgActionsHostedRunnersMachineSizesGetResponse200Type",
-    "OrgsOrgActionsHostedRunnersMachineSizesGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyType",
+    "EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyTypeForResponse",
 )

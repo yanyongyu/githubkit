@@ -13,120 +13,146 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0599 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0600 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0601 import (
+from .group_0618 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0619 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0620 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0602 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0621 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0977 import (
+    WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestType,
+    WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestTypeForResponse,
+)
 
 
-class WebhookRepositoryEditedType(TypedDict):
-    """repository edited event"""
+class WebhookPullRequestReviewRequestRemovedOneof1Type(TypedDict):
+    """WebhookPullRequestReviewRequestRemovedOneof1"""
 
-    action: Literal["edited"]
-    changes: WebhookRepositoryEditedPropChangesType
+    action: Literal["review_request_removed"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
+    number: int
     organization: NotRequired[OrganizationSimpleWebhooksType]
+    pull_request: WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestType
     repository: RepositoryWebhooksType
+    requested_team: WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamType
     sender: SimpleUserType
 
 
-class WebhookRepositoryEditedTypeForResponse(TypedDict):
-    """repository edited event"""
+class WebhookPullRequestReviewRequestRemovedOneof1TypeForResponse(TypedDict):
+    """WebhookPullRequestReviewRequestRemovedOneof1"""
 
-    action: Literal["edited"]
-    changes: WebhookRepositoryEditedPropChangesTypeForResponse
+    action: Literal["review_request_removed"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
+    number: int
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    pull_request: (
+        WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestTypeForResponse
+    )
     repository: RepositoryWebhooksTypeForResponse
+    requested_team: (
+        WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamTypeForResponse
+    )
     sender: SimpleUserTypeForResponse
 
 
-class WebhookRepositoryEditedPropChangesType(TypedDict):
-    """WebhookRepositoryEditedPropChanges"""
+class WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamType(TypedDict):
+    """Team
 
-    default_branch: NotRequired[WebhookRepositoryEditedPropChangesPropDefaultBranchType]
-    description: NotRequired[WebhookRepositoryEditedPropChangesPropDescriptionType]
-    homepage: NotRequired[WebhookRepositoryEditedPropChangesPropHomepageType]
-    topics: NotRequired[WebhookRepositoryEditedPropChangesPropTopicsType]
+    Groups of organization members that gives permissions on specified repositories.
+    """
 
-
-class WebhookRepositoryEditedPropChangesTypeForResponse(TypedDict):
-    """WebhookRepositoryEditedPropChanges"""
-
-    default_branch: NotRequired[
-        WebhookRepositoryEditedPropChangesPropDefaultBranchTypeForResponse
+    deleted: NotRequired[bool]
+    description: Union[str, None]
+    html_url: str
+    id: int
+    members_url: str
+    name: str
+    node_id: str
+    parent: NotRequired[
+        Union[
+            WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamPropParentType,
+            None,
+        ]
     ]
-    description: NotRequired[
-        WebhookRepositoryEditedPropChangesPropDescriptionTypeForResponse
+    permission: str
+    privacy: Literal["open", "closed", "secret"]
+    repositories_url: str
+    slug: str
+    url: str
+
+
+class WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamTypeForResponse(
+    TypedDict
+):
+    """Team
+
+    Groups of organization members that gives permissions on specified repositories.
+    """
+
+    deleted: NotRequired[bool]
+    description: Union[str, None]
+    html_url: str
+    id: int
+    members_url: str
+    name: str
+    node_id: str
+    parent: NotRequired[
+        Union[
+            WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamPropParentTypeForResponse,
+            None,
+        ]
     ]
-    homepage: NotRequired[WebhookRepositoryEditedPropChangesPropHomepageTypeForResponse]
-    topics: NotRequired[WebhookRepositoryEditedPropChangesPropTopicsTypeForResponse]
+    permission: str
+    privacy: Literal["open", "closed", "secret"]
+    repositories_url: str
+    slug: str
+    url: str
 
 
-class WebhookRepositoryEditedPropChangesPropDefaultBranchType(TypedDict):
-    """WebhookRepositoryEditedPropChangesPropDefaultBranch"""
+class WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamPropParentType(
+    TypedDict
+):
+    """WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamPropParent"""
 
-    from_: str
-
-
-class WebhookRepositoryEditedPropChangesPropDefaultBranchTypeForResponse(TypedDict):
-    """WebhookRepositoryEditedPropChangesPropDefaultBranch"""
-
-    from_: str
-
-
-class WebhookRepositoryEditedPropChangesPropDescriptionType(TypedDict):
-    """WebhookRepositoryEditedPropChangesPropDescription"""
-
-    from_: Union[str, None]
-
-
-class WebhookRepositoryEditedPropChangesPropDescriptionTypeForResponse(TypedDict):
-    """WebhookRepositoryEditedPropChangesPropDescription"""
-
-    from_: Union[str, None]
+    description: Union[str, None]
+    html_url: str
+    id: int
+    members_url: str
+    name: str
+    node_id: str
+    permission: str
+    privacy: Literal["open", "closed", "secret"]
+    repositories_url: str
+    slug: str
+    url: str
 
 
-class WebhookRepositoryEditedPropChangesPropHomepageType(TypedDict):
-    """WebhookRepositoryEditedPropChangesPropHomepage"""
+class WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamPropParentTypeForResponse(
+    TypedDict
+):
+    """WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamPropParent"""
 
-    from_: Union[str, None]
-
-
-class WebhookRepositoryEditedPropChangesPropHomepageTypeForResponse(TypedDict):
-    """WebhookRepositoryEditedPropChangesPropHomepage"""
-
-    from_: Union[str, None]
-
-
-class WebhookRepositoryEditedPropChangesPropTopicsType(TypedDict):
-    """WebhookRepositoryEditedPropChangesPropTopics"""
-
-    from_: NotRequired[Union[list[str], None]]
-
-
-class WebhookRepositoryEditedPropChangesPropTopicsTypeForResponse(TypedDict):
-    """WebhookRepositoryEditedPropChangesPropTopics"""
-
-    from_: NotRequired[Union[list[str], None]]
+    description: Union[str, None]
+    html_url: str
+    id: int
+    members_url: str
+    name: str
+    node_id: str
+    permission: str
+    privacy: Literal["open", "closed", "secret"]
+    repositories_url: str
+    slug: str
+    url: str
 
 
 __all__ = (
-    "WebhookRepositoryEditedPropChangesPropDefaultBranchType",
-    "WebhookRepositoryEditedPropChangesPropDefaultBranchTypeForResponse",
-    "WebhookRepositoryEditedPropChangesPropDescriptionType",
-    "WebhookRepositoryEditedPropChangesPropDescriptionTypeForResponse",
-    "WebhookRepositoryEditedPropChangesPropHomepageType",
-    "WebhookRepositoryEditedPropChangesPropHomepageTypeForResponse",
-    "WebhookRepositoryEditedPropChangesPropTopicsType",
-    "WebhookRepositoryEditedPropChangesPropTopicsTypeForResponse",
-    "WebhookRepositoryEditedPropChangesType",
-    "WebhookRepositoryEditedPropChangesTypeForResponse",
-    "WebhookRepositoryEditedType",
-    "WebhookRepositoryEditedTypeForResponse",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamPropParentType",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamPropParentTypeForResponse",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamType",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamTypeForResponse",
+    "WebhookPullRequestReviewRequestRemovedOneof1Type",
+    "WebhookPullRequestReviewRequestRemovedOneof1TypeForResponse",
 )

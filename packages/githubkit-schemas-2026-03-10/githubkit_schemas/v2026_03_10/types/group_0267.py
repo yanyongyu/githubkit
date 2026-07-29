@@ -9,84 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class RateLimitOverviewType(TypedDict):
-    """Rate Limit Overview
+class ImmutableReleasesOrganizationSettingsType(TypedDict):
+    """Check immutable releases organization settings
 
-    Rate Limit Overview
+    Check immutable releases settings for an organization.
     """
 
-    resources: RateLimitOverviewPropResourcesType
+    enforced_repositories: Literal["all", "none", "selected"]
+    selected_repositories_url: NotRequired[str]
 
 
-class RateLimitOverviewTypeForResponse(TypedDict):
-    """Rate Limit Overview
+class ImmutableReleasesOrganizationSettingsTypeForResponse(TypedDict):
+    """Check immutable releases organization settings
 
-    Rate Limit Overview
+    Check immutable releases settings for an organization.
     """
 
-    resources: RateLimitOverviewPropResourcesTypeForResponse
-
-
-class RateLimitOverviewPropResourcesType(TypedDict):
-    """RateLimitOverviewPropResources"""
-
-    core: RateLimitType
-    graphql: NotRequired[RateLimitType]
-    search: RateLimitType
-    code_search: NotRequired[RateLimitType]
-    source_import: NotRequired[RateLimitType]
-    integration_manifest: NotRequired[RateLimitType]
-    actions_runner_registration: NotRequired[RateLimitType]
-    scim: NotRequired[RateLimitType]
-    dependency_snapshots: NotRequired[RateLimitType]
-    dependency_sbom: NotRequired[RateLimitType]
-    code_scanning_autofix: NotRequired[RateLimitType]
-    copilot_usage_records: NotRequired[RateLimitType]
-
-
-class RateLimitOverviewPropResourcesTypeForResponse(TypedDict):
-    """RateLimitOverviewPropResources"""
-
-    core: RateLimitTypeForResponse
-    graphql: NotRequired[RateLimitTypeForResponse]
-    search: RateLimitTypeForResponse
-    code_search: NotRequired[RateLimitTypeForResponse]
-    source_import: NotRequired[RateLimitTypeForResponse]
-    integration_manifest: NotRequired[RateLimitTypeForResponse]
-    actions_runner_registration: NotRequired[RateLimitTypeForResponse]
-    scim: NotRequired[RateLimitTypeForResponse]
-    dependency_snapshots: NotRequired[RateLimitTypeForResponse]
-    dependency_sbom: NotRequired[RateLimitTypeForResponse]
-    code_scanning_autofix: NotRequired[RateLimitTypeForResponse]
-    copilot_usage_records: NotRequired[RateLimitTypeForResponse]
-
-
-class RateLimitType(TypedDict):
-    """Rate Limit"""
-
-    limit: int
-    remaining: int
-    reset: int
-    used: int
-
-
-class RateLimitTypeForResponse(TypedDict):
-    """Rate Limit"""
-
-    limit: int
-    remaining: int
-    reset: int
-    used: int
+    enforced_repositories: Literal["all", "none", "selected"]
+    selected_repositories_url: NotRequired[str]
 
 
 __all__ = (
-    "RateLimitOverviewPropResourcesType",
-    "RateLimitOverviewPropResourcesTypeForResponse",
-    "RateLimitOverviewType",
-    "RateLimitOverviewTypeForResponse",
-    "RateLimitType",
-    "RateLimitTypeForResponse",
+    "ImmutableReleasesOrganizationSettingsType",
+    "ImmutableReleasesOrganizationSettingsTypeForResponse",
 )

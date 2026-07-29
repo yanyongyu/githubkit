@@ -13,111 +13,50 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0599 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0600 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0601 import (
+from .group_0618 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0619 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0620 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0602 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0615 import WebhooksLabelType, WebhooksLabelTypeForResponse
+from .group_0621 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0848 import (
+    WebhookIssuesOpenedPropChangesType,
+    WebhookIssuesOpenedPropChangesTypeForResponse,
+)
+from .group_0850 import (
+    WebhookIssuesOpenedPropIssueType,
+    WebhookIssuesOpenedPropIssueTypeForResponse,
+)
 
 
-class WebhookLabelEditedType(TypedDict):
-    """label edited event"""
+class WebhookIssuesOpenedType(TypedDict):
+    """issues opened event"""
 
-    action: Literal["edited"]
-    changes: NotRequired[WebhookLabelEditedPropChangesType]
+    action: Literal["opened"]
+    changes: NotRequired[WebhookIssuesOpenedPropChangesType]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    label: WebhooksLabelType
+    issue: WebhookIssuesOpenedPropIssueType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookLabelEditedTypeForResponse(TypedDict):
-    """label edited event"""
+class WebhookIssuesOpenedTypeForResponse(TypedDict):
+    """issues opened event"""
 
-    action: Literal["edited"]
-    changes: NotRequired[WebhookLabelEditedPropChangesTypeForResponse]
+    action: Literal["opened"]
+    changes: NotRequired[WebhookIssuesOpenedPropChangesTypeForResponse]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    label: WebhooksLabelTypeForResponse
+    issue: WebhookIssuesOpenedPropIssueTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
-class WebhookLabelEditedPropChangesType(TypedDict):
-    """WebhookLabelEditedPropChanges
-
-    The changes to the label if the action was `edited`.
-    """
-
-    color: NotRequired[WebhookLabelEditedPropChangesPropColorType]
-    description: NotRequired[WebhookLabelEditedPropChangesPropDescriptionType]
-    name: NotRequired[WebhookLabelEditedPropChangesPropNameType]
-
-
-class WebhookLabelEditedPropChangesTypeForResponse(TypedDict):
-    """WebhookLabelEditedPropChanges
-
-    The changes to the label if the action was `edited`.
-    """
-
-    color: NotRequired[WebhookLabelEditedPropChangesPropColorTypeForResponse]
-    description: NotRequired[
-        WebhookLabelEditedPropChangesPropDescriptionTypeForResponse
-    ]
-    name: NotRequired[WebhookLabelEditedPropChangesPropNameTypeForResponse]
-
-
-class WebhookLabelEditedPropChangesPropColorType(TypedDict):
-    """WebhookLabelEditedPropChangesPropColor"""
-
-    from_: str
-
-
-class WebhookLabelEditedPropChangesPropColorTypeForResponse(TypedDict):
-    """WebhookLabelEditedPropChangesPropColor"""
-
-    from_: str
-
-
-class WebhookLabelEditedPropChangesPropDescriptionType(TypedDict):
-    """WebhookLabelEditedPropChangesPropDescription"""
-
-    from_: str
-
-
-class WebhookLabelEditedPropChangesPropDescriptionTypeForResponse(TypedDict):
-    """WebhookLabelEditedPropChangesPropDescription"""
-
-    from_: str
-
-
-class WebhookLabelEditedPropChangesPropNameType(TypedDict):
-    """WebhookLabelEditedPropChangesPropName"""
-
-    from_: str
-
-
-class WebhookLabelEditedPropChangesPropNameTypeForResponse(TypedDict):
-    """WebhookLabelEditedPropChangesPropName"""
-
-    from_: str
-
-
 __all__ = (
-    "WebhookLabelEditedPropChangesPropColorType",
-    "WebhookLabelEditedPropChangesPropColorTypeForResponse",
-    "WebhookLabelEditedPropChangesPropDescriptionType",
-    "WebhookLabelEditedPropChangesPropDescriptionTypeForResponse",
-    "WebhookLabelEditedPropChangesPropNameType",
-    "WebhookLabelEditedPropChangesPropNameTypeForResponse",
-    "WebhookLabelEditedPropChangesType",
-    "WebhookLabelEditedPropChangesTypeForResponse",
-    "WebhookLabelEditedType",
-    "WebhookLabelEditedTypeForResponse",
+    "WebhookIssuesOpenedType",
+    "WebhookIssuesOpenedTypeForResponse",
 )

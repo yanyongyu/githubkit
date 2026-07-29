@@ -9,50 +9,124 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0599 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0600 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0601 import (
+from .group_0618 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0619 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0620 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0602 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0646 import WebhooksSponsorshipType, WebhooksSponsorshipTypeForResponse
-from .group_0647 import WebhooksChanges8Type, WebhooksChanges8TypeForResponse
+from .group_0621 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookSponsorshipPendingTierChangeType(TypedDict):
-    """sponsorship pending_tier_change event"""
+class WebhookRepositoryEditedType(TypedDict):
+    """repository edited event"""
 
-    action: Literal["pending_tier_change"]
-    changes: WebhooksChanges8Type
-    effective_date: NotRequired[str]
+    action: Literal["edited"]
+    changes: WebhookRepositoryEditedPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
+    repository: RepositoryWebhooksType
     sender: SimpleUserType
-    sponsorship: WebhooksSponsorshipType
 
 
-class WebhookSponsorshipPendingTierChangeTypeForResponse(TypedDict):
-    """sponsorship pending_tier_change event"""
+class WebhookRepositoryEditedTypeForResponse(TypedDict):
+    """repository edited event"""
 
-    action: Literal["pending_tier_change"]
-    changes: WebhooksChanges8TypeForResponse
-    effective_date: NotRequired[str]
+    action: Literal["edited"]
+    changes: WebhookRepositoryEditedPropChangesTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
-    sponsorship: WebhooksSponsorshipTypeForResponse
+
+
+class WebhookRepositoryEditedPropChangesType(TypedDict):
+    """WebhookRepositoryEditedPropChanges"""
+
+    default_branch: NotRequired[WebhookRepositoryEditedPropChangesPropDefaultBranchType]
+    description: NotRequired[WebhookRepositoryEditedPropChangesPropDescriptionType]
+    homepage: NotRequired[WebhookRepositoryEditedPropChangesPropHomepageType]
+    topics: NotRequired[WebhookRepositoryEditedPropChangesPropTopicsType]
+
+
+class WebhookRepositoryEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookRepositoryEditedPropChanges"""
+
+    default_branch: NotRequired[
+        WebhookRepositoryEditedPropChangesPropDefaultBranchTypeForResponse
+    ]
+    description: NotRequired[
+        WebhookRepositoryEditedPropChangesPropDescriptionTypeForResponse
+    ]
+    homepage: NotRequired[WebhookRepositoryEditedPropChangesPropHomepageTypeForResponse]
+    topics: NotRequired[WebhookRepositoryEditedPropChangesPropTopicsTypeForResponse]
+
+
+class WebhookRepositoryEditedPropChangesPropDefaultBranchType(TypedDict):
+    """WebhookRepositoryEditedPropChangesPropDefaultBranch"""
+
+    from_: str
+
+
+class WebhookRepositoryEditedPropChangesPropDefaultBranchTypeForResponse(TypedDict):
+    """WebhookRepositoryEditedPropChangesPropDefaultBranch"""
+
+    from_: str
+
+
+class WebhookRepositoryEditedPropChangesPropDescriptionType(TypedDict):
+    """WebhookRepositoryEditedPropChangesPropDescription"""
+
+    from_: Union[str, None]
+
+
+class WebhookRepositoryEditedPropChangesPropDescriptionTypeForResponse(TypedDict):
+    """WebhookRepositoryEditedPropChangesPropDescription"""
+
+    from_: Union[str, None]
+
+
+class WebhookRepositoryEditedPropChangesPropHomepageType(TypedDict):
+    """WebhookRepositoryEditedPropChangesPropHomepage"""
+
+    from_: Union[str, None]
+
+
+class WebhookRepositoryEditedPropChangesPropHomepageTypeForResponse(TypedDict):
+    """WebhookRepositoryEditedPropChangesPropHomepage"""
+
+    from_: Union[str, None]
+
+
+class WebhookRepositoryEditedPropChangesPropTopicsType(TypedDict):
+    """WebhookRepositoryEditedPropChangesPropTopics"""
+
+    from_: NotRequired[Union[list[str], None]]
+
+
+class WebhookRepositoryEditedPropChangesPropTopicsTypeForResponse(TypedDict):
+    """WebhookRepositoryEditedPropChangesPropTopics"""
+
+    from_: NotRequired[Union[list[str], None]]
 
 
 __all__ = (
-    "WebhookSponsorshipPendingTierChangeType",
-    "WebhookSponsorshipPendingTierChangeTypeForResponse",
+    "WebhookRepositoryEditedPropChangesPropDefaultBranchType",
+    "WebhookRepositoryEditedPropChangesPropDefaultBranchTypeForResponse",
+    "WebhookRepositoryEditedPropChangesPropDescriptionType",
+    "WebhookRepositoryEditedPropChangesPropDescriptionTypeForResponse",
+    "WebhookRepositoryEditedPropChangesPropHomepageType",
+    "WebhookRepositoryEditedPropChangesPropHomepageTypeForResponse",
+    "WebhookRepositoryEditedPropChangesPropTopicsType",
+    "WebhookRepositoryEditedPropChangesPropTopicsTypeForResponse",
+    "WebhookRepositoryEditedPropChangesType",
+    "WebhookRepositoryEditedPropChangesTypeForResponse",
+    "WebhookRepositoryEditedType",
+    "WebhookRepositoryEditedTypeForResponse",
 )

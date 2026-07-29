@@ -10,47 +10,87 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0052 import ReactionRollupType, ReactionRollupTypeForResponse
+from .group_0054 import PinnedIssueCommentType, PinnedIssueCommentTypeForResponse
+from .group_0055 import IssueCommentMinimizedType, IssueCommentMinimizedTypeForResponse
 
-class DeployKeyType(TypedDict):
-    """Deploy Key
 
-    An SSH key granting access to a single repository.
+class TimelineCommentEventType(TypedDict):
+    """Timeline Comment Event
+
+    Timeline Comment Event
     """
 
+    event: Literal["commented"]
+    actor: SimpleUserType
     id: int
-    key: str
+    node_id: str
     url: str
-    title: str
-    verified: bool
-    created_at: str
-    read_only: bool
-    added_by: NotRequired[Union[str, None]]
-    last_used: NotRequired[Union[_dt.datetime, None]]
-    enabled: NotRequired[bool]
+    body: NotRequired[str]
+    body_text: NotRequired[str]
+    body_html: NotRequired[str]
+    html_url: str
+    user: SimpleUserType
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    issue_url: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    reactions: NotRequired[ReactionRollupType]
+    pin: NotRequired[Union[None, PinnedIssueCommentType]]
+    minimized: NotRequired[Union[None, IssueCommentMinimizedType]]
 
 
-class DeployKeyTypeForResponse(TypedDict):
-    """Deploy Key
+class TimelineCommentEventTypeForResponse(TypedDict):
+    """Timeline Comment Event
 
-    An SSH key granting access to a single repository.
+    Timeline Comment Event
     """
 
+    event: Literal["commented"]
+    actor: SimpleUserTypeForResponse
     id: int
-    key: str
+    node_id: str
     url: str
-    title: str
-    verified: bool
+    body: NotRequired[str]
+    body_text: NotRequired[str]
+    body_html: NotRequired[str]
+    html_url: str
+    user: SimpleUserTypeForResponse
     created_at: str
-    read_only: bool
-    added_by: NotRequired[Union[str, None]]
-    last_used: NotRequired[Union[str, None]]
-    enabled: NotRequired[bool]
+    updated_at: str
+    issue_url: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
+    reactions: NotRequired[ReactionRollupTypeForResponse]
+    pin: NotRequired[Union[None, PinnedIssueCommentTypeForResponse]]
+    minimized: NotRequired[Union[None, IssueCommentMinimizedTypeForResponse]]
 
 
 __all__ = (
-    "DeployKeyType",
-    "DeployKeyTypeForResponse",
+    "TimelineCommentEventType",
+    "TimelineCommentEventTypeForResponse",
 )

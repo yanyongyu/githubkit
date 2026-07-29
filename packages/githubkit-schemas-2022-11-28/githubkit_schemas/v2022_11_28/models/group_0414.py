@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,27 +17,26 @@ from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0003 import SimpleUser
 from .group_0010 import Integration
-from .group_0394 import IssueReference
 
 
-class SubIssueAddedIssueEvent(GitHubModel):
-    """Sub-issue Added Issue Event
+class LockedIssueEvent(GitHubModel):
+    """Locked Issue Event
 
-    Sub-issue Added Issue Event
+    Locked Issue Event
     """
 
     id: int = Field()
     node_id: str = Field()
     url: str = Field()
     actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: str = Field()
+    event: Literal["locked"] = Field()
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
     performed_via_github_app: Union[None, Integration, None] = Field()
-    sub_issue: Union[None, IssueReference, None] = Field()
+    lock_reason: Union[str, None] = Field()
 
 
-model_rebuild(SubIssueAddedIssueEvent)
+model_rebuild(LockedIssueEvent)
 
-__all__ = ("SubIssueAddedIssueEvent",)
+__all__ = ("LockedIssueEvent",)

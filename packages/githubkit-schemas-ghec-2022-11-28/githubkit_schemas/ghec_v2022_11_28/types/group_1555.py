@@ -9,29 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class ReposOwnerRepoPullsPullNumberMergePutBodyType(TypedDict):
-    """ReposOwnerRepoPullsPullNumberMergePutBody"""
-
-    commit_title: NotRequired[str]
-    commit_message: NotRequired[str]
-    sha: NotRequired[str]
-    merge_method: NotRequired[Literal["merge", "squash", "rebase"]]
+from .group_0011 import WebhookConfigType, WebhookConfigTypeForResponse
 
 
-class ReposOwnerRepoPullsPullNumberMergePutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoPullsPullNumberMergePutBody"""
+class ReposOwnerRepoHooksHookIdPatchBodyType(TypedDict):
+    """ReposOwnerRepoHooksHookIdPatchBody"""
 
-    commit_title: NotRequired[str]
-    commit_message: NotRequired[str]
-    sha: NotRequired[str]
-    merge_method: NotRequired[Literal["merge", "squash", "rebase"]]
+    config: NotRequired[WebhookConfigType]
+    events: NotRequired[list[str]]
+    add_events: NotRequired[list[str]]
+    remove_events: NotRequired[list[str]]
+    active: NotRequired[bool]
+
+
+class ReposOwnerRepoHooksHookIdPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoHooksHookIdPatchBody"""
+
+    config: NotRequired[WebhookConfigTypeForResponse]
+    events: NotRequired[list[str]]
+    add_events: NotRequired[list[str]]
+    remove_events: NotRequired[list[str]]
+    active: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberMergePutBodyType",
-    "ReposOwnerRepoPullsPullNumberMergePutBodyTypeForResponse",
+    "ReposOwnerRepoHooksHookIdPatchBodyType",
+    "ReposOwnerRepoHooksHookIdPatchBodyTypeForResponse",
 )

@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,18 +16,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class SelfHostedRunnersSettings(GitHubModel):
-    """SelfHostedRunnersSettings"""
+class ActionsCacheRetentionLimitForOrganization(GitHubModel):
+    """Actions cache retention limit for an organization
 
-    enabled_repositories: Literal["all", "selected", "none"] = Field(
-        description="The policy that controls whether self-hosted runners can be used by repositories in the organization"
-    )
-    selected_repositories_url: Missing[str] = Field(
+    GitHub Actions cache retention policy for an organization.
+    """
+
+    max_cache_retention_days: Missing[int] = Field(
         default=UNSET,
-        description="The URL to the endpoint for managing selected repositories for self-hosted runners in the organization",
+        description="For repositories in this organization, the maximum duration, in days, for which caches in a repository may be retained.",
     )
 
 
-model_rebuild(SelfHostedRunnersSettings)
+model_rebuild(ActionsCacheRetentionLimitForOrganization)
 
-__all__ = ("SelfHostedRunnersSettings",)
+__all__ = ("ActionsCacheRetentionLimitForOrganization",)

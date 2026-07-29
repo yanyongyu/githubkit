@@ -9,57 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoAttestationsPostBody(GitHubModel):
-    """ReposOwnerRepoAttestationsPostBody"""
+class OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1(GitHubModel):
+    """OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1"""
 
-    bundle: ReposOwnerRepoAttestationsPostBodyPropBundle = Field(
-        description="The attestation's Sigstore Bundle.\nRefer to the [Sigstore Bundle Specification](https://github.com/sigstore/protobuf-specs/blob/main/protos/sigstore_bundle.proto) for more information."
+    type: Literal["Issue", "PullRequest"] = Field(
+        description="The type of item to add to the project. Must be either Issue or PullRequest."
     )
+    id: Missing[int] = Field(
+        default=UNSET,
+        description="The unique identifier of the issue or pull request to add to the project.",
+    )
+    owner: str = Field(description="The repository owner login.")
+    repo: str = Field(description="The repository name.")
+    number: int = Field(description="The issue or pull request number.")
 
 
-class ReposOwnerRepoAttestationsPostBodyPropBundle(GitHubModel):
-    """ReposOwnerRepoAttestationsPostBodyPropBundle
+model_rebuild(OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1)
 
-    The attestation's Sigstore Bundle.
-    Refer to the [Sigstore Bundle
-    Specification](https://github.com/sigstore/protobuf-
-    specs/blob/main/protos/sigstore_bundle.proto) for more information.
-    """
-
-    media_type: Missing[str] = Field(default=UNSET, alias="mediaType")
-    verification_material: Missing[
-        ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial
-    ] = Field(default=UNSET, alias="verificationMaterial")
-    dsse_envelope: Missing[
-        ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope
-    ] = Field(default=UNSET, alias="dsseEnvelope")
-
-
-class ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial(
-    ExtraGitHubModel
-):
-    """ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial"""
-
-
-class ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope(ExtraGitHubModel):
-    """ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope"""
-
-
-model_rebuild(ReposOwnerRepoAttestationsPostBody)
-model_rebuild(ReposOwnerRepoAttestationsPostBodyPropBundle)
-model_rebuild(ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial)
-model_rebuild(ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope)
-
-__all__ = (
-    "ReposOwnerRepoAttestationsPostBody",
-    "ReposOwnerRepoAttestationsPostBodyPropBundle",
-    "ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope",
-    "ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial",
-)
+__all__ = ("OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1",)

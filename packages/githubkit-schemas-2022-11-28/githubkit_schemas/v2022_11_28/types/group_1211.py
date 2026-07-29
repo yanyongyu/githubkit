@@ -9,28 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0279 import ActionsVariableType, ActionsVariableTypeForResponse
+
+class OrgsOrgPersonalAccessTokensPostBodyType(TypedDict):
+    """OrgsOrgPersonalAccessTokensPostBody"""
+
+    action: Literal["revoke"]
+    pat_ids: list[int]
 
 
-class ReposOwnerRepoActionsOrganizationVariablesGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsOrganizationVariablesGetResponse200"""
+class OrgsOrgPersonalAccessTokensPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgPersonalAccessTokensPostBody"""
 
-    total_count: int
-    variables: list[ActionsVariableType]
-
-
-class ReposOwnerRepoActionsOrganizationVariablesGetResponse200TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoActionsOrganizationVariablesGetResponse200"""
-
-    total_count: int
-    variables: list[ActionsVariableTypeForResponse]
+    action: Literal["revoke"]
+    pat_ids: list[int]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsOrganizationVariablesGetResponse200Type",
-    "ReposOwnerRepoActionsOrganizationVariablesGetResponse200TypeForResponse",
+    "OrgsOrgPersonalAccessTokensPostBodyType",
+    "OrgsOrgPersonalAccessTokensPostBodyTypeForResponse",
 )

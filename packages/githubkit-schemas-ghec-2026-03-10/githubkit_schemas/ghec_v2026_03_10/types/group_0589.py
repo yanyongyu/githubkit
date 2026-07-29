@@ -9,35 +9,80 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0581 import MetaType, MetaTypeForResponse
+from .group_0586 import (
+    UserEmailsResponseItemsType,
+    UserEmailsResponseItemsTypeForResponse,
+    UserNameResponseType,
+    UserNameResponseTypeForResponse,
+)
+from .group_0587 import UserRoleItemsType, UserRoleItemsTypeForResponse
+from .group_0591 import (
+    ScimEnterpriseUserResponseAllof1PropGroupsItemsType,
+    ScimEnterpriseUserResponseAllof1PropGroupsItemsTypeForResponse,
+)
 
 
-class EmailType(TypedDict):
-    """Email
+class ScimEnterpriseUserResponseType(TypedDict):
+    """ScimEnterpriseUserResponse"""
 
-    Email
-    """
+    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
+    external_id: NotRequired[Union[str, None]]
+    active: bool
+    user_name: NotRequired[str]
+    name: NotRequired[UserNameResponseType]
+    display_name: NotRequired[Union[str, None]]
+    emails: list[UserEmailsResponseItemsType]
+    roles: NotRequired[list[UserRoleItemsType]]
+    id: str
+    groups: NotRequired[list[ScimEnterpriseUserResponseAllof1PropGroupsItemsType]]
+    meta: MetaType
 
-    email: str
-    primary: bool
-    verified: bool
-    visibility: Union[str, None]
+
+class ScimEnterpriseUserResponseTypeForResponse(TypedDict):
+    """ScimEnterpriseUserResponse"""
+
+    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
+    external_id: NotRequired[Union[str, None]]
+    active: bool
+    user_name: NotRequired[str]
+    name: NotRequired[UserNameResponseTypeForResponse]
+    display_name: NotRequired[Union[str, None]]
+    emails: list[UserEmailsResponseItemsTypeForResponse]
+    roles: NotRequired[list[UserRoleItemsTypeForResponse]]
+    id: str
+    groups: NotRequired[
+        list[ScimEnterpriseUserResponseAllof1PropGroupsItemsTypeForResponse]
+    ]
+    meta: MetaTypeForResponse
 
 
-class EmailTypeForResponse(TypedDict):
-    """Email
+class ScimEnterpriseUserListType(TypedDict):
+    """ScimEnterpriseUserList"""
 
-    Email
-    """
+    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:ListResponse"]]
+    total_results: int
+    resources: list[ScimEnterpriseUserResponseType]
+    start_index: int
+    items_per_page: int
 
-    email: str
-    primary: bool
-    verified: bool
-    visibility: Union[str, None]
+
+class ScimEnterpriseUserListTypeForResponse(TypedDict):
+    """ScimEnterpriseUserList"""
+
+    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:ListResponse"]]
+    total_results: int
+    resources: list[ScimEnterpriseUserResponseTypeForResponse]
+    start_index: int
+    items_per_page: int
 
 
 __all__ = (
-    "EmailType",
-    "EmailTypeForResponse",
+    "ScimEnterpriseUserListType",
+    "ScimEnterpriseUserListTypeForResponse",
+    "ScimEnterpriseUserResponseType",
+    "ScimEnterpriseUserResponseTypeForResponse",
 )

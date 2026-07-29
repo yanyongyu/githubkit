@@ -9,64 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0245 import (
-    MarketplaceListingPlanType,
-    MarketplaceListingPlanTypeForResponse,
-)
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class MarketplacePurchasePropMarketplacePendingChangeType(TypedDict):
-    """MarketplacePurchasePropMarketplacePendingChange"""
+class GistCommitType(TypedDict):
+    """Gist Commit
 
-    is_installed: NotRequired[bool]
-    effective_date: NotRequired[str]
-    unit_count: NotRequired[Union[int, None]]
-    id: NotRequired[int]
-    plan: NotRequired[MarketplaceListingPlanType]
+    Gist Commit
+    """
 
-
-class MarketplacePurchasePropMarketplacePendingChangeTypeForResponse(TypedDict):
-    """MarketplacePurchasePropMarketplacePendingChange"""
-
-    is_installed: NotRequired[bool]
-    effective_date: NotRequired[str]
-    unit_count: NotRequired[Union[int, None]]
-    id: NotRequired[int]
-    plan: NotRequired[MarketplaceListingPlanTypeForResponse]
+    url: str
+    version: str
+    user: Union[None, SimpleUserType]
+    change_status: GistCommitPropChangeStatusType
+    committed_at: _dt.datetime
 
 
-class MarketplacePurchasePropMarketplacePurchaseType(TypedDict):
-    """MarketplacePurchasePropMarketplacePurchase"""
+class GistCommitTypeForResponse(TypedDict):
+    """Gist Commit
 
-    billing_cycle: NotRequired[str]
-    next_billing_date: NotRequired[Union[str, None]]
-    is_installed: NotRequired[bool]
-    unit_count: NotRequired[Union[int, None]]
-    on_free_trial: NotRequired[bool]
-    free_trial_ends_on: NotRequired[Union[str, None]]
-    updated_at: NotRequired[str]
-    plan: NotRequired[MarketplaceListingPlanType]
+    Gist Commit
+    """
+
+    url: str
+    version: str
+    user: Union[None, SimpleUserTypeForResponse]
+    change_status: GistCommitPropChangeStatusTypeForResponse
+    committed_at: str
 
 
-class MarketplacePurchasePropMarketplacePurchaseTypeForResponse(TypedDict):
-    """MarketplacePurchasePropMarketplacePurchase"""
+class GistCommitPropChangeStatusType(TypedDict):
+    """GistCommitPropChangeStatus"""
 
-    billing_cycle: NotRequired[str]
-    next_billing_date: NotRequired[Union[str, None]]
-    is_installed: NotRequired[bool]
-    unit_count: NotRequired[Union[int, None]]
-    on_free_trial: NotRequired[bool]
-    free_trial_ends_on: NotRequired[Union[str, None]]
-    updated_at: NotRequired[str]
-    plan: NotRequired[MarketplaceListingPlanTypeForResponse]
+    total: NotRequired[int]
+    additions: NotRequired[int]
+    deletions: NotRequired[int]
+
+
+class GistCommitPropChangeStatusTypeForResponse(TypedDict):
+    """GistCommitPropChangeStatus"""
+
+    total: NotRequired[int]
+    additions: NotRequired[int]
+    deletions: NotRequired[int]
 
 
 __all__ = (
-    "MarketplacePurchasePropMarketplacePendingChangeType",
-    "MarketplacePurchasePropMarketplacePendingChangeTypeForResponse",
-    "MarketplacePurchasePropMarketplacePurchaseType",
-    "MarketplacePurchasePropMarketplacePurchaseTypeForResponse",
+    "GistCommitPropChangeStatusType",
+    "GistCommitPropChangeStatusTypeForResponse",
+    "GistCommitType",
+    "GistCommitTypeForResponse",
 )

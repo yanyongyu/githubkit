@@ -9,79 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class AgentsReposOwnerRepoTasksGetResponse404Type(TypedDict):
-    """AgentsReposOwnerRepoTasksGetResponse404
-
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[
-        list[AgentsReposOwnerRepoTasksGetResponse404PropErrorsItemsType]
-    ]
-    documentation_url: str
+from .group_1055 import (
+    WebhookSecurityAndAnalysisPropChangesPropFromType,
+    WebhookSecurityAndAnalysisPropChangesPropFromTypeForResponse,
+)
 
 
-class AgentsReposOwnerRepoTasksGetResponse404TypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksGetResponse404
+class WebhookSecurityAndAnalysisPropChangesType(TypedDict):
+    """WebhookSecurityAndAnalysisPropChanges"""
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[
-        list[AgentsReposOwnerRepoTasksGetResponse404PropErrorsItemsTypeForResponse]
-    ]
-    documentation_url: str
+    from_: NotRequired[WebhookSecurityAndAnalysisPropChangesPropFromType]
 
 
-class AgentsReposOwnerRepoTasksGetResponse404PropErrorsItemsType(TypedDict):
-    """AgentsReposOwnerRepoTasksGetResponse404PropErrorsItems
+class WebhookSecurityAndAnalysisPropChangesTypeForResponse(TypedDict):
+    """WebhookSecurityAndAnalysisPropChanges"""
 
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
-
-
-class AgentsReposOwnerRepoTasksGetResponse404PropErrorsItemsTypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksGetResponse404PropErrorsItems
-
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
+    from_: NotRequired[WebhookSecurityAndAnalysisPropChangesPropFromTypeForResponse]
 
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksGetResponse404PropErrorsItemsType",
-    "AgentsReposOwnerRepoTasksGetResponse404PropErrorsItemsTypeForResponse",
-    "AgentsReposOwnerRepoTasksGetResponse404Type",
-    "AgentsReposOwnerRepoTasksGetResponse404TypeForResponse",
+    "WebhookSecurityAndAnalysisPropChangesType",
+    "WebhookSecurityAndAnalysisPropChangesTypeForResponse",
 )

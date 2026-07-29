@@ -9,29 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBodyType(TypedDict):
-    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody"""
+class ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Type(TypedDict):
+    """ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202"""
 
-    actor_type: Literal["User", "Team"]
-    actor_identifier: str
-    role: Literal["reader", "writer", "admin"]
+    message: NotRequired[str]
+    url: NotRequired[str]
 
 
-class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBodyTypeForResponse(
-    TypedDict
-):
-    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody"""
+class ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202TypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202"""
 
-    actor_type: Literal["User", "Team"]
-    actor_identifier: str
-    role: Literal["reader", "writer", "admin"]
+    message: NotRequired[str]
+    url: NotRequired[str]
 
 
 __all__ = (
-    "UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBodyType",
-    "UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBodyTypeForResponse",
+    "ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Type",
+    "ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202TypeForResponse",
 )

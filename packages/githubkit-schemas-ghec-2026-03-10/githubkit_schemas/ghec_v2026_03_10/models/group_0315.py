@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,89 +18,103 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0085 import Team
-from .group_0208 import Milestone
-from .group_0314 import AutoMerge
-from .group_0316 import PullRequestSimplePropBase, PullRequestSimplePropHead
-from .group_0317 import PullRequestSimplePropLinks
 
+class OrgPrivateRegistryConfigurationWithSelectedRepositories(GitHubModel):
+    """Organization private registry
 
-class PullRequestSimple(GitHubModel):
-    """Pull Request Simple
-
-    Pull Request Simple
+    Private registry configuration for an organization
     """
 
-    url: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    html_url: str = Field()
-    diff_url: str = Field()
-    patch_url: str = Field()
-    issue_url: str = Field()
-    commits_url: str = Field()
-    review_comments_url: str = Field()
-    review_comment_url: str = Field()
-    comments_url: str = Field()
-    statuses_url: str = Field()
-    number: int = Field()
-    state: str = Field()
-    locked: bool = Field()
-    title: str = Field()
-    user: Union[None, SimpleUser] = Field()
-    body: Union[str, None] = Field()
-    labels: list[PullRequestSimplePropLabelsItems] = Field()
-    milestone: Union[None, Milestone] = Field()
-    active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
+    name: str = Field(description="The name of the private registry configuration.")
+    registry_type: Literal[
+        "maven_repository",
+        "nuget_feed",
+        "goproxy_server",
+        "npm_registry",
+        "rubygems_server",
+        "cargo_registry",
+        "composer_repository",
+        "docker_registry",
+        "git_source",
+        "helm_registry",
+        "hex_organization",
+        "hex_repository",
+        "pub_repository",
+        "python_index",
+        "terraform_registry",
+    ] = Field(description="The registry type.")
+    auth_type: Missing[
+        Literal[
+            "token",
+            "username_password",
+            "oidc_azure",
+            "oidc_aws",
+            "oidc_jfrog",
+            "oidc_cloudsmith",
+            "oidc_gcp",
+        ]
+    ] = Field(
+        default=UNSET, description="The authentication type for the private registry."
+    )
+    url: Missing[str] = Field(
+        default=UNSET, description="The URL of the private registry."
+    )
+    username: Missing[str] = Field(
+        default=UNSET,
+        description="The username to use when authenticating with the private registry.",
+    )
+    replaces_base: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether this private registry replaces the base registry (e.g., npmjs.org for npm, rubygems.org for rubygems). When `true`, Dependabot will only use this registry and will not fall back to the public registry. When `false` (default), Dependabot will use this registry for scoped packages but may fall back to the public registry for other packages.",
+    )
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="Which type of organization repositories have access to the private registry. `selected` means only the repositories specified by `selected_repository_ids` can access the private registry."
+    )
+    selected_repository_ids: Missing[list[int]] = Field(
+        default=UNSET,
+        description="An array of repository IDs that can access the organization private registry when `visibility` is set to `selected`.",
+    )
+    tenant_id: Missing[str] = Field(
+        default=UNSET, description="The tenant ID of the Azure AD application."
+    )
+    client_id: Missing[str] = Field(
+        default=UNSET, description="The client ID of the Azure AD application."
+    )
+    aws_region: Missing[str] = Field(default=UNSET, description="The AWS region.")
+    account_id: Missing[str] = Field(default=UNSET, description="The AWS account ID.")
+    role_name: Missing[str] = Field(default=UNSET, description="The AWS IAM role name.")
+    domain: Missing[str] = Field(default=UNSET, description="The CodeArtifact domain.")
+    domain_owner: Missing[str] = Field(
+        default=UNSET, description="The CodeArtifact domain owner."
+    )
+    jfrog_oidc_provider_name: Missing[str] = Field(
+        default=UNSET, description="The JFrog OIDC provider name."
+    )
+    audience: Missing[str] = Field(default=UNSET, description="The OIDC audience.")
+    identity_mapping_name: Missing[str] = Field(
+        default=UNSET, description="The JFrog identity mapping name."
+    )
+    namespace: Missing[str] = Field(
+        default=UNSET, description="The Cloudsmith organization namespace."
+    )
+    service_slug: Missing[str] = Field(
+        default=UNSET, description="The Cloudsmith service account slug."
+    )
+    api_host: Missing[str] = Field(
+        default=UNSET, description="The Cloudsmith API host."
+    )
+    workload_identity_provider: Missing[str] = Field(
+        default=UNSET,
+        description="The full resource name of the GCP Workload Identity Provider (e.g. `projects/<NUM>/locations/global/workloadIdentityPools/<POOL>/providers/<PROVIDER>`).",
+    )
+    service_account: Missing[str] = Field(
+        default=UNSET,
+        description="The GCP service account email to impersonate. If omitted, the federated token is used directly (direct WIF).",
+    )
     created_at: _dt.datetime = Field()
     updated_at: _dt.datetime = Field()
-    closed_at: Union[_dt.datetime, None] = Field()
-    merged_at: Union[_dt.datetime, None] = Field()
-    assignees: Missing[list[SimpleUser]] = Field(default=UNSET)
-    requested_reviewers: Missing[list[SimpleUser]] = Field(default=UNSET)
-    requested_teams: Missing[list[Team]] = Field(default=UNSET)
-    head: PullRequestSimplePropHead = Field()
-    base: PullRequestSimplePropBase = Field()
-    links: PullRequestSimplePropLinks = Field(alias="_links")
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="author_association",
-        description="How the author is associated with the repository.",
-    )
-    auto_merge: Union[AutoMerge, None] = Field(
-        title="Auto merge", description="The status of auto merging a pull request."
-    )
-    draft: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether or not the pull request is a draft.",
-    )
 
 
-class PullRequestSimplePropLabelsItems(GitHubModel):
-    """PullRequestSimplePropLabelsItems"""
+model_rebuild(OrgPrivateRegistryConfigurationWithSelectedRepositories)
 
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    name: str = Field()
-    description: Union[str, None] = Field()
-    color: str = Field()
-    default: bool = Field()
-
-
-model_rebuild(PullRequestSimple)
-model_rebuild(PullRequestSimplePropLabelsItems)
-
-__all__ = (
-    "PullRequestSimple",
-    "PullRequestSimplePropLabelsItems",
-)
+__all__ = ("OrgPrivateRegistryConfigurationWithSelectedRepositories",)

@@ -9,25 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from githubkit.compat import ExtraGitHubModel, model_rebuild
+from pydantic import Field
+
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties(
-    ExtraGitHubModel
-):
-    """InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPrope
-    rties
+class EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBody(GitHubModel):
+    """EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBody"""
 
-    The custom properties that were defined for the repository. The keys are the
-    custom property names, and the values are the corresponding custom property
-    values. Present for org repos only.
-    """
+    revoke_credentials: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to also destroy the actual credentials (PATs and SSH keys) owned by\nenterprise members. This option is only available for Enterprise Managed User\n(EMU) enterprises. When set to `true`, all PATs (v1 and v2) and SSH keys owned\nby enterprise members will be destroyed in addition to the credential authorizations.",
+    )
 
 
-model_rebuild(
-    InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties
-)
+model_rebuild(EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBody)
 
-__all__ = (
-    "InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties",
-)
+__all__ = ("EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBody",)

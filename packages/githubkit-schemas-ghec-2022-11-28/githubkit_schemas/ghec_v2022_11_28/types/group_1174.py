@@ -11,26 +11,28 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0106 import NetworkConfigurationType, NetworkConfigurationTypeForResponse
 
-
-class EnterprisesEnterpriseNetworkConfigurationsGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseNetworkConfigurationsGetResponse200"""
-
-    total_count: int
-    network_configurations: list[NetworkConfigurationType]
-
-
-class EnterprisesEnterpriseNetworkConfigurationsGetResponse200TypeForResponse(
+class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBodyType(
     TypedDict
 ):
-    """EnterprisesEnterpriseNetworkConfigurationsGetResponse200"""
+    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositories
+    RemovePatchBody
+    """
 
-    total_count: int
-    network_configurations: list[NetworkConfigurationTypeForResponse]
+    repositories: list[str]
+
+
+class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositories
+    RemovePatchBody
+    """
+
+    repositories: list[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseNetworkConfigurationsGetResponse200Type",
-    "EnterprisesEnterpriseNetworkConfigurationsGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBodyType",
+    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBodyTypeForResponse",
 )

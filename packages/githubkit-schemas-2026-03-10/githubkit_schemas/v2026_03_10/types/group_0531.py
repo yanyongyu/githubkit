@@ -9,131 +9,84 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksApproverType(TypedDict):
-    """WebhooksApprover"""
+class BillingPremiumRequestUsageReportUserType(TypedDict):
+    """BillingPremiumRequestUsageReportUser"""
 
-    avatar_url: NotRequired[str]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: NotRequired[int]
-    login: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[str]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    time_period: BillingPremiumRequestUsageReportUserPropTimePeriodType
+    user: str
+    product: NotRequired[str]
+    model: NotRequired[str]
+    usage_items: list[BillingPremiumRequestUsageReportUserPropUsageItemsItemsType]
 
 
-class WebhooksApproverTypeForResponse(TypedDict):
-    """WebhooksApprover"""
+class BillingPremiumRequestUsageReportUserTypeForResponse(TypedDict):
+    """BillingPremiumRequestUsageReportUser"""
 
-    avatar_url: NotRequired[str]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: NotRequired[int]
-    login: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[str]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhooksReviewersItemsType(TypedDict):
-    """WebhooksReviewersItems"""
-
-    reviewer: NotRequired[Union[WebhooksReviewersItemsPropReviewerType, None]]
-    type: NotRequired[Literal["User"]]
-
-
-class WebhooksReviewersItemsTypeForResponse(TypedDict):
-    """WebhooksReviewersItems"""
-
-    reviewer: NotRequired[
-        Union[WebhooksReviewersItemsPropReviewerTypeForResponse, None]
+    time_period: BillingPremiumRequestUsageReportUserPropTimePeriodTypeForResponse
+    user: str
+    product: NotRequired[str]
+    model: NotRequired[str]
+    usage_items: list[
+        BillingPremiumRequestUsageReportUserPropUsageItemsItemsTypeForResponse
     ]
-    type: NotRequired[Literal["User"]]
 
 
-class WebhooksReviewersItemsPropReviewerType(TypedDict):
-    """User"""
+class BillingPremiumRequestUsageReportUserPropTimePeriodType(TypedDict):
+    """BillingPremiumRequestUsageReportUserPropTimePeriod"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
 
 
-class WebhooksReviewersItemsPropReviewerTypeForResponse(TypedDict):
-    """User"""
+class BillingPremiumRequestUsageReportUserPropTimePeriodTypeForResponse(TypedDict):
+    """BillingPremiumRequestUsageReportUserPropTimePeriod"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
+
+
+class BillingPremiumRequestUsageReportUserPropUsageItemsItemsType(TypedDict):
+    """BillingPremiumRequestUsageReportUserPropUsageItemsItems"""
+
+    product: str
+    sku: str
+    model: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: float
+    gross_amount: float
+    discount_quantity: float
+    discount_amount: float
+    net_quantity: float
+    net_amount: float
+
+
+class BillingPremiumRequestUsageReportUserPropUsageItemsItemsTypeForResponse(TypedDict):
+    """BillingPremiumRequestUsageReportUserPropUsageItemsItems"""
+
+    product: str
+    sku: str
+    model: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: float
+    gross_amount: float
+    discount_quantity: float
+    discount_amount: float
+    net_quantity: float
+    net_amount: float
 
 
 __all__ = (
-    "WebhooksApproverType",
-    "WebhooksApproverTypeForResponse",
-    "WebhooksReviewersItemsPropReviewerType",
-    "WebhooksReviewersItemsPropReviewerTypeForResponse",
-    "WebhooksReviewersItemsType",
-    "WebhooksReviewersItemsTypeForResponse",
+    "BillingPremiumRequestUsageReportUserPropTimePeriodType",
+    "BillingPremiumRequestUsageReportUserPropTimePeriodTypeForResponse",
+    "BillingPremiumRequestUsageReportUserPropUsageItemsItemsType",
+    "BillingPremiumRequestUsageReportUserPropUsageItemsItemsTypeForResponse",
+    "BillingPremiumRequestUsageReportUserType",
+    "BillingPremiumRequestUsageReportUserTypeForResponse",
 )

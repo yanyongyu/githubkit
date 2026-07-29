@@ -11,27 +11,22 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0261 import (
-    OrganizationActionsVariableType,
-    OrganizationActionsVariableTypeForResponse,
-)
+
+class EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBodyType(TypedDict):
+    """EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBody"""
+
+    organization_slugs: list[str]
 
 
-class OrgsOrgActionsVariablesGetResponse200Type(TypedDict):
-    """OrgsOrgActionsVariablesGetResponse200"""
+class EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBody"""
 
-    total_count: int
-    variables: list[OrganizationActionsVariableType]
-
-
-class OrgsOrgActionsVariablesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsVariablesGetResponse200"""
-
-    total_count: int
-    variables: list[OrganizationActionsVariableTypeForResponse]
+    organization_slugs: list[str]
 
 
 __all__ = (
-    "OrgsOrgActionsVariablesGetResponse200Type",
-    "OrgsOrgActionsVariablesGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBodyType",
+    "EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBodyTypeForResponse",
 )

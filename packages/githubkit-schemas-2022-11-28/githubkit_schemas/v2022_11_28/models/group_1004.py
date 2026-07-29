@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,23 +16,30 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AppHookConfigPatchBody(GitHubModel):
-    """AppHookConfigPatchBody"""
+class AgentsReposOwnerRepoTasksPostBody(GitHubModel):
+    """AgentsReposOwnerRepoTasksPostBody"""
 
-    url: Missing[str] = Field(
-        default=UNSET, description="The URL to which the payloads will be delivered."
-    )
-    content_type: Missing[str] = Field(
+    prompt: str = Field(description="The user's prompt for the agent")
+    model: Missing[str] = Field(
         default=UNSET,
-        description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
+        description="The model to use for this task. The allowed models may change over time and depend on the user's GitHub Copilot plan and organization policies. Currently supported values: `claude-sonnet-4.6`, `claude-opus-4.6`, `gpt-5.2-codex`, `gpt-5.3-codex`, `gpt-5.4`, `claude-sonnet-4.5`, `claude-opus-4.5`",
     )
-    secret: Missing[str] = Field(
+    custom_agent: Missing[str] = Field(
         default=UNSET,
-        description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/webhooks/event-payloads/#delivery-headers).",
+        description="Optional identifier for a custom agent to use for this task. Use the custom agent's filename without the extension - for example, for a `.github/agents/performance-optimizer.agent.md` custom agent, use `performance-optimizer`.",
     )
-    insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
+    create_pull_request: Missing[bool] = Field(
+        default=UNSET, description="Whether to create a PR."
+    )
+    base_ref: Missing[str] = Field(
+        default=UNSET, description="Base ref for new branch/PR"
+    )
+    head_ref: Missing[str] = Field(
+        default=UNSET,
+        description="Head ref for existing branch/PR. If provided with `base_ref`, the agent looks up open PR context for `head_ref` targeting `base_ref` and commits to `head_ref` instead of creating a new branch.",
+    )
 
 
-model_rebuild(AppHookConfigPatchBody)
+model_rebuild(AgentsReposOwnerRepoTasksPostBody)
 
-__all__ = ("AppHookConfigPatchBody",)
+__all__ = ("AgentsReposOwnerRepoTasksPostBody",)

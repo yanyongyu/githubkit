@@ -11,24 +11,16 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0354 import WorkflowRunType, WorkflowRunTypeForResponse
+
+class OrgsOrgInteractionLimitsGetResponse200Anyof1Type(TypedDict):
+    """OrgsOrgInteractionLimitsGetResponse200Anyof1"""
 
 
-class ReposOwnerRepoActionsRunsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsRunsGetResponse200"""
-
-    total_count: int
-    workflow_runs: list[WorkflowRunType]
-
-
-class ReposOwnerRepoActionsRunsGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsRunsGetResponse200"""
-
-    total_count: int
-    workflow_runs: list[WorkflowRunTypeForResponse]
+class OrgsOrgInteractionLimitsGetResponse200Anyof1TypeForResponse(TypedDict):
+    """OrgsOrgInteractionLimitsGetResponse200Anyof1"""
 
 
 __all__ = (
-    "ReposOwnerRepoActionsRunsGetResponse200Type",
-    "ReposOwnerRepoActionsRunsGetResponse200TypeForResponse",
+    "OrgsOrgInteractionLimitsGetResponse200Anyof1Type",
+    "OrgsOrgInteractionLimitsGetResponse200Anyof1TypeForResponse",
 )

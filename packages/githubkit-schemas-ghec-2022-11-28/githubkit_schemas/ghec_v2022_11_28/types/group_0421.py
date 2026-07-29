@@ -13,57 +13,23 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ContentDirectoryItemsType(TypedDict):
-    """ContentDirectoryItems"""
+class CodeScanningSarifsStatusType(TypedDict):
+    """CodeScanningSarifsStatus"""
 
-    type: Literal["dir", "file", "submodule", "symlink"]
-    size: int
-    name: str
-    path: str
-    content: NotRequired[str]
-    sha: str
-    url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    links: ContentDirectoryItemsPropLinksType
+    processing_status: NotRequired[Literal["pending", "complete", "failed"]]
+    analyses_url: NotRequired[Union[str, None]]
+    errors: NotRequired[Union[list[str], None]]
 
 
-class ContentDirectoryItemsTypeForResponse(TypedDict):
-    """ContentDirectoryItems"""
+class CodeScanningSarifsStatusTypeForResponse(TypedDict):
+    """CodeScanningSarifsStatus"""
 
-    type: Literal["dir", "file", "submodule", "symlink"]
-    size: int
-    name: str
-    path: str
-    content: NotRequired[str]
-    sha: str
-    url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    links: ContentDirectoryItemsPropLinksTypeForResponse
-
-
-class ContentDirectoryItemsPropLinksType(TypedDict):
-    """ContentDirectoryItemsPropLinks"""
-
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
-
-
-class ContentDirectoryItemsPropLinksTypeForResponse(TypedDict):
-    """ContentDirectoryItemsPropLinks"""
-
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
+    processing_status: NotRequired[Literal["pending", "complete", "failed"]]
+    analyses_url: NotRequired[Union[str, None]]
+    errors: NotRequired[Union[list[str], None]]
 
 
 __all__ = (
-    "ContentDirectoryItemsPropLinksType",
-    "ContentDirectoryItemsPropLinksTypeForResponse",
-    "ContentDirectoryItemsType",
-    "ContentDirectoryItemsTypeForResponse",
+    "CodeScanningSarifsStatusType",
+    "CodeScanningSarifsStatusTypeForResponse",
 )

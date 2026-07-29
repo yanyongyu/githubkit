@@ -9,97 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0116 import RepositoryRulesetBypassActor
-from .group_0135 import (
-    RepositoryRuleCreation,
-    RepositoryRuleDeletion,
-    RepositoryRuleNonFastForward,
-    RepositoryRuleRequiredSignatures,
+
+class OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody(
+    GitHubModel
+):
+    """OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody"""
+
+    role: Literal["reader", "writer", "admin", "no_access"] = Field(
+        description="The new role to grant to the collaborator. Use `no_access` to remove the collaborator."
+    )
+
+
+model_rebuild(
+    OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody
 )
-from .group_0136 import RepositoryRuleUpdate
-from .group_0138 import RepositoryRuleRequiredLinearHistory
-from .group_0139 import RepositoryRuleRequiredDeployments
-from .group_0141 import RepositoryRulePullRequest
-from .group_0143 import RepositoryRuleRequiredStatusChecks
-from .group_0145 import RepositoryRuleCommitMessagePattern
-from .group_0147 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0149 import RepositoryRuleCommitterEmailPattern
-from .group_0151 import RepositoryRuleBranchNamePattern
-from .group_0153 import RepositoryRuleTagNamePattern
-from .group_0155 import RepositoryRuleFilePathRestriction
-from .group_0157 import RepositoryRuleMaxFilePathLength
-from .group_0159 import RepositoryRuleFileExtensionRestriction
-from .group_0161 import RepositoryRuleMaxFileSize
-from .group_0164 import RepositoryRuleWorkflows
-from .group_0166 import RepositoryRuleCodeScanning
-from .group_0168 import RepositoryRuleCopilotCodeReview
-from .group_0172 import OrgRulesetConditionsOneof0
-from .group_0173 import OrgRulesetConditionsOneof1
-from .group_0174 import OrgRulesetConditionsOneof2
 
-
-class OrgsOrgRulesetsPostBody(GitHubModel):
-    """OrgsOrgRulesetsPostBody"""
-
-    name: str = Field(description="The name of the ruleset.")
-    target: Missing[Literal["branch", "tag", "push", "repository"]] = Field(
-        default=UNSET, description="The target of the ruleset"
-    )
-    enforcement: Literal["disabled", "active", "evaluate"] = Field(
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target."
-    )
-    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
-        default=UNSET,
-        description="The actors that can bypass the rules in this ruleset",
-    )
-    conditions: Missing[
-        Union[
-            OrgRulesetConditionsOneof0,
-            OrgRulesetConditionsOneof1,
-            OrgRulesetConditionsOneof2,
-        ]
-    ] = Field(
-        default=UNSET,
-        title="Organization ruleset conditions",
-        description="Conditions for an organization ruleset.\nThe branch and tag rulesets conditions object should contain both `repository_name` and `ref_name` properties, or both `repository_id` and `ref_name` properties, or both `repository_property` and `ref_name` properties.\nThe push rulesets conditions object does not require the `ref_name` property.\nFor repository policy rulesets, the conditions object should only contain the `repository_name`, the `repository_id`, or the `repository_property`.",
-    )
-    rules: Missing[
-        list[
-            Union[
-                RepositoryRuleCreation,
-                RepositoryRuleUpdate,
-                RepositoryRuleDeletion,
-                RepositoryRuleRequiredLinearHistory,
-                RepositoryRuleRequiredDeployments,
-                RepositoryRuleRequiredSignatures,
-                RepositoryRulePullRequest,
-                RepositoryRuleRequiredStatusChecks,
-                RepositoryRuleNonFastForward,
-                RepositoryRuleCommitMessagePattern,
-                RepositoryRuleCommitAuthorEmailPattern,
-                RepositoryRuleCommitterEmailPattern,
-                RepositoryRuleBranchNamePattern,
-                RepositoryRuleTagNamePattern,
-                RepositoryRuleFilePathRestriction,
-                RepositoryRuleMaxFilePathLength,
-                RepositoryRuleFileExtensionRestriction,
-                RepositoryRuleMaxFileSize,
-                RepositoryRuleWorkflows,
-                RepositoryRuleCodeScanning,
-                RepositoryRuleCopilotCodeReview,
-            ]
-        ]
-    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
-
-
-model_rebuild(OrgsOrgRulesetsPostBody)
-
-__all__ = ("OrgsOrgRulesetsPostBody",)
+__all__ = (
+    "OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody",
+)

@@ -9,62 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class MilestoneType(TypedDict):
-    """Milestone
+class BillingUsageReportType(TypedDict):
+    """BillingUsageReport"""
 
-    A collection of related issues and pull requests.
-    """
-
-    url: str
-    html_url: str
-    labels_url: str
-    id: int
-    node_id: str
-    number: int
-    state: Literal["open", "closed"]
-    title: str
-    description: Union[str, None]
-    creator: Union[None, SimpleUserType]
-    open_issues: int
-    closed_issues: int
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    closed_at: Union[_dt.datetime, None]
-    due_on: Union[_dt.datetime, None]
+    usage_items: NotRequired[list[BillingUsageReportPropUsageItemsItemsType]]
 
 
-class MilestoneTypeForResponse(TypedDict):
-    """Milestone
+class BillingUsageReportTypeForResponse(TypedDict):
+    """BillingUsageReport"""
 
-    A collection of related issues and pull requests.
-    """
+    usage_items: NotRequired[list[BillingUsageReportPropUsageItemsItemsTypeForResponse]]
 
-    url: str
-    html_url: str
-    labels_url: str
-    id: int
-    node_id: str
-    number: int
-    state: Literal["open", "closed"]
-    title: str
-    description: Union[str, None]
-    creator: Union[None, SimpleUserTypeForResponse]
-    open_issues: int
-    closed_issues: int
-    created_at: str
-    updated_at: str
-    closed_at: Union[str, None]
-    due_on: Union[str, None]
+
+class BillingUsageReportPropUsageItemsItemsType(TypedDict):
+    """BillingUsageReportPropUsageItemsItems"""
+
+    date: str
+    product: str
+    sku: str
+    quantity: int
+    unit_type: str
+    price_per_unit: float
+    gross_amount: float
+    discount_amount: float
+    net_amount: float
+    organization_name: str
+    repository_name: NotRequired[str]
+
+
+class BillingUsageReportPropUsageItemsItemsTypeForResponse(TypedDict):
+    """BillingUsageReportPropUsageItemsItems"""
+
+    date: str
+    product: str
+    sku: str
+    quantity: int
+    unit_type: str
+    price_per_unit: float
+    gross_amount: float
+    discount_amount: float
+    net_amount: float
+    organization_name: str
+    repository_name: NotRequired[str]
 
 
 __all__ = (
-    "MilestoneType",
-    "MilestoneTypeForResponse",
+    "BillingUsageReportPropUsageItemsItemsType",
+    "BillingUsageReportPropUsageItemsItemsTypeForResponse",
+    "BillingUsageReportType",
+    "BillingUsageReportTypeForResponse",
 )

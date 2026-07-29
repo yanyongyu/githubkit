@@ -9,58 +9,152 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0034 import (
+    CodeScanningDefaultSetupOptionsType,
+    CodeScanningDefaultSetupOptionsTypeForResponse,
+    CodeScanningOptionsType,
+    CodeScanningOptionsTypeForResponse,
+)
 
 
-class OrgsOrgActionsHostedRunnersImagesCustomGetResponse200Type(TypedDict):
-    """OrgsOrgActionsHostedRunnersImagesCustomGetResponse200"""
+class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody"""
 
-    total_count: int
-    images: list[ActionsHostedRunnerCustomImageType]
+    name: NotRequired[str]
+    description: NotRequired[str]
+    advanced_security: NotRequired[
+        Literal["enabled", "disabled", "code_security", "secret_protection"]
+    ]
+    code_security: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    dependency_graph: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    dependency_graph_autosubmit_action: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    dependency_graph_autosubmit_action_options: NotRequired[
+        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsType
+    ]
+    dependabot_alerts: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    dependabot_security_updates: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    code_scanning_default_setup: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    code_scanning_default_setup_options: NotRequired[
+        Union[CodeScanningDefaultSetupOptionsType, None]
+    ]
+    code_scanning_options: NotRequired[Union[CodeScanningOptionsType, None]]
+    code_scanning_delegated_alert_dismissal: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_protection: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    secret_scanning: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    secret_scanning_push_protection: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_validity_checks: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_non_provider_patterns: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_generic_secrets: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_delegated_alert_dismissal: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_extended_metadata: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    private_vulnerability_reporting: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    enforcement: NotRequired[Literal["enforced", "unenforced"]]
 
 
-class OrgsOrgActionsHostedRunnersImagesCustomGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsHostedRunnersImagesCustomGetResponse200"""
+class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody"""
 
-    total_count: int
-    images: list[ActionsHostedRunnerCustomImageTypeForResponse]
+    name: NotRequired[str]
+    description: NotRequired[str]
+    advanced_security: NotRequired[
+        Literal["enabled", "disabled", "code_security", "secret_protection"]
+    ]
+    code_security: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    dependency_graph: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    dependency_graph_autosubmit_action: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    dependency_graph_autosubmit_action_options: NotRequired[
+        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsTypeForResponse
+    ]
+    dependabot_alerts: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    dependabot_security_updates: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    code_scanning_default_setup: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    code_scanning_default_setup_options: NotRequired[
+        Union[CodeScanningDefaultSetupOptionsTypeForResponse, None]
+    ]
+    code_scanning_options: NotRequired[Union[CodeScanningOptionsTypeForResponse, None]]
+    code_scanning_delegated_alert_dismissal: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_protection: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    secret_scanning: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    secret_scanning_push_protection: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_validity_checks: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_non_provider_patterns: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_generic_secrets: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_delegated_alert_dismissal: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_extended_metadata: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    private_vulnerability_reporting: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    enforcement: NotRequired[Literal["enforced", "unenforced"]]
 
 
-class ActionsHostedRunnerCustomImageType(TypedDict):
-    """GitHub-hosted runner custom image details
+class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDepen
+    dencyGraphAutosubmitActionOptions
 
-    Provides details of a custom runner image
+    Feature options for Automatic dependency submission
     """
 
-    id: int
-    platform: str
-    total_versions_size: int
-    name: str
-    source: str
-    versions_count: int
-    latest_version: str
-    state: str
+    labeled_runners: NotRequired[bool]
 
 
-class ActionsHostedRunnerCustomImageTypeForResponse(TypedDict):
-    """GitHub-hosted runner custom image details
+class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDepen
+    dencyGraphAutosubmitActionOptions
 
-    Provides details of a custom runner image
+    Feature options for Automatic dependency submission
     """
 
-    id: int
-    platform: str
-    total_versions_size: int
-    name: str
-    source: str
-    versions_count: int
-    latest_version: str
-    state: str
+    labeled_runners: NotRequired[bool]
 
 
 __all__ = (
-    "ActionsHostedRunnerCustomImageType",
-    "ActionsHostedRunnerCustomImageTypeForResponse",
-    "OrgsOrgActionsHostedRunnersImagesCustomGetResponse200Type",
-    "OrgsOrgActionsHostedRunnersImagesCustomGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsType",
+    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsTypeForResponse",
+    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyType",
+    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyTypeForResponse",
 )

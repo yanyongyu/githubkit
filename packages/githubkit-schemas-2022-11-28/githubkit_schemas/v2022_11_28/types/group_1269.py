@@ -9,37 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0285 import ActionsVariableType, ActionsVariableTypeForResponse
 
 
-class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1Type(TypedDict):
-    """ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1"""
+class ReposOwnerRepoActionsVariablesGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsVariablesGetResponse200"""
 
-    state: NotRequired[Literal["open", "dismissed"]]
-    dismissed_reason: NotRequired[
-        Union[None, Literal["false positive", "won't fix", "used in tests"]]
-    ]
-    dismissed_comment: NotRequired[Union[str, None]]
-    create_request: NotRequired[bool]
-    assignees: list[str]
+    total_count: int
+    variables: list[ActionsVariableType]
 
 
-class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1"""
+class ReposOwnerRepoActionsVariablesGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsVariablesGetResponse200"""
 
-    state: NotRequired[Literal["open", "dismissed"]]
-    dismissed_reason: NotRequired[
-        Union[None, Literal["false positive", "won't fix", "used in tests"]]
-    ]
-    dismissed_comment: NotRequired[Union[str, None]]
-    create_request: NotRequired[bool]
-    assignees: list[str]
+    total_count: int
+    variables: list[ActionsVariableTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1Type",
-    "ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1TypeForResponse",
+    "ReposOwnerRepoActionsVariablesGetResponse200Type",
+    "ReposOwnerRepoActionsVariablesGetResponse200TypeForResponse",
 )

@@ -9,44 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0522 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0523 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0524 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
+from .group_0197 import (
+    RepositoryRulesetConditionsType,
+    RepositoryRulesetConditionsTypeForResponse,
 )
-from .group_0525 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0933 import (
+    WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsType,
+    WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsTypeForResponse,
+)
 
 
-class WebhookStarCreatedType(TypedDict):
-    """star created event"""
+class WebhookRepositoryRulesetEditedPropChangesPropConditionsType(TypedDict):
+    """WebhookRepositoryRulesetEditedPropChangesPropConditions"""
 
-    action: Literal["created"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
-    starred_at: Union[str, None]
+    added: NotRequired[list[RepositoryRulesetConditionsType]]
+    deleted: NotRequired[list[RepositoryRulesetConditionsType]]
+    updated: NotRequired[
+        list[
+            WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsType
+        ]
+    ]
 
 
-class WebhookStarCreatedTypeForResponse(TypedDict):
-    """star created event"""
+class WebhookRepositoryRulesetEditedPropChangesPropConditionsTypeForResponse(TypedDict):
+    """WebhookRepositoryRulesetEditedPropChangesPropConditions"""
 
-    action: Literal["created"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
-    starred_at: Union[str, None]
+    added: NotRequired[list[RepositoryRulesetConditionsTypeForResponse]]
+    deleted: NotRequired[list[RepositoryRulesetConditionsTypeForResponse]]
+    updated: NotRequired[
+        list[
+            WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsTypeForResponse
+        ]
+    ]
 
 
 __all__ = (
-    "WebhookStarCreatedType",
-    "WebhookStarCreatedTypeForResponse",
+    "WebhookRepositoryRulesetEditedPropChangesPropConditionsType",
+    "WebhookRepositoryRulesetEditedPropChangesPropConditionsTypeForResponse",
 )

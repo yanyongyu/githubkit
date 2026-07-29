@@ -9,54 +9,115 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
+from typing import Any, Literal, TypeAlias
 from typing_extensions import NotRequired, TypedDict
 
-
-class OrgsOrgDependabotSecretsGetResponse200Type(TypedDict):
-    """OrgsOrgDependabotSecretsGetResponse200"""
-
-    total_count: int
-    secrets: list[OrganizationDependabotSecretType]
+from githubkit.typing import UniqueList
 
 
-class OrgsOrgDependabotSecretsGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgDependabotSecretsGetResponse200"""
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyType(TypedDict):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBody"""
 
-    total_count: int
-    secrets: list[OrganizationDependabotSecretTypeForResponse]
+    logical_environment: str
+    physical_environment: NotRequired[str]
+    deployments: list[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItemsType
+    ]
 
 
-class OrganizationDependabotSecretType(TypedDict):
-    """Dependabot Secret for an Organization
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBody"""
 
-    Secrets for GitHub Dependabot for an organization.
+    logical_environment: str
+    physical_environment: NotRequired[str]
+    deployments: list[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItemsTypeForResponse
+    ]
+
+
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItemsType(
+    TypedDict
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeployment
+    sItems
     """
 
     name: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: NotRequired[str]
+    digest: str
+    version: NotRequired[str]
+    status: NotRequired[Literal["deployed", "decommissioned"]]
+    deployment_name: str
+    github_repository: NotRequired[str]
+    tags: NotRequired[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItemsPropTagsType
+    ]
+    runtime_risks: NotRequired[
+        UniqueList[
+            Literal[
+                "critical-resource",
+                "internet-exposed",
+                "lateral-movement",
+                "sensitive-data",
+            ]
+        ]
+    ]
 
 
-class OrganizationDependabotSecretTypeForResponse(TypedDict):
-    """Dependabot Secret for an Organization
-
-    Secrets for GitHub Dependabot for an organization.
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItemsTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeployment
+    sItems
     """
 
     name: str
-    created_at: str
-    updated_at: str
-    visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: NotRequired[str]
+    digest: str
+    version: NotRequired[str]
+    status: NotRequired[Literal["deployed", "decommissioned"]]
+    deployment_name: str
+    github_repository: NotRequired[str]
+    tags: NotRequired[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItemsPropTagsTypeForResponse
+    ]
+    runtime_risks: NotRequired[
+        UniqueList[
+            Literal[
+                "critical-resource",
+                "internet-exposed",
+                "lateral-movement",
+                "sensitive-data",
+            ]
+        ]
+    ]
+
+
+OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItemsPropTagsType: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeployment
+sItemsPropTags
+
+Key-value pairs to tag the deployment record.
+"""
+
+
+OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItemsPropTagsTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeployment
+sItemsPropTags
+
+Key-value pairs to tag the deployment record.
+"""
 
 
 __all__ = (
-    "OrganizationDependabotSecretType",
-    "OrganizationDependabotSecretTypeForResponse",
-    "OrgsOrgDependabotSecretsGetResponse200Type",
-    "OrgsOrgDependabotSecretsGetResponse200TypeForResponse",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItemsPropTagsType",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItemsPropTagsTypeForResponse",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItemsType",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItemsTypeForResponse",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyType",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyTypeForResponse",
 )

@@ -9,39 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
-
-from .group_0143 import (
-    CopilotSpaceCollaboratorAnyof0Type,
-    CopilotSpaceCollaboratorAnyof0TypeForResponse,
-    CopilotSpaceCollaboratorAnyof1Type,
-    CopilotSpaceCollaboratorAnyof1TypeForResponse,
-)
+from typing import Any, TypeAlias
+from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200Type(TypedDict):
-    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200"""
+class ReposOwnerRepoSecretScanningCustomPatternsPostResponse422Type(TypedDict):
+    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse422"""
 
-    collaborators: list[
-        Union[CopilotSpaceCollaboratorAnyof0Type, CopilotSpaceCollaboratorAnyof1Type]
+    message: NotRequired[str]
+    validation_errors: NotRequired[
+        ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsType
     ]
 
 
-class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200TypeForResponse(
+class ReposOwnerRepoSecretScanningCustomPatternsPostResponse422TypeForResponse(
     TypedDict
 ):
-    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200"""
+    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse422"""
 
-    collaborators: list[
-        Union[
-            CopilotSpaceCollaboratorAnyof0TypeForResponse,
-            CopilotSpaceCollaboratorAnyof1TypeForResponse,
-        ]
+    message: NotRequired[str]
+    validation_errors: NotRequired[
+        ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse
     ]
+
+
+ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsType: TypeAlias = dict[
+    str, Any
+]
+"""ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors
+
+A map of validation errors keyed by the zero-based index of the pattern that
+failed.
+"""
+
+
+ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors
+
+A map of validation errors keyed by the zero-based index of the pattern that
+failed.
+"""
 
 
 __all__ = (
-    "UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200Type",
-    "UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200TypeForResponse",
+    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsType",
+    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse",
+    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422Type",
+    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422TypeForResponse",
 )

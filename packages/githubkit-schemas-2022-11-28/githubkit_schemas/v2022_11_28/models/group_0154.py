@@ -18,18 +18,25 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ApiInsightsSubjectStatsItems(GitHubModel):
-    """ApiInsightsSubjectStatsItems"""
+class ApiInsightsRouteStatsItems(GitHubModel):
+    """ApiInsightsRouteStatsItems"""
 
-    subject_type: Missing[str] = Field(default=UNSET)
-    subject_name: Missing[str] = Field(default=UNSET)
-    subject_id: Missing[int] = Field(default=UNSET)
-    total_request_count: Missing[int] = Field(default=UNSET)
-    rate_limited_request_count: Missing[int] = Field(default=UNSET)
+    http_method: Missing[str] = Field(default=UNSET, description="The HTTP method")
+    api_route: Missing[str] = Field(
+        default=UNSET, description="The API path's route template"
+    )
+    total_request_count: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of requests within the queried time period",
+    )
+    rate_limited_request_count: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of requests that were rate limited within the queried time period",
+    )
     last_rate_limited_timestamp: Missing[Union[str, None]] = Field(default=UNSET)
     last_request_timestamp: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(ApiInsightsSubjectStatsItems)
+model_rebuild(ApiInsightsRouteStatsItems)
 
-__all__ = ("ApiInsightsSubjectStatsItems",)
+__all__ = ("ApiInsightsRouteStatsItems",)

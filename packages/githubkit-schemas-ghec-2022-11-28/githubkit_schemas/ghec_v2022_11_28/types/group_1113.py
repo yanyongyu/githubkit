@@ -9,26 +9,83 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200Type(
+class AgentsReposOwnerRepoTasksTaskIdGetResponse404Type(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse404
+
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[
+        list[AgentsReposOwnerRepoTasksTaskIdGetResponse404PropErrorsItemsType]
+    ]
+    documentation_url: str
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse404TypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse404
+
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[
+        list[
+            AgentsReposOwnerRepoTasksTaskIdGetResponse404PropErrorsItemsTypeForResponse
+        ]
+    ]
+    documentation_url: str
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse404PropErrorsItemsType(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse404PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse404PropErrorsItemsTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200"""
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse404PropErrorsItems
 
-    disable_self_hosted_runners_for_all_orgs: bool
+    A single validation error
+    """
 
-
-class EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200"""
-
-    disable_self_hosted_runners_for_all_orgs: bool
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200Type",
-    "EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200TypeForResponse",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse404PropErrorsItemsType",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse404PropErrorsItemsTypeForResponse",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse404Type",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse404TypeForResponse",
 )

@@ -15,30 +15,34 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_1608 import (
-    UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties,
-)
 
+class ReposOwnerRepoPagesDeploymentsPostBody(GitHubModel):
+    """ReposOwnerRepoPagesDeploymentsPostBody
 
-class UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1(
-    GitHubModel
-):
-    """UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAl
-    lof1
+    The object used to create GitHub Pages deployment
     """
 
-    custom_properties: Missing[
-        UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties
-    ] = Field(
+    artifact_id: Missing[int] = Field(
         default=UNSET,
-        description="The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. Present for org repos only.",
+        description="The ID of an artifact that contains the .zip or .tar of static assets to deploy. The artifact belongs to the repository. Either `artifact_id` or `artifact_url` are required.",
+    )
+    artifact_url: Missing[str] = Field(
+        default=UNSET,
+        description="The URL of an artifact that contains the .zip or .tar of static assets to deploy. The artifact belongs to the repository. Either `artifact_id` or `artifact_url` are required.",
+    )
+    environment: Missing[str] = Field(
+        default=UNSET,
+        description="The target environment for this GitHub Pages deployment.",
+    )
+    pages_build_version: str = Field(
+        default="GITHUB_SHA",
+        description="A unique string that represents the version of the build for this deployment.",
+    )
+    oidc_token: str = Field(
+        description="The OIDC token issued by GitHub Actions certifying the origin of the deployment."
     )
 
 
-model_rebuild(
-    UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1
-)
+model_rebuild(ReposOwnerRepoPagesDeploymentsPostBody)
 
-__all__ = (
-    "UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1",
-)
+__all__ = ("ReposOwnerRepoPagesDeploymentsPostBody",)

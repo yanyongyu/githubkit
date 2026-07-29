@@ -9,31 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType(TypedDict):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody"""
-
-    scope: Literal[
-        "all", "all_without_configurations", "public", "private_or_internal", "selected"
-    ]
-    selected_repository_ids: NotRequired[list[int]]
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
 
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyTypeForResponse(
+class OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200Type(
     TypedDict
 ):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody"""
+    """OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200"""
 
-    scope: Literal[
-        "all", "all_without_configurations", "public", "private_or_internal", "selected"
-    ]
-    selected_repository_ids: NotRequired[list[int]]
+    total_count: NotRequired[int]
+    repositories: NotRequired[list[RepositoryType]]
+
+
+class OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200"""
+
+    total_count: NotRequired[int]
+    repositories: NotRequired[list[RepositoryTypeForResponse]]
 
 
 __all__ = (
-    "OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType",
-    "OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyTypeForResponse",
+    "OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200Type",
+    "OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200TypeForResponse",
 )

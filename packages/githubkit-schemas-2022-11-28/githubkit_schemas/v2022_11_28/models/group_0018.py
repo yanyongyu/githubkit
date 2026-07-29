@@ -45,7 +45,7 @@ class Installation(GitHubModel):
     target_type: str = Field()
     permissions: AppPermissions = Field(
         title="App Permissions",
-        description="The permissions granted to the user access token.",
+        description="The permissions granted to the fine-grained access token.",
     )
     events: list[str] = Field()
     created_at: _dt.datetime = Field()

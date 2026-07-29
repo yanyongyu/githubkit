@@ -12,45 +12,19 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type(TypedDict):
-    """OrgsOrgActionsCacheUsageByRepositoryGetResponse200"""
+class CredentialsRevokePostBodyType(TypedDict):
+    """CredentialsRevokePostBody"""
 
-    total_count: int
-    repository_cache_usages: list[ActionsCacheUsageByRepositoryType]
-
-
-class OrgsOrgActionsCacheUsageByRepositoryGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsCacheUsageByRepositoryGetResponse200"""
-
-    total_count: int
-    repository_cache_usages: list[ActionsCacheUsageByRepositoryTypeForResponse]
+    credentials: list[str]
 
 
-class ActionsCacheUsageByRepositoryType(TypedDict):
-    """Actions Cache Usage by repository
+class CredentialsRevokePostBodyTypeForResponse(TypedDict):
+    """CredentialsRevokePostBody"""
 
-    GitHub Actions Cache Usage by repository.
-    """
-
-    full_name: str
-    active_caches_size_in_bytes: int
-    active_caches_count: int
-
-
-class ActionsCacheUsageByRepositoryTypeForResponse(TypedDict):
-    """Actions Cache Usage by repository
-
-    GitHub Actions Cache Usage by repository.
-    """
-
-    full_name: str
-    active_caches_size_in_bytes: int
-    active_caches_count: int
+    credentials: list[str]
 
 
 __all__ = (
-    "ActionsCacheUsageByRepositoryType",
-    "ActionsCacheUsageByRepositoryTypeForResponse",
-    "OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type",
-    "OrgsOrgActionsCacheUsageByRepositoryGetResponse200TypeForResponse",
+    "CredentialsRevokePostBodyType",
+    "CredentialsRevokePostBodyTypeForResponse",
 )

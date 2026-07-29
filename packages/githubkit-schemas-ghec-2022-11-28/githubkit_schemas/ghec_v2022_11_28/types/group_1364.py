@@ -11,24 +11,28 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0106 import NetworkConfigurationType, NetworkConfigurationTypeForResponse
+
+class OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200Type(TypedDict):
+    """OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200
+
+    The total number of seats set to "pending cancellation" for members of the
+    specified team(s).
+    """
+
+    seats_cancelled: int
 
 
-class OrgsOrgSettingsNetworkConfigurationsGetResponse200Type(TypedDict):
-    """OrgsOrgSettingsNetworkConfigurationsGetResponse200"""
+class OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200
 
-    total_count: int
-    network_configurations: list[NetworkConfigurationType]
+    The total number of seats set to "pending cancellation" for members of the
+    specified team(s).
+    """
 
-
-class OrgsOrgSettingsNetworkConfigurationsGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgSettingsNetworkConfigurationsGetResponse200"""
-
-    total_count: int
-    network_configurations: list[NetworkConfigurationTypeForResponse]
+    seats_cancelled: int
 
 
 __all__ = (
-    "OrgsOrgSettingsNetworkConfigurationsGetResponse200Type",
-    "OrgsOrgSettingsNetworkConfigurationsGetResponse200TypeForResponse",
+    "OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200Type",
+    "OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200TypeForResponse",
 )

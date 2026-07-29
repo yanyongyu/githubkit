@@ -17,45 +17,26 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
 
+class IssueEventIntent(GitHubModel):
+    """Issue Event Intent
 
-class RemovedFromProjectIssueEvent(GitHubModel):
-    """Removed from Project Issue Event
-
-    Removed from Project Issue Event
+    The intent behind an agent's action on an issue, including the rationale and
+    confidence. Present (and `null` when the event carried no agent intent) on
+    supported event types while the issue suggestions feature is enabled for the
+    repository; the property is omitted entirely when the feature is disabled or the
+    event type does not support intent.
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["removed_from_project"] = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: str = Field()
-    performed_via_github_app: Union[None, Integration, None] = Field()
-    project_card: Missing[RemovedFromProjectIssueEventPropProjectCard] = Field(
-        default=UNSET
+    rationale: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The reasoning the agent provided for the change."
+    )
+    confidence: Missing[Union[None, Literal["LOW", "MEDIUM", "HIGH"]]] = Field(
+        default=UNSET,
+        description="The confidence level the agent had when performing this action.",
     )
 
 
-class RemovedFromProjectIssueEventPropProjectCard(GitHubModel):
-    """RemovedFromProjectIssueEventPropProjectCard"""
+model_rebuild(IssueEventIntent)
 
-    id: int = Field()
-    url: str = Field()
-    project_id: int = Field()
-    project_url: str = Field()
-    column_name: str = Field()
-    previous_column_name: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(RemovedFromProjectIssueEvent)
-model_rebuild(RemovedFromProjectIssueEventPropProjectCard)
-
-__all__ = (
-    "RemovedFromProjectIssueEvent",
-    "RemovedFromProjectIssueEventPropProjectCard",
-)
+__all__ = ("IssueEventIntent",)

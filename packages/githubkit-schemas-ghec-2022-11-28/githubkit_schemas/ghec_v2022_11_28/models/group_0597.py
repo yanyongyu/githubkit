@@ -9,31 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0255 import MinimalRepository
+from .group_0596 import SearchResultTextMatchesItems
 
 
-class Hovercard(GitHubModel):
-    """Hovercard
+class CodeSearchResultItem(GitHubModel):
+    """Code Search Result Item
 
-    Hovercard
+    Code Search Result Item
     """
 
-    contexts: list[HovercardPropContextsItems] = Field()
+    name: str = Field()
+    path: str = Field()
+    sha: str = Field()
+    url: str = Field()
+    git_url: str = Field()
+    html_url: str = Field()
+    repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository"
+    )
+    score: float = Field()
+    file_size: Missing[int] = Field(default=UNSET)
+    language: Missing[Union[str, None]] = Field(default=UNSET)
+    last_modified_at: Missing[_dt.datetime] = Field(default=UNSET)
+    line_numbers: Missing[list[str]] = Field(default=UNSET)
+    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
+        default=UNSET, title="Search Result Text Matches"
+    )
 
 
-class HovercardPropContextsItems(GitHubModel):
-    """HovercardPropContextsItems"""
+class SearchCodeGetResponse200(GitHubModel):
+    """SearchCodeGetResponse200"""
 
-    message: str = Field()
-    octicon: str = Field()
+    total_count: int = Field()
+    incomplete_results: bool = Field()
+    items: list[CodeSearchResultItem] = Field()
 
 
-model_rebuild(Hovercard)
-model_rebuild(HovercardPropContextsItems)
+model_rebuild(CodeSearchResultItem)
+model_rebuild(SearchCodeGetResponse200)
 
 __all__ = (
-    "Hovercard",
-    "HovercardPropContextsItems",
+    "CodeSearchResultItem",
+    "SearchCodeGetResponse200",
 )

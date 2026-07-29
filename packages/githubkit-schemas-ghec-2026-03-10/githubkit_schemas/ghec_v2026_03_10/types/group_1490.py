@@ -9,55 +9,77 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class ReposOwnerRepoHooksPostBodyType(TypedDict):
-    """ReposOwnerRepoHooksPostBody"""
-
-    name: NotRequired[str]
-    config: NotRequired[ReposOwnerRepoHooksPostBodyPropConfigType]
-    events: NotRequired[list[str]]
-    active: NotRequired[bool]
+from .group_1488 import (
+    ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType,
+    ReposOwnerRepoCheckRunsPostBodyPropActionsItemsTypeForResponse,
+    ReposOwnerRepoCheckRunsPostBodyPropOutputType,
+    ReposOwnerRepoCheckRunsPostBodyPropOutputTypeForResponse,
+)
 
 
-class ReposOwnerRepoHooksPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoHooksPostBody"""
+class ReposOwnerRepoCheckRunsPostBodyOneof1Type(TypedDict):
+    """ReposOwnerRepoCheckRunsPostBodyOneof1"""
 
-    name: NotRequired[str]
-    config: NotRequired[ReposOwnerRepoHooksPostBodyPropConfigTypeForResponse]
-    events: NotRequired[list[str]]
-    active: NotRequired[bool]
+    name: str
+    head_sha: str
+    details_url: NotRequired[str]
+    external_id: NotRequired[str]
+    status: NotRequired[
+        Literal["queued", "in_progress", "waiting", "requested", "pending"]
+    ]
+    started_at: NotRequired[_dt.datetime]
+    conclusion: NotRequired[
+        Literal[
+            "action_required",
+            "cancelled",
+            "failure",
+            "neutral",
+            "success",
+            "skipped",
+            "stale",
+            "timed_out",
+        ]
+    ]
+    completed_at: NotRequired[_dt.datetime]
+    output: NotRequired[ReposOwnerRepoCheckRunsPostBodyPropOutputType]
+    actions: NotRequired[list[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType]]
 
 
-class ReposOwnerRepoHooksPostBodyPropConfigType(TypedDict):
-    """ReposOwnerRepoHooksPostBodyPropConfig
+class ReposOwnerRepoCheckRunsPostBodyOneof1TypeForResponse(TypedDict):
+    """ReposOwnerRepoCheckRunsPostBodyOneof1"""
 
-    Key/value pairs to provide settings for this webhook.
-    """
-
-    url: NotRequired[str]
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
-
-
-class ReposOwnerRepoHooksPostBodyPropConfigTypeForResponse(TypedDict):
-    """ReposOwnerRepoHooksPostBodyPropConfig
-
-    Key/value pairs to provide settings for this webhook.
-    """
-
-    url: NotRequired[str]
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
+    name: str
+    head_sha: str
+    details_url: NotRequired[str]
+    external_id: NotRequired[str]
+    status: NotRequired[
+        Literal["queued", "in_progress", "waiting", "requested", "pending"]
+    ]
+    started_at: NotRequired[str]
+    conclusion: NotRequired[
+        Literal[
+            "action_required",
+            "cancelled",
+            "failure",
+            "neutral",
+            "success",
+            "skipped",
+            "stale",
+            "timed_out",
+        ]
+    ]
+    completed_at: NotRequired[str]
+    output: NotRequired[ReposOwnerRepoCheckRunsPostBodyPropOutputTypeForResponse]
+    actions: NotRequired[
+        list[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsTypeForResponse]
+    ]
 
 
 __all__ = (
-    "ReposOwnerRepoHooksPostBodyPropConfigType",
-    "ReposOwnerRepoHooksPostBodyPropConfigTypeForResponse",
-    "ReposOwnerRepoHooksPostBodyType",
-    "ReposOwnerRepoHooksPostBodyTypeForResponse",
+    "ReposOwnerRepoCheckRunsPostBodyOneof1Type",
+    "ReposOwnerRepoCheckRunsPostBodyOneof1TypeForResponse",
 )

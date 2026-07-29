@@ -9,63 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0085 import TeamType, TeamTypeForResponse
+
+class DiffEntryType(TypedDict):
+    """Diff Entry
+
+    Diff Entry
+    """
+
+    sha: Union[str, None]
+    filename: str
+    status: Literal[
+        "added", "removed", "modified", "renamed", "copied", "changed", "unchanged"
+    ]
+    additions: int
+    deletions: int
+    changes: int
+    blob_url: Union[str, None]
+    raw_url: Union[str, None]
+    contents_url: str
+    patch: NotRequired[str]
+    previous_filename: NotRequired[str]
 
 
-class ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType(
-    TypedDict
-):
-    """ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions"""
+class DiffEntryTypeForResponse(TypedDict):
+    """Diff Entry
 
-    url: str
-    users_url: str
-    teams_url: str
-    users: list[SimpleUserType]
-    teams: list[TeamType]
-    apps: NotRequired[list[Union[IntegrationType, None]]]
+    Diff Entry
+    """
 
-
-class ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsTypeForResponse(
-    TypedDict
-):
-    """ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions"""
-
-    url: str
-    users_url: str
-    teams_url: str
-    users: list[SimpleUserTypeForResponse]
-    teams: list[TeamTypeForResponse]
-    apps: NotRequired[list[Union[IntegrationTypeForResponse, None]]]
-
-
-class ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType(
-    TypedDict
-):
-    """ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances"""
-
-    users: list[SimpleUserType]
-    teams: list[TeamType]
-    apps: NotRequired[list[Union[IntegrationType, None]]]
-
-
-class ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesTypeForResponse(
-    TypedDict
-):
-    """ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances"""
-
-    users: list[SimpleUserTypeForResponse]
-    teams: list[TeamTypeForResponse]
-    apps: NotRequired[list[Union[IntegrationTypeForResponse, None]]]
+    sha: Union[str, None]
+    filename: str
+    status: Literal[
+        "added", "removed", "modified", "renamed", "copied", "changed", "unchanged"
+    ]
+    additions: int
+    deletions: int
+    changes: int
+    blob_url: Union[str, None]
+    raw_url: Union[str, None]
+    contents_url: str
+    patch: NotRequired[str]
+    previous_filename: NotRequired[str]
 
 
 __all__ = (
-    "ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType",
-    "ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesTypeForResponse",
-    "ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType",
-    "ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsTypeForResponse",
+    "DiffEntryType",
+    "DiffEntryTypeForResponse",
 )

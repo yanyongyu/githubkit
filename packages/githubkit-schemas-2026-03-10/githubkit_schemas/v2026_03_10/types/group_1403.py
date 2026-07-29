@@ -9,26 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class ReposOwnerRepoTransferPostBodyType(TypedDict):
-    """ReposOwnerRepoTransferPostBody"""
-
-    new_owner: str
-    new_name: NotRequired[str]
-    team_ids: NotRequired[list[int]]
+from .group_1402 import (
+    ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+    ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
+)
 
 
-class ReposOwnerRepoTransferPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoTransferPostBody"""
+class ReposOwnerRepoPagesPutBodyAnyof0Type(TypedDict):
+    """ReposOwnerRepoPagesPutBodyAnyof0"""
 
-    new_owner: str
-    new_name: NotRequired[str]
-    team_ids: NotRequired[list[int]]
+    cname: NotRequired[Union[str, None]]
+    https_enforced: NotRequired[bool]
+    build_type: Literal["legacy", "workflow"]
+    source: NotRequired[
+        Union[
+            Literal["gh-pages", "master", "master /docs"],
+            ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+        ]
+    ]
+
+
+class ReposOwnerRepoPagesPutBodyAnyof0TypeForResponse(TypedDict):
+    """ReposOwnerRepoPagesPutBodyAnyof0"""
+
+    cname: NotRequired[Union[str, None]]
+    https_enforced: NotRequired[bool]
+    build_type: Literal["legacy", "workflow"]
+    source: NotRequired[
+        Union[
+            Literal["gh-pages", "master", "master /docs"],
+            ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
+        ]
+    ]
 
 
 __all__ = (
-    "ReposOwnerRepoTransferPostBodyType",
-    "ReposOwnerRepoTransferPostBodyTypeForResponse",
+    "ReposOwnerRepoPagesPutBodyAnyof0Type",
+    "ReposOwnerRepoPagesPutBodyAnyof0TypeForResponse",
 )

@@ -13,41 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0598 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0599 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0600 import (
+from .group_0617 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0618 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0619 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0601 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0627 import WebhooksMilestone3Type, WebhooksMilestone3TypeForResponse
+from .group_0620 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0640 import WebhooksIssue2Type, WebhooksIssue2TypeForResponse
 
 
-class WebhookMilestoneCreatedType(TypedDict):
-    """milestone created event"""
+class WebhookIssuesUnpinnedType(TypedDict):
+    """issues unpinned event"""
 
-    action: Literal["created"]
+    action: Literal["unpinned"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    milestone: WebhooksMilestone3Type
+    issue: WebhooksIssue2Type
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookMilestoneCreatedTypeForResponse(TypedDict):
-    """milestone created event"""
+class WebhookIssuesUnpinnedTypeForResponse(TypedDict):
+    """issues unpinned event"""
 
-    action: Literal["created"]
+    action: Literal["unpinned"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    milestone: WebhooksMilestone3TypeForResponse
+    issue: WebhooksIssue2TypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookMilestoneCreatedType",
-    "WebhookMilestoneCreatedTypeForResponse",
+    "WebhookIssuesUnpinnedType",
+    "WebhookIssuesUnpinnedTypeForResponse",
 )

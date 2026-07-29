@@ -16,22 +16,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsOidcCustomizationSubPutBody(GitHubModel):
-    """Actions OIDC Subject customization
+class EnterprisesEnterpriseDependabotRepositoryAccessPatchBody(GitHubModel):
+    """EnterprisesEnterpriseDependabotRepositoryAccessPatchBody
 
-    Actions OIDC Subject customization
+    Examples:
+        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
     """
 
-    include_claim_keys: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores.",
+    repository_ids_to_add: Missing[list[int]] = Field(
+        default=UNSET, description="List of repository IDs to add."
     )
-    use_immutable_subject: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to opt in to the immutable OIDC subject claim format for the organization. When `true`, new OIDC tokens will use a stable, repository-ID-based `sub` claim instead of the name-based format.",
+    repository_ids_to_remove: Missing[list[int]] = Field(
+        default=UNSET, description="List of repository IDs to remove."
     )
 
 
-model_rebuild(OrgsOrgActionsOidcCustomizationSubPutBody)
+model_rebuild(EnterprisesEnterpriseDependabotRepositoryAccessPatchBody)
 
-__all__ = ("OrgsOrgActionsOidcCustomizationSubPutBody",)
+__all__ = ("EnterprisesEnterpriseDependabotRepositoryAccessPatchBody",)

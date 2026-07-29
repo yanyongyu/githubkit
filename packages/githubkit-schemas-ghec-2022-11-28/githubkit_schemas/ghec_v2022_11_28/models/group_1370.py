@@ -14,18 +14,16 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody(GitHubModel):
-    """OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody"""
+class OrgsOrgCopilotCodingAgentPermissionsPutBody(GitHubModel):
+    """OrgsOrgCopilotCodingAgentPermissionsPutBody"""
 
-    role: Missing[Literal["member", "maintainer"]] = Field(
-        default=UNSET, description="The role that this user should have in the team."
+    enabled_repositories: Literal["all", "selected", "none"] = Field(
+        description="The policy for which repositories can use Copilot cloud agent. Can be one of `all`, `selected`, or `none`."
     )
 
 
-model_rebuild(OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody)
+model_rebuild(OrgsOrgCopilotCodingAgentPermissionsPutBody)
 
-__all__ = ("OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody",)
+__all__ = ("OrgsOrgCopilotCodingAgentPermissionsPutBody",)

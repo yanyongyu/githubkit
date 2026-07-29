@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,17 +19,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0333 import RepositoryAdvisory
-from .group_0599 import EnterpriseWebhooks
-from .group_0600 import SimpleInstallation
-from .group_0601 import OrganizationSimpleWebhooks
-from .group_0602 import RepositoryWebhooks
+from .group_0618 import EnterpriseWebhooks
+from .group_0619 import SimpleInstallation
+from .group_0620 import OrganizationSimpleWebhooks
+from .group_0621 import RepositoryWebhooks
+from .group_0972 import WebhookPullRequestReviewDismissedPropPullRequest
 
 
-class WebhookRepositoryAdvisoryReported(GitHubModel):
-    """Repository advisory reported event"""
+class WebhookPullRequestReviewDismissed(GitHubModel):
+    """pull_request_review dismissed event"""
 
-    action: Literal["reported"] = Field()
+    action: Literal["dismissed"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -44,18 +45,117 @@ class WebhookRepositoryAdvisoryReported(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
+    pull_request: WebhookPullRequestReviewDismissedPropPullRequest = Field(
+        title="Simple Pull Request"
+    )
     repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    repository_advisory: RepositoryAdvisory = Field(
-        description="A repository security advisory."
+    review: WebhookPullRequestReviewDismissedPropReview = Field(
+        description="The review that was affected."
     )
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+
+
+class WebhookPullRequestReviewDismissedPropReview(GitHubModel):
+    """WebhookPullRequestReviewDismissedPropReview
+
+    The review that was affected.
+    """
+
+    links: WebhookPullRequestReviewDismissedPropReviewPropLinks = Field(alias="_links")
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="AuthorAssociation",
+        description="How the author is associated with the repository.",
+    )
+    body: Union[str, None] = Field(description="The text of the review.")
+    commit_id: str = Field(description="A commit SHA for the review.")
+    html_url: str = Field()
+    id: int = Field(description="Unique identifier of the review")
+    node_id: str = Field()
+    pull_request_url: str = Field()
+    state: Literal["dismissed", "approved", "changes_requested"] = Field()
+    submitted_at: _dt.datetime = Field()
+    updated_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+    user: Union[WebhookPullRequestReviewDismissedPropReviewPropUser, None] = Field(
+        title="User"
     )
 
 
-model_rebuild(WebhookRepositoryAdvisoryReported)
+class WebhookPullRequestReviewDismissedPropReviewPropUser(GitHubModel):
+    """User"""
 
-__all__ = ("WebhookRepositoryAdvisoryReported",)
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization", "Mannequin"]] = Field(
+        default=UNSET
+    )
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+
+
+class WebhookPullRequestReviewDismissedPropReviewPropLinks(GitHubModel):
+    """WebhookPullRequestReviewDismissedPropReviewPropLinks"""
+
+    html: WebhookPullRequestReviewDismissedPropReviewPropLinksPropHtml = Field(
+        title="Link"
+    )
+    pull_request: WebhookPullRequestReviewDismissedPropReviewPropLinksPropPullRequest = Field(
+        title="Link"
+    )
+
+
+class WebhookPullRequestReviewDismissedPropReviewPropLinksPropHtml(GitHubModel):
+    """Link"""
+
+    href: str = Field()
+
+
+class WebhookPullRequestReviewDismissedPropReviewPropLinksPropPullRequest(GitHubModel):
+    """Link"""
+
+    href: str = Field()
+
+
+model_rebuild(WebhookPullRequestReviewDismissed)
+model_rebuild(WebhookPullRequestReviewDismissedPropReview)
+model_rebuild(WebhookPullRequestReviewDismissedPropReviewPropUser)
+model_rebuild(WebhookPullRequestReviewDismissedPropReviewPropLinks)
+model_rebuild(WebhookPullRequestReviewDismissedPropReviewPropLinksPropHtml)
+model_rebuild(WebhookPullRequestReviewDismissedPropReviewPropLinksPropPullRequest)
+
+__all__ = (
+    "WebhookPullRequestReviewDismissed",
+    "WebhookPullRequestReviewDismissedPropReview",
+    "WebhookPullRequestReviewDismissedPropReviewPropLinks",
+    "WebhookPullRequestReviewDismissedPropReviewPropLinksPropHtml",
+    "WebhookPullRequestReviewDismissedPropReviewPropLinksPropPullRequest",
+    "WebhookPullRequestReviewDismissedPropReviewPropUser",
+)

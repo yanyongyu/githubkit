@@ -9,45 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0567 import (
-    UserEmailsResponseItemsType,
-    UserEmailsResponseItemsTypeForResponse,
-    UserNameResponseType,
-    UserNameResponseTypeForResponse,
-)
-from .group_0568 import UserRoleItemsType, UserRoleItemsTypeForResponse
+from typing_extensions import TypedDict
 
 
-class UserResponseType(TypedDict):
-    """UserResponse"""
+class CommitActivityType(TypedDict):
+    """Commit Activity
 
-    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
-    external_id: NotRequired[Union[str, None]]
-    active: bool
-    user_name: NotRequired[str]
-    name: NotRequired[UserNameResponseType]
-    display_name: NotRequired[Union[str, None]]
-    emails: list[UserEmailsResponseItemsType]
-    roles: NotRequired[list[UserRoleItemsType]]
+    Commit Activity
+    """
+
+    days: list[int]
+    total: int
+    week: int
 
 
-class UserResponseTypeForResponse(TypedDict):
-    """UserResponse"""
+class CommitActivityTypeForResponse(TypedDict):
+    """Commit Activity
 
-    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
-    external_id: NotRequired[Union[str, None]]
-    active: bool
-    user_name: NotRequired[str]
-    name: NotRequired[UserNameResponseTypeForResponse]
-    display_name: NotRequired[Union[str, None]]
-    emails: list[UserEmailsResponseItemsTypeForResponse]
-    roles: NotRequired[list[UserRoleItemsTypeForResponse]]
+    Commit Activity
+    """
+
+    days: list[int]
+    total: int
+    week: int
 
 
 __all__ = (
-    "UserResponseType",
-    "UserResponseTypeForResponse",
+    "CommitActivityType",
+    "CommitActivityTypeForResponse",
 )

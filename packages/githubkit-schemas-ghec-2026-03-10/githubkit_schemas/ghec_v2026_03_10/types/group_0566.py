@@ -9,43 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0223 import (
+    PullRequestMinimalPropBaseType,
+    PullRequestMinimalPropBaseTypeForResponse,
+    PullRequestMinimalPropHeadType,
+    PullRequestMinimalPropHeadTypeForResponse,
+)
 
 
-class PatchSchemaType(TypedDict):
-    """PatchSchema"""
+class PullRequestStackPullRequestType(TypedDict):
+    """Pull Request Stack Pull Request"""
 
-    operations: list[PatchSchemaPropOperationsItemsType]
-    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]]
-
-
-class PatchSchemaTypeForResponse(TypedDict):
-    """PatchSchema"""
-
-    operations: list[PatchSchemaPropOperationsItemsTypeForResponse]
-    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]]
-
-
-class PatchSchemaPropOperationsItemsType(TypedDict):
-    """PatchSchemaPropOperationsItems"""
-
-    op: Literal["add", "replace", "remove"]
-    path: NotRequired[str]
-    value: NotRequired[str]
+    id: int
+    number: int
+    url: str
+    head: PullRequestMinimalPropHeadType
+    base: PullRequestMinimalPropBaseType
+    node_id: str
+    title: str
+    state: Literal["open", "closed"]
+    merged_at: Union[_dt.datetime, None]
+    draft: bool
+    html_url: str
+    user: Union[None, SimpleUserType]
 
 
-class PatchSchemaPropOperationsItemsTypeForResponse(TypedDict):
-    """PatchSchemaPropOperationsItems"""
+class PullRequestStackPullRequestTypeForResponse(TypedDict):
+    """Pull Request Stack Pull Request"""
 
-    op: Literal["add", "replace", "remove"]
-    path: NotRequired[str]
-    value: NotRequired[str]
+    id: int
+    number: int
+    url: str
+    head: PullRequestMinimalPropHeadTypeForResponse
+    base: PullRequestMinimalPropBaseTypeForResponse
+    node_id: str
+    title: str
+    state: Literal["open", "closed"]
+    merged_at: Union[str, None]
+    draft: bool
+    html_url: str
+    user: Union[None, SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "PatchSchemaPropOperationsItemsType",
-    "PatchSchemaPropOperationsItemsTypeForResponse",
-    "PatchSchemaType",
-    "PatchSchemaTypeForResponse",
+    "PullRequestStackPullRequestType",
+    "PullRequestStackPullRequestTypeForResponse",
 )

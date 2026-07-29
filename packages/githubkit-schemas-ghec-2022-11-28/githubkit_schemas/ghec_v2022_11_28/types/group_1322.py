@@ -9,29 +9,62 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgDependabotSecretsSecretNamePutBodyType(TypedDict):
-    """OrgsOrgDependabotSecretsSecretNamePutBody"""
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200Type(
+    TypedDict
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200"""
 
-    encrypted_value: NotRequired[str]
-    key_id: NotRequired[str]
-    visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[list[Union[int, str]]]
+    job_id: int
+    status: Literal["pending", "processing", "completed", "failed"]
+    started_at: NotRequired[_dt.datetime]
+    total_count: NotRequired[int]
+    errors: NotRequired[
+        list[
+            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200PropErrorsItemsType
+        ]
+    ]
 
 
-class OrgsOrgDependabotSecretsSecretNamePutBodyTypeForResponse(TypedDict):
-    """OrgsOrgDependabotSecretsSecretNamePutBody"""
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200"""
 
-    encrypted_value: NotRequired[str]
-    key_id: NotRequired[str]
-    visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[list[Union[int, str]]]
+    job_id: int
+    status: Literal["pending", "processing", "completed", "failed"]
+    started_at: NotRequired[str]
+    total_count: NotRequired[int]
+    errors: NotRequired[
+        list[
+            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200PropErrorsItemsTypeForResponse
+        ]
+    ]
+
+
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200PropErrorsItemsType(
+    TypedDict
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200Pro
+    pErrorsItems
+    """
+
+
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200PropErrorsItemsTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200Pro
+    pErrorsItems
+    """
 
 
 __all__ = (
-    "OrgsOrgDependabotSecretsSecretNamePutBodyType",
-    "OrgsOrgDependabotSecretsSecretNamePutBodyTypeForResponse",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200PropErrorsItemsType",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200PropErrorsItemsTypeForResponse",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200Type",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200TypeForResponse",
 )

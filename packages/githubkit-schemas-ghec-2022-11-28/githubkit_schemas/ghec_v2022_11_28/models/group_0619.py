@@ -12,29 +12,23 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class WebhooksChanges(GitHubModel):
-    """WebhooksChanges
+class SimpleInstallation(GitHubModel):
+    """Simple Installation
 
-    The changes to the comment.
+    The GitHub App installation. Webhook payloads contain the `installation`
+    property when the event is configured
+    for and sent to a GitHub App. For more information,
+    see "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-
+    cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-
+    with-github-apps)."
     """
 
-    body: Missing[WebhooksChangesPropBody] = Field(default=UNSET)
+    id: int = Field(description="The ID of the installation.")
+    node_id: str = Field(description="The global node ID of the installation.")
 
 
-class WebhooksChangesPropBody(GitHubModel):
-    """WebhooksChangesPropBody"""
+model_rebuild(SimpleInstallation)
 
-    from_: str = Field(alias="from", description="The previous version of the body.")
-
-
-model_rebuild(WebhooksChanges)
-model_rebuild(WebhooksChangesPropBody)
-
-__all__ = (
-    "WebhooksChanges",
-    "WebhooksChangesPropBody",
-)
+__all__ = ("SimpleInstallation",)

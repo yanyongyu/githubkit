@@ -9,29 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0259 import (
-    OrganizationActionsSecretType,
-    OrganizationActionsSecretTypeForResponse,
-)
+from typing import Any, Literal, TypeAlias, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgAgentsSecretsGetResponse200Type(TypedDict):
-    """OrgsOrgAgentsSecretsGetResponse200"""
+class GistsPostBodyType(TypedDict):
+    """GistsPostBody"""
 
-    total_count: int
-    secrets: list[OrganizationActionsSecretType]
+    description: NotRequired[str]
+    files: GistsPostBodyPropFilesType
+    public: NotRequired[Union[bool, Literal["true", "false"]]]
 
 
-class OrgsOrgAgentsSecretsGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgAgentsSecretsGetResponse200"""
+class GistsPostBodyTypeForResponse(TypedDict):
+    """GistsPostBody"""
 
-    total_count: int
-    secrets: list[OrganizationActionsSecretTypeForResponse]
+    description: NotRequired[str]
+    files: GistsPostBodyPropFilesTypeForResponse
+    public: NotRequired[Union[bool, Literal["true", "false"]]]
+
+
+GistsPostBodyPropFilesType: TypeAlias = dict[str, Any]
+"""GistsPostBodyPropFiles
+
+Names and content for the files that make up the gist
+
+Examples:
+    {'hello.rb': {'content': 'puts "Hello, World!"'}}
+"""
+
+
+GistsPostBodyPropFilesTypeForResponse: TypeAlias = dict[str, Any]
+"""GistsPostBodyPropFiles
+
+Names and content for the files that make up the gist
+
+Examples:
+    {'hello.rb': {'content': 'puts "Hello, World!"'}}
+"""
 
 
 __all__ = (
-    "OrgsOrgAgentsSecretsGetResponse200Type",
-    "OrgsOrgAgentsSecretsGetResponse200TypeForResponse",
+    "GistsPostBodyPropFilesType",
+    "GistsPostBodyPropFilesTypeForResponse",
+    "GistsPostBodyType",
+    "GistsPostBodyTypeForResponse",
 )

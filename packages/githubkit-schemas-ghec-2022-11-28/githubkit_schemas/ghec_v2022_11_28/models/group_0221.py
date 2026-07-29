@@ -18,150 +18,33 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0222 import DiscussionEvent
-from .group_0223 import IssuesEvent
-from .group_0224 import IssueCommentEvent
-from .group_0225 import ForkEvent
-from .group_0227 import MemberEvent
-from .group_0228 import PullRequestEvent
-from .group_0229 import PullRequestReviewCommentEvent
-from .group_0230 import PullRequestReviewEvent
-from .group_0232 import CommitCommentEvent
-from .group_0234 import ReleaseEvent
 
+class IssuePropLabelsItemsOneof1(GitHubModel):
+    """IssuePropLabelsItemsOneof1"""
 
-class Event(GitHubModel):
-    """Event
-
-    Event
-    """
-
-    id: str = Field()
-    type: Union[str, None] = Field()
-    actor: Actor = Field(title="Actor", description="Actor")
-    repo: EventPropRepo = Field()
-    org: Missing[Actor] = Field(default=UNSET, title="Actor", description="Actor")
-    payload: Union[
-        CreateEvent,
-        DeleteEvent,
-        DiscussionEvent,
-        IssuesEvent,
-        IssueCommentEvent,
-        ForkEvent,
-        GollumEvent,
-        MemberEvent,
-        PublicEvent,
-        PushEvent,
-        PullRequestEvent,
-        PullRequestReviewCommentEvent,
-        PullRequestReviewEvent,
-        CommitCommentEvent,
-        ReleaseEvent,
-        WatchEvent,
-    ] = Field()
-    public: bool = Field()
-    created_at: Union[_dt.datetime, None] = Field()
-
-
-class Actor(GitHubModel):
-    """Actor
-
-    Actor
-    """
-
-    id: int = Field()
-    login: str = Field()
-    display_login: Missing[str] = Field(default=UNSET)
-    gravatar_id: Union[str, None] = Field()
-    url: str = Field()
-    avatar_url: str = Field()
-
-
-class EventPropRepo(GitHubModel):
-    """EventPropRepo"""
-
-    id: int = Field()
-    name: str = Field()
-    url: str = Field()
-
-
-class CreateEvent(GitHubModel):
-    """CreateEvent"""
-
-    ref: str = Field()
-    ref_type: str = Field()
-    full_ref: str = Field()
-    master_branch: str = Field()
+    id: Missing[int] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
     description: Missing[Union[str, None]] = Field(default=UNSET)
-    pusher_type: str = Field()
+    color: Missing[Union[str, None]] = Field(default=UNSET)
+    default: Missing[bool] = Field(default=UNSET)
 
 
-class DeleteEvent(GitHubModel):
-    """DeleteEvent"""
+class IssuePropPullRequest(GitHubModel):
+    """IssuePropPullRequest"""
 
-    ref: str = Field()
-    ref_type: str = Field()
-    full_ref: str = Field()
-    pusher_type: str = Field()
-
-
-class PublicEvent(GitHubModel):
-    """PublicEvent"""
+    merged_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+    diff_url: Union[str, None] = Field()
+    html_url: Union[str, None] = Field()
+    patch_url: Union[str, None] = Field()
+    url: Union[str, None] = Field()
 
 
-class PushEvent(GitHubModel):
-    """PushEvent"""
-
-    repository_id: int = Field()
-    push_id: int = Field()
-    ref: str = Field()
-    head: str = Field()
-    before: str = Field()
-
-
-class WatchEvent(GitHubModel):
-    """WatchEvent"""
-
-    action: str = Field()
-
-
-class GollumEvent(GitHubModel):
-    """GollumEvent"""
-
-    pages: list[GollumEventPropPagesItems] = Field()
-
-
-class GollumEventPropPagesItems(GitHubModel):
-    """GollumEventPropPagesItems"""
-
-    page_name: Missing[Union[str, None]] = Field(default=UNSET)
-    title: Missing[Union[str, None]] = Field(default=UNSET)
-    summary: Missing[Union[str, None]] = Field(default=UNSET)
-    action: Missing[str] = Field(default=UNSET)
-    sha: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(Event)
-model_rebuild(Actor)
-model_rebuild(EventPropRepo)
-model_rebuild(CreateEvent)
-model_rebuild(DeleteEvent)
-model_rebuild(PublicEvent)
-model_rebuild(PushEvent)
-model_rebuild(WatchEvent)
-model_rebuild(GollumEvent)
-model_rebuild(GollumEventPropPagesItems)
+model_rebuild(IssuePropLabelsItemsOneof1)
+model_rebuild(IssuePropPullRequest)
 
 __all__ = (
-    "Actor",
-    "CreateEvent",
-    "DeleteEvent",
-    "Event",
-    "EventPropRepo",
-    "GollumEvent",
-    "GollumEventPropPagesItems",
-    "PublicEvent",
-    "PushEvent",
-    "WatchEvent",
+    "IssuePropLabelsItemsOneof1",
+    "IssuePropPullRequest",
 )

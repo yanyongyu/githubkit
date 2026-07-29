@@ -13,41 +13,50 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0599 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0600 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0601 import (
+from .group_0618 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0619 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0620 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0602 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0642 import WebhooksRelease1Type, WebhooksRelease1TypeForResponse
+from .group_0621 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0638 import WebhooksChangesType, WebhooksChangesTypeForResponse
+from .group_0658 import WebhooksReviewCommentType, WebhooksReviewCommentTypeForResponse
+from .group_0970 import (
+    WebhookPullRequestReviewCommentEditedPropPullRequestType,
+    WebhookPullRequestReviewCommentEditedPropPullRequestTypeForResponse,
+)
 
 
-class WebhookReleaseUnpublishedType(TypedDict):
-    """release unpublished event"""
+class WebhookPullRequestReviewCommentEditedType(TypedDict):
+    """pull_request_review_comment edited event"""
 
-    action: Literal["unpublished"]
+    action: Literal["edited"]
+    changes: WebhooksChangesType
+    comment: WebhooksReviewCommentType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    release: WebhooksRelease1Type
+    pull_request: WebhookPullRequestReviewCommentEditedPropPullRequestType
     repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserType]
+    sender: SimpleUserType
 
 
-class WebhookReleaseUnpublishedTypeForResponse(TypedDict):
-    """release unpublished event"""
+class WebhookPullRequestReviewCommentEditedTypeForResponse(TypedDict):
+    """pull_request_review_comment edited event"""
 
-    action: Literal["unpublished"]
+    action: Literal["edited"]
+    changes: WebhooksChangesTypeForResponse
+    comment: WebhooksReviewCommentTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    release: WebhooksRelease1TypeForResponse
+    pull_request: WebhookPullRequestReviewCommentEditedPropPullRequestTypeForResponse
     repository: RepositoryWebhooksTypeForResponse
-    sender: NotRequired[SimpleUserTypeForResponse]
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookReleaseUnpublishedType",
-    "WebhookReleaseUnpublishedTypeForResponse",
+    "WebhookPullRequestReviewCommentEditedType",
+    "WebhookPullRequestReviewCommentEditedTypeForResponse",
 )

@@ -9,58 +9,63 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0033 import (
-    CodeSecurityConfigurationType,
-    CodeSecurityConfigurationTypeForResponse,
+from .group_0337 import (
+    CodeScanningVariantAnalysisSkippedRepoGroupType,
+    CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse,
 )
 
 
-class CodeSecurityConfigurationForRepositoryType(TypedDict):
-    """CodeSecurityConfigurationForRepository
+class CodeScanningVariantAnalysisPropSkippedRepositoriesType(TypedDict):
+    """CodeScanningVariantAnalysisPropSkippedRepositories
 
-    Code security configuration associated with a repository and attachment status
+    Information about repositories that were skipped from processing. This
+    information is only available to the user that initiated the variant analysis.
     """
 
-    status: NotRequired[
-        Literal[
-            "attached",
-            "attaching",
-            "detached",
-            "removed",
-            "enforced",
-            "failed",
-            "updating",
-            "removed_by_enterprise",
-        ]
-    ]
-    configuration: NotRequired[CodeSecurityConfigurationType]
+    access_mismatch_repos: CodeScanningVariantAnalysisSkippedRepoGroupType
+    not_found_repos: (
+        CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposType
+    )
+    no_codeql_db_repos: CodeScanningVariantAnalysisSkippedRepoGroupType
+    over_limit_repos: CodeScanningVariantAnalysisSkippedRepoGroupType
 
 
-class CodeSecurityConfigurationForRepositoryTypeForResponse(TypedDict):
-    """CodeSecurityConfigurationForRepository
+class CodeScanningVariantAnalysisPropSkippedRepositoriesTypeForResponse(TypedDict):
+    """CodeScanningVariantAnalysisPropSkippedRepositories
 
-    Code security configuration associated with a repository and attachment status
+    Information about repositories that were skipped from processing. This
+    information is only available to the user that initiated the variant analysis.
     """
 
-    status: NotRequired[
-        Literal[
-            "attached",
-            "attaching",
-            "detached",
-            "removed",
-            "enforced",
-            "failed",
-            "updating",
-            "removed_by_enterprise",
-        ]
-    ]
-    configuration: NotRequired[CodeSecurityConfigurationTypeForResponse]
+    access_mismatch_repos: CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse
+    not_found_repos: CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposTypeForResponse
+    no_codeql_db_repos: CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse
+    over_limit_repos: CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse
+
+
+class CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposType(
+    TypedDict
+):
+    """CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos"""
+
+    repository_count: int
+    repository_full_names: list[str]
+
+
+class CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposTypeForResponse(
+    TypedDict
+):
+    """CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos"""
+
+    repository_count: int
+    repository_full_names: list[str]
 
 
 __all__ = (
-    "CodeSecurityConfigurationForRepositoryType",
-    "CodeSecurityConfigurationForRepositoryTypeForResponse",
+    "CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposType",
+    "CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposTypeForResponse",
+    "CodeScanningVariantAnalysisPropSkippedRepositoriesType",
+    "CodeScanningVariantAnalysisPropSkippedRepositoriesTypeForResponse",
 )

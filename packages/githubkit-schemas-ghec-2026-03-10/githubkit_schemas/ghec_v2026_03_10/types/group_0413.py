@@ -11,46 +11,61 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
+from .group_0410 import (
+    CodeScanningVariantAnalysisSkippedRepoGroupType,
+    CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse,
+)
 
-class BranchShortType(TypedDict):
-    """Branch Short
 
-    Branch Short
+class CodeScanningVariantAnalysisPropSkippedRepositoriesType(TypedDict):
+    """CodeScanningVariantAnalysisPropSkippedRepositories
+
+    Information about repositories that were skipped from processing. This
+    information is only available to the user that initiated the variant analysis.
     """
 
-    name: str
-    commit: BranchShortPropCommitType
-    protected: bool
+    access_mismatch_repos: CodeScanningVariantAnalysisSkippedRepoGroupType
+    not_found_repos: (
+        CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposType
+    )
+    no_codeql_db_repos: CodeScanningVariantAnalysisSkippedRepoGroupType
+    over_limit_repos: CodeScanningVariantAnalysisSkippedRepoGroupType
 
 
-class BranchShortTypeForResponse(TypedDict):
-    """Branch Short
+class CodeScanningVariantAnalysisPropSkippedRepositoriesTypeForResponse(TypedDict):
+    """CodeScanningVariantAnalysisPropSkippedRepositories
 
-    Branch Short
+    Information about repositories that were skipped from processing. This
+    information is only available to the user that initiated the variant analysis.
     """
 
-    name: str
-    commit: BranchShortPropCommitTypeForResponse
-    protected: bool
+    access_mismatch_repos: CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse
+    not_found_repos: CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposTypeForResponse
+    no_codeql_db_repos: CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse
+    over_limit_repos: CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse
 
 
-class BranchShortPropCommitType(TypedDict):
-    """BranchShortPropCommit"""
+class CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposType(
+    TypedDict
+):
+    """CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos"""
 
-    sha: str
-    url: str
+    repository_count: int
+    repository_full_names: list[str]
 
 
-class BranchShortPropCommitTypeForResponse(TypedDict):
-    """BranchShortPropCommit"""
+class CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposTypeForResponse(
+    TypedDict
+):
+    """CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos"""
 
-    sha: str
-    url: str
+    repository_count: int
+    repository_full_names: list[str]
 
 
 __all__ = (
-    "BranchShortPropCommitType",
-    "BranchShortPropCommitTypeForResponse",
-    "BranchShortType",
-    "BranchShortTypeForResponse",
+    "CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposType",
+    "CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposTypeForResponse",
+    "CodeScanningVariantAnalysisPropSkippedRepositoriesType",
+    "CodeScanningVariantAnalysisPropSkippedRepositoriesTypeForResponse",
 )

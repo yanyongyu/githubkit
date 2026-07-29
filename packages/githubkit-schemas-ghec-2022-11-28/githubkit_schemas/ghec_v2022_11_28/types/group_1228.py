@@ -11,20 +11,27 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
+from .group_0189 import (
+    SecretScanningCustomPatternToCreateType,
+    SecretScanningCustomPatternToCreateTypeForResponse,
+)
 
-class OrgsOrgActionsPermissionsRepositoriesPutBodyType(TypedDict):
-    """OrgsOrgActionsPermissionsRepositoriesPutBody"""
 
-    selected_repository_ids: list[int]
+class EnterprisesEnterpriseSecretScanningCustomPatternsPostBodyType(TypedDict):
+    """EnterprisesEnterpriseSecretScanningCustomPatternsPostBody"""
+
+    patterns: list[SecretScanningCustomPatternToCreateType]
 
 
-class OrgsOrgActionsPermissionsRepositoriesPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgActionsPermissionsRepositoriesPutBody"""
+class EnterprisesEnterpriseSecretScanningCustomPatternsPostBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseSecretScanningCustomPatternsPostBody"""
 
-    selected_repository_ids: list[int]
+    patterns: list[SecretScanningCustomPatternToCreateTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgActionsPermissionsRepositoriesPutBodyType",
-    "OrgsOrgActionsPermissionsRepositoriesPutBodyTypeForResponse",
+    "EnterprisesEnterpriseSecretScanningCustomPatternsPostBodyType",
+    "EnterprisesEnterpriseSecretScanningCustomPatternsPostBodyTypeForResponse",
 )

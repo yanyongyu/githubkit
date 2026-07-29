@@ -9,51 +9,64 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0460 import IssueReferenceType, IssueReferenceTypeForResponse
 
 
-class SubIssueRemovedIssueEventType(TypedDict):
-    """Sub-issue Removed Issue Event
+class MilestonedIssueEventType(TypedDict):
+    """Milestoned Issue Event
 
-    Sub-issue Removed Issue Event
+    Milestoned Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: str
+    event: Literal["milestoned"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    sub_issue: Union[None, IssueReferenceType, None]
+    milestone: MilestonedIssueEventPropMilestoneType
 
 
-class SubIssueRemovedIssueEventTypeForResponse(TypedDict):
-    """Sub-issue Removed Issue Event
+class MilestonedIssueEventTypeForResponse(TypedDict):
+    """Milestoned Issue Event
 
-    Sub-issue Removed Issue Event
+    Milestoned Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserTypeForResponse
-    event: str
+    event: Literal["milestoned"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    sub_issue: Union[None, IssueReferenceTypeForResponse, None]
+    milestone: MilestonedIssueEventPropMilestoneTypeForResponse
+
+
+class MilestonedIssueEventPropMilestoneType(TypedDict):
+    """MilestonedIssueEventPropMilestone"""
+
+    title: str
+
+
+class MilestonedIssueEventPropMilestoneTypeForResponse(TypedDict):
+    """MilestonedIssueEventPropMilestone"""
+
+    title: str
 
 
 __all__ = (
-    "SubIssueRemovedIssueEventType",
-    "SubIssueRemovedIssueEventTypeForResponse",
+    "MilestonedIssueEventPropMilestoneType",
+    "MilestonedIssueEventPropMilestoneTypeForResponse",
+    "MilestonedIssueEventType",
+    "MilestonedIssueEventTypeForResponse",
 )

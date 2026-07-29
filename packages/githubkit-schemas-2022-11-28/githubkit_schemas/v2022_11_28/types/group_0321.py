@@ -9,34 +9,122 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodeQualitySetupUpdateResponseType(TypedDict):
-    """CodeQualitySetupUpdateResponse
+class CodeQualityFindingType(TypedDict):
+    """CodeQualityFinding
 
-    You can use `run_url` to track the status of the run. This includes a property
-    status and conclusion.
-    You should not rely on this always being an actions workflow run object.
+    Code quality finding
     """
 
-    run_id: NotRequired[int]
-    run_url: NotRequired[str]
+    number: int
+    state: Literal["open", "dismissed"]
+    url: str
+    rule: CodeQualityFindingRuleType
+    location: CodeQualityFindingLocationType
+    message: CodeQualityFindingMessageType
+    created_at: NotRequired[_dt.datetime]
 
 
-class CodeQualitySetupUpdateResponseTypeForResponse(TypedDict):
-    """CodeQualitySetupUpdateResponse
+class CodeQualityFindingTypeForResponse(TypedDict):
+    """CodeQualityFinding
 
-    You can use `run_url` to track the status of the run. This includes a property
-    status and conclusion.
-    You should not rely on this always being an actions workflow run object.
+    Code quality finding
     """
 
-    run_id: NotRequired[int]
-    run_url: NotRequired[str]
+    number: int
+    state: Literal["open", "dismissed"]
+    url: str
+    rule: CodeQualityFindingRuleTypeForResponse
+    location: CodeQualityFindingLocationTypeForResponse
+    message: CodeQualityFindingMessageTypeForResponse
+    created_at: NotRequired[str]
+
+
+class CodeQualityFindingRuleType(TypedDict):
+    """CodeQualityFindingRule
+
+    Code quality rule
+    """
+
+    id: str
+    title: str
+    description: str
+    help_: NotRequired[str]
+    severity: Literal["error", "warning", "note", "none"]
+    category: Literal["none", "maintainability", "reliability"]
+
+
+class CodeQualityFindingRuleTypeForResponse(TypedDict):
+    """CodeQualityFindingRule
+
+    Code quality rule
+    """
+
+    id: str
+    title: str
+    description: str
+    help_: NotRequired[str]
+    severity: Literal["error", "warning", "note", "none"]
+    category: Literal["none", "maintainability", "reliability"]
+
+
+class CodeQualityFindingLocationType(TypedDict):
+    """CodeQualityFindingLocation
+
+    Code quality file location
+    """
+
+    path: str
+    start_line: NotRequired[int]
+    start_column: NotRequired[int]
+    end_line: NotRequired[int]
+    end_column: NotRequired[int]
+
+
+class CodeQualityFindingLocationTypeForResponse(TypedDict):
+    """CodeQualityFindingLocation
+
+    Code quality file location
+    """
+
+    path: str
+    start_line: NotRequired[int]
+    start_column: NotRequired[int]
+    end_line: NotRequired[int]
+    end_column: NotRequired[int]
+
+
+class CodeQualityFindingMessageType(TypedDict):
+    """CodeQualityFindingMessage
+
+    Code quality finding message
+    """
+
+    text: str
+    markdown: str
+
+
+class CodeQualityFindingMessageTypeForResponse(TypedDict):
+    """CodeQualityFindingMessage
+
+    Code quality finding message
+    """
+
+    text: str
+    markdown: str
 
 
 __all__ = (
-    "CodeQualitySetupUpdateResponseType",
-    "CodeQualitySetupUpdateResponseTypeForResponse",
+    "CodeQualityFindingLocationType",
+    "CodeQualityFindingLocationTypeForResponse",
+    "CodeQualityFindingMessageType",
+    "CodeQualityFindingMessageTypeForResponse",
+    "CodeQualityFindingRuleType",
+    "CodeQualityFindingRuleTypeForResponse",
+    "CodeQualityFindingType",
+    "CodeQualityFindingTypeForResponse",
 )

@@ -12,21 +12,19 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType(TypedDict):
-    """OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems"""
+class OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType(TypedDict):
+    """OrgsOrgActionsRunnersRunnerIdLabelsPutBody"""
 
-    repository_id: int
-    alert_numbers: list[int]
+    labels: list[str]
 
 
-class OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsTypeForResponse(TypedDict):
-    """OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems"""
+class OrgsOrgActionsRunnersRunnerIdLabelsPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsRunnersRunnerIdLabelsPutBody"""
 
-    repository_id: int
-    alert_numbers: list[int]
+    labels: list[str]
 
 
 __all__ = (
-    "OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType",
-    "OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsTypeForResponse",
+    "OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType",
+    "OrgsOrgActionsRunnersRunnerIdLabelsPutBodyTypeForResponse",
 )

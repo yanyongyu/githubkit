@@ -9,37 +9,135 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing import Any, Literal, TypeAlias, Union
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class AutoMergeType(TypedDict):
-    """Auto merge
+class OrganizationProgrammaticAccessGrantType(TypedDict):
+    """Organization Programmatic Access Grant
 
-    The status of auto merging a pull request.
+    Minimal representation of an organization programmatic access grant for
+    enumerations
     """
 
-    enabled_by: SimpleUserType
-    merge_method: Literal["merge", "squash", "rebase"]
-    commit_title: Union[str, None]
-    commit_message: Union[str, None]
+    id: int
+    owner: SimpleUserType
+    repository_selection: Literal["none", "all", "subset"]
+    repositories_url: str
+    permissions: OrganizationProgrammaticAccessGrantPropPermissionsType
+    access_granted_at: str
+    token_id: int
+    token_name: str
+    token_expired: bool
+    token_expires_at: Union[str, None]
+    token_last_used_at: Union[str, None]
 
 
-class AutoMergeTypeForResponse(TypedDict):
-    """Auto merge
+class OrganizationProgrammaticAccessGrantTypeForResponse(TypedDict):
+    """Organization Programmatic Access Grant
 
-    The status of auto merging a pull request.
+    Minimal representation of an organization programmatic access grant for
+    enumerations
     """
 
-    enabled_by: SimpleUserTypeForResponse
-    merge_method: Literal["merge", "squash", "rebase"]
-    commit_title: Union[str, None]
-    commit_message: Union[str, None]
+    id: int
+    owner: SimpleUserTypeForResponse
+    repository_selection: Literal["none", "all", "subset"]
+    repositories_url: str
+    permissions: OrganizationProgrammaticAccessGrantPropPermissionsTypeForResponse
+    access_granted_at: str
+    token_id: int
+    token_name: str
+    token_expired: bool
+    token_expires_at: Union[str, None]
+    token_last_used_at: Union[str, None]
+
+
+class OrganizationProgrammaticAccessGrantPropPermissionsType(TypedDict):
+    """OrganizationProgrammaticAccessGrantPropPermissions
+
+    Permissions requested, categorized by type of permission.
+    """
+
+    organization: NotRequired[
+        OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationType
+    ]
+    repository: NotRequired[
+        OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryType
+    ]
+    other: NotRequired[OrganizationProgrammaticAccessGrantPropPermissionsPropOtherType]
+
+
+class OrganizationProgrammaticAccessGrantPropPermissionsTypeForResponse(TypedDict):
+    """OrganizationProgrammaticAccessGrantPropPermissions
+
+    Permissions requested, categorized by type of permission.
+    """
+
+    organization: NotRequired[
+        OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationTypeForResponse
+    ]
+    repository: NotRequired[
+        OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryTypeForResponse
+    ]
+    other: NotRequired[
+        OrganizationProgrammaticAccessGrantPropPermissionsPropOtherTypeForResponse
+    ]
+
+
+OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationType: TypeAlias = (
+    dict[str, Any]
+)
+"""OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization
+"""
+
+
+OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization
+"""
+
+
+OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryType: TypeAlias = dict[
+    str, Any
+]
+"""OrganizationProgrammaticAccessGrantPropPermissionsPropRepository
+"""
+
+
+OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""OrganizationProgrammaticAccessGrantPropPermissionsPropRepository
+"""
+
+
+OrganizationProgrammaticAccessGrantPropPermissionsPropOtherType: TypeAlias = dict[
+    str, Any
+]
+"""OrganizationProgrammaticAccessGrantPropPermissionsPropOther
+"""
+
+
+OrganizationProgrammaticAccessGrantPropPermissionsPropOtherTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""OrganizationProgrammaticAccessGrantPropPermissionsPropOther
+"""
 
 
 __all__ = (
-    "AutoMergeType",
-    "AutoMergeTypeForResponse",
+    "OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationType",
+    "OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationTypeForResponse",
+    "OrganizationProgrammaticAccessGrantPropPermissionsPropOtherType",
+    "OrganizationProgrammaticAccessGrantPropPermissionsPropOtherTypeForResponse",
+    "OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryType",
+    "OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryTypeForResponse",
+    "OrganizationProgrammaticAccessGrantPropPermissionsType",
+    "OrganizationProgrammaticAccessGrantPropPermissionsTypeForResponse",
+    "OrganizationProgrammaticAccessGrantType",
+    "OrganizationProgrammaticAccessGrantTypeForResponse",
 )

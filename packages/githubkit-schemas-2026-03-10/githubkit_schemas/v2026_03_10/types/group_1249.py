@@ -11,30 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyType(TypedDict):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBody
-
-    Examples:
-        {'apps': ['my-app']}
-    """
-
-    apps: list[str]
+from .group_0274 import ArtifactType, ArtifactTypeForResponse
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBody
+class ReposOwnerRepoActionsArtifactsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsArtifactsGetResponse200"""
 
-    Examples:
-        {'apps': ['my-app']}
-    """
+    total_count: int
+    artifacts: list[ArtifactType]
 
-    apps: list[str]
+
+class ReposOwnerRepoActionsArtifactsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsArtifactsGetResponse200"""
+
+    total_count: int
+    artifacts: list[ArtifactTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyType",
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyTypeForResponse",
+    "ReposOwnerRepoActionsArtifactsGetResponse200Type",
+    "ReposOwnerRepoActionsArtifactsGetResponse200TypeForResponse",
 )

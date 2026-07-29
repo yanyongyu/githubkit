@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,21 +19,25 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UserCodespacesSecretsSecretNamePutBody(GitHubModel):
-    """UserCodespacesSecretsSecretNamePutBody"""
+class ReposOwnerRepoMilestonesMilestoneNumberPatchBody(GitHubModel):
+    """ReposOwnerRepoMilestonesMilestoneNumberPatchBody"""
 
-    encrypted_value: Missing[str] = Field(
-        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
-        default=UNSET,
-        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get the public key for the authenticated user](https://docs.github.com/enterprise-cloud@latest/rest/codespaces/secrets#get-public-key-for-the-authenticated-user) endpoint.",
+    title: Missing[str] = Field(
+        default=UNSET, description="The title of the milestone."
     )
-    key_id: str = Field(description="ID of the key you used to encrypt the secret.")
-    selected_repository_ids: Missing[list[Union[int, str]]] = Field(
+    state: Missing[Literal["open", "closed"]] = Field(
         default=UNSET,
-        description="An array of repository ids that can access the user secret. You can manage the list of selected repositories using the [List selected repositories for a user secret](https://docs.github.com/enterprise-cloud@latest/rest/codespaces/secrets#list-selected-repositories-for-a-user-secret), [Set selected repositories for a user secret](https://docs.github.com/enterprise-cloud@latest/rest/codespaces/secrets#set-selected-repositories-for-a-user-secret), and [Remove a selected repository from a user secret](https://docs.github.com/enterprise-cloud@latest/rest/codespaces/secrets#remove-a-selected-repository-from-a-user-secret) endpoints.",
+        description="The state of the milestone. Either `open` or `closed`.",
+    )
+    description: Missing[str] = Field(
+        default=UNSET, description="A description of the milestone."
+    )
+    due_on: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="The milestone due date. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
 
 
-model_rebuild(UserCodespacesSecretsSecretNamePutBody)
+model_rebuild(ReposOwnerRepoMilestonesMilestoneNumberPatchBody)
 
-__all__ = ("UserCodespacesSecretsSecretNamePutBody",)
+__all__ = ("ReposOwnerRepoMilestonesMilestoneNumberPatchBody",)

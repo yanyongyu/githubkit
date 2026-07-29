@@ -13,59 +13,63 @@ from typing import Literal, Union
 from typing_extensions import TypedDict
 
 
-class DependencyGraphDiffItemsType(TypedDict):
-    """DependencyGraphDiffItems"""
+class ContentSymlinkType(TypedDict):
+    """Symlink Content
 
-    change_type: Literal["added", "removed"]
-    manifest: str
-    ecosystem: str
+    An object describing a symlink
+    """
+
+    type: Literal["symlink"]
+    target: str
+    size: int
     name: str
-    version: str
-    package_url: Union[str, None]
-    license_: Union[str, None]
-    source_repository_url: Union[str, None]
-    vulnerabilities: list[DependencyGraphDiffItemsPropVulnerabilitiesItemsType]
-    scope: Literal["unknown", "runtime", "development"]
+    path: str
+    sha: str
+    url: str
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentSymlinkPropLinksType
 
 
-class DependencyGraphDiffItemsTypeForResponse(TypedDict):
-    """DependencyGraphDiffItems"""
+class ContentSymlinkTypeForResponse(TypedDict):
+    """Symlink Content
 
-    change_type: Literal["added", "removed"]
-    manifest: str
-    ecosystem: str
+    An object describing a symlink
+    """
+
+    type: Literal["symlink"]
+    target: str
+    size: int
     name: str
-    version: str
-    package_url: Union[str, None]
-    license_: Union[str, None]
-    source_repository_url: Union[str, None]
-    vulnerabilities: list[
-        DependencyGraphDiffItemsPropVulnerabilitiesItemsTypeForResponse
-    ]
-    scope: Literal["unknown", "runtime", "development"]
+    path: str
+    sha: str
+    url: str
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentSymlinkPropLinksTypeForResponse
 
 
-class DependencyGraphDiffItemsPropVulnerabilitiesItemsType(TypedDict):
-    """DependencyGraphDiffItemsPropVulnerabilitiesItems"""
+class ContentSymlinkPropLinksType(TypedDict):
+    """ContentSymlinkPropLinks"""
 
-    severity: str
-    advisory_ghsa_id: str
-    advisory_summary: str
-    advisory_url: str
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
 
 
-class DependencyGraphDiffItemsPropVulnerabilitiesItemsTypeForResponse(TypedDict):
-    """DependencyGraphDiffItemsPropVulnerabilitiesItems"""
+class ContentSymlinkPropLinksTypeForResponse(TypedDict):
+    """ContentSymlinkPropLinks"""
 
-    severity: str
-    advisory_ghsa_id: str
-    advisory_summary: str
-    advisory_url: str
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
 
 
 __all__ = (
-    "DependencyGraphDiffItemsPropVulnerabilitiesItemsType",
-    "DependencyGraphDiffItemsPropVulnerabilitiesItemsTypeForResponse",
-    "DependencyGraphDiffItemsType",
-    "DependencyGraphDiffItemsTypeForResponse",
+    "ContentSymlinkPropLinksType",
+    "ContentSymlinkPropLinksTypeForResponse",
+    "ContentSymlinkType",
+    "ContentSymlinkTypeForResponse",
 )

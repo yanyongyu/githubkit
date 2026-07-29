@@ -13,16 +13,16 @@ from typing import Literal
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType(TypedDict):
-    """ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody"""
+class ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType(TypedDict):
+    """ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody"""
 
     content: Literal[
         "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
     ]
 
 
-class ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody"""
+class ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody"""
 
     content: Literal[
         "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
@@ -30,6 +30,6 @@ class ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyTypeForResponse(Typed
 
 
 __all__ = (
-    "ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType",
-    "ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyTypeForResponse",
+    "ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType",
+    "ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyTypeForResponse",
 )

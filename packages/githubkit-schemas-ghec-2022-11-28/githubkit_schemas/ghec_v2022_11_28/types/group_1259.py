@@ -9,29 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class OrgsOrgAgentsVariablesNamePatchBodyType(TypedDict):
-    """OrgsOrgAgentsVariablesNamePatchBody"""
-
-    name: NotRequired[str]
-    value: NotRequired[str]
-    visibility: NotRequired[Literal["all", "private", "selected"]]
-    selected_repository_ids: NotRequired[list[int]]
+from .group_1260 import (
+    InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType,
+    InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse,
+)
 
 
-class OrgsOrgAgentsVariablesNamePatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgAgentsVariablesNamePatchBody"""
+class InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1Type(TypedDict):
+    """InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1"""
 
-    name: NotRequired[str]
-    value: NotRequired[str]
-    visibility: NotRequired[Literal["all", "private", "selected"]]
-    selected_repository_ids: NotRequired[list[int]]
+    custom_properties: NotRequired[
+        InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType
+    ]
+
+
+class InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1TypeForResponse(
+    TypedDict
+):
+    """InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1"""
+
+    custom_properties: NotRequired[
+        InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse
+    ]
 
 
 __all__ = (
-    "OrgsOrgAgentsVariablesNamePatchBodyType",
-    "OrgsOrgAgentsVariablesNamePatchBodyTypeForResponse",
+    "InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1Type",
+    "InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1TypeForResponse",
 )

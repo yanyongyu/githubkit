@@ -9,53 +9,84 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Any, TypeAlias, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class MarketplaceListingPlanType(TypedDict):
-    """Marketplace Listing Plan
+class GistSimplePropForkOfType(TypedDict):
+    """Gist
 
-    Marketplace Listing Plan
+    Gist
     """
 
     url: str
-    accounts_url: str
-    id: int
-    number: int
-    name: str
-    description: str
-    monthly_price_in_cents: int
-    yearly_price_in_cents: int
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
-    has_free_trial: bool
-    unit_name: Union[str, None]
-    state: str
-    bullets: list[str]
+    forks_url: str
+    commits_url: str
+    id: str
+    node_id: str
+    git_pull_url: str
+    git_push_url: str
+    html_url: str
+    files: GistSimplePropForkOfPropFilesType
+    public: bool
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    description: Union[str, None]
+    comments: int
+    comments_enabled: NotRequired[bool]
+    user: Union[None, SimpleUserType]
+    comments_url: str
+    owner: NotRequired[Union[None, SimpleUserType]]
+    truncated: NotRequired[bool]
+    forks: NotRequired[list[Any]]
+    history: NotRequired[list[Any]]
 
 
-class MarketplaceListingPlanTypeForResponse(TypedDict):
-    """Marketplace Listing Plan
+class GistSimplePropForkOfTypeForResponse(TypedDict):
+    """Gist
 
-    Marketplace Listing Plan
+    Gist
     """
 
     url: str
-    accounts_url: str
-    id: int
-    number: int
-    name: str
-    description: str
-    monthly_price_in_cents: int
-    yearly_price_in_cents: int
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
-    has_free_trial: bool
-    unit_name: Union[str, None]
-    state: str
-    bullets: list[str]
+    forks_url: str
+    commits_url: str
+    id: str
+    node_id: str
+    git_pull_url: str
+    git_push_url: str
+    html_url: str
+    files: GistSimplePropForkOfPropFilesTypeForResponse
+    public: bool
+    created_at: str
+    updated_at: str
+    description: Union[str, None]
+    comments: int
+    comments_enabled: NotRequired[bool]
+    user: Union[None, SimpleUserTypeForResponse]
+    comments_url: str
+    owner: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    truncated: NotRequired[bool]
+    forks: NotRequired[list[Any]]
+    history: NotRequired[list[Any]]
+
+
+GistSimplePropForkOfPropFilesType: TypeAlias = dict[str, Any]
+"""GistSimplePropForkOfPropFiles
+"""
+
+
+GistSimplePropForkOfPropFilesTypeForResponse: TypeAlias = dict[str, Any]
+"""GistSimplePropForkOfPropFiles
+"""
 
 
 __all__ = (
-    "MarketplaceListingPlanType",
-    "MarketplaceListingPlanTypeForResponse",
+    "GistSimplePropForkOfPropFilesType",
+    "GistSimplePropForkOfPropFilesTypeForResponse",
+    "GistSimplePropForkOfType",
+    "GistSimplePropForkOfTypeForResponse",
 )

@@ -9,30 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class CodespacesUserPublicKeyType(TypedDict):
-    """CodespacesUserPublicKey
+class UserNameResponseType(TypedDict):
+    """UserNameResponse"""
 
-    The public key used for setting user Codespaces' Secrets.
-    """
+    formatted: NotRequired[str]
+    family_name: NotRequired[str]
+    given_name: NotRequired[str]
+    middle_name: NotRequired[str]
 
-    key_id: str
-    key: str
+
+class UserNameResponseTypeForResponse(TypedDict):
+    """UserNameResponse"""
+
+    formatted: NotRequired[str]
+    family_name: NotRequired[str]
+    given_name: NotRequired[str]
+    middle_name: NotRequired[str]
 
 
-class CodespacesUserPublicKeyTypeForResponse(TypedDict):
-    """CodespacesUserPublicKey
+class UserEmailsResponseItemsType(TypedDict):
+    """UserEmailsResponseItems"""
 
-    The public key used for setting user Codespaces' Secrets.
-    """
+    value: str
+    type: NotRequired[str]
+    primary: NotRequired[bool]
 
-    key_id: str
-    key: str
+
+class UserEmailsResponseItemsTypeForResponse(TypedDict):
+    """UserEmailsResponseItems"""
+
+    value: str
+    type: NotRequired[str]
+    primary: NotRequired[bool]
 
 
 __all__ = (
-    "CodespacesUserPublicKeyType",
-    "CodespacesUserPublicKeyTypeForResponse",
+    "UserEmailsResponseItemsType",
+    "UserEmailsResponseItemsTypeForResponse",
+    "UserNameResponseType",
+    "UserNameResponseTypeForResponse",
 )

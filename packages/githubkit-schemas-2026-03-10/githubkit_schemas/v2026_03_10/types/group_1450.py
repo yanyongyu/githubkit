@@ -9,51 +9,59 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyType(
-    TypedDict
-):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody"""
+class ReposOwnerRepoStacksPostResponse422Type(TypedDict):
+    """Validation Error
 
-    metadata: NotRequired[
-        UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataType
+    Validation Error
+    """
+
+    message: str
+    documentation_url: str
+    errors: NotRequired[list[ReposOwnerRepoStacksPostResponse422PropErrorsItemsType]]
+
+
+class ReposOwnerRepoStacksPostResponse422TypeForResponse(TypedDict):
+    """Validation Error
+
+    Validation Error
+    """
+
+    message: str
+    documentation_url: str
+    errors: NotRequired[
+        list[ReposOwnerRepoStacksPostResponse422PropErrorsItemsTypeForResponse]
     ]
 
 
-class UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyTypeForResponse(
-    TypedDict
-):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody"""
+class ReposOwnerRepoStacksPostResponse422PropErrorsItemsType(TypedDict):
+    """ReposOwnerRepoStacksPostResponse422PropErrorsItems"""
 
-    metadata: NotRequired[
-        UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataTypeForResponse
-    ]
-
-
-UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataType: TypeAlias = dict[
-    str, Any
-]
-"""UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
-
-Updated resource-specific metadata.
-"""
+    resource: NotRequired[str]
+    field: NotRequired[str]
+    message: NotRequired[str]
+    code: str
+    index: NotRequired[int]
+    value: NotRequired[Union[str, None, int, None, list[Union[str, int]], None]]
 
 
-UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
+class ReposOwnerRepoStacksPostResponse422PropErrorsItemsTypeForResponse(TypedDict):
+    """ReposOwnerRepoStacksPostResponse422PropErrorsItems"""
 
-Updated resource-specific metadata.
-"""
+    resource: NotRequired[str]
+    field: NotRequired[str]
+    message: NotRequired[str]
+    code: str
+    index: NotRequired[int]
+    value: NotRequired[Union[str, None, int, None, list[Union[str, int]], None]]
 
 
 __all__ = (
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataType",
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataTypeForResponse",
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyType",
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyTypeForResponse",
+    "ReposOwnerRepoStacksPostResponse422PropErrorsItemsType",
+    "ReposOwnerRepoStacksPostResponse422PropErrorsItemsTypeForResponse",
+    "ReposOwnerRepoStacksPostResponse422Type",
+    "ReposOwnerRepoStacksPostResponse422TypeForResponse",
 )

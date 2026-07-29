@@ -11,16 +11,34 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgPrivateRegistriesPublicKeyGetResponse200(GitHubModel):
-    """OrgsOrgPrivateRegistriesPublicKeyGetResponse200"""
+class OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody(GitHubModel):
+    """OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody"""
 
-    key_id: str = Field(description="The identifier for the key.")
-    key: str = Field(description="The Base64 encoded public key.")
+    metadata: Missing[
+        OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
+    ] = Field(default=UNSET, description="Updated resource-specific metadata.")
 
 
-model_rebuild(OrgsOrgPrivateRegistriesPublicKeyGetResponse200)
+class OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata(
+    ExtraGitHubModel
+):
+    """OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
 
-__all__ = ("OrgsOrgPrivateRegistriesPublicKeyGetResponse200",)
+    Updated resource-specific metadata.
+    """
+
+
+model_rebuild(OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody)
+model_rebuild(
+    OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
+)
+
+__all__ = (
+    "OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody",
+    "OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata",
+)

@@ -9,55 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0156 import (
+    RepositoryRuleFilePathRestrictionPropParametersType,
+    RepositoryRuleFilePathRestrictionPropParametersTypeForResponse,
+)
 
 
-class ContributorActivityType(TypedDict):
-    """Contributor Activity
+class RepositoryRuleDetailedOneof19Type(TypedDict):
+    """RepositoryRuleDetailedOneof19"""
 
-    Contributor Activity
-    """
-
-    author: Union[None, SimpleUserType]
-    total: int
-    weeks: list[ContributorActivityPropWeeksItemsType]
-
-
-class ContributorActivityTypeForResponse(TypedDict):
-    """Contributor Activity
-
-    Contributor Activity
-    """
-
-    author: Union[None, SimpleUserTypeForResponse]
-    total: int
-    weeks: list[ContributorActivityPropWeeksItemsTypeForResponse]
+    type: Literal["file_path_restriction"]
+    parameters: NotRequired[RepositoryRuleFilePathRestrictionPropParametersType]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
 
-class ContributorActivityPropWeeksItemsType(TypedDict):
-    """ContributorActivityPropWeeksItems"""
+class RepositoryRuleDetailedOneof19TypeForResponse(TypedDict):
+    """RepositoryRuleDetailedOneof19"""
 
-    w: NotRequired[int]
-    a: NotRequired[int]
-    d: NotRequired[int]
-    c: NotRequired[int]
-
-
-class ContributorActivityPropWeeksItemsTypeForResponse(TypedDict):
-    """ContributorActivityPropWeeksItems"""
-
-    w: NotRequired[int]
-    a: NotRequired[int]
-    d: NotRequired[int]
-    c: NotRequired[int]
+    type: Literal["file_path_restriction"]
+    parameters: NotRequired[
+        RepositoryRuleFilePathRestrictionPropParametersTypeForResponse
+    ]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
 
 __all__ = (
-    "ContributorActivityPropWeeksItemsType",
-    "ContributorActivityPropWeeksItemsTypeForResponse",
-    "ContributorActivityType",
-    "ContributorActivityTypeForResponse",
+    "RepositoryRuleDetailedOneof19Type",
+    "RepositoryRuleDetailedOneof19TypeForResponse",
 )

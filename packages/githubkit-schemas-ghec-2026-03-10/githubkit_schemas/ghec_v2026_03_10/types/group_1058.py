@@ -12,76 +12,44 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class AgentsReposOwnerRepoTasksPostResponse401Type(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse401
-
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[
-        list[AgentsReposOwnerRepoTasksPostResponse401PropErrorsItemsType]
-    ]
-    documentation_url: str
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0617 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0618 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0619 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0620 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0664 import WebhooksSponsorshipType, WebhooksSponsorshipTypeForResponse
 
 
-class AgentsReposOwnerRepoTasksPostResponse401TypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse401
+class WebhookSponsorshipPendingCancellationType(TypedDict):
+    """sponsorship pending_cancellation event"""
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[
-        list[AgentsReposOwnerRepoTasksPostResponse401PropErrorsItemsTypeForResponse]
-    ]
-    documentation_url: str
+    action: Literal["pending_cancellation"]
+    effective_date: NotRequired[str]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserType
+    sponsorship: WebhooksSponsorshipType
 
 
-class AgentsReposOwnerRepoTasksPostResponse401PropErrorsItemsType(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse401PropErrorsItems
+class WebhookSponsorshipPendingCancellationTypeForResponse(TypedDict):
+    """sponsorship pending_cancellation event"""
 
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
-
-
-class AgentsReposOwnerRepoTasksPostResponse401PropErrorsItemsTypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse401PropErrorsItems
-
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
+    action: Literal["pending_cancellation"]
+    effective_date: NotRequired[str]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: SimpleUserTypeForResponse
+    sponsorship: WebhooksSponsorshipTypeForResponse
 
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksPostResponse401PropErrorsItemsType",
-    "AgentsReposOwnerRepoTasksPostResponse401PropErrorsItemsTypeForResponse",
-    "AgentsReposOwnerRepoTasksPostResponse401Type",
-    "AgentsReposOwnerRepoTasksPostResponse401TypeForResponse",
+    "WebhookSponsorshipPendingCancellationType",
+    "WebhookSponsorshipPendingCancellationTypeForResponse",
 )

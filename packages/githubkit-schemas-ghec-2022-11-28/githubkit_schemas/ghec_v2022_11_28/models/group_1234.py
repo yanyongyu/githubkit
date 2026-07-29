@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,32 +18,58 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody(GitHubModel):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody"""
+class EnterprisesEnterpriseSettingsBillingBudgetsPostBody(GitHubModel):
+    """EnterprisesEnterpriseSettingsBillingBudgetsPostBody"""
 
-    name: str = Field(description="Name of the runner group.")
-    visibility: Missing[Literal["selected", "all", "private"]] = Field(
-        default=UNSET,
-        description="Visibility of a runner group. You can select all repositories, select individual repositories, or all private repositories.",
+    budget_amount: int = Field(
+        description="The budget amount in whole dollars. For license-based products, this represents the number of licenses."
     )
-    allows_public_repositories: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the runner group can be used by `public` repositories.",
+    prevent_further_usage: bool = Field(
+        description="Whether to prevent additional spending once the budget is exceeded. For `user` and `multi_user_customer` scopes, this must be `true`."
     )
-    restricted_to_workflows: Missing[bool] = Field(
-        default=UNSET,
-        description="If `true`, the runner group will be restricted to running only the workflows specified in the `selected_workflows` array.",
+    budget_alerting: EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting = Field()
+    budget_scope: Literal[
+        "enterprise",
+        "organization",
+        "repository",
+        "cost_center",
+        "multi_user_customer",
+        "multi_user_cost_center",
+        "user",
+    ] = Field(
+        description="The scope of the budget.\n\n- `enterprise`: Apply the budget to the entire enterprise.\n- `organization`: Apply the budget to a specific organization in the enterprise.\n- `repository`: Apply the budget to a specific repository.\n- `cost_center`: Apply the budget to a specific cost center.\n- `multi_user_customer`: Apply a universal budget to all users in the enterprise.\n- `multi_user_cost_center`: Apply a universal budget to all users in a cost center.\n- `user`: Apply the budget to a single user.\n\n`user`, `multi_user_customer`, and `multi_user_cost_center` scopes are only supported when `budget_product_sku` is `ai_credits` or `premium_requests`."
     )
-    selected_workflows: Missing[list[str]] = Field(
-        default=UNSET,
-        description="List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`.",
+    budget_entity_name: Missing[str] = Field(
+        default=UNSET, description="The name of the entity to apply the budget to"
     )
-    network_configuration_id: Missing[Union[str, None]] = Field(
+    budget_type: Literal["BundlePricing", "ProductPricing", "SkuPricing"] = Field(
+        description="The type of pricing model used by the budget. Determines how `budget_product_sku` is interpreted.\n\n- `BundlePricing`: Covers all AI credit SKUs. Set `budget_product_sku` to `ai_credits`.\n- `ProductPricing`: Covers all SKUs that belong to a product. Set `budget_product_sku` to a product such as `actions` or `packages`.\n- `SkuPricing`: Covers a single, specific SKU. Set `budget_product_sku` to a SKU such as `actions_linux`."
+    )
+    budget_product_sku: Missing[str] = Field(
         default=UNSET,
-        description="The identifier of a hosted compute network configuration.",
+        description="A single product or SKU that will be covered in the budget",
+    )
+    user: Missing[str] = Field(
+        default=UNSET,
+        description="The username of the user for `user` scope budgets. This field is required when `budget_scope` is `user`.",
     )
 
 
-model_rebuild(OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody)
+class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting(
+    GitHubModel
+):
+    """EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting"""
 
-__all__ = ("OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody",)
+    will_alert: bool = Field(description="Whether alerts are enabled for this budget")
+    alert_recipients: list[str] = Field(
+        description="Array of user login names who will receive alerts"
+    )
+
+
+model_rebuild(EnterprisesEnterpriseSettingsBillingBudgetsPostBody)
+model_rebuild(EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting)
+
+__all__ = (
+    "EnterprisesEnterpriseSettingsBillingBudgetsPostBody",
+    "EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting",
+)

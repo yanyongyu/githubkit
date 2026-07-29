@@ -11,19 +11,19 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0145 import CopilotSpaceResource
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200(GitHubModel):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200"""
+class ReposOwnerRepoStacksPostBody(GitHubModel):
+    """ReposOwnerRepoStacksPostBody"""
 
-    resources: list[CopilotSpaceResource] = Field(
-        description="The list of resources attached to this Copilot Space."
+    pull_requests: list[int] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        min_length=2 if PYDANTIC_V2 else None,
+        description="An ordered list of pull request numbers forming the stack from bottom to top.",
     )
 
 
-model_rebuild(UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200)
+model_rebuild(ReposOwnerRepoStacksPostBody)
 
-__all__ = ("UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200",)
+__all__ = ("ReposOwnerRepoStacksPostBody",)

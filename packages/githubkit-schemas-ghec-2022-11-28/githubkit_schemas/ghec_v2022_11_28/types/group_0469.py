@@ -12,52 +12,122 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0085 import TeamType, TeamTypeForResponse
 
+class ImportType(TypedDict):
+    """Import
 
-class ReviewRequestedIssueEventType(TypedDict):
-    """Review Requested Issue Event
-
-    Review Requested Issue Event
+    A repository import from an external source.
     """
 
-    id: int
-    node_id: str
+    vcs: Union[str, None]
+    use_lfs: NotRequired[bool]
+    vcs_url: str
+    svc_root: NotRequired[str]
+    tfvc_project: NotRequired[str]
+    status: Literal[
+        "auth",
+        "error",
+        "none",
+        "detecting",
+        "choose",
+        "auth_failed",
+        "importing",
+        "mapping",
+        "waiting_to_push",
+        "pushing",
+        "complete",
+        "setup",
+        "unknown",
+        "detection_found_multiple",
+        "detection_found_nothing",
+        "detection_needs_auth",
+    ]
+    status_text: NotRequired[Union[str, None]]
+    failed_step: NotRequired[Union[str, None]]
+    error_message: NotRequired[Union[str, None]]
+    import_percent: NotRequired[Union[int, None]]
+    commit_count: NotRequired[Union[int, None]]
+    push_percent: NotRequired[Union[int, None]]
+    has_large_files: NotRequired[bool]
+    large_files_size: NotRequired[int]
+    large_files_count: NotRequired[int]
+    project_choices: NotRequired[list[ImportPropProjectChoicesItemsType]]
+    message: NotRequired[str]
+    authors_count: NotRequired[Union[int, None]]
     url: str
-    actor: SimpleUserType
-    event: Literal["review_requested"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    review_requester: SimpleUserType
-    requested_team: NotRequired[TeamType]
-    requested_reviewer: NotRequired[SimpleUserType]
+    html_url: str
+    authors_url: str
+    repository_url: str
+    svn_root: NotRequired[str]
 
 
-class ReviewRequestedIssueEventTypeForResponse(TypedDict):
-    """Review Requested Issue Event
+class ImportTypeForResponse(TypedDict):
+    """Import
 
-    Review Requested Issue Event
+    A repository import from an external source.
     """
 
-    id: int
-    node_id: str
+    vcs: Union[str, None]
+    use_lfs: NotRequired[bool]
+    vcs_url: str
+    svc_root: NotRequired[str]
+    tfvc_project: NotRequired[str]
+    status: Literal[
+        "auth",
+        "error",
+        "none",
+        "detecting",
+        "choose",
+        "auth_failed",
+        "importing",
+        "mapping",
+        "waiting_to_push",
+        "pushing",
+        "complete",
+        "setup",
+        "unknown",
+        "detection_found_multiple",
+        "detection_found_nothing",
+        "detection_needs_auth",
+    ]
+    status_text: NotRequired[Union[str, None]]
+    failed_step: NotRequired[Union[str, None]]
+    error_message: NotRequired[Union[str, None]]
+    import_percent: NotRequired[Union[int, None]]
+    commit_count: NotRequired[Union[int, None]]
+    push_percent: NotRequired[Union[int, None]]
+    has_large_files: NotRequired[bool]
+    large_files_size: NotRequired[int]
+    large_files_count: NotRequired[int]
+    project_choices: NotRequired[list[ImportPropProjectChoicesItemsTypeForResponse]]
+    message: NotRequired[str]
+    authors_count: NotRequired[Union[int, None]]
     url: str
-    actor: SimpleUserTypeForResponse
-    event: Literal["review_requested"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    review_requester: SimpleUserTypeForResponse
-    requested_team: NotRequired[TeamTypeForResponse]
-    requested_reviewer: NotRequired[SimpleUserTypeForResponse]
+    html_url: str
+    authors_url: str
+    repository_url: str
+    svn_root: NotRequired[str]
+
+
+class ImportPropProjectChoicesItemsType(TypedDict):
+    """ImportPropProjectChoicesItems"""
+
+    vcs: NotRequired[str]
+    tfvc_project: NotRequired[str]
+    human_name: NotRequired[str]
+
+
+class ImportPropProjectChoicesItemsTypeForResponse(TypedDict):
+    """ImportPropProjectChoicesItems"""
+
+    vcs: NotRequired[str]
+    tfvc_project: NotRequired[str]
+    human_name: NotRequired[str]
 
 
 __all__ = (
-    "ReviewRequestedIssueEventType",
-    "ReviewRequestedIssueEventTypeForResponse",
+    "ImportPropProjectChoicesItemsType",
+    "ImportPropProjectChoicesItemsTypeForResponse",
+    "ImportType",
+    "ImportTypeForResponse",
 )

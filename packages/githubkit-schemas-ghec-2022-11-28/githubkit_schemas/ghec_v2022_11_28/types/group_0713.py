@@ -13,74 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0207 import DiscussionType, DiscussionTypeForResponse
-from .group_0599 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0600 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0601 import (
+from .group_0442 import DependabotAlertType, DependabotAlertTypeForResponse
+from .group_0618 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0619 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0620 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0602 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0614 import WebhooksCommentType, WebhooksCommentTypeForResponse
+from .group_0621 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDiscussionCommentEditedType(TypedDict):
-    """discussion_comment edited event"""
+class WebhookDependabotAlertAutoReopenedType(TypedDict):
+    """Dependabot alert auto-reopened event"""
 
-    action: Literal["edited"]
-    changes: WebhookDiscussionCommentEditedPropChangesType
-    comment: WebhooksCommentType
-    discussion: DiscussionType
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["auto_reopened"]
+    alert: DependabotAlertType
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookDiscussionCommentEditedTypeForResponse(TypedDict):
-    """discussion_comment edited event"""
+class WebhookDependabotAlertAutoReopenedTypeForResponse(TypedDict):
+    """Dependabot alert auto-reopened event"""
 
-    action: Literal["edited"]
-    changes: WebhookDiscussionCommentEditedPropChangesTypeForResponse
-    comment: WebhooksCommentTypeForResponse
-    discussion: DiscussionTypeForResponse
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    action: Literal["auto_reopened"]
+    alert: DependabotAlertTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
-class WebhookDiscussionCommentEditedPropChangesType(TypedDict):
-    """WebhookDiscussionCommentEditedPropChanges"""
-
-    body: WebhookDiscussionCommentEditedPropChangesPropBodyType
-
-
-class WebhookDiscussionCommentEditedPropChangesTypeForResponse(TypedDict):
-    """WebhookDiscussionCommentEditedPropChanges"""
-
-    body: WebhookDiscussionCommentEditedPropChangesPropBodyTypeForResponse
-
-
-class WebhookDiscussionCommentEditedPropChangesPropBodyType(TypedDict):
-    """WebhookDiscussionCommentEditedPropChangesPropBody"""
-
-    from_: str
-
-
-class WebhookDiscussionCommentEditedPropChangesPropBodyTypeForResponse(TypedDict):
-    """WebhookDiscussionCommentEditedPropChangesPropBody"""
-
-    from_: str
-
-
 __all__ = (
-    "WebhookDiscussionCommentEditedPropChangesPropBodyType",
-    "WebhookDiscussionCommentEditedPropChangesPropBodyTypeForResponse",
-    "WebhookDiscussionCommentEditedPropChangesType",
-    "WebhookDiscussionCommentEditedPropChangesTypeForResponse",
-    "WebhookDiscussionCommentEditedType",
-    "WebhookDiscussionCommentEditedTypeForResponse",
+    "WebhookDependabotAlertAutoReopenedType",
+    "WebhookDependabotAlertAutoReopenedTypeForResponse",
 )

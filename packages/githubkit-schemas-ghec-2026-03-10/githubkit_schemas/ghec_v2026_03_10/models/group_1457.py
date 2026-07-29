@@ -11,31 +11,40 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment(
-    GitHubModel
-):
-    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment
+class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody(GitHubModel):
+    """ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody"""
 
-    Parameters for AI agent assignment. Only used when an agent bot login is
-    included in `assignees`. Ignored when no agent is being assigned.
+    ref: str = Field(
+        description="The git reference for the workflow. The reference can be a branch or tag name."
+    )
+    inputs: Missing[
+        ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs
+    ] = Field(
+        default=UNSET,
+        description="Input keys and values configured in the workflow file. The maximum number of properties is 25. Any default properties configured in the workflow file will be used when `inputs` are omitted.",
+    )
+
+
+class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs(
+    ExtraGitHubModel
+):
+    """ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs
+
+    Input keys and values configured in the workflow file. The maximum number of
+    properties is 25. Any default properties configured in the workflow file will be
+    used when `inputs` are omitted.
     """
 
-    custom_instructions: Missing[str] = Field(
-        default=UNSET, description="Custom instructions for the agent."
-    )
-    custom_agent: Missing[str] = Field(
-        default=UNSET, description="A custom agent identifier."
-    )
-    model: Missing[str] = Field(
-        default=UNSET, description="The model to use for the agent."
-    )
 
+model_rebuild(ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody)
+model_rebuild(ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs)
 
-model_rebuild(ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment)
-
-__all__ = ("ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment",)
+__all__ = (
+    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody",
+    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs",
+)

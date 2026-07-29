@@ -15,38 +15,31 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0017 import AppPermissions
 
+class AgentsReposOwnerRepoTasksPostBody(GitHubModel):
+    """AgentsReposOwnerRepoTasksPostBody"""
 
-class ApplicationsClientIdTokenScopedPostBody(GitHubModel):
-    """ApplicationsClientIdTokenScopedPostBody"""
-
-    access_token: str = Field(
-        description="The access token used to authenticate to the GitHub API."
-    )
-    target: Missing[str] = Field(
+    prompt: str = Field(description="The user's prompt for the agent")
+    model: Missing[str] = Field(
         default=UNSET,
-        description="The name of the user or organization to scope the user access token to. **Required** unless `target_id` is specified.",
+        description="The model to use for this task. The allowed models may change over time and depend on the user's GitHub Copilot plan and organization policies. Currently supported values: `claude-sonnet-4.6`, `claude-opus-4.6`, `gpt-5.2-codex`, `gpt-5.3-codex`, `gpt-5.4`, `claude-sonnet-4.5`, `claude-opus-4.5`",
     )
-    target_id: Missing[int] = Field(
+    custom_agent: Missing[str] = Field(
         default=UNSET,
-        description="The ID of the user or organization to scope the user access token to. **Required** unless `target` is specified.",
+        description="Optional identifier for a custom agent to use for this task. Use the custom agent's filename without the extension - for example, for a `.github/agents/performance-optimizer.agent.md` custom agent, use `performance-optimizer`.",
     )
-    repositories: Missing[list[str]] = Field(
-        default=UNSET,
-        description="The list of repository names to scope the user access token to. `repositories` may not be specified if `repository_ids` is specified.",
+    create_pull_request: Missing[bool] = Field(
+        default=UNSET, description="Whether to create a PR."
     )
-    repository_ids: Missing[list[int]] = Field(
-        default=UNSET,
-        description="The list of repository IDs to scope the user access token to. `repository_ids` may not be specified if `repositories` is specified.",
+    base_ref: Missing[str] = Field(
+        default=UNSET, description="Base ref for new branch/PR"
     )
-    permissions: Missing[AppPermissions] = Field(
+    head_ref: Missing[str] = Field(
         default=UNSET,
-        title="App Permissions",
-        description="The permissions granted to the user access token.",
+        description="Head ref for existing branch/PR. If provided with `base_ref`, the agent looks up open PR context for `head_ref` targeting `base_ref` and commits to `head_ref` instead of creating a new branch.",
     )
 
 
-model_rebuild(ApplicationsClientIdTokenScopedPostBody)
+model_rebuild(AgentsReposOwnerRepoTasksPostBody)
 
-__all__ = ("ApplicationsClientIdTokenScopedPostBody",)
+__all__ = ("AgentsReposOwnerRepoTasksPostBody",)

@@ -16,14 +16,20 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgPersonalAccessTokensPatIdPostBody(GitHubModel):
-    """OrgsOrgPersonalAccessTokensPatIdPostBody"""
+class OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody(
+    GitHubModel
+):
+    """OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody"""
 
-    action: Literal["revoke"] = Field(
-        description="Action to apply to the fine-grained personal access token."
+    role: Literal["reader", "writer", "admin", "no_access"] = Field(
+        description="The new role to grant to the collaborator. Use `no_access` to remove the collaborator."
     )
 
 
-model_rebuild(OrgsOrgPersonalAccessTokensPatIdPostBody)
+model_rebuild(
+    OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody
+)
 
-__all__ = ("OrgsOrgPersonalAccessTokensPatIdPostBody",)
+__all__ = (
+    "OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody",
+)

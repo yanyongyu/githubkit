@@ -12,25 +12,20 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0188 import SecretScanningCustomPattern
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0(
-    GitHubModel
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneo
-    f0
+class OrgsOrgSecretScanningCustomPatternsPostResponse201(GitHubModel):
+    """OrgsOrgSecretScanningCustomPatternsPostResponse201"""
 
-    Examples:
-        {'contexts': ['contexts']}
-    """
-
-    contexts: list[str] = Field(description="The name of the status checks")
+    created_patterns: Missing[list[SecretScanningCustomPattern]] = Field(
+        default=UNSET, description="The list of successfully created custom patterns."
+    )
 
 
-model_rebuild(
-    ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0
-)
+model_rebuild(OrgsOrgSecretScanningCustomPatternsPostResponse201)
 
-__all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0",
-)
+__all__ = ("OrgsOrgSecretScanningCustomPatternsPostResponse201",)

@@ -9,30 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType(TypedDict):
-    """ReposOwnerRepoMilestonesMilestoneNumberPatchBody"""
+class ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBodyType(TypedDict):
+    """ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBody"""
 
-    title: NotRequired[str]
-    state: NotRequired[Literal["open", "closed"]]
-    description: NotRequired[str]
-    due_on: NotRequired[_dt.datetime]
+    status: Literal["approve", "deny"]
+    message: str
 
 
-class ReposOwnerRepoMilestonesMilestoneNumberPatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoMilestonesMilestoneNumberPatchBody"""
+class ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBody"""
 
-    title: NotRequired[str]
-    state: NotRequired[Literal["open", "closed"]]
-    description: NotRequired[str]
-    due_on: NotRequired[str]
+    status: Literal["approve", "deny"]
+    message: str
 
 
 __all__ = (
-    "ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType",
-    "ReposOwnerRepoMilestonesMilestoneNumberPatchBodyTypeForResponse",
+    "ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBodyType",
+    "ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBodyTypeForResponse",
 )

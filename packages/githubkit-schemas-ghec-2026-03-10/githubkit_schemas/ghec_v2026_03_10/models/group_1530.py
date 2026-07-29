@@ -9,35 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoMilestonesMilestoneNumberPatchBody(GitHubModel):
-    """ReposOwnerRepoMilestonesMilestoneNumberPatchBody"""
+class ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBody(GitHubModel):
+    """ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBody"""
 
-    title: Missing[str] = Field(
-        default=UNSET, description="The title of the milestone."
+    status: Literal["approve", "deny"] = Field(
+        description="The review action to perform on the dismissal request."
     )
-    state: Missing[Literal["open", "closed"]] = Field(
-        default=UNSET,
-        description="The state of the milestone. Either `open` or `closed`.",
-    )
-    description: Missing[str] = Field(
-        default=UNSET, description="A description of the milestone."
-    )
-    due_on: Missing[_dt.datetime] = Field(
-        default=UNSET,
-        description="The milestone due date. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    message: str = Field(
+        description="A message to include with the review. Has a maximum character length of 2048."
     )
 
 
-model_rebuild(ReposOwnerRepoMilestonesMilestoneNumberPatchBody)
+model_rebuild(ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBody)
 
-__all__ = ("ReposOwnerRepoMilestonesMilestoneNumberPatchBody",)
+__all__ = ("ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBody",)

@@ -9,77 +9,141 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0599 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0600 import (
+from .group_0617 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0618 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0619 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0634 import ProjectsV2ItemType, ProjectsV2ItemTypeForResponse
+from .group_0620 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookProjectsV2ItemConvertedType(TypedDict):
-    """Projects v2 Item Converted Event"""
+class WebhookProjectCardDeletedType(TypedDict):
+    """project_card deleted event"""
 
-    action: Literal["converted"]
-    changes: WebhookProjectsV2ItemConvertedPropChangesType
+    action: Literal["deleted"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
-    projects_v2_item: ProjectsV2ItemType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    project_card: WebhookProjectCardDeletedPropProjectCardType
+    repository: NotRequired[Union[None, RepositoryWebhooksType]]
     sender: SimpleUserType
 
 
-class WebhookProjectsV2ItemConvertedTypeForResponse(TypedDict):
-    """Projects v2 Item Converted Event"""
+class WebhookProjectCardDeletedTypeForResponse(TypedDict):
+    """project_card deleted event"""
 
-    action: Literal["converted"]
-    changes: WebhookProjectsV2ItemConvertedPropChangesTypeForResponse
+    action: Literal["deleted"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: OrganizationSimpleWebhooksTypeForResponse
-    projects_v2_item: ProjectsV2ItemTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    project_card: WebhookProjectCardDeletedPropProjectCardTypeForResponse
+    repository: NotRequired[Union[None, RepositoryWebhooksTypeForResponse]]
     sender: SimpleUserTypeForResponse
 
 
-class WebhookProjectsV2ItemConvertedPropChangesType(TypedDict):
-    """WebhookProjectsV2ItemConvertedPropChanges"""
+class WebhookProjectCardDeletedPropProjectCardType(TypedDict):
+    """Project Card"""
 
-    content_type: NotRequired[
-        WebhookProjectsV2ItemConvertedPropChangesPropContentTypeType
+    after_id: NotRequired[Union[int, None]]
+    archived: bool
+    column_id: Union[int, None]
+    column_url: str
+    content_url: NotRequired[str]
+    created_at: _dt.datetime
+    creator: Union[WebhookProjectCardDeletedPropProjectCardPropCreatorType, None]
+    id: int
+    node_id: str
+    note: Union[str, None]
+    project_url: str
+    updated_at: _dt.datetime
+    url: str
+
+
+class WebhookProjectCardDeletedPropProjectCardTypeForResponse(TypedDict):
+    """Project Card"""
+
+    after_id: NotRequired[Union[int, None]]
+    archived: bool
+    column_id: Union[int, None]
+    column_url: str
+    content_url: NotRequired[str]
+    created_at: str
+    creator: Union[
+        WebhookProjectCardDeletedPropProjectCardPropCreatorTypeForResponse, None
     ]
+    id: int
+    node_id: str
+    note: Union[str, None]
+    project_url: str
+    updated_at: str
+    url: str
 
 
-class WebhookProjectsV2ItemConvertedPropChangesTypeForResponse(TypedDict):
-    """WebhookProjectsV2ItemConvertedPropChanges"""
+class WebhookProjectCardDeletedPropProjectCardPropCreatorType(TypedDict):
+    """User"""
 
-    content_type: NotRequired[
-        WebhookProjectsV2ItemConvertedPropChangesPropContentTypeTypeForResponse
-    ]
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-class WebhookProjectsV2ItemConvertedPropChangesPropContentTypeType(TypedDict):
-    """WebhookProjectsV2ItemConvertedPropChangesPropContentType"""
+class WebhookProjectCardDeletedPropProjectCardPropCreatorTypeForResponse(TypedDict):
+    """User"""
 
-    from_: NotRequired[Union[str, None]]
-    to: NotRequired[str]
-
-
-class WebhookProjectsV2ItemConvertedPropChangesPropContentTypeTypeForResponse(
-    TypedDict
-):
-    """WebhookProjectsV2ItemConvertedPropChangesPropContentType"""
-
-    from_: NotRequired[Union[str, None]]
-    to: NotRequired[str]
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "WebhookProjectsV2ItemConvertedPropChangesPropContentTypeType",
-    "WebhookProjectsV2ItemConvertedPropChangesPropContentTypeTypeForResponse",
-    "WebhookProjectsV2ItemConvertedPropChangesType",
-    "WebhookProjectsV2ItemConvertedPropChangesTypeForResponse",
-    "WebhookProjectsV2ItemConvertedType",
-    "WebhookProjectsV2ItemConvertedTypeForResponse",
+    "WebhookProjectCardDeletedPropProjectCardPropCreatorType",
+    "WebhookProjectCardDeletedPropProjectCardPropCreatorTypeForResponse",
+    "WebhookProjectCardDeletedPropProjectCardType",
+    "WebhookProjectCardDeletedPropProjectCardTypeForResponse",
+    "WebhookProjectCardDeletedType",
+    "WebhookProjectCardDeletedTypeForResponse",
 )

@@ -13,41 +13,47 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0178 import RepositoryRulesetType, RepositoryRulesetTypeForResponse
-from .group_0599 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0600 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0601 import (
+from .group_0618 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0619 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0620 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0602 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0621 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0659 import WebhooksReviewType, WebhooksReviewTypeForResponse
+from .group_0983 import (
+    WebhookPullRequestReviewSubmittedPropPullRequestType,
+    WebhookPullRequestReviewSubmittedPropPullRequestTypeForResponse,
+)
 
 
-class WebhookRepositoryRulesetDeletedType(TypedDict):
-    """repository ruleset deleted event"""
+class WebhookPullRequestReviewSubmittedType(TypedDict):
+    """pull_request_review submitted event"""
 
-    action: Literal["deleted"]
+    action: Literal["submitted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    repository_ruleset: RepositoryRulesetType
+    pull_request: WebhookPullRequestReviewSubmittedPropPullRequestType
+    repository: RepositoryWebhooksType
+    review: WebhooksReviewType
     sender: SimpleUserType
 
 
-class WebhookRepositoryRulesetDeletedTypeForResponse(TypedDict):
-    """repository ruleset deleted event"""
+class WebhookPullRequestReviewSubmittedTypeForResponse(TypedDict):
+    """pull_request_review submitted event"""
 
-    action: Literal["deleted"]
+    action: Literal["submitted"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    repository_ruleset: RepositoryRulesetTypeForResponse
+    pull_request: WebhookPullRequestReviewSubmittedPropPullRequestTypeForResponse
+    repository: RepositoryWebhooksTypeForResponse
+    review: WebhooksReviewTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookRepositoryRulesetDeletedType",
-    "WebhookRepositoryRulesetDeletedTypeForResponse",
+    "WebhookPullRequestReviewSubmittedType",
+    "WebhookPullRequestReviewSubmittedTypeForResponse",
 )

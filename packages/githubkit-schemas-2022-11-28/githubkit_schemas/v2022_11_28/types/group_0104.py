@@ -12,53 +12,83 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class BillingUsageReportType(TypedDict):
-    """BillingUsageReport"""
+class BillingPremiumRequestUsageReportOrgType(TypedDict):
+    """BillingPremiumRequestUsageReportOrg"""
 
-    usage_items: NotRequired[list[BillingUsageReportPropUsageItemsItemsType]]
+    time_period: BillingPremiumRequestUsageReportOrgPropTimePeriodType
+    organization: str
+    user: NotRequired[str]
+    product: NotRequired[str]
+    model: NotRequired[str]
+    usage_items: list[BillingPremiumRequestUsageReportOrgPropUsageItemsItemsType]
 
 
-class BillingUsageReportTypeForResponse(TypedDict):
-    """BillingUsageReport"""
+class BillingPremiumRequestUsageReportOrgTypeForResponse(TypedDict):
+    """BillingPremiumRequestUsageReportOrg"""
 
-    usage_items: NotRequired[list[BillingUsageReportPropUsageItemsItemsTypeForResponse]]
+    time_period: BillingPremiumRequestUsageReportOrgPropTimePeriodTypeForResponse
+    organization: str
+    user: NotRequired[str]
+    product: NotRequired[str]
+    model: NotRequired[str]
+    usage_items: list[
+        BillingPremiumRequestUsageReportOrgPropUsageItemsItemsTypeForResponse
+    ]
 
 
-class BillingUsageReportPropUsageItemsItemsType(TypedDict):
-    """BillingUsageReportPropUsageItemsItems"""
+class BillingPremiumRequestUsageReportOrgPropTimePeriodType(TypedDict):
+    """BillingPremiumRequestUsageReportOrgPropTimePeriod"""
 
-    date: str
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
+
+
+class BillingPremiumRequestUsageReportOrgPropTimePeriodTypeForResponse(TypedDict):
+    """BillingPremiumRequestUsageReportOrgPropTimePeriod"""
+
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
+
+
+class BillingPremiumRequestUsageReportOrgPropUsageItemsItemsType(TypedDict):
+    """BillingPremiumRequestUsageReportOrgPropUsageItemsItems"""
+
     product: str
     sku: str
-    quantity: int
+    model: str
     unit_type: str
     price_per_unit: float
+    gross_quantity: float
     gross_amount: float
+    discount_quantity: float
     discount_amount: float
+    net_quantity: float
     net_amount: float
-    organization_name: str
-    repository_name: NotRequired[str]
 
 
-class BillingUsageReportPropUsageItemsItemsTypeForResponse(TypedDict):
-    """BillingUsageReportPropUsageItemsItems"""
+class BillingPremiumRequestUsageReportOrgPropUsageItemsItemsTypeForResponse(TypedDict):
+    """BillingPremiumRequestUsageReportOrgPropUsageItemsItems"""
 
-    date: str
     product: str
     sku: str
-    quantity: int
+    model: str
     unit_type: str
     price_per_unit: float
+    gross_quantity: float
     gross_amount: float
+    discount_quantity: float
     discount_amount: float
+    net_quantity: float
     net_amount: float
-    organization_name: str
-    repository_name: NotRequired[str]
 
 
 __all__ = (
-    "BillingUsageReportPropUsageItemsItemsType",
-    "BillingUsageReportPropUsageItemsItemsTypeForResponse",
-    "BillingUsageReportType",
-    "BillingUsageReportTypeForResponse",
+    "BillingPremiumRequestUsageReportOrgPropTimePeriodType",
+    "BillingPremiumRequestUsageReportOrgPropTimePeriodTypeForResponse",
+    "BillingPremiumRequestUsageReportOrgPropUsageItemsItemsType",
+    "BillingPremiumRequestUsageReportOrgPropUsageItemsItemsTypeForResponse",
+    "BillingPremiumRequestUsageReportOrgType",
+    "BillingPremiumRequestUsageReportOrgTypeForResponse",
 )

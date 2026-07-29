@@ -2091,7 +2091,7 @@ class AppsClient:
             },
         )
 
-    def installable_organizations(
+    def enterprise_installable_organizations(
         self,
         enterprise: str,
         *,
@@ -2102,7 +2102,7 @@ class AppsClient:
     ) -> Response[
         list[InstallableOrganization], list[InstallableOrganizationTypeForResponse]
     ]:
-        """enterprise-apps/installable-organizations
+        """enterprise-apps/enterprise-installable-organizations
 
         GET /enterprises/{enterprise}/apps/installable_organizations
 
@@ -2133,7 +2133,7 @@ class AppsClient:
             response_model=list[InstallableOrganization],
         )
 
-    async def async_installable_organizations(
+    async def async_enterprise_installable_organizations(
         self,
         enterprise: str,
         *,
@@ -2144,7 +2144,7 @@ class AppsClient:
     ) -> Response[
         list[InstallableOrganization], list[InstallableOrganizationTypeForResponse]
     ]:
-        """enterprise-apps/installable-organizations
+        """enterprise-apps/enterprise-installable-organizations
 
         GET /enterprises/{enterprise}/apps/installable_organizations
 
@@ -2175,7 +2175,7 @@ class AppsClient:
             response_model=list[InstallableOrganization],
         )
 
-    def installable_organization_accessible_repositories(
+    def enterprise_installable_organization_accessible_repositories(
         self,
         enterprise: str,
         org: str,
@@ -2187,7 +2187,7 @@ class AppsClient:
     ) -> Response[
         list[AccessibleRepository], list[AccessibleRepositoryTypeForResponse]
     ]:
-        """enterprise-apps/installable-organization-accessible-repositories
+        """enterprise-apps/enterprise-installable-organization-accessible-repositories
 
         GET /enterprises/{enterprise}/apps/installable_organizations/{org}/accessible_repositories
 
@@ -2218,7 +2218,7 @@ class AppsClient:
             response_model=list[AccessibleRepository],
         )
 
-    async def async_installable_organization_accessible_repositories(
+    async def async_enterprise_installable_organization_accessible_repositories(
         self,
         enterprise: str,
         org: str,
@@ -2230,7 +2230,7 @@ class AppsClient:
     ) -> Response[
         list[AccessibleRepository], list[AccessibleRepositoryTypeForResponse]
     ]:
-        """enterprise-apps/installable-organization-accessible-repositories
+        """enterprise-apps/enterprise-installable-organization-accessible-repositories
 
         GET /enterprises/{enterprise}/apps/installable_organizations/{org}/accessible_repositories
 
@@ -2261,7 +2261,7 @@ class AppsClient:
             response_model=list[AccessibleRepository],
         )
 
-    def organization_installations(
+    def enterprise_organization_installations(
         self,
         enterprise: str,
         org: str,
@@ -2274,7 +2274,7 @@ class AppsClient:
         list[EnterpriseOrganizationInstallation],
         list[EnterpriseOrganizationInstallationTypeForResponse],
     ]:
-        """enterprise-apps/organization-installations
+        """enterprise-apps/enterprise-organization-installations
 
         GET /enterprises/{enterprise}/apps/organizations/{org}/installations
 
@@ -2305,7 +2305,7 @@ class AppsClient:
             response_model=list[EnterpriseOrganizationInstallation],
         )
 
-    async def async_organization_installations(
+    async def async_enterprise_organization_installations(
         self,
         enterprise: str,
         org: str,
@@ -2318,7 +2318,7 @@ class AppsClient:
         list[EnterpriseOrganizationInstallation],
         list[EnterpriseOrganizationInstallationTypeForResponse],
     ]:
-        """enterprise-apps/organization-installations
+        """enterprise-apps/enterprise-organization-installations
 
         GET /enterprises/{enterprise}/apps/organizations/{org}/installations
 
@@ -2350,7 +2350,7 @@ class AppsClient:
         )
 
     @overload
-    def create_installation(
+    def enterprise_create_installation(
         self,
         enterprise: str,
         org: str,
@@ -2361,7 +2361,7 @@ class AppsClient:
     ) -> Response[Installation, InstallationTypeForResponse]: ...
 
     @overload
-    def create_installation(
+    def enterprise_create_installation(
         self,
         enterprise: str,
         org: str,
@@ -2374,7 +2374,7 @@ class AppsClient:
         repositories: Missing[list[str]] = UNSET,
     ) -> Response[Installation, InstallationTypeForResponse]: ...
 
-    def create_installation(
+    def enterprise_create_installation(
         self,
         enterprise: str,
         org: str,
@@ -2386,7 +2386,7 @@ class AppsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[Installation, InstallationTypeForResponse]:
-        """enterprise-apps/create-installation
+        """enterprise-apps/enterprise-create-installation
 
         POST /enterprises/{enterprise}/apps/organizations/{org}/installations
 
@@ -2430,7 +2430,7 @@ class AppsClient:
         )
 
     @overload
-    async def async_create_installation(
+    async def async_enterprise_create_installation(
         self,
         enterprise: str,
         org: str,
@@ -2441,7 +2441,7 @@ class AppsClient:
     ) -> Response[Installation, InstallationTypeForResponse]: ...
 
     @overload
-    async def async_create_installation(
+    async def async_enterprise_create_installation(
         self,
         enterprise: str,
         org: str,
@@ -2454,7 +2454,7 @@ class AppsClient:
         repositories: Missing[list[str]] = UNSET,
     ) -> Response[Installation, InstallationTypeForResponse]: ...
 
-    async def async_create_installation(
+    async def async_enterprise_create_installation(
         self,
         enterprise: str,
         org: str,
@@ -2466,7 +2466,7 @@ class AppsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[Installation, InstallationTypeForResponse]:
-        """enterprise-apps/create-installation
+        """enterprise-apps/enterprise-create-installation
 
         POST /enterprises/{enterprise}/apps/organizations/{org}/installations
 
@@ -2583,7 +2583,7 @@ class AppsClient:
             },
         )
 
-    def organization_installation_repositories(
+    def enterprise_organization_installation_repositories(
         self,
         enterprise: str,
         org: str,
@@ -2596,7 +2596,7 @@ class AppsClient:
     ) -> Response[
         list[AccessibleRepository], list[AccessibleRepositoryTypeForResponse]
     ]:
-        """enterprise-apps/organization-installation-repositories
+        """enterprise-apps/enterprise-organization-installation-repositories
 
         GET /enterprises/{enterprise}/apps/organizations/{org}/installations/{installation_id}/repositories
 
@@ -2627,7 +2627,7 @@ class AppsClient:
             response_model=list[AccessibleRepository],
         )
 
-    async def async_organization_installation_repositories(
+    async def async_enterprise_organization_installation_repositories(
         self,
         enterprise: str,
         org: str,
@@ -2640,7 +2640,7 @@ class AppsClient:
     ) -> Response[
         list[AccessibleRepository], list[AccessibleRepositoryTypeForResponse]
     ]:
-        """enterprise-apps/organization-installation-repositories
+        """enterprise-apps/enterprise-organization-installation-repositories
 
         GET /enterprises/{enterprise}/apps/organizations/{org}/installations/{installation_id}/repositories
 
@@ -2672,7 +2672,7 @@ class AppsClient:
         )
 
     @overload
-    def change_installation_repository_access_selection(
+    def enterprise_change_installation_repository_access_selection(
         self,
         enterprise: str,
         org: str,
@@ -2684,7 +2684,7 @@ class AppsClient:
     ) -> Response[Installation, InstallationTypeForResponse]: ...
 
     @overload
-    def change_installation_repository_access_selection(
+    def enterprise_change_installation_repository_access_selection(
         self,
         enterprise: str,
         org: str,
@@ -2697,7 +2697,7 @@ class AppsClient:
         repositories: Missing[list[str]] = UNSET,
     ) -> Response[Installation, InstallationTypeForResponse]: ...
 
-    def change_installation_repository_access_selection(
+    def enterprise_change_installation_repository_access_selection(
         self,
         enterprise: str,
         org: str,
@@ -2710,7 +2710,7 @@ class AppsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[Installation, InstallationTypeForResponse]:
-        """enterprise-apps/change-installation-repository-access-selection
+        """enterprise-apps/enterprise-change-installation-repository-access-selection
 
         PATCH /enterprises/{enterprise}/apps/organizations/{org}/installations/{installation_id}/repositories
 
@@ -2752,7 +2752,7 @@ class AppsClient:
         )
 
     @overload
-    async def async_change_installation_repository_access_selection(
+    async def async_enterprise_change_installation_repository_access_selection(
         self,
         enterprise: str,
         org: str,
@@ -2764,7 +2764,7 @@ class AppsClient:
     ) -> Response[Installation, InstallationTypeForResponse]: ...
 
     @overload
-    async def async_change_installation_repository_access_selection(
+    async def async_enterprise_change_installation_repository_access_selection(
         self,
         enterprise: str,
         org: str,
@@ -2777,7 +2777,7 @@ class AppsClient:
         repositories: Missing[list[str]] = UNSET,
     ) -> Response[Installation, InstallationTypeForResponse]: ...
 
-    async def async_change_installation_repository_access_selection(
+    async def async_enterprise_change_installation_repository_access_selection(
         self,
         enterprise: str,
         org: str,
@@ -2790,7 +2790,7 @@ class AppsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[Installation, InstallationTypeForResponse]:
-        """enterprise-apps/change-installation-repository-access-selection
+        """enterprise-apps/enterprise-change-installation-repository-access-selection
 
         PATCH /enterprises/{enterprise}/apps/organizations/{org}/installations/{installation_id}/repositories
 
@@ -2832,7 +2832,7 @@ class AppsClient:
         )
 
     @overload
-    def grant_repository_access_to_installation(
+    def enterprise_grant_repository_access_to_installation(
         self,
         enterprise: str,
         org: str,
@@ -2846,7 +2846,7 @@ class AppsClient:
     ]: ...
 
     @overload
-    def grant_repository_access_to_installation(
+    def enterprise_grant_repository_access_to_installation(
         self,
         enterprise: str,
         org: str,
@@ -2860,7 +2860,7 @@ class AppsClient:
         list[AccessibleRepository], list[AccessibleRepositoryTypeForResponse]
     ]: ...
 
-    def grant_repository_access_to_installation(
+    def enterprise_grant_repository_access_to_installation(
         self,
         enterprise: str,
         org: str,
@@ -2875,7 +2875,7 @@ class AppsClient:
     ) -> Response[
         list[AccessibleRepository], list[AccessibleRepositoryTypeForResponse]
     ]:
-        """enterprise-apps/grant-repository-access-to-installation
+        """enterprise-apps/enterprise-grant-repository-access-to-installation
 
         PATCH /enterprises/{enterprise}/apps/organizations/{org}/installations/{installation_id}/repositories/add
 
@@ -2917,7 +2917,7 @@ class AppsClient:
         )
 
     @overload
-    async def async_grant_repository_access_to_installation(
+    async def async_enterprise_grant_repository_access_to_installation(
         self,
         enterprise: str,
         org: str,
@@ -2931,7 +2931,7 @@ class AppsClient:
     ]: ...
 
     @overload
-    async def async_grant_repository_access_to_installation(
+    async def async_enterprise_grant_repository_access_to_installation(
         self,
         enterprise: str,
         org: str,
@@ -2945,7 +2945,7 @@ class AppsClient:
         list[AccessibleRepository], list[AccessibleRepositoryTypeForResponse]
     ]: ...
 
-    async def async_grant_repository_access_to_installation(
+    async def async_enterprise_grant_repository_access_to_installation(
         self,
         enterprise: str,
         org: str,
@@ -2960,7 +2960,7 @@ class AppsClient:
     ) -> Response[
         list[AccessibleRepository], list[AccessibleRepositoryTypeForResponse]
     ]:
-        """enterprise-apps/grant-repository-access-to-installation
+        """enterprise-apps/enterprise-grant-repository-access-to-installation
 
         PATCH /enterprises/{enterprise}/apps/organizations/{org}/installations/{installation_id}/repositories/add
 
@@ -3002,7 +3002,7 @@ class AppsClient:
         )
 
     @overload
-    def remove_repository_access_to_installation(
+    def enterprise_remove_repository_access_to_installation(
         self,
         enterprise: str,
         org: str,
@@ -3016,7 +3016,7 @@ class AppsClient:
     ]: ...
 
     @overload
-    def remove_repository_access_to_installation(
+    def enterprise_remove_repository_access_to_installation(
         self,
         enterprise: str,
         org: str,
@@ -3030,7 +3030,7 @@ class AppsClient:
         list[AccessibleRepository], list[AccessibleRepositoryTypeForResponse]
     ]: ...
 
-    def remove_repository_access_to_installation(
+    def enterprise_remove_repository_access_to_installation(
         self,
         enterprise: str,
         org: str,
@@ -3045,7 +3045,7 @@ class AppsClient:
     ) -> Response[
         list[AccessibleRepository], list[AccessibleRepositoryTypeForResponse]
     ]:
-        """enterprise-apps/remove-repository-access-to-installation
+        """enterprise-apps/enterprise-remove-repository-access-to-installation
 
         PATCH /enterprises/{enterprise}/apps/organizations/{org}/installations/{installation_id}/repositories/remove
 
@@ -3091,7 +3091,7 @@ class AppsClient:
         )
 
     @overload
-    async def async_remove_repository_access_to_installation(
+    async def async_enterprise_remove_repository_access_to_installation(
         self,
         enterprise: str,
         org: str,
@@ -3105,7 +3105,7 @@ class AppsClient:
     ]: ...
 
     @overload
-    async def async_remove_repository_access_to_installation(
+    async def async_enterprise_remove_repository_access_to_installation(
         self,
         enterprise: str,
         org: str,
@@ -3119,7 +3119,7 @@ class AppsClient:
         list[AccessibleRepository], list[AccessibleRepositoryTypeForResponse]
     ]: ...
 
-    async def async_remove_repository_access_to_installation(
+    async def async_enterprise_remove_repository_access_to_installation(
         self,
         enterprise: str,
         org: str,
@@ -3134,7 +3134,7 @@ class AppsClient:
     ) -> Response[
         list[AccessibleRepository], list[AccessibleRepositoryTypeForResponse]
     ]:
-        """enterprise-apps/remove-repository-access-to-installation
+        """enterprise-apps/enterprise-remove-repository-access-to-installation
 
         PATCH /enterprises/{enterprise}/apps/organizations/{org}/installations/{installation_id}/repositories/remove
 

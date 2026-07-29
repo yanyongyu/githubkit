@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -19,17 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0362 import Deployment
-from .group_0599 import EnterpriseWebhooks
-from .group_0600 import SimpleInstallation
-from .group_0601 import OrganizationSimpleWebhooks
-from .group_0602 import RepositoryWebhooks
+from .group_0618 import EnterpriseWebhooks
+from .group_0619 import SimpleInstallation
+from .group_0620 import OrganizationSimpleWebhooks
+from .group_0621 import RepositoryWebhooks
+from .group_0663 import SecretScanningAlertWebhook
 
 
-class WebhookWorkflowJobQueued(GitHubModel):
-    """workflow_job queued event"""
+class WebhookSecretScanningAlertResolved(GitHubModel):
+    """secret_scanning_alert resolved event"""
 
-    action: Literal["queued"] = Field()
+    action: Literal["resolved"] = Field()
+    alert: SecretScanningAlertWebhook = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -49,62 +49,11 @@ class WebhookWorkflowJobQueued(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    workflow_job: WebhookWorkflowJobQueuedPropWorkflowJob = Field()
-    deployment: Missing[Deployment] = Field(
-        default=UNSET,
-        title="Deployment",
-        description="A request for a specific ref(branch,sha,tag) to be deployed",
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
     )
 
 
-class WebhookWorkflowJobQueuedPropWorkflowJob(GitHubModel):
-    """WebhookWorkflowJobQueuedPropWorkflowJob"""
+model_rebuild(WebhookSecretScanningAlertResolved)
 
-    check_run_url: str = Field()
-    completed_at: Union[str, None] = Field()
-    conclusion: Union[str, None] = Field()
-    created_at: str = Field(description="The time that the job created.")
-    head_sha: str = Field()
-    html_url: str = Field()
-    id: int = Field()
-    labels: list[str] = Field()
-    name: str = Field()
-    node_id: str = Field()
-    run_attempt: int = Field()
-    run_id: int = Field()
-    run_url: str = Field()
-    runner_group_id: Union[int, None] = Field()
-    runner_group_name: Union[str, None] = Field()
-    runner_id: Union[int, None] = Field()
-    runner_name: Union[str, None] = Field()
-    started_at: _dt.datetime = Field()
-    status: Literal["queued", "in_progress", "completed", "waiting"] = Field()
-    head_branch: Union[str, None] = Field(description="The name of the current branch.")
-    workflow_name: Union[str, None] = Field(description="The name of the workflow.")
-    steps: list[WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItems] = Field()
-    url: str = Field()
-
-
-class WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItems(GitHubModel):
-    """Workflow Step"""
-
-    completed_at: Union[str, None] = Field()
-    conclusion: Union[None, Literal["failure", "skipped", "success", "cancelled"]] = (
-        Field()
-    )
-    name: str = Field()
-    number: int = Field()
-    started_at: Union[str, None] = Field()
-    status: Literal["completed", "in_progress", "queued", "pending"] = Field()
-
-
-model_rebuild(WebhookWorkflowJobQueued)
-model_rebuild(WebhookWorkflowJobQueuedPropWorkflowJob)
-model_rebuild(WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItems)
-
-__all__ = (
-    "WebhookWorkflowJobQueued",
-    "WebhookWorkflowJobQueuedPropWorkflowJob",
-    "WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItems",
-)
+__all__ = ("WebhookSecretScanningAlertResolved",)

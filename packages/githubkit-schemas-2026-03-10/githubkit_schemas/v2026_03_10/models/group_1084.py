@@ -9,30 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsVariablesNamePatchBody(GitHubModel):
-    """OrgsOrgActionsVariablesNamePatchBody"""
+class OrgsOrgActionsHostedRunnersImagesCustomGetResponse200(GitHubModel):
+    """OrgsOrgActionsHostedRunnersImagesCustomGetResponse200"""
 
-    name: Missing[str] = Field(default=UNSET, description="The name of the variable.")
-    value: Missing[str] = Field(default=UNSET, description="The value of the variable.")
-    visibility: Missing[Literal["all", "private", "selected"]] = Field(
-        default=UNSET,
-        description="The type of repositories in the organization that can access the variable. `selected` means only the repositories specified by `selected_repository_ids` can access the variable.",
+    total_count: int = Field()
+    images: list[ActionsHostedRunnerCustomImage] = Field()
+
+
+class ActionsHostedRunnerCustomImage(GitHubModel):
+    """GitHub-hosted runner custom image details
+
+    Provides details of a custom runner image
+    """
+
+    id: int = Field(
+        description="The ID of the image. Use this ID for the `image` parameter when creating a new larger runner."
     )
-    selected_repository_ids: Missing[list[int]] = Field(
-        default=UNSET,
-        description="An array of repository ids that can access the organization variable. You can only provide a list of repository ids when the `visibility` is set to `selected`.",
+    platform: str = Field(description="The operating system of the image.")
+    total_versions_size: int = Field(
+        description="Total size of all the image versions in GB."
+    )
+    name: str = Field(description="Display name for this image.")
+    source: str = Field(description="The image provider.")
+    versions_count: int = Field(
+        description="The number of image versions associated with the image."
+    )
+    latest_version: str = Field(
+        description="The latest image version associated with the image."
+    )
+    state: str = Field(
+        description="The number of image versions associated with the image."
     )
 
 
-model_rebuild(OrgsOrgActionsVariablesNamePatchBody)
+model_rebuild(OrgsOrgActionsHostedRunnersImagesCustomGetResponse200)
+model_rebuild(ActionsHostedRunnerCustomImage)
 
-__all__ = ("OrgsOrgActionsVariablesNamePatchBody",)
+__all__ = (
+    "ActionsHostedRunnerCustomImage",
+    "OrgsOrgActionsHostedRunnersImagesCustomGetResponse200",
+)

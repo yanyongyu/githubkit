@@ -12,16 +12,25 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsVariablesNameRepositoriesPutBody(GitHubModel):
-    """OrgsOrgActionsVariablesNameRepositoriesPutBody"""
+class EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBody(
+    GitHubModel
+):
+    """EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBody"""
 
-    selected_repository_ids: list[int] = Field(
-        description="The IDs of the repositories that can access the organization variable."
+    user_identifier: Missing[str] = Field(
+        default=UNSET,
+        description="The handle for the GitHub user account or a verified email associated with their account.",
     )
 
 
-model_rebuild(OrgsOrgActionsVariablesNameRepositoriesPutBody)
+model_rebuild(
+    EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBody
+)
 
-__all__ = ("OrgsOrgActionsVariablesNameRepositoriesPutBody",)
+__all__ = (
+    "EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBody",
+)

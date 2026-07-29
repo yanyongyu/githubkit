@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,40 +17,47 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0575 import SearchResultTextMatchesItems
 
+class GroupResponse(GitHubModel):
+    """GroupResponse"""
 
-class LabelSearchResultItem(GitHubModel):
-    """Label Search Result Item
-
-    Label Search Result Item
-    """
-
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    name: str = Field()
-    color: str = Field()
-    default: bool = Field()
-    description: Union[str, None] = Field()
-    score: float = Field()
-    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
-        default=UNSET, title="Search Result Text Matches"
+    schemas: list[
+        Literal[
+            "urn:ietf:params:scim:schemas:core:2.0:Group",
+            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
+        ]
+    ] = Field(
+        description="The URIs that are used to indicate the namespaces of the SCIM schemas."
+    )
+    external_id: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        alias="externalId",
+        description="A unique identifier for the resource as defined by the provisioning client.",
+    )
+    display_name: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        alias="displayName",
+        description="A human-readable name for a security group.",
+    )
+    members: Missing[list[GroupResponsePropMembersItems]] = Field(
+        default=UNSET, description="The group members."
     )
 
 
-class SearchLabelsGetResponse200(GitHubModel):
-    """SearchLabelsGetResponse200"""
+class GroupResponsePropMembersItems(GitHubModel):
+    """GroupResponsePropMembersItems"""
 
-    total_count: int = Field()
-    incomplete_results: bool = Field()
-    items: list[LabelSearchResultItem] = Field()
+    value: str = Field(description="The local unique identifier for the member")
+    ref: str = Field(alias="$ref")
+    display: Missing[str] = Field(
+        default=UNSET, description="The display name associated with the member"
+    )
 
 
-model_rebuild(LabelSearchResultItem)
-model_rebuild(SearchLabelsGetResponse200)
+model_rebuild(GroupResponse)
+model_rebuild(GroupResponsePropMembersItems)
 
 __all__ = (
-    "LabelSearchResultItem",
-    "SearchLabelsGetResponse200",
+    "GroupResponse",
+    "GroupResponsePropMembersItems",
 )

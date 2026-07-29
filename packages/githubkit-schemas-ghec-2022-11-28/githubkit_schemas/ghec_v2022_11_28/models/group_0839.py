@@ -18,21 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0599 import EnterpriseWebhooks
-from .group_0600 import SimpleInstallation
-from .group_0601 import OrganizationSimpleWebhooks
-from .group_0602 import RepositoryWebhooks
-from .group_0620 import WebhooksIssue
-from .group_0623 import WebhooksUserMannequin
+from .group_0618 import EnterpriseWebhooks
+from .group_0619 import SimpleInstallation
+from .group_0620 import OrganizationSimpleWebhooks
+from .group_0621 import RepositoryWebhooks
+from .group_0639 import WebhooksIssue
 
 
-class WebhookIssuesUnassigned(GitHubModel):
-    """issues unassigned event"""
+class WebhookIssuesFieldAdded(GitHubModel):
+    """issues field_added event"""
 
-    action: Literal["unassigned"] = Field(description="The action that was performed.")
-    assignee: Missing[Union[WebhooksUserMannequin, None]] = Field(
-        default=UNSET, title="User"
-    )
+    action: Literal["field_added"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -47,6 +43,17 @@ class WebhookIssuesUnassigned(GitHubModel):
         title="Issue",
         description="The [issue](https://docs.github.com/enterprise-cloud@latest/rest/issues/issues#get-an-issue) itself.",
     )
+    issue_field: WebhookIssuesFieldAddedPropIssueField = Field(
+        description="The issue field whose value was set or updated on the issue."
+    )
+    issue_field_value: Missing[WebhookIssuesFieldAddedPropIssueFieldValue] = Field(
+        default=UNSET,
+        description="The value that was set or updated for the issue field. When updating an existing value, the previous value is available in `changes`.",
+    )
+    changes: Missing[WebhookIssuesFieldAddedPropChanges] = Field(
+        default=UNSET,
+        description="The previous field value, present when an existing value was updated.",
+    )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
@@ -59,6 +66,177 @@ class WebhookIssuesUnassigned(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookIssuesUnassigned)
+class WebhookIssuesFieldAddedPropIssueField(GitHubModel):
+    """WebhookIssuesFieldAddedPropIssueField
 
-__all__ = ("WebhookIssuesUnassigned",)
+    The issue field whose value was set or updated on the issue.
+    """
+
+    id: int = Field(description="The unique identifier of the issue field.")
+    name: str = Field(description="The name of the issue field.")
+    field_type: Literal["text", "date", "single_select", "multi_select", "number"] = (
+        Field(description="The data type of the issue field.")
+    )
+
+
+class WebhookIssuesFieldAddedPropIssueFieldValue(GitHubModel):
+    """WebhookIssuesFieldAddedPropIssueFieldValue
+
+    The value that was set or updated for the issue field. When updating an existing
+    value, the previous value is available in `changes`.
+    """
+
+    id: int = Field(description="The unique identifier of the issue field value.")
+    value: Missing[Union[str, float, int, None]] = Field(
+        default=UNSET,
+        description="The value of the field. Present for text, date, and number field types.",
+    )
+    value_id: Missing[int] = Field(
+        default=UNSET,
+        description="The identifier of the selected option. Present for single_select field types.",
+    )
+    option: Missing[WebhookIssuesFieldAddedPropIssueFieldValuePropOption] = Field(
+        default=UNSET,
+        description="The selected option details. Present for single_select field types.",
+    )
+    value_ids: Missing[list[int]] = Field(
+        default=UNSET,
+        description="The identifiers of the selected options. Present for multi_select field types.",
+    )
+    options: Missing[
+        list[WebhookIssuesFieldAddedPropIssueFieldValuePropOptionsItems]
+    ] = Field(
+        default=UNSET,
+        description="The selected option details. Present for multi_select field types.",
+    )
+
+
+class WebhookIssuesFieldAddedPropIssueFieldValuePropOption(GitHubModel):
+    """WebhookIssuesFieldAddedPropIssueFieldValuePropOption
+
+    The selected option details. Present for single_select field types.
+    """
+
+    id: Missing[int] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    color: Missing[str] = Field(default=UNSET)
+    description: Missing[Union[str, None]] = Field(default=UNSET)
+
+
+class WebhookIssuesFieldAddedPropIssueFieldValuePropOptionsItems(GitHubModel):
+    """WebhookIssuesFieldAddedPropIssueFieldValuePropOptionsItems"""
+
+    id: Missing[int] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    color: Missing[str] = Field(default=UNSET)
+    description: Missing[Union[str, None]] = Field(default=UNSET)
+
+
+class WebhookIssuesFieldAddedPropChanges(GitHubModel):
+    """WebhookIssuesFieldAddedPropChanges
+
+    The previous field value, present when an existing value was updated.
+    """
+
+    issue_field_value: Missing[
+        WebhookIssuesFieldAddedPropChangesPropIssueFieldValue
+    ] = Field(default=UNSET, description="The previous issue field value data.")
+
+
+class WebhookIssuesFieldAddedPropChangesPropIssueFieldValue(GitHubModel):
+    """WebhookIssuesFieldAddedPropChangesPropIssueFieldValue
+
+    The previous issue field value data.
+    """
+
+    from_: WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFrom = Field(
+        alias="from",
+        description="The previous value of the issue field before the update.",
+    )
+
+
+class WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFrom(GitHubModel):
+    """WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFrom
+
+    The previous value of the issue field before the update.
+    """
+
+    id: int = Field(description="The unique identifier of the issue field value.")
+    value: Missing[Union[str, float, int, None]] = Field(
+        default=UNSET,
+        description="The previous value. Present for text, date, and number field types.",
+    )
+    value_id: Missing[int] = Field(
+        default=UNSET,
+        description="The identifier of the previously selected option. Present for single_select field types.",
+    )
+    option: Missing[
+        WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOption
+    ] = Field(
+        default=UNSET,
+        description="The previously selected option details. Present for single_select field types.",
+    )
+    value_ids: Missing[list[int]] = Field(
+        default=UNSET,
+        description="The identifiers of the previously selected options. Present for multi_select field types.",
+    )
+    options: Missing[
+        list[
+            WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOptionsItems
+        ]
+    ] = Field(
+        default=UNSET,
+        description="The previously selected option details. Present for multi_select field types.",
+    )
+
+
+class WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOption(
+    GitHubModel
+):
+    """WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOption
+
+    The previously selected option details. Present for single_select field types.
+    """
+
+    id: Missing[int] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    color: Missing[str] = Field(default=UNSET)
+    description: Missing[Union[str, None]] = Field(default=UNSET)
+
+
+class WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOptionsItems(
+    GitHubModel
+):
+    """WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOptionsItems"""
+
+    id: Missing[int] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    color: Missing[str] = Field(default=UNSET)
+    description: Missing[Union[str, None]] = Field(default=UNSET)
+
+
+model_rebuild(WebhookIssuesFieldAdded)
+model_rebuild(WebhookIssuesFieldAddedPropIssueField)
+model_rebuild(WebhookIssuesFieldAddedPropIssueFieldValue)
+model_rebuild(WebhookIssuesFieldAddedPropIssueFieldValuePropOption)
+model_rebuild(WebhookIssuesFieldAddedPropIssueFieldValuePropOptionsItems)
+model_rebuild(WebhookIssuesFieldAddedPropChanges)
+model_rebuild(WebhookIssuesFieldAddedPropChangesPropIssueFieldValue)
+model_rebuild(WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFrom)
+model_rebuild(WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOption)
+model_rebuild(
+    WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOptionsItems
+)
+
+__all__ = (
+    "WebhookIssuesFieldAdded",
+    "WebhookIssuesFieldAddedPropChanges",
+    "WebhookIssuesFieldAddedPropChangesPropIssueFieldValue",
+    "WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFrom",
+    "WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOption",
+    "WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOptionsItems",
+    "WebhookIssuesFieldAddedPropIssueField",
+    "WebhookIssuesFieldAddedPropIssueFieldValue",
+    "WebhookIssuesFieldAddedPropIssueFieldValuePropOption",
+    "WebhookIssuesFieldAddedPropIssueFieldValuePropOptionsItems",
+)

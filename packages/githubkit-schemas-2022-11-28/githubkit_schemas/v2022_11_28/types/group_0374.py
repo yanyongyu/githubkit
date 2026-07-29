@@ -9,30 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0132 import TeamType, TeamTypeForResponse
+from .group_0373 import MetadataType, MetadataTypeForResponse
 
 
-class EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems"""
+class DependencyType(TypedDict):
+    """Dependency"""
 
-    type: NotRequired[Literal["User", "Team"]]
-    reviewer: NotRequired[Union[SimpleUserType, TeamType]]
+    package_url: NotRequired[str]
+    metadata: NotRequired[MetadataType]
+    relationship: NotRequired[Literal["direct", "indirect"]]
+    scope: NotRequired[Literal["runtime", "development"]]
+    dependencies: NotRequired[list[str]]
 
 
-class EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsTypeForResponse(
-    TypedDict
-):
-    """EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems"""
+class DependencyTypeForResponse(TypedDict):
+    """Dependency"""
 
-    type: NotRequired[Literal["User", "Team"]]
-    reviewer: NotRequired[Union[SimpleUserTypeForResponse, TeamTypeForResponse]]
+    package_url: NotRequired[str]
+    metadata: NotRequired[MetadataTypeForResponse]
+    relationship: NotRequired[Literal["direct", "indirect"]]
+    scope: NotRequired[Literal["runtime", "development"]]
+    dependencies: NotRequired[list[str]]
 
 
 __all__ = (
-    "EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType",
-    "EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsTypeForResponse",
+    "DependencyType",
+    "DependencyTypeForResponse",
 )

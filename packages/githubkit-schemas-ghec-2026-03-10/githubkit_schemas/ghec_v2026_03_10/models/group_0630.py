@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -19,25 +18,7 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhooksProjectCard(GitHubModel):
-    """Project Card"""
-
-    after_id: Missing[Union[int, None]] = Field(default=UNSET)
-    archived: bool = Field(description="Whether or not the card is archived")
-    column_id: int = Field()
-    column_url: str = Field()
-    content_url: Missing[str] = Field(default=UNSET)
-    created_at: _dt.datetime = Field()
-    creator: Union[WebhooksProjectCardPropCreator, None] = Field(title="User")
-    id: int = Field(description="The project card's ID")
-    node_id: str = Field()
-    note: Union[str, None] = Field()
-    project_url: str = Field()
-    updated_at: _dt.datetime = Field()
-    url: str = Field()
-
-
-class WebhooksProjectCardPropCreator(GitHubModel):
+class WebhooksUser(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -64,10 +45,6 @@ class WebhooksProjectCardPropCreator(GitHubModel):
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhooksProjectCard)
-model_rebuild(WebhooksProjectCardPropCreator)
+model_rebuild(WebhooksUser)
 
-__all__ = (
-    "WebhooksProjectCard",
-    "WebhooksProjectCardPropCreator",
-)
+__all__ = ("WebhooksUser",)

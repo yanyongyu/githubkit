@@ -9,29 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class RepositoryRuleDetailedOneof9Type(TypedDict):
-    """RepositoryRuleDetailedOneof9"""
+class PullRequestMergeResultType(TypedDict):
+    """Pull Request Merge Result
 
-    type: Literal["non_fast_forward"]
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    Pull Request Merge Result
+    """
+
+    sha: str
+    merged: bool
+    message: str
 
 
-class RepositoryRuleDetailedOneof9TypeForResponse(TypedDict):
-    """RepositoryRuleDetailedOneof9"""
+class PullRequestMergeResultTypeForResponse(TypedDict):
+    """Pull Request Merge Result
 
-    type: Literal["non_fast_forward"]
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    Pull Request Merge Result
+    """
+
+    sha: str
+    merged: bool
+    message: str
 
 
 __all__ = (
-    "RepositoryRuleDetailedOneof9Type",
-    "RepositoryRuleDetailedOneof9TypeForResponse",
+    "PullRequestMergeResultType",
+    "PullRequestMergeResultTypeForResponse",
 )

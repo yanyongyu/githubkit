@@ -9,59 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse200"""
-
-    custom_agents: NotRequired[
-        Union[
-            list[
-                EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItemsType
-            ],
-            None,
-        ]
-    ]
-
-
-class EnterprisesEnterpriseCopilotCustomAgentsGetResponse200TypeForResponse(TypedDict):
-    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse200"""
-
-    custom_agents: NotRequired[
-        Union[
-            list[
-                EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItemsTypeForResponse
-            ],
-            None,
-        ]
-    ]
-
-
-class EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItemsType(
+class EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200Type(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems"""
+    """EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200"""
 
-    name: NotRequired[str]
-    file_path: NotRequired[str]
-    url: NotRequired[str]
+    disable_self_hosted_runners_for_all_orgs: bool
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItemsTypeForResponse(
+class EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems"""
+    """EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200"""
 
-    name: NotRequired[str]
-    file_path: NotRequired[str]
-    url: NotRequired[str]
+    disable_self_hosted_runners_for_all_orgs: bool
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItemsType",
-    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItemsTypeForResponse",
-    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse200Type",
-    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200Type",
+    "EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200TypeForResponse",
 )

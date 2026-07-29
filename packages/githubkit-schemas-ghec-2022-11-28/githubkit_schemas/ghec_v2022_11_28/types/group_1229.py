@@ -9,23 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0188 import (
+    SecretScanningCustomPatternType,
+    SecretScanningCustomPatternTypeForResponse,
+)
 
 
-class OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyType(TypedDict):
-    """OrgsOrgActionsPermissionsSelfHostedRunnersPutBody"""
+class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201Type(TypedDict):
+    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201"""
 
-    enabled_repositories: Literal["all", "selected", "none"]
+    created_patterns: NotRequired[list[SecretScanningCustomPatternType]]
 
 
-class OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgActionsPermissionsSelfHostedRunnersPutBody"""
+class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201"""
 
-    enabled_repositories: Literal["all", "selected", "none"]
+    created_patterns: NotRequired[list[SecretScanningCustomPatternTypeForResponse]]
 
 
 __all__ = (
-    "OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyType",
-    "OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyTypeForResponse",
+    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201Type",
+    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201TypeForResponse",
 )

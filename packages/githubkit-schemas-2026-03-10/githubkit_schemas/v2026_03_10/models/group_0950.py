@@ -9,30 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0522 import EnterpriseWebhooks
-from .group_0523 import SimpleInstallation
-from .group_0524 import OrganizationSimpleWebhooks
-from .group_0525 import RepositoryWebhooks
+from .group_0534 import EnterpriseWebhooks
+from .group_0535 import SimpleInstallation
+from .group_0536 import OrganizationSimpleWebhooks
+from .group_0537 import RepositoryWebhooks
+from .group_0577 import SecretScanningAlertWebhook
 
 
-class WebhookWorkflowDispatch(GitHubModel):
-    """workflow_dispatch event"""
+class WebhookSecretScanningAlertResolved(GitHubModel):
+    """secret_scanning_alert resolved event"""
 
+    action: Literal["resolved"] = Field()
+    alert: SecretScanningAlertWebhook = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
         description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
     )
-    inputs: Union[WebhookWorkflowDispatchPropInputs, None] = Field()
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
@@ -43,23 +45,15 @@ class WebhookWorkflowDispatch(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    ref: str = Field()
     repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    workflow: str = Field()
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
 
 
-class WebhookWorkflowDispatchPropInputs(ExtraGitHubModel):
-    """WebhookWorkflowDispatchPropInputs"""
+model_rebuild(WebhookSecretScanningAlertResolved)
 
-
-model_rebuild(WebhookWorkflowDispatch)
-model_rebuild(WebhookWorkflowDispatchPropInputs)
-
-__all__ = (
-    "WebhookWorkflowDispatch",
-    "WebhookWorkflowDispatchPropInputs",
-)
+__all__ = ("WebhookSecretScanningAlertResolved",)

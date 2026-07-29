@@ -9,26 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0112 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
+
+class OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBodyType(TypedDict):
+    """OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBody"""
+
+    actor_type: Literal["User", "Team"]
+    actor_identifier: str
+    role: Literal["reader", "writer", "admin"]
 
 
-class OrgsOrgPropertiesValuesPatchBodyType(TypedDict):
-    """OrgsOrgPropertiesValuesPatchBody"""
+class OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBody"""
 
-    repository_names: list[str]
-    properties: list[CustomPropertyValueType]
-
-
-class OrgsOrgPropertiesValuesPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgPropertiesValuesPatchBody"""
-
-    repository_names: list[str]
-    properties: list[CustomPropertyValueTypeForResponse]
+    actor_type: Literal["User", "Team"]
+    actor_identifier: str
+    role: Literal["reader", "writer", "admin"]
 
 
 __all__ = (
-    "OrgsOrgPropertiesValuesPatchBodyType",
-    "OrgsOrgPropertiesValuesPatchBodyTypeForResponse",
+    "OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBodyType",
+    "OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBodyTypeForResponse",
 )

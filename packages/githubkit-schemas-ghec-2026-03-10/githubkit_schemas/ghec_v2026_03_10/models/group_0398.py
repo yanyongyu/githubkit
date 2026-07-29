@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,34 +17,32 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0395 import CodeScanningVariantAnalysisRepository
 
+class CodeQualitySetupUpdateAnyof4(GitHubModel):
+    """CodeQualitySetupUpdateAnyof4"""
 
-class CodeScanningVariantAnalysisPropScannedRepositoriesItems(GitHubModel):
-    """CodeScanningVariantAnalysisPropScannedRepositoriesItems"""
-
-    repository: CodeScanningVariantAnalysisRepository = Field(
-        title="Repository Identifier", description="Repository Identifier"
+    state: Missing[Literal["configured", "not-configured"]] = Field(
+        default=UNSET, description="The desired state of code quality setup."
     )
-    analysis_status: Literal[
-        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
-    ] = Field(
-        description="The new status of the CodeQL variant analysis repository task."
+    runner_type: Missing[Literal["standard", "labeled"]] = Field(
+        default=UNSET, description="Runner type to be used."
     )
-    result_count: Missing[int] = Field(
+    runner_label: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The number of results in the case of a successful analysis. This is only available for successful analyses.",
+        description="Runner label to be used if the runner type is labeled.",
     )
-    artifact_size_in_bytes: Missing[int] = Field(
-        default=UNSET,
-        description="The size of the artifact. This is only available for successful analyses.",
-    )
-    failure_message: Missing[str] = Field(
-        default=UNSET,
-        description="The reason of the failure of this repo task. This is only available if the repository task has failed.",
+    languages: Missing[
+        list[
+            Literal[
+                "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
+            ]
+        ]
+    ] = Field(default=UNSET, description="Languages to be analyzed.")
+    ai_findings_option: Literal["disabled", "on_push"] = Field(
+        description="Whether AI findings run for Code Quality on this repository."
     )
 
 
-model_rebuild(CodeScanningVariantAnalysisPropScannedRepositoriesItems)
+model_rebuild(CodeQualitySetupUpdateAnyof4)
 
-__all__ = ("CodeScanningVariantAnalysisPropScannedRepositoriesItems",)
+__all__ = ("CodeQualitySetupUpdateAnyof4",)

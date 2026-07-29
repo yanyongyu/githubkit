@@ -9,24 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0114 import CustomPropertyType, CustomPropertyTypeForResponse
+from .group_0274 import (
+    CopilotSpaceCollaboratorAnyof0Type,
+    CopilotSpaceCollaboratorAnyof0TypeForResponse,
+    CopilotSpaceCollaboratorAnyof1Type,
+    CopilotSpaceCollaboratorAnyof1TypeForResponse,
+)
 
 
-class OrgsOrgPropertiesSchemaPatchBodyType(TypedDict):
-    """OrgsOrgPropertiesSchemaPatchBody"""
+class OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200Type(TypedDict):
+    """OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200"""
 
-    properties: list[CustomPropertyType]
+    collaborators: list[
+        Union[CopilotSpaceCollaboratorAnyof0Type, CopilotSpaceCollaboratorAnyof1Type]
+    ]
 
 
-class OrgsOrgPropertiesSchemaPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgPropertiesSchemaPatchBody"""
+class OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200"""
 
-    properties: list[CustomPropertyTypeForResponse]
+    collaborators: list[
+        Union[
+            CopilotSpaceCollaboratorAnyof0TypeForResponse,
+            CopilotSpaceCollaboratorAnyof1TypeForResponse,
+        ]
+    ]
 
 
 __all__ = (
-    "OrgsOrgPropertiesSchemaPatchBodyType",
-    "OrgsOrgPropertiesSchemaPatchBodyTypeForResponse",
+    "OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200Type",
+    "OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200TypeForResponse",
 )

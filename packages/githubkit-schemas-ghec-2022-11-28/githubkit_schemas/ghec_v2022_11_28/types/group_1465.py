@@ -9,24 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201Type(TypedDict):
-    """ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201"""
+class ReposOwnerRepoAgentsSecretsSecretNamePutBodyType(TypedDict):
+    """ReposOwnerRepoAgentsSecretsSecretNamePutBody"""
 
-    sbom_url: NotRequired[str]
+    encrypted_value: str
+    key_id: str
 
 
-class ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201"""
+class ReposOwnerRepoAgentsSecretsSecretNamePutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoAgentsSecretsSecretNamePutBody"""
 
-    sbom_url: NotRequired[str]
+    encrypted_value: str
+    key_id: str
 
 
 __all__ = (
-    "ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201Type",
-    "ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201TypeForResponse",
+    "ReposOwnerRepoAgentsSecretsSecretNamePutBodyType",
+    "ReposOwnerRepoAgentsSecretsSecretNamePutBodyTypeForResponse",
 )

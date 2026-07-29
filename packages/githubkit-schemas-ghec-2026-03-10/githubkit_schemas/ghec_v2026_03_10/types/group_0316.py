@@ -9,56 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
 
-class PullRequestSimplePropHeadType(TypedDict):
-    """PullRequestSimplePropHead"""
+class ProjectsV2StatusUpdateType(TypedDict):
+    """Projects v2 Status Update
 
-    label: Union[str, None]
-    ref: str
-    repo: Union[None, RepositoryType]
-    sha: str
-    user: Union[None, SimpleUserType]
+    An status update belonging to a project
+    """
 
-
-class PullRequestSimplePropHeadTypeForResponse(TypedDict):
-    """PullRequestSimplePropHead"""
-
-    label: Union[str, None]
-    ref: str
-    repo: Union[None, RepositoryTypeForResponse]
-    sha: str
-    user: Union[None, SimpleUserTypeForResponse]
-
-
-class PullRequestSimplePropBaseType(TypedDict):
-    """PullRequestSimplePropBase"""
-
-    label: str
-    ref: str
-    repo: RepositoryType
-    sha: str
-    user: Union[None, SimpleUserType]
+    id: float
+    node_id: str
+    project_node_id: NotRequired[str]
+    creator: NotRequired[SimpleUserType]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    status: NotRequired[
+        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
+    ]
+    start_date: NotRequired[_dt.date]
+    target_date: NotRequired[_dt.date]
+    body: NotRequired[Union[str, None]]
 
 
-class PullRequestSimplePropBaseTypeForResponse(TypedDict):
-    """PullRequestSimplePropBase"""
+class ProjectsV2StatusUpdateTypeForResponse(TypedDict):
+    """Projects v2 Status Update
 
-    label: str
-    ref: str
-    repo: RepositoryTypeForResponse
-    sha: str
-    user: Union[None, SimpleUserTypeForResponse]
+    An status update belonging to a project
+    """
+
+    id: float
+    node_id: str
+    project_node_id: NotRequired[str]
+    creator: NotRequired[SimpleUserTypeForResponse]
+    created_at: str
+    updated_at: str
+    status: NotRequired[
+        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
+    ]
+    start_date: NotRequired[str]
+    target_date: NotRequired[str]
+    body: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "PullRequestSimplePropBaseType",
-    "PullRequestSimplePropBaseTypeForResponse",
-    "PullRequestSimplePropHeadType",
-    "PullRequestSimplePropHeadTypeForResponse",
+    "ProjectsV2StatusUpdateType",
+    "ProjectsV2StatusUpdateTypeForResponse",
 )

@@ -9,29 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class DeleteCostCenterType(TypedDict):
-    """DeleteCostCenter"""
+class GetBudgetUserStatesType(TypedDict):
+    """GetBudgetUserStates"""
 
-    message: str
-    id: str
-    name: str
-    cost_center_state: Literal["CostCenterArchived"]
+    user_states: list[GetBudgetUserStatesPropUserStatesItemsType]
+    has_next_page: bool
+    total_count: int
 
 
-class DeleteCostCenterTypeForResponse(TypedDict):
-    """DeleteCostCenter"""
+class GetBudgetUserStatesTypeForResponse(TypedDict):
+    """GetBudgetUserStates"""
 
-    message: str
-    id: str
-    name: str
-    cost_center_state: Literal["CostCenterArchived"]
+    user_states: list[GetBudgetUserStatesPropUserStatesItemsTypeForResponse]
+    has_next_page: bool
+    total_count: int
+
+
+class GetBudgetUserStatesPropUserStatesItemsType(TypedDict):
+    """GetBudgetUserStatesPropUserStatesItems"""
+
+    user: NotRequired[str]
+    consumed_amount: float
+    target_amount: float
+    override_budget_id: NotRequired[str]
+
+
+class GetBudgetUserStatesPropUserStatesItemsTypeForResponse(TypedDict):
+    """GetBudgetUserStatesPropUserStatesItems"""
+
+    user: NotRequired[str]
+    consumed_amount: float
+    target_amount: float
+    override_budget_id: NotRequired[str]
 
 
 __all__ = (
-    "DeleteCostCenterType",
-    "DeleteCostCenterTypeForResponse",
+    "GetBudgetUserStatesPropUserStatesItemsType",
+    "GetBudgetUserStatesPropUserStatesItemsTypeForResponse",
+    "GetBudgetUserStatesType",
+    "GetBudgetUserStatesTypeForResponse",
 )

@@ -13,41 +13,43 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0598 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0599 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0600 import (
+from .group_0617 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0618 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0619 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0601 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0640 import WebhooksReleaseType, WebhooksReleaseTypeForResponse
+from .group_0620 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0654 import PullRequestWebhookType, PullRequestWebhookTypeForResponse
 
 
-class WebhookReleaseCreatedType(TypedDict):
-    """release created event"""
+class WebhookPullRequestReadyForReviewType(TypedDict):
+    """pull_request ready_for_review event"""
 
-    action: Literal["created"]
+    action: Literal["ready_for_review"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
+    number: int
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    release: WebhooksReleaseType
+    pull_request: PullRequestWebhookType
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookReleaseCreatedTypeForResponse(TypedDict):
-    """release created event"""
+class WebhookPullRequestReadyForReviewTypeForResponse(TypedDict):
+    """pull_request ready_for_review event"""
 
-    action: Literal["created"]
+    action: Literal["ready_for_review"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
+    number: int
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    release: WebhooksReleaseTypeForResponse
+    pull_request: PullRequestWebhookTypeForResponse
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookReleaseCreatedType",
-    "WebhookReleaseCreatedTypeForResponse",
+    "WebhookPullRequestReadyForReviewType",
+    "WebhookPullRequestReadyForReviewTypeForResponse",
 )

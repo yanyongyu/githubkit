@@ -9,31 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ImmutableReleasesOrganizationSettingsType(TypedDict):
-    """Check immutable releases organization settings
+class SecretScanningCustomPatternToCreateType(TypedDict):
+    """Secret Scanning Custom Pattern To Create
 
-    Check immutable releases settings for an organization.
+    A custom pattern to create in a bulk operation.
     """
 
-    enforced_repositories: Literal["all", "none", "selected"]
-    selected_repositories_url: NotRequired[str]
+    name: str
+    pattern: str
+    start_delimiter: NotRequired[str]
+    end_delimiter: NotRequired[str]
+    must_match: NotRequired[list[str]]
+    must_not_match: NotRequired[list[str]]
 
 
-class ImmutableReleasesOrganizationSettingsTypeForResponse(TypedDict):
-    """Check immutable releases organization settings
+class SecretScanningCustomPatternToCreateTypeForResponse(TypedDict):
+    """Secret Scanning Custom Pattern To Create
 
-    Check immutable releases settings for an organization.
+    A custom pattern to create in a bulk operation.
     """
 
-    enforced_repositories: Literal["all", "none", "selected"]
-    selected_repositories_url: NotRequired[str]
+    name: str
+    pattern: str
+    start_delimiter: NotRequired[str]
+    end_delimiter: NotRequired[str]
+    must_match: NotRequired[list[str]]
+    must_not_match: NotRequired[list[str]]
 
 
 __all__ = (
-    "ImmutableReleasesOrganizationSettingsType",
-    "ImmutableReleasesOrganizationSettingsTypeForResponse",
+    "SecretScanningCustomPatternToCreateType",
+    "SecretScanningCustomPatternToCreateTypeForResponse",
 )

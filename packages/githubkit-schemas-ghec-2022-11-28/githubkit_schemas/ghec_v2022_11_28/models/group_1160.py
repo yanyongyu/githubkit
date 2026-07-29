@@ -12,16 +12,23 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0049 import OrganizationSimple
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422(GitHubModel):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422"""
+class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200(
+    GitHubModel
+):
+    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200"""
 
-    message: Missing[str] = Field(default=UNSET)
+    total_count: float = Field()
+    organizations: list[OrganizationSimple] = Field()
 
 
-model_rebuild(EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422)
+model_rebuild(
+    EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200
+)
 
-__all__ = ("EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422",)
+__all__ = (
+    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200",
+)

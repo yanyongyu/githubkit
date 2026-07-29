@@ -10,97 +10,162 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0596 import (
+    SearchResultTextMatchesItemsType,
+    SearchResultTextMatchesItemsTypeForResponse,
+)
 
-class WebhooksRuleType(TypedDict):
-    """branch protection rule
 
-    The branch protection rule. Includes a `name` and all the [branch protection
-    settings](https://docs.github.com/enterprise-cloud@latest/github/administering-
-    a-repository/defining-the-mergeability-of-pull-requests/about-protected-
-    branches#about-branch-protection-settings) applied to branches that match the
-    name. Binary settings are boolean. Multi-level configurations are one of `off`,
-    `non_admins`, or `everyone`. Actor and build lists are arrays of strings.
+class TopicSearchResultItemType(TypedDict):
+    """Topic Search Result Item
+
+    Topic Search Result Item
     """
 
-    admin_enforced: bool
-    allow_deletions_enforcement_level: Literal["off", "non_admins", "everyone"]
-    allow_force_pushes_enforcement_level: Literal["off", "non_admins", "everyone"]
-    authorized_actor_names: list[str]
-    authorized_actors_only: bool
-    authorized_dismissal_actors_only: bool
-    create_protected: NotRequired[bool]
+    name: str
+    display_name: Union[str, None]
+    short_description: Union[str, None]
+    description: Union[str, None]
+    created_by: Union[str, None]
+    released: Union[str, None]
     created_at: _dt.datetime
-    dismiss_stale_reviews_on_push: bool
-    id: int
-    ignore_approvals_from_contributors: bool
-    linear_history_requirement_enforcement_level: Literal[
-        "off", "non_admins", "everyone"
-    ]
-    lock_branch_enforcement_level: Literal["off", "non_admins", "everyone"]
-    lock_allows_fork_sync: NotRequired[bool]
-    merge_queue_enforcement_level: Literal["off", "non_admins", "everyone"]
-    name: str
-    pull_request_reviews_enforcement_level: Literal["off", "non_admins", "everyone"]
-    repository_id: int
-    require_code_owner_review: bool
-    require_last_push_approval: NotRequired[bool]
-    required_approving_review_count: int
-    required_conversation_resolution_level: Literal["off", "non_admins", "everyone"]
-    required_deployments_enforcement_level: Literal["off", "non_admins", "everyone"]
-    required_status_checks: list[str]
-    required_status_checks_enforcement_level: Literal["off", "non_admins", "everyone"]
-    signature_requirement_enforcement_level: Literal["off", "non_admins", "everyone"]
-    strict_required_status_checks_policy: bool
     updated_at: _dt.datetime
+    featured: bool
+    curated: bool
+    score: float
+    repository_count: NotRequired[Union[int, None]]
+    logo_url: NotRequired[Union[str, None]]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
+    related: NotRequired[Union[list[TopicSearchResultItemPropRelatedItemsType], None]]
+    aliases: NotRequired[Union[list[TopicSearchResultItemPropAliasesItemsType], None]]
 
 
-class WebhooksRuleTypeForResponse(TypedDict):
-    """branch protection rule
+class TopicSearchResultItemTypeForResponse(TypedDict):
+    """Topic Search Result Item
 
-    The branch protection rule. Includes a `name` and all the [branch protection
-    settings](https://docs.github.com/enterprise-cloud@latest/github/administering-
-    a-repository/defining-the-mergeability-of-pull-requests/about-protected-
-    branches#about-branch-protection-settings) applied to branches that match the
-    name. Binary settings are boolean. Multi-level configurations are one of `off`,
-    `non_admins`, or `everyone`. Actor and build lists are arrays of strings.
+    Topic Search Result Item
     """
 
-    admin_enforced: bool
-    allow_deletions_enforcement_level: Literal["off", "non_admins", "everyone"]
-    allow_force_pushes_enforcement_level: Literal["off", "non_admins", "everyone"]
-    authorized_actor_names: list[str]
-    authorized_actors_only: bool
-    authorized_dismissal_actors_only: bool
-    create_protected: NotRequired[bool]
-    created_at: str
-    dismiss_stale_reviews_on_push: bool
-    id: int
-    ignore_approvals_from_contributors: bool
-    linear_history_requirement_enforcement_level: Literal[
-        "off", "non_admins", "everyone"
-    ]
-    lock_branch_enforcement_level: Literal["off", "non_admins", "everyone"]
-    lock_allows_fork_sync: NotRequired[bool]
-    merge_queue_enforcement_level: Literal["off", "non_admins", "everyone"]
     name: str
-    pull_request_reviews_enforcement_level: Literal["off", "non_admins", "everyone"]
-    repository_id: int
-    require_code_owner_review: bool
-    require_last_push_approval: NotRequired[bool]
-    required_approving_review_count: int
-    required_conversation_resolution_level: Literal["off", "non_admins", "everyone"]
-    required_deployments_enforcement_level: Literal["off", "non_admins", "everyone"]
-    required_status_checks: list[str]
-    required_status_checks_enforcement_level: Literal["off", "non_admins", "everyone"]
-    signature_requirement_enforcement_level: Literal["off", "non_admins", "everyone"]
-    strict_required_status_checks_policy: bool
+    display_name: Union[str, None]
+    short_description: Union[str, None]
+    description: Union[str, None]
+    created_by: Union[str, None]
+    released: Union[str, None]
+    created_at: str
     updated_at: str
+    featured: bool
+    curated: bool
+    score: float
+    repository_count: NotRequired[Union[int, None]]
+    logo_url: NotRequired[Union[str, None]]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
+    related: NotRequired[
+        Union[list[TopicSearchResultItemPropRelatedItemsTypeForResponse], None]
+    ]
+    aliases: NotRequired[
+        Union[list[TopicSearchResultItemPropAliasesItemsTypeForResponse], None]
+    ]
+
+
+class TopicSearchResultItemPropRelatedItemsType(TypedDict):
+    """TopicSearchResultItemPropRelatedItems"""
+
+    topic_relation: NotRequired[
+        TopicSearchResultItemPropRelatedItemsPropTopicRelationType
+    ]
+
+
+class TopicSearchResultItemPropRelatedItemsTypeForResponse(TypedDict):
+    """TopicSearchResultItemPropRelatedItems"""
+
+    topic_relation: NotRequired[
+        TopicSearchResultItemPropRelatedItemsPropTopicRelationTypeForResponse
+    ]
+
+
+class TopicSearchResultItemPropRelatedItemsPropTopicRelationType(TypedDict):
+    """TopicSearchResultItemPropRelatedItemsPropTopicRelation"""
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    topic_id: NotRequired[int]
+    relation_type: NotRequired[str]
+
+
+class TopicSearchResultItemPropRelatedItemsPropTopicRelationTypeForResponse(TypedDict):
+    """TopicSearchResultItemPropRelatedItemsPropTopicRelation"""
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    topic_id: NotRequired[int]
+    relation_type: NotRequired[str]
+
+
+class TopicSearchResultItemPropAliasesItemsType(TypedDict):
+    """TopicSearchResultItemPropAliasesItems"""
+
+    topic_relation: NotRequired[
+        TopicSearchResultItemPropAliasesItemsPropTopicRelationType
+    ]
+
+
+class TopicSearchResultItemPropAliasesItemsTypeForResponse(TypedDict):
+    """TopicSearchResultItemPropAliasesItems"""
+
+    topic_relation: NotRequired[
+        TopicSearchResultItemPropAliasesItemsPropTopicRelationTypeForResponse
+    ]
+
+
+class TopicSearchResultItemPropAliasesItemsPropTopicRelationType(TypedDict):
+    """TopicSearchResultItemPropAliasesItemsPropTopicRelation"""
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    topic_id: NotRequired[int]
+    relation_type: NotRequired[str]
+
+
+class TopicSearchResultItemPropAliasesItemsPropTopicRelationTypeForResponse(TypedDict):
+    """TopicSearchResultItemPropAliasesItemsPropTopicRelation"""
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    topic_id: NotRequired[int]
+    relation_type: NotRequired[str]
+
+
+class SearchTopicsGetResponse200Type(TypedDict):
+    """SearchTopicsGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[TopicSearchResultItemType]
+
+
+class SearchTopicsGetResponse200TypeForResponse(TypedDict):
+    """SearchTopicsGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[TopicSearchResultItemTypeForResponse]
 
 
 __all__ = (
-    "WebhooksRuleType",
-    "WebhooksRuleTypeForResponse",
+    "SearchTopicsGetResponse200Type",
+    "SearchTopicsGetResponse200TypeForResponse",
+    "TopicSearchResultItemPropAliasesItemsPropTopicRelationType",
+    "TopicSearchResultItemPropAliasesItemsPropTopicRelationTypeForResponse",
+    "TopicSearchResultItemPropAliasesItemsType",
+    "TopicSearchResultItemPropAliasesItemsTypeForResponse",
+    "TopicSearchResultItemPropRelatedItemsPropTopicRelationType",
+    "TopicSearchResultItemPropRelatedItemsPropTopicRelationTypeForResponse",
+    "TopicSearchResultItemPropRelatedItemsType",
+    "TopicSearchResultItemPropRelatedItemsTypeForResponse",
+    "TopicSearchResultItemType",
+    "TopicSearchResultItemTypeForResponse",
 )

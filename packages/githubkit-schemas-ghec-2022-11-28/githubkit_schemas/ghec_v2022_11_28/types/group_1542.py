@@ -9,31 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0357 import ActionsSecretType, ActionsSecretTypeForResponse
 
 
-class ReposOwnerRepoPagesPostBodyPropSourceType(TypedDict):
-    """ReposOwnerRepoPagesPostBodyPropSource
+class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200"""
 
-    The source branch and directory used to publish your Pages site.
-    """
-
-    branch: str
-    path: NotRequired[Literal["/", "/docs"]]
+    total_count: int
+    secrets: list[ActionsSecretType]
 
 
-class ReposOwnerRepoPagesPostBodyPropSourceTypeForResponse(TypedDict):
-    """ReposOwnerRepoPagesPostBodyPropSource
+class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200"""
 
-    The source branch and directory used to publish your Pages site.
-    """
-
-    branch: str
-    path: NotRequired[Literal["/", "/docs"]]
+    total_count: int
+    secrets: list[ActionsSecretTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoPagesPostBodyPropSourceType",
-    "ReposOwnerRepoPagesPostBodyPropSourceTypeForResponse",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200Type",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200TypeForResponse",
 )

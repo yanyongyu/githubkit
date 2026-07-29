@@ -9,55 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoHooksPostBodyType(TypedDict):
-    """ReposOwnerRepoHooksPostBody"""
+class ReposOwnerRepoCodeScanningSarifsPostBodyType(TypedDict):
+    """ReposOwnerRepoCodeScanningSarifsPostBody"""
 
-    name: NotRequired[str]
-    config: NotRequired[ReposOwnerRepoHooksPostBodyPropConfigType]
-    events: NotRequired[list[str]]
-    active: NotRequired[bool]
-
-
-class ReposOwnerRepoHooksPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoHooksPostBody"""
-
-    name: NotRequired[str]
-    config: NotRequired[ReposOwnerRepoHooksPostBodyPropConfigTypeForResponse]
-    events: NotRequired[list[str]]
-    active: NotRequired[bool]
+    commit_sha: str
+    ref: str
+    sarif: str
+    checkout_uri: NotRequired[str]
+    started_at: NotRequired[_dt.datetime]
+    tool_name: NotRequired[str]
+    validate_: NotRequired[bool]
 
 
-class ReposOwnerRepoHooksPostBodyPropConfigType(TypedDict):
-    """ReposOwnerRepoHooksPostBodyPropConfig
+class ReposOwnerRepoCodeScanningSarifsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoCodeScanningSarifsPostBody"""
 
-    Key/value pairs to provide settings for this webhook.
-    """
-
-    url: NotRequired[str]
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
-
-
-class ReposOwnerRepoHooksPostBodyPropConfigTypeForResponse(TypedDict):
-    """ReposOwnerRepoHooksPostBodyPropConfig
-
-    Key/value pairs to provide settings for this webhook.
-    """
-
-    url: NotRequired[str]
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
+    commit_sha: str
+    ref: str
+    sarif: str
+    checkout_uri: NotRequired[str]
+    started_at: NotRequired[str]
+    tool_name: NotRequired[str]
+    validate_: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoHooksPostBodyPropConfigType",
-    "ReposOwnerRepoHooksPostBodyPropConfigTypeForResponse",
-    "ReposOwnerRepoHooksPostBodyType",
-    "ReposOwnerRepoHooksPostBodyTypeForResponse",
+    "ReposOwnerRepoCodeScanningSarifsPostBodyType",
+    "ReposOwnerRepoCodeScanningSarifsPostBodyTypeForResponse",
 )

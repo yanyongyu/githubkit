@@ -11,24 +11,35 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0207 import DiscussionType, DiscussionTypeForResponse
+from .group_0223 import (
+    PullRequestMinimalPropBaseType,
+    PullRequestMinimalPropBaseTypeForResponse,
+    PullRequestMinimalPropHeadType,
+    PullRequestMinimalPropHeadTypeForResponse,
+)
 
 
-class DiscussionEventType(TypedDict):
-    """DiscussionEvent"""
+class PullRequestMinimalType(TypedDict):
+    """Pull Request Minimal"""
 
-    action: str
-    discussion: DiscussionType
+    id: int
+    number: int
+    url: str
+    head: PullRequestMinimalPropHeadType
+    base: PullRequestMinimalPropBaseType
 
 
-class DiscussionEventTypeForResponse(TypedDict):
-    """DiscussionEvent"""
+class PullRequestMinimalTypeForResponse(TypedDict):
+    """Pull Request Minimal"""
 
-    action: str
-    discussion: DiscussionTypeForResponse
+    id: int
+    number: int
+    url: str
+    head: PullRequestMinimalPropHeadTypeForResponse
+    base: PullRequestMinimalPropBaseTypeForResponse
 
 
 __all__ = (
-    "DiscussionEventType",
-    "DiscussionEventTypeForResponse",
+    "PullRequestMinimalType",
+    "PullRequestMinimalTypeForResponse",
 )

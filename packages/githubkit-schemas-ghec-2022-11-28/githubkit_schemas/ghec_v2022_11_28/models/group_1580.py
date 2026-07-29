@@ -11,17 +11,29 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoTopicsPutBody(GitHubModel):
-    """ReposOwnerRepoTopicsPutBody"""
+class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2"""
 
-    names: list[str] = Field(
-        description="An array of topics to add to the repository. Pass one or more topics to _replace_ the set of existing topics. Send an empty array (`[]`) to clear all topics from the repository. **Note:** Topic `names` will be saved as lowercase."
-    )
+    labels: Missing[
+        list[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems]
+    ] = Field(min_length=1 if PYDANTIC_V2 else None, default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoTopicsPutBody)
+class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems"""
 
-__all__ = ("ReposOwnerRepoTopicsPutBody",)
+    name: str = Field()
+
+
+model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems)
+
+__all__ = (
+    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2",
+    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems",
+)

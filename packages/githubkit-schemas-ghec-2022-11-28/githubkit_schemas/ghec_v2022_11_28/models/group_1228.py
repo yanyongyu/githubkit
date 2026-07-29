@@ -13,15 +13,17 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0189 import SecretScanningCustomPatternToCreate
 
-class OrgsOrgActionsPermissionsRepositoriesPutBody(GitHubModel):
-    """OrgsOrgActionsPermissionsRepositoriesPutBody"""
 
-    selected_repository_ids: list[int] = Field(
-        description="List of repository IDs to enable for GitHub Actions."
+class EnterprisesEnterpriseSecretScanningCustomPatternsPostBody(GitHubModel):
+    """EnterprisesEnterpriseSecretScanningCustomPatternsPostBody"""
+
+    patterns: list[SecretScanningCustomPatternToCreate] = Field(
+        description="The list of custom patterns to create."
     )
 
 
-model_rebuild(OrgsOrgActionsPermissionsRepositoriesPutBody)
+model_rebuild(EnterprisesEnterpriseSecretScanningCustomPatternsPostBody)
 
-__all__ = ("OrgsOrgActionsPermissionsRepositoriesPutBody",)
+__all__ = ("EnterprisesEnterpriseSecretScanningCustomPatternsPostBody",)

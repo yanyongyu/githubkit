@@ -9,55 +9,70 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2Type(TypedDict):
-    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2"""
+class ReposOwnerRepoActionsWorkflowsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsWorkflowsGetResponse200"""
 
-    language: Literal[
-        "actions",
-        "cpp",
-        "csharp",
-        "go",
-        "java",
-        "javascript",
-        "python",
-        "ruby",
-        "rust",
-        "swift",
+    total_count: int
+    workflows: list[WorkflowType]
+
+
+class ReposOwnerRepoActionsWorkflowsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsWorkflowsGetResponse200"""
+
+    total_count: int
+    workflows: list[WorkflowTypeForResponse]
+
+
+class WorkflowType(TypedDict):
+    """Workflow
+
+    A GitHub Actions workflow
+    """
+
+    id: int
+    node_id: str
+    name: str
+    path: str
+    state: Literal[
+        "active", "deleted", "disabled_fork", "disabled_inactivity", "disabled_manually"
     ]
-    query_pack: str
-    repositories: NotRequired[list[str]]
-    repository_lists: NotRequired[list[str]]
-    repository_owners: list[str]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    url: str
+    html_url: str
+    badge_url: str
+    deleted_at: NotRequired[_dt.datetime]
 
 
-class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2"""
+class WorkflowTypeForResponse(TypedDict):
+    """Workflow
 
-    language: Literal[
-        "actions",
-        "cpp",
-        "csharp",
-        "go",
-        "java",
-        "javascript",
-        "python",
-        "ruby",
-        "rust",
-        "swift",
+    A GitHub Actions workflow
+    """
+
+    id: int
+    node_id: str
+    name: str
+    path: str
+    state: Literal[
+        "active", "deleted", "disabled_fork", "disabled_inactivity", "disabled_manually"
     ]
-    query_pack: str
-    repositories: NotRequired[list[str]]
-    repository_lists: NotRequired[list[str]]
-    repository_owners: list[str]
+    created_at: str
+    updated_at: str
+    url: str
+    html_url: str
+    badge_url: str
+    deleted_at: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2Type",
-    "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2TypeForResponse",
+    "ReposOwnerRepoActionsWorkflowsGetResponse200Type",
+    "ReposOwnerRepoActionsWorkflowsGetResponse200TypeForResponse",
+    "WorkflowType",
+    "WorkflowTypeForResponse",
 )

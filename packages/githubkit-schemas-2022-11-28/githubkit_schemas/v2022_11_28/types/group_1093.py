@@ -13,25 +13,23 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgAgentsVariablesPostBodyType(TypedDict):
-    """OrgsOrgAgentsVariablesPostBody"""
+class OrgsOrgActionsPermissionsPutBodyType(TypedDict):
+    """OrgsOrgActionsPermissionsPutBody"""
 
-    name: str
-    value: str
-    visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
+    enabled_repositories: Literal["all", "none", "selected"]
+    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
+    sha_pinning_required: NotRequired[bool]
 
 
-class OrgsOrgAgentsVariablesPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgAgentsVariablesPostBody"""
+class OrgsOrgActionsPermissionsPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsPermissionsPutBody"""
 
-    name: str
-    value: str
-    visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
+    enabled_repositories: Literal["all", "none", "selected"]
+    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
+    sha_pinning_required: NotRequired[bool]
 
 
 __all__ = (
-    "OrgsOrgAgentsVariablesPostBodyType",
-    "OrgsOrgAgentsVariablesPostBodyTypeForResponse",
+    "OrgsOrgActionsPermissionsPutBodyType",
+    "OrgsOrgActionsPermissionsPutBodyTypeForResponse",
 )

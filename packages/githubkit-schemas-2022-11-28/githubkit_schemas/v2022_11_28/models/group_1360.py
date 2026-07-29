@@ -9,39 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_1359 import ReposOwnerRepoPagesPutBodyPropSourceAnyof1
+from .group_0011 import WebhookConfig
 
 
-class ReposOwnerRepoPagesPutBodyAnyof0(GitHubModel):
-    """ReposOwnerRepoPagesPutBodyAnyof0"""
+class ReposOwnerRepoHooksHookIdPatchBody(GitHubModel):
+    """ReposOwnerRepoHooksHookIdPatchBody"""
 
-    cname: Missing[Union[str, None]] = Field(
+    config: Missing[WebhookConfig] = Field(
         default=UNSET,
-        description='Specify a custom domain for the repository. Sending a `null` value will remove the custom domain. For more about custom domains, see "[Using a custom domain with GitHub Pages](https://docs.github.com/pages/configuring-a-custom-domain-for-your-github-pages-site)."',
+        title="Webhook Configuration",
+        description="Configuration object of the webhook",
     )
-    https_enforced: Missing[bool] = Field(
+    events: Missing[list[str]] = Field(
         default=UNSET,
-        description="Specify whether HTTPS should be enforced for the repository.",
+        description="Determines what [events](https://docs.github.com/webhooks/event-payloads) the hook is triggered for. This replaces the entire array of events.",
     )
-    build_type: Literal["legacy", "workflow"] = Field(
-        description="The process by which the GitHub Pages site will be built. `workflow` means that the site is built by a custom GitHub Actions workflow. `legacy` means that the site is built by GitHub when changes are pushed to a specific branch."
+    add_events: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Determines a list of events to be added to the list of events that the Hook triggers for.",
     )
-    source: Missing[
-        Union[
-            Literal["gh-pages", "master", "master /docs"],
-            ReposOwnerRepoPagesPutBodyPropSourceAnyof1,
-        ]
-    ] = Field(default=UNSET)
+    remove_events: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Determines a list of events to be removed from the list of events that the Hook triggers for.",
+    )
+    active: Missing[bool] = Field(
+        default=UNSET,
+        description="Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications.",
+    )
 
 
-model_rebuild(ReposOwnerRepoPagesPutBodyAnyof0)
+model_rebuild(ReposOwnerRepoHooksHookIdPatchBody)
 
-__all__ = ("ReposOwnerRepoPagesPutBodyAnyof0",)
+__all__ = ("ReposOwnerRepoHooksHookIdPatchBody",)

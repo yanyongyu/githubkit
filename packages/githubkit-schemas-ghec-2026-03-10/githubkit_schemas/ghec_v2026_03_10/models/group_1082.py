@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -19,108 +18,60 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItems(GitHubModel):
-    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItems
+class WebhookWorkflowJobCompletedPropWorkflowJobAllof1(GitHubModel):
+    """WebhookWorkflowJobCompletedPropWorkflowJobAllof1"""
 
-    Full session details within a task
-    """
-
-    id: str = Field(description="Session ID")
-    name: Missing[str] = Field(default=UNSET, description="Session name")
-    user: Missing[AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser] = (
-        Field(default=UNSET, description="The user who created this session")
-    )
-    owner: Missing[AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner] = (
-        Field(default=UNSET, description="The owner of the repository")
-    )
-    repository: Missing[
-        AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepository
-    ] = Field(default=UNSET, description="The repository this session belongs to")
-    task_id: Missing[str] = Field(
-        default=UNSET, description="Task ID this session belongs to"
-    )
-    state: Literal[
-        "queued",
-        "in_progress",
-        "completed",
-        "failed",
-        "idle",
-        "waiting_for_user",
-        "timed_out",
+    check_run_url: Missing[str] = Field(default=UNSET)
+    completed_at: Missing[str] = Field(default=UNSET)
+    conclusion: Literal[
+        "success",
+        "failure",
+        "skipped",
         "cancelled",
-    ] = Field(description="Current state of a session")
-    created_at: _dt.datetime = Field(description="Creation timestamp")
-    updated_at: Missing[_dt.datetime] = Field(
-        default=UNSET, description="Last update timestamp"
+        "action_required",
+        "neutral",
+        "timed_out",
+    ] = Field()
+    created_at: Missing[str] = Field(
+        default=UNSET, description="The time that the job created."
     )
-    completed_at: Missing[_dt.datetime] = Field(
-        default=UNSET, description="Completion timestamp"
+    head_sha: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    labels: Missing[list[Union[str, None]]] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    run_attempt: Missing[int] = Field(default=UNSET)
+    run_id: Missing[int] = Field(default=UNSET)
+    run_url: Missing[str] = Field(default=UNSET)
+    runner_group_id: Missing[Union[int, None]] = Field(default=UNSET)
+    runner_group_name: Missing[Union[str, None]] = Field(default=UNSET)
+    runner_id: Missing[Union[int, None]] = Field(default=UNSET)
+    runner_name: Missing[Union[str, None]] = Field(default=UNSET)
+    started_at: Missing[str] = Field(default=UNSET)
+    status: Missing[str] = Field(default=UNSET)
+    head_branch: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The name of the current branch."
     )
-    prompt: Missing[str] = Field(
-        default=UNSET, description="Content of the triggering event"
+    workflow_name: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The name of the workflow."
     )
-    head_ref: Missing[str] = Field(default=UNSET, description="Head branch name")
-    base_ref: Missing[str] = Field(default=UNSET, description="Base branch name")
-    model: Missing[str] = Field(
-        default=UNSET, description="Model used for this session"
-    )
-    error: Missing[AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError] = (
-        Field(default=UNSET, description="Error details for a failed session")
-    )
+    steps: Missing[
+        list[
+            Union[WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItems, None]
+        ]
+    ] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
 
 
-class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser(GitHubModel):
-    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser
-
-    The user who created this session
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the user"
-    )
+class WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItems(GitHubModel):
+    """WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItems"""
 
 
-class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner(GitHubModel):
-    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner
-
-    The owner of the repository
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the user"
-    )
-
-
-class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepository(GitHubModel):
-    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepository
-
-    The repository this session belongs to
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the repository"
-    )
-
-
-class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError(GitHubModel):
-    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError
-
-    Error details for a failed session
-    """
-
-    message: Missing[str] = Field(default=UNSET, description="Error message")
-
-
-model_rebuild(AgentsTasksTaskIdGetResponse200Allof1PropSessionsItems)
-model_rebuild(AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser)
-model_rebuild(AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner)
-model_rebuild(AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepository)
-model_rebuild(AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError)
+model_rebuild(WebhookWorkflowJobCompletedPropWorkflowJobAllof1)
+model_rebuild(WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItems)
 
 __all__ = (
-    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItems",
-    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError",
-    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner",
-    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepository",
-    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser",
+    "WebhookWorkflowJobCompletedPropWorkflowJobAllof1",
+    "WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItems",
 )

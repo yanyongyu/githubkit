@@ -18,24 +18,77 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgProjectsV2ProjectNumberViewsPostBody(GitHubModel):
-    """OrgsOrgProjectsV2ProjectNumberViewsPostBody"""
+class OrgsOrgCopilotSpacesSpaceNumberPutBody(GitHubModel):
+    """OrgsOrgCopilotSpacesSpaceNumberPutBody"""
 
-    name: str = Field(description="The name of the view.")
-    layout: Literal["table", "board", "roadmap"] = Field(
-        description="The layout of the view."
+    name: Missing[str] = Field(
+        default=UNSET, description="The name of the Copilot Space."
     )
-    filter_: Missing[str] = Field(
+    description: Missing[str] = Field(
+        default=UNSET, description="A description of the Copilot Space."
+    )
+    general_instructions: Missing[str] = Field(
+        max_length=4000,
         default=UNSET,
-        alias="filter",
-        description="The filter query for the view. See [Filtering projects](https://docs.github.com/enterprise-cloud@latest/issues/planning-and-tracking-with-projects/customizing-views-in-your-project/filtering-projects) for more information.",
+        description="General instructions for the Copilot Space.",
     )
-    visible_fields: Missing[list[int]] = Field(
+    base_role: Missing[Literal["reader", "writer", "admin", "no_access"]] = Field(
         default=UNSET,
-        description="`visible_fields` is not applicable to `roadmap` layout views.\nFor `table` and `board` layouts, this represents the field IDs that should be visible in the view. If not provided, the default visible fields will be used.",
+        description="The base role that determines default permissions for organization members. Changing this field requires admin permissions.\n- `no_access`: No default access (default)\n- `reader`: Organization members can read the space\n- `writer`: Organization members can read and edit the space\n- `admin`: Organization members have full admin access to the space",
     )
+    resources_attributes: Missing[
+        list[OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems]
+    ] = Field(default=UNSET, description="Resources to attach to the space.")
 
 
-model_rebuild(OrgsOrgProjectsV2ProjectNumberViewsPostBody)
+class OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems(GitHubModel):
+    """OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems"""
 
-__all__ = ("OrgsOrgProjectsV2ProjectNumberViewsPostBody",)
+    resource_type: Missing[
+        Literal[
+            "repository",
+            "github_file",
+            "free_text",
+            "github_issue",
+            "github_pull_request",
+            "media_content",
+            "uploaded_text_file",
+        ]
+    ] = Field(default=UNSET, description="The type of resource.")
+    metadata: Missing[
+        OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata
+    ] = Field(default=UNSET, description="Metadata specific to the resource type.")
+
+
+class OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata(
+    GitHubModel
+):
+    """OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata
+
+    Metadata specific to the resource type.
+    """
+
+    repository_id: Missing[int] = Field(
+        default=UNSET, description="Repository ID for repository or file resources."
+    )
+    file_path: Missing[str] = Field(
+        default=UNSET, description="File path for file resources."
+    )
+    text: Missing[str] = Field(
+        default=UNSET, description="Text content for free text resources."
+    )
+    name: Missing[str] = Field(default=UNSET, description="Name for the resource.")
+    number: Missing[int] = Field(default=UNSET, description="Issue or PR number.")
+
+
+model_rebuild(OrgsOrgCopilotSpacesSpaceNumberPutBody)
+model_rebuild(OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems)
+model_rebuild(
+    OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata
+)
+
+__all__ = (
+    "OrgsOrgCopilotSpacesSpaceNumberPutBody",
+    "OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems",
+    "OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata",
+)

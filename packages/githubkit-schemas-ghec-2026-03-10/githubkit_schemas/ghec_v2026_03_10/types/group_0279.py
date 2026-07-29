@@ -13,155 +13,58 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0278 import (
-    DismissalRequestResponseType,
-    DismissalRequestResponseTypeForResponse,
-)
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class CodeScanningAlertDismissalRequestType(TypedDict):
-    """Code scanning alert dismissal request
+class OrganizationCustomRepositoryRoleType(TypedDict):
+    """Organization Custom Repository Role
 
-    Alert dismisal request made by a user asking to dismiss a code scanning alert.
+    Custom repository roles created by organization owners
     """
 
-    id: NotRequired[int]
-    number: NotRequired[int]
-    repository: NotRequired[CodeScanningAlertDismissalRequestPropRepositoryType]
-    organization: NotRequired[CodeScanningAlertDismissalRequestPropOrganizationType]
-    requester: NotRequired[CodeScanningAlertDismissalRequestPropRequesterType]
-    request_type: NotRequired[str]
-    data: NotRequired[
-        Union[list[CodeScanningAlertDismissalRequestPropDataItemsType], None]
-    ]
-    resource_identifier: NotRequired[str]
-    status: NotRequired[Literal["pending", "denied", "approved", "expired"]]
-    requester_comment: NotRequired[Union[str, None]]
-    expires_at: NotRequired[_dt.datetime]
-    created_at: NotRequired[_dt.datetime]
-    responses: NotRequired[Union[list[DismissalRequestResponseType], None]]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
+    id: int
+    name: str
+    description: NotRequired[Union[str, None]]
+    base_role: Literal["read", "triage", "write", "maintain"]
+    permissions: list[str]
+    organization: SimpleUserType
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-class CodeScanningAlertDismissalRequestTypeForResponse(TypedDict):
-    """Code scanning alert dismissal request
+class OrganizationCustomRepositoryRoleTypeForResponse(TypedDict):
+    """Organization Custom Repository Role
 
-    Alert dismisal request made by a user asking to dismiss a code scanning alert.
+    Custom repository roles created by organization owners
     """
 
-    id: NotRequired[int]
-    number: NotRequired[int]
-    repository: NotRequired[
-        CodeScanningAlertDismissalRequestPropRepositoryTypeForResponse
-    ]
-    organization: NotRequired[
-        CodeScanningAlertDismissalRequestPropOrganizationTypeForResponse
-    ]
-    requester: NotRequired[
-        CodeScanningAlertDismissalRequestPropRequesterTypeForResponse
-    ]
-    request_type: NotRequired[str]
-    data: NotRequired[
-        Union[list[CodeScanningAlertDismissalRequestPropDataItemsTypeForResponse], None]
-    ]
-    resource_identifier: NotRequired[str]
-    status: NotRequired[Literal["pending", "denied", "approved", "expired"]]
-    requester_comment: NotRequired[Union[str, None]]
-    expires_at: NotRequired[str]
-    created_at: NotRequired[str]
-    responses: NotRequired[Union[list[DismissalRequestResponseTypeForResponse], None]]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
+    id: int
+    name: str
+    description: NotRequired[Union[str, None]]
+    base_role: Literal["read", "triage", "write", "maintain"]
+    permissions: list[str]
+    organization: SimpleUserTypeForResponse
+    created_at: str
+    updated_at: str
 
 
-class CodeScanningAlertDismissalRequestPropRepositoryType(TypedDict):
-    """CodeScanningAlertDismissalRequestPropRepository
+class OrgsOrgCustomRepositoryRolesGetResponse200Type(TypedDict):
+    """OrgsOrgCustomRepositoryRolesGetResponse200"""
 
-    The repository the dismissal request is for.
-    """
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    full_name: NotRequired[str]
+    total_count: NotRequired[int]
+    custom_roles: NotRequired[list[OrganizationCustomRepositoryRoleType]]
 
 
-class CodeScanningAlertDismissalRequestPropRepositoryTypeForResponse(TypedDict):
-    """CodeScanningAlertDismissalRequestPropRepository
+class OrgsOrgCustomRepositoryRolesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCustomRepositoryRolesGetResponse200"""
 
-    The repository the dismissal request is for.
-    """
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    full_name: NotRequired[str]
-
-
-class CodeScanningAlertDismissalRequestPropOrganizationType(TypedDict):
-    """CodeScanningAlertDismissalRequestPropOrganization
-
-    The organization associated with the repository the dismissal request is for.
-    """
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-
-
-class CodeScanningAlertDismissalRequestPropOrganizationTypeForResponse(TypedDict):
-    """CodeScanningAlertDismissalRequestPropOrganization
-
-    The organization associated with the repository the dismissal request is for.
-    """
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-
-
-class CodeScanningAlertDismissalRequestPropRequesterType(TypedDict):
-    """CodeScanningAlertDismissalRequestPropRequester
-
-    The user who requested the dismissal request.
-    """
-
-    actor_id: NotRequired[int]
-    actor_name: NotRequired[str]
-
-
-class CodeScanningAlertDismissalRequestPropRequesterTypeForResponse(TypedDict):
-    """CodeScanningAlertDismissalRequestPropRequester
-
-    The user who requested the dismissal request.
-    """
-
-    actor_id: NotRequired[int]
-    actor_name: NotRequired[str]
-
-
-class CodeScanningAlertDismissalRequestPropDataItemsType(TypedDict):
-    """CodeScanningAlertDismissalRequestPropDataItems"""
-
-    reason: NotRequired[str]
-    alert_number: NotRequired[str]
-    pr_review_thread_id: NotRequired[str]
-
-
-class CodeScanningAlertDismissalRequestPropDataItemsTypeForResponse(TypedDict):
-    """CodeScanningAlertDismissalRequestPropDataItems"""
-
-    reason: NotRequired[str]
-    alert_number: NotRequired[str]
-    pr_review_thread_id: NotRequired[str]
+    total_count: NotRequired[int]
+    custom_roles: NotRequired[list[OrganizationCustomRepositoryRoleTypeForResponse]]
 
 
 __all__ = (
-    "CodeScanningAlertDismissalRequestPropDataItemsType",
-    "CodeScanningAlertDismissalRequestPropDataItemsTypeForResponse",
-    "CodeScanningAlertDismissalRequestPropOrganizationType",
-    "CodeScanningAlertDismissalRequestPropOrganizationTypeForResponse",
-    "CodeScanningAlertDismissalRequestPropRepositoryType",
-    "CodeScanningAlertDismissalRequestPropRepositoryTypeForResponse",
-    "CodeScanningAlertDismissalRequestPropRequesterType",
-    "CodeScanningAlertDismissalRequestPropRequesterTypeForResponse",
-    "CodeScanningAlertDismissalRequestType",
-    "CodeScanningAlertDismissalRequestTypeForResponse",
+    "OrganizationCustomRepositoryRoleType",
+    "OrganizationCustomRepositoryRoleTypeForResponse",
+    "OrgsOrgCustomRepositoryRolesGetResponse200Type",
+    "OrgsOrgCustomRepositoryRolesGetResponse200TypeForResponse",
 )

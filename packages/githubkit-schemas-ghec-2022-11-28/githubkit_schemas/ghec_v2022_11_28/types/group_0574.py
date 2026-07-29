@@ -9,26 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class ScimEnterpriseUserResponseAllof1PropGroupsItemsType(TypedDict):
-    """ScimEnterpriseUserResponseAllof1PropGroupsItems"""
+class RepositorySubscriptionType(TypedDict):
+    """Repository Invitation
 
-    value: NotRequired[str]
-    ref: NotRequired[str]
-    display: NotRequired[str]
+    Repository invitations let you manage who you collaborate with.
+    """
+
+    subscribed: bool
+    ignored: bool
+    reason: Union[str, None]
+    created_at: _dt.datetime
+    url: str
+    repository_url: str
 
 
-class ScimEnterpriseUserResponseAllof1PropGroupsItemsTypeForResponse(TypedDict):
-    """ScimEnterpriseUserResponseAllof1PropGroupsItems"""
+class RepositorySubscriptionTypeForResponse(TypedDict):
+    """Repository Invitation
 
-    value: NotRequired[str]
-    ref: NotRequired[str]
-    display: NotRequired[str]
+    Repository invitations let you manage who you collaborate with.
+    """
+
+    subscribed: bool
+    ignored: bool
+    reason: Union[str, None]
+    created_at: str
+    url: str
+    repository_url: str
 
 
 __all__ = (
-    "ScimEnterpriseUserResponseAllof1PropGroupsItemsType",
-    "ScimEnterpriseUserResponseAllof1PropGroupsItemsTypeForResponse",
+    "RepositorySubscriptionType",
+    "RepositorySubscriptionTypeForResponse",
 )

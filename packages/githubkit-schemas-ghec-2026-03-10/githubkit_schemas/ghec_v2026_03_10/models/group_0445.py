@@ -9,95 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0444 import Metadata
 
 
-class GitCommit(GitHubModel):
-    """Git Commit
+class Dependency(GitHubModel):
+    """Dependency"""
 
-    Low-level Git commit operations within a repository
-    """
-
-    sha: str = Field(description="SHA for the commit")
-    node_id: str = Field()
-    url: str = Field()
-    author: GitCommitPropAuthor = Field(
-        description="Identifying information for the git-user"
+    package_url: Missing[str] = Field(
+        pattern="^pkg",
+        default=UNSET,
+        description="Package-url (PURL) of dependency. See https://github.com/package-url/purl-spec for more details.",
     )
-    committer: GitCommitPropCommitter = Field(
-        description="Identifying information for the git-user"
+    metadata: Missing[Metadata] = Field(
+        default=UNSET,
+        title="metadata",
+        description="User-defined metadata to store domain-specific information limited to 8 keys with scalar values.",
     )
-    message: str = Field(description="Message describing the purpose of the commit")
-    tree: GitCommitPropTree = Field()
-    parents: list[GitCommitPropParentsItems] = Field()
-    verification: GitCommitPropVerification = Field()
-    html_url: str = Field()
+    relationship: Missing[Literal["direct", "indirect"]] = Field(
+        default=UNSET,
+        description="A notation of whether a dependency is requested directly by this manifest or is a dependency of another dependency.",
+    )
+    scope: Missing[Literal["runtime", "development"]] = Field(
+        default=UNSET,
+        description="A notation of whether the dependency is required for the primary build artifact (runtime) or is only used for development. Future versions of this specification may allow for more granular scopes.",
+    )
+    dependencies: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Array of package-url (PURLs) of direct child dependencies.",
+    )
 
 
-class GitCommitPropAuthor(GitHubModel):
-    """GitCommitPropAuthor
+model_rebuild(Dependency)
 
-    Identifying information for the git-user
-    """
-
-    date: _dt.datetime = Field(description="Timestamp of the commit")
-    email: str = Field(description="Git email address of the user")
-    name: str = Field(description="Name of the git user")
-
-
-class GitCommitPropCommitter(GitHubModel):
-    """GitCommitPropCommitter
-
-    Identifying information for the git-user
-    """
-
-    date: _dt.datetime = Field(description="Timestamp of the commit")
-    email: str = Field(description="Git email address of the user")
-    name: str = Field(description="Name of the git user")
-
-
-class GitCommitPropTree(GitHubModel):
-    """GitCommitPropTree"""
-
-    sha: str = Field(description="SHA for the commit")
-    url: str = Field()
-
-
-class GitCommitPropParentsItems(GitHubModel):
-    """GitCommitPropParentsItems"""
-
-    sha: str = Field(description="SHA for the commit")
-    url: str = Field()
-    html_url: str = Field()
-
-
-class GitCommitPropVerification(GitHubModel):
-    """GitCommitPropVerification"""
-
-    verified: bool = Field()
-    reason: str = Field()
-    signature: Union[str, None] = Field()
-    payload: Union[str, None] = Field()
-    verified_at: Union[str, None] = Field()
-
-
-model_rebuild(GitCommit)
-model_rebuild(GitCommitPropAuthor)
-model_rebuild(GitCommitPropCommitter)
-model_rebuild(GitCommitPropTree)
-model_rebuild(GitCommitPropParentsItems)
-model_rebuild(GitCommitPropVerification)
-
-__all__ = (
-    "GitCommit",
-    "GitCommitPropAuthor",
-    "GitCommitPropCommitter",
-    "GitCommitPropParentsItems",
-    "GitCommitPropTree",
-    "GitCommitPropVerification",
-)
+__all__ = ("Dependency",)

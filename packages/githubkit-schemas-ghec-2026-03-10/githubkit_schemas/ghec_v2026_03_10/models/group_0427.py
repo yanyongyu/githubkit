@@ -9,41 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0091 import DependabotAlertPackage
 
 
-class DependabotAlertPropDependency(GitHubModel):
-    """DependabotAlertPropDependency
+class BranchShort(GitHubModel):
+    """Branch Short
 
-    Details for the vulnerable dependency.
+    Branch Short
     """
 
-    package: Missing[DependabotAlertPackage] = Field(
-        default=UNSET, description="Details for the vulnerable package."
-    )
-    manifest_path: Missing[str] = Field(
-        default=UNSET,
-        description="The full path to the dependency manifest file, relative to the root of the repository.",
-    )
-    scope: Missing[Union[None, Literal["development", "runtime"]]] = Field(
-        default=UNSET, description="The execution scope of the vulnerable dependency."
-    )
-    relationship: Missing[
-        Union[None, Literal["unknown", "direct", "transitive", "inconclusive"]]
-    ] = Field(
-        default=UNSET,
-        description='The vulnerable dependency\'s relationship to your project.\n\n> [!NOTE]\n> We are rolling out support for dependency relationship across ecosystems. This value will be "unknown" for all dependencies in unsupported ecosystems.\n',
-    )
+    name: str = Field()
+    commit: BranchShortPropCommit = Field()
+    protected: bool = Field()
 
 
-model_rebuild(DependabotAlertPropDependency)
+class BranchShortPropCommit(GitHubModel):
+    """BranchShortPropCommit"""
 
-__all__ = ("DependabotAlertPropDependency",)
+    sha: str = Field()
+    url: str = Field()
+
+
+model_rebuild(BranchShort)
+model_rebuild(BranchShortPropCommit)
+
+__all__ = (
+    "BranchShort",
+    "BranchShortPropCommit",
+)

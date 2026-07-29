@@ -9,51 +9,69 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0459 import IssueTypeWebhookType, IssueTypeWebhookTypeForResponse
+from .group_0475 import IssueEventIntentType, IssueEventIntentTypeForResponse
 
 
-class IssueTypeAddedIssueEventType(TypedDict):
-    """Issue Type Added Issue Event
+class LabeledIssueEventType(TypedDict):
+    """Labeled Issue Event
 
-    Issue Type Added Issue Event
+    Labeled Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: str
+    event: Literal["labeled"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    issue_type: Union[IssueTypeWebhookType, None]
+    label: LabeledIssueEventPropLabelType
+    intent: NotRequired[Union[None, IssueEventIntentType, None]]
 
 
-class IssueTypeAddedIssueEventTypeForResponse(TypedDict):
-    """Issue Type Added Issue Event
+class LabeledIssueEventTypeForResponse(TypedDict):
+    """Labeled Issue Event
 
-    Issue Type Added Issue Event
+    Labeled Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserTypeForResponse
-    event: str
+    event: Literal["labeled"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    issue_type: Union[IssueTypeWebhookTypeForResponse, None]
+    label: LabeledIssueEventPropLabelTypeForResponse
+    intent: NotRequired[Union[None, IssueEventIntentTypeForResponse, None]]
+
+
+class LabeledIssueEventPropLabelType(TypedDict):
+    """LabeledIssueEventPropLabel"""
+
+    name: str
+    color: str
+
+
+class LabeledIssueEventPropLabelTypeForResponse(TypedDict):
+    """LabeledIssueEventPropLabel"""
+
+    name: str
+    color: str
 
 
 __all__ = (
-    "IssueTypeAddedIssueEventType",
-    "IssueTypeAddedIssueEventTypeForResponse",
+    "LabeledIssueEventPropLabelType",
+    "LabeledIssueEventPropLabelTypeForResponse",
+    "LabeledIssueEventType",
+    "LabeledIssueEventTypeForResponse",
 )

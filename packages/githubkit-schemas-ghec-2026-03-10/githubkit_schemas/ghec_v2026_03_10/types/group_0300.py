@@ -9,67 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0076 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
+
+class OrganizationCreateIssueFieldType(TypedDict):
+    """OrganizationCreateIssueField"""
+
+    name: str
+    description: NotRequired[Union[str, None]]
+    data_type: Literal["text", "date", "single_select", "multi_select", "number"]
+    visibility: NotRequired[Literal["organization_members_only", "all"]]
+    options: NotRequired[
+        Union[list[OrganizationCreateIssueFieldPropOptionsItemsType], None]
+    ]
 
 
-class MigrationType(TypedDict):
-    """Migration
+class OrganizationCreateIssueFieldTypeForResponse(TypedDict):
+    """OrganizationCreateIssueField"""
 
-    A migration.
-    """
-
-    id: int
-    owner: Union[None, SimpleUserType]
-    guid: str
-    state: str
-    lock_repositories: bool
-    exclude_metadata: bool
-    exclude_git_data: bool
-    exclude_attachments: bool
-    exclude_releases: bool
-    exclude_owner_projects: bool
-    org_metadata_only: bool
-    repositories: list[SimpleRepositoryType]
-    url: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    node_id: str
-    archive_url: NotRequired[str]
-    exclude: NotRequired[list[str]]
+    name: str
+    description: NotRequired[Union[str, None]]
+    data_type: Literal["text", "date", "single_select", "multi_select", "number"]
+    visibility: NotRequired[Literal["organization_members_only", "all"]]
+    options: NotRequired[
+        Union[list[OrganizationCreateIssueFieldPropOptionsItemsTypeForResponse], None]
+    ]
 
 
-class MigrationTypeForResponse(TypedDict):
-    """Migration
+class OrganizationCreateIssueFieldPropOptionsItemsType(TypedDict):
+    """OrganizationCreateIssueFieldPropOptionsItems"""
 
-    A migration.
-    """
+    name: str
+    description: NotRequired[Union[str, None]]
+    color: Literal["gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"]
+    priority: int
 
-    id: int
-    owner: Union[None, SimpleUserTypeForResponse]
-    guid: str
-    state: str
-    lock_repositories: bool
-    exclude_metadata: bool
-    exclude_git_data: bool
-    exclude_attachments: bool
-    exclude_releases: bool
-    exclude_owner_projects: bool
-    org_metadata_only: bool
-    repositories: list[SimpleRepositoryTypeForResponse]
-    url: str
-    created_at: str
-    updated_at: str
-    node_id: str
-    archive_url: NotRequired[str]
-    exclude: NotRequired[list[str]]
+
+class OrganizationCreateIssueFieldPropOptionsItemsTypeForResponse(TypedDict):
+    """OrganizationCreateIssueFieldPropOptionsItems"""
+
+    name: str
+    description: NotRequired[Union[str, None]]
+    color: Literal["gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"]
+    priority: int
 
 
 __all__ = (
-    "MigrationType",
-    "MigrationTypeForResponse",
+    "OrganizationCreateIssueFieldPropOptionsItemsType",
+    "OrganizationCreateIssueFieldPropOptionsItemsTypeForResponse",
+    "OrganizationCreateIssueFieldType",
+    "OrganizationCreateIssueFieldTypeForResponse",
 )

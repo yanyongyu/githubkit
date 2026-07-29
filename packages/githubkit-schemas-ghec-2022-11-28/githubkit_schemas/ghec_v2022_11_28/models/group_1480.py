@@ -12,32 +12,20 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0443 import CustomDeploymentRuleApp
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200(
-    GitHubModel
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetRespons
-    e200
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBody(GitHubModel):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBody
+
+    Examples:
+        {'apps': ['my-app']}
     """
 
-    total_count: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of custom deployment protection rule integrations available for this environment.",
+    apps: list[str] = Field(
+        description="The GitHub Apps that have push access to this branch. Use the slugified version of the app name. **Note**: The list of users, apps, and teams in total is limited to 100 items."
     )
-    available_custom_deployment_protection_rule_integrations: Missing[
-        list[CustomDeploymentRuleApp]
-    ] = Field(default=UNSET)
 
 
-model_rebuild(
-    ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200
-)
+model_rebuild(ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBody)
 
-__all__ = (
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200",
-)
+__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBody",)

@@ -9,36 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0112 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0220 import IssueType, IssueTypeForResponse
+from .group_0321 import PullRequestSimpleType, PullRequestSimpleTypeForResponse
+from .group_0324 import ProjectsV2DraftIssueType, ProjectsV2DraftIssueTypeForResponse
 
 
-class OrgRepoCustomPropertyValuesType(TypedDict):
-    """Organization Repository Custom Property Values
+class ProjectsV2ItemSimpleType(TypedDict):
+    """Projects v2 Item
 
-    List of custom property values for a repository
+    An item belonging to a project
     """
 
-    repository_id: int
-    repository_name: str
-    repository_full_name: str
-    properties: list[CustomPropertyValueType]
+    id: float
+    node_id: NotRequired[str]
+    content: NotRequired[
+        Union[IssueType, PullRequestSimpleType, ProjectsV2DraftIssueType]
+    ]
+    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
+    creator: NotRequired[SimpleUserType]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    archived_at: Union[_dt.datetime, None]
+    project_url: NotRequired[str]
+    item_url: NotRequired[str]
 
 
-class OrgRepoCustomPropertyValuesTypeForResponse(TypedDict):
-    """Organization Repository Custom Property Values
+class ProjectsV2ItemSimpleTypeForResponse(TypedDict):
+    """Projects v2 Item
 
-    List of custom property values for a repository
+    An item belonging to a project
     """
 
-    repository_id: int
-    repository_name: str
-    repository_full_name: str
-    properties: list[CustomPropertyValueTypeForResponse]
+    id: float
+    node_id: NotRequired[str]
+    content: NotRequired[
+        Union[
+            IssueTypeForResponse,
+            PullRequestSimpleTypeForResponse,
+            ProjectsV2DraftIssueTypeForResponse,
+        ]
+    ]
+    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
+    creator: NotRequired[SimpleUserTypeForResponse]
+    created_at: str
+    updated_at: str
+    archived_at: Union[str, None]
+    project_url: NotRequired[str]
+    item_url: NotRequired[str]
 
 
 __all__ = (
-    "OrgRepoCustomPropertyValuesType",
-    "OrgRepoCustomPropertyValuesTypeForResponse",
+    "ProjectsV2ItemSimpleType",
+    "ProjectsV2ItemSimpleTypeForResponse",
 )

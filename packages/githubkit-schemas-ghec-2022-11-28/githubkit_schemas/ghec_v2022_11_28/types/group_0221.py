@@ -13,267 +13,54 @@ import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0222 import DiscussionEventType, DiscussionEventTypeForResponse
-from .group_0223 import IssuesEventType, IssuesEventTypeForResponse
-from .group_0224 import IssueCommentEventType, IssueCommentEventTypeForResponse
-from .group_0225 import ForkEventType, ForkEventTypeForResponse
-from .group_0227 import MemberEventType, MemberEventTypeForResponse
-from .group_0228 import PullRequestEventType, PullRequestEventTypeForResponse
-from .group_0229 import (
-    PullRequestReviewCommentEventType,
-    PullRequestReviewCommentEventTypeForResponse,
-)
-from .group_0230 import (
-    PullRequestReviewEventType,
-    PullRequestReviewEventTypeForResponse,
-)
-from .group_0232 import CommitCommentEventType, CommitCommentEventTypeForResponse
-from .group_0234 import ReleaseEventType, ReleaseEventTypeForResponse
 
+class IssuePropLabelsItemsOneof1Type(TypedDict):
+    """IssuePropLabelsItemsOneof1"""
 
-class EventType(TypedDict):
-    """Event
-
-    Event
-    """
-
-    id: str
-    type: Union[str, None]
-    actor: ActorType
-    repo: EventPropRepoType
-    org: NotRequired[ActorType]
-    payload: Union[
-        CreateEventType,
-        DeleteEventType,
-        DiscussionEventType,
-        IssuesEventType,
-        IssueCommentEventType,
-        ForkEventType,
-        GollumEventType,
-        MemberEventType,
-        PublicEventType,
-        PushEventType,
-        PullRequestEventType,
-        PullRequestReviewCommentEventType,
-        PullRequestReviewEventType,
-        CommitCommentEventType,
-        ReleaseEventType,
-        WatchEventType,
-    ]
-    public: bool
-    created_at: Union[_dt.datetime, None]
-
-
-class EventTypeForResponse(TypedDict):
-    """Event
-
-    Event
-    """
-
-    id: str
-    type: Union[str, None]
-    actor: ActorTypeForResponse
-    repo: EventPropRepoTypeForResponse
-    org: NotRequired[ActorTypeForResponse]
-    payload: Union[
-        CreateEventTypeForResponse,
-        DeleteEventTypeForResponse,
-        DiscussionEventTypeForResponse,
-        IssuesEventTypeForResponse,
-        IssueCommentEventTypeForResponse,
-        ForkEventTypeForResponse,
-        GollumEventTypeForResponse,
-        MemberEventTypeForResponse,
-        PublicEventTypeForResponse,
-        PushEventTypeForResponse,
-        PullRequestEventTypeForResponse,
-        PullRequestReviewCommentEventTypeForResponse,
-        PullRequestReviewEventTypeForResponse,
-        CommitCommentEventTypeForResponse,
-        ReleaseEventTypeForResponse,
-        WatchEventTypeForResponse,
-    ]
-    public: bool
-    created_at: Union[str, None]
-
-
-class ActorType(TypedDict):
-    """Actor
-
-    Actor
-    """
-
-    id: int
-    login: str
-    display_login: NotRequired[str]
-    gravatar_id: Union[str, None]
-    url: str
-    avatar_url: str
-
-
-class ActorTypeForResponse(TypedDict):
-    """Actor
-
-    Actor
-    """
-
-    id: int
-    login: str
-    display_login: NotRequired[str]
-    gravatar_id: Union[str, None]
-    url: str
-    avatar_url: str
-
-
-class EventPropRepoType(TypedDict):
-    """EventPropRepo"""
-
-    id: int
-    name: str
-    url: str
-
-
-class EventPropRepoTypeForResponse(TypedDict):
-    """EventPropRepo"""
-
-    id: int
-    name: str
-    url: str
-
-
-class CreateEventType(TypedDict):
-    """CreateEvent"""
-
-    ref: str
-    ref_type: str
-    full_ref: str
-    master_branch: str
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    url: NotRequired[str]
+    name: NotRequired[str]
     description: NotRequired[Union[str, None]]
-    pusher_type: str
+    color: NotRequired[Union[str, None]]
+    default: NotRequired[bool]
 
 
-class CreateEventTypeForResponse(TypedDict):
-    """CreateEvent"""
+class IssuePropLabelsItemsOneof1TypeForResponse(TypedDict):
+    """IssuePropLabelsItemsOneof1"""
 
-    ref: str
-    ref_type: str
-    full_ref: str
-    master_branch: str
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    url: NotRequired[str]
+    name: NotRequired[str]
     description: NotRequired[Union[str, None]]
-    pusher_type: str
+    color: NotRequired[Union[str, None]]
+    default: NotRequired[bool]
 
 
-class DeleteEventType(TypedDict):
-    """DeleteEvent"""
+class IssuePropPullRequestType(TypedDict):
+    """IssuePropPullRequest"""
 
-    ref: str
-    ref_type: str
-    full_ref: str
-    pusher_type: str
-
-
-class DeleteEventTypeForResponse(TypedDict):
-    """DeleteEvent"""
-
-    ref: str
-    ref_type: str
-    full_ref: str
-    pusher_type: str
+    merged_at: NotRequired[Union[_dt.datetime, None]]
+    diff_url: Union[str, None]
+    html_url: Union[str, None]
+    patch_url: Union[str, None]
+    url: Union[str, None]
 
 
-class PublicEventType(TypedDict):
-    """PublicEvent"""
+class IssuePropPullRequestTypeForResponse(TypedDict):
+    """IssuePropPullRequest"""
 
-
-class PublicEventTypeForResponse(TypedDict):
-    """PublicEvent"""
-
-
-class PushEventType(TypedDict):
-    """PushEvent"""
-
-    repository_id: int
-    push_id: int
-    ref: str
-    head: str
-    before: str
-
-
-class PushEventTypeForResponse(TypedDict):
-    """PushEvent"""
-
-    repository_id: int
-    push_id: int
-    ref: str
-    head: str
-    before: str
-
-
-class WatchEventType(TypedDict):
-    """WatchEvent"""
-
-    action: str
-
-
-class WatchEventTypeForResponse(TypedDict):
-    """WatchEvent"""
-
-    action: str
-
-
-class GollumEventType(TypedDict):
-    """GollumEvent"""
-
-    pages: list[GollumEventPropPagesItemsType]
-
-
-class GollumEventTypeForResponse(TypedDict):
-    """GollumEvent"""
-
-    pages: list[GollumEventPropPagesItemsTypeForResponse]
-
-
-class GollumEventPropPagesItemsType(TypedDict):
-    """GollumEventPropPagesItems"""
-
-    page_name: NotRequired[Union[str, None]]
-    title: NotRequired[Union[str, None]]
-    summary: NotRequired[Union[str, None]]
-    action: NotRequired[str]
-    sha: NotRequired[str]
-    html_url: NotRequired[str]
-
-
-class GollumEventPropPagesItemsTypeForResponse(TypedDict):
-    """GollumEventPropPagesItems"""
-
-    page_name: NotRequired[Union[str, None]]
-    title: NotRequired[Union[str, None]]
-    summary: NotRequired[Union[str, None]]
-    action: NotRequired[str]
-    sha: NotRequired[str]
-    html_url: NotRequired[str]
+    merged_at: NotRequired[Union[str, None]]
+    diff_url: Union[str, None]
+    html_url: Union[str, None]
+    patch_url: Union[str, None]
+    url: Union[str, None]
 
 
 __all__ = (
-    "ActorType",
-    "ActorTypeForResponse",
-    "CreateEventType",
-    "CreateEventTypeForResponse",
-    "DeleteEventType",
-    "DeleteEventTypeForResponse",
-    "EventPropRepoType",
-    "EventPropRepoTypeForResponse",
-    "EventType",
-    "EventTypeForResponse",
-    "GollumEventPropPagesItemsType",
-    "GollumEventPropPagesItemsTypeForResponse",
-    "GollumEventType",
-    "GollumEventTypeForResponse",
-    "PublicEventType",
-    "PublicEventTypeForResponse",
-    "PushEventType",
-    "PushEventTypeForResponse",
-    "WatchEventType",
-    "WatchEventTypeForResponse",
+    "IssuePropLabelsItemsOneof1Type",
+    "IssuePropLabelsItemsOneof1TypeForResponse",
+    "IssuePropPullRequestType",
+    "IssuePropPullRequestTypeForResponse",
 )

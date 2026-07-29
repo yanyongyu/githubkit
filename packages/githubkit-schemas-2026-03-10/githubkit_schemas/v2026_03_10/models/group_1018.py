@@ -14,21 +14,55 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody(GitHubModel):
-    """EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody"""
+class AgentsReposOwnerRepoTasksTaskIdGetResponse404(GitHubModel):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse404
 
-    policy_state: Literal[
-        "enabled_for_all_orgs",
-        "disabled_for_all_orgs",
-        "enabled_for_selected_orgs",
-        "configured_by_org_admins",
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str = Field(
+        description='Summary message (e.g. "Validation Failed", "Not Found")'
+    )
+    errors: Missing[
+        list[AgentsReposOwnerRepoTasksTaskIdGetResponse404PropErrorsItems]
     ] = Field(
-        description="The policy state for Copilot cloud agent in the enterprise. Can be one of `enabled_for_all_orgs`, `disabled_for_all_orgs`, `enabled_for_selected_orgs`, or `configured_by_org_admins`."
+        default=UNSET,
+        description="List of validation errors (present only for 422 responses)",
+    )
+    documentation_url: str = Field(description="URL to relevant API documentation")
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse404PropErrorsItems(GitHubModel):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse404PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ] = Field(description="Machine-readable error code")
+    message: Missing[str] = Field(
+        default=UNSET,
+        description='Human-readable message (populated when code is "custom")',
     )
 
 
-model_rebuild(EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody)
+model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse404)
+model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse404PropErrorsItems)
 
-__all__ = ("EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody",)
+__all__ = (
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse404",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse404PropErrorsItems",
+)

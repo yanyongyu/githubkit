@@ -13,25 +13,25 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRuleDetailedOneof9Type(TypedDict):
-    """RepositoryRuleDetailedOneof9"""
+class RepositoryRuleDetailedOneof0Type(TypedDict):
+    """RepositoryRuleDetailedOneof0"""
 
-    type: Literal["non_fast_forward"]
+    type: Literal["creation"]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
-class RepositoryRuleDetailedOneof9TypeForResponse(TypedDict):
-    """RepositoryRuleDetailedOneof9"""
+class RepositoryRuleDetailedOneof0TypeForResponse(TypedDict):
+    """RepositoryRuleDetailedOneof0"""
 
-    type: Literal["non_fast_forward"]
+    type: Literal["creation"]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
 __all__ = (
-    "RepositoryRuleDetailedOneof9Type",
-    "RepositoryRuleDetailedOneof9TypeForResponse",
+    "RepositoryRuleDetailedOneof0Type",
+    "RepositoryRuleDetailedOneof0TypeForResponse",
 )

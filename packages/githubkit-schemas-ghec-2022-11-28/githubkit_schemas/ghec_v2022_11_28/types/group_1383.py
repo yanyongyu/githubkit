@@ -9,28 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType(TypedDict):
-    """ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody"""
+class OrgsOrgHooksHookIdPatchBodyType(TypedDict):
+    """OrgsOrgHooksHookIdPatchBody"""
 
-    name: str
-    runner_group_id: int
-    labels: list[str]
-    work_folder: NotRequired[str]
+    config: NotRequired[OrgsOrgHooksHookIdPatchBodyPropConfigType]
+    events: NotRequired[list[str]]
+    active: NotRequired[bool]
+    name: NotRequired[str]
 
 
-class ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody"""
+class OrgsOrgHooksHookIdPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgHooksHookIdPatchBody"""
 
-    name: str
-    runner_group_id: int
-    labels: list[str]
-    work_folder: NotRequired[str]
+    config: NotRequired[OrgsOrgHooksHookIdPatchBodyPropConfigTypeForResponse]
+    events: NotRequired[list[str]]
+    active: NotRequired[bool]
+    name: NotRequired[str]
+
+
+class OrgsOrgHooksHookIdPatchBodyPropConfigType(TypedDict):
+    """OrgsOrgHooksHookIdPatchBodyPropConfig
+
+    Key/value pairs to provide settings for this webhook.
+    """
+
+    url: str
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
+
+
+class OrgsOrgHooksHookIdPatchBodyPropConfigTypeForResponse(TypedDict):
+    """OrgsOrgHooksHookIdPatchBodyPropConfig
+
+    Key/value pairs to provide settings for this webhook.
+    """
+
+    url: str
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType",
-    "ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyTypeForResponse",
+    "OrgsOrgHooksHookIdPatchBodyPropConfigType",
+    "OrgsOrgHooksHookIdPatchBodyPropConfigTypeForResponse",
+    "OrgsOrgHooksHookIdPatchBodyType",
+    "OrgsOrgHooksHookIdPatchBodyTypeForResponse",
 )

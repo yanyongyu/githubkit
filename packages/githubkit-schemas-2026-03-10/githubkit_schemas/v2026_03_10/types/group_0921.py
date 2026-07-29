@@ -13,46 +13,38 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0522 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0523 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0524 import (
+from .group_0534 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0535 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0536 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0525 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0922 import (
-    WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryType,
-    WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryTypeForResponse,
-)
+from .group_0537 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookSecurityAdvisoryWithdrawnType(TypedDict):
-    """security_advisory withdrawn event"""
+class WebhookRepositoryDeletedType(TypedDict):
+    """repository deleted event"""
 
-    action: Literal["withdrawn"]
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    security_advisory: WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryType
-    sender: NotRequired[SimpleUserType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class WebhookSecurityAdvisoryWithdrawnTypeForResponse(TypedDict):
-    """security_advisory withdrawn event"""
+class WebhookRepositoryDeletedTypeForResponse(TypedDict):
+    """repository deleted event"""
 
-    action: Literal["withdrawn"]
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    security_advisory: (
-        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryTypeForResponse
-    )
-    sender: NotRequired[SimpleUserTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookSecurityAdvisoryWithdrawnType",
-    "WebhookSecurityAdvisoryWithdrawnTypeForResponse",
+    "WebhookRepositoryDeletedType",
+    "WebhookRepositoryDeletedTypeForResponse",
 )

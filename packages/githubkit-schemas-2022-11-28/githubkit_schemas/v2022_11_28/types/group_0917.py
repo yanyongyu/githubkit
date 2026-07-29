@@ -13,46 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0523 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0524 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0525 import (
+from .group_0535 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0536 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0537 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0526 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0566 import (
-    SecretScanningAlertWebhookType,
-    SecretScanningAlertWebhookTypeForResponse,
-)
+from .group_0538 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0576 import WebhooksRelease1Type, WebhooksRelease1TypeForResponse
 
 
-class WebhookSecretScanningAlertUnassignedType(TypedDict):
-    """secret_scanning_alert unassigned event"""
+class WebhookReleaseUnpublishedType(TypedDict):
+    """release unpublished event"""
 
-    action: Literal["unassigned"]
-    alert: SecretScanningAlertWebhookType
-    assignee: NotRequired[SimpleUserType]
+    action: Literal["unpublished"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
+    release: WebhooksRelease1Type
     repository: RepositoryWebhooksType
     sender: NotRequired[SimpleUserType]
 
 
-class WebhookSecretScanningAlertUnassignedTypeForResponse(TypedDict):
-    """secret_scanning_alert unassigned event"""
+class WebhookReleaseUnpublishedTypeForResponse(TypedDict):
+    """release unpublished event"""
 
-    action: Literal["unassigned"]
-    alert: SecretScanningAlertWebhookTypeForResponse
-    assignee: NotRequired[SimpleUserTypeForResponse]
+    action: Literal["unpublished"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    release: WebhooksRelease1TypeForResponse
     repository: RepositoryWebhooksTypeForResponse
     sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookSecretScanningAlertUnassignedType",
-    "WebhookSecretScanningAlertUnassignedTypeForResponse",
+    "WebhookReleaseUnpublishedType",
+    "WebhookReleaseUnpublishedTypeForResponse",
 )

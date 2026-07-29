@@ -13,107 +13,23 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameCopilotSpacesPostBodyType(TypedDict):
-    """UsersUsernameCopilotSpacesPostBody"""
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody"""
 
-    name: str
-    description: NotRequired[str]
-    general_instructions: NotRequired[str]
-    base_role: NotRequired[Literal["reader", "no_access"]]
-    resources_attributes: NotRequired[
-        list[UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsType]
-    ]
+    message: str
+    event: NotRequired[Literal["DISMISS"]]
 
 
-class UsersUsernameCopilotSpacesPostBodyTypeForResponse(TypedDict):
-    """UsersUsernameCopilotSpacesPostBody"""
-
-    name: str
-    description: NotRequired[str]
-    general_instructions: NotRequired[str]
-    base_role: NotRequired[Literal["reader", "no_access"]]
-    resources_attributes: NotRequired[
-        list[
-            UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsTypeForResponse
-        ]
-    ]
-
-
-class UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsType(TypedDict):
-    """UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItems"""
-
-    resource_type: NotRequired[
-        Literal[
-            "repository",
-            "github_file",
-            "free_text",
-            "github_issue",
-            "github_pull_request",
-            "media_content",
-            "uploaded_text_file",
-        ]
-    ]
-    metadata: NotRequired[
-        UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataType
-    ]
-
-
-class UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsTypeForResponse(
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyTypeForResponse(
     TypedDict
 ):
-    """UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItems"""
+    """ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody"""
 
-    resource_type: NotRequired[
-        Literal[
-            "repository",
-            "github_file",
-            "free_text",
-            "github_issue",
-            "github_pull_request",
-            "media_content",
-            "uploaded_text_file",
-        ]
-    ]
-    metadata: NotRequired[
-        UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataTypeForResponse
-    ]
-
-
-class UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataType(
-    TypedDict
-):
-    """UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata
-
-    Metadata specific to the resource type.
-    """
-
-    repository_id: NotRequired[int]
-    file_path: NotRequired[str]
-    text: NotRequired[str]
-    name: NotRequired[str]
-    number: NotRequired[int]
-
-
-class UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataTypeForResponse(
-    TypedDict
-):
-    """UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata
-
-    Metadata specific to the resource type.
-    """
-
-    repository_id: NotRequired[int]
-    file_path: NotRequired[str]
-    text: NotRequired[str]
-    name: NotRequired[str]
-    number: NotRequired[int]
+    message: str
+    event: NotRequired[Literal["DISMISS"]]
 
 
 __all__ = (
-    "UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataType",
-    "UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataTypeForResponse",
-    "UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsType",
-    "UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsTypeForResponse",
-    "UsersUsernameCopilotSpacesPostBodyType",
-    "UsersUsernameCopilotSpacesPostBodyTypeForResponse",
+    "ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType",
+    "ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyTypeForResponse",
 )

@@ -26,7 +26,7 @@ class ScopedInstallation(GitHubModel):
 
     permissions: AppPermissions = Field(
         title="App Permissions",
-        description="The permissions granted to the user access token.",
+        description="The permissions granted to the fine-grained access token.",
     )
     repository_selection: Literal["all", "selected"] = Field(
         description="Describe whether all repositories have been selected or there's a selection involved"

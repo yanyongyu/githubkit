@@ -11,26 +11,25 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0283 import WorkflowRunType, WorkflowRunTypeForResponse
+from .group_0261 import (
+    SecretScanningCustomPatternToCreateType,
+    SecretScanningCustomPatternToCreateTypeForResponse,
+)
 
 
-class ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200"""
+class OrgsOrgSecretScanningCustomPatternsPostBodyType(TypedDict):
+    """OrgsOrgSecretScanningCustomPatternsPostBody"""
 
-    total_count: int
-    workflow_runs: list[WorkflowRunType]
+    patterns: list[SecretScanningCustomPatternToCreateType]
 
 
-class ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200"""
+class OrgsOrgSecretScanningCustomPatternsPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgSecretScanningCustomPatternsPostBody"""
 
-    total_count: int
-    workflow_runs: list[WorkflowRunTypeForResponse]
+    patterns: list[SecretScanningCustomPatternToCreateTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200Type",
-    "ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200TypeForResponse",
+    "OrgsOrgSecretScanningCustomPatternsPostBodyType",
+    "OrgsOrgSecretScanningCustomPatternsPostBodyTypeForResponse",
 )

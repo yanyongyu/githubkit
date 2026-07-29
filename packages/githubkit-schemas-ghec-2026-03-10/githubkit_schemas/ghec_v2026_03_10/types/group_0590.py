@@ -9,130 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Any, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class GpgKeyType(TypedDict):
-    """GPG Key
-
-    A unique encryption key
-    """
-
-    id: int
-    name: NotRequired[Union[str, None]]
-    primary_key_id: Union[int, None]
-    key_id: str
-    public_key: str
-    emails: list[GpgKeyPropEmailsItemsType]
-    subkeys: list[GpgKeyPropSubkeysItemsType]
-    can_sign: bool
-    can_encrypt_comms: bool
-    can_encrypt_storage: bool
-    can_certify: bool
-    created_at: _dt.datetime
-    expires_at: Union[_dt.datetime, None]
-    revoked: bool
-    raw_key: Union[str, None]
+from .group_0581 import MetaType, MetaTypeForResponse
+from .group_0591 import (
+    ScimEnterpriseUserResponseAllof1PropGroupsItemsType,
+    ScimEnterpriseUserResponseAllof1PropGroupsItemsTypeForResponse,
+)
 
 
-class GpgKeyTypeForResponse(TypedDict):
-    """GPG Key
+class ScimEnterpriseUserResponseAllof1Type(TypedDict):
+    """ScimEnterpriseUserResponseAllof1"""
 
-    A unique encryption key
-    """
-
-    id: int
-    name: NotRequired[Union[str, None]]
-    primary_key_id: Union[int, None]
-    key_id: str
-    public_key: str
-    emails: list[GpgKeyPropEmailsItemsTypeForResponse]
-    subkeys: list[GpgKeyPropSubkeysItemsTypeForResponse]
-    can_sign: bool
-    can_encrypt_comms: bool
-    can_encrypt_storage: bool
-    can_certify: bool
-    created_at: str
-    expires_at: Union[str, None]
-    revoked: bool
-    raw_key: Union[str, None]
+    id: str
+    groups: NotRequired[list[ScimEnterpriseUserResponseAllof1PropGroupsItemsType]]
+    meta: MetaType
 
 
-class GpgKeyPropEmailsItemsType(TypedDict):
-    """GpgKeyPropEmailsItems"""
+class ScimEnterpriseUserResponseAllof1TypeForResponse(TypedDict):
+    """ScimEnterpriseUserResponseAllof1"""
 
-    email: NotRequired[str]
-    verified: NotRequired[bool]
-
-
-class GpgKeyPropEmailsItemsTypeForResponse(TypedDict):
-    """GpgKeyPropEmailsItems"""
-
-    email: NotRequired[str]
-    verified: NotRequired[bool]
-
-
-class GpgKeyPropSubkeysItemsType(TypedDict):
-    """GpgKeyPropSubkeysItems"""
-
-    id: NotRequired[int]
-    primary_key_id: NotRequired[int]
-    key_id: NotRequired[str]
-    public_key: NotRequired[str]
-    emails: NotRequired[list[GpgKeyPropSubkeysItemsPropEmailsItemsType]]
-    subkeys: NotRequired[list[Any]]
-    can_sign: NotRequired[bool]
-    can_encrypt_comms: NotRequired[bool]
-    can_encrypt_storage: NotRequired[bool]
-    can_certify: NotRequired[bool]
-    created_at: NotRequired[str]
-    expires_at: NotRequired[Union[str, None]]
-    raw_key: NotRequired[Union[str, None]]
-    revoked: NotRequired[bool]
-
-
-class GpgKeyPropSubkeysItemsTypeForResponse(TypedDict):
-    """GpgKeyPropSubkeysItems"""
-
-    id: NotRequired[int]
-    primary_key_id: NotRequired[int]
-    key_id: NotRequired[str]
-    public_key: NotRequired[str]
-    emails: NotRequired[list[GpgKeyPropSubkeysItemsPropEmailsItemsTypeForResponse]]
-    subkeys: NotRequired[list[Any]]
-    can_sign: NotRequired[bool]
-    can_encrypt_comms: NotRequired[bool]
-    can_encrypt_storage: NotRequired[bool]
-    can_certify: NotRequired[bool]
-    created_at: NotRequired[str]
-    expires_at: NotRequired[Union[str, None]]
-    raw_key: NotRequired[Union[str, None]]
-    revoked: NotRequired[bool]
-
-
-class GpgKeyPropSubkeysItemsPropEmailsItemsType(TypedDict):
-    """GpgKeyPropSubkeysItemsPropEmailsItems"""
-
-    email: NotRequired[str]
-    verified: NotRequired[bool]
-
-
-class GpgKeyPropSubkeysItemsPropEmailsItemsTypeForResponse(TypedDict):
-    """GpgKeyPropSubkeysItemsPropEmailsItems"""
-
-    email: NotRequired[str]
-    verified: NotRequired[bool]
+    id: str
+    groups: NotRequired[
+        list[ScimEnterpriseUserResponseAllof1PropGroupsItemsTypeForResponse]
+    ]
+    meta: MetaTypeForResponse
 
 
 __all__ = (
-    "GpgKeyPropEmailsItemsType",
-    "GpgKeyPropEmailsItemsTypeForResponse",
-    "GpgKeyPropSubkeysItemsPropEmailsItemsType",
-    "GpgKeyPropSubkeysItemsPropEmailsItemsTypeForResponse",
-    "GpgKeyPropSubkeysItemsType",
-    "GpgKeyPropSubkeysItemsTypeForResponse",
-    "GpgKeyType",
-    "GpgKeyTypeForResponse",
+    "ScimEnterpriseUserResponseAllof1Type",
+    "ScimEnterpriseUserResponseAllof1TypeForResponse",
 )

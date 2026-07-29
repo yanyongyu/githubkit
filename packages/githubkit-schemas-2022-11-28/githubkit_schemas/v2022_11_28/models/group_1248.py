@@ -12,25 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0(
-    GitHubModel
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneo
-    f0
+class ReposOwnerRepoDeleteResponse403(GitHubModel):
+    """ReposOwnerRepoDeleteResponse403"""
 
-    Examples:
-        {'contexts': ['contexts']}
-    """
-
-    contexts: list[str] = Field(description="The name of the status checks")
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(
-    ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0
-)
+model_rebuild(ReposOwnerRepoDeleteResponse403)
 
-__all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0",
-)
+__all__ = ("ReposOwnerRepoDeleteResponse403",)

@@ -13,41 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0207 import DiscussionType, DiscussionTypeForResponse
-from .group_0598 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0599 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0600 import (
+from .group_0617 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0618 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0619 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0601 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0620 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0626 import WebhooksDeployKeyType, WebhooksDeployKeyTypeForResponse
 
 
-class WebhookDiscussionReopenedType(TypedDict):
-    """discussion reopened event"""
+class WebhookDeployKeyDeletedType(TypedDict):
+    """deploy_key deleted event"""
 
-    action: Literal["reopened"]
-    discussion: DiscussionType
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
+    key: WebhooksDeployKeyType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookDiscussionReopenedTypeForResponse(TypedDict):
-    """discussion reopened event"""
+class WebhookDeployKeyDeletedTypeForResponse(TypedDict):
+    """deploy_key deleted event"""
 
-    action: Literal["reopened"]
-    discussion: DiscussionTypeForResponse
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
+    key: WebhooksDeployKeyTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookDiscussionReopenedType",
-    "WebhookDiscussionReopenedTypeForResponse",
+    "WebhookDeployKeyDeletedType",
+    "WebhookDeployKeyDeletedTypeForResponse",
 )

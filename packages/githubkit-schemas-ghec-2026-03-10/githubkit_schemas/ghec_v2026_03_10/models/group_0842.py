@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0598 import EnterpriseWebhooks
-from .group_0599 import SimpleInstallation
-from .group_0600 import OrganizationSimpleWebhooks
-from .group_0601 import RepositoryWebhooks
-from .group_0621 import WebhooksIssue2
+from .group_0617 import EnterpriseWebhooks
+from .group_0618 import SimpleInstallation
+from .group_0619 import OrganizationSimpleWebhooks
+from .group_0620 import RepositoryWebhooks
+from .group_0843 import WebhookIssuesLockedPropIssue
 
 
-class WebhookIssuesUnpinned(GitHubModel):
-    """issues unpinned event"""
+class WebhookIssuesLocked(GitHubModel):
+    """issues locked event"""
 
-    action: Literal["unpinned"] = Field()
+    action: Literal["locked"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -39,7 +39,7 @@ class WebhookIssuesUnpinned(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    issue: WebhooksIssue2 = Field(
+    issue: WebhookIssuesLockedPropIssue = Field(
         title="Issue",
         description="The [issue](https://docs.github.com/enterprise-cloud@latest/rest/issues/issues#get-an-issue) itself.",
     )
@@ -55,6 +55,6 @@ class WebhookIssuesUnpinned(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookIssuesUnpinned)
+model_rebuild(WebhookIssuesLocked)
 
-__all__ = ("WebhookIssuesUnpinned",)
+__all__ = ("WebhookIssuesLocked",)

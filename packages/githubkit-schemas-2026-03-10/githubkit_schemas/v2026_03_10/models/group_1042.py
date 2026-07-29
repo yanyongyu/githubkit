@@ -12,18 +12,16 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class NotificationsThreadsThreadIdSubscriptionPutBody(GitHubModel):
-    """NotificationsThreadsThreadIdSubscriptionPutBody"""
+class ApplicationsClientIdTokenPostBody(GitHubModel):
+    """ApplicationsClientIdTokenPostBody"""
 
-    ignored: Missing[bool] = Field(
-        default=UNSET, description="Whether to block all notifications from a thread."
+    access_token: str = Field(
+        description="The access_token of the OAuth or GitHub application."
     )
 
 
-model_rebuild(NotificationsThreadsThreadIdSubscriptionPutBody)
+model_rebuild(ApplicationsClientIdTokenPostBody)
 
-__all__ = ("NotificationsThreadsThreadIdSubscriptionPutBody",)
+__all__ = ("ApplicationsClientIdTokenPostBody",)

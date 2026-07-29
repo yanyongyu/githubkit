@@ -9,73 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0019 import LicenseSimpleType, LicenseSimpleTypeForResponse
-
-
-class LicenseContentType(TypedDict):
-    """License Content
-
-    License Content
-    """
-
-    name: str
-    path: str
-    sha: str
-    size: int
-    url: str
-    html_url: Union[str, None]
-    git_url: Union[str, None]
-    download_url: Union[str, None]
-    type: str
-    content: str
-    encoding: str
-    links: LicenseContentPropLinksType
-    license_: Union[None, LicenseSimpleType]
+from .group_0058 import IssueType, IssueTypeForResponse
 
 
-class LicenseContentTypeForResponse(TypedDict):
-    """License Content
+class TimelineCrossReferencedEventPropSourceType(TypedDict):
+    """TimelineCrossReferencedEventPropSource"""
 
-    License Content
-    """
-
-    name: str
-    path: str
-    sha: str
-    size: int
-    url: str
-    html_url: Union[str, None]
-    git_url: Union[str, None]
-    download_url: Union[str, None]
-    type: str
-    content: str
-    encoding: str
-    links: LicenseContentPropLinksTypeForResponse
-    license_: Union[None, LicenseSimpleTypeForResponse]
+    type: NotRequired[str]
+    issue: NotRequired[IssueType]
 
 
-class LicenseContentPropLinksType(TypedDict):
-    """LicenseContentPropLinks"""
+class TimelineCrossReferencedEventPropSourceTypeForResponse(TypedDict):
+    """TimelineCrossReferencedEventPropSource"""
 
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
-
-
-class LicenseContentPropLinksTypeForResponse(TypedDict):
-    """LicenseContentPropLinks"""
-
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
+    type: NotRequired[str]
+    issue: NotRequired[IssueTypeForResponse]
 
 
 __all__ = (
-    "LicenseContentPropLinksType",
-    "LicenseContentPropLinksTypeForResponse",
-    "LicenseContentType",
-    "LicenseContentTypeForResponse",
+    "TimelineCrossReferencedEventPropSourceType",
+    "TimelineCrossReferencedEventPropSourceTypeForResponse",
 )

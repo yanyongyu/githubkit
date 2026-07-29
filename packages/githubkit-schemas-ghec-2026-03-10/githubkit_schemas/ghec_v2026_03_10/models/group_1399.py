@@ -12,17 +12,22 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0350 import ActionsVariable
-
-
-class ReposOwnerRepoAgentsOrganizationVariablesGetResponse200(GitHubModel):
-    """ReposOwnerRepoAgentsOrganizationVariablesGetResponse200"""
-
-    total_count: int = Field()
-    variables: list[ActionsVariable] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(ReposOwnerRepoAgentsOrganizationVariablesGetResponse200)
+class OrgsOrgProjectsV2ProjectNumberDraftsPostBody(GitHubModel):
+    """OrgsOrgProjectsV2ProjectNumberDraftsPostBody"""
 
-__all__ = ("ReposOwnerRepoAgentsOrganizationVariablesGetResponse200",)
+    title: str = Field(
+        description="The title of the draft issue item to create in the project."
+    )
+    body: Missing[str] = Field(
+        default=UNSET,
+        description="The body content of the draft issue item to create in the project.",
+    )
+
+
+model_rebuild(OrgsOrgProjectsV2ProjectNumberDraftsPostBody)
+
+__all__ = ("OrgsOrgProjectsV2ProjectNumberDraftsPostBody",)

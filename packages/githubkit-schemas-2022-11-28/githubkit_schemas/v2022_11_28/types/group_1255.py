@@ -9,32 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyType(TypedDict):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody
+class ReposOwnerRepoActionsPermissionsPutBodyType(TypedDict):
+    """ReposOwnerRepoActionsPermissionsPutBody"""
 
-    Examples:
-        {'users': ['mona']}
-    """
-
-    users: list[str]
+    enabled: bool
+    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
+    sha_pinning_required: NotRequired[bool]
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody
+class ReposOwnerRepoActionsPermissionsPutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsPermissionsPutBody"""
 
-    Examples:
-        {'users': ['mona']}
-    """
-
-    users: list[str]
+    enabled: bool
+    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
+    sha_pinning_required: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyType",
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyTypeForResponse",
+    "ReposOwnerRepoActionsPermissionsPutBodyType",
+    "ReposOwnerRepoActionsPermissionsPutBodyTypeForResponse",
 )

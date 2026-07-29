@@ -14,18 +14,26 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0236 import RepositoryRuleCopilotCodeReviewPropParameters
 
 
-class RepositoryRuleLicenseComplianceScanning(GitHubModel):
-    """license_compliance_scanning
+class RepositoryRuleCopilotCodeReview(GitHubModel):
+    """copilot_code_review
 
-    Enforce any added or changed dependencies to comply with the organization's
-    license policy.
+    Request Copilot code review for new pull requests automatically if the author
+    has access to Copilot code review and their premium requests quota has not
+    reached the limit.
     """
 
-    type: Literal["license_compliance_scanning"] = Field()
+    type: Literal["copilot_code_review"] = Field()
+    parameters: Missing[RepositoryRuleCopilotCodeReviewPropParameters] = Field(
+        default=UNSET
+    )
 
 
-model_rebuild(RepositoryRuleLicenseComplianceScanning)
+model_rebuild(RepositoryRuleCopilotCodeReview)
 
-__all__ = ("RepositoryRuleLicenseComplianceScanning",)
+__all__ = ("RepositoryRuleCopilotCodeReview",)

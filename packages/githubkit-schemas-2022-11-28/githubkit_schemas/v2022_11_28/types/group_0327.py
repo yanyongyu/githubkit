@@ -12,69 +12,40 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0136 import (
-    CodeScanningAlertLocationType,
-    CodeScanningAlertLocationTypeForResponse,
-)
 
+class CodeQualitySetupUpdateAnyof4Type(TypedDict):
+    """CodeQualitySetupUpdateAnyof4"""
 
-class CodeScanningAlertInstanceListType(TypedDict):
-    """CodeScanningAlertInstanceList"""
-
-    ref: NotRequired[str]
-    analysis_key: NotRequired[str]
-    environment: NotRequired[str]
-    category: NotRequired[str]
-    state: NotRequired[Union[None, Literal["open", "fixed"]]]
-    commit_sha: NotRequired[str]
-    message: NotRequired[CodeScanningAlertInstanceListPropMessageType]
-    location: NotRequired[CodeScanningAlertLocationType]
-    html_url: NotRequired[str]
-    classifications: NotRequired[
+    state: NotRequired[Literal["configured", "not-configured"]]
+    runner_type: NotRequired[Literal["standard", "labeled"]]
+    runner_label: NotRequired[Union[str, None]]
+    languages: NotRequired[
         list[
-            Union[
-                None, Literal["source", "generated", "test", "library", "documentation"]
+            Literal[
+                "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
             ]
         ]
     ]
+    ai_findings_option: Literal["disabled", "on_push"]
 
 
-class CodeScanningAlertInstanceListTypeForResponse(TypedDict):
-    """CodeScanningAlertInstanceList"""
+class CodeQualitySetupUpdateAnyof4TypeForResponse(TypedDict):
+    """CodeQualitySetupUpdateAnyof4"""
 
-    ref: NotRequired[str]
-    analysis_key: NotRequired[str]
-    environment: NotRequired[str]
-    category: NotRequired[str]
-    state: NotRequired[Union[None, Literal["open", "fixed"]]]
-    commit_sha: NotRequired[str]
-    message: NotRequired[CodeScanningAlertInstanceListPropMessageTypeForResponse]
-    location: NotRequired[CodeScanningAlertLocationTypeForResponse]
-    html_url: NotRequired[str]
-    classifications: NotRequired[
+    state: NotRequired[Literal["configured", "not-configured"]]
+    runner_type: NotRequired[Literal["standard", "labeled"]]
+    runner_label: NotRequired[Union[str, None]]
+    languages: NotRequired[
         list[
-            Union[
-                None, Literal["source", "generated", "test", "library", "documentation"]
+            Literal[
+                "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
             ]
         ]
     ]
-
-
-class CodeScanningAlertInstanceListPropMessageType(TypedDict):
-    """CodeScanningAlertInstanceListPropMessage"""
-
-    text: NotRequired[str]
-
-
-class CodeScanningAlertInstanceListPropMessageTypeForResponse(TypedDict):
-    """CodeScanningAlertInstanceListPropMessage"""
-
-    text: NotRequired[str]
+    ai_findings_option: Literal["disabled", "on_push"]
 
 
 __all__ = (
-    "CodeScanningAlertInstanceListPropMessageType",
-    "CodeScanningAlertInstanceListPropMessageTypeForResponse",
-    "CodeScanningAlertInstanceListType",
-    "CodeScanningAlertInstanceListTypeForResponse",
+    "CodeQualitySetupUpdateAnyof4Type",
+    "CodeQualitySetupUpdateAnyof4TypeForResponse",
 )

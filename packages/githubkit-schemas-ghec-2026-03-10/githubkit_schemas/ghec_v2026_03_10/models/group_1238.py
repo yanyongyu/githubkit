@@ -12,17 +12,27 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0054 import Runner
-
-
-class OrgsOrgActionsRunnersGetResponse200(GitHubModel):
-    """OrgsOrgActionsRunnersGetResponse200"""
-
-    total_count: int = Field()
-    runners: list[Runner] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(OrgsOrgActionsRunnersGetResponse200)
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof1(
+    GitHubModel
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof1"""
 
-__all__ = ("OrgsOrgActionsRunnersGetResponse200",)
+    name: Missing[str] = Field(
+        default=UNSET, description="The new name for the cost center"
+    )
+    ai_credit_pool_enabled: bool = Field(
+        description="Whether the cost center draws from the AI credit pool.\n\nThis can only be enabled for cost centers that contain only user or team resources.\n\n- `false` — no cap; the cost center draws from the shared enterprise pool.\n- `true` — the cost center is capped at an amount derived from its members' license entitlements."
+    )
+
+
+model_rebuild(
+    EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof1
+)
+
+__all__ = (
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof1",
+)

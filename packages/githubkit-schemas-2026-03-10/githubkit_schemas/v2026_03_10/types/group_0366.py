@@ -9,61 +9,71 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0364 import MetadataType, MetadataTypeForResponse
+
+class ContributorType(TypedDict):
+    """Contributor
+
+    Contributor
+    """
+
+    login: NotRequired[str]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    avatar_url: NotRequired[str]
+    gravatar_id: NotRequired[Union[str, None]]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    organizations_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    events_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    type: str
+    site_admin: NotRequired[bool]
+    contributions: int
+    email: NotRequired[str]
+    name: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-class ManifestType(TypedDict):
-    """Manifest"""
+class ContributorTypeForResponse(TypedDict):
+    """Contributor
 
-    name: str
-    file: NotRequired[ManifestPropFileType]
-    metadata: NotRequired[MetadataType]
-    resolved: NotRequired[ManifestPropResolvedType]
+    Contributor
+    """
 
-
-class ManifestTypeForResponse(TypedDict):
-    """Manifest"""
-
-    name: str
-    file: NotRequired[ManifestPropFileTypeForResponse]
-    metadata: NotRequired[MetadataTypeForResponse]
-    resolved: NotRequired[ManifestPropResolvedTypeForResponse]
-
-
-class ManifestPropFileType(TypedDict):
-    """ManifestPropFile"""
-
-    source_location: NotRequired[str]
-
-
-class ManifestPropFileTypeForResponse(TypedDict):
-    """ManifestPropFile"""
-
-    source_location: NotRequired[str]
-
-
-ManifestPropResolvedType: TypeAlias = dict[str, Any]
-"""ManifestPropResolved
-
-A collection of resolved package dependencies.
-"""
-
-
-ManifestPropResolvedTypeForResponse: TypeAlias = dict[str, Any]
-"""ManifestPropResolved
-
-A collection of resolved package dependencies.
-"""
+    login: NotRequired[str]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    avatar_url: NotRequired[str]
+    gravatar_id: NotRequired[Union[str, None]]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    organizations_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    events_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    type: str
+    site_admin: NotRequired[bool]
+    contributions: int
+    email: NotRequired[str]
+    name: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "ManifestPropFileType",
-    "ManifestPropFileTypeForResponse",
-    "ManifestPropResolvedType",
-    "ManifestPropResolvedTypeForResponse",
-    "ManifestType",
-    "ManifestTypeForResponse",
+    "ContributorType",
+    "ContributorTypeForResponse",
 )

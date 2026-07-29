@@ -10,32 +10,82 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyType(TypedDict):
-    """EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody"""
+class AgentsReposOwnerRepoTasksTaskIdGetResponse404Type(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse404
 
-    policy_state: Literal[
-        "enabled_for_all_orgs",
-        "disabled_for_all_orgs",
-        "enabled_for_selected_orgs",
-        "configured_by_org_admins",
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[
+        list[AgentsReposOwnerRepoTasksTaskIdGetResponse404PropErrorsItemsType]
     ]
+    documentation_url: str
 
 
-class EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody"""
+class AgentsReposOwnerRepoTasksTaskIdGetResponse404TypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse404
 
-    policy_state: Literal[
-        "enabled_for_all_orgs",
-        "disabled_for_all_orgs",
-        "enabled_for_selected_orgs",
-        "configured_by_org_admins",
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[
+        list[
+            AgentsReposOwnerRepoTasksTaskIdGetResponse404PropErrorsItemsTypeForResponse
+        ]
     ]
+    documentation_url: str
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse404PropErrorsItemsType(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse404PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse404PropErrorsItemsTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse404PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyType",
-    "EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyTypeForResponse",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse404PropErrorsItemsType",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse404PropErrorsItemsTypeForResponse",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse404Type",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse404TypeForResponse",
 )

@@ -12,19 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0053 import RunnerLabel
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBody(GitHubModel):
-    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBody"""
+class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200"""
 
-    revoke_credentials: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to also destroy the actual credentials (PATs and SSH keys) owned by\nthe user. This option is only available for Enterprise Managed User (EMU)\nenterprises. When set to `true`, all PATs (v1 and v2) and SSH keys owned\nby the user will be destroyed in addition to the credential authorizations.",
-    )
+    total_count: int = Field()
+    labels: list[RunnerLabel] = Field()
 
 
-model_rebuild(EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBody)
+model_rebuild(EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200)
 
-__all__ = ("EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBody",)
+__all__ = ("EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200",)

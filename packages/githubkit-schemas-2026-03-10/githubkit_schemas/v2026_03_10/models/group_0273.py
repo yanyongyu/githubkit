@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,48 +16,49 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ConcurrencyGroup(GitHubModel):
-    """Concurrency Group
+class RateLimitOverview(GitHubModel):
+    """Rate Limit Overview
 
-    A concurrency group with the workflow runs and jobs that are either currently
-    holding
-    or waiting for the concurrency group lease.
+    Rate Limit Overview
     """
 
-    group_name: str = Field(description="The name of the concurrency group.")
-    group_url: str = Field(description="API URL for this concurrency group.")
-    total_count: int = Field()
-    group_members: list[ConcurrencyGroupPropGroupMembersItems] = Field()
+    resources: RateLimitOverviewPropResources = Field()
 
 
-class ConcurrencyGroupPropGroupMembersItems(GitHubModel):
-    """ConcurrencyGroupPropGroupMembersItems"""
+class RateLimitOverviewPropResources(GitHubModel):
+    """RateLimitOverviewPropResources"""
 
-    run_id: int = Field(description="The ID of the workflow run.")
-    run_name: str = Field(description="The name of the workflow run.")
-    run_url: Union[str, None] = Field(description="API URL for the workflow run.")
-    run_html_url: Union[str, None] = Field(description="Web URL for the workflow run.")
-    job_id: Missing[int] = Field(
-        default=UNSET,
-        description="The ID of the job, when the item represents a job-level or reusable-workflow-level lease.",
+    core: RateLimit = Field(title="Rate Limit")
+    graphql: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    search: RateLimit = Field(title="Rate Limit")
+    code_search: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    source_import: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    integration_manifest: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    actions_runner_registration: Missing[RateLimit] = Field(
+        default=UNSET, title="Rate Limit"
     )
-    job_name: Missing[str] = Field(
-        default=UNSET,
-        description="The display name of the job, when the item represents a job-level or reusable-workflow-level lease.",
-    )
-    job_url: Missing[Union[str, None]] = Field(
-        default=UNSET, description="API URL for the job."
-    )
-    job_html_url: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Web URL for the job."
-    )
-    status: Literal["in_progress", "pending"] = Field()
+    scim: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    dependency_snapshots: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    dependency_sbom: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    code_scanning_autofix: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    copilot_usage_records: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
 
 
-model_rebuild(ConcurrencyGroup)
-model_rebuild(ConcurrencyGroupPropGroupMembersItems)
+class RateLimit(GitHubModel):
+    """Rate Limit"""
+
+    limit: int = Field()
+    remaining: int = Field()
+    reset: int = Field()
+    used: int = Field()
+
+
+model_rebuild(RateLimitOverview)
+model_rebuild(RateLimitOverviewPropResources)
+model_rebuild(RateLimit)
 
 __all__ = (
-    "ConcurrencyGroup",
-    "ConcurrencyGroupPropGroupMembersItems",
+    "RateLimit",
+    "RateLimitOverview",
+    "RateLimitOverviewPropResources",
 )

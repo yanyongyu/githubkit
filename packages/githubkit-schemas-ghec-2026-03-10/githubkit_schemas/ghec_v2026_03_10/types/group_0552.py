@@ -9,24 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0158 import (
+    RepositoryRuleMaxFilePathLengthPropParametersType,
+    RepositoryRuleMaxFilePathLengthPropParametersTypeForResponse,
+)
 
 
-class ParticipationStatsType(TypedDict):
-    """Participation Stats"""
+class RepositoryRuleDetailedOneof20Type(TypedDict):
+    """RepositoryRuleDetailedOneof20"""
 
-    all_: list[int]
-    owner: list[int]
+    type: Literal["max_file_path_length"]
+    parameters: NotRequired[RepositoryRuleMaxFilePathLengthPropParametersType]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
 
-class ParticipationStatsTypeForResponse(TypedDict):
-    """Participation Stats"""
+class RepositoryRuleDetailedOneof20TypeForResponse(TypedDict):
+    """RepositoryRuleDetailedOneof20"""
 
-    all_: list[int]
-    owner: list[int]
+    type: Literal["max_file_path_length"]
+    parameters: NotRequired[
+        RepositoryRuleMaxFilePathLengthPropParametersTypeForResponse
+    ]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
 
 __all__ = (
-    "ParticipationStatsType",
-    "ParticipationStatsTypeForResponse",
+    "RepositoryRuleDetailedOneof20Type",
+    "RepositoryRuleDetailedOneof20TypeForResponse",
 )

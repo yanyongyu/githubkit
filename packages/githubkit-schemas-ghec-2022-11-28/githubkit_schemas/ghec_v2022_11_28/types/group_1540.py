@@ -9,46 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_1536 import (
-    ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
-    ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
-)
+
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody"""
+
+    integration_id: NotRequired[int]
 
 
-class ReposOwnerRepoPagesPutBodyAnyof3Type(TypedDict):
-    """ReposOwnerRepoPagesPutBodyAnyof3"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody"""
 
-    cname: NotRequired[Union[str, None]]
-    https_enforced: NotRequired[bool]
-    build_type: NotRequired[Literal["legacy", "workflow"]]
-    source: NotRequired[
-        Union[
-            Literal["gh-pages", "master", "master /docs"],
-            ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
-        ]
-    ]
-    public: bool
-
-
-class ReposOwnerRepoPagesPutBodyAnyof3TypeForResponse(TypedDict):
-    """ReposOwnerRepoPagesPutBodyAnyof3"""
-
-    cname: NotRequired[Union[str, None]]
-    https_enforced: NotRequired[bool]
-    build_type: NotRequired[Literal["legacy", "workflow"]]
-    source: NotRequired[
-        Union[
-            Literal["gh-pages", "master", "master /docs"],
-            ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
-        ]
-    ]
-    public: bool
+    integration_id: NotRequired[int]
 
 
 __all__ = (
-    "ReposOwnerRepoPagesPutBodyAnyof3Type",
-    "ReposOwnerRepoPagesPutBodyAnyof3TypeForResponse",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyTypeForResponse",
 )

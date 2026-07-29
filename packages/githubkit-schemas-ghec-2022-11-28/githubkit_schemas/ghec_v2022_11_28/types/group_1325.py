@@ -9,59 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class OrgsOrgHooksPostBodyType(TypedDict):
-    """OrgsOrgHooksPostBody"""
-
-    name: str
-    config: OrgsOrgHooksPostBodyPropConfigType
-    events: NotRequired[list[str]]
-    active: NotRequired[bool]
+from .group_0268 import (
+    ArtifactDeploymentRecordType,
+    ArtifactDeploymentRecordTypeForResponse,
+)
 
 
-class OrgsOrgHooksPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgHooksPostBody"""
+class OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200Type(
+    TypedDict
+):
+    """OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200"""
 
-    name: str
-    config: OrgsOrgHooksPostBodyPropConfigTypeForResponse
-    events: NotRequired[list[str]]
-    active: NotRequired[bool]
-
-
-class OrgsOrgHooksPostBodyPropConfigType(TypedDict):
-    """OrgsOrgHooksPostBodyPropConfig
-
-    Key/value pairs to provide settings for this webhook.
-    """
-
-    url: str
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
-    username: NotRequired[str]
-    password: NotRequired[str]
+    total_count: NotRequired[int]
+    deployment_records: NotRequired[list[ArtifactDeploymentRecordType]]
 
 
-class OrgsOrgHooksPostBodyPropConfigTypeForResponse(TypedDict):
-    """OrgsOrgHooksPostBodyPropConfig
+class OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200"""
 
-    Key/value pairs to provide settings for this webhook.
-    """
-
-    url: str
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
-    username: NotRequired[str]
-    password: NotRequired[str]
+    total_count: NotRequired[int]
+    deployment_records: NotRequired[list[ArtifactDeploymentRecordTypeForResponse]]
 
 
 __all__ = (
-    "OrgsOrgHooksPostBodyPropConfigType",
-    "OrgsOrgHooksPostBodyPropConfigTypeForResponse",
-    "OrgsOrgHooksPostBodyType",
-    "OrgsOrgHooksPostBodyTypeForResponse",
+    "OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200Type",
+    "OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200TypeForResponse",
 )

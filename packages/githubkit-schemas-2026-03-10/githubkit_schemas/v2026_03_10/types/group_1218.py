@@ -9,30 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0274 import JobType, JobTypeForResponse
+
+class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1Type(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1"""
+
+    name: str
+    data_type: Literal["text", "number", "date"]
 
 
-class ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200Type(
-    TypedDict
-):
-    """ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200"""
+class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1TypeForResponse(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1"""
 
-    total_count: int
-    jobs: list[JobType]
-
-
-class ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200"""
-
-    total_count: int
-    jobs: list[JobTypeForResponse]
+    name: str
+    data_type: Literal["text", "number", "date"]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200Type",
-    "ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200TypeForResponse",
+    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1Type",
+    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1TypeForResponse",
 )

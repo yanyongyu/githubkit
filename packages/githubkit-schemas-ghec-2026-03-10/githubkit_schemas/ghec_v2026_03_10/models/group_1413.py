@@ -13,23 +13,17 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0(
-    GitHubModel
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0
-
-    Examples:
-        {'contexts': ['contexts']}
-    """
-
-    contexts: list[str] = Field(description="The name of the status checks")
+from .group_0189 import SecretScanningCustomPatternToCreate
 
 
-model_rebuild(
-    ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0
-)
+class OrgsOrgSecretScanningCustomPatternsPostBody(GitHubModel):
+    """OrgsOrgSecretScanningCustomPatternsPostBody"""
 
-__all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0",
-)
+    patterns: list[SecretScanningCustomPatternToCreate] = Field(
+        description="The list of custom patterns to create."
+    )
+
+
+model_rebuild(OrgsOrgSecretScanningCustomPatternsPostBody)
+
+__all__ = ("OrgsOrgSecretScanningCustomPatternsPostBody",)

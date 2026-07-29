@@ -18,18 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0598 import EnterpriseWebhooks
-from .group_0599 import SimpleInstallation
-from .group_0600 import OrganizationSimpleWebhooks
-from .group_0601 import RepositoryWebhooks
-from .group_0643 import SecretScanningAlertWebhook
+from .group_0617 import EnterpriseWebhooks
+from .group_0618 import SimpleInstallation
+from .group_0619 import OrganizationSimpleWebhooks
+from .group_0620 import RepositoryWebhooks
+from .group_0996 import WebhookPullRequestUnlockedPropPullRequest
 
 
-class WebhookSecretScanningAlertCreated(GitHubModel):
-    """secret_scanning_alert created event"""
+class WebhookPullRequestUnlocked(GitHubModel):
+    """pull_request unlocked event"""
 
-    action: Literal["created"] = Field()
-    alert: SecretScanningAlertWebhook = Field()
+    action: Literal["unlocked"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -40,20 +39,22 @@ class WebhookSecretScanningAlertCreated(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
+    number: int = Field(description="The pull request number.")
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
+    pull_request: WebhookPullRequestUnlockedPropPullRequest = Field(
+        title="Pull Request"
+    )
     repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookSecretScanningAlertCreated)
+model_rebuild(WebhookPullRequestUnlocked)
 
-__all__ = ("WebhookSecretScanningAlertCreated",)
+__all__ = ("WebhookPullRequestUnlocked",)

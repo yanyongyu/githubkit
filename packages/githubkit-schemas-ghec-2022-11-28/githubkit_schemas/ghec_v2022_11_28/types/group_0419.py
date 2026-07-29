@@ -9,56 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0376 import DiffEntryType, DiffEntryTypeForResponse
-from .group_0377 import CommitType, CommitTypeForResponse
 
+class CodeScanningDefaultSetupUpdateResponseType(TypedDict):
+    """CodeScanningDefaultSetupUpdateResponse
 
-class CommitComparisonType(TypedDict):
-    """Commit Comparison
-
-    Commit Comparison
+    You can use `run_url` to track the status of the run. This includes a property
+    status and conclusion.
+    You should not rely on this always being an actions workflow run object.
     """
 
-    url: str
-    html_url: str
-    permalink_url: str
-    diff_url: str
-    patch_url: str
-    base_commit: CommitType
-    merge_base_commit: CommitType
-    status: Literal["diverged", "ahead", "behind", "identical"]
-    ahead_by: int
-    behind_by: int
-    total_commits: int
-    commits: list[CommitType]
-    files: NotRequired[list[DiffEntryType]]
+    run_id: NotRequired[int]
+    run_url: NotRequired[str]
 
 
-class CommitComparisonTypeForResponse(TypedDict):
-    """Commit Comparison
+class CodeScanningDefaultSetupUpdateResponseTypeForResponse(TypedDict):
+    """CodeScanningDefaultSetupUpdateResponse
 
-    Commit Comparison
+    You can use `run_url` to track the status of the run. This includes a property
+    status and conclusion.
+    You should not rely on this always being an actions workflow run object.
     """
 
-    url: str
-    html_url: str
-    permalink_url: str
-    diff_url: str
-    patch_url: str
-    base_commit: CommitTypeForResponse
-    merge_base_commit: CommitTypeForResponse
-    status: Literal["diverged", "ahead", "behind", "identical"]
-    ahead_by: int
-    behind_by: int
-    total_commits: int
-    commits: list[CommitTypeForResponse]
-    files: NotRequired[list[DiffEntryTypeForResponse]]
+    run_id: NotRequired[int]
+    run_url: NotRequired[str]
 
 
 __all__ = (
-    "CommitComparisonType",
-    "CommitComparisonTypeForResponse",
+    "CodeScanningDefaultSetupUpdateResponseType",
+    "CodeScanningDefaultSetupUpdateResponseTypeForResponse",
 )

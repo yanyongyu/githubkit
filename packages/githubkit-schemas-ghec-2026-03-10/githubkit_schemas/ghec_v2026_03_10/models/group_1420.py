@@ -13,19 +13,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0(
-    GitHubModel
-):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0
-
-    Examples:
-        {'teams': ['my-team']}
-    """
-
-    teams: list[str] = Field(description="The slug values for teams")
+from .group_0255 import MinimalRepository
 
 
-model_rebuild(ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0)
+class OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200(GitHubModel):
+    """OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200"""
 
-__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0",)
+    total_count: int = Field()
+    repositories: list[MinimalRepository] = Field()
+
+
+model_rebuild(OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200)
+
+__all__ = ("OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200",)

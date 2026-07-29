@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,49 +18,109 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class ReposOwnerRepoPullsPullNumberCodespacesPostBody(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberCodespacesPostBody"""
-
-    location: Missing[str] = Field(
-        default=UNSET,
-        description="The requested location for a new codespace. Best efforts are made to respect this upon creation. Assigned by IP if not provided.",
-    )
-    geo: Missing[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]] = Field(
-        default=UNSET,
-        description="The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is closing down.",
-    )
-    client_ip: Missing[str] = Field(
-        default=UNSET,
-        description="IP for location auto-detection when proxying a request",
-    )
-    machine: Missing[str] = Field(
-        default=UNSET, description="Machine type to use for this codespace"
-    )
-    devcontainer_path: Missing[str] = Field(
-        default=UNSET,
-        description="Path to devcontainer.json config to use for this codespace",
-    )
-    multi_repo_permissions_opt_out: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to authorize requested permissions from devcontainer.json",
-    )
-    working_directory: Missing[str] = Field(
-        default=UNSET, description="Working directory for this codespace"
-    )
-    idle_timeout_minutes: Missing[int] = Field(
-        default=UNSET,
-        description="Time in minutes before codespace stops from inactivity",
-    )
-    display_name: Missing[str] = Field(
-        default=UNSET, description="Display name for this codespace"
-    )
-    retention_period_minutes: Missing[int] = Field(
-        default=UNSET,
-        description="Duration in minutes after codespace has gone idle in which it will be deleted. Must be integer minutes between 0 and 43200 (30 days).",
-    )
+from .group_0003 import SimpleUser
+from .group_0010 import Integration
+from .group_0020 import Repository
+from .group_0050 import Milestone
+from .group_0051 import IssueType
+from .group_0052 import ReactionRollup
+from .group_0053 import IssueDependenciesSummary, SubIssuesSummary
+from .group_0056 import IssueComment
+from .group_0057 import IssueFieldValue
+from .group_0059 import IssuePropLabelsItemsOneof1, IssuePropPullRequest
+from .group_1376 import (
+    ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestions,
+)
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberCodespacesPostBody)
+class ReposOwnerRepoIssuesIssueNumberPatchResponse200(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberPatchResponse200"""
 
-__all__ = ("ReposOwnerRepoPullsPullNumberCodespacesPostBody",)
+    id: int = Field()
+    node_id: str = Field()
+    url: str = Field(description="URL for the issue")
+    repository_url: str = Field()
+    labels_url: str = Field()
+    comments_url: str = Field()
+    events_url: str = Field()
+    html_url: str = Field()
+    number: int = Field(
+        description="Number uniquely identifying the issue within its repository"
+    )
+    state: str = Field(description="State of the issue; either 'open' or 'closed'")
+    state_reason: Missing[
+        Union[None, Literal["completed", "reopened", "not_planned", "duplicate"]]
+    ] = Field(default=UNSET, description="The reason for the current state")
+    title: str = Field(description="Title of the issue")
+    body: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Contents of the issue"
+    )
+    user: Union[None, SimpleUser] = Field()
+    labels: list[Union[str, IssuePropLabelsItemsOneof1]] = Field(
+        description="Labels to associate with this issue; pass one or more label names to replace the set of labels on this issue; send an empty array to clear all labels from the issue; note that the labels are silently dropped for users without push access to the repository"
+    )
+    assignees: Missing[list[SimpleUser]] = Field(default=UNSET)
+    milestone: Union[None, Milestone] = Field()
+    locked: bool = Field()
+    active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
+    comments: int = Field()
+    pull_request: Missing[IssuePropPullRequest] = Field(default=UNSET)
+    closed_at: Union[_dt.datetime, None] = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    draft: Missing[bool] = Field(default=UNSET)
+    closed_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    body_html: Missing[Union[str, None]] = Field(default=UNSET)
+    body_text: Missing[Union[str, None]] = Field(default=UNSET)
+    timeline_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Union[IssueType, None]] = Field(
+        default=UNSET,
+        title="Issue Type",
+        description="The type assigned to the issue. This is only present for issues in repositories where issue types are supported.",
+    )
+    repository: Missing[Repository] = Field(
+        default=UNSET, title="Repository", description="A repository on GitHub."
+    )
+    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
+        default=UNSET
+    )
+    author_association: Missing[
+        Literal[
+            "COLLABORATOR",
+            "CONTRIBUTOR",
+            "FIRST_TIMER",
+            "FIRST_TIME_CONTRIBUTOR",
+            "MANNEQUIN",
+            "MEMBER",
+            "NONE",
+            "OWNER",
+        ]
+    ] = Field(
+        default=UNSET,
+        title="author_association",
+        description="How the author is associated with the repository.",
+    )
+    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
+    sub_issues_summary: Missing[SubIssuesSummary] = Field(
+        default=UNSET, title="Sub-issues Summary"
+    )
+    parent_issue_url: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="URL to get the parent issue of this issue, if it is a sub-issue",
+    )
+    pinned_comment: Missing[Union[None, IssueComment]] = Field(default=UNSET)
+    issue_dependencies_summary: Missing[IssueDependenciesSummary] = Field(
+        default=UNSET, title="Issue Dependencies Summary"
+    )
+    issue_field_values: Missing[list[IssueFieldValue]] = Field(default=UNSET)
+    suggestions: Missing[
+        ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestions
+    ] = Field(
+        default=UNSET,
+        description="Pending suggestions for each suggestible field (`type`,\n`issue_field_values`, `labels`, `assignees`, `state`) the\nrequest touched. Omitted for fields not in the request or\nwith no pending suggestions. Items tagged `already_applied`\nare echoes of the current request's inputs whose target is\nalready applied to the issue; they are not persisted as\npending suggestions.\n",
+    )
+
+
+model_rebuild(ReposOwnerRepoIssuesIssueNumberPatchResponse200)
+
+__all__ = ("ReposOwnerRepoIssuesIssueNumberPatchResponse200",)

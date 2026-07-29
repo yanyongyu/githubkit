@@ -12,76 +12,47 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class AgentsReposOwnerRepoTasksGetResponse403Type(TypedDict):
-    """AgentsReposOwnerRepoTasksGetResponse403
-
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[
-        list[AgentsReposOwnerRepoTasksGetResponse403PropErrorsItemsType]
-    ]
-    documentation_url: str
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0534 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0535 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0536 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0537 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0579 import WebhooksSponsorshipType, WebhooksSponsorshipTypeForResponse
+from .group_0580 import WebhooksChanges8Type, WebhooksChanges8TypeForResponse
 
 
-class AgentsReposOwnerRepoTasksGetResponse403TypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksGetResponse403
+class WebhookSponsorshipPendingTierChangeType(TypedDict):
+    """sponsorship pending_tier_change event"""
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[
-        list[AgentsReposOwnerRepoTasksGetResponse403PropErrorsItemsTypeForResponse]
-    ]
-    documentation_url: str
+    action: Literal["pending_tier_change"]
+    changes: WebhooksChanges8Type
+    effective_date: NotRequired[str]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserType
+    sponsorship: WebhooksSponsorshipType
 
 
-class AgentsReposOwnerRepoTasksGetResponse403PropErrorsItemsType(TypedDict):
-    """AgentsReposOwnerRepoTasksGetResponse403PropErrorsItems
+class WebhookSponsorshipPendingTierChangeTypeForResponse(TypedDict):
+    """sponsorship pending_tier_change event"""
 
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
-
-
-class AgentsReposOwnerRepoTasksGetResponse403PropErrorsItemsTypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksGetResponse403PropErrorsItems
-
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
+    action: Literal["pending_tier_change"]
+    changes: WebhooksChanges8TypeForResponse
+    effective_date: NotRequired[str]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: SimpleUserTypeForResponse
+    sponsorship: WebhooksSponsorshipTypeForResponse
 
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksGetResponse403PropErrorsItemsType",
-    "AgentsReposOwnerRepoTasksGetResponse403PropErrorsItemsTypeForResponse",
-    "AgentsReposOwnerRepoTasksGetResponse403Type",
-    "AgentsReposOwnerRepoTasksGetResponse403TypeForResponse",
+    "WebhookSponsorshipPendingTierChangeType",
+    "WebhookSponsorshipPendingTierChangeTypeForResponse",
 )

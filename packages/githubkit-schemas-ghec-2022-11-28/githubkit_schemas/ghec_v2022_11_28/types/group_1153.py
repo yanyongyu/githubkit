@@ -9,21 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias
+from typing_extensions import TypedDict
 
-EnterprisesEnterpriseCopilotContentExclusionPutBodyType: TypeAlias = dict[str, Any]
-"""EnterprisesEnterpriseCopilotContentExclusionPutBody
-"""
+from .group_0049 import OrganizationSimpleType, OrganizationSimpleTypeForResponse
 
 
-EnterprisesEnterpriseCopilotContentExclusionPutBodyTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""EnterprisesEnterpriseCopilotContentExclusionPutBody
-"""
+class EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200"""
+
+    total_count: float
+    organizations: list[OrganizationSimpleType]
+
+
+class EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200"""
+
+    total_count: float
+    organizations: list[OrganizationSimpleTypeForResponse]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotContentExclusionPutBodyType",
-    "EnterprisesEnterpriseCopilotContentExclusionPutBodyTypeForResponse",
+    "EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200Type",
+    "EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200TypeForResponse",
 )

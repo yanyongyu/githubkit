@@ -9,26 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200Type(TypedDict):
-    """ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200"""
+class ReposOwnerRepoCommentsCommentIdReactionsPostBodyType(TypedDict):
+    """ReposOwnerRepoCommentsCommentIdReactionsPostBody"""
 
-    enabled: bool
-    max_open_pull_requests: int
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ]
 
 
-class ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200"""
+class ReposOwnerRepoCommentsCommentIdReactionsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoCommentsCommentIdReactionsPostBody"""
 
-    enabled: bool
-    max_open_pull_requests: int
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ]
 
 
 __all__ = (
-    "ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200Type",
-    "ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200TypeForResponse",
+    "ReposOwnerRepoCommentsCommentIdReactionsPostBodyType",
+    "ReposOwnerRepoCommentsCommentIdReactionsPostBodyTypeForResponse",
 )

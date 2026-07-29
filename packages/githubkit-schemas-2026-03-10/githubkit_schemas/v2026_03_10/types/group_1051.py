@@ -9,31 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0110 import (
-    ActionsHostedRunnerCuratedImageType,
-    ActionsHostedRunnerCuratedImageTypeForResponse,
-)
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200Type(TypedDict):
-    """OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200"""
-
-    total_count: int
-    images: list[ActionsHostedRunnerCuratedImageType]
-
-
-class OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200TypeForResponse(
+class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType(
     TypedDict
 ):
-    """OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200"""
+    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBody"""
 
-    total_count: int
-    images: list[ActionsHostedRunnerCuratedImageTypeForResponse]
+    default_for_new_repos: NotRequired[
+        Literal["all", "none", "private_and_internal", "public"]
+    ]
+
+
+class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBody"""
+
+    default_for_new_repos: NotRequired[
+        Literal["all", "none", "private_and_internal", "public"]
+    ]
 
 
 __all__ = (
-    "OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200Type",
-    "OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType",
+    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyTypeForResponse",
 )

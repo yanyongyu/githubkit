@@ -16,23 +16,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoLabelsNamePatchBody(GitHubModel):
-    """ReposOwnerRepoLabelsNamePatchBody"""
+class ReposOwnerRepoForksPostBody(GitHubModel):
+    """ReposOwnerRepoForksPostBody"""
 
-    new_name: Missing[str] = Field(
+    organization: Missing[str] = Field(
         default=UNSET,
-        description='The new name of the label. Emoji can be added to label names, using either native emoji or colon-style markup. For example, typing `:strawberry:` will render the emoji ![:strawberry:](https://github.githubassets.com/images/icons/emoji/unicode/1f353.png ":strawberry:"). For a full list of available emoji and codes, see "[Emoji cheat sheet](https://github.com/ikatyang/emoji-cheat-sheet)."',
+        description="Optional parameter to specify the organization name if forking into an organization.",
     )
-    color: Missing[str] = Field(
+    name: Missing[str] = Field(
         default=UNSET,
-        description="The [hexadecimal color code](http://www.color-hex.com/) for the label, without the leading `#`.",
+        description="When forking from an existing repository, a new name for the fork.",
     )
-    description: Missing[str] = Field(
+    default_branch_only: Missing[bool] = Field(
         default=UNSET,
-        description="A short description of the label. Must be 100 characters or fewer.",
+        description="When forking from an existing repository, fork with only the default branch.",
     )
 
 
-model_rebuild(ReposOwnerRepoLabelsNamePatchBody)
+model_rebuild(ReposOwnerRepoForksPostBody)
 
-__all__ = ("ReposOwnerRepoLabelsNamePatchBody",)
+__all__ = ("ReposOwnerRepoForksPostBody",)

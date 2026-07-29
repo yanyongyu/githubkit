@@ -9,31 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0Type(TypedDict):
-    """UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0"""
+class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type(TypedDict):
+    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0"""
 
-    type: Literal["Issue", "PullRequest"]
-    id: int
-    owner: NotRequired[str]
-    repo: NotRequired[str]
-    number: NotRequired[int]
+    state: Literal["open", "resolved"]
+    resolution: NotRequired[
+        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
+    ]
+    resolution_comment: NotRequired[Union[str, None]]
+    assignee: NotRequired[Union[str, None]]
+    validity: NotRequired[Union[None, Literal["active", "inactive"]]]
 
 
-class UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0TypeForResponse(TypedDict):
-    """UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0"""
+class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0"""
 
-    type: Literal["Issue", "PullRequest"]
-    id: int
-    owner: NotRequired[str]
-    repo: NotRequired[str]
-    number: NotRequired[int]
+    state: Literal["open", "resolved"]
+    resolution: NotRequired[
+        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
+    ]
+    resolution_comment: NotRequired[Union[str, None]]
+    assignee: NotRequired[Union[str, None]]
+    validity: NotRequired[Union[None, Literal["active", "inactive"]]]
 
 
 __all__ = (
-    "UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0Type",
-    "UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0TypeForResponse",
+    "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type",
+    "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0TypeForResponse",
 )

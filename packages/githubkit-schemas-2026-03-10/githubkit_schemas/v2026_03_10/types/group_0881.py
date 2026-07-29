@@ -9,45 +9,150 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0522 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0523 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0524 import (
+from .group_0534 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0535 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0536 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0525 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0563 import WebhooksRelease1Type, WebhooksRelease1TypeForResponse
+from .group_0537 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0882 import (
+    WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestType,
+    WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestTypeForResponse,
+)
 
 
-class WebhookReleaseUnpublishedType(TypedDict):
-    """release unpublished event"""
+class WebhookPullRequestReviewRequestRemovedOneof1Type(TypedDict):
+    """WebhookPullRequestReviewRequestRemovedOneof1"""
 
-    action: Literal["unpublished"]
+    action: Literal["review_request_removed"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
+    number: int
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    release: WebhooksRelease1Type
+    pull_request: WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestType
     repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserType]
+    requested_team: WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamType
+    sender: SimpleUserType
 
 
-class WebhookReleaseUnpublishedTypeForResponse(TypedDict):
-    """release unpublished event"""
+class WebhookPullRequestReviewRequestRemovedOneof1TypeForResponse(TypedDict):
+    """WebhookPullRequestReviewRequestRemovedOneof1"""
 
-    action: Literal["unpublished"]
+    action: Literal["review_request_removed"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
+    number: int
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    release: WebhooksRelease1TypeForResponse
+    pull_request: (
+        WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestTypeForResponse
+    )
     repository: RepositoryWebhooksTypeForResponse
-    sender: NotRequired[SimpleUserTypeForResponse]
+    requested_team: (
+        WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamTypeForResponse
+    )
+    sender: SimpleUserTypeForResponse
+
+
+class WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamType(TypedDict):
+    """Team
+
+    Groups of organization members that gives permissions on specified repositories.
+    """
+
+    deleted: NotRequired[bool]
+    description: Union[str, None]
+    html_url: str
+    id: int
+    members_url: str
+    name: str
+    node_id: str
+    parent: NotRequired[
+        Union[
+            WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamPropParentType,
+            None,
+        ]
+    ]
+    permission: str
+    privacy: Literal["open", "closed", "secret"]
+    repositories_url: str
+    slug: str
+    url: str
+
+
+class WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamTypeForResponse(
+    TypedDict
+):
+    """Team
+
+    Groups of organization members that gives permissions on specified repositories.
+    """
+
+    deleted: NotRequired[bool]
+    description: Union[str, None]
+    html_url: str
+    id: int
+    members_url: str
+    name: str
+    node_id: str
+    parent: NotRequired[
+        Union[
+            WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamPropParentTypeForResponse,
+            None,
+        ]
+    ]
+    permission: str
+    privacy: Literal["open", "closed", "secret"]
+    repositories_url: str
+    slug: str
+    url: str
+
+
+class WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamPropParentType(
+    TypedDict
+):
+    """WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamPropParent"""
+
+    description: Union[str, None]
+    html_url: str
+    id: int
+    members_url: str
+    name: str
+    node_id: str
+    permission: str
+    privacy: Literal["open", "closed", "secret"]
+    repositories_url: str
+    slug: str
+    url: str
+
+
+class WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamPropParentTypeForResponse(
+    TypedDict
+):
+    """WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamPropParent"""
+
+    description: Union[str, None]
+    html_url: str
+    id: int
+    members_url: str
+    name: str
+    node_id: str
+    permission: str
+    privacy: Literal["open", "closed", "secret"]
+    repositories_url: str
+    slug: str
+    url: str
 
 
 __all__ = (
-    "WebhookReleaseUnpublishedType",
-    "WebhookReleaseUnpublishedTypeForResponse",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamPropParentType",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamPropParentTypeForResponse",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamType",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamTypeForResponse",
+    "WebhookPullRequestReviewRequestRemovedOneof1Type",
+    "WebhookPullRequestReviewRequestRemovedOneof1TypeForResponse",
 )

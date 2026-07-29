@@ -9,91 +9,79 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CreateBudgetType(TypedDict):
-    """CreateBudget"""
+class SecretScanningPatternConfigurationType(TypedDict):
+    """Secret scanning pattern configuration
 
-    message: str
-    budget: CreateBudgetPropBudgetType
+    A collection of secret scanning patterns and their settings related to push
+    protection.
+    """
 
-
-class CreateBudgetTypeForResponse(TypedDict):
-    """CreateBudget"""
-
-    message: str
-    budget: CreateBudgetPropBudgetTypeForResponse
+    pattern_config_version: NotRequired[Union[str, None]]
+    provider_pattern_overrides: NotRequired[list[SecretScanningPatternOverrideType]]
+    custom_pattern_overrides: NotRequired[list[SecretScanningPatternOverrideType]]
 
 
-class CreateBudgetPropBudgetType(TypedDict):
-    """CreateBudgetPropBudget"""
+class SecretScanningPatternConfigurationTypeForResponse(TypedDict):
+    """Secret scanning pattern configuration
 
-    id: NotRequired[str]
-    budget_scope: NotRequired[
-        Literal[
-            "enterprise",
-            "organization",
-            "repository",
-            "cost_center",
-            "multi_user_customer",
-            "multi_user_cost_center",
-            "user",
-        ]
+    A collection of secret scanning patterns and their settings related to push
+    protection.
+    """
+
+    pattern_config_version: NotRequired[Union[str, None]]
+    provider_pattern_overrides: NotRequired[
+        list[SecretScanningPatternOverrideTypeForResponse]
     ]
-    budget_entity_name: NotRequired[str]
-    budget_amount: NotRequired[int]
-    prevent_further_usage: NotRequired[bool]
-    budget_product_sku: NotRequired[str]
-    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing"]]
-    budget_alerting: NotRequired[CreateBudgetPropBudgetPropBudgetAlertingType]
-
-
-class CreateBudgetPropBudgetTypeForResponse(TypedDict):
-    """CreateBudgetPropBudget"""
-
-    id: NotRequired[str]
-    budget_scope: NotRequired[
-        Literal[
-            "enterprise",
-            "organization",
-            "repository",
-            "cost_center",
-            "multi_user_customer",
-            "multi_user_cost_center",
-            "user",
-        ]
-    ]
-    budget_entity_name: NotRequired[str]
-    budget_amount: NotRequired[int]
-    prevent_further_usage: NotRequired[bool]
-    budget_product_sku: NotRequired[str]
-    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing"]]
-    budget_alerting: NotRequired[
-        CreateBudgetPropBudgetPropBudgetAlertingTypeForResponse
+    custom_pattern_overrides: NotRequired[
+        list[SecretScanningPatternOverrideTypeForResponse]
     ]
 
 
-class CreateBudgetPropBudgetPropBudgetAlertingType(TypedDict):
-    """CreateBudgetPropBudgetPropBudgetAlerting"""
+class SecretScanningPatternOverrideType(TypedDict):
+    """SecretScanningPatternOverride"""
 
-    will_alert: NotRequired[bool]
-    alert_recipients: NotRequired[list[str]]
+    token_type: NotRequired[str]
+    custom_pattern_version: NotRequired[Union[str, None]]
+    slug: NotRequired[str]
+    display_name: NotRequired[str]
+    alert_total: NotRequired[int]
+    alert_total_percentage: NotRequired[int]
+    false_positives: NotRequired[int]
+    false_positive_rate: NotRequired[int]
+    bypass_rate: NotRequired[int]
+    default_setting: NotRequired[Literal["disabled", "enabled"]]
+    enterprise_setting: NotRequired[
+        Union[None, Literal["not-set", "disabled", "enabled"]]
+    ]
+    setting: NotRequired[Literal["not-set", "disabled", "enabled"]]
 
 
-class CreateBudgetPropBudgetPropBudgetAlertingTypeForResponse(TypedDict):
-    """CreateBudgetPropBudgetPropBudgetAlerting"""
+class SecretScanningPatternOverrideTypeForResponse(TypedDict):
+    """SecretScanningPatternOverride"""
 
-    will_alert: NotRequired[bool]
-    alert_recipients: NotRequired[list[str]]
+    token_type: NotRequired[str]
+    custom_pattern_version: NotRequired[Union[str, None]]
+    slug: NotRequired[str]
+    display_name: NotRequired[str]
+    alert_total: NotRequired[int]
+    alert_total_percentage: NotRequired[int]
+    false_positives: NotRequired[int]
+    false_positive_rate: NotRequired[int]
+    bypass_rate: NotRequired[int]
+    default_setting: NotRequired[Literal["disabled", "enabled"]]
+    enterprise_setting: NotRequired[
+        Union[None, Literal["not-set", "disabled", "enabled"]]
+    ]
+    setting: NotRequired[Literal["not-set", "disabled", "enabled"]]
 
 
 __all__ = (
-    "CreateBudgetPropBudgetPropBudgetAlertingType",
-    "CreateBudgetPropBudgetPropBudgetAlertingTypeForResponse",
-    "CreateBudgetPropBudgetType",
-    "CreateBudgetPropBudgetTypeForResponse",
-    "CreateBudgetType",
-    "CreateBudgetTypeForResponse",
+    "SecretScanningPatternConfigurationType",
+    "SecretScanningPatternConfigurationTypeForResponse",
+    "SecretScanningPatternOverrideType",
+    "SecretScanningPatternOverrideTypeForResponse",
 )

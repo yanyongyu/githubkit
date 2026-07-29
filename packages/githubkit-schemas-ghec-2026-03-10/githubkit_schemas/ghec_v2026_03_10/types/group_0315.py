@@ -10,154 +10,129 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0085 import TeamType, TeamTypeForResponse
-from .group_0208 import MilestoneType, MilestoneTypeForResponse
-from .group_0314 import AutoMergeType, AutoMergeTypeForResponse
-from .group_0316 import (
-    PullRequestSimplePropBaseType,
-    PullRequestSimplePropBaseTypeForResponse,
-    PullRequestSimplePropHeadType,
-    PullRequestSimplePropHeadTypeForResponse,
-)
-from .group_0317 import (
-    PullRequestSimplePropLinksType,
-    PullRequestSimplePropLinksTypeForResponse,
-)
 
+class OrgPrivateRegistryConfigurationWithSelectedRepositoriesType(TypedDict):
+    """Organization private registry
 
-class PullRequestSimpleType(TypedDict):
-    """Pull Request Simple
-
-    Pull Request Simple
+    Private registry configuration for an organization
     """
 
-    url: str
-    id: int
-    node_id: str
-    html_url: str
-    diff_url: str
-    patch_url: str
-    issue_url: str
-    commits_url: str
-    review_comments_url: str
-    review_comment_url: str
-    comments_url: str
-    statuses_url: str
-    number: int
-    state: str
-    locked: bool
-    title: str
-    user: Union[None, SimpleUserType]
-    body: Union[str, None]
-    labels: list[PullRequestSimplePropLabelsItemsType]
-    milestone: Union[None, MilestoneType]
-    active_lock_reason: NotRequired[Union[str, None]]
+    name: str
+    registry_type: Literal[
+        "maven_repository",
+        "nuget_feed",
+        "goproxy_server",
+        "npm_registry",
+        "rubygems_server",
+        "cargo_registry",
+        "composer_repository",
+        "docker_registry",
+        "git_source",
+        "helm_registry",
+        "hex_organization",
+        "hex_repository",
+        "pub_repository",
+        "python_index",
+        "terraform_registry",
+    ]
+    auth_type: NotRequired[
+        Literal[
+            "token",
+            "username_password",
+            "oidc_azure",
+            "oidc_aws",
+            "oidc_jfrog",
+            "oidc_cloudsmith",
+            "oidc_gcp",
+        ]
+    ]
+    url: NotRequired[str]
+    username: NotRequired[str]
+    replaces_base: NotRequired[bool]
+    visibility: Literal["all", "private", "selected"]
+    selected_repository_ids: NotRequired[list[int]]
+    tenant_id: NotRequired[str]
+    client_id: NotRequired[str]
+    aws_region: NotRequired[str]
+    account_id: NotRequired[str]
+    role_name: NotRequired[str]
+    domain: NotRequired[str]
+    domain_owner: NotRequired[str]
+    jfrog_oidc_provider_name: NotRequired[str]
+    audience: NotRequired[str]
+    identity_mapping_name: NotRequired[str]
+    namespace: NotRequired[str]
+    service_slug: NotRequired[str]
+    api_host: NotRequired[str]
+    workload_identity_provider: NotRequired[str]
+    service_account: NotRequired[str]
     created_at: _dt.datetime
     updated_at: _dt.datetime
-    closed_at: Union[_dt.datetime, None]
-    merged_at: Union[_dt.datetime, None]
-    assignees: NotRequired[list[SimpleUserType]]
-    requested_reviewers: NotRequired[list[SimpleUserType]]
-    requested_teams: NotRequired[list[TeamType]]
-    head: PullRequestSimplePropHeadType
-    base: PullRequestSimplePropBaseType
-    links: PullRequestSimplePropLinksType
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    auto_merge: Union[AutoMergeType, None]
-    draft: NotRequired[bool]
 
 
-class PullRequestSimpleTypeForResponse(TypedDict):
-    """Pull Request Simple
+class OrgPrivateRegistryConfigurationWithSelectedRepositoriesTypeForResponse(TypedDict):
+    """Organization private registry
 
-    Pull Request Simple
+    Private registry configuration for an organization
     """
 
-    url: str
-    id: int
-    node_id: str
-    html_url: str
-    diff_url: str
-    patch_url: str
-    issue_url: str
-    commits_url: str
-    review_comments_url: str
-    review_comment_url: str
-    comments_url: str
-    statuses_url: str
-    number: int
-    state: str
-    locked: bool
-    title: str
-    user: Union[None, SimpleUserTypeForResponse]
-    body: Union[str, None]
-    labels: list[PullRequestSimplePropLabelsItemsTypeForResponse]
-    milestone: Union[None, MilestoneTypeForResponse]
-    active_lock_reason: NotRequired[Union[str, None]]
+    name: str
+    registry_type: Literal[
+        "maven_repository",
+        "nuget_feed",
+        "goproxy_server",
+        "npm_registry",
+        "rubygems_server",
+        "cargo_registry",
+        "composer_repository",
+        "docker_registry",
+        "git_source",
+        "helm_registry",
+        "hex_organization",
+        "hex_repository",
+        "pub_repository",
+        "python_index",
+        "terraform_registry",
+    ]
+    auth_type: NotRequired[
+        Literal[
+            "token",
+            "username_password",
+            "oidc_azure",
+            "oidc_aws",
+            "oidc_jfrog",
+            "oidc_cloudsmith",
+            "oidc_gcp",
+        ]
+    ]
+    url: NotRequired[str]
+    username: NotRequired[str]
+    replaces_base: NotRequired[bool]
+    visibility: Literal["all", "private", "selected"]
+    selected_repository_ids: NotRequired[list[int]]
+    tenant_id: NotRequired[str]
+    client_id: NotRequired[str]
+    aws_region: NotRequired[str]
+    account_id: NotRequired[str]
+    role_name: NotRequired[str]
+    domain: NotRequired[str]
+    domain_owner: NotRequired[str]
+    jfrog_oidc_provider_name: NotRequired[str]
+    audience: NotRequired[str]
+    identity_mapping_name: NotRequired[str]
+    namespace: NotRequired[str]
+    service_slug: NotRequired[str]
+    api_host: NotRequired[str]
+    workload_identity_provider: NotRequired[str]
+    service_account: NotRequired[str]
     created_at: str
     updated_at: str
-    closed_at: Union[str, None]
-    merged_at: Union[str, None]
-    assignees: NotRequired[list[SimpleUserTypeForResponse]]
-    requested_reviewers: NotRequired[list[SimpleUserTypeForResponse]]
-    requested_teams: NotRequired[list[TeamTypeForResponse]]
-    head: PullRequestSimplePropHeadTypeForResponse
-    base: PullRequestSimplePropBaseTypeForResponse
-    links: PullRequestSimplePropLinksTypeForResponse
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    auto_merge: Union[AutoMergeTypeForResponse, None]
-    draft: NotRequired[bool]
-
-
-class PullRequestSimplePropLabelsItemsType(TypedDict):
-    """PullRequestSimplePropLabelsItems"""
-
-    id: int
-    node_id: str
-    url: str
-    name: str
-    description: Union[str, None]
-    color: str
-    default: bool
-
-
-class PullRequestSimplePropLabelsItemsTypeForResponse(TypedDict):
-    """PullRequestSimplePropLabelsItems"""
-
-    id: int
-    node_id: str
-    url: str
-    name: str
-    description: Union[str, None]
-    color: str
-    default: bool
 
 
 __all__ = (
-    "PullRequestSimplePropLabelsItemsType",
-    "PullRequestSimplePropLabelsItemsTypeForResponse",
-    "PullRequestSimpleType",
-    "PullRequestSimpleTypeForResponse",
+    "OrgPrivateRegistryConfigurationWithSelectedRepositoriesType",
+    "OrgPrivateRegistryConfigurationWithSelectedRepositoriesTypeForResponse",
 )

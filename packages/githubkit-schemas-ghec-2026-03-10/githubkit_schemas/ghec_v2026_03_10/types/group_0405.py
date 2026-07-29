@@ -12,24 +12,69 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class CodeScanningSarifsStatusType(TypedDict):
-    """CodeScanningSarifsStatus"""
-
-    processing_status: NotRequired[Literal["pending", "complete", "failed"]]
-    analyses_url: NotRequired[Union[str, None]]
-    errors: NotRequired[Union[list[str], None]]
+from .group_0074 import (
+    CodeScanningAlertLocationType,
+    CodeScanningAlertLocationTypeForResponse,
+)
 
 
-class CodeScanningSarifsStatusTypeForResponse(TypedDict):
-    """CodeScanningSarifsStatus"""
+class CodeScanningAlertInstanceListType(TypedDict):
+    """CodeScanningAlertInstanceList"""
 
-    processing_status: NotRequired[Literal["pending", "complete", "failed"]]
-    analyses_url: NotRequired[Union[str, None]]
-    errors: NotRequired[Union[list[str], None]]
+    ref: NotRequired[str]
+    analysis_key: NotRequired[str]
+    environment: NotRequired[str]
+    category: NotRequired[str]
+    state: NotRequired[Union[None, Literal["open", "fixed"]]]
+    commit_sha: NotRequired[str]
+    message: NotRequired[CodeScanningAlertInstanceListPropMessageType]
+    location: NotRequired[CodeScanningAlertLocationType]
+    html_url: NotRequired[str]
+    classifications: NotRequired[
+        list[
+            Union[
+                None, Literal["source", "generated", "test", "library", "documentation"]
+            ]
+        ]
+    ]
+
+
+class CodeScanningAlertInstanceListTypeForResponse(TypedDict):
+    """CodeScanningAlertInstanceList"""
+
+    ref: NotRequired[str]
+    analysis_key: NotRequired[str]
+    environment: NotRequired[str]
+    category: NotRequired[str]
+    state: NotRequired[Union[None, Literal["open", "fixed"]]]
+    commit_sha: NotRequired[str]
+    message: NotRequired[CodeScanningAlertInstanceListPropMessageTypeForResponse]
+    location: NotRequired[CodeScanningAlertLocationTypeForResponse]
+    html_url: NotRequired[str]
+    classifications: NotRequired[
+        list[
+            Union[
+                None, Literal["source", "generated", "test", "library", "documentation"]
+            ]
+        ]
+    ]
+
+
+class CodeScanningAlertInstanceListPropMessageType(TypedDict):
+    """CodeScanningAlertInstanceListPropMessage"""
+
+    text: NotRequired[str]
+
+
+class CodeScanningAlertInstanceListPropMessageTypeForResponse(TypedDict):
+    """CodeScanningAlertInstanceListPropMessage"""
+
+    text: NotRequired[str]
 
 
 __all__ = (
-    "CodeScanningSarifsStatusType",
-    "CodeScanningSarifsStatusTypeForResponse",
+    "CodeScanningAlertInstanceListPropMessageType",
+    "CodeScanningAlertInstanceListPropMessageTypeForResponse",
+    "CodeScanningAlertInstanceListType",
+    "CodeScanningAlertInstanceListTypeForResponse",
 )

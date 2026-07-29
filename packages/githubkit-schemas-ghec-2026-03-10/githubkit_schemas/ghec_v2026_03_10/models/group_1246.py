@@ -13,16 +13,15 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0261 import OrganizationActionsVariable
+
+class EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBody(GitHubModel):
+    """EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBody"""
+
+    organization_slugs: list[str] = Field(
+        description="Organization slug to assign the team to."
+    )
 
 
-class OrgsOrgActionsVariablesGetResponse200(GitHubModel):
-    """OrgsOrgActionsVariablesGetResponse200"""
+model_rebuild(EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBody)
 
-    total_count: int = Field()
-    variables: list[OrganizationActionsVariable] = Field()
-
-
-model_rebuild(OrgsOrgActionsVariablesGetResponse200)
-
-__all__ = ("OrgsOrgActionsVariablesGetResponse200",)
+__all__ = ("EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBody",)

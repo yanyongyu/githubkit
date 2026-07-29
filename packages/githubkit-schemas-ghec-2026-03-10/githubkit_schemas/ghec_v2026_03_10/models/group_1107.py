@@ -12,15 +12,22 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_1108 import (
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItems,
+)
 
 
-class EnterprisesEnterpriseActionsHostedRunnersPlatformsGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseActionsHostedRunnersPlatformsGetResponse200"""
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1(GitHubModel):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1"""
 
-    total_count: int = Field()
-    platforms: list[str] = Field()
+    sessions: Missing[
+        list[AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItems]
+    ] = Field(default=UNSET, description="Sessions associated with this task")
 
 
-model_rebuild(EnterprisesEnterpriseActionsHostedRunnersPlatformsGetResponse200)
+model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1)
 
-__all__ = ("EnterprisesEnterpriseActionsHostedRunnersPlatformsGetResponse200",)
+__all__ = ("AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1",)

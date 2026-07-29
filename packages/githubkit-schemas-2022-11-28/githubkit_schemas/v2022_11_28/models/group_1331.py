@@ -9,100 +9,88 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoIssuesIssueNumberPatchBody(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberPatchBody"""
+class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200(GitHubModel):
+    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200"""
 
-    title: Missing[Union[str, int, None]] = Field(
-        default=UNSET, description="The title of the issue."
-    )
-    body: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The contents of the issue."
-    )
-    assignee: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="Username to assign to this issue. **This field is closing down.**",
-    )
-    state: Missing[Literal["open", "closed"]] = Field(
-        default=UNSET, description="The open or closed state of the issue."
-    )
-    state_reason: Missing[
-        Union[None, Literal["completed", "not_planned", "duplicate", "reopened"]]
+    mcp_configuration: Union[
+        ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration,
+        None,
     ] = Field(
-        default=UNSET,
-        description="The reason for the state change. Ignored unless `state` is changed.",
+        description="The user-supplied MCP server configuration for the repository, as a free-form JSON object. This will be set to `null` if no configuration has been set.\n\nThe shape of a valid MCP configuration may evolve over time, so this property is intentionally not strictly typed. Clients should not assume a fixed schema."
     )
-    duplicate_issue_id: Missing[int] = Field(
-        default=UNSET,
-        description="The ID of the issue to mark as the canonical duplicate when `state_reason` is `duplicate`. The issue must exist and be accessible to the authenticated user. Ignored when `state_reason` is not `duplicate`.",
+    enabled_tools: ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools = Field(
+        description="The enabled review tools for Copilot cloud agent."
     )
-    milestone: Missing[Union[str, int, None]] = Field(default=UNSET)
-    labels: Missing[
-        list[Union[str, ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1]]
-    ] = Field(
-        default=UNSET,
-        description="Labels to associate with this issue. Pass one or more labels to _replace_ the set of labels on this issue. Send an empty array (`[]`) to clear all labels from the issue. Only users with push access can set labels for issues. Without push access to the repository, label changes are silently dropped.",
+    require_actions_workflow_approval: bool = Field(
+        description="Whether Actions workflow approval is required for Copilot cloud agent pull requests."
     )
-    assignees: Missing[
-        list[
-            Union[str, ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1]
-        ]
-    ] = Field(
-        default=UNSET,
-        description="Usernames to assign to this issue. Pass one or more user logins to _replace_ the set of assignees on this issue. Send an empty array (`[]`) to clear all assignees from the issue. Only users with push access can set assignees for new issues. Without push access to the repository, assignee changes are silently dropped.",
+    is_firewall_enabled: bool = Field(description="Whether the firewall is enabled.")
+    is_firewall_recommended_allowlist_enabled: bool = Field(
+        description="Whether the firewall recommended allowlist is enabled."
     )
-    issue_field_values: Missing[
-        list[ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems]
-    ] = Field(
-        default=UNSET,
-        description="An array of issue field values to set on this issue. Each field value must include the field ID and the value to set. Only users with push access can set field values for issues",
+    custom_allowlist: list[str] = Field(
+        description="A list of custom allowlist entries, as hosts or URLs, that the firewall will allow the Copilot cloud agent to access."
     )
-    type: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The name of the issue type to associate with this issue or use `null` to remove the current issue type. Only users with push access can set the type for issues. Without push access to the repository, type changes are silently dropped.",
+    is_automations_enabled: bool = Field(
+        description="Whether automations are enabled in this repository. When true, users can create automations that automatically run agents on a schedule or in response to events like new issues or updated pull requests."
+    )
+    require_write_access_for_automation_triggers: bool = Field(
+        description="Whether write access is required for automation triggers. When true, automations will only run if the user triggering the event has write access to the repository. When false, users can create automations that listen for events triggered by users without write access."
     )
 
 
-class ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1"""
+class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration(
+    ExtraGitHubModel
+):
+    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration
 
-    id: Missing[int] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    description: Missing[Union[str, None]] = Field(default=UNSET)
-    color: Missing[Union[str, None]] = Field(default=UNSET)
+    The user-supplied MCP server configuration for the repository, as a free-form
+    JSON object. This will be set to `null` if no configuration has been set.
 
-
-class ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1"""
-
-    login: Missing[str] = Field(default=UNSET)
+    The shape of a valid MCP configuration may evolve over time, so this property is
+    intentionally not strictly typed. Clients should not assume a fixed schema.
+    """
 
 
-class ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems"""
+class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools(
+    GitHubModel
+):
+    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools
 
-    field_id: int = Field(description="The ID of the issue field to set")
-    value: Union[str, float, list[str]] = Field(
-        description="The value to set for the field. For multi-select fields, provide an array of option names."
+    The enabled review tools for Copilot cloud agent.
+    """
+
+    codeql: bool = Field(
+        description="Whether the CodeQL tool is enabled for the Copilot cloud agent."
+    )
+    copilot_code_review: bool = Field(
+        description="Whether the Copilot code review tool is enabled for the Copilot cloud agent."
+    )
+    secret_scanning: bool = Field(
+        description="Whether the secret scanning tool is enabled for the Copilot cloud agent."
+    )
+    dependency_vulnerability_checks: bool = Field(
+        description="Whether the dependency vulnerability checks tool is enabled for the Copilot cloud agent."
     )
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberPatchBody)
-model_rebuild(ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1)
-model_rebuild(ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1)
-model_rebuild(ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems)
+model_rebuild(ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200)
+model_rebuild(
+    ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration
+)
+model_rebuild(
+    ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools
+)
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberPatchBody",
-    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1",
-    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems",
-    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1",
+    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200",
+    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools",
+    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration",
 )

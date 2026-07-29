@@ -16,46 +16,30 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AdvancedSecurityActiveCommitters(GitHubModel):
-    """AdvancedSecurityActiveCommitters"""
+class SecretScanningCustomPatternToCreate(GitHubModel):
+    """Secret Scanning Custom Pattern To Create
 
-    total_advanced_security_committers: Missing[int] = Field(default=UNSET)
-    total_count: Missing[int] = Field(default=UNSET)
-    maximum_advanced_security_committers: Missing[int] = Field(
+    A custom pattern to create in a bulk operation.
+    """
+
+    name: str = Field(description="The name of the custom pattern.")
+    pattern: str = Field(description="The regular expression of the custom pattern.")
+    start_delimiter: Missing[str] = Field(
         default=UNSET,
-        description="The total number of GitHub Advanced Security licences required if all repositories were to enable GitHub Advanced Security",
+        description="The start delimiter regex for the custom pattern.\nDefaults to `\\A|[^0-9A-Za-z]` when not specified.",
     )
-    purchased_advanced_security_committers: Missing[int] = Field(
+    end_delimiter: Missing[str] = Field(
         default=UNSET,
-        description="The total number of GitHub Advanced Security licences purchased",
+        description="The end delimiter regex for the custom pattern.\nDefaults to `\\z|[^0-9A-Za-z]` when not specified.",
     )
-    repositories: list[AdvancedSecurityActiveCommittersRepository] = Field()
+    must_match: Missing[list[str]] = Field(
+        default=UNSET, description="List of regexes that the secret must match."
+    )
+    must_not_match: Missing[list[str]] = Field(
+        default=UNSET, description="List of regexes that the secret must not match."
+    )
 
 
-class AdvancedSecurityActiveCommittersRepository(GitHubModel):
-    """AdvancedSecurityActiveCommittersRepository"""
+model_rebuild(SecretScanningCustomPatternToCreate)
 
-    name: str = Field()
-    advanced_security_committers: int = Field()
-    advanced_security_committers_breakdown: list[
-        AdvancedSecurityActiveCommittersUser
-    ] = Field()
-
-
-class AdvancedSecurityActiveCommittersUser(GitHubModel):
-    """AdvancedSecurityActiveCommittersUser"""
-
-    user_login: str = Field()
-    last_pushed_date: str = Field()
-    last_pushed_email: str = Field()
-
-
-model_rebuild(AdvancedSecurityActiveCommitters)
-model_rebuild(AdvancedSecurityActiveCommittersRepository)
-model_rebuild(AdvancedSecurityActiveCommittersUser)
-
-__all__ = (
-    "AdvancedSecurityActiveCommitters",
-    "AdvancedSecurityActiveCommittersRepository",
-    "AdvancedSecurityActiveCommittersUser",
-)
+__all__ = ("SecretScanningCustomPatternToCreate",)

@@ -13,37 +13,37 @@ from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody(GitHubModel):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody"""
+class GistsPostBody(GitHubModel):
+    """GistsPostBody"""
 
-    name: str = Field(description="Name of the runner group.")
-    visibility: Missing[Literal["selected", "all", "private"]] = Field(
-        default=UNSET,
-        description="Visibility of a runner group. You can select all repositories, select individual repositories, or all private repositories.",
+    description: Missing[str] = Field(
+        default=UNSET, description="Description of the gist"
     )
-    allows_public_repositories: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the runner group can be used by `public` repositories.",
+    files: GistsPostBodyPropFiles = Field(
+        description="Names and content for the files that make up the gist"
     )
-    restricted_to_workflows: Missing[bool] = Field(
-        default=UNSET,
-        description="If `true`, the runner group will be restricted to running only the workflows specified in the `selected_workflows` array.",
-    )
-    selected_workflows: Missing[list[str]] = Field(
-        default=UNSET,
-        description="List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`.",
-    )
-    network_configuration_id: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The identifier of a hosted compute network configuration.",
-    )
+    public: Missing[Union[bool, Literal["true", "false"]]] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody)
+class GistsPostBodyPropFiles(ExtraGitHubModel):
+    """GistsPostBodyPropFiles
 
-__all__ = ("OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody",)
+    Names and content for the files that make up the gist
+
+    Examples:
+        {'hello.rb': {'content': 'puts "Hello, World!"'}}
+    """
+
+
+model_rebuild(GistsPostBody)
+model_rebuild(GistsPostBodyPropFiles)
+
+__all__ = (
+    "GistsPostBody",
+    "GistsPostBodyPropFiles",
+)

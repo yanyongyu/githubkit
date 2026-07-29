@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,41 +17,36 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
+
+class WebhooksUserMannequin(GitHubModel):
+    """User"""
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization", "Mannequin"]] = Field(
+        default=UNSET
+    )
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class ProjectsV2Item(GitHubModel):
-    """Projects v2 Item
+model_rebuild(WebhooksUserMannequin)
 
-    An item belonging to a project
-    """
-
-    id: float = Field(description="The unique identifier of the project item.")
-    node_id: Missing[str] = Field(
-        default=UNSET, description="The node ID of the project item."
-    )
-    project_node_id: Missing[str] = Field(
-        default=UNSET, description="The node ID of the project that contains this item."
-    )
-    content_node_id: str = Field(
-        description="The node ID of the content represented by this item."
-    )
-    content_type: Literal["Issue", "PullRequest", "DraftIssue"] = Field(
-        title="Projects v2 Item Content Type",
-        description="The type of content tracked in a project item",
-    )
-    creator: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
-    created_at: _dt.datetime = Field(description="The time when the item was created.")
-    updated_at: _dt.datetime = Field(
-        description="The time when the item was last updated."
-    )
-    archived_at: Union[_dt.datetime, None] = Field(
-        description="The time when the item was archived."
-    )
-
-
-model_rebuild(ProjectsV2Item)
-
-__all__ = ("ProjectsV2Item",)
+__all__ = ("WebhooksUserMannequin",)

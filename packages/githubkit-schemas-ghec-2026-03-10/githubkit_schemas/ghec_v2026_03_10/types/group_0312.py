@@ -10,69 +10,95 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0311 import (
-    ProjectsV2StatusUpdateType,
-    ProjectsV2StatusUpdateTypeForResponse,
-)
 
+class PackageVersionType(TypedDict):
+    """Package Version
 
-class ProjectsV2Type(TypedDict):
-    """Projects v2 Project
-
-    A projects v2 project
+    A version of a software package
     """
 
-    id: float
-    node_id: str
-    owner: SimpleUserType
-    creator: SimpleUserType
-    title: str
-    description: Union[str, None]
-    public: bool
-    closed_at: Union[_dt.datetime, None]
+    id: int
+    name: str
+    url: str
+    package_html_url: str
+    html_url: NotRequired[str]
+    license_: NotRequired[str]
+    description: NotRequired[str]
     created_at: _dt.datetime
     updated_at: _dt.datetime
-    number: int
-    short_description: Union[str, None]
-    deleted_at: Union[_dt.datetime, None]
-    deleted_by: Union[None, SimpleUserType]
-    state: NotRequired[Literal["open", "closed"]]
-    latest_status_update: NotRequired[Union[None, ProjectsV2StatusUpdateType]]
-    is_template: NotRequired[bool]
+    deleted_at: NotRequired[_dt.datetime]
+    metadata: NotRequired[PackageVersionPropMetadataType]
 
 
-class ProjectsV2TypeForResponse(TypedDict):
-    """Projects v2 Project
+class PackageVersionTypeForResponse(TypedDict):
+    """Package Version
 
-    A projects v2 project
+    A version of a software package
     """
 
-    id: float
-    node_id: str
-    owner: SimpleUserTypeForResponse
-    creator: SimpleUserTypeForResponse
-    title: str
-    description: Union[str, None]
-    public: bool
-    closed_at: Union[str, None]
+    id: int
+    name: str
+    url: str
+    package_html_url: str
+    html_url: NotRequired[str]
+    license_: NotRequired[str]
+    description: NotRequired[str]
     created_at: str
     updated_at: str
-    number: int
-    short_description: Union[str, None]
-    deleted_at: Union[str, None]
-    deleted_by: Union[None, SimpleUserTypeForResponse]
-    state: NotRequired[Literal["open", "closed"]]
-    latest_status_update: NotRequired[
-        Union[None, ProjectsV2StatusUpdateTypeForResponse]
-    ]
-    is_template: NotRequired[bool]
+    deleted_at: NotRequired[str]
+    metadata: NotRequired[PackageVersionPropMetadataTypeForResponse]
+
+
+class PackageVersionPropMetadataType(TypedDict):
+    """Package Version Metadata"""
+
+    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
+    container: NotRequired[PackageVersionPropMetadataPropContainerType]
+    docker: NotRequired[PackageVersionPropMetadataPropDockerType]
+
+
+class PackageVersionPropMetadataTypeForResponse(TypedDict):
+    """Package Version Metadata"""
+
+    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
+    container: NotRequired[PackageVersionPropMetadataPropContainerTypeForResponse]
+    docker: NotRequired[PackageVersionPropMetadataPropDockerTypeForResponse]
+
+
+class PackageVersionPropMetadataPropContainerType(TypedDict):
+    """Container Metadata"""
+
+    tags: list[str]
+
+
+class PackageVersionPropMetadataPropContainerTypeForResponse(TypedDict):
+    """Container Metadata"""
+
+    tags: list[str]
+
+
+class PackageVersionPropMetadataPropDockerType(TypedDict):
+    """Docker Metadata"""
+
+    tag: NotRequired[list[str]]
+
+
+class PackageVersionPropMetadataPropDockerTypeForResponse(TypedDict):
+    """Docker Metadata"""
+
+    tag: NotRequired[list[str]]
 
 
 __all__ = (
-    "ProjectsV2Type",
-    "ProjectsV2TypeForResponse",
+    "PackageVersionPropMetadataPropContainerType",
+    "PackageVersionPropMetadataPropContainerTypeForResponse",
+    "PackageVersionPropMetadataPropDockerType",
+    "PackageVersionPropMetadataPropDockerTypeForResponse",
+    "PackageVersionPropMetadataType",
+    "PackageVersionPropMetadataTypeForResponse",
+    "PackageVersionType",
+    "PackageVersionTypeForResponse",
 )

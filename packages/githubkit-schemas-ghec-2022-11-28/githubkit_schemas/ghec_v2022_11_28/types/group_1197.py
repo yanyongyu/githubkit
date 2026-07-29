@@ -9,26 +9,59 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBodyType(
+class EnterprisesEnterpriseCopilotCustomAgentsGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse200"""
+
+    custom_agents: NotRequired[
+        Union[
+            list[
+                EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItemsType
+            ],
+            None,
+        ]
+    ]
+
+
+class EnterprisesEnterpriseCopilotCustomAgentsGetResponse200TypeForResponse(TypedDict):
+    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse200"""
+
+    custom_agents: NotRequired[
+        Union[
+            list[
+                EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItemsTypeForResponse
+            ],
+            None,
+        ]
+    ]
+
+
+class EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItemsType(
     TypedDict
 ):
-    """EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBody"""
+    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems"""
 
-    organization_slugs: list[str]
+    name: NotRequired[str]
+    file_path: NotRequired[str]
+    url: NotRequired[str]
 
 
-class EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBodyTypeForResponse(
+class EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItemsTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBody"""
+    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems"""
 
-    organization_slugs: list[str]
+    name: NotRequired[str]
+    file_path: NotRequired[str]
+    url: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBodyType",
-    "EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItemsType",
+    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItemsTypeForResponse",
+    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse200Type",
+    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse200TypeForResponse",
 )

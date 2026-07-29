@@ -9,27 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0192 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
 
 
-class UserCodespacesSecretsSecretNamePutBodyType(TypedDict):
-    """UserCodespacesSecretsSecretNamePutBody"""
+class ReposOwnerRepoPropertiesValuesPatchBodyType(TypedDict):
+    """ReposOwnerRepoPropertiesValuesPatchBody"""
 
-    encrypted_value: NotRequired[str]
-    key_id: str
-    selected_repository_ids: NotRequired[list[Union[int, str]]]
+    properties: list[CustomPropertyValueType]
 
 
-class UserCodespacesSecretsSecretNamePutBodyTypeForResponse(TypedDict):
-    """UserCodespacesSecretsSecretNamePutBody"""
+class ReposOwnerRepoPropertiesValuesPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPropertiesValuesPatchBody"""
 
-    encrypted_value: NotRequired[str]
-    key_id: str
-    selected_repository_ids: NotRequired[list[Union[int, str]]]
+    properties: list[CustomPropertyValueTypeForResponse]
 
 
 __all__ = (
-    "UserCodespacesSecretsSecretNamePutBodyType",
-    "UserCodespacesSecretsSecretNamePutBodyTypeForResponse",
+    "ReposOwnerRepoPropertiesValuesPatchBodyType",
+    "ReposOwnerRepoPropertiesValuesPatchBodyTypeForResponse",
 )

@@ -9,33 +9,100 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0038 import (
-    ActionsHostedRunnerCuratedImageType,
-    ActionsHostedRunnerCuratedImageTypeForResponse,
-)
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200Type(
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0Type(
     TypedDict
 ):
-    """EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200"""
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0
 
-    total_count: int
-    images: list[ActionsHostedRunnerCuratedImageType]
+    A GitHub user
+    """
+
+    id: NotRequired[int]
 
 
-class EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200TypeForResponse(
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200"""
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0
 
-    total_count: int
-    images: list[ActionsHostedRunnerCuratedImageTypeForResponse]
+    A GitHub user
+    """
+
+    id: NotRequired[int]
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems
+
+    A GitHub user
+    """
+
+    id: NotRequired[int]
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems
+
+    A GitHub user
+    """
+
+    id: NotRequired[int]
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepositoryType(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository
+
+    The repository this task belongs to
+    """
+
+    id: NotRequired[int]
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepositoryTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository
+
+    The repository this task belongs to
+    """
+
+    id: NotRequired[int]
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCustomAgentType(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCustomAgent
+
+    Custom agent metadata associated with this task
+    """
+
+    id: NotRequired[str]
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCustomAgentTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCustomAgent
+
+    Custom agent metadata associated with this task
+    """
+
+    id: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200Type",
-    "EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200TypeForResponse",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0Type",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0TypeForResponse",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCustomAgentType",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCustomAgentTypeForResponse",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepositoryType",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepositoryTypeForResponse",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsType",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsTypeForResponse",
 )

@@ -9,27 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0207 import DiscussionType, DiscussionTypeForResponse
-from .group_0601 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0366 import DeploymentType, DeploymentTypeForResponse
+from .group_0521 import PullRequestType, PullRequestTypeForResponse
+from .group_0618 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0619 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0620 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDiscussionTransferredPropChangesType(TypedDict):
-    """WebhookDiscussionTransferredPropChanges"""
+class WebhookDeploymentProtectionRuleRequestedType(TypedDict):
+    """deployment protection rule requested event"""
 
-    new_discussion: DiscussionType
-    new_repository: RepositoryWebhooksType
+    action: Literal["requested"]
+    environment: NotRequired[str]
+    event: NotRequired[str]
+    sha: NotRequired[str]
+    ref: NotRequired[str]
+    deployment_callback_url: NotRequired[str]
+    deployment: NotRequired[Union[None, DeploymentType]]
+    pull_requests: NotRequired[list[PullRequestType]]
+    repository: NotRequired[RepositoryWebhooksType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookDiscussionTransferredPropChangesTypeForResponse(TypedDict):
-    """WebhookDiscussionTransferredPropChanges"""
+class WebhookDeploymentProtectionRuleRequestedTypeForResponse(TypedDict):
+    """deployment protection rule requested event"""
 
-    new_discussion: DiscussionTypeForResponse
-    new_repository: RepositoryWebhooksTypeForResponse
+    action: Literal["requested"]
+    environment: NotRequired[str]
+    event: NotRequired[str]
+    sha: NotRequired[str]
+    ref: NotRequired[str]
+    deployment_callback_url: NotRequired[str]
+    deployment: NotRequired[Union[None, DeploymentTypeForResponse]]
+    pull_requests: NotRequired[list[PullRequestTypeForResponse]]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookDiscussionTransferredPropChangesType",
-    "WebhookDiscussionTransferredPropChangesTypeForResponse",
+    "WebhookDeploymentProtectionRuleRequestedType",
+    "WebhookDeploymentProtectionRuleRequestedTypeForResponse",
 )

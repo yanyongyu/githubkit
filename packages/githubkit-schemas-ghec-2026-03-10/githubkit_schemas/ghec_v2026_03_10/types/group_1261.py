@@ -9,29 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0262 import (
-    ArtifactDeploymentRecordType,
-    ArtifactDeploymentRecordTypeForResponse,
-)
+
+class NotificationsPutBodyType(TypedDict):
+    """NotificationsPutBody"""
+
+    last_read_at: NotRequired[_dt.datetime]
+    read: NotRequired[bool]
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200Type(TypedDict):
-    """OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200"""
+class NotificationsPutBodyTypeForResponse(TypedDict):
+    """NotificationsPutBody"""
 
-    total_count: int
-    deployment_records: NotRequired[list[ArtifactDeploymentRecordType]]
-
-
-class OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200TypeForResponse(TypedDict):
-    """OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200"""
-
-    total_count: int
-    deployment_records: NotRequired[list[ArtifactDeploymentRecordTypeForResponse]]
+    last_read_at: NotRequired[str]
+    read: NotRequired[bool]
 
 
 __all__ = (
-    "OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200Type",
-    "OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200TypeForResponse",
+    "NotificationsPutBodyType",
+    "NotificationsPutBodyTypeForResponse",
 )

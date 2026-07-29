@@ -9,22 +9,79 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class ApplicationsClientIdGrantDeleteBodyType(TypedDict):
-    """ApplicationsClientIdGrantDeleteBody"""
+class AgentsReposOwnerRepoTasksPostResponse401Type(TypedDict):
+    """AgentsReposOwnerRepoTasksPostResponse401
 
-    access_token: str
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[
+        list[AgentsReposOwnerRepoTasksPostResponse401PropErrorsItemsType]
+    ]
+    documentation_url: str
 
 
-class ApplicationsClientIdGrantDeleteBodyTypeForResponse(TypedDict):
-    """ApplicationsClientIdGrantDeleteBody"""
+class AgentsReposOwnerRepoTasksPostResponse401TypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoTasksPostResponse401
 
-    access_token: str
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[
+        list[AgentsReposOwnerRepoTasksPostResponse401PropErrorsItemsTypeForResponse]
+    ]
+    documentation_url: str
+
+
+class AgentsReposOwnerRepoTasksPostResponse401PropErrorsItemsType(TypedDict):
+    """AgentsReposOwnerRepoTasksPostResponse401PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
+
+
+class AgentsReposOwnerRepoTasksPostResponse401PropErrorsItemsTypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoTasksPostResponse401PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "ApplicationsClientIdGrantDeleteBodyType",
-    "ApplicationsClientIdGrantDeleteBodyTypeForResponse",
+    "AgentsReposOwnerRepoTasksPostResponse401PropErrorsItemsType",
+    "AgentsReposOwnerRepoTasksPostResponse401PropErrorsItemsTypeForResponse",
+    "AgentsReposOwnerRepoTasksPostResponse401Type",
+    "AgentsReposOwnerRepoTasksPostResponse401TypeForResponse",
 )

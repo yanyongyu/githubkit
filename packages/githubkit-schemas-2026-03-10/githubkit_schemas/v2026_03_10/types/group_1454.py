@@ -9,31 +9,65 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0Type(TypedDict):
-    """UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0"""
+class ReposOwnerRepoStacksStackNumberAddPostResponse422Type(TypedDict):
+    """Validation Error
 
-    type: Literal["Issue", "PullRequest"]
-    id: int
-    owner: NotRequired[str]
-    repo: NotRequired[str]
-    number: NotRequired[int]
+    Validation Error
+    """
+
+    message: str
+    documentation_url: str
+    errors: NotRequired[
+        list[ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItemsType]
+    ]
 
 
-class UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0TypeForResponse(TypedDict):
-    """UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0"""
+class ReposOwnerRepoStacksStackNumberAddPostResponse422TypeForResponse(TypedDict):
+    """Validation Error
 
-    type: Literal["Issue", "PullRequest"]
-    id: int
-    owner: NotRequired[str]
-    repo: NotRequired[str]
-    number: NotRequired[int]
+    Validation Error
+    """
+
+    message: str
+    documentation_url: str
+    errors: NotRequired[
+        list[
+            ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItemsTypeForResponse
+        ]
+    ]
+
+
+class ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItemsType(TypedDict):
+    """ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems"""
+
+    resource: NotRequired[str]
+    field: NotRequired[str]
+    message: NotRequired[str]
+    code: str
+    index: NotRequired[int]
+    value: NotRequired[Union[str, None, int, None, list[Union[str, int]], None]]
+
+
+class ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItemsTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems"""
+
+    resource: NotRequired[str]
+    field: NotRequired[str]
+    message: NotRequired[str]
+    code: str
+    index: NotRequired[int]
+    value: NotRequired[Union[str, None, int, None, list[Union[str, int]], None]]
 
 
 __all__ = (
-    "UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0Type",
-    "UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0TypeForResponse",
+    "ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItemsType",
+    "ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItemsTypeForResponse",
+    "ReposOwnerRepoStacksStackNumberAddPostResponse422Type",
+    "ReposOwnerRepoStacksStackNumberAddPostResponse422TypeForResponse",
 )

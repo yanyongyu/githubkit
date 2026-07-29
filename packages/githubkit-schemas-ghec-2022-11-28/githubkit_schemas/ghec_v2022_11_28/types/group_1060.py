@@ -12,76 +12,47 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class AgentsReposOwnerRepoTasksPostResponse403Type(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse403
-
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[
-        list[AgentsReposOwnerRepoTasksPostResponse403PropErrorsItemsType]
-    ]
-    documentation_url: str
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0618 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0619 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0620 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0621 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0665 import WebhooksSponsorshipType, WebhooksSponsorshipTypeForResponse
+from .group_0666 import WebhooksChanges8Type, WebhooksChanges8TypeForResponse
 
 
-class AgentsReposOwnerRepoTasksPostResponse403TypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse403
+class WebhookSponsorshipPendingTierChangeType(TypedDict):
+    """sponsorship pending_tier_change event"""
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[
-        list[AgentsReposOwnerRepoTasksPostResponse403PropErrorsItemsTypeForResponse]
-    ]
-    documentation_url: str
+    action: Literal["pending_tier_change"]
+    changes: WebhooksChanges8Type
+    effective_date: NotRequired[str]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserType
+    sponsorship: WebhooksSponsorshipType
 
 
-class AgentsReposOwnerRepoTasksPostResponse403PropErrorsItemsType(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse403PropErrorsItems
+class WebhookSponsorshipPendingTierChangeTypeForResponse(TypedDict):
+    """sponsorship pending_tier_change event"""
 
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
-
-
-class AgentsReposOwnerRepoTasksPostResponse403PropErrorsItemsTypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse403PropErrorsItems
-
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
+    action: Literal["pending_tier_change"]
+    changes: WebhooksChanges8TypeForResponse
+    effective_date: NotRequired[str]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: SimpleUserTypeForResponse
+    sponsorship: WebhooksSponsorshipTypeForResponse
 
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksPostResponse403PropErrorsItemsType",
-    "AgentsReposOwnerRepoTasksPostResponse403PropErrorsItemsTypeForResponse",
-    "AgentsReposOwnerRepoTasksPostResponse403Type",
-    "AgentsReposOwnerRepoTasksPostResponse403TypeForResponse",
+    "WebhookSponsorshipPendingTierChangeType",
+    "WebhookSponsorshipPendingTierChangeTypeForResponse",
 )

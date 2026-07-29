@@ -9,65 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0132 import TeamType, TeamTypeForResponse
+from typing_extensions import TypedDict
 
 
-class ProtectedBranchPullRequestReviewPropDismissalRestrictionsType(TypedDict):
-    """ProtectedBranchPullRequestReviewPropDismissalRestrictions"""
+class WorkflowDispatchResponseType(TypedDict):
+    """Workflow Dispatch Response
 
-    users: NotRequired[list[SimpleUserType]]
-    teams: NotRequired[list[TeamType]]
-    apps: NotRequired[list[Union[IntegrationType, None]]]
-    url: NotRequired[str]
-    users_url: NotRequired[str]
-    teams_url: NotRequired[str]
-
-
-class ProtectedBranchPullRequestReviewPropDismissalRestrictionsTypeForResponse(
-    TypedDict
-):
-    """ProtectedBranchPullRequestReviewPropDismissalRestrictions"""
-
-    users: NotRequired[list[SimpleUserTypeForResponse]]
-    teams: NotRequired[list[TeamTypeForResponse]]
-    apps: NotRequired[list[Union[IntegrationTypeForResponse, None]]]
-    url: NotRequired[str]
-    users_url: NotRequired[str]
-    teams_url: NotRequired[str]
-
-
-class ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType(TypedDict):
-    """ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
-
-    Allow specific users, teams, or apps to bypass pull request requirements.
+    Response containing the workflow run ID and URLs.
     """
 
-    users: NotRequired[list[SimpleUserType]]
-    teams: NotRequired[list[TeamType]]
-    apps: NotRequired[list[Union[IntegrationType, None]]]
+    workflow_run_id: int
+    run_url: str
+    html_url: str
 
 
-class ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesTypeForResponse(
-    TypedDict
-):
-    """ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
+class WorkflowDispatchResponseTypeForResponse(TypedDict):
+    """Workflow Dispatch Response
 
-    Allow specific users, teams, or apps to bypass pull request requirements.
+    Response containing the workflow run ID and URLs.
     """
 
-    users: NotRequired[list[SimpleUserTypeForResponse]]
-    teams: NotRequired[list[TeamTypeForResponse]]
-    apps: NotRequired[list[Union[IntegrationTypeForResponse, None]]]
+    workflow_run_id: int
+    run_url: str
+    html_url: str
 
 
 __all__ = (
-    "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType",
-    "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesTypeForResponse",
-    "ProtectedBranchPullRequestReviewPropDismissalRestrictionsType",
-    "ProtectedBranchPullRequestReviewPropDismissalRestrictionsTypeForResponse",
+    "WorkflowDispatchResponseType",
+    "WorkflowDispatchResponseTypeForResponse",
 )

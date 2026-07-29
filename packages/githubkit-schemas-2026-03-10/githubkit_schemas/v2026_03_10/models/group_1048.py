@@ -17,59 +17,148 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0034 import CodeScanningDefaultSetupOptions, CodeScanningOptions
 
-class OrgsOrgActionsHostedRunnersPostBody(GitHubModel):
-    """OrgsOrgActionsHostedRunnersPostBody"""
+
+class EnterprisesEnterpriseCodeSecurityConfigurationsPostBody(GitHubModel):
+    """EnterprisesEnterpriseCodeSecurityConfigurationsPostBody"""
 
     name: str = Field(
-        description="Name of the runner. Must be between 1 and 64 characters and may only contain upper and lowercase letters a-z, numbers 0-9, '.', '-', and '_'."
+        description="The name of the code security configuration. Must be unique within the enterprise."
     )
-    image: OrgsOrgActionsHostedRunnersPostBodyPropImage = Field(
-        description="The image of runner. To list all available images, use `GET /actions/hosted-runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`."
-    )
-    size: str = Field(
-        description="The machine size of the runner. To list available sizes, use `GET actions/hosted-runners/machine-sizes`"
-    )
-    runner_group_id: int = Field(
-        description="The existing runner group to add this runner to."
-    )
-    maximum_runners: Missing[int] = Field(
+    description: Missing[str] = Field(
+        max_length=255,
         default=UNSET,
-        description="The maximum amount of runners to scale up to. Runners will not auto-scale above this number. Use this setting to limit your cost.",
+        description="A description of the code security configuration",
     )
-    enable_static_ip: Missing[bool] = Field(
+    advanced_security: Missing[
+        Literal["enabled", "disabled", "code_security", "secret_protection"]
+    ] = Field(
         default=UNSET,
-        description="Whether this runner should be created with a static public IP. Note limit on account. To list limits on account, use `GET actions/hosted-runners/limits`",
+        description="The enablement status of GitHub Advanced Security features. `enabled` will enable both Code Security and Secret Protection features.\n\n> [!WARNING]\n> `code_security` and `secret_protection` are deprecated values for this field. Prefer the individual `code_security` and `secret_protection` fields to set the status of these features.\n",
     )
-    image_gen: Missing[bool] = Field(
+    code_security: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
         default=UNSET,
-        description="Whether this runner should be used to generate custom images.",
+        description="The enablement status of GitHub Code Security features.",
+    )
+    dependency_graph: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
+        default=UNSET, description="The enablement status of Dependency Graph"
+    )
+    dependency_graph_autosubmit_action: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of Automatic dependency submission",
+    )
+    dependency_graph_autosubmit_action_options: Missing[
+        EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions
+    ] = Field(
+        default=UNSET, description="Feature options for Automatic dependency submission"
+    )
+    dependabot_alerts: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
+        default=UNSET, description="The enablement status of Dependabot alerts"
+    )
+    dependabot_security_updates: Missing[Literal["enabled", "disabled", "not_set"]] = (
+        Field(
+            default=UNSET,
+            description="The enablement status of Dependabot security updates",
+        )
+    )
+    code_scanning_options: Missing[Union[CodeScanningOptions, None]] = Field(
+        default=UNSET,
+        description="Security Configuration feature options for code scanning",
+    )
+    code_scanning_default_setup: Missing[Literal["enabled", "disabled", "not_set"]] = (
+        Field(
+            default=UNSET,
+            description="The enablement status of code scanning default setup",
+        )
+    )
+    code_scanning_default_setup_options: Missing[
+        Union[CodeScanningDefaultSetupOptions, None]
+    ] = Field(
+        default=UNSET, description="Feature options for code scanning default setup"
+    )
+    code_scanning_delegated_alert_dismissal: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of code scanning delegated alert dismissal",
+    )
+    secret_protection: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
+        default=UNSET,
+        description="The enablement status of GitHub Secret Protection features.",
+    )
+    secret_scanning: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
+        default=UNSET, description="The enablement status of secret scanning"
+    )
+    secret_scanning_push_protection: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of secret scanning push protection",
+    )
+    secret_scanning_validity_checks: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of secret scanning validity checks",
+    )
+    secret_scanning_non_provider_patterns: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of secret scanning non provider patterns",
+    )
+    secret_scanning_generic_secrets: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET, description="The enablement status of Copilot secret scanning"
+    )
+    secret_scanning_delegated_alert_dismissal: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of secret scanning delegated alert dismissal",
+    )
+    secret_scanning_extended_metadata: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of secret scanning extended metadata",
+    )
+    private_vulnerability_reporting: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of private vulnerability reporting",
+    )
+    enforcement: Missing[Literal["enforced", "unenforced"]] = Field(
+        default=UNSET, description="The enforcement status for a security configuration"
     )
 
 
-class OrgsOrgActionsHostedRunnersPostBodyPropImage(GitHubModel):
-    """OrgsOrgActionsHostedRunnersPostBodyPropImage
+class EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosu
+    bmitActionOptions
 
-    The image of runner. To list all available images, use `GET /actions/hosted-
-    runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`.
+    Feature options for Automatic dependency submission
     """
 
-    id: Missing[str] = Field(
-        default=UNSET, description="The unique identifier of the runner image."
-    )
-    source: Missing[Literal["github", "partner", "custom"]] = Field(
-        default=UNSET, description="The source of the runner image."
-    )
-    version: Missing[Union[str, None]] = Field(
+    labeled_runners: Missing[bool] = Field(
         default=UNSET,
-        description="The version of the runner image to deploy. This is relevant only for runners using custom images.",
+        description="Whether to use runners labeled with 'dependency-submission' or standard GitHub runners.",
     )
 
 
-model_rebuild(OrgsOrgActionsHostedRunnersPostBody)
-model_rebuild(OrgsOrgActionsHostedRunnersPostBodyPropImage)
+model_rebuild(EnterprisesEnterpriseCodeSecurityConfigurationsPostBody)
+model_rebuild(
+    EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions
+)
 
 __all__ = (
-    "OrgsOrgActionsHostedRunnersPostBody",
-    "OrgsOrgActionsHostedRunnersPostBodyPropImage",
+    "EnterprisesEnterpriseCodeSecurityConfigurationsPostBody",
+    "EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions",
 )

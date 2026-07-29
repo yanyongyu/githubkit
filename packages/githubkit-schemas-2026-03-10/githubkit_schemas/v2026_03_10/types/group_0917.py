@@ -13,44 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0522 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0523 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0524 import (
+from .group_0266 import RepositoryAdvisoryType, RepositoryAdvisoryTypeForResponse
+from .group_0534 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0535 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0536 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0525 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0565 import (
-    SecretScanningAlertWebhookType,
-    SecretScanningAlertWebhookTypeForResponse,
-)
+from .group_0537 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookSecretScanningAlertValidatedType(TypedDict):
-    """secret_scanning_alert validated event"""
+class WebhookRepositoryAdvisoryPublishedType(TypedDict):
+    """Repository advisory published event"""
 
-    action: Literal["validated"]
-    alert: SecretScanningAlertWebhookType
+    action: Literal["published"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
+    repository_advisory: RepositoryAdvisoryType
     sender: NotRequired[SimpleUserType]
 
 
-class WebhookSecretScanningAlertValidatedTypeForResponse(TypedDict):
-    """secret_scanning_alert validated event"""
+class WebhookRepositoryAdvisoryPublishedTypeForResponse(TypedDict):
+    """Repository advisory published event"""
 
-    action: Literal["validated"]
-    alert: SecretScanningAlertWebhookTypeForResponse
+    action: Literal["published"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
+    repository_advisory: RepositoryAdvisoryTypeForResponse
     sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookSecretScanningAlertValidatedType",
-    "WebhookSecretScanningAlertValidatedTypeForResponse",
+    "WebhookRepositoryAdvisoryPublishedType",
+    "WebhookRepositoryAdvisoryPublishedTypeForResponse",
 )

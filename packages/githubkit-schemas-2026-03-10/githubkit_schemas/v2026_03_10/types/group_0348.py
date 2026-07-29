@@ -9,78 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0092 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
+class CodeownersErrorsType(TypedDict):
+    """CODEOWNERS errors
 
-class CombinedCommitStatusType(TypedDict):
-    """Combined Commit Status
-
-    Combined Commit Status
+    A list of errors found in a repo's CODEOWNERS file
     """
 
-    state: str
-    statuses: list[SimpleCommitStatusType]
-    sha: str
-    total_count: int
-    repository: MinimalRepositoryType
-    commit_url: str
-    url: str
+    errors: list[CodeownersErrorsPropErrorsItemsType]
 
 
-class CombinedCommitStatusTypeForResponse(TypedDict):
-    """Combined Commit Status
+class CodeownersErrorsTypeForResponse(TypedDict):
+    """CODEOWNERS errors
 
-    Combined Commit Status
+    A list of errors found in a repo's CODEOWNERS file
     """
 
-    state: str
-    statuses: list[SimpleCommitStatusTypeForResponse]
-    sha: str
-    total_count: int
-    repository: MinimalRepositoryTypeForResponse
-    commit_url: str
-    url: str
+    errors: list[CodeownersErrorsPropErrorsItemsTypeForResponse]
 
 
-class SimpleCommitStatusType(TypedDict):
-    """Simple Commit Status"""
+class CodeownersErrorsPropErrorsItemsType(TypedDict):
+    """CodeownersErrorsPropErrorsItems"""
 
-    description: Union[str, None]
-    id: int
-    node_id: str
-    state: str
-    context: str
-    target_url: Union[str, None]
-    required: NotRequired[Union[bool, None]]
-    avatar_url: Union[str, None]
-    url: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+    line: int
+    column: int
+    source: NotRequired[str]
+    kind: str
+    suggestion: NotRequired[Union[str, None]]
+    message: str
+    path: str
 
 
-class SimpleCommitStatusTypeForResponse(TypedDict):
-    """Simple Commit Status"""
+class CodeownersErrorsPropErrorsItemsTypeForResponse(TypedDict):
+    """CodeownersErrorsPropErrorsItems"""
 
-    description: Union[str, None]
-    id: int
-    node_id: str
-    state: str
-    context: str
-    target_url: Union[str, None]
-    required: NotRequired[Union[bool, None]]
-    avatar_url: Union[str, None]
-    url: str
-    created_at: str
-    updated_at: str
+    line: int
+    column: int
+    source: NotRequired[str]
+    kind: str
+    suggestion: NotRequired[Union[str, None]]
+    message: str
+    path: str
 
 
 __all__ = (
-    "CombinedCommitStatusType",
-    "CombinedCommitStatusTypeForResponse",
-    "SimpleCommitStatusType",
-    "SimpleCommitStatusTypeForResponse",
+    "CodeownersErrorsPropErrorsItemsType",
+    "CodeownersErrorsPropErrorsItemsTypeForResponse",
+    "CodeownersErrorsType",
+    "CodeownersErrorsTypeForResponse",
 )

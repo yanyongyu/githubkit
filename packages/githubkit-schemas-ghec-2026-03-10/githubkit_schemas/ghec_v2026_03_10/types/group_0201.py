@@ -9,108 +9,99 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class BillingPremiumRequestUsageReportGheType(TypedDict):
-    """BillingPremiumRequestUsageReportGhe"""
+class GetAllCostCentersType(TypedDict):
+    """GetAllCostCenters"""
 
-    time_period: BillingPremiumRequestUsageReportGhePropTimePeriodType
-    enterprise: str
-    user: NotRequired[str]
-    organization: NotRequired[str]
-    product: NotRequired[str]
-    model: NotRequired[str]
-    cost_center: NotRequired[BillingPremiumRequestUsageReportGhePropCostCenterType]
-    usage_items: list[BillingPremiumRequestUsageReportGhePropUsageItemsItemsType]
+    cost_centers: NotRequired[list[GetAllCostCentersPropCostCentersItemsType]]
 
 
-class BillingPremiumRequestUsageReportGheTypeForResponse(TypedDict):
-    """BillingPremiumRequestUsageReportGhe"""
+class GetAllCostCentersTypeForResponse(TypedDict):
+    """GetAllCostCenters"""
 
-    time_period: BillingPremiumRequestUsageReportGhePropTimePeriodTypeForResponse
-    enterprise: str
-    user: NotRequired[str]
-    organization: NotRequired[str]
-    product: NotRequired[str]
-    model: NotRequired[str]
-    cost_center: NotRequired[
-        BillingPremiumRequestUsageReportGhePropCostCenterTypeForResponse
-    ]
-    usage_items: list[
-        BillingPremiumRequestUsageReportGhePropUsageItemsItemsTypeForResponse
+    cost_centers: NotRequired[
+        list[GetAllCostCentersPropCostCentersItemsTypeForResponse]
     ]
 
 
-class BillingPremiumRequestUsageReportGhePropTimePeriodType(TypedDict):
-    """BillingPremiumRequestUsageReportGhePropTimePeriod"""
-
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
-
-
-class BillingPremiumRequestUsageReportGhePropTimePeriodTypeForResponse(TypedDict):
-    """BillingPremiumRequestUsageReportGhePropTimePeriod"""
-
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
-
-
-class BillingPremiumRequestUsageReportGhePropCostCenterType(TypedDict):
-    """BillingPremiumRequestUsageReportGhePropCostCenter"""
+class GetAllCostCentersPropCostCentersItemsType(TypedDict):
+    """GetAllCostCentersPropCostCentersItems"""
 
     id: str
     name: str
+    state: NotRequired[Literal["active", "deleted"]]
+    azure_subscription: NotRequired[Union[str, None]]
+    ai_credit_pool_enabled: NotRequired[bool]
+    ai_credit_pool_state: NotRequired[
+        GetAllCostCentersPropCostCentersItemsPropAiCreditPoolStateType
+    ]
+    resources: list[GetAllCostCentersPropCostCentersItemsPropResourcesItemsType]
 
 
-class BillingPremiumRequestUsageReportGhePropCostCenterTypeForResponse(TypedDict):
-    """BillingPremiumRequestUsageReportGhePropCostCenter"""
+class GetAllCostCentersPropCostCentersItemsTypeForResponse(TypedDict):
+    """GetAllCostCentersPropCostCentersItems"""
 
     id: str
     name: str
+    state: NotRequired[Literal["active", "deleted"]]
+    azure_subscription: NotRequired[Union[str, None]]
+    ai_credit_pool_enabled: NotRequired[bool]
+    ai_credit_pool_state: NotRequired[
+        GetAllCostCentersPropCostCentersItemsPropAiCreditPoolStateTypeForResponse
+    ]
+    resources: list[
+        GetAllCostCentersPropCostCentersItemsPropResourcesItemsTypeForResponse
+    ]
 
 
-class BillingPremiumRequestUsageReportGhePropUsageItemsItemsType(TypedDict):
-    """BillingPremiumRequestUsageReportGhePropUsageItemsItems"""
+class GetAllCostCentersPropCostCentersItemsPropAiCreditPoolStateType(TypedDict):
+    """GetAllCostCentersPropCostCentersItemsPropAiCreditPoolState
 
-    product: str
-    sku: str
-    model: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
+    Read-only cap-budget projection for the cost center. Only present when the cost
+    center draws from the AI credit pool.
+    """
+
+    target_amount: NotRequired[Union[float, None]]
+    current_amount: NotRequired[Union[float, None]]
 
 
-class BillingPremiumRequestUsageReportGhePropUsageItemsItemsTypeForResponse(TypedDict):
-    """BillingPremiumRequestUsageReportGhePropUsageItemsItems"""
+class GetAllCostCentersPropCostCentersItemsPropAiCreditPoolStateTypeForResponse(
+    TypedDict
+):
+    """GetAllCostCentersPropCostCentersItemsPropAiCreditPoolState
 
-    product: str
-    sku: str
-    model: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
+    Read-only cap-budget projection for the cost center. Only present when the cost
+    center draws from the AI credit pool.
+    """
+
+    target_amount: NotRequired[Union[float, None]]
+    current_amount: NotRequired[Union[float, None]]
+
+
+class GetAllCostCentersPropCostCentersItemsPropResourcesItemsType(TypedDict):
+    """GetAllCostCentersPropCostCentersItemsPropResourcesItems"""
+
+    type: str
+    name: str
+
+
+class GetAllCostCentersPropCostCentersItemsPropResourcesItemsTypeForResponse(TypedDict):
+    """GetAllCostCentersPropCostCentersItemsPropResourcesItems"""
+
+    type: str
+    name: str
 
 
 __all__ = (
-    "BillingPremiumRequestUsageReportGhePropCostCenterType",
-    "BillingPremiumRequestUsageReportGhePropCostCenterTypeForResponse",
-    "BillingPremiumRequestUsageReportGhePropTimePeriodType",
-    "BillingPremiumRequestUsageReportGhePropTimePeriodTypeForResponse",
-    "BillingPremiumRequestUsageReportGhePropUsageItemsItemsType",
-    "BillingPremiumRequestUsageReportGhePropUsageItemsItemsTypeForResponse",
-    "BillingPremiumRequestUsageReportGheType",
-    "BillingPremiumRequestUsageReportGheTypeForResponse",
+    "GetAllCostCentersPropCostCentersItemsPropAiCreditPoolStateType",
+    "GetAllCostCentersPropCostCentersItemsPropAiCreditPoolStateTypeForResponse",
+    "GetAllCostCentersPropCostCentersItemsPropResourcesItemsType",
+    "GetAllCostCentersPropCostCentersItemsPropResourcesItemsTypeForResponse",
+    "GetAllCostCentersPropCostCentersItemsType",
+    "GetAllCostCentersPropCostCentersItemsTypeForResponse",
+    "GetAllCostCentersType",
+    "GetAllCostCentersTypeForResponse",
 )

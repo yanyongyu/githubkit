@@ -10,69 +10,143 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoActionsWorkflowsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsWorkflowsGetResponse200"""
+class OrgsOrgPrivateRegistriesGetResponse200Type(TypedDict):
+    """OrgsOrgPrivateRegistriesGetResponse200"""
 
     total_count: int
-    workflows: list[WorkflowType]
+    configurations: list[OrgPrivateRegistryConfigurationType]
 
 
-class ReposOwnerRepoActionsWorkflowsGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsWorkflowsGetResponse200"""
+class OrgsOrgPrivateRegistriesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgPrivateRegistriesGetResponse200"""
 
     total_count: int
-    workflows: list[WorkflowTypeForResponse]
+    configurations: list[OrgPrivateRegistryConfigurationTypeForResponse]
 
 
-class WorkflowType(TypedDict):
-    """Workflow
+class OrgPrivateRegistryConfigurationType(TypedDict):
+    """Organization private registry
 
-    A GitHub Actions workflow
+    Private registry configuration for an organization
     """
 
-    id: int
-    node_id: str
     name: str
-    path: str
-    state: Literal[
-        "active", "deleted", "disabled_fork", "disabled_inactivity", "disabled_manually"
+    registry_type: Literal[
+        "maven_repository",
+        "nuget_feed",
+        "goproxy_server",
+        "npm_registry",
+        "rubygems_server",
+        "cargo_registry",
+        "composer_repository",
+        "docker_registry",
+        "git_source",
+        "helm_registry",
+        "hex_organization",
+        "hex_repository",
+        "pub_repository",
+        "python_index",
+        "terraform_registry",
     ]
+    auth_type: NotRequired[
+        Literal[
+            "token",
+            "username_password",
+            "oidc_azure",
+            "oidc_aws",
+            "oidc_jfrog",
+            "oidc_cloudsmith",
+            "oidc_gcp",
+        ]
+    ]
+    url: NotRequired[str]
+    username: NotRequired[Union[str, None]]
+    replaces_base: NotRequired[bool]
+    visibility: Literal["all", "private", "selected"]
+    tenant_id: NotRequired[str]
+    client_id: NotRequired[str]
+    aws_region: NotRequired[str]
+    account_id: NotRequired[str]
+    role_name: NotRequired[str]
+    domain: NotRequired[str]
+    domain_owner: NotRequired[str]
+    jfrog_oidc_provider_name: NotRequired[str]
+    audience: NotRequired[str]
+    identity_mapping_name: NotRequired[str]
+    namespace: NotRequired[str]
+    service_slug: NotRequired[str]
+    api_host: NotRequired[str]
+    workload_identity_provider: NotRequired[str]
+    service_account: NotRequired[str]
     created_at: _dt.datetime
     updated_at: _dt.datetime
-    url: str
-    html_url: str
-    badge_url: str
-    deleted_at: NotRequired[_dt.datetime]
 
 
-class WorkflowTypeForResponse(TypedDict):
-    """Workflow
+class OrgPrivateRegistryConfigurationTypeForResponse(TypedDict):
+    """Organization private registry
 
-    A GitHub Actions workflow
+    Private registry configuration for an organization
     """
 
-    id: int
-    node_id: str
     name: str
-    path: str
-    state: Literal[
-        "active", "deleted", "disabled_fork", "disabled_inactivity", "disabled_manually"
+    registry_type: Literal[
+        "maven_repository",
+        "nuget_feed",
+        "goproxy_server",
+        "npm_registry",
+        "rubygems_server",
+        "cargo_registry",
+        "composer_repository",
+        "docker_registry",
+        "git_source",
+        "helm_registry",
+        "hex_organization",
+        "hex_repository",
+        "pub_repository",
+        "python_index",
+        "terraform_registry",
     ]
+    auth_type: NotRequired[
+        Literal[
+            "token",
+            "username_password",
+            "oidc_azure",
+            "oidc_aws",
+            "oidc_jfrog",
+            "oidc_cloudsmith",
+            "oidc_gcp",
+        ]
+    ]
+    url: NotRequired[str]
+    username: NotRequired[Union[str, None]]
+    replaces_base: NotRequired[bool]
+    visibility: Literal["all", "private", "selected"]
+    tenant_id: NotRequired[str]
+    client_id: NotRequired[str]
+    aws_region: NotRequired[str]
+    account_id: NotRequired[str]
+    role_name: NotRequired[str]
+    domain: NotRequired[str]
+    domain_owner: NotRequired[str]
+    jfrog_oidc_provider_name: NotRequired[str]
+    audience: NotRequired[str]
+    identity_mapping_name: NotRequired[str]
+    namespace: NotRequired[str]
+    service_slug: NotRequired[str]
+    api_host: NotRequired[str]
+    workload_identity_provider: NotRequired[str]
+    service_account: NotRequired[str]
     created_at: str
     updated_at: str
-    url: str
-    html_url: str
-    badge_url: str
-    deleted_at: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsWorkflowsGetResponse200Type",
-    "ReposOwnerRepoActionsWorkflowsGetResponse200TypeForResponse",
-    "WorkflowType",
-    "WorkflowTypeForResponse",
+    "OrgPrivateRegistryConfigurationType",
+    "OrgPrivateRegistryConfigurationTypeForResponse",
+    "OrgsOrgPrivateRegistriesGetResponse200Type",
+    "OrgsOrgPrivateRegistriesGetResponse200TypeForResponse",
 )

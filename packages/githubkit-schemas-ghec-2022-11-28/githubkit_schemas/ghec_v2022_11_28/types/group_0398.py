@@ -9,29 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0397 import (
-    CodeScanningVariantAnalysisRepositoryType,
-    CodeScanningVariantAnalysisRepositoryTypeForResponse,
-)
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class CodeScanningVariantAnalysisSkippedRepoGroupType(TypedDict):
-    """CodeScanningVariantAnalysisSkippedRepoGroup"""
+class CodeQualitySetupUpdateAnyof2Type(TypedDict):
+    """CodeQualitySetupUpdateAnyof2"""
 
-    repository_count: int
-    repositories: list[CodeScanningVariantAnalysisRepositoryType]
+    state: NotRequired[Literal["configured", "not-configured"]]
+    runner_type: NotRequired[Literal["standard", "labeled"]]
+    runner_label: Union[str, None]
+    languages: NotRequired[
+        list[
+            Literal[
+                "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
+            ]
+        ]
+    ]
+    ai_findings_option: NotRequired[Literal["disabled", "on_push"]]
 
 
-class CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse(TypedDict):
-    """CodeScanningVariantAnalysisSkippedRepoGroup"""
+class CodeQualitySetupUpdateAnyof2TypeForResponse(TypedDict):
+    """CodeQualitySetupUpdateAnyof2"""
 
-    repository_count: int
-    repositories: list[CodeScanningVariantAnalysisRepositoryTypeForResponse]
+    state: NotRequired[Literal["configured", "not-configured"]]
+    runner_type: NotRequired[Literal["standard", "labeled"]]
+    runner_label: Union[str, None]
+    languages: NotRequired[
+        list[
+            Literal[
+                "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
+            ]
+        ]
+    ]
+    ai_findings_option: NotRequired[Literal["disabled", "on_push"]]
 
 
 __all__ = (
-    "CodeScanningVariantAnalysisSkippedRepoGroupType",
-    "CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse",
+    "CodeQualitySetupUpdateAnyof2Type",
+    "CodeQualitySetupUpdateAnyof2TypeForResponse",
 )

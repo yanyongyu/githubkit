@@ -9,26 +9,77 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0018 import InstallationType, InstallationTypeForResponse
-
-
-class OrgsOrgInstallationsGetResponse200Type(TypedDict):
-    """OrgsOrgInstallationsGetResponse200"""
-
-    total_count: int
-    installations: list[InstallationType]
+from typing import Any, TypeAlias
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgInstallationsGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgInstallationsGetResponse200"""
+class OrgsOrgAttestationsBulkListPostResponse200Type(TypedDict):
+    """OrgsOrgAttestationsBulkListPostResponse200"""
 
-    total_count: int
-    installations: list[InstallationTypeForResponse]
+    attestations_subject_digests: NotRequired[
+        OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType
+    ]
+    page_info: NotRequired[OrgsOrgAttestationsBulkListPostResponse200PropPageInfoType]
+
+
+class OrgsOrgAttestationsBulkListPostResponse200TypeForResponse(TypedDict):
+    """OrgsOrgAttestationsBulkListPostResponse200"""
+
+    attestations_subject_digests: NotRequired[
+        OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsTypeForResponse
+    ]
+    page_info: NotRequired[
+        OrgsOrgAttestationsBulkListPostResponse200PropPageInfoTypeForResponse
+    ]
+
+
+OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
+
+Mapping of subject digest to bundles.
+"""
+
+
+OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
+
+Mapping of subject digest to bundles.
+"""
+
+
+class OrgsOrgAttestationsBulkListPostResponse200PropPageInfoType(TypedDict):
+    """OrgsOrgAttestationsBulkListPostResponse200PropPageInfo
+
+    Information about the current page.
+    """
+
+    has_next: NotRequired[bool]
+    has_previous: NotRequired[bool]
+    next_: NotRequired[str]
+    previous: NotRequired[str]
+
+
+class OrgsOrgAttestationsBulkListPostResponse200PropPageInfoTypeForResponse(TypedDict):
+    """OrgsOrgAttestationsBulkListPostResponse200PropPageInfo
+
+    Information about the current page.
+    """
+
+    has_next: NotRequired[bool]
+    has_previous: NotRequired[bool]
+    next_: NotRequired[str]
+    previous: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgInstallationsGetResponse200Type",
-    "OrgsOrgInstallationsGetResponse200TypeForResponse",
+    "OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType",
+    "OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsTypeForResponse",
+    "OrgsOrgAttestationsBulkListPostResponse200PropPageInfoType",
+    "OrgsOrgAttestationsBulkListPostResponse200PropPageInfoTypeForResponse",
+    "OrgsOrgAttestationsBulkListPostResponse200Type",
+    "OrgsOrgAttestationsBulkListPostResponse200TypeForResponse",
 )

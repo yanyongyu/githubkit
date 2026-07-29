@@ -9,24 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoAgentsVariablesPostBodyType(TypedDict):
-    """ReposOwnerRepoAgentsVariablesPostBody"""
+class OrgsOrgSettingsImmutableReleasesPutBodyType(TypedDict):
+    """OrgsOrgSettingsImmutableReleasesPutBody"""
 
-    name: str
-    value: str
+    enforced_repositories: Literal["all", "none", "selected"]
+    selected_repository_ids: NotRequired[list[int]]
 
 
-class ReposOwnerRepoAgentsVariablesPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoAgentsVariablesPostBody"""
+class OrgsOrgSettingsImmutableReleasesPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgSettingsImmutableReleasesPutBody"""
 
-    name: str
-    value: str
+    enforced_repositories: Literal["all", "none", "selected"]
+    selected_repository_ids: NotRequired[list[int]]
 
 
 __all__ = (
-    "ReposOwnerRepoAgentsVariablesPostBodyType",
-    "ReposOwnerRepoAgentsVariablesPostBodyTypeForResponse",
+    "OrgsOrgSettingsImmutableReleasesPutBodyType",
+    "OrgsOrgSettingsImmutableReleasesPutBodyTypeForResponse",
 )

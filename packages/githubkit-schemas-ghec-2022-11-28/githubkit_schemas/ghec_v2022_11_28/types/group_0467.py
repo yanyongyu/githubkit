@@ -9,64 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0011 import WebhookConfigType, WebhookConfigTypeForResponse
+from .group_0466 import HookResponseType, HookResponseTypeForResponse
 
 
-class DemilestonedIssueEventType(TypedDict):
-    """Demilestoned Issue Event
+class HookType(TypedDict):
+    """Webhook
 
-    Demilestoned Issue Event
+    Webhooks for repositories.
     """
 
+    type: str
     id: int
-    node_id: str
+    name: str
+    active: bool
+    events: list[str]
+    config: WebhookConfigType
+    updated_at: _dt.datetime
+    created_at: _dt.datetime
     url: str
-    actor: SimpleUserType
-    event: Literal["demilestoned"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    milestone: DemilestonedIssueEventPropMilestoneType
+    test_url: str
+    ping_url: str
+    deliveries_url: NotRequired[str]
+    last_response: HookResponseType
 
 
-class DemilestonedIssueEventTypeForResponse(TypedDict):
-    """Demilestoned Issue Event
+class HookTypeForResponse(TypedDict):
+    """Webhook
 
-    Demilestoned Issue Event
+    Webhooks for repositories.
     """
 
+    type: str
     id: int
-    node_id: str
-    url: str
-    actor: SimpleUserTypeForResponse
-    event: Literal["demilestoned"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
+    name: str
+    active: bool
+    events: list[str]
+    config: WebhookConfigTypeForResponse
+    updated_at: str
     created_at: str
-    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    milestone: DemilestonedIssueEventPropMilestoneTypeForResponse
-
-
-class DemilestonedIssueEventPropMilestoneType(TypedDict):
-    """DemilestonedIssueEventPropMilestone"""
-
-    title: str
-
-
-class DemilestonedIssueEventPropMilestoneTypeForResponse(TypedDict):
-    """DemilestonedIssueEventPropMilestone"""
-
-    title: str
+    url: str
+    test_url: str
+    ping_url: str
+    deliveries_url: NotRequired[str]
+    last_response: HookResponseTypeForResponse
 
 
 __all__ = (
-    "DemilestonedIssueEventPropMilestoneType",
-    "DemilestonedIssueEventPropMilestoneTypeForResponse",
-    "DemilestonedIssueEventType",
-    "DemilestonedIssueEventTypeForResponse",
+    "HookType",
+    "HookTypeForResponse",
 )

@@ -9,30 +9,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200Type(TypedDict):
-    """OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200
+class OrgsOrgArtifactsMetadataStorageRecordPostResponse200Type(TypedDict):
+    """OrgsOrgArtifactsMetadataStorageRecordPostResponse200"""
 
-    The total number of seats set to "pending cancellation" for members of the
-    specified team(s).
-    """
+    total_count: int
+    storage_records: NotRequired[
+        list[
+            OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsType
+        ]
+    ]
 
-    seats_cancelled: int
+
+class OrgsOrgArtifactsMetadataStorageRecordPostResponse200TypeForResponse(TypedDict):
+    """OrgsOrgArtifactsMetadataStorageRecordPostResponse200"""
+
+    total_count: int
+    storage_records: NotRequired[
+        list[
+            OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsTypeForResponse
+        ]
+    ]
 
 
-class OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200TypeForResponse(TypedDict):
-    """OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200
+class OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsType(
+    TypedDict
+):
+    """OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems"""
 
-    The total number of seats set to "pending cancellation" for members of the
-    specified team(s).
-    """
+    id: NotRequired[int]
+    name: NotRequired[str]
+    digest: NotRequired[str]
+    artifact_url: NotRequired[Union[str, None]]
+    registry_url: NotRequired[str]
+    repository: NotRequired[Union[str, None]]
+    status: NotRequired[str]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
 
-    seats_cancelled: int
+
+class OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems"""
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    digest: NotRequired[str]
+    artifact_url: NotRequired[Union[str, None]]
+    registry_url: NotRequired[str]
+    repository: NotRequired[Union[str, None]]
+    status: NotRequired[str]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200Type",
-    "OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200TypeForResponse",
+    "OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsType",
+    "OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsTypeForResponse",
+    "OrgsOrgArtifactsMetadataStorageRecordPostResponse200Type",
+    "OrgsOrgArtifactsMetadataStorageRecordPostResponse200TypeForResponse",
 )

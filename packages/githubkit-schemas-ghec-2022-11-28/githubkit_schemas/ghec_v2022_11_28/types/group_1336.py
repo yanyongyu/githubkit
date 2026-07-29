@@ -9,24 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422Type(TypedDict):
-    """OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422"""
+class OrgsOrgCampaignsCampaignNumberPatchBodyType(TypedDict):
+    """OrgsOrgCampaignsCampaignNumberPatchBody"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    name: NotRequired[str]
+    description: NotRequired[str]
+    managers: NotRequired[list[str]]
+    team_managers: NotRequired[list[str]]
+    ends_at: NotRequired[_dt.datetime]
+    contact_link: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["open", "closed"]]
 
 
-class OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422TypeForResponse(TypedDict):
-    """OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422"""
+class OrgsOrgCampaignsCampaignNumberPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgCampaignsCampaignNumberPatchBody"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    name: NotRequired[str]
+    description: NotRequired[str]
+    managers: NotRequired[list[str]]
+    team_managers: NotRequired[list[str]]
+    ends_at: NotRequired[str]
+    contact_link: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["open", "closed"]]
 
 
 __all__ = (
-    "OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422Type",
-    "OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422TypeForResponse",
+    "OrgsOrgCampaignsCampaignNumberPatchBodyType",
+    "OrgsOrgCampaignsCampaignNumberPatchBodyTypeForResponse",
 )

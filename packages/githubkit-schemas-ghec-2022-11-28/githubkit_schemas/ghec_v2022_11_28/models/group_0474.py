@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -17,45 +17,48 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
+from .group_0076 import SimpleRepository
 
 
-class MovedColumnInProjectIssueEvent(GitHubModel):
-    """Moved Column in Project Issue Event
+class IssueReference(GitHubModel):
+    """Issue Reference
 
-    Moved Column in Project Issue Event
+    A minimal reference to an issue linked from a timeline event (e.g. sub-issue,
+    parent-issue, or dependency events).
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["moved_columns_in_project"] = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: str = Field()
-    performed_via_github_app: Union[None, Integration, None] = Field()
-    project_card: Missing[MovedColumnInProjectIssueEventPropProjectCard] = Field(
-        default=UNSET
+    number: int = Field(description="The number of the referenced issue.")
+    title: str = Field(description="The title of the referenced issue.")
+    state: str = Field(description="The state of the referenced issue.")
+    state_reason: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The reason for the referenced issue's state."
+    )
+    repository: SimpleRepository = Field(
+        title="Simple Repository", description="A GitHub repository."
+    )
+    issue_type: Union[IssueReferencePropIssueType, None] = Field(
+        title="Issue Type", description="The type of the referenced issue."
     )
 
 
-class MovedColumnInProjectIssueEventPropProjectCard(GitHubModel):
-    """MovedColumnInProjectIssueEventPropProjectCard"""
+class IssueReferencePropIssueType(GitHubModel):
+    """Issue Type
 
-    id: int = Field()
-    url: str = Field()
-    project_id: int = Field()
-    project_url: str = Field()
-    column_name: str = Field()
-    previous_column_name: Missing[str] = Field(default=UNSET)
+    The type of the referenced issue.
+    """
+
+    id: int = Field(description="The unique identifier of the issue type.")
+    node_id: str = Field(description="The node identifier of the issue type.")
+    name: str = Field(description="The name of the issue type.")
+    color: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The color of the issue type."
+    )
 
 
-model_rebuild(MovedColumnInProjectIssueEvent)
-model_rebuild(MovedColumnInProjectIssueEventPropProjectCard)
+model_rebuild(IssueReference)
+model_rebuild(IssueReferencePropIssueType)
 
 __all__ = (
-    "MovedColumnInProjectIssueEvent",
-    "MovedColumnInProjectIssueEventPropProjectCard",
+    "IssueReference",
+    "IssueReferencePropIssueType",
 )

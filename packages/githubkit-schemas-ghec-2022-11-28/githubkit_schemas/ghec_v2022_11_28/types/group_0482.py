@@ -9,51 +9,64 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0460 import IssueReferenceType, IssueReferenceTypeForResponse
 
 
-class ParentIssueAddedIssueEventType(TypedDict):
-    """Parent-issue Added Issue Event
+class DemilestonedIssueEventType(TypedDict):
+    """Demilestoned Issue Event
 
-    Parent-issue Added Issue Event
+    Demilestoned Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: str
+    event: Literal["demilestoned"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    parent_issue: Union[None, IssueReferenceType, None]
+    milestone: DemilestonedIssueEventPropMilestoneType
 
 
-class ParentIssueAddedIssueEventTypeForResponse(TypedDict):
-    """Parent-issue Added Issue Event
+class DemilestonedIssueEventTypeForResponse(TypedDict):
+    """Demilestoned Issue Event
 
-    Parent-issue Added Issue Event
+    Demilestoned Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserTypeForResponse
-    event: str
+    event: Literal["demilestoned"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    parent_issue: Union[None, IssueReferenceTypeForResponse, None]
+    milestone: DemilestonedIssueEventPropMilestoneTypeForResponse
+
+
+class DemilestonedIssueEventPropMilestoneType(TypedDict):
+    """DemilestonedIssueEventPropMilestone"""
+
+    title: str
+
+
+class DemilestonedIssueEventPropMilestoneTypeForResponse(TypedDict):
+    """DemilestonedIssueEventPropMilestone"""
+
+    title: str
 
 
 __all__ = (
-    "ParentIssueAddedIssueEventType",
-    "ParentIssueAddedIssueEventTypeForResponse",
+    "DemilestonedIssueEventPropMilestoneType",
+    "DemilestonedIssueEventPropMilestoneTypeForResponse",
+    "DemilestonedIssueEventType",
+    "DemilestonedIssueEventTypeForResponse",
 )

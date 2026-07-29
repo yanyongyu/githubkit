@@ -9,37 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class UsersUsernameCopilotSpacesSpaceNumberResourcesPostBody(GitHubModel):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesPostBody"""
+class ReposOwnerRepoReleasesGenerateNotesPostBody(GitHubModel):
+    """ReposOwnerRepoReleasesGenerateNotesPostBody"""
 
-    resource_type: Literal[
-        "repository", "github_file", "free_text", "github_issue", "github_pull_request"
-    ] = Field(description="The type of resource to create.")
-    metadata: UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata = (
-        Field(description="Resource-specific metadata.")
+    tag_name: str = Field(
+        description="The tag name for the release. This can be an existing tag or a new one."
+    )
+    target_commitish: Missing[str] = Field(
+        default=UNSET,
+        description="Specifies the commitish value that will be the target for the release's tag. Required if the supplied tag_name does not reference an existing tag. Ignored if the tag_name already exists.",
+    )
+    previous_tag_name: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the previous tag to use as the starting point for the release notes. Use to manually specify the range for the set of changes considered as part this release.",
+    )
+    configuration_file_path: Missing[str] = Field(
+        default=UNSET,
+        description="Specifies a path to a file in the repository containing configuration settings used for generating the release notes. If unspecified, the configuration file located in the repository at '.github/release.yml' or '.github/release.yaml' will be used. If that is not present, the default configuration will be used.",
     )
 
 
-class UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata(
-    ExtraGitHubModel
-):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata
+model_rebuild(ReposOwnerRepoReleasesGenerateNotesPostBody)
 
-    Resource-specific metadata.
-    """
-
-
-model_rebuild(UsersUsernameCopilotSpacesSpaceNumberResourcesPostBody)
-model_rebuild(UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata)
-
-__all__ = (
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesPostBody",
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata",
-)
+__all__ = ("ReposOwnerRepoReleasesGenerateNotesPostBody",)

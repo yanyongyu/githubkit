@@ -12,73 +12,107 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoContentsPathDeleteBodyType(TypedDict):
-    """ReposOwnerRepoContentsPathDeleteBody"""
+class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody"""
 
-    message: str
-    sha: str
-    branch: NotRequired[str]
-    committer: NotRequired[ReposOwnerRepoContentsPathDeleteBodyPropCommitterType]
-    author: NotRequired[ReposOwnerRepoContentsPathDeleteBodyPropAuthorType]
-
-
-class ReposOwnerRepoContentsPathDeleteBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoContentsPathDeleteBody"""
-
-    message: str
-    sha: str
-    branch: NotRequired[str]
-    committer: NotRequired[
-        ReposOwnerRepoContentsPathDeleteBodyPropCommitterTypeForResponse
+    dismissal_restrictions: NotRequired[
+        ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsType
     ]
-    author: NotRequired[ReposOwnerRepoContentsPathDeleteBodyPropAuthorTypeForResponse]
+    dismiss_stale_reviews: NotRequired[bool]
+    require_code_owner_reviews: NotRequired[bool]
+    required_approving_review_count: NotRequired[int]
+    require_last_push_approval: NotRequired[bool]
+    bypass_pull_request_allowances: NotRequired[
+        ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesType
+    ]
 
 
-class ReposOwnerRepoContentsPathDeleteBodyPropCommitterType(TypedDict):
-    """ReposOwnerRepoContentsPathDeleteBodyPropCommitter
+class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody"""
 
-    object containing information about the committer.
+    dismissal_restrictions: NotRequired[
+        ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsTypeForResponse
+    ]
+    dismiss_stale_reviews: NotRequired[bool]
+    require_code_owner_reviews: NotRequired[bool]
+    required_approving_review_count: NotRequired[int]
+    require_last_push_approval: NotRequired[bool]
+    bypass_pull_request_allowances: NotRequired[
+        ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesTypeForResponse
+    ]
+
+
+class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsType(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDis
+    missalRestrictions
+
+    Specify which users, teams, and apps can dismiss pull request reviews. Pass an
+    empty `dismissal_restrictions` object to disable. User and team
+    `dismissal_restrictions` are only available for organization-owned repositories.
+    Omit this parameter for personal repositories.
     """
 
-    name: NotRequired[str]
-    email: NotRequired[str]
+    users: NotRequired[list[str]]
+    teams: NotRequired[list[str]]
+    apps: NotRequired[list[str]]
 
 
-class ReposOwnerRepoContentsPathDeleteBodyPropCommitterTypeForResponse(TypedDict):
-    """ReposOwnerRepoContentsPathDeleteBodyPropCommitter
+class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDis
+    missalRestrictions
 
-    object containing information about the committer.
+    Specify which users, teams, and apps can dismiss pull request reviews. Pass an
+    empty `dismissal_restrictions` object to disable. User and team
+    `dismissal_restrictions` are only available for organization-owned repositories.
+    Omit this parameter for personal repositories.
     """
 
-    name: NotRequired[str]
-    email: NotRequired[str]
+    users: NotRequired[list[str]]
+    teams: NotRequired[list[str]]
+    apps: NotRequired[list[str]]
 
 
-class ReposOwnerRepoContentsPathDeleteBodyPropAuthorType(TypedDict):
-    """ReposOwnerRepoContentsPathDeleteBodyPropAuthor
+class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesType(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropByp
+    assPullRequestAllowances
 
-    object containing information about the author.
+    Allow specific users, teams, or apps to bypass pull request requirements.
     """
 
-    name: NotRequired[str]
-    email: NotRequired[str]
+    users: NotRequired[list[str]]
+    teams: NotRequired[list[str]]
+    apps: NotRequired[list[str]]
 
 
-class ReposOwnerRepoContentsPathDeleteBodyPropAuthorTypeForResponse(TypedDict):
-    """ReposOwnerRepoContentsPathDeleteBodyPropAuthor
+class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropByp
+    assPullRequestAllowances
 
-    object containing information about the author.
+    Allow specific users, teams, or apps to bypass pull request requirements.
     """
 
-    name: NotRequired[str]
-    email: NotRequired[str]
+    users: NotRequired[list[str]]
+    teams: NotRequired[list[str]]
+    apps: NotRequired[list[str]]
 
 
 __all__ = (
-    "ReposOwnerRepoContentsPathDeleteBodyPropAuthorType",
-    "ReposOwnerRepoContentsPathDeleteBodyPropAuthorTypeForResponse",
-    "ReposOwnerRepoContentsPathDeleteBodyPropCommitterType",
-    "ReposOwnerRepoContentsPathDeleteBodyPropCommitterTypeForResponse",
-    "ReposOwnerRepoContentsPathDeleteBodyType",
-    "ReposOwnerRepoContentsPathDeleteBodyTypeForResponse",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesType",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesTypeForResponse",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsType",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsTypeForResponse",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyTypeForResponse",
 )

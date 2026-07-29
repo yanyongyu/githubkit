@@ -9,29 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0259 import (
-    OrganizationActionsSecretType,
-    OrganizationActionsSecretTypeForResponse,
-)
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsSecretsGetResponse200Type(TypedDict):
-    """OrgsOrgActionsSecretsGetResponse200"""
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200Type(
+    TypedDict
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteRespons
+    e200
+    """
 
-    total_count: int
-    secrets: list[OrganizationActionsSecretType]
+    message: NotRequired[str]
 
 
-class OrgsOrgActionsSecretsGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsSecretsGetResponse200"""
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteRespons
+    e200
+    """
 
-    total_count: int
-    secrets: list[OrganizationActionsSecretTypeForResponse]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgActionsSecretsGetResponse200Type",
-    "OrgsOrgActionsSecretsGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200Type",
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200TypeForResponse",
 )

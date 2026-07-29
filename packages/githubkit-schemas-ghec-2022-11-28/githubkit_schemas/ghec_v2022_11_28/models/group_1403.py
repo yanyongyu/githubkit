@@ -13,16 +13,15 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0351 import ActionsSecret
+
+class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0(GitHubModel):
+    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0"""
+
+    issue_field_id: int = Field(
+        description="The ID of the IssueField to create the field for."
+    )
 
 
-class ReposOwnerRepoAgentsSecretsGetResponse200(GitHubModel):
-    """ReposOwnerRepoAgentsSecretsGetResponse200"""
+model_rebuild(OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0)
 
-    total_count: int = Field()
-    secrets: list[ActionsSecret] = Field()
-
-
-model_rebuild(ReposOwnerRepoAgentsSecretsGetResponse200)
-
-__all__ = ("ReposOwnerRepoAgentsSecretsGetResponse200",)
+__all__ = ("OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0",)

@@ -9,40 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationActionsVariableType(TypedDict):
-    """Actions Variable for an Organization
+class OidcCustomSubType(TypedDict):
+    """Actions OIDC Subject customization
 
-    Organization variable for GitHub Actions.
+    Actions OIDC Subject customization
     """
 
-    name: str
-    value: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: NotRequired[str]
+    include_claim_keys: list[str]
+    use_immutable_subject: NotRequired[bool]
 
 
-class OrganizationActionsVariableTypeForResponse(TypedDict):
-    """Actions Variable for an Organization
+class OidcCustomSubTypeForResponse(TypedDict):
+    """Actions OIDC Subject customization
 
-    Organization variable for GitHub Actions.
+    Actions OIDC Subject customization
     """
 
-    name: str
-    value: str
-    created_at: str
-    updated_at: str
-    visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: NotRequired[str]
+    include_claim_keys: list[str]
+    use_immutable_subject: NotRequired[bool]
 
 
 __all__ = (
-    "OrganizationActionsVariableType",
-    "OrganizationActionsVariableTypeForResponse",
+    "OidcCustomSubType",
+    "OidcCustomSubTypeForResponse",
 )

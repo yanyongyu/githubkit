@@ -9,21 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class HookResponse(GitHubModel):
-    """Hook Response"""
+class ShortBlob(GitHubModel):
+    """Short Blob
 
-    code: Union[int, None] = Field()
-    status: Union[str, None] = Field()
-    message: Union[str, None] = Field()
+    Short Blob
+    """
+
+    url: str = Field()
+    sha: str = Field()
 
 
-model_rebuild(HookResponse)
+model_rebuild(ShortBlob)
 
-__all__ = ("HookResponse",)
+__all__ = ("ShortBlob",)

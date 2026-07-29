@@ -10,63 +10,59 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
-class CodeQualitySetupType(TypedDict):
-    """CodeQualitySetup
 
-    Configuration for code quality setup.
+class DeploymentSimpleType(TypedDict):
+    """Deployment
+
+    A deployment created as the result of an Actions check run from a workflow that
+    references an environment
     """
 
-    state: NotRequired[Literal["configured", "not-configured"]]
-    languages: NotRequired[
-        list[
-            Literal[
-                "csharp",
-                "go",
-                "java-kotlin",
-                "javascript-typescript",
-                "python",
-                "ruby",
-                "rust",
-            ]
-        ]
-    ]
-    runner_type: NotRequired[Union[None, Literal["standard", "labeled"]]]
-    runner_label: NotRequired[Union[str, None]]
-    updated_at: NotRequired[Union[_dt.datetime, None]]
-    schedule: NotRequired[Union[None, Literal["weekly"]]]
+    url: str
+    id: int
+    node_id: str
+    task: str
+    original_environment: NotRequired[str]
+    environment: str
+    description: Union[str, None]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    statuses_url: str
+    repository_url: str
+    transient_environment: NotRequired[bool]
+    production_environment: NotRequired[bool]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
 
 
-class CodeQualitySetupTypeForResponse(TypedDict):
-    """CodeQualitySetup
+class DeploymentSimpleTypeForResponse(TypedDict):
+    """Deployment
 
-    Configuration for code quality setup.
+    A deployment created as the result of an Actions check run from a workflow that
+    references an environment
     """
 
-    state: NotRequired[Literal["configured", "not-configured"]]
-    languages: NotRequired[
-        list[
-            Literal[
-                "csharp",
-                "go",
-                "java-kotlin",
-                "javascript-typescript",
-                "python",
-                "ruby",
-                "rust",
-            ]
-        ]
-    ]
-    runner_type: NotRequired[Union[None, Literal["standard", "labeled"]]]
-    runner_label: NotRequired[Union[str, None]]
-    updated_at: NotRequired[Union[str, None]]
-    schedule: NotRequired[Union[None, Literal["weekly"]]]
+    url: str
+    id: int
+    node_id: str
+    task: str
+    original_environment: NotRequired[str]
+    environment: str
+    description: Union[str, None]
+    created_at: str
+    updated_at: str
+    statuses_url: str
+    repository_url: str
+    transient_environment: NotRequired[bool]
+    production_environment: NotRequired[bool]
+    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
 
 
 __all__ = (
-    "CodeQualitySetupType",
-    "CodeQualitySetupTypeForResponse",
+    "DeploymentSimpleType",
+    "DeploymentSimpleTypeForResponse",
 )

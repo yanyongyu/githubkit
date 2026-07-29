@@ -59,6 +59,8 @@ if TYPE_CHECKING:
         OrgHook,
         OrgMembership,
         OrgRepoCustomPropertyValues,
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200,
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202,
         OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200,
         OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200,
         OrgsOrgArtifactsMetadataStorageRecordPostResponse200,
@@ -128,6 +130,10 @@ if TYPE_CHECKING:
         OrgHookTypeForResponse,
         OrgMembershipTypeForResponse,
         OrgRepoCustomPropertyValuesTypeForResponse,
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200TypeForResponse,
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItemsType,
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyType,
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202TypeForResponse,
         OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsType,
         OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyType,
         OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200TypeForResponse,
@@ -1526,6 +1532,7 @@ class OrgsClient:
         deployments: list[
             OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsType
         ],
+        partial_success: Missing[bool] = UNSET,
         return_records: Missing[bool] = UNSET,
     ) -> Response[
         OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200,
@@ -1625,6 +1632,7 @@ class OrgsClient:
         deployments: list[
             OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsType
         ],
+        partial_success: Missing[bool] = UNSET,
         return_records: Missing[bool] = UNSET,
     ) -> Response[
         OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200,
@@ -1692,6 +1700,280 @@ class OrgsClient:
             response_model=OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200,
             error_models={
                 "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def create_cluster_deployment_records_job(
+        self,
+        org: str,
+        cluster: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyType,
+    ) -> Response[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202,
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202TypeForResponse,
+    ]: ...
+
+    @overload
+    def create_cluster_deployment_records_job(
+        self,
+        org: str,
+        cluster: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        logical_environment: str,
+        physical_environment: Missing[str] = UNSET,
+        deployments: list[
+            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItemsType
+        ],
+    ) -> Response[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202,
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202TypeForResponse,
+    ]: ...
+
+    def create_cluster_deployment_records_job(
+        self,
+        org: str,
+        cluster: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[
+            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202,
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202TypeForResponse,
+    ]:
+        """orgs/create-cluster-deployment-records-job
+
+        POST /orgs/{org}/artifacts/metadata/deployment-record/cluster/{cluster}/jobs
+
+        Create a background job to set deployment records for a given cluster.
+        Performs validation and permission checks synchronously, returning rejected
+        deployments immediately, then enqueues a background job for the actual
+        deployment updates. Use the companion GET endpoint to poll for job status.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/artifact-metadata#create-a-cluster-deployment-records-job
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBody,
+            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202,
+        )
+
+        url = f"/orgs/{org}/artifacts/metadata/deployment-record/cluster/{cluster}/jobs"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "409": BasicError,
+            },
+        )
+
+    @overload
+    async def async_create_cluster_deployment_records_job(
+        self,
+        org: str,
+        cluster: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyType,
+    ) -> Response[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202,
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202TypeForResponse,
+    ]: ...
+
+    @overload
+    async def async_create_cluster_deployment_records_job(
+        self,
+        org: str,
+        cluster: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        logical_environment: str,
+        physical_environment: Missing[str] = UNSET,
+        deployments: list[
+            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItemsType
+        ],
+    ) -> Response[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202,
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202TypeForResponse,
+    ]: ...
+
+    async def async_create_cluster_deployment_records_job(
+        self,
+        org: str,
+        cluster: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[
+            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202,
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202TypeForResponse,
+    ]:
+        """orgs/create-cluster-deployment-records-job
+
+        POST /orgs/{org}/artifacts/metadata/deployment-record/cluster/{cluster}/jobs
+
+        Create a background job to set deployment records for a given cluster.
+        Performs validation and permission checks synchronously, returning rejected
+        deployments immediately, then enqueues a background job for the actual
+        deployment updates. Use the companion GET endpoint to poll for job status.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/artifact-metadata#create-a-cluster-deployment-records-job
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBody,
+            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202,
+        )
+
+        url = f"/orgs/{org}/artifacts/metadata/deployment-record/cluster/{cluster}/jobs"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "409": BasicError,
+            },
+        )
+
+    def get_cluster_deployment_records_job(
+        self,
+        org: str,
+        cluster: str,
+        job_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200,
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200TypeForResponse,
+    ]:
+        """orgs/get-cluster-deployment-records-job
+
+        GET /orgs/{org}/artifacts/metadata/deployment-record/cluster/{cluster}/jobs/{job_id}
+
+        Get the status and results of a previously created cluster deployment records job.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/artifact-metadata#get-cluster-deployment-records-job-status
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200,
+        )
+
+        url = f"/orgs/{org}/artifacts/metadata/deployment-record/cluster/{cluster}/jobs/{job_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_cluster_deployment_records_job(
+        self,
+        org: str,
+        cluster: str,
+        job_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200,
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200TypeForResponse,
+    ]:
+        """orgs/get-cluster-deployment-records-job
+
+        GET /orgs/{org}/artifacts/metadata/deployment-record/cluster/{cluster}/jobs/{job_id}
+
+        Get the status and results of a previously created cluster deployment records job.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/artifact-metadata#get-cluster-deployment-records-job-status
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200,
+        )
+
+        url = f"/orgs/{org}/artifacts/metadata/deployment-record/cluster/{cluster}/jobs/{job_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200,
+            error_models={
                 "404": BasicError,
             },
         )
@@ -5862,6 +6144,8 @@ class OrgsClient:
 
         Get API request count statistics for an actor broken down by route within a specified time frame.
 
+        Under normal conditions, you can expect API data to appear within 4–6 hours after making a request. During incidents or periods of unusually high volume, it may take longer to show up.
+
         See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/api-insights#get-route-stats-by-actor
         """
 
@@ -5932,6 +6216,8 @@ class OrgsClient:
 
         Get API request count statistics for an actor broken down by route within a specified time frame.
 
+        Under normal conditions, you can expect API data to appear within 4–6 hours after making a request. During incidents or periods of unusually high volume, it may take longer to show up.
+
         See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/api-insights#get-route-stats-by-actor
         """
 
@@ -5992,6 +6278,8 @@ class OrgsClient:
         GET /orgs/{org}/insights/api/subject-stats
 
         Get API request statistics for all subjects within an organization within a specified time frame. Subjects can be users or GitHub Apps.
+
+        Under normal conditions, you can expect API data to appear within 4–6 hours after making a request. During incidents or periods of unusually high volume, it may take longer to show up.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/api-insights#get-subject-stats
         """
@@ -6054,6 +6342,8 @@ class OrgsClient:
 
         Get API request statistics for all subjects within an organization within a specified time frame. Subjects can be users or GitHub Apps.
 
+        Under normal conditions, you can expect API data to appear within 4–6 hours after making a request. During incidents or periods of unusually high volume, it may take longer to show up.
+
         See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/api-insights#get-subject-stats
         """
 
@@ -6097,6 +6387,8 @@ class OrgsClient:
 
         Get overall statistics of API requests made within an organization by all users and apps within a specified time frame.
 
+        Under normal conditions, you can expect API data to appear within 4–6 hours after making a request. During incidents or periods of unusually high volume, it may take longer to show up.
+
         See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/api-insights#get-summary-stats
         """
 
@@ -6134,6 +6426,8 @@ class OrgsClient:
         GET /orgs/{org}/insights/api/summary-stats
 
         Get overall statistics of API requests made within an organization by all users and apps within a specified time frame.
+
+        Under normal conditions, you can expect API data to appear within 4–6 hours after making a request. During incidents or periods of unusually high volume, it may take longer to show up.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/api-insights#get-summary-stats
         """
@@ -6174,6 +6468,8 @@ class OrgsClient:
 
         Get overall statistics of API requests within the organization for a user.
 
+        Under normal conditions, you can expect API data to appear within 4–6 hours after making a request. During incidents or periods of unusually high volume, it may take longer to show up.
+
         See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/api-insights#get-summary-stats-by-user
         """
 
@@ -6212,6 +6508,8 @@ class OrgsClient:
         GET /orgs/{org}/insights/api/summary-stats/users/{user_id}
 
         Get overall statistics of API requests within the organization for a user.
+
+        Under normal conditions, you can expect API data to appear within 4–6 hours after making a request. During incidents or periods of unusually high volume, it may take longer to show up.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/api-insights#get-summary-stats-by-user
         """
@@ -6259,6 +6557,8 @@ class OrgsClient:
 
         Get overall statistics of API requests within the organization made by a specific actor. Actors can be GitHub App installations, OAuth apps or other tokens on behalf of a user.
 
+        Under normal conditions, you can expect API data to appear within 4–6 hours after making a request. During incidents or periods of unusually high volume, it may take longer to show up.
+
         See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/api-insights#get-summary-stats-by-actor
         """
 
@@ -6305,6 +6605,8 @@ class OrgsClient:
 
         Get overall statistics of API requests within the organization made by a specific actor. Actors can be GitHub App installations, OAuth apps or other tokens on behalf of a user.
 
+        Under normal conditions, you can expect API data to appear within 4–6 hours after making a request. During incidents or periods of unusually high volume, it may take longer to show up.
+
         See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/api-insights#get-summary-stats-by-actor
         """
 
@@ -6345,6 +6647,8 @@ class OrgsClient:
         GET /orgs/{org}/insights/api/time-stats
 
         Get the number of API requests and rate-limited requests made within an organization over a specified time period.
+
+        Under normal conditions, you can expect API data to appear within 4–6 hours after making a request. During incidents or periods of unusually high volume, it may take longer to show up.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/api-insights#get-time-stats
         """
@@ -6387,6 +6691,8 @@ class OrgsClient:
         GET /orgs/{org}/insights/api/time-stats
 
         Get the number of API requests and rate-limited requests made within an organization over a specified time period.
+
+        Under normal conditions, you can expect API data to appear within 4–6 hours after making a request. During incidents or periods of unusually high volume, it may take longer to show up.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/api-insights#get-time-stats
         """
@@ -6431,6 +6737,8 @@ class OrgsClient:
 
         Get the number of API requests and rate-limited requests made within an organization by a specific user over a specified time period.
 
+        Under normal conditions, you can expect API data to appear within 4–6 hours after making a request. During incidents or periods of unusually high volume, it may take longer to show up.
+
         See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/api-insights#get-time-stats-by-user
         """
 
@@ -6473,6 +6781,8 @@ class OrgsClient:
         GET /orgs/{org}/insights/api/time-stats/users/{user_id}
 
         Get the number of API requests and rate-limited requests made within an organization by a specific user over a specified time period.
+
+        Under normal conditions, you can expect API data to appear within 4–6 hours after making a request. During incidents or periods of unusually high volume, it may take longer to show up.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/api-insights#get-time-stats-by-user
         """
@@ -6524,6 +6834,8 @@ class OrgsClient:
 
         Get the number of API requests and rate-limited requests made within an organization by a specific actor within a specified time period.
 
+        Under normal conditions, you can expect API data to appear within 4–6 hours after making a request. During incidents or periods of unusually high volume, it may take longer to show up.
+
         See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/api-insights#get-time-stats-by-actor
         """
 
@@ -6573,6 +6885,8 @@ class OrgsClient:
         GET /orgs/{org}/insights/api/time-stats/{actor_type}/{actor_id}
 
         Get the number of API requests and rate-limited requests made within an organization by a specific actor within a specified time period.
+
+        Under normal conditions, you can expect API data to appear within 4–6 hours after making a request. During incidents or periods of unusually high volume, it may take longer to show up.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/api-insights#get-time-stats-by-actor
         """
@@ -6630,6 +6944,8 @@ class OrgsClient:
         GET /orgs/{org}/insights/api/user-stats/{user_id}
 
         Get API usage statistics within an organization for a user broken down by the type of access.
+
+        Under normal conditions, you can expect API data to appear within 4–6 hours after making a request. During incidents or periods of unusually high volume, it may take longer to show up.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/api-insights#get-user-stats
         """
@@ -6691,6 +7007,8 @@ class OrgsClient:
         GET /orgs/{org}/insights/api/user-stats/{user_id}
 
         Get API usage statistics within an organization for a user broken down by the type of access.
+
+        Under normal conditions, you can expect API data to appear within 4–6 hours after making a request. During incidents or periods of unusually high volume, it may take longer to show up.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/api-insights#get-user-stats
         """

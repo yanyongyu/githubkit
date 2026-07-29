@@ -10,56 +10,67 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0596 import (
+    SearchResultTextMatchesItemsType,
+    SearchResultTextMatchesItemsTypeForResponse,
+)
 
 
-class OrganizationSimpleWebhooksType(TypedDict):
-    """Organization Simple
+class LabelSearchResultItemType(TypedDict):
+    """Label Search Result Item
 
-    A GitHub organization. Webhook payloads contain the `organization` property when
-    the webhook is configured for an
-    organization, or when the event occurs from activity in a repository owned by an
-    organization.
+    Label Search Result Item
     """
 
-    login: str
     id: int
     node_id: str
     url: str
-    repos_url: str
-    events_url: str
-    hooks_url: str
-    issues_url: str
-    members_url: str
-    public_members_url: str
-    avatar_url: str
+    name: str
+    color: str
+    default: bool
     description: Union[str, None]
+    score: float
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
 
 
-class OrganizationSimpleWebhooksTypeForResponse(TypedDict):
-    """Organization Simple
+class LabelSearchResultItemTypeForResponse(TypedDict):
+    """Label Search Result Item
 
-    A GitHub organization. Webhook payloads contain the `organization` property when
-    the webhook is configured for an
-    organization, or when the event occurs from activity in a repository owned by an
-    organization.
+    Label Search Result Item
     """
 
-    login: str
     id: int
     node_id: str
     url: str
-    repos_url: str
-    events_url: str
-    hooks_url: str
-    issues_url: str
-    members_url: str
-    public_members_url: str
-    avatar_url: str
+    name: str
+    color: str
+    default: bool
     description: Union[str, None]
+    score: float
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
+
+
+class SearchLabelsGetResponse200Type(TypedDict):
+    """SearchLabelsGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[LabelSearchResultItemType]
+
+
+class SearchLabelsGetResponse200TypeForResponse(TypedDict):
+    """SearchLabelsGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[LabelSearchResultItemTypeForResponse]
 
 
 __all__ = (
-    "OrganizationSimpleWebhooksType",
-    "OrganizationSimpleWebhooksTypeForResponse",
+    "LabelSearchResultItemType",
+    "LabelSearchResultItemTypeForResponse",
+    "SearchLabelsGetResponse200Type",
+    "SearchLabelsGetResponse200TypeForResponse",
 )

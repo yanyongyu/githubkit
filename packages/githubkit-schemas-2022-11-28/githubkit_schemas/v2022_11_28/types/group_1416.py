@@ -12,19 +12,19 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class UserCodespacesSecretsSecretNameRepositoriesPutBodyType(TypedDict):
-    """UserCodespacesSecretsSecretNameRepositoriesPutBody"""
+class ReposOwnerRepoPullsCommentsCommentIdPatchBodyType(TypedDict):
+    """ReposOwnerRepoPullsCommentsCommentIdPatchBody"""
 
-    selected_repository_ids: list[int]
+    body: str
 
 
-class UserCodespacesSecretsSecretNameRepositoriesPutBodyTypeForResponse(TypedDict):
-    """UserCodespacesSecretsSecretNameRepositoriesPutBody"""
+class ReposOwnerRepoPullsCommentsCommentIdPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsCommentsCommentIdPatchBody"""
 
-    selected_repository_ids: list[int]
+    body: str
 
 
 __all__ = (
-    "UserCodespacesSecretsSecretNameRepositoriesPutBodyType",
-    "UserCodespacesSecretsSecretNameRepositoriesPutBodyTypeForResponse",
+    "ReposOwnerRepoPullsCommentsCommentIdPatchBodyType",
+    "ReposOwnerRepoPullsCommentsCommentIdPatchBodyTypeForResponse",
 )

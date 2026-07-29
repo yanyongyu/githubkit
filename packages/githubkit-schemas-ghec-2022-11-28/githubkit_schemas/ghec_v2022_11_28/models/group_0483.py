@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,27 +17,37 @@ from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0003 import SimpleUser
 from .group_0010 import Integration
-from .group_0460 import IssueReference
 
 
-class ParentIssueRemovedIssueEvent(GitHubModel):
-    """Parent-issue Removed Issue Event
+class RenamedIssueEvent(GitHubModel):
+    """Renamed Issue Event
 
-    Parent-issue Removed Issue Event
+    Renamed Issue Event
     """
 
     id: int = Field()
     node_id: str = Field()
     url: str = Field()
     actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: str = Field()
+    event: Literal["renamed"] = Field()
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
     performed_via_github_app: Union[None, Integration, None] = Field()
-    parent_issue: Union[None, IssueReference, None] = Field()
+    rename: RenamedIssueEventPropRename = Field()
 
 
-model_rebuild(ParentIssueRemovedIssueEvent)
+class RenamedIssueEventPropRename(GitHubModel):
+    """RenamedIssueEventPropRename"""
 
-__all__ = ("ParentIssueRemovedIssueEvent",)
+    from_: str = Field(alias="from")
+    to: str = Field()
+
+
+model_rebuild(RenamedIssueEvent)
+model_rebuild(RenamedIssueEventPropRename)
+
+__all__ = (
+    "RenamedIssueEvent",
+    "RenamedIssueEventPropRename",
+)

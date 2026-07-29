@@ -9,72 +9,70 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0074 import (
-    CodeScanningAlertLocationType,
-    CodeScanningAlertLocationTypeForResponse,
-)
+from .group_0255 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
-class CodeScanningAlertInstanceListType(TypedDict):
-    """CodeScanningAlertInstanceList"""
+class CheckSuitePreferenceType(TypedDict):
+    """Check Suite Preference
 
-    ref: NotRequired[str]
-    analysis_key: NotRequired[str]
-    environment: NotRequired[str]
-    category: NotRequired[str]
-    state: NotRequired[Union[None, Literal["open", "fixed"]]]
-    commit_sha: NotRequired[str]
-    message: NotRequired[CodeScanningAlertInstanceListPropMessageType]
-    location: NotRequired[CodeScanningAlertLocationType]
-    html_url: NotRequired[str]
-    classifications: NotRequired[
+    Check suite configuration preferences for a repository.
+    """
+
+    preferences: CheckSuitePreferencePropPreferencesType
+    repository: MinimalRepositoryType
+
+
+class CheckSuitePreferenceTypeForResponse(TypedDict):
+    """Check Suite Preference
+
+    Check suite configuration preferences for a repository.
+    """
+
+    preferences: CheckSuitePreferencePropPreferencesTypeForResponse
+    repository: MinimalRepositoryTypeForResponse
+
+
+class CheckSuitePreferencePropPreferencesType(TypedDict):
+    """CheckSuitePreferencePropPreferences"""
+
+    auto_trigger_checks: NotRequired[
+        list[CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType]
+    ]
+
+
+class CheckSuitePreferencePropPreferencesTypeForResponse(TypedDict):
+    """CheckSuitePreferencePropPreferences"""
+
+    auto_trigger_checks: NotRequired[
         list[
-            Union[
-                None, Literal["source", "generated", "test", "library", "documentation"]
-            ]
+            CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsTypeForResponse
         ]
     ]
 
 
-class CodeScanningAlertInstanceListTypeForResponse(TypedDict):
-    """CodeScanningAlertInstanceList"""
+class CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType(TypedDict):
+    """CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems"""
 
-    ref: NotRequired[str]
-    analysis_key: NotRequired[str]
-    environment: NotRequired[str]
-    category: NotRequired[str]
-    state: NotRequired[Union[None, Literal["open", "fixed"]]]
-    commit_sha: NotRequired[str]
-    message: NotRequired[CodeScanningAlertInstanceListPropMessageTypeForResponse]
-    location: NotRequired[CodeScanningAlertLocationTypeForResponse]
-    html_url: NotRequired[str]
-    classifications: NotRequired[
-        list[
-            Union[
-                None, Literal["source", "generated", "test", "library", "documentation"]
-            ]
-        ]
-    ]
+    app_id: int
+    setting: bool
 
 
-class CodeScanningAlertInstanceListPropMessageType(TypedDict):
-    """CodeScanningAlertInstanceListPropMessage"""
+class CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsTypeForResponse(
+    TypedDict
+):
+    """CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems"""
 
-    text: NotRequired[str]
-
-
-class CodeScanningAlertInstanceListPropMessageTypeForResponse(TypedDict):
-    """CodeScanningAlertInstanceListPropMessage"""
-
-    text: NotRequired[str]
+    app_id: int
+    setting: bool
 
 
 __all__ = (
-    "CodeScanningAlertInstanceListPropMessageType",
-    "CodeScanningAlertInstanceListPropMessageTypeForResponse",
-    "CodeScanningAlertInstanceListType",
-    "CodeScanningAlertInstanceListTypeForResponse",
+    "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType",
+    "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsTypeForResponse",
+    "CheckSuitePreferencePropPreferencesType",
+    "CheckSuitePreferencePropPreferencesTypeForResponse",
+    "CheckSuitePreferenceType",
+    "CheckSuitePreferenceTypeForResponse",
 )

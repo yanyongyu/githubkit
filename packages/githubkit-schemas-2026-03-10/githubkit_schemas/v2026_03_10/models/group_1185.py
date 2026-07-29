@@ -14,28 +14,16 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class OrgsOrgProjectsV2ProjectNumberViewsPostBody(GitHubModel):
-    """OrgsOrgProjectsV2ProjectNumberViewsPostBody"""
+class OrgsOrgCopilotCodingAgentPermissionsPutBody(GitHubModel):
+    """OrgsOrgCopilotCodingAgentPermissionsPutBody"""
 
-    name: str = Field(description="The name of the view.")
-    layout: Literal["table", "board", "roadmap"] = Field(
-        description="The layout of the view."
-    )
-    filter_: Missing[str] = Field(
-        default=UNSET,
-        alias="filter",
-        description="The filter query for the view. See [Filtering projects](https://docs.github.com/issues/planning-and-tracking-with-projects/customizing-views-in-your-project/filtering-projects) for more information.",
-    )
-    visible_fields: Missing[list[int]] = Field(
-        default=UNSET,
-        description="`visible_fields` is not applicable to `roadmap` layout views.\nFor `table` and `board` layouts, this represents the field IDs that should be visible in the view. If not provided, the default visible fields will be used.",
+    enabled_repositories: Literal["all", "selected", "none"] = Field(
+        description="The policy for which repositories can use Copilot cloud agent. Can be one of `all`, `selected`, or `none`."
     )
 
 
-model_rebuild(OrgsOrgProjectsV2ProjectNumberViewsPostBody)
+model_rebuild(OrgsOrgCopilotCodingAgentPermissionsPutBody)
 
-__all__ = ("OrgsOrgProjectsV2ProjectNumberViewsPostBody",)
+__all__ = ("OrgsOrgCopilotCodingAgentPermissionsPutBody",)

@@ -9,20 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0352 import ActionsVariable
+from .group_0327 import ProjectsV2FieldSingleSelectOption
 
 
-class ReposOwnerRepoAgentsVariablesGetResponse200(GitHubModel):
-    """ReposOwnerRepoAgentsVariablesGetResponse200"""
+class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2(GitHubModel):
+    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2"""
 
-    total_count: int = Field()
-    variables: list[ActionsVariable] = Field()
+    name: str = Field(description="The name of the field.")
+    data_type: Literal["single_select"] = Field(description="The field's data type.")
+    single_select_options: list[ProjectsV2FieldSingleSelectOption] = Field(
+        description="The options available for single select fields. At least one option must be provided when creating a single select field."
+    )
 
 
-model_rebuild(ReposOwnerRepoAgentsVariablesGetResponse200)
+model_rebuild(OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2)
 
-__all__ = ("ReposOwnerRepoAgentsVariablesGetResponse200",)
+__all__ = ("OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2",)

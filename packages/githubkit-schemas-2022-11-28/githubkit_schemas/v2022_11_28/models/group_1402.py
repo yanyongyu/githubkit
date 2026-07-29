@@ -16,19 +16,13 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoSubscriptionPutBody(GitHubModel):
-    """ReposOwnerRepoSubscriptionPutBody"""
+class ReposOwnerRepoNotificationsPutResponse202(GitHubModel):
+    """ReposOwnerRepoNotificationsPutResponse202"""
 
-    subscribed: Missing[bool] = Field(
-        default=UNSET,
-        description="Determines if notifications should be received from this repository.",
-    )
-    ignored: Missing[bool] = Field(
-        default=UNSET,
-        description="Determines if all notifications should be blocked from this repository.",
-    )
+    message: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoSubscriptionPutBody)
+model_rebuild(ReposOwnerRepoNotificationsPutResponse202)
 
-__all__ = ("ReposOwnerRepoSubscriptionPutBody",)
+__all__ = ("ReposOwnerRepoNotificationsPutResponse202",)

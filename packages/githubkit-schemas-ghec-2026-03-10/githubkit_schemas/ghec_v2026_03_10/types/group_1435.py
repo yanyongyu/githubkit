@@ -9,28 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0382 import CheckRunType, CheckRunTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200"""
+class ReposOwnerRepoActionsJobsJobIdRerunPostBodyType(TypedDict):
+    """ReposOwnerRepoActionsJobsJobIdRerunPostBody"""
 
-    total_count: int
-    check_runs: list[CheckRunType]
+    enable_debug_logging: NotRequired[bool]
+    enable_debugger: NotRequired[bool]
 
 
-class ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200"""
+class ReposOwnerRepoActionsJobsJobIdRerunPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsJobsJobIdRerunPostBody"""
 
-    total_count: int
-    check_runs: list[CheckRunTypeForResponse]
+    enable_debug_logging: NotRequired[bool]
+    enable_debugger: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Type",
-    "ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200TypeForResponse",
+    "ReposOwnerRepoActionsJobsJobIdRerunPostBodyType",
+    "ReposOwnerRepoActionsJobsJobIdRerunPostBodyTypeForResponse",
 )

@@ -14,21 +14,14 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class PorterAuthor(GitHubModel):
-    """Porter Author
+class DeploymentBranchPolicyNamePattern(GitHubModel):
+    """Deployment branch policy name pattern"""
 
-    Porter Author
-    """
-
-    id: int = Field()
-    remote_id: str = Field()
-    remote_name: str = Field()
-    email: str = Field()
-    name: str = Field()
-    url: str = Field()
-    import_url: str = Field()
+    name: str = Field(
+        description="The name pattern that branches must match in order to deploy to the environment.\n\nWildcard characters will not match `/`. For example, to match branches that begin with `release/` and contain an additional single slash, use `release/*/*`.\nFor more information about pattern matching syntax, see the [Ruby File.fnmatch documentation](https://ruby-doc.org/core-2.5.1/File.html#method-c-fnmatch)."
+    )
 
 
-model_rebuild(PorterAuthor)
+model_rebuild(DeploymentBranchPolicyNamePattern)
 
-__all__ = ("PorterAuthor",)
+__all__ = ("DeploymentBranchPolicyNamePattern",)

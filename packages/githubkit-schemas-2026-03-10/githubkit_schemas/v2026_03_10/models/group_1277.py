@@ -9,39 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0003 import SimpleUser
 
 
-class ReposOwnerRepoCodespacesNewGetResponse200(GitHubModel):
-    """ReposOwnerRepoCodespacesNewGetResponse200"""
+class ReposOwnerRepoAgentsSecretsSecretNamePutBody(GitHubModel):
+    """ReposOwnerRepoAgentsSecretsSecretNamePutBody"""
 
-    billable_owner: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
+    encrypted_value: str = Field(
+        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
+        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get a repository public key](https://docs.github.com/rest/agents/secrets#get-a-repository-public-key) endpoint.",
     )
-    defaults: Missing[ReposOwnerRepoCodespacesNewGetResponse200PropDefaults] = Field(
-        default=UNSET
-    )
+    key_id: str = Field(description="ID of the key you used to encrypt the secret.")
 
 
-class ReposOwnerRepoCodespacesNewGetResponse200PropDefaults(GitHubModel):
-    """ReposOwnerRepoCodespacesNewGetResponse200PropDefaults"""
+model_rebuild(ReposOwnerRepoAgentsSecretsSecretNamePutBody)
 
-    location: str = Field()
-    devcontainer_path: Union[str, None] = Field()
-
-
-model_rebuild(ReposOwnerRepoCodespacesNewGetResponse200)
-model_rebuild(ReposOwnerRepoCodespacesNewGetResponse200PropDefaults)
-
-__all__ = (
-    "ReposOwnerRepoCodespacesNewGetResponse200",
-    "ReposOwnerRepoCodespacesNewGetResponse200PropDefaults",
-)
+__all__ = ("ReposOwnerRepoAgentsSecretsSecretNamePutBody",)

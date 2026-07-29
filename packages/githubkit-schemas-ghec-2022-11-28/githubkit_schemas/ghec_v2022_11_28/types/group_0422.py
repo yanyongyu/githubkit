@@ -9,73 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0078 import (
+    CodeSecurityConfigurationType,
+    CodeSecurityConfigurationTypeForResponse,
+)
 
-class ContentFileType(TypedDict):
-    """Content File
 
-    Content File
+class CodeSecurityConfigurationForRepositoryType(TypedDict):
+    """CodeSecurityConfigurationForRepository
+
+    Code security configuration associated with a repository and attachment status
     """
 
-    type: Literal["file"]
-    encoding: str
-    size: int
-    name: str
-    path: str
-    content: str
-    sha: str
-    url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    links: ContentFilePropLinksType
-    target: NotRequired[str]
-    submodule_git_url: NotRequired[str]
+    status: NotRequired[
+        Literal[
+            "attached",
+            "attaching",
+            "detached",
+            "removed",
+            "enforced",
+            "failed",
+            "updating",
+            "removed_by_enterprise",
+        ]
+    ]
+    configuration: NotRequired[CodeSecurityConfigurationType]
 
 
-class ContentFileTypeForResponse(TypedDict):
-    """Content File
+class CodeSecurityConfigurationForRepositoryTypeForResponse(TypedDict):
+    """CodeSecurityConfigurationForRepository
 
-    Content File
+    Code security configuration associated with a repository and attachment status
     """
 
-    type: Literal["file"]
-    encoding: str
-    size: int
-    name: str
-    path: str
-    content: str
-    sha: str
-    url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    links: ContentFilePropLinksTypeForResponse
-    target: NotRequired[str]
-    submodule_git_url: NotRequired[str]
-
-
-class ContentFilePropLinksType(TypedDict):
-    """ContentFilePropLinks"""
-
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
-
-
-class ContentFilePropLinksTypeForResponse(TypedDict):
-    """ContentFilePropLinks"""
-
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
+    status: NotRequired[
+        Literal[
+            "attached",
+            "attaching",
+            "detached",
+            "removed",
+            "enforced",
+            "failed",
+            "updating",
+            "removed_by_enterprise",
+        ]
+    ]
+    configuration: NotRequired[CodeSecurityConfigurationTypeForResponse]
 
 
 __all__ = (
-    "ContentFilePropLinksType",
-    "ContentFilePropLinksTypeForResponse",
-    "ContentFileType",
-    "ContentFileTypeForResponse",
+    "CodeSecurityConfigurationForRepositoryType",
+    "CodeSecurityConfigurationForRepositoryTypeForResponse",
 )

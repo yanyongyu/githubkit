@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,32 +17,28 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_1358 import ReposOwnerRepoPagesPutBodyPropSourceAnyof1
 
+class ReposOwnerRepoImportPatchBody(GitHubModel):
+    """ReposOwnerRepoImportPatchBody"""
 
-class ReposOwnerRepoPagesPutBodyAnyof3(GitHubModel):
-    """ReposOwnerRepoPagesPutBodyAnyof3"""
-
-    cname: Missing[Union[str, None]] = Field(
+    vcs_username: Missing[str] = Field(
         default=UNSET,
-        description='Specify a custom domain for the repository. Sending a `null` value will remove the custom domain. For more about custom domains, see "[Using a custom domain with GitHub Pages](https://docs.github.com/pages/configuring-a-custom-domain-for-your-github-pages-site)."',
+        description="The username to provide to the originating repository.",
     )
-    https_enforced: Missing[bool] = Field(
+    vcs_password: Missing[str] = Field(
         default=UNSET,
-        description="Specify whether HTTPS should be enforced for the repository.",
+        description="The password to provide to the originating repository.",
     )
-    build_type: Missing[Literal["legacy", "workflow"]] = Field(
+    vcs: Missing[Literal["subversion", "tfvc", "git", "mercurial"]] = Field(
         default=UNSET,
-        description="The process by which the GitHub Pages site will be built. `workflow` means that the site is built by a custom GitHub Actions workflow. `legacy` means that the site is built by GitHub when changes are pushed to a specific branch.",
+        description="The type of version control system you are migrating from.",
     )
-    source: Missing[
-        Union[
-            Literal["gh-pages", "master", "master /docs"],
-            ReposOwnerRepoPagesPutBodyPropSourceAnyof1,
-        ]
-    ] = Field(default=UNSET)
+    tfvc_project: Missing[str] = Field(
+        default=UNSET,
+        description="For a tfvc import, the name of the project that is being imported.",
+    )
 
 
-model_rebuild(ReposOwnerRepoPagesPutBodyAnyof3)
+model_rebuild(ReposOwnerRepoImportPatchBody)
 
-__all__ = ("ReposOwnerRepoPagesPutBodyAnyof3",)
+__all__ = ("ReposOwnerRepoImportPatchBody",)

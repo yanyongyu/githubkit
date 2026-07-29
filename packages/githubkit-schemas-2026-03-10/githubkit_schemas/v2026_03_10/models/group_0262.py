@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,28 +18,31 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class NetworkSettings(GitHubModel):
-    """Hosted compute network settings resource
+class SecretScanningCustomPatternValidationError(GitHubModel):
+    """Secret Scanning Custom Pattern Validation Error
 
-    A hosted compute network settings resource.
+    A validation error for a custom pattern in a batch operation.
     """
 
-    id: str = Field(
-        description="The unique identifier of the network settings resource."
+    code: Missing[
+        Literal[
+            "invalid",
+            "unprocessable",
+            "start_delimiter",
+            "end_delimiter",
+            "name",
+            "must_match",
+            "must_not_match",
+            "custom_pattern_version_mismatch",
+        ]
+    ] = Field(
+        default=UNSET, description="A machine-readable code describing the error."
     )
-    network_configuration_id: Missing[str] = Field(
-        default=UNSET,
-        description="The identifier of the network configuration that is using this settings resource.",
-    )
-    name: str = Field(description="The name of the network settings resource.")
-    subnet_id: str = Field(
-        description="The subnet this network settings resource is configured for."
-    )
-    region: str = Field(
-        description="The location of the subnet this network settings resource is configured for."
+    message: Missing[str] = Field(
+        default=UNSET, description="A human-readable description of the error."
     )
 
 
-model_rebuild(NetworkSettings)
+model_rebuild(SecretScanningCustomPatternValidationError)
 
-__all__ = ("NetworkSettings",)
+__all__ = ("SecretScanningCustomPatternValidationError",)

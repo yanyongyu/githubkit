@@ -9,30 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0617 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0618 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0619 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0620 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0664 import WebhooksSponsorshipType, WebhooksSponsorshipTypeForResponse
 
-class AgentsReposOwnerRepoTasksPostBodyType(TypedDict):
-    """AgentsReposOwnerRepoTasksPostBody"""
 
-    prompt: str
-    model: NotRequired[str]
-    create_pull_request: NotRequired[bool]
-    base_ref: NotRequired[str]
-    head_ref: NotRequired[str]
+class WebhookSponsorshipCancelledType(TypedDict):
+    """sponsorship cancelled event"""
+
+    action: Literal["cancelled"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserType
+    sponsorship: WebhooksSponsorshipType
 
 
-class AgentsReposOwnerRepoTasksPostBodyTypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksPostBody"""
+class WebhookSponsorshipCancelledTypeForResponse(TypedDict):
+    """sponsorship cancelled event"""
 
-    prompt: str
-    model: NotRequired[str]
-    create_pull_request: NotRequired[bool]
-    base_ref: NotRequired[str]
-    head_ref: NotRequired[str]
+    action: Literal["cancelled"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: SimpleUserTypeForResponse
+    sponsorship: WebhooksSponsorshipTypeForResponse
 
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksPostBodyType",
-    "AgentsReposOwnerRepoTasksPostBodyTypeForResponse",
+    "WebhookSponsorshipCancelledType",
+    "WebhookSponsorshipCancelledTypeForResponse",
 )

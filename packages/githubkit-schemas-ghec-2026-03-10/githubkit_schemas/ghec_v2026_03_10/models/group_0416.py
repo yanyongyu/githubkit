@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,49 +17,47 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0019 import LicenseSimple
-from .group_0326 import CodeOfConductSimple
 
+class CodeScanningDefaultSetupUpdate(GitHubModel):
+    """CodeScanningDefaultSetupUpdate
 
-class CommunityProfilePropFiles(GitHubModel):
-    """CommunityProfilePropFiles"""
-
-    code_of_conduct: Union[None, CodeOfConductSimple] = Field()
-    code_of_conduct_file: Union[None, CommunityHealthFile] = Field()
-    license_: Union[None, LicenseSimple] = Field(alias="license")
-    contributing: Union[None, CommunityHealthFile] = Field()
-    readme: Union[None, CommunityHealthFile] = Field()
-    issue_template: Union[None, CommunityHealthFile] = Field()
-    pull_request_template: Union[None, CommunityHealthFile] = Field()
-
-
-class CommunityHealthFile(GitHubModel):
-    """Community Health File"""
-
-    url: str = Field()
-    html_url: str = Field()
-
-
-class CommunityProfile(GitHubModel):
-    """Community Profile
-
-    Community Profile
+    Configuration for code scanning default setup.
     """
 
-    health_percentage: int = Field()
-    description: Union[str, None] = Field()
-    documentation: Union[str, None] = Field()
-    files: CommunityProfilePropFiles = Field()
-    updated_at: Union[_dt.datetime, None] = Field()
-    content_reports_enabled: Missing[bool] = Field(default=UNSET)
+    state: Missing[Literal["configured", "not-configured"]] = Field(
+        default=UNSET, description="The desired state of code scanning default setup."
+    )
+    runner_type: Missing[Literal["standard", "labeled"]] = Field(
+        default=UNSET, description="Runner type to be used."
+    )
+    runner_label: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="Runner label to be used if the runner type is labeled.",
+    )
+    query_suite: Missing[Literal["default", "extended"]] = Field(
+        default=UNSET, description="CodeQL query suite to be used."
+    )
+    threat_model: Missing[Literal["remote", "remote_and_local"]] = Field(
+        default=UNSET,
+        description="Threat model to be used for code scanning analysis. Use `remote` to analyze only network sources and `remote_and_local` to include local sources like filesystem access, command-line arguments, database reads, environment variable and standard input.",
+    )
+    languages: Missing[
+        list[
+            Literal[
+                "actions",
+                "c-cpp",
+                "csharp",
+                "go",
+                "java-kotlin",
+                "javascript-typescript",
+                "python",
+                "ruby",
+                "swift",
+            ]
+        ]
+    ] = Field(default=UNSET, description="CodeQL languages to be analyzed.")
 
 
-model_rebuild(CommunityProfilePropFiles)
-model_rebuild(CommunityHealthFile)
-model_rebuild(CommunityProfile)
+model_rebuild(CodeScanningDefaultSetupUpdate)
 
-__all__ = (
-    "CommunityHealthFile",
-    "CommunityProfile",
-    "CommunityProfilePropFiles",
-)
+__all__ = ("CodeScanningDefaultSetupUpdate",)

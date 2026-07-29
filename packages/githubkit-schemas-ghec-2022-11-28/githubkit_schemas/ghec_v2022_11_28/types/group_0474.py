@@ -9,76 +9,69 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0076 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
 
 
-class MovedColumnInProjectIssueEventType(TypedDict):
-    """Moved Column in Project Issue Event
+class IssueReferenceType(TypedDict):
+    """Issue Reference
 
-    Moved Column in Project Issue Event
+    A minimal reference to an issue linked from a timeline event (e.g. sub-issue,
+    parent-issue, or dependency events).
+    """
+
+    number: int
+    title: str
+    state: str
+    state_reason: NotRequired[Union[str, None]]
+    repository: SimpleRepositoryType
+    issue_type: Union[IssueReferencePropIssueTypeType, None]
+
+
+class IssueReferenceTypeForResponse(TypedDict):
+    """Issue Reference
+
+    A minimal reference to an issue linked from a timeline event (e.g. sub-issue,
+    parent-issue, or dependency events).
+    """
+
+    number: int
+    title: str
+    state: str
+    state_reason: NotRequired[Union[str, None]]
+    repository: SimpleRepositoryTypeForResponse
+    issue_type: Union[IssueReferencePropIssueTypeTypeForResponse, None]
+
+
+class IssueReferencePropIssueTypeType(TypedDict):
+    """Issue Type
+
+    The type of the referenced issue.
     """
 
     id: int
     node_id: str
-    url: str
-    actor: SimpleUserType
-    event: Literal["moved_columns_in_project"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    project_card: NotRequired[MovedColumnInProjectIssueEventPropProjectCardType]
+    name: str
+    color: NotRequired[Union[str, None]]
 
 
-class MovedColumnInProjectIssueEventTypeForResponse(TypedDict):
-    """Moved Column in Project Issue Event
+class IssueReferencePropIssueTypeTypeForResponse(TypedDict):
+    """Issue Type
 
-    Moved Column in Project Issue Event
+    The type of the referenced issue.
     """
 
     id: int
     node_id: str
-    url: str
-    actor: SimpleUserTypeForResponse
-    event: Literal["moved_columns_in_project"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    project_card: NotRequired[
-        MovedColumnInProjectIssueEventPropProjectCardTypeForResponse
-    ]
-
-
-class MovedColumnInProjectIssueEventPropProjectCardType(TypedDict):
-    """MovedColumnInProjectIssueEventPropProjectCard"""
-
-    id: int
-    url: str
-    project_id: int
-    project_url: str
-    column_name: str
-    previous_column_name: NotRequired[str]
-
-
-class MovedColumnInProjectIssueEventPropProjectCardTypeForResponse(TypedDict):
-    """MovedColumnInProjectIssueEventPropProjectCard"""
-
-    id: int
-    url: str
-    project_id: int
-    project_url: str
-    column_name: str
-    previous_column_name: NotRequired[str]
+    name: str
+    color: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "MovedColumnInProjectIssueEventPropProjectCardType",
-    "MovedColumnInProjectIssueEventPropProjectCardTypeForResponse",
-    "MovedColumnInProjectIssueEventType",
-    "MovedColumnInProjectIssueEventTypeForResponse",
+    "IssueReferencePropIssueTypeType",
+    "IssueReferencePropIssueTypeTypeForResponse",
+    "IssueReferenceType",
+    "IssueReferenceTypeForResponse",
 )

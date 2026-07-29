@@ -11,44 +11,83 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class GistsGistIdPatchBody(GitHubModel):
-    """GistsGistIdPatchBody"""
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200(GitHubModel):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200"""
 
-    description: Missing[str] = Field(
-        default=UNSET, description="The description of the gist."
-    )
-    files: Missing[GistsGistIdPatchBodyPropFiles] = Field(
+    organization: Missing[
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganization
+    ] = Field(default=UNSET)
+    repository: Missing[
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepository
+    ] = Field(default=UNSET)
+    ruleset: Missing[
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRuleset
+    ] = Field(
         default=UNSET,
-        description="The gist files to be updated, renamed, or deleted. Each `key` must match the current filename\n(including extension) of the targeted gist file. For example: `hello.py`.\n\nTo delete a file, set the whole file to null. For example: `hello.py : null`. The file will also be\ndeleted if the specified object does not contain at least one of `content` or `filename`.",
+        description="The created or existing ruleset (if create_ruleset was true).",
     )
 
 
-class GistsGistIdPatchBodyPropFiles(ExtraGitHubModel):
-    """GistsGistIdPatchBodyPropFiles
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganization(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganization"""
 
-    The gist files to be updated, renamed, or deleted. Each `key` must match the
-    current filename
-    (including extension) of the targeted gist file. For example: `hello.py`.
+    id: Missing[int] = Field(default=UNSET, description="The ID of the organization.")
+    login: Missing[str] = Field(
+        default=UNSET, description="The login name of the organization."
+    )
+    avatar_url: Missing[str] = Field(
+        default=UNSET, description="The avatar URL of the organization."
+    )
 
-    To delete a file, set the whole file to null. For example: `hello.py : null`.
-    The file will also be
-    deleted if the specified object does not contain at least one of `content` or
-    `filename`.
 
-    Examples:
-        {'hello.rb': {'content': 'blah', 'filename': 'goodbye.rb'}}
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepository(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepository"""
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The ID of the .github-private repository."
+    )
+    name: Missing[str] = Field(default=UNSET, description="The name of the repository.")
+    full_name: Missing[str] = Field(
+        default=UNSET, description="The full name of the repository (owner/name)."
+    )
+
+
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRuleset(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRuleset
+
+    The created or existing ruleset (if create_ruleset was true).
     """
 
+    id: Missing[int] = Field(default=UNSET, description="The ID of the ruleset.")
+    name: Missing[str] = Field(default=UNSET, description="The name of the ruleset.")
+    enforcement: Missing[str] = Field(
+        default=UNSET, description="The enforcement level of the ruleset."
+    )
 
-model_rebuild(GistsGistIdPatchBody)
-model_rebuild(GistsGistIdPatchBodyPropFiles)
+
+model_rebuild(EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200)
+model_rebuild(
+    EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganization
+)
+model_rebuild(
+    EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepository
+)
+model_rebuild(EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRuleset)
 
 __all__ = (
-    "GistsGistIdPatchBody",
-    "GistsGistIdPatchBodyPropFiles",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganization",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepository",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRuleset",
 )

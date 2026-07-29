@@ -15,16 +15,60 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0054 import Runner
+
+class AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0(GitHubModel):
+    """AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0
+
+    A GitHub user
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the user"
+    )
 
 
-class EnterprisesEnterpriseActionsRunnersGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseActionsRunnersGetResponse200"""
+class AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems(GitHubModel):
+    """AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems
 
-    total_count: Missing[float] = Field(default=UNSET)
-    runners: Missing[list[Runner]] = Field(default=UNSET)
+    A GitHub user
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the user"
+    )
 
 
-model_rebuild(EnterprisesEnterpriseActionsRunnersGetResponse200)
+class AgentsTasksTaskIdGetResponse200Allof0PropRepository(GitHubModel):
+    """AgentsTasksTaskIdGetResponse200Allof0PropRepository
 
-__all__ = ("EnterprisesEnterpriseActionsRunnersGetResponse200",)
+    The repository this task belongs to
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the repository"
+    )
+
+
+class AgentsTasksTaskIdGetResponse200Allof0PropCustomAgent(GitHubModel):
+    """AgentsTasksTaskIdGetResponse200Allof0PropCustomAgent
+
+    Custom agent metadata associated with this task
+    """
+
+    id: Missing[str] = Field(
+        default=UNSET,
+        description="The custom agent's filename without the extension - for example, `performance-optimizer` for a `.github/agents/performance-optimizer.agent.md` custom agent.",
+    )
+
+
+model_rebuild(AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0)
+model_rebuild(AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems)
+model_rebuild(AgentsTasksTaskIdGetResponse200Allof0PropRepository)
+model_rebuild(AgentsTasksTaskIdGetResponse200Allof0PropCustomAgent)
+
+__all__ = (
+    "AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0",
+    "AgentsTasksTaskIdGetResponse200Allof0PropCustomAgent",
+    "AgentsTasksTaskIdGetResponse200Allof0PropRepository",
+    "AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems",
+)

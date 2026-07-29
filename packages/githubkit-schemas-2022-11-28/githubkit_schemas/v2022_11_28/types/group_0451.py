@@ -9,35 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class RepositoryRuleRulesetInfoType(TypedDict):
-    """repository ruleset data for rule
+class PullRequestPropLabelsItemsType(TypedDict):
+    """PullRequestPropLabelsItems"""
 
-    User-defined metadata to store domain-specific information limited to 8 keys
-    with scalar values.
-    """
+    id: int
+    node_id: str
+    url: str
+    name: str
+    description: Union[str, None]
+    color: str
+    default: bool
 
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
 
+class PullRequestPropLabelsItemsTypeForResponse(TypedDict):
+    """PullRequestPropLabelsItems"""
 
-class RepositoryRuleRulesetInfoTypeForResponse(TypedDict):
-    """repository ruleset data for rule
-
-    User-defined metadata to store domain-specific information limited to 8 keys
-    with scalar values.
-    """
-
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    id: int
+    node_id: str
+    url: str
+    name: str
+    description: Union[str, None]
+    color: str
+    default: bool
 
 
 __all__ = (
-    "RepositoryRuleRulesetInfoType",
-    "RepositoryRuleRulesetInfoTypeForResponse",
+    "PullRequestPropLabelsItemsType",
+    "PullRequestPropLabelsItemsTypeForResponse",
 )

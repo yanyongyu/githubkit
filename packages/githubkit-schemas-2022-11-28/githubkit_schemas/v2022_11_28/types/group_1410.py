@@ -9,26 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0140 import CodespaceType, CodespaceTypeForResponse
-
-
-class UserCodespacesGetResponse200Type(TypedDict):
-    """UserCodespacesGetResponse200"""
-
-    total_count: int
-    codespaces: list[CodespaceType]
+from .group_1409 import (
+    ReposOwnerRepoPagesPostBodyPropSourceType,
+    ReposOwnerRepoPagesPostBodyPropSourceTypeForResponse,
+)
 
 
-class UserCodespacesGetResponse200TypeForResponse(TypedDict):
-    """UserCodespacesGetResponse200"""
+class ReposOwnerRepoPagesPostBodyAnyof0Type(TypedDict):
+    """ReposOwnerRepoPagesPostBodyAnyof0"""
 
-    total_count: int
-    codespaces: list[CodespaceTypeForResponse]
+    build_type: NotRequired[Literal["legacy", "workflow"]]
+    source: ReposOwnerRepoPagesPostBodyPropSourceType
+
+
+class ReposOwnerRepoPagesPostBodyAnyof0TypeForResponse(TypedDict):
+    """ReposOwnerRepoPagesPostBodyAnyof0"""
+
+    build_type: NotRequired[Literal["legacy", "workflow"]]
+    source: ReposOwnerRepoPagesPostBodyPropSourceTypeForResponse
 
 
 __all__ = (
-    "UserCodespacesGetResponse200Type",
-    "UserCodespacesGetResponse200TypeForResponse",
+    "ReposOwnerRepoPagesPostBodyAnyof0Type",
+    "ReposOwnerRepoPagesPostBodyAnyof0TypeForResponse",
 )

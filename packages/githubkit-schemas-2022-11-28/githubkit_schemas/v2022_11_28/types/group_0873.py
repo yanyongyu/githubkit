@@ -13,44 +13,47 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0523 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0524 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0525 import (
+from .group_0535 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0536 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0537 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0526 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0538 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0573 import WebhooksReviewCommentType, WebhooksReviewCommentTypeForResponse
 from .group_0874 import (
-    WebhookRegistryPackageUpdatedPropRegistryPackageType,
-    WebhookRegistryPackageUpdatedPropRegistryPackageTypeForResponse,
+    WebhookPullRequestReviewCommentDeletedPropPullRequestType,
+    WebhookPullRequestReviewCommentDeletedPropPullRequestTypeForResponse,
 )
 
 
-class WebhookRegistryPackageUpdatedType(TypedDict):
-    """WebhookRegistryPackageUpdated"""
+class WebhookPullRequestReviewCommentDeletedType(TypedDict):
+    """pull_request_review_comment deleted event"""
 
-    action: Literal["updated"]
+    action: Literal["deleted"]
+    comment: WebhooksReviewCommentType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    registry_package: WebhookRegistryPackageUpdatedPropRegistryPackageType
-    repository: NotRequired[RepositoryWebhooksType]
+    pull_request: WebhookPullRequestReviewCommentDeletedPropPullRequestType
+    repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookRegistryPackageUpdatedTypeForResponse(TypedDict):
-    """WebhookRegistryPackageUpdated"""
+class WebhookPullRequestReviewCommentDeletedTypeForResponse(TypedDict):
+    """pull_request_review_comment deleted event"""
 
-    action: Literal["updated"]
+    action: Literal["deleted"]
+    comment: WebhooksReviewCommentTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    registry_package: WebhookRegistryPackageUpdatedPropRegistryPackageTypeForResponse
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    pull_request: WebhookPullRequestReviewCommentDeletedPropPullRequestTypeForResponse
+    repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookRegistryPackageUpdatedType",
-    "WebhookRegistryPackageUpdatedTypeForResponse",
+    "WebhookPullRequestReviewCommentDeletedType",
+    "WebhookPullRequestReviewCommentDeletedTypeForResponse",
 )

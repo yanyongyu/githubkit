@@ -9,69 +9,84 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ConcurrencyGroupType(TypedDict):
-    """Concurrency Group
+class RateLimitOverviewType(TypedDict):
+    """Rate Limit Overview
 
-    A concurrency group with the workflow runs and jobs that are either currently
-    holding
-    or waiting for the concurrency group lease.
+    Rate Limit Overview
     """
 
-    group_name: str
-    group_url: str
-    total_count: int
-    group_members: list[ConcurrencyGroupPropGroupMembersItemsType]
+    resources: RateLimitOverviewPropResourcesType
 
 
-class ConcurrencyGroupTypeForResponse(TypedDict):
-    """Concurrency Group
+class RateLimitOverviewTypeForResponse(TypedDict):
+    """Rate Limit Overview
 
-    A concurrency group with the workflow runs and jobs that are either currently
-    holding
-    or waiting for the concurrency group lease.
+    Rate Limit Overview
     """
 
-    group_name: str
-    group_url: str
-    total_count: int
-    group_members: list[ConcurrencyGroupPropGroupMembersItemsTypeForResponse]
+    resources: RateLimitOverviewPropResourcesTypeForResponse
 
 
-class ConcurrencyGroupPropGroupMembersItemsType(TypedDict):
-    """ConcurrencyGroupPropGroupMembersItems"""
+class RateLimitOverviewPropResourcesType(TypedDict):
+    """RateLimitOverviewPropResources"""
 
-    run_id: int
-    run_name: str
-    run_url: Union[str, None]
-    run_html_url: Union[str, None]
-    job_id: NotRequired[int]
-    job_name: NotRequired[str]
-    job_url: NotRequired[Union[str, None]]
-    job_html_url: NotRequired[Union[str, None]]
-    status: Literal["in_progress", "pending"]
+    core: RateLimitType
+    graphql: NotRequired[RateLimitType]
+    search: RateLimitType
+    code_search: NotRequired[RateLimitType]
+    source_import: NotRequired[RateLimitType]
+    integration_manifest: NotRequired[RateLimitType]
+    actions_runner_registration: NotRequired[RateLimitType]
+    scim: NotRequired[RateLimitType]
+    dependency_snapshots: NotRequired[RateLimitType]
+    dependency_sbom: NotRequired[RateLimitType]
+    code_scanning_autofix: NotRequired[RateLimitType]
+    copilot_usage_records: NotRequired[RateLimitType]
 
 
-class ConcurrencyGroupPropGroupMembersItemsTypeForResponse(TypedDict):
-    """ConcurrencyGroupPropGroupMembersItems"""
+class RateLimitOverviewPropResourcesTypeForResponse(TypedDict):
+    """RateLimitOverviewPropResources"""
 
-    run_id: int
-    run_name: str
-    run_url: Union[str, None]
-    run_html_url: Union[str, None]
-    job_id: NotRequired[int]
-    job_name: NotRequired[str]
-    job_url: NotRequired[Union[str, None]]
-    job_html_url: NotRequired[Union[str, None]]
-    status: Literal["in_progress", "pending"]
+    core: RateLimitTypeForResponse
+    graphql: NotRequired[RateLimitTypeForResponse]
+    search: RateLimitTypeForResponse
+    code_search: NotRequired[RateLimitTypeForResponse]
+    source_import: NotRequired[RateLimitTypeForResponse]
+    integration_manifest: NotRequired[RateLimitTypeForResponse]
+    actions_runner_registration: NotRequired[RateLimitTypeForResponse]
+    scim: NotRequired[RateLimitTypeForResponse]
+    dependency_snapshots: NotRequired[RateLimitTypeForResponse]
+    dependency_sbom: NotRequired[RateLimitTypeForResponse]
+    code_scanning_autofix: NotRequired[RateLimitTypeForResponse]
+    copilot_usage_records: NotRequired[RateLimitTypeForResponse]
+
+
+class RateLimitType(TypedDict):
+    """Rate Limit"""
+
+    limit: int
+    remaining: int
+    reset: int
+    used: int
+
+
+class RateLimitTypeForResponse(TypedDict):
+    """Rate Limit"""
+
+    limit: int
+    remaining: int
+    reset: int
+    used: int
 
 
 __all__ = (
-    "ConcurrencyGroupPropGroupMembersItemsType",
-    "ConcurrencyGroupPropGroupMembersItemsTypeForResponse",
-    "ConcurrencyGroupType",
-    "ConcurrencyGroupTypeForResponse",
+    "RateLimitOverviewPropResourcesType",
+    "RateLimitOverviewPropResourcesTypeForResponse",
+    "RateLimitOverviewType",
+    "RateLimitOverviewTypeForResponse",
+    "RateLimitType",
+    "RateLimitTypeForResponse",
 )

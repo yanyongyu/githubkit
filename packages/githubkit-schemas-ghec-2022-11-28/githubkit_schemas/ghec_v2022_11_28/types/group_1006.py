@@ -9,61 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0599 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0600 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0601 import (
+from .group_0618 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0619 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0620 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0602 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0621 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0660 import WebhooksReleaseType, WebhooksReleaseTypeForResponse
 
 
-class WebhookSecretScanningScanCompletedType(TypedDict):
-    """secret_scanning_scan completed event"""
+class WebhookReleaseDeletedType(TypedDict):
+    """release deleted event"""
 
-    action: Literal["completed"]
-    type: Literal["backfill", "custom-pattern-backfill", "pattern-version-backfill"]
-    source: Literal["git", "issues", "pull-requests", "discussions", "wiki"]
-    started_at: _dt.datetime
-    completed_at: _dt.datetime
-    secret_types: NotRequired[Union[list[str], None]]
-    custom_pattern_name: NotRequired[Union[str, None]]
-    custom_pattern_scope: NotRequired[
-        Union[None, Literal["repository", "organization", "enterprise"]]
-    ]
-    repository: NotRequired[RepositoryWebhooksType]
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    sender: NotRequired[SimpleUserType]
+    release: WebhooksReleaseType
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class WebhookSecretScanningScanCompletedTypeForResponse(TypedDict):
-    """secret_scanning_scan completed event"""
+class WebhookReleaseDeletedTypeForResponse(TypedDict):
+    """release deleted event"""
 
-    action: Literal["completed"]
-    type: Literal["backfill", "custom-pattern-backfill", "pattern-version-backfill"]
-    source: Literal["git", "issues", "pull-requests", "discussions", "wiki"]
-    started_at: str
-    completed_at: str
-    secret_types: NotRequired[Union[list[str], None]]
-    custom_pattern_name: NotRequired[Union[str, None]]
-    custom_pattern_scope: NotRequired[
-        Union[None, Literal["repository", "organization", "enterprise"]]
-    ]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    sender: NotRequired[SimpleUserTypeForResponse]
+    release: WebhooksReleaseTypeForResponse
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookSecretScanningScanCompletedType",
-    "WebhookSecretScanningScanCompletedTypeForResponse",
+    "WebhookReleaseDeletedType",
+    "WebhookReleaseDeletedTypeForResponse",
 )

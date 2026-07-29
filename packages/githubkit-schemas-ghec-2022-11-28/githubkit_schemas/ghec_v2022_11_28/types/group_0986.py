@@ -9,169 +9,351 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0121 import (
-    RepositoryRulesetConditionsType,
-    RepositoryRulesetConditionsTypeForResponse,
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0618 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0619 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0620 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0621 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0987 import (
+    WebhookPullRequestReviewThreadUnresolvedPropPullRequestType,
+    WebhookPullRequestReviewThreadUnresolvedPropPullRequestTypeForResponse,
 )
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsType(
+class WebhookPullRequestReviewThreadUnresolvedType(TypedDict):
+    """pull_request_review_thread unresolved event"""
+
+    action: Literal["unresolved"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    pull_request: WebhookPullRequestReviewThreadUnresolvedPropPullRequestType
+    repository: RepositoryWebhooksType
+    sender: NotRequired[SimpleUserType]
+    thread: WebhookPullRequestReviewThreadUnresolvedPropThreadType
+    updated_at: NotRequired[Union[_dt.datetime, None]]
+
+
+class WebhookPullRequestReviewThreadUnresolvedTypeForResponse(TypedDict):
+    """pull_request_review_thread unresolved event"""
+
+    action: Literal["unresolved"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    pull_request: WebhookPullRequestReviewThreadUnresolvedPropPullRequestTypeForResponse
+    repository: RepositoryWebhooksTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
+    thread: WebhookPullRequestReviewThreadUnresolvedPropThreadTypeForResponse
+    updated_at: NotRequired[Union[str, None]]
+
+
+class WebhookPullRequestReviewThreadUnresolvedPropThreadType(TypedDict):
+    """WebhookPullRequestReviewThreadUnresolvedPropThread"""
+
+    comments: list[
+        WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsType
+    ]
+    node_id: str
+
+
+class WebhookPullRequestReviewThreadUnresolvedPropThreadTypeForResponse(TypedDict):
+    """WebhookPullRequestReviewThreadUnresolvedPropThread"""
+
+    comments: list[
+        WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsTypeForResponse
+    ]
+    node_id: str
+
+
+class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsType(
     TypedDict
 ):
-    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItems"""
+    """Pull Request Review Comment
 
-    condition: NotRequired[RepositoryRulesetConditionsType]
-    changes: NotRequired[
-        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesType
+    The [comment](https://docs.github.com/enterprise-
+    cloud@latest/rest/pulls/comments#get-a-review-comment-for-a-pull-request)
+    itself.
+    """
+
+    links: (
+        WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksType
+    )
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    body: str
+    commit_id: str
+    created_at: _dt.datetime
+    diff_hunk: str
+    html_url: str
+    id: int
+    in_reply_to_id: NotRequired[int]
+    line: Union[int, None]
+    node_id: str
+    original_commit_id: str
+    original_line: int
+    original_position: int
+    original_start_line: Union[int, None]
+    path: str
+    position: Union[int, None]
+    pull_request_review_id: Union[int, None]
+    pull_request_url: str
+    reactions: WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropReactionsType
+    side: Literal["LEFT", "RIGHT"]
+    start_line: Union[int, None]
+    start_side: Union[None, Literal["LEFT", "RIGHT"]]
+    subject_type: NotRequired[Literal["line", "file"]]
+    updated_at: _dt.datetime
+    url: str
+    user: Union[
+        WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropUserType,
+        None,
     ]
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsTypeForResponse(
+class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsTypeForResponse(
     TypedDict
 ):
-    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItems"""
+    """Pull Request Review Comment
 
-    condition: NotRequired[RepositoryRulesetConditionsTypeForResponse]
-    changes: NotRequired[
-        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesTypeForResponse
+    The [comment](https://docs.github.com/enterprise-
+    cloud@latest/rest/pulls/comments#get-a-review-comment-for-a-pull-request)
+    itself.
+    """
+
+    links: WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksTypeForResponse
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    body: str
+    commit_id: str
+    created_at: str
+    diff_hunk: str
+    html_url: str
+    id: int
+    in_reply_to_id: NotRequired[int]
+    line: Union[int, None]
+    node_id: str
+    original_commit_id: str
+    original_line: int
+    original_position: int
+    original_start_line: Union[int, None]
+    path: str
+    position: Union[int, None]
+    pull_request_review_id: Union[int, None]
+    pull_request_url: str
+    reactions: WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropReactionsTypeForResponse
+    side: Literal["LEFT", "RIGHT"]
+    start_line: Union[int, None]
+    start_side: Union[None, Literal["LEFT", "RIGHT"]]
+    subject_type: NotRequired[Literal["line", "file"]]
+    updated_at: str
+    url: str
+    user: Union[
+        WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropUserTypeForResponse,
+        None,
     ]
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesType(
+class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropReactionsType(
     TypedDict
 ):
-    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
-    es
-    """
+    """Reactions"""
 
-    condition_type: NotRequired[
-        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropConditionTypeType
-    ]
-    target: NotRequired[
-        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropTargetType
-    ]
-    include: NotRequired[
-        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropIncludeType
-    ]
-    exclude: NotRequired[
-        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropExcludeType
-    ]
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
+    url: str
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesTypeForResponse(
+class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropReactionsTypeForResponse(
     TypedDict
 ):
-    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
-    es
-    """
+    """Reactions"""
 
-    condition_type: NotRequired[
-        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropConditionTypeTypeForResponse
-    ]
-    target: NotRequired[
-        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropTargetTypeForResponse
-    ]
-    include: NotRequired[
-        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropIncludeTypeForResponse
-    ]
-    exclude: NotRequired[
-        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropExcludeTypeForResponse
-    ]
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
+    url: str
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropConditionTypeType(
+class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropUserType(
     TypedDict
 ):
-    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
-    esPropConditionType
-    """
+    """User"""
 
-    from_: NotRequired[str]
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropConditionTypeTypeForResponse(
+class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropUserTypeForResponse(
     TypedDict
 ):
-    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
-    esPropConditionType
-    """
+    """User"""
 
-    from_: NotRequired[str]
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropTargetType(
+class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksType(
     TypedDict
 ):
-    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
-    esPropTarget
-    """
+    """WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinks"""
 
-    from_: NotRequired[str]
+    html: WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropHtmlType
+    pull_request: WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropPullRequestType
+    self_: WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropSelfType
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropTargetTypeForResponse(
+class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksTypeForResponse(
     TypedDict
 ):
-    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
-    esPropTarget
-    """
+    """WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinks"""
 
-    from_: NotRequired[str]
+    html: WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropHtmlTypeForResponse
+    pull_request: WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropPullRequestTypeForResponse
+    self_: WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropSelfTypeForResponse
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropIncludeType(
+class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropHtmlType(
     TypedDict
 ):
-    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
-    esPropInclude
-    """
+    """Link"""
 
-    from_: NotRequired[list[str]]
+    href: str
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropIncludeTypeForResponse(
+class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropHtmlTypeForResponse(
     TypedDict
 ):
-    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
-    esPropInclude
-    """
+    """Link"""
 
-    from_: NotRequired[list[str]]
+    href: str
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropExcludeType(
+class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropPullRequestType(
     TypedDict
 ):
-    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
-    esPropExclude
-    """
+    """Link"""
 
-    from_: NotRequired[list[str]]
+    href: str
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropExcludeTypeForResponse(
+class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropPullRequestTypeForResponse(
     TypedDict
 ):
-    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
-    esPropExclude
-    """
+    """Link"""
 
-    from_: NotRequired[list[str]]
+    href: str
+
+
+class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropSelfType(
+    TypedDict
+):
+    """Link"""
+
+    href: str
+
+
+class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropSelfTypeForResponse(
+    TypedDict
+):
+    """Link"""
+
+    href: str
 
 
 __all__ = (
-    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropConditionTypeType",
-    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropConditionTypeTypeForResponse",
-    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropExcludeType",
-    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropExcludeTypeForResponse",
-    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropIncludeType",
-    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropIncludeTypeForResponse",
-    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropTargetType",
-    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropTargetTypeForResponse",
-    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesType",
-    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesTypeForResponse",
-    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsType",
-    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsTypeForResponse",
+    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropHtmlType",
+    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropHtmlTypeForResponse",
+    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropPullRequestType",
+    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropPullRequestTypeForResponse",
+    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropSelfType",
+    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropSelfTypeForResponse",
+    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksType",
+    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksTypeForResponse",
+    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropReactionsType",
+    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropReactionsTypeForResponse",
+    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropUserType",
+    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropUserTypeForResponse",
+    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsType",
+    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsTypeForResponse",
+    "WebhookPullRequestReviewThreadUnresolvedPropThreadType",
+    "WebhookPullRequestReviewThreadUnresolvedPropThreadTypeForResponse",
+    "WebhookPullRequestReviewThreadUnresolvedType",
+    "WebhookPullRequestReviewThreadUnresolvedTypeForResponse",
 )

@@ -13,39 +13,71 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksMembershipType(TypedDict):
-    """Membership
+class WebhooksApproverType(TypedDict):
+    """WebhooksApprover"""
 
-    The membership between the user and the organization. Not present when the
-    action is `member_invited`.
-    """
-
-    organization_url: str
-    role: str
-    direct_membership: NotRequired[bool]
-    enterprise_teams_providing_indirect_membership: NotRequired[list[str]]
-    state: str
-    url: str
-    user: Union[WebhooksMembershipPropUserType, None]
-
-
-class WebhooksMembershipTypeForResponse(TypedDict):
-    """Membership
-
-    The membership between the user and the organization. Not present when the
-    action is `member_invited`.
-    """
-
-    organization_url: str
-    role: str
-    direct_membership: NotRequired[bool]
-    enterprise_teams_providing_indirect_membership: NotRequired[list[str]]
-    state: str
-    url: str
-    user: Union[WebhooksMembershipPropUserTypeForResponse, None]
+    avatar_url: NotRequired[str]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    login: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[str]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-class WebhooksMembershipPropUserType(TypedDict):
+class WebhooksApproverTypeForResponse(TypedDict):
+    """WebhooksApprover"""
+
+    avatar_url: NotRequired[str]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    login: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[str]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhooksReviewersItemsType(TypedDict):
+    """WebhooksReviewersItems"""
+
+    reviewer: NotRequired[Union[WebhooksReviewersItemsPropReviewerType, None]]
+    type: NotRequired[Literal["User"]]
+
+
+class WebhooksReviewersItemsTypeForResponse(TypedDict):
+    """WebhooksReviewersItems"""
+
+    reviewer: NotRequired[
+        Union[WebhooksReviewersItemsPropReviewerTypeForResponse, None]
+    ]
+    type: NotRequired[Literal["User"]]
+
+
+class WebhooksReviewersItemsPropReviewerType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -69,10 +101,9 @@ class WebhooksMembershipPropUserType(TypedDict):
     subscriptions_url: NotRequired[str]
     type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
-    user_view_type: NotRequired[str]
 
 
-class WebhooksMembershipPropUserTypeForResponse(TypedDict):
+class WebhooksReviewersItemsPropReviewerTypeForResponse(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -96,12 +127,13 @@ class WebhooksMembershipPropUserTypeForResponse(TypedDict):
     subscriptions_url: NotRequired[str]
     type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
-    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "WebhooksMembershipPropUserType",
-    "WebhooksMembershipPropUserTypeForResponse",
-    "WebhooksMembershipType",
-    "WebhooksMembershipTypeForResponse",
+    "WebhooksApproverType",
+    "WebhooksApproverTypeForResponse",
+    "WebhooksReviewersItemsPropReviewerType",
+    "WebhooksReviewersItemsPropReviewerTypeForResponse",
+    "WebhooksReviewersItemsType",
+    "WebhooksReviewersItemsTypeForResponse",
 )

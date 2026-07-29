@@ -9,104 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class BillingAiCreditUsageReportGheType(TypedDict):
-    """BillingAiCreditUsageReportGhe"""
+class SecretScanningCustomPatternValidationErrorType(TypedDict):
+    """Secret Scanning Custom Pattern Validation Error
 
-    time_period: BillingAiCreditUsageReportGhePropTimePeriodType
-    enterprise: str
-    user: NotRequired[str]
-    organization: NotRequired[str]
-    product: NotRequired[str]
-    model: NotRequired[str]
-    cost_center: NotRequired[BillingAiCreditUsageReportGhePropCostCenterType]
-    usage_items: list[BillingAiCreditUsageReportGhePropUsageItemsItemsType]
+    A validation error for a custom pattern in a batch operation.
+    """
 
-
-class BillingAiCreditUsageReportGheTypeForResponse(TypedDict):
-    """BillingAiCreditUsageReportGhe"""
-
-    time_period: BillingAiCreditUsageReportGhePropTimePeriodTypeForResponse
-    enterprise: str
-    user: NotRequired[str]
-    organization: NotRequired[str]
-    product: NotRequired[str]
-    model: NotRequired[str]
-    cost_center: NotRequired[BillingAiCreditUsageReportGhePropCostCenterTypeForResponse]
-    usage_items: list[BillingAiCreditUsageReportGhePropUsageItemsItemsTypeForResponse]
+    code: NotRequired[
+        Literal[
+            "invalid",
+            "unprocessable",
+            "start_delimiter",
+            "end_delimiter",
+            "name",
+            "must_match",
+            "must_not_match",
+            "custom_pattern_version_mismatch",
+        ]
+    ]
+    message: NotRequired[str]
 
 
-class BillingAiCreditUsageReportGhePropTimePeriodType(TypedDict):
-    """BillingAiCreditUsageReportGhePropTimePeriod"""
+class SecretScanningCustomPatternValidationErrorTypeForResponse(TypedDict):
+    """Secret Scanning Custom Pattern Validation Error
 
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
+    A validation error for a custom pattern in a batch operation.
+    """
 
-
-class BillingAiCreditUsageReportGhePropTimePeriodTypeForResponse(TypedDict):
-    """BillingAiCreditUsageReportGhePropTimePeriod"""
-
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
-
-
-class BillingAiCreditUsageReportGhePropCostCenterType(TypedDict):
-    """BillingAiCreditUsageReportGhePropCostCenter"""
-
-    id: str
-    name: str
-
-
-class BillingAiCreditUsageReportGhePropCostCenterTypeForResponse(TypedDict):
-    """BillingAiCreditUsageReportGhePropCostCenter"""
-
-    id: str
-    name: str
-
-
-class BillingAiCreditUsageReportGhePropUsageItemsItemsType(TypedDict):
-    """BillingAiCreditUsageReportGhePropUsageItemsItems"""
-
-    product: str
-    sku: str
-    model: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
-
-
-class BillingAiCreditUsageReportGhePropUsageItemsItemsTypeForResponse(TypedDict):
-    """BillingAiCreditUsageReportGhePropUsageItemsItems"""
-
-    product: str
-    sku: str
-    model: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
+    code: NotRequired[
+        Literal[
+            "invalid",
+            "unprocessable",
+            "start_delimiter",
+            "end_delimiter",
+            "name",
+            "must_match",
+            "must_not_match",
+            "custom_pattern_version_mismatch",
+        ]
+    ]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "BillingAiCreditUsageReportGhePropCostCenterType",
-    "BillingAiCreditUsageReportGhePropCostCenterTypeForResponse",
-    "BillingAiCreditUsageReportGhePropTimePeriodType",
-    "BillingAiCreditUsageReportGhePropTimePeriodTypeForResponse",
-    "BillingAiCreditUsageReportGhePropUsageItemsItemsType",
-    "BillingAiCreditUsageReportGhePropUsageItemsItemsTypeForResponse",
-    "BillingAiCreditUsageReportGheType",
-    "BillingAiCreditUsageReportGheTypeForResponse",
+    "SecretScanningCustomPatternValidationErrorType",
+    "SecretScanningCustomPatternValidationErrorTypeForResponse",
 )

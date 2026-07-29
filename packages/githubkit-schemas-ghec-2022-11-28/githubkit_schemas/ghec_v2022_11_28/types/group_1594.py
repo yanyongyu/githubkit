@@ -11,52 +11,28 @@ from __future__ import annotations
 
 import datetime as _dt
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class UserCodespacesSecretsGetResponse200Type(TypedDict):
-    """UserCodespacesSecretsGetResponse200"""
+class ReposOwnerRepoMilestonesPostBodyType(TypedDict):
+    """ReposOwnerRepoMilestonesPostBody"""
 
-    total_count: int
-    secrets: list[CodespacesSecretType]
-
-
-class UserCodespacesSecretsGetResponse200TypeForResponse(TypedDict):
-    """UserCodespacesSecretsGetResponse200"""
-
-    total_count: int
-    secrets: list[CodespacesSecretTypeForResponse]
+    title: str
+    state: NotRequired[Literal["open", "closed"]]
+    description: NotRequired[str]
+    due_on: NotRequired[_dt.datetime]
 
 
-class CodespacesSecretType(TypedDict):
-    """Codespaces Secret
+class ReposOwnerRepoMilestonesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoMilestonesPostBody"""
 
-    Secrets for a GitHub Codespace.
-    """
-
-    name: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: str
-
-
-class CodespacesSecretTypeForResponse(TypedDict):
-    """Codespaces Secret
-
-    Secrets for a GitHub Codespace.
-    """
-
-    name: str
-    created_at: str
-    updated_at: str
-    visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: str
+    title: str
+    state: NotRequired[Literal["open", "closed"]]
+    description: NotRequired[str]
+    due_on: NotRequired[str]
 
 
 __all__ = (
-    "CodespacesSecretType",
-    "CodespacesSecretTypeForResponse",
-    "UserCodespacesSecretsGetResponse200Type",
-    "UserCodespacesSecretsGetResponse200TypeForResponse",
+    "ReposOwnerRepoMilestonesPostBodyType",
+    "ReposOwnerRepoMilestonesPostBodyTypeForResponse",
 )

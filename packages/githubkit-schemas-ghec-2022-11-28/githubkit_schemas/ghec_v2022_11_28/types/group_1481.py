@@ -11,26 +11,30 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0351 import ActionsSecretType, ActionsSecretTypeForResponse
+
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyType(TypedDict):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBody
+
+    Examples:
+        {'apps': ['my-app']}
+    """
+
+    apps: list[str]
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200"""
-
-    total_count: int
-    secrets: list[ActionsSecretType]
-
-
-class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200TypeForResponse(
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyTypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200"""
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBody
 
-    total_count: int
-    secrets: list[ActionsSecretTypeForResponse]
+    Examples:
+        {'apps': ['my-app']}
+    """
+
+    apps: list[str]
 
 
 __all__ = (
-    "ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200Type",
-    "ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200TypeForResponse",
+    "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyType",
+    "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyTypeForResponse",
 )

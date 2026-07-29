@@ -9,54 +9,77 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0084 import TeamSimpleType, TeamSimpleTypeForResponse
 
 
-class ProjectsV2StatusUpdateType(TypedDict):
-    """Projects v2 Status Update
+class UserRoleAssignmentType(TypedDict):
+    """A Role Assignment for a User
 
-    An status update belonging to a project
+    The Relationship a User has with a role.
     """
 
-    id: float
+    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
+    inherited_from: NotRequired[list[TeamSimpleType]]
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
+    id: int
     node_id: str
-    project_node_id: NotRequired[str]
-    creator: NotRequired[SimpleUserType]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    status: NotRequired[
-        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
-    ]
-    start_date: NotRequired[_dt.date]
-    target_date: NotRequired[_dt.date]
-    body: NotRequired[Union[str, None]]
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-class ProjectsV2StatusUpdateTypeForResponse(TypedDict):
-    """Projects v2 Status Update
+class UserRoleAssignmentTypeForResponse(TypedDict):
+    """A Role Assignment for a User
 
-    An status update belonging to a project
+    The Relationship a User has with a role.
     """
 
-    id: float
+    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
+    inherited_from: NotRequired[list[TeamSimpleTypeForResponse]]
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
+    id: int
     node_id: str
-    project_node_id: NotRequired[str]
-    creator: NotRequired[SimpleUserTypeForResponse]
-    created_at: str
-    updated_at: str
-    status: NotRequired[
-        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
-    ]
-    start_date: NotRequired[str]
-    target_date: NotRequired[str]
-    body: NotRequired[Union[str, None]]
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "ProjectsV2StatusUpdateType",
-    "ProjectsV2StatusUpdateTypeForResponse",
+    "UserRoleAssignmentType",
+    "UserRoleAssignmentTypeForResponse",
 )

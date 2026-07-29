@@ -9,101 +9,70 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias, Union
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200Type(TypedDict):
-    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200"""
+class ReposOwnerRepoActionsWorkflowsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsWorkflowsGetResponse200"""
 
-    mcp_configuration: Union[
-        ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfigurationType,
-        None,
-    ]
-    enabled_tools: (
-        ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledToolsType
-    )
-    require_actions_workflow_approval: bool
-    is_firewall_enabled: bool
-    is_firewall_recommended_allowlist_enabled: bool
-    custom_allowlist: list[str]
+    total_count: int
+    workflows: list[WorkflowType]
 
 
-class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200"""
+class ReposOwnerRepoActionsWorkflowsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsWorkflowsGetResponse200"""
 
-    mcp_configuration: Union[
-        ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfigurationTypeForResponse,
-        None,
-    ]
-    enabled_tools: ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledToolsTypeForResponse
-    require_actions_workflow_approval: bool
-    is_firewall_enabled: bool
-    is_firewall_recommended_allowlist_enabled: bool
-    custom_allowlist: list[str]
+    total_count: int
+    workflows: list[WorkflowTypeForResponse]
 
 
-ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfigurationType: TypeAlias = dict[
-    str, Any
-]
-"""ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration
+class WorkflowType(TypedDict):
+    """Workflow
 
-The user-supplied MCP server configuration for the repository, as a free-form
-JSON object. This will be set to `null` if no configuration has been set.
-
-The shape of a valid MCP configuration may evolve over time, so this property is
-intentionally not strictly typed. Clients should not assume a fixed schema.
-"""
-
-
-ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfigurationTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration
-
-The user-supplied MCP server configuration for the repository, as a free-form
-JSON object. This will be set to `null` if no configuration has been set.
-
-The shape of a valid MCP configuration may evolve over time, so this property is
-intentionally not strictly typed. Clients should not assume a fixed schema.
-"""
-
-
-class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledToolsType(
-    TypedDict
-):
-    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools
-
-    The enabled review tools for Copilot cloud agent.
+    A GitHub Actions workflow
     """
 
-    codeql: bool
-    copilot_code_review: bool
-    secret_scanning: bool
-    dependency_vulnerability_checks: bool
+    id: int
+    node_id: str
+    name: str
+    path: str
+    state: Literal[
+        "active", "deleted", "disabled_fork", "disabled_inactivity", "disabled_manually"
+    ]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    url: str
+    html_url: str
+    badge_url: str
+    deleted_at: NotRequired[_dt.datetime]
 
 
-class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledToolsTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools
+class WorkflowTypeForResponse(TypedDict):
+    """Workflow
 
-    The enabled review tools for Copilot cloud agent.
+    A GitHub Actions workflow
     """
 
-    codeql: bool
-    copilot_code_review: bool
-    secret_scanning: bool
-    dependency_vulnerability_checks: bool
+    id: int
+    node_id: str
+    name: str
+    path: str
+    state: Literal[
+        "active", "deleted", "disabled_fork", "disabled_inactivity", "disabled_manually"
+    ]
+    created_at: str
+    updated_at: str
+    url: str
+    html_url: str
+    badge_url: str
+    deleted_at: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledToolsType",
-    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledToolsTypeForResponse",
-    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfigurationType",
-    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfigurationTypeForResponse",
-    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200Type",
-    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200TypeForResponse",
+    "ReposOwnerRepoActionsWorkflowsGetResponse200Type",
+    "ReposOwnerRepoActionsWorkflowsGetResponse200TypeForResponse",
+    "WorkflowType",
+    "WorkflowTypeForResponse",
 )

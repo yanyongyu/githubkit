@@ -13,25 +13,75 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsSecretsSecretNamePutBodyType(TypedDict):
-    """OrgsOrgActionsSecretsSecretNamePutBody"""
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyType(TypedDict):
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody"""
 
-    encrypted_value: str
-    key_id: str
-    visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
+    budget_amount: NotRequired[int]
+    prevent_further_usage: NotRequired[bool]
+    budget_alerting: NotRequired[
+        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType
+    ]
+    budget_scope: NotRequired[
+        Literal[
+            "enterprise",
+            "organization",
+            "repository",
+            "cost_center",
+            "multi_user_customer",
+            "user",
+        ]
+    ]
+    budget_entity_name: NotRequired[str]
+    budget_type: NotRequired[Literal["BundlePricing", "ProductPricing", "SkuPricing"]]
+    budget_product_sku: NotRequired[str]
+    user: NotRequired[str]
 
 
-class OrgsOrgActionsSecretsSecretNamePutBodyTypeForResponse(TypedDict):
-    """OrgsOrgActionsSecretsSecretNamePutBody"""
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyTypeForResponse(TypedDict):
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody"""
 
-    encrypted_value: str
-    key_id: str
-    visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
+    budget_amount: NotRequired[int]
+    prevent_further_usage: NotRequired[bool]
+    budget_alerting: NotRequired[
+        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingTypeForResponse
+    ]
+    budget_scope: NotRequired[
+        Literal[
+            "enterprise",
+            "organization",
+            "repository",
+            "cost_center",
+            "multi_user_customer",
+            "user",
+        ]
+    ]
+    budget_entity_name: NotRequired[str]
+    budget_type: NotRequired[Literal["BundlePricing", "ProductPricing", "SkuPricing"]]
+    budget_product_sku: NotRequired[str]
+    user: NotRequired[str]
+
+
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType(
+    TypedDict
+):
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting"""
+
+    will_alert: NotRequired[bool]
+    alert_recipients: NotRequired[list[str]]
+
+
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingTypeForResponse(
+    TypedDict
+):
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting"""
+
+    will_alert: NotRequired[bool]
+    alert_recipients: NotRequired[list[str]]
 
 
 __all__ = (
-    "OrgsOrgActionsSecretsSecretNamePutBodyType",
-    "OrgsOrgActionsSecretsSecretNamePutBodyTypeForResponse",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingTypeForResponse",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyType",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyTypeForResponse",
 )

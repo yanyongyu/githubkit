@@ -9,23 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_1403 import (
+    ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+    ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
+)
 
-class TeamsTeamIdReposOwnerRepoPutBodyType(TypedDict):
-    """TeamsTeamIdReposOwnerRepoPutBody"""
 
-    permission: NotRequired[Literal["pull", "push", "admin"]]
+class ReposOwnerRepoPagesPutBodyAnyof4Type(TypedDict):
+    """ReposOwnerRepoPagesPutBodyAnyof4"""
+
+    cname: NotRequired[Union[str, None]]
+    https_enforced: bool
+    build_type: NotRequired[Literal["legacy", "workflow"]]
+    source: NotRequired[
+        Union[
+            Literal["gh-pages", "master", "master /docs"],
+            ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+        ]
+    ]
 
 
-class TeamsTeamIdReposOwnerRepoPutBodyTypeForResponse(TypedDict):
-    """TeamsTeamIdReposOwnerRepoPutBody"""
+class ReposOwnerRepoPagesPutBodyAnyof4TypeForResponse(TypedDict):
+    """ReposOwnerRepoPagesPutBodyAnyof4"""
 
-    permission: NotRequired[Literal["pull", "push", "admin"]]
+    cname: NotRequired[Union[str, None]]
+    https_enforced: bool
+    build_type: NotRequired[Literal["legacy", "workflow"]]
+    source: NotRequired[
+        Union[
+            Literal["gh-pages", "master", "master /docs"],
+            ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
+        ]
+    ]
 
 
 __all__ = (
-    "TeamsTeamIdReposOwnerRepoPutBodyType",
-    "TeamsTeamIdReposOwnerRepoPutBodyTypeForResponse",
+    "ReposOwnerRepoPagesPutBodyAnyof4Type",
+    "ReposOwnerRepoPagesPutBodyAnyof4TypeForResponse",
 )

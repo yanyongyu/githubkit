@@ -12,20 +12,18 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoGitBlobsPostBody(GitHubModel):
-    """ReposOwnerRepoGitBlobsPostBody"""
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBody(GitHubModel):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBody
 
-    content: str = Field(description="The new blob's content.")
-    encoding: Missing[str] = Field(
-        default=UNSET,
-        description='The encoding used for `content`. Currently, `"utf-8"` and `"base64"` are supported.',
-    )
+    Examples:
+        {'users': ['mona']}
+    """
+
+    users: list[str] = Field(description="The username for users")
 
 
-model_rebuild(ReposOwnerRepoGitBlobsPostBody)
+model_rebuild(ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBody)
 
-__all__ = ("ReposOwnerRepoGitBlobsPostBody",)
+__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBody",)

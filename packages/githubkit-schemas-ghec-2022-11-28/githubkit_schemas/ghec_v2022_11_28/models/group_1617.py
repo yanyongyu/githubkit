@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,18 +18,24 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UserUserIdProjectsV2ProjectNumberDraftsPostBody(GitHubModel):
-    """UserUserIdProjectsV2ProjectNumberDraftsPostBody"""
+class ReposOwnerRepoPullsPullNumberMergePutBody(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberMergePutBody"""
 
-    title: str = Field(
-        description="The title of the draft issue item to create in the project."
+    commit_title: Missing[str] = Field(
+        default=UNSET, description="Title for the automatic commit message."
     )
-    body: Missing[str] = Field(
+    commit_message: Missing[str] = Field(
+        default=UNSET, description="Extra detail to append to automatic commit message."
+    )
+    sha: Missing[str] = Field(
         default=UNSET,
-        description="The body content of the draft issue item to create in the project.",
+        description="SHA that pull request head must match to allow merge.",
+    )
+    merge_method: Missing[Literal["merge", "squash", "rebase"]] = Field(
+        default=UNSET, description="The merge method to use."
     )
 
 
-model_rebuild(UserUserIdProjectsV2ProjectNumberDraftsPostBody)
+model_rebuild(ReposOwnerRepoPullsPullNumberMergePutBody)
 
-__all__ = ("UserUserIdProjectsV2ProjectNumberDraftsPostBody",)
+__all__ = ("ReposOwnerRepoPullsPullNumberMergePutBody",)

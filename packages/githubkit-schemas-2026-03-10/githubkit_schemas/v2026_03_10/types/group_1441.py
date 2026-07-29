@@ -9,52 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameAttestationsSubjectDigestGetResponse200Type(TypedDict):
-    """UsersUsernameAttestationsSubjectDigestGetResponse200"""
+class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1Type(TypedDict):
+    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1"""
 
-    attestations: NotRequired[
-        list[
-            UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsType
-        ]
+    state: NotRequired[Literal["open", "resolved"]]
+    resolution: NotRequired[
+        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
     ]
+    resolution_comment: NotRequired[Union[str, None]]
+    assignee: Union[str, None]
+    validity: NotRequired[Union[None, Literal["active", "inactive"]]]
 
 
-class UsersUsernameAttestationsSubjectDigestGetResponse200TypeForResponse(TypedDict):
-    """UsersUsernameAttestationsSubjectDigestGetResponse200"""
-
-    attestations: NotRequired[
-        list[
-            UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse
-        ]
-    ]
-
-
-class UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsType(
+class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1TypeForResponse(
     TypedDict
 ):
-    """UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
+    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1"""
 
-    repository_id: NotRequired[int]
-    bundle_url: NotRequired[str]
-    initiator: NotRequired[str]
-
-
-class UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse(
-    TypedDict
-):
-    """UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
-
-    repository_id: NotRequired[int]
-    bundle_url: NotRequired[str]
-    initiator: NotRequired[str]
+    state: NotRequired[Literal["open", "resolved"]]
+    resolution: NotRequired[
+        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
+    ]
+    resolution_comment: NotRequired[Union[str, None]]
+    assignee: Union[str, None]
+    validity: NotRequired[Union[None, Literal["active", "inactive"]]]
 
 
 __all__ = (
-    "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsType",
-    "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse",
-    "UsersUsernameAttestationsSubjectDigestGetResponse200Type",
-    "UsersUsernameAttestationsSubjectDigestGetResponse200TypeForResponse",
+    "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1Type",
+    "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1TypeForResponse",
 )

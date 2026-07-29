@@ -13,26 +13,32 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneof1(
+class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBody(
     GitHubModel
 ):
-    """EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneo
-    f1
+    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositories
+    PatchBody
     """
 
-    status: Missing[Literal["error"]] = Field(default=UNSET)
-    error: Missing[str] = Field(default=UNSET)
+    repository_selection: Literal["all", "selected"] = Field(
+        description="One of either 'all' or 'selected'"
+    )
+    repositories: Missing[list[str]] = Field(
+        max_length=50 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="The repository names to add to the installation. Only required when repository_selection is 'selected'",
+    )
 
 
 model_rebuild(
-    EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneof1
+    EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBody
 )
 
 __all__ = (
-    "EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneof1",
+    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBody",
 )

@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,16 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0522 import EnterpriseWebhooks
-from .group_0523 import SimpleInstallation
-from .group_0524 import OrganizationSimpleWebhooks
-from .group_0525 import RepositoryWebhooks
-from .group_0569 import WebhooksTeam1
+from .group_0534 import EnterpriseWebhooks
+from .group_0535 import SimpleInstallation
+from .group_0536 import OrganizationSimpleWebhooks
+from .group_0537 import RepositoryWebhooks
+from .group_0577 import SecretScanningAlertWebhook
 
 
-class WebhookTeamAdd(GitHubModel):
-    """team_add event"""
+class WebhookSecretScanningAlertCreated(GitHubModel):
+    """secret_scanning_alert created event"""
 
+    action: Literal["created"] = Field()
+    alert: SecretScanningAlertWebhook = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -45,13 +49,11 @@ class WebhookTeamAdd(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    team: WebhooksTeam1 = Field(
-        title="Team",
-        description="Groups of organization members that gives permissions on specified repositories.",
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
     )
 
 
-model_rebuild(WebhookTeamAdd)
+model_rebuild(WebhookSecretScanningAlertCreated)
 
-__all__ = ("WebhookTeamAdd",)
+__all__ = ("WebhookSecretScanningAlertCreated",)

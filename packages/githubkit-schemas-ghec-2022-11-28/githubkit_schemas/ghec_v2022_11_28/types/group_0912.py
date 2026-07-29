@@ -13,41 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0600 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0601 import (
+from .group_0618 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0619 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0620 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0634 import (
-    WebhooksProjectChangesType,
-    WebhooksProjectChangesTypeForResponse,
-)
-from .group_0635 import ProjectsV2ItemType, ProjectsV2ItemTypeForResponse
+from .group_0621 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0650 import WebhooksProjectCardType, WebhooksProjectCardTypeForResponse
 
 
-class WebhookProjectsV2ItemArchivedType(TypedDict):
-    """Projects v2 Item Archived Event"""
+class WebhookProjectCardCreatedType(TypedDict):
+    """project_card created event"""
 
-    action: Literal["archived"]
-    changes: WebhooksProjectChangesType
+    action: Literal["created"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
-    projects_v2_item: ProjectsV2ItemType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    project_card: WebhooksProjectCardType
+    repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserType
 
 
-class WebhookProjectsV2ItemArchivedTypeForResponse(TypedDict):
-    """Projects v2 Item Archived Event"""
+class WebhookProjectCardCreatedTypeForResponse(TypedDict):
+    """project_card created event"""
 
-    action: Literal["archived"]
-    changes: WebhooksProjectChangesTypeForResponse
+    action: Literal["created"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: OrganizationSimpleWebhooksTypeForResponse
-    projects_v2_item: ProjectsV2ItemTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    project_card: WebhooksProjectCardTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookProjectsV2ItemArchivedType",
-    "WebhookProjectsV2ItemArchivedTypeForResponse",
+    "WebhookProjectCardCreatedType",
+    "WebhookProjectCardCreatedTypeForResponse",
 )

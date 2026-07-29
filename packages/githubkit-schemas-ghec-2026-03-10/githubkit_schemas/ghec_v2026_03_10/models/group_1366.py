@@ -14,12 +14,15 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgTeamsTeamSlugExternalGroupsPatchBody(GitHubModel):
-    """OrgsOrgTeamsTeamSlugExternalGroupsPatchBody"""
+class OrgsOrgCopilotBillingSelectedUsersDeleteResponse200(GitHubModel):
+    """OrgsOrgCopilotBillingSelectedUsersDeleteResponse200
 
-    group_id: int = Field(description="External Group Id")
+    The total number of seats set to "pending cancellation" for the specified users.
+    """
+
+    seats_cancelled: int = Field()
 
 
-model_rebuild(OrgsOrgTeamsTeamSlugExternalGroupsPatchBody)
+model_rebuild(OrgsOrgCopilotBillingSelectedUsersDeleteResponse200)
 
-__all__ = ("OrgsOrgTeamsTeamSlugExternalGroupsPatchBody",)
+__all__ = ("OrgsOrgCopilotBillingSelectedUsersDeleteResponse200",)

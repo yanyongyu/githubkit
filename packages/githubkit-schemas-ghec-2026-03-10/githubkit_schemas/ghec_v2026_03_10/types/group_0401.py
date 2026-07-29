@@ -13,68 +13,103 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0073 import (
+    CodeScanningAnalysisToolType,
+    CodeScanningAnalysisToolTypeForResponse,
+)
+from .group_0075 import (
+    CodeScanningAlertInstanceType,
+    CodeScanningAlertInstanceTypeForResponse,
+)
+from .group_0321 import PullRequestSimpleType, PullRequestSimpleTypeForResponse
 
-class CodeScanningDefaultSetupType(TypedDict):
-    """CodeScanningDefaultSetup
 
-    Configuration for code scanning default setup.
-    """
+class CodeScanningAlertType(TypedDict):
+    """CodeScanningAlert"""
 
-    state: NotRequired[Literal["configured", "not-configured"]]
-    languages: NotRequired[
-        list[
-            Literal[
-                "actions",
-                "c-cpp",
-                "csharp",
-                "go",
-                "java-kotlin",
-                "javascript-typescript",
-                "python",
-                "ruby",
-                "swift",
-            ]
-        ]
+    number: int
+    created_at: _dt.datetime
+    updated_at: NotRequired[_dt.datetime]
+    url: str
+    html_url: str
+    instances_url: str
+    state: Union[None, Literal["open", "dismissed", "fixed"]]
+    fixed_at: NotRequired[Union[_dt.datetime, None]]
+    dismissed_by: Union[None, SimpleUserType]
+    dismissed_at: Union[_dt.datetime, None]
+    dismissed_reason: Union[
+        None, Literal["false positive", "won't fix", "used in tests"]
     ]
-    runner_type: NotRequired[Union[None, Literal["standard", "labeled"]]]
-    runner_label: NotRequired[Union[str, None]]
-    query_suite: NotRequired[Literal["default", "extended"]]
-    threat_model: NotRequired[Literal["remote", "remote_and_local"]]
-    updated_at: NotRequired[Union[_dt.datetime, None]]
-    schedule: NotRequired[Union[None, Literal["weekly"]]]
+    dismissed_comment: NotRequired[Union[str, None]]
+    rule: CodeScanningAlertRuleType
+    tool: CodeScanningAnalysisToolType
+    most_recent_instance: CodeScanningAlertInstanceType
+    dismissal_approved_by: NotRequired[Union[None, SimpleUserType]]
+    assignees: NotRequired[list[SimpleUserType]]
+    linked_pull_requests: NotRequired[list[PullRequestSimpleType]]
 
 
-class CodeScanningDefaultSetupTypeForResponse(TypedDict):
-    """CodeScanningDefaultSetup
+class CodeScanningAlertTypeForResponse(TypedDict):
+    """CodeScanningAlert"""
 
-    Configuration for code scanning default setup.
-    """
-
-    state: NotRequired[Literal["configured", "not-configured"]]
-    languages: NotRequired[
-        list[
-            Literal[
-                "actions",
-                "c-cpp",
-                "csharp",
-                "go",
-                "java-kotlin",
-                "javascript-typescript",
-                "python",
-                "ruby",
-                "swift",
-            ]
-        ]
+    number: int
+    created_at: str
+    updated_at: NotRequired[str]
+    url: str
+    html_url: str
+    instances_url: str
+    state: Union[None, Literal["open", "dismissed", "fixed"]]
+    fixed_at: NotRequired[Union[str, None]]
+    dismissed_by: Union[None, SimpleUserTypeForResponse]
+    dismissed_at: Union[str, None]
+    dismissed_reason: Union[
+        None, Literal["false positive", "won't fix", "used in tests"]
     ]
-    runner_type: NotRequired[Union[None, Literal["standard", "labeled"]]]
-    runner_label: NotRequired[Union[str, None]]
-    query_suite: NotRequired[Literal["default", "extended"]]
-    threat_model: NotRequired[Literal["remote", "remote_and_local"]]
-    updated_at: NotRequired[Union[str, None]]
-    schedule: NotRequired[Union[None, Literal["weekly"]]]
+    dismissed_comment: NotRequired[Union[str, None]]
+    rule: CodeScanningAlertRuleTypeForResponse
+    tool: CodeScanningAnalysisToolTypeForResponse
+    most_recent_instance: CodeScanningAlertInstanceTypeForResponse
+    dismissal_approved_by: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    assignees: NotRequired[list[SimpleUserTypeForResponse]]
+    linked_pull_requests: NotRequired[list[PullRequestSimpleTypeForResponse]]
+
+
+class CodeScanningAlertRuleType(TypedDict):
+    """CodeScanningAlertRule"""
+
+    id: NotRequired[Union[str, None]]
+    name: NotRequired[str]
+    severity: NotRequired[Union[None, Literal["none", "note", "warning", "error"]]]
+    security_severity_level: NotRequired[
+        Union[None, Literal["low", "medium", "high", "critical"]]
+    ]
+    description: NotRequired[str]
+    full_description: NotRequired[str]
+    tags: NotRequired[Union[list[str], None]]
+    help_: NotRequired[Union[str, None]]
+    help_uri: NotRequired[Union[str, None]]
+
+
+class CodeScanningAlertRuleTypeForResponse(TypedDict):
+    """CodeScanningAlertRule"""
+
+    id: NotRequired[Union[str, None]]
+    name: NotRequired[str]
+    severity: NotRequired[Union[None, Literal["none", "note", "warning", "error"]]]
+    security_severity_level: NotRequired[
+        Union[None, Literal["low", "medium", "high", "critical"]]
+    ]
+    description: NotRequired[str]
+    full_description: NotRequired[str]
+    tags: NotRequired[Union[list[str], None]]
+    help_: NotRequired[Union[str, None]]
+    help_uri: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "CodeScanningDefaultSetupType",
-    "CodeScanningDefaultSetupTypeForResponse",
+    "CodeScanningAlertRuleType",
+    "CodeScanningAlertRuleTypeForResponse",
+    "CodeScanningAlertType",
+    "CodeScanningAlertTypeForResponse",
 )

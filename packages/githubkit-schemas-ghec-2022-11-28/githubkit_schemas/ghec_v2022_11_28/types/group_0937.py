@@ -13,43 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0599 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0600 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0601 import (
+from .group_0619 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0620 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0602 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0636 import PullRequestWebhookType, PullRequestWebhookTypeForResponse
+from .group_0653 import (
+    WebhooksProjectChangesType,
+    WebhooksProjectChangesTypeForResponse,
+)
+from .group_0654 import ProjectsV2ItemType, ProjectsV2ItemTypeForResponse
 
 
-class WebhookPullRequestReadyForReviewType(TypedDict):
-    """pull_request ready_for_review event"""
+class WebhookProjectsV2ItemRestoredType(TypedDict):
+    """Projects v2 Item Restored Event"""
 
-    action: Literal["ready_for_review"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["restored"]
+    changes: WebhooksProjectChangesType
     installation: NotRequired[SimpleInstallationType]
-    number: int
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    pull_request: PullRequestWebhookType
-    repository: RepositoryWebhooksType
+    organization: OrganizationSimpleWebhooksType
+    projects_v2_item: ProjectsV2ItemType
     sender: SimpleUserType
 
 
-class WebhookPullRequestReadyForReviewTypeForResponse(TypedDict):
-    """pull_request ready_for_review event"""
+class WebhookProjectsV2ItemRestoredTypeForResponse(TypedDict):
+    """Projects v2 Item Restored Event"""
 
-    action: Literal["ready_for_review"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    action: Literal["restored"]
+    changes: WebhooksProjectChangesTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    number: int
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    pull_request: PullRequestWebhookTypeForResponse
-    repository: RepositoryWebhooksTypeForResponse
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    projects_v2_item: ProjectsV2ItemTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookPullRequestReadyForReviewType",
-    "WebhookPullRequestReadyForReviewTypeForResponse",
+    "WebhookProjectsV2ItemRestoredType",
+    "WebhookProjectsV2ItemRestoredTypeForResponse",
 )

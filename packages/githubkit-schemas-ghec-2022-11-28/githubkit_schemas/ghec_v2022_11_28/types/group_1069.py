@@ -12,80 +12,48 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse401Type(TypedDict):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse401
-
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[
-        list[AgentsReposOwnerRepoTasksTaskIdGetResponse401PropErrorsItemsType]
-    ]
-    documentation_url: str
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
+from .group_0220 import IssueType, IssueTypeForResponse
+from .group_0619 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0620 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0621 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse401TypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse401
+class WebhookSubIssuesParentIssueAddedType(TypedDict):
+    """parent issue added event"""
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[
-        list[
-            AgentsReposOwnerRepoTasksTaskIdGetResponse401PropErrorsItemsTypeForResponse
-        ]
-    ]
-    documentation_url: str
+    action: Literal["parent_issue_added"]
+    parent_issue_id: NotRequired[float]
+    parent_issue: NotRequired[IssueType]
+    parent_issue_repo: NotRequired[RepositoryType]
+    sub_issue_id: float
+    sub_issue: IssueType
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse401PropErrorsItemsType(TypedDict):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse401PropErrorsItems
+class WebhookSubIssuesParentIssueAddedTypeForResponse(TypedDict):
+    """parent issue added event"""
 
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
-
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse401PropErrorsItemsTypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse401PropErrorsItems
-
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
+    action: Literal["parent_issue_added"]
+    parent_issue_id: NotRequired[float]
+    parent_issue: NotRequired[IssueTypeForResponse]
+    parent_issue_repo: NotRequired[RepositoryTypeForResponse]
+    sub_issue_id: float
+    sub_issue: IssueTypeForResponse
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse401PropErrorsItemsType",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse401PropErrorsItemsTypeForResponse",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse401Type",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse401TypeForResponse",
+    "WebhookSubIssuesParentIssueAddedType",
+    "WebhookSubIssuesParentIssueAddedTypeForResponse",
 )

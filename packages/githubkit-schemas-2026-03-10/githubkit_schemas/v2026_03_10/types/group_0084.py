@@ -10,57 +10,63 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class GistCommitType(TypedDict):
-    """Gist Commit
+class GistCommentType(TypedDict):
+    """Gist Comment
 
-    Gist Commit
+    A comment made to a gist.
     """
 
+    id: int
+    node_id: str
     url: str
-    version: str
+    body: str
     user: Union[None, SimpleUserType]
-    change_status: GistCommitPropChangeStatusType
-    committed_at: _dt.datetime
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
 
 
-class GistCommitTypeForResponse(TypedDict):
-    """Gist Commit
+class GistCommentTypeForResponse(TypedDict):
+    """Gist Comment
 
-    Gist Commit
+    A comment made to a gist.
     """
 
+    id: int
+    node_id: str
     url: str
-    version: str
+    body: str
     user: Union[None, SimpleUserTypeForResponse]
-    change_status: GistCommitPropChangeStatusTypeForResponse
-    committed_at: str
-
-
-class GistCommitPropChangeStatusType(TypedDict):
-    """GistCommitPropChangeStatus"""
-
-    total: NotRequired[int]
-    additions: NotRequired[int]
-    deletions: NotRequired[int]
-
-
-class GistCommitPropChangeStatusTypeForResponse(TypedDict):
-    """GistCommitPropChangeStatus"""
-
-    total: NotRequired[int]
-    additions: NotRequired[int]
-    deletions: NotRequired[int]
+    created_at: str
+    updated_at: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
 
 
 __all__ = (
-    "GistCommitPropChangeStatusType",
-    "GistCommitPropChangeStatusTypeForResponse",
-    "GistCommitType",
-    "GistCommitTypeForResponse",
+    "GistCommentType",
+    "GistCommentTypeForResponse",
 )

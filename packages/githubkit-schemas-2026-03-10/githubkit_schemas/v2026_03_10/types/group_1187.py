@@ -11,24 +11,20 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0190 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
+
+class OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBodyType(TypedDict):
+    """OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody"""
+
+    selected_repository_ids: list[int]
 
 
-class OrgsOrgPropertiesValuesPatchBodyType(TypedDict):
-    """OrgsOrgPropertiesValuesPatchBody"""
+class OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody"""
 
-    repository_names: list[str]
-    properties: list[CustomPropertyValueType]
-
-
-class OrgsOrgPropertiesValuesPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgPropertiesValuesPatchBody"""
-
-    repository_names: list[str]
-    properties: list[CustomPropertyValueTypeForResponse]
+    selected_repository_ids: list[int]
 
 
 __all__ = (
-    "OrgsOrgPropertiesValuesPatchBodyType",
-    "OrgsOrgPropertiesValuesPatchBodyTypeForResponse",
+    "OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBodyType",
+    "OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBodyTypeForResponse",
 )

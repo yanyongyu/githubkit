@@ -9,23 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyType(TypedDict):
-    """OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody"""
+class OrgsOrgCampaignsCampaignNumberPatchBodyType(TypedDict):
+    """OrgsOrgCampaignsCampaignNumberPatchBody"""
 
-    default_level: Literal["public", "internal"]
+    name: NotRequired[str]
+    description: NotRequired[str]
+    managers: NotRequired[list[str]]
+    team_managers: NotRequired[list[str]]
+    ends_at: NotRequired[_dt.datetime]
+    contact_link: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["open", "closed"]]
 
 
-class OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody"""
+class OrgsOrgCampaignsCampaignNumberPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgCampaignsCampaignNumberPatchBody"""
 
-    default_level: Literal["public", "internal"]
+    name: NotRequired[str]
+    description: NotRequired[str]
+    managers: NotRequired[list[str]]
+    team_managers: NotRequired[list[str]]
+    ends_at: NotRequired[str]
+    contact_link: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["open", "closed"]]
 
 
 __all__ = (
-    "OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyType",
-    "OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyTypeForResponse",
+    "OrgsOrgCampaignsCampaignNumberPatchBodyType",
+    "OrgsOrgCampaignsCampaignNumberPatchBodyTypeForResponse",
 )

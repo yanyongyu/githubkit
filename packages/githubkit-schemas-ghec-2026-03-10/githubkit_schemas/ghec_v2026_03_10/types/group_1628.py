@@ -9,49 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, Literal, TypeAlias
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyType(TypedDict):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesPostBody"""
+class ReposOwnerRepoReleasesGenerateNotesPostBodyType(TypedDict):
+    """ReposOwnerRepoReleasesGenerateNotesPostBody"""
 
-    resource_type: Literal[
-        "repository", "github_file", "free_text", "github_issue", "github_pull_request"
-    ]
-    metadata: UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataType
-
-
-class UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyTypeForResponse(TypedDict):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesPostBody"""
-
-    resource_type: Literal[
-        "repository", "github_file", "free_text", "github_issue", "github_pull_request"
-    ]
-    metadata: UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataTypeForResponse
+    tag_name: str
+    target_commitish: NotRequired[str]
+    previous_tag_name: NotRequired[str]
+    configuration_file_path: NotRequired[str]
 
 
-UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataType: TypeAlias = (
-    dict[str, Any]
-)
-"""UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata
+class ReposOwnerRepoReleasesGenerateNotesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoReleasesGenerateNotesPostBody"""
 
-Resource-specific metadata.
-"""
-
-
-UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata
-
-Resource-specific metadata.
-"""
+    tag_name: str
+    target_commitish: NotRequired[str]
+    previous_tag_name: NotRequired[str]
+    configuration_file_path: NotRequired[str]
 
 
 __all__ = (
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataType",
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataTypeForResponse",
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyType",
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyTypeForResponse",
+    "ReposOwnerRepoReleasesGenerateNotesPostBodyType",
+    "ReposOwnerRepoReleasesGenerateNotesPostBodyTypeForResponse",
 )

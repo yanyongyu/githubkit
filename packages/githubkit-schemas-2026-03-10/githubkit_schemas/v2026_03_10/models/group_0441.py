@@ -9,40 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0003 import SimpleUser
-from .group_0020 import Repository
-
-
-class PullRequestPropHead(GitHubModel):
-    """PullRequestPropHead"""
-
-    label: Union[str, None] = Field()
-    ref: str = Field()
-    repo: Union[None, Repository] = Field()
-    sha: str = Field()
-    user: Union[None, SimpleUser] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class PullRequestPropBase(GitHubModel):
-    """PullRequestPropBase"""
+class MergedUpstream(GitHubModel):
+    """Merged upstream
 
-    label: str = Field()
-    ref: str = Field()
-    repo: Repository = Field(title="Repository", description="A repository on GitHub.")
-    sha: str = Field()
-    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    Results of a successful merge upstream request
+    """
+
+    message: Missing[str] = Field(default=UNSET)
+    merge_type: Missing[Literal["merge", "fast-forward", "none"]] = Field(default=UNSET)
+    base_branch: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(PullRequestPropHead)
-model_rebuild(PullRequestPropBase)
+model_rebuild(MergedUpstream)
 
-__all__ = (
-    "PullRequestPropBase",
-    "PullRequestPropHead",
-)
+__all__ = ("MergedUpstream",)

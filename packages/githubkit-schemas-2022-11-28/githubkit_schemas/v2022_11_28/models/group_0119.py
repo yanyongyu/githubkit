@@ -16,23 +16,26 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class SelectedActions(GitHubModel):
-    """SelectedActions"""
+class ActionsForkPrWorkflowsPrivateReposRequest(GitHubModel):
+    """ActionsForkPrWorkflowsPrivateReposRequest"""
 
-    github_owned_allowed: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether GitHub-owned actions are allowed. For example, this includes the actions in the `actions` organization.",
+    run_workflows_from_fork_pull_requests: bool = Field(
+        description="Whether workflows triggered by pull requests from forks are allowed to run on private repositories."
     )
-    verified_allowed: Missing[bool] = Field(
+    send_write_tokens_to_workflows: Missing[bool] = Field(
         default=UNSET,
-        description="Whether actions from GitHub Marketplace verified creators are allowed. Set to `true` to allow all actions by GitHub Marketplace verified creators.",
+        description="Whether GitHub Actions can create pull requests or submit approving pull request reviews from a workflow triggered by a fork pull request.",
     )
-    patterns_allowed: Missing[list[str]] = Field(
+    send_secrets_and_variables: Missing[bool] = Field(
         default=UNSET,
-        description="Specifies a list of string-matching patterns to allow specific action(s) and reusable workflow(s). Wildcards, tags, and SHAs are allowed. For example, `monalisa/octocat@*`, `monalisa/octocat@v2`, `monalisa/*`.\n\n> [!NOTE]\n> The `patterns_allowed` setting only applies to public repositories.",
+        description="Whether to make secrets and variables available to workflows triggered by pull requests from forks.",
+    )
+    require_approval_for_fork_pr_workflows: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether workflows triggered by pull requests from forks require approval from a repository administrator to run.",
     )
 
 
-model_rebuild(SelectedActions)
+model_rebuild(ActionsForkPrWorkflowsPrivateReposRequest)
 
-__all__ = ("SelectedActions",)
+__all__ = ("ActionsForkPrWorkflowsPrivateReposRequest",)

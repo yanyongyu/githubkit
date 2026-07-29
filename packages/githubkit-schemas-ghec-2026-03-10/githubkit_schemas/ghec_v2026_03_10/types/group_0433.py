@@ -9,106 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Any, TypeAlias
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0430 import MetadataType, MetadataTypeForResponse
 
+class ContentDirectoryItemsType(TypedDict):
+    """ContentDirectoryItems"""
 
-class SnapshotType(TypedDict):
-    """snapshot
-
-    Create a new snapshot of a repository's dependencies.
-    """
-
-    version: int
-    job: SnapshotPropJobType
-    sha: str
-    ref: str
-    detector: SnapshotPropDetectorType
-    metadata: NotRequired[MetadataType]
-    manifests: NotRequired[SnapshotPropManifestsType]
-    scanned: _dt.datetime
-
-
-class SnapshotTypeForResponse(TypedDict):
-    """snapshot
-
-    Create a new snapshot of a repository's dependencies.
-    """
-
-    version: int
-    job: SnapshotPropJobTypeForResponse
-    sha: str
-    ref: str
-    detector: SnapshotPropDetectorTypeForResponse
-    metadata: NotRequired[MetadataTypeForResponse]
-    manifests: NotRequired[SnapshotPropManifestsTypeForResponse]
-    scanned: str
-
-
-class SnapshotPropJobType(TypedDict):
-    """SnapshotPropJob"""
-
-    id: str
-    correlator: str
-    html_url: NotRequired[str]
-
-
-class SnapshotPropJobTypeForResponse(TypedDict):
-    """SnapshotPropJob"""
-
-    id: str
-    correlator: str
-    html_url: NotRequired[str]
-
-
-class SnapshotPropDetectorType(TypedDict):
-    """SnapshotPropDetector
-
-    A description of the detector used.
-    """
-
+    type: Literal["dir", "file", "submodule", "symlink"]
+    size: int
     name: str
-    version: str
+    path: str
+    content: NotRequired[str]
+    sha: str
     url: str
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentDirectoryItemsPropLinksType
 
 
-class SnapshotPropDetectorTypeForResponse(TypedDict):
-    """SnapshotPropDetector
+class ContentDirectoryItemsTypeForResponse(TypedDict):
+    """ContentDirectoryItems"""
 
-    A description of the detector used.
-    """
-
+    type: Literal["dir", "file", "submodule", "symlink"]
+    size: int
     name: str
-    version: str
+    path: str
+    content: NotRequired[str]
+    sha: str
     url: str
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentDirectoryItemsPropLinksTypeForResponse
 
 
-SnapshotPropManifestsType: TypeAlias = dict[str, Any]
-"""SnapshotPropManifests
+class ContentDirectoryItemsPropLinksType(TypedDict):
+    """ContentDirectoryItemsPropLinks"""
 
-A collection of package manifests, which are a collection of related
-dependencies declared in a file or representing a logical group of dependencies.
-"""
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
 
 
-SnapshotPropManifestsTypeForResponse: TypeAlias = dict[str, Any]
-"""SnapshotPropManifests
+class ContentDirectoryItemsPropLinksTypeForResponse(TypedDict):
+    """ContentDirectoryItemsPropLinks"""
 
-A collection of package manifests, which are a collection of related
-dependencies declared in a file or representing a logical group of dependencies.
-"""
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
 
 
 __all__ = (
-    "SnapshotPropDetectorType",
-    "SnapshotPropDetectorTypeForResponse",
-    "SnapshotPropJobType",
-    "SnapshotPropJobTypeForResponse",
-    "SnapshotPropManifestsType",
-    "SnapshotPropManifestsTypeForResponse",
-    "SnapshotType",
-    "SnapshotTypeForResponse",
+    "ContentDirectoryItemsPropLinksType",
+    "ContentDirectoryItemsPropLinksTypeForResponse",
+    "ContentDirectoryItemsType",
+    "ContentDirectoryItemsTypeForResponse",
 )

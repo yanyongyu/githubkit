@@ -9,30 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class CodeScanningVariantAnalysisRepository(GitHubModel):
-    """Repository Identifier
+class CodeQualitySetupUpdateAnyof1(GitHubModel):
+    """CodeQualitySetupUpdateAnyof1"""
 
-    Repository Identifier
-    """
-
-    id: int = Field(description="A unique identifier of the repository.")
-    name: str = Field(description="The name of the repository.")
-    full_name: str = Field(
-        description="The full, globally unique, name of the repository."
+    state: Missing[Literal["configured", "not-configured"]] = Field(
+        default=UNSET, description="The desired state of code quality setup."
     )
-    private: bool = Field(description="Whether the repository is private.")
-    stargazers_count: int = Field()
-    updated_at: Union[_dt.datetime, None] = Field()
+    runner_type: Literal["standard", "labeled"] = Field(
+        description="Runner type to be used."
+    )
+    runner_label: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="Runner label to be used if the runner type is labeled.",
+    )
+    languages: Missing[
+        list[
+            Literal[
+                "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
+            ]
+        ]
+    ] = Field(default=UNSET, description="Languages to be analyzed.")
+    ai_findings_option: Missing[Literal["disabled", "on_push"]] = Field(
+        default=UNSET,
+        description="Whether AI findings run for Code Quality on this repository.",
+    )
 
 
-model_rebuild(CodeScanningVariantAnalysisRepository)
+model_rebuild(CodeQualitySetupUpdateAnyof1)
 
-__all__ = ("CodeScanningVariantAnalysisRepository",)
+__all__ = ("CodeQualitySetupUpdateAnyof1",)

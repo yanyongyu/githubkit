@@ -9,26 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0053 import RunnerLabelType, RunnerLabelTypeForResponse
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBodyType(
+class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200"""
+
+    total_count: int
+    labels: list[RunnerLabelType]
+
+
+class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBody"""
+    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200"""
 
-    revoke_credentials: NotRequired[bool]
-
-
-class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBodyTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBody"""
-
-    revoke_credentials: NotRequired[bool]
+    total_count: int
+    labels: list[RunnerLabelTypeForResponse]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBodyType",
-    "EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBodyTypeForResponse",
+    "EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type",
+    "EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse",
 )

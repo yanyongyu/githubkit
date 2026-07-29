@@ -13,38 +13,50 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0599 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0600 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0601 import (
+from .group_0618 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0619 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0620 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0602 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0621 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0991 import (
+    WebhookPullRequestSynchronizePropPullRequestType,
+    WebhookPullRequestSynchronizePropPullRequestTypeForResponse,
+)
 
 
-class WebhookRepositoryUnarchivedType(TypedDict):
-    """repository unarchived event"""
+class WebhookPullRequestSynchronizeType(TypedDict):
+    """pull_request synchronize event"""
 
-    action: Literal["unarchived"]
+    action: Literal["synchronize"]
+    after: str
+    before: str
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
+    number: int
     organization: NotRequired[OrganizationSimpleWebhooksType]
+    pull_request: WebhookPullRequestSynchronizePropPullRequestType
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookRepositoryUnarchivedTypeForResponse(TypedDict):
-    """repository unarchived event"""
+class WebhookPullRequestSynchronizeTypeForResponse(TypedDict):
+    """pull_request synchronize event"""
 
-    action: Literal["unarchived"]
+    action: Literal["synchronize"]
+    after: str
+    before: str
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
+    number: int
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    pull_request: WebhookPullRequestSynchronizePropPullRequestTypeForResponse
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookRepositoryUnarchivedType",
-    "WebhookRepositoryUnarchivedTypeForResponse",
+    "WebhookPullRequestSynchronizeType",
+    "WebhookPullRequestSynchronizeTypeForResponse",
 )

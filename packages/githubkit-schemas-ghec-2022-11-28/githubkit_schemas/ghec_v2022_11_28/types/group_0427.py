@@ -9,71 +9,103 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0214 import ReactionRollupType, ReactionRollupTypeForResponse
 
-class ContributorType(TypedDict):
-    """Contributor
 
-    Contributor
+class CommitCommentType(TypedDict):
+    """Commit Comment
+
+    Commit Comment
     """
 
-    login: NotRequired[str]
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    avatar_url: NotRequired[str]
-    gravatar_id: NotRequired[Union[str, None]]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    organizations_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    events_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    type: str
-    site_admin: NotRequired[bool]
-    contributions: int
-    email: NotRequired[str]
-    name: NotRequired[str]
-    user_view_type: NotRequired[str]
+    html_url: str
+    url: str
+    id: int
+    node_id: str
+    body: str
+    path: Union[str, None]
+    position: Union[int, None]
+    line: Union[int, None]
+    commit_id: str
+    user: Union[None, SimpleUserType]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    reactions: NotRequired[ReactionRollupType]
 
 
-class ContributorTypeForResponse(TypedDict):
-    """Contributor
+class CommitCommentTypeForResponse(TypedDict):
+    """Commit Comment
 
-    Contributor
+    Commit Comment
     """
 
-    login: NotRequired[str]
-    id: NotRequired[int]
+    html_url: str
+    url: str
+    id: int
+    node_id: str
+    body: str
+    path: Union[str, None]
+    position: Union[int, None]
+    line: Union[int, None]
+    commit_id: str
+    user: Union[None, SimpleUserTypeForResponse]
+    created_at: str
+    updated_at: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    reactions: NotRequired[ReactionRollupTypeForResponse]
+
+
+class TimelineCommitCommentedEventType(TypedDict):
+    """Timeline Commit Commented Event
+
+    Timeline Commit Commented Event
+    """
+
+    event: NotRequired[Literal["commit_commented"]]
     node_id: NotRequired[str]
-    avatar_url: NotRequired[str]
-    gravatar_id: NotRequired[Union[str, None]]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    organizations_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    events_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    type: str
-    site_admin: NotRequired[bool]
-    contributions: int
-    email: NotRequired[str]
-    name: NotRequired[str]
-    user_view_type: NotRequired[str]
+    commit_id: NotRequired[str]
+    comments: NotRequired[list[CommitCommentType]]
+
+
+class TimelineCommitCommentedEventTypeForResponse(TypedDict):
+    """Timeline Commit Commented Event
+
+    Timeline Commit Commented Event
+    """
+
+    event: NotRequired[Literal["commit_commented"]]
+    node_id: NotRequired[str]
+    commit_id: NotRequired[str]
+    comments: NotRequired[list[CommitCommentTypeForResponse]]
 
 
 __all__ = (
-    "ContributorType",
-    "ContributorTypeForResponse",
+    "CommitCommentType",
+    "CommitCommentTypeForResponse",
+    "TimelineCommitCommentedEventType",
+    "TimelineCommitCommentedEventTypeForResponse",
 )

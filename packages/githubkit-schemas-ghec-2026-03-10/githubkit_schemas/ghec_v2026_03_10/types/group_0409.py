@@ -10,50 +10,39 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0250 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class RepositoryInvitationType(TypedDict):
-    """Repository Invitation
+class CodeScanningVariantAnalysisRepositoryType(TypedDict):
+    """Repository Identifier
 
-    Repository invitations let you manage who you collaborate with.
+    Repository Identifier
     """
 
     id: int
-    repository: MinimalRepositoryType
-    invitee: Union[None, SimpleUserType]
-    inviter: Union[None, SimpleUserType]
-    permissions: Literal["read", "write", "admin", "triage", "maintain"]
-    created_at: _dt.datetime
-    expired: NotRequired[bool]
-    url: str
-    html_url: str
-    node_id: str
+    name: str
+    full_name: str
+    private: bool
+    stargazers_count: int
+    updated_at: Union[_dt.datetime, None]
 
 
-class RepositoryInvitationTypeForResponse(TypedDict):
-    """Repository Invitation
+class CodeScanningVariantAnalysisRepositoryTypeForResponse(TypedDict):
+    """Repository Identifier
 
-    Repository invitations let you manage who you collaborate with.
+    Repository Identifier
     """
 
     id: int
-    repository: MinimalRepositoryTypeForResponse
-    invitee: Union[None, SimpleUserTypeForResponse]
-    inviter: Union[None, SimpleUserTypeForResponse]
-    permissions: Literal["read", "write", "admin", "triage", "maintain"]
-    created_at: str
-    expired: NotRequired[bool]
-    url: str
-    html_url: str
-    node_id: str
+    name: str
+    full_name: str
+    private: bool
+    stargazers_count: int
+    updated_at: Union[str, None]
 
 
 __all__ = (
-    "RepositoryInvitationType",
-    "RepositoryInvitationTypeForResponse",
+    "CodeScanningVariantAnalysisRepositoryType",
+    "CodeScanningVariantAnalysisRepositoryTypeForResponse",
 )

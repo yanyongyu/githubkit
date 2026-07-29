@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
 
 from pydantic import Field
 
@@ -17,48 +17,39 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0036 import SimpleRepository
+from .group_0011 import WebhookConfig
+from .group_0393 import HookResponse
 
 
-class IssueReference(GitHubModel):
-    """Issue Reference
+class Hook(GitHubModel):
+    """Webhook
 
-    A minimal reference to an issue linked from a timeline event (e.g. sub-issue,
-    parent-issue, or dependency events).
+    Webhooks for repositories.
     """
 
-    number: int = Field(description="The number of the referenced issue.")
-    title: str = Field(description="The title of the referenced issue.")
-    state: str = Field(description="The state of the referenced issue.")
-    state_reason: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The reason for the referenced issue's state."
+    type: str = Field()
+    id: int = Field(description="Unique identifier of the webhook.")
+    name: str = Field(
+        description="The name of a valid service, use 'web' for a webhook."
     )
-    repository: SimpleRepository = Field(
-        title="Simple Repository", description="A GitHub repository."
+    active: bool = Field(
+        description="Determines whether the hook is actually triggered on pushes."
     )
-    issue_type: Union[IssueReferencePropIssueType, None] = Field(
-        title="Issue Type", description="The type of the referenced issue."
+    events: list[str] = Field(
+        description="Determines what events the hook is triggered for. Default: ['push']."
     )
-
-
-class IssueReferencePropIssueType(GitHubModel):
-    """Issue Type
-
-    The type of the referenced issue.
-    """
-
-    id: int = Field(description="The unique identifier of the issue type.")
-    node_id: str = Field(description="The node identifier of the issue type.")
-    name: str = Field(description="The name of the issue type.")
-    color: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The color of the issue type."
+    config: WebhookConfig = Field(
+        title="Webhook Configuration", description="Configuration object of the webhook"
     )
+    updated_at: _dt.datetime = Field()
+    created_at: _dt.datetime = Field()
+    url: str = Field()
+    test_url: str = Field()
+    ping_url: str = Field()
+    deliveries_url: Missing[str] = Field(default=UNSET)
+    last_response: HookResponse = Field(title="Hook Response")
 
 
-model_rebuild(IssueReference)
-model_rebuild(IssueReferencePropIssueType)
+model_rebuild(Hook)
 
-__all__ = (
-    "IssueReference",
-    "IssueReferencePropIssueType",
-)
+__all__ = ("Hook",)

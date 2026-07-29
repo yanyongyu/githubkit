@@ -9,65 +9,73 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
+class ContentFileType(TypedDict):
+    """Content File
 
-class DeploymentStatusType(TypedDict):
-    """Deployment Status
-
-    The status of a deployment.
+    Content File
     """
 
+    type: Literal["file"]
+    encoding: str
+    size: int
+    name: str
+    path: str
+    content: str
+    sha: str
     url: str
-    id: int
-    node_id: str
-    state: Literal[
-        "error", "failure", "inactive", "pending", "success", "queued", "in_progress"
-    ]
-    creator: Union[None, SimpleUserType]
-    description: str
-    environment: NotRequired[str]
-    target_url: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    deployment_url: str
-    repository_url: str
-    environment_url: NotRequired[str]
-    log_url: NotRequired[str]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentFilePropLinksType
+    target: NotRequired[str]
+    submodule_git_url: NotRequired[str]
 
 
-class DeploymentStatusTypeForResponse(TypedDict):
-    """Deployment Status
+class ContentFileTypeForResponse(TypedDict):
+    """Content File
 
-    The status of a deployment.
+    Content File
     """
 
+    type: Literal["file"]
+    encoding: str
+    size: int
+    name: str
+    path: str
+    content: str
+    sha: str
     url: str
-    id: int
-    node_id: str
-    state: Literal[
-        "error", "failure", "inactive", "pending", "success", "queued", "in_progress"
-    ]
-    creator: Union[None, SimpleUserTypeForResponse]
-    description: str
-    environment: NotRequired[str]
-    target_url: str
-    created_at: str
-    updated_at: str
-    deployment_url: str
-    repository_url: str
-    environment_url: NotRequired[str]
-    log_url: NotRequired[str]
-    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentFilePropLinksTypeForResponse
+    target: NotRequired[str]
+    submodule_git_url: NotRequired[str]
+
+
+class ContentFilePropLinksType(TypedDict):
+    """ContentFilePropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
+
+
+class ContentFilePropLinksTypeForResponse(TypedDict):
+    """ContentFilePropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
 
 
 __all__ = (
-    "DeploymentStatusType",
-    "DeploymentStatusTypeForResponse",
+    "ContentFilePropLinksType",
+    "ContentFilePropLinksTypeForResponse",
+    "ContentFileType",
+    "ContentFileTypeForResponse",
 )

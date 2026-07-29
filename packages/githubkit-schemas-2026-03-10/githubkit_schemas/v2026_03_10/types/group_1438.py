@@ -9,81 +9,181 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0196 import (
+    RepositoryRulesetBypassActorType,
+    RepositoryRulesetBypassActorTypeForResponse,
+)
+from .group_0197 import (
+    RepositoryRulesetConditionsType,
+    RepositoryRulesetConditionsTypeForResponse,
+)
+from .group_0208 import (
+    RepositoryRuleCreationType,
+    RepositoryRuleCreationTypeForResponse,
+    RepositoryRuleDeletionType,
+    RepositoryRuleDeletionTypeForResponse,
+    RepositoryRuleNonFastForwardType,
+    RepositoryRuleNonFastForwardTypeForResponse,
+    RepositoryRuleRequiredSignaturesType,
+    RepositoryRuleRequiredSignaturesTypeForResponse,
+)
+from .group_0209 import RepositoryRuleUpdateType, RepositoryRuleUpdateTypeForResponse
+from .group_0211 import (
+    RepositoryRuleRequiredLinearHistoryType,
+    RepositoryRuleRequiredLinearHistoryTypeForResponse,
+)
+from .group_0212 import (
+    RepositoryRuleMergeQueueType,
+    RepositoryRuleMergeQueueTypeForResponse,
+)
+from .group_0214 import (
+    RepositoryRuleRequiredDeploymentsType,
+    RepositoryRuleRequiredDeploymentsTypeForResponse,
+)
+from .group_0216 import (
+    RepositoryRulePullRequestType,
+    RepositoryRulePullRequestTypeForResponse,
+)
+from .group_0218 import (
+    RepositoryRuleRequiredStatusChecksType,
+    RepositoryRuleRequiredStatusChecksTypeForResponse,
+)
+from .group_0220 import (
+    RepositoryRuleCommitMessagePatternType,
+    RepositoryRuleCommitMessagePatternTypeForResponse,
+)
+from .group_0222 import (
+    RepositoryRuleCommitAuthorEmailPatternType,
+    RepositoryRuleCommitAuthorEmailPatternTypeForResponse,
+)
+from .group_0224 import (
+    RepositoryRuleCommitterEmailPatternType,
+    RepositoryRuleCommitterEmailPatternTypeForResponse,
+)
+from .group_0226 import (
+    RepositoryRuleBranchNamePatternType,
+    RepositoryRuleBranchNamePatternTypeForResponse,
+)
+from .group_0228 import (
+    RepositoryRuleTagNamePatternType,
+    RepositoryRuleTagNamePatternTypeForResponse,
+)
+from .group_0231 import (
+    RepositoryRuleWorkflowsType,
+    RepositoryRuleWorkflowsTypeForResponse,
+)
+from .group_0233 import (
+    RepositoryRuleCodeScanningType,
+    RepositoryRuleCodeScanningTypeForResponse,
+)
+from .group_0235 import (
+    RepositoryRuleCopilotCodeReviewType,
+    RepositoryRuleCopilotCodeReviewTypeForResponse,
+)
+from .group_0237 import (
+    RepositoryRuleLicenseComplianceScanningType,
+    RepositoryRuleLicenseComplianceScanningTypeForResponse,
+)
+from .group_0238 import (
+    RepositoryRuleFilePathRestrictionType,
+    RepositoryRuleFilePathRestrictionTypeForResponse,
+)
+from .group_0240 import (
+    RepositoryRuleMaxFilePathLengthType,
+    RepositoryRuleMaxFilePathLengthTypeForResponse,
+)
+from .group_0242 import (
+    RepositoryRuleFileExtensionRestrictionType,
+    RepositoryRuleFileExtensionRestrictionTypeForResponse,
+)
+from .group_0244 import (
+    RepositoryRuleMaxFileSizeType,
+    RepositoryRuleMaxFileSizeTypeForResponse,
+)
 
-class UsersUsernameAttestationsBulkListPostResponse200Type(TypedDict):
-    """UsersUsernameAttestationsBulkListPostResponse200"""
 
-    attestations_subject_digests: NotRequired[
-        UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType
+class ReposOwnerRepoRulesetsPostBodyType(TypedDict):
+    """ReposOwnerRepoRulesetsPostBody"""
+
+    name: str
+    target: NotRequired[Literal["branch", "tag", "push"]]
+    enforcement: Literal["disabled", "active", "evaluate"]
+    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorType]]
+    conditions: NotRequired[RepositoryRulesetConditionsType]
+    rules: NotRequired[
+        list[
+            Union[
+                RepositoryRuleCreationType,
+                RepositoryRuleUpdateType,
+                RepositoryRuleDeletionType,
+                RepositoryRuleRequiredLinearHistoryType,
+                RepositoryRuleMergeQueueType,
+                RepositoryRuleRequiredDeploymentsType,
+                RepositoryRuleRequiredSignaturesType,
+                RepositoryRulePullRequestType,
+                RepositoryRuleRequiredStatusChecksType,
+                RepositoryRuleNonFastForwardType,
+                RepositoryRuleCommitMessagePatternType,
+                RepositoryRuleCommitAuthorEmailPatternType,
+                RepositoryRuleCommitterEmailPatternType,
+                RepositoryRuleBranchNamePatternType,
+                RepositoryRuleTagNamePatternType,
+                RepositoryRuleWorkflowsType,
+                RepositoryRuleCodeScanningType,
+                RepositoryRuleCopilotCodeReviewType,
+                RepositoryRuleLicenseComplianceScanningType,
+                RepositoryRuleFilePathRestrictionType,
+                RepositoryRuleMaxFilePathLengthType,
+                RepositoryRuleFileExtensionRestrictionType,
+                RepositoryRuleMaxFileSizeType,
+            ]
+        ]
     ]
-    page_info: NotRequired[
-        UsersUsernameAttestationsBulkListPostResponse200PropPageInfoType
+
+
+class ReposOwnerRepoRulesetsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoRulesetsPostBody"""
+
+    name: str
+    target: NotRequired[Literal["branch", "tag", "push"]]
+    enforcement: Literal["disabled", "active", "evaluate"]
+    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorTypeForResponse]]
+    conditions: NotRequired[RepositoryRulesetConditionsTypeForResponse]
+    rules: NotRequired[
+        list[
+            Union[
+                RepositoryRuleCreationTypeForResponse,
+                RepositoryRuleUpdateTypeForResponse,
+                RepositoryRuleDeletionTypeForResponse,
+                RepositoryRuleRequiredLinearHistoryTypeForResponse,
+                RepositoryRuleMergeQueueTypeForResponse,
+                RepositoryRuleRequiredDeploymentsTypeForResponse,
+                RepositoryRuleRequiredSignaturesTypeForResponse,
+                RepositoryRulePullRequestTypeForResponse,
+                RepositoryRuleRequiredStatusChecksTypeForResponse,
+                RepositoryRuleNonFastForwardTypeForResponse,
+                RepositoryRuleCommitMessagePatternTypeForResponse,
+                RepositoryRuleCommitAuthorEmailPatternTypeForResponse,
+                RepositoryRuleCommitterEmailPatternTypeForResponse,
+                RepositoryRuleBranchNamePatternTypeForResponse,
+                RepositoryRuleTagNamePatternTypeForResponse,
+                RepositoryRuleWorkflowsTypeForResponse,
+                RepositoryRuleCodeScanningTypeForResponse,
+                RepositoryRuleCopilotCodeReviewTypeForResponse,
+                RepositoryRuleLicenseComplianceScanningTypeForResponse,
+                RepositoryRuleFilePathRestrictionTypeForResponse,
+                RepositoryRuleMaxFilePathLengthTypeForResponse,
+                RepositoryRuleFileExtensionRestrictionTypeForResponse,
+                RepositoryRuleMaxFileSizeTypeForResponse,
+            ]
+        ]
     ]
-
-
-class UsersUsernameAttestationsBulkListPostResponse200TypeForResponse(TypedDict):
-    """UsersUsernameAttestationsBulkListPostResponse200"""
-
-    attestations_subject_digests: NotRequired[
-        UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsTypeForResponse
-    ]
-    page_info: NotRequired[
-        UsersUsernameAttestationsBulkListPostResponse200PropPageInfoTypeForResponse
-    ]
-
-
-UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType: TypeAlias = dict[
-    str, Any
-]
-"""UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
-
-Mapping of subject digest to bundles.
-"""
-
-
-UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
-
-Mapping of subject digest to bundles.
-"""
-
-
-class UsersUsernameAttestationsBulkListPostResponse200PropPageInfoType(TypedDict):
-    """UsersUsernameAttestationsBulkListPostResponse200PropPageInfo
-
-    Information about the current page.
-    """
-
-    has_next: NotRequired[bool]
-    has_previous: NotRequired[bool]
-    next_: NotRequired[str]
-    previous: NotRequired[str]
-
-
-class UsersUsernameAttestationsBulkListPostResponse200PropPageInfoTypeForResponse(
-    TypedDict
-):
-    """UsersUsernameAttestationsBulkListPostResponse200PropPageInfo
-
-    Information about the current page.
-    """
-
-    has_next: NotRequired[bool]
-    has_previous: NotRequired[bool]
-    next_: NotRequired[str]
-    previous: NotRequired[str]
 
 
 __all__ = (
-    "UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType",
-    "UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsTypeForResponse",
-    "UsersUsernameAttestationsBulkListPostResponse200PropPageInfoType",
-    "UsersUsernameAttestationsBulkListPostResponse200PropPageInfoTypeForResponse",
-    "UsersUsernameAttestationsBulkListPostResponse200Type",
-    "UsersUsernameAttestationsBulkListPostResponse200TypeForResponse",
+    "ReposOwnerRepoRulesetsPostBodyType",
+    "ReposOwnerRepoRulesetsPostBodyTypeForResponse",
 )

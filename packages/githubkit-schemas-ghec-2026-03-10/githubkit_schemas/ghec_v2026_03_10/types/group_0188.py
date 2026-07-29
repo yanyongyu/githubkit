@@ -9,79 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class SecretScanningPatternConfigurationType(TypedDict):
-    """Secret scanning pattern configuration
+class SecretScanningCustomPatternType(TypedDict):
+    """Secret Scanning Custom Pattern
 
-    A collection of secret scanning patterns and their settings related to push
-    protection.
+    A custom pattern for secret scanning.
     """
 
-    pattern_config_version: NotRequired[Union[str, None]]
-    provider_pattern_overrides: NotRequired[list[SecretScanningPatternOverrideType]]
-    custom_pattern_overrides: NotRequired[list[SecretScanningPatternOverrideType]]
+    id: int
+    name: str
+    pattern: str
+    slug: str
+    state: Literal["published", "unpublished"]
+    push_protection_enabled: bool
+    start_delimiter: NotRequired[Union[str, None]]
+    end_delimiter: NotRequired[Union[str, None]]
+    must_match: NotRequired[Union[list[str], None]]
+    must_not_match: NotRequired[Union[list[str], None]]
+    custom_pattern_version: NotRequired[Union[str, None]]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
 
 
-class SecretScanningPatternConfigurationTypeForResponse(TypedDict):
-    """Secret scanning pattern configuration
+class SecretScanningCustomPatternTypeForResponse(TypedDict):
+    """Secret Scanning Custom Pattern
 
-    A collection of secret scanning patterns and their settings related to push
-    protection.
+    A custom pattern for secret scanning.
     """
 
-    pattern_config_version: NotRequired[Union[str, None]]
-    provider_pattern_overrides: NotRequired[
-        list[SecretScanningPatternOverrideTypeForResponse]
-    ]
-    custom_pattern_overrides: NotRequired[
-        list[SecretScanningPatternOverrideTypeForResponse]
-    ]
-
-
-class SecretScanningPatternOverrideType(TypedDict):
-    """SecretScanningPatternOverride"""
-
-    token_type: NotRequired[str]
+    id: int
+    name: str
+    pattern: str
+    slug: str
+    state: Literal["published", "unpublished"]
+    push_protection_enabled: bool
+    start_delimiter: NotRequired[Union[str, None]]
+    end_delimiter: NotRequired[Union[str, None]]
+    must_match: NotRequired[Union[list[str], None]]
+    must_not_match: NotRequired[Union[list[str], None]]
     custom_pattern_version: NotRequired[Union[str, None]]
-    slug: NotRequired[str]
-    display_name: NotRequired[str]
-    alert_total: NotRequired[int]
-    alert_total_percentage: NotRequired[int]
-    false_positives: NotRequired[int]
-    false_positive_rate: NotRequired[int]
-    bypass_rate: NotRequired[int]
-    default_setting: NotRequired[Literal["disabled", "enabled"]]
-    enterprise_setting: NotRequired[
-        Union[None, Literal["not-set", "disabled", "enabled"]]
-    ]
-    setting: NotRequired[Literal["not-set", "disabled", "enabled"]]
-
-
-class SecretScanningPatternOverrideTypeForResponse(TypedDict):
-    """SecretScanningPatternOverride"""
-
-    token_type: NotRequired[str]
-    custom_pattern_version: NotRequired[Union[str, None]]
-    slug: NotRequired[str]
-    display_name: NotRequired[str]
-    alert_total: NotRequired[int]
-    alert_total_percentage: NotRequired[int]
-    false_positives: NotRequired[int]
-    false_positive_rate: NotRequired[int]
-    bypass_rate: NotRequired[int]
-    default_setting: NotRequired[Literal["disabled", "enabled"]]
-    enterprise_setting: NotRequired[
-        Union[None, Literal["not-set", "disabled", "enabled"]]
-    ]
-    setting: NotRequired[Literal["not-set", "disabled", "enabled"]]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
 
 
 __all__ = (
-    "SecretScanningPatternConfigurationType",
-    "SecretScanningPatternConfigurationTypeForResponse",
-    "SecretScanningPatternOverrideType",
-    "SecretScanningPatternOverrideTypeForResponse",
+    "SecretScanningCustomPatternType",
+    "SecretScanningCustomPatternTypeForResponse",
 )

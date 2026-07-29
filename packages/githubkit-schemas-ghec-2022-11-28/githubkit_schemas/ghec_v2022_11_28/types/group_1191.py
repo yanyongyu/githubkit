@@ -9,32 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBodyType(
+class EnterprisesEnterpriseCopilotBillingSelectedUsersPostBodyType(TypedDict):
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersPostBody"""
+
+    selected_usernames: list[str]
+
+
+class EnterprisesEnterpriseCopilotBillingSelectedUsersPostBodyTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody"""
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersPostBody"""
 
-    users: NotRequired[list[str]]
-    organizations: NotRequired[list[str]]
-    repositories: NotRequired[list[str]]
-    enterprise_teams: NotRequired[list[str]]
-
-
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBodyTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody"""
-
-    users: NotRequired[list[str]]
-    organizations: NotRequired[list[str]]
-    repositories: NotRequired[list[str]]
-    enterprise_teams: NotRequired[list[str]]
+    selected_usernames: list[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBodyType",
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotBillingSelectedUsersPostBodyType",
+    "EnterprisesEnterpriseCopilotBillingSelectedUsersPostBodyTypeForResponse",
 )

@@ -9,37 +9,75 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseTeamsPostBodyType(TypedDict):
-    """EnterprisesEnterpriseTeamsPostBody"""
+class AgentsTasksGetResponse403Type(TypedDict):
+    """AgentsTasksGetResponse403
 
-    name: str
-    description: NotRequired[Union[str, None]]
-    sync_to_organizations: NotRequired[Literal["all", "disabled"]]
-    organization_selection_type: NotRequired[Literal["disabled", "selected", "all"]]
-    group_id: NotRequired[Union[str, None]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[list[AgentsTasksGetResponse403PropErrorsItemsType]]
+    documentation_url: str
+
+
+class AgentsTasksGetResponse403TypeForResponse(TypedDict):
+    """AgentsTasksGetResponse403
+
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[list[AgentsTasksGetResponse403PropErrorsItemsTypeForResponse]]
+    documentation_url: str
+
+
+class AgentsTasksGetResponse403PropErrorsItemsType(TypedDict):
+    """AgentsTasksGetResponse403PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
     ]
+    message: NotRequired[str]
 
 
-class EnterprisesEnterpriseTeamsPostBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseTeamsPostBody"""
+class AgentsTasksGetResponse403PropErrorsItemsTypeForResponse(TypedDict):
+    """AgentsTasksGetResponse403PropErrorsItems
 
-    name: str
-    description: NotRequired[Union[str, None]]
-    sync_to_organizations: NotRequired[Literal["all", "disabled"]]
-    organization_selection_type: NotRequired[Literal["disabled", "selected", "all"]]
-    group_id: NotRequired[Union[str, None]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
     ]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseTeamsPostBodyType",
-    "EnterprisesEnterpriseTeamsPostBodyTypeForResponse",
+    "AgentsTasksGetResponse403PropErrorsItemsType",
+    "AgentsTasksGetResponse403PropErrorsItemsTypeForResponse",
+    "AgentsTasksGetResponse403Type",
+    "AgentsTasksGetResponse403TypeForResponse",
 )

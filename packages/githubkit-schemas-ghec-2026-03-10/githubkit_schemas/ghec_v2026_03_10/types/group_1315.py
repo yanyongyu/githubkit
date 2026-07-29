@@ -9,22 +9,119 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Any, Literal, TypeAlias
 from typing_extensions import NotRequired, TypedDict
 
-
-class OrgsOrgCopilotContentExclusionPutResponse200Type(TypedDict):
-    """OrgsOrgCopilotContentExclusionPutResponse200"""
-
-    message: NotRequired[str]
+from githubkit.typing import UniqueList
 
 
-class OrgsOrgCopilotContentExclusionPutResponse200TypeForResponse(TypedDict):
-    """OrgsOrgCopilotContentExclusionPutResponse200"""
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyType(TypedDict):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody"""
 
-    message: NotRequired[str]
+    logical_environment: str
+    physical_environment: NotRequired[str]
+    deployments: list[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsType
+    ]
+    partial_success: NotRequired[bool]
+    return_records: NotRequired[bool]
+
+
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody"""
+
+    logical_environment: str
+    physical_environment: NotRequired[str]
+    deployments: list[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsTypeForResponse
+    ]
+    partial_success: NotRequired[bool]
+    return_records: NotRequired[bool]
+
+
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsType(
+    TypedDict
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsIte
+    ms
+    """
+
+    name: str
+    digest: str
+    version: NotRequired[str]
+    status: NotRequired[Literal["deployed", "decommissioned"]]
+    deployment_name: str
+    github_repository: NotRequired[str]
+    tags: NotRequired[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTagsType
+    ]
+    runtime_risks: NotRequired[
+        UniqueList[
+            Literal[
+                "critical-resource",
+                "internet-exposed",
+                "lateral-movement",
+                "sensitive-data",
+            ]
+        ]
+    ]
+
+
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsIte
+    ms
+    """
+
+    name: str
+    digest: str
+    version: NotRequired[str]
+    status: NotRequired[Literal["deployed", "decommissioned"]]
+    deployment_name: str
+    github_repository: NotRequired[str]
+    tags: NotRequired[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTagsTypeForResponse
+    ]
+    runtime_risks: NotRequired[
+        UniqueList[
+            Literal[
+                "critical-resource",
+                "internet-exposed",
+                "lateral-movement",
+                "sensitive-data",
+            ]
+        ]
+    ]
+
+
+OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTagsType: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsIte
+msPropTags
+
+Key-value pairs to tag the deployment record.
+"""
+
+
+OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTagsTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsIte
+msPropTags
+
+Key-value pairs to tag the deployment record.
+"""
 
 
 __all__ = (
-    "OrgsOrgCopilotContentExclusionPutResponse200Type",
-    "OrgsOrgCopilotContentExclusionPutResponse200TypeForResponse",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTagsType",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTagsTypeForResponse",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsType",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsTypeForResponse",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyType",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyTypeForResponse",
 )

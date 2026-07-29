@@ -9,29 +9,79 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class AppManifestsCodeConversionsPostResponse201Allof1Type(TypedDict):
-    """AppManifestsCodeConversionsPostResponse201Allof1"""
+class AgentsReposOwnerRepoTasksGetResponse422Type(TypedDict):
+    """AgentsReposOwnerRepoTasksGetResponse422
 
-    client_id: str
-    client_secret: str
-    webhook_secret: Union[str, None]
-    pem: str
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[
+        list[AgentsReposOwnerRepoTasksGetResponse422PropErrorsItemsType]
+    ]
+    documentation_url: str
 
 
-class AppManifestsCodeConversionsPostResponse201Allof1TypeForResponse(TypedDict):
-    """AppManifestsCodeConversionsPostResponse201Allof1"""
+class AgentsReposOwnerRepoTasksGetResponse422TypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoTasksGetResponse422
 
-    client_id: str
-    client_secret: str
-    webhook_secret: Union[str, None]
-    pem: str
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[
+        list[AgentsReposOwnerRepoTasksGetResponse422PropErrorsItemsTypeForResponse]
+    ]
+    documentation_url: str
+
+
+class AgentsReposOwnerRepoTasksGetResponse422PropErrorsItemsType(TypedDict):
+    """AgentsReposOwnerRepoTasksGetResponse422PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
+
+
+class AgentsReposOwnerRepoTasksGetResponse422PropErrorsItemsTypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoTasksGetResponse422PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "AppManifestsCodeConversionsPostResponse201Allof1Type",
-    "AppManifestsCodeConversionsPostResponse201Allof1TypeForResponse",
+    "AgentsReposOwnerRepoTasksGetResponse422PropErrorsItemsType",
+    "AgentsReposOwnerRepoTasksGetResponse422PropErrorsItemsTypeForResponse",
+    "AgentsReposOwnerRepoTasksGetResponse422Type",
+    "AgentsReposOwnerRepoTasksGetResponse422TypeForResponse",
 )

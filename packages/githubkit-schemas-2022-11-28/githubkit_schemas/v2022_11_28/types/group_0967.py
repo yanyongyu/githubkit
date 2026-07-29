@@ -12,76 +12,45 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class AgentsReposOwnerRepoTasksGetResponse404Type(TypedDict):
-    """AgentsReposOwnerRepoTasksGetResponse404
-
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[
-        list[AgentsReposOwnerRepoTasksGetResponse404PropErrorsItemsType]
-    ]
-    documentation_url: str
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0535 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0536 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0537 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0538 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0580 import WebhooksSponsorshipType, WebhooksSponsorshipTypeForResponse
+from .group_0581 import WebhooksChanges8Type, WebhooksChanges8TypeForResponse
 
 
-class AgentsReposOwnerRepoTasksGetResponse404TypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksGetResponse404
+class WebhookSponsorshipTierChangedType(TypedDict):
+    """sponsorship tier_changed event"""
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[
-        list[AgentsReposOwnerRepoTasksGetResponse404PropErrorsItemsTypeForResponse]
-    ]
-    documentation_url: str
+    action: Literal["tier_changed"]
+    changes: WebhooksChanges8Type
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserType
+    sponsorship: WebhooksSponsorshipType
 
 
-class AgentsReposOwnerRepoTasksGetResponse404PropErrorsItemsType(TypedDict):
-    """AgentsReposOwnerRepoTasksGetResponse404PropErrorsItems
+class WebhookSponsorshipTierChangedTypeForResponse(TypedDict):
+    """sponsorship tier_changed event"""
 
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
-
-
-class AgentsReposOwnerRepoTasksGetResponse404PropErrorsItemsTypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksGetResponse404PropErrorsItems
-
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
+    action: Literal["tier_changed"]
+    changes: WebhooksChanges8TypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: SimpleUserTypeForResponse
+    sponsorship: WebhooksSponsorshipTypeForResponse
 
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksGetResponse404PropErrorsItemsType",
-    "AgentsReposOwnerRepoTasksGetResponse404PropErrorsItemsTypeForResponse",
-    "AgentsReposOwnerRepoTasksGetResponse404Type",
-    "AgentsReposOwnerRepoTasksGetResponse404TypeForResponse",
+    "WebhookSponsorshipTierChangedType",
+    "WebhookSponsorshipTierChangedTypeForResponse",
 )

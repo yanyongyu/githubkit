@@ -15,15 +15,45 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class WebhookStatusPropCommitPropCommitPropCommitterAllof1(GitHubModel):
-    """WebhookStatusPropCommitPropCommitPropCommitterAllof1"""
-
-    date: str = Field()
-    email: Missing[str] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
+from .group_1027 import WebhookRepositoryRulesetEditedPropChangesPropConditions
+from .group_1029 import WebhookRepositoryRulesetEditedPropChangesPropRules
 
 
-model_rebuild(WebhookStatusPropCommitPropCommitPropCommitterAllof1)
+class WebhookRepositoryRulesetEditedPropChanges(GitHubModel):
+    """WebhookRepositoryRulesetEditedPropChanges"""
 
-__all__ = ("WebhookStatusPropCommitPropCommitPropCommitterAllof1",)
+    name: Missing[WebhookRepositoryRulesetEditedPropChangesPropName] = Field(
+        default=UNSET
+    )
+    enforcement: Missing[WebhookRepositoryRulesetEditedPropChangesPropEnforcement] = (
+        Field(default=UNSET)
+    )
+    conditions: Missing[WebhookRepositoryRulesetEditedPropChangesPropConditions] = (
+        Field(default=UNSET)
+    )
+    rules: Missing[WebhookRepositoryRulesetEditedPropChangesPropRules] = Field(
+        default=UNSET
+    )
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropName(GitHubModel):
+    """WebhookRepositoryRulesetEditedPropChangesPropName"""
+
+    from_: Missing[str] = Field(default=UNSET, alias="from")
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropEnforcement(GitHubModel):
+    """WebhookRepositoryRulesetEditedPropChangesPropEnforcement"""
+
+    from_: Missing[str] = Field(default=UNSET, alias="from")
+
+
+model_rebuild(WebhookRepositoryRulesetEditedPropChanges)
+model_rebuild(WebhookRepositoryRulesetEditedPropChangesPropName)
+model_rebuild(WebhookRepositoryRulesetEditedPropChangesPropEnforcement)
+
+__all__ = (
+    "WebhookRepositoryRulesetEditedPropChanges",
+    "WebhookRepositoryRulesetEditedPropChangesPropEnforcement",
+    "WebhookRepositoryRulesetEditedPropChangesPropName",
+)

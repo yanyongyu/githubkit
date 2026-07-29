@@ -9,31 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgSettingsNetworkConfigurationsPostBodyType(TypedDict):
-    """OrgsOrgSettingsNetworkConfigurationsPostBody"""
+class OrgsOrgHooksHookIdPatchBodyType(TypedDict):
+    """OrgsOrgHooksHookIdPatchBody"""
 
-    name: str
-    compute_service: NotRequired[Literal["none", "actions"]]
-    network_settings_ids: list[str]
-    failover_network_settings_ids: NotRequired[list[str]]
-    failover_network_enabled: NotRequired[bool]
+    config: NotRequired[OrgsOrgHooksHookIdPatchBodyPropConfigType]
+    events: NotRequired[list[str]]
+    active: NotRequired[bool]
+    name: NotRequired[str]
 
 
-class OrgsOrgSettingsNetworkConfigurationsPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgSettingsNetworkConfigurationsPostBody"""
+class OrgsOrgHooksHookIdPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgHooksHookIdPatchBody"""
 
-    name: str
-    compute_service: NotRequired[Literal["none", "actions"]]
-    network_settings_ids: list[str]
-    failover_network_settings_ids: NotRequired[list[str]]
-    failover_network_enabled: NotRequired[bool]
+    config: NotRequired[OrgsOrgHooksHookIdPatchBodyPropConfigTypeForResponse]
+    events: NotRequired[list[str]]
+    active: NotRequired[bool]
+    name: NotRequired[str]
+
+
+class OrgsOrgHooksHookIdPatchBodyPropConfigType(TypedDict):
+    """OrgsOrgHooksHookIdPatchBodyPropConfig
+
+    Key/value pairs to provide settings for this webhook.
+    """
+
+    url: str
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
+
+
+class OrgsOrgHooksHookIdPatchBodyPropConfigTypeForResponse(TypedDict):
+    """OrgsOrgHooksHookIdPatchBodyPropConfig
+
+    Key/value pairs to provide settings for this webhook.
+    """
+
+    url: str
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
 
 
 __all__ = (
-    "OrgsOrgSettingsNetworkConfigurationsPostBodyType",
-    "OrgsOrgSettingsNetworkConfigurationsPostBodyTypeForResponse",
+    "OrgsOrgHooksHookIdPatchBodyPropConfigType",
+    "OrgsOrgHooksHookIdPatchBodyPropConfigTypeForResponse",
+    "OrgsOrgHooksHookIdPatchBodyType",
+    "OrgsOrgHooksHookIdPatchBodyTypeForResponse",
 )

@@ -9,57 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class GroupResponseType(TypedDict):
-    """GroupResponse"""
+class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1Type(TypedDict):
+    """SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1"""
 
-    schemas: list[
-        Literal[
-            "urn:ietf:params:scim:schemas:core:2.0:Group",
-            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
-        ]
-    ]
-    external_id: NotRequired[Union[str, None]]
-    display_name: NotRequired[Union[str, None]]
-    members: NotRequired[list[GroupResponsePropMembersItemsType]]
+    pattern_name: NotRequired[str]
+    pattern_scope: NotRequired[str]
 
 
-class GroupResponseTypeForResponse(TypedDict):
-    """GroupResponse"""
+class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1TypeForResponse(
+    TypedDict
+):
+    """SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1"""
 
-    schemas: list[
-        Literal[
-            "urn:ietf:params:scim:schemas:core:2.0:Group",
-            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
-        ]
-    ]
-    external_id: NotRequired[Union[str, None]]
-    display_name: NotRequired[Union[str, None]]
-    members: NotRequired[list[GroupResponsePropMembersItemsTypeForResponse]]
-
-
-class GroupResponsePropMembersItemsType(TypedDict):
-    """GroupResponsePropMembersItems"""
-
-    value: str
-    ref: str
-    display: NotRequired[str]
-
-
-class GroupResponsePropMembersItemsTypeForResponse(TypedDict):
-    """GroupResponsePropMembersItems"""
-
-    value: str
-    ref: str
-    display: NotRequired[str]
+    pattern_name: NotRequired[str]
+    pattern_scope: NotRequired[str]
 
 
 __all__ = (
-    "GroupResponsePropMembersItemsType",
-    "GroupResponsePropMembersItemsTypeForResponse",
-    "GroupResponseType",
-    "GroupResponseTypeForResponse",
+    "SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1Type",
+    "SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1TypeForResponse",
 )

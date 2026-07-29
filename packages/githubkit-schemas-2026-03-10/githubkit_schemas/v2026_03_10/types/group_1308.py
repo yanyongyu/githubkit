@@ -12,23 +12,47 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoForksPostBodyType(TypedDict):
-    """ReposOwnerRepoForksPostBody"""
+class ReposOwnerRepoCheckSuitesPreferencesPatchBodyType(TypedDict):
+    """ReposOwnerRepoCheckSuitesPreferencesPatchBody"""
 
-    organization: NotRequired[str]
-    name: NotRequired[str]
-    default_branch_only: NotRequired[bool]
+    auto_trigger_checks: NotRequired[
+        list[
+            ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType
+        ]
+    ]
 
 
-class ReposOwnerRepoForksPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoForksPostBody"""
+class ReposOwnerRepoCheckSuitesPreferencesPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoCheckSuitesPreferencesPatchBody"""
 
-    organization: NotRequired[str]
-    name: NotRequired[str]
-    default_branch_only: NotRequired[bool]
+    auto_trigger_checks: NotRequired[
+        list[
+            ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsTypeForResponse
+        ]
+    ]
+
+
+class ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType(
+    TypedDict
+):
+    """ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems"""
+
+    app_id: int
+    setting: bool
+
+
+class ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems"""
+
+    app_id: int
+    setting: bool
 
 
 __all__ = (
-    "ReposOwnerRepoForksPostBodyType",
-    "ReposOwnerRepoForksPostBodyTypeForResponse",
+    "ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType",
+    "ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsTypeForResponse",
+    "ReposOwnerRepoCheckSuitesPreferencesPatchBodyType",
+    "ReposOwnerRepoCheckSuitesPreferencesPatchBodyTypeForResponse",
 )

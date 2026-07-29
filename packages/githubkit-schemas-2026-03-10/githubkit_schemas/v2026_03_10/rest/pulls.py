@@ -37,7 +37,12 @@ if TYPE_CHECKING:
         PullRequestReviewComment,
         PullRequestReviewRequest,
         PullRequestSimple,
+        PullRequestStackMinimal,
         ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202,
+        ReposOwnerRepoStacksPostResponse201,
+        ReposOwnerRepoStacksStackNumberAddPostResponse200,
+        ReposOwnerRepoStacksStackNumberGetResponse200,
+        ReposOwnerRepoStacksStackNumberUnstackPostResponse200,
         ReviewComment,
     )
     from ..types import (
@@ -48,6 +53,7 @@ if TYPE_CHECKING:
         PullRequestReviewRequestTypeForResponse,
         PullRequestReviewTypeForResponse,
         PullRequestSimpleTypeForResponse,
+        PullRequestStackMinimalTypeForResponse,
         PullRequestTypeForResponse,
         ReposOwnerRepoPullsCommentsCommentIdPatchBodyType,
         ReposOwnerRepoPullsPostBodyType,
@@ -65,6 +71,12 @@ if TYPE_CHECKING:
         ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType,
         ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType,
         ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202TypeForResponse,
+        ReposOwnerRepoStacksPostBodyType,
+        ReposOwnerRepoStacksPostResponse201TypeForResponse,
+        ReposOwnerRepoStacksStackNumberAddPostBodyType,
+        ReposOwnerRepoStacksStackNumberAddPostResponse200TypeForResponse,
+        ReposOwnerRepoStacksStackNumberGetResponse200TypeForResponse,
+        ReposOwnerRepoStacksStackNumberUnstackPostResponse200TypeForResponse,
         ReviewCommentTypeForResponse,
     )
 
@@ -3895,5 +3907,627 @@ class PullsClient:
             error_models={
                 "422": ValidationError,
                 "403": BasicError,
+            },
+        )
+
+    def stacks_list(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        pull_request: Missing[int] = UNSET,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        list[PullRequestStackMinimal], list[PullRequestStackMinimalTypeForResponse]
+    ]:
+        """pull-request-stacks/stacks-list
+
+        GET /repos/{owner}/{repo}/stacks
+
+        Lists pull request stacks in a repository.
+
+        See also: https://docs.github.com/rest/pulls/stacks#list-pull-request-stacks
+        """
+
+        from ..models import BasicError, PullRequestStackMinimal, ValidationError
+
+        url = f"/repos/{owner}/{repo}/stacks"
+
+        params = {
+            "pull_request": pull_request,
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[PullRequestStackMinimal],
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    async def async_stacks_list(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        pull_request: Missing[int] = UNSET,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        list[PullRequestStackMinimal], list[PullRequestStackMinimalTypeForResponse]
+    ]:
+        """pull-request-stacks/stacks-list
+
+        GET /repos/{owner}/{repo}/stacks
+
+        Lists pull request stacks in a repository.
+
+        See also: https://docs.github.com/rest/pulls/stacks#list-pull-request-stacks
+        """
+
+        from ..models import BasicError, PullRequestStackMinimal, ValidationError
+
+        url = f"/repos/{owner}/{repo}/stacks"
+
+        params = {
+            "pull_request": pull_request,
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[PullRequestStackMinimal],
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    def stacks_create(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: ReposOwnerRepoStacksPostBodyType,
+    ) -> Response[
+        ReposOwnerRepoStacksPostResponse201,
+        ReposOwnerRepoStacksPostResponse201TypeForResponse,
+    ]: ...
+
+    @overload
+    def stacks_create(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        pull_requests: list[int],
+    ) -> Response[
+        ReposOwnerRepoStacksPostResponse201,
+        ReposOwnerRepoStacksPostResponse201TypeForResponse,
+    ]: ...
+
+    def stacks_create(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[ReposOwnerRepoStacksPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        ReposOwnerRepoStacksPostResponse201,
+        ReposOwnerRepoStacksPostResponse201TypeForResponse,
+    ]:
+        """pull-request-stacks/stacks-create
+
+        POST /repos/{owner}/{repo}/stacks
+
+        Creates a stack from an ordered list of pull request numbers. Provide the pull
+        request numbers from the bottom of the stack to the top. Each pull request's
+        base ref must match the previous pull request's head ref.
+
+        See also: https://docs.github.com/rest/pulls/stacks#create-a-pull-request-stack
+        """
+
+        from ..models import (
+            BasicError,
+            ReposOwnerRepoStacksPostBody,
+            ReposOwnerRepoStacksPostResponse201,
+            ReposOwnerRepoStacksPostResponse422,
+        )
+
+        url = f"/repos/{owner}/{repo}/stacks"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(ReposOwnerRepoStacksPostBody, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ReposOwnerRepoStacksPostResponse201,
+            error_models={
+                "404": BasicError,
+                "422": ReposOwnerRepoStacksPostResponse422,
+            },
+        )
+
+    @overload
+    async def async_stacks_create(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: ReposOwnerRepoStacksPostBodyType,
+    ) -> Response[
+        ReposOwnerRepoStacksPostResponse201,
+        ReposOwnerRepoStacksPostResponse201TypeForResponse,
+    ]: ...
+
+    @overload
+    async def async_stacks_create(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        pull_requests: list[int],
+    ) -> Response[
+        ReposOwnerRepoStacksPostResponse201,
+        ReposOwnerRepoStacksPostResponse201TypeForResponse,
+    ]: ...
+
+    async def async_stacks_create(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[ReposOwnerRepoStacksPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        ReposOwnerRepoStacksPostResponse201,
+        ReposOwnerRepoStacksPostResponse201TypeForResponse,
+    ]:
+        """pull-request-stacks/stacks-create
+
+        POST /repos/{owner}/{repo}/stacks
+
+        Creates a stack from an ordered list of pull request numbers. Provide the pull
+        request numbers from the bottom of the stack to the top. Each pull request's
+        base ref must match the previous pull request's head ref.
+
+        See also: https://docs.github.com/rest/pulls/stacks#create-a-pull-request-stack
+        """
+
+        from ..models import (
+            BasicError,
+            ReposOwnerRepoStacksPostBody,
+            ReposOwnerRepoStacksPostResponse201,
+            ReposOwnerRepoStacksPostResponse422,
+        )
+
+        url = f"/repos/{owner}/{repo}/stacks"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(ReposOwnerRepoStacksPostBody, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ReposOwnerRepoStacksPostResponse201,
+            error_models={
+                "404": BasicError,
+                "422": ReposOwnerRepoStacksPostResponse422,
+            },
+        )
+
+    def stacks_get(
+        self,
+        owner: str,
+        repo: str,
+        stack_number: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        ReposOwnerRepoStacksStackNumberGetResponse200,
+        ReposOwnerRepoStacksStackNumberGetResponse200TypeForResponse,
+    ]:
+        """pull-request-stacks/stacks-get
+
+        GET /repos/{owner}/{repo}/stacks/{stack_number}
+
+        Gets a pull request stack by providing its stack number.
+
+        See also: https://docs.github.com/rest/pulls/stacks#get-a-pull-request-stack
+        """
+
+        from ..models import BasicError, ReposOwnerRepoStacksStackNumberGetResponse200
+
+        url = f"/repos/{owner}/{repo}/stacks/{stack_number}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ReposOwnerRepoStacksStackNumberGetResponse200,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_stacks_get(
+        self,
+        owner: str,
+        repo: str,
+        stack_number: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        ReposOwnerRepoStacksStackNumberGetResponse200,
+        ReposOwnerRepoStacksStackNumberGetResponse200TypeForResponse,
+    ]:
+        """pull-request-stacks/stacks-get
+
+        GET /repos/{owner}/{repo}/stacks/{stack_number}
+
+        Gets a pull request stack by providing its stack number.
+
+        See also: https://docs.github.com/rest/pulls/stacks#get-a-pull-request-stack
+        """
+
+        from ..models import BasicError, ReposOwnerRepoStacksStackNumberGetResponse200
+
+        url = f"/repos/{owner}/{repo}/stacks/{stack_number}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ReposOwnerRepoStacksStackNumberGetResponse200,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def stacks_add(
+        self,
+        owner: str,
+        repo: str,
+        stack_number: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: ReposOwnerRepoStacksStackNumberAddPostBodyType,
+    ) -> Response[
+        ReposOwnerRepoStacksStackNumberAddPostResponse200,
+        ReposOwnerRepoStacksStackNumberAddPostResponse200TypeForResponse,
+    ]: ...
+
+    @overload
+    def stacks_add(
+        self,
+        owner: str,
+        repo: str,
+        stack_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        pull_requests: list[int],
+    ) -> Response[
+        ReposOwnerRepoStacksStackNumberAddPostResponse200,
+        ReposOwnerRepoStacksStackNumberAddPostResponse200TypeForResponse,
+    ]: ...
+
+    def stacks_add(
+        self,
+        owner: str,
+        repo: str,
+        stack_number: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[ReposOwnerRepoStacksStackNumberAddPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        ReposOwnerRepoStacksStackNumberAddPostResponse200,
+        ReposOwnerRepoStacksStackNumberAddPostResponse200TypeForResponse,
+    ]:
+        """pull-request-stacks/stacks-add
+
+        POST /repos/{owner}/{repo}/stacks/{stack_number}/add
+
+        Appends an ordered list of pull request numbers onto the top of an existing
+        stack. Provide only the pull requests you want to add, from the current top of
+        the stack upward. The first new pull request's base ref must match the current
+        top pull request's head ref.
+
+        See also: https://docs.github.com/rest/pulls/stacks#add-pull-requests-to-a-pull-request-stack
+        """
+
+        from ..models import (
+            BasicError,
+            ReposOwnerRepoStacksStackNumberAddPostBody,
+            ReposOwnerRepoStacksStackNumberAddPostResponse200,
+            ReposOwnerRepoStacksStackNumberAddPostResponse422,
+        )
+
+        url = f"/repos/{owner}/{repo}/stacks/{stack_number}/add"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                ReposOwnerRepoStacksStackNumberAddPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ReposOwnerRepoStacksStackNumberAddPostResponse200,
+            error_models={
+                "404": BasicError,
+                "409": BasicError,
+                "422": ReposOwnerRepoStacksStackNumberAddPostResponse422,
+            },
+        )
+
+    @overload
+    async def async_stacks_add(
+        self,
+        owner: str,
+        repo: str,
+        stack_number: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: ReposOwnerRepoStacksStackNumberAddPostBodyType,
+    ) -> Response[
+        ReposOwnerRepoStacksStackNumberAddPostResponse200,
+        ReposOwnerRepoStacksStackNumberAddPostResponse200TypeForResponse,
+    ]: ...
+
+    @overload
+    async def async_stacks_add(
+        self,
+        owner: str,
+        repo: str,
+        stack_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        pull_requests: list[int],
+    ) -> Response[
+        ReposOwnerRepoStacksStackNumberAddPostResponse200,
+        ReposOwnerRepoStacksStackNumberAddPostResponse200TypeForResponse,
+    ]: ...
+
+    async def async_stacks_add(
+        self,
+        owner: str,
+        repo: str,
+        stack_number: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[ReposOwnerRepoStacksStackNumberAddPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        ReposOwnerRepoStacksStackNumberAddPostResponse200,
+        ReposOwnerRepoStacksStackNumberAddPostResponse200TypeForResponse,
+    ]:
+        """pull-request-stacks/stacks-add
+
+        POST /repos/{owner}/{repo}/stacks/{stack_number}/add
+
+        Appends an ordered list of pull request numbers onto the top of an existing
+        stack. Provide only the pull requests you want to add, from the current top of
+        the stack upward. The first new pull request's base ref must match the current
+        top pull request's head ref.
+
+        See also: https://docs.github.com/rest/pulls/stacks#add-pull-requests-to-a-pull-request-stack
+        """
+
+        from ..models import (
+            BasicError,
+            ReposOwnerRepoStacksStackNumberAddPostBody,
+            ReposOwnerRepoStacksStackNumberAddPostResponse200,
+            ReposOwnerRepoStacksStackNumberAddPostResponse422,
+        )
+
+        url = f"/repos/{owner}/{repo}/stacks/{stack_number}/add"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                ReposOwnerRepoStacksStackNumberAddPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ReposOwnerRepoStacksStackNumberAddPostResponse200,
+            error_models={
+                "404": BasicError,
+                "409": BasicError,
+                "422": ReposOwnerRepoStacksStackNumberAddPostResponse422,
+            },
+        )
+
+    def stacks_unstack(
+        self,
+        owner: str,
+        repo: str,
+        stack_number: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        ReposOwnerRepoStacksStackNumberUnstackPostResponse200,
+        ReposOwnerRepoStacksStackNumberUnstackPostResponse200TypeForResponse,
+    ]:
+        """pull-request-stacks/stacks-unstack
+
+        POST /repos/{owner}/{repo}/stacks/{stack_number}/unstack
+
+        Removes the unmerged pull requests from a stack. Pull requests that cannot be
+        unstacked (for example, those that are queued for merge) are left in place. When pull requests remain in the stack, the updated
+        stack is returned with a `200`. When no pull requests remain, the stack is
+        dissolved and a `204` is returned.
+
+        See also: https://docs.github.com/rest/pulls/stacks#remove-pull-requests-from-a-pull-request-stack
+        """
+
+        from ..models import (
+            BasicError,
+            ReposOwnerRepoStacksStackNumberUnstackPostResponse200,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/stacks/{stack_number}/unstack"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "POST",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ReposOwnerRepoStacksStackNumberUnstackPostResponse200,
+            error_models={
+                "404": BasicError,
+                "409": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    async def async_stacks_unstack(
+        self,
+        owner: str,
+        repo: str,
+        stack_number: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        ReposOwnerRepoStacksStackNumberUnstackPostResponse200,
+        ReposOwnerRepoStacksStackNumberUnstackPostResponse200TypeForResponse,
+    ]:
+        """pull-request-stacks/stacks-unstack
+
+        POST /repos/{owner}/{repo}/stacks/{stack_number}/unstack
+
+        Removes the unmerged pull requests from a stack. Pull requests that cannot be
+        unstacked (for example, those that are queued for merge) are left in place. When pull requests remain in the stack, the updated
+        stack is returned with a `200`. When no pull requests remain, the stack is
+        dissolved and a `204` is returned.
+
+        See also: https://docs.github.com/rest/pulls/stacks#remove-pull-requests-from-a-pull-request-stack
+        """
+
+        from ..models import (
+            BasicError,
+            ReposOwnerRepoStacksStackNumberUnstackPostResponse200,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/stacks/{stack_number}/unstack"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ReposOwnerRepoStacksStackNumberUnstackPostResponse200,
+            error_models={
+                "404": BasicError,
+                "409": BasicError,
+                "422": ValidationError,
             },
         )

@@ -13,13 +13,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody"""
-
-    sub_issue_id: int = Field(description="The id of the sub-issue to remove")
+from .group_0282 import ActionsSecret
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody)
+class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200(GitHubModel):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200"""
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody",)
+    total_count: int = Field()
+    secrets: list[ActionsSecret] = Field()
+
+
+model_rebuild(ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200)
+
+__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200",)

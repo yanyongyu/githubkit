@@ -11,32 +11,26 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
+from .group_0255 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type(
+
+class OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200Type(TypedDict):
+    """OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200"""
+
+    total_count: int
+    repositories: list[MinimalRepositoryType]
+
+
+class OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200TypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0
+    """OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200"""
 
-    Examples:
-        {'teams': ['my-team']}
-    """
-
-    teams: list[str]
-
-
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0
-
-    Examples:
-        {'teams': ['my-team']}
-    """
-
-    teams: list[str]
+    total_count: int
+    repositories: list[MinimalRepositoryTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type",
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0TypeForResponse",
+    "OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200Type",
+    "OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200TypeForResponse",
 )

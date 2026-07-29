@@ -9,34 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0
+class ReposOwnerRepoActionsOidcCustomizationSubPutBodyType(TypedDict):
+    """Actions OIDC subject customization for a repository
 
-    Examples:
-        {'teams': ['justice-league']}
+    Actions OIDC subject customization for a repository
     """
 
-    teams: list[str]
+    use_default: bool
+    include_claim_keys: NotRequired[list[str]]
+    use_immutable_subject: NotRequired[bool]
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0
+class ReposOwnerRepoActionsOidcCustomizationSubPutBodyTypeForResponse(TypedDict):
+    """Actions OIDC subject customization for a repository
 
-    Examples:
-        {'teams': ['justice-league']}
+    Actions OIDC subject customization for a repository
     """
 
-    teams: list[str]
+    use_default: bool
+    include_claim_keys: NotRequired[list[str]]
+    use_immutable_subject: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type",
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0TypeForResponse",
+    "ReposOwnerRepoActionsOidcCustomizationSubPutBodyType",
+    "ReposOwnerRepoActionsOidcCustomizationSubPutBodyTypeForResponse",
 )

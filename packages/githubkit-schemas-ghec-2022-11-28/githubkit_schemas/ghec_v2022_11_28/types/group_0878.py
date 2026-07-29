@@ -13,44 +13,40 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0599 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0600 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0601 import (
+from .group_0619 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0620 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0602 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0879 import (
-    WebhookPackagePublishedPropPackageType,
-    WebhookPackagePublishedPropPackageTypeForResponse,
-)
+from .group_0621 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0646 import MergeGroupType, MergeGroupTypeForResponse
 
 
-class WebhookPackagePublishedType(TypedDict):
-    """package published event"""
+class WebhookMergeGroupDestroyedType(TypedDict):
+    """WebhookMergeGroupDestroyed"""
 
-    action: Literal["published"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["destroyed"]
+    reason: NotRequired[Literal["merged", "invalidated", "dequeued"]]
     installation: NotRequired[SimpleInstallationType]
+    merge_group: MergeGroupType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    package: WebhookPackagePublishedPropPackageType
     repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserType
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookPackagePublishedTypeForResponse(TypedDict):
-    """package published event"""
+class WebhookMergeGroupDestroyedTypeForResponse(TypedDict):
+    """WebhookMergeGroupDestroyed"""
 
-    action: Literal["published"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    action: Literal["destroyed"]
+    reason: NotRequired[Literal["merged", "invalidated", "dequeued"]]
     installation: NotRequired[SimpleInstallationTypeForResponse]
+    merge_group: MergeGroupTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    package: WebhookPackagePublishedPropPackageTypeForResponse
     repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    sender: SimpleUserTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookPackagePublishedType",
-    "WebhookPackagePublishedTypeForResponse",
+    "WebhookMergeGroupDestroyedType",
+    "WebhookMergeGroupDestroyedTypeForResponse",
 )

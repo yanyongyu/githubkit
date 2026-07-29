@@ -9,49 +9,212 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, Literal, TypeAlias, Union
+import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class GistsPostBodyType(TypedDict):
-    """GistsPostBody"""
+class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsType(TypedDict):
+    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItems
 
-    description: NotRequired[str]
-    files: GistsPostBodyPropFilesType
-    public: NotRequired[Union[bool, Literal["true", "false"]]]
+    Full session details within a task
+    """
+
+    id: str
+    name: NotRequired[str]
+    user: NotRequired[
+        AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUserType
+    ]
+    owner: NotRequired[
+        AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwnerType
+    ]
+    repository: NotRequired[
+        AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepositoryType
+    ]
+    task_id: NotRequired[str]
+    state: Literal[
+        "queued",
+        "in_progress",
+        "completed",
+        "failed",
+        "idle",
+        "waiting_for_user",
+        "timed_out",
+        "cancelled",
+    ]
+    created_at: _dt.datetime
+    updated_at: NotRequired[_dt.datetime]
+    completed_at: NotRequired[_dt.datetime]
+    prompt: NotRequired[str]
+    head_ref: NotRequired[str]
+    base_ref: NotRequired[str]
+    model: NotRequired[str]
+    usage: NotRequired[
+        AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUsageType
+    ]
+    error: NotRequired[
+        AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropErrorType
+    ]
 
 
-class GistsPostBodyTypeForResponse(TypedDict):
-    """GistsPostBody"""
+class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse(TypedDict):
+    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItems
 
-    description: NotRequired[str]
-    files: GistsPostBodyPropFilesTypeForResponse
-    public: NotRequired[Union[bool, Literal["true", "false"]]]
+    Full session details within a task
+    """
+
+    id: str
+    name: NotRequired[str]
+    user: NotRequired[
+        AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUserTypeForResponse
+    ]
+    owner: NotRequired[
+        AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwnerTypeForResponse
+    ]
+    repository: NotRequired[
+        AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepositoryTypeForResponse
+    ]
+    task_id: NotRequired[str]
+    state: Literal[
+        "queued",
+        "in_progress",
+        "completed",
+        "failed",
+        "idle",
+        "waiting_for_user",
+        "timed_out",
+        "cancelled",
+    ]
+    created_at: str
+    updated_at: NotRequired[str]
+    completed_at: NotRequired[str]
+    prompt: NotRequired[str]
+    head_ref: NotRequired[str]
+    base_ref: NotRequired[str]
+    model: NotRequired[str]
+    usage: NotRequired[
+        AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUsageTypeForResponse
+    ]
+    error: NotRequired[
+        AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropErrorTypeForResponse
+    ]
 
 
-GistsPostBodyPropFilesType: TypeAlias = dict[str, Any]
-"""GistsPostBodyPropFiles
+class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUserType(TypedDict):
+    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser
 
-Names and content for the files that make up the gist
+    The user who created this session
+    """
 
-Examples:
-    {'hello.rb': {'content': 'puts "Hello, World!"'}}
-"""
+    id: NotRequired[int]
 
 
-GistsPostBodyPropFilesTypeForResponse: TypeAlias = dict[str, Any]
-"""GistsPostBodyPropFiles
+class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUserTypeForResponse(
+    TypedDict
+):
+    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser
 
-Names and content for the files that make up the gist
+    The user who created this session
+    """
 
-Examples:
-    {'hello.rb': {'content': 'puts "Hello, World!"'}}
-"""
+    id: NotRequired[int]
+
+
+class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwnerType(TypedDict):
+    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner
+
+    The owner of the repository
+    """
+
+    id: NotRequired[int]
+
+
+class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwnerTypeForResponse(
+    TypedDict
+):
+    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner
+
+    The owner of the repository
+    """
+
+    id: NotRequired[int]
+
+
+class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepositoryType(
+    TypedDict
+):
+    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepository
+
+    The repository this session belongs to
+    """
+
+    id: NotRequired[int]
+
+
+class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepositoryTypeForResponse(
+    TypedDict
+):
+    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepository
+
+    The repository this session belongs to
+    """
+
+    id: NotRequired[int]
+
+
+class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUsageType(TypedDict):
+    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUsage
+
+    Structured information about billing units consumed by the session.
+    """
+
+    type: Literal["ai_credits", "premium_requests"]
+    amount: float
+
+
+class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUsageTypeForResponse(
+    TypedDict
+):
+    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUsage
+
+    Structured information about billing units consumed by the session.
+    """
+
+    type: Literal["ai_credits", "premium_requests"]
+    amount: float
+
+
+class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropErrorType(TypedDict):
+    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError
+
+    Error details for a failed session
+    """
+
+    message: NotRequired[str]
+
+
+class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropErrorTypeForResponse(
+    TypedDict
+):
+    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError
+
+    Error details for a failed session
+    """
+
+    message: NotRequired[str]
 
 
 __all__ = (
-    "GistsPostBodyPropFilesType",
-    "GistsPostBodyPropFilesTypeForResponse",
-    "GistsPostBodyType",
-    "GistsPostBodyTypeForResponse",
+    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropErrorType",
+    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropErrorTypeForResponse",
+    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwnerType",
+    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwnerTypeForResponse",
+    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepositoryType",
+    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepositoryTypeForResponse",
+    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUsageType",
+    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUsageTypeForResponse",
+    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUserType",
+    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUserTypeForResponse",
+    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsType",
+    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse",
 )

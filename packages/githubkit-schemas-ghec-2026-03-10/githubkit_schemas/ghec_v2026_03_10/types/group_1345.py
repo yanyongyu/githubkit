@@ -9,32 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal
-from typing_extensions import TypedDict
-
-from .group_0321 import (
-    ProjectsV2FieldSingleSelectOptionType,
-    ProjectsV2FieldSingleSelectOptionTypeForResponse,
-)
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2Type(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2"""
+class OrgsOrgCodespacesSecretsGetResponse200Type(TypedDict):
+    """OrgsOrgCodespacesSecretsGetResponse200"""
+
+    total_count: int
+    secrets: list[CodespacesOrgSecretType]
+
+
+class OrgsOrgCodespacesSecretsGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCodespacesSecretsGetResponse200"""
+
+    total_count: int
+    secrets: list[CodespacesOrgSecretTypeForResponse]
+
+
+class CodespacesOrgSecretType(TypedDict):
+    """Codespaces Secret
+
+    Secrets for a GitHub Codespace.
+    """
 
     name: str
-    data_type: Literal["single_select"]
-    single_select_options: list[ProjectsV2FieldSingleSelectOptionType]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: NotRequired[str]
 
 
-class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2TypeForResponse(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2"""
+class CodespacesOrgSecretTypeForResponse(TypedDict):
+    """Codespaces Secret
+
+    Secrets for a GitHub Codespace.
+    """
 
     name: str
-    data_type: Literal["single_select"]
-    single_select_options: list[ProjectsV2FieldSingleSelectOptionTypeForResponse]
+    created_at: str
+    updated_at: str
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2Type",
-    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2TypeForResponse",
+    "CodespacesOrgSecretType",
+    "CodespacesOrgSecretTypeForResponse",
+    "OrgsOrgCodespacesSecretsGetResponse200Type",
+    "OrgsOrgCodespacesSecretsGetResponse200TypeForResponse",
 )

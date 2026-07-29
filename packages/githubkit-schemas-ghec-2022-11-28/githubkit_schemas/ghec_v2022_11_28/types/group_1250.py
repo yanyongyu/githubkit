@@ -9,29 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsVariablesNamePatchBodyType(TypedDict):
-    """OrgsOrgActionsVariablesNamePatchBody"""
+class EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200"""
 
-    name: NotRequired[str]
-    value: NotRequired[str]
-    visibility: NotRequired[Literal["all", "private", "selected"]]
-    selected_repository_ids: NotRequired[list[int]]
+    total_count: int
+    visual_studio_subscriptions: list[VisualStudioSubscriptionAssignmentType]
 
 
-class OrgsOrgActionsVariablesNamePatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgActionsVariablesNamePatchBody"""
+class EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200"""
 
-    name: NotRequired[str]
-    value: NotRequired[str]
-    visibility: NotRequired[Literal["all", "private", "selected"]]
-    selected_repository_ids: NotRequired[list[int]]
+    total_count: int
+    visual_studio_subscriptions: list[VisualStudioSubscriptionAssignmentTypeForResponse]
+
+
+class VisualStudioSubscriptionAssignmentType(TypedDict):
+    """Visual Studio Subscription Assignment
+
+    Visual Studio Subscription Assignment
+    """
+
+    visual_studio_subscription_email: NotRequired[str]
+    subscription_id: NotRequired[str]
+    username: NotRequired[Union[str, None]]
+    manual_match: NotRequired[bool]
+
+
+class VisualStudioSubscriptionAssignmentTypeForResponse(TypedDict):
+    """Visual Studio Subscription Assignment
+
+    Visual Studio Subscription Assignment
+    """
+
+    visual_studio_subscription_email: NotRequired[str]
+    subscription_id: NotRequired[str]
+    username: NotRequired[Union[str, None]]
+    manual_match: NotRequired[bool]
 
 
 __all__ = (
-    "OrgsOrgActionsVariablesNamePatchBodyType",
-    "OrgsOrgActionsVariablesNamePatchBodyTypeForResponse",
+    "EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200Type",
+    "EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200TypeForResponse",
+    "VisualStudioSubscriptionAssignmentType",
+    "VisualStudioSubscriptionAssignmentTypeForResponse",
 )

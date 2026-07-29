@@ -9,22 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCopilotBillingSelectedUsersDeleteBodyType(TypedDict):
-    """OrgsOrgCopilotBillingSelectedUsersDeleteBody"""
+class OrgsOrgAttestationsBulkListPostBodyType(TypedDict):
+    """OrgsOrgAttestationsBulkListPostBody"""
 
-    selected_usernames: list[str]
+    subject_digests: list[str]
+    predicate_type: NotRequired[str]
 
 
-class OrgsOrgCopilotBillingSelectedUsersDeleteBodyTypeForResponse(TypedDict):
-    """OrgsOrgCopilotBillingSelectedUsersDeleteBody"""
+class OrgsOrgAttestationsBulkListPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgAttestationsBulkListPostBody"""
 
-    selected_usernames: list[str]
+    subject_digests: list[str]
+    predicate_type: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgCopilotBillingSelectedUsersDeleteBodyType",
-    "OrgsOrgCopilotBillingSelectedUsersDeleteBodyTypeForResponse",
+    "OrgsOrgAttestationsBulkListPostBodyType",
+    "OrgsOrgAttestationsBulkListPostBodyTypeForResponse",
 )

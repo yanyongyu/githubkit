@@ -17,31 +17,52 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0033 import CodeSecurityConfiguration
 
+class AgentsReposOwnerRepoTasksTaskIdGetResponse403(GitHubModel):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse403
 
-class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200(
-    GitHubModel
-):
-    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutRespons
-    e200
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
     """
 
-    default_for_new_repos: Missing[
-        Literal["all", "none", "private_and_internal", "public"]
+    message: str = Field(
+        description='Summary message (e.g. "Validation Failed", "Not Found")'
+    )
+    errors: Missing[
+        list[AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItems]
     ] = Field(
         default=UNSET,
-        description="Specifies which types of repository this security configuration is applied to by default.",
+        description="List of validation errors (present only for 422 responses)",
     )
-    configuration: Missing[CodeSecurityConfiguration] = Field(
-        default=UNSET, description="A code security configuration"
+    documentation_url: str = Field(description="URL to relevant API documentation")
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItems(GitHubModel):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ] = Field(description="Machine-readable error code")
+    message: Missing[str] = Field(
+        default=UNSET,
+        description='Human-readable message (populated when code is "custom")',
     )
 
 
-model_rebuild(
-    EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200
-)
+model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse403)
+model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItems)
 
 __all__ = (
-    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse403",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItems",
 )

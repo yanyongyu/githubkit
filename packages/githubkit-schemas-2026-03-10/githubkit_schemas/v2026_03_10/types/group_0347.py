@@ -9,48 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0033 import (
+    CodeSecurityConfigurationType,
+    CodeSecurityConfigurationTypeForResponse,
+)
 
 
-class BranchShortType(TypedDict):
-    """Branch Short
+class CodeSecurityConfigurationForRepositoryType(TypedDict):
+    """CodeSecurityConfigurationForRepository
 
-    Branch Short
+    Code security configuration associated with a repository and attachment status
     """
 
-    name: str
-    commit: BranchShortPropCommitType
-    protected: bool
+    status: NotRequired[
+        Literal[
+            "attached",
+            "attaching",
+            "detached",
+            "removed",
+            "enforced",
+            "failed",
+            "updating",
+            "removed_by_enterprise",
+        ]
+    ]
+    configuration: NotRequired[CodeSecurityConfigurationType]
 
 
-class BranchShortTypeForResponse(TypedDict):
-    """Branch Short
+class CodeSecurityConfigurationForRepositoryTypeForResponse(TypedDict):
+    """CodeSecurityConfigurationForRepository
 
-    Branch Short
+    Code security configuration associated with a repository and attachment status
     """
 
-    name: str
-    commit: BranchShortPropCommitTypeForResponse
-    protected: bool
-
-
-class BranchShortPropCommitType(TypedDict):
-    """BranchShortPropCommit"""
-
-    sha: str
-    url: str
-
-
-class BranchShortPropCommitTypeForResponse(TypedDict):
-    """BranchShortPropCommit"""
-
-    sha: str
-    url: str
+    status: NotRequired[
+        Literal[
+            "attached",
+            "attaching",
+            "detached",
+            "removed",
+            "enforced",
+            "failed",
+            "updating",
+            "removed_by_enterprise",
+        ]
+    ]
+    configuration: NotRequired[CodeSecurityConfigurationTypeForResponse]
 
 
 __all__ = (
-    "BranchShortPropCommitType",
-    "BranchShortPropCommitTypeForResponse",
-    "BranchShortType",
-    "BranchShortTypeForResponse",
+    "CodeSecurityConfigurationForRepositoryType",
+    "CodeSecurityConfigurationForRepositoryTypeForResponse",
 )

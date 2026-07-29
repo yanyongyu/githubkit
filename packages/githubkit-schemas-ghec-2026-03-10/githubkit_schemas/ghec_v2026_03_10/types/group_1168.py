@@ -9,34 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyType(TypedDict):
-    """EnterprisesEnterpriseDependabotRepositoryAccessPatchBody
+class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBodyType(TypedDict):
+    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody"""
 
-    Examples:
-        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
-    """
-
-    repository_ids_to_add: NotRequired[list[int]]
-    repository_ids_to_remove: NotRequired[list[int]]
+    labels: list[str]
 
 
-class EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyTypeForResponse(
+class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBodyTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseDependabotRepositoryAccessPatchBody
+    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody"""
 
-    Examples:
-        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
-    """
-
-    repository_ids_to_add: NotRequired[list[int]]
-    repository_ids_to_remove: NotRequired[list[int]]
+    labels: list[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyType",
-    "EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyTypeForResponse",
+    "EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBodyType",
+    "EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBodyTypeForResponse",
 )

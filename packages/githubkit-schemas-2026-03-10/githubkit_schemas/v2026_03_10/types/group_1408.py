@@ -9,37 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class UserPatchBodyType(TypedDict):
-    """UserPatchBody"""
+class ReposOwnerRepoPagesPostBodyPropSourceType(TypedDict):
+    """ReposOwnerRepoPagesPostBodyPropSource
 
-    name: NotRequired[str]
-    email: NotRequired[str]
-    blog: NotRequired[str]
-    twitter_username: NotRequired[Union[str, None]]
-    company: NotRequired[str]
-    location: NotRequired[str]
-    hireable: NotRequired[bool]
-    bio: NotRequired[str]
+    The source branch and directory used to publish your Pages site.
+    """
+
+    branch: str
+    path: NotRequired[Literal["/", "/docs"]]
 
 
-class UserPatchBodyTypeForResponse(TypedDict):
-    """UserPatchBody"""
+class ReposOwnerRepoPagesPostBodyPropSourceTypeForResponse(TypedDict):
+    """ReposOwnerRepoPagesPostBodyPropSource
 
-    name: NotRequired[str]
-    email: NotRequired[str]
-    blog: NotRequired[str]
-    twitter_username: NotRequired[Union[str, None]]
-    company: NotRequired[str]
-    location: NotRequired[str]
-    hireable: NotRequired[bool]
-    bio: NotRequired[str]
+    The source branch and directory used to publish your Pages site.
+    """
+
+    branch: str
+    path: NotRequired[Literal["/", "/docs"]]
 
 
 __all__ = (
-    "UserPatchBodyType",
-    "UserPatchBodyTypeForResponse",
+    "ReposOwnerRepoPagesPostBodyPropSourceType",
+    "ReposOwnerRepoPagesPostBodyPropSourceTypeForResponse",
 )

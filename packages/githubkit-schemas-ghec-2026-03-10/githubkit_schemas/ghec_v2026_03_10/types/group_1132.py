@@ -9,81 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import TypedDict
-
-from .group_0065 import (
-    AmazonS3AccessKeysConfigType,
-    AmazonS3AccessKeysConfigTypeForResponse,
-    AzureBlobConfigType,
-    AzureBlobConfigTypeForResponse,
-    AzureHubConfigType,
-    AzureHubConfigTypeForResponse,
-    DatadogConfigType,
-    DatadogConfigTypeForResponse,
-    HecConfigType,
-    HecConfigTypeForResponse,
-)
-from .group_0066 import (
-    AmazonS3OidcConfigType,
-    AmazonS3OidcConfigTypeForResponse,
-    SplunkConfigType,
-    SplunkConfigTypeForResponse,
-)
-from .group_0067 import GoogleCloudConfigType, GoogleCloudConfigTypeForResponse
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseAuditLogStreamsPostBodyType(TypedDict):
-    """EnterprisesEnterpriseAuditLogStreamsPostBody"""
+class AppHookConfigPatchBodyType(TypedDict):
+    """AppHookConfigPatchBody"""
 
-    enabled: bool
-    stream_type: Literal[
-        "Azure Blob Storage",
-        "Azure Event Hubs",
-        "Amazon S3",
-        "Splunk",
-        "HTTPS Event Collector",
-        "Google Cloud Storage",
-        "Datadog",
-    ]
-    vendor_specific: Union[
-        AzureBlobConfigType,
-        AzureHubConfigType,
-        AmazonS3OidcConfigType,
-        AmazonS3AccessKeysConfigType,
-        SplunkConfigType,
-        HecConfigType,
-        GoogleCloudConfigType,
-        DatadogConfigType,
-    ]
+    url: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
 
 
-class EnterprisesEnterpriseAuditLogStreamsPostBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseAuditLogStreamsPostBody"""
+class AppHookConfigPatchBodyTypeForResponse(TypedDict):
+    """AppHookConfigPatchBody"""
 
-    enabled: bool
-    stream_type: Literal[
-        "Azure Blob Storage",
-        "Azure Event Hubs",
-        "Amazon S3",
-        "Splunk",
-        "HTTPS Event Collector",
-        "Google Cloud Storage",
-        "Datadog",
-    ]
-    vendor_specific: Union[
-        AzureBlobConfigTypeForResponse,
-        AzureHubConfigTypeForResponse,
-        AmazonS3OidcConfigTypeForResponse,
-        AmazonS3AccessKeysConfigTypeForResponse,
-        SplunkConfigTypeForResponse,
-        HecConfigTypeForResponse,
-        GoogleCloudConfigTypeForResponse,
-        DatadogConfigTypeForResponse,
-    ]
+    url: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseAuditLogStreamsPostBodyType",
-    "EnterprisesEnterpriseAuditLogStreamsPostBodyTypeForResponse",
+    "AppHookConfigPatchBodyType",
+    "AppHookConfigPatchBodyTypeForResponse",
 )

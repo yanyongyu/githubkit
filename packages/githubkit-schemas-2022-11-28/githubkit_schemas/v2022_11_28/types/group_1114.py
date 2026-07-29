@@ -9,36 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0128 import (
+    OrganizationActionsSecretType,
+    OrganizationActionsSecretTypeForResponse,
+)
 
 
-class OrgsOrgCampaignsCampaignNumberPatchBodyType(TypedDict):
-    """OrgsOrgCampaignsCampaignNumberPatchBody"""
+class OrgsOrgActionsSecretsGetResponse200Type(TypedDict):
+    """OrgsOrgActionsSecretsGetResponse200"""
 
-    name: NotRequired[str]
-    description: NotRequired[str]
-    managers: NotRequired[list[str]]
-    team_managers: NotRequired[list[str]]
-    ends_at: NotRequired[_dt.datetime]
-    contact_link: NotRequired[Union[str, None]]
-    state: NotRequired[Literal["open", "closed"]]
+    total_count: int
+    secrets: list[OrganizationActionsSecretType]
 
 
-class OrgsOrgCampaignsCampaignNumberPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgCampaignsCampaignNumberPatchBody"""
+class OrgsOrgActionsSecretsGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsSecretsGetResponse200"""
 
-    name: NotRequired[str]
-    description: NotRequired[str]
-    managers: NotRequired[list[str]]
-    team_managers: NotRequired[list[str]]
-    ends_at: NotRequired[str]
-    contact_link: NotRequired[Union[str, None]]
-    state: NotRequired[Literal["open", "closed"]]
+    total_count: int
+    secrets: list[OrganizationActionsSecretTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgCampaignsCampaignNumberPatchBodyType",
-    "OrgsOrgCampaignsCampaignNumberPatchBodyTypeForResponse",
+    "OrgsOrgActionsSecretsGetResponse200Type",
+    "OrgsOrgActionsSecretsGetResponse200TypeForResponse",
 )

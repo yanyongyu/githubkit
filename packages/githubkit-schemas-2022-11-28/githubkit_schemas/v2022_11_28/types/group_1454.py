@@ -9,34 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
 from typing_extensions import TypedDict
 
-from .group_0185 import (
-    ProjectsV2FieldIterationConfigurationType,
-    ProjectsV2FieldIterationConfigurationTypeForResponse,
+from .group_0495 import (
+    PullRequestStackPullRequestType,
+    PullRequestStackPullRequestTypeForResponse,
 )
 
 
-class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2Type(TypedDict):
-    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2"""
+class ReposOwnerRepoStacksStackNumberAddPostResponse200Type(TypedDict):
+    """ReposOwnerRepoStacksStackNumberAddPostResponse200"""
 
-    name: str
-    data_type: Literal["iteration"]
-    iteration_configuration: ProjectsV2FieldIterationConfigurationType
+    id: int
+    number: int
+    node_id: str
+    url: str
+    base: ReposOwnerRepoStacksStackNumberAddPostResponse200PropBaseType
+    open_: bool
+    created_at: _dt.datetime
+    pull_requests: list[PullRequestStackPullRequestType]
 
 
-class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2TypeForResponse(
+class ReposOwnerRepoStacksStackNumberAddPostResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoStacksStackNumberAddPostResponse200"""
+
+    id: int
+    number: int
+    node_id: str
+    url: str
+    base: ReposOwnerRepoStacksStackNumberAddPostResponse200PropBaseTypeForResponse
+    open_: bool
+    created_at: str
+    pull_requests: list[PullRequestStackPullRequestTypeForResponse]
+
+
+class ReposOwnerRepoStacksStackNumberAddPostResponse200PropBaseType(TypedDict):
+    """ReposOwnerRepoStacksStackNumberAddPostResponse200PropBase"""
+
+    ref: str
+
+
+class ReposOwnerRepoStacksStackNumberAddPostResponse200PropBaseTypeForResponse(
     TypedDict
 ):
-    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2"""
+    """ReposOwnerRepoStacksStackNumberAddPostResponse200PropBase"""
 
-    name: str
-    data_type: Literal["iteration"]
-    iteration_configuration: ProjectsV2FieldIterationConfigurationTypeForResponse
+    ref: str
 
 
 __all__ = (
-    "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2Type",
-    "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2TypeForResponse",
+    "ReposOwnerRepoStacksStackNumberAddPostResponse200PropBaseType",
+    "ReposOwnerRepoStacksStackNumberAddPostResponse200PropBaseTypeForResponse",
+    "ReposOwnerRepoStacksStackNumberAddPostResponse200Type",
+    "ReposOwnerRepoStacksStackNumberAddPostResponse200TypeForResponse",
 )

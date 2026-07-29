@@ -9,77 +9,130 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class AgentsTasksTaskIdGetResponse404Type(TypedDict):
-    """AgentsTasksTaskIdGetResponse404
-
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[list[AgentsTasksTaskIdGetResponse404PropErrorsItemsType]]
-    documentation_url: str
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0368 import DeploymentType, DeploymentTypeForResponse
+from .group_0618 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0619 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0620 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0621 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class AgentsTasksTaskIdGetResponse404TypeForResponse(TypedDict):
-    """AgentsTasksTaskIdGetResponse404
+class WebhookWorkflowJobQueuedType(TypedDict):
+    """workflow_job queued event"""
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[
-        list[AgentsTasksTaskIdGetResponse404PropErrorsItemsTypeForResponse]
-    ]
-    documentation_url: str
+    action: Literal["queued"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
+    workflow_job: WebhookWorkflowJobQueuedPropWorkflowJobType
+    deployment: NotRequired[DeploymentType]
 
 
-class AgentsTasksTaskIdGetResponse404PropErrorsItemsType(TypedDict):
-    """AgentsTasksTaskIdGetResponse404PropErrorsItems
+class WebhookWorkflowJobQueuedTypeForResponse(TypedDict):
+    """workflow_job queued event"""
 
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
+    action: Literal["queued"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+    workflow_job: WebhookWorkflowJobQueuedPropWorkflowJobTypeForResponse
+    deployment: NotRequired[DeploymentTypeForResponse]
 
 
-class AgentsTasksTaskIdGetResponse404PropErrorsItemsTypeForResponse(TypedDict):
-    """AgentsTasksTaskIdGetResponse404PropErrorsItems
+class WebhookWorkflowJobQueuedPropWorkflowJobType(TypedDict):
+    """WebhookWorkflowJobQueuedPropWorkflowJob"""
 
-    A single validation error
-    """
+    check_run_url: str
+    completed_at: Union[str, None]
+    conclusion: Union[str, None]
+    created_at: str
+    head_sha: str
+    html_url: str
+    id: int
+    labels: list[str]
+    name: str
+    node_id: str
+    run_attempt: int
+    run_id: int
+    run_url: str
+    runner_group_id: Union[int, None]
+    runner_group_name: Union[str, None]
+    runner_id: Union[int, None]
+    runner_name: Union[str, None]
+    started_at: _dt.datetime
+    status: Literal["queued", "in_progress", "completed", "waiting"]
+    head_branch: Union[str, None]
+    workflow_name: Union[str, None]
+    steps: list[WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItemsType]
+    url: str
 
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
+
+class WebhookWorkflowJobQueuedPropWorkflowJobTypeForResponse(TypedDict):
+    """WebhookWorkflowJobQueuedPropWorkflowJob"""
+
+    check_run_url: str
+    completed_at: Union[str, None]
+    conclusion: Union[str, None]
+    created_at: str
+    head_sha: str
+    html_url: str
+    id: int
+    labels: list[str]
+    name: str
+    node_id: str
+    run_attempt: int
+    run_id: int
+    run_url: str
+    runner_group_id: Union[int, None]
+    runner_group_name: Union[str, None]
+    runner_id: Union[int, None]
+    runner_name: Union[str, None]
+    started_at: str
+    status: Literal["queued", "in_progress", "completed", "waiting"]
+    head_branch: Union[str, None]
+    workflow_name: Union[str, None]
+    steps: list[WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItemsTypeForResponse]
+    url: str
+
+
+class WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItemsType(TypedDict):
+    """Workflow Step"""
+
+    completed_at: Union[str, None]
+    conclusion: Union[None, Literal["failure", "skipped", "success", "cancelled"]]
+    name: str
+    number: int
+    started_at: Union[str, None]
+    status: Literal["completed", "in_progress", "queued", "pending"]
+
+
+class WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItemsTypeForResponse(TypedDict):
+    """Workflow Step"""
+
+    completed_at: Union[str, None]
+    conclusion: Union[None, Literal["failure", "skipped", "success", "cancelled"]]
+    name: str
+    number: int
+    started_at: Union[str, None]
+    status: Literal["completed", "in_progress", "queued", "pending"]
 
 
 __all__ = (
-    "AgentsTasksTaskIdGetResponse404PropErrorsItemsType",
-    "AgentsTasksTaskIdGetResponse404PropErrorsItemsTypeForResponse",
-    "AgentsTasksTaskIdGetResponse404Type",
-    "AgentsTasksTaskIdGetResponse404TypeForResponse",
+    "WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItemsType",
+    "WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItemsTypeForResponse",
+    "WebhookWorkflowJobQueuedPropWorkflowJobType",
+    "WebhookWorkflowJobQueuedPropWorkflowJobTypeForResponse",
+    "WebhookWorkflowJobQueuedType",
+    "WebhookWorkflowJobQueuedTypeForResponse",
 )

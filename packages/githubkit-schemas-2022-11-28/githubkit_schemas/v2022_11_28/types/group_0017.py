@@ -16,7 +16,7 @@ from typing_extensions import NotRequired, TypedDict
 class AppPermissionsType(TypedDict):
     """App Permissions
 
-    The permissions granted to the user access token.
+    The permissions granted to the fine-grained access token.
 
     Examples:
         {'contents': 'read', 'issues': 'read', 'deployments': 'write', 'single_file':
@@ -85,7 +85,7 @@ class AppPermissionsType(TypedDict):
 class AppPermissionsTypeForResponse(TypedDict):
     """App Permissions
 
-    The permissions granted to the user access token.
+    The permissions granted to the fine-grained access token.
 
     Examples:
         {'contents': 'read', 'issues': 'read', 'deployments': 'write', 'single_file':

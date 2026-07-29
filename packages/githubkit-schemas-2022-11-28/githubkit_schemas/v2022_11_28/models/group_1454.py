@@ -9,25 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0185 import ProjectsV2FieldIterationConfiguration
+from .group_0495 import PullRequestStackPullRequest
 
 
-class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2(GitHubModel):
-    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2"""
+class ReposOwnerRepoStacksStackNumberAddPostResponse200(GitHubModel):
+    """ReposOwnerRepoStacksStackNumberAddPostResponse200"""
 
-    name: str = Field(description="The name of the field.")
-    data_type: Literal["iteration"] = Field(description="The field's data type.")
-    iteration_configuration: ProjectsV2FieldIterationConfiguration = Field(
-        description="The configuration for iteration fields."
+    id: int = Field()
+    number: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    base: ReposOwnerRepoStacksStackNumberAddPostResponse200PropBase = Field()
+    open_: bool = Field(
+        alias="open",
+        description="Whether the stack has any open pull request. False when all pull requests are merged or closed.",
     )
+    created_at: _dt.datetime = Field()
+    pull_requests: list[PullRequestStackPullRequest] = Field()
 
 
-model_rebuild(UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2)
+class ReposOwnerRepoStacksStackNumberAddPostResponse200PropBase(GitHubModel):
+    """ReposOwnerRepoStacksStackNumberAddPostResponse200PropBase"""
 
-__all__ = ("UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2",)
+    ref: str = Field()
+
+
+model_rebuild(ReposOwnerRepoStacksStackNumberAddPostResponse200)
+model_rebuild(ReposOwnerRepoStacksStackNumberAddPostResponse200PropBase)
+
+__all__ = (
+    "ReposOwnerRepoStacksStackNumberAddPostResponse200",
+    "ReposOwnerRepoStacksStackNumberAddPostResponse200PropBase",
+)

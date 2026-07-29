@@ -9,9 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -19,34 +16,38 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CodespaceExportDetails(GitHubModel):
-    """Fetches information about an export of a codespace.
+class UserNameResponse(GitHubModel):
+    """UserNameResponse"""
 
-    An export of a codespace. Also, latest export details for a codespace can be
-    fetched with id = latest
-    """
-
-    state: Missing[Union[str, None]] = Field(
-        default=UNSET, description="State of the latest export"
+    formatted: Missing[str] = Field(
+        default=UNSET,
+        description="The full name, including all middle names, titles, and suffixes as appropriate, formatted for display.",
     )
-    completed_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET, description="Completion time of the last export operation"
+    family_name: Missing[str] = Field(
+        default=UNSET, alias="familyName", description="The family name of the user."
     )
-    branch: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Name of the exported branch"
+    given_name: Missing[str] = Field(
+        default=UNSET, alias="givenName", description="The given name of the user."
     )
-    sha: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Git commit SHA of the exported branch"
-    )
-    id: Missing[str] = Field(default=UNSET, description="Id for the export details")
-    export_url: Missing[str] = Field(
-        default=UNSET, description="Url for fetching export details"
-    )
-    html_url: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Web url for the exported branch"
+    middle_name: Missing[str] = Field(
+        default=UNSET, alias="middleName", description="The middle name(s) of the user."
     )
 
 
-model_rebuild(CodespaceExportDetails)
+class UserEmailsResponseItems(GitHubModel):
+    """UserEmailsResponseItems"""
 
-__all__ = ("CodespaceExportDetails",)
+    value: str = Field(description="The email address.")
+    type: Missing[str] = Field(default=UNSET, description="The type of email address.")
+    primary: Missing[bool] = Field(
+        default=UNSET, description="Whether this email address is the primary address."
+    )
+
+
+model_rebuild(UserNameResponse)
+model_rebuild(UserEmailsResponseItems)
+
+__all__ = (
+    "UserEmailsResponseItems",
+    "UserNameResponse",
+)

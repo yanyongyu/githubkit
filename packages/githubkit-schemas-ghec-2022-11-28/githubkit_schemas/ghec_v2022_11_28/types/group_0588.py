@@ -9,44 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodespaceExportDetailsType(TypedDict):
-    """Fetches information about an export of a codespace.
+class UserNameResponseType(TypedDict):
+    """UserNameResponse"""
 
-    An export of a codespace. Also, latest export details for a codespace can be
-    fetched with id = latest
-    """
-
-    state: NotRequired[Union[str, None]]
-    completed_at: NotRequired[Union[_dt.datetime, None]]
-    branch: NotRequired[Union[str, None]]
-    sha: NotRequired[Union[str, None]]
-    id: NotRequired[str]
-    export_url: NotRequired[str]
-    html_url: NotRequired[Union[str, None]]
+    formatted: NotRequired[str]
+    family_name: NotRequired[str]
+    given_name: NotRequired[str]
+    middle_name: NotRequired[str]
 
 
-class CodespaceExportDetailsTypeForResponse(TypedDict):
-    """Fetches information about an export of a codespace.
+class UserNameResponseTypeForResponse(TypedDict):
+    """UserNameResponse"""
 
-    An export of a codespace. Also, latest export details for a codespace can be
-    fetched with id = latest
-    """
+    formatted: NotRequired[str]
+    family_name: NotRequired[str]
+    given_name: NotRequired[str]
+    middle_name: NotRequired[str]
 
-    state: NotRequired[Union[str, None]]
-    completed_at: NotRequired[Union[str, None]]
-    branch: NotRequired[Union[str, None]]
-    sha: NotRequired[Union[str, None]]
-    id: NotRequired[str]
-    export_url: NotRequired[str]
-    html_url: NotRequired[Union[str, None]]
+
+class UserEmailsResponseItemsType(TypedDict):
+    """UserEmailsResponseItems"""
+
+    value: str
+    type: NotRequired[str]
+    primary: NotRequired[bool]
+
+
+class UserEmailsResponseItemsTypeForResponse(TypedDict):
+    """UserEmailsResponseItems"""
+
+    value: str
+    type: NotRequired[str]
+    primary: NotRequired[bool]
 
 
 __all__ = (
-    "CodespaceExportDetailsType",
-    "CodespaceExportDetailsTypeForResponse",
+    "UserEmailsResponseItemsType",
+    "UserEmailsResponseItemsTypeForResponse",
+    "UserNameResponseType",
+    "UserNameResponseTypeForResponse",
 )

@@ -13,50 +13,38 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0598 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0599 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0600 import (
+from .group_0211 import DiscussionType, DiscussionTypeForResponse
+from .group_0619 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0601 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0742 import (
-    WebhookIssueCommentCreatedPropCommentType,
-    WebhookIssueCommentCreatedPropCommentTypeForResponse,
-)
-from .group_0743 import (
-    WebhookIssueCommentCreatedPropIssueType,
-    WebhookIssueCommentCreatedPropIssueTypeForResponse,
-)
+from .group_0620 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0631 import WebhooksAnswerType, WebhooksAnswerTypeForResponse
 
 
-class WebhookIssueCommentCreatedType(TypedDict):
-    """issue_comment created event"""
+class WebhookDiscussionUnansweredType(TypedDict):
+    """discussion unanswered event"""
 
-    action: Literal["created"]
-    comment: WebhookIssueCommentCreatedPropCommentType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssueCommentCreatedPropIssueType
+    action: Literal["unanswered"]
+    discussion: DiscussionType
+    old_answer: WebhooksAnswerType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookIssueCommentCreatedTypeForResponse(TypedDict):
-    """issue_comment created event"""
+class WebhookDiscussionUnansweredTypeForResponse(TypedDict):
+    """discussion unanswered event"""
 
-    action: Literal["created"]
-    comment: WebhookIssueCommentCreatedPropCommentTypeForResponse
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhookIssueCommentCreatedPropIssueTypeForResponse
+    action: Literal["unanswered"]
+    discussion: DiscussionTypeForResponse
+    old_answer: WebhooksAnswerTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookIssueCommentCreatedType",
-    "WebhookIssueCommentCreatedTypeForResponse",
+    "WebhookDiscussionUnansweredType",
+    "WebhookDiscussionUnansweredTypeForResponse",
 )

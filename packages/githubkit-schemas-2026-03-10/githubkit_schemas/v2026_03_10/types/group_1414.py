@@ -9,28 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0092 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
-    """UserCodespacesSecretsSecretNameRepositoriesGetResponse200"""
+class ReposOwnerRepoPullsPostBodyType(TypedDict):
+    """ReposOwnerRepoPullsPostBody"""
 
-    total_count: int
-    repositories: list[MinimalRepositoryType]
+    title: NotRequired[str]
+    head: str
+    head_repo: NotRequired[str]
+    base: str
+    body: NotRequired[str]
+    maintainer_can_modify: NotRequired[bool]
+    draft: NotRequired[bool]
+    issue: NotRequired[int]
 
 
-class UserCodespacesSecretsSecretNameRepositoriesGetResponse200TypeForResponse(
-    TypedDict
-):
-    """UserCodespacesSecretsSecretNameRepositoriesGetResponse200"""
+class ReposOwnerRepoPullsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPostBody"""
 
-    total_count: int
-    repositories: list[MinimalRepositoryTypeForResponse]
+    title: NotRequired[str]
+    head: str
+    head_repo: NotRequired[str]
+    base: str
+    body: NotRequired[str]
+    maintainer_can_modify: NotRequired[bool]
+    draft: NotRequired[bool]
+    issue: NotRequired[int]
 
 
 __all__ = (
-    "UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type",
-    "UserCodespacesSecretsSecretNameRepositoriesGetResponse200TypeForResponse",
+    "ReposOwnerRepoPullsPostBodyType",
+    "ReposOwnerRepoPullsPostBodyTypeForResponse",
 )

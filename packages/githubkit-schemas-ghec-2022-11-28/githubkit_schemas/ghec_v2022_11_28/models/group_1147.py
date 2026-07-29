@@ -13,23 +13,18 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0038 import ActionsHostedRunnerCuratedImage
 
-class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200(
+
+class EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200(
     GitHubModel
 ):
-    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200
+    """EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200"""
 
-    The total number of seats set to "pending cancellation" for the members of the
-    specified enterprise team(s).
-    """
-
-    seats_cancelled: int = Field()
+    total_count: int = Field()
+    images: list[ActionsHostedRunnerCuratedImage] = Field()
 
 
-model_rebuild(
-    EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200
-)
+model_rebuild(EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200)
 
-__all__ = (
-    "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200",
-)
+__all__ = ("EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200",)

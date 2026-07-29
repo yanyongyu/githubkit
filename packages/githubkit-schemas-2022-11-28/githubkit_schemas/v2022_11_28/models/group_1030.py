@@ -15,15 +15,17 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class EventsGetResponse503(GitHubModel):
-    """EventsGetResponse503"""
-
-    code: Missing[str] = Field(default=UNSET)
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
+from .group_1031 import AgentsTasksTaskIdGetResponse200Allof1PropSessionsItems
 
 
-model_rebuild(EventsGetResponse503)
+class AgentsTasksTaskIdGetResponse200Allof1(GitHubModel):
+    """AgentsTasksTaskIdGetResponse200Allof1"""
 
-__all__ = ("EventsGetResponse503",)
+    sessions: Missing[list[AgentsTasksTaskIdGetResponse200Allof1PropSessionsItems]] = (
+        Field(default=UNSET, description="Sessions associated with this task")
+    )
+
+
+model_rebuild(AgentsTasksTaskIdGetResponse200Allof1)
+
+__all__ = ("AgentsTasksTaskIdGetResponse200Allof1",)

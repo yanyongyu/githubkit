@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -19,70 +18,32 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
+from .group_0010 import Integration
+from .group_0473 import IssueTypeWebhook
+from .group_0475 import IssueEventIntent
 
 
-class TimelineReviewedEvent(GitHubModel):
-    """Timeline Reviewed Event
+class IssueTypeAddedIssueEvent(GitHubModel):
+    """Issue Type Added Issue Event
 
-    Timeline Reviewed Event
+    Issue Type Added Issue Event
     """
 
-    event: Literal["reviewed"] = Field()
-    id: int = Field(description="Unique identifier of the review")
+    id: int = Field()
     node_id: str = Field()
-    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    body: Union[str, None] = Field(description="The text of the review.")
-    state: str = Field()
-    html_url: str = Field()
-    pull_request_url: str = Field()
-    links: TimelineReviewedEventPropLinks = Field(alias="_links")
-    submitted_at: Missing[_dt.datetime] = Field(default=UNSET)
-    updated_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
-    commit_id: str = Field(description="A commit SHA for the review.")
-    body_html: Missing[Union[str, None]] = Field(default=UNSET)
-    body_text: Missing[Union[str, None]] = Field(default=UNSET)
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="author_association",
-        description="How the author is associated with the repository.",
+    url: str = Field()
+    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    event: str = Field()
+    commit_id: Union[str, None] = Field()
+    commit_url: Union[str, None] = Field()
+    created_at: str = Field()
+    performed_via_github_app: Union[None, Integration, None] = Field()
+    issue_type: Union[IssueTypeWebhook, None] = Field(
+        title="Issue Type", description="The type of issue."
     )
+    intent: Missing[Union[None, IssueEventIntent, None]] = Field(default=UNSET)
 
 
-class TimelineReviewedEventPropLinks(GitHubModel):
-    """TimelineReviewedEventPropLinks"""
+model_rebuild(IssueTypeAddedIssueEvent)
 
-    html: TimelineReviewedEventPropLinksPropHtml = Field()
-    pull_request: TimelineReviewedEventPropLinksPropPullRequest = Field()
-
-
-class TimelineReviewedEventPropLinksPropHtml(GitHubModel):
-    """TimelineReviewedEventPropLinksPropHtml"""
-
-    href: str = Field()
-
-
-class TimelineReviewedEventPropLinksPropPullRequest(GitHubModel):
-    """TimelineReviewedEventPropLinksPropPullRequest"""
-
-    href: str = Field()
-
-
-model_rebuild(TimelineReviewedEvent)
-model_rebuild(TimelineReviewedEventPropLinks)
-model_rebuild(TimelineReviewedEventPropLinksPropHtml)
-model_rebuild(TimelineReviewedEventPropLinksPropPullRequest)
-
-__all__ = (
-    "TimelineReviewedEvent",
-    "TimelineReviewedEventPropLinks",
-    "TimelineReviewedEventPropLinksPropHtml",
-    "TimelineReviewedEventPropLinksPropPullRequest",
-)
+__all__ = ("IssueTypeAddedIssueEvent",)

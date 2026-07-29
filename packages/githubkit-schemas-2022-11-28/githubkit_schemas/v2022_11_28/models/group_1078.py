@@ -12,17 +12,18 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0123 import RunnerLabel
-
-
-class OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200(GitHubModel):
-    """OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200"""
-
-    total_count: int = Field()
-    labels: list[RunnerLabel] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200)
+class NotificationsThreadsThreadIdSubscriptionPutBody(GitHubModel):
+    """NotificationsThreadsThreadIdSubscriptionPutBody"""
 
-__all__ = ("OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200",)
+    ignored: Missing[bool] = Field(
+        default=UNSET, description="Whether to block all notifications from a thread."
+    )
+
+
+model_rebuild(NotificationsThreadsThreadIdSubscriptionPutBody)
+
+__all__ = ("NotificationsThreadsThreadIdSubscriptionPutBody",)

@@ -9,26 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Any, TypeAlias
 
-from .group_0250 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType: TypeAlias = dict[
+    str, Any
+]
+"""InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPrope
+rties
+
+The custom properties that were defined for the repository. The keys are the
+custom property names, and the values are the corresponding custom property
+values. Present for org repos only.
+"""
 
 
-class OrgsOrgAgentsVariablesNameRepositoriesGetResponse200Type(TypedDict):
-    """OrgsOrgAgentsVariablesNameRepositoriesGetResponse200"""
+InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPrope
+rties
 
-    total_count: int
-    repositories: list[MinimalRepositoryType]
-
-
-class OrgsOrgAgentsVariablesNameRepositoriesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgAgentsVariablesNameRepositoriesGetResponse200"""
-
-    total_count: int
-    repositories: list[MinimalRepositoryTypeForResponse]
+The custom properties that were defined for the repository. The keys are the
+custom property names, and the values are the corresponding custom property
+values. Present for org repos only.
+"""
 
 
 __all__ = (
-    "OrgsOrgAgentsVariablesNameRepositoriesGetResponse200Type",
-    "OrgsOrgAgentsVariablesNameRepositoriesGetResponse200TypeForResponse",
+    "InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType",
+    "InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse",
 )

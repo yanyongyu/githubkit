@@ -9,53 +9,130 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Any, TypeAlias, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class LicenseType(TypedDict):
-    """License
+class GistHistoryType(TypedDict):
+    """Gist History
 
-    License
+    Gist History
     """
 
-    key: str
-    name: str
-    spdx_id: Union[str, None]
-    url: Union[str, None]
-    node_id: str
-    html_url: str
-    description: str
-    implementation: str
-    permissions: list[str]
-    conditions: list[str]
-    limitations: list[str]
-    body: str
-    featured: bool
+    user: NotRequired[Union[None, SimpleUserType]]
+    version: NotRequired[str]
+    committed_at: NotRequired[_dt.datetime]
+    change_status: NotRequired[GistHistoryPropChangeStatusType]
+    url: NotRequired[str]
 
 
-class LicenseTypeForResponse(TypedDict):
-    """License
+class GistHistoryTypeForResponse(TypedDict):
+    """Gist History
 
-    License
+    Gist History
     """
 
-    key: str
-    name: str
-    spdx_id: Union[str, None]
-    url: Union[str, None]
+    user: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    version: NotRequired[str]
+    committed_at: NotRequired[str]
+    change_status: NotRequired[GistHistoryPropChangeStatusTypeForResponse]
+    url: NotRequired[str]
+
+
+class GistHistoryPropChangeStatusType(TypedDict):
+    """GistHistoryPropChangeStatus"""
+
+    total: NotRequired[int]
+    additions: NotRequired[int]
+    deletions: NotRequired[int]
+
+
+class GistHistoryPropChangeStatusTypeForResponse(TypedDict):
+    """GistHistoryPropChangeStatus"""
+
+    total: NotRequired[int]
+    additions: NotRequired[int]
+    deletions: NotRequired[int]
+
+
+class GistSimplePropForkOfType(TypedDict):
+    """Gist
+
+    Gist
+    """
+
+    url: str
+    forks_url: str
+    commits_url: str
+    id: str
     node_id: str
+    git_pull_url: str
+    git_push_url: str
     html_url: str
-    description: str
-    implementation: str
-    permissions: list[str]
-    conditions: list[str]
-    limitations: list[str]
-    body: str
-    featured: bool
+    files: GistSimplePropForkOfPropFilesType
+    public: bool
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    description: Union[str, None]
+    comments: int
+    comments_enabled: NotRequired[bool]
+    user: Union[None, SimpleUserType]
+    comments_url: str
+    owner: NotRequired[Union[None, SimpleUserType]]
+    truncated: NotRequired[bool]
+    forks: NotRequired[list[Any]]
+    history: NotRequired[list[Any]]
+
+
+class GistSimplePropForkOfTypeForResponse(TypedDict):
+    """Gist
+
+    Gist
+    """
+
+    url: str
+    forks_url: str
+    commits_url: str
+    id: str
+    node_id: str
+    git_pull_url: str
+    git_push_url: str
+    html_url: str
+    files: GistSimplePropForkOfPropFilesTypeForResponse
+    public: bool
+    created_at: str
+    updated_at: str
+    description: Union[str, None]
+    comments: int
+    comments_enabled: NotRequired[bool]
+    user: Union[None, SimpleUserTypeForResponse]
+    comments_url: str
+    owner: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    truncated: NotRequired[bool]
+    forks: NotRequired[list[Any]]
+    history: NotRequired[list[Any]]
+
+
+GistSimplePropForkOfPropFilesType: TypeAlias = dict[str, Any]
+"""GistSimplePropForkOfPropFiles
+"""
+
+
+GistSimplePropForkOfPropFilesTypeForResponse: TypeAlias = dict[str, Any]
+"""GistSimplePropForkOfPropFiles
+"""
 
 
 __all__ = (
-    "LicenseType",
-    "LicenseTypeForResponse",
+    "GistHistoryPropChangeStatusType",
+    "GistHistoryPropChangeStatusTypeForResponse",
+    "GistHistoryType",
+    "GistHistoryTypeForResponse",
+    "GistSimplePropForkOfPropFilesType",
+    "GistSimplePropForkOfPropFilesTypeForResponse",
+    "GistSimplePropForkOfType",
+    "GistSimplePropForkOfTypeForResponse",
 )

@@ -9,184 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class SecurityAndAnalysis(GitHubModel):
-    """SecurityAndAnalysis"""
+class License(GitHubModel):
+    """License
 
-    advanced_security: Missing[SecurityAndAnalysisPropAdvancedSecurity] = Field(
-        default=UNSET,
-        description="Enable or disable GitHub Advanced Security for the repository.\n\nFor standalone Code Scanning or Secret Protection products, this parameter cannot be used.\n",
-    )
-    code_security: Missing[SecurityAndAnalysisPropCodeSecurity] = Field(default=UNSET)
-    dependabot_security_updates: Missing[
-        SecurityAndAnalysisPropDependabotSecurityUpdates
-    ] = Field(
-        default=UNSET,
-        description="Enable or disable Dependabot security updates for the repository.",
-    )
-    secret_scanning: Missing[SecurityAndAnalysisPropSecretScanning] = Field(
-        default=UNSET
-    )
-    secret_scanning_push_protection: Missing[
-        SecurityAndAnalysisPropSecretScanningPushProtection
-    ] = Field(default=UNSET)
-    secret_scanning_non_provider_patterns: Missing[
-        SecurityAndAnalysisPropSecretScanningNonProviderPatterns
-    ] = Field(default=UNSET)
-    secret_scanning_ai_detection: Missing[
-        SecurityAndAnalysisPropSecretScanningAiDetection
-    ] = Field(default=UNSET)
-    secret_scanning_validity_checks: Missing[
-        SecurityAndAnalysisPropSecretScanningValidityChecks
-    ] = Field(default=UNSET)
-    secret_scanning_delegated_alert_dismissal: Missing[
-        SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissal
-    ] = Field(default=UNSET)
-    secret_scanning_delegated_bypass: Missing[
-        SecurityAndAnalysisPropSecretScanningDelegatedBypass
-    ] = Field(default=UNSET)
-    secret_scanning_delegated_bypass_options: Missing[
-        SecurityAndAnalysisPropSecretScanningDelegatedBypassOptions
-    ] = Field(default=UNSET)
-
-
-class SecurityAndAnalysisPropAdvancedSecurity(GitHubModel):
-    """SecurityAndAnalysisPropAdvancedSecurity
-
-    Enable or disable GitHub Advanced Security for the repository.
-
-    For standalone Code Scanning or Secret Protection products, this parameter
-    cannot be used.
+    License
     """
 
-    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
+    key: str = Field()
+    name: str = Field()
+    spdx_id: Union[str, None] = Field()
+    url: Union[str, None] = Field()
+    node_id: str = Field()
+    html_url: str = Field()
+    description: str = Field()
+    implementation: str = Field()
+    permissions: list[str] = Field()
+    conditions: list[str] = Field()
+    limitations: list[str] = Field()
+    body: str = Field()
+    featured: bool = Field()
 
 
-class SecurityAndAnalysisPropCodeSecurity(GitHubModel):
-    """SecurityAndAnalysisPropCodeSecurity"""
+model_rebuild(License)
 
-    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
-
-
-class SecurityAndAnalysisPropDependabotSecurityUpdates(GitHubModel):
-    """SecurityAndAnalysisPropDependabotSecurityUpdates
-
-    Enable or disable Dependabot security updates for the repository.
-    """
-
-    status: Missing[Literal["enabled", "disabled"]] = Field(
-        default=UNSET,
-        description="The enablement status of Dependabot security updates for the repository.",
-    )
-
-
-class SecurityAndAnalysisPropSecretScanning(GitHubModel):
-    """SecurityAndAnalysisPropSecretScanning"""
-
-    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
-
-
-class SecurityAndAnalysisPropSecretScanningPushProtection(GitHubModel):
-    """SecurityAndAnalysisPropSecretScanningPushProtection"""
-
-    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
-
-
-class SecurityAndAnalysisPropSecretScanningNonProviderPatterns(GitHubModel):
-    """SecurityAndAnalysisPropSecretScanningNonProviderPatterns"""
-
-    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
-
-
-class SecurityAndAnalysisPropSecretScanningAiDetection(GitHubModel):
-    """SecurityAndAnalysisPropSecretScanningAiDetection"""
-
-    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
-
-
-class SecurityAndAnalysisPropSecretScanningValidityChecks(GitHubModel):
-    """SecurityAndAnalysisPropSecretScanningValidityChecks"""
-
-    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
-
-
-class SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissal(GitHubModel):
-    """SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissal"""
-
-    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
-
-
-class SecurityAndAnalysisPropSecretScanningDelegatedBypass(GitHubModel):
-    """SecurityAndAnalysisPropSecretScanningDelegatedBypass"""
-
-    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
-
-
-class SecurityAndAnalysisPropSecretScanningDelegatedBypassOptions(GitHubModel):
-    """SecurityAndAnalysisPropSecretScanningDelegatedBypassOptions"""
-
-    reviewers: Missing[
-        list[
-            SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItems
-        ]
-    ] = Field(
-        default=UNSET,
-        description="The bypass reviewers for secret scanning delegated bypass",
-    )
-
-
-class SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItems(
-    GitHubModel
-):
-    """SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItems"""
-
-    reviewer_id: int = Field(
-        description="The ID of the team or role selected as a bypass reviewer"
-    )
-    reviewer_type: Literal["TEAM", "ROLE"] = Field(
-        description="The type of the bypass reviewer"
-    )
-    mode: Missing[Literal["ALWAYS", "EXEMPT"]] = Field(
-        default=UNSET, description="The bypass mode for the reviewer"
-    )
-
-
-model_rebuild(SecurityAndAnalysis)
-model_rebuild(SecurityAndAnalysisPropAdvancedSecurity)
-model_rebuild(SecurityAndAnalysisPropCodeSecurity)
-model_rebuild(SecurityAndAnalysisPropDependabotSecurityUpdates)
-model_rebuild(SecurityAndAnalysisPropSecretScanning)
-model_rebuild(SecurityAndAnalysisPropSecretScanningPushProtection)
-model_rebuild(SecurityAndAnalysisPropSecretScanningNonProviderPatterns)
-model_rebuild(SecurityAndAnalysisPropSecretScanningAiDetection)
-model_rebuild(SecurityAndAnalysisPropSecretScanningValidityChecks)
-model_rebuild(SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissal)
-model_rebuild(SecurityAndAnalysisPropSecretScanningDelegatedBypass)
-model_rebuild(SecurityAndAnalysisPropSecretScanningDelegatedBypassOptions)
-model_rebuild(
-    SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItems
-)
-
-__all__ = (
-    "SecurityAndAnalysis",
-    "SecurityAndAnalysisPropAdvancedSecurity",
-    "SecurityAndAnalysisPropCodeSecurity",
-    "SecurityAndAnalysisPropDependabotSecurityUpdates",
-    "SecurityAndAnalysisPropSecretScanning",
-    "SecurityAndAnalysisPropSecretScanningAiDetection",
-    "SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissal",
-    "SecurityAndAnalysisPropSecretScanningDelegatedBypass",
-    "SecurityAndAnalysisPropSecretScanningDelegatedBypassOptions",
-    "SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItems",
-    "SecurityAndAnalysisPropSecretScanningNonProviderPatterns",
-    "SecurityAndAnalysisPropSecretScanningPushProtection",
-    "SecurityAndAnalysisPropSecretScanningValidityChecks",
-)
+__all__ = ("License",)

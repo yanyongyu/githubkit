@@ -9,95 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class WebhookWorkflowJobInProgressPropWorkflowJobAllof1Type(TypedDict):
-    """WebhookWorkflowJobInProgressPropWorkflowJobAllof1"""
-
-    check_run_url: NotRequired[str]
-    completed_at: NotRequired[Union[str, None]]
-    conclusion: NotRequired[Union[str, None]]
-    created_at: NotRequired[str]
-    head_sha: NotRequired[str]
-    html_url: NotRequired[str]
-    id: NotRequired[int]
-    labels: NotRequired[list[str]]
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    run_attempt: NotRequired[int]
-    run_id: NotRequired[int]
-    run_url: NotRequired[str]
-    runner_group_id: NotRequired[Union[int, None]]
-    runner_group_name: NotRequired[Union[str, None]]
-    runner_id: NotRequired[Union[int, None]]
-    runner_name: NotRequired[Union[str, None]]
-    started_at: NotRequired[str]
-    status: Literal["in_progress", "completed", "queued"]
-    head_branch: NotRequired[Union[str, None]]
-    workflow_name: NotRequired[Union[str, None]]
-    steps: list[WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItemsType]
-    url: NotRequired[str]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0535 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0536 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0537 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0538 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0958 import (
+    WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryType,
+    WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryTypeForResponse,
+)
 
 
-class WebhookWorkflowJobInProgressPropWorkflowJobAllof1TypeForResponse(TypedDict):
-    """WebhookWorkflowJobInProgressPropWorkflowJobAllof1"""
+class WebhookSecurityAdvisoryWithdrawnType(TypedDict):
+    """security_advisory withdrawn event"""
 
-    check_run_url: NotRequired[str]
-    completed_at: NotRequired[Union[str, None]]
-    conclusion: NotRequired[Union[str, None]]
-    created_at: NotRequired[str]
-    head_sha: NotRequired[str]
-    html_url: NotRequired[str]
-    id: NotRequired[int]
-    labels: NotRequired[list[str]]
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    run_attempt: NotRequired[int]
-    run_id: NotRequired[int]
-    run_url: NotRequired[str]
-    runner_group_id: NotRequired[Union[int, None]]
-    runner_group_name: NotRequired[Union[str, None]]
-    runner_id: NotRequired[Union[int, None]]
-    runner_name: NotRequired[Union[str, None]]
-    started_at: NotRequired[str]
-    status: Literal["in_progress", "completed", "queued"]
-    head_branch: NotRequired[Union[str, None]]
-    workflow_name: NotRequired[Union[str, None]]
-    steps: list[
-        WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItemsTypeForResponse
-    ]
-    url: NotRequired[str]
+    action: Literal["withdrawn"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: NotRequired[RepositoryWebhooksType]
+    security_advisory: WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryType
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItemsType(TypedDict):
-    """Workflow Step"""
+class WebhookSecurityAdvisoryWithdrawnTypeForResponse(TypedDict):
+    """security_advisory withdrawn event"""
 
-    completed_at: Union[str, None]
-    conclusion: Union[str, None]
-    name: str
-    number: int
-    started_at: Union[str, None]
-    status: Literal["in_progress", "completed", "pending", "queued"]
-
-
-class WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItemsTypeForResponse(
-    TypedDict
-):
-    """Workflow Step"""
-
-    completed_at: Union[str, None]
-    conclusion: Union[str, None]
-    name: str
-    number: int
-    started_at: Union[str, None]
-    status: Literal["in_progress", "completed", "pending", "queued"]
+    action: Literal["withdrawn"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    security_advisory: (
+        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryTypeForResponse
+    )
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItemsType",
-    "WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItemsTypeForResponse",
-    "WebhookWorkflowJobInProgressPropWorkflowJobAllof1Type",
-    "WebhookWorkflowJobInProgressPropWorkflowJobAllof1TypeForResponse",
+    "WebhookSecurityAdvisoryWithdrawnType",
+    "WebhookSecurityAdvisoryWithdrawnTypeForResponse",
 )

@@ -9,49 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0309 import (
-    ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType,
-    ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesTypeForResponse,
-    ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType,
-    ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsTypeForResponse,
-)
+
+class VerificationType(TypedDict):
+    """Verification"""
+
+    verified: bool
+    reason: str
+    payload: Union[str, None]
+    signature: Union[str, None]
+    verified_at: NotRequired[Union[str, None]]
 
 
-class ProtectedBranchPropRequiredPullRequestReviewsType(TypedDict):
-    """ProtectedBranchPropRequiredPullRequestReviews"""
+class VerificationTypeForResponse(TypedDict):
+    """Verification"""
 
-    url: str
-    dismiss_stale_reviews: NotRequired[bool]
-    require_code_owner_reviews: NotRequired[bool]
-    required_approving_review_count: NotRequired[int]
-    require_last_push_approval: NotRequired[bool]
-    dismissal_restrictions: NotRequired[
-        ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType
-    ]
-    bypass_pull_request_allowances: NotRequired[
-        ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType
-    ]
-
-
-class ProtectedBranchPropRequiredPullRequestReviewsTypeForResponse(TypedDict):
-    """ProtectedBranchPropRequiredPullRequestReviews"""
-
-    url: str
-    dismiss_stale_reviews: NotRequired[bool]
-    require_code_owner_reviews: NotRequired[bool]
-    required_approving_review_count: NotRequired[int]
-    require_last_push_approval: NotRequired[bool]
-    dismissal_restrictions: NotRequired[
-        ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsTypeForResponse
-    ]
-    bypass_pull_request_allowances: NotRequired[
-        ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesTypeForResponse
-    ]
+    verified: bool
+    reason: str
+    payload: Union[str, None]
+    signature: Union[str, None]
+    verified_at: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "ProtectedBranchPropRequiredPullRequestReviewsType",
-    "ProtectedBranchPropRequiredPullRequestReviewsTypeForResponse",
+    "VerificationType",
+    "VerificationTypeForResponse",
 )

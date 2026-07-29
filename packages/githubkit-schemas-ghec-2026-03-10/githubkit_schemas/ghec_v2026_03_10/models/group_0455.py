@@ -14,18 +14,26 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class PorterLargeFile(GitHubModel):
-    """Porter Large File
+class CustomDeploymentRuleApp(GitHubModel):
+    """Custom deployment protection rule app
 
-    Porter Large File
+    A GitHub App that is providing a custom deployment protection rule.
     """
 
-    ref_name: str = Field()
-    path: str = Field()
-    oid: str = Field()
-    size: int = Field()
+    id: int = Field(
+        description="The unique identifier of the deployment protection rule integration."
+    )
+    slug: str = Field(
+        description="The slugified name of the deployment protection rule integration."
+    )
+    integration_url: str = Field(
+        description="The URL for the endpoint to get details about the app."
+    )
+    node_id: str = Field(
+        description="The node ID for the deployment protection rule integration."
+    )
 
 
-model_rebuild(PorterLargeFile)
+model_rebuild(CustomDeploymentRuleApp)
 
-__all__ = ("PorterLargeFile",)
+__all__ = ("CustomDeploymentRuleApp",)

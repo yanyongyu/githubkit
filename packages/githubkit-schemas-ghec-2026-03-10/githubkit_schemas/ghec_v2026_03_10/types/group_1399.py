@@ -9,26 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0350 import ActionsVariableType, ActionsVariableTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoAgentsOrganizationVariablesGetResponse200Type(TypedDict):
-    """ReposOwnerRepoAgentsOrganizationVariablesGetResponse200"""
+class OrgsOrgProjectsV2ProjectNumberDraftsPostBodyType(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberDraftsPostBody"""
 
-    total_count: int
-    variables: list[ActionsVariableType]
+    title: str
+    body: NotRequired[str]
 
 
-class ReposOwnerRepoAgentsOrganizationVariablesGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoAgentsOrganizationVariablesGetResponse200"""
+class OrgsOrgProjectsV2ProjectNumberDraftsPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberDraftsPostBody"""
 
-    total_count: int
-    variables: list[ActionsVariableTypeForResponse]
+    title: str
+    body: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoAgentsOrganizationVariablesGetResponse200Type",
-    "ReposOwnerRepoAgentsOrganizationVariablesGetResponse200TypeForResponse",
+    "OrgsOrgProjectsV2ProjectNumberDraftsPostBodyType",
+    "OrgsOrgProjectsV2ProjectNumberDraftsPostBodyTypeForResponse",
 )

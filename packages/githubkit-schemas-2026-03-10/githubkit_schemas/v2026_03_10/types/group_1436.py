@@ -13,25 +13,33 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUserIdProjectsV2ProjectNumberViewsPostBodyType(TypedDict):
-    """UsersUserIdProjectsV2ProjectNumberViewsPostBody"""
+class ReposOwnerRepoReleasesReleaseIdPatchBodyType(TypedDict):
+    """ReposOwnerRepoReleasesReleaseIdPatchBody"""
 
-    name: str
-    layout: Literal["table", "board", "roadmap"]
-    filter_: NotRequired[str]
-    visible_fields: NotRequired[list[int]]
+    tag_name: NotRequired[str]
+    target_commitish: NotRequired[str]
+    name: NotRequired[str]
+    body: NotRequired[str]
+    draft: NotRequired[bool]
+    prerelease: NotRequired[bool]
+    make_latest: NotRequired[Literal["true", "false", "legacy"]]
+    discussion_category_name: NotRequired[str]
 
 
-class UsersUserIdProjectsV2ProjectNumberViewsPostBodyTypeForResponse(TypedDict):
-    """UsersUserIdProjectsV2ProjectNumberViewsPostBody"""
+class ReposOwnerRepoReleasesReleaseIdPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoReleasesReleaseIdPatchBody"""
 
-    name: str
-    layout: Literal["table", "board", "roadmap"]
-    filter_: NotRequired[str]
-    visible_fields: NotRequired[list[int]]
+    tag_name: NotRequired[str]
+    target_commitish: NotRequired[str]
+    name: NotRequired[str]
+    body: NotRequired[str]
+    draft: NotRequired[bool]
+    prerelease: NotRequired[bool]
+    make_latest: NotRequired[Literal["true", "false", "legacy"]]
+    discussion_category_name: NotRequired[str]
 
 
 __all__ = (
-    "UsersUserIdProjectsV2ProjectNumberViewsPostBodyType",
-    "UsersUserIdProjectsV2ProjectNumberViewsPostBodyTypeForResponse",
+    "ReposOwnerRepoReleasesReleaseIdPatchBodyType",
+    "ReposOwnerRepoReleasesReleaseIdPatchBodyTypeForResponse",
 )

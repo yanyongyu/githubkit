@@ -2,6 +2,7 @@ from typing import TYPE_CHECKING
 
 import openapi_pydantic as oas
 
+from .. import get_override_config
 from ..data import EndpointData as EndpointData
 from ..utils import concat_snake_name
 from .parameter import build_param
@@ -13,6 +14,15 @@ if TYPE_CHECKING:
 
 
 METHODS = ["get", "put", "post", "delete", "options", "head", "patch", "trace"]
+
+
+def _override_operation_id(
+    operation_id: str, operation_overrides: dict[str, str]
+) -> str:
+    for pattern, override in operation_overrides.items():
+        if operation_id.startswith(pattern):
+            return override + operation_id.removeprefix(pattern)
+    return operation_id
 
 
 def parse_endpoint(source: "Source", path: str) -> list[EndpointData]:
@@ -31,11 +41,17 @@ def parse_endpoint(source: "Source", path: str) -> list[EndpointData]:
         for index in range(len(data.parameters or []))
     ]
 
+    override_config = get_override_config()
+    operation_overrides = override_config.operation_overrides
+
     for method in METHODS:
         operation_source = source / method
         operation = getattr(data, method, None)
         if not isinstance(operation, oas.Operation):
             continue
+
+        if operation_id := operation.operationId:
+            operation_id = _override_operation_id(operation_id, operation_overrides)
 
         op_params = [
             build_param(
@@ -77,7 +93,7 @@ def parse_endpoint(source: "Source", path: str) -> list[EndpointData]:
                 method=method,
                 tags=operation.tags,
                 description=operation.description,
-                operation_id=operation.operationId,
+                operation_id=operation_id,
                 external_docs=operation.externalDocs and operation.externalDocs.url,
                 deprecated=operation.deprecated,
                 parameters=global_params + op_params,

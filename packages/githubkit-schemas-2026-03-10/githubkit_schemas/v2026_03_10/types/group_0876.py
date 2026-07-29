@@ -9,45 +9,221 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0522 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0523 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0524 import (
+from .group_0534 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0535 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0536 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0525 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0562 import WebhooksReleaseType, WebhooksReleaseTypeForResponse
+from .group_0537 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0877 import (
+    WebhookPullRequestReviewDismissedPropPullRequestType,
+    WebhookPullRequestReviewDismissedPropPullRequestTypeForResponse,
+)
 
 
-class WebhookReleaseDeletedType(TypedDict):
-    """release deleted event"""
+class WebhookPullRequestReviewDismissedType(TypedDict):
+    """pull_request_review dismissed event"""
 
-    action: Literal["deleted"]
+    action: Literal["dismissed"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    release: WebhooksReleaseType
+    pull_request: WebhookPullRequestReviewDismissedPropPullRequestType
     repository: RepositoryWebhooksType
+    review: WebhookPullRequestReviewDismissedPropReviewType
     sender: SimpleUserType
 
 
-class WebhookReleaseDeletedTypeForResponse(TypedDict):
-    """release deleted event"""
+class WebhookPullRequestReviewDismissedTypeForResponse(TypedDict):
+    """pull_request_review dismissed event"""
 
-    action: Literal["deleted"]
+    action: Literal["dismissed"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    release: WebhooksReleaseTypeForResponse
+    pull_request: WebhookPullRequestReviewDismissedPropPullRequestTypeForResponse
     repository: RepositoryWebhooksTypeForResponse
+    review: WebhookPullRequestReviewDismissedPropReviewTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
+class WebhookPullRequestReviewDismissedPropReviewType(TypedDict):
+    """WebhookPullRequestReviewDismissedPropReview
+
+    The review that was affected.
+    """
+
+    links: WebhookPullRequestReviewDismissedPropReviewPropLinksType
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    body: Union[str, None]
+    commit_id: str
+    html_url: str
+    id: int
+    node_id: str
+    pull_request_url: str
+    state: Literal["dismissed", "approved", "changes_requested"]
+    submitted_at: _dt.datetime
+    updated_at: NotRequired[Union[_dt.datetime, None]]
+    user: Union[WebhookPullRequestReviewDismissedPropReviewPropUserType, None]
+
+
+class WebhookPullRequestReviewDismissedPropReviewTypeForResponse(TypedDict):
+    """WebhookPullRequestReviewDismissedPropReview
+
+    The review that was affected.
+    """
+
+    links: WebhookPullRequestReviewDismissedPropReviewPropLinksTypeForResponse
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    body: Union[str, None]
+    commit_id: str
+    html_url: str
+    id: int
+    node_id: str
+    pull_request_url: str
+    state: Literal["dismissed", "approved", "changes_requested"]
+    submitted_at: str
+    updated_at: NotRequired[Union[str, None]]
+    user: Union[
+        WebhookPullRequestReviewDismissedPropReviewPropUserTypeForResponse, None
+    ]
+
+
+class WebhookPullRequestReviewDismissedPropReviewPropUserType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookPullRequestReviewDismissedPropReviewPropUserTypeForResponse(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookPullRequestReviewDismissedPropReviewPropLinksType(TypedDict):
+    """WebhookPullRequestReviewDismissedPropReviewPropLinks"""
+
+    html: WebhookPullRequestReviewDismissedPropReviewPropLinksPropHtmlType
+    pull_request: (
+        WebhookPullRequestReviewDismissedPropReviewPropLinksPropPullRequestType
+    )
+
+
+class WebhookPullRequestReviewDismissedPropReviewPropLinksTypeForResponse(TypedDict):
+    """WebhookPullRequestReviewDismissedPropReviewPropLinks"""
+
+    html: WebhookPullRequestReviewDismissedPropReviewPropLinksPropHtmlTypeForResponse
+    pull_request: WebhookPullRequestReviewDismissedPropReviewPropLinksPropPullRequestTypeForResponse
+
+
+class WebhookPullRequestReviewDismissedPropReviewPropLinksPropHtmlType(TypedDict):
+    """Link"""
+
+    href: str
+
+
+class WebhookPullRequestReviewDismissedPropReviewPropLinksPropHtmlTypeForResponse(
+    TypedDict
+):
+    """Link"""
+
+    href: str
+
+
+class WebhookPullRequestReviewDismissedPropReviewPropLinksPropPullRequestType(
+    TypedDict
+):
+    """Link"""
+
+    href: str
+
+
+class WebhookPullRequestReviewDismissedPropReviewPropLinksPropPullRequestTypeForResponse(
+    TypedDict
+):
+    """Link"""
+
+    href: str
+
+
 __all__ = (
-    "WebhookReleaseDeletedType",
-    "WebhookReleaseDeletedTypeForResponse",
+    "WebhookPullRequestReviewDismissedPropReviewPropLinksPropHtmlType",
+    "WebhookPullRequestReviewDismissedPropReviewPropLinksPropHtmlTypeForResponse",
+    "WebhookPullRequestReviewDismissedPropReviewPropLinksPropPullRequestType",
+    "WebhookPullRequestReviewDismissedPropReviewPropLinksPropPullRequestTypeForResponse",
+    "WebhookPullRequestReviewDismissedPropReviewPropLinksType",
+    "WebhookPullRequestReviewDismissedPropReviewPropLinksTypeForResponse",
+    "WebhookPullRequestReviewDismissedPropReviewPropUserType",
+    "WebhookPullRequestReviewDismissedPropReviewPropUserTypeForResponse",
+    "WebhookPullRequestReviewDismissedPropReviewType",
+    "WebhookPullRequestReviewDismissedPropReviewTypeForResponse",
+    "WebhookPullRequestReviewDismissedType",
+    "WebhookPullRequestReviewDismissedTypeForResponse",
 )

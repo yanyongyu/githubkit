@@ -9,25 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
 
-class OrgsOrgPersonalAccessTokensPostBodyType(TypedDict):
-    """OrgsOrgPersonalAccessTokensPostBody"""
+class OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyType(TypedDict):
+    """OrgsOrgCodeSecurityConfigurationsDetachDeleteBody"""
 
-    action: Literal["revoke"]
-    pat_ids: list[int]
+    selected_repository_ids: list[int]
 
 
-class OrgsOrgPersonalAccessTokensPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgPersonalAccessTokensPostBody"""
+class OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyTypeForResponse(TypedDict):
+    """OrgsOrgCodeSecurityConfigurationsDetachDeleteBody"""
 
-    action: Literal["revoke"]
-    pat_ids: list[int]
+    selected_repository_ids: list[int]
 
 
 __all__ = (
-    "OrgsOrgPersonalAccessTokensPostBodyType",
-    "OrgsOrgPersonalAccessTokensPostBodyTypeForResponse",
+    "OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyType",
+    "OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyTypeForResponse",
 )

@@ -11,16 +11,24 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+
+from .group_0192 import CustomPropertyValue
 
 
-class ReposOwnerRepoActionsVariablesPostBody(GitHubModel):
-    """ReposOwnerRepoActionsVariablesPostBody"""
+class OrgsOrgPropertiesValuesPatchBody(GitHubModel):
+    """OrgsOrgPropertiesValuesPatchBody"""
 
-    name: str = Field(description="The name of the variable.")
-    value: str = Field(description="The value of the variable.")
+    repository_names: list[str] = Field(
+        max_length=30 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The names of repositories that the custom property values will be applied to.",
+    )
+    properties: list[CustomPropertyValue] = Field(
+        description="List of custom property names and associated values to apply to the repositories."
+    )
 
 
-model_rebuild(ReposOwnerRepoActionsVariablesPostBody)
+model_rebuild(OrgsOrgPropertiesValuesPatchBody)
 
-__all__ = ("ReposOwnerRepoActionsVariablesPostBody",)
+__all__ = ("OrgsOrgPropertiesValuesPatchBody",)

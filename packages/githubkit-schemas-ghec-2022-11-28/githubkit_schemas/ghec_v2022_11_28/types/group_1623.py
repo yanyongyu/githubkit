@@ -9,139 +9,63 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameAttestationsSubjectDigestGetResponse200Type(TypedDict):
-    """UsersUsernameAttestationsSubjectDigestGetResponse200"""
+class ReposOwnerRepoPullsPullNumberReviewsPostBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberReviewsPostBody"""
 
-    attestations: NotRequired[
+    commit_id: NotRequired[str]
+    body: NotRequired[str]
+    event: NotRequired[Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]]
+    comments: NotRequired[
+        list[ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsType]
+    ]
+
+
+class ReposOwnerRepoPullsPullNumberReviewsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPullNumberReviewsPostBody"""
+
+    commit_id: NotRequired[str]
+    body: NotRequired[str]
+    event: NotRequired[Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]]
+    comments: NotRequired[
         list[
-            UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsType
+            ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsTypeForResponse
         ]
     ]
 
 
-class UsersUsernameAttestationsSubjectDigestGetResponse200TypeForResponse(TypedDict):
-    """UsersUsernameAttestationsSubjectDigestGetResponse200"""
+class ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems"""
 
-    attestations: NotRequired[
-        list[
-            UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse
-        ]
-    ]
+    path: str
+    position: NotRequired[int]
+    body: str
+    line: NotRequired[int]
+    side: NotRequired[str]
+    start_line: NotRequired[int]
+    start_side: NotRequired[str]
 
 
-class UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsType(
+class ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsTypeForResponse(
     TypedDict
 ):
-    """UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
+    """ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems"""
 
-    bundle: NotRequired[
-        UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleType
-    ]
-    repository_id: NotRequired[int]
-    bundle_url: NotRequired[str]
-    initiator: NotRequired[str]
-
-
-class UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse(
-    TypedDict
-):
-    """UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
-
-    bundle: NotRequired[
-        UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleTypeForResponse
-    ]
-    repository_id: NotRequired[int]
-    bundle_url: NotRequired[str]
-    initiator: NotRequired[str]
-
-
-class UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleType(
-    TypedDict
-):
-    """UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBun
-    dle
-
-    The attestation's Sigstore Bundle.
-    Refer to the [Sigstore Bundle
-    Specification](https://github.com/sigstore/protobuf-
-    specs/blob/main/protos/sigstore_bundle.proto) for more information.
-    """
-
-    media_type: NotRequired[str]
-    verification_material: NotRequired[
-        UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialType
-    ]
-    dsse_envelope: NotRequired[
-        UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeType
-    ]
-
-
-class UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleTypeForResponse(
-    TypedDict
-):
-    """UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBun
-    dle
-
-    The attestation's Sigstore Bundle.
-    Refer to the [Sigstore Bundle
-    Specification](https://github.com/sigstore/protobuf-
-    specs/blob/main/protos/sigstore_bundle.proto) for more information.
-    """
-
-    media_type: NotRequired[str]
-    verification_material: NotRequired[
-        UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialTypeForResponse
-    ]
-    dsse_envelope: NotRequired[
-        UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeTypeForResponse
-    ]
-
-
-UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialType: TypeAlias = dict[
-    str, Any
-]
-"""UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBun
-dlePropVerificationMaterial
-"""
-
-
-UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBun
-dlePropVerificationMaterial
-"""
-
-
-UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeType: TypeAlias = dict[
-    str, Any
-]
-"""UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBun
-dlePropDsseEnvelope
-"""
-
-
-UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBun
-dlePropDsseEnvelope
-"""
+    path: str
+    position: NotRequired[int]
+    body: str
+    line: NotRequired[int]
+    side: NotRequired[str]
+    start_line: NotRequired[int]
+    start_side: NotRequired[str]
 
 
 __all__ = (
-    "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeType",
-    "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeTypeForResponse",
-    "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialType",
-    "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialTypeForResponse",
-    "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleType",
-    "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleTypeForResponse",
-    "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsType",
-    "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse",
-    "UsersUsernameAttestationsSubjectDigestGetResponse200Type",
-    "UsersUsernameAttestationsSubjectDigestGetResponse200TypeForResponse",
+    "ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsType",
+    "ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsTypeForResponse",
+    "ReposOwnerRepoPullsPullNumberReviewsPostBodyType",
+    "ReposOwnerRepoPullsPullNumberReviewsPostBodyTypeForResponse",
 )

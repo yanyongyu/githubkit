@@ -9,50 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_1274 import (
-    OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType,
-    OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsTypeForResponse,
-)
+
+class OrgsOrgActionsOidcCustomizationSubPutBodyType(TypedDict):
+    """Actions OIDC Subject customization
+
+    Actions OIDC Subject customization
+    """
+
+    include_claim_keys: NotRequired[list[str]]
+    use_immutable_subject: NotRequired[bool]
 
 
-class OrgsOrgCampaignsPostBodyOneof1Type(TypedDict):
-    """OrgsOrgCampaignsPostBodyOneof1"""
+class OrgsOrgActionsOidcCustomizationSubPutBodyTypeForResponse(TypedDict):
+    """Actions OIDC Subject customization
 
-    name: str
-    description: str
-    managers: NotRequired[list[str]]
-    team_managers: NotRequired[list[str]]
-    ends_at: _dt.datetime
-    contact_link: NotRequired[Union[str, None]]
-    code_scanning_alerts: NotRequired[
-        Union[list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType], None]
-    ]
-    generate_issues: NotRequired[bool]
+    Actions OIDC Subject customization
+    """
 
-
-class OrgsOrgCampaignsPostBodyOneof1TypeForResponse(TypedDict):
-    """OrgsOrgCampaignsPostBodyOneof1"""
-
-    name: str
-    description: str
-    managers: NotRequired[list[str]]
-    team_managers: NotRequired[list[str]]
-    ends_at: str
-    contact_link: NotRequired[Union[str, None]]
-    code_scanning_alerts: NotRequired[
-        Union[
-            list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsTypeForResponse],
-            None,
-        ]
-    ]
-    generate_issues: NotRequired[bool]
+    include_claim_keys: NotRequired[list[str]]
+    use_immutable_subject: NotRequired[bool]
 
 
 __all__ = (
-    "OrgsOrgCampaignsPostBodyOneof1Type",
-    "OrgsOrgCampaignsPostBodyOneof1TypeForResponse",
+    "OrgsOrgActionsOidcCustomizationSubPutBodyType",
+    "OrgsOrgActionsOidcCustomizationSubPutBodyTypeForResponse",
 )

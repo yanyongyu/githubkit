@@ -9,36 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class NetworkSettingsType(TypedDict):
-    """Hosted compute network settings resource
+class SecretScanningCustomPatternValidationErrorType(TypedDict):
+    """Secret Scanning Custom Pattern Validation Error
 
-    A hosted compute network settings resource.
+    A validation error for a custom pattern in a batch operation.
     """
 
-    id: str
-    network_configuration_id: NotRequired[str]
-    name: str
-    subnet_id: str
-    region: str
+    code: NotRequired[
+        Literal[
+            "invalid",
+            "unprocessable",
+            "start_delimiter",
+            "end_delimiter",
+            "name",
+            "must_match",
+            "must_not_match",
+            "custom_pattern_version_mismatch",
+        ]
+    ]
+    message: NotRequired[str]
 
 
-class NetworkSettingsTypeForResponse(TypedDict):
-    """Hosted compute network settings resource
+class SecretScanningCustomPatternValidationErrorTypeForResponse(TypedDict):
+    """Secret Scanning Custom Pattern Validation Error
 
-    A hosted compute network settings resource.
+    A validation error for a custom pattern in a batch operation.
     """
 
-    id: str
-    network_configuration_id: NotRequired[str]
-    name: str
-    subnet_id: str
-    region: str
+    code: NotRequired[
+        Literal[
+            "invalid",
+            "unprocessable",
+            "start_delimiter",
+            "end_delimiter",
+            "name",
+            "must_match",
+            "must_not_match",
+            "custom_pattern_version_mismatch",
+        ]
+    ]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "NetworkSettingsType",
-    "NetworkSettingsTypeForResponse",
+    "SecretScanningCustomPatternValidationErrorType",
+    "SecretScanningCustomPatternValidationErrorTypeForResponse",
 )

@@ -21,7 +21,7 @@ from githubkit.utils import UNSET, exclude_unset, parse_query_params
 
 if TYPE_CHECKING:
     import datetime as _dt
-    from typing import Literal
+    from typing import Literal, Union
 
     from githubkit import GitHubCore
     from githubkit.response import Response
@@ -63,7 +63,8 @@ if TYPE_CHECKING:
         EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyType,
         EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingType,
         EnterprisesEnterpriseSettingsBillingBudgetsPostBodyType,
-        EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyType,
+        EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof0Type,
+        EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof1Type,
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBodyType,
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200TypeForResponse,
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBodyType,
@@ -1262,6 +1263,7 @@ class BillingClient:
         """
 
         from ..models import (
+            BasicError,
             EnterprisesEnterpriseSettingsBillingCostCentersPostBody,
             EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200,
         )
@@ -1288,7 +1290,11 @@ class BillingClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200,
-            error_models={},
+            error_models={
+                "400": BasicError,
+                "409": BasicError,
+                "500": BasicError,
+            },
         )
 
     @overload
@@ -1343,6 +1349,7 @@ class BillingClient:
         """
 
         from ..models import (
+            BasicError,
             EnterprisesEnterpriseSettingsBillingCostCentersPostBody,
             EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200,
         )
@@ -1369,7 +1376,11 @@ class BillingClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200,
-            error_models={},
+            error_models={
+                "400": BasicError,
+                "409": BasicError,
+                "500": BasicError,
+            },
         )
 
     def get_cost_center(
@@ -1570,7 +1581,10 @@ class BillingClient:
         *,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
-        data: EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyType,
+        data: Union[
+            EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof0Type,
+            EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof1Type,
+        ],
     ) -> Response[UpdateCostCenter, UpdateCostCenterTypeForResponse]: ...
 
     @overload
@@ -1586,6 +1600,19 @@ class BillingClient:
         ai_credit_pool_enabled: Missing[bool] = UNSET,
     ) -> Response[UpdateCostCenter, UpdateCostCenterTypeForResponse]: ...
 
+    @overload
+    def update_cost_center(
+        self,
+        enterprise: str,
+        cost_center_id: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        name: Missing[str] = UNSET,
+        ai_credit_pool_enabled: bool,
+    ) -> Response[UpdateCostCenter, UpdateCostCenterTypeForResponse]: ...
+
     def update_cost_center(
         self,
         enterprise: str,
@@ -1594,7 +1621,10 @@ class BillingClient:
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
-            EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyType
+            Union[
+                EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof0Type,
+                EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof1Type,
+            ]
         ] = UNSET,
         **kwargs,
     ) -> Response[UpdateCostCenter, UpdateCostCenterTypeForResponse]:
@@ -1602,16 +1632,20 @@ class BillingClient:
 
         PATCH /enterprises/{enterprise}/settings/billing/cost-centers/{cost_center_id}
 
-        Updates an existing cost center name.
+        Updates an existing cost center.
 
-        See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/cost-centers#update-a-cost-center-name
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/cost-centers#update-a-cost-center
         """
+
+        from typing import Union
 
         from ..models import (
             BasicError,
             EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-            EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBody,
+            EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof0,
+            EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof1,
             UpdateCostCenter,
+            ValidationError,
         )
 
         url = (
@@ -1627,7 +1661,10 @@ class BillingClient:
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
             json = type_validate_python(
-                EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBody,
+                Union[
+                    EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof0,
+                    EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof1,
+                ],
                 json,
             )
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -1644,6 +1681,7 @@ class BillingClient:
                 "403": BasicError,
                 "404": BasicError,
                 "409": BasicError,
+                "422": ValidationError,
                 "500": BasicError,
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
             },
@@ -1657,7 +1695,10 @@ class BillingClient:
         *,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
-        data: EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyType,
+        data: Union[
+            EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof0Type,
+            EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof1Type,
+        ],
     ) -> Response[UpdateCostCenter, UpdateCostCenterTypeForResponse]: ...
 
     @overload
@@ -1673,6 +1714,19 @@ class BillingClient:
         ai_credit_pool_enabled: Missing[bool] = UNSET,
     ) -> Response[UpdateCostCenter, UpdateCostCenterTypeForResponse]: ...
 
+    @overload
+    async def async_update_cost_center(
+        self,
+        enterprise: str,
+        cost_center_id: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        name: Missing[str] = UNSET,
+        ai_credit_pool_enabled: bool,
+    ) -> Response[UpdateCostCenter, UpdateCostCenterTypeForResponse]: ...
+
     async def async_update_cost_center(
         self,
         enterprise: str,
@@ -1681,7 +1735,10 @@ class BillingClient:
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
-            EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyType
+            Union[
+                EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof0Type,
+                EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof1Type,
+            ]
         ] = UNSET,
         **kwargs,
     ) -> Response[UpdateCostCenter, UpdateCostCenterTypeForResponse]:
@@ -1689,16 +1746,20 @@ class BillingClient:
 
         PATCH /enterprises/{enterprise}/settings/billing/cost-centers/{cost_center_id}
 
-        Updates an existing cost center name.
+        Updates an existing cost center.
 
-        See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/cost-centers#update-a-cost-center-name
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/cost-centers#update-a-cost-center
         """
+
+        from typing import Union
 
         from ..models import (
             BasicError,
             EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-            EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBody,
+            EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof0,
+            EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof1,
             UpdateCostCenter,
+            ValidationError,
         )
 
         url = (
@@ -1714,7 +1775,10 @@ class BillingClient:
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
             json = type_validate_python(
-                EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBody,
+                Union[
+                    EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof0,
+                    EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof1,
+                ],
                 json,
             )
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -1731,6 +1795,7 @@ class BillingClient:
                 "403": BasicError,
                 "404": BasicError,
                 "409": BasicError,
+                "422": ValidationError,
                 "500": BasicError,
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
             },

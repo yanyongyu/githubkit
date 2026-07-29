@@ -12,30 +12,24 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment(
+class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0(
     GitHubModel
 ):
-    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment
+    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0
 
-    Parameters for AI agent assignment. Only used when an agent bot login is
-    included in `assignees`. Ignored when no agent is being assigned.
+    Examples:
+        {'contexts': ['contexts']}
     """
 
-    custom_instructions: Missing[str] = Field(
-        default=UNSET, description="Custom instructions for the agent."
-    )
-    custom_agent: Missing[str] = Field(
-        default=UNSET, description="A custom agent identifier."
-    )
-    model: Missing[str] = Field(
-        default=UNSET, description="The model to use for the agent."
-    )
+    contexts: list[str] = Field(description="The name of the status checks")
 
 
-model_rebuild(ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment)
+model_rebuild(
+    ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0
+)
 
-__all__ = ("ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment",)
+__all__ = (
+    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0",
+)

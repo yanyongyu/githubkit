@@ -9,27 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
-
-class ReposOwnerRepoCommentsCommentIdReactionsPostBodyType(TypedDict):
-    """ReposOwnerRepoCommentsCommentIdReactionsPostBody"""
-
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ]
+from .group_0355 import ActionsSecretType, ActionsSecretTypeForResponse
 
 
-class ReposOwnerRepoCommentsCommentIdReactionsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoCommentsCommentIdReactionsPostBody"""
+class ReposOwnerRepoActionsSecretsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsSecretsGetResponse200"""
 
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ]
+    total_count: int
+    secrets: list[ActionsSecretType]
+
+
+class ReposOwnerRepoActionsSecretsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsSecretsGetResponse200"""
+
+    total_count: int
+    secrets: list[ActionsSecretTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoCommentsCommentIdReactionsPostBodyType",
-    "ReposOwnerRepoCommentsCommentIdReactionsPostBodyTypeForResponse",
+    "ReposOwnerRepoActionsSecretsGetResponse200Type",
+    "ReposOwnerRepoActionsSecretsGetResponse200TypeForResponse",
 )

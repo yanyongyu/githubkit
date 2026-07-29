@@ -12,32 +12,70 @@ from __future__ import annotations
 from typing import Union
 from typing_extensions import TypedDict
 
+from .group_0019 import LicenseSimpleType, LicenseSimpleTypeForResponse
 
-class PullRequestPropLabelsItemsType(TypedDict):
-    """PullRequestPropLabelsItems"""
 
-    id: int
-    node_id: str
-    url: str
+class LicenseContentType(TypedDict):
+    """License Content
+
+    License Content
+    """
+
     name: str
-    description: Union[str, None]
-    color: str
-    default: bool
-
-
-class PullRequestPropLabelsItemsTypeForResponse(TypedDict):
-    """PullRequestPropLabelsItems"""
-
-    id: int
-    node_id: str
+    path: str
+    sha: str
+    size: int
     url: str
+    html_url: Union[str, None]
+    git_url: Union[str, None]
+    download_url: Union[str, None]
+    type: str
+    content: str
+    encoding: str
+    links: LicenseContentPropLinksType
+    license_: Union[None, LicenseSimpleType]
+
+
+class LicenseContentTypeForResponse(TypedDict):
+    """License Content
+
+    License Content
+    """
+
     name: str
-    description: Union[str, None]
-    color: str
-    default: bool
+    path: str
+    sha: str
+    size: int
+    url: str
+    html_url: Union[str, None]
+    git_url: Union[str, None]
+    download_url: Union[str, None]
+    type: str
+    content: str
+    encoding: str
+    links: LicenseContentPropLinksTypeForResponse
+    license_: Union[None, LicenseSimpleTypeForResponse]
+
+
+class LicenseContentPropLinksType(TypedDict):
+    """LicenseContentPropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
+
+
+class LicenseContentPropLinksTypeForResponse(TypedDict):
+    """LicenseContentPropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
 
 
 __all__ = (
-    "PullRequestPropLabelsItemsType",
-    "PullRequestPropLabelsItemsTypeForResponse",
+    "LicenseContentPropLinksType",
+    "LicenseContentPropLinksTypeForResponse",
+    "LicenseContentType",
+    "LicenseContentTypeForResponse",
 )

@@ -9,74 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ArtifactType(TypedDict):
-    """Artifact
+class GroupMappingType(TypedDict):
+    """GroupMapping
 
-    An artifact
+    External Groups to be mapped to a team for membership
     """
 
-    id: int
-    node_id: str
-    name: str
-    size_in_bytes: int
-    url: str
-    archive_download_url: str
-    expired: bool
-    created_at: Union[_dt.datetime, None]
-    expires_at: Union[_dt.datetime, None]
-    updated_at: Union[_dt.datetime, None]
-    digest: NotRequired[Union[str, None]]
-    workflow_run: NotRequired[Union[ArtifactPropWorkflowRunType, None]]
+    groups: NotRequired[list[GroupMappingPropGroupsItemsType]]
 
 
-class ArtifactTypeForResponse(TypedDict):
-    """Artifact
+class GroupMappingTypeForResponse(TypedDict):
+    """GroupMapping
 
-    An artifact
+    External Groups to be mapped to a team for membership
     """
 
-    id: int
-    node_id: str
-    name: str
-    size_in_bytes: int
-    url: str
-    archive_download_url: str
-    expired: bool
-    created_at: Union[str, None]
-    expires_at: Union[str, None]
-    updated_at: Union[str, None]
-    digest: NotRequired[Union[str, None]]
-    workflow_run: NotRequired[Union[ArtifactPropWorkflowRunTypeForResponse, None]]
+    groups: NotRequired[list[GroupMappingPropGroupsItemsTypeForResponse]]
 
 
-class ArtifactPropWorkflowRunType(TypedDict):
-    """ArtifactPropWorkflowRun"""
+class GroupMappingPropGroupsItemsType(TypedDict):
+    """GroupMappingPropGroupsItems"""
 
-    id: NotRequired[int]
-    repository_id: NotRequired[int]
-    head_repository_id: NotRequired[int]
-    head_branch: NotRequired[str]
-    head_sha: NotRequired[str]
+    group_id: str
+    group_name: str
+    group_description: str
+    status: NotRequired[str]
+    synced_at: NotRequired[Union[str, None]]
 
 
-class ArtifactPropWorkflowRunTypeForResponse(TypedDict):
-    """ArtifactPropWorkflowRun"""
+class GroupMappingPropGroupsItemsTypeForResponse(TypedDict):
+    """GroupMappingPropGroupsItems"""
 
-    id: NotRequired[int]
-    repository_id: NotRequired[int]
-    head_repository_id: NotRequired[int]
-    head_branch: NotRequired[str]
-    head_sha: NotRequired[str]
+    group_id: str
+    group_name: str
+    group_description: str
+    status: NotRequired[str]
+    synced_at: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "ArtifactPropWorkflowRunType",
-    "ArtifactPropWorkflowRunTypeForResponse",
-    "ArtifactType",
-    "ArtifactTypeForResponse",
+    "GroupMappingPropGroupsItemsType",
+    "GroupMappingPropGroupsItemsTypeForResponse",
+    "GroupMappingType",
+    "GroupMappingTypeForResponse",
 )

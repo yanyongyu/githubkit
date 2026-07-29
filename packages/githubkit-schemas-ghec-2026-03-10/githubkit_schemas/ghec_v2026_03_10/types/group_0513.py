@@ -9,28 +9,73 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0313 import LinkType, LinkTypeForResponse
+from .group_0019 import LicenseSimpleType, LicenseSimpleTypeForResponse
 
 
-class ReviewCommentPropLinksType(TypedDict):
-    """ReviewCommentPropLinks"""
+class LicenseContentType(TypedDict):
+    """License Content
 
-    self_: LinkType
-    html: LinkType
-    pull_request: LinkType
+    License Content
+    """
+
+    name: str
+    path: str
+    sha: str
+    size: int
+    url: str
+    html_url: Union[str, None]
+    git_url: Union[str, None]
+    download_url: Union[str, None]
+    type: str
+    content: str
+    encoding: str
+    links: LicenseContentPropLinksType
+    license_: Union[None, LicenseSimpleType]
 
 
-class ReviewCommentPropLinksTypeForResponse(TypedDict):
-    """ReviewCommentPropLinks"""
+class LicenseContentTypeForResponse(TypedDict):
+    """License Content
 
-    self_: LinkTypeForResponse
-    html: LinkTypeForResponse
-    pull_request: LinkTypeForResponse
+    License Content
+    """
+
+    name: str
+    path: str
+    sha: str
+    size: int
+    url: str
+    html_url: Union[str, None]
+    git_url: Union[str, None]
+    download_url: Union[str, None]
+    type: str
+    content: str
+    encoding: str
+    links: LicenseContentPropLinksTypeForResponse
+    license_: Union[None, LicenseSimpleTypeForResponse]
+
+
+class LicenseContentPropLinksType(TypedDict):
+    """LicenseContentPropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
+
+
+class LicenseContentPropLinksTypeForResponse(TypedDict):
+    """LicenseContentPropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
 
 
 __all__ = (
-    "ReviewCommentPropLinksType",
-    "ReviewCommentPropLinksTypeForResponse",
+    "LicenseContentPropLinksType",
+    "LicenseContentPropLinksTypeForResponse",
+    "LicenseContentType",
+    "LicenseContentTypeForResponse",
 )

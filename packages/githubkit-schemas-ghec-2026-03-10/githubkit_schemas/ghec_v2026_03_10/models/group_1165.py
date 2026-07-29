@@ -12,24 +12,21 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0054 import Runner
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202(
-    GitHubModel
-):
-    """EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202"""
+class EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201(GitHubModel):
+    """EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201"""
 
-    message: Missing[str] = Field(
-        default=UNSET, description="A message indicating the revocation has been queued"
+    runner: Runner = Field(
+        title="Self hosted runners", description="A self hosted runner"
     )
-    warning: Missing[str] = Field(
-        default=UNSET,
-        description="A warning message if the token used for this request may be revoked",
+    encoded_jit_config: str = Field(
+        description="The base64 encoded runner configuration."
     )
 
 
-model_rebuild(EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202)
+model_rebuild(EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201)
 
-__all__ = ("EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202",)
+__all__ = ("EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201",)

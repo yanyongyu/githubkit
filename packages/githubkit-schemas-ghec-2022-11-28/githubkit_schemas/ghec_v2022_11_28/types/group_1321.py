@@ -9,54 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgDependabotSecretsGetResponse200Type(TypedDict):
-    """OrgsOrgDependabotSecretsGetResponse200"""
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202Type(
+    TypedDict
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202"""
 
-    total_count: int
-    secrets: list[OrganizationDependabotSecretType]
+    job_id: int
+    errors: NotRequired[
+        list[
+            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202PropErrorsItemsType
+        ]
+    ]
 
 
-class OrgsOrgDependabotSecretsGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgDependabotSecretsGetResponse200"""
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202"""
 
-    total_count: int
-    secrets: list[OrganizationDependabotSecretTypeForResponse]
+    job_id: int
+    errors: NotRequired[
+        list[
+            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202PropErrorsItemsTypeForResponse
+        ]
+    ]
 
 
-class OrganizationDependabotSecretType(TypedDict):
-    """Dependabot Secret for an Organization
-
-    Secrets for GitHub Dependabot for an organization.
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202PropErrorsItemsType(
+    TypedDict
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202PropErr
+    orsItems
     """
 
-    name: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: NotRequired[str]
 
-
-class OrganizationDependabotSecretTypeForResponse(TypedDict):
-    """Dependabot Secret for an Organization
-
-    Secrets for GitHub Dependabot for an organization.
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202PropErrorsItemsTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202PropErr
+    orsItems
     """
-
-    name: str
-    created_at: str
-    updated_at: str
-    visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: NotRequired[str]
 
 
 __all__ = (
-    "OrganizationDependabotSecretType",
-    "OrganizationDependabotSecretTypeForResponse",
-    "OrgsOrgDependabotSecretsGetResponse200Type",
-    "OrgsOrgDependabotSecretsGetResponse200TypeForResponse",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202PropErrorsItemsType",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202PropErrorsItemsTypeForResponse",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202Type",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202TypeForResponse",
 )

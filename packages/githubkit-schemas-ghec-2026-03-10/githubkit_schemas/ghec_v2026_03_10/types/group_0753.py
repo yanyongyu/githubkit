@@ -13,47 +13,46 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0598 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0599 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0600 import (
+from .group_0018 import InstallationType, InstallationTypeForResponse
+from .group_0617 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0619 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0601 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0617 import WebhooksIssueCommentType, WebhooksIssueCommentTypeForResponse
-from .group_0754 import (
-    WebhookIssueCommentDeletedPropIssueType,
-    WebhookIssueCommentDeletedPropIssueTypeForResponse,
+from .group_0620 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0634 import (
+    WebhooksRepositoriesItemsType,
+    WebhooksRepositoriesItemsTypeForResponse,
 )
 
 
-class WebhookIssueCommentDeletedType(TypedDict):
-    """issue_comment deleted event"""
+class WebhookInstallationDeletedType(TypedDict):
+    """installation deleted event"""
 
     action: Literal["deleted"]
-    comment: WebhooksIssueCommentType
     enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssueCommentDeletedPropIssueType
+    installation: InstallationType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
+    repositories: NotRequired[list[WebhooksRepositoriesItemsType]]
+    repository: NotRequired[RepositoryWebhooksType]
+    requester: NotRequired[None]
     sender: SimpleUserType
 
 
-class WebhookIssueCommentDeletedTypeForResponse(TypedDict):
-    """issue_comment deleted event"""
+class WebhookInstallationDeletedTypeForResponse(TypedDict):
+    """installation deleted event"""
 
     action: Literal["deleted"]
-    comment: WebhooksIssueCommentTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhookIssueCommentDeletedPropIssueTypeForResponse
+    installation: InstallationTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
+    repositories: NotRequired[list[WebhooksRepositoriesItemsTypeForResponse]]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    requester: NotRequired[None]
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookIssueCommentDeletedType",
-    "WebhookIssueCommentDeletedTypeForResponse",
+    "WebhookInstallationDeletedType",
+    "WebhookInstallationDeletedTypeForResponse",
 )

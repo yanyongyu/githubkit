@@ -9,29 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
 
-class RepositoryHashAlgorithmType(TypedDict):
-    """Repository hash algorithm
+class DeploymentBranchPolicySettingsType(TypedDict):
+    """DeploymentBranchPolicySettings
 
-    Repository hash algorithm
+    The type of deployment branch policy for this environment. To allow all branches
+    to deploy, set to `null`.
     """
 
-    hash_algorithm: Literal["sha1", "sha256"]
+    protected_branches: bool
+    custom_branch_policies: bool
 
 
-class RepositoryHashAlgorithmTypeForResponse(TypedDict):
-    """Repository hash algorithm
+class DeploymentBranchPolicySettingsTypeForResponse(TypedDict):
+    """DeploymentBranchPolicySettings
 
-    Repository hash algorithm
+    The type of deployment branch policy for this environment. To allow all branches
+    to deploy, set to `null`.
     """
 
-    hash_algorithm: Literal["sha1", "sha256"]
+    protected_branches: bool
+    custom_branch_policies: bool
 
 
 __all__ = (
-    "RepositoryHashAlgorithmType",
-    "RepositoryHashAlgorithmTypeForResponse",
+    "DeploymentBranchPolicySettingsType",
+    "DeploymentBranchPolicySettingsTypeForResponse",
 )

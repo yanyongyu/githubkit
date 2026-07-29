@@ -9,60 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class ActivityType(TypedDict):
-    """Activity
+class ReviewCustomGatesStateRequiredType(TypedDict):
+    """ReviewCustomGatesStateRequired"""
 
-    Activity
-    """
-
-    id: int
-    node_id: str
-    before: str
-    after: str
-    ref: str
-    timestamp: _dt.datetime
-    activity_type: Literal[
-        "push",
-        "force_push",
-        "branch_deletion",
-        "branch_creation",
-        "pr_merge",
-        "merge_queue_merge",
-    ]
-    actor: Union[None, SimpleUserType]
+    environment_name: str
+    state: Literal["approved", "rejected"]
+    comment: NotRequired[str]
 
 
-class ActivityTypeForResponse(TypedDict):
-    """Activity
+class ReviewCustomGatesStateRequiredTypeForResponse(TypedDict):
+    """ReviewCustomGatesStateRequired"""
 
-    Activity
-    """
-
-    id: int
-    node_id: str
-    before: str
-    after: str
-    ref: str
-    timestamp: str
-    activity_type: Literal[
-        "push",
-        "force_push",
-        "branch_deletion",
-        "branch_creation",
-        "pr_merge",
-        "merge_queue_merge",
-    ]
-    actor: Union[None, SimpleUserTypeForResponse]
+    environment_name: str
+    state: Literal["approved", "rejected"]
+    comment: NotRequired[str]
 
 
 __all__ = (
-    "ActivityType",
-    "ActivityTypeForResponse",
+    "ReviewCustomGatesStateRequiredType",
+    "ReviewCustomGatesStateRequiredTypeForResponse",
 )

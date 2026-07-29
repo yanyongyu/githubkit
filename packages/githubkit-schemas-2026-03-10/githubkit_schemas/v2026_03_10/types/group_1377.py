@@ -9,29 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberMergePutBodyType(TypedDict):
-    """ReposOwnerRepoPullsPullNumberMergePutBody"""
+class ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberAssigneesPostBody"""
 
-    commit_title: NotRequired[str]
-    commit_message: NotRequired[str]
-    sha: NotRequired[str]
-    merge_method: NotRequired[Literal["merge", "squash", "rebase"]]
+    assignees: NotRequired[
+        list[
+            Union[
+                str,
+                ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyPropAssigneesItemsOneof1Type,
+            ]
+        ]
+    ]
 
 
-class ReposOwnerRepoPullsPullNumberMergePutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoPullsPullNumberMergePutBody"""
+class ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberAssigneesPostBody"""
 
-    commit_title: NotRequired[str]
-    commit_message: NotRequired[str]
-    sha: NotRequired[str]
-    merge_method: NotRequired[Literal["merge", "squash", "rebase"]]
+    assignees: NotRequired[
+        list[
+            Union[
+                str,
+                ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyPropAssigneesItemsOneof1TypeForResponse,
+            ]
+        ]
+    ]
+
+
+class ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyPropAssigneesItemsOneof1Type(
+    TypedDict
+):
+    """ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyPropAssigneesItemsOneof1"""
+
+    login: str
+    rationale: NotRequired[str]
+    suggest: NotRequired[bool]
+    confidence: NotRequired[Literal["low", "medium", "high"]]
+
+
+class ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyPropAssigneesItemsOneof1TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyPropAssigneesItemsOneof1"""
+
+    login: str
+    rationale: NotRequired[str]
+    suggest: NotRequired[bool]
+    confidence: NotRequired[Literal["low", "medium", "high"]]
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberMergePutBodyType",
-    "ReposOwnerRepoPullsPullNumberMergePutBodyTypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyPropAssigneesItemsOneof1Type",
+    "ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyPropAssigneesItemsOneof1TypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType",
+    "ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyTypeForResponse",
 )

@@ -9,41 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberCommentsPostBodyType(TypedDict):
-    """ReposOwnerRepoPullsPullNumberCommentsPostBody"""
+class ReposOwnerRepoGitTreesPostBodyType(TypedDict):
+    """ReposOwnerRepoGitTreesPostBody"""
 
-    body: str
-    commit_id: str
-    path: str
-    position: NotRequired[int]
-    side: NotRequired[Literal["LEFT", "RIGHT"]]
-    line: NotRequired[int]
-    start_line: NotRequired[int]
-    start_side: NotRequired[Literal["LEFT", "RIGHT", "side"]]
-    in_reply_to: NotRequired[int]
-    subject_type: NotRequired[Literal["line", "file"]]
+    tree: list[ReposOwnerRepoGitTreesPostBodyPropTreeItemsType]
+    base_tree: NotRequired[str]
 
 
-class ReposOwnerRepoPullsPullNumberCommentsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoPullsPullNumberCommentsPostBody"""
+class ReposOwnerRepoGitTreesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoGitTreesPostBody"""
 
-    body: str
-    commit_id: str
-    path: str
-    position: NotRequired[int]
-    side: NotRequired[Literal["LEFT", "RIGHT"]]
-    line: NotRequired[int]
-    start_line: NotRequired[int]
-    start_side: NotRequired[Literal["LEFT", "RIGHT", "side"]]
-    in_reply_to: NotRequired[int]
-    subject_type: NotRequired[Literal["line", "file"]]
+    tree: list[ReposOwnerRepoGitTreesPostBodyPropTreeItemsTypeForResponse]
+    base_tree: NotRequired[str]
+
+
+class ReposOwnerRepoGitTreesPostBodyPropTreeItemsType(TypedDict):
+    """ReposOwnerRepoGitTreesPostBodyPropTreeItems"""
+
+    path: NotRequired[str]
+    mode: NotRequired[Literal["100644", "100755", "040000", "160000", "120000"]]
+    type: NotRequired[Literal["blob", "tree", "commit"]]
+    sha: NotRequired[Union[str, None]]
+    content: NotRequired[str]
+
+
+class ReposOwnerRepoGitTreesPostBodyPropTreeItemsTypeForResponse(TypedDict):
+    """ReposOwnerRepoGitTreesPostBodyPropTreeItems"""
+
+    path: NotRequired[str]
+    mode: NotRequired[Literal["100644", "100755", "040000", "160000", "120000"]]
+    type: NotRequired[Literal["blob", "tree", "commit"]]
+    sha: NotRequired[Union[str, None]]
+    content: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberCommentsPostBodyType",
-    "ReposOwnerRepoPullsPullNumberCommentsPostBodyTypeForResponse",
+    "ReposOwnerRepoGitTreesPostBodyPropTreeItemsType",
+    "ReposOwnerRepoGitTreesPostBodyPropTreeItemsTypeForResponse",
+    "ReposOwnerRepoGitTreesPostBodyType",
+    "ReposOwnerRepoGitTreesPostBodyTypeForResponse",
 )

@@ -11,20 +11,29 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
+from .group_0038 import (
+    ActionsHostedRunnerCuratedImageType,
+    ActionsHostedRunnerCuratedImageTypeForResponse,
+)
 
-class OrgsOrgAttestationsDeleteRequestPostBodyOneof1Type(TypedDict):
-    """OrgsOrgAttestationsDeleteRequestPostBodyOneof1"""
 
-    attestation_ids: list[int]
+class OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200Type(TypedDict):
+    """OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200"""
+
+    total_count: int
+    images: list[ActionsHostedRunnerCuratedImageType]
 
 
-class OrgsOrgAttestationsDeleteRequestPostBodyOneof1TypeForResponse(TypedDict):
-    """OrgsOrgAttestationsDeleteRequestPostBodyOneof1"""
+class OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200"""
 
-    attestation_ids: list[int]
+    total_count: int
+    images: list[ActionsHostedRunnerCuratedImageTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgAttestationsDeleteRequestPostBodyOneof1Type",
-    "OrgsOrgAttestationsDeleteRequestPostBodyOneof1TypeForResponse",
+    "OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200Type",
+    "OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200TypeForResponse",
 )

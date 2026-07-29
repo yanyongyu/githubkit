@@ -13,44 +13,68 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0599 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0600 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0601 import (
+from .group_0618 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0619 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0620 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0602 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0683 import (
-    WebhookCodeScanningAlertUpdatedAssignmentPropAlertType,
-    WebhookCodeScanningAlertUpdatedAssignmentPropAlertTypeForResponse,
+from .group_0621 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0626 import (
+    CheckRunWithSimpleCheckSuiteType,
+    CheckRunWithSimpleCheckSuiteTypeForResponse,
 )
 
 
-class WebhookCodeScanningAlertUpdatedAssignmentType(TypedDict):
-    """code_scanning_alert updated_assignment event"""
+class WebhookCheckRunRequestedActionType(TypedDict):
+    """Check Run Requested Action Event"""
 
-    action: Literal["updated_assignment"]
-    alert: WebhookCodeScanningAlertUpdatedAssignmentPropAlertType
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["requested_action"]
+    check_run: CheckRunWithSimpleCheckSuiteType
     installation: NotRequired[SimpleInstallationType]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
+    requested_action: NotRequired[WebhookCheckRunRequestedActionPropRequestedActionType]
     sender: SimpleUserType
 
 
-class WebhookCodeScanningAlertUpdatedAssignmentTypeForResponse(TypedDict):
-    """code_scanning_alert updated_assignment event"""
+class WebhookCheckRunRequestedActionTypeForResponse(TypedDict):
+    """Check Run Requested Action Event"""
 
-    action: Literal["updated_assignment"]
-    alert: WebhookCodeScanningAlertUpdatedAssignmentPropAlertTypeForResponse
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    action: Literal["requested_action"]
+    check_run: CheckRunWithSimpleCheckSuiteTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
+    requested_action: NotRequired[
+        WebhookCheckRunRequestedActionPropRequestedActionTypeForResponse
+    ]
     sender: SimpleUserTypeForResponse
 
 
+class WebhookCheckRunRequestedActionPropRequestedActionType(TypedDict):
+    """WebhookCheckRunRequestedActionPropRequestedAction
+
+    The action requested by the user.
+    """
+
+    identifier: NotRequired[str]
+
+
+class WebhookCheckRunRequestedActionPropRequestedActionTypeForResponse(TypedDict):
+    """WebhookCheckRunRequestedActionPropRequestedAction
+
+    The action requested by the user.
+    """
+
+    identifier: NotRequired[str]
+
+
 __all__ = (
-    "WebhookCodeScanningAlertUpdatedAssignmentType",
-    "WebhookCodeScanningAlertUpdatedAssignmentTypeForResponse",
+    "WebhookCheckRunRequestedActionPropRequestedActionType",
+    "WebhookCheckRunRequestedActionPropRequestedActionTypeForResponse",
+    "WebhookCheckRunRequestedActionType",
+    "WebhookCheckRunRequestedActionTypeForResponse",
 )

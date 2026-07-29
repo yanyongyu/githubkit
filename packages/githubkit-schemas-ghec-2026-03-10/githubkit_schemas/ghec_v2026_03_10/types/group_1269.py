@@ -9,77 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0036 import (
+    ActionsHostedRunnerCustomImageType,
+    ActionsHostedRunnerCustomImageTypeForResponse,
+)
 
 
-class OrgsOrgAttestationsBulkListPostResponse200Type(TypedDict):
-    """OrgsOrgAttestationsBulkListPostResponse200"""
+class OrgsOrgActionsHostedRunnersImagesCustomGetResponse200Type(TypedDict):
+    """OrgsOrgActionsHostedRunnersImagesCustomGetResponse200"""
 
-    attestations_subject_digests: NotRequired[
-        OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType
-    ]
-    page_info: NotRequired[OrgsOrgAttestationsBulkListPostResponse200PropPageInfoType]
+    total_count: int
+    images: list[ActionsHostedRunnerCustomImageType]
 
 
-class OrgsOrgAttestationsBulkListPostResponse200TypeForResponse(TypedDict):
-    """OrgsOrgAttestationsBulkListPostResponse200"""
+class OrgsOrgActionsHostedRunnersImagesCustomGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsHostedRunnersImagesCustomGetResponse200"""
 
-    attestations_subject_digests: NotRequired[
-        OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsTypeForResponse
-    ]
-    page_info: NotRequired[
-        OrgsOrgAttestationsBulkListPostResponse200PropPageInfoTypeForResponse
-    ]
-
-
-OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
-
-Mapping of subject digest to bundles.
-"""
-
-
-OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
-
-Mapping of subject digest to bundles.
-"""
-
-
-class OrgsOrgAttestationsBulkListPostResponse200PropPageInfoType(TypedDict):
-    """OrgsOrgAttestationsBulkListPostResponse200PropPageInfo
-
-    Information about the current page.
-    """
-
-    has_next: NotRequired[bool]
-    has_previous: NotRequired[bool]
-    next_: NotRequired[str]
-    previous: NotRequired[str]
-
-
-class OrgsOrgAttestationsBulkListPostResponse200PropPageInfoTypeForResponse(TypedDict):
-    """OrgsOrgAttestationsBulkListPostResponse200PropPageInfo
-
-    Information about the current page.
-    """
-
-    has_next: NotRequired[bool]
-    has_previous: NotRequired[bool]
-    next_: NotRequired[str]
-    previous: NotRequired[str]
+    total_count: int
+    images: list[ActionsHostedRunnerCustomImageTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType",
-    "OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsTypeForResponse",
-    "OrgsOrgAttestationsBulkListPostResponse200PropPageInfoType",
-    "OrgsOrgAttestationsBulkListPostResponse200PropPageInfoTypeForResponse",
-    "OrgsOrgAttestationsBulkListPostResponse200Type",
-    "OrgsOrgAttestationsBulkListPostResponse200TypeForResponse",
+    "OrgsOrgActionsHostedRunnersImagesCustomGetResponse200Type",
+    "OrgsOrgActionsHostedRunnersImagesCustomGetResponse200TypeForResponse",
 )

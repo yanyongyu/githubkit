@@ -9,24 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType(TypedDict):
-    """ReposOwnerRepoCodespacesSecretsSecretNamePutBody"""
+class ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType(TypedDict):
+    """ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody"""
 
-    encrypted_value: NotRequired[str]
-    key_id: NotRequired[str]
+    environment_ids: list[int]
+    state: Literal["approved", "rejected"]
+    comment: str
 
 
-class ReposOwnerRepoCodespacesSecretsSecretNamePutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoCodespacesSecretsSecretNamePutBody"""
+class ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody"""
 
-    encrypted_value: NotRequired[str]
-    key_id: NotRequired[str]
+    environment_ids: list[int]
+    state: Literal["approved", "rejected"]
+    comment: str
 
 
 __all__ = (
-    "ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType",
-    "ReposOwnerRepoCodespacesSecretsSecretNamePutBodyTypeForResponse",
+    "ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType",
+    "ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyTypeForResponse",
 )

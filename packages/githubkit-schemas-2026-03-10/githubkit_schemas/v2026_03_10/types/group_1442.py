@@ -9,24 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0142 import CopilotSpaceType, CopilotSpaceTypeForResponse
-
-
-class UsersUsernameCopilotSpacesGetResponse200Type(TypedDict):
-    """UsersUsernameCopilotSpacesGetResponse200"""
-
-    spaces: list[CopilotSpaceType]
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameCopilotSpacesGetResponse200TypeForResponse(TypedDict):
-    """UsersUsernameCopilotSpacesGetResponse200"""
+class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2Type(TypedDict):
+    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2"""
 
-    spaces: list[CopilotSpaceTypeForResponse]
+    state: NotRequired[Literal["open", "resolved"]]
+    resolution: NotRequired[
+        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
+    ]
+    resolution_comment: NotRequired[Union[str, None]]
+    assignee: NotRequired[Union[str, None]]
+    validity: Union[None, Literal["active", "inactive"]]
+
+
+class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2"""
+
+    state: NotRequired[Literal["open", "resolved"]]
+    resolution: NotRequired[
+        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
+    ]
+    resolution_comment: NotRequired[Union[str, None]]
+    assignee: NotRequired[Union[str, None]]
+    validity: Union[None, Literal["active", "inactive"]]
 
 
 __all__ = (
-    "UsersUsernameCopilotSpacesGetResponse200Type",
-    "UsersUsernameCopilotSpacesGetResponse200TypeForResponse",
+    "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2Type",
+    "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2TypeForResponse",
 )

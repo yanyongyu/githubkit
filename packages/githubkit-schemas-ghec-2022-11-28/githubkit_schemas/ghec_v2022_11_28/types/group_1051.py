@@ -12,76 +12,47 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class AgentsReposOwnerRepoTasksGetResponse400Type(TypedDict):
-    """AgentsReposOwnerRepoTasksGetResponse400
-
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[
-        list[AgentsReposOwnerRepoTasksGetResponse400PropErrorsItemsType]
-    ]
-    documentation_url: str
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0618 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0619 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0620 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0621 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_1052 import (
+    WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryType,
+    WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryTypeForResponse,
+)
 
 
-class AgentsReposOwnerRepoTasksGetResponse400TypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksGetResponse400
+class WebhookSecurityAdvisoryWithdrawnType(TypedDict):
+    """security_advisory withdrawn event"""
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[
-        list[AgentsReposOwnerRepoTasksGetResponse400PropErrorsItemsTypeForResponse]
-    ]
-    documentation_url: str
+    action: Literal["withdrawn"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: NotRequired[RepositoryWebhooksType]
+    security_advisory: WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryType
+    sender: NotRequired[SimpleUserType]
 
 
-class AgentsReposOwnerRepoTasksGetResponse400PropErrorsItemsType(TypedDict):
-    """AgentsReposOwnerRepoTasksGetResponse400PropErrorsItems
+class WebhookSecurityAdvisoryWithdrawnTypeForResponse(TypedDict):
+    """security_advisory withdrawn event"""
 
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
-
-
-class AgentsReposOwnerRepoTasksGetResponse400PropErrorsItemsTypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksGetResponse400PropErrorsItems
-
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
+    action: Literal["withdrawn"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    security_advisory: (
+        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryTypeForResponse
+    )
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksGetResponse400PropErrorsItemsType",
-    "AgentsReposOwnerRepoTasksGetResponse400PropErrorsItemsTypeForResponse",
-    "AgentsReposOwnerRepoTasksGetResponse400Type",
-    "AgentsReposOwnerRepoTasksGetResponse400TypeForResponse",
+    "WebhookSecurityAdvisoryWithdrawnType",
+    "WebhookSecurityAdvisoryWithdrawnTypeForResponse",
 )

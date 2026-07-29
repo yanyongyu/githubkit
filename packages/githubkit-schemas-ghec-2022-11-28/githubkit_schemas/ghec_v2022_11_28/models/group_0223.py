@@ -12,34 +12,48 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0003 import SimpleUser
-from .group_0206 import Label
-from .group_0216 import Issue
 
 
-class IssuesEvent(GitHubModel):
-    """IssuesEvent"""
+class PullRequestMinimalPropHead(GitHubModel):
+    """PullRequestMinimalPropHead"""
 
-    action: str = Field()
-    issue: Issue = Field(
-        title="Issue",
-        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
-    )
-    assignee: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
-    assignees: Missing[list[SimpleUser]] = Field(default=UNSET)
-    label: Missing[Label] = Field(
-        default=UNSET,
-        title="Label",
-        description="Color-coded labels help you categorize and filter your issues (just like labels in Gmail).",
-    )
-    labels: Missing[list[Label]] = Field(default=UNSET)
+    ref: str = Field()
+    sha: str = Field()
+    repo: PullRequestMinimalPropHeadPropRepo = Field()
 
 
-model_rebuild(IssuesEvent)
+class PullRequestMinimalPropHeadPropRepo(GitHubModel):
+    """PullRequestMinimalPropHeadPropRepo"""
 
-__all__ = ("IssuesEvent",)
+    id: int = Field()
+    url: str = Field()
+    name: str = Field()
+
+
+class PullRequestMinimalPropBase(GitHubModel):
+    """PullRequestMinimalPropBase"""
+
+    ref: str = Field()
+    sha: str = Field()
+    repo: PullRequestMinimalPropBasePropRepo = Field()
+
+
+class PullRequestMinimalPropBasePropRepo(GitHubModel):
+    """PullRequestMinimalPropBasePropRepo"""
+
+    id: int = Field()
+    url: str = Field()
+    name: str = Field()
+
+
+model_rebuild(PullRequestMinimalPropHead)
+model_rebuild(PullRequestMinimalPropHeadPropRepo)
+model_rebuild(PullRequestMinimalPropBase)
+model_rebuild(PullRequestMinimalPropBasePropRepo)
+
+__all__ = (
+    "PullRequestMinimalPropBase",
+    "PullRequestMinimalPropBasePropRepo",
+    "PullRequestMinimalPropHead",
+    "PullRequestMinimalPropHeadPropRepo",
+)

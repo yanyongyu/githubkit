@@ -9,21 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoActionsSecretsSecretNamePutBody(GitHubModel):
-    """ReposOwnerRepoActionsSecretsSecretNamePutBody"""
+class OrgsOrgProjectsV2ProjectNumberViewsPostBody(GitHubModel):
+    """OrgsOrgProjectsV2ProjectNumberViewsPostBody"""
 
-    encrypted_value: str = Field(
-        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
-        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get a repository public key](https://docs.github.com/rest/actions/secrets#get-a-repository-public-key) endpoint.",
+    name: str = Field(description="The name of the view.")
+    layout: Literal["table", "board", "roadmap"] = Field(
+        description="The layout of the view."
     )
-    key_id: str = Field(description="ID of the key you used to encrypt the secret.")
+    filter_: Missing[str] = Field(
+        default=UNSET,
+        alias="filter",
+        description="The filter query for the view. See [Filtering projects](https://docs.github.com/issues/planning-and-tracking-with-projects/customizing-views-in-your-project/filtering-projects) for more information.",
+    )
+    visible_fields: Missing[list[int]] = Field(
+        default=UNSET,
+        description="`visible_fields` is not applicable to `roadmap` layout views.\nFor `table` and `board` layouts, this represents the field IDs that should be visible in the view. If not provided, the default visible fields will be used.",
+    )
 
 
-model_rebuild(ReposOwnerRepoActionsSecretsSecretNamePutBody)
+model_rebuild(OrgsOrgProjectsV2ProjectNumberViewsPostBody)
 
-__all__ = ("ReposOwnerRepoActionsSecretsSecretNamePutBody",)
+__all__ = ("OrgsOrgProjectsV2ProjectNumberViewsPostBody",)

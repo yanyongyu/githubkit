@@ -9,123 +9,264 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0218 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
-from .group_0250 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
-from .group_0353 import SimpleCommitType, SimpleCommitTypeForResponse
+from .group_0375 import (
+    BranchRestrictionPolicyType,
+    BranchRestrictionPolicyTypeForResponse,
+)
+from .group_0385 import (
+    ProtectedBranchPropRequiredPullRequestReviewsType,
+    ProtectedBranchPropRequiredPullRequestReviewsTypeForResponse,
+)
 
 
-class CheckSuiteType(TypedDict):
-    """CheckSuite
+class ProtectedBranchType(TypedDict):
+    """Protected Branch
 
-    A suite of checks performed on the code of a given code change
+    Branch protections protect branches
     """
 
-    id: int
-    node_id: str
-    head_branch: Union[str, None]
-    head_sha: str
-    status: Union[
-        None,
-        Literal[
-            "queued", "in_progress", "completed", "waiting", "requested", "pending"
-        ],
+    url: str
+    required_status_checks: NotRequired[StatusCheckPolicyType]
+    required_pull_request_reviews: NotRequired[
+        ProtectedBranchPropRequiredPullRequestReviewsType
     ]
-    conclusion: Union[
-        None,
-        Literal[
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "skipped",
-            "timed_out",
-            "action_required",
-            "startup_failure",
-            "stale",
-        ],
+    required_signatures: NotRequired[ProtectedBranchPropRequiredSignaturesType]
+    enforce_admins: NotRequired[ProtectedBranchPropEnforceAdminsType]
+    required_linear_history: NotRequired[ProtectedBranchPropRequiredLinearHistoryType]
+    allow_force_pushes: NotRequired[ProtectedBranchPropAllowForcePushesType]
+    allow_deletions: NotRequired[ProtectedBranchPropAllowDeletionsType]
+    restrictions: NotRequired[BranchRestrictionPolicyType]
+    required_conversation_resolution: NotRequired[
+        ProtectedBranchPropRequiredConversationResolutionType
     ]
-    url: Union[str, None]
-    before: Union[str, None]
-    after: Union[str, None]
-    pull_requests: Union[list[PullRequestMinimalType], None]
-    app: Union[None, IntegrationType, None]
-    repository: MinimalRepositoryType
-    created_at: Union[_dt.datetime, None]
-    updated_at: Union[_dt.datetime, None]
-    head_commit: SimpleCommitType
-    latest_check_runs_count: int
-    check_runs_url: str
-    rerequestable: NotRequired[bool]
-    runs_rerequestable: NotRequired[bool]
+    block_creations: NotRequired[ProtectedBranchPropBlockCreationsType]
+    lock_branch: NotRequired[ProtectedBranchPropLockBranchType]
+    allow_fork_syncing: NotRequired[ProtectedBranchPropAllowForkSyncingType]
 
 
-class CheckSuiteTypeForResponse(TypedDict):
-    """CheckSuite
+class ProtectedBranchTypeForResponse(TypedDict):
+    """Protected Branch
 
-    A suite of checks performed on the code of a given code change
+    Branch protections protect branches
     """
 
-    id: int
-    node_id: str
-    head_branch: Union[str, None]
-    head_sha: str
-    status: Union[
-        None,
-        Literal[
-            "queued", "in_progress", "completed", "waiting", "requested", "pending"
-        ],
+    url: str
+    required_status_checks: NotRequired[StatusCheckPolicyTypeForResponse]
+    required_pull_request_reviews: NotRequired[
+        ProtectedBranchPropRequiredPullRequestReviewsTypeForResponse
     ]
-    conclusion: Union[
-        None,
-        Literal[
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "skipped",
-            "timed_out",
-            "action_required",
-            "startup_failure",
-            "stale",
-        ],
+    required_signatures: NotRequired[
+        ProtectedBranchPropRequiredSignaturesTypeForResponse
     ]
-    url: Union[str, None]
-    before: Union[str, None]
-    after: Union[str, None]
-    pull_requests: Union[list[PullRequestMinimalTypeForResponse], None]
-    app: Union[None, IntegrationTypeForResponse, None]
-    repository: MinimalRepositoryTypeForResponse
-    created_at: Union[str, None]
-    updated_at: Union[str, None]
-    head_commit: SimpleCommitTypeForResponse
-    latest_check_runs_count: int
-    check_runs_url: str
-    rerequestable: NotRequired[bool]
-    runs_rerequestable: NotRequired[bool]
+    enforce_admins: NotRequired[ProtectedBranchPropEnforceAdminsTypeForResponse]
+    required_linear_history: NotRequired[
+        ProtectedBranchPropRequiredLinearHistoryTypeForResponse
+    ]
+    allow_force_pushes: NotRequired[ProtectedBranchPropAllowForcePushesTypeForResponse]
+    allow_deletions: NotRequired[ProtectedBranchPropAllowDeletionsTypeForResponse]
+    restrictions: NotRequired[BranchRestrictionPolicyTypeForResponse]
+    required_conversation_resolution: NotRequired[
+        ProtectedBranchPropRequiredConversationResolutionTypeForResponse
+    ]
+    block_creations: NotRequired[ProtectedBranchPropBlockCreationsTypeForResponse]
+    lock_branch: NotRequired[ProtectedBranchPropLockBranchTypeForResponse]
+    allow_fork_syncing: NotRequired[ProtectedBranchPropAllowForkSyncingTypeForResponse]
 
 
-class ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Type(TypedDict):
-    """ReposOwnerRepoCommitsRefCheckSuitesGetResponse200"""
+class ProtectedBranchPropRequiredSignaturesType(TypedDict):
+    """ProtectedBranchPropRequiredSignatures"""
 
-    total_count: int
-    check_suites: list[CheckSuiteType]
+    url: str
+    enabled: bool
 
 
-class ReposOwnerRepoCommitsRefCheckSuitesGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoCommitsRefCheckSuitesGetResponse200"""
+class ProtectedBranchPropRequiredSignaturesTypeForResponse(TypedDict):
+    """ProtectedBranchPropRequiredSignatures"""
 
-    total_count: int
-    check_suites: list[CheckSuiteTypeForResponse]
+    url: str
+    enabled: bool
+
+
+class ProtectedBranchPropEnforceAdminsType(TypedDict):
+    """ProtectedBranchPropEnforceAdmins"""
+
+    url: str
+    enabled: bool
+
+
+class ProtectedBranchPropEnforceAdminsTypeForResponse(TypedDict):
+    """ProtectedBranchPropEnforceAdmins"""
+
+    url: str
+    enabled: bool
+
+
+class ProtectedBranchPropRequiredLinearHistoryType(TypedDict):
+    """ProtectedBranchPropRequiredLinearHistory"""
+
+    enabled: bool
+
+
+class ProtectedBranchPropRequiredLinearHistoryTypeForResponse(TypedDict):
+    """ProtectedBranchPropRequiredLinearHistory"""
+
+    enabled: bool
+
+
+class ProtectedBranchPropAllowForcePushesType(TypedDict):
+    """ProtectedBranchPropAllowForcePushes"""
+
+    enabled: bool
+
+
+class ProtectedBranchPropAllowForcePushesTypeForResponse(TypedDict):
+    """ProtectedBranchPropAllowForcePushes"""
+
+    enabled: bool
+
+
+class ProtectedBranchPropAllowDeletionsType(TypedDict):
+    """ProtectedBranchPropAllowDeletions"""
+
+    enabled: bool
+
+
+class ProtectedBranchPropAllowDeletionsTypeForResponse(TypedDict):
+    """ProtectedBranchPropAllowDeletions"""
+
+    enabled: bool
+
+
+class ProtectedBranchPropRequiredConversationResolutionType(TypedDict):
+    """ProtectedBranchPropRequiredConversationResolution"""
+
+    enabled: NotRequired[bool]
+
+
+class ProtectedBranchPropRequiredConversationResolutionTypeForResponse(TypedDict):
+    """ProtectedBranchPropRequiredConversationResolution"""
+
+    enabled: NotRequired[bool]
+
+
+class ProtectedBranchPropBlockCreationsType(TypedDict):
+    """ProtectedBranchPropBlockCreations"""
+
+    enabled: bool
+
+
+class ProtectedBranchPropBlockCreationsTypeForResponse(TypedDict):
+    """ProtectedBranchPropBlockCreations"""
+
+    enabled: bool
+
+
+class ProtectedBranchPropLockBranchType(TypedDict):
+    """ProtectedBranchPropLockBranch
+
+    Whether to set the branch as read-only. If this is true, users will not be able
+    to push to the branch.
+    """
+
+    enabled: NotRequired[bool]
+
+
+class ProtectedBranchPropLockBranchTypeForResponse(TypedDict):
+    """ProtectedBranchPropLockBranch
+
+    Whether to set the branch as read-only. If this is true, users will not be able
+    to push to the branch.
+    """
+
+    enabled: NotRequired[bool]
+
+
+class ProtectedBranchPropAllowForkSyncingType(TypedDict):
+    """ProtectedBranchPropAllowForkSyncing
+
+    Whether users can pull changes from upstream when the branch is locked. Set to
+    `true` to allow fork syncing. Set to `false` to prevent fork syncing.
+    """
+
+    enabled: NotRequired[bool]
+
+
+class ProtectedBranchPropAllowForkSyncingTypeForResponse(TypedDict):
+    """ProtectedBranchPropAllowForkSyncing
+
+    Whether users can pull changes from upstream when the branch is locked. Set to
+    `true` to allow fork syncing. Set to `false` to prevent fork syncing.
+    """
+
+    enabled: NotRequired[bool]
+
+
+class StatusCheckPolicyType(TypedDict):
+    """Status Check Policy
+
+    Status Check Policy
+    """
+
+    url: str
+    strict: bool
+    contexts: list[str]
+    checks: list[StatusCheckPolicyPropChecksItemsType]
+    contexts_url: str
+
+
+class StatusCheckPolicyTypeForResponse(TypedDict):
+    """Status Check Policy
+
+    Status Check Policy
+    """
+
+    url: str
+    strict: bool
+    contexts: list[str]
+    checks: list[StatusCheckPolicyPropChecksItemsTypeForResponse]
+    contexts_url: str
+
+
+class StatusCheckPolicyPropChecksItemsType(TypedDict):
+    """StatusCheckPolicyPropChecksItems"""
+
+    context: str
+    app_id: Union[int, None]
+
+
+class StatusCheckPolicyPropChecksItemsTypeForResponse(TypedDict):
+    """StatusCheckPolicyPropChecksItems"""
+
+    context: str
+    app_id: Union[int, None]
 
 
 __all__ = (
-    "CheckSuiteType",
-    "CheckSuiteTypeForResponse",
-    "ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Type",
-    "ReposOwnerRepoCommitsRefCheckSuitesGetResponse200TypeForResponse",
+    "ProtectedBranchPropAllowDeletionsType",
+    "ProtectedBranchPropAllowDeletionsTypeForResponse",
+    "ProtectedBranchPropAllowForcePushesType",
+    "ProtectedBranchPropAllowForcePushesTypeForResponse",
+    "ProtectedBranchPropAllowForkSyncingType",
+    "ProtectedBranchPropAllowForkSyncingTypeForResponse",
+    "ProtectedBranchPropBlockCreationsType",
+    "ProtectedBranchPropBlockCreationsTypeForResponse",
+    "ProtectedBranchPropEnforceAdminsType",
+    "ProtectedBranchPropEnforceAdminsTypeForResponse",
+    "ProtectedBranchPropLockBranchType",
+    "ProtectedBranchPropLockBranchTypeForResponse",
+    "ProtectedBranchPropRequiredConversationResolutionType",
+    "ProtectedBranchPropRequiredConversationResolutionTypeForResponse",
+    "ProtectedBranchPropRequiredLinearHistoryType",
+    "ProtectedBranchPropRequiredLinearHistoryTypeForResponse",
+    "ProtectedBranchPropRequiredSignaturesType",
+    "ProtectedBranchPropRequiredSignaturesTypeForResponse",
+    "ProtectedBranchType",
+    "ProtectedBranchTypeForResponse",
+    "StatusCheckPolicyPropChecksItemsType",
+    "StatusCheckPolicyPropChecksItemsTypeForResponse",
+    "StatusCheckPolicyType",
+    "StatusCheckPolicyTypeForResponse",
 )

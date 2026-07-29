@@ -9,30 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0535 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0536 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0537 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0538 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
-class AgentsReposOwnerRepoTasksPostBodyType(TypedDict):
-    """AgentsReposOwnerRepoTasksPostBody"""
 
-    prompt: str
-    model: NotRequired[str]
-    create_pull_request: NotRequired[bool]
-    base_ref: NotRequired[str]
-    head_ref: NotRequired[str]
+class WebhookStarDeletedType(TypedDict):
+    """star deleted event"""
+
+    action: Literal["deleted"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
+    starred_at: None
 
 
-class AgentsReposOwnerRepoTasksPostBodyTypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksPostBody"""
+class WebhookStarDeletedTypeForResponse(TypedDict):
+    """star deleted event"""
 
-    prompt: str
-    model: NotRequired[str]
-    create_pull_request: NotRequired[bool]
-    base_ref: NotRequired[str]
-    head_ref: NotRequired[str]
+    action: Literal["deleted"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+    starred_at: None
 
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksPostBodyType",
-    "AgentsReposOwnerRepoTasksPostBodyTypeForResponse",
+    "WebhookStarDeletedType",
+    "WebhookStarDeletedTypeForResponse",
 )

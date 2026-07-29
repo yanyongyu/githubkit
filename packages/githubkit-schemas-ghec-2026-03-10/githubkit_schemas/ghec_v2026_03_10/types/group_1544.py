@@ -9,24 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0112 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPropertiesValuesPatchBodyType(TypedDict):
-    """ReposOwnerRepoPropertiesValuesPatchBody"""
+class ReposOwnerRepoForksPostBodyType(TypedDict):
+    """ReposOwnerRepoForksPostBody"""
 
-    properties: list[CustomPropertyValueType]
+    organization: NotRequired[str]
+    name: NotRequired[str]
+    default_branch_only: NotRequired[bool]
 
 
-class ReposOwnerRepoPropertiesValuesPatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoPropertiesValuesPatchBody"""
+class ReposOwnerRepoForksPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoForksPostBody"""
 
-    properties: list[CustomPropertyValueTypeForResponse]
+    organization: NotRequired[str]
+    name: NotRequired[str]
+    default_branch_only: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoPropertiesValuesPatchBodyType",
-    "ReposOwnerRepoPropertiesValuesPatchBodyTypeForResponse",
+    "ReposOwnerRepoForksPostBodyType",
+    "ReposOwnerRepoForksPostBodyTypeForResponse",
 )

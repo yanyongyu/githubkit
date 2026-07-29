@@ -9,63 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0330 import (
-    CodeScanningVariantAnalysisSkippedRepoGroupType,
-    CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse,
+from .group_0136 import (
+    CodeScanningAnalysisToolType,
+    CodeScanningAnalysisToolTypeForResponse,
 )
 
 
-class CodeScanningVariantAnalysisPropSkippedRepositoriesType(TypedDict):
-    """CodeScanningVariantAnalysisPropSkippedRepositories
+class CodeScanningAnalysisType(TypedDict):
+    """CodeScanningAnalysis"""
 
-    Information about repositories that were skipped from processing. This
-    information is only available to the user that initiated the variant analysis.
-    """
-
-    access_mismatch_repos: CodeScanningVariantAnalysisSkippedRepoGroupType
-    not_found_repos: (
-        CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposType
-    )
-    no_codeql_db_repos: CodeScanningVariantAnalysisSkippedRepoGroupType
-    over_limit_repos: CodeScanningVariantAnalysisSkippedRepoGroupType
-
-
-class CodeScanningVariantAnalysisPropSkippedRepositoriesTypeForResponse(TypedDict):
-    """CodeScanningVariantAnalysisPropSkippedRepositories
-
-    Information about repositories that were skipped from processing. This
-    information is only available to the user that initiated the variant analysis.
-    """
-
-    access_mismatch_repos: CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse
-    not_found_repos: CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposTypeForResponse
-    no_codeql_db_repos: CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse
-    over_limit_repos: CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse
+    ref: str
+    commit_sha: str
+    analysis_key: str
+    environment: str
+    category: NotRequired[str]
+    error: str
+    created_at: _dt.datetime
+    results_count: int
+    rules_count: int
+    id: int
+    url: str
+    sarif_id: str
+    tool: CodeScanningAnalysisToolType
+    deletable: bool
+    warning: str
 
 
-class CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposType(
-    TypedDict
-):
-    """CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos"""
+class CodeScanningAnalysisTypeForResponse(TypedDict):
+    """CodeScanningAnalysis"""
 
-    repository_count: int
-    repository_full_names: list[str]
-
-
-class CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposTypeForResponse(
-    TypedDict
-):
-    """CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos"""
-
-    repository_count: int
-    repository_full_names: list[str]
+    ref: str
+    commit_sha: str
+    analysis_key: str
+    environment: str
+    category: NotRequired[str]
+    error: str
+    created_at: str
+    results_count: int
+    rules_count: int
+    id: int
+    url: str
+    sarif_id: str
+    tool: CodeScanningAnalysisToolTypeForResponse
+    deletable: bool
+    warning: str
 
 
 __all__ = (
-    "CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposType",
-    "CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposTypeForResponse",
-    "CodeScanningVariantAnalysisPropSkippedRepositoriesType",
-    "CodeScanningVariantAnalysisPropSkippedRepositoriesTypeForResponse",
+    "CodeScanningAnalysisType",
+    "CodeScanningAnalysisTypeForResponse",
 )

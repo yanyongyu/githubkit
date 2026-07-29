@@ -12,19 +12,21 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType(TypedDict):
-    """ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody"""
+class OrgsOrgPrivateRegistriesPublicKeyGetResponse200Type(TypedDict):
+    """OrgsOrgPrivateRegistriesPublicKeyGetResponse200"""
 
-    labels: list[str]
+    key_id: str
+    key: str
 
 
-class ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody"""
+class OrgsOrgPrivateRegistriesPublicKeyGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgPrivateRegistriesPublicKeyGetResponse200"""
 
-    labels: list[str]
+    key_id: str
+    key: str
 
 
 __all__ = (
-    "ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType",
-    "ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyTypeForResponse",
+    "OrgsOrgPrivateRegistriesPublicKeyGetResponse200Type",
+    "OrgsOrgPrivateRegistriesPublicKeyGetResponse200TypeForResponse",
 )

@@ -10,6 +10,7 @@ from tomlkit.toml_document import TOMLDocument
 class Override(BaseModel):
     class_overrides: dict[str, str] = Field(default_factory=dict)
     field_overrides: dict[str, str] = Field(default_factory=dict)
+    operation_overrides: dict[str, str] = Field(default_factory=dict)
     schema_overrides: dict[str, dict[str, Any]] = Field(default_factory=dict)
 
 
@@ -30,6 +31,11 @@ class VersionedOverride(Override):
             for key, value in self.field_overrides.items():
                 field_tab.append(key, value)
             tab.append("field_overrides", field_tab)
+        if self.operation_overrides:
+            operation_tab = table()
+            for key, value in self.operation_overrides.items():
+                operation_tab.append(key, value)
+            tab.append("operation_overrides", operation_tab)
         if self.schema_overrides:
             schema_tab = table()
             for key, value in self.schema_overrides.items():
@@ -97,6 +103,11 @@ class GenerationInfo(BaseModel):
                 key: value
                 for override in selected_overrides
                 for key, value in override.field_overrides.items()
+            },
+            operation_overrides={
+                key: value
+                for override in selected_overrides
+                for key, value in override.operation_overrides.items()
             },
             schema_overrides={
                 key: value

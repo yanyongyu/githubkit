@@ -12,21 +12,23 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200Type(TypedDict):
-    """ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200"""
+class ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200Type(TypedDict):
+    """ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200"""
 
     enabled: bool
+    max_open_pull_requests: int
 
 
-class ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200TypeForResponse(
+class ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200TypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200"""
+    """ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200"""
 
     enabled: bool
+    max_open_pull_requests: int
 
 
 __all__ = (
-    "ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200Type",
-    "ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200TypeForResponse",
+    "ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200Type",
+    "ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200TypeForResponse",
 )

@@ -9,45 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0599 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0600 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0601 import (
+from .group_0618 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0619 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0620 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0602 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0612 import WebhooksUserType, WebhooksUserTypeForResponse
+from .group_0621 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0643 import (
+    WebhooksMarketplacePurchaseType,
+    WebhooksMarketplacePurchaseTypeForResponse,
+)
+from .group_0644 import (
+    WebhooksPreviousMarketplacePurchaseType,
+    WebhooksPreviousMarketplacePurchaseTypeForResponse,
+)
 
 
-class WebhookOrgBlockUnblockedType(TypedDict):
-    """org_block unblocked event"""
+class WebhookMarketplacePurchaseCancelledType(TypedDict):
+    """marketplace_purchase cancelled event"""
 
-    action: Literal["unblocked"]
-    blocked_user: Union[WebhooksUserType, None]
+    action: Literal["cancelled"]
+    effective_date: str
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
+    marketplace_purchase: WebhooksMarketplacePurchaseType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    previous_marketplace_purchase: NotRequired[WebhooksPreviousMarketplacePurchaseType]
     repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserType
 
 
-class WebhookOrgBlockUnblockedTypeForResponse(TypedDict):
-    """org_block unblocked event"""
+class WebhookMarketplacePurchaseCancelledTypeForResponse(TypedDict):
+    """marketplace_purchase cancelled event"""
 
-    action: Literal["unblocked"]
-    blocked_user: Union[WebhooksUserTypeForResponse, None]
+    action: Literal["cancelled"]
+    effective_date: str
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: OrganizationSimpleWebhooksTypeForResponse
+    marketplace_purchase: WebhooksMarketplacePurchaseTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    previous_marketplace_purchase: NotRequired[
+        WebhooksPreviousMarketplacePurchaseTypeForResponse
+    ]
     repository: NotRequired[RepositoryWebhooksTypeForResponse]
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookOrgBlockUnblockedType",
-    "WebhookOrgBlockUnblockedTypeForResponse",
+    "WebhookMarketplacePurchaseCancelledType",
+    "WebhookMarketplacePurchaseCancelledTypeForResponse",
 )

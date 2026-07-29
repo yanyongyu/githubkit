@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoSubscriptionPutBodyType(TypedDict):
-    """ReposOwnerRepoSubscriptionPutBody"""
+class ReposOwnerRepoNotificationsPutResponse202Type(TypedDict):
+    """ReposOwnerRepoNotificationsPutResponse202"""
 
-    subscribed: NotRequired[bool]
-    ignored: NotRequired[bool]
+    message: NotRequired[str]
+    url: NotRequired[str]
 
 
-class ReposOwnerRepoSubscriptionPutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoSubscriptionPutBody"""
+class ReposOwnerRepoNotificationsPutResponse202TypeForResponse(TypedDict):
+    """ReposOwnerRepoNotificationsPutResponse202"""
 
-    subscribed: NotRequired[bool]
-    ignored: NotRequired[bool]
+    message: NotRequired[str]
+    url: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoSubscriptionPutBodyType",
-    "ReposOwnerRepoSubscriptionPutBodyTypeForResponse",
+    "ReposOwnerRepoNotificationsPutResponse202Type",
+    "ReposOwnerRepoNotificationsPutResponse202TypeForResponse",
 )

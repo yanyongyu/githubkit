@@ -9,26 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0054 import RunnerType, RunnerTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsRunnersGetResponse200Type(TypedDict):
-    """OrgsOrgActionsRunnersGetResponse200"""
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof1Type(
+    TypedDict
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof1"""
 
-    total_count: int
-    runners: list[RunnerType]
+    name: NotRequired[str]
+    ai_credit_pool_enabled: bool
 
 
-class OrgsOrgActionsRunnersGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsRunnersGetResponse200"""
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof1TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof1"""
 
-    total_count: int
-    runners: list[RunnerTypeForResponse]
+    name: NotRequired[str]
+    ai_credit_pool_enabled: bool
 
 
 __all__ = (
-    "OrgsOrgActionsRunnersGetResponse200Type",
-    "OrgsOrgActionsRunnersGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof1Type",
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof1TypeForResponse",
 )

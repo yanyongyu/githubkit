@@ -12,19 +12,19 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoCollaboratorsUsernamePutBodyType(TypedDict):
-    """ReposOwnerRepoCollaboratorsUsernamePutBody"""
+class ReposOwnerRepoActionsRunsRunIdRerunPostBodyType(TypedDict):
+    """ReposOwnerRepoActionsRunsRunIdRerunPostBody"""
 
-    permission: NotRequired[str]
+    enable_debug_logging: NotRequired[bool]
 
 
-class ReposOwnerRepoCollaboratorsUsernamePutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoCollaboratorsUsernamePutBody"""
+class ReposOwnerRepoActionsRunsRunIdRerunPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsRunsRunIdRerunPostBody"""
 
-    permission: NotRequired[str]
+    enable_debug_logging: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoCollaboratorsUsernamePutBodyType",
-    "ReposOwnerRepoCollaboratorsUsernamePutBodyTypeForResponse",
+    "ReposOwnerRepoActionsRunsRunIdRerunPostBodyType",
+    "ReposOwnerRepoActionsRunsRunIdRerunPostBodyTypeForResponse",
 )

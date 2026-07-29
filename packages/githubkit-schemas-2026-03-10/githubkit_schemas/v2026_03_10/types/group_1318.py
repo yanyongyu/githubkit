@@ -9,31 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoImportPutBodyType(TypedDict):
-    """ReposOwnerRepoImportPutBody"""
+class ReposOwnerRepoCodespacesDevcontainersGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCodespacesDevcontainersGetResponse200"""
 
-    vcs_url: str
-    vcs: NotRequired[Literal["subversion", "git", "mercurial", "tfvc"]]
-    vcs_username: NotRequired[str]
-    vcs_password: NotRequired[str]
-    tfvc_project: NotRequired[str]
+    total_count: int
+    devcontainers: list[
+        ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsType
+    ]
 
 
-class ReposOwnerRepoImportPutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoImportPutBody"""
+class ReposOwnerRepoCodespacesDevcontainersGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoCodespacesDevcontainersGetResponse200"""
 
-    vcs_url: str
-    vcs: NotRequired[Literal["subversion", "git", "mercurial", "tfvc"]]
-    vcs_username: NotRequired[str]
-    vcs_password: NotRequired[str]
-    tfvc_project: NotRequired[str]
+    total_count: int
+    devcontainers: list[
+        ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsTypeForResponse
+    ]
+
+
+class ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsType(
+    TypedDict
+):
+    """ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems"""
+
+    path: str
+    name: NotRequired[str]
+    display_name: NotRequired[str]
+
+
+class ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems"""
+
+    path: str
+    name: NotRequired[str]
+    display_name: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoImportPutBodyType",
-    "ReposOwnerRepoImportPutBodyTypeForResponse",
+    "ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsType",
+    "ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsTypeForResponse",
+    "ReposOwnerRepoCodespacesDevcontainersGetResponse200Type",
+    "ReposOwnerRepoCodespacesDevcontainersGetResponse200TypeForResponse",
 )

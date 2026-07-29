@@ -13,16 +13,17 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0281 import WorkflowRun
+from .group_0261 import SecretScanningCustomPatternToCreate
 
 
-class ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200(GitHubModel):
-    """ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200"""
+class OrgsOrgSecretScanningCustomPatternsPostBody(GitHubModel):
+    """OrgsOrgSecretScanningCustomPatternsPostBody"""
 
-    total_count: int = Field()
-    workflow_runs: list[WorkflowRun] = Field()
+    patterns: list[SecretScanningCustomPatternToCreate] = Field(
+        description="The list of custom patterns to create."
+    )
 
 
-model_rebuild(ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200)
+model_rebuild(OrgsOrgSecretScanningCustomPatternsPostBody)
 
-__all__ = ("ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200",)
+__all__ = ("OrgsOrgSecretScanningCustomPatternsPostBody",)

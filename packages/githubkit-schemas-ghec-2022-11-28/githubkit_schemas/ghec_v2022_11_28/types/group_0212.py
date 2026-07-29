@@ -10,33 +10,61 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class PinnedIssueCommentType(TypedDict):
-    """Pinned Issue Comment
+class MilestoneType(TypedDict):
+    """Milestone
 
-    Context around who pinned an issue comment and when it was pinned.
+    A collection of related issues and pull requests.
     """
 
-    pinned_at: _dt.datetime
-    pinned_by: Union[None, SimpleUserType]
+    url: str
+    html_url: str
+    labels_url: str
+    id: int
+    node_id: str
+    number: int
+    state: Literal["open", "closed"]
+    title: str
+    description: Union[str, None]
+    creator: Union[None, SimpleUserType]
+    open_issues: int
+    closed_issues: int
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    closed_at: Union[_dt.datetime, None]
+    due_on: Union[_dt.datetime, None]
 
 
-class PinnedIssueCommentTypeForResponse(TypedDict):
-    """Pinned Issue Comment
+class MilestoneTypeForResponse(TypedDict):
+    """Milestone
 
-    Context around who pinned an issue comment and when it was pinned.
+    A collection of related issues and pull requests.
     """
 
-    pinned_at: str
-    pinned_by: Union[None, SimpleUserTypeForResponse]
+    url: str
+    html_url: str
+    labels_url: str
+    id: int
+    node_id: str
+    number: int
+    state: Literal["open", "closed"]
+    title: str
+    description: Union[str, None]
+    creator: Union[None, SimpleUserTypeForResponse]
+    open_issues: int
+    closed_issues: int
+    created_at: str
+    updated_at: str
+    closed_at: Union[str, None]
+    due_on: Union[str, None]
 
 
 __all__ = (
-    "PinnedIssueCommentType",
-    "PinnedIssueCommentTypeForResponse",
+    "MilestoneType",
+    "MilestoneTypeForResponse",
 )

@@ -11,20 +11,26 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class OrgsOrgCodespacesAccessSelectedUsersPostBodyType(TypedDict):
-    """OrgsOrgCodespacesAccessSelectedUsersPostBody"""
-
-    selected_usernames: list[str]
+from .group_0035 import ActionsHostedRunnerType, ActionsHostedRunnerTypeForResponse
 
 
-class OrgsOrgCodespacesAccessSelectedUsersPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgCodespacesAccessSelectedUsersPostBody"""
+class OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200Type(TypedDict):
+    """OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200"""
 
-    selected_usernames: list[str]
+    total_count: float
+    runners: list[ActionsHostedRunnerType]
+
+
+class OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200"""
+
+    total_count: float
+    runners: list[ActionsHostedRunnerTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgCodespacesAccessSelectedUsersPostBodyType",
-    "OrgsOrgCodespacesAccessSelectedUsersPostBodyTypeForResponse",
+    "OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200Type",
+    "OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200TypeForResponse",
 )

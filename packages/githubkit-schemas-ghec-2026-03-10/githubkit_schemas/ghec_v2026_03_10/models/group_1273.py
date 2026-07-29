@@ -12,30 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0034 import ActionsHostedRunnerMachineSpec
 
 
-class OrgsOrgAttestationsSubjectDigestGetResponse200(GitHubModel):
-    """OrgsOrgAttestationsSubjectDigestGetResponse200"""
+class OrgsOrgActionsHostedRunnersMachineSizesGetResponse200(GitHubModel):
+    """OrgsOrgActionsHostedRunnersMachineSizesGetResponse200"""
 
-    attestations: Missing[
-        list[OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems]
-    ] = Field(default=UNSET)
-
-
-class OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems(GitHubModel):
-    """OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
-
-    repository_id: Missing[int] = Field(default=UNSET)
-    bundle_url: Missing[str] = Field(default=UNSET)
-    initiator: Missing[str] = Field(default=UNSET)
+    total_count: int = Field()
+    machine_specs: list[ActionsHostedRunnerMachineSpec] = Field()
 
 
-model_rebuild(OrgsOrgAttestationsSubjectDigestGetResponse200)
-model_rebuild(OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems)
+model_rebuild(OrgsOrgActionsHostedRunnersMachineSizesGetResponse200)
 
-__all__ = (
-    "OrgsOrgAttestationsSubjectDigestGetResponse200",
-    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems",
-)
+__all__ = ("OrgsOrgActionsHostedRunnersMachineSizesGetResponse200",)

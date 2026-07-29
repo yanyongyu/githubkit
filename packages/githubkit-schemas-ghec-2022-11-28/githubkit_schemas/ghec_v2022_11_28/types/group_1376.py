@@ -9,26 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0343 import ArtifactType, ArtifactTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoActionsArtifactsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsArtifactsGetResponse200"""
+class OrgsOrgDependabotRepositoryAccessPatchBodyType(TypedDict):
+    """OrgsOrgDependabotRepositoryAccessPatchBody
 
-    total_count: int
-    artifacts: list[ArtifactType]
+    Examples:
+        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
+    """
+
+    repository_ids_to_add: NotRequired[list[int]]
+    repository_ids_to_remove: NotRequired[list[int]]
 
 
-class ReposOwnerRepoActionsArtifactsGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsArtifactsGetResponse200"""
+class OrgsOrgDependabotRepositoryAccessPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgDependabotRepositoryAccessPatchBody
 
-    total_count: int
-    artifacts: list[ArtifactTypeForResponse]
+    Examples:
+        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
+    """
+
+    repository_ids_to_add: NotRequired[list[int]]
+    repository_ids_to_remove: NotRequired[list[int]]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsArtifactsGetResponse200Type",
-    "ReposOwnerRepoActionsArtifactsGetResponse200TypeForResponse",
+    "OrgsOrgDependabotRepositoryAccessPatchBodyType",
+    "OrgsOrgDependabotRepositoryAccessPatchBodyTypeForResponse",
 )

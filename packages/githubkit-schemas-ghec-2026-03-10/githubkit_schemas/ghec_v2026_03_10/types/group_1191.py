@@ -9,30 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200Type(
-    TypedDict
-):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteRespons
-    e200
+class EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201Type(TypedDict):
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201
+
+    The total number of seats created for the specified user(s).
     """
 
-    message: NotRequired[str]
+    seats_created: int
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200TypeForResponse(
+class EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteRespons
-    e200
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201
+
+    The total number of seats created for the specified user(s).
     """
 
-    message: NotRequired[str]
+    seats_created: int
 
 
 __all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200Type",
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200TypeForResponse",
+    "EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201Type",
+    "EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201TypeForResponse",
 )

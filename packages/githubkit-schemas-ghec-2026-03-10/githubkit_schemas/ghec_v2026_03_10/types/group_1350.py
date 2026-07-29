@@ -13,25 +13,105 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgProjectsV2ProjectNumberViewsPostBodyType(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberViewsPostBody"""
+class OrgsOrgCopilotSpacesPostBodyType(TypedDict):
+    """OrgsOrgCopilotSpacesPostBody"""
 
     name: str
-    layout: Literal["table", "board", "roadmap"]
-    filter_: NotRequired[str]
-    visible_fields: NotRequired[list[int]]
+    description: NotRequired[str]
+    general_instructions: NotRequired[str]
+    base_role: NotRequired[Literal["reader", "writer", "admin", "no_access"]]
+    resources_attributes: NotRequired[
+        list[OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsType]
+    ]
 
 
-class OrgsOrgProjectsV2ProjectNumberViewsPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberViewsPostBody"""
+class OrgsOrgCopilotSpacesPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgCopilotSpacesPostBody"""
 
     name: str
-    layout: Literal["table", "board", "roadmap"]
-    filter_: NotRequired[str]
-    visible_fields: NotRequired[list[int]]
+    description: NotRequired[str]
+    general_instructions: NotRequired[str]
+    base_role: NotRequired[Literal["reader", "writer", "admin", "no_access"]]
+    resources_attributes: NotRequired[
+        list[OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsTypeForResponse]
+    ]
+
+
+class OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsType(TypedDict):
+    """OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItems"""
+
+    resource_type: NotRequired[
+        Literal[
+            "repository",
+            "github_file",
+            "free_text",
+            "github_issue",
+            "github_pull_request",
+            "media_content",
+            "uploaded_text_file",
+        ]
+    ]
+    metadata: NotRequired[
+        OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataType
+    ]
+
+
+class OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItems"""
+
+    resource_type: NotRequired[
+        Literal[
+            "repository",
+            "github_file",
+            "free_text",
+            "github_issue",
+            "github_pull_request",
+            "media_content",
+            "uploaded_text_file",
+        ]
+    ]
+    metadata: NotRequired[
+        OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataTypeForResponse
+    ]
+
+
+class OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataType(
+    TypedDict
+):
+    """OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata
+
+    Metadata specific to the resource type.
+    """
+
+    repository_id: NotRequired[int]
+    file_path: NotRequired[str]
+    text: NotRequired[str]
+    name: NotRequired[str]
+    number: NotRequired[int]
+
+
+class OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata
+
+    Metadata specific to the resource type.
+    """
+
+    repository_id: NotRequired[int]
+    file_path: NotRequired[str]
+    text: NotRequired[str]
+    name: NotRequired[str]
+    number: NotRequired[int]
 
 
 __all__ = (
-    "OrgsOrgProjectsV2ProjectNumberViewsPostBodyType",
-    "OrgsOrgProjectsV2ProjectNumberViewsPostBodyTypeForResponse",
+    "OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataType",
+    "OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataTypeForResponse",
+    "OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsType",
+    "OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsTypeForResponse",
+    "OrgsOrgCopilotSpacesPostBodyType",
+    "OrgsOrgCopilotSpacesPostBodyTypeForResponse",
 )

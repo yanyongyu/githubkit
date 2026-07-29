@@ -9,26 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoAutolinksPostBodyType(TypedDict):
-    """ReposOwnerRepoAutolinksPostBody"""
+class OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBodyType(
+    TypedDict
+):
+    """OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBody"""
 
-    key_prefix: str
-    url_template: str
-    is_alphanumeric: NotRequired[bool]
+    name: NotRequired[str]
+    compute_service: NotRequired[Literal["none", "actions"]]
+    network_settings_ids: NotRequired[list[str]]
+    failover_network_settings_ids: NotRequired[list[str]]
+    failover_network_enabled: NotRequired[bool]
 
 
-class ReposOwnerRepoAutolinksPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoAutolinksPostBody"""
+class OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBodyTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBody"""
 
-    key_prefix: str
-    url_template: str
-    is_alphanumeric: NotRequired[bool]
+    name: NotRequired[str]
+    compute_service: NotRequired[Literal["none", "actions"]]
+    network_settings_ids: NotRequired[list[str]]
+    failover_network_settings_ids: NotRequired[list[str]]
+    failover_network_enabled: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoAutolinksPostBodyType",
-    "ReposOwnerRepoAutolinksPostBodyTypeForResponse",
+    "OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBodyType",
+    "OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBodyTypeForResponse",
 )

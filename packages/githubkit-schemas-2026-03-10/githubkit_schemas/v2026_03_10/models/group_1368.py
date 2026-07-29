@@ -14,14 +14,19 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200(GitHubModel):
-    """ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200"""
+class ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200(GitHubModel):
+    """ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200"""
 
     enabled: bool = Field(
-        description="Whether or not private vulnerability reporting is enabled for the repository."
+        description="Whether the pull request creation cap is enabled"
+    )
+    max_open_pull_requests: int = Field(
+        le=1000.0,
+        ge=1.0,
+        description="The maximum number of open pull requests a user can have at one time",
     )
 
 
-model_rebuild(ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200)
+model_rebuild(ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200)
 
-__all__ = ("ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200",)
+__all__ = ("ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200",)

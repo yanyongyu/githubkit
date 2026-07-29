@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,26 +18,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrganizationUpdateIssueType(GitHubModel):
-    """OrganizationUpdateIssueType"""
+class InteractionLimit(GitHubModel):
+    """Interaction Restrictions
 
-    name: str = Field(description="Name of the issue type.")
-    is_enabled: bool = Field(
-        description="Whether or not the issue type is enabled at the organization level."
+    Limit interactions to a specific type of user for a specified duration
+    """
+
+    limit: Literal["existing_users", "contributors_only", "collaborators_only"] = Field(
+        description="The type of GitHub user that can comment, open issues, or create pull requests while the interaction limit is in effect."
     )
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Description of the issue type."
+    expiry: Missing[
+        Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
+    ] = Field(
+        default=UNSET,
+        description="The duration of the interaction restriction. Default: `one_day`.",
     )
-    color: Missing[
-        Union[
-            None,
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-        ]
-    ] = Field(default=UNSET, description="Color for the issue type.")
 
 
-model_rebuild(OrganizationUpdateIssueType)
+model_rebuild(InteractionLimit)
 
-__all__ = ("OrganizationUpdateIssueType",)
+__all__ = ("InteractionLimit",)

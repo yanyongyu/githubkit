@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,71 +18,56 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class GetAllCostCenters(GitHubModel):
-    """GetAllCostCenters"""
+class GetBudget(GitHubModel):
+    """GetBudget"""
 
-    cost_centers: Missing[list[GetAllCostCentersPropCostCentersItems]] = Field(
-        default=UNSET, alias="costCenters"
+    id: str = Field(description="ID of the budget.")
+    budget_scope: Literal[
+        "enterprise",
+        "organization",
+        "repository",
+        "cost_center",
+        "multi_user_customer",
+        "multi_user_cost_center",
+        "user",
+    ] = Field(description="The type of scope for the budget")
+    budget_entity_name: str = Field(
+        description="The name of the entity to apply the budget to"
     )
-
-
-class GetAllCostCentersPropCostCentersItems(GitHubModel):
-    """GetAllCostCentersPropCostCentersItems"""
-
-    id: str = Field(description="ID of the cost center.")
-    name: str = Field(description="Name of the cost center.")
-    state: Missing[Literal["active", "deleted"]] = Field(
-        default=UNSET, description="State of the cost center."
-    )
-    azure_subscription: Missing[Union[str, None]] = Field(
+    user: Missing[str] = Field(
         default=UNSET,
-        description="Azure subscription ID associated with the cost center. Only present for cost centers linked to Azure subscriptions.",
+        description="The user login when the budget is scoped to a single user (`user` scope).",
     )
-    ai_credit_pool_enabled: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the cost center draws from the AI credit pool (capped from member license entitlements).",
+    budget_amount: int = Field(
+        description="The budget amount in whole dollars. For license-based products, this represents the number of licenses."
     )
-    ai_credit_pool_state: Missing[
-        GetAllCostCentersPropCostCentersItemsPropAiCreditPoolState
-    ] = Field(
-        default=UNSET,
-        description="Read-only cap-budget projection for the cost center. Only present when the cost center draws from the AI credit pool.",
+    prevent_further_usage: bool = Field(
+        description="Whether to prevent additional spending once the budget is exceeded"
     )
-    resources: list[GetAllCostCentersPropCostCentersItemsPropResourcesItems] = Field()
+    budget_product_sku: str = Field(
+        description="A single product or sku to apply the budget to."
+    )
+    budget_type: Literal["ProductPricing", "SkuPricing"] = Field(
+        description="The type of pricing for the budget"
+    )
+    budget_alerting: GetBudgetPropBudgetAlerting = Field()
 
 
-class GetAllCostCentersPropCostCentersItemsPropAiCreditPoolState(GitHubModel):
-    """GetAllCostCentersPropCostCentersItemsPropAiCreditPoolState
+class GetBudgetPropBudgetAlerting(GitHubModel):
+    """GetBudgetPropBudgetAlerting"""
 
-    Read-only cap-budget projection for the cost center. Only present when the cost
-    center draws from the AI credit pool.
-    """
-
-    target_amount: Missing[Union[float, None]] = Field(
-        default=UNSET,
-        description="The AI credit pool cap target amount, in dollars. Null when the cap budget has not been materialized yet.",
+    will_alert: Missing[bool] = Field(
+        default=UNSET, description="Whether alerts are enabled for this budget"
     )
-    current_amount: Missing[Union[float, None]] = Field(
-        default=UNSET,
-        description="The current-month applied amount against the AI credit pool cap, in dollars. Null when the cap budget has not been materialized yet.",
+    alert_recipients: Missing[list[str]] = Field(
+        default=UNSET, description="Array of user login names who will receive alerts"
     )
 
 
-class GetAllCostCentersPropCostCentersItemsPropResourcesItems(GitHubModel):
-    """GetAllCostCentersPropCostCentersItemsPropResourcesItems"""
-
-    type: str = Field(description="Type of the resource.")
-    name: str = Field(description="Name of the resource.")
-
-
-model_rebuild(GetAllCostCenters)
-model_rebuild(GetAllCostCentersPropCostCentersItems)
-model_rebuild(GetAllCostCentersPropCostCentersItemsPropAiCreditPoolState)
-model_rebuild(GetAllCostCentersPropCostCentersItemsPropResourcesItems)
+model_rebuild(GetBudget)
+model_rebuild(GetBudgetPropBudgetAlerting)
 
 __all__ = (
-    "GetAllCostCenters",
-    "GetAllCostCentersPropCostCentersItems",
-    "GetAllCostCentersPropCostCentersItemsPropAiCreditPoolState",
-    "GetAllCostCentersPropCostCentersItemsPropResourcesItems",
+    "GetBudget",
+    "GetBudgetPropBudgetAlerting",
 )

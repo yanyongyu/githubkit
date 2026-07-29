@@ -9,79 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class AgentsReposOwnerRepoTasksGetResponse403Type(TypedDict):
-    """AgentsReposOwnerRepoTasksGetResponse403
-
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[
-        list[AgentsReposOwnerRepoTasksGetResponse403PropErrorsItemsType]
-    ]
-    documentation_url: str
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0333 import FullRepositoryType, FullRepositoryTypeForResponse
+from .group_0618 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0619 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0620 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_1054 import (
+    WebhookSecurityAndAnalysisPropChangesType,
+    WebhookSecurityAndAnalysisPropChangesTypeForResponse,
+)
 
 
-class AgentsReposOwnerRepoTasksGetResponse403TypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksGetResponse403
+class WebhookSecurityAndAnalysisType(TypedDict):
+    """security_and_analysis event"""
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[
-        list[AgentsReposOwnerRepoTasksGetResponse403PropErrorsItemsTypeForResponse]
-    ]
-    documentation_url: str
+    changes: WebhookSecurityAndAnalysisPropChangesType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: FullRepositoryType
+    sender: NotRequired[SimpleUserType]
 
 
-class AgentsReposOwnerRepoTasksGetResponse403PropErrorsItemsType(TypedDict):
-    """AgentsReposOwnerRepoTasksGetResponse403PropErrorsItems
+class WebhookSecurityAndAnalysisTypeForResponse(TypedDict):
+    """security_and_analysis event"""
 
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
-
-
-class AgentsReposOwnerRepoTasksGetResponse403PropErrorsItemsTypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksGetResponse403PropErrorsItems
-
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
+    changes: WebhookSecurityAndAnalysisPropChangesTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: FullRepositoryTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksGetResponse403PropErrorsItemsType",
-    "AgentsReposOwnerRepoTasksGetResponse403PropErrorsItemsTypeForResponse",
-    "AgentsReposOwnerRepoTasksGetResponse403Type",
-    "AgentsReposOwnerRepoTasksGetResponse403TypeForResponse",
+    "WebhookSecurityAndAnalysisType",
+    "WebhookSecurityAndAnalysisTypeForResponse",
 )

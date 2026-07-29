@@ -11,59 +11,52 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0372 import BranchProtectionType, BranchProtectionTypeForResponse
-from .group_0377 import CommitType, CommitTypeForResponse
+from .group_0378 import BranchProtectionType, BranchProtectionTypeForResponse
 
 
-class BranchWithProtectionType(TypedDict):
-    """Branch With Protection
+class ShortBranchType(TypedDict):
+    """Short Branch
 
-    Branch With Protection
+    Short Branch
     """
 
     name: str
-    commit: CommitType
-    links: BranchWithProtectionPropLinksType
+    commit: ShortBranchPropCommitType
     protected: bool
-    protection: BranchProtectionType
-    protection_url: str
-    pattern: NotRequired[str]
-    required_approving_review_count: NotRequired[int]
+    protection: NotRequired[BranchProtectionType]
+    protection_url: NotRequired[str]
 
 
-class BranchWithProtectionTypeForResponse(TypedDict):
-    """Branch With Protection
+class ShortBranchTypeForResponse(TypedDict):
+    """Short Branch
 
-    Branch With Protection
+    Short Branch
     """
 
     name: str
-    commit: CommitTypeForResponse
-    links: BranchWithProtectionPropLinksTypeForResponse
+    commit: ShortBranchPropCommitTypeForResponse
     protected: bool
-    protection: BranchProtectionTypeForResponse
-    protection_url: str
-    pattern: NotRequired[str]
-    required_approving_review_count: NotRequired[int]
+    protection: NotRequired[BranchProtectionTypeForResponse]
+    protection_url: NotRequired[str]
 
 
-class BranchWithProtectionPropLinksType(TypedDict):
-    """BranchWithProtectionPropLinks"""
+class ShortBranchPropCommitType(TypedDict):
+    """ShortBranchPropCommit"""
 
-    html: str
-    self_: str
+    sha: str
+    url: str
 
 
-class BranchWithProtectionPropLinksTypeForResponse(TypedDict):
-    """BranchWithProtectionPropLinks"""
+class ShortBranchPropCommitTypeForResponse(TypedDict):
+    """ShortBranchPropCommit"""
 
-    html: str
-    self_: str
+    sha: str
+    url: str
 
 
 __all__ = (
-    "BranchWithProtectionPropLinksType",
-    "BranchWithProtectionPropLinksTypeForResponse",
-    "BranchWithProtectionType",
-    "BranchWithProtectionTypeForResponse",
+    "ShortBranchPropCommitType",
+    "ShortBranchPropCommitTypeForResponse",
+    "ShortBranchType",
+    "ShortBranchTypeForResponse",
 )

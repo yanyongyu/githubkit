@@ -9,29 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class OrgsOrgActionsVariablesNamePatchBodyType(TypedDict):
-    """OrgsOrgActionsVariablesNamePatchBody"""
+class OrgsOrgActionsHostedRunnersImagesCustomGetResponse200Type(TypedDict):
+    """OrgsOrgActionsHostedRunnersImagesCustomGetResponse200"""
 
-    name: NotRequired[str]
-    value: NotRequired[str]
-    visibility: NotRequired[Literal["all", "private", "selected"]]
-    selected_repository_ids: NotRequired[list[int]]
+    total_count: int
+    images: list[ActionsHostedRunnerCustomImageType]
 
 
-class OrgsOrgActionsVariablesNamePatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgActionsVariablesNamePatchBody"""
+class OrgsOrgActionsHostedRunnersImagesCustomGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsHostedRunnersImagesCustomGetResponse200"""
 
-    name: NotRequired[str]
-    value: NotRequired[str]
-    visibility: NotRequired[Literal["all", "private", "selected"]]
-    selected_repository_ids: NotRequired[list[int]]
+    total_count: int
+    images: list[ActionsHostedRunnerCustomImageTypeForResponse]
+
+
+class ActionsHostedRunnerCustomImageType(TypedDict):
+    """GitHub-hosted runner custom image details
+
+    Provides details of a custom runner image
+    """
+
+    id: int
+    platform: str
+    total_versions_size: int
+    name: str
+    source: str
+    versions_count: int
+    latest_version: str
+    state: str
+
+
+class ActionsHostedRunnerCustomImageTypeForResponse(TypedDict):
+    """GitHub-hosted runner custom image details
+
+    Provides details of a custom runner image
+    """
+
+    id: int
+    platform: str
+    total_versions_size: int
+    name: str
+    source: str
+    versions_count: int
+    latest_version: str
+    state: str
 
 
 __all__ = (
-    "OrgsOrgActionsVariablesNamePatchBodyType",
-    "OrgsOrgActionsVariablesNamePatchBodyTypeForResponse",
+    "ActionsHostedRunnerCustomImageType",
+    "ActionsHostedRunnerCustomImageTypeForResponse",
+    "OrgsOrgActionsHostedRunnersImagesCustomGetResponse200Type",
+    "OrgsOrgActionsHostedRunnersImagesCustomGetResponse200TypeForResponse",
 )

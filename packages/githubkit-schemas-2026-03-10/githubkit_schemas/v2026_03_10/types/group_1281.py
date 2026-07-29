@@ -9,22 +9,93 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Any, TypeAlias
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoCommentsCommentIdPatchBodyType(TypedDict):
-    """ReposOwnerRepoCommentsCommentIdPatchBody"""
+class ReposOwnerRepoAttestationsPostBodyType(TypedDict):
+    """ReposOwnerRepoAttestationsPostBody"""
 
-    body: str
+    bundle: ReposOwnerRepoAttestationsPostBodyPropBundleType
 
 
-class ReposOwnerRepoCommentsCommentIdPatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoCommentsCommentIdPatchBody"""
+class ReposOwnerRepoAttestationsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoAttestationsPostBody"""
 
-    body: str
+    bundle: ReposOwnerRepoAttestationsPostBodyPropBundleTypeForResponse
+
+
+class ReposOwnerRepoAttestationsPostBodyPropBundleType(TypedDict):
+    """ReposOwnerRepoAttestationsPostBodyPropBundle
+
+    The attestation's Sigstore Bundle.
+    Refer to the [Sigstore Bundle
+    Specification](https://github.com/sigstore/protobuf-
+    specs/blob/main/protos/sigstore_bundle.proto) for more information.
+    """
+
+    media_type: NotRequired[str]
+    verification_material: NotRequired[
+        ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialType
+    ]
+    dsse_envelope: NotRequired[
+        ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeType
+    ]
+
+
+class ReposOwnerRepoAttestationsPostBodyPropBundleTypeForResponse(TypedDict):
+    """ReposOwnerRepoAttestationsPostBodyPropBundle
+
+    The attestation's Sigstore Bundle.
+    Refer to the [Sigstore Bundle
+    Specification](https://github.com/sigstore/protobuf-
+    specs/blob/main/protos/sigstore_bundle.proto) for more information.
+    """
+
+    media_type: NotRequired[str]
+    verification_material: NotRequired[
+        ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialTypeForResponse
+    ]
+    dsse_envelope: NotRequired[
+        ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeTypeForResponse
+    ]
+
+
+ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialType: TypeAlias = (
+    dict[str, Any]
+)
+"""ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial
+"""
+
+
+ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial
+"""
+
+
+ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeType: TypeAlias = dict[
+    str, Any
+]
+"""ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope
+"""
+
+
+ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope
+"""
 
 
 __all__ = (
-    "ReposOwnerRepoCommentsCommentIdPatchBodyType",
-    "ReposOwnerRepoCommentsCommentIdPatchBodyTypeForResponse",
+    "ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeType",
+    "ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeTypeForResponse",
+    "ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialType",
+    "ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialTypeForResponse",
+    "ReposOwnerRepoAttestationsPostBodyPropBundleType",
+    "ReposOwnerRepoAttestationsPostBodyPropBundleTypeForResponse",
+    "ReposOwnerRepoAttestationsPostBodyType",
+    "ReposOwnerRepoAttestationsPostBodyTypeForResponse",
 )

@@ -9,29 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class OrgsOrgAgentsVariablesPostBodyType(TypedDict):
-    """OrgsOrgAgentsVariablesPostBody"""
-
-    name: str
-    value: str
-    visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
+class GistsGistIdStarGetResponse404Type(TypedDict):
+    """GistsGistIdStarGetResponse404"""
 
 
-class OrgsOrgAgentsVariablesPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgAgentsVariablesPostBody"""
-
-    name: str
-    value: str
-    visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
+class GistsGistIdStarGetResponse404TypeForResponse(TypedDict):
+    """GistsGistIdStarGetResponse404"""
 
 
 __all__ = (
-    "OrgsOrgAgentsVariablesPostBodyType",
-    "OrgsOrgAgentsVariablesPostBodyTypeForResponse",
+    "GistsGistIdStarGetResponse404Type",
+    "GistsGistIdStarGetResponse404TypeForResponse",
 )

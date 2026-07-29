@@ -9,48 +9,75 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0522 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0523 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0524 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
+from .group_0932 import (
+    WebhookRepositoryRulesetEditedPropChangesPropConditionsType,
+    WebhookRepositoryRulesetEditedPropChangesPropConditionsTypeForResponse,
 )
-from .group_0525 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0567 import WebhooksSponsorshipType, WebhooksSponsorshipTypeForResponse
-from .group_0568 import WebhooksChanges8Type, WebhooksChanges8TypeForResponse
+from .group_0934 import (
+    WebhookRepositoryRulesetEditedPropChangesPropRulesType,
+    WebhookRepositoryRulesetEditedPropChangesPropRulesTypeForResponse,
+)
 
 
-class WebhookSponsorshipTierChangedType(TypedDict):
-    """sponsorship tier_changed event"""
+class WebhookRepositoryRulesetEditedPropChangesType(TypedDict):
+    """WebhookRepositoryRulesetEditedPropChanges"""
 
-    action: Literal["tier_changed"]
-    changes: WebhooksChanges8Type
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserType
-    sponsorship: WebhooksSponsorshipType
+    name: NotRequired[WebhookRepositoryRulesetEditedPropChangesPropNameType]
+    enforcement: NotRequired[
+        WebhookRepositoryRulesetEditedPropChangesPropEnforcementType
+    ]
+    conditions: NotRequired[WebhookRepositoryRulesetEditedPropChangesPropConditionsType]
+    rules: NotRequired[WebhookRepositoryRulesetEditedPropChangesPropRulesType]
 
 
-class WebhookSponsorshipTierChangedTypeForResponse(TypedDict):
-    """sponsorship tier_changed event"""
+class WebhookRepositoryRulesetEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookRepositoryRulesetEditedPropChanges"""
 
-    action: Literal["tier_changed"]
-    changes: WebhooksChanges8TypeForResponse
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    sender: SimpleUserTypeForResponse
-    sponsorship: WebhooksSponsorshipTypeForResponse
+    name: NotRequired[WebhookRepositoryRulesetEditedPropChangesPropNameTypeForResponse]
+    enforcement: NotRequired[
+        WebhookRepositoryRulesetEditedPropChangesPropEnforcementTypeForResponse
+    ]
+    conditions: NotRequired[
+        WebhookRepositoryRulesetEditedPropChangesPropConditionsTypeForResponse
+    ]
+    rules: NotRequired[
+        WebhookRepositoryRulesetEditedPropChangesPropRulesTypeForResponse
+    ]
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropNameType(TypedDict):
+    """WebhookRepositoryRulesetEditedPropChangesPropName"""
+
+    from_: NotRequired[str]
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropNameTypeForResponse(TypedDict):
+    """WebhookRepositoryRulesetEditedPropChangesPropName"""
+
+    from_: NotRequired[str]
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropEnforcementType(TypedDict):
+    """WebhookRepositoryRulesetEditedPropChangesPropEnforcement"""
+
+    from_: NotRequired[str]
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropEnforcementTypeForResponse(
+    TypedDict
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropEnforcement"""
+
+    from_: NotRequired[str]
 
 
 __all__ = (
-    "WebhookSponsorshipTierChangedType",
-    "WebhookSponsorshipTierChangedTypeForResponse",
+    "WebhookRepositoryRulesetEditedPropChangesPropEnforcementType",
+    "WebhookRepositoryRulesetEditedPropChangesPropEnforcementTypeForResponse",
+    "WebhookRepositoryRulesetEditedPropChangesPropNameType",
+    "WebhookRepositoryRulesetEditedPropChangesPropNameTypeForResponse",
+    "WebhookRepositoryRulesetEditedPropChangesType",
+    "WebhookRepositoryRulesetEditedPropChangesTypeForResponse",
 )

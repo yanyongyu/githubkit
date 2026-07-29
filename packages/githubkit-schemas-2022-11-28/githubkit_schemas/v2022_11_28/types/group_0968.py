@@ -9,79 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class AgentsReposOwnerRepoTasksGetResponse422Type(TypedDict):
-    """AgentsReposOwnerRepoTasksGetResponse422
-
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[
-        list[AgentsReposOwnerRepoTasksGetResponse422PropErrorsItemsType]
-    ]
-    documentation_url: str
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0535 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0536 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0537 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0538 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class AgentsReposOwnerRepoTasksGetResponse422TypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksGetResponse422
+class WebhookStarCreatedType(TypedDict):
+    """star created event"""
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[
-        list[AgentsReposOwnerRepoTasksGetResponse422PropErrorsItemsTypeForResponse]
-    ]
-    documentation_url: str
+    action: Literal["created"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
+    starred_at: Union[str, None]
 
 
-class AgentsReposOwnerRepoTasksGetResponse422PropErrorsItemsType(TypedDict):
-    """AgentsReposOwnerRepoTasksGetResponse422PropErrorsItems
+class WebhookStarCreatedTypeForResponse(TypedDict):
+    """star created event"""
 
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
-
-
-class AgentsReposOwnerRepoTasksGetResponse422PropErrorsItemsTypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksGetResponse422PropErrorsItems
-
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
+    action: Literal["created"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+    starred_at: Union[str, None]
 
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksGetResponse422PropErrorsItemsType",
-    "AgentsReposOwnerRepoTasksGetResponse422PropErrorsItemsTypeForResponse",
-    "AgentsReposOwnerRepoTasksGetResponse422Type",
-    "AgentsReposOwnerRepoTasksGetResponse422TypeForResponse",
+    "WebhookStarCreatedType",
+    "WebhookStarCreatedTypeForResponse",
 )

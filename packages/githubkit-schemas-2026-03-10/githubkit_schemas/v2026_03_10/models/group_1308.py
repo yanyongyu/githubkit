@@ -16,23 +16,33 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoForksPostBody(GitHubModel):
-    """ReposOwnerRepoForksPostBody"""
+class ReposOwnerRepoCheckSuitesPreferencesPatchBody(GitHubModel):
+    """ReposOwnerRepoCheckSuitesPreferencesPatchBody"""
 
-    organization: Missing[str] = Field(
+    auto_trigger_checks: Missing[
+        list[ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems]
+    ] = Field(
         default=UNSET,
-        description="Optional parameter to specify the organization name if forking into an organization.",
-    )
-    name: Missing[str] = Field(
-        default=UNSET,
-        description="When forking from an existing repository, a new name for the fork.",
-    )
-    default_branch_only: Missing[bool] = Field(
-        default=UNSET,
-        description="When forking from an existing repository, fork with only the default branch.",
+        description="Enables or disables automatic creation of CheckSuite events upon pushes to the repository. Enabled by default.",
     )
 
 
-model_rebuild(ReposOwnerRepoForksPostBody)
+class ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems(
+    GitHubModel
+):
+    """ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems"""
 
-__all__ = ("ReposOwnerRepoForksPostBody",)
+    app_id: int = Field(description="The `id` of the GitHub App.")
+    setting: bool = Field(
+        default=True,
+        description="Set to `true` to enable automatic creation of CheckSuite events upon pushes to the repository, or `false` to disable them.",
+    )
+
+
+model_rebuild(ReposOwnerRepoCheckSuitesPreferencesPatchBody)
+model_rebuild(ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems)
+
+__all__ = (
+    "ReposOwnerRepoCheckSuitesPreferencesPatchBody",
+    "ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems",
+)

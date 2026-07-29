@@ -9,18 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1Type(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1"""
+class ReposOwnerRepoCodespacesNewGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCodespacesNewGetResponse200"""
+
+    billable_owner: NotRequired[SimpleUserType]
+    defaults: NotRequired[ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsType]
 
 
-class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1TypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1"""
+class ReposOwnerRepoCodespacesNewGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoCodespacesNewGetResponse200"""
+
+    billable_owner: NotRequired[SimpleUserTypeForResponse]
+    defaults: NotRequired[
+        ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsTypeForResponse
+    ]
+
+
+class ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsType(TypedDict):
+    """ReposOwnerRepoCodespacesNewGetResponse200PropDefaults"""
+
+    location: str
+    devcontainer_path: Union[str, None]
+
+
+class ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsTypeForResponse(TypedDict):
+    """ReposOwnerRepoCodespacesNewGetResponse200PropDefaults"""
+
+    location: str
+    devcontainer_path: Union[str, None]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1Type",
-    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1TypeForResponse",
+    "ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsType",
+    "ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsTypeForResponse",
+    "ReposOwnerRepoCodespacesNewGetResponse200Type",
+    "ReposOwnerRepoCodespacesNewGetResponse200TypeForResponse",
 )

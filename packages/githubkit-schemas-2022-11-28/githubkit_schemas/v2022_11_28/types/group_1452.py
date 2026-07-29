@@ -9,27 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
 from typing_extensions import TypedDict
 
-
-class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0Type(TypedDict):
-    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0"""
-
-    name: str
-    data_type: Literal["text", "number", "date"]
+from .group_0495 import (
+    PullRequestStackPullRequestType,
+    PullRequestStackPullRequestTypeForResponse,
+)
 
 
-class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0TypeForResponse(
-    TypedDict
-):
-    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0"""
+class ReposOwnerRepoStacksStackNumberGetResponse200Type(TypedDict):
+    """ReposOwnerRepoStacksStackNumberGetResponse200"""
 
-    name: str
-    data_type: Literal["text", "number", "date"]
+    id: int
+    number: int
+    node_id: str
+    url: str
+    base: ReposOwnerRepoStacksStackNumberGetResponse200PropBaseType
+    open_: bool
+    created_at: _dt.datetime
+    pull_requests: list[PullRequestStackPullRequestType]
+
+
+class ReposOwnerRepoStacksStackNumberGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoStacksStackNumberGetResponse200"""
+
+    id: int
+    number: int
+    node_id: str
+    url: str
+    base: ReposOwnerRepoStacksStackNumberGetResponse200PropBaseTypeForResponse
+    open_: bool
+    created_at: str
+    pull_requests: list[PullRequestStackPullRequestTypeForResponse]
+
+
+class ReposOwnerRepoStacksStackNumberGetResponse200PropBaseType(TypedDict):
+    """ReposOwnerRepoStacksStackNumberGetResponse200PropBase"""
+
+    ref: str
+
+
+class ReposOwnerRepoStacksStackNumberGetResponse200PropBaseTypeForResponse(TypedDict):
+    """ReposOwnerRepoStacksStackNumberGetResponse200PropBase"""
+
+    ref: str
 
 
 __all__ = (
-    "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0Type",
-    "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0TypeForResponse",
+    "ReposOwnerRepoStacksStackNumberGetResponse200PropBaseType",
+    "ReposOwnerRepoStacksStackNumberGetResponse200PropBaseTypeForResponse",
+    "ReposOwnerRepoStacksStackNumberGetResponse200Type",
+    "ReposOwnerRepoStacksStackNumberGetResponse200TypeForResponse",
 )

@@ -9,38 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0152 import (
-    RepositoryRuleBranchNamePatternPropParametersType,
-    RepositoryRuleBranchNamePatternPropParametersTypeForResponse,
-)
+from .group_0318 import LinkType, LinkTypeForResponse
 
 
-class RepositoryRuleDetailedOneof13Type(TypedDict):
-    """RepositoryRuleDetailedOneof13"""
+class ReviewCommentPropLinksType(TypedDict):
+    """ReviewCommentPropLinks"""
 
-    type: Literal["branch_name_pattern"]
-    parameters: NotRequired[RepositoryRuleBranchNamePatternPropParametersType]
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    self_: LinkType
+    html: LinkType
+    pull_request: LinkType
 
 
-class RepositoryRuleDetailedOneof13TypeForResponse(TypedDict):
-    """RepositoryRuleDetailedOneof13"""
+class ReviewCommentPropLinksTypeForResponse(TypedDict):
+    """ReviewCommentPropLinks"""
 
-    type: Literal["branch_name_pattern"]
-    parameters: NotRequired[
-        RepositoryRuleBranchNamePatternPropParametersTypeForResponse
-    ]
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    self_: LinkTypeForResponse
+    html: LinkTypeForResponse
+    pull_request: LinkTypeForResponse
 
 
 __all__ = (
-    "RepositoryRuleDetailedOneof13Type",
-    "RepositoryRuleDetailedOneof13TypeForResponse",
+    "ReviewCommentPropLinksType",
+    "ReviewCommentPropLinksTypeForResponse",
 )

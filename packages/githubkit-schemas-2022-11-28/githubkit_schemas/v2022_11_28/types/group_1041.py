@@ -9,25 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing_extensions import NotRequired, TypedDict
 
-
-class NotificationsPutBodyType(TypedDict):
-    """NotificationsPutBody"""
-
-    last_read_at: NotRequired[_dt.datetime]
-    read: NotRequired[bool]
+from .group_0017 import AppPermissionsType, AppPermissionsTypeForResponse
 
 
-class NotificationsPutBodyTypeForResponse(TypedDict):
-    """NotificationsPutBody"""
+class AppInstallationsInstallationIdAccessTokensPostBodyType(TypedDict):
+    """AppInstallationsInstallationIdAccessTokensPostBody"""
 
-    last_read_at: NotRequired[str]
-    read: NotRequired[bool]
+    repositories: NotRequired[list[str]]
+    repository_ids: NotRequired[list[int]]
+    permissions: NotRequired[AppPermissionsType]
+
+
+class AppInstallationsInstallationIdAccessTokensPostBodyTypeForResponse(TypedDict):
+    """AppInstallationsInstallationIdAccessTokensPostBody"""
+
+    repositories: NotRequired[list[str]]
+    repository_ids: NotRequired[list[int]]
+    permissions: NotRequired[AppPermissionsTypeForResponse]
 
 
 __all__ = (
-    "NotificationsPutBodyType",
-    "NotificationsPutBodyTypeForResponse",
+    "AppInstallationsInstallationIdAccessTokensPostBodyType",
+    "AppInstallationsInstallationIdAccessTokensPostBodyTypeForResponse",
 )

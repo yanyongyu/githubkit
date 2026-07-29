@@ -9,33 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class IssueTypeWebhook(GitHubModel):
-    """Issue Type
+class HookResponse(GitHubModel):
+    """Hook Response"""
 
-    The type of issue.
-    """
-
-    id: int = Field(description="The unique identifier of the issue type.")
-    name: str = Field(description="The name of the issue type.")
-    color: Missing[
-        Union[
-            None,
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-        ]
-    ] = Field(default=UNSET, description="The color of the issue type.")
+    code: Union[int, None] = Field()
+    status: Union[str, None] = Field()
+    message: Union[str, None] = Field()
 
 
-model_rebuild(IssueTypeWebhook)
+model_rebuild(HookResponse)
 
-__all__ = ("IssueTypeWebhook",)
+__all__ = ("HookResponse",)

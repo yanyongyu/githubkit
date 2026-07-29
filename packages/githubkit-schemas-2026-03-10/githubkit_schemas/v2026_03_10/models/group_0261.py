@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,21 +16,30 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ImmutableReleasesOrganizationSettings(GitHubModel):
-    """Check immutable releases organization settings
+class SecretScanningCustomPatternToCreate(GitHubModel):
+    """Secret Scanning Custom Pattern To Create
 
-    Check immutable releases settings for an organization.
+    A custom pattern to create in a bulk operation.
     """
 
-    enforced_repositories: Literal["all", "none", "selected"] = Field(
-        description="The policy that controls how immutable releases are enforced in the organization."
-    )
-    selected_repositories_url: Missing[str] = Field(
+    name: str = Field(description="The name of the custom pattern.")
+    pattern: str = Field(description="The regular expression of the custom pattern.")
+    start_delimiter: Missing[str] = Field(
         default=UNSET,
-        description="The API URL to use to get or set the selected repositories for immutable releases enforcement, when `enforced_repositories` is set to `selected`.",
+        description="The start delimiter regex for the custom pattern.\nDefaults to `\\A|[^0-9A-Za-z]` when not specified.",
+    )
+    end_delimiter: Missing[str] = Field(
+        default=UNSET,
+        description="The end delimiter regex for the custom pattern.\nDefaults to `\\z|[^0-9A-Za-z]` when not specified.",
+    )
+    must_match: Missing[list[str]] = Field(
+        default=UNSET, description="List of regexes that the secret must match."
+    )
+    must_not_match: Missing[list[str]] = Field(
+        default=UNSET, description="List of regexes that the secret must not match."
     )
 
 
-model_rebuild(ImmutableReleasesOrganizationSettings)
+model_rebuild(SecretScanningCustomPatternToCreate)
 
-__all__ = ("ImmutableReleasesOrganizationSettings",)
+__all__ = ("SecretScanningCustomPatternToCreate",)

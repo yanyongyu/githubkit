@@ -9,28 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0054 import RunnerType, RunnerTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type(TypedDict):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200"""
-
-    total_count: float
-    runners: list[RunnerType]
-
-
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200TypeForResponse(
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof0Type(
     TypedDict
 ):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200"""
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof0"""
 
-    total_count: float
-    runners: list[RunnerTypeForResponse]
+    name: str
+    ai_credit_pool_enabled: NotRequired[bool]
+
+
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof0TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof0"""
+
+    name: str
+    ai_credit_pool_enabled: NotRequired[bool]
 
 
 __all__ = (
-    "OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type",
-    "OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof0Type",
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof0TypeForResponse",
 )

@@ -9,45 +9,78 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0312 import ProjectsV2Type, ProjectsV2TypeForResponse
-from .group_0599 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0600 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
+from .group_0464 import HookResponseType, HookResponseTypeForResponse
 
 
-class WebhookProjectsV2ProjectCreatedType(TypedDict):
-    """WebhookProjectsV2ProjectCreated
+class WebhookPingPropHookType(TypedDict):
+    """Webhook
 
-    A project was created
+    The webhook that is being pinged
     """
 
-    action: Literal["created"]
-    installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
-    projects_v2: ProjectsV2Type
-    sender: SimpleUserType
+    active: bool
+    app_id: NotRequired[int]
+    config: WebhookPingPropHookPropConfigType
+    created_at: _dt.datetime
+    deliveries_url: NotRequired[str]
+    events: list[str]
+    id: int
+    last_response: NotRequired[HookResponseType]
+    name: Literal["web"]
+    ping_url: NotRequired[str]
+    test_url: NotRequired[str]
+    type: str
+    updated_at: _dt.datetime
+    url: NotRequired[str]
 
 
-class WebhookProjectsV2ProjectCreatedTypeForResponse(TypedDict):
-    """WebhookProjectsV2ProjectCreated
+class WebhookPingPropHookTypeForResponse(TypedDict):
+    """Webhook
 
-    A project was created
+    The webhook that is being pinged
     """
 
-    action: Literal["created"]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: OrganizationSimpleWebhooksTypeForResponse
-    projects_v2: ProjectsV2TypeForResponse
-    sender: SimpleUserTypeForResponse
+    active: bool
+    app_id: NotRequired[int]
+    config: WebhookPingPropHookPropConfigTypeForResponse
+    created_at: str
+    deliveries_url: NotRequired[str]
+    events: list[str]
+    id: int
+    last_response: NotRequired[HookResponseTypeForResponse]
+    name: Literal["web"]
+    ping_url: NotRequired[str]
+    test_url: NotRequired[str]
+    type: str
+    updated_at: str
+    url: NotRequired[str]
+
+
+class WebhookPingPropHookPropConfigType(TypedDict):
+    """WebhookPingPropHookPropConfig"""
+
+    content_type: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
+    secret: NotRequired[str]
+    url: NotRequired[str]
+
+
+class WebhookPingPropHookPropConfigTypeForResponse(TypedDict):
+    """WebhookPingPropHookPropConfig"""
+
+    content_type: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
+    secret: NotRequired[str]
+    url: NotRequired[str]
 
 
 __all__ = (
-    "WebhookProjectsV2ProjectCreatedType",
-    "WebhookProjectsV2ProjectCreatedTypeForResponse",
+    "WebhookPingPropHookPropConfigType",
+    "WebhookPingPropHookPropConfigTypeForResponse",
+    "WebhookPingPropHookType",
+    "WebhookPingPropHookTypeForResponse",
 )

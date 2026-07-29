@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,18 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0599 import EnterpriseWebhooks
-from .group_0600 import SimpleInstallation
-from .group_0601 import OrganizationSimpleWebhooks
-from .group_0602 import RepositoryWebhooks
-from .group_0631 import WebhooksProjectCard
+from .group_0618 import EnterpriseWebhooks
+from .group_0619 import SimpleInstallation
+from .group_0620 import OrganizationSimpleWebhooks
+from .group_0621 import RepositoryWebhooks
+from .group_0648 import WebhooksMembership
 
 
-class WebhookProjectCardEdited(GitHubModel):
-    """project_card edited event"""
+class WebhookOrganizationRenamed(GitHubModel):
+    """organization renamed event"""
 
-    action: Literal["edited"] = Field()
-    changes: WebhookProjectCardEditedPropChanges = Field()
+    action: Literal["renamed"] = Field()
+    changes: Missing[WebhookOrganizationRenamedPropChanges] = Field(default=UNSET)
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -40,12 +40,15 @@ class WebhookProjectCardEdited(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
+    membership: Missing[WebhooksMembership] = Field(
         default=UNSET,
+        title="Membership",
+        description="The membership between the user and the organization. Not present when the action is `member_invited`.",
+    )
+    organization: OrganizationSimpleWebhooks = Field(
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    project_card: WebhooksProjectCard = Field(title="Project Card")
     repository: Missing[RepositoryWebhooks] = Field(
         default=UNSET,
         title="Repository",
@@ -54,24 +57,26 @@ class WebhookProjectCardEdited(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookProjectCardEditedPropChanges(GitHubModel):
-    """WebhookProjectCardEditedPropChanges"""
+class WebhookOrganizationRenamedPropChanges(GitHubModel):
+    """WebhookOrganizationRenamedPropChanges"""
 
-    note: WebhookProjectCardEditedPropChangesPropNote = Field()
-
-
-class WebhookProjectCardEditedPropChangesPropNote(GitHubModel):
-    """WebhookProjectCardEditedPropChangesPropNote"""
-
-    from_: Union[str, None] = Field(alias="from")
+    login: Missing[WebhookOrganizationRenamedPropChangesPropLogin] = Field(
+        default=UNSET
+    )
 
 
-model_rebuild(WebhookProjectCardEdited)
-model_rebuild(WebhookProjectCardEditedPropChanges)
-model_rebuild(WebhookProjectCardEditedPropChangesPropNote)
+class WebhookOrganizationRenamedPropChangesPropLogin(GitHubModel):
+    """WebhookOrganizationRenamedPropChangesPropLogin"""
+
+    from_: Missing[str] = Field(default=UNSET, alias="from")
+
+
+model_rebuild(WebhookOrganizationRenamed)
+model_rebuild(WebhookOrganizationRenamedPropChanges)
+model_rebuild(WebhookOrganizationRenamedPropChangesPropLogin)
 
 __all__ = (
-    "WebhookProjectCardEdited",
-    "WebhookProjectCardEditedPropChanges",
-    "WebhookProjectCardEditedPropChangesPropNote",
+    "WebhookOrganizationRenamed",
+    "WebhookOrganizationRenamedPropChanges",
+    "WebhookOrganizationRenamedPropChangesPropLogin",
 )

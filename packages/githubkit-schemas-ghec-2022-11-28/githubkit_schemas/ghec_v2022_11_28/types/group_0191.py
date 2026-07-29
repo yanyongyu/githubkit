@@ -9,119 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class GetAllBudgetsType(TypedDict):
-    """GetAllBudgets"""
+class SecretScanningCustomPatternToDeleteType(TypedDict):
+    """Secret Scanning Custom Pattern To Delete
 
-    budgets: list[BudgetType]
-    user: NotRequired[str]
-    effective_budget: NotRequired[GetAllBudgetsPropEffectiveBudgetType]
-    has_next_page: NotRequired[bool]
-    total_count: NotRequired[int]
-
-
-class GetAllBudgetsTypeForResponse(TypedDict):
-    """GetAllBudgets"""
-
-    budgets: list[BudgetTypeForResponse]
-    user: NotRequired[str]
-    effective_budget: NotRequired[GetAllBudgetsPropEffectiveBudgetTypeForResponse]
-    has_next_page: NotRequired[bool]
-    total_count: NotRequired[int]
-
-
-class GetAllBudgetsPropEffectiveBudgetType(TypedDict):
-    """GetAllBudgetsPropEffectiveBudget
-
-    Effective user-level budget details returned when the response is scoped with
-    the `user` query parameter.
+    A custom pattern to delete in a bulk operation.
     """
 
-    id: str
-    budget_amount: int
-    consumed_amount: float
+    pattern_id: int
+    custom_pattern_version: NotRequired[Union[str, None]]
 
 
-class GetAllBudgetsPropEffectiveBudgetTypeForResponse(TypedDict):
-    """GetAllBudgetsPropEffectiveBudget
+class SecretScanningCustomPatternToDeleteTypeForResponse(TypedDict):
+    """Secret Scanning Custom Pattern To Delete
 
-    Effective user-level budget details returned when the response is scoped with
-    the `user` query parameter.
+    A custom pattern to delete in a bulk operation.
     """
 
-    id: str
-    budget_amount: int
-    consumed_amount: float
-
-
-class BudgetType(TypedDict):
-    """Budget"""
-
-    id: str
-    budget_type: Literal["SkuPricing", "ProductPricing"]
-    budget_amount: int
-    prevent_further_usage: bool
-    budget_scope: Literal[
-        "enterprise",
-        "organization",
-        "repository",
-        "cost_center",
-        "multi_user_customer",
-        "multi_user_cost_center",
-        "user",
-    ]
-    budget_entity_name: NotRequired[str]
-    user: NotRequired[str]
-    budget_product_sku: str
-    budget_alerting: BudgetPropBudgetAlertingType
-
-
-class BudgetTypeForResponse(TypedDict):
-    """Budget"""
-
-    id: str
-    budget_type: Literal["SkuPricing", "ProductPricing"]
-    budget_amount: int
-    prevent_further_usage: bool
-    budget_scope: Literal[
-        "enterprise",
-        "organization",
-        "repository",
-        "cost_center",
-        "multi_user_customer",
-        "multi_user_cost_center",
-        "user",
-    ]
-    budget_entity_name: NotRequired[str]
-    user: NotRequired[str]
-    budget_product_sku: str
-    budget_alerting: BudgetPropBudgetAlertingTypeForResponse
-
-
-class BudgetPropBudgetAlertingType(TypedDict):
-    """BudgetPropBudgetAlerting"""
-
-    will_alert: bool
-    alert_recipients: list[str]
-
-
-class BudgetPropBudgetAlertingTypeForResponse(TypedDict):
-    """BudgetPropBudgetAlerting"""
-
-    will_alert: bool
-    alert_recipients: list[str]
+    pattern_id: int
+    custom_pattern_version: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "BudgetPropBudgetAlertingType",
-    "BudgetPropBudgetAlertingTypeForResponse",
-    "BudgetType",
-    "BudgetTypeForResponse",
-    "GetAllBudgetsPropEffectiveBudgetType",
-    "GetAllBudgetsPropEffectiveBudgetTypeForResponse",
-    "GetAllBudgetsType",
-    "GetAllBudgetsTypeForResponse",
+    "SecretScanningCustomPatternToDeleteType",
+    "SecretScanningCustomPatternToDeleteTypeForResponse",
 )

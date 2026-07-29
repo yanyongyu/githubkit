@@ -12,204 +12,149 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0116 import (
-    RepositoryRulesetBypassActorType,
-    RepositoryRulesetBypassActorTypeForResponse,
-)
-from .group_0129 import (
-    EnterpriseRulesetConditionsOneof0Type,
-    EnterpriseRulesetConditionsOneof0TypeForResponse,
-)
-from .group_0130 import (
-    EnterpriseRulesetConditionsOneof1Type,
-    EnterpriseRulesetConditionsOneof1TypeForResponse,
-)
-from .group_0131 import (
-    EnterpriseRulesetConditionsOneof2Type,
-    EnterpriseRulesetConditionsOneof2TypeForResponse,
-)
-from .group_0132 import (
-    EnterpriseRulesetConditionsOneof3Type,
-    EnterpriseRulesetConditionsOneof3TypeForResponse,
-)
-from .group_0133 import (
-    EnterpriseRulesetConditionsOneof4Type,
-    EnterpriseRulesetConditionsOneof4TypeForResponse,
-)
-from .group_0134 import (
-    EnterpriseRulesetConditionsOneof5Type,
-    EnterpriseRulesetConditionsOneof5TypeForResponse,
-)
-from .group_0135 import (
-    RepositoryRuleCreationType,
-    RepositoryRuleCreationTypeForResponse,
-    RepositoryRuleDeletionType,
-    RepositoryRuleDeletionTypeForResponse,
-    RepositoryRuleNonFastForwardType,
-    RepositoryRuleNonFastForwardTypeForResponse,
-    RepositoryRuleRequiredSignaturesType,
-    RepositoryRuleRequiredSignaturesTypeForResponse,
-)
-from .group_0136 import RepositoryRuleUpdateType, RepositoryRuleUpdateTypeForResponse
-from .group_0138 import (
-    RepositoryRuleRequiredLinearHistoryType,
-    RepositoryRuleRequiredLinearHistoryTypeForResponse,
-)
-from .group_0139 import (
-    RepositoryRuleRequiredDeploymentsType,
-    RepositoryRuleRequiredDeploymentsTypeForResponse,
-)
-from .group_0141 import (
-    RepositoryRulePullRequestType,
-    RepositoryRulePullRequestTypeForResponse,
-)
-from .group_0143 import (
-    RepositoryRuleRequiredStatusChecksType,
-    RepositoryRuleRequiredStatusChecksTypeForResponse,
-)
-from .group_0145 import (
-    RepositoryRuleCommitMessagePatternType,
-    RepositoryRuleCommitMessagePatternTypeForResponse,
-)
-from .group_0147 import (
-    RepositoryRuleCommitAuthorEmailPatternType,
-    RepositoryRuleCommitAuthorEmailPatternTypeForResponse,
-)
-from .group_0149 import (
-    RepositoryRuleCommitterEmailPatternType,
-    RepositoryRuleCommitterEmailPatternTypeForResponse,
-)
-from .group_0151 import (
-    RepositoryRuleBranchNamePatternType,
-    RepositoryRuleBranchNamePatternTypeForResponse,
-)
-from .group_0153 import (
-    RepositoryRuleTagNamePatternType,
-    RepositoryRuleTagNamePatternTypeForResponse,
-)
-from .group_0155 import (
-    RepositoryRuleFilePathRestrictionType,
-    RepositoryRuleFilePathRestrictionTypeForResponse,
-)
-from .group_0157 import (
-    RepositoryRuleMaxFilePathLengthType,
-    RepositoryRuleMaxFilePathLengthTypeForResponse,
-)
-from .group_0159 import (
-    RepositoryRuleFileExtensionRestrictionType,
-    RepositoryRuleFileExtensionRestrictionTypeForResponse,
-)
-from .group_0161 import (
-    RepositoryRuleMaxFileSizeType,
-    RepositoryRuleMaxFileSizeTypeForResponse,
-)
-from .group_0164 import (
-    RepositoryRuleWorkflowsType,
-    RepositoryRuleWorkflowsTypeForResponse,
-)
-from .group_0166 import (
-    RepositoryRuleCodeScanningType,
-    RepositoryRuleCodeScanningTypeForResponse,
-)
-from .group_0168 import (
-    RepositoryRuleCopilotCodeReviewType,
-    RepositoryRuleCopilotCodeReviewTypeForResponse,
+from .group_0079 import (
+    CodeScanningDefaultSetupOptionsType,
+    CodeScanningDefaultSetupOptionsTypeForResponse,
+    CodeScanningOptionsType,
+    CodeScanningOptionsTypeForResponse,
 )
 
 
-class EnterprisesEnterpriseRulesetsPostBodyType(TypedDict):
-    """EnterprisesEnterpriseRulesetsPostBody"""
+class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody"""
 
-    name: str
-    target: NotRequired[Literal["branch", "tag", "push", "repository"]]
-    enforcement: Literal["disabled", "active", "evaluate"]
-    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorType]]
-    conditions: NotRequired[
-        Union[
-            EnterpriseRulesetConditionsOneof0Type,
-            EnterpriseRulesetConditionsOneof1Type,
-            EnterpriseRulesetConditionsOneof2Type,
-            EnterpriseRulesetConditionsOneof3Type,
-            EnterpriseRulesetConditionsOneof4Type,
-            EnterpriseRulesetConditionsOneof5Type,
-        ]
+    name: NotRequired[str]
+    description: NotRequired[str]
+    advanced_security: NotRequired[
+        Literal["enabled", "disabled", "code_security", "secret_protection"]
     ]
-    rules: NotRequired[
-        list[
-            Union[
-                RepositoryRuleCreationType,
-                RepositoryRuleUpdateType,
-                RepositoryRuleDeletionType,
-                RepositoryRuleRequiredLinearHistoryType,
-                RepositoryRuleRequiredDeploymentsType,
-                RepositoryRuleRequiredSignaturesType,
-                RepositoryRulePullRequestType,
-                RepositoryRuleRequiredStatusChecksType,
-                RepositoryRuleNonFastForwardType,
-                RepositoryRuleCommitMessagePatternType,
-                RepositoryRuleCommitAuthorEmailPatternType,
-                RepositoryRuleCommitterEmailPatternType,
-                RepositoryRuleBranchNamePatternType,
-                RepositoryRuleTagNamePatternType,
-                RepositoryRuleFilePathRestrictionType,
-                RepositoryRuleMaxFilePathLengthType,
-                RepositoryRuleFileExtensionRestrictionType,
-                RepositoryRuleMaxFileSizeType,
-                RepositoryRuleWorkflowsType,
-                RepositoryRuleCodeScanningType,
-                RepositoryRuleCopilotCodeReviewType,
-            ]
-        ]
+    code_security: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    dependency_graph: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    dependency_graph_autosubmit_action: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
     ]
+    dependency_graph_autosubmit_action_options: NotRequired[
+        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsType
+    ]
+    dependabot_alerts: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    dependabot_security_updates: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    code_scanning_default_setup: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    code_scanning_default_setup_options: NotRequired[
+        Union[CodeScanningDefaultSetupOptionsType, None]
+    ]
+    code_scanning_options: NotRequired[Union[CodeScanningOptionsType, None]]
+    code_scanning_delegated_alert_dismissal: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_protection: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    secret_scanning: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    secret_scanning_push_protection: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_validity_checks: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_non_provider_patterns: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_generic_secrets: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_delegated_alert_dismissal: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_extended_metadata: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    private_vulnerability_reporting: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    enforcement: NotRequired[Literal["enforced", "unenforced"]]
 
 
-class EnterprisesEnterpriseRulesetsPostBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseRulesetsPostBody"""
+class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody"""
 
-    name: str
-    target: NotRequired[Literal["branch", "tag", "push", "repository"]]
-    enforcement: Literal["disabled", "active", "evaluate"]
-    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorTypeForResponse]]
-    conditions: NotRequired[
-        Union[
-            EnterpriseRulesetConditionsOneof0TypeForResponse,
-            EnterpriseRulesetConditionsOneof1TypeForResponse,
-            EnterpriseRulesetConditionsOneof2TypeForResponse,
-            EnterpriseRulesetConditionsOneof3TypeForResponse,
-            EnterpriseRulesetConditionsOneof4TypeForResponse,
-            EnterpriseRulesetConditionsOneof5TypeForResponse,
-        ]
+    name: NotRequired[str]
+    description: NotRequired[str]
+    advanced_security: NotRequired[
+        Literal["enabled", "disabled", "code_security", "secret_protection"]
     ]
-    rules: NotRequired[
-        list[
-            Union[
-                RepositoryRuleCreationTypeForResponse,
-                RepositoryRuleUpdateTypeForResponse,
-                RepositoryRuleDeletionTypeForResponse,
-                RepositoryRuleRequiredLinearHistoryTypeForResponse,
-                RepositoryRuleRequiredDeploymentsTypeForResponse,
-                RepositoryRuleRequiredSignaturesTypeForResponse,
-                RepositoryRulePullRequestTypeForResponse,
-                RepositoryRuleRequiredStatusChecksTypeForResponse,
-                RepositoryRuleNonFastForwardTypeForResponse,
-                RepositoryRuleCommitMessagePatternTypeForResponse,
-                RepositoryRuleCommitAuthorEmailPatternTypeForResponse,
-                RepositoryRuleCommitterEmailPatternTypeForResponse,
-                RepositoryRuleBranchNamePatternTypeForResponse,
-                RepositoryRuleTagNamePatternTypeForResponse,
-                RepositoryRuleFilePathRestrictionTypeForResponse,
-                RepositoryRuleMaxFilePathLengthTypeForResponse,
-                RepositoryRuleFileExtensionRestrictionTypeForResponse,
-                RepositoryRuleMaxFileSizeTypeForResponse,
-                RepositoryRuleWorkflowsTypeForResponse,
-                RepositoryRuleCodeScanningTypeForResponse,
-                RepositoryRuleCopilotCodeReviewTypeForResponse,
-            ]
-        ]
+    code_security: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    dependency_graph: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    dependency_graph_autosubmit_action: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
     ]
+    dependency_graph_autosubmit_action_options: NotRequired[
+        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsTypeForResponse
+    ]
+    dependabot_alerts: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    dependabot_security_updates: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    code_scanning_default_setup: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    code_scanning_default_setup_options: NotRequired[
+        Union[CodeScanningDefaultSetupOptionsTypeForResponse, None]
+    ]
+    code_scanning_options: NotRequired[Union[CodeScanningOptionsTypeForResponse, None]]
+    code_scanning_delegated_alert_dismissal: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_protection: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    secret_scanning: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    secret_scanning_push_protection: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_validity_checks: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_non_provider_patterns: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_generic_secrets: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_delegated_alert_dismissal: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_extended_metadata: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    private_vulnerability_reporting: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    enforcement: NotRequired[Literal["enforced", "unenforced"]]
+
+
+class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDepen
+    dencyGraphAutosubmitActionOptions
+
+    Feature options for Automatic dependency submission
+    """
+
+    labeled_runners: NotRequired[bool]
+
+
+class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDepen
+    dencyGraphAutosubmitActionOptions
+
+    Feature options for Automatic dependency submission
+    """
+
+    labeled_runners: NotRequired[bool]
 
 
 __all__ = (
-    "EnterprisesEnterpriseRulesetsPostBodyType",
-    "EnterprisesEnterpriseRulesetsPostBodyTypeForResponse",
+    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsType",
+    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsTypeForResponse",
+    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyType",
+    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyTypeForResponse",
 )

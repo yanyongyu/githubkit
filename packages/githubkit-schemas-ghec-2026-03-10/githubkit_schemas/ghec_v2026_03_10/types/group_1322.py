@@ -13,55 +13,63 @@ from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgHooksPostBodyType(TypedDict):
-    """OrgsOrgHooksPostBody"""
+class OrgsOrgArtifactsMetadataStorageRecordPostResponse200Type(TypedDict):
+    """OrgsOrgArtifactsMetadataStorageRecordPostResponse200"""
 
-    name: str
-    config: OrgsOrgHooksPostBodyPropConfigType
-    events: NotRequired[list[str]]
-    active: NotRequired[bool]
-
-
-class OrgsOrgHooksPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgHooksPostBody"""
-
-    name: str
-    config: OrgsOrgHooksPostBodyPropConfigTypeForResponse
-    events: NotRequired[list[str]]
-    active: NotRequired[bool]
+    total_count: int
+    storage_records: NotRequired[
+        list[
+            OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsType
+        ]
+    ]
 
 
-class OrgsOrgHooksPostBodyPropConfigType(TypedDict):
-    """OrgsOrgHooksPostBodyPropConfig
+class OrgsOrgArtifactsMetadataStorageRecordPostResponse200TypeForResponse(TypedDict):
+    """OrgsOrgArtifactsMetadataStorageRecordPostResponse200"""
 
-    Key/value pairs to provide settings for this webhook.
-    """
-
-    url: str
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
-    username: NotRequired[str]
-    password: NotRequired[str]
+    total_count: int
+    storage_records: NotRequired[
+        list[
+            OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsTypeForResponse
+        ]
+    ]
 
 
-class OrgsOrgHooksPostBodyPropConfigTypeForResponse(TypedDict):
-    """OrgsOrgHooksPostBodyPropConfig
+class OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsType(
+    TypedDict
+):
+    """OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems"""
 
-    Key/value pairs to provide settings for this webhook.
-    """
+    id: NotRequired[int]
+    name: NotRequired[str]
+    digest: NotRequired[str]
+    artifact_url: NotRequired[Union[str, None]]
+    registry_url: NotRequired[str]
+    repository: NotRequired[Union[str, None]]
+    status: NotRequired[str]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
 
-    url: str
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
-    username: NotRequired[str]
-    password: NotRequired[str]
+
+class OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems"""
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    digest: NotRequired[str]
+    artifact_url: NotRequired[Union[str, None]]
+    registry_url: NotRequired[str]
+    repository: NotRequired[Union[str, None]]
+    status: NotRequired[str]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgHooksPostBodyPropConfigType",
-    "OrgsOrgHooksPostBodyPropConfigTypeForResponse",
-    "OrgsOrgHooksPostBodyType",
-    "OrgsOrgHooksPostBodyTypeForResponse",
+    "OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsType",
+    "OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsTypeForResponse",
+    "OrgsOrgArtifactsMetadataStorageRecordPostResponse200Type",
+    "OrgsOrgArtifactsMetadataStorageRecordPostResponse200TypeForResponse",
 )

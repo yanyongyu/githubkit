@@ -9,56 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class PullRequestPropHeadType(TypedDict):
-    """PullRequestPropHead"""
+class MergedUpstreamType(TypedDict):
+    """Merged upstream
 
-    label: Union[str, None]
-    ref: str
-    repo: Union[None, RepositoryType]
-    sha: str
-    user: Union[None, SimpleUserType]
+    Results of a successful merge upstream request
+    """
 
-
-class PullRequestPropHeadTypeForResponse(TypedDict):
-    """PullRequestPropHead"""
-
-    label: Union[str, None]
-    ref: str
-    repo: Union[None, RepositoryTypeForResponse]
-    sha: str
-    user: Union[None, SimpleUserTypeForResponse]
+    message: NotRequired[str]
+    merge_type: NotRequired[Literal["merge", "fast-forward", "none"]]
+    base_branch: NotRequired[str]
 
 
-class PullRequestPropBaseType(TypedDict):
-    """PullRequestPropBase"""
+class MergedUpstreamTypeForResponse(TypedDict):
+    """Merged upstream
 
-    label: str
-    ref: str
-    repo: RepositoryType
-    sha: str
-    user: SimpleUserType
+    Results of a successful merge upstream request
+    """
 
-
-class PullRequestPropBaseTypeForResponse(TypedDict):
-    """PullRequestPropBase"""
-
-    label: str
-    ref: str
-    repo: RepositoryTypeForResponse
-    sha: str
-    user: SimpleUserTypeForResponse
+    message: NotRequired[str]
+    merge_type: NotRequired[Literal["merge", "fast-forward", "none"]]
+    base_branch: NotRequired[str]
 
 
 __all__ = (
-    "PullRequestPropBaseType",
-    "PullRequestPropBaseTypeForResponse",
-    "PullRequestPropHeadType",
-    "PullRequestPropHeadTypeForResponse",
+    "MergedUpstreamType",
+    "MergedUpstreamTypeForResponse",
 )

@@ -13,29 +13,29 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneof1Type(
+class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBodyType(
     TypedDict
 ):
-    """EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneo
-    f1
+    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositories
+    PatchBody
     """
 
-    status: NotRequired[Literal["error"]]
-    error: NotRequired[str]
+    repository_selection: Literal["all", "selected"]
+    repositories: NotRequired[list[str]]
 
 
-class EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneof1TypeForResponse(
+class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBodyTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneo
-    f1
+    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositories
+    PatchBody
     """
 
-    status: NotRequired[Literal["error"]]
-    error: NotRequired[str]
+    repository_selection: Literal["all", "selected"]
+    repositories: NotRequired[list[str]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneof1Type",
-    "EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneof1TypeForResponse",
+    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBodyType",
+    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBodyTypeForResponse",
 )

@@ -9,44 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0003 import SimpleUser
-
-
-class GistComment(GitHubModel):
-    """Gist Comment
-
-    A comment made to a gist.
-    """
-
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    body: str = Field(max_length=65535, description="The comment text.")
-    user: Union[None, SimpleUser] = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="author_association",
-        description="How the author is associated with the repository.",
-    )
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(GistComment)
+class ReleaseEventPropReleaseAllof1(GitHubModel):
+    """ReleaseEventPropReleaseAllof1"""
 
-__all__ = ("GistComment",)
+    is_short_description_html_truncated: Missing[bool] = Field(default=UNSET)
+    short_description_html: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(ReleaseEventPropReleaseAllof1)
+
+__all__ = ("ReleaseEventPropReleaseAllof1",)

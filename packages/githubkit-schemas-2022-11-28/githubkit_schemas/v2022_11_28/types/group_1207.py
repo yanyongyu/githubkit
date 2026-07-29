@@ -11,24 +11,16 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0270 import ArtifactType, ArtifactTypeForResponse
+
+class OrgsOrgOutsideCollaboratorsUsernamePutResponse202Type(TypedDict):
+    """OrgsOrgOutsideCollaboratorsUsernamePutResponse202"""
 
 
-class ReposOwnerRepoActionsArtifactsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsArtifactsGetResponse200"""
-
-    total_count: int
-    artifacts: list[ArtifactType]
-
-
-class ReposOwnerRepoActionsArtifactsGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsArtifactsGetResponse200"""
-
-    total_count: int
-    artifacts: list[ArtifactTypeForResponse]
+class OrgsOrgOutsideCollaboratorsUsernamePutResponse202TypeForResponse(TypedDict):
+    """OrgsOrgOutsideCollaboratorsUsernamePutResponse202"""
 
 
 __all__ = (
-    "ReposOwnerRepoActionsArtifactsGetResponse200Type",
-    "ReposOwnerRepoActionsArtifactsGetResponse200TypeForResponse",
+    "OrgsOrgOutsideCollaboratorsUsernamePutResponse202Type",
+    "OrgsOrgOutsideCollaboratorsUsernamePutResponse202TypeForResponse",
 )

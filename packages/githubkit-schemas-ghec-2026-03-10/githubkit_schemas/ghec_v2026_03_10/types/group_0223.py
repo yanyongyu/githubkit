@@ -9,36 +9,80 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0206 import LabelType, LabelTypeForResponse
-from .group_0216 import IssueType, IssueTypeForResponse
+from typing_extensions import TypedDict
 
 
-class IssuesEventType(TypedDict):
-    """IssuesEvent"""
+class PullRequestMinimalPropHeadType(TypedDict):
+    """PullRequestMinimalPropHead"""
 
-    action: str
-    issue: IssueType
-    assignee: NotRequired[SimpleUserType]
-    assignees: NotRequired[list[SimpleUserType]]
-    label: NotRequired[LabelType]
-    labels: NotRequired[list[LabelType]]
+    ref: str
+    sha: str
+    repo: PullRequestMinimalPropHeadPropRepoType
 
 
-class IssuesEventTypeForResponse(TypedDict):
-    """IssuesEvent"""
+class PullRequestMinimalPropHeadTypeForResponse(TypedDict):
+    """PullRequestMinimalPropHead"""
 
-    action: str
-    issue: IssueTypeForResponse
-    assignee: NotRequired[SimpleUserTypeForResponse]
-    assignees: NotRequired[list[SimpleUserTypeForResponse]]
-    label: NotRequired[LabelTypeForResponse]
-    labels: NotRequired[list[LabelTypeForResponse]]
+    ref: str
+    sha: str
+    repo: PullRequestMinimalPropHeadPropRepoTypeForResponse
+
+
+class PullRequestMinimalPropHeadPropRepoType(TypedDict):
+    """PullRequestMinimalPropHeadPropRepo"""
+
+    id: int
+    url: str
+    name: str
+
+
+class PullRequestMinimalPropHeadPropRepoTypeForResponse(TypedDict):
+    """PullRequestMinimalPropHeadPropRepo"""
+
+    id: int
+    url: str
+    name: str
+
+
+class PullRequestMinimalPropBaseType(TypedDict):
+    """PullRequestMinimalPropBase"""
+
+    ref: str
+    sha: str
+    repo: PullRequestMinimalPropBasePropRepoType
+
+
+class PullRequestMinimalPropBaseTypeForResponse(TypedDict):
+    """PullRequestMinimalPropBase"""
+
+    ref: str
+    sha: str
+    repo: PullRequestMinimalPropBasePropRepoTypeForResponse
+
+
+class PullRequestMinimalPropBasePropRepoType(TypedDict):
+    """PullRequestMinimalPropBasePropRepo"""
+
+    id: int
+    url: str
+    name: str
+
+
+class PullRequestMinimalPropBasePropRepoTypeForResponse(TypedDict):
+    """PullRequestMinimalPropBasePropRepo"""
+
+    id: int
+    url: str
+    name: str
 
 
 __all__ = (
-    "IssuesEventType",
-    "IssuesEventTypeForResponse",
+    "PullRequestMinimalPropBasePropRepoType",
+    "PullRequestMinimalPropBasePropRepoTypeForResponse",
+    "PullRequestMinimalPropBaseType",
+    "PullRequestMinimalPropBaseTypeForResponse",
+    "PullRequestMinimalPropHeadPropRepoType",
+    "PullRequestMinimalPropHeadPropRepoTypeForResponse",
+    "PullRequestMinimalPropHeadType",
+    "PullRequestMinimalPropHeadTypeForResponse",
 )

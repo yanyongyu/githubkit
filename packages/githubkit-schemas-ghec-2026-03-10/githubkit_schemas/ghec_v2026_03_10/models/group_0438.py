@@ -9,27 +9,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0085 import Team
+
+class RepositoryRuleViolationError(GitHubModel):
+    """RepositoryRuleViolationError
+
+    Repository rule violation was detected
+    """
+
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
+    status: Missing[str] = Field(default=UNSET)
+    metadata: Missing[RepositoryRuleViolationErrorPropMetadata] = Field(default=UNSET)
 
 
-class EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems(GitHubModel):
-    """EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems"""
+class RepositoryRuleViolationErrorPropMetadata(GitHubModel):
+    """RepositoryRuleViolationErrorPropMetadata"""
 
-    type: Missing[Literal["User", "Team"]] = Field(
-        default=UNSET, description="The type of reviewer."
+    secret_scanning: Missing[
+        RepositoryRuleViolationErrorPropMetadataPropSecretScanning
+    ] = Field(default=UNSET)
+
+
+class RepositoryRuleViolationErrorPropMetadataPropSecretScanning(GitHubModel):
+    """RepositoryRuleViolationErrorPropMetadataPropSecretScanning"""
+
+    bypass_placeholders: Missing[
+        list[
+            RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems
+        ]
+    ] = Field(default=UNSET)
+
+
+class RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems(
+    GitHubModel
+):
+    """RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholders
+    Items
+    """
+
+    placeholder_id: Missing[str] = Field(
+        default=UNSET,
+        description="The ID of the push protection bypass placeholder. This value is returned on any push protected routes.",
     )
-    reviewer: Missing[Union[SimpleUser, Team]] = Field(default=UNSET)
+    token_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems)
+model_rebuild(RepositoryRuleViolationError)
+model_rebuild(RepositoryRuleViolationErrorPropMetadata)
+model_rebuild(RepositoryRuleViolationErrorPropMetadataPropSecretScanning)
+model_rebuild(
+    RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems
+)
 
-__all__ = ("EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems",)
+__all__ = (
+    "RepositoryRuleViolationError",
+    "RepositoryRuleViolationErrorPropMetadata",
+    "RepositoryRuleViolationErrorPropMetadataPropSecretScanning",
+    "RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems",
+)

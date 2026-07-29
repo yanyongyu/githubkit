@@ -18,15 +18,15 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgSecurityProductEnablementPostBody(GitHubModel):
-    """OrgsOrgSecurityProductEnablementPostBody"""
+class OrgsOrgMembershipsUsernamePutBody(GitHubModel):
+    """OrgsOrgMembershipsUsernamePutBody"""
 
-    query_suite: Missing[Literal["default", "extended"]] = Field(
+    role: Missing[Literal["admin", "member"]] = Field(
         default=UNSET,
-        description="CodeQL query suite to be used. If you specify the `query_suite` parameter, the default setup will be configured with this query suite only on all repositories that didn't have default setup already configured. It will not change the query suite on repositories that already have default setup configured.\nIf you don't specify any `query_suite` in your request, the preferred query suite of the organization will be applied.",
+        description="The role to give the user in the organization. Can be one of:  \n * `admin` - The user will become an owner of the organization.  \n * `member` - The user will become a non-owner member of the organization.",
     )
 
 
-model_rebuild(OrgsOrgSecurityProductEnablementPostBody)
+model_rebuild(OrgsOrgMembershipsUsernamePutBody)
 
-__all__ = ("OrgsOrgSecurityProductEnablementPostBody",)
+__all__ = ("OrgsOrgMembershipsUsernamePutBody",)

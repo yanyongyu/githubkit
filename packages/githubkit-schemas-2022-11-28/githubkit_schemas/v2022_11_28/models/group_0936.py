@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -18,19 +17,132 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0208 import (
+    RepositoryRuleCreation,
+    RepositoryRuleDeletion,
+    RepositoryRuleNonFastForward,
+    RepositoryRuleRequiredSignatures,
+)
+from .group_0209 import RepositoryRuleUpdate
+from .group_0211 import RepositoryRuleRequiredLinearHistory
+from .group_0212 import RepositoryRuleMergeQueue
+from .group_0214 import RepositoryRuleRequiredDeployments
+from .group_0216 import RepositoryRulePullRequest
+from .group_0218 import RepositoryRuleRequiredStatusChecks
+from .group_0220 import RepositoryRuleCommitMessagePattern
+from .group_0222 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0224 import RepositoryRuleCommitterEmailPattern
+from .group_0226 import RepositoryRuleBranchNamePattern
+from .group_0228 import RepositoryRuleTagNamePattern
+from .group_0231 import RepositoryRuleWorkflows
+from .group_0233 import RepositoryRuleCodeScanning
+from .group_0235 import RepositoryRuleCopilotCodeReview
+from .group_0237 import RepositoryRuleLicenseComplianceScanning
+from .group_0238 import RepositoryRuleFilePathRestriction
+from .group_0240 import RepositoryRuleMaxFilePathLength
+from .group_0242 import RepositoryRuleFileExtensionRestriction
+from .group_0244 import RepositoryRuleMaxFileSize
 
-class WebhookStatusPropCommitPropCommitPropAuthorAllof0(GitHubModel):
-    """Committer
 
-    Metaproperties for Git author/committer information.
+class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems(GitHubModel):
+    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems"""
+
+    rule: Missing[
+        Union[
+            RepositoryRuleCreation,
+            RepositoryRuleUpdate,
+            RepositoryRuleDeletion,
+            RepositoryRuleRequiredLinearHistory,
+            RepositoryRuleMergeQueue,
+            RepositoryRuleRequiredDeployments,
+            RepositoryRuleRequiredSignatures,
+            RepositoryRulePullRequest,
+            RepositoryRuleRequiredStatusChecks,
+            RepositoryRuleNonFastForward,
+            RepositoryRuleCommitMessagePattern,
+            RepositoryRuleCommitAuthorEmailPattern,
+            RepositoryRuleCommitterEmailPattern,
+            RepositoryRuleBranchNamePattern,
+            RepositoryRuleTagNamePattern,
+            RepositoryRuleWorkflows,
+            RepositoryRuleCodeScanning,
+            RepositoryRuleCopilotCodeReview,
+            RepositoryRuleLicenseComplianceScanning,
+            RepositoryRuleFilePathRestriction,
+            RepositoryRuleMaxFilePathLength,
+            RepositoryRuleFileExtensionRestriction,
+            RepositoryRuleMaxFileSize,
+        ]
+    ] = Field(default=UNSET, title="Repository Rule", description="A repository rule.")
+    changes: Missing[
+        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChanges
+    ] = Field(default=UNSET)
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChanges(
+    GitHubModel
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChanges"""
+
+    configuration: Missing[
+        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropConfiguration
+    ] = Field(default=UNSET)
+    rule_type: Missing[
+        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropRuleType
+    ] = Field(default=UNSET)
+    pattern: Missing[
+        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropPattern
+    ] = Field(default=UNSET)
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropConfiguration(
+    GitHubModel
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPro
+    pConfiguration
     """
 
-    date: Missing[_dt.datetime] = Field(default=UNSET)
-    email: Union[str, None] = Field()
-    name: str = Field(description="The git author's name.")
-    username: Missing[str] = Field(default=UNSET)
+    from_: Missing[str] = Field(default=UNSET, alias="from")
 
 
-model_rebuild(WebhookStatusPropCommitPropCommitPropAuthorAllof0)
+class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropRuleType(
+    GitHubModel
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPro
+    pRuleType
+    """
 
-__all__ = ("WebhookStatusPropCommitPropCommitPropAuthorAllof0",)
+    from_: Missing[str] = Field(default=UNSET, alias="from")
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropPattern(
+    GitHubModel
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPro
+    pPattern
+    """
+
+    from_: Missing[str] = Field(default=UNSET, alias="from")
+
+
+model_rebuild(WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems)
+model_rebuild(
+    WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChanges
+)
+model_rebuild(
+    WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropConfiguration
+)
+model_rebuild(
+    WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropRuleType
+)
+model_rebuild(
+    WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropPattern
+)
+
+__all__ = (
+    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems",
+    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChanges",
+    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropConfiguration",
+    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropPattern",
+    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropRuleType",
+)

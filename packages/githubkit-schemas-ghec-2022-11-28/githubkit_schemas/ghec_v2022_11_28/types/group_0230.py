@@ -11,30 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0218 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
-from .group_0231 import (
-    PullRequestReviewEventPropReviewType,
-    PullRequestReviewEventPropReviewTypeForResponse,
-)
+from .group_0231 import ForkEventPropForkeeType, ForkEventPropForkeeTypeForResponse
 
 
-class PullRequestReviewEventType(TypedDict):
-    """PullRequestReviewEvent"""
+class ForkEventType(TypedDict):
+    """ForkEvent"""
 
     action: str
-    review: PullRequestReviewEventPropReviewType
-    pull_request: PullRequestMinimalType
+    forkee: ForkEventPropForkeeType
 
 
-class PullRequestReviewEventTypeForResponse(TypedDict):
-    """PullRequestReviewEvent"""
+class ForkEventTypeForResponse(TypedDict):
+    """ForkEvent"""
 
     action: str
-    review: PullRequestReviewEventPropReviewTypeForResponse
-    pull_request: PullRequestMinimalTypeForResponse
+    forkee: ForkEventPropForkeeTypeForResponse
 
 
 __all__ = (
-    "PullRequestReviewEventType",
-    "PullRequestReviewEventTypeForResponse",
+    "ForkEventType",
+    "ForkEventTypeForResponse",
 )

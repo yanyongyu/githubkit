@@ -11,18 +11,18 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0106 import NetworkConfiguration
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class OrgsOrgSettingsNetworkConfigurationsGetResponse200(GitHubModel):
-    """OrgsOrgSettingsNetworkConfigurationsGetResponse200"""
+class OrgsOrgCopilotBillingSelectedTeamsDeleteBody(GitHubModel):
+    """OrgsOrgCopilotBillingSelectedTeamsDeleteBody"""
 
-    total_count: int = Field()
-    network_configurations: list[NetworkConfiguration] = Field()
+    selected_teams: list[str] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The names of teams from which to revoke access to GitHub Copilot.",
+    )
 
 
-model_rebuild(OrgsOrgSettingsNetworkConfigurationsGetResponse200)
+model_rebuild(OrgsOrgCopilotBillingSelectedTeamsDeleteBody)
 
-__all__ = ("OrgsOrgSettingsNetworkConfigurationsGetResponse200",)
+__all__ = ("OrgsOrgCopilotBillingSelectedTeamsDeleteBody",)

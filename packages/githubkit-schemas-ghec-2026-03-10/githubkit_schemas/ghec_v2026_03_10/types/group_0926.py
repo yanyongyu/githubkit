@@ -13,43 +13,35 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0598 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0599 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0600 import (
+from .group_0317 import ProjectsV2Type, ProjectsV2TypeForResponse
+from .group_0618 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0619 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0601 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0635 import PullRequestWebhookType, PullRequestWebhookTypeForResponse
 
 
-class WebhookPullRequestClosedType(TypedDict):
-    """pull_request closed event"""
+class WebhookProjectsV2ProjectClosedType(TypedDict):
+    """Projects v2 Project Closed Event"""
 
     action: Literal["closed"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    number: int
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    pull_request: PullRequestWebhookType
-    repository: RepositoryWebhooksType
+    organization: OrganizationSimpleWebhooksType
+    projects_v2: ProjectsV2Type
     sender: SimpleUserType
 
 
-class WebhookPullRequestClosedTypeForResponse(TypedDict):
-    """pull_request closed event"""
+class WebhookProjectsV2ProjectClosedTypeForResponse(TypedDict):
+    """Projects v2 Project Closed Event"""
 
     action: Literal["closed"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    number: int
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    pull_request: PullRequestWebhookTypeForResponse
-    repository: RepositoryWebhooksTypeForResponse
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    projects_v2: ProjectsV2TypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookPullRequestClosedType",
-    "WebhookPullRequestClosedTypeForResponse",
+    "WebhookProjectsV2ProjectClosedType",
+    "WebhookProjectsV2ProjectClosedTypeForResponse",
 )

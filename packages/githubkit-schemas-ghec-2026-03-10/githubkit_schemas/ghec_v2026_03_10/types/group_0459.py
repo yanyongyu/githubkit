@@ -10,226 +10,151 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0085 import TeamType, TeamTypeForResponse
-from .group_0216 import IssueType, IssueTypeForResponse
-from .group_0457 import IssueTypeWebhookType, IssueTypeWebhookTypeForResponse
-from .group_0458 import IssueReferenceType, IssueReferenceTypeForResponse
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class IssueEventType(TypedDict):
-    """Issue Event
+class GitCommitType(TypedDict):
+    """Git Commit
 
-    Issue Event
+    Low-level Git commit operations within a repository
     """
 
-    id: int
+    sha: str
     node_id: str
     url: str
-    actor: Union[None, SimpleUserType]
-    event: str
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: _dt.datetime
-    issue: NotRequired[Union[None, IssueType]]
-    label: NotRequired[IssueEventLabelType]
-    assignee: NotRequired[Union[None, SimpleUserType]]
-    assigner: NotRequired[Union[None, SimpleUserType]]
-    review_requester: NotRequired[Union[None, SimpleUserType]]
-    requested_reviewer: NotRequired[Union[None, SimpleUserType]]
-    requested_team: NotRequired[TeamType]
-    dismissed_review: NotRequired[IssueEventDismissedReviewType]
-    milestone: NotRequired[IssueEventMilestoneType]
-    project_card: NotRequired[IssueEventProjectCardType]
-    rename: NotRequired[IssueEventRenameType]
-    issue_type: NotRequired[Union[IssueTypeWebhookType, None]]
-    prev_issue_type: NotRequired[Union[IssueTypeWebhookType, None]]
-    sub_issue: NotRequired[Union[None, IssueReferenceType, None]]
-    parent_issue: NotRequired[Union[None, IssueReferenceType, None]]
-    blocked_by: NotRequired[Union[None, IssueReferenceType, None]]
-    blocking: NotRequired[Union[None, IssueReferenceType, None]]
-    author_association: NotRequired[
-        Literal[
-            "COLLABORATOR",
-            "CONTRIBUTOR",
-            "FIRST_TIMER",
-            "FIRST_TIME_CONTRIBUTOR",
-            "MANNEQUIN",
-            "MEMBER",
-            "NONE",
-            "OWNER",
-        ]
-    ]
-    lock_reason: NotRequired[Union[str, None]]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    author: GitCommitPropAuthorType
+    committer: GitCommitPropCommitterType
+    message: str
+    tree: GitCommitPropTreeType
+    parents: list[GitCommitPropParentsItemsType]
+    verification: GitCommitPropVerificationType
+    html_url: str
 
 
-class IssueEventTypeForResponse(TypedDict):
-    """Issue Event
+class GitCommitTypeForResponse(TypedDict):
+    """Git Commit
 
-    Issue Event
+    Low-level Git commit operations within a repository
     """
 
-    id: int
+    sha: str
     node_id: str
     url: str
-    actor: Union[None, SimpleUserTypeForResponse]
-    event: str
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    issue: NotRequired[Union[None, IssueTypeForResponse]]
-    label: NotRequired[IssueEventLabelTypeForResponse]
-    assignee: NotRequired[Union[None, SimpleUserTypeForResponse]]
-    assigner: NotRequired[Union[None, SimpleUserTypeForResponse]]
-    review_requester: NotRequired[Union[None, SimpleUserTypeForResponse]]
-    requested_reviewer: NotRequired[Union[None, SimpleUserTypeForResponse]]
-    requested_team: NotRequired[TeamTypeForResponse]
-    dismissed_review: NotRequired[IssueEventDismissedReviewTypeForResponse]
-    milestone: NotRequired[IssueEventMilestoneTypeForResponse]
-    project_card: NotRequired[IssueEventProjectCardTypeForResponse]
-    rename: NotRequired[IssueEventRenameTypeForResponse]
-    issue_type: NotRequired[Union[IssueTypeWebhookTypeForResponse, None]]
-    prev_issue_type: NotRequired[Union[IssueTypeWebhookTypeForResponse, None]]
-    sub_issue: NotRequired[Union[None, IssueReferenceTypeForResponse, None]]
-    parent_issue: NotRequired[Union[None, IssueReferenceTypeForResponse, None]]
-    blocked_by: NotRequired[Union[None, IssueReferenceTypeForResponse, None]]
-    blocking: NotRequired[Union[None, IssueReferenceTypeForResponse, None]]
-    author_association: NotRequired[
-        Literal[
-            "COLLABORATOR",
-            "CONTRIBUTOR",
-            "FIRST_TIMER",
-            "FIRST_TIME_CONTRIBUTOR",
-            "MANNEQUIN",
-            "MEMBER",
-            "NONE",
-            "OWNER",
-        ]
-    ]
-    lock_reason: NotRequired[Union[str, None]]
-    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
+    author: GitCommitPropAuthorTypeForResponse
+    committer: GitCommitPropCommitterTypeForResponse
+    message: str
+    tree: GitCommitPropTreeTypeForResponse
+    parents: list[GitCommitPropParentsItemsTypeForResponse]
+    verification: GitCommitPropVerificationTypeForResponse
+    html_url: str
 
 
-class IssueEventLabelType(TypedDict):
-    """Issue Event Label
+class GitCommitPropAuthorType(TypedDict):
+    """GitCommitPropAuthor
 
-    Issue Event Label
+    Identifying information for the git-user
     """
 
-    name: Union[str, None]
-    color: Union[str, None]
+    date: _dt.datetime
+    email: str
+    name: str
 
 
-class IssueEventLabelTypeForResponse(TypedDict):
-    """Issue Event Label
+class GitCommitPropAuthorTypeForResponse(TypedDict):
+    """GitCommitPropAuthor
 
-    Issue Event Label
+    Identifying information for the git-user
     """
 
-    name: Union[str, None]
-    color: Union[str, None]
+    date: str
+    email: str
+    name: str
 
 
-class IssueEventDismissedReviewType(TypedDict):
-    """Issue Event Dismissed Review"""
+class GitCommitPropCommitterType(TypedDict):
+    """GitCommitPropCommitter
 
-    state: str
-    review_id: int
-    dismissal_message: Union[str, None]
-    dismissal_commit_id: NotRequired[Union[str, None]]
-
-
-class IssueEventDismissedReviewTypeForResponse(TypedDict):
-    """Issue Event Dismissed Review"""
-
-    state: str
-    review_id: int
-    dismissal_message: Union[str, None]
-    dismissal_commit_id: NotRequired[Union[str, None]]
-
-
-class IssueEventMilestoneType(TypedDict):
-    """Issue Event Milestone
-
-    Issue Event Milestone
+    Identifying information for the git-user
     """
 
-    title: str
+    date: _dt.datetime
+    email: str
+    name: str
 
 
-class IssueEventMilestoneTypeForResponse(TypedDict):
-    """Issue Event Milestone
+class GitCommitPropCommitterTypeForResponse(TypedDict):
+    """GitCommitPropCommitter
 
-    Issue Event Milestone
+    Identifying information for the git-user
     """
 
-    title: str
+    date: str
+    email: str
+    name: str
 
 
-class IssueEventProjectCardType(TypedDict):
-    """Issue Event Project Card
+class GitCommitPropTreeType(TypedDict):
+    """GitCommitPropTree"""
 
-    Issue Event Project Card
-    """
-
+    sha: str
     url: str
-    id: int
-    project_url: str
-    project_id: int
-    column_name: str
-    previous_column_name: NotRequired[str]
 
 
-class IssueEventProjectCardTypeForResponse(TypedDict):
-    """Issue Event Project Card
+class GitCommitPropTreeTypeForResponse(TypedDict):
+    """GitCommitPropTree"""
 
-    Issue Event Project Card
-    """
-
+    sha: str
     url: str
-    id: int
-    project_url: str
-    project_id: int
-    column_name: str
-    previous_column_name: NotRequired[str]
 
 
-class IssueEventRenameType(TypedDict):
-    """Issue Event Rename
+class GitCommitPropParentsItemsType(TypedDict):
+    """GitCommitPropParentsItems"""
 
-    Issue Event Rename
-    """
-
-    from_: str
-    to: str
+    sha: str
+    url: str
+    html_url: str
 
 
-class IssueEventRenameTypeForResponse(TypedDict):
-    """Issue Event Rename
+class GitCommitPropParentsItemsTypeForResponse(TypedDict):
+    """GitCommitPropParentsItems"""
 
-    Issue Event Rename
-    """
+    sha: str
+    url: str
+    html_url: str
 
-    from_: str
-    to: str
+
+class GitCommitPropVerificationType(TypedDict):
+    """GitCommitPropVerification"""
+
+    verified: bool
+    reason: str
+    signature: Union[str, None]
+    payload: Union[str, None]
+    verified_at: Union[str, None]
+
+
+class GitCommitPropVerificationTypeForResponse(TypedDict):
+    """GitCommitPropVerification"""
+
+    verified: bool
+    reason: str
+    signature: Union[str, None]
+    payload: Union[str, None]
+    verified_at: Union[str, None]
 
 
 __all__ = (
-    "IssueEventDismissedReviewType",
-    "IssueEventDismissedReviewTypeForResponse",
-    "IssueEventLabelType",
-    "IssueEventLabelTypeForResponse",
-    "IssueEventMilestoneType",
-    "IssueEventMilestoneTypeForResponse",
-    "IssueEventProjectCardType",
-    "IssueEventProjectCardTypeForResponse",
-    "IssueEventRenameType",
-    "IssueEventRenameTypeForResponse",
-    "IssueEventType",
-    "IssueEventTypeForResponse",
+    "GitCommitPropAuthorType",
+    "GitCommitPropAuthorTypeForResponse",
+    "GitCommitPropCommitterType",
+    "GitCommitPropCommitterTypeForResponse",
+    "GitCommitPropParentsItemsType",
+    "GitCommitPropParentsItemsTypeForResponse",
+    "GitCommitPropTreeType",
+    "GitCommitPropTreeTypeForResponse",
+    "GitCommitPropVerificationType",
+    "GitCommitPropVerificationTypeForResponse",
+    "GitCommitType",
+    "GitCommitTypeForResponse",
 )

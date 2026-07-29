@@ -14,16 +14,19 @@ from typing import Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0010 import Integration
-from .group_0394 import IssueReference
+from .group_0400 import IssueTypeWebhook
+from .group_0402 import IssueEventIntent
 
 
-class BlockedByRemovedIssueEvent(GitHubModel):
-    """Blocked-by Removed Issue Event
+class IssueTypeAddedIssueEvent(GitHubModel):
+    """Issue Type Added Issue Event
 
-    Blocked-by Removed Issue Event
+    Issue Type Added Issue Event
     """
 
     id: int = Field()
@@ -35,9 +38,12 @@ class BlockedByRemovedIssueEvent(GitHubModel):
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
     performed_via_github_app: Union[None, Integration, None] = Field()
-    blocked_by: Union[None, IssueReference, None] = Field()
+    issue_type: Union[IssueTypeWebhook, None] = Field(
+        title="Issue Type", description="The type of issue."
+    )
+    intent: Missing[Union[None, IssueEventIntent, None]] = Field(default=UNSET)
 
 
-model_rebuild(BlockedByRemovedIssueEvent)
+model_rebuild(IssueTypeAddedIssueEvent)
 
-__all__ = ("BlockedByRemovedIssueEvent",)
+__all__ = ("IssueTypeAddedIssueEvent",)

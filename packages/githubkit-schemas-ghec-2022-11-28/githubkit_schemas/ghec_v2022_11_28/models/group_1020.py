@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,16 +18,16 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0599 import EnterpriseWebhooks
-from .group_0600 import SimpleInstallation
-from .group_0601 import OrganizationSimpleWebhooks
-from .group_0602 import RepositoryWebhooks
+from .group_0618 import EnterpriseWebhooks
+from .group_0619 import SimpleInstallation
+from .group_0620 import OrganizationSimpleWebhooks
+from .group_0621 import RepositoryWebhooks
 
 
-class WebhookStarCreated(GitHubModel):
-    """star created event"""
+class WebhookRepositoryPrivatized(GitHubModel):
+    """repository privatized event"""
 
-    action: Literal["created"] = Field()
+    action: Literal["privatized"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -48,11 +48,8 @@ class WebhookStarCreated(GitHubModel):
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    starred_at: Union[str, None] = Field(
-        description="The time the star was created. This is a timestamp in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. Will be `null` for the `deleted` action."
-    )
 
 
-model_rebuild(WebhookStarCreated)
+model_rebuild(WebhookRepositoryPrivatized)
 
-__all__ = ("WebhookStarCreated",)
+__all__ = ("WebhookRepositoryPrivatized",)

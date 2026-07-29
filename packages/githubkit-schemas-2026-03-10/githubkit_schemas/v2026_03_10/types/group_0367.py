@@ -10,105 +10,93 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Any, TypeAlias
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0364 import MetadataType, MetadataTypeForResponse
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0041 import (
+    DependabotAlertSecurityVulnerabilityType,
+    DependabotAlertSecurityVulnerabilityTypeForResponse,
+)
+from .group_0042 import (
+    DependabotAlertSecurityAdvisoryType,
+    DependabotAlertSecurityAdvisoryTypeForResponse,
+)
+from .group_0043 import (
+    DependabotAlertDismissalRequestSimpleType,
+    DependabotAlertDismissalRequestSimpleTypeForResponse,
+)
+from .group_0368 import (
+    DependabotAlertPropDependencyType,
+    DependabotAlertPropDependencyTypeForResponse,
+)
 
 
-class SnapshotType(TypedDict):
-    """snapshot
+class DependabotAlertType(TypedDict):
+    """DependabotAlert
 
-    Create a new snapshot of a repository's dependencies.
+    A Dependabot alert.
     """
 
-    version: int
-    job: SnapshotPropJobType
-    sha: str
-    ref: str
-    detector: SnapshotPropDetectorType
-    metadata: NotRequired[MetadataType]
-    manifests: NotRequired[SnapshotPropManifestsType]
-    scanned: _dt.datetime
-
-
-class SnapshotTypeForResponse(TypedDict):
-    """snapshot
-
-    Create a new snapshot of a repository's dependencies.
-    """
-
-    version: int
-    job: SnapshotPropJobTypeForResponse
-    sha: str
-    ref: str
-    detector: SnapshotPropDetectorTypeForResponse
-    metadata: NotRequired[MetadataTypeForResponse]
-    manifests: NotRequired[SnapshotPropManifestsTypeForResponse]
-    scanned: str
-
-
-class SnapshotPropJobType(TypedDict):
-    """SnapshotPropJob"""
-
-    id: str
-    correlator: str
-    html_url: NotRequired[str]
-
-
-class SnapshotPropJobTypeForResponse(TypedDict):
-    """SnapshotPropJob"""
-
-    id: str
-    correlator: str
-    html_url: NotRequired[str]
-
-
-class SnapshotPropDetectorType(TypedDict):
-    """SnapshotPropDetector
-
-    A description of the detector used.
-    """
-
-    name: str
-    version: str
+    number: int
+    state: Literal["auto_dismissed", "dismissed", "fixed", "open"]
+    dependency: DependabotAlertPropDependencyType
+    security_advisory: DependabotAlertSecurityAdvisoryType
+    security_vulnerability: DependabotAlertSecurityVulnerabilityType
     url: str
+    html_url: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    dismissed_at: Union[_dt.datetime, None]
+    dismissed_by: Union[None, SimpleUserType]
+    dismissed_reason: Union[
+        None,
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ],
+    ]
+    dismissed_comment: Union[str, None]
+    fixed_at: Union[_dt.datetime, None]
+    auto_dismissed_at: NotRequired[Union[_dt.datetime, None]]
+    dismissal_request: NotRequired[
+        Union[DependabotAlertDismissalRequestSimpleType, None]
+    ]
+    assignees: NotRequired[list[SimpleUserType]]
 
 
-class SnapshotPropDetectorTypeForResponse(TypedDict):
-    """SnapshotPropDetector
+class DependabotAlertTypeForResponse(TypedDict):
+    """DependabotAlert
 
-    A description of the detector used.
+    A Dependabot alert.
     """
 
-    name: str
-    version: str
+    number: int
+    state: Literal["auto_dismissed", "dismissed", "fixed", "open"]
+    dependency: DependabotAlertPropDependencyTypeForResponse
+    security_advisory: DependabotAlertSecurityAdvisoryTypeForResponse
+    security_vulnerability: DependabotAlertSecurityVulnerabilityTypeForResponse
     url: str
-
-
-SnapshotPropManifestsType: TypeAlias = dict[str, Any]
-"""SnapshotPropManifests
-
-A collection of package manifests, which are a collection of related
-dependencies declared in a file or representing a logical group of dependencies.
-"""
-
-
-SnapshotPropManifestsTypeForResponse: TypeAlias = dict[str, Any]
-"""SnapshotPropManifests
-
-A collection of package manifests, which are a collection of related
-dependencies declared in a file or representing a logical group of dependencies.
-"""
+    html_url: str
+    created_at: str
+    updated_at: str
+    dismissed_at: Union[str, None]
+    dismissed_by: Union[None, SimpleUserTypeForResponse]
+    dismissed_reason: Union[
+        None,
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ],
+    ]
+    dismissed_comment: Union[str, None]
+    fixed_at: Union[str, None]
+    auto_dismissed_at: NotRequired[Union[str, None]]
+    dismissal_request: NotRequired[
+        Union[DependabotAlertDismissalRequestSimpleTypeForResponse, None]
+    ]
+    assignees: NotRequired[list[SimpleUserTypeForResponse]]
 
 
 __all__ = (
-    "SnapshotPropDetectorType",
-    "SnapshotPropDetectorTypeForResponse",
-    "SnapshotPropJobType",
-    "SnapshotPropJobTypeForResponse",
-    "SnapshotPropManifestsType",
-    "SnapshotPropManifestsTypeForResponse",
-    "SnapshotType",
-    "SnapshotTypeForResponse",
+    "DependabotAlertType",
+    "DependabotAlertTypeForResponse",
 )

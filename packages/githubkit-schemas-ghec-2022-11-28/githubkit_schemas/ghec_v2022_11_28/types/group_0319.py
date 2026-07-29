@@ -9,61 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0216 import IssueType, IssueTypeForResponse
-from .group_0315 import PullRequestSimpleType, PullRequestSimpleTypeForResponse
-from .group_0318 import ProjectsV2DraftIssueType, ProjectsV2DraftIssueTypeForResponse
 
 
-class ProjectsV2ItemSimpleType(TypedDict):
-    """Projects v2 Item
+class AutoMergeType(TypedDict):
+    """Auto merge
 
-    An item belonging to a project
+    The status of auto merging a pull request.
     """
 
-    id: float
-    node_id: NotRequired[str]
-    content: NotRequired[
-        Union[IssueType, PullRequestSimpleType, ProjectsV2DraftIssueType]
-    ]
-    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
-    creator: NotRequired[SimpleUserType]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    archived_at: Union[_dt.datetime, None]
-    project_url: NotRequired[str]
-    item_url: NotRequired[str]
+    enabled_by: SimpleUserType
+    merge_method: Literal["merge", "squash", "rebase"]
+    commit_title: Union[str, None]
+    commit_message: Union[str, None]
 
 
-class ProjectsV2ItemSimpleTypeForResponse(TypedDict):
-    """Projects v2 Item
+class AutoMergeTypeForResponse(TypedDict):
+    """Auto merge
 
-    An item belonging to a project
+    The status of auto merging a pull request.
     """
 
-    id: float
-    node_id: NotRequired[str]
-    content: NotRequired[
-        Union[
-            IssueTypeForResponse,
-            PullRequestSimpleTypeForResponse,
-            ProjectsV2DraftIssueTypeForResponse,
-        ]
-    ]
-    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
-    creator: NotRequired[SimpleUserTypeForResponse]
-    created_at: str
-    updated_at: str
-    archived_at: Union[str, None]
-    project_url: NotRequired[str]
-    item_url: NotRequired[str]
+    enabled_by: SimpleUserTypeForResponse
+    merge_method: Literal["merge", "squash", "rebase"]
+    commit_title: Union[str, None]
+    commit_message: Union[str, None]
 
 
 __all__ = (
-    "ProjectsV2ItemSimpleType",
-    "ProjectsV2ItemSimpleTypeForResponse",
+    "AutoMergeType",
+    "AutoMergeTypeForResponse",
 )

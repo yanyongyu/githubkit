@@ -9,28 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class CodespacesPermissionsCheckForDevcontainerType(TypedDict):
-    """Codespaces Permissions Check
+class CodeScanningCodeqlDatabaseType(TypedDict):
+    """CodeQL Database
 
-    Permission check result for a given devcontainer config.
+    A CodeQL database.
     """
 
-    accepted: bool
+    id: int
+    name: str
+    language: str
+    uploader: SimpleUserType
+    content_type: str
+    size: int
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    url: str
+    commit_oid: NotRequired[Union[str, None]]
 
 
-class CodespacesPermissionsCheckForDevcontainerTypeForResponse(TypedDict):
-    """Codespaces Permissions Check
+class CodeScanningCodeqlDatabaseTypeForResponse(TypedDict):
+    """CodeQL Database
 
-    Permission check result for a given devcontainer config.
+    A CodeQL database.
     """
 
-    accepted: bool
+    id: int
+    name: str
+    language: str
+    uploader: SimpleUserTypeForResponse
+    content_type: str
+    size: int
+    created_at: str
+    updated_at: str
+    url: str
+    commit_oid: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "CodespacesPermissionsCheckForDevcontainerType",
-    "CodespacesPermissionsCheckForDevcontainerTypeForResponse",
+    "CodeScanningCodeqlDatabaseType",
+    "CodeScanningCodeqlDatabaseTypeForResponse",
 )

@@ -9,83 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyType(TypedDict):
-    """EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBody"""
-
-    budget_amount: NotRequired[int]
-    prevent_further_usage: NotRequired[bool]
-    budget_alerting: NotRequired[
-        EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType
-    ]
-    budget_scope: NotRequired[
-        Literal[
-            "enterprise",
-            "organization",
-            "repository",
-            "cost_center",
-            "multi_user_customer",
-            "multi_user_cost_center",
-            "user",
-        ]
-    ]
-    budget_entity_name: NotRequired[str]
-    budget_type: NotRequired[Literal["BundlePricing", "ProductPricing", "SkuPricing"]]
-    budget_product_sku: NotRequired[str]
-    user: NotRequired[str]
+from .group_0087 import CopilotSeatDetailsType, CopilotSeatDetailsTypeForResponse
 
 
-class EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBody"""
+class EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseCopilotBillingSeatsGetResponse200"""
 
-    budget_amount: NotRequired[int]
-    prevent_further_usage: NotRequired[bool]
-    budget_alerting: NotRequired[
-        EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingTypeForResponse
-    ]
-    budget_scope: NotRequired[
-        Literal[
-            "enterprise",
-            "organization",
-            "repository",
-            "cost_center",
-            "multi_user_customer",
-            "multi_user_cost_center",
-            "user",
-        ]
-    ]
-    budget_entity_name: NotRequired[str]
-    budget_type: NotRequired[Literal["BundlePricing", "ProductPricing", "SkuPricing"]]
-    budget_product_sku: NotRequired[str]
-    user: NotRequired[str]
+    total_seats: NotRequired[int]
+    seats: NotRequired[list[CopilotSeatDetailsType]]
 
 
-class EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType(
-    TypedDict
-):
-    """EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting"""
+class EnterprisesEnterpriseCopilotBillingSeatsGetResponse200TypeForResponse(TypedDict):
+    """EnterprisesEnterpriseCopilotBillingSeatsGetResponse200"""
 
-    will_alert: NotRequired[bool]
-    alert_recipients: NotRequired[list[str]]
-
-
-class EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting"""
-
-    will_alert: NotRequired[bool]
-    alert_recipients: NotRequired[list[str]]
+    total_seats: NotRequired[int]
+    seats: NotRequired[list[CopilotSeatDetailsTypeForResponse]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType",
-    "EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingTypeForResponse",
-    "EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyType",
-    "EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type",
+    "EnterprisesEnterpriseCopilotBillingSeatsGetResponse200TypeForResponse",
 )

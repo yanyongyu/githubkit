@@ -13,41 +13,44 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0599 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0600 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0601 import (
+from .group_0618 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0619 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0620 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0602 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0608 import WebhooksDeployKeyType, WebhooksDeployKeyTypeForResponse
+from .group_0621 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0702 import (
+    WebhookCodeScanningAlertUpdatedAssignmentPropAlertType,
+    WebhookCodeScanningAlertUpdatedAssignmentPropAlertTypeForResponse,
+)
 
 
-class WebhookDeployKeyDeletedType(TypedDict):
-    """deploy_key deleted event"""
+class WebhookCodeScanningAlertUpdatedAssignmentType(TypedDict):
+    """code_scanning_alert updated_assignment event"""
 
-    action: Literal["deleted"]
+    action: Literal["updated_assignment"]
+    alert: WebhookCodeScanningAlertUpdatedAssignmentPropAlertType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    key: WebhooksDeployKeyType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookDeployKeyDeletedTypeForResponse(TypedDict):
-    """deploy_key deleted event"""
+class WebhookCodeScanningAlertUpdatedAssignmentTypeForResponse(TypedDict):
+    """code_scanning_alert updated_assignment event"""
 
-    action: Literal["deleted"]
+    action: Literal["updated_assignment"]
+    alert: WebhookCodeScanningAlertUpdatedAssignmentPropAlertTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    key: WebhooksDeployKeyTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookDeployKeyDeletedType",
-    "WebhookDeployKeyDeletedTypeForResponse",
+    "WebhookCodeScanningAlertUpdatedAssignmentType",
+    "WebhookCodeScanningAlertUpdatedAssignmentTypeForResponse",
 )

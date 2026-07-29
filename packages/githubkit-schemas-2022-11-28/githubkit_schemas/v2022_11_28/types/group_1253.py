@@ -11,32 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0Type(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0
-
-    Examples:
-        {'teams': ['my-team']}
-    """
-
-    teams: list[str]
+from .group_0284 import ActionsSecretType, ActionsSecretTypeForResponse
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0
+class ReposOwnerRepoActionsOrganizationSecretsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsOrganizationSecretsGetResponse200"""
 
-    Examples:
-        {'teams': ['my-team']}
-    """
+    total_count: int
+    secrets: list[ActionsSecretType]
 
-    teams: list[str]
+
+class ReposOwnerRepoActionsOrganizationSecretsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsOrganizationSecretsGetResponse200"""
+
+    total_count: int
+    secrets: list[ActionsSecretTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0Type",
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0TypeForResponse",
+    "ReposOwnerRepoActionsOrganizationSecretsGetResponse200Type",
+    "ReposOwnerRepoActionsOrganizationSecretsGetResponse200TypeForResponse",
 )

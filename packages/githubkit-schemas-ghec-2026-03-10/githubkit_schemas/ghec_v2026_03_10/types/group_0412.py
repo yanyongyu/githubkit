@@ -9,46 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0409 import (
+    CodeScanningVariantAnalysisRepositoryType,
+    CodeScanningVariantAnalysisRepositoryTypeForResponse,
+)
 
 
-class ReactionType(TypedDict):
-    """Reaction
+class CodeScanningVariantAnalysisPropScannedRepositoriesItemsType(TypedDict):
+    """CodeScanningVariantAnalysisPropScannedRepositoriesItems"""
 
-    Reactions to conversations provide a way to help people express their feelings
-    more simply and effectively.
-    """
-
-    id: int
-    node_id: str
-    user: Union[None, SimpleUserType]
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    repository: CodeScanningVariantAnalysisRepositoryType
+    analysis_status: Literal[
+        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
     ]
-    created_at: _dt.datetime
+    result_count: NotRequired[int]
+    artifact_size_in_bytes: NotRequired[int]
+    failure_message: NotRequired[str]
 
 
-class ReactionTypeForResponse(TypedDict):
-    """Reaction
+class CodeScanningVariantAnalysisPropScannedRepositoriesItemsTypeForResponse(TypedDict):
+    """CodeScanningVariantAnalysisPropScannedRepositoriesItems"""
 
-    Reactions to conversations provide a way to help people express their feelings
-    more simply and effectively.
-    """
-
-    id: int
-    node_id: str
-    user: Union[None, SimpleUserTypeForResponse]
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    repository: CodeScanningVariantAnalysisRepositoryTypeForResponse
+    analysis_status: Literal[
+        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
     ]
-    created_at: str
+    result_count: NotRequired[int]
+    artifact_size_in_bytes: NotRequired[int]
+    failure_message: NotRequired[str]
 
 
 __all__ = (
-    "ReactionType",
-    "ReactionTypeForResponse",
+    "CodeScanningVariantAnalysisPropScannedRepositoriesItemsType",
+    "CodeScanningVariantAnalysisPropScannedRepositoriesItemsTypeForResponse",
 )

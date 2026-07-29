@@ -9,20 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody(GitHubModel):
-    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody"""
+class AgentsTasksTaskIdGetResponse400(GitHubModel):
+    """AgentsTasksTaskIdGetResponse400
 
-    labels: list[str] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        description="The names of the custom labels to set for the runner. You can pass an empty array to remove all custom labels.",
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str = Field(
+        description='Summary message (e.g. "Validation Failed", "Not Found")'
+    )
+    errors: Missing[list[AgentsTasksTaskIdGetResponse400PropErrorsItems]] = Field(
+        default=UNSET,
+        description="List of validation errors (present only for 422 responses)",
+    )
+    documentation_url: str = Field(description="URL to relevant API documentation")
+
+
+class AgentsTasksTaskIdGetResponse400PropErrorsItems(GitHubModel):
+    """AgentsTasksTaskIdGetResponse400PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ] = Field(description="Machine-readable error code")
+    message: Missing[str] = Field(
+        default=UNSET,
+        description='Human-readable message (populated when code is "custom")',
     )
 
 
-model_rebuild(EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody)
+model_rebuild(AgentsTasksTaskIdGetResponse400)
+model_rebuild(AgentsTasksTaskIdGetResponse400PropErrorsItems)
 
-__all__ = ("EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody",)
+__all__ = (
+    "AgentsTasksTaskIdGetResponse400",
+    "AgentsTasksTaskIdGetResponse400PropErrorsItems",
+)

@@ -14,16 +14,26 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class WebhooksRepositoriesItems(GitHubModel):
-    """WebhooksRepositoriesItems"""
+class Hovercard(GitHubModel):
+    """Hovercard
 
-    full_name: str = Field()
-    id: int = Field(description="Unique identifier of the repository")
-    name: str = Field(description="The name of the repository.")
-    node_id: str = Field()
-    private: bool = Field(description="Whether the repository is private or public.")
+    Hovercard
+    """
+
+    contexts: list[HovercardPropContextsItems] = Field()
 
 
-model_rebuild(WebhooksRepositoriesItems)
+class HovercardPropContextsItems(GitHubModel):
+    """HovercardPropContextsItems"""
 
-__all__ = ("WebhooksRepositoriesItems",)
+    message: str = Field()
+    octicon: str = Field()
+
+
+model_rebuild(Hovercard)
+model_rebuild(HovercardPropContextsItems)
+
+__all__ = (
+    "Hovercard",
+    "HovercardPropContextsItems",
+)

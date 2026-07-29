@@ -10,65 +10,38 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal, Union
-from typing_extensions import TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class RenamedIssueEventType(TypedDict):
-    """Renamed Issue Event
+class IssueEventIntentType(TypedDict):
+    """Issue Event Intent
 
-    Renamed Issue Event
+    The intent behind an agent's action on an issue, including the rationale and
+    confidence. Present (and `null` when the event carried no agent intent) on
+    supported event types while the issue suggestions feature is enabled for the
+    repository; the property is omitted entirely when the feature is disabled or the
+    event type does not support intent.
     """
 
-    id: int
-    node_id: str
-    url: str
-    actor: SimpleUserType
-    event: Literal["renamed"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    rename: RenamedIssueEventPropRenameType
+    rationale: NotRequired[Union[str, None]]
+    confidence: NotRequired[Union[None, Literal["LOW", "MEDIUM", "HIGH"]]]
 
 
-class RenamedIssueEventTypeForResponse(TypedDict):
-    """Renamed Issue Event
+class IssueEventIntentTypeForResponse(TypedDict):
+    """Issue Event Intent
 
-    Renamed Issue Event
+    The intent behind an agent's action on an issue, including the rationale and
+    confidence. Present (and `null` when the event carried no agent intent) on
+    supported event types while the issue suggestions feature is enabled for the
+    repository; the property is omitted entirely when the feature is disabled or the
+    event type does not support intent.
     """
 
-    id: int
-    node_id: str
-    url: str
-    actor: SimpleUserTypeForResponse
-    event: Literal["renamed"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    rename: RenamedIssueEventPropRenameTypeForResponse
-
-
-class RenamedIssueEventPropRenameType(TypedDict):
-    """RenamedIssueEventPropRename"""
-
-    from_: str
-    to: str
-
-
-class RenamedIssueEventPropRenameTypeForResponse(TypedDict):
-    """RenamedIssueEventPropRename"""
-
-    from_: str
-    to: str
+    rationale: NotRequired[Union[str, None]]
+    confidence: NotRequired[Union[None, Literal["LOW", "MEDIUM", "HIGH"]]]
 
 
 __all__ = (
-    "RenamedIssueEventPropRenameType",
-    "RenamedIssueEventPropRenameTypeForResponse",
-    "RenamedIssueEventType",
-    "RenamedIssueEventTypeForResponse",
+    "IssueEventIntentType",
+    "IssueEventIntentTypeForResponse",
 )

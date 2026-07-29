@@ -9,30 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import TypedDict
 
 
-class PageBuildStatusType(TypedDict):
-    """Page Build Status
+class IssueSuggestionType(TypedDict):
+    """Issue Suggestion
 
-    Page Build Status
+    An agent-proposed change to an issue that a maintainer can approve or dismiss.
     """
 
-    url: str
-    status: str
+    id: int
+    issue_id: int
+    action: Literal["set_type", "add_label", "add_field", "add_assignee", "close_issue"]
+    state: Literal[
+        "pending", "applied", "approved", "dismissed", "replaced", "invalidated"
+    ]
+    target_id: Union[int, None]
+    target_value: Union[str, float, bool, list[str], None]
+    rationale: Union[str, None]
+    confidence: Union[None, Literal["LOW", "MEDIUM", "HIGH"]]
+    actor_id: Union[int, None]
+    issue_event_id: Union[int, None]
+    resolved_by: Union[int, None]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-class PageBuildStatusTypeForResponse(TypedDict):
-    """Page Build Status
+class IssueSuggestionTypeForResponse(TypedDict):
+    """Issue Suggestion
 
-    Page Build Status
+    An agent-proposed change to an issue that a maintainer can approve or dismiss.
     """
 
-    url: str
-    status: str
+    id: int
+    issue_id: int
+    action: Literal["set_type", "add_label", "add_field", "add_assignee", "close_issue"]
+    state: Literal[
+        "pending", "applied", "approved", "dismissed", "replaced", "invalidated"
+    ]
+    target_id: Union[int, None]
+    target_value: Union[str, float, bool, list[str], None]
+    rationale: Union[str, None]
+    confidence: Union[None, Literal["LOW", "MEDIUM", "HIGH"]]
+    actor_id: Union[int, None]
+    issue_event_id: Union[int, None]
+    resolved_by: Union[int, None]
+    created_at: str
+    updated_at: str
 
 
 __all__ = (
-    "PageBuildStatusType",
-    "PageBuildStatusTypeForResponse",
+    "IssueSuggestionType",
+    "IssueSuggestionTypeForResponse",
 )

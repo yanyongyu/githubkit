@@ -9,45 +9,101 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0599 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0600 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0601 import (
+from .group_0618 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0619 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0620 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0602 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0629 import WebhooksMembershipType, WebhooksMembershipTypeForResponse
+from .group_0621 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0631 import WebhooksUserType, WebhooksUserTypeForResponse
 
 
-class WebhookOrganizationMemberAddedType(TypedDict):
-    """organization member_added event"""
+class WebhookMemberEditedType(TypedDict):
+    """member edited event"""
 
-    action: Literal["member_added"]
+    action: Literal["edited"]
+    changes: WebhookMemberEditedPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    membership: WebhooksMembershipType
-    organization: OrganizationSimpleWebhooksType
-    repository: NotRequired[RepositoryWebhooksType]
+    member: Union[WebhooksUserType, None]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookOrganizationMemberAddedTypeForResponse(TypedDict):
-    """organization member_added event"""
+class WebhookMemberEditedTypeForResponse(TypedDict):
+    """member edited event"""
 
-    action: Literal["member_added"]
+    action: Literal["edited"]
+    changes: WebhookMemberEditedPropChangesTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    membership: WebhooksMembershipTypeForResponse
-    organization: OrganizationSimpleWebhooksTypeForResponse
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    member: Union[WebhooksUserTypeForResponse, None]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
+class WebhookMemberEditedPropChangesType(TypedDict):
+    """WebhookMemberEditedPropChanges
+
+    The changes to the collaborator permissions
+    """
+
+    old_permission: NotRequired[WebhookMemberEditedPropChangesPropOldPermissionType]
+    permission: NotRequired[WebhookMemberEditedPropChangesPropPermissionType]
+
+
+class WebhookMemberEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookMemberEditedPropChanges
+
+    The changes to the collaborator permissions
+    """
+
+    old_permission: NotRequired[
+        WebhookMemberEditedPropChangesPropOldPermissionTypeForResponse
+    ]
+    permission: NotRequired[WebhookMemberEditedPropChangesPropPermissionTypeForResponse]
+
+
+class WebhookMemberEditedPropChangesPropOldPermissionType(TypedDict):
+    """WebhookMemberEditedPropChangesPropOldPermission"""
+
+    from_: str
+
+
+class WebhookMemberEditedPropChangesPropOldPermissionTypeForResponse(TypedDict):
+    """WebhookMemberEditedPropChangesPropOldPermission"""
+
+    from_: str
+
+
+class WebhookMemberEditedPropChangesPropPermissionType(TypedDict):
+    """WebhookMemberEditedPropChangesPropPermission"""
+
+    from_: NotRequired[Union[str, None]]
+    to: NotRequired[Union[str, None]]
+
+
+class WebhookMemberEditedPropChangesPropPermissionTypeForResponse(TypedDict):
+    """WebhookMemberEditedPropChangesPropPermission"""
+
+    from_: NotRequired[Union[str, None]]
+    to: NotRequired[Union[str, None]]
+
+
 __all__ = (
-    "WebhookOrganizationMemberAddedType",
-    "WebhookOrganizationMemberAddedTypeForResponse",
+    "WebhookMemberEditedPropChangesPropOldPermissionType",
+    "WebhookMemberEditedPropChangesPropOldPermissionTypeForResponse",
+    "WebhookMemberEditedPropChangesPropPermissionType",
+    "WebhookMemberEditedPropChangesPropPermissionTypeForResponse",
+    "WebhookMemberEditedPropChangesType",
+    "WebhookMemberEditedPropChangesTypeForResponse",
+    "WebhookMemberEditedType",
+    "WebhookMemberEditedTypeForResponse",
 )

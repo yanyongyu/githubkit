@@ -9,39 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0312 import ProjectsV2Type, ProjectsV2TypeForResponse
-from .group_0600 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0601 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
+from typing_extensions import TypedDict
 
 
-class WebhookProjectsV2ProjectDeletedType(TypedDict):
-    """Projects v2 Project Deleted Event"""
+class WebhookPingFormEncodedType(TypedDict):
+    """WebhookPingFormEncoded
 
-    action: Literal["deleted"]
-    installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
-    projects_v2: ProjectsV2Type
-    sender: SimpleUserType
+    The webhooks ping payload encoded with URL encoding.
+    """
+
+    payload: str
 
 
-class WebhookProjectsV2ProjectDeletedTypeForResponse(TypedDict):
-    """Projects v2 Project Deleted Event"""
+class WebhookPingFormEncodedTypeForResponse(TypedDict):
+    """WebhookPingFormEncoded
 
-    action: Literal["deleted"]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: OrganizationSimpleWebhooksTypeForResponse
-    projects_v2: ProjectsV2TypeForResponse
-    sender: SimpleUserTypeForResponse
+    The webhooks ping payload encoded with URL encoding.
+    """
+
+    payload: str
 
 
 __all__ = (
-    "WebhookProjectsV2ProjectDeletedType",
-    "WebhookProjectsV2ProjectDeletedTypeForResponse",
+    "WebhookPingFormEncodedType",
+    "WebhookPingFormEncodedTypeForResponse",
 )

@@ -15,15 +15,19 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0087 import CopilotSeatDetails
 
-class OrgsOrgSecretScanningPatternConfigurationsPatchResponse200(GitHubModel):
-    """OrgsOrgSecretScanningPatternConfigurationsPatchResponse200"""
 
-    pattern_config_version: Missing[str] = Field(
-        default=UNSET, description="The updated pattern configuration version."
+class OrgsOrgCopilotBillingSeatsGetResponse200(GitHubModel):
+    """OrgsOrgCopilotBillingSeatsGetResponse200"""
+
+    total_seats: Missing[int] = Field(
+        default=UNSET,
+        description="Total number of Copilot seats for the organization currently being billed.",
     )
+    seats: Missing[list[CopilotSeatDetails]] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgSecretScanningPatternConfigurationsPatchResponse200)
+model_rebuild(OrgsOrgCopilotBillingSeatsGetResponse200)
 
-__all__ = ("OrgsOrgSecretScanningPatternConfigurationsPatchResponse200",)
+__all__ = ("OrgsOrgCopilotBillingSeatsGetResponse200",)

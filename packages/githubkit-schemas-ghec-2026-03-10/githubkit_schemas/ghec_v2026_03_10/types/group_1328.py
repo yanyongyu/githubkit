@@ -11,24 +11,20 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0265 import CodespaceType, CodespaceTypeForResponse
+
+class OrgsOrgAttestationsDeleteRequestPostBodyOneof1Type(TypedDict):
+    """OrgsOrgAttestationsDeleteRequestPostBodyOneof1"""
+
+    attestation_ids: list[int]
 
 
-class OrgsOrgMembersUsernameCodespacesGetResponse200Type(TypedDict):
-    """OrgsOrgMembersUsernameCodespacesGetResponse200"""
+class OrgsOrgAttestationsDeleteRequestPostBodyOneof1TypeForResponse(TypedDict):
+    """OrgsOrgAttestationsDeleteRequestPostBodyOneof1"""
 
-    total_count: int
-    codespaces: list[CodespaceType]
-
-
-class OrgsOrgMembersUsernameCodespacesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgMembersUsernameCodespacesGetResponse200"""
-
-    total_count: int
-    codespaces: list[CodespaceTypeForResponse]
+    attestation_ids: list[int]
 
 
 __all__ = (
-    "OrgsOrgMembersUsernameCodespacesGetResponse200Type",
-    "OrgsOrgMembersUsernameCodespacesGetResponse200TypeForResponse",
+    "OrgsOrgAttestationsDeleteRequestPostBodyOneof1Type",
+    "OrgsOrgAttestationsDeleteRequestPostBodyOneof1TypeForResponse",
 )

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,29 +18,147 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPullsPullNumberPatchBody(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberPatchBody"""
+class ReposOwnerRepoIssuesIssueNumberPatchBody(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberPatchBody"""
 
-    title: Missing[str] = Field(
-        default=UNSET, description="The title of the pull request."
+    title: Missing[Union[str, int, None]] = Field(
+        default=UNSET, description="The title of the issue."
     )
-    body: Missing[str] = Field(
-        default=UNSET, description="The contents of the pull request."
+    body: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The contents of the issue."
+    )
+    assignee: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="Username to assign to this issue. **This field is closing down.**",
     )
     state: Missing[Literal["open", "closed"]] = Field(
-        default=UNSET,
-        description="State of this Pull Request. Either `open` or `closed`.",
+        default=UNSET, description="The open or closed state of the issue."
     )
-    base: Missing[str] = Field(
+    state_reason: Missing[
+        Union[None, Literal["completed", "not_planned", "duplicate", "reopened"]]
+    ] = Field(
         default=UNSET,
-        description="The name of the branch you want your changes pulled into. This should be an existing branch on the current repository. You cannot update the base branch on a pull request to point to another repository.",
+        description="The reason for the state change. Ignored unless `state` is changed.",
     )
-    maintainer_can_modify: Missing[bool] = Field(
+    duplicate_issue_id: Missing[int] = Field(
         default=UNSET,
-        description="Indicates whether [maintainers can modify](https://docs.github.com/articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork/) the pull request.",
+        description="The ID of the issue to mark as the canonical duplicate when `state_reason` is `duplicate`. The issue must exist and be accessible to the authenticated user. Ignored when `state_reason` is not `duplicate`.",
+    )
+    milestone: Missing[Union[str, int, None]] = Field(default=UNSET)
+    labels: Missing[
+        list[Union[str, ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1]]
+    ] = Field(
+        default=UNSET,
+        description="Labels to associate with this issue. Pass one or more labels to _replace_ the set of labels on this issue. Send an empty array (`[]`) to clear all labels from the issue. Only users with push access can set labels for issues. Without push access to the repository, label changes are silently dropped.",
+    )
+    assignees: Missing[
+        list[
+            Union[str, ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1]
+        ]
+    ] = Field(
+        default=UNSET,
+        description="Usernames to assign to this issue. Pass one or more user logins to _replace_ the set of assignees on this issue. Send an empty array (`[]`) to clear all assignees from the issue. Only users with push access can set assignees for new issues. Without push access to the repository, assignee changes are silently dropped.",
+    )
+    issue_field_values: Missing[
+        list[ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems]
+    ] = Field(
+        default=UNSET,
+        description="An array of issue field values to set on this issue. Each field value must include the field ID and the value to set. Only users with push access can set field values for issues",
+    )
+    type: Missing[
+        Union[str, ReposOwnerRepoIssuesIssueNumberPatchBodyPropTypeOneof1, None]
+    ] = Field(
+        default=UNSET,
+        description="The issue type to associate with this issue. Only users with push access can set the type for issues. Without push access to the repository, type changes are silently dropped.",
     )
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberPatchBody)
+class ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1"""
 
-__all__ = ("ReposOwnerRepoPullsPullNumberPatchBody",)
+    id: Missing[int] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    description: Missing[Union[str, None]] = Field(default=UNSET)
+    color: Missing[Union[str, None]] = Field(default=UNSET)
+    rationale: Missing[str] = Field(
+        default=UNSET, description="Optional reasoning for selecting this label."
+    )
+    suggest: Missing[bool] = Field(
+        default=UNSET,
+        description="If `true`, the change is stored as a pending suggestion for human review rather than applied directly.",
+    )
+    confidence: Missing[Literal["low", "medium", "high"]] = Field(
+        default=UNSET, description="The confidence level for this label choice."
+    )
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1"""
+
+    login: Missing[str] = Field(default=UNSET)
+    rationale: Missing[str] = Field(
+        default=UNSET, description="Optional reasoning for selecting this assignee."
+    )
+    suggest: Missing[bool] = Field(
+        default=UNSET,
+        description="If `true`, the change is stored as a pending suggestion for human review rather than applied directly.",
+    )
+    confidence: Missing[Literal["low", "medium", "high"]] = Field(
+        default=UNSET, description="The confidence level for this assignee choice."
+    )
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems"""
+
+    field_id: int = Field(description="The ID of the issue field to set")
+    value: Union[str, float, list[str]] = Field(
+        description="The value to set for the field. For multi-select fields, provide an array of option names."
+    )
+    rationale: Missing[str] = Field(
+        default=UNSET, description="Optional reasoning for setting this field value."
+    )
+    suggest: Missing[bool] = Field(
+        default=UNSET,
+        description="If `true`, the change is stored as a pending suggestion for human review rather than applied directly.",
+    )
+    confidence: Missing[Literal["low", "medium", "high"]] = Field(
+        default=UNSET, description="The confidence level for this field value choice."
+    )
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchBodyPropTypeOneof1(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropTypeOneof1
+
+    The issue type with optional metadata.
+    """
+
+    value: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The name of the issue type to associate with this issue, or `null` to remove the current issue type.",
+    )
+    rationale: Missing[str] = Field(
+        default=UNSET, description="Optional reasoning for selecting this type."
+    )
+    suggest: Missing[bool] = Field(
+        default=UNSET,
+        description="If `true`, the change is stored as a pending suggestion for human review rather than applied directly.",
+    )
+    confidence: Missing[Literal["low", "medium", "high"]] = Field(
+        default=UNSET, description="The confidence level for this type choice."
+    )
+
+
+model_rebuild(ReposOwnerRepoIssuesIssueNumberPatchBody)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberPatchBodyPropTypeOneof1)
+
+__all__ = (
+    "ReposOwnerRepoIssuesIssueNumberPatchBody",
+    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1",
+    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems",
+    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1",
+    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropTypeOneof1",
+)

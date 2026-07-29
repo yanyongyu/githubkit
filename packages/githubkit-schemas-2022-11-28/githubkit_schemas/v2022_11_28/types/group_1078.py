@@ -9,26 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0123 import RunnerLabelType, RunnerLabelTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200Type(TypedDict):
-    """OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200"""
+class NotificationsThreadsThreadIdSubscriptionPutBodyType(TypedDict):
+    """NotificationsThreadsThreadIdSubscriptionPutBody"""
 
-    total_count: int
-    labels: list[RunnerLabelType]
+    ignored: NotRequired[bool]
 
 
-class OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200"""
+class NotificationsThreadsThreadIdSubscriptionPutBodyTypeForResponse(TypedDict):
+    """NotificationsThreadsThreadIdSubscriptionPutBody"""
 
-    total_count: int
-    labels: list[RunnerLabelTypeForResponse]
+    ignored: NotRequired[bool]
 
 
 __all__ = (
-    "OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200Type",
-    "OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200TypeForResponse",
+    "NotificationsThreadsThreadIdSubscriptionPutBodyType",
+    "NotificationsThreadsThreadIdSubscriptionPutBodyTypeForResponse",
 )

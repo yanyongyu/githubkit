@@ -9,24 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0093 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
-class ReposOwnerRepoAgentsVariablesNamePatchBodyType(TypedDict):
-    """ReposOwnerRepoAgentsVariablesNamePatchBody"""
+class OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200Type(TypedDict):
+    """OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200"""
 
-    name: NotRequired[str]
-    value: NotRequired[str]
+    total_count: int
+    repositories: list[MinimalRepositoryType]
 
 
-class ReposOwnerRepoAgentsVariablesNamePatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoAgentsVariablesNamePatchBody"""
+class OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200"""
 
-    name: NotRequired[str]
-    value: NotRequired[str]
+    total_count: int
+    repositories: list[MinimalRepositoryTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoAgentsVariablesNamePatchBodyType",
-    "ReposOwnerRepoAgentsVariablesNamePatchBodyTypeForResponse",
+    "OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200Type",
+    "OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200TypeForResponse",
 )

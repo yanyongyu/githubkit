@@ -13,44 +13,49 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0599 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0600 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0601 import (
+from .group_0618 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0619 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0620 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0602 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0621 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0634 import WebhooksLabelType, WebhooksLabelTypeForResponse
 from .group_0958 import (
-    WebhookRegistryPackagePublishedPropRegistryPackageType,
-    WebhookRegistryPackagePublishedPropRegistryPackageTypeForResponse,
+    WebhookPullRequestLabeledPropPullRequestType,
+    WebhookPullRequestLabeledPropPullRequestTypeForResponse,
 )
 
 
-class WebhookRegistryPackagePublishedType(TypedDict):
-    """WebhookRegistryPackagePublished"""
+class WebhookPullRequestLabeledType(TypedDict):
+    """pull_request labeled event"""
 
-    action: Literal["published"]
+    action: Literal["labeled"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
+    label: NotRequired[WebhooksLabelType]
+    number: int
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    registry_package: WebhookRegistryPackagePublishedPropRegistryPackageType
-    repository: NotRequired[RepositoryWebhooksType]
+    pull_request: WebhookPullRequestLabeledPropPullRequestType
+    repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookRegistryPackagePublishedTypeForResponse(TypedDict):
-    """WebhookRegistryPackagePublished"""
+class WebhookPullRequestLabeledTypeForResponse(TypedDict):
+    """pull_request labeled event"""
 
-    action: Literal["published"]
+    action: Literal["labeled"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
+    label: NotRequired[WebhooksLabelTypeForResponse]
+    number: int
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    registry_package: WebhookRegistryPackagePublishedPropRegistryPackageTypeForResponse
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    pull_request: WebhookPullRequestLabeledPropPullRequestTypeForResponse
+    repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookRegistryPackagePublishedType",
-    "WebhookRegistryPackagePublishedTypeForResponse",
+    "WebhookPullRequestLabeledType",
+    "WebhookPullRequestLabeledTypeForResponse",
 )

@@ -12,18 +12,21 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0145 import CopilotSpaceResource
-
-
-class OrgsOrgCopilotSpacesSpaceNumberResourcesGetResponse200(GitHubModel):
-    """OrgsOrgCopilotSpacesSpaceNumberResourcesGetResponse200"""
-
-    resources: list[CopilotSpaceResource] = Field(
-        description="The list of resources attached to this Copilot Space."
-    )
+from .group_0131 import ArtifactDeploymentRecord
 
 
-model_rebuild(OrgsOrgCopilotSpacesSpaceNumberResourcesGetResponse200)
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200(
+    GitHubModel
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200"""
 
-__all__ = ("OrgsOrgCopilotSpacesSpaceNumberResourcesGetResponse200",)
+    total_count: int = Field(description="The number of deployment records created")
+    deployment_records: Missing[list[ArtifactDeploymentRecord]] = Field(default=UNSET)
+
+
+model_rebuild(OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200)
+
+__all__ = ("OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200",)

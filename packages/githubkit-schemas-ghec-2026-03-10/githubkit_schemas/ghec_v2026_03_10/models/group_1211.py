@@ -12,18 +12,28 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0112 import CustomPropertyValue
 
+class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202"""
 
-class OrganizationsOrgOrgPropertiesValuesPatchBody(GitHubModel):
-    """OrganizationsOrgOrgPropertiesValuesPatchBody"""
-
-    properties: list[CustomPropertyValue] = Field(
-        description="A list of custom property names and associated values to apply to the organization."
+    message: Missing[str] = Field(
+        default=UNSET, description="A message indicating the revocation has been queued"
+    )
+    warning: Missing[str] = Field(
+        default=UNSET,
+        description="A warning message if the token used for this request may be revoked",
     )
 
 
-model_rebuild(OrganizationsOrgOrgPropertiesValuesPatchBody)
+model_rebuild(
+    EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202
+)
 
-__all__ = ("OrganizationsOrgOrgPropertiesValuesPatchBody",)
+__all__ = (
+    "EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202",
+)

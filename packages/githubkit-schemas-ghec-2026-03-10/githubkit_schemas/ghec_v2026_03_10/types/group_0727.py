@@ -10,292 +10,111 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0729 import (
-    WebhookForkPropForkeeAllof0PropPermissionsType,
-    WebhookForkPropForkeeAllof0PropPermissionsTypeForResponse,
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0211 import DiscussionType, DiscussionTypeForResponse
+from .group_0617 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0618 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0619 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
 )
+from .group_0620 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookForkPropForkeeType(TypedDict):
-    """WebhookForkPropForkee
+class WebhookDiscussionCategoryChangedType(TypedDict):
+    """discussion category changed event"""
 
-    The created [`repository`](https://docs.github.com/enterprise-
-    cloud@latest/rest/repos/repos#get-a-repository) resource.
-    """
+    action: Literal["category_changed"]
+    changes: WebhookDiscussionCategoryChangedPropChangesType
+    discussion: DiscussionType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
-    allow_auto_merge: NotRequired[bool]
-    allow_forking: NotRequired[bool]
-    allow_merge_commit: NotRequired[bool]
-    allow_rebase_merge: NotRequired[bool]
-    allow_squash_merge: NotRequired[bool]
-    allow_update_branch: NotRequired[bool]
-    archive_url: str
-    archived: bool
-    assignees_url: str
-    blobs_url: str
-    branches_url: str
-    clone_url: str
-    collaborators_url: str
-    comments_url: str
-    commits_url: str
-    compare_url: str
-    contents_url: str
-    contributors_url: str
+
+class WebhookDiscussionCategoryChangedTypeForResponse(TypedDict):
+    """discussion category changed event"""
+
+    action: Literal["category_changed"]
+    changes: WebhookDiscussionCategoryChangedPropChangesTypeForResponse
+    discussion: DiscussionTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+
+
+class WebhookDiscussionCategoryChangedPropChangesType(TypedDict):
+    """WebhookDiscussionCategoryChangedPropChanges"""
+
+    category: WebhookDiscussionCategoryChangedPropChangesPropCategoryType
+
+
+class WebhookDiscussionCategoryChangedPropChangesTypeForResponse(TypedDict):
+    """WebhookDiscussionCategoryChangedPropChanges"""
+
+    category: WebhookDiscussionCategoryChangedPropChangesPropCategoryTypeForResponse
+
+
+class WebhookDiscussionCategoryChangedPropChangesPropCategoryType(TypedDict):
+    """WebhookDiscussionCategoryChangedPropChangesPropCategory"""
+
+    from_: WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromType
+
+
+class WebhookDiscussionCategoryChangedPropChangesPropCategoryTypeForResponse(TypedDict):
+    """WebhookDiscussionCategoryChangedPropChangesPropCategory"""
+
+    from_: (
+        WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromTypeForResponse
+    )
+
+
+class WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromType(TypedDict):
+    """WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFrom"""
+
     created_at: _dt.datetime
-    default_branch: str
-    delete_branch_on_merge: NotRequired[bool]
-    deployments_url: str
-    description: Union[Union[str, None], None]
-    disabled: NotRequired[bool]
-    downloads_url: str
-    events_url: str
-    fork: Literal[True]
-    forks: int
-    forks_count: int
-    forks_url: str
-    full_name: str
-    git_commits_url: str
-    git_refs_url: str
-    git_tags_url: str
-    git_url: str
-    has_downloads: bool
-    has_issues: bool
-    has_pages: bool
-    has_projects: bool
-    has_wiki: bool
-    homepage: Union[Union[str, None], None]
-    hooks_url: str
-    html_url: str
+    description: str
+    emoji: str
     id: int
-    is_template: NotRequired[bool]
-    issue_comment_url: str
-    issue_events_url: str
-    issues_url: str
-    keys_url: str
-    labels_url: str
-    language: Union[None, None]
-    languages_url: str
-    license_: Union[WebhookForkPropForkeeMergedLicenseType, None]
-    master_branch: NotRequired[str]
-    merges_url: str
-    milestones_url: str
-    mirror_url: Union[None, None]
+    is_answerable: bool
     name: str
-    node_id: str
-    notifications_url: str
-    open_issues: int
-    open_issues_count: int
-    organization: NotRequired[str]
-    owner: WebhookForkPropForkeeMergedOwnerType
-    permissions: NotRequired[WebhookForkPropForkeeAllof0PropPermissionsType]
-    private: bool
-    public: NotRequired[bool]
-    pulls_url: str
-    pushed_at: _dt.datetime
-    releases_url: str
-    role_name: NotRequired[Union[str, None]]
-    size: int
-    ssh_url: str
-    stargazers: NotRequired[int]
-    stargazers_count: int
-    stargazers_url: str
-    statuses_url: str
-    subscribers_url: str
-    subscription_url: str
-    svn_url: str
-    tags_url: str
-    teams_url: str
-    topics: list[str]
-    trees_url: str
-    updated_at: _dt.datetime
-    url: str
-    visibility: Literal["public", "private", "internal"]
-    watchers: int
-    watchers_count: int
-    web_commit_signoff_required: NotRequired[bool]
-
-
-class WebhookForkPropForkeeTypeForResponse(TypedDict):
-    """WebhookForkPropForkee
-
-    The created [`repository`](https://docs.github.com/enterprise-
-    cloud@latest/rest/repos/repos#get-a-repository) resource.
-    """
-
-    allow_auto_merge: NotRequired[bool]
-    allow_forking: NotRequired[bool]
-    allow_merge_commit: NotRequired[bool]
-    allow_rebase_merge: NotRequired[bool]
-    allow_squash_merge: NotRequired[bool]
-    allow_update_branch: NotRequired[bool]
-    archive_url: str
-    archived: bool
-    assignees_url: str
-    blobs_url: str
-    branches_url: str
-    clone_url: str
-    collaborators_url: str
-    comments_url: str
-    commits_url: str
-    compare_url: str
-    contents_url: str
-    contributors_url: str
-    created_at: str
-    default_branch: str
-    delete_branch_on_merge: NotRequired[bool]
-    deployments_url: str
-    description: Union[Union[str, None], None]
-    disabled: NotRequired[bool]
-    downloads_url: str
-    events_url: str
-    fork: Literal[True]
-    forks: int
-    forks_count: int
-    forks_url: str
-    full_name: str
-    git_commits_url: str
-    git_refs_url: str
-    git_tags_url: str
-    git_url: str
-    has_downloads: bool
-    has_issues: bool
-    has_pages: bool
-    has_projects: bool
-    has_wiki: bool
-    homepage: Union[Union[str, None], None]
-    hooks_url: str
-    html_url: str
-    id: int
-    is_template: NotRequired[bool]
-    issue_comment_url: str
-    issue_events_url: str
-    issues_url: str
-    keys_url: str
-    labels_url: str
-    language: Union[None, None]
-    languages_url: str
-    license_: Union[WebhookForkPropForkeeMergedLicenseTypeForResponse, None]
-    master_branch: NotRequired[str]
-    merges_url: str
-    milestones_url: str
-    mirror_url: Union[None, None]
-    name: str
-    node_id: str
-    notifications_url: str
-    open_issues: int
-    open_issues_count: int
-    organization: NotRequired[str]
-    owner: WebhookForkPropForkeeMergedOwnerTypeForResponse
-    permissions: NotRequired[WebhookForkPropForkeeAllof0PropPermissionsTypeForResponse]
-    private: bool
-    public: NotRequired[bool]
-    pulls_url: str
-    pushed_at: str
-    releases_url: str
-    role_name: NotRequired[Union[str, None]]
-    size: int
-    ssh_url: str
-    stargazers: NotRequired[int]
-    stargazers_count: int
-    stargazers_url: str
-    statuses_url: str
-    subscribers_url: str
-    subscription_url: str
-    svn_url: str
-    tags_url: str
-    teams_url: str
-    topics: list[str]
-    trees_url: str
+    node_id: NotRequired[str]
+    repository_id: int
+    slug: str
     updated_at: str
-    url: str
-    visibility: Literal["public", "private", "internal"]
-    watchers: int
-    watchers_count: int
-    web_commit_signoff_required: NotRequired[bool]
 
 
-class WebhookForkPropForkeeMergedLicenseType(TypedDict):
-    """WebhookForkPropForkeeMergedLicense"""
+class WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromTypeForResponse(
+    TypedDict
+):
+    """WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFrom"""
 
-    key: str
-    name: str
-    node_id: str
-    spdx_id: str
-    url: Union[str, None]
-
-
-class WebhookForkPropForkeeMergedLicenseTypeForResponse(TypedDict):
-    """WebhookForkPropForkeeMergedLicense"""
-
-    key: str
-    name: str
-    node_id: str
-    spdx_id: str
-    url: Union[str, None]
-
-
-class WebhookForkPropForkeeMergedOwnerType(TypedDict):
-    """WebhookForkPropForkeeMergedOwner"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
+    created_at: str
+    description: str
+    emoji: str
     id: int
-    login: str
-    name: NotRequired[str]
+    is_answerable: bool
+    name: str
     node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookForkPropForkeeMergedOwnerTypeForResponse(TypedDict):
-    """WebhookForkPropForkeeMergedOwner"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    repository_id: int
+    slug: str
+    updated_at: str
 
 
 __all__ = (
-    "WebhookForkPropForkeeMergedLicenseType",
-    "WebhookForkPropForkeeMergedLicenseTypeForResponse",
-    "WebhookForkPropForkeeMergedOwnerType",
-    "WebhookForkPropForkeeMergedOwnerTypeForResponse",
-    "WebhookForkPropForkeeType",
-    "WebhookForkPropForkeeTypeForResponse",
+    "WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromType",
+    "WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromTypeForResponse",
+    "WebhookDiscussionCategoryChangedPropChangesPropCategoryType",
+    "WebhookDiscussionCategoryChangedPropChangesPropCategoryTypeForResponse",
+    "WebhookDiscussionCategoryChangedPropChangesType",
+    "WebhookDiscussionCategoryChangedPropChangesTypeForResponse",
+    "WebhookDiscussionCategoryChangedType",
+    "WebhookDiscussionCategoryChangedTypeForResponse",
 )

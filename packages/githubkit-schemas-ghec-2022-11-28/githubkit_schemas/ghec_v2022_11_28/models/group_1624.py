@@ -13,17 +13,13 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0268 import CopilotSpace
+
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody"""
+
+    body: str = Field(description="The body text of the pull request review.")
 
 
-class UsersUsernameCopilotSpacesGetResponse200(GitHubModel):
-    """UsersUsernameCopilotSpacesGetResponse200"""
+model_rebuild(ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody)
 
-    spaces: list[CopilotSpace] = Field(
-        description="The list of Copilot Spaces on this page of results."
-    )
-
-
-model_rebuild(UsersUsernameCopilotSpacesGetResponse200)
-
-__all__ = ("UsersUsernameCopilotSpacesGetResponse200",)
+__all__ = ("ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody",)

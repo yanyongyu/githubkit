@@ -10,95 +10,71 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
-class PackageVersionType(TypedDict):
-    """Package Version
 
-    A version of a software package
+class OrganizationRoleType(TypedDict):
+    """Organization Role
+
+    Organization roles
     """
 
     id: int
     name: str
-    url: str
-    package_html_url: str
-    html_url: NotRequired[str]
-    license_: NotRequired[str]
-    description: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    base_role: NotRequired[
+        Union[None, Literal["read", "triage", "write", "maintain", "admin"]]
+    ]
+    source: NotRequired[
+        Union[None, Literal["Organization", "Enterprise", "Predefined"]]
+    ]
+    permissions: list[str]
+    organization: Union[None, SimpleUserType]
     created_at: _dt.datetime
     updated_at: _dt.datetime
-    deleted_at: NotRequired[_dt.datetime]
-    metadata: NotRequired[PackageVersionPropMetadataType]
 
 
-class PackageVersionTypeForResponse(TypedDict):
-    """Package Version
+class OrganizationRoleTypeForResponse(TypedDict):
+    """Organization Role
 
-    A version of a software package
+    Organization roles
     """
 
     id: int
     name: str
-    url: str
-    package_html_url: str
-    html_url: NotRequired[str]
-    license_: NotRequired[str]
-    description: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    base_role: NotRequired[
+        Union[None, Literal["read", "triage", "write", "maintain", "admin"]]
+    ]
+    source: NotRequired[
+        Union[None, Literal["Organization", "Enterprise", "Predefined"]]
+    ]
+    permissions: list[str]
+    organization: Union[None, SimpleUserTypeForResponse]
     created_at: str
     updated_at: str
-    deleted_at: NotRequired[str]
-    metadata: NotRequired[PackageVersionPropMetadataTypeForResponse]
 
 
-class PackageVersionPropMetadataType(TypedDict):
-    """Package Version Metadata"""
+class OrgsOrgOrganizationRolesGetResponse200Type(TypedDict):
+    """OrgsOrgOrganizationRolesGetResponse200"""
 
-    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
-    container: NotRequired[PackageVersionPropMetadataPropContainerType]
-    docker: NotRequired[PackageVersionPropMetadataPropDockerType]
-
-
-class PackageVersionPropMetadataTypeForResponse(TypedDict):
-    """Package Version Metadata"""
-
-    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
-    container: NotRequired[PackageVersionPropMetadataPropContainerTypeForResponse]
-    docker: NotRequired[PackageVersionPropMetadataPropDockerTypeForResponse]
+    total_count: NotRequired[int]
+    roles: NotRequired[list[OrganizationRoleType]]
 
 
-class PackageVersionPropMetadataPropContainerType(TypedDict):
-    """Container Metadata"""
+class OrgsOrgOrganizationRolesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgOrganizationRolesGetResponse200"""
 
-    tags: list[str]
-
-
-class PackageVersionPropMetadataPropContainerTypeForResponse(TypedDict):
-    """Container Metadata"""
-
-    tags: list[str]
-
-
-class PackageVersionPropMetadataPropDockerType(TypedDict):
-    """Docker Metadata"""
-
-    tag: NotRequired[list[str]]
-
-
-class PackageVersionPropMetadataPropDockerTypeForResponse(TypedDict):
-    """Docker Metadata"""
-
-    tag: NotRequired[list[str]]
+    total_count: NotRequired[int]
+    roles: NotRequired[list[OrganizationRoleTypeForResponse]]
 
 
 __all__ = (
-    "PackageVersionPropMetadataPropContainerType",
-    "PackageVersionPropMetadataPropContainerTypeForResponse",
-    "PackageVersionPropMetadataPropDockerType",
-    "PackageVersionPropMetadataPropDockerTypeForResponse",
-    "PackageVersionPropMetadataType",
-    "PackageVersionPropMetadataTypeForResponse",
-    "PackageVersionType",
-    "PackageVersionTypeForResponse",
+    "OrganizationRoleType",
+    "OrganizationRoleTypeForResponse",
+    "OrgsOrgOrganizationRolesGetResponse200Type",
+    "OrgsOrgOrganizationRolesGetResponse200TypeForResponse",
 )

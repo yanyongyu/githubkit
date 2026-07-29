@@ -11,26 +11,22 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0354 import WorkflowRunType, WorkflowRunTypeForResponse
+
+class OrgsOrgPrivateRegistriesPublicKeyGetResponse200Type(TypedDict):
+    """OrgsOrgPrivateRegistriesPublicKeyGetResponse200"""
+
+    key_id: str
+    key: str
 
 
-class ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200"""
+class OrgsOrgPrivateRegistriesPublicKeyGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgPrivateRegistriesPublicKeyGetResponse200"""
 
-    total_count: int
-    workflow_runs: list[WorkflowRunType]
-
-
-class ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200"""
-
-    total_count: int
-    workflow_runs: list[WorkflowRunTypeForResponse]
+    key_id: str
+    key: str
 
 
 __all__ = (
-    "ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200Type",
-    "ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200TypeForResponse",
+    "OrgsOrgPrivateRegistriesPublicKeyGetResponse200Type",
+    "OrgsOrgPrivateRegistriesPublicKeyGetResponse200TypeForResponse",
 )

@@ -9,36 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0178 import RepositoryRulesetType, RepositoryRulesetTypeForResponse
+from .group_0617 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0618 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0619 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0620 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_1025 import (
+    WebhookRepositoryRulesetEditedPropChangesType,
+    WebhookRepositoryRulesetEditedPropChangesTypeForResponse,
+)
 
-class WebhookStatusPropCommitPropCommitPropCommitterAllof0Type(TypedDict):
-    """Committer
 
-    Metaproperties for Git author/committer information.
-    """
+class WebhookRepositoryRulesetEditedType(TypedDict):
+    """repository ruleset edited event"""
 
-    date: NotRequired[_dt.datetime]
-    email: Union[str, None]
-    name: str
-    username: NotRequired[str]
+    action: Literal["edited"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: NotRequired[RepositoryWebhooksType]
+    repository_ruleset: RepositoryRulesetType
+    changes: NotRequired[WebhookRepositoryRulesetEditedPropChangesType]
+    sender: SimpleUserType
 
 
-class WebhookStatusPropCommitPropCommitPropCommitterAllof0TypeForResponse(TypedDict):
-    """Committer
+class WebhookRepositoryRulesetEditedTypeForResponse(TypedDict):
+    """repository ruleset edited event"""
 
-    Metaproperties for Git author/committer information.
-    """
-
-    date: NotRequired[str]
-    email: Union[str, None]
-    name: str
-    username: NotRequired[str]
+    action: Literal["edited"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    repository_ruleset: RepositoryRulesetTypeForResponse
+    changes: NotRequired[WebhookRepositoryRulesetEditedPropChangesTypeForResponse]
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookStatusPropCommitPropCommitPropCommitterAllof0Type",
-    "WebhookStatusPropCommitPropCommitPropCommitterAllof0TypeForResponse",
+    "WebhookRepositoryRulesetEditedType",
+    "WebhookRepositoryRulesetEditedTypeForResponse",
 )

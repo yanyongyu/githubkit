@@ -10,301 +10,63 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Annotated, Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0599 import EnterpriseWebhooks
-from .group_0600 import SimpleInstallation
-from .group_0601 import OrganizationSimpleWebhooks
-from .group_0602 import RepositoryWebhooks
-from .group_0609 import WebhooksWorkflow
 
 
-class WebhookDeploymentCreated(GitHubModel):
-    """deployment created event"""
+class WebhookCodeScanningAlertUpdatedAssignmentPropAlert(GitHubModel):
+    """WebhookCodeScanningAlertUpdatedAssignmentPropAlert
 
-    action: Literal["created"] = Field()
-    deployment: WebhookDeploymentCreatedPropDeployment = Field(
-        title="Deployment",
-        description="The [deployment](https://docs.github.com/enterprise-cloud@latest/rest/deployments/deployments#list-deployments).",
-    )
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest/admin/overview/about-enterprise-accounts)."',
-    )
-    installation: Missing[SimpleInstallation] = Field(
-        default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
-    )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
-    )
-    repository: RepositoryWebhooks = Field(
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    workflow: Union[WebhooksWorkflow, None] = Field(title="Workflow")
-    workflow_run: Union[WebhookDeploymentCreatedPropWorkflowRun, None] = Field(
-        title="Deployment Workflow Run"
-    )
-
-
-class WebhookDeploymentCreatedPropDeployment(GitHubModel):
-    """Deployment
-
-    The [deployment](https://docs.github.com/enterprise-
-    cloud@latest/rest/deployments/deployments#list-deployments).
+    The code scanning alert involved in the event.
     """
 
-    created_at: str = Field()
-    creator: Union[WebhookDeploymentCreatedPropDeploymentPropCreator, None] = Field(
-        title="User"
+    assignees: Missing[list[SimpleUser]] = Field(default=UNSET)
+    created_at: _dt.datetime = Field(
+        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ.`"
     )
-    description: Union[str, None] = Field()
-    environment: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    original_environment: str = Field()
-    payload: Union[str, WebhookDeploymentCreatedPropDeploymentPropPayloadOneof1] = (
-        Field()
+    dismissed_at: Union[_dt.datetime, None] = Field(
+        description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
     )
-    performed_via_github_app: Missing[
-        Union[WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubApp, None]
-    ] = Field(
-        default=UNSET,
-        title="App",
-        description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
-    )
-    production_environment: Missing[bool] = Field(default=UNSET)
-    ref: str = Field()
-    repository_url: str = Field()
-    sha: str = Field()
-    statuses_url: str = Field()
-    task: str = Field()
-    transient_environment: Missing[bool] = Field(default=UNSET)
-    updated_at: str = Field()
-    url: str = Field()
-
-
-class WebhookDeploymentCreatedPropDeploymentPropCreator(GitHubModel):
-    """User"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
-
-
-class WebhookDeploymentCreatedPropDeploymentPropPayloadOneof1(ExtraGitHubModel):
-    """WebhookDeploymentCreatedPropDeploymentPropPayloadOneof1"""
-
-
-class WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubApp(GitHubModel):
-    """App
-
-    GitHub apps are a new way to extend GitHub. They can be installed directly on
-    organizations and user accounts and granted access to specific repositories.
-    They come with granular permissions and built-in webhooks. GitHub apps are first
-    class actors within GitHub.
-    """
-
-    created_at: Union[_dt.datetime, None] = Field()
-    description: Union[str, None] = Field()
-    events: Missing[list[str]] = Field(
-        default=UNSET, description="The list of events for the GitHub app"
-    )
-    external_url: Union[str, None] = Field()
-    html_url: str = Field()
-    id: Union[int, None] = Field(description="Unique identifier of the GitHub app")
-    name: str = Field(description="The name of the GitHub app")
-    node_id: str = Field()
-    owner: Union[
-        WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppPropOwner, None
+    dismissed_by: Union[
+        WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropDismissedBy, None
     ] = Field(title="User")
-    permissions: Missing[
-        WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppPropPermissions
-    ] = Field(default=UNSET, description="The set of permissions for the GitHub app")
-    slug: Missing[str] = Field(
-        default=UNSET, description="The slug name of the GitHub app"
+    dismissed_comment: Missing[Union[Annotated[str, Field(max_length=280)], None]] = (
+        Field(
+            default=UNSET,
+            description="The dismissal comment associated with the dismissal of the alert.",
+        )
     )
-    updated_at: Union[_dt.datetime, None] = Field()
-
-
-class WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppPropOwner(
-    GitHubModel
-):
-    """User"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
-
-
-class WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppPropPermissions(
-    GitHubModel
-):
-    """WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppPropPermissions
-
-    The set of permissions for the GitHub app
-    """
-
-    actions: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    administration: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    checks: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    content_references: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    contents: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    deployments: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    discussions: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    emails: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    environments: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    issues: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    keys: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    members: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    metadata: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    organization_administration: Missing[Literal["read", "write"]] = Field(
-        default=UNSET
+    dismissed_reason: Union[
+        None, Literal["false positive", "won't fix", "used in tests"]
+    ] = Field(description="The reason for dismissing or closing the alert.")
+    fixed_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="The time that the alert was fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
-    organization_hooks: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    organization_packages: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    organization_plan: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    organization_projects: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    organization_secrets: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    organization_self_hosted_runners: Missing[Literal["read", "write"]] = Field(
-        default=UNSET
-    )
-    organization_user_blocking: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    packages: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    pages: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    pull_requests: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    repository_hooks: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    repository_projects: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    secret_scanning_alerts: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    secrets: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    security_events: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    security_scanning_alert: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    single_file: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    statuses: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    vulnerability_alerts: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    workflows: Missing[Literal["read", "write"]] = Field(default=UNSET)
-
-
-class WebhookDeploymentCreatedPropWorkflowRun(GitHubModel):
-    """Deployment Workflow Run"""
-
-    actor: Union[WebhookDeploymentCreatedPropWorkflowRunPropActor, None] = Field(
-        title="User"
-    )
-    artifacts_url: Missing[str] = Field(default=UNSET)
-    cancel_url: Missing[str] = Field(default=UNSET)
-    check_suite_id: int = Field()
-    check_suite_node_id: str = Field()
-    check_suite_url: Missing[str] = Field(default=UNSET)
-    conclusion: Union[
-        None,
-        Literal[
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "timed_out",
-            "action_required",
-            "stale",
-        ],
-    ] = Field()
-    created_at: _dt.datetime = Field()
-    display_title: str = Field()
-    event: str = Field()
-    head_branch: str = Field()
-    head_commit: Missing[None] = Field(default=UNSET)
-    head_repository: Missing[
-        WebhookDeploymentCreatedPropWorkflowRunPropHeadRepository
-    ] = Field(default=UNSET)
-    head_sha: str = Field()
-    html_url: str = Field()
-    id: int = Field()
-    jobs_url: Missing[str] = Field(default=UNSET)
-    logs_url: Missing[str] = Field(default=UNSET)
-    name: str = Field()
-    node_id: str = Field()
-    path: str = Field()
-    previous_attempt_url: Missing[None] = Field(default=UNSET)
-    pull_requests: list[
-        WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItems
-    ] = Field()
-    referenced_workflows: Missing[
+    html_url: str = Field(description="The GitHub URL of the alert resource.")
+    most_recent_instance: Missing[
         Union[
-            list[WebhookDeploymentCreatedPropWorkflowRunPropReferencedWorkflowsItems],
+            WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstance,
             None,
         ]
-    ] = Field(default=UNSET)
-    repository: Missing[WebhookDeploymentCreatedPropWorkflowRunPropRepository] = Field(
-        default=UNSET
+    ] = Field(default=UNSET, title="Alert Instance")
+    number: int = Field(description="The code scanning alert number.")
+    rule: WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropRule = Field()
+    state: Union[None, Literal["open", "dismissed", "fixed"]] = Field(
+        description="State of a code scanning alert. Events for alerts found outside the default branch will return a `null` value until they are dismissed or fixed."
     )
-    rerun_url: Missing[str] = Field(default=UNSET)
-    run_attempt: int = Field()
-    run_number: int = Field()
-    run_started_at: _dt.datetime = Field()
-    status: Literal[
-        "requested", "in_progress", "completed", "queued", "waiting", "pending"
-    ] = Field()
-    triggering_actor: Missing[
-        Union[WebhookDeploymentCreatedPropWorkflowRunPropTriggeringActor, None]
-    ] = Field(default=UNSET, title="User")
-    updated_at: _dt.datetime = Field()
+    tool: WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropTool = Field()
     url: str = Field()
-    workflow_id: int = Field()
-    workflow_url: Missing[str] = Field(default=UNSET)
 
 
-class WebhookDeploymentCreatedPropWorkflowRunPropActor(GitHubModel):
+class WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropDismissedBy(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -331,289 +93,104 @@ class WebhookDeploymentCreatedPropWorkflowRunPropActor(GitHubModel):
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookDeploymentCreatedPropWorkflowRunPropReferencedWorkflowsItems(GitHubModel):
-    """WebhookDeploymentCreatedPropWorkflowRunPropReferencedWorkflowsItems"""
+class WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstance(
+    GitHubModel
+):
+    """Alert Instance"""
 
-    path: str = Field()
-    ref: Missing[str] = Field(default=UNSET)
-    sha: str = Field()
-
-
-class WebhookDeploymentCreatedPropWorkflowRunPropTriggeringActor(GitHubModel):
-    """User"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
-
-
-class WebhookDeploymentCreatedPropWorkflowRunPropHeadRepository(GitHubModel):
-    """WebhookDeploymentCreatedPropWorkflowRunPropHeadRepository"""
-
-    archive_url: Missing[str] = Field(default=UNSET)
-    assignees_url: Missing[str] = Field(default=UNSET)
-    blobs_url: Missing[str] = Field(default=UNSET)
-    branches_url: Missing[str] = Field(default=UNSET)
-    collaborators_url: Missing[str] = Field(default=UNSET)
-    comments_url: Missing[str] = Field(default=UNSET)
-    commits_url: Missing[str] = Field(default=UNSET)
-    compare_url: Missing[str] = Field(default=UNSET)
-    contents_url: Missing[str] = Field(default=UNSET)
-    contributors_url: Missing[str] = Field(default=UNSET)
-    deployments_url: Missing[str] = Field(default=UNSET)
-    description: Missing[None] = Field(default=UNSET)
-    downloads_url: Missing[str] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    fork: Missing[bool] = Field(default=UNSET)
-    forks_url: Missing[str] = Field(default=UNSET)
-    full_name: Missing[str] = Field(default=UNSET)
-    git_commits_url: Missing[str] = Field(default=UNSET)
-    git_refs_url: Missing[str] = Field(default=UNSET)
-    git_tags_url: Missing[str] = Field(default=UNSET)
-    hooks_url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    issue_comment_url: Missing[str] = Field(default=UNSET)
-    issue_events_url: Missing[str] = Field(default=UNSET)
-    issues_url: Missing[str] = Field(default=UNSET)
-    keys_url: Missing[str] = Field(default=UNSET)
-    labels_url: Missing[str] = Field(default=UNSET)
-    languages_url: Missing[str] = Field(default=UNSET)
-    merges_url: Missing[str] = Field(default=UNSET)
-    milestones_url: Missing[str] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    notifications_url: Missing[str] = Field(default=UNSET)
-    owner: Missing[
-        WebhookDeploymentCreatedPropWorkflowRunPropHeadRepositoryPropOwner
+    analysis_key: str = Field(
+        description="Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name."
+    )
+    category: Missing[str] = Field(
+        default=UNSET,
+        description="Identifies the configuration under which the analysis was executed.",
+    )
+    classifications: Missing[list[str]] = Field(default=UNSET)
+    commit_sha: Missing[str] = Field(default=UNSET)
+    environment: str = Field(
+        description="Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed."
+    )
+    location: Missing[
+        WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstancePropLocation
     ] = Field(default=UNSET)
-    private: Missing[bool] = Field(default=UNSET)
-    pulls_url: Missing[str] = Field(default=UNSET)
-    releases_url: Missing[str] = Field(default=UNSET)
-    stargazers_url: Missing[str] = Field(default=UNSET)
-    statuses_url: Missing[str] = Field(default=UNSET)
-    subscribers_url: Missing[str] = Field(default=UNSET)
-    subscription_url: Missing[str] = Field(default=UNSET)
-    tags_url: Missing[str] = Field(default=UNSET)
-    teams_url: Missing[str] = Field(default=UNSET)
-    trees_url: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-
-
-class WebhookDeploymentCreatedPropWorkflowRunPropHeadRepositoryPropOwner(GitHubModel):
-    """WebhookDeploymentCreatedPropWorkflowRunPropHeadRepositoryPropOwner"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    login: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-
-
-class WebhookDeploymentCreatedPropWorkflowRunPropRepository(GitHubModel):
-    """WebhookDeploymentCreatedPropWorkflowRunPropRepository"""
-
-    archive_url: Missing[str] = Field(default=UNSET)
-    assignees_url: Missing[str] = Field(default=UNSET)
-    blobs_url: Missing[str] = Field(default=UNSET)
-    branches_url: Missing[str] = Field(default=UNSET)
-    collaborators_url: Missing[str] = Field(default=UNSET)
-    comments_url: Missing[str] = Field(default=UNSET)
-    commits_url: Missing[str] = Field(default=UNSET)
-    compare_url: Missing[str] = Field(default=UNSET)
-    contents_url: Missing[str] = Field(default=UNSET)
-    contributors_url: Missing[str] = Field(default=UNSET)
-    deployments_url: Missing[str] = Field(default=UNSET)
-    description: Missing[None] = Field(default=UNSET)
-    downloads_url: Missing[str] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    fork: Missing[bool] = Field(default=UNSET)
-    forks_url: Missing[str] = Field(default=UNSET)
-    full_name: Missing[str] = Field(default=UNSET)
-    git_commits_url: Missing[str] = Field(default=UNSET)
-    git_refs_url: Missing[str] = Field(default=UNSET)
-    git_tags_url: Missing[str] = Field(default=UNSET)
-    hooks_url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    issue_comment_url: Missing[str] = Field(default=UNSET)
-    issue_events_url: Missing[str] = Field(default=UNSET)
-    issues_url: Missing[str] = Field(default=UNSET)
-    keys_url: Missing[str] = Field(default=UNSET)
-    labels_url: Missing[str] = Field(default=UNSET)
-    languages_url: Missing[str] = Field(default=UNSET)
-    merges_url: Missing[str] = Field(default=UNSET)
-    milestones_url: Missing[str] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    notifications_url: Missing[str] = Field(default=UNSET)
-    owner: Missing[WebhookDeploymentCreatedPropWorkflowRunPropRepositoryPropOwner] = (
-        Field(default=UNSET)
+    message: Missing[
+        WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstancePropMessage
+    ] = Field(default=UNSET)
+    ref: str = Field(
+        description="The full Git reference, formatted as `refs/heads/<branch name>`."
     )
-    private: Missing[bool] = Field(default=UNSET)
-    pulls_url: Missing[str] = Field(default=UNSET)
-    releases_url: Missing[str] = Field(default=UNSET)
-    stargazers_url: Missing[str] = Field(default=UNSET)
-    statuses_url: Missing[str] = Field(default=UNSET)
-    subscribers_url: Missing[str] = Field(default=UNSET)
-    subscription_url: Missing[str] = Field(default=UNSET)
-    tags_url: Missing[str] = Field(default=UNSET)
-    teams_url: Missing[str] = Field(default=UNSET)
-    trees_url: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-
-
-class WebhookDeploymentCreatedPropWorkflowRunPropRepositoryPropOwner(GitHubModel):
-    """WebhookDeploymentCreatedPropWorkflowRunPropRepositoryPropOwner"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    login: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-
-
-class WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItems(GitHubModel):
-    """Check Run Pull Request"""
-
-    base: WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropBase = Field()
-    head: WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropHead = Field()
-    id: int = Field()
-    number: int = Field()
-    url: str = Field()
-
-
-class WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropBase(GitHubModel):
-    """WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropBase"""
-
-    ref: str = Field()
-    repo: WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo = Field(
-        title="Repo Ref"
+    state: Literal["open", "dismissed", "fixed"] = Field(
+        description="State of a code scanning alert."
     )
-    sha: str = Field()
 
 
-class WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo(
+class WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstancePropLocation(
     GitHubModel
 ):
-    """Repo Ref"""
+    """WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstancePropLoca
+    tion
+    """
 
-    id: int = Field()
-    name: str = Field()
-    url: str = Field()
-
-
-class WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropHead(GitHubModel):
-    """WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropHead"""
-
-    ref: str = Field()
-    repo: WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo = Field(
-        title="Repo Ref"
-    )
-    sha: str = Field()
+    end_column: Missing[int] = Field(default=UNSET)
+    end_line: Missing[int] = Field(default=UNSET)
+    path: Missing[str] = Field(default=UNSET)
+    start_column: Missing[int] = Field(default=UNSET)
+    start_line: Missing[int] = Field(default=UNSET)
 
 
-class WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo(
+class WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstancePropMessage(
     GitHubModel
 ):
-    """Repo Ref"""
+    """WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstancePropMess
+    age
+    """
 
-    id: int = Field()
-    name: str = Field()
-    url: str = Field()
+    text: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookDeploymentCreated)
-model_rebuild(WebhookDeploymentCreatedPropDeployment)
-model_rebuild(WebhookDeploymentCreatedPropDeploymentPropCreator)
-model_rebuild(WebhookDeploymentCreatedPropDeploymentPropPayloadOneof1)
-model_rebuild(WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubApp)
-model_rebuild(WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppPropOwner)
+class WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropRule(GitHubModel):
+    """WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropRule"""
+
+    description: str = Field(
+        description="A short description of the rule used to detect the alert."
+    )
+    id: str = Field(
+        description="A unique identifier for the rule used to detect the alert."
+    )
+    severity: Union[None, Literal["none", "note", "warning", "error"]] = Field(
+        description="The severity of the alert."
+    )
+
+
+class WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropTool(GitHubModel):
+    """WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropTool"""
+
+    name: str = Field(
+        description="The name of the tool used to generate the code scanning analysis alert."
+    )
+    version: Union[str, None] = Field(
+        description="The version of the tool used to detect the alert."
+    )
+
+
+model_rebuild(WebhookCodeScanningAlertUpdatedAssignmentPropAlert)
+model_rebuild(WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropDismissedBy)
+model_rebuild(WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstance)
 model_rebuild(
-    WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppPropPermissions
+    WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstancePropLocation
 )
-model_rebuild(WebhookDeploymentCreatedPropWorkflowRun)
-model_rebuild(WebhookDeploymentCreatedPropWorkflowRunPropActor)
-model_rebuild(WebhookDeploymentCreatedPropWorkflowRunPropReferencedWorkflowsItems)
-model_rebuild(WebhookDeploymentCreatedPropWorkflowRunPropTriggeringActor)
-model_rebuild(WebhookDeploymentCreatedPropWorkflowRunPropHeadRepository)
-model_rebuild(WebhookDeploymentCreatedPropWorkflowRunPropHeadRepositoryPropOwner)
-model_rebuild(WebhookDeploymentCreatedPropWorkflowRunPropRepository)
-model_rebuild(WebhookDeploymentCreatedPropWorkflowRunPropRepositoryPropOwner)
-model_rebuild(WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItems)
-model_rebuild(WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropBase)
 model_rebuild(
-    WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo
+    WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstancePropMessage
 )
-model_rebuild(WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropHead)
-model_rebuild(
-    WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo
-)
+model_rebuild(WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropRule)
+model_rebuild(WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropTool)
 
 __all__ = (
-    "WebhookDeploymentCreated",
-    "WebhookDeploymentCreatedPropDeployment",
-    "WebhookDeploymentCreatedPropDeploymentPropCreator",
-    "WebhookDeploymentCreatedPropDeploymentPropPayloadOneof1",
-    "WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubApp",
-    "WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppPropOwner",
-    "WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppPropPermissions",
-    "WebhookDeploymentCreatedPropWorkflowRun",
-    "WebhookDeploymentCreatedPropWorkflowRunPropActor",
-    "WebhookDeploymentCreatedPropWorkflowRunPropHeadRepository",
-    "WebhookDeploymentCreatedPropWorkflowRunPropHeadRepositoryPropOwner",
-    "WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItems",
-    "WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropBase",
-    "WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo",
-    "WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropHead",
-    "WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo",
-    "WebhookDeploymentCreatedPropWorkflowRunPropReferencedWorkflowsItems",
-    "WebhookDeploymentCreatedPropWorkflowRunPropRepository",
-    "WebhookDeploymentCreatedPropWorkflowRunPropRepositoryPropOwner",
-    "WebhookDeploymentCreatedPropWorkflowRunPropTriggeringActor",
+    "WebhookCodeScanningAlertUpdatedAssignmentPropAlert",
+    "WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropDismissedBy",
+    "WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstance",
+    "WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstancePropLocation",
+    "WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstancePropMessage",
+    "WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropRule",
+    "WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropTool",
 )

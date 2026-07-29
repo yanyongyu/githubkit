@@ -9,78 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0450 import HookResponseType, HookResponseTypeForResponse
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0112 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
+from .group_0617 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0618 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0619 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
 
 
-class WebhookPingPropHookType(TypedDict):
-    """Webhook
+class WebhookOrganizationCustomPropertyValuesUpdatedType(TypedDict):
+    """Custom property values updated event"""
 
-    The webhook that is being pinged
-    """
-
-    active: bool
-    app_id: NotRequired[int]
-    config: WebhookPingPropHookPropConfigType
-    created_at: _dt.datetime
-    deliveries_url: NotRequired[str]
-    events: list[str]
-    id: int
-    last_response: NotRequired[HookResponseType]
-    name: Literal["web"]
-    ping_url: NotRequired[str]
-    test_url: NotRequired[str]
-    type: str
-    updated_at: _dt.datetime
-    url: NotRequired[str]
+    action: Literal["updated"]
+    enterprise: EnterpriseWebhooksType
+    installation: NotRequired[SimpleInstallationType]
+    organization: OrganizationSimpleWebhooksType
+    sender: NotRequired[SimpleUserType]
+    new_property_values: list[CustomPropertyValueType]
+    old_property_values: list[CustomPropertyValueType]
 
 
-class WebhookPingPropHookTypeForResponse(TypedDict):
-    """Webhook
+class WebhookOrganizationCustomPropertyValuesUpdatedTypeForResponse(TypedDict):
+    """Custom property values updated event"""
 
-    The webhook that is being pinged
-    """
-
-    active: bool
-    app_id: NotRequired[int]
-    config: WebhookPingPropHookPropConfigTypeForResponse
-    created_at: str
-    deliveries_url: NotRequired[str]
-    events: list[str]
-    id: int
-    last_response: NotRequired[HookResponseTypeForResponse]
-    name: Literal["web"]
-    ping_url: NotRequired[str]
-    test_url: NotRequired[str]
-    type: str
-    updated_at: str
-    url: NotRequired[str]
-
-
-class WebhookPingPropHookPropConfigType(TypedDict):
-    """WebhookPingPropHookPropConfig"""
-
-    content_type: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
-    secret: NotRequired[str]
-    url: NotRequired[str]
-
-
-class WebhookPingPropHookPropConfigTypeForResponse(TypedDict):
-    """WebhookPingPropHookPropConfig"""
-
-    content_type: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
-    secret: NotRequired[str]
-    url: NotRequired[str]
+    action: Literal["updated"]
+    enterprise: EnterpriseWebhooksTypeForResponse
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
+    new_property_values: list[CustomPropertyValueTypeForResponse]
+    old_property_values: list[CustomPropertyValueTypeForResponse]
 
 
 __all__ = (
-    "WebhookPingPropHookPropConfigType",
-    "WebhookPingPropHookPropConfigTypeForResponse",
-    "WebhookPingPropHookType",
-    "WebhookPingPropHookTypeForResponse",
+    "WebhookOrganizationCustomPropertyValuesUpdatedType",
+    "WebhookOrganizationCustomPropertyValuesUpdatedTypeForResponse",
 )

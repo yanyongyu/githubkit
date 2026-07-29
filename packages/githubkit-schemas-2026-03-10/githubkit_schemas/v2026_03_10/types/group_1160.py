@@ -9,26 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0018 import InstallationType, InstallationTypeForResponse
-
-
-class OrgsOrgInstallationsGetResponse200Type(TypedDict):
-    """OrgsOrgInstallationsGetResponse200"""
-
-    total_count: int
-    installations: list[InstallationType]
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgInstallationsGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgInstallationsGetResponse200"""
+class OrgsOrgCodespacesAccessPutBodyType(TypedDict):
+    """OrgsOrgCodespacesAccessPutBody"""
 
-    total_count: int
-    installations: list[InstallationTypeForResponse]
+    visibility: Literal[
+        "disabled",
+        "selected_members",
+        "all_members",
+        "all_members_and_outside_collaborators",
+    ]
+    selected_usernames: NotRequired[list[str]]
+
+
+class OrgsOrgCodespacesAccessPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgCodespacesAccessPutBody"""
+
+    visibility: Literal[
+        "disabled",
+        "selected_members",
+        "all_members",
+        "all_members_and_outside_collaborators",
+    ]
+    selected_usernames: NotRequired[list[str]]
 
 
 __all__ = (
-    "OrgsOrgInstallationsGetResponse200Type",
-    "OrgsOrgInstallationsGetResponse200TypeForResponse",
+    "OrgsOrgCodespacesAccessPutBodyType",
+    "OrgsOrgCodespacesAccessPutBodyTypeForResponse",
 )

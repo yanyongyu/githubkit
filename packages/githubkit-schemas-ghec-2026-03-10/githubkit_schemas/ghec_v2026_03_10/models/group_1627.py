@@ -12,18 +12,21 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0270 import CopilotSpaceResource
 
+class ReposOwnerRepoReleasesAssetsAssetIdPatchBody(GitHubModel):
+    """ReposOwnerRepoReleasesAssetsAssetIdPatchBody"""
 
-class UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200(GitHubModel):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200"""
-
-    resources: list[CopilotSpaceResource] = Field(
-        description="The list of resources attached to this Copilot Space."
+    name: Missing[str] = Field(default=UNSET, description="The file name of the asset.")
+    label: Missing[str] = Field(
+        default=UNSET,
+        description="An alternate short description of the asset. Used in place of the filename.",
     )
+    state: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200)
+model_rebuild(ReposOwnerRepoReleasesAssetsAssetIdPatchBody)
 
-__all__ = ("UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200",)
+__all__ = ("ReposOwnerRepoReleasesAssetsAssetIdPatchBody",)

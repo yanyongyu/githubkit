@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,23 +16,44 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgHooksHookIdConfigPatchBody(GitHubModel):
-    """OrgsOrgHooksHookIdConfigPatchBody"""
+class OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200(GitHubModel):
+    """OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200"""
 
-    url: Missing[str] = Field(
-        default=UNSET, description="The URL to which the payloads will be delivered."
-    )
-    content_type: Missing[str] = Field(
+    total_count: Missing[int] = Field(
         default=UNSET,
-        description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
+        description="The number of storage records for this digest and organization",
     )
-    secret: Missing[str] = Field(
-        default=UNSET,
-        description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/enterprise-cloud@latest/webhooks/event-payloads/#delivery-headers).",
-    )
-    insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
+    storage_records: Missing[
+        list[
+            OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItems
+        ]
+    ] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgHooksHookIdConfigPatchBody)
+class OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItems(
+    GitHubModel
+):
+    """OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageReco
+    rdsItems
+    """
 
-__all__ = ("OrgsOrgHooksHookIdConfigPatchBody",)
+    id: Missing[int] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    digest: Missing[str] = Field(default=UNSET)
+    artifact_url: Missing[str] = Field(default=UNSET)
+    registry_url: Missing[str] = Field(default=UNSET)
+    repository: Missing[str] = Field(default=UNSET)
+    status: Missing[str] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
+    updated_at: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200)
+model_rebuild(
+    OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItems
+)
+
+__all__ = (
+    "OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200",
+    "OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItems",
+)

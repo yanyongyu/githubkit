@@ -12,27 +12,31 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsOidcCustomizationSubPutBodyType(TypedDict):
-    """Actions OIDC Subject customization
+class EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyType(TypedDict):
+    """EnterprisesEnterpriseDependabotRepositoryAccessPatchBody
 
-    Actions OIDC Subject customization
+    Examples:
+        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
     """
 
-    include_claim_keys: NotRequired[list[str]]
-    use_immutable_subject: NotRequired[bool]
+    repository_ids_to_add: NotRequired[list[int]]
+    repository_ids_to_remove: NotRequired[list[int]]
 
 
-class OrgsOrgActionsOidcCustomizationSubPutBodyTypeForResponse(TypedDict):
-    """Actions OIDC Subject customization
+class EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseDependabotRepositoryAccessPatchBody
 
-    Actions OIDC Subject customization
+    Examples:
+        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
     """
 
-    include_claim_keys: NotRequired[list[str]]
-    use_immutable_subject: NotRequired[bool]
+    repository_ids_to_add: NotRequired[list[int]]
+    repository_ids_to_remove: NotRequired[list[int]]
 
 
 __all__ = (
-    "OrgsOrgActionsOidcCustomizationSubPutBodyType",
-    "OrgsOrgActionsOidcCustomizationSubPutBodyTypeForResponse",
+    "EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyType",
+    "EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyTypeForResponse",
 )

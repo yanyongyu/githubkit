@@ -18,162 +18,234 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0535 import EnterpriseWebhooks
+from .group_0536 import SimpleInstallation
+from .group_0537 import OrganizationSimpleWebhooks
+from .group_0538 import RepositoryWebhooks
 
-class AgentsReposOwnerRepoTasksPostResponse201(GitHubModel):
-    """AgentsReposOwnerRepoTasksPostResponse201"""
 
-    id: str = Field(description="Unique task identifier")
-    url: Missing[str] = Field(default=UNSET, description="API URL for this task")
-    html_url: Missing[str] = Field(default=UNSET, description="Web URL for this task")
-    name: Missing[str] = Field(
-        default=UNSET, description="Human-readable name derived from the task prompt"
+class WebhookStatus(GitHubModel):
+    """status event"""
+
+    avatar_url: Missing[Union[str, None]] = Field(default=UNSET)
+    branches: list[WebhookStatusPropBranchesItems] = Field(
+        description="An array of branch objects containing the status' SHA. Each branch contains the given SHA, but the SHA may or may not be the head of the branch. The array includes a maximum of 10 branches."
     )
-    creator: Missing[AgentsReposOwnerRepoTasksPostResponse201PropCreatorOneof0] = Field(
-        default=UNSET, description="The entity who created this task"
+    commit: WebhookStatusPropCommit = Field()
+    context: str = Field()
+    created_at: str = Field()
+    description: Union[str, None] = Field(
+        description="The optional human-readable description added to the status."
     )
-    creator_type: Missing[Literal["user", "organization"]] = Field(
-        default=UNSET, description="Type of the task creator"
-    )
-    user_collaborators: Missing[
-        list[AgentsReposOwnerRepoTasksPostResponse201PropUserCollaboratorsItems]
-    ] = Field(default=UNSET, description="User objects of collaborators on this task")
-    owner: Missing[AgentsReposOwnerRepoTasksPostResponse201PropOwner] = Field(
-        default=UNSET, description="The owner of the repository"
-    )
-    repository: Missing[AgentsReposOwnerRepoTasksPostResponse201PropRepository] = Field(
-        default=UNSET, description="The repository this task belongs to"
-    )
-    state: Literal[
-        "queued",
-        "in_progress",
-        "completed",
-        "failed",
-        "idle",
-        "waiting_for_user",
-        "timed_out",
-        "cancelled",
-    ] = Field(
-        description="Current state of the task, derived from its most recent session"
-    )
-    session_count: Missing[int] = Field(
-        default=UNSET, description="Number of sessions in this task"
-    )
-    artifacts: Missing[
-        list[AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItems]
-    ] = Field(
+    enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
-        description="Resources created by this task (PRs, branches, etc.)",
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
     )
-    archived_at: Missing[Union[_dt.datetime, None]] = Field(
+    id: int = Field(description="The unique identifier of the status.")
+    installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
-        description="Timestamp when the task was archived, null if not archived",
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    updated_at: Missing[_dt.datetime] = Field(
-        default=UNSET, description="Timestamp of the most recent update"
+    name: str = Field()
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    created_at: _dt.datetime = Field(description="Timestamp when the task was created")
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropCreatorOneof0(GitHubModel):
-    """AgentsReposOwnerRepoTasksPostResponse201PropCreatorOneof0
-
-    A GitHub user
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the user"
+    repository: RepositoryWebhooks = Field(
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropUserCollaboratorsItems(GitHubModel):
-    """AgentsReposOwnerRepoTasksPostResponse201PropUserCollaboratorsItems
-
-    A GitHub user
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the user"
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    sha: str = Field(description="The Commit SHA.")
+    state: Literal["pending", "success", "failure", "error"] = Field(
+        description="The new state. Can be `pending`, `success`, `failure`, or `error`."
     )
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropOwner(GitHubModel):
-    """AgentsReposOwnerRepoTasksPostResponse201PropOwner
-
-    The owner of the repository
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the user"
+    target_url: Union[str, None] = Field(
+        description="The optional link added to the status."
     )
+    updated_at: str = Field()
 
 
-class AgentsReposOwnerRepoTasksPostResponse201PropRepository(GitHubModel):
-    """AgentsReposOwnerRepoTasksPostResponse201PropRepository
+class WebhookStatusPropBranchesItems(GitHubModel):
+    """WebhookStatusPropBranchesItems"""
 
-    The repository this task belongs to
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the repository"
-    )
+    commit: WebhookStatusPropBranchesItemsPropCommit = Field()
+    name: str = Field()
+    protected: bool = Field()
 
 
-class AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItems(GitHubModel):
-    """AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItems
+class WebhookStatusPropBranchesItemsPropCommit(GitHubModel):
+    """WebhookStatusPropBranchesItemsPropCommit"""
 
-    A resource generated by the task
-    """
-
-    provider: Literal["github"] = Field(description="Provider namespace")
-    type: Literal["pull", "branch"] = Field(
-        description="Type of artifact. Available Values: `pull`, `branch`.\n"
-    )
-    data: Union[
-        AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof0,
-        AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof1,
-    ] = Field(description="Resource data (shape depends on type)")
+    sha: Union[str, None] = Field()
+    url: Union[str, None] = Field()
 
 
-class AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof0(
-    GitHubModel
-):
-    """AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof0
+class WebhookStatusPropCommit(GitHubModel):
+    """WebhookStatusPropCommit"""
 
-    A GitHub resource (pull request, issue, etc.)
-    """
-
-    id: int = Field(description="GitHub resource ID")
-    global_id: Missing[str] = Field(default=UNSET, description="GraphQL global ID")
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof1(
-    GitHubModel
-):
-    """AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof1
-
-    A Git branch reference
-    """
-
-    head_ref: str = Field(description="Head branch name")
-    base_ref: str = Field(description="Base branch name")
+    author: Union[WebhookStatusPropCommitPropAuthor, None] = Field(title="User")
+    comments_url: str = Field()
+    commit: WebhookStatusPropCommitPropCommit = Field()
+    committer: Union[WebhookStatusPropCommitPropCommitter, None] = Field(title="User")
+    html_url: str = Field()
+    node_id: str = Field()
+    parents: list[WebhookStatusPropCommitPropParentsItems] = Field()
+    sha: str = Field()
+    url: str = Field()
 
 
-model_rebuild(AgentsReposOwnerRepoTasksPostResponse201)
-model_rebuild(AgentsReposOwnerRepoTasksPostResponse201PropCreatorOneof0)
-model_rebuild(AgentsReposOwnerRepoTasksPostResponse201PropUserCollaboratorsItems)
-model_rebuild(AgentsReposOwnerRepoTasksPostResponse201PropOwner)
-model_rebuild(AgentsReposOwnerRepoTasksPostResponse201PropRepository)
-model_rebuild(AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItems)
-model_rebuild(AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof0)
-model_rebuild(AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof1)
+class WebhookStatusPropCommitPropAuthor(GitHubModel):
+    """User"""
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    login: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+
+
+class WebhookStatusPropCommitPropCommitter(GitHubModel):
+    """User"""
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    login: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+
+
+class WebhookStatusPropCommitPropParentsItems(GitHubModel):
+    """WebhookStatusPropCommitPropParentsItems"""
+
+    html_url: str = Field()
+    sha: str = Field()
+    url: str = Field()
+
+
+class WebhookStatusPropCommitPropCommit(GitHubModel):
+    """WebhookStatusPropCommitPropCommit"""
+
+    author: WebhookStatusPropCommitPropCommitPropAuthor = Field()
+    comment_count: int = Field()
+    committer: WebhookStatusPropCommitPropCommitPropCommitter = Field()
+    message: str = Field()
+    tree: WebhookStatusPropCommitPropCommitPropTree = Field()
+    url: str = Field()
+    verification: WebhookStatusPropCommitPropCommitPropVerification = Field()
+
+
+class WebhookStatusPropCommitPropCommitPropAuthor(GitHubModel):
+    """WebhookStatusPropCommitPropCommitPropAuthor"""
+
+    date: _dt.datetime = Field()
+    email: str = Field()
+    name: str = Field(description="The git author's name.")
+    username: Missing[str] = Field(default=UNSET)
+
+
+class WebhookStatusPropCommitPropCommitPropCommitter(GitHubModel):
+    """WebhookStatusPropCommitPropCommitPropCommitter"""
+
+    date: _dt.datetime = Field()
+    email: str = Field()
+    name: str = Field(description="The git author's name.")
+    username: Missing[str] = Field(default=UNSET)
+
+
+class WebhookStatusPropCommitPropCommitPropTree(GitHubModel):
+    """WebhookStatusPropCommitPropCommitPropTree"""
+
+    sha: str = Field()
+    url: str = Field()
+
+
+class WebhookStatusPropCommitPropCommitPropVerification(GitHubModel):
+    """WebhookStatusPropCommitPropCommitPropVerification"""
+
+    payload: Union[str, None] = Field()
+    reason: Literal[
+        "expired_key",
+        "not_signing_key",
+        "gpgverify_error",
+        "gpgverify_unavailable",
+        "unsigned",
+        "unknown_signature_type",
+        "no_user",
+        "unverified_email",
+        "bad_email",
+        "unknown_key",
+        "malformed_signature",
+        "invalid",
+        "valid",
+        "bad_cert",
+        "ocsp_pending",
+    ] = Field()
+    signature: Union[str, None] = Field()
+    verified: bool = Field()
+    verified_at: Union[str, None] = Field()
+
+
+model_rebuild(WebhookStatus)
+model_rebuild(WebhookStatusPropBranchesItems)
+model_rebuild(WebhookStatusPropBranchesItemsPropCommit)
+model_rebuild(WebhookStatusPropCommit)
+model_rebuild(WebhookStatusPropCommitPropAuthor)
+model_rebuild(WebhookStatusPropCommitPropCommitter)
+model_rebuild(WebhookStatusPropCommitPropParentsItems)
+model_rebuild(WebhookStatusPropCommitPropCommit)
+model_rebuild(WebhookStatusPropCommitPropCommitPropAuthor)
+model_rebuild(WebhookStatusPropCommitPropCommitPropCommitter)
+model_rebuild(WebhookStatusPropCommitPropCommitPropTree)
+model_rebuild(WebhookStatusPropCommitPropCommitPropVerification)
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksPostResponse201",
-    "AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItems",
-    "AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof0",
-    "AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof1",
-    "AgentsReposOwnerRepoTasksPostResponse201PropCreatorOneof0",
-    "AgentsReposOwnerRepoTasksPostResponse201PropOwner",
-    "AgentsReposOwnerRepoTasksPostResponse201PropRepository",
-    "AgentsReposOwnerRepoTasksPostResponse201PropUserCollaboratorsItems",
+    "WebhookStatus",
+    "WebhookStatusPropBranchesItems",
+    "WebhookStatusPropBranchesItemsPropCommit",
+    "WebhookStatusPropCommit",
+    "WebhookStatusPropCommitPropAuthor",
+    "WebhookStatusPropCommitPropCommit",
+    "WebhookStatusPropCommitPropCommitPropAuthor",
+    "WebhookStatusPropCommitPropCommitPropCommitter",
+    "WebhookStatusPropCommitPropCommitPropTree",
+    "WebhookStatusPropCommitPropCommitPropVerification",
+    "WebhookStatusPropCommitPropCommitter",
+    "WebhookStatusPropCommitPropParentsItems",
 )

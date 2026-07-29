@@ -9,58 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class IssuePropLabelsItemsOneof1Type(TypedDict):
-    """IssuePropLabelsItemsOneof1"""
+class IssueCommentMinimizedType(TypedDict):
+    """Minimized Issue Comment
 
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    url: NotRequired[str]
-    name: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    color: NotRequired[Union[str, None]]
-    default: NotRequired[bool]
+    Details about why an issue comment was minimized.
+    """
+
+    reason: Union[str, None]
 
 
-class IssuePropLabelsItemsOneof1TypeForResponse(TypedDict):
-    """IssuePropLabelsItemsOneof1"""
+class IssueCommentMinimizedTypeForResponse(TypedDict):
+    """Minimized Issue Comment
 
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    url: NotRequired[str]
-    name: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    color: NotRequired[Union[str, None]]
-    default: NotRequired[bool]
+    Details about why an issue comment was minimized.
+    """
 
-
-class IssuePropPullRequestType(TypedDict):
-    """IssuePropPullRequest"""
-
-    merged_at: NotRequired[Union[_dt.datetime, None]]
-    diff_url: Union[str, None]
-    html_url: Union[str, None]
-    patch_url: Union[str, None]
-    url: Union[str, None]
-
-
-class IssuePropPullRequestTypeForResponse(TypedDict):
-    """IssuePropPullRequest"""
-
-    merged_at: NotRequired[Union[str, None]]
-    diff_url: Union[str, None]
-    html_url: Union[str, None]
-    patch_url: Union[str, None]
-    url: Union[str, None]
+    reason: Union[str, None]
 
 
 __all__ = (
-    "IssuePropLabelsItemsOneof1Type",
-    "IssuePropLabelsItemsOneof1TypeForResponse",
-    "IssuePropPullRequestType",
-    "IssuePropPullRequestTypeForResponse",
+    "IssueCommentMinimizedType",
+    "IssueCommentMinimizedTypeForResponse",
 )

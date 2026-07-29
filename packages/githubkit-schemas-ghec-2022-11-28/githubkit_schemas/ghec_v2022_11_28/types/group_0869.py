@@ -9,49 +9,150 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0599 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0600 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0618 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0619 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0620 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0621 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0643 import (
+    WebhooksMarketplacePurchaseType,
+    WebhooksMarketplacePurchaseTypeForResponse,
+)
 
 
-class WebhookOrganizationCustomPropertyDeletedType(TypedDict):
-    """organization custom property deleted event"""
+class WebhookMarketplacePurchasePendingChangeType(TypedDict):
+    """marketplace_purchase pending_change event"""
 
-    action: Literal["deleted"]
-    definition: WebhookOrganizationCustomPropertyDeletedPropDefinitionType
-    enterprise: EnterpriseWebhooksType
+    action: Literal["pending_change"]
+    effective_date: str
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    sender: NotRequired[SimpleUserType]
+    marketplace_purchase: WebhooksMarketplacePurchaseType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    previous_marketplace_purchase: NotRequired[
+        WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchaseType
+    ]
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserType
 
 
-class WebhookOrganizationCustomPropertyDeletedTypeForResponse(TypedDict):
-    """organization custom property deleted event"""
+class WebhookMarketplacePurchasePendingChangeTypeForResponse(TypedDict):
+    """marketplace_purchase pending_change event"""
 
-    action: Literal["deleted"]
-    definition: WebhookOrganizationCustomPropertyDeletedPropDefinitionTypeForResponse
-    enterprise: EnterpriseWebhooksTypeForResponse
+    action: Literal["pending_change"]
+    effective_date: str
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    sender: NotRequired[SimpleUserTypeForResponse]
+    marketplace_purchase: WebhooksMarketplacePurchaseTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    previous_marketplace_purchase: NotRequired[
+        WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchaseTypeForResponse
+    ]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: SimpleUserTypeForResponse
 
 
-class WebhookOrganizationCustomPropertyDeletedPropDefinitionType(TypedDict):
-    """WebhookOrganizationCustomPropertyDeletedPropDefinition"""
+class WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchaseType(
+    TypedDict
+):
+    """Marketplace Purchase"""
 
-    property_name: str
+    account: WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccountType
+    billing_cycle: str
+    free_trial_ends_on: Union[str, None]
+    next_billing_date: NotRequired[Union[str, None]]
+    on_free_trial: bool
+    plan: WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlanType
+    unit_count: int
 
 
-class WebhookOrganizationCustomPropertyDeletedPropDefinitionTypeForResponse(TypedDict):
-    """WebhookOrganizationCustomPropertyDeletedPropDefinition"""
+class WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchaseTypeForResponse(
+    TypedDict
+):
+    """Marketplace Purchase"""
 
-    property_name: str
+    account: WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccountTypeForResponse
+    billing_cycle: str
+    free_trial_ends_on: Union[str, None]
+    next_billing_date: NotRequired[Union[str, None]]
+    on_free_trial: bool
+    plan: WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlanTypeForResponse
+    unit_count: int
+
+
+class WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccountType(
+    TypedDict
+):
+    """WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccoun
+    t
+    """
+
+    id: int
+    login: str
+    node_id: str
+    organization_billing_email: Union[str, None]
+    type: str
+
+
+class WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccountTypeForResponse(
+    TypedDict
+):
+    """WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccoun
+    t
+    """
+
+    id: int
+    login: str
+    node_id: str
+    organization_billing_email: Union[str, None]
+    type: str
+
+
+class WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlanType(
+    TypedDict
+):
+    """WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlan"""
+
+    bullets: list[str]
+    description: str
+    has_free_trial: bool
+    id: int
+    monthly_price_in_cents: int
+    name: str
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
+    unit_name: Union[str, None]
+    yearly_price_in_cents: int
+
+
+class WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlanTypeForResponse(
+    TypedDict
+):
+    """WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlan"""
+
+    bullets: list[str]
+    description: str
+    has_free_trial: bool
+    id: int
+    monthly_price_in_cents: int
+    name: str
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
+    unit_name: Union[str, None]
+    yearly_price_in_cents: int
 
 
 __all__ = (
-    "WebhookOrganizationCustomPropertyDeletedPropDefinitionType",
-    "WebhookOrganizationCustomPropertyDeletedPropDefinitionTypeForResponse",
-    "WebhookOrganizationCustomPropertyDeletedType",
-    "WebhookOrganizationCustomPropertyDeletedTypeForResponse",
+    "WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccountType",
+    "WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccountTypeForResponse",
+    "WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlanType",
+    "WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlanTypeForResponse",
+    "WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchaseType",
+    "WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchaseTypeForResponse",
+    "WebhookMarketplacePurchasePendingChangeType",
+    "WebhookMarketplacePurchasePendingChangeTypeForResponse",
 )

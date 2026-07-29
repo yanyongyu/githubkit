@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,15 +16,14 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoNotificationsPutBody(GitHubModel):
-    """ReposOwnerRepoNotificationsPutBody"""
+class ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200(GitHubModel):
+    """ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200"""
 
-    last_read_at: Missing[_dt.datetime] = Field(
-        default=UNSET,
-        description="Describes the last point that notifications were checked. Anything updated since this time will not be marked as read. If you omit this parameter, all notifications are marked as read. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. Default: The current timestamp.",
+    dismissal_review_id: Missing[int] = Field(
+        default=UNSET, description="ID of the dismissal review."
     )
 
 
-model_rebuild(ReposOwnerRepoNotificationsPutBody)
+model_rebuild(ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200)
 
-__all__ = ("ReposOwnerRepoNotificationsPutBody",)
+__all__ = ("ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200",)

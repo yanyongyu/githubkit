@@ -12,21 +12,27 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBodyType(TypedDict):
-    """EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBody"""
+class EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBodyType(TypedDict):
+    """EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBody"""
 
-    revoke_credentials: NotRequired[bool]
+    name: str
+    runner_group_id: int
+    labels: list[str]
+    work_folder: NotRequired[str]
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBodyTypeForResponse(
+class EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBodyTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBody"""
+    """EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBody"""
 
-    revoke_credentials: NotRequired[bool]
+    name: str
+    runner_group_id: int
+    labels: list[str]
+    work_folder: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBodyType",
-    "EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBodyTypeForResponse",
+    "EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBodyType",
+    "EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBodyTypeForResponse",
 )

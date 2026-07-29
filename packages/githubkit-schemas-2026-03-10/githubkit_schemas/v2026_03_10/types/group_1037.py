@@ -9,33 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
-
-from .group_1038 import (
-    InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType,
-    InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse,
-)
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1Type(TypedDict):
-    """InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1"""
+class AppManifestsCodeConversionsPostResponse201Allof1Type(TypedDict):
+    """AppManifestsCodeConversionsPostResponse201Allof1"""
 
-    custom_properties: NotRequired[
-        InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType
-    ]
+    client_id: str
+    client_secret: str
+    webhook_secret: Union[str, None]
+    pem: str
 
 
-class InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1TypeForResponse(
-    TypedDict
-):
-    """InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1"""
+class AppManifestsCodeConversionsPostResponse201Allof1TypeForResponse(TypedDict):
+    """AppManifestsCodeConversionsPostResponse201Allof1"""
 
-    custom_properties: NotRequired[
-        InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse
-    ]
+    client_id: str
+    client_secret: str
+    webhook_secret: Union[str, None]
+    pem: str
 
 
 __all__ = (
-    "InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1Type",
-    "InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1TypeForResponse",
+    "AppManifestsCodeConversionsPostResponse201Allof1Type",
+    "AppManifestsCodeConversionsPostResponse201Allof1TypeForResponse",
 )

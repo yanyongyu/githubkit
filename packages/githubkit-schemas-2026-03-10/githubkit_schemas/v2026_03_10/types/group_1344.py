@@ -9,23 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberLockPutBodyType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberLockPutBody"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody"""
 
-    lock_reason: NotRequired[Literal["off-topic", "too heated", "resolved", "spam"]]
+    integration_id: NotRequired[int]
 
 
-class ReposOwnerRepoIssuesIssueNumberLockPutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberLockPutBody"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody"""
 
-    lock_reason: NotRequired[Literal["off-topic", "too heated", "resolved", "spam"]]
+    integration_id: NotRequired[int]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberLockPutBodyType",
-    "ReposOwnerRepoIssuesIssueNumberLockPutBodyTypeForResponse",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyTypeForResponse",
 )

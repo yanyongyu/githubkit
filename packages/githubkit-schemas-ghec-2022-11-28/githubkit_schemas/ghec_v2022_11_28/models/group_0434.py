@@ -9,52 +9,75 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0432 import Metadata
 
+class ContentTree(GitHubModel):
+    """Content Tree
 
-class Manifest(GitHubModel):
-    """Manifest"""
-
-    name: str = Field(description="The name of the manifest.")
-    file: Missing[ManifestPropFile] = Field(default=UNSET)
-    metadata: Missing[Metadata] = Field(
-        default=UNSET,
-        title="metadata",
-        description="User-defined metadata to store domain-specific information limited to 8 keys with scalar values.",
-    )
-    resolved: Missing[ManifestPropResolved] = Field(
-        default=UNSET, description="A collection of resolved package dependencies."
-    )
-
-
-class ManifestPropFile(GitHubModel):
-    """ManifestPropFile"""
-
-    source_location: Missing[str] = Field(
-        default=UNSET,
-        description="The path of the manifest file relative to the root of the Git repository.",
-    )
-
-
-class ManifestPropResolved(ExtraGitHubModel):
-    """ManifestPropResolved
-
-    A collection of resolved package dependencies.
+    Content Tree
     """
 
+    type: str = Field()
+    size: int = Field()
+    name: str = Field()
+    path: str = Field()
+    sha: str = Field()
+    content: Missing[str] = Field(default=UNSET)
+    url: str = Field()
+    git_url: Union[str, None] = Field()
+    html_url: Union[str, None] = Field()
+    download_url: Union[str, None] = Field()
+    entries: Missing[list[ContentTreePropEntriesItems]] = Field(default=UNSET)
+    encoding: Missing[str] = Field(default=UNSET)
+    links: ContentTreePropLinks = Field(alias="_links")
 
-model_rebuild(Manifest)
-model_rebuild(ManifestPropFile)
-model_rebuild(ManifestPropResolved)
+
+class ContentTreePropLinks(GitHubModel):
+    """ContentTreePropLinks"""
+
+    git: Union[str, None] = Field()
+    html: Union[str, None] = Field()
+    self_: str = Field(alias="self")
+
+
+class ContentTreePropEntriesItems(GitHubModel):
+    """ContentTreePropEntriesItems"""
+
+    type: str = Field()
+    size: int = Field()
+    name: str = Field()
+    path: str = Field()
+    sha: str = Field()
+    url: str = Field()
+    git_url: Union[str, None] = Field()
+    html_url: Union[str, None] = Field()
+    download_url: Union[str, None] = Field()
+    links: ContentTreePropEntriesItemsPropLinks = Field(alias="_links")
+
+
+class ContentTreePropEntriesItemsPropLinks(GitHubModel):
+    """ContentTreePropEntriesItemsPropLinks"""
+
+    git: Union[str, None] = Field()
+    html: Union[str, None] = Field()
+    self_: str = Field(alias="self")
+
+
+model_rebuild(ContentTree)
+model_rebuild(ContentTreePropLinks)
+model_rebuild(ContentTreePropEntriesItems)
+model_rebuild(ContentTreePropEntriesItemsPropLinks)
 
 __all__ = (
-    "Manifest",
-    "ManifestPropFile",
-    "ManifestPropResolved",
+    "ContentTree",
+    "ContentTreePropEntriesItems",
+    "ContentTreePropEntriesItemsPropLinks",
+    "ContentTreePropLinks",
 )

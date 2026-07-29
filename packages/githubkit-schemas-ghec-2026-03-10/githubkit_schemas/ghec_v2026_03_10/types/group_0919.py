@@ -9,42 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0311 import (
-    ProjectsV2StatusUpdateType,
-    ProjectsV2StatusUpdateTypeForResponse,
-)
-from .group_0599 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0600 import (
+from .group_0617 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0618 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0619 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
+from .group_0620 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0651 import WebhooksProjectColumnType, WebhooksProjectColumnTypeForResponse
 
 
-class WebhookProjectsV2StatusUpdateCreatedType(TypedDict):
-    """Projects v2 Status Update Created Event"""
+class WebhookProjectColumnDeletedType(TypedDict):
+    """project_column deleted event"""
 
-    action: Literal["created"]
+    action: Literal["deleted"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
-    projects_v2_status_update: ProjectsV2StatusUpdateType
-    sender: SimpleUserType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    project_column: WebhooksProjectColumnType
+    repository: NotRequired[Union[None, RepositoryWebhooksType]]
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookProjectsV2StatusUpdateCreatedTypeForResponse(TypedDict):
-    """Projects v2 Status Update Created Event"""
+class WebhookProjectColumnDeletedTypeForResponse(TypedDict):
+    """project_column deleted event"""
 
-    action: Literal["created"]
+    action: Literal["deleted"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: OrganizationSimpleWebhooksTypeForResponse
-    projects_v2_status_update: ProjectsV2StatusUpdateTypeForResponse
-    sender: SimpleUserTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    project_column: WebhooksProjectColumnTypeForResponse
+    repository: NotRequired[Union[None, RepositoryWebhooksTypeForResponse]]
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookProjectsV2StatusUpdateCreatedType",
-    "WebhookProjectsV2StatusUpdateCreatedTypeForResponse",
+    "WebhookProjectColumnDeletedType",
+    "WebhookProjectColumnDeletedTypeForResponse",
 )

@@ -9,61 +9,112 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias
 from typing_extensions import NotRequired, TypedDict
 
 
-class GistsGistIdPatchBodyType(TypedDict):
-    """GistsGistIdPatchBody"""
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200Type(TypedDict):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200"""
 
-    description: NotRequired[str]
-    files: NotRequired[GistsGistIdPatchBodyPropFilesType]
-
-
-class GistsGistIdPatchBodyTypeForResponse(TypedDict):
-    """GistsGistIdPatchBody"""
-
-    description: NotRequired[str]
-    files: NotRequired[GistsGistIdPatchBodyPropFilesTypeForResponse]
-
-
-GistsGistIdPatchBodyPropFilesType: TypeAlias = dict[str, Any]
-"""GistsGistIdPatchBodyPropFiles
-
-The gist files to be updated, renamed, or deleted. Each `key` must match the
-current filename
-(including extension) of the targeted gist file. For example: `hello.py`.
-
-To delete a file, set the whole file to null. For example: `hello.py : null`.
-The file will also be
-deleted if the specified object does not contain at least one of `content` or
-`filename`.
-
-Examples:
-    {'hello.rb': {'content': 'blah', 'filename': 'goodbye.rb'}}
-"""
+    organization: NotRequired[
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganizationType
+    ]
+    repository: NotRequired[
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepositoryType
+    ]
+    ruleset: NotRequired[
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRulesetType
+    ]
 
 
-GistsGistIdPatchBodyPropFilesTypeForResponse: TypeAlias = dict[str, Any]
-"""GistsGistIdPatchBodyPropFiles
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200"""
 
-The gist files to be updated, renamed, or deleted. Each `key` must match the
-current filename
-(including extension) of the targeted gist file. For example: `hello.py`.
+    organization: NotRequired[
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganizationTypeForResponse
+    ]
+    repository: NotRequired[
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepositoryTypeForResponse
+    ]
+    ruleset: NotRequired[
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRulesetTypeForResponse
+    ]
 
-To delete a file, set the whole file to null. For example: `hello.py : null`.
-The file will also be
-deleted if the specified object does not contain at least one of `content` or
-`filename`.
 
-Examples:
-    {'hello.rb': {'content': 'blah', 'filename': 'goodbye.rb'}}
-"""
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganizationType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganization"""
+
+    id: NotRequired[int]
+    login: NotRequired[str]
+    avatar_url: NotRequired[str]
+
+
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganizationTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganization"""
+
+    id: NotRequired[int]
+    login: NotRequired[str]
+    avatar_url: NotRequired[str]
+
+
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepositoryType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepository"""
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    full_name: NotRequired[str]
+
+
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepositoryTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepository"""
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    full_name: NotRequired[str]
+
+
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRulesetType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRuleset
+
+    The created or existing ruleset (if create_ruleset was true).
+    """
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    enforcement: NotRequired[str]
+
+
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRulesetTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRuleset
+
+    The created or existing ruleset (if create_ruleset was true).
+    """
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    enforcement: NotRequired[str]
 
 
 __all__ = (
-    "GistsGistIdPatchBodyPropFilesType",
-    "GistsGistIdPatchBodyPropFilesTypeForResponse",
-    "GistsGistIdPatchBodyType",
-    "GistsGistIdPatchBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganizationType",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganizationTypeForResponse",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepositoryType",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepositoryTypeForResponse",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRulesetType",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRulesetTypeForResponse",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200Type",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200TypeForResponse",
 )

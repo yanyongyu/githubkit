@@ -9,51 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
+class CodespacesPermissionsCheckForDevcontainerType(TypedDict):
+    """Codespaces Permissions Check
 
-class StatusType(TypedDict):
-    """Status
-
-    The status of a commit.
+    Permission check result for a given devcontainer config.
     """
 
-    url: str
-    avatar_url: Union[str, None]
-    id: int
-    node_id: str
-    state: str
-    description: Union[str, None]
-    target_url: Union[str, None]
-    context: str
-    created_at: str
-    updated_at: str
-    creator: Union[None, SimpleUserType]
+    accepted: bool
 
 
-class StatusTypeForResponse(TypedDict):
-    """Status
+class CodespacesPermissionsCheckForDevcontainerTypeForResponse(TypedDict):
+    """Codespaces Permissions Check
 
-    The status of a commit.
+    Permission check result for a given devcontainer config.
     """
 
-    url: str
-    avatar_url: Union[str, None]
-    id: int
-    node_id: str
-    state: str
-    description: Union[str, None]
-    target_url: Union[str, None]
-    context: str
-    created_at: str
-    updated_at: str
-    creator: Union[None, SimpleUserTypeForResponse]
+    accepted: bool
 
 
 __all__ = (
-    "StatusType",
-    "StatusTypeForResponse",
+    "CodespacesPermissionsCheckForDevcontainerType",
+    "CodespacesPermissionsCheckForDevcontainerTypeForResponse",
 )

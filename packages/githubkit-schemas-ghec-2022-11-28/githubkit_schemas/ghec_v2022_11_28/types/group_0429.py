@@ -9,44 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0091 import (
-    DependabotAlertPackageType,
-    DependabotAlertPackageTypeForResponse,
-)
+from typing_extensions import TypedDict
 
 
-class DependabotAlertPropDependencyType(TypedDict):
-    """DependabotAlertPropDependency
+class BranchShortType(TypedDict):
+    """Branch Short
 
-    Details for the vulnerable dependency.
+    Branch Short
     """
 
-    package: NotRequired[DependabotAlertPackageType]
-    manifest_path: NotRequired[str]
-    scope: NotRequired[Union[None, Literal["development", "runtime"]]]
-    relationship: NotRequired[
-        Union[None, Literal["unknown", "direct", "transitive", "inconclusive"]]
-    ]
+    name: str
+    commit: BranchShortPropCommitType
+    protected: bool
 
 
-class DependabotAlertPropDependencyTypeForResponse(TypedDict):
-    """DependabotAlertPropDependency
+class BranchShortTypeForResponse(TypedDict):
+    """Branch Short
 
-    Details for the vulnerable dependency.
+    Branch Short
     """
 
-    package: NotRequired[DependabotAlertPackageTypeForResponse]
-    manifest_path: NotRequired[str]
-    scope: NotRequired[Union[None, Literal["development", "runtime"]]]
-    relationship: NotRequired[
-        Union[None, Literal["unknown", "direct", "transitive", "inconclusive"]]
-    ]
+    name: str
+    commit: BranchShortPropCommitTypeForResponse
+    protected: bool
+
+
+class BranchShortPropCommitType(TypedDict):
+    """BranchShortPropCommit"""
+
+    sha: str
+    url: str
+
+
+class BranchShortPropCommitTypeForResponse(TypedDict):
+    """BranchShortPropCommit"""
+
+    sha: str
+    url: str
 
 
 __all__ = (
-    "DependabotAlertPropDependencyType",
-    "DependabotAlertPropDependencyTypeForResponse",
+    "BranchShortPropCommitType",
+    "BranchShortPropCommitTypeForResponse",
+    "BranchShortType",
+    "BranchShortTypeForResponse",
 )

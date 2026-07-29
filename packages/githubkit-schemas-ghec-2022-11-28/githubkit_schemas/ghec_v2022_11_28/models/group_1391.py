@@ -16,14 +16,16 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoActionsRunsRunIdRerunPostBody(GitHubModel):
-    """ReposOwnerRepoActionsRunsRunIdRerunPostBody"""
+class OrgsOrgOutsideCollaboratorsUsernamePutBody(GitHubModel):
+    """OrgsOrgOutsideCollaboratorsUsernamePutBody"""
 
-    enable_debug_logging: Missing[bool] = Field(
-        default=UNSET, description="Whether to enable debug logging for the re-run."
+    async_: Missing[bool] = Field(
+        default=UNSET,
+        alias="async",
+        description="When set to `true`, the request will be performed asynchronously. Returns a 202 status code when the job is successfully queued.",
     )
 
 
-model_rebuild(ReposOwnerRepoActionsRunsRunIdRerunPostBody)
+model_rebuild(OrgsOrgOutsideCollaboratorsUsernamePutBody)
 
-__all__ = ("ReposOwnerRepoActionsRunsRunIdRerunPostBody",)
+__all__ = ("OrgsOrgOutsideCollaboratorsUsernamePutBody",)

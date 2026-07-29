@@ -9,6 +9,9 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,21 +19,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OidcCustomSub(GitHubModel):
-    """Actions OIDC Subject customization
+class ThreadSubscription(GitHubModel):
+    """Thread Subscription
 
-    Actions OIDC Subject customization
+    Thread Subscription
     """
 
-    include_claim_keys: list[str] = Field(
-        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores."
-    )
-    use_immutable_subject: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to opt in to the immutable OIDC subject claim format for the organization. When `true`, new OIDC tokens will use a stable, repository-ID-based `sub` claim instead of the name-based format.",
-    )
+    subscribed: bool = Field()
+    ignored: bool = Field()
+    reason: Union[str, None] = Field()
+    created_at: Union[_dt.datetime, None] = Field()
+    url: str = Field()
+    thread_url: Missing[str] = Field(default=UNSET)
+    repository_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(OidcCustomSub)
+model_rebuild(ThreadSubscription)
 
-__all__ = ("OidcCustomSub",)
+__all__ = ("ThreadSubscription",)

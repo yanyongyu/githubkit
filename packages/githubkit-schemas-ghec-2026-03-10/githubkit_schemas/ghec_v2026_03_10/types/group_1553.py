@@ -9,24 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberMergePutResponse405Type(TypedDict):
-    """ReposOwnerRepoPullsPullNumberMergePutResponse405"""
+class ReposOwnerRepoHooksHookIdConfigPatchBodyType(TypedDict):
+    """ReposOwnerRepoHooksHookIdConfigPatchBody"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    url: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
 
 
-class ReposOwnerRepoPullsPullNumberMergePutResponse405TypeForResponse(TypedDict):
-    """ReposOwnerRepoPullsPullNumberMergePutResponse405"""
+class ReposOwnerRepoHooksHookIdConfigPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoHooksHookIdConfigPatchBody"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    url: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberMergePutResponse405Type",
-    "ReposOwnerRepoPullsPullNumberMergePutResponse405TypeForResponse",
+    "ReposOwnerRepoHooksHookIdConfigPatchBodyType",
+    "ReposOwnerRepoHooksHookIdConfigPatchBodyTypeForResponse",
 )

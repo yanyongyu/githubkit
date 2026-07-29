@@ -9,36 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody(GitHubModel):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody"""
+class ReposOwnerRepoStacksPostResponse422(GitHubModel):
+    """Validation Error
 
-    metadata: Missing[
-        UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
-    ] = Field(default=UNSET, description="Updated resource-specific metadata.")
-
-
-class UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata(
-    ExtraGitHubModel
-):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
-
-    Updated resource-specific metadata.
+    Validation Error
     """
 
+    message: str = Field()
+    documentation_url: str = Field()
+    errors: Missing[list[ReposOwnerRepoStacksPostResponse422PropErrorsItems]] = Field(
+        default=UNSET
+    )
 
-model_rebuild(UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody)
-model_rebuild(
-    UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
-)
+
+class ReposOwnerRepoStacksPostResponse422PropErrorsItems(GitHubModel):
+    """ReposOwnerRepoStacksPostResponse422PropErrorsItems"""
+
+    resource: Missing[str] = Field(default=UNSET)
+    field: Missing[str] = Field(default=UNSET)
+    message: Missing[str] = Field(default=UNSET)
+    code: str = Field()
+    index: Missing[int] = Field(default=UNSET)
+    value: Missing[Union[str, None, int, None, list[Union[str, int]], None]] = Field(
+        default=UNSET
+    )
+
+
+model_rebuild(ReposOwnerRepoStacksPostResponse422)
+model_rebuild(ReposOwnerRepoStacksPostResponse422PropErrorsItems)
 
 __all__ = (
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody",
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata",
+    "ReposOwnerRepoStacksPostResponse422",
+    "ReposOwnerRepoStacksPostResponse422PropErrorsItems",
 )

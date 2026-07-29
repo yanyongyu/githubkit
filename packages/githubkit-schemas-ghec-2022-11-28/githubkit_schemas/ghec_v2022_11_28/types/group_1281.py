@@ -12,19 +12,19 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyType(TypedDict):
-    """OrgsOrgCodeSecurityConfigurationsDetachDeleteBody"""
+class OrgsOrgActionsPermissionsRepositoriesPutBodyType(TypedDict):
+    """OrgsOrgActionsPermissionsRepositoriesPutBody"""
 
     selected_repository_ids: list[int]
 
 
-class OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyTypeForResponse(TypedDict):
-    """OrgsOrgCodeSecurityConfigurationsDetachDeleteBody"""
+class OrgsOrgActionsPermissionsRepositoriesPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsPermissionsRepositoriesPutBody"""
 
     selected_repository_ids: list[int]
 
 
 __all__ = (
-    "OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyType",
-    "OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyTypeForResponse",
+    "OrgsOrgActionsPermissionsRepositoriesPutBodyType",
+    "OrgsOrgActionsPermissionsRepositoriesPutBodyTypeForResponse",
 )

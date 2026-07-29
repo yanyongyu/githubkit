@@ -9,29 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0108 import (
-    ActionsHostedRunnerMachineSpecType,
-    ActionsHostedRunnerMachineSpecTypeForResponse,
-)
+
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyType(TypedDict):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody"""
+
+    policy_state: Literal[
+        "enabled_for_all_orgs",
+        "disabled_for_all_orgs",
+        "enabled_for_selected_orgs",
+        "configured_by_org_admins",
+    ]
 
 
-class OrgsOrgActionsHostedRunnersMachineSizesGetResponse200Type(TypedDict):
-    """OrgsOrgActionsHostedRunnersMachineSizesGetResponse200"""
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody"""
 
-    total_count: int
-    machine_specs: list[ActionsHostedRunnerMachineSpecType]
-
-
-class OrgsOrgActionsHostedRunnersMachineSizesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsHostedRunnersMachineSizesGetResponse200"""
-
-    total_count: int
-    machine_specs: list[ActionsHostedRunnerMachineSpecTypeForResponse]
+    policy_state: Literal[
+        "enabled_for_all_orgs",
+        "disabled_for_all_orgs",
+        "enabled_for_selected_orgs",
+        "configured_by_org_admins",
+    ]
 
 
 __all__ = (
-    "OrgsOrgActionsHostedRunnersMachineSizesGetResponse200Type",
-    "OrgsOrgActionsHostedRunnersMachineSizesGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyType",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyTypeForResponse",
 )

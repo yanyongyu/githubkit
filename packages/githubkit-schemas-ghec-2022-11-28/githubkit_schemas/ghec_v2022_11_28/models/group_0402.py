@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Annotated, Literal, Union
 
 from pydantic import Field
 
@@ -17,46 +18,57 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0076 import SimpleRepository
+from .group_0003 import SimpleUser
+from .group_0072 import CodeScanningAlertRuleSummary
+from .group_0073 import CodeScanningAnalysisTool
+from .group_0075 import CodeScanningAlertInstance
 
 
-class CodeScanningVariantAnalysisRepoTask(GitHubModel):
-    """CodeScanningVariantAnalysisRepoTask"""
+class CodeScanningAlertItems(GitHubModel):
+    """CodeScanningAlertItems"""
 
-    repository: SimpleRepository = Field(
-        title="Simple Repository", description="A GitHub repository."
+    number: int = Field(description="The security alert number.")
+    created_at: _dt.datetime = Field(
+        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
     )
-    analysis_status: Literal[
-        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
+    updated_at: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    )
+    url: str = Field(description="The REST API URL of the alert resource.")
+    html_url: str = Field(description="The GitHub URL of the alert resource.")
+    instances_url: str = Field(
+        description="The REST API URL for fetching the list of instances for an alert."
+    )
+    state: Union[None, Literal["open", "dismissed", "fixed"]] = Field(
+        description="State of a code scanning alert."
+    )
+    fixed_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="The time that the alert was no longer detected and was considered fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    )
+    dismissed_by: Union[None, SimpleUser] = Field()
+    dismissed_at: Union[_dt.datetime, None] = Field(
+        description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    )
+    dismissed_reason: Union[
+        None, Literal["false positive", "won't fix", "used in tests"]
     ] = Field(
-        description="The new status of the CodeQL variant analysis repository task."
+        description="**Required when the state is dismissed.** The reason for dismissing or closing the alert."
     )
-    artifact_size_in_bytes: Missing[int] = Field(
-        default=UNSET,
-        description="The size of the artifact. This is only available for successful analyses.",
+    dismissed_comment: Missing[Union[Annotated[str, Field(max_length=280)], None]] = (
+        Field(
+            default=UNSET,
+            description="The dismissal comment associated with the dismissal of the alert.",
+        )
     )
-    result_count: Missing[int] = Field(
-        default=UNSET,
-        description="The number of results in the case of a successful analysis. This is only available for successful analyses.",
-    )
-    failure_message: Missing[str] = Field(
-        default=UNSET,
-        description="The reason of the failure of this repo task. This is only available if the repository task has failed.",
-    )
-    database_commit_sha: Missing[str] = Field(
-        default=UNSET,
-        description="The SHA of the commit the CodeQL database was built against. This is only available for successful analyses.",
-    )
-    source_location_prefix: Missing[str] = Field(
-        default=UNSET,
-        description="The source location prefix to use. This is only available for successful analyses.",
-    )
-    artifact_url: Missing[str] = Field(
-        default=UNSET,
-        description="The URL of the artifact. This is only available for successful analyses.",
-    )
+    rule: CodeScanningAlertRuleSummary = Field()
+    tool: CodeScanningAnalysisTool = Field()
+    most_recent_instance: CodeScanningAlertInstance = Field()
+    dismissal_approved_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    assignees: Missing[list[SimpleUser]] = Field(default=UNSET)
 
 
-model_rebuild(CodeScanningVariantAnalysisRepoTask)
+model_rebuild(CodeScanningAlertItems)
 
-__all__ = ("CodeScanningVariantAnalysisRepoTask",)
+__all__ = ("CodeScanningAlertItems",)

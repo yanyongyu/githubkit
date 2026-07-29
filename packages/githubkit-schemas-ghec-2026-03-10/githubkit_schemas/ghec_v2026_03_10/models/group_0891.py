@@ -18,18 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0598 import EnterpriseWebhooks
-from .group_0599 import SimpleInstallation
-from .group_0600 import OrganizationSimpleWebhooks
-from .group_0601 import RepositoryWebhooks
-from .group_0630 import WebhooksProjectCard
+from .group_0617 import EnterpriseWebhooks
+from .group_0618 import SimpleInstallation
+from .group_0619 import OrganizationSimpleWebhooks
+from .group_0620 import RepositoryWebhooks
+from .group_0647 import WebhooksMembership
 
 
-class WebhookProjectCardConverted(GitHubModel):
-    """project_card converted event"""
+class WebhookOrganizationMemberAdded(GitHubModel):
+    """organization member_added event"""
 
-    action: Literal["converted"] = Field()
-    changes: WebhookProjectCardConvertedPropChanges = Field()
+    action: Literal["member_added"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -40,12 +39,14 @@ class WebhookProjectCardConverted(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
+    membership: WebhooksMembership = Field(
+        title="Membership",
+        description="The membership between the user and the organization. Not present when the action is `member_invited`.",
+    )
+    organization: OrganizationSimpleWebhooks = Field(
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    project_card: WebhooksProjectCard = Field(title="Project Card")
     repository: Missing[RepositoryWebhooks] = Field(
         default=UNSET,
         title="Repository",
@@ -54,24 +55,6 @@ class WebhookProjectCardConverted(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookProjectCardConvertedPropChanges(GitHubModel):
-    """WebhookProjectCardConvertedPropChanges"""
+model_rebuild(WebhookOrganizationMemberAdded)
 
-    note: WebhookProjectCardConvertedPropChangesPropNote = Field()
-
-
-class WebhookProjectCardConvertedPropChangesPropNote(GitHubModel):
-    """WebhookProjectCardConvertedPropChangesPropNote"""
-
-    from_: str = Field(alias="from")
-
-
-model_rebuild(WebhookProjectCardConverted)
-model_rebuild(WebhookProjectCardConvertedPropChanges)
-model_rebuild(WebhookProjectCardConvertedPropChangesPropNote)
-
-__all__ = (
-    "WebhookProjectCardConverted",
-    "WebhookProjectCardConvertedPropChanges",
-    "WebhookProjectCardConvertedPropChangesPropNote",
-)
+__all__ = ("WebhookOrganizationMemberAdded",)

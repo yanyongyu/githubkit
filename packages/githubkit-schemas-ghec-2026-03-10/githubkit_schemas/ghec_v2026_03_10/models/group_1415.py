@@ -11,21 +11,39 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBody(GitHubModel):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBody
+class OrgsOrgSecretScanningCustomPatternsPostResponse422(GitHubModel):
+    """OrgsOrgSecretScanningCustomPatternsPostResponse422"""
 
-    Examples:
-        {'apps': ['my-app']}
-    """
-
-    apps: list[str] = Field(
-        description="The GitHub Apps that have push access to this branch. Use the slugified version of the app name. **Note**: The list of users, apps, and teams in total is limited to 100 items."
+    message: Missing[str] = Field(
+        default=UNSET, description="A summary message describing the error."
+    )
+    validation_errors: Missing[
+        OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors
+    ] = Field(
+        default=UNSET,
+        description="A map of validation errors keyed by the zero-based index of the pattern that failed.",
     )
 
 
-model_rebuild(ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBody)
+class OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors(
+    ExtraGitHubModel
+):
+    """OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors
 
-__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBody",)
+    A map of validation errors keyed by the zero-based index of the pattern that
+    failed.
+    """
+
+
+model_rebuild(OrgsOrgSecretScanningCustomPatternsPostResponse422)
+model_rebuild(OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors)
+
+__all__ = (
+    "OrgsOrgSecretScanningCustomPatternsPostResponse422",
+    "OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors",
+)

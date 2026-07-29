@@ -9,35 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrganizationCustomRepositoryRoleUpdateSchema(GitHubModel):
-    """OrganizationCustomRepositoryRoleUpdateSchema"""
+class CopilotSpaceResource(GitHubModel):
+    """Copilot Space Resource
 
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the custom role."
+    A resource attached to a Copilot Space.
+    """
+
+    id: int = Field(description="The unique identifier of the resource.")
+    resource_type: Literal[
+        "repository",
+        "github_file",
+        "free_text",
+        "github_issue",
+        "github_pull_request",
+        "media_content",
+        "uploaded_text_file",
+    ] = Field(description="The type of the resource.")
+    copilot_chat_attachment_id: Missing[Union[int, None]] = Field(
+        default=UNSET, description="The ID of the associated chat attachment, if any."
     )
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="A short description about who this role is for or what permissions it grants.",
+    metadata: CopilotSpaceResourcePropMetadata = Field(
+        description="Resource-specific metadata. The keys and values depend on the resource type."
     )
-    base_role: Missing[Literal["read", "triage", "write", "maintain"]] = Field(
-        default=UNSET,
-        description="The system role from which this role inherits permissions.",
+    created_at: _dt.datetime = Field(
+        description="The date and time the resource was created."
     )
-    permissions: Missing[list[str]] = Field(
-        default=UNSET,
-        description="A list of additional permissions included in this role.",
+    updated_at: _dt.datetime = Field(
+        description="The date and time the resource was last updated."
     )
 
 
-model_rebuild(OrganizationCustomRepositoryRoleUpdateSchema)
+class CopilotSpaceResourcePropMetadata(ExtraGitHubModel):
+    """CopilotSpaceResourcePropMetadata
 
-__all__ = ("OrganizationCustomRepositoryRoleUpdateSchema",)
+    Resource-specific metadata. The keys and values depend on the resource type.
+    """
+
+
+model_rebuild(CopilotSpaceResource)
+model_rebuild(CopilotSpaceResourcePropMetadata)
+
+__all__ = (
+    "CopilotSpaceResource",
+    "CopilotSpaceResourcePropMetadata",
+)

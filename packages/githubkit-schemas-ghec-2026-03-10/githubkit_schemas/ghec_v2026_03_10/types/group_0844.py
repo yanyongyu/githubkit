@@ -13,41 +13,47 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0598 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0599 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0600 import (
+from .group_0617 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0618 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0619 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0601 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0614 import WebhooksLabelType, WebhooksLabelTypeForResponse
+from .group_0620 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0639 import WebhooksMilestoneType, WebhooksMilestoneTypeForResponse
+from .group_0845 import (
+    WebhookIssuesMilestonedPropIssueType,
+    WebhookIssuesMilestonedPropIssueTypeForResponse,
+)
 
 
-class WebhookLabelCreatedType(TypedDict):
-    """label created event"""
+class WebhookIssuesMilestonedType(TypedDict):
+    """issues milestoned event"""
 
-    action: Literal["created"]
+    action: Literal["milestoned"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    label: WebhooksLabelType
+    issue: WebhookIssuesMilestonedPropIssueType
+    milestone: WebhooksMilestoneType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserType]
+    sender: SimpleUserType
 
 
-class WebhookLabelCreatedTypeForResponse(TypedDict):
-    """label created event"""
+class WebhookIssuesMilestonedTypeForResponse(TypedDict):
+    """issues milestoned event"""
 
-    action: Literal["created"]
+    action: Literal["milestoned"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    label: WebhooksLabelTypeForResponse
+    issue: WebhookIssuesMilestonedPropIssueTypeForResponse
+    milestone: WebhooksMilestoneTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
-    sender: NotRequired[SimpleUserTypeForResponse]
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookLabelCreatedType",
-    "WebhookLabelCreatedTypeForResponse",
+    "WebhookIssuesMilestonedType",
+    "WebhookIssuesMilestonedTypeForResponse",
 )

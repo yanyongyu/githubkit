@@ -11,37 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_1426 import (
-    UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType,
-    UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse,
-)
+
+class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1Type(TypedDict):
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1"""
+
+    reviewers: NotRequired[list[str]]
+    team_reviewers: list[str]
 
 
-class UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1Type(
+class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1TypeForResponse(
     TypedDict
 ):
-    """UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAl
-    lof1
-    """
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1"""
 
-    custom_properties: NotRequired[
-        UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType
-    ]
-
-
-class UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1TypeForResponse(
-    TypedDict
-):
-    """UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAl
-    lof1
-    """
-
-    custom_properties: NotRequired[
-        UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse
-    ]
+    reviewers: NotRequired[list[str]]
+    team_reviewers: list[str]
 
 
 __all__ = (
-    "UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1Type",
-    "UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1TypeForResponse",
+    "ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1Type",
+    "ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1TypeForResponse",
 )

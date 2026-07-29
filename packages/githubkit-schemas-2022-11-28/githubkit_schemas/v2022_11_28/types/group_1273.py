@@ -9,35 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
+from typing import Any, TypeAlias
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoCodeScanningSarifsPostBodyType(TypedDict):
-    """ReposOwnerRepoCodeScanningSarifsPostBody"""
+class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType(TypedDict):
+    """ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody"""
 
-    commit_sha: str
     ref: str
-    sarif: str
-    checkout_uri: NotRequired[str]
-    started_at: NotRequired[_dt.datetime]
-    tool_name: NotRequired[str]
-    validate_: NotRequired[bool]
+    inputs: NotRequired[
+        ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType
+    ]
+    return_run_details: NotRequired[bool]
 
 
-class ReposOwnerRepoCodeScanningSarifsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoCodeScanningSarifsPostBody"""
+class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody"""
 
-    commit_sha: str
     ref: str
-    sarif: str
-    checkout_uri: NotRequired[str]
-    started_at: NotRequired[str]
-    tool_name: NotRequired[str]
-    validate_: NotRequired[bool]
+    inputs: NotRequired[
+        ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsTypeForResponse
+    ]
+    return_run_details: NotRequired[bool]
+
+
+ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType: TypeAlias = (
+    dict[str, Any]
+)
+"""ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs
+
+Input keys and values configured in the workflow file. The maximum number of
+properties is 25. Any default properties configured in the workflow file will be
+used when `inputs` are omitted.
+"""
+
+
+ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs
+
+Input keys and values configured in the workflow file. The maximum number of
+properties is 25. Any default properties configured in the workflow file will be
+used when `inputs` are omitted.
+"""
 
 
 __all__ = (
-    "ReposOwnerRepoCodeScanningSarifsPostBodyType",
-    "ReposOwnerRepoCodeScanningSarifsPostBodyTypeForResponse",
+    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType",
+    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsTypeForResponse",
+    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType",
+    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyTypeForResponse",
 )

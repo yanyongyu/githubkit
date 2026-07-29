@@ -18,42 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UserMigrationsPostBody(GitHubModel):
-    """UserMigrationsPostBody"""
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody"""
 
-    lock_repositories: Missing[bool] = Field(
-        default=UNSET,
-        description="Lock the repositories being migrated at the start of the migration",
+    body: Missing[str] = Field(
+        default=UNSET, description="The body text of the pull request review"
     )
-    exclude_metadata: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether metadata should be excluded and only git source should be included for the migration.",
+    event: Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"] = Field(
+        description="The review action you want to perform. The review actions include: `APPROVE`, `REQUEST_CHANGES`, or `COMMENT`. When you leave this blank, the API returns _HTTP 422 (Unrecognizable entity)_ and sets the review action state to `PENDING`, which means you will need to re-submit the pull request review using a review action."
     )
-    exclude_git_data: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether the repository git data should be excluded from the migration.",
-    )
-    exclude_attachments: Missing[bool] = Field(
-        default=UNSET, description="Do not include attachments in the migration"
-    )
-    exclude_releases: Missing[bool] = Field(
-        default=UNSET, description="Do not include releases in the migration"
-    )
-    exclude_owner_projects: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether projects owned by the organization or users should be excluded.",
-    )
-    org_metadata_only: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether this should only include organization metadata (repositories array should be empty and will ignore other flags).",
-    )
-    exclude: Missing[list[Literal["repositories"]]] = Field(
-        default=UNSET,
-        description="Exclude attributes from the API response to improve performance",
-    )
-    repositories: list[str] = Field()
 
 
-model_rebuild(UserMigrationsPostBody)
+model_rebuild(ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody)
 
-__all__ = ("UserMigrationsPostBody",)
+__all__ = ("ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody",)

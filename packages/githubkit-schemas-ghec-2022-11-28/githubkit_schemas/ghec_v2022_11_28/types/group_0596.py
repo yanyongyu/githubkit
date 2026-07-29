@@ -9,33 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing_extensions import TypedDict
-
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class StarredRepositoryType(TypedDict):
-    """Starred Repository
+class SearchResultTextMatchesItemsType(TypedDict):
+    """SearchResultTextMatchesItems"""
 
-    Starred Repository
-    """
+    object_url: NotRequired[str]
+    object_type: NotRequired[Union[str, None]]
+    property_: NotRequired[str]
+    fragment: NotRequired[str]
+    matches: NotRequired[list[SearchResultTextMatchesItemsPropMatchesItemsType]]
 
-    starred_at: _dt.datetime
-    repo: RepositoryType
+
+class SearchResultTextMatchesItemsTypeForResponse(TypedDict):
+    """SearchResultTextMatchesItems"""
+
+    object_url: NotRequired[str]
+    object_type: NotRequired[Union[str, None]]
+    property_: NotRequired[str]
+    fragment: NotRequired[str]
+    matches: NotRequired[
+        list[SearchResultTextMatchesItemsPropMatchesItemsTypeForResponse]
+    ]
 
 
-class StarredRepositoryTypeForResponse(TypedDict):
-    """Starred Repository
+class SearchResultTextMatchesItemsPropMatchesItemsType(TypedDict):
+    """SearchResultTextMatchesItemsPropMatchesItems"""
 
-    Starred Repository
-    """
+    text: NotRequired[str]
+    indices: NotRequired[list[int]]
 
-    starred_at: str
-    repo: RepositoryTypeForResponse
+
+class SearchResultTextMatchesItemsPropMatchesItemsTypeForResponse(TypedDict):
+    """SearchResultTextMatchesItemsPropMatchesItems"""
+
+    text: NotRequired[str]
+    indices: NotRequired[list[int]]
 
 
 __all__ = (
-    "StarredRepositoryType",
-    "StarredRepositoryTypeForResponse",
+    "SearchResultTextMatchesItemsPropMatchesItemsType",
+    "SearchResultTextMatchesItemsPropMatchesItemsTypeForResponse",
+    "SearchResultTextMatchesItemsType",
+    "SearchResultTextMatchesItemsTypeForResponse",
 )

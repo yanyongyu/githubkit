@@ -13,41 +13,45 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0598 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0599 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0600 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0629 import (
-    PersonalAccessTokenRequestType,
-    PersonalAccessTokenRequestTypeForResponse,
-)
+from .group_0617 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0618 import SimpleInstallationType, SimpleInstallationTypeForResponse
 
 
-class WebhookPersonalAccessTokenRequestDeniedType(TypedDict):
-    """personal_access_token_request denied event"""
+class WebhookOrganizationCustomPropertyDeletedType(TypedDict):
+    """organization custom property deleted event"""
 
-    action: Literal["denied"]
-    personal_access_token_request: PersonalAccessTokenRequestType
-    organization: OrganizationSimpleWebhooksType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    sender: SimpleUserType
-    installation: SimpleInstallationType
+    action: Literal["deleted"]
+    definition: WebhookOrganizationCustomPropertyDeletedPropDefinitionType
+    enterprise: EnterpriseWebhooksType
+    installation: NotRequired[SimpleInstallationType]
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookPersonalAccessTokenRequestDeniedTypeForResponse(TypedDict):
-    """personal_access_token_request denied event"""
+class WebhookOrganizationCustomPropertyDeletedTypeForResponse(TypedDict):
+    """organization custom property deleted event"""
 
-    action: Literal["denied"]
-    personal_access_token_request: PersonalAccessTokenRequestTypeForResponse
-    organization: OrganizationSimpleWebhooksTypeForResponse
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    sender: SimpleUserTypeForResponse
-    installation: SimpleInstallationTypeForResponse
+    action: Literal["deleted"]
+    definition: WebhookOrganizationCustomPropertyDeletedPropDefinitionTypeForResponse
+    enterprise: EnterpriseWebhooksTypeForResponse
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    sender: NotRequired[SimpleUserTypeForResponse]
+
+
+class WebhookOrganizationCustomPropertyDeletedPropDefinitionType(TypedDict):
+    """WebhookOrganizationCustomPropertyDeletedPropDefinition"""
+
+    property_name: str
+
+
+class WebhookOrganizationCustomPropertyDeletedPropDefinitionTypeForResponse(TypedDict):
+    """WebhookOrganizationCustomPropertyDeletedPropDefinition"""
+
+    property_name: str
 
 
 __all__ = (
-    "WebhookPersonalAccessTokenRequestDeniedType",
-    "WebhookPersonalAccessTokenRequestDeniedTypeForResponse",
+    "WebhookOrganizationCustomPropertyDeletedPropDefinitionType",
+    "WebhookOrganizationCustomPropertyDeletedPropDefinitionTypeForResponse",
+    "WebhookOrganizationCustomPropertyDeletedType",
+    "WebhookOrganizationCustomPropertyDeletedTypeForResponse",
 )

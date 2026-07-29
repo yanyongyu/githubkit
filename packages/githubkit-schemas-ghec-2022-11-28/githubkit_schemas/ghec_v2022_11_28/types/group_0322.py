@@ -9,57 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
 
-class ProjectsV2FieldIterationConfigurationType(TypedDict):
-    """ProjectsV2FieldIterationConfiguration
+class PullRequestSimplePropHeadType(TypedDict):
+    """PullRequestSimplePropHead"""
 
-    The configuration for iteration fields.
-    """
-
-    start_date: NotRequired[_dt.date]
-    duration: NotRequired[int]
-    iterations: NotRequired[
-        list[ProjectsV2FieldIterationConfigurationPropIterationsItemsType]
-    ]
+    label: Union[str, None]
+    ref: str
+    repo: Union[None, RepositoryType]
+    sha: str
+    user: Union[None, SimpleUserType]
 
 
-class ProjectsV2FieldIterationConfigurationTypeForResponse(TypedDict):
-    """ProjectsV2FieldIterationConfiguration
+class PullRequestSimplePropHeadTypeForResponse(TypedDict):
+    """PullRequestSimplePropHead"""
 
-    The configuration for iteration fields.
-    """
-
-    start_date: NotRequired[str]
-    duration: NotRequired[int]
-    iterations: NotRequired[
-        list[ProjectsV2FieldIterationConfigurationPropIterationsItemsTypeForResponse]
-    ]
+    label: Union[str, None]
+    ref: str
+    repo: Union[None, RepositoryTypeForResponse]
+    sha: str
+    user: Union[None, SimpleUserTypeForResponse]
 
 
-class ProjectsV2FieldIterationConfigurationPropIterationsItemsType(TypedDict):
-    """ProjectsV2FieldIterationConfigurationPropIterationsItems"""
+class PullRequestSimplePropBaseType(TypedDict):
+    """PullRequestSimplePropBase"""
 
-    title: NotRequired[str]
-    start_date: NotRequired[_dt.date]
-    duration: NotRequired[int]
+    label: str
+    ref: str
+    repo: RepositoryType
+    sha: str
+    user: Union[None, SimpleUserType]
 
 
-class ProjectsV2FieldIterationConfigurationPropIterationsItemsTypeForResponse(
-    TypedDict
-):
-    """ProjectsV2FieldIterationConfigurationPropIterationsItems"""
+class PullRequestSimplePropBaseTypeForResponse(TypedDict):
+    """PullRequestSimplePropBase"""
 
-    title: NotRequired[str]
-    start_date: NotRequired[str]
-    duration: NotRequired[int]
+    label: str
+    ref: str
+    repo: RepositoryTypeForResponse
+    sha: str
+    user: Union[None, SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "ProjectsV2FieldIterationConfigurationPropIterationsItemsType",
-    "ProjectsV2FieldIterationConfigurationPropIterationsItemsTypeForResponse",
-    "ProjectsV2FieldIterationConfigurationType",
-    "ProjectsV2FieldIterationConfigurationTypeForResponse",
+    "PullRequestSimplePropBaseType",
+    "PullRequestSimplePropBaseTypeForResponse",
+    "PullRequestSimplePropHeadType",
+    "PullRequestSimplePropHeadTypeForResponse",
 )

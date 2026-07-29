@@ -9,221 +9,68 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Any, TypeAlias, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0001 import CvssSeveritiesType, CvssSeveritiesTypeForResponse
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0535 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0536 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0537 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0538 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryType(TypedDict):
-    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisory
+class WebhookRepositoryDispatchSampleType(TypedDict):
+    """repository_dispatch event"""
 
-    The details of the security advisory, including summary, description, and
-    severity.
-    """
+    action: str
+    branch: str
+    client_payload: Union[WebhookRepositoryDispatchSamplePropClientPayloadType, None]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: SimpleInstallationType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
-    cvss: WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvssType
-    cvss_severities: NotRequired[Union[CvssSeveritiesType, None]]
-    cwes: list[WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItemsType]
-    description: str
-    ghsa_id: str
-    identifiers: list[
-        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItemsType
+
+class WebhookRepositoryDispatchSampleTypeForResponse(TypedDict):
+    """repository_dispatch event"""
+
+    action: str
+    branch: str
+    client_payload: Union[
+        WebhookRepositoryDispatchSamplePropClientPayloadTypeForResponse, None
     ]
-    published_at: str
-    references: list[
-        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItemsType
-    ]
-    severity: str
-    summary: str
-    updated_at: str
-    vulnerabilities: list[
-        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsType
-    ]
-    withdrawn_at: str
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: SimpleInstallationTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
-class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryTypeForResponse(TypedDict):
-    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisory
+WebhookRepositoryDispatchSamplePropClientPayloadType: TypeAlias = dict[str, Any]
+"""WebhookRepositoryDispatchSamplePropClientPayload
 
-    The details of the security advisory, including summary, description, and
-    severity.
-    """
-
-    cvss: WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvssTypeForResponse
-    cvss_severities: NotRequired[Union[CvssSeveritiesTypeForResponse, None]]
-    cwes: list[
-        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItemsTypeForResponse
-    ]
-    description: str
-    ghsa_id: str
-    identifiers: list[
-        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItemsTypeForResponse
-    ]
-    published_at: str
-    references: list[
-        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItemsTypeForResponse
-    ]
-    severity: str
-    summary: str
-    updated_at: str
-    vulnerabilities: list[
-        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsTypeForResponse
-    ]
-    withdrawn_at: str
+The `client_payload` that was specified in the `POST
+/repos/{owner}/{repo}/dispatches` request body.
+"""
 
 
-class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvssType(TypedDict):
-    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvss"""
+WebhookRepositoryDispatchSamplePropClientPayloadTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""WebhookRepositoryDispatchSamplePropClientPayload
 
-    score: float
-    vector_string: Union[str, None]
-
-
-class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvssTypeForResponse(
-    TypedDict
-):
-    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvss"""
-
-    score: float
-    vector_string: Union[str, None]
-
-
-class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItemsType(TypedDict):
-    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItems"""
-
-    cwe_id: str
-    name: str
-
-
-class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItemsTypeForResponse(
-    TypedDict
-):
-    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItems"""
-
-    cwe_id: str
-    name: str
-
-
-class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItemsType(
-    TypedDict
-):
-    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItems"""
-
-    type: str
-    value: str
-
-
-class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItemsTypeForResponse(
-    TypedDict
-):
-    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItems"""
-
-    type: str
-    value: str
-
-
-class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItemsType(
-    TypedDict
-):
-    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItems"""
-
-    url: str
-
-
-class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItemsTypeForResponse(
-    TypedDict
-):
-    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItems"""
-
-    url: str
-
-
-class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsType(
-    TypedDict
-):
-    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItems"""
-
-    first_patched_version: Union[
-        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType,
-        None,
-    ]
-    package: WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType
-    severity: str
-    vulnerable_version_range: str
-
-
-class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsTypeForResponse(
-    TypedDict
-):
-    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItems"""
-
-    first_patched_version: Union[
-        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionTypeForResponse,
-        None,
-    ]
-    package: WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackageTypeForResponse
-    severity: str
-    vulnerable_version_range: str
-
-
-class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType(
-    TypedDict
-):
-    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsProp
-    FirstPatchedVersion
-    """
-
-    identifier: str
-
-
-class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionTypeForResponse(
-    TypedDict
-):
-    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsProp
-    FirstPatchedVersion
-    """
-
-    identifier: str
-
-
-class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType(
-    TypedDict
-):
-    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsProp
-    Package
-    """
-
-    ecosystem: str
-    name: str
-
-
-class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackageTypeForResponse(
-    TypedDict
-):
-    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsProp
-    Package
-    """
-
-    ecosystem: str
-    name: str
+The `client_payload` that was specified in the `POST
+/repos/{owner}/{repo}/dispatches` request body.
+"""
 
 
 __all__ = (
-    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvssType",
-    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvssTypeForResponse",
-    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItemsType",
-    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItemsTypeForResponse",
-    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItemsType",
-    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItemsTypeForResponse",
-    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItemsType",
-    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItemsTypeForResponse",
-    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType",
-    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionTypeForResponse",
-    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType",
-    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackageTypeForResponse",
-    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsType",
-    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsTypeForResponse",
-    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryType",
-    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryTypeForResponse",
+    "WebhookRepositoryDispatchSamplePropClientPayloadType",
+    "WebhookRepositoryDispatchSamplePropClientPayloadTypeForResponse",
+    "WebhookRepositoryDispatchSampleType",
+    "WebhookRepositoryDispatchSampleTypeForResponse",
 )

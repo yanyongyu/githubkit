@@ -9,99 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_1080 import (
-    AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0Type,
-    AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0TypeForResponse,
-    AgentsTasksTaskIdGetResponse200Allof0PropRepositoryType,
-    AgentsTasksTaskIdGetResponse200Allof0PropRepositoryTypeForResponse,
-    AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsType,
-    AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsTypeForResponse,
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0618 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0619 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0620 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_1081 import (
-    AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsType,
-    AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsTypeForResponse,
-    AgentsTasksTaskIdGetResponse200Allof0PropOwnerType,
-    AgentsTasksTaskIdGetResponse200Allof0PropOwnerTypeForResponse,
-)
+from .group_0621 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class AgentsTasksTaskIdGetResponse200Allof0Type(TypedDict):
-    """AgentsTasksTaskIdGetResponse200Allof0"""
+class WebhookWatchStartedType(TypedDict):
+    """watch started event"""
 
-    id: str
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    name: NotRequired[str]
-    creator: NotRequired[AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0Type]
-    creator_type: NotRequired[Literal["user", "organization"]]
-    user_collaborators: NotRequired[
-        list[AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsType]
-    ]
-    owner: NotRequired[AgentsTasksTaskIdGetResponse200Allof0PropOwnerType]
-    repository: NotRequired[AgentsTasksTaskIdGetResponse200Allof0PropRepositoryType]
-    state: Literal[
-        "queued",
-        "in_progress",
-        "completed",
-        "failed",
-        "idle",
-        "waiting_for_user",
-        "timed_out",
-        "cancelled",
-    ]
-    session_count: NotRequired[int]
-    artifacts: NotRequired[
-        list[AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsType]
-    ]
-    archived_at: NotRequired[Union[_dt.datetime, None]]
-    updated_at: NotRequired[_dt.datetime]
-    created_at: _dt.datetime
+    action: Literal["started"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class AgentsTasksTaskIdGetResponse200Allof0TypeForResponse(TypedDict):
-    """AgentsTasksTaskIdGetResponse200Allof0"""
+class WebhookWatchStartedTypeForResponse(TypedDict):
+    """watch started event"""
 
-    id: str
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    name: NotRequired[str]
-    creator: NotRequired[
-        AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0TypeForResponse
-    ]
-    creator_type: NotRequired[Literal["user", "organization"]]
-    user_collaborators: NotRequired[
-        list[
-            AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsTypeForResponse
-        ]
-    ]
-    owner: NotRequired[AgentsTasksTaskIdGetResponse200Allof0PropOwnerTypeForResponse]
-    repository: NotRequired[
-        AgentsTasksTaskIdGetResponse200Allof0PropRepositoryTypeForResponse
-    ]
-    state: Literal[
-        "queued",
-        "in_progress",
-        "completed",
-        "failed",
-        "idle",
-        "waiting_for_user",
-        "timed_out",
-        "cancelled",
-    ]
-    session_count: NotRequired[int]
-    artifacts: NotRequired[
-        list[AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsTypeForResponse]
-    ]
-    archived_at: NotRequired[Union[str, None]]
-    updated_at: NotRequired[str]
-    created_at: str
+    action: Literal["started"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "AgentsTasksTaskIdGetResponse200Allof0Type",
-    "AgentsTasksTaskIdGetResponse200Allof0TypeForResponse",
+    "WebhookWatchStartedType",
+    "WebhookWatchStartedTypeForResponse",
 )

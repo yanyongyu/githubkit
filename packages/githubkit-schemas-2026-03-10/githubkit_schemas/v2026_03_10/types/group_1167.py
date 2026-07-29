@@ -11,16 +11,22 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class OrgsOrgOutsideCollaboratorsUsernamePutResponse202Type(TypedDict):
-    """OrgsOrgOutsideCollaboratorsUsernamePutResponse202"""
+from .group_0143 import CopilotSpaceType, CopilotSpaceTypeForResponse
 
 
-class OrgsOrgOutsideCollaboratorsUsernamePutResponse202TypeForResponse(TypedDict):
-    """OrgsOrgOutsideCollaboratorsUsernamePutResponse202"""
+class OrgsOrgCopilotSpacesGetResponse200Type(TypedDict):
+    """OrgsOrgCopilotSpacesGetResponse200"""
+
+    spaces: list[CopilotSpaceType]
+
+
+class OrgsOrgCopilotSpacesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCopilotSpacesGetResponse200"""
+
+    spaces: list[CopilotSpaceTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgOutsideCollaboratorsUsernamePutResponse202Type",
-    "OrgsOrgOutsideCollaboratorsUsernamePutResponse202TypeForResponse",
+    "OrgsOrgCopilotSpacesGetResponse200Type",
+    "OrgsOrgCopilotSpacesGetResponse200TypeForResponse",
 )

@@ -9,64 +9,66 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0746 import (
-    WebhookIssueCommentCreatedPropIssueAllof0PropMilestonePropCreatorType,
-    WebhookIssueCommentCreatedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0617 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0618 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0619 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
 )
+from .group_0620 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookIssueCommentCreatedPropIssueMergedMilestoneType(TypedDict):
-    """WebhookIssueCommentCreatedPropIssueMergedMilestone"""
+class WebhookGollumType(TypedDict):
+    """gollum event"""
 
-    closed_at: Union[_dt.datetime, None]
-    closed_issues: int
-    created_at: _dt.datetime
-    creator: Union[
-        WebhookIssueCommentCreatedPropIssueAllof0PropMilestonePropCreatorType, None
-    ]
-    description: Union[str, None]
-    due_on: Union[_dt.datetime, None]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    pages: list[WebhookGollumPropPagesItemsType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
+
+
+class WebhookGollumTypeForResponse(TypedDict):
+    """gollum event"""
+
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    pages: list[WebhookGollumPropPagesItemsTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+
+
+class WebhookGollumPropPagesItemsType(TypedDict):
+    """WebhookGollumPropPagesItems"""
+
+    action: Literal["created", "edited"]
     html_url: str
-    id: int
-    labels_url: str
-    node_id: str
-    number: int
-    open_issues: int
-    state: Literal["open", "closed"]
+    page_name: str
+    sha: str
+    summary: Union[str, None]
     title: str
-    updated_at: _dt.datetime
-    url: str
 
 
-class WebhookIssueCommentCreatedPropIssueMergedMilestoneTypeForResponse(TypedDict):
-    """WebhookIssueCommentCreatedPropIssueMergedMilestone"""
+class WebhookGollumPropPagesItemsTypeForResponse(TypedDict):
+    """WebhookGollumPropPagesItems"""
 
-    closed_at: Union[str, None]
-    closed_issues: int
-    created_at: str
-    creator: Union[
-        WebhookIssueCommentCreatedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
-        None,
-    ]
-    description: Union[str, None]
-    due_on: Union[str, None]
+    action: Literal["created", "edited"]
     html_url: str
-    id: int
-    labels_url: str
-    node_id: str
-    number: int
-    open_issues: int
-    state: Literal["open", "closed"]
+    page_name: str
+    sha: str
+    summary: Union[str, None]
     title: str
-    updated_at: str
-    url: str
 
 
 __all__ = (
-    "WebhookIssueCommentCreatedPropIssueMergedMilestoneType",
-    "WebhookIssueCommentCreatedPropIssueMergedMilestoneTypeForResponse",
+    "WebhookGollumPropPagesItemsType",
+    "WebhookGollumPropPagesItemsTypeForResponse",
+    "WebhookGollumType",
+    "WebhookGollumTypeForResponse",
 )

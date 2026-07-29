@@ -11,24 +11,35 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
+from .group_0037 import (
+    ActionsHostedRunnerCustomImageVersionType,
+    ActionsHostedRunnerCustomImageVersionTypeForResponse,
+)
 
-class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBodyType(
+
+class EnterprisesEnterpriseActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200Type(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBody"""
+    """EnterprisesEnterpriseActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGe
+    tResponse200
+    """
 
-    selected_enterprise_teams: list[str]
+    total_count: int
+    image_versions: list[ActionsHostedRunnerCustomImageVersionType]
 
 
-class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBodyTypeForResponse(
+class EnterprisesEnterpriseActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBody"""
+    """EnterprisesEnterpriseActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGe
+    tResponse200
+    """
 
-    selected_enterprise_teams: list[str]
+    total_count: int
+    image_versions: list[ActionsHostedRunnerCustomImageVersionTypeForResponse]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBodyType",
-    "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBodyTypeForResponse",
+    "EnterprisesEnterpriseActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200Type",
+    "EnterprisesEnterpriseActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200TypeForResponse",
 )

@@ -9,36 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class WebhookStatusPropCommitPropCommitPropAuthorAllof0Type(TypedDict):
-    """Committer
-
-    Metaproperties for Git author/committer information.
-    """
-
-    date: NotRequired[_dt.datetime]
-    email: Union[str, None]
-    name: str
-    username: NotRequired[str]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0178 import RepositoryRulesetType, RepositoryRulesetTypeForResponse
+from .group_0618 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0619 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0620 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0621 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookStatusPropCommitPropCommitPropAuthorAllof0TypeForResponse(TypedDict):
-    """Committer
+class WebhookRepositoryRulesetCreatedType(TypedDict):
+    """repository ruleset created event"""
 
-    Metaproperties for Git author/committer information.
-    """
+    action: Literal["created"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: NotRequired[RepositoryWebhooksType]
+    repository_ruleset: RepositoryRulesetType
+    sender: SimpleUserType
 
-    date: NotRequired[str]
-    email: Union[str, None]
-    name: str
-    username: NotRequired[str]
+
+class WebhookRepositoryRulesetCreatedTypeForResponse(TypedDict):
+    """repository ruleset created event"""
+
+    action: Literal["created"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    repository_ruleset: RepositoryRulesetTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookStatusPropCommitPropCommitPropAuthorAllof0Type",
-    "WebhookStatusPropCommitPropCommitPropAuthorAllof0TypeForResponse",
+    "WebhookRepositoryRulesetCreatedType",
+    "WebhookRepositoryRulesetCreatedTypeForResponse",
 )

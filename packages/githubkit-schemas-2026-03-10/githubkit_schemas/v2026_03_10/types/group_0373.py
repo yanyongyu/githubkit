@@ -9,25 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Any, TypeAlias
 from typing_extensions import NotRequired, TypedDict
 
-
-class DeploymentBranchPolicyNamePatternWithTypeType(TypedDict):
-    """Deployment branch and tag policy name pattern"""
-
-    name: str
-    type: NotRequired[Literal["branch", "tag"]]
+from .group_0371 import MetadataType, MetadataTypeForResponse
 
 
-class DeploymentBranchPolicyNamePatternWithTypeTypeForResponse(TypedDict):
-    """Deployment branch and tag policy name pattern"""
+class ManifestType(TypedDict):
+    """Manifest"""
 
     name: str
-    type: NotRequired[Literal["branch", "tag"]]
+    file: NotRequired[ManifestPropFileType]
+    metadata: NotRequired[MetadataType]
+    resolved: NotRequired[ManifestPropResolvedType]
+
+
+class ManifestTypeForResponse(TypedDict):
+    """Manifest"""
+
+    name: str
+    file: NotRequired[ManifestPropFileTypeForResponse]
+    metadata: NotRequired[MetadataTypeForResponse]
+    resolved: NotRequired[ManifestPropResolvedTypeForResponse]
+
+
+class ManifestPropFileType(TypedDict):
+    """ManifestPropFile"""
+
+    source_location: NotRequired[str]
+
+
+class ManifestPropFileTypeForResponse(TypedDict):
+    """ManifestPropFile"""
+
+    source_location: NotRequired[str]
+
+
+ManifestPropResolvedType: TypeAlias = dict[str, Any]
+"""ManifestPropResolved
+
+A collection of resolved package dependencies.
+"""
+
+
+ManifestPropResolvedTypeForResponse: TypeAlias = dict[str, Any]
+"""ManifestPropResolved
+
+A collection of resolved package dependencies.
+"""
 
 
 __all__ = (
-    "DeploymentBranchPolicyNamePatternWithTypeType",
-    "DeploymentBranchPolicyNamePatternWithTypeTypeForResponse",
+    "ManifestPropFileType",
+    "ManifestPropFileTypeForResponse",
+    "ManifestPropResolvedType",
+    "ManifestPropResolvedTypeForResponse",
+    "ManifestType",
+    "ManifestTypeForResponse",
 )

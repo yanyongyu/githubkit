@@ -9,54 +9,64 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
-from .group_0247 import (
-    MarketplacePurchasePropMarketplacePendingChangeType,
-    MarketplacePurchasePropMarketplacePendingChangeTypeForResponse,
-    MarketplacePurchasePropMarketplacePurchaseType,
-    MarketplacePurchasePropMarketplacePurchaseTypeForResponse,
-)
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class MarketplacePurchaseType(TypedDict):
-    """Marketplace Purchase
+class GistCommentType(TypedDict):
+    """Gist Comment
 
-    Marketplace Purchase
+    A comment made to a gist.
     """
 
-    url: str
-    type: str
     id: int
-    login: str
-    organization_billing_email: NotRequired[str]
-    email: NotRequired[Union[str, None]]
-    marketplace_pending_change: NotRequired[
-        Union[MarketplacePurchasePropMarketplacePendingChangeType, None]
+    node_id: str
+    url: str
+    body: str
+    user: Union[None, SimpleUserType]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
     ]
-    marketplace_purchase: MarketplacePurchasePropMarketplacePurchaseType
 
 
-class MarketplacePurchaseTypeForResponse(TypedDict):
-    """Marketplace Purchase
+class GistCommentTypeForResponse(TypedDict):
+    """Gist Comment
 
-    Marketplace Purchase
+    A comment made to a gist.
     """
 
-    url: str
-    type: str
     id: int
-    login: str
-    organization_billing_email: NotRequired[str]
-    email: NotRequired[Union[str, None]]
-    marketplace_pending_change: NotRequired[
-        Union[MarketplacePurchasePropMarketplacePendingChangeTypeForResponse, None]
+    node_id: str
+    url: str
+    body: str
+    user: Union[None, SimpleUserTypeForResponse]
+    created_at: str
+    updated_at: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
     ]
-    marketplace_purchase: MarketplacePurchasePropMarketplacePurchaseTypeForResponse
 
 
 __all__ = (
-    "MarketplacePurchaseType",
-    "MarketplacePurchaseTypeForResponse",
+    "GistCommentType",
+    "GistCommentTypeForResponse",
 )

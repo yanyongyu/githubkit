@@ -9,52 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoAttestationsSubjectDigestGetResponse200Type(TypedDict):
-    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200"""
+class OrgsOrgSettingsNetworkConfigurationsPostBodyType(TypedDict):
+    """OrgsOrgSettingsNetworkConfigurationsPostBody"""
 
-    attestations: NotRequired[
-        list[
-            ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsType
-        ]
-    ]
-
-
-class ReposOwnerRepoAttestationsSubjectDigestGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200"""
-
-    attestations: NotRequired[
-        list[
-            ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse
-        ]
-    ]
+    name: str
+    compute_service: NotRequired[Literal["none", "actions"]]
+    network_settings_ids: list[str]
+    failover_network_settings_ids: NotRequired[list[str]]
+    failover_network_enabled: NotRequired[bool]
 
 
-class ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsType(
-    TypedDict
-):
-    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
+class OrgsOrgSettingsNetworkConfigurationsPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgSettingsNetworkConfigurationsPostBody"""
 
-    repository_id: NotRequired[int]
-    bundle_url: NotRequired[str]
-    initiator: NotRequired[str]
-
-
-class ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
-
-    repository_id: NotRequired[int]
-    bundle_url: NotRequired[str]
-    initiator: NotRequired[str]
+    name: str
+    compute_service: NotRequired[Literal["none", "actions"]]
+    network_settings_ids: list[str]
+    failover_network_settings_ids: NotRequired[list[str]]
+    failover_network_enabled: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsType",
-    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse",
-    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200Type",
-    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200TypeForResponse",
+    "OrgsOrgSettingsNetworkConfigurationsPostBodyType",
+    "OrgsOrgSettingsNetworkConfigurationsPostBodyTypeForResponse",
 )

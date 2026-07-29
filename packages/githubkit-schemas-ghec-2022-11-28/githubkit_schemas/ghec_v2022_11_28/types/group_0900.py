@@ -13,41 +13,44 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0599 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0600 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0601 import (
+from .group_0618 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0619 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0620 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0602 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0633 import WebhooksProjectColumnType, WebhooksProjectColumnTypeForResponse
+from .group_0621 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0901 import (
+    WebhookPackageUpdatedPropPackageType,
+    WebhookPackageUpdatedPropPackageTypeForResponse,
+)
 
 
-class WebhookProjectColumnCreatedType(TypedDict):
-    """project_column created event"""
+class WebhookPackageUpdatedType(TypedDict):
+    """package updated event"""
 
-    action: Literal["created"]
+    action: Literal["updated"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    project_column: WebhooksProjectColumnType
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: NotRequired[SimpleUserType]
+    package: WebhookPackageUpdatedPropPackageType
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class WebhookProjectColumnCreatedTypeForResponse(TypedDict):
-    """project_column created event"""
+class WebhookPackageUpdatedTypeForResponse(TypedDict):
+    """package updated event"""
 
-    action: Literal["created"]
+    action: Literal["updated"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    project_column: WebhooksProjectColumnTypeForResponse
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    sender: NotRequired[SimpleUserTypeForResponse]
+    package: WebhookPackageUpdatedPropPackageTypeForResponse
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookProjectColumnCreatedType",
-    "WebhookProjectColumnCreatedTypeForResponse",
+    "WebhookPackageUpdatedType",
+    "WebhookPackageUpdatedTypeForResponse",
 )

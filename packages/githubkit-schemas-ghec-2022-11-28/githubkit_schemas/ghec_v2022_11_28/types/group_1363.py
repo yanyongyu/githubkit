@@ -12,19 +12,19 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class OrgsOrgSettingsImmutableReleasesRepositoriesPutBodyType(TypedDict):
-    """OrgsOrgSettingsImmutableReleasesRepositoriesPutBody"""
+class OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType(TypedDict):
+    """OrgsOrgCopilotBillingSelectedTeamsDeleteBody"""
 
-    selected_repository_ids: list[int]
+    selected_teams: list[str]
 
 
-class OrgsOrgSettingsImmutableReleasesRepositoriesPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgSettingsImmutableReleasesRepositoriesPutBody"""
+class OrgsOrgCopilotBillingSelectedTeamsDeleteBodyTypeForResponse(TypedDict):
+    """OrgsOrgCopilotBillingSelectedTeamsDeleteBody"""
 
-    selected_repository_ids: list[int]
+    selected_teams: list[str]
 
 
 __all__ = (
-    "OrgsOrgSettingsImmutableReleasesRepositoriesPutBodyType",
-    "OrgsOrgSettingsImmutableReleasesRepositoriesPutBodyTypeForResponse",
+    "OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType",
+    "OrgsOrgCopilotBillingSelectedTeamsDeleteBodyTypeForResponse",
 )

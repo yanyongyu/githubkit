@@ -9,33 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0037 import (
-    ActionsHostedRunnerCustomImageVersionType,
-    ActionsHostedRunnerCustomImageVersionTypeForResponse,
-)
+from .group_0087 import CopilotSeatDetailsType, CopilotSeatDetailsTypeForResponse
 
 
-class OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200Type(
+class EnterprisesEnterpriseMembersUsernameCopilotGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseMembersUsernameCopilotGetResponse200"""
+
+    total_seats: NotRequired[int]
+    seats: NotRequired[list[CopilotSeatDetailsType]]
+
+
+class EnterprisesEnterpriseMembersUsernameCopilotGetResponse200TypeForResponse(
     TypedDict
 ):
-    """OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200"""
+    """EnterprisesEnterpriseMembersUsernameCopilotGetResponse200"""
 
-    total_count: int
-    image_versions: list[ActionsHostedRunnerCustomImageVersionType]
-
-
-class OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200TypeForResponse(
-    TypedDict
-):
-    """OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200"""
-
-    total_count: int
-    image_versions: list[ActionsHostedRunnerCustomImageVersionTypeForResponse]
+    total_seats: NotRequired[int]
+    seats: NotRequired[list[CopilotSeatDetailsTypeForResponse]]
 
 
 __all__ = (
-    "OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200Type",
-    "OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseMembersUsernameCopilotGetResponse200Type",
+    "EnterprisesEnterpriseMembersUsernameCopilotGetResponse200TypeForResponse",
 )

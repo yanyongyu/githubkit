@@ -41,6 +41,7 @@ if TYPE_CHECKING:
         IssueComment,
         IssueEvent,
         IssueFieldValue,
+        IssueSuggestion,
         IssueTypeAddedIssueEvent,
         IssueTypeChangedIssueEvent,
         IssueTypeRemovedIssueEvent,
@@ -85,6 +86,7 @@ if TYPE_CHECKING:
         IssueCommentTypeForResponse,
         IssueEventTypeForResponse,
         IssueFieldValueTypeForResponse,
+        IssueSuggestionTypeForResponse,
         IssueTypeAddedIssueEventTypeForResponse,
         IssueTypeChangedIssueEventTypeForResponse,
         IssueTypeForResponse,
@@ -101,6 +103,7 @@ if TYPE_CHECKING:
         RenamedIssueEventTypeForResponse,
         ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType,
         ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType,
+        ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyPropAssigneesItemsOneof1Type,
         ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType,
         ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType,
         ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyType,
@@ -108,6 +111,7 @@ if TYPE_CHECKING:
         ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyType,
         ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType,
         ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyType,
+        ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0PropLabelsItemsOneof1Type,
         ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type,
         ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2ItemsType,
         ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0Type,
@@ -118,6 +122,7 @@ if TYPE_CHECKING:
         ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1Type,
         ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsType,
         ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type,
+        ReposOwnerRepoIssuesIssueNumberPatchBodyPropTypeOneof1Type,
         ReposOwnerRepoIssuesIssueNumberPatchBodyType,
         ReposOwnerRepoIssuesIssueNumberPatchResponse200TypeForResponse,
         ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyType,
@@ -1873,7 +1878,9 @@ class IssuesClient:
         issue_field_values: Missing[
             list[ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsType]
         ] = UNSET,
-        type: Missing[Union[str, None]] = UNSET,
+        type: Missing[
+            Union[str, ReposOwnerRepoIssuesIssueNumberPatchBodyPropTypeOneof1Type, None]
+        ] = UNSET,
     ) -> Response[
         ReposOwnerRepoIssuesIssueNumberPatchResponse200,
         ReposOwnerRepoIssuesIssueNumberPatchResponse200TypeForResponse,
@@ -1998,7 +2005,9 @@ class IssuesClient:
         issue_field_values: Missing[
             list[ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsType]
         ] = UNSET,
-        type: Missing[Union[str, None]] = UNSET,
+        type: Missing[
+            Union[str, ReposOwnerRepoIssuesIssueNumberPatchBodyPropTypeOneof1Type, None]
+        ] = UNSET,
     ) -> Response[
         ReposOwnerRepoIssuesIssueNumberPatchResponse200,
         ReposOwnerRepoIssuesIssueNumberPatchResponse200TypeForResponse,
@@ -2093,7 +2102,14 @@ class IssuesClient:
         data: UnsetType = UNSET,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
-        assignees: Missing[list[str]] = UNSET,
+        assignees: Missing[
+            list[
+                Union[
+                    str,
+                    ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyPropAssigneesItemsOneof1Type,
+                ]
+            ]
+        ] = UNSET,
     ) -> Response[Issue, IssueTypeForResponse]: ...
 
     def add_assignees(
@@ -2164,7 +2180,14 @@ class IssuesClient:
         data: UnsetType = UNSET,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
-        assignees: Missing[list[str]] = UNSET,
+        assignees: Missing[
+            list[
+                Union[
+                    str,
+                    ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyPropAssigneesItemsOneof1Type,
+                ]
+            ]
+        ] = UNSET,
     ) -> Response[Issue, IssueTypeForResponse]: ...
 
     async def async_add_assignees(
@@ -4519,7 +4542,14 @@ class IssuesClient:
         data: UnsetType = UNSET,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
-        labels: Missing[list[str]] = UNSET,
+        labels: Missing[
+            list[
+                Union[
+                    str,
+                    ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0PropLabelsItemsOneof1Type,
+                ]
+            ]
+        ] = UNSET,
     ) -> Response[list[Label], list[LabelTypeForResponse]]: ...
 
     def add_labels(
@@ -4620,7 +4650,14 @@ class IssuesClient:
         data: UnsetType = UNSET,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
-        labels: Missing[list[str]] = UNSET,
+        labels: Missing[
+            list[
+                Union[
+                    str,
+                    ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0PropLabelsItemsOneof1Type,
+                ]
+            ]
+        ] = UNSET,
     ) -> Response[list[Label], list[LabelTypeForResponse]]: ...
 
     async def async_add_labels(
@@ -5811,6 +5848,298 @@ class IssuesClient:
             },
         )
 
+    def list_suggestions(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        state: Missing[
+            Literal[
+                "pending",
+                "applied",
+                "approved",
+                "dismissed",
+                "replaced",
+                "invalidated",
+                "all",
+            ]
+        ] = UNSET,
+        action: Missing[
+            Literal["set_type", "add_label", "add_field", "add_assignee", "close_issue"]
+        ] = UNSET,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[list[IssueSuggestion], list[IssueSuggestionTypeForResponse]]:
+        """issues/list-suggestions
+
+        GET /repos/{owner}/{repo}/issues/{issue_number}/suggestions
+
+        Lists the suggestions on an issue. A suggestion is an agent-proposed change to an issue's type, labels, fields, assignees, or closed state that a maintainer can approve or dismiss.
+
+        By default only pending suggestions are returned. Use `state=all` to return suggestions in every state, or `state=<state>` to filter to a single state. Use `action=<action>` to return only suggestions for a specific change.
+
+        This endpoint is only available while the issue suggestions feature is enabled for the repository, and only supports issues, not pull requests.
+
+        Requires triage access to the repository.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/issues#list-issue-suggestions
+        """
+
+        from ..models import BasicError, IssueSuggestion, ValidationError
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/suggestions"
+
+        params = {
+            "state": state,
+            "action": action,
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[IssueSuggestion],
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    async def async_list_suggestions(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        state: Missing[
+            Literal[
+                "pending",
+                "applied",
+                "approved",
+                "dismissed",
+                "replaced",
+                "invalidated",
+                "all",
+            ]
+        ] = UNSET,
+        action: Missing[
+            Literal["set_type", "add_label", "add_field", "add_assignee", "close_issue"]
+        ] = UNSET,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[list[IssueSuggestion], list[IssueSuggestionTypeForResponse]]:
+        """issues/list-suggestions
+
+        GET /repos/{owner}/{repo}/issues/{issue_number}/suggestions
+
+        Lists the suggestions on an issue. A suggestion is an agent-proposed change to an issue's type, labels, fields, assignees, or closed state that a maintainer can approve or dismiss.
+
+        By default only pending suggestions are returned. Use `state=all` to return suggestions in every state, or `state=<state>` to filter to a single state. Use `action=<action>` to return only suggestions for a specific change.
+
+        This endpoint is only available while the issue suggestions feature is enabled for the repository, and only supports issues, not pull requests.
+
+        Requires triage access to the repository.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/issues#list-issue-suggestions
+        """
+
+        from ..models import BasicError, IssueSuggestion, ValidationError
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/suggestions"
+
+        params = {
+            "state": state,
+            "action": action,
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[IssueSuggestion],
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    def approve_suggestion(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        suggestion_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[IssueSuggestion, IssueSuggestionTypeForResponse]:
+        """issues/approve-suggestion
+
+        POST /repos/{owner}/{repo}/issues/{issue_number}/suggestions/{suggestion_id}/approve
+
+        Approves a pending suggestion on an issue. Applies the proposed change (creating the corresponding timeline event), transitions the suggestion to `approved`, and dismisses any competing pending suggestions for the same change.
+
+        Requires triage access to the repository. Approving a suggestion also requires permission to perform the change it applies (for example, setting the issue type, adding a label or assignee, or closing the issue); this only affects fine-grained access tokens and GitHub Apps whose permissions are narrower than the triage role. This endpoint only supports issues, not pull requests.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/issues#approve-an-issue-suggestion
+        """
+
+        from ..models import BasicError, IssueSuggestion, ValidationError
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/suggestions/{suggestion_id}/approve"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "POST",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=IssueSuggestion,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    async def async_approve_suggestion(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        suggestion_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[IssueSuggestion, IssueSuggestionTypeForResponse]:
+        """issues/approve-suggestion
+
+        POST /repos/{owner}/{repo}/issues/{issue_number}/suggestions/{suggestion_id}/approve
+
+        Approves a pending suggestion on an issue. Applies the proposed change (creating the corresponding timeline event), transitions the suggestion to `approved`, and dismisses any competing pending suggestions for the same change.
+
+        Requires triage access to the repository. Approving a suggestion also requires permission to perform the change it applies (for example, setting the issue type, adding a label or assignee, or closing the issue); this only affects fine-grained access tokens and GitHub Apps whose permissions are narrower than the triage role. This endpoint only supports issues, not pull requests.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/issues#approve-an-issue-suggestion
+        """
+
+        from ..models import BasicError, IssueSuggestion, ValidationError
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/suggestions/{suggestion_id}/approve"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=IssueSuggestion,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    def dismiss_suggestion(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        suggestion_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[IssueSuggestion, IssueSuggestionTypeForResponse]:
+        """issues/dismiss-suggestion
+
+        POST /repos/{owner}/{repo}/issues/{issue_number}/suggestions/{suggestion_id}/dismiss
+
+        Dismisses a pending suggestion on an issue. Transitions the suggestion to `dismissed` without applying any change or creating a timeline event.
+
+        Requires triage access to the repository. This endpoint only supports issues, not pull requests.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/issues#dismiss-an-issue-suggestion
+        """
+
+        from ..models import BasicError, IssueSuggestion, ValidationError
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/suggestions/{suggestion_id}/dismiss"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "POST",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=IssueSuggestion,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    async def async_dismiss_suggestion(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        suggestion_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[IssueSuggestion, IssueSuggestionTypeForResponse]:
+        """issues/dismiss-suggestion
+
+        POST /repos/{owner}/{repo}/issues/{issue_number}/suggestions/{suggestion_id}/dismiss
+
+        Dismisses a pending suggestion on an issue. Transitions the suggestion to `dismissed` without applying any change or creating a timeline event.
+
+        Requires triage access to the repository. This endpoint only supports issues, not pull requests.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/issues#dismiss-an-issue-suggestion
+        """
+
+        from ..models import BasicError, IssueSuggestion, ValidationError
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/suggestions/{suggestion_id}/dismiss"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=IssueSuggestion,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
     def list_events_for_timeline(
         self,
         owner: str,
@@ -5819,6 +6148,7 @@ class IssuesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
+        exclude: Missing[str] = UNSET,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
@@ -5950,6 +6280,7 @@ class IssuesClient:
         params = {
             "per_page": per_page,
             "page": page,
+            "exclude": exclude,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -6012,6 +6343,7 @@ class IssuesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
+        exclude: Missing[str] = UNSET,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
@@ -6143,6 +6475,7 @@ class IssuesClient:
         params = {
             "per_page": per_page,
             "page": page,
+            "exclude": exclude,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}

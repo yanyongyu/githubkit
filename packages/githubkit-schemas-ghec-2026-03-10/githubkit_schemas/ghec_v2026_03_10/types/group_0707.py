@@ -13,44 +13,38 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0207 import DiscussionType, DiscussionTypeForResponse
-from .group_0598 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0599 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0600 import (
+from .group_0114 import CustomPropertyType, CustomPropertyTypeForResponse
+from .group_0617 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0618 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0619 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0601 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0612 import WebhooksAnswerType, WebhooksAnswerTypeForResponse
 
 
-class WebhookDiscussionAnsweredType(TypedDict):
-    """discussion answered event"""
+class WebhookCustomPropertyUpdatedType(TypedDict):
+    """custom property updated event"""
 
-    action: Literal["answered"]
-    answer: WebhooksAnswerType
-    discussion: DiscussionType
+    action: Literal["updated"]
+    definition: CustomPropertyType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookDiscussionAnsweredTypeForResponse(TypedDict):
-    """discussion answered event"""
+class WebhookCustomPropertyUpdatedTypeForResponse(TypedDict):
+    """custom property updated event"""
 
-    action: Literal["answered"]
-    answer: WebhooksAnswerTypeForResponse
-    discussion: DiscussionTypeForResponse
+    action: Literal["updated"]
+    definition: CustomPropertyTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookDiscussionAnsweredType",
-    "WebhookDiscussionAnsweredTypeForResponse",
+    "WebhookCustomPropertyUpdatedType",
+    "WebhookCustomPropertyUpdatedTypeForResponse",
 )

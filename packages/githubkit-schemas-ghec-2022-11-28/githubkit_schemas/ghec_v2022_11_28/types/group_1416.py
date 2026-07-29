@@ -11,32 +11,25 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0Type(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0
-
-    Examples:
-        {'contexts': ['contexts']}
-    """
-
-    contexts: list[str]
+from .group_0189 import (
+    SecretScanningCustomPatternToCreateType,
+    SecretScanningCustomPatternToCreateTypeForResponse,
+)
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0
+class OrgsOrgSecretScanningCustomPatternsPostBodyType(TypedDict):
+    """OrgsOrgSecretScanningCustomPatternsPostBody"""
 
-    Examples:
-        {'contexts': ['contexts']}
-    """
+    patterns: list[SecretScanningCustomPatternToCreateType]
 
-    contexts: list[str]
+
+class OrgsOrgSecretScanningCustomPatternsPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgSecretScanningCustomPatternsPostBody"""
+
+    patterns: list[SecretScanningCustomPatternToCreateTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0Type",
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0TypeForResponse",
+    "OrgsOrgSecretScanningCustomPatternsPostBodyType",
+    "OrgsOrgSecretScanningCustomPatternsPostBodyTypeForResponse",
 )

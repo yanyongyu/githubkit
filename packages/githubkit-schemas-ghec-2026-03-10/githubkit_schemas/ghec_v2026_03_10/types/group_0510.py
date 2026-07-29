@@ -9,33 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0085 import TeamType, TeamTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0473 import IssueEventIntentType, IssueEventIntentTypeForResponse
 
 
-class PullRequestReviewRequestType(TypedDict):
-    """Pull Request Review Request
+class StateChangeIssueEventType(TypedDict):
+    """State Change Issue Event
 
-    Pull Request Review Request
+    State Change Issue Event
     """
 
-    users: list[SimpleUserType]
-    teams: list[TeamType]
+    id: int
+    node_id: str
+    url: str
+    actor: SimpleUserType
+    event: str
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationType, None]
+    state_reason: NotRequired[Union[str, None]]
+    intent: NotRequired[Union[None, IssueEventIntentType, None]]
 
 
-class PullRequestReviewRequestTypeForResponse(TypedDict):
-    """Pull Request Review Request
+class StateChangeIssueEventTypeForResponse(TypedDict):
+    """State Change Issue Event
 
-    Pull Request Review Request
+    State Change Issue Event
     """
 
-    users: list[SimpleUserTypeForResponse]
-    teams: list[TeamTypeForResponse]
+    id: int
+    node_id: str
+    url: str
+    actor: SimpleUserTypeForResponse
+    event: str
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
+    state_reason: NotRequired[Union[str, None]]
+    intent: NotRequired[Union[None, IssueEventIntentTypeForResponse, None]]
 
 
 __all__ = (
-    "PullRequestReviewRequestType",
-    "PullRequestReviewRequestTypeForResponse",
+    "StateChangeIssueEventType",
+    "StateChangeIssueEventTypeForResponse",
 )

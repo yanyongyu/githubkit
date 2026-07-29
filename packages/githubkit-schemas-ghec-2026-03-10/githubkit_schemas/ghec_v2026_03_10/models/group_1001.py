@@ -18,18 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0598 import EnterpriseWebhooks
-from .group_0599 import SimpleInstallation
-from .group_0600 import OrganizationSimpleWebhooks
-from .group_0601 import RepositoryWebhooks
-from .group_0643 import SecretScanningAlertWebhook
+from .group_0617 import EnterpriseWebhooks
+from .group_0618 import SimpleInstallation
+from .group_0619 import OrganizationSimpleWebhooks
+from .group_0620 import RepositoryWebhooks
+from .group_1002 import WebhookRegistryPackageUpdatedPropRegistryPackage
 
 
-class WebhookSecretScanningAlertReopened(GitHubModel):
-    """secret_scanning_alert reopened event"""
+class WebhookRegistryPackageUpdated(GitHubModel):
+    """WebhookRegistryPackageUpdated"""
 
-    action: Literal["reopened"] = Field()
-    alert: SecretScanningAlertWebhook = Field()
+    action: Literal["updated"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -45,15 +44,15 @@ class WebhookSecretScanningAlertReopened(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: RepositoryWebhooks = Field(
+    registry_package: WebhookRegistryPackageUpdatedPropRegistryPackage = Field()
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookSecretScanningAlertReopened)
+model_rebuild(WebhookRegistryPackageUpdated)
 
-__all__ = ("WebhookSecretScanningAlertReopened",)
+__all__ = ("WebhookRegistryPackageUpdated",)

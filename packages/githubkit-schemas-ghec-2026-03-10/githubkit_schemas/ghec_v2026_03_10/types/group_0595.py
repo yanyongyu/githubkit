@@ -10,32 +10,77 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
+from .group_0255 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0594 import (
+    SearchResultTextMatchesItemsType,
+    SearchResultTextMatchesItemsTypeForResponse,
+)
 
 
-class StarredRepositoryType(TypedDict):
-    """Starred Repository
+class CodeSearchResultItemType(TypedDict):
+    """Code Search Result Item
 
-    Starred Repository
+    Code Search Result Item
     """
 
-    starred_at: _dt.datetime
-    repo: RepositoryType
+    name: str
+    path: str
+    sha: str
+    url: str
+    git_url: str
+    html_url: str
+    repository: MinimalRepositoryType
+    score: float
+    file_size: NotRequired[int]
+    language: NotRequired[Union[str, None]]
+    last_modified_at: NotRequired[_dt.datetime]
+    line_numbers: NotRequired[list[str]]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
 
 
-class StarredRepositoryTypeForResponse(TypedDict):
-    """Starred Repository
+class CodeSearchResultItemTypeForResponse(TypedDict):
+    """Code Search Result Item
 
-    Starred Repository
+    Code Search Result Item
     """
 
-    starred_at: str
-    repo: RepositoryTypeForResponse
+    name: str
+    path: str
+    sha: str
+    url: str
+    git_url: str
+    html_url: str
+    repository: MinimalRepositoryTypeForResponse
+    score: float
+    file_size: NotRequired[int]
+    language: NotRequired[Union[str, None]]
+    last_modified_at: NotRequired[str]
+    line_numbers: NotRequired[list[str]]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
+
+
+class SearchCodeGetResponse200Type(TypedDict):
+    """SearchCodeGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[CodeSearchResultItemType]
+
+
+class SearchCodeGetResponse200TypeForResponse(TypedDict):
+    """SearchCodeGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[CodeSearchResultItemTypeForResponse]
 
 
 __all__ = (
-    "StarredRepositoryType",
-    "StarredRepositoryTypeForResponse",
+    "CodeSearchResultItemType",
+    "CodeSearchResultItemTypeForResponse",
+    "SearchCodeGetResponse200Type",
+    "SearchCodeGetResponse200TypeForResponse",
 )

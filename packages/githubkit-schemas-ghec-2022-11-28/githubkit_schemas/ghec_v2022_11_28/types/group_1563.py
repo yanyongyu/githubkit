@@ -9,27 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType(TypedDict):
-    """ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody"""
+class ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBodyType(TypedDict):
+    """ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody"""
 
-    message: str
-    event: NotRequired[Literal["DISMISS"]]
+    enabled: bool
+    max_open_pull_requests: NotRequired[int]
 
 
-class ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyTypeForResponse(
+class ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBodyTypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody"""
+    """ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody"""
 
-    message: str
-    event: NotRequired[Literal["DISMISS"]]
+    enabled: bool
+    max_open_pull_requests: NotRequired[int]
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType",
-    "ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyTypeForResponse",
+    "ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBodyType",
+    "ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBodyTypeForResponse",
 )

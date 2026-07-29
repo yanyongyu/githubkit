@@ -9,40 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class WebhooksProjectChangesType(TypedDict):
-    """WebhooksProjectChanges"""
+class WebhooksLabelType(TypedDict):
+    """Label"""
 
-    archived_at: NotRequired[WebhooksProjectChangesPropArchivedAtType]
-
-
-class WebhooksProjectChangesTypeForResponse(TypedDict):
-    """WebhooksProjectChanges"""
-
-    archived_at: NotRequired[WebhooksProjectChangesPropArchivedAtTypeForResponse]
-
-
-class WebhooksProjectChangesPropArchivedAtType(TypedDict):
-    """WebhooksProjectChangesPropArchivedAt"""
-
-    from_: NotRequired[Union[_dt.datetime, None]]
-    to: NotRequired[Union[_dt.datetime, None]]
+    color: str
+    default: bool
+    description: Union[str, None]
+    id: int
+    name: str
+    node_id: str
+    url: str
 
 
-class WebhooksProjectChangesPropArchivedAtTypeForResponse(TypedDict):
-    """WebhooksProjectChangesPropArchivedAt"""
+class WebhooksLabelTypeForResponse(TypedDict):
+    """Label"""
 
-    from_: NotRequired[Union[str, None]]
-    to: NotRequired[Union[str, None]]
+    color: str
+    default: bool
+    description: Union[str, None]
+    id: int
+    name: str
+    node_id: str
+    url: str
 
 
 __all__ = (
-    "WebhooksProjectChangesPropArchivedAtType",
-    "WebhooksProjectChangesPropArchivedAtTypeForResponse",
-    "WebhooksProjectChangesType",
-    "WebhooksProjectChangesTypeForResponse",
+    "WebhooksLabelType",
+    "WebhooksLabelTypeForResponse",
 )

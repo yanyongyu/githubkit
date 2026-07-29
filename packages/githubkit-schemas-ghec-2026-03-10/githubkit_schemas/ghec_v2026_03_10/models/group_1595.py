@@ -9,28 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class UserCodespacesCodespaceNamePatchBody(GitHubModel):
-    """UserCodespacesCodespaceNamePatchBody"""
+class ReposOwnerRepoPagesPutBodyPropSourceAnyof1(GitHubModel):
+    """ReposOwnerRepoPagesPutBodyPropSourceAnyof1
 
-    machine: Missing[str] = Field(
-        default=UNSET, description="A valid machine to transition this codespace to."
+    Update the source for the repository. Must include the branch name and path.
+    """
+
+    branch: str = Field(
+        description="The repository branch used to publish your site's source files."
     )
-    display_name: Missing[str] = Field(
-        default=UNSET, description="Display name for this codespace"
-    )
-    recent_folders: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Recently opened folders inside the codespace. It is currently used by the clients to determine the folder path to load the codespace in.",
+    path: Literal["/", "/docs"] = Field(
+        description="The repository directory that includes the source files for the Pages site. Allowed paths are `/` or `/docs`."
     )
 
 
-model_rebuild(UserCodespacesCodespaceNamePatchBody)
+model_rebuild(ReposOwnerRepoPagesPutBodyPropSourceAnyof1)
 
-__all__ = ("UserCodespacesCodespaceNamePatchBody",)
+__all__ = ("ReposOwnerRepoPagesPutBodyPropSourceAnyof1",)

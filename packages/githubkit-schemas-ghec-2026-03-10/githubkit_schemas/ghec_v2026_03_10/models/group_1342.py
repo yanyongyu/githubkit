@@ -9,25 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgProjectsV2ProjectNumberDraftsPostBody(GitHubModel):
-    """OrgsOrgProjectsV2ProjectNumberDraftsPostBody"""
+class OrgsOrgCodespacesAccessPutBody(GitHubModel):
+    """OrgsOrgCodespacesAccessPutBody"""
 
-    title: str = Field(
-        description="The title of the draft issue item to create in the project."
+    visibility: Literal[
+        "disabled",
+        "selected_members",
+        "all_members",
+        "all_members_and_outside_collaborators",
+    ] = Field(
+        description="Which users can access codespaces in the organization. `disabled` means that no users can access codespaces in the organization."
     )
-    body: Missing[str] = Field(
+    selected_usernames: Missing[list[str]] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
         default=UNSET,
-        description="The body content of the draft issue item to create in the project.",
+        description="The usernames of the organization members who should have access to codespaces in the organization. Required when `visibility` is `selected_members`. The provided list of usernames will replace any existing value.",
     )
 
 
-model_rebuild(OrgsOrgProjectsV2ProjectNumberDraftsPostBody)
+model_rebuild(OrgsOrgCodespacesAccessPutBody)
 
-__all__ = ("OrgsOrgProjectsV2ProjectNumberDraftsPostBody",)
+__all__ = ("OrgsOrgCodespacesAccessPutBody",)

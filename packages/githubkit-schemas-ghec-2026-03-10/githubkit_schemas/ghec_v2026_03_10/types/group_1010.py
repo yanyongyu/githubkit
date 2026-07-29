@@ -9,45 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0327 import FullRepositoryType, FullRepositoryTypeForResponse
-from .group_0598 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0599 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0600 import (
+from .group_0617 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0618 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0619 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_1011 import (
-    WebhookSecurityAndAnalysisPropChangesType,
-    WebhookSecurityAndAnalysisPropChangesTypeForResponse,
-)
+from .group_0620 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0660 import WebhooksRelease1Type, WebhooksRelease1TypeForResponse
 
 
-class WebhookSecurityAndAnalysisType(TypedDict):
-    """security_and_analysis event"""
+class WebhookReleaseUnpublishedType(TypedDict):
+    """release unpublished event"""
 
-    changes: WebhookSecurityAndAnalysisPropChangesType
+    action: Literal["unpublished"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: FullRepositoryType
+    release: WebhooksRelease1Type
+    repository: RepositoryWebhooksType
     sender: NotRequired[SimpleUserType]
 
 
-class WebhookSecurityAndAnalysisTypeForResponse(TypedDict):
-    """security_and_analysis event"""
+class WebhookReleaseUnpublishedTypeForResponse(TypedDict):
+    """release unpublished event"""
 
-    changes: WebhookSecurityAndAnalysisPropChangesTypeForResponse
+    action: Literal["unpublished"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: FullRepositoryTypeForResponse
+    release: WebhooksRelease1TypeForResponse
+    repository: RepositoryWebhooksTypeForResponse
     sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookSecurityAndAnalysisType",
-    "WebhookSecurityAndAnalysisTypeForResponse",
+    "WebhookReleaseUnpublishedType",
+    "WebhookReleaseUnpublishedTypeForResponse",
 )

@@ -9,70 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Any, TypeAlias, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0Type(TypedDict):
-    """AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0
-
-    A GitHub user
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0TypeForResponse(TypedDict):
-    """AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0
-
-    A GitHub user
-    """
-
-    id: NotRequired[int]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0618 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0619 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0620 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0621 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsType(TypedDict):
-    """AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems
+class WebhookWorkflowDispatchType(TypedDict):
+    """workflow_dispatch event"""
 
-    A GitHub user
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsTypeForResponse(
-    TypedDict
-):
-    """AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems
-
-    A GitHub user
-    """
-
-    id: NotRequired[int]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    inputs: Union[WebhookWorkflowDispatchPropInputsType, None]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    ref: str
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
+    workflow: str
 
 
-class AgentsTasksTaskIdGetResponse200Allof0PropRepositoryType(TypedDict):
-    """AgentsTasksTaskIdGetResponse200Allof0PropRepository
+class WebhookWorkflowDispatchTypeForResponse(TypedDict):
+    """workflow_dispatch event"""
 
-    The repository this task belongs to
-    """
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    inputs: Union[WebhookWorkflowDispatchPropInputsTypeForResponse, None]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    ref: str
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+    workflow: str
 
-    id: NotRequired[int]
+
+WebhookWorkflowDispatchPropInputsType: TypeAlias = dict[str, Any]
+"""WebhookWorkflowDispatchPropInputs
+"""
 
 
-class AgentsTasksTaskIdGetResponse200Allof0PropRepositoryTypeForResponse(TypedDict):
-    """AgentsTasksTaskIdGetResponse200Allof0PropRepository
-
-    The repository this task belongs to
-    """
-
-    id: NotRequired[int]
+WebhookWorkflowDispatchPropInputsTypeForResponse: TypeAlias = dict[str, Any]
+"""WebhookWorkflowDispatchPropInputs
+"""
 
 
 __all__ = (
-    "AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0Type",
-    "AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0TypeForResponse",
-    "AgentsTasksTaskIdGetResponse200Allof0PropRepositoryType",
-    "AgentsTasksTaskIdGetResponse200Allof0PropRepositoryTypeForResponse",
-    "AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsType",
-    "AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsTypeForResponse",
+    "WebhookWorkflowDispatchPropInputsType",
+    "WebhookWorkflowDispatchPropInputsTypeForResponse",
+    "WebhookWorkflowDispatchType",
+    "WebhookWorkflowDispatchTypeForResponse",
 )

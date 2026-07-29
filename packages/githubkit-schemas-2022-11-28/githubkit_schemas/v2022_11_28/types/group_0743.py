@@ -13,47 +13,44 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0523 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0524 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0525 import (
+from .group_0535 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0536 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0537 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0526 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0543 import WebhooksMilestoneType, WebhooksMilestoneTypeForResponse
+from .group_0538 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 from .group_0744 import (
-    WebhookIssuesMilestonedPropIssueType,
-    WebhookIssuesMilestonedPropIssueTypeForResponse,
+    WebhookIssuesDeletedPropIssueType,
+    WebhookIssuesDeletedPropIssueTypeForResponse,
 )
 
 
-class WebhookIssuesMilestonedType(TypedDict):
-    """issues milestoned event"""
+class WebhookIssuesDeletedType(TypedDict):
+    """issues deleted event"""
 
-    action: Literal["milestoned"]
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssuesMilestonedPropIssueType
-    milestone: WebhooksMilestoneType
+    issue: WebhookIssuesDeletedPropIssueType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookIssuesMilestonedTypeForResponse(TypedDict):
-    """issues milestoned event"""
+class WebhookIssuesDeletedTypeForResponse(TypedDict):
+    """issues deleted event"""
 
-    action: Literal["milestoned"]
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhookIssuesMilestonedPropIssueTypeForResponse
-    milestone: WebhooksMilestoneTypeForResponse
+    issue: WebhookIssuesDeletedPropIssueTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookIssuesMilestonedType",
-    "WebhookIssuesMilestonedTypeForResponse",
+    "WebhookIssuesDeletedType",
+    "WebhookIssuesDeletedTypeForResponse",
 )

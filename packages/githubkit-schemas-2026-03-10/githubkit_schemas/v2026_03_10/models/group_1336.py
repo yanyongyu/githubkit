@@ -12,16 +12,18 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody"""
+class ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201(GitHubModel):
+    """ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201"""
 
-    issue_id: int = Field(
-        description="The id of the issue that blocks the current issue"
+    sbom_url: Missing[str] = Field(
+        default=UNSET, description="URL to poll for the SBOM export result."
     )
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody)
+model_rebuild(ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201)
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody",)
+__all__ = ("ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201",)

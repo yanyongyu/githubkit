@@ -9,26 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0271 import CopilotSpaceResourceType, CopilotSpaceResourceTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200Type(TypedDict):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200"""
+class ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType(TypedDict):
+    """ReposOwnerRepoReleasesAssetsAssetIdPatchBody"""
 
-    resources: list[CopilotSpaceResourceType]
+    name: NotRequired[str]
+    label: NotRequired[str]
+    state: NotRequired[str]
 
 
-class UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200TypeForResponse(
-    TypedDict
-):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200"""
+class ReposOwnerRepoReleasesAssetsAssetIdPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoReleasesAssetsAssetIdPatchBody"""
 
-    resources: list[CopilotSpaceResourceTypeForResponse]
+    name: NotRequired[str]
+    label: NotRequired[str]
+    state: NotRequired[str]
 
 
 __all__ = (
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200Type",
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200TypeForResponse",
+    "ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType",
+    "ReposOwnerRepoReleasesAssetsAssetIdPatchBodyTypeForResponse",
 )

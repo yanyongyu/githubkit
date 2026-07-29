@@ -11,24 +11,20 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0265 import CodespaceType, CodespaceTypeForResponse
+
+class ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType(TypedDict):
+    """ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody"""
+
+    labels: list[str]
 
 
-class ReposOwnerRepoCodespacesGetResponse200Type(TypedDict):
-    """ReposOwnerRepoCodespacesGetResponse200"""
+class ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody"""
 
-    total_count: int
-    codespaces: list[CodespaceType]
-
-
-class ReposOwnerRepoCodespacesGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoCodespacesGetResponse200"""
-
-    total_count: int
-    codespaces: list[CodespaceTypeForResponse]
+    labels: list[str]
 
 
 __all__ = (
-    "ReposOwnerRepoCodespacesGetResponse200Type",
-    "ReposOwnerRepoCodespacesGetResponse200TypeForResponse",
+    "ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType",
+    "ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyTypeForResponse",
 )

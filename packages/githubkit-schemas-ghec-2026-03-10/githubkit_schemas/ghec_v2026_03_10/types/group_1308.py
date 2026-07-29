@@ -11,20 +11,27 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
+from .group_0266 import (
+    OrganizationActionsVariableType,
+    OrganizationActionsVariableTypeForResponse,
+)
 
-class OrgsOrgCopilotBillingSelectedUsersDeleteBodyType(TypedDict):
-    """OrgsOrgCopilotBillingSelectedUsersDeleteBody"""
 
-    selected_usernames: list[str]
+class OrgsOrgAgentsVariablesGetResponse200Type(TypedDict):
+    """OrgsOrgAgentsVariablesGetResponse200"""
+
+    total_count: int
+    variables: list[OrganizationActionsVariableType]
 
 
-class OrgsOrgCopilotBillingSelectedUsersDeleteBodyTypeForResponse(TypedDict):
-    """OrgsOrgCopilotBillingSelectedUsersDeleteBody"""
+class OrgsOrgAgentsVariablesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgAgentsVariablesGetResponse200"""
 
-    selected_usernames: list[str]
+    total_count: int
+    variables: list[OrganizationActionsVariableTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgCopilotBillingSelectedUsersDeleteBodyType",
-    "OrgsOrgCopilotBillingSelectedUsersDeleteBodyTypeForResponse",
+    "OrgsOrgAgentsVariablesGetResponse200Type",
+    "OrgsOrgAgentsVariablesGetResponse200TypeForResponse",
 )

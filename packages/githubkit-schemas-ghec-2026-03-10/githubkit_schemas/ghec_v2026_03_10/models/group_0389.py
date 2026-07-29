@@ -9,28 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class CodeScanningAutofixCommits(GitHubModel):
-    """CodeScanningAutofixCommits
+class CheckAnnotation(GitHubModel):
+    """Check Annotation
 
-    Commit an autofix for a code scanning alert
+    Check Annotation
     """
 
-    target_ref: Missing[str] = Field(
-        default=UNSET,
-        description='The Git reference of target branch for the commit. Branch needs to already exist.  For more information, see "[Git References](https://git-scm.com/book/en/v2/Git-Internals-Git-References)" in the Git documentation.',
-    )
-    message: Missing[str] = Field(
-        default=UNSET, description="Commit message to be used."
-    )
+    path: str = Field()
+    start_line: int = Field()
+    end_line: int = Field()
+    start_column: Union[int, None] = Field()
+    end_column: Union[int, None] = Field()
+    annotation_level: Union[str, None] = Field()
+    title: Union[str, None] = Field()
+    message: Union[str, None] = Field()
+    raw_details: Union[str, None] = Field()
+    blob_href: str = Field()
 
 
-model_rebuild(CodeScanningAutofixCommits)
+model_rebuild(CheckAnnotation)
 
-__all__ = ("CodeScanningAutofixCommits",)
+__all__ = ("CheckAnnotation",)

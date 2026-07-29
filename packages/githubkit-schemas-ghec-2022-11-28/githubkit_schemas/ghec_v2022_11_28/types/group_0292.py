@@ -9,34 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class InteractionLimitResponseType(TypedDict):
-    """Interaction Limits
+class ApiInsightsRouteStatsItemsType(TypedDict):
+    """ApiInsightsRouteStatsItems"""
 
-    Interaction limit settings.
-    """
+    http_method: NotRequired[str]
+    api_route: NotRequired[str]
+    total_request_count: NotRequired[int]
+    rate_limited_request_count: NotRequired[int]
+    last_rate_limited_timestamp: NotRequired[Union[str, None]]
+    last_request_timestamp: NotRequired[str]
 
-    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
-    origin: str
-    expires_at: _dt.datetime
 
+class ApiInsightsRouteStatsItemsTypeForResponse(TypedDict):
+    """ApiInsightsRouteStatsItems"""
 
-class InteractionLimitResponseTypeForResponse(TypedDict):
-    """Interaction Limits
-
-    Interaction limit settings.
-    """
-
-    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
-    origin: str
-    expires_at: str
+    http_method: NotRequired[str]
+    api_route: NotRequired[str]
+    total_request_count: NotRequired[int]
+    rate_limited_request_count: NotRequired[int]
+    last_rate_limited_timestamp: NotRequired[Union[str, None]]
+    last_request_timestamp: NotRequired[str]
 
 
 __all__ = (
-    "InteractionLimitResponseType",
-    "InteractionLimitResponseTypeForResponse",
+    "ApiInsightsRouteStatsItemsType",
+    "ApiInsightsRouteStatsItemsTypeForResponse",
 )

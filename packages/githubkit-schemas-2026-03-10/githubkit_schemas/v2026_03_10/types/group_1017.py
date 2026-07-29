@@ -12,39 +12,80 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0033 import (
-    CodeSecurityConfigurationType,
-    CodeSecurityConfigurationTypeForResponse,
-)
 
+class AgentsReposOwnerRepoTasksTaskIdGetResponse403Type(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse403
 
-class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type(
-    TypedDict
-):
-    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutRespons
-    e200
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
     """
 
-    default_for_new_repos: NotRequired[
-        Literal["all", "none", "private_and_internal", "public"]
+    message: str
+    errors: NotRequired[
+        list[AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItemsType]
     ]
-    configuration: NotRequired[CodeSecurityConfigurationType]
+    documentation_url: str
 
 
-class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutRespons
-    e200
+class AgentsReposOwnerRepoTasksTaskIdGetResponse403TypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse403
+
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
     """
 
-    default_for_new_repos: NotRequired[
-        Literal["all", "none", "private_and_internal", "public"]
+    message: str
+    errors: NotRequired[
+        list[
+            AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItemsTypeForResponse
+        ]
     ]
-    configuration: NotRequired[CodeSecurityConfigurationTypeForResponse]
+    documentation_url: str
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItemsType(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItemsTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type",
-    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200TypeForResponse",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItemsType",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItemsTypeForResponse",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse403Type",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse403TypeForResponse",
 )

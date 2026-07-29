@@ -9,39 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0003 import SimpleUser
+from .group_0223 import PullRequestMinimalPropBase, PullRequestMinimalPropHead
 
 
-class PatchSchema(GitHubModel):
-    """PatchSchema"""
+class PullRequestStackPullRequest(GitHubModel):
+    """Pull Request Stack Pull Request"""
 
-    operations: list[PatchSchemaPropOperationsItems] = Field(
-        alias="Operations", description="patch operations list"
-    )
-    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]] = Field()
-
-
-class PatchSchemaPropOperationsItems(GitHubModel):
-    """PatchSchemaPropOperationsItems"""
-
-    op: Literal["add", "replace", "remove"] = Field()
-    path: Missing[str] = Field(default=UNSET)
-    value: Missing[str] = Field(
-        default=UNSET,
-        description="Corresponding 'value' of that field specified by 'path'",
-    )
+    id: int = Field()
+    number: int = Field()
+    url: str = Field()
+    head: PullRequestMinimalPropHead = Field()
+    base: PullRequestMinimalPropBase = Field()
+    node_id: str = Field()
+    title: str = Field()
+    state: Literal["open", "closed"] = Field()
+    merged_at: Union[_dt.datetime, None] = Field()
+    draft: bool = Field()
+    html_url: str = Field()
+    user: Union[None, SimpleUser] = Field()
 
 
-model_rebuild(PatchSchema)
-model_rebuild(PatchSchemaPropOperationsItems)
+model_rebuild(PullRequestStackPullRequest)
 
-__all__ = (
-    "PatchSchema",
-    "PatchSchemaPropOperationsItems",
-)
+__all__ = ("PullRequestStackPullRequest",)

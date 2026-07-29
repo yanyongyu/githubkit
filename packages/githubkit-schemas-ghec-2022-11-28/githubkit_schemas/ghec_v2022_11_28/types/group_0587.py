@@ -9,30 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class CodespacesUserPublicKeyType(TypedDict):
-    """CodespacesUserPublicKey
+class PatchSchemaType(TypedDict):
+    """PatchSchema"""
 
-    The public key used for setting user Codespaces' Secrets.
-    """
-
-    key_id: str
-    key: str
+    operations: list[PatchSchemaPropOperationsItemsType]
+    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]]
 
 
-class CodespacesUserPublicKeyTypeForResponse(TypedDict):
-    """CodespacesUserPublicKey
+class PatchSchemaTypeForResponse(TypedDict):
+    """PatchSchema"""
 
-    The public key used for setting user Codespaces' Secrets.
-    """
+    operations: list[PatchSchemaPropOperationsItemsTypeForResponse]
+    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]]
 
-    key_id: str
-    key: str
+
+class PatchSchemaPropOperationsItemsType(TypedDict):
+    """PatchSchemaPropOperationsItems"""
+
+    op: Literal["add", "replace", "remove"]
+    path: NotRequired[str]
+    value: NotRequired[str]
+
+
+class PatchSchemaPropOperationsItemsTypeForResponse(TypedDict):
+    """PatchSchemaPropOperationsItems"""
+
+    op: Literal["add", "replace", "remove"]
+    path: NotRequired[str]
+    value: NotRequired[str]
 
 
 __all__ = (
-    "CodespacesUserPublicKeyType",
-    "CodespacesUserPublicKeyTypeForResponse",
+    "PatchSchemaPropOperationsItemsType",
+    "PatchSchemaPropOperationsItemsTypeForResponse",
+    "PatchSchemaType",
+    "PatchSchemaTypeForResponse",
 )

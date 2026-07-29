@@ -12,28 +12,26 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0206 import LabelType, LabelTypeForResponse
-from .group_0218 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
+from .group_0210 import LabelType, LabelTypeForResponse
+from .group_0220 import IssueType, IssueTypeForResponse
 
 
-class PullRequestEventType(TypedDict):
-    """PullRequestEvent"""
+class IssuesEventType(TypedDict):
+    """IssuesEvent"""
 
     action: str
-    number: int
-    pull_request: PullRequestMinimalType
+    issue: IssueType
     assignee: NotRequired[SimpleUserType]
     assignees: NotRequired[list[SimpleUserType]]
     label: NotRequired[LabelType]
     labels: NotRequired[list[LabelType]]
 
 
-class PullRequestEventTypeForResponse(TypedDict):
-    """PullRequestEvent"""
+class IssuesEventTypeForResponse(TypedDict):
+    """IssuesEvent"""
 
     action: str
-    number: int
-    pull_request: PullRequestMinimalTypeForResponse
+    issue: IssueTypeForResponse
     assignee: NotRequired[SimpleUserTypeForResponse]
     assignees: NotRequired[list[SimpleUserTypeForResponse]]
     label: NotRequired[LabelTypeForResponse]
@@ -41,6 +39,6 @@ class PullRequestEventTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "PullRequestEventType",
-    "PullRequestEventTypeForResponse",
+    "IssuesEventType",
+    "IssuesEventTypeForResponse",
 )

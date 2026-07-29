@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,32 +18,49 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody(GitHubModel):
-    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody"""
+class AgentsTasksGetResponse401(GitHubModel):
+    """AgentsTasksGetResponse401
 
-    name: Missing[str] = Field(default=UNSET, description="Name of the runner group.")
-    visibility: Missing[Literal["selected", "all"]] = Field(
-        default=UNSET,
-        description="Visibility of a runner group. You can select all organizations or select individual organizations.",
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str = Field(
+        description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
-    allows_public_repositories: Missing[bool] = Field(
+    errors: Missing[list[AgentsTasksGetResponse401PropErrorsItems]] = Field(
         default=UNSET,
-        description="Whether the runner group can be used by `public` repositories.",
+        description="List of validation errors (present only for 422 responses)",
     )
-    restricted_to_workflows: Missing[bool] = Field(
-        default=UNSET,
-        description="If `true`, the runner group will be restricted to running only the workflows specified in the `selected_workflows` array.",
-    )
-    selected_workflows: Missing[list[str]] = Field(
-        default=UNSET,
-        description="List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`.",
-    )
-    network_configuration_id: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The identifier of a hosted compute network configuration.",
-    )
+    documentation_url: str = Field(description="URL to relevant API documentation")
 
 
-model_rebuild(EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody)
+class AgentsTasksGetResponse401PropErrorsItems(GitHubModel):
+    """AgentsTasksGetResponse401PropErrorsItems
 
-__all__ = ("EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody",)
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ] = Field(description="Machine-readable error code")
+    message: Missing[str] = Field(
+        default=UNSET,
+        description='Human-readable message (populated when code is "custom")',
+    )
+
+
+model_rebuild(AgentsTasksGetResponse401)
+model_rebuild(AgentsTasksGetResponse401PropErrorsItems)
+
+__all__ = (
+    "AgentsTasksGetResponse401",
+    "AgentsTasksGetResponse401PropErrorsItems",
+)

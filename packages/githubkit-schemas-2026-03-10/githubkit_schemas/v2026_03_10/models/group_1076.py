@@ -11,19 +11,17 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsRunnersRunnerIdLabelsPostBody(GitHubModel):
-    """OrgsOrgActionsRunnersRunnerIdLabelsPostBody"""
+class NotificationsPutResponse202(GitHubModel):
+    """NotificationsPutResponse202"""
 
-    labels: list[str] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="The names of the custom labels to add to the runner.",
-    )
+    message: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgActionsRunnersRunnerIdLabelsPostBody)
+model_rebuild(NotificationsPutResponse202)
 
-__all__ = ("OrgsOrgActionsRunnersRunnerIdLabelsPostBody",)
+__all__ = ("NotificationsPutResponse202",)

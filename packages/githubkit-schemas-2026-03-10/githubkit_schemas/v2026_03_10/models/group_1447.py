@@ -16,22 +16,17 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody(
-    GitHubModel
-):
-    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBod
-    y
-    """
+class ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody(GitHubModel):
+    """ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody"""
 
-    role: Literal["reader", "writer", "admin", "no_access"] = Field(
-        description="The new role to grant to the collaborator. Use `no_access` to remove the collaborator."
+    reason: Literal["false_positive", "used_in_tests", "will_fix_later"] = Field(
+        description="The reason for bypassing push protection."
+    )
+    placeholder_id: str = Field(
+        description="The ID of the push protection bypass placeholder. This value is returned on any push protected routes."
     )
 
 
-model_rebuild(
-    UsersUsernameCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody
-)
+model_rebuild(ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody)
 
-__all__ = (
-    "UsersUsernameCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody",
-)
+__all__ = ("ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody",)

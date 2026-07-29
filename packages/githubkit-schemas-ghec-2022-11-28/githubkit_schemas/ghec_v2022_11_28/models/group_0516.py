@@ -9,23 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReleaseNotesContent(GitHubModel):
-    """Generated Release Notes Content
+class MergedUpstream(GitHubModel):
+    """Merged upstream
 
-    Generated name and body describing a release
+    Results of a successful merge upstream request
     """
 
-    name: str = Field(description="The generated name of the release")
-    body: str = Field(
-        description="The generated body describing the contents of the release supporting markdown formatting"
-    )
+    message: Missing[str] = Field(default=UNSET)
+    merge_type: Missing[Literal["merge", "fast-forward", "none"]] = Field(default=UNSET)
+    base_branch: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(ReleaseNotesContent)
+model_rebuild(MergedUpstream)
 
-__all__ = ("ReleaseNotesContent",)
+__all__ = ("MergedUpstream",)

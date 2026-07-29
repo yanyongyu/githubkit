@@ -9,41 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0018 import InstallationType, InstallationTypeForResponse
 
 
-class OrgsOrgTeamsPostBodyType(TypedDict):
-    """OrgsOrgTeamsPostBody"""
+class OrgsOrgInstallationsGetResponse200Type(TypedDict):
+    """OrgsOrgInstallationsGetResponse200"""
 
-    name: str
-    description: NotRequired[str]
-    maintainers: NotRequired[list[str]]
-    repo_names: NotRequired[list[str]]
-    privacy: NotRequired[Literal["secret", "closed"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ]
-    permission: NotRequired[Literal["pull", "push"]]
-    parent_team_id: NotRequired[int]
+    total_count: int
+    installations: list[InstallationType]
 
 
-class OrgsOrgTeamsPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgTeamsPostBody"""
+class OrgsOrgInstallationsGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgInstallationsGetResponse200"""
 
-    name: str
-    description: NotRequired[str]
-    maintainers: NotRequired[list[str]]
-    repo_names: NotRequired[list[str]]
-    privacy: NotRequired[Literal["secret", "closed"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ]
-    permission: NotRequired[Literal["pull", "push"]]
-    parent_team_id: NotRequired[int]
+    total_count: int
+    installations: list[InstallationTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgTeamsPostBodyType",
-    "OrgsOrgTeamsPostBodyTypeForResponse",
+    "OrgsOrgInstallationsGetResponse200Type",
+    "OrgsOrgInstallationsGetResponse200TypeForResponse",
 )

@@ -9,21 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0003 import SimpleUser
 
 
-class GitignoreTemplate(GitHubModel):
-    """Gitignore Template
+class GistCommit(GitHubModel):
+    """Gist Commit
 
-    Gitignore Template
+    Gist Commit
     """
 
-    name: str = Field()
-    source: str = Field()
+    url: str = Field()
+    version: str = Field()
+    user: Union[None, SimpleUser] = Field()
+    change_status: GistCommitPropChangeStatus = Field()
+    committed_at: _dt.datetime = Field()
 
 
-model_rebuild(GitignoreTemplate)
+class GistCommitPropChangeStatus(GitHubModel):
+    """GistCommitPropChangeStatus"""
 
-__all__ = ("GitignoreTemplate",)
+    total: Missing[int] = Field(default=UNSET)
+    additions: Missing[int] = Field(default=UNSET)
+    deletions: Missing[int] = Field(default=UNSET)
+
+
+model_rebuild(GistCommit)
+model_rebuild(GistCommitPropChangeStatus)
+
+__all__ = (
+    "GistCommit",
+    "GistCommitPropChangeStatus",
+)

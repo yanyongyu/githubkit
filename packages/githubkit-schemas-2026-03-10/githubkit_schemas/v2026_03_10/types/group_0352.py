@@ -9,121 +9,103 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0052 import ReactionRollupType, ReactionRollupTypeForResponse
 
-class ContentTreeType(TypedDict):
-    """Content Tree
 
-    Content Tree
+class CommitCommentType(TypedDict):
+    """Commit Comment
+
+    Commit Comment
     """
 
-    type: str
-    size: int
-    name: str
-    path: str
-    sha: str
-    content: NotRequired[str]
+    html_url: str
     url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    entries: NotRequired[list[ContentTreePropEntriesItemsType]]
-    encoding: NotRequired[str]
-    links: ContentTreePropLinksType
+    id: int
+    node_id: str
+    body: str
+    path: Union[str, None]
+    position: Union[int, None]
+    line: Union[int, None]
+    commit_id: str
+    user: Union[None, SimpleUserType]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    reactions: NotRequired[ReactionRollupType]
 
 
-class ContentTreeTypeForResponse(TypedDict):
-    """Content Tree
+class CommitCommentTypeForResponse(TypedDict):
+    """Commit Comment
 
-    Content Tree
+    Commit Comment
     """
 
-    type: str
-    size: int
-    name: str
-    path: str
-    sha: str
-    content: NotRequired[str]
+    html_url: str
     url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    entries: NotRequired[list[ContentTreePropEntriesItemsTypeForResponse]]
-    encoding: NotRequired[str]
-    links: ContentTreePropLinksTypeForResponse
+    id: int
+    node_id: str
+    body: str
+    path: Union[str, None]
+    position: Union[int, None]
+    line: Union[int, None]
+    commit_id: str
+    user: Union[None, SimpleUserTypeForResponse]
+    created_at: str
+    updated_at: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    reactions: NotRequired[ReactionRollupTypeForResponse]
 
 
-class ContentTreePropLinksType(TypedDict):
-    """ContentTreePropLinks"""
+class TimelineCommitCommentedEventType(TypedDict):
+    """Timeline Commit Commented Event
 
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
+    Timeline Commit Commented Event
+    """
 
-
-class ContentTreePropLinksTypeForResponse(TypedDict):
-    """ContentTreePropLinks"""
-
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
+    event: NotRequired[Literal["commit_commented"]]
+    node_id: NotRequired[str]
+    commit_id: NotRequired[str]
+    comments: NotRequired[list[CommitCommentType]]
 
 
-class ContentTreePropEntriesItemsType(TypedDict):
-    """ContentTreePropEntriesItems"""
+class TimelineCommitCommentedEventTypeForResponse(TypedDict):
+    """Timeline Commit Commented Event
 
-    type: str
-    size: int
-    name: str
-    path: str
-    sha: str
-    url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    links: ContentTreePropEntriesItemsPropLinksType
+    Timeline Commit Commented Event
+    """
 
-
-class ContentTreePropEntriesItemsTypeForResponse(TypedDict):
-    """ContentTreePropEntriesItems"""
-
-    type: str
-    size: int
-    name: str
-    path: str
-    sha: str
-    url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    links: ContentTreePropEntriesItemsPropLinksTypeForResponse
-
-
-class ContentTreePropEntriesItemsPropLinksType(TypedDict):
-    """ContentTreePropEntriesItemsPropLinks"""
-
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
-
-
-class ContentTreePropEntriesItemsPropLinksTypeForResponse(TypedDict):
-    """ContentTreePropEntriesItemsPropLinks"""
-
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
+    event: NotRequired[Literal["commit_commented"]]
+    node_id: NotRequired[str]
+    commit_id: NotRequired[str]
+    comments: NotRequired[list[CommitCommentTypeForResponse]]
 
 
 __all__ = (
-    "ContentTreePropEntriesItemsPropLinksType",
-    "ContentTreePropEntriesItemsPropLinksTypeForResponse",
-    "ContentTreePropEntriesItemsType",
-    "ContentTreePropEntriesItemsTypeForResponse",
-    "ContentTreePropLinksType",
-    "ContentTreePropLinksTypeForResponse",
-    "ContentTreeType",
-    "ContentTreeTypeForResponse",
+    "CommitCommentType",
+    "CommitCommentTypeForResponse",
+    "TimelineCommitCommentedEventType",
+    "TimelineCommitCommentedEventTypeForResponse",
 )

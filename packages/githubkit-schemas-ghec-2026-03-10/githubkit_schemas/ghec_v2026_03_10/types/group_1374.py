@@ -9,24 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoActionsJobsJobIdRerunPostBodyType(TypedDict):
-    """ReposOwnerRepoActionsJobsJobIdRerunPostBody"""
+class OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyType(TypedDict):
+    """OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody"""
 
-    enable_debug_logging: NotRequired[bool]
-    enable_debugger: NotRequired[bool]
+    default_level: Literal["public", "internal"]
 
 
-class ReposOwnerRepoActionsJobsJobIdRerunPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsJobsJobIdRerunPostBody"""
+class OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody"""
 
-    enable_debug_logging: NotRequired[bool]
-    enable_debugger: NotRequired[bool]
+    default_level: Literal["public", "internal"]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsJobsJobIdRerunPostBodyType",
-    "ReposOwnerRepoActionsJobsJobIdRerunPostBodyTypeForResponse",
+    "OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyType",
+    "OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyTypeForResponse",
 )

@@ -9,30 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Any, TypeAlias
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
+
+class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422Type(TypedDict):
+    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422"""
+
+    message: NotRequired[str]
+    validation_errors: NotRequired[
+        EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrorsType
+    ]
 
 
-class OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200Type(
+class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422TypeForResponse(
     TypedDict
 ):
-    """OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200"""
+    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422"""
 
-    total_count: NotRequired[int]
-    repositories: NotRequired[list[RepositoryType]]
+    message: NotRequired[str]
+    validation_errors: NotRequired[
+        EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse
+    ]
 
 
-class OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200TypeForResponse(
-    TypedDict
-):
-    """OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200"""
+EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrorsType: TypeAlias = dict[
+    str, Any
+]
+"""EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationEr
+rors
 
-    total_count: NotRequired[int]
-    repositories: NotRequired[list[RepositoryTypeForResponse]]
+A map of validation errors keyed by the zero-based index of the pattern that
+failed.
+"""
+
+
+EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationEr
+rors
+
+A map of validation errors keyed by the zero-based index of the pattern that
+failed.
+"""
 
 
 __all__ = (
-    "OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200Type",
-    "OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrorsType",
+    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse",
+    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422Type",
+    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422TypeForResponse",
 )

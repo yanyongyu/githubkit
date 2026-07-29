@@ -9,205 +9,85 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0019 import LicenseSimpleType, LicenseSimpleTypeForResponse
+from .group_0194 import CodeOfConductSimpleType, CodeOfConductSimpleTypeForResponse
 
-class FileCommitType(TypedDict):
-    """File Commit
 
-    File Commit
+class CommunityProfilePropFilesType(TypedDict):
+    """CommunityProfilePropFiles"""
+
+    code_of_conduct: Union[None, CodeOfConductSimpleType]
+    code_of_conduct_file: Union[None, CommunityHealthFileType]
+    license_: Union[None, LicenseSimpleType]
+    contributing: Union[None, CommunityHealthFileType]
+    readme: Union[None, CommunityHealthFileType]
+    issue_template: Union[None, CommunityHealthFileType]
+    pull_request_template: Union[None, CommunityHealthFileType]
+
+
+class CommunityProfilePropFilesTypeForResponse(TypedDict):
+    """CommunityProfilePropFiles"""
+
+    code_of_conduct: Union[None, CodeOfConductSimpleTypeForResponse]
+    code_of_conduct_file: Union[None, CommunityHealthFileTypeForResponse]
+    license_: Union[None, LicenseSimpleTypeForResponse]
+    contributing: Union[None, CommunityHealthFileTypeForResponse]
+    readme: Union[None, CommunityHealthFileTypeForResponse]
+    issue_template: Union[None, CommunityHealthFileTypeForResponse]
+    pull_request_template: Union[None, CommunityHealthFileTypeForResponse]
+
+
+class CommunityHealthFileType(TypedDict):
+    """Community Health File"""
+
+    url: str
+    html_url: str
+
+
+class CommunityHealthFileTypeForResponse(TypedDict):
+    """Community Health File"""
+
+    url: str
+    html_url: str
+
+
+class CommunityProfileType(TypedDict):
+    """Community Profile
+
+    Community Profile
     """
 
-    content: Union[FileCommitPropContentType, None]
-    commit: FileCommitPropCommitType
+    health_percentage: int
+    description: Union[str, None]
+    documentation: Union[str, None]
+    files: CommunityProfilePropFilesType
+    updated_at: Union[_dt.datetime, None]
+    content_reports_enabled: NotRequired[bool]
 
 
-class FileCommitTypeForResponse(TypedDict):
-    """File Commit
+class CommunityProfileTypeForResponse(TypedDict):
+    """Community Profile
 
-    File Commit
+    Community Profile
     """
 
-    content: Union[FileCommitPropContentTypeForResponse, None]
-    commit: FileCommitPropCommitTypeForResponse
-
-
-class FileCommitPropContentType(TypedDict):
-    """FileCommitPropContent"""
-
-    name: NotRequired[str]
-    path: NotRequired[str]
-    sha: NotRequired[str]
-    size: NotRequired[int]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    git_url: NotRequired[str]
-    download_url: NotRequired[str]
-    type: NotRequired[str]
-    links: NotRequired[FileCommitPropContentPropLinksType]
-
-
-class FileCommitPropContentTypeForResponse(TypedDict):
-    """FileCommitPropContent"""
-
-    name: NotRequired[str]
-    path: NotRequired[str]
-    sha: NotRequired[str]
-    size: NotRequired[int]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    git_url: NotRequired[str]
-    download_url: NotRequired[str]
-    type: NotRequired[str]
-    links: NotRequired[FileCommitPropContentPropLinksTypeForResponse]
-
-
-class FileCommitPropContentPropLinksType(TypedDict):
-    """FileCommitPropContentPropLinks"""
-
-    self_: NotRequired[str]
-    git: NotRequired[str]
-    html: NotRequired[str]
-
-
-class FileCommitPropContentPropLinksTypeForResponse(TypedDict):
-    """FileCommitPropContentPropLinks"""
-
-    self_: NotRequired[str]
-    git: NotRequired[str]
-    html: NotRequired[str]
-
-
-class FileCommitPropCommitType(TypedDict):
-    """FileCommitPropCommit"""
-
-    sha: NotRequired[str]
-    node_id: NotRequired[str]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    author: NotRequired[FileCommitPropCommitPropAuthorType]
-    committer: NotRequired[FileCommitPropCommitPropCommitterType]
-    message: NotRequired[str]
-    tree: NotRequired[FileCommitPropCommitPropTreeType]
-    parents: NotRequired[list[FileCommitPropCommitPropParentsItemsType]]
-    verification: NotRequired[FileCommitPropCommitPropVerificationType]
-
-
-class FileCommitPropCommitTypeForResponse(TypedDict):
-    """FileCommitPropCommit"""
-
-    sha: NotRequired[str]
-    node_id: NotRequired[str]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    author: NotRequired[FileCommitPropCommitPropAuthorTypeForResponse]
-    committer: NotRequired[FileCommitPropCommitPropCommitterTypeForResponse]
-    message: NotRequired[str]
-    tree: NotRequired[FileCommitPropCommitPropTreeTypeForResponse]
-    parents: NotRequired[list[FileCommitPropCommitPropParentsItemsTypeForResponse]]
-    verification: NotRequired[FileCommitPropCommitPropVerificationTypeForResponse]
-
-
-class FileCommitPropCommitPropAuthorType(TypedDict):
-    """FileCommitPropCommitPropAuthor"""
-
-    date: NotRequired[str]
-    name: NotRequired[str]
-    email: NotRequired[str]
-
-
-class FileCommitPropCommitPropAuthorTypeForResponse(TypedDict):
-    """FileCommitPropCommitPropAuthor"""
-
-    date: NotRequired[str]
-    name: NotRequired[str]
-    email: NotRequired[str]
-
-
-class FileCommitPropCommitPropCommitterType(TypedDict):
-    """FileCommitPropCommitPropCommitter"""
-
-    date: NotRequired[str]
-    name: NotRequired[str]
-    email: NotRequired[str]
-
-
-class FileCommitPropCommitPropCommitterTypeForResponse(TypedDict):
-    """FileCommitPropCommitPropCommitter"""
-
-    date: NotRequired[str]
-    name: NotRequired[str]
-    email: NotRequired[str]
-
-
-class FileCommitPropCommitPropTreeType(TypedDict):
-    """FileCommitPropCommitPropTree"""
-
-    url: NotRequired[str]
-    sha: NotRequired[str]
-
-
-class FileCommitPropCommitPropTreeTypeForResponse(TypedDict):
-    """FileCommitPropCommitPropTree"""
-
-    url: NotRequired[str]
-    sha: NotRequired[str]
-
-
-class FileCommitPropCommitPropParentsItemsType(TypedDict):
-    """FileCommitPropCommitPropParentsItems"""
-
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    sha: NotRequired[str]
-
-
-class FileCommitPropCommitPropParentsItemsTypeForResponse(TypedDict):
-    """FileCommitPropCommitPropParentsItems"""
-
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    sha: NotRequired[str]
-
-
-class FileCommitPropCommitPropVerificationType(TypedDict):
-    """FileCommitPropCommitPropVerification"""
-
-    verified: NotRequired[bool]
-    reason: NotRequired[str]
-    signature: NotRequired[Union[str, None]]
-    payload: NotRequired[Union[str, None]]
-    verified_at: NotRequired[Union[str, None]]
-
-
-class FileCommitPropCommitPropVerificationTypeForResponse(TypedDict):
-    """FileCommitPropCommitPropVerification"""
-
-    verified: NotRequired[bool]
-    reason: NotRequired[str]
-    signature: NotRequired[Union[str, None]]
-    payload: NotRequired[Union[str, None]]
-    verified_at: NotRequired[Union[str, None]]
+    health_percentage: int
+    description: Union[str, None]
+    documentation: Union[str, None]
+    files: CommunityProfilePropFilesTypeForResponse
+    updated_at: Union[str, None]
+    content_reports_enabled: NotRequired[bool]
 
 
 __all__ = (
-    "FileCommitPropCommitPropAuthorType",
-    "FileCommitPropCommitPropAuthorTypeForResponse",
-    "FileCommitPropCommitPropCommitterType",
-    "FileCommitPropCommitPropCommitterTypeForResponse",
-    "FileCommitPropCommitPropParentsItemsType",
-    "FileCommitPropCommitPropParentsItemsTypeForResponse",
-    "FileCommitPropCommitPropTreeType",
-    "FileCommitPropCommitPropTreeTypeForResponse",
-    "FileCommitPropCommitPropVerificationType",
-    "FileCommitPropCommitPropVerificationTypeForResponse",
-    "FileCommitPropCommitType",
-    "FileCommitPropCommitTypeForResponse",
-    "FileCommitPropContentPropLinksType",
-    "FileCommitPropContentPropLinksTypeForResponse",
-    "FileCommitPropContentType",
-    "FileCommitPropContentTypeForResponse",
-    "FileCommitType",
-    "FileCommitTypeForResponse",
+    "CommunityHealthFileType",
+    "CommunityHealthFileTypeForResponse",
+    "CommunityProfilePropFilesType",
+    "CommunityProfilePropFilesTypeForResponse",
+    "CommunityProfileType",
+    "CommunityProfileTypeForResponse",
 )

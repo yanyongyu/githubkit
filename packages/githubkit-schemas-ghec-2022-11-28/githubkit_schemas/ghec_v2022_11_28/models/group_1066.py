@@ -15,19 +15,15 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_1067 import (
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItems,
-)
+
+class WebhookStatusPropCommitPropCommitPropAuthorAllof1(GitHubModel):
+    """WebhookStatusPropCommitPropCommitPropAuthorAllof1"""
+
+    date: str = Field()
+    email: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1(GitHubModel):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1"""
+model_rebuild(WebhookStatusPropCommitPropCommitPropAuthorAllof1)
 
-    sessions: Missing[
-        list[AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItems]
-    ] = Field(default=UNSET, description="Sessions associated with this task")
-
-
-model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1)
-
-__all__ = ("AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1",)
+__all__ = ("WebhookStatusPropCommitPropCommitPropAuthorAllof1",)

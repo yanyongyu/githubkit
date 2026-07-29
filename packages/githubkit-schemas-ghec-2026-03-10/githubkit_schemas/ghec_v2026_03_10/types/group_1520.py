@@ -10,26 +10,49 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_1518 import (
+    ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentType,
+    ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentTypeForResponse,
+)
 
 
-class ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberReactionsPostBody"""
+class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1Type(TypedDict):
+    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1"""
 
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    state: NotRequired[Literal["dismissed", "open"]]
+    dismissed_reason: NotRequired[
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ]
+    ]
+    dismissed_comment: NotRequired[str]
+    assignees: list[str]
+    agent_assignment: NotRequired[
+        ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentType
     ]
 
 
-class ReposOwnerRepoIssuesIssueNumberReactionsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberReactionsPostBody"""
+class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1"""
 
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    state: NotRequired[Literal["dismissed", "open"]]
+    dismissed_reason: NotRequired[
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ]
+    ]
+    dismissed_comment: NotRequired[str]
+    assignees: list[str]
+    agent_assignment: NotRequired[
+        ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentTypeForResponse
     ]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType",
-    "ReposOwnerRepoIssuesIssueNumberReactionsPostBodyTypeForResponse",
+    "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1Type",
+    "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1TypeForResponse",
 )

@@ -9,34 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0Type(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0
+class OrgsOrgSettingsImmutableReleasesPutBodyType(TypedDict):
+    """OrgsOrgSettingsImmutableReleasesPutBody"""
 
-    Examples:
-        {'teams': ['my-team']}
-    """
-
-    teams: list[str]
+    enforced_repositories: Literal["all", "none", "selected"]
+    selected_repository_ids: NotRequired[list[int]]
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0
+class OrgsOrgSettingsImmutableReleasesPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgSettingsImmutableReleasesPutBody"""
 
-    Examples:
-        {'teams': ['my-team']}
-    """
-
-    teams: list[str]
+    enforced_repositories: Literal["all", "none", "selected"]
+    selected_repository_ids: NotRequired[list[int]]
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0Type",
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0TypeForResponse",
+    "OrgsOrgSettingsImmutableReleasesPutBodyType",
+    "OrgsOrgSettingsImmutableReleasesPutBodyTypeForResponse",
 )

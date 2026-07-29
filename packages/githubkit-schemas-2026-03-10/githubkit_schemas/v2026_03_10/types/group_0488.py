@@ -9,52 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class TagType(TypedDict):
-    """Tag
+class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1Type(TypedDict):
+    """SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1"""
 
-    Tag
-    """
-
-    name: str
-    commit: TagPropCommitType
-    zipball_url: str
-    tarball_url: str
-    node_id: str
+    pattern_name: NotRequired[str]
+    pattern_scope: NotRequired[str]
 
 
-class TagTypeForResponse(TypedDict):
-    """Tag
+class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1TypeForResponse(
+    TypedDict
+):
+    """SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1"""
 
-    Tag
-    """
-
-    name: str
-    commit: TagPropCommitTypeForResponse
-    zipball_url: str
-    tarball_url: str
-    node_id: str
-
-
-class TagPropCommitType(TypedDict):
-    """TagPropCommit"""
-
-    sha: str
-    url: str
-
-
-class TagPropCommitTypeForResponse(TypedDict):
-    """TagPropCommit"""
-
-    sha: str
-    url: str
+    pattern_name: NotRequired[str]
+    pattern_scope: NotRequired[str]
 
 
 __all__ = (
-    "TagPropCommitType",
-    "TagPropCommitTypeForResponse",
-    "TagType",
-    "TagTypeForResponse",
+    "SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1Type",
+    "SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1TypeForResponse",
 )

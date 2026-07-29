@@ -9,55 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0358 import ActionsVariableType, ActionsVariableTypeForResponse
 
 
-class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0Type(TypedDict):
-    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0"""
+class ReposOwnerRepoActionsOrganizationVariablesGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsOrganizationVariablesGetResponse200"""
 
-    language: Literal[
-        "actions",
-        "cpp",
-        "csharp",
-        "go",
-        "java",
-        "javascript",
-        "python",
-        "ruby",
-        "rust",
-        "swift",
-    ]
-    query_pack: str
-    repositories: list[str]
-    repository_lists: NotRequired[list[str]]
-    repository_owners: NotRequired[list[str]]
+    total_count: int
+    variables: list[ActionsVariableType]
 
 
-class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0TypeForResponse(
+class ReposOwnerRepoActionsOrganizationVariablesGetResponse200TypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0"""
+    """ReposOwnerRepoActionsOrganizationVariablesGetResponse200"""
 
-    language: Literal[
-        "actions",
-        "cpp",
-        "csharp",
-        "go",
-        "java",
-        "javascript",
-        "python",
-        "ruby",
-        "rust",
-        "swift",
-    ]
-    query_pack: str
-    repositories: list[str]
-    repository_lists: NotRequired[list[str]]
-    repository_owners: NotRequired[list[str]]
+    total_count: int
+    variables: list[ActionsVariableTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0Type",
-    "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0TypeForResponse",
+    "ReposOwnerRepoActionsOrganizationVariablesGetResponse200Type",
+    "ReposOwnerRepoActionsOrganizationVariablesGetResponse200TypeForResponse",
 )

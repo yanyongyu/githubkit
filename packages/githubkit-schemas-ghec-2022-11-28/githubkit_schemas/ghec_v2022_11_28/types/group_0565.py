@@ -12,82 +12,117 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0564 import MetaType, MetaTypeForResponse
+
+class PrivateVulnerabilityReportCreateType(TypedDict):
+    """PrivateVulnerabilityReportCreate"""
+
+    summary: str
+    description: str
+    vulnerabilities: NotRequired[
+        Union[list[PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsType], None]
+    ]
+    cwe_ids: NotRequired[Union[list[str], None]]
+    severity: NotRequired[Union[None, Literal["critical", "high", "medium", "low"]]]
+    cvss_vector_string: NotRequired[Union[str, None]]
+    start_private_fork: NotRequired[bool]
 
 
-class ScimEnterpriseGroupResponseType(TypedDict):
-    """ScimEnterpriseGroupResponse"""
+class PrivateVulnerabilityReportCreateTypeForResponse(TypedDict):
+    """PrivateVulnerabilityReportCreate"""
 
-    schemas: list[
-        Literal[
-            "urn:ietf:params:scim:schemas:core:2.0:Group",
-            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
+    summary: str
+    description: str
+    vulnerabilities: NotRequired[
+        Union[
+            list[
+                PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsTypeForResponse
+            ],
+            None,
         ]
     ]
-    external_id: NotRequired[Union[str, None]]
-    display_name: NotRequired[Union[str, None]]
-    members: NotRequired[list[ScimEnterpriseGroupResponseMergedMembersType]]
-    id: NotRequired[str]
-    meta: NotRequired[MetaType]
+    cwe_ids: NotRequired[Union[list[str], None]]
+    severity: NotRequired[Union[None, Literal["critical", "high", "medium", "low"]]]
+    cvss_vector_string: NotRequired[Union[str, None]]
+    start_private_fork: NotRequired[bool]
 
 
-class ScimEnterpriseGroupResponseTypeForResponse(TypedDict):
-    """ScimEnterpriseGroupResponse"""
+class PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsType(TypedDict):
+    """PrivateVulnerabilityReportCreatePropVulnerabilitiesItems"""
 
-    schemas: list[
-        Literal[
-            "urn:ietf:params:scim:schemas:core:2.0:Group",
-            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
-        ]
+    package: PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageType
+    vulnerable_version_range: NotRequired[Union[str, None]]
+    patched_versions: NotRequired[Union[str, None]]
+    vulnerable_functions: NotRequired[Union[list[str], None]]
+
+
+class PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsTypeForResponse(
+    TypedDict
+):
+    """PrivateVulnerabilityReportCreatePropVulnerabilitiesItems"""
+
+    package: PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageTypeForResponse
+    vulnerable_version_range: NotRequired[Union[str, None]]
+    patched_versions: NotRequired[Union[str, None]]
+    vulnerable_functions: NotRequired[Union[list[str], None]]
+
+
+class PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageType(
+    TypedDict
+):
+    """PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage
+
+    The name of the package affected by the vulnerability.
+    """
+
+    ecosystem: Literal[
+        "rubygems",
+        "npm",
+        "pip",
+        "maven",
+        "nuget",
+        "composer",
+        "go",
+        "rust",
+        "erlang",
+        "actions",
+        "pub",
+        "other",
+        "swift",
     ]
-    external_id: NotRequired[Union[str, None]]
-    display_name: NotRequired[Union[str, None]]
-    members: NotRequired[list[ScimEnterpriseGroupResponseMergedMembersTypeForResponse]]
-    id: NotRequired[str]
-    meta: NotRequired[MetaTypeForResponse]
+    name: NotRequired[Union[str, None]]
 
 
-class ScimEnterpriseGroupResponseMergedMembersType(TypedDict):
-    """ScimEnterpriseGroupResponseMergedMembers"""
+class PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageTypeForResponse(
+    TypedDict
+):
+    """PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage
 
-    value: str
-    ref: str
-    display: NotRequired[str]
+    The name of the package affected by the vulnerability.
+    """
 
-
-class ScimEnterpriseGroupResponseMergedMembersTypeForResponse(TypedDict):
-    """ScimEnterpriseGroupResponseMergedMembers"""
-
-    value: str
-    ref: str
-    display: NotRequired[str]
-
-
-class ScimEnterpriseGroupListType(TypedDict):
-    """ScimEnterpriseGroupList"""
-
-    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:ListResponse"]]
-    total_results: int
-    resources: list[ScimEnterpriseGroupResponseType]
-    start_index: int
-    items_per_page: int
-
-
-class ScimEnterpriseGroupListTypeForResponse(TypedDict):
-    """ScimEnterpriseGroupList"""
-
-    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:ListResponse"]]
-    total_results: int
-    resources: list[ScimEnterpriseGroupResponseTypeForResponse]
-    start_index: int
-    items_per_page: int
+    ecosystem: Literal[
+        "rubygems",
+        "npm",
+        "pip",
+        "maven",
+        "nuget",
+        "composer",
+        "go",
+        "rust",
+        "erlang",
+        "actions",
+        "pub",
+        "other",
+        "swift",
+    ]
+    name: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "ScimEnterpriseGroupListType",
-    "ScimEnterpriseGroupListTypeForResponse",
-    "ScimEnterpriseGroupResponseMergedMembersType",
-    "ScimEnterpriseGroupResponseMergedMembersTypeForResponse",
-    "ScimEnterpriseGroupResponseType",
-    "ScimEnterpriseGroupResponseTypeForResponse",
+    "PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageType",
+    "PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageTypeForResponse",
+    "PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsType",
+    "PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsTypeForResponse",
+    "PrivateVulnerabilityReportCreateType",
+    "PrivateVulnerabilityReportCreateTypeForResponse",
 )

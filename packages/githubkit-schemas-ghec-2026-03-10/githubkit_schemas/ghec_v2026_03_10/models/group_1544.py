@@ -12,18 +12,27 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0112 import CustomPropertyValue
 
+class ReposOwnerRepoForksPostBody(GitHubModel):
+    """ReposOwnerRepoForksPostBody"""
 
-class ReposOwnerRepoPropertiesValuesPatchBody(GitHubModel):
-    """ReposOwnerRepoPropertiesValuesPatchBody"""
-
-    properties: list[CustomPropertyValue] = Field(
-        description="A list of custom property names and associated values to apply to the repositories."
+    organization: Missing[str] = Field(
+        default=UNSET,
+        description="Optional parameter to specify the organization name if forking into an organization.",
+    )
+    name: Missing[str] = Field(
+        default=UNSET,
+        description="When forking from an existing repository, a new name for the fork.",
+    )
+    default_branch_only: Missing[bool] = Field(
+        default=UNSET,
+        description="When forking from an existing repository, fork with only the default branch.",
     )
 
 
-model_rebuild(ReposOwnerRepoPropertiesValuesPatchBody)
+model_rebuild(ReposOwnerRepoForksPostBody)
 
-__all__ = ("ReposOwnerRepoPropertiesValuesPatchBody",)
+__all__ = ("ReposOwnerRepoForksPostBody",)

@@ -13,40 +13,38 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0598 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0599 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0600 import (
+from .group_0617 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0618 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0619 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0601 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0620 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookStarDeletedType(TypedDict):
-    """star deleted event"""
+class WebhookRepositoryPublicizedType(TypedDict):
+    """repository publicized event"""
 
-    action: Literal["deleted"]
+    action: Literal["publicized"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
-    starred_at: None
 
 
-class WebhookStarDeletedTypeForResponse(TypedDict):
-    """star deleted event"""
+class WebhookRepositoryPublicizedTypeForResponse(TypedDict):
+    """repository publicized event"""
 
-    action: Literal["deleted"]
+    action: Literal["publicized"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
-    starred_at: None
 
 
 __all__ = (
-    "WebhookStarDeletedType",
-    "WebhookStarDeletedTypeForResponse",
+    "WebhookRepositoryPublicizedType",
+    "WebhookRepositoryPublicizedTypeForResponse",
 )

@@ -9,25 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0321 import ProjectsV2FieldSingleSelectOption
+
+class OrgsOrgCodespacesSecretsGetResponse200(GitHubModel):
+    """OrgsOrgCodespacesSecretsGetResponse200"""
+
+    total_count: int = Field()
+    secrets: list[CodespacesOrgSecret] = Field()
 
 
-class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2(GitHubModel):
-    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2"""
+class CodespacesOrgSecret(GitHubModel):
+    """Codespaces Secret
 
-    name: str = Field(description="The name of the field.")
-    data_type: Literal["single_select"] = Field(description="The field's data type.")
-    single_select_options: list[ProjectsV2FieldSingleSelectOption] = Field(
-        description="The options available for single select fields. At least one option must be provided when creating a single select field."
+    Secrets for a GitHub Codespace.
+    """
+
+    name: str = Field(description="The name of the secret")
+    created_at: _dt.datetime = Field(
+        description="The date and time at which the secret was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    )
+    updated_at: _dt.datetime = Field(
+        description="The date and time at which the secret was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    )
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="The type of repositories in the organization that the secret is visible to"
+    )
+    selected_repositories_url: Missing[str] = Field(
+        default=UNSET,
+        description="The API URL at which the list of repositories this secret is visible to can be retrieved",
     )
 
 
-model_rebuild(OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2)
+model_rebuild(OrgsOrgCodespacesSecretsGetResponse200)
+model_rebuild(CodespacesOrgSecret)
 
-__all__ = ("OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2",)
+__all__ = (
+    "CodespacesOrgSecret",
+    "OrgsOrgCodespacesSecretsGetResponse200",
+)

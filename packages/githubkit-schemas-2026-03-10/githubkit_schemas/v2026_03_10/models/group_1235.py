@@ -12,17 +12,18 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0277 import ActionsVariable
-
-
-class ReposOwnerRepoAgentsVariablesGetResponse200(GitHubModel):
-    """ReposOwnerRepoAgentsVariablesGetResponse200"""
-
-    total_count: int = Field()
-    variables: list[ActionsVariable] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(ReposOwnerRepoAgentsVariablesGetResponse200)
+class OrgsOrgSecretScanningPatternConfigurationsPatchResponse200(GitHubModel):
+    """OrgsOrgSecretScanningPatternConfigurationsPatchResponse200"""
 
-__all__ = ("ReposOwnerRepoAgentsVariablesGetResponse200",)
+    pattern_config_version: Missing[str] = Field(
+        default=UNSET, description="The updated pattern configuration version."
+    )
+
+
+model_rebuild(OrgsOrgSecretScanningPatternConfigurationsPatchResponse200)
+
+__all__ = ("OrgsOrgSecretScanningPatternConfigurationsPatchResponse200",)

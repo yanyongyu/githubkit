@@ -13,85 +13,33 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgPatchBodyType(TypedDict):
-    """OrgsOrgPatchBody"""
+class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBod
+    y
+    """
 
-    billing_email: NotRequired[str]
-    company: NotRequired[str]
-    email: NotRequired[str]
-    twitter_username: NotRequired[str]
-    location: NotRequired[str]
-    name: NotRequired[str]
-    description: NotRequired[str]
-    has_organization_projects: NotRequired[bool]
-    has_repository_projects: NotRequired[bool]
-    default_repository_permission: NotRequired[
-        Literal["read", "write", "admin", "none"]
+    credential_type: Literal[
+        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
     ]
-    members_can_create_repositories: NotRequired[bool]
-    members_can_create_internal_repositories: NotRequired[bool]
-    members_can_create_private_repositories: NotRequired[bool]
-    members_can_create_public_repositories: NotRequired[bool]
-    members_allowed_repository_creation_type: NotRequired[
-        Literal["all", "private", "none"]
-    ]
-    members_can_create_pages: NotRequired[bool]
-    members_can_create_public_pages: NotRequired[bool]
-    members_can_create_private_pages: NotRequired[bool]
-    members_can_fork_private_repositories: NotRequired[bool]
-    web_commit_signoff_required: NotRequired[bool]
-    blog: NotRequired[str]
-    advanced_security_enabled_for_new_repositories: NotRequired[bool]
-    dependabot_alerts_enabled_for_new_repositories: NotRequired[bool]
-    dependabot_security_updates_enabled_for_new_repositories: NotRequired[bool]
-    dependency_graph_enabled_for_new_repositories: NotRequired[bool]
-    secret_scanning_enabled_for_new_repositories: NotRequired[bool]
-    secret_scanning_push_protection_enabled_for_new_repositories: NotRequired[bool]
-    secret_scanning_push_protection_custom_link: NotRequired[str]
-    secret_scanning_validity_checks_enabled: NotRequired[bool]
-    deploy_keys_enabled_for_repositories: NotRequired[bool]
+    revoke_credentials: NotRequired[bool]
 
 
-class OrgsOrgPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgPatchBody"""
+class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBod
+    y
+    """
 
-    billing_email: NotRequired[str]
-    company: NotRequired[str]
-    email: NotRequired[str]
-    twitter_username: NotRequired[str]
-    location: NotRequired[str]
-    name: NotRequired[str]
-    description: NotRequired[str]
-    has_organization_projects: NotRequired[bool]
-    has_repository_projects: NotRequired[bool]
-    default_repository_permission: NotRequired[
-        Literal["read", "write", "admin", "none"]
+    credential_type: Literal[
+        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
     ]
-    members_can_create_repositories: NotRequired[bool]
-    members_can_create_internal_repositories: NotRequired[bool]
-    members_can_create_private_repositories: NotRequired[bool]
-    members_can_create_public_repositories: NotRequired[bool]
-    members_allowed_repository_creation_type: NotRequired[
-        Literal["all", "private", "none"]
-    ]
-    members_can_create_pages: NotRequired[bool]
-    members_can_create_public_pages: NotRequired[bool]
-    members_can_create_private_pages: NotRequired[bool]
-    members_can_fork_private_repositories: NotRequired[bool]
-    web_commit_signoff_required: NotRequired[bool]
-    blog: NotRequired[str]
-    advanced_security_enabled_for_new_repositories: NotRequired[bool]
-    dependabot_alerts_enabled_for_new_repositories: NotRequired[bool]
-    dependabot_security_updates_enabled_for_new_repositories: NotRequired[bool]
-    dependency_graph_enabled_for_new_repositories: NotRequired[bool]
-    secret_scanning_enabled_for_new_repositories: NotRequired[bool]
-    secret_scanning_push_protection_enabled_for_new_repositories: NotRequired[bool]
-    secret_scanning_push_protection_custom_link: NotRequired[str]
-    secret_scanning_validity_checks_enabled: NotRequired[bool]
-    deploy_keys_enabled_for_repositories: NotRequired[bool]
+    revoke_credentials: NotRequired[bool]
 
 
 __all__ = (
-    "OrgsOrgPatchBodyType",
-    "OrgsOrgPatchBodyTypeForResponse",
+    "EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyType",
+    "EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyTypeForResponse",
 )

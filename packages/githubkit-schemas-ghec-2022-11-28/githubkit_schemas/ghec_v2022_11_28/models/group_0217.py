@@ -9,42 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class IssuePropLabelsItemsOneof1(GitHubModel):
-    """IssuePropLabelsItemsOneof1"""
+class IssueCommentMinimized(GitHubModel):
+    """Minimized Issue Comment
 
-    id: Missing[int] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    description: Missing[Union[str, None]] = Field(default=UNSET)
-    color: Missing[Union[str, None]] = Field(default=UNSET)
-    default: Missing[bool] = Field(default=UNSET)
+    Details about why an issue comment was minimized.
+    """
 
-
-class IssuePropPullRequest(GitHubModel):
-    """IssuePropPullRequest"""
-
-    merged_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
-    diff_url: Union[str, None] = Field()
-    html_url: Union[str, None] = Field()
-    patch_url: Union[str, None] = Field()
-    url: Union[str, None] = Field()
+    reason: Union[str, None] = Field(
+        description="The reason the comment was minimized."
+    )
 
 
-model_rebuild(IssuePropLabelsItemsOneof1)
-model_rebuild(IssuePropPullRequest)
+model_rebuild(IssueCommentMinimized)
 
-__all__ = (
-    "IssuePropLabelsItemsOneof1",
-    "IssuePropPullRequest",
-)
+__all__ = ("IssueCommentMinimized",)

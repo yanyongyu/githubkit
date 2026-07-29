@@ -9,26 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0250 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
-
-
-class OrgsOrgAgentsVariablesNameRepositoriesGetResponse200Type(TypedDict):
-    """OrgsOrgAgentsVariablesNameRepositoriesGetResponse200"""
-
-    total_count: int
-    repositories: list[MinimalRepositoryType]
+from .group_1259 import (
+    InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType,
+    InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse,
+)
 
 
-class OrgsOrgAgentsVariablesNameRepositoriesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgAgentsVariablesNameRepositoriesGetResponse200"""
+class InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1Type(TypedDict):
+    """InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1"""
 
-    total_count: int
-    repositories: list[MinimalRepositoryTypeForResponse]
+    custom_properties: NotRequired[
+        InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType
+    ]
+
+
+class InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1TypeForResponse(
+    TypedDict
+):
+    """InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1"""
+
+    custom_properties: NotRequired[
+        InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse
+    ]
 
 
 __all__ = (
-    "OrgsOrgAgentsVariablesNameRepositoriesGetResponse200Type",
-    "OrgsOrgAgentsVariablesNameRepositoriesGetResponse200TypeForResponse",
+    "InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1Type",
+    "InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1TypeForResponse",
 )

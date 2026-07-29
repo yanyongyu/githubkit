@@ -15,16 +15,17 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0020 import Repository
+from .group_0188 import SecretScanningCustomPattern
 
 
-class OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200(GitHubModel):
-    """OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200"""
+class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201(GitHubModel):
+    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201"""
 
-    total_count: Missing[int] = Field(default=UNSET)
-    repositories: Missing[list[Repository]] = Field(default=UNSET)
+    created_patterns: Missing[list[SecretScanningCustomPattern]] = Field(
+        default=UNSET, description="The list of successfully created custom patterns."
+    )
 
 
-model_rebuild(OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200)
+model_rebuild(EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201)
 
-__all__ = ("OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200",)
+__all__ = ("EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201",)

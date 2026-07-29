@@ -13,41 +13,48 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0426 import DependabotAlertType, DependabotAlertTypeForResponse
-from .group_0598 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0599 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0600 import (
+from .group_0617 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0618 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0619 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0601 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0620 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0693 import (
+    WebhookCodeScanningAlertCreatedPropAlertType,
+    WebhookCodeScanningAlertCreatedPropAlertTypeForResponse,
+)
 
 
-class WebhookDependabotAlertAutoDismissedType(TypedDict):
-    """Dependabot alert auto-dismissed event"""
+class WebhookCodeScanningAlertCreatedType(TypedDict):
+    """code_scanning_alert created event"""
 
-    action: Literal["auto_dismissed"]
-    alert: DependabotAlertType
+    action: Literal["created"]
+    alert: WebhookCodeScanningAlertCreatedPropAlertType
+    commit_oid: str
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    ref: str
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookDependabotAlertAutoDismissedTypeForResponse(TypedDict):
-    """Dependabot alert auto-dismissed event"""
+class WebhookCodeScanningAlertCreatedTypeForResponse(TypedDict):
+    """code_scanning_alert created event"""
 
-    action: Literal["auto_dismissed"]
-    alert: DependabotAlertTypeForResponse
+    action: Literal["created"]
+    alert: WebhookCodeScanningAlertCreatedPropAlertTypeForResponse
+    commit_oid: str
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    ref: str
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookDependabotAlertAutoDismissedType",
-    "WebhookDependabotAlertAutoDismissedTypeForResponse",
+    "WebhookCodeScanningAlertCreatedType",
+    "WebhookCodeScanningAlertCreatedTypeForResponse",
 )

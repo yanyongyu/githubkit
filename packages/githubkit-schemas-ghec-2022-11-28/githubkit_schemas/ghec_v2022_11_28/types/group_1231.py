@@ -9,24 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0191 import (
+    SecretScanningCustomPatternToDeleteType,
+    SecretScanningCustomPatternToDeleteTypeForResponse,
+)
 
 
-class OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBodyType(TypedDict):
-    """OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBody"""
+class EnterprisesEnterpriseSecretScanningCustomPatternsDeleteBodyType(TypedDict):
+    """EnterprisesEnterpriseSecretScanningCustomPatternsDeleteBody"""
 
-    selected_repository_ids: list[int]
+    patterns: list[SecretScanningCustomPatternToDeleteType]
+    post_delete_action: NotRequired[Literal["delete_alerts", "resolve_alerts"]]
 
 
-class OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBodyTypeForResponse(
+class EnterprisesEnterpriseSecretScanningCustomPatternsDeleteBodyTypeForResponse(
     TypedDict
 ):
-    """OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBody"""
+    """EnterprisesEnterpriseSecretScanningCustomPatternsDeleteBody"""
 
-    selected_repository_ids: list[int]
+    patterns: list[SecretScanningCustomPatternToDeleteTypeForResponse]
+    post_delete_action: NotRequired[Literal["delete_alerts", "resolve_alerts"]]
 
 
 __all__ = (
-    "OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBodyType",
-    "OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBodyTypeForResponse",
+    "EnterprisesEnterpriseSecretScanningCustomPatternsDeleteBodyType",
+    "EnterprisesEnterpriseSecretScanningCustomPatternsDeleteBodyTypeForResponse",
 )

@@ -10,55 +10,121 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0073 import (
-    CodeScanningAnalysisToolType,
-    CodeScanningAnalysisToolTypeForResponse,
-)
 
+class CodeQualityFindingType(TypedDict):
+    """CodeQualityFinding
 
-class CodeScanningAnalysisType(TypedDict):
-    """CodeScanningAnalysis"""
+    Code quality finding
+    """
 
-    ref: str
-    commit_sha: str
-    analysis_key: str
-    environment: str
-    category: NotRequired[str]
-    error: str
-    created_at: _dt.datetime
-    results_count: int
-    rules_count: int
-    id: int
+    number: int
+    state: Literal["open", "dismissed"]
     url: str
-    sarif_id: str
-    tool: CodeScanningAnalysisToolType
-    deletable: bool
-    warning: str
+    rule: CodeQualityFindingRuleType
+    location: CodeQualityFindingLocationType
+    message: CodeQualityFindingMessageType
+    created_at: NotRequired[_dt.datetime]
 
 
-class CodeScanningAnalysisTypeForResponse(TypedDict):
-    """CodeScanningAnalysis"""
+class CodeQualityFindingTypeForResponse(TypedDict):
+    """CodeQualityFinding
 
-    ref: str
-    commit_sha: str
-    analysis_key: str
-    environment: str
-    category: NotRequired[str]
-    error: str
-    created_at: str
-    results_count: int
-    rules_count: int
-    id: int
+    Code quality finding
+    """
+
+    number: int
+    state: Literal["open", "dismissed"]
     url: str
-    sarif_id: str
-    tool: CodeScanningAnalysisToolTypeForResponse
-    deletable: bool
-    warning: str
+    rule: CodeQualityFindingRuleTypeForResponse
+    location: CodeQualityFindingLocationTypeForResponse
+    message: CodeQualityFindingMessageTypeForResponse
+    created_at: NotRequired[str]
+
+
+class CodeQualityFindingRuleType(TypedDict):
+    """CodeQualityFindingRule
+
+    Code quality rule
+    """
+
+    id: str
+    title: str
+    description: str
+    help_: NotRequired[str]
+    severity: Literal["error", "warning", "note", "none"]
+    category: Literal["none", "maintainability", "reliability"]
+
+
+class CodeQualityFindingRuleTypeForResponse(TypedDict):
+    """CodeQualityFindingRule
+
+    Code quality rule
+    """
+
+    id: str
+    title: str
+    description: str
+    help_: NotRequired[str]
+    severity: Literal["error", "warning", "note", "none"]
+    category: Literal["none", "maintainability", "reliability"]
+
+
+class CodeQualityFindingLocationType(TypedDict):
+    """CodeQualityFindingLocation
+
+    Code quality file location
+    """
+
+    path: str
+    start_line: NotRequired[int]
+    start_column: NotRequired[int]
+    end_line: NotRequired[int]
+    end_column: NotRequired[int]
+
+
+class CodeQualityFindingLocationTypeForResponse(TypedDict):
+    """CodeQualityFindingLocation
+
+    Code quality file location
+    """
+
+    path: str
+    start_line: NotRequired[int]
+    start_column: NotRequired[int]
+    end_line: NotRequired[int]
+    end_column: NotRequired[int]
+
+
+class CodeQualityFindingMessageType(TypedDict):
+    """CodeQualityFindingMessage
+
+    Code quality finding message
+    """
+
+    text: str
+    markdown: str
+
+
+class CodeQualityFindingMessageTypeForResponse(TypedDict):
+    """CodeQualityFindingMessage
+
+    Code quality finding message
+    """
+
+    text: str
+    markdown: str
 
 
 __all__ = (
-    "CodeScanningAnalysisType",
-    "CodeScanningAnalysisTypeForResponse",
+    "CodeQualityFindingLocationType",
+    "CodeQualityFindingLocationTypeForResponse",
+    "CodeQualityFindingMessageType",
+    "CodeQualityFindingMessageTypeForResponse",
+    "CodeQualityFindingRuleType",
+    "CodeQualityFindingRuleTypeForResponse",
+    "CodeQualityFindingType",
+    "CodeQualityFindingTypeForResponse",
 )

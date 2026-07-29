@@ -12,26 +12,15 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0562 import Meta
-from .group_0572 import ScimEnterpriseUserResponseAllof1PropGroupsItems
 
 
-class ScimEnterpriseUserResponseAllof1(GitHubModel):
-    """ScimEnterpriseUserResponseAllof1"""
+class ParticipationStats(GitHubModel):
+    """Participation Stats"""
 
-    id: str = Field(description="The internally generated id for the user object.")
-    groups: Missing[list[ScimEnterpriseUserResponseAllof1PropGroupsItems]] = Field(
-        default=UNSET,
-        description="Provisioned SCIM groups that the user is a member of.",
-    )
-    meta: Meta = Field(
-        description="The metadata associated with the creation/updates to the user."
-    )
+    all_: list[int] = Field(alias="all")
+    owner: list[int] = Field()
 
 
-model_rebuild(ScimEnterpriseUserResponseAllof1)
+model_rebuild(ParticipationStats)
 
-__all__ = ("ScimEnterpriseUserResponseAllof1",)
+__all__ = ("ParticipationStats",)

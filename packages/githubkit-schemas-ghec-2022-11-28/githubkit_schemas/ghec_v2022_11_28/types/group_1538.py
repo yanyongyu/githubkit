@@ -12,39 +12,67 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_1536 import (
-    ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
-    ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
+from .group_0451 import (
+    DeploymentBranchPolicySettingsType,
+    DeploymentBranchPolicySettingsTypeForResponse,
 )
 
 
-class ReposOwnerRepoPagesPutBodyAnyof1Type(TypedDict):
-    """ReposOwnerRepoPagesPutBodyAnyof1"""
+class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType(TypedDict):
+    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBody"""
 
-    cname: NotRequired[Union[str, None]]
-    https_enforced: NotRequired[bool]
-    build_type: NotRequired[Literal["legacy", "workflow"]]
-    source: Union[
-        Literal["gh-pages", "master", "master /docs"],
-        ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+    wait_timer: NotRequired[int]
+    prevent_self_review: NotRequired[bool]
+    reviewers: NotRequired[
+        Union[
+            list[
+                ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType
+            ],
+            None,
+        ]
     ]
-    public: NotRequired[bool]
-
-
-class ReposOwnerRepoPagesPutBodyAnyof1TypeForResponse(TypedDict):
-    """ReposOwnerRepoPagesPutBodyAnyof1"""
-
-    cname: NotRequired[Union[str, None]]
-    https_enforced: NotRequired[bool]
-    build_type: NotRequired[Literal["legacy", "workflow"]]
-    source: Union[
-        Literal["gh-pages", "master", "master /docs"],
-        ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
+    deployment_branch_policy: NotRequired[
+        Union[DeploymentBranchPolicySettingsType, None]
     ]
-    public: NotRequired[bool]
+
+
+class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBody"""
+
+    wait_timer: NotRequired[int]
+    prevent_self_review: NotRequired[bool]
+    reviewers: NotRequired[
+        Union[
+            list[
+                ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsTypeForResponse
+            ],
+            None,
+        ]
+    ]
+    deployment_branch_policy: NotRequired[
+        Union[DeploymentBranchPolicySettingsTypeForResponse, None]
+    ]
+
+
+class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType(TypedDict):
+    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems"""
+
+    type: NotRequired[Literal["User", "Team"]]
+    id: NotRequired[int]
+
+
+class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems"""
+
+    type: NotRequired[Literal["User", "Team"]]
+    id: NotRequired[int]
 
 
 __all__ = (
-    "ReposOwnerRepoPagesPutBodyAnyof1Type",
-    "ReposOwnerRepoPagesPutBodyAnyof1TypeForResponse",
+    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType",
+    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsTypeForResponse",
+    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType",
+    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyTypeForResponse",
 )

@@ -11,6 +11,7 @@ from __future__ import annotations
 
 from collections.abc import Mapping
 from typing import TYPE_CHECKING
+from typing_extensions import deprecated
 from weakref import ref
 
 from githubkit.typing import Missing
@@ -55,6 +56,7 @@ class ClassroomClient:
             "Do not use this client after the client has been collected."
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def get_an_assignment(
         self,
         assignment_id: int,
@@ -62,13 +64,17 @@ class ClassroomClient:
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ClassroomAssignment, ClassroomAssignmentTypeForResponse]:
-        """classroom/get-an-assignment
+        """DEPRECATED classroom/get-an-assignment
 
         GET /assignments/{assignment_id}
 
+        > [!WARNING]
+        > **Closing down notice:** This operation is closing down and will be removed on August 28, 2026.
+        > For more information, see the [GitHub Classroom sunset notice](https://gh.io/classroom-sunset).
+
         Gets a GitHub Classroom assignment. Assignment will only be returned if the current user is an administrator of the GitHub Classroom for the assignment.
 
-        See also: https://docs.github.com/enterprise-cloud@latest/rest/classroom/classroom#get-an-assignment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/classroom/classroom#closing-down---get-an-assignment
         """
 
         from ..models import BasicError, ClassroomAssignment
@@ -85,9 +91,11 @@ class ClassroomClient:
             response_model=ClassroomAssignment,
             error_models={
                 "404": BasicError,
+                "410": BasicError,
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_get_an_assignment(
         self,
         assignment_id: int,
@@ -95,13 +103,17 @@ class ClassroomClient:
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ClassroomAssignment, ClassroomAssignmentTypeForResponse]:
-        """classroom/get-an-assignment
+        """DEPRECATED classroom/get-an-assignment
 
         GET /assignments/{assignment_id}
 
+        > [!WARNING]
+        > **Closing down notice:** This operation is closing down and will be removed on August 28, 2026.
+        > For more information, see the [GitHub Classroom sunset notice](https://gh.io/classroom-sunset).
+
         Gets a GitHub Classroom assignment. Assignment will only be returned if the current user is an administrator of the GitHub Classroom for the assignment.
 
-        See also: https://docs.github.com/enterprise-cloud@latest/rest/classroom/classroom#get-an-assignment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/classroom/classroom#closing-down---get-an-assignment
         """
 
         from ..models import BasicError, ClassroomAssignment
@@ -118,9 +130,11 @@ class ClassroomClient:
             response_model=ClassroomAssignment,
             error_models={
                 "404": BasicError,
+                "410": BasicError,
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def list_accepted_assignments_for_an_assignment(
         self,
         assignment_id: int,
@@ -133,16 +147,20 @@ class ClassroomClient:
         list[ClassroomAcceptedAssignment],
         list[ClassroomAcceptedAssignmentTypeForResponse],
     ]:
-        """classroom/list-accepted-assignments-for-an-assignment
+        """DEPRECATED classroom/list-accepted-assignments-for-an-assignment
 
         GET /assignments/{assignment_id}/accepted_assignments
 
+        > [!WARNING]
+        > **Closing down notice:** This operation is closing down and will be removed on August 28, 2026.
+        > For more information, see the [GitHub Classroom sunset notice](https://gh.io/classroom-sunset).
+
         Lists any assignment repositories that have been created by students accepting a GitHub Classroom assignment. Accepted assignments will only be returned if the current user is an administrator of the GitHub Classroom for the assignment.
 
-        See also: https://docs.github.com/enterprise-cloud@latest/rest/classroom/classroom#list-accepted-assignments-for-an-assignment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/classroom/classroom#closing-down---list-accepted-assignments-for-an-assignment
         """
 
-        from ..models import ClassroomAcceptedAssignment
+        from ..models import BasicError, ClassroomAcceptedAssignment
 
         url = f"/assignments/{assignment_id}/accepted_assignments"
 
@@ -160,8 +178,12 @@ class ClassroomClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[ClassroomAcceptedAssignment],
+            error_models={
+                "410": BasicError,
+            },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_list_accepted_assignments_for_an_assignment(
         self,
         assignment_id: int,
@@ -174,16 +196,20 @@ class ClassroomClient:
         list[ClassroomAcceptedAssignment],
         list[ClassroomAcceptedAssignmentTypeForResponse],
     ]:
-        """classroom/list-accepted-assignments-for-an-assignment
+        """DEPRECATED classroom/list-accepted-assignments-for-an-assignment
 
         GET /assignments/{assignment_id}/accepted_assignments
 
+        > [!WARNING]
+        > **Closing down notice:** This operation is closing down and will be removed on August 28, 2026.
+        > For more information, see the [GitHub Classroom sunset notice](https://gh.io/classroom-sunset).
+
         Lists any assignment repositories that have been created by students accepting a GitHub Classroom assignment. Accepted assignments will only be returned if the current user is an administrator of the GitHub Classroom for the assignment.
 
-        See also: https://docs.github.com/enterprise-cloud@latest/rest/classroom/classroom#list-accepted-assignments-for-an-assignment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/classroom/classroom#closing-down---list-accepted-assignments-for-an-assignment
         """
 
-        from ..models import ClassroomAcceptedAssignment
+        from ..models import BasicError, ClassroomAcceptedAssignment
 
         url = f"/assignments/{assignment_id}/accepted_assignments"
 
@@ -201,8 +227,12 @@ class ClassroomClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[ClassroomAcceptedAssignment],
+            error_models={
+                "410": BasicError,
+            },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def get_assignment_grades(
         self,
         assignment_id: int,
@@ -212,13 +242,17 @@ class ClassroomClient:
     ) -> Response[
         list[ClassroomAssignmentGrade], list[ClassroomAssignmentGradeTypeForResponse]
     ]:
-        """classroom/get-assignment-grades
+        """DEPRECATED classroom/get-assignment-grades
 
         GET /assignments/{assignment_id}/grades
 
+        > [!WARNING]
+        > **Closing down notice:** This operation is closing down and will be removed on August 28, 2026.
+        > For more information, see the [GitHub Classroom sunset notice](https://gh.io/classroom-sunset).
+
         Gets grades for a GitHub Classroom assignment. Grades will only be returned if the current user is an administrator of the GitHub Classroom for the assignment.
 
-        See also: https://docs.github.com/enterprise-cloud@latest/rest/classroom/classroom#get-assignment-grades
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/classroom/classroom#closing-down---get-assignment-grades
         """
 
         from ..models import BasicError, ClassroomAssignmentGrade
@@ -235,9 +269,11 @@ class ClassroomClient:
             response_model=list[ClassroomAssignmentGrade],
             error_models={
                 "404": BasicError,
+                "410": BasicError,
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_get_assignment_grades(
         self,
         assignment_id: int,
@@ -247,13 +283,17 @@ class ClassroomClient:
     ) -> Response[
         list[ClassroomAssignmentGrade], list[ClassroomAssignmentGradeTypeForResponse]
     ]:
-        """classroom/get-assignment-grades
+        """DEPRECATED classroom/get-assignment-grades
 
         GET /assignments/{assignment_id}/grades
 
+        > [!WARNING]
+        > **Closing down notice:** This operation is closing down and will be removed on August 28, 2026.
+        > For more information, see the [GitHub Classroom sunset notice](https://gh.io/classroom-sunset).
+
         Gets grades for a GitHub Classroom assignment. Grades will only be returned if the current user is an administrator of the GitHub Classroom for the assignment.
 
-        See also: https://docs.github.com/enterprise-cloud@latest/rest/classroom/classroom#get-assignment-grades
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/classroom/classroom#closing-down---get-assignment-grades
         """
 
         from ..models import BasicError, ClassroomAssignmentGrade
@@ -270,9 +310,11 @@ class ClassroomClient:
             response_model=list[ClassroomAssignmentGrade],
             error_models={
                 "404": BasicError,
+                "410": BasicError,
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def list_classrooms(
         self,
         *,
@@ -281,16 +323,20 @@ class ClassroomClient:
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[SimpleClassroom], list[SimpleClassroomTypeForResponse]]:
-        """classroom/list-classrooms
+        """DEPRECATED classroom/list-classrooms
 
         GET /classrooms
 
+        > [!WARNING]
+        > **Closing down notice:** This operation is closing down and will be removed on August 28, 2026.
+        > For more information, see the [GitHub Classroom sunset notice](https://gh.io/classroom-sunset).
+
         Lists GitHub Classroom classrooms for the current user. Classrooms will only be returned if the current user is an administrator of one or more GitHub Classrooms.
 
-        See also: https://docs.github.com/enterprise-cloud@latest/rest/classroom/classroom#list-classrooms
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/classroom/classroom#closing-down---list-classrooms
         """
 
-        from ..models import SimpleClassroom
+        from ..models import BasicError, SimpleClassroom
 
         url = "/classrooms"
 
@@ -308,8 +354,12 @@ class ClassroomClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SimpleClassroom],
+            error_models={
+                "410": BasicError,
+            },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_list_classrooms(
         self,
         *,
@@ -318,16 +368,20 @@ class ClassroomClient:
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[SimpleClassroom], list[SimpleClassroomTypeForResponse]]:
-        """classroom/list-classrooms
+        """DEPRECATED classroom/list-classrooms
 
         GET /classrooms
 
+        > [!WARNING]
+        > **Closing down notice:** This operation is closing down and will be removed on August 28, 2026.
+        > For more information, see the [GitHub Classroom sunset notice](https://gh.io/classroom-sunset).
+
         Lists GitHub Classroom classrooms for the current user. Classrooms will only be returned if the current user is an administrator of one or more GitHub Classrooms.
 
-        See also: https://docs.github.com/enterprise-cloud@latest/rest/classroom/classroom#list-classrooms
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/classroom/classroom#closing-down---list-classrooms
         """
 
-        from ..models import SimpleClassroom
+        from ..models import BasicError, SimpleClassroom
 
         url = "/classrooms"
 
@@ -345,8 +399,12 @@ class ClassroomClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SimpleClassroom],
+            error_models={
+                "410": BasicError,
+            },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def get_a_classroom(
         self,
         classroom_id: int,
@@ -354,13 +412,17 @@ class ClassroomClient:
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Classroom, ClassroomTypeForResponse]:
-        """classroom/get-a-classroom
+        """DEPRECATED classroom/get-a-classroom
 
         GET /classrooms/{classroom_id}
 
+        > [!WARNING]
+        > **Closing down notice:** This operation is closing down and will be removed on August 28, 2026.
+        > For more information, see the [GitHub Classroom sunset notice](https://gh.io/classroom-sunset).
+
         Gets a GitHub Classroom classroom for the current user. Classroom will only be returned if the current user is an administrator of the GitHub Classroom.
 
-        See also: https://docs.github.com/enterprise-cloud@latest/rest/classroom/classroom#get-a-classroom
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/classroom/classroom#closing-down---get-a-classroom
         """
 
         from ..models import BasicError, Classroom
@@ -377,9 +439,11 @@ class ClassroomClient:
             response_model=Classroom,
             error_models={
                 "404": BasicError,
+                "410": BasicError,
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_get_a_classroom(
         self,
         classroom_id: int,
@@ -387,13 +451,17 @@ class ClassroomClient:
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Classroom, ClassroomTypeForResponse]:
-        """classroom/get-a-classroom
+        """DEPRECATED classroom/get-a-classroom
 
         GET /classrooms/{classroom_id}
 
+        > [!WARNING]
+        > **Closing down notice:** This operation is closing down and will be removed on August 28, 2026.
+        > For more information, see the [GitHub Classroom sunset notice](https://gh.io/classroom-sunset).
+
         Gets a GitHub Classroom classroom for the current user. Classroom will only be returned if the current user is an administrator of the GitHub Classroom.
 
-        See also: https://docs.github.com/enterprise-cloud@latest/rest/classroom/classroom#get-a-classroom
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/classroom/classroom#closing-down---get-a-classroom
         """
 
         from ..models import BasicError, Classroom
@@ -410,9 +478,11 @@ class ClassroomClient:
             response_model=Classroom,
             error_models={
                 "404": BasicError,
+                "410": BasicError,
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def list_assignments_for_a_classroom(
         self,
         classroom_id: int,
@@ -424,16 +494,20 @@ class ClassroomClient:
     ) -> Response[
         list[SimpleClassroomAssignment], list[SimpleClassroomAssignmentTypeForResponse]
     ]:
-        """classroom/list-assignments-for-a-classroom
+        """DEPRECATED classroom/list-assignments-for-a-classroom
 
         GET /classrooms/{classroom_id}/assignments
 
+        > [!WARNING]
+        > **Closing down notice:** This operation is closing down and will be removed on August 28, 2026.
+        > For more information, see the [GitHub Classroom sunset notice](https://gh.io/classroom-sunset).
+
         Lists GitHub Classroom assignments for a classroom. Assignments will only be returned if the current user is an administrator of the GitHub Classroom.
 
-        See also: https://docs.github.com/enterprise-cloud@latest/rest/classroom/classroom#list-assignments-for-a-classroom
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/classroom/classroom#closing-down---list-assignments-for-a-classroom
         """
 
-        from ..models import SimpleClassroomAssignment
+        from ..models import BasicError, SimpleClassroomAssignment
 
         url = f"/classrooms/{classroom_id}/assignments"
 
@@ -451,8 +525,12 @@ class ClassroomClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SimpleClassroomAssignment],
+            error_models={
+                "410": BasicError,
+            },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_list_assignments_for_a_classroom(
         self,
         classroom_id: int,
@@ -464,16 +542,20 @@ class ClassroomClient:
     ) -> Response[
         list[SimpleClassroomAssignment], list[SimpleClassroomAssignmentTypeForResponse]
     ]:
-        """classroom/list-assignments-for-a-classroom
+        """DEPRECATED classroom/list-assignments-for-a-classroom
 
         GET /classrooms/{classroom_id}/assignments
 
+        > [!WARNING]
+        > **Closing down notice:** This operation is closing down and will be removed on August 28, 2026.
+        > For more information, see the [GitHub Classroom sunset notice](https://gh.io/classroom-sunset).
+
         Lists GitHub Classroom assignments for a classroom. Assignments will only be returned if the current user is an administrator of the GitHub Classroom.
 
-        See also: https://docs.github.com/enterprise-cloud@latest/rest/classroom/classroom#list-assignments-for-a-classroom
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/classroom/classroom#closing-down---list-assignments-for-a-classroom
         """
 
-        from ..models import SimpleClassroomAssignment
+        from ..models import BasicError, SimpleClassroomAssignment
 
         url = f"/classrooms/{classroom_id}/assignments"
 
@@ -491,4 +573,7 @@ class ClassroomClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SimpleClassroomAssignment],
+            error_models={
+                "410": BasicError,
+            },
         )

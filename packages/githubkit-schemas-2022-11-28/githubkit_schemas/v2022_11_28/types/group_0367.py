@@ -9,33 +9,100 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0366 import MetadataType, MetadataTypeForResponse
+
+class RepositoryRuleViolationErrorType(TypedDict):
+    """RepositoryRuleViolationError
+
+    Repository rule violation was detected
+    """
+
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
+    status: NotRequired[str]
+    metadata: NotRequired[RepositoryRuleViolationErrorPropMetadataType]
 
 
-class DependencyType(TypedDict):
-    """Dependency"""
+class RepositoryRuleViolationErrorTypeForResponse(TypedDict):
+    """RepositoryRuleViolationError
 
-    package_url: NotRequired[str]
-    metadata: NotRequired[MetadataType]
-    relationship: NotRequired[Literal["direct", "indirect"]]
-    scope: NotRequired[Literal["runtime", "development"]]
-    dependencies: NotRequired[list[str]]
+    Repository rule violation was detected
+    """
+
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
+    status: NotRequired[str]
+    metadata: NotRequired[RepositoryRuleViolationErrorPropMetadataTypeForResponse]
 
 
-class DependencyTypeForResponse(TypedDict):
-    """Dependency"""
+class RepositoryRuleViolationErrorPropMetadataType(TypedDict):
+    """RepositoryRuleViolationErrorPropMetadata"""
 
-    package_url: NotRequired[str]
-    metadata: NotRequired[MetadataTypeForResponse]
-    relationship: NotRequired[Literal["direct", "indirect"]]
-    scope: NotRequired[Literal["runtime", "development"]]
-    dependencies: NotRequired[list[str]]
+    secret_scanning: NotRequired[
+        RepositoryRuleViolationErrorPropMetadataPropSecretScanningType
+    ]
+
+
+class RepositoryRuleViolationErrorPropMetadataTypeForResponse(TypedDict):
+    """RepositoryRuleViolationErrorPropMetadata"""
+
+    secret_scanning: NotRequired[
+        RepositoryRuleViolationErrorPropMetadataPropSecretScanningTypeForResponse
+    ]
+
+
+class RepositoryRuleViolationErrorPropMetadataPropSecretScanningType(TypedDict):
+    """RepositoryRuleViolationErrorPropMetadataPropSecretScanning"""
+
+    bypass_placeholders: NotRequired[
+        list[
+            RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsType
+        ]
+    ]
+
+
+class RepositoryRuleViolationErrorPropMetadataPropSecretScanningTypeForResponse(
+    TypedDict
+):
+    """RepositoryRuleViolationErrorPropMetadataPropSecretScanning"""
+
+    bypass_placeholders: NotRequired[
+        list[
+            RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsTypeForResponse
+        ]
+    ]
+
+
+class RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsType(
+    TypedDict
+):
+    """RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholders
+    Items
+    """
+
+    placeholder_id: NotRequired[str]
+    token_type: NotRequired[str]
+
+
+class RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsTypeForResponse(
+    TypedDict
+):
+    """RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholders
+    Items
+    """
+
+    placeholder_id: NotRequired[str]
+    token_type: NotRequired[str]
 
 
 __all__ = (
-    "DependencyType",
-    "DependencyTypeForResponse",
+    "RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsType",
+    "RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsTypeForResponse",
+    "RepositoryRuleViolationErrorPropMetadataPropSecretScanningType",
+    "RepositoryRuleViolationErrorPropMetadataPropSecretScanningTypeForResponse",
+    "RepositoryRuleViolationErrorPropMetadataType",
+    "RepositoryRuleViolationErrorPropMetadataTypeForResponse",
+    "RepositoryRuleViolationErrorType",
+    "RepositoryRuleViolationErrorTypeForResponse",
 )

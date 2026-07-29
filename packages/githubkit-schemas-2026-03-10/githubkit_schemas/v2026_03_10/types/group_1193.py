@@ -13,21 +13,25 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgSettingsImmutableReleasesPutBodyType(TypedDict):
-    """OrgsOrgSettingsImmutableReleasesPutBody"""
+class OrgsOrgDependabotSecretsSecretNamePutBodyType(TypedDict):
+    """OrgsOrgDependabotSecretsSecretNamePutBody"""
 
-    enforced_repositories: Literal["all", "none", "selected"]
+    encrypted_value: NotRequired[str]
+    key_id: NotRequired[str]
+    visibility: Literal["all", "private", "selected"]
     selected_repository_ids: NotRequired[list[int]]
 
 
-class OrgsOrgSettingsImmutableReleasesPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgSettingsImmutableReleasesPutBody"""
+class OrgsOrgDependabotSecretsSecretNamePutBodyTypeForResponse(TypedDict):
+    """OrgsOrgDependabotSecretsSecretNamePutBody"""
 
-    enforced_repositories: Literal["all", "none", "selected"]
+    encrypted_value: NotRequired[str]
+    key_id: NotRequired[str]
+    visibility: Literal["all", "private", "selected"]
     selected_repository_ids: NotRequired[list[int]]
 
 
 __all__ = (
-    "OrgsOrgSettingsImmutableReleasesPutBodyType",
-    "OrgsOrgSettingsImmutableReleasesPutBodyTypeForResponse",
+    "OrgsOrgDependabotSecretsSecretNamePutBodyType",
+    "OrgsOrgDependabotSecretsSecretNamePutBodyTypeForResponse",
 )

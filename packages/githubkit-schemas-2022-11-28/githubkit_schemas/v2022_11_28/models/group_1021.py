@@ -9,6 +9,9 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,44 +19,196 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody(
-    GitHubModel
-):
-    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody"""
+class AgentsTasksGetResponse200(GitHubModel):
+    """AgentsTasksGetResponse200"""
 
-    organizations: Missing[list[str]] = Field(
-        default=UNSET,
-        description="List of organization logins within the enterprise to disable Copilot cloud agent for.",
+    tasks: list[AgentsTasksGetResponse200PropTasksItems] = Field(
+        description="List of tasks"
     )
-    custom_properties: Missing[
-        list[
-            EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItems
-        ]
+    total_active_count: Missing[int] = Field(
+        default=UNSET, description="Total count of active (non-archived) tasks"
+    )
+    total_archived_count: Missing[int] = Field(
+        default=UNSET, description="Total count of archived tasks"
+    )
+
+
+class AgentsTasksGetResponse200PropTasksItems(GitHubModel):
+    """AgentsTasksGetResponse200PropTasksItems"""
+
+    id: str = Field(description="Unique task identifier")
+    url: Missing[str] = Field(default=UNSET, description="API URL for this task")
+    html_url: Missing[str] = Field(default=UNSET, description="Web URL for this task")
+    name: Missing[str] = Field(
+        default=UNSET, description="Human-readable name derived from the task prompt"
+    )
+    creator: Missing[AgentsTasksGetResponse200PropTasksItemsPropCreatorOneof0] = Field(
+        default=UNSET, description="The entity who created this task"
+    )
+    creator_type: Missing[Literal["user", "organization"]] = Field(
+        default=UNSET, description="Type of the task creator"
+    )
+    user_collaborators: Missing[
+        list[AgentsTasksGetResponse200PropTasksItemsPropUserCollaboratorsItems]
+    ] = Field(default=UNSET, description="User objects of collaborators on this task")
+    owner: Missing[AgentsTasksGetResponse200PropTasksItemsPropOwner] = Field(
+        default=UNSET, description="The owner of the repository"
+    )
+    repository: Missing[AgentsTasksGetResponse200PropTasksItemsPropRepository] = Field(
+        default=UNSET, description="The repository this task belongs to"
+    )
+    state: Literal[
+        "queued",
+        "in_progress",
+        "completed",
+        "failed",
+        "idle",
+        "waiting_for_user",
+        "timed_out",
+        "cancelled",
+    ] = Field(
+        description="Current state of the task, derived from its most recent session"
+    )
+    session_count: Missing[int] = Field(
+        default=UNSET, description="Number of sessions in this task"
+    )
+    artifacts: Missing[
+        list[AgentsTasksGetResponse200PropTasksItemsPropArtifactsItems]
     ] = Field(
         default=UNSET,
-        description="List of custom property filters to match organizations. Organizations matching any of the specified property name/value pairs will be included. This is a one-time operation, setting the property on an organization in the future will not automatically update its coding agent policy.",
+        description="Resources created by this task (PRs, branches, etc.)",
+    )
+    archived_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="Timestamp when the task was archived, null if not archived",
+    )
+    updated_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="Timestamp of the most recent update"
+    )
+    created_at: _dt.datetime = Field(description="Timestamp when the task was created")
+    custom_agent: Missing[AgentsTasksGetResponse200PropTasksItemsPropCustomAgent] = (
+        Field(
+            default=UNSET, description="Custom agent metadata associated with this task"
+        )
     )
 
 
-class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItems(
-    GitHubModel
-):
-    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustom
-    PropertiesItems
+class AgentsTasksGetResponse200PropTasksItemsPropCreatorOneof0(GitHubModel):
+    """AgentsTasksGetResponse200PropTasksItemsPropCreatorOneof0
+
+    A GitHub user
     """
 
-    property_name: str = Field(
-        description="The name of the custom property to filter by."
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the user"
     )
-    values: list[str] = Field(description="The values of the custom property to match.")
 
 
-model_rebuild(EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody)
-model_rebuild(
-    EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItems
-)
+class AgentsTasksGetResponse200PropTasksItemsPropUserCollaboratorsItems(GitHubModel):
+    """AgentsTasksGetResponse200PropTasksItemsPropUserCollaboratorsItems
+
+    A GitHub user
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the user"
+    )
+
+
+class AgentsTasksGetResponse200PropTasksItemsPropOwner(GitHubModel):
+    """AgentsTasksGetResponse200PropTasksItemsPropOwner
+
+    The owner of the repository
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the user"
+    )
+
+
+class AgentsTasksGetResponse200PropTasksItemsPropRepository(GitHubModel):
+    """AgentsTasksGetResponse200PropTasksItemsPropRepository
+
+    The repository this task belongs to
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the repository"
+    )
+
+
+class AgentsTasksGetResponse200PropTasksItemsPropCustomAgent(GitHubModel):
+    """AgentsTasksGetResponse200PropTasksItemsPropCustomAgent
+
+    Custom agent metadata associated with this task
+    """
+
+    id: Missing[str] = Field(
+        default=UNSET,
+        description="The custom agent's filename without the extension - for example, `performance-optimizer` for a `.github/agents/performance-optimizer.agent.md` custom agent.",
+    )
+
+
+class AgentsTasksGetResponse200PropTasksItemsPropArtifactsItems(GitHubModel):
+    """AgentsTasksGetResponse200PropTasksItemsPropArtifactsItems
+
+    A resource generated by the task
+    """
+
+    provider: Literal["github"] = Field(description="Provider namespace")
+    type: Literal["pull", "branch"] = Field(
+        description="Type of artifact. Available Values: `pull`, `branch`.\n"
+    )
+    data: Union[
+        AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0,
+        AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1,
+    ] = Field(description="Resource data (shape depends on type)")
+
+
+class AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0(
+    GitHubModel
+):
+    """AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0
+
+    A GitHub resource (pull request, issue, etc.)
+    """
+
+    id: int = Field(description="GitHub resource ID")
+    global_id: Missing[str] = Field(default=UNSET, description="GraphQL global ID")
+
+
+class AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1(
+    GitHubModel
+):
+    """AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1
+
+    A Git branch reference
+    """
+
+    head_ref: str = Field(description="Head branch name")
+    base_ref: str = Field(description="Base branch name")
+
+
+model_rebuild(AgentsTasksGetResponse200)
+model_rebuild(AgentsTasksGetResponse200PropTasksItems)
+model_rebuild(AgentsTasksGetResponse200PropTasksItemsPropCreatorOneof0)
+model_rebuild(AgentsTasksGetResponse200PropTasksItemsPropUserCollaboratorsItems)
+model_rebuild(AgentsTasksGetResponse200PropTasksItemsPropOwner)
+model_rebuild(AgentsTasksGetResponse200PropTasksItemsPropRepository)
+model_rebuild(AgentsTasksGetResponse200PropTasksItemsPropCustomAgent)
+model_rebuild(AgentsTasksGetResponse200PropTasksItemsPropArtifactsItems)
+model_rebuild(AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0)
+model_rebuild(AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1)
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody",
-    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItems",
+    "AgentsTasksGetResponse200",
+    "AgentsTasksGetResponse200PropTasksItems",
+    "AgentsTasksGetResponse200PropTasksItemsPropArtifactsItems",
+    "AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0",
+    "AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1",
+    "AgentsTasksGetResponse200PropTasksItemsPropCreatorOneof0",
+    "AgentsTasksGetResponse200PropTasksItemsPropCustomAgent",
+    "AgentsTasksGetResponse200PropTasksItemsPropOwner",
+    "AgentsTasksGetResponse200PropTasksItemsPropRepository",
+    "AgentsTasksGetResponse200PropTasksItemsPropUserCollaboratorsItems",
 )

@@ -9,41 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberCodespacesPostBodyType(TypedDict):
-    """ReposOwnerRepoPullsPullNumberCodespacesPostBody"""
+class ReposOwnerRepoGitTagsPostBodyType(TypedDict):
+    """ReposOwnerRepoGitTagsPostBody"""
 
-    location: NotRequired[str]
-    geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
-    client_ip: NotRequired[str]
-    machine: NotRequired[str]
-    devcontainer_path: NotRequired[str]
-    multi_repo_permissions_opt_out: NotRequired[bool]
-    working_directory: NotRequired[str]
-    idle_timeout_minutes: NotRequired[int]
-    display_name: NotRequired[str]
-    retention_period_minutes: NotRequired[int]
+    tag: str
+    message: str
+    object_: str
+    type: Literal["commit", "tree", "blob"]
+    tagger: NotRequired[ReposOwnerRepoGitTagsPostBodyPropTaggerType]
 
 
-class ReposOwnerRepoPullsPullNumberCodespacesPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoPullsPullNumberCodespacesPostBody"""
+class ReposOwnerRepoGitTagsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoGitTagsPostBody"""
 
-    location: NotRequired[str]
-    geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
-    client_ip: NotRequired[str]
-    machine: NotRequired[str]
-    devcontainer_path: NotRequired[str]
-    multi_repo_permissions_opt_out: NotRequired[bool]
-    working_directory: NotRequired[str]
-    idle_timeout_minutes: NotRequired[int]
-    display_name: NotRequired[str]
-    retention_period_minutes: NotRequired[int]
+    tag: str
+    message: str
+    object_: str
+    type: Literal["commit", "tree", "blob"]
+    tagger: NotRequired[ReposOwnerRepoGitTagsPostBodyPropTaggerTypeForResponse]
+
+
+class ReposOwnerRepoGitTagsPostBodyPropTaggerType(TypedDict):
+    """ReposOwnerRepoGitTagsPostBodyPropTagger
+
+    An object with information about the individual creating the tag.
+    """
+
+    name: str
+    email: str
+    date: NotRequired[_dt.datetime]
+
+
+class ReposOwnerRepoGitTagsPostBodyPropTaggerTypeForResponse(TypedDict):
+    """ReposOwnerRepoGitTagsPostBodyPropTagger
+
+    An object with information about the individual creating the tag.
+    """
+
+    name: str
+    email: str
+    date: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberCodespacesPostBodyType",
-    "ReposOwnerRepoPullsPullNumberCodespacesPostBodyTypeForResponse",
+    "ReposOwnerRepoGitTagsPostBodyPropTaggerType",
+    "ReposOwnerRepoGitTagsPostBodyPropTaggerTypeForResponse",
+    "ReposOwnerRepoGitTagsPostBodyType",
+    "ReposOwnerRepoGitTagsPostBodyTypeForResponse",
 )

@@ -12,66 +12,38 @@ from __future__ import annotations
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0076 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
 
+class BlobType(TypedDict):
+    """Blob
 
-class IssueReferenceType(TypedDict):
-    """Issue Reference
-
-    A minimal reference to an issue linked from a timeline event (e.g. sub-issue,
-    parent-issue, or dependency events).
+    Blob
     """
 
-    number: int
-    title: str
-    state: str
-    state_reason: NotRequired[Union[str, None]]
-    repository: SimpleRepositoryType
-    issue_type: Union[IssueReferencePropIssueTypeType, None]
-
-
-class IssueReferenceTypeForResponse(TypedDict):
-    """Issue Reference
-
-    A minimal reference to an issue linked from a timeline event (e.g. sub-issue,
-    parent-issue, or dependency events).
-    """
-
-    number: int
-    title: str
-    state: str
-    state_reason: NotRequired[Union[str, None]]
-    repository: SimpleRepositoryTypeForResponse
-    issue_type: Union[IssueReferencePropIssueTypeTypeForResponse, None]
-
-
-class IssueReferencePropIssueTypeType(TypedDict):
-    """Issue Type
-
-    The type of the referenced issue.
-    """
-
-    id: int
+    content: str
+    encoding: str
+    url: str
+    sha: str
+    size: Union[int, None]
     node_id: str
-    name: str
-    color: NotRequired[Union[str, None]]
+    highlighted_content: NotRequired[str]
 
 
-class IssueReferencePropIssueTypeTypeForResponse(TypedDict):
-    """Issue Type
+class BlobTypeForResponse(TypedDict):
+    """Blob
 
-    The type of the referenced issue.
+    Blob
     """
 
-    id: int
+    content: str
+    encoding: str
+    url: str
+    sha: str
+    size: Union[int, None]
     node_id: str
-    name: str
-    color: NotRequired[Union[str, None]]
+    highlighted_content: NotRequired[str]
 
 
 __all__ = (
-    "IssueReferencePropIssueTypeType",
-    "IssueReferencePropIssueTypeTypeForResponse",
-    "IssueReferenceType",
-    "IssueReferenceTypeForResponse",
+    "BlobType",
+    "BlobTypeForResponse",
 )

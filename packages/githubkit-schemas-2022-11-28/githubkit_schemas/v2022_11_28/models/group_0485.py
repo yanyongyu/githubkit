@@ -9,26 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0003 import SimpleUser
+
+class SecretScanningAlertMetadataItems(GitHubModel):
+    """SecretScanningAlertMetadataItems"""
+
+    key: str = Field(description="The metadata key.")
+    value: str = Field(description="The metadata value.")
 
 
-class Stargazer(GitHubModel):
-    """Stargazer
+model_rebuild(SecretScanningAlertMetadataItems)
 
-    Stargazer
-    """
-
-    starred_at: _dt.datetime = Field()
-    user: Union[None, SimpleUser] = Field()
-
-
-model_rebuild(Stargazer)
-
-__all__ = ("Stargazer",)
+__all__ = ("SecretScanningAlertMetadataItems",)

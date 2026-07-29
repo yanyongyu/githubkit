@@ -18,62 +18,22 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0523 import EnterpriseWebhooks
-from .group_0524 import SimpleInstallation
-from .group_0525 import OrganizationSimpleWebhooks
-from .group_0526 import RepositoryWebhooks
-from .group_0545 import WebhooksUserMannequin
+from .group_0179 import PullRequestStack
 
 
-class WebhookPullRequestUnassigned(GitHubModel):
-    """pull_request unassigned event"""
-
-    action: Literal["unassigned"] = Field()
-    assignee: Missing[Union[WebhooksUserMannequin, None]] = Field(
-        default=UNSET, title="User"
-    )
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
-    )
-    installation: Missing[SimpleInstallation] = Field(
-        default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
-    )
-    number: int = Field(description="The pull request number.")
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
-    )
-    pull_request: WebhookPullRequestUnassignedPropPullRequest = Field(
-        title="Pull Request"
-    )
-    repository: RepositoryWebhooks = Field(
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
-
-
-class WebhookPullRequestUnassignedPropPullRequest(GitHubModel):
+class WebhookPullRequestLockedPropPullRequest(GitHubModel):
     """Pull Request"""
 
-    links: WebhookPullRequestUnassignedPropPullRequestPropLinks = Field(alias="_links")
+    links: WebhookPullRequestLockedPropPullRequestPropLinks = Field(alias="_links")
     active_lock_reason: Union[
         None, Literal["resolved", "off-topic", "too heated", "spam"]
     ] = Field()
     additions: Missing[int] = Field(default=UNSET)
-    assignee: Union[WebhookPullRequestUnassignedPropPullRequestPropAssignee, None] = (
-        Field(title="User")
+    assignee: Union[WebhookPullRequestLockedPropPullRequestPropAssignee, None] = Field(
+        title="User"
     )
     assignees: list[
-        Union[WebhookPullRequestUnassignedPropPullRequestPropAssigneesItems, None]
+        Union[WebhookPullRequestLockedPropPullRequestPropAssigneesItems, None]
     ] = Field()
     author_association: Literal[
         "COLLABORATOR",
@@ -88,13 +48,13 @@ class WebhookPullRequestUnassignedPropPullRequest(GitHubModel):
         title="AuthorAssociation",
         description="How the author is associated with the repository.",
     )
-    auto_merge: Union[
-        WebhookPullRequestUnassignedPropPullRequestPropAutoMerge, None
-    ] = Field(
-        title="PullRequestAutoMerge",
-        description="The status of auto merging a pull request.",
+    auto_merge: Union[WebhookPullRequestLockedPropPullRequestPropAutoMerge, None] = (
+        Field(
+            title="PullRequestAutoMerge",
+            description="The status of auto merging a pull request.",
+        )
     )
-    base: WebhookPullRequestUnassignedPropPullRequestPropBase = Field()
+    base: WebhookPullRequestLockedPropPullRequestPropBase = Field()
     body: Union[str, None] = Field()
     changed_files: Missing[int] = Field(default=UNSET)
     closed_at: Union[_dt.datetime, None] = Field()
@@ -108,11 +68,11 @@ class WebhookPullRequestUnassignedPropPullRequest(GitHubModel):
     draft: bool = Field(
         description="Indicates whether or not the pull request is a draft."
     )
-    head: WebhookPullRequestUnassignedPropPullRequestPropHead = Field()
+    head: WebhookPullRequestLockedPropPullRequestPropHead = Field()
     html_url: str = Field()
     id: int = Field()
     issue_url: str = Field()
-    labels: list[WebhookPullRequestUnassignedPropPullRequestPropLabelsItems] = Field()
+    labels: list[WebhookPullRequestLockedPropPullRequestPropLabelsItems] = Field()
     locked: bool = Field()
     maintainer_can_modify: Missing[bool] = Field(
         default=UNSET,
@@ -124,9 +84,9 @@ class WebhookPullRequestUnassignedPropPullRequest(GitHubModel):
     merged: Missing[Union[bool, None]] = Field(default=UNSET)
     merged_at: Union[_dt.datetime, None] = Field()
     merged_by: Missing[
-        Union[WebhookPullRequestUnassignedPropPullRequestPropMergedBy, None]
+        Union[WebhookPullRequestLockedPropPullRequestPropMergedBy, None]
     ] = Field(default=UNSET, title="User")
-    milestone: Union[WebhookPullRequestUnassignedPropPullRequestPropMilestone, None] = (
+    milestone: Union[WebhookPullRequestLockedPropPullRequestPropMilestone, None] = (
         Field(
             title="Milestone",
             description="A collection of related issues and pull requests.",
@@ -140,17 +100,22 @@ class WebhookPullRequestUnassignedPropPullRequest(GitHubModel):
     rebaseable: Missing[Union[bool, None]] = Field(default=UNSET)
     requested_reviewers: list[
         Union[
-            WebhookPullRequestUnassignedPropPullRequestPropRequestedReviewersItemsOneof0,
+            WebhookPullRequestLockedPropPullRequestPropRequestedReviewersItemsOneof0,
             None,
-            WebhookPullRequestUnassignedPropPullRequestPropRequestedReviewersItemsOneof1,
+            WebhookPullRequestLockedPropPullRequestPropRequestedReviewersItemsOneof1,
         ]
     ] = Field()
     requested_teams: list[
-        WebhookPullRequestUnassignedPropPullRequestPropRequestedTeamsItems
+        WebhookPullRequestLockedPropPullRequestPropRequestedTeamsItems
     ] = Field()
     review_comment_url: str = Field()
     review_comments: Missing[int] = Field(default=UNSET)
     review_comments_url: str = Field()
+    stack: Missing[Union[PullRequestStack, None]] = Field(
+        default=UNSET,
+        title="Pull Request Stack",
+        description="The stack information associated with a pull request.",
+    )
     state: Literal["open", "closed"] = Field(
         description="State of this Pull Request. Either `open` or `closed`."
     )
@@ -158,91 +123,12 @@ class WebhookPullRequestUnassignedPropPullRequest(GitHubModel):
     title: str = Field(description="The title of the pull request.")
     updated_at: _dt.datetime = Field()
     url: str = Field()
-    user: Union[WebhookPullRequestUnassignedPropPullRequestPropUser, None] = Field(
+    user: Union[WebhookPullRequestLockedPropPullRequestPropUser, None] = Field(
         title="User"
     )
 
 
-class WebhookPullRequestUnassignedPropPullRequestPropAssignee(GitHubModel):
-    """User"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization", "Mannequin"]] = Field(
-        default=UNSET
-    )
-    url: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
-
-
-class WebhookPullRequestUnassignedPropPullRequestPropAssigneesItems(GitHubModel):
-    """User"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization", "Mannequin"]] = Field(
-        default=UNSET
-    )
-    url: Missing[str] = Field(default=UNSET)
-
-
-class WebhookPullRequestUnassignedPropPullRequestPropAutoMerge(GitHubModel):
-    """PullRequestAutoMerge
-
-    The status of auto merging a pull request.
-    """
-
-    commit_message: Union[str, None] = Field(
-        description="Commit message for the merge commit."
-    )
-    commit_title: Union[str, None] = Field(
-        description="Title for the merge commit message."
-    )
-    enabled_by: Union[
-        WebhookPullRequestUnassignedPropPullRequestPropAutoMergePropEnabledBy, None
-    ] = Field(title="User")
-    merge_method: Literal["merge", "squash", "rebase"] = Field(
-        description="The merge method to use."
-    )
-
-
-class WebhookPullRequestUnassignedPropPullRequestPropAutoMergePropEnabledBy(
-    GitHubModel
-):
+class WebhookPullRequestLockedPropPullRequestPropAssignee(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -269,7 +155,82 @@ class WebhookPullRequestUnassignedPropPullRequestPropAutoMergePropEnabledBy(
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookPullRequestUnassignedPropPullRequestPropLabelsItems(GitHubModel):
+class WebhookPullRequestLockedPropPullRequestPropAssigneesItems(GitHubModel):
+    """User"""
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization", "Mannequin"]] = Field(
+        default=UNSET
+    )
+    url: Missing[str] = Field(default=UNSET)
+
+
+class WebhookPullRequestLockedPropPullRequestPropAutoMerge(GitHubModel):
+    """PullRequestAutoMerge
+
+    The status of auto merging a pull request.
+    """
+
+    commit_message: Union[str, None] = Field(
+        description="Commit message for the merge commit."
+    )
+    commit_title: Union[str, None] = Field(
+        description="Title for the merge commit message."
+    )
+    enabled_by: Union[
+        WebhookPullRequestLockedPropPullRequestPropAutoMergePropEnabledBy, None
+    ] = Field(title="User")
+    merge_method: Literal["merge", "squash", "rebase"] = Field(
+        description="The merge method to use."
+    )
+
+
+class WebhookPullRequestLockedPropPullRequestPropAutoMergePropEnabledBy(GitHubModel):
+    """User"""
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+
+
+class WebhookPullRequestLockedPropPullRequestPropLabelsItems(GitHubModel):
     """Label"""
 
     color: str = Field(
@@ -283,7 +244,7 @@ class WebhookPullRequestUnassignedPropPullRequestPropLabelsItems(GitHubModel):
     url: str = Field(description="URL for the label")
 
 
-class WebhookPullRequestUnassignedPropPullRequestPropMergedBy(GitHubModel):
+class WebhookPullRequestLockedPropPullRequestPropMergedBy(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -312,7 +273,7 @@ class WebhookPullRequestUnassignedPropPullRequestPropMergedBy(GitHubModel):
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookPullRequestUnassignedPropPullRequestPropMilestone(GitHubModel):
+class WebhookPullRequestLockedPropPullRequestPropMilestone(GitHubModel):
     """Milestone
 
     A collection of related issues and pull requests.
@@ -322,7 +283,7 @@ class WebhookPullRequestUnassignedPropPullRequestPropMilestone(GitHubModel):
     closed_issues: int = Field()
     created_at: _dt.datetime = Field()
     creator: Union[
-        WebhookPullRequestUnassignedPropPullRequestPropMilestonePropCreator, None
+        WebhookPullRequestLockedPropPullRequestPropMilestonePropCreator, None
     ] = Field(title="User")
     description: Union[str, None] = Field()
     due_on: Union[_dt.datetime, None] = Field()
@@ -338,7 +299,7 @@ class WebhookPullRequestUnassignedPropPullRequestPropMilestone(GitHubModel):
     url: str = Field()
 
 
-class WebhookPullRequestUnassignedPropPullRequestPropMilestonePropCreator(GitHubModel):
+class WebhookPullRequestLockedPropPullRequestPropMilestonePropCreator(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -360,14 +321,12 @@ class WebhookPullRequestUnassignedPropPullRequestPropMilestonePropCreator(GitHub
     site_admin: Missing[bool] = Field(default=UNSET)
     starred_url: Missing[str] = Field(default=UNSET)
     subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization", "Mannequin"]] = Field(
-        default=UNSET
-    )
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
     url: Missing[str] = Field(default=UNSET)
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookPullRequestUnassignedPropPullRequestPropRequestedReviewersItemsOneof0(
+class WebhookPullRequestLockedPropPullRequestPropRequestedReviewersItemsOneof0(
     GitHubModel
 ):
     """User"""
@@ -398,7 +357,7 @@ class WebhookPullRequestUnassignedPropPullRequestPropRequestedReviewersItemsOneo
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookPullRequestUnassignedPropPullRequestPropUser(GitHubModel):
+class WebhookPullRequestLockedPropPullRequestPropUser(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -427,102 +386,96 @@ class WebhookPullRequestUnassignedPropPullRequestPropUser(GitHubModel):
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookPullRequestUnassignedPropPullRequestPropLinks(GitHubModel):
-    """WebhookPullRequestUnassignedPropPullRequestPropLinks"""
+class WebhookPullRequestLockedPropPullRequestPropLinks(GitHubModel):
+    """WebhookPullRequestLockedPropPullRequestPropLinks"""
 
-    comments: WebhookPullRequestUnassignedPropPullRequestPropLinksPropComments = Field(
+    comments: WebhookPullRequestLockedPropPullRequestPropLinksPropComments = Field(
         title="Link"
     )
-    commits: WebhookPullRequestUnassignedPropPullRequestPropLinksPropCommits = Field(
+    commits: WebhookPullRequestLockedPropPullRequestPropLinksPropCommits = Field(
         title="Link"
     )
-    html: WebhookPullRequestUnassignedPropPullRequestPropLinksPropHtml = Field(
+    html: WebhookPullRequestLockedPropPullRequestPropLinksPropHtml = Field(title="Link")
+    issue: WebhookPullRequestLockedPropPullRequestPropLinksPropIssue = Field(
         title="Link"
     )
-    issue: WebhookPullRequestUnassignedPropPullRequestPropLinksPropIssue = Field(
+    review_comment: WebhookPullRequestLockedPropPullRequestPropLinksPropReviewComment = Field(
         title="Link"
     )
-    review_comment: WebhookPullRequestUnassignedPropPullRequestPropLinksPropReviewComment = Field(
+    review_comments: WebhookPullRequestLockedPropPullRequestPropLinksPropReviewComments = Field(
         title="Link"
     )
-    review_comments: WebhookPullRequestUnassignedPropPullRequestPropLinksPropReviewComments = Field(
-        title="Link"
-    )
-    self_: WebhookPullRequestUnassignedPropPullRequestPropLinksPropSelf = Field(
+    self_: WebhookPullRequestLockedPropPullRequestPropLinksPropSelf = Field(
         alias="self", title="Link"
     )
-    statuses: WebhookPullRequestUnassignedPropPullRequestPropLinksPropStatuses = Field(
+    statuses: WebhookPullRequestLockedPropPullRequestPropLinksPropStatuses = Field(
         title="Link"
     )
 
 
-class WebhookPullRequestUnassignedPropPullRequestPropLinksPropComments(GitHubModel):
+class WebhookPullRequestLockedPropPullRequestPropLinksPropComments(GitHubModel):
     """Link"""
 
     href: str = Field()
 
 
-class WebhookPullRequestUnassignedPropPullRequestPropLinksPropCommits(GitHubModel):
+class WebhookPullRequestLockedPropPullRequestPropLinksPropCommits(GitHubModel):
     """Link"""
 
     href: str = Field()
 
 
-class WebhookPullRequestUnassignedPropPullRequestPropLinksPropHtml(GitHubModel):
+class WebhookPullRequestLockedPropPullRequestPropLinksPropHtml(GitHubModel):
     """Link"""
 
     href: str = Field()
 
 
-class WebhookPullRequestUnassignedPropPullRequestPropLinksPropIssue(GitHubModel):
+class WebhookPullRequestLockedPropPullRequestPropLinksPropIssue(GitHubModel):
     """Link"""
 
     href: str = Field()
 
 
-class WebhookPullRequestUnassignedPropPullRequestPropLinksPropReviewComment(
-    GitHubModel
-):
+class WebhookPullRequestLockedPropPullRequestPropLinksPropReviewComment(GitHubModel):
     """Link"""
 
     href: str = Field()
 
 
-class WebhookPullRequestUnassignedPropPullRequestPropLinksPropReviewComments(
-    GitHubModel
-):
+class WebhookPullRequestLockedPropPullRequestPropLinksPropReviewComments(GitHubModel):
     """Link"""
 
     href: str = Field()
 
 
-class WebhookPullRequestUnassignedPropPullRequestPropLinksPropSelf(GitHubModel):
+class WebhookPullRequestLockedPropPullRequestPropLinksPropSelf(GitHubModel):
     """Link"""
 
     href: str = Field()
 
 
-class WebhookPullRequestUnassignedPropPullRequestPropLinksPropStatuses(GitHubModel):
+class WebhookPullRequestLockedPropPullRequestPropLinksPropStatuses(GitHubModel):
     """Link"""
 
     href: str = Field()
 
 
-class WebhookPullRequestUnassignedPropPullRequestPropBase(GitHubModel):
-    """WebhookPullRequestUnassignedPropPullRequestPropBase"""
+class WebhookPullRequestLockedPropPullRequestPropBase(GitHubModel):
+    """WebhookPullRequestLockedPropPullRequestPropBase"""
 
-    label: Union[str, None] = Field()
+    label: str = Field()
     ref: str = Field()
-    repo: WebhookPullRequestUnassignedPropPullRequestPropBasePropRepo = Field(
+    repo: WebhookPullRequestLockedPropPullRequestPropBasePropRepo = Field(
         title="Repository", description="A git repository"
     )
     sha: str = Field()
-    user: Union[WebhookPullRequestUnassignedPropPullRequestPropBasePropUser, None] = (
-        Field(title="User")
+    user: Union[WebhookPullRequestLockedPropPullRequestPropBasePropUser, None] = Field(
+        title="User"
     )
 
 
-class WebhookPullRequestUnassignedPropPullRequestPropBasePropUser(GitHubModel):
+class WebhookPullRequestLockedPropPullRequestPropBasePropUser(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -549,7 +502,7 @@ class WebhookPullRequestUnassignedPropPullRequestPropBasePropUser(GitHubModel):
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookPullRequestUnassignedPropPullRequestPropBasePropRepo(GitHubModel):
+class WebhookPullRequestLockedPropPullRequestPropBasePropRepo(GitHubModel):
     """Repository
 
     A git repository
@@ -639,7 +592,7 @@ class WebhookPullRequestUnassignedPropPullRequestPropBasePropRepo(GitHubModel):
     language: Union[str, None] = Field()
     languages_url: str = Field()
     license_: Union[
-        WebhookPullRequestUnassignedPropPullRequestPropBasePropRepoPropLicense, None
+        WebhookPullRequestLockedPropPullRequestPropBasePropRepoPropLicense, None
     ] = Field(alias="license", title="License")
     master_branch: Missing[str] = Field(default=UNSET)
     merge_commit_message: Missing[Literal["PR_BODY", "PR_TITLE", "BLANK"]] = Field(
@@ -660,10 +613,10 @@ class WebhookPullRequestUnassignedPropPullRequestPropBasePropRepo(GitHubModel):
     open_issues_count: int = Field()
     organization: Missing[str] = Field(default=UNSET)
     owner: Union[
-        WebhookPullRequestUnassignedPropPullRequestPropBasePropRepoPropOwner, None
+        WebhookPullRequestLockedPropPullRequestPropBasePropRepoPropOwner, None
     ] = Field(title="User")
     permissions: Missing[
-        WebhookPullRequestUnassignedPropPullRequestPropBasePropRepoPropPermissions
+        WebhookPullRequestLockedPropPullRequestPropBasePropRepoPropPermissions
     ] = Field(default=UNSET)
     private: bool = Field(description="Whether the repository is private or public.")
     public: Missing[bool] = Field(default=UNSET)
@@ -711,9 +664,7 @@ class WebhookPullRequestUnassignedPropPullRequestPropBasePropRepo(GitHubModel):
     )
 
 
-class WebhookPullRequestUnassignedPropPullRequestPropBasePropRepoPropLicense(
-    GitHubModel
-):
+class WebhookPullRequestLockedPropPullRequestPropBasePropRepoPropLicense(GitHubModel):
     """License"""
 
     key: str = Field()
@@ -723,7 +674,7 @@ class WebhookPullRequestUnassignedPropPullRequestPropBasePropRepoPropLicense(
     url: Union[str, None] = Field()
 
 
-class WebhookPullRequestUnassignedPropPullRequestPropBasePropRepoPropOwner(GitHubModel):
+class WebhookPullRequestLockedPropPullRequestPropBasePropRepoPropOwner(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -750,10 +701,10 @@ class WebhookPullRequestUnassignedPropPullRequestPropBasePropRepoPropOwner(GitHu
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookPullRequestUnassignedPropPullRequestPropBasePropRepoPropPermissions(
+class WebhookPullRequestLockedPropPullRequestPropBasePropRepoPropPermissions(
     GitHubModel
 ):
-    """WebhookPullRequestUnassignedPropPullRequestPropBasePropRepoPropPermissions"""
+    """WebhookPullRequestLockedPropPullRequestPropBasePropRepoPropPermissions"""
 
     admin: bool = Field()
     maintain: Missing[bool] = Field(default=UNSET)
@@ -762,21 +713,21 @@ class WebhookPullRequestUnassignedPropPullRequestPropBasePropRepoPropPermissions
     triage: Missing[bool] = Field(default=UNSET)
 
 
-class WebhookPullRequestUnassignedPropPullRequestPropHead(GitHubModel):
-    """WebhookPullRequestUnassignedPropPullRequestPropHead"""
+class WebhookPullRequestLockedPropPullRequestPropHead(GitHubModel):
+    """WebhookPullRequestLockedPropPullRequestPropHead"""
 
     label: Union[str, None] = Field()
     ref: str = Field()
-    repo: Union[WebhookPullRequestUnassignedPropPullRequestPropHeadPropRepo, None] = (
-        Field(title="Repository", description="A git repository")
+    repo: Union[WebhookPullRequestLockedPropPullRequestPropHeadPropRepo, None] = Field(
+        title="Repository", description="A git repository"
     )
     sha: str = Field()
-    user: Union[WebhookPullRequestUnassignedPropPullRequestPropHeadPropUser, None] = (
-        Field(title="User")
+    user: Union[WebhookPullRequestLockedPropPullRequestPropHeadPropUser, None] = Field(
+        title="User"
     )
 
 
-class WebhookPullRequestUnassignedPropPullRequestPropHeadPropRepo(GitHubModel):
+class WebhookPullRequestLockedPropPullRequestPropHeadPropRepo(GitHubModel):
     """Repository
 
     A git repository
@@ -866,7 +817,7 @@ class WebhookPullRequestUnassignedPropPullRequestPropHeadPropRepo(GitHubModel):
     language: Union[str, None] = Field()
     languages_url: str = Field()
     license_: Union[
-        WebhookPullRequestUnassignedPropPullRequestPropHeadPropRepoPropLicense, None
+        WebhookPullRequestLockedPropPullRequestPropHeadPropRepoPropLicense, None
     ] = Field(alias="license", title="License")
     master_branch: Missing[str] = Field(default=UNSET)
     merge_commit_message: Missing[Literal["PR_BODY", "PR_TITLE", "BLANK"]] = Field(
@@ -887,10 +838,10 @@ class WebhookPullRequestUnassignedPropPullRequestPropHeadPropRepo(GitHubModel):
     open_issues_count: int = Field()
     organization: Missing[str] = Field(default=UNSET)
     owner: Union[
-        WebhookPullRequestUnassignedPropPullRequestPropHeadPropRepoPropOwner, None
+        WebhookPullRequestLockedPropPullRequestPropHeadPropRepoPropOwner, None
     ] = Field(title="User")
     permissions: Missing[
-        WebhookPullRequestUnassignedPropPullRequestPropHeadPropRepoPropPermissions
+        WebhookPullRequestLockedPropPullRequestPropHeadPropRepoPropPermissions
     ] = Field(default=UNSET)
     private: bool = Field(description="Whether the repository is private or public.")
     public: Missing[bool] = Field(default=UNSET)
@@ -938,9 +889,7 @@ class WebhookPullRequestUnassignedPropPullRequestPropHeadPropRepo(GitHubModel):
     )
 
 
-class WebhookPullRequestUnassignedPropPullRequestPropHeadPropRepoPropLicense(
-    GitHubModel
-):
+class WebhookPullRequestLockedPropPullRequestPropHeadPropRepoPropLicense(GitHubModel):
     """License"""
 
     key: str = Field()
@@ -950,7 +899,7 @@ class WebhookPullRequestUnassignedPropPullRequestPropHeadPropRepoPropLicense(
     url: Union[str, None] = Field()
 
 
-class WebhookPullRequestUnassignedPropPullRequestPropHeadPropRepoPropOwner(GitHubModel):
+class WebhookPullRequestLockedPropPullRequestPropHeadPropRepoPropOwner(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -977,10 +926,10 @@ class WebhookPullRequestUnassignedPropPullRequestPropHeadPropRepoPropOwner(GitHu
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookPullRequestUnassignedPropPullRequestPropHeadPropRepoPropPermissions(
+class WebhookPullRequestLockedPropPullRequestPropHeadPropRepoPropPermissions(
     GitHubModel
 ):
-    """WebhookPullRequestUnassignedPropPullRequestPropHeadPropRepoPropPermissions"""
+    """WebhookPullRequestLockedPropPullRequestPropHeadPropRepoPropPermissions"""
 
     admin: bool = Field()
     maintain: Missing[bool] = Field(default=UNSET)
@@ -989,7 +938,7 @@ class WebhookPullRequestUnassignedPropPullRequestPropHeadPropRepoPropPermissions
     triage: Missing[bool] = Field(default=UNSET)
 
 
-class WebhookPullRequestUnassignedPropPullRequestPropHeadPropUser(GitHubModel):
+class WebhookPullRequestLockedPropPullRequestPropHeadPropUser(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -1016,7 +965,7 @@ class WebhookPullRequestUnassignedPropPullRequestPropHeadPropUser(GitHubModel):
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookPullRequestUnassignedPropPullRequestPropRequestedReviewersItemsOneof1(
+class WebhookPullRequestLockedPropPullRequestPropRequestedReviewersItemsOneof1(
     GitHubModel
 ):
     """Team
@@ -1033,7 +982,7 @@ class WebhookPullRequestUnassignedPropPullRequestPropRequestedReviewersItemsOneo
     node_id: str = Field()
     parent: Missing[
         Union[
-            WebhookPullRequestUnassignedPropPullRequestPropRequestedReviewersItemsOneof1PropParent,
+            WebhookPullRequestLockedPropPullRequestPropRequestedReviewersItemsOneof1PropParent,
             None,
         ]
     ] = Field(default=UNSET)
@@ -1046,11 +995,11 @@ class WebhookPullRequestUnassignedPropPullRequestPropRequestedReviewersItemsOneo
     url: str = Field(description="URL for the team")
 
 
-class WebhookPullRequestUnassignedPropPullRequestPropRequestedReviewersItemsOneof1PropParent(
+class WebhookPullRequestLockedPropPullRequestPropRequestedReviewersItemsOneof1PropParent(
     GitHubModel
 ):
-    """WebhookPullRequestUnassignedPropPullRequestPropRequestedReviewersItemsOneof1Prop
-    Parent
+    """WebhookPullRequestLockedPropPullRequestPropRequestedReviewersItemsOneof1PropPare
+    nt
     """
 
     description: Union[str, None] = Field(description="Description of the team")
@@ -1068,7 +1017,7 @@ class WebhookPullRequestUnassignedPropPullRequestPropRequestedReviewersItemsOneo
     url: str = Field(description="URL for the team")
 
 
-class WebhookPullRequestUnassignedPropPullRequestPropRequestedTeamsItems(GitHubModel):
+class WebhookPullRequestLockedPropPullRequestPropRequestedTeamsItems(GitHubModel):
     """Team
 
     Groups of organization members that gives permissions on specified repositories.
@@ -1085,7 +1034,7 @@ class WebhookPullRequestUnassignedPropPullRequestPropRequestedTeamsItems(GitHubM
     node_id: Missing[str] = Field(default=UNSET)
     parent: Missing[
         Union[
-            WebhookPullRequestUnassignedPropPullRequestPropRequestedTeamsItemsPropParent,
+            WebhookPullRequestLockedPropPullRequestPropRequestedTeamsItemsPropParent,
             None,
         ]
     ] = Field(default=UNSET)
@@ -1099,10 +1048,10 @@ class WebhookPullRequestUnassignedPropPullRequestPropRequestedTeamsItems(GitHubM
     url: Missing[str] = Field(default=UNSET, description="URL for the team")
 
 
-class WebhookPullRequestUnassignedPropPullRequestPropRequestedTeamsItemsPropParent(
+class WebhookPullRequestLockedPropPullRequestPropRequestedTeamsItemsPropParent(
     GitHubModel
 ):
-    """WebhookPullRequestUnassignedPropPullRequestPropRequestedTeamsItemsPropParent"""
+    """WebhookPullRequestLockedPropPullRequestPropRequestedTeamsItemsPropParent"""
 
     description: Union[str, None] = Field(description="Description of the team")
     html_url: str = Field()
@@ -1119,92 +1068,80 @@ class WebhookPullRequestUnassignedPropPullRequestPropRequestedTeamsItemsPropPare
     url: str = Field(description="URL for the team")
 
 
-model_rebuild(WebhookPullRequestUnassigned)
-model_rebuild(WebhookPullRequestUnassignedPropPullRequest)
-model_rebuild(WebhookPullRequestUnassignedPropPullRequestPropAssignee)
-model_rebuild(WebhookPullRequestUnassignedPropPullRequestPropAssigneesItems)
-model_rebuild(WebhookPullRequestUnassignedPropPullRequestPropAutoMerge)
-model_rebuild(WebhookPullRequestUnassignedPropPullRequestPropAutoMergePropEnabledBy)
-model_rebuild(WebhookPullRequestUnassignedPropPullRequestPropLabelsItems)
-model_rebuild(WebhookPullRequestUnassignedPropPullRequestPropMergedBy)
-model_rebuild(WebhookPullRequestUnassignedPropPullRequestPropMilestone)
-model_rebuild(WebhookPullRequestUnassignedPropPullRequestPropMilestonePropCreator)
+model_rebuild(WebhookPullRequestLockedPropPullRequest)
+model_rebuild(WebhookPullRequestLockedPropPullRequestPropAssignee)
+model_rebuild(WebhookPullRequestLockedPropPullRequestPropAssigneesItems)
+model_rebuild(WebhookPullRequestLockedPropPullRequestPropAutoMerge)
+model_rebuild(WebhookPullRequestLockedPropPullRequestPropAutoMergePropEnabledBy)
+model_rebuild(WebhookPullRequestLockedPropPullRequestPropLabelsItems)
+model_rebuild(WebhookPullRequestLockedPropPullRequestPropMergedBy)
+model_rebuild(WebhookPullRequestLockedPropPullRequestPropMilestone)
+model_rebuild(WebhookPullRequestLockedPropPullRequestPropMilestonePropCreator)
+model_rebuild(WebhookPullRequestLockedPropPullRequestPropRequestedReviewersItemsOneof0)
+model_rebuild(WebhookPullRequestLockedPropPullRequestPropUser)
+model_rebuild(WebhookPullRequestLockedPropPullRequestPropLinks)
+model_rebuild(WebhookPullRequestLockedPropPullRequestPropLinksPropComments)
+model_rebuild(WebhookPullRequestLockedPropPullRequestPropLinksPropCommits)
+model_rebuild(WebhookPullRequestLockedPropPullRequestPropLinksPropHtml)
+model_rebuild(WebhookPullRequestLockedPropPullRequestPropLinksPropIssue)
+model_rebuild(WebhookPullRequestLockedPropPullRequestPropLinksPropReviewComment)
+model_rebuild(WebhookPullRequestLockedPropPullRequestPropLinksPropReviewComments)
+model_rebuild(WebhookPullRequestLockedPropPullRequestPropLinksPropSelf)
+model_rebuild(WebhookPullRequestLockedPropPullRequestPropLinksPropStatuses)
+model_rebuild(WebhookPullRequestLockedPropPullRequestPropBase)
+model_rebuild(WebhookPullRequestLockedPropPullRequestPropBasePropUser)
+model_rebuild(WebhookPullRequestLockedPropPullRequestPropBasePropRepo)
+model_rebuild(WebhookPullRequestLockedPropPullRequestPropBasePropRepoPropLicense)
+model_rebuild(WebhookPullRequestLockedPropPullRequestPropBasePropRepoPropOwner)
+model_rebuild(WebhookPullRequestLockedPropPullRequestPropBasePropRepoPropPermissions)
+model_rebuild(WebhookPullRequestLockedPropPullRequestPropHead)
+model_rebuild(WebhookPullRequestLockedPropPullRequestPropHeadPropRepo)
+model_rebuild(WebhookPullRequestLockedPropPullRequestPropHeadPropRepoPropLicense)
+model_rebuild(WebhookPullRequestLockedPropPullRequestPropHeadPropRepoPropOwner)
+model_rebuild(WebhookPullRequestLockedPropPullRequestPropHeadPropRepoPropPermissions)
+model_rebuild(WebhookPullRequestLockedPropPullRequestPropHeadPropUser)
+model_rebuild(WebhookPullRequestLockedPropPullRequestPropRequestedReviewersItemsOneof1)
 model_rebuild(
-    WebhookPullRequestUnassignedPropPullRequestPropRequestedReviewersItemsOneof0
+    WebhookPullRequestLockedPropPullRequestPropRequestedReviewersItemsOneof1PropParent
 )
-model_rebuild(WebhookPullRequestUnassignedPropPullRequestPropUser)
-model_rebuild(WebhookPullRequestUnassignedPropPullRequestPropLinks)
-model_rebuild(WebhookPullRequestUnassignedPropPullRequestPropLinksPropComments)
-model_rebuild(WebhookPullRequestUnassignedPropPullRequestPropLinksPropCommits)
-model_rebuild(WebhookPullRequestUnassignedPropPullRequestPropLinksPropHtml)
-model_rebuild(WebhookPullRequestUnassignedPropPullRequestPropLinksPropIssue)
-model_rebuild(WebhookPullRequestUnassignedPropPullRequestPropLinksPropReviewComment)
-model_rebuild(WebhookPullRequestUnassignedPropPullRequestPropLinksPropReviewComments)
-model_rebuild(WebhookPullRequestUnassignedPropPullRequestPropLinksPropSelf)
-model_rebuild(WebhookPullRequestUnassignedPropPullRequestPropLinksPropStatuses)
-model_rebuild(WebhookPullRequestUnassignedPropPullRequestPropBase)
-model_rebuild(WebhookPullRequestUnassignedPropPullRequestPropBasePropUser)
-model_rebuild(WebhookPullRequestUnassignedPropPullRequestPropBasePropRepo)
-model_rebuild(WebhookPullRequestUnassignedPropPullRequestPropBasePropRepoPropLicense)
-model_rebuild(WebhookPullRequestUnassignedPropPullRequestPropBasePropRepoPropOwner)
-model_rebuild(
-    WebhookPullRequestUnassignedPropPullRequestPropBasePropRepoPropPermissions
-)
-model_rebuild(WebhookPullRequestUnassignedPropPullRequestPropHead)
-model_rebuild(WebhookPullRequestUnassignedPropPullRequestPropHeadPropRepo)
-model_rebuild(WebhookPullRequestUnassignedPropPullRequestPropHeadPropRepoPropLicense)
-model_rebuild(WebhookPullRequestUnassignedPropPullRequestPropHeadPropRepoPropOwner)
-model_rebuild(
-    WebhookPullRequestUnassignedPropPullRequestPropHeadPropRepoPropPermissions
-)
-model_rebuild(WebhookPullRequestUnassignedPropPullRequestPropHeadPropUser)
-model_rebuild(
-    WebhookPullRequestUnassignedPropPullRequestPropRequestedReviewersItemsOneof1
-)
-model_rebuild(
-    WebhookPullRequestUnassignedPropPullRequestPropRequestedReviewersItemsOneof1PropParent
-)
-model_rebuild(WebhookPullRequestUnassignedPropPullRequestPropRequestedTeamsItems)
-model_rebuild(
-    WebhookPullRequestUnassignedPropPullRequestPropRequestedTeamsItemsPropParent
-)
+model_rebuild(WebhookPullRequestLockedPropPullRequestPropRequestedTeamsItems)
+model_rebuild(WebhookPullRequestLockedPropPullRequestPropRequestedTeamsItemsPropParent)
 
 __all__ = (
-    "WebhookPullRequestUnassigned",
-    "WebhookPullRequestUnassignedPropPullRequest",
-    "WebhookPullRequestUnassignedPropPullRequestPropAssignee",
-    "WebhookPullRequestUnassignedPropPullRequestPropAssigneesItems",
-    "WebhookPullRequestUnassignedPropPullRequestPropAutoMerge",
-    "WebhookPullRequestUnassignedPropPullRequestPropAutoMergePropEnabledBy",
-    "WebhookPullRequestUnassignedPropPullRequestPropBase",
-    "WebhookPullRequestUnassignedPropPullRequestPropBasePropRepo",
-    "WebhookPullRequestUnassignedPropPullRequestPropBasePropRepoPropLicense",
-    "WebhookPullRequestUnassignedPropPullRequestPropBasePropRepoPropOwner",
-    "WebhookPullRequestUnassignedPropPullRequestPropBasePropRepoPropPermissions",
-    "WebhookPullRequestUnassignedPropPullRequestPropBasePropUser",
-    "WebhookPullRequestUnassignedPropPullRequestPropHead",
-    "WebhookPullRequestUnassignedPropPullRequestPropHeadPropRepo",
-    "WebhookPullRequestUnassignedPropPullRequestPropHeadPropRepoPropLicense",
-    "WebhookPullRequestUnassignedPropPullRequestPropHeadPropRepoPropOwner",
-    "WebhookPullRequestUnassignedPropPullRequestPropHeadPropRepoPropPermissions",
-    "WebhookPullRequestUnassignedPropPullRequestPropHeadPropUser",
-    "WebhookPullRequestUnassignedPropPullRequestPropLabelsItems",
-    "WebhookPullRequestUnassignedPropPullRequestPropLinks",
-    "WebhookPullRequestUnassignedPropPullRequestPropLinksPropComments",
-    "WebhookPullRequestUnassignedPropPullRequestPropLinksPropCommits",
-    "WebhookPullRequestUnassignedPropPullRequestPropLinksPropHtml",
-    "WebhookPullRequestUnassignedPropPullRequestPropLinksPropIssue",
-    "WebhookPullRequestUnassignedPropPullRequestPropLinksPropReviewComment",
-    "WebhookPullRequestUnassignedPropPullRequestPropLinksPropReviewComments",
-    "WebhookPullRequestUnassignedPropPullRequestPropLinksPropSelf",
-    "WebhookPullRequestUnassignedPropPullRequestPropLinksPropStatuses",
-    "WebhookPullRequestUnassignedPropPullRequestPropMergedBy",
-    "WebhookPullRequestUnassignedPropPullRequestPropMilestone",
-    "WebhookPullRequestUnassignedPropPullRequestPropMilestonePropCreator",
-    "WebhookPullRequestUnassignedPropPullRequestPropRequestedReviewersItemsOneof0",
-    "WebhookPullRequestUnassignedPropPullRequestPropRequestedReviewersItemsOneof1",
-    "WebhookPullRequestUnassignedPropPullRequestPropRequestedReviewersItemsOneof1PropParent",
-    "WebhookPullRequestUnassignedPropPullRequestPropRequestedTeamsItems",
-    "WebhookPullRequestUnassignedPropPullRequestPropRequestedTeamsItemsPropParent",
-    "WebhookPullRequestUnassignedPropPullRequestPropUser",
+    "WebhookPullRequestLockedPropPullRequest",
+    "WebhookPullRequestLockedPropPullRequestPropAssignee",
+    "WebhookPullRequestLockedPropPullRequestPropAssigneesItems",
+    "WebhookPullRequestLockedPropPullRequestPropAutoMerge",
+    "WebhookPullRequestLockedPropPullRequestPropAutoMergePropEnabledBy",
+    "WebhookPullRequestLockedPropPullRequestPropBase",
+    "WebhookPullRequestLockedPropPullRequestPropBasePropRepo",
+    "WebhookPullRequestLockedPropPullRequestPropBasePropRepoPropLicense",
+    "WebhookPullRequestLockedPropPullRequestPropBasePropRepoPropOwner",
+    "WebhookPullRequestLockedPropPullRequestPropBasePropRepoPropPermissions",
+    "WebhookPullRequestLockedPropPullRequestPropBasePropUser",
+    "WebhookPullRequestLockedPropPullRequestPropHead",
+    "WebhookPullRequestLockedPropPullRequestPropHeadPropRepo",
+    "WebhookPullRequestLockedPropPullRequestPropHeadPropRepoPropLicense",
+    "WebhookPullRequestLockedPropPullRequestPropHeadPropRepoPropOwner",
+    "WebhookPullRequestLockedPropPullRequestPropHeadPropRepoPropPermissions",
+    "WebhookPullRequestLockedPropPullRequestPropHeadPropUser",
+    "WebhookPullRequestLockedPropPullRequestPropLabelsItems",
+    "WebhookPullRequestLockedPropPullRequestPropLinks",
+    "WebhookPullRequestLockedPropPullRequestPropLinksPropComments",
+    "WebhookPullRequestLockedPropPullRequestPropLinksPropCommits",
+    "WebhookPullRequestLockedPropPullRequestPropLinksPropHtml",
+    "WebhookPullRequestLockedPropPullRequestPropLinksPropIssue",
+    "WebhookPullRequestLockedPropPullRequestPropLinksPropReviewComment",
+    "WebhookPullRequestLockedPropPullRequestPropLinksPropReviewComments",
+    "WebhookPullRequestLockedPropPullRequestPropLinksPropSelf",
+    "WebhookPullRequestLockedPropPullRequestPropLinksPropStatuses",
+    "WebhookPullRequestLockedPropPullRequestPropMergedBy",
+    "WebhookPullRequestLockedPropPullRequestPropMilestone",
+    "WebhookPullRequestLockedPropPullRequestPropMilestonePropCreator",
+    "WebhookPullRequestLockedPropPullRequestPropRequestedReviewersItemsOneof0",
+    "WebhookPullRequestLockedPropPullRequestPropRequestedReviewersItemsOneof1",
+    "WebhookPullRequestLockedPropPullRequestPropRequestedReviewersItemsOneof1PropParent",
+    "WebhookPullRequestLockedPropPullRequestPropRequestedTeamsItems",
+    "WebhookPullRequestLockedPropPullRequestPropRequestedTeamsItemsPropParent",
+    "WebhookPullRequestLockedPropPullRequestPropUser",
 )

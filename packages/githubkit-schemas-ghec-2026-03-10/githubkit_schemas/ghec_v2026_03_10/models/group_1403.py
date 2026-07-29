@@ -9,18 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class ReposOwnerRepoAgentsVariablesPostBody(GitHubModel):
-    """ReposOwnerRepoAgentsVariablesPostBody"""
-
-    name: str = Field(description="The name of the variable.")
-    value: str = Field(description="The value of the variable.")
+from .group_0328 import ProjectsV2FieldIterationConfiguration
 
 
-model_rebuild(ReposOwnerRepoAgentsVariablesPostBody)
+class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3(GitHubModel):
+    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3"""
 
-__all__ = ("ReposOwnerRepoAgentsVariablesPostBody",)
+    name: str = Field(description="The name of the field.")
+    data_type: Literal["iteration"] = Field(description="The field's data type.")
+    iteration_configuration: ProjectsV2FieldIterationConfiguration = Field(
+        description="The configuration for iteration fields."
+    )
+
+
+model_rebuild(OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3)
+
+__all__ = ("OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3",)

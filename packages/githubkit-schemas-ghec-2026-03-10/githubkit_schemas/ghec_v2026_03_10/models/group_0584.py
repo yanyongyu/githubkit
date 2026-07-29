@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -19,67 +18,37 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class PublicUser(GitHubModel):
-    """Public User
+class Group(GitHubModel):
+    """Group"""
 
-    Public User
-    """
-
-    login: str = Field()
-    id: int = Field()
-    user_view_type: Missing[str] = Field(default=UNSET)
-    node_id: str = Field()
-    avatar_url: str = Field()
-    gravatar_id: Union[str, None] = Field()
-    url: str = Field()
-    html_url: str = Field()
-    followers_url: str = Field()
-    following_url: str = Field()
-    gists_url: str = Field()
-    starred_url: str = Field()
-    subscriptions_url: str = Field()
-    organizations_url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    received_events_url: str = Field()
-    type: str = Field()
-    site_admin: bool = Field()
-    name: Union[str, None] = Field()
-    company: Union[str, None] = Field()
-    blog: Union[str, None] = Field()
-    location: Union[str, None] = Field()
-    email: Union[str, None] = Field()
-    notification_email: Missing[Union[str, None]] = Field(default=UNSET)
-    hireable: Union[bool, None] = Field()
-    bio: Union[str, None] = Field()
-    twitter_username: Missing[Union[str, None]] = Field(default=UNSET)
-    public_repos: int = Field()
-    public_gists: int = Field()
-    followers: int = Field()
-    following: int = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    plan: Missing[PublicUserPropPlan] = Field(default=UNSET)
-    private_gists: Missing[int] = Field(default=UNSET)
-    total_private_repos: Missing[int] = Field(default=UNSET)
-    owned_private_repos: Missing[int] = Field(default=UNSET)
-    disk_usage: Missing[int] = Field(default=UNSET)
-    collaborators: Missing[int] = Field(default=UNSET)
+    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:Group"]] = Field(
+        description="The URIs that are used to indicate the namespaces of the SCIM schemas."
+    )
+    external_id: str = Field(
+        alias="externalId",
+        description="A unique identifier for the resource as defined by the provisioning client.",
+    )
+    display_name: str = Field(
+        alias="displayName", description="A human-readable name for a security group."
+    )
+    members: Missing[list[GroupPropMembersItems]] = Field(
+        default=UNSET, description="The group members."
+    )
 
 
-class PublicUserPropPlan(GitHubModel):
-    """PublicUserPropPlan"""
+class GroupPropMembersItems(GitHubModel):
+    """GroupPropMembersItems"""
 
-    collaborators: int = Field()
-    name: str = Field()
-    space: int = Field()
-    private_repos: int = Field()
+    value: str = Field(description="The local unique identifier for the member")
+    display_name: str = Field(
+        alias="displayName", description="The display name associated with the member"
+    )
 
 
-model_rebuild(PublicUser)
-model_rebuild(PublicUserPropPlan)
+model_rebuild(Group)
+model_rebuild(GroupPropMembersItems)
 
 __all__ = (
-    "PublicUser",
-    "PublicUserPropPlan",
+    "Group",
+    "GroupPropMembersItems",
 )

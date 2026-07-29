@@ -9,26 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0112 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseOrgPropertiesValuesPatchBodyType(TypedDict):
-    """EnterprisesEnterpriseOrgPropertiesValuesPatchBody"""
+class EnterprisesEnterpriseCodeScanningAlertsGetResponse503Type(TypedDict):
+    """EnterprisesEnterpriseCodeScanningAlertsGetResponse503"""
 
-    organization_logins: list[str]
-    properties: list[CustomPropertyValueType]
+    code: NotRequired[str]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
-class EnterprisesEnterpriseOrgPropertiesValuesPatchBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseOrgPropertiesValuesPatchBody"""
+class EnterprisesEnterpriseCodeScanningAlertsGetResponse503TypeForResponse(TypedDict):
+    """EnterprisesEnterpriseCodeScanningAlertsGetResponse503"""
 
-    organization_logins: list[str]
-    properties: list[CustomPropertyValueTypeForResponse]
+    code: NotRequired[str]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseOrgPropertiesValuesPatchBodyType",
-    "EnterprisesEnterpriseOrgPropertiesValuesPatchBodyTypeForResponse",
+    "EnterprisesEnterpriseCodeScanningAlertsGetResponse503Type",
+    "EnterprisesEnterpriseCodeScanningAlertsGetResponse503TypeForResponse",
 )

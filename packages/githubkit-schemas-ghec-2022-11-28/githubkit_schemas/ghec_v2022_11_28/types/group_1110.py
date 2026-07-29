@@ -13,23 +13,79 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseActionsPermissionsPutBodyType(TypedDict):
-    """EnterprisesEnterpriseActionsPermissionsPutBody"""
+class AgentsReposOwnerRepoTasksTaskIdGetResponse400Type(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse400
 
-    enabled_organizations: Literal["all", "none", "selected"]
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    sha_pinning_required: NotRequired[bool]
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[
+        list[AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItemsType]
+    ]
+    documentation_url: str
 
 
-class EnterprisesEnterpriseActionsPermissionsPutBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseActionsPermissionsPutBody"""
+class AgentsReposOwnerRepoTasksTaskIdGetResponse400TypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse400
 
-    enabled_organizations: Literal["all", "none", "selected"]
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    sha_pinning_required: NotRequired[bool]
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[
+        list[
+            AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItemsTypeForResponse
+        ]
+    ]
+    documentation_url: str
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItemsType(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItemsTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsPermissionsPutBodyType",
-    "EnterprisesEnterpriseActionsPermissionsPutBodyTypeForResponse",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItemsType",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItemsTypeForResponse",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse400Type",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse400TypeForResponse",
 )

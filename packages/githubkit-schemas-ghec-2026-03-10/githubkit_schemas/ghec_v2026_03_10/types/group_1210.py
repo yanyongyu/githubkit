@@ -12,19 +12,23 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class NotificationsThreadsThreadIdSubscriptionPutBodyType(TypedDict):
-    """NotificationsThreadsThreadIdSubscriptionPutBody"""
+class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBodyType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBody"""
 
-    ignored: NotRequired[bool]
+    revoke_credentials: NotRequired[bool]
 
 
-class NotificationsThreadsThreadIdSubscriptionPutBodyTypeForResponse(TypedDict):
-    """NotificationsThreadsThreadIdSubscriptionPutBody"""
+class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBody"""
 
-    ignored: NotRequired[bool]
+    revoke_credentials: NotRequired[bool]
 
 
 __all__ = (
-    "NotificationsThreadsThreadIdSubscriptionPutBodyType",
-    "NotificationsThreadsThreadIdSubscriptionPutBodyTypeForResponse",
+    "EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBodyType",
+    "EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBodyTypeForResponse",
 )

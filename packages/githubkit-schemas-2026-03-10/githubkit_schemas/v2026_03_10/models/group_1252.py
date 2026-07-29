@@ -13,19 +13,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0(
-    GitHubModel
-):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0
-
-    Examples:
-        {'teams': ['my-team']}
-    """
-
-    teams: list[str] = Field(description="The slug values for teams")
+from .group_0282 import ActionsSecret
 
 
-model_rebuild(ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0)
+class ReposOwnerRepoActionsOrganizationSecretsGetResponse200(GitHubModel):
+    """ReposOwnerRepoActionsOrganizationSecretsGetResponse200"""
 
-__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0",)
+    total_count: int = Field()
+    secrets: list[ActionsSecret] = Field()
+
+
+model_rebuild(ReposOwnerRepoActionsOrganizationSecretsGetResponse200)
+
+__all__ = ("ReposOwnerRepoActionsOrganizationSecretsGetResponse200",)

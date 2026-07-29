@@ -9,126 +9,82 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Any, Literal, TypeAlias, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
-class RuleSuitePullRequestType(TypedDict):
-    """Pull request rule suite metadata
 
-    Metadata for a pull request rule evaluation result.
+class ProjectsV2ItemWithContentType(TypedDict):
+    """Projects v2 Item
+
+    An item belonging to a project
     """
 
-    pull_request: NotRequired[RuleSuitePullRequestPropPullRequestType]
+    id: float
+    node_id: NotRequired[str]
+    project_url: NotRequired[str]
+    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
+    content: NotRequired[Union[ProjectsV2ItemWithContentPropContentType, None]]
+    creator: NotRequired[SimpleUserType]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    archived_at: Union[_dt.datetime, None]
+    item_url: NotRequired[Union[str, None]]
+    fields: NotRequired[list[ProjectsV2ItemWithContentPropFieldsItemsType]]
 
 
-class RuleSuitePullRequestTypeForResponse(TypedDict):
-    """Pull request rule suite metadata
+class ProjectsV2ItemWithContentTypeForResponse(TypedDict):
+    """Projects v2 Item
 
-    Metadata for a pull request rule evaluation result.
+    An item belonging to a project
     """
 
-    pull_request: NotRequired[RuleSuitePullRequestPropPullRequestTypeForResponse]
-
-
-class RuleSuitePullRequestPropPullRequestType(TypedDict):
-    """RuleSuitePullRequestPropPullRequest
-
-    The pull request associated with the rule evaluation.
-    """
-
-    id: NotRequired[int]
-    number: NotRequired[int]
-    user: NotRequired[RuleSuitePullRequestPropPullRequestPropUserType]
-    reviews: NotRequired[list[RuleSuitePullRequestPropPullRequestPropReviewsItemsType]]
-
-
-class RuleSuitePullRequestPropPullRequestTypeForResponse(TypedDict):
-    """RuleSuitePullRequestPropPullRequest
-
-    The pull request associated with the rule evaluation.
-    """
-
-    id: NotRequired[int]
-    number: NotRequired[int]
-    user: NotRequired[RuleSuitePullRequestPropPullRequestPropUserTypeForResponse]
-    reviews: NotRequired[
-        list[RuleSuitePullRequestPropPullRequestPropReviewsItemsTypeForResponse]
+    id: float
+    node_id: NotRequired[str]
+    project_url: NotRequired[str]
+    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
+    content: NotRequired[
+        Union[ProjectsV2ItemWithContentPropContentTypeForResponse, None]
     ]
+    creator: NotRequired[SimpleUserTypeForResponse]
+    created_at: str
+    updated_at: str
+    archived_at: Union[str, None]
+    item_url: NotRequired[Union[str, None]]
+    fields: NotRequired[list[ProjectsV2ItemWithContentPropFieldsItemsTypeForResponse]]
 
 
-class RuleSuitePullRequestPropPullRequestPropUserType(TypedDict):
-    """RuleSuitePullRequestPropPullRequestPropUser
+ProjectsV2ItemWithContentPropContentType: TypeAlias = dict[str, Any]
+"""ProjectsV2ItemWithContentPropContent
 
-    The user who created the pull request.
-    """
-
-    id: NotRequired[int]
-    login: NotRequired[str]
-    type: NotRequired[str]
+The content of the item, which varies by content type.
+"""
 
 
-class RuleSuitePullRequestPropPullRequestPropUserTypeForResponse(TypedDict):
-    """RuleSuitePullRequestPropPullRequestPropUser
+ProjectsV2ItemWithContentPropContentTypeForResponse: TypeAlias = dict[str, Any]
+"""ProjectsV2ItemWithContentPropContent
 
-    The user who created the pull request.
-    """
-
-    id: NotRequired[int]
-    login: NotRequired[str]
-    type: NotRequired[str]
+The content of the item, which varies by content type.
+"""
 
 
-class RuleSuitePullRequestPropPullRequestPropReviewsItemsType(TypedDict):
-    """RuleSuitePullRequestPropPullRequestPropReviewsItems"""
-
-    id: NotRequired[int]
-    user: NotRequired[RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserType]
-    state: NotRequired[str]
+ProjectsV2ItemWithContentPropFieldsItemsType: TypeAlias = dict[str, Any]
+"""ProjectsV2ItemWithContentPropFieldsItems
+"""
 
 
-class RuleSuitePullRequestPropPullRequestPropReviewsItemsTypeForResponse(TypedDict):
-    """RuleSuitePullRequestPropPullRequestPropReviewsItems"""
-
-    id: NotRequired[int]
-    user: NotRequired[
-        RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserTypeForResponse
-    ]
-    state: NotRequired[str]
-
-
-class RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserType(TypedDict):
-    """RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser
-
-    The user who submitted the review.
-    """
-
-    id: NotRequired[int]
-    login: NotRequired[str]
-    type: NotRequired[str]
-
-
-class RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserTypeForResponse(
-    TypedDict
-):
-    """RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser
-
-    The user who submitted the review.
-    """
-
-    id: NotRequired[int]
-    login: NotRequired[str]
-    type: NotRequired[str]
+ProjectsV2ItemWithContentPropFieldsItemsTypeForResponse: TypeAlias = dict[str, Any]
+"""ProjectsV2ItemWithContentPropFieldsItems
+"""
 
 
 __all__ = (
-    "RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserType",
-    "RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserTypeForResponse",
-    "RuleSuitePullRequestPropPullRequestPropReviewsItemsType",
-    "RuleSuitePullRequestPropPullRequestPropReviewsItemsTypeForResponse",
-    "RuleSuitePullRequestPropPullRequestPropUserType",
-    "RuleSuitePullRequestPropPullRequestPropUserTypeForResponse",
-    "RuleSuitePullRequestPropPullRequestType",
-    "RuleSuitePullRequestPropPullRequestTypeForResponse",
-    "RuleSuitePullRequestType",
-    "RuleSuitePullRequestTypeForResponse",
+    "ProjectsV2ItemWithContentPropContentType",
+    "ProjectsV2ItemWithContentPropContentTypeForResponse",
+    "ProjectsV2ItemWithContentPropFieldsItemsType",
+    "ProjectsV2ItemWithContentPropFieldsItemsTypeForResponse",
+    "ProjectsV2ItemWithContentType",
+    "ProjectsV2ItemWithContentTypeForResponse",
 )

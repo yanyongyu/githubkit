@@ -9,47 +9,69 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class ReposOwnerRepoGitTreesPostBodyType(TypedDict):
-    """ReposOwnerRepoGitTreesPostBody"""
-
-    tree: list[ReposOwnerRepoGitTreesPostBodyPropTreeItemsType]
-    base_tree: NotRequired[str]
-
-
-class ReposOwnerRepoGitTreesPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoGitTreesPostBody"""
-
-    tree: list[ReposOwnerRepoGitTreesPostBodyPropTreeItemsTypeForResponse]
-    base_tree: NotRequired[str]
+from .group_1491 import (
+    ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType,
+    ReposOwnerRepoCheckRunsPostBodyPropActionsItemsTypeForResponse,
+    ReposOwnerRepoCheckRunsPostBodyPropOutputType,
+    ReposOwnerRepoCheckRunsPostBodyPropOutputTypeForResponse,
+)
 
 
-class ReposOwnerRepoGitTreesPostBodyPropTreeItemsType(TypedDict):
-    """ReposOwnerRepoGitTreesPostBodyPropTreeItems"""
+class ReposOwnerRepoCheckRunsPostBodyOneof0Type(TypedDict):
+    """ReposOwnerRepoCheckRunsPostBodyOneof0"""
 
-    path: NotRequired[str]
-    mode: NotRequired[Literal["100644", "100755", "040000", "160000", "120000"]]
-    type: NotRequired[Literal["blob", "tree", "commit"]]
-    sha: NotRequired[Union[str, None]]
-    content: NotRequired[str]
+    name: str
+    head_sha: str
+    details_url: NotRequired[str]
+    external_id: NotRequired[str]
+    status: Literal["completed"]
+    started_at: NotRequired[_dt.datetime]
+    conclusion: Literal[
+        "action_required",
+        "cancelled",
+        "failure",
+        "neutral",
+        "success",
+        "skipped",
+        "stale",
+        "timed_out",
+    ]
+    completed_at: NotRequired[_dt.datetime]
+    output: NotRequired[ReposOwnerRepoCheckRunsPostBodyPropOutputType]
+    actions: NotRequired[list[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType]]
 
 
-class ReposOwnerRepoGitTreesPostBodyPropTreeItemsTypeForResponse(TypedDict):
-    """ReposOwnerRepoGitTreesPostBodyPropTreeItems"""
+class ReposOwnerRepoCheckRunsPostBodyOneof0TypeForResponse(TypedDict):
+    """ReposOwnerRepoCheckRunsPostBodyOneof0"""
 
-    path: NotRequired[str]
-    mode: NotRequired[Literal["100644", "100755", "040000", "160000", "120000"]]
-    type: NotRequired[Literal["blob", "tree", "commit"]]
-    sha: NotRequired[Union[str, None]]
-    content: NotRequired[str]
+    name: str
+    head_sha: str
+    details_url: NotRequired[str]
+    external_id: NotRequired[str]
+    status: Literal["completed"]
+    started_at: NotRequired[str]
+    conclusion: Literal[
+        "action_required",
+        "cancelled",
+        "failure",
+        "neutral",
+        "success",
+        "skipped",
+        "stale",
+        "timed_out",
+    ]
+    completed_at: NotRequired[str]
+    output: NotRequired[ReposOwnerRepoCheckRunsPostBodyPropOutputTypeForResponse]
+    actions: NotRequired[
+        list[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsTypeForResponse]
+    ]
 
 
 __all__ = (
-    "ReposOwnerRepoGitTreesPostBodyPropTreeItemsType",
-    "ReposOwnerRepoGitTreesPostBodyPropTreeItemsTypeForResponse",
-    "ReposOwnerRepoGitTreesPostBodyType",
-    "ReposOwnerRepoGitTreesPostBodyTypeForResponse",
+    "ReposOwnerRepoCheckRunsPostBodyOneof0Type",
+    "ReposOwnerRepoCheckRunsPostBodyOneof0TypeForResponse",
 )

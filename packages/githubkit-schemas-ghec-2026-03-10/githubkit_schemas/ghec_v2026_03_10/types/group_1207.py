@@ -9,27 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class MarkdownPostBodyType(TypedDict):
-    """MarkdownPostBody"""
+class EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202Type(
+    TypedDict
+):
+    """EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202"""
 
-    text: str
-    mode: NotRequired[Literal["markdown", "gfm"]]
-    context: NotRequired[str]
+    message: NotRequired[str]
+    warning: NotRequired[str]
 
 
-class MarkdownPostBodyTypeForResponse(TypedDict):
-    """MarkdownPostBody"""
+class EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202"""
 
-    text: str
-    mode: NotRequired[Literal["markdown", "gfm"]]
-    context: NotRequired[str]
+    message: NotRequired[str]
+    warning: NotRequired[str]
 
 
 __all__ = (
-    "MarkdownPostBodyType",
-    "MarkdownPostBodyTypeForResponse",
+    "EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202Type",
+    "EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202TypeForResponse",
 )

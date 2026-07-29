@@ -9,26 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_1108 import (
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsType,
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse,
+)
 
 
-class EnterprisesEnterpriseActionsHostedRunnersPlatformsGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseActionsHostedRunnersPlatformsGetResponse200"""
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1Type(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1"""
 
-    total_count: int
-    platforms: list[str]
+    sessions: NotRequired[
+        list[AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsType]
+    ]
 
 
-class EnterprisesEnterpriseActionsHostedRunnersPlatformsGetResponse200TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseActionsHostedRunnersPlatformsGetResponse200"""
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1TypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1"""
 
-    total_count: int
-    platforms: list[str]
+    sessions: NotRequired[
+        list[
+            AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse
+        ]
+    ]
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsHostedRunnersPlatformsGetResponse200Type",
-    "EnterprisesEnterpriseActionsHostedRunnersPlatformsGetResponse200TypeForResponse",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1Type",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1TypeForResponse",
 )

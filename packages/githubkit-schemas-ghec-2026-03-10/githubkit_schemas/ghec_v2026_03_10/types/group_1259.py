@@ -9,22 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Any, TypeAlias
+
+InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType: TypeAlias = dict[
+    str, Any
+]
+"""InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPrope
+rties
+
+The custom properties that were defined for the repository. The keys are the
+custom property names, and the values are the corresponding custom property
+values. Present for org repos only.
+"""
 
 
-class OrgsOrgAgentsVariablesNameRepositoriesPutBodyType(TypedDict):
-    """OrgsOrgAgentsVariablesNameRepositoriesPutBody"""
+InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPrope
+rties
 
-    selected_repository_ids: list[int]
-
-
-class OrgsOrgAgentsVariablesNameRepositoriesPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgAgentsVariablesNameRepositoriesPutBody"""
-
-    selected_repository_ids: list[int]
+The custom properties that were defined for the repository. The keys are the
+custom property names, and the values are the corresponding custom property
+values. Present for org repos only.
+"""
 
 
 __all__ = (
-    "OrgsOrgAgentsVariablesNameRepositoriesPutBodyType",
-    "OrgsOrgAgentsVariablesNameRepositoriesPutBodyTypeForResponse",
+    "InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType",
+    "InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse",
 )

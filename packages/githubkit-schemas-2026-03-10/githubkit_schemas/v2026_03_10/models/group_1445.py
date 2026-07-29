@@ -9,23 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0143 import CopilotSpaceCollaboratorAnyof0, CopilotSpaceCollaboratorAnyof1
-
-
-class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200(GitHubModel):
-    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200"""
-
-    collaborators: list[
-        Union[CopilotSpaceCollaboratorAnyof0, CopilotSpaceCollaboratorAnyof1]
-    ] = Field(description="The list of collaborators for this Copilot Space.")
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200)
+class ReposOwnerRepoSecretScanningCustomPatternsPostResponse422(GitHubModel):
+    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse422"""
 
-__all__ = ("UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200",)
+    message: Missing[str] = Field(
+        default=UNSET, description="A summary message describing the error."
+    )
+    validation_errors: Missing[
+        ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors
+    ] = Field(
+        default=UNSET,
+        description="A map of validation errors keyed by the zero-based index of the pattern that failed.",
+    )
+
+
+class ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors(
+    ExtraGitHubModel
+):
+    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors
+
+    A map of validation errors keyed by the zero-based index of the pattern that
+    failed.
+    """
+
+
+model_rebuild(ReposOwnerRepoSecretScanningCustomPatternsPostResponse422)
+model_rebuild(
+    ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors
+)
+
+__all__ = (
+    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422",
+    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors",
+)

@@ -9,30 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReleaseNotesContentType(TypedDict):
-    """Generated Release Notes Content
+class MergedUpstreamType(TypedDict):
+    """Merged upstream
 
-    Generated name and body describing a release
+    Results of a successful merge upstream request
     """
 
-    name: str
-    body: str
+    message: NotRequired[str]
+    merge_type: NotRequired[Literal["merge", "fast-forward", "none"]]
+    base_branch: NotRequired[str]
 
 
-class ReleaseNotesContentTypeForResponse(TypedDict):
-    """Generated Release Notes Content
+class MergedUpstreamTypeForResponse(TypedDict):
+    """Merged upstream
 
-    Generated name and body describing a release
+    Results of a successful merge upstream request
     """
 
-    name: str
-    body: str
+    message: NotRequired[str]
+    merge_type: NotRequired[Literal["merge", "fast-forward", "none"]]
+    base_branch: NotRequired[str]
 
 
 __all__ = (
-    "ReleaseNotesContentType",
-    "ReleaseNotesContentTypeForResponse",
+    "MergedUpstreamType",
+    "MergedUpstreamTypeForResponse",
 )

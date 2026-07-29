@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -18,21 +18,41 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsVariablesNamePatchBody(GitHubModel):
-    """OrgsOrgActionsVariablesNamePatchBody"""
+class EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200"""
 
-    name: Missing[str] = Field(default=UNSET, description="The name of the variable.")
-    value: Missing[str] = Field(default=UNSET, description="The value of the variable.")
-    visibility: Missing[Literal["all", "private", "selected"]] = Field(
+    total_count: int = Field()
+    visual_studio_subscriptions: list[VisualStudioSubscriptionAssignment] = Field()
+
+
+class VisualStudioSubscriptionAssignment(GitHubModel):
+    """Visual Studio Subscription Assignment
+
+    Visual Studio Subscription Assignment
+    """
+
+    visual_studio_subscription_email: Missing[str] = Field(
         default=UNSET,
-        description="The type of repositories in the organization that can access the variable. `selected` means only the repositories specified by `selected_repository_ids` can access the variable.",
+        description="The email associated with the Visual Studio subscription assignment in the visual studio portal.",
     )
-    selected_repository_ids: Missing[list[int]] = Field(
+    subscription_id: Missing[str] = Field(
         default=UNSET,
-        description="An array of repository ids that can access the organization variable. You can only provide a list of repository ids when the `visibility` is set to `selected`.",
+        description="The ID of the Visual Studio Subscription. This is a GUID that comes from the Visual Studio management portal.",
+    )
+    username: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The GitHub username of the user associated with the Visual Studio subscription assignment.",
+    )
+    manual_match: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates if the Visual Studio subscription assignment was manually matched to a user.",
     )
 
 
-model_rebuild(OrgsOrgActionsVariablesNamePatchBody)
+model_rebuild(EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200)
+model_rebuild(VisualStudioSubscriptionAssignment)
 
-__all__ = ("OrgsOrgActionsVariablesNamePatchBody",)
+__all__ = (
+    "EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200",
+    "VisualStudioSubscriptionAssignment",
+)

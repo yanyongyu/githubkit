@@ -12,24 +12,14 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody(GitHubModel):
-    """ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody"""
+class ReposOwnerRepoCommentsCommentIdPatchBody(GitHubModel):
+    """ReposOwnerRepoCommentsCommentIdPatchBody"""
 
-    enabled: bool = Field(
-        description="Whether the pull request creation cap is enabled"
-    )
-    max_open_pull_requests: Missing[int] = Field(
-        le=1000.0,
-        ge=1.0,
-        default=UNSET,
-        description="The maximum number of open pull requests a user can have at one time",
-    )
+    body: str = Field(description="The contents of the comment")
 
 
-model_rebuild(ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody)
+model_rebuild(ReposOwnerRepoCommentsCommentIdPatchBody)
 
-__all__ = ("ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody",)
+__all__ = ("ReposOwnerRepoCommentsCommentIdPatchBody",)

@@ -9,58 +9,79 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0049 import OrganizationSimple
 
+class IssueField(GitHubModel):
+    """Issue Field
 
-class OrgMembership(GitHubModel):
-    """Org Membership
-
-    Org Membership
+    A custom attribute defined at the organization level for attaching structured
+    data to issues.
     """
 
-    url: str = Field()
-    state: Literal["active", "pending"] = Field(
-        description="The state of the member in the organization. The `pending` state indicates the user has not yet accepted an invitation."
+    id: int = Field(description="The unique identifier of the issue field.")
+    node_id: str = Field(description="The node identifier of the issue field.")
+    name: str = Field(description="The name of the issue field.")
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The description of the issue field."
     )
-    role: Literal["admin", "member", "billing_manager"] = Field(
-        description="The user's membership type in the organization."
+    data_type: Literal["text", "date", "single_select", "multi_select", "number"] = (
+        Field(description="The data type of the issue field.")
     )
-    direct_membership: Missing[bool] = Field(
+    visibility: Missing[Literal["organization_members_only", "all"]] = Field(
         default=UNSET,
-        description="Whether the user has direct membership in the organization.",
+        description="The visibility of the issue field. Can be `organization_members_only` (visible only within the organization) or `all` (visible to all users who can see issues).",
     )
-    enterprise_teams_providing_indirect_membership: Missing[list[str]] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
+    options: Missing[Union[list[IssueFieldPropOptionsItems], None]] = Field(
         default=UNSET,
-        description="The slugs of the enterprise teams providing the user with indirect membership in the organization.\nA limit of 100 enterprise team slugs is returned.",
+        description="Available options for single select and multi select fields.",
     )
-    organization_url: str = Field()
-    organization: OrganizationSimple = Field(
-        title="Organization Simple", description="A GitHub organization."
+    created_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="The time the issue field was created."
     )
-    user: Union[None, SimpleUser] = Field()
-    permissions: Missing[OrgMembershipPropPermissions] = Field(default=UNSET)
+    updated_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="The time the issue field was last updated."
+    )
 
 
-class OrgMembershipPropPermissions(GitHubModel):
-    """OrgMembershipPropPermissions"""
+class IssueFieldPropOptionsItems(GitHubModel):
+    """IssueFieldPropOptionsItems"""
 
-    can_create_repository: bool = Field()
+    id: int = Field(description="The unique identifier of the option.")
+    name: str = Field(description="The name of the option.")
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The description of the option."
+    )
+    color: Missing[
+        Union[
+            None,
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+        ]
+    ] = Field(default=UNSET, description="The color of the option.")
+    priority: Missing[Union[int, None]] = Field(
+        default=UNSET, description="The priority of the option for ordering."
+    )
+    created_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="The time the option was created."
+    )
+    updated_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="The time the option was last updated."
+    )
 
 
-model_rebuild(OrgMembership)
-model_rebuild(OrgMembershipPropPermissions)
+model_rebuild(IssueField)
+model_rebuild(IssueFieldPropOptionsItems)
 
 __all__ = (
-    "OrgMembership",
-    "OrgMembershipPropPermissions",
+    "IssueField",
+    "IssueFieldPropOptionsItems",
 )

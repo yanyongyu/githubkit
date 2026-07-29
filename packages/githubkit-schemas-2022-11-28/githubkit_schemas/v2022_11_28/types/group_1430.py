@@ -10,22 +10,26 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class UserMembershipsOrgsOrgPatchBodyType(TypedDict):
-    """UserMembershipsOrgsOrgPatchBody"""
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody"""
 
-    state: Literal["active"]
+    message: str
+    event: NotRequired[Literal["DISMISS"]]
 
 
-class UserMembershipsOrgsOrgPatchBodyTypeForResponse(TypedDict):
-    """UserMembershipsOrgsOrgPatchBody"""
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody"""
 
-    state: Literal["active"]
+    message: str
+    event: NotRequired[Literal["DISMISS"]]
 
 
 __all__ = (
-    "UserMembershipsOrgsOrgPatchBodyType",
-    "UserMembershipsOrgsOrgPatchBodyTypeForResponse",
+    "ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType",
+    "ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyTypeForResponse",
 )

@@ -9,41 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0379 import (
+    EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType,
+    EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsTypeForResponse,
+)
 
-class BlobType(TypedDict):
-    """Blob
 
-    Blob
-    """
+class EnvironmentPropProtectionRulesItemsAnyof1Type(TypedDict):
+    """EnvironmentPropProtectionRulesItemsAnyof1"""
 
-    content: str
-    encoding: str
-    url: str
-    sha: str
-    size: Union[int, None]
+    id: int
     node_id: str
-    highlighted_content: NotRequired[str]
+    prevent_self_review: NotRequired[bool]
+    type: str
+    reviewers: NotRequired[
+        list[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType]
+    ]
 
 
-class BlobTypeForResponse(TypedDict):
-    """Blob
+class EnvironmentPropProtectionRulesItemsAnyof1TypeForResponse(TypedDict):
+    """EnvironmentPropProtectionRulesItemsAnyof1"""
 
-    Blob
-    """
-
-    content: str
-    encoding: str
-    url: str
-    sha: str
-    size: Union[int, None]
+    id: int
     node_id: str
-    highlighted_content: NotRequired[str]
+    prevent_self_review: NotRequired[bool]
+    type: str
+    reviewers: NotRequired[
+        list[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsTypeForResponse]
+    ]
 
 
 __all__ = (
-    "BlobType",
-    "BlobTypeForResponse",
+    "EnvironmentPropProtectionRulesItemsAnyof1Type",
+    "EnvironmentPropProtectionRulesItemsAnyof1TypeForResponse",
 )

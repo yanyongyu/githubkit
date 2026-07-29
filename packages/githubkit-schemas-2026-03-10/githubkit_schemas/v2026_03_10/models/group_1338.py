@@ -13,42 +13,57 @@ from typing import Union
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBody(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBody"""
+class ReposOwnerRepoDeploymentsPostBody(GitHubModel):
+    """ReposOwnerRepoDeploymentsPostBody"""
 
-    issue_field_values: Missing[
-        list[
-            ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems
-        ]
-    ] = Field(
-        max_length=25 if PYDANTIC_V2 else None,
+    ref: str = Field(
+        description="The ref to deploy. This can be a branch, tag, or SHA."
+    )
+    task: Missing[str] = Field(
         default=UNSET,
-        description="An array of issue field values to add to this issue. Each field value must include the field ID and the value to set.",
+        description="Specifies a task to execute (e.g., `deploy` or `deploy:migrations`).",
+    )
+    auto_merge: Missing[bool] = Field(
+        default=UNSET,
+        description="Attempts to automatically merge the default branch into the requested ref, if it's behind the default branch.",
+    )
+    required_contexts: Missing[list[str]] = Field(
+        default=UNSET,
+        description="The [status](https://docs.github.com/rest/commits/statuses) contexts to verify against commit status checks. If you omit this parameter, GitHub verifies all unique contexts before creating a deployment. To bypass checking entirely, pass an empty array. Defaults to all unique contexts.",
+    )
+    payload: Missing[Union[ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0, str]] = (
+        Field(default=UNSET)
+    )
+    environment: Missing[str] = Field(
+        default=UNSET,
+        description="Name for the target deployment environment (e.g., `production`, `staging`, `qa`).",
+    )
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Short description of the deployment."
+    )
+    transient_environment: Missing[bool] = Field(
+        default=UNSET,
+        description="Specifies if the given environment is specific to the deployment and will no longer exist at some point in the future. Default: `false`",
+    )
+    production_environment: Missing[bool] = Field(
+        default=UNSET,
+        description="Specifies if the given environment is one that end-users directly interact with. Default: `true` when `environment` is `production` and `false` otherwise.",
     )
 
 
-class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems(
-    GitHubModel
-):
-    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems"""
-
-    field_id: int = Field(description="The ID of the issue field to set")
-    value: Union[str, float, list[str]] = Field(
-        description="The value to set for the field. The type depends on the field's data type:\n- For text fields: provide a string value\n- For single_select fields: provide the option name as a string (must match an existing option)\n- For number fields: provide a numeric value\n- For multi_select fields: provide an array of option names (must match existing options)\n- For date fields: provide an ISO 8601 date string"
-    )
+class ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0(ExtraGitHubModel):
+    """ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0"""
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBody)
-model_rebuild(
-    ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems
-)
+model_rebuild(ReposOwnerRepoDeploymentsPostBody)
+model_rebuild(ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0)
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBody",
-    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems",
+    "ReposOwnerRepoDeploymentsPostBody",
+    "ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0",
 )

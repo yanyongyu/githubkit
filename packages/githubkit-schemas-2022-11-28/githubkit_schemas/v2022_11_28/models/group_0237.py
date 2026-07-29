@@ -9,19 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class RepositoryRuleFilePathRestrictionPropParameters(GitHubModel):
-    """RepositoryRuleFilePathRestrictionPropParameters"""
+class RepositoryRuleLicenseComplianceScanning(GitHubModel):
+    """license_compliance_scanning
 
-    restricted_file_paths: list[str] = Field(
-        description="The file paths that are restricted from being pushed to the commit graph."
-    )
+    Enforce any added or changed dependencies to comply with the organization's
+    license policy.
+    """
+
+    type: Literal["license_compliance_scanning"] = Field()
 
 
-model_rebuild(RepositoryRuleFilePathRestrictionPropParameters)
+model_rebuild(RepositoryRuleLicenseComplianceScanning)
 
-__all__ = ("RepositoryRuleFilePathRestrictionPropParameters",)
+__all__ = ("RepositoryRuleLicenseComplianceScanning",)

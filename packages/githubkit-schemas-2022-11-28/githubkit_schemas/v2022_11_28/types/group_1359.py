@@ -9,31 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type(TypedDict):
-    """ReposOwnerRepoPagesPutBodyPropSourceAnyof1
+class ReposOwnerRepoHooksPostBodyType(TypedDict):
+    """ReposOwnerRepoHooksPostBody"""
 
-    Update the source for the repository. Must include the branch name and path.
+    name: NotRequired[str]
+    config: NotRequired[ReposOwnerRepoHooksPostBodyPropConfigType]
+    events: NotRequired[list[str]]
+    active: NotRequired[bool]
+
+
+class ReposOwnerRepoHooksPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoHooksPostBody"""
+
+    name: NotRequired[str]
+    config: NotRequired[ReposOwnerRepoHooksPostBodyPropConfigTypeForResponse]
+    events: NotRequired[list[str]]
+    active: NotRequired[bool]
+
+
+class ReposOwnerRepoHooksPostBodyPropConfigType(TypedDict):
+    """ReposOwnerRepoHooksPostBodyPropConfig
+
+    Key/value pairs to provide settings for this webhook.
     """
 
-    branch: str
-    path: Literal["/", "/docs"]
+    url: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
 
 
-class ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse(TypedDict):
-    """ReposOwnerRepoPagesPutBodyPropSourceAnyof1
+class ReposOwnerRepoHooksPostBodyPropConfigTypeForResponse(TypedDict):
+    """ReposOwnerRepoHooksPostBodyPropConfig
 
-    Update the source for the repository. Must include the branch name and path.
+    Key/value pairs to provide settings for this webhook.
     """
 
-    branch: str
-    path: Literal["/", "/docs"]
+    url: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
 
 
 __all__ = (
-    "ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type",
-    "ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse",
+    "ReposOwnerRepoHooksPostBodyPropConfigType",
+    "ReposOwnerRepoHooksPostBodyPropConfigTypeForResponse",
+    "ReposOwnerRepoHooksPostBodyType",
+    "ReposOwnerRepoHooksPostBodyTypeForResponse",
 )

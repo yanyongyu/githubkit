@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal
 
 from pydantic import Field
@@ -19,23 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoMilestonesPostBody(GitHubModel):
-    """ReposOwnerRepoMilestonesPostBody"""
+class ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBody(GitHubModel):
+    """ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBody"""
 
-    title: str = Field(description="The title of the milestone.")
-    state: Missing[Literal["open", "closed"]] = Field(
-        default=UNSET,
-        description="The state of the milestone. Either `open` or `closed`.",
-    )
-    description: Missing[str] = Field(
-        default=UNSET, description="A description of the milestone."
-    )
-    due_on: Missing[_dt.datetime] = Field(
-        default=UNSET,
-        description="The milestone due date. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    dismissed_reason: Literal[
+        "fix_started", "no_bandwidth", "tolerable_risk", "inaccurate", "not_used"
+    ] = Field(description="The reason for dismissing the alert.")
+    dismissed_comment: Missing[str] = Field(
+        default=UNSET, description="An optional comment explaining the dismissal."
     )
 
 
-model_rebuild(ReposOwnerRepoMilestonesPostBody)
+model_rebuild(ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBody)
 
-__all__ = ("ReposOwnerRepoMilestonesPostBody",)
+__all__ = ("ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBody",)

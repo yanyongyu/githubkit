@@ -11,36 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-
-class EnterprisesEnterpriseCopilotUsageRecordsGetResponse200ItemsType(TypedDict):
-    """EnterprisesEnterpriseCopilotUsageRecordsGetResponse200Items"""
-
-    type: NotRequired[str]
-    user_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
-    github_request_id: NotRequired[str]
-    endpoint: NotRequired[str]
-    body: NotRequired[str]
-    timestamp: NotRequired[int]
-    event_id: NotRequired[str]
+from .group_0054 import RunnerType, RunnerTypeForResponse
 
 
-class EnterprisesEnterpriseCopilotUsageRecordsGetResponse200ItemsTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotUsageRecordsGetResponse200Items"""
+class EnterprisesEnterpriseActionsRunnersGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseActionsRunnersGetResponse200"""
 
-    type: NotRequired[str]
-    user_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
-    github_request_id: NotRequired[str]
-    endpoint: NotRequired[str]
-    body: NotRequired[str]
-    timestamp: NotRequired[int]
-    event_id: NotRequired[str]
+    total_count: NotRequired[float]
+    runners: NotRequired[list[RunnerType]]
+
+
+class EnterprisesEnterpriseActionsRunnersGetResponse200TypeForResponse(TypedDict):
+    """EnterprisesEnterpriseActionsRunnersGetResponse200"""
+
+    total_count: NotRequired[float]
+    runners: NotRequired[list[RunnerTypeForResponse]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotUsageRecordsGetResponse200ItemsType",
-    "EnterprisesEnterpriseCopilotUsageRecordsGetResponse200ItemsTypeForResponse",
+    "EnterprisesEnterpriseActionsRunnersGetResponse200Type",
+    "EnterprisesEnterpriseActionsRunnersGetResponse200TypeForResponse",
 )

@@ -9,24 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, TypeAlias
+
+OrgsOrgCopilotContentExclusionPutBodyType: TypeAlias = dict[str, Any]
+"""OrgsOrgCopilotContentExclusionPutBody
+"""
 
 
-class ReposOwnerRepoDeleteResponse403Type(TypedDict):
-    """ReposOwnerRepoDeleteResponse403"""
-
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
-
-
-class ReposOwnerRepoDeleteResponse403TypeForResponse(TypedDict):
-    """ReposOwnerRepoDeleteResponse403"""
-
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+OrgsOrgCopilotContentExclusionPutBodyTypeForResponse: TypeAlias = dict[str, Any]
+"""OrgsOrgCopilotContentExclusionPutBody
+"""
 
 
 __all__ = (
-    "ReposOwnerRepoDeleteResponse403Type",
-    "ReposOwnerRepoDeleteResponse403TypeForResponse",
+    "OrgsOrgCopilotContentExclusionPutBodyType",
+    "OrgsOrgCopilotContentExclusionPutBodyTypeForResponse",
 )

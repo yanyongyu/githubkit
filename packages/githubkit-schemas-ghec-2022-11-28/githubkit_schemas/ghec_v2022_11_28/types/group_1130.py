@@ -13,29 +13,73 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBodyType(
-    TypedDict
-):
-    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositories
-    PatchBody
+class AgentsTasksTaskIdGetResponse422Type(TypedDict):
+    """AgentsTasksTaskIdGetResponse422
+
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
     """
 
-    repository_selection: Literal["all", "selected"]
-    repositories: NotRequired[list[str]]
+    message: str
+    errors: NotRequired[list[AgentsTasksTaskIdGetResponse422PropErrorsItemsType]]
+    documentation_url: str
 
 
-class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBodyTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositories
-    PatchBody
+class AgentsTasksTaskIdGetResponse422TypeForResponse(TypedDict):
+    """AgentsTasksTaskIdGetResponse422
+
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
     """
 
-    repository_selection: Literal["all", "selected"]
-    repositories: NotRequired[list[str]]
+    message: str
+    errors: NotRequired[
+        list[AgentsTasksTaskIdGetResponse422PropErrorsItemsTypeForResponse]
+    ]
+    documentation_url: str
+
+
+class AgentsTasksTaskIdGetResponse422PropErrorsItemsType(TypedDict):
+    """AgentsTasksTaskIdGetResponse422PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
+
+
+class AgentsTasksTaskIdGetResponse422PropErrorsItemsTypeForResponse(TypedDict):
+    """AgentsTasksTaskIdGetResponse422PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBodyType",
-    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBodyTypeForResponse",
+    "AgentsTasksTaskIdGetResponse422PropErrorsItemsType",
+    "AgentsTasksTaskIdGetResponse422PropErrorsItemsTypeForResponse",
+    "AgentsTasksTaskIdGetResponse422Type",
+    "AgentsTasksTaskIdGetResponse422TypeForResponse",
 )

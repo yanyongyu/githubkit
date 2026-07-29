@@ -9,26 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoCodespacesSecretsSecretNamePutBody(GitHubModel):
-    """ReposOwnerRepoCodespacesSecretsSecretNamePutBody"""
+class ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody(GitHubModel):
+    """ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody"""
 
-    encrypted_value: Missing[str] = Field(
-        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
-        default=UNSET,
-        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get a repository public key](https://docs.github.com/enterprise-cloud@latest/rest/codespaces/repository-secrets#get-a-repository-public-key) endpoint.",
+    environment_ids: list[int] = Field(
+        description="The list of environment ids to approve or reject"
     )
-    key_id: Missing[str] = Field(
-        default=UNSET, description="ID of the key you used to encrypt the secret."
+    state: Literal["approved", "rejected"] = Field(
+        description="Whether to approve or reject deployment to the specified environments."
     )
+    comment: str = Field(description="A comment to accompany the deployment review")
 
 
-model_rebuild(ReposOwnerRepoCodespacesSecretsSecretNamePutBody)
+model_rebuild(ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody)
 
-__all__ = ("ReposOwnerRepoCodespacesSecretsSecretNamePutBody",)
+__all__ = ("ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody",)

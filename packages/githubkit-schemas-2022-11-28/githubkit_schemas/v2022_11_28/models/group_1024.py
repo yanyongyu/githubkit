@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,35 +18,49 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseTeamsPostBody(GitHubModel):
-    """EnterprisesEnterpriseTeamsPostBody"""
+class AgentsTasksGetResponse403(GitHubModel):
+    """AgentsTasksGetResponse403
 
-    name: str = Field(description="The name of the team.")
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="A description of the team."
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str = Field(
+        description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
-    sync_to_organizations: Missing[Literal["all", "disabled"]] = Field(
+    errors: Missing[list[AgentsTasksGetResponse403PropErrorsItems]] = Field(
         default=UNSET,
-        description="Retired: this field is no longer supported.\nWhether the enterprise team should be reflected in each organization.\nThis value cannot be set.\n",
+        description="List of validation errors (present only for 422 responses)",
     )
-    organization_selection_type: Missing[Literal["disabled", "selected", "all"]] = (
-        Field(
-            default=UNSET,
-            description="Specifies which organizations in the enterprise should have access to this team. Can be one of `disabled`, `selected`, or `all`.\n`disabled`: The team is not assigned to any organizations. This is the default when you create a new team.\n`selected`: The team is assigned to specific organizations. You can then use the [add organization assignments API](https://docs.github.com/rest/enterprise-teams/enterprise-team-organizations#add-organization-assignments) endpoint.\n`all`: The team is assigned to all current and future organizations in the enterprise.\n",
-        )
-    )
-    group_id: Missing[Union[str, None]] = Field(
+    documentation_url: str = Field(description="URL to relevant API documentation")
+
+
+class AgentsTasksGetResponse403PropErrorsItems(GitHubModel):
+    """AgentsTasksGetResponse403PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ] = Field(description="Machine-readable error code")
+    message: Missing[str] = Field(
         default=UNSET,
-        description="The ID of the IdP group to assign team membership with. You can get this value from the [REST API endpoints for SCIM](https://docs.github.com/rest/scim#list-provisioned-scim-groups-for-an-enterprise).",
-    )
-    notification_setting: Missing[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ] = Field(
-        default=UNSET,
-        description="The notification setting the team is set to. The options are:\n\n* `notifications_enabled` - team members receive notifications when the team is @mentioned.\n* `notifications_disabled` - no one receives notifications.\n\nDefault: `notifications_enabled`\n",
+        description='Human-readable message (populated when code is "custom")',
     )
 
 
-model_rebuild(EnterprisesEnterpriseTeamsPostBody)
+model_rebuild(AgentsTasksGetResponse403)
+model_rebuild(AgentsTasksGetResponse403PropErrorsItems)
 
-__all__ = ("EnterprisesEnterpriseTeamsPostBody",)
+__all__ = (
+    "AgentsTasksGetResponse403",
+    "AgentsTasksGetResponse403PropErrorsItems",
+)

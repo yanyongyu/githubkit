@@ -9,53 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class PagesDeploymentStatusType(TypedDict):
-    """GitHub Pages deployment status"""
-
-    status: NotRequired[
-        Literal[
-            "deployment_in_progress",
-            "syncing_files",
-            "finished_file_sync",
-            "updating_pages",
-            "purging_cdn",
-            "deployment_cancelled",
-            "deployment_failed",
-            "deployment_content_failed",
-            "deployment_attempt_error",
-            "deployment_lost",
-            "succeed",
-            "deployment_queued",
-        ]
-    ]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0506 import (
+    TimelineCrossReferencedEventPropSourceType,
+    TimelineCrossReferencedEventPropSourceTypeForResponse,
+)
 
 
-class PagesDeploymentStatusTypeForResponse(TypedDict):
-    """GitHub Pages deployment status"""
+class TimelineCrossReferencedEventType(TypedDict):
+    """Timeline Cross Referenced Event
 
-    status: NotRequired[
-        Literal[
-            "deployment_in_progress",
-            "syncing_files",
-            "finished_file_sync",
-            "updating_pages",
-            "purging_cdn",
-            "deployment_cancelled",
-            "deployment_failed",
-            "deployment_content_failed",
-            "deployment_attempt_error",
-            "deployment_lost",
-            "succeed",
-            "deployment_queued",
-        ]
-    ]
+    Timeline Cross Referenced Event
+    """
+
+    event: Literal["cross-referenced"]
+    actor: NotRequired[SimpleUserType]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    source: TimelineCrossReferencedEventPropSourceType
+
+
+class TimelineCrossReferencedEventTypeForResponse(TypedDict):
+    """Timeline Cross Referenced Event
+
+    Timeline Cross Referenced Event
+    """
+
+    event: Literal["cross-referenced"]
+    actor: NotRequired[SimpleUserTypeForResponse]
+    created_at: str
+    updated_at: str
+    source: TimelineCrossReferencedEventPropSourceTypeForResponse
 
 
 __all__ = (
-    "PagesDeploymentStatusType",
-    "PagesDeploymentStatusTypeForResponse",
+    "TimelineCrossReferencedEventType",
+    "TimelineCrossReferencedEventTypeForResponse",
 )

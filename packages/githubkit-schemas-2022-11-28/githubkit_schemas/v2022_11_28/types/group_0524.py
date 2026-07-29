@@ -9,38 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class SimpleInstallationType(TypedDict):
-    """Simple Installation
+class KeyType(TypedDict):
+    """Key
 
-    The GitHub App installation. Webhook payloads contain the `installation`
-    property when the event is configured
-    for and sent to a GitHub App. For more information,
-    see "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-
-    github-apps/registering-a-github-app/using-webhooks-with-github-apps)."
+    Key
     """
 
+    key: str
     id: int
-    node_id: str
+    url: str
+    title: str
+    created_at: _dt.datetime
+    verified: bool
+    read_only: bool
+    last_used: NotRequired[Union[_dt.datetime, None]]
 
 
-class SimpleInstallationTypeForResponse(TypedDict):
-    """Simple Installation
+class KeyTypeForResponse(TypedDict):
+    """Key
 
-    The GitHub App installation. Webhook payloads contain the `installation`
-    property when the event is configured
-    for and sent to a GitHub App. For more information,
-    see "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-
-    github-apps/registering-a-github-app/using-webhooks-with-github-apps)."
+    Key
     """
 
+    key: str
     id: int
-    node_id: str
+    url: str
+    title: str
+    created_at: str
+    verified: bool
+    read_only: bool
+    last_used: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "SimpleInstallationType",
-    "SimpleInstallationTypeForResponse",
+    "KeyType",
+    "KeyTypeForResponse",
 )

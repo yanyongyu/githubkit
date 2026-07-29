@@ -11,24 +11,19 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
-
-from .group_0112 import CustomPropertyValue
-
-
-class EnterprisesEnterpriseOrgPropertiesValuesPatchBody(GitHubModel):
-    """EnterprisesEnterpriseOrgPropertiesValuesPatchBody"""
-
-    organization_logins: list[str] = Field(
-        max_length=30 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="The names of organizations that the custom property values will be applied to.",
-    )
-    properties: list[CustomPropertyValue] = Field(
-        description="List of custom property names and associated values to apply to the organizations."
-    )
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(EnterprisesEnterpriseOrgPropertiesValuesPatchBody)
+class EnterprisesEnterpriseCodeScanningAlertsGetResponse503(GitHubModel):
+    """EnterprisesEnterpriseCodeScanningAlertsGetResponse503"""
 
-__all__ = ("EnterprisesEnterpriseOrgPropertiesValuesPatchBody",)
+    code: Missing[str] = Field(default=UNSET)
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(EnterprisesEnterpriseCodeScanningAlertsGetResponse503)
+
+__all__ = ("EnterprisesEnterpriseCodeScanningAlertsGetResponse503",)

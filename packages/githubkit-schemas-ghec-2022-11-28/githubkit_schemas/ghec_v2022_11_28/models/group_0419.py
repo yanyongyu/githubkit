@@ -9,39 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0376 import DiffEntry
-from .group_0377 import Commit
 
+class CodeScanningDefaultSetupUpdateResponse(GitHubModel):
+    """CodeScanningDefaultSetupUpdateResponse
 
-class CommitComparison(GitHubModel):
-    """Commit Comparison
-
-    Commit Comparison
+    You can use `run_url` to track the status of the run. This includes a property
+    status and conclusion.
+    You should not rely on this always being an actions workflow run object.
     """
 
-    url: str = Field()
-    html_url: str = Field()
-    permalink_url: str = Field()
-    diff_url: str = Field()
-    patch_url: str = Field()
-    base_commit: Commit = Field(title="Commit", description="Commit")
-    merge_base_commit: Commit = Field(title="Commit", description="Commit")
-    status: Literal["diverged", "ahead", "behind", "identical"] = Field()
-    ahead_by: int = Field()
-    behind_by: int = Field()
-    total_commits: int = Field()
-    commits: list[Commit] = Field()
-    files: Missing[list[DiffEntry]] = Field(default=UNSET)
+    run_id: Missing[int] = Field(
+        default=UNSET, description="ID of the corresponding run."
+    )
+    run_url: Missing[str] = Field(
+        default=UNSET, description="URL of the corresponding run."
+    )
 
 
-model_rebuild(CommitComparison)
+model_rebuild(CodeScanningDefaultSetupUpdateResponse)
 
-__all__ = ("CommitComparison",)
+__all__ = ("CodeScanningDefaultSetupUpdateResponse",)

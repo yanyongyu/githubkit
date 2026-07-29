@@ -16,20 +16,14 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody"""
+class ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201(GitHubModel):
+    """ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201"""
 
-    sub_issue_id: int = Field(description="The id of the sub-issue to reprioritize")
-    after_id: Missing[int] = Field(
-        default=UNSET,
-        description="The id of the sub-issue to be prioritized after (either positional argument after OR before should be specified).",
-    )
-    before_id: Missing[int] = Field(
-        default=UNSET,
-        description="The id of the sub-issue to be prioritized before (either positional argument after OR before should be specified).",
+    sbom_url: Missing[str] = Field(
+        default=UNSET, description="URL to poll for the SBOM export result."
     )
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody)
+model_rebuild(ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201)
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody",)
+__all__ = ("ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201",)

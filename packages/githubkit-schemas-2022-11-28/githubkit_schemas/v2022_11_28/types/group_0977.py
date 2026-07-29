@@ -9,78 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0Type(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0
-
-    A GitHub user
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0TypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0
-
-    A GitHub user
-    """
-
-    id: NotRequired[int]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
+from .group_0058 import IssueType, IssueTypeForResponse
+from .group_0536 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0537 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0538 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsType(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems
+class WebhookSubIssuesSubIssueAddedType(TypedDict):
+    """sub-issue added event"""
 
-    A GitHub user
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsTypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems
-
-    A GitHub user
-    """
-
-    id: NotRequired[int]
+    action: Literal["sub_issue_added"]
+    sub_issue_id: NotRequired[float]
+    sub_issue: NotRequired[IssueType]
+    sub_issue_repo: NotRequired[RepositoryType]
+    parent_issue_id: float
+    parent_issue: IssueType
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepositoryType(TypedDict):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository
+class WebhookSubIssuesSubIssueAddedTypeForResponse(TypedDict):
+    """sub-issue added event"""
 
-    The repository this task belongs to
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepositoryTypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository
-
-    The repository this task belongs to
-    """
-
-    id: NotRequired[int]
+    action: Literal["sub_issue_added"]
+    sub_issue_id: NotRequired[float]
+    sub_issue: NotRequired[IssueTypeForResponse]
+    sub_issue_repo: NotRequired[RepositoryTypeForResponse]
+    parent_issue_id: float
+    parent_issue: IssueTypeForResponse
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0Type",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0TypeForResponse",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepositoryType",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepositoryTypeForResponse",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsType",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsTypeForResponse",
+    "WebhookSubIssuesSubIssueAddedType",
+    "WebhookSubIssuesSubIssueAddedTypeForResponse",
 )

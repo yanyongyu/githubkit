@@ -9,270 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Any, TypeAlias, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class AgentsTasksGetResponse200Type(TypedDict):
-    """AgentsTasksGetResponse200"""
-
-    tasks: list[AgentsTasksGetResponse200PropTasksItemsType]
-    total_active_count: NotRequired[int]
-    total_archived_count: NotRequired[int]
-
-
-class AgentsTasksGetResponse200TypeForResponse(TypedDict):
-    """AgentsTasksGetResponse200"""
-
-    tasks: list[AgentsTasksGetResponse200PropTasksItemsTypeForResponse]
-    total_active_count: NotRequired[int]
-    total_archived_count: NotRequired[int]
-
-
-class AgentsTasksGetResponse200PropTasksItemsType(TypedDict):
-    """AgentsTasksGetResponse200PropTasksItems"""
-
-    id: str
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    name: NotRequired[str]
-    creator: NotRequired[AgentsTasksGetResponse200PropTasksItemsPropCreatorOneof0Type]
-    creator_type: NotRequired[Literal["user", "organization"]]
-    user_collaborators: NotRequired[
-        list[AgentsTasksGetResponse200PropTasksItemsPropUserCollaboratorsItemsType]
-    ]
-    owner: NotRequired[AgentsTasksGetResponse200PropTasksItemsPropOwnerType]
-    repository: NotRequired[AgentsTasksGetResponse200PropTasksItemsPropRepositoryType]
-    state: Literal[
-        "queued",
-        "in_progress",
-        "completed",
-        "failed",
-        "idle",
-        "waiting_for_user",
-        "timed_out",
-        "cancelled",
-    ]
-    session_count: NotRequired[int]
-    artifacts: NotRequired[
-        list[AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsType]
-    ]
-    archived_at: NotRequired[Union[_dt.datetime, None]]
-    updated_at: NotRequired[_dt.datetime]
-    created_at: _dt.datetime
-
-
-class AgentsTasksGetResponse200PropTasksItemsTypeForResponse(TypedDict):
-    """AgentsTasksGetResponse200PropTasksItems"""
-
-    id: str
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    name: NotRequired[str]
-    creator: NotRequired[
-        AgentsTasksGetResponse200PropTasksItemsPropCreatorOneof0TypeForResponse
-    ]
-    creator_type: NotRequired[Literal["user", "organization"]]
-    user_collaborators: NotRequired[
-        list[
-            AgentsTasksGetResponse200PropTasksItemsPropUserCollaboratorsItemsTypeForResponse
-        ]
-    ]
-    owner: NotRequired[AgentsTasksGetResponse200PropTasksItemsPropOwnerTypeForResponse]
-    repository: NotRequired[
-        AgentsTasksGetResponse200PropTasksItemsPropRepositoryTypeForResponse
-    ]
-    state: Literal[
-        "queued",
-        "in_progress",
-        "completed",
-        "failed",
-        "idle",
-        "waiting_for_user",
-        "timed_out",
-        "cancelled",
-    ]
-    session_count: NotRequired[int]
-    artifacts: NotRequired[
-        list[AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsTypeForResponse]
-    ]
-    archived_at: NotRequired[Union[str, None]]
-    updated_at: NotRequired[str]
-    created_at: str
-
-
-class AgentsTasksGetResponse200PropTasksItemsPropCreatorOneof0Type(TypedDict):
-    """AgentsTasksGetResponse200PropTasksItemsPropCreatorOneof0
-
-    A GitHub user
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsTasksGetResponse200PropTasksItemsPropCreatorOneof0TypeForResponse(
-    TypedDict
-):
-    """AgentsTasksGetResponse200PropTasksItemsPropCreatorOneof0
-
-    A GitHub user
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsTasksGetResponse200PropTasksItemsPropUserCollaboratorsItemsType(TypedDict):
-    """AgentsTasksGetResponse200PropTasksItemsPropUserCollaboratorsItems
-
-    A GitHub user
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsTasksGetResponse200PropTasksItemsPropUserCollaboratorsItemsTypeForResponse(
-    TypedDict
-):
-    """AgentsTasksGetResponse200PropTasksItemsPropUserCollaboratorsItems
-
-    A GitHub user
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsTasksGetResponse200PropTasksItemsPropOwnerType(TypedDict):
-    """AgentsTasksGetResponse200PropTasksItemsPropOwner
-
-    The owner of the repository
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsTasksGetResponse200PropTasksItemsPropOwnerTypeForResponse(TypedDict):
-    """AgentsTasksGetResponse200PropTasksItemsPropOwner
-
-    The owner of the repository
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsTasksGetResponse200PropTasksItemsPropRepositoryType(TypedDict):
-    """AgentsTasksGetResponse200PropTasksItemsPropRepository
-
-    The repository this task belongs to
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsTasksGetResponse200PropTasksItemsPropRepositoryTypeForResponse(TypedDict):
-    """AgentsTasksGetResponse200PropTasksItemsPropRepository
-
-    The repository this task belongs to
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsType(TypedDict):
-    """AgentsTasksGetResponse200PropTasksItemsPropArtifactsItems
-
-    A resource generated by the task
-    """
-
-    provider: Literal["github"]
-    type: Literal["pull", "branch"]
-    data: Union[
-        AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0Type,
-        AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1Type,
-    ]
-
-
-class AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsTypeForResponse(
-    TypedDict
-):
-    """AgentsTasksGetResponse200PropTasksItemsPropArtifactsItems
-
-    A resource generated by the task
-    """
-
-    provider: Literal["github"]
-    type: Literal["pull", "branch"]
-    data: Union[
-        AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0TypeForResponse,
-        AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1TypeForResponse,
-    ]
-
-
-class AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0Type(
-    TypedDict
-):
-    """AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0
-
-    A GitHub resource (pull request, issue, etc.)
-    """
-
-    id: int
-    global_id: NotRequired[str]
-
-
-class AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0TypeForResponse(
-    TypedDict
-):
-    """AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0
-
-    A GitHub resource (pull request, issue, etc.)
-    """
-
-    id: int
-    global_id: NotRequired[str]
-
-
-class AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1Type(
-    TypedDict
-):
-    """AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1
-
-    A Git branch reference
-    """
-
-    head_ref: str
-    base_ref: str
-
-
-class AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1TypeForResponse(
-    TypedDict
-):
-    """AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1
-
-    A Git branch reference
-    """
-
-    head_ref: str
-    base_ref: str
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0534 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0535 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0536 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0537 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+
+
+class WebhookWorkflowDispatchType(TypedDict):
+    """workflow_dispatch event"""
+
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    inputs: Union[WebhookWorkflowDispatchPropInputsType, None]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    ref: str
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
+    workflow: str
+
+
+class WebhookWorkflowDispatchTypeForResponse(TypedDict):
+    """workflow_dispatch event"""
+
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    inputs: Union[WebhookWorkflowDispatchPropInputsTypeForResponse, None]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    ref: str
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+    workflow: str
+
+
+WebhookWorkflowDispatchPropInputsType: TypeAlias = dict[str, Any]
+"""WebhookWorkflowDispatchPropInputs
+"""
+
+
+WebhookWorkflowDispatchPropInputsTypeForResponse: TypeAlias = dict[str, Any]
+"""WebhookWorkflowDispatchPropInputs
+"""
 
 
 __all__ = (
-    "AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0Type",
-    "AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0TypeForResponse",
-    "AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1Type",
-    "AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1TypeForResponse",
-    "AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsType",
-    "AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsTypeForResponse",
-    "AgentsTasksGetResponse200PropTasksItemsPropCreatorOneof0Type",
-    "AgentsTasksGetResponse200PropTasksItemsPropCreatorOneof0TypeForResponse",
-    "AgentsTasksGetResponse200PropTasksItemsPropOwnerType",
-    "AgentsTasksGetResponse200PropTasksItemsPropOwnerTypeForResponse",
-    "AgentsTasksGetResponse200PropTasksItemsPropRepositoryType",
-    "AgentsTasksGetResponse200PropTasksItemsPropRepositoryTypeForResponse",
-    "AgentsTasksGetResponse200PropTasksItemsPropUserCollaboratorsItemsType",
-    "AgentsTasksGetResponse200PropTasksItemsPropUserCollaboratorsItemsTypeForResponse",
-    "AgentsTasksGetResponse200PropTasksItemsType",
-    "AgentsTasksGetResponse200PropTasksItemsTypeForResponse",
-    "AgentsTasksGetResponse200Type",
-    "AgentsTasksGetResponse200TypeForResponse",
+    "WebhookWorkflowDispatchPropInputsType",
+    "WebhookWorkflowDispatchPropInputsTypeForResponse",
+    "WebhookWorkflowDispatchType",
+    "WebhookWorkflowDispatchTypeForResponse",
 )

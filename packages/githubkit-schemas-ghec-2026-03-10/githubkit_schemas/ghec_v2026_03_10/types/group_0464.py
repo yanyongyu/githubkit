@@ -9,64 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
+
+class HookResponseType(TypedDict):
+    """Hook Response"""
+
+    code: Union[int, None]
+    status: Union[str, None]
+    message: Union[str, None]
 
 
-class MilestonedIssueEventType(TypedDict):
-    """Milestoned Issue Event
+class HookResponseTypeForResponse(TypedDict):
+    """Hook Response"""
 
-    Milestoned Issue Event
-    """
-
-    id: int
-    node_id: str
-    url: str
-    actor: SimpleUserType
-    event: Literal["milestoned"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    milestone: MilestonedIssueEventPropMilestoneType
-
-
-class MilestonedIssueEventTypeForResponse(TypedDict):
-    """Milestoned Issue Event
-
-    Milestoned Issue Event
-    """
-
-    id: int
-    node_id: str
-    url: str
-    actor: SimpleUserTypeForResponse
-    event: Literal["milestoned"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    milestone: MilestonedIssueEventPropMilestoneTypeForResponse
-
-
-class MilestonedIssueEventPropMilestoneType(TypedDict):
-    """MilestonedIssueEventPropMilestone"""
-
-    title: str
-
-
-class MilestonedIssueEventPropMilestoneTypeForResponse(TypedDict):
-    """MilestonedIssueEventPropMilestone"""
-
-    title: str
+    code: Union[int, None]
+    status: Union[str, None]
+    message: Union[str, None]
 
 
 __all__ = (
-    "MilestonedIssueEventPropMilestoneType",
-    "MilestonedIssueEventPropMilestoneTypeForResponse",
-    "MilestonedIssueEventType",
-    "MilestonedIssueEventTypeForResponse",
+    "HookResponseType",
+    "HookResponseTypeForResponse",
 )

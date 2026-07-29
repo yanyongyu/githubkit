@@ -9,19 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from pydantic import Field
-
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody(GitHubModel):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody"""
-
-    runners: list[int] = Field(
-        description="List of runner IDs to add to the runner group."
-    )
+class GistsGistIdStarGetResponse404(GitHubModel):
+    """GistsGistIdStarGetResponse404"""
 
 
-model_rebuild(OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody)
+model_rebuild(GistsGistIdStarGetResponse404)
 
-__all__ = ("OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody",)
+__all__ = ("GistsGistIdStarGetResponse404",)

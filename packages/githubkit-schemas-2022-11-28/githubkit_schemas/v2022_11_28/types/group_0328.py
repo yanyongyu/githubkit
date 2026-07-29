@@ -9,56 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0135 import (
-    CodeScanningAnalysisToolType,
-    CodeScanningAnalysisToolTypeForResponse,
-)
+
+class CodeQualitySetupUpdateResponseType(TypedDict):
+    """CodeQualitySetupUpdateResponse
+
+    You can use `run_url` to track the status of the run. This includes a property
+    status and conclusion.
+    You should not rely on this always being an actions workflow run object.
+    """
+
+    run_id: NotRequired[int]
+    run_url: NotRequired[str]
 
 
-class CodeScanningAnalysisType(TypedDict):
-    """CodeScanningAnalysis"""
+class CodeQualitySetupUpdateResponseTypeForResponse(TypedDict):
+    """CodeQualitySetupUpdateResponse
 
-    ref: str
-    commit_sha: str
-    analysis_key: str
-    environment: str
-    category: NotRequired[str]
-    error: str
-    created_at: _dt.datetime
-    results_count: int
-    rules_count: int
-    id: int
-    url: str
-    sarif_id: str
-    tool: CodeScanningAnalysisToolType
-    deletable: bool
-    warning: str
+    You can use `run_url` to track the status of the run. This includes a property
+    status and conclusion.
+    You should not rely on this always being an actions workflow run object.
+    """
 
-
-class CodeScanningAnalysisTypeForResponse(TypedDict):
-    """CodeScanningAnalysis"""
-
-    ref: str
-    commit_sha: str
-    analysis_key: str
-    environment: str
-    category: NotRequired[str]
-    error: str
-    created_at: str
-    results_count: int
-    rules_count: int
-    id: int
-    url: str
-    sarif_id: str
-    tool: CodeScanningAnalysisToolTypeForResponse
-    deletable: bool
-    warning: str
+    run_id: NotRequired[int]
+    run_url: NotRequired[str]
 
 
 __all__ = (
-    "CodeScanningAnalysisType",
-    "CodeScanningAnalysisTypeForResponse",
+    "CodeQualitySetupUpdateResponseType",
+    "CodeQualitySetupUpdateResponseTypeForResponse",
 )

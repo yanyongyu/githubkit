@@ -11,27 +11,20 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0263 import (
-    ArtifactDeploymentRecordType,
-    ArtifactDeploymentRecordTypeForResponse,
-)
+
+class NotificationsPutResponse202Type(TypedDict):
+    """NotificationsPutResponse202"""
+
+    message: NotRequired[str]
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200Type(TypedDict):
-    """OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200"""
+class NotificationsPutResponse202TypeForResponse(TypedDict):
+    """NotificationsPutResponse202"""
 
-    total_count: int
-    deployment_records: NotRequired[list[ArtifactDeploymentRecordType]]
-
-
-class OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200TypeForResponse(TypedDict):
-    """OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200"""
-
-    total_count: int
-    deployment_records: NotRequired[list[ArtifactDeploymentRecordTypeForResponse]]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200Type",
-    "OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200TypeForResponse",
+    "NotificationsPutResponse202Type",
+    "NotificationsPutResponse202TypeForResponse",
 )

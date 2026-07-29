@@ -9,30 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoMilestonesPostBodyType(TypedDict):
-    """ReposOwnerRepoMilestonesPostBody"""
+class ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBodyType(TypedDict):
+    """ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBody"""
 
-    title: str
-    state: NotRequired[Literal["open", "closed"]]
-    description: NotRequired[str]
-    due_on: NotRequired[_dt.datetime]
+    dismissed_reason: Literal[
+        "fix_started", "no_bandwidth", "tolerable_risk", "inaccurate", "not_used"
+    ]
+    dismissed_comment: NotRequired[str]
 
 
-class ReposOwnerRepoMilestonesPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoMilestonesPostBody"""
+class ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBody"""
 
-    title: str
-    state: NotRequired[Literal["open", "closed"]]
-    description: NotRequired[str]
-    due_on: NotRequired[str]
+    dismissed_reason: Literal[
+        "fix_started", "no_bandwidth", "tolerable_risk", "inaccurate", "not_used"
+    ]
+    dismissed_comment: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoMilestonesPostBodyType",
-    "ReposOwnerRepoMilestonesPostBodyTypeForResponse",
+    "ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBodyType",
+    "ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBodyTypeForResponse",
 )

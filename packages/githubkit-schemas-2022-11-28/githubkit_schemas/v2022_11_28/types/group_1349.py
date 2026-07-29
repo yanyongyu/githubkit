@@ -9,28 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0285 import ActionsVariableType, ActionsVariableTypeForResponse
 
 
-class ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200Type(TypedDict):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200"""
 
-    sub_issue_id: int
-    after_id: NotRequired[int]
-    before_id: NotRequired[int]
+    total_count: int
+    variables: list[ActionsVariableType]
 
 
-class ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyTypeForResponse(
+class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200TypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody"""
+    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200"""
 
-    sub_issue_id: int
-    after_id: NotRequired[int]
-    before_id: NotRequired[int]
+    total_count: int
+    variables: list[ActionsVariableTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyType",
-    "ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyTypeForResponse",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200Type",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200TypeForResponse",
 )

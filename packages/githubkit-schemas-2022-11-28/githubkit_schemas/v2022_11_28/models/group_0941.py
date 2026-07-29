@@ -18,32 +18,25 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0020 import Repository
-from .group_0058 import Issue
-from .group_0524 import SimpleInstallation
-from .group_0525 import OrganizationSimpleWebhooks
-from .group_0526 import RepositoryWebhooks
+from .group_0535 import EnterpriseWebhooks
+from .group_0536 import SimpleInstallation
+from .group_0537 import OrganizationSimpleWebhooks
+from .group_0538 import RepositoryWebhooks
+from .group_0577 import WebhooksAlert
 
 
-class WebhookSubIssuesParentIssueRemoved(GitHubModel):
-    """parent issue removed event"""
+class WebhookRepositoryVulnerabilityAlertReopen(GitHubModel):
+    """repository_vulnerability_alert reopen event"""
 
-    action: Literal["parent_issue_removed"] = Field()
-    parent_issue_id: Missing[float] = Field(
-        default=UNSET, description="The ID of the parent issue."
+    action: Literal["reopen"] = Field()
+    alert: WebhooksAlert = Field(
+        title="Repository Vulnerability Alert Alert",
+        description="The security alert of the vulnerable dependency.",
     )
-    parent_issue: Missing[Issue] = Field(
+    enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
-        title="Issue",
-        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
-    )
-    parent_issue_repo: Missing[Repository] = Field(
-        default=UNSET, title="Repository", description="A repository on GitHub."
-    )
-    sub_issue_id: float = Field(description="The ID of the sub-issue.")
-    sub_issue: Issue = Field(
-        title="Issue",
-        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
@@ -62,6 +55,6 @@ class WebhookSubIssuesParentIssueRemoved(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookSubIssuesParentIssueRemoved)
+model_rebuild(WebhookRepositoryVulnerabilityAlertReopen)
 
-__all__ = ("WebhookSubIssuesParentIssueRemoved",)
+__all__ = ("WebhookRepositoryVulnerabilityAlertReopen",)

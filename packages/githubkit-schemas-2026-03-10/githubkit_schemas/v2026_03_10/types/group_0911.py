@@ -13,44 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0522 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0523 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0524 import (
+from .group_0534 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0535 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0536 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0525 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0565 import (
-    SecretScanningAlertWebhookType,
-    SecretScanningAlertWebhookTypeForResponse,
-)
+from .group_0537 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0574 import WebhooksReleaseType, WebhooksReleaseTypeForResponse
 
 
-class WebhookSecretScanningAlertMetadataCreatedType(TypedDict):
-    """secret_scanning_alert metadata created event"""
+class WebhookReleaseDeletedType(TypedDict):
+    """release deleted event"""
 
-    action: Literal["metadata_created"]
-    alert: SecretScanningAlertWebhookType
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
+    release: WebhooksReleaseType
     repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserType]
+    sender: SimpleUserType
 
 
-class WebhookSecretScanningAlertMetadataCreatedTypeForResponse(TypedDict):
-    """secret_scanning_alert metadata created event"""
+class WebhookReleaseDeletedTypeForResponse(TypedDict):
+    """release deleted event"""
 
-    action: Literal["metadata_created"]
-    alert: SecretScanningAlertWebhookTypeForResponse
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    release: WebhooksReleaseTypeForResponse
     repository: RepositoryWebhooksTypeForResponse
-    sender: NotRequired[SimpleUserTypeForResponse]
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookSecretScanningAlertMetadataCreatedType",
-    "WebhookSecretScanningAlertMetadataCreatedTypeForResponse",
+    "WebhookReleaseDeletedType",
+    "WebhookReleaseDeletedTypeForResponse",
 )

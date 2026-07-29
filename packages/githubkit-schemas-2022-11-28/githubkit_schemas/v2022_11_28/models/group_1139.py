@@ -9,20 +9,59 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgCopilotBillingSelectedTeamsPostResponse201(GitHubModel):
-    """OrgsOrgCopilotBillingSelectedTeamsPostResponse201
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200(
+    GitHubModel
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200"""
 
-    The total number of seats created for members of the specified team(s).
+    job_id: int = Field(description="The ID of the job.")
+    status: Literal["pending", "processing", "completed", "failed"] = Field(
+        description="The current status of the job."
+    )
+    started_at: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="When the job started processing (only present when processing, completed, or failed).",
+    )
+    total_count: Missing[int] = Field(
+        default=UNSET,
+        description="The number of records successfully mutated (only present when completed).",
+    )
+    errors: Missing[
+        list[
+            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200PropErrorsItems
+        ]
+    ] = Field(
+        default=UNSET,
+        description="Processing errors (only present when completed or failed).",
+    )
+
+
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200PropErrorsItems(
+    GitHubModel
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200Pro
+    pErrorsItems
     """
 
-    seats_created: int = Field()
 
+model_rebuild(
+    OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200
+)
+model_rebuild(
+    OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200PropErrorsItems
+)
 
-model_rebuild(OrgsOrgCopilotBillingSelectedTeamsPostResponse201)
-
-__all__ = ("OrgsOrgCopilotBillingSelectedTeamsPostResponse201",)
+__all__ = (
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200PropErrorsItems",
+)

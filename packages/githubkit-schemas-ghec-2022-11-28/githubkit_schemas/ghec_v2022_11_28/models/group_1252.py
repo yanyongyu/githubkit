@@ -9,19 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsVariablesNameRepositoriesPutBody(GitHubModel):
-    """OrgsOrgActionsVariablesNameRepositoriesPutBody"""
+class GistsPostBody(GitHubModel):
+    """GistsPostBody"""
 
-    selected_repository_ids: list[int] = Field(
-        description="The IDs of the repositories that can access the organization variable."
+    description: Missing[str] = Field(
+        default=UNSET, description="Description of the gist"
     )
+    files: GistsPostBodyPropFiles = Field(
+        description="Names and content for the files that make up the gist"
+    )
+    public: Missing[Union[bool, Literal["true", "false"]]] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgActionsVariablesNameRepositoriesPutBody)
+class GistsPostBodyPropFiles(ExtraGitHubModel):
+    """GistsPostBodyPropFiles
 
-__all__ = ("OrgsOrgActionsVariablesNameRepositoriesPutBody",)
+    Names and content for the files that make up the gist
+
+    Examples:
+        {'hello.rb': {'content': 'puts "Hello, World!"'}}
+    """
+
+
+model_rebuild(GistsPostBody)
+model_rebuild(GistsPostBodyPropFiles)
+
+__all__ = (
+    "GistsPostBody",
+    "GistsPostBodyPropFiles",
+)

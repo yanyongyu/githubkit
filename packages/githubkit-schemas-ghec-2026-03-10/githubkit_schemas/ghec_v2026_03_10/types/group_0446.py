@@ -9,52 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Any, TypeAlias
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0444 import MetadataType, MetadataTypeForResponse
 
 
-class GitRefType(TypedDict):
-    """Git Reference
+class ManifestType(TypedDict):
+    """Manifest"""
 
-    Git references within a repository
-    """
-
-    ref: str
-    node_id: str
-    url: str
-    object_: GitRefPropObjectType
+    name: str
+    file: NotRequired[ManifestPropFileType]
+    metadata: NotRequired[MetadataType]
+    resolved: NotRequired[ManifestPropResolvedType]
 
 
-class GitRefTypeForResponse(TypedDict):
-    """Git Reference
+class ManifestTypeForResponse(TypedDict):
+    """Manifest"""
 
-    Git references within a repository
-    """
-
-    ref: str
-    node_id: str
-    url: str
-    object_: GitRefPropObjectTypeForResponse
+    name: str
+    file: NotRequired[ManifestPropFileTypeForResponse]
+    metadata: NotRequired[MetadataTypeForResponse]
+    resolved: NotRequired[ManifestPropResolvedTypeForResponse]
 
 
-class GitRefPropObjectType(TypedDict):
-    """GitRefPropObject"""
+class ManifestPropFileType(TypedDict):
+    """ManifestPropFile"""
 
-    type: str
-    sha: str
-    url: str
+    source_location: NotRequired[str]
 
 
-class GitRefPropObjectTypeForResponse(TypedDict):
-    """GitRefPropObject"""
+class ManifestPropFileTypeForResponse(TypedDict):
+    """ManifestPropFile"""
 
-    type: str
-    sha: str
-    url: str
+    source_location: NotRequired[str]
+
+
+ManifestPropResolvedType: TypeAlias = dict[str, Any]
+"""ManifestPropResolved
+
+A collection of resolved package dependencies.
+"""
+
+
+ManifestPropResolvedTypeForResponse: TypeAlias = dict[str, Any]
+"""ManifestPropResolved
+
+A collection of resolved package dependencies.
+"""
 
 
 __all__ = (
-    "GitRefPropObjectType",
-    "GitRefPropObjectTypeForResponse",
-    "GitRefType",
-    "GitRefTypeForResponse",
+    "ManifestPropFileType",
+    "ManifestPropFileTypeForResponse",
+    "ManifestPropResolvedType",
+    "ManifestPropResolvedTypeForResponse",
+    "ManifestType",
+    "ManifestTypeForResponse",
 )

@@ -9,65 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0040 import (
+    DependabotAlertPackageType,
+    DependabotAlertPackageTypeForResponse,
+)
 
 
-class DeploymentStatusType(TypedDict):
-    """Deployment Status
+class DependabotAlertPropDependencyType(TypedDict):
+    """DependabotAlertPropDependency
 
-    The status of a deployment.
+    Details for the vulnerable dependency.
     """
 
-    url: str
-    id: int
-    node_id: str
-    state: Literal[
-        "error", "failure", "inactive", "pending", "success", "queued", "in_progress"
+    package: NotRequired[DependabotAlertPackageType]
+    manifest_path: NotRequired[str]
+    scope: NotRequired[Union[None, Literal["development", "runtime"]]]
+    relationship: NotRequired[
+        Union[None, Literal["unknown", "direct", "transitive", "inconclusive"]]
     ]
-    creator: Union[None, SimpleUserType]
-    description: str
-    environment: NotRequired[str]
-    target_url: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    deployment_url: str
-    repository_url: str
-    environment_url: NotRequired[str]
-    log_url: NotRequired[str]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
 
 
-class DeploymentStatusTypeForResponse(TypedDict):
-    """Deployment Status
+class DependabotAlertPropDependencyTypeForResponse(TypedDict):
+    """DependabotAlertPropDependency
 
-    The status of a deployment.
+    Details for the vulnerable dependency.
     """
 
-    url: str
-    id: int
-    node_id: str
-    state: Literal[
-        "error", "failure", "inactive", "pending", "success", "queued", "in_progress"
+    package: NotRequired[DependabotAlertPackageTypeForResponse]
+    manifest_path: NotRequired[str]
+    scope: NotRequired[Union[None, Literal["development", "runtime"]]]
+    relationship: NotRequired[
+        Union[None, Literal["unknown", "direct", "transitive", "inconclusive"]]
     ]
-    creator: Union[None, SimpleUserTypeForResponse]
-    description: str
-    environment: NotRequired[str]
-    target_url: str
-    created_at: str
-    updated_at: str
-    deployment_url: str
-    repository_url: str
-    environment_url: NotRequired[str]
-    log_url: NotRequired[str]
-    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
 
 
 __all__ = (
-    "DeploymentStatusType",
-    "DeploymentStatusTypeForResponse",
+    "DependabotAlertPropDependencyType",
+    "DependabotAlertPropDependencyTypeForResponse",
 )

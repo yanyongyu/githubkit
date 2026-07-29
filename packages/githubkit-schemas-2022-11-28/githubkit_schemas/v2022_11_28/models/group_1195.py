@@ -13,16 +13,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0092 import MinimalRepository
+from .group_0093 import MinimalRepository
 
 
-class OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200(GitHubModel):
-    """OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200"""
+class OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200(GitHubModel):
+    """OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200"""
 
     total_count: int = Field()
     repositories: list[MinimalRepository] = Field()
 
 
-model_rebuild(OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200)
+model_rebuild(OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200)
 
-__all__ = ("OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200",)
+__all__ = ("OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200",)

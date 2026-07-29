@@ -9,36 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCampaignsCampaignNumberPatchBodyType(TypedDict):
-    """OrgsOrgCampaignsCampaignNumberPatchBody"""
+class OrgsOrgActionsPermissionsPutBodyType(TypedDict):
+    """OrgsOrgActionsPermissionsPutBody"""
 
-    name: NotRequired[str]
-    description: NotRequired[str]
-    managers: NotRequired[list[str]]
-    team_managers: NotRequired[list[str]]
-    ends_at: NotRequired[_dt.datetime]
-    contact_link: NotRequired[Union[str, None]]
-    state: NotRequired[Literal["open", "closed"]]
+    enabled_repositories: Literal["all", "none", "selected"]
+    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
+    sha_pinning_required: NotRequired[bool]
 
 
-class OrgsOrgCampaignsCampaignNumberPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgCampaignsCampaignNumberPatchBody"""
+class OrgsOrgActionsPermissionsPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsPermissionsPutBody"""
 
-    name: NotRequired[str]
-    description: NotRequired[str]
-    managers: NotRequired[list[str]]
-    team_managers: NotRequired[list[str]]
-    ends_at: NotRequired[str]
-    contact_link: NotRequired[Union[str, None]]
-    state: NotRequired[Literal["open", "closed"]]
+    enabled_repositories: Literal["all", "none", "selected"]
+    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
+    sha_pinning_required: NotRequired[bool]
 
 
 __all__ = (
-    "OrgsOrgCampaignsCampaignNumberPatchBodyType",
-    "OrgsOrgCampaignsCampaignNumberPatchBodyTypeForResponse",
+    "OrgsOrgActionsPermissionsPutBodyType",
+    "OrgsOrgActionsPermissionsPutBodyTypeForResponse",
 )

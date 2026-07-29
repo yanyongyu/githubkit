@@ -9,46 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReactionType(TypedDict):
-    """Reaction
+class CodeScanningSarifsStatusType(TypedDict):
+    """CodeScanningSarifsStatus"""
 
-    Reactions to conversations provide a way to help people express their feelings
-    more simply and effectively.
-    """
-
-    id: int
-    node_id: str
-    user: Union[None, SimpleUserType]
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ]
-    created_at: _dt.datetime
+    processing_status: NotRequired[Literal["pending", "complete", "failed"]]
+    analyses_url: NotRequired[Union[str, None]]
+    errors: NotRequired[Union[list[str], None]]
 
 
-class ReactionTypeForResponse(TypedDict):
-    """Reaction
+class CodeScanningSarifsStatusTypeForResponse(TypedDict):
+    """CodeScanningSarifsStatus"""
 
-    Reactions to conversations provide a way to help people express their feelings
-    more simply and effectively.
-    """
-
-    id: int
-    node_id: str
-    user: Union[None, SimpleUserTypeForResponse]
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ]
-    created_at: str
+    processing_status: NotRequired[Literal["pending", "complete", "failed"]]
+    analyses_url: NotRequired[Union[str, None]]
+    errors: NotRequired[Union[list[str], None]]
 
 
 __all__ = (
-    "ReactionType",
-    "ReactionTypeForResponse",
+    "CodeScanningSarifsStatusType",
+    "CodeScanningSarifsStatusTypeForResponse",
 )

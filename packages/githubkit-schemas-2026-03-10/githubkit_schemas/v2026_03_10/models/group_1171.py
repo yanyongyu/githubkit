@@ -13,22 +13,23 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgPersonalAccessTokensPostBody(GitHubModel):
-    """OrgsOrgPersonalAccessTokensPostBody"""
+class OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBody(GitHubModel):
+    """OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBody"""
 
-    action: Literal["revoke"] = Field(
-        description="Action to apply to the fine-grained personal access token."
+    actor_type: Literal["User", "Team"] = Field(
+        description="The type of actor (user or team)."
     )
-    pat_ids: list[int] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="The IDs of the fine-grained personal access tokens.",
+    actor_identifier: str = Field(
+        description="The username (for users) or team slug (for teams). The numeric ID of a user or team is also accepted."
+    )
+    role: Literal["reader", "writer", "admin"] = Field(
+        description="The role to grant to the collaborator."
     )
 
 
-model_rebuild(OrgsOrgPersonalAccessTokensPostBody)
+model_rebuild(OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBody)
 
-__all__ = ("OrgsOrgPersonalAccessTokensPostBody",)
+__all__ = ("OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBody",)

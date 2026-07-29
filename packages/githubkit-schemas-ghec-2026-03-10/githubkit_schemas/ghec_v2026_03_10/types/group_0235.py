@@ -9,80 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0210 import ReactionRollupType, ReactionRollupTypeForResponse
-from .group_0219 import ReleaseAssetType, ReleaseAssetTypeForResponse
-
-
-class ReleaseEventPropReleaseType(TypedDict):
-    """ReleaseEventPropRelease"""
-
-    url: str
-    html_url: str
-    assets_url: str
-    upload_url: str
-    tarball_url: Union[str, None]
-    zipball_url: Union[str, None]
-    id: int
-    node_id: str
-    tag_name: str
-    target_commitish: str
-    name: Union[str, None]
-    body: NotRequired[Union[str, None]]
-    draft: bool
-    prerelease: bool
-    immutable: NotRequired[bool]
-    created_at: _dt.datetime
-    published_at: Union[_dt.datetime, None]
-    updated_at: NotRequired[Union[_dt.datetime, None]]
-    author: SimpleUserType
-    assets: list[ReleaseAssetType]
-    body_html: NotRequired[Union[str, None]]
-    body_text: NotRequired[Union[str, None]]
-    mentions_count: NotRequired[int]
-    discussion_url: NotRequired[str]
-    reactions: NotRequired[ReactionRollupType]
-    is_short_description_html_truncated: NotRequired[bool]
-    short_description_html: NotRequired[str]
+from .group_0222 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
+from .group_0236 import (
+    PullRequestReviewEventPropReviewType,
+    PullRequestReviewEventPropReviewTypeForResponse,
+)
 
 
-class ReleaseEventPropReleaseTypeForResponse(TypedDict):
-    """ReleaseEventPropRelease"""
+class PullRequestReviewEventType(TypedDict):
+    """PullRequestReviewEvent"""
 
-    url: str
-    html_url: str
-    assets_url: str
-    upload_url: str
-    tarball_url: Union[str, None]
-    zipball_url: Union[str, None]
-    id: int
-    node_id: str
-    tag_name: str
-    target_commitish: str
-    name: Union[str, None]
-    body: NotRequired[Union[str, None]]
-    draft: bool
-    prerelease: bool
-    immutable: NotRequired[bool]
-    created_at: str
-    published_at: Union[str, None]
-    updated_at: NotRequired[Union[str, None]]
-    author: SimpleUserTypeForResponse
-    assets: list[ReleaseAssetTypeForResponse]
-    body_html: NotRequired[Union[str, None]]
-    body_text: NotRequired[Union[str, None]]
-    mentions_count: NotRequired[int]
-    discussion_url: NotRequired[str]
-    reactions: NotRequired[ReactionRollupTypeForResponse]
-    is_short_description_html_truncated: NotRequired[bool]
-    short_description_html: NotRequired[str]
+    action: str
+    review: PullRequestReviewEventPropReviewType
+    pull_request: PullRequestMinimalType
+
+
+class PullRequestReviewEventTypeForResponse(TypedDict):
+    """PullRequestReviewEvent"""
+
+    action: str
+    review: PullRequestReviewEventPropReviewTypeForResponse
+    pull_request: PullRequestMinimalTypeForResponse
 
 
 __all__ = (
-    "ReleaseEventPropReleaseType",
-    "ReleaseEventPropReleaseTypeForResponse",
+    "PullRequestReviewEventType",
+    "PullRequestReviewEventTypeForResponse",
 )

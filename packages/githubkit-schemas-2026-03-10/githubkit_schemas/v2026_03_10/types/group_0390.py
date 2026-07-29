@@ -9,30 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class InteractionLimitPullRequestBypassListType(TypedDict):
-    """Interaction Limits Pull Request Bypass List
+class RepositoryHashAlgorithmType(TypedDict):
+    """Repository hash algorithm
 
-    A list of user logins to add or remove from the pull request creation cap bypass
-    list.
+    Repository hash algorithm
     """
 
-    users: list[str]
+    hash_algorithm: Literal["sha1", "sha256"]
 
 
-class InteractionLimitPullRequestBypassListTypeForResponse(TypedDict):
-    """Interaction Limits Pull Request Bypass List
+class RepositoryHashAlgorithmTypeForResponse(TypedDict):
+    """Repository hash algorithm
 
-    A list of user logins to add or remove from the pull request creation cap bypass
-    list.
+    Repository hash algorithm
     """
 
-    users: list[str]
+    hash_algorithm: Literal["sha1", "sha256"]
 
 
 __all__ = (
-    "InteractionLimitPullRequestBypassListType",
-    "InteractionLimitPullRequestBypassListTypeForResponse",
+    "RepositoryHashAlgorithmType",
+    "RepositoryHashAlgorithmTypeForResponse",
 )

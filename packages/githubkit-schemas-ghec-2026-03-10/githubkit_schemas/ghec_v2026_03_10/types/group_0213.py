@@ -9,29 +9,60 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class IssueCommentMinimizedType(TypedDict):
-    """Minimized Issue Comment
+class IssueTypeType(TypedDict):
+    """Issue Type
 
-    Details about why an issue comment was minimized.
+    The type assigned to the issue. This is only present for issues in repositories
+    where issue types are supported.
     """
 
-    reason: Union[str, None]
+    id: int
+    node_id: str
+    name: str
+    description: Union[str, None]
+    color: NotRequired[
+        Union[
+            None,
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+        ]
+    ]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
+    is_enabled: NotRequired[bool]
 
 
-class IssueCommentMinimizedTypeForResponse(TypedDict):
-    """Minimized Issue Comment
+class IssueTypeTypeForResponse(TypedDict):
+    """Issue Type
 
-    Details about why an issue comment was minimized.
+    The type assigned to the issue. This is only present for issues in repositories
+    where issue types are supported.
     """
 
-    reason: Union[str, None]
+    id: int
+    node_id: str
+    name: str
+    description: Union[str, None]
+    color: NotRequired[
+        Union[
+            None,
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+        ]
+    ]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    is_enabled: NotRequired[bool]
 
 
 __all__ = (
-    "IssueCommentMinimizedType",
-    "IssueCommentMinimizedTypeForResponse",
+    "IssueTypeType",
+    "IssueTypeTypeForResponse",
 )

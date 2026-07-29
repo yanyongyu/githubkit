@@ -9,22 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgTeamsTeamSlugExternalGroupsPatchBodyType(TypedDict):
-    """OrgsOrgTeamsTeamSlugExternalGroupsPatchBody"""
+class OrgsOrgCopilotCodingAgentPermissionsGetResponse200Type(TypedDict):
+    """OrgsOrgCopilotCodingAgentPermissionsGetResponse200"""
 
-    group_id: int
+    enabled_repositories: Literal["all", "selected", "none"]
+    selected_repositories_url: NotRequired[str]
 
 
-class OrgsOrgTeamsTeamSlugExternalGroupsPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgTeamsTeamSlugExternalGroupsPatchBody"""
+class OrgsOrgCopilotCodingAgentPermissionsGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCopilotCodingAgentPermissionsGetResponse200"""
 
-    group_id: int
+    enabled_repositories: Literal["all", "selected", "none"]
+    selected_repositories_url: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgTeamsTeamSlugExternalGroupsPatchBodyType",
-    "OrgsOrgTeamsTeamSlugExternalGroupsPatchBodyTypeForResponse",
+    "OrgsOrgCopilotCodingAgentPermissionsGetResponse200Type",
+    "OrgsOrgCopilotCodingAgentPermissionsGetResponse200TypeForResponse",
 )

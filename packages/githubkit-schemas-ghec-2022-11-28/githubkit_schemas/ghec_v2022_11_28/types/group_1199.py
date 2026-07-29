@@ -9,49 +9,81 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, Literal, TypeAlias, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class GistsPostBodyType(TypedDict):
-    """GistsPostBody"""
+class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200"""
 
-    description: NotRequired[str]
-    files: GistsPostBodyPropFilesType
-    public: NotRequired[Union[bool, Literal["true", "false"]]]
-
-
-class GistsPostBodyTypeForResponse(TypedDict):
-    """GistsPostBody"""
-
-    description: NotRequired[str]
-    files: GistsPostBodyPropFilesTypeForResponse
-    public: NotRequired[Union[bool, Literal["true", "false"]]]
+    organization: Union[
+        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganizationType,
+        None,
+    ]
+    repository: Union[
+        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepositoryType,
+        None,
+    ]
 
 
-GistsPostBodyPropFilesType: TypeAlias = dict[str, Any]
-"""GistsPostBodyPropFiles
+class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200"""
 
-Names and content for the files that make up the gist
+    organization: Union[
+        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganizationTypeForResponse,
+        None,
+    ]
+    repository: Union[
+        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepositoryTypeForResponse,
+        None,
+    ]
 
-Examples:
-    {'hello.rb': {'content': 'puts "Hello, World!"'}}
-"""
+
+class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganizationType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization"""
+
+    id: int
+    login: str
 
 
-GistsPostBodyPropFilesTypeForResponse: TypeAlias = dict[str, Any]
-"""GistsPostBodyPropFiles
+class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganizationTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization"""
 
-Names and content for the files that make up the gist
+    id: int
+    login: str
 
-Examples:
-    {'hello.rb': {'content': 'puts "Hello, World!"'}}
-"""
+
+class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepositoryType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository"""
+
+    id: int
+    name: str
+    full_name: str
+
+
+class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepositoryTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository"""
+
+    id: int
+    name: str
+    full_name: str
 
 
 __all__ = (
-    "GistsPostBodyPropFilesType",
-    "GistsPostBodyPropFilesTypeForResponse",
-    "GistsPostBodyType",
-    "GistsPostBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganizationType",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganizationTypeForResponse",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepositoryType",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepositoryTypeForResponse",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200Type",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200TypeForResponse",
 )

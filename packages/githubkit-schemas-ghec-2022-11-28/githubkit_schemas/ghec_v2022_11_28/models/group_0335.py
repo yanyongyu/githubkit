@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,35 +16,90 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class GroupMapping(GitHubModel):
-    """GroupMapping
+class RuleSuitePullRequest(GitHubModel):
+    """Pull request rule suite metadata
 
-    External Groups to be mapped to a team for membership
+    Metadata for a pull request rule evaluation result.
     """
 
-    groups: Missing[list[GroupMappingPropGroupsItems]] = Field(
-        default=UNSET, description="Array of groups to be mapped to this team"
+    pull_request: Missing[RuleSuitePullRequestPropPullRequest] = Field(
+        default=UNSET,
+        description="The pull request associated with the rule evaluation.",
     )
 
 
-class GroupMappingPropGroupsItems(GitHubModel):
-    """GroupMappingPropGroupsItems"""
+class RuleSuitePullRequestPropPullRequest(GitHubModel):
+    """RuleSuitePullRequestPropPullRequest
 
-    group_id: str = Field(description="The ID of the group")
-    group_name: str = Field(description="The name of the group")
-    group_description: str = Field(description="a description of the group")
-    status: Missing[str] = Field(
-        default=UNSET, description="synchronization status for this group mapping"
+    The pull request associated with the rule evaluation.
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the pull request."
     )
-    synced_at: Missing[Union[str, None]] = Field(
-        default=UNSET, description="the time of the last sync for this group-mapping"
+    number: Missing[int] = Field(
+        default=UNSET, description="The number of the pull request."
+    )
+    user: Missing[RuleSuitePullRequestPropPullRequestPropUser] = Field(
+        default=UNSET, description="The user who created the pull request."
+    )
+    reviews: Missing[list[RuleSuitePullRequestPropPullRequestPropReviewsItems]] = Field(
+        default=UNSET, description="The reviews associated with the pull request."
     )
 
 
-model_rebuild(GroupMapping)
-model_rebuild(GroupMappingPropGroupsItems)
+class RuleSuitePullRequestPropPullRequestPropUser(GitHubModel):
+    """RuleSuitePullRequestPropPullRequestPropUser
+
+    The user who created the pull request.
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the user."
+    )
+    login: Missing[str] = Field(
+        default=UNSET, description="The handle for the GitHub user account."
+    )
+    type: Missing[str] = Field(default=UNSET, description="The type of the user.")
+
+
+class RuleSuitePullRequestPropPullRequestPropReviewsItems(GitHubModel):
+    """RuleSuitePullRequestPropPullRequestPropReviewsItems"""
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the review."
+    )
+    user: Missing[RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser] = Field(
+        default=UNSET, description="The user who submitted the review."
+    )
+    state: Missing[str] = Field(default=UNSET, description="The state of the review.")
+
+
+class RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser(GitHubModel):
+    """RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser
+
+    The user who submitted the review.
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the user."
+    )
+    login: Missing[str] = Field(
+        default=UNSET, description="The handle for the GitHub user account."
+    )
+    type: Missing[str] = Field(default=UNSET, description="The type of the user.")
+
+
+model_rebuild(RuleSuitePullRequest)
+model_rebuild(RuleSuitePullRequestPropPullRequest)
+model_rebuild(RuleSuitePullRequestPropPullRequestPropUser)
+model_rebuild(RuleSuitePullRequestPropPullRequestPropReviewsItems)
+model_rebuild(RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser)
 
 __all__ = (
-    "GroupMapping",
-    "GroupMappingPropGroupsItems",
+    "RuleSuitePullRequest",
+    "RuleSuitePullRequestPropPullRequest",
+    "RuleSuitePullRequestPropPullRequestPropReviewsItems",
+    "RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser",
+    "RuleSuitePullRequestPropPullRequestPropUser",
 )

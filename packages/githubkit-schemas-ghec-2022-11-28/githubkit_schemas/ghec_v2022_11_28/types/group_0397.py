@@ -9,40 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class CodeScanningVariantAnalysisRepositoryType(TypedDict):
-    """Repository Identifier
+class CodeQualitySetupUpdateAnyof1Type(TypedDict):
+    """CodeQualitySetupUpdateAnyof1"""
 
-    Repository Identifier
-    """
+    state: NotRequired[Literal["configured", "not-configured"]]
+    runner_type: Literal["standard", "labeled"]
+    runner_label: NotRequired[Union[str, None]]
+    languages: NotRequired[
+        list[
+            Literal[
+                "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
+            ]
+        ]
+    ]
+    ai_findings_option: NotRequired[Literal["disabled", "on_push"]]
 
-    id: int
-    name: str
-    full_name: str
-    private: bool
-    stargazers_count: int
-    updated_at: Union[_dt.datetime, None]
 
+class CodeQualitySetupUpdateAnyof1TypeForResponse(TypedDict):
+    """CodeQualitySetupUpdateAnyof1"""
 
-class CodeScanningVariantAnalysisRepositoryTypeForResponse(TypedDict):
-    """Repository Identifier
-
-    Repository Identifier
-    """
-
-    id: int
-    name: str
-    full_name: str
-    private: bool
-    stargazers_count: int
-    updated_at: Union[str, None]
+    state: NotRequired[Literal["configured", "not-configured"]]
+    runner_type: Literal["standard", "labeled"]
+    runner_label: NotRequired[Union[str, None]]
+    languages: NotRequired[
+        list[
+            Literal[
+                "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
+            ]
+        ]
+    ]
+    ai_findings_option: NotRequired[Literal["disabled", "on_push"]]
 
 
 __all__ = (
-    "CodeScanningVariantAnalysisRepositoryType",
-    "CodeScanningVariantAnalysisRepositoryTypeForResponse",
+    "CodeQualitySetupUpdateAnyof1Type",
+    "CodeQualitySetupUpdateAnyof1TypeForResponse",
 )

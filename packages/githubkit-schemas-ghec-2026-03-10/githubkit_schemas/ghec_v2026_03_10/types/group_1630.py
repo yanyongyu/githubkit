@@ -13,23 +13,19 @@ from typing import Literal
 from typing_extensions import TypedDict
 
 
-class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0Type(TypedDict):
-    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0"""
+class ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType(TypedDict):
+    """ReposOwnerRepoReleasesReleaseIdReactionsPostBody"""
 
-    name: str
-    data_type: Literal["text", "number", "date"]
+    content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"]
 
 
-class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0TypeForResponse(
-    TypedDict
-):
-    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0"""
+class ReposOwnerRepoReleasesReleaseIdReactionsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoReleasesReleaseIdReactionsPostBody"""
 
-    name: str
-    data_type: Literal["text", "number", "date"]
+    content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"]
 
 
 __all__ = (
-    "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0Type",
-    "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0TypeForResponse",
+    "ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType",
+    "ReposOwnerRepoReleasesReleaseIdReactionsPostBodyTypeForResponse",
 )

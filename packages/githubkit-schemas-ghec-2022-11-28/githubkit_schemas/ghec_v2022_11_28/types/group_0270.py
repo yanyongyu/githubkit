@@ -9,25 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import TypedDict
 
 
-class CopilotSpaceCollaboratorAnyof0Allof1Type(TypedDict):
-    """CopilotSpaceCollaboratorAnyof0Allof1"""
+class CodespaceMachineType(TypedDict):
+    """Codespace machine
 
-    actor_type: Literal["User"]
-    role: Literal["reader", "writer", "admin"]
+    A description of the machine powering a codespace.
+    """
+
+    name: str
+    display_name: str
+    operating_system: str
+    storage_in_bytes: int
+    memory_in_bytes: int
+    cpus: int
+    prebuild_availability: Union[None, Literal["none", "ready", "in_progress"]]
 
 
-class CopilotSpaceCollaboratorAnyof0Allof1TypeForResponse(TypedDict):
-    """CopilotSpaceCollaboratorAnyof0Allof1"""
+class CodespaceMachineTypeForResponse(TypedDict):
+    """Codespace machine
 
-    actor_type: Literal["User"]
-    role: Literal["reader", "writer", "admin"]
+    A description of the machine powering a codespace.
+    """
+
+    name: str
+    display_name: str
+    operating_system: str
+    storage_in_bytes: int
+    memory_in_bytes: int
+    cpus: int
+    prebuild_availability: Union[None, Literal["none", "ready", "in_progress"]]
 
 
 __all__ = (
-    "CopilotSpaceCollaboratorAnyof0Allof1Type",
-    "CopilotSpaceCollaboratorAnyof0Allof1TypeForResponse",
+    "CodespaceMachineType",
+    "CodespaceMachineTypeForResponse",
 )

@@ -13,18 +13,19 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0207 import Discussion
+from .group_0223 import PullRequestMinimalPropBase, PullRequestMinimalPropHead
 
 
-class DiscussionEvent(GitHubModel):
-    """DiscussionEvent"""
+class PullRequestMinimal(GitHubModel):
+    """Pull Request Minimal"""
 
-    action: str = Field()
-    discussion: Discussion = Field(
-        title="Discussion", description="A Discussion in a repository."
-    )
+    id: int = Field()
+    number: int = Field()
+    url: str = Field()
+    head: PullRequestMinimalPropHead = Field()
+    base: PullRequestMinimalPropBase = Field()
 
 
-model_rebuild(DiscussionEvent)
+model_rebuild(PullRequestMinimal)
 
-__all__ = ("DiscussionEvent",)
+__all__ = ("PullRequestMinimal",)

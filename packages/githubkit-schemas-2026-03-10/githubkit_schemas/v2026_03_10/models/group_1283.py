@@ -16,22 +16,30 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoCommitsCommitShaCommentsPostBody(GitHubModel):
-    """ReposOwnerRepoCommitsCommitShaCommentsPostBody"""
+class ReposOwnerRepoAttestationsSubjectDigestGetResponse200(GitHubModel):
+    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200"""
 
-    body: str = Field(description="The contents of the comment.")
-    path: Missing[str] = Field(
-        default=UNSET, description="Relative path of the file to comment on."
-    )
-    position: Missing[int] = Field(
-        default=UNSET, description="Line index in the diff to comment on."
-    )
-    line: Missing[int] = Field(
-        default=UNSET,
-        description="**Closing down notice**. Use **position** parameter instead. Line number in the file to comment on.",
-    )
+    attestations: Missing[
+        list[ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems]
+    ] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoCommitsCommitShaCommentsPostBody)
+class ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems(
+    GitHubModel
+):
+    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
 
-__all__ = ("ReposOwnerRepoCommitsCommitShaCommentsPostBody",)
+    repository_id: Missing[int] = Field(default=UNSET)
+    bundle_url: Missing[str] = Field(default=UNSET)
+    initiator: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(ReposOwnerRepoAttestationsSubjectDigestGetResponse200)
+model_rebuild(
+    ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems
+)
+
+__all__ = (
+    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200",
+    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems",
+)

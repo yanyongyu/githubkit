@@ -14,31 +14,43 @@ from typing import Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0596 import SearchResultTextMatchesItems
 
 
-class OrganizationSimpleWebhooks(GitHubModel):
-    """Organization Simple
+class LabelSearchResultItem(GitHubModel):
+    """Label Search Result Item
 
-    A GitHub organization. Webhook payloads contain the `organization` property when
-    the webhook is configured for an
-    organization, or when the event occurs from activity in a repository owned by an
-    organization.
+    Label Search Result Item
     """
 
-    login: str = Field()
     id: int = Field()
     node_id: str = Field()
     url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    hooks_url: str = Field()
-    issues_url: str = Field()
-    members_url: str = Field()
-    public_members_url: str = Field()
-    avatar_url: str = Field()
+    name: str = Field()
+    color: str = Field()
+    default: bool = Field()
     description: Union[str, None] = Field()
+    score: float = Field()
+    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
+        default=UNSET, title="Search Result Text Matches"
+    )
 
 
-model_rebuild(OrganizationSimpleWebhooks)
+class SearchLabelsGetResponse200(GitHubModel):
+    """SearchLabelsGetResponse200"""
 
-__all__ = ("OrganizationSimpleWebhooks",)
+    total_count: int = Field()
+    incomplete_results: bool = Field()
+    items: list[LabelSearchResultItem] = Field()
+
+
+model_rebuild(LabelSearchResultItem)
+model_rebuild(SearchLabelsGetResponse200)
+
+__all__ = (
+    "LabelSearchResultItem",
+    "SearchLabelsGetResponse200",
+)

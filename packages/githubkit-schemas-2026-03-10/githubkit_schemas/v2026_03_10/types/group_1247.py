@@ -9,36 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0Type(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneo
-    f0
+class ReposOwnerRepoDeleteResponse403Type(TypedDict):
+    """ReposOwnerRepoDeleteResponse403"""
 
-    Examples:
-        {'contexts': ['contexts']}
-    """
-
-    contexts: list[str]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneo
-    f0
+class ReposOwnerRepoDeleteResponse403TypeForResponse(TypedDict):
+    """ReposOwnerRepoDeleteResponse403"""
 
-    Examples:
-        {'contexts': ['contexts']}
-    """
-
-    contexts: list[str]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0Type",
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0TypeForResponse",
+    "ReposOwnerRepoDeleteResponse403Type",
+    "ReposOwnerRepoDeleteResponse403TypeForResponse",
 )

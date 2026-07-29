@@ -13,41 +13,48 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0428 import DependabotAlertType, DependabotAlertTypeForResponse
-from .group_0599 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0600 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0601 import (
+from .group_0618 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0619 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0620 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0602 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0621 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0696 import (
+    WebhookCodeScanningAlertFixedPropAlertType,
+    WebhookCodeScanningAlertFixedPropAlertTypeForResponse,
+)
 
 
-class WebhookDependabotAlertCreatedType(TypedDict):
-    """Dependabot alert created event"""
+class WebhookCodeScanningAlertFixedType(TypedDict):
+    """code_scanning_alert fixed event"""
 
-    action: Literal["created"]
-    alert: DependabotAlertType
+    action: Literal["fixed"]
+    alert: WebhookCodeScanningAlertFixedPropAlertType
+    commit_oid: str
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    ref: str
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookDependabotAlertCreatedTypeForResponse(TypedDict):
-    """Dependabot alert created event"""
+class WebhookCodeScanningAlertFixedTypeForResponse(TypedDict):
+    """code_scanning_alert fixed event"""
 
-    action: Literal["created"]
-    alert: DependabotAlertTypeForResponse
+    action: Literal["fixed"]
+    alert: WebhookCodeScanningAlertFixedPropAlertTypeForResponse
+    commit_oid: str
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    ref: str
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookDependabotAlertCreatedType",
-    "WebhookDependabotAlertCreatedTypeForResponse",
+    "WebhookCodeScanningAlertFixedType",
+    "WebhookCodeScanningAlertFixedTypeForResponse",
 )

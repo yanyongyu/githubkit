@@ -9,22 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgAttestationsDeleteRequestPostBodyOneof1Type(TypedDict):
-    """OrgsOrgAttestationsDeleteRequestPostBodyOneof1"""
+class OrgsOrgActionsRunnersGenerateJitconfigPostBodyType(TypedDict):
+    """OrgsOrgActionsRunnersGenerateJitconfigPostBody"""
 
-    attestation_ids: list[int]
+    name: str
+    runner_group_id: int
+    labels: list[str]
+    work_folder: NotRequired[str]
 
 
-class OrgsOrgAttestationsDeleteRequestPostBodyOneof1TypeForResponse(TypedDict):
-    """OrgsOrgAttestationsDeleteRequestPostBodyOneof1"""
+class OrgsOrgActionsRunnersGenerateJitconfigPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsRunnersGenerateJitconfigPostBody"""
 
-    attestation_ids: list[int]
+    name: str
+    runner_group_id: int
+    labels: list[str]
+    work_folder: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgAttestationsDeleteRequestPostBodyOneof1Type",
-    "OrgsOrgAttestationsDeleteRequestPostBodyOneof1TypeForResponse",
+    "OrgsOrgActionsRunnersGenerateJitconfigPostBodyType",
+    "OrgsOrgActionsRunnersGenerateJitconfigPostBodyTypeForResponse",
 )

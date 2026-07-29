@@ -9,24 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoActionsSecretsSecretNamePutBodyType(TypedDict):
-    """ReposOwnerRepoActionsSecretsSecretNamePutBody"""
+class OrgsOrgPersonalAccessTokenRequestsPostBodyType(TypedDict):
+    """OrgsOrgPersonalAccessTokenRequestsPostBody"""
 
-    encrypted_value: str
-    key_id: str
+    pat_request_ids: NotRequired[list[int]]
+    action: Literal["approve", "deny"]
+    reason: NotRequired[Union[str, None]]
 
 
-class ReposOwnerRepoActionsSecretsSecretNamePutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsSecretsSecretNamePutBody"""
+class OrgsOrgPersonalAccessTokenRequestsPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgPersonalAccessTokenRequestsPostBody"""
 
-    encrypted_value: str
-    key_id: str
+    pat_request_ids: NotRequired[list[int]]
+    action: Literal["approve", "deny"]
+    reason: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsSecretsSecretNamePutBodyType",
-    "ReposOwnerRepoActionsSecretsSecretNamePutBodyTypeForResponse",
+    "OrgsOrgPersonalAccessTokenRequestsPostBodyType",
+    "OrgsOrgPersonalAccessTokenRequestsPostBodyTypeForResponse",
 )

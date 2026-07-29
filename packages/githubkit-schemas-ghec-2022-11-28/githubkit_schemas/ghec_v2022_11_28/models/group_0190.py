@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,93 +18,31 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class BillingAiCreditUsageReportGhe(GitHubModel):
-    """BillingAiCreditUsageReportGhe"""
+class SecretScanningCustomPatternValidationError(GitHubModel):
+    """Secret Scanning Custom Pattern Validation Error
 
-    time_period: BillingAiCreditUsageReportGhePropTimePeriod = Field(alias="timePeriod")
-    enterprise: str = Field(
-        description="The name of the enterprise for the usage report."
+    A validation error for a custom pattern in a batch operation.
+    """
+
+    code: Missing[
+        Literal[
+            "invalid",
+            "unprocessable",
+            "start_delimiter",
+            "end_delimiter",
+            "name",
+            "must_match",
+            "must_not_match",
+            "custom_pattern_version_mismatch",
+        ]
+    ] = Field(
+        default=UNSET, description="A machine-readable code describing the error."
     )
-    user: Missing[str] = Field(
-        default=UNSET, description="The name of the user for the usage report."
-    )
-    organization: Missing[str] = Field(
-        default=UNSET, description="The name of the organization for the usage report."
-    )
-    product: Missing[str] = Field(
-        default=UNSET, description="The product for the usage report."
-    )
-    model: Missing[str] = Field(
-        default=UNSET, description="The model for the usage report."
-    )
-    cost_center: Missing[BillingAiCreditUsageReportGhePropCostCenter] = Field(
-        default=UNSET, alias="costCenter"
-    )
-    usage_items: list[BillingAiCreditUsageReportGhePropUsageItemsItems] = Field(
-        alias="usageItems"
+    message: Missing[str] = Field(
+        default=UNSET, description="A human-readable description of the error."
     )
 
 
-class BillingAiCreditUsageReportGhePropTimePeriod(GitHubModel):
-    """BillingAiCreditUsageReportGhePropTimePeriod"""
+model_rebuild(SecretScanningCustomPatternValidationError)
 
-    year: int = Field(description="The year for the usage report.")
-    month: Missing[int] = Field(
-        default=UNSET, description="The month for the usage report."
-    )
-    day: Missing[int] = Field(
-        default=UNSET, description="The day for the usage report."
-    )
-
-
-class BillingAiCreditUsageReportGhePropCostCenter(GitHubModel):
-    """BillingAiCreditUsageReportGhePropCostCenter"""
-
-    id: str = Field(description="The unique identifier of the cost center.")
-    name: str = Field(description="The name of the cost center.")
-
-
-class BillingAiCreditUsageReportGhePropUsageItemsItems(GitHubModel):
-    """BillingAiCreditUsageReportGhePropUsageItemsItems"""
-
-    product: str = Field(description="Product name.")
-    sku: str = Field(description="SKU name.")
-    model: str = Field(description="Model name.")
-    unit_type: str = Field(
-        alias="unitType", description="Unit type of the usage line item."
-    )
-    price_per_unit: float = Field(
-        alias="pricePerUnit", description="Price per unit of the usage line item."
-    )
-    gross_quantity: float = Field(
-        alias="grossQuantity", description="Gross quantity of the usage line item."
-    )
-    gross_amount: float = Field(
-        alias="grossAmount", description="Gross amount of the usage line item."
-    )
-    discount_quantity: float = Field(
-        alias="discountQuantity",
-        description="Discount quantity of the usage line item.",
-    )
-    discount_amount: float = Field(
-        alias="discountAmount", description="Discount amount of the usage line item."
-    )
-    net_quantity: float = Field(
-        alias="netQuantity", description="Net quantity of the usage line item."
-    )
-    net_amount: float = Field(
-        alias="netAmount", description="Net amount of the usage line item."
-    )
-
-
-model_rebuild(BillingAiCreditUsageReportGhe)
-model_rebuild(BillingAiCreditUsageReportGhePropTimePeriod)
-model_rebuild(BillingAiCreditUsageReportGhePropCostCenter)
-model_rebuild(BillingAiCreditUsageReportGhePropUsageItemsItems)
-
-__all__ = (
-    "BillingAiCreditUsageReportGhe",
-    "BillingAiCreditUsageReportGhePropCostCenter",
-    "BillingAiCreditUsageReportGhePropTimePeriod",
-    "BillingAiCreditUsageReportGhePropUsageItemsItems",
-)
+__all__ = ("SecretScanningCustomPatternValidationError",)

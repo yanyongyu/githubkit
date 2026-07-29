@@ -11,18 +11,36 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsRunnersRunnerIdLabelsPutBody(GitHubModel):
-    """OrgsOrgActionsRunnersRunnerIdLabelsPutBody"""
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody(
+    GitHubModel
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody"""
 
-    labels: list[str] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        description="The names of the custom labels to set for the runner. You can pass an empty array to remove all custom labels.",
+    users: Missing[list[str]] = Field(
+        default=UNSET,
+        description="The usernames of the users to remove from the cost center.",
+    )
+    organizations: Missing[list[str]] = Field(
+        default=UNSET, description="The organizations to remove from the cost center."
+    )
+    repositories: Missing[list[str]] = Field(
+        default=UNSET, description="The repositories to remove from the cost center."
+    )
+    enterprise_teams: Missing[list[str]] = Field(
+        default=UNSET,
+        description="The enterprise teams to remove from the cost center.",
     )
 
 
-model_rebuild(OrgsOrgActionsRunnersRunnerIdLabelsPutBody)
+model_rebuild(
+    EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody
+)
 
-__all__ = ("OrgsOrgActionsRunnersRunnerIdLabelsPutBody",)
+__all__ = (
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody",
+)

@@ -9,27 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class CodeScanningAnalysisDeletion(GitHubModel):
-    """Analysis deletion
+class CodeQualitySetup(GitHubModel):
+    """CodeQualitySetup
 
-    Successful deletion of a code scanning analysis
+    Configuration for code quality setup.
     """
 
-    next_analysis_url: Union[str, None] = Field(
-        description="Next deletable analysis in chain, without last analysis deletion confirmation"
+    state: Missing[Literal["configured", "not-configured"]] = Field(
+        default=UNSET, description="Code quality setup has been configured or not."
     )
-    confirm_delete_url: Union[str, None] = Field(
-        description="Next deletable analysis in chain, with last analysis deletion confirmation"
+    languages: Missing[
+        list[
+            Literal[
+                "csharp",
+                "go",
+                "java-kotlin",
+                "javascript-typescript",
+                "python",
+                "ruby",
+                "rust",
+            ]
+        ]
+    ] = Field(default=UNSET, description="Languages to be analyzed.")
+    runner_type: Missing[Union[None, Literal["standard", "labeled"]]] = Field(
+        default=UNSET, description="Runner type to be used."
+    )
+    runner_label: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="Runner label to be used if the runner type is labeled.",
+    )
+    updated_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET, description="Timestamp of latest configuration update."
+    )
+    schedule: Missing[Union[None, Literal["weekly"]]] = Field(
+        default=UNSET, description="The frequency of the periodic analysis."
+    )
+    ai_findings_option: Missing[Union[None, Literal["disabled", "on_push"]]] = Field(
+        default=UNSET, description="The AI findings configuration for the repository."
     )
 
 
-model_rebuild(CodeScanningAnalysisDeletion)
+model_rebuild(CodeQualitySetup)
 
-__all__ = ("CodeScanningAnalysisDeletion",)
+__all__ = ("CodeQualitySetup",)

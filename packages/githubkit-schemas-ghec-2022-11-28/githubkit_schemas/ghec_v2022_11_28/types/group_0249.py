@@ -9,285 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class SecurityAndAnalysisType(TypedDict):
-    """SecurityAndAnalysis"""
+class LicenseType(TypedDict):
+    """License
 
-    advanced_security: NotRequired[SecurityAndAnalysisPropAdvancedSecurityType]
-    code_security: NotRequired[SecurityAndAnalysisPropCodeSecurityType]
-    dependabot_security_updates: NotRequired[
-        SecurityAndAnalysisPropDependabotSecurityUpdatesType
-    ]
-    secret_scanning: NotRequired[SecurityAndAnalysisPropSecretScanningType]
-    secret_scanning_push_protection: NotRequired[
-        SecurityAndAnalysisPropSecretScanningPushProtectionType
-    ]
-    secret_scanning_non_provider_patterns: NotRequired[
-        SecurityAndAnalysisPropSecretScanningNonProviderPatternsType
-    ]
-    secret_scanning_ai_detection: NotRequired[
-        SecurityAndAnalysisPropSecretScanningAiDetectionType
-    ]
-    secret_scanning_validity_checks: NotRequired[
-        SecurityAndAnalysisPropSecretScanningValidityChecksType
-    ]
-    secret_scanning_delegated_alert_dismissal: NotRequired[
-        SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissalType
-    ]
-    secret_scanning_delegated_bypass: NotRequired[
-        SecurityAndAnalysisPropSecretScanningDelegatedBypassType
-    ]
-    secret_scanning_delegated_bypass_options: NotRequired[
-        SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsType
-    ]
-
-
-class SecurityAndAnalysisTypeForResponse(TypedDict):
-    """SecurityAndAnalysis"""
-
-    advanced_security: NotRequired[
-        SecurityAndAnalysisPropAdvancedSecurityTypeForResponse
-    ]
-    code_security: NotRequired[SecurityAndAnalysisPropCodeSecurityTypeForResponse]
-    dependabot_security_updates: NotRequired[
-        SecurityAndAnalysisPropDependabotSecurityUpdatesTypeForResponse
-    ]
-    secret_scanning: NotRequired[SecurityAndAnalysisPropSecretScanningTypeForResponse]
-    secret_scanning_push_protection: NotRequired[
-        SecurityAndAnalysisPropSecretScanningPushProtectionTypeForResponse
-    ]
-    secret_scanning_non_provider_patterns: NotRequired[
-        SecurityAndAnalysisPropSecretScanningNonProviderPatternsTypeForResponse
-    ]
-    secret_scanning_ai_detection: NotRequired[
-        SecurityAndAnalysisPropSecretScanningAiDetectionTypeForResponse
-    ]
-    secret_scanning_validity_checks: NotRequired[
-        SecurityAndAnalysisPropSecretScanningValidityChecksTypeForResponse
-    ]
-    secret_scanning_delegated_alert_dismissal: NotRequired[
-        SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissalTypeForResponse
-    ]
-    secret_scanning_delegated_bypass: NotRequired[
-        SecurityAndAnalysisPropSecretScanningDelegatedBypassTypeForResponse
-    ]
-    secret_scanning_delegated_bypass_options: NotRequired[
-        SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsTypeForResponse
-    ]
-
-
-class SecurityAndAnalysisPropAdvancedSecurityType(TypedDict):
-    """SecurityAndAnalysisPropAdvancedSecurity
-
-    Enable or disable GitHub Advanced Security for the repository.
-
-    For standalone Code Scanning or Secret Protection products, this parameter
-    cannot be used.
+    License
     """
 
-    status: NotRequired[Literal["enabled", "disabled"]]
+    key: str
+    name: str
+    spdx_id: Union[str, None]
+    url: Union[str, None]
+    node_id: str
+    html_url: str
+    description: str
+    implementation: str
+    permissions: list[str]
+    conditions: list[str]
+    limitations: list[str]
+    body: str
+    featured: bool
 
 
-class SecurityAndAnalysisPropAdvancedSecurityTypeForResponse(TypedDict):
-    """SecurityAndAnalysisPropAdvancedSecurity
+class LicenseTypeForResponse(TypedDict):
+    """License
 
-    Enable or disable GitHub Advanced Security for the repository.
-
-    For standalone Code Scanning or Secret Protection products, this parameter
-    cannot be used.
+    License
     """
 
-    status: NotRequired[Literal["enabled", "disabled"]]
-
-
-class SecurityAndAnalysisPropCodeSecurityType(TypedDict):
-    """SecurityAndAnalysisPropCodeSecurity"""
-
-    status: NotRequired[Literal["enabled", "disabled"]]
-
-
-class SecurityAndAnalysisPropCodeSecurityTypeForResponse(TypedDict):
-    """SecurityAndAnalysisPropCodeSecurity"""
-
-    status: NotRequired[Literal["enabled", "disabled"]]
-
-
-class SecurityAndAnalysisPropDependabotSecurityUpdatesType(TypedDict):
-    """SecurityAndAnalysisPropDependabotSecurityUpdates
-
-    Enable or disable Dependabot security updates for the repository.
-    """
-
-    status: NotRequired[Literal["enabled", "disabled"]]
-
-
-class SecurityAndAnalysisPropDependabotSecurityUpdatesTypeForResponse(TypedDict):
-    """SecurityAndAnalysisPropDependabotSecurityUpdates
-
-    Enable or disable Dependabot security updates for the repository.
-    """
-
-    status: NotRequired[Literal["enabled", "disabled"]]
-
-
-class SecurityAndAnalysisPropSecretScanningType(TypedDict):
-    """SecurityAndAnalysisPropSecretScanning"""
-
-    status: NotRequired[Literal["enabled", "disabled"]]
-
-
-class SecurityAndAnalysisPropSecretScanningTypeForResponse(TypedDict):
-    """SecurityAndAnalysisPropSecretScanning"""
-
-    status: NotRequired[Literal["enabled", "disabled"]]
-
-
-class SecurityAndAnalysisPropSecretScanningPushProtectionType(TypedDict):
-    """SecurityAndAnalysisPropSecretScanningPushProtection"""
-
-    status: NotRequired[Literal["enabled", "disabled"]]
-
-
-class SecurityAndAnalysisPropSecretScanningPushProtectionTypeForResponse(TypedDict):
-    """SecurityAndAnalysisPropSecretScanningPushProtection"""
-
-    status: NotRequired[Literal["enabled", "disabled"]]
-
-
-class SecurityAndAnalysisPropSecretScanningNonProviderPatternsType(TypedDict):
-    """SecurityAndAnalysisPropSecretScanningNonProviderPatterns"""
-
-    status: NotRequired[Literal["enabled", "disabled"]]
-
-
-class SecurityAndAnalysisPropSecretScanningNonProviderPatternsTypeForResponse(
-    TypedDict
-):
-    """SecurityAndAnalysisPropSecretScanningNonProviderPatterns"""
-
-    status: NotRequired[Literal["enabled", "disabled"]]
-
-
-class SecurityAndAnalysisPropSecretScanningAiDetectionType(TypedDict):
-    """SecurityAndAnalysisPropSecretScanningAiDetection"""
-
-    status: NotRequired[Literal["enabled", "disabled"]]
-
-
-class SecurityAndAnalysisPropSecretScanningAiDetectionTypeForResponse(TypedDict):
-    """SecurityAndAnalysisPropSecretScanningAiDetection"""
-
-    status: NotRequired[Literal["enabled", "disabled"]]
-
-
-class SecurityAndAnalysisPropSecretScanningValidityChecksType(TypedDict):
-    """SecurityAndAnalysisPropSecretScanningValidityChecks"""
-
-    status: NotRequired[Literal["enabled", "disabled"]]
-
-
-class SecurityAndAnalysisPropSecretScanningValidityChecksTypeForResponse(TypedDict):
-    """SecurityAndAnalysisPropSecretScanningValidityChecks"""
-
-    status: NotRequired[Literal["enabled", "disabled"]]
-
-
-class SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissalType(TypedDict):
-    """SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissal"""
-
-    status: NotRequired[Literal["enabled", "disabled"]]
-
-
-class SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissalTypeForResponse(
-    TypedDict
-):
-    """SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissal"""
-
-    status: NotRequired[Literal["enabled", "disabled"]]
-
-
-class SecurityAndAnalysisPropSecretScanningDelegatedBypassType(TypedDict):
-    """SecurityAndAnalysisPropSecretScanningDelegatedBypass"""
-
-    status: NotRequired[Literal["enabled", "disabled"]]
-
-
-class SecurityAndAnalysisPropSecretScanningDelegatedBypassTypeForResponse(TypedDict):
-    """SecurityAndAnalysisPropSecretScanningDelegatedBypass"""
-
-    status: NotRequired[Literal["enabled", "disabled"]]
-
-
-class SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsType(TypedDict):
-    """SecurityAndAnalysisPropSecretScanningDelegatedBypassOptions"""
-
-    reviewers: NotRequired[
-        list[
-            SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType
-        ]
-    ]
-
-
-class SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsTypeForResponse(
-    TypedDict
-):
-    """SecurityAndAnalysisPropSecretScanningDelegatedBypassOptions"""
-
-    reviewers: NotRequired[
-        list[
-            SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItemsTypeForResponse
-        ]
-    ]
-
-
-class SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType(
-    TypedDict
-):
-    """SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItems"""
-
-    reviewer_id: int
-    reviewer_type: Literal["TEAM", "ROLE"]
-    mode: NotRequired[Literal["ALWAYS", "EXEMPT"]]
-
-
-class SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItemsTypeForResponse(
-    TypedDict
-):
-    """SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItems"""
-
-    reviewer_id: int
-    reviewer_type: Literal["TEAM", "ROLE"]
-    mode: NotRequired[Literal["ALWAYS", "EXEMPT"]]
+    key: str
+    name: str
+    spdx_id: Union[str, None]
+    url: Union[str, None]
+    node_id: str
+    html_url: str
+    description: str
+    implementation: str
+    permissions: list[str]
+    conditions: list[str]
+    limitations: list[str]
+    body: str
+    featured: bool
 
 
 __all__ = (
-    "SecurityAndAnalysisPropAdvancedSecurityType",
-    "SecurityAndAnalysisPropAdvancedSecurityTypeForResponse",
-    "SecurityAndAnalysisPropCodeSecurityType",
-    "SecurityAndAnalysisPropCodeSecurityTypeForResponse",
-    "SecurityAndAnalysisPropDependabotSecurityUpdatesType",
-    "SecurityAndAnalysisPropDependabotSecurityUpdatesTypeForResponse",
-    "SecurityAndAnalysisPropSecretScanningAiDetectionType",
-    "SecurityAndAnalysisPropSecretScanningAiDetectionTypeForResponse",
-    "SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissalType",
-    "SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissalTypeForResponse",
-    "SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType",
-    "SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItemsTypeForResponse",
-    "SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsType",
-    "SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsTypeForResponse",
-    "SecurityAndAnalysisPropSecretScanningDelegatedBypassType",
-    "SecurityAndAnalysisPropSecretScanningDelegatedBypassTypeForResponse",
-    "SecurityAndAnalysisPropSecretScanningNonProviderPatternsType",
-    "SecurityAndAnalysisPropSecretScanningNonProviderPatternsTypeForResponse",
-    "SecurityAndAnalysisPropSecretScanningPushProtectionType",
-    "SecurityAndAnalysisPropSecretScanningPushProtectionTypeForResponse",
-    "SecurityAndAnalysisPropSecretScanningType",
-    "SecurityAndAnalysisPropSecretScanningTypeForResponse",
-    "SecurityAndAnalysisPropSecretScanningValidityChecksType",
-    "SecurityAndAnalysisPropSecretScanningValidityChecksTypeForResponse",
-    "SecurityAndAnalysisType",
-    "SecurityAndAnalysisTypeForResponse",
+    "LicenseType",
+    "LicenseTypeForResponse",
 )

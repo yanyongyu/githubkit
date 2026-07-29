@@ -9,80 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0564 import MetaType, MetaTypeForResponse
-from .group_0569 import (
-    UserEmailsResponseItemsType,
-    UserEmailsResponseItemsTypeForResponse,
-    UserNameResponseType,
-    UserNameResponseTypeForResponse,
-)
-from .group_0570 import UserRoleItemsType, UserRoleItemsTypeForResponse
-from .group_0574 import (
-    ScimEnterpriseUserResponseAllof1PropGroupsItemsType,
-    ScimEnterpriseUserResponseAllof1PropGroupsItemsTypeForResponse,
-)
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class ScimEnterpriseUserResponseType(TypedDict):
-    """ScimEnterpriseUserResponse"""
+class ContributorActivityType(TypedDict):
+    """Contributor Activity
 
-    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
-    external_id: NotRequired[Union[str, None]]
-    active: bool
-    user_name: NotRequired[str]
-    name: NotRequired[UserNameResponseType]
-    display_name: NotRequired[Union[str, None]]
-    emails: list[UserEmailsResponseItemsType]
-    roles: NotRequired[list[UserRoleItemsType]]
-    id: str
-    groups: NotRequired[list[ScimEnterpriseUserResponseAllof1PropGroupsItemsType]]
-    meta: MetaType
+    Contributor Activity
+    """
+
+    author: Union[None, SimpleUserType]
+    total: int
+    weeks: list[ContributorActivityPropWeeksItemsType]
 
 
-class ScimEnterpriseUserResponseTypeForResponse(TypedDict):
-    """ScimEnterpriseUserResponse"""
+class ContributorActivityTypeForResponse(TypedDict):
+    """Contributor Activity
 
-    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
-    external_id: NotRequired[Union[str, None]]
-    active: bool
-    user_name: NotRequired[str]
-    name: NotRequired[UserNameResponseTypeForResponse]
-    display_name: NotRequired[Union[str, None]]
-    emails: list[UserEmailsResponseItemsTypeForResponse]
-    roles: NotRequired[list[UserRoleItemsTypeForResponse]]
-    id: str
-    groups: NotRequired[
-        list[ScimEnterpriseUserResponseAllof1PropGroupsItemsTypeForResponse]
-    ]
-    meta: MetaTypeForResponse
+    Contributor Activity
+    """
+
+    author: Union[None, SimpleUserTypeForResponse]
+    total: int
+    weeks: list[ContributorActivityPropWeeksItemsTypeForResponse]
 
 
-class ScimEnterpriseUserListType(TypedDict):
-    """ScimEnterpriseUserList"""
+class ContributorActivityPropWeeksItemsType(TypedDict):
+    """ContributorActivityPropWeeksItems"""
 
-    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:ListResponse"]]
-    total_results: int
-    resources: list[ScimEnterpriseUserResponseType]
-    start_index: int
-    items_per_page: int
+    w: NotRequired[int]
+    a: NotRequired[int]
+    d: NotRequired[int]
+    c: NotRequired[int]
 
 
-class ScimEnterpriseUserListTypeForResponse(TypedDict):
-    """ScimEnterpriseUserList"""
+class ContributorActivityPropWeeksItemsTypeForResponse(TypedDict):
+    """ContributorActivityPropWeeksItems"""
 
-    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:ListResponse"]]
-    total_results: int
-    resources: list[ScimEnterpriseUserResponseTypeForResponse]
-    start_index: int
-    items_per_page: int
+    w: NotRequired[int]
+    a: NotRequired[int]
+    d: NotRequired[int]
+    c: NotRequired[int]
 
 
 __all__ = (
-    "ScimEnterpriseUserListType",
-    "ScimEnterpriseUserListTypeForResponse",
-    "ScimEnterpriseUserResponseType",
-    "ScimEnterpriseUserResponseTypeForResponse",
+    "ContributorActivityPropWeeksItemsType",
+    "ContributorActivityPropWeeksItemsTypeForResponse",
+    "ContributorActivityType",
+    "ContributorActivityTypeForResponse",
 )

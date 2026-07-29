@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -17,52 +17,117 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0001 import CvssSeverities
 
-class AgentsReposOwnerRepoTasksGetResponse401(GitHubModel):
-    """AgentsReposOwnerRepoTasksGetResponse401
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisory(GitHubModel):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisory
+
+    The details of the security advisory, including summary, description, and
+    severity.
     """
 
-    message: str = Field(
-        description='Summary message (e.g. "Validation Failed", "Not Found")'
+    cvss_severities: Missing[Union[CvssSeverities, None]] = Field(default=UNSET)
+    cwes: list[WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItems] = (
+        Field()
     )
-    errors: Missing[list[AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems]] = (
-        Field(
-            default=UNSET,
-            description="List of validation errors (present only for 422 responses)",
-        )
-    )
-    documentation_url: str = Field(description="URL to relevant API documentation")
+    description: str = Field()
+    ghsa_id: str = Field()
+    identifiers: list[
+        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItems
+    ] = Field()
+    published_at: str = Field()
+    references: list[
+        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItems
+    ] = Field()
+    severity: str = Field()
+    summary: str = Field()
+    updated_at: str = Field()
+    vulnerabilities: list[
+        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItems
+    ] = Field()
+    withdrawn_at: str = Field()
 
 
-class AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems(GitHubModel):
-    """AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItems(GitHubModel):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItems"""
 
-    A single validation error
+    cwe_id: str = Field()
+    name: str = Field()
+
+
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItems(
+    GitHubModel
+):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItems"""
+
+    type: str = Field()
+    value: str = Field()
+
+
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItems(
+    GitHubModel
+):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItems"""
+
+    url: str = Field()
+
+
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItems(
+    GitHubModel
+):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItems"""
+
+    first_patched_version: Union[
+        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion,
+        None,
+    ] = Field()
+    package: WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackage = Field()
+    severity: str = Field()
+    vulnerable_version_range: str = Field()
+
+
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion(
+    GitHubModel
+):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsProp
+    FirstPatchedVersion
     """
 
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ] = Field(description="Machine-readable error code")
-    message: Missing[str] = Field(
-        default=UNSET,
-        description='Human-readable message (populated when code is "custom")',
-    )
+    identifier: str = Field()
 
 
-model_rebuild(AgentsReposOwnerRepoTasksGetResponse401)
-model_rebuild(AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems)
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackage(
+    GitHubModel
+):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsProp
+    Package
+    """
+
+    ecosystem: str = Field()
+    name: str = Field()
+
+
+model_rebuild(WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisory)
+model_rebuild(WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItems)
+model_rebuild(WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItems)
+model_rebuild(WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItems)
+model_rebuild(
+    WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItems
+)
+model_rebuild(
+    WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion
+)
+model_rebuild(
+    WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackage
+)
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksGetResponse401",
-    "AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisory",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItems",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItems",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItems",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItems",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackage",
 )

@@ -9,80 +9,106 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Any, TypeAlias
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0375 import VerificationType, VerificationTypeForResponse
+from .group_0446 import MetadataType, MetadataTypeForResponse
 
 
-class GitTagType(TypedDict):
-    """Git Tag
+class SnapshotType(TypedDict):
+    """snapshot
 
-    Metadata for a Git tag
+    Create a new snapshot of a repository's dependencies.
     """
 
-    node_id: str
-    tag: str
+    version: int
+    job: SnapshotPropJobType
     sha: str
-    url: str
-    message: str
-    tagger: GitTagPropTaggerType
-    object_: GitTagPropObjectType
-    verification: NotRequired[VerificationType]
+    ref: str
+    detector: SnapshotPropDetectorType
+    metadata: NotRequired[MetadataType]
+    manifests: NotRequired[SnapshotPropManifestsType]
+    scanned: _dt.datetime
 
 
-class GitTagTypeForResponse(TypedDict):
-    """Git Tag
+class SnapshotTypeForResponse(TypedDict):
+    """snapshot
 
-    Metadata for a Git tag
+    Create a new snapshot of a repository's dependencies.
     """
 
-    node_id: str
-    tag: str
+    version: int
+    job: SnapshotPropJobTypeForResponse
     sha: str
-    url: str
-    message: str
-    tagger: GitTagPropTaggerTypeForResponse
-    object_: GitTagPropObjectTypeForResponse
-    verification: NotRequired[VerificationTypeForResponse]
+    ref: str
+    detector: SnapshotPropDetectorTypeForResponse
+    metadata: NotRequired[MetadataTypeForResponse]
+    manifests: NotRequired[SnapshotPropManifestsTypeForResponse]
+    scanned: str
 
 
-class GitTagPropTaggerType(TypedDict):
-    """GitTagPropTagger"""
+class SnapshotPropJobType(TypedDict):
+    """SnapshotPropJob"""
 
-    date: str
-    email: str
+    id: str
+    correlator: str
+    html_url: NotRequired[str]
+
+
+class SnapshotPropJobTypeForResponse(TypedDict):
+    """SnapshotPropJob"""
+
+    id: str
+    correlator: str
+    html_url: NotRequired[str]
+
+
+class SnapshotPropDetectorType(TypedDict):
+    """SnapshotPropDetector
+
+    A description of the detector used.
+    """
+
     name: str
+    version: str
+    url: str
 
 
-class GitTagPropTaggerTypeForResponse(TypedDict):
-    """GitTagPropTagger"""
+class SnapshotPropDetectorTypeForResponse(TypedDict):
+    """SnapshotPropDetector
 
-    date: str
-    email: str
+    A description of the detector used.
+    """
+
     name: str
-
-
-class GitTagPropObjectType(TypedDict):
-    """GitTagPropObject"""
-
-    sha: str
-    type: str
+    version: str
     url: str
 
 
-class GitTagPropObjectTypeForResponse(TypedDict):
-    """GitTagPropObject"""
+SnapshotPropManifestsType: TypeAlias = dict[str, Any]
+"""SnapshotPropManifests
 
-    sha: str
-    type: str
-    url: str
+A collection of package manifests, which are a collection of related
+dependencies declared in a file or representing a logical group of dependencies.
+"""
+
+
+SnapshotPropManifestsTypeForResponse: TypeAlias = dict[str, Any]
+"""SnapshotPropManifests
+
+A collection of package manifests, which are a collection of related
+dependencies declared in a file or representing a logical group of dependencies.
+"""
 
 
 __all__ = (
-    "GitTagPropObjectType",
-    "GitTagPropObjectTypeForResponse",
-    "GitTagPropTaggerType",
-    "GitTagPropTaggerTypeForResponse",
-    "GitTagType",
-    "GitTagTypeForResponse",
+    "SnapshotPropDetectorType",
+    "SnapshotPropDetectorTypeForResponse",
+    "SnapshotPropJobType",
+    "SnapshotPropJobTypeForResponse",
+    "SnapshotPropManifestsType",
+    "SnapshotPropManifestsTypeForResponse",
+    "SnapshotType",
+    "SnapshotTypeForResponse",
 )

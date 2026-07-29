@@ -9,28 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoMergesPostBody(GitHubModel):
-    """ReposOwnerRepoMergesPostBody"""
+class ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBody(GitHubModel):
+    """ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBody"""
 
-    base: str = Field(
-        description="The name of the base branch that the head will be merged into."
+    status: Literal["approve", "deny"] = Field(
+        description="The review action to perform on the bypass request."
     )
-    head: str = Field(
-        description="The head to merge. This can be a branch name or a commit SHA1."
-    )
-    commit_message: Missing[str] = Field(
-        default=UNSET,
-        description="Commit message to use for the merge commit. If omitted, a default message will be used.",
+    message: str = Field(
+        description="A message to include with the review. Has a maximum character length of 2048."
     )
 
 
-model_rebuild(ReposOwnerRepoMergesPostBody)
+model_rebuild(ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBody)
 
-__all__ = ("ReposOwnerRepoMergesPostBody",)
+__all__ = ("ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBody",)

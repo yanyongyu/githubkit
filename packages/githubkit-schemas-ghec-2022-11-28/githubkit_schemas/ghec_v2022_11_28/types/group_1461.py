@@ -9,50 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_1460 import (
-    ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentType,
-    ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentTypeForResponse,
-)
+from .group_0362 import WorkflowRunType, WorkflowRunTypeForResponse
 
 
-class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0Type(TypedDict):
-    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0"""
+class ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200"""
 
-    state: Literal["dismissed", "open"]
-    dismissed_reason: NotRequired[
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ]
-    ]
-    dismissed_comment: NotRequired[str]
-    assignees: NotRequired[list[str]]
-    agent_assignment: NotRequired[
-        ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentType
-    ]
+    total_count: int
+    workflow_runs: list[WorkflowRunType]
 
 
-class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0TypeForResponse(
+class ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200TypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0"""
+    """ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200"""
 
-    state: Literal["dismissed", "open"]
-    dismissed_reason: NotRequired[
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ]
-    ]
-    dismissed_comment: NotRequired[str]
-    assignees: NotRequired[list[str]]
-    agent_assignment: NotRequired[
-        ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentTypeForResponse
-    ]
+    total_count: int
+    workflow_runs: list[WorkflowRunTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0Type",
-    "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0TypeForResponse",
+    "ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200Type",
+    "ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200TypeForResponse",
 )

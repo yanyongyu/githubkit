@@ -18,17 +18,22 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0599 import EnterpriseWebhooks
-from .group_0600 import SimpleInstallation
-from .group_0601 import OrganizationSimpleWebhooks
-from .group_0602 import RepositoryWebhooks
-from .group_0642 import WebhooksRelease1
+from .group_0618 import EnterpriseWebhooks
+from .group_0619 import SimpleInstallation
+from .group_0620 import OrganizationSimpleWebhooks
+from .group_0621 import RepositoryWebhooks
+from .group_0658 import WebhooksReviewComment
+from .group_0968 import WebhookPullRequestReviewCommentDeletedPropPullRequest
 
 
-class WebhookReleasePublished(GitHubModel):
-    """release published event"""
+class WebhookPullRequestReviewCommentDeleted(GitHubModel):
+    """pull_request_review_comment deleted event"""
 
-    action: Literal["published"] = Field()
+    action: Literal["deleted"] = Field()
+    comment: WebhooksReviewComment = Field(
+        title="Pull Request Review Comment",
+        description="The [comment](https://docs.github.com/enterprise-cloud@latest/rest/pulls/comments#get-a-review-comment-for-a-pull-request) itself.",
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -44,19 +49,14 @@ class WebhookReleasePublished(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    release: WebhooksRelease1 = Field(
-        title="Release",
-        description="The [release](https://docs.github.com/enterprise-cloud@latest/rest/releases/releases/#get-a-release) object.",
-    )
+    pull_request: WebhookPullRequestReviewCommentDeletedPropPullRequest = Field()
     repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookReleasePublished)
+model_rebuild(WebhookPullRequestReviewCommentDeleted)
 
-__all__ = ("WebhookReleasePublished",)
+__all__ = ("WebhookPullRequestReviewCommentDeleted",)

@@ -9,30 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200Type(TypedDict):
-    """EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200
+class EnterprisesEnterpriseActionsPermissionsPutBodyType(TypedDict):
+    """EnterprisesEnterpriseActionsPermissionsPutBody"""
 
-    The total number of seats set to "pending cancellation" for the specified users.
-    """
+    enabled_organizations: Literal["all", "none", "selected"]
+    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
+    sha_pinning_required: NotRequired[bool]
 
-    seats_cancelled: int
 
+class EnterprisesEnterpriseActionsPermissionsPutBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseActionsPermissionsPutBody"""
 
-class EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200
-
-    The total number of seats set to "pending cancellation" for the specified users.
-    """
-
-    seats_cancelled: int
+    enabled_organizations: Literal["all", "none", "selected"]
+    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
+    sha_pinning_required: NotRequired[bool]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200Type",
-    "EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200TypeForResponse",
+    "EnterprisesEnterpriseActionsPermissionsPutBodyType",
+    "EnterprisesEnterpriseActionsPermissionsPutBodyTypeForResponse",
 )

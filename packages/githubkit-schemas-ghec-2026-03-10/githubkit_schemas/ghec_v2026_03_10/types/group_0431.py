@@ -12,30 +12,53 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0430 import MetadataType, MetadataTypeForResponse
+from .group_0380 import DiffEntryType, DiffEntryTypeForResponse
+from .group_0381 import CommitType, CommitTypeForResponse
 
 
-class DependencyType(TypedDict):
-    """Dependency"""
+class CommitComparisonType(TypedDict):
+    """Commit Comparison
 
-    package_url: NotRequired[str]
-    metadata: NotRequired[MetadataType]
-    relationship: NotRequired[Literal["direct", "indirect"]]
-    scope: NotRequired[Literal["runtime", "development"]]
-    dependencies: NotRequired[list[str]]
+    Commit Comparison
+    """
+
+    url: str
+    html_url: str
+    permalink_url: str
+    diff_url: str
+    patch_url: str
+    base_commit: CommitType
+    merge_base_commit: CommitType
+    status: Literal["diverged", "ahead", "behind", "identical"]
+    ahead_by: int
+    behind_by: int
+    total_commits: int
+    commits: list[CommitType]
+    files: NotRequired[list[DiffEntryType]]
 
 
-class DependencyTypeForResponse(TypedDict):
-    """Dependency"""
+class CommitComparisonTypeForResponse(TypedDict):
+    """Commit Comparison
 
-    package_url: NotRequired[str]
-    metadata: NotRequired[MetadataTypeForResponse]
-    relationship: NotRequired[Literal["direct", "indirect"]]
-    scope: NotRequired[Literal["runtime", "development"]]
-    dependencies: NotRequired[list[str]]
+    Commit Comparison
+    """
+
+    url: str
+    html_url: str
+    permalink_url: str
+    diff_url: str
+    patch_url: str
+    base_commit: CommitTypeForResponse
+    merge_base_commit: CommitTypeForResponse
+    status: Literal["diverged", "ahead", "behind", "identical"]
+    ahead_by: int
+    behind_by: int
+    total_commits: int
+    commits: list[CommitTypeForResponse]
+    files: NotRequired[list[DiffEntryTypeForResponse]]
 
 
 __all__ = (
-    "DependencyType",
-    "DependencyTypeForResponse",
+    "CommitComparisonType",
+    "CommitComparisonTypeForResponse",
 )

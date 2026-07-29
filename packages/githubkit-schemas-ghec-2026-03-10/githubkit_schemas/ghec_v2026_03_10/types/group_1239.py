@@ -12,25 +12,29 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsRunnersGenerateJitconfigPostBodyType(TypedDict):
-    """OrgsOrgActionsRunnersGenerateJitconfigPostBody"""
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBodyType(
+    TypedDict
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody"""
 
-    name: str
-    runner_group_id: int
-    labels: list[str]
-    work_folder: NotRequired[str]
+    users: NotRequired[list[str]]
+    organizations: NotRequired[list[str]]
+    repositories: NotRequired[list[str]]
+    enterprise_teams: NotRequired[list[str]]
 
 
-class OrgsOrgActionsRunnersGenerateJitconfigPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgActionsRunnersGenerateJitconfigPostBody"""
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody"""
 
-    name: str
-    runner_group_id: int
-    labels: list[str]
-    work_folder: NotRequired[str]
+    users: NotRequired[list[str]]
+    organizations: NotRequired[list[str]]
+    repositories: NotRequired[list[str]]
+    enterprise_teams: NotRequired[list[str]]
 
 
 __all__ = (
-    "OrgsOrgActionsRunnersGenerateJitconfigPostBodyType",
-    "OrgsOrgActionsRunnersGenerateJitconfigPostBodyTypeForResponse",
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBodyType",
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBodyTypeForResponse",
 )

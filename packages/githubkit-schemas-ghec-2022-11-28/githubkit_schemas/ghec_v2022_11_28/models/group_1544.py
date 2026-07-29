@@ -9,29 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_1542 import ReposOwnerRepoPagesPostBodyPropSource
+from .group_0358 import ActionsVariable
 
 
-class ReposOwnerRepoPagesPostBodyAnyof1(GitHubModel):
-    """ReposOwnerRepoPagesPostBodyAnyof1"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200(GitHubModel):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200"""
 
-    build_type: Literal["legacy", "workflow"] = Field(
-        description='The process in which the Page will be built. Possible values are `"legacy"` and `"workflow"`.'
-    )
-    source: Missing[ReposOwnerRepoPagesPostBodyPropSource] = Field(
-        default=UNSET,
-        description="The source branch and directory used to publish your Pages site.",
-    )
+    total_count: int = Field()
+    variables: list[ActionsVariable] = Field()
 
 
-model_rebuild(ReposOwnerRepoPagesPostBodyAnyof1)
+model_rebuild(ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200)
 
-__all__ = ("ReposOwnerRepoPagesPostBodyAnyof1",)
+__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200",)

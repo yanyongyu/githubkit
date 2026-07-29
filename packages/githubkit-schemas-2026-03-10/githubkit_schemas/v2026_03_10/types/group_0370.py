@@ -9,129 +9,156 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0369 import (
-    DeploymentBranchPolicySettingsType,
-    DeploymentBranchPolicySettingsTypeForResponse,
-)
-from .group_0371 import (
-    EnvironmentPropProtectionRulesItemsAnyof1Type,
-    EnvironmentPropProtectionRulesItemsAnyof1TypeForResponse,
-)
 
+class DependencyGraphSpdxSbomType(TypedDict):
+    """Dependency Graph SPDX SBOM
 
-class EnvironmentType(TypedDict):
-    """Environment
-
-    Details of a deployment environment
+    A schema for the SPDX JSON format returned by the Dependency Graph.
     """
 
-    id: int
-    node_id: str
-    name: str
-    url: str
-    html_url: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    protection_rules: NotRequired[
-        list[
-            Union[
-                EnvironmentPropProtectionRulesItemsAnyof0Type,
-                EnvironmentPropProtectionRulesItemsAnyof1Type,
-                EnvironmentPropProtectionRulesItemsAnyof2Type,
-            ]
-        ]
-    ]
-    deployment_branch_policy: NotRequired[
-        Union[DeploymentBranchPolicySettingsType, None]
-    ]
+    sbom: DependencyGraphSpdxSbomPropSbomType
 
 
-class EnvironmentTypeForResponse(TypedDict):
-    """Environment
+class DependencyGraphSpdxSbomTypeForResponse(TypedDict):
+    """Dependency Graph SPDX SBOM
 
-    Details of a deployment environment
+    A schema for the SPDX JSON format returned by the Dependency Graph.
     """
 
-    id: int
-    node_id: str
+    sbom: DependencyGraphSpdxSbomPropSbomTypeForResponse
+
+
+class DependencyGraphSpdxSbomPropSbomType(TypedDict):
+    """DependencyGraphSpdxSbomPropSbom"""
+
+    spdxid: str
+    spdx_version: str
+    comment: NotRequired[str]
+    creation_info: DependencyGraphSpdxSbomPropSbomPropCreationInfoType
     name: str
-    url: str
-    html_url: str
-    created_at: str
-    updated_at: str
-    protection_rules: NotRequired[
+    data_license: str
+    document_namespace: str
+    packages: list[DependencyGraphSpdxSbomPropSbomPropPackagesItemsType]
+    relationships: NotRequired[
+        list[DependencyGraphSpdxSbomPropSbomPropRelationshipsItemsType]
+    ]
+
+
+class DependencyGraphSpdxSbomPropSbomTypeForResponse(TypedDict):
+    """DependencyGraphSpdxSbomPropSbom"""
+
+    spdxid: str
+    spdx_version: str
+    comment: NotRequired[str]
+    creation_info: DependencyGraphSpdxSbomPropSbomPropCreationInfoTypeForResponse
+    name: str
+    data_license: str
+    document_namespace: str
+    packages: list[DependencyGraphSpdxSbomPropSbomPropPackagesItemsTypeForResponse]
+    relationships: NotRequired[
+        list[DependencyGraphSpdxSbomPropSbomPropRelationshipsItemsTypeForResponse]
+    ]
+
+
+class DependencyGraphSpdxSbomPropSbomPropCreationInfoType(TypedDict):
+    """DependencyGraphSpdxSbomPropSbomPropCreationInfo"""
+
+    created: str
+    creators: list[str]
+
+
+class DependencyGraphSpdxSbomPropSbomPropCreationInfoTypeForResponse(TypedDict):
+    """DependencyGraphSpdxSbomPropSbomPropCreationInfo"""
+
+    created: str
+    creators: list[str]
+
+
+class DependencyGraphSpdxSbomPropSbomPropRelationshipsItemsType(TypedDict):
+    """DependencyGraphSpdxSbomPropSbomPropRelationshipsItems"""
+
+    relationship_type: NotRequired[str]
+    spdx_element_id: NotRequired[str]
+    related_spdx_element: NotRequired[str]
+
+
+class DependencyGraphSpdxSbomPropSbomPropRelationshipsItemsTypeForResponse(TypedDict):
+    """DependencyGraphSpdxSbomPropSbomPropRelationshipsItems"""
+
+    relationship_type: NotRequired[str]
+    spdx_element_id: NotRequired[str]
+    related_spdx_element: NotRequired[str]
+
+
+class DependencyGraphSpdxSbomPropSbomPropPackagesItemsType(TypedDict):
+    """DependencyGraphSpdxSbomPropSbomPropPackagesItems"""
+
+    spdxid: NotRequired[str]
+    name: NotRequired[str]
+    version_info: NotRequired[str]
+    download_location: NotRequired[str]
+    files_analyzed: NotRequired[bool]
+    license_concluded: NotRequired[str]
+    license_declared: NotRequired[str]
+    supplier: NotRequired[str]
+    copyright_text: NotRequired[str]
+    external_refs: NotRequired[
+        list[DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsType]
+    ]
+
+
+class DependencyGraphSpdxSbomPropSbomPropPackagesItemsTypeForResponse(TypedDict):
+    """DependencyGraphSpdxSbomPropSbomPropPackagesItems"""
+
+    spdxid: NotRequired[str]
+    name: NotRequired[str]
+    version_info: NotRequired[str]
+    download_location: NotRequired[str]
+    files_analyzed: NotRequired[bool]
+    license_concluded: NotRequired[str]
+    license_declared: NotRequired[str]
+    supplier: NotRequired[str]
+    copyright_text: NotRequired[str]
+    external_refs: NotRequired[
         list[
-            Union[
-                EnvironmentPropProtectionRulesItemsAnyof0TypeForResponse,
-                EnvironmentPropProtectionRulesItemsAnyof1TypeForResponse,
-                EnvironmentPropProtectionRulesItemsAnyof2TypeForResponse,
-            ]
+            DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsTypeForResponse
         ]
     ]
-    deployment_branch_policy: NotRequired[
-        Union[DeploymentBranchPolicySettingsTypeForResponse, None]
-    ]
 
 
-class EnvironmentPropProtectionRulesItemsAnyof0Type(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof0"""
+class DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsType(
+    TypedDict
+):
+    """DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItems"""
 
-    id: int
-    node_id: str
-    type: str
-    wait_timer: NotRequired[int]
-
-
-class EnvironmentPropProtectionRulesItemsAnyof0TypeForResponse(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof0"""
-
-    id: int
-    node_id: str
-    type: str
-    wait_timer: NotRequired[int]
+    reference_category: str
+    reference_locator: str
+    reference_type: str
 
 
-class EnvironmentPropProtectionRulesItemsAnyof2Type(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof2"""
+class DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsTypeForResponse(
+    TypedDict
+):
+    """DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItems"""
 
-    id: int
-    node_id: str
-    type: str
-
-
-class EnvironmentPropProtectionRulesItemsAnyof2TypeForResponse(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof2"""
-
-    id: int
-    node_id: str
-    type: str
-
-
-class ReposOwnerRepoEnvironmentsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoEnvironmentsGetResponse200"""
-
-    total_count: NotRequired[int]
-    environments: NotRequired[list[EnvironmentType]]
-
-
-class ReposOwnerRepoEnvironmentsGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoEnvironmentsGetResponse200"""
-
-    total_count: NotRequired[int]
-    environments: NotRequired[list[EnvironmentTypeForResponse]]
+    reference_category: str
+    reference_locator: str
+    reference_type: str
 
 
 __all__ = (
-    "EnvironmentPropProtectionRulesItemsAnyof0Type",
-    "EnvironmentPropProtectionRulesItemsAnyof0TypeForResponse",
-    "EnvironmentPropProtectionRulesItemsAnyof2Type",
-    "EnvironmentPropProtectionRulesItemsAnyof2TypeForResponse",
-    "EnvironmentType",
-    "EnvironmentTypeForResponse",
-    "ReposOwnerRepoEnvironmentsGetResponse200Type",
-    "ReposOwnerRepoEnvironmentsGetResponse200TypeForResponse",
+    "DependencyGraphSpdxSbomPropSbomPropCreationInfoType",
+    "DependencyGraphSpdxSbomPropSbomPropCreationInfoTypeForResponse",
+    "DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsType",
+    "DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsTypeForResponse",
+    "DependencyGraphSpdxSbomPropSbomPropPackagesItemsType",
+    "DependencyGraphSpdxSbomPropSbomPropPackagesItemsTypeForResponse",
+    "DependencyGraphSpdxSbomPropSbomPropRelationshipsItemsType",
+    "DependencyGraphSpdxSbomPropSbomPropRelationshipsItemsTypeForResponse",
+    "DependencyGraphSpdxSbomPropSbomType",
+    "DependencyGraphSpdxSbomPropSbomTypeForResponse",
+    "DependencyGraphSpdxSbomType",
+    "DependencyGraphSpdxSbomTypeForResponse",
 )

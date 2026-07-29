@@ -11,27 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0233 import (
-    CommitCommentEventPropCommentType,
-    CommitCommentEventPropCommentTypeForResponse,
-)
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class CommitCommentEventType(TypedDict):
-    """CommitCommentEvent"""
+class MemberEventType(TypedDict):
+    """MemberEvent"""
 
     action: str
-    comment: CommitCommentEventPropCommentType
+    member: SimpleUserType
 
 
-class CommitCommentEventTypeForResponse(TypedDict):
-    """CommitCommentEvent"""
+class MemberEventTypeForResponse(TypedDict):
+    """MemberEvent"""
 
     action: str
-    comment: CommitCommentEventPropCommentTypeForResponse
+    member: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "CommitCommentEventType",
-    "CommitCommentEventTypeForResponse",
+    "MemberEventType",
+    "MemberEventTypeForResponse",
 )

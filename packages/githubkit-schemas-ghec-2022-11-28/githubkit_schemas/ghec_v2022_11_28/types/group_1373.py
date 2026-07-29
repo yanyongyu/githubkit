@@ -9,23 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, TypeAlias
+
+OrgsOrgCopilotContentExclusionPutBodyType: TypeAlias = dict[str, Any]
+"""OrgsOrgCopilotContentExclusionPutBody
+"""
 
 
-class OrgsOrgSecurityProductEnablementPostBodyType(TypedDict):
-    """OrgsOrgSecurityProductEnablementPostBody"""
-
-    query_suite: NotRequired[Literal["default", "extended"]]
-
-
-class OrgsOrgSecurityProductEnablementPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgSecurityProductEnablementPostBody"""
-
-    query_suite: NotRequired[Literal["default", "extended"]]
+OrgsOrgCopilotContentExclusionPutBodyTypeForResponse: TypeAlias = dict[str, Any]
+"""OrgsOrgCopilotContentExclusionPutBody
+"""
 
 
 __all__ = (
-    "OrgsOrgSecurityProductEnablementPostBodyType",
-    "OrgsOrgSecurityProductEnablementPostBodyTypeForResponse",
+    "OrgsOrgCopilotContentExclusionPutBodyType",
+    "OrgsOrgCopilotContentExclusionPutBodyTypeForResponse",
 )

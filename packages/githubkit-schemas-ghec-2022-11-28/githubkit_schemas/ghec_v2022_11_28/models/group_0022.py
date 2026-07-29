@@ -32,7 +32,7 @@ class InstallationToken(GitHubModel):
     permissions: Missing[AppPermissions] = Field(
         default=UNSET,
         title="App Permissions",
-        description="The permissions granted to the user access token.",
+        description="The permissions granted to the fine-grained access token.",
     )
     repository_selection: Missing[Literal["all", "selected"]] = Field(default=UNSET)
     repositories: Missing[list[Repository]] = Field(default=UNSET)

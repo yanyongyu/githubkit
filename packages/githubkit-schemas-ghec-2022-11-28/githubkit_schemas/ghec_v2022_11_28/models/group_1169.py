@@ -11,26 +11,19 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseDependabotRepositoryAccessPatchBody(GitHubModel):
-    """EnterprisesEnterpriseDependabotRepositoryAccessPatchBody
+class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody(GitHubModel):
+    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody"""
 
-    Examples:
-        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
-    """
-
-    repository_ids_to_add: Missing[list[int]] = Field(
-        default=UNSET, description="List of repository IDs to add."
-    )
-    repository_ids_to_remove: Missing[list[int]] = Field(
-        default=UNSET, description="List of repository IDs to remove."
+    labels: list[str] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The names of the custom labels to add to the runner.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseDependabotRepositoryAccessPatchBody)
+model_rebuild(EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody)
 
-__all__ = ("EnterprisesEnterpriseDependabotRepositoryAccessPatchBody",)
+__all__ = ("EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody",)

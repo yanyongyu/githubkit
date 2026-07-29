@@ -9,46 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class Group(GitHubModel):
-    """Group"""
+class PullRequestStackMinimal(GitHubModel):
+    """Pull Request Stack Minimal"""
 
-    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:Group"]] = Field(
-        description="The URIs that are used to indicate the namespaces of the SCIM schemas."
+    id: int = Field()
+    number: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    base: PullRequestStackMinimalPropBase = Field()
+    open_: bool = Field(
+        alias="open",
+        description="Whether the stack has any open pull request. False when all pull requests are merged or closed.",
     )
-    external_id: str = Field(
-        alias="externalId",
-        description="A unique identifier for the resource as defined by the provisioning client.",
-    )
-    display_name: str = Field(
-        alias="displayName", description="A human-readable name for a security group."
-    )
-    members: Missing[list[GroupPropMembersItems]] = Field(
-        default=UNSET, description="The group members."
-    )
+    created_at: _dt.datetime = Field()
+    pull_requests: list[PullRequestStackMinimalPropPullRequestsItems] = Field()
 
 
-class GroupPropMembersItems(GitHubModel):
-    """GroupPropMembersItems"""
+class PullRequestStackMinimalPropBase(GitHubModel):
+    """PullRequestStackMinimalPropBase"""
 
-    value: str = Field(description="The local unique identifier for the member")
-    display_name: str = Field(
-        alias="displayName", description="The display name associated with the member"
-    )
+    ref: str = Field()
 
 
-model_rebuild(Group)
-model_rebuild(GroupPropMembersItems)
+class PullRequestStackMinimalPropPullRequestsItems(GitHubModel):
+    """PullRequestStackMinimalPropPullRequestsItems"""
+
+    number: int = Field()
+    state: Literal["open", "closed"] = Field()
+    draft: bool = Field()
+    merged_at: Union[_dt.datetime, None] = Field()
+    head: PullRequestStackMinimalPropPullRequestsItemsPropHead = Field()
+
+
+class PullRequestStackMinimalPropPullRequestsItemsPropHead(GitHubModel):
+    """PullRequestStackMinimalPropPullRequestsItemsPropHead"""
+
+    ref: str = Field()
+    sha: str = Field()
+
+
+model_rebuild(PullRequestStackMinimal)
+model_rebuild(PullRequestStackMinimalPropBase)
+model_rebuild(PullRequestStackMinimalPropPullRequestsItems)
+model_rebuild(PullRequestStackMinimalPropPullRequestsItemsPropHead)
 
 __all__ = (
-    "Group",
-    "GroupPropMembersItems",
+    "PullRequestStackMinimal",
+    "PullRequestStackMinimalPropBase",
+    "PullRequestStackMinimalPropPullRequestsItems",
+    "PullRequestStackMinimalPropPullRequestsItemsPropHead",
 )

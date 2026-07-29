@@ -9,30 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_1542 import (
-    ReposOwnerRepoPagesPostBodyPropSourceType,
-    ReposOwnerRepoPagesPostBodyPropSourceTypeForResponse,
-)
+from .group_0358 import ActionsVariableType, ActionsVariableTypeForResponse
 
 
-class ReposOwnerRepoPagesPostBodyAnyof1Type(TypedDict):
-    """ReposOwnerRepoPagesPostBodyAnyof1"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200Type(TypedDict):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200"""
 
-    build_type: Literal["legacy", "workflow"]
-    source: NotRequired[ReposOwnerRepoPagesPostBodyPropSourceType]
+    total_count: int
+    variables: list[ActionsVariableType]
 
 
-class ReposOwnerRepoPagesPostBodyAnyof1TypeForResponse(TypedDict):
-    """ReposOwnerRepoPagesPostBodyAnyof1"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200"""
 
-    build_type: Literal["legacy", "workflow"]
-    source: NotRequired[ReposOwnerRepoPagesPostBodyPropSourceTypeForResponse]
+    total_count: int
+    variables: list[ActionsVariableTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoPagesPostBodyAnyof1Type",
-    "ReposOwnerRepoPagesPostBodyAnyof1TypeForResponse",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200Type",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200TypeForResponse",
 )

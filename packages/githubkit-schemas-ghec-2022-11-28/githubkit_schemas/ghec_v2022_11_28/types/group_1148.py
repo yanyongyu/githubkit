@@ -9,26 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0038 import (
+    ActionsHostedRunnerCuratedImageType,
+    ActionsHostedRunnerCuratedImageTypeForResponse,
+)
 
 
-class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202Type(
+class EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200Type(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202"""
+    """EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200"""
 
-    message: NotRequired[str]
+    total_count: int
+    images: list[ActionsHostedRunnerCuratedImageType]
 
 
-class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202TypeForResponse(
+class EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202"""
+    """EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200"""
 
-    message: NotRequired[str]
+    total_count: int
+    images: list[ActionsHostedRunnerCuratedImageTypeForResponse]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202Type",
-    "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202TypeForResponse",
+    "EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200Type",
+    "EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200TypeForResponse",
 )

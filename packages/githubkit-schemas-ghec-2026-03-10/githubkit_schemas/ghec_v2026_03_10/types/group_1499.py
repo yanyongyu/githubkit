@@ -9,26 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBodyType(TypedDict):
-    """ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody"""
+class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0Type(TypedDict):
+    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0"""
 
-    enabled: bool
-    max_open_pull_requests: NotRequired[int]
+    language: Literal[
+        "actions",
+        "cpp",
+        "csharp",
+        "go",
+        "java",
+        "javascript",
+        "python",
+        "ruby",
+        "rust",
+        "swift",
+    ]
+    query_pack: str
+    repositories: list[str]
+    repository_lists: NotRequired[list[str]]
+    repository_owners: NotRequired[list[str]]
 
 
-class ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBodyTypeForResponse(
+class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0TypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody"""
+    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0"""
 
-    enabled: bool
-    max_open_pull_requests: NotRequired[int]
+    language: Literal[
+        "actions",
+        "cpp",
+        "csharp",
+        "go",
+        "java",
+        "javascript",
+        "python",
+        "ruby",
+        "rust",
+        "swift",
+    ]
+    query_pack: str
+    repositories: list[str]
+    repository_lists: NotRequired[list[str]]
+    repository_owners: NotRequired[list[str]]
 
 
 __all__ = (
-    "ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBodyType",
-    "ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBodyTypeForResponse",
+    "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0Type",
+    "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0TypeForResponse",
 )

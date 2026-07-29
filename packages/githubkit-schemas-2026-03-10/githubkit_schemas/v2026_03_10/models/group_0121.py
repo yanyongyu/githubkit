@@ -14,19 +14,22 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ActionsGetDefaultWorkflowPermissions(GitHubModel):
-    """ActionsGetDefaultWorkflowPermissions"""
+class SelfHostedRunnersSettings(GitHubModel):
+    """SelfHostedRunnersSettings"""
 
-    default_workflow_permissions: Literal["read", "write"] = Field(
-        description="The default workflow permissions granted to the GITHUB_TOKEN when running workflows."
+    enabled_repositories: Literal["all", "selected", "none"] = Field(
+        description="The policy that controls whether self-hosted runners can be used by repositories in the organization"
     )
-    can_approve_pull_request_reviews: bool = Field(
-        description="Whether GitHub Actions can approve pull requests. Enabling this can be a security risk."
+    selected_repositories_url: Missing[str] = Field(
+        default=UNSET,
+        description="The URL to the endpoint for managing selected repositories for self-hosted runners in the organization",
     )
 
 
-model_rebuild(ActionsGetDefaultWorkflowPermissions)
+model_rebuild(SelfHostedRunnersSettings)
 
-__all__ = ("ActionsGetDefaultWorkflowPermissions",)
+__all__ = ("SelfHostedRunnersSettings",)

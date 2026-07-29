@@ -18,17 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0523 import EnterpriseWebhooks
-from .group_0524 import SimpleInstallation
-from .group_0525 import OrganizationSimpleWebhooks
-from .group_0526 import RepositoryWebhooks
-from .group_0554 import WebhooksProject
+from .group_0535 import EnterpriseWebhooks
+from .group_0536 import SimpleInstallation
+from .group_0537 import OrganizationSimpleWebhooks
+from .group_0538 import RepositoryWebhooks
+from .group_0565 import WebhooksProjectCard
 
 
-class WebhookProjectCreated(GitHubModel):
-    """project created event"""
+class WebhookProjectCardConverted(GitHubModel):
+    """project_card converted event"""
 
-    action: Literal["created"] = Field()
+    action: Literal["converted"] = Field()
+    changes: WebhookProjectCardConvertedPropChanges = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -44,7 +45,7 @@ class WebhookProjectCreated(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    project: WebhooksProject = Field(title="Project")
+    project_card: WebhooksProjectCard = Field(title="Project Card")
     repository: Missing[RepositoryWebhooks] = Field(
         default=UNSET,
         title="Repository",
@@ -53,6 +54,24 @@ class WebhookProjectCreated(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookProjectCreated)
+class WebhookProjectCardConvertedPropChanges(GitHubModel):
+    """WebhookProjectCardConvertedPropChanges"""
 
-__all__ = ("WebhookProjectCreated",)
+    note: WebhookProjectCardConvertedPropChangesPropNote = Field()
+
+
+class WebhookProjectCardConvertedPropChangesPropNote(GitHubModel):
+    """WebhookProjectCardConvertedPropChangesPropNote"""
+
+    from_: str = Field(alias="from")
+
+
+model_rebuild(WebhookProjectCardConverted)
+model_rebuild(WebhookProjectCardConvertedPropChanges)
+model_rebuild(WebhookProjectCardConvertedPropChangesPropNote)
+
+__all__ = (
+    "WebhookProjectCardConverted",
+    "WebhookProjectCardConvertedPropChanges",
+    "WebhookProjectCardConvertedPropChangesPropNote",
+)

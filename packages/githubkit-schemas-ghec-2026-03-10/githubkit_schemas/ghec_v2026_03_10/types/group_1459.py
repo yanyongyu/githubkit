@@ -9,50 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_1457 import (
-    ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentType,
-    ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentTypeForResponse,
-)
+from .group_0355 import ActionsSecretType, ActionsSecretTypeForResponse
 
 
-class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1Type(TypedDict):
-    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1"""
+class ReposOwnerRepoAgentsOrganizationSecretsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoAgentsOrganizationSecretsGetResponse200"""
 
-    state: NotRequired[Literal["dismissed", "open"]]
-    dismissed_reason: NotRequired[
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ]
-    ]
-    dismissed_comment: NotRequired[str]
-    assignees: list[str]
-    agent_assignment: NotRequired[
-        ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentType
-    ]
+    total_count: int
+    secrets: list[ActionsSecretType]
 
 
-class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1"""
+class ReposOwnerRepoAgentsOrganizationSecretsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoAgentsOrganizationSecretsGetResponse200"""
 
-    state: NotRequired[Literal["dismissed", "open"]]
-    dismissed_reason: NotRequired[
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ]
-    ]
-    dismissed_comment: NotRequired[str]
-    assignees: list[str]
-    agent_assignment: NotRequired[
-        ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentTypeForResponse
-    ]
+    total_count: int
+    secrets: list[ActionsSecretTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1Type",
-    "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1TypeForResponse",
+    "ReposOwnerRepoAgentsOrganizationSecretsGetResponse200Type",
+    "ReposOwnerRepoAgentsOrganizationSecretsGetResponse200TypeForResponse",
 )

@@ -9,43 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0195 import (
-    RepositoryRulesetConditionsType,
-    RepositoryRulesetConditionsTypeForResponse,
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0534 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0535 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0536 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
 )
+from .group_0537 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0556 import WebhooksUserMannequinType, WebhooksUserMannequinTypeForResponse
 from .group_0898 import (
-    WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsType,
-    WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsTypeForResponse,
+    WebhookPullRequestUnassignedPropPullRequestType,
+    WebhookPullRequestUnassignedPropPullRequestTypeForResponse,
 )
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropConditionsType(TypedDict):
-    """WebhookRepositoryRulesetEditedPropChangesPropConditions"""
+class WebhookPullRequestUnassignedType(TypedDict):
+    """pull_request unassigned event"""
 
-    added: NotRequired[list[RepositoryRulesetConditionsType]]
-    deleted: NotRequired[list[RepositoryRulesetConditionsType]]
-    updated: NotRequired[
-        list[
-            WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsType
-        ]
-    ]
+    action: Literal["unassigned"]
+    assignee: NotRequired[Union[WebhooksUserMannequinType, None]]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    number: int
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    pull_request: WebhookPullRequestUnassignedPropPullRequestType
+    repository: RepositoryWebhooksType
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropConditionsTypeForResponse(TypedDict):
-    """WebhookRepositoryRulesetEditedPropChangesPropConditions"""
+class WebhookPullRequestUnassignedTypeForResponse(TypedDict):
+    """pull_request unassigned event"""
 
-    added: NotRequired[list[RepositoryRulesetConditionsTypeForResponse]]
-    deleted: NotRequired[list[RepositoryRulesetConditionsTypeForResponse]]
-    updated: NotRequired[
-        list[
-            WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsTypeForResponse
-        ]
-    ]
+    action: Literal["unassigned"]
+    assignee: NotRequired[Union[WebhooksUserMannequinTypeForResponse, None]]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    number: int
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    pull_request: WebhookPullRequestUnassignedPropPullRequestTypeForResponse
+    repository: RepositoryWebhooksTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookRepositoryRulesetEditedPropChangesPropConditionsType",
-    "WebhookRepositoryRulesetEditedPropChangesPropConditionsTypeForResponse",
+    "WebhookPullRequestUnassignedType",
+    "WebhookPullRequestUnassignedTypeForResponse",
 )

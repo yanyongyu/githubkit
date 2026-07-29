@@ -52,10 +52,13 @@ if TYPE_CHECKING:
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200,
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
         EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202,
+        EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostResponse202,
+        EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202,
         EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202,
         EnterprisesEnterpriseEnterpriseRolesGetResponse200,
         EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneof1,
         EnterprisesEnterpriseNetworkConfigurationsGetResponse200,
+        EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200,
         EnterpriseTeam,
         EnterpriseUserRoleAssignment,
         ExternalVulnerabilitySyncAccepted,
@@ -78,6 +81,7 @@ if TYPE_CHECKING:
         ScimEnterpriseUserList,
         ScimEnterpriseUserResponse,
         SelectedActions,
+        VisualStudioSubscriptionAssignment,
     )
     from ..types import (
         ActionsArtifactAndLogRetentionResponseTypeForResponse,
@@ -127,6 +131,10 @@ if TYPE_CHECKING:
         EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBodyType,
         EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBodyType,
         EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202TypeForResponse,
+        EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBodyType,
+        EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostResponse202TypeForResponse,
+        EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyType,
+        EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202TypeForResponse,
         EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBodyType,
         EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202TypeForResponse,
         EnterprisesEnterpriseEnterpriseRolesGetResponse200TypeForResponse,
@@ -138,6 +146,8 @@ if TYPE_CHECKING:
         EnterprisesEnterpriseOrgPropertiesSchemaPatchBodyType,
         EnterprisesEnterpriseOrgPropertiesValuesPatchBodyType,
         EnterprisesEnterprisePropertiesSchemaPatchBodyType,
+        EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200TypeForResponse,
+        EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBodyType,
         EnterpriseTeamTypeForResponse,
         EnterpriseUserRoleAssignmentTypeForResponse,
         ExternalVulnerabilitySyncAcceptedTypeForResponse,
@@ -175,6 +185,7 @@ if TYPE_CHECKING:
         UserNameType,
         UserRoleItemsType,
         UserType,
+        VisualStudioSubscriptionAssignmentTypeForResponse,
     )
 
 
@@ -6000,6 +6011,218 @@ class EnterpriseAdminClient:
         )
 
     @overload
+    def revoke_credential_type_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBodyType,
+    ) -> Response[
+        EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostResponse202,
+        EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostResponse202TypeForResponse,
+    ]: ...
+
+    @overload
+    def revoke_credential_type_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        credential_type: Literal[
+            "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
+        ],
+        revoke_credentials: Missing[bool] = UNSET,
+    ) -> Response[
+        EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostResponse202,
+        EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostResponse202TypeForResponse,
+    ]: ...
+
+    def revoke_credential_type_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostResponse202,
+        EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostResponse202TypeForResponse,
+    ]:
+        """enterprise-admin/revoke-credential-type-for-enterprise
+
+        POST /enterprises/{enterprise}/credential-authorizations/revoke-credential-type
+
+        Revokes a single credential type (for example, classic personal access tokens)
+        across all organizations within the enterprise. This removes the sign-in
+        authorizations for that credential type for every member of the enterprise.
+
+        For Enterprise Managed User (EMU) enterprises, you can optionally also destroy the
+        actual credentials of that type owned by enterprise members by setting the
+        `revoke_credentials` parameter to `true`.
+
+        This operation is performed asynchronously. A background job will be queued to process
+        the revocations.
+
+        > [!WARNING]
+        > If you use a personal access token to call this endpoint, that token may also be
+        > revoked or destroyed as part of this operation.
+
+        The authenticated user must be an enterprise owner or have the `write_enterprise_credentials` permission to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/credential-authorizations#revoke-a-single-credential-type-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBody,
+            EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostResponse202,
+        )
+
+        url = f"/enterprises/{enterprise}/credential-authorizations/revoke-credential-type"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBody,
+                json,
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostResponse202,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": BasicError,
+            },
+        )
+
+    @overload
+    async def async_revoke_credential_type_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBodyType,
+    ) -> Response[
+        EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostResponse202,
+        EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostResponse202TypeForResponse,
+    ]: ...
+
+    @overload
+    async def async_revoke_credential_type_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        credential_type: Literal[
+            "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
+        ],
+        revoke_credentials: Missing[bool] = UNSET,
+    ) -> Response[
+        EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostResponse202,
+        EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostResponse202TypeForResponse,
+    ]: ...
+
+    async def async_revoke_credential_type_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostResponse202,
+        EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostResponse202TypeForResponse,
+    ]:
+        """enterprise-admin/revoke-credential-type-for-enterprise
+
+        POST /enterprises/{enterprise}/credential-authorizations/revoke-credential-type
+
+        Revokes a single credential type (for example, classic personal access tokens)
+        across all organizations within the enterprise. This removes the sign-in
+        authorizations for that credential type for every member of the enterprise.
+
+        For Enterprise Managed User (EMU) enterprises, you can optionally also destroy the
+        actual credentials of that type owned by enterprise members by setting the
+        `revoke_credentials` parameter to `true`.
+
+        This operation is performed asynchronously. A background job will be queued to process
+        the revocations.
+
+        > [!WARNING]
+        > If you use a personal access token to call this endpoint, that token may also be
+        > revoked or destroyed as part of this operation.
+
+        The authenticated user must be an enterprise owner or have the `write_enterprise_credentials` permission to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/credential-authorizations#revoke-a-single-credential-type-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBody,
+            EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostResponse202,
+        )
+
+        url = f"/enterprises/{enterprise}/credential-authorizations/revoke-credential-type"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBody,
+                json,
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostResponse202,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": BasicError,
+            },
+        )
+
+    @overload
     def revoke_credential_authorizations_for_user(
         self,
         enterprise: str,
@@ -6208,6 +6431,224 @@ class EnterpriseAdminClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": BasicError,
+            },
+        )
+
+    @overload
+    def revoke_credential_type_for_user(
+        self,
+        enterprise: str,
+        username: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyType,
+    ) -> Response[
+        EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202,
+        EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202TypeForResponse,
+    ]: ...
+
+    @overload
+    def revoke_credential_type_for_user(
+        self,
+        enterprise: str,
+        username: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        credential_type: Literal[
+            "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
+        ],
+        revoke_credentials: Missing[bool] = UNSET,
+    ) -> Response[
+        EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202,
+        EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202TypeForResponse,
+    ]: ...
+
+    def revoke_credential_type_for_user(
+        self,
+        enterprise: str,
+        username: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202,
+        EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202TypeForResponse,
+    ]:
+        """enterprise-admin/revoke-credential-type-for-user
+
+        POST /enterprises/{enterprise}/credential-authorizations/{username}/revoke-credential-type
+
+        Revokes a single credential type (for example, classic personal access tokens)
+        for a single user within the enterprise. This removes the sign-in authorizations
+        for that credential type across all organizations in the enterprise for the user.
+
+        For Enterprise Managed User (EMU) enterprises, you can optionally also destroy the
+        actual credential of that type owned by the user by setting the `revoke_credentials`
+        parameter to `true`.
+
+        This operation is performed asynchronously. A background job will be queued to process
+        the revocations.
+
+        > [!WARNING]
+        > If you use a personal access token to call this endpoint and target yourself, that
+        > token may also be revoked or destroyed as part of this operation.
+
+        The authenticated user must be an enterprise owner or have the `write_enterprise_credentials` permission to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/credential-authorizations#revoke-a-single-credential-type-for-a-user-in-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBody,
+            EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202,
+        )
+
+        url = f"/enterprises/{enterprise}/credential-authorizations/{username}/revoke-credential-type"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBody,
+                json,
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": BasicError,
+            },
+        )
+
+    @overload
+    async def async_revoke_credential_type_for_user(
+        self,
+        enterprise: str,
+        username: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyType,
+    ) -> Response[
+        EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202,
+        EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202TypeForResponse,
+    ]: ...
+
+    @overload
+    async def async_revoke_credential_type_for_user(
+        self,
+        enterprise: str,
+        username: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        credential_type: Literal[
+            "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
+        ],
+        revoke_credentials: Missing[bool] = UNSET,
+    ) -> Response[
+        EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202,
+        EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202TypeForResponse,
+    ]: ...
+
+    async def async_revoke_credential_type_for_user(
+        self,
+        enterprise: str,
+        username: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202,
+        EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202TypeForResponse,
+    ]:
+        """enterprise-admin/revoke-credential-type-for-user
+
+        POST /enterprises/{enterprise}/credential-authorizations/{username}/revoke-credential-type
+
+        Revokes a single credential type (for example, classic personal access tokens)
+        for a single user within the enterprise. This removes the sign-in authorizations
+        for that credential type across all organizations in the enterprise for the user.
+
+        For Enterprise Managed User (EMU) enterprises, you can optionally also destroy the
+        actual credential of that type owned by the user by setting the `revoke_credentials`
+        parameter to `true`.
+
+        This operation is performed asynchronously. A background job will be queued to process
+        the revocations.
+
+        > [!WARNING]
+        > If you use a personal access token to call this endpoint and target yourself, that
+        > token may also be revoked or destroyed as part of this operation.
+
+        The authenticated user must be an enterprise owner or have the `write_enterprise_credentials` permission to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/credential-authorizations#revoke-a-single-credential-type-for-a-user-in-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBody,
+            EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202,
+        )
+
+        url = f"/enterprises/{enterprise}/credential-authorizations/{username}/revoke-credential-type"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBody,
+                json,
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202,
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -9726,6 +10167,366 @@ class EnterpriseAdminClient:
             error_models={
                 "404": BasicError,
                 "500": BasicError,
+            },
+        )
+
+    def list_vss(
+        self,
+        enterprise: str,
+        *,
+        is_unmatched_only: Missing[bool] = UNSET,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200,
+        EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200TypeForResponse,
+    ]:
+        """enterprise-admin/list-vss
+
+        GET /enterprises/{enterprise}/visual-studio-subscriptions
+
+        Retrieves a list of Visual Studio subscriptions for the specified enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/licensing#get-a-list-of-visual-studio-subscriptions-for-the-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200,
+        )
+
+        url = f"/enterprises/{enterprise}/visual-studio-subscriptions"
+
+        params = {
+            "is_unmatched_only": is_unmatched_only,
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_list_vss(
+        self,
+        enterprise: str,
+        *,
+        is_unmatched_only: Missing[bool] = UNSET,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200,
+        EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200TypeForResponse,
+    ]:
+        """enterprise-admin/list-vss
+
+        GET /enterprises/{enterprise}/visual-studio-subscriptions
+
+        Retrieves a list of Visual Studio subscriptions for the specified enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/licensing#get-a-list-of-visual-studio-subscriptions-for-the-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200,
+        )
+
+        url = f"/enterprises/{enterprise}/visual-studio-subscriptions"
+
+        params = {
+            "is_unmatched_only": is_unmatched_only,
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def update_vss_manual_match(
+        self,
+        visual_studio_subscription_id: str,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBodyType,
+    ) -> Response[
+        VisualStudioSubscriptionAssignment,
+        VisualStudioSubscriptionAssignmentTypeForResponse,
+    ]: ...
+
+    @overload
+    def update_vss_manual_match(
+        self,
+        visual_studio_subscription_id: str,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        user_identifier: Missing[str] = UNSET,
+    ) -> Response[
+        VisualStudioSubscriptionAssignment,
+        VisualStudioSubscriptionAssignmentTypeForResponse,
+    ]: ...
+
+    def update_vss_manual_match(
+        self,
+        visual_studio_subscription_id: str,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        VisualStudioSubscriptionAssignment,
+        VisualStudioSubscriptionAssignmentTypeForResponse,
+    ]:
+        """enterprise-admin/update-vss-manual-match
+
+        PUT /enterprises/{enterprise}/visual-studio-subscriptions/{visual_studio_subscription_id}
+
+        Updates a manual match between a user and a Visual Studio subscription.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/licensing#add-or-update-a-visual-studio-subscription-user-match
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBody,
+            ValidationError,
+            VisualStudioSubscriptionAssignment,
+        )
+
+        url = f"/enterprises/{enterprise}/visual-studio-subscriptions/{visual_studio_subscription_id}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBody,
+                json,
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=VisualStudioSubscriptionAssignment,
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    async def async_update_vss_manual_match(
+        self,
+        visual_studio_subscription_id: str,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBodyType,
+    ) -> Response[
+        VisualStudioSubscriptionAssignment,
+        VisualStudioSubscriptionAssignmentTypeForResponse,
+    ]: ...
+
+    @overload
+    async def async_update_vss_manual_match(
+        self,
+        visual_studio_subscription_id: str,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        user_identifier: Missing[str] = UNSET,
+    ) -> Response[
+        VisualStudioSubscriptionAssignment,
+        VisualStudioSubscriptionAssignmentTypeForResponse,
+    ]: ...
+
+    async def async_update_vss_manual_match(
+        self,
+        visual_studio_subscription_id: str,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        VisualStudioSubscriptionAssignment,
+        VisualStudioSubscriptionAssignmentTypeForResponse,
+    ]:
+        """enterprise-admin/update-vss-manual-match
+
+        PUT /enterprises/{enterprise}/visual-studio-subscriptions/{visual_studio_subscription_id}
+
+        Updates a manual match between a user and a Visual Studio subscription.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/licensing#add-or-update-a-visual-studio-subscription-user-match
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBody,
+            ValidationError,
+            VisualStudioSubscriptionAssignment,
+        )
+
+        url = f"/enterprises/{enterprise}/visual-studio-subscriptions/{visual_studio_subscription_id}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBody,
+                json,
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=VisualStudioSubscriptionAssignment,
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    def delete_vss_manual_match(
+        self,
+        visual_studio_subscription_id: str,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        VisualStudioSubscriptionAssignment,
+        VisualStudioSubscriptionAssignmentTypeForResponse,
+    ]:
+        """enterprise-admin/delete-vss-manual-match
+
+        DELETE /enterprises/{enterprise}/visual-studio-subscriptions/{visual_studio_subscription_id}
+
+        Deletes a manual match between a user and a Visual Studio subscription.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/licensing#delete-a-visual-studio-subscription-user-match
+        """
+
+        from ..models import (
+            BasicError,
+            ValidationError,
+            VisualStudioSubscriptionAssignment,
+        )
+
+        url = f"/enterprises/{enterprise}/visual-studio-subscriptions/{visual_studio_subscription_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=VisualStudioSubscriptionAssignment,
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    async def async_delete_vss_manual_match(
+        self,
+        visual_studio_subscription_id: str,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        VisualStudioSubscriptionAssignment,
+        VisualStudioSubscriptionAssignmentTypeForResponse,
+    ]:
+        """enterprise-admin/delete-vss-manual-match
+
+        DELETE /enterprises/{enterprise}/visual-studio-subscriptions/{visual_studio_subscription_id}
+
+        Deletes a manual match between a user and a Visual Studio subscription.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/licensing#delete-a-visual-studio-subscription-user-match
+        """
+
+        from ..models import (
+            BasicError,
+            ValidationError,
+            VisualStudioSubscriptionAssignment,
+        )
+
+        url = f"/enterprises/{enterprise}/visual-studio-subscriptions/{visual_studio_subscription_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=VisualStudioSubscriptionAssignment,
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
             },
         )
 

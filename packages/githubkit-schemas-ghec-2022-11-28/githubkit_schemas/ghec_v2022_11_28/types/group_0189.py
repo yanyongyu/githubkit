@@ -12,67 +12,35 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class AdvancedSecurityActiveCommittersType(TypedDict):
-    """AdvancedSecurityActiveCommitters"""
+class SecretScanningCustomPatternToCreateType(TypedDict):
+    """Secret Scanning Custom Pattern To Create
 
-    total_advanced_security_committers: NotRequired[int]
-    total_count: NotRequired[int]
-    maximum_advanced_security_committers: NotRequired[int]
-    purchased_advanced_security_committers: NotRequired[int]
-    repositories: list[AdvancedSecurityActiveCommittersRepositoryType]
-
-
-class AdvancedSecurityActiveCommittersTypeForResponse(TypedDict):
-    """AdvancedSecurityActiveCommitters"""
-
-    total_advanced_security_committers: NotRequired[int]
-    total_count: NotRequired[int]
-    maximum_advanced_security_committers: NotRequired[int]
-    purchased_advanced_security_committers: NotRequired[int]
-    repositories: list[AdvancedSecurityActiveCommittersRepositoryTypeForResponse]
-
-
-class AdvancedSecurityActiveCommittersRepositoryType(TypedDict):
-    """AdvancedSecurityActiveCommittersRepository"""
+    A custom pattern to create in a bulk operation.
+    """
 
     name: str
-    advanced_security_committers: int
-    advanced_security_committers_breakdown: list[
-        AdvancedSecurityActiveCommittersUserType
-    ]
+    pattern: str
+    start_delimiter: NotRequired[str]
+    end_delimiter: NotRequired[str]
+    must_match: NotRequired[list[str]]
+    must_not_match: NotRequired[list[str]]
 
 
-class AdvancedSecurityActiveCommittersRepositoryTypeForResponse(TypedDict):
-    """AdvancedSecurityActiveCommittersRepository"""
+class SecretScanningCustomPatternToCreateTypeForResponse(TypedDict):
+    """Secret Scanning Custom Pattern To Create
+
+    A custom pattern to create in a bulk operation.
+    """
 
     name: str
-    advanced_security_committers: int
-    advanced_security_committers_breakdown: list[
-        AdvancedSecurityActiveCommittersUserTypeForResponse
-    ]
-
-
-class AdvancedSecurityActiveCommittersUserType(TypedDict):
-    """AdvancedSecurityActiveCommittersUser"""
-
-    user_login: str
-    last_pushed_date: str
-    last_pushed_email: str
-
-
-class AdvancedSecurityActiveCommittersUserTypeForResponse(TypedDict):
-    """AdvancedSecurityActiveCommittersUser"""
-
-    user_login: str
-    last_pushed_date: str
-    last_pushed_email: str
+    pattern: str
+    start_delimiter: NotRequired[str]
+    end_delimiter: NotRequired[str]
+    must_match: NotRequired[list[str]]
+    must_not_match: NotRequired[list[str]]
 
 
 __all__ = (
-    "AdvancedSecurityActiveCommittersRepositoryType",
-    "AdvancedSecurityActiveCommittersRepositoryTypeForResponse",
-    "AdvancedSecurityActiveCommittersType",
-    "AdvancedSecurityActiveCommittersTypeForResponse",
-    "AdvancedSecurityActiveCommittersUserType",
-    "AdvancedSecurityActiveCommittersUserTypeForResponse",
+    "SecretScanningCustomPatternToCreateType",
+    "SecretScanningCustomPatternToCreateTypeForResponse",
 )

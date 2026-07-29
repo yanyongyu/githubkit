@@ -9,46 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class UserNameResponseType(TypedDict):
-    """UserNameResponse"""
+class PullRequestStackPullRequestAllof1Type(TypedDict):
+    """PullRequestStackPullRequestAllof1"""
 
-    formatted: NotRequired[str]
-    family_name: NotRequired[str]
-    given_name: NotRequired[str]
-    middle_name: NotRequired[str]
-
-
-class UserNameResponseTypeForResponse(TypedDict):
-    """UserNameResponse"""
-
-    formatted: NotRequired[str]
-    family_name: NotRequired[str]
-    given_name: NotRequired[str]
-    middle_name: NotRequired[str]
+    node_id: str
+    title: str
+    state: Literal["open", "closed"]
+    merged_at: Union[_dt.datetime, None]
+    draft: bool
+    html_url: str
+    user: Union[None, SimpleUserType]
 
 
-class UserEmailsResponseItemsType(TypedDict):
-    """UserEmailsResponseItems"""
+class PullRequestStackPullRequestAllof1TypeForResponse(TypedDict):
+    """PullRequestStackPullRequestAllof1"""
 
-    value: str
-    type: NotRequired[str]
-    primary: NotRequired[bool]
-
-
-class UserEmailsResponseItemsTypeForResponse(TypedDict):
-    """UserEmailsResponseItems"""
-
-    value: str
-    type: NotRequired[str]
-    primary: NotRequired[bool]
+    node_id: str
+    title: str
+    state: Literal["open", "closed"]
+    merged_at: Union[str, None]
+    draft: bool
+    html_url: str
+    user: Union[None, SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "UserEmailsResponseItemsType",
-    "UserEmailsResponseItemsTypeForResponse",
-    "UserNameResponseType",
-    "UserNameResponseTypeForResponse",
+    "PullRequestStackPullRequestAllof1Type",
+    "PullRequestStackPullRequestAllof1TypeForResponse",
 )

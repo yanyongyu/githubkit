@@ -9,24 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0267 import CopilotSpaceType, CopilotSpaceTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCopilotSpacesGetResponse200Type(TypedDict):
-    """OrgsOrgCopilotSpacesGetResponse200"""
+class OrgsOrgActionsRunnersGenerateJitconfigPostBodyType(TypedDict):
+    """OrgsOrgActionsRunnersGenerateJitconfigPostBody"""
 
-    spaces: list[CopilotSpaceType]
+    name: str
+    runner_group_id: int
+    labels: list[str]
+    work_folder: NotRequired[str]
 
 
-class OrgsOrgCopilotSpacesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgCopilotSpacesGetResponse200"""
+class OrgsOrgActionsRunnersGenerateJitconfigPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsRunnersGenerateJitconfigPostBody"""
 
-    spaces: list[CopilotSpaceTypeForResponse]
+    name: str
+    runner_group_id: int
+    labels: list[str]
+    work_folder: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgCopilotSpacesGetResponse200Type",
-    "OrgsOrgCopilotSpacesGetResponse200TypeForResponse",
+    "OrgsOrgActionsRunnersGenerateJitconfigPostBodyType",
+    "OrgsOrgActionsRunnersGenerateJitconfigPostBodyTypeForResponse",
 )

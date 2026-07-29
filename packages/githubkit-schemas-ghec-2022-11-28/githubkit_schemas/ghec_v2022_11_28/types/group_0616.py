@@ -12,27 +12,41 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class WebhooksRepositoriesItemsType(TypedDict):
-    """WebhooksRepositoriesItems"""
+class HovercardType(TypedDict):
+    """Hovercard
 
-    full_name: str
-    id: int
-    name: str
-    node_id: str
-    private: bool
+    Hovercard
+    """
+
+    contexts: list[HovercardPropContextsItemsType]
 
 
-class WebhooksRepositoriesItemsTypeForResponse(TypedDict):
-    """WebhooksRepositoriesItems"""
+class HovercardTypeForResponse(TypedDict):
+    """Hovercard
 
-    full_name: str
-    id: int
-    name: str
-    node_id: str
-    private: bool
+    Hovercard
+    """
+
+    contexts: list[HovercardPropContextsItemsTypeForResponse]
+
+
+class HovercardPropContextsItemsType(TypedDict):
+    """HovercardPropContextsItems"""
+
+    message: str
+    octicon: str
+
+
+class HovercardPropContextsItemsTypeForResponse(TypedDict):
+    """HovercardPropContextsItems"""
+
+    message: str
+    octicon: str
 
 
 __all__ = (
-    "WebhooksRepositoriesItemsType",
-    "WebhooksRepositoriesItemsTypeForResponse",
+    "HovercardPropContextsItemsType",
+    "HovercardPropContextsItemsTypeForResponse",
+    "HovercardType",
+    "HovercardTypeForResponse",
 )

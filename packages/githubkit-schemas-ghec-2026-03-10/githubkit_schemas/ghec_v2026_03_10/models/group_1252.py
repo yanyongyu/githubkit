@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -18,23 +18,26 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgAgentsSecretsSecretNamePutBody(GitHubModel):
-    """OrgsOrgAgentsSecretsSecretNamePutBody"""
+class GistsGistIdGetResponse403(GitHubModel):
+    """GistsGistIdGetResponse403"""
 
-    encrypted_value: str = Field(
-        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
-        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an organization public key](https://docs.github.com/enterprise-cloud@latest/rest/agents/secrets#get-an-organization-public-key) endpoint.",
-    )
-    key_id: str = Field(description="ID of the key you used to encrypt the secret.")
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="Which type of organization repositories have access to the organization secret. `selected` means only the repositories specified by `selected_repository_ids` can access the secret."
-    )
-    selected_repository_ids: Missing[list[int]] = Field(
-        default=UNSET,
-        description="An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can manage the list of selected repositories using the [List selected repositories for an organization secret](https://docs.github.com/enterprise-cloud@latest/rest/agents/secrets#list-selected-repositories-for-an-organization-secret), [Set selected repositories for an organization secret](https://docs.github.com/enterprise-cloud@latest/rest/agents/secrets#set-selected-repositories-for-an-organization-secret), and [Remove selected repository from an organization secret](https://docs.github.com/enterprise-cloud@latest/rest/agents/secrets#remove-selected-repository-from-an-organization-secret) endpoints.",
-    )
+    block: Missing[GistsGistIdGetResponse403PropBlock] = Field(default=UNSET)
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgAgentsSecretsSecretNamePutBody)
+class GistsGistIdGetResponse403PropBlock(GitHubModel):
+    """GistsGistIdGetResponse403PropBlock"""
 
-__all__ = ("OrgsOrgAgentsSecretsSecretNamePutBody",)
+    reason: Missing[str] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
+    html_url: Missing[Union[str, None]] = Field(default=UNSET)
+
+
+model_rebuild(GistsGistIdGetResponse403)
+model_rebuild(GistsGistIdGetResponse403PropBlock)
+
+__all__ = (
+    "GistsGistIdGetResponse403",
+    "GistsGistIdGetResponse403PropBlock",
+)

@@ -9,99 +9,71 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class GetAllCostCentersType(TypedDict):
-    """GetAllCostCenters"""
-
-    cost_centers: NotRequired[list[GetAllCostCentersPropCostCentersItemsType]]
-
-
-class GetAllCostCentersTypeForResponse(TypedDict):
-    """GetAllCostCenters"""
-
-    cost_centers: NotRequired[
-        list[GetAllCostCentersPropCostCentersItemsTypeForResponse]
-    ]
-
-
-class GetAllCostCentersPropCostCentersItemsType(TypedDict):
-    """GetAllCostCentersPropCostCentersItems"""
+class GetBudgetType(TypedDict):
+    """GetBudget"""
 
     id: str
-    name: str
-    state: NotRequired[Literal["active", "deleted"]]
-    azure_subscription: NotRequired[Union[str, None]]
-    ai_credit_pool_enabled: NotRequired[bool]
-    ai_credit_pool_state: NotRequired[
-        GetAllCostCentersPropCostCentersItemsPropAiCreditPoolStateType
+    budget_scope: Literal[
+        "enterprise",
+        "organization",
+        "repository",
+        "cost_center",
+        "multi_user_customer",
+        "multi_user_cost_center",
+        "user",
     ]
-    resources: list[GetAllCostCentersPropCostCentersItemsPropResourcesItemsType]
+    budget_entity_name: str
+    user: NotRequired[str]
+    budget_amount: int
+    prevent_further_usage: bool
+    budget_product_sku: str
+    budget_type: Literal["ProductPricing", "SkuPricing"]
+    budget_alerting: GetBudgetPropBudgetAlertingType
 
 
-class GetAllCostCentersPropCostCentersItemsTypeForResponse(TypedDict):
-    """GetAllCostCentersPropCostCentersItems"""
+class GetBudgetTypeForResponse(TypedDict):
+    """GetBudget"""
 
     id: str
-    name: str
-    state: NotRequired[Literal["active", "deleted"]]
-    azure_subscription: NotRequired[Union[str, None]]
-    ai_credit_pool_enabled: NotRequired[bool]
-    ai_credit_pool_state: NotRequired[
-        GetAllCostCentersPropCostCentersItemsPropAiCreditPoolStateTypeForResponse
+    budget_scope: Literal[
+        "enterprise",
+        "organization",
+        "repository",
+        "cost_center",
+        "multi_user_customer",
+        "multi_user_cost_center",
+        "user",
     ]
-    resources: list[
-        GetAllCostCentersPropCostCentersItemsPropResourcesItemsTypeForResponse
-    ]
+    budget_entity_name: str
+    user: NotRequired[str]
+    budget_amount: int
+    prevent_further_usage: bool
+    budget_product_sku: str
+    budget_type: Literal["ProductPricing", "SkuPricing"]
+    budget_alerting: GetBudgetPropBudgetAlertingTypeForResponse
 
 
-class GetAllCostCentersPropCostCentersItemsPropAiCreditPoolStateType(TypedDict):
-    """GetAllCostCentersPropCostCentersItemsPropAiCreditPoolState
+class GetBudgetPropBudgetAlertingType(TypedDict):
+    """GetBudgetPropBudgetAlerting"""
 
-    Read-only cap-budget projection for the cost center. Only present when the cost
-    center draws from the AI credit pool.
-    """
-
-    target_amount: NotRequired[Union[float, None]]
-    current_amount: NotRequired[Union[float, None]]
+    will_alert: NotRequired[bool]
+    alert_recipients: NotRequired[list[str]]
 
 
-class GetAllCostCentersPropCostCentersItemsPropAiCreditPoolStateTypeForResponse(
-    TypedDict
-):
-    """GetAllCostCentersPropCostCentersItemsPropAiCreditPoolState
+class GetBudgetPropBudgetAlertingTypeForResponse(TypedDict):
+    """GetBudgetPropBudgetAlerting"""
 
-    Read-only cap-budget projection for the cost center. Only present when the cost
-    center draws from the AI credit pool.
-    """
-
-    target_amount: NotRequired[Union[float, None]]
-    current_amount: NotRequired[Union[float, None]]
-
-
-class GetAllCostCentersPropCostCentersItemsPropResourcesItemsType(TypedDict):
-    """GetAllCostCentersPropCostCentersItemsPropResourcesItems"""
-
-    type: str
-    name: str
-
-
-class GetAllCostCentersPropCostCentersItemsPropResourcesItemsTypeForResponse(TypedDict):
-    """GetAllCostCentersPropCostCentersItemsPropResourcesItems"""
-
-    type: str
-    name: str
+    will_alert: NotRequired[bool]
+    alert_recipients: NotRequired[list[str]]
 
 
 __all__ = (
-    "GetAllCostCentersPropCostCentersItemsPropAiCreditPoolStateType",
-    "GetAllCostCentersPropCostCentersItemsPropAiCreditPoolStateTypeForResponse",
-    "GetAllCostCentersPropCostCentersItemsPropResourcesItemsType",
-    "GetAllCostCentersPropCostCentersItemsPropResourcesItemsTypeForResponse",
-    "GetAllCostCentersPropCostCentersItemsType",
-    "GetAllCostCentersPropCostCentersItemsTypeForResponse",
-    "GetAllCostCentersType",
-    "GetAllCostCentersTypeForResponse",
+    "GetBudgetPropBudgetAlertingType",
+    "GetBudgetPropBudgetAlertingTypeForResponse",
+    "GetBudgetType",
+    "GetBudgetTypeForResponse",
 )

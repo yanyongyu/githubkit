@@ -9,27 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Annotated, Literal, Union
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody(GitHubModel):
-    """OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody"""
+class OrgsOrgCodeSecurityConfigurationsDetachDeleteBody(GitHubModel):
+    """OrgsOrgCodeSecurityConfigurationsDetachDeleteBody"""
 
-    action: Literal["approve", "deny"] = Field(
-        description="Action to apply to the request."
-    )
-    reason: Missing[Union[Annotated[str, Field(max_length=1024)], None]] = Field(
-        default=UNSET,
-        description="Reason for approving or denying the request. Max 1024 characters.",
+    selected_repository_ids: list[int] = Field(
+        max_length=250 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="An array of repository IDs to detach from configurations. Up to 250 IDs can be provided.",
     )
 
 
-model_rebuild(OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody)
+model_rebuild(OrgsOrgCodeSecurityConfigurationsDetachDeleteBody)
 
-__all__ = ("OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody",)
+__all__ = ("OrgsOrgCodeSecurityConfigurationsDetachDeleteBody",)

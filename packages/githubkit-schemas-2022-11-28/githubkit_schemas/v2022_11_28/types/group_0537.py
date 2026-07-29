@@ -13,31 +13,53 @@ from typing import Union
 from typing_extensions import TypedDict
 
 
-class WebhooksLabelType(TypedDict):
-    """Label"""
+class OrganizationSimpleWebhooksType(TypedDict):
+    """Organization Simple
 
-    color: str
-    default: bool
-    description: Union[str, None]
+    A GitHub organization. Webhook payloads contain the `organization` property when
+    the webhook is configured for an
+    organization, or when the event occurs from activity in a repository owned by an
+    organization.
+    """
+
+    login: str
     id: int
-    name: str
     node_id: str
     url: str
-
-
-class WebhooksLabelTypeForResponse(TypedDict):
-    """Label"""
-
-    color: str
-    default: bool
+    repos_url: str
+    events_url: str
+    hooks_url: str
+    issues_url: str
+    members_url: str
+    public_members_url: str
+    avatar_url: str
     description: Union[str, None]
+
+
+class OrganizationSimpleWebhooksTypeForResponse(TypedDict):
+    """Organization Simple
+
+    A GitHub organization. Webhook payloads contain the `organization` property when
+    the webhook is configured for an
+    organization, or when the event occurs from activity in a repository owned by an
+    organization.
+    """
+
+    login: str
     id: int
-    name: str
     node_id: str
     url: str
+    repos_url: str
+    events_url: str
+    hooks_url: str
+    issues_url: str
+    members_url: str
+    public_members_url: str
+    avatar_url: str
+    description: Union[str, None]
 
 
 __all__ = (
-    "WebhooksLabelType",
-    "WebhooksLabelTypeForResponse",
+    "OrganizationSimpleWebhooksType",
+    "OrganizationSimpleWebhooksTypeForResponse",
 )

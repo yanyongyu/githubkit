@@ -12,21 +12,23 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoGitRefsRefPatchBodyType(TypedDict):
-    """ReposOwnerRepoGitRefsRefPatchBody"""
+class ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200Type(
+    TypedDict
+):
+    """ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200"""
 
-    sha: str
-    force: NotRequired[bool]
+    bypass_review_id: NotRequired[int]
 
 
-class ReposOwnerRepoGitRefsRefPatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoGitRefsRefPatchBody"""
+class ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200"""
 
-    sha: str
-    force: NotRequired[bool]
+    bypass_review_id: NotRequired[int]
 
 
 __all__ = (
-    "ReposOwnerRepoGitRefsRefPatchBodyType",
-    "ReposOwnerRepoGitRefsRefPatchBodyTypeForResponse",
+    "ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200Type",
+    "ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200TypeForResponse",
 )

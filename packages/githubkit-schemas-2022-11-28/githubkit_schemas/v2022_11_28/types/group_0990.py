@@ -9,75 +9,129 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class AgentsTasksGetResponse422Type(TypedDict):
-    """AgentsTasksGetResponse422
-
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[list[AgentsTasksGetResponse422PropErrorsItemsType]]
-    documentation_url: str
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0295 import DeploymentType, DeploymentTypeForResponse
+from .group_0535 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0536 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0537 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0538 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class AgentsTasksGetResponse422TypeForResponse(TypedDict):
-    """AgentsTasksGetResponse422
+class WebhookWorkflowJobInProgressType(TypedDict):
+    """workflow_job in_progress event"""
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[list[AgentsTasksGetResponse422PropErrorsItemsTypeForResponse]]
-    documentation_url: str
-
-
-class AgentsTasksGetResponse422PropErrorsItemsType(TypedDict):
-    """AgentsTasksGetResponse422PropErrorsItems
-
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
+    action: Literal["in_progress"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
+    workflow_job: WebhookWorkflowJobInProgressPropWorkflowJobType
+    deployment: NotRequired[DeploymentType]
 
 
-class AgentsTasksGetResponse422PropErrorsItemsTypeForResponse(TypedDict):
-    """AgentsTasksGetResponse422PropErrorsItems
+class WebhookWorkflowJobInProgressTypeForResponse(TypedDict):
+    """workflow_job in_progress event"""
 
-    A single validation error
-    """
+    action: Literal["in_progress"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+    workflow_job: WebhookWorkflowJobInProgressPropWorkflowJobTypeForResponse
+    deployment: NotRequired[DeploymentTypeForResponse]
 
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
+
+class WebhookWorkflowJobInProgressPropWorkflowJobType(TypedDict):
+    """WebhookWorkflowJobInProgressPropWorkflowJob"""
+
+    check_run_url: str
+    completed_at: Union[Union[str, None], None]
+    conclusion: Union[Literal["success", "failure", "cancelled", "neutral"], None]
+    created_at: str
+    head_sha: str
+    html_url: str
+    id: int
+    labels: list[str]
+    name: str
+    node_id: str
+    run_attempt: int
+    run_id: int
+    run_url: str
+    runner_group_id: Union[Union[int, None], None]
+    runner_group_name: Union[Union[str, None], None]
+    runner_id: Union[Union[int, None], None]
+    runner_name: Union[Union[str, None], None]
+    started_at: str
+    status: Literal["queued", "in_progress", "completed"]
+    head_branch: Union[Union[str, None], None]
+    workflow_name: Union[Union[str, None], None]
+    steps: list[WebhookWorkflowJobInProgressPropWorkflowJobMergedStepsType]
+    url: str
+
+
+class WebhookWorkflowJobInProgressPropWorkflowJobTypeForResponse(TypedDict):
+    """WebhookWorkflowJobInProgressPropWorkflowJob"""
+
+    check_run_url: str
+    completed_at: Union[Union[str, None], None]
+    conclusion: Union[Literal["success", "failure", "cancelled", "neutral"], None]
+    created_at: str
+    head_sha: str
+    html_url: str
+    id: int
+    labels: list[str]
+    name: str
+    node_id: str
+    run_attempt: int
+    run_id: int
+    run_url: str
+    runner_group_id: Union[Union[int, None], None]
+    runner_group_name: Union[Union[str, None], None]
+    runner_id: Union[Union[int, None], None]
+    runner_name: Union[Union[str, None], None]
+    started_at: str
+    status: Literal["queued", "in_progress", "completed"]
+    head_branch: Union[Union[str, None], None]
+    workflow_name: Union[Union[str, None], None]
+    steps: list[WebhookWorkflowJobInProgressPropWorkflowJobMergedStepsTypeForResponse]
+    url: str
+
+
+class WebhookWorkflowJobInProgressPropWorkflowJobMergedStepsType(TypedDict):
+    """WebhookWorkflowJobInProgressPropWorkflowJobMergedSteps"""
+
+    completed_at: Union[Union[str, None], None]
+    conclusion: Union[Literal["failure", "skipped", "success", "cancelled"], None]
+    name: str
+    number: int
+    started_at: Union[Union[str, None], None]
+    status: Literal["in_progress", "completed", "queued", "pending"]
+
+
+class WebhookWorkflowJobInProgressPropWorkflowJobMergedStepsTypeForResponse(TypedDict):
+    """WebhookWorkflowJobInProgressPropWorkflowJobMergedSteps"""
+
+    completed_at: Union[Union[str, None], None]
+    conclusion: Union[Literal["failure", "skipped", "success", "cancelled"], None]
+    name: str
+    number: int
+    started_at: Union[Union[str, None], None]
+    status: Literal["in_progress", "completed", "queued", "pending"]
 
 
 __all__ = (
-    "AgentsTasksGetResponse422PropErrorsItemsType",
-    "AgentsTasksGetResponse422PropErrorsItemsTypeForResponse",
-    "AgentsTasksGetResponse422Type",
-    "AgentsTasksGetResponse422TypeForResponse",
+    "WebhookWorkflowJobInProgressPropWorkflowJobMergedStepsType",
+    "WebhookWorkflowJobInProgressPropWorkflowJobMergedStepsTypeForResponse",
+    "WebhookWorkflowJobInProgressPropWorkflowJobType",
+    "WebhookWorkflowJobInProgressPropWorkflowJobTypeForResponse",
+    "WebhookWorkflowJobInProgressType",
+    "WebhookWorkflowJobInProgressTypeForResponse",
 )

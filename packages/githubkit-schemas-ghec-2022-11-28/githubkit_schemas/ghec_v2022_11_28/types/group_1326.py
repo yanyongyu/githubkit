@@ -9,55 +9,72 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgHooksHookIdPatchBodyType(TypedDict):
-    """OrgsOrgHooksHookIdPatchBody"""
+class OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200Type(TypedDict):
+    """OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200"""
 
-    config: NotRequired[OrgsOrgHooksHookIdPatchBodyPropConfigType]
-    events: NotRequired[list[str]]
-    active: NotRequired[bool]
-    name: NotRequired[str]
-
-
-class OrgsOrgHooksHookIdPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgHooksHookIdPatchBody"""
-
-    config: NotRequired[OrgsOrgHooksHookIdPatchBodyPropConfigTypeForResponse]
-    events: NotRequired[list[str]]
-    active: NotRequired[bool]
-    name: NotRequired[str]
+    total_count: NotRequired[int]
+    storage_records: NotRequired[
+        list[
+            OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItemsType
+        ]
+    ]
 
 
-class OrgsOrgHooksHookIdPatchBodyPropConfigType(TypedDict):
-    """OrgsOrgHooksHookIdPatchBodyPropConfig
+class OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200"""
 
-    Key/value pairs to provide settings for this webhook.
+    total_count: NotRequired[int]
+    storage_records: NotRequired[
+        list[
+            OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItemsTypeForResponse
+        ]
+    ]
+
+
+class OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItemsType(
+    TypedDict
+):
+    """OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageReco
+    rdsItems
     """
 
-    url: str
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
+    id: NotRequired[int]
+    name: NotRequired[str]
+    digest: NotRequired[str]
+    artifact_url: NotRequired[str]
+    registry_url: NotRequired[str]
+    repository: NotRequired[str]
+    status: NotRequired[str]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
 
 
-class OrgsOrgHooksHookIdPatchBodyPropConfigTypeForResponse(TypedDict):
-    """OrgsOrgHooksHookIdPatchBodyPropConfig
-
-    Key/value pairs to provide settings for this webhook.
+class OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItemsTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageReco
+    rdsItems
     """
 
-    url: str
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
+    id: NotRequired[int]
+    name: NotRequired[str]
+    digest: NotRequired[str]
+    artifact_url: NotRequired[str]
+    registry_url: NotRequired[str]
+    repository: NotRequired[str]
+    status: NotRequired[str]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgHooksHookIdPatchBodyPropConfigType",
-    "OrgsOrgHooksHookIdPatchBodyPropConfigTypeForResponse",
-    "OrgsOrgHooksHookIdPatchBodyType",
-    "OrgsOrgHooksHookIdPatchBodyTypeForResponse",
+    "OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItemsType",
+    "OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItemsTypeForResponse",
+    "OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200Type",
+    "OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200TypeForResponse",
 )

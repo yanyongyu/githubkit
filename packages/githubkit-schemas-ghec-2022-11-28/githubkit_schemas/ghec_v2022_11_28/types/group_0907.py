@@ -13,41 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0599 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0600 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0601 import (
+from .group_0618 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0619 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0620 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0602 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0632 import WebhooksProjectType, WebhooksProjectTypeForResponse
+from .group_0649 import (
+    PersonalAccessTokenRequestType,
+    PersonalAccessTokenRequestTypeForResponse,
+)
 
 
-class WebhookProjectReopenedType(TypedDict):
-    """project reopened event"""
+class WebhookPersonalAccessTokenRequestDeniedType(TypedDict):
+    """personal_access_token_request denied event"""
 
-    action: Literal["reopened"]
+    action: Literal["denied"]
+    personal_access_token_request: PersonalAccessTokenRequestType
+    organization: OrganizationSimpleWebhooksType
     enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    project: WebhooksProjectType
-    repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserType
+    installation: SimpleInstallationType
 
 
-class WebhookProjectReopenedTypeForResponse(TypedDict):
-    """project reopened event"""
+class WebhookPersonalAccessTokenRequestDeniedTypeForResponse(TypedDict):
+    """personal_access_token_request denied event"""
 
-    action: Literal["reopened"]
+    action: Literal["denied"]
+    personal_access_token_request: PersonalAccessTokenRequestTypeForResponse
+    organization: OrganizationSimpleWebhooksTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    project: WebhooksProjectTypeForResponse
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
     sender: SimpleUserTypeForResponse
+    installation: SimpleInstallationTypeForResponse
 
 
 __all__ = (
-    "WebhookProjectReopenedType",
-    "WebhookProjectReopenedTypeForResponse",
+    "WebhookPersonalAccessTokenRequestDeniedType",
+    "WebhookPersonalAccessTokenRequestDeniedTypeForResponse",
 )

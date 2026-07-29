@@ -9,25 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class NotificationsPutBodyType(TypedDict):
-    """NotificationsPutBody"""
+class EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBodyType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBody"""
 
-    last_read_at: NotRequired[_dt.datetime]
-    read: NotRequired[bool]
+    credential_type: Literal[
+        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
+    ]
+    revoke_credentials: NotRequired[bool]
 
 
-class NotificationsPutBodyTypeForResponse(TypedDict):
-    """NotificationsPutBody"""
+class EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBody"""
 
-    last_read_at: NotRequired[str]
-    read: NotRequired[bool]
+    credential_type: Literal[
+        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
+    ]
+    revoke_credentials: NotRequired[bool]
 
 
 __all__ = (
-    "NotificationsPutBodyType",
-    "NotificationsPutBodyTypeForResponse",
+    "EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBodyType",
+    "EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBodyTypeForResponse",
 )

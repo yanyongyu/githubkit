@@ -11,24 +11,22 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0279 import ActionsVariableType, ActionsVariableTypeForResponse
+from .group_0190 import CustomPropertyType, CustomPropertyTypeForResponse
 
 
-class ReposOwnerRepoActionsVariablesGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsVariablesGetResponse200"""
+class OrgsOrgPropertiesSchemaPatchBodyType(TypedDict):
+    """OrgsOrgPropertiesSchemaPatchBody"""
 
-    total_count: int
-    variables: list[ActionsVariableType]
+    properties: list[CustomPropertyType]
 
 
-class ReposOwnerRepoActionsVariablesGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsVariablesGetResponse200"""
+class OrgsOrgPropertiesSchemaPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgPropertiesSchemaPatchBody"""
 
-    total_count: int
-    variables: list[ActionsVariableTypeForResponse]
+    properties: list[CustomPropertyTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsVariablesGetResponse200Type",
-    "ReposOwnerRepoActionsVariablesGetResponse200TypeForResponse",
+    "OrgsOrgPropertiesSchemaPatchBodyType",
+    "OrgsOrgPropertiesSchemaPatchBodyTypeForResponse",
 )

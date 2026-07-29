@@ -13,44 +13,121 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0599 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0600 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0601 import (
+from .group_0618 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0619 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0620 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0602 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0645 import (
-    WebhooksSecurityAdvisoryType,
-    WebhooksSecurityAdvisoryTypeForResponse,
-)
+from .group_0621 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0660 import WebhooksReleaseType, WebhooksReleaseTypeForResponse
 
 
-class WebhookSecurityAdvisoryPublishedType(TypedDict):
-    """security_advisory published event"""
+class WebhookReleaseEditedType(TypedDict):
+    """release edited event"""
 
-    action: Literal["published"]
+    action: Literal["edited"]
+    changes: WebhookReleaseEditedPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    security_advisory: WebhooksSecurityAdvisoryType
+    release: WebhooksReleaseType
+    repository: RepositoryWebhooksType
     sender: NotRequired[SimpleUserType]
 
 
-class WebhookSecurityAdvisoryPublishedTypeForResponse(TypedDict):
-    """security_advisory published event"""
+class WebhookReleaseEditedTypeForResponse(TypedDict):
+    """release edited event"""
 
-    action: Literal["published"]
+    action: Literal["edited"]
+    changes: WebhookReleaseEditedPropChangesTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    security_advisory: WebhooksSecurityAdvisoryTypeForResponse
+    release: WebhooksReleaseTypeForResponse
+    repository: RepositoryWebhooksTypeForResponse
     sender: NotRequired[SimpleUserTypeForResponse]
 
 
+class WebhookReleaseEditedPropChangesType(TypedDict):
+    """WebhookReleaseEditedPropChanges"""
+
+    body: NotRequired[WebhookReleaseEditedPropChangesPropBodyType]
+    name: NotRequired[WebhookReleaseEditedPropChangesPropNameType]
+    tag_name: NotRequired[WebhookReleaseEditedPropChangesPropTagNameType]
+    make_latest: NotRequired[WebhookReleaseEditedPropChangesPropMakeLatestType]
+
+
+class WebhookReleaseEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookReleaseEditedPropChanges"""
+
+    body: NotRequired[WebhookReleaseEditedPropChangesPropBodyTypeForResponse]
+    name: NotRequired[WebhookReleaseEditedPropChangesPropNameTypeForResponse]
+    tag_name: NotRequired[WebhookReleaseEditedPropChangesPropTagNameTypeForResponse]
+    make_latest: NotRequired[
+        WebhookReleaseEditedPropChangesPropMakeLatestTypeForResponse
+    ]
+
+
+class WebhookReleaseEditedPropChangesPropBodyType(TypedDict):
+    """WebhookReleaseEditedPropChangesPropBody"""
+
+    from_: str
+
+
+class WebhookReleaseEditedPropChangesPropBodyTypeForResponse(TypedDict):
+    """WebhookReleaseEditedPropChangesPropBody"""
+
+    from_: str
+
+
+class WebhookReleaseEditedPropChangesPropNameType(TypedDict):
+    """WebhookReleaseEditedPropChangesPropName"""
+
+    from_: str
+
+
+class WebhookReleaseEditedPropChangesPropNameTypeForResponse(TypedDict):
+    """WebhookReleaseEditedPropChangesPropName"""
+
+    from_: str
+
+
+class WebhookReleaseEditedPropChangesPropTagNameType(TypedDict):
+    """WebhookReleaseEditedPropChangesPropTagName"""
+
+    from_: str
+
+
+class WebhookReleaseEditedPropChangesPropTagNameTypeForResponse(TypedDict):
+    """WebhookReleaseEditedPropChangesPropTagName"""
+
+    from_: str
+
+
+class WebhookReleaseEditedPropChangesPropMakeLatestType(TypedDict):
+    """WebhookReleaseEditedPropChangesPropMakeLatest"""
+
+    to: bool
+
+
+class WebhookReleaseEditedPropChangesPropMakeLatestTypeForResponse(TypedDict):
+    """WebhookReleaseEditedPropChangesPropMakeLatest"""
+
+    to: bool
+
+
 __all__ = (
-    "WebhookSecurityAdvisoryPublishedType",
-    "WebhookSecurityAdvisoryPublishedTypeForResponse",
+    "WebhookReleaseEditedPropChangesPropBodyType",
+    "WebhookReleaseEditedPropChangesPropBodyTypeForResponse",
+    "WebhookReleaseEditedPropChangesPropMakeLatestType",
+    "WebhookReleaseEditedPropChangesPropMakeLatestTypeForResponse",
+    "WebhookReleaseEditedPropChangesPropNameType",
+    "WebhookReleaseEditedPropChangesPropNameTypeForResponse",
+    "WebhookReleaseEditedPropChangesPropTagNameType",
+    "WebhookReleaseEditedPropChangesPropTagNameTypeForResponse",
+    "WebhookReleaseEditedPropChangesType",
+    "WebhookReleaseEditedPropChangesTypeForResponse",
+    "WebhookReleaseEditedType",
+    "WebhookReleaseEditedTypeForResponse",
 )

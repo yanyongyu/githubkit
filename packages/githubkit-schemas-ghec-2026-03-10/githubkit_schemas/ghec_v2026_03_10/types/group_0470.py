@@ -9,50 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
+class InteractionLimitPullRequestBypassListType(TypedDict):
+    """Interaction Limits Pull Request Bypass List
 
-class LockedIssueEventType(TypedDict):
-    """Locked Issue Event
-
-    Locked Issue Event
+    A list of user logins to add or remove from the pull request creation cap bypass
+    list.
     """
 
-    id: int
-    node_id: str
-    url: str
-    actor: SimpleUserType
-    event: Literal["locked"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    lock_reason: Union[str, None]
+    users: list[str]
 
 
-class LockedIssueEventTypeForResponse(TypedDict):
-    """Locked Issue Event
+class InteractionLimitPullRequestBypassListTypeForResponse(TypedDict):
+    """Interaction Limits Pull Request Bypass List
 
-    Locked Issue Event
+    A list of user logins to add or remove from the pull request creation cap bypass
+    list.
     """
 
-    id: int
-    node_id: str
-    url: str
-    actor: SimpleUserTypeForResponse
-    event: Literal["locked"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    lock_reason: Union[str, None]
+    users: list[str]
 
 
 __all__ = (
-    "LockedIssueEventType",
-    "LockedIssueEventTypeForResponse",
+    "InteractionLimitPullRequestBypassListType",
+    "InteractionLimitPullRequestBypassListTypeForResponse",
 )

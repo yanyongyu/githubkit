@@ -9,77 +9,72 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Any, Literal, TypeAlias, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CopilotOrganizationDetailsType(TypedDict):
-    """Copilot Organization Details
+class CopilotSpaceResourceType(TypedDict):
+    """Copilot Space Resource
 
-    Information about the seat breakdown and policies set for an organization with a
-    Copilot Business or Copilot Enterprise subscription.
+    A resource attached to a Copilot Space.
     """
 
-    seat_breakdown: CopilotOrganizationSeatBreakdownType
-    public_code_suggestions: Literal["allow", "block", "unconfigured"]
-    ide_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
-    platform_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
-    cli: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
-    seat_management_setting: Literal[
-        "assign_all", "assign_selected", "disabled", "unconfigured"
+    id: int
+    resource_type: Literal[
+        "repository",
+        "github_file",
+        "free_text",
+        "github_issue",
+        "github_pull_request",
+        "media_content",
+        "uploaded_text_file",
     ]
-    plan_type: NotRequired[Literal["business", "enterprise"]]
+    copilot_chat_attachment_id: NotRequired[Union[int, None]]
+    metadata: CopilotSpaceResourcePropMetadataType
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-class CopilotOrganizationDetailsTypeForResponse(TypedDict):
-    """Copilot Organization Details
+class CopilotSpaceResourceTypeForResponse(TypedDict):
+    """Copilot Space Resource
 
-    Information about the seat breakdown and policies set for an organization with a
-    Copilot Business or Copilot Enterprise subscription.
+    A resource attached to a Copilot Space.
     """
 
-    seat_breakdown: CopilotOrganizationSeatBreakdownTypeForResponse
-    public_code_suggestions: Literal["allow", "block", "unconfigured"]
-    ide_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
-    platform_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
-    cli: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
-    seat_management_setting: Literal[
-        "assign_all", "assign_selected", "disabled", "unconfigured"
+    id: int
+    resource_type: Literal[
+        "repository",
+        "github_file",
+        "free_text",
+        "github_issue",
+        "github_pull_request",
+        "media_content",
+        "uploaded_text_file",
     ]
-    plan_type: NotRequired[Literal["business", "enterprise"]]
+    copilot_chat_attachment_id: NotRequired[Union[int, None]]
+    metadata: CopilotSpaceResourcePropMetadataTypeForResponse
+    created_at: str
+    updated_at: str
 
 
-class CopilotOrganizationSeatBreakdownType(TypedDict):
-    """Copilot Seat Breakdown
+CopilotSpaceResourcePropMetadataType: TypeAlias = dict[str, Any]
+"""CopilotSpaceResourcePropMetadata
 
-    The breakdown of Copilot Business seats for the organization.
-    """
-
-    total: NotRequired[int]
-    added_this_cycle: NotRequired[int]
-    pending_cancellation: NotRequired[int]
-    pending_invitation: NotRequired[int]
-    active_this_cycle: NotRequired[int]
-    inactive_this_cycle: NotRequired[int]
+Resource-specific metadata. The keys and values depend on the resource type.
+"""
 
 
-class CopilotOrganizationSeatBreakdownTypeForResponse(TypedDict):
-    """Copilot Seat Breakdown
+CopilotSpaceResourcePropMetadataTypeForResponse: TypeAlias = dict[str, Any]
+"""CopilotSpaceResourcePropMetadata
 
-    The breakdown of Copilot Business seats for the organization.
-    """
-
-    total: NotRequired[int]
-    added_this_cycle: NotRequired[int]
-    pending_cancellation: NotRequired[int]
-    pending_invitation: NotRequired[int]
-    active_this_cycle: NotRequired[int]
-    inactive_this_cycle: NotRequired[int]
+Resource-specific metadata. The keys and values depend on the resource type.
+"""
 
 
 __all__ = (
-    "CopilotOrganizationDetailsType",
-    "CopilotOrganizationDetailsTypeForResponse",
-    "CopilotOrganizationSeatBreakdownType",
-    "CopilotOrganizationSeatBreakdownTypeForResponse",
+    "CopilotSpaceResourcePropMetadataType",
+    "CopilotSpaceResourcePropMetadataTypeForResponse",
+    "CopilotSpaceResourceType",
+    "CopilotSpaceResourceTypeForResponse",
 )

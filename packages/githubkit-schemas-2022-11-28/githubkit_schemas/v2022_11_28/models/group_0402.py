@@ -14,40 +14,29 @@ from typing import Literal, Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
 
+class IssueEventIntent(GitHubModel):
+    """Issue Event Intent
 
-class RenamedIssueEvent(GitHubModel):
-    """Renamed Issue Event
-
-    Renamed Issue Event
+    The intent behind an agent's action on an issue, including the rationale and
+    confidence. Present (and `null` when the event carried no agent intent) on
+    supported event types while the issue suggestions feature is enabled for the
+    repository; the property is omitted entirely when the feature is disabled or the
+    event type does not support intent.
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["renamed"] = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: str = Field()
-    performed_via_github_app: Union[None, Integration, None] = Field()
-    rename: RenamedIssueEventPropRename = Field()
+    rationale: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The reasoning the agent provided for the change."
+    )
+    confidence: Missing[Union[None, Literal["LOW", "MEDIUM", "HIGH"]]] = Field(
+        default=UNSET,
+        description="The confidence level the agent had when performing this action.",
+    )
 
 
-class RenamedIssueEventPropRename(GitHubModel):
-    """RenamedIssueEventPropRename"""
+model_rebuild(IssueEventIntent)
 
-    from_: str = Field(alias="from")
-    to: str = Field()
-
-
-model_rebuild(RenamedIssueEvent)
-model_rebuild(RenamedIssueEventPropRename)
-
-__all__ = (
-    "RenamedIssueEvent",
-    "RenamedIssueEventPropRename",
-)
+__all__ = ("IssueEventIntent",)

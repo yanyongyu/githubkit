@@ -9,50 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+
+class CodeQualitySetupUpdateAnyof0Type(TypedDict):
+    """CodeQualitySetupUpdateAnyof0"""
+
+    state: Literal["configured", "not-configured"]
+    runner_type: NotRequired[Literal["standard", "labeled"]]
+    runner_label: NotRequired[Union[str, None]]
+    languages: NotRequired[
+        list[
+            Literal[
+                "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
+            ]
+        ]
+    ]
+    ai_findings_option: NotRequired[Literal["disabled", "on_push"]]
 
 
-class CodeScanningCodeqlDatabaseType(TypedDict):
-    """CodeQL Database
+class CodeQualitySetupUpdateAnyof0TypeForResponse(TypedDict):
+    """CodeQualitySetupUpdateAnyof0"""
 
-    A CodeQL database.
-    """
-
-    id: int
-    name: str
-    language: str
-    uploader: SimpleUserType
-    content_type: str
-    size: int
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    url: str
-    commit_oid: NotRequired[Union[str, None]]
-
-
-class CodeScanningCodeqlDatabaseTypeForResponse(TypedDict):
-    """CodeQL Database
-
-    A CodeQL database.
-    """
-
-    id: int
-    name: str
-    language: str
-    uploader: SimpleUserTypeForResponse
-    content_type: str
-    size: int
-    created_at: str
-    updated_at: str
-    url: str
-    commit_oid: NotRequired[Union[str, None]]
+    state: Literal["configured", "not-configured"]
+    runner_type: NotRequired[Literal["standard", "labeled"]]
+    runner_label: NotRequired[Union[str, None]]
+    languages: NotRequired[
+        list[
+            Literal[
+                "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
+            ]
+        ]
+    ]
+    ai_findings_option: NotRequired[Literal["disabled", "on_push"]]
 
 
 __all__ = (
-    "CodeScanningCodeqlDatabaseType",
-    "CodeScanningCodeqlDatabaseTypeForResponse",
+    "CodeQualitySetupUpdateAnyof0Type",
+    "CodeQualitySetupUpdateAnyof0TypeForResponse",
 )

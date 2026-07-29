@@ -12,41 +12,81 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2Type(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2"""
+class ReposOwnerRepoContentsPathPutBodyType(TypedDict):
+    """ReposOwnerRepoContentsPathPutBody"""
 
-    labels: NotRequired[
-        list[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType]
+    message: str
+    content: str
+    sha: NotRequired[str]
+    branch: NotRequired[str]
+    committer: NotRequired[ReposOwnerRepoContentsPathPutBodyPropCommitterType]
+    author: NotRequired[ReposOwnerRepoContentsPathPutBodyPropAuthorType]
+
+
+class ReposOwnerRepoContentsPathPutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoContentsPathPutBody"""
+
+    message: str
+    content: str
+    sha: NotRequired[str]
+    branch: NotRequired[str]
+    committer: NotRequired[
+        ReposOwnerRepoContentsPathPutBodyPropCommitterTypeForResponse
     ]
+    author: NotRequired[ReposOwnerRepoContentsPathPutBodyPropAuthorTypeForResponse]
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2TypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2"""
+class ReposOwnerRepoContentsPathPutBodyPropCommitterType(TypedDict):
+    """ReposOwnerRepoContentsPathPutBodyPropCommitter
 
-    labels: NotRequired[
-        list[
-            ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsTypeForResponse
-        ]
-    ]
-
-
-class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems"""
+    The person that committed the file. Default: the authenticated user.
+    """
 
     name: str
+    email: str
+    date: NotRequired[str]
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems"""
+class ReposOwnerRepoContentsPathPutBodyPropCommitterTypeForResponse(TypedDict):
+    """ReposOwnerRepoContentsPathPutBodyPropCommitter
+
+    The person that committed the file. Default: the authenticated user.
+    """
 
     name: str
+    email: str
+    date: NotRequired[str]
+
+
+class ReposOwnerRepoContentsPathPutBodyPropAuthorType(TypedDict):
+    """ReposOwnerRepoContentsPathPutBodyPropAuthor
+
+    The author of the file. Default: The `committer` or the authenticated user if
+    you omit `committer`.
+    """
+
+    name: str
+    email: str
+    date: NotRequired[str]
+
+
+class ReposOwnerRepoContentsPathPutBodyPropAuthorTypeForResponse(TypedDict):
+    """ReposOwnerRepoContentsPathPutBodyPropAuthor
+
+    The author of the file. Default: The `committer` or the authenticated user if
+    you omit `committer`.
+    """
+
+    name: str
+    email: str
+    date: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType",
-    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsTypeForResponse",
-    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2Type",
-    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2TypeForResponse",
+    "ReposOwnerRepoContentsPathPutBodyPropAuthorType",
+    "ReposOwnerRepoContentsPathPutBodyPropAuthorTypeForResponse",
+    "ReposOwnerRepoContentsPathPutBodyPropCommitterType",
+    "ReposOwnerRepoContentsPathPutBodyPropCommitterTypeForResponse",
+    "ReposOwnerRepoContentsPathPutBodyType",
+    "ReposOwnerRepoContentsPathPutBodyTypeForResponse",
 )

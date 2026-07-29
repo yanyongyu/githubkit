@@ -9,24 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsSourcePutBodyType(TypedDict):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody"""
+class EnterprisesEnterpriseActionsRunnerGroupsPostBodyType(TypedDict):
+    """EnterprisesEnterpriseActionsRunnerGroupsPostBody"""
 
-    organization_id: int
-    create_ruleset: NotRequired[bool]
+    name: str
+    visibility: NotRequired[Literal["selected", "all"]]
+    selected_organization_ids: NotRequired[list[int]]
+    runners: NotRequired[list[int]]
+    allows_public_repositories: NotRequired[bool]
+    restricted_to_workflows: NotRequired[bool]
+    selected_workflows: NotRequired[list[str]]
+    network_configuration_id: NotRequired[str]
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsSourcePutBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody"""
+class EnterprisesEnterpriseActionsRunnerGroupsPostBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseActionsRunnerGroupsPostBody"""
 
-    organization_id: int
-    create_ruleset: NotRequired[bool]
+    name: str
+    visibility: NotRequired[Literal["selected", "all"]]
+    selected_organization_ids: NotRequired[list[int]]
+    runners: NotRequired[list[int]]
+    allows_public_repositories: NotRequired[bool]
+    restricted_to_workflows: NotRequired[bool]
+    selected_workflows: NotRequired[list[str]]
+    network_configuration_id: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutBodyType",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutBodyTypeForResponse",
+    "EnterprisesEnterpriseActionsRunnerGroupsPostBodyType",
+    "EnterprisesEnterpriseActionsRunnerGroupsPostBodyTypeForResponse",
 )

@@ -9,65 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksUserMannequinType(TypedDict):
-    """User"""
+class ExemptionResponseType(TypedDict):
+    """Exemption response
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    A response to an exemption request by a delegated bypasser.
+    """
+
+    id: NotRequired[int]
+    reviewer_id: NotRequired[int]
+    reviewer_login: NotRequired[str]
+    status: NotRequired[Literal["approved", "rejected", "dismissed"]]
+    reviewer_comment: NotRequired[Union[str, None]]
+    created_at: NotRequired[_dt.datetime]
 
 
-class WebhooksUserMannequinTypeForResponse(TypedDict):
-    """User"""
+class ExemptionResponseTypeForResponse(TypedDict):
+    """Exemption response
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    A response to an exemption request by a delegated bypasser.
+    """
+
+    id: NotRequired[int]
+    reviewer_id: NotRequired[int]
+    reviewer_login: NotRequired[str]
+    status: NotRequired[Literal["approved", "rejected", "dismissed"]]
+    reviewer_comment: NotRequired[Union[str, None]]
+    created_at: NotRequired[str]
 
 
 __all__ = (
-    "WebhooksUserMannequinType",
-    "WebhooksUserMannequinTypeForResponse",
+    "ExemptionResponseType",
+    "ExemptionResponseTypeForResponse",
 )

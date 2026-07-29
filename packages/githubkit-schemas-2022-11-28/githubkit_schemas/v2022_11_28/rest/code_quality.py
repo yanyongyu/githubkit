@@ -35,6 +35,7 @@ if TYPE_CHECKING:
         CodeQualitySetupUpdateAnyof1Type,
         CodeQualitySetupUpdateAnyof2Type,
         CodeQualitySetupUpdateAnyof3Type,
+        CodeQualitySetupUpdateAnyof4Type,
         EmptyObjectTypeForResponse,
     )
 
@@ -325,6 +326,7 @@ class CodeQualityClient:
             CodeQualitySetupUpdateAnyof1Type,
             CodeQualitySetupUpdateAnyof2Type,
             CodeQualitySetupUpdateAnyof3Type,
+            CodeQualitySetupUpdateAnyof4Type,
         ],
     ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
@@ -352,6 +354,7 @@ class CodeQualityClient:
                 ]
             ]
         ] = UNSET,
+        ai_findings_option: Missing[Literal["disabled", "on_push"]] = UNSET,
     ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     @overload
@@ -378,6 +381,7 @@ class CodeQualityClient:
                 ]
             ]
         ] = UNSET,
+        ai_findings_option: Missing[Literal["disabled", "on_push"]] = UNSET,
     ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     @overload
@@ -404,6 +408,7 @@ class CodeQualityClient:
                 ]
             ]
         ] = UNSET,
+        ai_findings_option: Missing[Literal["disabled", "on_push"]] = UNSET,
     ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     @overload
@@ -423,6 +428,34 @@ class CodeQualityClient:
                 "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
             ]
         ],
+        ai_findings_option: Missing[Literal["disabled", "on_push"]] = UNSET,
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
+
+    @overload
+    def update_setup(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        state: Missing[Literal["configured", "not-configured"]] = UNSET,
+        runner_type: Missing[Literal["standard", "labeled"]] = UNSET,
+        runner_label: Missing[Union[str, None]] = UNSET,
+        languages: Missing[
+            list[
+                Literal[
+                    "csharp",
+                    "go",
+                    "java-kotlin",
+                    "javascript-typescript",
+                    "python",
+                    "ruby",
+                ]
+            ]
+        ] = UNSET,
+        ai_findings_option: Literal["disabled", "on_push"],
     ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     def update_setup(
@@ -438,6 +471,7 @@ class CodeQualityClient:
                 CodeQualitySetupUpdateAnyof1Type,
                 CodeQualitySetupUpdateAnyof2Type,
                 CodeQualitySetupUpdateAnyof3Type,
+                CodeQualitySetupUpdateAnyof4Type,
             ]
         ] = UNSET,
         **kwargs,
@@ -461,6 +495,7 @@ class CodeQualityClient:
             CodeQualitySetupUpdateAnyof1,
             CodeQualitySetupUpdateAnyof2,
             CodeQualitySetupUpdateAnyof3,
+            CodeQualitySetupUpdateAnyof4,
             EmptyObject,
             EventsGetResponse503,
         )
@@ -481,6 +516,7 @@ class CodeQualityClient:
                     CodeQualitySetupUpdateAnyof1,
                     CodeQualitySetupUpdateAnyof2,
                     CodeQualitySetupUpdateAnyof3,
+                    CodeQualitySetupUpdateAnyof4,
                 ],
                 json,
             )
@@ -515,6 +551,7 @@ class CodeQualityClient:
             CodeQualitySetupUpdateAnyof1Type,
             CodeQualitySetupUpdateAnyof2Type,
             CodeQualitySetupUpdateAnyof3Type,
+            CodeQualitySetupUpdateAnyof4Type,
         ],
     ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
@@ -542,6 +579,7 @@ class CodeQualityClient:
                 ]
             ]
         ] = UNSET,
+        ai_findings_option: Missing[Literal["disabled", "on_push"]] = UNSET,
     ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     @overload
@@ -568,6 +606,7 @@ class CodeQualityClient:
                 ]
             ]
         ] = UNSET,
+        ai_findings_option: Missing[Literal["disabled", "on_push"]] = UNSET,
     ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     @overload
@@ -594,6 +633,7 @@ class CodeQualityClient:
                 ]
             ]
         ] = UNSET,
+        ai_findings_option: Missing[Literal["disabled", "on_push"]] = UNSET,
     ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     @overload
@@ -613,6 +653,34 @@ class CodeQualityClient:
                 "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
             ]
         ],
+        ai_findings_option: Missing[Literal["disabled", "on_push"]] = UNSET,
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
+
+    @overload
+    async def async_update_setup(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        state: Missing[Literal["configured", "not-configured"]] = UNSET,
+        runner_type: Missing[Literal["standard", "labeled"]] = UNSET,
+        runner_label: Missing[Union[str, None]] = UNSET,
+        languages: Missing[
+            list[
+                Literal[
+                    "csharp",
+                    "go",
+                    "java-kotlin",
+                    "javascript-typescript",
+                    "python",
+                    "ruby",
+                ]
+            ]
+        ] = UNSET,
+        ai_findings_option: Literal["disabled", "on_push"],
     ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     async def async_update_setup(
@@ -628,6 +696,7 @@ class CodeQualityClient:
                 CodeQualitySetupUpdateAnyof1Type,
                 CodeQualitySetupUpdateAnyof2Type,
                 CodeQualitySetupUpdateAnyof3Type,
+                CodeQualitySetupUpdateAnyof4Type,
             ]
         ] = UNSET,
         **kwargs,
@@ -651,6 +720,7 @@ class CodeQualityClient:
             CodeQualitySetupUpdateAnyof1,
             CodeQualitySetupUpdateAnyof2,
             CodeQualitySetupUpdateAnyof3,
+            CodeQualitySetupUpdateAnyof4,
             EmptyObject,
             EventsGetResponse503,
         )
@@ -671,6 +741,7 @@ class CodeQualityClient:
                     CodeQualitySetupUpdateAnyof1,
                     CodeQualitySetupUpdateAnyof2,
                     CodeQualitySetupUpdateAnyof3,
+                    CodeQualitySetupUpdateAnyof4,
                 ],
                 json,
             )

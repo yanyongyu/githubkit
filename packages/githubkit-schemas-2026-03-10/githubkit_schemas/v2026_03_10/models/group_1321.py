@@ -9,21 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoImportLfsPatchBody(GitHubModel):
-    """ReposOwnerRepoImportLfsPatchBody"""
+class ReposOwnerRepoCodespacesSecretsGetResponse200(GitHubModel):
+    """ReposOwnerRepoCodespacesSecretsGetResponse200"""
 
-    use_lfs: Literal["opt_in", "opt_out"] = Field(
-        description="Whether to store large files during the import. `opt_in` means large files will be stored using Git LFS. `opt_out` means large files will be removed during the import."
-    )
+    total_count: int = Field()
+    secrets: list[RepoCodespacesSecret] = Field()
 
 
-model_rebuild(ReposOwnerRepoImportLfsPatchBody)
+class RepoCodespacesSecret(GitHubModel):
+    """Codespaces Secret
 
-__all__ = ("ReposOwnerRepoImportLfsPatchBody",)
+    Set repository secrets for GitHub Codespaces.
+    """
+
+    name: str = Field(description="The name of the secret.")
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+
+
+model_rebuild(ReposOwnerRepoCodespacesSecretsGetResponse200)
+model_rebuild(RepoCodespacesSecret)
+
+__all__ = (
+    "RepoCodespacesSecret",
+    "ReposOwnerRepoCodespacesSecretsGetResponse200",
+)

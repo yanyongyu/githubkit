@@ -9,50 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
 
-class StateChangeIssueEventType(TypedDict):
-    """State Change Issue Event
+class IssueSuggestionType(TypedDict):
+    """Issue Suggestion
 
-    State Change Issue Event
+    An agent-proposed change to an issue that a maintainer can approve or dismiss.
     """
 
     id: int
-    node_id: str
-    url: str
-    actor: SimpleUserType
-    event: str
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    state_reason: NotRequired[Union[str, None]]
+    issue_id: int
+    action: Literal["set_type", "add_label", "add_field", "add_assignee", "close_issue"]
+    state: Literal[
+        "pending", "applied", "approved", "dismissed", "replaced", "invalidated"
+    ]
+    target_id: Union[int, None]
+    target_value: Union[str, float, bool, list[str], None]
+    rationale: Union[str, None]
+    confidence: Union[None, Literal["LOW", "MEDIUM", "HIGH"]]
+    actor_id: Union[int, None]
+    issue_event_id: Union[int, None]
+    resolved_by: Union[int, None]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-class StateChangeIssueEventTypeForResponse(TypedDict):
-    """State Change Issue Event
+class IssueSuggestionTypeForResponse(TypedDict):
+    """Issue Suggestion
 
-    State Change Issue Event
+    An agent-proposed change to an issue that a maintainer can approve or dismiss.
     """
 
     id: int
-    node_id: str
-    url: str
-    actor: SimpleUserTypeForResponse
-    event: str
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
+    issue_id: int
+    action: Literal["set_type", "add_label", "add_field", "add_assignee", "close_issue"]
+    state: Literal[
+        "pending", "applied", "approved", "dismissed", "replaced", "invalidated"
+    ]
+    target_id: Union[int, None]
+    target_value: Union[str, float, bool, list[str], None]
+    rationale: Union[str, None]
+    confidence: Union[None, Literal["LOW", "MEDIUM", "HIGH"]]
+    actor_id: Union[int, None]
+    issue_event_id: Union[int, None]
+    resolved_by: Union[int, None]
     created_at: str
-    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    state_reason: NotRequired[Union[str, None]]
+    updated_at: str
 
 
 __all__ = (
-    "StateChangeIssueEventType",
-    "StateChangeIssueEventTypeForResponse",
+    "IssueSuggestionType",
+    "IssueSuggestionTypeForResponse",
 )

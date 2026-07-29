@@ -9,53 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoGitTagsPostBody(GitHubModel):
-    """ReposOwnerRepoGitTagsPostBody"""
+class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1(GitHubModel):
+    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1"""
 
-    tag: str = Field(
-        description='The tag\'s name. This is typically a version (e.g., "v0.0.1").'
+    language: Literal[
+        "actions",
+        "cpp",
+        "csharp",
+        "go",
+        "java",
+        "javascript",
+        "python",
+        "ruby",
+        "rust",
+        "swift",
+    ] = Field(description="The language targeted by the CodeQL query")
+    query_pack: str = Field(
+        description="A Base64-encoded tarball containing a CodeQL query and all its dependencies"
     )
-    message: str = Field(description="The tag message.")
-    object_: str = Field(
-        alias="object", description="The SHA of the git object this is tagging."
-    )
-    type: Literal["commit", "tree", "blob"] = Field(
-        description="The type of the object we're tagging. Normally this is a `commit` but it can also be a `tree` or a `blob`."
-    )
-    tagger: Missing[ReposOwnerRepoGitTagsPostBodyPropTagger] = Field(
+    repositories: Missing[list[str]] = Field(
         default=UNSET,
-        description="An object with information about the individual creating the tag.",
+        description="List of repository names (in the form `owner/repo-name`) to run the query against. Precisely one property from `repositories`, `repository_lists` and `repository_owners` is required.",
     )
-
-
-class ReposOwnerRepoGitTagsPostBodyPropTagger(GitHubModel):
-    """ReposOwnerRepoGitTagsPostBodyPropTagger
-
-    An object with information about the individual creating the tag.
-    """
-
-    name: str = Field(description="The name of the author of the tag")
-    email: str = Field(description="The email of the author of the tag")
-    date: Missing[_dt.datetime] = Field(
+    repository_lists: list[str] = Field(
+        max_length=1 if PYDANTIC_V2 else None,
+        description="List of repository lists to run the query against. Precisely one property from `repositories`, `repository_lists` and `repository_owners` is required.",
+    )
+    repository_owners: Missing[list[str]] = Field(
+        max_length=1 if PYDANTIC_V2 else None,
         default=UNSET,
-        description="When this object was tagged. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        description="List of organization or user names whose repositories the query should be run against. Precisely one property from `repositories`, `repository_lists` and `repository_owners` is required.",
     )
 
 
-model_rebuild(ReposOwnerRepoGitTagsPostBody)
-model_rebuild(ReposOwnerRepoGitTagsPostBodyPropTagger)
+model_rebuild(ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1)
 
-__all__ = (
-    "ReposOwnerRepoGitTagsPostBody",
-    "ReposOwnerRepoGitTagsPostBodyPropTagger",
-)
+__all__ = ("ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1",)

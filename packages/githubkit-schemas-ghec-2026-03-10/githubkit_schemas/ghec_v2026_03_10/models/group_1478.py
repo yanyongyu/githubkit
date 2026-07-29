@@ -13,16 +13,19 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0349 import ActionsSecret
+
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBody(GitHubModel):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBody
+
+    Examples:
+        {'apps': ['my-app']}
+    """
+
+    apps: list[str] = Field(
+        description="The GitHub Apps that have push access to this branch. Use the slugified version of the app name. **Note**: The list of users, apps, and teams in total is limited to 100 items."
+    )
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200(GitHubModel):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200"""
+model_rebuild(ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBody)
 
-    total_count: int = Field()
-    secrets: list[ActionsSecret] = Field()
-
-
-model_rebuild(ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200)
-
-__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200",)
+__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBody",)

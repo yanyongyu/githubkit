@@ -9,32 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoActionsOidcCustomizationSubPutBodyType(TypedDict):
-    """Actions OIDC subject customization for a repository
+class OrgsOrgDependabotSecretsGetResponse200Type(TypedDict):
+    """OrgsOrgDependabotSecretsGetResponse200"""
 
-    Actions OIDC subject customization for a repository
+    total_count: int
+    secrets: list[OrganizationDependabotSecretType]
+
+
+class OrgsOrgDependabotSecretsGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgDependabotSecretsGetResponse200"""
+
+    total_count: int
+    secrets: list[OrganizationDependabotSecretTypeForResponse]
+
+
+class OrganizationDependabotSecretType(TypedDict):
+    """Dependabot Secret for an Organization
+
+    Secrets for GitHub Dependabot for an organization.
     """
 
-    use_default: bool
-    include_claim_keys: NotRequired[list[str]]
-    use_immutable_subject: NotRequired[bool]
+    name: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: NotRequired[str]
 
 
-class ReposOwnerRepoActionsOidcCustomizationSubPutBodyTypeForResponse(TypedDict):
-    """Actions OIDC subject customization for a repository
+class OrganizationDependabotSecretTypeForResponse(TypedDict):
+    """Dependabot Secret for an Organization
 
-    Actions OIDC subject customization for a repository
+    Secrets for GitHub Dependabot for an organization.
     """
 
-    use_default: bool
-    include_claim_keys: NotRequired[list[str]]
-    use_immutable_subject: NotRequired[bool]
+    name: str
+    created_at: str
+    updated_at: str
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsOidcCustomizationSubPutBodyType",
-    "ReposOwnerRepoActionsOidcCustomizationSubPutBodyTypeForResponse",
+    "OrganizationDependabotSecretType",
+    "OrganizationDependabotSecretTypeForResponse",
+    "OrgsOrgDependabotSecretsGetResponse200Type",
+    "OrgsOrgDependabotSecretsGetResponse200TypeForResponse",
 )

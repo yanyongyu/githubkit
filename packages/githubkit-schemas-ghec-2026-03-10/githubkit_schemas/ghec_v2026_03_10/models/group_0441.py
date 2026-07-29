@@ -9,31 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0091 import DependabotAlertPackage
 
 
-class CustomDeploymentRuleApp(GitHubModel):
-    """Custom deployment protection rule app
+class DependabotAlertPropDependency(GitHubModel):
+    """DependabotAlertPropDependency
 
-    A GitHub App that is providing a custom deployment protection rule.
+    Details for the vulnerable dependency.
     """
 
-    id: int = Field(
-        description="The unique identifier of the deployment protection rule integration."
+    package: Missing[DependabotAlertPackage] = Field(
+        default=UNSET, description="Details for the vulnerable package."
     )
-    slug: str = Field(
-        description="The slugified name of the deployment protection rule integration."
+    manifest_path: Missing[str] = Field(
+        default=UNSET,
+        description="The full path to the dependency manifest file, relative to the root of the repository.",
     )
-    integration_url: str = Field(
-        description="The URL for the endpoint to get details about the app."
+    scope: Missing[Union[None, Literal["development", "runtime"]]] = Field(
+        default=UNSET, description="The execution scope of the vulnerable dependency."
     )
-    node_id: str = Field(
-        description="The node ID for the deployment protection rule integration."
+    relationship: Missing[
+        Union[None, Literal["unknown", "direct", "transitive", "inconclusive"]]
+    ] = Field(
+        default=UNSET,
+        description='The vulnerable dependency\'s relationship to your project.\n\n> [!NOTE]\n> We are rolling out support for dependency relationship across ecosystems. This value will be "unknown" for all dependencies in unsupported ecosystems.\n',
     )
 
 
-model_rebuild(CustomDeploymentRuleApp)
+model_rebuild(DependabotAlertPropDependency)
 
-__all__ = ("CustomDeploymentRuleApp",)
+__all__ = ("DependabotAlertPropDependency",)

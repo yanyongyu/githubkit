@@ -10,66 +10,53 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0250 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0252 import (
+    MarketplacePurchasePropMarketplacePendingChangeType,
+    MarketplacePurchasePropMarketplacePendingChangeTypeForResponse,
+    MarketplacePurchasePropMarketplacePurchaseType,
+    MarketplacePurchasePropMarketplacePurchaseTypeForResponse,
+)
 
 
-class ThreadType(TypedDict):
-    """Thread
+class MarketplacePurchaseType(TypedDict):
+    """Marketplace Purchase
 
-    Thread
+    Marketplace Purchase
     """
 
-    id: str
-    repository: MinimalRepositoryType
-    subject: ThreadPropSubjectType
-    reason: str
-    unread: bool
-    updated_at: str
-    last_read_at: Union[str, None]
     url: str
-    subscription_url: str
+    type: str
+    id: int
+    login: str
+    organization_billing_email: NotRequired[str]
+    email: NotRequired[Union[str, None]]
+    marketplace_pending_change: NotRequired[
+        Union[MarketplacePurchasePropMarketplacePendingChangeType, None]
+    ]
+    marketplace_purchase: MarketplacePurchasePropMarketplacePurchaseType
 
 
-class ThreadTypeForResponse(TypedDict):
-    """Thread
+class MarketplacePurchaseTypeForResponse(TypedDict):
+    """Marketplace Purchase
 
-    Thread
+    Marketplace Purchase
     """
 
-    id: str
-    repository: MinimalRepositoryTypeForResponse
-    subject: ThreadPropSubjectTypeForResponse
-    reason: str
-    unread: bool
-    updated_at: str
-    last_read_at: Union[str, None]
     url: str
-    subscription_url: str
-
-
-class ThreadPropSubjectType(TypedDict):
-    """ThreadPropSubject"""
-
-    title: str
-    url: str
-    latest_comment_url: str
     type: str
-
-
-class ThreadPropSubjectTypeForResponse(TypedDict):
-    """ThreadPropSubject"""
-
-    title: str
-    url: str
-    latest_comment_url: str
-    type: str
+    id: int
+    login: str
+    organization_billing_email: NotRequired[str]
+    email: NotRequired[Union[str, None]]
+    marketplace_pending_change: NotRequired[
+        Union[MarketplacePurchasePropMarketplacePendingChangeTypeForResponse, None]
+    ]
+    marketplace_purchase: MarketplacePurchasePropMarketplacePurchaseTypeForResponse
 
 
 __all__ = (
-    "ThreadPropSubjectType",
-    "ThreadPropSubjectTypeForResponse",
-    "ThreadType",
-    "ThreadTypeForResponse",
+    "MarketplacePurchaseType",
+    "MarketplacePurchaseTypeForResponse",
 )

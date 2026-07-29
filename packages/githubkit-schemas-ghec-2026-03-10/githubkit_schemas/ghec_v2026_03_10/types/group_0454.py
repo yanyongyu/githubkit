@@ -12,37 +12,19 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class PorterAuthorType(TypedDict):
-    """Porter Author
+class DeploymentBranchPolicyNamePatternType(TypedDict):
+    """Deployment branch policy name pattern"""
 
-    Porter Author
-    """
-
-    id: int
-    remote_id: str
-    remote_name: str
-    email: str
     name: str
-    url: str
-    import_url: str
 
 
-class PorterAuthorTypeForResponse(TypedDict):
-    """Porter Author
+class DeploymentBranchPolicyNamePatternTypeForResponse(TypedDict):
+    """Deployment branch policy name pattern"""
 
-    Porter Author
-    """
-
-    id: int
-    remote_id: str
-    remote_name: str
-    email: str
     name: str
-    url: str
-    import_url: str
 
 
 __all__ = (
-    "PorterAuthorType",
-    "PorterAuthorTypeForResponse",
+    "DeploymentBranchPolicyNamePatternType",
+    "DeploymentBranchPolicyNamePatternTypeForResponse",
 )

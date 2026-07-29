@@ -11,22 +11,20 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0268 import CopilotSpaceType, CopilotSpaceTypeForResponse
+
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody"""
+
+    body: str
 
 
-class UsersUsernameCopilotSpacesGetResponse200Type(TypedDict):
-    """UsersUsernameCopilotSpacesGetResponse200"""
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody"""
 
-    spaces: list[CopilotSpaceType]
-
-
-class UsersUsernameCopilotSpacesGetResponse200TypeForResponse(TypedDict):
-    """UsersUsernameCopilotSpacesGetResponse200"""
-
-    spaces: list[CopilotSpaceTypeForResponse]
+    body: str
 
 
 __all__ = (
-    "UsersUsernameCopilotSpacesGetResponse200Type",
-    "UsersUsernameCopilotSpacesGetResponse200TypeForResponse",
+    "ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType",
+    "ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyTypeForResponse",
 )

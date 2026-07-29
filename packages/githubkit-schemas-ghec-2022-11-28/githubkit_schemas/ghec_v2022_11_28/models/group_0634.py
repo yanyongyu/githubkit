@@ -9,33 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class WebhooksProjectChanges(GitHubModel):
-    """WebhooksProjectChanges"""
+class WebhooksLabel(GitHubModel):
+    """Label"""
 
-    archived_at: Missing[WebhooksProjectChangesPropArchivedAt] = Field(default=UNSET)
+    color: str = Field(
+        description="6-character hex code, without the leading #, identifying the color"
+    )
+    default: bool = Field()
+    description: Union[str, None] = Field()
+    id: int = Field()
+    name: str = Field(description="The name of the label.")
+    node_id: str = Field()
+    url: str = Field(description="URL for the label")
 
 
-class WebhooksProjectChangesPropArchivedAt(GitHubModel):
-    """WebhooksProjectChangesPropArchivedAt"""
+model_rebuild(WebhooksLabel)
 
-    from_: Missing[Union[_dt.datetime, None]] = Field(default=UNSET, alias="from")
-    to: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
-
-
-model_rebuild(WebhooksProjectChanges)
-model_rebuild(WebhooksProjectChangesPropArchivedAt)
-
-__all__ = (
-    "WebhooksProjectChanges",
-    "WebhooksProjectChangesPropArchivedAt",
-)
+__all__ = ("WebhooksLabel",)

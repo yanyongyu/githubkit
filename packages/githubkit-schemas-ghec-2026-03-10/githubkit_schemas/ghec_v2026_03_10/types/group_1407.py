@@ -9,52 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoAttestationsSubjectDigestGetResponse200Type(TypedDict):
-    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200"""
+class OrgsOrgProjectsV2ProjectNumberViewsPostBodyType(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberViewsPostBody"""
 
-    attestations: NotRequired[
-        list[
-            ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsType
-        ]
-    ]
-
-
-class ReposOwnerRepoAttestationsSubjectDigestGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200"""
-
-    attestations: NotRequired[
-        list[
-            ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse
-        ]
-    ]
+    name: str
+    layout: Literal["table", "board", "roadmap"]
+    filter_: NotRequired[str]
+    visible_fields: NotRequired[list[int]]
 
 
-class ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsType(
-    TypedDict
-):
-    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
+class OrgsOrgProjectsV2ProjectNumberViewsPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberViewsPostBody"""
 
-    repository_id: NotRequired[int]
-    bundle_url: NotRequired[str]
-    initiator: NotRequired[str]
-
-
-class ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
-
-    repository_id: NotRequired[int]
-    bundle_url: NotRequired[str]
-    initiator: NotRequired[str]
+    name: str
+    layout: Literal["table", "board", "roadmap"]
+    filter_: NotRequired[str]
+    visible_fields: NotRequired[list[int]]
 
 
 __all__ = (
-    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsType",
-    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse",
-    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200Type",
-    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200TypeForResponse",
+    "OrgsOrgProjectsV2ProjectNumberViewsPostBodyType",
+    "OrgsOrgProjectsV2ProjectNumberViewsPostBodyTypeForResponse",
 )

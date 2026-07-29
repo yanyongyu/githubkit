@@ -14,18 +14,45 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_1518 import (
+    ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment,
+)
 
 
-class ReposOwnerRepoIssuesIssueNumberReactionsPostBody(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberReactionsPostBody"""
+class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1(GitHubModel):
+    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1"""
 
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    state: Missing[Literal["dismissed", "open"]] = Field(
+        default=UNSET,
+        description="The state of the Dependabot alert.\nA `dismissed_reason` must be provided when setting the state to `dismissed`.",
+    )
+    dismissed_reason: Missing[
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ]
     ] = Field(
-        description="The [reaction type](https://docs.github.com/enterprise-cloud@latest/rest/reactions/reactions#about-reactions) to add to the issue."
+        default=UNSET,
+        description="**Required when `state` is `dismissed`.** A reason for dismissing the alert.",
+    )
+    dismissed_comment: Missing[str] = Field(
+        max_length=280,
+        default=UNSET,
+        description="An optional comment associated with dismissing the alert.",
+    )
+    assignees: list[str] = Field(
+        description="Usernames to assign to this Dependabot Alert.\nPass one or more user logins to _replace_ the set of assignees on this alert.\nSend an empty array (`[]`) to clear all assignees from the alert.\nTo assign an AI agent, include the bot login (for example, `copilot-swe-agent[bot]`)."
+    )
+    agent_assignment: Missing[
+        ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment
+    ] = Field(
+        default=UNSET,
+        description="Parameters for AI agent assignment. Only used when an agent bot login is\nincluded in `assignees`. Ignored when no agent is being assigned.",
     )
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberReactionsPostBody)
+model_rebuild(ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1)
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberReactionsPostBody",)
+__all__ = ("ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1",)

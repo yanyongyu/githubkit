@@ -10,188 +10,270 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0019 import LicenseSimpleType, LicenseSimpleTypeForResponse
+from .group_0227 import DiscussionEventType, DiscussionEventTypeForResponse
+from .group_0228 import IssuesEventType, IssuesEventTypeForResponse
+from .group_0229 import IssueCommentEventType, IssueCommentEventTypeForResponse
+from .group_0230 import ForkEventType, ForkEventTypeForResponse
+from .group_0232 import MemberEventType, MemberEventTypeForResponse
+from .group_0233 import PullRequestEventType, PullRequestEventTypeForResponse
+from .group_0234 import (
+    PullRequestReviewCommentEventType,
+    PullRequestReviewCommentEventTypeForResponse,
+)
+from .group_0235 import (
+    PullRequestReviewEventType,
+    PullRequestReviewEventTypeForResponse,
+)
+from .group_0237 import CommitCommentEventType, CommitCommentEventTypeForResponse
+from .group_0239 import ReleaseEventType, ReleaseEventTypeForResponse
 
 
-class ForkEventPropForkeeType(TypedDict):
-    """ForkEventPropForkee"""
+class EventType(TypedDict):
+    """Event
 
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    name: NotRequired[str]
-    full_name: NotRequired[str]
-    private: NotRequired[bool]
-    owner: NotRequired[SimpleUserType]
-    html_url: NotRequired[str]
+    Event
+    """
+
+    id: str
+    type: Union[str, None]
+    actor: ActorType
+    repo: EventPropRepoType
+    org: NotRequired[ActorType]
+    payload: Union[
+        CreateEventType,
+        DeleteEventType,
+        DiscussionEventType,
+        IssuesEventType,
+        IssueCommentEventType,
+        ForkEventType,
+        GollumEventType,
+        MemberEventType,
+        PublicEventType,
+        PushEventType,
+        PullRequestEventType,
+        PullRequestReviewCommentEventType,
+        PullRequestReviewEventType,
+        CommitCommentEventType,
+        ReleaseEventType,
+        WatchEventType,
+    ]
+    public: bool
+    created_at: Union[_dt.datetime, None]
+
+
+class EventTypeForResponse(TypedDict):
+    """Event
+
+    Event
+    """
+
+    id: str
+    type: Union[str, None]
+    actor: ActorTypeForResponse
+    repo: EventPropRepoTypeForResponse
+    org: NotRequired[ActorTypeForResponse]
+    payload: Union[
+        CreateEventTypeForResponse,
+        DeleteEventTypeForResponse,
+        DiscussionEventTypeForResponse,
+        IssuesEventTypeForResponse,
+        IssueCommentEventTypeForResponse,
+        ForkEventTypeForResponse,
+        GollumEventTypeForResponse,
+        MemberEventTypeForResponse,
+        PublicEventTypeForResponse,
+        PushEventTypeForResponse,
+        PullRequestEventTypeForResponse,
+        PullRequestReviewCommentEventTypeForResponse,
+        PullRequestReviewEventTypeForResponse,
+        CommitCommentEventTypeForResponse,
+        ReleaseEventTypeForResponse,
+        WatchEventTypeForResponse,
+    ]
+    public: bool
+    created_at: Union[str, None]
+
+
+class ActorType(TypedDict):
+    """Actor
+
+    Actor
+    """
+
+    id: int
+    login: str
+    display_login: NotRequired[str]
+    gravatar_id: Union[str, None]
+    url: str
+    avatar_url: str
+
+
+class ActorTypeForResponse(TypedDict):
+    """Actor
+
+    Actor
+    """
+
+    id: int
+    login: str
+    display_login: NotRequired[str]
+    gravatar_id: Union[str, None]
+    url: str
+    avatar_url: str
+
+
+class EventPropRepoType(TypedDict):
+    """EventPropRepo"""
+
+    id: int
+    name: str
+    url: str
+
+
+class EventPropRepoTypeForResponse(TypedDict):
+    """EventPropRepo"""
+
+    id: int
+    name: str
+    url: str
+
+
+class CreateEventType(TypedDict):
+    """CreateEvent"""
+
+    ref: str
+    ref_type: str
+    full_ref: str
+    master_branch: str
     description: NotRequired[Union[str, None]]
-    fork: NotRequired[bool]
-    url: NotRequired[str]
-    forks_url: NotRequired[str]
-    keys_url: NotRequired[str]
-    collaborators_url: NotRequired[str]
-    teams_url: NotRequired[str]
-    hooks_url: NotRequired[str]
-    issue_events_url: NotRequired[str]
-    events_url: NotRequired[str]
-    assignees_url: NotRequired[str]
-    branches_url: NotRequired[str]
-    tags_url: NotRequired[str]
-    blobs_url: NotRequired[str]
-    git_tags_url: NotRequired[str]
-    git_refs_url: NotRequired[str]
-    trees_url: NotRequired[str]
-    statuses_url: NotRequired[str]
-    languages_url: NotRequired[str]
-    stargazers_url: NotRequired[str]
-    contributors_url: NotRequired[str]
-    subscribers_url: NotRequired[str]
-    subscription_url: NotRequired[str]
-    commits_url: NotRequired[str]
-    git_commits_url: NotRequired[str]
-    comments_url: NotRequired[str]
-    issue_comment_url: NotRequired[str]
-    contents_url: NotRequired[str]
-    compare_url: NotRequired[str]
-    merges_url: NotRequired[str]
-    archive_url: NotRequired[str]
-    downloads_url: NotRequired[str]
-    issues_url: NotRequired[str]
-    pulls_url: NotRequired[str]
-    milestones_url: NotRequired[str]
-    notifications_url: NotRequired[str]
-    labels_url: NotRequired[str]
-    releases_url: NotRequired[str]
-    deployments_url: NotRequired[str]
-    created_at: NotRequired[Union[_dt.datetime, None]]
-    updated_at: NotRequired[Union[_dt.datetime, None]]
-    pushed_at: NotRequired[Union[_dt.datetime, None]]
-    git_url: NotRequired[str]
-    ssh_url: NotRequired[str]
-    clone_url: NotRequired[str]
-    svn_url: NotRequired[str]
-    homepage: NotRequired[Union[str, None]]
-    size: NotRequired[int]
-    stargazers_count: NotRequired[int]
-    watchers_count: NotRequired[int]
-    language: NotRequired[Union[str, None]]
-    has_issues: NotRequired[bool]
-    has_projects: NotRequired[bool]
-    has_downloads: NotRequired[bool]
-    has_wiki: NotRequired[bool]
-    has_pages: NotRequired[bool]
-    has_discussions: NotRequired[bool]
-    has_pull_requests: NotRequired[bool]
-    pull_request_creation_policy: NotRequired[Literal["all", "collaborators_only"]]
-    forks_count: NotRequired[int]
-    mirror_url: NotRequired[Union[str, None]]
-    archived: NotRequired[bool]
-    disabled: NotRequired[bool]
-    open_issues_count: NotRequired[int]
-    license_: NotRequired[Union[None, LicenseSimpleType]]
-    allow_forking: NotRequired[bool]
-    is_template: NotRequired[bool]
-    web_commit_signoff_required: NotRequired[bool]
-    topics: NotRequired[list[str]]
-    visibility: NotRequired[str]
-    forks: NotRequired[int]
-    open_issues: NotRequired[int]
-    watchers: NotRequired[int]
-    default_branch: NotRequired[str]
-    public: NotRequired[bool]
+    pusher_type: str
 
 
-class ForkEventPropForkeeTypeForResponse(TypedDict):
-    """ForkEventPropForkee"""
+class CreateEventTypeForResponse(TypedDict):
+    """CreateEvent"""
 
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    name: NotRequired[str]
-    full_name: NotRequired[str]
-    private: NotRequired[bool]
-    owner: NotRequired[SimpleUserTypeForResponse]
-    html_url: NotRequired[str]
+    ref: str
+    ref_type: str
+    full_ref: str
+    master_branch: str
     description: NotRequired[Union[str, None]]
-    fork: NotRequired[bool]
-    url: NotRequired[str]
-    forks_url: NotRequired[str]
-    keys_url: NotRequired[str]
-    collaborators_url: NotRequired[str]
-    teams_url: NotRequired[str]
-    hooks_url: NotRequired[str]
-    issue_events_url: NotRequired[str]
-    events_url: NotRequired[str]
-    assignees_url: NotRequired[str]
-    branches_url: NotRequired[str]
-    tags_url: NotRequired[str]
-    blobs_url: NotRequired[str]
-    git_tags_url: NotRequired[str]
-    git_refs_url: NotRequired[str]
-    trees_url: NotRequired[str]
-    statuses_url: NotRequired[str]
-    languages_url: NotRequired[str]
-    stargazers_url: NotRequired[str]
-    contributors_url: NotRequired[str]
-    subscribers_url: NotRequired[str]
-    subscription_url: NotRequired[str]
-    commits_url: NotRequired[str]
-    git_commits_url: NotRequired[str]
-    comments_url: NotRequired[str]
-    issue_comment_url: NotRequired[str]
-    contents_url: NotRequired[str]
-    compare_url: NotRequired[str]
-    merges_url: NotRequired[str]
-    archive_url: NotRequired[str]
-    downloads_url: NotRequired[str]
-    issues_url: NotRequired[str]
-    pulls_url: NotRequired[str]
-    milestones_url: NotRequired[str]
-    notifications_url: NotRequired[str]
-    labels_url: NotRequired[str]
-    releases_url: NotRequired[str]
-    deployments_url: NotRequired[str]
-    created_at: NotRequired[Union[str, None]]
-    updated_at: NotRequired[Union[str, None]]
-    pushed_at: NotRequired[Union[str, None]]
-    git_url: NotRequired[str]
-    ssh_url: NotRequired[str]
-    clone_url: NotRequired[str]
-    svn_url: NotRequired[str]
-    homepage: NotRequired[Union[str, None]]
-    size: NotRequired[int]
-    stargazers_count: NotRequired[int]
-    watchers_count: NotRequired[int]
-    language: NotRequired[Union[str, None]]
-    has_issues: NotRequired[bool]
-    has_projects: NotRequired[bool]
-    has_downloads: NotRequired[bool]
-    has_wiki: NotRequired[bool]
-    has_pages: NotRequired[bool]
-    has_discussions: NotRequired[bool]
-    has_pull_requests: NotRequired[bool]
-    pull_request_creation_policy: NotRequired[Literal["all", "collaborators_only"]]
-    forks_count: NotRequired[int]
-    mirror_url: NotRequired[Union[str, None]]
-    archived: NotRequired[bool]
-    disabled: NotRequired[bool]
-    open_issues_count: NotRequired[int]
-    license_: NotRequired[Union[None, LicenseSimpleTypeForResponse]]
-    allow_forking: NotRequired[bool]
-    is_template: NotRequired[bool]
-    web_commit_signoff_required: NotRequired[bool]
-    topics: NotRequired[list[str]]
-    visibility: NotRequired[str]
-    forks: NotRequired[int]
-    open_issues: NotRequired[int]
-    watchers: NotRequired[int]
-    default_branch: NotRequired[str]
-    public: NotRequired[bool]
+    pusher_type: str
+
+
+class DeleteEventType(TypedDict):
+    """DeleteEvent"""
+
+    ref: str
+    ref_type: str
+    full_ref: str
+    pusher_type: str
+
+
+class DeleteEventTypeForResponse(TypedDict):
+    """DeleteEvent"""
+
+    ref: str
+    ref_type: str
+    full_ref: str
+    pusher_type: str
+
+
+class PublicEventType(TypedDict):
+    """PublicEvent"""
+
+
+class PublicEventTypeForResponse(TypedDict):
+    """PublicEvent"""
+
+
+class PushEventType(TypedDict):
+    """PushEvent"""
+
+    repository_id: int
+    push_id: int
+    ref: str
+    head: str
+    before: str
+
+
+class PushEventTypeForResponse(TypedDict):
+    """PushEvent"""
+
+    repository_id: int
+    push_id: int
+    ref: str
+    head: str
+    before: str
+
+
+class WatchEventType(TypedDict):
+    """WatchEvent"""
+
+    action: str
+
+
+class WatchEventTypeForResponse(TypedDict):
+    """WatchEvent"""
+
+    action: str
+
+
+class GollumEventType(TypedDict):
+    """GollumEvent"""
+
+    pages: list[GollumEventPropPagesItemsType]
+
+
+class GollumEventTypeForResponse(TypedDict):
+    """GollumEvent"""
+
+    pages: list[GollumEventPropPagesItemsTypeForResponse]
+
+
+class GollumEventPropPagesItemsType(TypedDict):
+    """GollumEventPropPagesItems"""
+
+    page_name: NotRequired[Union[str, None]]
+    title: NotRequired[Union[str, None]]
+    summary: NotRequired[Union[str, None]]
+    action: NotRequired[str]
+    sha: NotRequired[str]
+    html_url: NotRequired[str]
+
+
+class GollumEventPropPagesItemsTypeForResponse(TypedDict):
+    """GollumEventPropPagesItems"""
+
+    page_name: NotRequired[Union[str, None]]
+    title: NotRequired[Union[str, None]]
+    summary: NotRequired[Union[str, None]]
+    action: NotRequired[str]
+    sha: NotRequired[str]
+    html_url: NotRequired[str]
 
 
 __all__ = (
-    "ForkEventPropForkeeType",
-    "ForkEventPropForkeeTypeForResponse",
+    "ActorType",
+    "ActorTypeForResponse",
+    "CreateEventType",
+    "CreateEventTypeForResponse",
+    "DeleteEventType",
+    "DeleteEventTypeForResponse",
+    "EventPropRepoType",
+    "EventPropRepoTypeForResponse",
+    "EventType",
+    "EventTypeForResponse",
+    "GollumEventPropPagesItemsType",
+    "GollumEventPropPagesItemsTypeForResponse",
+    "GollumEventType",
+    "GollumEventTypeForResponse",
+    "PublicEventType",
+    "PublicEventTypeForResponse",
+    "PushEventType",
+    "PushEventTypeForResponse",
+    "WatchEventType",
+    "WatchEventTypeForResponse",
 )

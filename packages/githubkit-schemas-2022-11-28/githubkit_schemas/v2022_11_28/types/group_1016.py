@@ -10,26 +10,82 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyType(
+class AgentsReposOwnerRepoTasksTaskIdGetResponse400Type(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse400
+
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[
+        list[AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItemsType]
+    ]
+    documentation_url: str
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse400TypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse400
+
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[
+        list[
+            AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItemsTypeForResponse
+        ]
+    ]
+    documentation_url: str
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItemsType(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItemsTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBody"""
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItems
 
-    scope: Literal["all", "all_without_configurations"]
+    A single validation error
+    """
 
-
-class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBody"""
-
-    scope: Literal["all", "all_without_configurations"]
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyType",
-    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyTypeForResponse",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItemsType",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItemsTypeForResponse",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse400Type",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse400TypeForResponse",
 )

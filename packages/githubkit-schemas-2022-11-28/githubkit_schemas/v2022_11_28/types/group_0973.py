@@ -9,79 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class AgentsReposOwnerRepoTasksPostResponse403Type(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse403
+class WebhookStatusPropCommitPropCommitPropCommitterAllof0Type(TypedDict):
+    """Committer
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
+    Metaproperties for Git author/committer information.
     """
 
-    message: str
-    errors: NotRequired[
-        list[AgentsReposOwnerRepoTasksPostResponse403PropErrorsItemsType]
-    ]
-    documentation_url: str
+    date: NotRequired[_dt.datetime]
+    email: Union[str, None]
+    name: str
+    username: NotRequired[str]
 
 
-class AgentsReposOwnerRepoTasksPostResponse403TypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse403
+class WebhookStatusPropCommitPropCommitPropCommitterAllof0TypeForResponse(TypedDict):
+    """Committer
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
+    Metaproperties for Git author/committer information.
     """
 
-    message: str
-    errors: NotRequired[
-        list[AgentsReposOwnerRepoTasksPostResponse403PropErrorsItemsTypeForResponse]
-    ]
-    documentation_url: str
-
-
-class AgentsReposOwnerRepoTasksPostResponse403PropErrorsItemsType(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse403PropErrorsItems
-
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
-
-
-class AgentsReposOwnerRepoTasksPostResponse403PropErrorsItemsTypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse403PropErrorsItems
-
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
+    date: NotRequired[str]
+    email: Union[str, None]
+    name: str
+    username: NotRequired[str]
 
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksPostResponse403PropErrorsItemsType",
-    "AgentsReposOwnerRepoTasksPostResponse403PropErrorsItemsTypeForResponse",
-    "AgentsReposOwnerRepoTasksPostResponse403Type",
-    "AgentsReposOwnerRepoTasksPostResponse403TypeForResponse",
+    "WebhookStatusPropCommitPropCommitPropCommitterAllof0Type",
+    "WebhookStatusPropCommitPropCommitPropCommitterAllof0TypeForResponse",
 )

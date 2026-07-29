@@ -12,21 +12,23 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBodyType(TypedDict):
-    """OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBody"""
-
-    selected_repository_ids: list[int]
-
-
-class OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBodyTypeForResponse(
+class EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBodyType(
     TypedDict
 ):
-    """OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBody"""
+    """EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBody"""
 
-    selected_repository_ids: list[int]
+    organization_slugs: list[str]
+
+
+class EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBody"""
+
+    organization_slugs: list[str]
 
 
 __all__ = (
-    "OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBodyType",
-    "OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBodyTypeForResponse",
+    "EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBodyType",
+    "EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBodyTypeForResponse",
 )

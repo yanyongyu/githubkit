@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,33 +16,22 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UserPatchBody(GitHubModel):
-    """UserPatchBody"""
+class ReposOwnerRepoLabelsPostBody(GitHubModel):
+    """ReposOwnerRepoLabelsPostBody"""
 
-    name: Missing[str] = Field(default=UNSET, description="The new name of the user.")
-    email: Missing[str] = Field(
-        default=UNSET, description="The publicly visible email address of the user."
+    name: str = Field(
+        description='The name of the label. Emoji can be added to label names, using either native emoji or colon-style markup. For example, typing `:strawberry:` will render the emoji ![:strawberry:](https://github.githubassets.com/images/icons/emoji/unicode/1f353.png ":strawberry:"). For a full list of available emoji and codes, see "[Emoji cheat sheet](https://github.com/ikatyang/emoji-cheat-sheet)."'
     )
-    blog: Missing[str] = Field(
-        default=UNSET, description="The new blog URL of the user."
+    color: Missing[str] = Field(
+        default=UNSET,
+        description="The [hexadecimal color code](http://www.color-hex.com/) for the label, without the leading `#`.",
     )
-    twitter_username: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The new Twitter username of the user."
-    )
-    company: Missing[str] = Field(
-        default=UNSET, description="The new company of the user."
-    )
-    location: Missing[str] = Field(
-        default=UNSET, description="The new location of the user."
-    )
-    hireable: Missing[bool] = Field(
-        default=UNSET, description="The new hiring availability of the user."
-    )
-    bio: Missing[str] = Field(
-        default=UNSET, description="The new short biography of the user."
+    description: Missing[str] = Field(
+        default=UNSET,
+        description="A short description of the label. Must be 100 characters or fewer.",
     )
 
 
-model_rebuild(UserPatchBody)
+model_rebuild(ReposOwnerRepoLabelsPostBody)
 
-__all__ = ("UserPatchBody",)
+__all__ = ("ReposOwnerRepoLabelsPostBody",)

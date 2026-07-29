@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,60 +19,46 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RuleSuiteRequiredStatusChecks(GitHubModel):
-    """Required status checks rule suite metadata
+class RuleSuitesItems(GitHubModel):
+    """RuleSuitesItems"""
 
-    Metadata for a required status checks rule evaluation result.
-    """
-
-    checks: Missing[list[RuleSuiteRequiredStatusChecksPropChecksItems]] = Field(
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the rule insight."
+    )
+    actor_id: Missing[int] = Field(
+        default=UNSET, description="The number that identifies the user."
+    )
+    actor_name: Missing[str] = Field(
+        default=UNSET, description="The handle for the GitHub user account."
+    )
+    before_sha: Missing[str] = Field(
+        default=UNSET, description="The first commit sha before the push evaluation."
+    )
+    after_sha: Missing[str] = Field(
+        default=UNSET, description="The last commit sha in the push evaluation."
+    )
+    ref: Missing[str] = Field(
+        default=UNSET, description="The ref name that the evaluation ran on."
+    )
+    repository_id: Missing[int] = Field(
         default=UNSET,
-        description="The status checks associated with the rule evaluation.",
+        description="The ID of the repository associated with the rule evaluation.",
+    )
+    repository_name: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the repository without the `.git` extension.",
+    )
+    pushed_at: Missing[_dt.datetime] = Field(default=UNSET)
+    result: Missing[Literal["pass", "fail", "bypass"]] = Field(
+        default=UNSET,
+        description="The result of the rule evaluations for rules with the `active` enforcement status.",
+    )
+    evaluation_result: Missing[Literal["pass", "fail", "bypass"]] = Field(
+        default=UNSET,
+        description="The result of the rule evaluations for rules with the `active` and `evaluate` enforcement statuses, demonstrating whether rules would pass or fail if all rules in the rule suite were `active`.",
     )
 
 
-class RuleSuiteRequiredStatusChecksPropChecksItems(GitHubModel):
-    """RuleSuiteRequiredStatusChecksPropChecksItems"""
+model_rebuild(RuleSuitesItems)
 
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the status check."
-    )
-    context: Missing[str] = Field(
-        default=UNSET, description="The context name of the status check."
-    )
-    state: Missing[str] = Field(
-        default=UNSET, description="The state of the status check."
-    )
-    type: Missing[str] = Field(
-        default=UNSET, description="The type of the status check."
-    )
-    app: Missing[Union[RuleSuiteRequiredStatusChecksPropChecksItemsPropApp, None]] = (
-        Field(
-            default=UNSET,
-            description="The GitHub App associated with the status check.",
-        )
-    )
-
-
-class RuleSuiteRequiredStatusChecksPropChecksItemsPropApp(GitHubModel):
-    """RuleSuiteRequiredStatusChecksPropChecksItemsPropApp
-
-    The GitHub App associated with the status check.
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the GitHub App."
-    )
-    slug: Missing[str] = Field(default=UNSET, description="The slug of the GitHub App.")
-    name: Missing[str] = Field(default=UNSET, description="The name of the GitHub App.")
-
-
-model_rebuild(RuleSuiteRequiredStatusChecks)
-model_rebuild(RuleSuiteRequiredStatusChecksPropChecksItems)
-model_rebuild(RuleSuiteRequiredStatusChecksPropChecksItemsPropApp)
-
-__all__ = (
-    "RuleSuiteRequiredStatusChecks",
-    "RuleSuiteRequiredStatusChecksPropChecksItems",
-    "RuleSuiteRequiredStatusChecksPropChecksItemsPropApp",
-)
+__all__ = ("RuleSuitesItems",)

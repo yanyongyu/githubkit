@@ -11,33 +11,50 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0446 import Metadata
 
 
-class GitRef(GitHubModel):
-    """Git Reference
+class Manifest(GitHubModel):
+    """Manifest"""
 
-    Git references within a repository
+    name: str = Field(description="The name of the manifest.")
+    file: Missing[ManifestPropFile] = Field(default=UNSET)
+    metadata: Missing[Metadata] = Field(
+        default=UNSET,
+        title="metadata",
+        description="User-defined metadata to store domain-specific information limited to 8 keys with scalar values.",
+    )
+    resolved: Missing[ManifestPropResolved] = Field(
+        default=UNSET, description="A collection of resolved package dependencies."
+    )
+
+
+class ManifestPropFile(GitHubModel):
+    """ManifestPropFile"""
+
+    source_location: Missing[str] = Field(
+        default=UNSET,
+        description="The path of the manifest file relative to the root of the Git repository.",
+    )
+
+
+class ManifestPropResolved(ExtraGitHubModel):
+    """ManifestPropResolved
+
+    A collection of resolved package dependencies.
     """
 
-    ref: str = Field()
-    node_id: str = Field()
-    url: str = Field()
-    object_: GitRefPropObject = Field(alias="object")
 
-
-class GitRefPropObject(GitHubModel):
-    """GitRefPropObject"""
-
-    type: str = Field()
-    sha: str = Field(min_length=40, max_length=40, description="SHA for the reference")
-    url: str = Field()
-
-
-model_rebuild(GitRef)
-model_rebuild(GitRefPropObject)
+model_rebuild(Manifest)
+model_rebuild(ManifestPropFile)
+model_rebuild(ManifestPropResolved)
 
 __all__ = (
-    "GitRef",
-    "GitRefPropObject",
+    "Manifest",
+    "ManifestPropFile",
+    "ManifestPropResolved",
 )

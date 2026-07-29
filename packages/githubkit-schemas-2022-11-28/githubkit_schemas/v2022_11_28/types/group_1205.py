@@ -9,24 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoDeleteResponse403Type(TypedDict):
-    """ReposOwnerRepoDeleteResponse403"""
+class OrgsOrgMigrationsPostBodyType(TypedDict):
+    """OrgsOrgMigrationsPostBody"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    repositories: list[str]
+    lock_repositories: NotRequired[bool]
+    exclude_metadata: NotRequired[bool]
+    exclude_git_data: NotRequired[bool]
+    exclude_attachments: NotRequired[bool]
+    exclude_releases: NotRequired[bool]
+    exclude_owner_projects: NotRequired[bool]
+    org_metadata_only: NotRequired[bool]
+    exclude: NotRequired[list[Literal["repositories"]]]
 
 
-class ReposOwnerRepoDeleteResponse403TypeForResponse(TypedDict):
-    """ReposOwnerRepoDeleteResponse403"""
+class OrgsOrgMigrationsPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgMigrationsPostBody"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    repositories: list[str]
+    lock_repositories: NotRequired[bool]
+    exclude_metadata: NotRequired[bool]
+    exclude_git_data: NotRequired[bool]
+    exclude_attachments: NotRequired[bool]
+    exclude_releases: NotRequired[bool]
+    exclude_owner_projects: NotRequired[bool]
+    org_metadata_only: NotRequired[bool]
+    exclude: NotRequired[list[Literal["repositories"]]]
 
 
 __all__ = (
-    "ReposOwnerRepoDeleteResponse403Type",
-    "ReposOwnerRepoDeleteResponse403TypeForResponse",
+    "OrgsOrgMigrationsPostBodyType",
+    "OrgsOrgMigrationsPostBodyTypeForResponse",
 )

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,46 +18,48 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class PullRequestWebhookAllof1(GitHubModel):
-    """PullRequestWebhookAllof1"""
+class WebhooksPreviousMarketplacePurchase(GitHubModel):
+    """Marketplace Purchase"""
 
-    allow_auto_merge: Missing[bool] = Field(
-        default=UNSET, description="Whether to allow auto-merge for pull requests."
-    )
-    allow_update_branch: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to allow updating the pull request's branch.",
-    )
-    delete_branch_on_merge: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to delete head branches when pull requests are merged.",
-    )
-    merge_commit_message: Missing[Literal["PR_BODY", "PR_TITLE", "BLANK"]] = Field(
-        default=UNSET,
-        description="The default value for a merge commit message.\n- `PR_TITLE` - default to the pull request's title.\n- `PR_BODY` - default to the pull request's body.\n- `BLANK` - default to a blank commit message.",
-    )
-    merge_commit_title: Missing[Literal["PR_TITLE", "MERGE_MESSAGE"]] = Field(
-        default=UNSET,
-        description='The default value for a merge commit title.\n- `PR_TITLE` - default to the pull request\'s title.\n- `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., "Merge pull request #123 from branch-name").',
-    )
-    squash_merge_commit_message: Missing[
-        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
-    ] = Field(
-        default=UNSET,
-        description="The default value for a squash merge commit message:\n- `PR_BODY` - default to the pull request's body.\n- `COMMIT_MESSAGES` - default to the branch's commit messages.\n- `BLANK` - default to a blank commit message.",
-    )
-    squash_merge_commit_title: Missing[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]] = (
-        Field(
-            default=UNSET,
-            description="The default value for a squash merge commit title:\n- `PR_TITLE` - default to the pull request's title.\n- `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
-        )
-    )
-    use_squash_pr_title_as_default: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether a squash merge commit can use the pull request title as default. **This property is closing down. Please use `squash_merge_commit_title` instead.**",
-    )
+    account: WebhooksPreviousMarketplacePurchasePropAccount = Field()
+    billing_cycle: str = Field()
+    free_trial_ends_on: None = Field()
+    next_billing_date: Missing[Union[str, None]] = Field(default=UNSET)
+    on_free_trial: bool = Field()
+    plan: WebhooksPreviousMarketplacePurchasePropPlan = Field()
+    unit_count: int = Field()
 
 
-model_rebuild(PullRequestWebhookAllof1)
+class WebhooksPreviousMarketplacePurchasePropAccount(GitHubModel):
+    """WebhooksPreviousMarketplacePurchasePropAccount"""
 
-__all__ = ("PullRequestWebhookAllof1",)
+    id: int = Field()
+    login: str = Field()
+    node_id: str = Field()
+    organization_billing_email: Union[str, None] = Field()
+    type: str = Field()
+
+
+class WebhooksPreviousMarketplacePurchasePropPlan(GitHubModel):
+    """WebhooksPreviousMarketplacePurchasePropPlan"""
+
+    bullets: list[str] = Field()
+    description: str = Field()
+    has_free_trial: bool = Field()
+    id: int = Field()
+    monthly_price_in_cents: int = Field()
+    name: str = Field()
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"] = Field()
+    unit_name: Union[str, None] = Field()
+    yearly_price_in_cents: int = Field()
+
+
+model_rebuild(WebhooksPreviousMarketplacePurchase)
+model_rebuild(WebhooksPreviousMarketplacePurchasePropAccount)
+model_rebuild(WebhooksPreviousMarketplacePurchasePropPlan)
+
+__all__ = (
+    "WebhooksPreviousMarketplacePurchase",
+    "WebhooksPreviousMarketplacePurchasePropAccount",
+    "WebhooksPreviousMarketplacePurchasePropPlan",
+)

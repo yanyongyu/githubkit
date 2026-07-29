@@ -9,79 +9,221 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0001 import CvssSeveritiesType, CvssSeveritiesTypeForResponse
 
-class AgentsReposOwnerRepoTasksGetResponse401Type(TypedDict):
-    """AgentsReposOwnerRepoTasksGetResponse401
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryType(TypedDict):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisory
+
+    The details of the security advisory, including summary, description, and
+    severity.
     """
 
-    message: str
-    errors: NotRequired[
-        list[AgentsReposOwnerRepoTasksGetResponse401PropErrorsItemsType]
+    cvss: WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvssType
+    cvss_severities: NotRequired[Union[CvssSeveritiesType, None]]
+    cwes: list[WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItemsType]
+    description: str
+    ghsa_id: str
+    identifiers: list[
+        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItemsType
     ]
-    documentation_url: str
+    published_at: str
+    references: list[
+        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItemsType
+    ]
+    severity: str
+    summary: str
+    updated_at: str
+    vulnerabilities: list[
+        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsType
+    ]
+    withdrawn_at: str
 
 
-class AgentsReposOwnerRepoTasksGetResponse401TypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksGetResponse401
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryTypeForResponse(TypedDict):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisory
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
+    The details of the security advisory, including summary, description, and
+    severity.
     """
 
-    message: str
-    errors: NotRequired[
-        list[AgentsReposOwnerRepoTasksGetResponse401PropErrorsItemsTypeForResponse]
+    cvss: WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvssTypeForResponse
+    cvss_severities: NotRequired[Union[CvssSeveritiesTypeForResponse, None]]
+    cwes: list[
+        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItemsTypeForResponse
     ]
-    documentation_url: str
+    description: str
+    ghsa_id: str
+    identifiers: list[
+        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItemsTypeForResponse
+    ]
+    published_at: str
+    references: list[
+        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItemsTypeForResponse
+    ]
+    severity: str
+    summary: str
+    updated_at: str
+    vulnerabilities: list[
+        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsTypeForResponse
+    ]
+    withdrawn_at: str
 
 
-class AgentsReposOwnerRepoTasksGetResponse401PropErrorsItemsType(TypedDict):
-    """AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvssType(TypedDict):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvss"""
 
-    A single validation error
+    score: float
+    vector_string: Union[str, None]
+
+
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvssTypeForResponse(
+    TypedDict
+):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvss"""
+
+    score: float
+    vector_string: Union[str, None]
+
+
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItemsType(TypedDict):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItems"""
+
+    cwe_id: str
+    name: str
+
+
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItemsTypeForResponse(
+    TypedDict
+):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItems"""
+
+    cwe_id: str
+    name: str
+
+
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItemsType(
+    TypedDict
+):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItems"""
+
+    type: str
+    value: str
+
+
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItemsTypeForResponse(
+    TypedDict
+):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItems"""
+
+    type: str
+    value: str
+
+
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItemsType(
+    TypedDict
+):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItems"""
+
+    url: str
+
+
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItemsTypeForResponse(
+    TypedDict
+):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItems"""
+
+    url: str
+
+
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsType(
+    TypedDict
+):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItems"""
+
+    first_patched_version: Union[
+        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType,
+        None,
+    ]
+    package: WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType
+    severity: str
+    vulnerable_version_range: str
+
+
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsTypeForResponse(
+    TypedDict
+):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItems"""
+
+    first_patched_version: Union[
+        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionTypeForResponse,
+        None,
+    ]
+    package: WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackageTypeForResponse
+    severity: str
+    vulnerable_version_range: str
+
+
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType(
+    TypedDict
+):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsProp
+    FirstPatchedVersion
     """
 
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
+    identifier: str
 
 
-class AgentsReposOwnerRepoTasksGetResponse401PropErrorsItemsTypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems
-
-    A single validation error
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionTypeForResponse(
+    TypedDict
+):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsProp
+    FirstPatchedVersion
     """
 
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
+    identifier: str
+
+
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType(
+    TypedDict
+):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsProp
+    Package
+    """
+
+    ecosystem: str
+    name: str
+
+
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackageTypeForResponse(
+    TypedDict
+):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsProp
+    Package
+    """
+
+    ecosystem: str
+    name: str
 
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksGetResponse401PropErrorsItemsType",
-    "AgentsReposOwnerRepoTasksGetResponse401PropErrorsItemsTypeForResponse",
-    "AgentsReposOwnerRepoTasksGetResponse401Type",
-    "AgentsReposOwnerRepoTasksGetResponse401TypeForResponse",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvssType",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvssTypeForResponse",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItemsType",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItemsTypeForResponse",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItemsType",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItemsTypeForResponse",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItemsType",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItemsTypeForResponse",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionTypeForResponse",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackageTypeForResponse",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsType",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsTypeForResponse",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryType",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryTypeForResponse",
 )

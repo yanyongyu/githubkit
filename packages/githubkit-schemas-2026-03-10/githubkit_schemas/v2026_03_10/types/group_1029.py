@@ -11,24 +11,29 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-
-class EventsGetResponse503Type(TypedDict):
-    """EventsGetResponse503"""
-
-    code: NotRequired[str]
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+from .group_1030 import (
+    AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsType,
+    AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse,
+)
 
 
-class EventsGetResponse503TypeForResponse(TypedDict):
-    """EventsGetResponse503"""
+class AgentsTasksTaskIdGetResponse200Allof1Type(TypedDict):
+    """AgentsTasksTaskIdGetResponse200Allof1"""
 
-    code: NotRequired[str]
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    sessions: NotRequired[
+        list[AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsType]
+    ]
+
+
+class AgentsTasksTaskIdGetResponse200Allof1TypeForResponse(TypedDict):
+    """AgentsTasksTaskIdGetResponse200Allof1"""
+
+    sessions: NotRequired[
+        list[AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse]
+    ]
 
 
 __all__ = (
-    "EventsGetResponse503Type",
-    "EventsGetResponse503TypeForResponse",
+    "AgentsTasksTaskIdGetResponse200Allof1Type",
+    "AgentsTasksTaskIdGetResponse200Allof1TypeForResponse",
 )

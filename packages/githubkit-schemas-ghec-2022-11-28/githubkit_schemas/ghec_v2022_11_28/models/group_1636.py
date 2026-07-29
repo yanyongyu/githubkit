@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,24 +18,32 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0(GitHubModel):
-    """UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0"""
+class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0(GitHubModel):
+    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0"""
 
-    type: Literal["Issue", "PullRequest"] = Field(
-        description="The type of item to add to the project. Must be either Issue or PullRequest."
+    state: Literal["open", "resolved"] = Field(
+        description="Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`."
     )
-    id: int = Field(
-        description="The unique identifier of the issue or pull request to add to the project."
+    resolution: Missing[
+        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
+    ] = Field(
+        default=UNSET,
+        description="**Required when the `state` is `resolved`.** The reason for resolving the alert.",
     )
-    owner: Missing[str] = Field(
-        default=UNSET, description="The repository owner login."
+    resolution_comment: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="An optional comment when closing or reopening an alert. Cannot be updated or deleted.",
     )
-    repo: Missing[str] = Field(default=UNSET, description="The repository name.")
-    number: Missing[int] = Field(
-        default=UNSET, description="The issue or pull request number."
+    assignee: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The username of the user to assign to the alert. Set to `null` to unassign the alert.",
+    )
+    validity: Missing[Union[None, Literal["active", "inactive"]]] = Field(
+        default=UNSET,
+        description="Sets the validity of the secret scanning alert. Can be `active`, `inactive`, or `null` to clear the override.",
     )
 
 
-model_rebuild(UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0)
+model_rebuild(ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0)
 
-__all__ = ("UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0",)
+__all__ = ("ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0",)

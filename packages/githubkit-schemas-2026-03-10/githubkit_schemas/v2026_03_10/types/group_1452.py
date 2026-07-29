@@ -9,34 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0184 import (
-    ProjectsV2FieldSingleSelectOptionType,
-    ProjectsV2FieldSingleSelectOptionTypeForResponse,
-)
+
+class ReposOwnerRepoStacksStackNumberAddPostBodyType(TypedDict):
+    """ReposOwnerRepoStacksStackNumberAddPostBody"""
+
+    pull_requests: list[int]
 
 
-class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1Type(TypedDict):
-    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1"""
+class ReposOwnerRepoStacksStackNumberAddPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoStacksStackNumberAddPostBody"""
 
-    name: str
-    data_type: Literal["single_select"]
-    single_select_options: list[ProjectsV2FieldSingleSelectOptionType]
-
-
-class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1TypeForResponse(
-    TypedDict
-):
-    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1"""
-
-    name: str
-    data_type: Literal["single_select"]
-    single_select_options: list[ProjectsV2FieldSingleSelectOptionTypeForResponse]
+    pull_requests: list[int]
 
 
 __all__ = (
-    "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1Type",
-    "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1TypeForResponse",
+    "ReposOwnerRepoStacksStackNumberAddPostBodyType",
+    "ReposOwnerRepoStacksStackNumberAddPostBodyTypeForResponse",
 )

@@ -10,97 +10,120 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0594 import (
+    SearchResultTextMatchesItemsType,
+    SearchResultTextMatchesItemsTypeForResponse,
+)
 
-class WebhooksRuleType(TypedDict):
-    """branch protection rule
 
-    The branch protection rule. Includes a `name` and all the [branch protection
-    settings](https://docs.github.com/enterprise-cloud@latest/github/administering-
-    a-repository/defining-the-mergeability-of-pull-requests/about-protected-
-    branches#about-branch-protection-settings) applied to branches that match the
-    name. Binary settings are boolean. Multi-level configurations are one of `off`,
-    `non_admins`, or `everyone`. Actor and build lists are arrays of strings.
+class UserSearchResultItemType(TypedDict):
+    """User Search Result Item
+
+    User Search Result Item
     """
 
-    admin_enforced: bool
-    allow_deletions_enforcement_level: Literal["off", "non_admins", "everyone"]
-    allow_force_pushes_enforcement_level: Literal["off", "non_admins", "everyone"]
-    authorized_actor_names: list[str]
-    authorized_actors_only: bool
-    authorized_dismissal_actors_only: bool
-    create_protected: NotRequired[bool]
-    created_at: _dt.datetime
-    dismiss_stale_reviews_on_push: bool
+    login: str
     id: int
-    ignore_approvals_from_contributors: bool
-    linear_history_requirement_enforcement_level: Literal[
-        "off", "non_admins", "everyone"
-    ]
-    lock_branch_enforcement_level: Literal["off", "non_admins", "everyone"]
-    lock_allows_fork_sync: NotRequired[bool]
-    merge_queue_enforcement_level: Literal["off", "non_admins", "everyone"]
-    name: str
-    pull_request_reviews_enforcement_level: Literal["off", "non_admins", "everyone"]
-    repository_id: int
-    require_code_owner_review: bool
-    require_last_push_approval: NotRequired[bool]
-    required_approving_review_count: int
-    required_conversation_resolution_level: Literal["off", "non_admins", "everyone"]
-    required_deployments_enforcement_level: Literal["off", "non_admins", "everyone"]
-    required_status_checks: list[str]
-    required_status_checks_enforcement_level: Literal["off", "non_admins", "everyone"]
-    signature_requirement_enforcement_level: Literal["off", "non_admins", "everyone"]
-    strict_required_status_checks_policy: bool
-    updated_at: _dt.datetime
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    received_events_url: str
+    type: str
+    score: float
+    following_url: str
+    gists_url: str
+    starred_url: str
+    events_url: str
+    public_repos: NotRequired[int]
+    public_gists: NotRequired[int]
+    followers: NotRequired[int]
+    following: NotRequired[int]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
+    name: NotRequired[Union[str, None]]
+    bio: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    location: NotRequired[Union[str, None]]
+    site_admin: bool
+    hireable: NotRequired[Union[bool, None]]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
+    blog: NotRequired[Union[str, None]]
+    company: NotRequired[Union[str, None]]
+    suspended_at: NotRequired[Union[_dt.datetime, None]]
+    user_view_type: NotRequired[str]
 
 
-class WebhooksRuleTypeForResponse(TypedDict):
-    """branch protection rule
+class UserSearchResultItemTypeForResponse(TypedDict):
+    """User Search Result Item
 
-    The branch protection rule. Includes a `name` and all the [branch protection
-    settings](https://docs.github.com/enterprise-cloud@latest/github/administering-
-    a-repository/defining-the-mergeability-of-pull-requests/about-protected-
-    branches#about-branch-protection-settings) applied to branches that match the
-    name. Binary settings are boolean. Multi-level configurations are one of `off`,
-    `non_admins`, or `everyone`. Actor and build lists are arrays of strings.
+    User Search Result Item
     """
 
-    admin_enforced: bool
-    allow_deletions_enforcement_level: Literal["off", "non_admins", "everyone"]
-    allow_force_pushes_enforcement_level: Literal["off", "non_admins", "everyone"]
-    authorized_actor_names: list[str]
-    authorized_actors_only: bool
-    authorized_dismissal_actors_only: bool
-    create_protected: NotRequired[bool]
-    created_at: str
-    dismiss_stale_reviews_on_push: bool
+    login: str
     id: int
-    ignore_approvals_from_contributors: bool
-    linear_history_requirement_enforcement_level: Literal[
-        "off", "non_admins", "everyone"
-    ]
-    lock_branch_enforcement_level: Literal["off", "non_admins", "everyone"]
-    lock_allows_fork_sync: NotRequired[bool]
-    merge_queue_enforcement_level: Literal["off", "non_admins", "everyone"]
-    name: str
-    pull_request_reviews_enforcement_level: Literal["off", "non_admins", "everyone"]
-    repository_id: int
-    require_code_owner_review: bool
-    require_last_push_approval: NotRequired[bool]
-    required_approving_review_count: int
-    required_conversation_resolution_level: Literal["off", "non_admins", "everyone"]
-    required_deployments_enforcement_level: Literal["off", "non_admins", "everyone"]
-    required_status_checks: list[str]
-    required_status_checks_enforcement_level: Literal["off", "non_admins", "everyone"]
-    signature_requirement_enforcement_level: Literal["off", "non_admins", "everyone"]
-    strict_required_status_checks_policy: bool
-    updated_at: str
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    received_events_url: str
+    type: str
+    score: float
+    following_url: str
+    gists_url: str
+    starred_url: str
+    events_url: str
+    public_repos: NotRequired[int]
+    public_gists: NotRequired[int]
+    followers: NotRequired[int]
+    following: NotRequired[int]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    name: NotRequired[Union[str, None]]
+    bio: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    location: NotRequired[Union[str, None]]
+    site_admin: bool
+    hireable: NotRequired[Union[bool, None]]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
+    blog: NotRequired[Union[str, None]]
+    company: NotRequired[Union[str, None]]
+    suspended_at: NotRequired[Union[str, None]]
+    user_view_type: NotRequired[str]
+
+
+class SearchUsersGetResponse200Type(TypedDict):
+    """SearchUsersGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[UserSearchResultItemType]
+
+
+class SearchUsersGetResponse200TypeForResponse(TypedDict):
+    """SearchUsersGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[UserSearchResultItemTypeForResponse]
 
 
 __all__ = (
-    "WebhooksRuleType",
-    "WebhooksRuleTypeForResponse",
+    "SearchUsersGetResponse200Type",
+    "SearchUsersGetResponse200TypeForResponse",
+    "UserSearchResultItemType",
+    "UserSearchResultItemTypeForResponse",
 )

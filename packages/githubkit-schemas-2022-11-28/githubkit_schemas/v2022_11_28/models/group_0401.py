@@ -9,44 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
+from .group_0036 import SimpleRepository
 
 
-class DemilestonedIssueEvent(GitHubModel):
-    """Demilestoned Issue Event
+class IssueReference(GitHubModel):
+    """Issue Reference
 
-    Demilestoned Issue Event
+    A minimal reference to an issue linked from a timeline event (e.g. sub-issue,
+    parent-issue, or dependency events).
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["demilestoned"] = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: str = Field()
-    performed_via_github_app: Union[None, Integration, None] = Field()
-    milestone: DemilestonedIssueEventPropMilestone = Field()
+    number: int = Field(description="The number of the referenced issue.")
+    title: str = Field(description="The title of the referenced issue.")
+    state: str = Field(description="The state of the referenced issue.")
+    state_reason: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The reason for the referenced issue's state."
+    )
+    repository: SimpleRepository = Field(
+        title="Simple Repository", description="A GitHub repository."
+    )
+    issue_type: Union[IssueReferencePropIssueType, None] = Field(
+        title="Issue Type", description="The type of the referenced issue."
+    )
 
 
-class DemilestonedIssueEventPropMilestone(GitHubModel):
-    """DemilestonedIssueEventPropMilestone"""
+class IssueReferencePropIssueType(GitHubModel):
+    """Issue Type
 
-    title: str = Field()
+    The type of the referenced issue.
+    """
+
+    id: int = Field(description="The unique identifier of the issue type.")
+    node_id: str = Field(description="The node identifier of the issue type.")
+    name: str = Field(description="The name of the issue type.")
+    color: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The color of the issue type."
+    )
 
 
-model_rebuild(DemilestonedIssueEvent)
-model_rebuild(DemilestonedIssueEventPropMilestone)
+model_rebuild(IssueReference)
+model_rebuild(IssueReferencePropIssueType)
 
 __all__ = (
-    "DemilestonedIssueEvent",
-    "DemilestonedIssueEventPropMilestone",
+    "IssueReference",
+    "IssueReferencePropIssueType",
 )

@@ -13,41 +13,47 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0598 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0599 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0600 import (
+from .group_0617 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0618 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0619 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0601 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0641 import WebhooksRelease1Type, WebhooksRelease1TypeForResponse
+from .group_0620 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0657 import WebhooksReviewCommentType, WebhooksReviewCommentTypeForResponse
+from .group_0967 import (
+    WebhookPullRequestReviewCommentDeletedPropPullRequestType,
+    WebhookPullRequestReviewCommentDeletedPropPullRequestTypeForResponse,
+)
 
 
-class WebhookReleasePublishedType(TypedDict):
-    """release published event"""
+class WebhookPullRequestReviewCommentDeletedType(TypedDict):
+    """pull_request_review_comment deleted event"""
 
-    action: Literal["published"]
+    action: Literal["deleted"]
+    comment: WebhooksReviewCommentType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    release: WebhooksRelease1Type
+    pull_request: WebhookPullRequestReviewCommentDeletedPropPullRequestType
     repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserType]
+    sender: SimpleUserType
 
 
-class WebhookReleasePublishedTypeForResponse(TypedDict):
-    """release published event"""
+class WebhookPullRequestReviewCommentDeletedTypeForResponse(TypedDict):
+    """pull_request_review_comment deleted event"""
 
-    action: Literal["published"]
+    action: Literal["deleted"]
+    comment: WebhooksReviewCommentTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    release: WebhooksRelease1TypeForResponse
+    pull_request: WebhookPullRequestReviewCommentDeletedPropPullRequestTypeForResponse
     repository: RepositoryWebhooksTypeForResponse
-    sender: NotRequired[SimpleUserTypeForResponse]
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookReleasePublishedType",
-    "WebhookReleasePublishedTypeForResponse",
+    "WebhookPullRequestReviewCommentDeletedType",
+    "WebhookPullRequestReviewCommentDeletedTypeForResponse",
 )

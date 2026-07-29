@@ -9,39 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgMigrationsPostBodyType(TypedDict):
-    """OrgsOrgMigrationsPostBody"""
+class OrgsOrgAttestationsSubjectDigestGetResponse200Type(TypedDict):
+    """OrgsOrgAttestationsSubjectDigestGetResponse200"""
 
-    repositories: list[str]
-    lock_repositories: NotRequired[bool]
-    exclude_metadata: NotRequired[bool]
-    exclude_git_data: NotRequired[bool]
-    exclude_attachments: NotRequired[bool]
-    exclude_releases: NotRequired[bool]
-    exclude_owner_projects: NotRequired[bool]
-    org_metadata_only: NotRequired[bool]
-    exclude: NotRequired[list[Literal["repositories"]]]
+    attestations: NotRequired[
+        list[OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsType]
+    ]
 
 
-class OrgsOrgMigrationsPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgMigrationsPostBody"""
+class OrgsOrgAttestationsSubjectDigestGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgAttestationsSubjectDigestGetResponse200"""
 
-    repositories: list[str]
-    lock_repositories: NotRequired[bool]
-    exclude_metadata: NotRequired[bool]
-    exclude_git_data: NotRequired[bool]
-    exclude_attachments: NotRequired[bool]
-    exclude_releases: NotRequired[bool]
-    exclude_owner_projects: NotRequired[bool]
-    org_metadata_only: NotRequired[bool]
-    exclude: NotRequired[list[Literal["repositories"]]]
+    attestations: NotRequired[
+        list[
+            OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse
+        ]
+    ]
+
+
+class OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsType(
+    TypedDict
+):
+    """OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
+
+    repository_id: NotRequired[int]
+    bundle_url: NotRequired[str]
+    initiator: NotRequired[str]
+
+
+class OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
+
+    repository_id: NotRequired[int]
+    bundle_url: NotRequired[str]
+    initiator: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgMigrationsPostBodyType",
-    "OrgsOrgMigrationsPostBodyTypeForResponse",
+    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsType",
+    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse",
+    "OrgsOrgAttestationsSubjectDigestGetResponse200Type",
+    "OrgsOrgAttestationsSubjectDigestGetResponse200TypeForResponse",
 )

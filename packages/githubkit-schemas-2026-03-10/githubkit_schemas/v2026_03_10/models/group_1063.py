@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,51 +18,37 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsRunnerGroupsGetResponse200(GitHubModel):
-    """OrgsOrgActionsRunnerGroupsGetResponse200"""
+class EnterprisesEnterpriseTeamsTeamSlugPatchBody(GitHubModel):
+    """EnterprisesEnterpriseTeamsTeamSlugPatchBody"""
 
-    total_count: float = Field()
-    runner_groups: list[RunnerGroupsOrg] = Field()
-
-
-class RunnerGroupsOrg(GitHubModel):
-    """RunnerGroupsOrg"""
-
-    id: float = Field()
-    name: str = Field()
-    visibility: str = Field()
-    default: bool = Field()
-    selected_repositories_url: Missing[str] = Field(
-        default=UNSET,
-        description="Link to the selected repositories resource for this runner group. Not present unless visibility was set to `selected`",
+    name: Missing[Union[str, None]] = Field(
+        default=UNSET, description="A new name for the team."
     )
-    runners_url: str = Field()
-    hosted_runners_url: Missing[str] = Field(default=UNSET)
-    network_configuration_id: Missing[str] = Field(
-        default=UNSET,
-        description="The identifier of a hosted compute network configuration.",
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="A new description for the team."
     )
-    inherited: bool = Field()
-    inherited_allows_public_repositories: Missing[bool] = Field(default=UNSET)
-    allows_public_repositories: bool = Field()
-    workflow_restrictions_read_only: Missing[bool] = Field(
+    sync_to_organizations: Missing[Literal["all", "disabled"]] = Field(
         default=UNSET,
-        description="If `true`, the `restricted_to_workflows` and `selected_workflows` fields cannot be modified.",
+        description="Retired: this field is no longer supported.\nWhether the enterprise team should be reflected in each organization.\nThis value cannot be changed.\n",
     )
-    restricted_to_workflows: Missing[bool] = Field(
-        default=UNSET,
-        description="If `true`, the runner group will be restricted to running only the workflows specified in the `selected_workflows` array.",
+    organization_selection_type: Missing[Literal["disabled", "selected", "all"]] = (
+        Field(
+            default=UNSET,
+            description="Specifies which organizations in the enterprise should have access to this team. Can be one of `disabled`, `selected`, or `all`.\n`disabled`: The team is not assigned to any organizations. This is the default when you create a new team.\n`selected`: The team is assigned to specific organizations. You can then use the [add organization assignments API](https://docs.github.com/rest/enterprise-teams/enterprise-team-organizations#add-organization-assignments).\n`all`: The team is assigned to all current and future organizations in the enterprise.\n",
+        )
     )
-    selected_workflows: Missing[list[str]] = Field(
+    group_id: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`.",
+        description="The ID of the IdP group to assign team membership with. The new IdP group will replace the existing one, or replace existing direct members if the team isn't currently linked to an IdP group.",
+    )
+    notification_setting: Missing[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ] = Field(
+        default=UNSET,
+        description="The notification setting the team is set to. The options are:\n\n* `notifications_enabled` - team members receive notifications when the team is @mentioned.\n* `notifications_disabled` - no one receives notifications.\n",
     )
 
 
-model_rebuild(OrgsOrgActionsRunnerGroupsGetResponse200)
-model_rebuild(RunnerGroupsOrg)
+model_rebuild(EnterprisesEnterpriseTeamsTeamSlugPatchBody)
 
-__all__ = (
-    "OrgsOrgActionsRunnerGroupsGetResponse200",
-    "RunnerGroupsOrg",
-)
+__all__ = ("EnterprisesEnterpriseTeamsTeamSlugPatchBody",)

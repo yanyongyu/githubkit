@@ -9,34 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0564 import MetaType, MetaTypeForResponse
-from .group_0574 import (
-    ScimEnterpriseUserResponseAllof1PropGroupsItemsType,
-    ScimEnterpriseUserResponseAllof1PropGroupsItemsTypeForResponse,
-)
+from typing_extensions import TypedDict
 
 
-class ScimEnterpriseUserResponseAllof1Type(TypedDict):
-    """ScimEnterpriseUserResponseAllof1"""
+class ParticipationStatsType(TypedDict):
+    """Participation Stats"""
 
-    id: str
-    groups: NotRequired[list[ScimEnterpriseUserResponseAllof1PropGroupsItemsType]]
-    meta: MetaType
+    all_: list[int]
+    owner: list[int]
 
 
-class ScimEnterpriseUserResponseAllof1TypeForResponse(TypedDict):
-    """ScimEnterpriseUserResponseAllof1"""
+class ParticipationStatsTypeForResponse(TypedDict):
+    """Participation Stats"""
 
-    id: str
-    groups: NotRequired[
-        list[ScimEnterpriseUserResponseAllof1PropGroupsItemsTypeForResponse]
-    ]
-    meta: MetaTypeForResponse
+    all_: list[int]
+    owner: list[int]
 
 
 __all__ = (
-    "ScimEnterpriseUserResponseAllof1Type",
-    "ScimEnterpriseUserResponseAllof1TypeForResponse",
+    "ParticipationStatsType",
+    "ParticipationStatsTypeForResponse",
 )

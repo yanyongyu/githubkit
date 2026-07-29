@@ -11,31 +11,40 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0979 import (
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsType,
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse,
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0534 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0535 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0536 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
 )
+from .group_0537 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0581 import WebhooksTeam1Type, WebhooksTeam1TypeForResponse
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1Type(TypedDict):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1"""
+class WebhookTeamAddType(TypedDict):
+    """team_add event"""
 
-    sessions: NotRequired[
-        list[AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsType]
-    ]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
+    team: WebhooksTeam1Type
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1TypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1"""
+class WebhookTeamAddTypeForResponse(TypedDict):
+    """team_add event"""
 
-    sessions: NotRequired[
-        list[
-            AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse
-        ]
-    ]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+    team: WebhooksTeam1TypeForResponse
 
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1Type",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1TypeForResponse",
+    "WebhookTeamAddType",
+    "WebhookTeamAddTypeForResponse",
 )

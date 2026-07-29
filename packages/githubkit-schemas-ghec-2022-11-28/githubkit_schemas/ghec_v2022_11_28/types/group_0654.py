@@ -9,45 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0599 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0600 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0601 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0602 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0605 import ExemptionRequestType, ExemptionRequestTypeForResponse
 
 
-class WebhookExemptionRequestCancelledType(TypedDict):
-    """Exemption request cancellation event"""
+class ProjectsV2ItemType(TypedDict):
+    """Projects v2 Item
 
-    action: Literal["cancelled"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    exemption_request: ExemptionRequestType
-    sender: SimpleUserType
+    An item belonging to a project
+    """
+
+    id: float
+    node_id: NotRequired[str]
+    project_node_id: NotRequired[str]
+    content_node_id: str
+    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
+    creator: NotRequired[SimpleUserType]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    archived_at: Union[_dt.datetime, None]
 
 
-class WebhookExemptionRequestCancelledTypeForResponse(TypedDict):
-    """Exemption request cancellation event"""
+class ProjectsV2ItemTypeForResponse(TypedDict):
+    """Projects v2 Item
 
-    action: Literal["cancelled"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    exemption_request: ExemptionRequestTypeForResponse
-    sender: SimpleUserTypeForResponse
+    An item belonging to a project
+    """
+
+    id: float
+    node_id: NotRequired[str]
+    project_node_id: NotRequired[str]
+    content_node_id: str
+    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
+    creator: NotRequired[SimpleUserTypeForResponse]
+    created_at: str
+    updated_at: str
+    archived_at: Union[str, None]
 
 
 __all__ = (
-    "WebhookExemptionRequestCancelledType",
-    "WebhookExemptionRequestCancelledTypeForResponse",
+    "ProjectsV2ItemType",
+    "ProjectsV2ItemTypeForResponse",
 )

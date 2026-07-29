@@ -9,24 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201Type(TypedDict):
-    """ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201"""
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyType(TypedDict):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBody
 
-    sbom_url: NotRequired[str]
+    Examples:
+        {'apps': ['my-app']}
+    """
+
+    apps: list[str]
 
 
-class ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201TypeForResponse(
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyTypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201"""
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBody
 
-    sbom_url: NotRequired[str]
+    Examples:
+        {'apps': ['my-app']}
+    """
+
+    apps: list[str]
 
 
 __all__ = (
-    "ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201Type",
-    "ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201TypeForResponse",
+    "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyType",
+    "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyTypeForResponse",
 )

@@ -9,28 +9,79 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0017 import AppPermissionsType, AppPermissionsTypeForResponse
+
+class AgentsReposOwnerRepoTasksGetResponse400Type(TypedDict):
+    """AgentsReposOwnerRepoTasksGetResponse400
+
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[
+        list[AgentsReposOwnerRepoTasksGetResponse400PropErrorsItemsType]
+    ]
+    documentation_url: str
 
 
-class AppInstallationsInstallationIdAccessTokensPostBodyType(TypedDict):
-    """AppInstallationsInstallationIdAccessTokensPostBody"""
+class AgentsReposOwnerRepoTasksGetResponse400TypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoTasksGetResponse400
 
-    repositories: NotRequired[list[str]]
-    repository_ids: NotRequired[list[int]]
-    permissions: NotRequired[AppPermissionsType]
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[
+        list[AgentsReposOwnerRepoTasksGetResponse400PropErrorsItemsTypeForResponse]
+    ]
+    documentation_url: str
 
 
-class AppInstallationsInstallationIdAccessTokensPostBodyTypeForResponse(TypedDict):
-    """AppInstallationsInstallationIdAccessTokensPostBody"""
+class AgentsReposOwnerRepoTasksGetResponse400PropErrorsItemsType(TypedDict):
+    """AgentsReposOwnerRepoTasksGetResponse400PropErrorsItems
 
-    repositories: NotRequired[list[str]]
-    repository_ids: NotRequired[list[int]]
-    permissions: NotRequired[AppPermissionsTypeForResponse]
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
+
+
+class AgentsReposOwnerRepoTasksGetResponse400PropErrorsItemsTypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoTasksGetResponse400PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "AppInstallationsInstallationIdAccessTokensPostBodyType",
-    "AppInstallationsInstallationIdAccessTokensPostBodyTypeForResponse",
+    "AgentsReposOwnerRepoTasksGetResponse400PropErrorsItemsType",
+    "AgentsReposOwnerRepoTasksGetResponse400PropErrorsItemsTypeForResponse",
+    "AgentsReposOwnerRepoTasksGetResponse400Type",
+    "AgentsReposOwnerRepoTasksGetResponse400TypeForResponse",
 )

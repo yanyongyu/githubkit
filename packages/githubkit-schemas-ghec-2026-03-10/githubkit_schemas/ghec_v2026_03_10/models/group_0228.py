@@ -16,16 +16,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0206 import Label
-from .group_0218 import PullRequestMinimal
+from .group_0210 import Label
+from .group_0220 import Issue
 
 
-class PullRequestEvent(GitHubModel):
-    """PullRequestEvent"""
+class IssuesEvent(GitHubModel):
+    """IssuesEvent"""
 
     action: str = Field()
-    number: int = Field()
-    pull_request: PullRequestMinimal = Field(title="Pull Request Minimal")
+    issue: Issue = Field(
+        title="Issue",
+        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
+    )
     assignee: Missing[SimpleUser] = Field(
         default=UNSET, title="Simple User", description="A GitHub user."
     )
@@ -38,6 +40,6 @@ class PullRequestEvent(GitHubModel):
     labels: Missing[list[Label]] = Field(default=UNSET)
 
 
-model_rebuild(PullRequestEvent)
+model_rebuild(IssuesEvent)
 
-__all__ = ("PullRequestEvent",)
+__all__ = ("IssuesEvent",)

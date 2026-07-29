@@ -9,26 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0035 import ActionsHostedRunnerType, ActionsHostedRunnerTypeForResponse
+
+class EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBodyType(TypedDict):
+    """EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBody"""
+
+    default_level: Literal["public", "internal"]
 
 
-class OrgsOrgActionsHostedRunnersGetResponse200Type(TypedDict):
-    """OrgsOrgActionsHostedRunnersGetResponse200"""
+class EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBody"""
 
-    total_count: int
-    runners: list[ActionsHostedRunnerType]
-
-
-class OrgsOrgActionsHostedRunnersGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsHostedRunnersGetResponse200"""
-
-    total_count: int
-    runners: list[ActionsHostedRunnerTypeForResponse]
+    default_level: Literal["public", "internal"]
 
 
 __all__ = (
-    "OrgsOrgActionsHostedRunnersGetResponse200Type",
-    "OrgsOrgActionsHostedRunnersGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBodyType",
+    "EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBodyTypeForResponse",
 )

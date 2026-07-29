@@ -9,32 +9,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import TypedDict
 
 
-class DeploymentBranchPolicySettingsType(TypedDict):
-    """DeploymentBranchPolicySettings
+class ContentSymlinkType(TypedDict):
+    """Symlink Content
 
-    The type of deployment branch policy for this environment. To allow all branches
-    to deploy, set to `null`.
+    An object describing a symlink
     """
 
-    protected_branches: bool
-    custom_branch_policies: bool
+    type: Literal["symlink"]
+    target: str
+    size: int
+    name: str
+    path: str
+    sha: str
+    url: str
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentSymlinkPropLinksType
 
 
-class DeploymentBranchPolicySettingsTypeForResponse(TypedDict):
-    """DeploymentBranchPolicySettings
+class ContentSymlinkTypeForResponse(TypedDict):
+    """Symlink Content
 
-    The type of deployment branch policy for this environment. To allow all branches
-    to deploy, set to `null`.
+    An object describing a symlink
     """
 
-    protected_branches: bool
-    custom_branch_policies: bool
+    type: Literal["symlink"]
+    target: str
+    size: int
+    name: str
+    path: str
+    sha: str
+    url: str
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentSymlinkPropLinksTypeForResponse
+
+
+class ContentSymlinkPropLinksType(TypedDict):
+    """ContentSymlinkPropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
+
+
+class ContentSymlinkPropLinksTypeForResponse(TypedDict):
+    """ContentSymlinkPropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
 
 
 __all__ = (
-    "DeploymentBranchPolicySettingsType",
-    "DeploymentBranchPolicySettingsTypeForResponse",
+    "ContentSymlinkPropLinksType",
+    "ContentSymlinkPropLinksTypeForResponse",
+    "ContentSymlinkType",
+    "ContentSymlinkTypeForResponse",
 )

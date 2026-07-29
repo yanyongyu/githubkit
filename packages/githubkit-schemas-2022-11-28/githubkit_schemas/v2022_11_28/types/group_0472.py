@@ -12,28 +12,28 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0239 import (
-    RepositoryRuleMaxFilePathLengthPropParametersType,
-    RepositoryRuleMaxFilePathLengthPropParametersTypeForResponse,
+from .group_0223 import (
+    RepositoryRuleCommitAuthorEmailPatternPropParametersType,
+    RepositoryRuleCommitAuthorEmailPatternPropParametersTypeForResponse,
 )
 
 
-class RepositoryRuleDetailedOneof20Type(TypedDict):
-    """RepositoryRuleDetailedOneof20"""
+class RepositoryRuleDetailedOneof11Type(TypedDict):
+    """RepositoryRuleDetailedOneof11"""
 
-    type: Literal["max_file_path_length"]
-    parameters: NotRequired[RepositoryRuleMaxFilePathLengthPropParametersType]
+    type: Literal["commit_author_email_pattern"]
+    parameters: NotRequired[RepositoryRuleCommitAuthorEmailPatternPropParametersType]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
-class RepositoryRuleDetailedOneof20TypeForResponse(TypedDict):
-    """RepositoryRuleDetailedOneof20"""
+class RepositoryRuleDetailedOneof11TypeForResponse(TypedDict):
+    """RepositoryRuleDetailedOneof11"""
 
-    type: Literal["max_file_path_length"]
+    type: Literal["commit_author_email_pattern"]
     parameters: NotRequired[
-        RepositoryRuleMaxFilePathLengthPropParametersTypeForResponse
+        RepositoryRuleCommitAuthorEmailPatternPropParametersTypeForResponse
     ]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
@@ -41,6 +41,6 @@ class RepositoryRuleDetailedOneof20TypeForResponse(TypedDict):
 
 
 __all__ = (
-    "RepositoryRuleDetailedOneof20Type",
-    "RepositoryRuleDetailedOneof20TypeForResponse",
+    "RepositoryRuleDetailedOneof11Type",
+    "RepositoryRuleDetailedOneof11TypeForResponse",
 )

@@ -9,9 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -19,55 +16,25 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhooksProjectCard(GitHubModel):
-    """Project Card"""
+class WebhooksChanges(GitHubModel):
+    """WebhooksChanges
 
-    after_id: Missing[Union[int, None]] = Field(default=UNSET)
-    archived: bool = Field(description="Whether or not the card is archived")
-    column_id: int = Field()
-    column_url: str = Field()
-    content_url: Missing[str] = Field(default=UNSET)
-    created_at: _dt.datetime = Field()
-    creator: Union[WebhooksProjectCardPropCreator, None] = Field(title="User")
-    id: int = Field(description="The project card's ID")
-    node_id: str = Field()
-    note: Union[str, None] = Field()
-    project_url: str = Field()
-    updated_at: _dt.datetime = Field()
-    url: str = Field()
+    The changes to the comment.
+    """
+
+    body: Missing[WebhooksChangesPropBody] = Field(default=UNSET)
 
 
-class WebhooksProjectCardPropCreator(GitHubModel):
-    """User"""
+class WebhooksChangesPropBody(GitHubModel):
+    """WebhooksChangesPropBody"""
 
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
+    from_: str = Field(alias="from", description="The previous version of the body.")
 
 
-model_rebuild(WebhooksProjectCard)
-model_rebuild(WebhooksProjectCardPropCreator)
+model_rebuild(WebhooksChanges)
+model_rebuild(WebhooksChangesPropBody)
 
 __all__ = (
-    "WebhooksProjectCard",
-    "WebhooksProjectCardPropCreator",
+    "WebhooksChanges",
+    "WebhooksChangesPropBody",
 )

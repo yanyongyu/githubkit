@@ -9,28 +9,76 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class WebhookCheckRunRequestedActionFormEncodedType(TypedDict):
-    """Check Run Requested Action Event
+class WebhooksChanges8Type(TypedDict):
+    """WebhooksChanges8"""
 
-    The check_run.requested_action webhook encoded with URL encoding
+    tier: WebhooksChanges8PropTierType
+
+
+class WebhooksChanges8TypeForResponse(TypedDict):
+    """WebhooksChanges8"""
+
+    tier: WebhooksChanges8PropTierTypeForResponse
+
+
+class WebhooksChanges8PropTierType(TypedDict):
+    """WebhooksChanges8PropTier"""
+
+    from_: WebhooksChanges8PropTierPropFromType
+
+
+class WebhooksChanges8PropTierTypeForResponse(TypedDict):
+    """WebhooksChanges8PropTier"""
+
+    from_: WebhooksChanges8PropTierPropFromTypeForResponse
+
+
+class WebhooksChanges8PropTierPropFromType(TypedDict):
+    """Sponsorship Tier
+
+    The `tier_changed` and `pending_tier_change` will include the original tier
+    before the change or pending change. For more information, see the pending tier
+    change payload.
     """
 
-    payload: str
+    created_at: str
+    description: str
+    is_custom_ammount: NotRequired[bool]
+    is_custom_amount: NotRequired[bool]
+    is_one_time: bool
+    monthly_price_in_cents: int
+    monthly_price_in_dollars: int
+    name: str
+    node_id: str
 
 
-class WebhookCheckRunRequestedActionFormEncodedTypeForResponse(TypedDict):
-    """Check Run Requested Action Event
+class WebhooksChanges8PropTierPropFromTypeForResponse(TypedDict):
+    """Sponsorship Tier
 
-    The check_run.requested_action webhook encoded with URL encoding
+    The `tier_changed` and `pending_tier_change` will include the original tier
+    before the change or pending change. For more information, see the pending tier
+    change payload.
     """
 
-    payload: str
+    created_at: str
+    description: str
+    is_custom_ammount: NotRequired[bool]
+    is_custom_amount: NotRequired[bool]
+    is_one_time: bool
+    monthly_price_in_cents: int
+    monthly_price_in_dollars: int
+    name: str
+    node_id: str
 
 
 __all__ = (
-    "WebhookCheckRunRequestedActionFormEncodedType",
-    "WebhookCheckRunRequestedActionFormEncodedTypeForResponse",
+    "WebhooksChanges8PropTierPropFromType",
+    "WebhooksChanges8PropTierPropFromTypeForResponse",
+    "WebhooksChanges8PropTierType",
+    "WebhooksChanges8PropTierTypeForResponse",
+    "WebhooksChanges8Type",
+    "WebhooksChanges8TypeForResponse",
 )

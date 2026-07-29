@@ -9,67 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class ContentSymlinkType(TypedDict):
-    """Symlink Content
+class CodeownersErrorsType(TypedDict):
+    """CODEOWNERS errors
 
-    An object describing a symlink
+    A list of errors found in a repo's CODEOWNERS file
     """
 
-    type: Literal["symlink"]
-    target: str
-    size: int
-    name: str
-    path: str
-    sha: str
-    url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    links: ContentSymlinkPropLinksType
+    errors: list[CodeownersErrorsPropErrorsItemsType]
 
 
-class ContentSymlinkTypeForResponse(TypedDict):
-    """Symlink Content
+class CodeownersErrorsTypeForResponse(TypedDict):
+    """CODEOWNERS errors
 
-    An object describing a symlink
+    A list of errors found in a repo's CODEOWNERS file
     """
 
-    type: Literal["symlink"]
-    target: str
-    size: int
-    name: str
+    errors: list[CodeownersErrorsPropErrorsItemsTypeForResponse]
+
+
+class CodeownersErrorsPropErrorsItemsType(TypedDict):
+    """CodeownersErrorsPropErrorsItems"""
+
+    line: int
+    column: int
+    source: NotRequired[str]
+    kind: str
+    suggestion: NotRequired[Union[str, None]]
+    message: str
     path: str
-    sha: str
-    url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    links: ContentSymlinkPropLinksTypeForResponse
 
 
-class ContentSymlinkPropLinksType(TypedDict):
-    """ContentSymlinkPropLinks"""
+class CodeownersErrorsPropErrorsItemsTypeForResponse(TypedDict):
+    """CodeownersErrorsPropErrorsItems"""
 
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
-
-
-class ContentSymlinkPropLinksTypeForResponse(TypedDict):
-    """ContentSymlinkPropLinks"""
-
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
+    line: int
+    column: int
+    source: NotRequired[str]
+    kind: str
+    suggestion: NotRequired[Union[str, None]]
+    message: str
+    path: str
 
 
 __all__ = (
-    "ContentSymlinkPropLinksType",
-    "ContentSymlinkPropLinksTypeForResponse",
-    "ContentSymlinkType",
-    "ContentSymlinkTypeForResponse",
+    "CodeownersErrorsPropErrorsItemsType",
+    "CodeownersErrorsPropErrorsItemsTypeForResponse",
+    "CodeownersErrorsType",
+    "CodeownersErrorsTypeForResponse",
 )

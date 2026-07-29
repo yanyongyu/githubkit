@@ -13,21 +13,23 @@ from typing import Literal
 from typing_extensions import TypedDict
 
 
-class OrgsOrgPersonalAccessTokensPostBodyType(TypedDict):
-    """OrgsOrgPersonalAccessTokensPostBody"""
+class OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBodyType(TypedDict):
+    """OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBody"""
 
-    action: Literal["revoke"]
-    pat_ids: list[int]
+    actor_type: Literal["User", "Team"]
+    actor_identifier: str
+    role: Literal["reader", "writer", "admin"]
 
 
-class OrgsOrgPersonalAccessTokensPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgPersonalAccessTokensPostBody"""
+class OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBody"""
 
-    action: Literal["revoke"]
-    pat_ids: list[int]
+    actor_type: Literal["User", "Team"]
+    actor_identifier: str
+    role: Literal["reader", "writer", "admin"]
 
 
 __all__ = (
-    "OrgsOrgPersonalAccessTokensPostBodyType",
-    "OrgsOrgPersonalAccessTokensPostBodyTypeForResponse",
+    "OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBodyType",
+    "OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBodyTypeForResponse",
 )

@@ -273,6 +273,104 @@ class CopilotClient:
             },
         )
 
+    def copilot_enterprise_repos_one_day_report(
+        self,
+        enterprise: str,
+        *,
+        day: _dt.date,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        CopilotUsageMetrics1DayReport, CopilotUsageMetrics1DayReportTypeForResponse
+    ]:
+        """copilot/copilot-enterprise-repos-one-day-report
+
+        GET /enterprises/{enterprise}/copilot/metrics/reports/repos-1-day
+
+        Use this endpoint to retrieve download links for the Copilot enterprise repository report for a specific day. The report provides per-repository pull request metrics for Copilot across the enterprise, with one entry per repository.
+
+        The report contains repository-level pull request activity for the specified day, including the Copilot Coding Agent (CCA) and Copilot Code Review (CCR) breakdowns. Only repositories that had activity on the specified day are included. Reports are generated daily and made available for download through signed URLs with a limited expiration time.
+
+        The response includes download links to the report files, along with the specific date of the report. The report covers a complete day for which data has been processed.
+
+        Enterprise owners, billing managers, and authorized users with fine-grained "View Enterprise Copilot Metrics" permission can retrieve Copilot metrics reports for the enterprise. OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `read:enterprise` scopes to use this endpoint.
+
+        See also: https://docs.github.com/rest/copilot/copilot-usage-metrics#get-copilot-enterprise-repository-report-for-a-specific-day
+        """
+
+        from ..models import BasicError, CopilotUsageMetrics1DayReport
+
+        url = f"/enterprises/{enterprise}/copilot/metrics/reports/repos-1-day"
+
+        params = {
+            "day": day,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CopilotUsageMetrics1DayReport,
+            error_models={
+                "500": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_copilot_enterprise_repos_one_day_report(
+        self,
+        enterprise: str,
+        *,
+        day: _dt.date,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        CopilotUsageMetrics1DayReport, CopilotUsageMetrics1DayReportTypeForResponse
+    ]:
+        """copilot/copilot-enterprise-repos-one-day-report
+
+        GET /enterprises/{enterprise}/copilot/metrics/reports/repos-1-day
+
+        Use this endpoint to retrieve download links for the Copilot enterprise repository report for a specific day. The report provides per-repository pull request metrics for Copilot across the enterprise, with one entry per repository.
+
+        The report contains repository-level pull request activity for the specified day, including the Copilot Coding Agent (CCA) and Copilot Code Review (CCR) breakdowns. Only repositories that had activity on the specified day are included. Reports are generated daily and made available for download through signed URLs with a limited expiration time.
+
+        The response includes download links to the report files, along with the specific date of the report. The report covers a complete day for which data has been processed.
+
+        Enterprise owners, billing managers, and authorized users with fine-grained "View Enterprise Copilot Metrics" permission can retrieve Copilot metrics reports for the enterprise. OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `read:enterprise` scopes to use this endpoint.
+
+        See also: https://docs.github.com/rest/copilot/copilot-usage-metrics#get-copilot-enterprise-repository-report-for-a-specific-day
+        """
+
+        from ..models import BasicError, CopilotUsageMetrics1DayReport
+
+        url = f"/enterprises/{enterprise}/copilot/metrics/reports/repos-1-day"
+
+        params = {
+            "day": day,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CopilotUsageMetrics1DayReport,
+            error_models={
+                "500": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
     def copilot_enterprise_user_teams_one_day_report(
         self,
         enterprise: str,
@@ -3268,6 +3366,108 @@ class CopilotClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=CopilotUsageMetrics28DayReport,
+            error_models={
+                "500": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    def copilot_organization_repos_one_day_report(
+        self,
+        org: str,
+        *,
+        day: _dt.date,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        CopilotUsageMetrics1DayReport, CopilotUsageMetrics1DayReportTypeForResponse
+    ]:
+        """copilot/copilot-organization-repos-one-day-report
+
+        GET /orgs/{org}/copilot/metrics/reports/repos-1-day
+
+        Use this endpoint to retrieve download links for the Copilot organization repository report for a specific day. The report provides per-repository pull request metrics for Copilot across the organization, with one entry per repository.
+
+        The report contains repository-level pull request activity for the specified day, including the Copilot Coding Agent (CCA) and Copilot Code Review (CCR) breakdowns. Only repositories that had activity on the specified day are included. Reports are generated daily and made available for download through signed URLs with a limited expiration time.
+
+        The response includes download links to the report files, along with the specific date of the report. The report covers a complete day for which data has been processed.
+
+        Organization owners and authorized users with fine-grained "View Organization Copilot Metrics" permission can retrieve Copilot metrics reports for the organization. OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
+
+        For more information about organization metrics attribution, see [How are metrics attributed across organizations](https://docs.github.com/copilot/concepts/copilot-metrics#how-are-metrics-attributed-across-organizations).
+
+        See also: https://docs.github.com/rest/copilot/copilot-usage-metrics#get-copilot-organization-repository-report-for-a-specific-day
+        """
+
+        from ..models import BasicError, CopilotUsageMetrics1DayReport
+
+        url = f"/orgs/{org}/copilot/metrics/reports/repos-1-day"
+
+        params = {
+            "day": day,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CopilotUsageMetrics1DayReport,
+            error_models={
+                "500": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_copilot_organization_repos_one_day_report(
+        self,
+        org: str,
+        *,
+        day: _dt.date,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        CopilotUsageMetrics1DayReport, CopilotUsageMetrics1DayReportTypeForResponse
+    ]:
+        """copilot/copilot-organization-repos-one-day-report
+
+        GET /orgs/{org}/copilot/metrics/reports/repos-1-day
+
+        Use this endpoint to retrieve download links for the Copilot organization repository report for a specific day. The report provides per-repository pull request metrics for Copilot across the organization, with one entry per repository.
+
+        The report contains repository-level pull request activity for the specified day, including the Copilot Coding Agent (CCA) and Copilot Code Review (CCR) breakdowns. Only repositories that had activity on the specified day are included. Reports are generated daily and made available for download through signed URLs with a limited expiration time.
+
+        The response includes download links to the report files, along with the specific date of the report. The report covers a complete day for which data has been processed.
+
+        Organization owners and authorized users with fine-grained "View Organization Copilot Metrics" permission can retrieve Copilot metrics reports for the organization. OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
+
+        For more information about organization metrics attribution, see [How are metrics attributed across organizations](https://docs.github.com/copilot/concepts/copilot-metrics#how-are-metrics-attributed-across-organizations).
+
+        See also: https://docs.github.com/rest/copilot/copilot-usage-metrics#get-copilot-organization-repository-report-for-a-specific-day
+        """
+
+        from ..models import BasicError, CopilotUsageMetrics1DayReport
+
+        url = f"/orgs/{org}/copilot/metrics/reports/repos-1-day"
+
+        params = {
+            "day": day,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CopilotUsageMetrics1DayReport,
             error_models={
                 "500": BasicError,
                 "403": BasicError,

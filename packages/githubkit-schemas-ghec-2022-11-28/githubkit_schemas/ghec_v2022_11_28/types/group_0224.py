@@ -9,29 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import TypedDict
 
-from .group_0214 import IssueCommentType, IssueCommentTypeForResponse
-from .group_0216 import IssueType, IssueTypeForResponse
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class IssueCommentEventType(TypedDict):
-    """IssueCommentEvent"""
+class ReleaseAssetType(TypedDict):
+    """Release Asset
 
-    action: str
-    issue: IssueType
-    comment: IssueCommentType
+    Data related to a release.
+    """
+
+    url: str
+    browser_download_url: str
+    id: int
+    node_id: str
+    name: str
+    label: Union[str, None]
+    state: Literal["uploaded", "open"]
+    content_type: str
+    size: int
+    digest: Union[str, None]
+    download_count: int
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    uploader: Union[None, SimpleUserType]
 
 
-class IssueCommentEventTypeForResponse(TypedDict):
-    """IssueCommentEvent"""
+class ReleaseAssetTypeForResponse(TypedDict):
+    """Release Asset
 
-    action: str
-    issue: IssueTypeForResponse
-    comment: IssueCommentTypeForResponse
+    Data related to a release.
+    """
+
+    url: str
+    browser_download_url: str
+    id: int
+    node_id: str
+    name: str
+    label: Union[str, None]
+    state: Literal["uploaded", "open"]
+    content_type: str
+    size: int
+    digest: Union[str, None]
+    download_count: int
+    created_at: str
+    updated_at: str
+    uploader: Union[None, SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "IssueCommentEventType",
-    "IssueCommentEventTypeForResponse",
+    "ReleaseAssetType",
+    "ReleaseAssetTypeForResponse",
 )

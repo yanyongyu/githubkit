@@ -9,35 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoCodeScanningSarifsPostBodyType(TypedDict):
-    """ReposOwnerRepoCodeScanningSarifsPostBody"""
+class ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType(TypedDict):
+    """ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody"""
 
-    commit_sha: str
-    ref: str
-    sarif: str
-    checkout_uri: NotRequired[str]
-    started_at: NotRequired[_dt.datetime]
-    tool_name: NotRequired[str]
-    validate_: NotRequired[bool]
+    name: str
+    runner_group_id: int
+    labels: list[str]
+    work_folder: NotRequired[str]
 
 
-class ReposOwnerRepoCodeScanningSarifsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoCodeScanningSarifsPostBody"""
+class ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody"""
 
-    commit_sha: str
-    ref: str
-    sarif: str
-    checkout_uri: NotRequired[str]
-    started_at: NotRequired[str]
-    tool_name: NotRequired[str]
-    validate_: NotRequired[bool]
+    name: str
+    runner_group_id: int
+    labels: list[str]
+    work_folder: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoCodeScanningSarifsPostBodyType",
-    "ReposOwnerRepoCodeScanningSarifsPostBodyTypeForResponse",
+    "ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType",
+    "ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyTypeForResponse",
 )

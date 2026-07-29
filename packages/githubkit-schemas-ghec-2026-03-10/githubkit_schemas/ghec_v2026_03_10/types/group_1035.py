@@ -10,298 +10,103 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Any, Literal, TypeAlias, Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0598 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0599 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0600 import (
+from .group_0617 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0618 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0619 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0647 import WebhooksTeam1Type, WebhooksTeam1TypeForResponse
+from .group_0620 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookTeamRemovedFromRepositoryType(TypedDict):
-    """team removed_from_repository event"""
+class WebhookRepositoryVulnerabilityAlertResolveType(TypedDict):
+    """repository_vulnerability_alert resolve event"""
 
-    action: Literal["removed_from_repository"]
+    action: Literal["resolve"]
+    alert: WebhookRepositoryVulnerabilityAlertResolvePropAlertType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
-    repository: NotRequired[WebhookTeamRemovedFromRepositoryPropRepositoryType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
     sender: SimpleUserType
-    team: WebhooksTeam1Type
 
 
-class WebhookTeamRemovedFromRepositoryTypeForResponse(TypedDict):
-    """team removed_from_repository event"""
+class WebhookRepositoryVulnerabilityAlertResolveTypeForResponse(TypedDict):
+    """repository_vulnerability_alert resolve event"""
 
-    action: Literal["removed_from_repository"]
+    action: Literal["resolve"]
+    alert: WebhookRepositoryVulnerabilityAlertResolvePropAlertTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: OrganizationSimpleWebhooksTypeForResponse
-    repository: NotRequired[
-        WebhookTeamRemovedFromRepositoryPropRepositoryTypeForResponse
-    ]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
-    team: WebhooksTeam1TypeForResponse
 
 
-class WebhookTeamRemovedFromRepositoryPropRepositoryType(TypedDict):
-    """Repository
+class WebhookRepositoryVulnerabilityAlertResolvePropAlertType(TypedDict):
+    """Repository Vulnerability Alert Alert
 
-    A git repository
+    The security alert of the vulnerable dependency.
     """
 
-    allow_auto_merge: NotRequired[bool]
-    allow_forking: NotRequired[bool]
-    allow_merge_commit: NotRequired[bool]
-    allow_rebase_merge: NotRequired[bool]
-    allow_squash_merge: NotRequired[bool]
-    allow_update_branch: NotRequired[bool]
-    archive_url: str
-    archived: bool
-    assignees_url: str
-    blobs_url: str
-    branches_url: str
-    clone_url: str
-    collaborators_url: str
-    comments_url: str
-    commits_url: str
-    compare_url: str
-    contents_url: str
-    contributors_url: str
-    created_at: Union[int, _dt.datetime]
-    custom_properties: NotRequired[
-        WebhookTeamRemovedFromRepositoryPropRepositoryPropCustomPropertiesType
+    affected_package_name: str
+    affected_range: str
+    created_at: str
+    dismiss_reason: NotRequired[str]
+    dismissed_at: NotRequired[str]
+    dismisser: NotRequired[
+        Union[
+            WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisserType, None
+        ]
     ]
-    default_branch: str
-    delete_branch_on_merge: NotRequired[bool]
-    deployments_url: str
-    description: Union[str, None]
-    disabled: NotRequired[bool]
-    downloads_url: str
-    events_url: str
-    fork: bool
-    forks: int
-    forks_count: int
-    forks_url: str
-    full_name: str
-    git_commits_url: str
-    git_refs_url: str
-    git_tags_url: str
-    git_url: str
-    has_downloads: bool
-    has_issues: bool
-    has_pages: bool
-    has_projects: bool
-    has_wiki: bool
-    homepage: Union[str, None]
-    hooks_url: str
-    html_url: str
+    external_identifier: str
+    external_reference: Union[str, None]
+    fix_reason: NotRequired[str]
+    fixed_at: NotRequired[_dt.datetime]
+    fixed_in: NotRequired[str]
+    ghsa_id: str
     id: int
-    is_template: NotRequired[bool]
-    issue_comment_url: str
-    issue_events_url: str
-    issues_url: str
-    keys_url: str
-    labels_url: str
-    language: Union[str, None]
-    languages_url: str
-    license_: Union[WebhookTeamRemovedFromRepositoryPropRepositoryPropLicenseType, None]
-    master_branch: NotRequired[str]
-    merges_url: str
-    milestones_url: str
-    mirror_url: Union[str, None]
-    name: str
     node_id: str
-    notifications_url: str
-    open_issues: int
-    open_issues_count: int
-    organization: NotRequired[str]
-    owner: Union[WebhookTeamRemovedFromRepositoryPropRepositoryPropOwnerType, None]
-    permissions: NotRequired[
-        WebhookTeamRemovedFromRepositoryPropRepositoryPropPermissionsType
-    ]
-    private: bool
-    public: NotRequired[bool]
-    pulls_url: str
-    pushed_at: Union[int, _dt.datetime, None]
-    releases_url: str
-    role_name: NotRequired[Union[str, None]]
-    size: int
-    ssh_url: str
-    stargazers: NotRequired[int]
-    stargazers_count: int
-    stargazers_url: str
-    statuses_url: str
-    subscribers_url: str
-    subscription_url: str
-    svn_url: str
-    tags_url: str
-    teams_url: str
-    topics: list[str]
-    trees_url: str
-    updated_at: _dt.datetime
-    url: str
-    visibility: Literal["public", "private", "internal"]
-    watchers: int
-    watchers_count: int
+    number: int
+    severity: str
+    state: Literal["fixed", "open"]
 
 
-class WebhookTeamRemovedFromRepositoryPropRepositoryTypeForResponse(TypedDict):
-    """Repository
+class WebhookRepositoryVulnerabilityAlertResolvePropAlertTypeForResponse(TypedDict):
+    """Repository Vulnerability Alert Alert
 
-    A git repository
+    The security alert of the vulnerable dependency.
     """
 
-    allow_auto_merge: NotRequired[bool]
-    allow_forking: NotRequired[bool]
-    allow_merge_commit: NotRequired[bool]
-    allow_rebase_merge: NotRequired[bool]
-    allow_squash_merge: NotRequired[bool]
-    allow_update_branch: NotRequired[bool]
-    archive_url: str
-    archived: bool
-    assignees_url: str
-    blobs_url: str
-    branches_url: str
-    clone_url: str
-    collaborators_url: str
-    comments_url: str
-    commits_url: str
-    compare_url: str
-    contents_url: str
-    contributors_url: str
-    created_at: Union[int, str]
-    custom_properties: NotRequired[
-        WebhookTeamRemovedFromRepositoryPropRepositoryPropCustomPropertiesTypeForResponse
+    affected_package_name: str
+    affected_range: str
+    created_at: str
+    dismiss_reason: NotRequired[str]
+    dismissed_at: NotRequired[str]
+    dismisser: NotRequired[
+        Union[
+            WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisserTypeForResponse,
+            None,
+        ]
     ]
-    default_branch: str
-    delete_branch_on_merge: NotRequired[bool]
-    deployments_url: str
-    description: Union[str, None]
-    disabled: NotRequired[bool]
-    downloads_url: str
-    events_url: str
-    fork: bool
-    forks: int
-    forks_count: int
-    forks_url: str
-    full_name: str
-    git_commits_url: str
-    git_refs_url: str
-    git_tags_url: str
-    git_url: str
-    has_downloads: bool
-    has_issues: bool
-    has_pages: bool
-    has_projects: bool
-    has_wiki: bool
-    homepage: Union[str, None]
-    hooks_url: str
-    html_url: str
+    external_identifier: str
+    external_reference: Union[str, None]
+    fix_reason: NotRequired[str]
+    fixed_at: NotRequired[str]
+    fixed_in: NotRequired[str]
+    ghsa_id: str
     id: int
-    is_template: NotRequired[bool]
-    issue_comment_url: str
-    issue_events_url: str
-    issues_url: str
-    keys_url: str
-    labels_url: str
-    language: Union[str, None]
-    languages_url: str
-    license_: Union[
-        WebhookTeamRemovedFromRepositoryPropRepositoryPropLicenseTypeForResponse, None
-    ]
-    master_branch: NotRequired[str]
-    merges_url: str
-    milestones_url: str
-    mirror_url: Union[str, None]
-    name: str
     node_id: str
-    notifications_url: str
-    open_issues: int
-    open_issues_count: int
-    organization: NotRequired[str]
-    owner: Union[
-        WebhookTeamRemovedFromRepositoryPropRepositoryPropOwnerTypeForResponse, None
-    ]
-    permissions: NotRequired[
-        WebhookTeamRemovedFromRepositoryPropRepositoryPropPermissionsTypeForResponse
-    ]
-    private: bool
-    public: NotRequired[bool]
-    pulls_url: str
-    pushed_at: Union[int, str, None]
-    releases_url: str
-    role_name: NotRequired[Union[str, None]]
-    size: int
-    ssh_url: str
-    stargazers: NotRequired[int]
-    stargazers_count: int
-    stargazers_url: str
-    statuses_url: str
-    subscribers_url: str
-    subscription_url: str
-    svn_url: str
-    tags_url: str
-    teams_url: str
-    topics: list[str]
-    trees_url: str
-    updated_at: str
-    url: str
-    visibility: Literal["public", "private", "internal"]
-    watchers: int
-    watchers_count: int
+    number: int
+    severity: str
+    state: Literal["fixed", "open"]
 
 
-WebhookTeamRemovedFromRepositoryPropRepositoryPropCustomPropertiesType: TypeAlias = (
-    dict[str, Any]
-)
-"""WebhookTeamRemovedFromRepositoryPropRepositoryPropCustomProperties
-
-The custom properties that were defined for the repository. The keys are the
-custom property names, and the values are the corresponding custom property
-values.
-"""
-
-
-WebhookTeamRemovedFromRepositoryPropRepositoryPropCustomPropertiesTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""WebhookTeamRemovedFromRepositoryPropRepositoryPropCustomProperties
-
-The custom properties that were defined for the repository. The keys are the
-custom property names, and the values are the corresponding custom property
-values.
-"""
-
-
-class WebhookTeamRemovedFromRepositoryPropRepositoryPropLicenseType(TypedDict):
-    """License"""
-
-    key: str
-    name: str
-    node_id: str
-    spdx_id: str
-    url: Union[str, None]
-
-
-class WebhookTeamRemovedFromRepositoryPropRepositoryPropLicenseTypeForResponse(
-    TypedDict
-):
-    """License"""
-
-    key: str
-    name: str
-    node_id: str
-    spdx_id: str
-    url: Union[str, None]
-
-
-class WebhookTeamRemovedFromRepositoryPropRepositoryPropOwnerType(TypedDict):
+class WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisserType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -325,10 +130,11 @@ class WebhookTeamRemovedFromRepositoryPropRepositoryPropOwnerType(TypedDict):
     subscriptions_url: NotRequired[str]
     type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
-    user_view_type: NotRequired[str]
 
 
-class WebhookTeamRemovedFromRepositoryPropRepositoryPropOwnerTypeForResponse(TypedDict):
+class WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisserTypeForResponse(
+    TypedDict
+):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -352,42 +158,13 @@ class WebhookTeamRemovedFromRepositoryPropRepositoryPropOwnerTypeForResponse(Typ
     subscriptions_url: NotRequired[str]
     type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookTeamRemovedFromRepositoryPropRepositoryPropPermissionsType(TypedDict):
-    """WebhookTeamRemovedFromRepositoryPropRepositoryPropPermissions"""
-
-    admin: bool
-    maintain: NotRequired[bool]
-    pull: bool
-    push: bool
-    triage: NotRequired[bool]
-
-
-class WebhookTeamRemovedFromRepositoryPropRepositoryPropPermissionsTypeForResponse(
-    TypedDict
-):
-    """WebhookTeamRemovedFromRepositoryPropRepositoryPropPermissions"""
-
-    admin: bool
-    maintain: NotRequired[bool]
-    pull: bool
-    push: bool
-    triage: NotRequired[bool]
 
 
 __all__ = (
-    "WebhookTeamRemovedFromRepositoryPropRepositoryPropCustomPropertiesType",
-    "WebhookTeamRemovedFromRepositoryPropRepositoryPropCustomPropertiesTypeForResponse",
-    "WebhookTeamRemovedFromRepositoryPropRepositoryPropLicenseType",
-    "WebhookTeamRemovedFromRepositoryPropRepositoryPropLicenseTypeForResponse",
-    "WebhookTeamRemovedFromRepositoryPropRepositoryPropOwnerType",
-    "WebhookTeamRemovedFromRepositoryPropRepositoryPropOwnerTypeForResponse",
-    "WebhookTeamRemovedFromRepositoryPropRepositoryPropPermissionsType",
-    "WebhookTeamRemovedFromRepositoryPropRepositoryPropPermissionsTypeForResponse",
-    "WebhookTeamRemovedFromRepositoryPropRepositoryType",
-    "WebhookTeamRemovedFromRepositoryPropRepositoryTypeForResponse",
-    "WebhookTeamRemovedFromRepositoryType",
-    "WebhookTeamRemovedFromRepositoryTypeForResponse",
+    "WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisserType",
+    "WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisserTypeForResponse",
+    "WebhookRepositoryVulnerabilityAlertResolvePropAlertType",
+    "WebhookRepositoryVulnerabilityAlertResolvePropAlertTypeForResponse",
+    "WebhookRepositoryVulnerabilityAlertResolveType",
+    "WebhookRepositoryVulnerabilityAlertResolveTypeForResponse",
 )

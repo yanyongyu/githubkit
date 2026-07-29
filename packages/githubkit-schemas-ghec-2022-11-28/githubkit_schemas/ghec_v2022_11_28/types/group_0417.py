@@ -9,51 +9,76 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
+class CodeScanningDefaultSetupType(TypedDict):
+    """CodeScanningDefaultSetup
 
-class StatusType(TypedDict):
-    """Status
-
-    The status of a commit.
+    Configuration for code scanning default setup.
     """
 
-    url: str
-    avatar_url: Union[str, None]
-    id: int
-    node_id: str
-    state: str
-    description: Union[str, None]
-    target_url: Union[str, None]
-    context: str
-    created_at: str
-    updated_at: str
-    creator: Union[None, SimpleUserType]
+    state: NotRequired[Literal["configured", "not-configured"]]
+    languages: NotRequired[
+        list[
+            Literal[
+                "actions",
+                "c-cpp",
+                "csharp",
+                "go",
+                "java-kotlin",
+                "javascript-typescript",
+                "javascript",
+                "python",
+                "ruby",
+                "typescript",
+                "swift",
+            ]
+        ]
+    ]
+    runner_type: NotRequired[Union[None, Literal["standard", "labeled"]]]
+    runner_label: NotRequired[Union[str, None]]
+    query_suite: NotRequired[Literal["default", "extended"]]
+    threat_model: NotRequired[Literal["remote", "remote_and_local"]]
+    updated_at: NotRequired[Union[_dt.datetime, None]]
+    schedule: NotRequired[Union[None, Literal["weekly"]]]
 
 
-class StatusTypeForResponse(TypedDict):
-    """Status
+class CodeScanningDefaultSetupTypeForResponse(TypedDict):
+    """CodeScanningDefaultSetup
 
-    The status of a commit.
+    Configuration for code scanning default setup.
     """
 
-    url: str
-    avatar_url: Union[str, None]
-    id: int
-    node_id: str
-    state: str
-    description: Union[str, None]
-    target_url: Union[str, None]
-    context: str
-    created_at: str
-    updated_at: str
-    creator: Union[None, SimpleUserTypeForResponse]
+    state: NotRequired[Literal["configured", "not-configured"]]
+    languages: NotRequired[
+        list[
+            Literal[
+                "actions",
+                "c-cpp",
+                "csharp",
+                "go",
+                "java-kotlin",
+                "javascript-typescript",
+                "javascript",
+                "python",
+                "ruby",
+                "typescript",
+                "swift",
+            ]
+        ]
+    ]
+    runner_type: NotRequired[Union[None, Literal["standard", "labeled"]]]
+    runner_label: NotRequired[Union[str, None]]
+    query_suite: NotRequired[Literal["default", "extended"]]
+    threat_model: NotRequired[Literal["remote", "remote_and_local"]]
+    updated_at: NotRequired[Union[str, None]]
+    schedule: NotRequired[Union[None, Literal["weekly"]]]
 
 
 __all__ = (
-    "StatusType",
-    "StatusTypeForResponse",
+    "CodeScanningDefaultSetupType",
+    "CodeScanningDefaultSetupTypeForResponse",
 )

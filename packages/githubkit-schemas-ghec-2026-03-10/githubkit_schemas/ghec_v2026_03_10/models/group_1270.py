@@ -11,19 +11,24 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+
+from .group_0037 import ActionsHostedRunnerCustomImageVersion
 
 
-class OrgsOrgAttestationsDeleteRequestPostBodyOneof0(GitHubModel):
-    """OrgsOrgAttestationsDeleteRequestPostBodyOneof0"""
+class OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200(
+    GitHubModel
+):
+    """OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200"""
 
-    subject_digests: list[str] = Field(
-        max_length=1024 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="List of subject digests associated with the artifact attestations to delete.",
-    )
+    total_count: int = Field()
+    image_versions: list[ActionsHostedRunnerCustomImageVersion] = Field()
 
 
-model_rebuild(OrgsOrgAttestationsDeleteRequestPostBodyOneof0)
+model_rebuild(
+    OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200
+)
 
-__all__ = ("OrgsOrgAttestationsDeleteRequestPostBodyOneof0",)
+__all__ = (
+    "OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200",
+)

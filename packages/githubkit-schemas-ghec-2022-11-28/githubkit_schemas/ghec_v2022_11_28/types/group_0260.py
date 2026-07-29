@@ -9,38 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationActionsSecretType(TypedDict):
-    """Actions Secret for an Organization
+class ActionsCacheStorageLimitForOrganizationType(TypedDict):
+    """Actions cache storage limit for an organization
 
-    Secrets for GitHub Actions for an organization.
+    GitHub Actions cache storage policy for an organization.
     """
 
-    name: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: NotRequired[str]
+    max_cache_size_gb: NotRequired[int]
 
 
-class OrganizationActionsSecretTypeForResponse(TypedDict):
-    """Actions Secret for an Organization
+class ActionsCacheStorageLimitForOrganizationTypeForResponse(TypedDict):
+    """Actions cache storage limit for an organization
 
-    Secrets for GitHub Actions for an organization.
+    GitHub Actions cache storage policy for an organization.
     """
 
-    name: str
-    created_at: str
-    updated_at: str
-    visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: NotRequired[str]
+    max_cache_size_gb: NotRequired[int]
 
 
 __all__ = (
-    "OrganizationActionsSecretType",
-    "OrganizationActionsSecretTypeForResponse",
+    "ActionsCacheStorageLimitForOrganizationType",
+    "ActionsCacheStorageLimitForOrganizationTypeForResponse",
 )

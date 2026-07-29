@@ -16,15 +16,14 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0(GitHubModel):
-    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0"""
+class ReposOwnerRepoReleasesReleaseIdReactionsPostBody(GitHubModel):
+    """ReposOwnerRepoReleasesReleaseIdReactionsPostBody"""
 
-    name: str = Field(description="The name of the field.")
-    data_type: Literal["text", "number", "date"] = Field(
-        description="The field's data type."
+    content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"] = Field(
+        description="The [reaction type](https://docs.github.com/enterprise-cloud@latest/rest/reactions/reactions#about-reactions) to add to the release."
     )
 
 
-model_rebuild(UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0)
+model_rebuild(ReposOwnerRepoReleasesReleaseIdReactionsPostBody)
 
-__all__ = ("UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0",)
+__all__ = ("ReposOwnerRepoReleasesReleaseIdReactionsPostBody",)

@@ -12,25 +12,21 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody"""
+class ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201Type(TypedDict):
+    """ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201"""
 
-    sub_issue_id: int
-    after_id: NotRequired[int]
-    before_id: NotRequired[int]
+    sbom_url: NotRequired[str]
 
 
-class ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyTypeForResponse(
+class ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201TypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody"""
+    """ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201"""
 
-    sub_issue_id: int
-    after_id: NotRequired[int]
-    before_id: NotRequired[int]
+    sbom_url: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyType",
-    "ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyTypeForResponse",
+    "ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201Type",
+    "ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201TypeForResponse",
 )

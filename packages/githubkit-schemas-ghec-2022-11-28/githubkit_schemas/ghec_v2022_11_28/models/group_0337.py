@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,45 +19,90 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class TeamMember(GitHubModel):
-    """Team Member
+class RuleSuite(GitHubModel):
+    """Rule Suite
 
-    A user that is a member of a team, including their role on the team and whether
-    the membership is inherited from a child team.
+    Response
     """
 
-    name: Missing[Union[str, None]] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    login: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    avatar_url: str = Field()
-    gravatar_id: Union[str, None] = Field()
-    url: str = Field()
-    html_url: str = Field()
-    followers_url: str = Field()
-    following_url: str = Field()
-    gists_url: str = Field()
-    starred_url: str = Field()
-    subscriptions_url: str = Field()
-    organizations_url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    received_events_url: str = Field()
-    type: str = Field()
-    site_admin: bool = Field()
-    starred_at: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
-    role: Missing[Literal["member", "maintainer"]] = Field(
-        default=UNSET,
-        description="The member's role on the team. Only present on the `List team members` endpoint, and only when the feature is enabled for the organization.",
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the rule insight."
     )
-    inherited: Missing[bool] = Field(
+    actor_id: Missing[Union[int, None]] = Field(
+        default=UNSET, description="The number that identifies the user."
+    )
+    actor_name: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The handle for the GitHub user account."
+    )
+    before_sha: Missing[str] = Field(
+        default=UNSET, description="The previous commit SHA of the ref."
+    )
+    after_sha: Missing[str] = Field(
+        default=UNSET, description="The new commit SHA of the ref."
+    )
+    ref: Missing[str] = Field(
+        default=UNSET, description="The ref name that the evaluation ran on."
+    )
+    repository_id: Missing[int] = Field(
         default=UNSET,
-        description="Whether the user is a member of the team only through a child team. `true` means the membership is inherited from a child team; `false` means the user is a direct (immediate) member of the team. Only present on the `List team members` endpoint, and only when the feature is enabled for the organization.",
+        description="The ID of the repository associated with the rule evaluation.",
+    )
+    repository_name: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the repository without the `.git` extension.",
+    )
+    pushed_at: Missing[_dt.datetime] = Field(default=UNSET)
+    result: Missing[Literal["pass", "fail", "bypass"]] = Field(
+        default=UNSET,
+        description="The result of the rule evaluations for rules with the `active` enforcement status.",
+    )
+    evaluation_result: Missing[Union[None, Literal["pass", "fail", "bypass"]]] = Field(
+        default=UNSET,
+        description="The result of the rule evaluations for rules with the `active` and `evaluate` enforcement statuses, demonstrating whether rules would pass or fail if all rules in the rule suite were `active`. Null if no rules with `evaluate` enforcement status were run.",
+    )
+    rule_evaluations: Missing[list[RuleSuitePropRuleEvaluationsItems]] = Field(
+        default=UNSET, description="Details on the evaluated rules."
     )
 
 
-model_rebuild(TeamMember)
+class RuleSuitePropRuleEvaluationsItems(GitHubModel):
+    """RuleSuitePropRuleEvaluationsItems"""
 
-__all__ = ("TeamMember",)
+    rule_source: Missing[RuleSuitePropRuleEvaluationsItemsPropRuleSource] = Field(
+        default=UNSET
+    )
+    enforcement: Missing[Literal["active", "evaluate", "deleted ruleset"]] = Field(
+        default=UNSET, description="The enforcement level of this rule source."
+    )
+    result: Missing[Literal["pass", "fail"]] = Field(
+        default=UNSET,
+        description="The result of the evaluation of the individual rule.",
+    )
+    rule_type: Missing[str] = Field(default=UNSET, description="The type of rule.")
+    details: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The detailed failure message for the rule. Null if the rule passed.",
+    )
+
+
+class RuleSuitePropRuleEvaluationsItemsPropRuleSource(GitHubModel):
+    """RuleSuitePropRuleEvaluationsItemsPropRuleSource"""
+
+    type: Missing[str] = Field(default=UNSET, description="The type of rule source.")
+    id: Missing[Union[int, None]] = Field(
+        default=UNSET, description="The ID of the rule source."
+    )
+    name: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The name of the rule source."
+    )
+
+
+model_rebuild(RuleSuite)
+model_rebuild(RuleSuitePropRuleEvaluationsItems)
+model_rebuild(RuleSuitePropRuleEvaluationsItemsPropRuleSource)
+
+__all__ = (
+    "RuleSuite",
+    "RuleSuitePropRuleEvaluationsItems",
+    "RuleSuitePropRuleEvaluationsItemsPropRuleSource",
+)

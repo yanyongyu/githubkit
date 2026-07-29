@@ -9,24 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0125 import RunnerType, RunnerTypeForResponse
 
 
-class OrgsOrgAttestationsRepositoriesGetResponse200ItemsType(TypedDict):
-    """OrgsOrgAttestationsRepositoriesGetResponse200Items"""
+class OrgsOrgActionsRunnersGenerateJitconfigPostResponse201Type(TypedDict):
+    """OrgsOrgActionsRunnersGenerateJitconfigPostResponse201"""
 
-    id: NotRequired[int]
-    name: NotRequired[str]
+    runner: RunnerType
+    encoded_jit_config: str
 
 
-class OrgsOrgAttestationsRepositoriesGetResponse200ItemsTypeForResponse(TypedDict):
-    """OrgsOrgAttestationsRepositoriesGetResponse200Items"""
+class OrgsOrgActionsRunnersGenerateJitconfigPostResponse201TypeForResponse(TypedDict):
+    """OrgsOrgActionsRunnersGenerateJitconfigPostResponse201"""
 
-    id: NotRequired[int]
-    name: NotRequired[str]
+    runner: RunnerTypeForResponse
+    encoded_jit_config: str
 
 
 __all__ = (
-    "OrgsOrgAttestationsRepositoriesGetResponse200ItemsType",
-    "OrgsOrgAttestationsRepositoriesGetResponse200ItemsTypeForResponse",
+    "OrgsOrgActionsRunnersGenerateJitconfigPostResponse201Type",
+    "OrgsOrgActionsRunnersGenerateJitconfigPostResponse201TypeForResponse",
 )

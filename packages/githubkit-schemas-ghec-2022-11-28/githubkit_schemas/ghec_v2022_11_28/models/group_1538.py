@@ -17,34 +17,53 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_1536 import ReposOwnerRepoPagesPutBodyPropSourceAnyof1
+from .group_0451 import DeploymentBranchPolicySettings
 
 
-class ReposOwnerRepoPagesPutBodyAnyof1(GitHubModel):
-    """ReposOwnerRepoPagesPutBodyAnyof1"""
+class ReposOwnerRepoEnvironmentsEnvironmentNamePutBody(GitHubModel):
+    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBody"""
 
-    cname: Missing[Union[str, None]] = Field(
+    wait_timer: Missing[int] = Field(
         default=UNSET,
-        description='Specify a custom domain for the repository. Sending a `null` value will remove the custom domain. For more about custom domains, see "[Using a custom domain with GitHub Pages](https://docs.github.com/enterprise-cloud@latest/pages/configuring-a-custom-domain-for-your-github-pages-site)."',
+        description="The amount of time to delay a job after the job is initially triggered. The time (in minutes) must be an integer between 0 and 43,200 (30 days).",
     )
-    https_enforced: Missing[bool] = Field(
+    prevent_self_review: Missing[bool] = Field(
         default=UNSET,
-        description="Specify whether HTTPS should be enforced for the repository.",
+        description="Whether or not a user who created the job is prevented from approving their own job.",
     )
-    build_type: Missing[Literal["legacy", "workflow"]] = Field(
+    reviewers: Missing[
+        Union[
+            list[ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems],
+            None,
+        ]
+    ] = Field(
         default=UNSET,
-        description="The process by which the GitHub Pages site will be built. `workflow` means that the site is built by a custom GitHub Actions workflow. `legacy` means that the site is built by GitHub when changes are pushed to a specific branch.",
+        description="The people or teams that may review jobs that reference the environment. You can list up to six users or teams as reviewers. The reviewers must have at least read access to the repository. Only one of the required reviewers needs to approve the job for it to proceed.",
     )
-    source: Union[
-        Literal["gh-pages", "master", "master /docs"],
-        ReposOwnerRepoPagesPutBodyPropSourceAnyof1,
-    ] = Field()
-    public: Missing[bool] = Field(
-        default=UNSET,
-        description="Configures access controls for the GitHub Pages site. If public is set to `true`, the site is accessible to anyone on the internet. If set to `false`, the site will only be accessible to users who have at least `read` access to the repository that published the site. This includes anyone in your Enterprise if the repository is set to `internal` visibility.",
+    deployment_branch_policy: Missing[Union[DeploymentBranchPolicySettings, None]] = (
+        Field(
+            default=UNSET,
+            description="The type of deployment branch policy for this environment. To allow all branches to deploy, set to `null`.",
+        )
     )
 
 
-model_rebuild(ReposOwnerRepoPagesPutBodyAnyof1)
+class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems(GitHubModel):
+    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems"""
 
-__all__ = ("ReposOwnerRepoPagesPutBodyAnyof1",)
+    type: Missing[Literal["User", "Team"]] = Field(
+        default=UNSET, description="The type of reviewer."
+    )
+    id: Missing[int] = Field(
+        default=UNSET,
+        description="The id of the user or team who can review the deployment",
+    )
+
+
+model_rebuild(ReposOwnerRepoEnvironmentsEnvironmentNamePutBody)
+model_rebuild(ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems)
+
+__all__ = (
+    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBody",
+    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems",
+)

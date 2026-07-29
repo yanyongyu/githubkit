@@ -11,22 +11,26 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-
-class EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422Type(TypedDict):
-    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422"""
-
-    errors: NotRequired[list[str]]
+from .group_0017 import AppPermissionsType, AppPermissionsTypeForResponse
 
 
-class EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422"""
+class AppInstallationsInstallationIdAccessTokensPostBodyType(TypedDict):
+    """AppInstallationsInstallationIdAccessTokensPostBody"""
 
-    errors: NotRequired[list[str]]
+    repositories: NotRequired[list[str]]
+    repository_ids: NotRequired[list[int]]
+    permissions: NotRequired[AppPermissionsType]
+
+
+class AppInstallationsInstallationIdAccessTokensPostBodyTypeForResponse(TypedDict):
+    """AppInstallationsInstallationIdAccessTokensPostBody"""
+
+    repositories: NotRequired[list[str]]
+    repository_ids: NotRequired[list[int]]
+    permissions: NotRequired[AppPermissionsTypeForResponse]
 
 
 __all__ = (
-    "EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422Type",
-    "EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422TypeForResponse",
+    "AppInstallationsInstallationIdAccessTokensPostBodyType",
+    "AppInstallationsInstallationIdAccessTokensPostBodyTypeForResponse",
 )

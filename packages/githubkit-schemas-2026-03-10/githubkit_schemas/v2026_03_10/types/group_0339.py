@@ -9,27 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class CodeScanningSarifsStatusType(TypedDict):
-    """CodeScanningSarifsStatus"""
-
-    processing_status: NotRequired[Literal["pending", "complete", "failed"]]
-    analyses_url: NotRequired[Union[str, None]]
-    errors: NotRequired[Union[list[str], None]]
+from .group_0336 import (
+    CodeScanningVariantAnalysisRepositoryType,
+    CodeScanningVariantAnalysisRepositoryTypeForResponse,
+)
 
 
-class CodeScanningSarifsStatusTypeForResponse(TypedDict):
-    """CodeScanningSarifsStatus"""
+class CodeScanningVariantAnalysisPropScannedRepositoriesItemsType(TypedDict):
+    """CodeScanningVariantAnalysisPropScannedRepositoriesItems"""
 
-    processing_status: NotRequired[Literal["pending", "complete", "failed"]]
-    analyses_url: NotRequired[Union[str, None]]
-    errors: NotRequired[Union[list[str], None]]
+    repository: CodeScanningVariantAnalysisRepositoryType
+    analysis_status: Literal[
+        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
+    ]
+    result_count: NotRequired[int]
+    artifact_size_in_bytes: NotRequired[int]
+    failure_message: NotRequired[str]
+
+
+class CodeScanningVariantAnalysisPropScannedRepositoriesItemsTypeForResponse(TypedDict):
+    """CodeScanningVariantAnalysisPropScannedRepositoriesItems"""
+
+    repository: CodeScanningVariantAnalysisRepositoryTypeForResponse
+    analysis_status: Literal[
+        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
+    ]
+    result_count: NotRequired[int]
+    artifact_size_in_bytes: NotRequired[int]
+    failure_message: NotRequired[str]
 
 
 __all__ = (
-    "CodeScanningSarifsStatusType",
-    "CodeScanningSarifsStatusTypeForResponse",
+    "CodeScanningVariantAnalysisPropScannedRepositoriesItemsType",
+    "CodeScanningVariantAnalysisPropScannedRepositoriesItemsTypeForResponse",
 )

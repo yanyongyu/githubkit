@@ -13,46 +13,87 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0018 import InstallationType, InstallationTypeForResponse
-from .group_0598 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0600 import (
+from .group_0211 import DiscussionType, DiscussionTypeForResponse
+from .group_0617 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0618 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0619 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0601 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0615 import (
-    WebhooksRepositoriesItemsType,
-    WebhooksRepositoriesItemsTypeForResponse,
-)
+from .group_0620 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookInstallationDeletedType(TypedDict):
-    """installation deleted event"""
+class WebhookDiscussionEditedType(TypedDict):
+    """discussion edited event"""
 
-    action: Literal["deleted"]
+    action: Literal["edited"]
+    changes: NotRequired[WebhookDiscussionEditedPropChangesType]
+    discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: InstallationType
+    installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repositories: NotRequired[list[WebhooksRepositoriesItemsType]]
-    repository: NotRequired[RepositoryWebhooksType]
-    requester: NotRequired[None]
+    repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookInstallationDeletedTypeForResponse(TypedDict):
-    """installation deleted event"""
+class WebhookDiscussionEditedTypeForResponse(TypedDict):
+    """discussion edited event"""
 
-    action: Literal["deleted"]
+    action: Literal["edited"]
+    changes: NotRequired[WebhookDiscussionEditedPropChangesTypeForResponse]
+    discussion: DiscussionTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: InstallationTypeForResponse
+    installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repositories: NotRequired[list[WebhooksRepositoriesItemsTypeForResponse]]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    requester: NotRequired[None]
+    repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
+class WebhookDiscussionEditedPropChangesType(TypedDict):
+    """WebhookDiscussionEditedPropChanges"""
+
+    body: NotRequired[WebhookDiscussionEditedPropChangesPropBodyType]
+    title: NotRequired[WebhookDiscussionEditedPropChangesPropTitleType]
+
+
+class WebhookDiscussionEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookDiscussionEditedPropChanges"""
+
+    body: NotRequired[WebhookDiscussionEditedPropChangesPropBodyTypeForResponse]
+    title: NotRequired[WebhookDiscussionEditedPropChangesPropTitleTypeForResponse]
+
+
+class WebhookDiscussionEditedPropChangesPropBodyType(TypedDict):
+    """WebhookDiscussionEditedPropChangesPropBody"""
+
+    from_: str
+
+
+class WebhookDiscussionEditedPropChangesPropBodyTypeForResponse(TypedDict):
+    """WebhookDiscussionEditedPropChangesPropBody"""
+
+    from_: str
+
+
+class WebhookDiscussionEditedPropChangesPropTitleType(TypedDict):
+    """WebhookDiscussionEditedPropChangesPropTitle"""
+
+    from_: str
+
+
+class WebhookDiscussionEditedPropChangesPropTitleTypeForResponse(TypedDict):
+    """WebhookDiscussionEditedPropChangesPropTitle"""
+
+    from_: str
+
+
 __all__ = (
-    "WebhookInstallationDeletedType",
-    "WebhookInstallationDeletedTypeForResponse",
+    "WebhookDiscussionEditedPropChangesPropBodyType",
+    "WebhookDiscussionEditedPropChangesPropBodyTypeForResponse",
+    "WebhookDiscussionEditedPropChangesPropTitleType",
+    "WebhookDiscussionEditedPropChangesPropTitleTypeForResponse",
+    "WebhookDiscussionEditedPropChangesType",
+    "WebhookDiscussionEditedPropChangesTypeForResponse",
+    "WebhookDiscussionEditedType",
+    "WebhookDiscussionEditedTypeForResponse",
 )

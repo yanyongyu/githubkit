@@ -15,19 +15,19 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0187 import ProjectsV2FieldIterationConfiguration
 
-class ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody(GitHubModel):
-    """ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody"""
 
-    environment_ids: list[int] = Field(
-        description="The list of environment ids to approve or reject"
+class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3(GitHubModel):
+    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3"""
+
+    name: str = Field(description="The name of the field.")
+    data_type: Literal["iteration"] = Field(description="The field's data type.")
+    iteration_configuration: ProjectsV2FieldIterationConfiguration = Field(
+        description="The configuration for iteration fields."
     )
-    state: Literal["approved", "rejected"] = Field(
-        description="Whether to approve or reject deployment to the specified environments."
-    )
-    comment: str = Field(description="A comment to accompany the deployment review")
 
 
-model_rebuild(ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody)
+model_rebuild(OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3)
 
-__all__ = ("ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody",)
+__all__ = ("OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3",)

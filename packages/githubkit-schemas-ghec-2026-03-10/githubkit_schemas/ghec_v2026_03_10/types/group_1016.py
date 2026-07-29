@@ -9,47 +9,68 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Any, TypeAlias, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0598 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0599 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0600 import (
+from .group_0617 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0618 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0619 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0601 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0645 import WebhooksSponsorshipType, WebhooksSponsorshipTypeForResponse
+from .group_0620 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookSponsorshipPendingCancellationType(TypedDict):
-    """sponsorship pending_cancellation event"""
+class WebhookRepositoryDispatchSampleType(TypedDict):
+    """repository_dispatch event"""
 
-    action: Literal["pending_cancellation"]
-    effective_date: NotRequired[str]
+    action: str
+    branch: str
+    client_payload: Union[WebhookRepositoryDispatchSamplePropClientPayloadType, None]
     enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
+    installation: SimpleInstallationType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
+    repository: RepositoryWebhooksType
     sender: SimpleUserType
-    sponsorship: WebhooksSponsorshipType
 
 
-class WebhookSponsorshipPendingCancellationTypeForResponse(TypedDict):
-    """sponsorship pending_cancellation event"""
+class WebhookRepositoryDispatchSampleTypeForResponse(TypedDict):
+    """repository_dispatch event"""
 
-    action: Literal["pending_cancellation"]
-    effective_date: NotRequired[str]
+    action: str
+    branch: str
+    client_payload: Union[
+        WebhookRepositoryDispatchSamplePropClientPayloadTypeForResponse, None
+    ]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
+    installation: SimpleInstallationTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
-    sponsorship: WebhooksSponsorshipTypeForResponse
+
+
+WebhookRepositoryDispatchSamplePropClientPayloadType: TypeAlias = dict[str, Any]
+"""WebhookRepositoryDispatchSamplePropClientPayload
+
+The `client_payload` that was specified in the `POST
+/repos/{owner}/{repo}/dispatches` request body.
+"""
+
+
+WebhookRepositoryDispatchSamplePropClientPayloadTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""WebhookRepositoryDispatchSamplePropClientPayload
+
+The `client_payload` that was specified in the `POST
+/repos/{owner}/{repo}/dispatches` request body.
+"""
 
 
 __all__ = (
-    "WebhookSponsorshipPendingCancellationType",
-    "WebhookSponsorshipPendingCancellationTypeForResponse",
+    "WebhookRepositoryDispatchSamplePropClientPayloadType",
+    "WebhookRepositoryDispatchSamplePropClientPayloadTypeForResponse",
+    "WebhookRepositoryDispatchSampleType",
+    "WebhookRepositoryDispatchSampleTypeForResponse",
 )

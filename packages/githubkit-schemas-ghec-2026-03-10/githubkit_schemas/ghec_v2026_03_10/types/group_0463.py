@@ -9,52 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
+class RepositoryHashAlgorithmType(TypedDict):
+    """Repository hash algorithm
 
-class UnassignedIssueEventType(TypedDict):
-    """Unassigned Issue Event
-
-    Unassigned Issue Event
+    Repository hash algorithm
     """
 
-    id: int
-    node_id: str
-    url: str
-    actor: SimpleUserType
-    event: str
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    assignee: SimpleUserType
-    assigner: SimpleUserType
+    hash_algorithm: Literal["sha1", "sha256"]
 
 
-class UnassignedIssueEventTypeForResponse(TypedDict):
-    """Unassigned Issue Event
+class RepositoryHashAlgorithmTypeForResponse(TypedDict):
+    """Repository hash algorithm
 
-    Unassigned Issue Event
+    Repository hash algorithm
     """
 
-    id: int
-    node_id: str
-    url: str
-    actor: SimpleUserTypeForResponse
-    event: str
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    assignee: SimpleUserTypeForResponse
-    assigner: SimpleUserTypeForResponse
+    hash_algorithm: Literal["sha1", "sha256"]
 
 
 __all__ = (
-    "UnassignedIssueEventType",
-    "UnassignedIssueEventTypeForResponse",
+    "RepositoryHashAlgorithmType",
+    "RepositoryHashAlgorithmTypeForResponse",
 )

@@ -9,47 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0011 import WebhookConfig
-from .group_0450 import HookResponse
+from .group_0452 import EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems
 
 
-class Hook(GitHubModel):
-    """Webhook
+class EnvironmentPropProtectionRulesItemsAnyof1(GitHubModel):
+    """EnvironmentPropProtectionRulesItemsAnyof1"""
 
-    Webhooks for repositories.
-    """
-
+    id: int = Field()
+    node_id: str = Field()
+    prevent_self_review: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether deployments to this environment can be approved by the user who created the deployment.",
+    )
     type: str = Field()
-    id: int = Field(description="Unique identifier of the webhook.")
-    name: str = Field(
-        description="The name of a valid service, use 'web' for a webhook."
+    reviewers: Missing[
+        list[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems]
+    ] = Field(
+        default=UNSET,
+        description="The people or teams that may approve jobs that reference the environment. You can list up to six users or teams as reviewers. The reviewers must have at least read access to the repository. Only one of the required reviewers needs to approve the job for it to proceed.",
     )
-    active: bool = Field(
-        description="Determines whether the hook is actually triggered on pushes."
-    )
-    events: list[str] = Field(
-        description="Determines what events the hook is triggered for. Default: ['push']."
-    )
-    config: WebhookConfig = Field(
-        title="Webhook Configuration", description="Configuration object of the webhook"
-    )
-    updated_at: _dt.datetime = Field()
-    created_at: _dt.datetime = Field()
-    url: str = Field()
-    test_url: str = Field()
-    ping_url: str = Field()
-    deliveries_url: Missing[str] = Field(default=UNSET)
-    last_response: HookResponse = Field(title="Hook Response")
 
 
-model_rebuild(Hook)
+model_rebuild(EnvironmentPropProtectionRulesItemsAnyof1)
 
-__all__ = ("Hook",)
+__all__ = ("EnvironmentPropProtectionRulesItemsAnyof1",)

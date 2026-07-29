@@ -9,32 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0191 import (
+    SecretScanningCustomPatternToDeleteType,
+    SecretScanningCustomPatternToDeleteTypeForResponse,
+)
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyType(TypedDict):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBody
+class OrgsOrgSecretScanningCustomPatternsDeleteBodyType(TypedDict):
+    """OrgsOrgSecretScanningCustomPatternsDeleteBody"""
 
-    Examples:
-        {'apps': ['my-app']}
-    """
-
-    apps: list[str]
+    patterns: list[SecretScanningCustomPatternToDeleteType]
+    post_delete_action: NotRequired[Literal["delete_alerts", "resolve_alerts"]]
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBody
+class OrgsOrgSecretScanningCustomPatternsDeleteBodyTypeForResponse(TypedDict):
+    """OrgsOrgSecretScanningCustomPatternsDeleteBody"""
 
-    Examples:
-        {'apps': ['my-app']}
-    """
-
-    apps: list[str]
+    patterns: list[SecretScanningCustomPatternToDeleteTypeForResponse]
+    post_delete_action: NotRequired[Literal["delete_alerts", "resolve_alerts"]]
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyType",
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyTypeForResponse",
+    "OrgsOrgSecretScanningCustomPatternsDeleteBodyType",
+    "OrgsOrgSecretScanningCustomPatternsDeleteBodyTypeForResponse",
 )

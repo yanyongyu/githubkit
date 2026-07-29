@@ -13,46 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0018 import InstallationType, InstallationTypeForResponse
-from .group_0599 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0601 import (
+from .group_0211 import DiscussionType, DiscussionTypeForResponse
+from .group_0618 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0619 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0620 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0602 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0616 import (
-    WebhooksRepositoriesItemsType,
-    WebhooksRepositoriesItemsTypeForResponse,
-)
+from .group_0621 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookInstallationSuspendType(TypedDict):
-    """installation suspend event"""
+class WebhookDiscussionReopenedType(TypedDict):
+    """discussion reopened event"""
 
-    action: Literal["suspend"]
+    action: Literal["reopened"]
+    discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: InstallationType
+    installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repositories: NotRequired[list[WebhooksRepositoriesItemsType]]
-    repository: NotRequired[RepositoryWebhooksType]
-    requester: NotRequired[None]
+    repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookInstallationSuspendTypeForResponse(TypedDict):
-    """installation suspend event"""
+class WebhookDiscussionReopenedTypeForResponse(TypedDict):
+    """discussion reopened event"""
 
-    action: Literal["suspend"]
+    action: Literal["reopened"]
+    discussion: DiscussionTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: InstallationTypeForResponse
+    installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repositories: NotRequired[list[WebhooksRepositoriesItemsTypeForResponse]]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    requester: NotRequired[None]
+    repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookInstallationSuspendType",
-    "WebhookInstallationSuspendTypeForResponse",
+    "WebhookDiscussionReopenedType",
+    "WebhookDiscussionReopenedTypeForResponse",
 )

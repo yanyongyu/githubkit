@@ -9,50 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0347 import ArtifactType, ArtifactTypeForResponse
 
 
-class ReposOwnerRepoCheckSuitesPreferencesPatchBodyType(TypedDict):
-    """ReposOwnerRepoCheckSuitesPreferencesPatchBody"""
+class ReposOwnerRepoActionsArtifactsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsArtifactsGetResponse200"""
 
-    auto_trigger_checks: NotRequired[
-        list[
-            ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType
-        ]
-    ]
+    total_count: int
+    artifacts: list[ArtifactType]
 
 
-class ReposOwnerRepoCheckSuitesPreferencesPatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoCheckSuitesPreferencesPatchBody"""
+class ReposOwnerRepoActionsArtifactsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsArtifactsGetResponse200"""
 
-    auto_trigger_checks: NotRequired[
-        list[
-            ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsTypeForResponse
-        ]
-    ]
-
-
-class ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType(
-    TypedDict
-):
-    """ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems"""
-
-    app_id: int
-    setting: bool
-
-
-class ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems"""
-
-    app_id: int
-    setting: bool
+    total_count: int
+    artifacts: list[ArtifactTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType",
-    "ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsTypeForResponse",
-    "ReposOwnerRepoCheckSuitesPreferencesPatchBodyType",
-    "ReposOwnerRepoCheckSuitesPreferencesPatchBodyTypeForResponse",
+    "ReposOwnerRepoActionsArtifactsGetResponse200Type",
+    "ReposOwnerRepoActionsArtifactsGetResponse200TypeForResponse",
 )

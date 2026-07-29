@@ -9,85 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, Literal, TypeAlias
+import datetime as _dt
 from typing_extensions import NotRequired, TypedDict
 
-from githubkit.typing import UniqueList
+
+class NotificationsPutBodyType(TypedDict):
+    """NotificationsPutBody"""
+
+    last_read_at: NotRequired[_dt.datetime]
+    read: NotRequired[bool]
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordPostBodyType(TypedDict):
-    """OrgsOrgArtifactsMetadataDeploymentRecordPostBody"""
+class NotificationsPutBodyTypeForResponse(TypedDict):
+    """NotificationsPutBody"""
 
-    name: str
-    digest: str
-    version: NotRequired[str]
-    status: Literal["deployed", "decommissioned"]
-    logical_environment: str
-    physical_environment: NotRequired[str]
-    cluster: NotRequired[str]
-    deployment_name: str
-    tags: NotRequired[OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTagsType]
-    runtime_risks: NotRequired[
-        UniqueList[
-            Literal[
-                "critical-resource",
-                "internet-exposed",
-                "lateral-movement",
-                "sensitive-data",
-            ]
-        ]
-    ]
-    github_repository: NotRequired[str]
-    return_records: NotRequired[bool]
-
-
-class OrgsOrgArtifactsMetadataDeploymentRecordPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgArtifactsMetadataDeploymentRecordPostBody"""
-
-    name: str
-    digest: str
-    version: NotRequired[str]
-    status: Literal["deployed", "decommissioned"]
-    logical_environment: str
-    physical_environment: NotRequired[str]
-    cluster: NotRequired[str]
-    deployment_name: str
-    tags: NotRequired[
-        OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTagsTypeForResponse
-    ]
-    runtime_risks: NotRequired[
-        UniqueList[
-            Literal[
-                "critical-resource",
-                "internet-exposed",
-                "lateral-movement",
-                "sensitive-data",
-            ]
-        ]
-    ]
-    github_repository: NotRequired[str]
-    return_records: NotRequired[bool]
-
-
-OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTagsType: TypeAlias = dict[str, Any]
-"""OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTags
-
-The tags associated with the deployment.
-"""
-
-
-OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTagsTypeForResponse: TypeAlias = (
-    dict[str, Any]
-)
-"""OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTags
-
-The tags associated with the deployment.
-"""
+    last_read_at: NotRequired[str]
+    read: NotRequired[bool]
 
 
 __all__ = (
-    "OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTagsType",
-    "OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTagsTypeForResponse",
-    "OrgsOrgArtifactsMetadataDeploymentRecordPostBodyType",
-    "OrgsOrgArtifactsMetadataDeploymentRecordPostBodyTypeForResponse",
+    "NotificationsPutBodyType",
+    "NotificationsPutBodyTypeForResponse",
 )

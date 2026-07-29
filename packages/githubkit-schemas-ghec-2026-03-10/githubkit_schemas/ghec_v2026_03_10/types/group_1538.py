@@ -9,46 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_1533 import (
-    ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
-    ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
+from .group_0455 import (
+    CustomDeploymentRuleAppType,
+    CustomDeploymentRuleAppTypeForResponse,
 )
 
 
-class ReposOwnerRepoPagesPutBodyAnyof4Type(TypedDict):
-    """ReposOwnerRepoPagesPutBodyAnyof4"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200Type(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetRespons
+    e200
+    """
 
-    cname: NotRequired[Union[str, None]]
-    https_enforced: bool
-    build_type: NotRequired[Literal["legacy", "workflow"]]
-    source: NotRequired[
-        Union[
-            Literal["gh-pages", "master", "master /docs"],
-            ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
-        ]
+    total_count: NotRequired[int]
+    available_custom_deployment_protection_rule_integrations: NotRequired[
+        list[CustomDeploymentRuleAppType]
     ]
-    public: NotRequired[bool]
 
 
-class ReposOwnerRepoPagesPutBodyAnyof4TypeForResponse(TypedDict):
-    """ReposOwnerRepoPagesPutBodyAnyof4"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetRespons
+    e200
+    """
 
-    cname: NotRequired[Union[str, None]]
-    https_enforced: bool
-    build_type: NotRequired[Literal["legacy", "workflow"]]
-    source: NotRequired[
-        Union[
-            Literal["gh-pages", "master", "master /docs"],
-            ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
-        ]
+    total_count: NotRequired[int]
+    available_custom_deployment_protection_rule_integrations: NotRequired[
+        list[CustomDeploymentRuleAppTypeForResponse]
     ]
-    public: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoPagesPutBodyAnyof4Type",
-    "ReposOwnerRepoPagesPutBodyAnyof4TypeForResponse",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200Type",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200TypeForResponse",
 )

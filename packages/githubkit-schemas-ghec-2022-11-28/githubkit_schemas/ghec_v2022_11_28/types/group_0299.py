@@ -9,62 +9,88 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0049 import OrganizationSimpleType, OrganizationSimpleTypeForResponse
 
+class IssueFieldType(TypedDict):
+    """Issue Field
 
-class OrgMembershipType(TypedDict):
-    """Org Membership
-
-    Org Membership
+    A custom attribute defined at the organization level for attaching structured
+    data to issues.
     """
 
-    url: str
-    state: Literal["active", "pending"]
-    role: Literal["admin", "member", "billing_manager"]
-    direct_membership: NotRequired[bool]
-    enterprise_teams_providing_indirect_membership: NotRequired[list[str]]
-    organization_url: str
-    organization: OrganizationSimpleType
-    user: Union[None, SimpleUserType]
-    permissions: NotRequired[OrgMembershipPropPermissionsType]
+    id: int
+    node_id: str
+    name: str
+    description: NotRequired[Union[str, None]]
+    data_type: Literal["text", "date", "single_select", "multi_select", "number"]
+    visibility: NotRequired[Literal["organization_members_only", "all"]]
+    options: NotRequired[Union[list[IssueFieldPropOptionsItemsType], None]]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
 
 
-class OrgMembershipTypeForResponse(TypedDict):
-    """Org Membership
+class IssueFieldTypeForResponse(TypedDict):
+    """Issue Field
 
-    Org Membership
+    A custom attribute defined at the organization level for attaching structured
+    data to issues.
     """
 
-    url: str
-    state: Literal["active", "pending"]
-    role: Literal["admin", "member", "billing_manager"]
-    direct_membership: NotRequired[bool]
-    enterprise_teams_providing_indirect_membership: NotRequired[list[str]]
-    organization_url: str
-    organization: OrganizationSimpleTypeForResponse
-    user: Union[None, SimpleUserTypeForResponse]
-    permissions: NotRequired[OrgMembershipPropPermissionsTypeForResponse]
+    id: int
+    node_id: str
+    name: str
+    description: NotRequired[Union[str, None]]
+    data_type: Literal["text", "date", "single_select", "multi_select", "number"]
+    visibility: NotRequired[Literal["organization_members_only", "all"]]
+    options: NotRequired[Union[list[IssueFieldPropOptionsItemsTypeForResponse], None]]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
 
 
-class OrgMembershipPropPermissionsType(TypedDict):
-    """OrgMembershipPropPermissions"""
+class IssueFieldPropOptionsItemsType(TypedDict):
+    """IssueFieldPropOptionsItems"""
 
-    can_create_repository: bool
+    id: int
+    name: str
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[
+        Union[
+            None,
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+        ]
+    ]
+    priority: NotRequired[Union[int, None]]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
 
 
-class OrgMembershipPropPermissionsTypeForResponse(TypedDict):
-    """OrgMembershipPropPermissions"""
+class IssueFieldPropOptionsItemsTypeForResponse(TypedDict):
+    """IssueFieldPropOptionsItems"""
 
-    can_create_repository: bool
+    id: int
+    name: str
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[
+        Union[
+            None,
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+        ]
+    ]
+    priority: NotRequired[Union[int, None]]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
 
 
 __all__ = (
-    "OrgMembershipPropPermissionsType",
-    "OrgMembershipPropPermissionsTypeForResponse",
-    "OrgMembershipType",
-    "OrgMembershipTypeForResponse",
+    "IssueFieldPropOptionsItemsType",
+    "IssueFieldPropOptionsItemsTypeForResponse",
+    "IssueFieldType",
+    "IssueFieldTypeForResponse",
 )

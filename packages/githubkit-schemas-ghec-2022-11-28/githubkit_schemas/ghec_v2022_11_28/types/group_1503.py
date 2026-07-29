@@ -9,26 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200Type(TypedDict):
-    """ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200"""
+class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1Type(TypedDict):
+    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1"""
 
-    enabled: bool
-    max_open_pull_requests: int
+    language: Literal[
+        "actions",
+        "cpp",
+        "csharp",
+        "go",
+        "java",
+        "javascript",
+        "python",
+        "ruby",
+        "rust",
+        "swift",
+    ]
+    query_pack: str
+    repositories: NotRequired[list[str]]
+    repository_lists: list[str]
+    repository_owners: NotRequired[list[str]]
 
 
-class ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200TypeForResponse(
+class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1TypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200"""
+    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1"""
 
-    enabled: bool
-    max_open_pull_requests: int
+    language: Literal[
+        "actions",
+        "cpp",
+        "csharp",
+        "go",
+        "java",
+        "javascript",
+        "python",
+        "ruby",
+        "rust",
+        "swift",
+    ]
+    query_pack: str
+    repositories: NotRequired[list[str]]
+    repository_lists: list[str]
+    repository_owners: NotRequired[list[str]]
 
 
 __all__ = (
-    "ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200Type",
-    "ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200TypeForResponse",
+    "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1Type",
+    "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1TypeForResponse",
 )

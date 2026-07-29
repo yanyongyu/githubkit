@@ -9,22 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_1331 import (
+    ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentType,
+    ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentTypeForResponse,
+)
 
-class ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberAssigneesPostBody"""
 
-    assignees: NotRequired[list[str]]
+class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1Type(TypedDict):
+    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1"""
+
+    state: NotRequired[Literal["dismissed", "open"]]
+    dismissed_reason: NotRequired[
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ]
+    ]
+    dismissed_comment: NotRequired[str]
+    assignees: list[str]
+    agent_assignment: NotRequired[
+        ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentType
+    ]
 
 
-class ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberAssigneesPostBody"""
+class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1"""
 
-    assignees: NotRequired[list[str]]
+    state: NotRequired[Literal["dismissed", "open"]]
+    dismissed_reason: NotRequired[
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ]
+    ]
+    dismissed_comment: NotRequired[str]
+    assignees: list[str]
+    agent_assignment: NotRequired[
+        ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentTypeForResponse
+    ]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType",
-    "ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyTypeForResponse",
+    "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1Type",
+    "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1TypeForResponse",
 )

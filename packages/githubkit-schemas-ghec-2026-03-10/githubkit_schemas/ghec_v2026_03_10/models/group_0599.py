@@ -9,26 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0594 import SearchResultTextMatchesItems
 
 
-class SimpleInstallation(GitHubModel):
-    """Simple Installation
+class LabelSearchResultItem(GitHubModel):
+    """Label Search Result Item
 
-    The GitHub App installation. Webhook payloads contain the `installation`
-    property when the event is configured
-    for and sent to a GitHub App. For more information,
-    see "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-
-    cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-
-    with-github-apps)."
+    Label Search Result Item
     """
 
-    id: int = Field(description="The ID of the installation.")
-    node_id: str = Field(description="The global node ID of the installation.")
+    id: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    name: str = Field()
+    color: str = Field()
+    default: bool = Field()
+    description: Union[str, None] = Field()
+    score: float = Field()
+    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
+        default=UNSET, title="Search Result Text Matches"
+    )
 
 
-model_rebuild(SimpleInstallation)
+class SearchLabelsGetResponse200(GitHubModel):
+    """SearchLabelsGetResponse200"""
 
-__all__ = ("SimpleInstallation",)
+    total_count: int = Field()
+    incomplete_results: bool = Field()
+    items: list[LabelSearchResultItem] = Field()
+
+
+model_rebuild(LabelSearchResultItem)
+model_rebuild(SearchLabelsGetResponse200)
+
+__all__ = (
+    "LabelSearchResultItem",
+    "SearchLabelsGetResponse200",
+)

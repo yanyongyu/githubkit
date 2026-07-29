@@ -12,76 +12,74 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0534 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0535 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0536 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0537 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0579 import WebhooksSponsorshipType, WebhooksSponsorshipTypeForResponse
 
-class AgentsReposOwnerRepoTasksGetResponse400Type(TypedDict):
-    """AgentsReposOwnerRepoTasksGetResponse400
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
+class WebhookSponsorshipEditedType(TypedDict):
+    """sponsorship edited event"""
 
-    message: str
-    errors: NotRequired[
-        list[AgentsReposOwnerRepoTasksGetResponse400PropErrorsItemsType]
+    action: Literal["edited"]
+    changes: WebhookSponsorshipEditedPropChangesType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserType
+    sponsorship: WebhooksSponsorshipType
+
+
+class WebhookSponsorshipEditedTypeForResponse(TypedDict):
+    """sponsorship edited event"""
+
+    action: Literal["edited"]
+    changes: WebhookSponsorshipEditedPropChangesTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: SimpleUserTypeForResponse
+    sponsorship: WebhooksSponsorshipTypeForResponse
+
+
+class WebhookSponsorshipEditedPropChangesType(TypedDict):
+    """WebhookSponsorshipEditedPropChanges"""
+
+    privacy_level: NotRequired[WebhookSponsorshipEditedPropChangesPropPrivacyLevelType]
+
+
+class WebhookSponsorshipEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookSponsorshipEditedPropChanges"""
+
+    privacy_level: NotRequired[
+        WebhookSponsorshipEditedPropChangesPropPrivacyLevelTypeForResponse
     ]
-    documentation_url: str
 
 
-class AgentsReposOwnerRepoTasksGetResponse400TypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksGetResponse400
+class WebhookSponsorshipEditedPropChangesPropPrivacyLevelType(TypedDict):
+    """WebhookSponsorshipEditedPropChangesPropPrivacyLevel"""
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[
-        list[AgentsReposOwnerRepoTasksGetResponse400PropErrorsItemsTypeForResponse]
-    ]
-    documentation_url: str
+    from_: str
 
 
-class AgentsReposOwnerRepoTasksGetResponse400PropErrorsItemsType(TypedDict):
-    """AgentsReposOwnerRepoTasksGetResponse400PropErrorsItems
+class WebhookSponsorshipEditedPropChangesPropPrivacyLevelTypeForResponse(TypedDict):
+    """WebhookSponsorshipEditedPropChangesPropPrivacyLevel"""
 
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
-
-
-class AgentsReposOwnerRepoTasksGetResponse400PropErrorsItemsTypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksGetResponse400PropErrorsItems
-
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
+    from_: str
 
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksGetResponse400PropErrorsItemsType",
-    "AgentsReposOwnerRepoTasksGetResponse400PropErrorsItemsTypeForResponse",
-    "AgentsReposOwnerRepoTasksGetResponse400Type",
-    "AgentsReposOwnerRepoTasksGetResponse400TypeForResponse",
+    "WebhookSponsorshipEditedPropChangesPropPrivacyLevelType",
+    "WebhookSponsorshipEditedPropChangesPropPrivacyLevelTypeForResponse",
+    "WebhookSponsorshipEditedPropChangesType",
+    "WebhookSponsorshipEditedPropChangesTypeForResponse",
+    "WebhookSponsorshipEditedType",
+    "WebhookSponsorshipEditedTypeForResponse",
 )

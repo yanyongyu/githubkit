@@ -9,34 +9,65 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
 
-class CustomDeploymentRuleAppType(TypedDict):
-    """Custom deployment protection rule app
+class DeploymentStatusType(TypedDict):
+    """Deployment Status
 
-    A GitHub App that is providing a custom deployment protection rule.
+    The status of a deployment.
     """
 
+    url: str
     id: int
-    slug: str
-    integration_url: str
     node_id: str
+    state: Literal[
+        "error", "failure", "inactive", "pending", "success", "queued", "in_progress"
+    ]
+    creator: Union[None, SimpleUserType]
+    description: str
+    environment: NotRequired[str]
+    target_url: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    deployment_url: str
+    repository_url: str
+    environment_url: NotRequired[str]
+    log_url: NotRequired[str]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
 
 
-class CustomDeploymentRuleAppTypeForResponse(TypedDict):
-    """Custom deployment protection rule app
+class DeploymentStatusTypeForResponse(TypedDict):
+    """Deployment Status
 
-    A GitHub App that is providing a custom deployment protection rule.
+    The status of a deployment.
     """
 
+    url: str
     id: int
-    slug: str
-    integration_url: str
     node_id: str
+    state: Literal[
+        "error", "failure", "inactive", "pending", "success", "queued", "in_progress"
+    ]
+    creator: Union[None, SimpleUserTypeForResponse]
+    description: str
+    environment: NotRequired[str]
+    target_url: str
+    created_at: str
+    updated_at: str
+    deployment_url: str
+    repository_url: str
+    environment_url: NotRequired[str]
+    log_url: NotRequired[str]
+    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
 
 
 __all__ = (
-    "CustomDeploymentRuleAppType",
-    "CustomDeploymentRuleAppTypeForResponse",
+    "DeploymentStatusType",
+    "DeploymentStatusTypeForResponse",
 )

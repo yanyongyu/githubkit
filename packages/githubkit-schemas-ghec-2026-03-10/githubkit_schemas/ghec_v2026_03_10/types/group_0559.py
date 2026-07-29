@@ -9,32 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReferrerTrafficType(TypedDict):
-    """Referrer Traffic
+class SecretScanningPushProtectionBypassType(TypedDict):
+    """SecretScanningPushProtectionBypass"""
 
-    Referrer Traffic
-    """
-
-    referrer: str
-    count: int
-    uniques: int
+    reason: NotRequired[Literal["false_positive", "used_in_tests", "will_fix_later"]]
+    expire_at: NotRequired[Union[_dt.datetime, None]]
+    token_type: NotRequired[str]
 
 
-class ReferrerTrafficTypeForResponse(TypedDict):
-    """Referrer Traffic
+class SecretScanningPushProtectionBypassTypeForResponse(TypedDict):
+    """SecretScanningPushProtectionBypass"""
 
-    Referrer Traffic
-    """
-
-    referrer: str
-    count: int
-    uniques: int
+    reason: NotRequired[Literal["false_positive", "used_in_tests", "will_fix_later"]]
+    expire_at: NotRequired[Union[str, None]]
+    token_type: NotRequired[str]
 
 
 __all__ = (
-    "ReferrerTrafficType",
-    "ReferrerTrafficTypeForResponse",
+    "SecretScanningPushProtectionBypassType",
+    "SecretScanningPushProtectionBypassTypeForResponse",
 )

@@ -16,18 +16,18 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CodeOfConductSimple(GitHubModel):
-    """Code Of Conduct Simple
+class CustomPropertyValue(GitHubModel):
+    """Custom Property Value
 
-    Code of Conduct Simple
+    Custom property name and associated value
     """
 
-    url: str = Field()
-    key: str = Field()
-    name: str = Field()
-    html_url: Union[str, None] = Field()
+    property_name: str = Field(description="The name of the property")
+    value: Union[str, list[str], None] = Field(
+        description="The value assigned to the property"
+    )
 
 
-model_rebuild(CodeOfConductSimple)
+model_rebuild(CustomPropertyValue)
 
-__all__ = ("CodeOfConductSimple",)
+__all__ = ("CustomPropertyValue",)

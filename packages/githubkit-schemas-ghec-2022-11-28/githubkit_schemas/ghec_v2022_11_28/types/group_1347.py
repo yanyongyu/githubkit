@@ -9,25 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1Type(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1"""
+class OrgsOrgCodespacesSecretsGetResponse200Type(TypedDict):
+    """OrgsOrgCodespacesSecretsGetResponse200"""
+
+    total_count: int
+    secrets: list[CodespacesOrgSecretType]
+
+
+class OrgsOrgCodespacesSecretsGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCodespacesSecretsGetResponse200"""
+
+    total_count: int
+    secrets: list[CodespacesOrgSecretTypeForResponse]
+
+
+class CodespacesOrgSecretType(TypedDict):
+    """Codespaces Secret
+
+    Secrets for a GitHub Codespace.
+    """
 
     name: str
-    data_type: Literal["text", "number", "date"]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: NotRequired[str]
 
 
-class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1TypeForResponse(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1"""
+class CodespacesOrgSecretTypeForResponse(TypedDict):
+    """Codespaces Secret
+
+    Secrets for a GitHub Codespace.
+    """
 
     name: str
-    data_type: Literal["text", "number", "date"]
+    created_at: str
+    updated_at: str
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1Type",
-    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1TypeForResponse",
+    "CodespacesOrgSecretType",
+    "CodespacesOrgSecretTypeForResponse",
+    "OrgsOrgCodespacesSecretsGetResponse200Type",
+    "OrgsOrgCodespacesSecretsGetResponse200TypeForResponse",
 )

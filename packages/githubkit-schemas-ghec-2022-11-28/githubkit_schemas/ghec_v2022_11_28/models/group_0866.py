@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,18 +18,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0599 import EnterpriseWebhooks
-from .group_0600 import SimpleInstallation
-from .group_0601 import OrganizationSimpleWebhooks
-from .group_0602 import RepositoryWebhooks
-from .group_0612 import WebhooksUser
+from .group_0618 import EnterpriseWebhooks
+from .group_0619 import SimpleInstallation
+from .group_0620 import OrganizationSimpleWebhooks
+from .group_0621 import RepositoryWebhooks
+from .group_0634 import WebhooksLabel
 
 
-class WebhookOrgBlockBlocked(GitHubModel):
-    """org_block blocked event"""
+class WebhookLabelEdited(GitHubModel):
+    """label edited event"""
 
-    action: Literal["blocked"] = Field()
-    blocked_user: Union[WebhooksUser, None] = Field(title="User")
+    action: Literal["edited"] = Field()
+    changes: Missing[WebhookLabelEditedPropChanges] = Field(
+        default=UNSET,
+        description="The changes to the label if the action was `edited`.",
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -40,18 +43,69 @@ class WebhookOrgBlockBlocked(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    organization: OrganizationSimpleWebhooks = Field(
+    label: WebhooksLabel = Field(title="Label")
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
+    repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookOrgBlockBlocked)
+class WebhookLabelEditedPropChanges(GitHubModel):
+    """WebhookLabelEditedPropChanges
 
-__all__ = ("WebhookOrgBlockBlocked",)
+    The changes to the label if the action was `edited`.
+    """
+
+    color: Missing[WebhookLabelEditedPropChangesPropColor] = Field(default=UNSET)
+    description: Missing[WebhookLabelEditedPropChangesPropDescription] = Field(
+        default=UNSET
+    )
+    name: Missing[WebhookLabelEditedPropChangesPropName] = Field(default=UNSET)
+
+
+class WebhookLabelEditedPropChangesPropColor(GitHubModel):
+    """WebhookLabelEditedPropChangesPropColor"""
+
+    from_: str = Field(
+        alias="from",
+        description="The previous version of the color if the action was `edited`.",
+    )
+
+
+class WebhookLabelEditedPropChangesPropDescription(GitHubModel):
+    """WebhookLabelEditedPropChangesPropDescription"""
+
+    from_: str = Field(
+        alias="from",
+        description="The previous version of the description if the action was `edited`.",
+    )
+
+
+class WebhookLabelEditedPropChangesPropName(GitHubModel):
+    """WebhookLabelEditedPropChangesPropName"""
+
+    from_: str = Field(
+        alias="from",
+        description="The previous version of the name if the action was `edited`.",
+    )
+
+
+model_rebuild(WebhookLabelEdited)
+model_rebuild(WebhookLabelEditedPropChanges)
+model_rebuild(WebhookLabelEditedPropChangesPropColor)
+model_rebuild(WebhookLabelEditedPropChangesPropDescription)
+model_rebuild(WebhookLabelEditedPropChangesPropName)
+
+__all__ = (
+    "WebhookLabelEdited",
+    "WebhookLabelEditedPropChanges",
+    "WebhookLabelEditedPropChangesPropColor",
+    "WebhookLabelEditedPropChangesPropDescription",
+    "WebhookLabelEditedPropChangesPropName",
+)

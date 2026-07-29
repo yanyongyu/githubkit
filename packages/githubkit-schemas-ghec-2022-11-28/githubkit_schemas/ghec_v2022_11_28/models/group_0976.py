@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0599 import EnterpriseWebhooks
-from .group_0600 import SimpleInstallation
-from .group_0601 import OrganizationSimpleWebhooks
-from .group_0602 import RepositoryWebhooks
+from .group_0618 import EnterpriseWebhooks
+from .group_0619 import SimpleInstallation
+from .group_0620 import OrganizationSimpleWebhooks
+from .group_0621 import RepositoryWebhooks
+from .group_0977 import WebhookPullRequestReviewRequestRemovedOneof1PropPullRequest
 
 
-class WebhookRepositoryEdited(GitHubModel):
-    """repository edited event"""
+class WebhookPullRequestReviewRequestRemovedOneof1(GitHubModel):
+    """WebhookPullRequestReviewRequestRemovedOneof1"""
 
-    action: Literal["edited"] = Field()
-    changes: WebhookRepositoryEditedPropChanges = Field()
+    action: Literal["review_request_removed"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -39,69 +39,80 @@ class WebhookRepositoryEdited(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
+    number: int = Field(description="The pull request number.")
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
+    pull_request: WebhookPullRequestReviewRequestRemovedOneof1PropPullRequest = Field(
+        title="Pull Request"
+    )
     repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
+    requested_team: WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeam = Field(
+        title="Team",
+        description="Groups of organization members that gives permissions on specified repositories.",
+    )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookRepositoryEditedPropChanges(GitHubModel):
-    """WebhookRepositoryEditedPropChanges"""
+class WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeam(GitHubModel):
+    """Team
 
-    default_branch: Missing[WebhookRepositoryEditedPropChangesPropDefaultBranch] = (
-        Field(default=UNSET)
+    Groups of organization members that gives permissions on specified repositories.
+    """
+
+    deleted: Missing[bool] = Field(default=UNSET)
+    description: Union[str, None] = Field(description="Description of the team")
+    html_url: str = Field()
+    id: int = Field(description="Unique identifier of the team")
+    members_url: str = Field()
+    name: str = Field(description="Name of the team")
+    node_id: str = Field()
+    parent: Missing[
+        Union[
+            WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamPropParent,
+            None,
+        ]
+    ] = Field(default=UNSET)
+    permission: str = Field(
+        description="Permission that the team will have for its repositories"
     )
-    description: Missing[WebhookRepositoryEditedPropChangesPropDescription] = Field(
-        default=UNSET
+    privacy: Literal["open", "closed", "secret"] = Field()
+    repositories_url: str = Field()
+    slug: str = Field()
+    url: str = Field(description="URL for the team")
+
+
+class WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamPropParent(
+    GitHubModel
+):
+    """WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamPropParent"""
+
+    description: Union[str, None] = Field(description="Description of the team")
+    html_url: str = Field()
+    id: int = Field(description="Unique identifier of the team")
+    members_url: str = Field()
+    name: str = Field(description="Name of the team")
+    node_id: str = Field()
+    permission: str = Field(
+        description="Permission that the team will have for its repositories"
     )
-    homepage: Missing[WebhookRepositoryEditedPropChangesPropHomepage] = Field(
-        default=UNSET
-    )
-    topics: Missing[WebhookRepositoryEditedPropChangesPropTopics] = Field(default=UNSET)
+    privacy: Literal["open", "closed", "secret"] = Field()
+    repositories_url: str = Field()
+    slug: str = Field()
+    url: str = Field(description="URL for the team")
 
 
-class WebhookRepositoryEditedPropChangesPropDefaultBranch(GitHubModel):
-    """WebhookRepositoryEditedPropChangesPropDefaultBranch"""
-
-    from_: str = Field(alias="from")
-
-
-class WebhookRepositoryEditedPropChangesPropDescription(GitHubModel):
-    """WebhookRepositoryEditedPropChangesPropDescription"""
-
-    from_: Union[str, None] = Field(alias="from")
-
-
-class WebhookRepositoryEditedPropChangesPropHomepage(GitHubModel):
-    """WebhookRepositoryEditedPropChangesPropHomepage"""
-
-    from_: Union[str, None] = Field(alias="from")
-
-
-class WebhookRepositoryEditedPropChangesPropTopics(GitHubModel):
-    """WebhookRepositoryEditedPropChangesPropTopics"""
-
-    from_: Missing[Union[list[str], None]] = Field(default=UNSET, alias="from")
-
-
-model_rebuild(WebhookRepositoryEdited)
-model_rebuild(WebhookRepositoryEditedPropChanges)
-model_rebuild(WebhookRepositoryEditedPropChangesPropDefaultBranch)
-model_rebuild(WebhookRepositoryEditedPropChangesPropDescription)
-model_rebuild(WebhookRepositoryEditedPropChangesPropHomepage)
-model_rebuild(WebhookRepositoryEditedPropChangesPropTopics)
+model_rebuild(WebhookPullRequestReviewRequestRemovedOneof1)
+model_rebuild(WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeam)
+model_rebuild(WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamPropParent)
 
 __all__ = (
-    "WebhookRepositoryEdited",
-    "WebhookRepositoryEditedPropChanges",
-    "WebhookRepositoryEditedPropChangesPropDefaultBranch",
-    "WebhookRepositoryEditedPropChangesPropDescription",
-    "WebhookRepositoryEditedPropChangesPropHomepage",
-    "WebhookRepositoryEditedPropChangesPropTopics",
+    "WebhookPullRequestReviewRequestRemovedOneof1",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeam",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamPropParent",
 )

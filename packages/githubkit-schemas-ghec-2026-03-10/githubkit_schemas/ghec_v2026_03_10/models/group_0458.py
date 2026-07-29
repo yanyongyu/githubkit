@@ -17,48 +17,22 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0076 import SimpleRepository
 
+class Blob(GitHubModel):
+    """Blob
 
-class IssueReference(GitHubModel):
-    """Issue Reference
-
-    A minimal reference to an issue linked from a timeline event (e.g. sub-issue,
-    parent-issue, or dependency events).
+    Blob
     """
 
-    number: int = Field(description="The number of the referenced issue.")
-    title: str = Field(description="The title of the referenced issue.")
-    state: str = Field(description="The state of the referenced issue.")
-    state_reason: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The reason for the referenced issue's state."
-    )
-    repository: SimpleRepository = Field(
-        title="Simple Repository", description="A GitHub repository."
-    )
-    issue_type: Union[IssueReferencePropIssueType, None] = Field(
-        title="Issue Type", description="The type of the referenced issue."
-    )
+    content: str = Field()
+    encoding: str = Field()
+    url: str = Field()
+    sha: str = Field()
+    size: Union[int, None] = Field()
+    node_id: str = Field()
+    highlighted_content: Missing[str] = Field(default=UNSET)
 
 
-class IssueReferencePropIssueType(GitHubModel):
-    """Issue Type
+model_rebuild(Blob)
 
-    The type of the referenced issue.
-    """
-
-    id: int = Field(description="The unique identifier of the issue type.")
-    node_id: str = Field(description="The node identifier of the issue type.")
-    name: str = Field(description="The name of the issue type.")
-    color: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The color of the issue type."
-    )
-
-
-model_rebuild(IssueReference)
-model_rebuild(IssueReferencePropIssueType)
-
-__all__ = (
-    "IssueReference",
-    "IssueReferencePropIssueType",
-)
+__all__ = ("Blob",)

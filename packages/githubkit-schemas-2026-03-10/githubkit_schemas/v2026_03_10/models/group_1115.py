@@ -11,19 +11,18 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+
+from .group_0093 import MinimalRepository
 
 
-class OrgsOrgCodeSecurityConfigurationsDetachDeleteBody(GitHubModel):
-    """OrgsOrgCodeSecurityConfigurationsDetachDeleteBody"""
+class OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200(GitHubModel):
+    """OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200"""
 
-    selected_repository_ids: list[int] = Field(
-        max_length=250 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="An array of repository IDs to detach from configurations. Up to 250 IDs can be provided.",
-    )
+    total_count: int = Field()
+    repositories: list[MinimalRepository] = Field()
 
 
-model_rebuild(OrgsOrgCodeSecurityConfigurationsDetachDeleteBody)
+model_rebuild(OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200)
 
-__all__ = ("OrgsOrgCodeSecurityConfigurationsDetachDeleteBody",)
+__all__ = ("OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200",)

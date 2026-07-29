@@ -9,45 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0244 import RepositoryRulesetType, RepositoryRulesetTypeForResponse
-from .group_0523 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0524 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0525 import (
+from .group_0179 import PullRequestStackType, PullRequestStackTypeForResponse
+from .group_0535 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0536 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0537 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0526 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0538 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0895 import (
+    WebhookPullRequestStackedPropPullRequestType,
+    WebhookPullRequestStackedPropPullRequestTypeForResponse,
+)
 
 
-class WebhookRepositoryRulesetCreatedType(TypedDict):
-    """repository ruleset created event"""
+class WebhookPullRequestStackedType(TypedDict):
+    """pull_request stacked event"""
 
-    action: Literal["created"]
+    action: Literal["stacked"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
+    stack: NotRequired[Union[PullRequestStackType, None]]
+    number: int
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    repository_ruleset: RepositoryRulesetType
+    pull_request: WebhookPullRequestStackedPropPullRequestType
+    repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookRepositoryRulesetCreatedTypeForResponse(TypedDict):
-    """repository ruleset created event"""
+class WebhookPullRequestStackedTypeForResponse(TypedDict):
+    """pull_request stacked event"""
 
-    action: Literal["created"]
+    action: Literal["stacked"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
+    stack: NotRequired[Union[PullRequestStackTypeForResponse, None]]
+    number: int
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    repository_ruleset: RepositoryRulesetTypeForResponse
+    pull_request: WebhookPullRequestStackedPropPullRequestTypeForResponse
+    repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookRepositoryRulesetCreatedType",
-    "WebhookRepositoryRulesetCreatedTypeForResponse",
+    "WebhookPullRequestStackedType",
+    "WebhookPullRequestStackedTypeForResponse",
 )

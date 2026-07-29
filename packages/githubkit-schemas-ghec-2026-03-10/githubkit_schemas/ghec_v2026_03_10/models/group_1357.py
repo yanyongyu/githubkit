@@ -11,19 +11,34 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgSecretScanningPatternConfigurationsPatchResponse200(GitHubModel):
-    """OrgsOrgSecretScanningPatternConfigurationsPatchResponse200"""
+class OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody(GitHubModel):
+    """OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody"""
 
-    pattern_config_version: Missing[str] = Field(
-        default=UNSET, description="The updated pattern configuration version."
-    )
+    metadata: Missing[
+        OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
+    ] = Field(default=UNSET, description="Updated resource-specific metadata.")
 
 
-model_rebuild(OrgsOrgSecretScanningPatternConfigurationsPatchResponse200)
+class OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata(
+    ExtraGitHubModel
+):
+    """OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
 
-__all__ = ("OrgsOrgSecretScanningPatternConfigurationsPatchResponse200",)
+    Updated resource-specific metadata.
+    """
+
+
+model_rebuild(OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody)
+model_rebuild(
+    OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
+)
+
+__all__ = (
+    "OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody",
+    "OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata",
+)

@@ -16,15 +16,13 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoCollaboratorsUsernamePutBody(GitHubModel):
-    """ReposOwnerRepoCollaboratorsUsernamePutBody"""
+class ReposOwnerRepoAgentsVariablesNamePatchBody(GitHubModel):
+    """ReposOwnerRepoAgentsVariablesNamePatchBody"""
 
-    permission: Missing[str] = Field(
-        default=UNSET,
-        description="The permission to grant the collaborator. **Only valid on organization-owned repositories.** We accept the following permissions to be set: `pull`, `triage`, `push`, `maintain`, `admin` and you can also specify a custom repository role name, if the owning organization has defined any.",
-    )
+    name: Missing[str] = Field(default=UNSET, description="The name of the variable.")
+    value: Missing[str] = Field(default=UNSET, description="The value of the variable.")
 
 
-model_rebuild(ReposOwnerRepoCollaboratorsUsernamePutBody)
+model_rebuild(ReposOwnerRepoAgentsVariablesNamePatchBody)
 
-__all__ = ("ReposOwnerRepoCollaboratorsUsernamePutBody",)
+__all__ = ("ReposOwnerRepoAgentsVariablesNamePatchBody",)

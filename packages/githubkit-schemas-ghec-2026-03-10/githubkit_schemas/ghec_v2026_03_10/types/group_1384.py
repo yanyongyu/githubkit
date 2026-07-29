@@ -9,26 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0341 import ArtifactType, ArtifactTypeForResponse
-
-
-class ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200"""
-
-    total_count: int
-    artifacts: list[ArtifactType]
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200"""
+class OrgsOrgInvitationsPostBodyType(TypedDict):
+    """OrgsOrgInvitationsPostBody"""
 
-    total_count: int
-    artifacts: list[ArtifactTypeForResponse]
+    invitee_id: NotRequired[int]
+    email: NotRequired[str]
+    role: NotRequired[Literal["admin", "direct_member", "billing_manager", "reinstate"]]
+    team_ids: NotRequired[list[int]]
+
+
+class OrgsOrgInvitationsPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgInvitationsPostBody"""
+
+    invitee_id: NotRequired[int]
+    email: NotRequired[str]
+    role: NotRequired[Literal["admin", "direct_member", "billing_manager", "reinstate"]]
+    team_ids: NotRequired[list[int]]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200Type",
-    "ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200TypeForResponse",
+    "OrgsOrgInvitationsPostBodyType",
+    "OrgsOrgInvitationsPostBodyTypeForResponse",
 )

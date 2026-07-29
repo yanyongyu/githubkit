@@ -9,27 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0017 import AppPermissions
 
-class NotificationsPutBody(GitHubModel):
-    """NotificationsPutBody"""
 
-    last_read_at: Missing[_dt.datetime] = Field(
+class AppInstallationsInstallationIdAccessTokensPostBody(GitHubModel):
+    """AppInstallationsInstallationIdAccessTokensPostBody"""
+
+    repositories: Missing[list[str]] = Field(
         default=UNSET,
-        description="Describes the last point that notifications were checked. Anything updated since this time will not be marked as read. If you omit this parameter, all notifications are marked as read. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. Default: The current timestamp.",
+        description="List of repository names that the token should have access to",
     )
-    read: Missing[bool] = Field(
-        default=UNSET, description="Whether the notification has been read."
+    repository_ids: Missing[list[int]] = Field(
+        default=UNSET,
+        description="List of repository IDs that the token should have access to",
+    )
+    permissions: Missing[AppPermissions] = Field(
+        default=UNSET,
+        title="App Permissions",
+        description="The permissions granted to the fine-grained access token.",
     )
 
 
-model_rebuild(NotificationsPutBody)
+model_rebuild(AppInstallationsInstallationIdAccessTokensPostBody)
 
-__all__ = ("NotificationsPutBody",)
+__all__ = ("AppInstallationsInstallationIdAccessTokensPostBody",)

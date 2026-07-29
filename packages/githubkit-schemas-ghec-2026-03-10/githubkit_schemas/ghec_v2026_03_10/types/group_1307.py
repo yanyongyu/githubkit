@@ -12,25 +12,19 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class OrgsOrgCopilotBillingSelectedUsersPostResponse201Type(TypedDict):
-    """OrgsOrgCopilotBillingSelectedUsersPostResponse201
+class OrgsOrgAgentsSecretsSecretNameRepositoriesPutBodyType(TypedDict):
+    """OrgsOrgAgentsSecretsSecretNameRepositoriesPutBody"""
 
-    The total number of seats created for the specified user(s).
-    """
-
-    seats_created: int
+    selected_repository_ids: list[int]
 
 
-class OrgsOrgCopilotBillingSelectedUsersPostResponse201TypeForResponse(TypedDict):
-    """OrgsOrgCopilotBillingSelectedUsersPostResponse201
+class OrgsOrgAgentsSecretsSecretNameRepositoriesPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgAgentsSecretsSecretNameRepositoriesPutBody"""
 
-    The total number of seats created for the specified user(s).
-    """
-
-    seats_created: int
+    selected_repository_ids: list[int]
 
 
 __all__ = (
-    "OrgsOrgCopilotBillingSelectedUsersPostResponse201Type",
-    "OrgsOrgCopilotBillingSelectedUsersPostResponse201TypeForResponse",
+    "OrgsOrgAgentsSecretsSecretNameRepositoriesPutBodyType",
+    "OrgsOrgAgentsSecretsSecretNameRepositoriesPutBodyTypeForResponse",
 )

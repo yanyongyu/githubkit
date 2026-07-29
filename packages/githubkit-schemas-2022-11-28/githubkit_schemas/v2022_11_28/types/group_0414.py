@@ -9,51 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0394 import IssueReferenceType, IssueReferenceTypeForResponse
 
 
-class SubIssueAddedIssueEventType(TypedDict):
-    """Sub-issue Added Issue Event
+class LockedIssueEventType(TypedDict):
+    """Locked Issue Event
 
-    Sub-issue Added Issue Event
+    Locked Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: str
+    event: Literal["locked"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    sub_issue: Union[None, IssueReferenceType, None]
+    lock_reason: Union[str, None]
 
 
-class SubIssueAddedIssueEventTypeForResponse(TypedDict):
-    """Sub-issue Added Issue Event
+class LockedIssueEventTypeForResponse(TypedDict):
+    """Locked Issue Event
 
-    Sub-issue Added Issue Event
+    Locked Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserTypeForResponse
-    event: str
+    event: Literal["locked"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    sub_issue: Union[None, IssueReferenceTypeForResponse, None]
+    lock_reason: Union[str, None]
 
 
 __all__ = (
-    "SubIssueAddedIssueEventType",
-    "SubIssueAddedIssueEventTypeForResponse",
+    "LockedIssueEventType",
+    "LockedIssueEventTypeForResponse",
 )

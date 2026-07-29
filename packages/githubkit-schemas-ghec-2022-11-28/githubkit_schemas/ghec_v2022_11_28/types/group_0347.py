@@ -9,52 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
 from typing_extensions import TypedDict
 
+from .group_0346 import RateLimitType, RateLimitTypeForResponse
+from .group_0348 import (
+    RateLimitOverviewPropResourcesType,
+    RateLimitOverviewPropResourcesTypeForResponse,
+)
 
-class ConcurrencyGroupListType(TypedDict):
-    """Concurrency Group List
 
-    A list of active concurrency groups for a repository.
+class RateLimitOverviewType(TypedDict):
+    """Rate Limit Overview
+
+    Rate Limit Overview
     """
 
-    total_count: int
-    concurrency_groups: list[ConcurrencyGroupListPropConcurrencyGroupsItemsType]
+    resources: RateLimitOverviewPropResourcesType
+    rate: RateLimitType
 
 
-class ConcurrencyGroupListTypeForResponse(TypedDict):
-    """Concurrency Group List
+class RateLimitOverviewTypeForResponse(TypedDict):
+    """Rate Limit Overview
 
-    A list of active concurrency groups for a repository.
+    Rate Limit Overview
     """
 
-    total_count: int
-    concurrency_groups: list[
-        ConcurrencyGroupListPropConcurrencyGroupsItemsTypeForResponse
-    ]
-
-
-class ConcurrencyGroupListPropConcurrencyGroupsItemsType(TypedDict):
-    """ConcurrencyGroupListPropConcurrencyGroupsItems"""
-
-    group_name: str
-    group_url: str
-    last_acquired_at: Union[_dt.datetime, None]
-
-
-class ConcurrencyGroupListPropConcurrencyGroupsItemsTypeForResponse(TypedDict):
-    """ConcurrencyGroupListPropConcurrencyGroupsItems"""
-
-    group_name: str
-    group_url: str
-    last_acquired_at: Union[str, None]
+    resources: RateLimitOverviewPropResourcesTypeForResponse
+    rate: RateLimitTypeForResponse
 
 
 __all__ = (
-    "ConcurrencyGroupListPropConcurrencyGroupsItemsType",
-    "ConcurrencyGroupListPropConcurrencyGroupsItemsTypeForResponse",
-    "ConcurrencyGroupListType",
-    "ConcurrencyGroupListTypeForResponse",
+    "RateLimitOverviewType",
+    "RateLimitOverviewTypeForResponse",
 )

@@ -9,54 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0372 import BranchProtectionType, BranchProtectionTypeForResponse
 
+class AutolinkType(TypedDict):
+    """Autolink reference
 
-class ShortBranchType(TypedDict):
-    """Short Branch
-
-    Short Branch
+    An autolink reference.
     """
 
-    name: str
-    commit: ShortBranchPropCommitType
-    protected: bool
-    protection: NotRequired[BranchProtectionType]
-    protection_url: NotRequired[str]
+    id: int
+    key_prefix: str
+    url_template: str
+    is_alphanumeric: bool
+    updated_at: NotRequired[Union[_dt.datetime, None]]
 
 
-class ShortBranchTypeForResponse(TypedDict):
-    """Short Branch
+class AutolinkTypeForResponse(TypedDict):
+    """Autolink reference
 
-    Short Branch
+    An autolink reference.
     """
 
-    name: str
-    commit: ShortBranchPropCommitTypeForResponse
-    protected: bool
-    protection: NotRequired[BranchProtectionTypeForResponse]
-    protection_url: NotRequired[str]
-
-
-class ShortBranchPropCommitType(TypedDict):
-    """ShortBranchPropCommit"""
-
-    sha: str
-    url: str
-
-
-class ShortBranchPropCommitTypeForResponse(TypedDict):
-    """ShortBranchPropCommit"""
-
-    sha: str
-    url: str
+    id: int
+    key_prefix: str
+    url_template: str
+    is_alphanumeric: bool
+    updated_at: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "ShortBranchPropCommitType",
-    "ShortBranchPropCommitTypeForResponse",
-    "ShortBranchType",
-    "ShortBranchTypeForResponse",
+    "AutolinkType",
+    "AutolinkTypeForResponse",
 )

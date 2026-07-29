@@ -20,7 +20,7 @@ from githubkit.typing import Missing, UnsetType
 from githubkit.utils import UNSET, exclude_unset, parse_query_params
 
 if TYPE_CHECKING:
-    from typing import Literal, Union
+    from typing import Any, Literal, Union
 
     from githubkit import GitHubCore
     from githubkit.response import Response
@@ -29,9 +29,12 @@ if TYPE_CHECKING:
 
     from ..models import (
         OrganizationSecretScanningAlert,
+        OrgsOrgSecretScanningCustomPatternsPostResponse201,
         OrgsOrgSecretScanningPatternConfigurationsPatchResponse200,
+        ReposOwnerRepoSecretScanningCustomPatternsPostResponse201,
         SecretScanningAlert,
         SecretScanningAlertWithMetadata,
+        SecretScanningCustomPattern,
         SecretScanningLocation,
         SecretScanningPatternConfiguration,
         SecretScanningPushProtectionBypass,
@@ -39,6 +42,9 @@ if TYPE_CHECKING:
     )
     from ..types import (
         OrganizationSecretScanningAlertTypeForResponse,
+        OrgsOrgSecretScanningCustomPatternsDeleteBodyType,
+        OrgsOrgSecretScanningCustomPatternsPostBodyType,
+        OrgsOrgSecretScanningCustomPatternsPostResponse201TypeForResponse,
         OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType,
         OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType,
         OrgsOrgSecretScanningPatternConfigurationsPatchBodyType,
@@ -46,9 +52,15 @@ if TYPE_CHECKING:
         ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type,
         ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1Type,
         ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2Type,
+        ReposOwnerRepoSecretScanningCustomPatternsDeleteBodyType,
+        ReposOwnerRepoSecretScanningCustomPatternsPostBodyType,
+        ReposOwnerRepoSecretScanningCustomPatternsPostResponse201TypeForResponse,
         ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType,
         SecretScanningAlertTypeForResponse,
         SecretScanningAlertWithMetadataTypeForResponse,
+        SecretScanningCustomPatternToCreateType,
+        SecretScanningCustomPatternToDeleteType,
+        SecretScanningCustomPatternTypeForResponse,
         SecretScanningLocationTypeForResponse,
         SecretScanningPatternConfigurationTypeForResponse,
         SecretScanningPushProtectionBypassTypeForResponse,
@@ -246,6 +258,546 @@ class SecretScanningClient:
             error_models={
                 "404": BasicError,
                 "503": EventsGetResponse503,
+            },
+        )
+
+    def list_org_custom_patterns(
+        self,
+        org: str,
+        *,
+        state: Missing[Literal["published", "unpublished"]] = UNSET,
+        push_protection: Missing[Literal["enabled", "disabled"]] = UNSET,
+        sort: Missing[Literal["created", "updated", "name"]] = UNSET,
+        direction: Missing[Literal["asc", "desc"]] = UNSET,
+        page: Missing[int] = UNSET,
+        per_page: Missing[int] = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        list[SecretScanningCustomPattern],
+        list[SecretScanningCustomPatternTypeForResponse],
+    ]:
+        """secret-scanning/list-org-custom-patterns
+
+        GET /orgs/{org}/secret-scanning/custom-patterns
+
+        Lists secret scanning custom patterns for an organization.
+
+        Personal access tokens (classic) need the `read:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/secret-scanning/custom-patterns#list-organization-custom-patterns
+        """
+
+        from ..models import BasicError, SecretScanningCustomPattern
+
+        url = f"/orgs/{org}/secret-scanning/custom-patterns"
+
+        params = {
+            "state": state,
+            "push_protection": push_protection,
+            "sort": sort,
+            "direction": direction,
+            "page": page,
+            "per_page": per_page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[SecretScanningCustomPattern],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_list_org_custom_patterns(
+        self,
+        org: str,
+        *,
+        state: Missing[Literal["published", "unpublished"]] = UNSET,
+        push_protection: Missing[Literal["enabled", "disabled"]] = UNSET,
+        sort: Missing[Literal["created", "updated", "name"]] = UNSET,
+        direction: Missing[Literal["asc", "desc"]] = UNSET,
+        page: Missing[int] = UNSET,
+        per_page: Missing[int] = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        list[SecretScanningCustomPattern],
+        list[SecretScanningCustomPatternTypeForResponse],
+    ]:
+        """secret-scanning/list-org-custom-patterns
+
+        GET /orgs/{org}/secret-scanning/custom-patterns
+
+        Lists secret scanning custom patterns for an organization.
+
+        Personal access tokens (classic) need the `read:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/secret-scanning/custom-patterns#list-organization-custom-patterns
+        """
+
+        from ..models import BasicError, SecretScanningCustomPattern
+
+        url = f"/orgs/{org}/secret-scanning/custom-patterns"
+
+        params = {
+            "state": state,
+            "push_protection": push_protection,
+            "sort": sort,
+            "direction": direction,
+            "page": page,
+            "per_page": per_page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[SecretScanningCustomPattern],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def bulk_create_org_custom_patterns(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: OrgsOrgSecretScanningCustomPatternsPostBodyType,
+    ) -> Response[
+        OrgsOrgSecretScanningCustomPatternsPostResponse201,
+        OrgsOrgSecretScanningCustomPatternsPostResponse201TypeForResponse,
+    ]: ...
+
+    @overload
+    def bulk_create_org_custom_patterns(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        patterns: list[SecretScanningCustomPatternToCreateType],
+    ) -> Response[
+        OrgsOrgSecretScanningCustomPatternsPostResponse201,
+        OrgsOrgSecretScanningCustomPatternsPostResponse201TypeForResponse,
+    ]: ...
+
+    def bulk_create_org_custom_patterns(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgSecretScanningCustomPatternsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        OrgsOrgSecretScanningCustomPatternsPostResponse201,
+        OrgsOrgSecretScanningCustomPatternsPostResponse201TypeForResponse,
+    ]:
+        """secret-scanning/bulk-create-org-custom-patterns
+
+        POST /orgs/{org}/secret-scanning/custom-patterns
+
+        Bulk creates secret scanning custom patterns for an organization.
+
+        Personal access tokens (classic) need the `write:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/secret-scanning/custom-patterns#bulk-create-organization-custom-patterns
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgSecretScanningCustomPatternsPostBody,
+            OrgsOrgSecretScanningCustomPatternsPostResponse201,
+            OrgsOrgSecretScanningCustomPatternsPostResponse422,
+        )
+
+        url = f"/orgs/{org}/secret-scanning/custom-patterns"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgSecretScanningCustomPatternsPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgSecretScanningCustomPatternsPostResponse201,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": OrgsOrgSecretScanningCustomPatternsPostResponse422,
+            },
+        )
+
+    @overload
+    async def async_bulk_create_org_custom_patterns(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: OrgsOrgSecretScanningCustomPatternsPostBodyType,
+    ) -> Response[
+        OrgsOrgSecretScanningCustomPatternsPostResponse201,
+        OrgsOrgSecretScanningCustomPatternsPostResponse201TypeForResponse,
+    ]: ...
+
+    @overload
+    async def async_bulk_create_org_custom_patterns(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        patterns: list[SecretScanningCustomPatternToCreateType],
+    ) -> Response[
+        OrgsOrgSecretScanningCustomPatternsPostResponse201,
+        OrgsOrgSecretScanningCustomPatternsPostResponse201TypeForResponse,
+    ]: ...
+
+    async def async_bulk_create_org_custom_patterns(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgSecretScanningCustomPatternsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        OrgsOrgSecretScanningCustomPatternsPostResponse201,
+        OrgsOrgSecretScanningCustomPatternsPostResponse201TypeForResponse,
+    ]:
+        """secret-scanning/bulk-create-org-custom-patterns
+
+        POST /orgs/{org}/secret-scanning/custom-patterns
+
+        Bulk creates secret scanning custom patterns for an organization.
+
+        Personal access tokens (classic) need the `write:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/secret-scanning/custom-patterns#bulk-create-organization-custom-patterns
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgSecretScanningCustomPatternsPostBody,
+            OrgsOrgSecretScanningCustomPatternsPostResponse201,
+            OrgsOrgSecretScanningCustomPatternsPostResponse422,
+        )
+
+        url = f"/orgs/{org}/secret-scanning/custom-patterns"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgSecretScanningCustomPatternsPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgSecretScanningCustomPatternsPostResponse201,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": OrgsOrgSecretScanningCustomPatternsPostResponse422,
+            },
+        )
+
+    @overload
+    def bulk_delete_org_custom_patterns(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: OrgsOrgSecretScanningCustomPatternsDeleteBodyType,
+    ) -> Response: ...
+
+    @overload
+    def bulk_delete_org_custom_patterns(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        patterns: list[SecretScanningCustomPatternToDeleteType],
+        post_delete_action: Missing[Literal["delete_alerts", "resolve_alerts"]] = UNSET,
+    ) -> Response: ...
+
+    def bulk_delete_org_custom_patterns(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgSecretScanningCustomPatternsDeleteBodyType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """secret-scanning/bulk-delete-org-custom-patterns
+
+        DELETE /orgs/{org}/secret-scanning/custom-patterns
+
+        Bulk deletes secret scanning custom patterns for an organization.
+
+        Personal access tokens (classic) need the `write:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/secret-scanning/custom-patterns#bulk-delete-organization-custom-patterns
+        """
+
+        from ..models import BasicError, OrgsOrgSecretScanningCustomPatternsDeleteBody
+
+        url = f"/orgs/{org}/secret-scanning/custom-patterns"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgSecretScanningCustomPatternsDeleteBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "DELETE",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "412": BasicError,
+            },
+        )
+
+    @overload
+    async def async_bulk_delete_org_custom_patterns(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: OrgsOrgSecretScanningCustomPatternsDeleteBodyType,
+    ) -> Response: ...
+
+    @overload
+    async def async_bulk_delete_org_custom_patterns(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        patterns: list[SecretScanningCustomPatternToDeleteType],
+        post_delete_action: Missing[Literal["delete_alerts", "resolve_alerts"]] = UNSET,
+    ) -> Response: ...
+
+    async def async_bulk_delete_org_custom_patterns(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgSecretScanningCustomPatternsDeleteBodyType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """secret-scanning/bulk-delete-org-custom-patterns
+
+        DELETE /orgs/{org}/secret-scanning/custom-patterns
+
+        Bulk deletes secret scanning custom patterns for an organization.
+
+        Personal access tokens (classic) need the `write:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/secret-scanning/custom-patterns#bulk-delete-organization-custom-patterns
+        """
+
+        from ..models import BasicError, OrgsOrgSecretScanningCustomPatternsDeleteBody
+
+        url = f"/orgs/{org}/secret-scanning/custom-patterns"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgSecretScanningCustomPatternsDeleteBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "412": BasicError,
+            },
+        )
+
+    def update_org_custom_pattern(
+        self,
+        org: str,
+        pattern_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Union[Any, Any, Any, Any, Any],
+    ) -> Response[
+        SecretScanningCustomPattern, SecretScanningCustomPatternTypeForResponse
+    ]:
+        """secret-scanning/update-org-custom-pattern
+
+        PATCH /orgs/{org}/secret-scanning/custom-patterns/{pattern_id}
+
+        Updates a secret scanning custom pattern for an organization.
+
+        Personal access tokens (classic) need the `write:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/secret-scanning/custom-patterns#update-an-organization-custom-pattern
+        """
+
+        from typing import Any, Union
+
+        from ..models import BasicError, SecretScanningCustomPattern, ValidationError
+
+        url = f"/orgs/{org}/secret-scanning/custom-patterns/{pattern_id}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(Union[Any, Any, Any, Any, Any], json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=SecretScanningCustomPattern,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "412": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    async def async_update_org_custom_pattern(
+        self,
+        org: str,
+        pattern_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Union[Any, Any, Any, Any, Any],
+    ) -> Response[
+        SecretScanningCustomPattern, SecretScanningCustomPatternTypeForResponse
+    ]:
+        """secret-scanning/update-org-custom-pattern
+
+        PATCH /orgs/{org}/secret-scanning/custom-patterns/{pattern_id}
+
+        Updates a secret scanning custom pattern for an organization.
+
+        Personal access tokens (classic) need the `write:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/secret-scanning/custom-patterns#update-an-organization-custom-pattern
+        """
+
+        from typing import Any, Union
+
+        from ..models import BasicError, SecretScanningCustomPattern, ValidationError
+
+        url = f"/orgs/{org}/secret-scanning/custom-patterns/{pattern_id}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(Union[Any, Any, Any, Any, Any], json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=SecretScanningCustomPattern,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "412": BasicError,
+                "422": ValidationError,
             },
         )
 
@@ -1202,6 +1754,568 @@ class SecretScanningClient:
             response_model=list[SecretScanningLocation],
             error_models={
                 "503": EventsGetResponse503,
+            },
+        )
+
+    def list_repo_custom_patterns(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        state: Missing[Literal["published", "unpublished"]] = UNSET,
+        push_protection: Missing[Literal["enabled", "disabled"]] = UNSET,
+        sort: Missing[Literal["created", "updated", "name"]] = UNSET,
+        direction: Missing[Literal["asc", "desc"]] = UNSET,
+        page: Missing[int] = UNSET,
+        per_page: Missing[int] = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        list[SecretScanningCustomPattern],
+        list[SecretScanningCustomPatternTypeForResponse],
+    ]:
+        """secret-scanning/list-repo-custom-patterns
+
+        GET /repos/{owner}/{repo}/secret-scanning/custom-patterns
+
+        Lists secret scanning custom patterns for a repository.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+
+        See also: https://docs.github.com/rest/secret-scanning/custom-patterns#list-repository-custom-patterns
+        """
+
+        from ..models import BasicError, SecretScanningCustomPattern
+
+        url = f"/repos/{owner}/{repo}/secret-scanning/custom-patterns"
+
+        params = {
+            "state": state,
+            "push_protection": push_protection,
+            "sort": sort,
+            "direction": direction,
+            "page": page,
+            "per_page": per_page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[SecretScanningCustomPattern],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_list_repo_custom_patterns(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        state: Missing[Literal["published", "unpublished"]] = UNSET,
+        push_protection: Missing[Literal["enabled", "disabled"]] = UNSET,
+        sort: Missing[Literal["created", "updated", "name"]] = UNSET,
+        direction: Missing[Literal["asc", "desc"]] = UNSET,
+        page: Missing[int] = UNSET,
+        per_page: Missing[int] = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        list[SecretScanningCustomPattern],
+        list[SecretScanningCustomPatternTypeForResponse],
+    ]:
+        """secret-scanning/list-repo-custom-patterns
+
+        GET /repos/{owner}/{repo}/secret-scanning/custom-patterns
+
+        Lists secret scanning custom patterns for a repository.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+
+        See also: https://docs.github.com/rest/secret-scanning/custom-patterns#list-repository-custom-patterns
+        """
+
+        from ..models import BasicError, SecretScanningCustomPattern
+
+        url = f"/repos/{owner}/{repo}/secret-scanning/custom-patterns"
+
+        params = {
+            "state": state,
+            "push_protection": push_protection,
+            "sort": sort,
+            "direction": direction,
+            "page": page,
+            "per_page": per_page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[SecretScanningCustomPattern],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def bulk_create_repo_custom_patterns(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: ReposOwnerRepoSecretScanningCustomPatternsPostBodyType,
+    ) -> Response[
+        ReposOwnerRepoSecretScanningCustomPatternsPostResponse201,
+        ReposOwnerRepoSecretScanningCustomPatternsPostResponse201TypeForResponse,
+    ]: ...
+
+    @overload
+    def bulk_create_repo_custom_patterns(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        patterns: list[SecretScanningCustomPatternToCreateType],
+    ) -> Response[
+        ReposOwnerRepoSecretScanningCustomPatternsPostResponse201,
+        ReposOwnerRepoSecretScanningCustomPatternsPostResponse201TypeForResponse,
+    ]: ...
+
+    def bulk_create_repo_custom_patterns(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[ReposOwnerRepoSecretScanningCustomPatternsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        ReposOwnerRepoSecretScanningCustomPatternsPostResponse201,
+        ReposOwnerRepoSecretScanningCustomPatternsPostResponse201TypeForResponse,
+    ]:
+        """secret-scanning/bulk-create-repo-custom-patterns
+
+        POST /repos/{owner}/{repo}/secret-scanning/custom-patterns
+
+        Bulk creates secret scanning custom patterns for a repository.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+
+        See also: https://docs.github.com/rest/secret-scanning/custom-patterns#bulk-create-repository-custom-patterns
+        """
+
+        from ..models import (
+            BasicError,
+            ReposOwnerRepoSecretScanningCustomPatternsPostBody,
+            ReposOwnerRepoSecretScanningCustomPatternsPostResponse201,
+            ReposOwnerRepoSecretScanningCustomPatternsPostResponse422,
+        )
+
+        url = f"/repos/{owner}/{repo}/secret-scanning/custom-patterns"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                ReposOwnerRepoSecretScanningCustomPatternsPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ReposOwnerRepoSecretScanningCustomPatternsPostResponse201,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": ReposOwnerRepoSecretScanningCustomPatternsPostResponse422,
+            },
+        )
+
+    @overload
+    async def async_bulk_create_repo_custom_patterns(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: ReposOwnerRepoSecretScanningCustomPatternsPostBodyType,
+    ) -> Response[
+        ReposOwnerRepoSecretScanningCustomPatternsPostResponse201,
+        ReposOwnerRepoSecretScanningCustomPatternsPostResponse201TypeForResponse,
+    ]: ...
+
+    @overload
+    async def async_bulk_create_repo_custom_patterns(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        patterns: list[SecretScanningCustomPatternToCreateType],
+    ) -> Response[
+        ReposOwnerRepoSecretScanningCustomPatternsPostResponse201,
+        ReposOwnerRepoSecretScanningCustomPatternsPostResponse201TypeForResponse,
+    ]: ...
+
+    async def async_bulk_create_repo_custom_patterns(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[ReposOwnerRepoSecretScanningCustomPatternsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        ReposOwnerRepoSecretScanningCustomPatternsPostResponse201,
+        ReposOwnerRepoSecretScanningCustomPatternsPostResponse201TypeForResponse,
+    ]:
+        """secret-scanning/bulk-create-repo-custom-patterns
+
+        POST /repos/{owner}/{repo}/secret-scanning/custom-patterns
+
+        Bulk creates secret scanning custom patterns for a repository.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+
+        See also: https://docs.github.com/rest/secret-scanning/custom-patterns#bulk-create-repository-custom-patterns
+        """
+
+        from ..models import (
+            BasicError,
+            ReposOwnerRepoSecretScanningCustomPatternsPostBody,
+            ReposOwnerRepoSecretScanningCustomPatternsPostResponse201,
+            ReposOwnerRepoSecretScanningCustomPatternsPostResponse422,
+        )
+
+        url = f"/repos/{owner}/{repo}/secret-scanning/custom-patterns"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                ReposOwnerRepoSecretScanningCustomPatternsPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ReposOwnerRepoSecretScanningCustomPatternsPostResponse201,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": ReposOwnerRepoSecretScanningCustomPatternsPostResponse422,
+            },
+        )
+
+    @overload
+    def bulk_delete_repo_custom_patterns(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: ReposOwnerRepoSecretScanningCustomPatternsDeleteBodyType,
+    ) -> Response: ...
+
+    @overload
+    def bulk_delete_repo_custom_patterns(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        patterns: list[SecretScanningCustomPatternToDeleteType],
+        post_delete_action: Missing[Literal["delete_alerts", "resolve_alerts"]] = UNSET,
+    ) -> Response: ...
+
+    def bulk_delete_repo_custom_patterns(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[ReposOwnerRepoSecretScanningCustomPatternsDeleteBodyType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """secret-scanning/bulk-delete-repo-custom-patterns
+
+        DELETE /repos/{owner}/{repo}/secret-scanning/custom-patterns
+
+        Bulk deletes secret scanning custom patterns for a repository.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+
+        See also: https://docs.github.com/rest/secret-scanning/custom-patterns#bulk-delete-repository-custom-patterns
+        """
+
+        from ..models import (
+            BasicError,
+            ReposOwnerRepoSecretScanningCustomPatternsDeleteBody,
+        )
+
+        url = f"/repos/{owner}/{repo}/secret-scanning/custom-patterns"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                ReposOwnerRepoSecretScanningCustomPatternsDeleteBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "DELETE",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "412": BasicError,
+            },
+        )
+
+    @overload
+    async def async_bulk_delete_repo_custom_patterns(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: ReposOwnerRepoSecretScanningCustomPatternsDeleteBodyType,
+    ) -> Response: ...
+
+    @overload
+    async def async_bulk_delete_repo_custom_patterns(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        patterns: list[SecretScanningCustomPatternToDeleteType],
+        post_delete_action: Missing[Literal["delete_alerts", "resolve_alerts"]] = UNSET,
+    ) -> Response: ...
+
+    async def async_bulk_delete_repo_custom_patterns(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[ReposOwnerRepoSecretScanningCustomPatternsDeleteBodyType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """secret-scanning/bulk-delete-repo-custom-patterns
+
+        DELETE /repos/{owner}/{repo}/secret-scanning/custom-patterns
+
+        Bulk deletes secret scanning custom patterns for a repository.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+
+        See also: https://docs.github.com/rest/secret-scanning/custom-patterns#bulk-delete-repository-custom-patterns
+        """
+
+        from ..models import (
+            BasicError,
+            ReposOwnerRepoSecretScanningCustomPatternsDeleteBody,
+        )
+
+        url = f"/repos/{owner}/{repo}/secret-scanning/custom-patterns"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                ReposOwnerRepoSecretScanningCustomPatternsDeleteBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "412": BasicError,
+            },
+        )
+
+    def update_repo_custom_pattern(
+        self,
+        owner: str,
+        repo: str,
+        pattern_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Union[Any, Any, Any, Any, Any],
+    ) -> Response[
+        SecretScanningCustomPattern, SecretScanningCustomPatternTypeForResponse
+    ]:
+        """secret-scanning/update-repo-custom-pattern
+
+        PATCH /repos/{owner}/{repo}/secret-scanning/custom-patterns/{pattern_id}
+
+        Updates a secret scanning custom pattern for a repository.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+
+        See also: https://docs.github.com/rest/secret-scanning/custom-patterns#update-a-repository-custom-pattern
+        """
+
+        from typing import Any, Union
+
+        from ..models import BasicError, SecretScanningCustomPattern, ValidationError
+
+        url = f"/repos/{owner}/{repo}/secret-scanning/custom-patterns/{pattern_id}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(Union[Any, Any, Any, Any, Any], json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=SecretScanningCustomPattern,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "412": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    async def async_update_repo_custom_pattern(
+        self,
+        owner: str,
+        repo: str,
+        pattern_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Union[Any, Any, Any, Any, Any],
+    ) -> Response[
+        SecretScanningCustomPattern, SecretScanningCustomPatternTypeForResponse
+    ]:
+        """secret-scanning/update-repo-custom-pattern
+
+        PATCH /repos/{owner}/{repo}/secret-scanning/custom-patterns/{pattern_id}
+
+        Updates a secret scanning custom pattern for a repository.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+
+        See also: https://docs.github.com/rest/secret-scanning/custom-patterns#update-a-repository-custom-pattern
+        """
+
+        from typing import Any, Union
+
+        from ..models import BasicError, SecretScanningCustomPattern, ValidationError
+
+        url = f"/repos/{owner}/{repo}/secret-scanning/custom-patterns/{pattern_id}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(Union[Any, Any, Any, Any, Any], json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=SecretScanningCustomPattern,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "412": BasicError,
+                "422": ValidationError,
             },
         )
 

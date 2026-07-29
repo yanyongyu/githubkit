@@ -9,121 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0976 import (
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0Type,
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0TypeForResponse,
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepositoryType,
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepositoryTypeForResponse,
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsType,
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsTypeForResponse,
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
+from .group_0058 import IssueType, IssueTypeForResponse
+from .group_0535 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0536 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0977 import (
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItemsType,
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItemsTypeForResponse,
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropOwnerType,
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropOwnerTypeForResponse,
-)
-from .group_0979 import (
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsType,
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse,
-)
+from .group_0537 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Type(TypedDict):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200"""
+class WebhookSubIssuesParentIssueAddedType(TypedDict):
+    """parent issue added event"""
 
-    id: str
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    name: NotRequired[str]
-    creator: NotRequired[
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0Type
-    ]
-    creator_type: NotRequired[Literal["user", "organization"]]
-    user_collaborators: NotRequired[
-        list[
-            AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsType
-        ]
-    ]
-    owner: NotRequired[AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropOwnerType]
-    repository: NotRequired[
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepositoryType
-    ]
-    state: Literal[
-        "queued",
-        "in_progress",
-        "completed",
-        "failed",
-        "idle",
-        "waiting_for_user",
-        "timed_out",
-        "cancelled",
-    ]
-    session_count: NotRequired[int]
-    artifacts: NotRequired[
-        list[AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItemsType]
-    ]
-    archived_at: NotRequired[Union[_dt.datetime, None]]
-    updated_at: NotRequired[_dt.datetime]
-    created_at: _dt.datetime
-    sessions: NotRequired[
-        list[AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsType]
-    ]
+    action: Literal["parent_issue_added"]
+    parent_issue_id: NotRequired[float]
+    parent_issue: NotRequired[IssueType]
+    parent_issue_repo: NotRequired[RepositoryType]
+    sub_issue_id: float
+    sub_issue: IssueType
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200TypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200"""
+class WebhookSubIssuesParentIssueAddedTypeForResponse(TypedDict):
+    """parent issue added event"""
 
-    id: str
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    name: NotRequired[str]
-    creator: NotRequired[
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0TypeForResponse
-    ]
-    creator_type: NotRequired[Literal["user", "organization"]]
-    user_collaborators: NotRequired[
-        list[
-            AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsTypeForResponse
-        ]
-    ]
-    owner: NotRequired[
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropOwnerTypeForResponse
-    ]
-    repository: NotRequired[
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepositoryTypeForResponse
-    ]
-    state: Literal[
-        "queued",
-        "in_progress",
-        "completed",
-        "failed",
-        "idle",
-        "waiting_for_user",
-        "timed_out",
-        "cancelled",
-    ]
-    session_count: NotRequired[int]
-    artifacts: NotRequired[
-        list[
-            AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItemsTypeForResponse
-        ]
-    ]
-    archived_at: NotRequired[Union[str, None]]
-    updated_at: NotRequired[str]
-    created_at: str
-    sessions: NotRequired[
-        list[
-            AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse
-        ]
-    ]
+    action: Literal["parent_issue_added"]
+    parent_issue_id: NotRequired[float]
+    parent_issue: NotRequired[IssueTypeForResponse]
+    parent_issue_repo: NotRequired[RepositoryTypeForResponse]
+    sub_issue_id: float
+    sub_issue: IssueTypeForResponse
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Type",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200TypeForResponse",
+    "WebhookSubIssuesParentIssueAddedType",
+    "WebhookSubIssuesParentIssueAddedTypeForResponse",
 )

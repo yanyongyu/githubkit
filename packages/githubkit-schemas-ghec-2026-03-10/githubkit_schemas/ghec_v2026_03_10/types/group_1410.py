@@ -9,110 +9,95 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Any, Literal, TypeAlias
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody"""
+class OrgsOrgReposPostBodyType(TypedDict):
+    """OrgsOrgReposPostBody"""
 
-    dismissal_restrictions: NotRequired[
-        ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsType
+    name: str
+    description: NotRequired[str]
+    homepage: NotRequired[str]
+    private: NotRequired[bool]
+    visibility: NotRequired[Literal["public", "private", "internal"]]
+    has_issues: NotRequired[bool]
+    has_projects: NotRequired[bool]
+    has_wiki: NotRequired[bool]
+    has_downloads: NotRequired[bool]
+    is_template: NotRequired[bool]
+    team_id: NotRequired[int]
+    auto_init: NotRequired[bool]
+    gitignore_template: NotRequired[str]
+    license_template: NotRequired[str]
+    allow_squash_merge: NotRequired[bool]
+    allow_merge_commit: NotRequired[bool]
+    allow_rebase_merge: NotRequired[bool]
+    allow_auto_merge: NotRequired[bool]
+    delete_branch_on_merge: NotRequired[bool]
+    use_squash_pr_title_as_default: NotRequired[bool]
+    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
+    squash_merge_commit_message: NotRequired[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
     ]
-    dismiss_stale_reviews: NotRequired[bool]
-    require_code_owner_reviews: NotRequired[bool]
-    required_approving_review_count: NotRequired[int]
-    require_last_push_approval: NotRequired[bool]
-    bypass_pull_request_allowances: NotRequired[
-        ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesType
+    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
+    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
+    custom_properties: NotRequired[OrgsOrgReposPostBodyPropCustomPropertiesType]
+
+
+class OrgsOrgReposPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgReposPostBody"""
+
+    name: str
+    description: NotRequired[str]
+    homepage: NotRequired[str]
+    private: NotRequired[bool]
+    visibility: NotRequired[Literal["public", "private", "internal"]]
+    has_issues: NotRequired[bool]
+    has_projects: NotRequired[bool]
+    has_wiki: NotRequired[bool]
+    has_downloads: NotRequired[bool]
+    is_template: NotRequired[bool]
+    team_id: NotRequired[int]
+    auto_init: NotRequired[bool]
+    gitignore_template: NotRequired[str]
+    license_template: NotRequired[str]
+    allow_squash_merge: NotRequired[bool]
+    allow_merge_commit: NotRequired[bool]
+    allow_rebase_merge: NotRequired[bool]
+    allow_auto_merge: NotRequired[bool]
+    delete_branch_on_merge: NotRequired[bool]
+    use_squash_pr_title_as_default: NotRequired[bool]
+    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
+    squash_merge_commit_message: NotRequired[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    ]
+    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
+    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
+    custom_properties: NotRequired[
+        OrgsOrgReposPostBodyPropCustomPropertiesTypeForResponse
     ]
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody"""
+OrgsOrgReposPostBodyPropCustomPropertiesType: TypeAlias = dict[str, Any]
+"""OrgsOrgReposPostBodyPropCustomProperties
 
-    dismissal_restrictions: NotRequired[
-        ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsTypeForResponse
-    ]
-    dismiss_stale_reviews: NotRequired[bool]
-    require_code_owner_reviews: NotRequired[bool]
-    required_approving_review_count: NotRequired[int]
-    require_last_push_approval: NotRequired[bool]
-    bypass_pull_request_allowances: NotRequired[
-        ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesTypeForResponse
-    ]
+The custom properties for the new repository. The keys are the custom property
+names, and the values are the corresponding custom property values.
+"""
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsType(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDis
-    missalRestrictions
+OrgsOrgReposPostBodyPropCustomPropertiesTypeForResponse: TypeAlias = dict[str, Any]
+"""OrgsOrgReposPostBodyPropCustomProperties
 
-    Specify which users, teams, and apps can dismiss pull request reviews. Pass an
-    empty `dismissal_restrictions` object to disable. User and team
-    `dismissal_restrictions` are only available for organization-owned repositories.
-    Omit this parameter for personal repositories.
-    """
-
-    users: NotRequired[list[str]]
-    teams: NotRequired[list[str]]
-    apps: NotRequired[list[str]]
-
-
-class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDis
-    missalRestrictions
-
-    Specify which users, teams, and apps can dismiss pull request reviews. Pass an
-    empty `dismissal_restrictions` object to disable. User and team
-    `dismissal_restrictions` are only available for organization-owned repositories.
-    Omit this parameter for personal repositories.
-    """
-
-    users: NotRequired[list[str]]
-    teams: NotRequired[list[str]]
-    apps: NotRequired[list[str]]
-
-
-class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesType(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropByp
-    assPullRequestAllowances
-
-    Allow specific users, teams, or apps to bypass pull request requirements.
-    """
-
-    users: NotRequired[list[str]]
-    teams: NotRequired[list[str]]
-    apps: NotRequired[list[str]]
-
-
-class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropByp
-    assPullRequestAllowances
-
-    Allow specific users, teams, or apps to bypass pull request requirements.
-    """
-
-    users: NotRequired[list[str]]
-    teams: NotRequired[list[str]]
-    apps: NotRequired[list[str]]
+The custom properties for the new repository. The keys are the custom property
+names, and the values are the corresponding custom property values.
+"""
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesType",
-    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesTypeForResponse",
-    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsType",
-    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsTypeForResponse",
-    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType",
-    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyTypeForResponse",
+    "OrgsOrgReposPostBodyPropCustomPropertiesType",
+    "OrgsOrgReposPostBodyPropCustomPropertiesTypeForResponse",
+    "OrgsOrgReposPostBodyType",
+    "OrgsOrgReposPostBodyTypeForResponse",
 )

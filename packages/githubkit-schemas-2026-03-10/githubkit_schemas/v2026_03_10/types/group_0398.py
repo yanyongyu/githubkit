@@ -10,63 +10,46 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal, Union
-from typing_extensions import TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class MilestonedIssueEventType(TypedDict):
-    """Milestoned Issue Event
+class IssueTypeWebhookType(TypedDict):
+    """Issue Type
 
-    Milestoned Issue Event
+    The type of issue.
     """
 
     id: int
-    node_id: str
-    url: str
-    actor: SimpleUserType
-    event: Literal["milestoned"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    milestone: MilestonedIssueEventPropMilestoneType
+    name: str
+    color: NotRequired[
+        Union[
+            None,
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+        ]
+    ]
 
 
-class MilestonedIssueEventTypeForResponse(TypedDict):
-    """Milestoned Issue Event
+class IssueTypeWebhookTypeForResponse(TypedDict):
+    """Issue Type
 
-    Milestoned Issue Event
+    The type of issue.
     """
 
     id: int
-    node_id: str
-    url: str
-    actor: SimpleUserTypeForResponse
-    event: Literal["milestoned"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    milestone: MilestonedIssueEventPropMilestoneTypeForResponse
-
-
-class MilestonedIssueEventPropMilestoneType(TypedDict):
-    """MilestonedIssueEventPropMilestone"""
-
-    title: str
-
-
-class MilestonedIssueEventPropMilestoneTypeForResponse(TypedDict):
-    """MilestonedIssueEventPropMilestone"""
-
-    title: str
+    name: str
+    color: NotRequired[
+        Union[
+            None,
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+        ]
+    ]
 
 
 __all__ = (
-    "MilestonedIssueEventPropMilestoneType",
-    "MilestonedIssueEventPropMilestoneTypeForResponse",
-    "MilestonedIssueEventType",
-    "MilestonedIssueEventTypeForResponse",
+    "IssueTypeWebhookType",
+    "IssueTypeWebhookTypeForResponse",
 )

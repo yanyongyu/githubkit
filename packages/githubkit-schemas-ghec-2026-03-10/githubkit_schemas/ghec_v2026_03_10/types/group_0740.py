@@ -9,50 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0018 import InstallationType, InstallationTypeForResponse
-from .group_0598 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0600 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0601 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0615 import (
-    WebhooksRepositoriesItemsType,
-    WebhooksRepositoriesItemsTypeForResponse,
-)
+from .group_0211 import DiscussionType, DiscussionTypeForResponse
+from .group_0620 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookInstallationUnsuspendType(TypedDict):
-    """installation unsuspend event"""
+class WebhookDiscussionTransferredPropChangesType(TypedDict):
+    """WebhookDiscussionTransferredPropChanges"""
 
-    action: Literal["unsuspend"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: InstallationType
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repositories: NotRequired[list[WebhooksRepositoriesItemsType]]
-    repository: NotRequired[RepositoryWebhooksType]
-    requester: NotRequired[None]
-    sender: SimpleUserType
+    new_discussion: DiscussionType
+    new_repository: RepositoryWebhooksType
 
 
-class WebhookInstallationUnsuspendTypeForResponse(TypedDict):
-    """installation unsuspend event"""
+class WebhookDiscussionTransferredPropChangesTypeForResponse(TypedDict):
+    """WebhookDiscussionTransferredPropChanges"""
 
-    action: Literal["unsuspend"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: InstallationTypeForResponse
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repositories: NotRequired[list[WebhooksRepositoriesItemsTypeForResponse]]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    requester: NotRequired[None]
-    sender: SimpleUserTypeForResponse
+    new_discussion: DiscussionTypeForResponse
+    new_repository: RepositoryWebhooksTypeForResponse
 
 
 __all__ = (
-    "WebhookInstallationUnsuspendType",
-    "WebhookInstallationUnsuspendTypeForResponse",
+    "WebhookDiscussionTransferredPropChangesType",
+    "WebhookDiscussionTransferredPropChangesTypeForResponse",
 )

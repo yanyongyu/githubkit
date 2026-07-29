@@ -9,47 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_1276 import (
-    OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType,
-    OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsTypeForResponse,
-)
+
+class OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyType(TypedDict):
+    """OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody"""
+
+    name: NotRequired[str]
+    runner_group_id: NotRequired[int]
+    maximum_runners: NotRequired[int]
+    enable_static_ip: NotRequired[bool]
+    size: NotRequired[str]
+    image_source: NotRequired[Literal["github", "partner", "custom"]]
+    image_id: NotRequired[str]
+    image_version: NotRequired[Union[str, None]]
+    image_gen: NotRequired[bool]
 
 
-class OrgsOrgCampaignsPostBodyOneof0Type(TypedDict):
-    """OrgsOrgCampaignsPostBodyOneof0"""
+class OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody"""
 
-    name: str
-    description: str
-    managers: NotRequired[list[str]]
-    team_managers: NotRequired[list[str]]
-    ends_at: _dt.datetime
-    contact_link: NotRequired[Union[str, None]]
-    code_scanning_alerts: Union[
-        list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType], None
-    ]
-    generate_issues: NotRequired[bool]
-
-
-class OrgsOrgCampaignsPostBodyOneof0TypeForResponse(TypedDict):
-    """OrgsOrgCampaignsPostBodyOneof0"""
-
-    name: str
-    description: str
-    managers: NotRequired[list[str]]
-    team_managers: NotRequired[list[str]]
-    ends_at: str
-    contact_link: NotRequired[Union[str, None]]
-    code_scanning_alerts: Union[
-        list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsTypeForResponse], None
-    ]
-    generate_issues: NotRequired[bool]
+    name: NotRequired[str]
+    runner_group_id: NotRequired[int]
+    maximum_runners: NotRequired[int]
+    enable_static_ip: NotRequired[bool]
+    size: NotRequired[str]
+    image_source: NotRequired[Literal["github", "partner", "custom"]]
+    image_id: NotRequired[str]
+    image_version: NotRequired[Union[str, None]]
+    image_gen: NotRequired[bool]
 
 
 __all__ = (
-    "OrgsOrgCampaignsPostBodyOneof0Type",
-    "OrgsOrgCampaignsPostBodyOneof0TypeForResponse",
+    "OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyType",
+    "OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyTypeForResponse",
 )

@@ -18,23 +18,68 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsSecretsSecretNamePutBody(GitHubModel):
-    """OrgsOrgActionsSecretsSecretNamePutBody"""
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody(GitHubModel):
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody"""
 
-    encrypted_value: str = Field(
-        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
-        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an organization public key](https://docs.github.com/rest/actions/secrets#get-an-organization-public-key) endpoint.",
-    )
-    key_id: str = Field(description="ID of the key you used to encrypt the secret.")
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="Which type of organization repositories have access to the organization secret. `selected` means only the repositories specified by `selected_repository_ids` can access the secret."
-    )
-    selected_repository_ids: Missing[list[int]] = Field(
+    budget_amount: Missing[int] = Field(
         default=UNSET,
-        description="An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can manage the list of selected repositories using the [List selected repositories for an organization secret](https://docs.github.com/rest/actions/secrets#list-selected-repositories-for-an-organization-secret), [Set selected repositories for an organization secret](https://docs.github.com/rest/actions/secrets#set-selected-repositories-for-an-organization-secret), and [Remove selected repository from an organization secret](https://docs.github.com/rest/actions/secrets#remove-selected-repository-from-an-organization-secret) endpoints.",
+        description="The budget amount in whole dollars. For license-based products, this represents the number of licenses.",
+    )
+    prevent_further_usage: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to prevent additional spending once the budget is exceeded. For budgets with `user` or `multi_user_customer` scope, this must remain `true`.",
+    )
+    budget_alerting: Missing[
+        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting
+    ] = Field(default=UNSET)
+    budget_scope: Missing[
+        Literal[
+            "enterprise",
+            "organization",
+            "repository",
+            "cost_center",
+            "multi_user_customer",
+            "user",
+        ]
+    ] = Field(
+        default=UNSET,
+        description="The scope of the budget for this organization.\n\n- `organization`: Apply the budget to the organization.\n- `repository`: Apply the budget to a specific repository in the organization.\n- `multi_user_customer`: Apply a universal budget to all users in the organization.\n- `user`: Apply the budget to a single user in the organization.",
+    )
+    budget_entity_name: Missing[str] = Field(
+        default=UNSET, description="The name of the entity to apply the budget to"
+    )
+    budget_type: Missing[Literal["BundlePricing", "ProductPricing", "SkuPricing"]] = (
+        Field(
+            default=UNSET,
+            description="The type of pricing model used by the budget. Determines how `budget_product_sku` is interpreted.\n\n- `BundlePricing`: Covers all AI credit SKUs. Set `budget_product_sku` to `ai_credits`.\n- `ProductPricing`: Covers all SKUs that belong to a product. Set `budget_product_sku` to a product such as `actions` or `packages`.\n- `SkuPricing`: Covers a single, specific SKU. Set `budget_product_sku` to a SKU such as `actions_linux`.",
+        )
+    )
+    budget_product_sku: Missing[str] = Field(
+        default=UNSET,
+        description="A single product or SKU that will be covered in the budget",
+    )
+    user: Missing[str] = Field(
+        default=UNSET, description="The username of the user for `user` scope budgets."
     )
 
 
-model_rebuild(OrgsOrgActionsSecretsSecretNamePutBody)
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting(
+    GitHubModel
+):
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting"""
 
-__all__ = ("OrgsOrgActionsSecretsSecretNamePutBody",)
+    will_alert: Missing[bool] = Field(
+        default=UNSET, description="Whether alerts are enabled for this budget"
+    )
+    alert_recipients: Missing[list[str]] = Field(
+        default=UNSET, description="Array of user login names who will receive alerts"
+    )
+
+
+model_rebuild(OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody)
+model_rebuild(OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting)
+
+__all__ = (
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting",
+)

@@ -9,42 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0599 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0600 import (
+from .group_0617 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0618 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0619 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0601 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0626 import MergeGroupType, MergeGroupTypeForResponse
+from .group_0620 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0638 import WebhooksIssueType, WebhooksIssueTypeForResponse
+from .group_0641 import WebhooksUserMannequinType, WebhooksUserMannequinTypeForResponse
 
 
-class WebhookMergeGroupChecksRequestedType(TypedDict):
-    """WebhookMergeGroupChecksRequested"""
+class WebhookIssuesUnassignedType(TypedDict):
+    """issues unassigned event"""
 
-    action: Literal["checks_requested"]
+    action: Literal["unassigned"]
+    assignee: NotRequired[Union[WebhooksUserMannequinType, None]]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    merge_group: MergeGroupType
+    issue: WebhooksIssueType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: NotRequired[SimpleUserType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class WebhookMergeGroupChecksRequestedTypeForResponse(TypedDict):
-    """WebhookMergeGroupChecksRequested"""
+class WebhookIssuesUnassignedTypeForResponse(TypedDict):
+    """issues unassigned event"""
 
-    action: Literal["checks_requested"]
+    action: Literal["unassigned"]
+    assignee: NotRequired[Union[WebhooksUserMannequinTypeForResponse, None]]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    merge_group: MergeGroupTypeForResponse
+    issue: WebhooksIssueTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    sender: NotRequired[SimpleUserTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookMergeGroupChecksRequestedType",
-    "WebhookMergeGroupChecksRequestedTypeForResponse",
+    "WebhookIssuesUnassignedType",
+    "WebhookIssuesUnassignedTypeForResponse",
 )

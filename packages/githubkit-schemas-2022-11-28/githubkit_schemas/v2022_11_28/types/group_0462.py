@@ -12,35 +12,33 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0219 import (
-    RepositoryRuleCommitMessagePatternPropParametersType,
-    RepositoryRuleCommitMessagePatternPropParametersTypeForResponse,
+from .group_0210 import (
+    RepositoryRuleUpdatePropParametersType,
+    RepositoryRuleUpdatePropParametersTypeForResponse,
 )
 
 
-class RepositoryRuleDetailedOneof10Type(TypedDict):
-    """RepositoryRuleDetailedOneof10"""
+class RepositoryRuleDetailedOneof1Type(TypedDict):
+    """RepositoryRuleDetailedOneof1"""
 
-    type: Literal["commit_message_pattern"]
-    parameters: NotRequired[RepositoryRuleCommitMessagePatternPropParametersType]
+    type: Literal["update"]
+    parameters: NotRequired[RepositoryRuleUpdatePropParametersType]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
-class RepositoryRuleDetailedOneof10TypeForResponse(TypedDict):
-    """RepositoryRuleDetailedOneof10"""
+class RepositoryRuleDetailedOneof1TypeForResponse(TypedDict):
+    """RepositoryRuleDetailedOneof1"""
 
-    type: Literal["commit_message_pattern"]
-    parameters: NotRequired[
-        RepositoryRuleCommitMessagePatternPropParametersTypeForResponse
-    ]
+    type: Literal["update"]
+    parameters: NotRequired[RepositoryRuleUpdatePropParametersTypeForResponse]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
 __all__ = (
-    "RepositoryRuleDetailedOneof10Type",
-    "RepositoryRuleDetailedOneof10TypeForResponse",
+    "RepositoryRuleDetailedOneof1Type",
+    "RepositoryRuleDetailedOneof1TypeForResponse",
 )

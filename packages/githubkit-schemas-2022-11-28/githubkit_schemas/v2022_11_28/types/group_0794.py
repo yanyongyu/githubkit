@@ -13,44 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0523 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0524 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0525 import (
+from .group_0535 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0536 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0537 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0526 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0795 import (
-    WebhookPackageUpdatedPropPackageType,
-    WebhookPackageUpdatedPropPackageTypeForResponse,
-)
+from .group_0538 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0562 import WebhooksMilestone3Type, WebhooksMilestone3TypeForResponse
 
 
-class WebhookPackageUpdatedType(TypedDict):
-    """package updated event"""
+class WebhookMilestoneOpenedType(TypedDict):
+    """milestone opened event"""
 
-    action: Literal["updated"]
+    action: Literal["opened"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
+    milestone: WebhooksMilestone3Type
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    package: WebhookPackageUpdatedPropPackageType
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookPackageUpdatedTypeForResponse(TypedDict):
-    """package updated event"""
+class WebhookMilestoneOpenedTypeForResponse(TypedDict):
+    """milestone opened event"""
 
-    action: Literal["updated"]
+    action: Literal["opened"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
+    milestone: WebhooksMilestone3TypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    package: WebhookPackageUpdatedPropPackageTypeForResponse
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookPackageUpdatedType",
-    "WebhookPackageUpdatedTypeForResponse",
+    "WebhookMilestoneOpenedType",
+    "WebhookMilestoneOpenedTypeForResponse",
 )

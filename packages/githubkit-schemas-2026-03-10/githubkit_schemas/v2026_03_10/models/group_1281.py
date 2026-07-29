@@ -11,15 +11,55 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoCommentsCommentIdPatchBody(GitHubModel):
-    """ReposOwnerRepoCommentsCommentIdPatchBody"""
+class ReposOwnerRepoAttestationsPostBody(GitHubModel):
+    """ReposOwnerRepoAttestationsPostBody"""
 
-    body: str = Field(description="The contents of the comment")
+    bundle: ReposOwnerRepoAttestationsPostBodyPropBundle = Field(
+        description="The attestation's Sigstore Bundle.\nRefer to the [Sigstore Bundle Specification](https://github.com/sigstore/protobuf-specs/blob/main/protos/sigstore_bundle.proto) for more information."
+    )
 
 
-model_rebuild(ReposOwnerRepoCommentsCommentIdPatchBody)
+class ReposOwnerRepoAttestationsPostBodyPropBundle(GitHubModel):
+    """ReposOwnerRepoAttestationsPostBodyPropBundle
 
-__all__ = ("ReposOwnerRepoCommentsCommentIdPatchBody",)
+    The attestation's Sigstore Bundle.
+    Refer to the [Sigstore Bundle
+    Specification](https://github.com/sigstore/protobuf-
+    specs/blob/main/protos/sigstore_bundle.proto) for more information.
+    """
+
+    media_type: Missing[str] = Field(default=UNSET, alias="mediaType")
+    verification_material: Missing[
+        ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial
+    ] = Field(default=UNSET, alias="verificationMaterial")
+    dsse_envelope: Missing[
+        ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope
+    ] = Field(default=UNSET, alias="dsseEnvelope")
+
+
+class ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial(
+    ExtraGitHubModel
+):
+    """ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial"""
+
+
+class ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope(ExtraGitHubModel):
+    """ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope"""
+
+
+model_rebuild(ReposOwnerRepoAttestationsPostBody)
+model_rebuild(ReposOwnerRepoAttestationsPostBodyPropBundle)
+model_rebuild(ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial)
+model_rebuild(ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope)
+
+__all__ = (
+    "ReposOwnerRepoAttestationsPostBody",
+    "ReposOwnerRepoAttestationsPostBodyPropBundle",
+    "ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope",
+    "ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial",
+)

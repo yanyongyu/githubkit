@@ -9,152 +9,226 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0034 import (
-    CodeScanningDefaultSetupOptionsType,
-    CodeScanningDefaultSetupOptionsTypeForResponse,
-    CodeScanningOptionsType,
-    CodeScanningOptionsTypeForResponse,
-)
 
-
-class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyType(
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsType(
     TypedDict
 ):
-    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody"""
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItems
 
-    name: NotRequired[str]
-    description: NotRequired[str]
-    advanced_security: NotRequired[
-        Literal["enabled", "disabled", "code_security", "secret_protection"]
-    ]
-    code_security: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    dependency_graph: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    dependency_graph_autosubmit_action: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    dependency_graph_autosubmit_action_options: NotRequired[
-        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsType
-    ]
-    dependabot_alerts: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    dependabot_security_updates: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    code_scanning_default_setup: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    code_scanning_default_setup_options: NotRequired[
-        Union[CodeScanningDefaultSetupOptionsType, None]
-    ]
-    code_scanning_options: NotRequired[Union[CodeScanningOptionsType, None]]
-    code_scanning_delegated_alert_dismissal: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_protection: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    secret_scanning: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    secret_scanning_push_protection: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_validity_checks: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_non_provider_patterns: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_generic_secrets: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_delegated_alert_dismissal: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_extended_metadata: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    private_vulnerability_reporting: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    enforcement: NotRequired[Literal["enforced", "unenforced"]]
-
-
-class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody"""
-
-    name: NotRequired[str]
-    description: NotRequired[str]
-    advanced_security: NotRequired[
-        Literal["enabled", "disabled", "code_security", "secret_protection"]
-    ]
-    code_security: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    dependency_graph: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    dependency_graph_autosubmit_action: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    dependency_graph_autosubmit_action_options: NotRequired[
-        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsTypeForResponse
-    ]
-    dependabot_alerts: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    dependabot_security_updates: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    code_scanning_default_setup: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    code_scanning_default_setup_options: NotRequired[
-        Union[CodeScanningDefaultSetupOptionsTypeForResponse, None]
-    ]
-    code_scanning_options: NotRequired[Union[CodeScanningOptionsTypeForResponse, None]]
-    code_scanning_delegated_alert_dismissal: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_protection: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    secret_scanning: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    secret_scanning_push_protection: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_validity_checks: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_non_provider_patterns: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_generic_secrets: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_delegated_alert_dismissal: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_extended_metadata: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    private_vulnerability_reporting: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    enforcement: NotRequired[Literal["enforced", "unenforced"]]
-
-
-class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsType(
-    TypedDict
-):
-    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDepen
-    dencyGraphAutosubmitActionOptions
-
-    Feature options for Automatic dependency submission
+    Full session details within a task
     """
 
-    labeled_runners: NotRequired[bool]
+    id: str
+    name: NotRequired[str]
+    user: NotRequired[
+        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUserType
+    ]
+    owner: NotRequired[
+        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwnerType
+    ]
+    repository: NotRequired[
+        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepositoryType
+    ]
+    task_id: NotRequired[str]
+    state: Literal[
+        "queued",
+        "in_progress",
+        "completed",
+        "failed",
+        "idle",
+        "waiting_for_user",
+        "timed_out",
+        "cancelled",
+    ]
+    created_at: _dt.datetime
+    updated_at: NotRequired[_dt.datetime]
+    completed_at: NotRequired[_dt.datetime]
+    prompt: NotRequired[str]
+    head_ref: NotRequired[str]
+    base_ref: NotRequired[str]
+    model: NotRequired[str]
+    usage: NotRequired[
+        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUsageType
+    ]
+    error: NotRequired[
+        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropErrorType
+    ]
 
 
-class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsTypeForResponse(
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDepen
-    dencyGraphAutosubmitActionOptions
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItems
 
-    Feature options for Automatic dependency submission
+    Full session details within a task
     """
 
-    labeled_runners: NotRequired[bool]
+    id: str
+    name: NotRequired[str]
+    user: NotRequired[
+        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUserTypeForResponse
+    ]
+    owner: NotRequired[
+        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwnerTypeForResponse
+    ]
+    repository: NotRequired[
+        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepositoryTypeForResponse
+    ]
+    task_id: NotRequired[str]
+    state: Literal[
+        "queued",
+        "in_progress",
+        "completed",
+        "failed",
+        "idle",
+        "waiting_for_user",
+        "timed_out",
+        "cancelled",
+    ]
+    created_at: str
+    updated_at: NotRequired[str]
+    completed_at: NotRequired[str]
+    prompt: NotRequired[str]
+    head_ref: NotRequired[str]
+    base_ref: NotRequired[str]
+    model: NotRequired[str]
+    usage: NotRequired[
+        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUsageTypeForResponse
+    ]
+    error: NotRequired[
+        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropErrorTypeForResponse
+    ]
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUserType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser
+
+    The user who created this session
+    """
+
+    id: NotRequired[int]
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUserTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser
+
+    The user who created this session
+    """
+
+    id: NotRequired[int]
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwnerType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner
+
+    The owner of the repository
+    """
+
+    id: NotRequired[int]
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwnerTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner
+
+    The owner of the repository
+    """
+
+    id: NotRequired[int]
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepositoryType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropReposito
+    ry
+
+    The repository this session belongs to
+    """
+
+    id: NotRequired[int]
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepositoryTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropReposito
+    ry
+
+    The repository this session belongs to
+    """
+
+    id: NotRequired[int]
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUsageType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUsage
+
+    Structured information about billing units consumed by the session.
+    """
+
+    type: Literal["ai_credits", "premium_requests"]
+    amount: float
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUsageTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUsage
+
+    Structured information about billing units consumed by the session.
+    """
+
+    type: Literal["ai_credits", "premium_requests"]
+    amount: float
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropErrorType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError
+
+    Error details for a failed session
+    """
+
+    message: NotRequired[str]
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropErrorTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError
+
+    Error details for a failed session
+    """
+
+    message: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsType",
-    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsTypeForResponse",
-    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyType",
-    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyTypeForResponse",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropErrorType",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropErrorTypeForResponse",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwnerType",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwnerTypeForResponse",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepositoryType",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepositoryTypeForResponse",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUsageType",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUsageTypeForResponse",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUserType",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUserTypeForResponse",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsType",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse",
 )

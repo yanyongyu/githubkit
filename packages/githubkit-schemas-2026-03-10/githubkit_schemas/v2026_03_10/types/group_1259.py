@@ -9,69 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_1258 import (
-    ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType,
-    ReposOwnerRepoCheckRunsPostBodyPropActionsItemsTypeForResponse,
-    ReposOwnerRepoCheckRunsPostBodyPropOutputType,
-    ReposOwnerRepoCheckRunsPostBodyPropOutputTypeForResponse,
-)
+from .group_0287 import WorkflowRunType, WorkflowRunTypeForResponse
 
 
-class ReposOwnerRepoCheckRunsPostBodyOneof0Type(TypedDict):
-    """ReposOwnerRepoCheckRunsPostBodyOneof0"""
+class ReposOwnerRepoActionsRunsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsRunsGetResponse200"""
 
-    name: str
-    head_sha: str
-    details_url: NotRequired[str]
-    external_id: NotRequired[str]
-    status: Literal["completed"]
-    started_at: NotRequired[_dt.datetime]
-    conclusion: Literal[
-        "action_required",
-        "cancelled",
-        "failure",
-        "neutral",
-        "success",
-        "skipped",
-        "stale",
-        "timed_out",
-    ]
-    completed_at: NotRequired[_dt.datetime]
-    output: NotRequired[ReposOwnerRepoCheckRunsPostBodyPropOutputType]
-    actions: NotRequired[list[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType]]
+    total_count: int
+    workflow_runs: list[WorkflowRunType]
 
 
-class ReposOwnerRepoCheckRunsPostBodyOneof0TypeForResponse(TypedDict):
-    """ReposOwnerRepoCheckRunsPostBodyOneof0"""
+class ReposOwnerRepoActionsRunsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsRunsGetResponse200"""
 
-    name: str
-    head_sha: str
-    details_url: NotRequired[str]
-    external_id: NotRequired[str]
-    status: Literal["completed"]
-    started_at: NotRequired[str]
-    conclusion: Literal[
-        "action_required",
-        "cancelled",
-        "failure",
-        "neutral",
-        "success",
-        "skipped",
-        "stale",
-        "timed_out",
-    ]
-    completed_at: NotRequired[str]
-    output: NotRequired[ReposOwnerRepoCheckRunsPostBodyPropOutputTypeForResponse]
-    actions: NotRequired[
-        list[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsTypeForResponse]
-    ]
+    total_count: int
+    workflow_runs: list[WorkflowRunTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoCheckRunsPostBodyOneof0Type",
-    "ReposOwnerRepoCheckRunsPostBodyOneof0TypeForResponse",
+    "ReposOwnerRepoActionsRunsGetResponse200Type",
+    "ReposOwnerRepoActionsRunsGetResponse200TypeForResponse",
 )

@@ -12,18 +12,16 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCodeScanningAlertsGetResponse503(GitHubModel):
-    """EnterprisesEnterpriseCodeScanningAlertsGetResponse503"""
+class ApplicationsClientIdGrantDeleteBody(GitHubModel):
+    """ApplicationsClientIdGrantDeleteBody"""
 
-    code: Missing[str] = Field(default=UNSET)
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
+    access_token: str = Field(
+        description="The OAuth access token used to authenticate to the GitHub API."
+    )
 
 
-model_rebuild(EnterprisesEnterpriseCodeScanningAlertsGetResponse503)
+model_rebuild(ApplicationsClientIdGrantDeleteBody)
 
-__all__ = ("EnterprisesEnterpriseCodeScanningAlertsGetResponse503",)
+__all__ = ("ApplicationsClientIdGrantDeleteBody",)

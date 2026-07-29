@@ -9,24 +9,83 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseActionsPermissionsOrganizationsPutBodyType(TypedDict):
-    """EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody"""
+class AgentsReposOwnerRepoTasksTaskIdGetResponse403Type(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse403
 
-    selected_organization_ids: list[int]
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[
+        list[AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItemsType]
+    ]
+    documentation_url: str
 
 
-class EnterprisesEnterpriseActionsPermissionsOrganizationsPutBodyTypeForResponse(
+class AgentsReposOwnerRepoTasksTaskIdGetResponse403TypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse403
+
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[
+        list[
+            AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItemsTypeForResponse
+        ]
+    ]
+    documentation_url: str
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItemsType(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItemsTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody"""
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItems
 
-    selected_organization_ids: list[int]
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsPermissionsOrganizationsPutBodyType",
-    "EnterprisesEnterpriseActionsPermissionsOrganizationsPutBodyTypeForResponse",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItemsType",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItemsTypeForResponse",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse403Type",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse403TypeForResponse",
 )

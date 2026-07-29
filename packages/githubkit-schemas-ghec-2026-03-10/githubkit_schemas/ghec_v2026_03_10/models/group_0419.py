@@ -18,34 +18,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ContentDirectoryItems(GitHubModel):
-    """ContentDirectoryItems"""
+class CodeScanningSarifsStatus(GitHubModel):
+    """CodeScanningSarifsStatus"""
 
-    type: Literal["dir", "file", "submodule", "symlink"] = Field()
-    size: int = Field()
-    name: str = Field()
-    path: str = Field()
-    content: Missing[str] = Field(default=UNSET)
-    sha: str = Field()
-    url: str = Field()
-    git_url: Union[str, None] = Field()
-    html_url: Union[str, None] = Field()
-    download_url: Union[str, None] = Field()
-    links: ContentDirectoryItemsPropLinks = Field(alias="_links")
-
-
-class ContentDirectoryItemsPropLinks(GitHubModel):
-    """ContentDirectoryItemsPropLinks"""
-
-    git: Union[str, None] = Field()
-    html: Union[str, None] = Field()
-    self_: str = Field(alias="self")
+    processing_status: Missing[Literal["pending", "complete", "failed"]] = Field(
+        default=UNSET,
+        description="`pending` files have not yet been processed, while `complete` means results from the SARIF have been stored. `failed` files have either not been processed at all, or could only be partially processed.",
+    )
+    analyses_url: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The REST API URL for getting the analyses associated with the upload.",
+    )
+    errors: Missing[Union[list[str], None]] = Field(
+        default=UNSET,
+        description="Any errors that ocurred during processing of the delivery.",
+    )
 
 
-model_rebuild(ContentDirectoryItems)
-model_rebuild(ContentDirectoryItemsPropLinks)
+model_rebuild(CodeScanningSarifsStatus)
 
-__all__ = (
-    "ContentDirectoryItems",
-    "ContentDirectoryItemsPropLinks",
-)
+__all__ = ("CodeScanningSarifsStatus",)

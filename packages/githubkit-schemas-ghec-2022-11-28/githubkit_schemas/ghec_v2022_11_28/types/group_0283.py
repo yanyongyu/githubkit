@@ -9,46 +9,60 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ExternalGroupsType(TypedDict):
-    """ExternalGroups
+class DismissalRequestResponseType(TypedDict):
+    """Dismissal request response
 
-    A list of external groups available to be connected to a team
+    A response made by a requester to dismiss the request.
     """
 
-    groups: NotRequired[list[ExternalGroupsPropGroupsItemsType]]
+    id: NotRequired[int]
+    reviewer: NotRequired[DismissalRequestResponsePropReviewerType]
+    message: NotRequired[Union[str, None]]
+    status: NotRequired[Literal["approved", "denied", "dismissed"]]
+    created_at: NotRequired[_dt.datetime]
 
 
-class ExternalGroupsTypeForResponse(TypedDict):
-    """ExternalGroups
+class DismissalRequestResponseTypeForResponse(TypedDict):
+    """Dismissal request response
 
-    A list of external groups available to be connected to a team
+    A response made by a requester to dismiss the request.
     """
 
-    groups: NotRequired[list[ExternalGroupsPropGroupsItemsTypeForResponse]]
+    id: NotRequired[int]
+    reviewer: NotRequired[DismissalRequestResponsePropReviewerTypeForResponse]
+    message: NotRequired[Union[str, None]]
+    status: NotRequired[Literal["approved", "denied", "dismissed"]]
+    created_at: NotRequired[str]
 
 
-class ExternalGroupsPropGroupsItemsType(TypedDict):
-    """ExternalGroupsPropGroupsItems"""
+class DismissalRequestResponsePropReviewerType(TypedDict):
+    """DismissalRequestResponsePropReviewer
 
-    group_id: int
-    group_name: str
-    updated_at: str
+    The user who reviewed the dismissal request.
+    """
+
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
 
 
-class ExternalGroupsPropGroupsItemsTypeForResponse(TypedDict):
-    """ExternalGroupsPropGroupsItems"""
+class DismissalRequestResponsePropReviewerTypeForResponse(TypedDict):
+    """DismissalRequestResponsePropReviewer
 
-    group_id: int
-    group_name: str
-    updated_at: str
+    The user who reviewed the dismissal request.
+    """
+
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
 
 
 __all__ = (
-    "ExternalGroupsPropGroupsItemsType",
-    "ExternalGroupsPropGroupsItemsTypeForResponse",
-    "ExternalGroupsType",
-    "ExternalGroupsTypeForResponse",
+    "DismissalRequestResponsePropReviewerType",
+    "DismissalRequestResponsePropReviewerTypeForResponse",
+    "DismissalRequestResponseType",
+    "DismissalRequestResponseTypeForResponse",
 )

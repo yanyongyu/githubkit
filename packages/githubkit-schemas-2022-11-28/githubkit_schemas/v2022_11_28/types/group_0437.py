@@ -9,30 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0402 import IssueEventIntentType, IssueEventIntentTypeForResponse
 
 
-class PageBuildStatusType(TypedDict):
-    """Page Build Status
+class TimelineAssignedIssueEventType(TypedDict):
+    """Timeline Assigned Issue Event
 
-    Page Build Status
+    Timeline Assigned Issue Event
     """
 
+    id: int
+    node_id: str
     url: str
-    status: str
+    actor: SimpleUserType
+    event: Literal["assigned"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationType, None]
+    assignee: SimpleUserType
+    intent: NotRequired[Union[None, IssueEventIntentType, None]]
 
 
-class PageBuildStatusTypeForResponse(TypedDict):
-    """Page Build Status
+class TimelineAssignedIssueEventTypeForResponse(TypedDict):
+    """Timeline Assigned Issue Event
 
-    Page Build Status
+    Timeline Assigned Issue Event
     """
 
+    id: int
+    node_id: str
     url: str
-    status: str
+    actor: SimpleUserTypeForResponse
+    event: Literal["assigned"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
+    assignee: SimpleUserTypeForResponse
+    intent: NotRequired[Union[None, IssueEventIntentTypeForResponse, None]]
 
 
 __all__ = (
-    "PageBuildStatusType",
-    "PageBuildStatusTypeForResponse",
+    "TimelineAssignedIssueEventType",
+    "TimelineAssignedIssueEventTypeForResponse",
 )

@@ -9,26 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0087 import CopilotSeatDetailsType, CopilotSeatDetailsTypeForResponse
-
-
-class EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseCopilotBillingSeatsGetResponse200"""
-
-    total_seats: NotRequired[int]
-    seats: NotRequired[list[CopilotSeatDetailsType]]
+from .group_0035 import ActionsHostedRunnerType, ActionsHostedRunnerTypeForResponse
 
 
-class EnterprisesEnterpriseCopilotBillingSeatsGetResponse200TypeForResponse(TypedDict):
-    """EnterprisesEnterpriseCopilotBillingSeatsGetResponse200"""
+class EnterprisesEnterpriseActionsHostedRunnersGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseActionsHostedRunnersGetResponse200"""
 
-    total_seats: NotRequired[int]
-    seats: NotRequired[list[CopilotSeatDetailsTypeForResponse]]
+    total_count: int
+    runners: list[ActionsHostedRunnerType]
+
+
+class EnterprisesEnterpriseActionsHostedRunnersGetResponse200TypeForResponse(TypedDict):
+    """EnterprisesEnterpriseActionsHostedRunnersGetResponse200"""
+
+    total_count: int
+    runners: list[ActionsHostedRunnerTypeForResponse]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type",
-    "EnterprisesEnterpriseCopilotBillingSeatsGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseActionsHostedRunnersGetResponse200Type",
+    "EnterprisesEnterpriseActionsHostedRunnersGetResponse200TypeForResponse",
 )

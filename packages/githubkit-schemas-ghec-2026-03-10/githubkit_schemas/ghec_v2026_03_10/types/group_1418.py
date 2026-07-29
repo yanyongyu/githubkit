@@ -9,34 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type(
+class OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type(TypedDict):
+    """OrgsOrgSecretScanningPatternConfigurationsPatchResponse200"""
+
+    pattern_config_version: NotRequired[str]
+
+
+class OrgsOrgSecretScanningPatternConfigurationsPatchResponse200TypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0
+    """OrgsOrgSecretScanningPatternConfigurationsPatchResponse200"""
 
-    Examples:
-        {'teams': ['justice-league']}
-    """
-
-    teams: list[str]
-
-
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0
-
-    Examples:
-        {'teams': ['justice-league']}
-    """
-
-    teams: list[str]
+    pattern_config_version: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type",
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0TypeForResponse",
+    "OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type",
+    "OrgsOrgSecretScanningPatternConfigurationsPatchResponse200TypeForResponse",
 )

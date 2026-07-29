@@ -12,23 +12,59 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200Type(
+class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType(
     TypedDict
 ):
-    """ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200"""
+    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody"""
 
-    dismissal_review_id: NotRequired[int]
+    strict: NotRequired[bool]
+    contexts: NotRequired[list[str]]
+    checks: NotRequired[
+        list[
+            ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType
+        ]
+    ]
 
 
-class ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200TypeForResponse(
+class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyTypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200"""
+    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody"""
 
-    dismissal_review_id: NotRequired[int]
+    strict: NotRequired[bool]
+    contexts: NotRequired[list[str]]
+    checks: NotRequired[
+        list[
+            ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsTypeForResponse
+        ]
+    ]
+
+
+class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksIte
+    ms
+    """
+
+    context: str
+    app_id: NotRequired[int]
+
+
+class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksIte
+    ms
+    """
+
+    context: str
+    app_id: NotRequired[int]
 
 
 __all__ = (
-    "ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200Type",
-    "ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200TypeForResponse",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsTypeForResponse",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyTypeForResponse",
 )

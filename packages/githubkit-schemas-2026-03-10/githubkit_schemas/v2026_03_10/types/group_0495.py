@@ -9,49 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class SearchResultTextMatchesItemsType(TypedDict):
-    """SearchResultTextMatchesItems"""
+class StargazerType(TypedDict):
+    """Stargazer
 
-    object_url: NotRequired[str]
-    object_type: NotRequired[Union[str, None]]
-    property_: NotRequired[str]
-    fragment: NotRequired[str]
-    matches: NotRequired[list[SearchResultTextMatchesItemsPropMatchesItemsType]]
+    Stargazer
+    """
 
-
-class SearchResultTextMatchesItemsTypeForResponse(TypedDict):
-    """SearchResultTextMatchesItems"""
-
-    object_url: NotRequired[str]
-    object_type: NotRequired[Union[str, None]]
-    property_: NotRequired[str]
-    fragment: NotRequired[str]
-    matches: NotRequired[
-        list[SearchResultTextMatchesItemsPropMatchesItemsTypeForResponse]
-    ]
+    starred_at: _dt.datetime
+    user: Union[None, SimpleUserType]
 
 
-class SearchResultTextMatchesItemsPropMatchesItemsType(TypedDict):
-    """SearchResultTextMatchesItemsPropMatchesItems"""
+class StargazerTypeForResponse(TypedDict):
+    """Stargazer
 
-    text: NotRequired[str]
-    indices: NotRequired[list[int]]
+    Stargazer
+    """
 
-
-class SearchResultTextMatchesItemsPropMatchesItemsTypeForResponse(TypedDict):
-    """SearchResultTextMatchesItemsPropMatchesItems"""
-
-    text: NotRequired[str]
-    indices: NotRequired[list[int]]
+    starred_at: str
+    user: Union[None, SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "SearchResultTextMatchesItemsPropMatchesItemsType",
-    "SearchResultTextMatchesItemsPropMatchesItemsTypeForResponse",
-    "SearchResultTextMatchesItemsType",
-    "SearchResultTextMatchesItemsTypeForResponse",
+    "StargazerType",
+    "StargazerTypeForResponse",
 )

@@ -13,32 +13,69 @@ import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class KeySimpleType(TypedDict):
-    """Key Simple
-
-    Key Simple
-    """
-
-    id: int
-    key: str
-    created_at: NotRequired[_dt.datetime]
-    last_used: NotRequired[Union[_dt.datetime, None]]
+from .group_0378 import GitUserType, GitUserTypeForResponse
+from .group_0379 import VerificationType, VerificationTypeForResponse
 
 
-class KeySimpleTypeForResponse(TypedDict):
-    """Key Simple
+class CommitSearchResultItemPropCommitType(TypedDict):
+    """CommitSearchResultItemPropCommit"""
 
-    Key Simple
-    """
+    author: CommitSearchResultItemPropCommitPropAuthorType
+    committer: Union[None, GitUserType]
+    comment_count: int
+    message: str
+    tree: CommitSearchResultItemPropCommitPropTreeType
+    url: str
+    verification: NotRequired[VerificationType]
 
-    id: int
-    key: str
-    created_at: NotRequired[str]
-    last_used: NotRequired[Union[str, None]]
+
+class CommitSearchResultItemPropCommitTypeForResponse(TypedDict):
+    """CommitSearchResultItemPropCommit"""
+
+    author: CommitSearchResultItemPropCommitPropAuthorTypeForResponse
+    committer: Union[None, GitUserTypeForResponse]
+    comment_count: int
+    message: str
+    tree: CommitSearchResultItemPropCommitPropTreeTypeForResponse
+    url: str
+    verification: NotRequired[VerificationTypeForResponse]
+
+
+class CommitSearchResultItemPropCommitPropAuthorType(TypedDict):
+    """CommitSearchResultItemPropCommitPropAuthor"""
+
+    name: str
+    email: str
+    date: _dt.datetime
+
+
+class CommitSearchResultItemPropCommitPropAuthorTypeForResponse(TypedDict):
+    """CommitSearchResultItemPropCommitPropAuthor"""
+
+    name: str
+    email: str
+    date: str
+
+
+class CommitSearchResultItemPropCommitPropTreeType(TypedDict):
+    """CommitSearchResultItemPropCommitPropTree"""
+
+    sha: str
+    url: str
+
+
+class CommitSearchResultItemPropCommitPropTreeTypeForResponse(TypedDict):
+    """CommitSearchResultItemPropCommitPropTree"""
+
+    sha: str
+    url: str
 
 
 __all__ = (
-    "KeySimpleType",
-    "KeySimpleTypeForResponse",
+    "CommitSearchResultItemPropCommitPropAuthorType",
+    "CommitSearchResultItemPropCommitPropAuthorTypeForResponse",
+    "CommitSearchResultItemPropCommitPropTreeType",
+    "CommitSearchResultItemPropCommitPropTreeTypeForResponse",
+    "CommitSearchResultItemPropCommitType",
+    "CommitSearchResultItemPropCommitTypeForResponse",
 )

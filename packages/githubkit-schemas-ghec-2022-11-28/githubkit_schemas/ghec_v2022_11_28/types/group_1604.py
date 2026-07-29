@@ -9,24 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class UserGpgKeysPostBodyType(TypedDict):
-    """UserGpgKeysPostBody"""
+class ReposOwnerRepoPagesPostBodyPropSourceType(TypedDict):
+    """ReposOwnerRepoPagesPostBodyPropSource
 
-    name: NotRequired[str]
-    armored_public_key: str
+    The source branch and directory used to publish your Pages site.
+    """
+
+    branch: str
+    path: NotRequired[Literal["/", "/docs"]]
 
 
-class UserGpgKeysPostBodyTypeForResponse(TypedDict):
-    """UserGpgKeysPostBody"""
+class ReposOwnerRepoPagesPostBodyPropSourceTypeForResponse(TypedDict):
+    """ReposOwnerRepoPagesPostBodyPropSource
 
-    name: NotRequired[str]
-    armored_public_key: str
+    The source branch and directory used to publish your Pages site.
+    """
+
+    branch: str
+    path: NotRequired[Literal["/", "/docs"]]
 
 
 __all__ = (
-    "UserGpgKeysPostBodyType",
-    "UserGpgKeysPostBodyTypeForResponse",
+    "ReposOwnerRepoPagesPostBodyPropSourceType",
+    "ReposOwnerRepoPagesPostBodyPropSourceTypeForResponse",
 )

@@ -11,30 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyType(TypedDict):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody
-
-    Examples:
-        {'users': ['mona']}
-    """
-
-    users: list[str]
+from .group_0125 import RunnerType, RunnerTypeForResponse
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody
+class ReposOwnerRepoActionsRunnersGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsRunnersGetResponse200"""
 
-    Examples:
-        {'users': ['mona']}
-    """
+    total_count: int
+    runners: list[RunnerType]
 
-    users: list[str]
+
+class ReposOwnerRepoActionsRunnersGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsRunnersGetResponse200"""
+
+    total_count: int
+    runners: list[RunnerTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyType",
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyTypeForResponse",
+    "ReposOwnerRepoActionsRunnersGetResponse200Type",
+    "ReposOwnerRepoActionsRunnersGetResponse200TypeForResponse",
 )

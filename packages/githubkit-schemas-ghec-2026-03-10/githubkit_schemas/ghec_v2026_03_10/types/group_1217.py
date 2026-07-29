@@ -9,33 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0037 import (
-    ActionsHostedRunnerCustomImageVersionType,
-    ActionsHostedRunnerCustomImageVersionTypeForResponse,
-)
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200Type(
+class EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneof1Type(
     TypedDict
 ):
-    """OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200"""
+    """EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneo
+    f1
+    """
 
-    total_count: int
-    image_versions: list[ActionsHostedRunnerCustomImageVersionType]
+    status: NotRequired[Literal["error"]]
+    error: NotRequired[str]
 
 
-class OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200TypeForResponse(
+class EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneof1TypeForResponse(
     TypedDict
 ):
-    """OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200"""
+    """EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneo
+    f1
+    """
 
-    total_count: int
-    image_versions: list[ActionsHostedRunnerCustomImageVersionTypeForResponse]
+    status: NotRequired[Literal["error"]]
+    error: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200Type",
-    "OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneof1Type",
+    "EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneof1TypeForResponse",
 )

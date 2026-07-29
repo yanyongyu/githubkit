@@ -11,26 +11,21 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+
+from .group_0114 import CustomProperty
 
 
-class ReposOwnerRepoAutolinksPostBody(GitHubModel):
-    """ReposOwnerRepoAutolinksPostBody"""
+class OrgsOrgPropertiesSchemaPatchBody(GitHubModel):
+    """OrgsOrgPropertiesSchemaPatchBody"""
 
-    key_prefix: str = Field(
-        description="This prefix appended by certain characters will generate a link any time it is found in an issue, pull request, or commit."
-    )
-    url_template: str = Field(
-        description="The URL must contain `<num>` for the reference number. `<num>` matches different characters depending on the value of `is_alphanumeric`."
-    )
-    is_alphanumeric: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether this autolink reference matches alphanumeric characters. If true, the `<num>` parameter of the `url_template` matches alphanumeric characters `A-Z` (case insensitive), `0-9`, and `-`. If false, this autolink reference only matches numeric characters.",
+    properties: list[CustomProperty] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The array of custom properties to create or update.",
     )
 
 
-model_rebuild(ReposOwnerRepoAutolinksPostBody)
+model_rebuild(OrgsOrgPropertiesSchemaPatchBody)
 
-__all__ = ("ReposOwnerRepoAutolinksPostBody",)
+__all__ = ("OrgsOrgPropertiesSchemaPatchBody",)

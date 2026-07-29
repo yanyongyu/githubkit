@@ -18,18 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0522 import EnterpriseWebhooks
-from .group_0523 import SimpleInstallation
-from .group_0524 import OrganizationSimpleWebhooks
-from .group_0525 import RepositoryWebhooks
-from .group_0565 import SecretScanningAlertWebhook
+from .group_0534 import EnterpriseWebhooks
+from .group_0535 import SimpleInstallation
+from .group_0536 import OrganizationSimpleWebhooks
+from .group_0537 import RepositoryWebhooks
+from .group_0574 import WebhooksRelease
 
 
-class WebhookSecretScanningAlertResolved(GitHubModel):
-    """secret_scanning_alert resolved event"""
+class WebhookReleaseReleased(GitHubModel):
+    """release released event"""
 
-    action: Literal["resolved"] = Field()
-    alert: SecretScanningAlertWebhook = Field()
+    action: Literal["released"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -45,6 +44,10 @@ class WebhookSecretScanningAlertResolved(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
+    release: WebhooksRelease = Field(
+        title="Release",
+        description="The [release](https://docs.github.com/rest/releases/releases/#get-a-release) object.",
+    )
     repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
@@ -54,6 +57,6 @@ class WebhookSecretScanningAlertResolved(GitHubModel):
     )
 
 
-model_rebuild(WebhookSecretScanningAlertResolved)
+model_rebuild(WebhookReleaseReleased)
 
-__all__ = ("WebhookSecretScanningAlertResolved",)
+__all__ = ("WebhookReleaseReleased",)

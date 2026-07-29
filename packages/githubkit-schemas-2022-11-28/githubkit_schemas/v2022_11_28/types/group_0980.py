@@ -10,193 +10,380 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal
+from typing import Any, Literal, TypeAlias, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0535 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0536 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0537 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0582 import WebhooksTeam1Type, WebhooksTeam1TypeForResponse
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsType(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItems
 
-    Full session details within a task
+class WebhookTeamAddedToRepositoryType(TypedDict):
+    """team added_to_repository event"""
+
+    action: Literal["added_to_repository"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: OrganizationSimpleWebhooksType
+    repository: NotRequired[WebhookTeamAddedToRepositoryPropRepositoryType]
+    sender: NotRequired[SimpleUserType]
+    team: WebhooksTeam1Type
+
+
+class WebhookTeamAddedToRepositoryTypeForResponse(TypedDict):
+    """team added_to_repository event"""
+
+    action: Literal["added_to_repository"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    repository: NotRequired[WebhookTeamAddedToRepositoryPropRepositoryTypeForResponse]
+    sender: NotRequired[SimpleUserTypeForResponse]
+    team: WebhooksTeam1TypeForResponse
+
+
+class WebhookTeamAddedToRepositoryPropRepositoryType(TypedDict):
+    """Repository
+
+    A git repository
     """
 
-    id: str
+    allow_auto_merge: NotRequired[bool]
+    allow_forking: NotRequired[bool]
+    allow_merge_commit: NotRequired[bool]
+    allow_rebase_merge: NotRequired[bool]
+    allow_squash_merge: NotRequired[bool]
+    allow_update_branch: NotRequired[bool]
+    archive_url: str
+    archived: bool
+    assignees_url: str
+    blobs_url: str
+    branches_url: str
+    clone_url: str
+    collaborators_url: str
+    comments_url: str
+    commits_url: str
+    compare_url: str
+    contents_url: str
+    contributors_url: str
+    created_at: Union[int, _dt.datetime]
+    custom_properties: NotRequired[
+        WebhookTeamAddedToRepositoryPropRepositoryPropCustomPropertiesType
+    ]
+    default_branch: str
+    delete_branch_on_merge: NotRequired[bool]
+    deployments_url: str
+    description: Union[str, None]
+    disabled: NotRequired[bool]
+    downloads_url: str
+    events_url: str
+    fork: bool
+    forks: int
+    forks_count: int
+    forks_url: str
+    full_name: str
+    git_commits_url: str
+    git_refs_url: str
+    git_tags_url: str
+    git_url: str
+    has_downloads: bool
+    has_issues: bool
+    has_pages: bool
+    has_projects: bool
+    has_wiki: bool
+    homepage: Union[str, None]
+    hooks_url: str
+    html_url: str
+    id: int
+    is_template: NotRequired[bool]
+    issue_comment_url: str
+    issue_events_url: str
+    issues_url: str
+    keys_url: str
+    labels_url: str
+    language: Union[str, None]
+    languages_url: str
+    license_: Union[WebhookTeamAddedToRepositoryPropRepositoryPropLicenseType, None]
+    master_branch: NotRequired[str]
+    merges_url: str
+    milestones_url: str
+    mirror_url: Union[str, None]
+    name: str
+    node_id: str
+    notifications_url: str
+    open_issues: int
+    open_issues_count: int
+    organization: NotRequired[str]
+    owner: Union[WebhookTeamAddedToRepositoryPropRepositoryPropOwnerType, None]
+    permissions: NotRequired[
+        WebhookTeamAddedToRepositoryPropRepositoryPropPermissionsType
+    ]
+    private: bool
+    public: NotRequired[bool]
+    pulls_url: str
+    pushed_at: Union[int, _dt.datetime, None]
+    releases_url: str
+    role_name: NotRequired[Union[str, None]]
+    size: int
+    ssh_url: str
+    stargazers: NotRequired[int]
+    stargazers_count: int
+    stargazers_url: str
+    statuses_url: str
+    subscribers_url: str
+    subscription_url: str
+    svn_url: str
+    tags_url: str
+    teams_url: str
+    topics: list[str]
+    trees_url: str
+    updated_at: _dt.datetime
+    url: str
+    visibility: Literal["public", "private", "internal"]
+    watchers: int
+    watchers_count: int
+
+
+class WebhookTeamAddedToRepositoryPropRepositoryTypeForResponse(TypedDict):
+    """Repository
+
+    A git repository
+    """
+
+    allow_auto_merge: NotRequired[bool]
+    allow_forking: NotRequired[bool]
+    allow_merge_commit: NotRequired[bool]
+    allow_rebase_merge: NotRequired[bool]
+    allow_squash_merge: NotRequired[bool]
+    allow_update_branch: NotRequired[bool]
+    archive_url: str
+    archived: bool
+    assignees_url: str
+    blobs_url: str
+    branches_url: str
+    clone_url: str
+    collaborators_url: str
+    comments_url: str
+    commits_url: str
+    compare_url: str
+    contents_url: str
+    contributors_url: str
+    created_at: Union[int, str]
+    custom_properties: NotRequired[
+        WebhookTeamAddedToRepositoryPropRepositoryPropCustomPropertiesTypeForResponse
+    ]
+    default_branch: str
+    delete_branch_on_merge: NotRequired[bool]
+    deployments_url: str
+    description: Union[str, None]
+    disabled: NotRequired[bool]
+    downloads_url: str
+    events_url: str
+    fork: bool
+    forks: int
+    forks_count: int
+    forks_url: str
+    full_name: str
+    git_commits_url: str
+    git_refs_url: str
+    git_tags_url: str
+    git_url: str
+    has_downloads: bool
+    has_issues: bool
+    has_pages: bool
+    has_projects: bool
+    has_wiki: bool
+    homepage: Union[str, None]
+    hooks_url: str
+    html_url: str
+    id: int
+    is_template: NotRequired[bool]
+    issue_comment_url: str
+    issue_events_url: str
+    issues_url: str
+    keys_url: str
+    labels_url: str
+    language: Union[str, None]
+    languages_url: str
+    license_: Union[
+        WebhookTeamAddedToRepositoryPropRepositoryPropLicenseTypeForResponse, None
+    ]
+    master_branch: NotRequired[str]
+    merges_url: str
+    milestones_url: str
+    mirror_url: Union[str, None]
+    name: str
+    node_id: str
+    notifications_url: str
+    open_issues: int
+    open_issues_count: int
+    organization: NotRequired[str]
+    owner: Union[
+        WebhookTeamAddedToRepositoryPropRepositoryPropOwnerTypeForResponse, None
+    ]
+    permissions: NotRequired[
+        WebhookTeamAddedToRepositoryPropRepositoryPropPermissionsTypeForResponse
+    ]
+    private: bool
+    public: NotRequired[bool]
+    pulls_url: str
+    pushed_at: Union[int, str, None]
+    releases_url: str
+    role_name: NotRequired[Union[str, None]]
+    size: int
+    ssh_url: str
+    stargazers: NotRequired[int]
+    stargazers_count: int
+    stargazers_url: str
+    statuses_url: str
+    subscribers_url: str
+    subscription_url: str
+    svn_url: str
+    tags_url: str
+    teams_url: str
+    topics: list[str]
+    trees_url: str
+    updated_at: str
+    url: str
+    visibility: Literal["public", "private", "internal"]
+    watchers: int
+    watchers_count: int
+
+
+WebhookTeamAddedToRepositoryPropRepositoryPropCustomPropertiesType: TypeAlias = dict[
+    str, Any
+]
+"""WebhookTeamAddedToRepositoryPropRepositoryPropCustomProperties
+
+The custom properties that were defined for the repository. The keys are the
+custom property names, and the values are the corresponding custom property
+values.
+"""
+
+
+WebhookTeamAddedToRepositoryPropRepositoryPropCustomPropertiesTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""WebhookTeamAddedToRepositoryPropRepositoryPropCustomProperties
+
+The custom properties that were defined for the repository. The keys are the
+custom property names, and the values are the corresponding custom property
+values.
+"""
+
+
+class WebhookTeamAddedToRepositoryPropRepositoryPropLicenseType(TypedDict):
+    """License"""
+
+    key: str
+    name: str
+    node_id: str
+    spdx_id: str
+    url: Union[str, None]
+
+
+class WebhookTeamAddedToRepositoryPropRepositoryPropLicenseTypeForResponse(TypedDict):
+    """License"""
+
+    key: str
+    name: str
+    node_id: str
+    spdx_id: str
+    url: Union[str, None]
+
+
+class WebhookTeamAddedToRepositoryPropRepositoryPropOwnerType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
     name: NotRequired[str]
-    user: NotRequired[
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUserType
-    ]
-    owner: NotRequired[
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwnerType
-    ]
-    repository: NotRequired[
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepositoryType
-    ]
-    task_id: NotRequired[str]
-    state: Literal[
-        "queued",
-        "in_progress",
-        "completed",
-        "failed",
-        "idle",
-        "waiting_for_user",
-        "timed_out",
-        "cancelled",
-    ]
-    created_at: _dt.datetime
-    updated_at: NotRequired[_dt.datetime]
-    completed_at: NotRequired[_dt.datetime]
-    prompt: NotRequired[str]
-    head_ref: NotRequired[str]
-    base_ref: NotRequired[str]
-    model: NotRequired[str]
-    error: NotRequired[
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropErrorType
-    ]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItems
+class WebhookTeamAddedToRepositoryPropRepositoryPropOwnerTypeForResponse(TypedDict):
+    """User"""
 
-    Full session details within a task
-    """
-
-    id: str
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
     name: NotRequired[str]
-    user: NotRequired[
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUserTypeForResponse
-    ]
-    owner: NotRequired[
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwnerTypeForResponse
-    ]
-    repository: NotRequired[
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepositoryTypeForResponse
-    ]
-    task_id: NotRequired[str]
-    state: Literal[
-        "queued",
-        "in_progress",
-        "completed",
-        "failed",
-        "idle",
-        "waiting_for_user",
-        "timed_out",
-        "cancelled",
-    ]
-    created_at: str
-    updated_at: NotRequired[str]
-    completed_at: NotRequired[str]
-    prompt: NotRequired[str]
-    head_ref: NotRequired[str]
-    base_ref: NotRequired[str]
-    model: NotRequired[str]
-    error: NotRequired[
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropErrorTypeForResponse
-    ]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUserType(
+class WebhookTeamAddedToRepositoryPropRepositoryPropPermissionsType(TypedDict):
+    """WebhookTeamAddedToRepositoryPropRepositoryPropPermissions"""
+
+    admin: bool
+    maintain: NotRequired[bool]
+    pull: bool
+    push: bool
+    triage: NotRequired[bool]
+
+
+class WebhookTeamAddedToRepositoryPropRepositoryPropPermissionsTypeForResponse(
     TypedDict
 ):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser
+    """WebhookTeamAddedToRepositoryPropRepositoryPropPermissions"""
 
-    The user who created this session
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUserTypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser
-
-    The user who created this session
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwnerType(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner
-
-    The owner of the repository
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwnerTypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner
-
-    The owner of the repository
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepositoryType(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropReposito
-    ry
-
-    The repository this session belongs to
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepositoryTypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropReposito
-    ry
-
-    The repository this session belongs to
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropErrorType(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError
-
-    Error details for a failed session
-    """
-
-    message: NotRequired[str]
-
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropErrorTypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError
-
-    Error details for a failed session
-    """
-
-    message: NotRequired[str]
+    admin: bool
+    maintain: NotRequired[bool]
+    pull: bool
+    push: bool
+    triage: NotRequired[bool]
 
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropErrorType",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropErrorTypeForResponse",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwnerType",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwnerTypeForResponse",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepositoryType",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepositoryTypeForResponse",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUserType",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUserTypeForResponse",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsType",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse",
+    "WebhookTeamAddedToRepositoryPropRepositoryPropCustomPropertiesType",
+    "WebhookTeamAddedToRepositoryPropRepositoryPropCustomPropertiesTypeForResponse",
+    "WebhookTeamAddedToRepositoryPropRepositoryPropLicenseType",
+    "WebhookTeamAddedToRepositoryPropRepositoryPropLicenseTypeForResponse",
+    "WebhookTeamAddedToRepositoryPropRepositoryPropOwnerType",
+    "WebhookTeamAddedToRepositoryPropRepositoryPropOwnerTypeForResponse",
+    "WebhookTeamAddedToRepositoryPropRepositoryPropPermissionsType",
+    "WebhookTeamAddedToRepositoryPropRepositoryPropPermissionsTypeForResponse",
+    "WebhookTeamAddedToRepositoryPropRepositoryType",
+    "WebhookTeamAddedToRepositoryPropRepositoryTypeForResponse",
+    "WebhookTeamAddedToRepositoryType",
+    "WebhookTeamAddedToRepositoryTypeForResponse",
 )

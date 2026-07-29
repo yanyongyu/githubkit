@@ -9,24 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoGitBlobsPostBodyType(TypedDict):
-    """ReposOwnerRepoGitBlobsPostBody"""
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyType(TypedDict):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBody
 
-    content: str
-    encoding: NotRequired[str]
+    Examples:
+        {'users': ['mona']}
+    """
+
+    users: list[str]
 
 
-class ReposOwnerRepoGitBlobsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoGitBlobsPostBody"""
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBody
 
-    content: str
-    encoding: NotRequired[str]
+    Examples:
+        {'users': ['mona']}
+    """
+
+    users: list[str]
 
 
 __all__ = (
-    "ReposOwnerRepoGitBlobsPostBodyType",
-    "ReposOwnerRepoGitBlobsPostBodyTypeForResponse",
+    "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyType",
+    "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyTypeForResponse",
 )

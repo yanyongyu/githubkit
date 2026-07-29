@@ -9,39 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, TypeAlias
 
-from .group_0372 import (
-    EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType,
-    EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsTypeForResponse,
-)
+MetadataType: TypeAlias = dict[str, Any]
+"""metadata
 
-
-class EnvironmentPropProtectionRulesItemsAnyof1Type(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof1"""
-
-    id: int
-    node_id: str
-    prevent_self_review: NotRequired[bool]
-    type: str
-    reviewers: NotRequired[
-        list[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType]
-    ]
+User-defined metadata to store domain-specific information limited to 8 keys
+with scalar values.
+"""
 
 
-class EnvironmentPropProtectionRulesItemsAnyof1TypeForResponse(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof1"""
+MetadataTypeForResponse: TypeAlias = dict[str, Any]
+"""metadata
 
-    id: int
-    node_id: str
-    prevent_self_review: NotRequired[bool]
-    type: str
-    reviewers: NotRequired[
-        list[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsTypeForResponse]
-    ]
+User-defined metadata to store domain-specific information limited to 8 keys
+with scalar values.
+"""
 
 
 __all__ = (
-    "EnvironmentPropProtectionRulesItemsAnyof1Type",
-    "EnvironmentPropProtectionRulesItemsAnyof1TypeForResponse",
+    "MetadataType",
+    "MetadataTypeForResponse",
 )

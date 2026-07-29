@@ -9,77 +9,96 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class TeamMemberType(TypedDict):
-    """Team Member
+class RuleSuiteType(TypedDict):
+    """Rule Suite
 
-    A user that is a member of a team, including their role on the team and whether
-    the membership is inherited from a child team.
+    Response
     """
 
-    name: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    login: str
-    id: int
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
-    url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    starred_at: NotRequired[str]
-    user_view_type: NotRequired[str]
-    role: NotRequired[Literal["member", "maintainer"]]
-    inherited: NotRequired[bool]
+    id: NotRequired[int]
+    actor_id: NotRequired[Union[int, None]]
+    actor_name: NotRequired[Union[str, None]]
+    before_sha: NotRequired[str]
+    after_sha: NotRequired[str]
+    ref: NotRequired[str]
+    repository_id: NotRequired[int]
+    repository_name: NotRequired[str]
+    pushed_at: NotRequired[_dt.datetime]
+    result: NotRequired[Literal["pass", "fail", "bypass"]]
+    evaluation_result: NotRequired[Union[None, Literal["pass", "fail", "bypass"]]]
+    rule_evaluations: NotRequired[list[RuleSuitePropRuleEvaluationsItemsType]]
 
 
-class TeamMemberTypeForResponse(TypedDict):
-    """Team Member
+class RuleSuiteTypeForResponse(TypedDict):
+    """Rule Suite
 
-    A user that is a member of a team, including their role on the team and whether
-    the membership is inherited from a child team.
+    Response
     """
 
+    id: NotRequired[int]
+    actor_id: NotRequired[Union[int, None]]
+    actor_name: NotRequired[Union[str, None]]
+    before_sha: NotRequired[str]
+    after_sha: NotRequired[str]
+    ref: NotRequired[str]
+    repository_id: NotRequired[int]
+    repository_name: NotRequired[str]
+    pushed_at: NotRequired[str]
+    result: NotRequired[Literal["pass", "fail", "bypass"]]
+    evaluation_result: NotRequired[Union[None, Literal["pass", "fail", "bypass"]]]
+    rule_evaluations: NotRequired[
+        list[RuleSuitePropRuleEvaluationsItemsTypeForResponse]
+    ]
+
+
+class RuleSuitePropRuleEvaluationsItemsType(TypedDict):
+    """RuleSuitePropRuleEvaluationsItems"""
+
+    rule_source: NotRequired[RuleSuitePropRuleEvaluationsItemsPropRuleSourceType]
+    enforcement: NotRequired[Literal["active", "evaluate", "deleted ruleset"]]
+    result: NotRequired[Literal["pass", "fail"]]
+    rule_type: NotRequired[str]
+    details: NotRequired[Union[str, None]]
+
+
+class RuleSuitePropRuleEvaluationsItemsTypeForResponse(TypedDict):
+    """RuleSuitePropRuleEvaluationsItems"""
+
+    rule_source: NotRequired[
+        RuleSuitePropRuleEvaluationsItemsPropRuleSourceTypeForResponse
+    ]
+    enforcement: NotRequired[Literal["active", "evaluate", "deleted ruleset"]]
+    result: NotRequired[Literal["pass", "fail"]]
+    rule_type: NotRequired[str]
+    details: NotRequired[Union[str, None]]
+
+
+class RuleSuitePropRuleEvaluationsItemsPropRuleSourceType(TypedDict):
+    """RuleSuitePropRuleEvaluationsItemsPropRuleSource"""
+
+    type: NotRequired[str]
+    id: NotRequired[Union[int, None]]
     name: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    login: str
-    id: int
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
-    url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    starred_at: NotRequired[str]
-    user_view_type: NotRequired[str]
-    role: NotRequired[Literal["member", "maintainer"]]
-    inherited: NotRequired[bool]
+
+
+class RuleSuitePropRuleEvaluationsItemsPropRuleSourceTypeForResponse(TypedDict):
+    """RuleSuitePropRuleEvaluationsItemsPropRuleSource"""
+
+    type: NotRequired[str]
+    id: NotRequired[Union[int, None]]
+    name: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "TeamMemberType",
-    "TeamMemberTypeForResponse",
+    "RuleSuitePropRuleEvaluationsItemsPropRuleSourceType",
+    "RuleSuitePropRuleEvaluationsItemsPropRuleSourceTypeForResponse",
+    "RuleSuitePropRuleEvaluationsItemsType",
+    "RuleSuitePropRuleEvaluationsItemsTypeForResponse",
+    "RuleSuiteType",
+    "RuleSuiteTypeForResponse",
 )

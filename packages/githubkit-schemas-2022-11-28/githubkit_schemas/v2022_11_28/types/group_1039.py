@@ -9,33 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias
-
-InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType: TypeAlias = dict[
-    str, Any
-]
-"""InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPrope
-rties
-
-The custom properties that were defined for the repository. The keys are the
-custom property names, and the values are the corresponding custom property
-values. Present for org repos only.
-"""
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPrope
-rties
+class AppHookConfigPatchBodyType(TypedDict):
+    """AppHookConfigPatchBody"""
 
-The custom properties that were defined for the repository. The keys are the
-custom property names, and the values are the corresponding custom property
-values. Present for org repos only.
-"""
+    url: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
+
+
+class AppHookConfigPatchBodyTypeForResponse(TypedDict):
+    """AppHookConfigPatchBody"""
+
+    url: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
 
 
 __all__ = (
-    "InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType",
-    "InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse",
+    "AppHookConfigPatchBodyType",
+    "AppHookConfigPatchBodyTypeForResponse",
 )

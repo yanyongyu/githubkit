@@ -9,43 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0255 import MinimalRepository
 
 
-class DependencyGraphDiffItems(GitHubModel):
-    """DependencyGraphDiffItems"""
+class CombinedCommitStatus(GitHubModel):
+    """Combined Commit Status
 
-    change_type: Literal["added", "removed"] = Field()
-    manifest: str = Field()
-    ecosystem: str = Field()
-    name: str = Field()
-    version: str = Field()
-    package_url: Union[str, None] = Field()
-    license_: Union[str, None] = Field(alias="license")
-    source_repository_url: Union[str, None] = Field()
-    vulnerabilities: list[DependencyGraphDiffItemsPropVulnerabilitiesItems] = Field()
-    scope: Literal["unknown", "runtime", "development"] = Field(
-        description="Where the dependency is utilized. `development` means that the dependency is only utilized in the development environment. `runtime` means that the dependency is utilized at runtime and in the development environment."
+    Combined Commit Status
+    """
+
+    state: str = Field()
+    statuses: list[SimpleCommitStatus] = Field()
+    sha: str = Field()
+    total_count: int = Field()
+    repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository"
     )
+    commit_url: str = Field()
+    url: str = Field()
 
 
-class DependencyGraphDiffItemsPropVulnerabilitiesItems(GitHubModel):
-    """DependencyGraphDiffItemsPropVulnerabilitiesItems"""
+class SimpleCommitStatus(GitHubModel):
+    """Simple Commit Status"""
 
-    severity: str = Field()
-    advisory_ghsa_id: str = Field()
-    advisory_summary: str = Field()
-    advisory_url: str = Field()
+    description: Union[str, None] = Field()
+    id: int = Field()
+    node_id: str = Field()
+    state: str = Field()
+    context: str = Field()
+    target_url: Union[str, None] = Field()
+    required: Missing[Union[bool, None]] = Field(default=UNSET)
+    avatar_url: Union[str, None] = Field()
+    url: str = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
 
 
-model_rebuild(DependencyGraphDiffItems)
-model_rebuild(DependencyGraphDiffItemsPropVulnerabilitiesItems)
+model_rebuild(CombinedCommitStatus)
+model_rebuild(SimpleCommitStatus)
 
 __all__ = (
-    "DependencyGraphDiffItems",
-    "DependencyGraphDiffItemsPropVulnerabilitiesItems",
+    "CombinedCommitStatus",
+    "SimpleCommitStatus",
 )

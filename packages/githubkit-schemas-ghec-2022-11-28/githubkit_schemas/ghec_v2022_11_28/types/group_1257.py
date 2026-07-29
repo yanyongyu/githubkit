@@ -11,27 +11,16 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0262 import (
-    OrganizationActionsVariableType,
-    OrganizationActionsVariableTypeForResponse,
-)
+
+class GistsGistIdStarGetResponse404Type(TypedDict):
+    """GistsGistIdStarGetResponse404"""
 
 
-class OrgsOrgAgentsVariablesGetResponse200Type(TypedDict):
-    """OrgsOrgAgentsVariablesGetResponse200"""
-
-    total_count: int
-    variables: list[OrganizationActionsVariableType]
-
-
-class OrgsOrgAgentsVariablesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgAgentsVariablesGetResponse200"""
-
-    total_count: int
-    variables: list[OrganizationActionsVariableTypeForResponse]
+class GistsGistIdStarGetResponse404TypeForResponse(TypedDict):
+    """GistsGistIdStarGetResponse404"""
 
 
 __all__ = (
-    "OrgsOrgAgentsVariablesGetResponse200Type",
-    "OrgsOrgAgentsVariablesGetResponse200TypeForResponse",
+    "GistsGistIdStarGetResponse404Type",
+    "GistsGistIdStarGetResponse404TypeForResponse",
 )

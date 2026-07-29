@@ -9,30 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OidcCustomSubType(TypedDict):
-    """Actions OIDC Subject customization
+class ThreadSubscriptionType(TypedDict):
+    """Thread Subscription
 
-    Actions OIDC Subject customization
+    Thread Subscription
     """
 
-    include_claim_keys: list[str]
-    use_immutable_subject: NotRequired[bool]
+    subscribed: bool
+    ignored: bool
+    reason: Union[str, None]
+    created_at: Union[_dt.datetime, None]
+    url: str
+    thread_url: NotRequired[str]
+    repository_url: NotRequired[str]
 
 
-class OidcCustomSubTypeForResponse(TypedDict):
-    """Actions OIDC Subject customization
+class ThreadSubscriptionTypeForResponse(TypedDict):
+    """Thread Subscription
 
-    Actions OIDC Subject customization
+    Thread Subscription
     """
 
-    include_claim_keys: list[str]
-    use_immutable_subject: NotRequired[bool]
+    subscribed: bool
+    ignored: bool
+    reason: Union[str, None]
+    created_at: Union[str, None]
+    url: str
+    thread_url: NotRequired[str]
+    repository_url: NotRequired[str]
 
 
 __all__ = (
-    "OidcCustomSubType",
-    "OidcCustomSubTypeForResponse",
+    "ThreadSubscriptionType",
+    "ThreadSubscriptionTypeForResponse",
 )

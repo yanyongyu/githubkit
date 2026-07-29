@@ -9,43 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class LabelType(TypedDict):
-    """Label
+class UsageReportExportListType(TypedDict):
+    """UsageReportExportList"""
 
-    Color-coded labels help you categorize and filter your issues (just like labels
-    in Gmail).
-    """
-
-    id: int
-    node_id: str
-    url: str
-    name: str
-    description: Union[str, None]
-    color: str
-    default: bool
+    usage_report_exports: list[UsageReportExportType]
 
 
-class LabelTypeForResponse(TypedDict):
-    """Label
+class UsageReportExportListTypeForResponse(TypedDict):
+    """UsageReportExportList"""
 
-    Color-coded labels help you categorize and filter your issues (just like labels
-    in Gmail).
-    """
+    usage_report_exports: list[UsageReportExportTypeForResponse]
 
-    id: int
-    node_id: str
-    url: str
-    name: str
-    description: Union[str, None]
-    color: str
-    default: bool
+
+class UsageReportExportType(TypedDict):
+    """UsageReportExport"""
+
+    id: str
+    report_type: Literal["detailed", "summarized", "premium_request", "ai_credit"]
+    start_date: _dt.date
+    end_date: _dt.date
+    status: Literal["processing", "completed", "failed"]
+    download_urls: NotRequired[list[str]]
+    created_at: NotRequired[_dt.datetime]
+    actor: NotRequired[str]
+
+
+class UsageReportExportTypeForResponse(TypedDict):
+    """UsageReportExport"""
+
+    id: str
+    report_type: Literal["detailed", "summarized", "premium_request", "ai_credit"]
+    start_date: str
+    end_date: str
+    status: Literal["processing", "completed", "failed"]
+    download_urls: NotRequired[list[str]]
+    created_at: NotRequired[str]
+    actor: NotRequired[str]
 
 
 __all__ = (
-    "LabelType",
-    "LabelTypeForResponse",
+    "UsageReportExportListType",
+    "UsageReportExportListTypeForResponse",
+    "UsageReportExportType",
+    "UsageReportExportTypeForResponse",
 )

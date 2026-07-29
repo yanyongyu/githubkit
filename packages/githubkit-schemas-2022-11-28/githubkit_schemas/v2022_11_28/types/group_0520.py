@@ -9,84 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class BillingPremiumRequestUsageReportUserType(TypedDict):
-    """BillingPremiumRequestUsageReportUser"""
+class CodespaceExportDetailsType(TypedDict):
+    """Fetches information about an export of a codespace.
 
-    time_period: BillingPremiumRequestUsageReportUserPropTimePeriodType
-    user: str
-    product: NotRequired[str]
-    model: NotRequired[str]
-    usage_items: list[BillingPremiumRequestUsageReportUserPropUsageItemsItemsType]
+    An export of a codespace. Also, latest export details for a codespace can be
+    fetched with id = latest
+    """
 
-
-class BillingPremiumRequestUsageReportUserTypeForResponse(TypedDict):
-    """BillingPremiumRequestUsageReportUser"""
-
-    time_period: BillingPremiumRequestUsageReportUserPropTimePeriodTypeForResponse
-    user: str
-    product: NotRequired[str]
-    model: NotRequired[str]
-    usage_items: list[
-        BillingPremiumRequestUsageReportUserPropUsageItemsItemsTypeForResponse
-    ]
+    state: NotRequired[Union[str, None]]
+    completed_at: NotRequired[Union[_dt.datetime, None]]
+    branch: NotRequired[Union[str, None]]
+    sha: NotRequired[Union[str, None]]
+    id: NotRequired[str]
+    export_url: NotRequired[str]
+    html_url: NotRequired[Union[str, None]]
 
 
-class BillingPremiumRequestUsageReportUserPropTimePeriodType(TypedDict):
-    """BillingPremiumRequestUsageReportUserPropTimePeriod"""
+class CodespaceExportDetailsTypeForResponse(TypedDict):
+    """Fetches information about an export of a codespace.
 
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
+    An export of a codespace. Also, latest export details for a codespace can be
+    fetched with id = latest
+    """
 
-
-class BillingPremiumRequestUsageReportUserPropTimePeriodTypeForResponse(TypedDict):
-    """BillingPremiumRequestUsageReportUserPropTimePeriod"""
-
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
-
-
-class BillingPremiumRequestUsageReportUserPropUsageItemsItemsType(TypedDict):
-    """BillingPremiumRequestUsageReportUserPropUsageItemsItems"""
-
-    product: str
-    sku: str
-    model: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
-
-
-class BillingPremiumRequestUsageReportUserPropUsageItemsItemsTypeForResponse(TypedDict):
-    """BillingPremiumRequestUsageReportUserPropUsageItemsItems"""
-
-    product: str
-    sku: str
-    model: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
+    state: NotRequired[Union[str, None]]
+    completed_at: NotRequired[Union[str, None]]
+    branch: NotRequired[Union[str, None]]
+    sha: NotRequired[Union[str, None]]
+    id: NotRequired[str]
+    export_url: NotRequired[str]
+    html_url: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "BillingPremiumRequestUsageReportUserPropTimePeriodType",
-    "BillingPremiumRequestUsageReportUserPropTimePeriodTypeForResponse",
-    "BillingPremiumRequestUsageReportUserPropUsageItemsItemsType",
-    "BillingPremiumRequestUsageReportUserPropUsageItemsItemsTypeForResponse",
-    "BillingPremiumRequestUsageReportUserType",
-    "BillingPremiumRequestUsageReportUserTypeForResponse",
+    "CodespaceExportDetailsType",
+    "CodespaceExportDetailsTypeForResponse",
 )

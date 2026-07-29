@@ -12,17 +12,20 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0276 import ActionsSecret
-
-
-class ReposOwnerRepoAgentsOrganizationSecretsGetResponse200(GitHubModel):
-    """ReposOwnerRepoAgentsOrganizationSecretsGetResponse200"""
-
-    total_count: int = Field()
-    secrets: list[ActionsSecret] = Field()
+from .group_0260 import SecretScanningCustomPattern
 
 
-model_rebuild(ReposOwnerRepoAgentsOrganizationSecretsGetResponse200)
+class OrgsOrgSecretScanningCustomPatternsPostResponse201(GitHubModel):
+    """OrgsOrgSecretScanningCustomPatternsPostResponse201"""
 
-__all__ = ("ReposOwnerRepoAgentsOrganizationSecretsGetResponse200",)
+    created_patterns: Missing[list[SecretScanningCustomPattern]] = Field(
+        default=UNSET, description="The list of successfully created custom patterns."
+    )
+
+
+model_rebuild(OrgsOrgSecretScanningCustomPatternsPostResponse201)
+
+__all__ = ("OrgsOrgSecretScanningCustomPatternsPostResponse201",)

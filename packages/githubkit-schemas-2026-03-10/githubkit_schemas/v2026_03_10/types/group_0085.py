@@ -9,30 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class GitignoreTemplateType(TypedDict):
-    """Gitignore Template
+class GistCommitType(TypedDict):
+    """Gist Commit
 
-    Gitignore Template
+    Gist Commit
     """
 
-    name: str
-    source: str
+    url: str
+    version: str
+    user: Union[None, SimpleUserType]
+    change_status: GistCommitPropChangeStatusType
+    committed_at: _dt.datetime
 
 
-class GitignoreTemplateTypeForResponse(TypedDict):
-    """Gitignore Template
+class GistCommitTypeForResponse(TypedDict):
+    """Gist Commit
 
-    Gitignore Template
+    Gist Commit
     """
 
-    name: str
-    source: str
+    url: str
+    version: str
+    user: Union[None, SimpleUserTypeForResponse]
+    change_status: GistCommitPropChangeStatusTypeForResponse
+    committed_at: str
+
+
+class GistCommitPropChangeStatusType(TypedDict):
+    """GistCommitPropChangeStatus"""
+
+    total: NotRequired[int]
+    additions: NotRequired[int]
+    deletions: NotRequired[int]
+
+
+class GistCommitPropChangeStatusTypeForResponse(TypedDict):
+    """GistCommitPropChangeStatus"""
+
+    total: NotRequired[int]
+    additions: NotRequired[int]
+    deletions: NotRequired[int]
 
 
 __all__ = (
-    "GitignoreTemplateType",
-    "GitignoreTemplateTypeForResponse",
+    "GistCommitPropChangeStatusType",
+    "GistCommitPropChangeStatusTypeForResponse",
+    "GistCommitType",
+    "GistCommitTypeForResponse",
 )

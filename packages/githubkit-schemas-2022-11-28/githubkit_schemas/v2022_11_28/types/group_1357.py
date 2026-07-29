@@ -10,22 +10,55 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoNotificationsPutBodyType(TypedDict):
-    """ReposOwnerRepoNotificationsPutBody"""
+class ReposOwnerRepoGitTagsPostBodyType(TypedDict):
+    """ReposOwnerRepoGitTagsPostBody"""
 
-    last_read_at: NotRequired[_dt.datetime]
+    tag: str
+    message: str
+    object_: str
+    type: Literal["commit", "tree", "blob"]
+    tagger: NotRequired[ReposOwnerRepoGitTagsPostBodyPropTaggerType]
 
 
-class ReposOwnerRepoNotificationsPutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoNotificationsPutBody"""
+class ReposOwnerRepoGitTagsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoGitTagsPostBody"""
 
-    last_read_at: NotRequired[str]
+    tag: str
+    message: str
+    object_: str
+    type: Literal["commit", "tree", "blob"]
+    tagger: NotRequired[ReposOwnerRepoGitTagsPostBodyPropTaggerTypeForResponse]
+
+
+class ReposOwnerRepoGitTagsPostBodyPropTaggerType(TypedDict):
+    """ReposOwnerRepoGitTagsPostBodyPropTagger
+
+    An object with information about the individual creating the tag.
+    """
+
+    name: str
+    email: str
+    date: NotRequired[_dt.datetime]
+
+
+class ReposOwnerRepoGitTagsPostBodyPropTaggerTypeForResponse(TypedDict):
+    """ReposOwnerRepoGitTagsPostBodyPropTagger
+
+    An object with information about the individual creating the tag.
+    """
+
+    name: str
+    email: str
+    date: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoNotificationsPutBodyType",
-    "ReposOwnerRepoNotificationsPutBodyTypeForResponse",
+    "ReposOwnerRepoGitTagsPostBodyPropTaggerType",
+    "ReposOwnerRepoGitTagsPostBodyPropTaggerTypeForResponse",
+    "ReposOwnerRepoGitTagsPostBodyType",
+    "ReposOwnerRepoGitTagsPostBodyTypeForResponse",
 )

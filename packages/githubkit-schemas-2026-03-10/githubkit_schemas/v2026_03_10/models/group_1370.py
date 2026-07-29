@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,40 +18,58 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPullsPostBody(GitHubModel):
-    """ReposOwnerRepoPullsPostBody"""
+class ReposOwnerRepoIssuesPostBody(GitHubModel):
+    """ReposOwnerRepoIssuesPostBody"""
 
-    title: Missing[str] = Field(
+    title: Union[str, int] = Field(description="The title of the issue.")
+    body: Missing[str] = Field(default=UNSET, description="The contents of the issue.")
+    milestone: Missing[Union[str, int, None]] = Field(default=UNSET)
+    labels: Missing[
+        list[Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1]]
+    ] = Field(
         default=UNSET,
-        description="The title of the new pull request. Required unless `issue` is specified.",
+        description="Labels to associate with this issue. _NOTE: Only users with push access can set labels for new issues. Labels are silently dropped otherwise._",
     )
-    head: str = Field(
-        description="The name of the branch where your changes are implemented. For cross-repository pull requests in the same network, namespace `head` with a user like this: `username:branch`."
-    )
-    head_repo: Missing[str] = Field(
+    assignees: Missing[list[str]] = Field(
         default=UNSET,
-        description="The name of the repository where the changes in the pull request were made. This field is required for cross-repository pull requests if both repositories are owned by the same organization.",
+        description="Logins for Users to assign to this issue. _NOTE: Only users with push access can set assignees for new issues. Assignees are silently dropped otherwise._",
     )
-    base: str = Field(
-        description="The name of the branch you want the changes pulled into. This should be an existing branch on the current repository. You cannot submit a pull request to one repository that requests a merge to a base of another repository."
-    )
-    body: Missing[str] = Field(
-        default=UNSET, description="The contents of the pull request."
-    )
-    maintainer_can_modify: Missing[bool] = Field(
+    issue_field_values: Missing[
+        list[ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems]
+    ] = Field(
         default=UNSET,
-        description="Indicates whether [maintainers can modify](https://docs.github.com/articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork/) the pull request.",
+        description="An array of issue field values to set on this issue. Each field value must include the field ID and the value to set. Issue fields are only available for organization-owned repositories with the feature enabled. Field values are silently dropped otherwise.",
     )
-    draft: Missing[bool] = Field(
+    type: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description='Indicates whether the pull request is a draft. See "[Draft Pull Requests](https://docs.github.com/articles/about-pull-requests#draft-pull-requests)" in the GitHub Help documentation to learn more.',
-    )
-    issue: Missing[int] = Field(
-        default=UNSET,
-        description="An issue in the repository to convert to a pull request. The issue title, body, and comments will become the title, body, and comments on the new pull request. Required unless `title` is specified.",
+        description="The name of the issue type to associate with this issue. _NOTE: Only users with push access can set the type for new issues. The type is silently dropped otherwise._",
     )
 
 
-model_rebuild(ReposOwnerRepoPullsPostBody)
+class ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1(GitHubModel):
+    """ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1"""
 
-__all__ = ("ReposOwnerRepoPullsPostBody",)
+    id: Missing[int] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    description: Missing[Union[str, None]] = Field(default=UNSET)
+    color: Missing[Union[str, None]] = Field(default=UNSET)
+
+
+class ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems(GitHubModel):
+    """ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems"""
+
+    field_id: int = Field(description="The ID of the issue field to set")
+    value: Union[str, float, list[str]] = Field(
+        description="The value to set for the field. For multi-select fields, provide an array of option names."
+    )
+
+
+model_rebuild(ReposOwnerRepoIssuesPostBody)
+model_rebuild(ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1)
+model_rebuild(ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems)
+
+__all__ = (
+    "ReposOwnerRepoIssuesPostBody",
+    "ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems",
+    "ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1",
+)

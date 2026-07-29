@@ -9,57 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class ActionsCacheListType(TypedDict):
-    """Repository actions caches
+class TeamMembershipType(TypedDict):
+    """Team Membership
 
-    Repository actions caches
+    Team Membership
     """
 
-    total_count: int
-    actions_caches: list[ActionsCacheListPropActionsCachesItemsType]
+    url: str
+    role: Literal["member", "maintainer"]
+    state: Literal["active", "pending"]
 
 
-class ActionsCacheListTypeForResponse(TypedDict):
-    """Repository actions caches
+class TeamMembershipTypeForResponse(TypedDict):
+    """Team Membership
 
-    Repository actions caches
+    Team Membership
     """
 
-    total_count: int
-    actions_caches: list[ActionsCacheListPropActionsCachesItemsTypeForResponse]
-
-
-class ActionsCacheListPropActionsCachesItemsType(TypedDict):
-    """ActionsCacheListPropActionsCachesItems"""
-
-    id: NotRequired[int]
-    ref: NotRequired[str]
-    key: NotRequired[str]
-    version: NotRequired[str]
-    last_accessed_at: NotRequired[_dt.datetime]
-    created_at: NotRequired[_dt.datetime]
-    size_in_bytes: NotRequired[int]
-
-
-class ActionsCacheListPropActionsCachesItemsTypeForResponse(TypedDict):
-    """ActionsCacheListPropActionsCachesItems"""
-
-    id: NotRequired[int]
-    ref: NotRequired[str]
-    key: NotRequired[str]
-    version: NotRequired[str]
-    last_accessed_at: NotRequired[str]
-    created_at: NotRequired[str]
-    size_in_bytes: NotRequired[int]
+    url: str
+    role: Literal["member", "maintainer"]
+    state: Literal["active", "pending"]
 
 
 __all__ = (
-    "ActionsCacheListPropActionsCachesItemsType",
-    "ActionsCacheListPropActionsCachesItemsTypeForResponse",
-    "ActionsCacheListType",
-    "ActionsCacheListTypeForResponse",
+    "TeamMembershipType",
+    "TeamMembershipTypeForResponse",
 )

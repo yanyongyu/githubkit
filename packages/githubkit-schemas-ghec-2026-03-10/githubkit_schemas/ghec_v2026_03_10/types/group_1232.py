@@ -9,33 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType(TypedDict):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody"""
+class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200Type(
+    TypedDict
+):
+    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200"""
 
-    name: str
-    visibility: NotRequired[Literal["selected", "all", "private"]]
-    allows_public_repositories: NotRequired[bool]
-    restricted_to_workflows: NotRequired[bool]
-    selected_workflows: NotRequired[list[str]]
-    network_configuration_id: NotRequired[Union[str, None]]
+    pattern_config_version: NotRequired[str]
 
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody"""
+class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200"""
 
-    name: str
-    visibility: NotRequired[Literal["selected", "all", "private"]]
-    allows_public_repositories: NotRequired[bool]
-    restricted_to_workflows: NotRequired[bool]
-    selected_workflows: NotRequired[list[str]]
-    network_configuration_id: NotRequired[Union[str, None]]
+    pattern_config_version: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType",
-    "OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyTypeForResponse",
+    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200Type",
+    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200TypeForResponse",
 )

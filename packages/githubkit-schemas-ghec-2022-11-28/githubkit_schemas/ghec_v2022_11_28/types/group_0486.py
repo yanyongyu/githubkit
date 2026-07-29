@@ -9,51 +9,70 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0460 import IssueReferenceType, IssueReferenceTypeForResponse
 
 
-class BlockingAddedIssueEventType(TypedDict):
-    """Blocking Added Issue Event
+class ReviewDismissedIssueEventType(TypedDict):
+    """Review Dismissed Issue Event
 
-    Blocking Added Issue Event
+    Review Dismissed Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: str
+    event: Literal["review_dismissed"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    blocking: Union[None, IssueReferenceType, None]
+    dismissed_review: ReviewDismissedIssueEventPropDismissedReviewType
 
 
-class BlockingAddedIssueEventTypeForResponse(TypedDict):
-    """Blocking Added Issue Event
+class ReviewDismissedIssueEventTypeForResponse(TypedDict):
+    """Review Dismissed Issue Event
 
-    Blocking Added Issue Event
+    Review Dismissed Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserTypeForResponse
-    event: str
+    event: Literal["review_dismissed"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    blocking: Union[None, IssueReferenceTypeForResponse, None]
+    dismissed_review: ReviewDismissedIssueEventPropDismissedReviewTypeForResponse
+
+
+class ReviewDismissedIssueEventPropDismissedReviewType(TypedDict):
+    """ReviewDismissedIssueEventPropDismissedReview"""
+
+    state: str
+    review_id: int
+    dismissal_message: Union[str, None]
+    dismissal_commit_id: NotRequired[str]
+
+
+class ReviewDismissedIssueEventPropDismissedReviewTypeForResponse(TypedDict):
+    """ReviewDismissedIssueEventPropDismissedReview"""
+
+    state: str
+    review_id: int
+    dismissal_message: Union[str, None]
+    dismissal_commit_id: NotRequired[str]
 
 
 __all__ = (
-    "BlockingAddedIssueEventType",
-    "BlockingAddedIssueEventTypeForResponse",
+    "ReviewDismissedIssueEventPropDismissedReviewType",
+    "ReviewDismissedIssueEventPropDismissedReviewTypeForResponse",
+    "ReviewDismissedIssueEventType",
+    "ReviewDismissedIssueEventTypeForResponse",
 )

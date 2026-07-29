@@ -9,9 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -19,25 +16,16 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoMilestonesMilestoneNumberPatchBody(GitHubModel):
-    """ReposOwnerRepoMilestonesMilestoneNumberPatchBody"""
+class ReposOwnerRepoGitRefsRefPatchBody(GitHubModel):
+    """ReposOwnerRepoGitRefsRefPatchBody"""
 
-    title: Missing[str] = Field(
-        default=UNSET, description="The title of the milestone."
-    )
-    state: Missing[Literal["open", "closed"]] = Field(
+    sha: str = Field(description="The SHA1 value to set this reference to")
+    force: Missing[bool] = Field(
         default=UNSET,
-        description="The state of the milestone. Either `open` or `closed`.",
-    )
-    description: Missing[str] = Field(
-        default=UNSET, description="A description of the milestone."
-    )
-    due_on: Missing[_dt.datetime] = Field(
-        default=UNSET,
-        description="The milestone due date. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        description="Indicates whether to force the update or to make sure the update is a fast-forward update. Leaving this out or setting it to `false` will make sure you're not overwriting work.",
     )
 
 
-model_rebuild(ReposOwnerRepoMilestonesMilestoneNumberPatchBody)
+model_rebuild(ReposOwnerRepoGitRefsRefPatchBody)
 
-__all__ = ("ReposOwnerRepoMilestonesMilestoneNumberPatchBody",)
+__all__ = ("ReposOwnerRepoGitRefsRefPatchBody",)

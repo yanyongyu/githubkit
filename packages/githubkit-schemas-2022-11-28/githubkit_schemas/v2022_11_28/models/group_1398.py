@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,32 +16,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1(GitHubModel):
-    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1"""
+class ReposOwnerRepoMergesPostBody(GitHubModel):
+    """ReposOwnerRepoMergesPostBody"""
 
-    state: Missing[Literal["open", "resolved"]] = Field(
-        default=UNSET,
-        description="Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`.",
+    base: str = Field(
+        description="The name of the base branch that the head will be merged into."
     )
-    resolution: Missing[
-        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
-    ] = Field(
-        default=UNSET,
-        description="**Required when the `state` is `resolved`.** The reason for resolving the alert.",
+    head: str = Field(
+        description="The head to merge. This can be a branch name or a commit SHA1."
     )
-    resolution_comment: Missing[Union[str, None]] = Field(
+    commit_message: Missing[str] = Field(
         default=UNSET,
-        description="An optional comment when closing or reopening an alert. Cannot be updated or deleted.",
-    )
-    assignee: Union[str, None] = Field(
-        description="The username of the user to assign to the alert. Set to `null` to unassign the alert."
-    )
-    validity: Missing[Union[None, Literal["active", "inactive"]]] = Field(
-        default=UNSET,
-        description="Sets the validity of the secret scanning alert. Can be `active`, `inactive`, or `null` to clear the override.",
+        description="Commit message to use for the merge commit. If omitted, a default message will be used.",
     )
 
 
-model_rebuild(ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1)
+model_rebuild(ReposOwnerRepoMergesPostBody)
 
-__all__ = ("ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1",)
+__all__ = ("ReposOwnerRepoMergesPostBody",)

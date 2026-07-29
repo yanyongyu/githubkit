@@ -12,20 +12,47 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_1518 import (
+    ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentType,
+    ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentTypeForResponse,
+)
 
-class ReposOwnerRepoIssuesIssueNumberLockPutBodyType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberLockPutBody"""
 
-    lock_reason: NotRequired[Literal["off-topic", "too heated", "resolved", "spam"]]
+class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0Type(TypedDict):
+    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0"""
+
+    state: Literal["dismissed", "open"]
+    dismissed_reason: NotRequired[
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ]
+    ]
+    dismissed_comment: NotRequired[str]
+    assignees: NotRequired[list[str]]
+    agent_assignment: NotRequired[
+        ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentType
+    ]
 
 
-class ReposOwnerRepoIssuesIssueNumberLockPutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberLockPutBody"""
+class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0"""
 
-    lock_reason: NotRequired[Literal["off-topic", "too heated", "resolved", "spam"]]
+    state: Literal["dismissed", "open"]
+    dismissed_reason: NotRequired[
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ]
+    ]
+    dismissed_comment: NotRequired[str]
+    assignees: NotRequired[list[str]]
+    agent_assignment: NotRequired[
+        ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentTypeForResponse
+    ]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberLockPutBodyType",
-    "ReposOwnerRepoIssuesIssueNumberLockPutBodyTypeForResponse",
+    "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0Type",
+    "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0TypeForResponse",
 )

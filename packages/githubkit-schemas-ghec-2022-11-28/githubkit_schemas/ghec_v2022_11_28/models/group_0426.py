@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,60 +18,64 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RepositoryRuleViolationError(GitHubModel):
-    """RepositoryRuleViolationError
+class RepositoryCollaboratorPermission(GitHubModel):
+    """Repository Collaborator Permission
 
-    Repository rule violation was detected
+    Repository Collaborator Permission
     """
 
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
-    status: Missing[str] = Field(default=UNSET)
-    metadata: Missing[RepositoryRuleViolationErrorPropMetadata] = Field(default=UNSET)
+    permission: str = Field()
+    role_name: str = Field()
+    user: Union[None, Collaborator] = Field()
 
 
-class RepositoryRuleViolationErrorPropMetadata(GitHubModel):
-    """RepositoryRuleViolationErrorPropMetadata"""
+class Collaborator(GitHubModel):
+    """Collaborator
 
-    secret_scanning: Missing[
-        RepositoryRuleViolationErrorPropMetadataPropSecretScanning
-    ] = Field(default=UNSET)
-
-
-class RepositoryRuleViolationErrorPropMetadataPropSecretScanning(GitHubModel):
-    """RepositoryRuleViolationErrorPropMetadataPropSecretScanning"""
-
-    bypass_placeholders: Missing[
-        list[
-            RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems
-        ]
-    ] = Field(default=UNSET)
-
-
-class RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems(
-    GitHubModel
-):
-    """RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholders
-    Items
+    Collaborator
     """
 
-    placeholder_id: Missing[str] = Field(
-        default=UNSET,
-        description="The ID of the push protection bypass placeholder. This value is returned on any push protected routes.",
-    )
-    token_type: Missing[str] = Field(default=UNSET)
+    login: str = Field()
+    id: int = Field()
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    name: Missing[Union[str, None]] = Field(default=UNSET)
+    node_id: str = Field()
+    avatar_url: str = Field()
+    gravatar_id: Union[str, None] = Field()
+    url: str = Field()
+    html_url: str = Field()
+    followers_url: str = Field()
+    following_url: str = Field()
+    gists_url: str = Field()
+    starred_url: str = Field()
+    subscriptions_url: str = Field()
+    organizations_url: str = Field()
+    repos_url: str = Field()
+    events_url: str = Field()
+    received_events_url: str = Field()
+    type: str = Field()
+    site_admin: bool = Field()
+    permissions: Missing[CollaboratorPropPermissions] = Field(default=UNSET)
+    role_name: str = Field()
+    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(RepositoryRuleViolationError)
-model_rebuild(RepositoryRuleViolationErrorPropMetadata)
-model_rebuild(RepositoryRuleViolationErrorPropMetadataPropSecretScanning)
-model_rebuild(
-    RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems
-)
+class CollaboratorPropPermissions(GitHubModel):
+    """CollaboratorPropPermissions"""
+
+    pull: bool = Field()
+    triage: Missing[bool] = Field(default=UNSET)
+    push: bool = Field()
+    maintain: Missing[bool] = Field(default=UNSET)
+    admin: bool = Field()
+
+
+model_rebuild(RepositoryCollaboratorPermission)
+model_rebuild(Collaborator)
+model_rebuild(CollaboratorPropPermissions)
 
 __all__ = (
-    "RepositoryRuleViolationError",
-    "RepositoryRuleViolationErrorPropMetadata",
-    "RepositoryRuleViolationErrorPropMetadataPropSecretScanning",
-    "RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems",
+    "Collaborator",
+    "CollaboratorPropPermissions",
+    "RepositoryCollaboratorPermission",
 )

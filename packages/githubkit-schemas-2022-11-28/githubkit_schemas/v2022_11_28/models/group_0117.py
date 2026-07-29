@@ -9,28 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ActionsForkPrWorkflowsPrivateRepos(GitHubModel):
-    """ActionsForkPrWorkflowsPrivateRepos"""
+class ActionsForkPrContributorApproval(GitHubModel):
+    """ActionsForkPrContributorApproval"""
 
-    run_workflows_from_fork_pull_requests: bool = Field(
-        description="Whether workflows triggered by pull requests from forks are allowed to run on private repositories."
-    )
-    send_write_tokens_to_workflows: bool = Field(
-        description="Whether GitHub Actions can create pull requests or submit approving pull request reviews from a workflow triggered by a fork pull request."
-    )
-    send_secrets_and_variables: bool = Field(
-        description="Whether to make secrets and variables available to workflows triggered by pull requests from forks."
-    )
-    require_approval_for_fork_pr_workflows: bool = Field(
-        description="Whether workflows triggered by pull requests from forks require approval from a repository administrator to run."
+    approval_policy: Literal[
+        "first_time_contributors_new_to_github",
+        "first_time_contributors",
+        "all_external_contributors",
+    ] = Field(
+        description="The policy that controls when fork PR workflows require approval from a maintainer."
     )
 
 
-model_rebuild(ActionsForkPrWorkflowsPrivateRepos)
+model_rebuild(ActionsForkPrContributorApproval)
 
-__all__ = ("ActionsForkPrWorkflowsPrivateRepos",)
+__all__ = ("ActionsForkPrContributorApproval",)

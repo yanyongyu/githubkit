@@ -9,77 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0568 import UserRoleItemsType, UserRoleItemsTypeForResponse
+from typing_extensions import TypedDict
 
 
-class UserType(TypedDict):
-    """User"""
+class TagType(TypedDict):
+    """Tag
 
-    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
-    external_id: str
-    active: bool
-    user_name: str
-    name: NotRequired[UserNameType]
-    display_name: str
-    emails: list[UserEmailsItemsType]
-    roles: NotRequired[list[UserRoleItemsType]]
+    Tag
+    """
 
-
-class UserTypeForResponse(TypedDict):
-    """User"""
-
-    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
-    external_id: str
-    active: bool
-    user_name: str
-    name: NotRequired[UserNameTypeForResponse]
-    display_name: str
-    emails: list[UserEmailsItemsTypeForResponse]
-    roles: NotRequired[list[UserRoleItemsTypeForResponse]]
+    name: str
+    commit: TagPropCommitType
+    zipball_url: str
+    tarball_url: str
+    node_id: str
 
 
-class UserNameType(TypedDict):
-    """UserName"""
+class TagTypeForResponse(TypedDict):
+    """Tag
 
-    formatted: NotRequired[str]
-    family_name: str
-    given_name: str
-    middle_name: NotRequired[str]
+    Tag
+    """
 
-
-class UserNameTypeForResponse(TypedDict):
-    """UserName"""
-
-    formatted: NotRequired[str]
-    family_name: str
-    given_name: str
-    middle_name: NotRequired[str]
+    name: str
+    commit: TagPropCommitTypeForResponse
+    zipball_url: str
+    tarball_url: str
+    node_id: str
 
 
-class UserEmailsItemsType(TypedDict):
-    """UserEmailsItems"""
+class TagPropCommitType(TypedDict):
+    """TagPropCommit"""
 
-    value: str
-    type: str
-    primary: bool
+    sha: str
+    url: str
 
 
-class UserEmailsItemsTypeForResponse(TypedDict):
-    """UserEmailsItems"""
+class TagPropCommitTypeForResponse(TypedDict):
+    """TagPropCommit"""
 
-    value: str
-    type: str
-    primary: bool
+    sha: str
+    url: str
 
 
 __all__ = (
-    "UserEmailsItemsType",
-    "UserEmailsItemsTypeForResponse",
-    "UserNameType",
-    "UserNameTypeForResponse",
-    "UserType",
-    "UserTypeForResponse",
+    "TagPropCommitType",
+    "TagPropCommitTypeForResponse",
+    "TagType",
+    "TagTypeForResponse",
 )

@@ -9,44 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2Type(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2"""
+class ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType(TypedDict):
+    """ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody"""
 
-    labels: NotRequired[
-        list[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType]
+    state: Literal[
+        "error", "failure", "inactive", "in_progress", "queued", "pending", "success"
     ]
+    target_url: NotRequired[str]
+    log_url: NotRequired[str]
+    description: NotRequired[str]
+    environment: NotRequired[str]
+    environment_url: NotRequired[str]
+    auto_inactive: NotRequired[bool]
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2TypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2"""
+class ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody"""
 
-    labels: NotRequired[
-        list[
-            ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsTypeForResponse
-        ]
+    state: Literal[
+        "error", "failure", "inactive", "in_progress", "queued", "pending", "success"
     ]
-
-
-class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems"""
-
-    name: str
-
-
-class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems"""
-
-    name: str
+    target_url: NotRequired[str]
+    log_url: NotRequired[str]
+    description: NotRequired[str]
+    environment: NotRequired[str]
+    environment_url: NotRequired[str]
+    auto_inactive: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType",
-    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsTypeForResponse",
-    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2Type",
-    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2TypeForResponse",
+    "ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType",
+    "ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyTypeForResponse",
 )

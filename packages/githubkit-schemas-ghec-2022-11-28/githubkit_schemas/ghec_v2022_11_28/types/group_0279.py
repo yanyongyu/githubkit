@@ -13,155 +13,52 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0278 import (
-    DismissalRequestResponseType,
-    DismissalRequestResponseTypeForResponse,
-)
 
+class CredentialAuthorizationType(TypedDict):
+    """Credential Authorization
 
-class CodeScanningAlertDismissalRequestType(TypedDict):
-    """Code scanning alert dismissal request
-
-    Alert dismisal request made by a user asking to dismiss a code scanning alert.
+    Credential Authorization
     """
 
-    id: NotRequired[int]
-    number: NotRequired[int]
-    repository: NotRequired[CodeScanningAlertDismissalRequestPropRepositoryType]
-    organization: NotRequired[CodeScanningAlertDismissalRequestPropOrganizationType]
-    requester: NotRequired[CodeScanningAlertDismissalRequestPropRequesterType]
-    request_type: NotRequired[str]
-    data: NotRequired[
-        Union[list[CodeScanningAlertDismissalRequestPropDataItemsType], None]
+    login: str
+    credential_id: int
+    credential_type: Literal[
+        "personal access token", "SSH key", "OAuth app token", "GitHub app token"
     ]
-    resource_identifier: NotRequired[str]
-    status: NotRequired[Literal["pending", "denied", "approved", "expired"]]
-    requester_comment: NotRequired[Union[str, None]]
-    expires_at: NotRequired[_dt.datetime]
-    created_at: NotRequired[_dt.datetime]
-    responses: NotRequired[Union[list[DismissalRequestResponseType], None]]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
+    token_last_eight: NotRequired[str]
+    credential_authorized_at: _dt.datetime
+    scopes: NotRequired[list[str]]
+    fingerprint: NotRequired[str]
+    credential_accessed_at: Union[_dt.datetime, None]
+    authorized_credential_id: Union[int, None]
+    authorized_credential_title: NotRequired[Union[str, None]]
+    authorized_credential_note: NotRequired[Union[str, None]]
+    authorized_credential_expires_at: NotRequired[Union[_dt.datetime, None]]
 
 
-class CodeScanningAlertDismissalRequestTypeForResponse(TypedDict):
-    """Code scanning alert dismissal request
+class CredentialAuthorizationTypeForResponse(TypedDict):
+    """Credential Authorization
 
-    Alert dismisal request made by a user asking to dismiss a code scanning alert.
+    Credential Authorization
     """
 
-    id: NotRequired[int]
-    number: NotRequired[int]
-    repository: NotRequired[
-        CodeScanningAlertDismissalRequestPropRepositoryTypeForResponse
+    login: str
+    credential_id: int
+    credential_type: Literal[
+        "personal access token", "SSH key", "OAuth app token", "GitHub app token"
     ]
-    organization: NotRequired[
-        CodeScanningAlertDismissalRequestPropOrganizationTypeForResponse
-    ]
-    requester: NotRequired[
-        CodeScanningAlertDismissalRequestPropRequesterTypeForResponse
-    ]
-    request_type: NotRequired[str]
-    data: NotRequired[
-        Union[list[CodeScanningAlertDismissalRequestPropDataItemsTypeForResponse], None]
-    ]
-    resource_identifier: NotRequired[str]
-    status: NotRequired[Literal["pending", "denied", "approved", "expired"]]
-    requester_comment: NotRequired[Union[str, None]]
-    expires_at: NotRequired[str]
-    created_at: NotRequired[str]
-    responses: NotRequired[Union[list[DismissalRequestResponseTypeForResponse], None]]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-
-
-class CodeScanningAlertDismissalRequestPropRepositoryType(TypedDict):
-    """CodeScanningAlertDismissalRequestPropRepository
-
-    The repository the dismissal request is for.
-    """
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    full_name: NotRequired[str]
-
-
-class CodeScanningAlertDismissalRequestPropRepositoryTypeForResponse(TypedDict):
-    """CodeScanningAlertDismissalRequestPropRepository
-
-    The repository the dismissal request is for.
-    """
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    full_name: NotRequired[str]
-
-
-class CodeScanningAlertDismissalRequestPropOrganizationType(TypedDict):
-    """CodeScanningAlertDismissalRequestPropOrganization
-
-    The organization associated with the repository the dismissal request is for.
-    """
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-
-
-class CodeScanningAlertDismissalRequestPropOrganizationTypeForResponse(TypedDict):
-    """CodeScanningAlertDismissalRequestPropOrganization
-
-    The organization associated with the repository the dismissal request is for.
-    """
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-
-
-class CodeScanningAlertDismissalRequestPropRequesterType(TypedDict):
-    """CodeScanningAlertDismissalRequestPropRequester
-
-    The user who requested the dismissal request.
-    """
-
-    actor_id: NotRequired[int]
-    actor_name: NotRequired[str]
-
-
-class CodeScanningAlertDismissalRequestPropRequesterTypeForResponse(TypedDict):
-    """CodeScanningAlertDismissalRequestPropRequester
-
-    The user who requested the dismissal request.
-    """
-
-    actor_id: NotRequired[int]
-    actor_name: NotRequired[str]
-
-
-class CodeScanningAlertDismissalRequestPropDataItemsType(TypedDict):
-    """CodeScanningAlertDismissalRequestPropDataItems"""
-
-    reason: NotRequired[str]
-    alert_number: NotRequired[str]
-    pr_review_thread_id: NotRequired[str]
-
-
-class CodeScanningAlertDismissalRequestPropDataItemsTypeForResponse(TypedDict):
-    """CodeScanningAlertDismissalRequestPropDataItems"""
-
-    reason: NotRequired[str]
-    alert_number: NotRequired[str]
-    pr_review_thread_id: NotRequired[str]
+    token_last_eight: NotRequired[str]
+    credential_authorized_at: str
+    scopes: NotRequired[list[str]]
+    fingerprint: NotRequired[str]
+    credential_accessed_at: Union[str, None]
+    authorized_credential_id: Union[int, None]
+    authorized_credential_title: NotRequired[Union[str, None]]
+    authorized_credential_note: NotRequired[Union[str, None]]
+    authorized_credential_expires_at: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "CodeScanningAlertDismissalRequestPropDataItemsType",
-    "CodeScanningAlertDismissalRequestPropDataItemsTypeForResponse",
-    "CodeScanningAlertDismissalRequestPropOrganizationType",
-    "CodeScanningAlertDismissalRequestPropOrganizationTypeForResponse",
-    "CodeScanningAlertDismissalRequestPropRepositoryType",
-    "CodeScanningAlertDismissalRequestPropRepositoryTypeForResponse",
-    "CodeScanningAlertDismissalRequestPropRequesterType",
-    "CodeScanningAlertDismissalRequestPropRequesterTypeForResponse",
-    "CodeScanningAlertDismissalRequestType",
-    "CodeScanningAlertDismissalRequestTypeForResponse",
+    "CredentialAuthorizationType",
+    "CredentialAuthorizationTypeForResponse",
 )

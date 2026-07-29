@@ -10,83 +10,123 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class SimpleCommitType(TypedDict):
-    """Simple Commit
+class JobType(TypedDict):
+    """Job
 
-    A commit.
+    Information of a job execution in a workflow run
     """
 
-    id: str
-    tree_id: str
-    message: str
-    timestamp: _dt.datetime
-    author: Union[SimpleCommitPropAuthorType, None]
-    committer: Union[SimpleCommitPropCommitterType, None]
-
-
-class SimpleCommitTypeForResponse(TypedDict):
-    """Simple Commit
-
-    A commit.
-    """
-
-    id: str
-    tree_id: str
-    message: str
-    timestamp: str
-    author: Union[SimpleCommitPropAuthorTypeForResponse, None]
-    committer: Union[SimpleCommitPropCommitterTypeForResponse, None]
-
-
-class SimpleCommitPropAuthorType(TypedDict):
-    """SimpleCommitPropAuthor
-
-    Information about the Git author
-    """
-
+    id: int
+    run_id: int
+    run_url: str
+    run_attempt: NotRequired[int]
+    node_id: str
+    head_sha: str
+    url: str
+    html_url: Union[str, None]
+    status: Literal[
+        "queued", "in_progress", "completed", "waiting", "requested", "pending"
+    ]
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+        ],
+    ]
+    created_at: _dt.datetime
+    started_at: _dt.datetime
+    completed_at: Union[_dt.datetime, None]
     name: str
-    email: str
+    steps: NotRequired[list[JobPropStepsItemsType]]
+    check_run_url: str
+    labels: list[str]
+    runner_id: Union[int, None]
+    runner_name: Union[str, None]
+    runner_group_id: Union[int, None]
+    runner_group_name: Union[str, None]
+    workflow_name: Union[str, None]
+    head_branch: Union[str, None]
 
 
-class SimpleCommitPropAuthorTypeForResponse(TypedDict):
-    """SimpleCommitPropAuthor
+class JobTypeForResponse(TypedDict):
+    """Job
 
-    Information about the Git author
+    Information of a job execution in a workflow run
     """
 
+    id: int
+    run_id: int
+    run_url: str
+    run_attempt: NotRequired[int]
+    node_id: str
+    head_sha: str
+    url: str
+    html_url: Union[str, None]
+    status: Literal[
+        "queued", "in_progress", "completed", "waiting", "requested", "pending"
+    ]
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+        ],
+    ]
+    created_at: str
+    started_at: str
+    completed_at: Union[str, None]
     name: str
-    email: str
+    steps: NotRequired[list[JobPropStepsItemsTypeForResponse]]
+    check_run_url: str
+    labels: list[str]
+    runner_id: Union[int, None]
+    runner_name: Union[str, None]
+    runner_group_id: Union[int, None]
+    runner_group_name: Union[str, None]
+    workflow_name: Union[str, None]
+    head_branch: Union[str, None]
 
 
-class SimpleCommitPropCommitterType(TypedDict):
-    """SimpleCommitPropCommitter
+class JobPropStepsItemsType(TypedDict):
+    """JobPropStepsItems"""
 
-    Information about the Git committer
-    """
-
+    status: Literal["queued", "in_progress", "completed"]
+    conclusion: Union[str, None]
     name: str
-    email: str
+    number: int
+    started_at: NotRequired[Union[_dt.datetime, None]]
+    completed_at: NotRequired[Union[_dt.datetime, None]]
 
 
-class SimpleCommitPropCommitterTypeForResponse(TypedDict):
-    """SimpleCommitPropCommitter
+class JobPropStepsItemsTypeForResponse(TypedDict):
+    """JobPropStepsItems"""
 
-    Information about the Git committer
-    """
-
+    status: Literal["queued", "in_progress", "completed"]
+    conclusion: Union[str, None]
     name: str
-    email: str
+    number: int
+    started_at: NotRequired[Union[str, None]]
+    completed_at: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "SimpleCommitPropAuthorType",
-    "SimpleCommitPropAuthorTypeForResponse",
-    "SimpleCommitPropCommitterType",
-    "SimpleCommitPropCommitterTypeForResponse",
-    "SimpleCommitType",
-    "SimpleCommitTypeForResponse",
+    "JobPropStepsItemsType",
+    "JobPropStepsItemsTypeForResponse",
+    "JobType",
+    "JobTypeForResponse",
 )

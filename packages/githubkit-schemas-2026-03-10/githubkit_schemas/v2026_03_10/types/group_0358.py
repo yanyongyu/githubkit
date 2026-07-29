@@ -9,100 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0307 import DiffEntryType, DiffEntryTypeForResponse
+from .group_0308 import CommitType, CommitTypeForResponse
 
-class RepositoryRuleViolationErrorType(TypedDict):
-    """RepositoryRuleViolationError
 
-    Repository rule violation was detected
+class CommitComparisonType(TypedDict):
+    """Commit Comparison
+
+    Commit Comparison
     """
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
-    status: NotRequired[str]
-    metadata: NotRequired[RepositoryRuleViolationErrorPropMetadataType]
+    url: str
+    html_url: str
+    permalink_url: str
+    diff_url: str
+    patch_url: str
+    base_commit: CommitType
+    merge_base_commit: CommitType
+    status: Literal["diverged", "ahead", "behind", "identical"]
+    ahead_by: int
+    behind_by: int
+    total_commits: int
+    commits: list[CommitType]
+    files: NotRequired[list[DiffEntryType]]
 
 
-class RepositoryRuleViolationErrorTypeForResponse(TypedDict):
-    """RepositoryRuleViolationError
+class CommitComparisonTypeForResponse(TypedDict):
+    """Commit Comparison
 
-    Repository rule violation was detected
+    Commit Comparison
     """
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
-    status: NotRequired[str]
-    metadata: NotRequired[RepositoryRuleViolationErrorPropMetadataTypeForResponse]
-
-
-class RepositoryRuleViolationErrorPropMetadataType(TypedDict):
-    """RepositoryRuleViolationErrorPropMetadata"""
-
-    secret_scanning: NotRequired[
-        RepositoryRuleViolationErrorPropMetadataPropSecretScanningType
-    ]
-
-
-class RepositoryRuleViolationErrorPropMetadataTypeForResponse(TypedDict):
-    """RepositoryRuleViolationErrorPropMetadata"""
-
-    secret_scanning: NotRequired[
-        RepositoryRuleViolationErrorPropMetadataPropSecretScanningTypeForResponse
-    ]
-
-
-class RepositoryRuleViolationErrorPropMetadataPropSecretScanningType(TypedDict):
-    """RepositoryRuleViolationErrorPropMetadataPropSecretScanning"""
-
-    bypass_placeholders: NotRequired[
-        list[
-            RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsType
-        ]
-    ]
-
-
-class RepositoryRuleViolationErrorPropMetadataPropSecretScanningTypeForResponse(
-    TypedDict
-):
-    """RepositoryRuleViolationErrorPropMetadataPropSecretScanning"""
-
-    bypass_placeholders: NotRequired[
-        list[
-            RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsTypeForResponse
-        ]
-    ]
-
-
-class RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsType(
-    TypedDict
-):
-    """RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholders
-    Items
-    """
-
-    placeholder_id: NotRequired[str]
-    token_type: NotRequired[str]
-
-
-class RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsTypeForResponse(
-    TypedDict
-):
-    """RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholders
-    Items
-    """
-
-    placeholder_id: NotRequired[str]
-    token_type: NotRequired[str]
+    url: str
+    html_url: str
+    permalink_url: str
+    diff_url: str
+    patch_url: str
+    base_commit: CommitTypeForResponse
+    merge_base_commit: CommitTypeForResponse
+    status: Literal["diverged", "ahead", "behind", "identical"]
+    ahead_by: int
+    behind_by: int
+    total_commits: int
+    commits: list[CommitTypeForResponse]
+    files: NotRequired[list[DiffEntryTypeForResponse]]
 
 
 __all__ = (
-    "RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsType",
-    "RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsTypeForResponse",
-    "RepositoryRuleViolationErrorPropMetadataPropSecretScanningType",
-    "RepositoryRuleViolationErrorPropMetadataPropSecretScanningTypeForResponse",
-    "RepositoryRuleViolationErrorPropMetadataType",
-    "RepositoryRuleViolationErrorPropMetadataTypeForResponse",
-    "RepositoryRuleViolationErrorType",
-    "RepositoryRuleViolationErrorTypeForResponse",
+    "CommitComparisonType",
+    "CommitComparisonTypeForResponse",
 )

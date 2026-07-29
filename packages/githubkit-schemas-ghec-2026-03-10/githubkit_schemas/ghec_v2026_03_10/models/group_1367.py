@@ -18,14 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody(GitHubModel):
-    """OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody"""
+class OrgsOrgCopilotCodingAgentPermissionsGetResponse200(GitHubModel):
+    """OrgsOrgCopilotCodingAgentPermissionsGetResponse200"""
 
-    role: Missing[Literal["member", "maintainer"]] = Field(
-        default=UNSET, description="The role that this user should have in the team."
+    enabled_repositories: Literal["all", "selected", "none"] = Field(
+        description="The policy for which repositories can use Copilot cloud agent. Can be one of `all`, `selected`, or `none`."
+    )
+    selected_repositories_url: Missing[str] = Field(
+        default=UNSET,
+        description="The URL for the selected repositories endpoint. Only present when `enabled_repositories` is `selected`.",
     )
 
 
-model_rebuild(OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody)
+model_rebuild(OrgsOrgCopilotCodingAgentPermissionsGetResponse200)
 
-__all__ = ("OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody",)
+__all__ = ("OrgsOrgCopilotCodingAgentPermissionsGetResponse200",)

@@ -13,47 +13,44 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0598 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0599 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0600 import (
+from .group_0617 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0618 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0619 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0601 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0614 import WebhooksLabelType, WebhooksLabelTypeForResponse
+from .group_0620 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 from .group_0822 import (
-    WebhookIssuesLabeledPropIssueType,
-    WebhookIssuesLabeledPropIssueTypeForResponse,
+    WebhookIssuesClosedPropIssueType,
+    WebhookIssuesClosedPropIssueTypeForResponse,
 )
 
 
-class WebhookIssuesLabeledType(TypedDict):
-    """issues labeled event"""
+class WebhookIssuesClosedType(TypedDict):
+    """issues closed event"""
 
-    action: Literal["labeled"]
+    action: Literal["closed"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssuesLabeledPropIssueType
-    label: NotRequired[WebhooksLabelType]
+    issue: WebhookIssuesClosedPropIssueType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookIssuesLabeledTypeForResponse(TypedDict):
-    """issues labeled event"""
+class WebhookIssuesClosedTypeForResponse(TypedDict):
+    """issues closed event"""
 
-    action: Literal["labeled"]
+    action: Literal["closed"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhookIssuesLabeledPropIssueTypeForResponse
-    label: NotRequired[WebhooksLabelTypeForResponse]
+    issue: WebhookIssuesClosedPropIssueTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookIssuesLabeledType",
-    "WebhookIssuesLabeledTypeForResponse",
+    "WebhookIssuesClosedType",
+    "WebhookIssuesClosedTypeForResponse",
 )

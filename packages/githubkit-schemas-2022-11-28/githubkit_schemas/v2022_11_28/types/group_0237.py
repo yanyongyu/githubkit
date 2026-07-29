@@ -9,22 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class RepositoryRuleFilePathRestrictionPropParametersType(TypedDict):
-    """RepositoryRuleFilePathRestrictionPropParameters"""
+class RepositoryRuleLicenseComplianceScanningType(TypedDict):
+    """license_compliance_scanning
 
-    restricted_file_paths: list[str]
+    Enforce any added or changed dependencies to comply with the organization's
+    license policy.
+    """
+
+    type: Literal["license_compliance_scanning"]
 
 
-class RepositoryRuleFilePathRestrictionPropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleFilePathRestrictionPropParameters"""
+class RepositoryRuleLicenseComplianceScanningTypeForResponse(TypedDict):
+    """license_compliance_scanning
 
-    restricted_file_paths: list[str]
+    Enforce any added or changed dependencies to comply with the organization's
+    license policy.
+    """
+
+    type: Literal["license_compliance_scanning"]
 
 
 __all__ = (
-    "RepositoryRuleFilePathRestrictionPropParametersType",
-    "RepositoryRuleFilePathRestrictionPropParametersTypeForResponse",
+    "RepositoryRuleLicenseComplianceScanningType",
+    "RepositoryRuleLicenseComplianceScanningTypeForResponse",
 )

@@ -21,7 +21,7 @@ from githubkit.utils import UNSET
 class AppPermissions(GitHubModel):
     """App Permissions
 
-    The permissions granted to the user access token.
+    The permissions granted to the fine-grained access token.
 
     Examples:
         {'contents': 'read', 'issues': 'read', 'deployments': 'write', 'single_file':

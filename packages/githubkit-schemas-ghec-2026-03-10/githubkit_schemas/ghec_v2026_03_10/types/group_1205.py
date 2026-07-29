@@ -11,31 +11,36 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_1206 import (
-    InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType,
-    InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse,
-)
+
+class EnterprisesEnterpriseCopilotUsageRecordsGetResponse200ItemsType(TypedDict):
+    """EnterprisesEnterpriseCopilotUsageRecordsGetResponse200Items"""
+
+    type: NotRequired[str]
+    user_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
+    github_request_id: NotRequired[str]
+    endpoint: NotRequired[str]
+    body: NotRequired[str]
+    timestamp: NotRequired[int]
+    event_id: NotRequired[str]
 
 
-class InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1Type(TypedDict):
-    """InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1"""
-
-    custom_properties: NotRequired[
-        InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType
-    ]
-
-
-class InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1TypeForResponse(
+class EnterprisesEnterpriseCopilotUsageRecordsGetResponse200ItemsTypeForResponse(
     TypedDict
 ):
-    """InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1"""
+    """EnterprisesEnterpriseCopilotUsageRecordsGetResponse200Items"""
 
-    custom_properties: NotRequired[
-        InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse
-    ]
+    type: NotRequired[str]
+    user_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
+    github_request_id: NotRequired[str]
+    endpoint: NotRequired[str]
+    body: NotRequired[str]
+    timestamp: NotRequired[int]
+    event_id: NotRequired[str]
 
 
 __all__ = (
-    "InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1Type",
-    "InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1TypeForResponse",
+    "EnterprisesEnterpriseCopilotUsageRecordsGetResponse200ItemsType",
+    "EnterprisesEnterpriseCopilotUsageRecordsGetResponse200ItemsTypeForResponse",
 )

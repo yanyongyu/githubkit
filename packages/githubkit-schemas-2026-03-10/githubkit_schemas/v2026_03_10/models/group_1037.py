@@ -9,28 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_1038 import (
-    InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties,
-)
+from githubkit.compat import ExtraGitHubModel, model_rebuild
 
 
-class InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1(GitHubModel):
-    """InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1"""
+class AppManifestsCodeConversionsPostResponse201Allof1(ExtraGitHubModel):
+    """AppManifestsCodeConversionsPostResponse201Allof1"""
 
-    custom_properties: Missing[
-        InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties
-    ] = Field(
-        default=UNSET,
-        description="The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. Present for org repos only.",
-    )
+    client_id: str = Field()
+    client_secret: str = Field()
+    webhook_secret: Union[str, None] = Field()
+    pem: str = Field()
 
 
-model_rebuild(InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1)
+model_rebuild(AppManifestsCodeConversionsPostResponse201Allof1)
 
-__all__ = ("InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1",)
+__all__ = ("AppManifestsCodeConversionsPostResponse201Allof1",)

@@ -13,27 +13,23 @@ from typing import Literal
 from typing_extensions import TypedDict
 
 
-class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBodyType(
+class ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType(TypedDict):
+    """ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody"""
+
+    reason: Literal["false_positive", "used_in_tests", "will_fix_later"]
+    placeholder_id: str
+
+
+class ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyTypeForResponse(
     TypedDict
 ):
-    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBod
-    y
-    """
+    """ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody"""
 
-    role: Literal["reader", "writer", "admin", "no_access"]
-
-
-class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBodyTypeForResponse(
-    TypedDict
-):
-    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBod
-    y
-    """
-
-    role: Literal["reader", "writer", "admin", "no_access"]
+    reason: Literal["false_positive", "used_in_tests", "will_fix_later"]
+    placeholder_id: str
 
 
 __all__ = (
-    "UsersUsernameCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBodyType",
-    "UsersUsernameCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBodyTypeForResponse",
+    "ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType",
+    "ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyTypeForResponse",
 )

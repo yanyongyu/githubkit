@@ -9,44 +9,99 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0255 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0378 import GitUserType, GitUserTypeForResponse
+from .group_0594 import (
+    SearchResultTextMatchesItemsType,
+    SearchResultTextMatchesItemsTypeForResponse,
+)
+from .group_0597 import (
+    CommitSearchResultItemPropCommitType,
+    CommitSearchResultItemPropCommitTypeForResponse,
+)
 
 
-class HovercardType(TypedDict):
-    """Hovercard
+class CommitSearchResultItemType(TypedDict):
+    """Commit Search Result Item
 
-    Hovercard
+    Commit Search Result Item
     """
 
-    contexts: list[HovercardPropContextsItemsType]
+    url: str
+    sha: str
+    html_url: str
+    comments_url: str
+    commit: CommitSearchResultItemPropCommitType
+    author: Union[None, SimpleUserType]
+    committer: Union[None, GitUserType]
+    parents: list[CommitSearchResultItemPropParentsItemsType]
+    repository: MinimalRepositoryType
+    score: float
+    node_id: str
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
 
 
-class HovercardTypeForResponse(TypedDict):
-    """Hovercard
+class CommitSearchResultItemTypeForResponse(TypedDict):
+    """Commit Search Result Item
 
-    Hovercard
+    Commit Search Result Item
     """
 
-    contexts: list[HovercardPropContextsItemsTypeForResponse]
+    url: str
+    sha: str
+    html_url: str
+    comments_url: str
+    commit: CommitSearchResultItemPropCommitTypeForResponse
+    author: Union[None, SimpleUserTypeForResponse]
+    committer: Union[None, GitUserTypeForResponse]
+    parents: list[CommitSearchResultItemPropParentsItemsTypeForResponse]
+    repository: MinimalRepositoryTypeForResponse
+    score: float
+    node_id: str
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
 
 
-class HovercardPropContextsItemsType(TypedDict):
-    """HovercardPropContextsItems"""
+class CommitSearchResultItemPropParentsItemsType(TypedDict):
+    """CommitSearchResultItemPropParentsItems"""
 
-    message: str
-    octicon: str
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    sha: NotRequired[str]
 
 
-class HovercardPropContextsItemsTypeForResponse(TypedDict):
-    """HovercardPropContextsItems"""
+class CommitSearchResultItemPropParentsItemsTypeForResponse(TypedDict):
+    """CommitSearchResultItemPropParentsItems"""
 
-    message: str
-    octicon: str
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    sha: NotRequired[str]
+
+
+class SearchCommitsGetResponse200Type(TypedDict):
+    """SearchCommitsGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[CommitSearchResultItemType]
+
+
+class SearchCommitsGetResponse200TypeForResponse(TypedDict):
+    """SearchCommitsGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[CommitSearchResultItemTypeForResponse]
 
 
 __all__ = (
-    "HovercardPropContextsItemsType",
-    "HovercardPropContextsItemsTypeForResponse",
-    "HovercardType",
-    "HovercardTypeForResponse",
+    "CommitSearchResultItemPropParentsItemsType",
+    "CommitSearchResultItemPropParentsItemsTypeForResponse",
+    "CommitSearchResultItemType",
+    "CommitSearchResultItemTypeForResponse",
+    "SearchCommitsGetResponse200Type",
+    "SearchCommitsGetResponse200TypeForResponse",
 )

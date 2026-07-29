@@ -13,44 +13,44 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0599 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0600 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0601 import (
+from .group_0618 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0619 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0620 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0602 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0644 import (
-    SecretScanningAlertWebhookType,
-    SecretScanningAlertWebhookTypeForResponse,
+from .group_0621 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_1000 import (
+    WebhookRegistryPackagePublishedPropRegistryPackageType,
+    WebhookRegistryPackagePublishedPropRegistryPackageTypeForResponse,
 )
 
 
-class WebhookSecretScanningAlertMetadataCreatedType(TypedDict):
-    """secret_scanning_alert metadata created event"""
+class WebhookRegistryPackagePublishedType(TypedDict):
+    """WebhookRegistryPackagePublished"""
 
-    action: Literal["metadata_created"]
-    alert: SecretScanningAlertWebhookType
+    action: Literal["published"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserType]
+    registry_package: WebhookRegistryPackagePublishedPropRegistryPackageType
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserType
 
 
-class WebhookSecretScanningAlertMetadataCreatedTypeForResponse(TypedDict):
-    """secret_scanning_alert metadata created event"""
+class WebhookRegistryPackagePublishedTypeForResponse(TypedDict):
+    """WebhookRegistryPackagePublished"""
 
-    action: Literal["metadata_created"]
-    alert: SecretScanningAlertWebhookTypeForResponse
+    action: Literal["published"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: NotRequired[SimpleUserTypeForResponse]
+    registry_package: WebhookRegistryPackagePublishedPropRegistryPackageTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookSecretScanningAlertMetadataCreatedType",
-    "WebhookSecretScanningAlertMetadataCreatedTypeForResponse",
+    "WebhookRegistryPackagePublishedType",
+    "WebhookRegistryPackagePublishedTypeForResponse",
 )

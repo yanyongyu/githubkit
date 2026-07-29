@@ -12,67 +12,72 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class BillingUsageSummaryReportGheType(TypedDict):
-    """BillingUsageSummaryReportGhe"""
+class BillingPremiumRequestUsageReportGheType(TypedDict):
+    """BillingPremiumRequestUsageReportGhe"""
 
-    time_period: BillingUsageSummaryReportGhePropTimePeriodType
+    time_period: BillingPremiumRequestUsageReportGhePropTimePeriodType
     enterprise: str
+    user: NotRequired[str]
     organization: NotRequired[str]
-    repository: NotRequired[str]
     product: NotRequired[str]
-    sku: NotRequired[str]
-    cost_center: NotRequired[BillingUsageSummaryReportGhePropCostCenterType]
-    usage_items: list[BillingUsageSummaryReportGhePropUsageItemsItemsType]
+    model: NotRequired[str]
+    cost_center: NotRequired[BillingPremiumRequestUsageReportGhePropCostCenterType]
+    usage_items: list[BillingPremiumRequestUsageReportGhePropUsageItemsItemsType]
 
 
-class BillingUsageSummaryReportGheTypeForResponse(TypedDict):
-    """BillingUsageSummaryReportGhe"""
+class BillingPremiumRequestUsageReportGheTypeForResponse(TypedDict):
+    """BillingPremiumRequestUsageReportGhe"""
 
-    time_period: BillingUsageSummaryReportGhePropTimePeriodTypeForResponse
+    time_period: BillingPremiumRequestUsageReportGhePropTimePeriodTypeForResponse
     enterprise: str
+    user: NotRequired[str]
     organization: NotRequired[str]
-    repository: NotRequired[str]
     product: NotRequired[str]
-    sku: NotRequired[str]
-    cost_center: NotRequired[BillingUsageSummaryReportGhePropCostCenterTypeForResponse]
-    usage_items: list[BillingUsageSummaryReportGhePropUsageItemsItemsTypeForResponse]
+    model: NotRequired[str]
+    cost_center: NotRequired[
+        BillingPremiumRequestUsageReportGhePropCostCenterTypeForResponse
+    ]
+    usage_items: list[
+        BillingPremiumRequestUsageReportGhePropUsageItemsItemsTypeForResponse
+    ]
 
 
-class BillingUsageSummaryReportGhePropTimePeriodType(TypedDict):
-    """BillingUsageSummaryReportGhePropTimePeriod"""
+class BillingPremiumRequestUsageReportGhePropTimePeriodType(TypedDict):
+    """BillingPremiumRequestUsageReportGhePropTimePeriod"""
 
     year: int
     month: NotRequired[int]
     day: NotRequired[int]
 
 
-class BillingUsageSummaryReportGhePropTimePeriodTypeForResponse(TypedDict):
-    """BillingUsageSummaryReportGhePropTimePeriod"""
+class BillingPremiumRequestUsageReportGhePropTimePeriodTypeForResponse(TypedDict):
+    """BillingPremiumRequestUsageReportGhePropTimePeriod"""
 
     year: int
     month: NotRequired[int]
     day: NotRequired[int]
 
 
-class BillingUsageSummaryReportGhePropCostCenterType(TypedDict):
-    """BillingUsageSummaryReportGhePropCostCenter"""
+class BillingPremiumRequestUsageReportGhePropCostCenterType(TypedDict):
+    """BillingPremiumRequestUsageReportGhePropCostCenter"""
 
     id: str
     name: str
 
 
-class BillingUsageSummaryReportGhePropCostCenterTypeForResponse(TypedDict):
-    """BillingUsageSummaryReportGhePropCostCenter"""
+class BillingPremiumRequestUsageReportGhePropCostCenterTypeForResponse(TypedDict):
+    """BillingPremiumRequestUsageReportGhePropCostCenter"""
 
     id: str
     name: str
 
 
-class BillingUsageSummaryReportGhePropUsageItemsItemsType(TypedDict):
-    """BillingUsageSummaryReportGhePropUsageItemsItems"""
+class BillingPremiumRequestUsageReportGhePropUsageItemsItemsType(TypedDict):
+    """BillingPremiumRequestUsageReportGhePropUsageItemsItems"""
 
     product: str
     sku: str
+    model: str
     unit_type: str
     price_per_unit: float
     gross_quantity: float
@@ -83,11 +88,12 @@ class BillingUsageSummaryReportGhePropUsageItemsItemsType(TypedDict):
     net_amount: float
 
 
-class BillingUsageSummaryReportGhePropUsageItemsItemsTypeForResponse(TypedDict):
-    """BillingUsageSummaryReportGhePropUsageItemsItems"""
+class BillingPremiumRequestUsageReportGhePropUsageItemsItemsTypeForResponse(TypedDict):
+    """BillingPremiumRequestUsageReportGhePropUsageItemsItems"""
 
     product: str
     sku: str
+    model: str
     unit_type: str
     price_per_unit: float
     gross_quantity: float
@@ -99,12 +105,12 @@ class BillingUsageSummaryReportGhePropUsageItemsItemsTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "BillingUsageSummaryReportGhePropCostCenterType",
-    "BillingUsageSummaryReportGhePropCostCenterTypeForResponse",
-    "BillingUsageSummaryReportGhePropTimePeriodType",
-    "BillingUsageSummaryReportGhePropTimePeriodTypeForResponse",
-    "BillingUsageSummaryReportGhePropUsageItemsItemsType",
-    "BillingUsageSummaryReportGhePropUsageItemsItemsTypeForResponse",
-    "BillingUsageSummaryReportGheType",
-    "BillingUsageSummaryReportGheTypeForResponse",
+    "BillingPremiumRequestUsageReportGhePropCostCenterType",
+    "BillingPremiumRequestUsageReportGhePropCostCenterTypeForResponse",
+    "BillingPremiumRequestUsageReportGhePropTimePeriodType",
+    "BillingPremiumRequestUsageReportGhePropTimePeriodTypeForResponse",
+    "BillingPremiumRequestUsageReportGhePropUsageItemsItemsType",
+    "BillingPremiumRequestUsageReportGhePropUsageItemsItemsTypeForResponse",
+    "BillingPremiumRequestUsageReportGheType",
+    "BillingPremiumRequestUsageReportGheTypeForResponse",
 )

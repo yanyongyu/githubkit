@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -18,104 +18,150 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0019 import LicenseSimple
+from .group_0227 import DiscussionEvent
+from .group_0228 import IssuesEvent
+from .group_0229 import IssueCommentEvent
+from .group_0230 import ForkEvent
+from .group_0232 import MemberEvent
+from .group_0233 import PullRequestEvent
+from .group_0234 import PullRequestReviewCommentEvent
+from .group_0235 import PullRequestReviewEvent
+from .group_0237 import CommitCommentEvent
+from .group_0239 import ReleaseEvent
 
 
-class ForkEventPropForkee(GitHubModel):
-    """ForkEventPropForkee"""
+class Event(GitHubModel):
+    """Event
 
-    id: Missing[int] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    full_name: Missing[str] = Field(default=UNSET)
-    private: Missing[bool] = Field(default=UNSET)
-    owner: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
-    html_url: Missing[str] = Field(default=UNSET)
+    Event
+    """
+
+    id: str = Field()
+    type: Union[str, None] = Field()
+    actor: Actor = Field(title="Actor", description="Actor")
+    repo: EventPropRepo = Field()
+    org: Missing[Actor] = Field(default=UNSET, title="Actor", description="Actor")
+    payload: Union[
+        CreateEvent,
+        DeleteEvent,
+        DiscussionEvent,
+        IssuesEvent,
+        IssueCommentEvent,
+        ForkEvent,
+        GollumEvent,
+        MemberEvent,
+        PublicEvent,
+        PushEvent,
+        PullRequestEvent,
+        PullRequestReviewCommentEvent,
+        PullRequestReviewEvent,
+        CommitCommentEvent,
+        ReleaseEvent,
+        WatchEvent,
+    ] = Field()
+    public: bool = Field()
+    created_at: Union[_dt.datetime, None] = Field()
+
+
+class Actor(GitHubModel):
+    """Actor
+
+    Actor
+    """
+
+    id: int = Field()
+    login: str = Field()
+    display_login: Missing[str] = Field(default=UNSET)
+    gravatar_id: Union[str, None] = Field()
+    url: str = Field()
+    avatar_url: str = Field()
+
+
+class EventPropRepo(GitHubModel):
+    """EventPropRepo"""
+
+    id: int = Field()
+    name: str = Field()
+    url: str = Field()
+
+
+class CreateEvent(GitHubModel):
+    """CreateEvent"""
+
+    ref: str = Field()
+    ref_type: str = Field()
+    full_ref: str = Field()
+    master_branch: str = Field()
     description: Missing[Union[str, None]] = Field(default=UNSET)
-    fork: Missing[bool] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    forks_url: Missing[str] = Field(default=UNSET)
-    keys_url: Missing[str] = Field(default=UNSET)
-    collaborators_url: Missing[str] = Field(default=UNSET)
-    teams_url: Missing[str] = Field(default=UNSET)
-    hooks_url: Missing[str] = Field(default=UNSET)
-    issue_events_url: Missing[str] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    assignees_url: Missing[str] = Field(default=UNSET)
-    branches_url: Missing[str] = Field(default=UNSET)
-    tags_url: Missing[str] = Field(default=UNSET)
-    blobs_url: Missing[str] = Field(default=UNSET)
-    git_tags_url: Missing[str] = Field(default=UNSET)
-    git_refs_url: Missing[str] = Field(default=UNSET)
-    trees_url: Missing[str] = Field(default=UNSET)
-    statuses_url: Missing[str] = Field(default=UNSET)
-    languages_url: Missing[str] = Field(default=UNSET)
-    stargazers_url: Missing[str] = Field(default=UNSET)
-    contributors_url: Missing[str] = Field(default=UNSET)
-    subscribers_url: Missing[str] = Field(default=UNSET)
-    subscription_url: Missing[str] = Field(default=UNSET)
-    commits_url: Missing[str] = Field(default=UNSET)
-    git_commits_url: Missing[str] = Field(default=UNSET)
-    comments_url: Missing[str] = Field(default=UNSET)
-    issue_comment_url: Missing[str] = Field(default=UNSET)
-    contents_url: Missing[str] = Field(default=UNSET)
-    compare_url: Missing[str] = Field(default=UNSET)
-    merges_url: Missing[str] = Field(default=UNSET)
-    archive_url: Missing[str] = Field(default=UNSET)
-    downloads_url: Missing[str] = Field(default=UNSET)
-    issues_url: Missing[str] = Field(default=UNSET)
-    pulls_url: Missing[str] = Field(default=UNSET)
-    milestones_url: Missing[str] = Field(default=UNSET)
-    notifications_url: Missing[str] = Field(default=UNSET)
-    labels_url: Missing[str] = Field(default=UNSET)
-    releases_url: Missing[str] = Field(default=UNSET)
-    deployments_url: Missing[str] = Field(default=UNSET)
-    created_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
-    updated_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
-    pushed_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
-    git_url: Missing[str] = Field(default=UNSET)
-    ssh_url: Missing[str] = Field(default=UNSET)
-    clone_url: Missing[str] = Field(default=UNSET)
-    svn_url: Missing[str] = Field(default=UNSET)
-    homepage: Missing[Union[str, None]] = Field(default=UNSET)
-    size: Missing[int] = Field(default=UNSET)
-    stargazers_count: Missing[int] = Field(default=UNSET)
-    watchers_count: Missing[int] = Field(default=UNSET)
-    language: Missing[Union[str, None]] = Field(default=UNSET)
-    has_issues: Missing[bool] = Field(default=UNSET)
-    has_projects: Missing[bool] = Field(default=UNSET)
-    has_downloads: Missing[bool] = Field(default=UNSET)
-    has_wiki: Missing[bool] = Field(default=UNSET)
-    has_pages: Missing[bool] = Field(default=UNSET)
-    has_discussions: Missing[bool] = Field(default=UNSET)
-    has_pull_requests: Missing[bool] = Field(default=UNSET)
-    pull_request_creation_policy: Missing[Literal["all", "collaborators_only"]] = Field(
-        default=UNSET,
-        description="The policy controlling who can create pull requests: all or collaborators_only.",
-    )
-    forks_count: Missing[int] = Field(default=UNSET)
-    mirror_url: Missing[Union[str, None]] = Field(default=UNSET)
-    archived: Missing[bool] = Field(default=UNSET)
-    disabled: Missing[bool] = Field(default=UNSET)
-    open_issues_count: Missing[int] = Field(default=UNSET)
-    license_: Missing[Union[None, LicenseSimple]] = Field(
-        default=UNSET, alias="license"
-    )
-    allow_forking: Missing[bool] = Field(default=UNSET)
-    is_template: Missing[bool] = Field(default=UNSET)
-    web_commit_signoff_required: Missing[bool] = Field(default=UNSET)
-    topics: Missing[list[str]] = Field(default=UNSET)
-    visibility: Missing[str] = Field(default=UNSET)
-    forks: Missing[int] = Field(default=UNSET)
-    open_issues: Missing[int] = Field(default=UNSET)
-    watchers: Missing[int] = Field(default=UNSET)
-    default_branch: Missing[str] = Field(default=UNSET)
-    public: Missing[bool] = Field(default=UNSET)
+    pusher_type: str = Field()
 
 
-model_rebuild(ForkEventPropForkee)
+class DeleteEvent(GitHubModel):
+    """DeleteEvent"""
 
-__all__ = ("ForkEventPropForkee",)
+    ref: str = Field()
+    ref_type: str = Field()
+    full_ref: str = Field()
+    pusher_type: str = Field()
+
+
+class PublicEvent(GitHubModel):
+    """PublicEvent"""
+
+
+class PushEvent(GitHubModel):
+    """PushEvent"""
+
+    repository_id: int = Field()
+    push_id: int = Field()
+    ref: str = Field()
+    head: str = Field()
+    before: str = Field()
+
+
+class WatchEvent(GitHubModel):
+    """WatchEvent"""
+
+    action: str = Field()
+
+
+class GollumEvent(GitHubModel):
+    """GollumEvent"""
+
+    pages: list[GollumEventPropPagesItems] = Field()
+
+
+class GollumEventPropPagesItems(GitHubModel):
+    """GollumEventPropPagesItems"""
+
+    page_name: Missing[Union[str, None]] = Field(default=UNSET)
+    title: Missing[Union[str, None]] = Field(default=UNSET)
+    summary: Missing[Union[str, None]] = Field(default=UNSET)
+    action: Missing[str] = Field(default=UNSET)
+    sha: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(Event)
+model_rebuild(Actor)
+model_rebuild(EventPropRepo)
+model_rebuild(CreateEvent)
+model_rebuild(DeleteEvent)
+model_rebuild(PublicEvent)
+model_rebuild(PushEvent)
+model_rebuild(WatchEvent)
+model_rebuild(GollumEvent)
+model_rebuild(GollumEventPropPagesItems)
+
+__all__ = (
+    "Actor",
+    "CreateEvent",
+    "DeleteEvent",
+    "Event",
+    "EventPropRepo",
+    "GollumEvent",
+    "GollumEventPropPagesItems",
+    "PublicEvent",
+    "PushEvent",
+    "WatchEvent",
+)

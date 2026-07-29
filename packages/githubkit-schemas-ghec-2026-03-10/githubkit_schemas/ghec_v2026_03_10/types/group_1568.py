@@ -9,23 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_1569 import (
+    ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsType,
+    ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsTypeForResponse,
+)
 
 
-class ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType(TypedDict):
-    """ReposOwnerRepoReleasesReleaseIdReactionsPostBody"""
+class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1Type(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1"""
 
-    content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"]
+    suggestions: NotRequired[
+        ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsType
+    ]
 
 
-class ReposOwnerRepoReleasesReleaseIdReactionsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoReleasesReleaseIdReactionsPostBody"""
+class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1TypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1"""
 
-    content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"]
+    suggestions: NotRequired[
+        ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsTypeForResponse
+    ]
 
 
 __all__ = (
-    "ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType",
-    "ReposOwnerRepoReleasesReleaseIdReactionsPostBodyTypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1Type",
+    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1TypeForResponse",
 )

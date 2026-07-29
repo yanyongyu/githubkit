@@ -9,26 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0123 import RunnerLabelType, RunnerLabelTypeForResponse
-
-
-class OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200Type(TypedDict):
-    """OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200"""
-
-    total_count: int
-    labels: list[RunnerLabelType]
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200"""
+class MarkdownPostBodyType(TypedDict):
+    """MarkdownPostBody"""
 
-    total_count: int
-    labels: list[RunnerLabelTypeForResponse]
+    text: str
+    mode: NotRequired[Literal["markdown", "gfm"]]
+    context: NotRequired[str]
+
+
+class MarkdownPostBodyTypeForResponse(TypedDict):
+    """MarkdownPostBody"""
+
+    text: str
+    mode: NotRequired[Literal["markdown", "gfm"]]
+    context: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200Type",
-    "OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse",
+    "MarkdownPostBodyType",
+    "MarkdownPostBodyTypeForResponse",
 )

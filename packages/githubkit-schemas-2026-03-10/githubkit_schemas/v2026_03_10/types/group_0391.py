@@ -9,47 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class IssueTypeWebhookType(TypedDict):
-    """Issue Type
+class HookResponseType(TypedDict):
+    """Hook Response"""
 
-    The type of issue.
-    """
-
-    id: int
-    name: str
-    color: NotRequired[
-        Union[
-            None,
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-        ]
-    ]
+    code: Union[int, None]
+    status: Union[str, None]
+    message: Union[str, None]
 
 
-class IssueTypeWebhookTypeForResponse(TypedDict):
-    """Issue Type
+class HookResponseTypeForResponse(TypedDict):
+    """Hook Response"""
 
-    The type of issue.
-    """
-
-    id: int
-    name: str
-    color: NotRequired[
-        Union[
-            None,
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-        ]
-    ]
+    code: Union[int, None]
+    status: Union[str, None]
+    message: Union[str, None]
 
 
 __all__ = (
-    "IssueTypeWebhookType",
-    "IssueTypeWebhookTypeForResponse",
+    "HookResponseType",
+    "HookResponseTypeForResponse",
 )

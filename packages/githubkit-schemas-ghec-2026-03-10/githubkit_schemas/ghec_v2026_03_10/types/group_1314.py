@@ -9,19 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias
+from typing_extensions import NotRequired, TypedDict
 
-OrgsOrgCopilotContentExclusionPutBodyType: TypeAlias = dict[str, Any]
-"""OrgsOrgCopilotContentExclusionPutBody
-"""
+from .group_0267 import (
+    ArtifactDeploymentRecordType,
+    ArtifactDeploymentRecordTypeForResponse,
+)
 
 
-OrgsOrgCopilotContentExclusionPutBodyTypeForResponse: TypeAlias = dict[str, Any]
-"""OrgsOrgCopilotContentExclusionPutBody
-"""
+class OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200Type(TypedDict):
+    """OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200"""
+
+    total_count: int
+    deployment_records: NotRequired[list[ArtifactDeploymentRecordType]]
+
+
+class OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200TypeForResponse(TypedDict):
+    """OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200"""
+
+    total_count: int
+    deployment_records: NotRequired[list[ArtifactDeploymentRecordTypeForResponse]]
 
 
 __all__ = (
-    "OrgsOrgCopilotContentExclusionPutBodyType",
-    "OrgsOrgCopilotContentExclusionPutBodyTypeForResponse",
+    "OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200Type",
+    "OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200TypeForResponse",
 )

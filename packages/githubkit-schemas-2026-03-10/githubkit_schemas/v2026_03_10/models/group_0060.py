@@ -13,6 +13,8 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0061 import PullRequestMinimalPropBase, PullRequestMinimalPropHead
+
 
 class PullRequestMinimal(GitHubModel):
     """Pull Request Minimal"""
@@ -24,48 +26,6 @@ class PullRequestMinimal(GitHubModel):
     base: PullRequestMinimalPropBase = Field()
 
 
-class PullRequestMinimalPropHead(GitHubModel):
-    """PullRequestMinimalPropHead"""
-
-    ref: str = Field()
-    sha: str = Field()
-    repo: PullRequestMinimalPropHeadPropRepo = Field()
-
-
-class PullRequestMinimalPropHeadPropRepo(GitHubModel):
-    """PullRequestMinimalPropHeadPropRepo"""
-
-    id: int = Field()
-    url: str = Field()
-    name: str = Field()
-
-
-class PullRequestMinimalPropBase(GitHubModel):
-    """PullRequestMinimalPropBase"""
-
-    ref: str = Field()
-    sha: str = Field()
-    repo: PullRequestMinimalPropBasePropRepo = Field()
-
-
-class PullRequestMinimalPropBasePropRepo(GitHubModel):
-    """PullRequestMinimalPropBasePropRepo"""
-
-    id: int = Field()
-    url: str = Field()
-    name: str = Field()
-
-
 model_rebuild(PullRequestMinimal)
-model_rebuild(PullRequestMinimalPropHead)
-model_rebuild(PullRequestMinimalPropHeadPropRepo)
-model_rebuild(PullRequestMinimalPropBase)
-model_rebuild(PullRequestMinimalPropBasePropRepo)
 
-__all__ = (
-    "PullRequestMinimal",
-    "PullRequestMinimalPropBase",
-    "PullRequestMinimalPropBasePropRepo",
-    "PullRequestMinimalPropHead",
-    "PullRequestMinimalPropHeadPropRepo",
-)
+__all__ = ("PullRequestMinimal",)

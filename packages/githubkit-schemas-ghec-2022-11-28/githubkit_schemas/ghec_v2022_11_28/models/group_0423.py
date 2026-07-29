@@ -9,44 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ContentSymlink(GitHubModel):
-    """Symlink Content
+class CodeownersErrors(GitHubModel):
+    """CODEOWNERS errors
 
-    An object describing a symlink
+    A list of errors found in a repo's CODEOWNERS file
     """
 
-    type: Literal["symlink"] = Field()
-    target: str = Field()
-    size: int = Field()
-    name: str = Field()
-    path: str = Field()
-    sha: str = Field()
-    url: str = Field()
-    git_url: Union[str, None] = Field()
-    html_url: Union[str, None] = Field()
-    download_url: Union[str, None] = Field()
-    links: ContentSymlinkPropLinks = Field(alias="_links")
+    errors: list[CodeownersErrorsPropErrorsItems] = Field()
 
 
-class ContentSymlinkPropLinks(GitHubModel):
-    """ContentSymlinkPropLinks"""
+class CodeownersErrorsPropErrorsItems(GitHubModel):
+    """CodeownersErrorsPropErrorsItems"""
 
-    git: Union[str, None] = Field()
-    html: Union[str, None] = Field()
-    self_: str = Field(alias="self")
+    line: int = Field(description="The line number where this errors occurs.")
+    column: int = Field(description="The column number where this errors occurs.")
+    source: Missing[str] = Field(
+        default=UNSET, description="The contents of the line where the error occurs."
+    )
+    kind: str = Field(description="The type of error.")
+    suggestion: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="Suggested action to fix the error. This will usually be `null`, but is provided for some common errors.",
+    )
+    message: str = Field(
+        description="A human-readable description of the error, combining information from multiple fields, laid out for display in a monospaced typeface (for example, a command-line setting)."
+    )
+    path: str = Field(description="The path of the file where the error occured.")
 
 
-model_rebuild(ContentSymlink)
-model_rebuild(ContentSymlinkPropLinks)
+model_rebuild(CodeownersErrors)
+model_rebuild(CodeownersErrorsPropErrorsItems)
 
 __all__ = (
-    "ContentSymlink",
-    "ContentSymlinkPropLinks",
+    "CodeownersErrors",
+    "CodeownersErrorsPropErrorsItems",
 )

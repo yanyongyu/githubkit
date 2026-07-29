@@ -9,36 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0188 import (
+    SecretScanningCustomPatternType,
+    SecretScanningCustomPatternTypeForResponse,
+)
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0Type(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneo
-    f0
+class OrgsOrgSecretScanningCustomPatternsPostResponse201Type(TypedDict):
+    """OrgsOrgSecretScanningCustomPatternsPostResponse201"""
 
-    Examples:
-        {'contexts': ['contexts']}
-    """
-
-    contexts: list[str]
+    created_patterns: NotRequired[list[SecretScanningCustomPatternType]]
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneo
-    f0
+class OrgsOrgSecretScanningCustomPatternsPostResponse201TypeForResponse(TypedDict):
+    """OrgsOrgSecretScanningCustomPatternsPostResponse201"""
 
-    Examples:
-        {'contexts': ['contexts']}
-    """
-
-    contexts: list[str]
+    created_patterns: NotRequired[list[SecretScanningCustomPatternTypeForResponse]]
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0Type",
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0TypeForResponse",
+    "OrgsOrgSecretScanningCustomPatternsPostResponse201Type",
+    "OrgsOrgSecretScanningCustomPatternsPostResponse201TypeForResponse",
 )

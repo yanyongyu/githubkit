@@ -9,24 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersPostBodyType(TypedDict):
-    """EnterprisesEnterpriseSettingsBillingCostCentersPostBody"""
+class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBodyType(TypedDict):
+    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBody"""
 
-    name: str
-    ai_credit_pool_enabled: NotRequired[bool]
+    selected_enterprise_teams: list[str]
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersPostBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseSettingsBillingCostCentersPostBody"""
+class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBody"""
 
-    name: str
-    ai_credit_pool_enabled: NotRequired[bool]
+    selected_enterprise_teams: list[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersPostBodyType",
-    "EnterprisesEnterpriseSettingsBillingCostCentersPostBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBodyType",
+    "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBodyTypeForResponse",
 )

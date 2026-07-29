@@ -36,7 +36,7 @@ class EnterpriseOrganizationInstallation(GitHubModel):
     repositories_url: str = Field()
     permissions: AppPermissions = Field(
         title="App Permissions",
-        description="The permissions granted to the user access token.",
+        description="The permissions granted to the fine-grained access token.",
     )
     events: Missing[list[str]] = Field(default=UNSET)
     created_at: _dt.datetime = Field()

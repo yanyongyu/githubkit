@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,46 +17,46 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0250 import MinimalRepository
+from .group_0076 import SimpleRepository
 
 
-class CombinedCommitStatus(GitHubModel):
-    """Combined Commit Status
+class CodeScanningVariantAnalysisRepoTask(GitHubModel):
+    """CodeScanningVariantAnalysisRepoTask"""
 
-    Combined Commit Status
-    """
-
-    state: str = Field()
-    statuses: list[SimpleCommitStatus] = Field()
-    sha: str = Field()
-    total_count: int = Field()
-    repository: MinimalRepository = Field(
-        title="Minimal Repository", description="Minimal Repository"
+    repository: SimpleRepository = Field(
+        title="Simple Repository", description="A GitHub repository."
     )
-    commit_url: str = Field()
-    url: str = Field()
+    analysis_status: Literal[
+        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
+    ] = Field(
+        description="The new status of the CodeQL variant analysis repository task."
+    )
+    artifact_size_in_bytes: Missing[int] = Field(
+        default=UNSET,
+        description="The size of the artifact. This is only available for successful analyses.",
+    )
+    result_count: Missing[int] = Field(
+        default=UNSET,
+        description="The number of results in the case of a successful analysis. This is only available for successful analyses.",
+    )
+    failure_message: Missing[str] = Field(
+        default=UNSET,
+        description="The reason of the failure of this repo task. This is only available if the repository task has failed.",
+    )
+    database_commit_sha: Missing[str] = Field(
+        default=UNSET,
+        description="The SHA of the commit the CodeQL database was built against. This is only available for successful analyses.",
+    )
+    source_location_prefix: Missing[str] = Field(
+        default=UNSET,
+        description="The source location prefix to use. This is only available for successful analyses.",
+    )
+    artifact_url: Missing[str] = Field(
+        default=UNSET,
+        description="The URL of the artifact. This is only available for successful analyses.",
+    )
 
 
-class SimpleCommitStatus(GitHubModel):
-    """Simple Commit Status"""
+model_rebuild(CodeScanningVariantAnalysisRepoTask)
 
-    description: Union[str, None] = Field()
-    id: int = Field()
-    node_id: str = Field()
-    state: str = Field()
-    context: str = Field()
-    target_url: Union[str, None] = Field()
-    required: Missing[Union[bool, None]] = Field(default=UNSET)
-    avatar_url: Union[str, None] = Field()
-    url: str = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-
-
-model_rebuild(CombinedCommitStatus)
-model_rebuild(SimpleCommitStatus)
-
-__all__ = (
-    "CombinedCommitStatus",
-    "SimpleCommitStatus",
-)
+__all__ = ("CodeScanningVariantAnalysisRepoTask",)

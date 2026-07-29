@@ -11,32 +11,26 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
+from .group_0283 import ActionsVariableType, ActionsVariableTypeForResponse
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type(
+
+class ReposOwnerRepoActionsOrganizationVariablesGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsOrganizationVariablesGetResponse200"""
+
+    total_count: int
+    variables: list[ActionsVariableType]
+
+
+class ReposOwnerRepoActionsOrganizationVariablesGetResponse200TypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0
+    """ReposOwnerRepoActionsOrganizationVariablesGetResponse200"""
 
-    Examples:
-        {'teams': ['my-team']}
-    """
-
-    teams: list[str]
-
-
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0
-
-    Examples:
-        {'teams': ['my-team']}
-    """
-
-    teams: list[str]
+    total_count: int
+    variables: list[ActionsVariableTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type",
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0TypeForResponse",
+    "ReposOwnerRepoActionsOrganizationVariablesGetResponse200Type",
+    "ReposOwnerRepoActionsOrganizationVariablesGetResponse200TypeForResponse",
 )

@@ -9,26 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0278 import ActionsSecretType, ActionsSecretTypeForResponse
-
-
-class ReposOwnerRepoAgentsOrganizationSecretsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoAgentsOrganizationSecretsGetResponse200"""
-
-    total_count: int
-    secrets: list[ActionsSecretType]
+from .group_0260 import (
+    SecretScanningCustomPatternType,
+    SecretScanningCustomPatternTypeForResponse,
+)
 
 
-class ReposOwnerRepoAgentsOrganizationSecretsGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoAgentsOrganizationSecretsGetResponse200"""
+class OrgsOrgSecretScanningCustomPatternsPostResponse201Type(TypedDict):
+    """OrgsOrgSecretScanningCustomPatternsPostResponse201"""
 
-    total_count: int
-    secrets: list[ActionsSecretTypeForResponse]
+    created_patterns: NotRequired[list[SecretScanningCustomPatternType]]
+
+
+class OrgsOrgSecretScanningCustomPatternsPostResponse201TypeForResponse(TypedDict):
+    """OrgsOrgSecretScanningCustomPatternsPostResponse201"""
+
+    created_patterns: NotRequired[list[SecretScanningCustomPatternTypeForResponse]]
 
 
 __all__ = (
-    "ReposOwnerRepoAgentsOrganizationSecretsGetResponse200Type",
-    "ReposOwnerRepoAgentsOrganizationSecretsGetResponse200TypeForResponse",
+    "OrgsOrgSecretScanningCustomPatternsPostResponse201Type",
+    "OrgsOrgSecretScanningCustomPatternsPostResponse201TypeForResponse",
 )

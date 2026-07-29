@@ -9,34 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+
+class SecretScanningAlertMetadataItemsType(TypedDict):
+    """SecretScanningAlertMetadataItems"""
+
+    key: str
+    value: str
 
 
-class StargazerType(TypedDict):
-    """Stargazer
+class SecretScanningAlertMetadataItemsTypeForResponse(TypedDict):
+    """SecretScanningAlertMetadataItems"""
 
-    Stargazer
-    """
-
-    starred_at: _dt.datetime
-    user: Union[None, SimpleUserType]
-
-
-class StargazerTypeForResponse(TypedDict):
-    """Stargazer
-
-    Stargazer
-    """
-
-    starred_at: str
-    user: Union[None, SimpleUserTypeForResponse]
+    key: str
+    value: str
 
 
 __all__ = (
-    "StargazerType",
-    "StargazerTypeForResponse",
+    "SecretScanningAlertMetadataItemsType",
+    "SecretScanningAlertMetadataItemsTypeForResponse",
 )

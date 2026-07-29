@@ -9,27 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody(GitHubModel):
-    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody"""
+class ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202"""
 
-    actor_type: Literal["User", "Team"] = Field(
-        description="The type of actor (must be `User` for user-owned spaces; `Team` will be rejected)."
-    )
-    actor_identifier: str = Field(
-        description="The username of the collaborator. The numeric user ID is also accepted."
-    )
-    role: Literal["reader", "writer", "admin"] = Field(
-        description="The role to grant to the collaborator."
-    )
+    message: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody)
+model_rebuild(ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202)
 
-__all__ = ("UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody",)
+__all__ = ("ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202",)

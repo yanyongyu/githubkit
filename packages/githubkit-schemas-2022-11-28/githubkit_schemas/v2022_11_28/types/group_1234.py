@@ -9,26 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0278 import ActionsSecretType, ActionsSecretTypeForResponse
-
-
-class ReposOwnerRepoAgentsSecretsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoAgentsSecretsGetResponse200"""
-
-    total_count: int
-    secrets: list[ActionsSecretType]
+from .group_0263 import (
+    SecretScanningCustomPatternToDeleteType,
+    SecretScanningCustomPatternToDeleteTypeForResponse,
+)
 
 
-class ReposOwnerRepoAgentsSecretsGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoAgentsSecretsGetResponse200"""
+class OrgsOrgSecretScanningCustomPatternsDeleteBodyType(TypedDict):
+    """OrgsOrgSecretScanningCustomPatternsDeleteBody"""
 
-    total_count: int
-    secrets: list[ActionsSecretTypeForResponse]
+    patterns: list[SecretScanningCustomPatternToDeleteType]
+    post_delete_action: NotRequired[Literal["delete_alerts", "resolve_alerts"]]
+
+
+class OrgsOrgSecretScanningCustomPatternsDeleteBodyTypeForResponse(TypedDict):
+    """OrgsOrgSecretScanningCustomPatternsDeleteBody"""
+
+    patterns: list[SecretScanningCustomPatternToDeleteTypeForResponse]
+    post_delete_action: NotRequired[Literal["delete_alerts", "resolve_alerts"]]
 
 
 __all__ = (
-    "ReposOwnerRepoAgentsSecretsGetResponse200Type",
-    "ReposOwnerRepoAgentsSecretsGetResponse200TypeForResponse",
+    "OrgsOrgSecretScanningCustomPatternsDeleteBodyType",
+    "OrgsOrgSecretScanningCustomPatternsDeleteBodyTypeForResponse",
 )

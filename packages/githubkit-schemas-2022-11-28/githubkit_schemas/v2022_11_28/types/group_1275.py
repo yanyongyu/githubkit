@@ -9,43 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0284 import ActionsSecretType, ActionsSecretTypeForResponse
 
 
-class ReposOwnerRepoCodespacesPostBodyType(TypedDict):
-    """ReposOwnerRepoCodespacesPostBody"""
+class ReposOwnerRepoAgentsOrganizationSecretsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoAgentsOrganizationSecretsGetResponse200"""
 
-    ref: NotRequired[str]
-    location: NotRequired[str]
-    geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
-    client_ip: NotRequired[str]
-    machine: NotRequired[str]
-    devcontainer_path: NotRequired[str]
-    multi_repo_permissions_opt_out: NotRequired[bool]
-    working_directory: NotRequired[str]
-    idle_timeout_minutes: NotRequired[int]
-    display_name: NotRequired[str]
-    retention_period_minutes: NotRequired[int]
+    total_count: int
+    secrets: list[ActionsSecretType]
 
 
-class ReposOwnerRepoCodespacesPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoCodespacesPostBody"""
+class ReposOwnerRepoAgentsOrganizationSecretsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoAgentsOrganizationSecretsGetResponse200"""
 
-    ref: NotRequired[str]
-    location: NotRequired[str]
-    geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
-    client_ip: NotRequired[str]
-    machine: NotRequired[str]
-    devcontainer_path: NotRequired[str]
-    multi_repo_permissions_opt_out: NotRequired[bool]
-    working_directory: NotRequired[str]
-    idle_timeout_minutes: NotRequired[int]
-    display_name: NotRequired[str]
-    retention_period_minutes: NotRequired[int]
+    total_count: int
+    secrets: list[ActionsSecretTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoCodespacesPostBodyType",
-    "ReposOwnerRepoCodespacesPostBodyTypeForResponse",
+    "ReposOwnerRepoAgentsOrganizationSecretsGetResponse200Type",
+    "ReposOwnerRepoAgentsOrganizationSecretsGetResponse200TypeForResponse",
 )

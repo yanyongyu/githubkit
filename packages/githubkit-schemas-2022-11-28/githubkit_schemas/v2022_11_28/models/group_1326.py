@@ -9,24 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200(GitHubModel):
-    """ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200"""
+class ReposOwnerRepoCommentsCommentIdReactionsPostBody(GitHubModel):
+    """ReposOwnerRepoCommentsCommentIdReactionsPostBody"""
 
-    enabled: bool = Field(
-        description="Whether the pull request creation cap is enabled"
-    )
-    max_open_pull_requests: int = Field(
-        le=1000.0,
-        ge=1.0,
-        description="The maximum number of open pull requests a user can have at one time",
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ] = Field(
+        description="The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the commit comment."
     )
 
 
-model_rebuild(ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200)
+model_rebuild(ReposOwnerRepoCommentsCommentIdReactionsPostBody)
 
-__all__ = ("ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200",)
+__all__ = ("ReposOwnerRepoCommentsCommentIdReactionsPostBody",)

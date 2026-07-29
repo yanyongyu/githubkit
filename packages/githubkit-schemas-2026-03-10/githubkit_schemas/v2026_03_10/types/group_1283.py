@@ -12,25 +12,49 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoCommitsCommitShaCommentsPostBodyType(TypedDict):
-    """ReposOwnerRepoCommitsCommitShaCommentsPostBody"""
+class ReposOwnerRepoAttestationsSubjectDigestGetResponse200Type(TypedDict):
+    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200"""
 
-    body: str
-    path: NotRequired[str]
-    position: NotRequired[int]
-    line: NotRequired[int]
+    attestations: NotRequired[
+        list[
+            ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsType
+        ]
+    ]
 
 
-class ReposOwnerRepoCommitsCommitShaCommentsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoCommitsCommitShaCommentsPostBody"""
+class ReposOwnerRepoAttestationsSubjectDigestGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200"""
 
-    body: str
-    path: NotRequired[str]
-    position: NotRequired[int]
-    line: NotRequired[int]
+    attestations: NotRequired[
+        list[
+            ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse
+        ]
+    ]
+
+
+class ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsType(
+    TypedDict
+):
+    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
+
+    repository_id: NotRequired[int]
+    bundle_url: NotRequired[str]
+    initiator: NotRequired[str]
+
+
+class ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
+
+    repository_id: NotRequired[int]
+    bundle_url: NotRequired[str]
+    initiator: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoCommitsCommitShaCommentsPostBodyType",
-    "ReposOwnerRepoCommitsCommitShaCommentsPostBodyTypeForResponse",
+    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsType",
+    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse",
+    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200Type",
+    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200TypeForResponse",
 )

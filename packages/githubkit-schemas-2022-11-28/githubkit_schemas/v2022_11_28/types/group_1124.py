@@ -9,22 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCodespacesAccessSelectedUsersDeleteBodyType(TypedDict):
-    """OrgsOrgCodespacesAccessSelectedUsersDeleteBody"""
+class OrgsOrgAgentsSecretsSecretNamePutBodyType(TypedDict):
+    """OrgsOrgAgentsSecretsSecretNamePutBody"""
 
-    selected_usernames: list[str]
+    encrypted_value: str
+    key_id: str
+    visibility: Literal["all", "private", "selected"]
+    selected_repository_ids: NotRequired[list[int]]
 
 
-class OrgsOrgCodespacesAccessSelectedUsersDeleteBodyTypeForResponse(TypedDict):
-    """OrgsOrgCodespacesAccessSelectedUsersDeleteBody"""
+class OrgsOrgAgentsSecretsSecretNamePutBodyTypeForResponse(TypedDict):
+    """OrgsOrgAgentsSecretsSecretNamePutBody"""
 
-    selected_usernames: list[str]
+    encrypted_value: str
+    key_id: str
+    visibility: Literal["all", "private", "selected"]
+    selected_repository_ids: NotRequired[list[int]]
 
 
 __all__ = (
-    "OrgsOrgCodespacesAccessSelectedUsersDeleteBodyType",
-    "OrgsOrgCodespacesAccessSelectedUsersDeleteBodyTypeForResponse",
+    "OrgsOrgAgentsSecretsSecretNamePutBodyType",
+    "OrgsOrgAgentsSecretsSecretNamePutBodyTypeForResponse",
 )

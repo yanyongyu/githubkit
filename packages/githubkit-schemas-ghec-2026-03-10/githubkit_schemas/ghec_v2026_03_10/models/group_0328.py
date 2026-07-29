@@ -10,7 +10,6 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal
 
 from pydantic import Field
 
@@ -19,46 +18,42 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RuleSuitesItems(GitHubModel):
-    """RuleSuitesItems"""
+class ProjectsV2FieldIterationConfiguration(GitHubModel):
+    """ProjectsV2FieldIterationConfiguration
 
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the rule insight."
+    The configuration for iteration fields.
+    """
+
+    start_date: Missing[_dt.date] = Field(
+        default=UNSET, description="The start date of the first iteration."
     )
-    actor_id: Missing[int] = Field(
-        default=UNSET, description="The number that identifies the user."
-    )
-    actor_name: Missing[str] = Field(
-        default=UNSET, description="The handle for the GitHub user account."
-    )
-    before_sha: Missing[str] = Field(
-        default=UNSET, description="The first commit sha before the push evaluation."
-    )
-    after_sha: Missing[str] = Field(
-        default=UNSET, description="The last commit sha in the push evaluation."
-    )
-    ref: Missing[str] = Field(
-        default=UNSET, description="The ref name that the evaluation ran on."
-    )
-    repository_id: Missing[int] = Field(
+    duration: Missing[int] = Field(
         default=UNSET,
-        description="The ID of the repository associated with the rule evaluation.",
+        description="The default duration for iterations in days. Individual iterations can override this value.",
     )
-    repository_name: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the repository without the `.git` extension.",
+    iterations: Missing[
+        list[ProjectsV2FieldIterationConfigurationPropIterationsItems]
+    ] = Field(default=UNSET, description="Zero or more iterations for the field.")
+
+
+class ProjectsV2FieldIterationConfigurationPropIterationsItems(GitHubModel):
+    """ProjectsV2FieldIterationConfigurationPropIterationsItems"""
+
+    title: Missing[str] = Field(
+        default=UNSET, description="The title of the iteration."
     )
-    pushed_at: Missing[_dt.datetime] = Field(default=UNSET)
-    result: Missing[Literal["pass", "fail", "bypass"]] = Field(
-        default=UNSET,
-        description="The result of the rule evaluations for rules with the `active` enforcement status.",
+    start_date: Missing[_dt.date] = Field(
+        default=UNSET, description="The start date of the iteration."
     )
-    evaluation_result: Missing[Literal["pass", "fail", "bypass"]] = Field(
-        default=UNSET,
-        description="The result of the rule evaluations for rules with the `active` and `evaluate` enforcement statuses, demonstrating whether rules would pass or fail if all rules in the rule suite were `active`.",
+    duration: Missing[int] = Field(
+        default=UNSET, description="The duration of the iteration in days."
     )
 
 
-model_rebuild(RuleSuitesItems)
+model_rebuild(ProjectsV2FieldIterationConfiguration)
+model_rebuild(ProjectsV2FieldIterationConfigurationPropIterationsItems)
 
-__all__ = ("RuleSuitesItems",)
+__all__ = (
+    "ProjectsV2FieldIterationConfiguration",
+    "ProjectsV2FieldIterationConfigurationPropIterationsItems",
+)

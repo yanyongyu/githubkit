@@ -9,31 +9,66 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class CodeScanningAnalysisDeletionType(TypedDict):
-    """Analysis deletion
+class CodeQualitySetupType(TypedDict):
+    """CodeQualitySetup
 
-    Successful deletion of a code scanning analysis
+    Configuration for code quality setup.
     """
 
-    next_analysis_url: Union[str, None]
-    confirm_delete_url: Union[str, None]
+    state: NotRequired[Literal["configured", "not-configured"]]
+    languages: NotRequired[
+        list[
+            Literal[
+                "csharp",
+                "go",
+                "java-kotlin",
+                "javascript-typescript",
+                "python",
+                "ruby",
+                "rust",
+            ]
+        ]
+    ]
+    runner_type: NotRequired[Union[None, Literal["standard", "labeled"]]]
+    runner_label: NotRequired[Union[str, None]]
+    updated_at: NotRequired[Union[_dt.datetime, None]]
+    schedule: NotRequired[Union[None, Literal["weekly"]]]
+    ai_findings_option: NotRequired[Union[None, Literal["disabled", "on_push"]]]
 
 
-class CodeScanningAnalysisDeletionTypeForResponse(TypedDict):
-    """Analysis deletion
+class CodeQualitySetupTypeForResponse(TypedDict):
+    """CodeQualitySetup
 
-    Successful deletion of a code scanning analysis
+    Configuration for code quality setup.
     """
 
-    next_analysis_url: Union[str, None]
-    confirm_delete_url: Union[str, None]
+    state: NotRequired[Literal["configured", "not-configured"]]
+    languages: NotRequired[
+        list[
+            Literal[
+                "csharp",
+                "go",
+                "java-kotlin",
+                "javascript-typescript",
+                "python",
+                "ruby",
+                "rust",
+            ]
+        ]
+    ]
+    runner_type: NotRequired[Union[None, Literal["standard", "labeled"]]]
+    runner_label: NotRequired[Union[str, None]]
+    updated_at: NotRequired[Union[str, None]]
+    schedule: NotRequired[Union[None, Literal["weekly"]]]
+    ai_findings_option: NotRequired[Union[None, Literal["disabled", "on_push"]]]
 
 
 __all__ = (
-    "CodeScanningAnalysisDeletionType",
-    "CodeScanningAnalysisDeletionTypeForResponse",
+    "CodeQualitySetupType",
+    "CodeQualitySetupTypeForResponse",
 )

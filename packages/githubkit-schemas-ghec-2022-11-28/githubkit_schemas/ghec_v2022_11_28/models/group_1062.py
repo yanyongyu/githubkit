@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,80 +17,42 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_1064 import (
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0,
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository,
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems,
-)
-from .group_1065 import (
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItems,
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropOwner,
-)
-from .group_1067 import (
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItems,
-)
+from .group_0003 import SimpleUser
+from .group_0618 import EnterpriseWebhooks
+from .group_0619 import SimpleInstallation
+from .group_0620 import OrganizationSimpleWebhooks
+from .group_0621 import RepositoryWebhooks
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200(GitHubModel):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200"""
+class WebhookStarCreated(GitHubModel):
+    """star created event"""
 
-    id: str = Field(description="Unique task identifier")
-    url: Missing[str] = Field(default=UNSET, description="API URL for this task")
-    html_url: Missing[str] = Field(default=UNSET, description="Web URL for this task")
-    name: Missing[str] = Field(
-        default=UNSET, description="Human-readable name derived from the task prompt"
-    )
-    creator: Missing[
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0
-    ] = Field(default=UNSET, description="The entity who created this task")
-    creator_type: Missing[Literal["user", "organization"]] = Field(
-        default=UNSET, description="Type of the task creator"
-    )
-    user_collaborators: Missing[
-        list[
-            AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems
-        ]
-    ] = Field(default=UNSET, description="User objects of collaborators on this task")
-    owner: Missing[AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropOwner] = (
-        Field(default=UNSET, description="The owner of the repository")
-    )
-    repository: Missing[
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository
-    ] = Field(default=UNSET, description="The repository this task belongs to")
-    state: Literal[
-        "queued",
-        "in_progress",
-        "completed",
-        "failed",
-        "idle",
-        "waiting_for_user",
-        "timed_out",
-        "cancelled",
-    ] = Field(
-        description="Current state of the task, derived from its most recent session"
-    )
-    session_count: Missing[int] = Field(
-        default=UNSET, description="Number of sessions in this task"
-    )
-    artifacts: Missing[
-        list[AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItems]
-    ] = Field(
+    action: Literal["created"] = Field()
+    enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
-        description="Resources created by this task (PRs, branches, etc.)",
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest/admin/overview/about-enterprise-accounts)."',
     )
-    archived_at: Missing[Union[_dt.datetime, None]] = Field(
+    installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
-        description="Timestamp when the task was archived, null if not archived",
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    updated_at: Missing[_dt.datetime] = Field(
-        default=UNSET, description="Timestamp of the most recent update"
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    created_at: _dt.datetime = Field(description="Timestamp when the task was created")
-    sessions: Missing[
-        list[AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItems]
-    ] = Field(default=UNSET, description="Sessions associated with this task")
+    repository: RepositoryWebhooks = Field(
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    starred_at: Union[str, None] = Field(
+        description="The time the star was created. This is a timestamp in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. Will be `null` for the `deleted` action."
+    )
 
 
-model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse200)
+model_rebuild(WebhookStarCreated)
 
-__all__ = ("AgentsReposOwnerRepoTasksTaskIdGetResponse200",)
+__all__ = ("WebhookStarCreated",)

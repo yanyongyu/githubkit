@@ -9,58 +9,59 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgSettingsNetworkConfigurationsGetResponse200Type(TypedDict):
-    """OrgsOrgSettingsNetworkConfigurationsGetResponse200"""
+class OrgsOrgHooksPostBodyType(TypedDict):
+    """OrgsOrgHooksPostBody"""
 
-    total_count: int
-    network_configurations: list[NetworkConfigurationType]
-
-
-class OrgsOrgSettingsNetworkConfigurationsGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgSettingsNetworkConfigurationsGetResponse200"""
-
-    total_count: int
-    network_configurations: list[NetworkConfigurationTypeForResponse]
+    name: str
+    config: OrgsOrgHooksPostBodyPropConfigType
+    events: NotRequired[list[str]]
+    active: NotRequired[bool]
 
 
-class NetworkConfigurationType(TypedDict):
-    """Hosted compute network configuration
+class OrgsOrgHooksPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgHooksPostBody"""
 
-    A hosted compute network configuration.
+    name: str
+    config: OrgsOrgHooksPostBodyPropConfigTypeForResponse
+    events: NotRequired[list[str]]
+    active: NotRequired[bool]
+
+
+class OrgsOrgHooksPostBodyPropConfigType(TypedDict):
+    """OrgsOrgHooksPostBodyPropConfig
+
+    Key/value pairs to provide settings for this webhook.
     """
 
-    id: str
-    name: str
-    compute_service: NotRequired[Literal["none", "actions", "codespaces"]]
-    network_settings_ids: NotRequired[list[str]]
-    failover_network_settings_ids: NotRequired[list[str]]
-    failover_network_enabled: NotRequired[bool]
-    created_on: Union[_dt.datetime, None]
+    url: str
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
+    username: NotRequired[str]
+    password: NotRequired[str]
 
 
-class NetworkConfigurationTypeForResponse(TypedDict):
-    """Hosted compute network configuration
+class OrgsOrgHooksPostBodyPropConfigTypeForResponse(TypedDict):
+    """OrgsOrgHooksPostBodyPropConfig
 
-    A hosted compute network configuration.
+    Key/value pairs to provide settings for this webhook.
     """
 
-    id: str
-    name: str
-    compute_service: NotRequired[Literal["none", "actions", "codespaces"]]
-    network_settings_ids: NotRequired[list[str]]
-    failover_network_settings_ids: NotRequired[list[str]]
-    failover_network_enabled: NotRequired[bool]
-    created_on: Union[str, None]
+    url: str
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
+    username: NotRequired[str]
+    password: NotRequired[str]
 
 
 __all__ = (
-    "NetworkConfigurationType",
-    "NetworkConfigurationTypeForResponse",
-    "OrgsOrgSettingsNetworkConfigurationsGetResponse200Type",
-    "OrgsOrgSettingsNetworkConfigurationsGetResponse200TypeForResponse",
+    "OrgsOrgHooksPostBodyPropConfigType",
+    "OrgsOrgHooksPostBodyPropConfigTypeForResponse",
+    "OrgsOrgHooksPostBodyType",
+    "OrgsOrgHooksPostBodyTypeForResponse",
 )

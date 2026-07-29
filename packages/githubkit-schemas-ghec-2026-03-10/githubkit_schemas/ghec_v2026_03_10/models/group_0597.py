@@ -18,19 +18,43 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class KeySimple(GitHubModel):
-    """Key Simple
-
-    Key Simple
-    """
-
-    id: int = Field()
-    key: str = Field()
-    created_at: Missing[_dt.datetime] = Field(default=UNSET)
-    last_used: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+from .group_0378 import GitUser
+from .group_0379 import Verification
 
 
-model_rebuild(KeySimple)
+class CommitSearchResultItemPropCommit(GitHubModel):
+    """CommitSearchResultItemPropCommit"""
 
-__all__ = ("KeySimple",)
+    author: CommitSearchResultItemPropCommitPropAuthor = Field()
+    committer: Union[None, GitUser] = Field()
+    comment_count: int = Field()
+    message: str = Field()
+    tree: CommitSearchResultItemPropCommitPropTree = Field()
+    url: str = Field()
+    verification: Missing[Verification] = Field(default=UNSET, title="Verification")
+
+
+class CommitSearchResultItemPropCommitPropAuthor(GitHubModel):
+    """CommitSearchResultItemPropCommitPropAuthor"""
+
+    name: str = Field()
+    email: str = Field()
+    date: _dt.datetime = Field()
+
+
+class CommitSearchResultItemPropCommitPropTree(GitHubModel):
+    """CommitSearchResultItemPropCommitPropTree"""
+
+    sha: str = Field()
+    url: str = Field()
+
+
+model_rebuild(CommitSearchResultItemPropCommit)
+model_rebuild(CommitSearchResultItemPropCommitPropAuthor)
+model_rebuild(CommitSearchResultItemPropCommitPropTree)
+
+__all__ = (
+    "CommitSearchResultItemPropCommit",
+    "CommitSearchResultItemPropCommitPropAuthor",
+    "CommitSearchResultItemPropCommitPropTree",
+)

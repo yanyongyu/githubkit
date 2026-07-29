@@ -16,38 +16,15 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class RepositoryRuleMergeQueuePropParameters(GitHubModel):
-    """RepositoryRuleMergeQueuePropParameters"""
+class RepositoryRuleRequiredLinearHistory(GitHubModel):
+    """required_linear_history
 
-    check_response_timeout_minutes: int = Field(
-        le=360.0,
-        ge=1.0,
-        description="Maximum time for a required status check to report a conclusion. After this much time has elapsed, checks that have not reported a conclusion will be assumed to have failed",
-    )
-    grouping_strategy: Literal["ALLGREEN", "HEADGREEN"] = Field(
-        description="When set to ALLGREEN, the merge commit created by merge queue for each PR in the group must pass all required checks to merge. When set to HEADGREEN, only the commit at the head of the merge group, i.e. the commit containing changes from all of the PRs in the group, must pass its required checks to merge."
-    )
-    max_entries_to_build: int = Field(
-        le=100.0,
-        description="Limit the number of queued pull requests requesting checks and workflow runs at the same time.",
-    )
-    max_entries_to_merge: int = Field(
-        le=100.0,
-        description="The maximum number of PRs that will be merged together in a group.",
-    )
-    merge_method: Literal["MERGE", "SQUASH", "REBASE"] = Field(
-        description="Method to use when merging changes from queued pull requests."
-    )
-    min_entries_to_merge: int = Field(
-        le=100.0,
-        description="The minimum number of PRs that will be merged together in a group.",
-    )
-    min_entries_to_merge_wait_minutes: int = Field(
-        le=360.0,
-        description="The time merge queue should wait after the first PR is added to the queue for the minimum group size to be met. After this time has elapsed, the minimum group size will be ignored and a smaller group will be merged.",
-    )
+    Prevent merge commits from being pushed to matching refs.
+    """
+
+    type: Literal["required_linear_history"] = Field()
 
 
-model_rebuild(RepositoryRuleMergeQueuePropParameters)
+model_rebuild(RepositoryRuleRequiredLinearHistory)
 
-__all__ = ("RepositoryRuleMergeQueuePropParameters",)
+__all__ = ("RepositoryRuleRequiredLinearHistory",)

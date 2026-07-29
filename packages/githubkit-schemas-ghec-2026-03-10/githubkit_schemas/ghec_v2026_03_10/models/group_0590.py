@@ -9,80 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Any, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class GpgKey(GitHubModel):
-    """GPG Key
-
-    A unique encryption key
-    """
-
-    id: int = Field()
-    name: Missing[Union[str, None]] = Field(default=UNSET)
-    primary_key_id: Union[int, None] = Field()
-    key_id: str = Field()
-    public_key: str = Field()
-    emails: list[GpgKeyPropEmailsItems] = Field()
-    subkeys: list[GpgKeyPropSubkeysItems] = Field()
-    can_sign: bool = Field()
-    can_encrypt_comms: bool = Field()
-    can_encrypt_storage: bool = Field()
-    can_certify: bool = Field()
-    created_at: _dt.datetime = Field()
-    expires_at: Union[_dt.datetime, None] = Field()
-    revoked: bool = Field()
-    raw_key: Union[str, None] = Field()
+from .group_0581 import Meta
+from .group_0591 import ScimEnterpriseUserResponseAllof1PropGroupsItems
 
 
-class GpgKeyPropEmailsItems(GitHubModel):
-    """GpgKeyPropEmailsItems"""
+class ScimEnterpriseUserResponseAllof1(GitHubModel):
+    """ScimEnterpriseUserResponseAllof1"""
 
-    email: Missing[str] = Field(default=UNSET)
-    verified: Missing[bool] = Field(default=UNSET)
-
-
-class GpgKeyPropSubkeysItems(GitHubModel):
-    """GpgKeyPropSubkeysItems"""
-
-    id: Missing[int] = Field(default=UNSET)
-    primary_key_id: Missing[int] = Field(default=UNSET)
-    key_id: Missing[str] = Field(default=UNSET)
-    public_key: Missing[str] = Field(default=UNSET)
-    emails: Missing[list[GpgKeyPropSubkeysItemsPropEmailsItems]] = Field(default=UNSET)
-    subkeys: Missing[list[Any]] = Field(default=UNSET)
-    can_sign: Missing[bool] = Field(default=UNSET)
-    can_encrypt_comms: Missing[bool] = Field(default=UNSET)
-    can_encrypt_storage: Missing[bool] = Field(default=UNSET)
-    can_certify: Missing[bool] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
-    expires_at: Missing[Union[str, None]] = Field(default=UNSET)
-    raw_key: Missing[Union[str, None]] = Field(default=UNSET)
-    revoked: Missing[bool] = Field(default=UNSET)
+    id: str = Field(description="The internally generated id for the user object.")
+    groups: Missing[list[ScimEnterpriseUserResponseAllof1PropGroupsItems]] = Field(
+        default=UNSET,
+        description="Provisioned SCIM groups that the user is a member of.",
+    )
+    meta: Meta = Field(
+        description="The metadata associated with the creation/updates to the user."
+    )
 
 
-class GpgKeyPropSubkeysItemsPropEmailsItems(GitHubModel):
-    """GpgKeyPropSubkeysItemsPropEmailsItems"""
+model_rebuild(ScimEnterpriseUserResponseAllof1)
 
-    email: Missing[str] = Field(default=UNSET)
-    verified: Missing[bool] = Field(default=UNSET)
-
-
-model_rebuild(GpgKey)
-model_rebuild(GpgKeyPropEmailsItems)
-model_rebuild(GpgKeyPropSubkeysItems)
-model_rebuild(GpgKeyPropSubkeysItemsPropEmailsItems)
-
-__all__ = (
-    "GpgKey",
-    "GpgKeyPropEmailsItems",
-    "GpgKeyPropSubkeysItems",
-    "GpgKeyPropSubkeysItemsPropEmailsItems",
-)
+__all__ = ("ScimEnterpriseUserResponseAllof1",)

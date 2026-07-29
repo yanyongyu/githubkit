@@ -11,31 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_1067 import (
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsType,
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse,
-)
+
+class WebhookStatusPropCommitPropCommitPropAuthorAllof1Type(TypedDict):
+    """WebhookStatusPropCommitPropCommitPropAuthorAllof1"""
+
+    date: str
+    email: NotRequired[str]
+    name: NotRequired[str]
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1Type(TypedDict):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1"""
+class WebhookStatusPropCommitPropCommitPropAuthorAllof1TypeForResponse(TypedDict):
+    """WebhookStatusPropCommitPropCommitPropAuthorAllof1"""
 
-    sessions: NotRequired[
-        list[AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsType]
-    ]
-
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1TypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1"""
-
-    sessions: NotRequired[
-        list[
-            AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse
-        ]
-    ]
+    date: str
+    email: NotRequired[str]
+    name: NotRequired[str]
 
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1Type",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1TypeForResponse",
+    "WebhookStatusPropCommitPropCommitPropAuthorAllof1Type",
+    "WebhookStatusPropCommitPropCommitPropAuthorAllof1TypeForResponse",
 )

@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0523 import EnterpriseWebhooks
-from .group_0524 import SimpleInstallation
-from .group_0525 import OrganizationSimpleWebhooks
-from .group_0526 import RepositoryWebhooks
-from .group_0558 import PullRequestWebhook
+from .group_0535 import EnterpriseWebhooks
+from .group_0536 import SimpleInstallation
+from .group_0537 import OrganizationSimpleWebhooks
+from .group_0538 import RepositoryWebhooks
+from .group_0852 import WebhookPullRequestAutoMergeDisabledPropPullRequest
 
 
-class WebhookPullRequestReopened(GitHubModel):
-    """pull_request reopened event"""
+class WebhookPullRequestAutoMergeDisabled(GitHubModel):
+    """pull_request auto_merge_disabled event"""
 
-    action: Literal["reopened"] = Field()
+    action: Literal["auto_merge_disabled"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -39,13 +39,16 @@ class WebhookPullRequestReopened(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    number: int = Field(description="The pull request number.")
+    number: int = Field()
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    pull_request: PullRequestWebhook = Field()
+    pull_request: WebhookPullRequestAutoMergeDisabledPropPullRequest = Field(
+        title="Pull Request"
+    )
+    reason: str = Field()
     repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
@@ -53,6 +56,6 @@ class WebhookPullRequestReopened(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookPullRequestReopened)
+model_rebuild(WebhookPullRequestAutoMergeDisabled)
 
-__all__ = ("WebhookPullRequestReopened",)
+__all__ = ("WebhookPullRequestAutoMergeDisabled",)

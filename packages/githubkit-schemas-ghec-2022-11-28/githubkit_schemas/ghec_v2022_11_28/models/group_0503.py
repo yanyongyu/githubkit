@@ -9,21 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class PageBuildStatus(GitHubModel):
-    """Page Build Status
+class IssueSuggestion(GitHubModel):
+    """Issue Suggestion
 
-    Page Build Status
+    An agent-proposed change to an issue that a maintainer can approve or dismiss.
     """
 
-    url: str = Field()
-    status: str = Field()
+    id: int = Field(description="The unique identifier of the suggestion.")
+    issue_id: int = Field(
+        description="The unique identifier of the issue the suggestion applies to."
+    )
+    action: Literal[
+        "set_type", "add_label", "add_field", "add_assignee", "close_issue"
+    ] = Field(description="The kind of change proposed.")
+    state: Literal[
+        "pending", "applied", "approved", "dismissed", "replaced", "invalidated"
+    ] = Field(description="The suggestion's lifecycle state.")
+    target_id: Union[int, None] = Field(
+        description="The identifier of the target the change applies to (issue type, label, field, assignee, or duplicate issue), when applicable."
+    )
+    target_value: Union[str, float, bool, list[str], None] = Field(
+        description="The proposed value, when applicable. An array for multi-select field suggestions."
+    )
+    rationale: Union[str, None] = Field(
+        description="The rationale the actor provided for the suggestion."
+    )
+    confidence: Union[None, Literal["LOW", "MEDIUM", "HIGH"]] = Field(
+        description="The actor's confidence level in the suggestion."
+    )
+    actor_id: Union[int, None] = Field(
+        description="The unique identifier of the actor that proposed the suggestion."
+    )
+    issue_event_id: Union[int, None] = Field(
+        description="The identifier of the timeline event created when the suggestion was approved, when applicable."
+    )
+    resolved_by: Union[int, None] = Field(
+        description="The unique identifier of the user who approved or dismissed the suggestion."
+    )
+    created_at: _dt.datetime = Field(description="The time the suggestion was created.")
+    updated_at: _dt.datetime = Field(
+        description="The time the suggestion was last updated."
+    )
 
 
-model_rebuild(PageBuildStatus)
+model_rebuild(IssueSuggestion)
 
-__all__ = ("PageBuildStatus",)
+__all__ = ("IssueSuggestion",)

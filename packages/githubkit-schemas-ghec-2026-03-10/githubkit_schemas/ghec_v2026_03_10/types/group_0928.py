@@ -13,43 +13,35 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0208 import MilestoneType, MilestoneTypeForResponse
-from .group_0598 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0600 import (
+from .group_0317 import ProjectsV2Type, ProjectsV2TypeForResponse
+from .group_0618 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0619 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0601 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0637 import WebhooksPullRequest5Type, WebhooksPullRequest5TypeForResponse
 
 
-class WebhookPullRequestDemilestonedType(TypedDict):
-    """pull_request demilestoned event"""
+class WebhookProjectsV2ProjectDeletedType(TypedDict):
+    """Projects v2 Project Deleted Event"""
 
-    action: Literal["demilestoned"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    milestone: NotRequired[MilestoneType]
-    number: int
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    pull_request: WebhooksPullRequest5Type
-    repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserType]
+    action: Literal["deleted"]
+    installation: NotRequired[SimpleInstallationType]
+    organization: OrganizationSimpleWebhooksType
+    projects_v2: ProjectsV2Type
+    sender: SimpleUserType
 
 
-class WebhookPullRequestDemilestonedTypeForResponse(TypedDict):
-    """pull_request demilestoned event"""
+class WebhookProjectsV2ProjectDeletedTypeForResponse(TypedDict):
+    """Projects v2 Project Deleted Event"""
 
-    action: Literal["demilestoned"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    milestone: NotRequired[MilestoneTypeForResponse]
-    number: int
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    pull_request: WebhooksPullRequest5TypeForResponse
-    repository: RepositoryWebhooksTypeForResponse
-    sender: NotRequired[SimpleUserTypeForResponse]
+    action: Literal["deleted"]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    projects_v2: ProjectsV2TypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookPullRequestDemilestonedType",
-    "WebhookPullRequestDemilestonedTypeForResponse",
+    "WebhookProjectsV2ProjectDeletedType",
+    "WebhookProjectsV2ProjectDeletedTypeForResponse",
 )

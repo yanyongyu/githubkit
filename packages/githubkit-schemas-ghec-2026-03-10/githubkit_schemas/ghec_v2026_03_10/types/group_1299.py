@@ -9,51 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, Literal, TypeAlias
 from typing_extensions import TypedDict
 
-
-class OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyType(TypedDict):
-    """OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody"""
-
-    resource_type: Literal[
-        "repository", "github_file", "free_text", "github_issue", "github_pull_request"
-    ]
-    metadata: OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataType
+from .group_0266 import (
+    OrganizationActionsVariableType,
+    OrganizationActionsVariableTypeForResponse,
+)
 
 
-class OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody"""
+class OrgsOrgActionsVariablesGetResponse200Type(TypedDict):
+    """OrgsOrgActionsVariablesGetResponse200"""
 
-    resource_type: Literal[
-        "repository", "github_file", "free_text", "github_issue", "github_pull_request"
-    ]
-    metadata: (
-        OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataTypeForResponse
-    )
+    total_count: int
+    variables: list[OrganizationActionsVariableType]
 
 
-OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataType: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata
+class OrgsOrgActionsVariablesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsVariablesGetResponse200"""
 
-Resource-specific metadata.
-"""
-
-
-OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata
-
-Resource-specific metadata.
-"""
+    total_count: int
+    variables: list[OrganizationActionsVariableTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataType",
-    "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataTypeForResponse",
-    "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyType",
-    "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyTypeForResponse",
+    "OrgsOrgActionsVariablesGetResponse200Type",
+    "OrgsOrgActionsVariablesGetResponse200TypeForResponse",
 )

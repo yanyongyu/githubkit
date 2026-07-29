@@ -9,130 +9,221 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0289 import DeploymentType, DeploymentTypeForResponse
-from .group_0523 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0524 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0525 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0526 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0001 import CvssSeveritiesType, CvssSeveritiesTypeForResponse
 
 
-class WebhookWorkflowJobQueuedType(TypedDict):
-    """workflow_job queued event"""
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryType(TypedDict):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisory
 
-    action: Literal["queued"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
-    workflow_job: WebhookWorkflowJobQueuedPropWorkflowJobType
-    deployment: NotRequired[DeploymentType]
+    The details of the security advisory, including summary, description, and
+    severity.
+    """
+
+    cvss: WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvssType
+    cvss_severities: NotRequired[Union[CvssSeveritiesType, None]]
+    cwes: list[WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItemsType]
+    description: str
+    ghsa_id: str
+    identifiers: list[
+        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItemsType
+    ]
+    published_at: str
+    references: list[
+        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItemsType
+    ]
+    severity: str
+    summary: str
+    updated_at: str
+    vulnerabilities: list[
+        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsType
+    ]
+    withdrawn_at: str
 
 
-class WebhookWorkflowJobQueuedTypeForResponse(TypedDict):
-    """workflow_job queued event"""
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryTypeForResponse(TypedDict):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisory
 
-    action: Literal["queued"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
-    workflow_job: WebhookWorkflowJobQueuedPropWorkflowJobTypeForResponse
-    deployment: NotRequired[DeploymentTypeForResponse]
+    The details of the security advisory, including summary, description, and
+    severity.
+    """
+
+    cvss: WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvssTypeForResponse
+    cvss_severities: NotRequired[Union[CvssSeveritiesTypeForResponse, None]]
+    cwes: list[
+        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItemsTypeForResponse
+    ]
+    description: str
+    ghsa_id: str
+    identifiers: list[
+        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItemsTypeForResponse
+    ]
+    published_at: str
+    references: list[
+        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItemsTypeForResponse
+    ]
+    severity: str
+    summary: str
+    updated_at: str
+    vulnerabilities: list[
+        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsTypeForResponse
+    ]
+    withdrawn_at: str
 
 
-class WebhookWorkflowJobQueuedPropWorkflowJobType(TypedDict):
-    """WebhookWorkflowJobQueuedPropWorkflowJob"""
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvssType(TypedDict):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvss"""
 
-    check_run_url: str
-    completed_at: Union[str, None]
-    conclusion: Union[str, None]
-    created_at: str
-    head_sha: str
-    html_url: str
-    id: int
-    labels: list[str]
+    score: float
+    vector_string: Union[str, None]
+
+
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvssTypeForResponse(
+    TypedDict
+):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvss"""
+
+    score: float
+    vector_string: Union[str, None]
+
+
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItemsType(TypedDict):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItems"""
+
+    cwe_id: str
     name: str
-    node_id: str
-    run_attempt: int
-    run_id: int
-    run_url: str
-    runner_group_id: Union[int, None]
-    runner_group_name: Union[str, None]
-    runner_id: Union[int, None]
-    runner_name: Union[str, None]
-    started_at: _dt.datetime
-    status: Literal["queued", "in_progress", "completed", "waiting"]
-    head_branch: Union[str, None]
-    workflow_name: Union[str, None]
-    steps: list[WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItemsType]
+
+
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItemsTypeForResponse(
+    TypedDict
+):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItems"""
+
+    cwe_id: str
+    name: str
+
+
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItemsType(
+    TypedDict
+):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItems"""
+
+    type: str
+    value: str
+
+
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItemsTypeForResponse(
+    TypedDict
+):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItems"""
+
+    type: str
+    value: str
+
+
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItemsType(
+    TypedDict
+):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItems"""
+
     url: str
 
 
-class WebhookWorkflowJobQueuedPropWorkflowJobTypeForResponse(TypedDict):
-    """WebhookWorkflowJobQueuedPropWorkflowJob"""
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItemsTypeForResponse(
+    TypedDict
+):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItems"""
 
-    check_run_url: str
-    completed_at: Union[str, None]
-    conclusion: Union[str, None]
-    created_at: str
-    head_sha: str
-    html_url: str
-    id: int
-    labels: list[str]
-    name: str
-    node_id: str
-    run_attempt: int
-    run_id: int
-    run_url: str
-    runner_group_id: Union[int, None]
-    runner_group_name: Union[str, None]
-    runner_id: Union[int, None]
-    runner_name: Union[str, None]
-    started_at: str
-    status: Literal["queued", "in_progress", "completed", "waiting"]
-    head_branch: Union[str, None]
-    workflow_name: Union[str, None]
-    steps: list[WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItemsTypeForResponse]
     url: str
 
 
-class WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItemsType(TypedDict):
-    """Workflow Step"""
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsType(
+    TypedDict
+):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItems"""
 
-    completed_at: Union[str, None]
-    conclusion: Union[None, Literal["failure", "skipped", "success", "cancelled"]]
+    first_patched_version: Union[
+        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType,
+        None,
+    ]
+    package: WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType
+    severity: str
+    vulnerable_version_range: str
+
+
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsTypeForResponse(
+    TypedDict
+):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItems"""
+
+    first_patched_version: Union[
+        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionTypeForResponse,
+        None,
+    ]
+    package: WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackageTypeForResponse
+    severity: str
+    vulnerable_version_range: str
+
+
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType(
+    TypedDict
+):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsProp
+    FirstPatchedVersion
+    """
+
+    identifier: str
+
+
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionTypeForResponse(
+    TypedDict
+):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsProp
+    FirstPatchedVersion
+    """
+
+    identifier: str
+
+
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType(
+    TypedDict
+):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsProp
+    Package
+    """
+
+    ecosystem: str
     name: str
-    number: int
-    started_at: Union[str, None]
-    status: Literal["completed", "in_progress", "queued", "pending"]
 
 
-class WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItemsTypeForResponse(TypedDict):
-    """Workflow Step"""
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackageTypeForResponse(
+    TypedDict
+):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsProp
+    Package
+    """
 
-    completed_at: Union[str, None]
-    conclusion: Union[None, Literal["failure", "skipped", "success", "cancelled"]]
+    ecosystem: str
     name: str
-    number: int
-    started_at: Union[str, None]
-    status: Literal["completed", "in_progress", "queued", "pending"]
 
 
 __all__ = (
-    "WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItemsType",
-    "WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItemsTypeForResponse",
-    "WebhookWorkflowJobQueuedPropWorkflowJobType",
-    "WebhookWorkflowJobQueuedPropWorkflowJobTypeForResponse",
-    "WebhookWorkflowJobQueuedType",
-    "WebhookWorkflowJobQueuedTypeForResponse",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvssType",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvssTypeForResponse",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItemsType",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItemsTypeForResponse",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItemsType",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItemsTypeForResponse",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItemsType",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItemsTypeForResponse",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionTypeForResponse",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackageTypeForResponse",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsType",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsTypeForResponse",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryType",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryTypeForResponse",
 )

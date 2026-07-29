@@ -9,26 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0250 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsVariablesNameRepositoriesGetResponse200Type(TypedDict):
-    """OrgsOrgActionsVariablesNameRepositoriesGetResponse200"""
+class EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBodyType(
+    TypedDict
+):
+    """EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBody"""
 
-    total_count: int
-    repositories: list[MinimalRepositoryType]
+    user_identifier: NotRequired[str]
 
 
-class OrgsOrgActionsVariablesNameRepositoriesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsVariablesNameRepositoriesGetResponse200"""
+class EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBody"""
 
-    total_count: int
-    repositories: list[MinimalRepositoryTypeForResponse]
+    user_identifier: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgActionsVariablesNameRepositoriesGetResponse200Type",
-    "OrgsOrgActionsVariablesNameRepositoriesGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBodyType",
+    "EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBodyTypeForResponse",
 )

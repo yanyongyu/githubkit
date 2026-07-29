@@ -13,41 +13,40 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0522 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0523 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0524 import (
+from .group_0535 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0536 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0525 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0550 import WebhooksMembershipType, WebhooksMembershipTypeForResponse
+from .group_0537 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0560 import MergeGroupType, MergeGroupTypeForResponse
 
 
-class WebhookOrganizationMemberRemovedType(TypedDict):
-    """organization member_removed event"""
+class WebhookMergeGroupDestroyedType(TypedDict):
+    """WebhookMergeGroupDestroyed"""
 
-    action: Literal["member_removed"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["destroyed"]
+    reason: NotRequired[Literal["merged", "invalidated", "dequeued"]]
     installation: NotRequired[SimpleInstallationType]
-    membership: WebhooksMembershipType
-    organization: OrganizationSimpleWebhooksType
+    merge_group: MergeGroupType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserType
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookOrganizationMemberRemovedTypeForResponse(TypedDict):
-    """organization member_removed event"""
+class WebhookMergeGroupDestroyedTypeForResponse(TypedDict):
+    """WebhookMergeGroupDestroyed"""
 
-    action: Literal["member_removed"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    action: Literal["destroyed"]
+    reason: NotRequired[Literal["merged", "invalidated", "dequeued"]]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    membership: WebhooksMembershipTypeForResponse
-    organization: OrganizationSimpleWebhooksTypeForResponse
+    merge_group: MergeGroupTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    sender: SimpleUserTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookOrganizationMemberRemovedType",
-    "WebhookOrganizationMemberRemovedTypeForResponse",
+    "WebhookMergeGroupDestroyedType",
+    "WebhookMergeGroupDestroyedTypeForResponse",
 )

@@ -10,75 +10,49 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
-class CodeScanningDefaultSetupType(TypedDict):
-    """CodeScanningDefaultSetup
 
-    Configuration for code scanning default setup.
+class CodeScanningCodeqlDatabaseType(TypedDict):
+    """CodeQL Database
+
+    A CodeQL database.
     """
 
-    state: NotRequired[Literal["configured", "not-configured"]]
-    languages: NotRequired[
-        list[
-            Literal[
-                "actions",
-                "c-cpp",
-                "csharp",
-                "go",
-                "java-kotlin",
-                "javascript-typescript",
-                "javascript",
-                "python",
-                "ruby",
-                "typescript",
-                "swift",
-            ]
-        ]
-    ]
-    runner_type: NotRequired[Union[None, Literal["standard", "labeled"]]]
-    runner_label: NotRequired[Union[str, None]]
-    query_suite: NotRequired[Literal["default", "extended"]]
-    threat_model: NotRequired[Literal["remote", "remote_and_local"]]
-    updated_at: NotRequired[Union[_dt.datetime, None]]
-    schedule: NotRequired[Union[None, Literal["weekly"]]]
+    id: int
+    name: str
+    language: str
+    uploader: SimpleUserType
+    content_type: str
+    size: int
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    url: str
+    commit_oid: NotRequired[Union[str, None]]
 
 
-class CodeScanningDefaultSetupTypeForResponse(TypedDict):
-    """CodeScanningDefaultSetup
+class CodeScanningCodeqlDatabaseTypeForResponse(TypedDict):
+    """CodeQL Database
 
-    Configuration for code scanning default setup.
+    A CodeQL database.
     """
 
-    state: NotRequired[Literal["configured", "not-configured"]]
-    languages: NotRequired[
-        list[
-            Literal[
-                "actions",
-                "c-cpp",
-                "csharp",
-                "go",
-                "java-kotlin",
-                "javascript-typescript",
-                "javascript",
-                "python",
-                "ruby",
-                "typescript",
-                "swift",
-            ]
-        ]
-    ]
-    runner_type: NotRequired[Union[None, Literal["standard", "labeled"]]]
-    runner_label: NotRequired[Union[str, None]]
-    query_suite: NotRequired[Literal["default", "extended"]]
-    threat_model: NotRequired[Literal["remote", "remote_and_local"]]
-    updated_at: NotRequired[Union[str, None]]
-    schedule: NotRequired[Union[None, Literal["weekly"]]]
+    id: int
+    name: str
+    language: str
+    uploader: SimpleUserTypeForResponse
+    content_type: str
+    size: int
+    created_at: str
+    updated_at: str
+    url: str
+    commit_oid: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "CodeScanningDefaultSetupType",
-    "CodeScanningDefaultSetupTypeForResponse",
+    "CodeScanningCodeqlDatabaseType",
+    "CodeScanningCodeqlDatabaseTypeForResponse",
 )

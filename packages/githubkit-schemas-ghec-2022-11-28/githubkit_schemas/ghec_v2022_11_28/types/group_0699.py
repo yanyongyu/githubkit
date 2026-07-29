@@ -13,41 +13,48 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0428 import DependabotAlertType, DependabotAlertTypeForResponse
-from .group_0599 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0600 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0601 import (
+from .group_0618 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0619 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0620 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0602 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0621 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0700 import (
+    WebhookCodeScanningAlertReopenedByUserPropAlertType,
+    WebhookCodeScanningAlertReopenedByUserPropAlertTypeForResponse,
+)
 
 
-class WebhookDependabotAlertReopenedType(TypedDict):
-    """Dependabot alert reopened event"""
+class WebhookCodeScanningAlertReopenedByUserType(TypedDict):
+    """code_scanning_alert reopened_by_user event"""
 
-    action: Literal["reopened"]
-    alert: DependabotAlertType
+    action: Literal["reopened_by_user"]
+    alert: WebhookCodeScanningAlertReopenedByUserPropAlertType
+    commit_oid: str
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    ref: str
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookDependabotAlertReopenedTypeForResponse(TypedDict):
-    """Dependabot alert reopened event"""
+class WebhookCodeScanningAlertReopenedByUserTypeForResponse(TypedDict):
+    """code_scanning_alert reopened_by_user event"""
 
-    action: Literal["reopened"]
-    alert: DependabotAlertTypeForResponse
+    action: Literal["reopened_by_user"]
+    alert: WebhookCodeScanningAlertReopenedByUserPropAlertTypeForResponse
+    commit_oid: str
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    ref: str
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookDependabotAlertReopenedType",
-    "WebhookDependabotAlertReopenedTypeForResponse",
+    "WebhookCodeScanningAlertReopenedByUserType",
+    "WebhookCodeScanningAlertReopenedByUserTypeForResponse",
 )

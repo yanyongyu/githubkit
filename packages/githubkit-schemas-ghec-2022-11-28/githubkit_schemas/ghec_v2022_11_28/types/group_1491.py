@@ -9,56 +9,121 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoGitTagsPostBodyType(TypedDict):
-    """ReposOwnerRepoGitTagsPostBody"""
+class ReposOwnerRepoCheckRunsPostBodyPropOutputType(TypedDict):
+    """ReposOwnerRepoCheckRunsPostBodyPropOutput
 
-    tag: str
-    message: str
-    object_: str
-    type: Literal["commit", "tree", "blob"]
-    tagger: NotRequired[ReposOwnerRepoGitTagsPostBodyPropTaggerType]
-
-
-class ReposOwnerRepoGitTagsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoGitTagsPostBody"""
-
-    tag: str
-    message: str
-    object_: str
-    type: Literal["commit", "tree", "blob"]
-    tagger: NotRequired[ReposOwnerRepoGitTagsPostBodyPropTaggerTypeForResponse]
-
-
-class ReposOwnerRepoGitTagsPostBodyPropTaggerType(TypedDict):
-    """ReposOwnerRepoGitTagsPostBodyPropTagger
-
-    An object with information about the individual creating the tag.
+    Check runs can accept a variety of data in the `output` object, including a
+    `title` and `summary` and can optionally provide descriptive details about the
+    run.
     """
 
-    name: str
-    email: str
-    date: NotRequired[_dt.datetime]
+    title: str
+    summary: str
+    text: NotRequired[str]
+    annotations: NotRequired[
+        list[ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItemsType]
+    ]
+    images: NotRequired[
+        list[ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItemsType]
+    ]
 
 
-class ReposOwnerRepoGitTagsPostBodyPropTaggerTypeForResponse(TypedDict):
-    """ReposOwnerRepoGitTagsPostBodyPropTagger
+class ReposOwnerRepoCheckRunsPostBodyPropOutputTypeForResponse(TypedDict):
+    """ReposOwnerRepoCheckRunsPostBodyPropOutput
 
-    An object with information about the individual creating the tag.
+    Check runs can accept a variety of data in the `output` object, including a
+    `title` and `summary` and can optionally provide descriptive details about the
+    run.
     """
 
-    name: str
-    email: str
-    date: NotRequired[str]
+    title: str
+    summary: str
+    text: NotRequired[str]
+    annotations: NotRequired[
+        list[
+            ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItemsTypeForResponse
+        ]
+    ]
+    images: NotRequired[
+        list[ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItemsTypeForResponse]
+    ]
+
+
+class ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItemsType(TypedDict):
+    """ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems"""
+
+    path: str
+    start_line: int
+    end_line: int
+    start_column: NotRequired[int]
+    end_column: NotRequired[int]
+    annotation_level: Literal["notice", "warning", "failure"]
+    message: str
+    title: NotRequired[str]
+    raw_details: NotRequired[str]
+
+
+class ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItemsTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems"""
+
+    path: str
+    start_line: int
+    end_line: int
+    start_column: NotRequired[int]
+    end_column: NotRequired[int]
+    annotation_level: Literal["notice", "warning", "failure"]
+    message: str
+    title: NotRequired[str]
+    raw_details: NotRequired[str]
+
+
+class ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItemsType(TypedDict):
+    """ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems"""
+
+    alt: str
+    image_url: str
+    caption: NotRequired[str]
+
+
+class ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItemsTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems"""
+
+    alt: str
+    image_url: str
+    caption: NotRequired[str]
+
+
+class ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType(TypedDict):
+    """ReposOwnerRepoCheckRunsPostBodyPropActionsItems"""
+
+    label: str
+    description: str
+    identifier: str
+
+
+class ReposOwnerRepoCheckRunsPostBodyPropActionsItemsTypeForResponse(TypedDict):
+    """ReposOwnerRepoCheckRunsPostBodyPropActionsItems"""
+
+    label: str
+    description: str
+    identifier: str
 
 
 __all__ = (
-    "ReposOwnerRepoGitTagsPostBodyPropTaggerType",
-    "ReposOwnerRepoGitTagsPostBodyPropTaggerTypeForResponse",
-    "ReposOwnerRepoGitTagsPostBodyType",
-    "ReposOwnerRepoGitTagsPostBodyTypeForResponse",
+    "ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType",
+    "ReposOwnerRepoCheckRunsPostBodyPropActionsItemsTypeForResponse",
+    "ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItemsType",
+    "ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItemsTypeForResponse",
+    "ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItemsType",
+    "ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItemsTypeForResponse",
+    "ReposOwnerRepoCheckRunsPostBodyPropOutputType",
+    "ReposOwnerRepoCheckRunsPostBodyPropOutputTypeForResponse",
 )

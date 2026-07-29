@@ -9,44 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class KeyType(TypedDict):
-    """Key
-
-    Key
-    """
-
-    key: str
-    id: int
-    url: str
-    title: str
-    created_at: _dt.datetime
-    verified: bool
-    read_only: bool
-    last_used: NotRequired[Union[_dt.datetime, None]]
+from .group_0583 import MetaType, MetaTypeForResponse
+from .group_0593 import (
+    ScimEnterpriseUserResponseAllof1PropGroupsItemsType,
+    ScimEnterpriseUserResponseAllof1PropGroupsItemsTypeForResponse,
+)
 
 
-class KeyTypeForResponse(TypedDict):
-    """Key
+class ScimEnterpriseUserResponseAllof1Type(TypedDict):
+    """ScimEnterpriseUserResponseAllof1"""
 
-    Key
-    """
+    id: str
+    groups: NotRequired[list[ScimEnterpriseUserResponseAllof1PropGroupsItemsType]]
+    meta: MetaType
 
-    key: str
-    id: int
-    url: str
-    title: str
-    created_at: str
-    verified: bool
-    read_only: bool
-    last_used: NotRequired[Union[str, None]]
+
+class ScimEnterpriseUserResponseAllof1TypeForResponse(TypedDict):
+    """ScimEnterpriseUserResponseAllof1"""
+
+    id: str
+    groups: NotRequired[
+        list[ScimEnterpriseUserResponseAllof1PropGroupsItemsTypeForResponse]
+    ]
+    meta: MetaTypeForResponse
 
 
 __all__ = (
-    "KeyType",
-    "KeyTypeForResponse",
+    "ScimEnterpriseUserResponseAllof1Type",
+    "ScimEnterpriseUserResponseAllof1TypeForResponse",
 )

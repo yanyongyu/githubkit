@@ -9,94 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0194 import RepositoryRulesetBypassActor
-from .group_0195 import RepositoryRulesetConditions
-from .group_0206 import (
-    RepositoryRuleCreation,
-    RepositoryRuleDeletion,
-    RepositoryRuleNonFastForward,
-    RepositoryRuleRequiredSignatures,
-)
-from .group_0207 import RepositoryRuleUpdate
-from .group_0209 import RepositoryRuleRequiredLinearHistory
-from .group_0210 import RepositoryRuleMergeQueue
-from .group_0212 import RepositoryRuleRequiredDeployments
-from .group_0214 import RepositoryRulePullRequest
-from .group_0216 import RepositoryRuleRequiredStatusChecks
-from .group_0218 import RepositoryRuleCommitMessagePattern
-from .group_0220 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0222 import RepositoryRuleCommitterEmailPattern
-from .group_0224 import RepositoryRuleBranchNamePattern
-from .group_0226 import RepositoryRuleTagNamePattern
-from .group_0229 import RepositoryRuleWorkflows
-from .group_0231 import RepositoryRuleCodeScanning
-from .group_0233 import RepositoryRuleCopilotCodeReview
-from .group_0235 import RepositoryRuleLicenseComplianceScanning
-from .group_0236 import RepositoryRuleFilePathRestriction
-from .group_0238 import RepositoryRuleMaxFilePathLength
-from .group_0240 import RepositoryRuleFileExtensionRestriction
-from .group_0242 import RepositoryRuleMaxFileSize
 
+class ReposOwnerRepoLabelsNamePatchBody(GitHubModel):
+    """ReposOwnerRepoLabelsNamePatchBody"""
 
-class ReposOwnerRepoRulesetsRulesetIdPutBody(GitHubModel):
-    """ReposOwnerRepoRulesetsRulesetIdPutBody"""
-
-    name: Missing[str] = Field(default=UNSET, description="The name of the ruleset.")
-    target: Missing[Literal["branch", "tag", "push"]] = Field(
-        default=UNSET, description="The target of the ruleset"
-    )
-    enforcement: Missing[Literal["disabled", "active", "evaluate"]] = Field(
+    new_name: Missing[str] = Field(
         default=UNSET,
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise).",
+        description='The new name of the label. Emoji can be added to label names, using either native emoji or colon-style markup. For example, typing `:strawberry:` will render the emoji ![:strawberry:](https://github.githubassets.com/images/icons/emoji/unicode/1f353.png ":strawberry:"). For a full list of available emoji and codes, see "[Emoji cheat sheet](https://github.com/ikatyang/emoji-cheat-sheet)."',
     )
-    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
+    color: Missing[str] = Field(
         default=UNSET,
-        description="The actors that can bypass the rules in this ruleset",
+        description="The [hexadecimal color code](http://www.color-hex.com/) for the label, without the leading `#`.",
     )
-    conditions: Missing[RepositoryRulesetConditions] = Field(
+    description: Missing[str] = Field(
         default=UNSET,
-        title="Repository ruleset conditions for ref names",
-        description="Parameters for a repository ruleset ref name condition",
+        description="A short description of the label. Must be 100 characters or fewer.",
     )
-    rules: Missing[
-        list[
-            Union[
-                RepositoryRuleCreation,
-                RepositoryRuleUpdate,
-                RepositoryRuleDeletion,
-                RepositoryRuleRequiredLinearHistory,
-                RepositoryRuleMergeQueue,
-                RepositoryRuleRequiredDeployments,
-                RepositoryRuleRequiredSignatures,
-                RepositoryRulePullRequest,
-                RepositoryRuleRequiredStatusChecks,
-                RepositoryRuleNonFastForward,
-                RepositoryRuleCommitMessagePattern,
-                RepositoryRuleCommitAuthorEmailPattern,
-                RepositoryRuleCommitterEmailPattern,
-                RepositoryRuleBranchNamePattern,
-                RepositoryRuleTagNamePattern,
-                RepositoryRuleWorkflows,
-                RepositoryRuleCodeScanning,
-                RepositoryRuleCopilotCodeReview,
-                RepositoryRuleLicenseComplianceScanning,
-                RepositoryRuleFilePathRestriction,
-                RepositoryRuleMaxFilePathLength,
-                RepositoryRuleFileExtensionRestriction,
-                RepositoryRuleMaxFileSize,
-            ]
-        ]
-    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
 
 
-model_rebuild(ReposOwnerRepoRulesetsRulesetIdPutBody)
+model_rebuild(ReposOwnerRepoLabelsNamePatchBody)
 
-__all__ = ("ReposOwnerRepoRulesetsRulesetIdPutBody",)
+__all__ = ("ReposOwnerRepoLabelsNamePatchBody",)

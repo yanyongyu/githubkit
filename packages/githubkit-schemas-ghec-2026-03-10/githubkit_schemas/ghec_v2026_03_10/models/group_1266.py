@@ -12,22 +12,36 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0262 import ArtifactDeploymentRecord
 
 
-class OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200(GitHubModel):
-    """OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200"""
+class OrgsOrgActionsCacheUsageByRepositoryGetResponse200(GitHubModel):
+    """OrgsOrgActionsCacheUsageByRepositoryGetResponse200"""
 
-    total_count: Missing[int] = Field(
-        default=UNSET,
-        description="The number of deployment records for this digest and organization",
+    total_count: int = Field()
+    repository_cache_usages: list[ActionsCacheUsageByRepository] = Field()
+
+
+class ActionsCacheUsageByRepository(GitHubModel):
+    """Actions Cache Usage by repository
+
+    GitHub Actions Cache Usage by repository.
+    """
+
+    full_name: str = Field(
+        description="The repository owner and name for the cache usage being shown."
     )
-    deployment_records: Missing[list[ArtifactDeploymentRecord]] = Field(default=UNSET)
+    active_caches_size_in_bytes: int = Field(
+        description="The sum of the size in bytes of all the active cache items in the repository."
+    )
+    active_caches_count: int = Field(
+        description="The number of active caches in the repository."
+    )
 
 
-model_rebuild(OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200)
+model_rebuild(OrgsOrgActionsCacheUsageByRepositoryGetResponse200)
+model_rebuild(ActionsCacheUsageByRepository)
 
-__all__ = ("OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200",)
+__all__ = (
+    "ActionsCacheUsageByRepository",
+    "OrgsOrgActionsCacheUsageByRepositoryGetResponse200",
+)

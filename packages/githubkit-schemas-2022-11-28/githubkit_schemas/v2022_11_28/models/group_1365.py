@@ -14,25 +14,16 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPagesPostBodyPropSource(GitHubModel):
-    """ReposOwnerRepoPagesPostBodyPropSource
+class ReposOwnerRepoImportLfsPatchBody(GitHubModel):
+    """ReposOwnerRepoImportLfsPatchBody"""
 
-    The source branch and directory used to publish your Pages site.
-    """
-
-    branch: str = Field(
-        description="The repository branch used to publish your site's source files."
-    )
-    path: Missing[Literal["/", "/docs"]] = Field(
-        default=UNSET,
-        description="The repository directory that includes the source files for the Pages site. Allowed paths are `/` or `/docs`. Default: `/`",
+    use_lfs: Literal["opt_in", "opt_out"] = Field(
+        description="Whether to store large files during the import. `opt_in` means large files will be stored using Git LFS. `opt_out` means large files will be removed during the import."
     )
 
 
-model_rebuild(ReposOwnerRepoPagesPostBodyPropSource)
+model_rebuild(ReposOwnerRepoImportLfsPatchBody)
 
-__all__ = ("ReposOwnerRepoPagesPostBodyPropSource",)
+__all__ = ("ReposOwnerRepoImportLfsPatchBody",)

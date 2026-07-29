@@ -9,75 +9,75 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0598 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0599 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0600 import (
+from .group_0617 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0618 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0619 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0601 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0630 import WebhooksProjectCardType, WebhooksProjectCardTypeForResponse
+from .group_0620 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0647 import WebhooksMembershipType, WebhooksMembershipTypeForResponse
 
 
-class WebhookProjectCardEditedType(TypedDict):
-    """project_card edited event"""
+class WebhookOrganizationRenamedType(TypedDict):
+    """organization renamed event"""
 
-    action: Literal["edited"]
-    changes: WebhookProjectCardEditedPropChangesType
+    action: Literal["renamed"]
+    changes: NotRequired[WebhookOrganizationRenamedPropChangesType]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    project_card: WebhooksProjectCardType
+    membership: NotRequired[WebhooksMembershipType]
+    organization: OrganizationSimpleWebhooksType
     repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserType
 
 
-class WebhookProjectCardEditedTypeForResponse(TypedDict):
-    """project_card edited event"""
+class WebhookOrganizationRenamedTypeForResponse(TypedDict):
+    """organization renamed event"""
 
-    action: Literal["edited"]
-    changes: WebhookProjectCardEditedPropChangesTypeForResponse
+    action: Literal["renamed"]
+    changes: NotRequired[WebhookOrganizationRenamedPropChangesTypeForResponse]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    project_card: WebhooksProjectCardTypeForResponse
+    membership: NotRequired[WebhooksMembershipTypeForResponse]
+    organization: OrganizationSimpleWebhooksTypeForResponse
     repository: NotRequired[RepositoryWebhooksTypeForResponse]
     sender: SimpleUserTypeForResponse
 
 
-class WebhookProjectCardEditedPropChangesType(TypedDict):
-    """WebhookProjectCardEditedPropChanges"""
+class WebhookOrganizationRenamedPropChangesType(TypedDict):
+    """WebhookOrganizationRenamedPropChanges"""
 
-    note: WebhookProjectCardEditedPropChangesPropNoteType
-
-
-class WebhookProjectCardEditedPropChangesTypeForResponse(TypedDict):
-    """WebhookProjectCardEditedPropChanges"""
-
-    note: WebhookProjectCardEditedPropChangesPropNoteTypeForResponse
+    login: NotRequired[WebhookOrganizationRenamedPropChangesPropLoginType]
 
 
-class WebhookProjectCardEditedPropChangesPropNoteType(TypedDict):
-    """WebhookProjectCardEditedPropChangesPropNote"""
+class WebhookOrganizationRenamedPropChangesTypeForResponse(TypedDict):
+    """WebhookOrganizationRenamedPropChanges"""
 
-    from_: Union[str, None]
+    login: NotRequired[WebhookOrganizationRenamedPropChangesPropLoginTypeForResponse]
 
 
-class WebhookProjectCardEditedPropChangesPropNoteTypeForResponse(TypedDict):
-    """WebhookProjectCardEditedPropChangesPropNote"""
+class WebhookOrganizationRenamedPropChangesPropLoginType(TypedDict):
+    """WebhookOrganizationRenamedPropChangesPropLogin"""
 
-    from_: Union[str, None]
+    from_: NotRequired[str]
+
+
+class WebhookOrganizationRenamedPropChangesPropLoginTypeForResponse(TypedDict):
+    """WebhookOrganizationRenamedPropChangesPropLogin"""
+
+    from_: NotRequired[str]
 
 
 __all__ = (
-    "WebhookProjectCardEditedPropChangesPropNoteType",
-    "WebhookProjectCardEditedPropChangesPropNoteTypeForResponse",
-    "WebhookProjectCardEditedPropChangesType",
-    "WebhookProjectCardEditedPropChangesTypeForResponse",
-    "WebhookProjectCardEditedType",
-    "WebhookProjectCardEditedTypeForResponse",
+    "WebhookOrganizationRenamedPropChangesPropLoginType",
+    "WebhookOrganizationRenamedPropChangesPropLoginTypeForResponse",
+    "WebhookOrganizationRenamedPropChangesType",
+    "WebhookOrganizationRenamedPropChangesTypeForResponse",
+    "WebhookOrganizationRenamedType",
+    "WebhookOrganizationRenamedTypeForResponse",
 )

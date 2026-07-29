@@ -9,122 +9,63 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0133 import TeamType, TeamTypeForResponse
 
-class CodeQualityFindingType(TypedDict):
-    """CodeQualityFinding
 
-    Code quality finding
-    """
+class ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType(
+    TypedDict
+):
+    """ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions"""
 
-    number: int
-    state: Literal["open", "dismissed"]
     url: str
-    rule: CodeQualityFindingRuleType
-    location: CodeQualityFindingLocationType
-    message: CodeQualityFindingMessageType
-    created_at: NotRequired[_dt.datetime]
+    users_url: str
+    teams_url: str
+    users: list[SimpleUserType]
+    teams: list[TeamType]
+    apps: NotRequired[list[Union[IntegrationType, None]]]
 
 
-class CodeQualityFindingTypeForResponse(TypedDict):
-    """CodeQualityFinding
+class ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsTypeForResponse(
+    TypedDict
+):
+    """ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions"""
 
-    Code quality finding
-    """
-
-    number: int
-    state: Literal["open", "dismissed"]
     url: str
-    rule: CodeQualityFindingRuleTypeForResponse
-    location: CodeQualityFindingLocationTypeForResponse
-    message: CodeQualityFindingMessageTypeForResponse
-    created_at: NotRequired[str]
+    users_url: str
+    teams_url: str
+    users: list[SimpleUserTypeForResponse]
+    teams: list[TeamTypeForResponse]
+    apps: NotRequired[list[Union[IntegrationTypeForResponse, None]]]
 
 
-class CodeQualityFindingRuleType(TypedDict):
-    """CodeQualityFindingRule
+class ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType(
+    TypedDict
+):
+    """ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances"""
 
-    Code quality rule
-    """
-
-    id: str
-    title: str
-    description: str
-    help_: NotRequired[str]
-    severity: Literal["error", "warning", "note", "none"]
-    category: Literal["none", "maintainability", "reliability"]
+    users: list[SimpleUserType]
+    teams: list[TeamType]
+    apps: NotRequired[list[Union[IntegrationType, None]]]
 
 
-class CodeQualityFindingRuleTypeForResponse(TypedDict):
-    """CodeQualityFindingRule
+class ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesTypeForResponse(
+    TypedDict
+):
+    """ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances"""
 
-    Code quality rule
-    """
-
-    id: str
-    title: str
-    description: str
-    help_: NotRequired[str]
-    severity: Literal["error", "warning", "note", "none"]
-    category: Literal["none", "maintainability", "reliability"]
-
-
-class CodeQualityFindingLocationType(TypedDict):
-    """CodeQualityFindingLocation
-
-    Code quality file location
-    """
-
-    path: str
-    start_line: NotRequired[int]
-    start_column: NotRequired[int]
-    end_line: NotRequired[int]
-    end_column: NotRequired[int]
-
-
-class CodeQualityFindingLocationTypeForResponse(TypedDict):
-    """CodeQualityFindingLocation
-
-    Code quality file location
-    """
-
-    path: str
-    start_line: NotRequired[int]
-    start_column: NotRequired[int]
-    end_line: NotRequired[int]
-    end_column: NotRequired[int]
-
-
-class CodeQualityFindingMessageType(TypedDict):
-    """CodeQualityFindingMessage
-
-    Code quality finding message
-    """
-
-    text: str
-    markdown: str
-
-
-class CodeQualityFindingMessageTypeForResponse(TypedDict):
-    """CodeQualityFindingMessage
-
-    Code quality finding message
-    """
-
-    text: str
-    markdown: str
+    users: list[SimpleUserTypeForResponse]
+    teams: list[TeamTypeForResponse]
+    apps: NotRequired[list[Union[IntegrationTypeForResponse, None]]]
 
 
 __all__ = (
-    "CodeQualityFindingLocationType",
-    "CodeQualityFindingLocationTypeForResponse",
-    "CodeQualityFindingMessageType",
-    "CodeQualityFindingMessageTypeForResponse",
-    "CodeQualityFindingRuleType",
-    "CodeQualityFindingRuleTypeForResponse",
-    "CodeQualityFindingType",
-    "CodeQualityFindingTypeForResponse",
+    "ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType",
+    "ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesTypeForResponse",
+    "ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType",
+    "ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsTypeForResponse",
 )

@@ -12,80 +12,48 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse422Type(TypedDict):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse422
-
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[
-        list[AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItemsType]
-    ]
-    documentation_url: str
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
+from .group_0220 import IssueType, IssueTypeForResponse
+from .group_0619 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0620 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0621 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse422TypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse422
+class WebhookSubIssuesSubIssueRemovedType(TypedDict):
+    """sub-issue removed event"""
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[
-        list[
-            AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItemsTypeForResponse
-        ]
-    ]
-    documentation_url: str
+    action: Literal["sub_issue_removed"]
+    sub_issue_id: NotRequired[float]
+    sub_issue: NotRequired[IssueType]
+    sub_issue_repo: NotRequired[RepositoryType]
+    parent_issue_id: float
+    parent_issue: IssueType
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItemsType(TypedDict):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItems
+class WebhookSubIssuesSubIssueRemovedTypeForResponse(TypedDict):
+    """sub-issue removed event"""
 
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
-
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItemsTypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItems
-
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
+    action: Literal["sub_issue_removed"]
+    sub_issue_id: NotRequired[float]
+    sub_issue: NotRequired[IssueTypeForResponse]
+    sub_issue_repo: NotRequired[RepositoryTypeForResponse]
+    parent_issue_id: float
+    parent_issue: IssueTypeForResponse
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItemsType",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItemsTypeForResponse",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse422Type",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse422TypeForResponse",
+    "WebhookSubIssuesSubIssueRemovedType",
+    "WebhookSubIssuesSubIssueRemovedTypeForResponse",
 )

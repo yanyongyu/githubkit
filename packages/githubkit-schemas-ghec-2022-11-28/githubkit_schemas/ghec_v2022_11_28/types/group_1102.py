@@ -9,63 +9,79 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseActionsHostedRunnersPostBodyType(TypedDict):
-    """EnterprisesEnterpriseActionsHostedRunnersPostBody"""
+class AgentsReposOwnerRepoTasksPostResponse403Type(TypedDict):
+    """AgentsReposOwnerRepoTasksPostResponse403
 
-    name: str
-    image: EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImageType
-    size: str
-    runner_group_id: int
-    maximum_runners: NotRequired[int]
-    enable_static_ip: NotRequired[bool]
-    image_gen: NotRequired[bool]
-
-
-class EnterprisesEnterpriseActionsHostedRunnersPostBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseActionsHostedRunnersPostBody"""
-
-    name: str
-    image: EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImageTypeForResponse
-    size: str
-    runner_group_id: int
-    maximum_runners: NotRequired[int]
-    enable_static_ip: NotRequired[bool]
-    image_gen: NotRequired[bool]
-
-
-class EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImageType(TypedDict):
-    """EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImage
-
-    The image of runner. To list all available images, use `GET /actions/hosted-
-    runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`.
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
     """
 
-    id: NotRequired[str]
-    source: NotRequired[Literal["github", "partner", "custom"]]
-    version: NotRequired[Union[str, None]]
+    message: str
+    errors: NotRequired[
+        list[AgentsReposOwnerRepoTasksPostResponse403PropErrorsItemsType]
+    ]
+    documentation_url: str
 
 
-class EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImageTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImage
+class AgentsReposOwnerRepoTasksPostResponse403TypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoTasksPostResponse403
 
-    The image of runner. To list all available images, use `GET /actions/hosted-
-    runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`.
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
     """
 
-    id: NotRequired[str]
-    source: NotRequired[Literal["github", "partner", "custom"]]
-    version: NotRequired[Union[str, None]]
+    message: str
+    errors: NotRequired[
+        list[AgentsReposOwnerRepoTasksPostResponse403PropErrorsItemsTypeForResponse]
+    ]
+    documentation_url: str
+
+
+class AgentsReposOwnerRepoTasksPostResponse403PropErrorsItemsType(TypedDict):
+    """AgentsReposOwnerRepoTasksPostResponse403PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
+
+
+class AgentsReposOwnerRepoTasksPostResponse403PropErrorsItemsTypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoTasksPostResponse403PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImageType",
-    "EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImageTypeForResponse",
-    "EnterprisesEnterpriseActionsHostedRunnersPostBodyType",
-    "EnterprisesEnterpriseActionsHostedRunnersPostBodyTypeForResponse",
+    "AgentsReposOwnerRepoTasksPostResponse403PropErrorsItemsType",
+    "AgentsReposOwnerRepoTasksPostResponse403PropErrorsItemsTypeForResponse",
+    "AgentsReposOwnerRepoTasksPostResponse403Type",
+    "AgentsReposOwnerRepoTasksPostResponse403TypeForResponse",
 )

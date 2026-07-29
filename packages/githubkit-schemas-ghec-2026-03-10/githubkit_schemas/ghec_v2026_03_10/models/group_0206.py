@@ -9,35 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class Label(GitHubModel):
-    """Label
+class UsageReportExportList(GitHubModel):
+    """UsageReportExportList"""
 
-    Color-coded labels help you categorize and filter your issues (just like labels
-    in Gmail).
-    """
-
-    id: int = Field(description="Unique identifier for the label.")
-    node_id: str = Field()
-    url: str = Field(description="URL for the label")
-    name: str = Field(description="The name of the label.")
-    description: Union[str, None] = Field(
-        description="Optional description of the label, such as its purpose."
-    )
-    color: str = Field(
-        description="6-character hex code, without the leading #, identifying the color"
-    )
-    default: bool = Field(
-        description="Whether this label comes by default in a new repository."
+    usage_report_exports: list[UsageReportExport] = Field(
+        description="List of usage report exports"
     )
 
 
-model_rebuild(Label)
+class UsageReportExport(GitHubModel):
+    """UsageReportExport"""
 
-__all__ = ("Label",)
+    id: str = Field(description="Unique identifier for the usage report export")
+    report_type: Literal["detailed", "summarized", "premium_request", "ai_credit"] = (
+        Field(description="The type of usage report")
+    )
+    start_date: _dt.date = Field(description="The start date for the report")
+    end_date: _dt.date = Field(description="The end date for the report")
+    status: Literal["processing", "completed", "failed"] = Field(
+        description="The current status of the report export"
+    )
+    download_urls: Missing[list[str]] = Field(
+        default=UNSET,
+        description="URLs to download the completed report. Only present when the report status is `completed`.",
+    )
+    created_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="When the report export was created"
+    )
+    actor: Missing[str] = Field(
+        default=UNSET, description="The login of the user who requested the export"
+    )
+
+
+model_rebuild(UsageReportExportList)
+model_rebuild(UsageReportExport)
+
+__all__ = (
+    "UsageReportExport",
+    "UsageReportExportList",
+)

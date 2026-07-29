@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,45 +18,45 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPullsPullNumberCommentsPostBody(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberCommentsPostBody"""
+class ReposOwnerRepoGitTreesPostBody(GitHubModel):
+    """ReposOwnerRepoGitTreesPostBody"""
 
-    body: str = Field(description="The text of the review comment.")
-    commit_id: str = Field(
-        description="The SHA of the commit needing a comment. Not using the latest commit SHA may render your comment outdated if a subsequent commit modifies the line you specify as the `position`."
+    tree: list[ReposOwnerRepoGitTreesPostBodyPropTreeItems] = Field(
+        description="Objects (of `path`, `mode`, `type`, and `sha`) specifying a tree structure."
     )
-    path: str = Field(
-        description="The relative path to the file that necessitates a comment."
-    )
-    position: Missing[int] = Field(
+    base_tree: Missing[str] = Field(
         default=UNSET,
-        description='**This parameter is closing down. Use `line` instead**. The position in the diff where you want to add a review comment. Note this value is not the same as the line number in the file. The position value equals the number of lines down from the first "@@" hunk header in the file you want to add a comment. The line just below the "@@" line is position 1, the next line is position 2, and so on. The position in the diff continues to increase through lines of whitespace and additional hunks until the beginning of a new file.',
-    )
-    side: Missing[Literal["LEFT", "RIGHT"]] = Field(
-        default=UNSET,
-        description='In a split diff view, the side of the diff that the pull request\'s changes appear on. Can be `LEFT` or `RIGHT`. Use `LEFT` for deletions that appear in red. Use `RIGHT` for additions that appear in green or unchanged lines that appear in white and are shown for context. For a multi-line comment, side represents whether the last line of the comment range is a deletion or addition. For more information, see "[Diff view options](https://docs.github.com/enterprise-cloud@latest/articles/about-comparing-branches-in-pull-requests#diff-view-options)" in the GitHub Help documentation.',
-    )
-    line: Missing[int] = Field(
-        default=UNSET,
-        description="**Required unless using `subject_type:file`**. The line of the blob in the pull request diff that the comment applies to. For a multi-line comment, the last line of the range that your comment applies to.",
-    )
-    start_line: Missing[int] = Field(
-        default=UNSET,
-        description='**Required when using multi-line comments unless using `in_reply_to`**. The `start_line` is the first line in the pull request diff that your multi-line comment applies to. To learn more about multi-line comments, see "[Commenting on a pull request](https://docs.github.com/enterprise-cloud@latest/articles/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request)" in the GitHub Help documentation.',
-    )
-    start_side: Missing[Literal["LEFT", "RIGHT", "side"]] = Field(
-        default=UNSET,
-        description='**Required when using multi-line comments unless using `in_reply_to`**. The `start_side` is the starting side of the diff that the comment applies to. Can be `LEFT` or `RIGHT`. To learn more about multi-line comments, see "[Commenting on a pull request](https://docs.github.com/enterprise-cloud@latest/articles/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request)" in the GitHub Help documentation. See `side` in this table for additional context.',
-    )
-    in_reply_to: Missing[int] = Field(
-        default=UNSET,
-        description='The ID of the review comment to reply to. To find the ID of a review comment with ["List review comments on a pull request"](#list-review-comments-on-a-pull-request). When specified, all parameters other than `body` in the request body are ignored.',
-    )
-    subject_type: Missing[Literal["line", "file"]] = Field(
-        default=UNSET, description="The level at which the comment is targeted."
+        description="The SHA1 of an existing Git tree object which will be used as the base for the new tree. If provided, a new Git tree object will be created from entries in the Git tree object pointed to by `base_tree` and entries defined in the `tree` parameter. Entries defined in the `tree` parameter will overwrite items from `base_tree` with the same `path`. If you're creating new changes on a branch, then normally you'd set `base_tree` to the SHA1 of the Git tree object of the current latest commit on the branch you're working on.\nIf not provided, GitHub will create a new Git tree object from only the entries defined in the `tree` parameter. If you create a new commit pointing to such a tree, then all files which were a part of the parent commit's tree and were not defined in the `tree` parameter will be listed as deleted by the new commit.",
     )
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberCommentsPostBody)
+class ReposOwnerRepoGitTreesPostBodyPropTreeItems(GitHubModel):
+    """ReposOwnerRepoGitTreesPostBodyPropTreeItems"""
 
-__all__ = ("ReposOwnerRepoPullsPullNumberCommentsPostBody",)
+    path: Missing[str] = Field(
+        default=UNSET, description="The file referenced in the tree."
+    )
+    mode: Missing[Literal["100644", "100755", "040000", "160000", "120000"]] = Field(
+        default=UNSET,
+        description="The file mode; one of `100644` for file (blob), `100755` for executable (blob), `040000` for subdirectory (tree), `160000` for submodule (commit), or `120000` for a blob that specifies the path of a symlink.",
+    )
+    type: Missing[Literal["blob", "tree", "commit"]] = Field(
+        default=UNSET, description="Either `blob`, `tree`, or `commit`."
+    )
+    sha: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The SHA1 checksum ID of the object in the tree. Also called `tree.sha`. If the value is `null` then the file will be deleted.  \n  \n**Note:** Use either `tree.sha` or `content` to specify the contents of the entry. Using both `tree.sha` and `content` will return an error.",
+    )
+    content: Missing[str] = Field(
+        default=UNSET,
+        description="The content you want this file to have. GitHub will write this blob out and use that SHA for this entry. Use either this, or `tree.sha`.  \n  \n**Note:** Use either `tree.sha` or `content` to specify the contents of the entry. Using both `tree.sha` and `content` will return an error.",
+    )
+
+
+model_rebuild(ReposOwnerRepoGitTreesPostBody)
+model_rebuild(ReposOwnerRepoGitTreesPostBodyPropTreeItems)
+
+__all__ = (
+    "ReposOwnerRepoGitTreesPostBody",
+    "ReposOwnerRepoGitTreesPostBodyPropTreeItems",
+)

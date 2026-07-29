@@ -13,16 +13,17 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0106 import NetworkConfiguration
+
+class OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200(GitHubModel):
+    """OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200
+
+    The total number of seats set to "pending cancellation" for members of the
+    specified team(s).
+    """
+
+    seats_cancelled: int = Field()
 
 
-class OrgsOrgSettingsNetworkConfigurationsGetResponse200(GitHubModel):
-    """OrgsOrgSettingsNetworkConfigurationsGetResponse200"""
+model_rebuild(OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200)
 
-    total_count: int = Field()
-    network_configurations: list[NetworkConfiguration] = Field()
-
-
-model_rebuild(OrgsOrgSettingsNetworkConfigurationsGetResponse200)
-
-__all__ = ("OrgsOrgSettingsNetworkConfigurationsGetResponse200",)
+__all__ = ("OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200",)

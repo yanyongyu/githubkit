@@ -12,20 +12,39 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class PorterLargeFile(GitHubModel):
-    """Porter Large File
+class GitTree(GitHubModel):
+    """Git Tree
 
-    Porter Large File
+    The hierarchy between files in a Git repository.
     """
 
-    ref_name: str = Field()
+    sha: str = Field()
+    url: Missing[str] = Field(default=UNSET)
+    truncated: bool = Field()
+    tree: list[GitTreePropTreeItems] = Field(
+        description="Objects specifying a tree structure"
+    )
+
+
+class GitTreePropTreeItems(GitHubModel):
+    """GitTreePropTreeItems"""
+
     path: str = Field()
-    oid: str = Field()
-    size: int = Field()
+    mode: str = Field()
+    type: str = Field()
+    sha: str = Field()
+    size: Missing[int] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(PorterLargeFile)
+model_rebuild(GitTree)
+model_rebuild(GitTreePropTreeItems)
 
-__all__ = ("PorterLargeFile",)
+__all__ = (
+    "GitTree",
+    "GitTreePropTreeItems",
+)

@@ -12,17 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0092 import MinimalRepository
-
-
-class OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200(GitHubModel):
-    """OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200"""
-
-    total_count: int = Field()
-    repositories: list[MinimalRepository] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200)
+class OrgsOrgAttestationsRepositoriesGetResponse200Items(GitHubModel):
+    """OrgsOrgAttestationsRepositoriesGetResponse200Items"""
 
-__all__ = ("OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200",)
+    id: Missing[int] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(OrgsOrgAttestationsRepositoriesGetResponse200Items)
+
+__all__ = ("OrgsOrgAttestationsRepositoriesGetResponse200Items",)

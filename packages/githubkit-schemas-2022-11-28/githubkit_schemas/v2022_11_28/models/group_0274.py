@@ -9,36 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0273 import RateLimit
+from .group_0275 import RateLimitOverviewPropResources
 
-class ConcurrencyGroupList(GitHubModel):
-    """Concurrency Group List
 
-    A list of active concurrency groups for a repository.
+class RateLimitOverview(GitHubModel):
+    """Rate Limit Overview
+
+    Rate Limit Overview
     """
 
-    total_count: int = Field()
-    concurrency_groups: list[ConcurrencyGroupListPropConcurrencyGroupsItems] = Field()
+    resources: RateLimitOverviewPropResources = Field()
+    rate: RateLimit = Field(title="Rate Limit")
 
 
-class ConcurrencyGroupListPropConcurrencyGroupsItems(GitHubModel):
-    """ConcurrencyGroupListPropConcurrencyGroupsItems"""
+model_rebuild(RateLimitOverview)
 
-    group_name: str = Field(description="The name of the concurrency group.")
-    group_url: str = Field(description="API URL for this concurrency group.")
-    last_acquired_at: Union[_dt.datetime, None] = Field()
-
-
-model_rebuild(ConcurrencyGroupList)
-model_rebuild(ConcurrencyGroupListPropConcurrencyGroupsItems)
-
-__all__ = (
-    "ConcurrencyGroupList",
-    "ConcurrencyGroupListPropConcurrencyGroupsItems",
-)
+__all__ = ("RateLimitOverview",)

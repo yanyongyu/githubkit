@@ -9,30 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_1365 import (
-    ReposOwnerRepoPagesPostBodyPropSourceType,
-    ReposOwnerRepoPagesPostBodyPropSourceTypeForResponse,
-)
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoPagesPostBodyAnyof1Type(TypedDict):
-    """ReposOwnerRepoPagesPostBodyAnyof1"""
+class ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200Type(TypedDict):
+    """ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200"""
 
-    build_type: Literal["legacy", "workflow"]
-    source: NotRequired[ReposOwnerRepoPagesPostBodyPropSourceType]
+    enabled: bool
+    max_open_pull_requests: int
 
 
-class ReposOwnerRepoPagesPostBodyAnyof1TypeForResponse(TypedDict):
-    """ReposOwnerRepoPagesPostBodyAnyof1"""
+class ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200"""
 
-    build_type: Literal["legacy", "workflow"]
-    source: NotRequired[ReposOwnerRepoPagesPostBodyPropSourceTypeForResponse]
+    enabled: bool
+    max_open_pull_requests: int
 
 
 __all__ = (
-    "ReposOwnerRepoPagesPostBodyAnyof1Type",
-    "ReposOwnerRepoPagesPostBodyAnyof1TypeForResponse",
+    "ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200Type",
+    "ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200TypeForResponse",
 )

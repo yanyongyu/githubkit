@@ -13,67 +13,27 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class UserReposPostBodyType(TypedDict):
-    """UserReposPostBody"""
+class ReposOwnerRepoPullsPullNumberPatchBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberPatchBody"""
 
-    name: str
-    description: NotRequired[str]
-    homepage: NotRequired[str]
-    private: NotRequired[bool]
-    has_issues: NotRequired[bool]
-    has_projects: NotRequired[bool]
-    has_wiki: NotRequired[bool]
-    has_discussions: NotRequired[bool]
-    team_id: NotRequired[int]
-    auto_init: NotRequired[bool]
-    gitignore_template: NotRequired[str]
-    license_template: NotRequired[str]
-    allow_squash_merge: NotRequired[bool]
-    allow_merge_commit: NotRequired[bool]
-    allow_rebase_merge: NotRequired[bool]
-    allow_auto_merge: NotRequired[bool]
-    delete_branch_on_merge: NotRequired[bool]
-    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
-    squash_merge_commit_message: NotRequired[
-        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
-    ]
-    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
-    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
-    has_downloads: NotRequired[bool]
-    is_template: NotRequired[bool]
+    title: NotRequired[str]
+    body: NotRequired[str]
+    state: NotRequired[Literal["open", "closed"]]
+    base: NotRequired[str]
+    maintainer_can_modify: NotRequired[bool]
 
 
-class UserReposPostBodyTypeForResponse(TypedDict):
-    """UserReposPostBody"""
+class ReposOwnerRepoPullsPullNumberPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPullNumberPatchBody"""
 
-    name: str
-    description: NotRequired[str]
-    homepage: NotRequired[str]
-    private: NotRequired[bool]
-    has_issues: NotRequired[bool]
-    has_projects: NotRequired[bool]
-    has_wiki: NotRequired[bool]
-    has_discussions: NotRequired[bool]
-    team_id: NotRequired[int]
-    auto_init: NotRequired[bool]
-    gitignore_template: NotRequired[str]
-    license_template: NotRequired[str]
-    allow_squash_merge: NotRequired[bool]
-    allow_merge_commit: NotRequired[bool]
-    allow_rebase_merge: NotRequired[bool]
-    allow_auto_merge: NotRequired[bool]
-    delete_branch_on_merge: NotRequired[bool]
-    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
-    squash_merge_commit_message: NotRequired[
-        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
-    ]
-    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
-    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
-    has_downloads: NotRequired[bool]
-    is_template: NotRequired[bool]
+    title: NotRequired[str]
+    body: NotRequired[str]
+    state: NotRequired[Literal["open", "closed"]]
+    base: NotRequired[str]
+    maintainer_can_modify: NotRequired[bool]
 
 
 __all__ = (
-    "UserReposPostBodyType",
-    "UserReposPostBodyTypeForResponse",
+    "ReposOwnerRepoPullsPullNumberPatchBodyType",
+    "ReposOwnerRepoPullsPullNumberPatchBodyTypeForResponse",
 )

@@ -14,98 +14,94 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0210 import ReactionRollupType, ReactionRollupTypeForResponse
+from .group_0076 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
+from .group_0414 import (
+    CodeScanningVariantAnalysisPropScannedRepositoriesItemsType,
+    CodeScanningVariantAnalysisPropScannedRepositoriesItemsTypeForResponse,
+)
+from .group_0415 import (
+    CodeScanningVariantAnalysisPropSkippedRepositoriesType,
+    CodeScanningVariantAnalysisPropSkippedRepositoriesTypeForResponse,
+)
 
 
-class CommitCommentType(TypedDict):
-    """Commit Comment
+class CodeScanningVariantAnalysisType(TypedDict):
+    """Variant Analysis
 
-    Commit Comment
+    A run of a CodeQL query against one or more repositories.
     """
 
-    html_url: str
-    url: str
     id: int
-    node_id: str
-    body: str
-    path: Union[str, None]
-    position: Union[int, None]
-    line: Union[int, None]
-    commit_id: str
-    user: Union[None, SimpleUserType]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
+    controller_repo: SimpleRepositoryType
+    actor: SimpleUserType
+    query_language: Literal[
+        "actions",
+        "cpp",
+        "csharp",
+        "go",
+        "java",
+        "javascript",
+        "python",
+        "ruby",
+        "rust",
+        "swift",
     ]
-    reactions: NotRequired[ReactionRollupType]
+    query_pack_url: str
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
+    completed_at: NotRequired[Union[_dt.datetime, None]]
+    status: Literal["in_progress", "succeeded", "failed", "cancelled"]
+    actions_workflow_run_id: NotRequired[int]
+    failure_reason: NotRequired[
+        Literal["no_repos_queried", "actions_workflow_run_failed", "internal_error"]
+    ]
+    scanned_repositories: NotRequired[
+        list[CodeScanningVariantAnalysisPropScannedRepositoriesItemsType]
+    ]
+    skipped_repositories: NotRequired[
+        CodeScanningVariantAnalysisPropSkippedRepositoriesType
+    ]
 
 
-class CommitCommentTypeForResponse(TypedDict):
-    """Commit Comment
+class CodeScanningVariantAnalysisTypeForResponse(TypedDict):
+    """Variant Analysis
 
-    Commit Comment
+    A run of a CodeQL query against one or more repositories.
     """
 
-    html_url: str
-    url: str
     id: int
-    node_id: str
-    body: str
-    path: Union[str, None]
-    position: Union[int, None]
-    line: Union[int, None]
-    commit_id: str
-    user: Union[None, SimpleUserTypeForResponse]
-    created_at: str
-    updated_at: str
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
+    controller_repo: SimpleRepositoryTypeForResponse
+    actor: SimpleUserTypeForResponse
+    query_language: Literal[
+        "actions",
+        "cpp",
+        "csharp",
+        "go",
+        "java",
+        "javascript",
+        "python",
+        "ruby",
+        "rust",
+        "swift",
     ]
-    reactions: NotRequired[ReactionRollupTypeForResponse]
-
-
-class TimelineCommitCommentedEventType(TypedDict):
-    """Timeline Commit Commented Event
-
-    Timeline Commit Commented Event
-    """
-
-    event: NotRequired[Literal["commit_commented"]]
-    node_id: NotRequired[str]
-    commit_id: NotRequired[str]
-    comments: NotRequired[list[CommitCommentType]]
-
-
-class TimelineCommitCommentedEventTypeForResponse(TypedDict):
-    """Timeline Commit Commented Event
-
-    Timeline Commit Commented Event
-    """
-
-    event: NotRequired[Literal["commit_commented"]]
-    node_id: NotRequired[str]
-    commit_id: NotRequired[str]
-    comments: NotRequired[list[CommitCommentTypeForResponse]]
+    query_pack_url: str
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    completed_at: NotRequired[Union[str, None]]
+    status: Literal["in_progress", "succeeded", "failed", "cancelled"]
+    actions_workflow_run_id: NotRequired[int]
+    failure_reason: NotRequired[
+        Literal["no_repos_queried", "actions_workflow_run_failed", "internal_error"]
+    ]
+    scanned_repositories: NotRequired[
+        list[CodeScanningVariantAnalysisPropScannedRepositoriesItemsTypeForResponse]
+    ]
+    skipped_repositories: NotRequired[
+        CodeScanningVariantAnalysisPropSkippedRepositoriesTypeForResponse
+    ]
 
 
 __all__ = (
-    "CommitCommentType",
-    "CommitCommentTypeForResponse",
-    "TimelineCommitCommentedEventType",
-    "TimelineCommitCommentedEventTypeForResponse",
+    "CodeScanningVariantAnalysisType",
+    "CodeScanningVariantAnalysisTypeForResponse",
 )

@@ -6,28 +6,28 @@ version = "2022-11-28"
 identifier = "2022-11-28"
 module = "v2022_11_28"
 is_latest = false
-source = "https://raw.githubusercontent.com/github/rest-api-description/3b43edf675308c515b5e92a3eb89db17f6e6d806/descriptions-next/api.github.com/api.github.com.2022-11-28.json"
+source = "https://raw.githubusercontent.com/github/rest-api-description/768a056f8e09a337a050da627073cc3c99ba1607/descriptions-next/api.github.com/api.github.com.2022-11-28.json"
 
 [[descriptions]]
 version = "2022-11-28"
 identifier = "ghec-2022-11-28"
 module = "ghec_v2022_11_28"
 is_latest = false
-source = "https://raw.githubusercontent.com/github/rest-api-description/3b43edf675308c515b5e92a3eb89db17f6e6d806/descriptions-next/ghec/ghec.2022-11-28.json"
+source = "https://raw.githubusercontent.com/github/rest-api-description/768a056f8e09a337a050da627073cc3c99ba1607/descriptions-next/ghec/ghec.2022-11-28.json"
 
 [[descriptions]]
 version = "2026-03-10"
 identifier = "2026-03-10"
 module = "v2026_03_10"
 is_latest = true
-source = "https://raw.githubusercontent.com/github/rest-api-description/3b43edf675308c515b5e92a3eb89db17f6e6d806/descriptions-next/api.github.com/api.github.com.2026-03-10.json"
+source = "https://raw.githubusercontent.com/github/rest-api-description/768a056f8e09a337a050da627073cc3c99ba1607/descriptions-next/api.github.com/api.github.com.2026-03-10.json"
 
 [[descriptions]]
 version = "2026-03-10"
 identifier = "ghec-2026-03-10"
 module = "ghec_v2026_03_10"
 is_latest = false
-source = "https://raw.githubusercontent.com/github/rest-api-description/3b43edf675308c515b5e92a3eb89db17f6e6d806/descriptions-next/ghec/ghec.2026-03-10.json"
+source = "https://raw.githubusercontent.com/github/rest-api-description/768a056f8e09a337a050da627073cc3c99ba1607/descriptions-next/ghec/ghec.2026-03-10.json"
 
 [[overrides]]
 [overrides.field_overrides]
@@ -173,7 +173,11 @@ source = "https://raw.githubusercontent.com/github/rest-api-description/3b43edf6
 "/components/schemas/code-scanning-alert-classification/enum" = {"<add>" = ["documentation"]}
 
 [[overrides]]
+[overrides.operation_overrides]
+"pull-request-stacks/" = "pull-request-stacks/stacks-"
+
+[[overrides]]
 target_descriptions = ["ghec-2022-11-28", "ghec-2026-03-10"]
 
-[overrides.schema_overrides]
-"/paths/~1enterprises~1{enterprise}~1apps~1organizations~1{org}~1installations~1{installation_id}/delete" = {operationId = "enterprise-apps/enterprise-delete-installation"}
+[overrides.operation_overrides]
+"enterprise-apps/" = "enterprise-apps/enterprise-"

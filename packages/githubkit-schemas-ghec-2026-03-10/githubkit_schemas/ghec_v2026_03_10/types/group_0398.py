@@ -9,40 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0395 import (
-    CodeScanningVariantAnalysisRepositoryType,
-    CodeScanningVariantAnalysisRepositoryTypeForResponse,
-)
 
+class CodeQualitySetupUpdateAnyof4Type(TypedDict):
+    """CodeQualitySetupUpdateAnyof4"""
 
-class CodeScanningVariantAnalysisPropScannedRepositoriesItemsType(TypedDict):
-    """CodeScanningVariantAnalysisPropScannedRepositoriesItems"""
-
-    repository: CodeScanningVariantAnalysisRepositoryType
-    analysis_status: Literal[
-        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
+    state: NotRequired[Literal["configured", "not-configured"]]
+    runner_type: NotRequired[Literal["standard", "labeled"]]
+    runner_label: NotRequired[Union[str, None]]
+    languages: NotRequired[
+        list[
+            Literal[
+                "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
+            ]
+        ]
     ]
-    result_count: NotRequired[int]
-    artifact_size_in_bytes: NotRequired[int]
-    failure_message: NotRequired[str]
+    ai_findings_option: Literal["disabled", "on_push"]
 
 
-class CodeScanningVariantAnalysisPropScannedRepositoriesItemsTypeForResponse(TypedDict):
-    """CodeScanningVariantAnalysisPropScannedRepositoriesItems"""
+class CodeQualitySetupUpdateAnyof4TypeForResponse(TypedDict):
+    """CodeQualitySetupUpdateAnyof4"""
 
-    repository: CodeScanningVariantAnalysisRepositoryTypeForResponse
-    analysis_status: Literal[
-        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
+    state: NotRequired[Literal["configured", "not-configured"]]
+    runner_type: NotRequired[Literal["standard", "labeled"]]
+    runner_label: NotRequired[Union[str, None]]
+    languages: NotRequired[
+        list[
+            Literal[
+                "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
+            ]
+        ]
     ]
-    result_count: NotRequired[int]
-    artifact_size_in_bytes: NotRequired[int]
-    failure_message: NotRequired[str]
+    ai_findings_option: Literal["disabled", "on_push"]
 
 
 __all__ = (
-    "CodeScanningVariantAnalysisPropScannedRepositoriesItemsType",
-    "CodeScanningVariantAnalysisPropScannedRepositoriesItemsTypeForResponse",
+    "CodeQualitySetupUpdateAnyof4Type",
+    "CodeQualitySetupUpdateAnyof4TypeForResponse",
 )

@@ -9,41 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0112 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
 
 
-class OrgsOrgArtifactsMetadataStorageRecordPostBodyType(TypedDict):
-    """OrgsOrgArtifactsMetadataStorageRecordPostBody"""
+class OrganizationsOrgOrgPropertiesValuesPatchBodyType(TypedDict):
+    """OrganizationsOrgOrgPropertiesValuesPatchBody"""
 
-    name: str
-    digest: str
-    version: NotRequired[str]
-    artifact_url: NotRequired[str]
-    path: NotRequired[str]
-    registry_url: str
-    repository: NotRequired[str]
-    status: NotRequired[Literal["active", "eol", "deleted"]]
-    github_repository: NotRequired[str]
-    return_records: NotRequired[bool]
+    properties: list[CustomPropertyValueType]
 
 
-class OrgsOrgArtifactsMetadataStorageRecordPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgArtifactsMetadataStorageRecordPostBody"""
+class OrganizationsOrgOrgPropertiesValuesPatchBodyTypeForResponse(TypedDict):
+    """OrganizationsOrgOrgPropertiesValuesPatchBody"""
 
-    name: str
-    digest: str
-    version: NotRequired[str]
-    artifact_url: NotRequired[str]
-    path: NotRequired[str]
-    registry_url: str
-    repository: NotRequired[str]
-    status: NotRequired[Literal["active", "eol", "deleted"]]
-    github_repository: NotRequired[str]
-    return_records: NotRequired[bool]
+    properties: list[CustomPropertyValueTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgArtifactsMetadataStorageRecordPostBodyType",
-    "OrgsOrgArtifactsMetadataStorageRecordPostBodyTypeForResponse",
+    "OrganizationsOrgOrgPropertiesValuesPatchBodyType",
+    "OrganizationsOrgOrgPropertiesValuesPatchBodyTypeForResponse",
 )

@@ -17,36 +17,31 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0430 import Metadata
+from .group_0380 import DiffEntry
+from .group_0381 import Commit
 
 
-class Dependency(GitHubModel):
-    """Dependency"""
+class CommitComparison(GitHubModel):
+    """Commit Comparison
 
-    package_url: Missing[str] = Field(
-        pattern="^pkg",
-        default=UNSET,
-        description="Package-url (PURL) of dependency. See https://github.com/package-url/purl-spec for more details.",
-    )
-    metadata: Missing[Metadata] = Field(
-        default=UNSET,
-        title="metadata",
-        description="User-defined metadata to store domain-specific information limited to 8 keys with scalar values.",
-    )
-    relationship: Missing[Literal["direct", "indirect"]] = Field(
-        default=UNSET,
-        description="A notation of whether a dependency is requested directly by this manifest or is a dependency of another dependency.",
-    )
-    scope: Missing[Literal["runtime", "development"]] = Field(
-        default=UNSET,
-        description="A notation of whether the dependency is required for the primary build artifact (runtime) or is only used for development. Future versions of this specification may allow for more granular scopes.",
-    )
-    dependencies: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Array of package-url (PURLs) of direct child dependencies.",
-    )
+    Commit Comparison
+    """
+
+    url: str = Field()
+    html_url: str = Field()
+    permalink_url: str = Field()
+    diff_url: str = Field()
+    patch_url: str = Field()
+    base_commit: Commit = Field(title="Commit", description="Commit")
+    merge_base_commit: Commit = Field(title="Commit", description="Commit")
+    status: Literal["diverged", "ahead", "behind", "identical"] = Field()
+    ahead_by: int = Field()
+    behind_by: int = Field()
+    total_commits: int = Field()
+    commits: list[Commit] = Field()
+    files: Missing[list[DiffEntry]] = Field(default=UNSET)
 
 
-model_rebuild(Dependency)
+model_rebuild(CommitComparison)
 
-__all__ = ("Dependency",)
+__all__ = ("CommitComparison",)

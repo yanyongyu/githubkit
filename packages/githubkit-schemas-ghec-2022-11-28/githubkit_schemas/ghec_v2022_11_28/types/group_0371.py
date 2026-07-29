@@ -11,210 +11,86 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0085 import TeamType, TeamTypeForResponse
 
+class WorkflowUsageType(TypedDict):
+    """Workflow Usage
 
-class BranchRestrictionPolicyType(TypedDict):
-    """Branch Restriction Policy
-
-    Branch Restriction Policy
+    Workflow Usage
     """
 
-    url: str
-    users_url: str
-    teams_url: str
-    apps_url: str
-    users: list[BranchRestrictionPolicyPropUsersItemsType]
-    teams: list[TeamType]
-    apps: list[BranchRestrictionPolicyPropAppsItemsType]
+    billable: WorkflowUsagePropBillableType
 
 
-class BranchRestrictionPolicyTypeForResponse(TypedDict):
-    """Branch Restriction Policy
+class WorkflowUsageTypeForResponse(TypedDict):
+    """Workflow Usage
 
-    Branch Restriction Policy
+    Workflow Usage
     """
 
-    url: str
-    users_url: str
-    teams_url: str
-    apps_url: str
-    users: list[BranchRestrictionPolicyPropUsersItemsTypeForResponse]
-    teams: list[TeamTypeForResponse]
-    apps: list[BranchRestrictionPolicyPropAppsItemsTypeForResponse]
+    billable: WorkflowUsagePropBillableTypeForResponse
 
 
-class BranchRestrictionPolicyPropUsersItemsType(TypedDict):
-    """BranchRestrictionPolicyPropUsersItems"""
+class WorkflowUsagePropBillableType(TypedDict):
+    """WorkflowUsagePropBillable"""
 
-    login: NotRequired[str]
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    avatar_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    organizations_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    events_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    type: NotRequired[str]
-    site_admin: NotRequired[bool]
-    user_view_type: NotRequired[str]
+    ubuntu: NotRequired[WorkflowUsagePropBillablePropUbuntuType]
+    macos: NotRequired[WorkflowUsagePropBillablePropMacosType]
+    windows: NotRequired[WorkflowUsagePropBillablePropWindowsType]
 
 
-class BranchRestrictionPolicyPropUsersItemsTypeForResponse(TypedDict):
-    """BranchRestrictionPolicyPropUsersItems"""
+class WorkflowUsagePropBillableTypeForResponse(TypedDict):
+    """WorkflowUsagePropBillable"""
 
-    login: NotRequired[str]
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    avatar_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    organizations_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    events_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    type: NotRequired[str]
-    site_admin: NotRequired[bool]
-    user_view_type: NotRequired[str]
+    ubuntu: NotRequired[WorkflowUsagePropBillablePropUbuntuTypeForResponse]
+    macos: NotRequired[WorkflowUsagePropBillablePropMacosTypeForResponse]
+    windows: NotRequired[WorkflowUsagePropBillablePropWindowsTypeForResponse]
 
 
-class BranchRestrictionPolicyPropAppsItemsType(TypedDict):
-    """BranchRestrictionPolicyPropAppsItems"""
+class WorkflowUsagePropBillablePropUbuntuType(TypedDict):
+    """WorkflowUsagePropBillablePropUbuntu"""
 
-    id: NotRequired[int]
-    slug: NotRequired[str]
-    node_id: NotRequired[str]
-    owner: NotRequired[BranchRestrictionPolicyPropAppsItemsPropOwnerType]
-    name: NotRequired[str]
-    client_id: NotRequired[str]
-    description: NotRequired[str]
-    external_url: NotRequired[str]
-    html_url: NotRequired[str]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-    permissions: NotRequired[BranchRestrictionPolicyPropAppsItemsPropPermissionsType]
-    events: NotRequired[list[str]]
+    total_ms: NotRequired[int]
 
 
-class BranchRestrictionPolicyPropAppsItemsTypeForResponse(TypedDict):
-    """BranchRestrictionPolicyPropAppsItems"""
+class WorkflowUsagePropBillablePropUbuntuTypeForResponse(TypedDict):
+    """WorkflowUsagePropBillablePropUbuntu"""
 
-    id: NotRequired[int]
-    slug: NotRequired[str]
-    node_id: NotRequired[str]
-    owner: NotRequired[BranchRestrictionPolicyPropAppsItemsPropOwnerTypeForResponse]
-    name: NotRequired[str]
-    client_id: NotRequired[str]
-    description: NotRequired[str]
-    external_url: NotRequired[str]
-    html_url: NotRequired[str]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-    permissions: NotRequired[
-        BranchRestrictionPolicyPropAppsItemsPropPermissionsTypeForResponse
-    ]
-    events: NotRequired[list[str]]
+    total_ms: NotRequired[int]
 
 
-class BranchRestrictionPolicyPropAppsItemsPropOwnerType(TypedDict):
-    """BranchRestrictionPolicyPropAppsItemsPropOwner"""
+class WorkflowUsagePropBillablePropMacosType(TypedDict):
+    """WorkflowUsagePropBillablePropMacos"""
 
-    login: NotRequired[str]
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    url: NotRequired[str]
-    repos_url: NotRequired[str]
-    events_url: NotRequired[str]
-    hooks_url: NotRequired[str]
-    issues_url: NotRequired[str]
-    members_url: NotRequired[str]
-    public_members_url: NotRequired[str]
-    avatar_url: NotRequired[str]
-    description: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    type: NotRequired[str]
-    site_admin: NotRequired[bool]
-    user_view_type: NotRequired[str]
+    total_ms: NotRequired[int]
 
 
-class BranchRestrictionPolicyPropAppsItemsPropOwnerTypeForResponse(TypedDict):
-    """BranchRestrictionPolicyPropAppsItemsPropOwner"""
+class WorkflowUsagePropBillablePropMacosTypeForResponse(TypedDict):
+    """WorkflowUsagePropBillablePropMacos"""
 
-    login: NotRequired[str]
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    url: NotRequired[str]
-    repos_url: NotRequired[str]
-    events_url: NotRequired[str]
-    hooks_url: NotRequired[str]
-    issues_url: NotRequired[str]
-    members_url: NotRequired[str]
-    public_members_url: NotRequired[str]
-    avatar_url: NotRequired[str]
-    description: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    type: NotRequired[str]
-    site_admin: NotRequired[bool]
-    user_view_type: NotRequired[str]
+    total_ms: NotRequired[int]
 
 
-class BranchRestrictionPolicyPropAppsItemsPropPermissionsType(TypedDict):
-    """BranchRestrictionPolicyPropAppsItemsPropPermissions"""
+class WorkflowUsagePropBillablePropWindowsType(TypedDict):
+    """WorkflowUsagePropBillablePropWindows"""
 
-    metadata: NotRequired[str]
-    contents: NotRequired[str]
-    issues: NotRequired[str]
-    single_file: NotRequired[str]
+    total_ms: NotRequired[int]
 
 
-class BranchRestrictionPolicyPropAppsItemsPropPermissionsTypeForResponse(TypedDict):
-    """BranchRestrictionPolicyPropAppsItemsPropPermissions"""
+class WorkflowUsagePropBillablePropWindowsTypeForResponse(TypedDict):
+    """WorkflowUsagePropBillablePropWindows"""
 
-    metadata: NotRequired[str]
-    contents: NotRequired[str]
-    issues: NotRequired[str]
-    single_file: NotRequired[str]
+    total_ms: NotRequired[int]
 
 
 __all__ = (
-    "BranchRestrictionPolicyPropAppsItemsPropOwnerType",
-    "BranchRestrictionPolicyPropAppsItemsPropOwnerTypeForResponse",
-    "BranchRestrictionPolicyPropAppsItemsPropPermissionsType",
-    "BranchRestrictionPolicyPropAppsItemsPropPermissionsTypeForResponse",
-    "BranchRestrictionPolicyPropAppsItemsType",
-    "BranchRestrictionPolicyPropAppsItemsTypeForResponse",
-    "BranchRestrictionPolicyPropUsersItemsType",
-    "BranchRestrictionPolicyPropUsersItemsTypeForResponse",
-    "BranchRestrictionPolicyType",
-    "BranchRestrictionPolicyTypeForResponse",
+    "WorkflowUsagePropBillablePropMacosType",
+    "WorkflowUsagePropBillablePropMacosTypeForResponse",
+    "WorkflowUsagePropBillablePropUbuntuType",
+    "WorkflowUsagePropBillablePropUbuntuTypeForResponse",
+    "WorkflowUsagePropBillablePropWindowsType",
+    "WorkflowUsagePropBillablePropWindowsTypeForResponse",
+    "WorkflowUsagePropBillableType",
+    "WorkflowUsagePropBillableTypeForResponse",
+    "WorkflowUsageType",
+    "WorkflowUsageTypeForResponse",
 )

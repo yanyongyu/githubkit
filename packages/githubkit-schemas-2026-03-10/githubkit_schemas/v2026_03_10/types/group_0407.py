@@ -10,75 +10,63 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
 
-class RemovedFromProjectIssueEventType(TypedDict):
-    """Removed from Project Issue Event
+class DemilestonedIssueEventType(TypedDict):
+    """Demilestoned Issue Event
 
-    Removed from Project Issue Event
+    Demilestoned Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["removed_from_project"]
+    event: Literal["demilestoned"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    project_card: NotRequired[RemovedFromProjectIssueEventPropProjectCardType]
+    milestone: DemilestonedIssueEventPropMilestoneType
 
 
-class RemovedFromProjectIssueEventTypeForResponse(TypedDict):
-    """Removed from Project Issue Event
+class DemilestonedIssueEventTypeForResponse(TypedDict):
+    """Demilestoned Issue Event
 
-    Removed from Project Issue Event
+    Demilestoned Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserTypeForResponse
-    event: Literal["removed_from_project"]
+    event: Literal["demilestoned"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    project_card: NotRequired[
-        RemovedFromProjectIssueEventPropProjectCardTypeForResponse
-    ]
+    milestone: DemilestonedIssueEventPropMilestoneTypeForResponse
 
 
-class RemovedFromProjectIssueEventPropProjectCardType(TypedDict):
-    """RemovedFromProjectIssueEventPropProjectCard"""
+class DemilestonedIssueEventPropMilestoneType(TypedDict):
+    """DemilestonedIssueEventPropMilestone"""
 
-    id: int
-    url: str
-    project_id: int
-    project_url: str
-    column_name: str
-    previous_column_name: NotRequired[str]
+    title: str
 
 
-class RemovedFromProjectIssueEventPropProjectCardTypeForResponse(TypedDict):
-    """RemovedFromProjectIssueEventPropProjectCard"""
+class DemilestonedIssueEventPropMilestoneTypeForResponse(TypedDict):
+    """DemilestonedIssueEventPropMilestone"""
 
-    id: int
-    url: str
-    project_id: int
-    project_url: str
-    column_name: str
-    previous_column_name: NotRequired[str]
+    title: str
 
 
 __all__ = (
-    "RemovedFromProjectIssueEventPropProjectCardType",
-    "RemovedFromProjectIssueEventPropProjectCardTypeForResponse",
-    "RemovedFromProjectIssueEventType",
-    "RemovedFromProjectIssueEventTypeForResponse",
+    "DemilestonedIssueEventPropMilestoneType",
+    "DemilestonedIssueEventPropMilestoneTypeForResponse",
+    "DemilestonedIssueEventType",
+    "DemilestonedIssueEventTypeForResponse",
 )

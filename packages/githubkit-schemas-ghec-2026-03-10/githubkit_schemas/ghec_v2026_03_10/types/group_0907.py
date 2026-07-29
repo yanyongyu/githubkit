@@ -9,39 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0312 import ProjectsV2Type, ProjectsV2TypeForResponse
-from .group_0599 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0600 import (
+from .group_0619 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
+from .group_0620 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0908 import WebhookPingPropHookType, WebhookPingPropHookTypeForResponse
 
 
-class WebhookProjectsV2ProjectClosedType(TypedDict):
-    """Projects v2 Project Closed Event"""
+class WebhookPingType(TypedDict):
+    """WebhookPing"""
 
-    action: Literal["closed"]
-    installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
-    projects_v2: ProjectsV2Type
-    sender: SimpleUserType
+    hook: NotRequired[WebhookPingPropHookType]
+    hook_id: NotRequired[int]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: NotRequired[SimpleUserType]
+    zen: NotRequired[str]
 
 
-class WebhookProjectsV2ProjectClosedTypeForResponse(TypedDict):
-    """Projects v2 Project Closed Event"""
+class WebhookPingTypeForResponse(TypedDict):
+    """WebhookPing"""
 
-    action: Literal["closed"]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: OrganizationSimpleWebhooksTypeForResponse
-    projects_v2: ProjectsV2TypeForResponse
-    sender: SimpleUserTypeForResponse
+    hook: NotRequired[WebhookPingPropHookTypeForResponse]
+    hook_id: NotRequired[int]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: NotRequired[SimpleUserTypeForResponse]
+    zen: NotRequired[str]
 
 
 __all__ = (
-    "WebhookProjectsV2ProjectClosedType",
-    "WebhookProjectsV2ProjectClosedTypeForResponse",
+    "WebhookPingType",
+    "WebhookPingTypeForResponse",
 )

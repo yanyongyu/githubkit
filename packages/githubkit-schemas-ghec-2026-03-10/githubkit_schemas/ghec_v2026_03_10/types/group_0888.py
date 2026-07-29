@@ -9,40 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0600 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
+from .group_0109 import (
+    OrganizationCustomPropertyType,
+    OrganizationCustomPropertyTypeForResponse,
 )
-from .group_0601 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0889 import WebhookPingPropHookType, WebhookPingPropHookTypeForResponse
+from .group_0617 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0618 import SimpleInstallationType, SimpleInstallationTypeForResponse
 
 
-class WebhookPingType(TypedDict):
-    """WebhookPing"""
+class WebhookOrganizationCustomPropertyUpdatedType(TypedDict):
+    """organization custom property updated event"""
 
-    hook: NotRequired[WebhookPingPropHookType]
-    hook_id: NotRequired[int]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
+    action: Literal["updated"]
+    definition: OrganizationCustomPropertyType
+    enterprise: EnterpriseWebhooksType
+    installation: NotRequired[SimpleInstallationType]
     sender: NotRequired[SimpleUserType]
-    zen: NotRequired[str]
 
 
-class WebhookPingTypeForResponse(TypedDict):
-    """WebhookPing"""
+class WebhookOrganizationCustomPropertyUpdatedTypeForResponse(TypedDict):
+    """organization custom property updated event"""
 
-    hook: NotRequired[WebhookPingPropHookTypeForResponse]
-    hook_id: NotRequired[int]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    action: Literal["updated"]
+    definition: OrganizationCustomPropertyTypeForResponse
+    enterprise: EnterpriseWebhooksTypeForResponse
+    installation: NotRequired[SimpleInstallationTypeForResponse]
     sender: NotRequired[SimpleUserTypeForResponse]
-    zen: NotRequired[str]
 
 
 __all__ = (
-    "WebhookPingType",
-    "WebhookPingTypeForResponse",
+    "WebhookOrganizationCustomPropertyUpdatedType",
+    "WebhookOrganizationCustomPropertyUpdatedTypeForResponse",
 )

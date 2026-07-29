@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -19,34 +18,29 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CodespaceExportDetails(GitHubModel):
-    """Fetches information about an export of a codespace.
+class SearchResultTextMatchesItems(GitHubModel):
+    """SearchResultTextMatchesItems"""
 
-    An export of a codespace. Also, latest export details for a codespace can be
-    fetched with id = latest
-    """
-
-    state: Missing[Union[str, None]] = Field(
-        default=UNSET, description="State of the latest export"
-    )
-    completed_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET, description="Completion time of the last export operation"
-    )
-    branch: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Name of the exported branch"
-    )
-    sha: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Git commit SHA of the exported branch"
-    )
-    id: Missing[str] = Field(default=UNSET, description="Id for the export details")
-    export_url: Missing[str] = Field(
-        default=UNSET, description="Url for fetching export details"
-    )
-    html_url: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Web url for the exported branch"
+    object_url: Missing[str] = Field(default=UNSET)
+    object_type: Missing[Union[str, None]] = Field(default=UNSET)
+    property_: Missing[str] = Field(default=UNSET, alias="property")
+    fragment: Missing[str] = Field(default=UNSET)
+    matches: Missing[list[SearchResultTextMatchesItemsPropMatchesItems]] = Field(
+        default=UNSET
     )
 
 
-model_rebuild(CodespaceExportDetails)
+class SearchResultTextMatchesItemsPropMatchesItems(GitHubModel):
+    """SearchResultTextMatchesItemsPropMatchesItems"""
 
-__all__ = ("CodespaceExportDetails",)
+    text: Missing[str] = Field(default=UNSET)
+    indices: Missing[list[int]] = Field(default=UNSET)
+
+
+model_rebuild(SearchResultTextMatchesItems)
+model_rebuild(SearchResultTextMatchesItemsPropMatchesItems)
+
+__all__ = (
+    "SearchResultTextMatchesItems",
+    "SearchResultTextMatchesItemsPropMatchesItems",
+)

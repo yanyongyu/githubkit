@@ -9,13 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from githubkit.compat import ExtraGitHubModel, model_rebuild
+from pydantic import Field
+
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class OrgsOrgCopilotContentExclusionPutBody(ExtraGitHubModel):
-    """OrgsOrgCopilotContentExclusionPutBody"""
+class OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems(GitHubModel):
+    """OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems"""
+
+    repository_id: int = Field(description="The repository id")
+    alert_numbers: list[int] = Field(
+        min_length=1 if PYDANTIC_V2 else None, description="The alert numbers"
+    )
 
 
-model_rebuild(OrgsOrgCopilotContentExclusionPutBody)
+model_rebuild(OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems)
 
-__all__ = ("OrgsOrgCopilotContentExclusionPutBody",)
+__all__ = ("OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems",)

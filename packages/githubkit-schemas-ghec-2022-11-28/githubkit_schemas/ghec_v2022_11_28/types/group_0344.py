@@ -9,28 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class ActionsCacheRetentionLimitForRepositoryType(TypedDict):
-    """Actions cache retention limit for a repository
+class TeamMembershipType(TypedDict):
+    """Team Membership
 
-    GitHub Actions cache retention policy for a repository.
+    Team Membership
     """
 
-    max_cache_retention_days: NotRequired[int]
+    url: str
+    role: Literal["member", "maintainer"]
+    state: Literal["active", "pending"]
 
 
-class ActionsCacheRetentionLimitForRepositoryTypeForResponse(TypedDict):
-    """Actions cache retention limit for a repository
+class TeamMembershipTypeForResponse(TypedDict):
+    """Team Membership
 
-    GitHub Actions cache retention policy for a repository.
+    Team Membership
     """
 
-    max_cache_retention_days: NotRequired[int]
+    url: str
+    role: Literal["member", "maintainer"]
+    state: Literal["active", "pending"]
 
 
 __all__ = (
-    "ActionsCacheRetentionLimitForRepositoryType",
-    "ActionsCacheRetentionLimitForRepositoryTypeForResponse",
+    "TeamMembershipType",
+    "TeamMembershipTypeForResponse",
 )

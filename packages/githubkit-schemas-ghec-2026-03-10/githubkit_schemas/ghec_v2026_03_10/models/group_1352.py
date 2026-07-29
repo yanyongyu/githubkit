@@ -9,26 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0112 import CustomPropertyValue
-
-
-class OrgsOrgPropertiesValuesPatchBody(GitHubModel):
-    """OrgsOrgPropertiesValuesPatchBody"""
-
-    repository_names: list[str] = Field(
-        max_length=30 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="The names of repositories that the custom property values will be applied to.",
-    )
-    properties: list[CustomPropertyValue] = Field(
-        description="List of custom property names and associated values to apply to the repositories."
-    )
+from .group_0273 import CopilotSpaceCollaboratorAnyof0, CopilotSpaceCollaboratorAnyof1
 
 
-model_rebuild(OrgsOrgPropertiesValuesPatchBody)
+class OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200(GitHubModel):
+    """OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200"""
 
-__all__ = ("OrgsOrgPropertiesValuesPatchBody",)
+    collaborators: list[
+        Union[CopilotSpaceCollaboratorAnyof0, CopilotSpaceCollaboratorAnyof1]
+    ] = Field(description="The list of collaborators for this Copilot Space.")
+
+
+model_rebuild(OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200)
+
+__all__ = ("OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200",)

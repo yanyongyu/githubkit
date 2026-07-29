@@ -9,56 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0011 import WebhookConfigType, WebhookConfigTypeForResponse
-from .group_0450 import HookResponseType, HookResponseTypeForResponse
+from .group_0452 import (
+    EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType,
+    EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsTypeForResponse,
+)
 
 
-class HookType(TypedDict):
-    """Webhook
+class EnvironmentPropProtectionRulesItemsAnyof1Type(TypedDict):
+    """EnvironmentPropProtectionRulesItemsAnyof1"""
 
-    Webhooks for repositories.
-    """
-
-    type: str
     id: int
-    name: str
-    active: bool
-    events: list[str]
-    config: WebhookConfigType
-    updated_at: _dt.datetime
-    created_at: _dt.datetime
-    url: str
-    test_url: str
-    ping_url: str
-    deliveries_url: NotRequired[str]
-    last_response: HookResponseType
-
-
-class HookTypeForResponse(TypedDict):
-    """Webhook
-
-    Webhooks for repositories.
-    """
-
+    node_id: str
+    prevent_self_review: NotRequired[bool]
     type: str
+    reviewers: NotRequired[
+        list[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType]
+    ]
+
+
+class EnvironmentPropProtectionRulesItemsAnyof1TypeForResponse(TypedDict):
+    """EnvironmentPropProtectionRulesItemsAnyof1"""
+
     id: int
-    name: str
-    active: bool
-    events: list[str]
-    config: WebhookConfigTypeForResponse
-    updated_at: str
-    created_at: str
-    url: str
-    test_url: str
-    ping_url: str
-    deliveries_url: NotRequired[str]
-    last_response: HookResponseTypeForResponse
+    node_id: str
+    prevent_self_review: NotRequired[bool]
+    type: str
+    reviewers: NotRequired[
+        list[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsTypeForResponse]
+    ]
 
 
 __all__ = (
-    "HookType",
-    "HookTypeForResponse",
+    "EnvironmentPropProtectionRulesItemsAnyof1Type",
+    "EnvironmentPropProtectionRulesItemsAnyof1TypeForResponse",
 )

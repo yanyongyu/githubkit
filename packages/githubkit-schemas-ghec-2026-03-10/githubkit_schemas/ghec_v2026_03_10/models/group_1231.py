@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,39 +18,69 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsRunnerGroupsPostBody(GitHubModel):
-    """OrgsOrgActionsRunnerGroupsPostBody"""
+class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBody(GitHubModel):
+    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBody"""
 
-    name: str = Field(description="Name of the runner group.")
-    visibility: Missing[Literal["selected", "all", "private"]] = Field(
+    pattern_config_version: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="Visibility of a runner group. You can select all repositories, select individual repositories, or limit access to private repositories.",
+        description="The version of the entity. This is used to confirm you're updating the current version of the entity and mitigate unintentionally overriding someone else's update.",
     )
-    selected_repository_ids: Missing[list[int]] = Field(
-        default=UNSET,
-        description="List of repository IDs that can access the runner group.",
-    )
-    runners: Missing[list[int]] = Field(
-        default=UNSET, description="List of runner IDs to add to the runner group."
-    )
-    allows_public_repositories: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the runner group can be used by `public` repositories.",
-    )
-    restricted_to_workflows: Missing[bool] = Field(
-        default=UNSET,
-        description="If `true`, the runner group will be restricted to running only the workflows specified in the `selected_workflows` array.",
-    )
-    selected_workflows: Missing[list[str]] = Field(
-        default=UNSET,
-        description="List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`.",
-    )
-    network_configuration_id: Missing[str] = Field(
-        default=UNSET,
-        description="The identifier of a hosted compute network configuration.",
-    )
+    provider_pattern_settings: Missing[
+        list[
+            EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems
+        ]
+    ] = Field(default=UNSET, description="Pattern settings for provider patterns.")
+    custom_pattern_settings: Missing[
+        list[
+            EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems
+        ]
+    ] = Field(default=UNSET, description="Pattern settings for custom patterns.")
 
 
-model_rebuild(OrgsOrgActionsRunnerGroupsPostBody)
+class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems(
+    GitHubModel
+):
+    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPat
+    ternSettingsItems
+    """
 
-__all__ = ("OrgsOrgActionsRunnerGroupsPostBody",)
+    token_type: Missing[str] = Field(
+        default=UNSET, description="The ID of the pattern to configure."
+    )
+    push_protection_setting: Missing[Literal["not-set", "disabled", "enabled"]] = Field(
+        default=UNSET, description="Push protection setting to set for the pattern."
+    )
+
+
+class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems(
+    GitHubModel
+):
+    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatte
+    rnSettingsItems
+    """
+
+    token_type: Missing[str] = Field(
+        default=UNSET, description="The ID of the pattern to configure."
+    )
+    custom_pattern_version: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The version of the entity. This is used to confirm you're updating the current version of the entity and mitigate unintentionally overriding someone else's update.",
+    )
+    push_protection_setting: Missing[Literal["disabled", "enabled"]] = Field(
+        default=UNSET, description="Push protection setting to set for the pattern."
+    )
+
+
+model_rebuild(EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBody)
+model_rebuild(
+    EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems
+)
+model_rebuild(
+    EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems
+)
+
+__all__ = (
+    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBody",
+    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems",
+    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems",
+)

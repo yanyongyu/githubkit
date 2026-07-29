@@ -9,6 +9,9 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,25 +19,32 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoActionsOidcCustomizationSubPutBody(GitHubModel):
-    """Actions OIDC subject customization for a repository
+class OrgsOrgDependabotSecretsGetResponse200(GitHubModel):
+    """OrgsOrgDependabotSecretsGetResponse200"""
 
-    Actions OIDC subject customization for a repository
+    total_count: int = Field()
+    secrets: list[OrganizationDependabotSecret] = Field()
+
+
+class OrganizationDependabotSecret(GitHubModel):
+    """Dependabot Secret for an Organization
+
+    Secrets for GitHub Dependabot for an organization.
     """
 
-    use_default: bool = Field(
-        description="Whether to use the default template or not. If `true`, the `include_claim_keys` field is ignored."
+    name: str = Field(description="The name of the secret.")
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="Visibility of a secret"
     )
-    include_claim_keys: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores.",
-    )
-    use_immutable_subject: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to opt in to the immutable OIDC subject claim format for this repository. When `true`, OIDC tokens will use a stable, repository-ID-based `sub` claim.",
-    )
+    selected_repositories_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoActionsOidcCustomizationSubPutBody)
+model_rebuild(OrgsOrgDependabotSecretsGetResponse200)
+model_rebuild(OrganizationDependabotSecret)
 
-__all__ = ("ReposOwnerRepoActionsOidcCustomizationSubPutBody",)
+__all__ = (
+    "OrganizationDependabotSecret",
+    "OrgsOrgDependabotSecretsGetResponse200",
+)

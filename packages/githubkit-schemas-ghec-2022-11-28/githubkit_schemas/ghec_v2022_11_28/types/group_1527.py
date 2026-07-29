@@ -9,26 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoKeysPostBodyType(TypedDict):
-    """ReposOwnerRepoKeysPostBody"""
+class ReposOwnerRepoDependencyGraphSnapshotsPostResponse201Type(TypedDict):
+    """ReposOwnerRepoDependencyGraphSnapshotsPostResponse201"""
 
-    title: NotRequired[str]
-    key: str
-    read_only: NotRequired[bool]
+    id: int
+    created_at: str
+    result: str
+    message: str
 
 
-class ReposOwnerRepoKeysPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoKeysPostBody"""
+class ReposOwnerRepoDependencyGraphSnapshotsPostResponse201TypeForResponse(TypedDict):
+    """ReposOwnerRepoDependencyGraphSnapshotsPostResponse201"""
 
-    title: NotRequired[str]
-    key: str
-    read_only: NotRequired[bool]
+    id: int
+    created_at: str
+    result: str
+    message: str
 
 
 __all__ = (
-    "ReposOwnerRepoKeysPostBodyType",
-    "ReposOwnerRepoKeysPostBodyTypeForResponse",
+    "ReposOwnerRepoDependencyGraphSnapshotsPostResponse201Type",
+    "ReposOwnerRepoDependencyGraphSnapshotsPostResponse201TypeForResponse",
 )

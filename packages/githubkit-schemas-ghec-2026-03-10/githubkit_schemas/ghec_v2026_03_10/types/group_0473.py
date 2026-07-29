@@ -12,73 +12,36 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
+class IssueEventIntentType(TypedDict):
+    """Issue Event Intent
 
-class RemovedFromProjectIssueEventType(TypedDict):
-    """Removed from Project Issue Event
-
-    Removed from Project Issue Event
+    The intent behind an agent's action on an issue, including the rationale and
+    confidence. Present (and `null` when the event carried no agent intent) on
+    supported event types while the issue suggestions feature is enabled for the
+    repository; the property is omitted entirely when the feature is disabled or the
+    event type does not support intent.
     """
 
-    id: int
-    node_id: str
-    url: str
-    actor: SimpleUserType
-    event: Literal["removed_from_project"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    project_card: NotRequired[RemovedFromProjectIssueEventPropProjectCardType]
+    rationale: NotRequired[Union[str, None]]
+    confidence: NotRequired[Union[None, Literal["LOW", "MEDIUM", "HIGH"]]]
 
 
-class RemovedFromProjectIssueEventTypeForResponse(TypedDict):
-    """Removed from Project Issue Event
+class IssueEventIntentTypeForResponse(TypedDict):
+    """Issue Event Intent
 
-    Removed from Project Issue Event
+    The intent behind an agent's action on an issue, including the rationale and
+    confidence. Present (and `null` when the event carried no agent intent) on
+    supported event types while the issue suggestions feature is enabled for the
+    repository; the property is omitted entirely when the feature is disabled or the
+    event type does not support intent.
     """
 
-    id: int
-    node_id: str
-    url: str
-    actor: SimpleUserTypeForResponse
-    event: Literal["removed_from_project"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    project_card: NotRequired[
-        RemovedFromProjectIssueEventPropProjectCardTypeForResponse
-    ]
-
-
-class RemovedFromProjectIssueEventPropProjectCardType(TypedDict):
-    """RemovedFromProjectIssueEventPropProjectCard"""
-
-    id: int
-    url: str
-    project_id: int
-    project_url: str
-    column_name: str
-    previous_column_name: NotRequired[str]
-
-
-class RemovedFromProjectIssueEventPropProjectCardTypeForResponse(TypedDict):
-    """RemovedFromProjectIssueEventPropProjectCard"""
-
-    id: int
-    url: str
-    project_id: int
-    project_url: str
-    column_name: str
-    previous_column_name: NotRequired[str]
+    rationale: NotRequired[Union[str, None]]
+    confidence: NotRequired[Union[None, Literal["LOW", "MEDIUM", "HIGH"]]]
 
 
 __all__ = (
-    "RemovedFromProjectIssueEventPropProjectCardType",
-    "RemovedFromProjectIssueEventPropProjectCardTypeForResponse",
-    "RemovedFromProjectIssueEventType",
-    "RemovedFromProjectIssueEventTypeForResponse",
+    "IssueEventIntentType",
+    "IssueEventIntentTypeForResponse",
 )

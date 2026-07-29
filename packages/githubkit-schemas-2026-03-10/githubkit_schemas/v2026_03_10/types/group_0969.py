@@ -13,248 +13,387 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class AgentsReposOwnerRepoTasksPostResponse201Type(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse201"""
-
-    id: str
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    name: NotRequired[str]
-    creator: NotRequired[AgentsReposOwnerRepoTasksPostResponse201PropCreatorOneof0Type]
-    creator_type: NotRequired[Literal["user", "organization"]]
-    user_collaborators: NotRequired[
-        list[AgentsReposOwnerRepoTasksPostResponse201PropUserCollaboratorsItemsType]
-    ]
-    owner: NotRequired[AgentsReposOwnerRepoTasksPostResponse201PropOwnerType]
-    repository: NotRequired[AgentsReposOwnerRepoTasksPostResponse201PropRepositoryType]
-    state: Literal[
-        "queued",
-        "in_progress",
-        "completed",
-        "failed",
-        "idle",
-        "waiting_for_user",
-        "timed_out",
-        "cancelled",
-    ]
-    session_count: NotRequired[int]
-    artifacts: NotRequired[
-        list[AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsType]
-    ]
-    archived_at: NotRequired[Union[_dt.datetime, None]]
-    updated_at: NotRequired[_dt.datetime]
-    created_at: _dt.datetime
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0534 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0535 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0536 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0537 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class AgentsReposOwnerRepoTasksPostResponse201TypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse201"""
+class WebhookStatusType(TypedDict):
+    """status event"""
 
-    id: str
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    name: NotRequired[str]
-    creator: NotRequired[
-        AgentsReposOwnerRepoTasksPostResponse201PropCreatorOneof0TypeForResponse
-    ]
-    creator_type: NotRequired[Literal["user", "organization"]]
-    user_collaborators: NotRequired[
-        list[
-            AgentsReposOwnerRepoTasksPostResponse201PropUserCollaboratorsItemsTypeForResponse
-        ]
-    ]
-    owner: NotRequired[AgentsReposOwnerRepoTasksPostResponse201PropOwnerTypeForResponse]
-    repository: NotRequired[
-        AgentsReposOwnerRepoTasksPostResponse201PropRepositoryTypeForResponse
-    ]
-    state: Literal[
-        "queued",
-        "in_progress",
-        "completed",
-        "failed",
-        "idle",
-        "waiting_for_user",
-        "timed_out",
-        "cancelled",
-    ]
-    session_count: NotRequired[int]
-    artifacts: NotRequired[
-        list[AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsTypeForResponse]
-    ]
-    archived_at: NotRequired[Union[str, None]]
-    updated_at: NotRequired[str]
+    avatar_url: NotRequired[Union[str, None]]
+    branches: list[WebhookStatusPropBranchesItemsType]
+    commit: WebhookStatusPropCommitType
+    context: str
     created_at: str
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropCreatorOneof0Type(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse201PropCreatorOneof0
-
-    A GitHub user
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropCreatorOneof0TypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksPostResponse201PropCreatorOneof0
-
-    A GitHub user
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropUserCollaboratorsItemsType(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse201PropUserCollaboratorsItems
-
-    A GitHub user
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropUserCollaboratorsItemsTypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksPostResponse201PropUserCollaboratorsItems
-
-    A GitHub user
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropOwnerType(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse201PropOwner
-
-    The owner of the repository
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropOwnerTypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse201PropOwner
-
-    The owner of the repository
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropRepositoryType(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse201PropRepository
-
-    The repository this task belongs to
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropRepositoryTypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse201PropRepository
-
-    The repository this task belongs to
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsType(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItems
-
-    A resource generated by the task
-    """
-
-    provider: Literal["github"]
-    type: Literal["pull", "branch"]
-    data: Union[
-        AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof0Type,
-        AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof1Type,
-    ]
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsTypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItems
-
-    A resource generated by the task
-    """
-
-    provider: Literal["github"]
-    type: Literal["pull", "branch"]
-    data: Union[
-        AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof0TypeForResponse,
-        AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof1TypeForResponse,
-    ]
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof0Type(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof0
-
-    A GitHub resource (pull request, issue, etc.)
-    """
-
+    description: Union[str, None]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     id: int
-    global_id: NotRequired[str]
+    installation: NotRequired[SimpleInstallationType]
+    name: str
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
+    sha: str
+    state: Literal["pending", "success", "failure", "error"]
+    target_url: Union[str, None]
+    updated_at: str
 
 
-class AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof0TypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof0
+class WebhookStatusTypeForResponse(TypedDict):
+    """status event"""
 
-    A GitHub resource (pull request, issue, etc.)
-    """
-
+    avatar_url: NotRequired[Union[str, None]]
+    branches: list[WebhookStatusPropBranchesItemsTypeForResponse]
+    commit: WebhookStatusPropCommitTypeForResponse
+    context: str
+    created_at: str
+    description: Union[str, None]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     id: int
-    global_id: NotRequired[str]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    name: str
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+    sha: str
+    state: Literal["pending", "success", "failure", "error"]
+    target_url: Union[str, None]
+    updated_at: str
 
 
-class AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof1Type(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof1
+class WebhookStatusPropBranchesItemsType(TypedDict):
+    """WebhookStatusPropBranchesItems"""
 
-    A Git branch reference
-    """
-
-    head_ref: str
-    base_ref: str
+    commit: WebhookStatusPropBranchesItemsPropCommitType
+    name: str
+    protected: bool
 
 
-class AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof1TypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof1
+class WebhookStatusPropBranchesItemsTypeForResponse(TypedDict):
+    """WebhookStatusPropBranchesItems"""
 
-    A Git branch reference
-    """
+    commit: WebhookStatusPropBranchesItemsPropCommitTypeForResponse
+    name: str
+    protected: bool
 
-    head_ref: str
-    base_ref: str
+
+class WebhookStatusPropBranchesItemsPropCommitType(TypedDict):
+    """WebhookStatusPropBranchesItemsPropCommit"""
+
+    sha: Union[str, None]
+    url: Union[str, None]
+
+
+class WebhookStatusPropBranchesItemsPropCommitTypeForResponse(TypedDict):
+    """WebhookStatusPropBranchesItemsPropCommit"""
+
+    sha: Union[str, None]
+    url: Union[str, None]
+
+
+class WebhookStatusPropCommitType(TypedDict):
+    """WebhookStatusPropCommit"""
+
+    author: Union[WebhookStatusPropCommitPropAuthorType, None]
+    comments_url: str
+    commit: WebhookStatusPropCommitPropCommitType
+    committer: Union[WebhookStatusPropCommitPropCommitterType, None]
+    html_url: str
+    node_id: str
+    parents: list[WebhookStatusPropCommitPropParentsItemsType]
+    sha: str
+    url: str
+
+
+class WebhookStatusPropCommitTypeForResponse(TypedDict):
+    """WebhookStatusPropCommit"""
+
+    author: Union[WebhookStatusPropCommitPropAuthorTypeForResponse, None]
+    comments_url: str
+    commit: WebhookStatusPropCommitPropCommitTypeForResponse
+    committer: Union[WebhookStatusPropCommitPropCommitterTypeForResponse, None]
+    html_url: str
+    node_id: str
+    parents: list[WebhookStatusPropCommitPropParentsItemsTypeForResponse]
+    sha: str
+    url: str
+
+
+class WebhookStatusPropCommitPropAuthorType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    login: NotRequired[str]
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+
+
+class WebhookStatusPropCommitPropAuthorTypeForResponse(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    login: NotRequired[str]
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+
+
+class WebhookStatusPropCommitPropCommitterType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    login: NotRequired[str]
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+
+
+class WebhookStatusPropCommitPropCommitterTypeForResponse(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    login: NotRequired[str]
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+
+
+class WebhookStatusPropCommitPropParentsItemsType(TypedDict):
+    """WebhookStatusPropCommitPropParentsItems"""
+
+    html_url: str
+    sha: str
+    url: str
+
+
+class WebhookStatusPropCommitPropParentsItemsTypeForResponse(TypedDict):
+    """WebhookStatusPropCommitPropParentsItems"""
+
+    html_url: str
+    sha: str
+    url: str
+
+
+class WebhookStatusPropCommitPropCommitType(TypedDict):
+    """WebhookStatusPropCommitPropCommit"""
+
+    author: WebhookStatusPropCommitPropCommitPropAuthorType
+    comment_count: int
+    committer: WebhookStatusPropCommitPropCommitPropCommitterType
+    message: str
+    tree: WebhookStatusPropCommitPropCommitPropTreeType
+    url: str
+    verification: WebhookStatusPropCommitPropCommitPropVerificationType
+
+
+class WebhookStatusPropCommitPropCommitTypeForResponse(TypedDict):
+    """WebhookStatusPropCommitPropCommit"""
+
+    author: WebhookStatusPropCommitPropCommitPropAuthorTypeForResponse
+    comment_count: int
+    committer: WebhookStatusPropCommitPropCommitPropCommitterTypeForResponse
+    message: str
+    tree: WebhookStatusPropCommitPropCommitPropTreeTypeForResponse
+    url: str
+    verification: WebhookStatusPropCommitPropCommitPropVerificationTypeForResponse
+
+
+class WebhookStatusPropCommitPropCommitPropAuthorType(TypedDict):
+    """WebhookStatusPropCommitPropCommitPropAuthor"""
+
+    date: _dt.datetime
+    email: str
+    name: str
+    username: NotRequired[str]
+
+
+class WebhookStatusPropCommitPropCommitPropAuthorTypeForResponse(TypedDict):
+    """WebhookStatusPropCommitPropCommitPropAuthor"""
+
+    date: str
+    email: str
+    name: str
+    username: NotRequired[str]
+
+
+class WebhookStatusPropCommitPropCommitPropCommitterType(TypedDict):
+    """WebhookStatusPropCommitPropCommitPropCommitter"""
+
+    date: _dt.datetime
+    email: str
+    name: str
+    username: NotRequired[str]
+
+
+class WebhookStatusPropCommitPropCommitPropCommitterTypeForResponse(TypedDict):
+    """WebhookStatusPropCommitPropCommitPropCommitter"""
+
+    date: str
+    email: str
+    name: str
+    username: NotRequired[str]
+
+
+class WebhookStatusPropCommitPropCommitPropTreeType(TypedDict):
+    """WebhookStatusPropCommitPropCommitPropTree"""
+
+    sha: str
+    url: str
+
+
+class WebhookStatusPropCommitPropCommitPropTreeTypeForResponse(TypedDict):
+    """WebhookStatusPropCommitPropCommitPropTree"""
+
+    sha: str
+    url: str
+
+
+class WebhookStatusPropCommitPropCommitPropVerificationType(TypedDict):
+    """WebhookStatusPropCommitPropCommitPropVerification"""
+
+    payload: Union[str, None]
+    reason: Literal[
+        "expired_key",
+        "not_signing_key",
+        "gpgverify_error",
+        "gpgverify_unavailable",
+        "unsigned",
+        "unknown_signature_type",
+        "no_user",
+        "unverified_email",
+        "bad_email",
+        "unknown_key",
+        "malformed_signature",
+        "invalid",
+        "valid",
+        "bad_cert",
+        "ocsp_pending",
+    ]
+    signature: Union[str, None]
+    verified: bool
+    verified_at: Union[str, None]
+
+
+class WebhookStatusPropCommitPropCommitPropVerificationTypeForResponse(TypedDict):
+    """WebhookStatusPropCommitPropCommitPropVerification"""
+
+    payload: Union[str, None]
+    reason: Literal[
+        "expired_key",
+        "not_signing_key",
+        "gpgverify_error",
+        "gpgverify_unavailable",
+        "unsigned",
+        "unknown_signature_type",
+        "no_user",
+        "unverified_email",
+        "bad_email",
+        "unknown_key",
+        "malformed_signature",
+        "invalid",
+        "valid",
+        "bad_cert",
+        "ocsp_pending",
+    ]
+    signature: Union[str, None]
+    verified: bool
+    verified_at: Union[str, None]
 
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof0Type",
-    "AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof0TypeForResponse",
-    "AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof1Type",
-    "AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof1TypeForResponse",
-    "AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsType",
-    "AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsTypeForResponse",
-    "AgentsReposOwnerRepoTasksPostResponse201PropCreatorOneof0Type",
-    "AgentsReposOwnerRepoTasksPostResponse201PropCreatorOneof0TypeForResponse",
-    "AgentsReposOwnerRepoTasksPostResponse201PropOwnerType",
-    "AgentsReposOwnerRepoTasksPostResponse201PropOwnerTypeForResponse",
-    "AgentsReposOwnerRepoTasksPostResponse201PropRepositoryType",
-    "AgentsReposOwnerRepoTasksPostResponse201PropRepositoryTypeForResponse",
-    "AgentsReposOwnerRepoTasksPostResponse201PropUserCollaboratorsItemsType",
-    "AgentsReposOwnerRepoTasksPostResponse201PropUserCollaboratorsItemsTypeForResponse",
-    "AgentsReposOwnerRepoTasksPostResponse201Type",
-    "AgentsReposOwnerRepoTasksPostResponse201TypeForResponse",
+    "WebhookStatusPropBranchesItemsPropCommitType",
+    "WebhookStatusPropBranchesItemsPropCommitTypeForResponse",
+    "WebhookStatusPropBranchesItemsType",
+    "WebhookStatusPropBranchesItemsTypeForResponse",
+    "WebhookStatusPropCommitPropAuthorType",
+    "WebhookStatusPropCommitPropAuthorTypeForResponse",
+    "WebhookStatusPropCommitPropCommitPropAuthorType",
+    "WebhookStatusPropCommitPropCommitPropAuthorTypeForResponse",
+    "WebhookStatusPropCommitPropCommitPropCommitterType",
+    "WebhookStatusPropCommitPropCommitPropCommitterTypeForResponse",
+    "WebhookStatusPropCommitPropCommitPropTreeType",
+    "WebhookStatusPropCommitPropCommitPropTreeTypeForResponse",
+    "WebhookStatusPropCommitPropCommitPropVerificationType",
+    "WebhookStatusPropCommitPropCommitPropVerificationTypeForResponse",
+    "WebhookStatusPropCommitPropCommitType",
+    "WebhookStatusPropCommitPropCommitTypeForResponse",
+    "WebhookStatusPropCommitPropCommitterType",
+    "WebhookStatusPropCommitPropCommitterTypeForResponse",
+    "WebhookStatusPropCommitPropParentsItemsType",
+    "WebhookStatusPropCommitPropParentsItemsTypeForResponse",
+    "WebhookStatusPropCommitType",
+    "WebhookStatusPropCommitTypeForResponse",
+    "WebhookStatusType",
+    "WebhookStatusTypeForResponse",
 )

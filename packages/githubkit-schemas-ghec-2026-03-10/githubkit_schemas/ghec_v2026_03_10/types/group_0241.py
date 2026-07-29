@@ -9,64 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class GistCommentType(TypedDict):
-    """Gist Comment
+class ReleaseEventPropReleaseAllof1Type(TypedDict):
+    """ReleaseEventPropReleaseAllof1"""
 
-    A comment made to a gist.
-    """
-
-    id: int
-    node_id: str
-    url: str
-    body: str
-    user: Union[None, SimpleUserType]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
+    is_short_description_html_truncated: NotRequired[bool]
+    short_description_html: NotRequired[str]
 
 
-class GistCommentTypeForResponse(TypedDict):
-    """Gist Comment
+class ReleaseEventPropReleaseAllof1TypeForResponse(TypedDict):
+    """ReleaseEventPropReleaseAllof1"""
 
-    A comment made to a gist.
-    """
-
-    id: int
-    node_id: str
-    url: str
-    body: str
-    user: Union[None, SimpleUserTypeForResponse]
-    created_at: str
-    updated_at: str
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
+    is_short_description_html_truncated: NotRequired[bool]
+    short_description_html: NotRequired[str]
 
 
 __all__ = (
-    "GistCommentType",
-    "GistCommentTypeForResponse",
+    "ReleaseEventPropReleaseAllof1Type",
+    "ReleaseEventPropReleaseAllof1TypeForResponse",
 )

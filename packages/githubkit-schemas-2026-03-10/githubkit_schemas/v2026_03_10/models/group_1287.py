@@ -9,82 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200(GitHubModel):
-    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200"""
+class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody(GitHubModel):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody"""
 
-    mcp_configuration: Union[
-        ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration,
-        None,
+    strict: Missing[bool] = Field(
+        default=UNSET, description="Require branches to be up to date before merging."
+    )
+    contexts: Missing[list[str]] = Field(
+        default=UNSET,
+        description="**Closing down notice**: The list of status checks to require in order to merge into this branch. If any of these checks have recently been set by a particular GitHub App, they will be required to come from that app in future for the branch to merge. Use `checks` instead of `contexts` for more fine-grained control.",
+    )
+    checks: Missing[
+        list[
+            ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItems
+        ]
     ] = Field(
-        description="The user-supplied MCP server configuration for the repository, as a free-form JSON object. This will be set to `null` if no configuration has been set.\n\nThe shape of a valid MCP configuration may evolve over time, so this property is intentionally not strictly typed. Clients should not assume a fixed schema."
-    )
-    enabled_tools: ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools = Field(
-        description="The enabled review tools for Copilot cloud agent."
-    )
-    require_actions_workflow_approval: bool = Field(
-        description="Whether Actions workflow approval is required for Copilot cloud agent pull requests."
-    )
-    is_firewall_enabled: bool = Field(description="Whether the firewall is enabled.")
-    is_firewall_recommended_allowlist_enabled: bool = Field(
-        description="Whether the firewall recommended allowlist is enabled."
-    )
-    custom_allowlist: list[str] = Field(
-        description="A list of custom allowlist entries, as hosts or URLs, that the firewall will allow the Copilot cloud agent to access."
+        default=UNSET,
+        description="The list of status checks to require in order to merge into this branch.",
     )
 
 
-class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration(
-    ExtraGitHubModel
-):
-    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration
-
-    The user-supplied MCP server configuration for the repository, as a free-form
-    JSON object. This will be set to `null` if no configuration has been set.
-
-    The shape of a valid MCP configuration may evolve over time, so this property is
-    intentionally not strictly typed. Clients should not assume a fixed schema.
-    """
-
-
-class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools(
+class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItems(
     GitHubModel
 ):
-    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools
-
-    The enabled review tools for Copilot cloud agent.
+    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksIte
+    ms
     """
 
-    codeql: bool = Field(
-        description="Whether the CodeQL tool is enabled for the Copilot cloud agent."
-    )
-    copilot_code_review: bool = Field(
-        description="Whether the Copilot code review tool is enabled for the Copilot cloud agent."
-    )
-    secret_scanning: bool = Field(
-        description="Whether the secret scanning tool is enabled for the Copilot cloud agent."
-    )
-    dependency_vulnerability_checks: bool = Field(
-        description="Whether the dependency vulnerability checks tool is enabled for the Copilot cloud agent."
+    context: str = Field(description="The name of the required check")
+    app_id: Missing[int] = Field(
+        default=UNSET,
+        description="The ID of the GitHub App that must provide this check. Omit this field to automatically select the GitHub App that has recently provided this check, or any app if it was not set by a GitHub App. Pass -1 to explicitly allow any app to set the status.",
     )
 
 
-model_rebuild(ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200)
+model_rebuild(ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody)
 model_rebuild(
-    ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration
-)
-model_rebuild(
-    ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools
+    ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItems
 )
 
 __all__ = (
-    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200",
-    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools",
-    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItems",
 )

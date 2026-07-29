@@ -9,27 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType(TypedDict):
-    """ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody"""
+class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3ItemsType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3Items"""
 
-    message: str
-    event: NotRequired[Literal["DISMISS"]]
+    name: str
 
 
-class ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody"""
+class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3ItemsTypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3Items"""
 
-    message: str
-    event: NotRequired[Literal["DISMISS"]]
+    name: str
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType",
-    "ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyTypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3ItemsType",
+    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3ItemsTypeForResponse",
 )

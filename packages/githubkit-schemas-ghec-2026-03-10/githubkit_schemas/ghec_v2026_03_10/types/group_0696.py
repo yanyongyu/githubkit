@@ -9,45 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0426 import DependabotAlertType, DependabotAlertTypeForResponse
-from .group_0598 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0599 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0600 import (
+from .group_0617 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0618 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0619 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0601 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0620 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0697 import (
+    WebhookCodeScanningAlertReopenedPropAlertType,
+    WebhookCodeScanningAlertReopenedPropAlertTypeForResponse,
+)
 
 
-class WebhookDependabotAlertFixedType(TypedDict):
-    """Dependabot alert fixed event"""
+class WebhookCodeScanningAlertReopenedType(TypedDict):
+    """code_scanning_alert reopened event"""
 
-    action: Literal["fixed"]
-    alert: DependabotAlertType
+    action: Literal["reopened"]
+    alert: WebhookCodeScanningAlertReopenedPropAlertType
+    commit_oid: Union[str, None]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    ref: Union[str, None]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookDependabotAlertFixedTypeForResponse(TypedDict):
-    """Dependabot alert fixed event"""
+class WebhookCodeScanningAlertReopenedTypeForResponse(TypedDict):
+    """code_scanning_alert reopened event"""
 
-    action: Literal["fixed"]
-    alert: DependabotAlertTypeForResponse
+    action: Literal["reopened"]
+    alert: WebhookCodeScanningAlertReopenedPropAlertTypeForResponse
+    commit_oid: Union[str, None]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    ref: Union[str, None]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookDependabotAlertFixedType",
-    "WebhookDependabotAlertFixedTypeForResponse",
+    "WebhookCodeScanningAlertReopenedType",
+    "WebhookCodeScanningAlertReopenedTypeForResponse",
 )
