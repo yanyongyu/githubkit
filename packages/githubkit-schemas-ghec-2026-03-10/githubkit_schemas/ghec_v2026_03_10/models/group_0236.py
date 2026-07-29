@@ -25,7 +25,7 @@ class PullRequestReviewEventPropReview(GitHubModel):
 
     id: Missing[int] = Field(default=UNSET)
     node_id: Missing[str] = Field(default=UNSET)
-    user: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    user: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
     body: Missing[str] = Field(default=UNSET)
     commit_id: Missing[str] = Field(default=UNSET)
     submitted_at: Missing[Union[str, None]] = Field(default=UNSET)

@@ -25,8 +25,8 @@ class CopilotSeatDetailsType(TypedDict):
     organization.
     """
 
-    assignee: NotRequired[Union[None, SimpleUserType]]
-    organization: NotRequired[Union[None, OrganizationSimpleType]]
+    assignee: NotRequired[Union[SimpleUserType, None]]
+    organization: NotRequired[Union[OrganizationSimpleType, None]]
     assigning_team: NotRequired[Union[TeamType, EnterpriseTeamType, None]]
     pending_cancellation_date: NotRequired[Union[_dt.date, None]]
     last_activity_at: NotRequired[Union[_dt.datetime, None]]
@@ -44,8 +44,8 @@ class CopilotSeatDetailsTypeForResponse(TypedDict):
     organization.
     """
 
-    assignee: NotRequired[Union[None, SimpleUserTypeForResponse]]
-    organization: NotRequired[Union[None, OrganizationSimpleTypeForResponse]]
+    assignee: NotRequired[Union[SimpleUserTypeForResponse, None]]
+    organization: NotRequired[Union[OrganizationSimpleTypeForResponse, None]]
     assigning_team: NotRequired[
         Union[TeamTypeForResponse, EnterpriseTeamTypeForResponse, None]
     ]

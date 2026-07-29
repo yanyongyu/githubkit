@@ -36,7 +36,7 @@ class ActivityType(TypedDict):
         "pr_merge",
         "merge_queue_merge",
     ]
-    actor: Union[None, SimpleUserType]
+    actor: Union[SimpleUserType, None]
 
 
 class ActivityTypeForResponse(TypedDict):
@@ -59,7 +59,7 @@ class ActivityTypeForResponse(TypedDict):
         "pr_merge",
         "merge_queue_merge",
     ]
-    actor: Union[None, SimpleUserTypeForResponse]
+    actor: Union[SimpleUserTypeForResponse, None]
 
 
 __all__ = (

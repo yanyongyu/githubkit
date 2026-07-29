@@ -69,7 +69,6 @@ class WebhookCheckSuiteRequestedPropCheckSuite(GitHubModel):
     before: Union[str, None] = Field()
     check_runs_url: str = Field()
     conclusion: Union[
-        None,
         Literal[
             "success",
             "failure",
@@ -80,6 +79,7 @@ class WebhookCheckSuiteRequestedPropCheckSuite(GitHubModel):
             "stale",
             "skipped",
         ],
+        None,
     ] = Field(
         description="The summary conclusion for all check runs that are part of the check suite. This value will be `null` until the check run has completed."
     )
@@ -103,7 +103,7 @@ class WebhookCheckSuiteRequestedPropCheckSuite(GitHubModel):
     )
     rerequestable: Missing[bool] = Field(default=UNSET)
     runs_rerequestable: Missing[bool] = Field(default=UNSET)
-    status: Union[None, Literal["requested", "in_progress", "completed", "queued"]] = (
+    status: Union[Literal["requested", "in_progress", "completed", "queued"], None] = (
         Field(
             description="The summary status for all check runs that are part of the check suite. Can be `requested`, `in_progress`, or `completed`."
         )

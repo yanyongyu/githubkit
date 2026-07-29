@@ -17,7 +17,7 @@ class OrganizationCustomPropertyAllof1Type(TypedDict):
     """OrganizationCustomPropertyAllof1"""
 
     values_editable_by: NotRequired[
-        Union[None, Literal["enterprise_actors", "enterprise_and_org_actors"]]
+        Union[Literal["enterprise_actors", "enterprise_and_org_actors"], None]
     ]
 
 
@@ -25,7 +25,7 @@ class OrganizationCustomPropertyAllof1TypeForResponse(TypedDict):
     """OrganizationCustomPropertyAllof1"""
 
     values_editable_by: NotRequired[
-        Union[None, Literal["enterprise_actors", "enterprise_and_org_actors"]]
+        Union[Literal["enterprise_actors", "enterprise_and_org_actors"], None]
     ]
 
 

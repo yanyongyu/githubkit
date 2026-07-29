@@ -35,8 +35,8 @@ class CommitSearchResultItem(GitHubModel):
     html_url: str = Field()
     comments_url: str = Field()
     commit: CommitSearchResultItemPropCommit = Field()
-    author: Union[None, SimpleUser] = Field()
-    committer: Union[None, GitUser] = Field()
+    author: Union[SimpleUser, None] = Field()
+    committer: Union[GitUser, None] = Field()
     parents: list[CommitSearchResultItemPropParentsItems] = Field()
     repository: MinimalRepository = Field(
         title="Minimal Repository", description="Minimal Repository"

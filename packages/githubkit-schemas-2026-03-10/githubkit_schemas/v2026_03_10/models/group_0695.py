@@ -38,7 +38,7 @@ class WebhookIssueCommentEditedPropIssueAllof0(GitHubModel):
     """
 
     active_lock_reason: Union[
-        None, Literal["resolved", "off-topic", "too heated", "spam"]
+        Literal["resolved", "off-topic", "too heated", "spam"], None
     ] = Field()
     assignee: Missing[
         Union[WebhookIssueCommentEditedPropIssueAllof0PropAssignee, None]

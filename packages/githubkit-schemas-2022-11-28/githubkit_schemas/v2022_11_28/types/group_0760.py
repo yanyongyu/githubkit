@@ -31,7 +31,7 @@ class WebhookIssuesOpenedPropIssueType(TypedDict):
     """
 
     active_lock_reason: Union[
-        None, Literal["resolved", "off-topic", "too heated", "spam"]
+        Literal["resolved", "off-topic", "too heated", "spam"], None
     ]
     assignee: NotRequired[Union[WebhookIssuesOpenedPropIssuePropAssigneeType, None]]
     assignees: list[Union[WebhookIssuesOpenedPropIssuePropAssigneesItemsType, None]]
@@ -76,7 +76,7 @@ class WebhookIssuesOpenedPropIssueType(TypedDict):
     type: NotRequired[Union[IssueTypeType, None]]
     updated_at: _dt.datetime
     url: str
-    pinned_comment: NotRequired[Union[None, IssueCommentType]]
+    pinned_comment: NotRequired[Union[IssueCommentType, None]]
     user: Union[WebhookIssuesOpenedPropIssuePropUserType, None]
 
 
@@ -87,7 +87,7 @@ class WebhookIssuesOpenedPropIssueTypeForResponse(TypedDict):
     """
 
     active_lock_reason: Union[
-        None, Literal["resolved", "off-topic", "too heated", "spam"]
+        Literal["resolved", "off-topic", "too heated", "spam"], None
     ]
     assignee: NotRequired[
         Union[WebhookIssuesOpenedPropIssuePropAssigneeTypeForResponse, None]
@@ -142,7 +142,7 @@ class WebhookIssuesOpenedPropIssueTypeForResponse(TypedDict):
     type: NotRequired[Union[IssueTypeTypeForResponse, None]]
     updated_at: str
     url: str
-    pinned_comment: NotRequired[Union[None, IssueCommentTypeForResponse]]
+    pinned_comment: NotRequired[Union[IssueCommentTypeForResponse, None]]
     user: Union[WebhookIssuesOpenedPropIssuePropUserTypeForResponse, None]
 
 

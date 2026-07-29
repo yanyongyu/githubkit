@@ -25,9 +25,9 @@ class EnterpriseRoleType(TypedDict):
     id: int
     name: str
     description: NotRequired[Union[str, None]]
-    source: NotRequired[Union[None, Literal["Enterprise", "Predefined"]]]
+    source: NotRequired[Union[Literal["Enterprise", "Predefined"], None]]
     permissions: list[str]
-    enterprise: Union[None, EnterpriseType]
+    enterprise: Union[EnterpriseType, None]
     created_at: _dt.datetime
     updated_at: _dt.datetime
 
@@ -41,9 +41,9 @@ class EnterpriseRoleTypeForResponse(TypedDict):
     id: int
     name: str
     description: NotRequired[Union[str, None]]
-    source: NotRequired[Union[None, Literal["Enterprise", "Predefined"]]]
+    source: NotRequired[Union[Literal["Enterprise", "Predefined"], None]]
     permissions: list[str]
-    enterprise: Union[None, EnterpriseTypeForResponse]
+    enterprise: Union[EnterpriseTypeForResponse, None]
     created_at: str
     updated_at: str
 

@@ -68,7 +68,6 @@ class WebhookWorkflowRunInProgressPropWorkflowRun(GitHubModel):
     check_suite_node_id: str = Field()
     check_suite_url: str = Field()
     conclusion: Union[
-        None,
         Literal[
             "action_required",
             "cancelled",
@@ -79,6 +78,7 @@ class WebhookWorkflowRunInProgressPropWorkflowRun(GitHubModel):
             "success",
             "timed_out",
         ],
+        None,
     ] = Field()
     created_at: _dt.datetime = Field()
     event: str = Field()

@@ -34,7 +34,7 @@ class RepositoryAdvisoryType(TypedDict):
     html_url: str
     summary: str
     description: Union[str, None]
-    severity: Union[None, Literal["critical", "high", "medium", "low"]]
+    severity: Union[Literal["critical", "high", "medium", "low"], None]
     author: None
     publisher: None
     identifiers: list[RepositoryAdvisoryPropIdentifiersItemsType]
@@ -69,7 +69,7 @@ class RepositoryAdvisoryTypeForResponse(TypedDict):
     html_url: str
     summary: str
     description: Union[str, None]
-    severity: Union[None, Literal["critical", "high", "medium", "low"]]
+    severity: Union[Literal["critical", "high", "medium", "low"], None]
     author: None
     publisher: None
     identifiers: list[RepositoryAdvisoryPropIdentifiersItemsTypeForResponse]

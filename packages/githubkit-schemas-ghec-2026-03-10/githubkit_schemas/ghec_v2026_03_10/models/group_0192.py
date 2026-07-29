@@ -77,7 +77,7 @@ class SecretScanningPatternOverride(GitHubModel):
         description="The default push protection setting for this pattern.",
     )
     enterprise_setting: Missing[
-        Union[None, Literal["not-set", "disabled", "enabled"]]
+        Union[Literal["not-set", "disabled", "enabled"], None]
     ] = Field(
         default=UNSET,
         description="The push protection setting for this pattern set at the enterprise level. Only present for partner patterns when the organization has a parent enterprise.",

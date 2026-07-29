@@ -73,7 +73,6 @@ class WebhookDeploymentStatusCreatedPropCheckRun(GitHubModel):
 
     completed_at: Union[_dt.datetime, None] = Field()
     conclusion: Union[
-        None,
         Literal[
             "success",
             "failure",
@@ -84,6 +83,7 @@ class WebhookDeploymentStatusCreatedPropCheckRun(GitHubModel):
             "stale",
             "skipped",
         ],
+        None,
     ] = Field(
         description="The result of the completed check run. This value will be `null` until the check run has completed."
     )
@@ -473,7 +473,6 @@ class WebhookDeploymentStatusCreatedPropWorkflowRun(GitHubModel):
     check_suite_node_id: str = Field()
     check_suite_url: Missing[str] = Field(default=UNSET)
     conclusion: Union[
-        None,
         Literal[
             "success",
             "failure",
@@ -484,6 +483,7 @@ class WebhookDeploymentStatusCreatedPropWorkflowRun(GitHubModel):
             "stale",
             "startup_failure",
         ],
+        None,
     ] = Field()
     created_at: _dt.datetime = Field()
     display_title: str = Field()

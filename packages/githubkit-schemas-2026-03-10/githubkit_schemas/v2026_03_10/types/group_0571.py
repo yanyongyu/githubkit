@@ -21,7 +21,7 @@ class WebhooksPullRequest5Type(TypedDict):
 
     links: WebhooksPullRequest5PropLinksType
     active_lock_reason: Union[
-        None, Literal["resolved", "off-topic", "too heated", "spam"]
+        Literal["resolved", "off-topic", "too heated", "spam"], None
     ]
     additions: NotRequired[int]
     assignee: Union[WebhooksPullRequest5PropAssigneeType, None]
@@ -69,8 +69,8 @@ class WebhooksPullRequest5Type(TypedDict):
     requested_reviewers: list[
         Union[
             WebhooksPullRequest5PropRequestedReviewersItemsOneof0Type,
-            None,
             WebhooksPullRequest5PropRequestedReviewersItemsOneof1Type,
+            None,
         ]
     ]
     requested_teams: list[WebhooksPullRequest5PropRequestedTeamsItemsType]
@@ -91,7 +91,7 @@ class WebhooksPullRequest5TypeForResponse(TypedDict):
 
     links: WebhooksPullRequest5PropLinksTypeForResponse
     active_lock_reason: Union[
-        None, Literal["resolved", "off-topic", "too heated", "spam"]
+        Literal["resolved", "off-topic", "too heated", "spam"], None
     ]
     additions: NotRequired[int]
     assignee: Union[WebhooksPullRequest5PropAssigneeTypeForResponse, None]
@@ -139,8 +139,8 @@ class WebhooksPullRequest5TypeForResponse(TypedDict):
     requested_reviewers: list[
         Union[
             WebhooksPullRequest5PropRequestedReviewersItemsOneof0TypeForResponse,
-            None,
             WebhooksPullRequest5PropRequestedReviewersItemsOneof1TypeForResponse,
+            None,
         ]
     ]
     requested_teams: list[WebhooksPullRequest5PropRequestedTeamsItemsTypeForResponse]

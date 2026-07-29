@@ -20,7 +20,7 @@ class ReposOwnerRepoIssuesIssueNumberPatchBodyType(TypedDict):
     body: NotRequired[Union[str, None]]
     state: NotRequired[Literal["open", "closed"]]
     state_reason: NotRequired[
-        Union[None, Literal["completed", "not_planned", "duplicate", "reopened"]]
+        Union[Literal["completed", "not_planned", "duplicate", "reopened"], None]
     ]
     duplicate_issue_id: NotRequired[int]
     milestone: NotRequired[Union[str, int, None]]
@@ -54,7 +54,7 @@ class ReposOwnerRepoIssuesIssueNumberPatchBodyTypeForResponse(TypedDict):
     body: NotRequired[Union[str, None]]
     state: NotRequired[Literal["open", "closed"]]
     state_reason: NotRequired[
-        Union[None, Literal["completed", "not_planned", "duplicate", "reopened"]]
+        Union[Literal["completed", "not_planned", "duplicate", "reopened"], None]
     ]
     duplicate_issue_id: NotRequired[int]
     milestone: NotRequired[Union[str, int, None]]

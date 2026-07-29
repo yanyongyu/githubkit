@@ -33,14 +33,14 @@ class EnterpriseRole(GitHubModel):
         default=UNSET,
         description="A short description about who this role is for or what permissions it grants.",
     )
-    source: Missing[Union[None, Literal["Enterprise", "Predefined"]]] = Field(
+    source: Missing[Union[Literal["Enterprise", "Predefined"], None]] = Field(
         default=UNSET,
         description='Source answers the question, "where did this role come from?"',
     )
     permissions: list[str] = Field(
         description="A list of permissions included in this role."
     )
-    enterprise: Union[None, Enterprise] = Field()
+    enterprise: Union[Enterprise, None] = Field()
     created_at: _dt.datetime = Field(
         description="The date and time the role was created."
     )

@@ -21,10 +21,10 @@ class OrganizationCreateIssueTypeType(TypedDict):
     description: NotRequired[Union[str, None]]
     color: NotRequired[
         Union[
-            None,
             Literal[
                 "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
             ],
+            None,
         ]
     ]
 
@@ -37,10 +37,10 @@ class OrganizationCreateIssueTypeTypeForResponse(TypedDict):
     description: NotRequired[Union[str, None]]
     color: NotRequired[
         Union[
-            None,
             Literal[
                 "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
             ],
+            None,
         ]
     ]
 

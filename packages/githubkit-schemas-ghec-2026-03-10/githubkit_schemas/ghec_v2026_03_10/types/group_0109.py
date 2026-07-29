@@ -30,7 +30,7 @@ class OrganizationCustomPropertyType(TypedDict):
     description: NotRequired[Union[str, None]]
     allowed_values: NotRequired[Union[list[str], None]]
     values_editable_by: NotRequired[
-        Union[None, Literal["enterprise_actors", "enterprise_and_org_actors"]]
+        Union[Literal["enterprise_actors", "enterprise_and_org_actors"], None]
     ]
 
 
@@ -51,7 +51,7 @@ class OrganizationCustomPropertyTypeForResponse(TypedDict):
     description: NotRequired[Union[str, None]]
     allowed_values: NotRequired[Union[list[str], None]]
     values_editable_by: NotRequired[
-        Union[None, Literal["enterprise_actors", "enterprise_and_org_actors"]]
+        Union[Literal["enterprise_actors", "enterprise_and_org_actors"], None]
     ]
 
 

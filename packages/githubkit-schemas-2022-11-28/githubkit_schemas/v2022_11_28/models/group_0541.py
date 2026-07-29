@@ -39,7 +39,6 @@ class CheckRunWithSimpleCheckSuite(GitHubModel):
     )
     completed_at: Union[_dt.datetime, None] = Field()
     conclusion: Union[
-        None,
         Literal[
             "waiting",
             "pending",
@@ -53,6 +52,7 @@ class CheckRunWithSimpleCheckSuite(GitHubModel):
             "timed_out",
             "action_required",
         ],
+        None,
     ] = Field()
     deployment: Missing[DeploymentSimple] = Field(
         default=UNSET,

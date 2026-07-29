@@ -40,7 +40,7 @@ class ReviewComment(GitHubModel):
     commit_id: str = Field()
     original_commit_id: str = Field()
     in_reply_to_id: Missing[int] = Field(default=UNSET)
-    user: Union[None, SimpleUser] = Field()
+    user: Union[SimpleUser, None] = Field()
     body: str = Field()
     created_at: _dt.datetime = Field()
     updated_at: _dt.datetime = Field()
@@ -67,7 +67,7 @@ class ReviewComment(GitHubModel):
         default=UNSET,
         description="The side of the first line of the range for a multi-line comment.",
     )
-    start_side: Missing[Union[None, Literal["LEFT", "RIGHT"]]] = Field(
+    start_side: Missing[Union[Literal["LEFT", "RIGHT"], None]] = Field(
         default=UNSET,
         description="The side of the first line of the range for a multi-line comment.",
     )

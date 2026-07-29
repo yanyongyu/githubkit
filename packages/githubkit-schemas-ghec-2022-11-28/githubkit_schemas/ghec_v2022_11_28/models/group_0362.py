@@ -91,7 +91,7 @@ class WorkflowRun(GitHubModel):
         description="The URL to the previous attempted run of this workflow, if one exists.",
     )
     workflow_url: str = Field(description="The URL to the workflow.")
-    head_commit: Union[None, SimpleCommit] = Field()
+    head_commit: Union[SimpleCommit, None] = Field()
     repository: MinimalRepository = Field(
         title="Minimal Repository", description="Minimal Repository"
     )

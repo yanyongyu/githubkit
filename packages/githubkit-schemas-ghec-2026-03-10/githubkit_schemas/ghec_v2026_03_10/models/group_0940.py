@@ -75,10 +75,10 @@ class WebhookProjectsV2StatusUpdateEditedPropChangesPropStatus(GitHubModel):
     """WebhookProjectsV2StatusUpdateEditedPropChangesPropStatus"""
 
     from_: Missing[
-        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
+        Union[Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"], None]
     ] = Field(default=UNSET, alias="from")
     to: Missing[
-        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
+        Union[Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"], None]
     ] = Field(default=UNSET)
 
 

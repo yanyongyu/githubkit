@@ -33,7 +33,7 @@ class LicenseContentType(TypedDict):
     content: str
     encoding: str
     links: LicenseContentPropLinksType
-    license_: Union[None, LicenseSimpleType]
+    license_: Union[LicenseSimpleType, None]
 
 
 class LicenseContentTypeForResponse(TypedDict):
@@ -54,7 +54,7 @@ class LicenseContentTypeForResponse(TypedDict):
     content: str
     encoding: str
     links: LicenseContentPropLinksTypeForResponse
-    license_: Union[None, LicenseSimpleTypeForResponse]
+    license_: Union[LicenseSimpleTypeForResponse, None]
 
 
 class LicenseContentPropLinksType(TypedDict):

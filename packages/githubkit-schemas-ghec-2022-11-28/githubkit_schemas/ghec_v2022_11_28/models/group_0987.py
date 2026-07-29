@@ -28,7 +28,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequest(GitHubModel):
         alias="_links"
     )
     active_lock_reason: Union[
-        None, Literal["resolved", "off-topic", "too heated", "spam"]
+        Literal["resolved", "off-topic", "too heated", "spam"], None
     ] = Field()
     assignee: Union[
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropAssignee, None
@@ -88,8 +88,8 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequest(GitHubModel):
     requested_reviewers: list[
         Union[
             WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedReviewersItemsOneof0,
-            None,
             WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedReviewersItemsOneof1,
+            None,
         ]
     ] = Field()
     requested_teams: list[

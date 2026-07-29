@@ -29,7 +29,7 @@ class GistCommit(GitHubModel):
 
     url: str = Field()
     version: str = Field()
-    user: Union[None, SimpleUser] = Field()
+    user: Union[SimpleUser, None] = Field()
     change_status: GistCommitPropChangeStatus = Field()
     committed_at: _dt.datetime = Field()
 

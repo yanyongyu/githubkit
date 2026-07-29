@@ -134,8 +134,10 @@ For some APIs, the request body may be raw data. You can pass the raw data direc
     ```python
     from githubkit import GitHub
 
+
     def get_client() -> GitHub:
         return GitHub()
+
 
     # This will cause error
     get_client().rest.repos.get("owner", "repo")
@@ -189,7 +191,9 @@ from githubkit import Response
 from githubkit_schemas.latest.models import FullRepository
 from githubkit_schemas.latest.types import FullRepositoryType
 
-resp: Response[FullRepository, FullRepositoryType] = github.rest.repos.get("owner", "repo")
+resp: Response[FullRepository, FullRepositoryType] = github.rest.repos.get(
+    "owner", "repo"
+)
 repo: FullRepositoryType = resp.json()
 ```
 
@@ -382,9 +386,7 @@ For example, to upload a release asset:
 
     github = GitHub()
 
-    resp = github.rest.repos.get_release_by_tag(
-        "owner", "repo", "tag_name"
-    )
+    resp = github.rest.repos.get_release_by_tag("owner", "repo", "tag_name")
     release: Release = resp.parsed_data
 
     resp = github.request(
@@ -408,9 +410,7 @@ For example, to upload a release asset:
 
     github = GitHub()
 
-    resp = await github.rest.repos.async_get_release_by_tag(
-        "owner", "repo", "tag_name"
-    )
+    resp = await github.rest.repos.async_get_release_by_tag("owner", "repo", "tag_name")
     release: Release = resp.parsed_data
 
     resp = await github.arequest(

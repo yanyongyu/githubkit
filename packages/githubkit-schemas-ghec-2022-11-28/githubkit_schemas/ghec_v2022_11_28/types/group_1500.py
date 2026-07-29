@@ -18,7 +18,7 @@ class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0Type(TypedDict):
 
     state: Literal["open", "dismissed"]
     dismissed_reason: NotRequired[
-        Union[None, Literal["false positive", "won't fix", "used in tests"]]
+        Union[Literal["false positive", "won't fix", "used in tests"], None]
     ]
     dismissed_comment: NotRequired[Union[str, None]]
     create_request: NotRequired[bool]
@@ -32,7 +32,7 @@ class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0TypeForResponse(
 
     state: Literal["open", "dismissed"]
     dismissed_reason: NotRequired[
-        Union[None, Literal["false positive", "won't fix", "used in tests"]]
+        Union[Literal["false positive", "won't fix", "used in tests"], None]
     ]
     dismissed_comment: NotRequired[Union[str, None]]
     create_request: NotRequired[bool]

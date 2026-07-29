@@ -36,7 +36,7 @@ class TeamFullType(TypedDict):
     permission: str
     members_url: str
     repositories_url: str
-    parent: NotRequired[Union[None, TeamSimpleType]]
+    parent: NotRequired[Union[TeamSimpleType, None]]
     members_count: int
     repos_count: int
     created_at: _dt.datetime
@@ -68,7 +68,7 @@ class TeamFullTypeForResponse(TypedDict):
     permission: str
     members_url: str
     repositories_url: str
-    parent: NotRequired[Union[None, TeamSimpleTypeForResponse]]
+    parent: NotRequired[Union[TeamSimpleTypeForResponse, None]]
     members_count: int
     repos_count: int
     created_at: str

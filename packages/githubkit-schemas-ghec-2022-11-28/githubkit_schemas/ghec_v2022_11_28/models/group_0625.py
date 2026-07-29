@@ -38,7 +38,6 @@ class SimpleCheckSuite(GitHubModel):
     before: Missing[Union[str, None]] = Field(default=UNSET)
     conclusion: Missing[
         Union[
-            None,
             Literal[
                 "success",
                 "failure",
@@ -50,6 +49,7 @@ class SimpleCheckSuite(GitHubModel):
                 "stale",
                 "startup_failure",
             ],
+            None,
         ]
     ] = Field(default=UNSET)
     created_at: Missing[_dt.datetime] = Field(default=UNSET)

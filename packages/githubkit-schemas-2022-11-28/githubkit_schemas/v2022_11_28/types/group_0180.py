@@ -52,17 +52,17 @@ class PullRequestSimpleType(TypedDict):
     state: str
     locked: bool
     title: str
-    user: Union[None, SimpleUserType]
+    user: Union[SimpleUserType, None]
     body: Union[str, None]
     labels: list[PullRequestSimplePropLabelsItemsType]
-    milestone: Union[None, MilestoneType]
+    milestone: Union[MilestoneType, None]
     active_lock_reason: NotRequired[Union[str, None]]
     created_at: _dt.datetime
     updated_at: _dt.datetime
     closed_at: Union[_dt.datetime, None]
     merged_at: Union[_dt.datetime, None]
     merge_commit_sha: Union[str, None]
-    assignee: Union[None, SimpleUserType]
+    assignee: Union[SimpleUserType, None]
     assignees: NotRequired[list[SimpleUserType]]
     requested_reviewers: NotRequired[list[SimpleUserType]]
     requested_teams: NotRequired[list[TeamType]]
@@ -106,17 +106,17 @@ class PullRequestSimpleTypeForResponse(TypedDict):
     state: str
     locked: bool
     title: str
-    user: Union[None, SimpleUserTypeForResponse]
+    user: Union[SimpleUserTypeForResponse, None]
     body: Union[str, None]
     labels: list[PullRequestSimplePropLabelsItemsTypeForResponse]
-    milestone: Union[None, MilestoneTypeForResponse]
+    milestone: Union[MilestoneTypeForResponse, None]
     active_lock_reason: NotRequired[Union[str, None]]
     created_at: str
     updated_at: str
     closed_at: Union[str, None]
     merged_at: Union[str, None]
     merge_commit_sha: Union[str, None]
-    assignee: Union[None, SimpleUserTypeForResponse]
+    assignee: Union[SimpleUserTypeForResponse, None]
     assignees: NotRequired[list[SimpleUserTypeForResponse]]
     requested_reviewers: NotRequired[list[SimpleUserTypeForResponse]]
     requested_teams: NotRequired[list[TeamTypeForResponse]]

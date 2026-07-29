@@ -26,12 +26,12 @@ class Page(GitHubModel):
     """
 
     url: str = Field(description="The API address for accessing this Page resource.")
-    status: Union[None, Literal["built", "building", "errored"]] = Field(
+    status: Union[Literal["built", "building", "errored"], None] = Field(
         description="The status of the most recent build of the Page."
     )
     cname: Union[str, None] = Field(description="The Pages site's custom domain")
     protected_domain_state: Missing[
-        Union[None, Literal["pending", "verified", "unverified"]]
+        Union[Literal["pending", "verified", "unverified"], None]
     ] = Field(default=UNSET, description="The state if the domain is verified")
     pending_domain_unverified_at: Missing[Union[_dt.datetime, None]] = Field(
         default=UNSET,
@@ -43,7 +43,7 @@ class Page(GitHubModel):
     html_url: Missing[str] = Field(
         default=UNSET, description="The web address the Page can be accessed from."
     )
-    build_type: Missing[Union[None, Literal["legacy", "workflow"]]] = Field(
+    build_type: Missing[Union[Literal["legacy", "workflow"], None]] = Field(
         default=UNSET, description="The process in which the Page will be built."
     )
     source: Missing[PagesSourceHash] = Field(default=UNSET, title="Pages Source Hash")

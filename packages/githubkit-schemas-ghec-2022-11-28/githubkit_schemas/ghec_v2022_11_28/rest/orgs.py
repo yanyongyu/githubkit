@@ -8163,10 +8163,10 @@ class OrgsClient:
         description: Missing[Union[str, None]] = UNSET,
         color: Missing[
             Union[
-                None,
                 Literal[
                     "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
                 ],
+                None,
             ]
         ] = UNSET,
     ) -> Response[Union[IssueType, None], Union[IssueTypeTypeForResponse, None]]: ...
@@ -8252,10 +8252,10 @@ class OrgsClient:
         description: Missing[Union[str, None]] = UNSET,
         color: Missing[
             Union[
-                None,
                 Literal[
                     "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
                 ],
+                None,
             ]
         ] = UNSET,
     ) -> Response[Union[IssueType, None], Union[IssueTypeTypeForResponse, None]]: ...
@@ -8343,10 +8343,10 @@ class OrgsClient:
         description: Missing[Union[str, None]] = UNSET,
         color: Missing[
             Union[
-                None,
                 Literal[
                     "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
                 ],
+                None,
             ]
         ] = UNSET,
     ) -> Response[Union[IssueType, None], Union[IssueTypeTypeForResponse, None]]: ...
@@ -8435,10 +8435,10 @@ class OrgsClient:
         description: Missing[Union[str, None]] = UNSET,
         color: Missing[
             Union[
-                None,
                 Literal[
                     "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
                 ],
+                None,
             ]
         ] = UNSET,
     ) -> Response[Union[IssueType, None], Union[IssueTypeTypeForResponse, None]]: ...
@@ -12196,7 +12196,7 @@ class OrgsClient:
         description: Missing[Union[str, None]] = UNSET,
         allowed_values: Missing[Union[list[str], None]] = UNSET,
         values_editable_by: Missing[
-            Union[None, Literal["org_actors", "org_and_repo_actors"]]
+            Union[Literal["org_actors", "org_and_repo_actors"], None]
         ] = UNSET,
         require_explicit_values: Missing[bool] = UNSET,
     ) -> Response[CustomProperty, CustomPropertyTypeForResponse]: ...
@@ -12280,7 +12280,7 @@ class OrgsClient:
         description: Missing[Union[str, None]] = UNSET,
         allowed_values: Missing[Union[list[str], None]] = UNSET,
         values_editable_by: Missing[
-            Union[None, Literal["org_actors", "org_and_repo_actors"]]
+            Union[Literal["org_actors", "org_and_repo_actors"], None]
         ] = UNSET,
         require_explicit_values: Missing[bool] = UNSET,
     ) -> Response[CustomProperty, CustomPropertyTypeForResponse]: ...

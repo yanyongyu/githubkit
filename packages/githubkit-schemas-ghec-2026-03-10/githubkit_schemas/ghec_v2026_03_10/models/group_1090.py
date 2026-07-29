@@ -68,7 +68,6 @@ class WebhookWorkflowRunRequestedPropWorkflowRun(GitHubModel):
     check_suite_node_id: str = Field()
     check_suite_url: str = Field()
     conclusion: Union[
-        None,
         Literal[
             "success",
             "failure",
@@ -80,6 +79,7 @@ class WebhookWorkflowRunRequestedPropWorkflowRun(GitHubModel):
             "skipped",
             "startup_failure",
         ],
+        None,
     ] = Field()
     created_at: _dt.datetime = Field()
     event: str = Field()

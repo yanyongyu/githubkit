@@ -26,13 +26,13 @@ class OrganizationRoleType(TypedDict):
     name: str
     description: NotRequired[Union[str, None]]
     base_role: NotRequired[
-        Union[None, Literal["read", "triage", "write", "maintain", "admin"]]
+        Union[Literal["read", "triage", "write", "maintain", "admin"], None]
     ]
     source: NotRequired[
-        Union[None, Literal["Organization", "Enterprise", "Predefined"]]
+        Union[Literal["Organization", "Enterprise", "Predefined"], None]
     ]
     permissions: list[str]
-    organization: Union[None, SimpleUserType]
+    organization: Union[SimpleUserType, None]
     created_at: _dt.datetime
     updated_at: _dt.datetime
 
@@ -47,13 +47,13 @@ class OrganizationRoleTypeForResponse(TypedDict):
     name: str
     description: NotRequired[Union[str, None]]
     base_role: NotRequired[
-        Union[None, Literal["read", "triage", "write", "maintain", "admin"]]
+        Union[Literal["read", "triage", "write", "maintain", "admin"], None]
     ]
     source: NotRequired[
-        Union[None, Literal["Organization", "Enterprise", "Predefined"]]
+        Union[Literal["Organization", "Enterprise", "Predefined"], None]
     ]
     permissions: list[str]
-    organization: Union[None, SimpleUserTypeForResponse]
+    organization: Union[SimpleUserTypeForResponse, None]
     created_at: str
     updated_at: str
 

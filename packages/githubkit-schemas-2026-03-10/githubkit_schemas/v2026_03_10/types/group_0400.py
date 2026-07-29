@@ -24,7 +24,7 @@ class IssueEventIntentType(TypedDict):
     """
 
     rationale: NotRequired[Union[str, None]]
-    confidence: NotRequired[Union[None, Literal["LOW", "MEDIUM", "HIGH"]]]
+    confidence: NotRequired[Union[Literal["LOW", "MEDIUM", "HIGH"], None]]
 
 
 class IssueEventIntentTypeForResponse(TypedDict):
@@ -38,7 +38,7 @@ class IssueEventIntentTypeForResponse(TypedDict):
     """
 
     rationale: NotRequired[Union[str, None]]
-    confidence: NotRequired[Union[None, Literal["LOW", "MEDIUM", "HIGH"]]]
+    confidence: NotRequired[Union[Literal["LOW", "MEDIUM", "HIGH"], None]]
 
 
 __all__ = (

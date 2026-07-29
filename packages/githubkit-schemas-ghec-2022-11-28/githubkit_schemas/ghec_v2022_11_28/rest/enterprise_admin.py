@@ -8890,7 +8890,7 @@ class EnterpriseAdminClient:
         description: Missing[Union[str, None]] = UNSET,
         allowed_values: Missing[Union[list[str], None]] = UNSET,
         values_editable_by: Missing[
-            Union[None, Literal["enterprise_actors", "enterprise_and_org_actors"]]
+            Union[Literal["enterprise_actors", "enterprise_and_org_actors"], None]
         ] = UNSET,
     ) -> Response[
         OrganizationCustomProperty, OrganizationCustomPropertyTypeForResponse
@@ -8986,7 +8986,7 @@ class EnterpriseAdminClient:
         description: Missing[Union[str, None]] = UNSET,
         allowed_values: Missing[Union[list[str], None]] = UNSET,
         values_editable_by: Missing[
-            Union[None, Literal["enterprise_actors", "enterprise_and_org_actors"]]
+            Union[Literal["enterprise_actors", "enterprise_and_org_actors"], None]
         ] = UNSET,
     ) -> Response[
         OrganizationCustomProperty, OrganizationCustomPropertyTypeForResponse
@@ -9804,7 +9804,7 @@ class EnterpriseAdminClient:
         description: Missing[Union[str, None]] = UNSET,
         allowed_values: Missing[Union[list[str], None]] = UNSET,
         values_editable_by: Missing[
-            Union[None, Literal["org_actors", "org_and_repo_actors"]]
+            Union[Literal["org_actors", "org_and_repo_actors"], None]
         ] = UNSET,
         require_explicit_values: Missing[bool] = UNSET,
     ) -> Response[CustomProperty, CustomPropertyTypeForResponse]: ...
@@ -9886,7 +9886,7 @@ class EnterpriseAdminClient:
         description: Missing[Union[str, None]] = UNSET,
         allowed_values: Missing[Union[list[str], None]] = UNSET,
         values_editable_by: Missing[
-            Union[None, Literal["org_actors", "org_and_repo_actors"]]
+            Union[Literal["org_actors", "org_and_repo_actors"], None]
         ] = UNSET,
         require_explicit_values: Missing[bool] = UNSET,
     ) -> Response[CustomProperty, CustomPropertyTypeForResponse]: ...

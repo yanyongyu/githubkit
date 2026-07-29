@@ -45,7 +45,7 @@ class WebhookProjectCardDeleted(GitHubModel):
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
     project_card: WebhookProjectCardDeletedPropProjectCard = Field(title="Project Card")
-    repository: Missing[Union[None, RepositoryWebhooks]] = Field(default=UNSET)
+    repository: Missing[Union[RepositoryWebhooks, None]] = Field(default=UNSET)
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 

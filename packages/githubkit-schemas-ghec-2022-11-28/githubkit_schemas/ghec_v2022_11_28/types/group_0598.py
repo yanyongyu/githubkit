@@ -36,8 +36,8 @@ class CommitSearchResultItemType(TypedDict):
     html_url: str
     comments_url: str
     commit: CommitSearchResultItemPropCommitType
-    author: Union[None, SimpleUserType]
-    committer: Union[None, GitUserType]
+    author: Union[SimpleUserType, None]
+    committer: Union[GitUserType, None]
     parents: list[CommitSearchResultItemPropParentsItemsType]
     repository: MinimalRepositoryType
     score: float
@@ -56,8 +56,8 @@ class CommitSearchResultItemTypeForResponse(TypedDict):
     html_url: str
     comments_url: str
     commit: CommitSearchResultItemPropCommitTypeForResponse
-    author: Union[None, SimpleUserTypeForResponse]
-    committer: Union[None, GitUserTypeForResponse]
+    author: Union[SimpleUserTypeForResponse, None]
+    committer: Union[GitUserTypeForResponse, None]
     parents: list[CommitSearchResultItemPropParentsItemsTypeForResponse]
     repository: MinimalRepositoryTypeForResponse
     score: float

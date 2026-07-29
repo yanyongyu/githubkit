@@ -54,16 +54,16 @@ class OrganizationSecretScanningAlertType(TypedDict):
 
     number: NotRequired[int]
     created_at: NotRequired[_dt.datetime]
-    updated_at: NotRequired[Union[None, _dt.datetime]]
+    updated_at: NotRequired[Union[_dt.datetime, None]]
     url: NotRequired[str]
     html_url: NotRequired[str]
     locations_url: NotRequired[str]
     state: NotRequired[Literal["open", "resolved"]]
     resolution: NotRequired[
-        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
+        Union[Literal["false_positive", "wont_fix", "revoked", "used_in_tests"], None]
     ]
     resolved_at: NotRequired[Union[_dt.datetime, None]]
-    resolved_by: NotRequired[Union[None, SimpleUserType]]
+    resolved_by: NotRequired[Union[SimpleUserType, None]]
     secret_type: NotRequired[str]
     secret_type_display_name: NotRequired[str]
     provider: NotRequired[Union[str, None]]
@@ -71,9 +71,9 @@ class OrganizationSecretScanningAlertType(TypedDict):
     secret: NotRequired[str]
     repository: NotRequired[SimpleRepositoryType]
     push_protection_bypassed: NotRequired[Union[bool, None]]
-    push_protection_bypassed_by: NotRequired[Union[None, SimpleUserType]]
+    push_protection_bypassed_by: NotRequired[Union[SimpleUserType, None]]
     push_protection_bypassed_at: NotRequired[Union[_dt.datetime, None]]
-    push_protection_bypass_request_reviewer: NotRequired[Union[None, SimpleUserType]]
+    push_protection_bypass_request_reviewer: NotRequired[Union[SimpleUserType, None]]
     push_protection_bypass_request_reviewer_comment: NotRequired[Union[str, None]]
     push_protection_bypass_request_comment: NotRequired[Union[str, None]]
     push_protection_bypass_request_html_url: NotRequired[Union[str, None]]
@@ -84,7 +84,6 @@ class OrganizationSecretScanningAlertType(TypedDict):
     is_base64_encoded: NotRequired[Union[bool, None]]
     first_location_detected: NotRequired[
         Union[
-            None,
             SecretScanningLocationCommitType,
             SecretScanningLocationWikiCommitType,
             SecretScanningLocationIssueTitleType,
@@ -98,13 +97,14 @@ class OrganizationSecretScanningAlertType(TypedDict):
             SecretScanningLocationPullRequestCommentType,
             SecretScanningLocationPullRequestReviewType,
             SecretScanningLocationPullRequestReviewCommentType,
+            None,
         ]
     ]
     has_more_locations: NotRequired[bool]
-    assigned_to: NotRequired[Union[None, SimpleUserType]]
+    assigned_to: NotRequired[Union[SimpleUserType, None]]
     closure_request_comment: NotRequired[Union[str, None]]
     closure_request_reviewer_comment: NotRequired[Union[str, None]]
-    closure_request_reviewer: NotRequired[Union[None, SimpleUserType]]
+    closure_request_reviewer: NotRequired[Union[SimpleUserType, None]]
 
 
 class OrganizationSecretScanningAlertTypeForResponse(TypedDict):
@@ -112,16 +112,16 @@ class OrganizationSecretScanningAlertTypeForResponse(TypedDict):
 
     number: NotRequired[int]
     created_at: NotRequired[str]
-    updated_at: NotRequired[Union[None, str]]
+    updated_at: NotRequired[Union[str, None]]
     url: NotRequired[str]
     html_url: NotRequired[str]
     locations_url: NotRequired[str]
     state: NotRequired[Literal["open", "resolved"]]
     resolution: NotRequired[
-        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
+        Union[Literal["false_positive", "wont_fix", "revoked", "used_in_tests"], None]
     ]
     resolved_at: NotRequired[Union[str, None]]
-    resolved_by: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    resolved_by: NotRequired[Union[SimpleUserTypeForResponse, None]]
     secret_type: NotRequired[str]
     secret_type_display_name: NotRequired[str]
     provider: NotRequired[Union[str, None]]
@@ -129,10 +129,10 @@ class OrganizationSecretScanningAlertTypeForResponse(TypedDict):
     secret: NotRequired[str]
     repository: NotRequired[SimpleRepositoryTypeForResponse]
     push_protection_bypassed: NotRequired[Union[bool, None]]
-    push_protection_bypassed_by: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    push_protection_bypassed_by: NotRequired[Union[SimpleUserTypeForResponse, None]]
     push_protection_bypassed_at: NotRequired[Union[str, None]]
     push_protection_bypass_request_reviewer: NotRequired[
-        Union[None, SimpleUserTypeForResponse]
+        Union[SimpleUserTypeForResponse, None]
     ]
     push_protection_bypass_request_reviewer_comment: NotRequired[Union[str, None]]
     push_protection_bypass_request_comment: NotRequired[Union[str, None]]
@@ -144,7 +144,6 @@ class OrganizationSecretScanningAlertTypeForResponse(TypedDict):
     is_base64_encoded: NotRequired[Union[bool, None]]
     first_location_detected: NotRequired[
         Union[
-            None,
             SecretScanningLocationCommitTypeForResponse,
             SecretScanningLocationWikiCommitTypeForResponse,
             SecretScanningLocationIssueTitleTypeForResponse,
@@ -158,13 +157,14 @@ class OrganizationSecretScanningAlertTypeForResponse(TypedDict):
             SecretScanningLocationPullRequestCommentTypeForResponse,
             SecretScanningLocationPullRequestReviewTypeForResponse,
             SecretScanningLocationPullRequestReviewCommentTypeForResponse,
+            None,
         ]
     ]
     has_more_locations: NotRequired[bool]
-    assigned_to: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    assigned_to: NotRequired[Union[SimpleUserTypeForResponse, None]]
     closure_request_comment: NotRequired[Union[str, None]]
     closure_request_reviewer_comment: NotRequired[Union[str, None]]
-    closure_request_reviewer: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    closure_request_reviewer: NotRequired[Union[SimpleUserTypeForResponse, None]]
 
 
 __all__ = (

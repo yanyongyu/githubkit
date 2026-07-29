@@ -37,15 +37,14 @@ class CheckSuite(GitHubModel):
         description="The SHA of the head commit that is being checked."
     )
     status: Union[
-        None,
         Literal[
             "queued", "in_progress", "completed", "waiting", "requested", "pending"
         ],
+        None,
     ] = Field(
         description="The phase of the lifecycle that the check suite is currently in. Statuses of waiting, requested, and pending are reserved for GitHub Actions check suites."
     )
     conclusion: Union[
-        None,
         Literal[
             "success",
             "failure",
@@ -57,6 +56,7 @@ class CheckSuite(GitHubModel):
             "startup_failure",
             "stale",
         ],
+        None,
     ] = Field()
     url: Union[str, None] = Field()
     before: Union[str, None] = Field()

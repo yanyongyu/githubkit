@@ -60,7 +60,7 @@ class PullRequest(GitHubModel):
     user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
     body: Union[str, None] = Field()
     labels: list[PullRequestPropLabelsItems] = Field()
-    milestone: Union[None, Milestone] = Field()
+    milestone: Union[Milestone, None] = Field()
     active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
     created_at: _dt.datetime = Field()
     updated_at: _dt.datetime = Field()
@@ -101,7 +101,7 @@ class PullRequest(GitHubModel):
     mergeable: Union[bool, None] = Field()
     rebaseable: Missing[Union[bool, None]] = Field(default=UNSET)
     mergeable_state: str = Field()
-    merged_by: Union[None, SimpleUser] = Field()
+    merged_by: Union[SimpleUser, None] = Field()
     comments: int = Field()
     review_comments: int = Field()
     maintainer_can_modify: bool = Field(

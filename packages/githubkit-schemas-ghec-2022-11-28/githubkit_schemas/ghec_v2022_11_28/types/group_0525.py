@@ -21,9 +21,9 @@ class PullRequestPropHeadType(TypedDict):
 
     label: Union[str, None]
     ref: str
-    repo: Union[None, RepositoryType]
+    repo: Union[RepositoryType, None]
     sha: str
-    user: Union[None, SimpleUserType]
+    user: Union[SimpleUserType, None]
 
 
 class PullRequestPropHeadTypeForResponse(TypedDict):
@@ -31,9 +31,9 @@ class PullRequestPropHeadTypeForResponse(TypedDict):
 
     label: Union[str, None]
     ref: str
-    repo: Union[None, RepositoryTypeForResponse]
+    repo: Union[RepositoryTypeForResponse, None]
     sha: str
-    user: Union[None, SimpleUserTypeForResponse]
+    user: Union[SimpleUserTypeForResponse, None]
 
 
 class PullRequestPropBaseType(TypedDict):

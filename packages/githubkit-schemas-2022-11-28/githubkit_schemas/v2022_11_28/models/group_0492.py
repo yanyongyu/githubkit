@@ -37,7 +37,7 @@ class PrivateVulnerabilityReportCreate(GitHubModel):
     cwe_ids: Missing[Union[list[str], None]] = Field(
         default=UNSET, description="A list of Common Weakness Enumeration (CWE) IDs."
     )
-    severity: Missing[Union[None, Literal["critical", "high", "medium", "low"]]] = (
+    severity: Missing[Union[Literal["critical", "high", "medium", "low"], None]] = (
         Field(
             default=UNSET,
             description="The severity of the advisory. You must choose between setting this field or `cvss_vector_string`.",

@@ -28,7 +28,7 @@ class WebhookCodeScanningAlertFixedPropAlertType(TypedDict):
     dismissed_by: Union[WebhookCodeScanningAlertFixedPropAlertPropDismissedByType, None]
     dismissed_comment: NotRequired[Union[str, None]]
     dismissed_reason: Union[
-        None, Literal["false positive", "won't fix", "used in tests"]
+        Literal["false positive", "won't fix", "used in tests"], None
     ]
     fixed_at: NotRequired[Union[_dt.datetime, None]]
     html_url: str
@@ -38,7 +38,7 @@ class WebhookCodeScanningAlertFixedPropAlertType(TypedDict):
     ]
     number: int
     rule: WebhookCodeScanningAlertFixedPropAlertPropRuleType
-    state: Union[None, Literal["fixed", "dismissed"]]
+    state: Union[Literal["fixed", "dismissed"], None]
     tool: WebhookCodeScanningAlertFixedPropAlertPropToolType
     url: str
 
@@ -57,7 +57,7 @@ class WebhookCodeScanningAlertFixedPropAlertTypeForResponse(TypedDict):
     ]
     dismissed_comment: NotRequired[Union[str, None]]
     dismissed_reason: Union[
-        None, Literal["false positive", "won't fix", "used in tests"]
+        Literal["false positive", "won't fix", "used in tests"], None
     ]
     fixed_at: NotRequired[Union[str, None]]
     html_url: str
@@ -70,7 +70,7 @@ class WebhookCodeScanningAlertFixedPropAlertTypeForResponse(TypedDict):
     ]
     number: int
     rule: WebhookCodeScanningAlertFixedPropAlertPropRuleTypeForResponse
-    state: Union[None, Literal["fixed", "dismissed"]]
+    state: Union[Literal["fixed", "dismissed"], None]
     tool: WebhookCodeScanningAlertFixedPropAlertPropToolTypeForResponse
     url: str
 
@@ -216,7 +216,7 @@ class WebhookCodeScanningAlertFixedPropAlertPropRuleType(TypedDict):
     help_uri: NotRequired[Union[str, None]]
     id: str
     name: NotRequired[str]
-    severity: Union[None, Literal["none", "note", "warning", "error"]]
+    severity: Union[Literal["none", "note", "warning", "error"], None]
     tags: NotRequired[Union[list[str], None]]
 
 
@@ -229,7 +229,7 @@ class WebhookCodeScanningAlertFixedPropAlertPropRuleTypeForResponse(TypedDict):
     help_uri: NotRequired[Union[str, None]]
     id: str
     name: NotRequired[str]
-    severity: Union[None, Literal["none", "note", "warning", "error"]]
+    severity: Union[Literal["none", "note", "warning", "error"], None]
     tags: NotRequired[Union[list[str], None]]
 
 

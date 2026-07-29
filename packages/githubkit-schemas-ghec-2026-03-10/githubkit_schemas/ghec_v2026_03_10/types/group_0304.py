@@ -29,7 +29,7 @@ class OrgMembershipType(TypedDict):
     enterprise_teams_providing_indirect_membership: NotRequired[list[str]]
     organization_url: str
     organization: OrganizationSimpleType
-    user: Union[None, SimpleUserType]
+    user: Union[SimpleUserType, None]
     permissions: NotRequired[OrgMembershipPropPermissionsType]
 
 
@@ -46,7 +46,7 @@ class OrgMembershipTypeForResponse(TypedDict):
     enterprise_teams_providing_indirect_membership: NotRequired[list[str]]
     organization_url: str
     organization: OrganizationSimpleTypeForResponse
-    user: Union[None, SimpleUserTypeForResponse]
+    user: Union[SimpleUserTypeForResponse, None]
     permissions: NotRequired[OrgMembershipPropPermissionsTypeForResponse]
 
 

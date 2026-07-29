@@ -38,7 +38,7 @@ class WebhookCodeScanningAlertReopenedByUserPropAlertType(TypedDict):
     ]
     number: int
     rule: WebhookCodeScanningAlertReopenedByUserPropAlertPropRuleType
-    state: Union[None, Literal["open", "fixed"]]
+    state: Union[Literal["open", "fixed"], None]
     tool: WebhookCodeScanningAlertReopenedByUserPropAlertPropToolType
     url: str
 
@@ -65,7 +65,7 @@ class WebhookCodeScanningAlertReopenedByUserPropAlertTypeForResponse(TypedDict):
     ]
     number: int
     rule: WebhookCodeScanningAlertReopenedByUserPropAlertPropRuleTypeForResponse
-    state: Union[None, Literal["open", "fixed"]]
+    state: Union[Literal["open", "fixed"], None]
     tool: WebhookCodeScanningAlertReopenedByUserPropAlertPropToolTypeForResponse
     url: str
 
@@ -159,7 +159,7 @@ class WebhookCodeScanningAlertReopenedByUserPropAlertPropRuleType(TypedDict):
 
     description: str
     id: str
-    severity: Union[None, Literal["none", "note", "warning", "error"]]
+    severity: Union[Literal["none", "note", "warning", "error"], None]
 
 
 class WebhookCodeScanningAlertReopenedByUserPropAlertPropRuleTypeForResponse(TypedDict):
@@ -167,7 +167,7 @@ class WebhookCodeScanningAlertReopenedByUserPropAlertPropRuleTypeForResponse(Typ
 
     description: str
     id: str
-    severity: Union[None, Literal["none", "note", "warning", "error"]]
+    severity: Union[Literal["none", "note", "warning", "error"], None]
 
 
 class WebhookCodeScanningAlertReopenedByUserPropAlertPropToolType(TypedDict):

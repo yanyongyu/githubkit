@@ -35,7 +35,7 @@ class ReleaseAssetType(TypedDict):
     download_count: int
     created_at: _dt.datetime
     updated_at: _dt.datetime
-    uploader: Union[None, SimpleUserType]
+    uploader: Union[SimpleUserType, None]
 
 
 class ReleaseAssetTypeForResponse(TypedDict):
@@ -57,7 +57,7 @@ class ReleaseAssetTypeForResponse(TypedDict):
     download_count: int
     created_at: str
     updated_at: str
-    uploader: Union[None, SimpleUserTypeForResponse]
+    uploader: Union[SimpleUserTypeForResponse, None]
 
 
 __all__ = (

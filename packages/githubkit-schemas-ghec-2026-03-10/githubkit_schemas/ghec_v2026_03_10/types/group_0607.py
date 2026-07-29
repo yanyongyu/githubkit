@@ -31,7 +31,7 @@ class CodespaceWithFullRepositoryType(TypedDict):
     owner: SimpleUserType
     billable_owner: SimpleUserType
     repository: FullRepositoryType
-    machine: Union[None, CodespaceMachineType]
+    machine: Union[CodespaceMachineType, None]
     devcontainer_path: NotRequired[Union[str, None]]
     prebuild: Union[bool, None]
     created_at: _dt.datetime
@@ -90,7 +90,7 @@ class CodespaceWithFullRepositoryTypeForResponse(TypedDict):
     owner: SimpleUserTypeForResponse
     billable_owner: SimpleUserTypeForResponse
     repository: FullRepositoryTypeForResponse
-    machine: Union[None, CodespaceMachineTypeForResponse]
+    machine: Union[CodespaceMachineTypeForResponse, None]
     devcontainer_path: NotRequired[Union[str, None]]
     prebuild: Union[bool, None]
     created_at: str

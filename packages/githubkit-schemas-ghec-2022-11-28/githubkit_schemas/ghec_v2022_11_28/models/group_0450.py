@@ -34,7 +34,7 @@ class DeploymentStatus(GitHubModel):
     state: Literal[
         "error", "failure", "inactive", "pending", "success", "queued", "in_progress"
     ] = Field(description="The state of the status.")
-    creator: Union[None, SimpleUser] = Field()
+    creator: Union[SimpleUser, None] = Field()
     description: str = Field(
         max_length=140, default="", description="A short description of the status."
     )

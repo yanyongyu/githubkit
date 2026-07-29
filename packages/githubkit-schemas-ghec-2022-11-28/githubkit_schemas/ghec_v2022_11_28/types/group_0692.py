@@ -30,7 +30,7 @@ class WebhookCodeScanningAlertClosedByUserPropAlertType(TypedDict):
     ]
     dismissed_comment: NotRequired[Union[str, None]]
     dismissed_reason: Union[
-        None, Literal["false positive", "won't fix", "used in tests"]
+        Literal["false positive", "won't fix", "used in tests"], None
     ]
     fixed_at: NotRequired[Union[_dt.datetime, None]]
     html_url: str
@@ -68,7 +68,7 @@ class WebhookCodeScanningAlertClosedByUserPropAlertTypeForResponse(TypedDict):
     ]
     dismissed_comment: NotRequired[Union[str, None]]
     dismissed_reason: Union[
-        None, Literal["false positive", "won't fix", "used in tests"]
+        Literal["false positive", "won't fix", "used in tests"], None
     ]
     fixed_at: NotRequired[Union[str, None]]
     html_url: str
@@ -236,7 +236,7 @@ class WebhookCodeScanningAlertClosedByUserPropAlertPropRuleType(TypedDict):
     help_uri: NotRequired[Union[str, None]]
     id: str
     name: NotRequired[str]
-    severity: Union[None, Literal["none", "note", "warning", "error"]]
+    severity: Union[Literal["none", "note", "warning", "error"], None]
     tags: NotRequired[Union[list[str], None]]
 
 
@@ -249,7 +249,7 @@ class WebhookCodeScanningAlertClosedByUserPropAlertPropRuleTypeForResponse(Typed
     help_uri: NotRequired[Union[str, None]]
     id: str
     name: NotRequired[str]
-    severity: Union[None, Literal["none", "note", "warning", "error"]]
+    severity: Union[Literal["none", "note", "warning", "error"], None]
     tags: NotRequired[Union[list[str], None]]
 
 

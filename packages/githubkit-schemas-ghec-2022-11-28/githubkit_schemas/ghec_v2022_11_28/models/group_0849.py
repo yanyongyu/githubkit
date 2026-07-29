@@ -32,7 +32,7 @@ class WebhookIssuesOpenedPropChangesPropOldIssue(GitHubModel):
     """
 
     active_lock_reason: Missing[
-        Union[None, Literal["resolved", "off-topic", "too heated", "spam"]]
+        Union[Literal["resolved", "off-topic", "too heated", "spam"], None]
     ] = Field(default=UNSET)
     assignee: Missing[
         Union[WebhookIssuesOpenedPropChangesPropOldIssuePropAssignee, None]
@@ -110,7 +110,7 @@ class WebhookIssuesOpenedPropChangesPropOldIssue(GitHubModel):
     title: Missing[str] = Field(default=UNSET, description="Title of the issue")
     updated_at: Missing[_dt.datetime] = Field(default=UNSET)
     url: Missing[str] = Field(default=UNSET, description="URL for the issue")
-    pinned_comment: Missing[Union[None, IssueComment]] = Field(default=UNSET)
+    pinned_comment: Missing[Union[IssueComment, None]] = Field(default=UNSET)
     user: Missing[Union[WebhookIssuesOpenedPropChangesPropOldIssuePropUser, None]] = (
         Field(default=UNSET, title="User")
     )

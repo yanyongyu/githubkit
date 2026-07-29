@@ -18,9 +18,11 @@ If you just want to temporarily act as the user, you can simply call the API dir
     from githubkit_schemas.latest.models import PublicUser, PrivateUser
     from githubkit import GitHub, OAuthDeviceAuthStrategy, OAuthTokenAuthStrategy
 
+
     # sync/async func for displaying user code to user
     def callback(data: dict):
         print(data["user_code"])
+
 
     user_github = GitHub(OAuthDeviceAuthStrategy("<client_id>", callback))
 
@@ -39,9 +41,11 @@ If you just want to temporarily act as the user, you can simply call the API dir
     from githubkit_schemas.latest.models import PublicUser, PrivateUser
     from githubkit import GitHub, OAuthDeviceAuthStrategy, OAuthTokenAuthStrategy
 
+
     # sync/async func for displaying user code to user
     def callback(data: dict):
         print(data["user_code"])
+
 
     user_github = GitHub(OAuthDeviceAuthStrategy("<client_id>", callback))
 
@@ -64,9 +68,11 @@ If you are developing an OAuth APP or a GitHub APP without user-to-server token 
     from githubkit_schemas.latest.models import PublicUser, PrivateUser
     from githubkit import GitHub, OAuthDeviceAuthStrategy, OAuthTokenAuthStrategy
 
+
     # sync/async func for displaying user code to user
     def callback(data: dict):
         print(data["user_code"])
+
 
     github = GitHub(OAuthDeviceAuthStrategy("<client_id>", callback))
 
@@ -95,15 +101,15 @@ If you are developing an OAuth APP or a GitHub APP without user-to-server token 
     from githubkit_schemas.latest.models import PublicUser, PrivateUser
     from githubkit import GitHub, OAuthDeviceAuthStrategy, OAuthTokenAuthStrategy
 
+
     # sync/async func for displaying user code to user
     async def callback(data: dict):
         print(data["user_code"])
 
+
     github = GitHub(OAuthDeviceAuthStrategy("<client_id>", callback))
 
-    auth: OAuthTokenAuthStrategy = await github.auth.async_exchange_token(
-        github
-    )  # (1)!
+    auth: OAuthTokenAuthStrategy = await github.auth.async_exchange_token(github)  # (1)!
     access_token = auth.token
 
     user_github = github.with_auth(
@@ -130,18 +136,18 @@ If you are developing an OAuth APP or a GitHub APP without user-to-server token 
     from githubkit_schemas.latest.models import PublicUser, PrivateUser
     from githubkit import GitHub, OAuthDeviceAuthStrategy, OAuthTokenAuthStrategy
 
+
     # sync/async func for displaying user code to user
     def callback(data: dict):
         print(data["user_code"])
+
 
     github = GitHub(OAuthDeviceAuthStrategy("<client_id>", callback))
 
     auth: OAuthTokenAuthStrategy = github.auth.exchange_token(github)  # (1)!
     refresh_token = auth.refresh_token
 
-    auth = OAuthTokenAuthStrategy(
-        "<client_id>", refresh_token=refresh_token
-    )  # (2)!
+    auth = OAuthTokenAuthStrategy("<client_id>", refresh_token=refresh_token)  # (2)!
     auth.refresh(github)  # (3)!
     refresh_token = auth.refresh_token
 
@@ -166,20 +172,18 @@ If you are developing an OAuth APP or a GitHub APP without user-to-server token 
     from githubkit_schemas.latest.models import PublicUser, PrivateUser
     from githubkit import GitHub, OAuthDeviceAuthStrategy, OAuthTokenAuthStrategy
 
+
     # sync/async func for displaying user code to user
     async def callback(data: dict):
         print(data["user_code"])
 
+
     github = GitHub(OAuthDeviceAuthStrategy("<client_id>", callback))
 
-    auth: OAuthTokenAuthStrategy = await github.auth.async_exchange_token(
-        github
-    )  # (1)!
+    auth: OAuthTokenAuthStrategy = await github.auth.async_exchange_token(github)  # (1)!
     refresh_token = auth.refresh_token
 
-    auth = OAuthTokenAuthStrategy(
-        "<client_id>", refresh_token=refresh_token
-    )  # (2)!
+    auth = OAuthTokenAuthStrategy("<client_id>", refresh_token=refresh_token)  # (2)!
     await auth.async_refresh(github)  # (3)!
     refresh_token = auth.refresh_token
 

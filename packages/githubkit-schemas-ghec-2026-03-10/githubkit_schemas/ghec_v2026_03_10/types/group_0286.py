@@ -30,8 +30,8 @@ class PackageType(TypedDict):
     html_url: str
     version_count: int
     visibility: Literal["private", "public"]
-    owner: NotRequired[Union[None, SimpleUserType]]
-    repository: NotRequired[Union[None, MinimalRepositoryType]]
+    owner: NotRequired[Union[SimpleUserType, None]]
+    repository: NotRequired[Union[MinimalRepositoryType, None]]
     created_at: _dt.datetime
     updated_at: _dt.datetime
 
@@ -49,8 +49,8 @@ class PackageTypeForResponse(TypedDict):
     html_url: str
     version_count: int
     visibility: Literal["private", "public"]
-    owner: NotRequired[Union[None, SimpleUserTypeForResponse]]
-    repository: NotRequired[Union[None, MinimalRepositoryTypeForResponse]]
+    owner: NotRequired[Union[SimpleUserTypeForResponse, None]]
+    repository: NotRequired[Union[MinimalRepositoryTypeForResponse, None]]
     created_at: str
     updated_at: str
 

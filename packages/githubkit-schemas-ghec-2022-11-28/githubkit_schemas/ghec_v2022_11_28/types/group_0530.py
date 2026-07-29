@@ -38,7 +38,7 @@ class ReviewCommentType(TypedDict):
     commit_id: str
     original_commit_id: str
     in_reply_to_id: NotRequired[int]
-    user: Union[None, SimpleUserType]
+    user: Union[SimpleUserType, None]
     body: str
     created_at: _dt.datetime
     updated_at: _dt.datetime
@@ -59,7 +59,7 @@ class ReviewCommentType(TypedDict):
     body_html: NotRequired[str]
     reactions: NotRequired[ReactionRollupType]
     side: NotRequired[Literal["LEFT", "RIGHT"]]
-    start_side: NotRequired[Union[None, Literal["LEFT", "RIGHT"]]]
+    start_side: NotRequired[Union[Literal["LEFT", "RIGHT"], None]]
     line: NotRequired[int]
     original_line: NotRequired[int]
     start_line: NotRequired[Union[int, None]]
@@ -84,7 +84,7 @@ class ReviewCommentTypeForResponse(TypedDict):
     commit_id: str
     original_commit_id: str
     in_reply_to_id: NotRequired[int]
-    user: Union[None, SimpleUserTypeForResponse]
+    user: Union[SimpleUserTypeForResponse, None]
     body: str
     created_at: str
     updated_at: str
@@ -105,7 +105,7 @@ class ReviewCommentTypeForResponse(TypedDict):
     body_html: NotRequired[str]
     reactions: NotRequired[ReactionRollupTypeForResponse]
     side: NotRequired[Literal["LEFT", "RIGHT"]]
-    start_side: NotRequired[Union[None, Literal["LEFT", "RIGHT"]]]
+    start_side: NotRequired[Union[Literal["LEFT", "RIGHT"], None]]
     line: NotRequired[int]
     original_line: NotRequired[int]
     start_line: NotRequired[Union[int, None]]

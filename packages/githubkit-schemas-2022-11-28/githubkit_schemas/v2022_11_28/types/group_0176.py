@@ -39,9 +39,9 @@ class ProjectsV2Type(TypedDict):
     number: int
     short_description: Union[str, None]
     deleted_at: Union[_dt.datetime, None]
-    deleted_by: Union[None, SimpleUserType]
+    deleted_by: Union[SimpleUserType, None]
     state: NotRequired[Literal["open", "closed"]]
-    latest_status_update: NotRequired[Union[None, ProjectsV2StatusUpdateType]]
+    latest_status_update: NotRequired[Union[ProjectsV2StatusUpdateType, None]]
     is_template: NotRequired[bool]
 
 
@@ -64,10 +64,10 @@ class ProjectsV2TypeForResponse(TypedDict):
     number: int
     short_description: Union[str, None]
     deleted_at: Union[str, None]
-    deleted_by: Union[None, SimpleUserTypeForResponse]
+    deleted_by: Union[SimpleUserTypeForResponse, None]
     state: NotRequired[Literal["open", "closed"]]
     latest_status_update: NotRequired[
-        Union[None, ProjectsV2StatusUpdateTypeForResponse]
+        Union[ProjectsV2StatusUpdateTypeForResponse, None]
     ]
     is_template: NotRequired[bool]
 

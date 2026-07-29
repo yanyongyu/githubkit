@@ -20,25 +20,25 @@ from .group_0194 import CodeOfConductSimpleType, CodeOfConductSimpleTypeForRespo
 class CommunityProfilePropFilesType(TypedDict):
     """CommunityProfilePropFiles"""
 
-    code_of_conduct: Union[None, CodeOfConductSimpleType]
-    code_of_conduct_file: Union[None, CommunityHealthFileType]
-    license_: Union[None, LicenseSimpleType]
-    contributing: Union[None, CommunityHealthFileType]
-    readme: Union[None, CommunityHealthFileType]
-    issue_template: Union[None, CommunityHealthFileType]
-    pull_request_template: Union[None, CommunityHealthFileType]
+    code_of_conduct: Union[CodeOfConductSimpleType, None]
+    code_of_conduct_file: Union[CommunityHealthFileType, None]
+    license_: Union[LicenseSimpleType, None]
+    contributing: Union[CommunityHealthFileType, None]
+    readme: Union[CommunityHealthFileType, None]
+    issue_template: Union[CommunityHealthFileType, None]
+    pull_request_template: Union[CommunityHealthFileType, None]
 
 
 class CommunityProfilePropFilesTypeForResponse(TypedDict):
     """CommunityProfilePropFiles"""
 
-    code_of_conduct: Union[None, CodeOfConductSimpleTypeForResponse]
-    code_of_conduct_file: Union[None, CommunityHealthFileTypeForResponse]
-    license_: Union[None, LicenseSimpleTypeForResponse]
-    contributing: Union[None, CommunityHealthFileTypeForResponse]
-    readme: Union[None, CommunityHealthFileTypeForResponse]
-    issue_template: Union[None, CommunityHealthFileTypeForResponse]
-    pull_request_template: Union[None, CommunityHealthFileTypeForResponse]
+    code_of_conduct: Union[CodeOfConductSimpleTypeForResponse, None]
+    code_of_conduct_file: Union[CommunityHealthFileTypeForResponse, None]
+    license_: Union[LicenseSimpleTypeForResponse, None]
+    contributing: Union[CommunityHealthFileTypeForResponse, None]
+    readme: Union[CommunityHealthFileTypeForResponse, None]
+    issue_template: Union[CommunityHealthFileTypeForResponse, None]
+    pull_request_template: Union[CommunityHealthFileTypeForResponse, None]
 
 
 class CommunityHealthFileType(TypedDict):

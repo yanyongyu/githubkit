@@ -30,7 +30,7 @@ class RuleSuiteType(TypedDict):
     repository_name: NotRequired[str]
     pushed_at: NotRequired[_dt.datetime]
     result: NotRequired[Literal["pass", "fail", "bypass"]]
-    evaluation_result: NotRequired[Union[None, Literal["pass", "fail", "bypass"]]]
+    evaluation_result: NotRequired[Union[Literal["pass", "fail", "bypass"], None]]
     rule_evaluations: NotRequired[list[RuleSuitePropRuleEvaluationsItemsType]]
 
 
@@ -50,7 +50,7 @@ class RuleSuiteTypeForResponse(TypedDict):
     repository_name: NotRequired[str]
     pushed_at: NotRequired[str]
     result: NotRequired[Literal["pass", "fail", "bypass"]]
-    evaluation_result: NotRequired[Union[None, Literal["pass", "fail", "bypass"]]]
+    evaluation_result: NotRequired[Union[Literal["pass", "fail", "bypass"], None]]
     rule_evaluations: NotRequired[
         list[RuleSuitePropRuleEvaluationsItemsTypeForResponse]
     ]

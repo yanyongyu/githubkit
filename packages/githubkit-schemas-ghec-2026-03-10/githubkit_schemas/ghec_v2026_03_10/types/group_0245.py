@@ -37,9 +37,9 @@ class GistSimplePropForkOfType(TypedDict):
     description: Union[str, None]
     comments: int
     comments_enabled: NotRequired[bool]
-    user: Union[None, SimpleUserType]
+    user: Union[SimpleUserType, None]
     comments_url: str
-    owner: NotRequired[Union[None, SimpleUserType]]
+    owner: NotRequired[Union[SimpleUserType, None]]
     truncated: NotRequired[bool]
     forks: NotRequired[list[Any]]
     history: NotRequired[list[Any]]
@@ -66,9 +66,9 @@ class GistSimplePropForkOfTypeForResponse(TypedDict):
     description: Union[str, None]
     comments: int
     comments_enabled: NotRequired[bool]
-    user: Union[None, SimpleUserTypeForResponse]
+    user: Union[SimpleUserTypeForResponse, None]
     comments_url: str
-    owner: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    owner: NotRequired[Union[SimpleUserTypeForResponse, None]]
     truncated: NotRequired[bool]
     forks: NotRequired[list[Any]]
     history: NotRequired[list[Any]]

@@ -27,7 +27,7 @@ class GistHistory(GitHubModel):
     Gist History
     """
 
-    user: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    user: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
     version: Missing[str] = Field(default=UNSET)
     committed_at: Missing[_dt.datetime] = Field(default=UNSET)
     change_status: Missing[GistHistoryPropChangeStatus] = Field(default=UNSET)
@@ -63,9 +63,9 @@ class GistSimplePropForkOf(GitHubModel):
     description: Union[str, None] = Field()
     comments: int = Field()
     comments_enabled: Missing[bool] = Field(default=UNSET)
-    user: Union[None, SimpleUser] = Field()
+    user: Union[SimpleUser, None] = Field()
     comments_url: str = Field()
-    owner: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    owner: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
     truncated: Missing[bool] = Field(default=UNSET)
     forks: Missing[list[Any]] = Field(default=UNSET)
     history: Missing[list[Any]] = Field(default=UNSET)

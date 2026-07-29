@@ -42,7 +42,7 @@ class IssueSuggestion(GitHubModel):
     rationale: Union[str, None] = Field(
         description="The rationale the actor provided for the suggestion."
     )
-    confidence: Union[None, Literal["LOW", "MEDIUM", "HIGH"]] = Field(
+    confidence: Union[Literal["LOW", "MEDIUM", "HIGH"], None] = Field(
         description="The actor's confidence level in the suggestion."
     )
     actor_id: Union[int, None] = Field(

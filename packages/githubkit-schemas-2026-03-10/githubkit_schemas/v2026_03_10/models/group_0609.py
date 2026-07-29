@@ -56,7 +56,7 @@ class WebhookCodeScanningAlertReopenedByUserPropAlert(GitHubModel):
     ] = Field(default=UNSET, title="Alert Instance")
     number: int = Field(description="The code scanning alert number.")
     rule: WebhookCodeScanningAlertReopenedByUserPropAlertPropRule = Field()
-    state: Union[None, Literal["open", "fixed"]] = Field(
+    state: Union[Literal["open", "fixed"], None] = Field(
         description="State of a code scanning alert. Events for alerts found outside the default branch will return a `null` value until they are dismissed or fixed."
     )
     tool: WebhookCodeScanningAlertReopenedByUserPropAlertPropTool = Field()
@@ -125,7 +125,7 @@ class WebhookCodeScanningAlertReopenedByUserPropAlertPropRule(GitHubModel):
     id: str = Field(
         description="A unique identifier for the rule used to detect the alert."
     )
-    severity: Union[None, Literal["none", "note", "warning", "error"]] = Field(
+    severity: Union[Literal["none", "note", "warning", "error"], None] = Field(
         description="The severity of the alert."
     )
 

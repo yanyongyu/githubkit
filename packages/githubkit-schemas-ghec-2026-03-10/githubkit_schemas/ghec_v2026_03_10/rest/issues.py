@@ -1855,7 +1855,7 @@ class IssuesClient:
         body: Missing[Union[str, None]] = UNSET,
         state: Missing[Literal["open", "closed"]] = UNSET,
         state_reason: Missing[
-            Union[None, Literal["completed", "not_planned", "duplicate", "reopened"]]
+            Union[Literal["completed", "not_planned", "duplicate", "reopened"], None]
         ] = UNSET,
         duplicate_issue_id: Missing[int] = UNSET,
         milestone: Missing[Union[str, int, None]] = UNSET,
@@ -1982,7 +1982,7 @@ class IssuesClient:
         body: Missing[Union[str, None]] = UNSET,
         state: Missing[Literal["open", "closed"]] = UNSET,
         state_reason: Missing[
-            Union[None, Literal["completed", "not_planned", "duplicate", "reopened"]]
+            Union[Literal["completed", "not_planned", "duplicate", "reopened"], None]
         ] = UNSET,
         duplicate_issue_id: Missing[int] = UNSET,
         milestone: Missing[Union[str, int, None]] = UNSET,

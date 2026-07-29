@@ -18,11 +18,11 @@ class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2Type(TypedDict
 
     state: NotRequired[Literal["open", "resolved"]]
     resolution: NotRequired[
-        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
+        Union[Literal["false_positive", "wont_fix", "revoked", "used_in_tests"], None]
     ]
     resolution_comment: NotRequired[Union[str, None]]
     assignee: NotRequired[Union[str, None]]
-    validity: Union[None, Literal["active", "inactive"]]
+    validity: Union[Literal["active", "inactive"], None]
 
 
 class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2TypeForResponse(
@@ -32,11 +32,11 @@ class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2TypeForRespons
 
     state: NotRequired[Literal["open", "resolved"]]
     resolution: NotRequired[
-        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
+        Union[Literal["false_positive", "wont_fix", "revoked", "used_in_tests"], None]
     ]
     resolution_comment: NotRequired[Union[str, None]]
     assignee: NotRequired[Union[str, None]]
-    validity: Union[None, Literal["active", "inactive"]]
+    validity: Union[Literal["active", "inactive"], None]
 
 
 __all__ = (

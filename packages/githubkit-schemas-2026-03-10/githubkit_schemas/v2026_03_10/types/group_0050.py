@@ -31,7 +31,7 @@ class MilestoneType(TypedDict):
     state: Literal["open", "closed"]
     title: str
     description: Union[str, None]
-    creator: Union[None, SimpleUserType]
+    creator: Union[SimpleUserType, None]
     open_issues: int
     closed_issues: int
     created_at: _dt.datetime
@@ -55,7 +55,7 @@ class MilestoneTypeForResponse(TypedDict):
     state: Literal["open", "closed"]
     title: str
     description: Union[str, None]
-    creator: Union[None, SimpleUserTypeForResponse]
+    creator: Union[SimpleUserTypeForResponse, None]
     open_issues: int
     closed_issues: int
     created_at: str

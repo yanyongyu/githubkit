@@ -36,7 +36,7 @@ class LicenseContent(GitHubModel):
     content: str = Field()
     encoding: str = Field()
     links: LicenseContentPropLinks = Field(alias="_links")
-    license_: Union[None, LicenseSimple] = Field(alias="license")
+    license_: Union[LicenseSimple, None] = Field(alias="license")
 
 
 class LicenseContentPropLinks(GitHubModel):

@@ -52,10 +52,10 @@ class PullRequestSimpleType(TypedDict):
     state: str
     locked: bool
     title: str
-    user: Union[None, SimpleUserType]
+    user: Union[SimpleUserType, None]
     body: Union[str, None]
     labels: list[PullRequestSimplePropLabelsItemsType]
-    milestone: Union[None, MilestoneType]
+    milestone: Union[MilestoneType, None]
     active_lock_reason: NotRequired[Union[str, None]]
     created_at: _dt.datetime
     updated_at: _dt.datetime
@@ -104,10 +104,10 @@ class PullRequestSimpleTypeForResponse(TypedDict):
     state: str
     locked: bool
     title: str
-    user: Union[None, SimpleUserTypeForResponse]
+    user: Union[SimpleUserTypeForResponse, None]
     body: Union[str, None]
     labels: list[PullRequestSimplePropLabelsItemsTypeForResponse]
-    milestone: Union[None, MilestoneTypeForResponse]
+    milestone: Union[MilestoneTypeForResponse, None]
     active_lock_reason: NotRequired[Union[str, None]]
     created_at: str
     updated_at: str

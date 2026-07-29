@@ -49,7 +49,7 @@ class IssueSearchResultItem(GitHubModel):
     locked: bool = Field()
     active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
     assignees: Missing[Union[list[SimpleUser], None]] = Field(default=UNSET)
-    user: Union[None, SimpleUser] = Field()
+    user: Union[SimpleUser, None] = Field()
     labels: list[IssueSearchResultItemPropLabelsItems] = Field()
     sub_issues_summary: Missing[SubIssuesSummary] = Field(
         default=UNSET, title="Sub-issues Summary"
@@ -60,7 +60,7 @@ class IssueSearchResultItem(GitHubModel):
     issue_field_values: Missing[list[IssueFieldValue]] = Field(default=UNSET)
     state: str = Field()
     state_reason: Missing[Union[str, None]] = Field(default=UNSET)
-    milestone: Union[None, Milestone] = Field()
+    milestone: Union[Milestone, None] = Field()
     comments: int = Field()
     created_at: _dt.datetime = Field()
     updated_at: _dt.datetime = Field()
@@ -99,7 +99,7 @@ class IssueSearchResultItem(GitHubModel):
     performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
         default=UNSET
     )
-    pinned_comment: Missing[Union[None, IssueComment]] = Field(default=UNSET)
+    pinned_comment: Missing[Union[IssueComment, None]] = Field(default=UNSET)
     reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
 
 

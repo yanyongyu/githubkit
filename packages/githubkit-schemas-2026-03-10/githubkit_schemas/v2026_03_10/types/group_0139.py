@@ -38,19 +38,19 @@ class CodeScanningOrganizationAlertItemsType(TypedDict):
     url: str
     html_url: str
     instances_url: str
-    state: Union[None, Literal["open", "dismissed", "fixed"]]
+    state: Union[Literal["open", "dismissed", "fixed"], None]
     fixed_at: NotRequired[Union[_dt.datetime, None]]
-    dismissed_by: Union[None, SimpleUserType]
+    dismissed_by: Union[SimpleUserType, None]
     dismissed_at: Union[_dt.datetime, None]
     dismissed_reason: Union[
-        None, Literal["false positive", "won't fix", "used in tests"]
+        Literal["false positive", "won't fix", "used in tests"], None
     ]
     dismissed_comment: NotRequired[Union[str, None]]
     rule: CodeScanningAlertRuleSummaryType
     tool: CodeScanningAnalysisToolType
     most_recent_instance: CodeScanningAlertInstanceType
     repository: SimpleRepositoryType
-    dismissal_approved_by: NotRequired[Union[None, SimpleUserType]]
+    dismissal_approved_by: NotRequired[Union[SimpleUserType, None]]
     assignees: NotRequired[list[SimpleUserType]]
 
 
@@ -63,19 +63,19 @@ class CodeScanningOrganizationAlertItemsTypeForResponse(TypedDict):
     url: str
     html_url: str
     instances_url: str
-    state: Union[None, Literal["open", "dismissed", "fixed"]]
+    state: Union[Literal["open", "dismissed", "fixed"], None]
     fixed_at: NotRequired[Union[str, None]]
-    dismissed_by: Union[None, SimpleUserTypeForResponse]
+    dismissed_by: Union[SimpleUserTypeForResponse, None]
     dismissed_at: Union[str, None]
     dismissed_reason: Union[
-        None, Literal["false positive", "won't fix", "used in tests"]
+        Literal["false positive", "won't fix", "used in tests"], None
     ]
     dismissed_comment: NotRequired[Union[str, None]]
     rule: CodeScanningAlertRuleSummaryTypeForResponse
     tool: CodeScanningAnalysisToolTypeForResponse
     most_recent_instance: CodeScanningAlertInstanceTypeForResponse
     repository: SimpleRepositoryTypeForResponse
-    dismissal_approved_by: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    dismissal_approved_by: NotRequired[Union[SimpleUserTypeForResponse, None]]
     assignees: NotRequired[list[SimpleUserTypeForResponse]]
 
 

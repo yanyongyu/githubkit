@@ -55,11 +55,11 @@ class ProjectsV2(GitHubModel):
     deleted_at: Union[_dt.datetime, None] = Field(
         description="The time when the project was deleted."
     )
-    deleted_by: Union[None, SimpleUser] = Field()
+    deleted_by: Union[SimpleUser, None] = Field()
     state: Missing[Literal["open", "closed"]] = Field(
         default=UNSET, description="The current state of the project."
     )
-    latest_status_update: Missing[Union[None, ProjectsV2StatusUpdate]] = Field(
+    latest_status_update: Missing[Union[ProjectsV2StatusUpdate, None]] = Field(
         default=UNSET
     )
     is_template: Missing[bool] = Field(

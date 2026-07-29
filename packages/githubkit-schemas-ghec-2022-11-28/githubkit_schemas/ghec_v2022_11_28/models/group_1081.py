@@ -113,7 +113,7 @@ class WebhookWorkflowJobCompletedPropWorkflowJobMergedSteps(GitHubModel):
     """WebhookWorkflowJobCompletedPropWorkflowJobMergedSteps"""
 
     completed_at: Union[str, None] = Field()
-    conclusion: Union[None, Literal["failure", "skipped", "success", "cancelled"]] = (
+    conclusion: Union[Literal["failure", "skipped", "success", "cancelled"], None] = (
         Field()
     )
     name: str = Field()

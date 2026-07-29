@@ -21,7 +21,7 @@ class RepositoryCollaboratorPermissionType(TypedDict):
 
     permission: str
     role_name: str
-    user: Union[None, CollaboratorType]
+    user: Union[CollaboratorType, None]
 
 
 class RepositoryCollaboratorPermissionTypeForResponse(TypedDict):
@@ -32,7 +32,7 @@ class RepositoryCollaboratorPermissionTypeForResponse(TypedDict):
 
     permission: str
     role_name: str
-    user: Union[None, CollaboratorTypeForResponse]
+    user: Union[CollaboratorTypeForResponse, None]
 
 
 class CollaboratorType(TypedDict):

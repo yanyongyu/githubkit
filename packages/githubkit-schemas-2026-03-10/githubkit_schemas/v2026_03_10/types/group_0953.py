@@ -34,7 +34,7 @@ class WebhookSecretScanningScanCompletedType(TypedDict):
     secret_types: NotRequired[Union[list[str], None]]
     custom_pattern_name: NotRequired[Union[str, None]]
     custom_pattern_scope: NotRequired[
-        Union[None, Literal["repository", "organization", "enterprise"]]
+        Union[Literal["repository", "organization", "enterprise"], None]
     ]
     repository: NotRequired[RepositoryWebhooksType]
     enterprise: NotRequired[EnterpriseWebhooksType]
@@ -54,7 +54,7 @@ class WebhookSecretScanningScanCompletedTypeForResponse(TypedDict):
     secret_types: NotRequired[Union[list[str], None]]
     custom_pattern_name: NotRequired[Union[str, None]]
     custom_pattern_scope: NotRequired[
-        Union[None, Literal["repository", "organization", "enterprise"]]
+        Union[Literal["repository", "organization", "enterprise"], None]
     ]
     repository: NotRequired[RepositoryWebhooksTypeForResponse]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]

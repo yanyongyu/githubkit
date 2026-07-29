@@ -26,7 +26,7 @@ class PinnedIssueComment(GitHubModel):
     """
 
     pinned_at: _dt.datetime = Field()
-    pinned_by: Union[None, SimpleUser] = Field()
+    pinned_by: Union[SimpleUser, None] = Field()
 
 
 model_rebuild(PinnedIssueComment)

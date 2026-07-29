@@ -60,7 +60,6 @@ class WebhookWorkflowRunCompletedPropWorkflowRunType(TypedDict):
     check_suite_node_id: str
     check_suite_url: str
     conclusion: Union[
-        None,
         Literal[
             "action_required",
             "cancelled",
@@ -72,6 +71,7 @@ class WebhookWorkflowRunCompletedPropWorkflowRunType(TypedDict):
             "timed_out",
             "startup_failure",
         ],
+        None,
     ]
     created_at: _dt.datetime
     event: str
@@ -128,7 +128,6 @@ class WebhookWorkflowRunCompletedPropWorkflowRunTypeForResponse(TypedDict):
     check_suite_node_id: str
     check_suite_url: str
     conclusion: Union[
-        None,
         Literal[
             "action_required",
             "cancelled",
@@ -140,6 +139,7 @@ class WebhookWorkflowRunCompletedPropWorkflowRunTypeForResponse(TypedDict):
             "timed_out",
             "startup_failure",
         ],
+        None,
     ]
     created_at: str
     event: str

@@ -29,7 +29,6 @@ class CheckRunWithSimpleCheckSuiteType(TypedDict):
     check_suite: SimpleCheckSuiteType
     completed_at: Union[_dt.datetime, None]
     conclusion: Union[
-        None,
         Literal[
             "waiting",
             "pending",
@@ -43,6 +42,7 @@ class CheckRunWithSimpleCheckSuiteType(TypedDict):
             "timed_out",
             "action_required",
         ],
+        None,
     ]
     deployment: NotRequired[DeploymentSimpleType]
     details_url: str
@@ -69,7 +69,6 @@ class CheckRunWithSimpleCheckSuiteTypeForResponse(TypedDict):
     check_suite: SimpleCheckSuiteTypeForResponse
     completed_at: Union[str, None]
     conclusion: Union[
-        None,
         Literal[
             "waiting",
             "pending",
@@ -83,6 +82,7 @@ class CheckRunWithSimpleCheckSuiteTypeForResponse(TypedDict):
             "timed_out",
             "action_required",
         ],
+        None,
     ]
     deployment: NotRequired[DeploymentSimpleTypeForResponse]
     details_url: str

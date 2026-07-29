@@ -113,7 +113,7 @@ class WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsType(Type
     reactions: WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropReactionsType
     side: Literal["LEFT", "RIGHT"]
     start_line: Union[int, None]
-    start_side: Union[None, Literal["LEFT", "RIGHT"]]
+    start_side: Union[Literal["LEFT", "RIGHT"], None]
     subject_type: NotRequired[Literal["line", "file"]]
     updated_at: _dt.datetime
     url: str
@@ -163,7 +163,7 @@ class WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsTypeForRe
     reactions: WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropReactionsTypeForResponse
     side: Literal["LEFT", "RIGHT"]
     start_line: Union[int, None]
-    start_side: Union[None, Literal["LEFT", "RIGHT"]]
+    start_side: Union[Literal["LEFT", "RIGHT"], None]
     subject_type: NotRequired[Literal["line", "file"]]
     updated_at: str
     url: str

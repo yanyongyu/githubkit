@@ -34,13 +34,13 @@ class OrganizationRole(GitHubModel):
         description="A short description about who this role is for or what permissions it grants.",
     )
     base_role: Missing[
-        Union[None, Literal["read", "triage", "write", "maintain", "admin"]]
+        Union[Literal["read", "triage", "write", "maintain", "admin"], None]
     ] = Field(
         default=UNSET,
         description="The system role from which this role inherits permissions.",
     )
     source: Missing[
-        Union[None, Literal["Organization", "Enterprise", "Predefined"]]
+        Union[Literal["Organization", "Enterprise", "Predefined"], None]
     ] = Field(
         default=UNSET,
         description='Source answers the question, "where did this role come from?"',
@@ -48,7 +48,7 @@ class OrganizationRole(GitHubModel):
     permissions: list[str] = Field(
         description="A list of permissions included in this role."
     )
-    organization: Union[None, SimpleUser] = Field()
+    organization: Union[SimpleUser, None] = Field()
     created_at: _dt.datetime = Field(
         description="The date and time the role was created."
     )

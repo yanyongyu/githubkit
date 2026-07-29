@@ -40,7 +40,7 @@ class ReleaseAsset(GitHubModel):
     download_count: int = Field()
     created_at: _dt.datetime = Field()
     updated_at: _dt.datetime = Field()
-    uploader: Union[None, SimpleUser] = Field()
+    uploader: Union[SimpleUser, None] = Field()
 
 
 model_rebuild(ReleaseAsset)

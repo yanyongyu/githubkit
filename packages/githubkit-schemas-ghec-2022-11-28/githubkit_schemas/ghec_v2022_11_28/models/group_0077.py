@@ -41,19 +41,19 @@ class CodeScanningOrganizationAlertItems(GitHubModel):
     instances_url: str = Field(
         description="The REST API URL for fetching the list of instances for an alert."
     )
-    state: Union[None, Literal["open", "dismissed", "fixed"]] = Field(
+    state: Union[Literal["open", "dismissed", "fixed"], None] = Field(
         description="State of a code scanning alert."
     )
     fixed_at: Missing[Union[_dt.datetime, None]] = Field(
         default=UNSET,
         description="The time that the alert was no longer detected and was considered fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
-    dismissed_by: Union[None, SimpleUser] = Field()
+    dismissed_by: Union[SimpleUser, None] = Field()
     dismissed_at: Union[_dt.datetime, None] = Field(
         description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
     )
     dismissed_reason: Union[
-        None, Literal["false positive", "won't fix", "used in tests"]
+        Literal["false positive", "won't fix", "used in tests"], None
     ] = Field(
         description="**Required when the state is dismissed.** The reason for dismissing or closing the alert."
     )
@@ -69,7 +69,7 @@ class CodeScanningOrganizationAlertItems(GitHubModel):
     repository: SimpleRepository = Field(
         title="Simple Repository", description="A GitHub repository."
     )
-    dismissal_approved_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    dismissal_approved_by: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
     assignees: Missing[list[SimpleUser]] = Field(default=UNSET)
 
 

@@ -27,11 +27,11 @@ class DependabotRepositoryAccessDetails(GitHubModel):
     organization
     """
 
-    default_level: Missing[Union[None, Literal["public", "internal"]]] = Field(
+    default_level: Missing[Union[Literal["public", "internal"], None]] = Field(
         default=UNSET,
         description="The default repository access level for Dependabot updates.",
     )
-    accessible_repositories: Missing[list[Union[None, SimpleRepository]]] = Field(
+    accessible_repositories: Missing[list[Union[SimpleRepository, None]]] = Field(
         default=UNSET
     )
 

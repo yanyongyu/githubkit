@@ -34,7 +34,7 @@ class PullRequestStackPullRequest(GitHubModel):
     merged_at: Union[_dt.datetime, None] = Field()
     draft: bool = Field()
     html_url: str = Field()
-    user: Union[None, SimpleUser] = Field()
+    user: Union[SimpleUser, None] = Field()
 
 
 model_rebuild(PullRequestStackPullRequest)

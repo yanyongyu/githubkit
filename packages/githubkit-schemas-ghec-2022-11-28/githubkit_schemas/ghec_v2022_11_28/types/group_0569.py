@@ -25,7 +25,7 @@ class PullRequestStackPullRequestAllof1Type(TypedDict):
     merged_at: Union[_dt.datetime, None]
     draft: bool
     html_url: str
-    user: Union[None, SimpleUserType]
+    user: Union[SimpleUserType, None]
 
 
 class PullRequestStackPullRequestAllof1TypeForResponse(TypedDict):
@@ -37,7 +37,7 @@ class PullRequestStackPullRequestAllof1TypeForResponse(TypedDict):
     merged_at: Union[str, None]
     draft: bool
     html_url: str
-    user: Union[None, SimpleUserTypeForResponse]
+    user: Union[SimpleUserTypeForResponse, None]
 
 
 __all__ = (

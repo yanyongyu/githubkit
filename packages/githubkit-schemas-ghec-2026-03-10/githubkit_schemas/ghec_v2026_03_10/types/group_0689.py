@@ -30,7 +30,7 @@ class WebhookCodeScanningAlertAppearedInBranchPropAlertType(TypedDict):
     ]
     dismissed_comment: NotRequired[Union[str, None]]
     dismissed_reason: Union[
-        None, Literal["false positive", "won't fix", "used in tests"]
+        Literal["false positive", "won't fix", "used in tests"], None
     ]
     fixed_at: NotRequired[Union[_dt.datetime, None]]
     html_url: str
@@ -42,7 +42,7 @@ class WebhookCodeScanningAlertAppearedInBranchPropAlertType(TypedDict):
     ]
     number: int
     rule: WebhookCodeScanningAlertAppearedInBranchPropAlertPropRuleType
-    state: Union[None, Literal["open", "dismissed", "fixed"]]
+    state: Union[Literal["open", "dismissed", "fixed"], None]
     tool: WebhookCodeScanningAlertAppearedInBranchPropAlertPropToolType
     url: str
 
@@ -62,7 +62,7 @@ class WebhookCodeScanningAlertAppearedInBranchPropAlertTypeForResponse(TypedDict
     ]
     dismissed_comment: NotRequired[Union[str, None]]
     dismissed_reason: Union[
-        None, Literal["false positive", "won't fix", "used in tests"]
+        Literal["false positive", "won't fix", "used in tests"], None
     ]
     fixed_at: NotRequired[Union[str, None]]
     html_url: str
@@ -74,7 +74,7 @@ class WebhookCodeScanningAlertAppearedInBranchPropAlertTypeForResponse(TypedDict
     ]
     number: int
     rule: WebhookCodeScanningAlertAppearedInBranchPropAlertPropRuleTypeForResponse
-    state: Union[None, Literal["open", "dismissed", "fixed"]]
+    state: Union[Literal["open", "dismissed", "fixed"], None]
     tool: WebhookCodeScanningAlertAppearedInBranchPropAlertPropToolTypeForResponse
     url: str
 
@@ -228,7 +228,7 @@ class WebhookCodeScanningAlertAppearedInBranchPropAlertPropRuleType(TypedDict):
 
     description: str
     id: str
-    severity: Union[None, Literal["none", "note", "warning", "error"]]
+    severity: Union[Literal["none", "note", "warning", "error"], None]
 
 
 class WebhookCodeScanningAlertAppearedInBranchPropAlertPropRuleTypeForResponse(
@@ -238,7 +238,7 @@ class WebhookCodeScanningAlertAppearedInBranchPropAlertPropRuleTypeForResponse(
 
     description: str
     id: str
-    severity: Union[None, Literal["none", "note", "warning", "error"]]
+    severity: Union[Literal["none", "note", "warning", "error"], None]
 
 
 class WebhookCodeScanningAlertAppearedInBranchPropAlertPropToolType(TypedDict):

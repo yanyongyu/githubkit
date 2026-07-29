@@ -38,7 +38,7 @@ class WebhookCodeScanningAlertReopenedPropAlertType(TypedDict):
     ]
     number: int
     rule: WebhookCodeScanningAlertReopenedPropAlertPropRuleType
-    state: Union[None, Literal["open", "dismissed", "fixed"]]
+    state: Union[Literal["open", "dismissed", "fixed"], None]
     tool: WebhookCodeScanningAlertReopenedPropAlertPropToolType
     updated_at: NotRequired[Union[str, None]]
     url: str
@@ -70,7 +70,7 @@ class WebhookCodeScanningAlertReopenedPropAlertTypeForResponse(TypedDict):
     ]
     number: int
     rule: WebhookCodeScanningAlertReopenedPropAlertPropRuleTypeForResponse
-    state: Union[None, Literal["open", "dismissed", "fixed"]]
+    state: Union[Literal["open", "dismissed", "fixed"], None]
     tool: WebhookCodeScanningAlertReopenedPropAlertPropToolTypeForResponse
     updated_at: NotRequired[Union[str, None]]
     url: str
@@ -220,7 +220,7 @@ class WebhookCodeScanningAlertReopenedPropAlertPropRuleType(TypedDict):
     help_uri: NotRequired[Union[str, None]]
     id: str
     name: NotRequired[str]
-    severity: Union[None, Literal["none", "note", "warning", "error"]]
+    severity: Union[Literal["none", "note", "warning", "error"], None]
     tags: NotRequired[Union[list[str], None]]
 
 
@@ -233,7 +233,7 @@ class WebhookCodeScanningAlertReopenedPropAlertPropRuleTypeForResponse(TypedDict
     help_uri: NotRequired[Union[str, None]]
     id: str
     name: NotRequired[str]
-    severity: Union[None, Literal["none", "note", "warning", "error"]]
+    severity: Union[Literal["none", "note", "warning", "error"], None]
     tags: NotRequired[Union[list[str], None]]
 
 

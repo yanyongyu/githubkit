@@ -31,7 +31,7 @@ class StatusType(TypedDict):
     context: str
     created_at: str
     updated_at: str
-    creator: Union[None, SimpleUserType]
+    creator: Union[SimpleUserType, None]
 
 
 class StatusTypeForResponse(TypedDict):
@@ -50,7 +50,7 @@ class StatusTypeForResponse(TypedDict):
     context: str
     created_at: str
     updated_at: str
-    creator: Union[None, SimpleUserTypeForResponse]
+    creator: Union[SimpleUserTypeForResponse, None]
 
 
 __all__ = (

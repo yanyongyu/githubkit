@@ -78,5 +78,7 @@ Usually, you don't need to specify the version of the webhook payload. githubkit
 ```python
 from githubkit import GitHub
 
-event = GitHub.webhooks("2022-11-28").parse(request.headers["X-GitHub-Event"], request.body)
+event = GitHub.webhooks("2022-11-28").parse(
+    request.headers["X-GitHub-Event"], request.body
+)
 ```

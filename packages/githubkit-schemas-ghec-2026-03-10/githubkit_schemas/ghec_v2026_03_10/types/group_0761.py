@@ -45,8 +45,8 @@ class WebhookIssueCommentCreatedPropCommentType(TypedDict):
     reactions: WebhookIssueCommentCreatedPropCommentPropReactionsType
     updated_at: _dt.datetime
     url: str
-    pin: NotRequired[Union[None, PinnedIssueCommentType]]
-    minimized: NotRequired[Union[None, IssueCommentMinimizedType]]
+    pin: NotRequired[Union[PinnedIssueCommentType, None]]
+    minimized: NotRequired[Union[IssueCommentMinimizedType, None]]
     user: Union[WebhookIssueCommentCreatedPropCommentPropUserType, None]
 
 
@@ -77,8 +77,8 @@ class WebhookIssueCommentCreatedPropCommentTypeForResponse(TypedDict):
     reactions: WebhookIssueCommentCreatedPropCommentPropReactionsTypeForResponse
     updated_at: str
     url: str
-    pin: NotRequired[Union[None, PinnedIssueCommentTypeForResponse]]
-    minimized: NotRequired[Union[None, IssueCommentMinimizedTypeForResponse]]
+    pin: NotRequired[Union[PinnedIssueCommentTypeForResponse, None]]
+    minimized: NotRequired[Union[IssueCommentMinimizedTypeForResponse, None]]
     user: Union[WebhookIssueCommentCreatedPropCommentPropUserTypeForResponse, None]
 
 

@@ -35,7 +35,7 @@ class PullRequestReviewCommentType(TypedDict):
     commit_id: str
     original_commit_id: str
     in_reply_to_id: NotRequired[int]
-    user: Union[None, SimpleUserType]
+    user: Union[SimpleUserType, None]
     body: str
     created_at: _dt.datetime
     updated_at: _dt.datetime
@@ -54,7 +54,7 @@ class PullRequestReviewCommentType(TypedDict):
     links: PullRequestReviewCommentPropLinksType
     start_line: NotRequired[Union[int, None]]
     original_start_line: NotRequired[Union[int, None]]
-    start_side: NotRequired[Union[None, Literal["LEFT", "RIGHT"]]]
+    start_side: NotRequired[Union[Literal["LEFT", "RIGHT"], None]]
     line: NotRequired[int]
     original_line: NotRequired[int]
     side: NotRequired[Literal["LEFT", "RIGHT"]]
@@ -82,7 +82,7 @@ class PullRequestReviewCommentTypeForResponse(TypedDict):
     commit_id: str
     original_commit_id: str
     in_reply_to_id: NotRequired[int]
-    user: Union[None, SimpleUserTypeForResponse]
+    user: Union[SimpleUserTypeForResponse, None]
     body: str
     created_at: str
     updated_at: str
@@ -101,7 +101,7 @@ class PullRequestReviewCommentTypeForResponse(TypedDict):
     links: PullRequestReviewCommentPropLinksTypeForResponse
     start_line: NotRequired[Union[int, None]]
     original_start_line: NotRequired[Union[int, None]]
-    start_side: NotRequired[Union[None, Literal["LEFT", "RIGHT"]]]
+    start_side: NotRequired[Union[Literal["LEFT", "RIGHT"], None]]
     line: NotRequired[int]
     original_line: NotRequired[int]
     side: NotRequired[Literal["LEFT", "RIGHT"]]

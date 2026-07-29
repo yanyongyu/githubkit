@@ -28,7 +28,7 @@ class PageBuild(GitHubModel):
     url: str = Field()
     status: str = Field()
     error: PageBuildPropError = Field()
-    pusher: Union[None, SimpleUser] = Field()
+    pusher: Union[SimpleUser, None] = Field()
     commit: str = Field()
     duration: int = Field()
     created_at: _dt.datetime = Field()

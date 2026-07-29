@@ -43,7 +43,7 @@ class ProjectsV2StatusUpdate(GitHubModel):
         description="The time when the status update was last updated."
     )
     status: Missing[
-        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
+        Union[Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"], None]
     ] = Field(default=UNSET, description="The current status.")
     start_date: Missing[_dt.date] = Field(
         default=UNSET, description="The start date of the period covered by the update."

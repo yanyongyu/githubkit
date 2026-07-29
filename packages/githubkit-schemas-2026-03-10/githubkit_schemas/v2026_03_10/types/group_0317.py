@@ -30,13 +30,12 @@ class CheckSuiteType(TypedDict):
     head_branch: Union[str, None]
     head_sha: str
     status: Union[
-        None,
         Literal[
             "queued", "in_progress", "completed", "waiting", "requested", "pending"
         ],
+        None,
     ]
     conclusion: Union[
-        None,
         Literal[
             "success",
             "failure",
@@ -48,6 +47,7 @@ class CheckSuiteType(TypedDict):
             "startup_failure",
             "stale",
         ],
+        None,
     ]
     url: Union[str, None]
     before: Union[str, None]
@@ -75,13 +75,12 @@ class CheckSuiteTypeForResponse(TypedDict):
     head_branch: Union[str, None]
     head_sha: str
     status: Union[
-        None,
         Literal[
             "queued", "in_progress", "completed", "waiting", "requested", "pending"
         ],
+        None,
     ]
     conclusion: Union[
-        None,
         Literal[
             "success",
             "failure",
@@ -93,6 +92,7 @@ class CheckSuiteTypeForResponse(TypedDict):
             "startup_failure",
             "stale",
         ],
+        None,
     ]
     url: Union[str, None]
     before: Union[str, None]

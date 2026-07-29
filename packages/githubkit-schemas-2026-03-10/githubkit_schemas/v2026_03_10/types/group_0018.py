@@ -42,7 +42,7 @@ class InstallationType(TypedDict):
     has_multiple_single_files: NotRequired[bool]
     single_file_paths: NotRequired[list[str]]
     app_slug: str
-    suspended_by: Union[None, SimpleUserType]
+    suspended_by: Union[SimpleUserType, None]
     suspended_at: Union[_dt.datetime, None]
     contact_email: NotRequired[Union[str, None]]
 
@@ -71,7 +71,7 @@ class InstallationTypeForResponse(TypedDict):
     has_multiple_single_files: NotRequired[bool]
     single_file_paths: NotRequired[list[str]]
     app_slug: str
-    suspended_by: Union[None, SimpleUserTypeForResponse]
+    suspended_by: Union[SimpleUserTypeForResponse, None]
     suspended_at: Union[str, None]
     contact_email: NotRequired[Union[str, None]]
 

@@ -45,7 +45,9 @@ Calling GraphQL API with variables:
     }
     """
 
-    data: dict[str, Any] = github.graphql(query, variables={"owner": "owner", "repo": "repo"})
+    data: dict[str, Any] = github.graphql(
+        query, variables={"owner": "owner", "repo": "repo"}
+    )
     repo_name: str = data["repository"]["name"]
     ```
 
@@ -60,7 +62,9 @@ Calling GraphQL API with variables:
     }
     """
 
-    data: dict[str, Any] = await github.async_graphql(query, variables={"owner": "owner", "repo": "repo"})
+    data: dict[str, Any] = await github.async_graphql(
+        query, variables={"owner": "owner", "repo": "repo"}
+    )
     repo_name: str = data["repository"]["name"]
     ```
 

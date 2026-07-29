@@ -37,7 +37,7 @@ dev = [
   { include-group = "codegen" },
   { include-group = "test" },
   { include-group = "docs" },
-  "ruff >=0.15.0, <0.16.0",
+  "ruff >=0.16.0, <0.17.0",
   "nonemoji >=0.1.2, <0.2.0",
   "pre-commit >=4.0.0, <5.0.0",
 ]
@@ -215,6 +215,20 @@ output_dir = "packages/githubkit-schemas-ghec-2026-03-10/githubkit_schemas/"
 [tool.codegen.overrides.field_overrides]
 "+1" = "plus_one"
 "-1" = "minus_one"
+
+[[tool.codegen.overrides]]
+
+[tool.codegen.overrides.operation_overrides]
+# duplicate operation name for pull request stacks
+"pull-request-stacks/" = "pull-request-stacks/stacks-"
+
+[[tool.codegen.overrides]]
+# override invalid schemas for ghec
+target_descriptions = ["ghec-2022-11-28", "ghec-2026-03-10"]
+
+[tool.codegen.overrides.operation_overrides]
+# duplicate operation name for enterprise apps
+"enterprise-apps/" = "enterprise-apps/enterprise-"
 
 [[tool.codegen.overrides]]
 
@@ -657,25 +671,3 @@ output_dir = "packages/githubkit-schemas-ghec-2026-03-10/githubkit_schemas/"
 "/components/schemas/code-scanning-alert-classification/enum" = { "<add>" = [
   "documentation",
 ] }
-
-[[tool.codegen.overrides]]
-
-[tool.codegen.overrides.operation_overrides]
-# duplicate operation name for pull request stacks
-"pull-request-stacks/" = "pull-request-stacks/stacks-"
-
-[[tool.codegen.overrides]]
-# override invalid schemas for ghec
-target_descriptions = ["ghec-2022-11-28", "ghec-2026-03-10"]
-
-[tool.codegen.overrides.operation_overrides]
-# duplicate operation name for enterprise apps
-"enterprise-apps/" = "enterprise-apps/enterprise-"
-
-# [[tool.codegen.overrides]]
-# # override invalid schemas for ghec
-# target_descriptions = ["ghec-2022-11-28", "ghec-2026-03-10"]
-
-# [tool.codegen.overrides.schema_overrides]
-# # duplicate operation name for enterprise apps
-# "/paths/~1enterprises~1{enterprise}~1apps~1organizations~1{org}~1installations~1{installation_id}/delete" = { operationId = "enterprise-apps/enterprise-delete-installation" }

@@ -26,7 +26,7 @@ class CommitSearchResultItemPropCommit(GitHubModel):
     """CommitSearchResultItemPropCommit"""
 
     author: CommitSearchResultItemPropCommitPropAuthor = Field()
-    committer: Union[None, GitUser] = Field()
+    committer: Union[GitUser, None] = Field()
     comment_count: int = Field()
     message: str = Field()
     tree: CommitSearchResultItemPropCommitPropTree = Field()

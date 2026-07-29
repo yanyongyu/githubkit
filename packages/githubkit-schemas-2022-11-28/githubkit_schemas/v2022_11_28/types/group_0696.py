@@ -45,7 +45,7 @@ class WebhookIssueCommentEditedPropIssueAllof0Type(TypedDict):
     """
 
     active_lock_reason: Union[
-        None, Literal["resolved", "off-topic", "too heated", "spam"]
+        Literal["resolved", "off-topic", "too heated", "spam"], None
     ]
     assignee: NotRequired[
         Union[WebhookIssueCommentEditedPropIssueAllof0PropAssigneeType, None]
@@ -109,7 +109,7 @@ class WebhookIssueCommentEditedPropIssueAllof0TypeForResponse(TypedDict):
     """
 
     active_lock_reason: Union[
-        None, Literal["resolved", "off-topic", "too heated", "spam"]
+        Literal["resolved", "off-topic", "too heated", "spam"], None
     ]
     assignee: NotRequired[
         Union[WebhookIssueCommentEditedPropIssueAllof0PropAssigneeTypeForResponse, None]

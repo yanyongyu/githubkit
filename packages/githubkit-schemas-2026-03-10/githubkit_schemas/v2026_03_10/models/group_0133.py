@@ -54,7 +54,7 @@ class Team(GitHubModel):
         default=UNSET,
         description="Unique identifier of the enterprise to which this team belongs",
     )
-    parent: Union[None, TeamSimple] = Field()
+    parent: Union[TeamSimple, None] = Field()
 
 
 class TeamPropPermissions(GitHubModel):

@@ -21,15 +21,15 @@ class PageType(TypedDict):
     """
 
     url: str
-    status: Union[None, Literal["built", "building", "errored"]]
+    status: Union[Literal["built", "building", "errored"], None]
     cname: Union[str, None]
     protected_domain_state: NotRequired[
-        Union[None, Literal["pending", "verified", "unverified"]]
+        Union[Literal["pending", "verified", "unverified"], None]
     ]
     pending_domain_unverified_at: NotRequired[Union[_dt.datetime, None]]
     custom_404: bool
     html_url: NotRequired[str]
-    build_type: NotRequired[Union[None, Literal["legacy", "workflow"]]]
+    build_type: NotRequired[Union[Literal["legacy", "workflow"], None]]
     source: NotRequired[PagesSourceHashType]
     public: bool
     https_certificate: NotRequired[PagesHttpsCertificateType]
@@ -43,15 +43,15 @@ class PageTypeForResponse(TypedDict):
     """
 
     url: str
-    status: Union[None, Literal["built", "building", "errored"]]
+    status: Union[Literal["built", "building", "errored"], None]
     cname: Union[str, None]
     protected_domain_state: NotRequired[
-        Union[None, Literal["pending", "verified", "unverified"]]
+        Union[Literal["pending", "verified", "unverified"], None]
     ]
     pending_domain_unverified_at: NotRequired[Union[str, None]]
     custom_404: bool
     html_url: NotRequired[str]
-    build_type: NotRequired[Union[None, Literal["legacy", "workflow"]]]
+    build_type: NotRequired[Union[Literal["legacy", "workflow"], None]]
     source: NotRequired[PagesSourceHashTypeForResponse]
     public: bool
     https_certificate: NotRequired[PagesHttpsCertificateTypeForResponse]

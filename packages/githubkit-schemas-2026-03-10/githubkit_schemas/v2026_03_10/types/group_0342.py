@@ -36,12 +36,12 @@ class CodeScanningDefaultSetupType(TypedDict):
             ]
         ]
     ]
-    runner_type: NotRequired[Union[None, Literal["standard", "labeled"]]]
+    runner_type: NotRequired[Union[Literal["standard", "labeled"], None]]
     runner_label: NotRequired[Union[str, None]]
     query_suite: NotRequired[Literal["default", "extended"]]
     threat_model: NotRequired[Literal["remote", "remote_and_local"]]
     updated_at: NotRequired[Union[_dt.datetime, None]]
-    schedule: NotRequired[Union[None, Literal["weekly"]]]
+    schedule: NotRequired[Union[Literal["weekly"], None]]
 
 
 class CodeScanningDefaultSetupTypeForResponse(TypedDict):
@@ -66,12 +66,12 @@ class CodeScanningDefaultSetupTypeForResponse(TypedDict):
             ]
         ]
     ]
-    runner_type: NotRequired[Union[None, Literal["standard", "labeled"]]]
+    runner_type: NotRequired[Union[Literal["standard", "labeled"], None]]
     runner_label: NotRequired[Union[str, None]]
     query_suite: NotRequired[Literal["default", "extended"]]
     threat_model: NotRequired[Literal["remote", "remote_and_local"]]
     updated_at: NotRequired[Union[str, None]]
-    schedule: NotRequired[Union[None, Literal["weekly"]]]
+    schedule: NotRequired[Union[Literal["weekly"], None]]
 
 
 __all__ = (

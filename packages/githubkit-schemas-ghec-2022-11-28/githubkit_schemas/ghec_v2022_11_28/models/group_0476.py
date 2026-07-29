@@ -36,19 +36,19 @@ class IssueEvent(GitHubModel):
     id: int = Field()
     node_id: str = Field()
     url: str = Field()
-    actor: Union[None, SimpleUser] = Field()
+    actor: Union[SimpleUser, None] = Field()
     event: str = Field()
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
     created_at: _dt.datetime = Field()
-    issue: Missing[Union[None, Issue]] = Field(default=UNSET)
+    issue: Missing[Union[Issue, None]] = Field(default=UNSET)
     label: Missing[IssueEventLabel] = Field(
         default=UNSET, title="Issue Event Label", description="Issue Event Label"
     )
-    assignee: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    assigner: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    review_requester: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    requested_reviewer: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    assignee: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
+    assigner: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
+    review_requester: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
+    requested_reviewer: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
     requested_team: Missing[Team] = Field(
         default=UNSET,
         title="Team",

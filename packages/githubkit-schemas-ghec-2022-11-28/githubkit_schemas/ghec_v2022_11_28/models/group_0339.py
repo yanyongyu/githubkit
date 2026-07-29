@@ -42,7 +42,7 @@ class RepositoryAdvisory(GitHubModel):
     description: Union[Annotated[str, Field(max_length=65535)], None] = Field(
         description="A detailed description of what the advisory entails."
     )
-    severity: Union[None, Literal["critical", "high", "medium", "low"]] = Field(
+    severity: Union[Literal["critical", "high", "medium", "low"], None] = Field(
         description="The severity of the advisory."
     )
     author: None = Field(description="The author of the advisory.")

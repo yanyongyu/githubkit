@@ -35,8 +35,8 @@ class AuthorizationType(TypedDict):
     updated_at: _dt.datetime
     created_at: _dt.datetime
     fingerprint: Union[str, None]
-    user: NotRequired[Union[None, SimpleUserType]]
-    installation: NotRequired[Union[None, ScopedInstallationType]]
+    user: NotRequired[Union[SimpleUserType, None]]
+    installation: NotRequired[Union[ScopedInstallationType, None]]
     expires_at: Union[_dt.datetime, None]
 
 
@@ -58,8 +58,8 @@ class AuthorizationTypeForResponse(TypedDict):
     updated_at: str
     created_at: str
     fingerprint: Union[str, None]
-    user: NotRequired[Union[None, SimpleUserTypeForResponse]]
-    installation: NotRequired[Union[None, ScopedInstallationTypeForResponse]]
+    user: NotRequired[Union[SimpleUserTypeForResponse, None]]
+    installation: NotRequired[Union[ScopedInstallationTypeForResponse, None]]
     expires_at: Union[str, None]
 
 

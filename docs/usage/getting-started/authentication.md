@@ -66,9 +66,7 @@ github = GitHub(
 
 # Using client ID instead of app ID
 github = GitHub(
-    AppAuthStrategy(
-        None, "<private_key>", "<client_id>", "<optional_client_secret>"
-    )
+    AppAuthStrategy(None, "<private_key>", "<client_id>", "<optional_client_secret>")
 )
 ```
 
@@ -84,14 +82,22 @@ from githubkit import GitHub, AppInstallationAuthStrategy
 # Using app ID
 github = GitHub(
     AppInstallationAuthStrategy(
-        "<app_id>", "<private_key>", installation_id, "<optional_client_id>", "<optional_client_secret>",
+        "<app_id>",
+        "<private_key>",
+        installation_id,
+        "<optional_client_id>",
+        "<optional_client_secret>",
     )
 )
 
 # Using client ID instead of app ID
 github = GitHub(
     AppInstallationAuthStrategy(
-        None, "<private_key>", installation_id, "<client_id>", "<optional_client_secret>",
+        None,
+        "<private_key>",
+        installation_id,
+        "<client_id>",
+        "<optional_client_secret>",
     )
 )
 ```
@@ -122,9 +128,7 @@ For OAuth Apps or GitHub Apps **without** user-to-server token expiration enable
 from githubkit import GitHub, OAuthTokenAuthStrategy
 
 github = GitHub(
-    OAuthTokenAuthStrategy(
-        "<client_id>", "<client_secret>", token="<access_token>"
-    )
+    OAuthTokenAuthStrategy("<client_id>", "<client_secret>", token="<access_token>")
 )
 ```
 
@@ -169,9 +173,7 @@ Exchange an OAuth **authorization code** (from the web application flow) for a u
 ```python
 from githubkit import GitHub, OAuthWebAuthStrategy
 
-github = GitHub(
-    OAuthWebAuthStrategy("<client_id>", "<client_secret>", "<code>")
-)
+github = GitHub(OAuthWebAuthStrategy("<client_id>", "<client_secret>", "<code>"))
 ```
 
 !!! warning
@@ -183,9 +185,7 @@ To exchange the code and retrieve the resulting token:
 ```python
 from githubkit import GitHub, OAuthWebAuthStrategy, OAuthTokenAuthStrategy
 
-github = GitHub(
-    OAuthWebAuthStrategy("<client_id>", "<client_secret>", "<code>")
-)
+github = GitHub(OAuthWebAuthStrategy("<client_id>", "<client_secret>", "<code>"))
 
 # sync
 auth: OAuthTokenAuthStrategy = github.auth.exchange_token(github)
@@ -208,13 +208,13 @@ You must provide a **callback function** that displays the user code. githubkit 
 ```python
 from githubkit import GitHub, OAuthDeviceAuthStrategy
 
+
 def callback(data: dict):
     """Display the user code and verification URL to the user."""
     print(f"Open {data['verification_uri']} and enter code: {data['user_code']}")
 
-github = GitHub(
-    OAuthDeviceAuthStrategy("<client_id>", callback)
-)
+
+github = GitHub(OAuthDeviceAuthStrategy("<client_id>", callback))
 ```
 
 The callback receives the full device authorization response as a dict. Key fields can be found in the [GitHub Docs — Using the device flow](https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-a-user-access-token-for-a-github-app#using-the-device-flow-to-generate-a-user-access-token).
@@ -273,9 +273,7 @@ from githubkit import GitHub, AppAuthStrategy
 github = GitHub(AppAuthStrategy("<app_id>", "<private_key>"))
 
 # Create a new client authenticated as a specific installation
-installation_github = github.with_auth(
-    github.auth.as_installation(installation_id)
-)
+installation_github = github.with_auth(github.auth.as_installation(installation_id))
 ```
 
 ### GitHub App → OAuth App
@@ -286,9 +284,7 @@ Requires `client_id` and `client_secret` to be set on the `AppAuthStrategy`:
 from githubkit import GitHub, AppAuthStrategy
 
 github = GitHub(
-    AppAuthStrategy(
-        "<app_id>", "<private_key>", "<client_id>", "<client_secret>"
-    )
+    AppAuthStrategy("<app_id>", "<private_key>", "<client_id>", "<client_secret>")
 )
 
 oauth_github = github.with_auth(github.auth.as_oauth_app())
@@ -327,7 +323,9 @@ github = GitHub(OAuthAppAuthStrategy("<client_id>", "<client_secret>"))
 # sync
 auth: OAuthTokenAuthStrategy = github.auth.as_web_user("<code>").exchange_token(github)
 # async
-auth: OAuthTokenAuthStrategy = await github.auth.as_web_user("<code>").async_exchange_token(github)
+auth: OAuthTokenAuthStrategy = await github.auth.as_web_user(
+    "<code>"
+).async_exchange_token(github)
 
 # Persist the tokens
 user_token = auth.token
@@ -344,8 +342,10 @@ user_github = github.with_auth(auth)
 ```python
 from githubkit import GitHub, OAuthDeviceAuthStrategy, OAuthTokenAuthStrategy
 
+
 def callback(data: dict):
     print(data["user_code"])
+
 
 user_github = GitHub(OAuthDeviceAuthStrategy("<client_id>", callback))
 

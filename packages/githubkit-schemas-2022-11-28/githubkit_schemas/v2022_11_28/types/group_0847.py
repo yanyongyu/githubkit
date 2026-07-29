@@ -95,10 +95,10 @@ class WebhookProjectsV2StatusUpdateEditedPropChangesPropStatusType(TypedDict):
     """WebhookProjectsV2StatusUpdateEditedPropChangesPropStatus"""
 
     from_: NotRequired[
-        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
+        Union[Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"], None]
     ]
     to: NotRequired[
-        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
+        Union[Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"], None]
     ]
 
 
@@ -108,10 +108,10 @@ class WebhookProjectsV2StatusUpdateEditedPropChangesPropStatusTypeForResponse(
     """WebhookProjectsV2StatusUpdateEditedPropChangesPropStatus"""
 
     from_: NotRequired[
-        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
+        Union[Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"], None]
     ]
     to: NotRequired[
-        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
+        Union[Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"], None]
     ]
 
 

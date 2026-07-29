@@ -23,7 +23,7 @@ class StargazerType(TypedDict):
     """
 
     starred_at: _dt.datetime
-    user: Union[None, SimpleUserType]
+    user: Union[SimpleUserType, None]
 
 
 class StargazerTypeForResponse(TypedDict):
@@ -33,7 +33,7 @@ class StargazerTypeForResponse(TypedDict):
     """
 
     starred_at: str
-    user: Union[None, SimpleUserTypeForResponse]
+    user: Union[SimpleUserTypeForResponse, None]
 
 
 __all__ = (

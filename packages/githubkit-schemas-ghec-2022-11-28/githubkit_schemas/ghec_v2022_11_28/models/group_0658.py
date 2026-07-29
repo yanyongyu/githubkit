@@ -89,7 +89,7 @@ class WebhooksReviewComment(GitHubModel):
     start_line: Union[int, None] = Field(
         description="The first line of the range for a multi-line comment."
     )
-    start_side: Union[None, Literal["LEFT", "RIGHT"]] = Field(
+    start_side: Union[Literal["LEFT", "RIGHT"], None] = Field(
         default="RIGHT",
         description="The side of the first line of the range for a multi-line comment.",
     )

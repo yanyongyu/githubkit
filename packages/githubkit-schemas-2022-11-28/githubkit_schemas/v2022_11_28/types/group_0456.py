@@ -24,7 +24,7 @@ class PullRequestReviewType(TypedDict):
 
     id: int
     node_id: str
-    user: Union[None, SimpleUserType]
+    user: Union[SimpleUserType, None]
     body: str
     state: str
     html_url: str
@@ -54,7 +54,7 @@ class PullRequestReviewTypeForResponse(TypedDict):
 
     id: int
     node_id: str
-    user: Union[None, SimpleUserTypeForResponse]
+    user: Union[SimpleUserTypeForResponse, None]
     body: str
     state: str
     html_url: str

@@ -26,7 +26,7 @@ class RepositoryCollaboratorPermission(GitHubModel):
 
     permission: str = Field()
     role_name: str = Field()
-    user: Union[None, Collaborator] = Field()
+    user: Union[Collaborator, None] = Field()
 
 
 class Collaborator(GitHubModel):

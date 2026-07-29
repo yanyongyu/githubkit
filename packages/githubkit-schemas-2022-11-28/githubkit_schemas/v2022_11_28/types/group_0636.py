@@ -67,7 +67,6 @@ class WebhookDeploymentStatusCreatedPropCheckRunType(TypedDict):
 
     completed_at: Union[_dt.datetime, None]
     conclusion: Union[
-        None,
         Literal[
             "success",
             "failure",
@@ -78,6 +77,7 @@ class WebhookDeploymentStatusCreatedPropCheckRunType(TypedDict):
             "stale",
             "skipped",
         ],
+        None,
     ]
     details_url: str
     external_id: str
@@ -96,7 +96,6 @@ class WebhookDeploymentStatusCreatedPropCheckRunTypeForResponse(TypedDict):
 
     completed_at: Union[str, None]
     conclusion: Union[
-        None,
         Literal[
             "success",
             "failure",
@@ -107,6 +106,7 @@ class WebhookDeploymentStatusCreatedPropCheckRunTypeForResponse(TypedDict):
             "stale",
             "skipped",
         ],
+        None,
     ]
     details_url: str
     external_id: str
@@ -805,7 +805,6 @@ class WebhookDeploymentStatusCreatedPropWorkflowRunType(TypedDict):
     check_suite_node_id: str
     check_suite_url: NotRequired[str]
     conclusion: Union[
-        None,
         Literal[
             "success",
             "failure",
@@ -816,6 +815,7 @@ class WebhookDeploymentStatusCreatedPropWorkflowRunType(TypedDict):
             "stale",
             "startup_failure",
         ],
+        None,
     ]
     created_at: _dt.datetime
     display_title: str
@@ -876,7 +876,6 @@ class WebhookDeploymentStatusCreatedPropWorkflowRunTypeForResponse(TypedDict):
     check_suite_node_id: str
     check_suite_url: NotRequired[str]
     conclusion: Union[
-        None,
         Literal[
             "success",
             "failure",
@@ -887,6 +886,7 @@ class WebhookDeploymentStatusCreatedPropWorkflowRunTypeForResponse(TypedDict):
             "stale",
             "startup_failure",
         ],
+        None,
     ]
     created_at: str
     display_title: str

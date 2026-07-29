@@ -50,7 +50,7 @@ class WebhookSecretScanningScanCompleted(GitHubModel):
         description="If the scan was triggered by a custom pattern update, this will be the name of the pattern that was updated",
     )
     custom_pattern_scope: Missing[
-        Union[None, Literal["repository", "organization", "enterprise"]]
+        Union[Literal["repository", "organization", "enterprise"], None]
     ] = Field(
         default=UNSET,
         description="If the scan was triggered by a custom pattern update, this will be the scope of the pattern that was updated",

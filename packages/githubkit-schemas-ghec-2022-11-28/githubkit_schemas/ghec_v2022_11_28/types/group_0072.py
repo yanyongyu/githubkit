@@ -18,9 +18,9 @@ class CodeScanningAlertRuleSummaryType(TypedDict):
 
     id: NotRequired[Union[str, None]]
     name: NotRequired[str]
-    severity: NotRequired[Union[None, Literal["none", "note", "warning", "error"]]]
+    severity: NotRequired[Union[Literal["none", "note", "warning", "error"], None]]
     security_severity_level: NotRequired[
-        Union[None, Literal["low", "medium", "high", "critical"]]
+        Union[Literal["low", "medium", "high", "critical"], None]
     ]
     description: NotRequired[str]
     full_description: NotRequired[str]
@@ -34,9 +34,9 @@ class CodeScanningAlertRuleSummaryTypeForResponse(TypedDict):
 
     id: NotRequired[Union[str, None]]
     name: NotRequired[str]
-    severity: NotRequired[Union[None, Literal["none", "note", "warning", "error"]]]
+    severity: NotRequired[Union[Literal["none", "note", "warning", "error"], None]]
     security_severity_level: NotRequired[
-        Union[None, Literal["low", "medium", "high", "critical"]]
+        Union[Literal["low", "medium", "high", "critical"], None]
     ]
     description: NotRequired[str]
     full_description: NotRequired[str]

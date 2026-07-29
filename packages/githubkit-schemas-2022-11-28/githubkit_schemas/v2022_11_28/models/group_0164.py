@@ -30,10 +30,10 @@ class OrganizationCreateIssueType(GitHubModel):
     )
     color: Missing[
         Union[
-            None,
             Literal[
                 "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
             ],
+            None,
         ]
     ] = Field(default=UNSET, description="Color for the issue type.")
 

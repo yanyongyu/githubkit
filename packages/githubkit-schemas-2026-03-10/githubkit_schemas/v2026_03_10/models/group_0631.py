@@ -48,7 +48,7 @@ class WebhookDeploymentProtectionRuleRequested(GitHubModel):
     deployment_callback_url: Missing[str] = Field(
         default=UNSET, description="The URL to review the deployment protection rule."
     )
-    deployment: Missing[Union[None, Deployment]] = Field(default=UNSET)
+    deployment: Missing[Union[Deployment, None]] = Field(default=UNSET)
     pull_requests: Missing[list[PullRequest]] = Field(default=UNSET)
     repository: Missing[RepositoryWebhooks] = Field(
         default=UNSET,

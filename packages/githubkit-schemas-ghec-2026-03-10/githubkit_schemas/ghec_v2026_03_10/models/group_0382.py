@@ -25,8 +25,8 @@ class CommitPropCommit(GitHubModel):
     """CommitPropCommit"""
 
     url: str = Field()
-    author: Union[None, GitUser] = Field()
-    committer: Union[None, GitUser] = Field()
+    author: Union[GitUser, None] = Field()
+    committer: Union[GitUser, None] = Field()
     message: str = Field()
     comment_count: int = Field()
     tree: CommitPropCommitPropTree = Field()

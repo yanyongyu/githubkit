@@ -53,15 +53,15 @@ class ReposOwnerRepoIssuesIssueNumberPatchResponse200Type(TypedDict):
     number: int
     state: str
     state_reason: NotRequired[
-        Union[None, Literal["completed", "reopened", "not_planned", "duplicate"]]
+        Union[Literal["completed", "reopened", "not_planned", "duplicate"], None]
     ]
     title: str
     body: NotRequired[Union[str, None]]
-    user: Union[None, SimpleUserType]
+    user: Union[SimpleUserType, None]
     labels: list[Union[str, IssuePropLabelsItemsOneof1Type]]
-    assignee: Union[None, SimpleUserType]
+    assignee: Union[SimpleUserType, None]
     assignees: NotRequired[list[SimpleUserType]]
-    milestone: Union[None, MilestoneType]
+    milestone: Union[MilestoneType, None]
     locked: bool
     active_lock_reason: NotRequired[Union[str, None]]
     comments: int
@@ -70,7 +70,7 @@ class ReposOwnerRepoIssuesIssueNumberPatchResponse200Type(TypedDict):
     created_at: _dt.datetime
     updated_at: _dt.datetime
     draft: NotRequired[bool]
-    closed_by: NotRequired[Union[None, SimpleUserType]]
+    closed_by: NotRequired[Union[SimpleUserType, None]]
     body_html: NotRequired[Union[str, None]]
     body_text: NotRequired[Union[str, None]]
     timeline_url: NotRequired[str]
@@ -92,7 +92,7 @@ class ReposOwnerRepoIssuesIssueNumberPatchResponse200Type(TypedDict):
     reactions: NotRequired[ReactionRollupType]
     sub_issues_summary: NotRequired[SubIssuesSummaryType]
     parent_issue_url: NotRequired[Union[str, None]]
-    pinned_comment: NotRequired[Union[None, IssueCommentType]]
+    pinned_comment: NotRequired[Union[IssueCommentType, None]]
     issue_dependencies_summary: NotRequired[IssueDependenciesSummaryType]
     issue_field_values: NotRequired[list[IssueFieldValueType]]
     suggestions: NotRequired[
@@ -114,15 +114,15 @@ class ReposOwnerRepoIssuesIssueNumberPatchResponse200TypeForResponse(TypedDict):
     number: int
     state: str
     state_reason: NotRequired[
-        Union[None, Literal["completed", "reopened", "not_planned", "duplicate"]]
+        Union[Literal["completed", "reopened", "not_planned", "duplicate"], None]
     ]
     title: str
     body: NotRequired[Union[str, None]]
-    user: Union[None, SimpleUserTypeForResponse]
+    user: Union[SimpleUserTypeForResponse, None]
     labels: list[Union[str, IssuePropLabelsItemsOneof1TypeForResponse]]
-    assignee: Union[None, SimpleUserTypeForResponse]
+    assignee: Union[SimpleUserTypeForResponse, None]
     assignees: NotRequired[list[SimpleUserTypeForResponse]]
-    milestone: Union[None, MilestoneTypeForResponse]
+    milestone: Union[MilestoneTypeForResponse, None]
     locked: bool
     active_lock_reason: NotRequired[Union[str, None]]
     comments: int
@@ -131,7 +131,7 @@ class ReposOwnerRepoIssuesIssueNumberPatchResponse200TypeForResponse(TypedDict):
     created_at: str
     updated_at: str
     draft: NotRequired[bool]
-    closed_by: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    closed_by: NotRequired[Union[SimpleUserTypeForResponse, None]]
     body_html: NotRequired[Union[str, None]]
     body_text: NotRequired[Union[str, None]]
     timeline_url: NotRequired[str]
@@ -153,7 +153,7 @@ class ReposOwnerRepoIssuesIssueNumberPatchResponse200TypeForResponse(TypedDict):
     reactions: NotRequired[ReactionRollupTypeForResponse]
     sub_issues_summary: NotRequired[SubIssuesSummaryTypeForResponse]
     parent_issue_url: NotRequired[Union[str, None]]
-    pinned_comment: NotRequired[Union[None, IssueCommentTypeForResponse]]
+    pinned_comment: NotRequired[Union[IssueCommentTypeForResponse, None]]
     issue_dependencies_summary: NotRequired[IssueDependenciesSummaryTypeForResponse]
     issue_field_values: NotRequired[list[IssueFieldValueTypeForResponse]]
     suggestions: NotRequired[

@@ -28,11 +28,11 @@ class CodeScanningAlertRuleSummary(GitHubModel):
     name: Missing[str] = Field(
         default=UNSET, description="The name of the rule used to detect the alert."
     )
-    severity: Missing[Union[None, Literal["none", "note", "warning", "error"]]] = Field(
+    severity: Missing[Union[Literal["none", "note", "warning", "error"], None]] = Field(
         default=UNSET, description="The severity of the alert."
     )
     security_severity_level: Missing[
-        Union[None, Literal["low", "medium", "high", "critical"]]
+        Union[Literal["low", "medium", "high", "critical"], None]
     ] = Field(default=UNSET, description="The security severity of the alert.")
     description: Missing[str] = Field(
         default=UNSET,

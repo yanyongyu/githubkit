@@ -30,7 +30,9 @@ Wrapping your `GitHub` instance in a `with` (sync) or `async with` (async) block
     from githubkit_schemas.latest.models import FullRepository
 
     async with GitHub("<your_token_here>") as github:
-        resp: Response[FullRepository] = await github.rest.repos.async_get(owner="owner", repo="repo")
+        resp: Response[FullRepository] = await github.rest.repos.async_get(
+            owner="owner", repo="repo"
+        )
         repo: FullRepository = resp.parsed_data
     ```
 

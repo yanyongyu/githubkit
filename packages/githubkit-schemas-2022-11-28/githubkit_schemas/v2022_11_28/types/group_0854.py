@@ -21,7 +21,7 @@ class WebhookPullRequestAutoMergeEnabledPropPullRequestType(TypedDict):
 
     links: WebhookPullRequestAutoMergeEnabledPropPullRequestPropLinksType
     active_lock_reason: Union[
-        None, Literal["resolved", "off-topic", "too heated", "spam"]
+        Literal["resolved", "off-topic", "too heated", "spam"], None
     ]
     additions: NotRequired[int]
     assignee: Union[
@@ -83,8 +83,8 @@ class WebhookPullRequestAutoMergeEnabledPropPullRequestType(TypedDict):
     requested_reviewers: list[
         Union[
             WebhookPullRequestAutoMergeEnabledPropPullRequestPropRequestedReviewersItemsOneof0Type,
-            None,
             WebhookPullRequestAutoMergeEnabledPropPullRequestPropRequestedReviewersItemsOneof1Type,
+            None,
         ]
     ]
     requested_teams: list[
@@ -107,7 +107,7 @@ class WebhookPullRequestAutoMergeEnabledPropPullRequestTypeForResponse(TypedDict
 
     links: WebhookPullRequestAutoMergeEnabledPropPullRequestPropLinksTypeForResponse
     active_lock_reason: Union[
-        None, Literal["resolved", "off-topic", "too heated", "spam"]
+        Literal["resolved", "off-topic", "too heated", "spam"], None
     ]
     additions: NotRequired[int]
     assignee: Union[
@@ -177,8 +177,8 @@ class WebhookPullRequestAutoMergeEnabledPropPullRequestTypeForResponse(TypedDict
     requested_reviewers: list[
         Union[
             WebhookPullRequestAutoMergeEnabledPropPullRequestPropRequestedReviewersItemsOneof0TypeForResponse,
-            None,
             WebhookPullRequestAutoMergeEnabledPropPullRequestPropRequestedReviewersItemsOneof1TypeForResponse,
+            None,
         ]
     ]
     requested_teams: list[

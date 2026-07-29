@@ -25,7 +25,7 @@ class PageBuildType(TypedDict):
     url: str
     status: str
     error: PageBuildPropErrorType
-    pusher: Union[None, SimpleUserType]
+    pusher: Union[SimpleUserType, None]
     commit: str
     duration: int
     created_at: _dt.datetime
@@ -41,7 +41,7 @@ class PageBuildTypeForResponse(TypedDict):
     url: str
     status: str
     error: PageBuildPropErrorTypeForResponse
-    pusher: Union[None, SimpleUserTypeForResponse]
+    pusher: Union[SimpleUserTypeForResponse, None]
     commit: str
     duration: int
     created_at: str

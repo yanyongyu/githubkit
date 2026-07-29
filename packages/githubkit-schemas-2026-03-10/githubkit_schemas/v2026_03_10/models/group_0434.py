@@ -58,7 +58,7 @@ class PullRequestReviewComment(GitHubModel):
     in_reply_to_id: Missing[int] = Field(
         default=UNSET, description="The comment ID to reply to."
     )
-    user: Union[None, SimpleUser] = Field()
+    user: Union[SimpleUser, None] = Field()
     body: str = Field(description="The text of the comment.")
     created_at: _dt.datetime = Field()
     updated_at: _dt.datetime = Field()
@@ -88,7 +88,7 @@ class PullRequestReviewComment(GitHubModel):
         default=UNSET,
         description="The first line of the range for a multi-line comment.",
     )
-    start_side: Missing[Union[None, Literal["LEFT", "RIGHT"]]] = Field(
+    start_side: Missing[Union[Literal["LEFT", "RIGHT"], None]] = Field(
         default=UNSET,
         description="The side of the first line of the range for a multi-line comment.",
     )

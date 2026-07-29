@@ -30,7 +30,7 @@ class WebhookCodeScanningAlertUpdatedAssignmentPropAlertType(TypedDict):
     ]
     dismissed_comment: NotRequired[Union[str, None]]
     dismissed_reason: Union[
-        None, Literal["false positive", "won't fix", "used in tests"]
+        Literal["false positive", "won't fix", "used in tests"], None
     ]
     fixed_at: NotRequired[Union[_dt.datetime, None]]
     html_url: str
@@ -42,7 +42,7 @@ class WebhookCodeScanningAlertUpdatedAssignmentPropAlertType(TypedDict):
     ]
     number: int
     rule: WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropRuleType
-    state: Union[None, Literal["open", "dismissed", "fixed"]]
+    state: Union[Literal["open", "dismissed", "fixed"], None]
     tool: WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropToolType
     url: str
 
@@ -62,7 +62,7 @@ class WebhookCodeScanningAlertUpdatedAssignmentPropAlertTypeForResponse(TypedDic
     ]
     dismissed_comment: NotRequired[Union[str, None]]
     dismissed_reason: Union[
-        None, Literal["false positive", "won't fix", "used in tests"]
+        Literal["false positive", "won't fix", "used in tests"], None
     ]
     fixed_at: NotRequired[Union[str, None]]
     html_url: str
@@ -74,7 +74,7 @@ class WebhookCodeScanningAlertUpdatedAssignmentPropAlertTypeForResponse(TypedDic
     ]
     number: int
     rule: WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropRuleTypeForResponse
-    state: Union[None, Literal["open", "dismissed", "fixed"]]
+    state: Union[Literal["open", "dismissed", "fixed"], None]
     tool: WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropToolTypeForResponse
     url: str
 
@@ -228,7 +228,7 @@ class WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropRuleType(TypedDict):
 
     description: str
     id: str
-    severity: Union[None, Literal["none", "note", "warning", "error"]]
+    severity: Union[Literal["none", "note", "warning", "error"], None]
 
 
 class WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropRuleTypeForResponse(
@@ -238,7 +238,7 @@ class WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropRuleTypeForResponse(
 
     description: str
     id: str
-    severity: Union[None, Literal["none", "note", "warning", "error"]]
+    severity: Union[Literal["none", "note", "warning", "error"], None]
 
 
 class WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropToolType(TypedDict):

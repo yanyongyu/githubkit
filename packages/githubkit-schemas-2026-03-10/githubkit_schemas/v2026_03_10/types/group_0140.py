@@ -25,7 +25,7 @@ class CodespaceMachineType(TypedDict):
     storage_in_bytes: int
     memory_in_bytes: int
     cpus: int
-    prebuild_availability: Union[None, Literal["none", "ready", "in_progress"]]
+    prebuild_availability: Union[Literal["none", "ready", "in_progress"], None]
 
 
 class CodespaceMachineTypeForResponse(TypedDict):
@@ -40,7 +40,7 @@ class CodespaceMachineTypeForResponse(TypedDict):
     storage_in_bytes: int
     memory_in_bytes: int
     cpus: int
-    prebuild_availability: Union[None, Literal["none", "ready", "in_progress"]]
+    prebuild_availability: Union[Literal["none", "ready", "in_progress"], None]
 
 
 __all__ = (

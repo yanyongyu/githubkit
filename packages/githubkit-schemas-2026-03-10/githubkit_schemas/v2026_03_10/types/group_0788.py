@@ -31,7 +31,7 @@ class WebhookMetaDeletedType(TypedDict):
     hook_id: int
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[Union[None, RepositoryWebhooksType]]
+    repository: NotRequired[Union[RepositoryWebhooksType, None]]
     sender: NotRequired[SimpleUserType]
 
 
@@ -44,7 +44,7 @@ class WebhookMetaDeletedTypeForResponse(TypedDict):
     hook_id: int
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: NotRequired[Union[None, RepositoryWebhooksTypeForResponse]]
+    repository: NotRequired[Union[RepositoryWebhooksTypeForResponse, None]]
     sender: NotRequired[SimpleUserTypeForResponse]
 
 

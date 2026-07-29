@@ -22,7 +22,7 @@ class GistHistoryType(TypedDict):
     Gist History
     """
 
-    user: NotRequired[Union[None, SimpleUserType]]
+    user: NotRequired[Union[SimpleUserType, None]]
     version: NotRequired[str]
     committed_at: NotRequired[_dt.datetime]
     change_status: NotRequired[GistHistoryPropChangeStatusType]
@@ -35,7 +35,7 @@ class GistHistoryTypeForResponse(TypedDict):
     Gist History
     """
 
-    user: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    user: NotRequired[Union[SimpleUserTypeForResponse, None]]
     version: NotRequired[str]
     committed_at: NotRequired[str]
     change_status: NotRequired[GistHistoryPropChangeStatusTypeForResponse]
@@ -79,9 +79,9 @@ class GistSimplePropForkOfType(TypedDict):
     description: Union[str, None]
     comments: int
     comments_enabled: NotRequired[bool]
-    user: Union[None, SimpleUserType]
+    user: Union[SimpleUserType, None]
     comments_url: str
-    owner: NotRequired[Union[None, SimpleUserType]]
+    owner: NotRequired[Union[SimpleUserType, None]]
     truncated: NotRequired[bool]
     forks: NotRequired[list[Any]]
     history: NotRequired[list[Any]]
@@ -108,9 +108,9 @@ class GistSimplePropForkOfTypeForResponse(TypedDict):
     description: Union[str, None]
     comments: int
     comments_enabled: NotRequired[bool]
-    user: Union[None, SimpleUserTypeForResponse]
+    user: Union[SimpleUserTypeForResponse, None]
     comments_url: str
-    owner: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    owner: NotRequired[Union[SimpleUserTypeForResponse, None]]
     truncated: NotRequired[bool]
     forks: NotRequired[list[Any]]
     history: NotRequired[list[Any]]

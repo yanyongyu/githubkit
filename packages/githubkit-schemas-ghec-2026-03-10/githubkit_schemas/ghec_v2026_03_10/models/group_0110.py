@@ -22,7 +22,7 @@ class OrganizationCustomPropertyAllof1(GitHubModel):
     """OrganizationCustomPropertyAllof1"""
 
     values_editable_by: Missing[
-        Union[None, Literal["enterprise_actors", "enterprise_and_org_actors"]]
+        Union[Literal["enterprise_actors", "enterprise_and_org_actors"], None]
     ] = Field(default=UNSET, description="Who can edit the values of the property")
 
 

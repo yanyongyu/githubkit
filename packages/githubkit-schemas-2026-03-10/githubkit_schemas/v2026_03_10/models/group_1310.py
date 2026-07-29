@@ -25,7 +25,7 @@ class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0(GitHubModel):
         description="Sets the state of the code scanning alert. You must provide `dismissed_reason` when you set the state to `dismissed`."
     )
     dismissed_reason: Missing[
-        Union[None, Literal["false positive", "won't fix", "used in tests"]]
+        Union[Literal["false positive", "won't fix", "used in tests"], None]
     ] = Field(
         default=UNSET,
         description="**Required when the state is dismissed.** The reason for dismissing or closing the alert.",

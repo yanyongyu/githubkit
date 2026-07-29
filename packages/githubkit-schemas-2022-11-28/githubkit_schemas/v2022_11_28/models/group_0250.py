@@ -56,7 +56,7 @@ class RuleSuite(GitHubModel):
         default=UNSET,
         description="The result of the rule evaluations for rules with the `active` enforcement status.",
     )
-    evaluation_result: Missing[Union[None, Literal["pass", "fail", "bypass"]]] = Field(
+    evaluation_result: Missing[Union[Literal["pass", "fail", "bypass"], None]] = Field(
         default=UNSET,
         description="The result of the rule evaluations for rules with the `active` and `evaluate` enforcement statuses, demonstrating whether rules would pass or fail if all rules in the rule suite were `active`. Null if no rules with `evaluate` enforcement status were run.",
     )

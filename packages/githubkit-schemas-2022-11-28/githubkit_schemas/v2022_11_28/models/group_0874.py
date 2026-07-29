@@ -28,7 +28,7 @@ class WebhookPullRequestReviewCommentDeletedPropPullRequest(GitHubModel):
         alias="_links"
     )
     active_lock_reason: Union[
-        None, Literal["resolved", "off-topic", "too heated", "spam"]
+        Literal["resolved", "off-topic", "too heated", "spam"], None
     ] = Field()
     assignee: Union[
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropAssignee, None
@@ -89,8 +89,8 @@ class WebhookPullRequestReviewCommentDeletedPropPullRequest(GitHubModel):
     requested_reviewers: list[
         Union[
             WebhookPullRequestReviewCommentDeletedPropPullRequestPropRequestedReviewersItemsOneof0,
-            None,
             WebhookPullRequestReviewCommentDeletedPropPullRequestPropRequestedReviewersItemsOneof1,
+            None,
         ]
     ] = Field()
     requested_teams: list[

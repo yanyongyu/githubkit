@@ -31,17 +31,17 @@ class IssueEventType(TypedDict):
     id: int
     node_id: str
     url: str
-    actor: Union[None, SimpleUserType]
+    actor: Union[SimpleUserType, None]
     event: str
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: _dt.datetime
-    issue: NotRequired[Union[None, IssueType]]
+    issue: NotRequired[Union[IssueType, None]]
     label: NotRequired[IssueEventLabelType]
-    assignee: NotRequired[Union[None, SimpleUserType]]
-    assigner: NotRequired[Union[None, SimpleUserType]]
-    review_requester: NotRequired[Union[None, SimpleUserType]]
-    requested_reviewer: NotRequired[Union[None, SimpleUserType]]
+    assignee: NotRequired[Union[SimpleUserType, None]]
+    assigner: NotRequired[Union[SimpleUserType, None]]
+    review_requester: NotRequired[Union[SimpleUserType, None]]
+    requested_reviewer: NotRequired[Union[SimpleUserType, None]]
     requested_team: NotRequired[TeamType]
     dismissed_review: NotRequired[IssueEventDismissedReviewType]
     milestone: NotRequired[IssueEventMilestoneType]
@@ -79,17 +79,17 @@ class IssueEventTypeForResponse(TypedDict):
     id: int
     node_id: str
     url: str
-    actor: Union[None, SimpleUserTypeForResponse]
+    actor: Union[SimpleUserTypeForResponse, None]
     event: str
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
-    issue: NotRequired[Union[None, IssueTypeForResponse]]
+    issue: NotRequired[Union[IssueTypeForResponse, None]]
     label: NotRequired[IssueEventLabelTypeForResponse]
-    assignee: NotRequired[Union[None, SimpleUserTypeForResponse]]
-    assigner: NotRequired[Union[None, SimpleUserTypeForResponse]]
-    review_requester: NotRequired[Union[None, SimpleUserTypeForResponse]]
-    requested_reviewer: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    assignee: NotRequired[Union[SimpleUserTypeForResponse, None]]
+    assigner: NotRequired[Union[SimpleUserTypeForResponse, None]]
+    review_requester: NotRequired[Union[SimpleUserTypeForResponse, None]]
+    requested_reviewer: NotRequired[Union[SimpleUserTypeForResponse, None]]
     requested_team: NotRequired[TeamTypeForResponse]
     dismissed_review: NotRequired[IssueEventDismissedReviewTypeForResponse]
     milestone: NotRequired[IssueEventMilestoneTypeForResponse]

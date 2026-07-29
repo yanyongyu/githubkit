@@ -49,7 +49,7 @@ class CustomProperty(GitHubModel):
         description="An ordered list of the allowed values of the property.\nThe property can have up to 200 allowed values.",
     )
     values_editable_by: Missing[
-        Union[None, Literal["org_actors", "org_and_repo_actors"]]
+        Union[Literal["org_actors", "org_and_repo_actors"], None]
     ] = Field(default=UNSET, description="Who can edit the values of the property")
     require_explicit_values: Missing[bool] = Field(
         default=UNSET, description="Whether setting properties values is mandatory"

@@ -35,7 +35,7 @@ class ReposOwnerRepoIssuesIssueNumberPatchBody(GitHubModel):
         default=UNSET, description="The open or closed state of the issue."
     )
     state_reason: Missing[
-        Union[None, Literal["completed", "not_planned", "duplicate", "reopened"]]
+        Union[Literal["completed", "not_planned", "duplicate", "reopened"], None]
     ] = Field(
         default=UNSET,
         description="The reason for the state change. Ignored unless `state` is changed.",

@@ -28,7 +28,7 @@ class Reaction(GitHubModel):
 
     id: int = Field()
     node_id: str = Field()
-    user: Union[None, SimpleUser] = Field()
+    user: Union[SimpleUser, None] = Field()
     content: Literal[
         "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
     ] = Field(description="The reaction to use")

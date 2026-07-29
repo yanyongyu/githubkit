@@ -29,7 +29,7 @@ class DeploymentStatusType(TypedDict):
     state: Literal[
         "error", "failure", "inactive", "pending", "success", "queued", "in_progress"
     ]
-    creator: Union[None, SimpleUserType]
+    creator: Union[SimpleUserType, None]
     description: str
     environment: NotRequired[str]
     target_url: str
@@ -54,7 +54,7 @@ class DeploymentStatusTypeForResponse(TypedDict):
     state: Literal[
         "error", "failure", "inactive", "pending", "success", "queued", "in_progress"
     ]
-    creator: Union[None, SimpleUserTypeForResponse]
+    creator: Union[SimpleUserTypeForResponse, None]
     description: str
     environment: NotRequired[str]
     target_url: str

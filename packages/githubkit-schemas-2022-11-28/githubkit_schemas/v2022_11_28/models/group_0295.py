@@ -40,7 +40,7 @@ class Deployment(GitHubModel):
     original_environment: Missing[str] = Field(default=UNSET)
     environment: str = Field(description="Name for the target deployment environment.")
     description: Union[str, None] = Field()
-    creator: Union[None, SimpleUser] = Field()
+    creator: Union[SimpleUser, None] = Field()
     created_at: _dt.datetime = Field()
     updated_at: _dt.datetime = Field()
     statuses_url: str = Field()

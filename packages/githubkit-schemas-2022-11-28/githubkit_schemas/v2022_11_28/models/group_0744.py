@@ -31,7 +31,7 @@ class WebhookIssuesDeletedPropIssue(GitHubModel):
     """
 
     active_lock_reason: Union[
-        None, Literal["resolved", "off-topic", "too heated", "spam"]
+        Literal["resolved", "off-topic", "too heated", "spam"], None
     ] = Field()
     assignee: Missing[Union[WebhookIssuesDeletedPropIssuePropAssignee, None]] = Field(
         default=UNSET, title="User"
@@ -84,7 +84,7 @@ class WebhookIssuesDeletedPropIssue(GitHubModel):
     )
     reactions: WebhookIssuesDeletedPropIssuePropReactions = Field(title="Reactions")
     repository_url: str = Field()
-    pinned_comment: Missing[Union[None, IssueComment]] = Field(default=UNSET)
+    pinned_comment: Missing[Union[IssueComment, None]] = Field(default=UNSET)
     sub_issues_summary: Missing[SubIssuesSummary] = Field(
         default=UNSET, title="Sub-issues Summary"
     )

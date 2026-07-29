@@ -41,7 +41,7 @@ class Activity(GitHubModel):
         "pr_merge",
         "merge_queue_merge",
     ] = Field(description="The type of the activity that was performed.")
-    actor: Union[None, SimpleUser] = Field()
+    actor: Union[SimpleUser, None] = Field()
 
 
 model_rebuild(Activity)

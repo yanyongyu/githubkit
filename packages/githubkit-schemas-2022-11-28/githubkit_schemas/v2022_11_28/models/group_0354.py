@@ -37,7 +37,7 @@ class CommitComment(GitHubModel):
     position: Union[int, None] = Field()
     line: Union[int, None] = Field()
     commit_id: str = Field()
-    user: Union[None, SimpleUser] = Field()
+    user: Union[SimpleUser, None] = Field()
     created_at: _dt.datetime = Field()
     updated_at: _dt.datetime = Field()
     author_association: Literal[

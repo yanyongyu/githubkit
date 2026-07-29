@@ -35,7 +35,6 @@ class CheckRunType(TypedDict):
         "queued", "in_progress", "completed", "waiting", "requested", "pending"
     ]
     conclusion: Union[
-        None,
         Literal[
             "success",
             "failure",
@@ -45,6 +44,7 @@ class CheckRunType(TypedDict):
             "timed_out",
             "action_required",
         ],
+        None,
     ]
     started_at: Union[_dt.datetime, None]
     completed_at: Union[_dt.datetime, None]
@@ -73,7 +73,6 @@ class CheckRunTypeForResponse(TypedDict):
         "queued", "in_progress", "completed", "waiting", "requested", "pending"
     ]
     conclusion: Union[
-        None,
         Literal[
             "success",
             "failure",
@@ -83,6 +82,7 @@ class CheckRunTypeForResponse(TypedDict):
             "timed_out",
             "action_required",
         ],
+        None,
     ]
     started_at: Union[str, None]
     completed_at: Union[str, None]

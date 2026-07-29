@@ -22,8 +22,8 @@ class DependabotRepositoryAccessDetailsType(TypedDict):
     organization
     """
 
-    default_level: NotRequired[Union[None, Literal["public", "internal"]]]
-    accessible_repositories: NotRequired[list[Union[None, SimpleRepositoryType]]]
+    default_level: NotRequired[Union[Literal["public", "internal"], None]]
+    accessible_repositories: NotRequired[list[Union[SimpleRepositoryType, None]]]
 
 
 class DependabotRepositoryAccessDetailsTypeForResponse(TypedDict):
@@ -33,9 +33,9 @@ class DependabotRepositoryAccessDetailsTypeForResponse(TypedDict):
     organization
     """
 
-    default_level: NotRequired[Union[None, Literal["public", "internal"]]]
+    default_level: NotRequired[Union[Literal["public", "internal"], None]]
     accessible_repositories: NotRequired[
-        list[Union[None, SimpleRepositoryTypeForResponse]]
+        list[Union[SimpleRepositoryTypeForResponse, None]]
     ]
 
 

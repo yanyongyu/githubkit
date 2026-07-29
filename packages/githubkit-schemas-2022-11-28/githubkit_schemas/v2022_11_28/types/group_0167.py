@@ -24,7 +24,7 @@ class MigrationType(TypedDict):
     """
 
     id: int
-    owner: Union[None, SimpleUserType]
+    owner: Union[SimpleUserType, None]
     guid: str
     state: str
     lock_repositories: bool
@@ -50,7 +50,7 @@ class MigrationTypeForResponse(TypedDict):
     """
 
     id: int
-    owner: Union[None, SimpleUserTypeForResponse]
+    owner: Union[SimpleUserTypeForResponse, None]
     guid: str
     state: str
     lock_repositories: bool

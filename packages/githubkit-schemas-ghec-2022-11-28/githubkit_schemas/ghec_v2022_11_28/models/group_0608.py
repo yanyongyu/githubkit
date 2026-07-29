@@ -44,7 +44,7 @@ class CodespaceWithFullRepository(GitHubModel):
     repository: FullRepository = Field(
         title="Full Repository", description="Full Repository"
     )
-    machine: Union[None, CodespaceMachine] = Field()
+    machine: Union[CodespaceMachine, None] = Field()
     devcontainer_path: Missing[Union[str, None]] = Field(
         default=UNSET,
         description="Path to devcontainer.json from repo root used to create Codespace.",

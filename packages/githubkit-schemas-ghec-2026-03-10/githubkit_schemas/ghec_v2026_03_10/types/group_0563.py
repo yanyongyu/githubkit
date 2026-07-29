@@ -22,7 +22,7 @@ class PrivateVulnerabilityReportCreateType(TypedDict):
         Union[list[PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsType], None]
     ]
     cwe_ids: NotRequired[Union[list[str], None]]
-    severity: NotRequired[Union[None, Literal["critical", "high", "medium", "low"]]]
+    severity: NotRequired[Union[Literal["critical", "high", "medium", "low"], None]]
     cvss_vector_string: NotRequired[Union[str, None]]
     start_private_fork: NotRequired[bool]
 
@@ -41,7 +41,7 @@ class PrivateVulnerabilityReportCreateTypeForResponse(TypedDict):
         ]
     ]
     cwe_ids: NotRequired[Union[list[str], None]]
-    severity: NotRequired[Union[None, Literal["critical", "high", "medium", "low"]]]
+    severity: NotRequired[Union[Literal["critical", "high", "medium", "low"], None]]
     cvss_vector_string: NotRequired[Union[str, None]]
     start_private_fork: NotRequired[bool]
 

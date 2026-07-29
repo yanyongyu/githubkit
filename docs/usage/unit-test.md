@@ -24,10 +24,12 @@ If you can't provide a githubkit test client to your business logic, you can moc
 
     FAKE_RESPONSE = json.loads(Path("fake_response.json").read_text())
 
+
     def target_sync_func() -> FullRepository:  # (1)!
         github = GitHub("xxxxx")
         resp = github.rest.repos.get("owner", "repo")
         return resp.parsed_data
+
 
     def mock_request(
         g: GitHub,
@@ -43,6 +45,7 @@ If you can't provide a githubkit test client to your business logic, you can moc
                 Any if response_model is UNSET else response_model,
             )
         raise RuntimeError(f"Unexpected request: {method} {url}")
+
 
     # Test the target function
     def test_sync_mock():
@@ -76,10 +79,12 @@ If you can't provide a githubkit test client to your business logic, you can moc
 
     FAKE_RESPONSE = json.loads(Path("fake_response.json").read_text())
 
+
     async def target_async_func() -> FullRepository:  # (1)!
         async with GitHub("xxxxx") as github:
             resp = await github.rest.repos.get("owner", "repo")
             return resp.parsed_data
+
 
     async def mock_arequest(
         g: GitHub,
@@ -95,6 +100,7 @@ If you can't provide a githubkit test client to your business logic, you can moc
                 Any if response_model is UNSET else response_model,
             )
         raise RuntimeError(f"Unexpected request: {method} {url}")
+
 
     # Test the target function
     @pytest.mark.anyio
@@ -129,14 +135,17 @@ You can also create a test client with mock transport and provide it to your bus
 
     FAKE_RESPONSE = json.loads(Path("fake_response.json").read_text())
 
+
     def target_sync_func(github: GitHub):
         resp = github.rest.repos.get("owner", "repo")
         return resp.parsed_data
+
 
     def mock_transport_handler(request: httpx.Request) -> httpx.Response:
         if request.method == "GET" and request.url.path == "/repos/owner/repo":
             return httpx.Response(status_code=200, json=FAKE_RESPONSE)
         raise RuntimeError(f"Unexpected request: {request.method} {request.url.path}")
+
 
     def test_sync_mock():
         g = GitHub("xxxxx", transport=httpx.MockTransport(mock_transport_handler))
@@ -158,14 +167,17 @@ You can also create a test client with mock transport and provide it to your bus
 
     FAKE_RESPONSE = json.loads(Path("fake_response.json").read_text())
 
+
     async def target_async_func(github: GitHub):
         resp = await github.rest.repos.async_get("owner", "repo")
         return resp.parsed_data
+
 
     def mock_transport_handler(request: httpx.Request) -> httpx.Response:
         if request.method == "GET" and request.url.path == "/repos/owner/repo":
             return httpx.Response(status_code=200, json=FAKE_RESPONSE)
         raise RuntimeError(f"Unexpected request: {request.method} {request.url.path}")
+
 
     @pytest.mark.anyio
     async def test_async_mock():

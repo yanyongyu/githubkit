@@ -47,7 +47,7 @@ class OrgMembership(GitHubModel):
     organization: OrganizationSimple = Field(
         title="Organization Simple", description="A GitHub organization."
     )
-    user: Union[None, SimpleUser] = Field()
+    user: Union[SimpleUser, None] = Field()
     permissions: Missing[OrgMembershipPropPermissions] = Field(default=UNSET)
 
 

@@ -28,10 +28,10 @@ class IssueTypeWebhook(GitHubModel):
     name: str = Field(description="The name of the issue type.")
     color: Missing[
         Union[
-            None,
             Literal[
                 "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
             ],
+            None,
         ]
     ] = Field(default=UNSET, description="The color of the issue type.")
 

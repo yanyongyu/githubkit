@@ -23,7 +23,7 @@ class PinnedIssueCommentType(TypedDict):
     """
 
     pinned_at: _dt.datetime
-    pinned_by: Union[None, SimpleUserType]
+    pinned_by: Union[SimpleUserType, None]
 
 
 class PinnedIssueCommentTypeForResponse(TypedDict):
@@ -33,7 +33,7 @@ class PinnedIssueCommentTypeForResponse(TypedDict):
     """
 
     pinned_at: str
-    pinned_by: Union[None, SimpleUserTypeForResponse]
+    pinned_by: Union[SimpleUserTypeForResponse, None]
 
 
 __all__ = (

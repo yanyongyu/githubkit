@@ -29,7 +29,7 @@ class ProjectsV2StatusUpdateType(TypedDict):
     created_at: _dt.datetime
     updated_at: _dt.datetime
     status: NotRequired[
-        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
+        Union[Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"], None]
     ]
     start_date: NotRequired[_dt.date]
     target_date: NotRequired[_dt.date]
@@ -49,7 +49,7 @@ class ProjectsV2StatusUpdateTypeForResponse(TypedDict):
     created_at: str
     updated_at: str
     status: NotRequired[
-        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
+        Union[Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"], None]
     ]
     start_date: NotRequired[str]
     target_date: NotRequired[str]

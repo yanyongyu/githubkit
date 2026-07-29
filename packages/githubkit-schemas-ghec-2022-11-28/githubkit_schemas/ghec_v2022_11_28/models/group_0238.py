@@ -34,7 +34,7 @@ class CommitCommentEventPropComment(GitHubModel):
     position: Missing[Union[int, None]] = Field(default=UNSET)
     line: Missing[Union[int, None]] = Field(default=UNSET)
     commit_id: Missing[str] = Field(default=UNSET)
-    user: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    user: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
     created_at: Missing[_dt.datetime] = Field(default=UNSET)
     updated_at: Missing[_dt.datetime] = Field(default=UNSET)
     reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")

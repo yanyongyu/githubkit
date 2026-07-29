@@ -33,7 +33,7 @@ class RepoSearchResultItem(GitHubModel):
     node_id: str = Field()
     name: str = Field()
     full_name: str = Field()
-    owner: Union[None, SimpleUser] = Field()
+    owner: Union[SimpleUser, None] = Field()
     private: bool = Field()
     html_url: str = Field()
     description: Union[str, None] = Field()
@@ -116,7 +116,7 @@ class RepoSearchResultItem(GitHubModel):
         default=UNSET,
         description="The repository visibility: public, private, or internal.",
     )
-    license_: Union[None, LicenseSimple] = Field(alias="license")
+    license_: Union[LicenseSimple, None] = Field(alias="license")
     permissions: Missing[RepoSearchResultItemPropPermissions] = Field(default=UNSET)
     text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
         default=UNSET, title="Search Result Text Matches"

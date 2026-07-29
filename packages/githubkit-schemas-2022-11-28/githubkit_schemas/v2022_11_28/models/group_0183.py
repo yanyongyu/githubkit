@@ -33,7 +33,7 @@ class ProjectsV2DraftIssue(GitHubModel):
     body: Missing[Union[str, None]] = Field(
         default=UNSET, description="The body content of the draft issue"
     )
-    user: Union[None, SimpleUser] = Field()
+    user: Union[SimpleUser, None] = Field()
     created_at: _dt.datetime = Field(description="The time the draft issue was created")
     updated_at: _dt.datetime = Field(
         description="The time the draft issue was last updated"

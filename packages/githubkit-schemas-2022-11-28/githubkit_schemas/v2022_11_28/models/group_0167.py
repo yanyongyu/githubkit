@@ -29,7 +29,7 @@ class Migration(GitHubModel):
     """
 
     id: int = Field()
-    owner: Union[None, SimpleUser] = Field()
+    owner: Union[SimpleUser, None] = Field()
     guid: str = Field()
     state: str = Field()
     lock_repositories: bool = Field()

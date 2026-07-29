@@ -110,7 +110,7 @@ class WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItemsType(TypedDict):
     """Workflow Step"""
 
     completed_at: Union[str, None]
-    conclusion: Union[None, Literal["failure", "skipped", "success", "cancelled"]]
+    conclusion: Union[Literal["failure", "skipped", "success", "cancelled"], None]
     name: str
     number: int
     started_at: Union[str, None]
@@ -121,7 +121,7 @@ class WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItemsTypeForResponse(Type
     """Workflow Step"""
 
     completed_at: Union[str, None]
-    conclusion: Union[None, Literal["failure", "skipped", "success", "cancelled"]]
+    conclusion: Union[Literal["failure", "skipped", "success", "cancelled"], None]
     name: str
     number: int
     started_at: Union[str, None]

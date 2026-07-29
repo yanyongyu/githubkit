@@ -42,7 +42,6 @@ class CheckRun(GitHubModel):
         description="The phase of the lifecycle that the check is currently in. Statuses of waiting, requested, and pending are reserved for GitHub Actions check runs."
     )
     conclusion: Union[
-        None,
         Literal[
             "success",
             "failure",
@@ -52,6 +51,7 @@ class CheckRun(GitHubModel):
             "timed_out",
             "action_required",
         ],
+        None,
     ] = Field()
     started_at: Union[_dt.datetime, None] = Field()
     completed_at: Union[_dt.datetime, None] = Field()

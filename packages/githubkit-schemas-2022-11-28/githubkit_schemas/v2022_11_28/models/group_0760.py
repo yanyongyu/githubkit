@@ -31,7 +31,7 @@ class WebhookIssuesOpenedPropIssue(GitHubModel):
     """
 
     active_lock_reason: Union[
-        None, Literal["resolved", "off-topic", "too heated", "spam"]
+        Literal["resolved", "off-topic", "too heated", "spam"], None
     ] = Field()
     assignee: Missing[Union[WebhookIssuesOpenedPropIssuePropAssignee, None]] = Field(
         default=UNSET, title="User"
@@ -104,7 +104,7 @@ class WebhookIssuesOpenedPropIssue(GitHubModel):
     )
     updated_at: _dt.datetime = Field()
     url: str = Field(description="URL for the issue")
-    pinned_comment: Missing[Union[None, IssueComment]] = Field(default=UNSET)
+    pinned_comment: Missing[Union[IssueComment, None]] = Field(default=UNSET)
     user: Union[WebhookIssuesOpenedPropIssuePropUser, None] = Field(title="User")
 
 

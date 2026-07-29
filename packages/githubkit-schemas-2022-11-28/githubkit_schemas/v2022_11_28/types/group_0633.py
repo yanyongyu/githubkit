@@ -111,7 +111,6 @@ class WebhookDeploymentReviewApprovedPropWorkflowRunType(TypedDict):
     check_suite_node_id: str
     check_suite_url: NotRequired[str]
     conclusion: Union[
-        None,
         Literal[
             "success",
             "failure",
@@ -121,6 +120,7 @@ class WebhookDeploymentReviewApprovedPropWorkflowRunType(TypedDict):
             "action_required",
             "stale",
         ],
+        None,
     ]
     created_at: _dt.datetime
     display_title: str
@@ -183,7 +183,6 @@ class WebhookDeploymentReviewApprovedPropWorkflowRunTypeForResponse(TypedDict):
     check_suite_node_id: str
     check_suite_url: NotRequired[str]
     conclusion: Union[
-        None,
         Literal[
             "success",
             "failure",
@@ -193,6 +192,7 @@ class WebhookDeploymentReviewApprovedPropWorkflowRunTypeForResponse(TypedDict):
             "action_required",
             "stale",
         ],
+        None,
     ]
     created_at: str
     display_title: str

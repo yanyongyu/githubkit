@@ -31,7 +31,7 @@ class IssueEventIntent(GitHubModel):
     rationale: Missing[Union[str, None]] = Field(
         default=UNSET, description="The reasoning the agent provided for the change."
     )
-    confidence: Missing[Union[None, Literal["LOW", "MEDIUM", "HIGH"]]] = Field(
+    confidence: Missing[Union[Literal["LOW", "MEDIUM", "HIGH"], None]] = Field(
         default=UNSET,
         description="The confidence level the agent had when performing this action.",
     )

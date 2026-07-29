@@ -567,7 +567,7 @@ class SecurityAdvisoriesClient:
             Union[list[RepositoryAdvisoryCreatePropCreditsItemsType], None]
         ] = UNSET,
         severity: Missing[
-            Union[None, Literal["critical", "high", "medium", "low"]]
+            Union[Literal["critical", "high", "medium", "low"], None]
         ] = UNSET,
         cvss_vector_string: Missing[Union[str, None]] = UNSET,
         start_private_fork: Missing[bool] = UNSET,
@@ -659,7 +659,7 @@ class SecurityAdvisoriesClient:
             Union[list[RepositoryAdvisoryCreatePropCreditsItemsType], None]
         ] = UNSET,
         severity: Missing[
-            Union[None, Literal["critical", "high", "medium", "low"]]
+            Union[Literal["critical", "high", "medium", "low"], None]
         ] = UNSET,
         cvss_vector_string: Missing[Union[str, None]] = UNSET,
         start_private_fork: Missing[bool] = UNSET,
@@ -751,7 +751,7 @@ class SecurityAdvisoriesClient:
         ] = UNSET,
         cwe_ids: Missing[Union[list[str], None]] = UNSET,
         severity: Missing[
-            Union[None, Literal["critical", "high", "medium", "low"]]
+            Union[Literal["critical", "high", "medium", "low"], None]
         ] = UNSET,
         cvss_vector_string: Missing[Union[str, None]] = UNSET,
         start_private_fork: Missing[bool] = UNSET,
@@ -840,7 +840,7 @@ class SecurityAdvisoriesClient:
         ] = UNSET,
         cwe_ids: Missing[Union[list[str], None]] = UNSET,
         severity: Missing[
-            Union[None, Literal["critical", "high", "medium", "low"]]
+            Union[Literal["critical", "high", "medium", "low"], None]
         ] = UNSET,
         cvss_vector_string: Missing[Union[str, None]] = UNSET,
         start_private_fork: Missing[bool] = UNSET,
@@ -1019,7 +1019,7 @@ class SecurityAdvisoriesClient:
             Union[list[RepositoryAdvisoryUpdatePropCreditsItemsType], None]
         ] = UNSET,
         severity: Missing[
-            Union[None, Literal["critical", "high", "medium", "low"]]
+            Union[Literal["critical", "high", "medium", "low"], None]
         ] = UNSET,
         cvss_vector_string: Missing[Union[str, None]] = UNSET,
         state: Missing[Literal["published", "closed", "draft"]] = UNSET,
@@ -1119,7 +1119,7 @@ class SecurityAdvisoriesClient:
             Union[list[RepositoryAdvisoryUpdatePropCreditsItemsType], None]
         ] = UNSET,
         severity: Missing[
-            Union[None, Literal["critical", "high", "medium", "low"]]
+            Union[Literal["critical", "high", "medium", "low"], None]
         ] = UNSET,
         cvss_vector_string: Missing[Union[str, None]] = UNSET,
         state: Missing[Literal["published", "closed", "draft"]] = UNSET,

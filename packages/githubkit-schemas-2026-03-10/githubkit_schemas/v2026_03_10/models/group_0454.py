@@ -29,7 +29,7 @@ class PullRequestReview(GitHubModel):
 
     id: int = Field(description="Unique identifier of the review")
     node_id: str = Field()
-    user: Union[None, SimpleUser] = Field()
+    user: Union[SimpleUser, None] = Field()
     body: str = Field(description="The text of the review.")
     state: str = Field()
     html_url: str = Field()

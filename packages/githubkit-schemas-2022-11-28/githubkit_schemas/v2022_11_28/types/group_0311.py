@@ -20,8 +20,8 @@ class CommitPropCommitType(TypedDict):
     """CommitPropCommit"""
 
     url: str
-    author: Union[None, GitUserType]
-    committer: Union[None, GitUserType]
+    author: Union[GitUserType, None]
+    committer: Union[GitUserType, None]
     message: str
     comment_count: int
     tree: CommitPropCommitPropTreeType
@@ -32,8 +32,8 @@ class CommitPropCommitTypeForResponse(TypedDict):
     """CommitPropCommit"""
 
     url: str
-    author: Union[None, GitUserTypeForResponse]
-    committer: Union[None, GitUserTypeForResponse]
+    author: Union[GitUserTypeForResponse, None]
+    committer: Union[GitUserTypeForResponse, None]
     message: str
     comment_count: int
     tree: CommitPropCommitPropTreeTypeForResponse

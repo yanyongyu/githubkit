@@ -60,7 +60,6 @@ class WebhookWorkflowRunRequestedPropWorkflowRunType(TypedDict):
     check_suite_node_id: str
     check_suite_url: str
     conclusion: Union[
-        None,
         Literal[
             "success",
             "failure",
@@ -72,6 +71,7 @@ class WebhookWorkflowRunRequestedPropWorkflowRunType(TypedDict):
             "skipped",
             "startup_failure",
         ],
+        None,
     ]
     created_at: _dt.datetime
     event: str
@@ -128,7 +128,6 @@ class WebhookWorkflowRunRequestedPropWorkflowRunTypeForResponse(TypedDict):
     check_suite_node_id: str
     check_suite_url: str
     conclusion: Union[
-        None,
         Literal[
             "success",
             "failure",
@@ -140,6 +139,7 @@ class WebhookWorkflowRunRequestedPropWorkflowRunTypeForResponse(TypedDict):
             "skipped",
             "startup_failure",
         ],
+        None,
     ]
     created_at: str
     event: str

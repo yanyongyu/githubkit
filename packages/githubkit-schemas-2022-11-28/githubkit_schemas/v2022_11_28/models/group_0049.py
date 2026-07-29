@@ -64,7 +64,7 @@ class Discussion(GitHubModel):
         description="The current state of the discussion.\n`converting` means that the discussion is being converted from an issue.\n`transferring` means that the discussion is being transferred from another repository."
     )
     state_reason: Union[
-        None, Literal["resolved", "outdated", "duplicate", "reopened"]
+        Literal["resolved", "outdated", "duplicate", "reopened"], None
     ] = Field(description="The reason for the current state")
     timeline_url: Missing[str] = Field(default=UNSET)
     title: str = Field()

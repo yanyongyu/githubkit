@@ -54,7 +54,7 @@ class Installation(GitHubModel):
     has_multiple_single_files: Missing[bool] = Field(default=UNSET)
     single_file_paths: Missing[list[str]] = Field(default=UNSET)
     app_slug: str = Field()
-    suspended_by: Union[None, SimpleUser] = Field()
+    suspended_by: Union[SimpleUser, None] = Field()
     suspended_at: Union[_dt.datetime, None] = Field()
     contact_email: Missing[Union[str, None]] = Field(default=UNSET)
 

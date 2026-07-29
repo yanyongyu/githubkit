@@ -37,8 +37,8 @@ class Package(GitHubModel):
     html_url: str = Field()
     version_count: int = Field(description="The number of versions of the package.")
     visibility: Literal["private", "public"] = Field()
-    owner: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    repository: Missing[Union[None, MinimalRepository]] = Field(default=UNSET)
+    owner: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
+    repository: Missing[Union[MinimalRepository, None]] = Field(default=UNSET)
     created_at: _dt.datetime = Field()
     updated_at: _dt.datetime = Field()
 

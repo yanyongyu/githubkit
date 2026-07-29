@@ -78,7 +78,7 @@ class WebhookIssuesClosedPropIssue(GitHubModel):
     )
     reactions: WebhookIssuesClosedPropIssueMergedReactions = Field()
     repository_url: str = Field()
-    pinned_comment: Missing[Union[None, IssueComment]] = Field(default=UNSET)
+    pinned_comment: Missing[Union[IssueComment, None]] = Field(default=UNSET)
     sub_issues_summary: Missing[SubIssuesSummary] = Field(
         default=UNSET, title="Sub-issues Summary"
     )

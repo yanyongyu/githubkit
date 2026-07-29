@@ -44,7 +44,7 @@ class CodeScanningDefaultSetup(GitHubModel):
             ]
         ]
     ] = Field(default=UNSET, description="Languages to be analyzed.")
-    runner_type: Missing[Union[None, Literal["standard", "labeled"]]] = Field(
+    runner_type: Missing[Union[Literal["standard", "labeled"], None]] = Field(
         default=UNSET, description="Runner type to be used."
     )
     runner_label: Missing[Union[str, None]] = Field(
@@ -61,7 +61,7 @@ class CodeScanningDefaultSetup(GitHubModel):
     updated_at: Missing[Union[_dt.datetime, None]] = Field(
         default=UNSET, description="Timestamp of latest configuration update."
     )
-    schedule: Missing[Union[None, Literal["weekly"]]] = Field(
+    schedule: Missing[Union[Literal["weekly"], None]] = Field(
         default=UNSET, description="The frequency of the periodic analysis."
     )
 

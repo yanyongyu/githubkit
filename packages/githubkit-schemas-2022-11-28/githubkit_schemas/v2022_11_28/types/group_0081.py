@@ -37,7 +37,7 @@ class BaseGistType(TypedDict):
     description: Union[str, None]
     comments: int
     comments_enabled: NotRequired[bool]
-    user: Union[None, SimpleUserType]
+    user: Union[SimpleUserType, None]
     comments_url: str
     owner: NotRequired[SimpleUserType]
     truncated: NotRequired[bool]
@@ -66,7 +66,7 @@ class BaseGistTypeForResponse(TypedDict):
     description: Union[str, None]
     comments: int
     comments_enabled: NotRequired[bool]
-    user: Union[None, SimpleUserTypeForResponse]
+    user: Union[SimpleUserTypeForResponse, None]
     comments_url: str
     owner: NotRequired[SimpleUserTypeForResponse]
     truncated: NotRequired[bool]

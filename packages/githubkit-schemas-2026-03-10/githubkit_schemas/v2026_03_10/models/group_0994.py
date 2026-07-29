@@ -68,7 +68,6 @@ class WebhookWorkflowRunCompletedPropWorkflowRun(GitHubModel):
     check_suite_node_id: str = Field()
     check_suite_url: str = Field()
     conclusion: Union[
-        None,
         Literal[
             "action_required",
             "cancelled",
@@ -80,6 +79,7 @@ class WebhookWorkflowRunCompletedPropWorkflowRun(GitHubModel):
             "timed_out",
             "startup_failure",
         ],
+        None,
     ] = Field()
     created_at: _dt.datetime = Field()
     event: str = Field()

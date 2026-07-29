@@ -34,18 +34,18 @@ class CodeScanningAlertType(TypedDict):
     url: str
     html_url: str
     instances_url: str
-    state: Union[None, Literal["open", "dismissed", "fixed"]]
+    state: Union[Literal["open", "dismissed", "fixed"], None]
     fixed_at: NotRequired[Union[_dt.datetime, None]]
-    dismissed_by: Union[None, SimpleUserType]
+    dismissed_by: Union[SimpleUserType, None]
     dismissed_at: Union[_dt.datetime, None]
     dismissed_reason: Union[
-        None, Literal["false positive", "won't fix", "used in tests"]
+        Literal["false positive", "won't fix", "used in tests"], None
     ]
     dismissed_comment: NotRequired[Union[str, None]]
     rule: CodeScanningAlertRuleType
     tool: CodeScanningAnalysisToolType
     most_recent_instance: CodeScanningAlertInstanceType
-    dismissal_approved_by: NotRequired[Union[None, SimpleUserType]]
+    dismissal_approved_by: NotRequired[Union[SimpleUserType, None]]
     assignees: NotRequired[list[SimpleUserType]]
     linked_pull_requests: NotRequired[list[PullRequestSimpleType]]
 
@@ -59,18 +59,18 @@ class CodeScanningAlertTypeForResponse(TypedDict):
     url: str
     html_url: str
     instances_url: str
-    state: Union[None, Literal["open", "dismissed", "fixed"]]
+    state: Union[Literal["open", "dismissed", "fixed"], None]
     fixed_at: NotRequired[Union[str, None]]
-    dismissed_by: Union[None, SimpleUserTypeForResponse]
+    dismissed_by: Union[SimpleUserTypeForResponse, None]
     dismissed_at: Union[str, None]
     dismissed_reason: Union[
-        None, Literal["false positive", "won't fix", "used in tests"]
+        Literal["false positive", "won't fix", "used in tests"], None
     ]
     dismissed_comment: NotRequired[Union[str, None]]
     rule: CodeScanningAlertRuleTypeForResponse
     tool: CodeScanningAnalysisToolTypeForResponse
     most_recent_instance: CodeScanningAlertInstanceTypeForResponse
-    dismissal_approved_by: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    dismissal_approved_by: NotRequired[Union[SimpleUserTypeForResponse, None]]
     assignees: NotRequired[list[SimpleUserTypeForResponse]]
     linked_pull_requests: NotRequired[list[PullRequestSimpleTypeForResponse]]
 
@@ -80,9 +80,9 @@ class CodeScanningAlertRuleType(TypedDict):
 
     id: NotRequired[Union[str, None]]
     name: NotRequired[str]
-    severity: NotRequired[Union[None, Literal["none", "note", "warning", "error"]]]
+    severity: NotRequired[Union[Literal["none", "note", "warning", "error"], None]]
     security_severity_level: NotRequired[
-        Union[None, Literal["low", "medium", "high", "critical"]]
+        Union[Literal["low", "medium", "high", "critical"], None]
     ]
     description: NotRequired[str]
     full_description: NotRequired[str]
@@ -96,9 +96,9 @@ class CodeScanningAlertRuleTypeForResponse(TypedDict):
 
     id: NotRequired[Union[str, None]]
     name: NotRequired[str]
-    severity: NotRequired[Union[None, Literal["none", "note", "warning", "error"]]]
+    severity: NotRequired[Union[Literal["none", "note", "warning", "error"], None]]
     security_severity_level: NotRequired[
-        Union[None, Literal["low", "medium", "high", "critical"]]
+        Union[Literal["low", "medium", "high", "critical"], None]
     ]
     description: NotRequired[str]
     full_description: NotRequired[str]

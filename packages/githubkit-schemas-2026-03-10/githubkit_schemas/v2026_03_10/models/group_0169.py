@@ -43,7 +43,7 @@ class TeamRoleAssignment(GitHubModel):
     html_url: str = Field()
     members_url: str = Field()
     repositories_url: str = Field()
-    parent: Union[None, TeamSimple] = Field()
+    parent: Union[TeamSimple, None] = Field()
     type: Literal["enterprise", "organization"] = Field(
         description="The ownership type of the team"
     )

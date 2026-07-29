@@ -32,7 +32,7 @@ class CommitCommentType(TypedDict):
     position: Union[int, None]
     line: Union[int, None]
     commit_id: str
-    user: Union[None, SimpleUserType]
+    user: Union[SimpleUserType, None]
     created_at: _dt.datetime
     updated_at: _dt.datetime
     author_association: Literal[
@@ -63,7 +63,7 @@ class CommitCommentTypeForResponse(TypedDict):
     position: Union[int, None]
     line: Union[int, None]
     commit_id: str
-    user: Union[None, SimpleUserTypeForResponse]
+    user: Union[SimpleUserTypeForResponse, None]
     created_at: str
     updated_at: str
     author_association: Literal[

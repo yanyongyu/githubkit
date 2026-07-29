@@ -28,7 +28,7 @@ class WebhookPullRequestAutoMergeEnabledPropPullRequest(GitHubModel):
         alias="_links"
     )
     active_lock_reason: Union[
-        None, Literal["resolved", "off-topic", "too heated", "spam"]
+        Literal["resolved", "off-topic", "too heated", "spam"], None
     ] = Field()
     additions: Missing[int] = Field(default=UNSET)
     assignee: Union[
@@ -104,8 +104,8 @@ class WebhookPullRequestAutoMergeEnabledPropPullRequest(GitHubModel):
     requested_reviewers: list[
         Union[
             WebhookPullRequestAutoMergeEnabledPropPullRequestPropRequestedReviewersItemsOneof0,
-            None,
             WebhookPullRequestAutoMergeEnabledPropPullRequestPropRequestedReviewersItemsOneof1,
+            None,
         ]
     ] = Field()
     requested_teams: list[

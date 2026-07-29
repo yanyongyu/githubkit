@@ -24,7 +24,7 @@ class RepositoryAdvisoryCreateType(TypedDict):
     credits_: NotRequired[
         Union[list[RepositoryAdvisoryCreatePropCreditsItemsType], None]
     ]
-    severity: NotRequired[Union[None, Literal["critical", "high", "medium", "low"]]]
+    severity: NotRequired[Union[Literal["critical", "high", "medium", "low"], None]]
     cvss_vector_string: NotRequired[Union[str, None]]
     start_private_fork: NotRequired[bool]
 
@@ -42,7 +42,7 @@ class RepositoryAdvisoryCreateTypeForResponse(TypedDict):
     credits_: NotRequired[
         Union[list[RepositoryAdvisoryCreatePropCreditsItemsTypeForResponse], None]
     ]
-    severity: NotRequired[Union[None, Literal["critical", "high", "medium", "low"]]]
+    severity: NotRequired[Union[Literal["critical", "high", "medium", "low"], None]]
     cvss_vector_string: NotRequired[Union[str, None]]
     start_private_fork: NotRequired[bool]
 

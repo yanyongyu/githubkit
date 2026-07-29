@@ -34,11 +34,11 @@ class CodeQualitySetupType(TypedDict):
             ]
         ]
     ]
-    runner_type: NotRequired[Union[None, Literal["standard", "labeled"]]]
+    runner_type: NotRequired[Union[Literal["standard", "labeled"], None]]
     runner_label: NotRequired[Union[str, None]]
     updated_at: NotRequired[Union[_dt.datetime, None]]
-    schedule: NotRequired[Union[None, Literal["weekly"]]]
-    ai_findings_option: NotRequired[Union[None, Literal["disabled", "on_push"]]]
+    schedule: NotRequired[Union[Literal["weekly"], None]]
+    ai_findings_option: NotRequired[Union[Literal["disabled", "on_push"], None]]
 
 
 class CodeQualitySetupTypeForResponse(TypedDict):
@@ -61,11 +61,11 @@ class CodeQualitySetupTypeForResponse(TypedDict):
             ]
         ]
     ]
-    runner_type: NotRequired[Union[None, Literal["standard", "labeled"]]]
+    runner_type: NotRequired[Union[Literal["standard", "labeled"], None]]
     runner_label: NotRequired[Union[str, None]]
     updated_at: NotRequired[Union[str, None]]
-    schedule: NotRequired[Union[None, Literal["weekly"]]]
-    ai_findings_option: NotRequired[Union[None, Literal["disabled", "on_push"]]]
+    schedule: NotRequired[Union[Literal["weekly"], None]]
+    ai_findings_option: NotRequired[Union[Literal["disabled", "on_push"], None]]
 
 
 __all__ = (

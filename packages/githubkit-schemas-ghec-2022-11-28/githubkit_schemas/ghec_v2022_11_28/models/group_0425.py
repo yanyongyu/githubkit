@@ -32,8 +32,8 @@ class RepositoryInvitation(GitHubModel):
     repository: MinimalRepository = Field(
         title="Minimal Repository", description="Minimal Repository"
     )
-    invitee: Union[None, SimpleUser] = Field()
-    inviter: Union[None, SimpleUser] = Field()
+    invitee: Union[SimpleUser, None] = Field()
+    inviter: Union[SimpleUser, None] = Field()
     permissions: Literal["read", "write", "admin", "triage", "maintain"] = Field(
         description="The permission associated with the invitation."
     )

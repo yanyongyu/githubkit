@@ -103,7 +103,7 @@ class FullRepositoryType(TypedDict):
     updated_at: _dt.datetime
     permissions: NotRequired[FullRepositoryPropPermissionsType]
     allow_rebase_merge: NotRequired[bool]
-    template_repository: NotRequired[Union[None, RepositoryType]]
+    template_repository: NotRequired[Union[RepositoryType, None]]
     temp_clone_token: NotRequired[Union[str, None]]
     allow_squash_merge: NotRequired[bool]
     allow_auto_merge: NotRequired[bool]
@@ -121,8 +121,8 @@ class FullRepositoryType(TypedDict):
     web_commit_signoff_required: NotRequired[bool]
     subscribers_count: int
     network_count: int
-    license_: Union[None, LicenseSimpleType]
-    organization: NotRequired[Union[None, SimpleUserType]]
+    license_: Union[LicenseSimpleType, None]
+    organization: NotRequired[Union[SimpleUserType, None]]
     parent: NotRequired[RepositoryType]
     source: NotRequired[RepositoryType]
     forks: int
@@ -218,7 +218,7 @@ class FullRepositoryTypeForResponse(TypedDict):
     updated_at: str
     permissions: NotRequired[FullRepositoryPropPermissionsTypeForResponse]
     allow_rebase_merge: NotRequired[bool]
-    template_repository: NotRequired[Union[None, RepositoryTypeForResponse]]
+    template_repository: NotRequired[Union[RepositoryTypeForResponse, None]]
     temp_clone_token: NotRequired[Union[str, None]]
     allow_squash_merge: NotRequired[bool]
     allow_auto_merge: NotRequired[bool]
@@ -236,8 +236,8 @@ class FullRepositoryTypeForResponse(TypedDict):
     web_commit_signoff_required: NotRequired[bool]
     subscribers_count: int
     network_count: int
-    license_: Union[None, LicenseSimpleTypeForResponse]
-    organization: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    license_: Union[LicenseSimpleTypeForResponse, None]
+    organization: NotRequired[Union[SimpleUserTypeForResponse, None]]
     parent: NotRequired[RepositoryTypeForResponse]
     source: NotRequired[RepositoryTypeForResponse]
     forks: int

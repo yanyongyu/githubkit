@@ -57,8 +57,8 @@ class WebhooksIssueComment(GitHubModel):
     updated_at: _dt.datetime = Field()
     url: str = Field(description="URL for the issue comment")
     user: Union[WebhooksIssueCommentPropUser, None] = Field(title="User")
-    pin: Missing[Union[None, PinnedIssueComment]] = Field(default=UNSET)
-    minimized: Missing[Union[None, IssueCommentMinimized]] = Field(default=UNSET)
+    pin: Missing[Union[PinnedIssueComment, None]] = Field(default=UNSET)
+    minimized: Missing[Union[IssueCommentMinimized, None]] = Field(default=UNSET)
 
 
 class WebhooksIssueCommentPropReactions(GitHubModel):

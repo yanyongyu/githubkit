@@ -50,18 +50,18 @@ class Issue(GitHubModel):
     )
     state: str = Field(description="State of the issue; either 'open' or 'closed'")
     state_reason: Missing[
-        Union[None, Literal["completed", "reopened", "not_planned", "duplicate"]]
+        Union[Literal["completed", "reopened", "not_planned", "duplicate"], None]
     ] = Field(default=UNSET, description="The reason for the current state")
     title: str = Field(description="Title of the issue")
     body: Missing[Union[str, None]] = Field(
         default=UNSET, description="Contents of the issue"
     )
-    user: Union[None, SimpleUser] = Field()
+    user: Union[SimpleUser, None] = Field()
     labels: list[Union[str, IssuePropLabelsItemsOneof1]] = Field(
         description="Labels to associate with this issue; pass one or more label names to replace the set of labels on this issue; send an empty array to clear all labels from the issue; note that the labels are silently dropped for users without push access to the repository"
     )
     assignees: Missing[list[SimpleUser]] = Field(default=UNSET)
-    milestone: Union[None, Milestone] = Field()
+    milestone: Union[Milestone, None] = Field()
     locked: bool = Field()
     active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
     comments: int = Field()
@@ -70,7 +70,7 @@ class Issue(GitHubModel):
     created_at: _dt.datetime = Field()
     updated_at: _dt.datetime = Field()
     draft: Missing[bool] = Field(default=UNSET)
-    closed_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    closed_by: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
     body_html: Missing[Union[str, None]] = Field(default=UNSET)
     body_text: Missing[Union[str, None]] = Field(default=UNSET)
     timeline_url: Missing[str] = Field(default=UNSET)
@@ -109,7 +109,7 @@ class Issue(GitHubModel):
         default=UNSET,
         description="URL to get the parent issue of this issue, if it is a sub-issue",
     )
-    pinned_comment: Missing[Union[None, IssueComment]] = Field(default=UNSET)
+    pinned_comment: Missing[Union[IssueComment, None]] = Field(default=UNSET)
     issue_dependencies_summary: Missing[IssueDependenciesSummary] = Field(
         default=UNSET, title="Issue Dependencies Summary"
     )

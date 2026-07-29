@@ -31,7 +31,7 @@ class RepoSearchResultItemType(TypedDict):
     node_id: str
     name: str
     full_name: str
-    owner: Union[None, SimpleUserType]
+    owner: Union[SimpleUserType, None]
     private: bool
     html_url: str
     description: Union[str, None]
@@ -106,7 +106,7 @@ class RepoSearchResultItemType(TypedDict):
     archived: bool
     disabled: bool
     visibility: NotRequired[str]
-    license_: Union[None, LicenseSimpleType]
+    license_: Union[LicenseSimpleType, None]
     permissions: NotRequired[RepoSearchResultItemPropPermissionsType]
     text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
     temp_clone_token: NotRequired[Union[str, None]]
@@ -130,7 +130,7 @@ class RepoSearchResultItemTypeForResponse(TypedDict):
     node_id: str
     name: str
     full_name: str
-    owner: Union[None, SimpleUserTypeForResponse]
+    owner: Union[SimpleUserTypeForResponse, None]
     private: bool
     html_url: str
     description: Union[str, None]
@@ -205,7 +205,7 @@ class RepoSearchResultItemTypeForResponse(TypedDict):
     archived: bool
     disabled: bool
     visibility: NotRequired[str]
-    license_: Union[None, LicenseSimpleTypeForResponse]
+    license_: Union[LicenseSimpleTypeForResponse, None]
     permissions: NotRequired[RepoSearchResultItemPropPermissionsTypeForResponse]
     text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
     temp_clone_token: NotRequired[Union[str, None]]

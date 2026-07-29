@@ -79,7 +79,7 @@ class WebhookIssuesClosedPropIssueType(TypedDict):
     pull_request: NotRequired[WebhookIssuesClosedPropIssueAllof0PropPullRequestType]
     reactions: WebhookIssuesClosedPropIssueMergedReactionsType
     repository_url: str
-    pinned_comment: NotRequired[Union[None, IssueCommentType]]
+    pinned_comment: NotRequired[Union[IssueCommentType, None]]
     sub_issues_summary: NotRequired[SubIssuesSummaryType]
     issue_dependencies_summary: NotRequired[IssueDependenciesSummaryType]
     issue_field_values: NotRequired[list[IssueFieldValueType]]
@@ -142,7 +142,7 @@ class WebhookIssuesClosedPropIssueTypeForResponse(TypedDict):
     ]
     reactions: WebhookIssuesClosedPropIssueMergedReactionsTypeForResponse
     repository_url: str
-    pinned_comment: NotRequired[Union[None, IssueCommentTypeForResponse]]
+    pinned_comment: NotRequired[Union[IssueCommentTypeForResponse, None]]
     sub_issues_summary: NotRequired[SubIssuesSummaryTypeForResponse]
     issue_dependencies_summary: NotRequired[IssueDependenciesSummaryTypeForResponse]
     issue_field_values: NotRequired[list[IssueFieldValueTypeForResponse]]

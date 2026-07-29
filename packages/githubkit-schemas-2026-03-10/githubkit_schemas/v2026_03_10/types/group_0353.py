@@ -25,7 +25,7 @@ class ReactionType(TypedDict):
 
     id: int
     node_id: str
-    user: Union[None, SimpleUserType]
+    user: Union[SimpleUserType, None]
     content: Literal[
         "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
     ]
@@ -41,7 +41,7 @@ class ReactionTypeForResponse(TypedDict):
 
     id: int
     node_id: str
-    user: Union[None, SimpleUserTypeForResponse]
+    user: Union[SimpleUserTypeForResponse, None]
     content: Literal[
         "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
     ]

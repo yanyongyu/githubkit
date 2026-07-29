@@ -33,7 +33,7 @@ class DeploymentType(TypedDict):
     original_environment: NotRequired[str]
     environment: str
     description: Union[str, None]
-    creator: Union[None, SimpleUserType]
+    creator: Union[SimpleUserType, None]
     created_at: _dt.datetime
     updated_at: _dt.datetime
     statuses_url: str
@@ -59,7 +59,7 @@ class DeploymentTypeForResponse(TypedDict):
     original_environment: NotRequired[str]
     environment: str
     description: Union[str, None]
-    creator: Union[None, SimpleUserTypeForResponse]
+    creator: Union[SimpleUserTypeForResponse, None]
     created_at: str
     updated_at: str
     statuses_url: str

@@ -44,7 +44,7 @@ class WebhookCodeScanningAlertClosedByUserPropAlert(GitHubModel):
         )
     )
     dismissed_reason: Union[
-        None, Literal["false positive", "won't fix", "used in tests"]
+        Literal["false positive", "won't fix", "used in tests"], None
     ] = Field(description="The reason for dismissing or closing the alert.")
     fixed_at: Missing[Union[_dt.datetime, None]] = Field(
         default=UNSET,
@@ -160,7 +160,7 @@ class WebhookCodeScanningAlertClosedByUserPropAlertPropRule(GitHubModel):
         description="A unique identifier for the rule used to detect the alert."
     )
     name: Missing[str] = Field(default=UNSET)
-    severity: Union[None, Literal["none", "note", "warning", "error"]] = Field(
+    severity: Union[Literal["none", "note", "warning", "error"], None] = Field(
         description="The severity of the alert."
     )
     tags: Missing[Union[list[str], None]] = Field(default=UNSET)

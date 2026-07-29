@@ -26,7 +26,7 @@ class RepositoryAdvisoryUpdateType(TypedDict):
     credits_: NotRequired[
         Union[list[RepositoryAdvisoryUpdatePropCreditsItemsType], None]
     ]
-    severity: NotRequired[Union[None, Literal["critical", "high", "medium", "low"]]]
+    severity: NotRequired[Union[Literal["critical", "high", "medium", "low"], None]]
     cvss_vector_string: NotRequired[Union[str, None]]
     state: NotRequired[Literal["published", "closed", "draft"]]
     collaborating_users: NotRequired[Union[list[str], None]]
@@ -46,7 +46,7 @@ class RepositoryAdvisoryUpdateTypeForResponse(TypedDict):
     credits_: NotRequired[
         Union[list[RepositoryAdvisoryUpdatePropCreditsItemsTypeForResponse], None]
     ]
-    severity: NotRequired[Union[None, Literal["critical", "high", "medium", "low"]]]
+    severity: NotRequired[Union[Literal["critical", "high", "medium", "low"], None]]
     cvss_vector_string: NotRequired[Union[str, None]]
     state: NotRequired[Literal["published", "closed", "draft"]]
     collaborating_users: NotRequired[Union[list[str], None]]

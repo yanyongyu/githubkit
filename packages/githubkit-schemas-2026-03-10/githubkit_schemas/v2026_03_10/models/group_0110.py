@@ -33,7 +33,7 @@ class ActionsHostedRunner(GitHubModel):
         default=UNSET,
         description="The unique identifier of the group that the hosted runner belongs to.",
     )
-    image_details: Union[None, ActionsHostedRunnerPoolImage] = Field()
+    image_details: Union[ActionsHostedRunnerPoolImage, None] = Field()
     machine_size_details: ActionsHostedRunnerMachineSpec = Field(
         title="Github-owned VM details.",
         description="Provides details of a particular machine spec.",

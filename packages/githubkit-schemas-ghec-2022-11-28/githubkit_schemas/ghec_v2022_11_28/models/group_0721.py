@@ -248,7 +248,6 @@ class WebhookDeploymentCreatedPropWorkflowRun(GitHubModel):
     check_suite_node_id: str = Field()
     check_suite_url: Missing[str] = Field(default=UNSET)
     conclusion: Union[
-        None,
         Literal[
             "success",
             "failure",
@@ -258,6 +257,7 @@ class WebhookDeploymentCreatedPropWorkflowRun(GitHubModel):
             "action_required",
             "stale",
         ],
+        None,
     ] = Field()
     created_at: _dt.datetime = Field()
     display_title: str = Field()

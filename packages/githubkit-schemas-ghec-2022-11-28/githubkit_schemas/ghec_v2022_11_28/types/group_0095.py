@@ -49,12 +49,12 @@ class DependabotAlertWithRepositoryType(TypedDict):
     created_at: _dt.datetime
     updated_at: _dt.datetime
     dismissed_at: Union[_dt.datetime, None]
-    dismissed_by: Union[None, SimpleUserType]
+    dismissed_by: Union[SimpleUserType, None]
     dismissed_reason: Union[
-        None,
         Literal[
             "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
         ],
+        None,
     ]
     dismissed_comment: Union[str, None]
     fixed_at: Union[_dt.datetime, None]
@@ -82,12 +82,12 @@ class DependabotAlertWithRepositoryTypeForResponse(TypedDict):
     created_at: str
     updated_at: str
     dismissed_at: Union[str, None]
-    dismissed_by: Union[None, SimpleUserTypeForResponse]
+    dismissed_by: Union[SimpleUserTypeForResponse, None]
     dismissed_reason: Union[
-        None,
         Literal[
             "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
         ],
+        None,
     ]
     dismissed_comment: Union[str, None]
     fixed_at: Union[str, None]

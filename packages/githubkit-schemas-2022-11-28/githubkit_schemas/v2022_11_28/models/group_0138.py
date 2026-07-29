@@ -39,7 +39,7 @@ class CodeScanningAlertInstance(GitHubModel):
         default=UNSET,
         description="Identifies the configuration under which the analysis was executed. Used to distinguish between multiple analyses for the same tool and commit, but performed on different languages or different parts of the code.",
     )
-    state: Missing[Union[None, Literal["open", "dismissed", "fixed"]]] = Field(
+    state: Missing[Union[Literal["open", "dismissed", "fixed"], None]] = Field(
         default=UNSET, description="State of a code scanning alert."
     )
     commit_sha: Missing[str] = Field(default=UNSET)
@@ -51,7 +51,7 @@ class CodeScanningAlertInstance(GitHubModel):
     classifications: Missing[
         list[
             Union[
-                None, Literal["source", "generated", "test", "library", "documentation"]
+                Literal["source", "generated", "test", "library", "documentation"], None
             ]
         ]
     ] = Field(

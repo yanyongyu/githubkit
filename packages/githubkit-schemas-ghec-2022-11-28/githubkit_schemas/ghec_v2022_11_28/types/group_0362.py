@@ -56,7 +56,7 @@ class WorkflowRunType(TypedDict):
     rerun_url: str
     previous_attempt_url: NotRequired[Union[str, None]]
     workflow_url: str
-    head_commit: Union[None, SimpleCommitType]
+    head_commit: Union[SimpleCommitType, None]
     repository: MinimalRepositoryType
     head_repository: MinimalRepositoryType
     head_repository_id: NotRequired[int]
@@ -102,7 +102,7 @@ class WorkflowRunTypeForResponse(TypedDict):
     rerun_url: str
     previous_attempt_url: NotRequired[Union[str, None]]
     workflow_url: str
-    head_commit: Union[None, SimpleCommitTypeForResponse]
+    head_commit: Union[SimpleCommitTypeForResponse, None]
     repository: MinimalRepositoryTypeForResponse
     head_repository: MinimalRepositoryTypeForResponse
     head_repository_id: NotRequired[int]

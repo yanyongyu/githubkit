@@ -25,7 +25,7 @@ class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0(GitHubModel):
         description="Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`."
     )
     resolution: Missing[
-        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
+        Union[Literal["false_positive", "wont_fix", "revoked", "used_in_tests"], None]
     ] = Field(
         default=UNSET,
         description="**Required when the `state` is `resolved`.** The reason for resolving the alert.",
@@ -38,7 +38,7 @@ class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0(GitHubModel):
         default=UNSET,
         description="The username of the user to assign to the alert. Set to `null` to unassign the alert.",
     )
-    validity: Missing[Union[None, Literal["active", "inactive"]]] = Field(
+    validity: Missing[Union[Literal["active", "inactive"], None]] = Field(
         default=UNSET,
         description="Sets the validity of the secret scanning alert. Can be `active`, `inactive`, or `null` to clear the override.",
     )

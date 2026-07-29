@@ -53,7 +53,7 @@ class PullRequestWebhookType(TypedDict):
     user: SimpleUserType
     body: Union[str, None]
     labels: list[PullRequestPropLabelsItemsType]
-    milestone: Union[None, MilestoneType]
+    milestone: Union[MilestoneType, None]
     active_lock_reason: NotRequired[Union[str, None]]
     created_at: _dt.datetime
     updated_at: _dt.datetime
@@ -82,7 +82,7 @@ class PullRequestWebhookType(TypedDict):
     mergeable: Union[bool, None]
     rebaseable: NotRequired[Union[bool, None]]
     mergeable_state: str
-    merged_by: Union[None, SimpleUserType]
+    merged_by: Union[SimpleUserType, None]
     comments: int
     review_comments: int
     maintainer_can_modify: bool
@@ -124,7 +124,7 @@ class PullRequestWebhookTypeForResponse(TypedDict):
     user: SimpleUserTypeForResponse
     body: Union[str, None]
     labels: list[PullRequestPropLabelsItemsTypeForResponse]
-    milestone: Union[None, MilestoneTypeForResponse]
+    milestone: Union[MilestoneTypeForResponse, None]
     active_lock_reason: NotRequired[Union[str, None]]
     created_at: str
     updated_at: str
@@ -153,7 +153,7 @@ class PullRequestWebhookTypeForResponse(TypedDict):
     mergeable: Union[bool, None]
     rebaseable: NotRequired[Union[bool, None]]
     mergeable_state: str
-    merged_by: Union[None, SimpleUserTypeForResponse]
+    merged_by: Union[SimpleUserTypeForResponse, None]
     comments: int
     review_comments: int
     maintainer_can_modify: bool

@@ -31,7 +31,7 @@ class WebhookProjectDeletedType(TypedDict):
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     project: WebhooksProjectType
-    repository: NotRequired[Union[None, RepositoryWebhooksType]]
+    repository: NotRequired[Union[RepositoryWebhooksType, None]]
     sender: NotRequired[SimpleUserType]
 
 
@@ -43,7 +43,7 @@ class WebhookProjectDeletedTypeForResponse(TypedDict):
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     project: WebhooksProjectTypeForResponse
-    repository: NotRequired[Union[None, RepositoryWebhooksTypeForResponse]]
+    repository: NotRequired[Union[RepositoryWebhooksTypeForResponse, None]]
     sender: NotRequired[SimpleUserTypeForResponse]
 
 

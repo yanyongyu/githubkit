@@ -24,7 +24,7 @@ class GistCommitType(TypedDict):
 
     url: str
     version: str
-    user: Union[None, SimpleUserType]
+    user: Union[SimpleUserType, None]
     change_status: GistCommitPropChangeStatusType
     committed_at: _dt.datetime
 
@@ -37,7 +37,7 @@ class GistCommitTypeForResponse(TypedDict):
 
     url: str
     version: str
-    user: Union[None, SimpleUserTypeForResponse]
+    user: Union[SimpleUserTypeForResponse, None]
     change_status: GistCommitPropChangeStatusTypeForResponse
     committed_at: str
 

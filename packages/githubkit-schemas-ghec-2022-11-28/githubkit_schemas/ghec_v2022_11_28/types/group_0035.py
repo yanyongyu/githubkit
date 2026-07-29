@@ -28,7 +28,7 @@ class ActionsHostedRunnerType(TypedDict):
     id: int
     name: str
     runner_group_id: NotRequired[int]
-    image_details: Union[None, ActionsHostedRunnerPoolImageType]
+    image_details: Union[ActionsHostedRunnerPoolImageType, None]
     machine_size_details: ActionsHostedRunnerMachineSpecType
     status: Literal["Ready", "Provisioning", "Shutdown", "Deleting", "Stuck"]
     platform: str
@@ -48,7 +48,7 @@ class ActionsHostedRunnerTypeForResponse(TypedDict):
     id: int
     name: str
     runner_group_id: NotRequired[int]
-    image_details: Union[None, ActionsHostedRunnerPoolImageTypeForResponse]
+    image_details: Union[ActionsHostedRunnerPoolImageTypeForResponse, None]
     machine_size_details: ActionsHostedRunnerMachineSpecTypeForResponse
     status: Literal["Ready", "Provisioning", "Shutdown", "Deleting", "Stuck"]
     platform: str

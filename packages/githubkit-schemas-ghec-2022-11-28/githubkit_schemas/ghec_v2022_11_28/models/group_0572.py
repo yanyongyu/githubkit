@@ -26,7 +26,7 @@ class ContributorActivity(GitHubModel):
     Contributor Activity
     """
 
-    author: Union[None, SimpleUser] = Field()
+    author: Union[SimpleUser, None] = Field()
     total: int = Field()
     weeks: list[ContributorActivityPropWeeksItems] = Field()
 

@@ -55,12 +55,12 @@ class DependabotAlert(GitHubModel):
     dismissed_at: Union[_dt.datetime, None] = Field(
         description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
     )
-    dismissed_by: Union[None, SimpleUser] = Field()
+    dismissed_by: Union[SimpleUser, None] = Field()
     dismissed_reason: Union[
-        None,
         Literal[
             "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
         ],
+        None,
     ] = Field(description="The reason that the alert was dismissed.")
     dismissed_comment: Union[Annotated[str, Field(max_length=280)], None] = Field(
         description="An optional comment associated with the alert's dismissal."

@@ -26,7 +26,7 @@ class ProjectsV2DraftIssueType(TypedDict):
     node_id: str
     title: str
     body: NotRequired[Union[str, None]]
-    user: Union[None, SimpleUserType]
+    user: Union[SimpleUserType, None]
     created_at: _dt.datetime
     updated_at: _dt.datetime
 
@@ -41,7 +41,7 @@ class ProjectsV2DraftIssueTypeForResponse(TypedDict):
     node_id: str
     title: str
     body: NotRequired[Union[str, None]]
-    user: Union[None, SimpleUserTypeForResponse]
+    user: Union[SimpleUserTypeForResponse, None]
     created_at: str
     updated_at: str
 

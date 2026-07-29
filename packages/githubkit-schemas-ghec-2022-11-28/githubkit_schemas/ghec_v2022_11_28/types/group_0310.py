@@ -35,7 +35,7 @@ class TeamRoleAssignmentType(TypedDict):
     html_url: str
     members_url: str
     repositories_url: str
-    parent: Union[None, TeamSimpleType]
+    parent: Union[TeamSimpleType, None]
     type: Literal["enterprise", "organization"]
     organization_id: NotRequired[int]
     enterprise_id: NotRequired[int]
@@ -61,7 +61,7 @@ class TeamRoleAssignmentTypeForResponse(TypedDict):
     html_url: str
     members_url: str
     repositories_url: str
-    parent: Union[None, TeamSimpleTypeForResponse]
+    parent: Union[TeamSimpleTypeForResponse, None]
     type: Literal["enterprise", "organization"]
     organization_id: NotRequired[int]
     enterprise_id: NotRequired[int]

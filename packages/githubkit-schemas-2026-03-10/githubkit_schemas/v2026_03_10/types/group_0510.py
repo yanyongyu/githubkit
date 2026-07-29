@@ -21,7 +21,7 @@ class CommitSearchResultItemPropCommitType(TypedDict):
     """CommitSearchResultItemPropCommit"""
 
     author: CommitSearchResultItemPropCommitPropAuthorType
-    committer: Union[None, GitUserType]
+    committer: Union[GitUserType, None]
     comment_count: int
     message: str
     tree: CommitSearchResultItemPropCommitPropTreeType
@@ -33,7 +33,7 @@ class CommitSearchResultItemPropCommitTypeForResponse(TypedDict):
     """CommitSearchResultItemPropCommit"""
 
     author: CommitSearchResultItemPropCommitPropAuthorTypeForResponse
-    committer: Union[None, GitUserTypeForResponse]
+    committer: Union[GitUserTypeForResponse, None]
     comment_count: int
     message: str
     tree: CommitSearchResultItemPropCommitPropTreeTypeForResponse

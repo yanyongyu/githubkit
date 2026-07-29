@@ -24,9 +24,9 @@ class PullRequestSimplePropHead(GitHubModel):
 
     label: Union[str, None] = Field()
     ref: str = Field()
-    repo: Union[None, Repository] = Field()
+    repo: Union[Repository, None] = Field()
     sha: str = Field()
-    user: Union[None, SimpleUser] = Field()
+    user: Union[SimpleUser, None] = Field()
 
 
 class PullRequestSimplePropBase(GitHubModel):
@@ -36,7 +36,7 @@ class PullRequestSimplePropBase(GitHubModel):
     ref: str = Field()
     repo: Repository = Field(title="Repository", description="A repository on GitHub.")
     sha: str = Field()
-    user: Union[None, SimpleUser] = Field()
+    user: Union[SimpleUser, None] = Field()
 
 
 model_rebuild(PullRequestSimplePropHead)

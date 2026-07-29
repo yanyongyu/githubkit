@@ -38,7 +38,7 @@ class TeamType(TypedDict):
     access_source: NotRequired[Literal["direct", "organization", "enterprise"]]
     organization_id: NotRequired[int]
     enterprise_id: NotRequired[int]
-    parent: Union[None, TeamSimpleType]
+    parent: Union[TeamSimpleType, None]
 
 
 class TeamTypeForResponse(TypedDict):
@@ -64,7 +64,7 @@ class TeamTypeForResponse(TypedDict):
     access_source: NotRequired[Literal["direct", "organization", "enterprise"]]
     organization_id: NotRequired[int]
     enterprise_id: NotRequired[int]
-    parent: Union[None, TeamSimpleTypeForResponse]
+    parent: Union[TeamSimpleTypeForResponse, None]
 
 
 class TeamPropPermissionsType(TypedDict):

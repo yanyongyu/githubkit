@@ -47,7 +47,7 @@ class WebhookMetaDeleted(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: Missing[Union[None, RepositoryWebhooks]] = Field(default=UNSET)
+    repository: Missing[Union[RepositoryWebhooks, None]] = Field(default=UNSET)
     sender: Missing[SimpleUser] = Field(
         default=UNSET, title="Simple User", description="A GitHub user."
     )

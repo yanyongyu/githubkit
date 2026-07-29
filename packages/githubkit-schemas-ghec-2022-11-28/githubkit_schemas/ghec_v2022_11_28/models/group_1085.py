@@ -25,7 +25,7 @@ class WebhookWorkflowJobInProgressPropWorkflowJobAllof0(GitHubModel):
 
     check_run_url: str = Field()
     completed_at: Union[str, None] = Field()
-    conclusion: Union[None, Literal["success", "failure", "cancelled", "neutral"]] = (
+    conclusion: Union[Literal["success", "failure", "cancelled", "neutral"], None] = (
         Field()
     )
     created_at: str = Field(description="The time that the job created.")
@@ -68,7 +68,7 @@ class WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItems(GitHubMode
     """Workflow Step"""
 
     completed_at: Union[str, None] = Field()
-    conclusion: Union[None, Literal["failure", "skipped", "success", "cancelled"]] = (
+    conclusion: Union[Literal["failure", "skipped", "success", "cancelled"], None] = (
         Field()
     )
     name: str = Field()

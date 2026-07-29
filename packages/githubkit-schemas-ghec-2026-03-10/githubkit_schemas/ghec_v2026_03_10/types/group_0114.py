@@ -28,7 +28,7 @@ class CustomPropertyType(TypedDict):
     description: NotRequired[Union[str, None]]
     allowed_values: NotRequired[Union[list[str], None]]
     values_editable_by: NotRequired[
-        Union[None, Literal["org_actors", "org_and_repo_actors"]]
+        Union[Literal["org_actors", "org_and_repo_actors"], None]
     ]
     require_explicit_values: NotRequired[bool]
 
@@ -48,7 +48,7 @@ class CustomPropertyTypeForResponse(TypedDict):
     description: NotRequired[Union[str, None]]
     allowed_values: NotRequired[Union[list[str], None]]
     values_editable_by: NotRequired[
-        Union[None, Literal["org_actors", "org_and_repo_actors"]]
+        Union[Literal["org_actors", "org_and_repo_actors"], None]
     ]
     require_explicit_values: NotRequired[bool]
 

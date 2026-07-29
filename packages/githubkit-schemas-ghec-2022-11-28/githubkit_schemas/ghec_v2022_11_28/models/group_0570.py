@@ -26,7 +26,7 @@ class Stargazer(GitHubModel):
     """
 
     starred_at: _dt.datetime = Field()
-    user: Union[None, SimpleUser] = Field()
+    user: Union[SimpleUser, None] = Field()
 
 
 model_rebuild(Stargazer)

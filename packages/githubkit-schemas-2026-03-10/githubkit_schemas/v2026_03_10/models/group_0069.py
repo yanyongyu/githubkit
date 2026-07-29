@@ -101,7 +101,7 @@ class ForkEventPropForkee(GitHubModel):
     archived: Missing[bool] = Field(default=UNSET)
     disabled: Missing[bool] = Field(default=UNSET)
     open_issues_count: Missing[int] = Field(default=UNSET)
-    license_: Missing[Union[None, LicenseSimple]] = Field(
+    license_: Missing[Union[LicenseSimple, None]] = Field(
         default=UNSET, alias="license"
     )
     allow_forking: Missing[bool] = Field(default=UNSET)

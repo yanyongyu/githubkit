@@ -54,7 +54,7 @@ class WebhookCodeScanningAlertCreatedPropAlert(GitHubModel):
     ] = Field(default=UNSET, title="Alert Instance")
     number: int = Field(description="The code scanning alert number.")
     rule: WebhookCodeScanningAlertCreatedPropAlertPropRule = Field()
-    state: Union[None, Literal["open", "dismissed"]] = Field(
+    state: Union[Literal["open", "dismissed"], None] = Field(
         description="State of a code scanning alert. Events for alerts found outside the default branch will return a `null` value until they are dismissed or fixed."
     )
     tool: Union[WebhookCodeScanningAlertCreatedPropAlertPropTool, None] = Field()
@@ -129,7 +129,7 @@ class WebhookCodeScanningAlertCreatedPropAlertPropRule(GitHubModel):
         description="A unique identifier for the rule used to detect the alert."
     )
     name: Missing[str] = Field(default=UNSET)
-    severity: Union[None, Literal["none", "note", "warning", "error"]] = Field(
+    severity: Union[Literal["none", "note", "warning", "error"], None] = Field(
         description="The severity of the alert."
     )
     tags: Missing[Union[list[str], None]] = Field(default=UNSET)

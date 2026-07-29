@@ -55,7 +55,7 @@ class SecretScanningPatternOverrideType(TypedDict):
     bypass_rate: NotRequired[int]
     default_setting: NotRequired[Literal["disabled", "enabled"]]
     enterprise_setting: NotRequired[
-        Union[None, Literal["not-set", "disabled", "enabled"]]
+        Union[Literal["not-set", "disabled", "enabled"], None]
     ]
     setting: NotRequired[Literal["not-set", "disabled", "enabled"]]
 
@@ -74,7 +74,7 @@ class SecretScanningPatternOverrideTypeForResponse(TypedDict):
     bypass_rate: NotRequired[int]
     default_setting: NotRequired[Literal["disabled", "enabled"]]
     enterprise_setting: NotRequired[
-        Union[None, Literal["not-set", "disabled", "enabled"]]
+        Union[Literal["not-set", "disabled", "enabled"], None]
     ]
     setting: NotRequired[Literal["not-set", "disabled", "enabled"]]
 

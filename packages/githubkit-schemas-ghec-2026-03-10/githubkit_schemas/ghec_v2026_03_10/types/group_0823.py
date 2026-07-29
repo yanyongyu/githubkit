@@ -44,7 +44,7 @@ class WebhookIssuesClosedPropIssueAllof0Type(TypedDict):
     """
 
     active_lock_reason: Union[
-        None, Literal["resolved", "off-topic", "too heated", "spam"]
+        Literal["resolved", "off-topic", "too heated", "spam"], None
     ]
     assignee: NotRequired[
         Union[WebhookIssuesClosedPropIssueAllof0PropAssigneeType, None]
@@ -83,7 +83,7 @@ class WebhookIssuesClosedPropIssueAllof0Type(TypedDict):
     pull_request: NotRequired[WebhookIssuesClosedPropIssueAllof0PropPullRequestType]
     reactions: WebhookIssuesClosedPropIssueAllof0PropReactionsType
     repository_url: str
-    pinned_comment: NotRequired[Union[None, IssueCommentType]]
+    pinned_comment: NotRequired[Union[IssueCommentType, None]]
     sub_issues_summary: NotRequired[SubIssuesSummaryType]
     issue_dependencies_summary: NotRequired[IssueDependenciesSummaryType]
     issue_field_values: NotRequired[list[IssueFieldValueType]]
@@ -105,7 +105,7 @@ class WebhookIssuesClosedPropIssueAllof0TypeForResponse(TypedDict):
     """
 
     active_lock_reason: Union[
-        None, Literal["resolved", "off-topic", "too heated", "spam"]
+        Literal["resolved", "off-topic", "too heated", "spam"], None
     ]
     assignee: NotRequired[
         Union[WebhookIssuesClosedPropIssueAllof0PropAssigneeTypeForResponse, None]
@@ -153,7 +153,7 @@ class WebhookIssuesClosedPropIssueAllof0TypeForResponse(TypedDict):
     ]
     reactions: WebhookIssuesClosedPropIssueAllof0PropReactionsTypeForResponse
     repository_url: str
-    pinned_comment: NotRequired[Union[None, IssueCommentTypeForResponse]]
+    pinned_comment: NotRequired[Union[IssueCommentTypeForResponse, None]]
     sub_issues_summary: NotRequired[SubIssuesSummaryTypeForResponse]
     issue_dependencies_summary: NotRequired[IssueDependenciesSummaryTypeForResponse]
     issue_field_values: NotRequired[list[IssueFieldValueTypeForResponse]]

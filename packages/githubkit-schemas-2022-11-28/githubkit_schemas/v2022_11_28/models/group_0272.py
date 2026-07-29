@@ -32,11 +32,11 @@ class TeamRepository(GitHubModel):
     node_id: str = Field()
     name: str = Field(description="The name of the repository.")
     full_name: str = Field()
-    license_: Union[None, LicenseSimple] = Field(alias="license")
+    license_: Union[LicenseSimple, None] = Field(alias="license")
     forks: int = Field()
     permissions: Missing[TeamRepositoryPropPermissions] = Field(default=UNSET)
     role_name: Missing[str] = Field(default=UNSET)
-    owner: Union[None, SimpleUser] = Field()
+    owner: Union[SimpleUser, None] = Field()
     private: bool = Field(
         default=False, description="Whether the repository is private or public."
     )

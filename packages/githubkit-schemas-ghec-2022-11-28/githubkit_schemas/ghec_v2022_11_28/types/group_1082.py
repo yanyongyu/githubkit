@@ -23,7 +23,6 @@ class WebhookWorkflowJobCompletedPropWorkflowJobAllof0Type(TypedDict):
     check_run_url: str
     completed_at: Union[str, None]
     conclusion: Union[
-        None,
         Literal[
             "success",
             "failure",
@@ -33,6 +32,7 @@ class WebhookWorkflowJobCompletedPropWorkflowJobAllof0Type(TypedDict):
             "neutral",
             "timed_out",
         ],
+        None,
     ]
     created_at: str
     head_sha: str
@@ -66,7 +66,6 @@ class WebhookWorkflowJobCompletedPropWorkflowJobAllof0TypeForResponse(TypedDict)
     check_run_url: str
     completed_at: Union[str, None]
     conclusion: Union[
-        None,
         Literal[
             "success",
             "failure",
@@ -76,6 +75,7 @@ class WebhookWorkflowJobCompletedPropWorkflowJobAllof0TypeForResponse(TypedDict)
             "neutral",
             "timed_out",
         ],
+        None,
     ]
     created_at: str
     head_sha: str
@@ -105,7 +105,7 @@ class WebhookWorkflowJobCompletedPropWorkflowJobAllof0PropStepsItemsType(TypedDi
     """Workflow Step"""
 
     completed_at: Union[str, None]
-    conclusion: Union[None, Literal["failure", "skipped", "success", "cancelled"]]
+    conclusion: Union[Literal["failure", "skipped", "success", "cancelled"], None]
     name: str
     number: int
     started_at: Union[str, None]
@@ -118,7 +118,7 @@ class WebhookWorkflowJobCompletedPropWorkflowJobAllof0PropStepsItemsTypeForRespo
     """Workflow Step"""
 
     completed_at: Union[str, None]
-    conclusion: Union[None, Literal["failure", "skipped", "success", "cancelled"]]
+    conclusion: Union[Literal["failure", "skipped", "success", "cancelled"], None]
     name: str
     number: int
     started_at: Union[str, None]

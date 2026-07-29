@@ -34,7 +34,7 @@ class CodespaceMachine(GitHubModel):
         description="How much memory is available to the codespace."
     )
     cpus: int = Field(description="How many cores are available to the codespace.")
-    prebuild_availability: Union[None, Literal["none", "ready", "in_progress"]] = Field(
+    prebuild_availability: Union[Literal["none", "ready", "in_progress"], None] = Field(
         description='Whether a prebuild is currently available when creating a codespace for this machine and repository. If a branch was not specified as a ref, the default branch will be assumed. Value will be "null" if prebuilds are not supported or prebuild availability could not be determined. Value will be "none" if no prebuild is available. Latest values "ready" and "in_progress" indicate the prebuild availability status.'
     )
 

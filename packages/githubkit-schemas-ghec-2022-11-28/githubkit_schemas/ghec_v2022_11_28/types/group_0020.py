@@ -33,10 +33,10 @@ class RepositoryType(TypedDict):
     node_id: str
     name: str
     full_name: str
-    license_: Union[None, LicenseSimpleType]
+    license_: Union[LicenseSimpleType, None]
     forks: int
     permissions: NotRequired[RepositoryPropPermissionsType]
-    owner: Union[None, SimpleUserType]
+    owner: Union[SimpleUserType, None]
     private: bool
     html_url: str
     description: Union[str, None]
@@ -141,10 +141,10 @@ class RepositoryTypeForResponse(TypedDict):
     node_id: str
     name: str
     full_name: str
-    license_: Union[None, LicenseSimpleTypeForResponse]
+    license_: Union[LicenseSimpleTypeForResponse, None]
     forks: int
     permissions: NotRequired[RepositoryPropPermissionsTypeForResponse]
-    owner: Union[None, SimpleUserTypeForResponse]
+    owner: Union[SimpleUserTypeForResponse, None]
     private: bool
     html_url: str
     description: Union[str, None]

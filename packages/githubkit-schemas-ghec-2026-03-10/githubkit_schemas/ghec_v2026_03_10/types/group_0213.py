@@ -27,10 +27,10 @@ class IssueTypeType(TypedDict):
     description: Union[str, None]
     color: NotRequired[
         Union[
-            None,
             Literal[
                 "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
             ],
+            None,
         ]
     ]
     created_at: NotRequired[_dt.datetime]
@@ -51,10 +51,10 @@ class IssueTypeTypeForResponse(TypedDict):
     description: Union[str, None]
     color: NotRequired[
         Union[
-            None,
             Literal[
                 "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
             ],
+            None,
         ]
     ]
     created_at: NotRequired[str]

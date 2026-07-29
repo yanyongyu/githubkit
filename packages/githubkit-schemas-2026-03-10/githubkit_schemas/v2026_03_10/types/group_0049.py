@@ -50,7 +50,7 @@ class DiscussionType(TypedDict):
     reactions: NotRequired[DiscussionPropReactionsType]
     repository_url: str
     state: Literal["open", "closed", "locked", "converting", "transferring"]
-    state_reason: Union[None, Literal["resolved", "outdated", "duplicate", "reopened"]]
+    state_reason: Union[Literal["resolved", "outdated", "duplicate", "reopened"], None]
     timeline_url: NotRequired[str]
     title: str
     updated_at: _dt.datetime
@@ -92,7 +92,7 @@ class DiscussionTypeForResponse(TypedDict):
     reactions: NotRequired[DiscussionPropReactionsTypeForResponse]
     repository_url: str
     state: Literal["open", "closed", "locked", "converting", "transferring"]
-    state_reason: Union[None, Literal["resolved", "outdated", "duplicate", "reopened"]]
+    state_reason: Union[Literal["resolved", "outdated", "duplicate", "reopened"], None]
     timeline_url: NotRequired[str]
     title: str
     updated_at: str

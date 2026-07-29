@@ -44,7 +44,7 @@ class RepositoryAdvisoryCreate(GitHubModel):
             description="A list of users receiving credit for their participation in the security advisory.",
         )
     )
-    severity: Missing[Union[None, Literal["critical", "high", "medium", "low"]]] = (
+    severity: Missing[Union[Literal["critical", "high", "medium", "low"], None]] = (
         Field(
             default=UNSET,
             description="The severity of the advisory. You must choose between setting this field or `cvss_vector_string`.",

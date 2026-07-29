@@ -31,8 +31,8 @@ class CopilotSeatDetails(GitHubModel):
     organization.
     """
 
-    assignee: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    organization: Missing[Union[None, OrganizationSimple]] = Field(default=UNSET)
+    assignee: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
+    organization: Missing[Union[OrganizationSimple, None]] = Field(default=UNSET)
     assigning_team: Missing[Union[Team, EnterpriseTeam, None]] = Field(
         default=UNSET,
         description="The team through which the assignee is granted access to GitHub Copilot, if applicable.",

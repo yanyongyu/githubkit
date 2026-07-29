@@ -26,7 +26,7 @@ class WebhookPullRequestUnlabeledPropPullRequest(GitHubModel):
 
     links: WebhookPullRequestUnlabeledPropPullRequestPropLinks = Field(alias="_links")
     active_lock_reason: Union[
-        None, Literal["resolved", "off-topic", "too heated", "spam"]
+        Literal["resolved", "off-topic", "too heated", "spam"], None
     ] = Field()
     additions: Missing[int] = Field(default=UNSET)
     assignee: Union[WebhookPullRequestUnlabeledPropPullRequestPropAssignee, None] = (
@@ -101,8 +101,8 @@ class WebhookPullRequestUnlabeledPropPullRequest(GitHubModel):
     requested_reviewers: list[
         Union[
             WebhookPullRequestUnlabeledPropPullRequestPropRequestedReviewersItemsOneof0,
-            None,
             WebhookPullRequestUnlabeledPropPullRequestPropRequestedReviewersItemsOneof1,
+            None,
         ]
     ] = Field()
     requested_teams: list[

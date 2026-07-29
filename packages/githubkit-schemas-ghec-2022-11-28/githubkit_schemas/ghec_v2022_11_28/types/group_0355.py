@@ -32,7 +32,6 @@ class JobType(TypedDict):
         "queued", "in_progress", "completed", "waiting", "requested", "pending"
     ]
     conclusion: Union[
-        None,
         Literal[
             "success",
             "failure",
@@ -42,6 +41,7 @@ class JobType(TypedDict):
             "timed_out",
             "action_required",
         ],
+        None,
     ]
     created_at: _dt.datetime
     started_at: _dt.datetime
@@ -76,7 +76,6 @@ class JobTypeForResponse(TypedDict):
         "queued", "in_progress", "completed", "waiting", "requested", "pending"
     ]
     conclusion: Union[
-        None,
         Literal[
             "success",
             "failure",
@@ -86,6 +85,7 @@ class JobTypeForResponse(TypedDict):
             "timed_out",
             "action_required",
         ],
+        None,
     ]
     created_at: str
     started_at: str

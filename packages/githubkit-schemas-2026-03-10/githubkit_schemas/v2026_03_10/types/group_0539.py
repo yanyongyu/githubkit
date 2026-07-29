@@ -29,7 +29,6 @@ class SimpleCheckSuiteType(TypedDict):
     before: NotRequired[Union[str, None]]
     conclusion: NotRequired[
         Union[
-            None,
             Literal[
                 "success",
                 "failure",
@@ -41,6 +40,7 @@ class SimpleCheckSuiteType(TypedDict):
                 "stale",
                 "startup_failure",
             ],
+            None,
         ]
     ]
     created_at: NotRequired[_dt.datetime]
@@ -68,7 +68,6 @@ class SimpleCheckSuiteTypeForResponse(TypedDict):
     before: NotRequired[Union[str, None]]
     conclusion: NotRequired[
         Union[
-            None,
             Literal[
                 "success",
                 "failure",
@@ -80,6 +79,7 @@ class SimpleCheckSuiteTypeForResponse(TypedDict):
                 "stale",
                 "startup_failure",
             ],
+            None,
         ]
     ]
     created_at: NotRequired[str]

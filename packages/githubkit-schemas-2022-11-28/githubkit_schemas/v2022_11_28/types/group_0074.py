@@ -20,7 +20,7 @@ class PullRequestReviewEventPropReviewType(TypedDict):
 
     id: NotRequired[int]
     node_id: NotRequired[str]
-    user: NotRequired[Union[None, SimpleUserType]]
+    user: NotRequired[Union[SimpleUserType, None]]
     body: NotRequired[str]
     commit_id: NotRequired[str]
     submitted_at: NotRequired[Union[str, None]]
@@ -36,7 +36,7 @@ class PullRequestReviewEventPropReviewTypeForResponse(TypedDict):
 
     id: NotRequired[int]
     node_id: NotRequired[str]
-    user: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    user: NotRequired[Union[SimpleUserTypeForResponse, None]]
     body: NotRequired[str]
     commit_id: NotRequired[str]
     submitted_at: NotRequired[Union[str, None]]

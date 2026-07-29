@@ -32,7 +32,7 @@ class SecretScanningAlertWebhook(GitHubModel):
         default=UNSET,
         description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
-    updated_at: Missing[Union[None, _dt.datetime]] = Field(default=UNSET)
+    updated_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
     url: Missing[str] = Field(
         default=UNSET, description="The REST API URL of the alert resource."
     )
@@ -45,7 +45,6 @@ class SecretScanningAlertWebhook(GitHubModel):
     )
     resolution: Missing[
         Union[
-            None,
             Literal[
                 "false_positive",
                 "wont_fix",
@@ -54,13 +53,14 @@ class SecretScanningAlertWebhook(GitHubModel):
                 "pattern_deleted",
                 "pattern_edited",
             ],
+            None,
         ]
     ] = Field(default=UNSET, description="The reason for resolving the alert.")
     resolved_at: Missing[Union[_dt.datetime, None]] = Field(
         default=UNSET,
         description="The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
-    resolved_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    resolved_by: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
     resolution_comment: Missing[Union[str, None]] = Field(
         default=UNSET, description="An optional comment to resolve an alert."
     )
@@ -89,12 +89,12 @@ class SecretScanningAlertWebhook(GitHubModel):
         default=UNSET,
         description="Whether push protection was bypassed for the detected secret.",
     )
-    push_protection_bypassed_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    push_protection_bypassed_by: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
     push_protection_bypassed_at: Missing[Union[_dt.datetime, None]] = Field(
         default=UNSET,
         description="The time that push protection was bypassed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
-    push_protection_bypass_request_reviewer: Missing[Union[None, SimpleUser]] = Field(
+    push_protection_bypass_request_reviewer: Missing[Union[SimpleUser, None]] = Field(
         default=UNSET
     )
     push_protection_bypass_request_reviewer_comment: Missing[Union[str, None]] = Field(
@@ -115,7 +115,7 @@ class SecretScanningAlertWebhook(GitHubModel):
         default=UNSET,
         description="Whether the detected secret was found in multiple repositories in the same organization or business.",
     )
-    assigned_to: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    assigned_to: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
     closure_request_comment: Missing[Union[str, None]] = Field(
         default=UNSET,
         description="An optional comment from the closure request author.",
@@ -124,7 +124,7 @@ class SecretScanningAlertWebhook(GitHubModel):
         default=UNSET,
         description="An optional comment from the closure request reviewer.",
     )
-    closure_request_reviewer: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    closure_request_reviewer: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
     metadata: Missing[list[SecretScanningAlertMetadataItems]] = Field(
         default=UNSET,
         description="A list of metadata key/value pairs associated with the secret scanning alert.",

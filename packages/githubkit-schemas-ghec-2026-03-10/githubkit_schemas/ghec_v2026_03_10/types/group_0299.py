@@ -58,10 +58,10 @@ class IssueFieldPropOptionsItemsType(TypedDict):
     description: NotRequired[Union[str, None]]
     color: NotRequired[
         Union[
-            None,
             Literal[
                 "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
             ],
+            None,
         ]
     ]
     priority: NotRequired[Union[int, None]]
@@ -77,10 +77,10 @@ class IssueFieldPropOptionsItemsTypeForResponse(TypedDict):
     description: NotRequired[Union[str, None]]
     color: NotRequired[
         Union[
-            None,
             Literal[
                 "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
             ],
+            None,
         ]
     ]
     priority: NotRequired[Union[int, None]]

@@ -25,7 +25,7 @@ class CodeScanningAlertInstanceListType(TypedDict):
     analysis_key: NotRequired[str]
     environment: NotRequired[str]
     category: NotRequired[str]
-    state: NotRequired[Union[None, Literal["open", "fixed"]]]
+    state: NotRequired[Union[Literal["open", "fixed"], None]]
     commit_sha: NotRequired[str]
     message: NotRequired[CodeScanningAlertInstanceListPropMessageType]
     location: NotRequired[CodeScanningAlertLocationType]
@@ -33,7 +33,7 @@ class CodeScanningAlertInstanceListType(TypedDict):
     classifications: NotRequired[
         list[
             Union[
-                None, Literal["source", "generated", "test", "library", "documentation"]
+                Literal["source", "generated", "test", "library", "documentation"], None
             ]
         ]
     ]
@@ -46,7 +46,7 @@ class CodeScanningAlertInstanceListTypeForResponse(TypedDict):
     analysis_key: NotRequired[str]
     environment: NotRequired[str]
     category: NotRequired[str]
-    state: NotRequired[Union[None, Literal["open", "fixed"]]]
+    state: NotRequired[Union[Literal["open", "fixed"], None]]
     commit_sha: NotRequired[str]
     message: NotRequired[CodeScanningAlertInstanceListPropMessageTypeForResponse]
     location: NotRequired[CodeScanningAlertLocationTypeForResponse]
@@ -54,7 +54,7 @@ class CodeScanningAlertInstanceListTypeForResponse(TypedDict):
     classifications: NotRequired[
         list[
             Union[
-                None, Literal["source", "generated", "test", "library", "documentation"]
+                Literal["source", "generated", "test", "library", "documentation"], None
             ]
         ]
     ]

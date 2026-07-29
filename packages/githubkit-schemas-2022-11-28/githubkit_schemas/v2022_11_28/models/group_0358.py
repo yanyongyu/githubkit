@@ -34,7 +34,7 @@ class Status(GitHubModel):
     context: str = Field()
     created_at: str = Field()
     updated_at: str = Field()
-    creator: Union[None, SimpleUser] = Field()
+    creator: Union[SimpleUser, None] = Field()
 
 
 model_rebuild(Status)

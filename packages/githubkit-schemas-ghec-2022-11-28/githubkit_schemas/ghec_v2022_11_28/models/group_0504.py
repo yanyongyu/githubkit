@@ -63,8 +63,8 @@ class TimelineCommentEvent(GitHubModel):
         default=UNSET
     )
     reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
-    pin: Missing[Union[None, PinnedIssueComment]] = Field(default=UNSET)
-    minimized: Missing[Union[None, IssueCommentMinimized]] = Field(default=UNSET)
+    pin: Missing[Union[PinnedIssueComment, None]] = Field(default=UNSET)
+    minimized: Missing[Union[IssueCommentMinimized, None]] = Field(default=UNSET)
 
 
 model_rebuild(TimelineCommentEvent)

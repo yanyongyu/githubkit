@@ -21,7 +21,7 @@ class ContributorActivityType(TypedDict):
     Contributor Activity
     """
 
-    author: Union[None, SimpleUserType]
+    author: Union[SimpleUserType, None]
     total: int
     weeks: list[ContributorActivityPropWeeksItemsType]
 
@@ -32,7 +32,7 @@ class ContributorActivityTypeForResponse(TypedDict):
     Contributor Activity
     """
 
-    author: Union[None, SimpleUserTypeForResponse]
+    author: Union[SimpleUserTypeForResponse, None]
     total: int
     weeks: list[ContributorActivityPropWeeksItemsTypeForResponse]
 

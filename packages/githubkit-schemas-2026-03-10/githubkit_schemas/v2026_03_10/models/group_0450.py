@@ -24,9 +24,9 @@ class PullRequestPropHead(GitHubModel):
 
     label: Union[str, None] = Field()
     ref: str = Field()
-    repo: Union[None, Repository] = Field()
+    repo: Union[Repository, None] = Field()
     sha: str = Field()
-    user: Union[None, SimpleUser] = Field()
+    user: Union[SimpleUser, None] = Field()
 
 
 class PullRequestPropBase(GitHubModel):

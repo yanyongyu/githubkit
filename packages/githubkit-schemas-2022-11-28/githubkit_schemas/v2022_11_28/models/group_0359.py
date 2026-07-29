@@ -25,13 +25,13 @@ from .group_0194 import CodeOfConductSimple
 class CommunityProfilePropFiles(GitHubModel):
     """CommunityProfilePropFiles"""
 
-    code_of_conduct: Union[None, CodeOfConductSimple] = Field()
-    code_of_conduct_file: Union[None, CommunityHealthFile] = Field()
-    license_: Union[None, LicenseSimple] = Field(alias="license")
-    contributing: Union[None, CommunityHealthFile] = Field()
-    readme: Union[None, CommunityHealthFile] = Field()
-    issue_template: Union[None, CommunityHealthFile] = Field()
-    pull_request_template: Union[None, CommunityHealthFile] = Field()
+    code_of_conduct: Union[CodeOfConductSimple, None] = Field()
+    code_of_conduct_file: Union[CommunityHealthFile, None] = Field()
+    license_: Union[LicenseSimple, None] = Field(alias="license")
+    contributing: Union[CommunityHealthFile, None] = Field()
+    readme: Union[CommunityHealthFile, None] = Field()
+    issue_template: Union[CommunityHealthFile, None] = Field()
+    pull_request_template: Union[CommunityHealthFile, None] = Field()
 
 
 class CommunityHealthFile(GitHubModel):

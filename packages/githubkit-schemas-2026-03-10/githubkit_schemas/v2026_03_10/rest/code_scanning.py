@@ -490,7 +490,7 @@ class CodeScanningClient:
         stream: bool = False,
         state: Literal["open", "dismissed"],
         dismissed_reason: Missing[
-            Union[None, Literal["false positive", "won't fix", "used in tests"]]
+            Union[Literal["false positive", "won't fix", "used in tests"], None]
         ] = UNSET,
         dismissed_comment: Missing[Union[str, None]] = UNSET,
         create_request: Missing[bool] = UNSET,
@@ -509,7 +509,7 @@ class CodeScanningClient:
         stream: bool = False,
         state: Missing[Literal["open", "dismissed"]] = UNSET,
         dismissed_reason: Missing[
-            Union[None, Literal["false positive", "won't fix", "used in tests"]]
+            Union[Literal["false positive", "won't fix", "used in tests"], None]
         ] = UNSET,
         dismissed_comment: Missing[Union[str, None]] = UNSET,
         create_request: Missing[bool] = UNSET,
@@ -613,7 +613,7 @@ class CodeScanningClient:
         stream: bool = False,
         state: Literal["open", "dismissed"],
         dismissed_reason: Missing[
-            Union[None, Literal["false positive", "won't fix", "used in tests"]]
+            Union[Literal["false positive", "won't fix", "used in tests"], None]
         ] = UNSET,
         dismissed_comment: Missing[Union[str, None]] = UNSET,
         create_request: Missing[bool] = UNSET,
@@ -632,7 +632,7 @@ class CodeScanningClient:
         stream: bool = False,
         state: Missing[Literal["open", "dismissed"]] = UNSET,
         dismissed_reason: Missing[
-            Union[None, Literal["false positive", "won't fix", "used in tests"]]
+            Union[Literal["false positive", "won't fix", "used in tests"], None]
         ] = UNSET,
         dismissed_comment: Missing[Union[str, None]] = UNSET,
         create_request: Missing[bool] = UNSET,

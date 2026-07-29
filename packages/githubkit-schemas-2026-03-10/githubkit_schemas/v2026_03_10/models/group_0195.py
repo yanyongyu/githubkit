@@ -117,7 +117,7 @@ class FullRepository(GitHubModel):
     updated_at: _dt.datetime = Field()
     permissions: Missing[FullRepositoryPropPermissions] = Field(default=UNSET)
     allow_rebase_merge: Missing[bool] = Field(default=UNSET)
-    template_repository: Missing[Union[None, Repository]] = Field(default=UNSET)
+    template_repository: Missing[Union[Repository, None]] = Field(default=UNSET)
     temp_clone_token: Missing[Union[str, None]] = Field(default=UNSET)
     allow_squash_merge: Missing[bool] = Field(default=UNSET)
     allow_auto_merge: Missing[bool] = Field(default=UNSET)
@@ -148,8 +148,8 @@ class FullRepository(GitHubModel):
     web_commit_signoff_required: Missing[bool] = Field(default=UNSET)
     subscribers_count: int = Field()
     network_count: int = Field()
-    license_: Union[None, LicenseSimple] = Field(alias="license")
-    organization: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    license_: Union[LicenseSimple, None] = Field(alias="license")
+    organization: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
     parent: Missing[Repository] = Field(
         default=UNSET, title="Repository", description="A repository on GitHub."
     )

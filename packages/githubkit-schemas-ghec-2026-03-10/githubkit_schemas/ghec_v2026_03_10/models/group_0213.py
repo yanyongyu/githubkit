@@ -34,10 +34,10 @@ class IssueType(GitHubModel):
     )
     color: Missing[
         Union[
-            None,
             Literal[
                 "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
             ],
+            None,
         ]
     ] = Field(default=UNSET, description="The color of the issue type.")
     created_at: Missing[_dt.datetime] = Field(

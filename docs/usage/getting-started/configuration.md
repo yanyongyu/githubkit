@@ -158,8 +158,10 @@ Provide custom [HTTPX transports](https://www.python-httpx.org/advanced/transpor
 ```python
 import httpx
 
+
 def mock_handler(request: httpx.Request) -> httpx.Response:
     return httpx.Response(200, json={"login": "octocat"})
+
 
 github = GitHub(transport=httpx.MockTransport(mock_handler))
 ```
@@ -185,11 +187,14 @@ Both options accept a dictionary mapping event names (`"request"`, `"response"`)
     import httpx
     from githubkit import GitHub
 
+
     def log_request(request: httpx.Request) -> None:
         print(f"-> {request.method} {request.url}")
 
+
     def log_response(response: httpx.Response) -> None:
         print(f"<- {response.status_code}")
+
 
     github = GitHub(
         event_hooks={
@@ -205,11 +210,14 @@ Both options accept a dictionary mapping event names (`"request"`, `"response"`)
     import httpx
     from githubkit import GitHub
 
+
     async def log_request(request: httpx.Request) -> None:
         print(f"-> {request.method} {request.url}")
 
+
     async def log_response(response: httpx.Response) -> None:
         print(f"<- {response.status_code}")
+
 
     github = GitHub(
         async_event_hooks={

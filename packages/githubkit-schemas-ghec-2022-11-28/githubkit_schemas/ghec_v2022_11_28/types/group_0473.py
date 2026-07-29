@@ -23,10 +23,10 @@ class IssueTypeWebhookType(TypedDict):
     name: str
     color: NotRequired[
         Union[
-            None,
             Literal[
                 "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
             ],
+            None,
         ]
     ]
 
@@ -41,10 +41,10 @@ class IssueTypeWebhookTypeForResponse(TypedDict):
     name: str
     color: NotRequired[
         Union[
-            None,
             Literal[
                 "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
             ],
+            None,
         ]
     ]
 

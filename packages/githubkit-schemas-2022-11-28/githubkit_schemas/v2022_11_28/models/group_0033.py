@@ -67,7 +67,7 @@ class CodeSecurityConfiguration(GitHubModel):
         )
     )
     dependabot_delegated_alert_dismissal: Missing[
-        Union[None, Literal["enabled", "disabled", "not_set"]]
+        Union[Literal["enabled", "disabled", "not_set"], None]
     ] = Field(
         default=UNSET,
         description="The enablement status of Dependabot delegated alert dismissal",
@@ -188,7 +188,7 @@ class CodeSecurityConfigurationPropCodeScanningDefaultSetupOptions(GitHubModel):
     Feature options for code scanning default setup
     """
 
-    runner_type: Missing[Union[None, Literal["standard", "labeled", "not_set"]]] = (
+    runner_type: Missing[Union[Literal["standard", "labeled", "not_set"], None]] = (
         Field(
             default=UNSET,
             description="Whether to use labeled runners or standard GitHub runners.",

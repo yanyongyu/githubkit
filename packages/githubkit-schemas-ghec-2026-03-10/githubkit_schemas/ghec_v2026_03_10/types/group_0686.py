@@ -59,7 +59,6 @@ class WebhookCheckSuiteRequestedPropCheckSuiteType(TypedDict):
     before: Union[str, None]
     check_runs_url: str
     conclusion: Union[
-        None,
         Literal[
             "success",
             "failure",
@@ -70,6 +69,7 @@ class WebhookCheckSuiteRequestedPropCheckSuiteType(TypedDict):
             "stale",
             "skipped",
         ],
+        None,
     ]
     created_at: _dt.datetime
     head_branch: Union[str, None]
@@ -83,7 +83,7 @@ class WebhookCheckSuiteRequestedPropCheckSuiteType(TypedDict):
     ]
     rerequestable: NotRequired[bool]
     runs_rerequestable: NotRequired[bool]
-    status: Union[None, Literal["requested", "in_progress", "completed", "queued"]]
+    status: Union[Literal["requested", "in_progress", "completed", "queued"], None]
     updated_at: _dt.datetime
     url: str
 
@@ -100,7 +100,6 @@ class WebhookCheckSuiteRequestedPropCheckSuiteTypeForResponse(TypedDict):
     before: Union[str, None]
     check_runs_url: str
     conclusion: Union[
-        None,
         Literal[
             "success",
             "failure",
@@ -111,6 +110,7 @@ class WebhookCheckSuiteRequestedPropCheckSuiteTypeForResponse(TypedDict):
             "stale",
             "skipped",
         ],
+        None,
     ]
     created_at: str
     head_branch: Union[str, None]
@@ -124,7 +124,7 @@ class WebhookCheckSuiteRequestedPropCheckSuiteTypeForResponse(TypedDict):
     ]
     rerequestable: NotRequired[bool]
     runs_rerequestable: NotRequired[bool]
-    status: Union[None, Literal["requested", "in_progress", "completed", "queued"]]
+    status: Union[Literal["requested", "in_progress", "completed", "queued"], None]
     updated_at: str
     url: str
 

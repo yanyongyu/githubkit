@@ -51,8 +51,8 @@ class TimelineCommentEventType(TypedDict):
     ]
     performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
     reactions: NotRequired[ReactionRollupType]
-    pin: NotRequired[Union[None, PinnedIssueCommentType]]
-    minimized: NotRequired[Union[None, IssueCommentMinimizedType]]
+    pin: NotRequired[Union[PinnedIssueCommentType, None]]
+    minimized: NotRequired[Union[IssueCommentMinimizedType, None]]
 
 
 class TimelineCommentEventTypeForResponse(TypedDict):
@@ -86,8 +86,8 @@ class TimelineCommentEventTypeForResponse(TypedDict):
     ]
     performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
     reactions: NotRequired[ReactionRollupTypeForResponse]
-    pin: NotRequired[Union[None, PinnedIssueCommentTypeForResponse]]
-    minimized: NotRequired[Union[None, IssueCommentMinimizedTypeForResponse]]
+    pin: NotRequired[Union[PinnedIssueCommentTypeForResponse, None]]
+    minimized: NotRequired[Union[IssueCommentMinimizedTypeForResponse, None]]
 
 
 __all__ = (

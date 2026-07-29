@@ -52,15 +52,15 @@ class IssueSearchResultItemType(TypedDict):
     locked: bool
     active_lock_reason: NotRequired[Union[str, None]]
     assignees: NotRequired[Union[list[SimpleUserType], None]]
-    user: Union[None, SimpleUserType]
+    user: Union[SimpleUserType, None]
     labels: list[IssueSearchResultItemPropLabelsItemsType]
     sub_issues_summary: NotRequired[SubIssuesSummaryType]
     issue_dependencies_summary: NotRequired[IssueDependenciesSummaryType]
     issue_field_values: NotRequired[list[IssueFieldValueType]]
     state: str
     state_reason: NotRequired[Union[str, None]]
-    assignee: Union[None, SimpleUserType]
-    milestone: Union[None, MilestoneType]
+    assignee: Union[SimpleUserType, None]
+    milestone: Union[MilestoneType, None]
     comments: int
     created_at: _dt.datetime
     updated_at: _dt.datetime
@@ -86,7 +86,7 @@ class IssueSearchResultItemType(TypedDict):
     timeline_url: NotRequired[str]
     type: NotRequired[Union[IssueTypeType, None]]
     performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
-    pinned_comment: NotRequired[Union[None, IssueCommentType]]
+    pinned_comment: NotRequired[Union[IssueCommentType, None]]
     reactions: NotRequired[ReactionRollupType]
 
 
@@ -109,15 +109,15 @@ class IssueSearchResultItemTypeForResponse(TypedDict):
     locked: bool
     active_lock_reason: NotRequired[Union[str, None]]
     assignees: NotRequired[Union[list[SimpleUserTypeForResponse], None]]
-    user: Union[None, SimpleUserTypeForResponse]
+    user: Union[SimpleUserTypeForResponse, None]
     labels: list[IssueSearchResultItemPropLabelsItemsTypeForResponse]
     sub_issues_summary: NotRequired[SubIssuesSummaryTypeForResponse]
     issue_dependencies_summary: NotRequired[IssueDependenciesSummaryTypeForResponse]
     issue_field_values: NotRequired[list[IssueFieldValueTypeForResponse]]
     state: str
     state_reason: NotRequired[Union[str, None]]
-    assignee: Union[None, SimpleUserTypeForResponse]
-    milestone: Union[None, MilestoneTypeForResponse]
+    assignee: Union[SimpleUserTypeForResponse, None]
+    milestone: Union[MilestoneTypeForResponse, None]
     comments: int
     created_at: str
     updated_at: str
@@ -143,7 +143,7 @@ class IssueSearchResultItemTypeForResponse(TypedDict):
     timeline_url: NotRequired[str]
     type: NotRequired[Union[IssueTypeTypeForResponse, None]]
     performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
-    pinned_comment: NotRequired[Union[None, IssueCommentTypeForResponse]]
+    pinned_comment: NotRequired[Union[IssueCommentTypeForResponse, None]]
     reactions: NotRequired[ReactionRollupTypeForResponse]
 
 

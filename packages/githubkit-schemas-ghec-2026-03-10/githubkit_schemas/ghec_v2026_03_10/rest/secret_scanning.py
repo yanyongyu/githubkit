@@ -3827,12 +3827,12 @@ class SecretScanningClient:
         state: Literal["open", "resolved"],
         resolution: Missing[
             Union[
-                None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]
+                Literal["false_positive", "wont_fix", "revoked", "used_in_tests"], None
             ]
         ] = UNSET,
         resolution_comment: Missing[Union[str, None]] = UNSET,
         assignee: Missing[Union[str, None]] = UNSET,
-        validity: Missing[Union[None, Literal["active", "inactive"]]] = UNSET,
+        validity: Missing[Union[Literal["active", "inactive"], None]] = UNSET,
     ) -> Response[
         SecretScanningAlertWithMetadata, SecretScanningAlertWithMetadataTypeForResponse
     ]: ...
@@ -3850,12 +3850,12 @@ class SecretScanningClient:
         state: Missing[Literal["open", "resolved"]] = UNSET,
         resolution: Missing[
             Union[
-                None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]
+                Literal["false_positive", "wont_fix", "revoked", "used_in_tests"], None
             ]
         ] = UNSET,
         resolution_comment: Missing[Union[str, None]] = UNSET,
         assignee: Union[str, None],
-        validity: Missing[Union[None, Literal["active", "inactive"]]] = UNSET,
+        validity: Missing[Union[Literal["active", "inactive"], None]] = UNSET,
     ) -> Response[
         SecretScanningAlertWithMetadata, SecretScanningAlertWithMetadataTypeForResponse
     ]: ...
@@ -3873,12 +3873,12 @@ class SecretScanningClient:
         state: Missing[Literal["open", "resolved"]] = UNSET,
         resolution: Missing[
             Union[
-                None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]
+                Literal["false_positive", "wont_fix", "revoked", "used_in_tests"], None
             ]
         ] = UNSET,
         resolution_comment: Missing[Union[str, None]] = UNSET,
         assignee: Missing[Union[str, None]] = UNSET,
-        validity: Union[None, Literal["active", "inactive"]],
+        validity: Union[Literal["active", "inactive"], None],
     ) -> Response[
         SecretScanningAlertWithMetadata, SecretScanningAlertWithMetadataTypeForResponse
     ]: ...
@@ -3990,12 +3990,12 @@ class SecretScanningClient:
         state: Literal["open", "resolved"],
         resolution: Missing[
             Union[
-                None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]
+                Literal["false_positive", "wont_fix", "revoked", "used_in_tests"], None
             ]
         ] = UNSET,
         resolution_comment: Missing[Union[str, None]] = UNSET,
         assignee: Missing[Union[str, None]] = UNSET,
-        validity: Missing[Union[None, Literal["active", "inactive"]]] = UNSET,
+        validity: Missing[Union[Literal["active", "inactive"], None]] = UNSET,
     ) -> Response[
         SecretScanningAlertWithMetadata, SecretScanningAlertWithMetadataTypeForResponse
     ]: ...
@@ -4013,12 +4013,12 @@ class SecretScanningClient:
         state: Missing[Literal["open", "resolved"]] = UNSET,
         resolution: Missing[
             Union[
-                None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]
+                Literal["false_positive", "wont_fix", "revoked", "used_in_tests"], None
             ]
         ] = UNSET,
         resolution_comment: Missing[Union[str, None]] = UNSET,
         assignee: Union[str, None],
-        validity: Missing[Union[None, Literal["active", "inactive"]]] = UNSET,
+        validity: Missing[Union[Literal["active", "inactive"], None]] = UNSET,
     ) -> Response[
         SecretScanningAlertWithMetadata, SecretScanningAlertWithMetadataTypeForResponse
     ]: ...
@@ -4036,12 +4036,12 @@ class SecretScanningClient:
         state: Missing[Literal["open", "resolved"]] = UNSET,
         resolution: Missing[
             Union[
-                None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]
+                Literal["false_positive", "wont_fix", "revoked", "used_in_tests"], None
             ]
         ] = UNSET,
         resolution_comment: Missing[Union[str, None]] = UNSET,
         assignee: Missing[Union[str, None]] = UNSET,
-        validity: Union[None, Literal["active", "inactive"]],
+        validity: Union[Literal["active", "inactive"], None],
     ) -> Response[
         SecretScanningAlertWithMetadata, SecretScanningAlertWithMetadataTypeForResponse
     ]: ...

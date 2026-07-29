@@ -45,7 +45,7 @@ class TeamFull(GitHubModel):
     )
     members_url: str = Field()
     repositories_url: str = Field()
-    parent: Missing[Union[None, TeamSimple]] = Field(default=UNSET)
+    parent: Missing[Union[TeamSimple, None]] = Field(default=UNSET)
     members_count: int = Field()
     repos_count: int = Field()
     created_at: _dt.datetime = Field()

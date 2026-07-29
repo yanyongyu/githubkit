@@ -36,7 +36,7 @@ class Milestone(GitHubModel):
     )
     title: str = Field(description="The title of the milestone.")
     description: Union[str, None] = Field()
-    creator: Union[None, SimpleUser] = Field()
+    creator: Union[SimpleUser, None] = Field()
     open_issues: int = Field()
     closed_issues: int = Field()
     created_at: _dt.datetime = Field()

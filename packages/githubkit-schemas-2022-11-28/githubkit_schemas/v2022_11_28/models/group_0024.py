@@ -42,8 +42,8 @@ class Authorization(GitHubModel):
     updated_at: _dt.datetime = Field()
     created_at: _dt.datetime = Field()
     fingerprint: Union[str, None] = Field()
-    user: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    installation: Missing[Union[None, ScopedInstallation]] = Field(default=UNSET)
+    user: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
+    installation: Missing[Union[ScopedInstallation, None]] = Field(default=UNSET)
     expires_at: Union[_dt.datetime, None] = Field()
 
 

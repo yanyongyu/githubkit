@@ -40,7 +40,6 @@ class Job(GitHubModel):
         "queued", "in_progress", "completed", "waiting", "requested", "pending"
     ] = Field(description="The phase of the lifecycle that the job is currently in.")
     conclusion: Union[
-        None,
         Literal[
             "success",
             "failure",
@@ -50,6 +49,7 @@ class Job(GitHubModel):
             "timed_out",
             "action_required",
         ],
+        None,
     ] = Field(description="The outcome of the job.")
     created_at: _dt.datetime = Field(
         description="The time that the job created, in ISO 8601 format."

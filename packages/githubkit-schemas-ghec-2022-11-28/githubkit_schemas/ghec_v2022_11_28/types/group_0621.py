@@ -29,8 +29,8 @@ class RepositoryWebhooksType(TypedDict):
     node_id: str
     name: str
     full_name: str
-    license_: Union[None, LicenseSimpleType]
-    organization: NotRequired[Union[None, SimpleUserType]]
+    license_: Union[LicenseSimpleType, None]
+    organization: NotRequired[Union[SimpleUserType, None]]
     forks: int
     permissions: NotRequired[RepositoryWebhooksPropPermissionsType]
     owner: SimpleUserType
@@ -145,8 +145,8 @@ class RepositoryWebhooksTypeForResponse(TypedDict):
     node_id: str
     name: str
     full_name: str
-    license_: Union[None, LicenseSimpleTypeForResponse]
-    organization: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    license_: Union[LicenseSimpleTypeForResponse, None]
+    organization: NotRequired[Union[SimpleUserTypeForResponse, None]]
     forks: int
     permissions: NotRequired[RepositoryWebhooksPropPermissionsTypeForResponse]
     owner: SimpleUserTypeForResponse

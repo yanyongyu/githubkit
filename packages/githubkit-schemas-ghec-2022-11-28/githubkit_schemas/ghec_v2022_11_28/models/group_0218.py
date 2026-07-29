@@ -40,7 +40,7 @@ class IssueComment(GitHubModel):
     body_text: Missing[str] = Field(default=UNSET)
     body_html: Missing[str] = Field(default=UNSET)
     html_url: str = Field()
-    user: Union[None, SimpleUser] = Field()
+    user: Union[SimpleUser, None] = Field()
     created_at: _dt.datetime = Field()
     updated_at: _dt.datetime = Field()
     issue_url: str = Field()
@@ -64,8 +64,8 @@ class IssueComment(GitHubModel):
         default=UNSET
     )
     reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
-    pin: Missing[Union[None, PinnedIssueComment]] = Field(default=UNSET)
-    minimized: Missing[Union[None, IssueCommentMinimized]] = Field(default=UNSET)
+    pin: Missing[Union[PinnedIssueComment, None]] = Field(default=UNSET)
+    minimized: Missing[Union[IssueCommentMinimized, None]] = Field(default=UNSET)
 
 
 model_rebuild(IssueComment)
