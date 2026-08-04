@@ -120,10 +120,9 @@ def test_mem_cache_passive_expiry():
 
 def test_core_context_manager_safety():
     gh = GitHubCore()
-    with pytest.raises(RuntimeError):
-        with gh:
-            with gh:
-                pass
+    with gh:
+        with pytest.raises(RuntimeError):
+            gh.__enter__()
 
     # Ensure no lingering client after error
     assert gh._GitHubCore__sync_client.get() is None
