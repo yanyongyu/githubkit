@@ -1,7 +1,7 @@
+from datetime import timedelta
 import json
 from pathlib import Path
 import threading
-from datetime import timedelta
 from typing import Any, TypeVar
 
 from githubkit_schemas.latest.models import FullRepository
@@ -110,6 +110,7 @@ def test_mem_cache_passive_expiry():
     cache.set("key2", "val2", timedelta(hours=1))
 
     import time
+
     time.sleep(0.01)
 
     assert cache.get("key1") is None
