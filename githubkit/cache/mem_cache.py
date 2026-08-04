@@ -27,8 +27,13 @@ class MemCache(AsyncBaseCache, BaseCache):
 
     @override
     def get(self, key: str) -> str | None:
-        self.expire()
-        return (item := self._cache.get(key, None)) and item.value
+        item = self._cache.get(key)
+        if item is None:
+            return None
+        if item.expire_at is not None and item.expire_at < datetime.now(timezone.utc):
+            self._cache.pop(key, None)
+            return None
+        return item.value
 
     @override
     async def aget(self, key: str) -> str | None:
@@ -36,7 +41,6 @@ class MemCache(AsyncBaseCache, BaseCache):
 
     @override
     def set(self, key: str, value: str, ex: timedelta) -> None:
-        self.expire()
         self._cache[key] = _Item(value, datetime.now(timezone.utc) + ex)
 
     @override
