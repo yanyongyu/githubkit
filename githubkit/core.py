@@ -4,7 +4,7 @@ from contextvars import ContextVar
 from datetime import datetime, timedelta, timezone
 import time
 from types import TracebackType
-from typing import TYPE_CHECKING, Any, Generic, TypeVar, cast, overload
+from typing import TYPE_CHECKING, Any, Generic, TypeVar, overload
 
 import anyio
 import httpx
@@ -222,8 +222,11 @@ class GitHubCore(Generic[A]):
         exc_value: BaseException | None = None,
         traceback: TracebackType | None = None,
     ):
-        cast(httpx.Client, self.__sync_client.get()).close()
-        self.__sync_client.set(None)
+        if client := self.__sync_client.get():
+            try:
+                client.close()
+            finally:
+                self.__sync_client.set(None)
 
     # async context
     async def __aenter__(self):
@@ -238,8 +241,11 @@ class GitHubCore(Generic[A]):
         exc_value: BaseException | None = None,
         traceback: TracebackType | None = None,
     ):
-        await cast(httpx.AsyncClient, self.__async_client.get()).aclose()
-        self.__async_client.set(None)
+        if client := self.__async_client.get():
+            try:
+                await client.aclose()
+            finally:
+                self.__async_client.set(None)
 
     def _get_client_defaults(self) -> dict[str, Any]:
         """Get default arguments for creating a httpx client."""
