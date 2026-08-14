@@ -9,84 +9,65 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ScimV2OrganizationsOrgUsersScimUserIdPutBodyType(TypedDict):
-    """ScimV2OrganizationsOrgUsersScimUserIdPutBody"""
+class ReposOwnerRepoStacksStackNumberAddPostResponse422Type(TypedDict):
+    """Validation Error
 
-    schemas: NotRequired[list[str]]
-    display_name: NotRequired[str]
-    external_id: NotRequired[str]
-    groups: NotRequired[list[str]]
-    active: NotRequired[bool]
-    user_name: str
-    name: ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameType
-    emails: list[ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsType]
+    Validation Error
+    """
 
-
-class ScimV2OrganizationsOrgUsersScimUserIdPutBodyTypeForResponse(TypedDict):
-    """ScimV2OrganizationsOrgUsersScimUserIdPutBody"""
-
-    schemas: NotRequired[list[str]]
-    display_name: NotRequired[str]
-    external_id: NotRequired[str]
-    groups: NotRequired[list[str]]
-    active: NotRequired[bool]
-    user_name: str
-    name: ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameTypeForResponse
-    emails: list[
-        ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsTypeForResponse
+    message: str
+    documentation_url: str
+    errors: NotRequired[
+        list[ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItemsType]
     ]
 
 
-class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameType(TypedDict):
-    """ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName
+class ReposOwnerRepoStacksStackNumberAddPostResponse422TypeForResponse(TypedDict):
+    """Validation Error
 
-    Examples:
-        {'givenName': 'Jane', 'familyName': 'User'}
+    Validation Error
     """
 
-    given_name: str
-    family_name: str
-    formatted: NotRequired[str]
+    message: str
+    documentation_url: str
+    errors: NotRequired[
+        list[
+            ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItemsTypeForResponse
+        ]
+    ]
 
 
-class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameTypeForResponse(TypedDict):
-    """ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName
+class ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItemsType(TypedDict):
+    """ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems"""
 
-    Examples:
-        {'givenName': 'Jane', 'familyName': 'User'}
-    """
-
-    given_name: str
-    family_name: str
-    formatted: NotRequired[str]
-
-
-class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsType(TypedDict):
-    """ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems"""
-
-    type: NotRequired[str]
-    value: str
-    primary: NotRequired[bool]
+    resource: NotRequired[str]
+    field: NotRequired[str]
+    message: NotRequired[str]
+    code: str
+    index: NotRequired[int]
+    value: NotRequired[Union[str, None, int, None, list[Union[str, int]], None]]
 
 
-class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsTypeForResponse(
+class ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItemsTypeForResponse(
     TypedDict
 ):
-    """ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems"""
+    """ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems"""
 
-    type: NotRequired[str]
-    value: str
-    primary: NotRequired[bool]
+    resource: NotRequired[str]
+    field: NotRequired[str]
+    message: NotRequired[str]
+    code: str
+    index: NotRequired[int]
+    value: NotRequired[Union[str, None, int, None, list[Union[str, int]], None]]
 
 
 __all__ = (
-    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsType",
-    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsTypeForResponse",
-    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameType",
-    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameTypeForResponse",
-    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyType",
-    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyTypeForResponse",
+    "ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItemsType",
+    "ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItemsTypeForResponse",
+    "ReposOwnerRepoStacksStackNumberAddPostResponse422Type",
+    "ReposOwnerRepoStacksStackNumberAddPostResponse422TypeForResponse",
 )

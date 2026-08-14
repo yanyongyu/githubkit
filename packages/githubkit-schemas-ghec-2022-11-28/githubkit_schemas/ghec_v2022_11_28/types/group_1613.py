@@ -12,28 +12,27 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class ReposOwnerRepoPullsPullNumberPatchBodyType(TypedDict):
-    """ReposOwnerRepoPullsPullNumberPatchBody"""
-
-    title: NotRequired[str]
-    body: NotRequired[str]
-    state: NotRequired[Literal["open", "closed"]]
-    base: NotRequired[str]
-    maintainer_can_modify: NotRequired[bool]
+from .group_1611 import (
+    ReposOwnerRepoPagesPostBodyPropSourceType,
+    ReposOwnerRepoPagesPostBodyPropSourceTypeForResponse,
+)
 
 
-class ReposOwnerRepoPullsPullNumberPatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoPullsPullNumberPatchBody"""
+class ReposOwnerRepoPagesPostBodyAnyof1Type(TypedDict):
+    """ReposOwnerRepoPagesPostBodyAnyof1"""
 
-    title: NotRequired[str]
-    body: NotRequired[str]
-    state: NotRequired[Literal["open", "closed"]]
-    base: NotRequired[str]
-    maintainer_can_modify: NotRequired[bool]
+    build_type: Literal["legacy", "workflow"]
+    source: NotRequired[ReposOwnerRepoPagesPostBodyPropSourceType]
+
+
+class ReposOwnerRepoPagesPostBodyAnyof1TypeForResponse(TypedDict):
+    """ReposOwnerRepoPagesPostBodyAnyof1"""
+
+    build_type: Literal["legacy", "workflow"]
+    source: NotRequired[ReposOwnerRepoPagesPostBodyPropSourceTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberPatchBodyType",
-    "ReposOwnerRepoPullsPullNumberPatchBodyTypeForResponse",
+    "ReposOwnerRepoPagesPostBodyAnyof1Type",
+    "ReposOwnerRepoPagesPostBodyAnyof1TypeForResponse",
 )

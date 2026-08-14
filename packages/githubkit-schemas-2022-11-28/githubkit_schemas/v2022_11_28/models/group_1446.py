@@ -9,43 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoSecretScanningCustomPatternsPostResponse422(GitHubModel):
-    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse422"""
+class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0(GitHubModel):
+    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0"""
 
-    message: Missing[str] = Field(
-        default=UNSET, description="A summary message describing the error."
+    state: Literal["open", "resolved"] = Field(
+        description="Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`."
     )
-    validation_errors: Missing[
-        ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors
+    resolution: Missing[
+        Union[Literal["false_positive", "wont_fix", "revoked", "used_in_tests"], None]
     ] = Field(
         default=UNSET,
-        description="A map of validation errors keyed by the zero-based index of the pattern that failed.",
+        description="**Required when the `state` is `resolved`.** The reason for resolving the alert.",
+    )
+    resolution_comment: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="An optional comment when closing or reopening an alert. Cannot be updated or deleted.",
+    )
+    assignee: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The username of the user to assign to the alert. Set to `null` to unassign the alert.",
+    )
+    validity: Missing[Union[Literal["active", "inactive"], None]] = Field(
+        default=UNSET,
+        description="Sets the validity of the secret scanning alert. Can be `active`, `inactive`, or `null` to clear the override.",
     )
 
 
-class ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors(
-    ExtraGitHubModel
-):
-    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors
+model_rebuild(ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0)
 
-    A map of validation errors keyed by the zero-based index of the pattern that
-    failed.
-    """
-
-
-model_rebuild(ReposOwnerRepoSecretScanningCustomPatternsPostResponse422)
-model_rebuild(
-    ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors
-)
-
-__all__ = (
-    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422",
-    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors",
-)
+__all__ = ("ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0",)

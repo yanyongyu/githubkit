@@ -9,24 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class UserUserIdProjectsV2ProjectNumberDraftsPostBodyType(TypedDict):
-    """UserUserIdProjectsV2ProjectNumberDraftsPostBody"""
-
-    title: str
-    body: NotRequired[str]
+class UserInteractionLimitsGetResponse200Anyof1Type(TypedDict):
+    """UserInteractionLimitsGetResponse200Anyof1"""
 
 
-class UserUserIdProjectsV2ProjectNumberDraftsPostBodyTypeForResponse(TypedDict):
-    """UserUserIdProjectsV2ProjectNumberDraftsPostBody"""
-
-    title: str
-    body: NotRequired[str]
+class UserInteractionLimitsGetResponse200Anyof1TypeForResponse(TypedDict):
+    """UserInteractionLimitsGetResponse200Anyof1"""
 
 
 __all__ = (
-    "UserUserIdProjectsV2ProjectNumberDraftsPostBodyType",
-    "UserUserIdProjectsV2ProjectNumberDraftsPostBodyTypeForResponse",
+    "UserInteractionLimitsGetResponse200Anyof1Type",
+    "UserInteractionLimitsGetResponse200Anyof1TypeForResponse",
 )

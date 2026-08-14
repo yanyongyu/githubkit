@@ -13,43 +13,38 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0112 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
-from .group_0618 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0619 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0620 import (
+from .group_0114 import CustomPropertyType, CustomPropertyTypeForResponse
+from .group_0619 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0620 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0621 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0621 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookCustomPropertyValuesUpdatedType(TypedDict):
-    """Custom property values updated event"""
+class WebhookCustomPropertyUpdatedType(TypedDict):
+    """custom property updated event"""
 
     action: Literal["updated"]
+    definition: CustomPropertyType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    repository: RepositoryWebhooksType
-    organization: OrganizationSimpleWebhooksType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
     sender: NotRequired[SimpleUserType]
-    new_property_values: list[CustomPropertyValueType]
-    old_property_values: list[CustomPropertyValueType]
 
 
-class WebhookCustomPropertyValuesUpdatedTypeForResponse(TypedDict):
-    """Custom property values updated event"""
+class WebhookCustomPropertyUpdatedTypeForResponse(TypedDict):
+    """custom property updated event"""
 
     action: Literal["updated"]
+    definition: CustomPropertyTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    organization: OrganizationSimpleWebhooksTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     sender: NotRequired[SimpleUserTypeForResponse]
-    new_property_values: list[CustomPropertyValueTypeForResponse]
-    old_property_values: list[CustomPropertyValueTypeForResponse]
 
 
 __all__ = (
-    "WebhookCustomPropertyValuesUpdatedType",
-    "WebhookCustomPropertyValuesUpdatedTypeForResponse",
+    "WebhookCustomPropertyUpdatedType",
+    "WebhookCustomPropertyUpdatedTypeForResponse",
 )

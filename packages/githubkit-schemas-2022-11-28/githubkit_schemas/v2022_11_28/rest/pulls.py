@@ -32,6 +32,7 @@ if TYPE_CHECKING:
         Commit,
         DiffEntry,
         PullRequest,
+        PullRequestMergeAsyncResult,
         PullRequestMergeResult,
         PullRequestReview,
         PullRequestReviewComment,
@@ -48,6 +49,7 @@ if TYPE_CHECKING:
     from ..types import (
         CommitTypeForResponse,
         DiffEntryTypeForResponse,
+        PullRequestMergeAsyncResultTypeForResponse,
         PullRequestMergeResultTypeForResponse,
         PullRequestReviewCommentTypeForResponse,
         PullRequestReviewRequestTypeForResponse,
@@ -59,6 +61,7 @@ if TYPE_CHECKING:
         ReposOwnerRepoPullsPostBodyType,
         ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType,
         ReposOwnerRepoPullsPullNumberCommentsPostBodyType,
+        ReposOwnerRepoPullsPullNumberMergeAsyncPutBodyType,
         ReposOwnerRepoPullsPullNumberMergePutBodyType,
         ReposOwnerRepoPullsPullNumberPatchBodyType,
         ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType,
@@ -2133,6 +2136,310 @@ class PullsClient:
                 "405": ReposOwnerRepoPullsPullNumberMergePutResponse405,
                 "409": ReposOwnerRepoPullsPullNumberMergePutResponse409,
                 "422": ValidationError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def merge_async(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[
+            Union[ReposOwnerRepoPullsPullNumberMergeAsyncPutBodyType, None]
+        ] = UNSET,
+    ) -> Response[
+        PullRequestMergeAsyncResult, PullRequestMergeAsyncResultTypeForResponse
+    ]: ...
+
+    @overload
+    def merge_async(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        commit_title: Missing[str] = UNSET,
+        commit_message: Missing[str] = UNSET,
+        sha: Missing[str] = UNSET,
+        merge_method: Missing[Literal["merge", "squash", "rebase"]] = UNSET,
+        merge_action: Missing[
+            Literal["default", "direct_merge", "merge_queue"]
+        ] = UNSET,
+    ) -> Response[
+        PullRequestMergeAsyncResult, PullRequestMergeAsyncResultTypeForResponse
+    ]: ...
+
+    def merge_async(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[
+            Union[ReposOwnerRepoPullsPullNumberMergeAsyncPutBodyType, None]
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        PullRequestMergeAsyncResult, PullRequestMergeAsyncResultTypeForResponse
+    ]:
+        """pulls/merge-async
+
+        PUT /repos/{owner}/{repo}/pulls/{pull_number}/merge-async
+
+        Merges a pull request into the base branch in the background. Merging in this way allows certain types of errors to be retried, and avoids the risk of timeouts for particularly complex merges.
+
+        This is the required method for merging stacked PRs, but also supports unstacked PRs. When using this endpoint to merge a stacked pull request, all pull requests in the stack up to and including the requested PR will be merged into the base branch.
+
+        The response includes a UUID that can be used to fetch the result of the merge. If another asynchronous merge request has already been made for this pull request, the UUID of that request will be returned instead with a 409 response status to indicate that the merge options may be different from those that were requested. If there isn't an existing asynchronous merge request, a 202 response status is used.
+
+        If the pull request is already merged, the merge commit OID will be returned immediately with a 200 status.
+
+        If the pull request cannot be merged (e.g. because it is closed, or still a draft) this result will be returned immediately with a 400 response status. Branch protection rules and repository rules are not run at this stage, only basic pull request state checks are performed.
+
+        See also: https://docs.github.com/rest/pulls/pulls#merge-a-pull-request-asynchronously
+        """
+
+        from typing import Union
+
+        from ..models import (
+            BasicError,
+            PullRequestMergeAsyncResult,
+            ReposOwnerRepoPullsPullNumberMergeAsyncPutBody,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/pulls/{pull_number}/merge-async"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                Union[ReposOwnerRepoPullsPullNumberMergeAsyncPutBody, None], json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=PullRequestMergeAsyncResult,
+            error_models={
+                "409": PullRequestMergeAsyncResult,
+                "400": PullRequestMergeAsyncResult,
+                "422": ValidationError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    async def async_merge_async(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[
+            Union[ReposOwnerRepoPullsPullNumberMergeAsyncPutBodyType, None]
+        ] = UNSET,
+    ) -> Response[
+        PullRequestMergeAsyncResult, PullRequestMergeAsyncResultTypeForResponse
+    ]: ...
+
+    @overload
+    async def async_merge_async(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        commit_title: Missing[str] = UNSET,
+        commit_message: Missing[str] = UNSET,
+        sha: Missing[str] = UNSET,
+        merge_method: Missing[Literal["merge", "squash", "rebase"]] = UNSET,
+        merge_action: Missing[
+            Literal["default", "direct_merge", "merge_queue"]
+        ] = UNSET,
+    ) -> Response[
+        PullRequestMergeAsyncResult, PullRequestMergeAsyncResultTypeForResponse
+    ]: ...
+
+    async def async_merge_async(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[
+            Union[ReposOwnerRepoPullsPullNumberMergeAsyncPutBodyType, None]
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        PullRequestMergeAsyncResult, PullRequestMergeAsyncResultTypeForResponse
+    ]:
+        """pulls/merge-async
+
+        PUT /repos/{owner}/{repo}/pulls/{pull_number}/merge-async
+
+        Merges a pull request into the base branch in the background. Merging in this way allows certain types of errors to be retried, and avoids the risk of timeouts for particularly complex merges.
+
+        This is the required method for merging stacked PRs, but also supports unstacked PRs. When using this endpoint to merge a stacked pull request, all pull requests in the stack up to and including the requested PR will be merged into the base branch.
+
+        The response includes a UUID that can be used to fetch the result of the merge. If another asynchronous merge request has already been made for this pull request, the UUID of that request will be returned instead with a 409 response status to indicate that the merge options may be different from those that were requested. If there isn't an existing asynchronous merge request, a 202 response status is used.
+
+        If the pull request is already merged, the merge commit OID will be returned immediately with a 200 status.
+
+        If the pull request cannot be merged (e.g. because it is closed, or still a draft) this result will be returned immediately with a 400 response status. Branch protection rules and repository rules are not run at this stage, only basic pull request state checks are performed.
+
+        See also: https://docs.github.com/rest/pulls/pulls#merge-a-pull-request-asynchronously
+        """
+
+        from typing import Union
+
+        from ..models import (
+            BasicError,
+            PullRequestMergeAsyncResult,
+            ReposOwnerRepoPullsPullNumberMergeAsyncPutBody,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/pulls/{pull_number}/merge-async"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                Union[ReposOwnerRepoPullsPullNumberMergeAsyncPutBody, None], json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=PullRequestMergeAsyncResult,
+            error_models={
+                "409": PullRequestMergeAsyncResult,
+                "400": PullRequestMergeAsyncResult,
+                "422": ValidationError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    def get_merge_async_result(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        uuid: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        PullRequestMergeAsyncResult, PullRequestMergeAsyncResultTypeForResponse
+    ]:
+        """pulls/get-merge-async-result
+
+        GET /repos/{owner}/{repo}/pulls/{pull_number}/merge-async/{uuid}
+
+        Fetches the current result of an asynchronous merge request, identified by the UUID that was returned when the merge was requested.
+
+        While the merge is still queued, the response includes the UUID, merge method, and expected head SHA of the request. Once the merge has completed, the response reports whether it was merged, including the merge commit OID on success or a message describing why it could not be merged on failure.
+
+        The result of an asynchronous merge request is retained for 24 hours after its most recent update. After this window the request expires and this endpoint returns a `404` response for its UUID.
+
+        See also: https://docs.github.com/rest/pulls/pulls#get-the-result-of-an-asynchronous-merge
+        """
+
+        from ..models import BasicError, PullRequestMergeAsyncResult
+
+        url = f"/repos/{owner}/{repo}/pulls/{pull_number}/merge-async/{uuid}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=PullRequestMergeAsyncResult,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_merge_async_result(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        uuid: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        PullRequestMergeAsyncResult, PullRequestMergeAsyncResultTypeForResponse
+    ]:
+        """pulls/get-merge-async-result
+
+        GET /repos/{owner}/{repo}/pulls/{pull_number}/merge-async/{uuid}
+
+        Fetches the current result of an asynchronous merge request, identified by the UUID that was returned when the merge was requested.
+
+        While the merge is still queued, the response includes the UUID, merge method, and expected head SHA of the request. Once the merge has completed, the response reports whether it was merged, including the merge commit OID on success or a message describing why it could not be merged on failure.
+
+        The result of an asynchronous merge request is retained for 24 hours after its most recent update. After this window the request expires and this endpoint returns a `404` response for its UUID.
+
+        See also: https://docs.github.com/rest/pulls/pulls#get-the-result-of-an-asynchronous-merge
+        """
+
+        from ..models import BasicError, PullRequestMergeAsyncResult
+
+        url = f"/repos/{owner}/{repo}/pulls/{pull_number}/merge-async/{uuid}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=PullRequestMergeAsyncResult,
+            error_models={
                 "403": BasicError,
                 "404": BasicError,
             },

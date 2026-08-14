@@ -9,30 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing_extensions import TypedDict
+
+from .group_0494 import (
+    PullRequestStackPullRequestType,
+    PullRequestStackPullRequestTypeForResponse,
+)
 
 
-class ReposTemplateOwnerTemplateRepoGeneratePostBodyType(TypedDict):
-    """ReposTemplateOwnerTemplateRepoGeneratePostBody"""
+class ReposOwnerRepoStacksStackNumberUnstackPostResponse200Type(TypedDict):
+    """ReposOwnerRepoStacksStackNumberUnstackPostResponse200"""
 
-    owner: NotRequired[str]
-    name: str
-    description: NotRequired[str]
-    include_all_branches: NotRequired[bool]
-    private: NotRequired[bool]
+    id: int
+    number: int
+    node_id: str
+    url: str
+    base: ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBaseType
+    open_: bool
+    created_at: _dt.datetime
+    pull_requests: list[PullRequestStackPullRequestType]
 
 
-class ReposTemplateOwnerTemplateRepoGeneratePostBodyTypeForResponse(TypedDict):
-    """ReposTemplateOwnerTemplateRepoGeneratePostBody"""
+class ReposOwnerRepoStacksStackNumberUnstackPostResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoStacksStackNumberUnstackPostResponse200"""
 
-    owner: NotRequired[str]
-    name: str
-    description: NotRequired[str]
-    include_all_branches: NotRequired[bool]
-    private: NotRequired[bool]
+    id: int
+    number: int
+    node_id: str
+    url: str
+    base: ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBaseTypeForResponse
+    open_: bool
+    created_at: str
+    pull_requests: list[PullRequestStackPullRequestTypeForResponse]
+
+
+class ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBaseType(TypedDict):
+    """ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase"""
+
+    ref: str
+
+
+class ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBaseTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase"""
+
+    ref: str
 
 
 __all__ = (
-    "ReposTemplateOwnerTemplateRepoGeneratePostBodyType",
-    "ReposTemplateOwnerTemplateRepoGeneratePostBodyTypeForResponse",
+    "ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBaseType",
+    "ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBaseTypeForResponse",
+    "ReposOwnerRepoStacksStackNumberUnstackPostResponse200Type",
+    "ReposOwnerRepoStacksStackNumberUnstackPostResponse200TypeForResponse",
 )

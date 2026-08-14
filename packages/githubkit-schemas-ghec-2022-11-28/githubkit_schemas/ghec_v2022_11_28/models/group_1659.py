@@ -9,79 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import GitHubModel, model_rebuild
+
+from .group_0569 import PullRequestStackPullRequest
 
 
-class ScimV2OrganizationsOrgUsersScimUserIdPatchBody(GitHubModel):
-    """ScimV2OrganizationsOrgUsersScimUserIdPatchBody"""
+class ReposOwnerRepoStacksStackNumberUnstackPostResponse200(GitHubModel):
+    """ReposOwnerRepoStacksStackNumberUnstackPostResponse200"""
 
-    schemas: Missing[list[str]] = Field(default=UNSET)
-    operations: list[
-        ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems
-    ] = Field(
-        min_length=1 if PYDANTIC_V2 else None,
-        alias="Operations",
-        description="Set of operations to be performed",
+    id: int = Field()
+    number: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    base: ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase = Field()
+    open_: bool = Field(
+        alias="open",
+        description="Whether the stack has any open pull request. False when all pull requests are merged or closed.",
     )
+    created_at: _dt.datetime = Field()
+    pull_requests: list[PullRequestStackPullRequest] = Field()
 
 
-class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems(GitHubModel):
-    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems"""
+class ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase(GitHubModel):
+    """ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase"""
 
-    op: Literal["add", "remove", "replace"] = Field()
-    path: Missing[str] = Field(default=UNSET)
-    value: Missing[
-        Union[
-            ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0,
-            list[
-                ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1Items
-            ],
-            str,
-        ]
-    ] = Field(default=UNSET)
+    ref: str = Field()
 
 
-class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0(
-    GitHubModel
-):
-    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0"""
-
-    active: Missing[Union[bool, None]] = Field(default=UNSET)
-    user_name: Missing[Union[str, None]] = Field(default=UNSET, alias="userName")
-    external_id: Missing[Union[str, None]] = Field(default=UNSET, alias="externalId")
-    given_name: Missing[Union[str, None]] = Field(default=UNSET, alias="givenName")
-    family_name: Missing[Union[str, None]] = Field(default=UNSET, alias="familyName")
-
-
-class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1Items(
-    GitHubModel
-):
-    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1
-    Items
-    """
-
-    value: Missing[str] = Field(default=UNSET)
-    primary: Missing[bool] = Field(default=UNSET)
-
-
-model_rebuild(ScimV2OrganizationsOrgUsersScimUserIdPatchBody)
-model_rebuild(ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems)
-model_rebuild(
-    ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0
-)
-model_rebuild(
-    ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1Items
-)
+model_rebuild(ReposOwnerRepoStacksStackNumberUnstackPostResponse200)
+model_rebuild(ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase)
 
 __all__ = (
-    "ScimV2OrganizationsOrgUsersScimUserIdPatchBody",
-    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems",
-    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0",
-    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1Items",
+    "ReposOwnerRepoStacksStackNumberUnstackPostResponse200",
+    "ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase",
 )

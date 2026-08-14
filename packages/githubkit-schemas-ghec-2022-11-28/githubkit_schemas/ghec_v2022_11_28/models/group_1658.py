@@ -9,61 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ScimV2OrganizationsOrgUsersScimUserIdPutBody(GitHubModel):
-    """ScimV2OrganizationsOrgUsersScimUserIdPutBody"""
+class ReposOwnerRepoStacksStackNumberAddPostResponse422(GitHubModel):
+    """Validation Error
 
-    schemas: Missing[list[str]] = Field(default=UNSET)
-    display_name: Missing[str] = Field(
-        default=UNSET,
-        alias="displayName",
-        description="The name of the user, suitable for display to end-users",
-    )
-    external_id: Missing[str] = Field(default=UNSET, alias="externalId")
-    groups: Missing[list[str]] = Field(default=UNSET)
-    active: Missing[bool] = Field(default=UNSET)
-    user_name: str = Field(
-        alias="userName",
-        description="Configured by the admin. Could be an email, login, or username",
-    )
-    name: ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName = Field()
-    emails: list[ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems] = Field(
-        min_length=1 if PYDANTIC_V2 else None, description="user emails"
-    )
-
-
-class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName(GitHubModel):
-    """ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName
-
-    Examples:
-        {'givenName': 'Jane', 'familyName': 'User'}
+    Validation Error
     """
 
-    given_name: str = Field(alias="givenName")
-    family_name: str = Field(alias="familyName")
-    formatted: Missing[str] = Field(default=UNSET)
+    message: str = Field()
+    documentation_url: str = Field()
+    errors: Missing[
+        list[ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems]
+    ] = Field(default=UNSET)
 
 
-class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems(GitHubModel):
-    """ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems"""
+class ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems(GitHubModel):
+    """ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems"""
 
-    type: Missing[str] = Field(default=UNSET)
-    value: str = Field()
-    primary: Missing[bool] = Field(default=UNSET)
+    resource: Missing[str] = Field(default=UNSET)
+    field: Missing[str] = Field(default=UNSET)
+    message: Missing[str] = Field(default=UNSET)
+    code: str = Field()
+    index: Missing[int] = Field(default=UNSET)
+    value: Missing[Union[str, None, int, None, list[Union[str, int]], None]] = Field(
+        default=UNSET
+    )
 
 
-model_rebuild(ScimV2OrganizationsOrgUsersScimUserIdPutBody)
-model_rebuild(ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName)
-model_rebuild(ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems)
+model_rebuild(ReposOwnerRepoStacksStackNumberAddPostResponse422)
+model_rebuild(ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems)
 
 __all__ = (
-    "ScimV2OrganizationsOrgUsersScimUserIdPutBody",
-    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems",
-    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName",
+    "ReposOwnerRepoStacksStackNumberAddPostResponse422",
+    "ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems",
 )

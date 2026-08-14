@@ -18,19 +18,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0617 import EnterpriseWebhooks
-from .group_0618 import SimpleInstallation
-from .group_0619 import OrganizationSimpleWebhooks
-from .group_0620 import RepositoryWebhooks
-from .group_0664 import WebhooksSponsorship
-from .group_0665 import WebhooksChanges8
+from .group_0618 import EnterpriseWebhooks
+from .group_0619 import SimpleInstallation
+from .group_0620 import OrganizationSimpleWebhooks
+from .group_0621 import RepositoryWebhooks
+from .group_0665 import WebhooksSponsorship
+from .group_0666 import WebhooksChanges8
 
 
-class WebhookSponsorshipTierChanged(GitHubModel):
-    """sponsorship tier_changed event"""
+class WebhookSponsorshipPendingTierChange(GitHubModel):
+    """sponsorship pending_tier_change event"""
 
-    action: Literal["tier_changed"] = Field()
+    action: Literal["pending_tier_change"] = Field()
     changes: WebhooksChanges8 = Field()
+    effective_date: Missing[str] = Field(
+        default=UNSET,
+        description="The `pending_cancellation` and `pending_tier_change` event types will include the date the cancellation or tier change will take effect.",
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -55,6 +59,6 @@ class WebhookSponsorshipTierChanged(GitHubModel):
     sponsorship: WebhooksSponsorship = Field()
 
 
-model_rebuild(WebhookSponsorshipTierChanged)
+model_rebuild(WebhookSponsorshipPendingTierChange)
 
-__all__ = ("WebhookSponsorshipTierChanged",)
+__all__ = ("WebhookSponsorshipPendingTierChange",)

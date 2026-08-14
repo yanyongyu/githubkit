@@ -9,13 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from githubkit.compat import ExtraGitHubModel, model_rebuild
+from pydantic import Field
+
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseCopilotContentExclusionPutBody(ExtraGitHubModel):
-    """EnterprisesEnterpriseCopilotContentExclusionPutBody"""
+class EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBody(GitHubModel):
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBody"""
+
+    selected_usernames: list[str] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The usernames of the enterprise members for which to revoke access to GitHub Copilot.",
+    )
 
 
-model_rebuild(EnterprisesEnterpriseCopilotContentExclusionPutBody)
+model_rebuild(EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBody)
 
-__all__ = ("EnterprisesEnterpriseCopilotContentExclusionPutBody",)
+__all__ = ("EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBody",)

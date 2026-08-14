@@ -13,7 +13,7 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_1027 import (
+from .group_1028 import (
     AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0Type,
     AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0TypeForResponse,
     AgentsTasksTaskIdGetResponse200Allof0PropCustomAgentType,
@@ -23,16 +23,20 @@ from .group_1027 import (
     AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsType,
     AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsTypeForResponse,
 )
-from .group_1028 import (
+from .group_1029 import (
     AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsType,
     AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsTypeForResponse,
     AgentsTasksTaskIdGetResponse200Allof0PropOwnerType,
     AgentsTasksTaskIdGetResponse200Allof0PropOwnerTypeForResponse,
 )
+from .group_1031 import (
+    AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsType,
+    AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse,
+)
 
 
-class AgentsTasksTaskIdGetResponse200Allof0Type(TypedDict):
-    """AgentsTasksTaskIdGetResponse200Allof0"""
+class AgentsTasksTaskIdGetResponse200Type(TypedDict):
+    """AgentsTasksTaskIdGetResponse200"""
 
     id: str
     url: NotRequired[str]
@@ -63,10 +67,13 @@ class AgentsTasksTaskIdGetResponse200Allof0Type(TypedDict):
     updated_at: NotRequired[_dt.datetime]
     created_at: _dt.datetime
     custom_agent: NotRequired[AgentsTasksTaskIdGetResponse200Allof0PropCustomAgentType]
+    sessions: NotRequired[
+        list[AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsType]
+    ]
 
 
-class AgentsTasksTaskIdGetResponse200Allof0TypeForResponse(TypedDict):
-    """AgentsTasksTaskIdGetResponse200Allof0"""
+class AgentsTasksTaskIdGetResponse200TypeForResponse(TypedDict):
+    """AgentsTasksTaskIdGetResponse200"""
 
     id: str
     url: NotRequired[str]
@@ -105,9 +112,12 @@ class AgentsTasksTaskIdGetResponse200Allof0TypeForResponse(TypedDict):
     custom_agent: NotRequired[
         AgentsTasksTaskIdGetResponse200Allof0PropCustomAgentTypeForResponse
     ]
+    sessions: NotRequired[
+        list[AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse]
+    ]
 
 
 __all__ = (
-    "AgentsTasksTaskIdGetResponse200Allof0Type",
-    "AgentsTasksTaskIdGetResponse200Allof0TypeForResponse",
+    "AgentsTasksTaskIdGetResponse200Type",
+    "AgentsTasksTaskIdGetResponse200TypeForResponse",
 )

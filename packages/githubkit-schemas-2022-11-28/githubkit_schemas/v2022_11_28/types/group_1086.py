@@ -12,53 +12,55 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200Type(
-    TypedDict
-):
-    """OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200"""
+class OrgsOrgActionsHostedRunnersImagesCustomGetResponse200Type(TypedDict):
+    """OrgsOrgActionsHostedRunnersImagesCustomGetResponse200"""
 
     total_count: int
-    image_versions: list[ActionsHostedRunnerCustomImageVersionType]
+    images: list[ActionsHostedRunnerCustomImageType]
 
 
-class OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200TypeForResponse(
-    TypedDict
-):
-    """OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200"""
+class OrgsOrgActionsHostedRunnersImagesCustomGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsHostedRunnersImagesCustomGetResponse200"""
 
     total_count: int
-    image_versions: list[ActionsHostedRunnerCustomImageVersionTypeForResponse]
+    images: list[ActionsHostedRunnerCustomImageTypeForResponse]
 
 
-class ActionsHostedRunnerCustomImageVersionType(TypedDict):
-    """GitHub-hosted runner custom image version details.
+class ActionsHostedRunnerCustomImageType(TypedDict):
+    """GitHub-hosted runner custom image details
 
-    Provides details of a hosted runner custom image version
+    Provides details of a custom runner image
     """
 
-    version: str
+    id: int
+    platform: str
+    total_versions_size: int
+    name: str
+    source: str
+    versions_count: int
+    latest_version: str
     state: str
-    size_gb: int
-    created_on: str
-    state_details: str
 
 
-class ActionsHostedRunnerCustomImageVersionTypeForResponse(TypedDict):
-    """GitHub-hosted runner custom image version details.
+class ActionsHostedRunnerCustomImageTypeForResponse(TypedDict):
+    """GitHub-hosted runner custom image details
 
-    Provides details of a hosted runner custom image version
+    Provides details of a custom runner image
     """
 
-    version: str
+    id: int
+    platform: str
+    total_versions_size: int
+    name: str
+    source: str
+    versions_count: int
+    latest_version: str
     state: str
-    size_gb: int
-    created_on: str
-    state_details: str
 
 
 __all__ = (
-    "ActionsHostedRunnerCustomImageVersionType",
-    "ActionsHostedRunnerCustomImageVersionTypeForResponse",
-    "OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200Type",
-    "OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200TypeForResponse",
+    "ActionsHostedRunnerCustomImageType",
+    "ActionsHostedRunnerCustomImageTypeForResponse",
+    "OrgsOrgActionsHostedRunnersImagesCustomGetResponse200Type",
+    "OrgsOrgActionsHostedRunnersImagesCustomGetResponse200TypeForResponse",
 )

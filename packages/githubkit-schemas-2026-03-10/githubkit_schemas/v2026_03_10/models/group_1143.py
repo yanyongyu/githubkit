@@ -11,25 +11,49 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgAttestationsBulkListPostBody(GitHubModel):
-    """OrgsOrgAttestationsBulkListPostBody"""
+class OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200(GitHubModel):
+    """OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200"""
 
-    subject_digests: list[str] = Field(
-        max_length=1024 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="List of subject digests to fetch attestations for.",
-    )
-    predicate_type: Missing[str] = Field(
+    total_count: Missing[int] = Field(
         default=UNSET,
-        description="Optional filter for fetching attestations with a given predicate type.\nThis option accepts `provenance`, `sbom`, `release`, or freeform text\nfor custom predicate types.",
+        description="The number of storage records for this digest and organization",
     )
+    storage_records: Missing[
+        list[
+            OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItems
+        ]
+    ] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgAttestationsBulkListPostBody)
+class OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItems(
+    GitHubModel
+):
+    """OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageReco
+    rdsItems
+    """
 
-__all__ = ("OrgsOrgAttestationsBulkListPostBody",)
+    id: Missing[int] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    digest: Missing[str] = Field(default=UNSET)
+    artifact_url: Missing[str] = Field(default=UNSET)
+    registry_url: Missing[str] = Field(default=UNSET)
+    repository: Missing[str] = Field(default=UNSET)
+    status: Missing[str] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
+    updated_at: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200)
+model_rebuild(
+    OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItems
+)
+
+__all__ = (
+    "OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200",
+    "OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItems",
+)

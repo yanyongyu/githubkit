@@ -9,24 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing_extensions import TypedDict
+
+from .group_0569 import (
+    PullRequestStackPullRequestType,
+    PullRequestStackPullRequestTypeForResponse,
+)
 
 
-class ReposOwnerRepoSubscriptionPutBodyType(TypedDict):
-    """ReposOwnerRepoSubscriptionPutBody"""
+class ReposOwnerRepoStacksPostResponse201Type(TypedDict):
+    """ReposOwnerRepoStacksPostResponse201"""
 
-    subscribed: NotRequired[bool]
-    ignored: NotRequired[bool]
+    id: int
+    number: int
+    node_id: str
+    url: str
+    base: ReposOwnerRepoStacksPostResponse201PropBaseType
+    open_: bool
+    created_at: _dt.datetime
+    pull_requests: list[PullRequestStackPullRequestType]
 
 
-class ReposOwnerRepoSubscriptionPutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoSubscriptionPutBody"""
+class ReposOwnerRepoStacksPostResponse201TypeForResponse(TypedDict):
+    """ReposOwnerRepoStacksPostResponse201"""
 
-    subscribed: NotRequired[bool]
-    ignored: NotRequired[bool]
+    id: int
+    number: int
+    node_id: str
+    url: str
+    base: ReposOwnerRepoStacksPostResponse201PropBaseTypeForResponse
+    open_: bool
+    created_at: str
+    pull_requests: list[PullRequestStackPullRequestTypeForResponse]
+
+
+class ReposOwnerRepoStacksPostResponse201PropBaseType(TypedDict):
+    """ReposOwnerRepoStacksPostResponse201PropBase"""
+
+    ref: str
+
+
+class ReposOwnerRepoStacksPostResponse201PropBaseTypeForResponse(TypedDict):
+    """ReposOwnerRepoStacksPostResponse201PropBase"""
+
+    ref: str
 
 
 __all__ = (
-    "ReposOwnerRepoSubscriptionPutBodyType",
-    "ReposOwnerRepoSubscriptionPutBodyTypeForResponse",
+    "ReposOwnerRepoStacksPostResponse201PropBaseType",
+    "ReposOwnerRepoStacksPostResponse201PropBaseTypeForResponse",
+    "ReposOwnerRepoStacksPostResponse201Type",
+    "ReposOwnerRepoStacksPostResponse201TypeForResponse",
 )

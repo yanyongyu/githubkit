@@ -9,9 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -19,180 +16,30 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoTasksPostResponse201(GitHubModel):
-    """AgentsReposOwnerRepoTasksPostResponse201"""
+class AgentsReposOwnerRepoTasksPostBody(GitHubModel):
+    """AgentsReposOwnerRepoTasksPostBody"""
 
-    id: str = Field(description="Unique task identifier")
-    url: Missing[str] = Field(default=UNSET, description="API URL for this task")
-    html_url: Missing[str] = Field(default=UNSET, description="Web URL for this task")
-    name: Missing[str] = Field(
-        default=UNSET, description="Human-readable name derived from the task prompt"
-    )
-    creator: Missing[AgentsReposOwnerRepoTasksPostResponse201PropCreatorOneof0] = Field(
-        default=UNSET, description="The entity who created this task"
-    )
-    creator_type: Missing[Literal["user", "organization"]] = Field(
-        default=UNSET, description="Type of the task creator"
-    )
-    user_collaborators: Missing[
-        list[AgentsReposOwnerRepoTasksPostResponse201PropUserCollaboratorsItems]
-    ] = Field(default=UNSET, description="User objects of collaborators on this task")
-    owner: Missing[AgentsReposOwnerRepoTasksPostResponse201PropOwner] = Field(
-        default=UNSET, description="The owner of the repository"
-    )
-    repository: Missing[AgentsReposOwnerRepoTasksPostResponse201PropRepository] = Field(
-        default=UNSET, description="The repository this task belongs to"
-    )
-    state: Literal[
-        "queued",
-        "in_progress",
-        "completed",
-        "failed",
-        "idle",
-        "waiting_for_user",
-        "timed_out",
-        "cancelled",
-    ] = Field(
-        description="Current state of the task, derived from its most recent session"
-    )
-    session_count: Missing[int] = Field(
-        default=UNSET, description="Number of sessions in this task"
-    )
-    artifacts: Missing[
-        list[AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItems]
-    ] = Field(
+    prompt: str = Field(description="The user's prompt for the agent")
+    model: Missing[str] = Field(
         default=UNSET,
-        description="Resources created by this task (PRs, branches, etc.)",
+        description="The model to use for this task. The allowed models may change over time and depend on the user's GitHub Copilot plan and organization policies. Currently supported values: `claude-sonnet-4.6`, `claude-opus-4.6`, `gpt-5.2-codex`, `gpt-5.3-codex`, `gpt-5.4`, `claude-sonnet-4.5`, `claude-opus-4.5`",
     )
-    archived_at: Missing[Union[_dt.datetime, None]] = Field(
+    custom_agent: Missing[str] = Field(
         default=UNSET,
-        description="Timestamp when the task was archived, null if not archived",
+        description="Optional identifier for a custom agent to use for this task. Use the custom agent's filename without the extension - for example, for a `.github/agents/performance-optimizer.agent.md` custom agent, use `performance-optimizer`.",
     )
-    updated_at: Missing[_dt.datetime] = Field(
-        default=UNSET, description="Timestamp of the most recent update"
+    create_pull_request: Missing[bool] = Field(
+        default=UNSET, description="Whether to create a PR."
     )
-    created_at: _dt.datetime = Field(description="Timestamp when the task was created")
-    custom_agent: Missing[AgentsReposOwnerRepoTasksPostResponse201PropCustomAgent] = (
-        Field(
-            default=UNSET, description="Custom agent metadata associated with this task"
-        )
+    base_ref: Missing[str] = Field(
+        default=UNSET, description="Base ref for new branch/PR"
     )
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropCreatorOneof0(GitHubModel):
-    """AgentsReposOwnerRepoTasksPostResponse201PropCreatorOneof0
-
-    A GitHub user
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the user"
-    )
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropUserCollaboratorsItems(GitHubModel):
-    """AgentsReposOwnerRepoTasksPostResponse201PropUserCollaboratorsItems
-
-    A GitHub user
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the user"
-    )
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropOwner(GitHubModel):
-    """AgentsReposOwnerRepoTasksPostResponse201PropOwner
-
-    The owner of the repository
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the user"
-    )
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropRepository(GitHubModel):
-    """AgentsReposOwnerRepoTasksPostResponse201PropRepository
-
-    The repository this task belongs to
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the repository"
-    )
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropCustomAgent(GitHubModel):
-    """AgentsReposOwnerRepoTasksPostResponse201PropCustomAgent
-
-    Custom agent metadata associated with this task
-    """
-
-    id: Missing[str] = Field(
+    head_ref: Missing[str] = Field(
         default=UNSET,
-        description="The custom agent's filename without the extension - for example, `performance-optimizer` for a `.github/agents/performance-optimizer.agent.md` custom agent.",
+        description="Head ref for existing branch/PR. If provided with `base_ref`, the agent looks up open PR context for `head_ref` targeting `base_ref` and commits to `head_ref` instead of creating a new branch.",
     )
 
 
-class AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItems(GitHubModel):
-    """AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItems
+model_rebuild(AgentsReposOwnerRepoTasksPostBody)
 
-    A resource generated by the task
-    """
-
-    provider: Literal["github"] = Field(description="Provider namespace")
-    type: Literal["pull", "branch"] = Field(
-        description="Type of artifact. Available Values: `pull`, `branch`.\n"
-    )
-    data: Union[
-        AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof0,
-        AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof1,
-    ] = Field(description="Resource data (shape depends on type)")
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof0(
-    GitHubModel
-):
-    """AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof0
-
-    A GitHub resource (pull request, issue, etc.)
-    """
-
-    id: int = Field(description="GitHub resource ID")
-    global_id: Missing[str] = Field(default=UNSET, description="GraphQL global ID")
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof1(
-    GitHubModel
-):
-    """AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof1
-
-    A Git branch reference
-    """
-
-    head_ref: str = Field(description="Head branch name")
-    base_ref: str = Field(description="Base branch name")
-
-
-model_rebuild(AgentsReposOwnerRepoTasksPostResponse201)
-model_rebuild(AgentsReposOwnerRepoTasksPostResponse201PropCreatorOneof0)
-model_rebuild(AgentsReposOwnerRepoTasksPostResponse201PropUserCollaboratorsItems)
-model_rebuild(AgentsReposOwnerRepoTasksPostResponse201PropOwner)
-model_rebuild(AgentsReposOwnerRepoTasksPostResponse201PropRepository)
-model_rebuild(AgentsReposOwnerRepoTasksPostResponse201PropCustomAgent)
-model_rebuild(AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItems)
-model_rebuild(AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof0)
-model_rebuild(AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof1)
-
-__all__ = (
-    "AgentsReposOwnerRepoTasksPostResponse201",
-    "AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItems",
-    "AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof0",
-    "AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof1",
-    "AgentsReposOwnerRepoTasksPostResponse201PropCreatorOneof0",
-    "AgentsReposOwnerRepoTasksPostResponse201PropCustomAgent",
-    "AgentsReposOwnerRepoTasksPostResponse201PropOwner",
-    "AgentsReposOwnerRepoTasksPostResponse201PropRepository",
-    "AgentsReposOwnerRepoTasksPostResponse201PropUserCollaboratorsItems",
-)
+__all__ = ("AgentsReposOwnerRepoTasksPostBody",)

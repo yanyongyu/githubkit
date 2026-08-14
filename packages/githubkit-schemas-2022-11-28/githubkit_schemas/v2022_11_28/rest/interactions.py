@@ -30,6 +30,8 @@ if TYPE_CHECKING:
     from ..models import (
         InteractionLimitResponse,
         OrgsOrgInteractionLimitsGetResponse200Anyof1,
+        OrgsOrgInteractionLimitsPullsCreationCapGetResponse200,
+        OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200,
         ReposOwnerRepoInteractionLimitsGetResponse200Anyof1,
         ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200,
         ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200,
@@ -41,6 +43,9 @@ if TYPE_CHECKING:
         InteractionLimitResponseTypeForResponse,
         InteractionLimitType,
         OrgsOrgInteractionLimitsGetResponse200Anyof1TypeForResponse,
+        OrgsOrgInteractionLimitsPullsCreationCapGetResponse200TypeForResponse,
+        OrgsOrgInteractionLimitsPullsCreationCapPatchBodyType,
+        OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200TypeForResponse,
         ReposOwnerRepoInteractionLimitsGetResponse200Anyof1TypeForResponse,
         ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200TypeForResponse,
         ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBodyType,
@@ -349,6 +354,276 @@ class InteractionsClient:
             url,
             headers=exclude_unset(headers),
             stream=stream,
+        )
+
+    def get_pull_request_creation_cap_for_org(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        OrgsOrgInteractionLimitsPullsCreationCapGetResponse200,
+        OrgsOrgInteractionLimitsPullsCreationCapGetResponse200TypeForResponse,
+    ]:
+        """interactions/get-pull-request-creation-cap-for-org
+
+        GET /orgs/{org}/interaction-limits/pulls/creation-cap
+
+        Gets the pull request creation cap configuration for an organization.
+        The cap limits the total number of open pull requests a user can have across all public
+        repositories in the organization at one time.
+
+        Only users with admin access to the organization can view the cap configuration.
+
+        See also: https://docs.github.com/rest/interactions/orgs#get-pull-request-creation-cap-for-an-org
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgInteractionLimitsPullsCreationCapGetResponse200,
+        )
+
+        url = f"/orgs/{org}/interaction-limits/pulls/creation-cap"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgInteractionLimitsPullsCreationCapGetResponse200,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "405": BasicError,
+            },
+        )
+
+    async def async_get_pull_request_creation_cap_for_org(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        OrgsOrgInteractionLimitsPullsCreationCapGetResponse200,
+        OrgsOrgInteractionLimitsPullsCreationCapGetResponse200TypeForResponse,
+    ]:
+        """interactions/get-pull-request-creation-cap-for-org
+
+        GET /orgs/{org}/interaction-limits/pulls/creation-cap
+
+        Gets the pull request creation cap configuration for an organization.
+        The cap limits the total number of open pull requests a user can have across all public
+        repositories in the organization at one time.
+
+        Only users with admin access to the organization can view the cap configuration.
+
+        See also: https://docs.github.com/rest/interactions/orgs#get-pull-request-creation-cap-for-an-org
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgInteractionLimitsPullsCreationCapGetResponse200,
+        )
+
+        url = f"/orgs/{org}/interaction-limits/pulls/creation-cap"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgInteractionLimitsPullsCreationCapGetResponse200,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "405": BasicError,
+            },
+        )
+
+    @overload
+    def update_pull_request_creation_cap_for_org(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: OrgsOrgInteractionLimitsPullsCreationCapPatchBodyType,
+    ) -> Response[
+        OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200,
+        OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200TypeForResponse,
+    ]: ...
+
+    @overload
+    def update_pull_request_creation_cap_for_org(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        enabled: bool,
+        max_open_pull_requests: Missing[int] = UNSET,
+    ) -> Response[
+        OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200,
+        OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200TypeForResponse,
+    ]: ...
+
+    def update_pull_request_creation_cap_for_org(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgInteractionLimitsPullsCreationCapPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200,
+        OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200TypeForResponse,
+    ]:
+        """interactions/update-pull-request-creation-cap-for-org
+
+        PATCH /orgs/{org}/interaction-limits/pulls/creation-cap
+
+        Updates the pull request creation cap for an organization. The cap limits the total number
+        of open pull requests a user can have across all public repositories in the organization
+        at one time.
+
+        Only users with admin access to the organization can configure the cap.
+
+        See also: https://docs.github.com/rest/interactions/orgs#update-pull-request-creation-cap-for-an-org
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgInteractionLimitsPullsCreationCapPatchBody,
+            OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200,
+            ValidationError,
+        )
+
+        url = f"/orgs/{org}/interaction-limits/pulls/creation-cap"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgInteractionLimitsPullsCreationCapPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "405": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    async def async_update_pull_request_creation_cap_for_org(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: OrgsOrgInteractionLimitsPullsCreationCapPatchBodyType,
+    ) -> Response[
+        OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200,
+        OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200TypeForResponse,
+    ]: ...
+
+    @overload
+    async def async_update_pull_request_creation_cap_for_org(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        enabled: bool,
+        max_open_pull_requests: Missing[int] = UNSET,
+    ) -> Response[
+        OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200,
+        OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200TypeForResponse,
+    ]: ...
+
+    async def async_update_pull_request_creation_cap_for_org(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgInteractionLimitsPullsCreationCapPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200,
+        OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200TypeForResponse,
+    ]:
+        """interactions/update-pull-request-creation-cap-for-org
+
+        PATCH /orgs/{org}/interaction-limits/pulls/creation-cap
+
+        Updates the pull request creation cap for an organization. The cap limits the total number
+        of open pull requests a user can have across all public repositories in the organization
+        at one time.
+
+        Only users with admin access to the organization can configure the cap.
+
+        See also: https://docs.github.com/rest/interactions/orgs#update-pull-request-creation-cap-for-an-org
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgInteractionLimitsPullsCreationCapPatchBody,
+            OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200,
+            ValidationError,
+        )
+
+        url = f"/orgs/{org}/interaction-limits/pulls/creation-cap"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgInteractionLimitsPullsCreationCapPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "405": BasicError,
+                "422": ValidationError,
+            },
         )
 
     def get_restrictions_for_repo(

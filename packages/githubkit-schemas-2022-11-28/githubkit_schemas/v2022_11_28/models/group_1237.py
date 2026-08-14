@@ -9,27 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgSettingsImmutableReleasesPutBody(GitHubModel):
-    """OrgsOrgSettingsImmutableReleasesPutBody"""
+class OrgsOrgSecretScanningCustomPatternsPostResponse422(GitHubModel):
+    """OrgsOrgSecretScanningCustomPatternsPostResponse422"""
 
-    enforced_repositories: Literal["all", "none", "selected"] = Field(
-        description="The policy that controls how immutable releases are enforced in the organization."
+    message: Missing[str] = Field(
+        default=UNSET, description="A summary message describing the error."
     )
-    selected_repository_ids: Missing[list[int]] = Field(
+    validation_errors: Missing[
+        OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors
+    ] = Field(
         default=UNSET,
-        description="An array of repository ids for which immutable releases enforcement should be applied. You can only provide a list of repository ids when the `enforced_repositories` is set to `selected`. You can add and remove individual repositories using the [Enable a selected repository for immutable releases in an organization](https://docs.github.com/rest/orgs/orgs#enable-a-selected-repository-for-immutable-releases-in-an-organization) and [Disable a selected repository for immutable releases in an organization](https://docs.github.com/rest/orgs/orgs#disable-a-selected-repository-for-immutable-releases-in-an-organization) endpoints.",
+        description="A map of validation errors keyed by the zero-based index of the pattern that failed.",
     )
 
 
-model_rebuild(OrgsOrgSettingsImmutableReleasesPutBody)
+class OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors(
+    ExtraGitHubModel
+):
+    """OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors
 
-__all__ = ("OrgsOrgSettingsImmutableReleasesPutBody",)
+    A map of validation errors keyed by the zero-based index of the pattern that
+    failed.
+    """
+
+
+model_rebuild(OrgsOrgSecretScanningCustomPatternsPostResponse422)
+model_rebuild(OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors)
+
+__all__ = (
+    "OrgsOrgSecretScanningCustomPatternsPostResponse422",
+    "OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors",
+)

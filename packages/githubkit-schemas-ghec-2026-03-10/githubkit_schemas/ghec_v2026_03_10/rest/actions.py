@@ -87,6 +87,7 @@ if TYPE_CHECKING:
         OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200,
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200,
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
+        OrgsOrgActionsRunnersDeprecationsVersionGetResponse200,
         OrgsOrgActionsRunnersGetResponse200,
         OrgsOrgActionsSecretsGetResponse200,
         OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200,
@@ -96,6 +97,7 @@ if TYPE_CHECKING:
         ReposOwnerRepoActionsArtifactsGetResponse200,
         ReposOwnerRepoActionsOrganizationSecretsGetResponse200,
         ReposOwnerRepoActionsOrganizationVariablesGetResponse200,
+        ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200,
         ReposOwnerRepoActionsRunnersGetResponse200,
         ReposOwnerRepoActionsRunsGetResponse200,
         ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200,
@@ -205,6 +207,7 @@ if TYPE_CHECKING:
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBodyType,
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200TypeForResponse,
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType,
+        OrgsOrgActionsRunnersDeprecationsVersionGetResponse200TypeForResponse,
         OrgsOrgActionsRunnersGenerateJitconfigPostBodyType,
         OrgsOrgActionsRunnersGetResponse200TypeForResponse,
         OrgsOrgActionsRunnersRunnerIdLabelsPostBodyType,
@@ -225,6 +228,7 @@ if TYPE_CHECKING:
         ReposOwnerRepoActionsOrganizationSecretsGetResponse200TypeForResponse,
         ReposOwnerRepoActionsOrganizationVariablesGetResponse200TypeForResponse,
         ReposOwnerRepoActionsPermissionsPutBodyType,
+        ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200TypeForResponse,
         ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType,
         ReposOwnerRepoActionsRunnersGetResponse200TypeForResponse,
         ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType,
@@ -8119,6 +8123,84 @@ class ActionsClient:
             response_model=OrgsOrgActionsRunnersGetResponse200,
         )
 
+    def get_runner_version_deprecation_for_org(
+        self,
+        org: str,
+        version: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        OrgsOrgActionsRunnersDeprecationsVersionGetResponse200,
+        OrgsOrgActionsRunnersDeprecationsVersionGetResponse200TypeForResponse,
+    ]:
+        """actions/get-runner-version-deprecation-for-org
+
+        GET /orgs/{org}/actions/runners/deprecations/{version}
+
+        Gets the end-of-life schedule for a specific runner version in an organization. Returns the runner version
+        and the dates when registration and runtime support will end.
+
+        Authenticated users must have admin access to the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#get-runner-version-end-of-life-schedule-for-an-organization
+        """
+
+        from ..models import OrgsOrgActionsRunnersDeprecationsVersionGetResponse200
+
+        url = f"/orgs/{org}/actions/runners/deprecations/{version}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgActionsRunnersDeprecationsVersionGetResponse200,
+        )
+
+    async def async_get_runner_version_deprecation_for_org(
+        self,
+        org: str,
+        version: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        OrgsOrgActionsRunnersDeprecationsVersionGetResponse200,
+        OrgsOrgActionsRunnersDeprecationsVersionGetResponse200TypeForResponse,
+    ]:
+        """actions/get-runner-version-deprecation-for-org
+
+        GET /orgs/{org}/actions/runners/deprecations/{version}
+
+        Gets the end-of-life schedule for a specific runner version in an organization. Returns the runner version
+        and the dates when registration and runtime support will end.
+
+        Authenticated users must have admin access to the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#get-runner-version-end-of-life-schedule-for-an-organization
+        """
+
+        from ..models import OrgsOrgActionsRunnersDeprecationsVersionGetResponse200
+
+        url = f"/orgs/{org}/actions/runners/deprecations/{version}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgActionsRunnersDeprecationsVersionGetResponse200,
+        )
+
     def list_runner_applications_for_org(
         self,
         org: str,
@@ -14719,6 +14801,90 @@ class ActionsClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ReposOwnerRepoActionsRunnersGetResponse200,
+        )
+
+    def get_runner_version_deprecation_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        version: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200,
+        ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200TypeForResponse,
+    ]:
+        """actions/get-runner-version-deprecation-for-repo
+
+        GET /repos/{owner}/{repo}/actions/runners/deprecations/{version}
+
+        Gets the end-of-life schedule for a specific runner version in a repository. Returns the runner version
+        and the dates when registration and runtime support will end.
+
+        Authenticated users must have admin access to the repository to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#get-runner-version-end-of-life-schedule-for-a-repository
+        """
+
+        from ..models import (
+            ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200,
+        )
+
+        url = f"/repos/{owner}/{repo}/actions/runners/deprecations/{version}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200,
+        )
+
+    async def async_get_runner_version_deprecation_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        version: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200,
+        ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200TypeForResponse,
+    ]:
+        """actions/get-runner-version-deprecation-for-repo
+
+        GET /repos/{owner}/{repo}/actions/runners/deprecations/{version}
+
+        Gets the end-of-life schedule for a specific runner version in a repository. Returns the runner version
+        and the dates when registration and runtime support will end.
+
+        Authenticated users must have admin access to the repository to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#get-runner-version-end-of-life-schedule-for-a-repository
+        """
+
+        from ..models import (
+            ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200,
+        )
+
+        url = f"/repos/{owner}/{repo}/actions/runners/deprecations/{version}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200,
         )
 
     def list_runner_applications_for_repo(

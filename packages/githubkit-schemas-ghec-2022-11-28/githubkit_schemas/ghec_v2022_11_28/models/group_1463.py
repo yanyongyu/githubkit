@@ -16,13 +16,13 @@ from githubkit.compat import GitHubModel, model_rebuild
 from .group_0358 import ActionsVariable
 
 
-class ReposOwnerRepoAgentsOrganizationVariablesGetResponse200(GitHubModel):
-    """ReposOwnerRepoAgentsOrganizationVariablesGetResponse200"""
+class ReposOwnerRepoActionsVariablesGetResponse200(GitHubModel):
+    """ReposOwnerRepoActionsVariablesGetResponse200"""
 
     total_count: int = Field()
     variables: list[ActionsVariable] = Field()
 
 
-model_rebuild(ReposOwnerRepoAgentsOrganizationVariablesGetResponse200)
+model_rebuild(ReposOwnerRepoActionsVariablesGetResponse200)
 
-__all__ = ("ReposOwnerRepoAgentsOrganizationVariablesGetResponse200",)
+__all__ = ("ReposOwnerRepoActionsVariablesGetResponse200",)

@@ -9,51 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0112 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
 
 
-class OrgsOrgSecretScanningCustomPatternsPostResponse422Type(TypedDict):
-    """OrgsOrgSecretScanningCustomPatternsPostResponse422"""
+class OrgsOrgPropertiesValuesPatchBodyType(TypedDict):
+    """OrgsOrgPropertiesValuesPatchBody"""
 
-    message: NotRequired[str]
-    validation_errors: NotRequired[
-        OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrorsType
-    ]
+    repository_names: list[str]
+    properties: list[CustomPropertyValueType]
 
 
-class OrgsOrgSecretScanningCustomPatternsPostResponse422TypeForResponse(TypedDict):
-    """OrgsOrgSecretScanningCustomPatternsPostResponse422"""
+class OrgsOrgPropertiesValuesPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgPropertiesValuesPatchBody"""
 
-    message: NotRequired[str]
-    validation_errors: NotRequired[
-        OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse
-    ]
-
-
-OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrorsType: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors
-
-A map of validation errors keyed by the zero-based index of the pattern that
-failed.
-"""
-
-
-OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors
-
-A map of validation errors keyed by the zero-based index of the pattern that
-failed.
-"""
+    repository_names: list[str]
+    properties: list[CustomPropertyValueTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrorsType",
-    "OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse",
-    "OrgsOrgSecretScanningCustomPatternsPostResponse422Type",
-    "OrgsOrgSecretScanningCustomPatternsPostResponse422TypeForResponse",
+    "OrgsOrgPropertiesValuesPatchBodyType",
+    "OrgsOrgPropertiesValuesPatchBodyTypeForResponse",
 )

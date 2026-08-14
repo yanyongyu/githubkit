@@ -12,21 +12,22 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class UserSocialAccountsDeleteBody(GitHubModel):
-    """UserSocialAccountsDeleteBody
+class UserKeysPostBody(GitHubModel):
+    """UserKeysPostBody"""
 
-    Examples:
-        {'account_urls': ['https://www.linkedin.com/company/github/',
-    'https://twitter.com/github']}
-    """
-
-    account_urls: list[str] = Field(
-        description="Full URLs for the social media profiles to delete."
+    title: Missing[str] = Field(
+        default=UNSET, description="A descriptive name for the new key."
+    )
+    key: str = Field(
+        pattern="^ssh-(rsa|dss|ed25519) |^ecdsa-sha2-nistp(256|384|521) ",
+        description="The public SSH key to add to your GitHub account.",
     )
 
 
-model_rebuild(UserSocialAccountsDeleteBody)
+model_rebuild(UserKeysPostBody)
 
-__all__ = ("UserSocialAccountsDeleteBody",)
+__all__ = ("UserKeysPostBody",)

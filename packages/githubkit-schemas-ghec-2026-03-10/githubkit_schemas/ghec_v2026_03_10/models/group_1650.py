@@ -9,26 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0567 import PullRequestStackPullRequest
 
 
-class ReposOwnerRepoSubscriptionPutBody(GitHubModel):
-    """ReposOwnerRepoSubscriptionPutBody"""
+class ReposOwnerRepoStacksPostResponse201(GitHubModel):
+    """ReposOwnerRepoStacksPostResponse201"""
 
-    subscribed: Missing[bool] = Field(
-        default=UNSET,
-        description="Determines if notifications should be received from this repository.",
+    id: int = Field()
+    number: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    base: ReposOwnerRepoStacksPostResponse201PropBase = Field()
+    open_: bool = Field(
+        alias="open",
+        description="Whether the stack has any open pull request. False when all pull requests are merged or closed.",
     )
-    ignored: Missing[bool] = Field(
-        default=UNSET,
-        description="Determines if all notifications should be blocked from this repository.",
-    )
+    created_at: _dt.datetime = Field()
+    pull_requests: list[PullRequestStackPullRequest] = Field()
 
 
-model_rebuild(ReposOwnerRepoSubscriptionPutBody)
+class ReposOwnerRepoStacksPostResponse201PropBase(GitHubModel):
+    """ReposOwnerRepoStacksPostResponse201PropBase"""
 
-__all__ = ("ReposOwnerRepoSubscriptionPutBody",)
+    ref: str = Field()
+
+
+model_rebuild(ReposOwnerRepoStacksPostResponse201)
+model_rebuild(ReposOwnerRepoStacksPostResponse201PropBase)
+
+__all__ = (
+    "ReposOwnerRepoStacksPostResponse201",
+    "ReposOwnerRepoStacksPostResponse201PropBase",
+)

@@ -9,18 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class UserInteractionLimitsGetResponse200Anyof1Type(TypedDict):
-    """UserInteractionLimitsGetResponse200Anyof1"""
+class UserEmailVisibilityPatchBodyType(TypedDict):
+    """UserEmailVisibilityPatchBody"""
+
+    visibility: Literal["public", "private"]
 
 
-class UserInteractionLimitsGetResponse200Anyof1TypeForResponse(TypedDict):
-    """UserInteractionLimitsGetResponse200Anyof1"""
+class UserEmailVisibilityPatchBodyTypeForResponse(TypedDict):
+    """UserEmailVisibilityPatchBody"""
+
+    visibility: Literal["public", "private"]
 
 
 __all__ = (
-    "UserInteractionLimitsGetResponse200Anyof1Type",
-    "UserInteractionLimitsGetResponse200Anyof1TypeForResponse",
+    "UserEmailVisibilityPatchBodyType",
+    "UserEmailVisibilityPatchBodyTypeForResponse",
 )

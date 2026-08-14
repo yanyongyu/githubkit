@@ -9,49 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, Literal, TypeAlias, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class GistsPostBodyType(TypedDict):
-    """GistsPostBody"""
+class EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200"""
 
-    description: NotRequired[str]
-    files: GistsPostBodyPropFilesType
-    public: NotRequired[Union[bool, Literal["true", "false"]]]
-
-
-class GistsPostBodyTypeForResponse(TypedDict):
-    """GistsPostBody"""
-
-    description: NotRequired[str]
-    files: GistsPostBodyPropFilesTypeForResponse
-    public: NotRequired[Union[bool, Literal["true", "false"]]]
+    total_count: int
+    visual_studio_subscriptions: list[VisualStudioSubscriptionAssignmentType]
 
 
-GistsPostBodyPropFilesType: TypeAlias = dict[str, Any]
-"""GistsPostBodyPropFiles
+class EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200"""
 
-Names and content for the files that make up the gist
-
-Examples:
-    {'hello.rb': {'content': 'puts "Hello, World!"'}}
-"""
+    total_count: int
+    visual_studio_subscriptions: list[VisualStudioSubscriptionAssignmentTypeForResponse]
 
 
-GistsPostBodyPropFilesTypeForResponse: TypeAlias = dict[str, Any]
-"""GistsPostBodyPropFiles
+class VisualStudioSubscriptionAssignmentType(TypedDict):
+    """Visual Studio Subscription Assignment
 
-Names and content for the files that make up the gist
+    Visual Studio Subscription Assignment
+    """
 
-Examples:
-    {'hello.rb': {'content': 'puts "Hello, World!"'}}
-"""
+    visual_studio_subscription_email: NotRequired[str]
+    subscription_id: NotRequired[str]
+    username: NotRequired[Union[str, None]]
+    manual_match: NotRequired[bool]
+
+
+class VisualStudioSubscriptionAssignmentTypeForResponse(TypedDict):
+    """Visual Studio Subscription Assignment
+
+    Visual Studio Subscription Assignment
+    """
+
+    visual_studio_subscription_email: NotRequired[str]
+    subscription_id: NotRequired[str]
+    username: NotRequired[Union[str, None]]
+    manual_match: NotRequired[bool]
 
 
 __all__ = (
-    "GistsPostBodyPropFilesType",
-    "GistsPostBodyPropFilesTypeForResponse",
-    "GistsPostBodyType",
-    "GistsPostBodyTypeForResponse",
+    "EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200Type",
+    "EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200TypeForResponse",
+    "VisualStudioSubscriptionAssignmentType",
+    "VisualStudioSubscriptionAssignmentTypeForResponse",
 )

@@ -87,6 +87,10 @@ class Budget(GitHubModel):
         default=UNSET,
         description="The user login when the budget is scoped to a single user (`user` scope).",
     )
+    consumed_amount: Missing[float] = Field(
+        default=UNSET,
+        description="The amount consumed for a user-scoped budget, or for a multi-user budget when filtering by user.",
+    )
     budget_product_sku: str = Field(
         description="A single product or sku to apply the budget to."
     )

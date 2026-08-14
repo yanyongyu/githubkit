@@ -9,13 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from pydantic import Field
+
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgOutsideCollaboratorsUsernamePutResponse202(GitHubModel):
-    """OrgsOrgOutsideCollaboratorsUsernamePutResponse202"""
+class OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200(GitHubModel):
+    """OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200"""
+
+    enabled: bool = Field(
+        description="Whether the pull request creation cap is enabled"
+    )
+    max_open_pull_requests: int = Field(
+        le=1000.0,
+        ge=1.0,
+        description="The maximum number of open pull requests a user can have at one time",
+    )
 
 
-model_rebuild(OrgsOrgOutsideCollaboratorsUsernamePutResponse202)
+model_rebuild(OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200)
 
-__all__ = ("OrgsOrgOutsideCollaboratorsUsernamePutResponse202",)
+__all__ = ("OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200",)

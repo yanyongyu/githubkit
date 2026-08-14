@@ -11,19 +11,23 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class UsersUsernameAttestationsDeleteRequestPostBodyOneof1(GitHubModel):
-    """UsersUsernameAttestationsDeleteRequestPostBodyOneof1"""
+class UserUserIdProjectsV2ProjectNumberDraftsPostBody(GitHubModel):
+    """UserUserIdProjectsV2ProjectNumberDraftsPostBody"""
 
-    attestation_ids: list[int] = Field(
-        max_length=1024 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="List of unique IDs associated with the artifact attestations to delete.",
+    title: str = Field(
+        description="The title of the draft issue item to create in the project."
+    )
+    body: Missing[str] = Field(
+        default=UNSET,
+        description="The body content of the draft issue item to create in the project.",
     )
 
 
-model_rebuild(UsersUsernameAttestationsDeleteRequestPostBodyOneof1)
+model_rebuild(UserUserIdProjectsV2ProjectNumberDraftsPostBody)
 
-__all__ = ("UsersUsernameAttestationsDeleteRequestPostBodyOneof1",)
+__all__ = ("UserUserIdProjectsV2ProjectNumberDraftsPostBody",)

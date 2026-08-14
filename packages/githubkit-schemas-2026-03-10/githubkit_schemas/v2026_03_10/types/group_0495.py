@@ -10,33 +10,37 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class StargazerType(TypedDict):
-    """Stargazer
+class PullRequestStackPullRequestAllof1Type(TypedDict):
+    """PullRequestStackPullRequestAllof1"""
 
-    Stargazer
-    """
-
-    starred_at: _dt.datetime
+    node_id: str
+    title: str
+    state: Literal["open", "closed"]
+    merged_at: Union[_dt.datetime, None]
+    draft: bool
+    html_url: str
     user: Union[SimpleUserType, None]
 
 
-class StargazerTypeForResponse(TypedDict):
-    """Stargazer
+class PullRequestStackPullRequestAllof1TypeForResponse(TypedDict):
+    """PullRequestStackPullRequestAllof1"""
 
-    Stargazer
-    """
-
-    starred_at: str
+    node_id: str
+    title: str
+    state: Literal["open", "closed"]
+    merged_at: Union[str, None]
+    draft: bool
+    html_url: str
     user: Union[SimpleUserTypeForResponse, None]
 
 
 __all__ = (
-    "StargazerType",
-    "StargazerTypeForResponse",
+    "PullRequestStackPullRequestAllof1Type",
+    "PullRequestStackPullRequestAllof1TypeForResponse",
 )

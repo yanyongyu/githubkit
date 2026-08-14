@@ -13,13 +13,17 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody"""
-
-    body: str = Field(description="The text of the review comment.")
+from .group_0112 import CustomPropertyValue
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody)
+class ReposOwnerRepoPropertiesValuesPatchBody(GitHubModel):
+    """ReposOwnerRepoPropertiesValuesPatchBody"""
 
-__all__ = ("ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody",)
+    properties: list[CustomPropertyValue] = Field(
+        description="A list of custom property names and associated values to apply to the repositories."
+    )
+
+
+model_rebuild(ReposOwnerRepoPropertiesValuesPatchBody)
+
+__all__ = ("ReposOwnerRepoPropertiesValuesPatchBody",)

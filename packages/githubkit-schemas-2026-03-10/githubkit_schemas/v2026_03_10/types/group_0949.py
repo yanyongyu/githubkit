@@ -13,23 +13,23 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0534 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0535 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0536 import (
+from .group_0535 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0536 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0537 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0537 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0577 import (
+from .group_0538 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0578 import (
     SecretScanningAlertWebhookType,
     SecretScanningAlertWebhookTypeForResponse,
 )
 
 
-class WebhookSecretScanningAlertReopenedType(TypedDict):
-    """secret_scanning_alert reopened event"""
+class WebhookSecretScanningAlertPubliclyLeakedType(TypedDict):
+    """secret_scanning_alert publicly leaked event"""
 
-    action: Literal["reopened"]
+    action: Literal["publicly_leaked"]
     alert: SecretScanningAlertWebhookType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -38,10 +38,10 @@ class WebhookSecretScanningAlertReopenedType(TypedDict):
     sender: NotRequired[SimpleUserType]
 
 
-class WebhookSecretScanningAlertReopenedTypeForResponse(TypedDict):
-    """secret_scanning_alert reopened event"""
+class WebhookSecretScanningAlertPubliclyLeakedTypeForResponse(TypedDict):
+    """secret_scanning_alert publicly leaked event"""
 
-    action: Literal["reopened"]
+    action: Literal["publicly_leaked"]
     alert: SecretScanningAlertWebhookTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
@@ -51,6 +51,6 @@ class WebhookSecretScanningAlertReopenedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookSecretScanningAlertReopenedType",
-    "WebhookSecretScanningAlertReopenedTypeForResponse",
+    "WebhookSecretScanningAlertPubliclyLeakedType",
+    "WebhookSecretScanningAlertPubliclyLeakedTypeForResponse",
 )

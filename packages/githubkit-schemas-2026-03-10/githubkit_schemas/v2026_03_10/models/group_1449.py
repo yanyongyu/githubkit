@@ -9,41 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0493 import PullRequestStackPullRequest
+from .group_0260 import SecretScanningCustomPattern
 
 
-class ReposOwnerRepoStacksPostResponse201(GitHubModel):
-    """ReposOwnerRepoStacksPostResponse201"""
+class ReposOwnerRepoSecretScanningCustomPatternsPostResponse201(GitHubModel):
+    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse201"""
 
-    id: int = Field()
-    number: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    base: ReposOwnerRepoStacksPostResponse201PropBase = Field()
-    open_: bool = Field(
-        alias="open",
-        description="Whether the stack has any open pull request. False when all pull requests are merged or closed.",
+    created_patterns: Missing[list[SecretScanningCustomPattern]] = Field(
+        default=UNSET, description="The list of successfully created custom patterns."
     )
-    created_at: _dt.datetime = Field()
-    pull_requests: list[PullRequestStackPullRequest] = Field()
 
 
-class ReposOwnerRepoStacksPostResponse201PropBase(GitHubModel):
-    """ReposOwnerRepoStacksPostResponse201PropBase"""
+model_rebuild(ReposOwnerRepoSecretScanningCustomPatternsPostResponse201)
 
-    ref: str = Field()
-
-
-model_rebuild(ReposOwnerRepoStacksPostResponse201)
-model_rebuild(ReposOwnerRepoStacksPostResponse201PropBase)
-
-__all__ = (
-    "ReposOwnerRepoStacksPostResponse201",
-    "ReposOwnerRepoStacksPostResponse201PropBase",
-)
+__all__ = ("ReposOwnerRepoSecretScanningCustomPatternsPostResponse201",)

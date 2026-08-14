@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,58 +18,69 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseSettingsBillingBudgetsPostBody(GitHubModel):
-    """EnterprisesEnterpriseSettingsBillingBudgetsPostBody"""
+class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBody(GitHubModel):
+    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBody"""
 
-    budget_amount: int = Field(
-        description="The budget amount in whole dollars. For license-based products, this represents the number of licenses."
-    )
-    prevent_further_usage: bool = Field(
-        description="Whether to prevent additional spending once the budget is exceeded. For `user` and `multi_user_customer` scopes, this must be `true`."
-    )
-    budget_alerting: EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting = Field()
-    budget_scope: Literal[
-        "enterprise",
-        "organization",
-        "repository",
-        "cost_center",
-        "multi_user_customer",
-        "multi_user_cost_center",
-        "user",
-    ] = Field(
-        description="The scope of the budget.\n\n- `enterprise`: Apply the budget to the entire enterprise.\n- `organization`: Apply the budget to a specific organization in the enterprise.\n- `repository`: Apply the budget to a specific repository.\n- `cost_center`: Apply the budget to a specific cost center.\n- `multi_user_customer`: Apply a universal budget to all users in the enterprise.\n- `multi_user_cost_center`: Apply a universal budget to all users in a cost center.\n- `user`: Apply the budget to a single user.\n\n`user`, `multi_user_customer`, and `multi_user_cost_center` scopes are only supported when `budget_product_sku` is `ai_credits` or `premium_requests`."
-    )
-    budget_entity_name: Missing[str] = Field(
-        default=UNSET, description="The name of the entity to apply the budget to"
-    )
-    budget_type: Literal["BundlePricing", "ProductPricing", "SkuPricing"] = Field(
-        description="The type of pricing model used by the budget. Determines how `budget_product_sku` is interpreted.\n\n- `BundlePricing`: Covers all AI credit SKUs. Set `budget_product_sku` to `ai_credits`.\n- `ProductPricing`: Covers all SKUs that belong to a product. Set `budget_product_sku` to a product such as `actions` or `packages`.\n- `SkuPricing`: Covers a single, specific SKU. Set `budget_product_sku` to a SKU such as `actions_linux`."
-    )
-    budget_product_sku: Missing[str] = Field(
+    pattern_config_version: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="A single product or SKU that will be covered in the budget",
+        description="The version of the entity. This is used to confirm you're updating the current version of the entity and mitigate unintentionally overriding someone else's update.",
     )
-    user: Missing[str] = Field(
-        default=UNSET,
-        description="The username of the user for `user` scope budgets. This field is required when `budget_scope` is `user`.",
-    )
+    provider_pattern_settings: Missing[
+        list[
+            EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems
+        ]
+    ] = Field(default=UNSET, description="Pattern settings for provider patterns.")
+    custom_pattern_settings: Missing[
+        list[
+            EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems
+        ]
+    ] = Field(default=UNSET, description="Pattern settings for custom patterns.")
 
 
-class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting(
+class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems(
     GitHubModel
 ):
-    """EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting"""
+    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPat
+    ternSettingsItems
+    """
 
-    will_alert: bool = Field(description="Whether alerts are enabled for this budget")
-    alert_recipients: list[str] = Field(
-        description="Array of user login names who will receive alerts"
+    token_type: Missing[str] = Field(
+        default=UNSET, description="The ID of the pattern to configure."
+    )
+    push_protection_setting: Missing[Literal["not-set", "disabled", "enabled"]] = Field(
+        default=UNSET, description="Push protection setting to set for the pattern."
     )
 
 
-model_rebuild(EnterprisesEnterpriseSettingsBillingBudgetsPostBody)
-model_rebuild(EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting)
+class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems(
+    GitHubModel
+):
+    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatte
+    rnSettingsItems
+    """
+
+    token_type: Missing[str] = Field(
+        default=UNSET, description="The ID of the pattern to configure."
+    )
+    custom_pattern_version: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The version of the entity. This is used to confirm you're updating the current version of the entity and mitigate unintentionally overriding someone else's update.",
+    )
+    push_protection_setting: Missing[Literal["disabled", "enabled"]] = Field(
+        default=UNSET, description="Push protection setting to set for the pattern."
+    )
+
+
+model_rebuild(EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBody)
+model_rebuild(
+    EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems
+)
+model_rebuild(
+    EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems
+)
 
 __all__ = (
-    "EnterprisesEnterpriseSettingsBillingBudgetsPostBody",
-    "EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting",
+    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBody",
+    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems",
+    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems",
 )

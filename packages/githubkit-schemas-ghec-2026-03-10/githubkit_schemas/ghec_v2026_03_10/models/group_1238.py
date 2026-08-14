@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,23 +18,80 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof1(
+class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200(GitHubModel):
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200"""
+
+    id: Missing[str] = Field(
+        default=UNSET, description="Unique identifier for the cost center"
+    )
+    name: Missing[str] = Field(default=UNSET, description="Name of the cost center")
+    azure_subscription: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="Azure subscription ID associated with the cost center. Only present for cost centers linked to Azure subscriptions.",
+    )
+    state: Missing[Literal["active", "deleted"]] = Field(
+        default=UNSET, description="State of the cost center."
+    )
+    resources: Missing[
+        list[
+            EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems
+        ]
+    ] = Field(
+        default=UNSET, description="List of resources assigned to this cost center"
+    )
+    ai_credit_pool_enabled: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether the cost center draws from the AI credit pool (capped from member license entitlements).",
+    )
+    ai_credit_pool_state: Missing[
+        EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropAiCreditPoolState
+    ] = Field(
+        default=UNSET,
+        description="Read-only cap-budget projection for the cost center. Only present when the cost center draws from the AI credit pool.",
+    )
+
+
+class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems(
     GitHubModel
 ):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof1"""
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems"""
 
-    name: Missing[str] = Field(
-        default=UNSET, description="The new name for the cost center"
+    type: Missing[str] = Field(
+        default=UNSET, description="Type of resource (User, Org, or Repo)"
     )
-    ai_credit_pool_enabled: bool = Field(
-        description="Whether the cost center draws from the AI credit pool.\n\nThis can only be enabled for cost centers that contain only user or team resources.\n\n- `false` — no cap; the cost center draws from the shared enterprise pool.\n- `true` — the cost center is capped at an amount derived from its members' license entitlements."
+    name: Missing[str] = Field(default=UNSET, description="Name/login of the resource")
+
+
+class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropAiCreditPoolState(
+    GitHubModel
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropAiCreditPoolSt
+    ate
+
+    Read-only cap-budget projection for the cost center. Only present when the cost
+    center draws from the AI credit pool.
+    """
+
+    target_amount: Missing[Union[float, None]] = Field(
+        default=UNSET,
+        description="The AI credit pool cap target amount, in AI Credits. Null when the cap budget has not been materialized yet.",
+    )
+    current_amount: Missing[Union[float, None]] = Field(
+        default=UNSET,
+        description="The current-month applied amount against the AI credit pool cap, in AI Credits. Null when the cap budget has not been materialized yet.",
     )
 
 
+model_rebuild(EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200)
 model_rebuild(
-    EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof1
+    EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems
+)
+model_rebuild(
+    EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropAiCreditPoolState
 )
 
 __all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof1",
+    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200",
+    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropAiCreditPoolState",
+    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems",
 )

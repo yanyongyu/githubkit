@@ -9,9 +9,11 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0256 import (
     SecretScanningLocationCommitType,
     SecretScanningLocationCommitTypeForResponse,
@@ -44,29 +46,45 @@ from .group_0258 import (
     SecretScanningLocationPullRequestCommentType,
     SecretScanningLocationPullRequestCommentTypeForResponse,
 )
+from .group_0484 import (
+    SecretScanningAlertMetadataItemsType,
+    SecretScanningAlertMetadataItemsTypeForResponse,
+)
 
 
-class SecretScanningLocationType(TypedDict):
-    """SecretScanningLocation"""
+class SecretScanningAlertWithMetadataType(TypedDict):
+    """SecretScanningAlertWithMetadata"""
 
-    type: NotRequired[
-        Literal[
-            "commit",
-            "wiki_commit",
-            "issue_title",
-            "issue_body",
-            "issue_comment",
-            "discussion_title",
-            "discussion_body",
-            "discussion_comment",
-            "pull_request_title",
-            "pull_request_body",
-            "pull_request_comment",
-            "pull_request_review",
-            "pull_request_review_comment",
-        ]
+    number: NotRequired[int]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[Union[_dt.datetime, None]]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    locations_url: NotRequired[str]
+    state: NotRequired[Literal["open", "resolved"]]
+    resolution: NotRequired[
+        Union[Literal["false_positive", "wont_fix", "revoked", "used_in_tests"], None]
     ]
-    details: NotRequired[
+    resolved_at: NotRequired[Union[_dt.datetime, None]]
+    resolved_by: NotRequired[Union[SimpleUserType, None]]
+    resolution_comment: NotRequired[Union[str, None]]
+    secret_type: NotRequired[str]
+    secret_type_display_name: NotRequired[str]
+    provider: NotRequired[Union[str, None]]
+    provider_slug: NotRequired[Union[str, None]]
+    secret: NotRequired[str]
+    push_protection_bypassed: NotRequired[Union[bool, None]]
+    push_protection_bypassed_by: NotRequired[Union[SimpleUserType, None]]
+    push_protection_bypassed_at: NotRequired[Union[_dt.datetime, None]]
+    push_protection_bypass_request_reviewer: NotRequired[Union[SimpleUserType, None]]
+    push_protection_bypass_request_reviewer_comment: NotRequired[Union[str, None]]
+    push_protection_bypass_request_comment: NotRequired[Union[str, None]]
+    push_protection_bypass_request_html_url: NotRequired[Union[str, None]]
+    validity: NotRequired[Literal["active", "inactive", "unknown"]]
+    publicly_leaked: NotRequired[Union[bool, None]]
+    multi_repo: NotRequired[Union[bool, None]]
+    is_base64_encoded: NotRequired[Union[bool, None]]
+    first_location_detected: NotRequired[
         Union[
             SecretScanningLocationCommitType,
             SecretScanningLocationWikiCommitType,
@@ -81,31 +99,52 @@ class SecretScanningLocationType(TypedDict):
             SecretScanningLocationPullRequestCommentType,
             SecretScanningLocationPullRequestReviewType,
             SecretScanningLocationPullRequestReviewCommentType,
+            None,
         ]
     ]
+    has_more_locations: NotRequired[bool]
+    assigned_to: NotRequired[Union[SimpleUserType, None]]
+    closure_request_comment: NotRequired[Union[str, None]]
+    closure_request_reviewer_comment: NotRequired[Union[str, None]]
+    closure_request_reviewer: NotRequired[Union[SimpleUserType, None]]
+    metadata: NotRequired[list[SecretScanningAlertMetadataItemsType]]
 
 
-class SecretScanningLocationTypeForResponse(TypedDict):
-    """SecretScanningLocation"""
+class SecretScanningAlertWithMetadataTypeForResponse(TypedDict):
+    """SecretScanningAlertWithMetadata"""
 
-    type: NotRequired[
-        Literal[
-            "commit",
-            "wiki_commit",
-            "issue_title",
-            "issue_body",
-            "issue_comment",
-            "discussion_title",
-            "discussion_body",
-            "discussion_comment",
-            "pull_request_title",
-            "pull_request_body",
-            "pull_request_comment",
-            "pull_request_review",
-            "pull_request_review_comment",
-        ]
+    number: NotRequired[int]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[Union[str, None]]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    locations_url: NotRequired[str]
+    state: NotRequired[Literal["open", "resolved"]]
+    resolution: NotRequired[
+        Union[Literal["false_positive", "wont_fix", "revoked", "used_in_tests"], None]
     ]
-    details: NotRequired[
+    resolved_at: NotRequired[Union[str, None]]
+    resolved_by: NotRequired[Union[SimpleUserTypeForResponse, None]]
+    resolution_comment: NotRequired[Union[str, None]]
+    secret_type: NotRequired[str]
+    secret_type_display_name: NotRequired[str]
+    provider: NotRequired[Union[str, None]]
+    provider_slug: NotRequired[Union[str, None]]
+    secret: NotRequired[str]
+    push_protection_bypassed: NotRequired[Union[bool, None]]
+    push_protection_bypassed_by: NotRequired[Union[SimpleUserTypeForResponse, None]]
+    push_protection_bypassed_at: NotRequired[Union[str, None]]
+    push_protection_bypass_request_reviewer: NotRequired[
+        Union[SimpleUserTypeForResponse, None]
+    ]
+    push_protection_bypass_request_reviewer_comment: NotRequired[Union[str, None]]
+    push_protection_bypass_request_comment: NotRequired[Union[str, None]]
+    push_protection_bypass_request_html_url: NotRequired[Union[str, None]]
+    validity: NotRequired[Literal["active", "inactive", "unknown"]]
+    publicly_leaked: NotRequired[Union[bool, None]]
+    multi_repo: NotRequired[Union[bool, None]]
+    is_base64_encoded: NotRequired[Union[bool, None]]
+    first_location_detected: NotRequired[
         Union[
             SecretScanningLocationCommitTypeForResponse,
             SecretScanningLocationWikiCommitTypeForResponse,
@@ -120,11 +159,18 @@ class SecretScanningLocationTypeForResponse(TypedDict):
             SecretScanningLocationPullRequestCommentTypeForResponse,
             SecretScanningLocationPullRequestReviewTypeForResponse,
             SecretScanningLocationPullRequestReviewCommentTypeForResponse,
+            None,
         ]
     ]
+    has_more_locations: NotRequired[bool]
+    assigned_to: NotRequired[Union[SimpleUserTypeForResponse, None]]
+    closure_request_comment: NotRequired[Union[str, None]]
+    closure_request_reviewer_comment: NotRequired[Union[str, None]]
+    closure_request_reviewer: NotRequired[Union[SimpleUserTypeForResponse, None]]
+    metadata: NotRequired[list[SecretScanningAlertMetadataItemsTypeForResponse]]
 
 
 __all__ = (
-    "SecretScanningLocationType",
-    "SecretScanningLocationTypeForResponse",
+    "SecretScanningAlertWithMetadataType",
+    "SecretScanningAlertWithMetadataTypeForResponse",
 )

@@ -14,19 +14,19 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0440 import DependabotAlertType, DependabotAlertTypeForResponse
-from .group_0617 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0618 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0619 import (
+from .group_0618 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0619 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0620 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0620 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0621 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDependabotAlertAutoDismissedType(TypedDict):
-    """Dependabot alert auto-dismissed event"""
+class WebhookDependabotAlertAssigneesChangedType(TypedDict):
+    """Dependabot alert assignees changed event"""
 
-    action: Literal["auto_dismissed"]
+    action: Literal["assignees_changed"]
     alert: DependabotAlertType
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -35,10 +35,10 @@ class WebhookDependabotAlertAutoDismissedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookDependabotAlertAutoDismissedTypeForResponse(TypedDict):
-    """Dependabot alert auto-dismissed event"""
+class WebhookDependabotAlertAssigneesChangedTypeForResponse(TypedDict):
+    """Dependabot alert assignees changed event"""
 
-    action: Literal["auto_dismissed"]
+    action: Literal["assignees_changed"]
     alert: DependabotAlertTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
@@ -48,6 +48,6 @@ class WebhookDependabotAlertAutoDismissedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookDependabotAlertAutoDismissedType",
-    "WebhookDependabotAlertAutoDismissedTypeForResponse",
+    "WebhookDependabotAlertAssigneesChangedType",
+    "WebhookDependabotAlertAssigneesChangedTypeForResponse",
 )

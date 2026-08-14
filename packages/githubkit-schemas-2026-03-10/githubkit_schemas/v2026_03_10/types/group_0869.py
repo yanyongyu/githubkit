@@ -13,20 +13,20 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0534 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0535 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0536 import (
+from .group_0535 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0536 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0537 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0537 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0569 import PullRequestWebhookType, PullRequestWebhookTypeForResponse
+from .group_0538 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0570 import PullRequestWebhookType, PullRequestWebhookTypeForResponse
 
 
-class WebhookPullRequestReopenedType(TypedDict):
-    """pull_request reopened event"""
+class WebhookPullRequestReadyForReviewType(TypedDict):
+    """pull_request ready_for_review event"""
 
-    action: Literal["reopened"]
+    action: Literal["ready_for_review"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     number: int
@@ -36,10 +36,10 @@ class WebhookPullRequestReopenedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookPullRequestReopenedTypeForResponse(TypedDict):
-    """pull_request reopened event"""
+class WebhookPullRequestReadyForReviewTypeForResponse(TypedDict):
+    """pull_request ready_for_review event"""
 
-    action: Literal["reopened"]
+    action: Literal["ready_for_review"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     number: int
@@ -50,6 +50,6 @@ class WebhookPullRequestReopenedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookPullRequestReopenedType",
-    "WebhookPullRequestReopenedTypeForResponse",
+    "WebhookPullRequestReadyForReviewType",
+    "WebhookPullRequestReadyForReviewTypeForResponse",
 )

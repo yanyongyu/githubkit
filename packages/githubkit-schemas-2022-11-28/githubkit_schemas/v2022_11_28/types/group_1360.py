@@ -11,30 +11,22 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0011 import WebhookConfigType, WebhookConfigTypeForResponse
+
+class ReposOwnerRepoGitRefsRefPatchBodyType(TypedDict):
+    """ReposOwnerRepoGitRefsRefPatchBody"""
+
+    sha: str
+    force: NotRequired[bool]
 
 
-class ReposOwnerRepoHooksHookIdPatchBodyType(TypedDict):
-    """ReposOwnerRepoHooksHookIdPatchBody"""
+class ReposOwnerRepoGitRefsRefPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoGitRefsRefPatchBody"""
 
-    config: NotRequired[WebhookConfigType]
-    events: NotRequired[list[str]]
-    add_events: NotRequired[list[str]]
-    remove_events: NotRequired[list[str]]
-    active: NotRequired[bool]
-
-
-class ReposOwnerRepoHooksHookIdPatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoHooksHookIdPatchBody"""
-
-    config: NotRequired[WebhookConfigTypeForResponse]
-    events: NotRequired[list[str]]
-    add_events: NotRequired[list[str]]
-    remove_events: NotRequired[list[str]]
-    active: NotRequired[bool]
+    sha: str
+    force: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoHooksHookIdPatchBodyType",
-    "ReposOwnerRepoHooksHookIdPatchBodyTypeForResponse",
+    "ReposOwnerRepoGitRefsRefPatchBodyType",
+    "ReposOwnerRepoGitRefsRefPatchBodyTypeForResponse",
 )

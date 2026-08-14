@@ -11,38 +11,22 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoDispatchesPostBody(GitHubModel):
-    """ReposOwnerRepoDispatchesPostBody"""
+class ReposOwnerRepoDependencyGraphSnapshotsPostResponse201(GitHubModel):
+    """ReposOwnerRepoDependencyGraphSnapshotsPostResponse201"""
 
-    event_type: str = Field(
-        min_length=1,
-        max_length=100,
-        description="A custom webhook event name. Must be 100 characters or fewer.",
+    id: int = Field(description="ID of the created snapshot.")
+    created_at: str = Field(description="The time at which the snapshot was created.")
+    result: str = Field(
+        description='Either "SUCCESS", "ACCEPTED", or "INVALID". "SUCCESS" indicates that the snapshot was successfully created and the repository\'s dependencies were updated. "ACCEPTED" indicates that the snapshot was successfully created, but the repository\'s dependencies were not updated. "INVALID" indicates that the snapshot was malformed.'
     )
-    client_payload: Missing[ReposOwnerRepoDispatchesPostBodyPropClientPayload] = Field(
-        default=UNSET,
-        description="JSON payload with extra information about the webhook event that your action or workflow may use. The maximum number of top-level properties is 10. The total size of the JSON payload must be less than 64KB.",
+    message: str = Field(
+        description="A message providing further details about the result, such as why the dependencies were not updated."
     )
 
 
-class ReposOwnerRepoDispatchesPostBodyPropClientPayload(ExtraGitHubModel):
-    """ReposOwnerRepoDispatchesPostBodyPropClientPayload
+model_rebuild(ReposOwnerRepoDependencyGraphSnapshotsPostResponse201)
 
-    JSON payload with extra information about the webhook event that your action or
-    workflow may use. The maximum number of top-level properties is 10. The total
-    size of the JSON payload must be less than 64KB.
-    """
-
-
-model_rebuild(ReposOwnerRepoDispatchesPostBody)
-model_rebuild(ReposOwnerRepoDispatchesPostBodyPropClientPayload)
-
-__all__ = (
-    "ReposOwnerRepoDispatchesPostBody",
-    "ReposOwnerRepoDispatchesPostBodyPropClientPayload",
-)
+__all__ = ("ReposOwnerRepoDependencyGraphSnapshotsPostResponse201",)

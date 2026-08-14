@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,21 +18,36 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoTransferPostBody(GitHubModel):
-    """ReposOwnerRepoTransferPostBody"""
+class ReposOwnerRepoStacksStackNumberAddPostResponse422(GitHubModel):
+    """Validation Error
 
-    new_owner: str = Field(
-        description="The username or organization name the repository will be transferred to."
+    Validation Error
+    """
+
+    message: str = Field()
+    documentation_url: str = Field()
+    errors: Missing[
+        list[ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems]
+    ] = Field(default=UNSET)
+
+
+class ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems(GitHubModel):
+    """ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems"""
+
+    resource: Missing[str] = Field(default=UNSET)
+    field: Missing[str] = Field(default=UNSET)
+    message: Missing[str] = Field(default=UNSET)
+    code: str = Field()
+    index: Missing[int] = Field(default=UNSET)
+    value: Missing[Union[str, None, int, None, list[Union[str, int]], None]] = Field(
+        default=UNSET
     )
-    new_name: Missing[str] = Field(
-        default=UNSET, description="The new name to be given to the repository."
-    )
-    team_ids: Missing[list[int]] = Field(
-        default=UNSET,
-        description="ID of the team or teams to add to the repository. Teams can only be added to organization-owned repositories.",
-    )
 
 
-model_rebuild(ReposOwnerRepoTransferPostBody)
+model_rebuild(ReposOwnerRepoStacksStackNumberAddPostResponse422)
+model_rebuild(ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems)
 
-__all__ = ("ReposOwnerRepoTransferPostBody",)
+__all__ = (
+    "ReposOwnerRepoStacksStackNumberAddPostResponse422",
+    "ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems",
+)

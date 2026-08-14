@@ -14,21 +14,20 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0049 import DiscussionType, DiscussionTypeForResponse
-from .group_0534 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0535 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0536 import (
+from .group_0535 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0536 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0537 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0537 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0547 import WebhooksCommentType, WebhooksCommentTypeForResponse
+from .group_0538 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0548 import WebhooksCommentType, WebhooksCommentTypeForResponse
 
 
-class WebhookDiscussionCommentEditedType(TypedDict):
-    """discussion_comment edited event"""
+class WebhookDiscussionCommentDeletedType(TypedDict):
+    """discussion_comment deleted event"""
 
-    action: Literal["edited"]
-    changes: WebhookDiscussionCommentEditedPropChangesType
+    action: Literal["deleted"]
     comment: WebhooksCommentType
     discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
@@ -38,11 +37,10 @@ class WebhookDiscussionCommentEditedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookDiscussionCommentEditedTypeForResponse(TypedDict):
-    """discussion_comment edited event"""
+class WebhookDiscussionCommentDeletedTypeForResponse(TypedDict):
+    """discussion_comment deleted event"""
 
-    action: Literal["edited"]
-    changes: WebhookDiscussionCommentEditedPropChangesTypeForResponse
+    action: Literal["deleted"]
     comment: WebhooksCommentTypeForResponse
     discussion: DiscussionTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
@@ -52,35 +50,7 @@ class WebhookDiscussionCommentEditedTypeForResponse(TypedDict):
     sender: SimpleUserTypeForResponse
 
 
-class WebhookDiscussionCommentEditedPropChangesType(TypedDict):
-    """WebhookDiscussionCommentEditedPropChanges"""
-
-    body: WebhookDiscussionCommentEditedPropChangesPropBodyType
-
-
-class WebhookDiscussionCommentEditedPropChangesTypeForResponse(TypedDict):
-    """WebhookDiscussionCommentEditedPropChanges"""
-
-    body: WebhookDiscussionCommentEditedPropChangesPropBodyTypeForResponse
-
-
-class WebhookDiscussionCommentEditedPropChangesPropBodyType(TypedDict):
-    """WebhookDiscussionCommentEditedPropChangesPropBody"""
-
-    from_: str
-
-
-class WebhookDiscussionCommentEditedPropChangesPropBodyTypeForResponse(TypedDict):
-    """WebhookDiscussionCommentEditedPropChangesPropBody"""
-
-    from_: str
-
-
 __all__ = (
-    "WebhookDiscussionCommentEditedPropChangesPropBodyType",
-    "WebhookDiscussionCommentEditedPropChangesPropBodyTypeForResponse",
-    "WebhookDiscussionCommentEditedPropChangesType",
-    "WebhookDiscussionCommentEditedPropChangesTypeForResponse",
-    "WebhookDiscussionCommentEditedType",
-    "WebhookDiscussionCommentEditedTypeForResponse",
+    "WebhookDiscussionCommentDeletedType",
+    "WebhookDiscussionCommentDeletedTypeForResponse",
 )

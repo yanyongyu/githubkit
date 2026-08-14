@@ -16,16 +16,12 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200(
-    GitHubModel
-):
-    """ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200"""
+class ReposOwnerRepoDeploymentsPostResponse202(GitHubModel):
+    """ReposOwnerRepoDeploymentsPostResponse202"""
 
-    dismissal_review_id: Missing[int] = Field(
-        default=UNSET, description="ID of the dismissal review."
-    )
+    message: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200)
+model_rebuild(ReposOwnerRepoDeploymentsPostResponse202)
 
-__all__ = ("ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200",)
+__all__ = ("ReposOwnerRepoDeploymentsPostResponse202",)

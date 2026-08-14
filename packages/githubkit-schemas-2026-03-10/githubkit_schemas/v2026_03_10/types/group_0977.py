@@ -15,18 +15,18 @@ from typing_extensions import NotRequired, TypedDict
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0020 import RepositoryType, RepositoryTypeForResponse
 from .group_0058 import IssueType, IssueTypeForResponse
-from .group_0535 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0536 import (
+from .group_0536 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0537 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0537 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0538 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookSubIssuesSubIssueRemovedType(TypedDict):
-    """sub-issue removed event"""
+class WebhookSubIssuesSubIssueAddedType(TypedDict):
+    """sub-issue added event"""
 
-    action: Literal["sub_issue_removed"]
+    action: Literal["sub_issue_added"]
     sub_issue_id: NotRequired[float]
     sub_issue: NotRequired[IssueType]
     sub_issue_repo: NotRequired[RepositoryType]
@@ -38,10 +38,10 @@ class WebhookSubIssuesSubIssueRemovedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookSubIssuesSubIssueRemovedTypeForResponse(TypedDict):
-    """sub-issue removed event"""
+class WebhookSubIssuesSubIssueAddedTypeForResponse(TypedDict):
+    """sub-issue added event"""
 
-    action: Literal["sub_issue_removed"]
+    action: Literal["sub_issue_added"]
     sub_issue_id: NotRequired[float]
     sub_issue: NotRequired[IssueTypeForResponse]
     sub_issue_repo: NotRequired[RepositoryTypeForResponse]
@@ -54,6 +54,6 @@ class WebhookSubIssuesSubIssueRemovedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookSubIssuesSubIssueRemovedType",
-    "WebhookSubIssuesSubIssueRemovedTypeForResponse",
+    "WebhookSubIssuesSubIssueAddedType",
+    "WebhookSubIssuesSubIssueAddedTypeForResponse",
 )

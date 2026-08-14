@@ -18,20 +18,21 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_1027 import (
+from .group_1028 import (
     AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0,
     AgentsTasksTaskIdGetResponse200Allof0PropCustomAgent,
     AgentsTasksTaskIdGetResponse200Allof0PropRepository,
     AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems,
 )
-from .group_1028 import (
+from .group_1029 import (
     AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItems,
     AgentsTasksTaskIdGetResponse200Allof0PropOwner,
 )
+from .group_1031 import AgentsTasksTaskIdGetResponse200Allof1PropSessionsItems
 
 
-class AgentsTasksTaskIdGetResponse200Allof0(GitHubModel):
-    """AgentsTasksTaskIdGetResponse200Allof0"""
+class AgentsTasksTaskIdGetResponse200(GitHubModel):
+    """AgentsTasksTaskIdGetResponse200"""
 
     id: str = Field(description="Unique task identifier")
     url: Missing[str] = Field(default=UNSET, description="API URL for this task")
@@ -86,8 +87,11 @@ class AgentsTasksTaskIdGetResponse200Allof0(GitHubModel):
     custom_agent: Missing[AgentsTasksTaskIdGetResponse200Allof0PropCustomAgent] = Field(
         default=UNSET, description="Custom agent metadata associated with this task"
     )
+    sessions: Missing[list[AgentsTasksTaskIdGetResponse200Allof1PropSessionsItems]] = (
+        Field(default=UNSET, description="Sessions associated with this task")
+    )
 
 
-model_rebuild(AgentsTasksTaskIdGetResponse200Allof0)
+model_rebuild(AgentsTasksTaskIdGetResponse200)
 
-__all__ = ("AgentsTasksTaskIdGetResponse200Allof0",)
+__all__ = ("AgentsTasksTaskIdGetResponse200",)

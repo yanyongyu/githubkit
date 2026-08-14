@@ -9,44 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0534 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0535 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0536 import (
+from .group_0535 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0536 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0537 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0537 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0538 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0580 import WebhooksSponsorshipType, WebhooksSponsorshipTypeForResponse
+from .group_0581 import WebhooksChanges8Type, WebhooksChanges8TypeForResponse
 
 
-class WebhookStarCreatedType(TypedDict):
-    """star created event"""
+class WebhookSponsorshipTierChangedType(TypedDict):
+    """sponsorship tier_changed event"""
 
-    action: Literal["created"]
+    action: Literal["tier_changed"]
+    changes: WebhooksChanges8Type
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
+    repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserType
-    starred_at: Union[str, None]
+    sponsorship: WebhooksSponsorshipType
 
 
-class WebhookStarCreatedTypeForResponse(TypedDict):
-    """star created event"""
+class WebhookSponsorshipTierChangedTypeForResponse(TypedDict):
+    """sponsorship tier_changed event"""
 
-    action: Literal["created"]
+    action: Literal["tier_changed"]
+    changes: WebhooksChanges8TypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
     sender: SimpleUserTypeForResponse
-    starred_at: Union[str, None]
+    sponsorship: WebhooksSponsorshipTypeForResponse
 
 
 __all__ = (
-    "WebhookStarCreatedType",
-    "WebhookStarCreatedTypeForResponse",
+    "WebhookSponsorshipTierChangedType",
+    "WebhookSponsorshipTierChangedTypeForResponse",
 )

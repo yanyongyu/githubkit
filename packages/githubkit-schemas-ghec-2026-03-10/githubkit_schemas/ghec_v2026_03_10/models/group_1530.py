@@ -9,24 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBody(GitHubModel):
-    """ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBody"""
+class ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201(GitHubModel):
+    """ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201"""
 
-    status: Literal["approve", "deny"] = Field(
-        description="The review action to perform on the dismissal request."
+    sbom_url: Missing[str] = Field(
+        default=UNSET, description="URL to poll for the SBOM export result."
     )
-    message: str = Field(
-        description="A message to include with the review. Has a maximum character length of 2048."
-    )
 
 
-model_rebuild(ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBody)
+model_rebuild(ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201)
 
-__all__ = ("ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBody",)
+__all__ = ("ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201",)

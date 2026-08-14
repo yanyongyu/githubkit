@@ -9,24 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, TypeAlias
+
+UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType: TypeAlias = dict[
+    str, Any
+]
+"""UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAl
+lof1PropCustomProperties
+
+The custom properties that were defined for the repository. The keys are the
+custom property names, and the values are the corresponding custom property
+values. Present for org repos only.
+"""
 
 
-class UserSshSigningKeysPostBodyType(TypedDict):
-    """UserSshSigningKeysPostBody"""
+UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAl
+lof1PropCustomProperties
 
-    title: NotRequired[str]
-    key: str
-
-
-class UserSshSigningKeysPostBodyTypeForResponse(TypedDict):
-    """UserSshSigningKeysPostBody"""
-
-    title: NotRequired[str]
-    key: str
+The custom properties that were defined for the repository. The keys are the
+custom property names, and the values are the corresponding custom property
+values. Present for org repos only.
+"""
 
 
 __all__ = (
-    "UserSshSigningKeysPostBodyType",
-    "UserSshSigningKeysPostBodyTypeForResponse",
+    "UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType",
+    "UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse",
 )

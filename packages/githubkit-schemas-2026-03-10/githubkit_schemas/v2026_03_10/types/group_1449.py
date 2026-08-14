@@ -9,56 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0493 import (
-    PullRequestStackPullRequestType,
-    PullRequestStackPullRequestTypeForResponse,
+from .group_0260 import (
+    SecretScanningCustomPatternType,
+    SecretScanningCustomPatternTypeForResponse,
 )
 
 
-class ReposOwnerRepoStacksPostResponse201Type(TypedDict):
-    """ReposOwnerRepoStacksPostResponse201"""
+class ReposOwnerRepoSecretScanningCustomPatternsPostResponse201Type(TypedDict):
+    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse201"""
 
-    id: int
-    number: int
-    node_id: str
-    url: str
-    base: ReposOwnerRepoStacksPostResponse201PropBaseType
-    open_: bool
-    created_at: _dt.datetime
-    pull_requests: list[PullRequestStackPullRequestType]
+    created_patterns: NotRequired[list[SecretScanningCustomPatternType]]
 
 
-class ReposOwnerRepoStacksPostResponse201TypeForResponse(TypedDict):
-    """ReposOwnerRepoStacksPostResponse201"""
+class ReposOwnerRepoSecretScanningCustomPatternsPostResponse201TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse201"""
 
-    id: int
-    number: int
-    node_id: str
-    url: str
-    base: ReposOwnerRepoStacksPostResponse201PropBaseTypeForResponse
-    open_: bool
-    created_at: str
-    pull_requests: list[PullRequestStackPullRequestTypeForResponse]
-
-
-class ReposOwnerRepoStacksPostResponse201PropBaseType(TypedDict):
-    """ReposOwnerRepoStacksPostResponse201PropBase"""
-
-    ref: str
-
-
-class ReposOwnerRepoStacksPostResponse201PropBaseTypeForResponse(TypedDict):
-    """ReposOwnerRepoStacksPostResponse201PropBase"""
-
-    ref: str
+    created_patterns: NotRequired[list[SecretScanningCustomPatternTypeForResponse]]
 
 
 __all__ = (
-    "ReposOwnerRepoStacksPostResponse201PropBaseType",
-    "ReposOwnerRepoStacksPostResponse201PropBaseTypeForResponse",
-    "ReposOwnerRepoStacksPostResponse201Type",
-    "ReposOwnerRepoStacksPostResponse201TypeForResponse",
+    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse201Type",
+    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse201TypeForResponse",
 )

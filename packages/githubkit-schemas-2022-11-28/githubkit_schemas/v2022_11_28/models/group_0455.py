@@ -9,24 +9,69 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0003 import SimpleUser
-from .group_0133 import Team
 
+class PullRequestMergeAsyncResult(GitHubModel):
+    """Pull Request Merge Async Result
 
-class PullRequestReviewRequest(GitHubModel):
-    """Pull Request Review Request
-
-    Pull Request Review Request
+    Pull Request Merge Async Result
     """
 
-    users: list[SimpleUser] = Field()
-    teams: list[Team] = Field()
+    status: Literal["pending", "merged", "enqueued", "failed"] = Field()
+    details: Union[
+        PullRequestMergeAsyncResultPropDetailsOneof0,
+        PullRequestMergeAsyncResultPropDetailsOneof1,
+        PullRequestMergeAsyncResultPropDetailsOneof2,
+    ] = Field()
 
 
-model_rebuild(PullRequestReviewRequest)
+class PullRequestMergeAsyncResultPropDetailsOneof0(GitHubModel):
+    """PullRequestMergeAsyncResultPropDetailsOneof0
 
-__all__ = ("PullRequestReviewRequest",)
+    When an asynchronous merge request was created or already existed
+    """
+
+    message: str = Field()
+    uuid: str = Field()
+    merge_method: Literal["default", "merge", "squash", "rebase"] = Field()
+    merge_action: Literal["default", "merge_queue", "direct_merge"] = Field()
+    expected_head_sha: str = Field(
+        description="SHA that the pull request head must match for the enqueued merge to proceed."
+    )
+
+
+class PullRequestMergeAsyncResultPropDetailsOneof1(GitHubModel):
+    """PullRequestMergeAsyncResultPropDetailsOneof1
+
+    When the pull request cannot be merged
+    """
+
+    message: str = Field()
+
+
+class PullRequestMergeAsyncResultPropDetailsOneof2(GitHubModel):
+    """PullRequestMergeAsyncResultPropDetailsOneof2
+
+    When the pull request is already merged
+    """
+
+    message: str = Field()
+    sha: str = Field()
+
+
+model_rebuild(PullRequestMergeAsyncResult)
+model_rebuild(PullRequestMergeAsyncResultPropDetailsOneof0)
+model_rebuild(PullRequestMergeAsyncResultPropDetailsOneof1)
+model_rebuild(PullRequestMergeAsyncResultPropDetailsOneof2)
+
+__all__ = (
+    "PullRequestMergeAsyncResult",
+    "PullRequestMergeAsyncResultPropDetailsOneof0",
+    "PullRequestMergeAsyncResultPropDetailsOneof1",
+    "PullRequestMergeAsyncResultPropDetailsOneof2",
+)

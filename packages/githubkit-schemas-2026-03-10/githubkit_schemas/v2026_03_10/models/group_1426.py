@@ -16,17 +16,13 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody"""
+class ReposOwnerRepoPullsPullNumberMergePutResponse405(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberMergePutResponse405"""
 
-    reviewers: list[str] = Field(
-        description="An array of user `login`s that will be removed."
-    )
-    team_reviewers: Missing[list[str]] = Field(
-        default=UNSET, description="An array of team `slug`s that will be removed."
-    )
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody)
+model_rebuild(ReposOwnerRepoPullsPullNumberMergePutResponse405)
 
-__all__ = ("ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody",)
+__all__ = ("ReposOwnerRepoPullsPullNumberMergePutResponse405",)

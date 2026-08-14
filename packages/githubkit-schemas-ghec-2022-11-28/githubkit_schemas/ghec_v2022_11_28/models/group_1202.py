@@ -16,12 +16,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422(GitHubModel):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422"""
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody(GitHubModel):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody"""
 
-    message: Missing[str] = Field(default=UNSET)
+    organization_id: int = Field(
+        description="The ID of the organization to use as the custom agents source."
+    )
+    create_ruleset: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to create a ruleset to protect agent definition files. Defaults to true.",
+    )
 
 
-model_rebuild(EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422)
+model_rebuild(EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody)
 
-__all__ = ("EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422",)
+__all__ = ("EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody",)

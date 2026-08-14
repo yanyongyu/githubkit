@@ -13,35 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0317 import ProjectsV2Type, ProjectsV2TypeForResponse
-from .group_0619 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0620 import (
+from .group_0619 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0620 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0621 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
+from .group_0622 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0652 import WebhooksProjectType, WebhooksProjectTypeForResponse
 
 
-class WebhookProjectsV2ProjectClosedType(TypedDict):
-    """Projects v2 Project Closed Event"""
+class WebhookProjectReopenedType(TypedDict):
+    """project reopened event"""
 
-    action: Literal["closed"]
+    action: Literal["reopened"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
-    projects_v2: ProjectsV2Type
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    project: WebhooksProjectType
+    repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserType
 
 
-class WebhookProjectsV2ProjectClosedTypeForResponse(TypedDict):
-    """Projects v2 Project Closed Event"""
+class WebhookProjectReopenedTypeForResponse(TypedDict):
+    """project reopened event"""
 
-    action: Literal["closed"]
+    action: Literal["reopened"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: OrganizationSimpleWebhooksTypeForResponse
-    projects_v2: ProjectsV2TypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    project: WebhooksProjectTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookProjectsV2ProjectClosedType",
-    "WebhookProjectsV2ProjectClosedTypeForResponse",
+    "WebhookProjectReopenedType",
+    "WebhookProjectReopenedTypeForResponse",
 )

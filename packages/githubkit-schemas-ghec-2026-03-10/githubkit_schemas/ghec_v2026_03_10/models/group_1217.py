@@ -14,25 +14,16 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneof1(
-    GitHubModel
-):
-    """EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneo
-    f1
-    """
+class EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBody(GitHubModel):
+    """EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBody"""
 
-    status: Missing[Literal["error"]] = Field(default=UNSET)
-    error: Missing[str] = Field(default=UNSET)
+    default_level: Literal["public", "internal"] = Field(
+        description="The default repository access level for Dependabot updates."
+    )
 
 
-model_rebuild(
-    EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneof1
-)
+model_rebuild(EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBody)
 
-__all__ = (
-    "EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneof1",
-)
+__all__ = ("EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBody",)

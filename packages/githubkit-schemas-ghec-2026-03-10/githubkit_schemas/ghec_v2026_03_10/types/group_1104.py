@@ -13,7 +13,7 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_1105 import (
+from .group_1106 import (
     AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0Type,
     AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0TypeForResponse,
     AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCustomAgentType,
@@ -23,16 +23,20 @@ from .group_1105 import (
     AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsType,
     AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsTypeForResponse,
 )
-from .group_1106 import (
+from .group_1107 import (
     AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItemsType,
     AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItemsTypeForResponse,
     AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropOwnerType,
     AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropOwnerTypeForResponse,
 )
+from .group_1109 import (
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsType,
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse,
+)
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0Type(TypedDict):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0"""
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Type(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200"""
 
     id: str
     url: NotRequired[str]
@@ -71,10 +75,13 @@ class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0Type(TypedDict):
     custom_agent: NotRequired[
         AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCustomAgentType
     ]
+    sessions: NotRequired[
+        list[AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsType]
+    ]
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0TypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0"""
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200TypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200"""
 
     id: str
     url: NotRequired[str]
@@ -117,9 +124,14 @@ class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0TypeForResponse(TypedDi
     custom_agent: NotRequired[
         AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCustomAgentTypeForResponse
     ]
+    sessions: NotRequired[
+        list[
+            AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse
+        ]
+    ]
 
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0Type",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0TypeForResponse",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Type",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200TypeForResponse",
 )

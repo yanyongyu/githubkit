@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,80 +18,71 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200(GitHubModel):
-    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200"""
+class EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBody(GitHubModel):
+    """EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBody"""
 
-    id: Missing[str] = Field(
-        default=UNSET, description="Unique identifier for the cost center"
-    )
-    name: Missing[str] = Field(default=UNSET, description="Name of the cost center")
-    azure_subscription: Missing[Union[str, None]] = Field(
+    budget_amount: Missing[int] = Field(
         default=UNSET,
-        description="Azure subscription ID associated with the cost center. Only present for cost centers linked to Azure subscriptions.",
+        description="The budget amount in whole dollars. For license-based products, this represents the number of licenses.",
     )
-    state: Missing[Literal["active", "deleted"]] = Field(
-        default=UNSET, description="State of the cost center."
+    prevent_further_usage: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to prevent additional spending once the budget is exceeded. For budgets with `user` or `multi_user_customer` scope, this must remain `true`.",
     )
-    resources: Missing[
-        list[
-            EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems
+    budget_alerting: Missing[
+        EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting
+    ] = Field(default=UNSET)
+    budget_scope: Missing[
+        Literal[
+            "enterprise",
+            "organization",
+            "repository",
+            "cost_center",
+            "multi_user_customer",
+            "multi_user_cost_center",
+            "user",
         ]
     ] = Field(
-        default=UNSET, description="List of resources assigned to this cost center"
-    )
-    ai_credit_pool_enabled: Missing[bool] = Field(
         default=UNSET,
-        description="Whether the cost center draws from the AI credit pool (capped from member license entitlements).",
+        description="The scope of the budget.\n\n- `enterprise`: Apply the budget to the entire enterprise.\n- `organization`: Apply the budget to a specific organization in the enterprise.\n- `repository`: Apply the budget to a specific repository.\n- `cost_center`: Apply the budget to a specific cost center.\n- `multi_user_customer`: Apply a universal budget to all users in the enterprise.\n- `multi_user_cost_center`: Apply a universal budget to all users in a cost center.\n- `user`: Apply the budget to a single user.",
     )
-    ai_credit_pool_state: Missing[
-        EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropAiCreditPoolState
-    ] = Field(
+    budget_entity_name: Missing[str] = Field(
+        default=UNSET, description="The name of the entity to apply the budget to"
+    )
+    budget_type: Missing[Literal["BundlePricing", "ProductPricing", "SkuPricing"]] = (
+        Field(
+            default=UNSET,
+            description="The type of pricing model used by the budget. Determines how `budget_product_sku` is interpreted.\n\n- `BundlePricing`: Covers all AI credit SKUs. Set `budget_product_sku` to `ai_credits`.\n- `ProductPricing`: Covers all SKUs that belong to a product. Set `budget_product_sku` to a product such as `actions` or `packages`.\n- `SkuPricing`: Covers a single, specific SKU. Set `budget_product_sku` to a SKU such as `actions_linux`.",
+        )
+    )
+    budget_product_sku: Missing[str] = Field(
         default=UNSET,
-        description="Read-only cap-budget projection for the cost center. Only present when the cost center draws from the AI credit pool.",
+        description="A single product or SKU that will be covered in the budget",
+    )
+    user: Missing[str] = Field(
+        default=UNSET, description="The username of the user for `user` scope budgets."
     )
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems(
+class EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting(
     GitHubModel
 ):
-    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems"""
+    """EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting"""
 
-    type: Missing[str] = Field(
-        default=UNSET, description="Type of resource (User, Org, or Repo)"
+    will_alert: Missing[bool] = Field(
+        default=UNSET, description="Whether alerts are enabled for this budget"
     )
-    name: Missing[str] = Field(default=UNSET, description="Name/login of the resource")
-
-
-class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropAiCreditPoolState(
-    GitHubModel
-):
-    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropAiCreditPoolSt
-    ate
-
-    Read-only cap-budget projection for the cost center. Only present when the cost
-    center draws from the AI credit pool.
-    """
-
-    target_amount: Missing[Union[float, None]] = Field(
-        default=UNSET,
-        description="The AI credit pool cap target amount, in AI Credits. Null when the cap budget has not been materialized yet.",
-    )
-    current_amount: Missing[Union[float, None]] = Field(
-        default=UNSET,
-        description="The current-month applied amount against the AI credit pool cap, in AI Credits. Null when the cap budget has not been materialized yet.",
+    alert_recipients: Missing[list[str]] = Field(
+        default=UNSET, description="Array of user login names who will receive alerts"
     )
 
 
-model_rebuild(EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200)
+model_rebuild(EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBody)
 model_rebuild(
-    EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems
-)
-model_rebuild(
-    EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropAiCreditPoolState
+    EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting
 )
 
 __all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200",
-    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropAiCreditPoolState",
-    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems",
+    "EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBody",
+    "EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting",
 )

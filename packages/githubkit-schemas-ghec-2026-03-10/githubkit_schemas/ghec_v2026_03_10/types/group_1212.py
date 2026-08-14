@@ -9,37 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyType(
+class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBodyType(
     TypedDict
 ):
-    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBod
-    y
-    """
+    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBody"""
 
-    credential_type: Literal[
-        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
-    ]
     revoke_credentials: NotRequired[bool]
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyTypeForResponse(
+class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBodyTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBod
-    y
-    """
+    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBody"""
 
-    credential_type: Literal[
-        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
-    ]
     revoke_credentials: NotRequired[bool]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyType",
-    "EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyTypeForResponse",
+    "EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBodyType",
+    "EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBodyTypeForResponse",
 )

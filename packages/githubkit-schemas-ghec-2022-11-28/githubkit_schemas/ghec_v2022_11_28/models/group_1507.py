@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Annotated, Literal, Union
 
 from pydantic import Field
 
@@ -18,52 +18,34 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoCodespacesPostBody(GitHubModel):
-    """ReposOwnerRepoCodespacesPostBody"""
+class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0(GitHubModel):
+    """ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0"""
 
-    ref: Missing[str] = Field(
+    state: Literal["open", "dismissed"] = Field(
+        description="Sets the state of the code scanning alert. You must provide `dismissed_reason` when you set the state to `dismissed`."
+    )
+    dismissed_reason: Missing[
+        Union[Literal["false positive", "won't fix", "used in tests"], None]
+    ] = Field(
         default=UNSET,
-        description="Git ref (typically a branch name) for this codespace",
+        description="**Required when the state is dismissed.** The reason for dismissing or closing the alert.",
     )
-    location: Missing[str] = Field(
+    dismissed_comment: Missing[Union[Annotated[str, Field(max_length=280)], None]] = (
+        Field(
+            default=UNSET,
+            description="The dismissal comment associated with the dismissal of the alert.",
+        )
+    )
+    create_request: Missing[bool] = Field(
         default=UNSET,
-        description="The requested location for a new codespace. Best efforts are made to respect this upon creation. Assigned by IP if not provided.",
+        description="If `true`, attempt to create an alert dismissal request.",
     )
-    geo: Missing[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]] = Field(
+    assignees: Missing[list[str]] = Field(
         default=UNSET,
-        description="The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is closing down.",
-    )
-    client_ip: Missing[str] = Field(
-        default=UNSET,
-        description="IP for location auto-detection when proxying a request",
-    )
-    machine: Missing[str] = Field(
-        default=UNSET, description="Machine type to use for this codespace"
-    )
-    devcontainer_path: Missing[str] = Field(
-        default=UNSET,
-        description="Path to devcontainer.json config to use for this codespace",
-    )
-    multi_repo_permissions_opt_out: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to authorize requested permissions from devcontainer.json",
-    )
-    working_directory: Missing[str] = Field(
-        default=UNSET, description="Working directory for this codespace"
-    )
-    idle_timeout_minutes: Missing[int] = Field(
-        default=UNSET,
-        description="Time in minutes before codespace stops from inactivity",
-    )
-    display_name: Missing[str] = Field(
-        default=UNSET, description="Display name for this codespace"
-    )
-    retention_period_minutes: Missing[int] = Field(
-        default=UNSET,
-        description="Duration in minutes after codespace has gone idle in which it will be deleted. Must be integer minutes between 0 and 43200 (30 days).",
+        description="The list of users to assign to the code scanning alert. An empty array unassigns all previous assignees from the alert.",
     )
 
 
-model_rebuild(ReposOwnerRepoCodespacesPostBody)
+model_rebuild(ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0)
 
-__all__ = ("ReposOwnerRepoCodespacesPostBody",)
+__all__ = ("ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0",)

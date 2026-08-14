@@ -18,8 +18,8 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody(GitHubModel):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody"""
+class OrganizationsOrgSettingsBillingBudgetsPostBody(GitHubModel):
+    """OrganizationsOrgSettingsBillingBudgetsPostBody"""
 
     budget_amount: Missing[int] = Field(
         default=UNSET,
@@ -27,23 +27,16 @@ class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody(GitHubModel):
     )
     prevent_further_usage: Missing[bool] = Field(
         default=UNSET,
-        description="Whether to prevent additional spending once the budget is exceeded. For budgets with `user` or `multi_user_customer` scope, this must remain `true`.",
+        description="Whether to prevent additional spending once the budget is exceeded. For `user` and `multi_user_customer` scopes, this must be `true`.",
     )
     budget_alerting: Missing[
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting
+        OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlerting
     ] = Field(default=UNSET)
     budget_scope: Missing[
-        Literal[
-            "enterprise",
-            "organization",
-            "repository",
-            "cost_center",
-            "multi_user_customer",
-            "user",
-        ]
+        Literal["organization", "repository", "multi_user_customer", "user"]
     ] = Field(
         default=UNSET,
-        description="The scope of the budget for this organization.\n\n- `organization`: Apply the budget to the organization.\n- `repository`: Apply the budget to a specific repository in the organization.\n- `multi_user_customer`: Apply a universal budget to all users in the organization.\n- `user`: Apply the budget to a single user in the organization.",
+        description="The scope of the budget for this organization.\n\n- `organization`: Apply the budget to the organization.\n- `repository`: Apply the budget to a specific repository in the organization.\n- `multi_user_customer`: Apply a universal budget to all users in the organization.\n- `user`: Apply the budget to a single user in the organization.\n\n`user` and `multi_user_customer` scopes are only supported when\n`budget_product_sku` is `ai_credits` or `premium_requests`.",
     )
     budget_entity_name: Missing[str] = Field(
         default=UNSET, description="The name of the entity to apply the budget to"
@@ -59,14 +52,13 @@ class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody(GitHubModel):
         description="A single product or SKU that will be covered in the budget",
     )
     user: Missing[str] = Field(
-        default=UNSET, description="The username of the user for `user` scope budgets."
+        default=UNSET,
+        description="The username of the user for `user` scope budgets. This field is required when `budget_scope` is `user`.",
     )
 
 
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting(
-    GitHubModel
-):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting"""
+class OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlerting(GitHubModel):
+    """OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlerting"""
 
     will_alert: Missing[bool] = Field(
         default=UNSET, description="Whether alerts are enabled for this budget"
@@ -76,10 +68,10 @@ class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting(
     )
 
 
-model_rebuild(OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody)
-model_rebuild(OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting)
+model_rebuild(OrganizationsOrgSettingsBillingBudgetsPostBody)
+model_rebuild(OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlerting)
 
 __all__ = (
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody",
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting",
+    "OrganizationsOrgSettingsBillingBudgetsPostBody",
+    "OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlerting",
 )

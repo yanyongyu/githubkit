@@ -19,16 +19,16 @@ from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0367 import DependabotAlert
-from .group_0534 import EnterpriseWebhooks
-from .group_0535 import SimpleInstallation
-from .group_0536 import OrganizationSimpleWebhooks
-from .group_0537 import RepositoryWebhooks
+from .group_0535 import EnterpriseWebhooks
+from .group_0536 import SimpleInstallation
+from .group_0537 import OrganizationSimpleWebhooks
+from .group_0538 import RepositoryWebhooks
 
 
-class WebhookDependabotAlertAutoDismissed(GitHubModel):
-    """Dependabot alert auto-dismissed event"""
+class WebhookDependabotAlertAssigneesChanged(GitHubModel):
+    """Dependabot alert assignees changed event"""
 
-    action: Literal["auto_dismissed"] = Field()
+    action: Literal["assignees_changed"] = Field()
     alert: DependabotAlert = Field(description="A Dependabot alert.")
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
@@ -52,6 +52,6 @@ class WebhookDependabotAlertAutoDismissed(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookDependabotAlertAutoDismissed)
+model_rebuild(WebhookDependabotAlertAssigneesChanged)
 
-__all__ = ("WebhookDependabotAlertAutoDismissed",)
+__all__ = ("WebhookDependabotAlertAssigneesChanged",)

@@ -9,54 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class UserCodespacesSecretsGetResponse200Type(TypedDict):
-    """UserCodespacesSecretsGetResponse200"""
-
-    total_count: int
-    secrets: list[CodespacesSecretType]
-
-
-class UserCodespacesSecretsGetResponse200TypeForResponse(TypedDict):
-    """UserCodespacesSecretsGetResponse200"""
-
-    total_count: int
-    secrets: list[CodespacesSecretTypeForResponse]
-
-
-class CodespacesSecretType(TypedDict):
-    """Codespaces Secret
-
-    Secrets for a GitHub Codespace.
-    """
+class TeamsTeamIdPatchBodyType(TypedDict):
+    """TeamsTeamIdPatchBody"""
 
     name: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: str
+    description: NotRequired[str]
+    privacy: NotRequired[Literal["secret", "closed"]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
+    permission: NotRequired[Literal["pull", "push", "admin"]]
+    parent_team_id: NotRequired[Union[int, None]]
+    parent_team_slug: NotRequired[Union[str, None]]
 
 
-class CodespacesSecretTypeForResponse(TypedDict):
-    """Codespaces Secret
-
-    Secrets for a GitHub Codespace.
-    """
+class TeamsTeamIdPatchBodyTypeForResponse(TypedDict):
+    """TeamsTeamIdPatchBody"""
 
     name: str
-    created_at: str
-    updated_at: str
-    visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: str
+    description: NotRequired[str]
+    privacy: NotRequired[Literal["secret", "closed"]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
+    permission: NotRequired[Literal["pull", "push", "admin"]]
+    parent_team_id: NotRequired[Union[int, None]]
+    parent_team_slug: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "CodespacesSecretType",
-    "CodespacesSecretTypeForResponse",
-    "UserCodespacesSecretsGetResponse200Type",
-    "UserCodespacesSecretsGetResponse200TypeForResponse",
+    "TeamsTeamIdPatchBodyType",
+    "TeamsTeamIdPatchBodyTypeForResponse",
 )

@@ -14,28 +14,22 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0(GitHubModel):
-    """UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0"""
+class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody(GitHubModel):
+    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody"""
 
-    type: Literal["Issue", "PullRequest"] = Field(
-        description="The type of item to add to the project. Must be either Issue or PullRequest."
+    actor_type: Literal["User", "Team"] = Field(
+        description="The type of actor (must be `User` for user-owned spaces; `Team` will be rejected)."
     )
-    id: int = Field(
-        description="The unique identifier of the issue or pull request to add to the project."
+    actor_identifier: str = Field(
+        description="The username of the collaborator. The numeric user ID is also accepted."
     )
-    owner: Missing[str] = Field(
-        default=UNSET, description="The repository owner login."
-    )
-    repo: Missing[str] = Field(default=UNSET, description="The repository name.")
-    number: Missing[int] = Field(
-        default=UNSET, description="The issue or pull request number."
+    role: Literal["reader", "writer", "admin"] = Field(
+        description="The role to grant to the collaborator."
     )
 
 
-model_rebuild(UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0)
+model_rebuild(UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody)
 
-__all__ = ("UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0",)
+__all__ = ("UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody",)

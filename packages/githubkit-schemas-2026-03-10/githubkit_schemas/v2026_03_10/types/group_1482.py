@@ -9,33 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias
-
-UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType: TypeAlias = dict[
-    str, Any
-]
-"""UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAl
-lof1PropCustomProperties
-
-The custom properties that were defined for the repository. The keys are the
-custom property names, and the values are the corresponding custom property
-values. Present for org repos only.
-"""
+from typing_extensions import TypedDict
 
 
-UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAl
-lof1PropCustomProperties
+class UserEmailsDeleteBodyOneof0Type(TypedDict):
+    """UserEmailsDeleteBodyOneof0
 
-The custom properties that were defined for the repository. The keys are the
-custom property names, and the values are the corresponding custom property
-values. Present for org repos only.
-"""
+    Deletes one or more email addresses from your GitHub account. Must contain at
+    least one email address. **Note:** Alternatively, you can pass a single email
+    address or an `array` of emails addresses directly, but we recommend that you
+    pass an object using the `emails` key.
+
+    Examples:
+        {'emails': ['octocat@github.com', 'mona@github.com']}
+    """
+
+    emails: list[str]
+
+
+class UserEmailsDeleteBodyOneof0TypeForResponse(TypedDict):
+    """UserEmailsDeleteBodyOneof0
+
+    Deletes one or more email addresses from your GitHub account. Must contain at
+    least one email address. **Note:** Alternatively, you can pass a single email
+    address or an `array` of emails addresses directly, but we recommend that you
+    pass an object using the `emails` key.
+
+    Examples:
+        {'emails': ['octocat@github.com', 'mona@github.com']}
+    """
+
+    emails: list[str]
 
 
 __all__ = (
-    "UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType",
-    "UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse",
+    "UserEmailsDeleteBodyOneof0Type",
+    "UserEmailsDeleteBodyOneof0TypeForResponse",
 )

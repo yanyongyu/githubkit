@@ -9,45 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoStacksPostResponse422(GitHubModel):
-    """Validation Error
+class ReposOwnerRepoSecretScanningCustomPatternsPostResponse422(GitHubModel):
+    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse422"""
 
-    Validation Error
+    message: Missing[str] = Field(
+        default=UNSET, description="A summary message describing the error."
+    )
+    validation_errors: Missing[
+        ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors
+    ] = Field(
+        default=UNSET,
+        description="A map of validation errors keyed by the zero-based index of the pattern that failed.",
+    )
+
+
+class ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors(
+    ExtraGitHubModel
+):
+    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors
+
+    A map of validation errors keyed by the zero-based index of the pattern that
+    failed.
     """
 
-    message: str = Field()
-    documentation_url: str = Field()
-    errors: Missing[list[ReposOwnerRepoStacksPostResponse422PropErrorsItems]] = Field(
-        default=UNSET
-    )
 
-
-class ReposOwnerRepoStacksPostResponse422PropErrorsItems(GitHubModel):
-    """ReposOwnerRepoStacksPostResponse422PropErrorsItems"""
-
-    resource: Missing[str] = Field(default=UNSET)
-    field: Missing[str] = Field(default=UNSET)
-    message: Missing[str] = Field(default=UNSET)
-    code: str = Field()
-    index: Missing[int] = Field(default=UNSET)
-    value: Missing[Union[str, None, int, None, list[Union[str, int]], None]] = Field(
-        default=UNSET
-    )
-
-
-model_rebuild(ReposOwnerRepoStacksPostResponse422)
-model_rebuild(ReposOwnerRepoStacksPostResponse422PropErrorsItems)
+model_rebuild(ReposOwnerRepoSecretScanningCustomPatternsPostResponse422)
+model_rebuild(
+    ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors
+)
 
 __all__ = (
-    "ReposOwnerRepoStacksPostResponse422",
-    "ReposOwnerRepoStacksPostResponse422PropErrorsItems",
+    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422",
+    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors",
 )

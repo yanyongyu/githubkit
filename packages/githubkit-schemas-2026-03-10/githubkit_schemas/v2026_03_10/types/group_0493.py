@@ -13,50 +13,86 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0061 import (
-    PullRequestMinimalPropBaseType,
-    PullRequestMinimalPropBaseTypeForResponse,
-    PullRequestMinimalPropHeadType,
-    PullRequestMinimalPropHeadTypeForResponse,
-)
 
-
-class PullRequestStackPullRequestType(TypedDict):
-    """Pull Request Stack Pull Request"""
+class PullRequestStackMinimalType(TypedDict):
+    """Pull Request Stack Minimal"""
 
     id: int
     number: int
-    url: str
-    head: PullRequestMinimalPropHeadType
-    base: PullRequestMinimalPropBaseType
     node_id: str
-    title: str
+    url: str
+    base: PullRequestStackMinimalPropBaseType
+    open_: bool
+    created_at: _dt.datetime
+    pull_requests: list[PullRequestStackMinimalPropPullRequestsItemsType]
+
+
+class PullRequestStackMinimalTypeForResponse(TypedDict):
+    """Pull Request Stack Minimal"""
+
+    id: int
+    number: int
+    node_id: str
+    url: str
+    base: PullRequestStackMinimalPropBaseTypeForResponse
+    open_: bool
+    created_at: str
+    pull_requests: list[PullRequestStackMinimalPropPullRequestsItemsTypeForResponse]
+
+
+class PullRequestStackMinimalPropBaseType(TypedDict):
+    """PullRequestStackMinimalPropBase"""
+
+    ref: str
+
+
+class PullRequestStackMinimalPropBaseTypeForResponse(TypedDict):
+    """PullRequestStackMinimalPropBase"""
+
+    ref: str
+
+
+class PullRequestStackMinimalPropPullRequestsItemsType(TypedDict):
+    """PullRequestStackMinimalPropPullRequestsItems"""
+
+    number: int
     state: Literal["open", "closed"]
+    draft: bool
     merged_at: Union[_dt.datetime, None]
-    draft: bool
-    html_url: str
-    user: Union[SimpleUserType, None]
+    head: PullRequestStackMinimalPropPullRequestsItemsPropHeadType
 
 
-class PullRequestStackPullRequestTypeForResponse(TypedDict):
-    """Pull Request Stack Pull Request"""
+class PullRequestStackMinimalPropPullRequestsItemsTypeForResponse(TypedDict):
+    """PullRequestStackMinimalPropPullRequestsItems"""
 
-    id: int
     number: int
-    url: str
-    head: PullRequestMinimalPropHeadTypeForResponse
-    base: PullRequestMinimalPropBaseTypeForResponse
-    node_id: str
-    title: str
     state: Literal["open", "closed"]
-    merged_at: Union[str, None]
     draft: bool
-    html_url: str
-    user: Union[SimpleUserTypeForResponse, None]
+    merged_at: Union[str, None]
+    head: PullRequestStackMinimalPropPullRequestsItemsPropHeadTypeForResponse
+
+
+class PullRequestStackMinimalPropPullRequestsItemsPropHeadType(TypedDict):
+    """PullRequestStackMinimalPropPullRequestsItemsPropHead"""
+
+    ref: str
+    sha: str
+
+
+class PullRequestStackMinimalPropPullRequestsItemsPropHeadTypeForResponse(TypedDict):
+    """PullRequestStackMinimalPropPullRequestsItemsPropHead"""
+
+    ref: str
+    sha: str
 
 
 __all__ = (
-    "PullRequestStackPullRequestType",
-    "PullRequestStackPullRequestTypeForResponse",
+    "PullRequestStackMinimalPropBaseType",
+    "PullRequestStackMinimalPropBaseTypeForResponse",
+    "PullRequestStackMinimalPropPullRequestsItemsPropHeadType",
+    "PullRequestStackMinimalPropPullRequestsItemsPropHeadTypeForResponse",
+    "PullRequestStackMinimalPropPullRequestsItemsType",
+    "PullRequestStackMinimalPropPullRequestsItemsTypeForResponse",
+    "PullRequestStackMinimalType",
+    "PullRequestStackMinimalTypeForResponse",
 )

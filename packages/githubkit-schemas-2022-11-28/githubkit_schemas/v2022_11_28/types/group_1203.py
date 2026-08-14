@@ -11,24 +11,22 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0141 import CodespaceType, CodespaceTypeForResponse
+
+class OrgsOrgInteractionLimitsPullsCreationCapGetResponse200Type(TypedDict):
+    """OrgsOrgInteractionLimitsPullsCreationCapGetResponse200"""
+
+    enabled: bool
+    max_open_pull_requests: int
 
 
-class OrgsOrgMembersUsernameCodespacesGetResponse200Type(TypedDict):
-    """OrgsOrgMembersUsernameCodespacesGetResponse200"""
+class OrgsOrgInteractionLimitsPullsCreationCapGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgInteractionLimitsPullsCreationCapGetResponse200"""
 
-    total_count: int
-    codespaces: list[CodespaceType]
-
-
-class OrgsOrgMembersUsernameCodespacesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgMembersUsernameCodespacesGetResponse200"""
-
-    total_count: int
-    codespaces: list[CodespaceTypeForResponse]
+    enabled: bool
+    max_open_pull_requests: int
 
 
 __all__ = (
-    "OrgsOrgMembersUsernameCodespacesGetResponse200Type",
-    "OrgsOrgMembersUsernameCodespacesGetResponse200TypeForResponse",
+    "OrgsOrgInteractionLimitsPullsCreationCapGetResponse200Type",
+    "OrgsOrgInteractionLimitsPullsCreationCapGetResponse200TypeForResponse",
 )

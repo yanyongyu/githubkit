@@ -14,19 +14,19 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0440 import DependabotAlertType, DependabotAlertTypeForResponse
-from .group_0617 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0618 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0619 import (
+from .group_0618 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0619 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0620 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0620 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0621 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDependabotAlertDismissedType(TypedDict):
-    """Dependabot alert dismissed event"""
+class WebhookDependabotAlertCreatedType(TypedDict):
+    """Dependabot alert created event"""
 
-    action: Literal["dismissed"]
+    action: Literal["created"]
     alert: DependabotAlertType
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -35,10 +35,10 @@ class WebhookDependabotAlertDismissedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookDependabotAlertDismissedTypeForResponse(TypedDict):
-    """Dependabot alert dismissed event"""
+class WebhookDependabotAlertCreatedTypeForResponse(TypedDict):
+    """Dependabot alert created event"""
 
-    action: Literal["dismissed"]
+    action: Literal["created"]
     alert: DependabotAlertTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
@@ -48,6 +48,6 @@ class WebhookDependabotAlertDismissedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookDependabotAlertDismissedType",
-    "WebhookDependabotAlertDismissedTypeForResponse",
+    "WebhookDependabotAlertCreatedType",
+    "WebhookDependabotAlertCreatedTypeForResponse",
 )

@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0617 import EnterpriseWebhooks
-from .group_0618 import SimpleInstallation
-from .group_0619 import OrganizationSimpleWebhooks
-from .group_0620 import RepositoryWebhooks
-from .group_0626 import WebhooksDeployKey
+from .group_0618 import EnterpriseWebhooks
+from .group_0619 import SimpleInstallation
+from .group_0620 import OrganizationSimpleWebhooks
+from .group_0621 import RepositoryWebhooks
+from .group_0627 import WebhooksDeployKey
 
 
-class WebhookDeployKeyDeleted(GitHubModel):
-    """deploy_key deleted event"""
+class WebhookDeployKeyCreated(GitHubModel):
+    """deploy_key created event"""
 
-    action: Literal["deleted"] = Field()
+    action: Literal["created"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -54,6 +54,6 @@ class WebhookDeployKeyDeleted(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookDeployKeyDeleted)
+model_rebuild(WebhookDeployKeyCreated)
 
-__all__ = ("WebhookDeployKeyDeleted",)
+__all__ = ("WebhookDeployKeyCreated",)

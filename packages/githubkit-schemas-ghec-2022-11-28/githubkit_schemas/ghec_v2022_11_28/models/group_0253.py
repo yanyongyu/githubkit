@@ -60,6 +60,7 @@ class ApiOverviewPropDomains(GitHubModel):
     codespaces: Missing[list[str]] = Field(default=UNSET)
     copilot: Missing[list[str]] = Field(default=UNSET)
     packages: Missing[list[str]] = Field(default=UNSET)
+    storage: Missing[list[str]] = Field(default=UNSET)
     actions: Missing[list[str]] = Field(default=UNSET)
     actions_inbound: Missing[ApiOverviewPropDomainsPropActionsInbound] = Field(
         default=UNSET

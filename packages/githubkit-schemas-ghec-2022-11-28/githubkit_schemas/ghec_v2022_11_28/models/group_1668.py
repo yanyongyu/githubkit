@@ -9,46 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class UserCodespacesSecretsGetResponse200(GitHubModel):
-    """UserCodespacesSecretsGetResponse200"""
+class TeamsTeamIdPatchBody(GitHubModel):
+    """TeamsTeamIdPatchBody"""
 
-    total_count: int = Field()
-    secrets: list[CodespacesSecret] = Field()
-
-
-class CodespacesSecret(GitHubModel):
-    """Codespaces Secret
-
-    Secrets for a GitHub Codespace.
-    """
-
-    name: str = Field(description="The name of the secret")
-    created_at: _dt.datetime = Field(
-        description="The date and time at which the secret was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    name: str = Field(description="The name of the team.")
+    description: Missing[str] = Field(
+        default=UNSET, description="The description of the team."
     )
-    updated_at: _dt.datetime = Field(
-        description="The date and time at which the secret was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    privacy: Missing[Literal["secret", "closed"]] = Field(
+        default=UNSET,
+        description="The level of privacy this team should have. Editing teams without specifying this parameter leaves `privacy` intact. The options are:  \n**For a non-nested team:**  \n * `secret` - only visible to organization owners and members of this team.  \n * `closed` - visible to all members of this organization.  \n**For a parent or child team:**  \n * `closed` - visible to all members of this organization.",
     )
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="The type of repositories in the organization that the secret is visible to"
+    notification_setting: Missing[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ] = Field(
+        default=UNSET,
+        description="The notification setting the team has chosen. Editing teams without specifying this parameter leaves `notification_setting` intact. The options are: \n * `notifications_enabled` - team members receive notifications when the team is @mentioned.  \n * `notifications_disabled` - no one receives notifications.",
     )
-    selected_repositories_url: str = Field(
-        description="The API URL at which the list of repositories this secret is visible to can be retrieved"
+    permission: Missing[Literal["pull", "push", "admin"]] = Field(
+        default=UNSET,
+        description="**Closing down notice**. The permission that new repositories will be added to the team with when none is specified.",
+    )
+    parent_team_id: Missing[Union[int, None]] = Field(
+        default=UNSET, description="The ID of a team to set as the parent team."
+    )
+    parent_team_slug: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The slug of a team to set as the parent team. Ignored when `parent_team_id` is also provided.",
     )
 
 
-model_rebuild(UserCodespacesSecretsGetResponse200)
-model_rebuild(CodespacesSecret)
+model_rebuild(TeamsTeamIdPatchBody)
 
-__all__ = (
-    "CodespacesSecret",
-    "UserCodespacesSecretsGetResponse200",
-)
+__all__ = ("TeamsTeamIdPatchBody",)

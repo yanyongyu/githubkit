@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -18,45 +18,37 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0"""
+class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBody(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBody"""
 
-    labels: Missing[
+    issue_field_values: Missing[
         list[
-            Union[
-                str,
-                ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0PropLabelsItemsOneof1,
-            ]
+            ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems
         ]
     ] = Field(
-        min_length=1 if PYDANTIC_V2 else None,
+        max_length=25 if PYDANTIC_V2 else None,
         default=UNSET,
-        description='The labels to add to the issue\'s existing labels. You can also pass an `array` of labels directly, but GitHub recommends passing an object with the `labels` key. To replace all of the labels for an issue, use "[Set labels for an issue](https://docs.github.com/rest/issues/labels#set-labels-for-an-issue)."',
+        description="An array of issue field values to add to this issue. Each field value must include the field ID and the value to set.",
     )
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0PropLabelsItemsOneof1(
+class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems(
     GitHubModel
 ):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0PropLabelsItemsOneof1"""
+    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems"""
 
-    name: str = Field(description="The name of the label to add.")
-    rationale: Missing[str] = Field(
-        default=UNSET, description="Optional reasoning for adding this label."
-    )
-    suggest: Missing[bool] = Field(
-        default=UNSET,
-        description="If `true`, the label is stored as a pending suggestion for human review rather than applied directly.",
-    )
-    confidence: Missing[Literal["low", "medium", "high"]] = Field(
-        default=UNSET, description="The confidence level for this label choice."
+    field_id: int = Field(description="The ID of the issue field to set")
+    value: Union[str, float, list[str]] = Field(
+        description="The value to set for the field. The type depends on the field's data type:\n- For text fields: provide a string value\n- For single_select fields: provide the option name as a string (must match an existing option)\n- For number fields: provide a numeric value\n- For multi_select fields: provide an array of option names (must match existing options)\n- For date fields: provide an ISO 8601 date string"
     )
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0)
-model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0PropLabelsItemsOneof1)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBody)
+model_rebuild(
+    ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems
+)
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0",
-    "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0PropLabelsItemsOneof1",
+    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBody",
+    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems",
 )

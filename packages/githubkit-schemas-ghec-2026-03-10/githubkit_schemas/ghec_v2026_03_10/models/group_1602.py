@@ -14,24 +14,22 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_1601 import ReposOwnerRepoPagesPostBodyPropSource
 
 
-class ReposOwnerRepoPagesPostBodyAnyof0(GitHubModel):
-    """ReposOwnerRepoPagesPostBodyAnyof0"""
+class ReposOwnerRepoPagesPutBodyPropSourceAnyof1(GitHubModel):
+    """ReposOwnerRepoPagesPutBodyPropSourceAnyof1
 
-    build_type: Missing[Literal["legacy", "workflow"]] = Field(
-        default=UNSET,
-        description='The process in which the Page will be built. Possible values are `"legacy"` and `"workflow"`.',
+    Update the source for the repository. Must include the branch name and path.
+    """
+
+    branch: str = Field(
+        description="The repository branch used to publish your site's source files."
     )
-    source: ReposOwnerRepoPagesPostBodyPropSource = Field(
-        description="The source branch and directory used to publish your Pages site."
+    path: Literal["/", "/docs"] = Field(
+        description="The repository directory that includes the source files for the Pages site. Allowed paths are `/` or `/docs`."
     )
 
 
-model_rebuild(ReposOwnerRepoPagesPostBodyAnyof0)
+model_rebuild(ReposOwnerRepoPagesPutBodyPropSourceAnyof1)
 
-__all__ = ("ReposOwnerRepoPagesPostBodyAnyof0",)
+__all__ = ("ReposOwnerRepoPagesPutBodyPropSourceAnyof1",)

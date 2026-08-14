@@ -12,21 +12,19 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsSourcePutBodyType(TypedDict):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody"""
+class EnterprisesEnterpriseCopilotCustomAgentsGetResponse404Type(TypedDict):
+    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse404"""
 
-    organization_id: int
-    create_ruleset: NotRequired[bool]
+    message: NotRequired[str]
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsSourcePutBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody"""
+class EnterprisesEnterpriseCopilotCustomAgentsGetResponse404TypeForResponse(TypedDict):
+    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse404"""
 
-    organization_id: int
-    create_ruleset: NotRequired[bool]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutBodyType",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse404Type",
+    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse404TypeForResponse",
 )

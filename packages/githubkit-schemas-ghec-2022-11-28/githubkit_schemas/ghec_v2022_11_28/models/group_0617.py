@@ -9,28 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class KeySimple(GitHubModel):
-    """Key Simple
+class Hovercard(GitHubModel):
+    """Hovercard
 
-    Key Simple
+    Hovercard
     """
 
-    id: int = Field()
-    key: str = Field()
-    created_at: Missing[_dt.datetime] = Field(default=UNSET)
-    last_used: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+    contexts: list[HovercardPropContextsItems] = Field()
 
 
-model_rebuild(KeySimple)
+class HovercardPropContextsItems(GitHubModel):
+    """HovercardPropContextsItems"""
 
-__all__ = ("KeySimple",)
+    message: str = Field()
+    octicon: str = Field()
+
+
+model_rebuild(Hovercard)
+model_rebuild(HovercardPropContextsItems)
+
+__all__ = (
+    "Hovercard",
+    "HovercardPropContextsItems",
+)

@@ -9,34 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0494 import PullRequestStackPullRequest
 
 
-class ReposOwnerRepoStatusesShaPostBody(GitHubModel):
-    """ReposOwnerRepoStatusesShaPostBody"""
+class ReposOwnerRepoStacksStackNumberGetResponse200(GitHubModel):
+    """ReposOwnerRepoStacksStackNumberGetResponse200"""
 
-    state: Literal["error", "failure", "pending", "success"] = Field(
-        description="The state of the status."
+    id: int = Field()
+    number: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    base: ReposOwnerRepoStacksStackNumberGetResponse200PropBase = Field()
+    open_: bool = Field(
+        alias="open",
+        description="Whether the stack has any open pull request. False when all pull requests are merged or closed.",
     )
-    target_url: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The target URL to associate with this status. This URL will be linked from the GitHub UI to allow users to easily see the source of the status.  \nFor example, if your continuous integration system is posting build status, you would want to provide the deep link for the build output for this specific SHA:  \n`http://ci.example.com/user/repo/build/sha`",
-    )
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="A short description of the status."
-    )
-    context: Missing[str] = Field(
-        default=UNSET,
-        description="A string label to differentiate this status from the status of other systems. This field is case-insensitive.",
-    )
+    created_at: _dt.datetime = Field()
+    pull_requests: list[PullRequestStackPullRequest] = Field()
 
 
-model_rebuild(ReposOwnerRepoStatusesShaPostBody)
+class ReposOwnerRepoStacksStackNumberGetResponse200PropBase(GitHubModel):
+    """ReposOwnerRepoStacksStackNumberGetResponse200PropBase"""
 
-__all__ = ("ReposOwnerRepoStatusesShaPostBody",)
+    ref: str = Field()
+
+
+model_rebuild(ReposOwnerRepoStacksStackNumberGetResponse200)
+model_rebuild(ReposOwnerRepoStacksStackNumberGetResponse200PropBase)
+
+__all__ = (
+    "ReposOwnerRepoStacksStackNumberGetResponse200",
+    "ReposOwnerRepoStacksStackNumberGetResponse200PropBase",
+)

@@ -9,53 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0618 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0619 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0620 import (
+from .group_0619 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0620 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0621 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0621 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0631 import WebhooksUserType, WebhooksUserTypeForResponse
-from .group_0944 import (
-    WebhookPullRequestAssignedPropPullRequestType,
-    WebhookPullRequestAssignedPropPullRequestTypeForResponse,
-)
+from .group_0622 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookPullRequestAssignedType(TypedDict):
-    """pull_request assigned event"""
+class WebhookPublicType(TypedDict):
+    """public event"""
 
-    action: Literal["assigned"]
-    assignee: Union[WebhooksUserType, None]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    number: int
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    pull_request: WebhookPullRequestAssignedPropPullRequestType
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookPullRequestAssignedTypeForResponse(TypedDict):
-    """pull_request assigned event"""
+class WebhookPublicTypeForResponse(TypedDict):
+    """public event"""
 
-    action: Literal["assigned"]
-    assignee: Union[WebhooksUserTypeForResponse, None]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    number: int
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    pull_request: WebhookPullRequestAssignedPropPullRequestTypeForResponse
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookPullRequestAssignedType",
-    "WebhookPullRequestAssignedTypeForResponse",
+    "WebhookPublicType",
+    "WebhookPublicTypeForResponse",
 )

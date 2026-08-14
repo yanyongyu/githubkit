@@ -9,29 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0128 import (
+    OrganizationActionsSecretType,
+    OrganizationActionsSecretTypeForResponse,
+)
 
 
-class OrgsOrgAgentsSecretsSecretNamePutBodyType(TypedDict):
-    """OrgsOrgAgentsSecretsSecretNamePutBody"""
+class OrgsOrgAgentsSecretsGetResponse200Type(TypedDict):
+    """OrgsOrgAgentsSecretsGetResponse200"""
 
-    encrypted_value: str
-    key_id: str
-    visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
+    total_count: int
+    secrets: list[OrganizationActionsSecretType]
 
 
-class OrgsOrgAgentsSecretsSecretNamePutBodyTypeForResponse(TypedDict):
-    """OrgsOrgAgentsSecretsSecretNamePutBody"""
+class OrgsOrgAgentsSecretsGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgAgentsSecretsGetResponse200"""
 
-    encrypted_value: str
-    key_id: str
-    visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
+    total_count: int
+    secrets: list[OrganizationActionsSecretTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgAgentsSecretsSecretNamePutBodyType",
-    "OrgsOrgAgentsSecretsSecretNamePutBodyTypeForResponse",
+    "OrgsOrgAgentsSecretsGetResponse200Type",
+    "OrgsOrgAgentsSecretsGetResponse200TypeForResponse",
 )

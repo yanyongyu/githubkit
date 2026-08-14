@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,32 +19,46 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgTeamsTeamSlugPatchBody(GitHubModel):
-    """OrgsOrgTeamsTeamSlugPatchBody"""
+class OrgsOrgSettingsNetworkConfigurationsGetResponse200(GitHubModel):
+    """OrgsOrgSettingsNetworkConfigurationsGetResponse200"""
 
-    name: Missing[str] = Field(default=UNSET, description="The name of the team.")
-    description: Missing[str] = Field(
-        default=UNSET, description="The description of the team."
-    )
-    privacy: Missing[Literal["secret", "closed"]] = Field(
+    total_count: int = Field()
+    network_configurations: list[NetworkConfiguration] = Field()
+
+
+class NetworkConfiguration(GitHubModel):
+    """Hosted compute network configuration
+
+    A hosted compute network configuration.
+    """
+
+    id: str = Field(description="The unique identifier of the network configuration.")
+    name: str = Field(description="The name of the network configuration.")
+    compute_service: Missing[Literal["none", "actions", "codespaces"]] = Field(
         default=UNSET,
-        description="The level of privacy this team should have. Editing teams without specifying this parameter leaves `privacy` intact. When a team is nested, the `privacy` for parent teams cannot be `secret`. The options are:  \n**For a non-nested team:**  \n * `secret` - only visible to organization owners and members of this team.  \n * `closed` - visible to all members of this organization.  \n**For a parent or child team:**  \n * `closed` - visible to all members of this organization.",
+        description="The hosted compute service the network configuration supports.",
     )
-    notification_setting: Missing[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ] = Field(
+    network_settings_ids: Missing[list[str]] = Field(
         default=UNSET,
-        description="The notification setting the team has chosen. Editing teams without specifying this parameter leaves `notification_setting` intact. The options are: \n * `notifications_enabled` - team members receive notifications when the team is @mentioned.  \n * `notifications_disabled` - no one receives notifications.",
+        description="The unique identifier of each network settings in the configuration.",
     )
-    permission: Missing[Literal["pull", "push", "admin"]] = Field(
+    failover_network_settings_ids: Missing[list[str]] = Field(
         default=UNSET,
-        description="**Closing down notice**. The permission that new repositories will be added to the team with when none is specified.",
+        description="The unique identifier of each failover network settings in the configuration.",
     )
-    parent_team_id: Missing[Union[int, None]] = Field(
-        default=UNSET, description="The ID of a team to set as the parent team."
+    failover_network_enabled: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether the failover network resource is enabled.",
+    )
+    created_on: Union[_dt.datetime, None] = Field(
+        description="The time at which the network configuration was created, in ISO 8601 format."
     )
 
 
-model_rebuild(OrgsOrgTeamsTeamSlugPatchBody)
+model_rebuild(OrgsOrgSettingsNetworkConfigurationsGetResponse200)
+model_rebuild(NetworkConfiguration)
 
-__all__ = ("OrgsOrgTeamsTeamSlugPatchBody",)
+__all__ = (
+    "NetworkConfiguration",
+    "OrgsOrgSettingsNetworkConfigurationsGetResponse200",
+)

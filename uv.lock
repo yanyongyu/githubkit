@@ -805,7 +805,7 @@ thirdparty = [{ name = "hishel", extras = ["redis"], specifier = ">=1.2.0,<=2.0.
 
 [[package]]
 name = "githubkit-schemas"
-version = "26.7.29"
+version = "26.8.14"
 source = { editable = "packages/githubkit-schemas" }
 dependencies = [
     { name = "githubkit" },
@@ -865,7 +865,7 @@ provides-extras = ["2022-11-28", "2026-03-10", "ghec-2022-11-28", "ghec-2026-03-
 
 [[package]]
 name = "githubkit-schemas-2022-11-28"
-version = "26.7.29"
+version = "26.8.14"
 source = { editable = "packages/githubkit-schemas-2022-11-28" }
 dependencies = [
     { name = "githubkit-schemas" },
@@ -876,7 +876,7 @@ requires-dist = [{ name = "githubkit-schemas", editable = "packages/githubkit-sc
 
 [[package]]
 name = "githubkit-schemas-2026-03-10"
-version = "26.7.29"
+version = "26.8.14"
 source = { editable = "packages/githubkit-schemas-2026-03-10" }
 dependencies = [
     { name = "githubkit-schemas" },
@@ -887,7 +887,7 @@ requires-dist = [{ name = "githubkit-schemas", editable = "packages/githubkit-sc
 
 [[package]]
 name = "githubkit-schemas-ghec-2022-11-28"
-version = "26.7.29"
+version = "26.8.14"
 source = { editable = "packages/githubkit-schemas-ghec-2022-11-28" }
 dependencies = [
     { name = "githubkit-schemas" },
@@ -898,7 +898,7 @@ requires-dist = [{ name = "githubkit-schemas", editable = "packages/githubkit-sc
 
 [[package]]
 name = "githubkit-schemas-ghec-2026-03-10"
-version = "26.7.29"
+version = "26.8.14"
 source = { editable = "packages/githubkit-schemas-ghec-2026-03-10" }
 dependencies = [
     { name = "githubkit-schemas" },

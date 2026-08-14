@@ -11,25 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0261 import (
-    SecretScanningCustomPatternToCreateType,
-    SecretScanningCustomPatternToCreateTypeForResponse,
-)
+from .group_0192 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
 
 
-class OrgsOrgSecretScanningCustomPatternsPostBodyType(TypedDict):
-    """OrgsOrgSecretScanningCustomPatternsPostBody"""
+class OrgsOrgPropertiesValuesPatchBodyType(TypedDict):
+    """OrgsOrgPropertiesValuesPatchBody"""
 
-    patterns: list[SecretScanningCustomPatternToCreateType]
+    repository_names: list[str]
+    properties: list[CustomPropertyValueType]
 
 
-class OrgsOrgSecretScanningCustomPatternsPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgSecretScanningCustomPatternsPostBody"""
+class OrgsOrgPropertiesValuesPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgPropertiesValuesPatchBody"""
 
-    patterns: list[SecretScanningCustomPatternToCreateTypeForResponse]
+    repository_names: list[str]
+    properties: list[CustomPropertyValueTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgSecretScanningCustomPatternsPostBodyType",
-    "OrgsOrgSecretScanningCustomPatternsPostBodyTypeForResponse",
+    "OrgsOrgPropertiesValuesPatchBodyType",
+    "OrgsOrgPropertiesValuesPatchBodyTypeForResponse",
 )

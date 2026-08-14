@@ -14,11 +14,22 @@ from typing import Literal, Union
 from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0061 import (
+    PullRequestMinimalPropBaseType,
+    PullRequestMinimalPropBaseTypeForResponse,
+    PullRequestMinimalPropHeadType,
+    PullRequestMinimalPropHeadTypeForResponse,
+)
 
 
-class PullRequestStackPullRequestAllof1Type(TypedDict):
-    """PullRequestStackPullRequestAllof1"""
+class PullRequestStackPullRequestType(TypedDict):
+    """Pull Request Stack Pull Request"""
 
+    id: int
+    number: int
+    url: str
+    head: PullRequestMinimalPropHeadType
+    base: PullRequestMinimalPropBaseType
     node_id: str
     title: str
     state: Literal["open", "closed"]
@@ -28,9 +39,14 @@ class PullRequestStackPullRequestAllof1Type(TypedDict):
     user: Union[SimpleUserType, None]
 
 
-class PullRequestStackPullRequestAllof1TypeForResponse(TypedDict):
-    """PullRequestStackPullRequestAllof1"""
+class PullRequestStackPullRequestTypeForResponse(TypedDict):
+    """Pull Request Stack Pull Request"""
 
+    id: int
+    number: int
+    url: str
+    head: PullRequestMinimalPropHeadTypeForResponse
+    base: PullRequestMinimalPropBaseTypeForResponse
     node_id: str
     title: str
     state: Literal["open", "closed"]
@@ -41,6 +57,6 @@ class PullRequestStackPullRequestAllof1TypeForResponse(TypedDict):
 
 
 __all__ = (
-    "PullRequestStackPullRequestAllof1Type",
-    "PullRequestStackPullRequestAllof1TypeForResponse",
+    "PullRequestStackPullRequestType",
+    "PullRequestStackPullRequestTypeForResponse",
 )

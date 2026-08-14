@@ -9,278 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class AgentsReposOwnerRepoTasksPostResponse201Type(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse201"""
-
-    id: str
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    name: NotRequired[str]
-    creator: NotRequired[AgentsReposOwnerRepoTasksPostResponse201PropCreatorOneof0Type]
-    creator_type: NotRequired[Literal["user", "organization"]]
-    user_collaborators: NotRequired[
-        list[AgentsReposOwnerRepoTasksPostResponse201PropUserCollaboratorsItemsType]
-    ]
-    owner: NotRequired[AgentsReposOwnerRepoTasksPostResponse201PropOwnerType]
-    repository: NotRequired[AgentsReposOwnerRepoTasksPostResponse201PropRepositoryType]
-    state: Literal[
-        "queued",
-        "in_progress",
-        "completed",
-        "failed",
-        "idle",
-        "waiting_for_user",
-        "timed_out",
-        "cancelled",
-    ]
-    session_count: NotRequired[int]
-    artifacts: NotRequired[
-        list[AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsType]
-    ]
-    archived_at: NotRequired[Union[_dt.datetime, None]]
-    updated_at: NotRequired[_dt.datetime]
-    created_at: _dt.datetime
-    custom_agent: NotRequired[
-        AgentsReposOwnerRepoTasksPostResponse201PropCustomAgentType
-    ]
-
-
-class AgentsReposOwnerRepoTasksPostResponse201TypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse201"""
-
-    id: str
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    name: NotRequired[str]
-    creator: NotRequired[
-        AgentsReposOwnerRepoTasksPostResponse201PropCreatorOneof0TypeForResponse
-    ]
-    creator_type: NotRequired[Literal["user", "organization"]]
-    user_collaborators: NotRequired[
-        list[
-            AgentsReposOwnerRepoTasksPostResponse201PropUserCollaboratorsItemsTypeForResponse
-        ]
-    ]
-    owner: NotRequired[AgentsReposOwnerRepoTasksPostResponse201PropOwnerTypeForResponse]
-    repository: NotRequired[
-        AgentsReposOwnerRepoTasksPostResponse201PropRepositoryTypeForResponse
-    ]
-    state: Literal[
-        "queued",
-        "in_progress",
-        "completed",
-        "failed",
-        "idle",
-        "waiting_for_user",
-        "timed_out",
-        "cancelled",
-    ]
-    session_count: NotRequired[int]
-    artifacts: NotRequired[
-        list[AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsTypeForResponse]
-    ]
-    archived_at: NotRequired[Union[str, None]]
-    updated_at: NotRequired[str]
-    created_at: str
-    custom_agent: NotRequired[
-        AgentsReposOwnerRepoTasksPostResponse201PropCustomAgentTypeForResponse
-    ]
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropCreatorOneof0Type(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse201PropCreatorOneof0
-
-    A GitHub user
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropCreatorOneof0TypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksPostResponse201PropCreatorOneof0
-
-    A GitHub user
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropUserCollaboratorsItemsType(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse201PropUserCollaboratorsItems
-
-    A GitHub user
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropUserCollaboratorsItemsTypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksPostResponse201PropUserCollaboratorsItems
-
-    A GitHub user
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropOwnerType(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse201PropOwner
-
-    The owner of the repository
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropOwnerTypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse201PropOwner
-
-    The owner of the repository
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropRepositoryType(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse201PropRepository
-
-    The repository this task belongs to
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropRepositoryTypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse201PropRepository
-
-    The repository this task belongs to
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropCustomAgentType(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse201PropCustomAgent
-
-    Custom agent metadata associated with this task
-    """
-
-    id: NotRequired[str]
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropCustomAgentTypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse201PropCustomAgent
-
-    Custom agent metadata associated with this task
-    """
-
-    id: NotRequired[str]
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsType(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItems
-
-    A resource generated by the task
-    """
-
-    provider: Literal["github"]
-    type: Literal["pull", "branch"]
-    data: Union[
-        AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof0Type,
-        AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof1Type,
-    ]
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsTypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItems
-
-    A resource generated by the task
-    """
-
-    provider: Literal["github"]
-    type: Literal["pull", "branch"]
-    data: Union[
-        AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof0TypeForResponse,
-        AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof1TypeForResponse,
-    ]
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof0Type(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof0
-
-    A GitHub resource (pull request, issue, etc.)
-    """
-
-    id: int
-    global_id: NotRequired[str]
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof0TypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof0
-
-    A GitHub resource (pull request, issue, etc.)
-    """
-
-    id: int
-    global_id: NotRequired[str]
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof1Type(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof1
-
-    A Git branch reference
-    """
-
-    head_ref: str
-    base_ref: str
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof1TypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof1
-
-    A Git branch reference
-    """
-
-    head_ref: str
-    base_ref: str
+class AgentsReposOwnerRepoTasksPostBodyType(TypedDict):
+    """AgentsReposOwnerRepoTasksPostBody"""
+
+    prompt: str
+    model: NotRequired[str]
+    custom_agent: NotRequired[str]
+    create_pull_request: NotRequired[bool]
+    base_ref: NotRequired[str]
+    head_ref: NotRequired[str]
+
+
+class AgentsReposOwnerRepoTasksPostBodyTypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoTasksPostBody"""
+
+    prompt: str
+    model: NotRequired[str]
+    custom_agent: NotRequired[str]
+    create_pull_request: NotRequired[bool]
+    base_ref: NotRequired[str]
+    head_ref: NotRequired[str]
 
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof0Type",
-    "AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof0TypeForResponse",
-    "AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof1Type",
-    "AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof1TypeForResponse",
-    "AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsType",
-    "AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsTypeForResponse",
-    "AgentsReposOwnerRepoTasksPostResponse201PropCreatorOneof0Type",
-    "AgentsReposOwnerRepoTasksPostResponse201PropCreatorOneof0TypeForResponse",
-    "AgentsReposOwnerRepoTasksPostResponse201PropCustomAgentType",
-    "AgentsReposOwnerRepoTasksPostResponse201PropCustomAgentTypeForResponse",
-    "AgentsReposOwnerRepoTasksPostResponse201PropOwnerType",
-    "AgentsReposOwnerRepoTasksPostResponse201PropOwnerTypeForResponse",
-    "AgentsReposOwnerRepoTasksPostResponse201PropRepositoryType",
-    "AgentsReposOwnerRepoTasksPostResponse201PropRepositoryTypeForResponse",
-    "AgentsReposOwnerRepoTasksPostResponse201PropUserCollaboratorsItemsType",
-    "AgentsReposOwnerRepoTasksPostResponse201PropUserCollaboratorsItemsTypeForResponse",
-    "AgentsReposOwnerRepoTasksPostResponse201Type",
-    "AgentsReposOwnerRepoTasksPostResponse201TypeForResponse",
+    "AgentsReposOwnerRepoTasksPostBodyType",
+    "AgentsReposOwnerRepoTasksPostBodyTypeForResponse",
 )

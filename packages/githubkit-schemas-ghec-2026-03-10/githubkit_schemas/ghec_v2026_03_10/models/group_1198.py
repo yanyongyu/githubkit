@@ -14,49 +14,49 @@ from typing import Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200"""
+class EnterprisesEnterpriseCopilotCustomAgentsGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse200"""
 
-    organization: Union[
-        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization,
-        None,
-    ] = Field()
-    repository: Union[
-        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository, None
-    ] = Field()
+    custom_agents: Missing[
+        Union[
+            list[
+                EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems
+            ],
+            None,
+        ]
+    ] = Field(
+        default=UNSET,
+        description="List of custom agents defined in the repository. Returns `null` if no source repository is configured.",
+    )
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization(
+class EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems(
     GitHubModel
 ):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization"""
+    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems"""
 
-    id: int = Field(description="Unique identifier of the organization")
-    login: str = Field(description="Login of the organization")
-
-
-class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository(
-    GitHubModel
-):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository"""
-
-    id: int = Field(description="Unique identifier of the repository")
-    name: str = Field(description="Name of the repository")
-    full_name: str = Field(description="Full name of the repository including owner")
+    name: Missing[str] = Field(
+        default=UNSET,
+        description="The display name of the custom agent (derived from filename).",
+    )
+    file_path: Missing[str] = Field(
+        default=UNSET, description="The path to the agent definition file."
+    )
+    url: Missing[str] = Field(
+        default=UNSET, description="The URL to view the agent definition file."
+    )
 
 
-model_rebuild(EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200)
+model_rebuild(EnterprisesEnterpriseCopilotCustomAgentsGetResponse200)
 model_rebuild(
-    EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization
-)
-model_rebuild(
-    EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository
+    EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems
 )
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository",
+    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse200",
+    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems",
 )

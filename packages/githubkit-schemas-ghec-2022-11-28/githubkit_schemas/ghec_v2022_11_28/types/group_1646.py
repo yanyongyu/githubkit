@@ -9,59 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoStacksPostResponse422Type(TypedDict):
-    """Validation Error
+class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2Type(TypedDict):
+    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2"""
 
-    Validation Error
-    """
-
-    message: str
-    documentation_url: str
-    errors: NotRequired[list[ReposOwnerRepoStacksPostResponse422PropErrorsItemsType]]
-
-
-class ReposOwnerRepoStacksPostResponse422TypeForResponse(TypedDict):
-    """Validation Error
-
-    Validation Error
-    """
-
-    message: str
-    documentation_url: str
-    errors: NotRequired[
-        list[ReposOwnerRepoStacksPostResponse422PropErrorsItemsTypeForResponse]
+    state: NotRequired[Literal["open", "resolved"]]
+    resolution: NotRequired[
+        Union[Literal["false_positive", "wont_fix", "revoked", "used_in_tests"], None]
     ]
+    resolution_comment: NotRequired[Union[str, None]]
+    assignee: NotRequired[Union[str, None]]
+    validity: Union[Literal["active", "inactive"], None]
 
 
-class ReposOwnerRepoStacksPostResponse422PropErrorsItemsType(TypedDict):
-    """ReposOwnerRepoStacksPostResponse422PropErrorsItems"""
+class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2"""
 
-    resource: NotRequired[str]
-    field: NotRequired[str]
-    message: NotRequired[str]
-    code: str
-    index: NotRequired[int]
-    value: NotRequired[Union[str, None, int, None, list[Union[str, int]], None]]
-
-
-class ReposOwnerRepoStacksPostResponse422PropErrorsItemsTypeForResponse(TypedDict):
-    """ReposOwnerRepoStacksPostResponse422PropErrorsItems"""
-
-    resource: NotRequired[str]
-    field: NotRequired[str]
-    message: NotRequired[str]
-    code: str
-    index: NotRequired[int]
-    value: NotRequired[Union[str, None, int, None, list[Union[str, int]], None]]
+    state: NotRequired[Literal["open", "resolved"]]
+    resolution: NotRequired[
+        Union[Literal["false_positive", "wont_fix", "revoked", "used_in_tests"], None]
+    ]
+    resolution_comment: NotRequired[Union[str, None]]
+    assignee: NotRequired[Union[str, None]]
+    validity: Union[Literal["active", "inactive"], None]
 
 
 __all__ = (
-    "ReposOwnerRepoStacksPostResponse422PropErrorsItemsType",
-    "ReposOwnerRepoStacksPostResponse422PropErrorsItemsTypeForResponse",
-    "ReposOwnerRepoStacksPostResponse422Type",
-    "ReposOwnerRepoStacksPostResponse422TypeForResponse",
+    "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2Type",
+    "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2TypeForResponse",
 )

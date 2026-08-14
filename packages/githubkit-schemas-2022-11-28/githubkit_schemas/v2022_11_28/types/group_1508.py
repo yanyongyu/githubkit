@@ -13,23 +13,25 @@ from typing import Literal
 from typing_extensions import TypedDict
 
 
-class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0Type(TypedDict):
-    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0"""
+class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBodyType(TypedDict):
+    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody"""
 
-    name: str
-    data_type: Literal["text", "number", "date"]
+    actor_type: Literal["User", "Team"]
+    actor_identifier: str
+    role: Literal["reader", "writer", "admin"]
 
 
-class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0TypeForResponse(
+class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBodyTypeForResponse(
     TypedDict
 ):
-    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0"""
+    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody"""
 
-    name: str
-    data_type: Literal["text", "number", "date"]
+    actor_type: Literal["User", "Team"]
+    actor_identifier: str
+    role: Literal["reader", "writer", "admin"]
 
 
 __all__ = (
-    "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0Type",
-    "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0TypeForResponse",
+    "UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBodyType",
+    "UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBodyTypeForResponse",
 )

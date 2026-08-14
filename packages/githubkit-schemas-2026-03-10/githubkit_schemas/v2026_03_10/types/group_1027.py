@@ -9,90 +9,105 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0Type(TypedDict):
-    """AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0
-
-    A GitHub user
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0TypeForResponse(TypedDict):
-    """AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0
-
-    A GitHub user
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsType(TypedDict):
-    """AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems
-
-    A GitHub user
-    """
-
-    id: NotRequired[int]
+from .group_1028 import (
+    AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0Type,
+    AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0TypeForResponse,
+    AgentsTasksTaskIdGetResponse200Allof0PropCustomAgentType,
+    AgentsTasksTaskIdGetResponse200Allof0PropCustomAgentTypeForResponse,
+    AgentsTasksTaskIdGetResponse200Allof0PropRepositoryType,
+    AgentsTasksTaskIdGetResponse200Allof0PropRepositoryTypeForResponse,
+    AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsType,
+    AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsTypeForResponse,
+)
+from .group_1029 import (
+    AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsType,
+    AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsTypeForResponse,
+    AgentsTasksTaskIdGetResponse200Allof0PropOwnerType,
+    AgentsTasksTaskIdGetResponse200Allof0PropOwnerTypeForResponse,
+)
 
 
-class AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsTypeForResponse(
-    TypedDict
-):
-    """AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems
+class AgentsTasksTaskIdGetResponse200Allof0Type(TypedDict):
+    """AgentsTasksTaskIdGetResponse200Allof0"""
 
-    A GitHub user
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsTasksTaskIdGetResponse200Allof0PropRepositoryType(TypedDict):
-    """AgentsTasksTaskIdGetResponse200Allof0PropRepository
-
-    The repository this task belongs to
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsTasksTaskIdGetResponse200Allof0PropRepositoryTypeForResponse(TypedDict):
-    """AgentsTasksTaskIdGetResponse200Allof0PropRepository
-
-    The repository this task belongs to
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsTasksTaskIdGetResponse200Allof0PropCustomAgentType(TypedDict):
-    """AgentsTasksTaskIdGetResponse200Allof0PropCustomAgent
-
-    Custom agent metadata associated with this task
-    """
-
-    id: NotRequired[str]
+    id: str
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    name: NotRequired[str]
+    creator: NotRequired[AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0Type]
+    creator_type: NotRequired[Literal["user", "organization"]]
+    user_collaborators: NotRequired[
+        list[AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsType]
+    ]
+    owner: NotRequired[AgentsTasksTaskIdGetResponse200Allof0PropOwnerType]
+    repository: NotRequired[AgentsTasksTaskIdGetResponse200Allof0PropRepositoryType]
+    state: Literal[
+        "queued",
+        "in_progress",
+        "completed",
+        "failed",
+        "idle",
+        "waiting_for_user",
+        "timed_out",
+        "cancelled",
+    ]
+    session_count: NotRequired[int]
+    artifacts: NotRequired[
+        list[AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsType]
+    ]
+    archived_at: NotRequired[Union[_dt.datetime, None]]
+    updated_at: NotRequired[_dt.datetime]
+    created_at: _dt.datetime
+    custom_agent: NotRequired[AgentsTasksTaskIdGetResponse200Allof0PropCustomAgentType]
 
 
-class AgentsTasksTaskIdGetResponse200Allof0PropCustomAgentTypeForResponse(TypedDict):
-    """AgentsTasksTaskIdGetResponse200Allof0PropCustomAgent
+class AgentsTasksTaskIdGetResponse200Allof0TypeForResponse(TypedDict):
+    """AgentsTasksTaskIdGetResponse200Allof0"""
 
-    Custom agent metadata associated with this task
-    """
-
-    id: NotRequired[str]
+    id: str
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    name: NotRequired[str]
+    creator: NotRequired[
+        AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0TypeForResponse
+    ]
+    creator_type: NotRequired[Literal["user", "organization"]]
+    user_collaborators: NotRequired[
+        list[
+            AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsTypeForResponse
+        ]
+    ]
+    owner: NotRequired[AgentsTasksTaskIdGetResponse200Allof0PropOwnerTypeForResponse]
+    repository: NotRequired[
+        AgentsTasksTaskIdGetResponse200Allof0PropRepositoryTypeForResponse
+    ]
+    state: Literal[
+        "queued",
+        "in_progress",
+        "completed",
+        "failed",
+        "idle",
+        "waiting_for_user",
+        "timed_out",
+        "cancelled",
+    ]
+    session_count: NotRequired[int]
+    artifacts: NotRequired[
+        list[AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsTypeForResponse]
+    ]
+    archived_at: NotRequired[Union[str, None]]
+    updated_at: NotRequired[str]
+    created_at: str
+    custom_agent: NotRequired[
+        AgentsTasksTaskIdGetResponse200Allof0PropCustomAgentTypeForResponse
+    ]
 
 
 __all__ = (
-    "AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0Type",
-    "AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0TypeForResponse",
-    "AgentsTasksTaskIdGetResponse200Allof0PropCustomAgentType",
-    "AgentsTasksTaskIdGetResponse200Allof0PropCustomAgentTypeForResponse",
-    "AgentsTasksTaskIdGetResponse200Allof0PropRepositoryType",
-    "AgentsTasksTaskIdGetResponse200Allof0PropRepositoryTypeForResponse",
-    "AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsType",
-    "AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsTypeForResponse",
+    "AgentsTasksTaskIdGetResponse200Allof0Type",
+    "AgentsTasksTaskIdGetResponse200Allof0TypeForResponse",
 )

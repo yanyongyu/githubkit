@@ -9,29 +9,81 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing import Any, TypeAlias
+from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBodyType(TypedDict):
-    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody"""
+class UsersUsernameAttestationsBulkListPostResponse200Type(TypedDict):
+    """UsersUsernameAttestationsBulkListPostResponse200"""
 
-    actor_type: Literal["User", "Team"]
-    actor_identifier: str
-    role: Literal["reader", "writer", "admin"]
+    attestations_subject_digests: NotRequired[
+        UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType
+    ]
+    page_info: NotRequired[
+        UsersUsernameAttestationsBulkListPostResponse200PropPageInfoType
+    ]
 
 
-class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBodyTypeForResponse(
+class UsersUsernameAttestationsBulkListPostResponse200TypeForResponse(TypedDict):
+    """UsersUsernameAttestationsBulkListPostResponse200"""
+
+    attestations_subject_digests: NotRequired[
+        UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsTypeForResponse
+    ]
+    page_info: NotRequired[
+        UsersUsernameAttestationsBulkListPostResponse200PropPageInfoTypeForResponse
+    ]
+
+
+UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType: TypeAlias = dict[
+    str, Any
+]
+"""UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
+
+Mapping of subject digest to bundles.
+"""
+
+
+UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
+
+Mapping of subject digest to bundles.
+"""
+
+
+class UsersUsernameAttestationsBulkListPostResponse200PropPageInfoType(TypedDict):
+    """UsersUsernameAttestationsBulkListPostResponse200PropPageInfo
+
+    Information about the current page.
+    """
+
+    has_next: NotRequired[bool]
+    has_previous: NotRequired[bool]
+    next_: NotRequired[str]
+    previous: NotRequired[str]
+
+
+class UsersUsernameAttestationsBulkListPostResponse200PropPageInfoTypeForResponse(
     TypedDict
 ):
-    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody"""
+    """UsersUsernameAttestationsBulkListPostResponse200PropPageInfo
 
-    actor_type: Literal["User", "Team"]
-    actor_identifier: str
-    role: Literal["reader", "writer", "admin"]
+    Information about the current page.
+    """
+
+    has_next: NotRequired[bool]
+    has_previous: NotRequired[bool]
+    next_: NotRequired[str]
+    previous: NotRequired[str]
 
 
 __all__ = (
-    "UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBodyType",
-    "UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBodyTypeForResponse",
+    "UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType",
+    "UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsTypeForResponse",
+    "UsersUsernameAttestationsBulkListPostResponse200PropPageInfoType",
+    "UsersUsernameAttestationsBulkListPostResponse200PropPageInfoTypeForResponse",
+    "UsersUsernameAttestationsBulkListPostResponse200Type",
+    "UsersUsernameAttestationsBulkListPostResponse200TypeForResponse",
 )

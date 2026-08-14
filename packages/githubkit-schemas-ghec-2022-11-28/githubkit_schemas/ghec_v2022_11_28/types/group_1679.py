@@ -11,24 +11,20 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0018 import InstallationType, InstallationTypeForResponse
+
+class UserCodespacesSecretsSecretNameRepositoriesPutBodyType(TypedDict):
+    """UserCodespacesSecretsSecretNameRepositoriesPutBody"""
+
+    selected_repository_ids: list[int]
 
 
-class UserInstallationsGetResponse200Type(TypedDict):
-    """UserInstallationsGetResponse200"""
+class UserCodespacesSecretsSecretNameRepositoriesPutBodyTypeForResponse(TypedDict):
+    """UserCodespacesSecretsSecretNameRepositoriesPutBody"""
 
-    total_count: int
-    installations: list[InstallationType]
-
-
-class UserInstallationsGetResponse200TypeForResponse(TypedDict):
-    """UserInstallationsGetResponse200"""
-
-    total_count: int
-    installations: list[InstallationTypeForResponse]
+    selected_repository_ids: list[int]
 
 
 __all__ = (
-    "UserInstallationsGetResponse200Type",
-    "UserInstallationsGetResponse200TypeForResponse",
+    "UserCodespacesSecretsSecretNameRepositoriesPutBodyType",
+    "UserCodespacesSecretsSecretNameRepositoriesPutBodyTypeForResponse",
 )

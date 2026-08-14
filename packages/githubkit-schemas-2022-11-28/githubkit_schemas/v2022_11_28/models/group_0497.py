@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -19,16 +19,18 @@ from githubkit.compat import GitHubModel, model_rebuild
 from .group_0003 import SimpleUser
 
 
-class Stargazer(GitHubModel):
-    """Stargazer
+class PullRequestStackPullRequestAllof1(GitHubModel):
+    """PullRequestStackPullRequestAllof1"""
 
-    Stargazer
-    """
-
-    starred_at: _dt.datetime = Field()
+    node_id: str = Field()
+    title: str = Field()
+    state: Literal["open", "closed"] = Field()
+    merged_at: Union[_dt.datetime, None] = Field()
+    draft: bool = Field()
+    html_url: str = Field()
     user: Union[SimpleUser, None] = Field()
 
 
-model_rebuild(Stargazer)
+model_rebuild(PullRequestStackPullRequestAllof1)
 
-__all__ = ("Stargazer",)
+__all__ = ("PullRequestStackPullRequestAllof1",)

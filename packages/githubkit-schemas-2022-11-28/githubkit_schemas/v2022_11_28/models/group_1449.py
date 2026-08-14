@@ -11,19 +11,19 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+
+from .group_0261 import SecretScanningCustomPatternToCreate
 
 
-class ReposOwnerRepoStacksPostBody(GitHubModel):
-    """ReposOwnerRepoStacksPostBody"""
+class ReposOwnerRepoSecretScanningCustomPatternsPostBody(GitHubModel):
+    """ReposOwnerRepoSecretScanningCustomPatternsPostBody"""
 
-    pull_requests: list[int] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        min_length=2 if PYDANTIC_V2 else None,
-        description="An ordered list of pull request numbers forming the stack from bottom to top.",
+    patterns: list[SecretScanningCustomPatternToCreate] = Field(
+        description="The list of custom patterns to create."
     )
 
 
-model_rebuild(ReposOwnerRepoStacksPostBody)
+model_rebuild(ReposOwnerRepoSecretScanningCustomPatternsPostBody)
 
-__all__ = ("ReposOwnerRepoStacksPostBody",)
+__all__ = ("ReposOwnerRepoSecretScanningCustomPatternsPostBody",)

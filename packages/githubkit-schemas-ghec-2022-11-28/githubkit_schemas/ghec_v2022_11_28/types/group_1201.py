@@ -9,112 +9,81 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200Type(TypedDict):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200"""
+class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200"""
 
-    organization: NotRequired[
-        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganizationType
+    organization: Union[
+        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganizationType,
+        None,
     ]
-    repository: NotRequired[
-        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepositoryType
-    ]
-    ruleset: NotRequired[
-        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRulesetType
-    ]
-
-
-class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200"""
-
-    organization: NotRequired[
-        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganizationTypeForResponse
-    ]
-    repository: NotRequired[
-        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepositoryTypeForResponse
-    ]
-    ruleset: NotRequired[
-        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRulesetTypeForResponse
+    repository: Union[
+        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepositoryType,
+        None,
     ]
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganizationType(
+class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganization"""
+    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200"""
 
-    id: NotRequired[int]
-    login: NotRequired[str]
-    avatar_url: NotRequired[str]
+    organization: Union[
+        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganizationTypeForResponse,
+        None,
+    ]
+    repository: Union[
+        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepositoryTypeForResponse,
+        None,
+    ]
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganizationTypeForResponse(
+class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganizationType(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganization"""
+    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization"""
 
-    id: NotRequired[int]
-    login: NotRequired[str]
-    avatar_url: NotRequired[str]
+    id: int
+    login: str
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepositoryType(
+class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganizationTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepository"""
+    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization"""
 
-    id: NotRequired[int]
-    name: NotRequired[str]
-    full_name: NotRequired[str]
+    id: int
+    login: str
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepositoryTypeForResponse(
+class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepositoryType(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepository"""
+    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository"""
 
-    id: NotRequired[int]
-    name: NotRequired[str]
-    full_name: NotRequired[str]
+    id: int
+    name: str
+    full_name: str
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRulesetType(
+class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepositoryTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRuleset
+    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository"""
 
-    The created or existing ruleset (if create_ruleset was true).
-    """
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    enforcement: NotRequired[str]
-
-
-class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRulesetTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRuleset
-
-    The created or existing ruleset (if create_ruleset was true).
-    """
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    enforcement: NotRequired[str]
+    id: int
+    name: str
+    full_name: str
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganizationType",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganizationTypeForResponse",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepositoryType",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepositoryTypeForResponse",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRulesetType",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRulesetTypeForResponse",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200Type",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200TypeForResponse",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganizationType",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganizationTypeForResponse",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepositoryType",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepositoryTypeForResponse",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200Type",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200TypeForResponse",
 )

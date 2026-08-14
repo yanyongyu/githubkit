@@ -9,45 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0617 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0618 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0619 import (
+from .group_0618 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0619 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0620 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0620 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0630 import WebhooksUserType, WebhooksUserTypeForResponse
+from .group_0621 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0647 import WebhooksMilestone3Type, WebhooksMilestone3TypeForResponse
 
 
-class WebhookOrgBlockBlockedType(TypedDict):
-    """org_block blocked event"""
+class WebhookMilestoneOpenedType(TypedDict):
+    """milestone opened event"""
 
-    action: Literal["blocked"]
-    blocked_user: Union[WebhooksUserType, None]
+    action: Literal["opened"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
-    repository: NotRequired[RepositoryWebhooksType]
+    milestone: WebhooksMilestone3Type
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookOrgBlockBlockedTypeForResponse(TypedDict):
-    """org_block blocked event"""
+class WebhookMilestoneOpenedTypeForResponse(TypedDict):
+    """milestone opened event"""
 
-    action: Literal["blocked"]
-    blocked_user: Union[WebhooksUserTypeForResponse, None]
+    action: Literal["opened"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: OrganizationSimpleWebhooksTypeForResponse
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    milestone: WebhooksMilestone3TypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookOrgBlockBlockedType",
-    "WebhookOrgBlockBlockedTypeForResponse",
+    "WebhookMilestoneOpenedType",
+    "WebhookMilestoneOpenedTypeForResponse",
 )

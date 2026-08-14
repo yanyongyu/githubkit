@@ -17,14 +17,14 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0241 import RepositoryRuleMaxFilePathLengthPropParameters
+from .group_0239 import RepositoryRuleFilePathRestrictionPropParameters
 
 
-class RepositoryRuleDetailedOneof20(GitHubModel):
-    """RepositoryRuleDetailedOneof20"""
+class RepositoryRuleDetailedOneof19(GitHubModel):
+    """RepositoryRuleDetailedOneof19"""
 
-    type: Literal["max_file_path_length"] = Field()
-    parameters: Missing[RepositoryRuleMaxFilePathLengthPropParameters] = Field(
+    type: Literal["file_path_restriction"] = Field()
+    parameters: Missing[RepositoryRuleFilePathRestrictionPropParameters] = Field(
         default=UNSET
     )
     ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
@@ -40,6 +40,6 @@ class RepositoryRuleDetailedOneof20(GitHubModel):
     )
 
 
-model_rebuild(RepositoryRuleDetailedOneof20)
+model_rebuild(RepositoryRuleDetailedOneof19)
 
-__all__ = ("RepositoryRuleDetailedOneof20",)
+__all__ = ("RepositoryRuleDetailedOneof19",)

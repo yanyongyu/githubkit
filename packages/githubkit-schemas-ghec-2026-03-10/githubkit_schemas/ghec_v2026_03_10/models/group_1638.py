@@ -9,43 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoSecretScanningCustomPatternsPostResponse422(GitHubModel):
-    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse422"""
+class ReposOwnerRepoReleasesReleaseIdReactionsPostBody(GitHubModel):
+    """ReposOwnerRepoReleasesReleaseIdReactionsPostBody"""
 
-    message: Missing[str] = Field(
-        default=UNSET, description="A summary message describing the error."
-    )
-    validation_errors: Missing[
-        ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors
-    ] = Field(
-        default=UNSET,
-        description="A map of validation errors keyed by the zero-based index of the pattern that failed.",
+    content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"] = Field(
+        description="The [reaction type](https://docs.github.com/enterprise-cloud@latest/rest/reactions/reactions#about-reactions) to add to the release."
     )
 
 
-class ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors(
-    ExtraGitHubModel
-):
-    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors
+model_rebuild(ReposOwnerRepoReleasesReleaseIdReactionsPostBody)
 
-    A map of validation errors keyed by the zero-based index of the pattern that
-    failed.
-    """
-
-
-model_rebuild(ReposOwnerRepoSecretScanningCustomPatternsPostResponse422)
-model_rebuild(
-    ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors
-)
-
-__all__ = (
-    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422",
-    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors",
-)
+__all__ = ("ReposOwnerRepoReleasesReleaseIdReactionsPostBody",)

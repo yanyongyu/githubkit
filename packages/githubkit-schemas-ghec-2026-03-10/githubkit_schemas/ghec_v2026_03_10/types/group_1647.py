@@ -9,65 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class ReposOwnerRepoStacksStackNumberAddPostResponse422Type(TypedDict):
-    """Validation Error
-
-    Validation Error
-    """
-
-    message: str
-    documentation_url: str
-    errors: NotRequired[
-        list[ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItemsType]
-    ]
+from .group_0191 import (
+    SecretScanningCustomPatternToDeleteType,
+    SecretScanningCustomPatternToDeleteTypeForResponse,
+)
 
 
-class ReposOwnerRepoStacksStackNumberAddPostResponse422TypeForResponse(TypedDict):
-    """Validation Error
+class ReposOwnerRepoSecretScanningCustomPatternsDeleteBodyType(TypedDict):
+    """ReposOwnerRepoSecretScanningCustomPatternsDeleteBody"""
 
-    Validation Error
-    """
-
-    message: str
-    documentation_url: str
-    errors: NotRequired[
-        list[
-            ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItemsTypeForResponse
-        ]
-    ]
+    patterns: list[SecretScanningCustomPatternToDeleteType]
+    post_delete_action: NotRequired[Literal["delete_alerts", "resolve_alerts"]]
 
 
-class ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItemsType(TypedDict):
-    """ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems"""
+class ReposOwnerRepoSecretScanningCustomPatternsDeleteBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoSecretScanningCustomPatternsDeleteBody"""
 
-    resource: NotRequired[str]
-    field: NotRequired[str]
-    message: NotRequired[str]
-    code: str
-    index: NotRequired[int]
-    value: NotRequired[Union[str, None, int, None, list[Union[str, int]], None]]
-
-
-class ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItemsTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems"""
-
-    resource: NotRequired[str]
-    field: NotRequired[str]
-    message: NotRequired[str]
-    code: str
-    index: NotRequired[int]
-    value: NotRequired[Union[str, None, int, None, list[Union[str, int]], None]]
+    patterns: list[SecretScanningCustomPatternToDeleteTypeForResponse]
+    post_delete_action: NotRequired[Literal["delete_alerts", "resolve_alerts"]]
 
 
 __all__ = (
-    "ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItemsType",
-    "ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItemsTypeForResponse",
-    "ReposOwnerRepoStacksStackNumberAddPostResponse422Type",
-    "ReposOwnerRepoStacksStackNumberAddPostResponse422TypeForResponse",
+    "ReposOwnerRepoSecretScanningCustomPatternsDeleteBodyType",
+    "ReposOwnerRepoSecretScanningCustomPatternsDeleteBodyTypeForResponse",
 )

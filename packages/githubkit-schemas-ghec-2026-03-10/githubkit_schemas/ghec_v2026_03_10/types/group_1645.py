@@ -9,22 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0188 import (
+    SecretScanningCustomPatternType,
+    SecretScanningCustomPatternTypeForResponse,
+)
 
 
-class ReposOwnerRepoStacksStackNumberAddPostBodyType(TypedDict):
-    """ReposOwnerRepoStacksStackNumberAddPostBody"""
+class ReposOwnerRepoSecretScanningCustomPatternsPostResponse201Type(TypedDict):
+    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse201"""
 
-    pull_requests: list[int]
+    created_patterns: NotRequired[list[SecretScanningCustomPatternType]]
 
 
-class ReposOwnerRepoStacksStackNumberAddPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoStacksStackNumberAddPostBody"""
+class ReposOwnerRepoSecretScanningCustomPatternsPostResponse201TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse201"""
 
-    pull_requests: list[int]
+    created_patterns: NotRequired[list[SecretScanningCustomPatternTypeForResponse]]
 
 
 __all__ = (
-    "ReposOwnerRepoStacksStackNumberAddPostBodyType",
-    "ReposOwnerRepoStacksStackNumberAddPostBodyTypeForResponse",
+    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse201Type",
+    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse201TypeForResponse",
 )

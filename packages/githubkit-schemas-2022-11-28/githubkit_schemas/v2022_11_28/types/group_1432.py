@@ -12,19 +12,23 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType(TypedDict):
-    """ReposOwnerRepoPullsPullNumberUpdateBranchPutBody"""
+class ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody"""
 
-    expected_head_sha: NotRequired[str]
+    reviewers: list[str]
+    team_reviewers: NotRequired[list[str]]
 
 
-class ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoPullsPullNumberUpdateBranchPutBody"""
+class ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody"""
 
-    expected_head_sha: NotRequired[str]
+    reviewers: list[str]
+    team_reviewers: NotRequired[list[str]]
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType",
-    "ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyTypeForResponse",
+    "ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType",
+    "ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyTypeForResponse",
 )

@@ -9,24 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class UsersUsernameAttestationsBulkListPostBodyType(TypedDict):
-    """UsersUsernameAttestationsBulkListPostBody"""
+class UserMembershipsOrgsOrgPatchBodyType(TypedDict):
+    """UserMembershipsOrgsOrgPatchBody"""
 
-    subject_digests: list[str]
-    predicate_type: NotRequired[str]
+    state: Literal["active"]
 
 
-class UsersUsernameAttestationsBulkListPostBodyTypeForResponse(TypedDict):
-    """UsersUsernameAttestationsBulkListPostBody"""
+class UserMembershipsOrgsOrgPatchBodyTypeForResponse(TypedDict):
+    """UserMembershipsOrgsOrgPatchBody"""
 
-    subject_digests: list[str]
-    predicate_type: NotRequired[str]
+    state: Literal["active"]
 
 
 __all__ = (
-    "UsersUsernameAttestationsBulkListPostBodyType",
-    "UsersUsernameAttestationsBulkListPostBodyTypeForResponse",
+    "UserMembershipsOrgsOrgPatchBodyType",
+    "UserMembershipsOrgsOrgPatchBodyTypeForResponse",
 )

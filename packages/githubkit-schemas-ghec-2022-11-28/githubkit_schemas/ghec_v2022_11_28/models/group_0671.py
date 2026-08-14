@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0618 import EnterpriseWebhooks
-from .group_0619 import SimpleInstallation
-from .group_0620 import OrganizationSimpleWebhooks
-from .group_0621 import RepositoryWebhooks
-from .group_0622 import WebhooksRule
+from .group_0619 import EnterpriseWebhooks
+from .group_0620 import SimpleInstallation
+from .group_0621 import OrganizationSimpleWebhooks
+from .group_0622 import RepositoryWebhooks
+from .group_0623 import WebhooksRule
 
 
-class WebhookBranchProtectionRuleDeleted(GitHubModel):
-    """branch protection rule deleted event"""
+class WebhookBranchProtectionRuleCreated(GitHubModel):
+    """branch protection rule created event"""
 
-    action: Literal["deleted"] = Field()
+    action: Literal["created"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -55,6 +55,6 @@ class WebhookBranchProtectionRuleDeleted(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookBranchProtectionRuleDeleted)
+model_rebuild(WebhookBranchProtectionRuleCreated)
 
-__all__ = ("WebhookBranchProtectionRuleDeleted",)
+__all__ = ("WebhookBranchProtectionRuleCreated",)

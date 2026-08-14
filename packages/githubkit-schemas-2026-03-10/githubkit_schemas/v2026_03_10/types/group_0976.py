@@ -15,38 +15,38 @@ from typing_extensions import NotRequired, TypedDict
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0020 import RepositoryType, RepositoryTypeForResponse
 from .group_0058 import IssueType, IssueTypeForResponse
-from .group_0535 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0536 import (
+from .group_0536 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0537 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0537 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0538 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookSubIssuesSubIssueAddedType(TypedDict):
-    """sub-issue added event"""
+class WebhookSubIssuesParentIssueRemovedType(TypedDict):
+    """parent issue removed event"""
 
-    action: Literal["sub_issue_added"]
-    sub_issue_id: NotRequired[float]
-    sub_issue: NotRequired[IssueType]
-    sub_issue_repo: NotRequired[RepositoryType]
-    parent_issue_id: float
-    parent_issue: IssueType
+    action: Literal["parent_issue_removed"]
+    parent_issue_id: NotRequired[float]
+    parent_issue: NotRequired[IssueType]
+    parent_issue_repo: NotRequired[RepositoryType]
+    sub_issue_id: float
+    sub_issue: IssueType
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookSubIssuesSubIssueAddedTypeForResponse(TypedDict):
-    """sub-issue added event"""
+class WebhookSubIssuesParentIssueRemovedTypeForResponse(TypedDict):
+    """parent issue removed event"""
 
-    action: Literal["sub_issue_added"]
-    sub_issue_id: NotRequired[float]
-    sub_issue: NotRequired[IssueTypeForResponse]
-    sub_issue_repo: NotRequired[RepositoryTypeForResponse]
-    parent_issue_id: float
-    parent_issue: IssueTypeForResponse
+    action: Literal["parent_issue_removed"]
+    parent_issue_id: NotRequired[float]
+    parent_issue: NotRequired[IssueTypeForResponse]
+    parent_issue_repo: NotRequired[RepositoryTypeForResponse]
+    sub_issue_id: float
+    sub_issue: IssueTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
@@ -54,6 +54,6 @@ class WebhookSubIssuesSubIssueAddedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookSubIssuesSubIssueAddedType",
-    "WebhookSubIssuesSubIssueAddedTypeForResponse",
+    "WebhookSubIssuesParentIssueRemovedType",
+    "WebhookSubIssuesParentIssueRemovedTypeForResponse",
 )

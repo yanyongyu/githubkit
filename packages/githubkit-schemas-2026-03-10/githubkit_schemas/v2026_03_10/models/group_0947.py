@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0534 import EnterpriseWebhooks
-from .group_0535 import SimpleInstallation
-from .group_0536 import OrganizationSimpleWebhooks
-from .group_0537 import RepositoryWebhooks
-from .group_0577 import SecretScanningAlertWebhook
+from .group_0535 import EnterpriseWebhooks
+from .group_0536 import SimpleInstallation
+from .group_0537 import OrganizationSimpleWebhooks
+from .group_0538 import RepositoryWebhooks
+from .group_0578 import SecretScanningAlertWebhook
 
 
-class WebhookSecretScanningAlertMetadataRemoved(GitHubModel):
-    """secret_scanning_alert metadata removed event"""
+class WebhookSecretScanningAlertMetadataCreated(GitHubModel):
+    """secret_scanning_alert metadata created event"""
 
-    action: Literal["metadata_removed"] = Field()
+    action: Literal["metadata_created"] = Field()
     alert: SecretScanningAlertWebhook = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
@@ -54,6 +54,6 @@ class WebhookSecretScanningAlertMetadataRemoved(GitHubModel):
     )
 
 
-model_rebuild(WebhookSecretScanningAlertMetadataRemoved)
+model_rebuild(WebhookSecretScanningAlertMetadataCreated)
 
-__all__ = ("WebhookSecretScanningAlertMetadataRemoved",)
+__all__ = ("WebhookSecretScanningAlertMetadataCreated",)

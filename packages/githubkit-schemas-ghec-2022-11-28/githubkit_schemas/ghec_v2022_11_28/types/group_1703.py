@@ -9,31 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
 
-class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBodyType(
-    TypedDict
-):
-    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBod
-    y
-    """
+class UsersUsernameAttestationsDeleteRequestPostBodyOneof0Type(TypedDict):
+    """UsersUsernameAttestationsDeleteRequestPostBodyOneof0"""
 
-    role: Literal["reader", "writer", "admin", "no_access"]
+    subject_digests: list[str]
 
 
-class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBodyTypeForResponse(
-    TypedDict
-):
-    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBod
-    y
-    """
+class UsersUsernameAttestationsDeleteRequestPostBodyOneof0TypeForResponse(TypedDict):
+    """UsersUsernameAttestationsDeleteRequestPostBodyOneof0"""
 
-    role: Literal["reader", "writer", "admin", "no_access"]
+    subject_digests: list[str]
 
 
 __all__ = (
-    "UsersUsernameCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBodyType",
-    "UsersUsernameCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBodyTypeForResponse",
+    "UsersUsernameAttestationsDeleteRequestPostBodyOneof0Type",
+    "UsersUsernameAttestationsDeleteRequestPostBodyOneof0TypeForResponse",
 )

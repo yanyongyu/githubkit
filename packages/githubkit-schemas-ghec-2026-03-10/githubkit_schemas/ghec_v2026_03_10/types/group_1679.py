@@ -9,33 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias
-
-UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType: TypeAlias = dict[
-    str, Any
-]
-"""UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAl
-lof1PropCustomProperties
-
-The custom properties that were defined for the repository. The keys are the
-custom property names, and the values are the corresponding custom property
-values. Present for org repos only.
-"""
+from typing_extensions import NotRequired, TypedDict
 
 
-UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAl
-lof1PropCustomProperties
+class UserCodespacesCodespaceNamePublishPostBodyType(TypedDict):
+    """UserCodespacesCodespaceNamePublishPostBody"""
 
-The custom properties that were defined for the repository. The keys are the
-custom property names, and the values are the corresponding custom property
-values. Present for org repos only.
-"""
+    name: NotRequired[str]
+    private: NotRequired[bool]
+
+
+class UserCodespacesCodespaceNamePublishPostBodyTypeForResponse(TypedDict):
+    """UserCodespacesCodespaceNamePublishPostBody"""
+
+    name: NotRequired[str]
+    private: NotRequired[bool]
 
 
 __all__ = (
-    "UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType",
-    "UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse",
+    "UserCodespacesCodespaceNamePublishPostBodyType",
+    "UserCodespacesCodespaceNamePublishPostBodyTypeForResponse",
 )

@@ -12,21 +12,38 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0011 import WebhookConfig
 
 
-class ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200(GitHubModel):
-    """ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200"""
+class ReposOwnerRepoHooksHookIdPatchBody(GitHubModel):
+    """ReposOwnerRepoHooksHookIdPatchBody"""
 
-    enabled: bool = Field(
-        description="Whether the pull request creation cap is enabled"
+    config: Missing[WebhookConfig] = Field(
+        default=UNSET,
+        title="Webhook Configuration",
+        description="Configuration object of the webhook",
     )
-    max_open_pull_requests: int = Field(
-        le=1000.0,
-        ge=1.0,
-        description="The maximum number of open pull requests a user can have at one time",
+    events: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Determines what [events](https://docs.github.com/enterprise-cloud@latest/webhooks/event-payloads) the hook is triggered for. This replaces the entire array of events.",
+    )
+    add_events: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Determines a list of events to be added to the list of events that the Hook triggers for.",
+    )
+    remove_events: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Determines a list of events to be removed from the list of events that the Hook triggers for.",
+    )
+    active: Missing[bool] = Field(
+        default=UNSET,
+        description="Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications.",
     )
 
 
-model_rebuild(ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200)
+model_rebuild(ReposOwnerRepoHooksHookIdPatchBody)
 
-__all__ = ("ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200",)
+__all__ = ("ReposOwnerRepoHooksHookIdPatchBody",)

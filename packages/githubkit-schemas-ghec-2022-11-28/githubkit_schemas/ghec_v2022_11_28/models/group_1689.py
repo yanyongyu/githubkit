@@ -12,21 +12,33 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_1690 import (
+    UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties,
+)
 
 
-class UserSocialAccountsDeleteBody(GitHubModel):
-    """UserSocialAccountsDeleteBody
-
-    Examples:
-        {'account_urls': ['https://www.linkedin.com/company/github/',
-    'https://twitter.com/github']}
+class UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1(
+    GitHubModel
+):
+    """UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAl
+    lof1
     """
 
-    account_urls: list[str] = Field(
-        description="Full URLs for the social media profiles to delete."
+    custom_properties: Missing[
+        UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties
+    ] = Field(
+        default=UNSET,
+        description="The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. Present for org repos only.",
     )
 
 
-model_rebuild(UserSocialAccountsDeleteBody)
+model_rebuild(
+    UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1
+)
 
-__all__ = ("UserSocialAccountsDeleteBody",)
+__all__ = (
+    "UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1",
+)

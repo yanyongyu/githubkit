@@ -9,27 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0188 import (
-    SecretScanningCustomPatternType,
-    SecretScanningCustomPatternTypeForResponse,
-)
+from .group_0114 import CustomPropertyType, CustomPropertyTypeForResponse
 
 
-class OrgsOrgSecretScanningCustomPatternsPostResponse201Type(TypedDict):
-    """OrgsOrgSecretScanningCustomPatternsPostResponse201"""
+class OrgsOrgPropertiesSchemaPatchBodyType(TypedDict):
+    """OrgsOrgPropertiesSchemaPatchBody"""
 
-    created_patterns: NotRequired[list[SecretScanningCustomPatternType]]
+    properties: list[CustomPropertyType]
 
 
-class OrgsOrgSecretScanningCustomPatternsPostResponse201TypeForResponse(TypedDict):
-    """OrgsOrgSecretScanningCustomPatternsPostResponse201"""
+class OrgsOrgPropertiesSchemaPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgPropertiesSchemaPatchBody"""
 
-    created_patterns: NotRequired[list[SecretScanningCustomPatternTypeForResponse]]
+    properties: list[CustomPropertyTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgSecretScanningCustomPatternsPostResponse201Type",
-    "OrgsOrgSecretScanningCustomPatternsPostResponse201TypeForResponse",
+    "OrgsOrgPropertiesSchemaPatchBodyType",
+    "OrgsOrgPropertiesSchemaPatchBodyTypeForResponse",
 )

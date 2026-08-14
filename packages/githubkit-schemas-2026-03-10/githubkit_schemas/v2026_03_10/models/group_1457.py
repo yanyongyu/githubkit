@@ -11,24 +11,19 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoSubscriptionPutBody(GitHubModel):
-    """ReposOwnerRepoSubscriptionPutBody"""
+class ReposOwnerRepoStacksStackNumberAddPostBody(GitHubModel):
+    """ReposOwnerRepoStacksStackNumberAddPostBody"""
 
-    subscribed: Missing[bool] = Field(
-        default=UNSET,
-        description="Determines if notifications should be received from this repository.",
-    )
-    ignored: Missing[bool] = Field(
-        default=UNSET,
-        description="Determines if all notifications should be blocked from this repository.",
+    pull_requests: list[int] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="An ordered list of pull request numbers to append to the stack, from the current top upward.",
     )
 
 
-model_rebuild(ReposOwnerRepoSubscriptionPutBody)
+model_rebuild(ReposOwnerRepoStacksStackNumberAddPostBody)
 
-__all__ = ("ReposOwnerRepoSubscriptionPutBody",)
+__all__ = ("ReposOwnerRepoStacksStackNumberAddPostBody",)

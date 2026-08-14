@@ -352,7 +352,7 @@ class BillingClient:
 
         GET /enterprises/{enterprise}/settings/billing/budgets
 
-        Gets all budgets for an enterprise. The authenticated user must be an enterprise admin or billing manager.
+        Gets all budgets for an enterprise. The authenticated actor must have permission to view enterprise billing.
         Each page returns up to 100 budgets.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/budgets#get-all-budgets
@@ -409,7 +409,7 @@ class BillingClient:
 
         GET /enterprises/{enterprise}/settings/billing/budgets
 
-        Gets all budgets for an enterprise. The authenticated user must be an enterprise admin or billing manager.
+        Gets all budgets for an enterprise. The authenticated actor must have permission to view enterprise billing.
         Each page returns up to 100 budgets.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/budgets#get-all-budgets

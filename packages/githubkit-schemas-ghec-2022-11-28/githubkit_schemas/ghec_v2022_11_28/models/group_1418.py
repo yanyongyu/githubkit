@@ -11,39 +11,24 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+
+from .group_0112 import CustomPropertyValue
 
 
-class OrgsOrgSecretScanningCustomPatternsPostResponse422(GitHubModel):
-    """OrgsOrgSecretScanningCustomPatternsPostResponse422"""
+class OrgsOrgPropertiesValuesPatchBody(GitHubModel):
+    """OrgsOrgPropertiesValuesPatchBody"""
 
-    message: Missing[str] = Field(
-        default=UNSET, description="A summary message describing the error."
+    repository_names: list[str] = Field(
+        max_length=30 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The names of repositories that the custom property values will be applied to.",
     )
-    validation_errors: Missing[
-        OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors
-    ] = Field(
-        default=UNSET,
-        description="A map of validation errors keyed by the zero-based index of the pattern that failed.",
+    properties: list[CustomPropertyValue] = Field(
+        description="List of custom property names and associated values to apply to the repositories."
     )
 
 
-class OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors(
-    ExtraGitHubModel
-):
-    """OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors
+model_rebuild(OrgsOrgPropertiesValuesPatchBody)
 
-    A map of validation errors keyed by the zero-based index of the pattern that
-    failed.
-    """
-
-
-model_rebuild(OrgsOrgSecretScanningCustomPatternsPostResponse422)
-model_rebuild(OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors)
-
-__all__ = (
-    "OrgsOrgSecretScanningCustomPatternsPostResponse422",
-    "OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors",
-)
+__all__ = ("OrgsOrgPropertiesValuesPatchBody",)

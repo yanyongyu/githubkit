@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,48 +16,40 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPullsPullNumberCodespacesPostBody(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberCodespacesPostBody"""
+class ReposOwnerRepoPullsPostBody(GitHubModel):
+    """ReposOwnerRepoPullsPostBody"""
 
-    location: Missing[str] = Field(
+    title: Missing[str] = Field(
         default=UNSET,
-        description="The requested location for a new codespace. Best efforts are made to respect this upon creation. Assigned by IP if not provided.",
+        description="The title of the new pull request. Required unless `issue` is specified.",
     )
-    geo: Missing[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]] = Field(
+    head: str = Field(
+        description="The name of the branch where your changes are implemented. For cross-repository pull requests in the same network, namespace `head` with a user like this: `username:branch`."
+    )
+    head_repo: Missing[str] = Field(
         default=UNSET,
-        description="The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is closing down.",
+        description="The name of the repository where the changes in the pull request were made. This field is required for cross-repository pull requests if both repositories are owned by the same organization.",
     )
-    client_ip: Missing[str] = Field(
+    base: str = Field(
+        description="The name of the branch you want the changes pulled into. This should be an existing branch on the current repository. You cannot submit a pull request to one repository that requests a merge to a base of another repository."
+    )
+    body: Missing[str] = Field(
+        default=UNSET, description="The contents of the pull request."
+    )
+    maintainer_can_modify: Missing[bool] = Field(
         default=UNSET,
-        description="IP for location auto-detection when proxying a request",
+        description="Indicates whether [maintainers can modify](https://docs.github.com/articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork/) the pull request.",
     )
-    machine: Missing[str] = Field(
-        default=UNSET, description="Machine type to use for this codespace"
-    )
-    devcontainer_path: Missing[str] = Field(
+    draft: Missing[bool] = Field(
         default=UNSET,
-        description="Path to devcontainer.json config to use for this codespace",
+        description='Indicates whether the pull request is a draft. See "[Draft Pull Requests](https://docs.github.com/articles/about-pull-requests#draft-pull-requests)" in the GitHub Help documentation to learn more.',
     )
-    multi_repo_permissions_opt_out: Missing[bool] = Field(
+    issue: Missing[int] = Field(
         default=UNSET,
-        description="Whether to authorize requested permissions from devcontainer.json",
-    )
-    working_directory: Missing[str] = Field(
-        default=UNSET, description="Working directory for this codespace"
-    )
-    idle_timeout_minutes: Missing[int] = Field(
-        default=UNSET,
-        description="Time in minutes before codespace stops from inactivity",
-    )
-    display_name: Missing[str] = Field(
-        default=UNSET, description="Display name for this codespace"
-    )
-    retention_period_minutes: Missing[int] = Field(
-        default=UNSET,
-        description="Duration in minutes after codespace has gone idle in which it will be deleted. Must be integer minutes between 0 and 43200 (30 days).",
+        description="An issue in the repository to convert to a pull request. The issue title, body, and comments will become the title, body, and comments on the new pull request. Required unless `title` is specified.",
     )
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberCodespacesPostBody)
+model_rebuild(ReposOwnerRepoPullsPostBody)
 
-__all__ = ("ReposOwnerRepoPullsPullNumberCodespacesPostBody",)
+__all__ = ("ReposOwnerRepoPullsPostBody",)

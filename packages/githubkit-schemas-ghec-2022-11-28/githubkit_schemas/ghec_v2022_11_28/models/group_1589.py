@@ -9,24 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoKeysPostBody(GitHubModel):
-    """ReposOwnerRepoKeysPostBody"""
+class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0"""
 
-    title: Missing[str] = Field(default=UNSET, description="A name for the key.")
-    key: str = Field(description="The contents of the key.")
-    read_only: Missing[bool] = Field(
+    labels: Missing[
+        list[
+            Union[
+                str,
+                ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0PropLabelsItemsOneof1,
+            ]
+        ]
+    ] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
         default=UNSET,
-        description='If `true`, the key will only be able to read repository contents. Otherwise, the key will be able to read and write.  \n  \nDeploy keys with write access can perform the same actions as an organization member with admin access, or a collaborator on a personal repository. For more information, see "[Repository permission levels for an organization](https://docs.github.com/enterprise-cloud@latest/articles/repository-permission-levels-for-an-organization/)" and "[Permission levels for a user account repository](https://docs.github.com/enterprise-cloud@latest/articles/permission-levels-for-a-user-account-repository/)."',
+        description='The labels to add to the issue\'s existing labels. You can also pass an `array` of labels directly, but GitHub recommends passing an object with the `labels` key. To replace all of the labels for an issue, use "[Set labels for an issue](https://docs.github.com/enterprise-cloud@latest/rest/issues/labels#set-labels-for-an-issue)."',
     )
 
 
-model_rebuild(ReposOwnerRepoKeysPostBody)
+class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0PropLabelsItemsOneof1(
+    GitHubModel
+):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0PropLabelsItemsOneof1"""
 
-__all__ = ("ReposOwnerRepoKeysPostBody",)
+    name: str = Field(description="The name of the label to add.")
+    rationale: Missing[str] = Field(
+        default=UNSET, description="Optional reasoning for adding this label."
+    )
+    suggest: Missing[bool] = Field(
+        default=UNSET,
+        description="If `true`, the label is stored as a pending suggestion for human review rather than applied directly.",
+    )
+    confidence: Missing[Literal["low", "medium", "high"]] = Field(
+        default=UNSET, description="The confidence level for this label choice."
+    )
+
+
+model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0PropLabelsItemsOneof1)
+
+__all__ = (
+    "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0",
+    "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0PropLabelsItemsOneof1",
+)

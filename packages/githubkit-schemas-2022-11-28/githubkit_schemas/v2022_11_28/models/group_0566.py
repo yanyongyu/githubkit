@@ -19,27 +19,25 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhooksProject(GitHubModel):
-    """Project"""
+class WebhooksProjectCard(GitHubModel):
+    """Project Card"""
 
-    body: Union[str, None] = Field(description="Body of the project")
-    columns_url: str = Field()
+    after_id: Missing[Union[int, None]] = Field(default=UNSET)
+    archived: bool = Field(description="Whether or not the card is archived")
+    column_id: int = Field()
+    column_url: str = Field()
+    content_url: Missing[str] = Field(default=UNSET)
     created_at: _dt.datetime = Field()
-    creator: Union[WebhooksProjectPropCreator, None] = Field(title="User")
-    html_url: str = Field()
-    id: int = Field()
-    name: str = Field(description="Name of the project")
+    creator: Union[WebhooksProjectCardPropCreator, None] = Field(title="User")
+    id: int = Field(description="The project card's ID")
     node_id: str = Field()
-    number: int = Field()
-    owner_url: str = Field()
-    state: Literal["open", "closed"] = Field(
-        description="State of the project; either 'open' or 'closed'"
-    )
+    note: Union[str, None] = Field()
+    project_url: str = Field()
     updated_at: _dt.datetime = Field()
     url: str = Field()
 
 
-class WebhooksProjectPropCreator(GitHubModel):
+class WebhooksProjectCardPropCreator(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -66,10 +64,10 @@ class WebhooksProjectPropCreator(GitHubModel):
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhooksProject)
-model_rebuild(WebhooksProjectPropCreator)
+model_rebuild(WebhooksProjectCard)
+model_rebuild(WebhooksProjectCardPropCreator)
 
 __all__ = (
-    "WebhooksProject",
-    "WebhooksProjectPropCreator",
+    "WebhooksProjectCard",
+    "WebhooksProjectCardPropCreator",
 )

@@ -17,11 +17,17 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0003 import SimpleUser
+from .group_0061 import PullRequestMinimalPropBase, PullRequestMinimalPropHead
 
 
-class PullRequestStackPullRequestAllof1(GitHubModel):
-    """PullRequestStackPullRequestAllof1"""
+class PullRequestStackPullRequest(GitHubModel):
+    """Pull Request Stack Pull Request"""
 
+    id: int = Field()
+    number: int = Field()
+    url: str = Field()
+    head: PullRequestMinimalPropHead = Field()
+    base: PullRequestMinimalPropBase = Field()
     node_id: str = Field()
     title: str = Field()
     state: Literal["open", "closed"] = Field()
@@ -31,6 +37,6 @@ class PullRequestStackPullRequestAllof1(GitHubModel):
     user: Union[SimpleUser, None] = Field()
 
 
-model_rebuild(PullRequestStackPullRequestAllof1)
+model_rebuild(PullRequestStackPullRequest)
 
-__all__ = ("PullRequestStackPullRequestAllof1",)
+__all__ = ("PullRequestStackPullRequest",)

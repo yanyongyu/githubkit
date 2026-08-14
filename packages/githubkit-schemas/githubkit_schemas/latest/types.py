@@ -2335,6 +2335,15 @@ if TYPE_CHECKING or is_lazy_disabled():
         OrgsOrgInteractionLimitsGetResponse200Anyof1Type as OrgsOrgInteractionLimitsGetResponse200Anyof1Type,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        OrgsOrgInteractionLimitsPullsCreationCapGetResponse200Type as OrgsOrgInteractionLimitsPullsCreationCapGetResponse200Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        OrgsOrgInteractionLimitsPullsCreationCapPatchBodyType as OrgsOrgInteractionLimitsPullsCreationCapPatchBodyType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200Type as OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         OrgsOrgInvitationsPostBodyType as OrgsOrgInvitationsPostBodyType,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -2744,6 +2753,18 @@ if TYPE_CHECKING or is_lazy_disabled():
     from githubkit_schemas.v2026_03_10.types import PublicUserType as PublicUserType
     from githubkit_schemas.v2026_03_10.types import (
         PullRequestEventType as PullRequestEventType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        PullRequestMergeAsyncResultPropDetailsOneof0Type as PullRequestMergeAsyncResultPropDetailsOneof0Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        PullRequestMergeAsyncResultPropDetailsOneof1Type as PullRequestMergeAsyncResultPropDetailsOneof1Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        PullRequestMergeAsyncResultPropDetailsOneof2Type as PullRequestMergeAsyncResultPropDetailsOneof2Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        PullRequestMergeAsyncResultType as PullRequestMergeAsyncResultType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         PullRequestMergeResultType as PullRequestMergeResultType,
@@ -4015,6 +4036,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.types import (
         ReposOwnerRepoPullsPullNumberCommentsPostBodyType as ReposOwnerRepoPullsPullNumberCommentsPostBodyType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        ReposOwnerRepoPullsPullNumberMergeAsyncPutBodyType as ReposOwnerRepoPullsPullNumberMergeAsyncPutBodyType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         ReposOwnerRepoPullsPullNumberMergePutBodyType as ReposOwnerRepoPullsPullNumberMergePutBodyType,
@@ -12280,6 +12304,10 @@ else:
             "PullRequestPropBaseType",
             "PullRequestPropLinksType",
             "PullRequestMergeResultType",
+            "PullRequestMergeAsyncResultType",
+            "PullRequestMergeAsyncResultPropDetailsOneof0Type",
+            "PullRequestMergeAsyncResultPropDetailsOneof1Type",
+            "PullRequestMergeAsyncResultPropDetailsOneof2Type",
             "PullRequestReviewRequestType",
             "PullRequestReviewType",
             "PullRequestReviewPropLinksType",
@@ -14969,6 +14997,9 @@ else:
             "OrgsOrgHooksHookIdConfigPatchBodyType",
             "OrgsOrgInstallationsGetResponse200Type",
             "OrgsOrgInteractionLimitsGetResponse200Anyof1Type",
+            "OrgsOrgInteractionLimitsPullsCreationCapGetResponse200Type",
+            "OrgsOrgInteractionLimitsPullsCreationCapPatchBodyType",
+            "OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200Type",
             "OrgsOrgInvitationsPostBodyType",
             "OrgsOrgMembersUsernameCodespacesGetResponse200Type",
             "OrgsOrgMembershipsUsernamePutBodyType",
@@ -15267,6 +15298,7 @@ else:
             "ReposOwnerRepoPullsPullNumberMergePutBodyType",
             "ReposOwnerRepoPullsPullNumberMergePutResponse405Type",
             "ReposOwnerRepoPullsPullNumberMergePutResponse409Type",
+            "ReposOwnerRepoPullsPullNumberMergeAsyncPutBodyType",
             "ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0Type",
             "ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1Type",
             "ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType",

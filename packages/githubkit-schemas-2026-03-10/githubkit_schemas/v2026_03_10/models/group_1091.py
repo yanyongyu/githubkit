@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,22 +18,46 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsOidcCustomizationSubPutBody(GitHubModel):
-    """Actions OIDC Subject customization
+class OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody(GitHubModel):
+    """OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody"""
 
-    Actions OIDC Subject customization
-    """
-
-    include_claim_keys: Missing[list[str]] = Field(
+    name: Missing[str] = Field(
         default=UNSET,
-        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores.",
+        description="Name of the runner. Must be between 1 and 64 characters and may only contain upper and lowercase letters a-z, numbers 0-9, '.', '-', and '_'.",
     )
-    use_immutable_subject: Missing[bool] = Field(
+    runner_group_id: Missing[int] = Field(
+        default=UNSET, description="The existing runner group to add this runner to."
+    )
+    maximum_runners: Missing[int] = Field(
         default=UNSET,
-        description="Whether to opt in to the immutable OIDC subject claim format for the organization. When `true`, new OIDC tokens will use a stable, repository-ID-based `sub` claim instead of the name-based format.",
+        description="The maximum amount of runners to scale up to. Runners will not auto-scale above this number. Use this setting to limit your cost.",
+    )
+    enable_static_ip: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether this runner should be updated with a static public IP. Note limit on account. To list limits on account, use `GET actions/hosted-runners/limits`",
+    )
+    size: Missing[str] = Field(
+        default=UNSET,
+        description="The machine size of the runner. To list available sizes, use `GET actions/hosted-runners/machine-sizes`",
+    )
+    image_source: Missing[Literal["github", "partner", "custom"]] = Field(
+        default=UNSET,
+        description="The source type of the runner image to use. Must match the source of the image specified by `image_id`. Can be one of `github`, `partner`, or `custom`.",
+    )
+    image_id: Missing[str] = Field(
+        default=UNSET,
+        description="The unique identifier of the runner image. To list available images, use `GET /actions/hosted-runners/images/github-owned`, `GET /actions/hosted-runners/images/partner`, or `GET /actions/hosted-runners/images/custom`.",
+    )
+    image_version: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The version of the runner image to deploy. This is relevant only for runners using custom images.",
+    )
+    image_gen: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to enable image generation for this runner pool. When enabled, the runner pool is used to build and publish custom runner images.",
     )
 
 
-model_rebuild(OrgsOrgActionsOidcCustomizationSubPutBody)
+model_rebuild(OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody)
 
-__all__ = ("OrgsOrgActionsOidcCustomizationSubPutBody",)
+__all__ = ("OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody",)

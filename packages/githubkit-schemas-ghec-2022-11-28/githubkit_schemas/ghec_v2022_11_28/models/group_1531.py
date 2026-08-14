@@ -9,24 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBody(GitHubModel):
-    """ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBody"""
+class ReposOwnerRepoDependabotSecretsGetResponse200(GitHubModel):
+    """ReposOwnerRepoDependabotSecretsGetResponse200"""
 
-    status: Literal["approve", "deny"] = Field(
-        description="The review action to perform on the bypass request."
-    )
-    message: str = Field(
-        description="A message to include with the review. Has a maximum character length of 2048."
-    )
+    total_count: int = Field()
+    secrets: list[DependabotSecret] = Field()
 
 
-model_rebuild(ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBody)
+class DependabotSecret(GitHubModel):
+    """Dependabot Secret
 
-__all__ = ("ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBody",)
+    Set secrets for Dependabot.
+    """
+
+    name: str = Field(description="The name of the secret.")
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+
+
+model_rebuild(ReposOwnerRepoDependabotSecretsGetResponse200)
+model_rebuild(DependabotSecret)
+
+__all__ = (
+    "DependabotSecret",
+    "ReposOwnerRepoDependabotSecretsGetResponse200",
+)

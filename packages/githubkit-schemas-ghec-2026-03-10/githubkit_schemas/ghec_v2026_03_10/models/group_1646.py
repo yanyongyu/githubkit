@@ -9,41 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0566 import PullRequestStackPullRequest
 
+class ReposOwnerRepoSecretScanningCustomPatternsPostResponse422(GitHubModel):
+    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse422"""
 
-class ReposOwnerRepoStacksStackNumberAddPostResponse200(GitHubModel):
-    """ReposOwnerRepoStacksStackNumberAddPostResponse200"""
-
-    id: int = Field()
-    number: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    base: ReposOwnerRepoStacksStackNumberAddPostResponse200PropBase = Field()
-    open_: bool = Field(
-        alias="open",
-        description="Whether the stack has any open pull request. False when all pull requests are merged or closed.",
+    message: Missing[str] = Field(
+        default=UNSET, description="A summary message describing the error."
     )
-    created_at: _dt.datetime = Field()
-    pull_requests: list[PullRequestStackPullRequest] = Field()
+    validation_errors: Missing[
+        ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors
+    ] = Field(
+        default=UNSET,
+        description="A map of validation errors keyed by the zero-based index of the pattern that failed.",
+    )
 
 
-class ReposOwnerRepoStacksStackNumberAddPostResponse200PropBase(GitHubModel):
-    """ReposOwnerRepoStacksStackNumberAddPostResponse200PropBase"""
+class ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors(
+    ExtraGitHubModel
+):
+    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors
 
-    ref: str = Field()
+    A map of validation errors keyed by the zero-based index of the pattern that
+    failed.
+    """
 
 
-model_rebuild(ReposOwnerRepoStacksStackNumberAddPostResponse200)
-model_rebuild(ReposOwnerRepoStacksStackNumberAddPostResponse200PropBase)
+model_rebuild(ReposOwnerRepoSecretScanningCustomPatternsPostResponse422)
+model_rebuild(
+    ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors
+)
 
 __all__ = (
-    "ReposOwnerRepoStacksStackNumberAddPostResponse200",
-    "ReposOwnerRepoStacksStackNumberAddPostResponse200PropBase",
+    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422",
+    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors",
 )

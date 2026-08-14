@@ -12,15 +12,23 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class OrgsOrgOutsideCollaboratorsUsernamePutResponse202Type(TypedDict):
-    """OrgsOrgOutsideCollaboratorsUsernamePutResponse202"""
+class OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200Type(TypedDict):
+    """OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200"""
+
+    enabled: bool
+    max_open_pull_requests: int
 
 
-class OrgsOrgOutsideCollaboratorsUsernamePutResponse202TypeForResponse(TypedDict):
-    """OrgsOrgOutsideCollaboratorsUsernamePutResponse202"""
+class OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200"""
+
+    enabled: bool
+    max_open_pull_requests: int
 
 
 __all__ = (
-    "OrgsOrgOutsideCollaboratorsUsernamePutResponse202Type",
-    "OrgsOrgOutsideCollaboratorsUsernamePutResponse202TypeForResponse",
+    "OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200Type",
+    "OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200TypeForResponse",
 )

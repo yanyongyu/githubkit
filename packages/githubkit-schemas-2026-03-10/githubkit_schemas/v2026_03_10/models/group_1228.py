@@ -9,97 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Annotated, Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0196 import RepositoryRulesetBypassActor
-from .group_0205 import OrgRulesetConditionsOneof0
-from .group_0206 import OrgRulesetConditionsOneof1
-from .group_0207 import OrgRulesetConditionsOneof2
-from .group_0208 import (
-    RepositoryRuleCreation,
-    RepositoryRuleDeletion,
-    RepositoryRuleNonFastForward,
-    RepositoryRuleRequiredSignatures,
-)
-from .group_0209 import RepositoryRuleUpdate
-from .group_0211 import RepositoryRuleRequiredLinearHistory
-from .group_0214 import RepositoryRuleRequiredDeployments
-from .group_0216 import RepositoryRulePullRequest
-from .group_0218 import RepositoryRuleRequiredStatusChecks
-from .group_0220 import RepositoryRuleCommitMessagePattern
-from .group_0222 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0224 import RepositoryRuleCommitterEmailPattern
-from .group_0226 import RepositoryRuleBranchNamePattern
-from .group_0228 import RepositoryRuleTagNamePattern
-from .group_0231 import RepositoryRuleWorkflows
-from .group_0233 import RepositoryRuleCodeScanning
-from .group_0235 import RepositoryRuleCopilotCodeReview
-from .group_0238 import RepositoryRuleFilePathRestriction
-from .group_0240 import RepositoryRuleMaxFilePathLength
-from .group_0242 import RepositoryRuleFileExtensionRestriction
-from .group_0244 import RepositoryRuleMaxFileSize
 
+class OrgsOrgProjectsV2ProjectNumberViewsPostBody(GitHubModel):
+    """OrgsOrgProjectsV2ProjectNumberViewsPostBody"""
 
-class OrgsOrgRulesetsPostBody(GitHubModel):
-    """OrgsOrgRulesetsPostBody"""
-
-    name: str = Field(description="The name of the ruleset.")
-    target: Missing[Literal["branch", "tag", "push", "repository"]] = Field(
-        default=UNSET, description="The target of the ruleset"
+    name: str = Field(description="The name of the view.")
+    layout: Literal["table", "board", "roadmap"] = Field(
+        description="The layout of the view."
     )
-    enforcement: Literal["disabled", "active", "evaluate"] = Field(
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise)."
-    )
-    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
+    filter_: Missing[str] = Field(
         default=UNSET,
-        description="The actors that can bypass the rules in this ruleset",
+        alias="filter",
+        description="The filter query for the view. See [Filtering projects](https://docs.github.com/issues/planning-and-tracking-with-projects/customizing-views-in-your-project/filtering-projects) for more information.",
     )
-    conditions: Missing[
-        Union[
-            OrgRulesetConditionsOneof0,
-            OrgRulesetConditionsOneof1,
-            OrgRulesetConditionsOneof2,
+    visible_fields: Missing[list[int]] = Field(
+        default=UNSET,
+        description="`visible_fields` is not applicable to `roadmap` layout views.\nFor `table` and `board` layouts, this represents the field IDs that should be visible in the view. If not provided, the default visible fields will be used.",
+    )
+    sort_by: Missing[
+        list[
+            Annotated[
+                list[Union[int, str]],
+                Field(
+                    max_length=2 if PYDANTIC_V2 else None,
+                    min_length=2 if PYDANTIC_V2 else None,
+                ),
+            ]
         ]
     ] = Field(
         default=UNSET,
-        title="Organization ruleset conditions",
-        description="Conditions for an organization ruleset.\nThe branch and tag rulesets conditions object should contain both `repository_name` and `ref_name` properties, or both `repository_id` and `ref_name` properties, or both `repository_property` and `ref_name` properties.\nThe push rulesets conditions object does not require the `ref_name` property.\nFor repository policy rulesets, the conditions object should only contain the `repository_name`, the `repository_id`, or the `repository_property`.",
+        description='Sorting configuration for the view. Each element is a two-element array of `[field_id, direction]` where `direction` is `"asc"` or `"desc"`. Supports multiple sort criteria applied in order.',
     )
-    rules: Missing[
-        list[
-            Union[
-                RepositoryRuleCreation,
-                RepositoryRuleUpdate,
-                RepositoryRuleDeletion,
-                RepositoryRuleRequiredLinearHistory,
-                RepositoryRuleRequiredDeployments,
-                RepositoryRuleRequiredSignatures,
-                RepositoryRulePullRequest,
-                RepositoryRuleRequiredStatusChecks,
-                RepositoryRuleNonFastForward,
-                RepositoryRuleCommitMessagePattern,
-                RepositoryRuleCommitAuthorEmailPattern,
-                RepositoryRuleCommitterEmailPattern,
-                RepositoryRuleBranchNamePattern,
-                RepositoryRuleTagNamePattern,
-                RepositoryRuleFilePathRestriction,
-                RepositoryRuleMaxFilePathLength,
-                RepositoryRuleFileExtensionRestriction,
-                RepositoryRuleMaxFileSize,
-                RepositoryRuleWorkflows,
-                RepositoryRuleCodeScanning,
-                RepositoryRuleCopilotCodeReview,
-            ]
-        ]
-    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
+    group_by: Missing[list[int]] = Field(
+        max_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="The field IDs to group items by (horizontal grouping). Supports a single field. The field must support grouping; fields such as `Title`, `Reviewers`, `Linked pull requests`, `Sub-issues progress`, `Tracked by`, and `Tracks` cannot be grouped on.",
+    )
+    vertical_group_by: Missing[list[int]] = Field(
+        max_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="The field IDs to use as columns in `board` layout (vertical grouping). Supports a single field. The field must support grouping; fields such as `Title`, `Reviewers`, `Linked pull requests`, `Sub-issues progress`, `Tracked by`, and `Tracks` cannot be grouped on.",
+    )
 
 
-model_rebuild(OrgsOrgRulesetsPostBody)
+model_rebuild(OrgsOrgProjectsV2ProjectNumberViewsPostBody)
 
-__all__ = ("OrgsOrgRulesetsPostBody",)
+__all__ = ("OrgsOrgProjectsV2ProjectNumberViewsPostBody",)

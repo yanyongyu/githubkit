@@ -9,50 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_1518 import (
-    ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment,
-)
 
+class ReposOwnerRepoCommitsCommitShaCommentsPostBody(GitHubModel):
+    """ReposOwnerRepoCommitsCommitShaCommentsPostBody"""
 
-class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1(GitHubModel):
-    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1"""
-
-    state: Missing[Literal["dismissed", "open"]] = Field(
+    body: str = Field(description="The contents of the comment.")
+    path: Missing[str] = Field(
+        default=UNSET, description="Relative path of the file to comment on."
+    )
+    position: Missing[int] = Field(
+        default=UNSET, description="Line index in the diff to comment on."
+    )
+    line: Missing[int] = Field(
         default=UNSET,
-        description="The state of the Dependabot alert.\nA `dismissed_reason` must be provided when setting the state to `dismissed`.",
-    )
-    dismissed_reason: Missing[
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ]
-    ] = Field(
-        default=UNSET,
-        description="**Required when `state` is `dismissed`.** A reason for dismissing the alert.",
-    )
-    dismissed_comment: Missing[str] = Field(
-        max_length=280,
-        default=UNSET,
-        description="An optional comment associated with dismissing the alert.",
-    )
-    assignees: list[str] = Field(
-        description="Usernames to assign to this Dependabot Alert.\nPass one or more user logins to _replace_ the set of assignees on this alert.\nSend an empty array (`[]`) to clear all assignees from the alert.\nTo assign an AI agent, include the bot login (for example, `copilot-swe-agent[bot]`)."
-    )
-    agent_assignment: Missing[
-        ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment
-    ] = Field(
-        default=UNSET,
-        description="Parameters for AI agent assignment. Only used when an agent bot login is\nincluded in `assignees`. Ignored when no agent is being assigned.",
+        description="**Closing down notice**. Use **position** parameter instead. Line number in the file to comment on.",
     )
 
 
-model_rebuild(ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1)
+model_rebuild(ReposOwnerRepoCommitsCommitShaCommentsPostBody)
 
-__all__ = ("ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1",)
+__all__ = ("ReposOwnerRepoCommitsCommitShaCommentsPostBody",)

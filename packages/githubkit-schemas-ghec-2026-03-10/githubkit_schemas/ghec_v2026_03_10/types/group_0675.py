@@ -13,44 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0617 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0618 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0619 import (
+from .group_0618 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0619 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0620 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0620 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0622 import ExemptionResponseType, ExemptionResponseTypeForResponse
-from .group_0623 import ExemptionRequestType, ExemptionRequestTypeForResponse
+from .group_0621 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0624 import ExemptionRequestType, ExemptionRequestTypeForResponse
 
 
-class WebhookExemptionRequestResponseDismissedType(TypedDict):
-    """Exemption response dismissed event"""
+class WebhookExemptionRequestCreatedType(TypedDict):
+    """Exemption request created event"""
 
-    action: Literal["response_dismissed"]
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: NotRequired[RepositoryWebhooksType]
     exemption_request: ExemptionRequestType
-    exemption_response: ExemptionResponseType
     sender: SimpleUserType
 
 
-class WebhookExemptionRequestResponseDismissedTypeForResponse(TypedDict):
-    """Exemption response dismissed event"""
+class WebhookExemptionRequestCreatedTypeForResponse(TypedDict):
+    """Exemption request created event"""
 
-    action: Literal["response_dismissed"]
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: NotRequired[RepositoryWebhooksTypeForResponse]
     exemption_request: ExemptionRequestTypeForResponse
-    exemption_response: ExemptionResponseTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookExemptionRequestResponseDismissedType",
-    "WebhookExemptionRequestResponseDismissedTypeForResponse",
+    "WebhookExemptionRequestCreatedType",
+    "WebhookExemptionRequestCreatedTypeForResponse",
 )

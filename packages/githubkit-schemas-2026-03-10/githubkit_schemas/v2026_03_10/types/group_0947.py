@@ -13,23 +13,23 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0534 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0535 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0536 import (
+from .group_0535 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0536 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0537 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0537 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0577 import (
+from .group_0538 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0578 import (
     SecretScanningAlertWebhookType,
     SecretScanningAlertWebhookTypeForResponse,
 )
 
 
-class WebhookSecretScanningAlertMetadataRemovedType(TypedDict):
-    """secret_scanning_alert metadata removed event"""
+class WebhookSecretScanningAlertMetadataCreatedType(TypedDict):
+    """secret_scanning_alert metadata created event"""
 
-    action: Literal["metadata_removed"]
+    action: Literal["metadata_created"]
     alert: SecretScanningAlertWebhookType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -38,10 +38,10 @@ class WebhookSecretScanningAlertMetadataRemovedType(TypedDict):
     sender: NotRequired[SimpleUserType]
 
 
-class WebhookSecretScanningAlertMetadataRemovedTypeForResponse(TypedDict):
-    """secret_scanning_alert metadata removed event"""
+class WebhookSecretScanningAlertMetadataCreatedTypeForResponse(TypedDict):
+    """secret_scanning_alert metadata created event"""
 
-    action: Literal["metadata_removed"]
+    action: Literal["metadata_created"]
     alert: SecretScanningAlertWebhookTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
@@ -51,6 +51,6 @@ class WebhookSecretScanningAlertMetadataRemovedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookSecretScanningAlertMetadataRemovedType",
-    "WebhookSecretScanningAlertMetadataRemovedTypeForResponse",
+    "WebhookSecretScanningAlertMetadataCreatedType",
+    "WebhookSecretScanningAlertMetadataCreatedTypeForResponse",
 )

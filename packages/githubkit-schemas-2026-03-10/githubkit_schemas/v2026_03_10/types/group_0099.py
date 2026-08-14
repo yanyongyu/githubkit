@@ -75,6 +75,7 @@ class BudgetType(TypedDict):
     ]
     budget_entity_name: NotRequired[str]
     user: NotRequired[str]
+    consumed_amount: NotRequired[float]
     budget_product_sku: str
     budget_alerting: BudgetPropBudgetAlertingType
 
@@ -97,6 +98,7 @@ class BudgetTypeForResponse(TypedDict):
     ]
     budget_entity_name: NotRequired[str]
     user: NotRequired[str]
+    consumed_amount: NotRequired[float]
     budget_product_sku: str
     budget_alerting: BudgetPropBudgetAlertingTypeForResponse
 

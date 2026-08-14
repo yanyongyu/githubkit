@@ -9,9 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -19,49 +16,36 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200(
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202(
     GitHubModel
 ):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200"""
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202"""
 
-    job_id: int = Field(description="The ID of the job.")
-    status: Literal["pending", "processing", "completed", "failed"] = Field(
-        description="The current status of the job."
-    )
-    started_at: Missing[_dt.datetime] = Field(
-        default=UNSET,
-        description="When the job started processing (only present when processing, completed, or failed).",
-    )
-    total_count: Missing[int] = Field(
-        default=UNSET,
-        description="The number of records successfully mutated (only present when completed).",
-    )
+    job_id: int = Field(description="The ID of the created job.")
     errors: Missing[
         list[
-            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200PropErrorsItems
+            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202PropErrorsItems
         ]
     ] = Field(
         default=UNSET,
-        description="Processing errors (only present when completed or failed).",
+        description="Deployments that were rejected during authorization.",
     )
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200PropErrorsItems(
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202PropErrorsItems(
     GitHubModel
 ):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200Pro
-    pErrorsItems
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202PropErr
+    orsItems
     """
 
 
+model_rebuild(OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202)
 model_rebuild(
-    OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200
-)
-model_rebuild(
-    OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200PropErrorsItems
+    OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202PropErrorsItems
 )
 
 __all__ = (
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200",
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200PropErrorsItems",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202PropErrorsItems",
 )

@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,18 +18,22 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody"""
+class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items"""
 
-    sub_issue_id: int = Field(
-        description="The id of the sub-issue to add. The sub-issue must belong to the same repository owner as the parent issue"
+    name: str = Field()
+    rationale: Missing[str] = Field(
+        default=UNSET, description="Optional reasoning for adding this label."
     )
-    replace_parent: Missing[bool] = Field(
+    suggest: Missing[bool] = Field(
         default=UNSET,
-        description="Option that, when true, instructs the operation to replace the sub-issues current parent issue",
+        description="If `true`, the label is stored as a pending suggestion for human review rather than applied directly.",
+    )
+    confidence: Missing[Literal["low", "medium", "high"]] = Field(
+        default=UNSET, description="The confidence level for this label choice."
     )
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items)
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items",)

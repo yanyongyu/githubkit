@@ -9,40 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class UserEmailsDeleteBodyOneof0Type(TypedDict):
-    """UserEmailsDeleteBodyOneof0
+class UserCodespacesSecretsSecretNamePutBodyType(TypedDict):
+    """UserCodespacesSecretsSecretNamePutBody"""
 
-    Deletes one or more email addresses from your GitHub account. Must contain at
-    least one email address. **Note:** Alternatively, you can pass a single email
-    address or an `array` of emails addresses directly, but we recommend that you
-    pass an object using the `emails` key.
-
-    Examples:
-        {'emails': ['octocat@github.com', 'mona@github.com']}
-    """
-
-    emails: list[str]
+    encrypted_value: NotRequired[str]
+    key_id: str
+    selected_repository_ids: NotRequired[list[Union[int, str]]]
 
 
-class UserEmailsDeleteBodyOneof0TypeForResponse(TypedDict):
-    """UserEmailsDeleteBodyOneof0
+class UserCodespacesSecretsSecretNamePutBodyTypeForResponse(TypedDict):
+    """UserCodespacesSecretsSecretNamePutBody"""
 
-    Deletes one or more email addresses from your GitHub account. Must contain at
-    least one email address. **Note:** Alternatively, you can pass a single email
-    address or an `array` of emails addresses directly, but we recommend that you
-    pass an object using the `emails` key.
-
-    Examples:
-        {'emails': ['octocat@github.com', 'mona@github.com']}
-    """
-
-    emails: list[str]
+    encrypted_value: NotRequired[str]
+    key_id: str
+    selected_repository_ids: NotRequired[list[Union[int, str]]]
 
 
 __all__ = (
-    "UserEmailsDeleteBodyOneof0Type",
-    "UserEmailsDeleteBodyOneof0TypeForResponse",
+    "UserCodespacesSecretsSecretNamePutBodyType",
+    "UserCodespacesSecretsSecretNamePutBodyTypeForResponse",
 )

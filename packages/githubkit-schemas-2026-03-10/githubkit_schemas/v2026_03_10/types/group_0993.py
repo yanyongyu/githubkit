@@ -15,43 +15,43 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0293 import DeploymentType, DeploymentTypeForResponse
-from .group_0534 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0535 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0536 import (
+from .group_0535 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0536 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0537 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0537 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0538 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookWorkflowJobWaitingType(TypedDict):
-    """workflow_job waiting event"""
+class WebhookWorkflowJobQueuedType(TypedDict):
+    """workflow_job queued event"""
 
-    action: Literal["waiting"]
+    action: Literal["queued"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
-    workflow_job: WebhookWorkflowJobWaitingPropWorkflowJobType
+    workflow_job: WebhookWorkflowJobQueuedPropWorkflowJobType
     deployment: NotRequired[DeploymentType]
 
 
-class WebhookWorkflowJobWaitingTypeForResponse(TypedDict):
-    """workflow_job waiting event"""
+class WebhookWorkflowJobQueuedTypeForResponse(TypedDict):
+    """workflow_job queued event"""
 
-    action: Literal["waiting"]
+    action: Literal["queued"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
-    workflow_job: WebhookWorkflowJobWaitingPropWorkflowJobTypeForResponse
+    workflow_job: WebhookWorkflowJobQueuedPropWorkflowJobTypeForResponse
     deployment: NotRequired[DeploymentTypeForResponse]
 
 
-class WebhookWorkflowJobWaitingPropWorkflowJobType(TypedDict):
-    """WebhookWorkflowJobWaitingPropWorkflowJob"""
+class WebhookWorkflowJobQueuedPropWorkflowJobType(TypedDict):
+    """WebhookWorkflowJobQueuedPropWorkflowJob"""
 
     check_run_url: str
     completed_at: Union[str, None]
@@ -71,15 +71,15 @@ class WebhookWorkflowJobWaitingPropWorkflowJobType(TypedDict):
     runner_id: Union[int, None]
     runner_name: Union[str, None]
     started_at: _dt.datetime
+    status: Literal["queued", "in_progress", "completed", "waiting"]
     head_branch: Union[str, None]
     workflow_name: Union[str, None]
-    status: Literal["queued", "in_progress", "completed", "waiting"]
-    steps: list[WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItemsType]
+    steps: list[WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItemsType]
     url: str
 
 
-class WebhookWorkflowJobWaitingPropWorkflowJobTypeForResponse(TypedDict):
-    """WebhookWorkflowJobWaitingPropWorkflowJob"""
+class WebhookWorkflowJobQueuedPropWorkflowJobTypeForResponse(TypedDict):
+    """WebhookWorkflowJobQueuedPropWorkflowJob"""
 
     check_run_url: str
     completed_at: Union[str, None]
@@ -99,14 +99,14 @@ class WebhookWorkflowJobWaitingPropWorkflowJobTypeForResponse(TypedDict):
     runner_id: Union[int, None]
     runner_name: Union[str, None]
     started_at: str
+    status: Literal["queued", "in_progress", "completed", "waiting"]
     head_branch: Union[str, None]
     workflow_name: Union[str, None]
-    status: Literal["queued", "in_progress", "completed", "waiting"]
-    steps: list[WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItemsTypeForResponse]
+    steps: list[WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItemsTypeForResponse]
     url: str
 
 
-class WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItemsType(TypedDict):
+class WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItemsType(TypedDict):
     """Workflow Step"""
 
     completed_at: Union[str, None]
@@ -114,10 +114,10 @@ class WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItemsType(TypedDict):
     name: str
     number: int
     started_at: Union[str, None]
-    status: Literal["completed", "in_progress", "queued", "pending", "waiting"]
+    status: Literal["completed", "in_progress", "queued", "pending"]
 
 
-class WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItemsTypeForResponse(TypedDict):
+class WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItemsTypeForResponse(TypedDict):
     """Workflow Step"""
 
     completed_at: Union[str, None]
@@ -125,14 +125,14 @@ class WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItemsTypeForResponse(Type
     name: str
     number: int
     started_at: Union[str, None]
-    status: Literal["completed", "in_progress", "queued", "pending", "waiting"]
+    status: Literal["completed", "in_progress", "queued", "pending"]
 
 
 __all__ = (
-    "WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItemsType",
-    "WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItemsTypeForResponse",
-    "WebhookWorkflowJobWaitingPropWorkflowJobType",
-    "WebhookWorkflowJobWaitingPropWorkflowJobTypeForResponse",
-    "WebhookWorkflowJobWaitingType",
-    "WebhookWorkflowJobWaitingTypeForResponse",
+    "WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItemsType",
+    "WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItemsTypeForResponse",
+    "WebhookWorkflowJobQueuedPropWorkflowJobType",
+    "WebhookWorkflowJobQueuedPropWorkflowJobTypeForResponse",
+    "WebhookWorkflowJobQueuedType",
+    "WebhookWorkflowJobQueuedTypeForResponse",
 )

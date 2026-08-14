@@ -89,6 +89,7 @@ class ApiOverviewPropDomainsType(TypedDict):
     codespaces: NotRequired[list[str]]
     copilot: NotRequired[list[str]]
     packages: NotRequired[list[str]]
+    storage: NotRequired[list[str]]
     actions: NotRequired[list[str]]
     actions_inbound: NotRequired[ApiOverviewPropDomainsPropActionsInboundType]
     artifact_attestations: NotRequired[
@@ -103,6 +104,7 @@ class ApiOverviewPropDomainsTypeForResponse(TypedDict):
     codespaces: NotRequired[list[str]]
     copilot: NotRequired[list[str]]
     packages: NotRequired[list[str]]
+    storage: NotRequired[list[str]]
     actions: NotRequired[list[str]]
     actions_inbound: NotRequired[
         ApiOverviewPropDomainsPropActionsInboundTypeForResponse

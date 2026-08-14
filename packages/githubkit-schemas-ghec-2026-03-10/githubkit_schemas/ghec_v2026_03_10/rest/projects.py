@@ -1519,6 +1519,9 @@ class ProjectsClient:
         layout: Literal["table", "board", "roadmap"],
         filter_: Missing[str] = UNSET,
         visible_fields: Missing[list[int]] = UNSET,
+        sort_by: Missing[list[list[Union[int, str]]]] = UNSET,
+        group_by: Missing[list[int]] = UNSET,
+        vertical_group_by: Missing[list[int]] = UNSET,
     ) -> Response[ProjectsV2View, ProjectsV2ViewTypeForResponse]: ...
 
     def create_view_for_org(
@@ -1602,6 +1605,9 @@ class ProjectsClient:
         layout: Literal["table", "board", "roadmap"],
         filter_: Missing[str] = UNSET,
         visible_fields: Missing[list[int]] = UNSET,
+        sort_by: Missing[list[list[Union[int, str]]]] = UNSET,
+        group_by: Missing[list[int]] = UNSET,
+        vertical_group_by: Missing[list[int]] = UNSET,
     ) -> Response[ProjectsV2View, ProjectsV2ViewTypeForResponse]: ...
 
     async def async_create_view_for_org(
@@ -1941,6 +1947,9 @@ class ProjectsClient:
         layout: Literal["table", "board", "roadmap"],
         filter_: Missing[str] = UNSET,
         visible_fields: Missing[list[int]] = UNSET,
+        sort_by: Missing[list[list[Union[int, str]]]] = UNSET,
+        group_by: Missing[list[int]] = UNSET,
+        vertical_group_by: Missing[list[int]] = UNSET,
     ) -> Response[ProjectsV2View, ProjectsV2ViewTypeForResponse]: ...
 
     def create_view_for_user(
@@ -2024,6 +2033,9 @@ class ProjectsClient:
         layout: Literal["table", "board", "roadmap"],
         filter_: Missing[str] = UNSET,
         visible_fields: Missing[list[int]] = UNSET,
+        sort_by: Missing[list[list[Union[int, str]]]] = UNSET,
+        group_by: Missing[list[int]] = UNSET,
+        vertical_group_by: Missing[list[int]] = UNSET,
     ) -> Response[ProjectsV2View, ProjectsV2ViewTypeForResponse]: ...
 
     async def async_create_view_for_user(

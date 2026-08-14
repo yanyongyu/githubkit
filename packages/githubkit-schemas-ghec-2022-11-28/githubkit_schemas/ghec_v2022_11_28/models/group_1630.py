@@ -16,17 +16,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoReleasesAssetsAssetIdPatchBody(GitHubModel):
-    """ReposOwnerRepoReleasesAssetsAssetIdPatchBody"""
+class ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody"""
 
-    name: Missing[str] = Field(default=UNSET, description="The file name of the asset.")
-    label: Missing[str] = Field(
-        default=UNSET,
-        description="An alternate short description of the asset. Used in place of the filename.",
+    reviewers: list[str] = Field(
+        description="An array of user `login`s that will be removed."
     )
-    state: Missing[str] = Field(default=UNSET)
+    team_reviewers: Missing[list[str]] = Field(
+        default=UNSET, description="An array of team `slug`s that will be removed."
+    )
 
 
-model_rebuild(ReposOwnerRepoReleasesAssetsAssetIdPatchBody)
+model_rebuild(ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody)
 
-__all__ = ("ReposOwnerRepoReleasesAssetsAssetIdPatchBody",)
+__all__ = ("ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody",)

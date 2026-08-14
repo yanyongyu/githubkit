@@ -14,35 +14,35 @@ from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksProjectChangesType(TypedDict):
-    """WebhooksProjectChanges"""
+class WebhooksProjectColumnType(TypedDict):
+    """Project Column"""
 
-    archived_at: NotRequired[WebhooksProjectChangesPropArchivedAtType]
-
-
-class WebhooksProjectChangesTypeForResponse(TypedDict):
-    """WebhooksProjectChanges"""
-
-    archived_at: NotRequired[WebhooksProjectChangesPropArchivedAtTypeForResponse]
-
-
-class WebhooksProjectChangesPropArchivedAtType(TypedDict):
-    """WebhooksProjectChangesPropArchivedAt"""
-
-    from_: NotRequired[Union[_dt.datetime, None]]
-    to: NotRequired[Union[_dt.datetime, None]]
+    after_id: NotRequired[Union[int, None]]
+    cards_url: str
+    created_at: _dt.datetime
+    id: int
+    name: str
+    node_id: str
+    project_url: str
+    updated_at: _dt.datetime
+    url: str
 
 
-class WebhooksProjectChangesPropArchivedAtTypeForResponse(TypedDict):
-    """WebhooksProjectChangesPropArchivedAt"""
+class WebhooksProjectColumnTypeForResponse(TypedDict):
+    """Project Column"""
 
-    from_: NotRequired[Union[str, None]]
-    to: NotRequired[Union[str, None]]
+    after_id: NotRequired[Union[int, None]]
+    cards_url: str
+    created_at: str
+    id: int
+    name: str
+    node_id: str
+    project_url: str
+    updated_at: str
+    url: str
 
 
 __all__ = (
-    "WebhooksProjectChangesPropArchivedAtType",
-    "WebhooksProjectChangesPropArchivedAtTypeForResponse",
-    "WebhooksProjectChangesType",
-    "WebhooksProjectChangesTypeForResponse",
+    "WebhooksProjectColumnType",
+    "WebhooksProjectColumnTypeForResponse",
 )

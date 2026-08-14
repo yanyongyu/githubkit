@@ -9,94 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0196 import RepositoryRulesetBypassActor
-from .group_0197 import RepositoryRulesetConditions
-from .group_0208 import (
-    RepositoryRuleCreation,
-    RepositoryRuleDeletion,
-    RepositoryRuleNonFastForward,
-    RepositoryRuleRequiredSignatures,
-)
-from .group_0209 import RepositoryRuleUpdate
-from .group_0211 import RepositoryRuleRequiredLinearHistory
-from .group_0212 import RepositoryRuleMergeQueue
-from .group_0214 import RepositoryRuleRequiredDeployments
-from .group_0216 import RepositoryRulePullRequest
-from .group_0218 import RepositoryRuleRequiredStatusChecks
-from .group_0220 import RepositoryRuleCommitMessagePattern
-from .group_0222 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0224 import RepositoryRuleCommitterEmailPattern
-from .group_0226 import RepositoryRuleBranchNamePattern
-from .group_0228 import RepositoryRuleTagNamePattern
-from .group_0231 import RepositoryRuleWorkflows
-from .group_0233 import RepositoryRuleCodeScanning
-from .group_0235 import RepositoryRuleCopilotCodeReview
-from .group_0237 import RepositoryRuleLicenseComplianceScanning
-from .group_0238 import RepositoryRuleFilePathRestriction
-from .group_0240 import RepositoryRuleMaxFilePathLength
-from .group_0242 import RepositoryRuleFileExtensionRestriction
-from .group_0244 import RepositoryRuleMaxFileSize
 
+class ReposOwnerRepoReleasesAssetsAssetIdPatchBody(GitHubModel):
+    """ReposOwnerRepoReleasesAssetsAssetIdPatchBody"""
 
-class ReposOwnerRepoRulesetsRulesetIdPutBody(GitHubModel):
-    """ReposOwnerRepoRulesetsRulesetIdPutBody"""
-
-    name: Missing[str] = Field(default=UNSET, description="The name of the ruleset.")
-    target: Missing[Literal["branch", "tag", "push"]] = Field(
-        default=UNSET, description="The target of the ruleset"
-    )
-    enforcement: Missing[Literal["disabled", "active", "evaluate"]] = Field(
+    name: Missing[str] = Field(default=UNSET, description="The file name of the asset.")
+    label: Missing[str] = Field(
         default=UNSET,
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise).",
+        description="An alternate short description of the asset. Used in place of the filename.",
     )
-    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
-        default=UNSET,
-        description="The actors that can bypass the rules in this ruleset",
-    )
-    conditions: Missing[RepositoryRulesetConditions] = Field(
-        default=UNSET,
-        title="Repository ruleset conditions for ref names",
-        description="Parameters for a repository ruleset ref name condition",
-    )
-    rules: Missing[
-        list[
-            Union[
-                RepositoryRuleCreation,
-                RepositoryRuleUpdate,
-                RepositoryRuleDeletion,
-                RepositoryRuleRequiredLinearHistory,
-                RepositoryRuleMergeQueue,
-                RepositoryRuleRequiredDeployments,
-                RepositoryRuleRequiredSignatures,
-                RepositoryRulePullRequest,
-                RepositoryRuleRequiredStatusChecks,
-                RepositoryRuleNonFastForward,
-                RepositoryRuleCommitMessagePattern,
-                RepositoryRuleCommitAuthorEmailPattern,
-                RepositoryRuleCommitterEmailPattern,
-                RepositoryRuleBranchNamePattern,
-                RepositoryRuleTagNamePattern,
-                RepositoryRuleWorkflows,
-                RepositoryRuleCodeScanning,
-                RepositoryRuleCopilotCodeReview,
-                RepositoryRuleLicenseComplianceScanning,
-                RepositoryRuleFilePathRestriction,
-                RepositoryRuleMaxFilePathLength,
-                RepositoryRuleFileExtensionRestriction,
-                RepositoryRuleMaxFileSize,
-            ]
-        ]
-    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
+    state: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoRulesetsRulesetIdPutBody)
+model_rebuild(ReposOwnerRepoReleasesAssetsAssetIdPatchBody)
 
-__all__ = ("ReposOwnerRepoRulesetsRulesetIdPutBody",)
+__all__ = ("ReposOwnerRepoReleasesAssetsAssetIdPatchBody",)

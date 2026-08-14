@@ -9,28 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0567 import PullRequestStackPullRequest
 
 
-class ReposOwnerRepoTransferPostBody(GitHubModel):
-    """ReposOwnerRepoTransferPostBody"""
+class ReposOwnerRepoStacksStackNumberGetResponse200(GitHubModel):
+    """ReposOwnerRepoStacksStackNumberGetResponse200"""
 
-    new_owner: str = Field(
-        description="The username or organization name the repository will be transferred to."
+    id: int = Field()
+    number: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    base: ReposOwnerRepoStacksStackNumberGetResponse200PropBase = Field()
+    open_: bool = Field(
+        alias="open",
+        description="Whether the stack has any open pull request. False when all pull requests are merged or closed.",
     )
-    new_name: Missing[str] = Field(
-        default=UNSET, description="The new name to be given to the repository."
-    )
-    team_ids: Missing[list[int]] = Field(
-        default=UNSET,
-        description="ID of the team or teams to add to the repository. Teams can only be added to organization-owned repositories.",
-    )
+    created_at: _dt.datetime = Field()
+    pull_requests: list[PullRequestStackPullRequest] = Field()
 
 
-model_rebuild(ReposOwnerRepoTransferPostBody)
+class ReposOwnerRepoStacksStackNumberGetResponse200PropBase(GitHubModel):
+    """ReposOwnerRepoStacksStackNumberGetResponse200PropBase"""
 
-__all__ = ("ReposOwnerRepoTransferPostBody",)
+    ref: str = Field()
+
+
+model_rebuild(ReposOwnerRepoStacksStackNumberGetResponse200)
+model_rebuild(ReposOwnerRepoStacksStackNumberGetResponse200PropBase)
+
+__all__ = (
+    "ReposOwnerRepoStacksStackNumberGetResponse200",
+    "ReposOwnerRepoStacksStackNumberGetResponse200PropBase",
+)

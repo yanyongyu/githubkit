@@ -9,27 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBodyType(TypedDict):
-    """ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBody"""
+class ReposOwnerRepoDependabotSecretsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoDependabotSecretsGetResponse200"""
 
-    status: Literal["approve", "deny"]
-    message: str
+    total_count: int
+    secrets: list[DependabotSecretType]
 
 
-class ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBodyTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBody"""
+class ReposOwnerRepoDependabotSecretsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoDependabotSecretsGetResponse200"""
 
-    status: Literal["approve", "deny"]
-    message: str
+    total_count: int
+    secrets: list[DependabotSecretTypeForResponse]
+
+
+class DependabotSecretType(TypedDict):
+    """Dependabot Secret
+
+    Set secrets for Dependabot.
+    """
+
+    name: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+
+
+class DependabotSecretTypeForResponse(TypedDict):
+    """Dependabot Secret
+
+    Set secrets for Dependabot.
+    """
+
+    name: str
+    created_at: str
+    updated_at: str
 
 
 __all__ = (
-    "ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBodyType",
-    "ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBodyTypeForResponse",
+    "DependabotSecretType",
+    "DependabotSecretTypeForResponse",
+    "ReposOwnerRepoDependabotSecretsGetResponse200Type",
+    "ReposOwnerRepoDependabotSecretsGetResponse200TypeForResponse",
 )

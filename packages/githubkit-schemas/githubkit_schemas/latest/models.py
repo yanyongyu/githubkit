@@ -2269,6 +2269,15 @@ if TYPE_CHECKING or is_lazy_disabled():
         OrgsOrgInteractionLimitsGetResponse200Anyof1 as OrgsOrgInteractionLimitsGetResponse200Anyof1,
     )
     from githubkit_schemas.v2026_03_10.models import (
+        OrgsOrgInteractionLimitsPullsCreationCapGetResponse200 as OrgsOrgInteractionLimitsPullsCreationCapGetResponse200,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        OrgsOrgInteractionLimitsPullsCreationCapPatchBody as OrgsOrgInteractionLimitsPullsCreationCapPatchBody,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200 as OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgInvitationsPostBody as OrgsOrgInvitationsPostBody,
     )
     from githubkit_schemas.v2026_03_10.models import (
@@ -2661,6 +2670,18 @@ if TYPE_CHECKING or is_lazy_disabled():
     from githubkit_schemas.v2026_03_10.models import PullRequest as PullRequest
     from githubkit_schemas.v2026_03_10.models import (
         PullRequestEvent as PullRequestEvent,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        PullRequestMergeAsyncResult as PullRequestMergeAsyncResult,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        PullRequestMergeAsyncResultPropDetailsOneof0 as PullRequestMergeAsyncResultPropDetailsOneof0,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        PullRequestMergeAsyncResultPropDetailsOneof1 as PullRequestMergeAsyncResultPropDetailsOneof1,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        PullRequestMergeAsyncResultPropDetailsOneof2 as PullRequestMergeAsyncResultPropDetailsOneof2,
     )
     from githubkit_schemas.v2026_03_10.models import (
         PullRequestMergeResult as PullRequestMergeResult,
@@ -3927,6 +3948,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoPullsPullNumberCommentsPostBody as ReposOwnerRepoPullsPullNumberCommentsPostBody,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        ReposOwnerRepoPullsPullNumberMergeAsyncPutBody as ReposOwnerRepoPullsPullNumberMergeAsyncPutBody,
     )
     from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoPullsPullNumberMergePutBody as ReposOwnerRepoPullsPullNumberMergePutBody,
@@ -12124,6 +12148,10 @@ else:
             "PullRequestPropBase",
             "PullRequestPropLinks",
             "PullRequestMergeResult",
+            "PullRequestMergeAsyncResult",
+            "PullRequestMergeAsyncResultPropDetailsOneof0",
+            "PullRequestMergeAsyncResultPropDetailsOneof1",
+            "PullRequestMergeAsyncResultPropDetailsOneof2",
             "PullRequestReviewRequest",
             "PullRequestReview",
             "PullRequestReviewPropLinks",
@@ -14813,6 +14841,9 @@ else:
             "OrgsOrgHooksHookIdConfigPatchBody",
             "OrgsOrgInstallationsGetResponse200",
             "OrgsOrgInteractionLimitsGetResponse200Anyof1",
+            "OrgsOrgInteractionLimitsPullsCreationCapGetResponse200",
+            "OrgsOrgInteractionLimitsPullsCreationCapPatchBody",
+            "OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200",
             "OrgsOrgInvitationsPostBody",
             "OrgsOrgMembersUsernameCodespacesGetResponse200",
             "OrgsOrgMembershipsUsernamePutBody",
@@ -15111,6 +15142,7 @@ else:
             "ReposOwnerRepoPullsPullNumberMergePutBody",
             "ReposOwnerRepoPullsPullNumberMergePutResponse405",
             "ReposOwnerRepoPullsPullNumberMergePutResponse409",
+            "ReposOwnerRepoPullsPullNumberMergeAsyncPutBody",
             "ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0",
             "ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1",
             "ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody",

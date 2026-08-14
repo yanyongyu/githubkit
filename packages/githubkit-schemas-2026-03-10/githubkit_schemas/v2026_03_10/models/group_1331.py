@@ -12,30 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0315 import CheckRun
 
 
-class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment(
-    GitHubModel
-):
-    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment
+class ReposOwnerRepoCommitsRefCheckRunsGetResponse200(GitHubModel):
+    """ReposOwnerRepoCommitsRefCheckRunsGetResponse200"""
 
-    Parameters for AI agent assignment. Only used when an agent bot login is
-    included in `assignees`. Ignored when no agent is being assigned.
-    """
-
-    custom_instructions: Missing[str] = Field(
-        default=UNSET, description="Custom instructions for the agent."
-    )
-    custom_agent: Missing[str] = Field(
-        default=UNSET, description="A custom agent identifier."
-    )
-    model: Missing[str] = Field(
-        default=UNSET, description="The model to use for the agent."
-    )
+    total_count: int = Field()
+    check_runs: list[CheckRun] = Field()
 
 
-model_rebuild(ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment)
+model_rebuild(ReposOwnerRepoCommitsRefCheckRunsGetResponse200)
 
-__all__ = ("ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment",)
+__all__ = ("ReposOwnerRepoCommitsRefCheckRunsGetResponse200",)

@@ -9,58 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing_extensions import TypedDict
-
-from .group_0568 import (
-    PullRequestStackPullRequestType,
-    PullRequestStackPullRequestTypeForResponse,
-)
+from typing import Any, TypeAlias
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoStacksStackNumberAddPostResponse200Type(TypedDict):
-    """ReposOwnerRepoStacksStackNumberAddPostResponse200"""
+class ReposOwnerRepoSecretScanningCustomPatternsPostResponse422Type(TypedDict):
+    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse422"""
 
-    id: int
-    number: int
-    node_id: str
-    url: str
-    base: ReposOwnerRepoStacksStackNumberAddPostResponse200PropBaseType
-    open_: bool
-    created_at: _dt.datetime
-    pull_requests: list[PullRequestStackPullRequestType]
+    message: NotRequired[str]
+    validation_errors: NotRequired[
+        ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsType
+    ]
 
 
-class ReposOwnerRepoStacksStackNumberAddPostResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoStacksStackNumberAddPostResponse200"""
-
-    id: int
-    number: int
-    node_id: str
-    url: str
-    base: ReposOwnerRepoStacksStackNumberAddPostResponse200PropBaseTypeForResponse
-    open_: bool
-    created_at: str
-    pull_requests: list[PullRequestStackPullRequestTypeForResponse]
-
-
-class ReposOwnerRepoStacksStackNumberAddPostResponse200PropBaseType(TypedDict):
-    """ReposOwnerRepoStacksStackNumberAddPostResponse200PropBase"""
-
-    ref: str
-
-
-class ReposOwnerRepoStacksStackNumberAddPostResponse200PropBaseTypeForResponse(
+class ReposOwnerRepoSecretScanningCustomPatternsPostResponse422TypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoStacksStackNumberAddPostResponse200PropBase"""
+    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse422"""
 
-    ref: str
+    message: NotRequired[str]
+    validation_errors: NotRequired[
+        ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse
+    ]
+
+
+ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsType: TypeAlias = dict[
+    str, Any
+]
+"""ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors
+
+A map of validation errors keyed by the zero-based index of the pattern that
+failed.
+"""
+
+
+ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors
+
+A map of validation errors keyed by the zero-based index of the pattern that
+failed.
+"""
 
 
 __all__ = (
-    "ReposOwnerRepoStacksStackNumberAddPostResponse200PropBaseType",
-    "ReposOwnerRepoStacksStackNumberAddPostResponse200PropBaseTypeForResponse",
-    "ReposOwnerRepoStacksStackNumberAddPostResponse200Type",
-    "ReposOwnerRepoStacksStackNumberAddPostResponse200TypeForResponse",
+    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsType",
+    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse",
+    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422Type",
+    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422TypeForResponse",
 )

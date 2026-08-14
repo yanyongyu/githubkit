@@ -9,22 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Any, TypeAlias
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgSettingsImmutableReleasesRepositoriesPutBodyType(TypedDict):
-    """OrgsOrgSettingsImmutableReleasesRepositoriesPutBody"""
+class OrgsOrgSecretScanningCustomPatternsPostResponse422Type(TypedDict):
+    """OrgsOrgSecretScanningCustomPatternsPostResponse422"""
 
-    selected_repository_ids: list[int]
+    message: NotRequired[str]
+    validation_errors: NotRequired[
+        OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrorsType
+    ]
 
 
-class OrgsOrgSettingsImmutableReleasesRepositoriesPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgSettingsImmutableReleasesRepositoriesPutBody"""
+class OrgsOrgSecretScanningCustomPatternsPostResponse422TypeForResponse(TypedDict):
+    """OrgsOrgSecretScanningCustomPatternsPostResponse422"""
 
-    selected_repository_ids: list[int]
+    message: NotRequired[str]
+    validation_errors: NotRequired[
+        OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse
+    ]
+
+
+OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrorsType: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors
+
+A map of validation errors keyed by the zero-based index of the pattern that
+failed.
+"""
+
+
+OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors
+
+A map of validation errors keyed by the zero-based index of the pattern that
+failed.
+"""
 
 
 __all__ = (
-    "OrgsOrgSettingsImmutableReleasesRepositoriesPutBodyType",
-    "OrgsOrgSettingsImmutableReleasesRepositoriesPutBodyTypeForResponse",
+    "OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrorsType",
+    "OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse",
+    "OrgsOrgSecretScanningCustomPatternsPostResponse422Type",
+    "OrgsOrgSecretScanningCustomPatternsPostResponse422TypeForResponse",
 )

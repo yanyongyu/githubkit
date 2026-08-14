@@ -13,20 +13,20 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0617 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0618 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0619 import (
+from .group_0618 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0619 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0620 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0620 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0623 import ExemptionRequestType, ExemptionRequestTypeForResponse
+from .group_0621 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0624 import ExemptionRequestType, ExemptionRequestTypeForResponse
 
 
-class WebhookExemptionRequestCompletedType(TypedDict):
-    """Exemption request completed event"""
+class WebhookExemptionRequestCancelledType(TypedDict):
+    """Exemption request cancellation event"""
 
-    action: Literal["completed"]
+    action: Literal["cancelled"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -35,10 +35,10 @@ class WebhookExemptionRequestCompletedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookExemptionRequestCompletedTypeForResponse(TypedDict):
-    """Exemption request completed event"""
+class WebhookExemptionRequestCancelledTypeForResponse(TypedDict):
+    """Exemption request cancellation event"""
 
-    action: Literal["completed"]
+    action: Literal["cancelled"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
@@ -48,6 +48,6 @@ class WebhookExemptionRequestCompletedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookExemptionRequestCompletedType",
-    "WebhookExemptionRequestCompletedTypeForResponse",
+    "WebhookExemptionRequestCancelledType",
+    "WebhookExemptionRequestCancelledTypeForResponse",
 )

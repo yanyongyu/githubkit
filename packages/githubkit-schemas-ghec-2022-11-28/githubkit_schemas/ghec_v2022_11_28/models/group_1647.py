@@ -9,41 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0568 import PullRequestStackPullRequest
+from .group_0189 import SecretScanningCustomPatternToCreate
 
 
-class ReposOwnerRepoStacksStackNumberGetResponse200(GitHubModel):
-    """ReposOwnerRepoStacksStackNumberGetResponse200"""
+class ReposOwnerRepoSecretScanningCustomPatternsPostBody(GitHubModel):
+    """ReposOwnerRepoSecretScanningCustomPatternsPostBody"""
 
-    id: int = Field()
-    number: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    base: ReposOwnerRepoStacksStackNumberGetResponse200PropBase = Field()
-    open_: bool = Field(
-        alias="open",
-        description="Whether the stack has any open pull request. False when all pull requests are merged or closed.",
+    patterns: list[SecretScanningCustomPatternToCreate] = Field(
+        description="The list of custom patterns to create."
     )
-    created_at: _dt.datetime = Field()
-    pull_requests: list[PullRequestStackPullRequest] = Field()
 
 
-class ReposOwnerRepoStacksStackNumberGetResponse200PropBase(GitHubModel):
-    """ReposOwnerRepoStacksStackNumberGetResponse200PropBase"""
+model_rebuild(ReposOwnerRepoSecretScanningCustomPatternsPostBody)
 
-    ref: str = Field()
-
-
-model_rebuild(ReposOwnerRepoStacksStackNumberGetResponse200)
-model_rebuild(ReposOwnerRepoStacksStackNumberGetResponse200PropBase)
-
-__all__ = (
-    "ReposOwnerRepoStacksStackNumberGetResponse200",
-    "ReposOwnerRepoStacksStackNumberGetResponse200PropBase",
-)
+__all__ = ("ReposOwnerRepoSecretScanningCustomPatternsPostBody",)

@@ -9,26 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0191 import (
+    SecretScanningCustomPatternToDeleteType,
+    SecretScanningCustomPatternToDeleteTypeForResponse,
+)
 
-class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200Type(
+
+class EnterprisesEnterpriseSecretScanningCustomPatternsDeleteBodyType(TypedDict):
+    """EnterprisesEnterpriseSecretScanningCustomPatternsDeleteBody"""
+
+    patterns: list[SecretScanningCustomPatternToDeleteType]
+    post_delete_action: NotRequired[Literal["delete_alerts", "resolve_alerts"]]
+
+
+class EnterprisesEnterpriseSecretScanningCustomPatternsDeleteBodyTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200"""
+    """EnterprisesEnterpriseSecretScanningCustomPatternsDeleteBody"""
 
-    pattern_config_version: NotRequired[str]
-
-
-class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200"""
-
-    pattern_config_version: NotRequired[str]
+    patterns: list[SecretScanningCustomPatternToDeleteTypeForResponse]
+    post_delete_action: NotRequired[Literal["delete_alerts", "resolve_alerts"]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200Type",
-    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200TypeForResponse",
+    "EnterprisesEnterpriseSecretScanningCustomPatternsDeleteBodyType",
+    "EnterprisesEnterpriseSecretScanningCustomPatternsDeleteBodyTypeForResponse",
 )

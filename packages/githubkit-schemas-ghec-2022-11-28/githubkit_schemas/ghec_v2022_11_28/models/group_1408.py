@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,21 +16,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1(GitHubModel):
-    """OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1"""
+class OrgsOrgProjectsV2ProjectNumberDraftsPostBody(GitHubModel):
+    """OrgsOrgProjectsV2ProjectNumberDraftsPostBody"""
 
-    type: Literal["Issue", "PullRequest"] = Field(
-        description="The type of item to add to the project. Must be either Issue or PullRequest."
+    title: str = Field(
+        description="The title of the draft issue item to create in the project."
     )
-    id: Missing[int] = Field(
+    body: Missing[str] = Field(
         default=UNSET,
-        description="The unique identifier of the issue or pull request to add to the project.",
+        description="The body content of the draft issue item to create in the project.",
     )
-    owner: str = Field(description="The repository owner login.")
-    repo: str = Field(description="The repository name.")
-    number: int = Field(description="The issue or pull request number.")
 
 
-model_rebuild(OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1)
+model_rebuild(OrgsOrgProjectsV2ProjectNumberDraftsPostBody)
 
-__all__ = ("OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1",)
+__all__ = ("OrgsOrgProjectsV2ProjectNumberDraftsPostBody",)

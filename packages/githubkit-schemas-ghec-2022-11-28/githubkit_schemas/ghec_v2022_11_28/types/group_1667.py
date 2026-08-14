@@ -9,57 +9,115 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class UserCodespacesPostBodyOneof1Type(TypedDict):
-    """UserCodespacesPostBodyOneof1"""
+class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyType(TypedDict):
+    """ScimV2OrganizationsOrgUsersScimUserIdPatchBody"""
 
-    pull_request: UserCodespacesPostBodyOneof1PropPullRequestType
-    location: NotRequired[str]
-    geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
-    machine: NotRequired[str]
-    devcontainer_path: NotRequired[str]
-    working_directory: NotRequired[str]
-    idle_timeout_minutes: NotRequired[int]
+    schemas: NotRequired[list[str]]
+    operations: list[
+        ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsType
+    ]
 
 
-class UserCodespacesPostBodyOneof1TypeForResponse(TypedDict):
-    """UserCodespacesPostBodyOneof1"""
+class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyTypeForResponse(TypedDict):
+    """ScimV2OrganizationsOrgUsersScimUserIdPatchBody"""
 
-    pull_request: UserCodespacesPostBodyOneof1PropPullRequestTypeForResponse
-    location: NotRequired[str]
-    geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
-    machine: NotRequired[str]
-    devcontainer_path: NotRequired[str]
-    working_directory: NotRequired[str]
-    idle_timeout_minutes: NotRequired[int]
+    schemas: NotRequired[list[str]]
+    operations: list[
+        ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsTypeForResponse
+    ]
 
 
-class UserCodespacesPostBodyOneof1PropPullRequestType(TypedDict):
-    """UserCodespacesPostBodyOneof1PropPullRequest
+class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsType(TypedDict):
+    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems"""
 
-    Pull request number for this codespace
+    op: Literal["add", "remove", "replace"]
+    path: NotRequired[str]
+    value: NotRequired[
+        Union[
+            ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0Type,
+            list[
+                ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1ItemsType
+            ],
+            str,
+        ]
+    ]
+
+
+class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsTypeForResponse(
+    TypedDict
+):
+    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems"""
+
+    op: Literal["add", "remove", "replace"]
+    path: NotRequired[str]
+    value: NotRequired[
+        Union[
+            ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0TypeForResponse,
+            list[
+                ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1ItemsTypeForResponse
+            ],
+            str,
+        ]
+    ]
+
+
+class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0Type(
+    TypedDict
+):
+    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0"""
+
+    active: NotRequired[Union[bool, None]]
+    user_name: NotRequired[Union[str, None]]
+    external_id: NotRequired[Union[str, None]]
+    given_name: NotRequired[Union[str, None]]
+    family_name: NotRequired[Union[str, None]]
+
+
+class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0TypeForResponse(
+    TypedDict
+):
+    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0"""
+
+    active: NotRequired[Union[bool, None]]
+    user_name: NotRequired[Union[str, None]]
+    external_id: NotRequired[Union[str, None]]
+    given_name: NotRequired[Union[str, None]]
+    family_name: NotRequired[Union[str, None]]
+
+
+class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1ItemsType(
+    TypedDict
+):
+    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1
+    Items
     """
 
-    pull_request_number: int
-    repository_id: int
+    value: NotRequired[str]
+    primary: NotRequired[bool]
 
 
-class UserCodespacesPostBodyOneof1PropPullRequestTypeForResponse(TypedDict):
-    """UserCodespacesPostBodyOneof1PropPullRequest
-
-    Pull request number for this codespace
+class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1ItemsTypeForResponse(
+    TypedDict
+):
+    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1
+    Items
     """
 
-    pull_request_number: int
-    repository_id: int
+    value: NotRequired[str]
+    primary: NotRequired[bool]
 
 
 __all__ = (
-    "UserCodespacesPostBodyOneof1PropPullRequestType",
-    "UserCodespacesPostBodyOneof1PropPullRequestTypeForResponse",
-    "UserCodespacesPostBodyOneof1Type",
-    "UserCodespacesPostBodyOneof1TypeForResponse",
+    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0Type",
+    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0TypeForResponse",
+    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1ItemsType",
+    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1ItemsTypeForResponse",
+    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsType",
+    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsTypeForResponse",
+    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyType",
+    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyTypeForResponse",
 )

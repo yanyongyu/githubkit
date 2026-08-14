@@ -9,22 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType(TypedDict):
-    """ReposOwnerRepoPullsPullNumberUpdateBranchPutBody"""
+class ReposOwnerRepoPullsPullNumberMergeAsyncPutBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberMergeAsyncPutBody"""
 
-    expected_head_sha: NotRequired[str]
+    commit_title: NotRequired[str]
+    commit_message: NotRequired[str]
+    sha: NotRequired[str]
+    merge_method: NotRequired[Literal["merge", "squash", "rebase"]]
+    merge_action: NotRequired[Literal["default", "direct_merge", "merge_queue"]]
 
 
-class ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoPullsPullNumberUpdateBranchPutBody"""
+class ReposOwnerRepoPullsPullNumberMergeAsyncPutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPullNumberMergeAsyncPutBody"""
 
-    expected_head_sha: NotRequired[str]
+    commit_title: NotRequired[str]
+    commit_message: NotRequired[str]
+    sha: NotRequired[str]
+    merge_method: NotRequired[Literal["merge", "squash", "rebase"]]
+    merge_action: NotRequired[Literal["default", "direct_merge", "merge_queue"]]
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType",
-    "ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyTypeForResponse",
+    "ReposOwnerRepoPullsPullNumberMergeAsyncPutBodyType",
+    "ReposOwnerRepoPullsPullNumberMergeAsyncPutBodyTypeForResponse",
 )

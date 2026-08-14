@@ -12,27 +12,27 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200Type(TypedDict):
-    """EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200
+class EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201Type(TypedDict):
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201
 
-    The total number of seats set to "pending cancellation" for the specified users.
+    The total number of seats created for the specified user(s).
     """
 
-    seats_cancelled: int
+    seats_created: int
 
 
-class EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200TypeForResponse(
+class EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201
 
-    The total number of seats set to "pending cancellation" for the specified users.
+    The total number of seats created for the specified user(s).
     """
 
-    seats_cancelled: int
+    seats_created: int
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200Type",
-    "EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200TypeForResponse",
+    "EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201Type",
+    "EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201TypeForResponse",
 )

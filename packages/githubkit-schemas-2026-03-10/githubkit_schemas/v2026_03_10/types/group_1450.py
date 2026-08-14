@@ -9,59 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Any, TypeAlias
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoStacksPostResponse422Type(TypedDict):
-    """Validation Error
+class ReposOwnerRepoSecretScanningCustomPatternsPostResponse422Type(TypedDict):
+    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse422"""
 
-    Validation Error
-    """
-
-    message: str
-    documentation_url: str
-    errors: NotRequired[list[ReposOwnerRepoStacksPostResponse422PropErrorsItemsType]]
-
-
-class ReposOwnerRepoStacksPostResponse422TypeForResponse(TypedDict):
-    """Validation Error
-
-    Validation Error
-    """
-
-    message: str
-    documentation_url: str
-    errors: NotRequired[
-        list[ReposOwnerRepoStacksPostResponse422PropErrorsItemsTypeForResponse]
+    message: NotRequired[str]
+    validation_errors: NotRequired[
+        ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsType
     ]
 
 
-class ReposOwnerRepoStacksPostResponse422PropErrorsItemsType(TypedDict):
-    """ReposOwnerRepoStacksPostResponse422PropErrorsItems"""
+class ReposOwnerRepoSecretScanningCustomPatternsPostResponse422TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse422"""
 
-    resource: NotRequired[str]
-    field: NotRequired[str]
     message: NotRequired[str]
-    code: str
-    index: NotRequired[int]
-    value: NotRequired[Union[str, None, int, None, list[Union[str, int]], None]]
+    validation_errors: NotRequired[
+        ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse
+    ]
 
 
-class ReposOwnerRepoStacksPostResponse422PropErrorsItemsTypeForResponse(TypedDict):
-    """ReposOwnerRepoStacksPostResponse422PropErrorsItems"""
+ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsType: TypeAlias = dict[
+    str, Any
+]
+"""ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors
 
-    resource: NotRequired[str]
-    field: NotRequired[str]
-    message: NotRequired[str]
-    code: str
-    index: NotRequired[int]
-    value: NotRequired[Union[str, None, int, None, list[Union[str, int]], None]]
+A map of validation errors keyed by the zero-based index of the pattern that
+failed.
+"""
+
+
+ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors
+
+A map of validation errors keyed by the zero-based index of the pattern that
+failed.
+"""
 
 
 __all__ = (
-    "ReposOwnerRepoStacksPostResponse422PropErrorsItemsType",
-    "ReposOwnerRepoStacksPostResponse422PropErrorsItemsTypeForResponse",
-    "ReposOwnerRepoStacksPostResponse422Type",
-    "ReposOwnerRepoStacksPostResponse422TypeForResponse",
+    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsType",
+    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse",
+    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422Type",
+    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422TypeForResponse",
 )

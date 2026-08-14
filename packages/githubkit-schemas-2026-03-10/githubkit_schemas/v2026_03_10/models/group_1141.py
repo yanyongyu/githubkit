@@ -9,25 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0131 import ArtifactDeploymentRecord
+
+class OrgsOrgArtifactsMetadataStorageRecordPostResponse200(GitHubModel):
+    """OrgsOrgArtifactsMetadataStorageRecordPostResponse200"""
+
+    total_count: int = Field()
+    storage_records: Missing[
+        list[
+            OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems
+        ]
+    ] = Field(default=UNSET)
 
 
-class OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200(GitHubModel):
-    """OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200"""
+class OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems(
+    GitHubModel
+):
+    """OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems"""
 
-    total_count: Missing[int] = Field(
-        default=UNSET,
-        description="The number of deployment records for this digest and organization",
-    )
-    deployment_records: Missing[list[ArtifactDeploymentRecord]] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    digest: Missing[str] = Field(default=UNSET)
+    artifact_url: Missing[Union[str, None]] = Field(default=UNSET)
+    registry_url: Missing[str] = Field(default=UNSET)
+    repository: Missing[Union[str, None]] = Field(default=UNSET)
+    status: Missing[str] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
+    updated_at: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200)
+model_rebuild(OrgsOrgArtifactsMetadataStorageRecordPostResponse200)
+model_rebuild(
+    OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems
+)
 
-__all__ = ("OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200",)
+__all__ = (
+    "OrgsOrgArtifactsMetadataStorageRecordPostResponse200",
+    "OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems",
+)

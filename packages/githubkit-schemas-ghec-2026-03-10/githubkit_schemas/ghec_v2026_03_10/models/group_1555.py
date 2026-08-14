@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,27 +16,16 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoImportPatchBody(GitHubModel):
-    """ReposOwnerRepoImportPatchBody"""
+class ReposOwnerRepoGitRefsRefPatchBody(GitHubModel):
+    """ReposOwnerRepoGitRefsRefPatchBody"""
 
-    vcs_username: Missing[str] = Field(
+    sha: str = Field(description="The SHA1 value to set this reference to")
+    force: Missing[bool] = Field(
         default=UNSET,
-        description="The username to provide to the originating repository.",
-    )
-    vcs_password: Missing[str] = Field(
-        default=UNSET,
-        description="The password to provide to the originating repository.",
-    )
-    vcs: Missing[Literal["subversion", "tfvc", "git", "mercurial"]] = Field(
-        default=UNSET,
-        description="The type of version control system you are migrating from.",
-    )
-    tfvc_project: Missing[str] = Field(
-        default=UNSET,
-        description="For a tfvc import, the name of the project that is being imported.",
+        description="Indicates whether to force the update or to make sure the update is a fast-forward update. Leaving this out or setting it to `false` will make sure you're not overwriting work.",
     )
 
 
-model_rebuild(ReposOwnerRepoImportPatchBody)
+model_rebuild(ReposOwnerRepoGitRefsRefPatchBody)
 
-__all__ = ("ReposOwnerRepoImportPatchBody",)
+__all__ = ("ReposOwnerRepoGitRefsRefPatchBody",)

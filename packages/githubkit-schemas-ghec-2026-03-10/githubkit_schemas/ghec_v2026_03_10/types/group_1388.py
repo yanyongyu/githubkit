@@ -12,19 +12,21 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgOutsideCollaboratorsUsernamePutBodyType(TypedDict):
-    """OrgsOrgOutsideCollaboratorsUsernamePutBody"""
+class OrgsOrgInteractionLimitsPullsCreationCapPatchBodyType(TypedDict):
+    """OrgsOrgInteractionLimitsPullsCreationCapPatchBody"""
 
-    async_: NotRequired[bool]
+    enabled: bool
+    max_open_pull_requests: NotRequired[int]
 
 
-class OrgsOrgOutsideCollaboratorsUsernamePutBodyTypeForResponse(TypedDict):
-    """OrgsOrgOutsideCollaboratorsUsernamePutBody"""
+class OrgsOrgInteractionLimitsPullsCreationCapPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgInteractionLimitsPullsCreationCapPatchBody"""
 
-    async_: NotRequired[bool]
+    enabled: bool
+    max_open_pull_requests: NotRequired[int]
 
 
 __all__ = (
-    "OrgsOrgOutsideCollaboratorsUsernamePutBodyType",
-    "OrgsOrgOutsideCollaboratorsUsernamePutBodyTypeForResponse",
+    "OrgsOrgInteractionLimitsPullsCreationCapPatchBodyType",
+    "OrgsOrgInteractionLimitsPullsCreationCapPatchBodyTypeForResponse",
 )

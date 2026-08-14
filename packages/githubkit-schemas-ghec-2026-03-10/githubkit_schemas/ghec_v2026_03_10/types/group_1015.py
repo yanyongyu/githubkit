@@ -13,19 +13,19 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0617 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0618 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0619 import (
+from .group_0618 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0619 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0620 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0620 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0621 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookRepositoryDeletedType(TypedDict):
-    """repository deleted event"""
+class WebhookRepositoryCreatedType(TypedDict):
+    """repository created event"""
 
-    action: Literal["deleted"]
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -33,10 +33,10 @@ class WebhookRepositoryDeletedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookRepositoryDeletedTypeForResponse(TypedDict):
-    """repository deleted event"""
+class WebhookRepositoryCreatedTypeForResponse(TypedDict):
+    """repository created event"""
 
-    action: Literal["deleted"]
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
@@ -45,6 +45,6 @@ class WebhookRepositoryDeletedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookRepositoryDeletedType",
-    "WebhookRepositoryDeletedTypeForResponse",
+    "WebhookRepositoryCreatedType",
+    "WebhookRepositoryCreatedTypeForResponse",
 )

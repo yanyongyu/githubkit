@@ -16,20 +16,13 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody(GitHubModel):
-    """ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody"""
+class ReposOwnerRepoImportAuthorsAuthorIdPatchBody(GitHubModel):
+    """ReposOwnerRepoImportAuthorsAuthorIdPatchBody"""
 
-    enabled: bool = Field(
-        description="Whether the pull request creation cap is enabled"
-    )
-    max_open_pull_requests: Missing[int] = Field(
-        le=1000.0,
-        ge=1.0,
-        default=UNSET,
-        description="The maximum number of open pull requests a user can have at one time",
-    )
+    email: Missing[str] = Field(default=UNSET, description="The new Git author email.")
+    name: Missing[str] = Field(default=UNSET, description="The new Git author name.")
 
 
-model_rebuild(ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody)
+model_rebuild(ReposOwnerRepoImportAuthorsAuthorIdPatchBody)
 
-__all__ = ("ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody",)
+__all__ = ("ReposOwnerRepoImportAuthorsAuthorIdPatchBody",)

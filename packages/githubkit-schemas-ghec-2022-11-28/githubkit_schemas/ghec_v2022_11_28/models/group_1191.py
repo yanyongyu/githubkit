@@ -11,18 +11,25 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseCopilotBillingSelectedUsersPostBody(GitHubModel):
-    """EnterprisesEnterpriseCopilotBillingSelectedUsersPostBody"""
+class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200
 
-    selected_usernames: list[str] = Field(
-        min_length=1 if PYDANTIC_V2 else None,
-        description="The usernames of the enterprise members to be granted access to GitHub Copilot.",
-    )
+    The total number of seats set to "pending cancellation" for the members of the
+    specified enterprise team(s).
+    """
+
+    seats_cancelled: int = Field()
 
 
-model_rebuild(EnterprisesEnterpriseCopilotBillingSelectedUsersPostBody)
+model_rebuild(
+    EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200
+)
 
-__all__ = ("EnterprisesEnterpriseCopilotBillingSelectedUsersPostBody",)
+__all__ = (
+    "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200",
+)

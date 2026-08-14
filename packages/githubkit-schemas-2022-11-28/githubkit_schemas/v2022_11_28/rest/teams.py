@@ -184,6 +184,7 @@ class TeamsClient:
         ] = UNSET,
         permission: Missing[Literal["pull", "push"]] = UNSET,
         parent_team_id: Missing[int] = UNSET,
+        parent_team_slug: Missing[str] = UNSET,
     ) -> Response[TeamFull, TeamFullTypeForResponse]: ...
 
     def create(
@@ -262,6 +263,7 @@ class TeamsClient:
         ] = UNSET,
         permission: Missing[Literal["pull", "push"]] = UNSET,
         parent_team_id: Missing[int] = UNSET,
+        parent_team_slug: Missing[str] = UNSET,
     ) -> Response[TeamFull, TeamFullTypeForResponse]: ...
 
     async def async_create(
@@ -482,6 +484,7 @@ class TeamsClient:
         ] = UNSET,
         permission: Missing[Literal["pull", "push", "admin"]] = UNSET,
         parent_team_id: Missing[Union[int, None]] = UNSET,
+        parent_team_slug: Missing[Union[str, None]] = UNSET,
     ) -> Response[TeamFull, TeamFullTypeForResponse]: ...
 
     def update_in_org(
@@ -568,6 +571,7 @@ class TeamsClient:
         ] = UNSET,
         permission: Missing[Literal["pull", "push", "admin"]] = UNSET,
         parent_team_id: Missing[Union[int, None]] = UNSET,
+        parent_team_slug: Missing[Union[str, None]] = UNSET,
     ) -> Response[TeamFull, TeamFullTypeForResponse]: ...
 
     async def async_update_in_org(
@@ -1158,6 +1162,8 @@ class TeamsClient:
 
         Lists a team's repositories visible to the authenticated user.
 
+        OAuth app tokens and personal access tokens (classic) need the `read:org` or `repo` scope to use this endpoint.
+
         > [!NOTE]
         > You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/repos`.
 
@@ -1199,6 +1205,8 @@ class TeamsClient:
         GET /orgs/{org}/teams/{team_slug}/repos
 
         Lists a team's repositories visible to the authenticated user.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:org` or `repo` scope to use this endpoint.
 
         > [!NOTE]
         > You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/repos`.
@@ -1790,6 +1798,7 @@ class TeamsClient:
         ] = UNSET,
         permission: Missing[Literal["pull", "push", "admin"]] = UNSET,
         parent_team_id: Missing[Union[int, None]] = UNSET,
+        parent_team_slug: Missing[Union[str, None]] = UNSET,
     ) -> Response[TeamFull, TeamFullTypeForResponse]: ...
 
     @deprecated("Deprecated API endpoint. See the docstring for more details.")
@@ -1874,6 +1883,7 @@ class TeamsClient:
         ] = UNSET,
         permission: Missing[Literal["pull", "push", "admin"]] = UNSET,
         parent_team_id: Missing[Union[int, None]] = UNSET,
+        parent_team_slug: Missing[Union[str, None]] = UNSET,
     ) -> Response[TeamFull, TeamFullTypeForResponse]: ...
 
     @deprecated("Deprecated API endpoint. See the docstring for more details.")

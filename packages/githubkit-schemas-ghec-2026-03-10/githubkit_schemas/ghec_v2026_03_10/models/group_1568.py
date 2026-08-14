@@ -12,25 +12,21 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_1569 import (
-    ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestions,
-)
 
 
-class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1"""
+class ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200(GitHubModel):
+    """ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200"""
 
-    suggestions: Missing[
-        ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestions
-    ] = Field(
-        default=UNSET,
-        description="Pending suggestions for each suggestible field (`type`,\n`issue_field_values`, `labels`, `assignees`, `state`) the\nrequest touched. Omitted for fields not in the request or\nwith no pending suggestions. Items tagged `already_applied`\nare echoes of the current request's inputs whose target is\nalready applied to the issue; they are not persisted as\npending suggestions.\n",
+    enabled: bool = Field(
+        description="Whether the pull request creation cap is enabled"
+    )
+    max_open_pull_requests: int = Field(
+        le=1000.0,
+        ge=1.0,
+        description="The maximum number of open pull requests a user can have at one time",
     )
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1)
+model_rebuild(ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200)
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1",)
+__all__ = ("ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200",)

@@ -16,15 +16,20 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0(GitHubModel):
-    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0"""
+class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody(GitHubModel):
+    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody"""
 
-    name: str = Field(description="The name of the field.")
-    data_type: Literal["text", "number", "date"] = Field(
-        description="The field's data type."
+    actor_type: Literal["User", "Team"] = Field(
+        description="The type of actor (must be `User` for user-owned spaces; `Team` will be rejected)."
+    )
+    actor_identifier: str = Field(
+        description="The username of the collaborator. The numeric user ID is also accepted."
+    )
+    role: Literal["reader", "writer", "admin"] = Field(
+        description="The role to grant to the collaborator."
     )
 
 
-model_rebuild(UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0)
+model_rebuild(UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody)
 
-__all__ = ("UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0",)
+__all__ = ("UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody",)

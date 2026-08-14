@@ -9,23 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgMembershipsUsernamePutBodyType(TypedDict):
-    """OrgsOrgMembershipsUsernamePutBody"""
+class OrgsOrgInteractionLimitsPullsCreationCapPatchBodyType(TypedDict):
+    """OrgsOrgInteractionLimitsPullsCreationCapPatchBody"""
 
-    role: NotRequired[Literal["admin", "member"]]
+    enabled: bool
+    max_open_pull_requests: NotRequired[int]
 
 
-class OrgsOrgMembershipsUsernamePutBodyTypeForResponse(TypedDict):
-    """OrgsOrgMembershipsUsernamePutBody"""
+class OrgsOrgInteractionLimitsPullsCreationCapPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgInteractionLimitsPullsCreationCapPatchBody"""
 
-    role: NotRequired[Literal["admin", "member"]]
+    enabled: bool
+    max_open_pull_requests: NotRequired[int]
 
 
 __all__ = (
-    "OrgsOrgMembershipsUsernamePutBodyType",
-    "OrgsOrgMembershipsUsernamePutBodyTypeForResponse",
+    "OrgsOrgInteractionLimitsPullsCreationCapPatchBodyType",
+    "OrgsOrgInteractionLimitsPullsCreationCapPatchBodyTypeForResponse",
 )

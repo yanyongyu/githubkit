@@ -13,41 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0618 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0619 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0620 import (
+from .group_0619 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0620 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0621 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0621 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0634 import WebhooksLabelType, WebhooksLabelTypeForResponse
+from .group_0622 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0635 import WebhooksLabelType, WebhooksLabelTypeForResponse
 
 
-class WebhookLabelDeletedType(TypedDict):
-    """label deleted event"""
+class WebhookLabelCreatedType(TypedDict):
+    """label created event"""
 
-    action: Literal["deleted"]
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     label: WebhooksLabelType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookLabelDeletedTypeForResponse(TypedDict):
-    """label deleted event"""
+class WebhookLabelCreatedTypeForResponse(TypedDict):
+    """label created event"""
 
-    action: Literal["deleted"]
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     label: WebhooksLabelTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookLabelDeletedType",
-    "WebhookLabelDeletedTypeForResponse",
+    "WebhookLabelCreatedType",
+    "WebhookLabelCreatedTypeForResponse",
 )

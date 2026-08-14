@@ -19,14 +19,14 @@ from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0316 import ProjectsV2StatusUpdate
-from .group_0618 import SimpleInstallation
-from .group_0619 import OrganizationSimpleWebhooks
+from .group_0619 import SimpleInstallation
+from .group_0620 import OrganizationSimpleWebhooks
 
 
-class WebhookProjectsV2StatusUpdateDeleted(GitHubModel):
-    """Projects v2 Status Update Deleted Event"""
+class WebhookProjectsV2StatusUpdateCreated(GitHubModel):
+    """Projects v2 Status Update Created Event"""
 
-    action: Literal["deleted"] = Field()
+    action: Literal["created"] = Field()
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
@@ -43,6 +43,6 @@ class WebhookProjectsV2StatusUpdateDeleted(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookProjectsV2StatusUpdateDeleted)
+model_rebuild(WebhookProjectsV2StatusUpdateCreated)
 
-__all__ = ("WebhookProjectsV2StatusUpdateDeleted",)
+__all__ = ("WebhookProjectsV2StatusUpdateCreated",)

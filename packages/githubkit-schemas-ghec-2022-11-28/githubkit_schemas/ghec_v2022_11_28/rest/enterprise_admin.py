@@ -48,6 +48,7 @@ if TYPE_CHECKING:
         EnterprisesEnterpriseActionsRunnerGroupsGetResponse200,
         EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200,
         EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
+        EnterprisesEnterpriseActionsRunnersDeprecationsVersionGetResponse200,
         EnterprisesEnterpriseActionsRunnersGetResponse200,
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200,
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
@@ -121,6 +122,7 @@ if TYPE_CHECKING:
         EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBodyType,
         EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200TypeForResponse,
         EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType,
+        EnterprisesEnterpriseActionsRunnersDeprecationsVersionGetResponse200TypeForResponse,
         EnterprisesEnterpriseActionsRunnersGetResponse200TypeForResponse,
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200TypeForResponse,
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
@@ -3332,6 +3334,84 @@ class EnterpriseAdminClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=EnterprisesEnterpriseActionsRunnersGetResponse200,
+        )
+
+    def get_runner_version_deprecation_for_enterprise(
+        self,
+        enterprise: str,
+        version: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersDeprecationsVersionGetResponse200,
+        EnterprisesEnterpriseActionsRunnersDeprecationsVersionGetResponse200TypeForResponse,
+    ]:
+        """enterprise-admin/get-runner-version-deprecation-for-enterprise
+
+        GET /enterprises/{enterprise}/actions/runners/deprecations/{version}
+
+        Gets the end-of-life schedule for a specific runner version in an enterprise. Returns the runner version
+        and the dates when registration and runtime support will end.
+
+        OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#get-runner-version-end-of-life-schedule-for-an-enterprise
+        """
+
+        from ..models import (
+            EnterprisesEnterpriseActionsRunnersDeprecationsVersionGetResponse200,
+        )
+
+        url = f"/enterprises/{enterprise}/actions/runners/deprecations/{version}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseActionsRunnersDeprecationsVersionGetResponse200,
+        )
+
+    async def async_get_runner_version_deprecation_for_enterprise(
+        self,
+        enterprise: str,
+        version: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersDeprecationsVersionGetResponse200,
+        EnterprisesEnterpriseActionsRunnersDeprecationsVersionGetResponse200TypeForResponse,
+    ]:
+        """enterprise-admin/get-runner-version-deprecation-for-enterprise
+
+        GET /enterprises/{enterprise}/actions/runners/deprecations/{version}
+
+        Gets the end-of-life schedule for a specific runner version in an enterprise. Returns the runner version
+        and the dates when registration and runtime support will end.
+
+        OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#get-runner-version-end-of-life-schedule-for-an-enterprise
+        """
+
+        from ..models import (
+            EnterprisesEnterpriseActionsRunnersDeprecationsVersionGetResponse200,
+        )
+
+        url = f"/enterprises/{enterprise}/actions/runners/deprecations/{version}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseActionsRunnersDeprecationsVersionGetResponse200,
         )
 
     def list_runner_applications_for_enterprise(

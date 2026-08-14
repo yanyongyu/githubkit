@@ -16,16 +16,20 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgOutsideCollaboratorsUsernamePutBody(GitHubModel):
-    """OrgsOrgOutsideCollaboratorsUsernamePutBody"""
+class OrgsOrgInteractionLimitsPullsCreationCapPatchBody(GitHubModel):
+    """OrgsOrgInteractionLimitsPullsCreationCapPatchBody"""
 
-    async_: Missing[bool] = Field(
+    enabled: bool = Field(
+        description="Whether the pull request creation cap is enabled"
+    )
+    max_open_pull_requests: Missing[int] = Field(
+        le=1000.0,
+        ge=1.0,
         default=UNSET,
-        alias="async",
-        description="When set to `true`, the request will be performed asynchronously. Returns a 202 status code when the job is successfully queued.",
+        description="The maximum number of open pull requests a user can have at one time",
     )
 
 
-model_rebuild(OrgsOrgOutsideCollaboratorsUsernamePutBody)
+model_rebuild(OrgsOrgInteractionLimitsPullsCreationCapPatchBody)
 
-__all__ = ("OrgsOrgOutsideCollaboratorsUsernamePutBody",)
+__all__ = ("OrgsOrgInteractionLimitsPullsCreationCapPatchBody",)

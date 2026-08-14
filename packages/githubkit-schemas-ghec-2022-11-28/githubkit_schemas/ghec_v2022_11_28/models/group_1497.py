@@ -12,14 +12,24 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoCheckSuitesPostBody(GitHubModel):
-    """ReposOwnerRepoCheckSuitesPostBody"""
+class ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200(
+    GitHubModel
+):
+    """ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200"""
 
-    head_sha: str = Field(description="The sha of the head commit.")
+    bypass_review_id: Missing[int] = Field(
+        default=UNSET, description="ID of the bypass review."
+    )
 
 
-model_rebuild(ReposOwnerRepoCheckSuitesPostBody)
+model_rebuild(
+    ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200
+)
 
-__all__ = ("ReposOwnerRepoCheckSuitesPostBody",)
+__all__ = (
+    "ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200",
+)

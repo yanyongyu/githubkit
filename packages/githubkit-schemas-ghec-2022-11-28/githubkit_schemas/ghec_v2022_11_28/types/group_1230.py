@@ -9,55 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0189 import (
+    SecretScanningCustomPatternToCreateType,
+    SecretScanningCustomPatternToCreateTypeForResponse,
+)
 
 
-class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422Type(TypedDict):
-    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422"""
+class EnterprisesEnterpriseSecretScanningCustomPatternsPostBodyType(TypedDict):
+    """EnterprisesEnterpriseSecretScanningCustomPatternsPostBody"""
 
-    message: NotRequired[str]
-    validation_errors: NotRequired[
-        EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrorsType
-    ]
+    patterns: list[SecretScanningCustomPatternToCreateType]
 
 
-class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422TypeForResponse(
+class EnterprisesEnterpriseSecretScanningCustomPatternsPostBodyTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422"""
+    """EnterprisesEnterpriseSecretScanningCustomPatternsPostBody"""
 
-    message: NotRequired[str]
-    validation_errors: NotRequired[
-        EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse
-    ]
-
-
-EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrorsType: TypeAlias = dict[
-    str, Any
-]
-"""EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationEr
-rors
-
-A map of validation errors keyed by the zero-based index of the pattern that
-failed.
-"""
-
-
-EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationEr
-rors
-
-A map of validation errors keyed by the zero-based index of the pattern that
-failed.
-"""
+    patterns: list[SecretScanningCustomPatternToCreateTypeForResponse]
 
 
 __all__ = (
-    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrorsType",
-    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse",
-    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422Type",
-    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422TypeForResponse",
+    "EnterprisesEnterpriseSecretScanningCustomPatternsPostBodyType",
+    "EnterprisesEnterpriseSecretScanningCustomPatternsPostBodyTypeForResponse",
 )

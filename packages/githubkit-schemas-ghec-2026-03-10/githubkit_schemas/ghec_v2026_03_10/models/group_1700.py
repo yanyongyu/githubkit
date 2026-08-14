@@ -9,29 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody(
-    GitHubModel
-):
-    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBod
-    y
-    """
+class UsersUsernameAttestationsDeleteRequestPostBodyOneof0(GitHubModel):
+    """UsersUsernameAttestationsDeleteRequestPostBodyOneof0"""
 
-    role: Literal["reader", "writer", "admin", "no_access"] = Field(
-        description="The new role to grant to the collaborator. Use `no_access` to remove the collaborator."
+    subject_digests: list[str] = Field(
+        max_length=1024 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="List of subject digests associated with the artifact attestations to delete.",
     )
 
 
-model_rebuild(
-    UsersUsernameCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody
-)
+model_rebuild(UsersUsernameAttestationsDeleteRequestPostBodyOneof0)
 
-__all__ = (
-    "UsersUsernameCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody",
-)
+__all__ = ("UsersUsernameAttestationsDeleteRequestPostBodyOneof0",)

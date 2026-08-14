@@ -19,10 +19,10 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class PrivateUser(GitHubModel):
-    """Private User
+class PublicUser(GitHubModel):
+    """Public User
 
-    Private User
+    Public User
     """
 
     login: str = Field()
@@ -59,19 +59,16 @@ class PrivateUser(GitHubModel):
     following: int = Field()
     created_at: _dt.datetime = Field()
     updated_at: _dt.datetime = Field()
-    private_gists: int = Field()
-    total_private_repos: int = Field()
-    owned_private_repos: int = Field()
-    disk_usage: int = Field()
-    collaborators: int = Field()
-    two_factor_authentication: bool = Field()
-    plan: Missing[PrivateUserPropPlan] = Field(default=UNSET)
-    business_plus: Missing[bool] = Field(default=UNSET)
-    ldap_dn: Missing[str] = Field(default=UNSET)
+    plan: Missing[PublicUserPropPlan] = Field(default=UNSET)
+    private_gists: Missing[int] = Field(default=UNSET)
+    total_private_repos: Missing[int] = Field(default=UNSET)
+    owned_private_repos: Missing[int] = Field(default=UNSET)
+    disk_usage: Missing[int] = Field(default=UNSET)
+    collaborators: Missing[int] = Field(default=UNSET)
 
 
-class PrivateUserPropPlan(GitHubModel):
-    """PrivateUserPropPlan"""
+class PublicUserPropPlan(GitHubModel):
+    """PublicUserPropPlan"""
 
     collaborators: int = Field()
     name: str = Field()
@@ -79,10 +76,10 @@ class PrivateUserPropPlan(GitHubModel):
     private_repos: int = Field()
 
 
-model_rebuild(PrivateUser)
-model_rebuild(PrivateUserPropPlan)
+model_rebuild(PublicUser)
+model_rebuild(PublicUserPropPlan)
 
 __all__ = (
-    "PrivateUser",
-    "PrivateUserPropPlan",
+    "PublicUser",
+    "PublicUserPropPlan",
 )

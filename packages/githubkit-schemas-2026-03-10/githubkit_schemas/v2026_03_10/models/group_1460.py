@@ -9,34 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0494 import PullRequestStackPullRequest
 
 
-class ReposTemplateOwnerTemplateRepoGeneratePostBody(GitHubModel):
-    """ReposTemplateOwnerTemplateRepoGeneratePostBody"""
+class ReposOwnerRepoStacksStackNumberUnstackPostResponse200(GitHubModel):
+    """ReposOwnerRepoStacksStackNumberUnstackPostResponse200"""
 
-    owner: Missing[str] = Field(
-        default=UNSET,
-        description="The organization or person who will own the new repository. To create a new repository in an organization, the authenticated user must be a member of the specified organization.",
+    id: int = Field()
+    number: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    base: ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase = Field()
+    open_: bool = Field(
+        alias="open",
+        description="Whether the stack has any open pull request. False when all pull requests are merged or closed.",
     )
-    name: str = Field(description="The name of the new repository.")
-    description: Missing[str] = Field(
-        default=UNSET, description="A short description of the new repository."
-    )
-    include_all_branches: Missing[bool] = Field(
-        default=UNSET,
-        description="Set to `true` to include the directory structure and files from all branches in the template repository, and not just the default branch. Default: `false`.",
-    )
-    private: Missing[bool] = Field(
-        default=UNSET,
-        description="Either `true` to create a new private repository or `false` to create a new public one.",
-    )
+    created_at: _dt.datetime = Field()
+    pull_requests: list[PullRequestStackPullRequest] = Field()
 
 
-model_rebuild(ReposTemplateOwnerTemplateRepoGeneratePostBody)
+class ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase(GitHubModel):
+    """ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase"""
 
-__all__ = ("ReposTemplateOwnerTemplateRepoGeneratePostBody",)
+    ref: str = Field()
+
+
+model_rebuild(ReposOwnerRepoStacksStackNumberUnstackPostResponse200)
+model_rebuild(ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase)
+
+__all__ = (
+    "ReposOwnerRepoStacksStackNumberUnstackPostResponse200",
+    "ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase",
+)
