@@ -465,6 +465,29 @@ target_descriptions = ["ghec-2022-11-28", "ghec-2026-03-10"]
   "read",
 ] }
 
+# https://github.com/yanyongyu/githubkit/issues/322
+# budget type can be "BundlePricing"
+"/components/schemas/budget/properties/budget_type/oneOf" = { "<add>" = [
+  { "type" = "string", "enum" = [
+    "BundlePricing",
+  ] },
+] }
+"/components/schemas/create-budget/properties/budget/properties/budget_type/oneOf" = { "<add>" = [
+  { "type" = "string", "enum" = [
+    "BundlePricing",
+  ] },
+] }
+"/components/schemas/get-budget/properties/budget_type/oneOf" = { "<add>" = [
+  { "type" = "string", "enum" = [
+    "BundlePricing",
+  ] },
+] }
+"/components/schemas/update-budget/properties/budget/properties/budget_type/oneOf" = { "<add>" = [
+  { "type" = "string", "enum" = [
+    "BundlePricing",
+  ] },
+] }
+
 # date-time search syntax should be string
 # https://docs.github.com/search-github/getting-started-with-searching-on-github/understanding-the-search-syntax#query-for-dates
 "/components/parameters/created/schema" = { format = "<unset>" }

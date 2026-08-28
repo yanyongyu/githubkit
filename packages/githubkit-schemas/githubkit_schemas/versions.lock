@@ -110,6 +110,10 @@ target_descriptions = ["ghec-2022-11-28", "ghec-2026-03-10"]
 "/components/schemas/diff-entry/properties/raw_url" = {type = ["string", "null"]}
 "/components/schemas/diff-entry/properties/sha" = {type = ["string", "null"]}
 "/components/schemas/app-permissions/properties/organization_copilot_seat_management/enum" = {"<add>" = ["read"]}
+"/components/schemas/budget/properties/budget_type/oneOf" = {"<add>" = [{type = "string", enum = ["BundlePricing"]}]}
+"/components/schemas/create-budget/properties/budget/properties/budget_type/oneOf" = {"<add>" = [{type = "string", enum = ["BundlePricing"]}]}
+"/components/schemas/get-budget/properties/budget_type/oneOf" = {"<add>" = [{type = "string", enum = ["BundlePricing"]}]}
+"/components/schemas/update-budget/properties/budget/properties/budget_type/oneOf" = {"<add>" = [{type = "string", enum = ["BundlePricing"]}]}
 "/components/parameters/created/schema" = {format = "<unset>"}
 "/components/schemas/simple-classroom-assignment/properties/editor" = {type = ["string", "null"]}
 "/components/schemas/simple-classroom-assignment/properties/language" = {type = ["string", "null"]}

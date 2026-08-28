@@ -62,7 +62,7 @@ class Budget(GitHubModel):
     """Budget"""
 
     id: str = Field(description="The unique identifier for the budget")
-    budget_type: Literal["SkuPricing", "ProductPricing"] = Field(
+    budget_type: Literal["SkuPricing", "ProductPricing", "BundlePricing"] = Field(
         description="The type of pricing for the budget"
     )
     budget_amount: int = Field(

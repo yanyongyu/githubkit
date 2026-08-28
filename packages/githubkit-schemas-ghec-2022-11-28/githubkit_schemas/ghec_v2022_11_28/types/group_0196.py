@@ -47,7 +47,7 @@ class CreateBudgetPropBudgetType(TypedDict):
     budget_amount: NotRequired[int]
     prevent_further_usage: NotRequired[bool]
     budget_product_sku: NotRequired[str]
-    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing"]]
+    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing", "BundlePricing"]]
     budget_alerting: NotRequired[CreateBudgetPropBudgetPropBudgetAlertingType]
     expires_at: NotRequired[_dt.date]
 
@@ -71,7 +71,7 @@ class CreateBudgetPropBudgetTypeForResponse(TypedDict):
     budget_amount: NotRequired[int]
     prevent_further_usage: NotRequired[bool]
     budget_product_sku: NotRequired[str]
-    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing"]]
+    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing", "BundlePricing"]]
     budget_alerting: NotRequired[
         CreateBudgetPropBudgetPropBudgetAlertingTypeForResponse
     ]

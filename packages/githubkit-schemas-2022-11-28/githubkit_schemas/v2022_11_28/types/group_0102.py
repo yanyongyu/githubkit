@@ -31,7 +31,7 @@ class GetBudgetType(TypedDict):
     budget_amount: int
     prevent_further_usage: bool
     budget_product_sku: str
-    budget_type: Literal["ProductPricing", "SkuPricing"]
+    budget_type: Literal["ProductPricing", "SkuPricing", "BundlePricing"]
     budget_alerting: GetBudgetPropBudgetAlertingType
 
 
@@ -53,7 +53,7 @@ class GetBudgetTypeForResponse(TypedDict):
     budget_amount: int
     prevent_further_usage: bool
     budget_product_sku: str
-    budget_type: Literal["ProductPricing", "SkuPricing"]
+    budget_type: Literal["ProductPricing", "SkuPricing", "BundlePricing"]
     budget_alerting: GetBudgetPropBudgetAlertingTypeForResponse
 
 
