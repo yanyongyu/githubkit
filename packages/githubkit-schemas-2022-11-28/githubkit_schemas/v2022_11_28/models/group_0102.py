@@ -47,7 +47,7 @@ class GetBudget(GitHubModel):
     budget_product_sku: str = Field(
         description="A single product or sku to apply the budget to."
     )
-    budget_type: Literal["ProductPricing", "SkuPricing"] = Field(
+    budget_type: Literal["ProductPricing", "SkuPricing", "BundlePricing"] = Field(
         description="The type of pricing for the budget"
     )
     budget_alerting: GetBudgetPropBudgetAlerting = Field()

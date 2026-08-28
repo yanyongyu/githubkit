@@ -49,7 +49,7 @@ class UpdateBudgetPropBudgetType(TypedDict):
     budget_amount: NotRequired[int]
     prevent_further_usage: NotRequired[bool]
     budget_product_sku: NotRequired[str]
-    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing"]]
+    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing", "BundlePricing"]]
     budget_alerting: NotRequired[UpdateBudgetPropBudgetPropBudgetAlertingType]
     expires_at: NotRequired[_dt.date]
 
@@ -75,7 +75,7 @@ class UpdateBudgetPropBudgetTypeForResponse(TypedDict):
     budget_amount: NotRequired[int]
     prevent_further_usage: NotRequired[bool]
     budget_product_sku: NotRequired[str]
-    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing"]]
+    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing", "BundlePricing"]]
     budget_alerting: NotRequired[
         UpdateBudgetPropBudgetPropBudgetAlertingTypeForResponse
     ]

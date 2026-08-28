@@ -65,8 +65,8 @@ class UpdateBudgetPropBudget(GitHubModel):
     budget_product_sku: Missing[str] = Field(
         default=UNSET, description="A single product or sku to apply the budget to."
     )
-    budget_type: Missing[Literal["ProductPricing", "SkuPricing"]] = Field(
-        default=UNSET, description="The type of pricing for the budget"
+    budget_type: Missing[Literal["ProductPricing", "SkuPricing", "BundlePricing"]] = (
+        Field(default=UNSET, description="The type of pricing for the budget")
     )
     budget_alerting: Missing[UpdateBudgetPropBudgetPropBudgetAlerting] = Field(
         default=UNSET

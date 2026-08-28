@@ -62,7 +62,7 @@ class BudgetType(TypedDict):
     """Budget"""
 
     id: str
-    budget_type: Literal["SkuPricing", "ProductPricing"]
+    budget_type: Literal["SkuPricing", "ProductPricing", "BundlePricing"]
     budget_amount: int
     prevent_further_usage: bool
     budget_scope: Literal[
@@ -86,7 +86,7 @@ class BudgetTypeForResponse(TypedDict):
     """Budget"""
 
     id: str
-    budget_type: Literal["SkuPricing", "ProductPricing"]
+    budget_type: Literal["SkuPricing", "ProductPricing", "BundlePricing"]
     budget_amount: int
     prevent_further_usage: bool
     budget_scope: Literal[
