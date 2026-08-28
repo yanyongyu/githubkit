@@ -57,10 +57,12 @@ class GetBudgetPropBudgetAlerting(GitHubModel):
     """GetBudgetPropBudgetAlerting"""
 
     will_alert: Missing[bool] = Field(
-        default=UNSET, description="Whether alerts are enabled for this budget"
+        default=UNSET,
+        description="Whether alerts are enabled for this budget. Present but not applicable for user-scope as alerting is always disabled for them.",
     )
     alert_recipients: Missing[list[str]] = Field(
-        default=UNSET, description="Array of user login names who will receive alerts"
+        default=UNSET,
+        description="Array of user login names who will receive alerts. Present but not applicable for user-scope as alerting is always disabled for them.",
     )
 
 

@@ -19,14 +19,14 @@ from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0010 import Integration
-from .group_0398 import IssueTypeWebhook
-from .group_0400 import IssueEventIntent
+from .group_0399 import IssueTypeWebhook
+from .group_0401 import IssueEventIntent
 
 
-class IssueTypeRemovedIssueEvent(GitHubModel):
-    """Issue Type Removed Issue Event
+class IssueTypeAddedIssueEvent(GitHubModel):
+    """Issue Type Added Issue Event
 
-    Issue Type Removed Issue Event
+    Issue Type Added Issue Event
     """
 
     id: int = Field()
@@ -38,12 +38,12 @@ class IssueTypeRemovedIssueEvent(GitHubModel):
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
     performed_via_github_app: Union[None, Integration, None] = Field()
-    prev_issue_type: Union[IssueTypeWebhook, None] = Field(
+    issue_type: Union[IssueTypeWebhook, None] = Field(
         title="Issue Type", description="The type of issue."
     )
     intent: Missing[Union[None, IssueEventIntent, None]] = Field(default=UNSET)
 
 
-model_rebuild(IssueTypeRemovedIssueEvent)
+model_rebuild(IssueTypeAddedIssueEvent)
 
-__all__ = ("IssueTypeRemovedIssueEvent",)
+__all__ = ("IssueTypeAddedIssueEvent",)

@@ -19,39 +19,39 @@ from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0010 import Integration
-from .group_0400 import IssueEventIntent
+from .group_0401 import IssueEventIntent
 
 
-class UnlabeledIssueEvent(GitHubModel):
-    """Unlabeled Issue Event
+class LabeledIssueEvent(GitHubModel):
+    """Labeled Issue Event
 
-    Unlabeled Issue Event
+    Labeled Issue Event
     """
 
     id: int = Field()
     node_id: str = Field()
     url: str = Field()
     actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["unlabeled"] = Field()
+    event: Literal["labeled"] = Field()
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
     performed_via_github_app: Union[None, Integration, None] = Field()
-    label: UnlabeledIssueEventPropLabel = Field()
+    label: LabeledIssueEventPropLabel = Field()
     intent: Missing[Union[None, IssueEventIntent, None]] = Field(default=UNSET)
 
 
-class UnlabeledIssueEventPropLabel(GitHubModel):
-    """UnlabeledIssueEventPropLabel"""
+class LabeledIssueEventPropLabel(GitHubModel):
+    """LabeledIssueEventPropLabel"""
 
     name: str = Field()
     color: str = Field()
 
 
-model_rebuild(UnlabeledIssueEvent)
-model_rebuild(UnlabeledIssueEventPropLabel)
+model_rebuild(LabeledIssueEvent)
+model_rebuild(LabeledIssueEventPropLabel)
 
 __all__ = (
-    "UnlabeledIssueEvent",
-    "UnlabeledIssueEventPropLabel",
+    "LabeledIssueEvent",
+    "LabeledIssueEventPropLabel",
 )

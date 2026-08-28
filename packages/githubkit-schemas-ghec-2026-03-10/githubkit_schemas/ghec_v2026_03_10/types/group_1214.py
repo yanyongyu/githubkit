@@ -13,12 +13,10 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyType(
+class EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBodyType(
     TypedDict
 ):
-    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBod
-    y
-    """
+    """EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBody"""
 
     credential_type: Literal[
         "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
@@ -26,12 +24,10 @@ class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypeP
     revoke_credentials: NotRequired[bool]
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyTypeForResponse(
+class EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBodyTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBod
-    y
-    """
+    """EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBody"""
 
     credential_type: Literal[
         "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
@@ -40,6 +36,6 @@ class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypeP
 
 
 __all__ = (
-    "EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyType",
-    "EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyTypeForResponse",
+    "EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBodyType",
+    "EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBodyTypeForResponse",
 )

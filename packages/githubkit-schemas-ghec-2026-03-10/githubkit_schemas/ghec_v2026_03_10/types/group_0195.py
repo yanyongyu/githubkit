@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
@@ -78,6 +79,7 @@ class BudgetType(TypedDict):
     consumed_amount: NotRequired[float]
     budget_product_sku: str
     budget_alerting: BudgetPropBudgetAlertingType
+    expires_at: NotRequired[_dt.date]
 
 
 class BudgetTypeForResponse(TypedDict):
@@ -101,6 +103,7 @@ class BudgetTypeForResponse(TypedDict):
     consumed_amount: NotRequired[float]
     budget_product_sku: str
     budget_alerting: BudgetPropBudgetAlertingTypeForResponse
+    expires_at: NotRequired[str]
 
 
 class BudgetPropBudgetAlertingType(TypedDict):

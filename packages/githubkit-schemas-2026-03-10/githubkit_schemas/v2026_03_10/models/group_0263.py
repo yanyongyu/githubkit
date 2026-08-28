@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,19 +18,31 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class SecretScanningCustomPatternToDelete(GitHubModel):
-    """Secret Scanning Custom Pattern To Delete
+class SecretScanningCustomPatternValidationError(GitHubModel):
+    """Secret Scanning Custom Pattern Validation Error
 
-    A custom pattern to delete in a bulk operation.
+    A validation error for a custom pattern in a batch operation.
     """
 
-    pattern_id: int = Field(description="The ID of the custom pattern to delete.")
-    custom_pattern_version: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The version of the entity. This is used to confirm you're updating the current version of the entity and mitigate unintentionally overriding someone else's update.",
+    code: Missing[
+        Literal[
+            "invalid",
+            "unprocessable",
+            "start_delimiter",
+            "end_delimiter",
+            "name",
+            "must_match",
+            "must_not_match",
+            "custom_pattern_version_mismatch",
+        ]
+    ] = Field(
+        default=UNSET, description="A machine-readable code describing the error."
+    )
+    message: Missing[str] = Field(
+        default=UNSET, description="A human-readable description of the error."
     )
 
 
-model_rebuild(SecretScanningCustomPatternToDelete)
+model_rebuild(SecretScanningCustomPatternValidationError)
 
-__all__ = ("SecretScanningCustomPatternToDelete",)
+__all__ = ("SecretScanningCustomPatternValidationError",)

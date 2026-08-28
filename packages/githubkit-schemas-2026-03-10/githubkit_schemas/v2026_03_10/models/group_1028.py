@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,59 +18,49 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0(GitHubModel):
-    """AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0
+class AgentsTasksGetResponse422(GitHubModel):
+    """AgentsTasksGetResponse422
 
-    A GitHub user
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
     """
 
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the user"
+    message: str = Field(
+        description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
-
-
-class AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems(GitHubModel):
-    """AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems
-
-    A GitHub user
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the user"
-    )
-
-
-class AgentsTasksTaskIdGetResponse200Allof0PropRepository(GitHubModel):
-    """AgentsTasksTaskIdGetResponse200Allof0PropRepository
-
-    The repository this task belongs to
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the repository"
-    )
-
-
-class AgentsTasksTaskIdGetResponse200Allof0PropCustomAgent(GitHubModel):
-    """AgentsTasksTaskIdGetResponse200Allof0PropCustomAgent
-
-    Custom agent metadata associated with this task
-    """
-
-    id: Missing[str] = Field(
+    errors: Missing[list[AgentsTasksGetResponse422PropErrorsItems]] = Field(
         default=UNSET,
-        description="The custom agent's filename without the extension - for example, `performance-optimizer` for a `.github/agents/performance-optimizer.agent.md` custom agent.",
+        description="List of validation errors (present only for 422 responses)",
+    )
+    documentation_url: str = Field(description="URL to relevant API documentation")
+
+
+class AgentsTasksGetResponse422PropErrorsItems(GitHubModel):
+    """AgentsTasksGetResponse422PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ] = Field(description="Machine-readable error code")
+    message: Missing[str] = Field(
+        default=UNSET,
+        description='Human-readable message (populated when code is "custom")',
     )
 
 
-model_rebuild(AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0)
-model_rebuild(AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems)
-model_rebuild(AgentsTasksTaskIdGetResponse200Allof0PropRepository)
-model_rebuild(AgentsTasksTaskIdGetResponse200Allof0PropCustomAgent)
+model_rebuild(AgentsTasksGetResponse422)
+model_rebuild(AgentsTasksGetResponse422PropErrorsItems)
 
 __all__ = (
-    "AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0",
-    "AgentsTasksTaskIdGetResponse200Allof0PropCustomAgent",
-    "AgentsTasksTaskIdGetResponse200Allof0PropRepository",
-    "AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems",
+    "AgentsTasksGetResponse422",
+    "AgentsTasksGetResponse422PropErrorsItems",
 )

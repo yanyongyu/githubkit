@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0535 import EnterpriseWebhooks
-from .group_0536 import SimpleInstallation
-from .group_0537 import OrganizationSimpleWebhooks
-from .group_0538 import RepositoryWebhooks
-from .group_0570 import PullRequestWebhook
+from .group_0538 import EnterpriseWebhooks
+from .group_0539 import SimpleInstallation
+from .group_0540 import OrganizationSimpleWebhooks
+from .group_0541 import RepositoryWebhooks
+from .group_0869 import WebhookPullRequestLockedPropPullRequest
 
 
-class WebhookPullRequestOpened(GitHubModel):
-    """pull_request opened event"""
+class WebhookPullRequestLocked(GitHubModel):
+    """pull_request locked event"""
 
-    action: Literal["opened"] = Field()
+    action: Literal["locked"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -45,7 +45,7 @@ class WebhookPullRequestOpened(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    pull_request: PullRequestWebhook = Field()
+    pull_request: WebhookPullRequestLockedPropPullRequest = Field(title="Pull Request")
     repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
@@ -53,6 +53,6 @@ class WebhookPullRequestOpened(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookPullRequestOpened)
+model_rebuild(WebhookPullRequestLocked)
 
-__all__ = ("WebhookPullRequestOpened",)
+__all__ = ("WebhookPullRequestLocked",)

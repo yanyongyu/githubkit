@@ -9,31 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class SecretScanningPushProtectionBypass(GitHubModel):
-    """SecretScanningPushProtectionBypass"""
+class SecretScanningAlertMetadataItems(GitHubModel):
+    """SecretScanningAlertMetadataItems"""
 
-    reason: Missing[Literal["false_positive", "used_in_tests", "will_fix_later"]] = (
-        Field(default=UNSET, description="The reason for bypassing push protection.")
-    )
-    expire_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET,
-        description="The time that the bypass will expire in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
-    )
-    token_type: Missing[str] = Field(
-        default=UNSET, description="The token type this bypass is for."
-    )
+    key: str = Field(description="The metadata key.")
+    value: str = Field(description="The metadata value.")
 
 
-model_rebuild(SecretScanningPushProtectionBypass)
+model_rebuild(SecretScanningAlertMetadataItems)
 
-__all__ = ("SecretScanningPushProtectionBypass",)
+__all__ = ("SecretScanningAlertMetadataItems",)

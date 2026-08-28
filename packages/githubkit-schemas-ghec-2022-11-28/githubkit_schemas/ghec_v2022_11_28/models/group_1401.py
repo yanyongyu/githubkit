@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Annotated, Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,18 +16,20 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody(GitHubModel):
-    """OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody"""
+class OrgsOrgInteractionLimitsPullsCreationCapPatchBody(GitHubModel):
+    """OrgsOrgInteractionLimitsPullsCreationCapPatchBody"""
 
-    action: Literal["approve", "deny"] = Field(
-        description="Action to apply to the request."
+    enabled: bool = Field(
+        description="Whether the pull request creation cap is enabled"
     )
-    reason: Missing[Union[Annotated[str, Field(max_length=1024)], None]] = Field(
+    max_open_pull_requests: Missing[int] = Field(
+        le=1000.0,
+        ge=1.0,
         default=UNSET,
-        description="Reason for approving or denying the request. Max 1024 characters.",
+        description="The maximum number of open pull requests a user can have at one time",
     )
 
 
-model_rebuild(OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody)
+model_rebuild(OrgsOrgInteractionLimitsPullsCreationCapPatchBody)
 
-__all__ = ("OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody",)
+__all__ = ("OrgsOrgInteractionLimitsPullsCreationCapPatchBody",)

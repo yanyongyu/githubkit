@@ -9,58 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0400 import IssueReferenceType, IssueReferenceTypeForResponse
 
-class IssueSuggestionType(TypedDict):
-    """Issue Suggestion
 
-    An agent-proposed change to an issue that a maintainer can approve or dismiss.
+class BlockingRemovedIssueEventType(TypedDict):
+    """Blocking Removed Issue Event
+
+    Blocking Removed Issue Event
     """
 
     id: int
-    issue_id: int
-    action: Literal["set_type", "add_label", "add_field", "add_assignee", "close_issue"]
-    state: Literal[
-        "pending", "applied", "approved", "dismissed", "replaced", "invalidated"
-    ]
-    target_id: Union[int, None]
-    target_value: Union[str, float, bool, list[str], None]
-    rationale: Union[str, None]
-    confidence: Union[Literal["LOW", "MEDIUM", "HIGH"], None]
-    actor_id: Union[int, None]
-    issue_event_id: Union[int, None]
-    resolved_by: Union[int, None]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-
-
-class IssueSuggestionTypeForResponse(TypedDict):
-    """Issue Suggestion
-
-    An agent-proposed change to an issue that a maintainer can approve or dismiss.
-    """
-
-    id: int
-    issue_id: int
-    action: Literal["set_type", "add_label", "add_field", "add_assignee", "close_issue"]
-    state: Literal[
-        "pending", "applied", "approved", "dismissed", "replaced", "invalidated"
-    ]
-    target_id: Union[int, None]
-    target_value: Union[str, float, bool, list[str], None]
-    rationale: Union[str, None]
-    confidence: Union[Literal["LOW", "MEDIUM", "HIGH"], None]
-    actor_id: Union[int, None]
-    issue_event_id: Union[int, None]
-    resolved_by: Union[int, None]
+    node_id: str
+    url: str
+    actor: SimpleUserType
+    event: str
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
     created_at: str
-    updated_at: str
+    performed_via_github_app: Union[None, IntegrationType, None]
+    blocking: Union[None, IssueReferenceType, None]
+
+
+class BlockingRemovedIssueEventTypeForResponse(TypedDict):
+    """Blocking Removed Issue Event
+
+    Blocking Removed Issue Event
+    """
+
+    id: int
+    node_id: str
+    url: str
+    actor: SimpleUserTypeForResponse
+    event: str
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
+    blocking: Union[None, IssueReferenceTypeForResponse, None]
 
 
 __all__ = (
-    "IssueSuggestionType",
-    "IssueSuggestionTypeForResponse",
+    "BlockingRemovedIssueEventType",
+    "BlockingRemovedIssueEventTypeForResponse",
 )

@@ -182,6 +182,12 @@ class RestNamespace:
         return DependabotClient(self._github)
 
     @cached_property
+    def enterprise_team_memberships(self) -> "EnterpriseTeamMembershipsClient":
+        from .enterprise_team_memberships import EnterpriseTeamMembershipsClient
+
+        return EnterpriseTeamMembershipsClient(self._github)
+
+    @cached_property
     def repos(self) -> "ReposClient":
         from .repos import ReposClient
 
@@ -198,12 +204,6 @@ class RestNamespace:
         from .enterprise_teams import EnterpriseTeamsClient
 
         return EnterpriseTeamsClient(self._github)
-
-    @cached_property
-    def enterprise_team_memberships(self) -> "EnterpriseTeamMembershipsClient":
-        from .enterprise_team_memberships import EnterpriseTeamMembershipsClient
-
-        return EnterpriseTeamMembershipsClient(self._github)
 
     @cached_property
     def enterprise_team_organizations(self) -> "EnterpriseTeamOrganizationsClient":

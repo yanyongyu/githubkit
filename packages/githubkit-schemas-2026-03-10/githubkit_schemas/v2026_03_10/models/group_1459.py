@@ -9,45 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0497 import PullRequestStackPullRequest
 
 
-class ReposOwnerRepoStacksStackNumberAddPostResponse422(GitHubModel):
-    """Validation Error
+class ReposOwnerRepoStacksStackNumberGetResponse200(GitHubModel):
+    """ReposOwnerRepoStacksStackNumberGetResponse200"""
 
-    Validation Error
-    """
-
-    message: str = Field()
-    documentation_url: str = Field()
-    errors: Missing[
-        list[ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems]
-    ] = Field(default=UNSET)
-
-
-class ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems(GitHubModel):
-    """ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems"""
-
-    resource: Missing[str] = Field(default=UNSET)
-    field: Missing[str] = Field(default=UNSET)
-    message: Missing[str] = Field(default=UNSET)
-    code: str = Field()
-    index: Missing[int] = Field(default=UNSET)
-    value: Missing[Union[str, None, int, None, list[Union[str, int]], None]] = Field(
-        default=UNSET
+    id: int = Field()
+    number: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    base: ReposOwnerRepoStacksStackNumberGetResponse200PropBase = Field()
+    open_: bool = Field(
+        alias="open",
+        description="Whether the stack has any open pull request. False when all pull requests are merged or closed.",
     )
+    created_at: _dt.datetime = Field()
+    pull_requests: list[PullRequestStackPullRequest] = Field()
 
 
-model_rebuild(ReposOwnerRepoStacksStackNumberAddPostResponse422)
-model_rebuild(ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems)
+class ReposOwnerRepoStacksStackNumberGetResponse200PropBase(GitHubModel):
+    """ReposOwnerRepoStacksStackNumberGetResponse200PropBase"""
+
+    ref: str = Field()
+
+
+model_rebuild(ReposOwnerRepoStacksStackNumberGetResponse200)
+model_rebuild(ReposOwnerRepoStacksStackNumberGetResponse200PropBase)
 
 __all__ = (
-    "ReposOwnerRepoStacksStackNumberAddPostResponse422",
-    "ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems",
+    "ReposOwnerRepoStacksStackNumberGetResponse200",
+    "ReposOwnerRepoStacksStackNumberGetResponse200PropBase",
 )

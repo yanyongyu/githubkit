@@ -11,6 +11,7 @@ from __future__ import annotations
 
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, overload
+from typing_extensions import deprecated
 from weakref import ref
 
 from pydantic import BaseModel
@@ -155,6 +156,7 @@ class DependencyGraphClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def export_sbom(
         self,
         owner: str,
@@ -163,9 +165,12 @@ class DependencyGraphClient:
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[DependencyGraphSpdxSbom, DependencyGraphSpdxSbomTypeForResponse]:
-        """dependency-graph/export-sbom
+        """DEPRECATED dependency-graph/export-sbom
 
         GET /repos/{owner}/{repo}/dependency-graph/sbom
+
+        > [!WARNING]
+        > **Closing down notice:** This operation is closing down and will not be accessible after November 13, 2026. Please migrate to the asynchronous flow. Use "[Request generation of a software bill of materials (SBOM) for a repository](https://docs.github.com/rest/dependency-graph/sboms#request-generation-of-a-software-bill-of-materials-sbom-for-a-repository)" to trigger the report, then "[Fetch a software bill of materials (SBOM) for a repository](https://docs.github.com/rest/dependency-graph/sboms#fetch-a-software-bill-of-materials-sbom-for-a-repository)" to retrieve it. For more information, see the [changelog](https://github.blog/changelog/2026-05-12-synchronous-sbom-api-deprecated/).
 
         Exports the software bill of materials (SBOM) for a repository in SPDX JSON format.
 
@@ -190,6 +195,7 @@ class DependencyGraphClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_export_sbom(
         self,
         owner: str,
@@ -198,9 +204,12 @@ class DependencyGraphClient:
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[DependencyGraphSpdxSbom, DependencyGraphSpdxSbomTypeForResponse]:
-        """dependency-graph/export-sbom
+        """DEPRECATED dependency-graph/export-sbom
 
         GET /repos/{owner}/{repo}/dependency-graph/sbom
+
+        > [!WARNING]
+        > **Closing down notice:** This operation is closing down and will not be accessible after November 13, 2026. Please migrate to the asynchronous flow. Use "[Request generation of a software bill of materials (SBOM) for a repository](https://docs.github.com/rest/dependency-graph/sboms#request-generation-of-a-software-bill-of-materials-sbom-for-a-repository)" to trigger the report, then "[Fetch a software bill of materials (SBOM) for a repository](https://docs.github.com/rest/dependency-graph/sboms#fetch-a-software-bill-of-materials-sbom-for-a-repository)" to retrieve it. For more information, see the [changelog](https://github.blog/changelog/2026-05-12-synchronous-sbom-api-deprecated/).
 
         Exports the software bill of materials (SBOM) for a repository in SPDX JSON format.
 

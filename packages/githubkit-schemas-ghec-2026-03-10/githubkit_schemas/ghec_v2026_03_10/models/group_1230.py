@@ -11,21 +11,21 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
-from .group_0188 import SecretScanningCustomPattern
+from .group_0114 import CustomProperty
 
 
-class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201(GitHubModel):
-    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201"""
+class EnterprisesEnterprisePropertiesSchemaPatchBody(GitHubModel):
+    """EnterprisesEnterprisePropertiesSchemaPatchBody"""
 
-    created_patterns: Missing[list[SecretScanningCustomPattern]] = Field(
-        default=UNSET, description="The list of successfully created custom patterns."
+    properties: list[CustomProperty] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The array of custom properties to create or update.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201)
+model_rebuild(EnterprisesEnterprisePropertiesSchemaPatchBody)
 
-__all__ = ("EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201",)
+__all__ = ("EnterprisesEnterprisePropertiesSchemaPatchBody",)

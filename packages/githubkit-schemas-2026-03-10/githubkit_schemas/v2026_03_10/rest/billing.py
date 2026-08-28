@@ -20,7 +20,8 @@ from githubkit.typing import Missing, UnsetType
 from githubkit.utils import UNSET, exclude_unset, parse_query_params
 
 if TYPE_CHECKING:
-    from typing import Literal
+    import datetime as _dt
+    from typing import Literal, Union
 
     from githubkit import GitHubCore
     from githubkit.response import Response
@@ -346,6 +347,7 @@ class BillingClient:
         ] = UNSET,
         budget_product_sku: Missing[str] = UNSET,
         user: Missing[str] = UNSET,
+        expires_at: Missing[_dt.date] = UNSET,
     ) -> Response[CreateBudget, CreateBudgetTypeForResponse]: ...
 
     def create_organization_budget(
@@ -438,6 +440,7 @@ class BillingClient:
         ] = UNSET,
         budget_product_sku: Missing[str] = UNSET,
         user: Missing[str] = UNSET,
+        expires_at: Missing[_dt.date] = UNSET,
     ) -> Response[CreateBudget, CreateBudgetTypeForResponse]: ...
 
     async def async_create_organization_budget(
@@ -691,6 +694,7 @@ class BillingClient:
         ] = UNSET,
         budget_product_sku: Missing[str] = UNSET,
         user: Missing[str] = UNSET,
+        expires_at: Missing[Union[_dt.date, Literal[0], None]] = UNSET,
     ) -> Response[UpdateBudget, UpdateBudgetTypeForResponse]: ...
 
     def update_budget_org(
@@ -794,6 +798,7 @@ class BillingClient:
         ] = UNSET,
         budget_product_sku: Missing[str] = UNSET,
         user: Missing[str] = UNSET,
+        expires_at: Missing[Union[_dt.date, Literal[0], None]] = UNSET,
     ) -> Response[UpdateBudget, UpdateBudgetTypeForResponse]: ...
 
     async def async_update_budget_org(

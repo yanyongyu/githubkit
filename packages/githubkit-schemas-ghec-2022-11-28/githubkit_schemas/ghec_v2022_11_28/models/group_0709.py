@@ -19,15 +19,15 @@ from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0114 import CustomProperty
-from .group_0619 import EnterpriseWebhooks
-from .group_0620 import SimpleInstallation
-from .group_0621 import OrganizationSimpleWebhooks
+from .group_0622 import EnterpriseWebhooks
+from .group_0623 import SimpleInstallation
+from .group_0624 import OrganizationSimpleWebhooks
 
 
-class WebhookCustomPropertyUpdated(GitHubModel):
-    """custom property updated event"""
+class WebhookCustomPropertyCreated(GitHubModel):
+    """custom property created event"""
 
-    action: Literal["updated"] = Field()
+    action: Literal["created"] = Field()
     definition: CustomProperty = Field(
         title="Organization Custom Property",
         description="Custom property defined on an organization",
@@ -52,6 +52,6 @@ class WebhookCustomPropertyUpdated(GitHubModel):
     )
 
 
-model_rebuild(WebhookCustomPropertyUpdated)
+model_rebuild(WebhookCustomPropertyCreated)
 
-__all__ = ("WebhookCustomPropertyUpdated",)
+__all__ = ("WebhookCustomPropertyCreated",)

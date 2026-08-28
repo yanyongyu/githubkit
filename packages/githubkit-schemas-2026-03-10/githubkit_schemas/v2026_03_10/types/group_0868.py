@@ -13,43 +13,46 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0535 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0536 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0537 import (
+from .group_0538 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0539 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0540 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0538 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0570 import PullRequestWebhookType, PullRequestWebhookTypeForResponse
+from .group_0541 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0869 import (
+    WebhookPullRequestLockedPropPullRequestType,
+    WebhookPullRequestLockedPropPullRequestTypeForResponse,
+)
 
 
-class WebhookPullRequestOpenedType(TypedDict):
-    """pull_request opened event"""
+class WebhookPullRequestLockedType(TypedDict):
+    """pull_request locked event"""
 
-    action: Literal["opened"]
+    action: Literal["locked"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     number: int
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    pull_request: PullRequestWebhookType
+    pull_request: WebhookPullRequestLockedPropPullRequestType
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookPullRequestOpenedTypeForResponse(TypedDict):
-    """pull_request opened event"""
+class WebhookPullRequestLockedTypeForResponse(TypedDict):
+    """pull_request locked event"""
 
-    action: Literal["opened"]
+    action: Literal["locked"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     number: int
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    pull_request: PullRequestWebhookTypeForResponse
+    pull_request: WebhookPullRequestLockedPropPullRequestTypeForResponse
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookPullRequestOpenedType",
-    "WebhookPullRequestOpenedTypeForResponse",
+    "WebhookPullRequestLockedType",
+    "WebhookPullRequestLockedTypeForResponse",
 )

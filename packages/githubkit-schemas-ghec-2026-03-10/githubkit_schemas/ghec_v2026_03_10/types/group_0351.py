@@ -10,51 +10,56 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ConcurrencyGroupListType(TypedDict):
-    """Concurrency Group List
+class ActionsCacheListType(TypedDict):
+    """Repository actions caches
 
-    A list of active concurrency groups for a repository.
+    Repository actions caches
     """
 
     total_count: int
-    concurrency_groups: list[ConcurrencyGroupListPropConcurrencyGroupsItemsType]
+    actions_caches: list[ActionsCacheListPropActionsCachesItemsType]
 
 
-class ConcurrencyGroupListTypeForResponse(TypedDict):
-    """Concurrency Group List
+class ActionsCacheListTypeForResponse(TypedDict):
+    """Repository actions caches
 
-    A list of active concurrency groups for a repository.
+    Repository actions caches
     """
 
     total_count: int
-    concurrency_groups: list[
-        ConcurrencyGroupListPropConcurrencyGroupsItemsTypeForResponse
-    ]
+    actions_caches: list[ActionsCacheListPropActionsCachesItemsTypeForResponse]
 
 
-class ConcurrencyGroupListPropConcurrencyGroupsItemsType(TypedDict):
-    """ConcurrencyGroupListPropConcurrencyGroupsItems"""
+class ActionsCacheListPropActionsCachesItemsType(TypedDict):
+    """ActionsCacheListPropActionsCachesItems"""
 
-    group_name: str
-    group_url: str
-    last_acquired_at: Union[_dt.datetime, None]
+    id: NotRequired[int]
+    ref: NotRequired[str]
+    key: NotRequired[str]
+    version: NotRequired[str]
+    last_accessed_at: NotRequired[_dt.datetime]
+    created_at: NotRequired[_dt.datetime]
+    size_in_bytes: NotRequired[int]
 
 
-class ConcurrencyGroupListPropConcurrencyGroupsItemsTypeForResponse(TypedDict):
-    """ConcurrencyGroupListPropConcurrencyGroupsItems"""
+class ActionsCacheListPropActionsCachesItemsTypeForResponse(TypedDict):
+    """ActionsCacheListPropActionsCachesItems"""
 
-    group_name: str
-    group_url: str
-    last_acquired_at: Union[str, None]
+    id: NotRequired[int]
+    ref: NotRequired[str]
+    key: NotRequired[str]
+    version: NotRequired[str]
+    last_accessed_at: NotRequired[str]
+    created_at: NotRequired[str]
+    size_in_bytes: NotRequired[int]
 
 
 __all__ = (
-    "ConcurrencyGroupListPropConcurrencyGroupsItemsType",
-    "ConcurrencyGroupListPropConcurrencyGroupsItemsTypeForResponse",
-    "ConcurrencyGroupListType",
-    "ConcurrencyGroupListTypeForResponse",
+    "ActionsCacheListPropActionsCachesItemsType",
+    "ActionsCacheListPropActionsCachesItemsTypeForResponse",
+    "ActionsCacheListType",
+    "ActionsCacheListTypeForResponse",
 )

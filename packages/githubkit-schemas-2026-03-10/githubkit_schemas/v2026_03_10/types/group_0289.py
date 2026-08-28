@@ -9,93 +9,64 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
-class ConcurrencyGroupRunListType(TypedDict):
-    """Concurrency Group Run List
 
-    A list of concurrency groups associated with a workflow run.
+class EnvironmentApprovalsType(TypedDict):
+    """Environment Approval
+
+    An entry in the reviews log for environment deployments
     """
 
-    total_count: int
-    concurrency_groups: list[ConcurrencyGroupRunListPropConcurrencyGroupsItemsType]
+    environments: list[EnvironmentApprovalsPropEnvironmentsItemsType]
+    state: Literal["approved", "rejected", "pending"]
+    user: SimpleUserType
+    comment: str
 
 
-class ConcurrencyGroupRunListTypeForResponse(TypedDict):
-    """Concurrency Group Run List
+class EnvironmentApprovalsTypeForResponse(TypedDict):
+    """Environment Approval
 
-    A list of concurrency groups associated with a workflow run.
+    An entry in the reviews log for environment deployments
     """
 
-    total_count: int
-    concurrency_groups: list[
-        ConcurrencyGroupRunListPropConcurrencyGroupsItemsTypeForResponse
-    ]
+    environments: list[EnvironmentApprovalsPropEnvironmentsItemsTypeForResponse]
+    state: Literal["approved", "rejected", "pending"]
+    user: SimpleUserTypeForResponse
+    comment: str
 
 
-class ConcurrencyGroupRunListPropConcurrencyGroupsItemsType(TypedDict):
-    """ConcurrencyGroupRunListPropConcurrencyGroupsItems"""
+class EnvironmentApprovalsPropEnvironmentsItemsType(TypedDict):
+    """EnvironmentApprovalsPropEnvironmentsItems"""
 
-    group_name: str
-    group_url: str
-    group_members: list[
-        ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItemsType
-    ]
-
-
-class ConcurrencyGroupRunListPropConcurrencyGroupsItemsTypeForResponse(TypedDict):
-    """ConcurrencyGroupRunListPropConcurrencyGroupsItems"""
-
-    group_name: str
-    group_url: str
-    group_members: list[
-        ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItemsTypeForResponse
-    ]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    name: NotRequired[str]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
 
 
-class ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItemsType(
-    TypedDict
-):
-    """ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItems"""
+class EnvironmentApprovalsPropEnvironmentsItemsTypeForResponse(TypedDict):
+    """EnvironmentApprovalsPropEnvironmentsItems"""
 
-    run_id: int
-    run_name: str
-    run_url: Union[str, None]
-    run_html_url: Union[str, None]
-    position: int
-    position_url: str
-    job_id: NotRequired[Union[int, None]]
-    job_name: NotRequired[Union[str, None]]
-    job_url: NotRequired[Union[str, None]]
-    job_html_url: NotRequired[Union[str, None]]
-    status: Literal["in_progress", "pending"]
-
-
-class ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItemsTypeForResponse(
-    TypedDict
-):
-    """ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItems"""
-
-    run_id: int
-    run_name: str
-    run_url: Union[str, None]
-    run_html_url: Union[str, None]
-    position: int
-    position_url: str
-    job_id: NotRequired[Union[int, None]]
-    job_name: NotRequired[Union[str, None]]
-    job_url: NotRequired[Union[str, None]]
-    job_html_url: NotRequired[Union[str, None]]
-    status: Literal["in_progress", "pending"]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    name: NotRequired[str]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
 
 
 __all__ = (
-    "ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItemsType",
-    "ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItemsTypeForResponse",
-    "ConcurrencyGroupRunListPropConcurrencyGroupsItemsType",
-    "ConcurrencyGroupRunListPropConcurrencyGroupsItemsTypeForResponse",
-    "ConcurrencyGroupRunListType",
-    "ConcurrencyGroupRunListTypeForResponse",
+    "EnvironmentApprovalsPropEnvironmentsItemsType",
+    "EnvironmentApprovalsPropEnvironmentsItemsTypeForResponse",
+    "EnvironmentApprovalsType",
+    "EnvironmentApprovalsTypeForResponse",
 )

@@ -27,11 +27,12 @@ if TYPE_CHECKING:
     from githubkit.typing import Missing
     from githubkit.utils import UNSET
 
-    from ..models import EnterpriseTeam
+    from ..models import EnterpriseTeam, EnterpriseTeamWithMemberCount
     from ..types import (
         EnterprisesEnterpriseTeamsPostBodyType,
         EnterprisesEnterpriseTeamsTeamSlugPatchBodyType,
         EnterpriseTeamTypeForResponse,
+        EnterpriseTeamWithMemberCountTypeForResponse,
     )
 
 
@@ -283,7 +284,9 @@ class EnterpriseTeamsClient:
         *,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
-    ) -> Response[EnterpriseTeam, EnterpriseTeamTypeForResponse]:
+    ) -> Response[
+        EnterpriseTeamWithMemberCount, EnterpriseTeamWithMemberCountTypeForResponse
+    ]:
         """enterprise-teams/get
 
         GET /enterprises/{enterprise}/teams/{team_slug}
@@ -293,7 +296,7 @@ class EnterpriseTeamsClient:
         See also: https://docs.github.com/rest/enterprise-teams/enterprise-teams#get-an-enterprise-team
         """
 
-        from ..models import BasicError, EnterpriseTeam
+        from ..models import BasicError, EnterpriseTeamWithMemberCount
 
         url = f"/enterprises/{enterprise}/teams/{team_slug}"
 
@@ -304,7 +307,7 @@ class EnterpriseTeamsClient:
             url,
             headers=exclude_unset(headers),
             stream=stream,
-            response_model=EnterpriseTeam,
+            response_model=EnterpriseTeamWithMemberCount,
             error_models={
                 "403": BasicError,
             },
@@ -317,7 +320,9 @@ class EnterpriseTeamsClient:
         *,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
-    ) -> Response[EnterpriseTeam, EnterpriseTeamTypeForResponse]:
+    ) -> Response[
+        EnterpriseTeamWithMemberCount, EnterpriseTeamWithMemberCountTypeForResponse
+    ]:
         """enterprise-teams/get
 
         GET /enterprises/{enterprise}/teams/{team_slug}
@@ -327,7 +332,7 @@ class EnterpriseTeamsClient:
         See also: https://docs.github.com/rest/enterprise-teams/enterprise-teams#get-an-enterprise-team
         """
 
-        from ..models import BasicError, EnterpriseTeam
+        from ..models import BasicError, EnterpriseTeamWithMemberCount
 
         url = f"/enterprises/{enterprise}/teams/{team_slug}"
 
@@ -338,7 +343,7 @@ class EnterpriseTeamsClient:
             url,
             headers=exclude_unset(headers),
             stream=stream,
-            response_model=EnterpriseTeam,
+            response_model=EnterpriseTeamWithMemberCount,
             error_models={
                 "403": BasicError,
             },

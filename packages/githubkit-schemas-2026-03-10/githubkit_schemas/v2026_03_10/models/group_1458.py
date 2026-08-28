@@ -9,41 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0494 import PullRequestStackPullRequest
 
+class ReposOwnerRepoStacksPostResponse422(GitHubModel):
+    """Validation Error
 
-class ReposOwnerRepoStacksStackNumberAddPostResponse200(GitHubModel):
-    """ReposOwnerRepoStacksStackNumberAddPostResponse200"""
+    Validation Error
+    """
 
-    id: int = Field()
-    number: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    base: ReposOwnerRepoStacksStackNumberAddPostResponse200PropBase = Field()
-    open_: bool = Field(
-        alias="open",
-        description="Whether the stack has any open pull request. False when all pull requests are merged or closed.",
+    message: str = Field()
+    documentation_url: str = Field()
+    errors: Missing[list[ReposOwnerRepoStacksPostResponse422PropErrorsItems]] = Field(
+        default=UNSET
     )
-    created_at: _dt.datetime = Field()
-    pull_requests: list[PullRequestStackPullRequest] = Field()
 
 
-class ReposOwnerRepoStacksStackNumberAddPostResponse200PropBase(GitHubModel):
-    """ReposOwnerRepoStacksStackNumberAddPostResponse200PropBase"""
+class ReposOwnerRepoStacksPostResponse422PropErrorsItems(GitHubModel):
+    """ReposOwnerRepoStacksPostResponse422PropErrorsItems"""
 
-    ref: str = Field()
+    resource: Missing[str] = Field(default=UNSET)
+    field: Missing[str] = Field(default=UNSET)
+    message: Missing[str] = Field(default=UNSET)
+    code: str = Field()
+    index: Missing[int] = Field(default=UNSET)
+    value: Missing[Union[str, None, int, None, list[Union[str, int]], None]] = Field(
+        default=UNSET
+    )
 
 
-model_rebuild(ReposOwnerRepoStacksStackNumberAddPostResponse200)
-model_rebuild(ReposOwnerRepoStacksStackNumberAddPostResponse200PropBase)
+model_rebuild(ReposOwnerRepoStacksPostResponse422)
+model_rebuild(ReposOwnerRepoStacksPostResponse422PropErrorsItems)
 
 __all__ = (
-    "ReposOwnerRepoStacksStackNumberAddPostResponse200",
-    "ReposOwnerRepoStacksStackNumberAddPostResponse200PropBase",
+    "ReposOwnerRepoStacksPostResponse422",
+    "ReposOwnerRepoStacksPostResponse422PropErrorsItems",
 )

@@ -36,6 +36,7 @@ if TYPE_CHECKING:
         Repository,
         RepositorySubscription,
         ReposOwnerRepoNotificationsPutResponse202,
+        ReposOwnerRepoStargazersCountGetResponse200,
         SimpleUser,
         Stargazer,
         StarredRepository,
@@ -53,6 +54,7 @@ if TYPE_CHECKING:
         RepositoryTypeForResponse,
         ReposOwnerRepoNotificationsPutBodyType,
         ReposOwnerRepoNotificationsPutResponse202TypeForResponse,
+        ReposOwnerRepoStargazersCountGetResponse200TypeForResponse,
         ReposOwnerRepoSubscriptionPutBodyType,
         SimpleUserTypeForResponse,
         StargazerTypeForResponse,
@@ -1568,6 +1570,80 @@ class ActivityClient:
             response_model=Union[list[SimpleUser], list[Stargazer]],
             error_models={
                 "422": ValidationError,
+            },
+        )
+
+    def get_stargazer_count_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        ReposOwnerRepoStargazersCountGetResponse200,
+        ReposOwnerRepoStargazersCountGetResponse200TypeForResponse,
+    ]:
+        """activity/get-stargazer-count-for-repo
+
+        GET /repos/{owner}/{repo}/stargazers/count
+
+        Gets the current number of users who have starred the repository. Users who previously starred the repository but later removed their star are not included.
+
+        See also: https://docs.github.com/rest/activity/starring#get-stargazer-count
+        """
+
+        from ..models import BasicError, ReposOwnerRepoStargazersCountGetResponse200
+
+        url = f"/repos/{owner}/{repo}/stargazers/count"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ReposOwnerRepoStargazersCountGetResponse200,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_stargazer_count_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        ReposOwnerRepoStargazersCountGetResponse200,
+        ReposOwnerRepoStargazersCountGetResponse200TypeForResponse,
+    ]:
+        """activity/get-stargazer-count-for-repo
+
+        GET /repos/{owner}/{repo}/stargazers/count
+
+        Gets the current number of users who have starred the repository. Users who previously starred the repository but later removed their star are not included.
+
+        See also: https://docs.github.com/rest/activity/starring#get-stargazer-count
+        """
+
+        from ..models import BasicError, ReposOwnerRepoStargazersCountGetResponse200
+
+        url = f"/repos/{owner}/{repo}/stargazers/count"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ReposOwnerRepoStargazersCountGetResponse200,
+            error_models={
+                "404": BasicError,
             },
         )
 

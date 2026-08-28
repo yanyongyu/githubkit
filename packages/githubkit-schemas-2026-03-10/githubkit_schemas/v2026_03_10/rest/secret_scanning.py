@@ -269,8 +269,8 @@ class SecretScanningClient:
         push_protection: Missing[Literal["enabled", "disabled"]] = UNSET,
         sort: Missing[Literal["created", "updated", "name"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
-        page: Missing[int] = UNSET,
-        per_page: Missing[int] = UNSET,
+        before: Missing[str] = UNSET,
+        after: Missing[str] = UNSET,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
@@ -297,8 +297,8 @@ class SecretScanningClient:
             "push_protection": push_protection,
             "sort": sort,
             "direction": direction,
-            "page": page,
-            "per_page": per_page,
+            "before": before,
+            "after": after,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -324,8 +324,8 @@ class SecretScanningClient:
         push_protection: Missing[Literal["enabled", "disabled"]] = UNSET,
         sort: Missing[Literal["created", "updated", "name"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
-        page: Missing[int] = UNSET,
-        per_page: Missing[int] = UNSET,
+        before: Missing[str] = UNSET,
+        after: Missing[str] = UNSET,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
@@ -352,8 +352,8 @@ class SecretScanningClient:
             "push_protection": push_protection,
             "sort": sort,
             "direction": direction,
-            "page": page,
-            "per_page": per_page,
+            "before": before,
+            "after": after,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -1766,8 +1766,8 @@ class SecretScanningClient:
         push_protection: Missing[Literal["enabled", "disabled"]] = UNSET,
         sort: Missing[Literal["created", "updated", "name"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
-        page: Missing[int] = UNSET,
-        per_page: Missing[int] = UNSET,
+        before: Missing[str] = UNSET,
+        after: Missing[str] = UNSET,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
@@ -1794,8 +1794,8 @@ class SecretScanningClient:
             "push_protection": push_protection,
             "sort": sort,
             "direction": direction,
-            "page": page,
-            "per_page": per_page,
+            "before": before,
+            "after": after,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -1822,8 +1822,8 @@ class SecretScanningClient:
         push_protection: Missing[Literal["enabled", "disabled"]] = UNSET,
         sort: Missing[Literal["created", "updated", "name"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
-        page: Missing[int] = UNSET,
-        per_page: Missing[int] = UNSET,
+        before: Missing[str] = UNSET,
+        after: Missing[str] = UNSET,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
@@ -1850,8 +1850,8 @@ class SecretScanningClient:
             "push_protection": push_protection,
             "sort": sort,
             "direction": direction,
-            "page": page,
-            "per_page": per_page,
+            "before": before,
+            "after": after,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}

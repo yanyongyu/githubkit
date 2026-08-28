@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,104 +17,60 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
-from .group_0020 import Repository
-from .group_0050 import Milestone
-from .group_0051 import IssueType
-from .group_0052 import ReactionRollup
-from .group_0053 import IssueDependenciesSummary, SubIssuesSummary
-from .group_0056 import IssueComment
-from .group_0057 import IssueFieldValue
-from .group_0059 import IssuePropLabelsItemsOneof1, IssuePropPullRequest
 
+class IssueFieldValue(GitHubModel):
+    """Issue Field Value
 
-class Issue(GitHubModel):
-    """Issue
-
-    Issues are a great way to keep track of tasks, enhancements, and bugs for your
-    projects.
+    A value assigned to an issue field
     """
 
-    id: int = Field()
+    issue_field_id: int = Field(description="Unique identifier for the issue field.")
+    issue_field_name: Missing[str] = Field(
+        default=UNSET, description="The human-readable name of the issue field."
+    )
     node_id: str = Field()
-    url: str = Field(description="URL for the issue")
-    repository_url: str = Field()
-    labels_url: str = Field()
-    comments_url: str = Field()
-    events_url: str = Field()
-    html_url: str = Field()
-    number: int = Field(
-        description="Number uniquely identifying the issue within its repository"
+    data_type: Literal["text", "single_select", "multi_select", "number", "date"] = (
+        Field(description="The data type of the issue field")
     )
-    state: str = Field(description="State of the issue; either 'open' or 'closed'")
-    state_reason: Missing[
-        Union[Literal["completed", "reopened", "not_planned", "duplicate"], None]
-    ] = Field(default=UNSET, description="The reason for the current state")
-    title: str = Field(description="Title of the issue")
-    body: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Contents of the issue"
+    value: Union[str, float, int, None] = Field(
+        description="The value of the issue field"
     )
-    user: Union[SimpleUser, None] = Field()
-    labels: list[Union[str, IssuePropLabelsItemsOneof1]] = Field(
-        description="Labels to associate with this issue; pass one or more label names to replace the set of labels on this issue; send an empty array to clear all labels from the issue; note that the labels are silently dropped for users without push access to the repository"
-    )
-    assignees: Missing[list[SimpleUser]] = Field(default=UNSET)
-    milestone: Union[Milestone, None] = Field()
-    locked: bool = Field()
-    active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
-    comments: int = Field()
-    pull_request: Missing[IssuePropPullRequest] = Field(default=UNSET)
-    closed_at: Union[_dt.datetime, None] = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    draft: Missing[bool] = Field(default=UNSET)
-    closed_by: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
-    body_html: Missing[Union[str, None]] = Field(default=UNSET)
-    body_text: Missing[Union[str, None]] = Field(default=UNSET)
-    timeline_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Union[IssueType, None]] = Field(
-        default=UNSET,
-        title="Issue Type",
-        description="The type assigned to the issue. This is only present for issues in repositories where issue types are supported.",
-    )
-    repository: Missing[Repository] = Field(
-        default=UNSET, title="Repository", description="A repository on GitHub."
-    )
-    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
-        default=UNSET
-    )
-    author_association: Missing[
-        Literal[
-            "COLLABORATOR",
-            "CONTRIBUTOR",
-            "FIRST_TIMER",
-            "FIRST_TIME_CONTRIBUTOR",
-            "MANNEQUIN",
-            "MEMBER",
-            "NONE",
-            "OWNER",
-        ]
+    single_select_option: Missing[
+        Union[IssueFieldValuePropSingleSelectOption, None]
     ] = Field(
         default=UNSET,
-        title="author_association",
-        description="How the author is associated with the repository.",
+        description="Details about the selected option (only present for single_select fields)",
     )
-    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
-    sub_issues_summary: Missing[SubIssuesSummary] = Field(
-        default=UNSET, title="Sub-issues Summary"
-    )
-    parent_issue_url: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="URL to get the parent issue of this issue, if it is a sub-issue",
-    )
-    pinned_comment: Missing[Union[IssueComment, None]] = Field(default=UNSET)
-    issue_dependencies_summary: Missing[IssueDependenciesSummary] = Field(
-        default=UNSET, title="Issue Dependencies Summary"
-    )
-    issue_field_values: Missing[list[IssueFieldValue]] = Field(default=UNSET)
+    multi_select_options: Missing[
+        Union[list[IssueFieldValuePropMultiSelectOptionsItems], None]
+    ] = Field(default=UNSET, description="Details about the selected options")
 
 
-model_rebuild(Issue)
+class IssueFieldValuePropSingleSelectOption(GitHubModel):
+    """IssueFieldValuePropSingleSelectOption
 
-__all__ = ("Issue",)
+    Details about the selected option (only present for single_select fields)
+    """
+
+    id: int = Field(description="Unique identifier for the option.")
+    name: str = Field(description="The name of the option")
+    color: str = Field(description="The color of the option")
+
+
+class IssueFieldValuePropMultiSelectOptionsItems(GitHubModel):
+    """IssueFieldValuePropMultiSelectOptionsItems"""
+
+    id: int = Field(description="Unique identifier for the option.")
+    name: str = Field(description="The name of the option")
+    color: str = Field(description="The color of the option")
+
+
+model_rebuild(IssueFieldValue)
+model_rebuild(IssueFieldValuePropSingleSelectOption)
+model_rebuild(IssueFieldValuePropMultiSelectOptionsItems)
+
+__all__ = (
+    "IssueFieldValue",
+    "IssueFieldValuePropMultiSelectOptionsItems",
+    "IssueFieldValuePropSingleSelectOption",
+)

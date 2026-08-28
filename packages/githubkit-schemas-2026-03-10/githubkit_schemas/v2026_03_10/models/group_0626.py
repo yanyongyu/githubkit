@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0367 import DependabotAlert
-from .group_0535 import EnterpriseWebhooks
-from .group_0536 import SimpleInstallation
-from .group_0537 import OrganizationSimpleWebhooks
-from .group_0538 import RepositoryWebhooks
+from .group_0368 import DependabotAlert
+from .group_0538 import EnterpriseWebhooks
+from .group_0539 import SimpleInstallation
+from .group_0540 import OrganizationSimpleWebhooks
+from .group_0541 import RepositoryWebhooks
 
 
-class WebhookDependabotAlertFixed(GitHubModel):
-    """Dependabot alert fixed event"""
+class WebhookDependabotAlertAutoReopened(GitHubModel):
+    """Dependabot alert auto-reopened event"""
 
-    action: Literal["fixed"] = Field()
+    action: Literal["auto_reopened"] = Field()
     alert: DependabotAlert = Field(description="A Dependabot alert.")
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
@@ -52,6 +52,6 @@ class WebhookDependabotAlertFixed(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookDependabotAlertFixed)
+model_rebuild(WebhookDependabotAlertAutoReopened)
 
-__all__ = ("WebhookDependabotAlertFixed",)
+__all__ = ("WebhookDependabotAlertAutoReopened",)

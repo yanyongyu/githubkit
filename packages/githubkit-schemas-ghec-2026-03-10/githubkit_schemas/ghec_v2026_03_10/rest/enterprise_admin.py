@@ -52,6 +52,7 @@ if TYPE_CHECKING:
         EnterprisesEnterpriseActionsRunnersGetResponse200,
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200,
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+        EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202,
         EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202,
         EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostResponse202,
         EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202,
@@ -131,6 +132,7 @@ if TYPE_CHECKING:
         EnterprisesEnterpriseAuditLogStreamsPostBodyType,
         EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType,
         EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBodyType,
+        EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202TypeForResponse,
         EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBodyType,
         EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202TypeForResponse,
         EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBodyType,
@@ -5882,6 +5884,106 @@ class EnterpriseAdminClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=GetConsumedLicenses,
+        )
+
+    def revoke_delegated_credential_authorizations(
+        self,
+        enterprise: str,
+        *,
+        integration_id: Missing[int] = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202,
+        EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202TypeForResponse,
+    ]:
+        """enterprise-admin/revoke-delegated-credential-authorizations
+
+        DELETE /enterprises/{enterprise}/credential-authorizations
+
+        Queues revocation of every active organization credential authorization created through enterprise
+        delegation for the enterprise. Credential authorizations created through SAML or other flows are not affected.
+
+        The authenticated GitHub App must be owned by the enterprise or one of its organizations,
+        installed on the enterprise, and have the `enterprise_credentials:write` permission.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/credential-authorizations#revoke-enterprise-delegated-credential-authorizations
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202,
+        )
+
+        url = f"/enterprises/{enterprise}/credential-authorizations"
+
+        params = {
+            "integration_id": integration_id,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_revoke_delegated_credential_authorizations(
+        self,
+        enterprise: str,
+        *,
+        integration_id: Missing[int] = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202,
+        EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202TypeForResponse,
+    ]:
+        """enterprise-admin/revoke-delegated-credential-authorizations
+
+        DELETE /enterprises/{enterprise}/credential-authorizations
+
+        Queues revocation of every active organization credential authorization created through enterprise
+        delegation for the enterprise. Credential authorizations created through SAML or other flows are not affected.
+
+        The authenticated GitHub App must be owned by the enterprise or one of its organizations,
+        installed on the enterprise, and have the `enterprise_credentials:write` permission.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/credential-authorizations#revoke-enterprise-delegated-credential-authorizations
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202,
+        )
+
+        url = f"/enterprises/{enterprise}/credential-authorizations"
+
+        params = {
+            "integration_id": integration_id,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
         )
 
     @overload

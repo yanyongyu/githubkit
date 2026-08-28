@@ -14,13 +14,13 @@ from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0399 import IssueReferenceType, IssueReferenceTypeForResponse
+from .group_0400 import IssueReferenceType, IssueReferenceTypeForResponse
 
 
-class BlockingRemovedIssueEventType(TypedDict):
-    """Blocking Removed Issue Event
+class BlockingAddedIssueEventType(TypedDict):
+    """Blocking Added Issue Event
 
-    Blocking Removed Issue Event
+    Blocking Added Issue Event
     """
 
     id: int
@@ -35,10 +35,10 @@ class BlockingRemovedIssueEventType(TypedDict):
     blocking: Union[None, IssueReferenceType, None]
 
 
-class BlockingRemovedIssueEventTypeForResponse(TypedDict):
-    """Blocking Removed Issue Event
+class BlockingAddedIssueEventTypeForResponse(TypedDict):
+    """Blocking Added Issue Event
 
-    Blocking Removed Issue Event
+    Blocking Added Issue Event
     """
 
     id: int
@@ -54,6 +54,6 @@ class BlockingRemovedIssueEventTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "BlockingRemovedIssueEventType",
-    "BlockingRemovedIssueEventTypeForResponse",
+    "BlockingAddedIssueEventType",
+    "BlockingAddedIssueEventTypeForResponse",
 )

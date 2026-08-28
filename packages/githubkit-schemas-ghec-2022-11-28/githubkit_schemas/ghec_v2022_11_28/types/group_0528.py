@@ -9,109 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import TypedDict
 
-
-class PullRequestMergeAsyncResultType(TypedDict):
-    """Pull Request Merge Async Result
-
-    Pull Request Merge Async Result
-    """
-
-    status: Literal["pending", "merged", "enqueued", "failed"]
-    details: Union[
-        PullRequestMergeAsyncResultPropDetailsOneof0Type,
-        PullRequestMergeAsyncResultPropDetailsOneof1Type,
-        PullRequestMergeAsyncResultPropDetailsOneof2Type,
-    ]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
 
-class PullRequestMergeAsyncResultTypeForResponse(TypedDict):
-    """Pull Request Merge Async Result
+class PullRequestPropHeadType(TypedDict):
+    """PullRequestPropHead"""
 
-    Pull Request Merge Async Result
-    """
-
-    status: Literal["pending", "merged", "enqueued", "failed"]
-    details: Union[
-        PullRequestMergeAsyncResultPropDetailsOneof0TypeForResponse,
-        PullRequestMergeAsyncResultPropDetailsOneof1TypeForResponse,
-        PullRequestMergeAsyncResultPropDetailsOneof2TypeForResponse,
-    ]
-
-
-class PullRequestMergeAsyncResultPropDetailsOneof0Type(TypedDict):
-    """PullRequestMergeAsyncResultPropDetailsOneof0
-
-    When an asynchronous merge request was created or already existed
-    """
-
-    message: str
-    uuid: str
-    merge_method: Literal["default", "merge", "squash", "rebase"]
-    merge_action: Literal["default", "merge_queue", "direct_merge"]
-    expected_head_sha: str
-
-
-class PullRequestMergeAsyncResultPropDetailsOneof0TypeForResponse(TypedDict):
-    """PullRequestMergeAsyncResultPropDetailsOneof0
-
-    When an asynchronous merge request was created or already existed
-    """
-
-    message: str
-    uuid: str
-    merge_method: Literal["default", "merge", "squash", "rebase"]
-    merge_action: Literal["default", "merge_queue", "direct_merge"]
-    expected_head_sha: str
-
-
-class PullRequestMergeAsyncResultPropDetailsOneof1Type(TypedDict):
-    """PullRequestMergeAsyncResultPropDetailsOneof1
-
-    When the pull request cannot be merged
-    """
-
-    message: str
-
-
-class PullRequestMergeAsyncResultPropDetailsOneof1TypeForResponse(TypedDict):
-    """PullRequestMergeAsyncResultPropDetailsOneof1
-
-    When the pull request cannot be merged
-    """
-
-    message: str
-
-
-class PullRequestMergeAsyncResultPropDetailsOneof2Type(TypedDict):
-    """PullRequestMergeAsyncResultPropDetailsOneof2
-
-    When the pull request is already merged
-    """
-
-    message: str
+    label: Union[str, None]
+    ref: str
+    repo: Union[RepositoryType, None]
     sha: str
+    user: Union[SimpleUserType, None]
 
 
-class PullRequestMergeAsyncResultPropDetailsOneof2TypeForResponse(TypedDict):
-    """PullRequestMergeAsyncResultPropDetailsOneof2
+class PullRequestPropHeadTypeForResponse(TypedDict):
+    """PullRequestPropHead"""
 
-    When the pull request is already merged
-    """
-
-    message: str
+    label: Union[str, None]
+    ref: str
+    repo: Union[RepositoryTypeForResponse, None]
     sha: str
+    user: Union[SimpleUserTypeForResponse, None]
+
+
+class PullRequestPropBaseType(TypedDict):
+    """PullRequestPropBase"""
+
+    label: str
+    ref: str
+    repo: RepositoryType
+    sha: str
+    user: SimpleUserType
+
+
+class PullRequestPropBaseTypeForResponse(TypedDict):
+    """PullRequestPropBase"""
+
+    label: str
+    ref: str
+    repo: RepositoryTypeForResponse
+    sha: str
+    user: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "PullRequestMergeAsyncResultPropDetailsOneof0Type",
-    "PullRequestMergeAsyncResultPropDetailsOneof0TypeForResponse",
-    "PullRequestMergeAsyncResultPropDetailsOneof1Type",
-    "PullRequestMergeAsyncResultPropDetailsOneof1TypeForResponse",
-    "PullRequestMergeAsyncResultPropDetailsOneof2Type",
-    "PullRequestMergeAsyncResultPropDetailsOneof2TypeForResponse",
-    "PullRequestMergeAsyncResultType",
-    "PullRequestMergeAsyncResultTypeForResponse",
+    "PullRequestPropBaseType",
+    "PullRequestPropBaseTypeForResponse",
+    "PullRequestPropHeadType",
+    "PullRequestPropHeadTypeForResponse",
 )

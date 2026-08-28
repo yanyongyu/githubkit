@@ -18,71 +18,26 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgCopilotSpacesPostBody(GitHubModel):
-    """OrgsOrgCopilotSpacesPostBody"""
+class OrgsOrgCodespacesSecretsSecretNamePutBody(GitHubModel):
+    """OrgsOrgCodespacesSecretsSecretNamePutBody"""
 
-    name: str = Field(description="The name of the Copilot Space.")
-    description: Missing[str] = Field(
-        default=UNSET, description="A description of the Copilot Space."
-    )
-    general_instructions: Missing[str] = Field(
-        max_length=4000,
+    encrypted_value: Missing[str] = Field(
+        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
         default=UNSET,
-        description="General instructions for the Copilot Space.",
+        description="The value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an organization public key](https://docs.github.com/enterprise-cloud@latest/rest/codespaces/organization-secrets#get-an-organization-public-key) endpoint.",
     )
-    base_role: Missing[Literal["reader", "writer", "admin", "no_access"]] = Field(
+    key_id: Missing[str] = Field(
+        default=UNSET, description="The ID of the key you used to encrypt the secret."
+    )
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="Which type of organization repositories have access to the organization secret. `selected` means only the repositories specified by `selected_repository_ids` can access the secret."
+    )
+    selected_repository_ids: Missing[list[int]] = Field(
         default=UNSET,
-        description="The base role that determines default permissions for organization members.\n- `no_access`: No default access (default)\n- `reader`: Organization members can read the space\n- `writer`: Organization members can read and edit the space\n- `admin`: Organization members have full admin access to the space",
+        description="An array of repository IDs that can access the organization secret. You can only provide a list of repository IDs when the `visibility` is set to `selected`. You can manage the list of selected repositories using the [List selected repositories for an organization secret](https://docs.github.com/enterprise-cloud@latest/rest/codespaces/organization-secrets#list-selected-repositories-for-an-organization-secret), [Set selected repositories for an organization secret](https://docs.github.com/enterprise-cloud@latest/rest/codespaces/organization-secrets#set-selected-repositories-for-an-organization-secret), and [Remove selected repository from an organization secret](https://docs.github.com/enterprise-cloud@latest/rest/codespaces/organization-secrets#remove-selected-repository-from-an-organization-secret) endpoints.",
     )
-    resources_attributes: Missing[
-        list[OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItems]
-    ] = Field(default=UNSET, description="Resources to attach to the space.")
 
 
-class OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItems(GitHubModel):
-    """OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItems"""
+model_rebuild(OrgsOrgCodespacesSecretsSecretNamePutBody)
 
-    resource_type: Missing[
-        Literal[
-            "repository",
-            "github_file",
-            "free_text",
-            "github_issue",
-            "github_pull_request",
-            "media_content",
-            "uploaded_text_file",
-        ]
-    ] = Field(default=UNSET, description="The type of resource.")
-    metadata: Missing[
-        OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata
-    ] = Field(default=UNSET, description="Metadata specific to the resource type.")
-
-
-class OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata(GitHubModel):
-    """OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata
-
-    Metadata specific to the resource type.
-    """
-
-    repository_id: Missing[int] = Field(
-        default=UNSET, description="Repository ID for repository or file resources."
-    )
-    file_path: Missing[str] = Field(
-        default=UNSET, description="File path for file resources."
-    )
-    text: Missing[str] = Field(
-        default=UNSET, description="Text content for free text resources."
-    )
-    name: Missing[str] = Field(default=UNSET, description="Name for the resource.")
-    number: Missing[int] = Field(default=UNSET, description="Issue or PR number.")
-
-
-model_rebuild(OrgsOrgCopilotSpacesPostBody)
-model_rebuild(OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItems)
-model_rebuild(OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata)
-
-__all__ = (
-    "OrgsOrgCopilotSpacesPostBody",
-    "OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItems",
-    "OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata",
-)
+__all__ = ("OrgsOrgCodespacesSecretsSecretNamePutBody",)

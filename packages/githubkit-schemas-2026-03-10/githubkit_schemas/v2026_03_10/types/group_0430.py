@@ -10,43 +10,87 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0431 import (
-    TimelineCrossReferencedEventPropSourceType,
-    TimelineCrossReferencedEventPropSourceTypeForResponse,
-)
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0053 import ReactionRollupType, ReactionRollupTypeForResponse
+from .group_0055 import PinnedIssueCommentType, PinnedIssueCommentTypeForResponse
+from .group_0056 import IssueCommentMinimizedType, IssueCommentMinimizedTypeForResponse
 
 
-class TimelineCrossReferencedEventType(TypedDict):
-    """Timeline Cross Referenced Event
+class TimelineCommentEventType(TypedDict):
+    """Timeline Comment Event
 
-    Timeline Cross Referenced Event
+    Timeline Comment Event
     """
 
-    event: Literal["cross-referenced"]
-    actor: NotRequired[SimpleUserType]
+    event: Literal["commented"]
+    actor: SimpleUserType
+    id: int
+    node_id: str
+    url: str
+    body: NotRequired[str]
+    body_text: NotRequired[str]
+    body_html: NotRequired[str]
+    html_url: str
+    user: SimpleUserType
     created_at: _dt.datetime
     updated_at: _dt.datetime
-    source: TimelineCrossReferencedEventPropSourceType
+    issue_url: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    reactions: NotRequired[ReactionRollupType]
+    pin: NotRequired[Union[PinnedIssueCommentType, None]]
+    minimized: NotRequired[Union[IssueCommentMinimizedType, None]]
 
 
-class TimelineCrossReferencedEventTypeForResponse(TypedDict):
-    """Timeline Cross Referenced Event
+class TimelineCommentEventTypeForResponse(TypedDict):
+    """Timeline Comment Event
 
-    Timeline Cross Referenced Event
+    Timeline Comment Event
     """
 
-    event: Literal["cross-referenced"]
-    actor: NotRequired[SimpleUserTypeForResponse]
+    event: Literal["commented"]
+    actor: SimpleUserTypeForResponse
+    id: int
+    node_id: str
+    url: str
+    body: NotRequired[str]
+    body_text: NotRequired[str]
+    body_html: NotRequired[str]
+    html_url: str
+    user: SimpleUserTypeForResponse
     created_at: str
     updated_at: str
-    source: TimelineCrossReferencedEventPropSourceTypeForResponse
+    issue_url: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
+    reactions: NotRequired[ReactionRollupTypeForResponse]
+    pin: NotRequired[Union[PinnedIssueCommentTypeForResponse, None]]
+    minimized: NotRequired[Union[IssueCommentMinimizedTypeForResponse, None]]
 
 
 __all__ = (
-    "TimelineCrossReferencedEventType",
-    "TimelineCrossReferencedEventTypeForResponse",
+    "TimelineCommentEventType",
+    "TimelineCommentEventTypeForResponse",
 )

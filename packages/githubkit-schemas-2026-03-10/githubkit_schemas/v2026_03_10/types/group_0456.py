@@ -9,111 +9,109 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0052 import ReactionRollupType, ReactionRollupTypeForResponse
-from .group_0457 import (
-    ReviewCommentPropLinksType,
-    ReviewCommentPropLinksTypeForResponse,
-)
+from typing_extensions import TypedDict
 
 
-class ReviewCommentType(TypedDict):
-    """Legacy Review Comment
+class PullRequestMergeAsyncResultType(TypedDict):
+    """Pull Request Merge Async Result
 
-    Legacy Review Comment
+    Pull Request Merge Async Result
     """
 
-    url: str
-    pull_request_review_id: Union[int, None]
-    id: int
-    node_id: str
-    diff_hunk: str
-    path: str
-    position: Union[int, None]
-    original_position: int
-    commit_id: str
-    original_commit_id: str
-    in_reply_to_id: NotRequired[int]
-    user: Union[SimpleUserType, None]
-    body: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    html_url: str
-    pull_request_url: str
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
+    status: Literal["pending", "merged", "enqueued", "failed"]
+    details: Union[
+        PullRequestMergeAsyncResultPropDetailsOneof0Type,
+        PullRequestMergeAsyncResultPropDetailsOneof1Type,
+        PullRequestMergeAsyncResultPropDetailsOneof2Type,
     ]
-    links: ReviewCommentPropLinksType
-    body_text: NotRequired[str]
-    body_html: NotRequired[str]
-    reactions: NotRequired[ReactionRollupType]
-    side: NotRequired[Literal["LEFT", "RIGHT"]]
-    start_side: NotRequired[Union[Literal["LEFT", "RIGHT"], None]]
-    line: NotRequired[int]
-    original_line: NotRequired[int]
-    start_line: NotRequired[Union[int, None]]
-    original_start_line: NotRequired[Union[int, None]]
-    subject_type: NotRequired[Literal["line", "file"]]
 
 
-class ReviewCommentTypeForResponse(TypedDict):
-    """Legacy Review Comment
+class PullRequestMergeAsyncResultTypeForResponse(TypedDict):
+    """Pull Request Merge Async Result
 
-    Legacy Review Comment
+    Pull Request Merge Async Result
     """
 
-    url: str
-    pull_request_review_id: Union[int, None]
-    id: int
-    node_id: str
-    diff_hunk: str
-    path: str
-    position: Union[int, None]
-    original_position: int
-    commit_id: str
-    original_commit_id: str
-    in_reply_to_id: NotRequired[int]
-    user: Union[SimpleUserTypeForResponse, None]
-    body: str
-    created_at: str
-    updated_at: str
-    html_url: str
-    pull_request_url: str
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
+    status: Literal["pending", "merged", "enqueued", "failed"]
+    details: Union[
+        PullRequestMergeAsyncResultPropDetailsOneof0TypeForResponse,
+        PullRequestMergeAsyncResultPropDetailsOneof1TypeForResponse,
+        PullRequestMergeAsyncResultPropDetailsOneof2TypeForResponse,
     ]
-    links: ReviewCommentPropLinksTypeForResponse
-    body_text: NotRequired[str]
-    body_html: NotRequired[str]
-    reactions: NotRequired[ReactionRollupTypeForResponse]
-    side: NotRequired[Literal["LEFT", "RIGHT"]]
-    start_side: NotRequired[Union[Literal["LEFT", "RIGHT"], None]]
-    line: NotRequired[int]
-    original_line: NotRequired[int]
-    start_line: NotRequired[Union[int, None]]
-    original_start_line: NotRequired[Union[int, None]]
-    subject_type: NotRequired[Literal["line", "file"]]
+
+
+class PullRequestMergeAsyncResultPropDetailsOneof0Type(TypedDict):
+    """PullRequestMergeAsyncResultPropDetailsOneof0
+
+    When an asynchronous merge request was created or already existed
+    """
+
+    message: str
+    uuid: str
+    merge_method: Literal["default", "merge", "squash", "rebase"]
+    merge_action: Literal["default", "merge_queue", "direct_merge"]
+    expected_head_sha: str
+
+
+class PullRequestMergeAsyncResultPropDetailsOneof0TypeForResponse(TypedDict):
+    """PullRequestMergeAsyncResultPropDetailsOneof0
+
+    When an asynchronous merge request was created or already existed
+    """
+
+    message: str
+    uuid: str
+    merge_method: Literal["default", "merge", "squash", "rebase"]
+    merge_action: Literal["default", "merge_queue", "direct_merge"]
+    expected_head_sha: str
+
+
+class PullRequestMergeAsyncResultPropDetailsOneof1Type(TypedDict):
+    """PullRequestMergeAsyncResultPropDetailsOneof1
+
+    When the pull request cannot be merged
+    """
+
+    message: str
+
+
+class PullRequestMergeAsyncResultPropDetailsOneof1TypeForResponse(TypedDict):
+    """PullRequestMergeAsyncResultPropDetailsOneof1
+
+    When the pull request cannot be merged
+    """
+
+    message: str
+
+
+class PullRequestMergeAsyncResultPropDetailsOneof2Type(TypedDict):
+    """PullRequestMergeAsyncResultPropDetailsOneof2
+
+    When the pull request is already merged
+    """
+
+    message: str
+    sha: str
+
+
+class PullRequestMergeAsyncResultPropDetailsOneof2TypeForResponse(TypedDict):
+    """PullRequestMergeAsyncResultPropDetailsOneof2
+
+    When the pull request is already merged
+    """
+
+    message: str
+    sha: str
 
 
 __all__ = (
-    "ReviewCommentType",
-    "ReviewCommentTypeForResponse",
+    "PullRequestMergeAsyncResultPropDetailsOneof0Type",
+    "PullRequestMergeAsyncResultPropDetailsOneof0TypeForResponse",
+    "PullRequestMergeAsyncResultPropDetailsOneof1Type",
+    "PullRequestMergeAsyncResultPropDetailsOneof1TypeForResponse",
+    "PullRequestMergeAsyncResultPropDetailsOneof2Type",
+    "PullRequestMergeAsyncResultPropDetailsOneof2TypeForResponse",
+    "PullRequestMergeAsyncResultType",
+    "PullRequestMergeAsyncResultTypeForResponse",
 )

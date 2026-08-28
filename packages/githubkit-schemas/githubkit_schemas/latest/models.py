@@ -1285,6 +1285,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.models import EnterpriseTeam as EnterpriseTeam
     from githubkit_schemas.v2026_03_10.models import (
+        EnterpriseTeamWithMemberCount as EnterpriseTeamWithMemberCount,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
         EnterpriseWebhooks as EnterpriseWebhooks,
     )
     from githubkit_schemas.v2026_03_10.models import Environment as Environment
@@ -4085,6 +4088,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase as ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase,
     )
     from githubkit_schemas.v2026_03_10.models import (
+        ReposOwnerRepoStargazersCountGetResponse200 as ReposOwnerRepoStargazersCountGetResponse200,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoStatusesShaPostBody as ReposOwnerRepoStatusesShaPostBody,
     )
     from githubkit_schemas.v2026_03_10.models import (
@@ -4475,10 +4481,16 @@ if TYPE_CHECKING or is_lazy_disabled():
         TimelineCommittedEventPropVerification as TimelineCommittedEventPropVerification,
     )
     from githubkit_schemas.v2026_03_10.models import (
+        TimelineConnectedEvent as TimelineConnectedEvent,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
         TimelineCrossReferencedEvent as TimelineCrossReferencedEvent,
     )
     from githubkit_schemas.v2026_03_10.models import (
         TimelineCrossReferencedEventPropSource as TimelineCrossReferencedEventPropSource,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        TimelineDisconnectedEvent as TimelineDisconnectedEvent,
     )
     from githubkit_schemas.v2026_03_10.models import (
         TimelineLineCommentedEvent as TimelineLineCommentedEvent,
@@ -11419,6 +11431,7 @@ else:
             "DependabotAlertWithRepositoryPropDependency",
             "DependabotRepositoryAccessDetails",
             "OrganizationSimple",
+            "EnterpriseTeamWithMemberCount",
             "Label",
             "Discussion",
             "DiscussionPropAnswerChosenBy",
@@ -12126,6 +12139,8 @@ else:
             "TimelineAssignedIssueEvent",
             "TimelineUnassignedIssueEvent",
             "StateChangeIssueEvent",
+            "TimelineConnectedEvent",
+            "TimelineDisconnectedEvent",
             "DeployKey",
             "Language",
             "LicenseContent",
@@ -15183,6 +15198,7 @@ else:
             "ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems",
             "ReposOwnerRepoStacksStackNumberUnstackPostResponse200",
             "ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase",
+            "ReposOwnerRepoStargazersCountGetResponse200",
             "ReposOwnerRepoStatusesShaPostBody",
             "ReposOwnerRepoSubscriptionPutBody",
             "ReposOwnerRepoTopicsPutBody",

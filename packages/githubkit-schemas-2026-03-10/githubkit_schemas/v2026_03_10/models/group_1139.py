@@ -9,59 +9,108 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0132 import ArtifactDeploymentRecord
 
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200(
+
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207(
     GitHubModel
 ):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200"""
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207"""
 
-    job_id: int = Field(description="The ID of the job.")
-    status: Literal["pending", "processing", "completed", "failed"] = Field(
-        description="The current status of the job."
+    total_count: int = Field(
+        description="The number of deployment records created or updated."
     )
-    started_at: Missing[_dt.datetime] = Field(
-        default=UNSET,
-        description="When the job started processing (only present when processing, completed, or failed).",
-    )
-    total_count: Missing[int] = Field(
-        default=UNSET,
-        description="The number of records successfully mutated (only present when completed).",
-    )
+    deployment_records: Missing[list[ArtifactDeploymentRecord]] = Field(default=UNSET)
     errors: Missing[
         list[
-            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200PropErrorsItems
+            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItems
         ]
     ] = Field(
         default=UNSET,
-        description="Processing errors (only present when completed or failed).",
+        description="A list of errors for deployments that could not be processed.",
     )
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200PropErrorsItems(
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItems(
     GitHubModel
 ):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200Pro
-    pErrorsItems
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsI
+    tems
+    """
+
+    cause: Missing[Literal["unauthorized", "not_found"]] = Field(
+        default=UNSET, description="The reason the deployment failed processing."
+    )
+    deployment: Missing[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItemsPropDeployment
+    ] = Field(
+        default=UNSET, description="The deployment payload that could not be processed."
+    )
+
+
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItemsPropDeployment(
+    GitHubModel
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsI
+    temsPropDeployment
+
+    The deployment payload that could not be processed.
+    """
+
+    name: Missing[str] = Field(default=UNSET, description="The name of the artifact.")
+    digest: Missing[str] = Field(
+        default=UNSET, description="The digest of the artifact."
+    )
+    deployment_name: Missing[str] = Field(
+        default=UNSET, description="The name of the deployment that failed processing."
+    )
+    version: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The version of the deployment."
+    )
+    status: Missing[str] = Field(default=UNSET, description="The deployment status.")
+    github_repository: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The repository associated with the deployment."
+    )
+    tags: Missing[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItemsPropDeploymentPropTags
+    ] = Field(default=UNSET, description="Custom metadata tags for the deployment.")
+    runtime_risks: Missing[list[str]] = Field(
+        default=UNSET, description="Runtime risk classifications for the deployment."
+    )
+
+
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItemsPropDeploymentPropTags(
+    ExtraGitHubModel
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsI
+    temsPropDeploymentPropTags
+
+    Custom metadata tags for the deployment.
     """
 
 
+model_rebuild(OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207)
 model_rebuild(
-    OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200
+    OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItems
 )
 model_rebuild(
-    OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200PropErrorsItems
+    OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItemsPropDeployment
+)
+model_rebuild(
+    OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItemsPropDeploymentPropTags
 )
 
 __all__ = (
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200",
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200PropErrorsItems",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItems",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItemsPropDeployment",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItemsPropDeploymentPropTags",
 )

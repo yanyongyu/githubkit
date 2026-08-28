@@ -10,34 +10,43 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class SshSigningKeyType(TypedDict):
-    """SSH Signing Key
+class KeyType(TypedDict):
+    """Key
 
-    A public SSH key used to sign Git commits
+    Key
     """
 
     key: str
     id: int
+    url: str
     title: str
     created_at: _dt.datetime
+    verified: bool
+    read_only: bool
+    last_used: NotRequired[Union[_dt.datetime, None]]
 
 
-class SshSigningKeyTypeForResponse(TypedDict):
-    """SSH Signing Key
+class KeyTypeForResponse(TypedDict):
+    """Key
 
-    A public SSH key used to sign Git commits
+    Key
     """
 
     key: str
     id: int
+    url: str
     title: str
     created_at: str
+    verified: bool
+    read_only: bool
+    last_used: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "SshSigningKeyType",
-    "SshSigningKeyTypeForResponse",
+    "KeyType",
+    "KeyTypeForResponse",
 )

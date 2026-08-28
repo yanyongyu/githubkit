@@ -11,19 +11,24 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
-from .group_0189 import SecretScanningCustomPatternToCreate
+from .group_0112 import CustomPropertyValue
 
 
-class EnterprisesEnterpriseSecretScanningCustomPatternsPostBody(GitHubModel):
-    """EnterprisesEnterpriseSecretScanningCustomPatternsPostBody"""
+class EnterprisesEnterpriseOrgPropertiesValuesPatchBody(GitHubModel):
+    """EnterprisesEnterpriseOrgPropertiesValuesPatchBody"""
 
-    patterns: list[SecretScanningCustomPatternToCreate] = Field(
-        description="The list of custom patterns to create."
+    organization_logins: list[str] = Field(
+        max_length=30 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The names of organizations that the custom property values will be applied to.",
+    )
+    properties: list[CustomPropertyValue] = Field(
+        description="List of custom property names and associated values to apply to the organizations."
     )
 
 
-model_rebuild(EnterprisesEnterpriseSecretScanningCustomPatternsPostBody)
+model_rebuild(EnterprisesEnterpriseOrgPropertiesValuesPatchBody)
 
-__all__ = ("EnterprisesEnterpriseSecretScanningCustomPatternsPostBody",)
+__all__ = ("EnterprisesEnterpriseOrgPropertiesValuesPatchBody",)

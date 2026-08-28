@@ -9,29 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Union
 from typing_extensions import TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
-class IssueCommentMinimizedType(TypedDict):
-    """Minimized Issue Comment
 
-    Details about why an issue comment was minimized.
+class PinnedIssueCommentType(TypedDict):
+    """Pinned Issue Comment
+
+    Context around who pinned an issue comment and when it was pinned.
     """
 
-    reason: Union[str, None]
+    pinned_at: _dt.datetime
+    pinned_by: Union[SimpleUserType, None]
 
 
-class IssueCommentMinimizedTypeForResponse(TypedDict):
-    """Minimized Issue Comment
+class PinnedIssueCommentTypeForResponse(TypedDict):
+    """Pinned Issue Comment
 
-    Details about why an issue comment was minimized.
+    Context around who pinned an issue comment and when it was pinned.
     """
 
-    reason: Union[str, None]
+    pinned_at: str
+    pinned_by: Union[SimpleUserTypeForResponse, None]
 
 
 __all__ = (
-    "IssueCommentMinimizedType",
-    "IssueCommentMinimizedTypeForResponse",
+    "PinnedIssueCommentType",
+    "PinnedIssueCommentTypeForResponse",
 )

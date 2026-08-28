@@ -9,45 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class ReposOwnerRepoStacksStackNumberAddPostResponse422(GitHubModel):
-    """Validation Error
-
-    Validation Error
-    """
-
-    message: str = Field()
-    documentation_url: str = Field()
-    errors: Missing[
-        list[ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems]
-    ] = Field(default=UNSET)
+from .group_0188 import SecretScanningCustomPattern
 
 
-class ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems(GitHubModel):
-    """ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems"""
+class ReposOwnerRepoSecretScanningCustomPatternsPostResponse201(GitHubModel):
+    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse201"""
 
-    resource: Missing[str] = Field(default=UNSET)
-    field: Missing[str] = Field(default=UNSET)
-    message: Missing[str] = Field(default=UNSET)
-    code: str = Field()
-    index: Missing[int] = Field(default=UNSET)
-    value: Missing[Union[str, None, int, None, list[Union[str, int]], None]] = Field(
-        default=UNSET
+    created_patterns: Missing[list[SecretScanningCustomPattern]] = Field(
+        default=UNSET, description="The list of successfully created custom patterns."
     )
 
 
-model_rebuild(ReposOwnerRepoStacksStackNumberAddPostResponse422)
-model_rebuild(ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems)
+model_rebuild(ReposOwnerRepoSecretScanningCustomPatternsPostResponse201)
 
-__all__ = (
-    "ReposOwnerRepoStacksStackNumberAddPostResponse422",
-    "ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems",
-)
+__all__ = ("ReposOwnerRepoSecretScanningCustomPatternsPostResponse201",)

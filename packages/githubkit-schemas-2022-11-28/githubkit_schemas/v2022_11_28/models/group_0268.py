@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,28 +18,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class NetworkSettings(GitHubModel):
-    """Hosted compute network settings resource
+class ImmutableReleasesOrganizationSettings(GitHubModel):
+    """Check immutable releases organization settings
 
-    A hosted compute network settings resource.
+    Check immutable releases settings for an organization.
     """
 
-    id: str = Field(
-        description="The unique identifier of the network settings resource."
+    enforced_repositories: Literal["all", "none", "selected"] = Field(
+        description="The policy that controls how immutable releases are enforced in the organization."
     )
-    network_configuration_id: Missing[str] = Field(
+    selected_repositories_url: Missing[str] = Field(
         default=UNSET,
-        description="The identifier of the network configuration that is using this settings resource.",
-    )
-    name: str = Field(description="The name of the network settings resource.")
-    subnet_id: str = Field(
-        description="The subnet this network settings resource is configured for."
-    )
-    region: str = Field(
-        description="The location of the subnet this network settings resource is configured for."
+        description="The API URL to use to get or set the selected repositories for immutable releases enforcement, when `enforced_repositories` is set to `selected`.",
     )
 
 
-model_rebuild(NetworkSettings)
+model_rebuild(ImmutableReleasesOrganizationSettings)
 
-__all__ = ("NetworkSettings",)
+__all__ = ("ImmutableReleasesOrganizationSettings",)

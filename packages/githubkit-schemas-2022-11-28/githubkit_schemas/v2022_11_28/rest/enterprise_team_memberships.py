@@ -25,10 +25,11 @@ if TYPE_CHECKING:
     from githubkit.typing import Missing
     from githubkit.utils import UNSET
 
-    from ..models import SimpleUser
+    from ..models import EnterpriseTeam, SimpleUser
     from ..types import (
         EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBodyType,
         EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBodyType,
+        EnterpriseTeamTypeForResponse,
         SimpleUserTypeForResponse,
     )
 
@@ -46,6 +47,100 @@ class EnterpriseTeamMembershipsClient:
         raise RuntimeError(
             "GitHub client has already been collected. "
             "Do not use this client after the client has been collected."
+        )
+
+    def list_teams_for_user(
+        self,
+        enterprise: str,
+        username: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[list[EnterpriseTeam], list[EnterpriseTeamTypeForResponse]]:
+        """enterprise-team-memberships/list-teams-for-user
+
+        GET /enterprises/{enterprise}/members/{username}/teams
+
+        Lists all enterprise teams that a user is a member of. This endpoint is available only for
+        enterprises using the new enterprise teams experience.
+
+        The authenticated user must be an enterprise owner or have the `enterprise_teams:read` permission.
+
+        See also: https://docs.github.com/rest/enterprise-teams/enterprise-team-members#list-enterprise-teams-for-a-user
+        """
+
+        from ..models import BasicError, EnterpriseTeam
+
+        url = f"/enterprises/{enterprise}/members/{username}/teams"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[EnterpriseTeam],
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_list_teams_for_user(
+        self,
+        enterprise: str,
+        username: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[list[EnterpriseTeam], list[EnterpriseTeamTypeForResponse]]:
+        """enterprise-team-memberships/list-teams-for-user
+
+        GET /enterprises/{enterprise}/members/{username}/teams
+
+        Lists all enterprise teams that a user is a member of. This endpoint is available only for
+        enterprises using the new enterprise teams experience.
+
+        The authenticated user must be an enterprise owner or have the `enterprise_teams:read` permission.
+
+        See also: https://docs.github.com/rest/enterprise-teams/enterprise-team-members#list-enterprise-teams-for-a-user
+        """
+
+        from ..models import BasicError, EnterpriseTeam
+
+        url = f"/enterprises/{enterprise}/members/{username}/teams"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[EnterpriseTeam],
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
         )
 
     def list(

@@ -11,27 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0189 import (
-    SecretScanningCustomPatternToCreateType,
-    SecretScanningCustomPatternToCreateTypeForResponse,
-)
+from .group_0112 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
 
 
-class EnterprisesEnterpriseSecretScanningCustomPatternsPostBodyType(TypedDict):
-    """EnterprisesEnterpriseSecretScanningCustomPatternsPostBody"""
+class EnterprisesEnterpriseOrgPropertiesValuesPatchBodyType(TypedDict):
+    """EnterprisesEnterpriseOrgPropertiesValuesPatchBody"""
 
-    patterns: list[SecretScanningCustomPatternToCreateType]
+    organization_logins: list[str]
+    properties: list[CustomPropertyValueType]
 
 
-class EnterprisesEnterpriseSecretScanningCustomPatternsPostBodyTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseSecretScanningCustomPatternsPostBody"""
+class EnterprisesEnterpriseOrgPropertiesValuesPatchBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseOrgPropertiesValuesPatchBody"""
 
-    patterns: list[SecretScanningCustomPatternToCreateTypeForResponse]
+    organization_logins: list[str]
+    properties: list[CustomPropertyValueTypeForResponse]
 
 
 __all__ = (
-    "EnterprisesEnterpriseSecretScanningCustomPatternsPostBodyType",
-    "EnterprisesEnterpriseSecretScanningCustomPatternsPostBodyTypeForResponse",
+    "EnterprisesEnterpriseOrgPropertiesValuesPatchBodyType",
+    "EnterprisesEnterpriseOrgPropertiesValuesPatchBodyTypeForResponse",
 )

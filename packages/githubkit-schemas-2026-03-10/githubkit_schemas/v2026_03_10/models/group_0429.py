@@ -15,58 +15,51 @@ from typing import Literal, Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
-from .group_0052 import ReactionRollup
-from .group_0054 import PinnedIssueComment
-from .group_0055 import IssueCommentMinimized
 
 
-class TimelineCommentEvent(GitHubModel):
-    """Timeline Comment Event
+class IssueSuggestion(GitHubModel):
+    """Issue Suggestion
 
-    Timeline Comment Event
+    An agent-proposed change to an issue that a maintainer can approve or dismiss.
     """
 
-    event: Literal["commented"] = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    id: int = Field(description="Unique identifier of the issue comment")
-    node_id: str = Field()
-    url: str = Field(description="URL for the issue comment")
-    body: Missing[str] = Field(
-        default=UNSET, description="Contents of the issue comment"
+    id: int = Field(description="The unique identifier of the suggestion.")
+    issue_id: int = Field(
+        description="The unique identifier of the issue the suggestion applies to."
     )
-    body_text: Missing[str] = Field(default=UNSET)
-    body_html: Missing[str] = Field(default=UNSET)
-    html_url: str = Field()
-    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    issue_url: str = Field()
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="author_association",
-        description="How the author is associated with the repository.",
+    action: Literal[
+        "set_type", "add_label", "add_field", "add_assignee", "close_issue"
+    ] = Field(description="The kind of change proposed.")
+    state: Literal[
+        "pending", "applied", "approved", "dismissed", "replaced", "invalidated"
+    ] = Field(description="The suggestion's lifecycle state.")
+    target_id: Union[int, None] = Field(
+        description="The identifier of the target the change applies to (issue type, label, field, assignee, or duplicate issue), when applicable."
     )
-    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
-        default=UNSET
+    target_value: Union[str, float, bool, list[str], None] = Field(
+        description="The proposed value, when applicable. An array for multi-select field suggestions."
     )
-    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
-    pin: Missing[Union[PinnedIssueComment, None]] = Field(default=UNSET)
-    minimized: Missing[Union[IssueCommentMinimized, None]] = Field(default=UNSET)
+    rationale: Union[str, None] = Field(
+        description="The rationale the actor provided for the suggestion."
+    )
+    confidence: Union[Literal["LOW", "MEDIUM", "HIGH"], None] = Field(
+        description="The actor's confidence level in the suggestion."
+    )
+    actor_id: Union[int, None] = Field(
+        description="The unique identifier of the actor that proposed the suggestion."
+    )
+    issue_event_id: Union[int, None] = Field(
+        description="The identifier of the timeline event created when the suggestion was approved, when applicable."
+    )
+    resolved_by: Union[int, None] = Field(
+        description="The unique identifier of the user who approved or dismissed the suggestion."
+    )
+    created_at: _dt.datetime = Field(description="The time the suggestion was created.")
+    updated_at: _dt.datetime = Field(
+        description="The time the suggestion was last updated."
+    )
 
 
-model_rebuild(TimelineCommentEvent)
+model_rebuild(IssueSuggestion)
 
-__all__ = ("TimelineCommentEvent",)
+__all__ = ("IssueSuggestion",)

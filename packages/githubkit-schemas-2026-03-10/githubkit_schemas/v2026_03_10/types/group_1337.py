@@ -9,50 +9,105 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_1335 import (
-    ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentType,
-    ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentTypeForResponse,
-)
+from typing import Any, TypeAlias, Union
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1Type(TypedDict):
-    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1"""
+class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200"""
 
-    state: NotRequired[Literal["dismissed", "open"]]
-    dismissed_reason: NotRequired[
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ]
+    mcp_configuration: Union[
+        ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfigurationType,
+        None,
     ]
-    dismissed_comment: NotRequired[str]
-    assignees: list[str]
-    agent_assignment: NotRequired[
-        ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentType
-    ]
+    enabled_tools: (
+        ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledToolsType
+    )
+    require_actions_workflow_approval: bool
+    is_firewall_enabled: bool
+    is_firewall_recommended_allowlist_enabled: bool
+    custom_allowlist: list[str]
+    is_automations_enabled: bool
+    require_write_access_for_automation_triggers: bool
 
 
-class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1TypeForResponse(
+class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200TypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1"""
+    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200"""
 
-    state: NotRequired[Literal["dismissed", "open"]]
-    dismissed_reason: NotRequired[
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ]
+    mcp_configuration: Union[
+        ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfigurationTypeForResponse,
+        None,
     ]
-    dismissed_comment: NotRequired[str]
-    assignees: list[str]
-    agent_assignment: NotRequired[
-        ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentTypeForResponse
-    ]
+    enabled_tools: ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledToolsTypeForResponse
+    require_actions_workflow_approval: bool
+    is_firewall_enabled: bool
+    is_firewall_recommended_allowlist_enabled: bool
+    custom_allowlist: list[str]
+    is_automations_enabled: bool
+    require_write_access_for_automation_triggers: bool
+
+
+ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfigurationType: TypeAlias = dict[
+    str, Any
+]
+"""ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration
+
+The user-supplied MCP server configuration for the repository, as a free-form
+JSON object. This will be set to `null` if no configuration has been set.
+
+The shape of a valid MCP configuration may evolve over time, so this property is
+intentionally not strictly typed. Clients should not assume a fixed schema.
+"""
+
+
+ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfigurationTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration
+
+The user-supplied MCP server configuration for the repository, as a free-form
+JSON object. This will be set to `null` if no configuration has been set.
+
+The shape of a valid MCP configuration may evolve over time, so this property is
+intentionally not strictly typed. Clients should not assume a fixed schema.
+"""
+
+
+class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledToolsType(
+    TypedDict
+):
+    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools
+
+    The enabled review tools for Copilot cloud agent.
+    """
+
+    codeql: bool
+    copilot_code_review: bool
+    secret_scanning: bool
+    dependency_vulnerability_checks: bool
+
+
+class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledToolsTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools
+
+    The enabled review tools for Copilot cloud agent.
+    """
+
+    codeql: bool
+    copilot_code_review: bool
+    secret_scanning: bool
+    dependency_vulnerability_checks: bool
 
 
 __all__ = (
-    "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1Type",
-    "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1TypeForResponse",
+    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledToolsType",
+    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledToolsTypeForResponse",
+    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfigurationType",
+    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfigurationTypeForResponse",
+    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200Type",
+    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200TypeForResponse",
 )

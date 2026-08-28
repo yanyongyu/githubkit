@@ -9,32 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import TypedDict
 
-
-class CommitActivityType(TypedDict):
-    """Commit Activity
-
-    Commit Activity
-    """
-
-    days: list[int]
-    total: int
-    week: int
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0062 import (
+    PullRequestMinimalPropBaseType,
+    PullRequestMinimalPropBaseTypeForResponse,
+    PullRequestMinimalPropHeadType,
+    PullRequestMinimalPropHeadTypeForResponse,
+)
 
 
-class CommitActivityTypeForResponse(TypedDict):
-    """Commit Activity
+class PullRequestStackPullRequestType(TypedDict):
+    """Pull Request Stack Pull Request"""
 
-    Commit Activity
-    """
+    id: int
+    number: int
+    url: str
+    head: PullRequestMinimalPropHeadType
+    base: PullRequestMinimalPropBaseType
+    node_id: str
+    title: str
+    state: Literal["open", "closed"]
+    merged_at: Union[_dt.datetime, None]
+    draft: bool
+    html_url: str
+    user: Union[SimpleUserType, None]
 
-    days: list[int]
-    total: int
-    week: int
+
+class PullRequestStackPullRequestTypeForResponse(TypedDict):
+    """Pull Request Stack Pull Request"""
+
+    id: int
+    number: int
+    url: str
+    head: PullRequestMinimalPropHeadTypeForResponse
+    base: PullRequestMinimalPropBaseTypeForResponse
+    node_id: str
+    title: str
+    state: Literal["open", "closed"]
+    merged_at: Union[str, None]
+    draft: bool
+    html_url: str
+    user: Union[SimpleUserTypeForResponse, None]
 
 
 __all__ = (
-    "CommitActivityType",
-    "CommitActivityTypeForResponse",
+    "PullRequestStackPullRequestType",
+    "PullRequestStackPullRequestTypeForResponse",
 )

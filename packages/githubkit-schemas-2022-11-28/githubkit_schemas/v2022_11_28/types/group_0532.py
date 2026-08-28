@@ -9,82 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing_extensions import TypedDict
+
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
 
-class BillingAiCreditUsageReportUserType(TypedDict):
-    """BillingAiCreditUsageReportUser"""
+class StarredRepositoryType(TypedDict):
+    """Starred Repository
 
-    time_period: BillingAiCreditUsageReportUserPropTimePeriodType
-    user: str
-    product: NotRequired[str]
-    model: NotRequired[str]
-    usage_items: list[BillingAiCreditUsageReportUserPropUsageItemsItemsType]
+    Starred Repository
+    """
 
-
-class BillingAiCreditUsageReportUserTypeForResponse(TypedDict):
-    """BillingAiCreditUsageReportUser"""
-
-    time_period: BillingAiCreditUsageReportUserPropTimePeriodTypeForResponse
-    user: str
-    product: NotRequired[str]
-    model: NotRequired[str]
-    usage_items: list[BillingAiCreditUsageReportUserPropUsageItemsItemsTypeForResponse]
+    starred_at: _dt.datetime
+    repo: RepositoryType
 
 
-class BillingAiCreditUsageReportUserPropTimePeriodType(TypedDict):
-    """BillingAiCreditUsageReportUserPropTimePeriod"""
+class StarredRepositoryTypeForResponse(TypedDict):
+    """Starred Repository
 
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
+    Starred Repository
+    """
 
-
-class BillingAiCreditUsageReportUserPropTimePeriodTypeForResponse(TypedDict):
-    """BillingAiCreditUsageReportUserPropTimePeriod"""
-
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
-
-
-class BillingAiCreditUsageReportUserPropUsageItemsItemsType(TypedDict):
-    """BillingAiCreditUsageReportUserPropUsageItemsItems"""
-
-    product: str
-    sku: str
-    model: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
-
-
-class BillingAiCreditUsageReportUserPropUsageItemsItemsTypeForResponse(TypedDict):
-    """BillingAiCreditUsageReportUserPropUsageItemsItems"""
-
-    product: str
-    sku: str
-    model: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
+    starred_at: str
+    repo: RepositoryTypeForResponse
 
 
 __all__ = (
-    "BillingAiCreditUsageReportUserPropTimePeriodType",
-    "BillingAiCreditUsageReportUserPropTimePeriodTypeForResponse",
-    "BillingAiCreditUsageReportUserPropUsageItemsItemsType",
-    "BillingAiCreditUsageReportUserPropUsageItemsItemsTypeForResponse",
-    "BillingAiCreditUsageReportUserType",
-    "BillingAiCreditUsageReportUserTypeForResponse",
+    "StarredRepositoryType",
+    "StarredRepositoryTypeForResponse",
 )

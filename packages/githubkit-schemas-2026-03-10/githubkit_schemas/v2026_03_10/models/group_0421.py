@@ -17,13 +17,13 @@ from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0003 import SimpleUser
 from .group_0010 import Integration
-from .group_0399 import IssueReference
+from .group_0400 import IssueReference
 
 
-class SubIssueRemovedIssueEvent(GitHubModel):
-    """Sub-issue Removed Issue Event
+class SubIssueAddedIssueEvent(GitHubModel):
+    """Sub-issue Added Issue Event
 
-    Sub-issue Removed Issue Event
+    Sub-issue Added Issue Event
     """
 
     id: int = Field()
@@ -38,6 +38,6 @@ class SubIssueRemovedIssueEvent(GitHubModel):
     sub_issue: Union[None, IssueReference, None] = Field()
 
 
-model_rebuild(SubIssueRemovedIssueEvent)
+model_rebuild(SubIssueAddedIssueEvent)
 
-__all__ = ("SubIssueRemovedIssueEvent",)
+__all__ = ("SubIssueAddedIssueEvent",)

@@ -9,41 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0494 import PullRequestStackPullRequest
+from .group_0264 import SecretScanningCustomPatternToDelete
 
 
-class ReposOwnerRepoStacksPostResponse201(GitHubModel):
-    """ReposOwnerRepoStacksPostResponse201"""
+class ReposOwnerRepoSecretScanningCustomPatternsDeleteBody(GitHubModel):
+    """ReposOwnerRepoSecretScanningCustomPatternsDeleteBody"""
 
-    id: int = Field()
-    number: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    base: ReposOwnerRepoStacksPostResponse201PropBase = Field()
-    open_: bool = Field(
-        alias="open",
-        description="Whether the stack has any open pull request. False when all pull requests are merged or closed.",
+    patterns: list[SecretScanningCustomPatternToDelete] = Field(
+        max_length=500 if PYDANTIC_V2 else None,
+        description="The list of custom patterns to delete.",
     )
-    created_at: _dt.datetime = Field()
-    pull_requests: list[PullRequestStackPullRequest] = Field()
+    post_delete_action: Missing[Literal["delete_alerts", "resolve_alerts"]] = Field(
+        default=UNSET,
+        description='What to do with alerts associated with the deleted patterns.\n`delete_alerts` permanently removes the alerts.\n`resolve_alerts` resolves the alerts as "pattern deleted".\nDefaults to `delete_alerts` when not specified.',
+    )
 
 
-class ReposOwnerRepoStacksPostResponse201PropBase(GitHubModel):
-    """ReposOwnerRepoStacksPostResponse201PropBase"""
+model_rebuild(ReposOwnerRepoSecretScanningCustomPatternsDeleteBody)
 
-    ref: str = Field()
-
-
-model_rebuild(ReposOwnerRepoStacksPostResponse201)
-model_rebuild(ReposOwnerRepoStacksPostResponse201PropBase)
-
-__all__ = (
-    "ReposOwnerRepoStacksPostResponse201",
-    "ReposOwnerRepoStacksPostResponse201PropBase",
-)
+__all__ = ("ReposOwnerRepoSecretScanningCustomPatternsDeleteBody",)

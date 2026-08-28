@@ -67,7 +67,9 @@ if TYPE_CHECKING:
         TimelineCommentEvent,
         TimelineCommitCommentedEvent,
         TimelineCommittedEvent,
+        TimelineConnectedEvent,
         TimelineCrossReferencedEvent,
+        TimelineDisconnectedEvent,
         TimelineLineCommentedEvent,
         TimelineReviewedEvent,
         TimelineUnassignedIssueEvent,
@@ -146,7 +148,9 @@ if TYPE_CHECKING:
         TimelineCommentEventTypeForResponse,
         TimelineCommitCommentedEventTypeForResponse,
         TimelineCommittedEventTypeForResponse,
+        TimelineConnectedEventTypeForResponse,
         TimelineCrossReferencedEventTypeForResponse,
+        TimelineDisconnectedEventTypeForResponse,
         TimelineLineCommentedEventTypeForResponse,
         TimelineReviewedEventTypeForResponse,
         TimelineUnassignedIssueEventTypeForResponse,
@@ -795,6 +799,7 @@ class IssuesClient:
             list[ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItemsType]
         ] = UNSET,
         type: Missing[Union[str, None]] = UNSET,
+        parent_issue_id: Missing[int] = UNSET,
     ) -> Response[Issue, IssueTypeForResponse]: ...
 
     def create(
@@ -895,6 +900,7 @@ class IssuesClient:
             list[ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItemsType]
         ] = UNSET,
         type: Missing[Union[str, None]] = UNSET,
+        parent_issue_id: Missing[int] = UNSET,
     ) -> Response[Issue, IssueTypeForResponse]: ...
 
     async def async_create(
@@ -5293,6 +5299,7 @@ class IssuesClient:
             response_model=Issue,
             error_models={
                 "400": BasicError,
+                "403": BasicError,
                 "404": BasicError,
             },
         )
@@ -5380,6 +5387,7 @@ class IssuesClient:
             response_model=Issue,
             error_models={
                 "400": BasicError,
+                "403": BasicError,
                 "404": BasicError,
             },
         )
@@ -6187,6 +6195,8 @@ class IssuesClient:
                 BlockedByRemovedIssueEvent,
                 BlockingAddedIssueEvent,
                 BlockingRemovedIssueEvent,
+                TimelineConnectedEvent,
+                TimelineDisconnectedEvent,
             ]
         ],
         list[
@@ -6224,6 +6234,8 @@ class IssuesClient:
                 BlockedByRemovedIssueEventTypeForResponse,
                 BlockingAddedIssueEventTypeForResponse,
                 BlockingRemovedIssueEventTypeForResponse,
+                TimelineConnectedEventTypeForResponse,
+                TimelineDisconnectedEventTypeForResponse,
             ]
         ],
     ]:
@@ -6268,7 +6280,9 @@ class IssuesClient:
             TimelineCommentEvent,
             TimelineCommitCommentedEvent,
             TimelineCommittedEvent,
+            TimelineConnectedEvent,
             TimelineCrossReferencedEvent,
+            TimelineDisconnectedEvent,
             TimelineLineCommentedEvent,
             TimelineReviewedEvent,
             TimelineUnassignedIssueEvent,
@@ -6326,6 +6340,8 @@ class IssuesClient:
                     BlockedByRemovedIssueEvent,
                     BlockingAddedIssueEvent,
                     BlockingRemovedIssueEvent,
+                    TimelineConnectedEvent,
+                    TimelineDisconnectedEvent,
                 ]
             ],
             error_models={
@@ -6382,6 +6398,8 @@ class IssuesClient:
                 BlockedByRemovedIssueEvent,
                 BlockingAddedIssueEvent,
                 BlockingRemovedIssueEvent,
+                TimelineConnectedEvent,
+                TimelineDisconnectedEvent,
             ]
         ],
         list[
@@ -6419,6 +6437,8 @@ class IssuesClient:
                 BlockedByRemovedIssueEventTypeForResponse,
                 BlockingAddedIssueEventTypeForResponse,
                 BlockingRemovedIssueEventTypeForResponse,
+                TimelineConnectedEventTypeForResponse,
+                TimelineDisconnectedEventTypeForResponse,
             ]
         ],
     ]:
@@ -6463,7 +6483,9 @@ class IssuesClient:
             TimelineCommentEvent,
             TimelineCommitCommentedEvent,
             TimelineCommittedEvent,
+            TimelineConnectedEvent,
             TimelineCrossReferencedEvent,
+            TimelineDisconnectedEvent,
             TimelineLineCommentedEvent,
             TimelineReviewedEvent,
             TimelineUnassignedIssueEvent,
@@ -6521,6 +6543,8 @@ class IssuesClient:
                     BlockedByRemovedIssueEvent,
                     BlockingAddedIssueEvent,
                     BlockingRemovedIssueEvent,
+                    TimelineConnectedEvent,
+                    TimelineDisconnectedEvent,
                 ]
             ],
             error_models={
@@ -6921,6 +6945,7 @@ class IssuesClient:
         new_name: Missing[str] = UNSET,
         color: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
+        archived: Missing[bool] = UNSET,
     ) -> Response[Label, LabelTypeForResponse]: ...
 
     def update_label(
@@ -6992,6 +7017,7 @@ class IssuesClient:
         new_name: Missing[str] = UNSET,
         color: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
+        archived: Missing[bool] = UNSET,
     ) -> Response[Label, LabelTypeForResponse]: ...
 
     async def async_update_label(

@@ -9,69 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class PullRequestMergeAsyncResult(GitHubModel):
-    """Pull Request Merge Async Result
-
-    Pull Request Merge Async Result
-    """
-
-    status: Literal["pending", "merged", "enqueued", "failed"] = Field()
-    details: Union[
-        PullRequestMergeAsyncResultPropDetailsOneof0,
-        PullRequestMergeAsyncResultPropDetailsOneof1,
-        PullRequestMergeAsyncResultPropDetailsOneof2,
-    ] = Field()
+from .group_0003 import SimpleUser
+from .group_0020 import Repository
 
 
-class PullRequestMergeAsyncResultPropDetailsOneof0(GitHubModel):
-    """PullRequestMergeAsyncResultPropDetailsOneof0
+class PullRequestPropHead(GitHubModel):
+    """PullRequestPropHead"""
 
-    When an asynchronous merge request was created or already existed
-    """
-
-    message: str = Field()
-    uuid: str = Field()
-    merge_method: Literal["default", "merge", "squash", "rebase"] = Field()
-    merge_action: Literal["default", "merge_queue", "direct_merge"] = Field()
-    expected_head_sha: str = Field(
-        description="SHA that the pull request head must match for the enqueued merge to proceed."
-    )
-
-
-class PullRequestMergeAsyncResultPropDetailsOneof1(GitHubModel):
-    """PullRequestMergeAsyncResultPropDetailsOneof1
-
-    When the pull request cannot be merged
-    """
-
-    message: str = Field()
-
-
-class PullRequestMergeAsyncResultPropDetailsOneof2(GitHubModel):
-    """PullRequestMergeAsyncResultPropDetailsOneof2
-
-    When the pull request is already merged
-    """
-
-    message: str = Field()
+    label: Union[str, None] = Field()
+    ref: str = Field()
+    repo: Union[Repository, None] = Field()
     sha: str = Field()
+    user: Union[SimpleUser, None] = Field()
 
 
-model_rebuild(PullRequestMergeAsyncResult)
-model_rebuild(PullRequestMergeAsyncResultPropDetailsOneof0)
-model_rebuild(PullRequestMergeAsyncResultPropDetailsOneof1)
-model_rebuild(PullRequestMergeAsyncResultPropDetailsOneof2)
+class PullRequestPropBase(GitHubModel):
+    """PullRequestPropBase"""
+
+    label: str = Field()
+    ref: str = Field()
+    repo: Repository = Field(title="Repository", description="A repository on GitHub.")
+    sha: str = Field()
+    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+
+
+model_rebuild(PullRequestPropHead)
+model_rebuild(PullRequestPropBase)
 
 __all__ = (
-    "PullRequestMergeAsyncResult",
-    "PullRequestMergeAsyncResultPropDetailsOneof0",
-    "PullRequestMergeAsyncResultPropDetailsOneof1",
-    "PullRequestMergeAsyncResultPropDetailsOneof2",
+    "PullRequestPropBase",
+    "PullRequestPropHead",
 )

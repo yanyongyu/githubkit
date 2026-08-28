@@ -9,30 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0263 import SecretScanningCustomPatternToDelete
+from .group_0262 import SecretScanningCustomPatternToCreate
 
 
-class OrgsOrgSecretScanningCustomPatternsDeleteBody(GitHubModel):
-    """OrgsOrgSecretScanningCustomPatternsDeleteBody"""
+class OrgsOrgSecretScanningCustomPatternsPostBody(GitHubModel):
+    """OrgsOrgSecretScanningCustomPatternsPostBody"""
 
-    patterns: list[SecretScanningCustomPatternToDelete] = Field(
-        max_length=500 if PYDANTIC_V2 else None,
-        description="The list of custom patterns to delete.",
-    )
-    post_delete_action: Missing[Literal["delete_alerts", "resolve_alerts"]] = Field(
-        default=UNSET,
-        description='What to do with alerts associated with the deleted patterns.\n`delete_alerts` permanently removes the alerts.\n`resolve_alerts` resolves the alerts as "pattern deleted".\nDefaults to `delete_alerts` when not specified.',
+    patterns: list[SecretScanningCustomPatternToCreate] = Field(
+        description="The list of custom patterns to create."
     )
 
 
-model_rebuild(OrgsOrgSecretScanningCustomPatternsDeleteBody)
+model_rebuild(OrgsOrgSecretScanningCustomPatternsPostBody)
 
-__all__ = ("OrgsOrgSecretScanningCustomPatternsDeleteBody",)
+__all__ = ("OrgsOrgSecretScanningCustomPatternsPostBody",)

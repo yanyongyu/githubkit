@@ -9,24 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0003 import SimpleUser
 
-class IssueCommentMinimized(GitHubModel):
-    """Minimized Issue Comment
 
-    Details about why an issue comment was minimized.
+class PinnedIssueComment(GitHubModel):
+    """Pinned Issue Comment
+
+    Context around who pinned an issue comment and when it was pinned.
     """
 
-    reason: Union[str, None] = Field(
-        description="The reason the comment was minimized."
-    )
+    pinned_at: _dt.datetime = Field()
+    pinned_by: Union[SimpleUser, None] = Field()
 
 
-model_rebuild(IssueCommentMinimized)
+model_rebuild(PinnedIssueComment)
 
-__all__ = ("IssueCommentMinimized",)
+__all__ = ("PinnedIssueComment",)

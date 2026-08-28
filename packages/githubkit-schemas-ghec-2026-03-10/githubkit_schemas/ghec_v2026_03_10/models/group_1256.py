@@ -12,14 +12,25 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class GistsGistIdCommentsPostBody(GitHubModel):
-    """GistsGistIdCommentsPostBody"""
+class EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBody(
+    GitHubModel
+):
+    """EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBody"""
 
-    body: str = Field(max_length=65535, description="The comment text.")
+    user_identifier: Missing[str] = Field(
+        default=UNSET,
+        description="The handle for the GitHub user account or a verified email associated with their account.",
+    )
 
 
-model_rebuild(GistsGistIdCommentsPostBody)
+model_rebuild(
+    EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBody
+)
 
-__all__ = ("GistsGistIdCommentsPostBody",)
+__all__ = (
+    "EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBody",
+)

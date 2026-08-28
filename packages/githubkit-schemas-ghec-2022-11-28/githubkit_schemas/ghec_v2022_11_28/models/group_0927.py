@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0619 import EnterpriseWebhooks
-from .group_0620 import SimpleInstallation
-from .group_0621 import OrganizationSimpleWebhooks
-from .group_0622 import RepositoryWebhooks
-from .group_0652 import WebhooksProject
+from .group_0622 import EnterpriseWebhooks
+from .group_0623 import SimpleInstallation
+from .group_0624 import OrganizationSimpleWebhooks
+from .group_0625 import RepositoryWebhooks
+from .group_0655 import WebhooksProject
 
 
-class WebhookProjectReopened(GitHubModel):
-    """project reopened event"""
+class WebhookProjectCreated(GitHubModel):
+    """project created event"""
 
-    action: Literal["reopened"] = Field()
+    action: Literal["created"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -53,6 +53,6 @@ class WebhookProjectReopened(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookProjectReopened)
+model_rebuild(WebhookProjectCreated)
 
-__all__ = ("WebhookProjectReopened",)
+__all__ = ("WebhookProjectCreated",)

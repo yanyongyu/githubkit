@@ -9,28 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_1380 import (
-    ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestions,
-)
 
 
-class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1"""
+class ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody(GitHubModel):
+    """ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody"""
 
-    suggestions: Missing[
-        ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestions
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
     ] = Field(
-        default=UNSET,
-        description="Pending suggestions for each suggestible field (`type`,\n`issue_field_values`, `labels`, `assignees`, `state`) the\nrequest touched. Omitted for fields not in the request or\nwith no pending or ignored suggestions. Items tagged\n`ignored` are echoes of the current request's inputs that\nwere not persisted as pending suggestions.\n",
+        description="The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the issue comment."
     )
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1)
+model_rebuild(ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody)
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1",)
+__all__ = ("ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody",)

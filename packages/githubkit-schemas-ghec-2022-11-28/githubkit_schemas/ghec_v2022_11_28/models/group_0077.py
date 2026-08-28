@@ -53,7 +53,7 @@ class CodeScanningOrganizationAlertItems(GitHubModel):
         description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
     )
     dismissed_reason: Union[
-        Literal["false positive", "won't fix", "used in tests"], None
+        Literal["false positive", "won't fix", "used in tests", "mitigated"], None
     ] = Field(
         description="**Required when the state is dismissed.** The reason for dismissing or closing the alert."
     )

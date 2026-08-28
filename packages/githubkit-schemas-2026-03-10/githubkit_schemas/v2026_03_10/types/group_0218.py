@@ -12,37 +12,132 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0219 import (
-    RepositoryRuleRequiredStatusChecksPropParametersType,
-    RepositoryRuleRequiredStatusChecksPropParametersTypeForResponse,
-)
 
+class RepositoryRulePullRequestPropParametersType(TypedDict):
+    """RepositoryRulePullRequestPropParameters"""
 
-class RepositoryRuleRequiredStatusChecksType(TypedDict):
-    """required_status_checks
-
-    Choose which status checks must pass before the ref is updated. When enabled,
-    commits must first be pushed to another ref where the checks pass.
-    """
-
-    type: Literal["required_status_checks"]
-    parameters: NotRequired[RepositoryRuleRequiredStatusChecksPropParametersType]
-
-
-class RepositoryRuleRequiredStatusChecksTypeForResponse(TypedDict):
-    """required_status_checks
-
-    Choose which status checks must pass before the ref is updated. When enabled,
-    commits must first be pushed to another ref where the checks pass.
-    """
-
-    type: Literal["required_status_checks"]
-    parameters: NotRequired[
-        RepositoryRuleRequiredStatusChecksPropParametersTypeForResponse
+    allowed_merge_methods: NotRequired[list[Literal["merge", "squash", "rebase"]]]
+    dismiss_stale_reviews_on_push: bool
+    dismissal_restriction: NotRequired[RepositoryRuleParamsDismissalRestrictionType]
+    require_code_owner_review: bool
+    require_last_push_approval: bool
+    required_approving_review_count: int
+    required_review_thread_resolution: bool
+    required_reviewers: NotRequired[
+        list[RepositoryRuleParamsRequiredReviewerConfigurationType]
     ]
 
 
+class RepositoryRulePullRequestPropParametersTypeForResponse(TypedDict):
+    """RepositoryRulePullRequestPropParameters"""
+
+    allowed_merge_methods: NotRequired[list[Literal["merge", "squash", "rebase"]]]
+    dismiss_stale_reviews_on_push: bool
+    dismissal_restriction: NotRequired[
+        RepositoryRuleParamsDismissalRestrictionTypeForResponse
+    ]
+    require_code_owner_review: bool
+    require_last_push_approval: bool
+    required_approving_review_count: int
+    required_review_thread_resolution: bool
+    required_reviewers: NotRequired[
+        list[RepositoryRuleParamsRequiredReviewerConfigurationTypeForResponse]
+    ]
+
+
+class RepositoryRuleParamsDismissalRestrictionType(TypedDict):
+    """DismissalRestriction
+
+    Specify people, teams, or apps allowed to dismiss pull request reviews.
+    """
+
+    allowed_actors: NotRequired[list[RepositoryRuleParamsActorType]]
+    enabled: bool
+
+
+class RepositoryRuleParamsDismissalRestrictionTypeForResponse(TypedDict):
+    """DismissalRestriction
+
+    Specify people, teams, or apps allowed to dismiss pull request reviews.
+    """
+
+    allowed_actors: NotRequired[list[RepositoryRuleParamsActorTypeForResponse]]
+    enabled: bool
+
+
+class RepositoryRuleParamsActorType(TypedDict):
+    """Actor
+
+    An actor allowed to dismiss pull request reviews
+    """
+
+    id: int
+    type: Literal["User", "Team", "IntegrationInstallation", "RepositoryRole"]
+
+
+class RepositoryRuleParamsActorTypeForResponse(TypedDict):
+    """Actor
+
+    An actor allowed to dismiss pull request reviews
+    """
+
+    id: int
+    type: Literal["User", "Team", "IntegrationInstallation", "RepositoryRole"]
+
+
+class RepositoryRuleParamsRequiredReviewerConfigurationType(TypedDict):
+    """RequiredReviewerConfiguration
+
+    A reviewing team, and file patterns describing which files they must approve
+    changes to.
+    """
+
+    file_patterns: list[str]
+    minimum_approvals: int
+    reviewer: RepositoryRuleParamsReviewerType
+
+
+class RepositoryRuleParamsRequiredReviewerConfigurationTypeForResponse(TypedDict):
+    """RequiredReviewerConfiguration
+
+    A reviewing team, and file patterns describing which files they must approve
+    changes to.
+    """
+
+    file_patterns: list[str]
+    minimum_approvals: int
+    reviewer: RepositoryRuleParamsReviewerTypeForResponse
+
+
+class RepositoryRuleParamsReviewerType(TypedDict):
+    """Reviewer
+
+    A required reviewing team
+    """
+
+    id: int
+    type: Literal["Team"]
+
+
+class RepositoryRuleParamsReviewerTypeForResponse(TypedDict):
+    """Reviewer
+
+    A required reviewing team
+    """
+
+    id: int
+    type: Literal["Team"]
+
+
 __all__ = (
-    "RepositoryRuleRequiredStatusChecksType",
-    "RepositoryRuleRequiredStatusChecksTypeForResponse",
+    "RepositoryRuleParamsActorType",
+    "RepositoryRuleParamsActorTypeForResponse",
+    "RepositoryRuleParamsDismissalRestrictionType",
+    "RepositoryRuleParamsDismissalRestrictionTypeForResponse",
+    "RepositoryRuleParamsRequiredReviewerConfigurationType",
+    "RepositoryRuleParamsRequiredReviewerConfigurationTypeForResponse",
+    "RepositoryRuleParamsReviewerType",
+    "RepositoryRuleParamsReviewerTypeForResponse",
+    "RepositoryRulePullRequestPropParametersType",
+    "RepositoryRulePullRequestPropParametersTypeForResponse",
 )

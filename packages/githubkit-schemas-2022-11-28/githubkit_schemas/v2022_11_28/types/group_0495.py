@@ -9,90 +9,155 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class PullRequestStackMinimalType(TypedDict):
-    """Pull Request Stack Minimal"""
+class RepositoryAdvisoryCreateType(TypedDict):
+    """RepositoryAdvisoryCreate"""
 
-    id: int
-    number: int
-    node_id: str
-    url: str
-    base: PullRequestStackMinimalPropBaseType
-    open_: bool
-    created_at: _dt.datetime
-    pull_requests: list[PullRequestStackMinimalPropPullRequestsItemsType]
-
-
-class PullRequestStackMinimalTypeForResponse(TypedDict):
-    """Pull Request Stack Minimal"""
-
-    id: int
-    number: int
-    node_id: str
-    url: str
-    base: PullRequestStackMinimalPropBaseTypeForResponse
-    open_: bool
-    created_at: str
-    pull_requests: list[PullRequestStackMinimalPropPullRequestsItemsTypeForResponse]
+    summary: str
+    description: str
+    cve_id: NotRequired[Union[str, None]]
+    vulnerabilities: list[RepositoryAdvisoryCreatePropVulnerabilitiesItemsType]
+    cwe_ids: NotRequired[Union[list[str], None]]
+    credits_: NotRequired[
+        Union[list[RepositoryAdvisoryCreatePropCreditsItemsType], None]
+    ]
+    severity: NotRequired[Union[Literal["critical", "high", "medium", "low"], None]]
+    cvss_vector_string: NotRequired[Union[str, None]]
+    start_private_fork: NotRequired[bool]
 
 
-class PullRequestStackMinimalPropBaseType(TypedDict):
-    """PullRequestStackMinimalPropBase"""
+class RepositoryAdvisoryCreateTypeForResponse(TypedDict):
+    """RepositoryAdvisoryCreate"""
 
-    ref: str
-
-
-class PullRequestStackMinimalPropBaseTypeForResponse(TypedDict):
-    """PullRequestStackMinimalPropBase"""
-
-    ref: str
-
-
-class PullRequestStackMinimalPropPullRequestsItemsType(TypedDict):
-    """PullRequestStackMinimalPropPullRequestsItems"""
-
-    number: int
-    state: Literal["open", "closed"]
-    draft: bool
-    merged_at: Union[_dt.datetime, None]
-    head: PullRequestStackMinimalPropPullRequestsItemsPropHeadType
+    summary: str
+    description: str
+    cve_id: NotRequired[Union[str, None]]
+    vulnerabilities: list[
+        RepositoryAdvisoryCreatePropVulnerabilitiesItemsTypeForResponse
+    ]
+    cwe_ids: NotRequired[Union[list[str], None]]
+    credits_: NotRequired[
+        Union[list[RepositoryAdvisoryCreatePropCreditsItemsTypeForResponse], None]
+    ]
+    severity: NotRequired[Union[Literal["critical", "high", "medium", "low"], None]]
+    cvss_vector_string: NotRequired[Union[str, None]]
+    start_private_fork: NotRequired[bool]
 
 
-class PullRequestStackMinimalPropPullRequestsItemsTypeForResponse(TypedDict):
-    """PullRequestStackMinimalPropPullRequestsItems"""
+class RepositoryAdvisoryCreatePropCreditsItemsType(TypedDict):
+    """RepositoryAdvisoryCreatePropCreditsItems"""
 
-    number: int
-    state: Literal["open", "closed"]
-    draft: bool
-    merged_at: Union[str, None]
-    head: PullRequestStackMinimalPropPullRequestsItemsPropHeadTypeForResponse
+    login: str
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
+        "other",
+    ]
 
 
-class PullRequestStackMinimalPropPullRequestsItemsPropHeadType(TypedDict):
-    """PullRequestStackMinimalPropPullRequestsItemsPropHead"""
+class RepositoryAdvisoryCreatePropCreditsItemsTypeForResponse(TypedDict):
+    """RepositoryAdvisoryCreatePropCreditsItems"""
 
-    ref: str
-    sha: str
+    login: str
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
+        "other",
+    ]
 
 
-class PullRequestStackMinimalPropPullRequestsItemsPropHeadTypeForResponse(TypedDict):
-    """PullRequestStackMinimalPropPullRequestsItemsPropHead"""
+class RepositoryAdvisoryCreatePropVulnerabilitiesItemsType(TypedDict):
+    """RepositoryAdvisoryCreatePropVulnerabilitiesItems"""
 
-    ref: str
-    sha: str
+    package: RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackageType
+    vulnerable_version_range: NotRequired[Union[str, None]]
+    patched_versions: NotRequired[Union[str, None]]
+    vulnerable_functions: NotRequired[Union[list[str], None]]
+
+
+class RepositoryAdvisoryCreatePropVulnerabilitiesItemsTypeForResponse(TypedDict):
+    """RepositoryAdvisoryCreatePropVulnerabilitiesItems"""
+
+    package: RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackageTypeForResponse
+    vulnerable_version_range: NotRequired[Union[str, None]]
+    patched_versions: NotRequired[Union[str, None]]
+    vulnerable_functions: NotRequired[Union[list[str], None]]
+
+
+class RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackageType(TypedDict):
+    """RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage
+
+    The name of the package affected by the vulnerability.
+    """
+
+    ecosystem: Literal[
+        "rubygems",
+        "npm",
+        "pip",
+        "maven",
+        "nuget",
+        "composer",
+        "go",
+        "rust",
+        "erlang",
+        "actions",
+        "pub",
+        "other",
+        "swift",
+    ]
+    name: NotRequired[Union[str, None]]
+
+
+class RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackageTypeForResponse(
+    TypedDict
+):
+    """RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage
+
+    The name of the package affected by the vulnerability.
+    """
+
+    ecosystem: Literal[
+        "rubygems",
+        "npm",
+        "pip",
+        "maven",
+        "nuget",
+        "composer",
+        "go",
+        "rust",
+        "erlang",
+        "actions",
+        "pub",
+        "other",
+        "swift",
+    ]
+    name: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "PullRequestStackMinimalPropBaseType",
-    "PullRequestStackMinimalPropBaseTypeForResponse",
-    "PullRequestStackMinimalPropPullRequestsItemsPropHeadType",
-    "PullRequestStackMinimalPropPullRequestsItemsPropHeadTypeForResponse",
-    "PullRequestStackMinimalPropPullRequestsItemsType",
-    "PullRequestStackMinimalPropPullRequestsItemsTypeForResponse",
-    "PullRequestStackMinimalType",
-    "PullRequestStackMinimalTypeForResponse",
+    "RepositoryAdvisoryCreatePropCreditsItemsType",
+    "RepositoryAdvisoryCreatePropCreditsItemsTypeForResponse",
+    "RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackageType",
+    "RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackageTypeForResponse",
+    "RepositoryAdvisoryCreatePropVulnerabilitiesItemsType",
+    "RepositoryAdvisoryCreatePropVulnerabilitiesItemsTypeForResponse",
+    "RepositoryAdvisoryCreateType",
+    "RepositoryAdvisoryCreateTypeForResponse",
 )

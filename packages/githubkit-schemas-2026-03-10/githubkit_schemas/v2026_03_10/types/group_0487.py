@@ -9,28 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class SecretScanningPushProtectionBypassType(TypedDict):
-    """SecretScanningPushProtectionBypass"""
+class SecretScanningAlertMetadataItemsType(TypedDict):
+    """SecretScanningAlertMetadataItems"""
 
-    reason: NotRequired[Literal["false_positive", "used_in_tests", "will_fix_later"]]
-    expire_at: NotRequired[Union[_dt.datetime, None]]
-    token_type: NotRequired[str]
+    key: str
+    value: str
 
 
-class SecretScanningPushProtectionBypassTypeForResponse(TypedDict):
-    """SecretScanningPushProtectionBypass"""
+class SecretScanningAlertMetadataItemsTypeForResponse(TypedDict):
+    """SecretScanningAlertMetadataItems"""
 
-    reason: NotRequired[Literal["false_positive", "used_in_tests", "will_fix_later"]]
-    expire_at: NotRequired[Union[str, None]]
-    token_type: NotRequired[str]
+    key: str
+    value: str
 
 
 __all__ = (
-    "SecretScanningPushProtectionBypassType",
-    "SecretScanningPushProtectionBypassTypeForResponse",
+    "SecretScanningAlertMetadataItemsType",
+    "SecretScanningAlertMetadataItemsTypeForResponse",
 )

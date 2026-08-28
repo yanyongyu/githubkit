@@ -9,43 +9,62 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class LabelType(TypedDict):
-    """Label
+class EnterpriseTeamWithMemberCountType(TypedDict):
+    """Enterprise Team
 
-    Color-coded labels help you categorize and filter your issues (just like labels
-    in Gmail).
+    Group of enterprise owners and/or members
     """
 
     id: int
-    node_id: str
-    url: str
     name: str
-    description: Union[str, None]
-    color: str
-    default: bool
+    description: NotRequired[str]
+    slug: str
+    url: str
+    sync_to_organizations: NotRequired[str]
+    organization_selection_type: NotRequired[str]
+    group_id: Union[str, None]
+    group_name: NotRequired[Union[str, None]]
+    html_url: str
+    members_url: str
+    members_count: int
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
 
 
-class LabelTypeForResponse(TypedDict):
-    """Label
+class EnterpriseTeamWithMemberCountTypeForResponse(TypedDict):
+    """Enterprise Team
 
-    Color-coded labels help you categorize and filter your issues (just like labels
-    in Gmail).
+    Group of enterprise owners and/or members
     """
 
     id: int
-    node_id: str
-    url: str
     name: str
-    description: Union[str, None]
-    color: str
-    default: bool
+    description: NotRequired[str]
+    slug: str
+    url: str
+    sync_to_organizations: NotRequired[str]
+    organization_selection_type: NotRequired[str]
+    group_id: Union[str, None]
+    group_name: NotRequired[Union[str, None]]
+    html_url: str
+    members_url: str
+    members_count: int
+    created_at: str
+    updated_at: str
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
 
 
 __all__ = (
-    "LabelType",
-    "LabelTypeForResponse",
+    "EnterpriseTeamWithMemberCountType",
+    "EnterpriseTeamWithMemberCountTypeForResponse",
 )

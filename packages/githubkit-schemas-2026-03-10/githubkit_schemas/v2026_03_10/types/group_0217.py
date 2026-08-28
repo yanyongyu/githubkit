@@ -12,132 +12,35 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class RepositoryRulePullRequestPropParametersType(TypedDict):
-    """RepositoryRulePullRequestPropParameters"""
-
-    allowed_merge_methods: NotRequired[list[Literal["merge", "squash", "rebase"]]]
-    dismiss_stale_reviews_on_push: bool
-    dismissal_restriction: NotRequired[RepositoryRuleParamsDismissalRestrictionType]
-    require_code_owner_review: bool
-    require_last_push_approval: bool
-    required_approving_review_count: int
-    required_review_thread_resolution: bool
-    required_reviewers: NotRequired[
-        list[RepositoryRuleParamsRequiredReviewerConfigurationType]
-    ]
+from .group_0218 import (
+    RepositoryRulePullRequestPropParametersType,
+    RepositoryRulePullRequestPropParametersTypeForResponse,
+)
 
 
-class RepositoryRulePullRequestPropParametersTypeForResponse(TypedDict):
-    """RepositoryRulePullRequestPropParameters"""
+class RepositoryRulePullRequestType(TypedDict):
+    """pull_request
 
-    allowed_merge_methods: NotRequired[list[Literal["merge", "squash", "rebase"]]]
-    dismiss_stale_reviews_on_push: bool
-    dismissal_restriction: NotRequired[
-        RepositoryRuleParamsDismissalRestrictionTypeForResponse
-    ]
-    require_code_owner_review: bool
-    require_last_push_approval: bool
-    required_approving_review_count: int
-    required_review_thread_resolution: bool
-    required_reviewers: NotRequired[
-        list[RepositoryRuleParamsRequiredReviewerConfigurationTypeForResponse]
-    ]
-
-
-class RepositoryRuleParamsDismissalRestrictionType(TypedDict):
-    """DismissalRestriction
-
-    Specify people, teams, or apps allowed to dismiss pull request reviews.
+    Require all commits be made to a non-target branch and submitted via a pull
+    request before they can be merged.
     """
 
-    allowed_actors: NotRequired[list[RepositoryRuleParamsActorType]]
-    enabled: bool
+    type: Literal["pull_request"]
+    parameters: NotRequired[RepositoryRulePullRequestPropParametersType]
 
 
-class RepositoryRuleParamsDismissalRestrictionTypeForResponse(TypedDict):
-    """DismissalRestriction
+class RepositoryRulePullRequestTypeForResponse(TypedDict):
+    """pull_request
 
-    Specify people, teams, or apps allowed to dismiss pull request reviews.
+    Require all commits be made to a non-target branch and submitted via a pull
+    request before they can be merged.
     """
 
-    allowed_actors: NotRequired[list[RepositoryRuleParamsActorTypeForResponse]]
-    enabled: bool
-
-
-class RepositoryRuleParamsActorType(TypedDict):
-    """Actor
-
-    An actor allowed to dismiss pull request reviews
-    """
-
-    id: int
-    type: Literal["User", "Team", "IntegrationInstallation", "RepositoryRole"]
-
-
-class RepositoryRuleParamsActorTypeForResponse(TypedDict):
-    """Actor
-
-    An actor allowed to dismiss pull request reviews
-    """
-
-    id: int
-    type: Literal["User", "Team", "IntegrationInstallation", "RepositoryRole"]
-
-
-class RepositoryRuleParamsRequiredReviewerConfigurationType(TypedDict):
-    """RequiredReviewerConfiguration
-
-    A reviewing team, and file patterns describing which files they must approve
-    changes to.
-    """
-
-    file_patterns: list[str]
-    minimum_approvals: int
-    reviewer: RepositoryRuleParamsReviewerType
-
-
-class RepositoryRuleParamsRequiredReviewerConfigurationTypeForResponse(TypedDict):
-    """RequiredReviewerConfiguration
-
-    A reviewing team, and file patterns describing which files they must approve
-    changes to.
-    """
-
-    file_patterns: list[str]
-    minimum_approvals: int
-    reviewer: RepositoryRuleParamsReviewerTypeForResponse
-
-
-class RepositoryRuleParamsReviewerType(TypedDict):
-    """Reviewer
-
-    A required reviewing team
-    """
-
-    id: int
-    type: Literal["Team"]
-
-
-class RepositoryRuleParamsReviewerTypeForResponse(TypedDict):
-    """Reviewer
-
-    A required reviewing team
-    """
-
-    id: int
-    type: Literal["Team"]
+    type: Literal["pull_request"]
+    parameters: NotRequired[RepositoryRulePullRequestPropParametersTypeForResponse]
 
 
 __all__ = (
-    "RepositoryRuleParamsActorType",
-    "RepositoryRuleParamsActorTypeForResponse",
-    "RepositoryRuleParamsDismissalRestrictionType",
-    "RepositoryRuleParamsDismissalRestrictionTypeForResponse",
-    "RepositoryRuleParamsRequiredReviewerConfigurationType",
-    "RepositoryRuleParamsRequiredReviewerConfigurationTypeForResponse",
-    "RepositoryRuleParamsReviewerType",
-    "RepositoryRuleParamsReviewerTypeForResponse",
-    "RepositoryRulePullRequestPropParametersType",
-    "RepositoryRulePullRequestPropParametersTypeForResponse",
+    "RepositoryRulePullRequestType",
+    "RepositoryRulePullRequestTypeForResponse",
 )

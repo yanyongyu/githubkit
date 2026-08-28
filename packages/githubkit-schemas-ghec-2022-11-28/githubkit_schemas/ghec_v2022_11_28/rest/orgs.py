@@ -69,6 +69,10 @@ if TYPE_CHECKING:
         OrgsOrgAttestationsBulkListPostResponse200,
         OrgsOrgAttestationsRepositoriesGetResponse200Items,
         OrgsOrgAttestationsSubjectDigestGetResponse200,
+        OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202,
+        OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostResponse202,
+        OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202,
+        OrgsOrgCredentialAuthorizationsUsernameRevokePostResponse202,
         OrgsOrgCustomRepositoryRolesGetResponse200,
         OrgsOrgInstallationsGetResponse200,
         OrgsOrgOrganizationRolesGetResponse200,
@@ -150,6 +154,12 @@ if TYPE_CHECKING:
         OrgsOrgAttestationsDeleteRequestPostBodyOneof1Type,
         OrgsOrgAttestationsRepositoriesGetResponse200ItemsTypeForResponse,
         OrgsOrgAttestationsSubjectDigestGetResponse200TypeForResponse,
+        OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202TypeForResponse,
+        OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostBodyType,
+        OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostResponse202TypeForResponse,
+        OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyType,
+        OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202TypeForResponse,
+        OrgsOrgCredentialAuthorizationsUsernameRevokePostResponse202TypeForResponse,
         OrgsOrgCustomRepositoryRolesGetResponse200TypeForResponse,
         OrgsOrgHooksHookIdConfigPatchBodyType,
         OrgsOrgHooksHookIdPatchBodyPropConfigType,
@@ -3620,6 +3630,318 @@ class OrgsClient:
             response_model=list[CredentialAuthorization],
         )
 
+    def revoke_all_credential_authorizations(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202,
+        OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202TypeForResponse,
+    ]:
+        """orgs/revoke-all-credential-authorizations
+
+        POST /orgs/{org}/credential-authorizations/revoke-all
+
+        Revokes all SAML SSO credential authorizations for every member of the
+        organization. This removes the sign-in authorizations for personal access
+        tokens, SSH keys, OAuth app tokens, and user-to-server tokens that members
+        have authorized for the organization. Members will need to authorize their
+        credentials again to access the organization.
+
+        This operation is performed asynchronously. A background job will be queued to process
+        the revocations.
+
+        > [!WARNING]
+        > If you use a personal access token to call this endpoint, that token's
+        > authorization for the organization may also be revoked as part of this operation.
+
+        The authenticated user must be an organization owner to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/orgs#revoke-all-credential-authorizations-for-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202,
+        )
+
+        url = f"/orgs/{org}/credential-authorizations/revoke-all"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "POST",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_revoke_all_credential_authorizations(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202,
+        OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202TypeForResponse,
+    ]:
+        """orgs/revoke-all-credential-authorizations
+
+        POST /orgs/{org}/credential-authorizations/revoke-all
+
+        Revokes all SAML SSO credential authorizations for every member of the
+        organization. This removes the sign-in authorizations for personal access
+        tokens, SSH keys, OAuth app tokens, and user-to-server tokens that members
+        have authorized for the organization. Members will need to authorize their
+        credentials again to access the organization.
+
+        This operation is performed asynchronously. A background job will be queued to process
+        the revocations.
+
+        > [!WARNING]
+        > If you use a personal access token to call this endpoint, that token's
+        > authorization for the organization may also be revoked as part of this operation.
+
+        The authenticated user must be an organization owner to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/orgs#revoke-all-credential-authorizations-for-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202,
+        )
+
+        url = f"/orgs/{org}/credential-authorizations/revoke-all"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def revoke_credential_type(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostBodyType,
+    ) -> Response[
+        OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostResponse202,
+        OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostResponse202TypeForResponse,
+    ]: ...
+
+    @overload
+    def revoke_credential_type(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        credential_type: Literal[
+            "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
+        ],
+    ) -> Response[
+        OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostResponse202,
+        OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostResponse202TypeForResponse,
+    ]: ...
+
+    def revoke_credential_type(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[
+            OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostResponse202,
+        OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostResponse202TypeForResponse,
+    ]:
+        """orgs/revoke-credential-type
+
+        POST /orgs/{org}/credential-authorizations/revoke-credential-type
+
+        Revokes a single credential type (for example, classic personal access tokens)
+        across the organization. This removes the sign-in authorizations for that
+        credential type for every member of the organization.
+
+        This operation is performed asynchronously. A background job will be queued to process
+        the revocations.
+
+        > [!WARNING]
+        > If you use a personal access token to call this endpoint and revoke classic
+        > personal access tokens, that token's authorization for the organization may
+        > also be revoked as part of this operation.
+
+        The authenticated user must be an organization owner to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/orgs#revoke-a-single-credential-type-for-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostBody,
+            OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostResponse202,
+        )
+
+        url = f"/orgs/{org}/credential-authorizations/revoke-credential-type"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostResponse202,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": BasicError,
+            },
+        )
+
+    @overload
+    async def async_revoke_credential_type(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostBodyType,
+    ) -> Response[
+        OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostResponse202,
+        OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostResponse202TypeForResponse,
+    ]: ...
+
+    @overload
+    async def async_revoke_credential_type(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        credential_type: Literal[
+            "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
+        ],
+    ) -> Response[
+        OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostResponse202,
+        OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostResponse202TypeForResponse,
+    ]: ...
+
+    async def async_revoke_credential_type(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[
+            OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostResponse202,
+        OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostResponse202TypeForResponse,
+    ]:
+        """orgs/revoke-credential-type
+
+        POST /orgs/{org}/credential-authorizations/revoke-credential-type
+
+        Revokes a single credential type (for example, classic personal access tokens)
+        across the organization. This removes the sign-in authorizations for that
+        credential type for every member of the organization.
+
+        This operation is performed asynchronously. A background job will be queued to process
+        the revocations.
+
+        > [!WARNING]
+        > If you use a personal access token to call this endpoint and revoke classic
+        > personal access tokens, that token's authorization for the organization may
+        > also be revoked as part of this operation.
+
+        The authenticated user must be an organization owner to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/orgs#revoke-a-single-credential-type-for-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostBody,
+            OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostResponse202,
+        )
+
+        url = f"/orgs/{org}/credential-authorizations/revoke-credential-type"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostResponse202,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": BasicError,
+            },
+        )
+
     def remove_saml_sso_authorization(
         self,
         org: str,
@@ -3691,6 +4013,330 @@ class OrgsClient:
             stream=stream,
             error_models={
                 "404": BasicError,
+            },
+        )
+
+    def revoke_credential_authorizations_for_user(
+        self,
+        org: str,
+        username: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        OrgsOrgCredentialAuthorizationsUsernameRevokePostResponse202,
+        OrgsOrgCredentialAuthorizationsUsernameRevokePostResponse202TypeForResponse,
+    ]:
+        """orgs/revoke-credential-authorizations-for-user
+
+        POST /orgs/{org}/credential-authorizations/{username}/revoke
+
+        Revokes all SAML SSO credential authorizations for a single user within the
+        organization. This removes the sign-in authorizations for the user's personal
+        access tokens, SSH keys, OAuth app tokens, and user-to-server tokens that they
+        have authorized for the organization. The user will need to authorize their
+        credentials again to access the organization.
+
+        This operation is performed asynchronously. A background job will be queued to process
+        the revocations.
+
+        > [!WARNING]
+        > If you use a personal access token to call this endpoint and target yourself,
+        > that token's authorization for the organization may also be revoked as part of
+        > this operation.
+
+        The authenticated user must be an organization owner to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/orgs#revoke-credential-authorizations-for-a-user-in-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgCredentialAuthorizationsUsernameRevokePostResponse202,
+        )
+
+        url = f"/orgs/{org}/credential-authorizations/{username}/revoke"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "POST",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgCredentialAuthorizationsUsernameRevokePostResponse202,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_revoke_credential_authorizations_for_user(
+        self,
+        org: str,
+        username: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        OrgsOrgCredentialAuthorizationsUsernameRevokePostResponse202,
+        OrgsOrgCredentialAuthorizationsUsernameRevokePostResponse202TypeForResponse,
+    ]:
+        """orgs/revoke-credential-authorizations-for-user
+
+        POST /orgs/{org}/credential-authorizations/{username}/revoke
+
+        Revokes all SAML SSO credential authorizations for a single user within the
+        organization. This removes the sign-in authorizations for the user's personal
+        access tokens, SSH keys, OAuth app tokens, and user-to-server tokens that they
+        have authorized for the organization. The user will need to authorize their
+        credentials again to access the organization.
+
+        This operation is performed asynchronously. A background job will be queued to process
+        the revocations.
+
+        > [!WARNING]
+        > If you use a personal access token to call this endpoint and target yourself,
+        > that token's authorization for the organization may also be revoked as part of
+        > this operation.
+
+        The authenticated user must be an organization owner to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/orgs#revoke-credential-authorizations-for-a-user-in-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgCredentialAuthorizationsUsernameRevokePostResponse202,
+        )
+
+        url = f"/orgs/{org}/credential-authorizations/{username}/revoke"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgCredentialAuthorizationsUsernameRevokePostResponse202,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def revoke_credential_type_for_user(
+        self,
+        org: str,
+        username: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyType,
+    ) -> Response[
+        OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202,
+        OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202TypeForResponse,
+    ]: ...
+
+    @overload
+    def revoke_credential_type_for_user(
+        self,
+        org: str,
+        username: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        credential_type: Literal[
+            "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
+        ],
+    ) -> Response[
+        OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202,
+        OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202TypeForResponse,
+    ]: ...
+
+    def revoke_credential_type_for_user(
+        self,
+        org: str,
+        username: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[
+            OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202,
+        OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202TypeForResponse,
+    ]:
+        """orgs/revoke-credential-type-for-user
+
+        POST /orgs/{org}/credential-authorizations/{username}/revoke-credential-type
+
+        Revokes a single credential type (for example, classic personal access tokens)
+        for a single user within the organization. This removes the sign-in authorizations
+        for that credential type for the user in the organization.
+
+        This operation is performed asynchronously. A background job will be queued to process
+        the revocations.
+
+        > [!WARNING]
+        > If you use a personal access token to call this endpoint, target yourself, and
+        > revoke classic personal access tokens, that token's authorization for the
+        > organization may also be revoked as part of this operation.
+
+        The authenticated user must be an organization owner to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/orgs#revoke-a-single-credential-type-for-a-user-in-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBody,
+            OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202,
+        )
+
+        url = f"/orgs/{org}/credential-authorizations/{username}/revoke-credential-type"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBody,
+                json,
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": BasicError,
+            },
+        )
+
+    @overload
+    async def async_revoke_credential_type_for_user(
+        self,
+        org: str,
+        username: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyType,
+    ) -> Response[
+        OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202,
+        OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202TypeForResponse,
+    ]: ...
+
+    @overload
+    async def async_revoke_credential_type_for_user(
+        self,
+        org: str,
+        username: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        credential_type: Literal[
+            "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
+        ],
+    ) -> Response[
+        OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202,
+        OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202TypeForResponse,
+    ]: ...
+
+    async def async_revoke_credential_type_for_user(
+        self,
+        org: str,
+        username: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[
+            OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202,
+        OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202TypeForResponse,
+    ]:
+        """orgs/revoke-credential-type-for-user
+
+        POST /orgs/{org}/credential-authorizations/{username}/revoke-credential-type
+
+        Revokes a single credential type (for example, classic personal access tokens)
+        for a single user within the organization. This removes the sign-in authorizations
+        for that credential type for the user in the organization.
+
+        This operation is performed asynchronously. A background job will be queued to process
+        the revocations.
+
+        > [!WARNING]
+        > If you use a personal access token to call this endpoint, target yourself, and
+        > revoke classic personal access tokens, that token's authorization for the
+        > organization may also be revoked as part of this operation.
+
+        The authenticated user must be an organization owner to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/orgs#revoke-a-single-credential-type-for-a-user-in-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBody,
+            OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202,
+        )
+
+        url = f"/orgs/{org}/credential-authorizations/{username}/revoke-credential-type"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBody,
+                json,
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": BasicError,
             },
         )
 

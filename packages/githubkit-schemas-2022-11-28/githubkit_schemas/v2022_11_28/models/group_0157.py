@@ -16,14 +16,22 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ApiInsightsTimeStatsItems(GitHubModel):
-    """ApiInsightsTimeStatsItems"""
+class ApiInsightsSummaryStats(GitHubModel):
+    """Summary Stats
 
-    timestamp: Missing[str] = Field(default=UNSET)
-    total_request_count: Missing[int] = Field(default=UNSET)
-    rate_limited_request_count: Missing[int] = Field(default=UNSET)
+    API Insights usage summary stats for an organization
+    """
+
+    total_request_count: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of requests within the queried time period",
+    )
+    rate_limited_request_count: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of requests that were rate limited within the queried time period",
+    )
 
 
-model_rebuild(ApiInsightsTimeStatsItems)
+model_rebuild(ApiInsightsSummaryStats)
 
-__all__ = ("ApiInsightsTimeStatsItems",)
+__all__ = ("ApiInsightsSummaryStats",)

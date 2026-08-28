@@ -18,26 +18,20 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBody(
+class EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBody(
     GitHubModel
 ):
-    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBod
-    y
-    """
+    """EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBody"""
 
     credential_type: Literal[
         "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
-    ] = Field(description="The type of credential to revoke for the user.")
+    ] = Field(description="The type of credential to revoke across the enterprise.")
     revoke_credentials: Missing[bool] = Field(
         default=UNSET,
-        description="Whether to also destroy the actual credential of this type owned by the\nuser. This option is only available for Enterprise Managed User (EMU)\nenterprises. When set to `true`, the credential of the given type owned\nby the user will be destroyed in addition to the credential authorizations.\nNote that `oauth_app_token` credentials cannot be destroyed; for that type\nonly the credential authorizations are revoked.",
+        description="Whether to also destroy the actual credentials of this type owned by\nenterprise members. This option is only available for Enterprise Managed\nUser (EMU) enterprises. When set to `true`, all credentials of the given\ntype owned by enterprise members will be destroyed in addition to the\ncredential authorizations. Note that `oauth_app_token` credentials cannot\nbe destroyed; for that type only the credential authorizations are revoked.",
     )
 
 
-model_rebuild(
-    EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBody
-)
+model_rebuild(EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBody)
 
-__all__ = (
-    "EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBody",
-)
+__all__ = ("EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBody",)

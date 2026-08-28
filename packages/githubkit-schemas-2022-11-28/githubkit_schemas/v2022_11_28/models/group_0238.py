@@ -14,26 +14,18 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0239 import RepositoryRuleFilePathRestrictionPropParameters
 
 
-class RepositoryRuleFilePathRestriction(GitHubModel):
-    """file_path_restriction
+class RepositoryRuleLicenseComplianceScanning(GitHubModel):
+    """license_compliance_scanning
 
-    Prevent commits that include changes in specified file and folder paths from
-    being pushed to the commit graph. This includes absolute paths that contain file
-    names.
+    Enforce any added or changed dependencies to comply with the organization's
+    license policy.
     """
 
-    type: Literal["file_path_restriction"] = Field()
-    parameters: Missing[RepositoryRuleFilePathRestrictionPropParameters] = Field(
-        default=UNSET
-    )
+    type: Literal["license_compliance_scanning"] = Field()
 
 
-model_rebuild(RepositoryRuleFilePathRestriction)
+model_rebuild(RepositoryRuleLicenseComplianceScanning)
 
-__all__ = ("RepositoryRuleFilePathRestriction",)
+__all__ = ("RepositoryRuleLicenseComplianceScanning",)

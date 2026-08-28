@@ -9,151 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseInnersourceVulnerabilitiesSyncPostBody(GitHubModel):
-    """EnterprisesEnterpriseInnersourceVulnerabilitiesSyncPostBody"""
-
-    vulnerabilities: list[OsvVulnerability] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="Array of vulnerabilities in OSV format to synchronize",
-    )
-
-
-class OsvVulnerability(GitHubModel):
-    """OSV Vulnerability
-
-    A vulnerability in OSV (Open Source Vulnerability) format
+class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBody(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBod
+    y
     """
 
-    id: str = Field(
-        description="Unique identifier for the vulnerability from the external system"
-    )
-    schema_version: Missing[str] = Field(
-        default=UNSET, description="The OSV schema version"
-    )
-    summary: Missing[str] = Field(
-        default=UNSET, description="A short summary of the vulnerability"
-    )
-    details: Missing[str] = Field(
-        default=UNSET, description="Detailed description of the vulnerability"
-    )
-    aliases: Missing[list[str]] = Field(
+    credential_type: Literal[
+        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
+    ] = Field(description="The type of credential to revoke for the user.")
+    revoke_credentials: Missing[bool] = Field(
         default=UNSET,
-        description="IDs for the same vulnerability in other databases. Only CVE IDs are used (to populate the vulnerability's CVE identifier); other aliases are ignored.",
-    )
-    severity: Missing[list[OsvVulnerabilityPropSeverityItems]] = Field(
-        default=UNSET, description="Severity information for the vulnerability"
-    )
-    affected: Missing[list[OsvVulnerabilityPropAffectedItems]] = Field(
-        default=UNSET, description="Packages and versions affected by the vulnerability"
-    )
-    references: Missing[list[OsvVulnerabilityPropReferencesItems]] = Field(
-        default=UNSET, description="URLs for more information about the vulnerability"
-    )
-    published: Missing[_dt.datetime] = Field(
-        default=UNSET, description="When the vulnerability was first published"
-    )
-    modified: Missing[_dt.datetime] = Field(
-        default=UNSET, description="When the vulnerability was last modified"
-    )
-    withdrawn: Missing[_dt.datetime] = Field(
-        default=UNSET,
-        description="When the vulnerability was withdrawn. If present, the vulnerability will be marked as withdrawn.",
+        description="Whether to also destroy the actual credential of this type owned by the\nuser. This option is only available for Enterprise Managed User (EMU)\nenterprises. When set to `true`, the credential of the given type owned\nby the user will be destroyed in addition to the credential authorizations.\nNote that `oauth_app_token` credentials cannot be destroyed; for that type\nonly the credential authorizations are revoked.",
     )
 
 
-class OsvVulnerabilityPropSeverityItems(GitHubModel):
-    """OsvVulnerabilityPropSeverityItems"""
-
-    type: Missing[str] = Field(
-        default=UNSET, description="The type of severity scoring (e.g., CVSS_V3)"
-    )
-    score: Missing[str] = Field(
-        default=UNSET, description="The severity score or vector string"
-    )
-
-
-class OsvVulnerabilityPropReferencesItems(GitHubModel):
-    """OsvVulnerabilityPropReferencesItems"""
-
-    type: Missing[str] = Field(
-        default=UNSET,
-        description="The type of reference. Supported values: PACKAGE, ADVISORY, WEB, FIX, ARTICLE, REPORT, EVIDENCE. References with other types are ignored.",
-    )
-    url: Missing[str] = Field(default=UNSET, description="The reference URL")
-
-
-class OsvVulnerabilityPropAffectedItems(GitHubModel):
-    """OsvVulnerabilityPropAffectedItems"""
-
-    package: Missing[OsvVulnerabilityPropAffectedItemsPropPackage] = Field(
-        default=UNSET
-    )
-    ranges: Missing[list[OsvVulnerabilityPropAffectedItemsPropRangesItems]] = Field(
-        default=UNSET
-    )
-
-
-class OsvVulnerabilityPropAffectedItemsPropPackage(GitHubModel):
-    """OsvVulnerabilityPropAffectedItemsPropPackage"""
-
-    ecosystem: Missing[str] = Field(
-        default=UNSET, description="The package ecosystem (e.g., npm, pip, maven)"
-    )
-    name: Missing[str] = Field(default=UNSET, description="The package name")
-
-
-class OsvVulnerabilityPropAffectedItemsPropRangesItems(GitHubModel):
-    """OsvVulnerabilityPropAffectedItemsPropRangesItems"""
-
-    type: Missing[str] = Field(default=UNSET)
-    events: Missing[
-        list[OsvVulnerabilityPropAffectedItemsPropRangesItemsPropEventsItems]
-    ] = Field(default=UNSET)
-
-
-class OsvVulnerabilityPropAffectedItemsPropRangesItemsPropEventsItems(GitHubModel):
-    """OsvVulnerabilityPropAffectedItemsPropRangesItemsPropEventsItems"""
-
-    introduced: Missing[str] = Field(
-        default=UNSET, description="The version that introduced the vulnerability"
-    )
-    fixed: Missing[str] = Field(
-        default=UNSET, description="The version that fixed the vulnerability"
-    )
-    last_affected: Missing[str] = Field(
-        default=UNSET, description="The last affected version"
-    )
-    limit: Missing[str] = Field(
-        default=UNSET, description="The upper limit of the affected range"
-    )
-
-
-model_rebuild(EnterprisesEnterpriseInnersourceVulnerabilitiesSyncPostBody)
-model_rebuild(OsvVulnerability)
-model_rebuild(OsvVulnerabilityPropSeverityItems)
-model_rebuild(OsvVulnerabilityPropReferencesItems)
-model_rebuild(OsvVulnerabilityPropAffectedItems)
-model_rebuild(OsvVulnerabilityPropAffectedItemsPropPackage)
-model_rebuild(OsvVulnerabilityPropAffectedItemsPropRangesItems)
-model_rebuild(OsvVulnerabilityPropAffectedItemsPropRangesItemsPropEventsItems)
+model_rebuild(
+    EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBody
+)
 
 __all__ = (
-    "EnterprisesEnterpriseInnersourceVulnerabilitiesSyncPostBody",
-    "OsvVulnerability",
-    "OsvVulnerabilityPropAffectedItems",
-    "OsvVulnerabilityPropAffectedItemsPropPackage",
-    "OsvVulnerabilityPropAffectedItemsPropRangesItems",
-    "OsvVulnerabilityPropAffectedItemsPropRangesItemsPropEventsItems",
-    "OsvVulnerabilityPropReferencesItems",
-    "OsvVulnerabilityPropSeverityItems",
+    "EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBody",
 )

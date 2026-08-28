@@ -11,86 +11,56 @@ from __future__ import annotations
 
 import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0052 import ReactionRollupType, ReactionRollupTypeForResponse
-from .group_0054 import PinnedIssueCommentType, PinnedIssueCommentTypeForResponse
-from .group_0055 import IssueCommentMinimizedType, IssueCommentMinimizedTypeForResponse
+from typing_extensions import TypedDict
 
 
-class TimelineCommentEventType(TypedDict):
-    """Timeline Comment Event
+class IssueSuggestionType(TypedDict):
+    """Issue Suggestion
 
-    Timeline Comment Event
+    An agent-proposed change to an issue that a maintainer can approve or dismiss.
     """
 
-    event: Literal["commented"]
-    actor: SimpleUserType
     id: int
-    node_id: str
-    url: str
-    body: NotRequired[str]
-    body_text: NotRequired[str]
-    body_html: NotRequired[str]
-    html_url: str
-    user: SimpleUserType
+    issue_id: int
+    action: Literal["set_type", "add_label", "add_field", "add_assignee", "close_issue"]
+    state: Literal[
+        "pending", "applied", "approved", "dismissed", "replaced", "invalidated"
+    ]
+    target_id: Union[int, None]
+    target_value: Union[str, float, bool, list[str], None]
+    rationale: Union[str, None]
+    confidence: Union[Literal["LOW", "MEDIUM", "HIGH"], None]
+    actor_id: Union[int, None]
+    issue_event_id: Union[int, None]
+    resolved_by: Union[int, None]
     created_at: _dt.datetime
     updated_at: _dt.datetime
-    issue_url: str
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
-    reactions: NotRequired[ReactionRollupType]
-    pin: NotRequired[Union[PinnedIssueCommentType, None]]
-    minimized: NotRequired[Union[IssueCommentMinimizedType, None]]
 
 
-class TimelineCommentEventTypeForResponse(TypedDict):
-    """Timeline Comment Event
+class IssueSuggestionTypeForResponse(TypedDict):
+    """Issue Suggestion
 
-    Timeline Comment Event
+    An agent-proposed change to an issue that a maintainer can approve or dismiss.
     """
 
-    event: Literal["commented"]
-    actor: SimpleUserTypeForResponse
     id: int
-    node_id: str
-    url: str
-    body: NotRequired[str]
-    body_text: NotRequired[str]
-    body_html: NotRequired[str]
-    html_url: str
-    user: SimpleUserTypeForResponse
+    issue_id: int
+    action: Literal["set_type", "add_label", "add_field", "add_assignee", "close_issue"]
+    state: Literal[
+        "pending", "applied", "approved", "dismissed", "replaced", "invalidated"
+    ]
+    target_id: Union[int, None]
+    target_value: Union[str, float, bool, list[str], None]
+    rationale: Union[str, None]
+    confidence: Union[Literal["LOW", "MEDIUM", "HIGH"], None]
+    actor_id: Union[int, None]
+    issue_event_id: Union[int, None]
+    resolved_by: Union[int, None]
     created_at: str
     updated_at: str
-    issue_url: str
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
-    reactions: NotRequired[ReactionRollupTypeForResponse]
-    pin: NotRequired[Union[PinnedIssueCommentTypeForResponse, None]]
-    minimized: NotRequired[Union[IssueCommentMinimizedTypeForResponse, None]]
 
 
 __all__ = (
-    "TimelineCommentEventType",
-    "TimelineCommentEventTypeForResponse",
+    "IssueSuggestionType",
+    "IssueSuggestionTypeForResponse",
 )

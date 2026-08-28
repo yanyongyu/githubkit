@@ -13,21 +13,33 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0187 import ProjectsV2FieldIterationConfiguration
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 
 
-class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2(GitHubModel):
-    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2"""
+class UsersUsernameCopilotSpacesSpaceNumberResourcesPostBody(GitHubModel):
+    """UsersUsernameCopilotSpacesSpaceNumberResourcesPostBody"""
 
-    name: str = Field(description="The name of the field.")
-    data_type: Literal["iteration"] = Field(description="The field's data type.")
-    iteration_configuration: ProjectsV2FieldIterationConfiguration = Field(
-        description="The configuration for iteration fields."
+    resource_type: Literal[
+        "repository", "github_file", "free_text", "github_issue", "github_pull_request"
+    ] = Field(description="The type of resource to create.")
+    metadata: UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata = (
+        Field(description="Resource-specific metadata.")
     )
 
 
-model_rebuild(UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2)
+class UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata(
+    ExtraGitHubModel
+):
+    """UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata
 
-__all__ = ("UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2",)
+    Resource-specific metadata.
+    """
+
+
+model_rebuild(UsersUsernameCopilotSpacesSpaceNumberResourcesPostBody)
+model_rebuild(UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata)
+
+__all__ = (
+    "UsersUsernameCopilotSpacesSpaceNumberResourcesPostBody",
+    "UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata",
+)

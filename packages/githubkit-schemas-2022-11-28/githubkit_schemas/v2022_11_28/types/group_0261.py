@@ -9,38 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class SecretScanningCustomPatternToCreateType(TypedDict):
-    """Secret Scanning Custom Pattern To Create
+class SecretScanningCustomPatternType(TypedDict):
+    """Secret Scanning Custom Pattern
 
-    A custom pattern to create in a bulk operation.
+    A custom pattern for secret scanning.
     """
 
+    id: int
     name: str
     pattern: str
-    start_delimiter: NotRequired[str]
-    end_delimiter: NotRequired[str]
-    must_match: NotRequired[list[str]]
-    must_not_match: NotRequired[list[str]]
+    slug: str
+    state: Literal["published", "unpublished"]
+    push_protection_enabled: bool
+    start_delimiter: NotRequired[Union[str, None]]
+    end_delimiter: NotRequired[Union[str, None]]
+    must_match: NotRequired[Union[list[str], None]]
+    must_not_match: NotRequired[Union[list[str], None]]
+    custom_pattern_version: NotRequired[Union[str, None]]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
 
 
-class SecretScanningCustomPatternToCreateTypeForResponse(TypedDict):
-    """Secret Scanning Custom Pattern To Create
+class SecretScanningCustomPatternTypeForResponse(TypedDict):
+    """Secret Scanning Custom Pattern
 
-    A custom pattern to create in a bulk operation.
+    A custom pattern for secret scanning.
     """
 
+    id: int
     name: str
     pattern: str
-    start_delimiter: NotRequired[str]
-    end_delimiter: NotRequired[str]
-    must_match: NotRequired[list[str]]
-    must_not_match: NotRequired[list[str]]
+    slug: str
+    state: Literal["published", "unpublished"]
+    push_protection_enabled: bool
+    start_delimiter: NotRequired[Union[str, None]]
+    end_delimiter: NotRequired[Union[str, None]]
+    must_match: NotRequired[Union[list[str], None]]
+    must_not_match: NotRequired[Union[list[str], None]]
+    custom_pattern_version: NotRequired[Union[str, None]]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
 
 
 __all__ = (
-    "SecretScanningCustomPatternToCreateType",
-    "SecretScanningCustomPatternToCreateTypeForResponse",
+    "SecretScanningCustomPatternType",
+    "SecretScanningCustomPatternTypeForResponse",
 )

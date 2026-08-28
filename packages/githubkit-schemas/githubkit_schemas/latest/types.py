@@ -1317,6 +1317,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     from githubkit_schemas.v2026_03_10.types import (
         EnterpriseTeamType as EnterpriseTeamType,
     )
+    from githubkit_schemas.v2026_03_10.types import (
+        EnterpriseTeamWithMemberCountType as EnterpriseTeamWithMemberCountType,
+    )
     from githubkit_schemas.v2026_03_10.types import EnterpriseType as EnterpriseType
     from githubkit_schemas.v2026_03_10.types import (
         EnterpriseWebhooksType as EnterpriseWebhooksType,
@@ -4173,6 +4176,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         ReposOwnerRepoStacksStackNumberUnstackPostResponse200Type as ReposOwnerRepoStacksStackNumberUnstackPostResponse200Type,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        ReposOwnerRepoStargazersCountGetResponse200Type as ReposOwnerRepoStargazersCountGetResponse200Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         ReposOwnerRepoStatusesShaPostBodyType as ReposOwnerRepoStatusesShaPostBodyType,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -4587,10 +4593,16 @@ if TYPE_CHECKING or is_lazy_disabled():
         TimelineCommittedEventType as TimelineCommittedEventType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        TimelineConnectedEventType as TimelineConnectedEventType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         TimelineCrossReferencedEventPropSourceType as TimelineCrossReferencedEventPropSourceType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         TimelineCrossReferencedEventType as TimelineCrossReferencedEventType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        TimelineDisconnectedEventType as TimelineDisconnectedEventType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         TimelineLineCommentedEventType as TimelineLineCommentedEventType,
@@ -11575,6 +11587,7 @@ else:
             "DependabotAlertWithRepositoryPropDependencyType",
             "DependabotRepositoryAccessDetailsType",
             "OrganizationSimpleType",
+            "EnterpriseTeamWithMemberCountType",
             "LabelType",
             "DiscussionType",
             "DiscussionPropAnswerChosenByType",
@@ -12282,6 +12295,8 @@ else:
             "TimelineAssignedIssueEventType",
             "TimelineUnassignedIssueEventType",
             "StateChangeIssueEventType",
+            "TimelineConnectedEventType",
+            "TimelineDisconnectedEventType",
             "DeployKeyType",
             "LanguageType",
             "LicenseContentType",
@@ -15339,6 +15354,7 @@ else:
             "ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItemsType",
             "ReposOwnerRepoStacksStackNumberUnstackPostResponse200Type",
             "ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBaseType",
+            "ReposOwnerRepoStargazersCountGetResponse200Type",
             "ReposOwnerRepoStatusesShaPostBodyType",
             "ReposOwnerRepoSubscriptionPutBodyType",
             "ReposOwnerRepoTopicsPutBodyType",

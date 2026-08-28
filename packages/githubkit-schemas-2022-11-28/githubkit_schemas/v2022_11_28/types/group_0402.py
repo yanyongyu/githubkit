@@ -9,39 +9,69 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0036 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
 
-class IssueEventIntentType(TypedDict):
-    """Issue Event Intent
 
-    The intent behind an agent's action on an issue, including the rationale and
-    confidence. Present (and `null` when the event carried no agent intent) on
-    supported event types while the issue suggestions feature is enabled for the
-    repository; the property is omitted entirely when the feature is disabled or the
-    event type does not support intent.
+class IssueReferenceType(TypedDict):
+    """Issue Reference
+
+    A minimal reference to an issue linked from a timeline event (e.g. sub-issue,
+    parent-issue, or dependency events).
     """
 
-    rationale: NotRequired[Union[str, None]]
-    confidence: NotRequired[Union[Literal["LOW", "MEDIUM", "HIGH"], None]]
+    number: int
+    title: str
+    state: str
+    state_reason: NotRequired[Union[str, None]]
+    repository: SimpleRepositoryType
+    issue_type: Union[IssueReferencePropIssueTypeType, None]
 
 
-class IssueEventIntentTypeForResponse(TypedDict):
-    """Issue Event Intent
+class IssueReferenceTypeForResponse(TypedDict):
+    """Issue Reference
 
-    The intent behind an agent's action on an issue, including the rationale and
-    confidence. Present (and `null` when the event carried no agent intent) on
-    supported event types while the issue suggestions feature is enabled for the
-    repository; the property is omitted entirely when the feature is disabled or the
-    event type does not support intent.
+    A minimal reference to an issue linked from a timeline event (e.g. sub-issue,
+    parent-issue, or dependency events).
     """
 
-    rationale: NotRequired[Union[str, None]]
-    confidence: NotRequired[Union[Literal["LOW", "MEDIUM", "HIGH"], None]]
+    number: int
+    title: str
+    state: str
+    state_reason: NotRequired[Union[str, None]]
+    repository: SimpleRepositoryTypeForResponse
+    issue_type: Union[IssueReferencePropIssueTypeTypeForResponse, None]
+
+
+class IssueReferencePropIssueTypeType(TypedDict):
+    """Issue Type
+
+    The type of the referenced issue.
+    """
+
+    id: int
+    node_id: str
+    name: str
+    color: NotRequired[Union[str, None]]
+
+
+class IssueReferencePropIssueTypeTypeForResponse(TypedDict):
+    """Issue Type
+
+    The type of the referenced issue.
+    """
+
+    id: int
+    node_id: str
+    name: str
+    color: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "IssueEventIntentType",
-    "IssueEventIntentTypeForResponse",
+    "IssueReferencePropIssueTypeType",
+    "IssueReferencePropIssueTypeTypeForResponse",
+    "IssueReferenceType",
+    "IssueReferenceTypeForResponse",
 )

@@ -9,33 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Annotated, Literal, Union
-
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgPersonalAccessTokenRequestsPostBody(GitHubModel):
-    """OrgsOrgPersonalAccessTokenRequestsPostBody"""
+class OrgsOrgInteractionLimitsPullsCreationCapGetResponse200(GitHubModel):
+    """OrgsOrgInteractionLimitsPullsCreationCapGetResponse200"""
 
-    pat_request_ids: Missing[list[int]] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="Unique identifiers of the requests for access via fine-grained personal access token. Must be formed of between 1 and 100 `pat_request_id` values.",
+    enabled: bool = Field(
+        description="Whether the pull request creation cap is enabled"
     )
-    action: Literal["approve", "deny"] = Field(
-        description="Action to apply to the requests."
-    )
-    reason: Missing[Union[Annotated[str, Field(max_length=1024)], None]] = Field(
-        default=UNSET,
-        description="Reason for approving or denying the requests. Max 1024 characters.",
+    max_open_pull_requests: int = Field(
+        le=1000.0,
+        ge=1.0,
+        description="The maximum number of open pull requests a user can have at one time",
     )
 
 
-model_rebuild(OrgsOrgPersonalAccessTokenRequestsPostBody)
+model_rebuild(OrgsOrgInteractionLimitsPullsCreationCapGetResponse200)
 
-__all__ = ("OrgsOrgPersonalAccessTokenRequestsPostBody",)
+__all__ = ("OrgsOrgInteractionLimitsPullsCreationCapGetResponse200",)

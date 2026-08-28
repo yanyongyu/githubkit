@@ -14,13 +14,13 @@ from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0399 import IssueReferenceType, IssueReferenceTypeForResponse
+from .group_0400 import IssueReferenceType, IssueReferenceTypeForResponse
 
 
-class SubIssueRemovedIssueEventType(TypedDict):
-    """Sub-issue Removed Issue Event
+class SubIssueAddedIssueEventType(TypedDict):
+    """Sub-issue Added Issue Event
 
-    Sub-issue Removed Issue Event
+    Sub-issue Added Issue Event
     """
 
     id: int
@@ -35,10 +35,10 @@ class SubIssueRemovedIssueEventType(TypedDict):
     sub_issue: Union[None, IssueReferenceType, None]
 
 
-class SubIssueRemovedIssueEventTypeForResponse(TypedDict):
-    """Sub-issue Removed Issue Event
+class SubIssueAddedIssueEventTypeForResponse(TypedDict):
+    """Sub-issue Added Issue Event
 
-    Sub-issue Removed Issue Event
+    Sub-issue Added Issue Event
     """
 
     id: int
@@ -54,6 +54,6 @@ class SubIssueRemovedIssueEventTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "SubIssueRemovedIssueEventType",
-    "SubIssueRemovedIssueEventTypeForResponse",
+    "SubIssueAddedIssueEventType",
+    "SubIssueAddedIssueEventTypeForResponse",
 )

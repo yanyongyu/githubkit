@@ -9,52 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal, Union
+from typing_extensions import TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class PullRequestStackType(TypedDict):
-    """Pull Request Stack
+class AutoMergeType(TypedDict):
+    """Auto merge
 
-    The stack information associated with a pull request.
+    The status of auto merging a pull request.
     """
 
-    base: PullRequestStackPropBaseType
-    size: NotRequired[int]
-    position: NotRequired[int]
-    id: NotRequired[int]
-    number: NotRequired[int]
+    enabled_by: SimpleUserType
+    merge_method: Literal["merge", "squash", "rebase"]
+    commit_title: Union[str, None]
+    commit_message: Union[str, None]
 
 
-class PullRequestStackTypeForResponse(TypedDict):
-    """Pull Request Stack
+class AutoMergeTypeForResponse(TypedDict):
+    """Auto merge
 
-    The stack information associated with a pull request.
+    The status of auto merging a pull request.
     """
 
-    base: PullRequestStackPropBaseTypeForResponse
-    size: NotRequired[int]
-    position: NotRequired[int]
-    id: NotRequired[int]
-    number: NotRequired[int]
-
-
-class PullRequestStackPropBaseType(TypedDict):
-    """PullRequestStackPropBase"""
-
-    ref: str
-    sha: str
-
-
-class PullRequestStackPropBaseTypeForResponse(TypedDict):
-    """PullRequestStackPropBase"""
-
-    ref: str
-    sha: str
+    enabled_by: SimpleUserTypeForResponse
+    merge_method: Literal["merge", "squash", "rebase"]
+    commit_title: Union[str, None]
+    commit_message: Union[str, None]
 
 
 __all__ = (
-    "PullRequestStackPropBaseType",
-    "PullRequestStackPropBaseTypeForResponse",
-    "PullRequestStackType",
-    "PullRequestStackTypeForResponse",
+    "AutoMergeType",
+    "AutoMergeTypeForResponse",
 )

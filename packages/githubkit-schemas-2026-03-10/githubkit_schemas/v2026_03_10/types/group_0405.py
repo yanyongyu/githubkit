@@ -10,16 +10,17 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0401 import IssueEventIntentType, IssueEventIntentTypeForResponse
 
 
-class UnassignedIssueEventType(TypedDict):
-    """Unassigned Issue Event
+class AssignedIssueEventType(TypedDict):
+    """Assigned Issue Event
 
-    Unassigned Issue Event
+    Assigned Issue Event
     """
 
     id: int
@@ -30,15 +31,16 @@ class UnassignedIssueEventType(TypedDict):
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
+    performed_via_github_app: Union[IntegrationType, None]
     assignee: SimpleUserType
     assigner: SimpleUserType
+    intent: NotRequired[Union[None, IssueEventIntentType, None]]
 
 
-class UnassignedIssueEventTypeForResponse(TypedDict):
-    """Unassigned Issue Event
+class AssignedIssueEventTypeForResponse(TypedDict):
+    """Assigned Issue Event
 
-    Unassigned Issue Event
+    Assigned Issue Event
     """
 
     id: int
@@ -49,12 +51,13 @@ class UnassignedIssueEventTypeForResponse(TypedDict):
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
-    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
+    performed_via_github_app: Union[IntegrationTypeForResponse, None]
     assignee: SimpleUserTypeForResponse
     assigner: SimpleUserTypeForResponse
+    intent: NotRequired[Union[None, IssueEventIntentTypeForResponse, None]]
 
 
 __all__ = (
-    "UnassignedIssueEventType",
-    "UnassignedIssueEventTypeForResponse",
+    "AssignedIssueEventType",
+    "AssignedIssueEventTypeForResponse",
 )

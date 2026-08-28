@@ -12,70 +12,45 @@ from __future__ import annotations
 from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0019 import LicenseSimpleType, LicenseSimpleTypeForResponse
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
 
-class LicenseContentType(TypedDict):
-    """License Content
+class TimelineDisconnectedEventType(TypedDict):
+    """Timeline Disconnected Event
 
-    License Content
+    Timeline Disconnected Event
     """
 
-    name: str
-    path: str
-    sha: str
-    size: int
+    id: int
+    node_id: str
     url: str
-    html_url: Union[str, None]
-    git_url: Union[str, None]
-    download_url: Union[str, None]
-    type: str
-    content: str
-    encoding: str
-    links: LicenseContentPropLinksType
-    license_: Union[LicenseSimpleType, None]
+    actor: SimpleUserType
+    event: str
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationType, None]
 
 
-class LicenseContentTypeForResponse(TypedDict):
-    """License Content
+class TimelineDisconnectedEventTypeForResponse(TypedDict):
+    """Timeline Disconnected Event
 
-    License Content
+    Timeline Disconnected Event
     """
 
-    name: str
-    path: str
-    sha: str
-    size: int
+    id: int
+    node_id: str
     url: str
-    html_url: Union[str, None]
-    git_url: Union[str, None]
-    download_url: Union[str, None]
-    type: str
-    content: str
-    encoding: str
-    links: LicenseContentPropLinksTypeForResponse
-    license_: Union[LicenseSimpleTypeForResponse, None]
-
-
-class LicenseContentPropLinksType(TypedDict):
-    """LicenseContentPropLinks"""
-
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
-
-
-class LicenseContentPropLinksTypeForResponse(TypedDict):
-    """LicenseContentPropLinks"""
-
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
+    actor: SimpleUserTypeForResponse
+    event: str
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
 
 
 __all__ = (
-    "LicenseContentPropLinksType",
-    "LicenseContentPropLinksTypeForResponse",
-    "LicenseContentType",
-    "LicenseContentTypeForResponse",
+    "TimelineDisconnectedEventType",
+    "TimelineDisconnectedEventTypeForResponse",
 )

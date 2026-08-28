@@ -9,40 +9,104 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0020 import Repository
+from .group_0051 import Milestone
+from .group_0134 import Team
+from .group_0179 import AutoMerge
+from .group_0180 import PullRequestStack
+from .group_0182 import PullRequestSimplePropBase, PullRequestSimplePropHead
+from .group_0183 import PullRequestSimplePropLinks
 
 
-class PullRequestSimplePropHead(GitHubModel):
-    """PullRequestSimplePropHead"""
+class PullRequestSimple(GitHubModel):
+    """Pull Request Simple
 
-    label: Union[str, None] = Field()
-    ref: str = Field()
-    repo: Union[Repository, None] = Field()
-    sha: str = Field()
+    Pull Request Simple
+    """
+
+    url: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    html_url: str = Field()
+    diff_url: str = Field()
+    patch_url: str = Field()
+    issue_url: str = Field()
+    commits_url: str = Field()
+    review_comments_url: str = Field()
+    review_comment_url: str = Field()
+    comments_url: str = Field()
+    statuses_url: str = Field()
+    number: int = Field()
+    state: str = Field()
+    locked: bool = Field()
+    title: str = Field()
     user: Union[SimpleUser, None] = Field()
+    body: Union[str, None] = Field()
+    labels: list[PullRequestSimplePropLabelsItems] = Field()
+    milestone: Union[Milestone, None] = Field()
+    active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    closed_at: Union[_dt.datetime, None] = Field()
+    merged_at: Union[_dt.datetime, None] = Field()
+    assignees: Missing[list[SimpleUser]] = Field(default=UNSET)
+    requested_reviewers: Missing[list[SimpleUser]] = Field(default=UNSET)
+    requested_teams: Missing[list[Team]] = Field(default=UNSET)
+    head: PullRequestSimplePropHead = Field()
+    base: PullRequestSimplePropBase = Field()
+    links: PullRequestSimplePropLinks = Field(alias="_links")
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="author_association",
+        description="How the author is associated with the repository.",
+    )
+    auto_merge: Union[AutoMerge, None] = Field(
+        title="Auto merge", description="The status of auto merging a pull request."
+    )
+    stack: Missing[Union[PullRequestStack, None]] = Field(
+        default=UNSET,
+        title="Pull Request Stack",
+        description="The stack information associated with a pull request.",
+    )
+    draft: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether or not the pull request is a draft.",
+    )
 
 
-class PullRequestSimplePropBase(GitHubModel):
-    """PullRequestSimplePropBase"""
+class PullRequestSimplePropLabelsItems(GitHubModel):
+    """PullRequestSimplePropLabelsItems"""
 
-    label: str = Field()
-    ref: str = Field()
-    repo: Repository = Field(title="Repository", description="A repository on GitHub.")
-    sha: str = Field()
-    user: Union[SimpleUser, None] = Field()
+    id: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    name: str = Field()
+    description: Union[str, None] = Field()
+    color: str = Field()
+    default: bool = Field()
 
 
-model_rebuild(PullRequestSimplePropHead)
-model_rebuild(PullRequestSimplePropBase)
+model_rebuild(PullRequestSimple)
+model_rebuild(PullRequestSimplePropLabelsItems)
 
 __all__ = (
-    "PullRequestSimplePropBase",
-    "PullRequestSimplePropHead",
+    "PullRequestSimple",
+    "PullRequestSimplePropLabelsItems",
 )

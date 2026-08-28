@@ -218,7 +218,7 @@ class BillingClient:
 
         GET /enterprises/{enterprise}/settings/billing/ai_credit/usage
 
-        Gets a report of AI credit usage for an enterprise. To use this endpoint, you must be an administrator or billing manager of the enterprise.
+        Gets a report of AI credit usage for an enterprise. To use this endpoint, you must be an administrator or billing manager of the enterprise, an organization owner in the enterprise, or a custom role holder with fine-grained read access to enterprise billing. An installation access token for a GitHub App installed on the enterprise with read access to enterprise billing can get this usage report.
 
         **Note:** Only data from the past 24 months is accessible via this endpoint.
 
@@ -283,7 +283,7 @@ class BillingClient:
 
         GET /enterprises/{enterprise}/settings/billing/ai_credit/usage
 
-        Gets a report of AI credit usage for an enterprise. To use this endpoint, you must be an administrator or billing manager of the enterprise.
+        Gets a report of AI credit usage for an enterprise. To use this endpoint, you must be an administrator or billing manager of the enterprise, an organization owner in the enterprise, or a custom role holder with fine-grained read access to enterprise billing. An installation access token for a GitHub App installed on the enterprise with read access to enterprise billing can get this usage report.
 
         **Note:** Only data from the past 24 months is accessible via this endpoint.
 
@@ -352,7 +352,7 @@ class BillingClient:
 
         GET /enterprises/{enterprise}/settings/billing/budgets
 
-        Gets all budgets for an enterprise. The authenticated actor must have permission to view enterprise billing.
+        Gets budgets for an enterprise. Enterprise owners and billing managers can view all budgets, and organization administrators can view budgets scoped to organizations and repositories they administer. A custom role holder with fine-grained read access to enterprise billing can view non-repository budgets; repository-scoped budgets require the organization administrator permissions described above. An installation access token for a GitHub App installed on the enterprise with read access to enterprise billing can list all budgets in the enterprise.
         Each page returns up to 100 budgets.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/budgets#get-all-budgets
@@ -409,7 +409,7 @@ class BillingClient:
 
         GET /enterprises/{enterprise}/settings/billing/budgets
 
-        Gets all budgets for an enterprise. The authenticated actor must have permission to view enterprise billing.
+        Gets budgets for an enterprise. Enterprise owners and billing managers can view all budgets, and organization administrators can view budgets scoped to organizations and repositories they administer. A custom role holder with fine-grained read access to enterprise billing can view non-repository budgets; repository-scoped budgets require the organization administrator permissions described above. An installation access token for a GitHub App installed on the enterprise with read access to enterprise billing can list all budgets in the enterprise.
         Each page returns up to 100 budgets.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/budgets#get-all-budgets
@@ -475,6 +475,7 @@ class BillingClient:
         budget_type: Literal["BundlePricing", "ProductPricing", "SkuPricing"],
         budget_product_sku: Missing[str] = UNSET,
         user: Missing[str] = UNSET,
+        expires_at: Missing[_dt.date] = UNSET,
     ) -> Response[CreateBudget, CreateBudgetTypeForResponse]: ...
 
     def create_budget(
@@ -490,7 +491,7 @@ class BillingClient:
 
         POST /enterprises/{enterprise}/settings/billing/budgets
 
-        Creates a new budget for an enterprise. The authenticated user must be an enterprise admin, organization admin, or billing manager of the enterprise.
+        Creates a new budget for an enterprise. Enterprise owners and billing managers can create budgets scoped to the enterprise, all users in the enterprise, or any organization in it. Organization administrators can create budgets for their organizations, and repository-scoped budgets require administration of the repository's owning organization. A custom role holder with fine-grained write access to enterprise billing can create budgets scoped to a single user or a cost center, including all users in a cost center, without an additional administrator role; the role requirements above still apply to the other scopes. An installation access token for a GitHub App installed on the enterprise with write access to enterprise billing can create budgets for any target in the enterprise.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/budgets#create-a-budget
         """
@@ -568,6 +569,7 @@ class BillingClient:
         budget_type: Literal["BundlePricing", "ProductPricing", "SkuPricing"],
         budget_product_sku: Missing[str] = UNSET,
         user: Missing[str] = UNSET,
+        expires_at: Missing[_dt.date] = UNSET,
     ) -> Response[CreateBudget, CreateBudgetTypeForResponse]: ...
 
     async def async_create_budget(
@@ -583,7 +585,7 @@ class BillingClient:
 
         POST /enterprises/{enterprise}/settings/billing/budgets
 
-        Creates a new budget for an enterprise. The authenticated user must be an enterprise admin, organization admin, or billing manager of the enterprise.
+        Creates a new budget for an enterprise. Enterprise owners and billing managers can create budgets scoped to the enterprise, all users in the enterprise, or any organization in it. Organization administrators can create budgets for their organizations, and repository-scoped budgets require administration of the repository's owning organization. A custom role holder with fine-grained write access to enterprise billing can create budgets scoped to a single user or a cost center, including all users in a cost center, without an additional administrator role; the role requirements above still apply to the other scopes. An installation access token for a GitHub App installed on the enterprise with write access to enterprise billing can create budgets for any target in the enterprise.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/budgets#create-a-budget
         """
@@ -639,7 +641,7 @@ class BillingClient:
 
         GET /enterprises/{enterprise}/settings/billing/budgets/{budget_id}
 
-        Gets a budget by ID. The authenticated user must be an enterprise admin or billing manager.
+        Gets a budget by ID. Enterprise owners and billing managers can view any budget in the enterprise, and organization administrators can view budgets scoped to organizations and repositories they administer. A custom role holder with fine-grained read access to enterprise billing can view the budget unless it is scoped to a repository; repository-scoped budgets require the organization administrator permissions described above. An installation access token for a GitHub App installed on the enterprise with read access to enterprise billing can get any budget in the enterprise.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/budgets#get-a-budget-by-id
         """
@@ -681,7 +683,7 @@ class BillingClient:
 
         GET /enterprises/{enterprise}/settings/billing/budgets/{budget_id}
 
-        Gets a budget by ID. The authenticated user must be an enterprise admin or billing manager.
+        Gets a budget by ID. Enterprise owners and billing managers can view any budget in the enterprise, and organization administrators can view budgets scoped to organizations and repositories they administer. A custom role holder with fine-grained read access to enterprise billing can view the budget unless it is scoped to a repository; repository-scoped budgets require the organization administrator permissions described above. An installation access token for a GitHub App installed on the enterprise with read access to enterprise billing can get any budget in the enterprise.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/budgets#get-a-budget-by-id
         """
@@ -723,7 +725,7 @@ class BillingClient:
 
         DELETE /enterprises/{enterprise}/settings/billing/budgets/{budget_id}
 
-        Deletes a budget by ID. The authenticated user must be an enterprise admin.
+        Deletes a budget by ID. Enterprise owners and billing managers can delete any budget in the enterprise, organization administrators can delete budgets scoped to organizations they administer, and repository administrators can delete budgets scoped to repositories they administer in those organizations. A custom role holder with fine-grained write access to enterprise billing does not by itself get permission to delete a budget for a target they do not administer. An installation access token for a GitHub App installed on the enterprise with write access to enterprise billing can delete any budget in the enterprise.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/budgets#delete-a-budget
         """
@@ -765,7 +767,7 @@ class BillingClient:
 
         DELETE /enterprises/{enterprise}/settings/billing/budgets/{budget_id}
 
-        Deletes a budget by ID. The authenticated user must be an enterprise admin.
+        Deletes a budget by ID. Enterprise owners and billing managers can delete any budget in the enterprise, organization administrators can delete budgets scoped to organizations they administer, and repository administrators can delete budgets scoped to repositories they administer in those organizations. A custom role holder with fine-grained write access to enterprise billing does not by itself get permission to delete a budget for a target they do not administer. An installation access token for a GitHub App installed on the enterprise with write access to enterprise billing can delete any budget in the enterprise.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/budgets#delete-a-budget
         """
@@ -837,6 +839,7 @@ class BillingClient:
         ] = UNSET,
         budget_product_sku: Missing[str] = UNSET,
         user: Missing[str] = UNSET,
+        expires_at: Missing[Union[_dt.date, Literal[0], None]] = UNSET,
     ) -> Response[UpdateBudget, UpdateBudgetTypeForResponse]: ...
 
     def update_budget(
@@ -855,7 +858,7 @@ class BillingClient:
 
         PATCH /enterprises/{enterprise}/settings/billing/budgets/{budget_id}
 
-        Updates an existing budget for an enterprise. The authenticated user must be an enterprise admin, organization admin, or billing manager of the enterprise.
+        Updates an existing budget for an enterprise. Enterprise owners and billing managers can update budgets scoped to the enterprise, all users in the enterprise, or any organization in it. Organization administrators can update budgets for their organizations, and repository-scoped budgets require administration of the repository's owning organization. A custom role holder with fine-grained write access to enterprise billing can update budgets scoped to a single user or a cost center, including all users in a cost center, without an additional administrator role; the role requirements above still apply to the other scopes. An installation access token for a GitHub App installed on the enterprise with write access to enterprise billing can update any budget in the enterprise.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/budgets#update-a-budget
         """
@@ -942,6 +945,7 @@ class BillingClient:
         ] = UNSET,
         budget_product_sku: Missing[str] = UNSET,
         user: Missing[str] = UNSET,
+        expires_at: Missing[Union[_dt.date, Literal[0], None]] = UNSET,
     ) -> Response[UpdateBudget, UpdateBudgetTypeForResponse]: ...
 
     async def async_update_budget(
@@ -960,7 +964,7 @@ class BillingClient:
 
         PATCH /enterprises/{enterprise}/settings/billing/budgets/{budget_id}
 
-        Updates an existing budget for an enterprise. The authenticated user must be an enterprise admin, organization admin, or billing manager of the enterprise.
+        Updates an existing budget for an enterprise. Enterprise owners and billing managers can update budgets scoped to the enterprise, all users in the enterprise, or any organization in it. Organization administrators can update budgets for their organizations, and repository-scoped budgets require administration of the repository's owning organization. A custom role holder with fine-grained write access to enterprise billing can update budgets scoped to a single user or a cost center, including all users in a cost center, without an additional administrator role; the role requirements above still apply to the other scopes. An installation access token for a GitHub App installed on the enterprise with write access to enterprise billing can update any budget in the enterprise.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/budgets#update-a-budget
         """
@@ -1023,7 +1027,7 @@ class BillingClient:
 
         GET /enterprises/{enterprise}/settings/billing/budgets/{budget_id}/user-states
 
-        Lists per-user budget state for a multi-user customer scoped budget. The authenticated user must be an enterprise admin or billing manager.
+        Lists per-user budget state for a multi-user customer scoped budget. Enterprise owners and billing managers can view state across the enterprise, and organization administrators can view state for budgets scoped to organizations they administer. A custom role holder with fine-grained read access to enterprise billing can also view budget user states. An installation access token for a GitHub App installed on the enterprise with read access to enterprise billing can list user states for any multi-user budget in the enterprise.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/budgets#get-user-states-for-a-multi-user-budget
         """
@@ -1080,7 +1084,7 @@ class BillingClient:
 
         GET /enterprises/{enterprise}/settings/billing/budgets/{budget_id}/user-states
 
-        Lists per-user budget state for a multi-user customer scoped budget. The authenticated user must be an enterprise admin or billing manager.
+        Lists per-user budget state for a multi-user customer scoped budget. Enterprise owners and billing managers can view state across the enterprise, and organization administrators can view state for budgets scoped to organizations they administer. A custom role holder with fine-grained read access to enterprise billing can also view budget user states. An installation access token for a GitHub App installed on the enterprise with read access to enterprise billing can list user states for any multi-user budget in the enterprise.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/budgets#get-user-states-for-a-multi-user-budget
         """
@@ -1131,7 +1135,7 @@ class BillingClient:
 
         GET /enterprises/{enterprise}/settings/billing/cost-centers
 
-        Gets a list of all the cost centers for an enterprise.
+        Gets a list of all the cost centers for an enterprise. Enterprise owners and billing managers can view all cost centers, and organization owners can view cost centers associated with resources they administer. A custom role holder with fine-grained read access to enterprise billing can also view cost centers. An installation access token for a GitHub App installed on the enterprise with read access to enterprise billing can list all cost centers in the enterprise.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/cost-centers#get-all-cost-centers-for-an-enterprise
         """
@@ -1177,7 +1181,7 @@ class BillingClient:
 
         GET /enterprises/{enterprise}/settings/billing/cost-centers
 
-        Gets a list of all the cost centers for an enterprise.
+        Gets a list of all the cost centers for an enterprise. Enterprise owners and billing managers can view all cost centers, and organization owners can view cost centers associated with resources they administer. A custom role holder with fine-grained read access to enterprise billing can also view cost centers. An installation access token for a GitHub App installed on the enterprise with read access to enterprise billing can list all cost centers in the enterprise.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/cost-centers#get-all-cost-centers-for-an-enterprise
         """
@@ -1257,7 +1261,7 @@ class BillingClient:
 
         POST /enterprises/{enterprise}/settings/billing/cost-centers
 
-        Creates a new cost center for an enterprise. The authenticated user must be an enterprise admin.
+        Creates a new cost center for an enterprise. Enterprise owners and billing managers can create cost centers. A custom role holder with fine-grained write access to enterprise billing can also create cost centers. An installation access token for a GitHub App installed on the enterprise with write access to enterprise billing can create cost centers in the enterprise.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/cost-centers#create-a-new-cost-center
         """
@@ -1343,7 +1347,7 @@ class BillingClient:
 
         POST /enterprises/{enterprise}/settings/billing/cost-centers
 
-        Creates a new cost center for an enterprise. The authenticated user must be an enterprise admin.
+        Creates a new cost center for an enterprise. Enterprise owners and billing managers can create cost centers. A custom role holder with fine-grained write access to enterprise billing can also create cost centers. An installation access token for a GitHub App installed on the enterprise with write access to enterprise billing can create cost centers in the enterprise.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/cost-centers#create-a-new-cost-center
         """
@@ -1397,7 +1401,7 @@ class BillingClient:
 
         GET /enterprises/{enterprise}/settings/billing/cost-centers/{cost_center_id}
 
-        Gets a cost center by ID. The authenticated user must be an enterprise admin.
+        Gets a cost center by ID. Enterprise owners and billing managers can view any cost center, and organization owners can view cost centers associated with resources they administer. A custom role holder with fine-grained read access to enterprise billing can also view the cost center. An installation access token for a GitHub App installed on the enterprise with read access to enterprise billing can get any cost center in the enterprise.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/cost-centers#get-a-cost-center-by-id
         """
@@ -1448,7 +1452,7 @@ class BillingClient:
 
         GET /enterprises/{enterprise}/settings/billing/cost-centers/{cost_center_id}
 
-        Gets a cost center by ID. The authenticated user must be an enterprise admin.
+        Gets a cost center by ID. Enterprise owners and billing managers can view any cost center, and organization owners can view cost centers associated with resources they administer. A custom role holder with fine-grained read access to enterprise billing can also view the cost center. An installation access token for a GitHub App installed on the enterprise with read access to enterprise billing can get any cost center in the enterprise.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/cost-centers#get-a-cost-center-by-id
         """
@@ -1497,7 +1501,7 @@ class BillingClient:
 
         DELETE /enterprises/{enterprise}/settings/billing/cost-centers/{cost_center_id}
 
-        Archieves a cost center by ID. The authenticated user must be an enterprise admin.
+        Archives a cost center by ID. Enterprise owners and billing managers can archive any cost center, and organization owners can archive cost centers associated with resources they administer. A custom role holder with fine-grained write access to enterprise billing can also archive cost centers. An installation access token for a GitHub App installed on the enterprise with write access to enterprise billing can archive any cost center in the enterprise.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/cost-centers#delete-a-cost-center
         """
@@ -1541,7 +1545,7 @@ class BillingClient:
 
         DELETE /enterprises/{enterprise}/settings/billing/cost-centers/{cost_center_id}
 
-        Archieves a cost center by ID. The authenticated user must be an enterprise admin.
+        Archives a cost center by ID. Enterprise owners and billing managers can archive any cost center, and organization owners can archive cost centers associated with resources they administer. A custom role holder with fine-grained write access to enterprise billing can also archive cost centers. An installation access token for a GitHub App installed on the enterprise with write access to enterprise billing can archive any cost center in the enterprise.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/cost-centers#delete-a-cost-center
         """
@@ -1632,7 +1636,7 @@ class BillingClient:
 
         PATCH /enterprises/{enterprise}/settings/billing/cost-centers/{cost_center_id}
 
-        Updates an existing cost center.
+        Updates an existing cost center. Enterprise owners and billing managers can update any cost center, and organization owners can update cost centers associated with resources they administer. A custom role holder with fine-grained write access to enterprise billing can also update cost centers. An installation access token for a GitHub App installed on the enterprise with write access to enterprise billing can update any cost center in the enterprise.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/cost-centers#update-a-cost-center
         """
@@ -1746,7 +1750,7 @@ class BillingClient:
 
         PATCH /enterprises/{enterprise}/settings/billing/cost-centers/{cost_center_id}
 
-        Updates an existing cost center.
+        Updates an existing cost center. Enterprise owners and billing managers can update any cost center, and organization owners can update cost centers associated with resources they administer. A custom role holder with fine-grained write access to enterprise billing can also update cost centers. An installation access token for a GitHub App installed on the enterprise with write access to enterprise billing can update any cost center in the enterprise.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/cost-centers#update-a-cost-center
         """
@@ -1854,7 +1858,7 @@ class BillingClient:
 
         Adds resources to a cost center.
 
-        The usage for the resources will be charged to the cost center's budget. The authenticated user must be an enterprise admin in order to use this endpoint.
+        The usage for the resources will be charged to the cost center's budget. Enterprise owners and billing managers can add any resource, and organization owners can add non-team resources to cost centers associated with resources they administer. A custom role holder with fine-grained write access to enterprise billing can add users in the enterprise who are visible to them and organizations or repositories they administer, but cannot add enterprise teams. An installation access token for a GitHub App installed on the enterprise with write access to enterprise billing can add resources to any cost center in the enterprise.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/cost-centers#add-resources-to-a-cost-center
         """
@@ -1951,7 +1955,7 @@ class BillingClient:
 
         Adds resources to a cost center.
 
-        The usage for the resources will be charged to the cost center's budget. The authenticated user must be an enterprise admin in order to use this endpoint.
+        The usage for the resources will be charged to the cost center's budget. Enterprise owners and billing managers can add any resource, and organization owners can add non-team resources to cost centers associated with resources they administer. A custom role holder with fine-grained write access to enterprise billing can add users in the enterprise who are visible to them and organizations or repositories they administer, but cannot add enterprise teams. An installation access token for a GitHub App installed on the enterprise with write access to enterprise billing can add resources to any cost center in the enterprise.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/cost-centers#add-resources-to-a-cost-center
         """
@@ -2048,7 +2052,7 @@ class BillingClient:
 
         Remove resources from a cost center.
 
-        The usage for the resources will no longer be charged to the cost center's budget. The authenticated user must be an enterprise admin in order to use this endpoint.
+        The usage for the resources will no longer be charged to the cost center's budget. Enterprise owners and billing managers can remove any resource, and organization owners can remove non-team resources from cost centers associated with resources they administer. A custom role holder with fine-grained write access to enterprise billing can remove users and any organizations or repositories they administer; only enterprise owners and billing managers can remove enterprise teams. An installation access token for a GitHub App installed on the enterprise with write access to enterprise billing can remove users from any cost center in the enterprise.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/cost-centers#remove-resources-from-a-cost-center
         """
@@ -2144,7 +2148,7 @@ class BillingClient:
 
         Remove resources from a cost center.
 
-        The usage for the resources will no longer be charged to the cost center's budget. The authenticated user must be an enterprise admin in order to use this endpoint.
+        The usage for the resources will no longer be charged to the cost center's budget. Enterprise owners and billing managers can remove any resource, and organization owners can remove non-team resources from cost centers associated with resources they administer. A custom role holder with fine-grained write access to enterprise billing can remove users and any organizations or repositories they administer; only enterprise owners and billing managers can remove enterprise teams. An installation access token for a GitHub App installed on the enterprise with write access to enterprise billing can remove users from any cost center in the enterprise.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/cost-centers#remove-resources-from-a-cost-center
         """
@@ -2209,7 +2213,7 @@ class BillingClient:
 
         GET /enterprises/{enterprise}/settings/billing/premium_request/usage
 
-        Gets a report of premium request usage for an enterprise. To use this endpoint, you must be an administrator or billing manager of the enterprise.
+        Gets a report of premium request usage for an enterprise. To use this endpoint, you must be an administrator or billing manager of the enterprise, an organization owner in the enterprise, or a custom role holder with fine-grained read access to enterprise billing. An installation access token for a GitHub App installed on the enterprise with read access to enterprise billing can get this usage report.
 
         **Note:** Only data from the past 24 months is accessible via this endpoint.
 
@@ -2275,7 +2279,7 @@ class BillingClient:
 
         GET /enterprises/{enterprise}/settings/billing/premium_request/usage
 
-        Gets a report of premium request usage for an enterprise. To use this endpoint, you must be an administrator or billing manager of the enterprise.
+        Gets a report of premium request usage for an enterprise. To use this endpoint, you must be an administrator or billing manager of the enterprise, an organization owner in the enterprise, or a custom role holder with fine-grained read access to enterprise billing. An installation access token for a GitHub App installed on the enterprise with read access to enterprise billing can get this usage report.
 
         **Note:** Only data from the past 24 months is accessible via this endpoint.
 
@@ -2330,7 +2334,7 @@ class BillingClient:
 
         GET /enterprises/{enterprise}/settings/billing/reports
 
-        Lists all usage report exports for an enterprise. The authenticated user must be an enterprise admin or billing manager.
+        Lists all usage report exports for an enterprise. The authenticated user must be an enterprise admin or billing manager, or a custom role holder with fine-grained read access to enterprise billing. An installation access token for a GitHub App installed on the enterprise with write access to enterprise administration, or with read access to enterprise billing, can also list usage report exports.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/usage-reports#list-usage-report-exports
         """
@@ -2371,7 +2375,7 @@ class BillingClient:
 
         GET /enterprises/{enterprise}/settings/billing/reports
 
-        Lists all usage report exports for an enterprise. The authenticated user must be an enterprise admin or billing manager.
+        Lists all usage report exports for an enterprise. The authenticated user must be an enterprise admin or billing manager, or a custom role holder with fine-grained read access to enterprise billing. An installation access token for a GitHub App installed on the enterprise with write access to enterprise administration, or with read access to enterprise billing, can also list usage report exports.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/usage-reports#list-usage-report-exports
         """
@@ -2439,7 +2443,7 @@ class BillingClient:
         POST /enterprises/{enterprise}/settings/billing/reports
 
         Initiates the generation of a usage report export for an enterprise. The report will be processed asynchronously
-        and can be downloaded once completed. The authenticated user must be an enterprise admin or billing manager.
+        and can be downloaded once completed. The authenticated user must be an enterprise admin or billing manager, or a custom role holder with fine-grained read access to enterprise billing. An installation access token for a GitHub App installed on the enterprise with write access to enterprise administration, or with read access to enterprise billing, can also initiate a usage report export.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/usage-reports#create-a-usage-report-export
         """
@@ -2519,7 +2523,7 @@ class BillingClient:
         POST /enterprises/{enterprise}/settings/billing/reports
 
         Initiates the generation of a usage report export for an enterprise. The report will be processed asynchronously
-        and can be downloaded once completed. The authenticated user must be an enterprise admin or billing manager.
+        and can be downloaded once completed. The authenticated user must be an enterprise admin or billing manager, or a custom role holder with fine-grained read access to enterprise billing. An installation access token for a GitHub App installed on the enterprise with write access to enterprise administration, or with read access to enterprise billing, can also initiate a usage report export.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/usage-reports#create-a-usage-report-export
         """
@@ -2573,7 +2577,7 @@ class BillingClient:
 
         GET /enterprises/{enterprise}/settings/billing/reports/{report_id}
 
-        Gets the status and details of a usage report export by ID. The authenticated user must be an enterprise admin or billing manager.
+        Gets the status and details of a usage report export by ID. The authenticated user must be an enterprise admin or billing manager, or a custom role holder with fine-grained read access to enterprise billing. An installation access token for a GitHub App installed on the enterprise with write access to enterprise administration, or with read access to enterprise billing, can also get a usage report export.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/usage-reports#get-a-usage-report-export
         """
@@ -2615,7 +2619,7 @@ class BillingClient:
 
         GET /enterprises/{enterprise}/settings/billing/reports/{report_id}
 
-        Gets the status and details of a usage report export by ID. The authenticated user must be an enterprise admin or billing manager.
+        Gets the status and details of a usage report export by ID. The authenticated user must be an enterprise admin or billing manager, or a custom role holder with fine-grained read access to enterprise billing. An installation access token for a GitHub App installed on the enterprise with write access to enterprise administration, or with read access to enterprise billing, can also get a usage report export.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/usage-reports#get-a-usage-report-export
         """
@@ -2660,7 +2664,7 @@ class BillingClient:
 
         GET /enterprises/{enterprise}/settings/billing/usage
 
-        Gets a report of usage by cost center for an enterprise. To use this endpoint, you must be an administrator or billing manager of the enterprise. By default this endpoint will return usage that does not have a cost center.
+        Gets a report of usage by cost center for an enterprise. To use this endpoint, you must be an administrator or billing manager of the enterprise, an organization owner in the enterprise, or a custom role holder with fine-grained read access to enterprise billing. By default this endpoint will return usage that does not have a cost center. An installation access token for a GitHub App installed on the enterprise with read access to enterprise billing can get this usage report.
 
         **Note:** This endpoint is only available to enterprises with access to the enhanced billing platform. For more information, see "[About the enhanced billing platform for enterprises](https://docs.github.com/enterprise-cloud@latest/billing/using-the-enhanced-billing-platform-for-enterprises/about-the-enhanced-billing-platform-for-enterprises#how-do-i-know-if-i-can-access-the-enhanced-billing-platform)."
 
@@ -2714,7 +2718,7 @@ class BillingClient:
 
         GET /enterprises/{enterprise}/settings/billing/usage
 
-        Gets a report of usage by cost center for an enterprise. To use this endpoint, you must be an administrator or billing manager of the enterprise. By default this endpoint will return usage that does not have a cost center.
+        Gets a report of usage by cost center for an enterprise. To use this endpoint, you must be an administrator or billing manager of the enterprise, an organization owner in the enterprise, or a custom role holder with fine-grained read access to enterprise billing. By default this endpoint will return usage that does not have a cost center. An installation access token for a GitHub App installed on the enterprise with read access to enterprise billing can get this usage report.
 
         **Note:** This endpoint is only available to enterprises with access to the enhanced billing platform. For more information, see "[About the enhanced billing platform for enterprises](https://docs.github.com/enterprise-cloud@latest/billing/using-the-enhanced-billing-platform-for-enterprises/about-the-enhanced-billing-platform-for-enterprises#how-do-i-know-if-i-can-access-the-enhanced-billing-platform)."
 
@@ -2774,7 +2778,7 @@ class BillingClient:
 
         GET /enterprises/{enterprise}/settings/billing/usage/summary
 
-        Gets a summary report of usage for an enterprise. To use this endpoint, you must be an administrator or billing manager of the enterprise. By default, this endpoint will return usage across all cost centers in the enterprise.
+        Gets a summary report of usage for an enterprise. To use this endpoint, you must be an administrator or billing manager of the enterprise, an organization owner in the enterprise, or a custom role holder with fine-grained read access to enterprise billing. By default, this endpoint will return usage across all cost centers in the enterprise. An installation access token for a GitHub App installed on the enterprise with read access to enterprise billing can get this usage summary report.
 
         **Note:** Only data from the past 24 months is accessible via this endpoint.
 
@@ -2838,7 +2842,7 @@ class BillingClient:
 
         GET /enterprises/{enterprise}/settings/billing/usage/summary
 
-        Gets a summary report of usage for an enterprise. To use this endpoint, you must be an administrator or billing manager of the enterprise. By default, this endpoint will return usage across all cost centers in the enterprise.
+        Gets a summary report of usage for an enterprise. To use this endpoint, you must be an administrator or billing manager of the enterprise, an organization owner in the enterprise, or a custom role holder with fine-grained read access to enterprise billing. By default, this endpoint will return usage across all cost centers in the enterprise. An installation access token for a GitHub App installed on the enterprise with read access to enterprise billing can get this usage summary report.
 
         **Note:** Only data from the past 24 months is accessible via this endpoint.
 

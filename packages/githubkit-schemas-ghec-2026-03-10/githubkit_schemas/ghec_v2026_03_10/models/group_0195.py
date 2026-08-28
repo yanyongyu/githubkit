@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal
 
 from pydantic import Field
@@ -95,14 +96,20 @@ class Budget(GitHubModel):
         description="A single product or sku to apply the budget to."
     )
     budget_alerting: BudgetPropBudgetAlerting = Field()
+    expires_at: Missing[_dt.date] = Field(
+        default=UNSET,
+        description="The date the budget will expire in `YYYY-MM-DD` format. Only dates in the future are accepted.\nIf not provided, the budget will not expire.\n\nOnly supported for budgets with `budget_scope` of `user`",
+    )
 
 
 class BudgetPropBudgetAlerting(GitHubModel):
     """BudgetPropBudgetAlerting"""
 
-    will_alert: bool = Field(description="Whether alerts are enabled for this budget")
+    will_alert: bool = Field(
+        description="Whether alerts are enabled for this budget. Ignored for user-scope as alerting is disabled for them."
+    )
     alert_recipients: list[str] = Field(
-        description="Array of user login names who will receive alerts"
+        description="Array of user login names who will receive alerts. Ignored for user-scope as alerting is disabled for them."
     )
 
 

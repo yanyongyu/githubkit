@@ -13,29 +13,21 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class RunnerLabelType(TypedDict):
-    """Self hosted runner label
+class ActionsSetDefaultWorkflowPermissionsType(TypedDict):
+    """ActionsSetDefaultWorkflowPermissions"""
 
-    A label for a self hosted runner
-    """
-
-    id: NotRequired[int]
-    name: str
-    type: NotRequired[Literal["read-only", "custom"]]
+    default_workflow_permissions: NotRequired[Literal["read", "write"]]
+    can_approve_pull_request_reviews: NotRequired[bool]
 
 
-class RunnerLabelTypeForResponse(TypedDict):
-    """Self hosted runner label
+class ActionsSetDefaultWorkflowPermissionsTypeForResponse(TypedDict):
+    """ActionsSetDefaultWorkflowPermissions"""
 
-    A label for a self hosted runner
-    """
-
-    id: NotRequired[int]
-    name: str
-    type: NotRequired[Literal["read-only", "custom"]]
+    default_workflow_permissions: NotRequired[Literal["read", "write"]]
+    can_approve_pull_request_reviews: NotRequired[bool]
 
 
 __all__ = (
-    "RunnerLabelType",
-    "RunnerLabelTypeForResponse",
+    "ActionsSetDefaultWorkflowPermissionsType",
+    "ActionsSetDefaultWorkflowPermissionsTypeForResponse",
 )

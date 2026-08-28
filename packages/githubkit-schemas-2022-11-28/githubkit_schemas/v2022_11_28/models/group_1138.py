@@ -18,8 +18,8 @@ from githubkit.typing import Missing, UniqueList
 from githubkit.utils import UNSET
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBody(GitHubModel):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBody"""
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody(GitHubModel):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody"""
 
     logical_environment: str = Field(
         min_length=1, max_length=128, description="The stage of the deployment."
@@ -30,18 +30,26 @@ class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBody(GitHubM
         description="The physical region of the deployment.",
     )
     deployments: list[
-        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItems
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItems
     ] = Field(
-        max_length=5000 if PYDANTIC_V2 else None,
+        max_length=1000 if PYDANTIC_V2 else None,
         description="The list of deployments to record.",
+    )
+    partial_success: Missing[bool] = Field(
+        default=UNSET,
+        description="When enabled, deployments associated with repositories the actor can write to are processed\nwhile deployments associated with repositories that cannot be resolved or written to by the actor\nare skipped and reported in the `errors` array. When false (the default), the endpoint returns\nan error if any targeted repository cannot be resolved, the actor lacks write access, or no matching attestation can be found.\n",
+    )
+    return_records: Missing[bool] = Field(
+        default=UNSET,
+        description="If true, the endpoint will return the set records in the response body\n",
     )
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItems(
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItems(
     GitHubModel
 ):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeployment
-    sItems
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsIte
+    ms
     """
 
     name: str = Field(
@@ -62,16 +70,16 @@ class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDepl
     deployment_name: str = Field(
         min_length=1,
         max_length=256,
-        description="The unique identifier for the deployment represented by the new record.\n",
+        description="The unique identifier for the deployment represented by the new record. To accommodate differing\ncontainers and namespaces within a record set, the following format is recommended:\n{namespaceName}-{deploymentName}-{containerName}.\nThe deployment_name must be unique across all entries in the deployments array.\n",
     )
     github_repository: Missing[str] = Field(
         max_length=100,
         pattern="^[A-Za-z0-9.\\-_]+$",
         default=UNSET,
-        description="The name of the GitHub repository associated with the artifact.",
+        description="The name of the GitHub repository associated with the artifact. This should be used\nwhen there are no provenance attestations available for the artifact. The repository\nmust belong to the organization specified in the path parameter.\n\nIf a provenance attestation is available for the artifact, the API will use\nthe repository information from the attestation instead of this parameter.",
     )
     tags: Missing[
-        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItemsPropTags
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTags
     ] = Field(
         default=UNSET, description="Key-value pairs to tag the deployment record."
     )
@@ -91,26 +99,26 @@ class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDepl
     )
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItemsPropTags(
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTags(
     ExtraGitHubModel
 ):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeployment
-    sItemsPropTags
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsIte
+    msPropTags
 
     Key-value pairs to tag the deployment record.
     """
 
 
-model_rebuild(OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBody)
+model_rebuild(OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody)
 model_rebuild(
-    OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItems
+    OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItems
 )
 model_rebuild(
-    OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItemsPropTags
+    OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTags
 )
 
 __all__ = (
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBody",
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItems",
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItemsPropTags",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItems",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTags",
 )

@@ -9,121 +9,84 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class GetAllBudgetsType(TypedDict):
-    """GetAllBudgets"""
+class BillingAiCreditUsageReportOrgType(TypedDict):
+    """BillingAiCreditUsageReportOrg"""
 
-    budgets: list[BudgetType]
+    time_period: BillingAiCreditUsageReportOrgPropTimePeriodType
+    organization: str
     user: NotRequired[str]
-    effective_budget: NotRequired[GetAllBudgetsPropEffectiveBudgetType]
-    has_next_page: NotRequired[bool]
-    total_count: NotRequired[int]
+    product: NotRequired[str]
+    model: NotRequired[str]
+    usage_items: list[BillingAiCreditUsageReportOrgPropUsageItemsItemsType]
 
 
-class GetAllBudgetsTypeForResponse(TypedDict):
-    """GetAllBudgets"""
+class BillingAiCreditUsageReportOrgTypeForResponse(TypedDict):
+    """BillingAiCreditUsageReportOrg"""
 
-    budgets: list[BudgetTypeForResponse]
+    time_period: BillingAiCreditUsageReportOrgPropTimePeriodTypeForResponse
+    organization: str
     user: NotRequired[str]
-    effective_budget: NotRequired[GetAllBudgetsPropEffectiveBudgetTypeForResponse]
-    has_next_page: NotRequired[bool]
-    total_count: NotRequired[int]
+    product: NotRequired[str]
+    model: NotRequired[str]
+    usage_items: list[BillingAiCreditUsageReportOrgPropUsageItemsItemsTypeForResponse]
 
 
-class GetAllBudgetsPropEffectiveBudgetType(TypedDict):
-    """GetAllBudgetsPropEffectiveBudget
+class BillingAiCreditUsageReportOrgPropTimePeriodType(TypedDict):
+    """BillingAiCreditUsageReportOrgPropTimePeriod"""
 
-    Effective user-level budget details returned when the response is scoped with
-    the `user` query parameter.
-    """
-
-    id: str
-    budget_amount: int
-    consumed_amount: float
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
 
 
-class GetAllBudgetsPropEffectiveBudgetTypeForResponse(TypedDict):
-    """GetAllBudgetsPropEffectiveBudget
+class BillingAiCreditUsageReportOrgPropTimePeriodTypeForResponse(TypedDict):
+    """BillingAiCreditUsageReportOrgPropTimePeriod"""
 
-    Effective user-level budget details returned when the response is scoped with
-    the `user` query parameter.
-    """
-
-    id: str
-    budget_amount: int
-    consumed_amount: float
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
 
 
-class BudgetType(TypedDict):
-    """Budget"""
+class BillingAiCreditUsageReportOrgPropUsageItemsItemsType(TypedDict):
+    """BillingAiCreditUsageReportOrgPropUsageItemsItems"""
 
-    id: str
-    budget_type: Literal["SkuPricing", "ProductPricing"]
-    budget_amount: int
-    prevent_further_usage: bool
-    budget_scope: Literal[
-        "enterprise",
-        "organization",
-        "repository",
-        "cost_center",
-        "multi_user_customer",
-        "multi_user_cost_center",
-        "user",
-    ]
-    budget_entity_name: NotRequired[str]
-    user: NotRequired[str]
-    consumed_amount: NotRequired[float]
-    budget_product_sku: str
-    budget_alerting: BudgetPropBudgetAlertingType
+    product: str
+    sku: str
+    model: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: float
+    gross_amount: float
+    discount_quantity: float
+    discount_amount: float
+    net_quantity: float
+    net_amount: float
 
 
-class BudgetTypeForResponse(TypedDict):
-    """Budget"""
+class BillingAiCreditUsageReportOrgPropUsageItemsItemsTypeForResponse(TypedDict):
+    """BillingAiCreditUsageReportOrgPropUsageItemsItems"""
 
-    id: str
-    budget_type: Literal["SkuPricing", "ProductPricing"]
-    budget_amount: int
-    prevent_further_usage: bool
-    budget_scope: Literal[
-        "enterprise",
-        "organization",
-        "repository",
-        "cost_center",
-        "multi_user_customer",
-        "multi_user_cost_center",
-        "user",
-    ]
-    budget_entity_name: NotRequired[str]
-    user: NotRequired[str]
-    consumed_amount: NotRequired[float]
-    budget_product_sku: str
-    budget_alerting: BudgetPropBudgetAlertingTypeForResponse
-
-
-class BudgetPropBudgetAlertingType(TypedDict):
-    """BudgetPropBudgetAlerting"""
-
-    will_alert: bool
-    alert_recipients: list[str]
-
-
-class BudgetPropBudgetAlertingTypeForResponse(TypedDict):
-    """BudgetPropBudgetAlerting"""
-
-    will_alert: bool
-    alert_recipients: list[str]
+    product: str
+    sku: str
+    model: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: float
+    gross_amount: float
+    discount_quantity: float
+    discount_amount: float
+    net_quantity: float
+    net_amount: float
 
 
 __all__ = (
-    "BudgetPropBudgetAlertingType",
-    "BudgetPropBudgetAlertingTypeForResponse",
-    "BudgetType",
-    "BudgetTypeForResponse",
-    "GetAllBudgetsPropEffectiveBudgetType",
-    "GetAllBudgetsPropEffectiveBudgetTypeForResponse",
-    "GetAllBudgetsType",
-    "GetAllBudgetsTypeForResponse",
+    "BillingAiCreditUsageReportOrgPropTimePeriodType",
+    "BillingAiCreditUsageReportOrgPropTimePeriodTypeForResponse",
+    "BillingAiCreditUsageReportOrgPropUsageItemsItemsType",
+    "BillingAiCreditUsageReportOrgPropUsageItemsItemsTypeForResponse",
+    "BillingAiCreditUsageReportOrgType",
+    "BillingAiCreditUsageReportOrgTypeForResponse",
 )

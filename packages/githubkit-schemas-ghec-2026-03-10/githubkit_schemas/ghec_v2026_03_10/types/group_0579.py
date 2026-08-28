@@ -9,32 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing_extensions import TypedDict
 
 
-class ReferrerTrafficType(TypedDict):
-    """Referrer Traffic
+class TrafficType(TypedDict):
+    """Traffic"""
 
-    Referrer Traffic
-    """
-
-    referrer: str
-    count: int
+    timestamp: _dt.datetime
     uniques: int
-
-
-class ReferrerTrafficTypeForResponse(TypedDict):
-    """Referrer Traffic
-
-    Referrer Traffic
-    """
-
-    referrer: str
     count: int
+
+
+class TrafficTypeForResponse(TypedDict):
+    """Traffic"""
+
+    timestamp: str
     uniques: int
+    count: int
 
 
 __all__ = (
-    "ReferrerTrafficType",
-    "ReferrerTrafficTypeForResponse",
+    "TrafficType",
+    "TrafficTypeForResponse",
 )

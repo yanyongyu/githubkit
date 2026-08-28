@@ -43,7 +43,7 @@ class CodeScanningOrganizationAlertItemsType(TypedDict):
     dismissed_by: Union[SimpleUserType, None]
     dismissed_at: Union[_dt.datetime, None]
     dismissed_reason: Union[
-        Literal["false positive", "won't fix", "used in tests"], None
+        Literal["false positive", "won't fix", "used in tests", "mitigated"], None
     ]
     dismissed_comment: NotRequired[Union[str, None]]
     rule: CodeScanningAlertRuleSummaryType
@@ -68,7 +68,7 @@ class CodeScanningOrganizationAlertItemsTypeForResponse(TypedDict):
     dismissed_by: Union[SimpleUserTypeForResponse, None]
     dismissed_at: Union[str, None]
     dismissed_reason: Union[
-        Literal["false positive", "won't fix", "used in tests"], None
+        Literal["false positive", "won't fix", "used in tests", "mitigated"], None
     ]
     dismissed_comment: NotRequired[Union[str, None]]
     rule: CodeScanningAlertRuleSummaryTypeForResponse

@@ -9,35 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class Label(GitHubModel):
-    """Label
+class EnterpriseTeamWithMemberCount(GitHubModel):
+    """Enterprise Team
 
-    Color-coded labels help you categorize and filter your issues (just like labels
-    in Gmail).
+    Group of enterprise owners and/or members
     """
 
-    id: int = Field(description="Unique identifier for the label.")
-    node_id: str = Field()
-    url: str = Field(description="URL for the label")
-    name: str = Field(description="The name of the label.")
-    description: Union[str, None] = Field(
-        description="Optional description of the label, such as its purpose."
+    id: int = Field()
+    name: str = Field()
+    description: Missing[str] = Field(default=UNSET)
+    slug: str = Field()
+    url: str = Field()
+    sync_to_organizations: Missing[str] = Field(
+        default=UNSET,
+        description="Retired: this field will not be returned with GHEC enterprise teams.",
     )
-    color: str = Field(
-        description="6-character hex code, without the leading #, identifying the color"
+    organization_selection_type: Missing[str] = Field(default=UNSET)
+    group_id: Union[str, None] = Field()
+    group_name: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="Retired: this field will not be returned with GHEC enterprise teams.",
     )
-    default: bool = Field(
-        description="Whether this label comes by default in a new repository."
+    html_url: str = Field()
+    members_url: str = Field()
+    members_count: int = Field(
+        description="The number of members in the enterprise team."
+    )
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    notification_setting: Missing[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ] = Field(
+        default=UNSET,
+        description="Whether team members will receive notifications when the team is mentioned.",
     )
 
 
-model_rebuild(Label)
+model_rebuild(EnterpriseTeamWithMemberCount)
 
-__all__ = ("Label",)
+__all__ = ("EnterpriseTeamWithMemberCount",)
