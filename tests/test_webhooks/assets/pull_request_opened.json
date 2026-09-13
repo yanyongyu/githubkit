@@ -51,7 +51,9 @@
         "name": "dependencies",
         "color": "0366d6",
         "default": false,
-        "description": "Pull requests that update a dependency file"
+        "description": "Pull requests that update a dependency file",
+        "archived_at": null,
+        "archived_by": null
       }
     ],
     "milestone": null,
