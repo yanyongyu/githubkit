@@ -11,27 +11,20 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0261 import (
-    SecretScanningCustomPatternType,
-    SecretScanningCustomPatternTypeForResponse,
-)
+
+class ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberUpdateBranchPutBody"""
+
+    expected_head_sha: NotRequired[str]
 
 
-class ReposOwnerRepoSecretScanningCustomPatternsPostResponse201Type(TypedDict):
-    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse201"""
+class ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPullNumberUpdateBranchPutBody"""
 
-    created_patterns: NotRequired[list[SecretScanningCustomPatternType]]
-
-
-class ReposOwnerRepoSecretScanningCustomPatternsPostResponse201TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse201"""
-
-    created_patterns: NotRequired[list[SecretScanningCustomPatternTypeForResponse]]
+    expected_head_sha: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse201Type",
-    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse201TypeForResponse",
+    "ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType",
+    "ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyTypeForResponse",
 )

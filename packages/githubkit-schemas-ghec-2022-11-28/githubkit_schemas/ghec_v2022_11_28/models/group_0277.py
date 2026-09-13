@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -19,47 +18,76 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CopilotSpaceResource(GitHubModel):
-    """Copilot Space Resource
+class CopilotOrganizationDetails(ExtraGitHubModel):
+    """Copilot Organization Details
 
-    A resource attached to a Copilot Space.
+    Information about the seat breakdown and policies set for an organization with a
+    Copilot Business or Copilot Enterprise subscription.
     """
 
-    id: int = Field(description="The unique identifier of the resource.")
-    resource_type: Literal[
-        "repository",
-        "github_file",
-        "free_text",
-        "github_issue",
-        "github_pull_request",
-        "media_content",
-        "uploaded_text_file",
-    ] = Field(description="The type of the resource.")
-    copilot_chat_attachment_id: Missing[Union[int, None]] = Field(
-        default=UNSET, description="The ID of the associated chat attachment, if any."
+    seat_breakdown: CopilotOrganizationSeatBreakdown = Field(
+        title="Copilot Seat Breakdown",
+        description="The breakdown of Copilot Business seats for the organization.",
     )
-    metadata: CopilotSpaceResourcePropMetadata = Field(
-        description="Resource-specific metadata. The keys and values depend on the resource type."
+    public_code_suggestions: Literal["allow", "block", "unconfigured"] = Field(
+        description="The organization policy for allowing or blocking suggestions matching public code (duplication detection filter)."
     )
-    created_at: _dt.datetime = Field(
-        description="The date and time the resource was created."
+    ide_chat: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
+        default=UNSET,
+        description="The organization policy for allowing or disallowing Copilot Chat in the IDE.",
     )
-    updated_at: _dt.datetime = Field(
-        description="The date and time the resource was last updated."
+    platform_chat: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
+        default=UNSET,
+        description="The organization policy for allowing or disallowing Copilot features on GitHub.com.",
+    )
+    cli: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
+        default=UNSET,
+        description="The organization policy for allowing or disallowing Copilot CLI.",
+    )
+    seat_management_setting: Literal[
+        "assign_all", "assign_selected", "disabled", "unconfigured"
+    ] = Field(description="The mode of assigning new seats.")
+    plan_type: Missing[Literal["business", "enterprise"]] = Field(
+        default=UNSET,
+        description="The Copilot plan of the organization, or the parent enterprise, when applicable.",
     )
 
 
-class CopilotSpaceResourcePropMetadata(ExtraGitHubModel):
-    """CopilotSpaceResourcePropMetadata
+class CopilotOrganizationSeatBreakdown(GitHubModel):
+    """Copilot Seat Breakdown
 
-    Resource-specific metadata. The keys and values depend on the resource type.
+    The breakdown of Copilot Business seats for the organization.
     """
 
+    total: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of seats being billed for the organization as of the current billing cycle.",
+    )
+    added_this_cycle: Missing[int] = Field(
+        default=UNSET, description="Seats added during the current billing cycle."
+    )
+    pending_cancellation: Missing[int] = Field(
+        default=UNSET,
+        description="The number of seats that are pending cancellation at the end of the current billing cycle.",
+    )
+    pending_invitation: Missing[int] = Field(
+        default=UNSET,
+        description="The number of users who have been invited to receive a Copilot seat through this organization.",
+    )
+    active_this_cycle: Missing[int] = Field(
+        default=UNSET,
+        description="The number of seats that have used Copilot during the current billing cycle.",
+    )
+    inactive_this_cycle: Missing[int] = Field(
+        default=UNSET,
+        description="The number of seats that have not used Copilot during the current billing cycle.",
+    )
 
-model_rebuild(CopilotSpaceResource)
-model_rebuild(CopilotSpaceResourcePropMetadata)
+
+model_rebuild(CopilotOrganizationDetails)
+model_rebuild(CopilotOrganizationSeatBreakdown)
 
 __all__ = (
-    "CopilotSpaceResource",
-    "CopilotSpaceResourcePropMetadata",
+    "CopilotOrganizationDetails",
+    "CopilotOrganizationSeatBreakdown",
 )

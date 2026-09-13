@@ -17,63 +17,38 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0074 import CodeScanningAlertLocation
+
+class CodeScanningOptions(GitHubModel):
+    """CodeScanningOptions
+
+    Security Configuration feature options for code scanning
+    """
+
+    allow_advanced: Missing[Union[bool, None]] = Field(
+        default=UNSET, description="Whether to allow repos which use advanced setup"
+    )
 
 
-class CodeScanningAlertInstance(GitHubModel):
-    """CodeScanningAlertInstance"""
+class CodeScanningDefaultSetupOptions(GitHubModel):
+    """CodeScanningDefaultSetupOptions
 
-    ref: Missing[str] = Field(
+    Feature options for code scanning default setup
+    """
+
+    runner_type: Missing[Literal["standard", "labeled", "not_set"]] = Field(
         default=UNSET,
-        description="The Git reference, formatted as `refs/pull/<number>/merge`, `refs/pull/<number>/head`,\n`refs/heads/<branch name>` or simply `<branch name>`.",
+        description="Whether to use labeled runners or standard GitHub runners.",
     )
-    analysis_key: Missing[str] = Field(
+    runner_label: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name.",
-    )
-    environment: Missing[str] = Field(
-        default=UNSET,
-        description="Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed.",
-    )
-    category: Missing[str] = Field(
-        default=UNSET,
-        description="Identifies the configuration under which the analysis was executed. Used to distinguish between multiple analyses for the same tool and commit, but performed on different languages or different parts of the code.",
-    )
-    state: Missing[Union[Literal["open", "dismissed", "fixed"], None]] = Field(
-        default=UNSET, description="State of a code scanning alert."
-    )
-    commit_sha: Missing[str] = Field(default=UNSET)
-    message: Missing[CodeScanningAlertInstancePropMessage] = Field(default=UNSET)
-    location: Missing[CodeScanningAlertLocation] = Field(
-        default=UNSET, description="Describe a region within a file for the alert."
-    )
-    html_url: Missing[str] = Field(default=UNSET)
-    classifications: Missing[
-        list[
-            Union[
-                Literal["source", "generated", "test", "library", "documentation"], None
-            ]
-        ]
-    ] = Field(
-        default=UNSET,
-        description="Classifications that have been applied to the file that triggered the alert.\nFor example identifying it as documentation, or a generated file.",
+        description="The label of the runner to use for code scanning default setup when runner_type is 'labeled'.",
     )
 
 
-class CodeScanningAlertInstancePropMessage(GitHubModel):
-    """CodeScanningAlertInstancePropMessage"""
-
-    text: Missing[str] = Field(default=UNSET)
-    markdown: Missing[str] = Field(
-        default=UNSET,
-        description="The message text as GitHub-flavored Markdown, with placeholder links for related locations replaced by links to the relevant code. Only populated when related locations are available for the alert instance.",
-    )
-
-
-model_rebuild(CodeScanningAlertInstance)
-model_rebuild(CodeScanningAlertInstancePropMessage)
+model_rebuild(CodeScanningOptions)
+model_rebuild(CodeScanningDefaultSetupOptions)
 
 __all__ = (
-    "CodeScanningAlertInstance",
-    "CodeScanningAlertInstancePropMessage",
+    "CodeScanningDefaultSetupOptions",
+    "CodeScanningOptions",
 )

@@ -12,48 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody(
-    GitHubModel
-):
-    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody"""
+class EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200(GitHubModel):
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200
 
-    organizations: Missing[list[str]] = Field(
-        default=UNSET,
-        description="List of organization logins within the enterprise to disable Copilot cloud agent for.",
-    )
-    custom_properties: Missing[
-        list[
-            EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItems
-        ]
-    ] = Field(
-        default=UNSET,
-        description="List of custom property filters to match organizations. Organizations matching any of the specified property name/value pairs will be included. This is a one-time operation, setting the property on an organization in the future will not automatically update its coding agent policy.",
-    )
-
-
-class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItems(
-    GitHubModel
-):
-    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustom
-    PropertiesItems
+    The total number of seats set to "pending cancellation" for the specified users.
     """
 
-    property_name: str = Field(
-        description="The name of the custom property to filter by."
-    )
-    values: list[str] = Field(description="The values of the custom property to match.")
+    seats_cancelled: int = Field()
 
 
-model_rebuild(EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody)
-model_rebuild(
-    EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItems
-)
+model_rebuild(EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200)
 
-__all__ = (
-    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody",
-    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItems",
-)
+__all__ = ("EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200",)

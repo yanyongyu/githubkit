@@ -9,67 +9,87 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
+from .group_0129 import TeamSimpleType, TeamSimpleTypeForResponse
 
 
-class MigrationType(TypedDict):
-    """Migration
+class TeamRoleAssignmentType(TypedDict):
+    """A Role Assignment for a Team
 
-    A migration.
+    The Relationship a Team has with a role.
     """
 
+    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
     id: int
-    owner: Union[SimpleUserType, None]
-    guid: str
-    state: str
-    lock_repositories: bool
-    exclude_metadata: bool
-    exclude_git_data: bool
-    exclude_attachments: bool
-    exclude_releases: bool
-    exclude_owner_projects: bool
-    org_metadata_only: bool
-    repositories: list[RepositoryType]
-    url: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
     node_id: str
-    archive_url: NotRequired[str]
-    exclude: NotRequired[list[str]]
+    name: str
+    slug: str
+    description: Union[str, None]
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    permission: str
+    permissions: NotRequired[TeamRoleAssignmentPropPermissionsType]
+    url: str
+    html_url: str
+    members_url: str
+    repositories_url: str
+    parent: Union[TeamSimpleType, None]
+    type: Literal["enterprise", "organization"]
+    organization_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
 
 
-class MigrationTypeForResponse(TypedDict):
-    """Migration
+class TeamRoleAssignmentTypeForResponse(TypedDict):
+    """A Role Assignment for a Team
 
-    A migration.
+    The Relationship a Team has with a role.
     """
 
+    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
     id: int
-    owner: Union[SimpleUserTypeForResponse, None]
-    guid: str
-    state: str
-    lock_repositories: bool
-    exclude_metadata: bool
-    exclude_git_data: bool
-    exclude_attachments: bool
-    exclude_releases: bool
-    exclude_owner_projects: bool
-    org_metadata_only: bool
-    repositories: list[RepositoryTypeForResponse]
-    url: str
-    created_at: str
-    updated_at: str
     node_id: str
-    archive_url: NotRequired[str]
-    exclude: NotRequired[list[str]]
+    name: str
+    slug: str
+    description: Union[str, None]
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    permission: str
+    permissions: NotRequired[TeamRoleAssignmentPropPermissionsTypeForResponse]
+    url: str
+    html_url: str
+    members_url: str
+    repositories_url: str
+    parent: Union[TeamSimpleTypeForResponse, None]
+    type: Literal["enterprise", "organization"]
+    organization_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
+
+
+class TeamRoleAssignmentPropPermissionsType(TypedDict):
+    """TeamRoleAssignmentPropPermissions"""
+
+    pull: bool
+    triage: bool
+    push: bool
+    maintain: bool
+    admin: bool
+
+
+class TeamRoleAssignmentPropPermissionsTypeForResponse(TypedDict):
+    """TeamRoleAssignmentPropPermissions"""
+
+    pull: bool
+    triage: bool
+    push: bool
+    maintain: bool
+    admin: bool
 
 
 __all__ = (
-    "MigrationType",
-    "MigrationTypeForResponse",
+    "TeamRoleAssignmentPropPermissionsType",
+    "TeamRoleAssignmentPropPermissionsTypeForResponse",
+    "TeamRoleAssignmentType",
+    "TeamRoleAssignmentTypeForResponse",
 )

@@ -9,24 +9,78 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBodyType(TypedDict):
-    """EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBody"""
+class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyType(TypedDict):
+    """EnterprisesEnterpriseSettingsBillingBudgetsPostBody"""
 
-    usernames: list[str]
+    budget_amount: int
+    prevent_further_usage: bool
+    budget_alerting: (
+        EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingType
+    )
+    budget_scope: Literal[
+        "enterprise",
+        "organization",
+        "repository",
+        "cost_center",
+        "multi_user_customer",
+        "multi_user_cost_center",
+        "user",
+    ]
+    budget_entity_name: NotRequired[str]
+    budget_type: Literal["BundlePricing", "ProductPricing", "SkuPricing"]
+    budget_product_sku: NotRequired[str]
+    user: NotRequired[str]
+    expires_at: NotRequired[_dt.date]
 
 
-class EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBodyTypeForResponse(
+class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseSettingsBillingBudgetsPostBody"""
+
+    budget_amount: int
+    prevent_further_usage: bool
+    budget_alerting: EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingTypeForResponse
+    budget_scope: Literal[
+        "enterprise",
+        "organization",
+        "repository",
+        "cost_center",
+        "multi_user_customer",
+        "multi_user_cost_center",
+        "user",
+    ]
+    budget_entity_name: NotRequired[str]
+    budget_type: Literal["BundlePricing", "ProductPricing", "SkuPricing"]
+    budget_product_sku: NotRequired[str]
+    user: NotRequired[str]
+    expires_at: NotRequired[str]
+
+
+class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingType(
     TypedDict
 ):
-    """EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBody"""
+    """EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting"""
 
-    usernames: list[str]
+    will_alert: bool
+    alert_recipients: list[str]
+
+
+class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting"""
+
+    will_alert: bool
+    alert_recipients: list[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBodyType",
-    "EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBodyTypeForResponse",
+    "EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingType",
+    "EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingTypeForResponse",
+    "EnterprisesEnterpriseSettingsBillingBudgetsPostBodyType",
+    "EnterprisesEnterpriseSettingsBillingBudgetsPostBodyTypeForResponse",
 )

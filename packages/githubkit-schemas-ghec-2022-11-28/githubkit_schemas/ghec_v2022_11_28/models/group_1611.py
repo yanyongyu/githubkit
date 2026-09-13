@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal
 
 from pydantic import Field
@@ -19,23 +18,22 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoMilestonesPostBody(GitHubModel):
-    """ReposOwnerRepoMilestonesPostBody"""
+class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items"""
 
-    title: str = Field(description="The title of the milestone.")
-    state: Missing[Literal["open", "closed"]] = Field(
+    name: str = Field()
+    rationale: Missing[str] = Field(
+        default=UNSET, description="Optional reasoning for adding this label."
+    )
+    suggest: Missing[bool] = Field(
         default=UNSET,
-        description="The state of the milestone. Either `open` or `closed`.",
+        description="If `true`, the label is stored as a pending suggestion for human review rather than applied directly.",
     )
-    description: Missing[str] = Field(
-        default=UNSET, description="A description of the milestone."
-    )
-    due_on: Missing[_dt.datetime] = Field(
-        default=UNSET,
-        description="The milestone due date. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    confidence: Missing[Literal["low", "medium", "high"]] = Field(
+        default=UNSET, description="The confidence level for this label choice."
     )
 
 
-model_rebuild(ReposOwnerRepoMilestonesPostBody)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items)
 
-__all__ = ("ReposOwnerRepoMilestonesPostBody",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items",)

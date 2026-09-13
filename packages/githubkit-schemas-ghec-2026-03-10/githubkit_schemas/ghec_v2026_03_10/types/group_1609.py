@@ -9,30 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType(TypedDict):
-    """ReposOwnerRepoMilestonesMilestoneNumberPatchBody"""
+class ReposOwnerRepoIssuesIssueNumberLockPutBodyType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberLockPutBody"""
 
-    title: NotRequired[str]
-    state: NotRequired[Literal["open", "closed"]]
-    description: NotRequired[str]
-    due_on: NotRequired[_dt.datetime]
+    lock_reason: NotRequired[Literal["off-topic", "too heated", "resolved", "spam"]]
 
 
-class ReposOwnerRepoMilestonesMilestoneNumberPatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoMilestonesMilestoneNumberPatchBody"""
+class ReposOwnerRepoIssuesIssueNumberLockPutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberLockPutBody"""
 
-    title: NotRequired[str]
-    state: NotRequired[Literal["open", "closed"]]
-    description: NotRequired[str]
-    due_on: NotRequired[str]
+    lock_reason: NotRequired[Literal["off-topic", "too heated", "resolved", "spam"]]
 
 
 __all__ = (
-    "ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType",
-    "ReposOwnerRepoMilestonesMilestoneNumberPatchBodyTypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberLockPutBodyType",
+    "ReposOwnerRepoIssuesIssueNumberLockPutBodyTypeForResponse",
 )

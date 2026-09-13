@@ -9,67 +9,84 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
-
-from .group_0094 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class ThreadType(TypedDict):
-    """Thread
+class BillingAiCreditUsageReportOrgType(TypedDict):
+    """BillingAiCreditUsageReportOrg"""
 
-    Thread
-    """
-
-    id: str
-    repository: MinimalRepositoryType
-    subject: ThreadPropSubjectType
-    reason: str
-    unread: bool
-    updated_at: str
-    last_read_at: Union[str, None]
-    url: str
-    subscription_url: str
+    time_period: BillingAiCreditUsageReportOrgPropTimePeriodType
+    organization: str
+    user: NotRequired[str]
+    product: NotRequired[str]
+    model: NotRequired[str]
+    usage_items: list[BillingAiCreditUsageReportOrgPropUsageItemsItemsType]
 
 
-class ThreadTypeForResponse(TypedDict):
-    """Thread
+class BillingAiCreditUsageReportOrgTypeForResponse(TypedDict):
+    """BillingAiCreditUsageReportOrg"""
 
-    Thread
-    """
-
-    id: str
-    repository: MinimalRepositoryTypeForResponse
-    subject: ThreadPropSubjectTypeForResponse
-    reason: str
-    unread: bool
-    updated_at: str
-    last_read_at: Union[str, None]
-    url: str
-    subscription_url: str
+    time_period: BillingAiCreditUsageReportOrgPropTimePeriodTypeForResponse
+    organization: str
+    user: NotRequired[str]
+    product: NotRequired[str]
+    model: NotRequired[str]
+    usage_items: list[BillingAiCreditUsageReportOrgPropUsageItemsItemsTypeForResponse]
 
 
-class ThreadPropSubjectType(TypedDict):
-    """ThreadPropSubject"""
+class BillingAiCreditUsageReportOrgPropTimePeriodType(TypedDict):
+    """BillingAiCreditUsageReportOrgPropTimePeriod"""
 
-    title: str
-    url: str
-    latest_comment_url: str
-    type: str
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
 
 
-class ThreadPropSubjectTypeForResponse(TypedDict):
-    """ThreadPropSubject"""
+class BillingAiCreditUsageReportOrgPropTimePeriodTypeForResponse(TypedDict):
+    """BillingAiCreditUsageReportOrgPropTimePeriod"""
 
-    title: str
-    url: str
-    latest_comment_url: str
-    type: str
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
+
+
+class BillingAiCreditUsageReportOrgPropUsageItemsItemsType(TypedDict):
+    """BillingAiCreditUsageReportOrgPropUsageItemsItems"""
+
+    product: str
+    sku: str
+    model: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: float
+    gross_amount: float
+    discount_quantity: float
+    discount_amount: float
+    net_quantity: float
+    net_amount: float
+
+
+class BillingAiCreditUsageReportOrgPropUsageItemsItemsTypeForResponse(TypedDict):
+    """BillingAiCreditUsageReportOrgPropUsageItemsItems"""
+
+    product: str
+    sku: str
+    model: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: float
+    gross_amount: float
+    discount_quantity: float
+    discount_amount: float
+    net_quantity: float
+    net_amount: float
 
 
 __all__ = (
-    "ThreadPropSubjectType",
-    "ThreadPropSubjectTypeForResponse",
-    "ThreadType",
-    "ThreadTypeForResponse",
+    "BillingAiCreditUsageReportOrgPropTimePeriodType",
+    "BillingAiCreditUsageReportOrgPropTimePeriodTypeForResponse",
+    "BillingAiCreditUsageReportOrgPropUsageItemsItemsType",
+    "BillingAiCreditUsageReportOrgPropUsageItemsItemsTypeForResponse",
+    "BillingAiCreditUsageReportOrgType",
+    "BillingAiCreditUsageReportOrgTypeForResponse",
 )

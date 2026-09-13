@@ -9,41 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0199 import (
-    RepositoryRulesetConditionsPropRefNameType,
-    RepositoryRulesetConditionsPropRefNameTypeForResponse,
-)
-from .group_0205 import (
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse,
+from .group_0209 import (
+    RepositoryRuleUpdatePropParametersType,
+    RepositoryRuleUpdatePropParametersTypeForResponse,
 )
 
 
-class OrgRulesetConditionsOneof2Type(TypedDict):
-    """repository_property_and_ref_name
+class RepositoryRuleUpdateType(TypedDict):
+    """update
 
-    Conditions to target repositories by property and refs by name
+    Only allow users with bypass permission to update matching refs.
     """
 
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
-    repository_property: (
-        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
-    )
+    type: Literal["update"]
+    parameters: NotRequired[RepositoryRuleUpdatePropParametersType]
 
 
-class OrgRulesetConditionsOneof2TypeForResponse(TypedDict):
-    """repository_property_and_ref_name
+class RepositoryRuleUpdateTypeForResponse(TypedDict):
+    """update
 
-    Conditions to target repositories by property and refs by name
+    Only allow users with bypass permission to update matching refs.
     """
 
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
-    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse
+    type: Literal["update"]
+    parameters: NotRequired[RepositoryRuleUpdatePropParametersTypeForResponse]
 
 
 __all__ = (
-    "OrgRulesetConditionsOneof2Type",
-    "OrgRulesetConditionsOneof2TypeForResponse",
+    "RepositoryRuleUpdateType",
+    "RepositoryRuleUpdateTypeForResponse",
 )

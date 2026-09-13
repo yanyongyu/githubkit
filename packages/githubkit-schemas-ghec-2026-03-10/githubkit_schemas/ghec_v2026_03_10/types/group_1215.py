@@ -12,25 +12,21 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostResponse202Type(
-    TypedDict
-):
-    """EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostResponse202"""
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutBodyType(TypedDict):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody"""
 
-    message: NotRequired[str]
-    warning: NotRequired[str]
+    organization_id: int
+    create_ruleset: NotRequired[bool]
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostResponse202TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostResponse202"""
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody"""
 
-    message: NotRequired[str]
-    warning: NotRequired[str]
+    organization_id: int
+    create_ruleset: NotRequired[bool]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostResponse202Type",
-    "EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostResponse202TypeForResponse",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutBodyType",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutBodyTypeForResponse",
 )

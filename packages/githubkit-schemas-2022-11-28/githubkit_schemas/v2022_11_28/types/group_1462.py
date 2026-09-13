@@ -9,58 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing_extensions import TypedDict
-
-from .group_0499 import (
-    PullRequestStackPullRequestType,
-    PullRequestStackPullRequestTypeForResponse,
-)
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoStacksStackNumberAddPostResponse200Type(TypedDict):
-    """ReposOwnerRepoStacksStackNumberAddPostResponse200"""
+class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type(TypedDict):
+    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0"""
 
-    id: int
-    number: int
-    node_id: str
-    url: str
-    base: ReposOwnerRepoStacksStackNumberAddPostResponse200PropBaseType
-    open_: bool
-    created_at: _dt.datetime
-    pull_requests: list[PullRequestStackPullRequestType]
-
-
-class ReposOwnerRepoStacksStackNumberAddPostResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoStacksStackNumberAddPostResponse200"""
-
-    id: int
-    number: int
-    node_id: str
-    url: str
-    base: ReposOwnerRepoStacksStackNumberAddPostResponse200PropBaseTypeForResponse
-    open_: bool
-    created_at: str
-    pull_requests: list[PullRequestStackPullRequestTypeForResponse]
+    state: Literal["open", "resolved"]
+    resolution: NotRequired[
+        Union[Literal["false_positive", "wont_fix", "revoked", "used_in_tests"], None]
+    ]
+    resolution_comment: NotRequired[Union[str, None]]
+    assignee: NotRequired[Union[str, None]]
+    validity: NotRequired[Union[Literal["active", "inactive"], None]]
 
 
-class ReposOwnerRepoStacksStackNumberAddPostResponse200PropBaseType(TypedDict):
-    """ReposOwnerRepoStacksStackNumberAddPostResponse200PropBase"""
-
-    ref: str
-
-
-class ReposOwnerRepoStacksStackNumberAddPostResponse200PropBaseTypeForResponse(
+class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0TypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoStacksStackNumberAddPostResponse200PropBase"""
+    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0"""
 
-    ref: str
+    state: Literal["open", "resolved"]
+    resolution: NotRequired[
+        Union[Literal["false_positive", "wont_fix", "revoked", "used_in_tests"], None]
+    ]
+    resolution_comment: NotRequired[Union[str, None]]
+    assignee: NotRequired[Union[str, None]]
+    validity: NotRequired[Union[Literal["active", "inactive"], None]]
 
 
 __all__ = (
-    "ReposOwnerRepoStacksStackNumberAddPostResponse200PropBaseType",
-    "ReposOwnerRepoStacksStackNumberAddPostResponse200PropBaseTypeForResponse",
-    "ReposOwnerRepoStacksStackNumberAddPostResponse200Type",
-    "ReposOwnerRepoStacksStackNumberAddPostResponse200TypeForResponse",
+    "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type",
+    "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0TypeForResponse",
 )

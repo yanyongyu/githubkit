@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,23 +16,59 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AppHookConfigPatchBody(GitHubModel):
-    """AppHookConfigPatchBody"""
+class AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0(GitHubModel):
+    """AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0
 
-    url: Missing[str] = Field(
-        default=UNSET, description="The URL to which the payloads will be delivered."
+    A GitHub user
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the user"
     )
-    content_type: Missing[str] = Field(
+
+
+class AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems(GitHubModel):
+    """AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems
+
+    A GitHub user
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the user"
+    )
+
+
+class AgentsTasksTaskIdGetResponse200Allof0PropRepository(GitHubModel):
+    """AgentsTasksTaskIdGetResponse200Allof0PropRepository
+
+    The repository this task belongs to
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the repository"
+    )
+
+
+class AgentsTasksTaskIdGetResponse200Allof0PropCustomAgent(GitHubModel):
+    """AgentsTasksTaskIdGetResponse200Allof0PropCustomAgent
+
+    Custom agent metadata associated with this task
+    """
+
+    id: Missing[str] = Field(
         default=UNSET,
-        description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
+        description="The custom agent's filename without the extension - for example, `performance-optimizer` for a `.github/agents/performance-optimizer.agent.md` custom agent.",
     )
-    secret: Missing[str] = Field(
-        default=UNSET,
-        description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/webhooks/event-payloads/#delivery-headers).",
-    )
-    insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
 
 
-model_rebuild(AppHookConfigPatchBody)
+model_rebuild(AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0)
+model_rebuild(AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems)
+model_rebuild(AgentsTasksTaskIdGetResponse200Allof0PropRepository)
+model_rebuild(AgentsTasksTaskIdGetResponse200Allof0PropCustomAgent)
 
-__all__ = ("AppHookConfigPatchBody",)
+__all__ = (
+    "AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0",
+    "AgentsTasksTaskIdGetResponse200Allof0PropCustomAgent",
+    "AgentsTasksTaskIdGetResponse200Allof0PropRepository",
+    "AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems",
+)

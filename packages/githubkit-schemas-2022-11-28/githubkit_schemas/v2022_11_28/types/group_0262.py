@@ -9,38 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class SecretScanningCustomPatternToCreateType(TypedDict):
-    """Secret Scanning Custom Pattern To Create
+class SecretScanningCustomPatternValidationErrorType(TypedDict):
+    """Secret Scanning Custom Pattern Validation Error
 
-    A custom pattern to create in a bulk operation.
+    A validation error for a custom pattern in a batch operation.
     """
 
-    name: str
-    pattern: str
-    start_delimiter: NotRequired[str]
-    end_delimiter: NotRequired[str]
-    must_match: NotRequired[list[str]]
-    must_not_match: NotRequired[list[str]]
+    code: NotRequired[
+        Literal[
+            "invalid",
+            "unprocessable",
+            "start_delimiter",
+            "end_delimiter",
+            "name",
+            "must_match",
+            "must_not_match",
+            "custom_pattern_version_mismatch",
+        ]
+    ]
+    message: NotRequired[str]
 
 
-class SecretScanningCustomPatternToCreateTypeForResponse(TypedDict):
-    """Secret Scanning Custom Pattern To Create
+class SecretScanningCustomPatternValidationErrorTypeForResponse(TypedDict):
+    """Secret Scanning Custom Pattern Validation Error
 
-    A custom pattern to create in a bulk operation.
+    A validation error for a custom pattern in a batch operation.
     """
 
-    name: str
-    pattern: str
-    start_delimiter: NotRequired[str]
-    end_delimiter: NotRequired[str]
-    must_match: NotRequired[list[str]]
-    must_not_match: NotRequired[list[str]]
+    code: NotRequired[
+        Literal[
+            "invalid",
+            "unprocessable",
+            "start_delimiter",
+            "end_delimiter",
+            "name",
+            "must_match",
+            "must_not_match",
+            "custom_pattern_version_mismatch",
+        ]
+    ]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "SecretScanningCustomPatternToCreateType",
-    "SecretScanningCustomPatternToCreateTypeForResponse",
+    "SecretScanningCustomPatternValidationErrorType",
+    "SecretScanningCustomPatternValidationErrorTypeForResponse",
 )

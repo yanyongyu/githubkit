@@ -9,25 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing_extensions import NotRequired, TypedDict
 
 
-class NotificationsPutBodyType(TypedDict):
-    """NotificationsPutBody"""
+class EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBodyType(
+    TypedDict
+):
+    """EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBody"""
 
-    last_read_at: NotRequired[_dt.datetime]
-    read: NotRequired[bool]
+    user_identifier: NotRequired[str]
 
 
-class NotificationsPutBodyTypeForResponse(TypedDict):
-    """NotificationsPutBody"""
+class EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBody"""
 
-    last_read_at: NotRequired[str]
-    read: NotRequired[bool]
+    user_identifier: NotRequired[str]
 
 
 __all__ = (
-    "NotificationsPutBodyType",
-    "NotificationsPutBodyTypeForResponse",
+    "EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBodyType",
+    "EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBodyTypeForResponse",
 )

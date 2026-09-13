@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,58 +16,43 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class GetBudget(GitHubModel):
-    """GetBudget"""
+class GetBudgetUserStates(GitHubModel):
+    """GetBudgetUserStates"""
 
-    id: str = Field(description="ID of the budget.")
-    budget_scope: Literal[
-        "enterprise",
-        "organization",
-        "repository",
-        "cost_center",
-        "multi_user_customer",
-        "multi_user_cost_center",
-        "user",
-    ] = Field(description="The type of scope for the budget")
-    budget_entity_name: str = Field(
-        description="The name of the entity to apply the budget to"
+    user_states: list[GetBudgetUserStatesPropUserStatesItems] = Field(
+        description="Per-user state entries for the budget."
     )
+    has_next_page: bool = Field(
+        description="Indicates if there are more pages of results available."
+    )
+    total_count: int = Field(
+        description="Total number of user state entries matching the query."
+    )
+
+
+class GetBudgetUserStatesPropUserStatesItems(GitHubModel):
+    """GetBudgetUserStatesPropUserStatesItems"""
+
     user: Missing[str] = Field(
         default=UNSET,
-        description="The user login when the budget is scoped to a single user (`user` scope).",
+        description="The login of the user, when the user record is available.",
     )
-    budget_amount: int = Field(
-        description="The budget amount in whole dollars. For license-based products, this represents the number of licenses."
+    consumed_amount: float = Field(
+        description="The amount currently consumed by this user against the budget."
     )
-    prevent_further_usage: bool = Field(
-        description="Whether to prevent additional spending once the budget is exceeded"
+    target_amount: float = Field(
+        description="The target amount allocated to this user within the budget."
     )
-    budget_product_sku: str = Field(
-        description="A single product or sku to apply the budget to."
-    )
-    budget_type: Literal["ProductPricing", "SkuPricing", "BundlePricing"] = Field(
-        description="The type of pricing for the budget"
-    )
-    budget_alerting: GetBudgetPropBudgetAlerting = Field()
-
-
-class GetBudgetPropBudgetAlerting(GitHubModel):
-    """GetBudgetPropBudgetAlerting"""
-
-    will_alert: Missing[bool] = Field(
+    override_budget_id: Missing[str] = Field(
         default=UNSET,
-        description="Whether alerts are enabled for this budget. Present but not applicable for user-scope as alerting is always disabled for them.",
-    )
-    alert_recipients: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Array of user login names who will receive alerts. Present but not applicable for user-scope as alerting is always disabled for them.",
+        description="The ID of a user-scoped budget that overrides the per-user allocation, when present.",
     )
 
 
-model_rebuild(GetBudget)
-model_rebuild(GetBudgetPropBudgetAlerting)
+model_rebuild(GetBudgetUserStates)
+model_rebuild(GetBudgetUserStatesPropUserStatesItems)
 
 __all__ = (
-    "GetBudget",
-    "GetBudgetPropBudgetAlerting",
+    "GetBudgetUserStates",
+    "GetBudgetUserStatesPropUserStatesItems",
 )

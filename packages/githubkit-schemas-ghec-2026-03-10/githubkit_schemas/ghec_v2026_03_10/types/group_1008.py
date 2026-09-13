@@ -13,41 +13,49 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0621 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0622 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0623 import (
+from .group_0624 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0625 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0626 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0624 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0663 import WebhooksReleaseType, WebhooksReleaseTypeForResponse
+from .group_0627 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0640 import WebhooksLabelType, WebhooksLabelTypeForResponse
+from .group_1009 import (
+    WebhookPullRequestUnlabeledPropPullRequestType,
+    WebhookPullRequestUnlabeledPropPullRequestTypeForResponse,
+)
 
 
-class WebhookReleaseCreatedType(TypedDict):
-    """release created event"""
+class WebhookPullRequestUnlabeledType(TypedDict):
+    """pull_request unlabeled event"""
 
-    action: Literal["created"]
+    action: Literal["unlabeled"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
+    label: NotRequired[WebhooksLabelType]
+    number: int
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    release: WebhooksReleaseType
+    pull_request: WebhookPullRequestUnlabeledPropPullRequestType
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookReleaseCreatedTypeForResponse(TypedDict):
-    """release created event"""
+class WebhookPullRequestUnlabeledTypeForResponse(TypedDict):
+    """pull_request unlabeled event"""
 
-    action: Literal["created"]
+    action: Literal["unlabeled"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
+    label: NotRequired[WebhooksLabelTypeForResponse]
+    number: int
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    release: WebhooksReleaseTypeForResponse
+    pull_request: WebhookPullRequestUnlabeledPropPullRequestTypeForResponse
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookReleaseCreatedType",
-    "WebhookReleaseCreatedTypeForResponse",
+    "WebhookPullRequestUnlabeledType",
+    "WebhookPullRequestUnlabeledTypeForResponse",
 )

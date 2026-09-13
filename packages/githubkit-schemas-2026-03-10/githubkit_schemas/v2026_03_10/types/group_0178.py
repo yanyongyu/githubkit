@@ -9,28 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class LinkType(TypedDict):
-    """Link
+class PullRequestStackType(TypedDict):
+    """Pull Request Stack
 
-    Hypermedia Link
+    The stack information associated with a pull request.
     """
 
-    href: str
+    base: PullRequestStackPropBaseType
+    size: NotRequired[int]
+    position: NotRequired[int]
+    id: NotRequired[int]
+    number: NotRequired[int]
 
 
-class LinkTypeForResponse(TypedDict):
-    """Link
+class PullRequestStackTypeForResponse(TypedDict):
+    """Pull Request Stack
 
-    Hypermedia Link
+    The stack information associated with a pull request.
     """
 
-    href: str
+    base: PullRequestStackPropBaseTypeForResponse
+    size: NotRequired[int]
+    position: NotRequired[int]
+    id: NotRequired[int]
+    number: NotRequired[int]
+
+
+class PullRequestStackPropBaseType(TypedDict):
+    """PullRequestStackPropBase"""
+
+    ref: str
+    sha: str
+
+
+class PullRequestStackPropBaseTypeForResponse(TypedDict):
+    """PullRequestStackPropBase"""
+
+    ref: str
+    sha: str
 
 
 __all__ = (
-    "LinkType",
-    "LinkTypeForResponse",
+    "PullRequestStackPropBaseType",
+    "PullRequestStackPropBaseTypeForResponse",
+    "PullRequestStackType",
+    "PullRequestStackTypeForResponse",
 )

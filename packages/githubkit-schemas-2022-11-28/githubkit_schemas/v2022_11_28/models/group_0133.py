@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,47 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class TeamSimple(GitHubModel):
-    """Team Simple
+class CodeScanningAiScanOrgEnablementUpdate(GitHubModel):
+    """Code scanning AI Scan organization settings update
 
-    Groups of organization members that gives permissions on specified repositories.
+    The AI Scan organization setting to apply
     """
 
-    id: int = Field(description="Unique identifier of the team")
-    node_id: str = Field()
-    url: str = Field(description="URL for the team")
-    members_url: str = Field()
-    name: str = Field(description="Name of the team")
-    description: Union[str, None] = Field(description="Description of the team")
-    permission: str = Field(
-        description="Permission that the team will have for its repositories"
-    )
-    privacy: Missing[str] = Field(
-        default=UNSET, description="The level of privacy this team should have"
-    )
-    notification_setting: Missing[str] = Field(
-        default=UNSET, description="The notification setting the team has set"
-    )
-    html_url: str = Field()
-    repositories_url: str = Field()
-    slug: str = Field()
-    ldap_dn: Missing[str] = Field(
+    pr_scan: Missing[Literal["enabled", "disabled"]] = Field(
         default=UNSET,
-        description="Distinguished Name (DN) that team maps to within LDAP environment",
-    )
-    type: Literal["enterprise", "organization"] = Field(
-        description="The ownership type of the team"
-    )
-    organization_id: Missing[int] = Field(
-        default=UNSET,
-        description="Unique identifier of the organization to which this team belongs",
-    )
-    enterprise_id: Missing[int] = Field(
-        default=UNSET,
-        description="Unique identifier of the enterprise to which this team belongs",
+        description="Whether AI Scan is enabled for the organization. Organization respects enterprise policy. Disabled organizations prevent repositories from enabling AI Scan. Enabled organizations enable AI Scan for their repositories, but individual repositories can opt out.",
     )
 
 
-model_rebuild(TeamSimple)
+model_rebuild(CodeScanningAiScanOrgEnablementUpdate)
 
-__all__ = ("TeamSimple",)
+__all__ = ("CodeScanningAiScanOrgEnablementUpdate",)

@@ -14,26 +14,16 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class Hovercard(GitHubModel):
-    """Hovercard
+class SocialAccount(GitHubModel):
+    """Social account
 
-    Hovercard
+    Social media account
     """
 
-    contexts: list[HovercardPropContextsItems] = Field()
+    provider: str = Field()
+    url: str = Field()
 
 
-class HovercardPropContextsItems(GitHubModel):
-    """HovercardPropContextsItems"""
+model_rebuild(SocialAccount)
 
-    message: str = Field()
-    octicon: str = Field()
-
-
-model_rebuild(Hovercard)
-model_rebuild(HovercardPropContextsItems)
-
-__all__ = (
-    "Hovercard",
-    "HovercardPropContextsItems",
-)
+__all__ = ("SocialAccount",)

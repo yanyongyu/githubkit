@@ -10,33 +10,53 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0058 import (
+    PullRequestMinimalPropBaseType,
+    PullRequestMinimalPropBaseTypeForResponse,
+    PullRequestMinimalPropHeadType,
+    PullRequestMinimalPropHeadTypeForResponse,
+)
 
 
-class StargazerType(TypedDict):
-    """Stargazer
+class PullRequestStackPullRequestType(TypedDict):
+    """Pull Request Stack Pull Request"""
 
-    Stargazer
-    """
-
-    starred_at: _dt.datetime
+    id: int
+    number: int
+    url: str
+    head: PullRequestMinimalPropHeadType
+    base: PullRequestMinimalPropBaseType
+    node_id: str
+    title: str
+    state: Literal["open", "closed"]
+    merged_at: Union[_dt.datetime, None]
+    draft: bool
+    html_url: str
     user: Union[SimpleUserType, None]
 
 
-class StargazerTypeForResponse(TypedDict):
-    """Stargazer
+class PullRequestStackPullRequestTypeForResponse(TypedDict):
+    """Pull Request Stack Pull Request"""
 
-    Stargazer
-    """
-
-    starred_at: str
+    id: int
+    number: int
+    url: str
+    head: PullRequestMinimalPropHeadTypeForResponse
+    base: PullRequestMinimalPropBaseTypeForResponse
+    node_id: str
+    title: str
+    state: Literal["open", "closed"]
+    merged_at: Union[str, None]
+    draft: bool
+    html_url: str
     user: Union[SimpleUserTypeForResponse, None]
 
 
 __all__ = (
-    "StargazerType",
-    "StargazerTypeForResponse",
+    "PullRequestStackPullRequestType",
+    "PullRequestStackPullRequestTypeForResponse",
 )

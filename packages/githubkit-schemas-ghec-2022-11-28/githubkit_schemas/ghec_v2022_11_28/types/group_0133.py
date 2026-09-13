@@ -9,49 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0120 import (
-    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
-    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse,
-)
-from .group_0122 import (
-    RepositoryRulesetConditionsPropRefNameType,
-    RepositoryRulesetConditionsPropRefNameTypeForResponse,
-)
-from .group_0128 import (
-    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType,
-    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse,
-)
+from typing_extensions import TypedDict
 
 
-class EnterpriseRulesetConditionsOneof4Type(TypedDict):
-    """organization_property_and_repository_name
+class RepositoryRuleUpdatePropParametersType(TypedDict):
+    """RepositoryRuleUpdatePropParameters"""
 
-    Conditions to target organizations by property and all repositories
-    """
-
-    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType
-    repository_name: (
-        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
-    )
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
+    update_allows_fetch_and_merge: bool
 
 
-class EnterpriseRulesetConditionsOneof4TypeForResponse(TypedDict):
-    """organization_property_and_repository_name
+class RepositoryRuleUpdatePropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleUpdatePropParameters"""
 
-    Conditions to target organizations by property and all repositories
-    """
-
-    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse
-    repository_name: (
-        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse
-    )
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
+    update_allows_fetch_and_merge: bool
 
 
 __all__ = (
-    "EnterpriseRulesetConditionsOneof4Type",
-    "EnterpriseRulesetConditionsOneof4TypeForResponse",
+    "RepositoryRuleUpdatePropParametersType",
+    "RepositoryRuleUpdatePropParametersTypeForResponse",
 )

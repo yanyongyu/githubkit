@@ -9,28 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0256 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
-    """OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200"""
+class OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202Type(TypedDict):
+    """OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202"""
 
-    total_count: int
-    repositories: list[MinimalRepositoryType]
+    message: NotRequired[str]
+    warning: NotRequired[str]
 
 
-class OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200TypeForResponse(
-    TypedDict
-):
-    """OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200"""
+class OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202TypeForResponse(TypedDict):
+    """OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202"""
 
-    total_count: int
-    repositories: list[MinimalRepositoryTypeForResponse]
+    message: NotRequired[str]
+    warning: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200Type",
-    "OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200TypeForResponse",
+    "OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202Type",
+    "OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202TypeForResponse",
 )

@@ -9,105 +9,115 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0621 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0622 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0623 import (
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0624 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0625 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0626 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0624 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0634 import WebhooksUserType, WebhooksUserTypeForResponse
-from .group_0648 import WebhooksTeamType, WebhooksTeamTypeForResponse
+from .group_0627 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0640 import WebhooksLabelType, WebhooksLabelTypeForResponse
 
 
-class WebhookMembershipRemovedType(TypedDict):
-    """membership removed event"""
+class WebhookLabelEditedType(TypedDict):
+    """label edited event"""
 
-    action: Literal["removed"]
+    action: Literal["edited"]
+    changes: NotRequired[WebhookLabelEditedPropChangesType]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    member: Union[WebhooksUserType, None]
-    organization: OrganizationSimpleWebhooksType
-    repository: NotRequired[RepositoryWebhooksType]
-    scope: Literal["team", "organization"]
-    sender: Union[WebhookMembershipRemovedPropSenderType, None]
-    team: WebhooksTeamType
+    label: WebhooksLabelType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class WebhookMembershipRemovedTypeForResponse(TypedDict):
-    """membership removed event"""
+class WebhookLabelEditedTypeForResponse(TypedDict):
+    """label edited event"""
 
-    action: Literal["removed"]
+    action: Literal["edited"]
+    changes: NotRequired[WebhookLabelEditedPropChangesTypeForResponse]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    member: Union[WebhooksUserTypeForResponse, None]
-    organization: OrganizationSimpleWebhooksTypeForResponse
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    scope: Literal["team", "organization"]
-    sender: Union[WebhookMembershipRemovedPropSenderTypeForResponse, None]
-    team: WebhooksTeamTypeForResponse
+    label: WebhooksLabelTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
-class WebhookMembershipRemovedPropSenderType(TypedDict):
-    """User"""
+class WebhookLabelEditedPropChangesType(TypedDict):
+    """WebhookLabelEditedPropChanges
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    The changes to the label if the action was `edited`.
+    """
+
+    color: NotRequired[WebhookLabelEditedPropChangesPropColorType]
+    description: NotRequired[WebhookLabelEditedPropChangesPropDescriptionType]
+    name: NotRequired[WebhookLabelEditedPropChangesPropNameType]
 
 
-class WebhookMembershipRemovedPropSenderTypeForResponse(TypedDict):
-    """User"""
+class WebhookLabelEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookLabelEditedPropChanges
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    The changes to the label if the action was `edited`.
+    """
+
+    color: NotRequired[WebhookLabelEditedPropChangesPropColorTypeForResponse]
+    description: NotRequired[
+        WebhookLabelEditedPropChangesPropDescriptionTypeForResponse
+    ]
+    name: NotRequired[WebhookLabelEditedPropChangesPropNameTypeForResponse]
+
+
+class WebhookLabelEditedPropChangesPropColorType(TypedDict):
+    """WebhookLabelEditedPropChangesPropColor"""
+
+    from_: str
+
+
+class WebhookLabelEditedPropChangesPropColorTypeForResponse(TypedDict):
+    """WebhookLabelEditedPropChangesPropColor"""
+
+    from_: str
+
+
+class WebhookLabelEditedPropChangesPropDescriptionType(TypedDict):
+    """WebhookLabelEditedPropChangesPropDescription"""
+
+    from_: str
+
+
+class WebhookLabelEditedPropChangesPropDescriptionTypeForResponse(TypedDict):
+    """WebhookLabelEditedPropChangesPropDescription"""
+
+    from_: str
+
+
+class WebhookLabelEditedPropChangesPropNameType(TypedDict):
+    """WebhookLabelEditedPropChangesPropName"""
+
+    from_: str
+
+
+class WebhookLabelEditedPropChangesPropNameTypeForResponse(TypedDict):
+    """WebhookLabelEditedPropChangesPropName"""
+
+    from_: str
 
 
 __all__ = (
-    "WebhookMembershipRemovedPropSenderType",
-    "WebhookMembershipRemovedPropSenderTypeForResponse",
-    "WebhookMembershipRemovedType",
-    "WebhookMembershipRemovedTypeForResponse",
+    "WebhookLabelEditedPropChangesPropColorType",
+    "WebhookLabelEditedPropChangesPropColorTypeForResponse",
+    "WebhookLabelEditedPropChangesPropDescriptionType",
+    "WebhookLabelEditedPropChangesPropDescriptionTypeForResponse",
+    "WebhookLabelEditedPropChangesPropNameType",
+    "WebhookLabelEditedPropChangesPropNameTypeForResponse",
+    "WebhookLabelEditedPropChangesType",
+    "WebhookLabelEditedPropChangesTypeForResponse",
+    "WebhookLabelEditedType",
+    "WebhookLabelEditedTypeForResponse",
 )

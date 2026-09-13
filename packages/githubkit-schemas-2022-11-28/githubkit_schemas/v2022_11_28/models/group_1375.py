@@ -12,24 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody(GitHubModel):
-    """ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody"""
+class ReposOwnerRepoGitRefsPostBody(GitHubModel):
+    """ReposOwnerRepoGitRefsPostBody"""
 
-    enabled: bool = Field(
-        description="Whether the pull request creation cap is enabled"
+    ref: str = Field(
+        description="The name of the fully qualified reference (ie: `refs/heads/master`). If it doesn't start with 'refs' and have at least two slashes, it will be rejected."
     )
-    max_open_pull_requests: Missing[int] = Field(
-        le=1000.0,
-        ge=1.0,
-        default=UNSET,
-        description="The maximum number of open pull requests a user can have at one time",
-    )
+    sha: str = Field(description="The SHA1 value for this reference.")
 
 
-model_rebuild(ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody)
+model_rebuild(ReposOwnerRepoGitRefsPostBody)
 
-__all__ = ("ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody",)
+__all__ = ("ReposOwnerRepoGitRefsPostBody",)

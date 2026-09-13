@@ -13,11 +13,10 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationCustomPropertyPayloadType(TypedDict):
-    """Organization Custom Property Payload
+class CustomPropertySetPayloadType(TypedDict):
+    """Custom Property Set Payload
 
-    Payload for creating or updating an organization custom property definition on
-    an enterprise.
+    Custom property set payload
     """
 
     value_type: Literal["string", "single_select", "multi_select", "true_false", "url"]
@@ -26,15 +25,15 @@ class OrganizationCustomPropertyPayloadType(TypedDict):
     description: NotRequired[Union[str, None]]
     allowed_values: NotRequired[Union[list[str], None]]
     values_editable_by: NotRequired[
-        Union[Literal["enterprise_actors", "enterprise_and_org_actors"], None]
+        Union[Literal["org_actors", "org_and_repo_actors"], None]
     ]
+    require_explicit_values: NotRequired[bool]
 
 
-class OrganizationCustomPropertyPayloadTypeForResponse(TypedDict):
-    """Organization Custom Property Payload
+class CustomPropertySetPayloadTypeForResponse(TypedDict):
+    """Custom Property Set Payload
 
-    Payload for creating or updating an organization custom property definition on
-    an enterprise.
+    Custom property set payload
     """
 
     value_type: Literal["string", "single_select", "multi_select", "true_false", "url"]
@@ -43,11 +42,12 @@ class OrganizationCustomPropertyPayloadTypeForResponse(TypedDict):
     description: NotRequired[Union[str, None]]
     allowed_values: NotRequired[Union[list[str], None]]
     values_editable_by: NotRequired[
-        Union[Literal["enterprise_actors", "enterprise_and_org_actors"], None]
+        Union[Literal["org_actors", "org_and_repo_actors"], None]
     ]
+    require_explicit_values: NotRequired[bool]
 
 
 __all__ = (
-    "OrganizationCustomPropertyPayloadType",
-    "OrganizationCustomPropertyPayloadTypeForResponse",
+    "CustomPropertySetPayloadType",
+    "CustomPropertySetPayloadTypeForResponse",
 )

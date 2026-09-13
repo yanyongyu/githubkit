@@ -12,21 +12,25 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgInteractionLimitsPullsCreationCapGetResponse200(GitHubModel):
-    """OrgsOrgInteractionLimitsPullsCreationCapGetResponse200"""
+class OrgsOrgDependabotRepositoryAccessPatchBody(GitHubModel):
+    """OrgsOrgDependabotRepositoryAccessPatchBody
 
-    enabled: bool = Field(
-        description="Whether the pull request creation cap is enabled"
+    Examples:
+        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
+    """
+
+    repository_ids_to_add: Missing[list[int]] = Field(
+        default=UNSET, description="List of repository IDs to add."
     )
-    max_open_pull_requests: int = Field(
-        le=1000.0,
-        ge=1.0,
-        description="The maximum number of open pull requests a user can have at one time",
+    repository_ids_to_remove: Missing[list[int]] = Field(
+        default=UNSET, description="List of repository IDs to remove."
     )
 
 
-model_rebuild(OrgsOrgInteractionLimitsPullsCreationCapGetResponse200)
+model_rebuild(OrgsOrgDependabotRepositoryAccessPatchBody)
 
-__all__ = ("OrgsOrgInteractionLimitsPullsCreationCapGetResponse200",)
+__all__ = ("OrgsOrgDependabotRepositoryAccessPatchBody",)

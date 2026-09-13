@@ -10,26 +10,41 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0046 import DiscussionType, DiscussionTypeForResponse
+from .group_0543 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0544 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0553 import WebhooksAnswerType, WebhooksAnswerTypeForResponse
 
 
-class WebhookGithubAppAuthorizationRevokedType(TypedDict):
-    """github_app_authorization revoked event"""
+class WebhookDiscussionUnansweredType(TypedDict):
+    """discussion unanswered event"""
 
-    action: Literal["revoked"]
-    sender: SimpleUserType
+    action: Literal["unanswered"]
+    discussion: DiscussionType
+    old_answer: WebhooksAnswerType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookGithubAppAuthorizationRevokedTypeForResponse(TypedDict):
-    """github_app_authorization revoked event"""
+class WebhookDiscussionUnansweredTypeForResponse(TypedDict):
+    """discussion unanswered event"""
 
-    action: Literal["revoked"]
-    sender: SimpleUserTypeForResponse
+    action: Literal["unanswered"]
+    discussion: DiscussionTypeForResponse
+    old_answer: WebhooksAnswerTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookGithubAppAuthorizationRevokedType",
-    "WebhookGithubAppAuthorizationRevokedTypeForResponse",
+    "WebhookDiscussionUnansweredType",
+    "WebhookDiscussionUnansweredTypeForResponse",
 )

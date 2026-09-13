@@ -9,58 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0087 import (
+    MarketplacePurchasePropMarketplacePendingChangeType,
+    MarketplacePurchasePropMarketplacePendingChangeTypeForResponse,
+    MarketplacePurchasePropMarketplacePurchaseType,
+    MarketplacePurchasePropMarketplacePurchaseTypeForResponse,
+)
 
 
-class GistCommitType(TypedDict):
-    """Gist Commit
+class MarketplacePurchaseType(TypedDict):
+    """Marketplace Purchase
 
-    Gist Commit
+    Marketplace Purchase
     """
 
     url: str
-    version: str
-    user: Union[SimpleUserType, None]
-    change_status: GistCommitPropChangeStatusType
-    committed_at: _dt.datetime
+    type: str
+    id: int
+    login: str
+    organization_billing_email: NotRequired[str]
+    email: NotRequired[Union[str, None]]
+    marketplace_pending_change: NotRequired[
+        Union[MarketplacePurchasePropMarketplacePendingChangeType, None]
+    ]
+    marketplace_purchase: MarketplacePurchasePropMarketplacePurchaseType
 
 
-class GistCommitTypeForResponse(TypedDict):
-    """Gist Commit
+class MarketplacePurchaseTypeForResponse(TypedDict):
+    """Marketplace Purchase
 
-    Gist Commit
+    Marketplace Purchase
     """
 
     url: str
-    version: str
-    user: Union[SimpleUserTypeForResponse, None]
-    change_status: GistCommitPropChangeStatusTypeForResponse
-    committed_at: str
-
-
-class GistCommitPropChangeStatusType(TypedDict):
-    """GistCommitPropChangeStatus"""
-
-    total: NotRequired[int]
-    additions: NotRequired[int]
-    deletions: NotRequired[int]
-
-
-class GistCommitPropChangeStatusTypeForResponse(TypedDict):
-    """GistCommitPropChangeStatus"""
-
-    total: NotRequired[int]
-    additions: NotRequired[int]
-    deletions: NotRequired[int]
+    type: str
+    id: int
+    login: str
+    organization_billing_email: NotRequired[str]
+    email: NotRequired[Union[str, None]]
+    marketplace_pending_change: NotRequired[
+        Union[MarketplacePurchasePropMarketplacePendingChangeTypeForResponse, None]
+    ]
+    marketplace_purchase: MarketplacePurchasePropMarketplacePurchaseTypeForResponse
 
 
 __all__ = (
-    "GistCommitPropChangeStatusType",
-    "GistCommitPropChangeStatusTypeForResponse",
-    "GistCommitType",
-    "GistCommitTypeForResponse",
+    "MarketplacePurchaseType",
+    "MarketplacePurchaseTypeForResponse",
 )

@@ -12,16 +12,22 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBody(GitHubModel):
-    """EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBody"""
+class EnterprisesEnterpriseSettingsBillingCostCentersPostBody(GitHubModel):
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostBody"""
 
-    organization_slugs: list[str] = Field(
-        description="Organization slug to assign the team to."
+    name: str = Field(
+        description="The name of the cost center (max length 255 characters)"
+    )
+    ai_credit_pool_enabled: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether the cost center draws from the AI credit pool.\n\nThis can only be enabled for cost centers that contain only user or team resources.\n\n- `false` — no cap; the cost center draws from the shared enterprise pool.\n- `true` — the cost center is capped at an amount derived from its members' license entitlements.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBody)
+model_rebuild(EnterprisesEnterpriseSettingsBillingCostCentersPostBody)
 
-__all__ = ("EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBody",)
+__all__ = ("EnterprisesEnterpriseSettingsBillingCostCentersPostBody",)

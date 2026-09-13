@@ -10,59 +10,34 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class EnterpriseTeamType(TypedDict):
-    """Enterprise Team
+class CopilotUsageMetrics28DayReportType(TypedDict):
+    """Copilot Metrics 28 Day Report
 
-    Group of enterprise owners and/or members
+    Links to download the latest Copilot usage metrics report for an
+    enterprise/organization.
     """
 
-    id: int
-    name: str
-    description: NotRequired[str]
-    slug: str
-    url: str
-    sync_to_organizations: NotRequired[str]
-    organization_selection_type: NotRequired[str]
-    group_id: Union[str, None]
-    group_name: NotRequired[Union[str, None]]
-    html_url: str
-    members_url: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ]
+    download_links: list[str]
+    report_start_day: _dt.date
+    report_end_day: _dt.date
 
 
-class EnterpriseTeamTypeForResponse(TypedDict):
-    """Enterprise Team
+class CopilotUsageMetrics28DayReportTypeForResponse(TypedDict):
+    """Copilot Metrics 28 Day Report
 
-    Group of enterprise owners and/or members
+    Links to download the latest Copilot usage metrics report for an
+    enterprise/organization.
     """
 
-    id: int
-    name: str
-    description: NotRequired[str]
-    slug: str
-    url: str
-    sync_to_organizations: NotRequired[str]
-    organization_selection_type: NotRequired[str]
-    group_id: Union[str, None]
-    group_name: NotRequired[Union[str, None]]
-    html_url: str
-    members_url: str
-    created_at: str
-    updated_at: str
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ]
+    download_links: list[str]
+    report_start_day: str
+    report_end_day: str
 
 
 __all__ = (
-    "EnterpriseTeamType",
-    "EnterpriseTeamTypeForResponse",
+    "CopilotUsageMetrics28DayReportType",
+    "CopilotUsageMetrics28DayReportTypeForResponse",
 )

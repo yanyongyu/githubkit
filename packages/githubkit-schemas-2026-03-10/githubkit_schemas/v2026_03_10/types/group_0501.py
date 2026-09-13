@@ -9,55 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class ContributorActivityType(TypedDict):
-    """Contributor Activity
+class StargazerType(TypedDict):
+    """Stargazer
 
-    Contributor Activity
+    Stargazer
     """
 
-    author: Union[SimpleUserType, None]
-    total: int
-    weeks: list[ContributorActivityPropWeeksItemsType]
+    starred_at: _dt.datetime
+    user: Union[SimpleUserType, None]
 
 
-class ContributorActivityTypeForResponse(TypedDict):
-    """Contributor Activity
+class StargazerTypeForResponse(TypedDict):
+    """Stargazer
 
-    Contributor Activity
+    Stargazer
     """
 
-    author: Union[SimpleUserTypeForResponse, None]
-    total: int
-    weeks: list[ContributorActivityPropWeeksItemsTypeForResponse]
-
-
-class ContributorActivityPropWeeksItemsType(TypedDict):
-    """ContributorActivityPropWeeksItems"""
-
-    w: NotRequired[int]
-    a: NotRequired[int]
-    d: NotRequired[int]
-    c: NotRequired[int]
-
-
-class ContributorActivityPropWeeksItemsTypeForResponse(TypedDict):
-    """ContributorActivityPropWeeksItems"""
-
-    w: NotRequired[int]
-    a: NotRequired[int]
-    d: NotRequired[int]
-    c: NotRequired[int]
+    starred_at: str
+    user: Union[SimpleUserTypeForResponse, None]
 
 
 __all__ = (
-    "ContributorActivityPropWeeksItemsType",
-    "ContributorActivityPropWeeksItemsTypeForResponse",
-    "ContributorActivityType",
-    "ContributorActivityTypeForResponse",
+    "StargazerType",
+    "StargazerTypeForResponse",
 )

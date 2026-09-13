@@ -9,33 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0003 import SimpleUser
 
-class OrganizationSimple(GitHubModel):
-    """Organization Simple
 
-    A GitHub organization.
+class Milestone(GitHubModel):
+    """Milestone
+
+    A collection of related issues and pull requests.
     """
 
-    login: str = Field()
+    url: str = Field()
+    html_url: str = Field()
+    labels_url: str = Field()
     id: int = Field()
     node_id: str = Field()
-    url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    hooks_url: str = Field()
-    issues_url: str = Field()
-    members_url: str = Field()
-    public_members_url: str = Field()
-    avatar_url: str = Field()
+    number: int = Field(description="The number of the milestone.")
+    state: Literal["open", "closed"] = Field(
+        default="open", description="The state of the milestone."
+    )
+    title: str = Field(description="The title of the milestone.")
     description: Union[str, None] = Field()
+    creator: Union[SimpleUser, None] = Field()
+    open_issues: int = Field()
+    closed_issues: int = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    closed_at: Union[_dt.datetime, None] = Field()
+    due_on: Union[_dt.datetime, None] = Field()
 
 
-model_rebuild(OrganizationSimple)
+model_rebuild(Milestone)
 
-__all__ = ("OrganizationSimple",)
+__all__ = ("Milestone",)

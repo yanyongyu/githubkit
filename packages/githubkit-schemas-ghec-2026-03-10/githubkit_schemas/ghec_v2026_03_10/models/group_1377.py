@@ -11,17 +11,18 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody(GitHubModel):
-    """OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody"""
+class OrgsOrgCopilotBillingSelectedTeamsPostBody(GitHubModel):
+    """OrgsOrgCopilotBillingSelectedTeamsPostBody"""
 
-    selected_repository_ids: list[int] = Field(
-        description="List of repository IDs to enable for Copilot cloud agent."
+    selected_teams: list[str] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        description="List of team names within the organization to which to grant access to GitHub Copilot.",
     )
 
 
-model_rebuild(OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody)
+model_rebuild(OrgsOrgCopilotBillingSelectedTeamsPostBody)
 
-__all__ = ("OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody",)
+__all__ = ("OrgsOrgCopilotBillingSelectedTeamsPostBody",)

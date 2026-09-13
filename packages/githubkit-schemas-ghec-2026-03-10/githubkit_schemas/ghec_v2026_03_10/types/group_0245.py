@@ -9,82 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias, Union
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0246 import GistSimplePropForkOfType, GistSimplePropForkOfTypeForResponse
 
 
-class GistSimpleType(TypedDict):
-    """Gist Simple
+class GistCommitType(TypedDict):
+    """Gist Commit
 
-    Gist Simple
+    Gist Commit
     """
 
-    fork_of: NotRequired[Union[GistSimplePropForkOfType, None]]
-    url: NotRequired[str]
-    forks_url: NotRequired[str]
-    commits_url: NotRequired[str]
-    id: NotRequired[str]
-    node_id: NotRequired[str]
-    git_pull_url: NotRequired[str]
-    git_push_url: NotRequired[str]
-    html_url: NotRequired[str]
-    files: NotRequired[GistSimplePropFilesType]
-    public: NotRequired[bool]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    comments: NotRequired[int]
-    comments_enabled: NotRequired[bool]
-    user: NotRequired[Union[str, None]]
-    comments_url: NotRequired[str]
-    owner: NotRequired[SimpleUserType]
-    truncated: NotRequired[bool]
+    url: str
+    version: str
+    user: Union[SimpleUserType, None]
+    change_status: GistCommitPropChangeStatusType
+    committed_at: _dt.datetime
 
 
-class GistSimpleTypeForResponse(TypedDict):
-    """Gist Simple
+class GistCommitTypeForResponse(TypedDict):
+    """Gist Commit
 
-    Gist Simple
+    Gist Commit
     """
 
-    fork_of: NotRequired[Union[GistSimplePropForkOfTypeForResponse, None]]
-    url: NotRequired[str]
-    forks_url: NotRequired[str]
-    commits_url: NotRequired[str]
-    id: NotRequired[str]
-    node_id: NotRequired[str]
-    git_pull_url: NotRequired[str]
-    git_push_url: NotRequired[str]
-    html_url: NotRequired[str]
-    files: NotRequired[GistSimplePropFilesTypeForResponse]
-    public: NotRequired[bool]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    comments: NotRequired[int]
-    comments_enabled: NotRequired[bool]
-    user: NotRequired[Union[str, None]]
-    comments_url: NotRequired[str]
-    owner: NotRequired[SimpleUserTypeForResponse]
-    truncated: NotRequired[bool]
+    url: str
+    version: str
+    user: Union[SimpleUserTypeForResponse, None]
+    change_status: GistCommitPropChangeStatusTypeForResponse
+    committed_at: str
 
 
-GistSimplePropFilesType: TypeAlias = dict[str, Any]
-"""GistSimplePropFiles
-"""
+class GistCommitPropChangeStatusType(TypedDict):
+    """GistCommitPropChangeStatus"""
+
+    total: NotRequired[int]
+    additions: NotRequired[int]
+    deletions: NotRequired[int]
 
 
-GistSimplePropFilesTypeForResponse: TypeAlias = dict[str, Any]
-"""GistSimplePropFiles
-"""
+class GistCommitPropChangeStatusTypeForResponse(TypedDict):
+    """GistCommitPropChangeStatus"""
+
+    total: NotRequired[int]
+    additions: NotRequired[int]
+    deletions: NotRequired[int]
 
 
 __all__ = (
-    "GistSimplePropFilesType",
-    "GistSimplePropFilesTypeForResponse",
-    "GistSimpleType",
-    "GistSimpleTypeForResponse",
+    "GistCommitPropChangeStatusType",
+    "GistCommitPropChangeStatusTypeForResponse",
+    "GistCommitType",
+    "GistCommitTypeForResponse",
 )

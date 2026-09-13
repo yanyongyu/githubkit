@@ -10,34 +10,61 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class CopilotUsageMetrics28DayReportType(TypedDict):
-    """Copilot Metrics 28 Day Report
+class DependabotAlertDismissalRequestSimpleType(TypedDict):
+    """Dependabot alert dismissal request
 
-    Links to download the latest Copilot usage metrics report for an
-    enterprise/organization.
+    Information about an active dismissal request for this Dependabot alert.
     """
 
-    download_links: list[str]
-    report_start_day: _dt.date
-    report_end_day: _dt.date
+    id: NotRequired[int]
+    status: NotRequired[Literal["pending", "approved", "rejected", "cancelled"]]
+    requester: NotRequired[DependabotAlertDismissalRequestSimplePropRequesterType]
+    created_at: NotRequired[_dt.datetime]
+    url: NotRequired[str]
 
 
-class CopilotUsageMetrics28DayReportTypeForResponse(TypedDict):
-    """Copilot Metrics 28 Day Report
+class DependabotAlertDismissalRequestSimpleTypeForResponse(TypedDict):
+    """Dependabot alert dismissal request
 
-    Links to download the latest Copilot usage metrics report for an
-    enterprise/organization.
+    Information about an active dismissal request for this Dependabot alert.
     """
 
-    download_links: list[str]
-    report_start_day: str
-    report_end_day: str
+    id: NotRequired[int]
+    status: NotRequired[Literal["pending", "approved", "rejected", "cancelled"]]
+    requester: NotRequired[
+        DependabotAlertDismissalRequestSimplePropRequesterTypeForResponse
+    ]
+    created_at: NotRequired[str]
+    url: NotRequired[str]
+
+
+class DependabotAlertDismissalRequestSimplePropRequesterType(TypedDict):
+    """DependabotAlertDismissalRequestSimplePropRequester
+
+    The user who requested the dismissal.
+    """
+
+    id: NotRequired[int]
+    login: NotRequired[str]
+
+
+class DependabotAlertDismissalRequestSimplePropRequesterTypeForResponse(TypedDict):
+    """DependabotAlertDismissalRequestSimplePropRequester
+
+    The user who requested the dismissal.
+    """
+
+    id: NotRequired[int]
+    login: NotRequired[str]
 
 
 __all__ = (
-    "CopilotUsageMetrics28DayReportType",
-    "CopilotUsageMetrics28DayReportTypeForResponse",
+    "DependabotAlertDismissalRequestSimplePropRequesterType",
+    "DependabotAlertDismissalRequestSimplePropRequesterTypeForResponse",
+    "DependabotAlertDismissalRequestSimpleType",
+    "DependabotAlertDismissalRequestSimpleTypeForResponse",
 )

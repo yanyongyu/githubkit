@@ -13,41 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0622 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0623 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0624 import (
+from .group_0444 import DependabotAlertType, DependabotAlertTypeForResponse
+from .group_0625 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0626 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0627 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0625 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0631 import WebhooksDeployKeyType, WebhooksDeployKeyTypeForResponse
+from .group_0628 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDeployKeyDeletedType(TypedDict):
-    """deploy_key deleted event"""
+class WebhookDependabotAlertAssigneesChangedType(TypedDict):
+    """Dependabot alert assignees changed event"""
 
-    action: Literal["deleted"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["assignees_changed"]
+    alert: DependabotAlertType
     installation: NotRequired[SimpleInstallationType]
-    key: WebhooksDeployKeyType
     organization: NotRequired[OrganizationSimpleWebhooksType]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookDeployKeyDeletedTypeForResponse(TypedDict):
-    """deploy_key deleted event"""
+class WebhookDependabotAlertAssigneesChangedTypeForResponse(TypedDict):
+    """Dependabot alert assignees changed event"""
 
-    action: Literal["deleted"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    action: Literal["assignees_changed"]
+    alert: DependabotAlertTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    key: WebhooksDeployKeyTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookDeployKeyDeletedType",
-    "WebhookDeployKeyDeletedTypeForResponse",
+    "WebhookDependabotAlertAssigneesChangedType",
+    "WebhookDependabotAlertAssigneesChangedTypeForResponse",
 )

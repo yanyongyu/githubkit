@@ -9,31 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody(GitHubModel):
-    """ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody"""
+class OrgsOrgSecurityProductEnablementPostBody(GitHubModel):
+    """OrgsOrgSecurityProductEnablementPostBody"""
 
-    name: str = Field(description="The name of the new runner.")
-    runner_group_id: int = Field(
-        description="The ID of the runner group to register the runner to."
-    )
-    labels: list[str] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="The names of the custom labels to add to the runner. **Minimum items**: 1. **Maximum items**: 100.",
-    )
-    work_folder: Missing[str] = Field(
+    query_suite: Missing[Literal["default", "extended"]] = Field(
         default=UNSET,
-        description="The working directory to be used for job execution, relative to the runner install directory.",
+        description="CodeQL query suite to be used. If you specify the `query_suite` parameter, the default setup will be configured with this query suite only on all repositories that didn't have default setup already configured. It will not change the query suite on repositories that already have default setup configured.\nIf you don't specify any `query_suite` in your request, the preferred query suite of the organization will be applied.",
     )
 
 
-model_rebuild(ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody)
+model_rebuild(OrgsOrgSecurityProductEnablementPostBody)
 
-__all__ = ("ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody",)
+__all__ = ("OrgsOrgSecurityProductEnablementPostBody",)

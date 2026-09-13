@@ -16,26 +16,29 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment(
+class ReposOwnerRepoCodespacesDevcontainersGetResponse200(GitHubModel):
+    """ReposOwnerRepoCodespacesDevcontainersGetResponse200"""
+
+    total_count: int = Field()
+    devcontainers: list[
+        ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems
+    ] = Field()
+
+
+class ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems(
     GitHubModel
 ):
-    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment
+    """ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems"""
 
-    Parameters for AI agent assignment. Only used when an agent bot login is
-    included in `assignees`. Ignored when no agent is being assigned.
-    """
-
-    custom_instructions: Missing[str] = Field(
-        default=UNSET, description="Custom instructions for the agent."
-    )
-    custom_agent: Missing[str] = Field(
-        default=UNSET, description="A custom agent identifier."
-    )
-    model: Missing[str] = Field(
-        default=UNSET, description="The model to use for the agent."
-    )
+    path: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    display_name: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment)
+model_rebuild(ReposOwnerRepoCodespacesDevcontainersGetResponse200)
+model_rebuild(ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems)
 
-__all__ = ("ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment",)
+__all__ = (
+    "ReposOwnerRepoCodespacesDevcontainersGetResponse200",
+    "ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems",
+)

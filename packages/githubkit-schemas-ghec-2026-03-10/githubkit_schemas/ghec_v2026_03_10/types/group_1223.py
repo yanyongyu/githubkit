@@ -9,33 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneof1Type(
+class EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBodyType(TypedDict):
+    """EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBody"""
+
+    revoke_credentials: NotRequired[bool]
+
+
+class EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBodyTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneo
-    f1
-    """
+    """EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBody"""
 
-    status: NotRequired[Literal["error"]]
-    error: NotRequired[str]
-
-
-class EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneof1TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneo
-    f1
-    """
-
-    status: NotRequired[Literal["error"]]
-    error: NotRequired[str]
+    revoke_credentials: NotRequired[bool]
 
 
 __all__ = (
-    "EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneof1Type",
-    "EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneof1TypeForResponse",
+    "EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBodyType",
+    "EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBodyTypeForResponse",
 )

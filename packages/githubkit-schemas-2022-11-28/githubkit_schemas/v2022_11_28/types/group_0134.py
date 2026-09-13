@@ -12,84 +12,40 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0133 import TeamSimpleType, TeamSimpleTypeForResponse
+
+class CodeScanningAlertRuleSummaryType(TypedDict):
+    """CodeScanningAlertRuleSummary"""
+
+    id: NotRequired[Union[str, None]]
+    name: NotRequired[str]
+    severity: NotRequired[Union[Literal["none", "note", "warning", "error"], None]]
+    security_severity_level: NotRequired[
+        Union[Literal["low", "medium", "high", "critical"], None]
+    ]
+    description: NotRequired[str]
+    full_description: NotRequired[str]
+    tags: NotRequired[Union[list[str], None]]
+    help_: NotRequired[Union[str, None]]
+    help_uri: NotRequired[Union[str, None]]
 
 
-class TeamType(TypedDict):
-    """Team
+class CodeScanningAlertRuleSummaryTypeForResponse(TypedDict):
+    """CodeScanningAlertRuleSummary"""
 
-    Groups of organization members that gives permissions on specified repositories.
-    """
-
-    id: int
-    node_id: str
-    name: str
-    slug: str
-    description: Union[str, None]
-    privacy: NotRequired[str]
-    notification_setting: NotRequired[str]
-    permission: str
-    permissions: NotRequired[TeamPropPermissionsType]
-    url: str
-    html_url: str
-    members_url: str
-    repositories_url: str
-    type: Literal["enterprise", "organization"]
-    access_source: NotRequired[Literal["direct", "organization", "enterprise"]]
-    organization_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
-    parent: Union[TeamSimpleType, None]
-
-
-class TeamTypeForResponse(TypedDict):
-    """Team
-
-    Groups of organization members that gives permissions on specified repositories.
-    """
-
-    id: int
-    node_id: str
-    name: str
-    slug: str
-    description: Union[str, None]
-    privacy: NotRequired[str]
-    notification_setting: NotRequired[str]
-    permission: str
-    permissions: NotRequired[TeamPropPermissionsTypeForResponse]
-    url: str
-    html_url: str
-    members_url: str
-    repositories_url: str
-    type: Literal["enterprise", "organization"]
-    access_source: NotRequired[Literal["direct", "organization", "enterprise"]]
-    organization_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
-    parent: Union[TeamSimpleTypeForResponse, None]
-
-
-class TeamPropPermissionsType(TypedDict):
-    """TeamPropPermissions"""
-
-    pull: bool
-    triage: bool
-    push: bool
-    maintain: bool
-    admin: bool
-
-
-class TeamPropPermissionsTypeForResponse(TypedDict):
-    """TeamPropPermissions"""
-
-    pull: bool
-    triage: bool
-    push: bool
-    maintain: bool
-    admin: bool
+    id: NotRequired[Union[str, None]]
+    name: NotRequired[str]
+    severity: NotRequired[Union[Literal["none", "note", "warning", "error"], None]]
+    security_severity_level: NotRequired[
+        Union[Literal["low", "medium", "high", "critical"], None]
+    ]
+    description: NotRequired[str]
+    full_description: NotRequired[str]
+    tags: NotRequired[Union[list[str], None]]
+    help_: NotRequired[Union[str, None]]
+    help_uri: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "TeamPropPermissionsType",
-    "TeamPropPermissionsTypeForResponse",
-    "TeamType",
-    "TeamTypeForResponse",
+    "CodeScanningAlertRuleSummaryType",
+    "CodeScanningAlertRuleSummaryTypeForResponse",
 )

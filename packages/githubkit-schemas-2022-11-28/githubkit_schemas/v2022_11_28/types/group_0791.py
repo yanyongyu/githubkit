@@ -13,38 +13,44 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0540 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0541 import (
+from .group_0542 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0543 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0544 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0542 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0565 import MergeGroupType, MergeGroupTypeForResponse
+from .group_0545 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0569 import (
+    WebhooksLabelUnarchivedType,
+    WebhooksLabelUnarchivedTypeForResponse,
+)
 
 
-class WebhookMergeGroupChecksRequestedType(TypedDict):
-    """WebhookMergeGroupChecksRequested"""
+class WebhookLabelUnarchivedType(TypedDict):
+    """label unarchived event"""
 
-    action: Literal["checks_requested"]
+    action: Literal["unarchived"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    merge_group: MergeGroupType
+    label: WebhooksLabelUnarchivedType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: NotRequired[SimpleUserType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class WebhookMergeGroupChecksRequestedTypeForResponse(TypedDict):
-    """WebhookMergeGroupChecksRequested"""
+class WebhookLabelUnarchivedTypeForResponse(TypedDict):
+    """label unarchived event"""
 
-    action: Literal["checks_requested"]
+    action: Literal["unarchived"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    merge_group: MergeGroupTypeForResponse
+    label: WebhooksLabelUnarchivedTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    sender: NotRequired[SimpleUserTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookMergeGroupChecksRequestedType",
-    "WebhookMergeGroupChecksRequestedTypeForResponse",
+    "WebhookLabelUnarchivedType",
+    "WebhookLabelUnarchivedTypeForResponse",
 )

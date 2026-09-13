@@ -9,26 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class SelectedActionsType(TypedDict):
-    """SelectedActions"""
+class RunnerLabelType(TypedDict):
+    """Self hosted runner label
 
-    github_owned_allowed: NotRequired[bool]
-    verified_allowed: NotRequired[bool]
-    patterns_allowed: NotRequired[list[str]]
+    A label for a self hosted runner
+    """
+
+    id: NotRequired[int]
+    name: str
+    type: NotRequired[Literal["read-only", "custom"]]
 
 
-class SelectedActionsTypeForResponse(TypedDict):
-    """SelectedActions"""
+class RunnerLabelTypeForResponse(TypedDict):
+    """Self hosted runner label
 
-    github_owned_allowed: NotRequired[bool]
-    verified_allowed: NotRequired[bool]
-    patterns_allowed: NotRequired[list[str]]
+    A label for a self hosted runner
+    """
+
+    id: NotRequired[int]
+    name: str
+    type: NotRequired[Literal["read-only", "custom"]]
 
 
 __all__ = (
-    "SelectedActionsType",
-    "SelectedActionsTypeForResponse",
+    "RunnerLabelType",
+    "RunnerLabelTypeForResponse",
 )

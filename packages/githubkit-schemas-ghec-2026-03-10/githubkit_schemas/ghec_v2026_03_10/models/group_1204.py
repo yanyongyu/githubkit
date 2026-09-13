@@ -12,22 +12,24 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody(GitHubModel):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody"""
+class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200
 
-    organization_id: int = Field(
-        description="The ID of the organization to use as the custom agents source."
-    )
-    create_ruleset: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to create a ruleset to protect agent definition files. Defaults to true.",
-    )
+    The total number of seats set to "pending cancellation" for the members of the
+    specified enterprise team(s).
+    """
+
+    seats_cancelled: int = Field()
 
 
-model_rebuild(EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody)
+model_rebuild(
+    EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200
+)
 
-__all__ = ("EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody",)
+__all__ = (
+    "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200",
+)

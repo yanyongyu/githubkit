@@ -1059,6 +1059,7 @@ class BillingClient:
             stream=stream,
             response_model=GetBudgetUserStates,
             error_models={
+                "400": BasicError,
                 "404": BasicError,
                 "403": BasicError,
                 "500": BasicError,
@@ -1116,6 +1117,7 @@ class BillingClient:
             stream=stream,
             response_model=GetBudgetUserStates,
             error_models={
+                "400": BasicError,
                 "404": BasicError,
                 "403": BasicError,
                 "500": BasicError,

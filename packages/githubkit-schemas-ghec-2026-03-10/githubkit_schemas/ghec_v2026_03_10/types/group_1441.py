@@ -9,41 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class OrgsOrgTeamsPostBodyType(TypedDict):
-    """OrgsOrgTeamsPostBody"""
-
-    name: str
-    description: NotRequired[str]
-    maintainers: NotRequired[list[str]]
-    repo_names: NotRequired[list[str]]
-    privacy: NotRequired[Literal["secret", "closed"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ]
-    parent_team_id: NotRequired[int]
-    parent_team_slug: NotRequired[str]
+from .group_0185 import (
+    SecretScanningCustomPatternType,
+    SecretScanningCustomPatternTypeForResponse,
+)
 
 
-class OrgsOrgTeamsPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgTeamsPostBody"""
+class OrgsOrgSecretScanningCustomPatternsPostResponse201Type(TypedDict):
+    """OrgsOrgSecretScanningCustomPatternsPostResponse201"""
 
-    name: str
-    description: NotRequired[str]
-    maintainers: NotRequired[list[str]]
-    repo_names: NotRequired[list[str]]
-    privacy: NotRequired[Literal["secret", "closed"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ]
-    parent_team_id: NotRequired[int]
-    parent_team_slug: NotRequired[str]
+    created_patterns: NotRequired[list[SecretScanningCustomPatternType]]
+
+
+class OrgsOrgSecretScanningCustomPatternsPostResponse201TypeForResponse(TypedDict):
+    """OrgsOrgSecretScanningCustomPatternsPostResponse201"""
+
+    created_patterns: NotRequired[list[SecretScanningCustomPatternTypeForResponse]]
 
 
 __all__ = (
-    "OrgsOrgTeamsPostBodyType",
-    "OrgsOrgTeamsPostBodyTypeForResponse",
+    "OrgsOrgSecretScanningCustomPatternsPostResponse201Type",
+    "OrgsOrgSecretScanningCustomPatternsPostResponse201TypeForResponse",
 )

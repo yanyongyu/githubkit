@@ -9,53 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberAssigneesPostBody(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberAssigneesPostBody"""
+class ReposOwnerRepoImportLfsPatchBody(GitHubModel):
+    """ReposOwnerRepoImportLfsPatchBody"""
 
-    assignees: Missing[
-        list[
-            Union[
-                str,
-                ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyPropAssigneesItemsOneof1,
-            ]
-        ]
-    ] = Field(
-        default=UNSET,
-        description="Usernames of people to assign this issue to. _NOTE: Only users with push access can add assignees to an issue. Assignees are silently ignored otherwise._",
+    use_lfs: Literal["opt_in", "opt_out"] = Field(
+        description="Whether to store large files during the import. `opt_in` means large files will be stored using Git LFS. `opt_out` means large files will be removed during the import."
     )
 
 
-class ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyPropAssigneesItemsOneof1(
-    GitHubModel
-):
-    """ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyPropAssigneesItemsOneof1"""
+model_rebuild(ReposOwnerRepoImportLfsPatchBody)
 
-    login: str = Field(description="The login of the user to assign.")
-    rationale: Missing[str] = Field(
-        default=UNSET, description="Optional reasoning for adding this assignee."
-    )
-    suggest: Missing[bool] = Field(
-        default=UNSET,
-        description="If `true`, the assignee is stored as a pending suggestion for human review rather than applied directly.",
-    )
-    confidence: Missing[Literal["low", "medium", "high"]] = Field(
-        default=UNSET, description="The confidence level for this assignee choice."
-    )
-
-
-model_rebuild(ReposOwnerRepoIssuesIssueNumberAssigneesPostBody)
-model_rebuild(ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyPropAssigneesItemsOneof1)
-
-__all__ = (
-    "ReposOwnerRepoIssuesIssueNumberAssigneesPostBody",
-    "ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyPropAssigneesItemsOneof1",
-)
+__all__ = ("ReposOwnerRepoImportLfsPatchBody",)

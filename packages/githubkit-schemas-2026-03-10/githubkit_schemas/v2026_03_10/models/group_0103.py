@@ -9,9 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -19,83 +16,75 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UpdateBudget(GitHubModel):
-    """UpdateBudget"""
+class BillingUsageSummaryReportOrg(GitHubModel):
+    """BillingUsageSummaryReportOrg"""
 
-    message: str = Field(
-        description="A message indicating the result of the update operation"
+    time_period: BillingUsageSummaryReportOrgPropTimePeriod = Field(alias="timePeriod")
+    organization: str = Field(description="The unique identifier of the organization.")
+    repository: Missing[str] = Field(
+        default=UNSET, description="The name of the repository for the usage report."
     )
-    budget: UpdateBudgetPropBudget = Field()
-
-
-class UpdateBudgetPropBudget(GitHubModel):
-    """UpdateBudgetPropBudget"""
-
-    id: Missing[str] = Field(default=UNSET, description="ID of the budget.")
-    budget_scope: Missing[
-        Literal[
-            "enterprise",
-            "organization",
-            "repository",
-            "cost_center",
-            "multi_user_customer",
-            "multi_user_cost_center",
-            "user",
-        ]
-    ] = Field(default=UNSET, description="The type of scope for the budget")
-    budget_entity_name: Missing[str] = Field(
-        default=UNSET, description="The name of the entity to apply the budget to"
+    product: Missing[str] = Field(
+        default=UNSET, description="The product for the usage report."
     )
-    user: Missing[str] = Field(
-        default=UNSET,
-        description="The user login when the budget is scoped to a single user (`user` scope).",
+    sku: Missing[str] = Field(
+        default=UNSET, description="The SKU for the usage report."
     )
-    consumed_amount: Missing[float] = Field(
-        default=UNSET,
-        description="The consumed amount for the specified user within the budget. Only included for `user`-scoped budgets.",
-    )
-    budget_amount: Missing[int] = Field(
-        default=UNSET,
-        description="The budget amount in whole dollars. For license-based products, this represents the number of licenses.",
-    )
-    prevent_further_usage: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to prevent additional spending once the budget is exceeded",
-    )
-    budget_product_sku: Missing[str] = Field(
-        default=UNSET, description="A single product or sku to apply the budget to."
-    )
-    budget_type: Missing[Literal["ProductPricing", "SkuPricing", "BundlePricing"]] = (
-        Field(default=UNSET, description="The type of pricing for the budget")
-    )
-    budget_alerting: Missing[UpdateBudgetPropBudgetPropBudgetAlerting] = Field(
-        default=UNSET
-    )
-    expires_at: Missing[_dt.date] = Field(
-        default=UNSET,
-        description="The date the budget will expire in `YYYY-MM-DD` format. Only dates in the future are accepted.\nIf not provided, the budget will not expire.\n\nOnly supported for budgets with `budget_scope` of `user`",
+    usage_items: list[BillingUsageSummaryReportOrgPropUsageItemsItems] = Field(
+        alias="usageItems"
     )
 
 
-class UpdateBudgetPropBudgetPropBudgetAlerting(GitHubModel):
-    """UpdateBudgetPropBudgetPropBudgetAlerting"""
+class BillingUsageSummaryReportOrgPropTimePeriod(GitHubModel):
+    """BillingUsageSummaryReportOrgPropTimePeriod"""
 
-    will_alert: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether alerts are enabled for this budget. Ignored for user-scope as alerting is always disabled for them.",
+    year: int = Field(description="The year for the usage report.")
+    month: Missing[int] = Field(
+        default=UNSET, description="The month for the usage report."
     )
-    alert_recipients: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Array of user login names who will receive alerts. Ignored for user-scope as alerting is always disabled for them.",
+    day: Missing[int] = Field(
+        default=UNSET, description="The day for the usage report."
     )
 
 
-model_rebuild(UpdateBudget)
-model_rebuild(UpdateBudgetPropBudget)
-model_rebuild(UpdateBudgetPropBudgetPropBudgetAlerting)
+class BillingUsageSummaryReportOrgPropUsageItemsItems(GitHubModel):
+    """BillingUsageSummaryReportOrgPropUsageItemsItems"""
+
+    product: str = Field(description="Product name.")
+    sku: str = Field(description="SKU name.")
+    unit_type: str = Field(
+        alias="unitType", description="Unit type of the usage line item."
+    )
+    price_per_unit: float = Field(
+        alias="pricePerUnit", description="Price per unit of the usage line item."
+    )
+    gross_quantity: float = Field(
+        alias="grossQuantity", description="Gross quantity of the usage line item."
+    )
+    gross_amount: float = Field(
+        alias="grossAmount", description="Gross amount of the usage line item."
+    )
+    discount_quantity: float = Field(
+        alias="discountQuantity",
+        description="Discount quantity of the usage line item.",
+    )
+    discount_amount: float = Field(
+        alias="discountAmount", description="Discount amount of the usage line item."
+    )
+    net_quantity: float = Field(
+        alias="netQuantity", description="Net quantity of the usage line item."
+    )
+    net_amount: float = Field(
+        alias="netAmount", description="Net amount of the usage line item."
+    )
+
+
+model_rebuild(BillingUsageSummaryReportOrg)
+model_rebuild(BillingUsageSummaryReportOrgPropTimePeriod)
+model_rebuild(BillingUsageSummaryReportOrgPropUsageItemsItems)
 
 __all__ = (
-    "UpdateBudget",
-    "UpdateBudgetPropBudget",
-    "UpdateBudgetPropBudgetPropBudgetAlerting",
+    "BillingUsageSummaryReportOrg",
+    "BillingUsageSummaryReportOrgPropTimePeriod",
+    "BillingUsageSummaryReportOrgPropUsageItemsItems",
 )

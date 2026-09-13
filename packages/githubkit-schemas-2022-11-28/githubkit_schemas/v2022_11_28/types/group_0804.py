@@ -9,45 +9,102 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0539 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0540 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0541 import (
+from .group_0542 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0543 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0544 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0542 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0567 import WebhooksMembershipType, WebhooksMembershipTypeForResponse
+from .group_0545 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookOrganizationMemberRemovedType(TypedDict):
-    """organization member_removed event"""
+class WebhookMetaDeletedType(TypedDict):
+    """meta deleted event"""
 
-    action: Literal["member_removed"]
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
+    hook: WebhookMetaDeletedPropHookType
+    hook_id: int
     installation: NotRequired[SimpleInstallationType]
-    membership: WebhooksMembershipType
-    organization: OrganizationSimpleWebhooksType
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: NotRequired[Union[RepositoryWebhooksType, None]]
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookOrganizationMemberRemovedTypeForResponse(TypedDict):
-    """organization member_removed event"""
+class WebhookMetaDeletedTypeForResponse(TypedDict):
+    """meta deleted event"""
 
-    action: Literal["member_removed"]
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    hook: WebhookMetaDeletedPropHookTypeForResponse
+    hook_id: int
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    membership: WebhooksMembershipTypeForResponse
-    organization: OrganizationSimpleWebhooksTypeForResponse
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    sender: SimpleUserTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: NotRequired[Union[RepositoryWebhooksTypeForResponse, None]]
+    sender: NotRequired[SimpleUserTypeForResponse]
+
+
+class WebhookMetaDeletedPropHookType(TypedDict):
+    """WebhookMetaDeletedPropHook
+
+    The deleted webhook. This will contain different keys based on the type of
+    webhook it is: repository, organization, business, app, or GitHub Marketplace.
+    """
+
+    active: bool
+    config: WebhookMetaDeletedPropHookPropConfigType
+    created_at: str
+    events: list[str]
+    id: int
+    name: str
+    type: str
+    updated_at: str
+
+
+class WebhookMetaDeletedPropHookTypeForResponse(TypedDict):
+    """WebhookMetaDeletedPropHook
+
+    The deleted webhook. This will contain different keys based on the type of
+    webhook it is: repository, organization, business, app, or GitHub Marketplace.
+    """
+
+    active: bool
+    config: WebhookMetaDeletedPropHookPropConfigTypeForResponse
+    created_at: str
+    events: list[str]
+    id: int
+    name: str
+    type: str
+    updated_at: str
+
+
+class WebhookMetaDeletedPropHookPropConfigType(TypedDict):
+    """WebhookMetaDeletedPropHookPropConfig"""
+
+    content_type: Literal["json", "form"]
+    insecure_ssl: str
+    secret: NotRequired[str]
+    url: str
+
+
+class WebhookMetaDeletedPropHookPropConfigTypeForResponse(TypedDict):
+    """WebhookMetaDeletedPropHookPropConfig"""
+
+    content_type: Literal["json", "form"]
+    insecure_ssl: str
+    secret: NotRequired[str]
+    url: str
 
 
 __all__ = (
-    "WebhookOrganizationMemberRemovedType",
-    "WebhookOrganizationMemberRemovedTypeForResponse",
+    "WebhookMetaDeletedPropHookPropConfigType",
+    "WebhookMetaDeletedPropHookPropConfigTypeForResponse",
+    "WebhookMetaDeletedPropHookType",
+    "WebhookMetaDeletedPropHookTypeForResponse",
+    "WebhookMetaDeletedType",
+    "WebhookMetaDeletedTypeForResponse",
 )

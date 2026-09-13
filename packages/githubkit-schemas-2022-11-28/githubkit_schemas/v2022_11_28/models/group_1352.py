@@ -16,21 +16,26 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody(
+class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment(
     GitHubModel
 ):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody"""
+    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment
 
-    integration_id: Missing[int] = Field(
-        default=UNSET,
-        description="The ID of the custom app that will be enabled on the environment.",
+    Parameters for AI agent assignment. Only used when an agent bot login is
+    included in `assignees`. Ignored when no agent is being assigned.
+    """
+
+    custom_instructions: Missing[str] = Field(
+        default=UNSET, description="Custom instructions for the agent."
+    )
+    custom_agent: Missing[str] = Field(
+        default=UNSET, description="A custom agent identifier."
+    )
+    model: Missing[str] = Field(
+        default=UNSET, description="The model to use for the agent."
     )
 
 
-model_rebuild(
-    ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody
-)
+model_rebuild(ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment)
 
-__all__ = (
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody",
-)
+__all__ = ("ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment",)

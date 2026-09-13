@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,25 +17,22 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0076 import SimpleRepository
+from .group_0082 import EnterpriseTeam
 
 
-class DependabotRepositoryAccessDetails(GitHubModel):
-    """Dependabot Repository Access Details
+class EnterpriseUserRoleAssignmentAllof1(GitHubModel):
+    """EnterpriseUserRoleAssignmentAllof1"""
 
-    Information about repositories that Dependabot is able to access in an
-    organization
-    """
-
-    default_level: Missing[Union[Literal["public", "internal"], None]] = Field(
+    assignment: Missing[Literal["direct", "indirect", "mixed"]] = Field(
         default=UNSET,
-        description="The default repository access level for Dependabot updates.",
+        description="Determines if the user has a direct, indirect, or mixed relationship to a role",
     )
-    accessible_repositories: Missing[list[Union[SimpleRepository, None]]] = Field(
-        default=UNSET
+    inherited_from: Missing[list[EnterpriseTeam]] = Field(
+        default=UNSET,
+        description="Enterprise Team the user has gotten the role through",
     )
 
 
-model_rebuild(DependabotRepositoryAccessDetails)
+model_rebuild(EnterpriseUserRoleAssignmentAllof1)
 
-__all__ = ("DependabotRepositoryAccessDetails",)
+__all__ = ("EnterpriseUserRoleAssignmentAllof1",)

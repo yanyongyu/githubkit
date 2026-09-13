@@ -9,25 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType(TypedDict):
-    """OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody"""
+class OrgsOrgInteractionLimitsPullsCreationCapGetResponse200Type(TypedDict):
+    """OrgsOrgInteractionLimitsPullsCreationCapGetResponse200"""
 
-    action: Literal["approve", "deny"]
-    reason: NotRequired[Union[str, None]]
+    enabled: bool
+    max_open_pull_requests: int
 
 
-class OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody"""
+class OrgsOrgInteractionLimitsPullsCreationCapGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgInteractionLimitsPullsCreationCapGetResponse200"""
 
-    action: Literal["approve", "deny"]
-    reason: NotRequired[Union[str, None]]
+    enabled: bool
+    max_open_pull_requests: int
 
 
 __all__ = (
-    "OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType",
-    "OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyTypeForResponse",
+    "OrgsOrgInteractionLimitsPullsCreationCapGetResponse200Type",
+    "OrgsOrgInteractionLimitsPullsCreationCapGetResponse200TypeForResponse",
 )

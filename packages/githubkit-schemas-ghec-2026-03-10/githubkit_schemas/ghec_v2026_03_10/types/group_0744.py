@@ -9,27 +9,78 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0212 import DiscussionType, DiscussionTypeForResponse
-from .group_0624 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0209 import DiscussionType, DiscussionTypeForResponse
+from .group_0624 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0625 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0626 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0627 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0639 import WebhooksCommentType, WebhooksCommentTypeForResponse
 
 
-class WebhookDiscussionTransferredPropChangesType(TypedDict):
-    """WebhookDiscussionTransferredPropChanges"""
+class WebhookDiscussionCommentEditedType(TypedDict):
+    """discussion_comment edited event"""
 
-    new_discussion: DiscussionType
-    new_repository: RepositoryWebhooksType
+    action: Literal["edited"]
+    changes: WebhookDiscussionCommentEditedPropChangesType
+    comment: WebhooksCommentType
+    discussion: DiscussionType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class WebhookDiscussionTransferredPropChangesTypeForResponse(TypedDict):
-    """WebhookDiscussionTransferredPropChanges"""
+class WebhookDiscussionCommentEditedTypeForResponse(TypedDict):
+    """discussion_comment edited event"""
 
-    new_discussion: DiscussionTypeForResponse
-    new_repository: RepositoryWebhooksTypeForResponse
+    action: Literal["edited"]
+    changes: WebhookDiscussionCommentEditedPropChangesTypeForResponse
+    comment: WebhooksCommentTypeForResponse
+    discussion: DiscussionTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+
+
+class WebhookDiscussionCommentEditedPropChangesType(TypedDict):
+    """WebhookDiscussionCommentEditedPropChanges"""
+
+    body: WebhookDiscussionCommentEditedPropChangesPropBodyType
+
+
+class WebhookDiscussionCommentEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookDiscussionCommentEditedPropChanges"""
+
+    body: WebhookDiscussionCommentEditedPropChangesPropBodyTypeForResponse
+
+
+class WebhookDiscussionCommentEditedPropChangesPropBodyType(TypedDict):
+    """WebhookDiscussionCommentEditedPropChangesPropBody"""
+
+    from_: str
+
+
+class WebhookDiscussionCommentEditedPropChangesPropBodyTypeForResponse(TypedDict):
+    """WebhookDiscussionCommentEditedPropChangesPropBody"""
+
+    from_: str
 
 
 __all__ = (
-    "WebhookDiscussionTransferredPropChangesType",
-    "WebhookDiscussionTransferredPropChangesTypeForResponse",
+    "WebhookDiscussionCommentEditedPropChangesPropBodyType",
+    "WebhookDiscussionCommentEditedPropChangesPropBodyTypeForResponse",
+    "WebhookDiscussionCommentEditedPropChangesType",
+    "WebhookDiscussionCommentEditedPropChangesTypeForResponse",
+    "WebhookDiscussionCommentEditedType",
+    "WebhookDiscussionCommentEditedTypeForResponse",
 )

@@ -9,58 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class BypassResponseType(TypedDict):
-    """Bypass response
+class CodeScanningAnalysisToolType(TypedDict):
+    """CodeScanningAnalysisTool"""
 
-    A response made by a delegated bypasser to a bypass request.
-    """
-
-    id: NotRequired[int]
-    reviewer: NotRequired[BypassResponsePropReviewerType]
-    status: NotRequired[Literal["approved", "denied", "dismissed"]]
-    created_at: NotRequired[_dt.datetime]
+    name: NotRequired[str]
+    version: NotRequired[Union[str, None]]
+    guid: NotRequired[Union[str, None]]
 
 
-class BypassResponseTypeForResponse(TypedDict):
-    """Bypass response
+class CodeScanningAnalysisToolTypeForResponse(TypedDict):
+    """CodeScanningAnalysisTool"""
 
-    A response made by a delegated bypasser to a bypass request.
-    """
-
-    id: NotRequired[int]
-    reviewer: NotRequired[BypassResponsePropReviewerTypeForResponse]
-    status: NotRequired[Literal["approved", "denied", "dismissed"]]
-    created_at: NotRequired[str]
-
-
-class BypassResponsePropReviewerType(TypedDict):
-    """BypassResponsePropReviewer
-
-    The user who reviewed the bypass request.
-    """
-
-    actor_id: NotRequired[int]
-    actor_name: NotRequired[str]
-
-
-class BypassResponsePropReviewerTypeForResponse(TypedDict):
-    """BypassResponsePropReviewer
-
-    The user who reviewed the bypass request.
-    """
-
-    actor_id: NotRequired[int]
-    actor_name: NotRequired[str]
+    name: NotRequired[str]
+    version: NotRequired[Union[str, None]]
+    guid: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "BypassResponsePropReviewerType",
-    "BypassResponsePropReviewerTypeForResponse",
-    "BypassResponseType",
-    "BypassResponseTypeForResponse",
+    "CodeScanningAnalysisToolType",
+    "CodeScanningAnalysisToolTypeForResponse",
 )

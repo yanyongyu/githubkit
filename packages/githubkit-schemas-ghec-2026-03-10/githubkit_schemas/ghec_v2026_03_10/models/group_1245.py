@@ -15,31 +15,17 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0185 import SecretScanningCustomPattern
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody(
-    GitHubModel
-):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody"""
 
-    users: Missing[list[str]] = Field(
-        default=UNSET,
-        description="The usernames of the users to add to the cost center.",
-    )
-    organizations: Missing[list[str]] = Field(
-        default=UNSET, description="The organizations to add to the cost center."
-    )
-    repositories: Missing[list[str]] = Field(
-        default=UNSET, description="The repositories to add to the cost center."
-    )
-    enterprise_teams: Missing[list[str]] = Field(
-        default=UNSET, description="The enterprise teams to add to the cost center."
+class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201(GitHubModel):
+    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201"""
+
+    created_patterns: Missing[list[SecretScanningCustomPattern]] = Field(
+        default=UNSET, description="The list of successfully created custom patterns."
     )
 
 
-model_rebuild(
-    EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody
-)
+model_rebuild(EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201)
 
-__all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody",
-)
+__all__ = ("EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201",)

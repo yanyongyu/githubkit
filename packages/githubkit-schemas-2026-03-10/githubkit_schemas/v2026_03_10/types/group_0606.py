@@ -13,48 +13,44 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0538 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0539 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0540 import (
+from .group_0541 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0542 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0543 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0541 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0607 import (
-    WebhookCodeScanningAlertCreatedPropAlertType,
-    WebhookCodeScanningAlertCreatedPropAlertTypeForResponse,
+from .group_0544 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0547 import (
+    CheckRunWithSimpleCheckSuiteType,
+    CheckRunWithSimpleCheckSuiteTypeForResponse,
 )
 
 
-class WebhookCodeScanningAlertCreatedType(TypedDict):
-    """code_scanning_alert created event"""
+class WebhookCheckRunRerequestedType(TypedDict):
+    """Check Run Re-Requested Event"""
 
-    action: Literal["created"]
-    alert: WebhookCodeScanningAlertCreatedPropAlertType
-    commit_oid: str
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["rerequested"]
+    check_run: CheckRunWithSimpleCheckSuiteType
     installation: NotRequired[SimpleInstallationType]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    ref: str
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookCodeScanningAlertCreatedTypeForResponse(TypedDict):
-    """code_scanning_alert created event"""
+class WebhookCheckRunRerequestedTypeForResponse(TypedDict):
+    """Check Run Re-Requested Event"""
 
-    action: Literal["created"]
-    alert: WebhookCodeScanningAlertCreatedPropAlertTypeForResponse
-    commit_oid: str
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    action: Literal["rerequested"]
+    check_run: CheckRunWithSimpleCheckSuiteTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    ref: str
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookCodeScanningAlertCreatedType",
-    "WebhookCodeScanningAlertCreatedTypeForResponse",
+    "WebhookCheckRunRerequestedType",
+    "WebhookCheckRunRerequestedTypeForResponse",
 )

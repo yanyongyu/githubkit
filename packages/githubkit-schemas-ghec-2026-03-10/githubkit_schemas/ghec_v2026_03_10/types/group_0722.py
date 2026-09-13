@@ -13,41 +13,42 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0621 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0622 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0623 import (
+from .group_0624 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0625 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0626 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0624 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0630 import WebhooksDeployKeyType, WebhooksDeployKeyTypeForResponse
+from .group_0627 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDeployKeyCreatedType(TypedDict):
-    """deploy_key created event"""
+class WebhookDeleteType(TypedDict):
+    """delete event"""
 
-    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    key: WebhooksDeployKeyType
     organization: NotRequired[OrganizationSimpleWebhooksType]
+    pusher_type: str
+    ref: str
+    ref_type: Literal["tag", "branch"]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookDeployKeyCreatedTypeForResponse(TypedDict):
-    """deploy_key created event"""
+class WebhookDeleteTypeForResponse(TypedDict):
+    """delete event"""
 
-    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    key: WebhooksDeployKeyTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    pusher_type: str
+    ref: str
+    ref_type: Literal["tag", "branch"]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookDeployKeyCreatedType",
-    "WebhookDeployKeyCreatedTypeForResponse",
+    "WebhookDeleteType",
+    "WebhookDeleteTypeForResponse",
 )

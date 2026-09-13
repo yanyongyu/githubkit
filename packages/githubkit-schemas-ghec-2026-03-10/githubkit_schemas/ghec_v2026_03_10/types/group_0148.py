@@ -12,26 +12,35 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class RepositoryRuleCommitAuthorEmailPatternPropParametersType(TypedDict):
-    """RepositoryRuleCommitAuthorEmailPatternPropParameters"""
-
-    name: NotRequired[str]
-    negate: NotRequired[bool]
-    operator: Literal["starts_with", "ends_with", "contains", "regex"]
-    pattern: str
+from .group_0149 import (
+    RepositoryRuleBranchNamePatternPropParametersType,
+    RepositoryRuleBranchNamePatternPropParametersTypeForResponse,
+)
 
 
-class RepositoryRuleCommitAuthorEmailPatternPropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleCommitAuthorEmailPatternPropParameters"""
+class RepositoryRuleBranchNamePatternType(TypedDict):
+    """branch_name_pattern
 
-    name: NotRequired[str]
-    negate: NotRequired[bool]
-    operator: Literal["starts_with", "ends_with", "contains", "regex"]
-    pattern: str
+    Parameters to be used for the branch_name_pattern rule
+    """
+
+    type: Literal["branch_name_pattern"]
+    parameters: NotRequired[RepositoryRuleBranchNamePatternPropParametersType]
+
+
+class RepositoryRuleBranchNamePatternTypeForResponse(TypedDict):
+    """branch_name_pattern
+
+    Parameters to be used for the branch_name_pattern rule
+    """
+
+    type: Literal["branch_name_pattern"]
+    parameters: NotRequired[
+        RepositoryRuleBranchNamePatternPropParametersTypeForResponse
+    ]
 
 
 __all__ = (
-    "RepositoryRuleCommitAuthorEmailPatternPropParametersType",
-    "RepositoryRuleCommitAuthorEmailPatternPropParametersTypeForResponse",
+    "RepositoryRuleBranchNamePatternType",
+    "RepositoryRuleBranchNamePatternTypeForResponse",
 )

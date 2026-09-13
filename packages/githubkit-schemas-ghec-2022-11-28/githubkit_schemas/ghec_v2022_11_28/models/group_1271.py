@@ -11,22 +11,44 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0259 import OrganizationCustomRepositoryRole
 
+class GistsGistIdPatchBody(GitHubModel):
+    """GistsGistIdPatchBody"""
 
-class OrganizationsOrganizationIdCustomRolesGetResponse200(GitHubModel):
-    """OrganizationsOrganizationIdCustomRolesGetResponse200"""
-
-    total_count: Missing[int] = Field(
-        default=UNSET, description="The number of custom roles in this organization"
+    description: Missing[str] = Field(
+        default=UNSET, description="The description of the gist."
     )
-    custom_roles: Missing[list[OrganizationCustomRepositoryRole]] = Field(default=UNSET)
+    files: Missing[GistsGistIdPatchBodyPropFiles] = Field(
+        default=UNSET,
+        description="The gist files to be updated, renamed, or deleted. Each `key` must match the current filename\n(including extension) of the targeted gist file. For example: `hello.py`.\n\nTo delete a file, set the whole file to null. For example: `hello.py : null`. The file will also be\ndeleted if the specified object does not contain at least one of `content` or `filename`.",
+    )
 
 
-model_rebuild(OrganizationsOrganizationIdCustomRolesGetResponse200)
+class GistsGistIdPatchBodyPropFiles(ExtraGitHubModel):
+    """GistsGistIdPatchBodyPropFiles
 
-__all__ = ("OrganizationsOrganizationIdCustomRolesGetResponse200",)
+    The gist files to be updated, renamed, or deleted. Each `key` must match the
+    current filename
+    (including extension) of the targeted gist file. For example: `hello.py`.
+
+    To delete a file, set the whole file to null. For example: `hello.py : null`.
+    The file will also be
+    deleted if the specified object does not contain at least one of `content` or
+    `filename`.
+
+    Examples:
+        {'hello.rb': {'content': 'blah', 'filename': 'goodbye.rb'}}
+    """
+
+
+model_rebuild(GistsGistIdPatchBody)
+model_rebuild(GistsGistIdPatchBodyPropFiles)
+
+__all__ = (
+    "GistsGistIdPatchBody",
+    "GistsGistIdPatchBodyPropFiles",
+)

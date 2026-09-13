@@ -9,29 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType(TypedDict):
-    """ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody"""
+class ReposOwnerRepoActionsOidcCustomizationSubPutBodyType(TypedDict):
+    """Actions OIDC subject customization for a repository
 
-    environment_ids: list[int]
-    state: Literal["approved", "rejected"]
-    comment: str
+    Actions OIDC subject customization for a repository
+    """
+
+    use_default: bool
+    include_claim_keys: NotRequired[list[str]]
+    use_immutable_subject: NotRequired[bool]
 
 
-class ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody"""
+class ReposOwnerRepoActionsOidcCustomizationSubPutBodyTypeForResponse(TypedDict):
+    """Actions OIDC subject customization for a repository
 
-    environment_ids: list[int]
-    state: Literal["approved", "rejected"]
-    comment: str
+    Actions OIDC subject customization for a repository
+    """
+
+    use_default: bool
+    include_claim_keys: NotRequired[list[str]]
+    use_immutable_subject: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType",
-    "ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyTypeForResponse",
+    "ReposOwnerRepoActionsOidcCustomizationSubPutBodyType",
+    "ReposOwnerRepoActionsOidcCustomizationSubPutBodyTypeForResponse",
 )

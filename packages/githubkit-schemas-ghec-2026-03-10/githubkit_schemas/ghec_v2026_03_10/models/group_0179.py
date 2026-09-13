@@ -9,28 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0180 import RulesetVersionPropActor
+from .group_0180 import RulesetVersionWithStateAllof1PropState
 
 
-class RulesetVersion(GitHubModel):
-    """Ruleset version
+class RulesetVersionWithStateAllof1(GitHubModel):
+    """RulesetVersionWithStateAllof1"""
 
-    The historical version of a ruleset
-    """
-
-    version_id: int = Field(description="The ID of the previous version of the ruleset")
-    actor: RulesetVersionPropActor = Field(
-        description="The actor who updated the ruleset"
+    state: RulesetVersionWithStateAllof1PropState = Field(
+        description="The state of the ruleset version"
     )
-    updated_at: _dt.datetime = Field()
 
 
-model_rebuild(RulesetVersion)
+model_rebuild(RulesetVersionWithStateAllof1)
 
-__all__ = ("RulesetVersion",)
+__all__ = ("RulesetVersionWithStateAllof1",)

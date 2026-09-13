@@ -9,41 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0497 import PullRequestStackPullRequest
 
+class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2(GitHubModel):
+    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2"""
 
-class ReposOwnerRepoStacksStackNumberUnstackPostResponse200(GitHubModel):
-    """ReposOwnerRepoStacksStackNumberUnstackPostResponse200"""
-
-    id: int = Field()
-    number: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    base: ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase = Field()
-    open_: bool = Field(
-        alias="open",
-        description="Whether the stack has any open pull request. False when all pull requests are merged or closed.",
+    state: Missing[Literal["open", "resolved"]] = Field(
+        default=UNSET,
+        description="Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`.",
     )
-    created_at: _dt.datetime = Field()
-    pull_requests: list[PullRequestStackPullRequest] = Field()
+    resolution: Missing[
+        Union[Literal["false_positive", "wont_fix", "revoked", "used_in_tests"], None]
+    ] = Field(
+        default=UNSET,
+        description="**Required when the `state` is `resolved`.** The reason for resolving the alert.",
+    )
+    resolution_comment: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="An optional comment when closing or reopening an alert. Cannot be updated or deleted.",
+    )
+    assignee: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The username of the user to assign to the alert. Set to `null` to unassign the alert.",
+    )
+    validity: Union[Literal["active", "inactive"], None] = Field(
+        description="Sets the validity of the secret scanning alert. Can be `active`, `inactive`, or `null` to clear the override."
+    )
 
 
-class ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase(GitHubModel):
-    """ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase"""
+model_rebuild(ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2)
 
-    ref: str = Field()
-
-
-model_rebuild(ReposOwnerRepoStacksStackNumberUnstackPostResponse200)
-model_rebuild(ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase)
-
-__all__ = (
-    "ReposOwnerRepoStacksStackNumberUnstackPostResponse200",
-    "ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase",
-)
+__all__ = ("ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2",)

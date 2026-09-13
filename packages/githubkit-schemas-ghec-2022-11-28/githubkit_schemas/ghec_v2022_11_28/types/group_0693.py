@@ -13,48 +13,44 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0622 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0623 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0624 import (
+from .group_0625 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0626 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0627 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0625 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0694 import (
-    WebhookCodeScanningAlertAppearedInBranchPropAlertType,
-    WebhookCodeScanningAlertAppearedInBranchPropAlertTypeForResponse,
+from .group_0628 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0633 import (
+    CheckRunWithSimpleCheckSuiteType,
+    CheckRunWithSimpleCheckSuiteTypeForResponse,
 )
 
 
-class WebhookCodeScanningAlertAppearedInBranchType(TypedDict):
-    """code_scanning_alert appeared_in_branch event"""
+class WebhookCheckRunCreatedType(TypedDict):
+    """Check Run Created Event"""
 
-    action: Literal["appeared_in_branch"]
-    alert: WebhookCodeScanningAlertAppearedInBranchPropAlertType
-    commit_oid: str
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["created"]
+    check_run: CheckRunWithSimpleCheckSuiteType
     installation: NotRequired[SimpleInstallationType]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    ref: str
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookCodeScanningAlertAppearedInBranchTypeForResponse(TypedDict):
-    """code_scanning_alert appeared_in_branch event"""
+class WebhookCheckRunCreatedTypeForResponse(TypedDict):
+    """Check Run Created Event"""
 
-    action: Literal["appeared_in_branch"]
-    alert: WebhookCodeScanningAlertAppearedInBranchPropAlertTypeForResponse
-    commit_oid: str
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    action: Literal["created"]
+    check_run: CheckRunWithSimpleCheckSuiteTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    ref: str
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookCodeScanningAlertAppearedInBranchType",
-    "WebhookCodeScanningAlertAppearedInBranchTypeForResponse",
+    "WebhookCheckRunCreatedType",
+    "WebhookCheckRunCreatedTypeForResponse",
 )

@@ -9,78 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0105 import (
+    OrganizationCustomPropertyType,
+    OrganizationCustomPropertyTypeForResponse,
+)
 
 
-class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyType(TypedDict):
-    """EnterprisesEnterpriseSettingsBillingBudgetsPostBody"""
+class EnterprisesEnterpriseOrgPropertiesSchemaPatchBodyType(TypedDict):
+    """EnterprisesEnterpriseOrgPropertiesSchemaPatchBody"""
 
-    budget_amount: int
-    prevent_further_usage: bool
-    budget_alerting: (
-        EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingType
-    )
-    budget_scope: Literal[
-        "enterprise",
-        "organization",
-        "repository",
-        "cost_center",
-        "multi_user_customer",
-        "multi_user_cost_center",
-        "user",
-    ]
-    budget_entity_name: NotRequired[str]
-    budget_type: Literal["BundlePricing", "ProductPricing", "SkuPricing"]
-    budget_product_sku: NotRequired[str]
-    user: NotRequired[str]
-    expires_at: NotRequired[_dt.date]
+    properties: list[OrganizationCustomPropertyType]
 
 
-class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseSettingsBillingBudgetsPostBody"""
+class EnterprisesEnterpriseOrgPropertiesSchemaPatchBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseOrgPropertiesSchemaPatchBody"""
 
-    budget_amount: int
-    prevent_further_usage: bool
-    budget_alerting: EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingTypeForResponse
-    budget_scope: Literal[
-        "enterprise",
-        "organization",
-        "repository",
-        "cost_center",
-        "multi_user_customer",
-        "multi_user_cost_center",
-        "user",
-    ]
-    budget_entity_name: NotRequired[str]
-    budget_type: Literal["BundlePricing", "ProductPricing", "SkuPricing"]
-    budget_product_sku: NotRequired[str]
-    user: NotRequired[str]
-    expires_at: NotRequired[str]
-
-
-class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingType(
-    TypedDict
-):
-    """EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting"""
-
-    will_alert: bool
-    alert_recipients: list[str]
-
-
-class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting"""
-
-    will_alert: bool
-    alert_recipients: list[str]
+    properties: list[OrganizationCustomPropertyTypeForResponse]
 
 
 __all__ = (
-    "EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingType",
-    "EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingTypeForResponse",
-    "EnterprisesEnterpriseSettingsBillingBudgetsPostBodyType",
-    "EnterprisesEnterpriseSettingsBillingBudgetsPostBodyTypeForResponse",
+    "EnterprisesEnterpriseOrgPropertiesSchemaPatchBodyType",
+    "EnterprisesEnterpriseOrgPropertiesSchemaPatchBodyTypeForResponse",
 )

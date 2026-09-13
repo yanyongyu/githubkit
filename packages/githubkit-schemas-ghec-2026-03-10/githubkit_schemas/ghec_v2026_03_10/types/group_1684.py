@@ -9,54 +9,80 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class UserCodespacesSecretsGetResponse200Type(TypedDict):
-    """UserCodespacesSecretsGetResponse200"""
+class ScimV2OrganizationsOrgUsersPostBodyType(TypedDict):
+    """ScimV2OrganizationsOrgUsersPostBody"""
 
-    total_count: int
-    secrets: list[CodespacesSecretType]
+    user_name: str
+    display_name: NotRequired[str]
+    name: ScimV2OrganizationsOrgUsersPostBodyPropNameType
+    emails: list[ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsType]
+    schemas: NotRequired[list[str]]
+    external_id: NotRequired[str]
+    groups: NotRequired[list[str]]
+    active: NotRequired[bool]
 
 
-class UserCodespacesSecretsGetResponse200TypeForResponse(TypedDict):
-    """UserCodespacesSecretsGetResponse200"""
+class ScimV2OrganizationsOrgUsersPostBodyTypeForResponse(TypedDict):
+    """ScimV2OrganizationsOrgUsersPostBody"""
 
-    total_count: int
-    secrets: list[CodespacesSecretTypeForResponse]
+    user_name: str
+    display_name: NotRequired[str]
+    name: ScimV2OrganizationsOrgUsersPostBodyPropNameTypeForResponse
+    emails: list[ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsTypeForResponse]
+    schemas: NotRequired[list[str]]
+    external_id: NotRequired[str]
+    groups: NotRequired[list[str]]
+    active: NotRequired[bool]
 
 
-class CodespacesSecretType(TypedDict):
-    """Codespaces Secret
+class ScimV2OrganizationsOrgUsersPostBodyPropNameType(TypedDict):
+    """ScimV2OrganizationsOrgUsersPostBodyPropName
 
-    Secrets for a GitHub Codespace.
+    Examples:
+        {'givenName': 'Jane', 'familyName': 'User'}
     """
 
-    name: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: str
+    given_name: str
+    family_name: str
+    formatted: NotRequired[str]
 
 
-class CodespacesSecretTypeForResponse(TypedDict):
-    """Codespaces Secret
+class ScimV2OrganizationsOrgUsersPostBodyPropNameTypeForResponse(TypedDict):
+    """ScimV2OrganizationsOrgUsersPostBodyPropName
 
-    Secrets for a GitHub Codespace.
+    Examples:
+        {'givenName': 'Jane', 'familyName': 'User'}
     """
 
-    name: str
-    created_at: str
-    updated_at: str
-    visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: str
+    given_name: str
+    family_name: str
+    formatted: NotRequired[str]
+
+
+class ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsType(TypedDict):
+    """ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems"""
+
+    value: str
+    primary: NotRequired[bool]
+    type: NotRequired[str]
+
+
+class ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsTypeForResponse(TypedDict):
+    """ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems"""
+
+    value: str
+    primary: NotRequired[bool]
+    type: NotRequired[str]
 
 
 __all__ = (
-    "CodespacesSecretType",
-    "CodespacesSecretTypeForResponse",
-    "UserCodespacesSecretsGetResponse200Type",
-    "UserCodespacesSecretsGetResponse200TypeForResponse",
+    "ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsType",
+    "ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsTypeForResponse",
+    "ScimV2OrganizationsOrgUsersPostBodyPropNameType",
+    "ScimV2OrganizationsOrgUsersPostBodyPropNameTypeForResponse",
+    "ScimV2OrganizationsOrgUsersPostBodyType",
+    "ScimV2OrganizationsOrgUsersPostBodyTypeForResponse",
 )

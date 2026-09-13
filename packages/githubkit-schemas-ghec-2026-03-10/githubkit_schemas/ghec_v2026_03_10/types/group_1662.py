@@ -9,56 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing_extensions import TypedDict
-
-from .group_0570 import (
-    PullRequestStackPullRequestType,
-    PullRequestStackPullRequestTypeForResponse,
-)
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoStacksStackNumberGetResponse200Type(TypedDict):
-    """ReposOwnerRepoStacksStackNumberGetResponse200"""
+class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type(TypedDict):
+    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0"""
 
-    id: int
-    number: int
-    node_id: str
-    url: str
-    base: ReposOwnerRepoStacksStackNumberGetResponse200PropBaseType
-    open_: bool
-    created_at: _dt.datetime
-    pull_requests: list[PullRequestStackPullRequestType]
-
-
-class ReposOwnerRepoStacksStackNumberGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoStacksStackNumberGetResponse200"""
-
-    id: int
-    number: int
-    node_id: str
-    url: str
-    base: ReposOwnerRepoStacksStackNumberGetResponse200PropBaseTypeForResponse
-    open_: bool
-    created_at: str
-    pull_requests: list[PullRequestStackPullRequestTypeForResponse]
+    state: Literal["open", "resolved"]
+    resolution: NotRequired[
+        Union[Literal["false_positive", "wont_fix", "revoked", "used_in_tests"], None]
+    ]
+    resolution_comment: NotRequired[Union[str, None]]
+    assignee: NotRequired[Union[str, None]]
+    validity: NotRequired[Union[Literal["active", "inactive"], None]]
 
 
-class ReposOwnerRepoStacksStackNumberGetResponse200PropBaseType(TypedDict):
-    """ReposOwnerRepoStacksStackNumberGetResponse200PropBase"""
+class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0"""
 
-    ref: str
-
-
-class ReposOwnerRepoStacksStackNumberGetResponse200PropBaseTypeForResponse(TypedDict):
-    """ReposOwnerRepoStacksStackNumberGetResponse200PropBase"""
-
-    ref: str
+    state: Literal["open", "resolved"]
+    resolution: NotRequired[
+        Union[Literal["false_positive", "wont_fix", "revoked", "used_in_tests"], None]
+    ]
+    resolution_comment: NotRequired[Union[str, None]]
+    assignee: NotRequired[Union[str, None]]
+    validity: NotRequired[Union[Literal["active", "inactive"], None]]
 
 
 __all__ = (
-    "ReposOwnerRepoStacksStackNumberGetResponse200PropBaseType",
-    "ReposOwnerRepoStacksStackNumberGetResponse200PropBaseTypeForResponse",
-    "ReposOwnerRepoStacksStackNumberGetResponse200Type",
-    "ReposOwnerRepoStacksStackNumberGetResponse200TypeForResponse",
+    "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type",
+    "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0TypeForResponse",
 )

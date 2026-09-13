@@ -13,47 +13,18 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class PullRequestMinimalPropHead(GitHubModel):
-    """PullRequestMinimalPropHead"""
-
-    ref: str = Field()
-    sha: str = Field()
-    repo: PullRequestMinimalPropHeadPropRepo = Field()
+from .group_0046 import Discussion
 
 
-class PullRequestMinimalPropHeadPropRepo(GitHubModel):
-    """PullRequestMinimalPropHeadPropRepo"""
+class DiscussionEvent(GitHubModel):
+    """DiscussionEvent"""
 
-    id: int = Field()
-    url: str = Field()
-    name: str = Field()
-
-
-class PullRequestMinimalPropBase(GitHubModel):
-    """PullRequestMinimalPropBase"""
-
-    ref: str = Field()
-    sha: str = Field()
-    repo: PullRequestMinimalPropBasePropRepo = Field()
+    action: str = Field()
+    discussion: Discussion = Field(
+        title="Discussion", description="A Discussion in a repository."
+    )
 
 
-class PullRequestMinimalPropBasePropRepo(GitHubModel):
-    """PullRequestMinimalPropBasePropRepo"""
+model_rebuild(DiscussionEvent)
 
-    id: int = Field()
-    url: str = Field()
-    name: str = Field()
-
-
-model_rebuild(PullRequestMinimalPropHead)
-model_rebuild(PullRequestMinimalPropHeadPropRepo)
-model_rebuild(PullRequestMinimalPropBase)
-model_rebuild(PullRequestMinimalPropBasePropRepo)
-
-__all__ = (
-    "PullRequestMinimalPropBase",
-    "PullRequestMinimalPropBasePropRepo",
-    "PullRequestMinimalPropHead",
-    "PullRequestMinimalPropHeadPropRepo",
-)
+__all__ = ("DiscussionEvent",)

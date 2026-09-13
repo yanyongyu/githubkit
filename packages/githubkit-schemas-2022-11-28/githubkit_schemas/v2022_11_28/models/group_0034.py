@@ -9,46 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class CodeScanningOptions(GitHubModel):
-    """CodeScanningOptions
+class CopilotUsageMetrics1DayReport(GitHubModel):
+    """Copilot Metrics 1 Day Report
 
-    Security Configuration feature options for code scanning
+    Links to download the Copilot usage metrics report for an
+    enterprise/organization for a specific day.
     """
 
-    allow_advanced: Missing[Union[bool, None]] = Field(
-        default=UNSET, description="Whether to allow repos which use advanced setup"
+    download_links: list[str] = Field(
+        description="The URLs to download the Copilot usage metrics report for the enterprise/organization for the specified day."
+    )
+    report_day: _dt.date = Field(
+        description="The day of the report in `YYYY-MM-DD` format."
     )
 
 
-class CodeScanningDefaultSetupOptions(GitHubModel):
-    """CodeScanningDefaultSetupOptions
+model_rebuild(CopilotUsageMetrics1DayReport)
 
-    Feature options for code scanning default setup
-    """
-
-    runner_type: Missing[Literal["standard", "labeled", "not_set"]] = Field(
-        default=UNSET,
-        description="Whether to use labeled runners or standard GitHub runners.",
-    )
-    runner_label: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The label of the runner to use for code scanning default setup when runner_type is 'labeled'.",
-    )
-
-
-model_rebuild(CodeScanningOptions)
-model_rebuild(CodeScanningDefaultSetupOptions)
-
-__all__ = (
-    "CodeScanningDefaultSetupOptions",
-    "CodeScanningOptions",
-)
+__all__ = ("CopilotUsageMetrics1DayReport",)

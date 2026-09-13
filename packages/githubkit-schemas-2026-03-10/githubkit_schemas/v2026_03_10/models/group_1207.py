@@ -9,24 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200(GitHubModel):
-    """OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200"""
+class OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody(GitHubModel):
+    """OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody"""
 
-    enabled: bool = Field(
-        description="Whether the pull request creation cap is enabled"
-    )
-    max_open_pull_requests: int = Field(
-        le=1000.0,
-        ge=1.0,
-        description="The maximum number of open pull requests a user can have at one time",
+    default_level: Literal["public", "internal"] = Field(
+        description="The default repository access level for Dependabot updates."
     )
 
 
-model_rebuild(OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200)
+model_rebuild(OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody)
 
-__all__ = ("OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200",)
+__all__ = ("OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody",)

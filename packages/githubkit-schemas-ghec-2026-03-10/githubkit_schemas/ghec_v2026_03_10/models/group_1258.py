@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,26 +16,31 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class GistsGistIdGetResponse403(GitHubModel):
-    """GistsGistIdGetResponse403"""
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody(
+    GitHubModel
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody"""
 
-    block: Missing[GistsGistIdGetResponse403PropBlock] = Field(default=UNSET)
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
+    users: Missing[list[str]] = Field(
+        default=UNSET,
+        description="The usernames of the users to remove from the cost center.",
+    )
+    organizations: Missing[list[str]] = Field(
+        default=UNSET, description="The organizations to remove from the cost center."
+    )
+    repositories: Missing[list[str]] = Field(
+        default=UNSET, description="The repositories to remove from the cost center."
+    )
+    enterprise_teams: Missing[list[str]] = Field(
+        default=UNSET,
+        description="The enterprise teams to remove from the cost center.",
+    )
 
 
-class GistsGistIdGetResponse403PropBlock(GitHubModel):
-    """GistsGistIdGetResponse403PropBlock"""
-
-    reason: Missing[str] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
-    html_url: Missing[Union[str, None]] = Field(default=UNSET)
-
-
-model_rebuild(GistsGistIdGetResponse403)
-model_rebuild(GistsGistIdGetResponse403PropBlock)
+model_rebuild(
+    EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody
+)
 
 __all__ = (
-    "GistsGistIdGetResponse403",
-    "GistsGistIdGetResponse403PropBlock",
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody",
 )

@@ -9,59 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ExternalVulnerabilitySyncResultType(TypedDict):
-    """External Vulnerability Sync Result
+class NetworkSettingsType(TypedDict):
+    """Hosted compute network settings resource
 
-    Result of an external vulnerability synchronization operation
+    A hosted compute network settings resource.
     """
 
-    processed: int
-    created: int
-    updated: int
-    withdrawn: int
-    errors: int
-    results: list[ExternalVulnerabilitySyncResultPropResultsItemsType]
+    id: str
+    network_configuration_id: NotRequired[str]
+    name: str
+    subnet_id: str
+    region: str
 
 
-class ExternalVulnerabilitySyncResultTypeForResponse(TypedDict):
-    """External Vulnerability Sync Result
+class NetworkSettingsTypeForResponse(TypedDict):
+    """Hosted compute network settings resource
 
-    Result of an external vulnerability synchronization operation
+    A hosted compute network settings resource.
     """
 
-    processed: int
-    created: int
-    updated: int
-    withdrawn: int
-    errors: int
-    results: list[ExternalVulnerabilitySyncResultPropResultsItemsTypeForResponse]
-
-
-class ExternalVulnerabilitySyncResultPropResultsItemsType(TypedDict):
-    """ExternalVulnerabilitySyncResultPropResultsItems"""
-
-    external_id: str
-    status: Literal["created", "updated", "withdrawn", "error"]
-    ghsa_id: NotRequired[str]
-    error: NotRequired[str]
-
-
-class ExternalVulnerabilitySyncResultPropResultsItemsTypeForResponse(TypedDict):
-    """ExternalVulnerabilitySyncResultPropResultsItems"""
-
-    external_id: str
-    status: Literal["created", "updated", "withdrawn", "error"]
-    ghsa_id: NotRequired[str]
-    error: NotRequired[str]
+    id: str
+    network_configuration_id: NotRequired[str]
+    name: str
+    subnet_id: str
+    region: str
 
 
 __all__ = (
-    "ExternalVulnerabilitySyncResultPropResultsItemsType",
-    "ExternalVulnerabilitySyncResultPropResultsItemsTypeForResponse",
-    "ExternalVulnerabilitySyncResultType",
-    "ExternalVulnerabilitySyncResultTypeForResponse",
+    "NetworkSettingsType",
+    "NetworkSettingsTypeForResponse",
 )

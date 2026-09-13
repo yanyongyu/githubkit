@@ -9,26 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class ApiInsightsTimeStatsItemsType(TypedDict):
-    """ApiInsightsTimeStatsItems"""
+class InteractionLimitResponseType(TypedDict):
+    """Interaction Limits
 
-    timestamp: NotRequired[str]
-    total_request_count: NotRequired[int]
-    rate_limited_request_count: NotRequired[int]
+    Interaction limit settings.
+    """
+
+    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
+    origin: str
+    expires_at: _dt.datetime
 
 
-class ApiInsightsTimeStatsItemsTypeForResponse(TypedDict):
-    """ApiInsightsTimeStatsItems"""
+class InteractionLimitResponseTypeForResponse(TypedDict):
+    """Interaction Limits
 
-    timestamp: NotRequired[str]
-    total_request_count: NotRequired[int]
-    rate_limited_request_count: NotRequired[int]
+    Interaction limit settings.
+    """
+
+    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
+    origin: str
+    expires_at: str
 
 
 __all__ = (
-    "ApiInsightsTimeStatsItemsType",
-    "ApiInsightsTimeStatsItemsTypeForResponse",
+    "InteractionLimitResponseType",
+    "InteractionLimitResponseTypeForResponse",
 )

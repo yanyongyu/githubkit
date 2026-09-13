@@ -13,48 +13,68 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0538 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0539 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0540 import (
+from .group_0541 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0542 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0543 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0541 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0605 import (
-    WebhookCodeScanningAlertClosedByUserPropAlertType,
-    WebhookCodeScanningAlertClosedByUserPropAlertTypeForResponse,
+from .group_0544 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0547 import (
+    CheckRunWithSimpleCheckSuiteType,
+    CheckRunWithSimpleCheckSuiteTypeForResponse,
 )
 
 
-class WebhookCodeScanningAlertClosedByUserType(TypedDict):
-    """code_scanning_alert closed_by_user event"""
+class WebhookCheckRunRequestedActionType(TypedDict):
+    """Check Run Requested Action Event"""
 
-    action: Literal["closed_by_user"]
-    alert: WebhookCodeScanningAlertClosedByUserPropAlertType
-    commit_oid: str
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["requested_action"]
+    check_run: CheckRunWithSimpleCheckSuiteType
     installation: NotRequired[SimpleInstallationType]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    ref: str
     repository: RepositoryWebhooksType
+    requested_action: NotRequired[WebhookCheckRunRequestedActionPropRequestedActionType]
     sender: SimpleUserType
 
 
-class WebhookCodeScanningAlertClosedByUserTypeForResponse(TypedDict):
-    """code_scanning_alert closed_by_user event"""
+class WebhookCheckRunRequestedActionTypeForResponse(TypedDict):
+    """Check Run Requested Action Event"""
 
-    action: Literal["closed_by_user"]
-    alert: WebhookCodeScanningAlertClosedByUserPropAlertTypeForResponse
-    commit_oid: str
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    action: Literal["requested_action"]
+    check_run: CheckRunWithSimpleCheckSuiteTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    ref: str
     repository: RepositoryWebhooksTypeForResponse
+    requested_action: NotRequired[
+        WebhookCheckRunRequestedActionPropRequestedActionTypeForResponse
+    ]
     sender: SimpleUserTypeForResponse
 
 
+class WebhookCheckRunRequestedActionPropRequestedActionType(TypedDict):
+    """WebhookCheckRunRequestedActionPropRequestedAction
+
+    The action requested by the user.
+    """
+
+    identifier: NotRequired[str]
+
+
+class WebhookCheckRunRequestedActionPropRequestedActionTypeForResponse(TypedDict):
+    """WebhookCheckRunRequestedActionPropRequestedAction
+
+    The action requested by the user.
+    """
+
+    identifier: NotRequired[str]
+
+
 __all__ = (
-    "WebhookCodeScanningAlertClosedByUserType",
-    "WebhookCodeScanningAlertClosedByUserTypeForResponse",
+    "WebhookCheckRunRequestedActionPropRequestedActionType",
+    "WebhookCheckRunRequestedActionPropRequestedActionTypeForResponse",
+    "WebhookCheckRunRequestedActionType",
+    "WebhookCheckRunRequestedActionTypeForResponse",
 )

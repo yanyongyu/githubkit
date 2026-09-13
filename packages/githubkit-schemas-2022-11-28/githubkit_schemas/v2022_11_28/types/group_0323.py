@@ -9,66 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodeQualitySetupType(TypedDict):
-    """CodeQualitySetup
+class CodeQualitySetupUpdateAnyof0Type(TypedDict):
+    """CodeQualitySetupUpdateAnyof0"""
 
-    Configuration for code quality setup.
-    """
-
-    state: NotRequired[Literal["configured", "not-configured"]]
+    state: Literal["configured", "not-configured"]
+    runner_type: NotRequired[Literal["standard", "labeled"]]
+    runner_label: NotRequired[Union[str, None]]
     languages: NotRequired[
         list[
             Literal[
-                "csharp",
-                "go",
-                "java-kotlin",
-                "javascript-typescript",
-                "python",
-                "ruby",
-                "rust",
+                "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
             ]
         ]
     ]
-    runner_type: NotRequired[Union[Literal["standard", "labeled"], None]]
+    ai_findings_option: NotRequired[Literal["disabled", "on_push"]]
+
+
+class CodeQualitySetupUpdateAnyof0TypeForResponse(TypedDict):
+    """CodeQualitySetupUpdateAnyof0"""
+
+    state: Literal["configured", "not-configured"]
+    runner_type: NotRequired[Literal["standard", "labeled"]]
     runner_label: NotRequired[Union[str, None]]
-    updated_at: NotRequired[Union[_dt.datetime, None]]
-    schedule: NotRequired[Union[Literal["weekly"], None]]
-    ai_findings_option: NotRequired[Union[Literal["disabled", "on_push"], None]]
-
-
-class CodeQualitySetupTypeForResponse(TypedDict):
-    """CodeQualitySetup
-
-    Configuration for code quality setup.
-    """
-
-    state: NotRequired[Literal["configured", "not-configured"]]
     languages: NotRequired[
         list[
             Literal[
-                "csharp",
-                "go",
-                "java-kotlin",
-                "javascript-typescript",
-                "python",
-                "ruby",
-                "rust",
+                "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
             ]
         ]
     ]
-    runner_type: NotRequired[Union[Literal["standard", "labeled"], None]]
-    runner_label: NotRequired[Union[str, None]]
-    updated_at: NotRequired[Union[str, None]]
-    schedule: NotRequired[Union[Literal["weekly"], None]]
-    ai_findings_option: NotRequired[Union[Literal["disabled", "on_push"], None]]
+    ai_findings_option: NotRequired[Literal["disabled", "on_push"]]
 
 
 __all__ = (
-    "CodeQualitySetupType",
-    "CodeQualitySetupTypeForResponse",
+    "CodeQualitySetupUpdateAnyof0Type",
+    "CodeQualitySetupUpdateAnyof0TypeForResponse",
 )

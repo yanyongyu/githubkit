@@ -16,28 +16,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UsersUsernameAttestationsSubjectDigestGetResponse200(GitHubModel):
-    """UsersUsernameAttestationsSubjectDigestGetResponse200"""
+class UserKeysPostBody(GitHubModel):
+    """UserKeysPostBody"""
 
-    attestations: Missing[
-        list[UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems]
-    ] = Field(default=UNSET)
-
-
-class UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems(
-    GitHubModel
-):
-    """UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
-
-    repository_id: Missing[int] = Field(default=UNSET)
-    bundle_url: Missing[str] = Field(default=UNSET)
-    initiator: Missing[str] = Field(default=UNSET)
+    title: Missing[str] = Field(
+        default=UNSET, description="A descriptive name for the new key."
+    )
+    key: str = Field(
+        pattern="^ssh-(rsa|dss|ed25519) |^ecdsa-sha2-nistp(256|384|521) ",
+        description="The public SSH key to add to your GitHub account.",
+    )
 
 
-model_rebuild(UsersUsernameAttestationsSubjectDigestGetResponse200)
-model_rebuild(UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems)
+model_rebuild(UserKeysPostBody)
 
-__all__ = (
-    "UsersUsernameAttestationsSubjectDigestGetResponse200",
-    "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems",
-)
+__all__ = ("UserKeysPostBody",)

@@ -9,38 +9,59 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationActionsSecretType(TypedDict):
-    """Actions Secret for an Organization
+class TeamSimpleType(TypedDict):
+    """Team Simple
 
-    Secrets for GitHub Actions for an organization.
+    Groups of organization members that gives permissions on specified repositories.
     """
 
+    id: int
+    node_id: str
+    url: str
+    members_url: str
     name: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: NotRequired[str]
+    description: Union[str, None]
+    permission: str
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    html_url: str
+    repositories_url: str
+    slug: str
+    ldap_dn: NotRequired[str]
+    type: Literal["enterprise", "organization"]
+    organization_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
 
 
-class OrganizationActionsSecretTypeForResponse(TypedDict):
-    """Actions Secret for an Organization
+class TeamSimpleTypeForResponse(TypedDict):
+    """Team Simple
 
-    Secrets for GitHub Actions for an organization.
+    Groups of organization members that gives permissions on specified repositories.
     """
 
+    id: int
+    node_id: str
+    url: str
+    members_url: str
     name: str
-    created_at: str
-    updated_at: str
-    visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: NotRequired[str]
+    description: Union[str, None]
+    permission: str
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    html_url: str
+    repositories_url: str
+    slug: str
+    ldap_dn: NotRequired[str]
+    type: Literal["enterprise", "organization"]
+    organization_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
 
 
 __all__ = (
-    "OrganizationActionsSecretType",
-    "OrganizationActionsSecretTypeForResponse",
+    "TeamSimpleType",
+    "TeamSimpleTypeForResponse",
 )

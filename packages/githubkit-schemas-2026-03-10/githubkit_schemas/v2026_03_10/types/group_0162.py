@@ -9,88 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class IssueFieldType(TypedDict):
-    """Issue Field
+class OrganizationUpdateIssueFieldType(TypedDict):
+    """OrganizationUpdateIssueField"""
 
-    A custom attribute defined at the organization level for attaching structured
-    data to issues.
-    """
-
-    id: int
-    node_id: str
-    name: str
+    name: NotRequired[str]
     description: NotRequired[Union[str, None]]
-    data_type: Literal["text", "date", "single_select", "multi_select", "number"]
     visibility: NotRequired[Literal["organization_members_only", "all"]]
-    options: NotRequired[Union[list[IssueFieldPropOptionsItemsType], None]]
-    created_at: NotRequired[_dt.datetime]
-    updated_at: NotRequired[_dt.datetime]
+    options: NotRequired[list[OrganizationUpdateIssueFieldPropOptionsItemsType]]
 
 
-class IssueFieldTypeForResponse(TypedDict):
-    """Issue Field
+class OrganizationUpdateIssueFieldTypeForResponse(TypedDict):
+    """OrganizationUpdateIssueField"""
 
-    A custom attribute defined at the organization level for attaching structured
-    data to issues.
-    """
-
-    id: int
-    node_id: str
-    name: str
+    name: NotRequired[str]
     description: NotRequired[Union[str, None]]
-    data_type: Literal["text", "date", "single_select", "multi_select", "number"]
     visibility: NotRequired[Literal["organization_members_only", "all"]]
-    options: NotRequired[Union[list[IssueFieldPropOptionsItemsTypeForResponse], None]]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
+    options: NotRequired[
+        list[OrganizationUpdateIssueFieldPropOptionsItemsTypeForResponse]
+    ]
 
 
-class IssueFieldPropOptionsItemsType(TypedDict):
-    """IssueFieldPropOptionsItems"""
+class OrganizationUpdateIssueFieldPropOptionsItemsType(TypedDict):
+    """OrganizationUpdateIssueFieldPropOptionsItems"""
 
-    id: int
+    id: NotRequired[int]
     name: str
     description: NotRequired[Union[str, None]]
-    color: NotRequired[
-        Union[
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-            None,
-        ]
-    ]
-    priority: NotRequired[Union[int, None]]
-    created_at: NotRequired[_dt.datetime]
-    updated_at: NotRequired[_dt.datetime]
+    color: Literal["gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"]
+    priority: int
 
 
-class IssueFieldPropOptionsItemsTypeForResponse(TypedDict):
-    """IssueFieldPropOptionsItems"""
+class OrganizationUpdateIssueFieldPropOptionsItemsTypeForResponse(TypedDict):
+    """OrganizationUpdateIssueFieldPropOptionsItems"""
 
-    id: int
+    id: NotRequired[int]
     name: str
     description: NotRequired[Union[str, None]]
-    color: NotRequired[
-        Union[
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-            None,
-        ]
-    ]
-    priority: NotRequired[Union[int, None]]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
+    color: Literal["gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"]
+    priority: int
 
 
 __all__ = (
-    "IssueFieldPropOptionsItemsType",
-    "IssueFieldPropOptionsItemsTypeForResponse",
-    "IssueFieldType",
-    "IssueFieldTypeForResponse",
+    "OrganizationUpdateIssueFieldPropOptionsItemsType",
+    "OrganizationUpdateIssueFieldPropOptionsItemsTypeForResponse",
+    "OrganizationUpdateIssueFieldType",
+    "OrganizationUpdateIssueFieldTypeForResponse",
 )

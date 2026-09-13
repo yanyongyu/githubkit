@@ -9,28 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class OrgsOrgActionsRunnersGenerateJitconfigPostBodyType(TypedDict):
-    """OrgsOrgActionsRunnersGenerateJitconfigPostBody"""
+class OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBodyType(TypedDict):
+    """OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBody"""
 
-    name: str
-    runner_group_id: int
-    labels: list[str]
-    work_folder: NotRequired[str]
+    selected_repository_ids: list[int]
 
 
-class OrgsOrgActionsRunnersGenerateJitconfigPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgActionsRunnersGenerateJitconfigPostBody"""
+class OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBodyTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBody"""
 
-    name: str
-    runner_group_id: int
-    labels: list[str]
-    work_folder: NotRequired[str]
+    selected_repository_ids: list[int]
 
 
 __all__ = (
-    "OrgsOrgActionsRunnersGenerateJitconfigPostBodyType",
-    "OrgsOrgActionsRunnersGenerateJitconfigPostBodyTypeForResponse",
+    "OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBodyType",
+    "OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBodyTypeForResponse",
 )

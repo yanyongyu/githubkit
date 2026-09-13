@@ -13,41 +13,46 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0622 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0623 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0624 import (
+from .group_0625 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0626 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0627 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0625 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0669 import WebhooksSponsorshipType, WebhooksSponsorshipTypeForResponse
+from .group_0628 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0676 import (
+    SecretScanningAlertWebhookType,
+    SecretScanningAlertWebhookTypeForResponse,
+)
 
 
-class WebhookSponsorshipCreatedType(TypedDict):
-    """sponsorship created event"""
+class WebhookSecretScanningAlertUnassignedType(TypedDict):
+    """secret_scanning_alert unassigned event"""
 
-    action: Literal["created"]
+    action: Literal["unassigned"]
+    alert: SecretScanningAlertWebhookType
+    assignee: NotRequired[SimpleUserType]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserType
-    sponsorship: WebhooksSponsorshipType
+    repository: RepositoryWebhooksType
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookSponsorshipCreatedTypeForResponse(TypedDict):
-    """sponsorship created event"""
+class WebhookSecretScanningAlertUnassignedTypeForResponse(TypedDict):
+    """secret_scanning_alert unassigned event"""
 
-    action: Literal["created"]
+    action: Literal["unassigned"]
+    alert: SecretScanningAlertWebhookTypeForResponse
+    assignee: NotRequired[SimpleUserTypeForResponse]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    sender: SimpleUserTypeForResponse
-    sponsorship: WebhooksSponsorshipTypeForResponse
+    repository: RepositoryWebhooksTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookSponsorshipCreatedType",
-    "WebhookSponsorshipCreatedTypeForResponse",
+    "WebhookSecretScanningAlertUnassignedType",
+    "WebhookSecretScanningAlertUnassignedTypeForResponse",
 )

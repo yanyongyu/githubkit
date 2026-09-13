@@ -9,29 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsVariablesPostBodyType(TypedDict):
-    """OrgsOrgActionsVariablesPostBody"""
+class OrgsOrgActionsRunnersDeprecationsVersionGetResponse200Type(TypedDict):
+    """OrgsOrgActionsRunnersDeprecationsVersionGetResponse200"""
 
-    name: str
-    value: str
-    visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
+    runner_version: str
+    registration_deprecates_at: NotRequired[Union[_dt.datetime, None]]
+    runtime_deprecates_at: NotRequired[Union[_dt.datetime, None]]
 
 
-class OrgsOrgActionsVariablesPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgActionsVariablesPostBody"""
+class OrgsOrgActionsRunnersDeprecationsVersionGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsRunnersDeprecationsVersionGetResponse200"""
 
-    name: str
-    value: str
-    visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
+    runner_version: str
+    registration_deprecates_at: NotRequired[Union[str, None]]
+    runtime_deprecates_at: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "OrgsOrgActionsVariablesPostBodyType",
-    "OrgsOrgActionsVariablesPostBodyTypeForResponse",
+    "OrgsOrgActionsRunnersDeprecationsVersionGetResponse200Type",
+    "OrgsOrgActionsRunnersDeprecationsVersionGetResponse200TypeForResponse",
 )

@@ -12,22 +12,34 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ActionsCacheStorageLimitForEnterprise(GitHubModel):
-    """Actions cache storage limit for an enterprise
+class ActionsHostedRunnerCustomImage(GitHubModel):
+    """GitHub-hosted runner custom image details
 
-    GitHub Actions cache storage policy for an enterprise.
+    Provides details of a custom runner image
     """
 
-    max_cache_size_gb: Missing[int] = Field(
-        default=UNSET,
-        description="For repositories & organizations in an enterprise, the maximum size limit for the sum of all caches in a repository, in gigabytes.",
+    id: int = Field(
+        description="The ID of the image. Use this ID for the `image` parameter when creating a new larger runner."
+    )
+    platform: str = Field(description="The operating system of the image.")
+    total_versions_size: int = Field(
+        description="Total size of all the image versions in GB."
+    )
+    name: str = Field(description="Display name for this image.")
+    source: str = Field(description="The image provider.")
+    versions_count: int = Field(
+        description="The number of image versions associated with the image."
+    )
+    latest_version: str = Field(
+        description="The latest image version associated with the image."
+    )
+    state: str = Field(
+        description="The number of image versions associated with the image."
     )
 
 
-model_rebuild(ActionsCacheStorageLimitForEnterprise)
+model_rebuild(ActionsHostedRunnerCustomImage)
 
-__all__ = ("ActionsCacheStorageLimitForEnterprise",)
+__all__ = ("ActionsHostedRunnerCustomImage",)

@@ -9,173 +9,65 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class AuditLogEventType(TypedDict):
-    """AuditLogEvent"""
+class AmazonS3OidcConfigType(TypedDict):
+    """AmazonS3OIDCConfig
 
-    timestamp: NotRequired[int]
-    action: NotRequired[str]
-    active: NotRequired[bool]
-    active_was: NotRequired[bool]
-    actor: NotRequired[str]
-    actor_id: NotRequired[int]
-    actor_location: NotRequired[AuditLogEventPropActorLocationType]
-    data: NotRequired[AuditLogEventPropDataType]
-    org_id: NotRequired[int]
-    user_id: NotRequired[int]
-    business_id: NotRequired[int]
-    blocked_user: NotRequired[str]
-    business: NotRequired[str]
-    config: NotRequired[list[AuditLogEventPropConfigItemsType]]
-    config_was: NotRequired[list[AuditLogEventPropConfigWasItemsType]]
-    content_type: NotRequired[str]
-    operation_type: NotRequired[str]
-    created_at: NotRequired[int]
-    deploy_key_fingerprint: NotRequired[str]
-    document_id: NotRequired[str]
-    emoji: NotRequired[str]
-    events: NotRequired[list[AuditLogEventPropEventsItemsType]]
-    events_were: NotRequired[list[AuditLogEventPropEventsWereItemsType]]
-    explanation: NotRequired[str]
-    fingerprint: NotRequired[str]
-    hook_id: NotRequired[int]
-    limited_availability: NotRequired[bool]
-    message: NotRequired[str]
-    name: NotRequired[str]
-    old_user: NotRequired[str]
-    openssh_public_key: NotRequired[str]
-    org: NotRequired[str]
-    previous_visibility: NotRequired[str]
-    read_only: NotRequired[bool]
-    repo: NotRequired[str]
-    repository: NotRequired[str]
-    repository_public: NotRequired[bool]
-    target_login: NotRequired[str]
-    team: NotRequired[str]
-    transport_protocol: NotRequired[int]
-    transport_protocol_name: NotRequired[str]
-    user: NotRequired[str]
-    visibility: NotRequired[str]
+    Amazon S3 OIDC Config for audit log streaming configuration.
+    """
+
+    bucket: str
+    region: str
+    key_id: str
+    authentication_type: Literal["oidc"]
+    arn_role: str
 
 
-class AuditLogEventTypeForResponse(TypedDict):
-    """AuditLogEvent"""
+class AmazonS3OidcConfigTypeForResponse(TypedDict):
+    """AmazonS3OIDCConfig
 
-    timestamp: NotRequired[int]
-    action: NotRequired[str]
-    active: NotRequired[bool]
-    active_was: NotRequired[bool]
-    actor: NotRequired[str]
-    actor_id: NotRequired[int]
-    actor_location: NotRequired[AuditLogEventPropActorLocationTypeForResponse]
-    data: NotRequired[AuditLogEventPropDataTypeForResponse]
-    org_id: NotRequired[int]
-    user_id: NotRequired[int]
-    business_id: NotRequired[int]
-    blocked_user: NotRequired[str]
-    business: NotRequired[str]
-    config: NotRequired[list[AuditLogEventPropConfigItemsTypeForResponse]]
-    config_was: NotRequired[list[AuditLogEventPropConfigWasItemsTypeForResponse]]
-    content_type: NotRequired[str]
-    operation_type: NotRequired[str]
-    created_at: NotRequired[int]
-    deploy_key_fingerprint: NotRequired[str]
-    document_id: NotRequired[str]
-    emoji: NotRequired[str]
-    events: NotRequired[list[AuditLogEventPropEventsItemsTypeForResponse]]
-    events_were: NotRequired[list[AuditLogEventPropEventsWereItemsTypeForResponse]]
-    explanation: NotRequired[str]
-    fingerprint: NotRequired[str]
-    hook_id: NotRequired[int]
-    limited_availability: NotRequired[bool]
-    message: NotRequired[str]
-    name: NotRequired[str]
-    old_user: NotRequired[str]
-    openssh_public_key: NotRequired[str]
-    org: NotRequired[str]
-    previous_visibility: NotRequired[str]
-    read_only: NotRequired[bool]
-    repo: NotRequired[str]
-    repository: NotRequired[str]
-    repository_public: NotRequired[bool]
-    target_login: NotRequired[str]
-    team: NotRequired[str]
-    transport_protocol: NotRequired[int]
-    transport_protocol_name: NotRequired[str]
-    user: NotRequired[str]
-    visibility: NotRequired[str]
+    Amazon S3 OIDC Config for audit log streaming configuration.
+    """
+
+    bucket: str
+    region: str
+    key_id: str
+    authentication_type: Literal["oidc"]
+    arn_role: str
 
 
-class AuditLogEventPropActorLocationType(TypedDict):
-    """AuditLogEventPropActorLocation"""
+class SplunkConfigType(TypedDict):
+    """SplunkConfig
 
-    country_name: NotRequired[str]
+    Splunk Config for Audit Log Stream Configuration
+    """
 
-
-class AuditLogEventPropActorLocationTypeForResponse(TypedDict):
-    """AuditLogEventPropActorLocation"""
-
-    country_name: NotRequired[str]
-
-
-AuditLogEventPropDataType: TypeAlias = dict[str, Any]
-"""AuditLogEventPropData
-"""
+    domain: str
+    port: int
+    key_id: str
+    encrypted_token: str
+    ssl_verify: bool
 
 
-AuditLogEventPropDataTypeForResponse: TypeAlias = dict[str, Any]
-"""AuditLogEventPropData
-"""
+class SplunkConfigTypeForResponse(TypedDict):
+    """SplunkConfig
 
+    Splunk Config for Audit Log Stream Configuration
+    """
 
-class AuditLogEventPropConfigItemsType(TypedDict):
-    """AuditLogEventPropConfigItems"""
-
-
-class AuditLogEventPropConfigItemsTypeForResponse(TypedDict):
-    """AuditLogEventPropConfigItems"""
-
-
-class AuditLogEventPropConfigWasItemsType(TypedDict):
-    """AuditLogEventPropConfigWasItems"""
-
-
-class AuditLogEventPropConfigWasItemsTypeForResponse(TypedDict):
-    """AuditLogEventPropConfigWasItems"""
-
-
-class AuditLogEventPropEventsItemsType(TypedDict):
-    """AuditLogEventPropEventsItems"""
-
-
-class AuditLogEventPropEventsItemsTypeForResponse(TypedDict):
-    """AuditLogEventPropEventsItems"""
-
-
-class AuditLogEventPropEventsWereItemsType(TypedDict):
-    """AuditLogEventPropEventsWereItems"""
-
-
-class AuditLogEventPropEventsWereItemsTypeForResponse(TypedDict):
-    """AuditLogEventPropEventsWereItems"""
+    domain: str
+    port: int
+    key_id: str
+    encrypted_token: str
+    ssl_verify: bool
 
 
 __all__ = (
-    "AuditLogEventPropActorLocationType",
-    "AuditLogEventPropActorLocationTypeForResponse",
-    "AuditLogEventPropConfigItemsType",
-    "AuditLogEventPropConfigItemsTypeForResponse",
-    "AuditLogEventPropConfigWasItemsType",
-    "AuditLogEventPropConfigWasItemsTypeForResponse",
-    "AuditLogEventPropDataType",
-    "AuditLogEventPropDataTypeForResponse",
-    "AuditLogEventPropEventsItemsType",
-    "AuditLogEventPropEventsItemsTypeForResponse",
-    "AuditLogEventPropEventsWereItemsType",
-    "AuditLogEventPropEventsWereItemsTypeForResponse",
-    "AuditLogEventType",
-    "AuditLogEventTypeForResponse",
+    "AmazonS3OidcConfigType",
+    "AmazonS3OidcConfigTypeForResponse",
+    "SplunkConfigType",
+    "SplunkConfigTypeForResponse",
 )

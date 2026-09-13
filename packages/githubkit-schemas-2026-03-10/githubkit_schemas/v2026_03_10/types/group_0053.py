@@ -9,40 +9,88 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0049 import ReactionRollupType, ReactionRollupTypeForResponse
+from .group_0051 import PinnedIssueCommentType, PinnedIssueCommentTypeForResponse
+from .group_0052 import IssueCommentMinimizedType, IssueCommentMinimizedTypeForResponse
 
 
-class ReactionRollupType(TypedDict):
-    """Reaction Rollup"""
+class IssueCommentType(TypedDict):
+    """Issue Comment
 
+    Comments provide a way for people to collaborate on an issue.
+    """
+
+    id: int
+    node_id: str
     url: str
-    total_count: int
-    plus_one: int
-    minus_one: int
-    laugh: int
-    confused: int
-    heart: int
-    hooray: int
-    eyes: int
-    rocket: int
+    body: NotRequired[str]
+    body_text: NotRequired[str]
+    body_html: NotRequired[str]
+    html_url: str
+    user: Union[SimpleUserType, None]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    issue_url: str
+    author_association: NotRequired[
+        Literal[
+            "COLLABORATOR",
+            "CONTRIBUTOR",
+            "FIRST_TIMER",
+            "FIRST_TIME_CONTRIBUTOR",
+            "MANNEQUIN",
+            "MEMBER",
+            "NONE",
+            "OWNER",
+        ]
+    ]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    reactions: NotRequired[ReactionRollupType]
+    pin: NotRequired[Union[PinnedIssueCommentType, None]]
+    minimized: NotRequired[Union[IssueCommentMinimizedType, None]]
 
 
-class ReactionRollupTypeForResponse(TypedDict):
-    """Reaction Rollup"""
+class IssueCommentTypeForResponse(TypedDict):
+    """Issue Comment
 
+    Comments provide a way for people to collaborate on an issue.
+    """
+
+    id: int
+    node_id: str
     url: str
-    total_count: int
-    plus_one: int
-    minus_one: int
-    laugh: int
-    confused: int
-    heart: int
-    hooray: int
-    eyes: int
-    rocket: int
+    body: NotRequired[str]
+    body_text: NotRequired[str]
+    body_html: NotRequired[str]
+    html_url: str
+    user: Union[SimpleUserTypeForResponse, None]
+    created_at: str
+    updated_at: str
+    issue_url: str
+    author_association: NotRequired[
+        Literal[
+            "COLLABORATOR",
+            "CONTRIBUTOR",
+            "FIRST_TIMER",
+            "FIRST_TIME_CONTRIBUTOR",
+            "MANNEQUIN",
+            "MEMBER",
+            "NONE",
+            "OWNER",
+        ]
+    ]
+    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
+    reactions: NotRequired[ReactionRollupTypeForResponse]
+    pin: NotRequired[Union[PinnedIssueCommentTypeForResponse, None]]
+    minimized: NotRequired[Union[IssueCommentMinimizedTypeForResponse, None]]
 
 
 __all__ = (
-    "ReactionRollupType",
-    "ReactionRollupTypeForResponse",
+    "IssueCommentType",
+    "IssueCommentTypeForResponse",
 )

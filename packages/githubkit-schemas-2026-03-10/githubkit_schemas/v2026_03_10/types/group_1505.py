@@ -12,19 +12,15 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class UsersUsernameAttestationsDeleteRequestPostBodyOneof1Type(TypedDict):
-    """UsersUsernameAttestationsDeleteRequestPostBodyOneof1"""
-
-    attestation_ids: list[int]
+class UserInteractionLimitsGetResponse200Anyof1Type(TypedDict):
+    """UserInteractionLimitsGetResponse200Anyof1"""
 
 
-class UsersUsernameAttestationsDeleteRequestPostBodyOneof1TypeForResponse(TypedDict):
-    """UsersUsernameAttestationsDeleteRequestPostBodyOneof1"""
-
-    attestation_ids: list[int]
+class UserInteractionLimitsGetResponse200Anyof1TypeForResponse(TypedDict):
+    """UserInteractionLimitsGetResponse200Anyof1"""
 
 
 __all__ = (
-    "UsersUsernameAttestationsDeleteRequestPostBodyOneof1Type",
-    "UsersUsernameAttestationsDeleteRequestPostBodyOneof1TypeForResponse",
+    "UserInteractionLimitsGetResponse200Anyof1Type",
+    "UserInteractionLimitsGetResponse200Anyof1TypeForResponse",
 )

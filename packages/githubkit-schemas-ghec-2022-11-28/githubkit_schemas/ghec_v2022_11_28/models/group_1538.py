@@ -9,33 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
 
-class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment(
-    GitHubModel
-):
-    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment
 
-    Parameters for AI agent assignment. Only used when an agent bot login is
-    included in `assignees`. Ignored when no agent is being assigned.
-    """
+class ReposOwnerRepoCodespacesNewGetResponse200(GitHubModel):
+    """ReposOwnerRepoCodespacesNewGetResponse200"""
 
-    custom_instructions: Missing[str] = Field(
-        default=UNSET, description="Custom instructions for the agent."
+    billable_owner: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
     )
-    custom_agent: Missing[str] = Field(
-        default=UNSET, description="A custom agent identifier."
-    )
-    model: Missing[str] = Field(
-        default=UNSET, description="The model to use for the agent."
+    defaults: Missing[ReposOwnerRepoCodespacesNewGetResponse200PropDefaults] = Field(
+        default=UNSET
     )
 
 
-model_rebuild(ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment)
+class ReposOwnerRepoCodespacesNewGetResponse200PropDefaults(GitHubModel):
+    """ReposOwnerRepoCodespacesNewGetResponse200PropDefaults"""
 
-__all__ = ("ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment",)
+    location: str = Field()
+    devcontainer_path: Union[str, None] = Field()
+
+
+model_rebuild(ReposOwnerRepoCodespacesNewGetResponse200)
+model_rebuild(ReposOwnerRepoCodespacesNewGetResponse200PropDefaults)
+
+__all__ = (
+    "ReposOwnerRepoCodespacesNewGetResponse200",
+    "ReposOwnerRepoCodespacesNewGetResponse200PropDefaults",
+)

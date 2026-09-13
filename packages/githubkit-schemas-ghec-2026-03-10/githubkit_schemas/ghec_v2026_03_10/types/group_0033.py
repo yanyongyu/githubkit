@@ -12,21 +12,33 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ActionsCacheUsageOrgEnterpriseType(TypedDict):
-    """ActionsCacheUsageOrgEnterprise"""
+class ActionsHostedRunnerCustomImageVersionType(TypedDict):
+    """GitHub-hosted runner custom image version details.
 
-    total_active_caches_count: int
-    total_active_caches_size_in_bytes: int
+    Provides details of a hosted runner custom image version
+    """
+
+    version: str
+    state: str
+    size_gb: int
+    created_on: str
+    state_details: str
 
 
-class ActionsCacheUsageOrgEnterpriseTypeForResponse(TypedDict):
-    """ActionsCacheUsageOrgEnterprise"""
+class ActionsHostedRunnerCustomImageVersionTypeForResponse(TypedDict):
+    """GitHub-hosted runner custom image version details.
 
-    total_active_caches_count: int
-    total_active_caches_size_in_bytes: int
+    Provides details of a hosted runner custom image version
+    """
+
+    version: str
+    state: str
+    size_gb: int
+    created_on: str
+    state_details: str
 
 
 __all__ = (
-    "ActionsCacheUsageOrgEnterpriseType",
-    "ActionsCacheUsageOrgEnterpriseTypeForResponse",
+    "ActionsHostedRunnerCustomImageVersionType",
+    "ActionsHostedRunnerCustomImageVersionTypeForResponse",
 )

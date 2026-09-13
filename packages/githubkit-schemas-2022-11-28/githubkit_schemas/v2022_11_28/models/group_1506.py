@@ -9,21 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from pydantic import Field
-
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class UsersUsernameAttestationsDeleteRequestPostBodyOneof1(GitHubModel):
-    """UsersUsernameAttestationsDeleteRequestPostBodyOneof1"""
-
-    attestation_ids: list[int] = Field(
-        max_length=1024 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="List of unique IDs associated with the artifact attestations to delete.",
-    )
+class UserInteractionLimitsGetResponse200Anyof1(GitHubModel):
+    """UserInteractionLimitsGetResponse200Anyof1"""
 
 
-model_rebuild(UsersUsernameAttestationsDeleteRequestPostBodyOneof1)
+model_rebuild(UserInteractionLimitsGetResponse200Anyof1)
 
-__all__ = ("UsersUsernameAttestationsDeleteRequestPostBodyOneof1",)
+__all__ = ("UserInteractionLimitsGetResponse200Anyof1",)

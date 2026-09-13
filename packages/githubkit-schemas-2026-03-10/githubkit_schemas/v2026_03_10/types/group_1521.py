@@ -9,49 +9,111 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyType(TypedDict):
-    """UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBody"""
+class UsersUsernameCopilotSpacesPostBodyType(TypedDict):
+    """UsersUsernameCopilotSpacesPostBody"""
 
-    fields: list[
-        UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType
+    name: str
+    description: NotRequired[str]
+    general_instructions: NotRequired[str]
+    base_role: NotRequired[Literal["reader", "no_access"]]
+    resources_attributes: NotRequired[
+        list[UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsType]
     ]
 
 
-class UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyTypeForResponse(
-    TypedDict
-):
-    """UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBody"""
+class UsersUsernameCopilotSpacesPostBodyTypeForResponse(TypedDict):
+    """UsersUsernameCopilotSpacesPostBody"""
 
-    fields: list[
-        UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTypeForResponse
+    name: str
+    description: NotRequired[str]
+    general_instructions: NotRequired[str]
+    base_role: NotRequired[Literal["reader", "no_access"]]
+    resources_attributes: NotRequired[
+        list[
+            UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsTypeForResponse
+        ]
     ]
 
 
-class UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType(
+class UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsType(TypedDict):
+    """UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItems"""
+
+    resource_type: NotRequired[
+        Literal[
+            "repository",
+            "github_file",
+            "free_text",
+            "github_issue",
+            "github_pull_request",
+            "media_content",
+            "uploaded_text_file",
+        ]
+    ]
+    metadata: NotRequired[
+        UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataType
+    ]
+
+
+class UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsTypeForResponse(
     TypedDict
 ):
-    """UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems"""
+    """UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItems"""
 
-    id: int
-    value: Union[str, float, None]
+    resource_type: NotRequired[
+        Literal[
+            "repository",
+            "github_file",
+            "free_text",
+            "github_issue",
+            "github_pull_request",
+            "media_content",
+            "uploaded_text_file",
+        ]
+    ]
+    metadata: NotRequired[
+        UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataTypeForResponse
+    ]
 
 
-class UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTypeForResponse(
+class UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataType(
     TypedDict
 ):
-    """UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems"""
+    """UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata
 
-    id: int
-    value: Union[str, float, None]
+    Metadata specific to the resource type.
+    """
+
+    repository_id: NotRequired[int]
+    file_path: NotRequired[str]
+    text: NotRequired[str]
+    name: NotRequired[str]
+    number: NotRequired[int]
+
+
+class UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataTypeForResponse(
+    TypedDict
+):
+    """UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata
+
+    Metadata specific to the resource type.
+    """
+
+    repository_id: NotRequired[int]
+    file_path: NotRequired[str]
+    text: NotRequired[str]
+    name: NotRequired[str]
+    number: NotRequired[int]
 
 
 __all__ = (
-    "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType",
-    "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTypeForResponse",
-    "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyType",
-    "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyTypeForResponse",
+    "UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataType",
+    "UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataTypeForResponse",
+    "UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsType",
+    "UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsTypeForResponse",
+    "UsersUsernameCopilotSpacesPostBodyType",
+    "UsersUsernameCopilotSpacesPostBodyTypeForResponse",
 )

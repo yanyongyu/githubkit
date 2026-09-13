@@ -9,36 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class ActionsHostedRunnerCustomImageVersionType(TypedDict):
-    """GitHub-hosted runner custom image version details.
+class OidcCustomPropertyInclusionType(TypedDict):
+    """Actions OIDC Custom Property Inclusion
 
-    Provides details of a hosted runner custom image version
+    An OIDC custom property inclusion for repository properties
     """
 
-    version: str
-    state: str
-    size_gb: int
-    created_on: str
-    state_details: str
+    custom_property_name: str
+    inclusion_source: Literal["organization", "enterprise"]
 
 
-class ActionsHostedRunnerCustomImageVersionTypeForResponse(TypedDict):
-    """GitHub-hosted runner custom image version details.
+class OidcCustomPropertyInclusionTypeForResponse(TypedDict):
+    """Actions OIDC Custom Property Inclusion
 
-    Provides details of a hosted runner custom image version
+    An OIDC custom property inclusion for repository properties
     """
 
-    version: str
-    state: str
-    size_gb: int
-    created_on: str
-    state_details: str
+    custom_property_name: str
+    inclusion_source: Literal["organization", "enterprise"]
 
 
 __all__ = (
-    "ActionsHostedRunnerCustomImageVersionType",
-    "ActionsHostedRunnerCustomImageVersionTypeForResponse",
+    "OidcCustomPropertyInclusionType",
+    "OidcCustomPropertyInclusionTypeForResponse",
 )

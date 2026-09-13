@@ -9,48 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ClassroomAssignmentGradeType(TypedDict):
-    """Classroom Assignment Grade
+class OidcCustomPropertyInclusionInputType(TypedDict):
+    """Actions OIDC Custom Property Inclusion Input
 
-    Grade for a student or groups GitHub Classroom assignment
+    Input for creating an OIDC custom property inclusion
     """
 
-    assignment_name: str
-    assignment_url: str
-    starter_code_url: str
-    github_username: str
-    roster_identifier: str
-    student_repository_name: str
-    student_repository_url: str
-    submission_timestamp: str
-    points_awarded: int
-    points_available: int
-    group_name: NotRequired[str]
+    custom_property_name: str
 
 
-class ClassroomAssignmentGradeTypeForResponse(TypedDict):
-    """Classroom Assignment Grade
+class OidcCustomPropertyInclusionInputTypeForResponse(TypedDict):
+    """Actions OIDC Custom Property Inclusion Input
 
-    Grade for a student or groups GitHub Classroom assignment
+    Input for creating an OIDC custom property inclusion
     """
 
-    assignment_name: str
-    assignment_url: str
-    starter_code_url: str
-    github_username: str
-    roster_identifier: str
-    student_repository_name: str
-    student_repository_url: str
-    submission_timestamp: str
-    points_awarded: int
-    points_available: int
-    group_name: NotRequired[str]
+    custom_property_name: str
 
 
 __all__ = (
-    "ClassroomAssignmentGradeType",
-    "ClassroomAssignmentGradeTypeForResponse",
+    "OidcCustomPropertyInclusionInputType",
+    "OidcCustomPropertyInclusionInputTypeForResponse",
 )

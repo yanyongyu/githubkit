@@ -9,27 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0262 import (
-    SecretScanningCustomPatternToCreateType,
-    SecretScanningCustomPatternToCreateTypeForResponse,
-)
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoSecretScanningCustomPatternsPostBodyType(TypedDict):
-    """ReposOwnerRepoSecretScanningCustomPatternsPostBody"""
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody"""
 
-    patterns: list[SecretScanningCustomPatternToCreateType]
+    body: NotRequired[str]
+    event: Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]
 
 
-class ReposOwnerRepoSecretScanningCustomPatternsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoSecretScanningCustomPatternsPostBody"""
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody"""
 
-    patterns: list[SecretScanningCustomPatternToCreateTypeForResponse]
+    body: NotRequired[str]
+    event: Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]
 
 
 __all__ = (
-    "ReposOwnerRepoSecretScanningCustomPatternsPostBodyType",
-    "ReposOwnerRepoSecretScanningCustomPatternsPostBodyTypeForResponse",
+    "ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType",
+    "ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyTypeForResponse",
 )

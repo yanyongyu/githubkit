@@ -13,44 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0539 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0540 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0541 import (
+from .group_0542 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0543 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0544 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0542 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0775 import (
-    WebhookIssuesUnlockedPropIssueType,
-    WebhookIssuesUnlockedPropIssueTypeForResponse,
-)
+from .group_0545 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0564 import WebhooksIssue2Type, WebhooksIssue2TypeForResponse
 
 
-class WebhookIssuesUnlockedType(TypedDict):
-    """issues unlocked event"""
+class WebhookIssuesPinnedType(TypedDict):
+    """issues pinned event"""
 
-    action: Literal["unlocked"]
+    action: Literal["pinned"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssuesUnlockedPropIssueType
+    issue: WebhooksIssue2Type
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookIssuesUnlockedTypeForResponse(TypedDict):
-    """issues unlocked event"""
+class WebhookIssuesPinnedTypeForResponse(TypedDict):
+    """issues pinned event"""
 
-    action: Literal["unlocked"]
+    action: Literal["pinned"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhookIssuesUnlockedPropIssueTypeForResponse
+    issue: WebhooksIssue2TypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookIssuesUnlockedType",
-    "WebhookIssuesUnlockedTypeForResponse",
+    "WebhookIssuesPinnedType",
+    "WebhookIssuesPinnedTypeForResponse",
 )

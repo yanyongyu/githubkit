@@ -9,31 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0108 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
 
 
-class ReposOwnerRepoPullsPullNumberMergeAsyncPutBodyType(TypedDict):
-    """ReposOwnerRepoPullsPullNumberMergeAsyncPutBody"""
+class ReposOwnerRepoPropertiesValuesPatchBodyType(TypedDict):
+    """ReposOwnerRepoPropertiesValuesPatchBody"""
 
-    commit_title: NotRequired[str]
-    commit_message: NotRequired[str]
-    sha: NotRequired[str]
-    merge_method: NotRequired[Literal["merge", "squash", "rebase"]]
-    merge_action: NotRequired[Literal["default", "direct_merge", "merge_queue"]]
+    properties: list[CustomPropertyValueType]
 
 
-class ReposOwnerRepoPullsPullNumberMergeAsyncPutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoPullsPullNumberMergeAsyncPutBody"""
+class ReposOwnerRepoPropertiesValuesPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPropertiesValuesPatchBody"""
 
-    commit_title: NotRequired[str]
-    commit_message: NotRequired[str]
-    sha: NotRequired[str]
-    merge_method: NotRequired[Literal["merge", "squash", "rebase"]]
-    merge_action: NotRequired[Literal["default", "direct_merge", "merge_queue"]]
+    properties: list[CustomPropertyValueTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberMergeAsyncPutBodyType",
-    "ReposOwnerRepoPullsPullNumberMergeAsyncPutBodyTypeForResponse",
+    "ReposOwnerRepoPropertiesValuesPatchBodyType",
+    "ReposOwnerRepoPropertiesValuesPatchBodyTypeForResponse",
 )

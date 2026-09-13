@@ -9,28 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class OidcCustomSub(GitHubModel):
-    """Actions OIDC Subject customization
+class ActionsForkPrContributorApproval(GitHubModel):
+    """ActionsForkPrContributorApproval"""
 
-    Actions OIDC Subject customization
-    """
-
-    include_claim_keys: list[str] = Field(
-        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores."
-    )
-    use_immutable_subject: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to opt in to the immutable OIDC subject claim format for the organization. When `true`, new OIDC tokens will use a stable, repository-ID-based `sub` claim instead of the name-based format.",
+    approval_policy: Literal[
+        "first_time_contributors_new_to_github",
+        "first_time_contributors",
+        "all_external_contributors",
+    ] = Field(
+        description="The policy that controls when fork PR workflows require approval from a maintainer."
     )
 
 
-model_rebuild(OidcCustomSub)
+model_rebuild(ActionsForkPrContributorApproval)
 
-__all__ = ("OidcCustomSub",)
+__all__ = ("ActionsForkPrContributorApproval",)

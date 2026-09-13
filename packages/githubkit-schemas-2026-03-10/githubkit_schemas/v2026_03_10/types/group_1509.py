@@ -13,113 +13,67 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameCopilotSpacesSpaceNumberPutBodyType(TypedDict):
-    """UsersUsernameCopilotSpacesSpaceNumberPutBody"""
+class UserReposPostBodyType(TypedDict):
+    """UserReposPostBody"""
 
-    name: NotRequired[str]
+    name: str
     description: NotRequired[str]
-    general_instructions: NotRequired[str]
-    base_role: NotRequired[Literal["reader", "no_access"]]
-    resources_attributes: NotRequired[
-        list[
-            UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsType
-        ]
+    homepage: NotRequired[str]
+    private: NotRequired[bool]
+    has_issues: NotRequired[bool]
+    has_projects: NotRequired[bool]
+    has_wiki: NotRequired[bool]
+    has_discussions: NotRequired[bool]
+    team_id: NotRequired[int]
+    auto_init: NotRequired[bool]
+    gitignore_template: NotRequired[str]
+    license_template: NotRequired[str]
+    allow_squash_merge: NotRequired[bool]
+    allow_merge_commit: NotRequired[bool]
+    allow_rebase_merge: NotRequired[bool]
+    allow_auto_merge: NotRequired[bool]
+    delete_branch_on_merge: NotRequired[bool]
+    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
+    squash_merge_commit_message: NotRequired[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
     ]
+    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
+    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
+    has_downloads: NotRequired[bool]
+    is_template: NotRequired[bool]
 
 
-class UsersUsernameCopilotSpacesSpaceNumberPutBodyTypeForResponse(TypedDict):
-    """UsersUsernameCopilotSpacesSpaceNumberPutBody"""
+class UserReposPostBodyTypeForResponse(TypedDict):
+    """UserReposPostBody"""
 
-    name: NotRequired[str]
+    name: str
     description: NotRequired[str]
-    general_instructions: NotRequired[str]
-    base_role: NotRequired[Literal["reader", "no_access"]]
-    resources_attributes: NotRequired[
-        list[
-            UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsTypeForResponse
-        ]
+    homepage: NotRequired[str]
+    private: NotRequired[bool]
+    has_issues: NotRequired[bool]
+    has_projects: NotRequired[bool]
+    has_wiki: NotRequired[bool]
+    has_discussions: NotRequired[bool]
+    team_id: NotRequired[int]
+    auto_init: NotRequired[bool]
+    gitignore_template: NotRequired[str]
+    license_template: NotRequired[str]
+    allow_squash_merge: NotRequired[bool]
+    allow_merge_commit: NotRequired[bool]
+    allow_rebase_merge: NotRequired[bool]
+    allow_auto_merge: NotRequired[bool]
+    delete_branch_on_merge: NotRequired[bool]
+    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
+    squash_merge_commit_message: NotRequired[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
     ]
-
-
-class UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsType(
-    TypedDict
-):
-    """UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems"""
-
-    resource_type: NotRequired[
-        Literal[
-            "repository",
-            "github_file",
-            "free_text",
-            "github_issue",
-            "github_pull_request",
-            "media_content",
-            "uploaded_text_file",
-        ]
-    ]
-    metadata: NotRequired[
-        UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataType
-    ]
-
-
-class UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsTypeForResponse(
-    TypedDict
-):
-    """UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems"""
-
-    resource_type: NotRequired[
-        Literal[
-            "repository",
-            "github_file",
-            "free_text",
-            "github_issue",
-            "github_pull_request",
-            "media_content",
-            "uploaded_text_file",
-        ]
-    ]
-    metadata: NotRequired[
-        UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataTypeForResponse
-    ]
-
-
-class UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataType(
-    TypedDict
-):
-    """UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMeta
-    data
-
-    Metadata specific to the resource type.
-    """
-
-    repository_id: NotRequired[int]
-    file_path: NotRequired[str]
-    text: NotRequired[str]
-    name: NotRequired[str]
-    number: NotRequired[int]
-
-
-class UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataTypeForResponse(
-    TypedDict
-):
-    """UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMeta
-    data
-
-    Metadata specific to the resource type.
-    """
-
-    repository_id: NotRequired[int]
-    file_path: NotRequired[str]
-    text: NotRequired[str]
-    name: NotRequired[str]
-    number: NotRequired[int]
+    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
+    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
+    has_downloads: NotRequired[bool]
+    is_template: NotRequired[bool]
 
 
 __all__ = (
-    "UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataType",
-    "UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataTypeForResponse",
-    "UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsType",
-    "UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsTypeForResponse",
-    "UsersUsernameCopilotSpacesSpaceNumberPutBodyType",
-    "UsersUsernameCopilotSpacesSpaceNumberPutBodyTypeForResponse",
+    "UserReposPostBodyType",
+    "UserReposPostBodyTypeForResponse",
 )

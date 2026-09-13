@@ -600,7 +600,7 @@ class SecurityAdvisoriesClient:
             BasicError,
             RepositoryAdvisory,
             RepositoryAdvisoryCreate,
-            ValidationError,
+            RepositoryAdvisoryDescriptionValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/security-advisories"
@@ -626,7 +626,7 @@ class SecurityAdvisoriesClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
-                "422": ValidationError,
+                "422": RepositoryAdvisoryDescriptionValidationError,
             },
         )
 
@@ -692,7 +692,7 @@ class SecurityAdvisoriesClient:
             BasicError,
             RepositoryAdvisory,
             RepositoryAdvisoryCreate,
-            ValidationError,
+            RepositoryAdvisoryDescriptionValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/security-advisories"
@@ -718,7 +718,7 @@ class SecurityAdvisoriesClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
-                "422": ValidationError,
+                "422": RepositoryAdvisoryDescriptionValidationError,
             },
         )
 
@@ -781,7 +781,7 @@ class SecurityAdvisoriesClient:
             BasicError,
             PrivateVulnerabilityReportCreate,
             RepositoryAdvisory,
-            ValidationError,
+            RepositoryAdvisoryDescriptionValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/security-advisories/reports"
@@ -807,7 +807,7 @@ class SecurityAdvisoriesClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
-                "422": ValidationError,
+                "422": RepositoryAdvisoryDescriptionValidationError,
             },
         )
 
@@ -870,7 +870,7 @@ class SecurityAdvisoriesClient:
             BasicError,
             PrivateVulnerabilityReportCreate,
             RepositoryAdvisory,
-            ValidationError,
+            RepositoryAdvisoryDescriptionValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/security-advisories/reports"
@@ -896,7 +896,7 @@ class SecurityAdvisoriesClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
-                "422": ValidationError,
+                "422": RepositoryAdvisoryDescriptionValidationError,
             },
         )
 

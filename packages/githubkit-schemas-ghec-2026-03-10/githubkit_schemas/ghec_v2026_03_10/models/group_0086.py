@@ -10,48 +10,30 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class EnterpriseTeam(GitHubModel):
-    """Enterprise Team
+class CopilotUsageMetrics28DayReport(GitHubModel):
+    """Copilot Metrics 28 Day Report
 
-    Group of enterprise owners and/or members
+    Links to download the latest Copilot usage metrics report for an
+    enterprise/organization.
     """
 
-    id: int = Field()
-    name: str = Field()
-    description: Missing[str] = Field(default=UNSET)
-    slug: str = Field()
-    url: str = Field()
-    sync_to_organizations: Missing[str] = Field(
-        default=UNSET,
-        description="Retired: this field will not be returned with GHEC enterprise teams.",
+    download_links: list[str] = Field(
+        description="The URLs to download the latest Copilot usage metrics report for the enterprise/organization."
     )
-    organization_selection_type: Missing[str] = Field(default=UNSET)
-    group_id: Union[str, None] = Field()
-    group_name: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="Retired: this field will not be returned with GHEC enterprise teams.",
+    report_start_day: _dt.date = Field(
+        description="The start date of the report period in `YYYY-MM-DD` format."
     )
-    html_url: str = Field()
-    members_url: str = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    notification_setting: Missing[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ] = Field(
-        default=UNSET,
-        description="Whether team members will receive notifications when the team is mentioned.",
+    report_end_day: _dt.date = Field(
+        description="The end date of the report period in `YYYY-MM-DD` format."
     )
 
 
-model_rebuild(EnterpriseTeam)
+model_rebuild(CopilotUsageMetrics28DayReport)
 
-__all__ = ("EnterpriseTeam",)
+__all__ = ("CopilotUsageMetrics28DayReport",)

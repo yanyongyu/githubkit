@@ -9,41 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class GistsPostBody(GitHubModel):
-    """GistsPostBody"""
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBody(GitHubModel):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBody"""
 
-    description: Missing[str] = Field(
-        default=UNSET, description="Description of the gist"
+    organizations: Missing[list[str]] = Field(
+        default=UNSET,
+        description="List of organization logins within the enterprise to enable Copilot cloud agent for.",
     )
-    files: GistsPostBodyPropFiles = Field(
-        description="Names and content for the files that make up the gist"
+    custom_properties: Missing[
+        list[
+            EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItems
+        ]
+    ] = Field(
+        default=UNSET,
+        description="List of custom property filters to match organizations. Organizations matching any of the specified property name/value pairs will be included. This is a one-time operation, setting the property on an organization in the future will not automatically update its coding agent policy.",
     )
-    public: Missing[Union[bool, Literal["true", "false"]]] = Field(default=UNSET)
 
 
-class GistsPostBodyPropFiles(ExtraGitHubModel):
-    """GistsPostBodyPropFiles
-
-    Names and content for the files that make up the gist
-
-    Examples:
-        {'hello.rb': {'content': 'puts "Hello, World!"'}}
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItems(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPr
+    opertiesItems
     """
 
+    property_name: str = Field(
+        description="The name of the custom property to filter by."
+    )
+    values: list[str] = Field(description="The values of the custom property to match.")
 
-model_rebuild(GistsPostBody)
-model_rebuild(GistsPostBodyPropFiles)
+
+model_rebuild(EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBody)
+model_rebuild(
+    EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItems
+)
 
 __all__ = (
-    "GistsPostBody",
-    "GistsPostBodyPropFiles",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBody",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItems",
 )

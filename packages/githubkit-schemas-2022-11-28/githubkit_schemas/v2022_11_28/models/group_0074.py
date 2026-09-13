@@ -13,18 +13,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0061 import PullRequestMinimal
-from .group_0075 import PullRequestReviewEventPropReview
+from .group_0075 import ReleaseEventPropRelease
 
 
-class PullRequestReviewEvent(GitHubModel):
-    """PullRequestReviewEvent"""
+class ReleaseEvent(GitHubModel):
+    """ReleaseEvent"""
 
     action: str = Field()
-    review: PullRequestReviewEventPropReview = Field()
-    pull_request: PullRequestMinimal = Field(title="Pull Request Minimal")
+    release: ReleaseEventPropRelease = Field()
 
 
-model_rebuild(PullRequestReviewEvent)
+model_rebuild(ReleaseEvent)
 
-__all__ = ("PullRequestReviewEvent",)
+__all__ = ("ReleaseEvent",)

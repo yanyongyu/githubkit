@@ -9,47 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0125 import RunnerLabelType, RunnerLabelTypeForResponse
 
+class ActionsPublicKeyType(TypedDict):
+    """ActionsPublicKey
 
-class RunnerType(TypedDict):
-    """Self hosted runners
-
-    A self hosted runner
+    The public key used for setting Actions Secrets.
     """
 
-    id: int
-    runner_group_id: NotRequired[int]
-    name: str
-    os: str
-    status: str
-    busy: bool
-    labels: list[RunnerLabelType]
-    ephemeral: NotRequired[bool]
-    version: NotRequired[Union[str, None]]
+    key_id: str
+    key: str
+    id: NotRequired[int]
+    url: NotRequired[str]
+    title: NotRequired[str]
+    created_at: NotRequired[str]
 
 
-class RunnerTypeForResponse(TypedDict):
-    """Self hosted runners
+class ActionsPublicKeyTypeForResponse(TypedDict):
+    """ActionsPublicKey
 
-    A self hosted runner
+    The public key used for setting Actions Secrets.
     """
 
-    id: int
-    runner_group_id: NotRequired[int]
-    name: str
-    os: str
-    status: str
-    busy: bool
-    labels: list[RunnerLabelTypeForResponse]
-    ephemeral: NotRequired[bool]
-    version: NotRequired[Union[str, None]]
+    key_id: str
+    key: str
+    id: NotRequired[int]
+    url: NotRequired[str]
+    title: NotRequired[str]
+    created_at: NotRequired[str]
 
 
 __all__ = (
-    "RunnerType",
-    "RunnerTypeForResponse",
+    "ActionsPublicKeyType",
+    "ActionsPublicKeyTypeForResponse",
 )

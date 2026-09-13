@@ -9,39 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class OrgsOrgTeamsTeamSlugPatchBodyType(TypedDict):
-    """OrgsOrgTeamsTeamSlugPatchBody"""
-
-    name: NotRequired[str]
-    description: NotRequired[str]
-    privacy: NotRequired[Literal["secret", "closed"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ]
-    permission: NotRequired[Literal["pull", "push", "admin"]]
-    parent_team_id: NotRequired[Union[int, None]]
-    parent_team_slug: NotRequired[Union[str, None]]
+from .group_0260 import (
+    SecretScanningCustomPatternType,
+    SecretScanningCustomPatternTypeForResponse,
+)
 
 
-class OrgsOrgTeamsTeamSlugPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgTeamsTeamSlugPatchBody"""
+class OrgsOrgSecretScanningCustomPatternsPostResponse201Type(TypedDict):
+    """OrgsOrgSecretScanningCustomPatternsPostResponse201"""
 
-    name: NotRequired[str]
-    description: NotRequired[str]
-    privacy: NotRequired[Literal["secret", "closed"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ]
-    permission: NotRequired[Literal["pull", "push", "admin"]]
-    parent_team_id: NotRequired[Union[int, None]]
-    parent_team_slug: NotRequired[Union[str, None]]
+    created_patterns: NotRequired[list[SecretScanningCustomPatternType]]
+
+
+class OrgsOrgSecretScanningCustomPatternsPostResponse201TypeForResponse(TypedDict):
+    """OrgsOrgSecretScanningCustomPatternsPostResponse201"""
+
+    created_patterns: NotRequired[list[SecretScanningCustomPatternTypeForResponse]]
 
 
 __all__ = (
-    "OrgsOrgTeamsTeamSlugPatchBodyType",
-    "OrgsOrgTeamsTeamSlugPatchBodyTypeForResponse",
+    "OrgsOrgSecretScanningCustomPatternsPostResponse201Type",
+    "OrgsOrgSecretScanningCustomPatternsPostResponse201TypeForResponse",
 )

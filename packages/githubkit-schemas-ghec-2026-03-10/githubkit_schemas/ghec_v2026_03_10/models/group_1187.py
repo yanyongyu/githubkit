@@ -13,35 +13,32 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0078 import CodeSecurityConfiguration
 
-
-class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200(
+class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBody(
     GitHubModel
 ):
-    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutRespons
-    e200
+    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositories
+    PatchBody
     """
 
-    default_for_new_repos: Missing[
-        Literal["all", "none", "private_and_internal", "public"]
-    ] = Field(
-        default=UNSET,
-        description="Specifies which types of repository this security configuration is applied to by default.",
+    repository_selection: Literal["all", "selected"] = Field(
+        description="One of either 'all' or 'selected'"
     )
-    configuration: Missing[CodeSecurityConfiguration] = Field(
-        default=UNSET, description="A code security configuration"
+    repositories: Missing[list[str]] = Field(
+        max_length=50 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="The repository names to add to the installation. Only required when repository_selection is 'selected'",
     )
 
 
 model_rebuild(
-    EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200
+    EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBody
 )
 
 __all__ = (
-    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200",
+    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBody",
 )

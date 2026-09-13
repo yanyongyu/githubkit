@@ -14,17 +14,22 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class EnterpriseAccessRestrictions(GitHubModel):
-    """Enterprise Access Restrictions
+class ActionsHostedRunnerMachineSpec(GitHubModel):
+    """Github-owned VM details.
 
-    Information about the enterprise access restrictions proxy header.
+    Provides details of a particular machine spec.
     """
 
-    message: str = Field(description="The message returned for the request.")
-    header_name: str = Field(description="The name of the proxy header.")
-    header_value: str = Field(description="The value of the proxy header.")
+    id: str = Field(
+        description="The ID used for the `size` parameter when creating a new runner."
+    )
+    cpu_cores: int = Field(description="The number of cores.")
+    memory_gb: int = Field(description="The available RAM for the machine spec.")
+    storage_gb: int = Field(
+        description="The available SSD storage for the machine spec."
+    )
 
 
-model_rebuild(EnterpriseAccessRestrictions)
+model_rebuild(ActionsHostedRunnerMachineSpec)
 
-__all__ = ("EnterpriseAccessRestrictions",)
+__all__ = ("ActionsHostedRunnerMachineSpec",)

@@ -9,28 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0122 import RepositoryRulesetConditionsPropRefName
-from .group_0124 import (
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty,
-)
 
 
-class OrgRulesetConditionsOneof2(GitHubModel):
-    """repository_property_and_ref_name
+class RepositoryRuleLicenseComplianceScanning(GitHubModel):
+    """license_compliance_scanning
 
-    Conditions to target repositories by property and refs by name
+    Enforce any added or changed dependencies to comply with the organization's
+    license policy.
     """
 
-    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
-    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty = Field()
+    type: Literal["license_compliance_scanning"] = Field()
 
 
-model_rebuild(OrgRulesetConditionsOneof2)
+model_rebuild(RepositoryRuleLicenseComplianceScanning)
 
-__all__ = ("OrgRulesetConditionsOneof2",)
+__all__ = ("RepositoryRuleLicenseComplianceScanning",)

@@ -9,30 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200"""
+class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType(TypedDict):
+    """OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody"""
 
-    runner_version: str
-    registration_deprecates_at: NotRequired[Union[_dt.datetime, None]]
-    runtime_deprecates_at: NotRequired[Union[_dt.datetime, None]]
+    groups: NotRequired[
+        list[OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType]
+    ]
 
 
-class ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200TypeForResponse(
+class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody"""
+
+    groups: NotRequired[
+        list[
+            OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsTypeForResponse
+        ]
+    ]
+
+
+class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType(TypedDict):
+    """OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems"""
+
+    group_id: str
+    group_name: str
+    group_description: str
+
+
+class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsTypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200"""
+    """OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems"""
 
-    runner_version: str
-    registration_deprecates_at: NotRequired[Union[str, None]]
-    runtime_deprecates_at: NotRequired[Union[str, None]]
+    group_id: str
+    group_name: str
+    group_description: str
 
 
 __all__ = (
-    "ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200Type",
-    "ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200TypeForResponse",
+    "OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType",
+    "OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsTypeForResponse",
+    "OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType",
+    "OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyTypeForResponse",
 )

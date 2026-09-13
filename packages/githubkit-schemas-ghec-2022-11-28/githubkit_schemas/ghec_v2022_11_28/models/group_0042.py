@@ -9,22 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OidcCustomPropertyInclusionInput(GitHubModel):
-    """Actions OIDC Custom Property Inclusion Input
+class ActionsForkPrContributorApproval(GitHubModel):
+    """ActionsForkPrContributorApproval"""
 
-    Input for creating an OIDC custom property inclusion
-    """
-
-    custom_property_name: str = Field(
-        description="The name of the custom property to include in the OIDC token"
+    approval_policy: Literal[
+        "first_time_contributors_new_to_github",
+        "first_time_contributors",
+        "all_external_contributors",
+    ] = Field(
+        description="The policy that controls when fork PR workflows require approval from a maintainer."
     )
 
 
-model_rebuild(OidcCustomPropertyInclusionInput)
+model_rebuild(ActionsForkPrContributorApproval)
 
-__all__ = ("OidcCustomPropertyInclusionInput",)
+__all__ = ("ActionsForkPrContributorApproval",)

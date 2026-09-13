@@ -9,24 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoSubscriptionPutBodyType(TypedDict):
-    """ReposOwnerRepoSubscriptionPutBody"""
+class ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType(TypedDict):
+    """ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody"""
 
-    subscribed: NotRequired[bool]
-    ignored: NotRequired[bool]
+    reason: Literal["false_positive", "used_in_tests", "will_fix_later"]
+    placeholder_id: str
 
 
-class ReposOwnerRepoSubscriptionPutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoSubscriptionPutBody"""
+class ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody"""
 
-    subscribed: NotRequired[bool]
-    ignored: NotRequired[bool]
+    reason: Literal["false_positive", "used_in_tests", "will_fix_later"]
+    placeholder_id: str
 
 
 __all__ = (
-    "ReposOwnerRepoSubscriptionPutBodyType",
-    "ReposOwnerRepoSubscriptionPutBodyTypeForResponse",
+    "ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType",
+    "ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyTypeForResponse",
 )

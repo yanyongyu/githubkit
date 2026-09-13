@@ -10,77 +10,57 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Any, TypeAlias, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class BaseGistType(TypedDict):
-    """Base Gist
+class GistCommitType(TypedDict):
+    """Gist Commit
 
-    Base Gist
+    Gist Commit
     """
 
     url: str
-    forks_url: str
-    commits_url: str
-    id: str
-    node_id: str
-    git_pull_url: str
-    git_push_url: str
-    html_url: str
-    files: BaseGistPropFilesType
-    public: bool
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    description: Union[str, None]
-    comments: int
-    comments_enabled: NotRequired[bool]
-    comments_url: str
-    owner: NotRequired[SimpleUserType]
-    truncated: NotRequired[bool]
+    version: str
+    user: Union[SimpleUserType, None]
+    change_status: GistCommitPropChangeStatusType
+    committed_at: _dt.datetime
 
 
-class BaseGistTypeForResponse(TypedDict):
-    """Base Gist
+class GistCommitTypeForResponse(TypedDict):
+    """Gist Commit
 
-    Base Gist
+    Gist Commit
     """
 
     url: str
-    forks_url: str
-    commits_url: str
-    id: str
-    node_id: str
-    git_pull_url: str
-    git_push_url: str
-    html_url: str
-    files: BaseGistPropFilesTypeForResponse
-    public: bool
-    created_at: str
-    updated_at: str
-    description: Union[str, None]
-    comments: int
-    comments_enabled: NotRequired[bool]
-    comments_url: str
-    owner: NotRequired[SimpleUserTypeForResponse]
-    truncated: NotRequired[bool]
+    version: str
+    user: Union[SimpleUserTypeForResponse, None]
+    change_status: GistCommitPropChangeStatusTypeForResponse
+    committed_at: str
 
 
-BaseGistPropFilesType: TypeAlias = dict[str, Any]
-"""BaseGistPropFiles
-"""
+class GistCommitPropChangeStatusType(TypedDict):
+    """GistCommitPropChangeStatus"""
+
+    total: NotRequired[int]
+    additions: NotRequired[int]
+    deletions: NotRequired[int]
 
 
-BaseGistPropFilesTypeForResponse: TypeAlias = dict[str, Any]
-"""BaseGistPropFiles
-"""
+class GistCommitPropChangeStatusTypeForResponse(TypedDict):
+    """GistCommitPropChangeStatus"""
+
+    total: NotRequired[int]
+    additions: NotRequired[int]
+    deletions: NotRequired[int]
 
 
 __all__ = (
-    "BaseGistPropFilesType",
-    "BaseGistPropFilesTypeForResponse",
-    "BaseGistType",
-    "BaseGistTypeForResponse",
+    "GistCommitPropChangeStatusType",
+    "GistCommitPropChangeStatusTypeForResponse",
+    "GistCommitType",
+    "GistCommitTypeForResponse",
 )

@@ -12,18 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0189 import SecretScanningCustomPatternToCreate
-
-
-class ReposOwnerRepoSecretScanningCustomPatternsPostBody(GitHubModel):
-    """ReposOwnerRepoSecretScanningCustomPatternsPostBody"""
-
-    patterns: list[SecretScanningCustomPatternToCreate] = Field(
-        description="The list of custom patterns to create."
-    )
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(ReposOwnerRepoSecretScanningCustomPatternsPostBody)
+class ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202"""
 
-__all__ = ("ReposOwnerRepoSecretScanningCustomPatternsPostBody",)
+    message: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202)
+
+__all__ = ("ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202",)

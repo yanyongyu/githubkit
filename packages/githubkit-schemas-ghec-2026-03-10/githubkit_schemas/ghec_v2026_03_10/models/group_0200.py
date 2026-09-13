@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,43 +18,59 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class GetBudgetUserStates(GitHubModel):
-    """GetBudgetUserStates"""
+class UpdateCostCenter(GitHubModel):
+    """UpdateCostCenter"""
 
-    user_states: list[GetBudgetUserStatesPropUserStatesItems] = Field(
-        description="Per-user state entries for the budget."
-    )
-    has_next_page: bool = Field(
-        description="Indicates if there are more pages of results available."
-    )
-    total_count: int = Field(
-        description="Total number of user state entries matching the query."
-    )
-
-
-class GetBudgetUserStatesPropUserStatesItems(GitHubModel):
-    """GetBudgetUserStatesPropUserStatesItems"""
-
-    user: Missing[str] = Field(
+    id: str = Field(description="ID of the cost center.")
+    name: str = Field(description="Name of the cost center.")
+    azure_subscription: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The login of the user, when the user record is available.",
+        description="Azure subscription ID associated with the cost center. Only present for cost centers linked to Azure subscriptions.",
     )
-    consumed_amount: float = Field(
-        description="The amount currently consumed by this user against the budget."
+    state: Missing[Literal["active", "deleted"]] = Field(
+        default=UNSET, description="State of the cost center."
     )
-    target_amount: float = Field(
-        description="The target amount allocated to this user within the budget."
-    )
-    override_budget_id: Missing[str] = Field(
+    resources: list[UpdateCostCenterPropResourcesItems] = Field()
+    ai_credit_pool_enabled: Missing[bool] = Field(
         default=UNSET,
-        description="The ID of a user-scoped budget that overrides the per-user allocation, when present.",
+        description="Whether the cost center draws from the AI credit pool.\n\nThis can only be enabled for cost centers that contain only user or team resources.\n\n- `false` — no cap; the cost center draws from the shared enterprise pool.\n- `true` — the cost center is capped at an amount derived from its members' license entitlements.",
+    )
+    ai_credit_pool_state: Missing[UpdateCostCenterPropAiCreditPoolState] = Field(
+        default=UNSET,
+        description="Read-only cap-budget projection for the cost center. Only present when the cost center draws from the AI credit pool.",
     )
 
 
-model_rebuild(GetBudgetUserStates)
-model_rebuild(GetBudgetUserStatesPropUserStatesItems)
+class UpdateCostCenterPropResourcesItems(GitHubModel):
+    """UpdateCostCenterPropResourcesItems"""
+
+    type: str = Field(description="Type of the resource.")
+    name: str = Field(description="Name of the resource.")
+
+
+class UpdateCostCenterPropAiCreditPoolState(GitHubModel):
+    """UpdateCostCenterPropAiCreditPoolState
+
+    Read-only cap-budget projection for the cost center. Only present when the cost
+    center draws from the AI credit pool.
+    """
+
+    target_amount: Missing[Union[float, None]] = Field(
+        default=UNSET,
+        description="The AI credit pool cap target amount, in AI Credits. Null when the cap budget has not been materialized yet.",
+    )
+    current_amount: Missing[Union[float, None]] = Field(
+        default=UNSET,
+        description="The current-month applied amount against the AI credit pool cap, in AI Credits. Null when the cap budget has not been materialized yet.",
+    )
+
+
+model_rebuild(UpdateCostCenter)
+model_rebuild(UpdateCostCenterPropResourcesItems)
+model_rebuild(UpdateCostCenterPropAiCreditPoolState)
 
 __all__ = (
-    "GetBudgetUserStates",
-    "GetBudgetUserStatesPropUserStatesItems",
+    "UpdateCostCenter",
+    "UpdateCostCenterPropAiCreditPoolState",
+    "UpdateCostCenterPropResourcesItems",
 )

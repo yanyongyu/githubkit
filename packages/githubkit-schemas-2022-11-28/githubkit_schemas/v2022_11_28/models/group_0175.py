@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,103 +18,55 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0174 import ProjectsV2StatusUpdate
 
-class OrgPrivateRegistryConfigurationWithSelectedRepositories(GitHubModel):
-    """Organization private registry
 
-    Private registry configuration for an organization
+class ProjectsV2(GitHubModel):
+    """Projects v2 Project
+
+    A projects v2 project
     """
 
-    name: str = Field(description="The name of the private registry configuration.")
-    registry_type: Literal[
-        "maven_repository",
-        "nuget_feed",
-        "goproxy_server",
-        "npm_registry",
-        "rubygems_server",
-        "cargo_registry",
-        "composer_repository",
-        "docker_registry",
-        "git_source",
-        "helm_registry",
-        "hex_organization",
-        "hex_repository",
-        "pub_repository",
-        "python_index",
-        "terraform_registry",
-    ] = Field(description="The registry type.")
-    auth_type: Missing[
-        Literal[
-            "token",
-            "username_password",
-            "oidc_azure",
-            "oidc_aws",
-            "oidc_jfrog",
-            "oidc_cloudsmith",
-            "oidc_gcp",
-        ]
-    ] = Field(
-        default=UNSET, description="The authentication type for the private registry."
+    id: float = Field(description="The unique identifier of the project.")
+    node_id: str = Field(description="The node ID of the project.")
+    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    creator: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    title: str = Field(description="The project title.")
+    description: Union[str, None] = Field(
+        description="A short description of the project."
     )
-    url: Missing[str] = Field(
-        default=UNSET, description="The URL of the private registry."
+    public: bool = Field(
+        description="Whether the project is visible to anyone with access to the owner."
     )
-    username: Missing[str] = Field(
-        default=UNSET,
-        description="The username to use when authenticating with the private registry.",
+    closed_at: Union[_dt.datetime, None] = Field(
+        description="The time when the project was closed."
     )
-    replaces_base: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether this private registry replaces the base registry (e.g., npmjs.org for npm, rubygems.org for rubygems). When `true`, Dependabot will only use this registry and will not fall back to the public registry. When `false` (default), Dependabot will use this registry for scoped packages but may fall back to the public registry for other packages.",
+    created_at: _dt.datetime = Field(
+        description="The time when the project was created."
     )
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="Which type of organization repositories have access to the private registry. `selected` means only the repositories specified by `selected_repository_ids` can access the private registry."
+    updated_at: _dt.datetime = Field(
+        description="The time when the project was last updated."
     )
-    selected_repository_ids: Missing[list[int]] = Field(
-        default=UNSET,
-        description="An array of repository IDs that can access the organization private registry when `visibility` is set to `selected`.",
+    number: int = Field(description="The project number.")
+    short_description: Union[str, None] = Field(
+        description="A concise summary of the project."
     )
-    tenant_id: Missing[str] = Field(
-        default=UNSET, description="The tenant ID of the Azure AD application."
+    deleted_at: Union[_dt.datetime, None] = Field(
+        description="The time when the project was deleted."
     )
-    client_id: Missing[str] = Field(
-        default=UNSET, description="The client ID of the Azure AD application."
+    deleted_by: Union[SimpleUser, None] = Field()
+    state: Missing[Literal["open", "closed"]] = Field(
+        default=UNSET, description="The current state of the project."
     )
-    aws_region: Missing[str] = Field(default=UNSET, description="The AWS region.")
-    account_id: Missing[str] = Field(default=UNSET, description="The AWS account ID.")
-    role_name: Missing[str] = Field(default=UNSET, description="The AWS IAM role name.")
-    domain: Missing[str] = Field(default=UNSET, description="The CodeArtifact domain.")
-    domain_owner: Missing[str] = Field(
-        default=UNSET, description="The CodeArtifact domain owner."
+    latest_status_update: Missing[Union[ProjectsV2StatusUpdate, None]] = Field(
+        default=UNSET
     )
-    jfrog_oidc_provider_name: Missing[str] = Field(
-        default=UNSET, description="The JFrog OIDC provider name."
+    is_template: Missing[bool] = Field(
+        default=UNSET, description="Whether this project is a template"
     )
-    audience: Missing[str] = Field(default=UNSET, description="The OIDC audience.")
-    identity_mapping_name: Missing[str] = Field(
-        default=UNSET, description="The JFrog identity mapping name."
-    )
-    namespace: Missing[str] = Field(
-        default=UNSET, description="The Cloudsmith organization namespace."
-    )
-    service_slug: Missing[str] = Field(
-        default=UNSET, description="The Cloudsmith service account slug."
-    )
-    api_host: Missing[str] = Field(
-        default=UNSET, description="The Cloudsmith API host."
-    )
-    workload_identity_provider: Missing[str] = Field(
-        default=UNSET,
-        description="The full resource name of the GCP Workload Identity Provider (e.g. `projects/<NUM>/locations/global/workloadIdentityPools/<POOL>/providers/<PROVIDER>`).",
-    )
-    service_account: Missing[str] = Field(
-        default=UNSET,
-        description="The GCP service account email to impersonate. If omitted, the federated token is used directly (direct WIF).",
-    )
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
 
 
-model_rebuild(OrgPrivateRegistryConfigurationWithSelectedRepositories)
+model_rebuild(ProjectsV2)
 
-__all__ = ("OrgPrivateRegistryConfigurationWithSelectedRepositories",)
+__all__ = ("ProjectsV2",)

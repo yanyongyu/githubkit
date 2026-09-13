@@ -13,41 +13,38 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0370 import DependabotAlertType, DependabotAlertTypeForResponse
-from .group_0539 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0540 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0541 import (
+from .group_0189 import CustomPropertyType, CustomPropertyTypeForResponse
+from .group_0542 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0543 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0544 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0542 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDependabotAlertFixedType(TypedDict):
-    """Dependabot alert fixed event"""
+class WebhookCustomPropertyPromotedToEnterpriseType(TypedDict):
+    """custom property promoted to business event"""
 
-    action: Literal["fixed"]
-    alert: DependabotAlertType
+    action: Literal["promote_to_enterprise"]
+    definition: CustomPropertyType
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookDependabotAlertFixedTypeForResponse(TypedDict):
-    """Dependabot alert fixed event"""
+class WebhookCustomPropertyPromotedToEnterpriseTypeForResponse(TypedDict):
+    """custom property promoted to business event"""
 
-    action: Literal["fixed"]
-    alert: DependabotAlertTypeForResponse
+    action: Literal["promote_to_enterprise"]
+    definition: CustomPropertyTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookDependabotAlertFixedType",
-    "WebhookDependabotAlertFixedTypeForResponse",
+    "WebhookCustomPropertyPromotedToEnterpriseType",
+    "WebhookCustomPropertyPromotedToEnterpriseTypeForResponse",
 )

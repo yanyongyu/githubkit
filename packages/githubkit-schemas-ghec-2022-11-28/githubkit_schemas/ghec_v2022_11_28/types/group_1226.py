@@ -9,28 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0106 import NetworkConfigurationType, NetworkConfigurationTypeForResponse
-
-
-class EnterprisesEnterpriseNetworkConfigurationsGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseNetworkConfigurationsGetResponse200"""
-
-    total_count: int
-    network_configurations: list[NetworkConfigurationType]
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseNetworkConfigurationsGetResponse200TypeForResponse(
+class EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBodyType(
     TypedDict
 ):
-    """EnterprisesEnterpriseNetworkConfigurationsGetResponse200"""
+    """EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBody"""
 
-    total_count: int
-    network_configurations: list[NetworkConfigurationTypeForResponse]
+    credential_type: Literal[
+        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
+    ]
+    revoke_credentials: NotRequired[bool]
+
+
+class EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBody"""
+
+    credential_type: Literal[
+        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
+    ]
+    revoke_credentials: NotRequired[bool]
 
 
 __all__ = (
-    "EnterprisesEnterpriseNetworkConfigurationsGetResponse200Type",
-    "EnterprisesEnterpriseNetworkConfigurationsGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBodyType",
+    "EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBodyTypeForResponse",
 )

@@ -9,162 +9,74 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0069 import BypassResponseType, BypassResponseTypeForResponse
+from .group_0070 import (
+    CodeScanningAlertLocationType,
+    CodeScanningAlertLocationTypeForResponse,
+)
 
 
-class SecretScanningBypassRequestType(TypedDict):
-    """Secret scanning bypass request
+class CodeScanningAlertInstanceType(TypedDict):
+    """CodeScanningAlertInstance"""
 
-    A bypass request made by a user asking to be exempted from push protection in
-    this repository.
-    """
-
-    id: NotRequired[int]
-    number: NotRequired[int]
-    repository: NotRequired[SecretScanningBypassRequestPropRepositoryType]
-    organization: NotRequired[SecretScanningBypassRequestPropOrganizationType]
-    requester: NotRequired[SecretScanningBypassRequestPropRequesterType]
-    request_type: NotRequired[str]
-    data: NotRequired[Union[list[SecretScanningBypassRequestPropDataItemsType], None]]
-    resource_identifier: NotRequired[str]
-    status: NotRequired[
-        Literal[
-            "pending", "denied", "approved", "cancelled", "completed", "expired", "open"
+    ref: NotRequired[str]
+    analysis_key: NotRequired[str]
+    environment: NotRequired[str]
+    category: NotRequired[str]
+    state: NotRequired[Union[Literal["open", "dismissed", "fixed"], None]]
+    commit_sha: NotRequired[str]
+    message: NotRequired[CodeScanningAlertInstancePropMessageType]
+    location: NotRequired[CodeScanningAlertLocationType]
+    html_url: NotRequired[str]
+    classifications: NotRequired[
+        list[
+            Union[
+                Literal["source", "generated", "test", "library", "documentation"], None
+            ]
         ]
     ]
-    requester_comment: NotRequired[Union[str, None]]
-    expires_at: NotRequired[_dt.datetime]
-    created_at: NotRequired[_dt.datetime]
-    responses: NotRequired[Union[list[BypassResponseType], None]]
-    url: NotRequired[str]
+
+
+class CodeScanningAlertInstanceTypeForResponse(TypedDict):
+    """CodeScanningAlertInstance"""
+
+    ref: NotRequired[str]
+    analysis_key: NotRequired[str]
+    environment: NotRequired[str]
+    category: NotRequired[str]
+    state: NotRequired[Union[Literal["open", "dismissed", "fixed"], None]]
+    commit_sha: NotRequired[str]
+    message: NotRequired[CodeScanningAlertInstancePropMessageTypeForResponse]
+    location: NotRequired[CodeScanningAlertLocationTypeForResponse]
     html_url: NotRequired[str]
-
-
-class SecretScanningBypassRequestTypeForResponse(TypedDict):
-    """Secret scanning bypass request
-
-    A bypass request made by a user asking to be exempted from push protection in
-    this repository.
-    """
-
-    id: NotRequired[int]
-    number: NotRequired[int]
-    repository: NotRequired[SecretScanningBypassRequestPropRepositoryTypeForResponse]
-    organization: NotRequired[
-        SecretScanningBypassRequestPropOrganizationTypeForResponse
-    ]
-    requester: NotRequired[SecretScanningBypassRequestPropRequesterTypeForResponse]
-    request_type: NotRequired[str]
-    data: NotRequired[
-        Union[list[SecretScanningBypassRequestPropDataItemsTypeForResponse], None]
-    ]
-    resource_identifier: NotRequired[str]
-    status: NotRequired[
-        Literal[
-            "pending", "denied", "approved", "cancelled", "completed", "expired", "open"
+    classifications: NotRequired[
+        list[
+            Union[
+                Literal["source", "generated", "test", "library", "documentation"], None
+            ]
         ]
     ]
-    requester_comment: NotRequired[Union[str, None]]
-    expires_at: NotRequired[str]
-    created_at: NotRequired[str]
-    responses: NotRequired[Union[list[BypassResponseTypeForResponse], None]]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
 
 
-class SecretScanningBypassRequestPropRepositoryType(TypedDict):
-    """SecretScanningBypassRequestPropRepository
+class CodeScanningAlertInstancePropMessageType(TypedDict):
+    """CodeScanningAlertInstancePropMessage"""
 
-    The repository the bypass request is for.
-    """
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    full_name: NotRequired[str]
+    text: NotRequired[str]
+    markdown: NotRequired[str]
 
 
-class SecretScanningBypassRequestPropRepositoryTypeForResponse(TypedDict):
-    """SecretScanningBypassRequestPropRepository
+class CodeScanningAlertInstancePropMessageTypeForResponse(TypedDict):
+    """CodeScanningAlertInstancePropMessage"""
 
-    The repository the bypass request is for.
-    """
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    full_name: NotRequired[str]
-
-
-class SecretScanningBypassRequestPropOrganizationType(TypedDict):
-    """SecretScanningBypassRequestPropOrganization
-
-    The organization associated with the repository the bypass request is for.
-    """
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-
-
-class SecretScanningBypassRequestPropOrganizationTypeForResponse(TypedDict):
-    """SecretScanningBypassRequestPropOrganization
-
-    The organization associated with the repository the bypass request is for.
-    """
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-
-
-class SecretScanningBypassRequestPropRequesterType(TypedDict):
-    """SecretScanningBypassRequestPropRequester
-
-    The user who requested the bypass.
-    """
-
-    actor_id: NotRequired[int]
-    actor_name: NotRequired[str]
-
-
-class SecretScanningBypassRequestPropRequesterTypeForResponse(TypedDict):
-    """SecretScanningBypassRequestPropRequester
-
-    The user who requested the bypass.
-    """
-
-    actor_id: NotRequired[int]
-    actor_name: NotRequired[str]
-
-
-class SecretScanningBypassRequestPropDataItemsType(TypedDict):
-    """SecretScanningBypassRequestPropDataItems"""
-
-    secret_type: NotRequired[str]
-    bypass_reason: NotRequired[Literal["used_in_tests", "false_positive", "fix_later"]]
-    path: NotRequired[str]
-    branch: NotRequired[str]
-
-
-class SecretScanningBypassRequestPropDataItemsTypeForResponse(TypedDict):
-    """SecretScanningBypassRequestPropDataItems"""
-
-    secret_type: NotRequired[str]
-    bypass_reason: NotRequired[Literal["used_in_tests", "false_positive", "fix_later"]]
-    path: NotRequired[str]
-    branch: NotRequired[str]
+    text: NotRequired[str]
+    markdown: NotRequired[str]
 
 
 __all__ = (
-    "SecretScanningBypassRequestPropDataItemsType",
-    "SecretScanningBypassRequestPropDataItemsTypeForResponse",
-    "SecretScanningBypassRequestPropOrganizationType",
-    "SecretScanningBypassRequestPropOrganizationTypeForResponse",
-    "SecretScanningBypassRequestPropRepositoryType",
-    "SecretScanningBypassRequestPropRepositoryTypeForResponse",
-    "SecretScanningBypassRequestPropRequesterType",
-    "SecretScanningBypassRequestPropRequesterTypeForResponse",
-    "SecretScanningBypassRequestType",
-    "SecretScanningBypassRequestTypeForResponse",
+    "CodeScanningAlertInstancePropMessageType",
+    "CodeScanningAlertInstancePropMessageTypeForResponse",
+    "CodeScanningAlertInstanceType",
+    "CodeScanningAlertInstanceTypeForResponse",
 )

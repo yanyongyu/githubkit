@@ -9,38 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class SimpleClassroomRepositoryType(TypedDict):
-    """Simple Classroom Repository
+class ActionsCacheRetentionLimitForEnterpriseType(TypedDict):
+    """Actions cache retention limit for an enterprise
 
-    A GitHub repository view for Classroom
+    GitHub Actions cache retention policy for an enterprise.
     """
 
-    id: int
-    full_name: str
-    html_url: str
-    node_id: str
-    private: bool
-    default_branch: str
+    max_cache_retention_days: NotRequired[int]
 
 
-class SimpleClassroomRepositoryTypeForResponse(TypedDict):
-    """Simple Classroom Repository
+class ActionsCacheRetentionLimitForEnterpriseTypeForResponse(TypedDict):
+    """Actions cache retention limit for an enterprise
 
-    A GitHub repository view for Classroom
+    GitHub Actions cache retention policy for an enterprise.
     """
 
-    id: int
-    full_name: str
-    html_url: str
-    node_id: str
-    private: bool
-    default_branch: str
+    max_cache_retention_days: NotRequired[int]
 
 
 __all__ = (
-    "SimpleClassroomRepositoryType",
-    "SimpleClassroomRepositoryTypeForResponse",
+    "ActionsCacheRetentionLimitForEnterpriseType",
+    "ActionsCacheRetentionLimitForEnterpriseTypeForResponse",
 )

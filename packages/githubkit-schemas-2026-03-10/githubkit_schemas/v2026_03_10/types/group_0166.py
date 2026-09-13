@@ -9,43 +9,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class OrganizationUpdateIssueTypeType(TypedDict):
-    """OrganizationUpdateIssueType"""
-
-    name: str
-    is_enabled: bool
-    description: NotRequired[Union[str, None]]
-    color: NotRequired[
-        Union[
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-            None,
-        ]
-    ]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0032 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
 
 
-class OrganizationUpdateIssueTypeTypeForResponse(TypedDict):
-    """OrganizationUpdateIssueType"""
+class MigrationType(TypedDict):
+    """Migration
 
-    name: str
-    is_enabled: bool
-    description: NotRequired[Union[str, None]]
-    color: NotRequired[
-        Union[
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-            None,
-        ]
-    ]
+    A migration.
+    """
+
+    id: int
+    owner: Union[SimpleUserType, None]
+    guid: str
+    state: str
+    lock_repositories: bool
+    exclude_metadata: bool
+    exclude_git_data: bool
+    exclude_attachments: bool
+    exclude_releases: bool
+    exclude_owner_projects: bool
+    org_metadata_only: bool
+    repositories: list[SimpleRepositoryType]
+    url: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    node_id: str
+    archive_url: NotRequired[str]
+    exclude: NotRequired[list[str]]
+
+
+class MigrationTypeForResponse(TypedDict):
+    """Migration
+
+    A migration.
+    """
+
+    id: int
+    owner: Union[SimpleUserTypeForResponse, None]
+    guid: str
+    state: str
+    lock_repositories: bool
+    exclude_metadata: bool
+    exclude_git_data: bool
+    exclude_attachments: bool
+    exclude_releases: bool
+    exclude_owner_projects: bool
+    org_metadata_only: bool
+    repositories: list[SimpleRepositoryTypeForResponse]
+    url: str
+    created_at: str
+    updated_at: str
+    node_id: str
+    archive_url: NotRequired[str]
+    exclude: NotRequired[list[str]]
 
 
 __all__ = (
-    "OrganizationUpdateIssueTypeType",
-    "OrganizationUpdateIssueTypeTypeForResponse",
+    "MigrationType",
+    "MigrationTypeForResponse",
 )

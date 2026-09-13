@@ -9,28 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class OrgsOrgActionsRunnersDeprecationsVersionGetResponse200Type(TypedDict):
-    """OrgsOrgActionsRunnersDeprecationsVersionGetResponse200"""
-
-    runner_version: str
-    registration_deprecates_at: NotRequired[Union[_dt.datetime, None]]
-    runtime_deprecates_at: NotRequired[Union[_dt.datetime, None]]
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
 
-class OrgsOrgActionsRunnersDeprecationsVersionGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsRunnersDeprecationsVersionGetResponse200"""
+class OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200Type(
+    TypedDict
+):
+    """OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200"""
 
-    runner_version: str
-    registration_deprecates_at: NotRequired[Union[str, None]]
-    runtime_deprecates_at: NotRequired[Union[str, None]]
+    total_count: NotRequired[int]
+    repositories: NotRequired[list[RepositoryType]]
+
+
+class OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200"""
+
+    total_count: NotRequired[int]
+    repositories: NotRequired[list[RepositoryTypeForResponse]]
 
 
 __all__ = (
-    "OrgsOrgActionsRunnersDeprecationsVersionGetResponse200Type",
-    "OrgsOrgActionsRunnersDeprecationsVersionGetResponse200TypeForResponse",
+    "OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200Type",
+    "OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200TypeForResponse",
 )

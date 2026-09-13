@@ -9,80 +9,271 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0225 import DiscussionEventType, DiscussionEventTypeForResponse
+from .group_0226 import IssuesEventType, IssuesEventTypeForResponse
+from .group_0227 import IssueCommentEventType, IssueCommentEventTypeForResponse
+from .group_0228 import ForkEventType, ForkEventTypeForResponse
+from .group_0230 import MemberEventType, MemberEventTypeForResponse
+from .group_0231 import PullRequestEventType, PullRequestEventTypeForResponse
+from .group_0232 import (
+    PullRequestReviewCommentEventType,
+    PullRequestReviewCommentEventTypeForResponse,
+)
+from .group_0233 import (
+    PullRequestReviewEventType,
+    PullRequestReviewEventTypeForResponse,
+)
+from .group_0235 import CommitCommentEventType, CommitCommentEventTypeForResponse
+from .group_0237 import ReleaseEventType, ReleaseEventTypeForResponse
 
 
-class PullRequestMinimalPropHeadType(TypedDict):
-    """PullRequestMinimalPropHead"""
+class EventType(TypedDict):
+    """Event
 
-    ref: str
-    sha: str
-    repo: PullRequestMinimalPropHeadPropRepoType
+    Event
+    """
+
+    id: str
+    type: Union[str, None]
+    actor: ActorType
+    repo: EventPropRepoType
+    org: NotRequired[ActorType]
+    payload: Union[
+        CreateEventType,
+        DeleteEventType,
+        DiscussionEventType,
+        IssuesEventType,
+        IssueCommentEventType,
+        ForkEventType,
+        GollumEventType,
+        MemberEventType,
+        PublicEventType,
+        PushEventType,
+        PullRequestEventType,
+        PullRequestReviewCommentEventType,
+        PullRequestReviewEventType,
+        CommitCommentEventType,
+        ReleaseEventType,
+        WatchEventType,
+    ]
+    public: bool
+    created_at: Union[_dt.datetime, None]
 
 
-class PullRequestMinimalPropHeadTypeForResponse(TypedDict):
-    """PullRequestMinimalPropHead"""
+class EventTypeForResponse(TypedDict):
+    """Event
 
-    ref: str
-    sha: str
-    repo: PullRequestMinimalPropHeadPropRepoTypeForResponse
+    Event
+    """
+
+    id: str
+    type: Union[str, None]
+    actor: ActorTypeForResponse
+    repo: EventPropRepoTypeForResponse
+    org: NotRequired[ActorTypeForResponse]
+    payload: Union[
+        CreateEventTypeForResponse,
+        DeleteEventTypeForResponse,
+        DiscussionEventTypeForResponse,
+        IssuesEventTypeForResponse,
+        IssueCommentEventTypeForResponse,
+        ForkEventTypeForResponse,
+        GollumEventTypeForResponse,
+        MemberEventTypeForResponse,
+        PublicEventTypeForResponse,
+        PushEventTypeForResponse,
+        PullRequestEventTypeForResponse,
+        PullRequestReviewCommentEventTypeForResponse,
+        PullRequestReviewEventTypeForResponse,
+        CommitCommentEventTypeForResponse,
+        ReleaseEventTypeForResponse,
+        WatchEventTypeForResponse,
+    ]
+    public: bool
+    created_at: Union[str, None]
 
 
-class PullRequestMinimalPropHeadPropRepoType(TypedDict):
-    """PullRequestMinimalPropHeadPropRepo"""
+class ActorType(TypedDict):
+    """Actor
+
+    Actor
+    """
 
     id: int
+    login: str
+    display_login: NotRequired[str]
+    gravatar_id: Union[str, None]
     url: str
-    name: str
+    avatar_url: str
 
 
-class PullRequestMinimalPropHeadPropRepoTypeForResponse(TypedDict):
-    """PullRequestMinimalPropHeadPropRepo"""
+class ActorTypeForResponse(TypedDict):
+    """Actor
+
+    Actor
+    """
 
     id: int
+    login: str
+    display_login: NotRequired[str]
+    gravatar_id: Union[str, None]
     url: str
+    avatar_url: str
+
+
+class EventPropRepoType(TypedDict):
+    """EventPropRepo"""
+
+    id: int
     name: str
+    url: str
 
 
-class PullRequestMinimalPropBaseType(TypedDict):
-    """PullRequestMinimalPropBase"""
+class EventPropRepoTypeForResponse(TypedDict):
+    """EventPropRepo"""
+
+    id: int
+    name: str
+    url: str
+
+
+class CreateEventType(TypedDict):
+    """CreateEvent"""
 
     ref: str
-    sha: str
-    repo: PullRequestMinimalPropBasePropRepoType
+    ref_type: str
+    full_ref: str
+    master_branch: str
+    description: NotRequired[Union[str, None]]
+    pusher_type: str
 
 
-class PullRequestMinimalPropBaseTypeForResponse(TypedDict):
-    """PullRequestMinimalPropBase"""
+class CreateEventTypeForResponse(TypedDict):
+    """CreateEvent"""
 
     ref: str
-    sha: str
-    repo: PullRequestMinimalPropBasePropRepoTypeForResponse
+    ref_type: str
+    full_ref: str
+    master_branch: str
+    description: NotRequired[Union[str, None]]
+    pusher_type: str
 
 
-class PullRequestMinimalPropBasePropRepoType(TypedDict):
-    """PullRequestMinimalPropBasePropRepo"""
+class DeleteEventType(TypedDict):
+    """DeleteEvent"""
 
-    id: int
-    url: str
-    name: str
+    ref: str
+    ref_type: str
+    full_ref: str
+    pusher_type: str
 
 
-class PullRequestMinimalPropBasePropRepoTypeForResponse(TypedDict):
-    """PullRequestMinimalPropBasePropRepo"""
+class DeleteEventTypeForResponse(TypedDict):
+    """DeleteEvent"""
 
-    id: int
-    url: str
-    name: str
+    ref: str
+    ref_type: str
+    full_ref: str
+    pusher_type: str
+
+
+class PublicEventType(TypedDict):
+    """PublicEvent"""
+
+
+class PublicEventTypeForResponse(TypedDict):
+    """PublicEvent"""
+
+
+class PushEventType(TypedDict):
+    """PushEvent"""
+
+    repository_id: int
+    push_id: int
+    ref: str
+    head: str
+    before: str
+
+
+class PushEventTypeForResponse(TypedDict):
+    """PushEvent"""
+
+    repository_id: int
+    push_id: int
+    ref: str
+    head: str
+    before: str
+
+
+class WatchEventType(TypedDict):
+    """WatchEvent"""
+
+    action: str
+
+
+class WatchEventTypeForResponse(TypedDict):
+    """WatchEvent"""
+
+    action: str
+
+
+class GollumEventType(TypedDict):
+    """GollumEvent"""
+
+    pages: list[GollumEventPropPagesItemsType]
+
+
+class GollumEventTypeForResponse(TypedDict):
+    """GollumEvent"""
+
+    pages: list[GollumEventPropPagesItemsTypeForResponse]
+
+
+class GollumEventPropPagesItemsType(TypedDict):
+    """GollumEventPropPagesItems"""
+
+    page_name: NotRequired[Union[str, None]]
+    title: NotRequired[Union[str, None]]
+    summary: NotRequired[Union[str, None]]
+    action: NotRequired[str]
+    sha: NotRequired[str]
+    html_url: NotRequired[str]
+
+
+class GollumEventPropPagesItemsTypeForResponse(TypedDict):
+    """GollumEventPropPagesItems"""
+
+    page_name: NotRequired[Union[str, None]]
+    title: NotRequired[Union[str, None]]
+    summary: NotRequired[Union[str, None]]
+    action: NotRequired[str]
+    sha: NotRequired[str]
+    html_url: NotRequired[str]
 
 
 __all__ = (
-    "PullRequestMinimalPropBasePropRepoType",
-    "PullRequestMinimalPropBasePropRepoTypeForResponse",
-    "PullRequestMinimalPropBaseType",
-    "PullRequestMinimalPropBaseTypeForResponse",
-    "PullRequestMinimalPropHeadPropRepoType",
-    "PullRequestMinimalPropHeadPropRepoTypeForResponse",
-    "PullRequestMinimalPropHeadType",
-    "PullRequestMinimalPropHeadTypeForResponse",
+    "ActorType",
+    "ActorTypeForResponse",
+    "CreateEventType",
+    "CreateEventTypeForResponse",
+    "DeleteEventType",
+    "DeleteEventTypeForResponse",
+    "EventPropRepoType",
+    "EventPropRepoTypeForResponse",
+    "EventType",
+    "EventTypeForResponse",
+    "GollumEventPropPagesItemsType",
+    "GollumEventPropPagesItemsTypeForResponse",
+    "GollumEventType",
+    "GollumEventTypeForResponse",
+    "PublicEventType",
+    "PublicEventTypeForResponse",
+    "PushEventType",
+    "PushEventTypeForResponse",
+    "WatchEventType",
+    "WatchEventTypeForResponse",
 )

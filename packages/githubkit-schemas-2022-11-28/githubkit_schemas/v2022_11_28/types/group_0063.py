@@ -9,58 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0045 import LabelType, LabelTypeForResponse
+from .group_0055 import IssueType, IssueTypeForResponse
 
 
-class ReleaseAssetType(TypedDict):
-    """Release Asset
+class IssuesEventType(TypedDict):
+    """IssuesEvent"""
 
-    Data related to a release.
-    """
-
-    url: str
-    browser_download_url: str
-    id: int
-    node_id: str
-    name: str
-    label: Union[str, None]
-    state: Literal["uploaded", "open"]
-    content_type: str
-    size: int
-    digest: Union[str, None]
-    download_count: int
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    uploader: Union[SimpleUserType, None]
+    action: str
+    issue: IssueType
+    assignee: NotRequired[SimpleUserType]
+    assignees: NotRequired[list[SimpleUserType]]
+    label: NotRequired[LabelType]
+    labels: NotRequired[list[LabelType]]
 
 
-class ReleaseAssetTypeForResponse(TypedDict):
-    """Release Asset
+class IssuesEventTypeForResponse(TypedDict):
+    """IssuesEvent"""
 
-    Data related to a release.
-    """
-
-    url: str
-    browser_download_url: str
-    id: int
-    node_id: str
-    name: str
-    label: Union[str, None]
-    state: Literal["uploaded", "open"]
-    content_type: str
-    size: int
-    digest: Union[str, None]
-    download_count: int
-    created_at: str
-    updated_at: str
-    uploader: Union[SimpleUserTypeForResponse, None]
+    action: str
+    issue: IssueTypeForResponse
+    assignee: NotRequired[SimpleUserTypeForResponse]
+    assignees: NotRequired[list[SimpleUserTypeForResponse]]
+    label: NotRequired[LabelTypeForResponse]
+    labels: NotRequired[list[LabelTypeForResponse]]
 
 
 __all__ = (
-    "ReleaseAssetType",
-    "ReleaseAssetTypeForResponse",
+    "IssuesEventType",
+    "IssuesEventTypeForResponse",
 )

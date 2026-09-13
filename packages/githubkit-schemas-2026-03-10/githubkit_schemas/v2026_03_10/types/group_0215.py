@@ -10,39 +10,28 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0216 import (
-    RepositoryRuleRequiredDeploymentsPropParametersType,
-    RepositoryRuleRequiredDeploymentsPropParametersTypeForResponse,
-)
+from typing_extensions import TypedDict
 
 
-class RepositoryRuleRequiredDeploymentsType(TypedDict):
-    """required_deployments
+class RepositoryRuleParamsProofOfPresenceType(TypedDict):
+    """ProofOfPresence
 
-    Choose which environments must be successfully deployed to before refs can be
-    pushed into a ref that matches this rule.
+    Require a fresh authentication before a pull request can be merged.
     """
 
-    type: Literal["required_deployments"]
-    parameters: NotRequired[RepositoryRuleRequiredDeploymentsPropParametersType]
+    required_authentication_level: Literal["reauth", "mfa"]
 
 
-class RepositoryRuleRequiredDeploymentsTypeForResponse(TypedDict):
-    """required_deployments
+class RepositoryRuleParamsProofOfPresenceTypeForResponse(TypedDict):
+    """ProofOfPresence
 
-    Choose which environments must be successfully deployed to before refs can be
-    pushed into a ref that matches this rule.
+    Require a fresh authentication before a pull request can be merged.
     """
 
-    type: Literal["required_deployments"]
-    parameters: NotRequired[
-        RepositoryRuleRequiredDeploymentsPropParametersTypeForResponse
-    ]
+    required_authentication_level: Literal["reauth", "mfa"]
 
 
 __all__ = (
-    "RepositoryRuleRequiredDeploymentsType",
-    "RepositoryRuleRequiredDeploymentsTypeForResponse",
+    "RepositoryRuleParamsProofOfPresenceType",
+    "RepositoryRuleParamsProofOfPresenceTypeForResponse",
 )

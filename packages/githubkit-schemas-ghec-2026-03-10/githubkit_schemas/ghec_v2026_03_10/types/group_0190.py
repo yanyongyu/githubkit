@@ -9,53 +9,70 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class SecretScanningCustomPatternValidationErrorType(TypedDict):
-    """Secret Scanning Custom Pattern Validation Error
+class AdvancedSecurityActiveCommittersType(TypedDict):
+    """AdvancedSecurityActiveCommitters"""
 
-    A validation error for a custom pattern in a batch operation.
-    """
+    total_advanced_security_committers: NotRequired[int]
+    total_count: NotRequired[int]
+    maximum_advanced_security_committers: NotRequired[int]
+    purchased_advanced_security_committers: NotRequired[int]
+    repositories: list[AdvancedSecurityActiveCommittersRepositoryType]
 
-    code: NotRequired[
-        Literal[
-            "invalid",
-            "unprocessable",
-            "start_delimiter",
-            "end_delimiter",
-            "name",
-            "must_match",
-            "must_not_match",
-            "custom_pattern_version_mismatch",
-        ]
+
+class AdvancedSecurityActiveCommittersTypeForResponse(TypedDict):
+    """AdvancedSecurityActiveCommitters"""
+
+    total_advanced_security_committers: NotRequired[int]
+    total_count: NotRequired[int]
+    maximum_advanced_security_committers: NotRequired[int]
+    purchased_advanced_security_committers: NotRequired[int]
+    repositories: list[AdvancedSecurityActiveCommittersRepositoryTypeForResponse]
+
+
+class AdvancedSecurityActiveCommittersRepositoryType(TypedDict):
+    """AdvancedSecurityActiveCommittersRepository"""
+
+    name: str
+    advanced_security_committers: int
+    advanced_security_committers_breakdown: list[
+        AdvancedSecurityActiveCommittersUserType
     ]
-    message: NotRequired[str]
 
 
-class SecretScanningCustomPatternValidationErrorTypeForResponse(TypedDict):
-    """Secret Scanning Custom Pattern Validation Error
+class AdvancedSecurityActiveCommittersRepositoryTypeForResponse(TypedDict):
+    """AdvancedSecurityActiveCommittersRepository"""
 
-    A validation error for a custom pattern in a batch operation.
-    """
-
-    code: NotRequired[
-        Literal[
-            "invalid",
-            "unprocessable",
-            "start_delimiter",
-            "end_delimiter",
-            "name",
-            "must_match",
-            "must_not_match",
-            "custom_pattern_version_mismatch",
-        ]
+    name: str
+    advanced_security_committers: int
+    advanced_security_committers_breakdown: list[
+        AdvancedSecurityActiveCommittersUserTypeForResponse
     ]
-    message: NotRequired[str]
+
+
+class AdvancedSecurityActiveCommittersUserType(TypedDict):
+    """AdvancedSecurityActiveCommittersUser"""
+
+    user_login: str
+    last_pushed_date: str
+    last_pushed_email: str
+
+
+class AdvancedSecurityActiveCommittersUserTypeForResponse(TypedDict):
+    """AdvancedSecurityActiveCommittersUser"""
+
+    user_login: str
+    last_pushed_date: str
+    last_pushed_email: str
 
 
 __all__ = (
-    "SecretScanningCustomPatternValidationErrorType",
-    "SecretScanningCustomPatternValidationErrorTypeForResponse",
+    "AdvancedSecurityActiveCommittersRepositoryType",
+    "AdvancedSecurityActiveCommittersRepositoryTypeForResponse",
+    "AdvancedSecurityActiveCommittersType",
+    "AdvancedSecurityActiveCommittersTypeForResponse",
+    "AdvancedSecurityActiveCommittersUserType",
+    "AdvancedSecurityActiveCommittersUserTypeForResponse",
 )

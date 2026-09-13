@@ -9,106 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class SecretScanningLocationIssueTitleType(TypedDict):
-    """SecretScanningLocationIssueTitle
+class SecretScanningCustomPatternType(TypedDict):
+    """Secret Scanning Custom Pattern
 
-    Represents an 'issue_title' secret scanning location type. This location type
-    shows that a secret was detected in the title of an issue.
+    A custom pattern for secret scanning.
     """
 
-    issue_title_url: str
-    html_url: NotRequired[str]
+    id: int
+    name: str
+    pattern: str
+    slug: str
+    state: Literal["published", "unpublished"]
+    push_protection_enabled: bool
+    start_delimiter: NotRequired[Union[str, None]]
+    end_delimiter: NotRequired[Union[str, None]]
+    must_match: NotRequired[Union[list[str], None]]
+    must_not_match: NotRequired[Union[list[str], None]]
+    custom_pattern_version: NotRequired[Union[str, None]]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
 
 
-class SecretScanningLocationIssueTitleTypeForResponse(TypedDict):
-    """SecretScanningLocationIssueTitle
+class SecretScanningCustomPatternTypeForResponse(TypedDict):
+    """Secret Scanning Custom Pattern
 
-    Represents an 'issue_title' secret scanning location type. This location type
-    shows that a secret was detected in the title of an issue.
+    A custom pattern for secret scanning.
     """
 
-    issue_title_url: str
-    html_url: NotRequired[str]
-
-
-class SecretScanningLocationIssueCommentType(TypedDict):
-    """SecretScanningLocationIssueComment
-
-    Represents an 'issue_comment' secret scanning location type. This location type
-    shows that a secret was detected in a comment on an issue.
-    """
-
-    issue_comment_url: str
-    html_url: NotRequired[str]
-
-
-class SecretScanningLocationIssueCommentTypeForResponse(TypedDict):
-    """SecretScanningLocationIssueComment
-
-    Represents an 'issue_comment' secret scanning location type. This location type
-    shows that a secret was detected in a comment on an issue.
-    """
-
-    issue_comment_url: str
-    html_url: NotRequired[str]
-
-
-class SecretScanningLocationPullRequestTitleType(TypedDict):
-    """SecretScanningLocationPullRequestTitle
-
-    Represents a 'pull_request_title' secret scanning location type. This location
-    type shows that a secret was detected in the title of a pull request.
-    """
-
-    pull_request_title_url: str
-    html_url: NotRequired[str]
-
-
-class SecretScanningLocationPullRequestTitleTypeForResponse(TypedDict):
-    """SecretScanningLocationPullRequestTitle
-
-    Represents a 'pull_request_title' secret scanning location type. This location
-    type shows that a secret was detected in the title of a pull request.
-    """
-
-    pull_request_title_url: str
-    html_url: NotRequired[str]
-
-
-class SecretScanningLocationPullRequestReviewCommentType(TypedDict):
-    """SecretScanningLocationPullRequestReviewComment
-
-    Represents a 'pull_request_review_comment' secret scanning location type. This
-    location type shows that a secret was detected in a review comment on a pull
-    request.
-    """
-
-    pull_request_review_comment_url: str
-    html_url: NotRequired[str]
-
-
-class SecretScanningLocationPullRequestReviewCommentTypeForResponse(TypedDict):
-    """SecretScanningLocationPullRequestReviewComment
-
-    Represents a 'pull_request_review_comment' secret scanning location type. This
-    location type shows that a secret was detected in a review comment on a pull
-    request.
-    """
-
-    pull_request_review_comment_url: str
-    html_url: NotRequired[str]
+    id: int
+    name: str
+    pattern: str
+    slug: str
+    state: Literal["published", "unpublished"]
+    push_protection_enabled: bool
+    start_delimiter: NotRequired[Union[str, None]]
+    end_delimiter: NotRequired[Union[str, None]]
+    must_match: NotRequired[Union[list[str], None]]
+    must_not_match: NotRequired[Union[list[str], None]]
+    custom_pattern_version: NotRequired[Union[str, None]]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
 
 
 __all__ = (
-    "SecretScanningLocationIssueCommentType",
-    "SecretScanningLocationIssueCommentTypeForResponse",
-    "SecretScanningLocationIssueTitleType",
-    "SecretScanningLocationIssueTitleTypeForResponse",
-    "SecretScanningLocationPullRequestReviewCommentType",
-    "SecretScanningLocationPullRequestReviewCommentTypeForResponse",
-    "SecretScanningLocationPullRequestTitleType",
-    "SecretScanningLocationPullRequestTitleTypeForResponse",
+    "SecretScanningCustomPatternType",
+    "SecretScanningCustomPatternTypeForResponse",
 )

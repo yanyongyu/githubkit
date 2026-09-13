@@ -9,38 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, TypeAlias
+
+EnterprisesEnterpriseCopilotContentExclusionPutBodyType: TypeAlias = dict[str, Any]
+"""EnterprisesEnterpriseCopilotContentExclusionPutBody
+"""
 
 
-class EnterprisesEnterpriseCopilotUsageRecordsGetResponse200ItemsType(TypedDict):
-    """EnterprisesEnterpriseCopilotUsageRecordsGetResponse200Items"""
-
-    type: NotRequired[str]
-    user_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
-    github_request_id: NotRequired[str]
-    endpoint: NotRequired[str]
-    body: NotRequired[str]
-    timestamp: NotRequired[int]
-    event_id: NotRequired[str]
-
-
-class EnterprisesEnterpriseCopilotUsageRecordsGetResponse200ItemsTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotUsageRecordsGetResponse200Items"""
-
-    type: NotRequired[str]
-    user_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
-    github_request_id: NotRequired[str]
-    endpoint: NotRequired[str]
-    body: NotRequired[str]
-    timestamp: NotRequired[int]
-    event_id: NotRequired[str]
+EnterprisesEnterpriseCopilotContentExclusionPutBodyTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""EnterprisesEnterpriseCopilotContentExclusionPutBody
+"""
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotUsageRecordsGetResponse200ItemsType",
-    "EnterprisesEnterpriseCopilotUsageRecordsGetResponse200ItemsTypeForResponse",
+    "EnterprisesEnterpriseCopilotContentExclusionPutBodyType",
+    "EnterprisesEnterpriseCopilotContentExclusionPutBodyTypeForResponse",
 )

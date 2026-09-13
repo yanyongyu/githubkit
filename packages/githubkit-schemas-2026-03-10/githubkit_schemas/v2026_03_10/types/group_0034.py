@@ -9,51 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing_extensions import TypedDict
 
 
-class CodeScanningOptionsType(TypedDict):
-    """CodeScanningOptions
+class CopilotUsageMetrics1DayReportType(TypedDict):
+    """Copilot Metrics 1 Day Report
 
-    Security Configuration feature options for code scanning
+    Links to download the Copilot usage metrics report for an
+    enterprise/organization for a specific day.
     """
 
-    allow_advanced: NotRequired[Union[bool, None]]
+    download_links: list[str]
+    report_day: _dt.date
 
 
-class CodeScanningOptionsTypeForResponse(TypedDict):
-    """CodeScanningOptions
+class CopilotUsageMetrics1DayReportTypeForResponse(TypedDict):
+    """Copilot Metrics 1 Day Report
 
-    Security Configuration feature options for code scanning
+    Links to download the Copilot usage metrics report for an
+    enterprise/organization for a specific day.
     """
 
-    allow_advanced: NotRequired[Union[bool, None]]
-
-
-class CodeScanningDefaultSetupOptionsType(TypedDict):
-    """CodeScanningDefaultSetupOptions
-
-    Feature options for code scanning default setup
-    """
-
-    runner_type: NotRequired[Literal["standard", "labeled", "not_set"]]
-    runner_label: NotRequired[Union[str, None]]
-
-
-class CodeScanningDefaultSetupOptionsTypeForResponse(TypedDict):
-    """CodeScanningDefaultSetupOptions
-
-    Feature options for code scanning default setup
-    """
-
-    runner_type: NotRequired[Literal["standard", "labeled", "not_set"]]
-    runner_label: NotRequired[Union[str, None]]
+    download_links: list[str]
+    report_day: str
 
 
 __all__ = (
-    "CodeScanningDefaultSetupOptionsType",
-    "CodeScanningDefaultSetupOptionsTypeForResponse",
-    "CodeScanningOptionsType",
-    "CodeScanningOptionsTypeForResponse",
+    "CopilotUsageMetrics1DayReportType",
+    "CopilotUsageMetrics1DayReportTypeForResponse",
 )

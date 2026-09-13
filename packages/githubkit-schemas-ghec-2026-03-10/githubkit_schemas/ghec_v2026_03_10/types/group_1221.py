@@ -9,25 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBodyType(TypedDict):
-    """EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBody"""
+class EnterprisesEnterpriseCopilotUsageRecordsGetResponse200ItemsType(TypedDict):
+    """EnterprisesEnterpriseCopilotUsageRecordsGetResponse200Items"""
 
-    default_level: Literal["public", "internal"]
+    type: NotRequired[str]
+    user_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
+    github_request_id: NotRequired[str]
+    endpoint: NotRequired[str]
+    body: NotRequired[str]
+    timestamp: NotRequired[int]
+    event_id: NotRequired[str]
 
 
-class EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBodyTypeForResponse(
+class EnterprisesEnterpriseCopilotUsageRecordsGetResponse200ItemsTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBody"""
+    """EnterprisesEnterpriseCopilotUsageRecordsGetResponse200Items"""
 
-    default_level: Literal["public", "internal"]
+    type: NotRequired[str]
+    user_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
+    github_request_id: NotRequired[str]
+    endpoint: NotRequired[str]
+    body: NotRequired[str]
+    timestamp: NotRequired[int]
+    event_id: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBodyType",
-    "EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotUsageRecordsGetResponse200ItemsType",
+    "EnterprisesEnterpriseCopilotUsageRecordsGetResponse200ItemsTypeForResponse",
 )

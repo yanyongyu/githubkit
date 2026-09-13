@@ -11,41 +11,22 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoSecretScanningCustomPatternsPostResponse422(GitHubModel):
-    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse422"""
+class ReposOwnerRepoReleasesAssetsAssetIdPatchBody(GitHubModel):
+    """ReposOwnerRepoReleasesAssetsAssetIdPatchBody"""
 
-    message: Missing[str] = Field(
-        default=UNSET, description="A summary message describing the error."
-    )
-    validation_errors: Missing[
-        ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors
-    ] = Field(
+    name: Missing[str] = Field(default=UNSET, description="The file name of the asset.")
+    label: Missing[str] = Field(
         default=UNSET,
-        description="A map of validation errors keyed by the zero-based index of the pattern that failed.",
+        description="An alternate short description of the asset. Used in place of the filename.",
     )
+    state: Missing[str] = Field(default=UNSET)
 
 
-class ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors(
-    ExtraGitHubModel
-):
-    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors
+model_rebuild(ReposOwnerRepoReleasesAssetsAssetIdPatchBody)
 
-    A map of validation errors keyed by the zero-based index of the pattern that
-    failed.
-    """
-
-
-model_rebuild(ReposOwnerRepoSecretScanningCustomPatternsPostResponse422)
-model_rebuild(
-    ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors
-)
-
-__all__ = (
-    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422",
-    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors",
-)
+__all__ = ("ReposOwnerRepoReleasesAssetsAssetIdPatchBody",)

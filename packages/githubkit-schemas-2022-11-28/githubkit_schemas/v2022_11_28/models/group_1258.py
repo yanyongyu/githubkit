@@ -12,22 +12,16 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoActionsJobsJobIdRerunPostBody(GitHubModel):
-    """ReposOwnerRepoActionsJobsJobIdRerunPostBody"""
+class OrgsOrgSettingsImmutableReleasesRepositoriesPutBody(GitHubModel):
+    """OrgsOrgSettingsImmutableReleasesRepositoriesPutBody"""
 
-    enable_debug_logging: Missing[bool] = Field(
-        default=UNSET, description="Whether to enable debug logging for the re-run."
-    )
-    enable_debugger: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to enable the debugger for the re-run of this job.",
+    selected_repository_ids: list[int] = Field(
+        description="An array of repository ids for which immutable releases enforcement should be applied. You can only provide a list of repository ids when the `enforced_repositories` is set to `selected`. You can add and remove individual repositories using the [Enable a selected repository for immutable releases in an organization](https://docs.github.com/rest/orgs/orgs#enable-a-selected-repository-for-immutable-releases-in-an-organization) and [Disable a selected repository for immutable releases in an organization](https://docs.github.com/rest/orgs/orgs#disable-a-selected-repository-for-immutable-releases-in-an-organization) endpoints."
     )
 
 
-model_rebuild(ReposOwnerRepoActionsJobsJobIdRerunPostBody)
+model_rebuild(OrgsOrgSettingsImmutableReleasesRepositoriesPutBody)
 
-__all__ = ("ReposOwnerRepoActionsJobsJobIdRerunPostBody",)
+__all__ = ("OrgsOrgSettingsImmutableReleasesRepositoriesPutBody",)

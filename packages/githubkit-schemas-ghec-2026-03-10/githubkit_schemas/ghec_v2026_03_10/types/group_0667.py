@@ -9,165 +9,171 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0001 import CvssSeveritiesType, CvssSeveritiesTypeForResponse
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0080 import TeamSimpleType, TeamSimpleTypeForResponse
+from .group_0210 import MilestoneType, MilestoneTypeForResponse
+from .group_0319 import AutoMergeType, AutoMergeTypeForResponse
+from .group_0320 import PullRequestStackType, PullRequestStackTypeForResponse
+from .group_0526 import (
+    PullRequestPropLabelsItemsType,
+    PullRequestPropLabelsItemsTypeForResponse,
+)
+from .group_0527 import (
+    PullRequestPropBaseType,
+    PullRequestPropBaseTypeForResponse,
+    PullRequestPropHeadType,
+    PullRequestPropHeadTypeForResponse,
+)
+from .group_0528 import PullRequestPropLinksType, PullRequestPropLinksTypeForResponse
 
 
-class WebhooksSecurityAdvisoryType(TypedDict):
-    """WebhooksSecurityAdvisory
-
-    The details of the security advisory, including summary, description, and
-    severity.
-    """
-
-    cvss_severities: NotRequired[Union[CvssSeveritiesType, None]]
-    cwes: list[WebhooksSecurityAdvisoryPropCwesItemsType]
-    description: str
-    ghsa_id: str
-    identifiers: list[WebhooksSecurityAdvisoryPropIdentifiersItemsType]
-    published_at: str
-    references: list[WebhooksSecurityAdvisoryPropReferencesItemsType]
-    severity: str
-    summary: str
-    updated_at: str
-    vulnerabilities: list[WebhooksSecurityAdvisoryPropVulnerabilitiesItemsType]
-    withdrawn_at: Union[str, None]
-
-
-class WebhooksSecurityAdvisoryTypeForResponse(TypedDict):
-    """WebhooksSecurityAdvisory
-
-    The details of the security advisory, including summary, description, and
-    severity.
-    """
-
-    cvss_severities: NotRequired[Union[CvssSeveritiesTypeForResponse, None]]
-    cwes: list[WebhooksSecurityAdvisoryPropCwesItemsTypeForResponse]
-    description: str
-    ghsa_id: str
-    identifiers: list[WebhooksSecurityAdvisoryPropIdentifiersItemsTypeForResponse]
-    published_at: str
-    references: list[WebhooksSecurityAdvisoryPropReferencesItemsTypeForResponse]
-    severity: str
-    summary: str
-    updated_at: str
-    vulnerabilities: list[
-        WebhooksSecurityAdvisoryPropVulnerabilitiesItemsTypeForResponse
-    ]
-    withdrawn_at: Union[str, None]
-
-
-class WebhooksSecurityAdvisoryPropCwesItemsType(TypedDict):
-    """WebhooksSecurityAdvisoryPropCwesItems"""
-
-    cwe_id: str
-    name: str
-
-
-class WebhooksSecurityAdvisoryPropCwesItemsTypeForResponse(TypedDict):
-    """WebhooksSecurityAdvisoryPropCwesItems"""
-
-    cwe_id: str
-    name: str
-
-
-class WebhooksSecurityAdvisoryPropIdentifiersItemsType(TypedDict):
-    """WebhooksSecurityAdvisoryPropIdentifiersItems"""
-
-    type: str
-    value: str
-
-
-class WebhooksSecurityAdvisoryPropIdentifiersItemsTypeForResponse(TypedDict):
-    """WebhooksSecurityAdvisoryPropIdentifiersItems"""
-
-    type: str
-    value: str
-
-
-class WebhooksSecurityAdvisoryPropReferencesItemsType(TypedDict):
-    """WebhooksSecurityAdvisoryPropReferencesItems"""
+class PullRequestWebhookType(TypedDict):
+    """PullRequestWebhook"""
 
     url: str
+    id: int
+    node_id: str
+    html_url: str
+    diff_url: str
+    patch_url: str
+    issue_url: str
+    commits_url: str
+    review_comments_url: str
+    review_comment_url: str
+    comments_url: str
+    statuses_url: str
+    number: int
+    state: Literal["open", "closed"]
+    locked: bool
+    title: str
+    user: SimpleUserType
+    body: Union[str, None]
+    labels: list[PullRequestPropLabelsItemsType]
+    milestone: Union[MilestoneType, None]
+    active_lock_reason: NotRequired[Union[str, None]]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    closed_at: Union[_dt.datetime, None]
+    merged_at: Union[_dt.datetime, None]
+    assignees: NotRequired[list[SimpleUserType]]
+    requested_reviewers: NotRequired[list[SimpleUserType]]
+    requested_teams: NotRequired[list[TeamSimpleType]]
+    head: PullRequestPropHeadType
+    base: PullRequestPropBaseType
+    links: PullRequestPropLinksType
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    auto_merge: Union[AutoMergeType, None]
+    stack: NotRequired[Union[PullRequestStackType, None]]
+    draft: NotRequired[bool]
+    merged: bool
+    mergeable: Union[bool, None]
+    rebaseable: NotRequired[Union[bool, None]]
+    mergeable_state: str
+    merged_by: Union[SimpleUserType, None]
+    comments: int
+    review_comments: int
+    maintainer_can_modify: bool
+    commits: int
+    additions: int
+    deletions: int
+    changed_files: int
+    allow_auto_merge: NotRequired[bool]
+    allow_update_branch: NotRequired[bool]
+    delete_branch_on_merge: NotRequired[bool]
+    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
+    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
+    squash_merge_commit_message: NotRequired[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    ]
+    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
+    use_squash_pr_title_as_default: NotRequired[bool]
 
 
-class WebhooksSecurityAdvisoryPropReferencesItemsTypeForResponse(TypedDict):
-    """WebhooksSecurityAdvisoryPropReferencesItems"""
+class PullRequestWebhookTypeForResponse(TypedDict):
+    """PullRequestWebhook"""
 
     url: str
-
-
-class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsType(TypedDict):
-    """WebhooksSecurityAdvisoryPropVulnerabilitiesItems"""
-
-    first_patched_version: Union[
-        WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType,
-        None,
+    id: int
+    node_id: str
+    html_url: str
+    diff_url: str
+    patch_url: str
+    issue_url: str
+    commits_url: str
+    review_comments_url: str
+    review_comment_url: str
+    comments_url: str
+    statuses_url: str
+    number: int
+    state: Literal["open", "closed"]
+    locked: bool
+    title: str
+    user: SimpleUserTypeForResponse
+    body: Union[str, None]
+    labels: list[PullRequestPropLabelsItemsTypeForResponse]
+    milestone: Union[MilestoneTypeForResponse, None]
+    active_lock_reason: NotRequired[Union[str, None]]
+    created_at: str
+    updated_at: str
+    closed_at: Union[str, None]
+    merged_at: Union[str, None]
+    assignees: NotRequired[list[SimpleUserTypeForResponse]]
+    requested_reviewers: NotRequired[list[SimpleUserTypeForResponse]]
+    requested_teams: NotRequired[list[TeamSimpleTypeForResponse]]
+    head: PullRequestPropHeadTypeForResponse
+    base: PullRequestPropBaseTypeForResponse
+    links: PullRequestPropLinksTypeForResponse
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
     ]
-    package: WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType
-    severity: str
-    vulnerable_version_range: str
-
-
-class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsTypeForResponse(TypedDict):
-    """WebhooksSecurityAdvisoryPropVulnerabilitiesItems"""
-
-    first_patched_version: Union[
-        WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionTypeForResponse,
-        None,
+    auto_merge: Union[AutoMergeTypeForResponse, None]
+    stack: NotRequired[Union[PullRequestStackTypeForResponse, None]]
+    draft: NotRequired[bool]
+    merged: bool
+    mergeable: Union[bool, None]
+    rebaseable: NotRequired[Union[bool, None]]
+    mergeable_state: str
+    merged_by: Union[SimpleUserTypeForResponse, None]
+    comments: int
+    review_comments: int
+    maintainer_can_modify: bool
+    commits: int
+    additions: int
+    deletions: int
+    changed_files: int
+    allow_auto_merge: NotRequired[bool]
+    allow_update_branch: NotRequired[bool]
+    delete_branch_on_merge: NotRequired[bool]
+    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
+    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
+    squash_merge_commit_message: NotRequired[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
     ]
-    package: WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageTypeForResponse
-    severity: str
-    vulnerable_version_range: str
-
-
-class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType(
-    TypedDict
-):
-    """WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion"""
-
-    identifier: str
-
-
-class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionTypeForResponse(
-    TypedDict
-):
-    """WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion"""
-
-    identifier: str
-
-
-class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType(TypedDict):
-    """WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage"""
-
-    ecosystem: str
-    name: str
-
-
-class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageTypeForResponse(
-    TypedDict
-):
-    """WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage"""
-
-    ecosystem: str
-    name: str
+    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
+    use_squash_pr_title_as_default: NotRequired[bool]
 
 
 __all__ = (
-    "WebhooksSecurityAdvisoryPropCwesItemsType",
-    "WebhooksSecurityAdvisoryPropCwesItemsTypeForResponse",
-    "WebhooksSecurityAdvisoryPropIdentifiersItemsType",
-    "WebhooksSecurityAdvisoryPropIdentifiersItemsTypeForResponse",
-    "WebhooksSecurityAdvisoryPropReferencesItemsType",
-    "WebhooksSecurityAdvisoryPropReferencesItemsTypeForResponse",
-    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType",
-    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionTypeForResponse",
-    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType",
-    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageTypeForResponse",
-    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsType",
-    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsTypeForResponse",
-    "WebhooksSecurityAdvisoryType",
-    "WebhooksSecurityAdvisoryTypeForResponse",
+    "PullRequestWebhookType",
+    "PullRequestWebhookTypeForResponse",
 )

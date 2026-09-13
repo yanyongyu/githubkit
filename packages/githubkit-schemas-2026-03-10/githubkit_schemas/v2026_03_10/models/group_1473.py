@@ -9,42 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class UserPatchBody(GitHubModel):
-    """UserPatchBody"""
+class ReposOwnerRepoStacksStackNumberAddPostBody(GitHubModel):
+    """ReposOwnerRepoStacksStackNumberAddPostBody"""
 
-    name: Missing[str] = Field(default=UNSET, description="The new name of the user.")
-    email: Missing[str] = Field(
-        default=UNSET, description="The publicly visible email address of the user."
-    )
-    blog: Missing[str] = Field(
-        default=UNSET, description="The new blog URL of the user."
-    )
-    twitter_username: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The new Twitter username of the user."
-    )
-    company: Missing[str] = Field(
-        default=UNSET, description="The new company of the user."
-    )
-    location: Missing[str] = Field(
-        default=UNSET, description="The new location of the user."
-    )
-    hireable: Missing[bool] = Field(
-        default=UNSET, description="The new hiring availability of the user."
-    )
-    bio: Missing[str] = Field(
-        default=UNSET, description="The new short biography of the user."
+    pull_requests: list[int] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="An ordered list of pull request numbers to append to the stack, from the current top upward.",
     )
 
 
-model_rebuild(UserPatchBody)
+model_rebuild(ReposOwnerRepoStacksStackNumberAddPostBody)
 
-__all__ = ("UserPatchBody",)
+__all__ = ("ReposOwnerRepoStacksStackNumberAddPostBody",)

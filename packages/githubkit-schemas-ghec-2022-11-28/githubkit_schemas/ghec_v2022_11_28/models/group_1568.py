@@ -16,16 +16,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoGitRefsRefPatchBody(GitHubModel):
-    """ReposOwnerRepoGitRefsRefPatchBody"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody(
+    GitHubModel
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody"""
 
-    sha: str = Field(description="The SHA1 value to set this reference to")
-    force: Missing[bool] = Field(
+    integration_id: Missing[int] = Field(
         default=UNSET,
-        description="Indicates whether to force the update or to make sure the update is a fast-forward update. Leaving this out or setting it to `false` will make sure you're not overwriting work.",
+        description="The ID of the custom app that will be enabled on the environment.",
     )
 
 
-model_rebuild(ReposOwnerRepoGitRefsRefPatchBody)
+model_rebuild(
+    ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody
+)
 
-__all__ = ("ReposOwnerRepoGitRefsRefPatchBody",)
+__all__ = (
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody",
+)

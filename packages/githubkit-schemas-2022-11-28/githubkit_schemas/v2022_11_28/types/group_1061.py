@@ -11,32 +11,32 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-
-class EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyType(TypedDict):
-    """EnterprisesEnterpriseDependabotRepositoryAccessPatchBody
-
-    Examples:
-        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
-    """
-
-    repository_ids_to_add: NotRequired[list[int]]
-    repository_ids_to_remove: NotRequired[list[int]]
+from .group_0017 import AppPermissionsType, AppPermissionsTypeForResponse
 
 
-class EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseDependabotRepositoryAccessPatchBody
+class ApplicationsClientIdTokenScopedPostBodyType(TypedDict):
+    """ApplicationsClientIdTokenScopedPostBody"""
 
-    Examples:
-        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
-    """
+    access_token: str
+    target: NotRequired[str]
+    target_id: NotRequired[int]
+    repositories: NotRequired[list[str]]
+    repository_ids: NotRequired[list[int]]
+    permissions: NotRequired[AppPermissionsType]
 
-    repository_ids_to_add: NotRequired[list[int]]
-    repository_ids_to_remove: NotRequired[list[int]]
+
+class ApplicationsClientIdTokenScopedPostBodyTypeForResponse(TypedDict):
+    """ApplicationsClientIdTokenScopedPostBody"""
+
+    access_token: str
+    target: NotRequired[str]
+    target_id: NotRequired[int]
+    repositories: NotRequired[list[str]]
+    repository_ids: NotRequired[list[int]]
+    permissions: NotRequired[AppPermissionsTypeForResponse]
 
 
 __all__ = (
-    "EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyType",
-    "EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyTypeForResponse",
+    "ApplicationsClientIdTokenScopedPostBodyType",
+    "ApplicationsClientIdTokenScopedPostBodyTypeForResponse",
 )

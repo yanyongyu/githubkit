@@ -9,32 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoActionsOidcCustomizationSubPutBodyType(TypedDict):
-    """Actions OIDC subject customization for a repository
+class OrgsOrgTeamsPostBodyType(TypedDict):
+    """OrgsOrgTeamsPostBody"""
 
-    Actions OIDC subject customization for a repository
-    """
+    name: str
+    description: NotRequired[str]
+    maintainers: NotRequired[list[str]]
+    repo_names: NotRequired[list[str]]
+    privacy: NotRequired[Literal["secret", "closed"]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
+    permission: NotRequired[Literal["pull", "push"]]
+    parent_team_id: NotRequired[int]
+    parent_team_slug: NotRequired[str]
 
-    use_default: bool
-    include_claim_keys: NotRequired[list[str]]
-    use_immutable_subject: NotRequired[bool]
 
+class OrgsOrgTeamsPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgTeamsPostBody"""
 
-class ReposOwnerRepoActionsOidcCustomizationSubPutBodyTypeForResponse(TypedDict):
-    """Actions OIDC subject customization for a repository
-
-    Actions OIDC subject customization for a repository
-    """
-
-    use_default: bool
-    include_claim_keys: NotRequired[list[str]]
-    use_immutable_subject: NotRequired[bool]
+    name: str
+    description: NotRequired[str]
+    maintainers: NotRequired[list[str]]
+    repo_names: NotRequired[list[str]]
+    privacy: NotRequired[Literal["secret", "closed"]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
+    permission: NotRequired[Literal["pull", "push"]]
+    parent_team_id: NotRequired[int]
+    parent_team_slug: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsOidcCustomizationSubPutBodyType",
-    "ReposOwnerRepoActionsOidcCustomizationSubPutBodyTypeForResponse",
+    "OrgsOrgTeamsPostBodyType",
+    "OrgsOrgTeamsPostBodyTypeForResponse",
 )

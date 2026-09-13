@@ -9,37 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0108 import CustomPropertyValue
 
 
-class ReposOwnerRepoPullsPullNumberMergeAsyncPutBody(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberMergeAsyncPutBody"""
+class ReposOwnerRepoPropertiesValuesPatchBody(GitHubModel):
+    """ReposOwnerRepoPropertiesValuesPatchBody"""
 
-    commit_title: Missing[str] = Field(
-        default=UNSET, description="Title for the automatic commit message."
-    )
-    commit_message: Missing[str] = Field(
-        default=UNSET, description="Extra detail to append to automatic commit message."
-    )
-    sha: Missing[str] = Field(
-        default=UNSET,
-        description="SHA that pull request head must match to allow merge. If not provided, the current head of the PR at the time of the request will be used; if the PR is pushed in between the merge being requested and being executed, the merge will be cancelled.",
-    )
-    merge_method: Missing[Literal["merge", "squash", "rebase"]] = Field(
-        default=UNSET, description="The merge method to use."
-    )
-    merge_action: Missing[Literal["default", "direct_merge", "merge_queue"]] = Field(
-        default=UNSET,
-        description="The action that will be taken to merge the pull request. `direct_merge` merges the pull request directly without using a merge queue; `merge_queue` adds the pull request to a merge queue; `default` selects the most appropriate option.",
+    properties: list[CustomPropertyValue] = Field(
+        description="A list of custom property names and associated values to apply to the repositories."
     )
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberMergeAsyncPutBody)
+model_rebuild(ReposOwnerRepoPropertiesValuesPatchBody)
 
-__all__ = ("ReposOwnerRepoPullsPullNumberMergeAsyncPutBody",)
+__all__ = ("ReposOwnerRepoPropertiesValuesPatchBody",)

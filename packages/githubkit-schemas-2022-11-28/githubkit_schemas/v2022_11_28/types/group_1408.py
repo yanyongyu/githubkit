@@ -9,23 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoNotificationsPutBodyType(TypedDict):
-    """ReposOwnerRepoNotificationsPutBody"""
+class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2ItemsType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items"""
 
-    last_read_at: NotRequired[_dt.datetime]
+    name: str
+    rationale: NotRequired[str]
+    suggest: NotRequired[bool]
+    confidence: NotRequired[Literal["low", "medium", "high"]]
 
 
-class ReposOwnerRepoNotificationsPutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoNotificationsPutBody"""
+class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2ItemsTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items"""
 
-    last_read_at: NotRequired[str]
+    name: str
+    rationale: NotRequired[str]
+    suggest: NotRequired[bool]
+    confidence: NotRequired[Literal["low", "medium", "high"]]
 
 
 __all__ = (
-    "ReposOwnerRepoNotificationsPutBodyType",
-    "ReposOwnerRepoNotificationsPutBodyTypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2ItemsType",
+    "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2ItemsTypeForResponse",
 )

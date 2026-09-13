@@ -9,89 +9,70 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class ReposOwnerRepoGitCommitsPostBodyType(TypedDict):
-    """ReposOwnerRepoGitCommitsPostBody"""
-
-    message: str
-    tree: str
-    parents: NotRequired[list[str]]
-    author: NotRequired[ReposOwnerRepoGitCommitsPostBodyPropAuthorType]
-    committer: NotRequired[ReposOwnerRepoGitCommitsPostBodyPropCommitterType]
-    signature: NotRequired[str]
+from .group_0451 import (
+    DeploymentBranchPolicySettingsType,
+    DeploymentBranchPolicySettingsTypeForResponse,
+)
 
 
-class ReposOwnerRepoGitCommitsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoGitCommitsPostBody"""
+class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType(TypedDict):
+    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBody"""
 
-    message: str
-    tree: str
-    parents: NotRequired[list[str]]
-    author: NotRequired[ReposOwnerRepoGitCommitsPostBodyPropAuthorTypeForResponse]
-    committer: NotRequired[ReposOwnerRepoGitCommitsPostBodyPropCommitterTypeForResponse]
-    signature: NotRequired[str]
-
-
-class ReposOwnerRepoGitCommitsPostBodyPropAuthorType(TypedDict):
-    """ReposOwnerRepoGitCommitsPostBodyPropAuthor
-
-    Information about the author of the commit. By default, the `author` will be the
-    authenticated user and the current date. See the `author` and `committer` object
-    below for details.
-    """
-
-    name: str
-    email: str
-    date: NotRequired[_dt.datetime]
+    wait_timer: NotRequired[int]
+    prevent_self_review: NotRequired[bool]
+    reviewers: NotRequired[
+        Union[
+            list[
+                ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType
+            ],
+            None,
+        ]
+    ]
+    deployment_branch_policy: NotRequired[
+        Union[DeploymentBranchPolicySettingsType, None]
+    ]
 
 
-class ReposOwnerRepoGitCommitsPostBodyPropAuthorTypeForResponse(TypedDict):
-    """ReposOwnerRepoGitCommitsPostBodyPropAuthor
+class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBody"""
 
-    Information about the author of the commit. By default, the `author` will be the
-    authenticated user and the current date. See the `author` and `committer` object
-    below for details.
-    """
-
-    name: str
-    email: str
-    date: NotRequired[str]
-
-
-class ReposOwnerRepoGitCommitsPostBodyPropCommitterType(TypedDict):
-    """ReposOwnerRepoGitCommitsPostBodyPropCommitter
-
-    Information about the person who is making the commit. By default, `committer`
-    will use the information set in `author`. See the `author` and `committer`
-    object below for details.
-    """
-
-    name: NotRequired[str]
-    email: NotRequired[str]
-    date: NotRequired[_dt.datetime]
+    wait_timer: NotRequired[int]
+    prevent_self_review: NotRequired[bool]
+    reviewers: NotRequired[
+        Union[
+            list[
+                ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsTypeForResponse
+            ],
+            None,
+        ]
+    ]
+    deployment_branch_policy: NotRequired[
+        Union[DeploymentBranchPolicySettingsTypeForResponse, None]
+    ]
 
 
-class ReposOwnerRepoGitCommitsPostBodyPropCommitterTypeForResponse(TypedDict):
-    """ReposOwnerRepoGitCommitsPostBodyPropCommitter
+class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType(TypedDict):
+    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems"""
 
-    Information about the person who is making the commit. By default, `committer`
-    will use the information set in `author`. See the `author` and `committer`
-    object below for details.
-    """
+    type: NotRequired[Literal["User", "Team"]]
+    id: NotRequired[int]
 
-    name: NotRequired[str]
-    email: NotRequired[str]
-    date: NotRequired[str]
+
+class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems"""
+
+    type: NotRequired[Literal["User", "Team"]]
+    id: NotRequired[int]
 
 
 __all__ = (
-    "ReposOwnerRepoGitCommitsPostBodyPropAuthorType",
-    "ReposOwnerRepoGitCommitsPostBodyPropAuthorTypeForResponse",
-    "ReposOwnerRepoGitCommitsPostBodyPropCommitterType",
-    "ReposOwnerRepoGitCommitsPostBodyPropCommitterTypeForResponse",
-    "ReposOwnerRepoGitCommitsPostBodyType",
-    "ReposOwnerRepoGitCommitsPostBodyTypeForResponse",
+    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType",
+    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsTypeForResponse",
+    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType",
+    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyTypeForResponse",
 )

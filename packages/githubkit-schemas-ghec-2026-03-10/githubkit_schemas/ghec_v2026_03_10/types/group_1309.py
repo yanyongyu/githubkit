@@ -9,26 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0256 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
-
-
-class OrgsOrgActionsVariablesNameRepositoriesGetResponse200Type(TypedDict):
-    """OrgsOrgActionsVariablesNameRepositoriesGetResponse200"""
-
-    total_count: int
-    repositories: list[MinimalRepositoryType]
+import datetime as _dt
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsVariablesNameRepositoriesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsVariablesNameRepositoriesGetResponse200"""
+class OrgsOrgActionsRunnersDeprecationsVersionGetResponse200Type(TypedDict):
+    """OrgsOrgActionsRunnersDeprecationsVersionGetResponse200"""
 
-    total_count: int
-    repositories: list[MinimalRepositoryTypeForResponse]
+    runner_version: str
+    registration_deprecates_at: NotRequired[Union[_dt.datetime, None]]
+    runtime_deprecates_at: NotRequired[Union[_dt.datetime, None]]
+
+
+class OrgsOrgActionsRunnersDeprecationsVersionGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsRunnersDeprecationsVersionGetResponse200"""
+
+    runner_version: str
+    registration_deprecates_at: NotRequired[Union[str, None]]
+    runtime_deprecates_at: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "OrgsOrgActionsVariablesNameRepositoriesGetResponse200Type",
-    "OrgsOrgActionsVariablesNameRepositoriesGetResponse200TypeForResponse",
+    "OrgsOrgActionsRunnersDeprecationsVersionGetResponse200Type",
+    "OrgsOrgActionsRunnersDeprecationsVersionGetResponse200TypeForResponse",
 )

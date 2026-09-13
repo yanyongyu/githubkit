@@ -9,51 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0122 import (
-    RepositoryRulesetConditionsPropRefNameType,
-    RepositoryRulesetConditionsPropRefNameTypeForResponse,
-)
-from .group_0124 import (
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse,
-)
-from .group_0126 import (
-    EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType,
-    EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdTypeForResponse,
+from .group_0133 import (
+    RepositoryRuleUpdatePropParametersType,
+    RepositoryRuleUpdatePropParametersTypeForResponse,
 )
 
 
-class EnterpriseRulesetConditionsOneof3Type(TypedDict):
-    """organization_id_and_repository_property
+class RepositoryRuleUpdateType(TypedDict):
+    """update
 
-    Conditions to target organization by id and repositories by property
+    Only allow users with bypass permission to update matching refs.
     """
 
-    organization_id: (
-        EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType
-    )
-    repository_property: (
-        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
-    )
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
+    type: Literal["update"]
+    parameters: NotRequired[RepositoryRuleUpdatePropParametersType]
 
 
-class EnterpriseRulesetConditionsOneof3TypeForResponse(TypedDict):
-    """organization_id_and_repository_property
+class RepositoryRuleUpdateTypeForResponse(TypedDict):
+    """update
 
-    Conditions to target organization by id and repositories by property
+    Only allow users with bypass permission to update matching refs.
     """
 
-    organization_id: (
-        EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdTypeForResponse
-    )
-    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
+    type: Literal["update"]
+    parameters: NotRequired[RepositoryRuleUpdatePropParametersTypeForResponse]
 
 
 __all__ = (
-    "EnterpriseRulesetConditionsOneof3Type",
-    "EnterpriseRulesetConditionsOneof3TypeForResponse",
+    "RepositoryRuleUpdateType",
+    "RepositoryRuleUpdateTypeForResponse",
 )

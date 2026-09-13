@@ -9,24 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0050 import RunnerType, RunnerTypeForResponse
 
 
-class EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422Type(TypedDict):
-    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422"""
-
-    errors: NotRequired[list[str]]
-
-
-class EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422TypeForResponse(
+class EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type(
     TypedDict
 ):
-    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422"""
+    """EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201"""
 
-    errors: NotRequired[list[str]]
+    runner: RunnerType
+    encoded_jit_config: str
+
+
+class EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201"""
+
+    runner: RunnerTypeForResponse
+    encoded_jit_config: str
 
 
 __all__ = (
-    "EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422Type",
-    "EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422TypeForResponse",
+    "EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type",
+    "EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201TypeForResponse",
 )

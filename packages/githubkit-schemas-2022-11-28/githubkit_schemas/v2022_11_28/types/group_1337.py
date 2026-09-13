@@ -9,76 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0140 import CodespaceType, CodespaceTypeForResponse
 
 
-class ReposOwnerRepoContentsPathDeleteBodyType(TypedDict):
-    """ReposOwnerRepoContentsPathDeleteBody"""
+class ReposOwnerRepoCodespacesGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCodespacesGetResponse200"""
 
-    message: str
-    sha: str
-    branch: NotRequired[str]
-    committer: NotRequired[ReposOwnerRepoContentsPathDeleteBodyPropCommitterType]
-    author: NotRequired[ReposOwnerRepoContentsPathDeleteBodyPropAuthorType]
+    total_count: int
+    codespaces: list[CodespaceType]
 
 
-class ReposOwnerRepoContentsPathDeleteBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoContentsPathDeleteBody"""
+class ReposOwnerRepoCodespacesGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoCodespacesGetResponse200"""
 
-    message: str
-    sha: str
-    branch: NotRequired[str]
-    committer: NotRequired[
-        ReposOwnerRepoContentsPathDeleteBodyPropCommitterTypeForResponse
-    ]
-    author: NotRequired[ReposOwnerRepoContentsPathDeleteBodyPropAuthorTypeForResponse]
-
-
-class ReposOwnerRepoContentsPathDeleteBodyPropCommitterType(TypedDict):
-    """ReposOwnerRepoContentsPathDeleteBodyPropCommitter
-
-    object containing information about the committer.
-    """
-
-    name: NotRequired[str]
-    email: NotRequired[str]
-
-
-class ReposOwnerRepoContentsPathDeleteBodyPropCommitterTypeForResponse(TypedDict):
-    """ReposOwnerRepoContentsPathDeleteBodyPropCommitter
-
-    object containing information about the committer.
-    """
-
-    name: NotRequired[str]
-    email: NotRequired[str]
-
-
-class ReposOwnerRepoContentsPathDeleteBodyPropAuthorType(TypedDict):
-    """ReposOwnerRepoContentsPathDeleteBodyPropAuthor
-
-    object containing information about the author.
-    """
-
-    name: NotRequired[str]
-    email: NotRequired[str]
-
-
-class ReposOwnerRepoContentsPathDeleteBodyPropAuthorTypeForResponse(TypedDict):
-    """ReposOwnerRepoContentsPathDeleteBodyPropAuthor
-
-    object containing information about the author.
-    """
-
-    name: NotRequired[str]
-    email: NotRequired[str]
+    total_count: int
+    codespaces: list[CodespaceTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoContentsPathDeleteBodyPropAuthorType",
-    "ReposOwnerRepoContentsPathDeleteBodyPropAuthorTypeForResponse",
-    "ReposOwnerRepoContentsPathDeleteBodyPropCommitterType",
-    "ReposOwnerRepoContentsPathDeleteBodyPropCommitterTypeForResponse",
-    "ReposOwnerRepoContentsPathDeleteBodyType",
-    "ReposOwnerRepoContentsPathDeleteBodyTypeForResponse",
+    "ReposOwnerRepoCodespacesGetResponse200Type",
+    "ReposOwnerRepoCodespacesGetResponse200TypeForResponse",
 )

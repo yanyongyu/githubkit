@@ -15,46 +15,36 @@ from typing import Literal, Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0003 import SimpleUser
 
 
-class EnterpriseTeamWithMemberCount(GitHubModel):
-    """Enterprise Team
+class Milestone(GitHubModel):
+    """Milestone
 
-    Group of enterprise owners and/or members
+    A collection of related issues and pull requests.
     """
 
-    id: int = Field()
-    name: str = Field()
-    description: Missing[str] = Field(default=UNSET)
-    slug: str = Field()
     url: str = Field()
-    sync_to_organizations: Missing[str] = Field(
-        default=UNSET,
-        description="Retired: this field will not be returned with GHEC enterprise teams.",
-    )
-    organization_selection_type: Missing[str] = Field(default=UNSET)
-    group_id: Union[str, None] = Field()
-    group_name: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="Retired: this field will not be returned with GHEC enterprise teams.",
-    )
     html_url: str = Field()
-    members_url: str = Field()
-    members_count: int = Field(
-        description="The number of members in the enterprise team."
+    labels_url: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    number: int = Field(description="The number of the milestone.")
+    state: Literal["open", "closed"] = Field(
+        default="open", description="The state of the milestone."
     )
+    title: str = Field(description="The title of the milestone.")
+    description: Union[str, None] = Field()
+    creator: Union[SimpleUser, None] = Field()
+    open_issues: int = Field()
+    closed_issues: int = Field()
     created_at: _dt.datetime = Field()
     updated_at: _dt.datetime = Field()
-    notification_setting: Missing[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ] = Field(
-        default=UNSET,
-        description="Whether team members will receive notifications when the team is mentioned.",
-    )
+    closed_at: Union[_dt.datetime, None] = Field()
+    due_on: Union[_dt.datetime, None] = Field()
 
 
-model_rebuild(EnterpriseTeamWithMemberCount)
+model_rebuild(Milestone)
 
-__all__ = ("EnterpriseTeamWithMemberCount",)
+__all__ = ("Milestone",)

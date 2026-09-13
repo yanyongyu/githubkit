@@ -12,18 +12,22 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0147 import CopilotSpaceResource
 
+class UserUserIdProjectsV2ProjectNumberDraftsPostBody(GitHubModel):
+    """UserUserIdProjectsV2ProjectNumberDraftsPostBody"""
 
-class UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200(GitHubModel):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200"""
-
-    resources: list[CopilotSpaceResource] = Field(
-        description="The list of resources attached to this Copilot Space."
+    title: str = Field(
+        description="The title of the draft issue item to create in the project."
+    )
+    body: Missing[str] = Field(
+        default=UNSET,
+        description="The body content of the draft issue item to create in the project.",
     )
 
 
-model_rebuild(UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200)
+model_rebuild(UserUserIdProjectsV2ProjectNumberDraftsPostBody)
 
-__all__ = ("UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200",)
+__all__ = ("UserUserIdProjectsV2ProjectNumberDraftsPostBody",)

@@ -9,20 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0074 import CodeSecurityConfiguration
 
 
-class EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200(GitHubModel):
-    """EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200
-
-    The total number of seats set to "pending cancellation" for the specified users.
+class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutRespons
+    e200
     """
 
-    seats_cancelled: int = Field()
+    default_for_new_repos: Missing[
+        Literal["all", "none", "private_and_internal", "public"]
+    ] = Field(
+        default=UNSET,
+        description="Specifies which types of repository this security configuration is applied to by default.",
+    )
+    configuration: Missing[CodeSecurityConfiguration] = Field(
+        default=UNSET, description="A code security configuration"
+    )
 
 
-model_rebuild(EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200)
+model_rebuild(
+    EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200
+)
 
-__all__ = ("EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200",)
+__all__ = (
+    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200",
+)

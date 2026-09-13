@@ -16,15 +16,78 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBody(GitHubModel):
-    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBody"""
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200(GitHubModel):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200"""
 
-    revoke_credentials: Missing[bool] = Field(
+    organization: Missing[
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganization
+    ] = Field(default=UNSET)
+    repository: Missing[
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepository
+    ] = Field(default=UNSET)
+    ruleset: Missing[
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRuleset
+    ] = Field(
         default=UNSET,
-        description="Whether to also destroy the actual credentials (PATs and SSH keys) owned by\nthe user. This option is only available for Enterprise Managed User (EMU)\nenterprises. When set to `true`, all PATs (v1 and v2) and SSH keys owned\nby the user will be destroyed in addition to the credential authorizations.",
+        description="The created or existing ruleset (if create_ruleset was true).",
     )
 
 
-model_rebuild(EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBody)
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganization(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganization"""
 
-__all__ = ("EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBody",)
+    id: Missing[int] = Field(default=UNSET, description="The ID of the organization.")
+    login: Missing[str] = Field(
+        default=UNSET, description="The login name of the organization."
+    )
+    avatar_url: Missing[str] = Field(
+        default=UNSET, description="The avatar URL of the organization."
+    )
+
+
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepository(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepository"""
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The ID of the .github-private repository."
+    )
+    name: Missing[str] = Field(default=UNSET, description="The name of the repository.")
+    full_name: Missing[str] = Field(
+        default=UNSET, description="The full name of the repository (owner/name)."
+    )
+
+
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRuleset(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRuleset
+
+    The created or existing ruleset (if create_ruleset was true).
+    """
+
+    id: Missing[int] = Field(default=UNSET, description="The ID of the ruleset.")
+    name: Missing[str] = Field(default=UNSET, description="The name of the ruleset.")
+    enforcement: Missing[str] = Field(
+        default=UNSET, description="The enforcement level of the ruleset."
+    )
+
+
+model_rebuild(EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200)
+model_rebuild(
+    EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganization
+)
+model_rebuild(
+    EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepository
+)
+model_rebuild(EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRuleset)
+
+__all__ = (
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganization",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepository",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRuleset",
+)

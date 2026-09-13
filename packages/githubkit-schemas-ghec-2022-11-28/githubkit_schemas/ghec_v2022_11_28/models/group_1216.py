@@ -16,24 +16,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostResponse202(
-    GitHubModel
-):
-    """EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostResponse202"""
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody(GitHubModel):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody"""
 
-    message: Missing[str] = Field(
-        default=UNSET, description="A message indicating the revocation has been queued"
+    organization_id: int = Field(
+        description="The ID of the organization to use as the custom agents source."
     )
-    warning: Missing[str] = Field(
+    create_ruleset: Missing[bool] = Field(
         default=UNSET,
-        description="A warning message if the token used for this request may be revoked",
+        description="Whether to create a ruleset to protect agent definition files. Defaults to true.",
     )
 
 
-model_rebuild(
-    EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostResponse202
-)
+model_rebuild(EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody)
 
-__all__ = (
-    "EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostResponse202",
-)
+__all__ = ("EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody",)

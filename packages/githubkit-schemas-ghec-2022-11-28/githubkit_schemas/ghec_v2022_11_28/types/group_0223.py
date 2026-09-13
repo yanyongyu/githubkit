@@ -9,37 +9,82 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0224 import (
-    PullRequestMinimalPropBaseType,
-    PullRequestMinimalPropBaseTypeForResponse,
-    PullRequestMinimalPropHeadType,
-    PullRequestMinimalPropHeadTypeForResponse,
-)
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0212 import ReactionRollupType, ReactionRollupTypeForResponse
+from .group_0222 import ReleaseAssetType, ReleaseAssetTypeForResponse
 
 
-class PullRequestMinimalType(TypedDict):
-    """Pull Request Minimal"""
+class ReleaseType(TypedDict):
+    """Release
 
-    id: int
-    number: int
+    A release.
+    """
+
     url: str
-    head: PullRequestMinimalPropHeadType
-    base: PullRequestMinimalPropBaseType
-
-
-class PullRequestMinimalTypeForResponse(TypedDict):
-    """Pull Request Minimal"""
-
+    html_url: str
+    assets_url: str
+    upload_url: str
+    tarball_url: Union[str, None]
+    zipball_url: Union[str, None]
     id: int
-    number: int
+    node_id: str
+    tag_name: str
+    target_commitish: str
+    name: Union[str, None]
+    body: NotRequired[Union[str, None]]
+    draft: bool
+    prerelease: bool
+    immutable: NotRequired[bool]
+    created_at: _dt.datetime
+    published_at: Union[_dt.datetime, None]
+    updated_at: NotRequired[Union[_dt.datetime, None]]
+    author: SimpleUserType
+    assets: list[ReleaseAssetType]
+    body_html: NotRequired[Union[str, None]]
+    body_text: NotRequired[Union[str, None]]
+    mentions_count: NotRequired[int]
+    discussion_url: NotRequired[str]
+    reactions: NotRequired[ReactionRollupType]
+
+
+class ReleaseTypeForResponse(TypedDict):
+    """Release
+
+    A release.
+    """
+
     url: str
-    head: PullRequestMinimalPropHeadTypeForResponse
-    base: PullRequestMinimalPropBaseTypeForResponse
+    html_url: str
+    assets_url: str
+    upload_url: str
+    tarball_url: Union[str, None]
+    zipball_url: Union[str, None]
+    id: int
+    node_id: str
+    tag_name: str
+    target_commitish: str
+    name: Union[str, None]
+    body: NotRequired[Union[str, None]]
+    draft: bool
+    prerelease: bool
+    immutable: NotRequired[bool]
+    created_at: str
+    published_at: Union[str, None]
+    updated_at: NotRequired[Union[str, None]]
+    author: SimpleUserTypeForResponse
+    assets: list[ReleaseAssetTypeForResponse]
+    body_html: NotRequired[Union[str, None]]
+    body_text: NotRequired[Union[str, None]]
+    mentions_count: NotRequired[int]
+    discussion_url: NotRequired[str]
+    reactions: NotRequired[ReactionRollupTypeForResponse]
 
 
 __all__ = (
-    "PullRequestMinimalType",
-    "PullRequestMinimalTypeForResponse",
+    "ReleaseType",
+    "ReleaseTypeForResponse",
 )

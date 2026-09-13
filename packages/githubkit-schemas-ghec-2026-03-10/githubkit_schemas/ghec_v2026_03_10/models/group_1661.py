@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,37 +17,86 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class ReposOwnerRepoStacksPostResponse422(GitHubModel):
-    """Validation Error
-
-    Validation Error
-    """
-
-    message: str = Field()
-    documentation_url: str = Field()
-    errors: Missing[list[ReposOwnerRepoStacksPostResponse422PropErrorsItems]] = Field(
-        default=UNSET
-    )
-
-
-class ReposOwnerRepoStacksPostResponse422PropErrorsItems(GitHubModel):
-    """ReposOwnerRepoStacksPostResponse422PropErrorsItems"""
-
-    resource: Missing[str] = Field(default=UNSET)
-    field: Missing[str] = Field(default=UNSET)
-    message: Missing[str] = Field(default=UNSET)
-    code: str = Field()
-    index: Missing[int] = Field(default=UNSET)
-    value: Missing[Union[str, None, int, None, list[Union[str, int]], None]] = Field(
-        default=UNSET
-    )
-
-
-model_rebuild(ReposOwnerRepoStacksPostResponse422)
-model_rebuild(ReposOwnerRepoStacksPostResponse422PropErrorsItems)
-
-__all__ = (
-    "ReposOwnerRepoStacksPostResponse422",
-    "ReposOwnerRepoStacksPostResponse422PropErrorsItems",
+from .group_0112 import RepositoryRulesetBypassActor
+from .group_0117 import RepositoryRulesetConditions
+from .group_0131 import (
+    RepositoryRuleCreation,
+    RepositoryRuleDeletion,
+    RepositoryRuleNonFastForward,
+    RepositoryRuleRequiredSignatures,
 )
+from .group_0132 import RepositoryRuleUpdate
+from .group_0134 import RepositoryRuleRequiredLinearHistory
+from .group_0135 import RepositoryRuleRequiredDeployments
+from .group_0138 import RepositoryRulePullRequest
+from .group_0140 import RepositoryRuleRequiredStatusChecks
+from .group_0142 import RepositoryRuleCommitMessagePattern
+from .group_0144 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0146 import RepositoryRuleCommitterEmailPattern
+from .group_0148 import RepositoryRuleBranchNamePattern
+from .group_0150 import RepositoryRuleTagNamePattern
+from .group_0152 import RepositoryRuleFilePathRestriction
+from .group_0154 import RepositoryRuleMaxFilePathLength
+from .group_0156 import RepositoryRuleFileExtensionRestriction
+from .group_0158 import RepositoryRuleMaxFileSize
+from .group_0161 import RepositoryRuleWorkflows
+from .group_0163 import RepositoryRuleCodeScanning
+from .group_0165 import RepositoryRuleCopilotCodeReview
+from .group_0172 import RepositoryRuleMergeQueue
+from .group_0174 import RepositoryRuleLicenseComplianceScanning
+
+
+class ReposOwnerRepoRulesetsRulesetIdPutBody(GitHubModel):
+    """ReposOwnerRepoRulesetsRulesetIdPutBody"""
+
+    name: Missing[str] = Field(default=UNSET, description="The name of the ruleset.")
+    target: Missing[Literal["branch", "tag", "push"]] = Field(
+        default=UNSET, description="The target of the ruleset"
+    )
+    enforcement: Missing[Literal["disabled", "active", "evaluate"]] = Field(
+        default=UNSET,
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target.",
+    )
+    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
+        default=UNSET,
+        description="The actors that can bypass the rules in this ruleset",
+    )
+    conditions: Missing[RepositoryRulesetConditions] = Field(
+        default=UNSET,
+        title="Repository ruleset conditions for ref names",
+        description="Parameters for a repository ruleset ref name condition",
+    )
+    rules: Missing[
+        list[
+            Union[
+                RepositoryRuleCreation,
+                RepositoryRuleUpdate,
+                RepositoryRuleDeletion,
+                RepositoryRuleRequiredLinearHistory,
+                RepositoryRuleMergeQueue,
+                RepositoryRuleRequiredDeployments,
+                RepositoryRuleRequiredSignatures,
+                RepositoryRulePullRequest,
+                RepositoryRuleRequiredStatusChecks,
+                RepositoryRuleNonFastForward,
+                RepositoryRuleCommitMessagePattern,
+                RepositoryRuleCommitAuthorEmailPattern,
+                RepositoryRuleCommitterEmailPattern,
+                RepositoryRuleBranchNamePattern,
+                RepositoryRuleTagNamePattern,
+                RepositoryRuleWorkflows,
+                RepositoryRuleCodeScanning,
+                RepositoryRuleCopilotCodeReview,
+                RepositoryRuleLicenseComplianceScanning,
+                RepositoryRuleFilePathRestriction,
+                RepositoryRuleMaxFilePathLength,
+                RepositoryRuleFileExtensionRestriction,
+                RepositoryRuleMaxFileSize,
+            ]
+        ]
+    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
+
+
+model_rebuild(ReposOwnerRepoRulesetsRulesetIdPutBody)
+
+__all__ = ("ReposOwnerRepoRulesetsRulesetIdPutBody",)

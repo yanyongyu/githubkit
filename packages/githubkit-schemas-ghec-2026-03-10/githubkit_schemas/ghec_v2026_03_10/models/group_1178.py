@@ -11,26 +11,20 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0050 import Runner
 
 
-class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBody(
-    GitHubModel
-):
-    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositories
-    RemovePatchBody
-    """
+class EnterprisesEnterpriseActionsRunnersGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseActionsRunnersGetResponse200"""
 
-    repositories: list[str] = Field(
-        max_length=50 if PYDANTIC_V2 else None,
-        description="The repository names to remove from the installation.",
-    )
+    total_count: Missing[float] = Field(default=UNSET)
+    runners: Missing[list[Runner]] = Field(default=UNSET)
 
 
-model_rebuild(
-    EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBody
-)
+model_rebuild(EnterprisesEnterpriseActionsRunnersGetResponse200)
 
-__all__ = (
-    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBody",
-)
+__all__ = ("EnterprisesEnterpriseActionsRunnersGetResponse200",)

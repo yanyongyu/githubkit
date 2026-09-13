@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -19,48 +18,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class BypassResponse(GitHubModel):
-    """Bypass response
+class CodeScanningAnalysisTool(GitHubModel):
+    """CodeScanningAnalysisTool"""
 
-    A response made by a delegated bypasser to a bypass request.
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The ID of the response to the bypass request."
-    )
-    reviewer: Missing[BypassResponsePropReviewer] = Field(
-        default=UNSET, description="The user who reviewed the bypass request."
-    )
-    status: Missing[Literal["approved", "denied", "dismissed"]] = Field(
+    name: Missing[str] = Field(
         default=UNSET,
-        description="The response status to the bypass request until dismissed.",
+        description="The name of the tool used to generate the code scanning analysis.",
     )
-    created_at: Missing[_dt.datetime] = Field(
+    version: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The date and time the response to the bypass request was created.",
+        description="The version of the tool used to generate the code scanning analysis.",
     )
-
-
-class BypassResponsePropReviewer(GitHubModel):
-    """BypassResponsePropReviewer
-
-    The user who reviewed the bypass request.
-    """
-
-    actor_id: Missing[int] = Field(
+    guid: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The ID of the GitHub user who reviewed the bypass request.",
-    )
-    actor_name: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the GitHub user who reviewed the bypass request.",
+        description="The GUID of the tool used to generate the code scanning analysis, if provided in the uploaded SARIF data.",
     )
 
 
-model_rebuild(BypassResponse)
-model_rebuild(BypassResponsePropReviewer)
+model_rebuild(CodeScanningAnalysisTool)
 
-__all__ = (
-    "BypassResponse",
-    "BypassResponsePropReviewer",
-)
+__all__ = ("CodeScanningAnalysisTool",)

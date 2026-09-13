@@ -9,6 +9,9 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,46 +19,75 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AdvancedSecurityActiveCommitters(GitHubModel):
-    """AdvancedSecurityActiveCommitters"""
+class CreateBudget(GitHubModel):
+    """CreateBudget"""
 
-    total_advanced_security_committers: Missing[int] = Field(default=UNSET)
-    total_count: Missing[int] = Field(default=UNSET)
-    maximum_advanced_security_committers: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of GitHub Advanced Security licences required if all repositories were to enable GitHub Advanced Security",
+    message: str = Field(
+        description="A message indicating the result of the create operation"
     )
-    purchased_advanced_security_committers: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of GitHub Advanced Security licences purchased",
+    budget: CreateBudgetPropBudget = Field()
+
+
+class CreateBudgetPropBudget(GitHubModel):
+    """CreateBudgetPropBudget"""
+
+    id: Missing[str] = Field(default=UNSET, description="ID of the budget.")
+    budget_scope: Missing[
+        Literal[
+            "enterprise",
+            "organization",
+            "repository",
+            "cost_center",
+            "multi_user_customer",
+            "multi_user_cost_center",
+            "user",
+        ]
+    ] = Field(default=UNSET, description="The type of scope for the budget")
+    budget_entity_name: Missing[str] = Field(
+        default=UNSET, description="The name of the entity to apply the budget to"
     )
-    repositories: list[AdvancedSecurityActiveCommittersRepository] = Field()
+    budget_amount: Missing[int] = Field(
+        default=UNSET,
+        description="The budget amount in whole dollars. For license-based products, this represents the number of licenses.",
+    )
+    prevent_further_usage: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to prevent additional spending once the budget is exceeded",
+    )
+    budget_product_sku: Missing[str] = Field(
+        default=UNSET, description="A single product or sku to apply the budget to."
+    )
+    budget_type: Missing[Literal["ProductPricing", "SkuPricing", "BundlePricing"]] = (
+        Field(default=UNSET, description="The type of pricing for the budget")
+    )
+    budget_alerting: Missing[CreateBudgetPropBudgetPropBudgetAlerting] = Field(
+        default=UNSET
+    )
+    expires_at: Missing[_dt.date] = Field(
+        default=UNSET,
+        description="The date the budget will expire in `YYYY-MM-DD` format. Only dates in the future are accepted.\nIf not provided, the budget will not expire.\n\nOnly supported for budgets with `budget_scope` of `user`",
+    )
 
 
-class AdvancedSecurityActiveCommittersRepository(GitHubModel):
-    """AdvancedSecurityActiveCommittersRepository"""
+class CreateBudgetPropBudgetPropBudgetAlerting(GitHubModel):
+    """CreateBudgetPropBudgetPropBudgetAlerting"""
 
-    name: str = Field()
-    advanced_security_committers: int = Field()
-    advanced_security_committers_breakdown: list[
-        AdvancedSecurityActiveCommittersUser
-    ] = Field()
-
-
-class AdvancedSecurityActiveCommittersUser(GitHubModel):
-    """AdvancedSecurityActiveCommittersUser"""
-
-    user_login: str = Field()
-    last_pushed_date: str = Field()
-    last_pushed_email: str = Field()
+    will_alert: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether alerts are enabled for this budget. Rejected for user-scope as alerting is always disabled for them.",
+    )
+    alert_recipients: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Array of user login names who will receive alerts. Rejected for user-scope as alerting is always disabled for them.",
+    )
 
 
-model_rebuild(AdvancedSecurityActiveCommitters)
-model_rebuild(AdvancedSecurityActiveCommittersRepository)
-model_rebuild(AdvancedSecurityActiveCommittersUser)
+model_rebuild(CreateBudget)
+model_rebuild(CreateBudgetPropBudget)
+model_rebuild(CreateBudgetPropBudgetPropBudgetAlerting)
 
 __all__ = (
-    "AdvancedSecurityActiveCommitters",
-    "AdvancedSecurityActiveCommittersRepository",
-    "AdvancedSecurityActiveCommittersUser",
+    "CreateBudget",
+    "CreateBudgetPropBudget",
+    "CreateBudgetPropBudgetPropBudgetAlerting",
 )

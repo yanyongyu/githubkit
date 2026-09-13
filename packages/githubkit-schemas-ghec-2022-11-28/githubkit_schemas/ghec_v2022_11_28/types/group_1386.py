@@ -9,31 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
 
-class OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyType(
-    TypedDict
-):
-    """OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBody"""
+class OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type(TypedDict):
+    """OrgsOrgCopilotBillingSelectedUsersDeleteResponse200
 
-    credential_type: Literal[
-        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
-    ]
+    The total number of seats set to "pending cancellation" for the specified users.
+    """
+
+    seats_cancelled: int
 
 
-class OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBody"""
+class OrgsOrgCopilotBillingSelectedUsersDeleteResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCopilotBillingSelectedUsersDeleteResponse200
 
-    credential_type: Literal[
-        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
-    ]
+    The total number of seats set to "pending cancellation" for the specified users.
+    """
+
+    seats_cancelled: int
 
 
 __all__ = (
-    "OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyType",
-    "OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyTypeForResponse",
+    "OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type",
+    "OrgsOrgCopilotBillingSelectedUsersDeleteResponse200TypeForResponse",
 )

@@ -9,67 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
-
-from .group_0256 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class ThreadType(TypedDict):
-    """Thread
+class ActionsCacheRetentionLimitForOrganizationType(TypedDict):
+    """Actions cache retention limit for an organization
 
-    Thread
+    GitHub Actions cache retention policy for an organization.
     """
 
-    id: str
-    repository: MinimalRepositoryType
-    subject: ThreadPropSubjectType
-    reason: str
-    unread: bool
-    updated_at: str
-    last_read_at: Union[str, None]
-    url: str
-    subscription_url: str
+    max_cache_retention_days: NotRequired[int]
 
 
-class ThreadTypeForResponse(TypedDict):
-    """Thread
+class ActionsCacheRetentionLimitForOrganizationTypeForResponse(TypedDict):
+    """Actions cache retention limit for an organization
 
-    Thread
+    GitHub Actions cache retention policy for an organization.
     """
 
-    id: str
-    repository: MinimalRepositoryTypeForResponse
-    subject: ThreadPropSubjectTypeForResponse
-    reason: str
-    unread: bool
-    updated_at: str
-    last_read_at: Union[str, None]
-    url: str
-    subscription_url: str
-
-
-class ThreadPropSubjectType(TypedDict):
-    """ThreadPropSubject"""
-
-    title: str
-    url: str
-    latest_comment_url: str
-    type: str
-
-
-class ThreadPropSubjectTypeForResponse(TypedDict):
-    """ThreadPropSubject"""
-
-    title: str
-    url: str
-    latest_comment_url: str
-    type: str
+    max_cache_retention_days: NotRequired[int]
 
 
 __all__ = (
-    "ThreadPropSubjectType",
-    "ThreadPropSubjectTypeForResponse",
-    "ThreadType",
-    "ThreadTypeForResponse",
+    "ActionsCacheRetentionLimitForOrganizationType",
+    "ActionsCacheRetentionLimitForOrganizationTypeForResponse",
 )

@@ -9,46 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class CustomPropertyBase(GitHubModel):
-    """CustomPropertyBase"""
+class CustomPropertyValue(GitHubModel):
+    """Custom Property Value
 
-    property_name: Missing[str] = Field(
-        default=UNSET, description="The name of the property"
-    )
-    url: Missing[str] = Field(
-        default=UNSET,
-        description="The URL that can be used to fetch, update, or delete info about this property via the API.",
-    )
-    source_type: Missing[Literal["organization", "enterprise"]] = Field(
-        default=UNSET, description="The source type of the property"
-    )
-    value_type: Missing[
-        Literal["string", "single_select", "multi_select", "true_false", "url"]
-    ] = Field(default=UNSET, description="The type of the value for the property")
-    required: Missing[bool] = Field(
-        default=UNSET, description="Whether the property is required."
-    )
-    default_value: Missing[Union[str, list[str], None]] = Field(
-        default=UNSET, description="Default value of the property"
-    )
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Short description of the property"
-    )
-    allowed_values: Missing[Union[list[str], None]] = Field(
-        default=UNSET,
-        description="An ordered list of the allowed values of the property.\nThe property can have up to 200 allowed values.",
+    Custom property name and associated value
+    """
+
+    property_name: str = Field(description="The name of the property")
+    value: Union[str, list[str], None] = Field(
+        description="The value assigned to the property"
     )
 
 
-model_rebuild(CustomPropertyBase)
+model_rebuild(CustomPropertyValue)
 
-__all__ = ("CustomPropertyBase",)
+__all__ = ("CustomPropertyValue",)

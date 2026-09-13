@@ -9,28 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0359 import ActionsVariableType, ActionsVariableTypeForResponse
+
+class ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBodyType(TypedDict):
+    """ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBody"""
+
+    status: Literal["approve", "deny"]
+    message: str
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200Type(TypedDict):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200"""
-
-    total_count: int
-    variables: list[ActionsVariableType]
-
-
-class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200TypeForResponse(
+class ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBodyTypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200"""
+    """ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBody"""
 
-    total_count: int
-    variables: list[ActionsVariableTypeForResponse]
+    status: Literal["approve", "deny"]
+    message: str
 
 
 __all__ = (
-    "ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200Type",
-    "ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200TypeForResponse",
+    "ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBodyType",
+    "ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBodyTypeForResponse",
 )

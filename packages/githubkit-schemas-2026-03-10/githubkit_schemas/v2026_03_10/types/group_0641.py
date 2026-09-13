@@ -9,112 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0050 import DiscussionType, DiscussionTypeForResponse
-from .group_0538 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0539 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0540 import (
+from .group_0541 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0542 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0543 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0541 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0544 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0548 import WebhooksDeployKeyType, WebhooksDeployKeyTypeForResponse
 
 
-class WebhookDiscussionCategoryChangedType(TypedDict):
-    """discussion category changed event"""
+class WebhookDeployKeyCreatedType(TypedDict):
+    """deploy_key created event"""
 
-    action: Literal["category_changed"]
-    changes: WebhookDiscussionCategoryChangedPropChangesType
-    discussion: DiscussionType
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
+    key: WebhooksDeployKeyType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookDiscussionCategoryChangedTypeForResponse(TypedDict):
-    """discussion category changed event"""
+class WebhookDeployKeyCreatedTypeForResponse(TypedDict):
+    """deploy_key created event"""
 
-    action: Literal["category_changed"]
-    changes: WebhookDiscussionCategoryChangedPropChangesTypeForResponse
-    discussion: DiscussionTypeForResponse
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
+    key: WebhooksDeployKeyTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
-class WebhookDiscussionCategoryChangedPropChangesType(TypedDict):
-    """WebhookDiscussionCategoryChangedPropChanges"""
-
-    category: WebhookDiscussionCategoryChangedPropChangesPropCategoryType
-
-
-class WebhookDiscussionCategoryChangedPropChangesTypeForResponse(TypedDict):
-    """WebhookDiscussionCategoryChangedPropChanges"""
-
-    category: WebhookDiscussionCategoryChangedPropChangesPropCategoryTypeForResponse
-
-
-class WebhookDiscussionCategoryChangedPropChangesPropCategoryType(TypedDict):
-    """WebhookDiscussionCategoryChangedPropChangesPropCategory"""
-
-    from_: WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromType
-
-
-class WebhookDiscussionCategoryChangedPropChangesPropCategoryTypeForResponse(TypedDict):
-    """WebhookDiscussionCategoryChangedPropChangesPropCategory"""
-
-    from_: (
-        WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromTypeForResponse
-    )
-
-
-class WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromType(TypedDict):
-    """WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFrom"""
-
-    created_at: _dt.datetime
-    description: str
-    emoji: str
-    id: int
-    is_answerable: bool
-    name: str
-    node_id: NotRequired[str]
-    repository_id: int
-    slug: str
-    updated_at: str
-
-
-class WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromTypeForResponse(
-    TypedDict
-):
-    """WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFrom"""
-
-    created_at: str
-    description: str
-    emoji: str
-    id: int
-    is_answerable: bool
-    name: str
-    node_id: NotRequired[str]
-    repository_id: int
-    slug: str
-    updated_at: str
-
-
 __all__ = (
-    "WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromType",
-    "WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromTypeForResponse",
-    "WebhookDiscussionCategoryChangedPropChangesPropCategoryType",
-    "WebhookDiscussionCategoryChangedPropChangesPropCategoryTypeForResponse",
-    "WebhookDiscussionCategoryChangedPropChangesType",
-    "WebhookDiscussionCategoryChangedPropChangesTypeForResponse",
-    "WebhookDiscussionCategoryChangedType",
-    "WebhookDiscussionCategoryChangedTypeForResponse",
+    "WebhookDeployKeyCreatedType",
+    "WebhookDeployKeyCreatedTypeForResponse",
 )

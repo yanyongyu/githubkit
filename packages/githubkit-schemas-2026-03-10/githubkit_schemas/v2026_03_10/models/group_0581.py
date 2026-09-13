@@ -19,118 +19,40 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0487 import SecretScanningAlertMetadataItems
 
 
-class SecretScanningAlertWebhook(GitHubModel):
-    """SecretScanningAlertWebhook"""
+class ProjectsV2Item(GitHubModel):
+    """Projects v2 Item
 
-    number: Missing[int] = Field(
-        default=UNSET, description="The security alert number."
+    An item belonging to a project
+    """
+
+    id: float = Field(description="The unique identifier of the project item.")
+    node_id: Missing[str] = Field(
+        default=UNSET, description="The node ID of the project item."
     )
-    created_at: Missing[_dt.datetime] = Field(
-        default=UNSET,
-        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    project_node_id: Missing[str] = Field(
+        default=UNSET, description="The node ID of the project that contains this item."
     )
-    updated_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
-    url: Missing[str] = Field(
-        default=UNSET, description="The REST API URL of the alert resource."
+    content_node_id: str = Field(
+        description="The node ID of the content represented by this item."
     )
-    html_url: Missing[str] = Field(
-        default=UNSET, description="The GitHub URL of the alert resource."
+    content_type: Literal["Issue", "PullRequest", "DraftIssue"] = Field(
+        title="Projects v2 Item Content Type",
+        description="The type of content tracked in a project item",
     )
-    locations_url: Missing[str] = Field(
-        default=UNSET,
-        description="The REST API URL of the code locations for this alert.",
+    creator: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
     )
-    resolution: Missing[
-        Union[
-            Literal[
-                "false_positive",
-                "wont_fix",
-                "revoked",
-                "used_in_tests",
-                "pattern_deleted",
-                "pattern_edited",
-            ],
-            None,
-        ]
-    ] = Field(default=UNSET, description="The reason for resolving the alert.")
-    resolved_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET,
-        description="The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    created_at: _dt.datetime = Field(description="The time when the item was created.")
+    updated_at: _dt.datetime = Field(
+        description="The time when the item was last updated."
     )
-    resolved_by: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
-    resolution_comment: Missing[Union[str, None]] = Field(
-        default=UNSET, description="An optional comment to resolve an alert."
-    )
-    secret_type: Missing[str] = Field(
-        default=UNSET, description="The type of secret that secret scanning detected."
-    )
-    secret_type_display_name: Missing[str] = Field(
-        default=UNSET,
-        description='User-friendly name for the detected secret, matching the `secret_type`.\nFor a list of built-in patterns, see "[Supported secret scanning patterns](https://docs.github.com/code-security/secret-scanning/introduction/supported-secret-scanning-patterns#supported-secrets)."',
-    )
-    provider: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The provider of the secret that was detected."
-    )
-    provider_slug: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The slug identifier for the provider of the secret that was detected.",
-    )
-    secret_category: Missing[Literal["default", "generic"]] = Field(
-        default=UNSET,
-        description="The category of the detected secret. `default` covers specific provider patterns and custom patterns; `generic` covers non-specific patterns and AI-detected secrets.",
-    )
-    validity: Missing[Literal["active", "inactive", "unknown"]] = Field(
-        default=UNSET, description="The token status as of the latest validity check."
-    )
-    push_protection_bypassed: Missing[Union[bool, None]] = Field(
-        default=UNSET,
-        description="Whether push protection was bypassed for the detected secret.",
-    )
-    push_protection_bypassed_by: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
-    push_protection_bypassed_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET,
-        description="The time that push protection was bypassed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
-    )
-    push_protection_bypass_request_reviewer: Missing[Union[SimpleUser, None]] = Field(
-        default=UNSET
-    )
-    push_protection_bypass_request_reviewer_comment: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="An optional comment when reviewing a push protection bypass.",
-    )
-    push_protection_bypass_request_comment: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="An optional comment when requesting a push protection bypass.",
-    )
-    push_protection_bypass_request_html_url: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The URL to a push protection bypass request."
-    )
-    publicly_leaked: Missing[Union[bool, None]] = Field(
-        default=UNSET, description="Whether the detected secret was publicly leaked."
-    )
-    multi_repo: Missing[Union[bool, None]] = Field(
-        default=UNSET,
-        description="Whether the detected secret was found in multiple repositories in the same organization or business.",
-    )
-    assigned_to: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
-    closure_request_comment: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="An optional comment from the closure request author.",
-    )
-    closure_request_reviewer_comment: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="An optional comment from the closure request reviewer.",
-    )
-    closure_request_reviewer: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
-    metadata: Missing[list[SecretScanningAlertMetadataItems]] = Field(
-        default=UNSET,
-        description="A list of metadata key/value pairs associated with the secret scanning alert.",
+    archived_at: Union[_dt.datetime, None] = Field(
+        description="The time when the item was archived."
     )
 
 
-model_rebuild(SecretScanningAlertWebhook)
+model_rebuild(ProjectsV2Item)
 
-__all__ = ("SecretScanningAlertWebhook",)
+__all__ = ("ProjectsV2Item",)

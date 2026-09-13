@@ -9,30 +9,64 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0085 import (
+    MarketplaceListingPlanType,
+    MarketplaceListingPlanTypeForResponse,
+)
 
 
-class GitignoreTemplateType(TypedDict):
-    """Gitignore Template
+class MarketplacePurchasePropMarketplacePendingChangeType(TypedDict):
+    """MarketplacePurchasePropMarketplacePendingChange"""
 
-    Gitignore Template
-    """
+    is_installed: NotRequired[bool]
+    effective_date: NotRequired[str]
+    unit_count: NotRequired[Union[int, None]]
+    id: NotRequired[int]
+    plan: NotRequired[MarketplaceListingPlanType]
 
-    name: str
-    source: str
+
+class MarketplacePurchasePropMarketplacePendingChangeTypeForResponse(TypedDict):
+    """MarketplacePurchasePropMarketplacePendingChange"""
+
+    is_installed: NotRequired[bool]
+    effective_date: NotRequired[str]
+    unit_count: NotRequired[Union[int, None]]
+    id: NotRequired[int]
+    plan: NotRequired[MarketplaceListingPlanTypeForResponse]
 
 
-class GitignoreTemplateTypeForResponse(TypedDict):
-    """Gitignore Template
+class MarketplacePurchasePropMarketplacePurchaseType(TypedDict):
+    """MarketplacePurchasePropMarketplacePurchase"""
 
-    Gitignore Template
-    """
+    billing_cycle: NotRequired[str]
+    next_billing_date: NotRequired[Union[str, None]]
+    is_installed: NotRequired[bool]
+    unit_count: NotRequired[Union[int, None]]
+    on_free_trial: NotRequired[bool]
+    free_trial_ends_on: NotRequired[Union[str, None]]
+    updated_at: NotRequired[str]
+    plan: NotRequired[MarketplaceListingPlanType]
 
-    name: str
-    source: str
+
+class MarketplacePurchasePropMarketplacePurchaseTypeForResponse(TypedDict):
+    """MarketplacePurchasePropMarketplacePurchase"""
+
+    billing_cycle: NotRequired[str]
+    next_billing_date: NotRequired[Union[str, None]]
+    is_installed: NotRequired[bool]
+    unit_count: NotRequired[Union[int, None]]
+    on_free_trial: NotRequired[bool]
+    free_trial_ends_on: NotRequired[Union[str, None]]
+    updated_at: NotRequired[str]
+    plan: NotRequired[MarketplaceListingPlanTypeForResponse]
 
 
 __all__ = (
-    "GitignoreTemplateType",
-    "GitignoreTemplateTypeForResponse",
+    "MarketplacePurchasePropMarketplacePendingChangeType",
+    "MarketplacePurchasePropMarketplacePendingChangeTypeForResponse",
+    "MarketplacePurchasePropMarketplacePurchaseType",
+    "MarketplacePurchasePropMarketplacePurchaseTypeForResponse",
 )

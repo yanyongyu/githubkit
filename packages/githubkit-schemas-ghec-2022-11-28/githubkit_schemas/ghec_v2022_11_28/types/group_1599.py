@@ -9,61 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_1600 import (
+    ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsType,
+    ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsTypeForResponse,
+)
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0"""
 
-    labels: NotRequired[
-        list[
-            Union[
-                str,
-                ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0PropLabelsItemsOneof1Type,
-            ]
-        ]
+class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1Type(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1"""
+
+    suggestions: NotRequired[
+        ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsType
     ]
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0TypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0"""
+class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1TypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1"""
 
-    labels: NotRequired[
-        list[
-            Union[
-                str,
-                ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0PropLabelsItemsOneof1TypeForResponse,
-            ]
-        ]
+    suggestions: NotRequired[
+        ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsTypeForResponse
     ]
-
-
-class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0PropLabelsItemsOneof1Type(
-    TypedDict
-):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0PropLabelsItemsOneof1"""
-
-    name: str
-    rationale: NotRequired[str]
-    suggest: NotRequired[bool]
-    confidence: NotRequired[Literal["low", "medium", "high"]]
-
-
-class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0PropLabelsItemsOneof1TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0PropLabelsItemsOneof1"""
-
-    name: str
-    rationale: NotRequired[str]
-    suggest: NotRequired[bool]
-    confidence: NotRequired[Literal["low", "medium", "high"]]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0PropLabelsItemsOneof1Type",
-    "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0PropLabelsItemsOneof1TypeForResponse",
-    "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type",
-    "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0TypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1Type",
+    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1TypeForResponse",
 )

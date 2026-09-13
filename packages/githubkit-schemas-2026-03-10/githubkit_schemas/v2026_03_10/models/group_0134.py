@@ -17,60 +17,44 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0133 import TeamSimple
 
+class CodeScanningAlertRuleSummary(GitHubModel):
+    """CodeScanningAlertRuleSummary"""
 
-class Team(GitHubModel):
-    """Team
-
-    Groups of organization members that gives permissions on specified repositories.
-    """
-
-    id: int = Field()
-    node_id: str = Field()
-    name: str = Field()
-    slug: str = Field()
-    description: Union[str, None] = Field()
-    privacy: Missing[str] = Field(default=UNSET)
-    notification_setting: Missing[str] = Field(default=UNSET)
-    permission: str = Field()
-    permissions: Missing[TeamPropPermissions] = Field(default=UNSET)
-    url: str = Field()
-    html_url: str = Field()
-    members_url: str = Field()
-    repositories_url: str = Field()
-    type: Literal["enterprise", "organization"] = Field(
-        description="The ownership type of the team"
-    )
-    access_source: Missing[Literal["direct", "organization", "enterprise"]] = Field(
+    id: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="How the team's access to the repository was granted. This property is only\npresent when the team is returned in a repository context, such as\n`GET /repos/{owner}/{repo}/teams`.",
+        description="A unique identifier for the rule used to detect the alert.",
     )
-    organization_id: Missing[int] = Field(
+    name: Missing[str] = Field(
+        default=UNSET, description="The name of the rule used to detect the alert."
+    )
+    severity: Missing[Union[Literal["none", "note", "warning", "error"], None]] = Field(
+        default=UNSET, description="The severity of the alert."
+    )
+    security_severity_level: Missing[
+        Union[Literal["low", "medium", "high", "critical"], None]
+    ] = Field(default=UNSET, description="The security severity of the alert.")
+    description: Missing[str] = Field(
         default=UNSET,
-        description="Unique identifier of the organization to which this team belongs",
+        description="A short description of the rule used to detect the alert.",
     )
-    enterprise_id: Missing[int] = Field(
+    full_description: Missing[str] = Field(
+        default=UNSET, description="A description of the rule used to detect the alert."
+    )
+    tags: Missing[Union[list[str], None]] = Field(
+        default=UNSET, description="A set of tags applicable for the rule."
+    )
+    help_: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="Unique identifier of the enterprise to which this team belongs",
+        alias="help",
+        description="Detailed documentation for the rule as GitHub Flavored Markdown.",
     )
-    parent: Union[TeamSimple, None] = Field()
+    help_uri: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="A link to the documentation for the rule used to detect the alert.",
+    )
 
 
-class TeamPropPermissions(GitHubModel):
-    """TeamPropPermissions"""
+model_rebuild(CodeScanningAlertRuleSummary)
 
-    pull: bool = Field()
-    triage: bool = Field()
-    push: bool = Field()
-    maintain: bool = Field()
-    admin: bool = Field()
-
-
-model_rebuild(Team)
-model_rebuild(TeamPropPermissions)
-
-__all__ = (
-    "Team",
-    "TeamPropPermissions",
-)
+__all__ = ("CodeScanningAlertRuleSummary",)

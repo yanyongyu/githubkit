@@ -11,22 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-
-class EnterprisesEnterpriseCopilotContentExclusionPutResponse200Type(TypedDict):
-    """EnterprisesEnterpriseCopilotContentExclusionPutResponse200"""
-
-    message: NotRequired[str]
+from .group_0083 import CopilotSeatDetailsType, CopilotSeatDetailsTypeForResponse
 
 
-class EnterprisesEnterpriseCopilotContentExclusionPutResponse200TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotContentExclusionPutResponse200"""
+class EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseCopilotBillingSeatsGetResponse200"""
 
-    message: NotRequired[str]
+    total_seats: NotRequired[int]
+    seats: NotRequired[list[CopilotSeatDetailsType]]
+
+
+class EnterprisesEnterpriseCopilotBillingSeatsGetResponse200TypeForResponse(TypedDict):
+    """EnterprisesEnterpriseCopilotBillingSeatsGetResponse200"""
+
+    total_seats: NotRequired[int]
+    seats: NotRequired[list[CopilotSeatDetailsTypeForResponse]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotContentExclusionPutResponse200Type",
-    "EnterprisesEnterpriseCopilotContentExclusionPutResponse200TypeForResponse",
+    "EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type",
+    "EnterprisesEnterpriseCopilotBillingSeatsGetResponse200TypeForResponse",
 )

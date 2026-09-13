@@ -9,26 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200Type(
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyType(TypedDict):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBody
+
+    Examples:
+        {'apps': ['my-app']}
+    """
+
+    apps: list[str]
+
+
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyTypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200"""
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBody
 
-    bypass_review_id: NotRequired[int]
+    Examples:
+        {'apps': ['my-app']}
+    """
 
-
-class ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200"""
-
-    bypass_review_id: NotRequired[int]
+    apps: list[str]
 
 
 __all__ = (
-    "ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200Type",
-    "ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200TypeForResponse",
+    "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyType",
+    "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyTypeForResponse",
 )

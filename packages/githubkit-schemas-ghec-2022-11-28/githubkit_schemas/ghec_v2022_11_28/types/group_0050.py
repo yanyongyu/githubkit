@@ -9,26 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class SelectedActionsType(TypedDict):
-    """SelectedActions"""
-
-    github_owned_allowed: NotRequired[bool]
-    verified_allowed: NotRequired[bool]
-    patterns_allowed: NotRequired[list[str]]
+from .group_0049 import RunnerLabelType, RunnerLabelTypeForResponse
 
 
-class SelectedActionsTypeForResponse(TypedDict):
-    """SelectedActions"""
+class RunnerType(TypedDict):
+    """Self hosted runners
 
-    github_owned_allowed: NotRequired[bool]
-    verified_allowed: NotRequired[bool]
-    patterns_allowed: NotRequired[list[str]]
+    A self hosted runner
+    """
+
+    id: int
+    runner_group_id: NotRequired[int]
+    name: str
+    os: str
+    status: str
+    busy: bool
+    labels: list[RunnerLabelType]
+    ephemeral: NotRequired[bool]
+    version: NotRequired[Union[str, None]]
+
+
+class RunnerTypeForResponse(TypedDict):
+    """Self hosted runners
+
+    A self hosted runner
+    """
+
+    id: int
+    runner_group_id: NotRequired[int]
+    name: str
+    os: str
+    status: str
+    busy: bool
+    labels: list[RunnerLabelTypeForResponse]
+    ephemeral: NotRequired[bool]
+    version: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "SelectedActionsType",
-    "SelectedActionsTypeForResponse",
+    "RunnerType",
+    "RunnerTypeForResponse",
 )

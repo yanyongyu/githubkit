@@ -9,32 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import TypedDict
 
-
-class CommitActivityType(TypedDict):
-    """Commit Activity
-
-    Commit Activity
-    """
-
-    days: list[int]
-    total: int
-    week: int
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class CommitActivityTypeForResponse(TypedDict):
-    """Commit Activity
+class PullRequestStackPullRequestAllof1Type(TypedDict):
+    """PullRequestStackPullRequestAllof1"""
 
-    Commit Activity
-    """
+    node_id: str
+    title: str
+    state: Literal["open", "closed"]
+    merged_at: Union[_dt.datetime, None]
+    draft: bool
+    html_url: str
+    user: Union[SimpleUserType, None]
 
-    days: list[int]
-    total: int
-    week: int
+
+class PullRequestStackPullRequestAllof1TypeForResponse(TypedDict):
+    """PullRequestStackPullRequestAllof1"""
+
+    node_id: str
+    title: str
+    state: Literal["open", "closed"]
+    merged_at: Union[str, None]
+    draft: bool
+    html_url: str
+    user: Union[SimpleUserTypeForResponse, None]
 
 
 __all__ = (
-    "CommitActivityType",
-    "CommitActivityTypeForResponse",
+    "PullRequestStackPullRequestAllof1Type",
+    "PullRequestStackPullRequestAllof1TypeForResponse",
 )

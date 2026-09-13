@@ -14,72 +14,169 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0036 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
-from .group_0136 import (
-    CodeScanningAlertRuleSummaryType,
-    CodeScanningAlertRuleSummaryTypeForResponse,
-)
-from .group_0137 import (
-    CodeScanningAnalysisToolType,
-    CodeScanningAnalysisToolTypeForResponse,
-)
-from .group_0139 import (
-    CodeScanningAlertInstanceType,
-    CodeScanningAlertInstanceTypeForResponse,
-)
+from .group_0090 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0139 import CodespaceMachineType, CodespaceMachineTypeForResponse
 
 
-class CodeScanningOrganizationAlertItemsType(TypedDict):
-    """CodeScanningOrganizationAlertItems"""
+class CodespaceType(TypedDict):
+    """Codespace
 
-    number: int
+    A codespace.
+    """
+
+    id: int
+    name: str
+    display_name: NotRequired[Union[str, None]]
+    environment_id: Union[str, None]
+    owner: SimpleUserType
+    billable_owner: SimpleUserType
+    repository: MinimalRepositoryType
+    machine: Union[CodespaceMachineType, None]
+    devcontainer_path: NotRequired[Union[str, None]]
+    prebuild: Union[bool, None]
     created_at: _dt.datetime
-    updated_at: NotRequired[_dt.datetime]
-    url: str
-    html_url: str
-    instances_url: str
-    state: Union[Literal["open", "dismissed", "fixed"], None]
-    fixed_at: NotRequired[Union[_dt.datetime, None]]
-    dismissed_by: Union[SimpleUserType, None]
-    dismissed_at: Union[_dt.datetime, None]
-    dismissed_reason: Union[
-        Literal["false positive", "won't fix", "used in tests", "mitigated"], None
+    updated_at: _dt.datetime
+    last_used_at: _dt.datetime
+    state: Literal[
+        "Unknown",
+        "Created",
+        "Queued",
+        "Provisioning",
+        "Available",
+        "Awaiting",
+        "Unavailable",
+        "Deleted",
+        "Moved",
+        "Shutdown",
+        "Archived",
+        "Starting",
+        "ShuttingDown",
+        "Failed",
+        "Exporting",
+        "Updating",
+        "Rebuilding",
     ]
-    dismissed_comment: NotRequired[Union[str, None]]
-    rule: CodeScanningAlertRuleSummaryType
-    tool: CodeScanningAnalysisToolType
-    most_recent_instance: CodeScanningAlertInstanceType
-    repository: SimpleRepositoryType
-    dismissal_approved_by: NotRequired[Union[SimpleUserType, None]]
-    assignees: NotRequired[list[SimpleUserType]]
+    url: str
+    git_status: CodespacePropGitStatusType
+    location: Literal["EastUs", "SouthEastAsia", "WestEurope", "WestUs2"]
+    idle_timeout_minutes: Union[int, None]
+    web_url: str
+    machines_url: str
+    start_url: str
+    stop_url: str
+    publish_url: NotRequired[Union[str, None]]
+    pulls_url: Union[str, None]
+    recent_folders: list[str]
+    runtime_constraints: NotRequired[CodespacePropRuntimeConstraintsType]
+    pending_operation: NotRequired[Union[bool, None]]
+    pending_operation_disabled_reason: NotRequired[Union[str, None]]
+    idle_timeout_notice: NotRequired[Union[str, None]]
+    retention_period_minutes: NotRequired[Union[int, None]]
+    retention_expires_at: NotRequired[Union[_dt.datetime, None]]
+    last_known_stop_notice: NotRequired[Union[str, None]]
 
 
-class CodeScanningOrganizationAlertItemsTypeForResponse(TypedDict):
-    """CodeScanningOrganizationAlertItems"""
+class CodespaceTypeForResponse(TypedDict):
+    """Codespace
 
-    number: int
+    A codespace.
+    """
+
+    id: int
+    name: str
+    display_name: NotRequired[Union[str, None]]
+    environment_id: Union[str, None]
+    owner: SimpleUserTypeForResponse
+    billable_owner: SimpleUserTypeForResponse
+    repository: MinimalRepositoryTypeForResponse
+    machine: Union[CodespaceMachineTypeForResponse, None]
+    devcontainer_path: NotRequired[Union[str, None]]
+    prebuild: Union[bool, None]
     created_at: str
-    updated_at: NotRequired[str]
-    url: str
-    html_url: str
-    instances_url: str
-    state: Union[Literal["open", "dismissed", "fixed"], None]
-    fixed_at: NotRequired[Union[str, None]]
-    dismissed_by: Union[SimpleUserTypeForResponse, None]
-    dismissed_at: Union[str, None]
-    dismissed_reason: Union[
-        Literal["false positive", "won't fix", "used in tests", "mitigated"], None
+    updated_at: str
+    last_used_at: str
+    state: Literal[
+        "Unknown",
+        "Created",
+        "Queued",
+        "Provisioning",
+        "Available",
+        "Awaiting",
+        "Unavailable",
+        "Deleted",
+        "Moved",
+        "Shutdown",
+        "Archived",
+        "Starting",
+        "ShuttingDown",
+        "Failed",
+        "Exporting",
+        "Updating",
+        "Rebuilding",
     ]
-    dismissed_comment: NotRequired[Union[str, None]]
-    rule: CodeScanningAlertRuleSummaryTypeForResponse
-    tool: CodeScanningAnalysisToolTypeForResponse
-    most_recent_instance: CodeScanningAlertInstanceTypeForResponse
-    repository: SimpleRepositoryTypeForResponse
-    dismissal_approved_by: NotRequired[Union[SimpleUserTypeForResponse, None]]
-    assignees: NotRequired[list[SimpleUserTypeForResponse]]
+    url: str
+    git_status: CodespacePropGitStatusTypeForResponse
+    location: Literal["EastUs", "SouthEastAsia", "WestEurope", "WestUs2"]
+    idle_timeout_minutes: Union[int, None]
+    web_url: str
+    machines_url: str
+    start_url: str
+    stop_url: str
+    publish_url: NotRequired[Union[str, None]]
+    pulls_url: Union[str, None]
+    recent_folders: list[str]
+    runtime_constraints: NotRequired[CodespacePropRuntimeConstraintsTypeForResponse]
+    pending_operation: NotRequired[Union[bool, None]]
+    pending_operation_disabled_reason: NotRequired[Union[str, None]]
+    idle_timeout_notice: NotRequired[Union[str, None]]
+    retention_period_minutes: NotRequired[Union[int, None]]
+    retention_expires_at: NotRequired[Union[str, None]]
+    last_known_stop_notice: NotRequired[Union[str, None]]
+
+
+class CodespacePropGitStatusType(TypedDict):
+    """CodespacePropGitStatus
+
+    Details about the codespace's git repository.
+    """
+
+    ahead: NotRequired[int]
+    behind: NotRequired[int]
+    has_unpushed_changes: NotRequired[bool]
+    has_uncommitted_changes: NotRequired[bool]
+    ref: NotRequired[str]
+
+
+class CodespacePropGitStatusTypeForResponse(TypedDict):
+    """CodespacePropGitStatus
+
+    Details about the codespace's git repository.
+    """
+
+    ahead: NotRequired[int]
+    behind: NotRequired[int]
+    has_unpushed_changes: NotRequired[bool]
+    has_uncommitted_changes: NotRequired[bool]
+    ref: NotRequired[str]
+
+
+class CodespacePropRuntimeConstraintsType(TypedDict):
+    """CodespacePropRuntimeConstraints"""
+
+    allowed_port_privacy_settings: NotRequired[Union[list[str], None]]
+
+
+class CodespacePropRuntimeConstraintsTypeForResponse(TypedDict):
+    """CodespacePropRuntimeConstraints"""
+
+    allowed_port_privacy_settings: NotRequired[Union[list[str], None]]
 
 
 __all__ = (
-    "CodeScanningOrganizationAlertItemsType",
-    "CodeScanningOrganizationAlertItemsTypeForResponse",
+    "CodespacePropGitStatusType",
+    "CodespacePropGitStatusTypeForResponse",
+    "CodespacePropRuntimeConstraintsType",
+    "CodespacePropRuntimeConstraintsTypeForResponse",
+    "CodespaceType",
+    "CodespaceTypeForResponse",
 )

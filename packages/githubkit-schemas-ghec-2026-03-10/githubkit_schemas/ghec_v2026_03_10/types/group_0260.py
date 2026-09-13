@@ -9,28 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsCacheStorageLimitForOrganizationType(TypedDict):
-    """Actions cache storage limit for an organization
+class ActionsOrganizationPermissionsType(TypedDict):
+    """ActionsOrganizationPermissions"""
 
-    GitHub Actions cache storage policy for an organization.
-    """
+    enabled_repositories: Literal["all", "none", "selected"]
+    selected_repositories_url: NotRequired[str]
+    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
+    selected_actions_url: NotRequired[str]
+    sha_pinning_required: NotRequired[bool]
 
-    max_cache_size_gb: NotRequired[int]
 
+class ActionsOrganizationPermissionsTypeForResponse(TypedDict):
+    """ActionsOrganizationPermissions"""
 
-class ActionsCacheStorageLimitForOrganizationTypeForResponse(TypedDict):
-    """Actions cache storage limit for an organization
-
-    GitHub Actions cache storage policy for an organization.
-    """
-
-    max_cache_size_gb: NotRequired[int]
+    enabled_repositories: Literal["all", "none", "selected"]
+    selected_repositories_url: NotRequired[str]
+    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
+    selected_actions_url: NotRequired[str]
+    sha_pinning_required: NotRequired[bool]
 
 
 __all__ = (
-    "ActionsCacheStorageLimitForOrganizationType",
-    "ActionsCacheStorageLimitForOrganizationTypeForResponse",
+    "ActionsOrganizationPermissionsType",
+    "ActionsOrganizationPermissionsTypeForResponse",
 )

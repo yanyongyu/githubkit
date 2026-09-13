@@ -10,36 +10,32 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyType(
-    TypedDict
-):
-    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBod
-    y
-    """
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyType(TypedDict):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody"""
 
-    credential_type: Literal[
-        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
+    policy_state: Literal[
+        "enabled_for_all_orgs",
+        "disabled_for_all_orgs",
+        "enabled_for_selected_orgs",
+        "configured_by_org_admins",
     ]
-    revoke_credentials: NotRequired[bool]
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBod
-    y
-    """
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody"""
 
-    credential_type: Literal[
-        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
+    policy_state: Literal[
+        "enabled_for_all_orgs",
+        "disabled_for_all_orgs",
+        "enabled_for_selected_orgs",
+        "configured_by_org_admins",
     ]
-    revoke_credentials: NotRequired[bool]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyType",
-    "EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyType",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyTypeForResponse",
 )

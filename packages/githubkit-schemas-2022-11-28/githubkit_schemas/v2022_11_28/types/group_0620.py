@@ -9,55 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0539 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0540 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0541 import (
+from .group_0542 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0543 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0544 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
+from .group_0545 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0621 import (
+    WebhookCodeScanningAlertReopenedPropAlertType,
+    WebhookCodeScanningAlertReopenedPropAlertTypeForResponse,
+)
 
 
-class WebhookCustomPropertyDeletedType(TypedDict):
-    """custom property deleted event"""
+class WebhookCodeScanningAlertReopenedType(TypedDict):
+    """code_scanning_alert reopened event"""
 
-    action: Literal["deleted"]
-    definition: WebhookCustomPropertyDeletedPropDefinitionType
+    action: Literal["reopened"]
+    alert: WebhookCodeScanningAlertReopenedPropAlertType
+    commit_oid: Union[str, None]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    sender: NotRequired[SimpleUserType]
+    ref: Union[str, None]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class WebhookCustomPropertyDeletedTypeForResponse(TypedDict):
-    """custom property deleted event"""
+class WebhookCodeScanningAlertReopenedTypeForResponse(TypedDict):
+    """code_scanning_alert reopened event"""
 
-    action: Literal["deleted"]
-    definition: WebhookCustomPropertyDeletedPropDefinitionTypeForResponse
+    action: Literal["reopened"]
+    alert: WebhookCodeScanningAlertReopenedPropAlertTypeForResponse
+    commit_oid: Union[str, None]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    sender: NotRequired[SimpleUserTypeForResponse]
-
-
-class WebhookCustomPropertyDeletedPropDefinitionType(TypedDict):
-    """WebhookCustomPropertyDeletedPropDefinition"""
-
-    property_name: str
-
-
-class WebhookCustomPropertyDeletedPropDefinitionTypeForResponse(TypedDict):
-    """WebhookCustomPropertyDeletedPropDefinition"""
-
-    property_name: str
+    ref: Union[str, None]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookCustomPropertyDeletedPropDefinitionType",
-    "WebhookCustomPropertyDeletedPropDefinitionTypeForResponse",
-    "WebhookCustomPropertyDeletedType",
-    "WebhookCustomPropertyDeletedTypeForResponse",
+    "WebhookCodeScanningAlertReopenedType",
+    "WebhookCodeScanningAlertReopenedTypeForResponse",
 )

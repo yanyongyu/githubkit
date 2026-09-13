@@ -9,62 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class DependabotAlertDismissalRequestSimpleType(TypedDict):
-    """Dependabot alert dismissal request
+class OrganizationSimpleType(TypedDict):
+    """Organization Simple
 
-    Information about an active dismissal request for this Dependabot alert.
+    A GitHub organization.
     """
 
-    id: NotRequired[int]
-    status: NotRequired[Literal["pending", "approved", "rejected", "cancelled"]]
-    requester: NotRequired[DependabotAlertDismissalRequestSimplePropRequesterType]
-    created_at: NotRequired[_dt.datetime]
-    url: NotRequired[str]
+    login: str
+    id: int
+    node_id: str
+    url: str
+    repos_url: str
+    events_url: str
+    hooks_url: str
+    issues_url: str
+    members_url: str
+    public_members_url: str
+    avatar_url: str
+    description: Union[str, None]
 
 
-class DependabotAlertDismissalRequestSimpleTypeForResponse(TypedDict):
-    """Dependabot alert dismissal request
+class OrganizationSimpleTypeForResponse(TypedDict):
+    """Organization Simple
 
-    Information about an active dismissal request for this Dependabot alert.
+    A GitHub organization.
     """
 
-    id: NotRequired[int]
-    status: NotRequired[Literal["pending", "approved", "rejected", "cancelled"]]
-    requester: NotRequired[
-        DependabotAlertDismissalRequestSimplePropRequesterTypeForResponse
-    ]
-    created_at: NotRequired[str]
-    url: NotRequired[str]
-
-
-class DependabotAlertDismissalRequestSimplePropRequesterType(TypedDict):
-    """DependabotAlertDismissalRequestSimplePropRequester
-
-    The user who requested the dismissal.
-    """
-
-    id: NotRequired[int]
-    login: NotRequired[str]
-
-
-class DependabotAlertDismissalRequestSimplePropRequesterTypeForResponse(TypedDict):
-    """DependabotAlertDismissalRequestSimplePropRequester
-
-    The user who requested the dismissal.
-    """
-
-    id: NotRequired[int]
-    login: NotRequired[str]
+    login: str
+    id: int
+    node_id: str
+    url: str
+    repos_url: str
+    events_url: str
+    hooks_url: str
+    issues_url: str
+    members_url: str
+    public_members_url: str
+    avatar_url: str
+    description: Union[str, None]
 
 
 __all__ = (
-    "DependabotAlertDismissalRequestSimplePropRequesterType",
-    "DependabotAlertDismissalRequestSimplePropRequesterTypeForResponse",
-    "DependabotAlertDismissalRequestSimpleType",
-    "DependabotAlertDismissalRequestSimpleTypeForResponse",
+    "OrganizationSimpleType",
+    "OrganizationSimpleTypeForResponse",
 )

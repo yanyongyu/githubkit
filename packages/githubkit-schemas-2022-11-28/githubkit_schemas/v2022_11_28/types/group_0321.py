@@ -9,70 +9,122 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0094 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
+class CodeQualityFindingType(TypedDict):
+    """CodeQualityFinding
 
-class CheckSuitePreferenceType(TypedDict):
-    """Check Suite Preference
-
-    Check suite configuration preferences for a repository.
+    Code quality finding
     """
 
-    preferences: CheckSuitePreferencePropPreferencesType
-    repository: MinimalRepositoryType
+    number: int
+    state: Literal["open", "dismissed"]
+    url: str
+    rule: CodeQualityFindingRuleType
+    location: CodeQualityFindingLocationType
+    message: CodeQualityFindingMessageType
+    created_at: NotRequired[_dt.datetime]
 
 
-class CheckSuitePreferenceTypeForResponse(TypedDict):
-    """Check Suite Preference
+class CodeQualityFindingTypeForResponse(TypedDict):
+    """CodeQualityFinding
 
-    Check suite configuration preferences for a repository.
+    Code quality finding
     """
 
-    preferences: CheckSuitePreferencePropPreferencesTypeForResponse
-    repository: MinimalRepositoryTypeForResponse
+    number: int
+    state: Literal["open", "dismissed"]
+    url: str
+    rule: CodeQualityFindingRuleTypeForResponse
+    location: CodeQualityFindingLocationTypeForResponse
+    message: CodeQualityFindingMessageTypeForResponse
+    created_at: NotRequired[str]
 
 
-class CheckSuitePreferencePropPreferencesType(TypedDict):
-    """CheckSuitePreferencePropPreferences"""
+class CodeQualityFindingRuleType(TypedDict):
+    """CodeQualityFindingRule
 
-    auto_trigger_checks: NotRequired[
-        list[CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType]
-    ]
+    Code quality rule
+    """
 
-
-class CheckSuitePreferencePropPreferencesTypeForResponse(TypedDict):
-    """CheckSuitePreferencePropPreferences"""
-
-    auto_trigger_checks: NotRequired[
-        list[
-            CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsTypeForResponse
-        ]
-    ]
+    id: str
+    title: str
+    description: str
+    help_: NotRequired[str]
+    severity: Literal["error", "warning", "note", "none"]
+    category: Literal["none", "maintainability", "reliability"]
 
 
-class CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType(TypedDict):
-    """CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems"""
+class CodeQualityFindingRuleTypeForResponse(TypedDict):
+    """CodeQualityFindingRule
 
-    app_id: int
-    setting: bool
+    Code quality rule
+    """
+
+    id: str
+    title: str
+    description: str
+    help_: NotRequired[str]
+    severity: Literal["error", "warning", "note", "none"]
+    category: Literal["none", "maintainability", "reliability"]
 
 
-class CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsTypeForResponse(
-    TypedDict
-):
-    """CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems"""
+class CodeQualityFindingLocationType(TypedDict):
+    """CodeQualityFindingLocation
 
-    app_id: int
-    setting: bool
+    Code quality file location
+    """
+
+    path: str
+    start_line: NotRequired[int]
+    start_column: NotRequired[int]
+    end_line: NotRequired[int]
+    end_column: NotRequired[int]
+
+
+class CodeQualityFindingLocationTypeForResponse(TypedDict):
+    """CodeQualityFindingLocation
+
+    Code quality file location
+    """
+
+    path: str
+    start_line: NotRequired[int]
+    start_column: NotRequired[int]
+    end_line: NotRequired[int]
+    end_column: NotRequired[int]
+
+
+class CodeQualityFindingMessageType(TypedDict):
+    """CodeQualityFindingMessage
+
+    Code quality finding message
+    """
+
+    text: str
+    markdown: str
+
+
+class CodeQualityFindingMessageTypeForResponse(TypedDict):
+    """CodeQualityFindingMessage
+
+    Code quality finding message
+    """
+
+    text: str
+    markdown: str
 
 
 __all__ = (
-    "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType",
-    "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsTypeForResponse",
-    "CheckSuitePreferencePropPreferencesType",
-    "CheckSuitePreferencePropPreferencesTypeForResponse",
-    "CheckSuitePreferenceType",
-    "CheckSuitePreferenceTypeForResponse",
+    "CodeQualityFindingLocationType",
+    "CodeQualityFindingLocationTypeForResponse",
+    "CodeQualityFindingMessageType",
+    "CodeQualityFindingMessageTypeForResponse",
+    "CodeQualityFindingRuleType",
+    "CodeQualityFindingRuleTypeForResponse",
+    "CodeQualityFindingType",
+    "CodeQualityFindingTypeForResponse",
 )

@@ -13,35 +13,39 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodeQualitySetupUpdateAnyof3Type(TypedDict):
-    """CodeQualitySetupUpdateAnyof3"""
+class CodeQualitySetupUpdateAnyof4Type(TypedDict):
+    """CodeQualitySetupUpdateAnyof4"""
 
     state: NotRequired[Literal["configured", "not-configured"]]
     runner_type: NotRequired[Literal["standard", "labeled"]]
     runner_label: NotRequired[Union[str, None]]
-    languages: list[
-        Literal[
-            "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
+    languages: NotRequired[
+        list[
+            Literal[
+                "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
+            ]
         ]
     ]
-    ai_findings_option: NotRequired[Literal["disabled", "on_push"]]
+    ai_findings_option: Literal["disabled", "on_push"]
 
 
-class CodeQualitySetupUpdateAnyof3TypeForResponse(TypedDict):
-    """CodeQualitySetupUpdateAnyof3"""
+class CodeQualitySetupUpdateAnyof4TypeForResponse(TypedDict):
+    """CodeQualitySetupUpdateAnyof4"""
 
     state: NotRequired[Literal["configured", "not-configured"]]
     runner_type: NotRequired[Literal["standard", "labeled"]]
     runner_label: NotRequired[Union[str, None]]
-    languages: list[
-        Literal[
-            "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
+    languages: NotRequired[
+        list[
+            Literal[
+                "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
+            ]
         ]
     ]
-    ai_findings_option: NotRequired[Literal["disabled", "on_push"]]
+    ai_findings_option: Literal["disabled", "on_push"]
 
 
 __all__ = (
-    "CodeQualitySetupUpdateAnyof3Type",
-    "CodeQualitySetupUpdateAnyof3TypeForResponse",
+    "CodeQualitySetupUpdateAnyof4Type",
+    "CodeQualitySetupUpdateAnyof4TypeForResponse",
 )

@@ -13,41 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0050 import DiscussionType, DiscussionTypeForResponse
-from .group_0538 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0539 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0540 import (
+from .group_0541 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0542 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0543 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0541 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0544 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0548 import WebhooksDeployKeyType, WebhooksDeployKeyTypeForResponse
 
 
-class WebhookDiscussionClosedType(TypedDict):
-    """discussion closed event"""
+class WebhookDeployKeyDeletedType(TypedDict):
+    """deploy_key deleted event"""
 
-    action: Literal["closed"]
-    discussion: DiscussionType
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
+    key: WebhooksDeployKeyType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookDiscussionClosedTypeForResponse(TypedDict):
-    """discussion closed event"""
+class WebhookDeployKeyDeletedTypeForResponse(TypedDict):
+    """deploy_key deleted event"""
 
-    action: Literal["closed"]
-    discussion: DiscussionTypeForResponse
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
+    key: WebhooksDeployKeyTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookDiscussionClosedType",
-    "WebhookDiscussionClosedTypeForResponse",
+    "WebhookDeployKeyDeletedType",
+    "WebhookDeployKeyDeletedTypeForResponse",
 )

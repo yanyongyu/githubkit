@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -19,21 +18,43 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class GetAuditLogStreamConfig(GitHubModel):
-    """Get an audit log streaming configuration
+class CodeScanningAlertRuleSummary(GitHubModel):
+    """CodeScanningAlertRuleSummary"""
 
-    Get an audit log streaming configuration for an enterprise.
-    """
+    id: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="A unique identifier for the rule used to detect the alert.",
+    )
+    name: Missing[str] = Field(
+        default=UNSET, description="The name of the rule used to detect the alert."
+    )
+    severity: Missing[Union[Literal["none", "note", "warning", "error"], None]] = Field(
+        default=UNSET, description="The severity of the alert."
+    )
+    security_severity_level: Missing[
+        Union[Literal["low", "medium", "high", "critical"], None]
+    ] = Field(default=UNSET, description="The security severity of the alert.")
+    description: Missing[str] = Field(
+        default=UNSET,
+        description="A short description of the rule used to detect the alert.",
+    )
+    full_description: Missing[str] = Field(
+        default=UNSET, description="A description of the rule used to detect the alert."
+    )
+    tags: Missing[Union[list[str], None]] = Field(
+        default=UNSET, description="A set of tags applicable for the rule."
+    )
+    help_: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        alias="help",
+        description="Detailed documentation for the rule as GitHub Flavored Markdown.",
+    )
+    help_uri: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="A link to the documentation for the rule used to detect the alert.",
+    )
 
-    id: int = Field()
-    stream_type: str = Field()
-    stream_details: str = Field()
-    enabled: bool = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    paused_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
 
+model_rebuild(CodeScanningAlertRuleSummary)
 
-model_rebuild(GetAuditLogStreamConfig)
-
-__all__ = ("GetAuditLogStreamConfig",)
+__all__ = ("CodeScanningAlertRuleSummary",)

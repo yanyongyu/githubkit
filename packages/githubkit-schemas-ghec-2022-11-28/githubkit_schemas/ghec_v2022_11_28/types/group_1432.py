@@ -9,27 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0189 import (
-    SecretScanningCustomPatternToCreateType,
-    SecretScanningCustomPatternToCreateTypeForResponse,
+from .group_0327 import (
+    ProjectsV2FieldSingleSelectOptionType,
+    ProjectsV2FieldSingleSelectOptionTypeForResponse,
 )
 
 
-class OrgsOrgSecretScanningCustomPatternsPostBodyType(TypedDict):
-    """OrgsOrgSecretScanningCustomPatternsPostBody"""
+class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2Type(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2"""
 
-    patterns: list[SecretScanningCustomPatternToCreateType]
+    name: str
+    data_type: Literal["single_select"]
+    single_select_options: list[ProjectsV2FieldSingleSelectOptionType]
 
 
-class OrgsOrgSecretScanningCustomPatternsPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgSecretScanningCustomPatternsPostBody"""
+class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2TypeForResponse(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2"""
 
-    patterns: list[SecretScanningCustomPatternToCreateTypeForResponse]
+    name: str
+    data_type: Literal["single_select"]
+    single_select_options: list[ProjectsV2FieldSingleSelectOptionTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgSecretScanningCustomPatternsPostBodyType",
-    "OrgsOrgSecretScanningCustomPatternsPostBodyTypeForResponse",
+    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2Type",
+    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2TypeForResponse",
 )

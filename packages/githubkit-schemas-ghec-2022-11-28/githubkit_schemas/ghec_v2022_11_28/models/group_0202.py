@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,63 +16,95 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class GetCostCenter(GitHubModel):
-    """GetCostCenter"""
+class BillingPremiumRequestUsageReportGhe(GitHubModel):
+    """BillingPremiumRequestUsageReportGhe"""
 
-    id: str = Field(description="ID of the cost center.")
-    name: str = Field(description="Name of the cost center.")
-    azure_subscription: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="Azure subscription ID associated with the cost center. Only present for cost centers linked to Azure subscriptions.",
+    time_period: BillingPremiumRequestUsageReportGhePropTimePeriod = Field(
+        alias="timePeriod"
     )
-    state: Missing[Literal["active", "deleted"]] = Field(
-        default=UNSET, description="State of the cost center."
+    enterprise: str = Field(
+        description="The name of the enterprise for the usage report."
     )
-    resources: list[GetCostCenterPropResourcesItems] = Field()
-    has_next_page: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates if there are more resources available for pagination. Only present when pagination is used.",
+    user: Missing[str] = Field(
+        default=UNSET, description="The name of the user for the usage report."
     )
-    ai_credit_pool_enabled: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the cost center draws from the AI credit pool.\n\nThis can only be enabled for cost centers that contain only user or team resources.\n\n- `false` — no cap; the cost center draws from the shared enterprise pool.\n- `true` — the cost center is capped at an amount derived from its members' license entitlements.",
+    organization: Missing[str] = Field(
+        default=UNSET, description="The name of the organization for the usage report."
     )
-    ai_credit_pool_state: Missing[GetCostCenterPropAiCreditPoolState] = Field(
-        default=UNSET,
-        description="Read-only cap-budget projection for the cost center. Only present when the cost center draws from the AI credit pool.",
+    product: Missing[str] = Field(
+        default=UNSET, description="The product for the usage report."
     )
-
-
-class GetCostCenterPropResourcesItems(GitHubModel):
-    """GetCostCenterPropResourcesItems"""
-
-    type: str = Field(description="Type of the resource.")
-    name: str = Field(description="Name of the resource.")
-
-
-class GetCostCenterPropAiCreditPoolState(GitHubModel):
-    """GetCostCenterPropAiCreditPoolState
-
-    Read-only cap-budget projection for the cost center. Only present when the cost
-    center draws from the AI credit pool.
-    """
-
-    target_amount: Missing[Union[float, None]] = Field(
-        default=UNSET,
-        description="The AI credit pool cap target amount, in AI Credits. Null when the cap budget has not been materialized yet.",
+    model: Missing[str] = Field(
+        default=UNSET, description="The model for the usage report."
     )
-    current_amount: Missing[Union[float, None]] = Field(
-        default=UNSET,
-        description="The current-month applied amount against the AI credit pool cap, in AI Credits. Null when the cap budget has not been materialized yet.",
+    cost_center: Missing[BillingPremiumRequestUsageReportGhePropCostCenter] = Field(
+        default=UNSET, alias="costCenter"
+    )
+    usage_items: list[BillingPremiumRequestUsageReportGhePropUsageItemsItems] = Field(
+        alias="usageItems"
     )
 
 
-model_rebuild(GetCostCenter)
-model_rebuild(GetCostCenterPropResourcesItems)
-model_rebuild(GetCostCenterPropAiCreditPoolState)
+class BillingPremiumRequestUsageReportGhePropTimePeriod(GitHubModel):
+    """BillingPremiumRequestUsageReportGhePropTimePeriod"""
+
+    year: int = Field(description="The year for the usage report.")
+    month: Missing[int] = Field(
+        default=UNSET, description="The month for the usage report."
+    )
+    day: Missing[int] = Field(
+        default=UNSET, description="The day for the usage report."
+    )
+
+
+class BillingPremiumRequestUsageReportGhePropCostCenter(GitHubModel):
+    """BillingPremiumRequestUsageReportGhePropCostCenter"""
+
+    id: str = Field(description="The unique identifier of the cost center.")
+    name: str = Field(description="The name of the cost center.")
+
+
+class BillingPremiumRequestUsageReportGhePropUsageItemsItems(GitHubModel):
+    """BillingPremiumRequestUsageReportGhePropUsageItemsItems"""
+
+    product: str = Field(description="Product name.")
+    sku: str = Field(description="SKU name.")
+    model: str = Field(description="Model name.")
+    unit_type: str = Field(
+        alias="unitType", description="Unit type of the usage line item."
+    )
+    price_per_unit: float = Field(
+        alias="pricePerUnit", description="Price per unit of the usage line item."
+    )
+    gross_quantity: float = Field(
+        alias="grossQuantity", description="Gross quantity of the usage line item."
+    )
+    gross_amount: float = Field(
+        alias="grossAmount", description="Gross amount of the usage line item."
+    )
+    discount_quantity: float = Field(
+        alias="discountQuantity",
+        description="Discount quantity of the usage line item.",
+    )
+    discount_amount: float = Field(
+        alias="discountAmount", description="Discount amount of the usage line item."
+    )
+    net_quantity: float = Field(
+        alias="netQuantity", description="Net quantity of the usage line item."
+    )
+    net_amount: float = Field(
+        alias="netAmount", description="Net amount of the usage line item."
+    )
+
+
+model_rebuild(BillingPremiumRequestUsageReportGhe)
+model_rebuild(BillingPremiumRequestUsageReportGhePropTimePeriod)
+model_rebuild(BillingPremiumRequestUsageReportGhePropCostCenter)
+model_rebuild(BillingPremiumRequestUsageReportGhePropUsageItemsItems)
 
 __all__ = (
-    "GetCostCenter",
-    "GetCostCenterPropAiCreditPoolState",
-    "GetCostCenterPropResourcesItems",
+    "BillingPremiumRequestUsageReportGhe",
+    "BillingPremiumRequestUsageReportGhePropCostCenter",
+    "BillingPremiumRequestUsageReportGhePropTimePeriod",
+    "BillingPremiumRequestUsageReportGhePropUsageItemsItems",
 )

@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,66 +18,52 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoContentsPathPutBody(GitHubModel):
-    """ReposOwnerRepoContentsPathPutBody"""
+class ReposOwnerRepoCodespacesPostBody(GitHubModel):
+    """ReposOwnerRepoCodespacesPostBody"""
 
-    message: str = Field(description="The commit message.")
-    content: str = Field(description="The new file content, using Base64 encoding.")
-    sha: Missing[str] = Field(
+    ref: Missing[str] = Field(
         default=UNSET,
-        description="**Required if you are updating a file**. The blob SHA of the file being replaced.",
+        description="Git ref (typically a branch name) for this codespace",
     )
-    branch: Missing[str] = Field(
+    location: Missing[str] = Field(
         default=UNSET,
-        description="The branch name. Default: the repository’s default branch.",
+        description="The requested location for a new codespace. Best efforts are made to respect this upon creation. Assigned by IP if not provided.",
     )
-    committer: Missing[ReposOwnerRepoContentsPathPutBodyPropCommitter] = Field(
+    geo: Missing[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]] = Field(
         default=UNSET,
-        description="The person that committed the file. Default: the authenticated user.",
+        description="The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is closing down.",
     )
-    author: Missing[ReposOwnerRepoContentsPathPutBodyPropAuthor] = Field(
+    client_ip: Missing[str] = Field(
         default=UNSET,
-        description="The author of the file. Default: The `committer` or the authenticated user if you omit `committer`.",
+        description="IP for location auto-detection when proxying a request",
+    )
+    machine: Missing[str] = Field(
+        default=UNSET, description="Machine type to use for this codespace"
+    )
+    devcontainer_path: Missing[str] = Field(
+        default=UNSET,
+        description="Path to devcontainer.json config to use for this codespace",
+    )
+    multi_repo_permissions_opt_out: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to authorize requested permissions from devcontainer.json",
+    )
+    working_directory: Missing[str] = Field(
+        default=UNSET, description="Working directory for this codespace"
+    )
+    idle_timeout_minutes: Missing[int] = Field(
+        default=UNSET,
+        description="Time in minutes before codespace stops from inactivity",
+    )
+    display_name: Missing[str] = Field(
+        default=UNSET, description="Display name for this codespace"
+    )
+    retention_period_minutes: Missing[int] = Field(
+        default=UNSET,
+        description="Duration in minutes after codespace has gone idle in which it will be deleted. Must be integer minutes between 0 and 43200 (30 days).",
     )
 
 
-class ReposOwnerRepoContentsPathPutBodyPropCommitter(GitHubModel):
-    """ReposOwnerRepoContentsPathPutBodyPropCommitter
+model_rebuild(ReposOwnerRepoCodespacesPostBody)
 
-    The person that committed the file. Default: the authenticated user.
-    """
-
-    name: str = Field(
-        description="The name of the author or committer of the commit. You'll receive a `422` status code if `name` is omitted."
-    )
-    email: str = Field(
-        description="The email of the author or committer of the commit. You'll receive a `422` status code if `email` is omitted."
-    )
-    date: Missing[str] = Field(default=UNSET)
-
-
-class ReposOwnerRepoContentsPathPutBodyPropAuthor(GitHubModel):
-    """ReposOwnerRepoContentsPathPutBodyPropAuthor
-
-    The author of the file. Default: The `committer` or the authenticated user if
-    you omit `committer`.
-    """
-
-    name: str = Field(
-        description="The name of the author or committer of the commit. You'll receive a `422` status code if `name` is omitted."
-    )
-    email: str = Field(
-        description="The email of the author or committer of the commit. You'll receive a `422` status code if `email` is omitted."
-    )
-    date: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(ReposOwnerRepoContentsPathPutBody)
-model_rebuild(ReposOwnerRepoContentsPathPutBodyPropCommitter)
-model_rebuild(ReposOwnerRepoContentsPathPutBodyPropAuthor)
-
-__all__ = (
-    "ReposOwnerRepoContentsPathPutBody",
-    "ReposOwnerRepoContentsPathPutBodyPropAuthor",
-    "ReposOwnerRepoContentsPathPutBodyPropCommitter",
-)
+__all__ = ("ReposOwnerRepoCodespacesPostBody",)

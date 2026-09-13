@@ -11,27 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0219 import IssueCommentType, IssueCommentTypeForResponse
-from .group_0221 import IssueType, IssueTypeForResponse
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class IssueCommentEventType(TypedDict):
-    """IssueCommentEvent"""
-
-    action: str
-    issue: IssueType
-    comment: IssueCommentType
-
-
-class IssueCommentEventTypeForResponse(TypedDict):
-    """IssueCommentEvent"""
+class MemberEventType(TypedDict):
+    """MemberEvent"""
 
     action: str
-    issue: IssueTypeForResponse
-    comment: IssueCommentTypeForResponse
+    member: SimpleUserType
+
+
+class MemberEventTypeForResponse(TypedDict):
+    """MemberEvent"""
+
+    action: str
+    member: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "IssueCommentEventType",
-    "IssueCommentEventTypeForResponse",
+    "MemberEventType",
+    "MemberEventTypeForResponse",
 )

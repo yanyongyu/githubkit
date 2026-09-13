@@ -9,36 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0137 import (
-    RepositoryRuleUpdatePropParametersType,
-    RepositoryRuleUpdatePropParametersTypeForResponse,
-)
+from typing_extensions import TypedDict
 
 
-class RepositoryRuleUpdateType(TypedDict):
-    """update
+class RepositoryRuleRequiredDeploymentsPropParametersType(TypedDict):
+    """RepositoryRuleRequiredDeploymentsPropParameters"""
 
-    Only allow users with bypass permission to update matching refs.
-    """
-
-    type: Literal["update"]
-    parameters: NotRequired[RepositoryRuleUpdatePropParametersType]
+    required_deployment_environments: list[str]
 
 
-class RepositoryRuleUpdateTypeForResponse(TypedDict):
-    """update
+class RepositoryRuleRequiredDeploymentsPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleRequiredDeploymentsPropParameters"""
 
-    Only allow users with bypass permission to update matching refs.
-    """
-
-    type: Literal["update"]
-    parameters: NotRequired[RepositoryRuleUpdatePropParametersTypeForResponse]
+    required_deployment_environments: list[str]
 
 
 __all__ = (
-    "RepositoryRuleUpdateType",
-    "RepositoryRuleUpdateTypeForResponse",
+    "RepositoryRuleRequiredDeploymentsPropParametersType",
+    "RepositoryRuleRequiredDeploymentsPropParametersTypeForResponse",
 )

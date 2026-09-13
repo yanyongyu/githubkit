@@ -9,30 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0050 import RunnerType, RunnerTypeForResponse
 
 
-class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBodyType(
-    TypedDict
-):
-    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositories
-    RemovePatchBody
-    """
+class EnterprisesEnterpriseActionsRunnersGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseActionsRunnersGetResponse200"""
 
-    repositories: list[str]
+    total_count: NotRequired[float]
+    runners: NotRequired[list[RunnerType]]
 
 
-class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBodyTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositories
-    RemovePatchBody
-    """
+class EnterprisesEnterpriseActionsRunnersGetResponse200TypeForResponse(TypedDict):
+    """EnterprisesEnterpriseActionsRunnersGetResponse200"""
 
-    repositories: list[str]
+    total_count: NotRequired[float]
+    runners: NotRequired[list[RunnerTypeForResponse]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBodyType",
-    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBodyTypeForResponse",
+    "EnterprisesEnterpriseActionsRunnersGetResponse200Type",
+    "EnterprisesEnterpriseActionsRunnersGetResponse200TypeForResponse",
 )

@@ -9,31 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_1384 import (
-    ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsType,
-    ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsTypeForResponse,
-)
+
+class ReposOwnerRepoImportPatchBodyType(TypedDict):
+    """ReposOwnerRepoImportPatchBody"""
+
+    vcs_username: NotRequired[str]
+    vcs_password: NotRequired[str]
+    vcs: NotRequired[Literal["subversion", "tfvc", "git", "mercurial"]]
+    tfvc_project: NotRequired[str]
 
 
-class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1Type(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1"""
+class ReposOwnerRepoImportPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoImportPatchBody"""
 
-    suggestions: NotRequired[
-        ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsType
-    ]
-
-
-class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1TypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1"""
-
-    suggestions: NotRequired[
-        ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsTypeForResponse
-    ]
+    vcs_username: NotRequired[str]
+    vcs_password: NotRequired[str]
+    vcs: NotRequired[Literal["subversion", "tfvc", "git", "mercurial"]]
+    tfvc_project: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1Type",
-    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1TypeForResponse",
+    "ReposOwnerRepoImportPatchBodyType",
+    "ReposOwnerRepoImportPatchBodyTypeForResponse",
 )

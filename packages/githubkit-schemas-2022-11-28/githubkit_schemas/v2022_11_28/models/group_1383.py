@@ -9,28 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_1384 import (
-    ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestions,
-)
 
+class ReposOwnerRepoImportPatchBody(GitHubModel):
+    """ReposOwnerRepoImportPatchBody"""
 
-class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1"""
-
-    suggestions: Missing[
-        ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestions
-    ] = Field(
+    vcs_username: Missing[str] = Field(
         default=UNSET,
-        description="Pending suggestions for each suggestible field (`type`,\n`issue_field_values`, `labels`, `assignees`, `state`) the\nrequest touched. Omitted for fields not in the request or\nwith no pending or ignored suggestions. Items tagged\n`ignored` are echoes of the current request's inputs that\nwere not persisted as pending suggestions.\n",
+        description="The username to provide to the originating repository.",
+    )
+    vcs_password: Missing[str] = Field(
+        default=UNSET,
+        description="The password to provide to the originating repository.",
+    )
+    vcs: Missing[Literal["subversion", "tfvc", "git", "mercurial"]] = Field(
+        default=UNSET,
+        description="The type of version control system you are migrating from.",
+    )
+    tfvc_project: Missing[str] = Field(
+        default=UNSET,
+        description="For a tfvc import, the name of the project that is being imported.",
     )
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1)
+model_rebuild(ReposOwnerRepoImportPatchBody)
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1",)
+__all__ = ("ReposOwnerRepoImportPatchBody",)

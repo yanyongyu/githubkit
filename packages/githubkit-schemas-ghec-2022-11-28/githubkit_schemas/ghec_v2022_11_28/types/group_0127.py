@@ -9,33 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0128 import (
-    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType,
-    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse,
+from .group_0116 import (
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse,
+)
+from .group_0118 import (
+    RepositoryRulesetConditionsPropRefNameType,
+    RepositoryRulesetConditionsPropRefNameTypeForResponse,
+)
+from .group_0122 import (
+    EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType,
+    EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdTypeForResponse,
 )
 
 
-class EnterpriseRulesetConditionsOrganizationPropertyTargetType(TypedDict):
-    """Repository ruleset conditions for organization properties
+class EnterpriseRulesetConditionsOneof2Type(TypedDict):
+    """organization_id_and_repository_name
 
-    Parameters for a organization property condition
+    Conditions to target organizations by id and all repositories
     """
 
-    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType
+    organization_id: (
+        EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType
+    )
+    repository_name: (
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
+    )
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
 
 
-class EnterpriseRulesetConditionsOrganizationPropertyTargetTypeForResponse(TypedDict):
-    """Repository ruleset conditions for organization properties
+class EnterpriseRulesetConditionsOneof2TypeForResponse(TypedDict):
+    """organization_id_and_repository_name
 
-    Parameters for a organization property condition
+    Conditions to target organizations by id and all repositories
     """
 
-    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse
+    organization_id: (
+        EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdTypeForResponse
+    )
+    repository_name: (
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse
+    )
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
 
 
 __all__ = (
-    "EnterpriseRulesetConditionsOrganizationPropertyTargetType",
-    "EnterpriseRulesetConditionsOrganizationPropertyTargetTypeForResponse",
+    "EnterpriseRulesetConditionsOneof2Type",
+    "EnterpriseRulesetConditionsOneof2TypeForResponse",
 )

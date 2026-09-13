@@ -13,38 +13,48 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0114 import CustomPropertyType, CustomPropertyTypeForResponse
-from .group_0622 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0623 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0624 import (
+from .group_0625 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0626 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0627 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
+from .group_0628 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0713 import (
+    WebhookCodeScanningAlertReopenedByUserPropAlertType,
+    WebhookCodeScanningAlertReopenedByUserPropAlertTypeForResponse,
+)
 
 
-class WebhookCustomPropertyUpdatedType(TypedDict):
-    """custom property updated event"""
+class WebhookCodeScanningAlertReopenedByUserType(TypedDict):
+    """code_scanning_alert reopened_by_user event"""
 
-    action: Literal["updated"]
-    definition: CustomPropertyType
+    action: Literal["reopened_by_user"]
+    alert: WebhookCodeScanningAlertReopenedByUserPropAlertType
+    commit_oid: str
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    sender: NotRequired[SimpleUserType]
+    ref: str
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class WebhookCustomPropertyUpdatedTypeForResponse(TypedDict):
-    """custom property updated event"""
+class WebhookCodeScanningAlertReopenedByUserTypeForResponse(TypedDict):
+    """code_scanning_alert reopened_by_user event"""
 
-    action: Literal["updated"]
-    definition: CustomPropertyTypeForResponse
+    action: Literal["reopened_by_user"]
+    alert: WebhookCodeScanningAlertReopenedByUserPropAlertTypeForResponse
+    commit_oid: str
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    sender: NotRequired[SimpleUserTypeForResponse]
+    ref: str
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookCustomPropertyUpdatedType",
-    "WebhookCustomPropertyUpdatedTypeForResponse",
+    "WebhookCodeScanningAlertReopenedByUserType",
+    "WebhookCodeScanningAlertReopenedByUserTypeForResponse",
 )

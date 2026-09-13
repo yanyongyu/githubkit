@@ -9,28 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0186 import (
+    SecretScanningCustomPatternToCreateType,
+    SecretScanningCustomPatternToCreateTypeForResponse,
+)
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof1Type(
+class EnterprisesEnterpriseSecretScanningCustomPatternsPostBodyType(TypedDict):
+    """EnterprisesEnterpriseSecretScanningCustomPatternsPostBody"""
+
+    patterns: list[SecretScanningCustomPatternToCreateType]
+
+
+class EnterprisesEnterpriseSecretScanningCustomPatternsPostBodyTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof1"""
+    """EnterprisesEnterpriseSecretScanningCustomPatternsPostBody"""
 
-    name: NotRequired[str]
-    ai_credit_pool_enabled: bool
-
-
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof1TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof1"""
-
-    name: NotRequired[str]
-    ai_credit_pool_enabled: bool
+    patterns: list[SecretScanningCustomPatternToCreateTypeForResponse]
 
 
 __all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof1Type",
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof1TypeForResponse",
+    "EnterprisesEnterpriseSecretScanningCustomPatternsPostBodyType",
+    "EnterprisesEnterpriseSecretScanningCustomPatternsPostBodyTypeForResponse",
 )

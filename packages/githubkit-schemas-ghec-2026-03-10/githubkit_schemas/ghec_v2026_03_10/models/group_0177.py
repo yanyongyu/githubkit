@@ -9,23 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class RepositoryRuleLicenseComplianceScanning(GitHubModel):
-    """license_compliance_scanning
+class RulesetVersionPropActor(GitHubModel):
+    """RulesetVersionPropActor
 
-    Enforce any added or changed dependencies to comply with the organization's
-    license policy.
+    The actor who updated the ruleset
     """
 
-    type: Literal["license_compliance_scanning"] = Field()
+    id: Missing[int] = Field(default=UNSET)
+    type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(RepositoryRuleLicenseComplianceScanning)
+model_rebuild(RulesetVersionPropActor)
 
-__all__ = ("RepositoryRuleLicenseComplianceScanning",)
+__all__ = ("RulesetVersionPropActor",)

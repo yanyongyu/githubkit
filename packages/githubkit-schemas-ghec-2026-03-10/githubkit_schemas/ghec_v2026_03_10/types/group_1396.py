@@ -9,18 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgInteractionLimitsGetResponse200Anyof1Type(TypedDict):
-    """OrgsOrgInteractionLimitsGetResponse200Anyof1"""
+class OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202Type(
+    TypedDict
+):
+    """OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202"""
+
+    message: NotRequired[str]
+    warning: NotRequired[str]
 
 
-class OrgsOrgInteractionLimitsGetResponse200Anyof1TypeForResponse(TypedDict):
-    """OrgsOrgInteractionLimitsGetResponse200Anyof1"""
+class OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202"""
+
+    message: NotRequired[str]
+    warning: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgInteractionLimitsGetResponse200Anyof1Type",
-    "OrgsOrgInteractionLimitsGetResponse200Anyof1TypeForResponse",
+    "OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202Type",
+    "OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202TypeForResponse",
 )

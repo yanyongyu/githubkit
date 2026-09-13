@@ -16,12 +16,22 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoDeploymentsPostResponse202(GitHubModel):
-    """ReposOwnerRepoDeploymentsPostResponse202"""
+class ReposOwnerRepoCommitsCommitShaCommentsPostBody(GitHubModel):
+    """ReposOwnerRepoCommitsCommitShaCommentsPostBody"""
 
-    message: Missing[str] = Field(default=UNSET)
+    body: str = Field(description="The contents of the comment.")
+    path: Missing[str] = Field(
+        default=UNSET, description="Relative path of the file to comment on."
+    )
+    position: Missing[int] = Field(
+        default=UNSET, description="Line index in the diff to comment on."
+    )
+    line: Missing[int] = Field(
+        default=UNSET,
+        description="**Closing down notice**. Use **position** parameter instead. Line number in the file to comment on.",
+    )
 
 
-model_rebuild(ReposOwnerRepoDeploymentsPostResponse202)
+model_rebuild(ReposOwnerRepoCommitsCommitShaCommentsPostBody)
 
-__all__ = ("ReposOwnerRepoDeploymentsPostResponse202",)
+__all__ = ("ReposOwnerRepoCommitsCommitShaCommentsPostBody",)

@@ -18,48 +18,62 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0622 import EnterpriseWebhooks
-from .group_0623 import SimpleInstallation
-from .group_0624 import OrganizationSimpleWebhooks
-from .group_0625 import RepositoryWebhooks
-from .group_0696 import WebhookCodeScanningAlertClosedByUserPropAlert
+from .group_0625 import EnterpriseWebhooks
+from .group_0626 import SimpleInstallation
+from .group_0627 import OrganizationSimpleWebhooks
+from .group_0628 import RepositoryWebhooks
+from .group_0633 import CheckRunWithSimpleCheckSuite
 
 
-class WebhookCodeScanningAlertClosedByUser(GitHubModel):
-    """code_scanning_alert closed_by_user event"""
+class WebhookCheckRunRequestedAction(GitHubModel):
+    """Check Run Requested Action Event"""
 
-    action: Literal["closed_by_user"] = Field()
-    alert: WebhookCodeScanningAlertClosedByUserPropAlert = Field(
-        description="The code scanning alert involved in the event."
-    )
-    commit_oid: str = Field(
-        description="The commit SHA of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty."
-    )
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest/admin/overview/about-enterprise-accounts)."',
+    action: Literal["requested_action"] = Field()
+    check_run: CheckRunWithSimpleCheckSuite = Field(
+        title="CheckRun",
+        description="A check performed on the code of a given code change",
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest/admin/overview/about-enterprise-accounts)."',
+    )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    ref: str = Field(
-        description="The Git reference of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty."
-    )
     repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
+    requested_action: Missing[WebhookCheckRunRequestedActionPropRequestedAction] = (
+        Field(default=UNSET, description="The action requested by the user.")
+    )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookCodeScanningAlertClosedByUser)
+class WebhookCheckRunRequestedActionPropRequestedAction(GitHubModel):
+    """WebhookCheckRunRequestedActionPropRequestedAction
 
-__all__ = ("WebhookCodeScanningAlertClosedByUser",)
+    The action requested by the user.
+    """
+
+    identifier: Missing[str] = Field(
+        default=UNSET,
+        description="The integrator reference of the action requested by the user.",
+    )
+
+
+model_rebuild(WebhookCheckRunRequestedAction)
+model_rebuild(WebhookCheckRunRequestedActionPropRequestedAction)
+
+__all__ = (
+    "WebhookCheckRunRequestedAction",
+    "WebhookCheckRunRequestedActionPropRequestedAction",
+)

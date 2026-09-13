@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,27 +16,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoImportPatchBody(GitHubModel):
-    """ReposOwnerRepoImportPatchBody"""
+class ReposOwnerRepoForksPostBody(GitHubModel):
+    """ReposOwnerRepoForksPostBody"""
 
-    vcs_username: Missing[str] = Field(
+    organization: Missing[str] = Field(
         default=UNSET,
-        description="The username to provide to the originating repository.",
+        description="Optional parameter to specify the organization name if forking into an organization.",
     )
-    vcs_password: Missing[str] = Field(
+    name: Missing[str] = Field(
         default=UNSET,
-        description="The password to provide to the originating repository.",
+        description="When forking from an existing repository, a new name for the fork.",
     )
-    vcs: Missing[Literal["subversion", "tfvc", "git", "mercurial"]] = Field(
+    default_branch_only: Missing[bool] = Field(
         default=UNSET,
-        description="The type of version control system you are migrating from.",
-    )
-    tfvc_project: Missing[str] = Field(
-        default=UNSET,
-        description="For a tfvc import, the name of the project that is being imported.",
+        description="When forking from an existing repository, fork with only the default branch.",
     )
 
 
-model_rebuild(ReposOwnerRepoImportPatchBody)
+model_rebuild(ReposOwnerRepoForksPostBody)
 
-__all__ = ("ReposOwnerRepoImportPatchBody",)
+__all__ = ("ReposOwnerRepoForksPostBody",)

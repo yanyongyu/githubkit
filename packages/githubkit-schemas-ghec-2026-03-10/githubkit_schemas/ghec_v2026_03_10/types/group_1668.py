@@ -9,29 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class ReposOwnerRepoStatusesShaPostBodyType(TypedDict):
-    """ReposOwnerRepoStatusesShaPostBody"""
-
-    state: Literal["error", "failure", "pending", "success"]
-    target_url: NotRequired[Union[str, None]]
-    description: NotRequired[Union[str, None]]
-    context: NotRequired[str]
+from .group_0188 import (
+    SecretScanningCustomPatternToDeleteType,
+    SecretScanningCustomPatternToDeleteTypeForResponse,
+)
 
 
-class ReposOwnerRepoStatusesShaPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoStatusesShaPostBody"""
+class ReposOwnerRepoSecretScanningCustomPatternsDeleteBodyType(TypedDict):
+    """ReposOwnerRepoSecretScanningCustomPatternsDeleteBody"""
 
-    state: Literal["error", "failure", "pending", "success"]
-    target_url: NotRequired[Union[str, None]]
-    description: NotRequired[Union[str, None]]
-    context: NotRequired[str]
+    patterns: list[SecretScanningCustomPatternToDeleteType]
+    post_delete_action: NotRequired[Literal["delete_alerts", "resolve_alerts"]]
+
+
+class ReposOwnerRepoSecretScanningCustomPatternsDeleteBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoSecretScanningCustomPatternsDeleteBody"""
+
+    patterns: list[SecretScanningCustomPatternToDeleteTypeForResponse]
+    post_delete_action: NotRequired[Literal["delete_alerts", "resolve_alerts"]]
 
 
 __all__ = (
-    "ReposOwnerRepoStatusesShaPostBodyType",
-    "ReposOwnerRepoStatusesShaPostBodyTypeForResponse",
+    "ReposOwnerRepoSecretScanningCustomPatternsDeleteBodyType",
+    "ReposOwnerRepoSecretScanningCustomPatternsDeleteBodyTypeForResponse",
 )

@@ -10,63 +10,66 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0089 import (
-    MarketplaceListingPlanType,
-    MarketplaceListingPlanTypeForResponse,
-)
+from .group_0090 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
-class MarketplacePurchasePropMarketplacePendingChangeType(TypedDict):
-    """MarketplacePurchasePropMarketplacePendingChange"""
+class ThreadType(TypedDict):
+    """Thread
 
-    is_installed: NotRequired[bool]
-    effective_date: NotRequired[str]
-    unit_count: NotRequired[Union[int, None]]
-    id: NotRequired[int]
-    plan: NotRequired[MarketplaceListingPlanType]
+    Thread
+    """
 
-
-class MarketplacePurchasePropMarketplacePendingChangeTypeForResponse(TypedDict):
-    """MarketplacePurchasePropMarketplacePendingChange"""
-
-    is_installed: NotRequired[bool]
-    effective_date: NotRequired[str]
-    unit_count: NotRequired[Union[int, None]]
-    id: NotRequired[int]
-    plan: NotRequired[MarketplaceListingPlanTypeForResponse]
+    id: str
+    repository: MinimalRepositoryType
+    subject: ThreadPropSubjectType
+    reason: str
+    unread: bool
+    updated_at: str
+    last_read_at: Union[str, None]
+    url: str
+    subscription_url: str
 
 
-class MarketplacePurchasePropMarketplacePurchaseType(TypedDict):
-    """MarketplacePurchasePropMarketplacePurchase"""
+class ThreadTypeForResponse(TypedDict):
+    """Thread
 
-    billing_cycle: NotRequired[str]
-    next_billing_date: NotRequired[Union[str, None]]
-    is_installed: NotRequired[bool]
-    unit_count: NotRequired[Union[int, None]]
-    on_free_trial: NotRequired[bool]
-    free_trial_ends_on: NotRequired[Union[str, None]]
-    updated_at: NotRequired[str]
-    plan: NotRequired[MarketplaceListingPlanType]
+    Thread
+    """
+
+    id: str
+    repository: MinimalRepositoryTypeForResponse
+    subject: ThreadPropSubjectTypeForResponse
+    reason: str
+    unread: bool
+    updated_at: str
+    last_read_at: Union[str, None]
+    url: str
+    subscription_url: str
 
 
-class MarketplacePurchasePropMarketplacePurchaseTypeForResponse(TypedDict):
-    """MarketplacePurchasePropMarketplacePurchase"""
+class ThreadPropSubjectType(TypedDict):
+    """ThreadPropSubject"""
 
-    billing_cycle: NotRequired[str]
-    next_billing_date: NotRequired[Union[str, None]]
-    is_installed: NotRequired[bool]
-    unit_count: NotRequired[Union[int, None]]
-    on_free_trial: NotRequired[bool]
-    free_trial_ends_on: NotRequired[Union[str, None]]
-    updated_at: NotRequired[str]
-    plan: NotRequired[MarketplaceListingPlanTypeForResponse]
+    title: str
+    url: str
+    latest_comment_url: str
+    type: str
+
+
+class ThreadPropSubjectTypeForResponse(TypedDict):
+    """ThreadPropSubject"""
+
+    title: str
+    url: str
+    latest_comment_url: str
+    type: str
 
 
 __all__ = (
-    "MarketplacePurchasePropMarketplacePendingChangeType",
-    "MarketplacePurchasePropMarketplacePendingChangeTypeForResponse",
-    "MarketplacePurchasePropMarketplacePurchaseType",
-    "MarketplacePurchasePropMarketplacePurchaseTypeForResponse",
+    "ThreadPropSubjectType",
+    "ThreadPropSubjectTypeForResponse",
+    "ThreadType",
+    "ThreadTypeForResponse",
 )

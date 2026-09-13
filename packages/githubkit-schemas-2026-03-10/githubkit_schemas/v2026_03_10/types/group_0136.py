@@ -9,43 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodeScanningAlertRuleSummaryType(TypedDict):
-    """CodeScanningAlertRuleSummary"""
+class CodeScanningAlertLocationType(TypedDict):
+    """CodeScanningAlertLocation
 
-    id: NotRequired[Union[str, None]]
-    name: NotRequired[str]
-    severity: NotRequired[Union[Literal["none", "note", "warning", "error"], None]]
-    security_severity_level: NotRequired[
-        Union[Literal["low", "medium", "high", "critical"], None]
-    ]
-    description: NotRequired[str]
-    full_description: NotRequired[str]
-    tags: NotRequired[Union[list[str], None]]
-    help_: NotRequired[Union[str, None]]
-    help_uri: NotRequired[Union[str, None]]
+    Describe a region within a file for the alert.
+    """
+
+    path: NotRequired[str]
+    start_line: NotRequired[int]
+    end_line: NotRequired[int]
+    start_column: NotRequired[int]
+    end_column: NotRequired[int]
 
 
-class CodeScanningAlertRuleSummaryTypeForResponse(TypedDict):
-    """CodeScanningAlertRuleSummary"""
+class CodeScanningAlertLocationTypeForResponse(TypedDict):
+    """CodeScanningAlertLocation
 
-    id: NotRequired[Union[str, None]]
-    name: NotRequired[str]
-    severity: NotRequired[Union[Literal["none", "note", "warning", "error"], None]]
-    security_severity_level: NotRequired[
-        Union[Literal["low", "medium", "high", "critical"], None]
-    ]
-    description: NotRequired[str]
-    full_description: NotRequired[str]
-    tags: NotRequired[Union[list[str], None]]
-    help_: NotRequired[Union[str, None]]
-    help_uri: NotRequired[Union[str, None]]
+    Describe a region within a file for the alert.
+    """
+
+    path: NotRequired[str]
+    start_line: NotRequired[int]
+    end_line: NotRequired[int]
+    start_column: NotRequired[int]
+    end_column: NotRequired[int]
 
 
 __all__ = (
-    "CodeScanningAlertRuleSummaryType",
-    "CodeScanningAlertRuleSummaryTypeForResponse",
+    "CodeScanningAlertLocationType",
+    "CodeScanningAlertLocationTypeForResponse",
 )

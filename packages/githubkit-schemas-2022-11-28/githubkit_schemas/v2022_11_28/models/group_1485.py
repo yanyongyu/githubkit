@@ -14,16 +14,18 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class UserEmailVisibilityPatchBody(GitHubModel):
-    """UserEmailVisibilityPatchBody"""
+class TeamsTeamIdMembershipsUsernamePutBody(GitHubModel):
+    """TeamsTeamIdMembershipsUsernamePutBody"""
 
-    visibility: Literal["public", "private"] = Field(
-        description="Denotes whether an email is publicly visible."
+    role: Missing[Literal["member", "maintainer"]] = Field(
+        default=UNSET, description="The role that this user should have in the team."
     )
 
 
-model_rebuild(UserEmailVisibilityPatchBody)
+model_rebuild(TeamsTeamIdMembershipsUsernamePutBody)
 
-__all__ = ("UserEmailVisibilityPatchBody",)
+__all__ = ("TeamsTeamIdMembershipsUsernamePutBody",)

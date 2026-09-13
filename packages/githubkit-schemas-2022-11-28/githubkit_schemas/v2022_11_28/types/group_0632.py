@@ -13,41 +13,43 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0370 import DependabotAlertType, DependabotAlertTypeForResponse
-from .group_0539 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0540 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0541 import (
+from .group_0191 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
+from .group_0542 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0543 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0544 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0542 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0545 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDependabotAlertReopenedType(TypedDict):
-    """Dependabot alert reopened event"""
+class WebhookCustomPropertyValuesUpdatedType(TypedDict):
+    """Custom property values updated event"""
 
-    action: Literal["reopened"]
-    alert: DependabotAlertType
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
+    action: Literal["updated"]
     enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
     repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    organization: OrganizationSimpleWebhooksType
+    sender: NotRequired[SimpleUserType]
+    new_property_values: list[CustomPropertyValueType]
+    old_property_values: list[CustomPropertyValueType]
 
 
-class WebhookDependabotAlertReopenedTypeForResponse(TypedDict):
-    """Dependabot alert reopened event"""
+class WebhookCustomPropertyValuesUpdatedTypeForResponse(TypedDict):
+    """Custom property values updated event"""
 
-    action: Literal["reopened"]
-    alert: DependabotAlertTypeForResponse
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    action: Literal["updated"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
+    new_property_values: list[CustomPropertyValueTypeForResponse]
+    old_property_values: list[CustomPropertyValueTypeForResponse]
 
 
 __all__ = (
-    "WebhookDependabotAlertReopenedType",
-    "WebhookDependabotAlertReopenedTypeForResponse",
+    "WebhookCustomPropertyValuesUpdatedType",
+    "WebhookCustomPropertyValuesUpdatedTypeForResponse",
 )

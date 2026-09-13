@@ -9,32 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class InstallableOrganizationType(TypedDict):
-    """Installable Organization
+class AuditLogStreamKeyType(TypedDict):
+    """stream-key
 
-    A GitHub organization on which a GitHub App can be installed.
+    Audit Log Streaming Public Key
     """
 
-    id: int
-    login: str
-    accessible_repositories_url: NotRequired[str]
+    key_id: str
+    key: str
 
 
-class InstallableOrganizationTypeForResponse(TypedDict):
-    """Installable Organization
+class AuditLogStreamKeyTypeForResponse(TypedDict):
+    """stream-key
 
-    A GitHub organization on which a GitHub App can be installed.
+    Audit Log Streaming Public Key
     """
 
-    id: int
-    login: str
-    accessible_repositories_url: NotRequired[str]
+    key_id: str
+    key: str
 
 
 __all__ = (
-    "InstallableOrganizationType",
-    "InstallableOrganizationTypeForResponse",
+    "AuditLogStreamKeyType",
+    "AuditLogStreamKeyTypeForResponse",
 )

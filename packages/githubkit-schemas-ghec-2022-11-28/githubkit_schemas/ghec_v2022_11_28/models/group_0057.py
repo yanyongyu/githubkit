@@ -10,31 +10,39 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0017 import AppPermissions
 
 
-class AnnouncementBanner(GitHubModel):
-    """Announcement Banner
+class EnterpriseOrganizationInstallation(GitHubModel):
+    """Enterprise Organization Installation
 
-    Announcement at either the repository, organization, or enterprise level
+    A GitHub App Installation on an enterprise-owned organization
     """
 
-    announcement: Union[str, None] = Field(
-        description='The announcement text in GitHub Flavored Markdown. For more information about GitHub Flavored Markdown, see "[Basic writing and formatting syntax](https://docs.github.com/enterprise-cloud@latest/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)."'
+    id: int = Field(description="The ID of the installation.")
+    app_slug: Missing[str] = Field(default=UNSET)
+    client_id: str = Field()
+    repository_selection: Literal["all", "selected"] = Field(
+        description="Describe whether all repositories have been selected or there's a selection involved"
     )
-    expires_at: Union[_dt.datetime, None] = Field(
-        description="The time at which the announcement expires. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. To set an announcement that never expires, omit this parameter, set it to `null`, or set it to an empty string."
+    repositories_url: str = Field()
+    permissions: AppPermissions = Field(
+        title="App Permissions",
+        description="The permissions granted to the fine-grained access token.",
     )
-    user_dismissible: Union[bool, None] = Field(
-        default=False,
-        description="Whether an announcement can be dismissed by the user.",
-    )
+    events: Missing[list[str]] = Field(default=UNSET)
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
 
 
-model_rebuild(AnnouncementBanner)
+model_rebuild(EnterpriseOrganizationInstallation)
 
-__all__ = ("AnnouncementBanner",)
+__all__ = ("EnterpriseOrganizationInstallation",)

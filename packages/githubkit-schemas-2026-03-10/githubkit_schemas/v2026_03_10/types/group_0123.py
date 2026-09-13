@@ -9,25 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsGetDefaultWorkflowPermissionsType(TypedDict):
-    """ActionsGetDefaultWorkflowPermissions"""
+class RunnerApplicationType(TypedDict):
+    """Runner Application
 
-    default_workflow_permissions: Literal["read", "write"]
-    can_approve_pull_request_reviews: bool
+    Runner Application
+    """
+
+    os: str
+    architecture: str
+    download_url: str
+    filename: str
+    temp_download_token: NotRequired[str]
+    sha256_checksum: NotRequired[str]
 
 
-class ActionsGetDefaultWorkflowPermissionsTypeForResponse(TypedDict):
-    """ActionsGetDefaultWorkflowPermissions"""
+class RunnerApplicationTypeForResponse(TypedDict):
+    """Runner Application
 
-    default_workflow_permissions: Literal["read", "write"]
-    can_approve_pull_request_reviews: bool
+    Runner Application
+    """
+
+    os: str
+    architecture: str
+    download_url: str
+    filename: str
+    temp_download_token: NotRequired[str]
+    sha256_checksum: NotRequired[str]
 
 
 __all__ = (
-    "ActionsGetDefaultWorkflowPermissionsType",
-    "ActionsGetDefaultWorkflowPermissionsTypeForResponse",
+    "RunnerApplicationType",
+    "RunnerApplicationTypeForResponse",
 )

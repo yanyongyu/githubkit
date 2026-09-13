@@ -9,29 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBodyType(TypedDict):
-    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBody"""
-
-    client_id: str
-    repository_selection: Literal["all", "selected", "none"]
-    repositories: NotRequired[list[str]]
-
-
-class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBodyTypeForResponse(
+class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBodyType(
     TypedDict
 ):
-    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBody"""
+    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBody"""
 
-    client_id: str
-    repository_selection: Literal["all", "selected", "none"]
-    repositories: NotRequired[list[str]]
+    selected_organization_ids: list[int]
+
+
+class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBody"""
+
+    selected_organization_ids: list[int]
 
 
 __all__ = (
-    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBodyType",
-    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBodyTypeForResponse",
+    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBodyType",
+    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBodyTypeForResponse",
 )

@@ -9,59 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, TypeAlias
+
+CopilotEnterpriseContentExclusionDetailsType: TypeAlias = dict[str, Any]
+"""Copilot Enterprise Content Exclusion Details
+
+List all Copilot Content Exclusion rules for an enterprise.
+"""
 
 
-class TeamSimpleType(TypedDict):
-    """Team Simple
+CopilotEnterpriseContentExclusionDetailsTypeForResponse: TypeAlias = dict[str, Any]
+"""Copilot Enterprise Content Exclusion Details
 
-    Groups of organization members that gives permissions on specified repositories.
-    """
-
-    id: int
-    node_id: str
-    url: str
-    members_url: str
-    name: str
-    description: Union[str, None]
-    permission: str
-    privacy: NotRequired[str]
-    notification_setting: NotRequired[str]
-    html_url: str
-    repositories_url: str
-    slug: str
-    ldap_dn: NotRequired[str]
-    type: Literal["enterprise", "organization"]
-    organization_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
-
-
-class TeamSimpleTypeForResponse(TypedDict):
-    """Team Simple
-
-    Groups of organization members that gives permissions on specified repositories.
-    """
-
-    id: int
-    node_id: str
-    url: str
-    members_url: str
-    name: str
-    description: Union[str, None]
-    permission: str
-    privacy: NotRequired[str]
-    notification_setting: NotRequired[str]
-    html_url: str
-    repositories_url: str
-    slug: str
-    ldap_dn: NotRequired[str]
-    type: Literal["enterprise", "organization"]
-    organization_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
+List all Copilot Content Exclusion rules for an enterprise.
+"""
 
 
 __all__ = (
-    "TeamSimpleType",
-    "TeamSimpleTypeForResponse",
+    "CopilotEnterpriseContentExclusionDetailsType",
+    "CopilotEnterpriseContentExclusionDetailsTypeForResponse",
 )

@@ -9,29 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0188 import (
-    SecretScanningCustomPatternType,
-    SecretScanningCustomPatternTypeForResponse,
-)
 
-
-class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201Type(TypedDict):
-    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201"""
-
-    created_patterns: NotRequired[list[SecretScanningCustomPatternType]]
-
-
-class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201TypeForResponse(
+class EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneof1Type(
     TypedDict
 ):
-    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201"""
+    """EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneo
+    f1
+    """
 
-    created_patterns: NotRequired[list[SecretScanningCustomPatternTypeForResponse]]
+    status: NotRequired[Literal["error"]]
+    error: NotRequired[str]
+
+
+class EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneof1TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneo
+    f1
+    """
+
+    status: NotRequired[Literal["error"]]
+    error: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201Type",
-    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201TypeForResponse",
+    "EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneof1Type",
+    "EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneof1TypeForResponse",
 )

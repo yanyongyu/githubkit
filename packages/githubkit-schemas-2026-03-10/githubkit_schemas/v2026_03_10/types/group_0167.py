@@ -9,62 +9,72 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0047 import OrganizationSimpleType, OrganizationSimpleTypeForResponse
 
 
-class OrgMembershipType(TypedDict):
-    """Org Membership
+class OrganizationRoleType(TypedDict):
+    """Organization Role
 
-    Org Membership
+    Organization roles
     """
 
-    url: str
-    state: Literal["active", "pending"]
-    role: Literal["admin", "member", "billing_manager"]
-    direct_membership: NotRequired[bool]
-    enterprise_teams_providing_indirect_membership: NotRequired[list[str]]
-    organization_url: str
-    organization: OrganizationSimpleType
-    user: Union[SimpleUserType, None]
-    permissions: NotRequired[OrgMembershipPropPermissionsType]
+    id: int
+    name: str
+    description: NotRequired[Union[str, None]]
+    base_role: NotRequired[
+        Union[Literal["read", "triage", "write", "maintain", "admin"], None]
+    ]
+    source: NotRequired[
+        Union[Literal["Organization", "Enterprise", "Predefined"], None]
+    ]
+    permissions: list[str]
+    organization: Union[SimpleUserType, None]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-class OrgMembershipTypeForResponse(TypedDict):
-    """Org Membership
+class OrganizationRoleTypeForResponse(TypedDict):
+    """Organization Role
 
-    Org Membership
+    Organization roles
     """
 
-    url: str
-    state: Literal["active", "pending"]
-    role: Literal["admin", "member", "billing_manager"]
-    direct_membership: NotRequired[bool]
-    enterprise_teams_providing_indirect_membership: NotRequired[list[str]]
-    organization_url: str
-    organization: OrganizationSimpleTypeForResponse
-    user: Union[SimpleUserTypeForResponse, None]
-    permissions: NotRequired[OrgMembershipPropPermissionsTypeForResponse]
+    id: int
+    name: str
+    description: NotRequired[Union[str, None]]
+    base_role: NotRequired[
+        Union[Literal["read", "triage", "write", "maintain", "admin"], None]
+    ]
+    source: NotRequired[
+        Union[Literal["Organization", "Enterprise", "Predefined"], None]
+    ]
+    permissions: list[str]
+    organization: Union[SimpleUserTypeForResponse, None]
+    created_at: str
+    updated_at: str
 
 
-class OrgMembershipPropPermissionsType(TypedDict):
-    """OrgMembershipPropPermissions"""
+class OrgsOrgOrganizationRolesGetResponse200Type(TypedDict):
+    """OrgsOrgOrganizationRolesGetResponse200"""
 
-    can_create_repository: bool
+    total_count: NotRequired[int]
+    roles: NotRequired[list[OrganizationRoleType]]
 
 
-class OrgMembershipPropPermissionsTypeForResponse(TypedDict):
-    """OrgMembershipPropPermissions"""
+class OrgsOrgOrganizationRolesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgOrganizationRolesGetResponse200"""
 
-    can_create_repository: bool
+    total_count: NotRequired[int]
+    roles: NotRequired[list[OrganizationRoleTypeForResponse]]
 
 
 __all__ = (
-    "OrgMembershipPropPermissionsType",
-    "OrgMembershipPropPermissionsTypeForResponse",
-    "OrgMembershipType",
-    "OrgMembershipTypeForResponse",
+    "OrganizationRoleType",
+    "OrganizationRoleTypeForResponse",
+    "OrgsOrgOrganizationRolesGetResponse200Type",
+    "OrgsOrgOrganizationRolesGetResponse200TypeForResponse",
 )

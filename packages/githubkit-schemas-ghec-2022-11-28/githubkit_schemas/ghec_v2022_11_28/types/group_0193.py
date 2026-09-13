@@ -9,70 +9,94 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class AdvancedSecurityActiveCommittersType(TypedDict):
-    """AdvancedSecurityActiveCommitters"""
+class CreateBudgetType(TypedDict):
+    """CreateBudget"""
 
-    total_advanced_security_committers: NotRequired[int]
-    total_count: NotRequired[int]
-    maximum_advanced_security_committers: NotRequired[int]
-    purchased_advanced_security_committers: NotRequired[int]
-    repositories: list[AdvancedSecurityActiveCommittersRepositoryType]
+    message: str
+    budget: CreateBudgetPropBudgetType
 
 
-class AdvancedSecurityActiveCommittersTypeForResponse(TypedDict):
-    """AdvancedSecurityActiveCommitters"""
+class CreateBudgetTypeForResponse(TypedDict):
+    """CreateBudget"""
 
-    total_advanced_security_committers: NotRequired[int]
-    total_count: NotRequired[int]
-    maximum_advanced_security_committers: NotRequired[int]
-    purchased_advanced_security_committers: NotRequired[int]
-    repositories: list[AdvancedSecurityActiveCommittersRepositoryTypeForResponse]
+    message: str
+    budget: CreateBudgetPropBudgetTypeForResponse
 
 
-class AdvancedSecurityActiveCommittersRepositoryType(TypedDict):
-    """AdvancedSecurityActiveCommittersRepository"""
+class CreateBudgetPropBudgetType(TypedDict):
+    """CreateBudgetPropBudget"""
 
-    name: str
-    advanced_security_committers: int
-    advanced_security_committers_breakdown: list[
-        AdvancedSecurityActiveCommittersUserType
+    id: NotRequired[str]
+    budget_scope: NotRequired[
+        Literal[
+            "enterprise",
+            "organization",
+            "repository",
+            "cost_center",
+            "multi_user_customer",
+            "multi_user_cost_center",
+            "user",
+        ]
     ]
+    budget_entity_name: NotRequired[str]
+    budget_amount: NotRequired[int]
+    prevent_further_usage: NotRequired[bool]
+    budget_product_sku: NotRequired[str]
+    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing", "BundlePricing"]]
+    budget_alerting: NotRequired[CreateBudgetPropBudgetPropBudgetAlertingType]
+    expires_at: NotRequired[_dt.date]
 
 
-class AdvancedSecurityActiveCommittersRepositoryTypeForResponse(TypedDict):
-    """AdvancedSecurityActiveCommittersRepository"""
+class CreateBudgetPropBudgetTypeForResponse(TypedDict):
+    """CreateBudgetPropBudget"""
 
-    name: str
-    advanced_security_committers: int
-    advanced_security_committers_breakdown: list[
-        AdvancedSecurityActiveCommittersUserTypeForResponse
+    id: NotRequired[str]
+    budget_scope: NotRequired[
+        Literal[
+            "enterprise",
+            "organization",
+            "repository",
+            "cost_center",
+            "multi_user_customer",
+            "multi_user_cost_center",
+            "user",
+        ]
     ]
+    budget_entity_name: NotRequired[str]
+    budget_amount: NotRequired[int]
+    prevent_further_usage: NotRequired[bool]
+    budget_product_sku: NotRequired[str]
+    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing", "BundlePricing"]]
+    budget_alerting: NotRequired[
+        CreateBudgetPropBudgetPropBudgetAlertingTypeForResponse
+    ]
+    expires_at: NotRequired[str]
 
 
-class AdvancedSecurityActiveCommittersUserType(TypedDict):
-    """AdvancedSecurityActiveCommittersUser"""
+class CreateBudgetPropBudgetPropBudgetAlertingType(TypedDict):
+    """CreateBudgetPropBudgetPropBudgetAlerting"""
 
-    user_login: str
-    last_pushed_date: str
-    last_pushed_email: str
+    will_alert: NotRequired[bool]
+    alert_recipients: NotRequired[list[str]]
 
 
-class AdvancedSecurityActiveCommittersUserTypeForResponse(TypedDict):
-    """AdvancedSecurityActiveCommittersUser"""
+class CreateBudgetPropBudgetPropBudgetAlertingTypeForResponse(TypedDict):
+    """CreateBudgetPropBudgetPropBudgetAlerting"""
 
-    user_login: str
-    last_pushed_date: str
-    last_pushed_email: str
+    will_alert: NotRequired[bool]
+    alert_recipients: NotRequired[list[str]]
 
 
 __all__ = (
-    "AdvancedSecurityActiveCommittersRepositoryType",
-    "AdvancedSecurityActiveCommittersRepositoryTypeForResponse",
-    "AdvancedSecurityActiveCommittersType",
-    "AdvancedSecurityActiveCommittersTypeForResponse",
-    "AdvancedSecurityActiveCommittersUserType",
-    "AdvancedSecurityActiveCommittersUserTypeForResponse",
+    "CreateBudgetPropBudgetPropBudgetAlertingType",
+    "CreateBudgetPropBudgetPropBudgetAlertingTypeForResponse",
+    "CreateBudgetPropBudgetType",
+    "CreateBudgetPropBudgetTypeForResponse",
+    "CreateBudgetType",
+    "CreateBudgetTypeForResponse",
 )

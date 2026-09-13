@@ -12,34 +12,32 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 from .group_0120 import (
-    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
-    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse,
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse,
 )
 
 
-class RepositoryRulesetConditionsRepositoryNameTargetType(TypedDict):
-    """Repository ruleset conditions for repository names
+class RepositoryRulesetConditionsRepositoryPropertyTargetType(TypedDict):
+    """Repository ruleset conditions for repository properties
 
-    Parameters for a repository name condition
+    Parameters for a repository property condition
     """
 
-    repository_name: (
-        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
+    repository_property: (
+        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
     )
 
 
-class RepositoryRulesetConditionsRepositoryNameTargetTypeForResponse(TypedDict):
-    """Repository ruleset conditions for repository names
+class RepositoryRulesetConditionsRepositoryPropertyTargetTypeForResponse(TypedDict):
+    """Repository ruleset conditions for repository properties
 
-    Parameters for a repository name condition
+    Parameters for a repository property condition
     """
 
-    repository_name: (
-        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse
-    )
+    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse
 
 
 __all__ = (
-    "RepositoryRulesetConditionsRepositoryNameTargetType",
-    "RepositoryRulesetConditionsRepositoryNameTargetTypeForResponse",
+    "RepositoryRulesetConditionsRepositoryPropertyTargetType",
+    "RepositoryRulesetConditionsRepositoryPropertyTargetTypeForResponse",
 )

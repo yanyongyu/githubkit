@@ -9,41 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0122 import (
-    RepositoryRulesetConditionsPropRefNameType,
-    RepositoryRulesetConditionsPropRefNameTypeForResponse,
-)
-from .group_0124 import (
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse,
-)
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class OrgRulesetConditionsOneof2Type(TypedDict):
-    """repository_property_and_ref_name
+class RepositoryRuleLicenseComplianceScanningType(TypedDict):
+    """license_compliance_scanning
 
-    Conditions to target repositories by property and refs by name
+    Enforce any added or changed dependencies to comply with the organization's
+    license policy.
     """
 
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
-    repository_property: (
-        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
-    )
+    type: Literal["license_compliance_scanning"]
 
 
-class OrgRulesetConditionsOneof2TypeForResponse(TypedDict):
-    """repository_property_and_ref_name
+class RepositoryRuleLicenseComplianceScanningTypeForResponse(TypedDict):
+    """license_compliance_scanning
 
-    Conditions to target repositories by property and refs by name
+    Enforce any added or changed dependencies to comply with the organization's
+    license policy.
     """
 
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
-    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse
+    type: Literal["license_compliance_scanning"]
 
 
 __all__ = (
-    "OrgRulesetConditionsOneof2Type",
-    "OrgRulesetConditionsOneof2TypeForResponse",
+    "RepositoryRuleLicenseComplianceScanningType",
+    "RepositoryRuleLicenseComplianceScanningTypeForResponse",
 )

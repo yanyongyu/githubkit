@@ -18,36 +18,28 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoReleasesReleaseIdPatchBody(GitHubModel):
-    """ReposOwnerRepoReleasesReleaseIdPatchBody"""
+class ReposOwnerRepoPullsPullNumberMergeAsyncPutBody(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberMergeAsyncPutBody"""
 
-    tag_name: Missing[str] = Field(default=UNSET, description="The name of the tag.")
-    target_commitish: Missing[str] = Field(
-        default=UNSET,
-        description="Specifies the commitish value that determines where the Git tag is created from. Can be any branch or commit SHA. Unused if the Git tag already exists. Default: the repository's default branch.",
+    commit_title: Missing[str] = Field(
+        default=UNSET, description="Title for the automatic commit message."
     )
-    name: Missing[str] = Field(default=UNSET, description="The name of the release.")
-    body: Missing[str] = Field(
-        default=UNSET, description="Text describing the contents of the tag."
+    commit_message: Missing[str] = Field(
+        default=UNSET, description="Extra detail to append to automatic commit message."
     )
-    draft: Missing[bool] = Field(
+    sha: Missing[str] = Field(
         default=UNSET,
-        description="`true` makes the release a draft, and `false` publishes the release.",
+        description="SHA that pull request head must match to allow merge. If not provided, the current head of the PR at the time of the request will be used; if the PR is pushed in between the merge being requested and being executed, the merge will be cancelled.",
     )
-    prerelease: Missing[bool] = Field(
-        default=UNSET,
-        description="`true` to identify the release as a prerelease, `false` to identify the release as a full release.",
+    merge_method: Missing[Literal["merge", "squash", "rebase"]] = Field(
+        default=UNSET, description="The merge method to use."
     )
-    make_latest: Missing[Literal["true", "false", "legacy"]] = Field(
+    merge_action: Missing[Literal["default", "direct_merge", "merge_queue"]] = Field(
         default=UNSET,
-        description="Specifies whether this release should be set as the latest release for the repository. Drafts and prereleases cannot be set as latest. Defaults to `true` for newly published releases. `legacy` specifies that the latest release should be determined based on the release creation date and higher semantic version.",
-    )
-    discussion_category_name: Missing[str] = Field(
-        default=UNSET,
-        description='If specified, a discussion of the specified category is created and linked to the release. The value must be a category that already exists in the repository. If there is already a discussion linked to the release, this parameter is ignored. For more information, see "[Managing categories for discussions in your repository](https://docs.github.com/discussions/managing-discussions-for-your-community/managing-categories-for-discussions-in-your-repository)."',
+        description="The action that will be taken to merge the pull request. `direct_merge` merges the pull request directly without using a merge queue; `merge_queue` adds the pull request to a merge queue; `default` selects the most appropriate option.",
     )
 
 
-model_rebuild(ReposOwnerRepoReleasesReleaseIdPatchBody)
+model_rebuild(ReposOwnerRepoPullsPullNumberMergeAsyncPutBody)
 
-__all__ = ("ReposOwnerRepoReleasesReleaseIdPatchBody",)
+__all__ = ("ReposOwnerRepoPullsPullNumberMergeAsyncPutBody",)

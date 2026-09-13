@@ -9,54 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class SecretScanningCustomPatternType(TypedDict):
-    """Secret Scanning Custom Pattern
+class SecretScanningCustomPatternToCreateType(TypedDict):
+    """Secret Scanning Custom Pattern To Create
 
-    A custom pattern for secret scanning.
+    A custom pattern to create in a bulk operation.
     """
 
-    id: int
     name: str
     pattern: str
-    slug: str
-    state: Literal["published", "unpublished"]
-    push_protection_enabled: bool
-    start_delimiter: NotRequired[Union[str, None]]
-    end_delimiter: NotRequired[Union[str, None]]
-    must_match: NotRequired[Union[list[str], None]]
-    must_not_match: NotRequired[Union[list[str], None]]
-    custom_pattern_version: NotRequired[Union[str, None]]
-    created_at: NotRequired[_dt.datetime]
-    updated_at: NotRequired[_dt.datetime]
+    start_delimiter: NotRequired[str]
+    end_delimiter: NotRequired[str]
+    must_match: NotRequired[list[str]]
+    must_not_match: NotRequired[list[str]]
 
 
-class SecretScanningCustomPatternTypeForResponse(TypedDict):
-    """Secret Scanning Custom Pattern
+class SecretScanningCustomPatternToCreateTypeForResponse(TypedDict):
+    """Secret Scanning Custom Pattern To Create
 
-    A custom pattern for secret scanning.
+    A custom pattern to create in a bulk operation.
     """
 
-    id: int
     name: str
     pattern: str
-    slug: str
-    state: Literal["published", "unpublished"]
-    push_protection_enabled: bool
-    start_delimiter: NotRequired[Union[str, None]]
-    end_delimiter: NotRequired[Union[str, None]]
-    must_match: NotRequired[Union[list[str], None]]
-    must_not_match: NotRequired[Union[list[str], None]]
-    custom_pattern_version: NotRequired[Union[str, None]]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
+    start_delimiter: NotRequired[str]
+    end_delimiter: NotRequired[str]
+    must_match: NotRequired[list[str]]
+    must_not_match: NotRequired[list[str]]
 
 
 __all__ = (
-    "SecretScanningCustomPatternType",
-    "SecretScanningCustomPatternTypeForResponse",
+    "SecretScanningCustomPatternToCreateType",
+    "SecretScanningCustomPatternToCreateTypeForResponse",
 )

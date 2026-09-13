@@ -12,33 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_1698 import (
-    UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties,
-)
+from .group_0253 import MinimalRepository
 
 
-class UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1(
-    GitHubModel
-):
-    """UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAl
-    lof1
-    """
+class UserCodespacesSecretsSecretNameRepositoriesGetResponse200(GitHubModel):
+    """UserCodespacesSecretsSecretNameRepositoriesGetResponse200"""
 
-    custom_properties: Missing[
-        UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties
-    ] = Field(
-        default=UNSET,
-        description="The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. Present for org repos only.",
-    )
+    total_count: int = Field()
+    repositories: list[MinimalRepository] = Field()
 
 
-model_rebuild(
-    UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1
-)
+model_rebuild(UserCodespacesSecretsSecretNameRepositoriesGetResponse200)
 
-__all__ = (
-    "UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1",
-)
+__all__ = ("UserCodespacesSecretsSecretNameRepositoriesGetResponse200",)

@@ -9,23 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0145 import CopilotSpaceCollaboratorAnyof0, CopilotSpaceCollaboratorAnyof1
+
+class UserSocialAccountsPostBody(GitHubModel):
+    """UserSocialAccountsPostBody
+
+    Examples:
+        {'account_urls': ['https://www.linkedin.com/company/github/',
+    'https://twitter.com/github']}
+    """
+
+    account_urls: list[str] = Field(
+        description="Full URLs for the social media profiles to add."
+    )
 
 
-class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200(GitHubModel):
-    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200"""
+model_rebuild(UserSocialAccountsPostBody)
 
-    collaborators: list[
-        Union[CopilotSpaceCollaboratorAnyof0, CopilotSpaceCollaboratorAnyof1]
-    ] = Field(description="The list of collaborators for this Copilot Space.")
-
-
-model_rebuild(UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200)
-
-__all__ = ("UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200",)
+__all__ = ("UserSocialAccountsPostBody",)

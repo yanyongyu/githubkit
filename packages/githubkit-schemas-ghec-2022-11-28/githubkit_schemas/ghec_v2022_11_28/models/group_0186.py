@@ -16,38 +16,30 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class SecretScanningLocationDiscussionBody(GitHubModel):
-    """SecretScanningLocationDiscussionBody
+class SecretScanningCustomPatternToCreate(GitHubModel):
+    """Secret Scanning Custom Pattern To Create
 
-    Represents a 'discussion_body' secret scanning location type. This location type
-    shows that a secret was detected in the body of a discussion.
+    A custom pattern to create in a bulk operation.
     """
 
-    discussion_body_url: str = Field(
-        description="The URL to the discussion where the secret was detected."
-    )
-
-
-class SecretScanningLocationPullRequestComment(GitHubModel):
-    """SecretScanningLocationPullRequestComment
-
-    Represents a 'pull_request_comment' secret scanning location type. This location
-    type shows that a secret was detected in a comment on a pull request.
-    """
-
-    pull_request_comment_url: str = Field(
-        description="The API URL to get the pull request comment where the secret was detected."
-    )
-    html_url: Missing[str] = Field(
+    name: str = Field(description="The name of the custom pattern.")
+    pattern: str = Field(description="The regular expression of the custom pattern.")
+    start_delimiter: Missing[str] = Field(
         default=UNSET,
-        description="The GitHub URL for the pull request comment where the secret was detected.",
+        description="The start delimiter regex for the custom pattern.\nDefaults to `\\A|[^0-9A-Za-z]` when not specified.",
+    )
+    end_delimiter: Missing[str] = Field(
+        default=UNSET,
+        description="The end delimiter regex for the custom pattern.\nDefaults to `\\z|[^0-9A-Za-z]` when not specified.",
+    )
+    must_match: Missing[list[str]] = Field(
+        default=UNSET, description="List of regexes that the secret must match."
+    )
+    must_not_match: Missing[list[str]] = Field(
+        default=UNSET, description="List of regexes that the secret must not match."
     )
 
 
-model_rebuild(SecretScanningLocationDiscussionBody)
-model_rebuild(SecretScanningLocationPullRequestComment)
+model_rebuild(SecretScanningCustomPatternToCreate)
 
-__all__ = (
-    "SecretScanningLocationDiscussionBody",
-    "SecretScanningLocationPullRequestComment",
-)
+__all__ = ("SecretScanningCustomPatternToCreate",)

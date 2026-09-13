@@ -9,73 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Any, TypeAlias
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200Type(
-    TypedDict
-):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse2
-    00
-    """
+class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422Type(TypedDict):
+    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422"""
 
     message: NotRequired[str]
-    reassigned_resources: NotRequired[
-        Union[
-            list[
-                EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItemsType
-            ],
-            None,
-        ]
+    validation_errors: NotRequired[
+        EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrorsType
     ]
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200TypeForResponse(
+class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse2
-    00
-    """
+    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422"""
 
     message: NotRequired[str]
-    reassigned_resources: NotRequired[
-        Union[
-            list[
-                EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItemsTypeForResponse
-            ],
-            None,
-        ]
+    validation_errors: NotRequired[
+        EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse
     ]
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItemsType(
-    TypedDict
-):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse2
-    00PropReassignedResourcesItems
-    """
+EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrorsType: TypeAlias = dict[
+    str, Any
+]
+"""EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationEr
+rors
 
-    resource_type: NotRequired[str]
-    name: NotRequired[str]
-    previous_cost_center: NotRequired[str]
+A map of validation errors keyed by the zero-based index of the pattern that
+failed.
+"""
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItemsTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse2
-    00PropReassignedResourcesItems
-    """
+EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationEr
+rors
 
-    resource_type: NotRequired[str]
-    name: NotRequired[str]
-    previous_cost_center: NotRequired[str]
+A map of validation errors keyed by the zero-based index of the pattern that
+failed.
+"""
 
 
 __all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItemsType",
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItemsTypeForResponse",
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200Type",
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200TypeForResponse",
+    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrorsType",
+    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse",
+    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422Type",
+    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422TypeForResponse",
 )

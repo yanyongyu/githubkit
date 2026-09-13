@@ -13,41 +13,44 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0340 import RepositoryAdvisoryType, RepositoryAdvisoryTypeForResponse
-from .group_0622 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0623 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0624 import (
+from .group_0625 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0626 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0627 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0625 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0628 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_1018 import (
+    WebhookRegistryPackageUpdatedPropRegistryPackageType,
+    WebhookRegistryPackageUpdatedPropRegistryPackageTypeForResponse,
+)
 
 
-class WebhookRepositoryAdvisoryReportedType(TypedDict):
-    """Repository advisory reported event"""
+class WebhookRegistryPackageUpdatedType(TypedDict):
+    """WebhookRegistryPackageUpdated"""
 
-    action: Literal["reported"]
+    action: Literal["updated"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    repository_advisory: RepositoryAdvisoryType
-    sender: NotRequired[SimpleUserType]
+    registry_package: WebhookRegistryPackageUpdatedPropRegistryPackageType
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserType
 
 
-class WebhookRepositoryAdvisoryReportedTypeForResponse(TypedDict):
-    """Repository advisory reported event"""
+class WebhookRegistryPackageUpdatedTypeForResponse(TypedDict):
+    """WebhookRegistryPackageUpdated"""
 
-    action: Literal["reported"]
+    action: Literal["updated"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    repository_advisory: RepositoryAdvisoryTypeForResponse
-    sender: NotRequired[SimpleUserTypeForResponse]
+    registry_package: WebhookRegistryPackageUpdatedPropRegistryPackageTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookRepositoryAdvisoryReportedType",
-    "WebhookRepositoryAdvisoryReportedTypeForResponse",
+    "WebhookRegistryPackageUpdatedType",
+    "WebhookRegistryPackageUpdatedTypeForResponse",
 )

@@ -12,19 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ActionsOidcCustomIssuerPolicyForEnterprise(GitHubModel):
-    """ActionsOidcCustomIssuerPolicyForEnterprise"""
+class ActionsArtifactAndLogRetentionResponse(GitHubModel):
+    """ActionsArtifactAndLogRetentionResponse"""
 
-    include_enterprise_slug: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the enterprise customer requested a custom issuer URL.",
+    days: int = Field(description="The number of days artifacts and logs are retained")
+    maximum_allowed_days: int = Field(
+        description="The maximum number of days that can be configured"
     )
 
 
-model_rebuild(ActionsOidcCustomIssuerPolicyForEnterprise)
+model_rebuild(ActionsArtifactAndLogRetentionResponse)
 
-__all__ = ("ActionsOidcCustomIssuerPolicyForEnterprise",)
+__all__ = ("ActionsArtifactAndLogRetentionResponse",)

@@ -9,38 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class RunnerApplicationType(TypedDict):
-    """Runner Application
+class OrganizationActionsVariableType(TypedDict):
+    """Actions Variable for an Organization
 
-    Runner Application
+    Organization variable for GitHub Actions.
     """
 
-    os: str
-    architecture: str
-    download_url: str
-    filename: str
-    temp_download_token: NotRequired[str]
-    sha256_checksum: NotRequired[str]
+    name: str
+    value: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: NotRequired[str]
 
 
-class RunnerApplicationTypeForResponse(TypedDict):
-    """Runner Application
+class OrganizationActionsVariableTypeForResponse(TypedDict):
+    """Actions Variable for an Organization
 
-    Runner Application
+    Organization variable for GitHub Actions.
     """
 
-    os: str
-    architecture: str
-    download_url: str
-    filename: str
-    temp_download_token: NotRequired[str]
-    sha256_checksum: NotRequired[str]
+    name: str
+    value: str
+    created_at: str
+    updated_at: str
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: NotRequired[str]
 
 
 __all__ = (
-    "RunnerApplicationType",
-    "RunnerApplicationTypeForResponse",
+    "OrganizationActionsVariableType",
+    "OrganizationActionsVariableTypeForResponse",
 )

@@ -9,47 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0053 import RunnerLabelType, RunnerLabelTypeForResponse
 
+class AnnouncementType(TypedDict):
+    """Enterprise Announcement
 
-class RunnerType(TypedDict):
-    """Self hosted runners
-
-    A self hosted runner
+    Enterprise global announcement
     """
 
-    id: int
-    runner_group_id: NotRequired[int]
-    name: str
-    os: str
-    status: str
-    busy: bool
-    labels: list[RunnerLabelType]
-    ephemeral: NotRequired[bool]
-    version: NotRequired[Union[str, None]]
+    announcement: Union[str, None]
+    expires_at: NotRequired[Union[_dt.datetime, None]]
+    user_dismissible: NotRequired[Union[bool, None]]
 
 
-class RunnerTypeForResponse(TypedDict):
-    """Self hosted runners
+class AnnouncementTypeForResponse(TypedDict):
+    """Enterprise Announcement
 
-    A self hosted runner
+    Enterprise global announcement
     """
 
-    id: int
-    runner_group_id: NotRequired[int]
-    name: str
-    os: str
-    status: str
-    busy: bool
-    labels: list[RunnerLabelTypeForResponse]
-    ephemeral: NotRequired[bool]
-    version: NotRequired[Union[str, None]]
+    announcement: Union[str, None]
+    expires_at: NotRequired[Union[str, None]]
+    user_dismissible: NotRequired[Union[bool, None]]
 
 
 __all__ = (
-    "RunnerType",
-    "RunnerTypeForResponse",
+    "AnnouncementType",
+    "AnnouncementTypeForResponse",
 )

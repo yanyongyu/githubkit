@@ -13,71 +13,44 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0538 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0539 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0540 import (
+from .group_0541 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0542 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0543 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0541 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0568 import WebhooksProjectCardType, WebhooksProjectCardTypeForResponse
+from .group_0544 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0821 import (
+    WebhookPackageUpdatedPropPackageType,
+    WebhookPackageUpdatedPropPackageTypeForResponse,
+)
 
 
-class WebhookProjectCardConvertedType(TypedDict):
-    """project_card converted event"""
+class WebhookPackageUpdatedType(TypedDict):
+    """package updated event"""
 
-    action: Literal["converted"]
-    changes: WebhookProjectCardConvertedPropChangesType
+    action: Literal["updated"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    project_card: WebhooksProjectCardType
-    repository: NotRequired[RepositoryWebhooksType]
+    package: WebhookPackageUpdatedPropPackageType
+    repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookProjectCardConvertedTypeForResponse(TypedDict):
-    """project_card converted event"""
+class WebhookPackageUpdatedTypeForResponse(TypedDict):
+    """package updated event"""
 
-    action: Literal["converted"]
-    changes: WebhookProjectCardConvertedPropChangesTypeForResponse
+    action: Literal["updated"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    project_card: WebhooksProjectCardTypeForResponse
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    package: WebhookPackageUpdatedPropPackageTypeForResponse
+    repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
-class WebhookProjectCardConvertedPropChangesType(TypedDict):
-    """WebhookProjectCardConvertedPropChanges"""
-
-    note: WebhookProjectCardConvertedPropChangesPropNoteType
-
-
-class WebhookProjectCardConvertedPropChangesTypeForResponse(TypedDict):
-    """WebhookProjectCardConvertedPropChanges"""
-
-    note: WebhookProjectCardConvertedPropChangesPropNoteTypeForResponse
-
-
-class WebhookProjectCardConvertedPropChangesPropNoteType(TypedDict):
-    """WebhookProjectCardConvertedPropChangesPropNote"""
-
-    from_: str
-
-
-class WebhookProjectCardConvertedPropChangesPropNoteTypeForResponse(TypedDict):
-    """WebhookProjectCardConvertedPropChangesPropNote"""
-
-    from_: str
-
-
 __all__ = (
-    "WebhookProjectCardConvertedPropChangesPropNoteType",
-    "WebhookProjectCardConvertedPropChangesPropNoteTypeForResponse",
-    "WebhookProjectCardConvertedPropChangesType",
-    "WebhookProjectCardConvertedPropChangesTypeForResponse",
-    "WebhookProjectCardConvertedType",
-    "WebhookProjectCardConvertedTypeForResponse",
+    "WebhookPackageUpdatedType",
+    "WebhookPackageUpdatedTypeForResponse",
 )

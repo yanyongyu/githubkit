@@ -13,42 +13,40 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationCreateIssueFieldType(TypedDict):
-    """OrganizationCreateIssueField"""
+class OrganizationUpdateIssueFieldType(TypedDict):
+    """OrganizationUpdateIssueField"""
 
-    name: str
+    name: NotRequired[str]
     description: NotRequired[Union[str, None]]
-    data_type: Literal["text", "date", "single_select", "multi_select", "number"]
+    visibility: NotRequired[Literal["organization_members_only", "all"]]
+    options: NotRequired[list[OrganizationUpdateIssueFieldPropOptionsItemsType]]
+
+
+class OrganizationUpdateIssueFieldTypeForResponse(TypedDict):
+    """OrganizationUpdateIssueField"""
+
+    name: NotRequired[str]
+    description: NotRequired[Union[str, None]]
     visibility: NotRequired[Literal["organization_members_only", "all"]]
     options: NotRequired[
-        Union[list[OrganizationCreateIssueFieldPropOptionsItemsType], None]
+        list[OrganizationUpdateIssueFieldPropOptionsItemsTypeForResponse]
     ]
 
 
-class OrganizationCreateIssueFieldTypeForResponse(TypedDict):
-    """OrganizationCreateIssueField"""
+class OrganizationUpdateIssueFieldPropOptionsItemsType(TypedDict):
+    """OrganizationUpdateIssueFieldPropOptionsItems"""
 
-    name: str
-    description: NotRequired[Union[str, None]]
-    data_type: Literal["text", "date", "single_select", "multi_select", "number"]
-    visibility: NotRequired[Literal["organization_members_only", "all"]]
-    options: NotRequired[
-        Union[list[OrganizationCreateIssueFieldPropOptionsItemsTypeForResponse], None]
-    ]
-
-
-class OrganizationCreateIssueFieldPropOptionsItemsType(TypedDict):
-    """OrganizationCreateIssueFieldPropOptionsItems"""
-
+    id: NotRequired[int]
     name: str
     description: NotRequired[Union[str, None]]
     color: Literal["gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"]
     priority: int
 
 
-class OrganizationCreateIssueFieldPropOptionsItemsTypeForResponse(TypedDict):
-    """OrganizationCreateIssueFieldPropOptionsItems"""
+class OrganizationUpdateIssueFieldPropOptionsItemsTypeForResponse(TypedDict):
+    """OrganizationUpdateIssueFieldPropOptionsItems"""
 
+    id: NotRequired[int]
     name: str
     description: NotRequired[Union[str, None]]
     color: Literal["gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"]
@@ -56,8 +54,8 @@ class OrganizationCreateIssueFieldPropOptionsItemsTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "OrganizationCreateIssueFieldPropOptionsItemsType",
-    "OrganizationCreateIssueFieldPropOptionsItemsTypeForResponse",
-    "OrganizationCreateIssueFieldType",
-    "OrganizationCreateIssueFieldTypeForResponse",
+    "OrganizationUpdateIssueFieldPropOptionsItemsType",
+    "OrganizationUpdateIssueFieldPropOptionsItemsTypeForResponse",
+    "OrganizationUpdateIssueFieldType",
+    "OrganizationUpdateIssueFieldTypeForResponse",
 )

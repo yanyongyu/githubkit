@@ -11,22 +11,39 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0118 import (
+    RepositoryRulesetConditionsPropRefNameType,
+    RepositoryRulesetConditionsPropRefNameTypeForResponse,
+)
+from .group_0120 import (
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse,
+)
 
-class RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType(TypedDict):
-    """RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId"""
 
-    repository_ids: NotRequired[list[int]]
+class OrgRulesetConditionsOneof2Type(TypedDict):
+    """repository_property_and_ref_name
+
+    Conditions to target repositories by property and refs by name
+    """
+
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
+    repository_property: (
+        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
+    )
 
 
-class RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdTypeForResponse(
-    TypedDict
-):
-    """RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId"""
+class OrgRulesetConditionsOneof2TypeForResponse(TypedDict):
+    """repository_property_and_ref_name
 
-    repository_ids: NotRequired[list[int]]
+    Conditions to target repositories by property and refs by name
+    """
+
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
+    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse
 
 
 __all__ = (
-    "RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType",
-    "RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdTypeForResponse",
+    "OrgRulesetConditionsOneof2Type",
+    "OrgRulesetConditionsOneof2TypeForResponse",
 )

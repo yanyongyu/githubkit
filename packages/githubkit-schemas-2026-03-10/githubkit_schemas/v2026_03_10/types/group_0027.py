@@ -9,155 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0025 import (
-    SimpleClassroomRepositoryType,
-    SimpleClassroomRepositoryTypeForResponse,
-)
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class ClassroomAcceptedAssignmentType(TypedDict):
-    """Classroom Accepted Assignment
+class OidcCustomPropertyInclusionType(TypedDict):
+    """Actions OIDC Custom Property Inclusion
 
-    A GitHub Classroom accepted assignment
+    An OIDC custom property inclusion for repository properties
     """
 
-    id: int
-    submitted: bool
-    passing: bool
-    commit_count: int
-    grade: str
-    students: list[SimpleClassroomUserType]
-    repository: SimpleClassroomRepositoryType
-    assignment: SimpleClassroomAssignmentType
+    custom_property_name: str
+    inclusion_source: Literal["organization", "enterprise"]
 
 
-class ClassroomAcceptedAssignmentTypeForResponse(TypedDict):
-    """Classroom Accepted Assignment
+class OidcCustomPropertyInclusionTypeForResponse(TypedDict):
+    """Actions OIDC Custom Property Inclusion
 
-    A GitHub Classroom accepted assignment
+    An OIDC custom property inclusion for repository properties
     """
 
-    id: int
-    submitted: bool
-    passing: bool
-    commit_count: int
-    grade: str
-    students: list[SimpleClassroomUserTypeForResponse]
-    repository: SimpleClassroomRepositoryTypeForResponse
-    assignment: SimpleClassroomAssignmentTypeForResponse
-
-
-class SimpleClassroomUserType(TypedDict):
-    """Simple Classroom User
-
-    A GitHub user simplified for Classroom.
-    """
-
-    id: int
-    login: str
-    avatar_url: str
-    html_url: str
-
-
-class SimpleClassroomUserTypeForResponse(TypedDict):
-    """Simple Classroom User
-
-    A GitHub user simplified for Classroom.
-    """
-
-    id: int
-    login: str
-    avatar_url: str
-    html_url: str
-
-
-class SimpleClassroomAssignmentType(TypedDict):
-    """Simple Classroom Assignment
-
-    A GitHub Classroom assignment
-    """
-
-    id: int
-    public_repo: bool
-    title: str
-    type: Literal["individual", "group"]
-    invite_link: str
-    invitations_enabled: bool
-    slug: str
-    students_are_repo_admins: bool
-    feedback_pull_requests_enabled: bool
-    max_teams: NotRequired[Union[int, None]]
-    max_members: NotRequired[Union[int, None]]
-    editor: Union[str, None]
-    accepted: int
-    submitted: NotRequired[int]
-    passing: int
-    language: Union[str, None]
-    deadline: Union[_dt.datetime, None]
-    classroom: SimpleClassroomType
-
-
-class SimpleClassroomAssignmentTypeForResponse(TypedDict):
-    """Simple Classroom Assignment
-
-    A GitHub Classroom assignment
-    """
-
-    id: int
-    public_repo: bool
-    title: str
-    type: Literal["individual", "group"]
-    invite_link: str
-    invitations_enabled: bool
-    slug: str
-    students_are_repo_admins: bool
-    feedback_pull_requests_enabled: bool
-    max_teams: NotRequired[Union[int, None]]
-    max_members: NotRequired[Union[int, None]]
-    editor: Union[str, None]
-    accepted: int
-    submitted: NotRequired[int]
-    passing: int
-    language: Union[str, None]
-    deadline: Union[str, None]
-    classroom: SimpleClassroomTypeForResponse
-
-
-class SimpleClassroomType(TypedDict):
-    """Simple Classroom
-
-    A GitHub Classroom classroom
-    """
-
-    id: int
-    name: str
-    archived: bool
-    url: str
-
-
-class SimpleClassroomTypeForResponse(TypedDict):
-    """Simple Classroom
-
-    A GitHub Classroom classroom
-    """
-
-    id: int
-    name: str
-    archived: bool
-    url: str
+    custom_property_name: str
+    inclusion_source: Literal["organization", "enterprise"]
 
 
 __all__ = (
-    "ClassroomAcceptedAssignmentType",
-    "ClassroomAcceptedAssignmentTypeForResponse",
-    "SimpleClassroomAssignmentType",
-    "SimpleClassroomAssignmentTypeForResponse",
-    "SimpleClassroomType",
-    "SimpleClassroomTypeForResponse",
-    "SimpleClassroomUserType",
-    "SimpleClassroomUserTypeForResponse",
+    "OidcCustomPropertyInclusionType",
+    "OidcCustomPropertyInclusionTypeForResponse",
 )

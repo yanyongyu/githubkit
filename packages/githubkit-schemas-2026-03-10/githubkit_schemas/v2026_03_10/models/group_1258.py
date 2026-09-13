@@ -9,6 +9,9 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,25 +19,46 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoActionsOidcCustomizationSubPutBody(GitHubModel):
-    """Actions OIDC subject customization for a repository
+class OrgsOrgSettingsNetworkConfigurationsGetResponse200(GitHubModel):
+    """OrgsOrgSettingsNetworkConfigurationsGetResponse200"""
 
-    Actions OIDC subject customization for a repository
+    total_count: int = Field()
+    network_configurations: list[NetworkConfiguration] = Field()
+
+
+class NetworkConfiguration(GitHubModel):
+    """Hosted compute network configuration
+
+    A hosted compute network configuration.
     """
 
-    use_default: bool = Field(
-        description="Whether to use the default template or not. If `true`, the `include_claim_keys` field is ignored."
-    )
-    include_claim_keys: Missing[list[str]] = Field(
+    id: str = Field(description="The unique identifier of the network configuration.")
+    name: str = Field(description="The name of the network configuration.")
+    compute_service: Missing[Literal["none", "actions", "codespaces"]] = Field(
         default=UNSET,
-        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores.",
+        description="The hosted compute service the network configuration supports.",
     )
-    use_immutable_subject: Missing[bool] = Field(
+    network_settings_ids: Missing[list[str]] = Field(
         default=UNSET,
-        description="Whether to opt in to the immutable OIDC subject claim format for this repository. When `true`, OIDC tokens will use a stable, repository-ID-based `sub` claim.",
+        description="The unique identifier of each network settings in the configuration.",
+    )
+    failover_network_settings_ids: Missing[list[str]] = Field(
+        default=UNSET,
+        description="The unique identifier of each failover network settings in the configuration.",
+    )
+    failover_network_enabled: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether the failover network resource is enabled.",
+    )
+    created_on: Union[_dt.datetime, None] = Field(
+        description="The time at which the network configuration was created, in ISO 8601 format."
     )
 
 
-model_rebuild(ReposOwnerRepoActionsOidcCustomizationSubPutBody)
+model_rebuild(OrgsOrgSettingsNetworkConfigurationsGetResponse200)
+model_rebuild(NetworkConfiguration)
 
-__all__ = ("ReposOwnerRepoActionsOidcCustomizationSubPutBody",)
+__all__ = (
+    "NetworkConfiguration",
+    "OrgsOrgSettingsNetworkConfigurationsGetResponse200",
+)

@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,58 +16,48 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class GetBudget(GitHubModel):
-    """GetBudget"""
+class BillingUsageReport(GitHubModel):
+    """BillingUsageReport"""
 
-    id: str = Field(description="ID of the budget.")
-    budget_scope: Literal[
-        "enterprise",
-        "organization",
-        "repository",
-        "cost_center",
-        "multi_user_customer",
-        "multi_user_cost_center",
-        "user",
-    ] = Field(description="The type of scope for the budget")
-    budget_entity_name: str = Field(
-        description="The name of the entity to apply the budget to"
-    )
-    user: Missing[str] = Field(
-        default=UNSET,
-        description="The user login when the budget is scoped to a single user (`user` scope).",
-    )
-    budget_amount: int = Field(
-        description="The budget amount in whole dollars. For license-based products, this represents the number of licenses."
-    )
-    prevent_further_usage: bool = Field(
-        description="Whether to prevent additional spending once the budget is exceeded"
-    )
-    budget_product_sku: str = Field(
-        description="A single product or sku to apply the budget to."
-    )
-    budget_type: Literal["ProductPricing", "SkuPricing", "BundlePricing"] = Field(
-        description="The type of pricing for the budget"
-    )
-    budget_alerting: GetBudgetPropBudgetAlerting = Field()
-
-
-class GetBudgetPropBudgetAlerting(GitHubModel):
-    """GetBudgetPropBudgetAlerting"""
-
-    will_alert: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether alerts are enabled for this budget. Present but not applicable for user-scope as alerting is always disabled for them.",
-    )
-    alert_recipients: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Array of user login names who will receive alerts. Present but not applicable for user-scope as alerting is always disabled for them.",
+    usage_items: Missing[list[BillingUsageReportPropUsageItemsItems]] = Field(
+        default=UNSET, alias="usageItems"
     )
 
 
-model_rebuild(GetBudget)
-model_rebuild(GetBudgetPropBudgetAlerting)
+class BillingUsageReportPropUsageItemsItems(GitHubModel):
+    """BillingUsageReportPropUsageItemsItems"""
+
+    date: str = Field(description="Date of the usage line item.")
+    product: str = Field(description="Product name.")
+    sku: str = Field(description="SKU name.")
+    quantity: int = Field(description="Quantity of the usage line item.")
+    unit_type: str = Field(
+        alias="unitType", description="Unit type of the usage line item."
+    )
+    price_per_unit: float = Field(
+        alias="pricePerUnit", description="Price per unit of the usage line item."
+    )
+    gross_amount: float = Field(
+        alias="grossAmount", description="Gross amount of the usage line item."
+    )
+    discount_amount: float = Field(
+        alias="discountAmount", description="Discount amount of the usage line item."
+    )
+    net_amount: float = Field(
+        alias="netAmount", description="Net amount of the usage line item."
+    )
+    organization_name: str = Field(
+        alias="organizationName", description="Name of the organization."
+    )
+    repository_name: Missing[str] = Field(
+        default=UNSET, alias="repositoryName", description="Name of the repository."
+    )
+
+
+model_rebuild(BillingUsageReport)
+model_rebuild(BillingUsageReportPropUsageItemsItems)
 
 __all__ = (
-    "GetBudget",
-    "GetBudgetPropBudgetAlerting",
+    "BillingUsageReport",
+    "BillingUsageReportPropUsageItemsItems",
 )

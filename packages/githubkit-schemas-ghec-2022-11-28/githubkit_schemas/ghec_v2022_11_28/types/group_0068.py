@@ -9,42 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class GetAuditLogStreamConfigType(TypedDict):
-    """Get an audit log streaming configuration
+class CodeScanningAlertRuleSummaryType(TypedDict):
+    """CodeScanningAlertRuleSummary"""
 
-    Get an audit log streaming configuration for an enterprise.
-    """
+    id: NotRequired[Union[str, None]]
+    name: NotRequired[str]
+    severity: NotRequired[Union[Literal["none", "note", "warning", "error"], None]]
+    security_severity_level: NotRequired[
+        Union[Literal["low", "medium", "high", "critical"], None]
+    ]
+    description: NotRequired[str]
+    full_description: NotRequired[str]
+    tags: NotRequired[Union[list[str], None]]
+    help_: NotRequired[Union[str, None]]
+    help_uri: NotRequired[Union[str, None]]
 
-    id: int
-    stream_type: str
-    stream_details: str
-    enabled: bool
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    paused_at: NotRequired[Union[_dt.datetime, None]]
 
+class CodeScanningAlertRuleSummaryTypeForResponse(TypedDict):
+    """CodeScanningAlertRuleSummary"""
 
-class GetAuditLogStreamConfigTypeForResponse(TypedDict):
-    """Get an audit log streaming configuration
-
-    Get an audit log streaming configuration for an enterprise.
-    """
-
-    id: int
-    stream_type: str
-    stream_details: str
-    enabled: bool
-    created_at: str
-    updated_at: str
-    paused_at: NotRequired[Union[str, None]]
+    id: NotRequired[Union[str, None]]
+    name: NotRequired[str]
+    severity: NotRequired[Union[Literal["none", "note", "warning", "error"], None]]
+    security_severity_level: NotRequired[
+        Union[Literal["low", "medium", "high", "critical"], None]
+    ]
+    description: NotRequired[str]
+    full_description: NotRequired[str]
+    tags: NotRequired[Union[list[str], None]]
+    help_: NotRequired[Union[str, None]]
+    help_uri: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "GetAuditLogStreamConfigType",
-    "GetAuditLogStreamConfigTypeForResponse",
+    "CodeScanningAlertRuleSummaryType",
+    "CodeScanningAlertRuleSummaryTypeForResponse",
 )

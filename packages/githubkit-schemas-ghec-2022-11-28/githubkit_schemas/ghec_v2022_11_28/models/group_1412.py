@@ -9,26 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgPersonalAccessTokensPostBody(GitHubModel):
-    """OrgsOrgPersonalAccessTokensPostBody"""
+class OrgsOrgInteractionLimitsPullsCreationCapPatchBody(GitHubModel):
+    """OrgsOrgInteractionLimitsPullsCreationCapPatchBody"""
 
-    action: Literal["revoke"] = Field(
-        description="Action to apply to the fine-grained personal access token."
+    enabled: bool = Field(
+        description="Whether the pull request creation cap is enabled"
     )
-    pat_ids: list[int] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="The IDs of the fine-grained personal access tokens.",
+    max_open_pull_requests: Missing[int] = Field(
+        le=1000.0,
+        ge=1.0,
+        default=UNSET,
+        description="The maximum number of open pull requests a user can have at one time",
     )
 
 
-model_rebuild(OrgsOrgPersonalAccessTokensPostBody)
+model_rebuild(OrgsOrgInteractionLimitsPullsCreationCapPatchBody)
 
-__all__ = ("OrgsOrgPersonalAccessTokensPostBody",)
+__all__ = ("OrgsOrgInteractionLimitsPullsCreationCapPatchBody",)

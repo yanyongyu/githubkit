@@ -9,29 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0188 import (
-    SecretScanningCustomPatternType,
-    SecretScanningCustomPatternTypeForResponse,
-)
+
+class ReposOwnerRepoReleasesPostBodyType(TypedDict):
+    """ReposOwnerRepoReleasesPostBody"""
+
+    tag_name: str
+    target_commitish: NotRequired[str]
+    name: NotRequired[str]
+    body: NotRequired[str]
+    draft: NotRequired[bool]
+    prerelease: NotRequired[bool]
+    discussion_category_name: NotRequired[str]
+    generate_release_notes: NotRequired[bool]
+    make_latest: NotRequired[Literal["true", "false", "legacy"]]
 
 
-class ReposOwnerRepoSecretScanningCustomPatternsPostResponse201Type(TypedDict):
-    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse201"""
+class ReposOwnerRepoReleasesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoReleasesPostBody"""
 
-    created_patterns: NotRequired[list[SecretScanningCustomPatternType]]
-
-
-class ReposOwnerRepoSecretScanningCustomPatternsPostResponse201TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse201"""
-
-    created_patterns: NotRequired[list[SecretScanningCustomPatternTypeForResponse]]
+    tag_name: str
+    target_commitish: NotRequired[str]
+    name: NotRequired[str]
+    body: NotRequired[str]
+    draft: NotRequired[bool]
+    prerelease: NotRequired[bool]
+    discussion_category_name: NotRequired[str]
+    generate_release_notes: NotRequired[bool]
+    make_latest: NotRequired[Literal["true", "false", "legacy"]]
 
 
 __all__ = (
-    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse201Type",
-    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse201TypeForResponse",
+    "ReposOwnerRepoReleasesPostBodyType",
+    "ReposOwnerRepoReleasesPostBodyTypeForResponse",
 )

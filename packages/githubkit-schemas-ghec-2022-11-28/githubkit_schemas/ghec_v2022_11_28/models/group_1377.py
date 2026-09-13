@@ -9,21 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgCopilotCodingAgentPermissionsPutBody(GitHubModel):
-    """OrgsOrgCopilotCodingAgentPermissionsPutBody"""
+class OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody(GitHubModel):
+    """OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody"""
 
-    enabled_repositories: Literal["all", "selected", "none"] = Field(
-        description="The policy for which repositories can use Copilot cloud agent. Can be one of `all`, `selected`, or `none`."
-    )
+    metadata: Missing[
+        OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
+    ] = Field(default=UNSET, description="Updated resource-specific metadata.")
 
 
-model_rebuild(OrgsOrgCopilotCodingAgentPermissionsPutBody)
+class OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata(
+    ExtraGitHubModel
+):
+    """OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
 
-__all__ = ("OrgsOrgCopilotCodingAgentPermissionsPutBody",)
+    Updated resource-specific metadata.
+    """
+
+
+model_rebuild(OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody)
+model_rebuild(
+    OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
+)
+
+__all__ = (
+    "OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody",
+    "OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata",
+)

@@ -9,58 +9,71 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0047 import OrganizationSimple
 
 
-class OrgMembership(GitHubModel):
-    """Org Membership
+class OrganizationRole(GitHubModel):
+    """Organization Role
 
-    Org Membership
+    Organization roles
     """
 
-    url: str = Field()
-    state: Literal["active", "pending"] = Field(
-        description="The state of the member in the organization. The `pending` state indicates the user has not yet accepted an invitation."
-    )
-    role: Literal["admin", "member", "billing_manager"] = Field(
-        description="The user's membership type in the organization."
-    )
-    direct_membership: Missing[bool] = Field(
+    id: int = Field(description="The unique identifier of the role.")
+    name: str = Field(description="The name of the role.")
+    description: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="Whether the user has direct membership in the organization.",
+        description="A short description about who this role is for or what permissions it grants.",
     )
-    enterprise_teams_providing_indirect_membership: Missing[list[str]] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
+    base_role: Missing[
+        Union[Literal["read", "triage", "write", "maintain", "admin"], None]
+    ] = Field(
         default=UNSET,
-        description="The slugs of the enterprise teams providing the user with indirect membership in the organization.\nA limit of 100 enterprise team slugs is returned.",
+        description="The system role from which this role inherits permissions.",
     )
-    organization_url: str = Field()
-    organization: OrganizationSimple = Field(
-        title="Organization Simple", description="A GitHub organization."
+    source: Missing[
+        Union[Literal["Organization", "Enterprise", "Predefined"], None]
+    ] = Field(
+        default=UNSET,
+        description='Source answers the question, "where did this role come from?"',
     )
-    user: Union[SimpleUser, None] = Field()
-    permissions: Missing[OrgMembershipPropPermissions] = Field(default=UNSET)
+    permissions: list[str] = Field(
+        description="A list of permissions included in this role."
+    )
+    organization: Union[SimpleUser, None] = Field()
+    created_at: _dt.datetime = Field(
+        description="The date and time the role was created."
+    )
+    updated_at: _dt.datetime = Field(
+        description="The date and time the role was last updated."
+    )
 
 
-class OrgMembershipPropPermissions(GitHubModel):
-    """OrgMembershipPropPermissions"""
+class OrgsOrgOrganizationRolesGetResponse200(GitHubModel):
+    """OrgsOrgOrganizationRolesGetResponse200"""
 
-    can_create_repository: bool = Field()
+    total_count: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of organization roles available to the organization.",
+    )
+    roles: Missing[list[OrganizationRole]] = Field(
+        default=UNSET,
+        description="The list of organization roles available to the organization.",
+    )
 
 
-model_rebuild(OrgMembership)
-model_rebuild(OrgMembershipPropPermissions)
+model_rebuild(OrganizationRole)
+model_rebuild(OrgsOrgOrganizationRolesGetResponse200)
 
 __all__ = (
-    "OrgMembership",
-    "OrgMembershipPropPermissions",
+    "OrganizationRole",
+    "OrgsOrgOrganizationRolesGetResponse200",
 )

@@ -9,61 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0059 import IssueType, IssueTypeForResponse
-from .group_0181 import PullRequestSimpleType, PullRequestSimpleTypeForResponse
-from .group_0184 import ProjectsV2DraftIssueType, ProjectsV2DraftIssueTypeForResponse
 
+class ProjectsV2FieldSingleSelectOptionType(TypedDict):
+    """ProjectsV2FieldSingleSelectOption"""
 
-class ProjectsV2ItemSimpleType(TypedDict):
-    """Projects v2 Item
-
-    An item belonging to a project
-    """
-
-    id: float
-    node_id: NotRequired[str]
-    content: NotRequired[
-        Union[IssueType, PullRequestSimpleType, ProjectsV2DraftIssueType]
+    name: NotRequired[str]
+    color: NotRequired[
+        Literal["BLUE", "GRAY", "GREEN", "ORANGE", "PINK", "PURPLE", "RED", "YELLOW"]
     ]
-    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
-    creator: NotRequired[SimpleUserType]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    archived_at: Union[_dt.datetime, None]
-    project_url: NotRequired[str]
-    item_url: NotRequired[str]
+    description: NotRequired[str]
 
 
-class ProjectsV2ItemSimpleTypeForResponse(TypedDict):
-    """Projects v2 Item
+class ProjectsV2FieldSingleSelectOptionTypeForResponse(TypedDict):
+    """ProjectsV2FieldSingleSelectOption"""
 
-    An item belonging to a project
-    """
-
-    id: float
-    node_id: NotRequired[str]
-    content: NotRequired[
-        Union[
-            IssueTypeForResponse,
-            PullRequestSimpleTypeForResponse,
-            ProjectsV2DraftIssueTypeForResponse,
-        ]
+    name: NotRequired[str]
+    color: NotRequired[
+        Literal["BLUE", "GRAY", "GREEN", "ORANGE", "PINK", "PURPLE", "RED", "YELLOW"]
     ]
-    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
-    creator: NotRequired[SimpleUserTypeForResponse]
-    created_at: str
-    updated_at: str
-    archived_at: Union[str, None]
-    project_url: NotRequired[str]
-    item_url: NotRequired[str]
+    description: NotRequired[str]
 
 
 __all__ = (
-    "ProjectsV2ItemSimpleType",
-    "ProjectsV2ItemSimpleTypeForResponse",
+    "ProjectsV2FieldSingleSelectOptionType",
+    "ProjectsV2FieldSingleSelectOptionTypeForResponse",
 )

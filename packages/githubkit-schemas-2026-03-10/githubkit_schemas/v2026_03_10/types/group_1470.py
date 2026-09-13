@@ -9,39 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing_extensions import TypedDict
+
+from .group_0499 import (
+    PullRequestStackPullRequestType,
+    PullRequestStackPullRequestTypeForResponse,
+)
 
 
-class TeamsTeamIdPatchBodyType(TypedDict):
-    """TeamsTeamIdPatchBody"""
+class ReposOwnerRepoStacksPostResponse201Type(TypedDict):
+    """ReposOwnerRepoStacksPostResponse201"""
 
-    name: str
-    description: NotRequired[str]
-    privacy: NotRequired[Literal["secret", "closed"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ]
-    permission: NotRequired[Literal["pull", "push", "admin"]]
-    parent_team_id: NotRequired[Union[int, None]]
-    parent_team_slug: NotRequired[Union[str, None]]
+    id: int
+    number: int
+    node_id: str
+    url: str
+    base: ReposOwnerRepoStacksPostResponse201PropBaseType
+    open_: bool
+    created_at: _dt.datetime
+    pull_requests: list[PullRequestStackPullRequestType]
 
 
-class TeamsTeamIdPatchBodyTypeForResponse(TypedDict):
-    """TeamsTeamIdPatchBody"""
+class ReposOwnerRepoStacksPostResponse201TypeForResponse(TypedDict):
+    """ReposOwnerRepoStacksPostResponse201"""
 
-    name: str
-    description: NotRequired[str]
-    privacy: NotRequired[Literal["secret", "closed"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ]
-    permission: NotRequired[Literal["pull", "push", "admin"]]
-    parent_team_id: NotRequired[Union[int, None]]
-    parent_team_slug: NotRequired[Union[str, None]]
+    id: int
+    number: int
+    node_id: str
+    url: str
+    base: ReposOwnerRepoStacksPostResponse201PropBaseTypeForResponse
+    open_: bool
+    created_at: str
+    pull_requests: list[PullRequestStackPullRequestTypeForResponse]
+
+
+class ReposOwnerRepoStacksPostResponse201PropBaseType(TypedDict):
+    """ReposOwnerRepoStacksPostResponse201PropBase"""
+
+    ref: str
+
+
+class ReposOwnerRepoStacksPostResponse201PropBaseTypeForResponse(TypedDict):
+    """ReposOwnerRepoStacksPostResponse201PropBase"""
+
+    ref: str
 
 
 __all__ = (
-    "TeamsTeamIdPatchBodyType",
-    "TeamsTeamIdPatchBodyTypeForResponse",
+    "ReposOwnerRepoStacksPostResponse201PropBaseType",
+    "ReposOwnerRepoStacksPostResponse201PropBaseTypeForResponse",
+    "ReposOwnerRepoStacksPostResponse201Type",
+    "ReposOwnerRepoStacksPostResponse201TypeForResponse",
 )

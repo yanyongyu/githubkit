@@ -14,25 +14,19 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0216 import RepositoryRuleRequiredDeploymentsPropParameters
 
 
-class RepositoryRuleRequiredDeployments(GitHubModel):
-    """required_deployments
+class RepositoryRuleParamsProofOfPresence(GitHubModel):
+    """ProofOfPresence
 
-    Choose which environments must be successfully deployed to before refs can be
-    pushed into a ref that matches this rule.
+    Require a fresh authentication before a pull request can be merged.
     """
 
-    type: Literal["required_deployments"] = Field()
-    parameters: Missing[RepositoryRuleRequiredDeploymentsPropParameters] = Field(
-        default=UNSET
+    required_authentication_level: Literal["reauth", "mfa"] = Field(
+        description="The level of authentication required before a pull request can be merged."
     )
 
 
-model_rebuild(RepositoryRuleRequiredDeployments)
+model_rebuild(RepositoryRuleParamsProofOfPresence)
 
-__all__ = ("RepositoryRuleRequiredDeployments",)
+__all__ = ("RepositoryRuleParamsProofOfPresence",)

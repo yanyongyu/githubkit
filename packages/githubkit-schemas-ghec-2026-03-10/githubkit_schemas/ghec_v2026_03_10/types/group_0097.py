@@ -9,37 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0076 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
+from .group_0082 import EnterpriseTeamType, EnterpriseTeamTypeForResponse
 
 
-class DependabotRepositoryAccessDetailsType(TypedDict):
-    """Dependabot Repository Access Details
+class EnterpriseUserRoleAssignmentAllof1Type(TypedDict):
+    """EnterpriseUserRoleAssignmentAllof1"""
 
-    Information about repositories that Dependabot is able to access in an
-    organization
-    """
-
-    default_level: NotRequired[Union[Literal["public", "internal"], None]]
-    accessible_repositories: NotRequired[list[Union[SimpleRepositoryType, None]]]
+    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
+    inherited_from: NotRequired[list[EnterpriseTeamType]]
 
 
-class DependabotRepositoryAccessDetailsTypeForResponse(TypedDict):
-    """Dependabot Repository Access Details
+class EnterpriseUserRoleAssignmentAllof1TypeForResponse(TypedDict):
+    """EnterpriseUserRoleAssignmentAllof1"""
 
-    Information about repositories that Dependabot is able to access in an
-    organization
-    """
-
-    default_level: NotRequired[Union[Literal["public", "internal"], None]]
-    accessible_repositories: NotRequired[
-        list[Union[SimpleRepositoryTypeForResponse, None]]
-    ]
+    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
+    inherited_from: NotRequired[list[EnterpriseTeamTypeForResponse]]
 
 
 __all__ = (
-    "DependabotRepositoryAccessDetailsType",
-    "DependabotRepositoryAccessDetailsTypeForResponse",
+    "EnterpriseUserRoleAssignmentAllof1Type",
+    "EnterpriseUserRoleAssignmentAllof1TypeForResponse",
 )

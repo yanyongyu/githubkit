@@ -9,40 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0167 import (
-    RepositoryRuleCodeScanningPropParametersType,
-    RepositoryRuleCodeScanningPropParametersTypeForResponse,
-)
+
+class RepositoryRuleCopilotCodeReviewPropParametersType(TypedDict):
+    """RepositoryRuleCopilotCodeReviewPropParameters"""
+
+    review_draft_pull_requests: NotRequired[bool]
+    review_on_push: NotRequired[bool]
 
 
-class RepositoryRuleCodeScanningType(TypedDict):
-    """code_scanning
+class RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleCopilotCodeReviewPropParameters"""
 
-    Choose which tools must provide code scanning results before the reference is
-    updated. When configured, code scanning must be enabled and have results for
-    both the commit and the reference being updated.
-    """
-
-    type: Literal["code_scanning"]
-    parameters: NotRequired[RepositoryRuleCodeScanningPropParametersType]
-
-
-class RepositoryRuleCodeScanningTypeForResponse(TypedDict):
-    """code_scanning
-
-    Choose which tools must provide code scanning results before the reference is
-    updated. When configured, code scanning must be enabled and have results for
-    both the commit and the reference being updated.
-    """
-
-    type: Literal["code_scanning"]
-    parameters: NotRequired[RepositoryRuleCodeScanningPropParametersTypeForResponse]
+    review_draft_pull_requests: NotRequired[bool]
+    review_on_push: NotRequired[bool]
 
 
 __all__ = (
-    "RepositoryRuleCodeScanningType",
-    "RepositoryRuleCodeScanningTypeForResponse",
+    "RepositoryRuleCopilotCodeReviewPropParametersType",
+    "RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse",
 )

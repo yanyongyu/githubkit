@@ -9,62 +9,59 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0008 import EnterpriseType, EnterpriseTypeForResponse
 
+class ExternalVulnerabilitySyncResultType(TypedDict):
+    """External Vulnerability Sync Result
 
-class EnterpriseRoleType(TypedDict):
-    """Enterprise Role
-
-    Enterprise custom roles
+    Result of an external vulnerability synchronization operation
     """
 
-    id: int
-    name: str
-    description: NotRequired[Union[str, None]]
-    source: NotRequired[Union[Literal["Enterprise", "Predefined"], None]]
-    permissions: list[str]
-    enterprise: Union[EnterpriseType, None]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+    processed: int
+    created: int
+    updated: int
+    withdrawn: int
+    errors: int
+    results: list[ExternalVulnerabilitySyncResultPropResultsItemsType]
 
 
-class EnterpriseRoleTypeForResponse(TypedDict):
-    """Enterprise Role
+class ExternalVulnerabilitySyncResultTypeForResponse(TypedDict):
+    """External Vulnerability Sync Result
 
-    Enterprise custom roles
+    Result of an external vulnerability synchronization operation
     """
 
-    id: int
-    name: str
-    description: NotRequired[Union[str, None]]
-    source: NotRequired[Union[Literal["Enterprise", "Predefined"], None]]
-    permissions: list[str]
-    enterprise: Union[EnterpriseTypeForResponse, None]
-    created_at: str
-    updated_at: str
+    processed: int
+    created: int
+    updated: int
+    withdrawn: int
+    errors: int
+    results: list[ExternalVulnerabilitySyncResultPropResultsItemsTypeForResponse]
 
 
-class EnterprisesEnterpriseEnterpriseRolesGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseEnterpriseRolesGetResponse200"""
+class ExternalVulnerabilitySyncResultPropResultsItemsType(TypedDict):
+    """ExternalVulnerabilitySyncResultPropResultsItems"""
 
-    total_count: NotRequired[int]
-    roles: NotRequired[list[EnterpriseRoleType]]
+    external_id: str
+    status: Literal["created", "updated", "withdrawn", "error"]
+    ghsa_id: NotRequired[str]
+    error: NotRequired[str]
 
 
-class EnterprisesEnterpriseEnterpriseRolesGetResponse200TypeForResponse(TypedDict):
-    """EnterprisesEnterpriseEnterpriseRolesGetResponse200"""
+class ExternalVulnerabilitySyncResultPropResultsItemsTypeForResponse(TypedDict):
+    """ExternalVulnerabilitySyncResultPropResultsItems"""
 
-    total_count: NotRequired[int]
-    roles: NotRequired[list[EnterpriseRoleTypeForResponse]]
+    external_id: str
+    status: Literal["created", "updated", "withdrawn", "error"]
+    ghsa_id: NotRequired[str]
+    error: NotRequired[str]
 
 
 __all__ = (
-    "EnterpriseRoleType",
-    "EnterpriseRoleTypeForResponse",
-    "EnterprisesEnterpriseEnterpriseRolesGetResponse200Type",
-    "EnterprisesEnterpriseEnterpriseRolesGetResponse200TypeForResponse",
+    "ExternalVulnerabilitySyncResultPropResultsItemsType",
+    "ExternalVulnerabilitySyncResultPropResultsItemsTypeForResponse",
+    "ExternalVulnerabilitySyncResultType",
+    "ExternalVulnerabilitySyncResultTypeForResponse",
 )

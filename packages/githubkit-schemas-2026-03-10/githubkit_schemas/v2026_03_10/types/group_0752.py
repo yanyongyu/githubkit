@@ -12,302 +12,240 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0538 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0539 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0540 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0541 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0557 import WebhooksIssueType, WebhooksIssueTypeForResponse
 
+class WebhookIssuesClosedPropIssueAllof1Type(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof1"""
 
-class WebhookIssuesFieldAddedType(TypedDict):
-    """issues field_added event"""
-
-    action: Literal["field_added"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    issue: WebhooksIssueType
-    issue_field: WebhookIssuesFieldAddedPropIssueFieldType
-    issue_field_value: NotRequired[WebhookIssuesFieldAddedPropIssueFieldValueType]
-    changes: NotRequired[WebhookIssuesFieldAddedPropChangesType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
-
-
-class WebhookIssuesFieldAddedTypeForResponse(TypedDict):
-    """issues field_added event"""
-
-    action: Literal["field_added"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhooksIssueTypeForResponse
-    issue_field: WebhookIssuesFieldAddedPropIssueFieldTypeForResponse
-    issue_field_value: NotRequired[
-        WebhookIssuesFieldAddedPropIssueFieldValueTypeForResponse
+    active_lock_reason: NotRequired[Union[str, None]]
+    assignee: NotRequired[
+        Union[WebhookIssuesClosedPropIssueAllof1PropAssigneeType, None]
     ]
-    changes: NotRequired[WebhookIssuesFieldAddedPropChangesTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
-
-
-class WebhookIssuesFieldAddedPropIssueFieldType(TypedDict):
-    """WebhookIssuesFieldAddedPropIssueField
-
-    The issue field whose value was set or updated on the issue.
-    """
-
-    id: int
-    name: str
-    field_type: Literal["text", "date", "single_select", "multi_select", "number"]
-
-
-class WebhookIssuesFieldAddedPropIssueFieldTypeForResponse(TypedDict):
-    """WebhookIssuesFieldAddedPropIssueField
-
-    The issue field whose value was set or updated on the issue.
-    """
-
-    id: int
-    name: str
-    field_type: Literal["text", "date", "single_select", "multi_select", "number"]
-
-
-class WebhookIssuesFieldAddedPropIssueFieldValueType(TypedDict):
-    """WebhookIssuesFieldAddedPropIssueFieldValue
-
-    The value that was set or updated for the issue field. When updating an existing
-    value, the previous value is available in `changes`.
-    """
-
-    id: int
-    value: NotRequired[Union[str, float, int, None]]
-    value_id: NotRequired[int]
-    option: NotRequired[WebhookIssuesFieldAddedPropIssueFieldValuePropOptionType]
-    value_ids: NotRequired[list[int]]
-    options: NotRequired[
-        list[WebhookIssuesFieldAddedPropIssueFieldValuePropOptionsItemsType]
+    assignees: NotRequired[
+        list[Union[WebhookIssuesClosedPropIssueAllof1PropAssigneesItemsType, None]]
     ]
-
-
-class WebhookIssuesFieldAddedPropIssueFieldValueTypeForResponse(TypedDict):
-    """WebhookIssuesFieldAddedPropIssueFieldValue
-
-    The value that was set or updated for the issue field. When updating an existing
-    value, the previous value is available in `changes`.
-    """
-
-    id: int
-    value: NotRequired[Union[str, float, int, None]]
-    value_id: NotRequired[int]
-    option: NotRequired[
-        WebhookIssuesFieldAddedPropIssueFieldValuePropOptionTypeForResponse
-    ]
-    value_ids: NotRequired[list[int]]
-    options: NotRequired[
-        list[WebhookIssuesFieldAddedPropIssueFieldValuePropOptionsItemsTypeForResponse]
-    ]
-
-
-class WebhookIssuesFieldAddedPropIssueFieldValuePropOptionType(TypedDict):
-    """WebhookIssuesFieldAddedPropIssueFieldValuePropOption
-
-    The selected option details. Present for single_select field types.
-    """
-
+    author_association: NotRequired[str]
+    body: NotRequired[Union[str, None]]
+    closed_at: Union[str, None]
+    comments: NotRequired[int]
+    comments_url: NotRequired[str]
+    created_at: NotRequired[str]
+    events_url: NotRequired[str]
+    html_url: NotRequired[str]
     id: NotRequired[int]
-    name: NotRequired[str]
-    color: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-
-
-class WebhookIssuesFieldAddedPropIssueFieldValuePropOptionTypeForResponse(TypedDict):
-    """WebhookIssuesFieldAddedPropIssueFieldValuePropOption
-
-    The selected option details. Present for single_select field types.
-    """
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    color: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-
-
-class WebhookIssuesFieldAddedPropIssueFieldValuePropOptionsItemsType(TypedDict):
-    """WebhookIssuesFieldAddedPropIssueFieldValuePropOptionsItems"""
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    color: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-
-
-class WebhookIssuesFieldAddedPropIssueFieldValuePropOptionsItemsTypeForResponse(
-    TypedDict
-):
-    """WebhookIssuesFieldAddedPropIssueFieldValuePropOptionsItems"""
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    color: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-
-
-class WebhookIssuesFieldAddedPropChangesType(TypedDict):
-    """WebhookIssuesFieldAddedPropChanges
-
-    The previous field value, present when an existing value was updated.
-    """
-
-    issue_field_value: NotRequired[
-        WebhookIssuesFieldAddedPropChangesPropIssueFieldValueType
+    labels: NotRequired[
+        list[Union[WebhookIssuesClosedPropIssueAllof1PropLabelsItemsType, None]]
     ]
-
-
-class WebhookIssuesFieldAddedPropChangesTypeForResponse(TypedDict):
-    """WebhookIssuesFieldAddedPropChanges
-
-    The previous field value, present when an existing value was updated.
-    """
-
-    issue_field_value: NotRequired[
-        WebhookIssuesFieldAddedPropChangesPropIssueFieldValueTypeForResponse
+    labels_url: NotRequired[str]
+    locked: NotRequired[bool]
+    milestone: NotRequired[
+        Union[WebhookIssuesClosedPropIssueAllof1PropMilestoneType, None]
     ]
-
-
-class WebhookIssuesFieldAddedPropChangesPropIssueFieldValueType(TypedDict):
-    """WebhookIssuesFieldAddedPropChangesPropIssueFieldValue
-
-    The previous issue field value data.
-    """
-
-    from_: WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromType
-
-
-class WebhookIssuesFieldAddedPropChangesPropIssueFieldValueTypeForResponse(TypedDict):
-    """WebhookIssuesFieldAddedPropChangesPropIssueFieldValue
-
-    The previous issue field value data.
-    """
-
-    from_: WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromTypeForResponse
-
-
-class WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromType(TypedDict):
-    """WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFrom
-
-    The previous value of the issue field before the update.
-    """
-
-    id: int
-    value: NotRequired[Union[str, float, int, None]]
-    value_id: NotRequired[int]
-    option: NotRequired[
-        WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOptionType
+    node_id: NotRequired[str]
+    number: NotRequired[int]
+    performed_via_github_app: NotRequired[
+        Union[WebhookIssuesClosedPropIssueAllof1PropPerformedViaGithubAppType, None]
     ]
-    value_ids: NotRequired[list[int]]
-    options: NotRequired[
+    reactions: NotRequired[WebhookIssuesClosedPropIssueAllof1PropReactionsType]
+    repository_url: NotRequired[str]
+    state: Literal["closed", "open"]
+    timeline_url: NotRequired[str]
+    title: NotRequired[str]
+    updated_at: NotRequired[str]
+    url: NotRequired[str]
+    user: NotRequired[WebhookIssuesClosedPropIssueAllof1PropUserType]
+
+
+class WebhookIssuesClosedPropIssueAllof1TypeForResponse(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof1"""
+
+    active_lock_reason: NotRequired[Union[str, None]]
+    assignee: NotRequired[
+        Union[WebhookIssuesClosedPropIssueAllof1PropAssigneeTypeForResponse, None]
+    ]
+    assignees: NotRequired[
         list[
-            WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOptionsItemsType
+            Union[
+                WebhookIssuesClosedPropIssueAllof1PropAssigneesItemsTypeForResponse,
+                None,
+            ]
         ]
     ]
-
-
-class WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromTypeForResponse(
-    TypedDict
-):
-    """WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFrom
-
-    The previous value of the issue field before the update.
-    """
-
-    id: int
-    value: NotRequired[Union[str, float, int, None]]
-    value_id: NotRequired[int]
-    option: NotRequired[
-        WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOptionTypeForResponse
-    ]
-    value_ids: NotRequired[list[int]]
-    options: NotRequired[
+    author_association: NotRequired[str]
+    body: NotRequired[Union[str, None]]
+    closed_at: Union[str, None]
+    comments: NotRequired[int]
+    comments_url: NotRequired[str]
+    created_at: NotRequired[str]
+    events_url: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    labels: NotRequired[
         list[
-            WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOptionsItemsTypeForResponse
+            Union[
+                WebhookIssuesClosedPropIssueAllof1PropLabelsItemsTypeForResponse, None
+            ]
         ]
     ]
+    labels_url: NotRequired[str]
+    locked: NotRequired[bool]
+    milestone: NotRequired[
+        Union[WebhookIssuesClosedPropIssueAllof1PropMilestoneTypeForResponse, None]
+    ]
+    node_id: NotRequired[str]
+    number: NotRequired[int]
+    performed_via_github_app: NotRequired[
+        Union[
+            WebhookIssuesClosedPropIssueAllof1PropPerformedViaGithubAppTypeForResponse,
+            None,
+        ]
+    ]
+    reactions: NotRequired[
+        WebhookIssuesClosedPropIssueAllof1PropReactionsTypeForResponse
+    ]
+    repository_url: NotRequired[str]
+    state: Literal["closed", "open"]
+    timeline_url: NotRequired[str]
+    title: NotRequired[str]
+    updated_at: NotRequired[str]
+    url: NotRequired[str]
+    user: NotRequired[WebhookIssuesClosedPropIssueAllof1PropUserTypeForResponse]
 
 
-class WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOptionType(
+class WebhookIssuesClosedPropIssueAllof1PropAssigneeType(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof1PropAssignee"""
+
+
+class WebhookIssuesClosedPropIssueAllof1PropAssigneeTypeForResponse(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof1PropAssignee"""
+
+
+class WebhookIssuesClosedPropIssueAllof1PropAssigneesItemsType(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof1PropAssigneesItems"""
+
+
+class WebhookIssuesClosedPropIssueAllof1PropAssigneesItemsTypeForResponse(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof1PropAssigneesItems"""
+
+
+class WebhookIssuesClosedPropIssueAllof1PropLabelsItemsType(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof1PropLabelsItems"""
+
+
+class WebhookIssuesClosedPropIssueAllof1PropLabelsItemsTypeForResponse(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof1PropLabelsItems"""
+
+
+class WebhookIssuesClosedPropIssueAllof1PropMilestoneType(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof1PropMilestone"""
+
+
+class WebhookIssuesClosedPropIssueAllof1PropMilestoneTypeForResponse(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof1PropMilestone"""
+
+
+class WebhookIssuesClosedPropIssueAllof1PropPerformedViaGithubAppType(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof1PropPerformedViaGithubApp"""
+
+
+class WebhookIssuesClosedPropIssueAllof1PropPerformedViaGithubAppTypeForResponse(
     TypedDict
 ):
-    """WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOption
+    """WebhookIssuesClosedPropIssueAllof1PropPerformedViaGithubApp"""
 
-    The previously selected option details. Present for single_select field types.
-    """
 
+class WebhookIssuesClosedPropIssueAllof1PropReactionsType(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof1PropReactions"""
+
+    plus_one: NotRequired[int]
+    minus_one: NotRequired[int]
+    confused: NotRequired[int]
+    eyes: NotRequired[int]
+    heart: NotRequired[int]
+    hooray: NotRequired[int]
+    laugh: NotRequired[int]
+    rocket: NotRequired[int]
+    total_count: NotRequired[int]
+    url: NotRequired[str]
+
+
+class WebhookIssuesClosedPropIssueAllof1PropReactionsTypeForResponse(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof1PropReactions"""
+
+    plus_one: NotRequired[int]
+    minus_one: NotRequired[int]
+    confused: NotRequired[int]
+    eyes: NotRequired[int]
+    heart: NotRequired[int]
+    hooray: NotRequired[int]
+    laugh: NotRequired[int]
+    rocket: NotRequired[int]
+    total_count: NotRequired[int]
+    url: NotRequired[str]
+
+
+class WebhookIssuesClosedPropIssueAllof1PropUserType(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof1PropUser"""
+
+    avatar_url: NotRequired[str]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
     id: NotRequired[int]
-    name: NotRequired[str]
-    color: NotRequired[str]
-    description: NotRequired[Union[str, None]]
+    login: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[str]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-class WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOptionTypeForResponse(
-    TypedDict
-):
-    """WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOption
+class WebhookIssuesClosedPropIssueAllof1PropUserTypeForResponse(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof1PropUser"""
 
-    The previously selected option details. Present for single_select field types.
-    """
-
+    avatar_url: NotRequired[str]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
     id: NotRequired[int]
-    name: NotRequired[str]
-    color: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-
-
-class WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOptionsItemsType(
-    TypedDict
-):
-    """WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOptionsItems"""
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    color: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-
-
-class WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOptionsItemsTypeForResponse(
-    TypedDict
-):
-    """WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOptionsItems"""
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    color: NotRequired[str]
-    description: NotRequired[Union[str, None]]
+    login: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[str]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOptionType",
-    "WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOptionTypeForResponse",
-    "WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOptionsItemsType",
-    "WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOptionsItemsTypeForResponse",
-    "WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromType",
-    "WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromTypeForResponse",
-    "WebhookIssuesFieldAddedPropChangesPropIssueFieldValueType",
-    "WebhookIssuesFieldAddedPropChangesPropIssueFieldValueTypeForResponse",
-    "WebhookIssuesFieldAddedPropChangesType",
-    "WebhookIssuesFieldAddedPropChangesTypeForResponse",
-    "WebhookIssuesFieldAddedPropIssueFieldType",
-    "WebhookIssuesFieldAddedPropIssueFieldTypeForResponse",
-    "WebhookIssuesFieldAddedPropIssueFieldValuePropOptionType",
-    "WebhookIssuesFieldAddedPropIssueFieldValuePropOptionTypeForResponse",
-    "WebhookIssuesFieldAddedPropIssueFieldValuePropOptionsItemsType",
-    "WebhookIssuesFieldAddedPropIssueFieldValuePropOptionsItemsTypeForResponse",
-    "WebhookIssuesFieldAddedPropIssueFieldValueType",
-    "WebhookIssuesFieldAddedPropIssueFieldValueTypeForResponse",
-    "WebhookIssuesFieldAddedType",
-    "WebhookIssuesFieldAddedTypeForResponse",
+    "WebhookIssuesClosedPropIssueAllof1PropAssigneeType",
+    "WebhookIssuesClosedPropIssueAllof1PropAssigneeTypeForResponse",
+    "WebhookIssuesClosedPropIssueAllof1PropAssigneesItemsType",
+    "WebhookIssuesClosedPropIssueAllof1PropAssigneesItemsTypeForResponse",
+    "WebhookIssuesClosedPropIssueAllof1PropLabelsItemsType",
+    "WebhookIssuesClosedPropIssueAllof1PropLabelsItemsTypeForResponse",
+    "WebhookIssuesClosedPropIssueAllof1PropMilestoneType",
+    "WebhookIssuesClosedPropIssueAllof1PropMilestoneTypeForResponse",
+    "WebhookIssuesClosedPropIssueAllof1PropPerformedViaGithubAppType",
+    "WebhookIssuesClosedPropIssueAllof1PropPerformedViaGithubAppTypeForResponse",
+    "WebhookIssuesClosedPropIssueAllof1PropReactionsType",
+    "WebhookIssuesClosedPropIssueAllof1PropReactionsTypeForResponse",
+    "WebhookIssuesClosedPropIssueAllof1PropUserType",
+    "WebhookIssuesClosedPropIssueAllof1PropUserTypeForResponse",
+    "WebhookIssuesClosedPropIssueAllof1Type",
+    "WebhookIssuesClosedPropIssueAllof1TypeForResponse",
 )

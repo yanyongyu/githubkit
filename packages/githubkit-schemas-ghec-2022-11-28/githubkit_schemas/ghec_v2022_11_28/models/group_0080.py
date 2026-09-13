@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,23 +17,48 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0078 import CodeSecurityConfiguration
 
+class TeamSimple(GitHubModel):
+    """Team Simple
 
-class CodeSecurityDefaultConfigurationsItems(GitHubModel):
-    """CodeSecurityDefaultConfigurationsItems"""
+    Groups of organization members that gives permissions on specified repositories.
+    """
 
-    default_for_new_repos: Missing[Literal["public", "private_and_internal", "all"]] = (
-        Field(
-            default=UNSET,
-            description="The visibility of newly created repositories for which the code security configuration will be applied to by default",
-        )
+    id: int = Field(description="Unique identifier of the team")
+    node_id: str = Field()
+    url: str = Field(description="URL for the team")
+    members_url: str = Field()
+    name: str = Field(description="Name of the team")
+    description: Union[str, None] = Field(description="Description of the team")
+    permission: str = Field(
+        description="Permission that the team will have for its repositories"
     )
-    configuration: Missing[CodeSecurityConfiguration] = Field(
-        default=UNSET, description="A code security configuration"
+    privacy: Missing[str] = Field(
+        default=UNSET, description="The level of privacy this team should have"
+    )
+    notification_setting: Missing[str] = Field(
+        default=UNSET, description="The notification setting the team has set"
+    )
+    html_url: str = Field()
+    repositories_url: str = Field()
+    slug: str = Field()
+    ldap_dn: Missing[str] = Field(
+        default=UNSET,
+        description="Distinguished Name (DN) that team maps to within LDAP environment",
+    )
+    type: Literal["enterprise", "organization"] = Field(
+        description="The ownership type of the team"
+    )
+    organization_id: Missing[int] = Field(
+        default=UNSET,
+        description="Unique identifier of the organization to which this team belongs",
+    )
+    enterprise_id: Missing[int] = Field(
+        default=UNSET,
+        description="Unique identifier of the enterprise to which this team belongs",
     )
 
 
-model_rebuild(CodeSecurityDefaultConfigurationsItems)
+model_rebuild(TeamSimple)
 
-__all__ = ("CodeSecurityDefaultConfigurationsItems",)
+__all__ = ("TeamSimple",)

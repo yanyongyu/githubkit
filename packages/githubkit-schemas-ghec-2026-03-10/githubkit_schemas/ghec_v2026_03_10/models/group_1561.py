@@ -16,23 +16,16 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoForksPostBody(GitHubModel):
-    """ReposOwnerRepoForksPostBody"""
+class ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200(
+    GitHubModel
+):
+    """ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200"""
 
-    organization: Missing[str] = Field(
-        default=UNSET,
-        description="Optional parameter to specify the organization name if forking into an organization.",
-    )
-    name: Missing[str] = Field(
-        default=UNSET,
-        description="When forking from an existing repository, a new name for the fork.",
-    )
-    default_branch_only: Missing[bool] = Field(
-        default=UNSET,
-        description="When forking from an existing repository, fork with only the default branch.",
+    dismissal_review_id: Missing[int] = Field(
+        default=UNSET, description="ID of the dismissal review."
     )
 
 
-model_rebuild(ReposOwnerRepoForksPostBody)
+model_rebuild(ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200)
 
-__all__ = ("ReposOwnerRepoForksPostBody",)
+__all__ = ("ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200",)

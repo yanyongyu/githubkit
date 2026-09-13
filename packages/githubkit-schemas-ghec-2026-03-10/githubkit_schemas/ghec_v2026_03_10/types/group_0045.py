@@ -9,22 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import TypedDict
 
 
-class ActionsArtifactAndLogRetentionType(TypedDict):
-    """ActionsArtifactAndLogRetention"""
+class OrganizationSimpleType(TypedDict):
+    """Organization Simple
 
-    days: int
+    A GitHub organization.
+    """
+
+    login: str
+    id: int
+    node_id: str
+    url: str
+    repos_url: str
+    events_url: str
+    hooks_url: str
+    issues_url: str
+    members_url: str
+    public_members_url: str
+    avatar_url: str
+    description: Union[str, None]
 
 
-class ActionsArtifactAndLogRetentionTypeForResponse(TypedDict):
-    """ActionsArtifactAndLogRetention"""
+class OrganizationSimpleTypeForResponse(TypedDict):
+    """Organization Simple
 
-    days: int
+    A GitHub organization.
+    """
+
+    login: str
+    id: int
+    node_id: str
+    url: str
+    repos_url: str
+    events_url: str
+    hooks_url: str
+    issues_url: str
+    members_url: str
+    public_members_url: str
+    avatar_url: str
+    description: Union[str, None]
 
 
 __all__ = (
-    "ActionsArtifactAndLogRetentionType",
-    "ActionsArtifactAndLogRetentionTypeForResponse",
+    "OrganizationSimpleType",
+    "OrganizationSimpleTypeForResponse",
 )

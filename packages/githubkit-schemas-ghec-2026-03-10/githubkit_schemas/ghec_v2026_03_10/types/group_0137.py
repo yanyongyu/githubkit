@@ -9,22 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class RepositoryRuleUpdatePropParametersType(TypedDict):
-    """RepositoryRuleUpdatePropParameters"""
+class RepositoryRuleParamsProofOfPresenceType(TypedDict):
+    """ProofOfPresence
 
-    update_allows_fetch_and_merge: bool
+    Require a fresh authentication before a pull request can be merged.
+    """
+
+    required_authentication_level: Literal["reauth", "mfa"]
 
 
-class RepositoryRuleUpdatePropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleUpdatePropParameters"""
+class RepositoryRuleParamsProofOfPresenceTypeForResponse(TypedDict):
+    """ProofOfPresence
 
-    update_allows_fetch_and_merge: bool
+    Require a fresh authentication before a pull request can be merged.
+    """
+
+    required_authentication_level: Literal["reauth", "mfa"]
 
 
 __all__ = (
-    "RepositoryRuleUpdatePropParametersType",
-    "RepositoryRuleUpdatePropParametersTypeForResponse",
+    "RepositoryRuleParamsProofOfPresenceType",
+    "RepositoryRuleParamsProofOfPresenceTypeForResponse",
 )

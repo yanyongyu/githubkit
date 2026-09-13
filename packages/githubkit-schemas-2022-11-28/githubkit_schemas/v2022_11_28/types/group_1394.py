@@ -13,57 +13,184 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0"""
+class ReposOwnerRepoIssuesIssueNumberPatchBodyType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberPatchBody"""
 
+    title: NotRequired[Union[str, int, None]]
+    body: NotRequired[Union[str, None]]
+    assignee: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["open", "closed"]]
+    state_reason: NotRequired[
+        Union[Literal["completed", "not_planned", "duplicate", "reopened"], None]
+    ]
+    duplicate_issue_id: NotRequired[int]
+    milestone: NotRequired[Union[str, int, None]]
+    labels: NotRequired[
+        list[
+            Union[
+                str, ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type
+            ]
+        ]
+    ]
+    assignees: NotRequired[
+        list[
+            Union[
+                str,
+                ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1Type,
+            ]
+        ]
+    ]
+    issue_field_values: NotRequired[
+        list[ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsType]
+    ]
+    type: NotRequired[
+        Union[str, ReposOwnerRepoIssuesIssueNumberPatchBodyPropTypeOneof1Type, None]
+    ]
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberPatchBody"""
+
+    title: NotRequired[Union[str, int, None]]
+    body: NotRequired[Union[str, None]]
+    assignee: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["open", "closed"]]
+    state_reason: NotRequired[
+        Union[Literal["completed", "not_planned", "duplicate", "reopened"], None]
+    ]
+    duplicate_issue_id: NotRequired[int]
+    milestone: NotRequired[Union[str, int, None]]
     labels: NotRequired[
         list[
             Union[
                 str,
-                ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0PropLabelsItemsOneof1Type,
+                ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1TypeForResponse,
             ]
         ]
     ]
-
-
-class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0TypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0"""
-
-    labels: NotRequired[
+    assignees: NotRequired[
         list[
             Union[
                 str,
-                ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0PropLabelsItemsOneof1TypeForResponse,
+                ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1TypeForResponse,
             ]
+        ]
+    ]
+    issue_field_values: NotRequired[
+        list[
+            ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsTypeForResponse
+        ]
+    ]
+    type: NotRequired[
+        Union[
+            str,
+            ReposOwnerRepoIssuesIssueNumberPatchBodyPropTypeOneof1TypeForResponse,
+            None,
         ]
     ]
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0PropLabelsItemsOneof1Type(
-    TypedDict
-):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0PropLabelsItemsOneof1"""
+class ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1"""
 
-    name: str
+    id: NotRequired[int]
+    name: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[Union[str, None]]
     rationale: NotRequired[str]
     suggest: NotRequired[bool]
     confidence: NotRequired[Literal["low", "medium", "high"]]
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0PropLabelsItemsOneof1TypeForResponse(
+class ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1TypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0PropLabelsItemsOneof1"""
+    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1"""
 
-    name: str
+    id: NotRequired[int]
+    name: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[Union[str, None]]
+    rationale: NotRequired[str]
+    suggest: NotRequired[bool]
+    confidence: NotRequired[Literal["low", "medium", "high"]]
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1Type(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1"""
+
+    login: NotRequired[str]
+    rationale: NotRequired[str]
+    suggest: NotRequired[bool]
+    confidence: NotRequired[Literal["low", "medium", "high"]]
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1"""
+
+    login: NotRequired[str]
+    rationale: NotRequired[str]
+    suggest: NotRequired[bool]
+    confidence: NotRequired[Literal["low", "medium", "high"]]
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems"""
+
+    field_id: int
+    value: Union[str, float, list[str]]
+    rationale: NotRequired[str]
+    suggest: NotRequired[bool]
+    confidence: NotRequired[Literal["low", "medium", "high"]]
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems"""
+
+    field_id: int
+    value: Union[str, float, list[str]]
+    rationale: NotRequired[str]
+    suggest: NotRequired[bool]
+    confidence: NotRequired[Literal["low", "medium", "high"]]
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchBodyPropTypeOneof1Type(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropTypeOneof1
+
+    The issue type with optional metadata.
+    """
+
+    value: NotRequired[Union[str, None]]
+    rationale: NotRequired[str]
+    suggest: NotRequired[bool]
+    confidence: NotRequired[Literal["low", "medium", "high"]]
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchBodyPropTypeOneof1TypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropTypeOneof1
+
+    The issue type with optional metadata.
+    """
+
+    value: NotRequired[Union[str, None]]
     rationale: NotRequired[str]
     suggest: NotRequired[bool]
     confidence: NotRequired[Literal["low", "medium", "high"]]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0PropLabelsItemsOneof1Type",
-    "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0PropLabelsItemsOneof1TypeForResponse",
-    "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type",
-    "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0TypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1Type",
+    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1TypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsType",
+    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsTypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type",
+    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1TypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropTypeOneof1Type",
+    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropTypeOneof1TypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberPatchBodyType",
+    "ReposOwnerRepoIssuesIssueNumberPatchBodyTypeForResponse",
 )

@@ -13,20 +13,20 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0050 import DiscussionType, DiscussionTypeForResponse
-from .group_0539 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0540 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0541 import (
+from .group_0046 import DiscussionType, DiscussionTypeForResponse
+from .group_0542 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0543 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0544 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0542 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0545 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDiscussionPinnedType(TypedDict):
-    """discussion pinned event"""
+class WebhookDiscussionClosedType(TypedDict):
+    """discussion closed event"""
 
-    action: Literal["pinned"]
+    action: Literal["closed"]
     discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -35,10 +35,10 @@ class WebhookDiscussionPinnedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookDiscussionPinnedTypeForResponse(TypedDict):
-    """discussion pinned event"""
+class WebhookDiscussionClosedTypeForResponse(TypedDict):
+    """discussion closed event"""
 
-    action: Literal["pinned"]
+    action: Literal["closed"]
     discussion: DiscussionTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
@@ -48,6 +48,6 @@ class WebhookDiscussionPinnedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookDiscussionPinnedType",
-    "WebhookDiscussionPinnedTypeForResponse",
+    "WebhookDiscussionClosedType",
+    "WebhookDiscussionClosedTypeForResponse",
 )

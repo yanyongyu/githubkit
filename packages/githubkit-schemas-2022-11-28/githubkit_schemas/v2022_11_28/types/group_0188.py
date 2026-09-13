@@ -10,56 +10,113 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ProjectsV2FieldIterationConfigurationType(TypedDict):
-    """ProjectsV2FieldIterationConfiguration
+class ProjectsV2ViewType(TypedDict):
+    """Projects v2 View
 
-    The configuration for iteration fields.
+    A view inside a projects v2 project
     """
 
-    start_date: _dt.date
-    duration: int
-    iterations: NotRequired[
-        list[ProjectsV2FieldIterationConfigurationPropIterationsItemsType]
-    ]
+    id: int
+    number: int
+    name: str
+    layout: Literal["table", "board", "roadmap"]
+    node_id: str
+    project_url: str
+    html_url: str
+    creator: ProjectsV2ViewPropCreatorType
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    filter_: NotRequired[Union[str, None]]
+    visible_fields: list[int]
+    sort_by: list[list[Union[int, str]]]
+    group_by: list[int]
+    vertical_group_by: list[int]
 
 
-class ProjectsV2FieldIterationConfigurationTypeForResponse(TypedDict):
-    """ProjectsV2FieldIterationConfiguration
+class ProjectsV2ViewTypeForResponse(TypedDict):
+    """Projects v2 View
 
-    The configuration for iteration fields.
+    A view inside a projects v2 project
     """
 
-    start_date: str
-    duration: int
-    iterations: NotRequired[
-        list[ProjectsV2FieldIterationConfigurationPropIterationsItemsTypeForResponse]
-    ]
+    id: int
+    number: int
+    name: str
+    layout: Literal["table", "board", "roadmap"]
+    node_id: str
+    project_url: str
+    html_url: str
+    creator: ProjectsV2ViewPropCreatorTypeForResponse
+    created_at: str
+    updated_at: str
+    filter_: NotRequired[Union[str, None]]
+    visible_fields: list[int]
+    sort_by: list[list[Union[int, str]]]
+    group_by: list[int]
+    vertical_group_by: list[int]
 
 
-class ProjectsV2FieldIterationConfigurationPropIterationsItemsType(TypedDict):
-    """ProjectsV2FieldIterationConfigurationPropIterationsItems"""
+class ProjectsV2ViewPropCreatorType(TypedDict):
+    """ProjectsV2ViewPropCreator"""
 
-    title: str
-    start_date: _dt.date
-    duration: int
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
+    id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-class ProjectsV2FieldIterationConfigurationPropIterationsItemsTypeForResponse(
-    TypedDict
-):
-    """ProjectsV2FieldIterationConfigurationPropIterationsItems"""
+class ProjectsV2ViewPropCreatorTypeForResponse(TypedDict):
+    """ProjectsV2ViewPropCreator"""
 
-    title: str
-    start_date: str
-    duration: int
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
+    id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "ProjectsV2FieldIterationConfigurationPropIterationsItemsType",
-    "ProjectsV2FieldIterationConfigurationPropIterationsItemsTypeForResponse",
-    "ProjectsV2FieldIterationConfigurationType",
-    "ProjectsV2FieldIterationConfigurationTypeForResponse",
+    "ProjectsV2ViewPropCreatorType",
+    "ProjectsV2ViewPropCreatorTypeForResponse",
+    "ProjectsV2ViewType",
+    "ProjectsV2ViewTypeForResponse",
 )

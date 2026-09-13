@@ -9,35 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class Label(GitHubModel):
-    """Label
+class ReactionRollup(GitHubModel):
+    """Reaction Rollup"""
 
-    Color-coded labels help you categorize and filter your issues (just like labels
-    in Gmail).
-    """
-
-    id: int = Field(description="Unique identifier for the label.")
-    node_id: str = Field()
-    url: str = Field(description="URL for the label")
-    name: str = Field(description="The name of the label.")
-    description: Union[str, None] = Field(
-        description="Optional description of the label, such as its purpose."
-    )
-    color: str = Field(
-        description="6-character hex code, without the leading #, identifying the color"
-    )
-    default: bool = Field(
-        description="Whether this label comes by default in a new repository."
-    )
+    url: str = Field()
+    total_count: int = Field()
+    plus_one: int = Field(alias="+1")
+    minus_one: int = Field(alias="-1")
+    laugh: int = Field()
+    confused: int = Field()
+    heart: int = Field()
+    hooray: int = Field()
+    eyes: int = Field()
+    rocket: int = Field()
 
 
-model_rebuild(Label)
+model_rebuild(ReactionRollup)
 
-__all__ = ("Label",)
+__all__ = ("ReactionRollup",)

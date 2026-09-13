@@ -13,44 +13,44 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0538 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0539 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0540 import (
+from .group_0541 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0542 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0543 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0541 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0544 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 from .group_0766 import (
-    WebhookIssuesReopenedPropIssueType,
-    WebhookIssuesReopenedPropIssueTypeForResponse,
+    WebhookIssuesLockedPropIssueType,
+    WebhookIssuesLockedPropIssueTypeForResponse,
 )
 
 
-class WebhookIssuesReopenedType(TypedDict):
-    """issues reopened event"""
+class WebhookIssuesLockedType(TypedDict):
+    """issues locked event"""
 
-    action: Literal["reopened"]
+    action: Literal["locked"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssuesReopenedPropIssueType
+    issue: WebhookIssuesLockedPropIssueType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookIssuesReopenedTypeForResponse(TypedDict):
-    """issues reopened event"""
+class WebhookIssuesLockedTypeForResponse(TypedDict):
+    """issues locked event"""
 
-    action: Literal["reopened"]
+    action: Literal["locked"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhookIssuesReopenedPropIssueTypeForResponse
+    issue: WebhookIssuesLockedPropIssueTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookIssuesReopenedType",
-    "WebhookIssuesReopenedTypeForResponse",
+    "WebhookIssuesLockedType",
+    "WebhookIssuesLockedTypeForResponse",
 )

@@ -9,93 +9,80 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0049 import ReactionRollupType, ReactionRollupTypeForResponse
+from .group_0059 import ReleaseAssetType, ReleaseAssetTypeForResponse
 
 
-class PullRequestReviewEventPropReviewType(TypedDict):
-    """PullRequestReviewEventPropReview"""
+class ReleaseEventPropReleaseType(TypedDict):
+    """ReleaseEventPropRelease"""
 
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    user: NotRequired[Union[SimpleUserType, None]]
-    body: NotRequired[str]
-    commit_id: NotRequired[str]
-    submitted_at: NotRequired[Union[str, None]]
-    state: NotRequired[str]
-    html_url: NotRequired[str]
-    pull_request_url: NotRequired[str]
-    links: NotRequired[PullRequestReviewEventPropReviewPropLinksType]
-    updated_at: NotRequired[str]
-
-
-class PullRequestReviewEventPropReviewTypeForResponse(TypedDict):
-    """PullRequestReviewEventPropReview"""
-
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    user: NotRequired[Union[SimpleUserTypeForResponse, None]]
-    body: NotRequired[str]
-    commit_id: NotRequired[str]
-    submitted_at: NotRequired[Union[str, None]]
-    state: NotRequired[str]
-    html_url: NotRequired[str]
-    pull_request_url: NotRequired[str]
-    links: NotRequired[PullRequestReviewEventPropReviewPropLinksTypeForResponse]
-    updated_at: NotRequired[str]
-
-
-class PullRequestReviewEventPropReviewPropLinksType(TypedDict):
-    """PullRequestReviewEventPropReviewPropLinks"""
-
-    html: PullRequestReviewEventPropReviewPropLinksPropHtmlType
-    pull_request: PullRequestReviewEventPropReviewPropLinksPropPullRequestType
+    url: str
+    html_url: str
+    assets_url: str
+    upload_url: str
+    tarball_url: Union[str, None]
+    zipball_url: Union[str, None]
+    id: int
+    node_id: str
+    tag_name: str
+    target_commitish: str
+    name: Union[str, None]
+    body: NotRequired[Union[str, None]]
+    draft: bool
+    prerelease: bool
+    immutable: NotRequired[bool]
+    created_at: _dt.datetime
+    published_at: Union[_dt.datetime, None]
+    updated_at: NotRequired[Union[_dt.datetime, None]]
+    author: SimpleUserType
+    assets: list[ReleaseAssetType]
+    body_html: NotRequired[Union[str, None]]
+    body_text: NotRequired[Union[str, None]]
+    mentions_count: NotRequired[int]
+    discussion_url: NotRequired[str]
+    reactions: NotRequired[ReactionRollupType]
+    is_short_description_html_truncated: NotRequired[bool]
+    short_description_html: NotRequired[str]
 
 
-class PullRequestReviewEventPropReviewPropLinksTypeForResponse(TypedDict):
-    """PullRequestReviewEventPropReviewPropLinks"""
+class ReleaseEventPropReleaseTypeForResponse(TypedDict):
+    """ReleaseEventPropRelease"""
 
-    html: PullRequestReviewEventPropReviewPropLinksPropHtmlTypeForResponse
-    pull_request: (
-        PullRequestReviewEventPropReviewPropLinksPropPullRequestTypeForResponse
-    )
-
-
-class PullRequestReviewEventPropReviewPropLinksPropHtmlType(TypedDict):
-    """PullRequestReviewEventPropReviewPropLinksPropHtml"""
-
-    href: str
-
-
-class PullRequestReviewEventPropReviewPropLinksPropHtmlTypeForResponse(TypedDict):
-    """PullRequestReviewEventPropReviewPropLinksPropHtml"""
-
-    href: str
-
-
-class PullRequestReviewEventPropReviewPropLinksPropPullRequestType(TypedDict):
-    """PullRequestReviewEventPropReviewPropLinksPropPullRequest"""
-
-    href: str
-
-
-class PullRequestReviewEventPropReviewPropLinksPropPullRequestTypeForResponse(
-    TypedDict
-):
-    """PullRequestReviewEventPropReviewPropLinksPropPullRequest"""
-
-    href: str
+    url: str
+    html_url: str
+    assets_url: str
+    upload_url: str
+    tarball_url: Union[str, None]
+    zipball_url: Union[str, None]
+    id: int
+    node_id: str
+    tag_name: str
+    target_commitish: str
+    name: Union[str, None]
+    body: NotRequired[Union[str, None]]
+    draft: bool
+    prerelease: bool
+    immutable: NotRequired[bool]
+    created_at: str
+    published_at: Union[str, None]
+    updated_at: NotRequired[Union[str, None]]
+    author: SimpleUserTypeForResponse
+    assets: list[ReleaseAssetTypeForResponse]
+    body_html: NotRequired[Union[str, None]]
+    body_text: NotRequired[Union[str, None]]
+    mentions_count: NotRequired[int]
+    discussion_url: NotRequired[str]
+    reactions: NotRequired[ReactionRollupTypeForResponse]
+    is_short_description_html_truncated: NotRequired[bool]
+    short_description_html: NotRequired[str]
 
 
 __all__ = (
-    "PullRequestReviewEventPropReviewPropLinksPropHtmlType",
-    "PullRequestReviewEventPropReviewPropLinksPropHtmlTypeForResponse",
-    "PullRequestReviewEventPropReviewPropLinksPropPullRequestType",
-    "PullRequestReviewEventPropReviewPropLinksPropPullRequestTypeForResponse",
-    "PullRequestReviewEventPropReviewPropLinksType",
-    "PullRequestReviewEventPropReviewPropLinksTypeForResponse",
-    "PullRequestReviewEventPropReviewType",
-    "PullRequestReviewEventPropReviewTypeForResponse",
+    "ReleaseEventPropReleaseType",
+    "ReleaseEventPropReleaseTypeForResponse",
 )

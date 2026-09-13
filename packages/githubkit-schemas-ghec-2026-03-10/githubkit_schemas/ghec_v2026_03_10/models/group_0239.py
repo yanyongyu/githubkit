@@ -9,37 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0215 import ReactionRollup
+
+class ReleaseEventPropReleaseAllof1(GitHubModel):
+    """ReleaseEventPropReleaseAllof1"""
+
+    is_short_description_html_truncated: Missing[bool] = Field(default=UNSET)
+    short_description_html: Missing[str] = Field(default=UNSET)
 
 
-class CommitCommentEventPropComment(GitHubModel):
-    """CommitCommentEventPropComment"""
+model_rebuild(ReleaseEventPropReleaseAllof1)
 
-    html_url: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    body: Missing[str] = Field(default=UNSET)
-    path: Missing[Union[str, None]] = Field(default=UNSET)
-    position: Missing[Union[int, None]] = Field(default=UNSET)
-    line: Missing[Union[int, None]] = Field(default=UNSET)
-    commit_id: Missing[str] = Field(default=UNSET)
-    user: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
-    created_at: Missing[_dt.datetime] = Field(default=UNSET)
-    updated_at: Missing[_dt.datetime] = Field(default=UNSET)
-    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
-
-
-model_rebuild(CommitCommentEventPropComment)
-
-__all__ = ("CommitCommentEventPropComment",)
+__all__ = ("ReleaseEventPropReleaseAllof1",)

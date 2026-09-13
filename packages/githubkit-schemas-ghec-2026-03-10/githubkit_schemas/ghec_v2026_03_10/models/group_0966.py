@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0621 import EnterpriseWebhooks
-from .group_0622 import SimpleInstallation
-from .group_0623 import OrganizationSimpleWebhooks
-from .group_0624 import RepositoryWebhooks
-from .group_0658 import PullRequestWebhook
+from .group_0624 import EnterpriseWebhooks
+from .group_0625 import SimpleInstallation
+from .group_0626 import OrganizationSimpleWebhooks
+from .group_0627 import RepositoryWebhooks
+from .group_0967 import WebhookPullRequestDequeuedPropPullRequest
 
 
-class WebhookPullRequestReadyForReview(GitHubModel):
-    """pull_request ready_for_review event"""
+class WebhookPullRequestDequeued(GitHubModel):
+    """pull_request dequeued event"""
 
-    action: Literal["ready_for_review"] = Field()
+    action: Literal["dequeued"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -45,7 +45,23 @@ class WebhookPullRequestReadyForReview(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    pull_request: PullRequestWebhook = Field()
+    pull_request: WebhookPullRequestDequeuedPropPullRequest = Field(
+        title="Pull Request"
+    )
+    reason: Literal[
+        "UNKNOWN_REMOVAL_REASON",
+        "MANUAL",
+        "MERGE",
+        "MERGE_CONFLICT",
+        "CI_FAILURE",
+        "CI_TIMEOUT",
+        "ALREADY_MERGED",
+        "QUEUE_CLEARED",
+        "ROLL_BACK",
+        "BRANCH_PROTECTIONS",
+        "GIT_TREE_INVALID",
+        "INVALID_MERGE_COMMIT",
+    ] = Field()
     repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
@@ -53,6 +69,6 @@ class WebhookPullRequestReadyForReview(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookPullRequestReadyForReview)
+model_rebuild(WebhookPullRequestDequeued)
 
-__all__ = ("WebhookPullRequestReadyForReview",)
+__all__ = ("WebhookPullRequestDequeued",)

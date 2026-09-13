@@ -9,43 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import TypedDict
 
 
-class LabelType(TypedDict):
-    """Label
+class ReactionRollupType(TypedDict):
+    """Reaction Rollup"""
 
-    Color-coded labels help you categorize and filter your issues (just like labels
-    in Gmail).
-    """
-
-    id: int
-    node_id: str
     url: str
-    name: str
-    description: Union[str, None]
-    color: str
-    default: bool
+    total_count: int
+    plus_one: int
+    minus_one: int
+    laugh: int
+    confused: int
+    heart: int
+    hooray: int
+    eyes: int
+    rocket: int
 
 
-class LabelTypeForResponse(TypedDict):
-    """Label
+class ReactionRollupTypeForResponse(TypedDict):
+    """Reaction Rollup"""
 
-    Color-coded labels help you categorize and filter your issues (just like labels
-    in Gmail).
-    """
-
-    id: int
-    node_id: str
     url: str
-    name: str
-    description: Union[str, None]
-    color: str
-    default: bool
+    total_count: int
+    plus_one: int
+    minus_one: int
+    laugh: int
+    confused: int
+    heart: int
+    hooray: int
+    eyes: int
+    rocket: int
 
 
 __all__ = (
-    "LabelType",
-    "LabelTypeForResponse",
+    "ReactionRollupType",
+    "ReactionRollupTypeForResponse",
 )

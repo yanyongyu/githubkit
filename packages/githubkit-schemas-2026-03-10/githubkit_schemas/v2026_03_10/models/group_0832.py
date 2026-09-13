@@ -18,15 +18,15 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0538 import EnterpriseWebhooks
-from .group_0539 import SimpleInstallation
-from .group_0540 import OrganizationSimpleWebhooks
-from .group_0541 import RepositoryWebhooks
-from .group_0569 import WebhooksProject
+from .group_0541 import EnterpriseWebhooks
+from .group_0542 import SimpleInstallation
+from .group_0543 import OrganizationSimpleWebhooks
+from .group_0544 import RepositoryWebhooks
+from .group_0577 import WebhooksProjectCard
 
 
-class WebhookProjectCreated(GitHubModel):
-    """project created event"""
+class WebhookProjectCardCreated(GitHubModel):
+    """project_card created event"""
 
     action: Literal["created"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
@@ -44,7 +44,7 @@ class WebhookProjectCreated(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    project: WebhooksProject = Field(title="Project")
+    project_card: WebhooksProjectCard = Field(title="Project Card")
     repository: Missing[RepositoryWebhooks] = Field(
         default=UNSET,
         title="Repository",
@@ -53,6 +53,6 @@ class WebhookProjectCreated(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookProjectCreated)
+model_rebuild(WebhookProjectCardCreated)
 
-__all__ = ("WebhookProjectCreated",)
+__all__ = ("WebhookProjectCardCreated",)

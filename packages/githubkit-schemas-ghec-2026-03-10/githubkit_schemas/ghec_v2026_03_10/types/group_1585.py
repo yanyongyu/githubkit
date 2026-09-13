@@ -9,31 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
-
-from .group_1586 import (
-    ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsType,
-    ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsTypeForResponse,
-)
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1Type(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1"""
+class ReposOwnerRepoImportLfsPatchBodyType(TypedDict):
+    """ReposOwnerRepoImportLfsPatchBody"""
 
-    suggestions: NotRequired[
-        ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsType
-    ]
+    use_lfs: Literal["opt_in", "opt_out"]
 
 
-class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1TypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1"""
+class ReposOwnerRepoImportLfsPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoImportLfsPatchBody"""
 
-    suggestions: NotRequired[
-        ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsTypeForResponse
-    ]
+    use_lfs: Literal["opt_in", "opt_out"]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1Type",
-    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1TypeForResponse",
+    "ReposOwnerRepoImportLfsPatchBodyType",
+    "ReposOwnerRepoImportLfsPatchBodyTypeForResponse",
 )

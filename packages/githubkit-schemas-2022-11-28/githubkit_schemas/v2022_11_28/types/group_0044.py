@@ -13,93 +13,58 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0036 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
-from .group_0041 import (
-    DependabotAlertSecurityVulnerabilityType,
-    DependabotAlertSecurityVulnerabilityTypeForResponse,
-)
-from .group_0042 import (
-    DependabotAlertSecurityAdvisoryType,
-    DependabotAlertSecurityAdvisoryTypeForResponse,
-)
-from .group_0043 import (
-    DependabotAlertDismissalRequestSimpleType,
-    DependabotAlertDismissalRequestSimpleTypeForResponse,
-)
-from .group_0045 import (
-    DependabotAlertWithRepositoryPropDependencyType,
-    DependabotAlertWithRepositoryPropDependencyTypeForResponse,
-)
 
+class EnterpriseTeamWithMemberCountType(TypedDict):
+    """Enterprise Team
 
-class DependabotAlertWithRepositoryType(TypedDict):
-    """DependabotAlertWithRepository
-
-    A Dependabot alert.
+    Group of enterprise owners and/or members
     """
 
-    number: int
-    state: Literal["auto_dismissed", "dismissed", "fixed", "open"]
-    dependency: DependabotAlertWithRepositoryPropDependencyType
-    security_advisory: DependabotAlertSecurityAdvisoryType
-    security_vulnerability: DependabotAlertSecurityVulnerabilityType
+    id: int
+    name: str
+    description: NotRequired[str]
+    slug: str
     url: str
+    sync_to_organizations: NotRequired[str]
+    organization_selection_type: NotRequired[str]
+    group_id: Union[str, None]
+    group_name: NotRequired[Union[str, None]]
     html_url: str
+    members_url: str
+    members_count: int
     created_at: _dt.datetime
     updated_at: _dt.datetime
-    dismissed_at: Union[_dt.datetime, None]
-    dismissed_by: Union[SimpleUserType, None]
-    dismissed_reason: Union[
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ],
-        None,
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
     ]
-    dismissed_comment: Union[str, None]
-    fixed_at: Union[_dt.datetime, None]
-    auto_dismissed_at: NotRequired[Union[_dt.datetime, None]]
-    dismissal_request: NotRequired[
-        Union[DependabotAlertDismissalRequestSimpleType, None]
-    ]
-    assignees: NotRequired[list[SimpleUserType]]
-    repository: SimpleRepositoryType
 
 
-class DependabotAlertWithRepositoryTypeForResponse(TypedDict):
-    """DependabotAlertWithRepository
+class EnterpriseTeamWithMemberCountTypeForResponse(TypedDict):
+    """Enterprise Team
 
-    A Dependabot alert.
+    Group of enterprise owners and/or members
     """
 
-    number: int
-    state: Literal["auto_dismissed", "dismissed", "fixed", "open"]
-    dependency: DependabotAlertWithRepositoryPropDependencyTypeForResponse
-    security_advisory: DependabotAlertSecurityAdvisoryTypeForResponse
-    security_vulnerability: DependabotAlertSecurityVulnerabilityTypeForResponse
+    id: int
+    name: str
+    description: NotRequired[str]
+    slug: str
     url: str
+    sync_to_organizations: NotRequired[str]
+    organization_selection_type: NotRequired[str]
+    group_id: Union[str, None]
+    group_name: NotRequired[Union[str, None]]
     html_url: str
+    members_url: str
+    members_count: int
     created_at: str
     updated_at: str
-    dismissed_at: Union[str, None]
-    dismissed_by: Union[SimpleUserTypeForResponse, None]
-    dismissed_reason: Union[
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ],
-        None,
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
     ]
-    dismissed_comment: Union[str, None]
-    fixed_at: Union[str, None]
-    auto_dismissed_at: NotRequired[Union[str, None]]
-    dismissal_request: NotRequired[
-        Union[DependabotAlertDismissalRequestSimpleTypeForResponse, None]
-    ]
-    assignees: NotRequired[list[SimpleUserTypeForResponse]]
-    repository: SimpleRepositoryTypeForResponse
 
 
 __all__ = (
-    "DependabotAlertWithRepositoryType",
-    "DependabotAlertWithRepositoryTypeForResponse",
+    "EnterpriseTeamWithMemberCountType",
+    "EnterpriseTeamWithMemberCountTypeForResponse",
 )

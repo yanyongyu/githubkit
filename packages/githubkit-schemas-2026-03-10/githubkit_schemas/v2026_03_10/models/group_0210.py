@@ -14,22 +14,17 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0211 import RepositoryRuleUpdatePropParameters
 
 
-class RepositoryRuleUpdate(GitHubModel):
-    """update
+class RepositoryRuleRequiredLinearHistory(GitHubModel):
+    """required_linear_history
 
-    Only allow users with bypass permission to update matching refs.
+    Prevent merge commits from being pushed to matching refs.
     """
 
-    type: Literal["update"] = Field()
-    parameters: Missing[RepositoryRuleUpdatePropParameters] = Field(default=UNSET)
+    type: Literal["required_linear_history"] = Field()
 
 
-model_rebuild(RepositoryRuleUpdate)
+model_rebuild(RepositoryRuleRequiredLinearHistory)
 
-__all__ = ("RepositoryRuleUpdate",)
+__all__ = ("RepositoryRuleRequiredLinearHistory",)

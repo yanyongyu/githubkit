@@ -13,32 +13,36 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0214 import (
-    RepositoryRuleMergeQueuePropParametersType,
-    RepositoryRuleMergeQueuePropParametersTypeForResponse,
+    RepositoryRuleRequiredDeploymentsPropParametersType,
+    RepositoryRuleRequiredDeploymentsPropParametersTypeForResponse,
 )
 
 
-class RepositoryRuleMergeQueueType(TypedDict):
-    """merge_queue
+class RepositoryRuleRequiredDeploymentsType(TypedDict):
+    """required_deployments
 
-    Merges must be performed via a merge queue.
+    Choose which environments must be successfully deployed to before refs can be
+    pushed into a ref that matches this rule.
     """
 
-    type: Literal["merge_queue"]
-    parameters: NotRequired[RepositoryRuleMergeQueuePropParametersType]
+    type: Literal["required_deployments"]
+    parameters: NotRequired[RepositoryRuleRequiredDeploymentsPropParametersType]
 
 
-class RepositoryRuleMergeQueueTypeForResponse(TypedDict):
-    """merge_queue
+class RepositoryRuleRequiredDeploymentsTypeForResponse(TypedDict):
+    """required_deployments
 
-    Merges must be performed via a merge queue.
+    Choose which environments must be successfully deployed to before refs can be
+    pushed into a ref that matches this rule.
     """
 
-    type: Literal["merge_queue"]
-    parameters: NotRequired[RepositoryRuleMergeQueuePropParametersTypeForResponse]
+    type: Literal["required_deployments"]
+    parameters: NotRequired[
+        RepositoryRuleRequiredDeploymentsPropParametersTypeForResponse
+    ]
 
 
 __all__ = (
-    "RepositoryRuleMergeQueueType",
-    "RepositoryRuleMergeQueueTypeForResponse",
+    "RepositoryRuleRequiredDeploymentsType",
+    "RepositoryRuleRequiredDeploymentsTypeForResponse",
 )

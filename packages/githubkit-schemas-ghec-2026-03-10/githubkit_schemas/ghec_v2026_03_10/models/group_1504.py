@@ -12,24 +12,20 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200(
-    GitHubModel
-):
-    """ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200"""
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBody(GitHubModel):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBody
 
-    bypass_review_id: Missing[int] = Field(
-        default=UNSET, description="ID of the bypass review."
+    Examples:
+        {'apps': ['my-app']}
+    """
+
+    apps: list[str] = Field(
+        description="The GitHub Apps that have push access to this branch. Use the slugified version of the app name. **Note**: The list of users, apps, and teams in total is limited to 100 items."
     )
 
 
-model_rebuild(
-    ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200
-)
+model_rebuild(ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBody)
 
-__all__ = (
-    "ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200",
-)
+__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBody",)

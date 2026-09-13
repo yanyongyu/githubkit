@@ -12,29 +12,21 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyType(TypedDict):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBody
+class ReposOwnerRepoAgentsVariablesPostBodyType(TypedDict):
+    """ReposOwnerRepoAgentsVariablesPostBody"""
 
-    Examples:
-        {'apps': ['my-app']}
-    """
-
-    apps: list[str]
+    name: str
+    value: str
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBody
+class ReposOwnerRepoAgentsVariablesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoAgentsVariablesPostBody"""
 
-    Examples:
-        {'apps': ['my-app']}
-    """
-
-    apps: list[str]
+    name: str
+    value: str
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyType",
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyTypeForResponse",
+    "ReposOwnerRepoAgentsVariablesPostBodyType",
+    "ReposOwnerRepoAgentsVariablesPostBodyTypeForResponse",
 )

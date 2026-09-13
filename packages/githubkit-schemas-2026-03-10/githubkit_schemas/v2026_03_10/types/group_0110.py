@@ -9,34 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsHostedRunnerMachineSpecType(TypedDict):
-    """Github-owned VM details.
+class OidcCustomSubType(TypedDict):
+    """Actions OIDC Subject customization
 
-    Provides details of a particular machine spec.
+    Actions OIDC Subject customization
     """
 
-    id: str
-    cpu_cores: int
-    memory_gb: int
-    storage_gb: int
+    include_claim_keys: list[str]
+    use_immutable_subject: NotRequired[bool]
 
 
-class ActionsHostedRunnerMachineSpecTypeForResponse(TypedDict):
-    """Github-owned VM details.
+class OidcCustomSubTypeForResponse(TypedDict):
+    """Actions OIDC Subject customization
 
-    Provides details of a particular machine spec.
+    Actions OIDC Subject customization
     """
 
-    id: str
-    cpu_cores: int
-    memory_gb: int
-    storage_gb: int
+    include_claim_keys: list[str]
+    use_immutable_subject: NotRequired[bool]
 
 
 __all__ = (
-    "ActionsHostedRunnerMachineSpecType",
-    "ActionsHostedRunnerMachineSpecTypeForResponse",
+    "OidcCustomSubType",
+    "OidcCustomSubTypeForResponse",
 )

@@ -9,21 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBody(GitHubModel):
-    """OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBody"""
+class OrgsOrgCopilotBillingSelectedUsersDeleteResponse200(GitHubModel):
+    """OrgsOrgCopilotBillingSelectedUsersDeleteResponse200
 
-    credential_type: Literal[
-        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
-    ] = Field(description="The type of credential to revoke for the user.")
+    The total number of seats set to "pending cancellation" for the specified users.
+    """
+
+    seats_cancelled: int = Field()
 
 
-model_rebuild(OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBody)
+model_rebuild(OrgsOrgCopilotBillingSelectedUsersDeleteResponse200)
 
-__all__ = ("OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBody",)
+__all__ = ("OrgsOrgCopilotBillingSelectedUsersDeleteResponse200",)

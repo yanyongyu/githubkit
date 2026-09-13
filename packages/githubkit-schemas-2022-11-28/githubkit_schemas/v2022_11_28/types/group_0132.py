@@ -9,81 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, Literal, TypeAlias, Union
-from typing_extensions import NotRequired, TypedDict
-
-from githubkit.typing import UniqueList
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class ArtifactDeploymentRecordType(TypedDict):
-    """Artifact Deployment Record
+class CodeScanningAiScanOrgSettingsType(TypedDict):
+    """Code scanning AI Scan organization settings
 
-    Artifact Metadata Deployment Record
+    The AI Scan organization setting
     """
 
-    id: NotRequired[int]
-    digest: NotRequired[str]
-    logical_environment: NotRequired[str]
-    physical_environment: NotRequired[str]
-    cluster: NotRequired[str]
-    deployment_name: NotRequired[str]
-    tags: NotRequired[ArtifactDeploymentRecordPropTagsType]
-    runtime_risks: NotRequired[
-        UniqueList[
-            Literal[
-                "critical-resource",
-                "internet-exposed",
-                "lateral-movement",
-                "sensitive-data",
-            ]
-        ]
-    ]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-    attestation_id: NotRequired[Union[int, None]]
+    pr_scan: Literal["enabled", "disabled"]
 
 
-class ArtifactDeploymentRecordTypeForResponse(TypedDict):
-    """Artifact Deployment Record
+class CodeScanningAiScanOrgSettingsTypeForResponse(TypedDict):
+    """Code scanning AI Scan organization settings
 
-    Artifact Metadata Deployment Record
+    The AI Scan organization setting
     """
 
-    id: NotRequired[int]
-    digest: NotRequired[str]
-    logical_environment: NotRequired[str]
-    physical_environment: NotRequired[str]
-    cluster: NotRequired[str]
-    deployment_name: NotRequired[str]
-    tags: NotRequired[ArtifactDeploymentRecordPropTagsTypeForResponse]
-    runtime_risks: NotRequired[
-        UniqueList[
-            Literal[
-                "critical-resource",
-                "internet-exposed",
-                "lateral-movement",
-                "sensitive-data",
-            ]
-        ]
-    ]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-    attestation_id: NotRequired[Union[int, None]]
-
-
-ArtifactDeploymentRecordPropTagsType: TypeAlias = dict[str, Any]
-"""ArtifactDeploymentRecordPropTags
-"""
-
-
-ArtifactDeploymentRecordPropTagsTypeForResponse: TypeAlias = dict[str, Any]
-"""ArtifactDeploymentRecordPropTags
-"""
+    pr_scan: Literal["enabled", "disabled"]
 
 
 __all__ = (
-    "ArtifactDeploymentRecordPropTagsType",
-    "ArtifactDeploymentRecordPropTagsTypeForResponse",
-    "ArtifactDeploymentRecordType",
-    "ArtifactDeploymentRecordTypeForResponse",
+    "CodeScanningAiScanOrgSettingsType",
+    "CodeScanningAiScanOrgSettingsTypeForResponse",
 )

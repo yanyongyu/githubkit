@@ -9,66 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0538 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0539 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0540 import (
+from .group_0046 import DiscussionType, DiscussionTypeForResponse
+from .group_0541 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0542 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0543 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0541 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0544 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0555 import WebhooksLabelType, WebhooksLabelTypeForResponse
 
 
-class WebhookGollumType(TypedDict):
-    """gollum event"""
+class WebhookDiscussionUnlabeledType(TypedDict):
+    """discussion unlabeled event"""
 
+    action: Literal["unlabeled"]
+    discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
+    label: WebhooksLabelType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    pages: list[WebhookGollumPropPagesItemsType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookGollumTypeForResponse(TypedDict):
-    """gollum event"""
+class WebhookDiscussionUnlabeledTypeForResponse(TypedDict):
+    """discussion unlabeled event"""
 
+    action: Literal["unlabeled"]
+    discussion: DiscussionTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
+    label: WebhooksLabelTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    pages: list[WebhookGollumPropPagesItemsTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
-class WebhookGollumPropPagesItemsType(TypedDict):
-    """WebhookGollumPropPagesItems"""
-
-    action: Literal["created", "edited"]
-    html_url: str
-    page_name: str
-    sha: str
-    summary: Union[str, None]
-    title: str
-
-
-class WebhookGollumPropPagesItemsTypeForResponse(TypedDict):
-    """WebhookGollumPropPagesItems"""
-
-    action: Literal["created", "edited"]
-    html_url: str
-    page_name: str
-    sha: str
-    summary: Union[str, None]
-    title: str
-
-
 __all__ = (
-    "WebhookGollumPropPagesItemsType",
-    "WebhookGollumPropPagesItemsTypeForResponse",
-    "WebhookGollumType",
-    "WebhookGollumTypeForResponse",
+    "WebhookDiscussionUnlabeledType",
+    "WebhookDiscussionUnlabeledTypeForResponse",
 )

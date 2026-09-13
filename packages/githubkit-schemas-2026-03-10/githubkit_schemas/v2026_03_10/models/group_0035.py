@@ -9,31 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0033 import CodeSecurityConfiguration
 
 
-class CodeSecurityDefaultConfigurationsItems(GitHubModel):
-    """CodeSecurityDefaultConfigurationsItems"""
+class CopilotUsageMetrics28DayReport(GitHubModel):
+    """Copilot Metrics 28 Day Report
 
-    default_for_new_repos: Missing[Literal["public", "private_and_internal", "all"]] = (
-        Field(
-            default=UNSET,
-            description="The visibility of newly created repositories for which the code security configuration will be applied to by default",
-        )
+    Links to download the latest Copilot usage metrics report for an
+    enterprise/organization.
+    """
+
+    download_links: list[str] = Field(
+        description="The URLs to download the latest Copilot usage metrics report for the enterprise/organization."
     )
-    configuration: Missing[CodeSecurityConfiguration] = Field(
-        default=UNSET, description="A code security configuration"
+    report_start_day: _dt.date = Field(
+        description="The start date of the report period in `YYYY-MM-DD` format."
+    )
+    report_end_day: _dt.date = Field(
+        description="The end date of the report period in `YYYY-MM-DD` format."
     )
 
 
-model_rebuild(CodeSecurityDefaultConfigurationsItems)
+model_rebuild(CopilotUsageMetrics28DayReport)
 
-__all__ = ("CodeSecurityDefaultConfigurationsItems",)
+__all__ = ("CopilotUsageMetrics28DayReport",)

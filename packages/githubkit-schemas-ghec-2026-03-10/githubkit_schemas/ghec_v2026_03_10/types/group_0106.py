@@ -9,42 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class NetworkConfigurationType(TypedDict):
-    """Hosted compute network configuration
+class OrganizationCustomPropertyAllof1Type(TypedDict):
+    """OrganizationCustomPropertyAllof1"""
 
-    A hosted compute network configuration.
-    """
-
-    id: str
-    name: str
-    compute_service: NotRequired[Literal["none", "actions", "codespaces"]]
-    network_settings_ids: NotRequired[list[str]]
-    failover_network_settings_ids: NotRequired[list[str]]
-    failover_network_enabled: NotRequired[bool]
-    created_on: Union[_dt.datetime, None]
+    values_editable_by: NotRequired[
+        Union[Literal["enterprise_actors", "enterprise_and_org_actors"], None]
+    ]
 
 
-class NetworkConfigurationTypeForResponse(TypedDict):
-    """Hosted compute network configuration
+class OrganizationCustomPropertyAllof1TypeForResponse(TypedDict):
+    """OrganizationCustomPropertyAllof1"""
 
-    A hosted compute network configuration.
-    """
-
-    id: str
-    name: str
-    compute_service: NotRequired[Literal["none", "actions", "codespaces"]]
-    network_settings_ids: NotRequired[list[str]]
-    failover_network_settings_ids: NotRequired[list[str]]
-    failover_network_enabled: NotRequired[bool]
-    created_on: Union[str, None]
+    values_editable_by: NotRequired[
+        Union[Literal["enterprise_actors", "enterprise_and_org_actors"], None]
+    ]
 
 
 __all__ = (
-    "NetworkConfigurationType",
-    "NetworkConfigurationTypeForResponse",
+    "OrganizationCustomPropertyAllof1Type",
+    "OrganizationCustomPropertyAllof1TypeForResponse",
 )

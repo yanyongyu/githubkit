@@ -9,51 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0215 import ReactionRollupType, ReactionRollupTypeForResponse
+
+class ReleaseEventPropReleaseAllof1Type(TypedDict):
+    """ReleaseEventPropReleaseAllof1"""
+
+    is_short_description_html_truncated: NotRequired[bool]
+    short_description_html: NotRequired[str]
 
 
-class CommitCommentEventPropCommentType(TypedDict):
-    """CommitCommentEventPropComment"""
+class ReleaseEventPropReleaseAllof1TypeForResponse(TypedDict):
+    """ReleaseEventPropReleaseAllof1"""
 
-    html_url: NotRequired[str]
-    url: NotRequired[str]
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    body: NotRequired[str]
-    path: NotRequired[Union[str, None]]
-    position: NotRequired[Union[int, None]]
-    line: NotRequired[Union[int, None]]
-    commit_id: NotRequired[str]
-    user: NotRequired[Union[SimpleUserType, None]]
-    created_at: NotRequired[_dt.datetime]
-    updated_at: NotRequired[_dt.datetime]
-    reactions: NotRequired[ReactionRollupType]
-
-
-class CommitCommentEventPropCommentTypeForResponse(TypedDict):
-    """CommitCommentEventPropComment"""
-
-    html_url: NotRequired[str]
-    url: NotRequired[str]
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    body: NotRequired[str]
-    path: NotRequired[Union[str, None]]
-    position: NotRequired[Union[int, None]]
-    line: NotRequired[Union[int, None]]
-    commit_id: NotRequired[str]
-    user: NotRequired[Union[SimpleUserTypeForResponse, None]]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-    reactions: NotRequired[ReactionRollupTypeForResponse]
+    is_short_description_html_truncated: NotRequired[bool]
+    short_description_html: NotRequired[str]
 
 
 __all__ = (
-    "CommitCommentEventPropCommentType",
-    "CommitCommentEventPropCommentTypeForResponse",
+    "ReleaseEventPropReleaseAllof1Type",
+    "ReleaseEventPropReleaseAllof1TypeForResponse",
 )

@@ -12,26 +12,37 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class RepositoryRuleTagNamePatternPropParametersType(TypedDict):
-    """RepositoryRuleTagNamePatternPropParameters"""
-
-    name: NotRequired[str]
-    negate: NotRequired[bool]
-    operator: Literal["starts_with", "ends_with", "contains", "regex"]
-    pattern: str
+from .group_0155 import (
+    RepositoryRuleMaxFilePathLengthPropParametersType,
+    RepositoryRuleMaxFilePathLengthPropParametersTypeForResponse,
+)
 
 
-class RepositoryRuleTagNamePatternPropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleTagNamePatternPropParameters"""
+class RepositoryRuleMaxFilePathLengthType(TypedDict):
+    """max_file_path_length
 
-    name: NotRequired[str]
-    negate: NotRequired[bool]
-    operator: Literal["starts_with", "ends_with", "contains", "regex"]
-    pattern: str
+    Prevent commits that include file paths that exceed the specified character
+    limit from being pushed to the commit graph.
+    """
+
+    type: Literal["max_file_path_length"]
+    parameters: NotRequired[RepositoryRuleMaxFilePathLengthPropParametersType]
+
+
+class RepositoryRuleMaxFilePathLengthTypeForResponse(TypedDict):
+    """max_file_path_length
+
+    Prevent commits that include file paths that exceed the specified character
+    limit from being pushed to the commit graph.
+    """
+
+    type: Literal["max_file_path_length"]
+    parameters: NotRequired[
+        RepositoryRuleMaxFilePathLengthPropParametersTypeForResponse
+    ]
 
 
 __all__ = (
-    "RepositoryRuleTagNamePatternPropParametersType",
-    "RepositoryRuleTagNamePatternPropParametersTypeForResponse",
+    "RepositoryRuleMaxFilePathLengthType",
+    "RepositoryRuleMaxFilePathLengthTypeForResponse",
 )

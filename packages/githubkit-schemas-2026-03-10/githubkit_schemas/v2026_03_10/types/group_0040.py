@@ -9,30 +9,97 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0032 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
+from .group_0037 import (
+    DependabotAlertSecurityVulnerabilityType,
+    DependabotAlertSecurityVulnerabilityTypeForResponse,
+)
+from .group_0038 import (
+    DependabotAlertSecurityAdvisoryType,
+    DependabotAlertSecurityAdvisoryTypeForResponse,
+)
+from .group_0039 import (
+    DependabotAlertDismissalRequestSimpleType,
+    DependabotAlertDismissalRequestSimpleTypeForResponse,
+)
+from .group_0041 import (
+    DependabotAlertWithRepositoryPropDependencyType,
+    DependabotAlertWithRepositoryPropDependencyTypeForResponse,
+)
 
 
-class DependabotAlertPackageType(TypedDict):
-    """DependabotAlertPackage
+class DependabotAlertWithRepositoryType(TypedDict):
+    """DependabotAlertWithRepository
 
-    Details for the vulnerable package.
+    A Dependabot alert.
     """
 
-    ecosystem: str
-    name: str
+    number: int
+    state: Literal["auto_dismissed", "dismissed", "fixed", "open"]
+    dependency: DependabotAlertWithRepositoryPropDependencyType
+    security_advisory: DependabotAlertSecurityAdvisoryType
+    security_vulnerability: DependabotAlertSecurityVulnerabilityType
+    url: str
+    html_url: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    dismissed_at: Union[_dt.datetime, None]
+    dismissed_by: Union[SimpleUserType, None]
+    dismissed_reason: Union[
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ],
+        None,
+    ]
+    dismissed_comment: Union[str, None]
+    fixed_at: Union[_dt.datetime, None]
+    auto_dismissed_at: NotRequired[Union[_dt.datetime, None]]
+    dismissal_request: NotRequired[
+        Union[DependabotAlertDismissalRequestSimpleType, None]
+    ]
+    assignees: NotRequired[list[SimpleUserType]]
+    repository: SimpleRepositoryType
 
 
-class DependabotAlertPackageTypeForResponse(TypedDict):
-    """DependabotAlertPackage
+class DependabotAlertWithRepositoryTypeForResponse(TypedDict):
+    """DependabotAlertWithRepository
 
-    Details for the vulnerable package.
+    A Dependabot alert.
     """
 
-    ecosystem: str
-    name: str
+    number: int
+    state: Literal["auto_dismissed", "dismissed", "fixed", "open"]
+    dependency: DependabotAlertWithRepositoryPropDependencyTypeForResponse
+    security_advisory: DependabotAlertSecurityAdvisoryTypeForResponse
+    security_vulnerability: DependabotAlertSecurityVulnerabilityTypeForResponse
+    url: str
+    html_url: str
+    created_at: str
+    updated_at: str
+    dismissed_at: Union[str, None]
+    dismissed_by: Union[SimpleUserTypeForResponse, None]
+    dismissed_reason: Union[
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ],
+        None,
+    ]
+    dismissed_comment: Union[str, None]
+    fixed_at: Union[str, None]
+    auto_dismissed_at: NotRequired[Union[str, None]]
+    dismissal_request: NotRequired[
+        Union[DependabotAlertDismissalRequestSimpleTypeForResponse, None]
+    ]
+    assignees: NotRequired[list[SimpleUserTypeForResponse]]
+    repository: SimpleRepositoryTypeForResponse
 
 
 __all__ = (
-    "DependabotAlertPackageType",
-    "DependabotAlertPackageTypeForResponse",
+    "DependabotAlertWithRepositoryType",
+    "DependabotAlertWithRepositoryTypeForResponse",
 )

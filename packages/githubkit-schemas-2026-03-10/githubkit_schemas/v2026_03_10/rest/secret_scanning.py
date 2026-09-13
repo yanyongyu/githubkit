@@ -1780,7 +1780,9 @@ class SecretScanningClient:
 
         Lists secret scanning custom patterns for a repository.
 
-        OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+
+        Fine-grained access tokens require the `administration:write` repository permission.
 
         See also: https://docs.github.com/rest/secret-scanning/custom-patterns#list-repository-custom-patterns
         """
@@ -1836,7 +1838,9 @@ class SecretScanningClient:
 
         Lists secret scanning custom patterns for a repository.
 
-        OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+
+        Fine-grained access tokens require the `administration:write` repository permission.
 
         See also: https://docs.github.com/rest/secret-scanning/custom-patterns#list-repository-custom-patterns
         """
@@ -1917,7 +1921,9 @@ class SecretScanningClient:
 
         Bulk creates secret scanning custom patterns for a repository.
 
-        OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+
+        Fine-grained access tokens require the `administration:write` repository permission.
 
         See also: https://docs.github.com/rest/secret-scanning/custom-patterns#bulk-create-repository-custom-patterns
         """
@@ -2007,7 +2013,9 @@ class SecretScanningClient:
 
         Bulk creates secret scanning custom patterns for a repository.
 
-        OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+
+        Fine-grained access tokens require the `administration:write` repository permission.
 
         See also: https://docs.github.com/rest/secret-scanning/custom-patterns#bulk-create-repository-custom-patterns
         """
@@ -2089,7 +2097,9 @@ class SecretScanningClient:
 
         Bulk deletes secret scanning custom patterns for a repository.
 
-        OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+
+        Fine-grained access tokens require the `administration:write` repository permission.
 
         See also: https://docs.github.com/rest/secret-scanning/custom-patterns#bulk-delete-repository-custom-patterns
         """
@@ -2168,7 +2178,9 @@ class SecretScanningClient:
 
         Bulk deletes secret scanning custom patterns for a repository.
 
-        OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+
+        Fine-grained access tokens require the `administration:write` repository permission.
 
         See also: https://docs.github.com/rest/secret-scanning/custom-patterns#bulk-delete-repository-custom-patterns
         """
@@ -2225,7 +2237,9 @@ class SecretScanningClient:
 
         Updates a secret scanning custom pattern for a repository.
 
-        OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+
+        Fine-grained access tokens require the `administration:write` repository permission.
 
         See also: https://docs.github.com/rest/secret-scanning/custom-patterns#update-a-repository-custom-pattern
         """
@@ -2281,7 +2295,9 @@ class SecretScanningClient:
 
         Updates a secret scanning custom pattern for a repository.
 
-        OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+
+        Fine-grained access tokens require the `administration:write` repository permission.
 
         See also: https://docs.github.com/rest/secret-scanning/custom-patterns#update-a-repository-custom-pattern
         """

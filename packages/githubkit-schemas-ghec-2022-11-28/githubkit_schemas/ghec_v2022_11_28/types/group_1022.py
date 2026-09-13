@@ -9,124 +9,125 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0622 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0623 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0624 import (
+from .group_0625 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0626 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0627 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0625 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0628 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0673 import WebhooksReleaseType, WebhooksReleaseTypeForResponse
 
 
-class WebhookRepositoryEditedType(TypedDict):
-    """repository edited event"""
+class WebhookReleaseEditedType(TypedDict):
+    """release edited event"""
 
     action: Literal["edited"]
-    changes: WebhookRepositoryEditedPropChangesType
+    changes: WebhookReleaseEditedPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
+    release: WebhooksReleaseType
     repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookRepositoryEditedTypeForResponse(TypedDict):
-    """repository edited event"""
+class WebhookReleaseEditedTypeForResponse(TypedDict):
+    """release edited event"""
 
     action: Literal["edited"]
-    changes: WebhookRepositoryEditedPropChangesTypeForResponse
+    changes: WebhookReleaseEditedPropChangesTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    release: WebhooksReleaseTypeForResponse
     repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
-class WebhookRepositoryEditedPropChangesType(TypedDict):
-    """WebhookRepositoryEditedPropChanges"""
+class WebhookReleaseEditedPropChangesType(TypedDict):
+    """WebhookReleaseEditedPropChanges"""
 
-    default_branch: NotRequired[WebhookRepositoryEditedPropChangesPropDefaultBranchType]
-    description: NotRequired[WebhookRepositoryEditedPropChangesPropDescriptionType]
-    homepage: NotRequired[WebhookRepositoryEditedPropChangesPropHomepageType]
-    topics: NotRequired[WebhookRepositoryEditedPropChangesPropTopicsType]
+    body: NotRequired[WebhookReleaseEditedPropChangesPropBodyType]
+    name: NotRequired[WebhookReleaseEditedPropChangesPropNameType]
+    tag_name: NotRequired[WebhookReleaseEditedPropChangesPropTagNameType]
+    make_latest: NotRequired[WebhookReleaseEditedPropChangesPropMakeLatestType]
 
 
-class WebhookRepositoryEditedPropChangesTypeForResponse(TypedDict):
-    """WebhookRepositoryEditedPropChanges"""
+class WebhookReleaseEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookReleaseEditedPropChanges"""
 
-    default_branch: NotRequired[
-        WebhookRepositoryEditedPropChangesPropDefaultBranchTypeForResponse
+    body: NotRequired[WebhookReleaseEditedPropChangesPropBodyTypeForResponse]
+    name: NotRequired[WebhookReleaseEditedPropChangesPropNameTypeForResponse]
+    tag_name: NotRequired[WebhookReleaseEditedPropChangesPropTagNameTypeForResponse]
+    make_latest: NotRequired[
+        WebhookReleaseEditedPropChangesPropMakeLatestTypeForResponse
     ]
-    description: NotRequired[
-        WebhookRepositoryEditedPropChangesPropDescriptionTypeForResponse
-    ]
-    homepage: NotRequired[WebhookRepositoryEditedPropChangesPropHomepageTypeForResponse]
-    topics: NotRequired[WebhookRepositoryEditedPropChangesPropTopicsTypeForResponse]
 
 
-class WebhookRepositoryEditedPropChangesPropDefaultBranchType(TypedDict):
-    """WebhookRepositoryEditedPropChangesPropDefaultBranch"""
+class WebhookReleaseEditedPropChangesPropBodyType(TypedDict):
+    """WebhookReleaseEditedPropChangesPropBody"""
 
     from_: str
 
 
-class WebhookRepositoryEditedPropChangesPropDefaultBranchTypeForResponse(TypedDict):
-    """WebhookRepositoryEditedPropChangesPropDefaultBranch"""
+class WebhookReleaseEditedPropChangesPropBodyTypeForResponse(TypedDict):
+    """WebhookReleaseEditedPropChangesPropBody"""
 
     from_: str
 
 
-class WebhookRepositoryEditedPropChangesPropDescriptionType(TypedDict):
-    """WebhookRepositoryEditedPropChangesPropDescription"""
+class WebhookReleaseEditedPropChangesPropNameType(TypedDict):
+    """WebhookReleaseEditedPropChangesPropName"""
 
-    from_: Union[str, None]
-
-
-class WebhookRepositoryEditedPropChangesPropDescriptionTypeForResponse(TypedDict):
-    """WebhookRepositoryEditedPropChangesPropDescription"""
-
-    from_: Union[str, None]
+    from_: str
 
 
-class WebhookRepositoryEditedPropChangesPropHomepageType(TypedDict):
-    """WebhookRepositoryEditedPropChangesPropHomepage"""
+class WebhookReleaseEditedPropChangesPropNameTypeForResponse(TypedDict):
+    """WebhookReleaseEditedPropChangesPropName"""
 
-    from_: Union[str, None]
-
-
-class WebhookRepositoryEditedPropChangesPropHomepageTypeForResponse(TypedDict):
-    """WebhookRepositoryEditedPropChangesPropHomepage"""
-
-    from_: Union[str, None]
+    from_: str
 
 
-class WebhookRepositoryEditedPropChangesPropTopicsType(TypedDict):
-    """WebhookRepositoryEditedPropChangesPropTopics"""
+class WebhookReleaseEditedPropChangesPropTagNameType(TypedDict):
+    """WebhookReleaseEditedPropChangesPropTagName"""
 
-    from_: NotRequired[Union[list[str], None]]
+    from_: str
 
 
-class WebhookRepositoryEditedPropChangesPropTopicsTypeForResponse(TypedDict):
-    """WebhookRepositoryEditedPropChangesPropTopics"""
+class WebhookReleaseEditedPropChangesPropTagNameTypeForResponse(TypedDict):
+    """WebhookReleaseEditedPropChangesPropTagName"""
 
-    from_: NotRequired[Union[list[str], None]]
+    from_: str
+
+
+class WebhookReleaseEditedPropChangesPropMakeLatestType(TypedDict):
+    """WebhookReleaseEditedPropChangesPropMakeLatest"""
+
+    to: bool
+
+
+class WebhookReleaseEditedPropChangesPropMakeLatestTypeForResponse(TypedDict):
+    """WebhookReleaseEditedPropChangesPropMakeLatest"""
+
+    to: bool
 
 
 __all__ = (
-    "WebhookRepositoryEditedPropChangesPropDefaultBranchType",
-    "WebhookRepositoryEditedPropChangesPropDefaultBranchTypeForResponse",
-    "WebhookRepositoryEditedPropChangesPropDescriptionType",
-    "WebhookRepositoryEditedPropChangesPropDescriptionTypeForResponse",
-    "WebhookRepositoryEditedPropChangesPropHomepageType",
-    "WebhookRepositoryEditedPropChangesPropHomepageTypeForResponse",
-    "WebhookRepositoryEditedPropChangesPropTopicsType",
-    "WebhookRepositoryEditedPropChangesPropTopicsTypeForResponse",
-    "WebhookRepositoryEditedPropChangesType",
-    "WebhookRepositoryEditedPropChangesTypeForResponse",
-    "WebhookRepositoryEditedType",
-    "WebhookRepositoryEditedTypeForResponse",
+    "WebhookReleaseEditedPropChangesPropBodyType",
+    "WebhookReleaseEditedPropChangesPropBodyTypeForResponse",
+    "WebhookReleaseEditedPropChangesPropMakeLatestType",
+    "WebhookReleaseEditedPropChangesPropMakeLatestTypeForResponse",
+    "WebhookReleaseEditedPropChangesPropNameType",
+    "WebhookReleaseEditedPropChangesPropNameTypeForResponse",
+    "WebhookReleaseEditedPropChangesPropTagNameType",
+    "WebhookReleaseEditedPropChangesPropTagNameTypeForResponse",
+    "WebhookReleaseEditedPropChangesType",
+    "WebhookReleaseEditedPropChangesTypeForResponse",
+    "WebhookReleaseEditedType",
+    "WebhookReleaseEditedTypeForResponse",
 )

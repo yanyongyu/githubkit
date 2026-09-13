@@ -9,27 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OidcCustomPropertyInclusion(GitHubModel):
-    """Actions OIDC Custom Property Inclusion
+class ActionsArtifactAndLogRetention(GitHubModel):
+    """ActionsArtifactAndLogRetention"""
 
-    An OIDC custom property inclusion for repository properties
-    """
-
-    custom_property_name: str = Field(
-        description="The name of the custom property that is included in the OIDC token"
-    )
-    inclusion_source: Literal["organization", "enterprise"] = Field(
-        description="Whether the inclusion was defined at the organization or enterprise level"
-    )
+    days: int = Field(description="The number of days to retain artifacts and logs")
 
 
-model_rebuild(OidcCustomPropertyInclusion)
+model_rebuild(ActionsArtifactAndLogRetention)
 
-__all__ = ("OidcCustomPropertyInclusion",)
+__all__ = ("ActionsArtifactAndLogRetention",)

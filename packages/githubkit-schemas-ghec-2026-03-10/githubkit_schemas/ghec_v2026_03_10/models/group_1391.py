@@ -12,16 +12,22 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody(GitHubModel):
-    """OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody"""
+class OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202(GitHubModel):
+    """OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202"""
 
-    selected_repository_ids: list[int] = Field(
-        description="An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can add and remove individual repositories using the [Set selected repositories for an organization secret](https://docs.github.com/enterprise-cloud@latest/rest/dependabot/secrets#set-selected-repositories-for-an-organization-secret) and [Remove selected repository from an organization secret](https://docs.github.com/enterprise-cloud@latest/rest/dependabot/secrets#remove-selected-repository-from-an-organization-secret) endpoints."
+    message: Missing[str] = Field(
+        default=UNSET, description="A message indicating the revocation has been queued"
+    )
+    warning: Missing[str] = Field(
+        default=UNSET,
+        description="A warning message if the token used for this request may be revoked",
     )
 
 
-model_rebuild(OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody)
+model_rebuild(OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202)
 
-__all__ = ("OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody",)
+__all__ = ("OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202",)

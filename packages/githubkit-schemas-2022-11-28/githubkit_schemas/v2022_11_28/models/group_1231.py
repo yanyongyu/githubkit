@@ -9,34 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody(GitHubModel):
-    """OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody"""
+class OrgsOrgPersonalAccessTokensPatIdPostBody(GitHubModel):
+    """OrgsOrgPersonalAccessTokensPatIdPostBody"""
 
-    fields: list[OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems] = (
-        Field(description="A list of field updates to apply.")
+    action: Literal["revoke"] = Field(
+        description="Action to apply to the fine-grained personal access token."
     )
 
 
-class OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems(GitHubModel):
-    """OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems"""
+model_rebuild(OrgsOrgPersonalAccessTokensPatIdPostBody)
 
-    id: int = Field(description="The ID of the project field to update.")
-    value: Union[str, float, None] = Field(
-        description="The new value for the field:\n- For text, number, and date fields, provide the new value directly.\n- For single select and iteration fields, provide the ID of the option or iteration.\n- To clear the field, set this to null."
-    )
-
-
-model_rebuild(OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody)
-model_rebuild(OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems)
-
-__all__ = (
-    "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody",
-    "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems",
-)
+__all__ = ("OrgsOrgPersonalAccessTokensPatIdPostBody",)

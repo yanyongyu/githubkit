@@ -9,51 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0018 import InstallationType, InstallationTypeForResponse
-from .group_0539 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0541 import (
+from .group_0046 import DiscussionType, DiscussionTypeForResponse
+from .group_0542 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0543 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0544 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0542 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0550 import WebhooksUserType, WebhooksUserTypeForResponse
-from .group_0554 import (
-    WebhooksRepositoriesItemsType,
-    WebhooksRepositoriesItemsTypeForResponse,
-)
+from .group_0545 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookInstallationCreatedType(TypedDict):
-    """installation created event"""
+class WebhookDiscussionUnlockedType(TypedDict):
+    """discussion unlocked event"""
 
-    action: Literal["created"]
+    action: Literal["unlocked"]
+    discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: InstallationType
+    installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repositories: NotRequired[list[WebhooksRepositoriesItemsType]]
-    repository: NotRequired[RepositoryWebhooksType]
-    requester: NotRequired[Union[WebhooksUserType, None]]
+    repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookInstallationCreatedTypeForResponse(TypedDict):
-    """installation created event"""
+class WebhookDiscussionUnlockedTypeForResponse(TypedDict):
+    """discussion unlocked event"""
 
-    action: Literal["created"]
+    action: Literal["unlocked"]
+    discussion: DiscussionTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: InstallationTypeForResponse
+    installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repositories: NotRequired[list[WebhooksRepositoriesItemsTypeForResponse]]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    requester: NotRequired[Union[WebhooksUserTypeForResponse, None]]
+    repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookInstallationCreatedType",
-    "WebhookInstallationCreatedTypeForResponse",
+    "WebhookDiscussionUnlockedType",
+    "WebhookDiscussionUnlockedTypeForResponse",
 )

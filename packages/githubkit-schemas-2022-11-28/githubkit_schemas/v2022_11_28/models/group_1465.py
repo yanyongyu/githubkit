@@ -13,13 +13,17 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class ReposOwnerRepoStargazersCountGetResponse200(GitHubModel):
-    """ReposOwnerRepoStargazersCountGetResponse200"""
-
-    count: int = Field()
+from .group_0261 import SecretScanningCustomPatternToCreate
 
 
-model_rebuild(ReposOwnerRepoStargazersCountGetResponse200)
+class ReposOwnerRepoSecretScanningCustomPatternsPostBody(GitHubModel):
+    """ReposOwnerRepoSecretScanningCustomPatternsPostBody"""
 
-__all__ = ("ReposOwnerRepoStargazersCountGetResponse200",)
+    patterns: list[SecretScanningCustomPatternToCreate] = Field(
+        description="The list of custom patterns to create."
+    )
+
+
+model_rebuild(ReposOwnerRepoSecretScanningCustomPatternsPostBody)
+
+__all__ = ("ReposOwnerRepoSecretScanningCustomPatternsPostBody",)

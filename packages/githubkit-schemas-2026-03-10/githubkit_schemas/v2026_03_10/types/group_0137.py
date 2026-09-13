@@ -9,27 +9,74 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class CodeScanningAnalysisToolType(TypedDict):
-    """CodeScanningAnalysisTool"""
-
-    name: NotRequired[str]
-    version: NotRequired[Union[str, None]]
-    guid: NotRequired[Union[str, None]]
+from .group_0136 import (
+    CodeScanningAlertLocationType,
+    CodeScanningAlertLocationTypeForResponse,
+)
 
 
-class CodeScanningAnalysisToolTypeForResponse(TypedDict):
-    """CodeScanningAnalysisTool"""
+class CodeScanningAlertInstanceType(TypedDict):
+    """CodeScanningAlertInstance"""
 
-    name: NotRequired[str]
-    version: NotRequired[Union[str, None]]
-    guid: NotRequired[Union[str, None]]
+    ref: NotRequired[str]
+    analysis_key: NotRequired[str]
+    environment: NotRequired[str]
+    category: NotRequired[str]
+    state: NotRequired[Union[Literal["open", "dismissed", "fixed"], None]]
+    commit_sha: NotRequired[str]
+    message: NotRequired[CodeScanningAlertInstancePropMessageType]
+    location: NotRequired[CodeScanningAlertLocationType]
+    html_url: NotRequired[str]
+    classifications: NotRequired[
+        list[
+            Union[
+                Literal["source", "generated", "test", "library", "documentation"], None
+            ]
+        ]
+    ]
+
+
+class CodeScanningAlertInstanceTypeForResponse(TypedDict):
+    """CodeScanningAlertInstance"""
+
+    ref: NotRequired[str]
+    analysis_key: NotRequired[str]
+    environment: NotRequired[str]
+    category: NotRequired[str]
+    state: NotRequired[Union[Literal["open", "dismissed", "fixed"], None]]
+    commit_sha: NotRequired[str]
+    message: NotRequired[CodeScanningAlertInstancePropMessageTypeForResponse]
+    location: NotRequired[CodeScanningAlertLocationTypeForResponse]
+    html_url: NotRequired[str]
+    classifications: NotRequired[
+        list[
+            Union[
+                Literal["source", "generated", "test", "library", "documentation"], None
+            ]
+        ]
+    ]
+
+
+class CodeScanningAlertInstancePropMessageType(TypedDict):
+    """CodeScanningAlertInstancePropMessage"""
+
+    text: NotRequired[str]
+    markdown: NotRequired[str]
+
+
+class CodeScanningAlertInstancePropMessageTypeForResponse(TypedDict):
+    """CodeScanningAlertInstancePropMessage"""
+
+    text: NotRequired[str]
+    markdown: NotRequired[str]
 
 
 __all__ = (
-    "CodeScanningAnalysisToolType",
-    "CodeScanningAnalysisToolTypeForResponse",
+    "CodeScanningAlertInstancePropMessageType",
+    "CodeScanningAlertInstancePropMessageTypeForResponse",
+    "CodeScanningAlertInstanceType",
+    "CodeScanningAlertInstanceTypeForResponse",
 )

@@ -9,30 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0142 import CopilotSpace
 
 
-class UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1(GitHubModel):
-    """UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1"""
+class UsersUsernameCopilotSpacesGetResponse200(GitHubModel):
+    """UsersUsernameCopilotSpacesGetResponse200"""
 
-    type: Literal["Issue", "PullRequest"] = Field(
-        description="The type of item to add to the project. Must be either Issue or PullRequest."
+    spaces: list[CopilotSpace] = Field(
+        description="The list of Copilot Spaces on this page of results."
     )
-    id: Missing[int] = Field(
-        default=UNSET,
-        description="The unique identifier of the issue or pull request to add to the project.",
-    )
-    owner: str = Field(description="The repository owner login.")
-    repo: str = Field(description="The repository name.")
-    number: int = Field(description="The issue or pull request number.")
 
 
-model_rebuild(UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1)
+model_rebuild(UsersUsernameCopilotSpacesGetResponse200)
 
-__all__ = ("UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1",)
+__all__ = ("UsersUsernameCopilotSpacesGetResponse200",)

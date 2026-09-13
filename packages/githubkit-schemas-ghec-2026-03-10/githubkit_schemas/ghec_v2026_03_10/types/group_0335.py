@@ -9,44 +9,126 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class RuleSuitesItemsType(TypedDict):
-    """RuleSuitesItems"""
+class RuleSuitePullRequestType(TypedDict):
+    """Pull request rule suite metadata
+
+    Metadata for a pull request rule evaluation result.
+    """
+
+    pull_request: NotRequired[RuleSuitePullRequestPropPullRequestType]
+
+
+class RuleSuitePullRequestTypeForResponse(TypedDict):
+    """Pull request rule suite metadata
+
+    Metadata for a pull request rule evaluation result.
+    """
+
+    pull_request: NotRequired[RuleSuitePullRequestPropPullRequestTypeForResponse]
+
+
+class RuleSuitePullRequestPropPullRequestType(TypedDict):
+    """RuleSuitePullRequestPropPullRequest
+
+    The pull request associated with the rule evaluation.
+    """
 
     id: NotRequired[int]
-    actor_id: NotRequired[int]
-    actor_name: NotRequired[str]
-    before_sha: NotRequired[str]
-    after_sha: NotRequired[str]
-    ref: NotRequired[str]
-    repository_id: NotRequired[int]
-    repository_name: NotRequired[str]
-    pushed_at: NotRequired[_dt.datetime]
-    result: NotRequired[Literal["pass", "fail", "bypass"]]
-    evaluation_result: NotRequired[Literal["pass", "fail", "bypass"]]
+    number: NotRequired[int]
+    user: NotRequired[RuleSuitePullRequestPropPullRequestPropUserType]
+    reviews: NotRequired[list[RuleSuitePullRequestPropPullRequestPropReviewsItemsType]]
 
 
-class RuleSuitesItemsTypeForResponse(TypedDict):
-    """RuleSuitesItems"""
+class RuleSuitePullRequestPropPullRequestTypeForResponse(TypedDict):
+    """RuleSuitePullRequestPropPullRequest
+
+    The pull request associated with the rule evaluation.
+    """
 
     id: NotRequired[int]
-    actor_id: NotRequired[int]
-    actor_name: NotRequired[str]
-    before_sha: NotRequired[str]
-    after_sha: NotRequired[str]
-    ref: NotRequired[str]
-    repository_id: NotRequired[int]
-    repository_name: NotRequired[str]
-    pushed_at: NotRequired[str]
-    result: NotRequired[Literal["pass", "fail", "bypass"]]
-    evaluation_result: NotRequired[Literal["pass", "fail", "bypass"]]
+    number: NotRequired[int]
+    user: NotRequired[RuleSuitePullRequestPropPullRequestPropUserTypeForResponse]
+    reviews: NotRequired[
+        list[RuleSuitePullRequestPropPullRequestPropReviewsItemsTypeForResponse]
+    ]
+
+
+class RuleSuitePullRequestPropPullRequestPropUserType(TypedDict):
+    """RuleSuitePullRequestPropPullRequestPropUser
+
+    The user who created the pull request.
+    """
+
+    id: NotRequired[int]
+    login: NotRequired[str]
+    type: NotRequired[str]
+
+
+class RuleSuitePullRequestPropPullRequestPropUserTypeForResponse(TypedDict):
+    """RuleSuitePullRequestPropPullRequestPropUser
+
+    The user who created the pull request.
+    """
+
+    id: NotRequired[int]
+    login: NotRequired[str]
+    type: NotRequired[str]
+
+
+class RuleSuitePullRequestPropPullRequestPropReviewsItemsType(TypedDict):
+    """RuleSuitePullRequestPropPullRequestPropReviewsItems"""
+
+    id: NotRequired[int]
+    user: NotRequired[RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserType]
+    state: NotRequired[str]
+
+
+class RuleSuitePullRequestPropPullRequestPropReviewsItemsTypeForResponse(TypedDict):
+    """RuleSuitePullRequestPropPullRequestPropReviewsItems"""
+
+    id: NotRequired[int]
+    user: NotRequired[
+        RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserTypeForResponse
+    ]
+    state: NotRequired[str]
+
+
+class RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserType(TypedDict):
+    """RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser
+
+    The user who submitted the review.
+    """
+
+    id: NotRequired[int]
+    login: NotRequired[str]
+    type: NotRequired[str]
+
+
+class RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserTypeForResponse(
+    TypedDict
+):
+    """RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser
+
+    The user who submitted the review.
+    """
+
+    id: NotRequired[int]
+    login: NotRequired[str]
+    type: NotRequired[str]
 
 
 __all__ = (
-    "RuleSuitesItemsType",
-    "RuleSuitesItemsTypeForResponse",
+    "RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserType",
+    "RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserTypeForResponse",
+    "RuleSuitePullRequestPropPullRequestPropReviewsItemsType",
+    "RuleSuitePullRequestPropPullRequestPropReviewsItemsTypeForResponse",
+    "RuleSuitePullRequestPropPullRequestPropUserType",
+    "RuleSuitePullRequestPropPullRequestPropUserTypeForResponse",
+    "RuleSuitePullRequestPropPullRequestType",
+    "RuleSuitePullRequestPropPullRequestTypeForResponse",
+    "RuleSuitePullRequestType",
+    "RuleSuitePullRequestTypeForResponse",
 )

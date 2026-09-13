@@ -18,16 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0621 import EnterpriseWebhooks
-from .group_0622 import SimpleInstallation
-from .group_0623 import OrganizationSimpleWebhooks
-from .group_0624 import RepositoryWebhooks
+from .group_0624 import EnterpriseWebhooks
+from .group_0625 import SimpleInstallation
+from .group_0626 import OrganizationSimpleWebhooks
+from .group_0627 import RepositoryWebhooks
+from .group_0672 import WebhooksRelease
 
 
-class WebhookRepositoryDeleted(GitHubModel):
-    """repository deleted event"""
+class WebhookReleaseCreated(GitHubModel):
+    """release created event"""
 
-    action: Literal["deleted"] = Field()
+    action: Literal["created"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -43,6 +44,10 @@ class WebhookRepositoryDeleted(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
+    release: WebhooksRelease = Field(
+        title="Release",
+        description="The [release](https://docs.github.com/enterprise-cloud@latest/rest/releases/releases/#get-a-release) object.",
+    )
     repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
@@ -50,6 +55,6 @@ class WebhookRepositoryDeleted(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookRepositoryDeleted)
+model_rebuild(WebhookReleaseCreated)
 
-__all__ = ("WebhookRepositoryDeleted",)
+__all__ = ("WebhookReleaseCreated",)

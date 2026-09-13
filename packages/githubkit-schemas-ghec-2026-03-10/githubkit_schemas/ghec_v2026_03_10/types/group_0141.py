@@ -9,38 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0142 import (
-    RepositoryRulePullRequestPropParametersType,
-    RepositoryRulePullRequestPropParametersTypeForResponse,
-)
+
+class RepositoryRuleRequiredStatusChecksPropParametersType(TypedDict):
+    """RepositoryRuleRequiredStatusChecksPropParameters"""
+
+    do_not_enforce_on_create: NotRequired[bool]
+    required_status_checks: list[RepositoryRuleParamsStatusCheckConfigurationType]
+    strict_required_status_checks_policy: bool
 
 
-class RepositoryRulePullRequestType(TypedDict):
-    """pull_request
+class RepositoryRuleRequiredStatusChecksPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleRequiredStatusChecksPropParameters"""
 
-    Require all commits be made to a non-target branch and submitted via a pull
-    request before they can be merged.
+    do_not_enforce_on_create: NotRequired[bool]
+    required_status_checks: list[
+        RepositoryRuleParamsStatusCheckConfigurationTypeForResponse
+    ]
+    strict_required_status_checks_policy: bool
+
+
+class RepositoryRuleParamsStatusCheckConfigurationType(TypedDict):
+    """StatusCheckConfiguration
+
+    Required status check
     """
 
-    type: Literal["pull_request"]
-    parameters: NotRequired[RepositoryRulePullRequestPropParametersType]
+    context: str
+    integration_id: NotRequired[int]
 
 
-class RepositoryRulePullRequestTypeForResponse(TypedDict):
-    """pull_request
+class RepositoryRuleParamsStatusCheckConfigurationTypeForResponse(TypedDict):
+    """StatusCheckConfiguration
 
-    Require all commits be made to a non-target branch and submitted via a pull
-    request before they can be merged.
+    Required status check
     """
 
-    type: Literal["pull_request"]
-    parameters: NotRequired[RepositoryRulePullRequestPropParametersTypeForResponse]
+    context: str
+    integration_id: NotRequired[int]
 
 
 __all__ = (
-    "RepositoryRulePullRequestType",
-    "RepositoryRulePullRequestTypeForResponse",
+    "RepositoryRuleParamsStatusCheckConfigurationType",
+    "RepositoryRuleParamsStatusCheckConfigurationTypeForResponse",
+    "RepositoryRuleRequiredStatusChecksPropParametersType",
+    "RepositoryRuleRequiredStatusChecksPropParametersTypeForResponse",
 )

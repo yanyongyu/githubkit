@@ -19,42 +19,38 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterpriseTeamWithMemberCount(GitHubModel):
-    """Enterprise Team
+class IssueType(GitHubModel):
+    """Issue Type
 
-    Group of enterprise owners and/or members
+    The type assigned to the issue. This is only present for issues in repositories
+    where issue types are supported.
     """
 
-    id: int = Field()
-    name: str = Field()
-    description: Missing[str] = Field(default=UNSET)
-    slug: str = Field()
-    url: str = Field()
-    sync_to_organizations: Missing[str] = Field(
-        default=UNSET,
-        description="Retired: this field will not be returned with GHEC enterprise teams.",
+    id: int = Field(description="The unique identifier of the issue type.")
+    node_id: str = Field(description="The node identifier of the issue type.")
+    name: str = Field(description="The name of the issue type.")
+    description: Union[str, None] = Field(
+        description="The description of the issue type."
     )
-    organization_selection_type: Missing[str] = Field(default=UNSET)
-    group_id: Union[str, None] = Field()
-    group_name: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="Retired: this field will not be returned with GHEC enterprise teams.",
+    color: Missing[
+        Union[
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+            None,
+        ]
+    ] = Field(default=UNSET, description="The color of the issue type.")
+    created_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="The time the issue type created."
     )
-    html_url: str = Field()
-    members_url: str = Field()
-    members_count: int = Field(
-        description="The number of members in the enterprise team."
+    updated_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="The time the issue type last updated."
     )
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    notification_setting: Missing[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ] = Field(
-        default=UNSET,
-        description="Whether team members will receive notifications when the team is mentioned.",
+    is_enabled: Missing[bool] = Field(
+        default=UNSET, description="The enabled state of the issue type."
     )
 
 
-model_rebuild(EnterpriseTeamWithMemberCount)
+model_rebuild(IssueType)
 
-__all__ = ("EnterpriseTeamWithMemberCount",)
+__all__ = ("IssueType",)

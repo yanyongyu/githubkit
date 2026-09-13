@@ -11,78 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class PullRequestMinimalPropHeadType(TypedDict):
-    """PullRequestMinimalPropHead"""
-
-    ref: str
-    sha: str
-    repo: PullRequestMinimalPropHeadPropRepoType
+from .group_0046 import DiscussionType, DiscussionTypeForResponse
 
 
-class PullRequestMinimalPropHeadTypeForResponse(TypedDict):
-    """PullRequestMinimalPropHead"""
+class DiscussionEventType(TypedDict):
+    """DiscussionEvent"""
 
-    ref: str
-    sha: str
-    repo: PullRequestMinimalPropHeadPropRepoTypeForResponse
-
-
-class PullRequestMinimalPropHeadPropRepoType(TypedDict):
-    """PullRequestMinimalPropHeadPropRepo"""
-
-    id: int
-    url: str
-    name: str
+    action: str
+    discussion: DiscussionType
 
 
-class PullRequestMinimalPropHeadPropRepoTypeForResponse(TypedDict):
-    """PullRequestMinimalPropHeadPropRepo"""
+class DiscussionEventTypeForResponse(TypedDict):
+    """DiscussionEvent"""
 
-    id: int
-    url: str
-    name: str
-
-
-class PullRequestMinimalPropBaseType(TypedDict):
-    """PullRequestMinimalPropBase"""
-
-    ref: str
-    sha: str
-    repo: PullRequestMinimalPropBasePropRepoType
-
-
-class PullRequestMinimalPropBaseTypeForResponse(TypedDict):
-    """PullRequestMinimalPropBase"""
-
-    ref: str
-    sha: str
-    repo: PullRequestMinimalPropBasePropRepoTypeForResponse
-
-
-class PullRequestMinimalPropBasePropRepoType(TypedDict):
-    """PullRequestMinimalPropBasePropRepo"""
-
-    id: int
-    url: str
-    name: str
-
-
-class PullRequestMinimalPropBasePropRepoTypeForResponse(TypedDict):
-    """PullRequestMinimalPropBasePropRepo"""
-
-    id: int
-    url: str
-    name: str
+    action: str
+    discussion: DiscussionTypeForResponse
 
 
 __all__ = (
-    "PullRequestMinimalPropBasePropRepoType",
-    "PullRequestMinimalPropBasePropRepoTypeForResponse",
-    "PullRequestMinimalPropBaseType",
-    "PullRequestMinimalPropBaseTypeForResponse",
-    "PullRequestMinimalPropHeadPropRepoType",
-    "PullRequestMinimalPropHeadPropRepoTypeForResponse",
-    "PullRequestMinimalPropHeadType",
-    "PullRequestMinimalPropHeadTypeForResponse",
+    "DiscussionEventType",
+    "DiscussionEventTypeForResponse",
 )

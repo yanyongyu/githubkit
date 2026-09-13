@@ -12,17 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0077 import CommitCommentEventPropComment
-
-
-class CommitCommentEvent(GitHubModel):
-    """CommitCommentEvent"""
-
-    action: str = Field()
-    comment: CommitCommentEventPropComment = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(CommitCommentEvent)
+class ReleaseEventPropReleaseAllof1(GitHubModel):
+    """ReleaseEventPropReleaseAllof1"""
 
-__all__ = ("CommitCommentEvent",)
+    is_short_description_html_truncated: Missing[bool] = Field(default=UNSET)
+    short_description_html: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(ReleaseEventPropReleaseAllof1)
+
+__all__ = ("ReleaseEventPropReleaseAllof1",)

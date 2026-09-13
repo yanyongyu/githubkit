@@ -10,59 +10,33 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class IssueTypeType(TypedDict):
-    """Issue Type
+class PinnedIssueCommentType(TypedDict):
+    """Pinned Issue Comment
 
-    The type assigned to the issue. This is only present for issues in repositories
-    where issue types are supported.
+    Context around who pinned an issue comment and when it was pinned.
     """
 
-    id: int
-    node_id: str
-    name: str
-    description: Union[str, None]
-    color: NotRequired[
-        Union[
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-            None,
-        ]
-    ]
-    created_at: NotRequired[_dt.datetime]
-    updated_at: NotRequired[_dt.datetime]
-    is_enabled: NotRequired[bool]
+    pinned_at: _dt.datetime
+    pinned_by: Union[SimpleUserType, None]
 
 
-class IssueTypeTypeForResponse(TypedDict):
-    """Issue Type
+class PinnedIssueCommentTypeForResponse(TypedDict):
+    """Pinned Issue Comment
 
-    The type assigned to the issue. This is only present for issues in repositories
-    where issue types are supported.
+    Context around who pinned an issue comment and when it was pinned.
     """
 
-    id: int
-    node_id: str
-    name: str
-    description: Union[str, None]
-    color: NotRequired[
-        Union[
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-            None,
-        ]
-    ]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-    is_enabled: NotRequired[bool]
+    pinned_at: str
+    pinned_by: Union[SimpleUserTypeForResponse, None]
 
 
 __all__ = (
-    "IssueTypeType",
-    "IssueTypeTypeForResponse",
+    "PinnedIssueCommentType",
+    "PinnedIssueCommentTypeForResponse",
 )

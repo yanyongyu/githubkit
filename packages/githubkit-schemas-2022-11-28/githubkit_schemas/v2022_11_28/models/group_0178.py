@@ -12,17 +12,49 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class Link(GitHubModel):
-    """Link
+class PullRequestStack(GitHubModel):
+    """Pull Request Stack
 
-    Hypermedia Link
+    The stack information associated with a pull request.
     """
 
-    href: str = Field()
+    base: PullRequestStackPropBase = Field()
+    size: Missing[int] = Field(
+        default=UNSET, description="The total number of pull requests in the stack."
+    )
+    position: Missing[int] = Field(
+        default=UNSET,
+        description="The one-based position of this pull request within the stack, where 1 is the bottom of the stack.",
+    )
+    id: Missing[int] = Field(
+        default=UNSET,
+        description="The ID of the stack that this pull request belongs to.",
+    )
+    number: Missing[int] = Field(
+        default=UNSET,
+        description="The number of the stack that this pull request belongs to.",
+    )
 
 
-model_rebuild(Link)
+class PullRequestStackPropBase(GitHubModel):
+    """PullRequestStackPropBase"""
 
-__all__ = ("Link",)
+    ref: str = Field(
+        description="The base ref of the stack this pull request belongs to."
+    )
+    sha: str = Field(
+        description="The base SHA of the stack this pull request belongs to."
+    )
+
+
+model_rebuild(PullRequestStack)
+model_rebuild(PullRequestStackPropBase)
+
+__all__ = (
+    "PullRequestStack",
+    "PullRequestStackPropBase",
+)

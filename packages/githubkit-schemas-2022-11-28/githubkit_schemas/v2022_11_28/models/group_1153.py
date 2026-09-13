@@ -9,92 +9,108 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
-from githubkit.typing import Missing
+from githubkit.compat import PYDANTIC_V2, ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.typing import Missing, UniqueList
 from githubkit.utils import UNSET
 
 
-class OrgsOrgAttestationsSubjectDigestGetResponse200(GitHubModel):
-    """OrgsOrgAttestationsSubjectDigestGetResponse200"""
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBody(GitHubModel):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBody"""
 
-    attestations: Missing[
-        list[OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems]
-    ] = Field(default=UNSET)
-
-
-class OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems(GitHubModel):
-    """OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
-
-    bundle: Missing[
-        Union[
-            OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle,
-            None,
-        ]
-    ] = Field(
-        default=UNSET,
-        description="The attestation's Sigstore Bundle.\nRefer to the [Sigstore Bundle Specification](https://github.com/sigstore/protobuf-specs/blob/main/protos/sigstore_bundle.proto) for more information.",
+    logical_environment: str = Field(
+        min_length=1, max_length=128, description="The stage of the deployment."
     )
-    repository_id: Missing[int] = Field(default=UNSET)
-    bundle_url: Missing[str] = Field(default=UNSET)
-    initiator: Missing[str] = Field(default=UNSET)
+    physical_environment: Missing[str] = Field(
+        max_length=128,
+        default=UNSET,
+        description="The physical region of the deployment.",
+    )
+    deployments: list[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItems
+    ] = Field(
+        max_length=5000 if PYDANTIC_V2 else None,
+        description="The list of deployments to record.",
+    )
 
 
-class OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle(
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItems(
     GitHubModel
 ):
-    """OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle
-
-    The attestation's Sigstore Bundle.
-    Refer to the [Sigstore Bundle
-    Specification](https://github.com/sigstore/protobuf-
-    specs/blob/main/protos/sigstore_bundle.proto) for more information.
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeployment
+    sItems
     """
 
-    media_type: Missing[str] = Field(default=UNSET, alias="mediaType")
-    verification_material: Missing[
-        OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial
-    ] = Field(default=UNSET, alias="verificationMaterial")
-    dsse_envelope: Missing[
-        OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope
-    ] = Field(default=UNSET, alias="dsseEnvelope")
+    name: str = Field(
+        min_length=1, max_length=256, description="The name of the artifact."
+    )
+    digest: str = Field(
+        min_length=71,
+        max_length=71,
+        pattern="^sha256:[a-f0-9]{64}$",
+        description="The hex encoded digest of the artifact.",
+    )
+    version: Missing[str] = Field(
+        max_length=100, default=UNSET, description="The artifact version."
+    )
+    status: Missing[Literal["deployed", "decommissioned"]] = Field(
+        default=UNSET, description="The deployment status of the artifact."
+    )
+    deployment_name: str = Field(
+        min_length=1,
+        max_length=256,
+        description="The unique identifier for the deployment represented by the new record.\n",
+    )
+    github_repository: Missing[str] = Field(
+        max_length=100,
+        pattern="^[A-Za-z0-9.\\-_]+$",
+        default=UNSET,
+        description="The name of the GitHub repository associated with the artifact.",
+    )
+    tags: Missing[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItemsPropTags
+    ] = Field(
+        default=UNSET, description="Key-value pairs to tag the deployment record."
+    )
+    runtime_risks: Missing[
+        UniqueList[
+            Literal[
+                "critical-resource",
+                "internet-exposed",
+                "lateral-movement",
+                "sensitive-data",
+            ]
+        ]
+    ] = Field(
+        max_length=4 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="A list of runtime risks associated with the deployment.",
+    )
 
 
-class OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial(
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItemsPropTags(
     ExtraGitHubModel
 ):
-    """OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePro
-    pVerificationMaterial
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeployment
+    sItemsPropTags
+
+    Key-value pairs to tag the deployment record.
     """
 
 
-class OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope(
-    ExtraGitHubModel
-):
-    """OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePro
-    pDsseEnvelope
-    """
-
-
-model_rebuild(OrgsOrgAttestationsSubjectDigestGetResponse200)
-model_rebuild(OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems)
+model_rebuild(OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBody)
 model_rebuild(
-    OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle
+    OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItems
 )
 model_rebuild(
-    OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial
-)
-model_rebuild(
-    OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope
+    OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItemsPropTags
 )
 
 __all__ = (
-    "OrgsOrgAttestationsSubjectDigestGetResponse200",
-    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems",
-    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle",
-    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope",
-    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBody",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItems",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItemsPropTags",
 )

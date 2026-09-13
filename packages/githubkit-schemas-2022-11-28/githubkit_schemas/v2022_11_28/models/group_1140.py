@@ -9,108 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0132 import ArtifactDeploymentRecord
 
+class OrgsOrgAgentsSecretsSecretNamePutBody(GitHubModel):
+    """OrgsOrgAgentsSecretsSecretNamePutBody"""
 
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207(
-    GitHubModel
-):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207"""
-
-    total_count: int = Field(
-        description="The number of deployment records created or updated."
+    encrypted_value: str = Field(
+        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
+        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an organization public key](https://docs.github.com/rest/agents/secrets#get-an-organization-public-key) endpoint.",
     )
-    deployment_records: Missing[list[ArtifactDeploymentRecord]] = Field(default=UNSET)
-    errors: Missing[
-        list[
-            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItems
-        ]
-    ] = Field(
+    key_id: str = Field(description="ID of the key you used to encrypt the secret.")
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="Which type of organization repositories have access to the organization secret. `selected` means only the repositories specified by `selected_repository_ids` can access the secret."
+    )
+    selected_repository_ids: Missing[list[int]] = Field(
         default=UNSET,
-        description="A list of errors for deployments that could not be processed.",
+        description="An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can manage the list of selected repositories using the [List selected repositories for an organization secret](https://docs.github.com/rest/agents/secrets#list-selected-repositories-for-an-organization-secret), [Set selected repositories for an organization secret](https://docs.github.com/rest/agents/secrets#set-selected-repositories-for-an-organization-secret), and [Remove selected repository from an organization secret](https://docs.github.com/rest/agents/secrets#remove-selected-repository-from-an-organization-secret) endpoints.",
     )
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItems(
-    GitHubModel
-):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsI
-    tems
-    """
+model_rebuild(OrgsOrgAgentsSecretsSecretNamePutBody)
 
-    cause: Missing[Literal["unauthorized", "not_found"]] = Field(
-        default=UNSET, description="The reason the deployment failed processing."
-    )
-    deployment: Missing[
-        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItemsPropDeployment
-    ] = Field(
-        default=UNSET, description="The deployment payload that could not be processed."
-    )
-
-
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItemsPropDeployment(
-    GitHubModel
-):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsI
-    temsPropDeployment
-
-    The deployment payload that could not be processed.
-    """
-
-    name: Missing[str] = Field(default=UNSET, description="The name of the artifact.")
-    digest: Missing[str] = Field(
-        default=UNSET, description="The digest of the artifact."
-    )
-    deployment_name: Missing[str] = Field(
-        default=UNSET, description="The name of the deployment that failed processing."
-    )
-    version: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The version of the deployment."
-    )
-    status: Missing[str] = Field(default=UNSET, description="The deployment status.")
-    github_repository: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The repository associated with the deployment."
-    )
-    tags: Missing[
-        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItemsPropDeploymentPropTags
-    ] = Field(default=UNSET, description="Custom metadata tags for the deployment.")
-    runtime_risks: Missing[list[str]] = Field(
-        default=UNSET, description="Runtime risk classifications for the deployment."
-    )
-
-
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItemsPropDeploymentPropTags(
-    ExtraGitHubModel
-):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsI
-    temsPropDeploymentPropTags
-
-    Custom metadata tags for the deployment.
-    """
-
-
-model_rebuild(OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207)
-model_rebuild(
-    OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItems
-)
-model_rebuild(
-    OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItemsPropDeployment
-)
-model_rebuild(
-    OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItemsPropDeploymentPropTags
-)
-
-__all__ = (
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207",
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItems",
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItemsPropDeployment",
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItemsPropDeploymentPropTags",
-)
+__all__ = ("OrgsOrgAgentsSecretsSecretNamePutBody",)

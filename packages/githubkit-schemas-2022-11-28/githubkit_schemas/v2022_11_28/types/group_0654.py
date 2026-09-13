@@ -13,25 +13,22 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0050 import DiscussionType, DiscussionTypeForResponse
-from .group_0539 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0540 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0541 import (
+from .group_0046 import DiscussionType, DiscussionTypeForResponse
+from .group_0542 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0543 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0544 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0542 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0655 import (
-    WebhookDiscussionTransferredPropChangesType,
-    WebhookDiscussionTransferredPropChangesTypeForResponse,
-)
+from .group_0545 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0555 import WebhooksCommentType, WebhooksCommentTypeForResponse
 
 
-class WebhookDiscussionTransferredType(TypedDict):
-    """discussion transferred event"""
+class WebhookDiscussionCommentDeletedType(TypedDict):
+    """discussion_comment deleted event"""
 
-    action: Literal["transferred"]
-    changes: WebhookDiscussionTransferredPropChangesType
+    action: Literal["deleted"]
+    comment: WebhooksCommentType
     discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -40,11 +37,11 @@ class WebhookDiscussionTransferredType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookDiscussionTransferredTypeForResponse(TypedDict):
-    """discussion transferred event"""
+class WebhookDiscussionCommentDeletedTypeForResponse(TypedDict):
+    """discussion_comment deleted event"""
 
-    action: Literal["transferred"]
-    changes: WebhookDiscussionTransferredPropChangesTypeForResponse
+    action: Literal["deleted"]
+    comment: WebhooksCommentTypeForResponse
     discussion: DiscussionTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
@@ -54,6 +51,6 @@ class WebhookDiscussionTransferredTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookDiscussionTransferredType",
-    "WebhookDiscussionTransferredTypeForResponse",
+    "WebhookDiscussionCommentDeletedType",
+    "WebhookDiscussionCommentDeletedTypeForResponse",
 )

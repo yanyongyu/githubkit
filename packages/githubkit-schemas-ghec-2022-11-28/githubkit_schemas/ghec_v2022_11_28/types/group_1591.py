@@ -12,19 +12,23 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody"""
+class ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBodyType(TypedDict):
+    """ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody"""
 
-    assignees: NotRequired[list[str]]
+    enabled: bool
+    max_open_pull_requests: NotRequired[int]
 
 
-class ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody"""
+class ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody"""
 
-    assignees: NotRequired[list[str]]
+    enabled: bool
+    max_open_pull_requests: NotRequired[int]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType",
-    "ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyTypeForResponse",
+    "ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBodyType",
+    "ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBodyTypeForResponse",
 )

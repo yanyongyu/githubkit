@@ -13,105 +13,25 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCopilotSpacesPostBodyType(TypedDict):
-    """OrgsOrgCopilotSpacesPostBody"""
+class OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType(TypedDict):
+    """OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody"""
 
-    name: str
-    description: NotRequired[str]
-    general_instructions: NotRequired[str]
-    base_role: NotRequired[Literal["reader", "writer", "admin", "no_access"]]
-    resources_attributes: NotRequired[
-        list[OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsType]
+    default_for_new_repos: NotRequired[
+        Literal["all", "none", "private_and_internal", "public"]
     ]
 
 
-class OrgsOrgCopilotSpacesPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgCopilotSpacesPostBody"""
-
-    name: str
-    description: NotRequired[str]
-    general_instructions: NotRequired[str]
-    base_role: NotRequired[Literal["reader", "writer", "admin", "no_access"]]
-    resources_attributes: NotRequired[
-        list[OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsTypeForResponse]
-    ]
-
-
-class OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsType(TypedDict):
-    """OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItems"""
-
-    resource_type: NotRequired[
-        Literal[
-            "repository",
-            "github_file",
-            "free_text",
-            "github_issue",
-            "github_pull_request",
-            "media_content",
-            "uploaded_text_file",
-        ]
-    ]
-    metadata: NotRequired[
-        OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataType
-    ]
-
-
-class OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsTypeForResponse(
+class OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyTypeForResponse(
     TypedDict
 ):
-    """OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItems"""
+    """OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody"""
 
-    resource_type: NotRequired[
-        Literal[
-            "repository",
-            "github_file",
-            "free_text",
-            "github_issue",
-            "github_pull_request",
-            "media_content",
-            "uploaded_text_file",
-        ]
+    default_for_new_repos: NotRequired[
+        Literal["all", "none", "private_and_internal", "public"]
     ]
-    metadata: NotRequired[
-        OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataTypeForResponse
-    ]
-
-
-class OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataType(
-    TypedDict
-):
-    """OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata
-
-    Metadata specific to the resource type.
-    """
-
-    repository_id: NotRequired[int]
-    file_path: NotRequired[str]
-    text: NotRequired[str]
-    name: NotRequired[str]
-    number: NotRequired[int]
-
-
-class OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata
-
-    Metadata specific to the resource type.
-    """
-
-    repository_id: NotRequired[int]
-    file_path: NotRequired[str]
-    text: NotRequired[str]
-    name: NotRequired[str]
-    number: NotRequired[int]
 
 
 __all__ = (
-    "OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataType",
-    "OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataTypeForResponse",
-    "OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsType",
-    "OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsTypeForResponse",
-    "OrgsOrgCopilotSpacesPostBodyType",
-    "OrgsOrgCopilotSpacesPostBodyTypeForResponse",
+    "OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType",
+    "OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyTypeForResponse",
 )

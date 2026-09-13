@@ -19,10 +19,10 @@ from .group_0003 import SimpleUser
 from .group_0010 import Integration
 
 
-class TimelineDisconnectedEvent(GitHubModel):
-    """Timeline Disconnected Event
+class TimelineConnectedEvent(GitHubModel):
+    """Timeline Connected Event
 
-    Timeline Disconnected Event
+    Timeline Connected Event
     """
 
     id: int = Field()
@@ -36,6 +36,6 @@ class TimelineDisconnectedEvent(GitHubModel):
     performed_via_github_app: Union[None, Integration, None] = Field()
 
 
-model_rebuild(TimelineDisconnectedEvent)
+model_rebuild(TimelineConnectedEvent)
 
-__all__ = ("TimelineDisconnectedEvent",)
+__all__ = ("TimelineConnectedEvent",)

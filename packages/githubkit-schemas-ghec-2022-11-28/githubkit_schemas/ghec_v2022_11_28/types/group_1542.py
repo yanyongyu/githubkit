@@ -9,24 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoDependabotSecretsSecretNamePutBodyType(TypedDict):
-    """ReposOwnerRepoDependabotSecretsSecretNamePutBody"""
+class ReposOwnerRepoCommentsCommentIdPatchBodyType(TypedDict):
+    """ReposOwnerRepoCommentsCommentIdPatchBody"""
 
-    encrypted_value: NotRequired[str]
-    key_id: NotRequired[str]
+    body: str
 
 
-class ReposOwnerRepoDependabotSecretsSecretNamePutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoDependabotSecretsSecretNamePutBody"""
+class ReposOwnerRepoCommentsCommentIdPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoCommentsCommentIdPatchBody"""
 
-    encrypted_value: NotRequired[str]
-    key_id: NotRequired[str]
+    body: str
 
 
 __all__ = (
-    "ReposOwnerRepoDependabotSecretsSecretNamePutBodyType",
-    "ReposOwnerRepoDependabotSecretsSecretNamePutBodyTypeForResponse",
+    "ReposOwnerRepoCommentsCommentIdPatchBodyType",
+    "ReposOwnerRepoCommentsCommentIdPatchBodyTypeForResponse",
 )

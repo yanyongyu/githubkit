@@ -9,20 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0359 import ActionsVariable
+
+class ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBody(GitHubModel):
+    """ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBody"""
+
+    status: Literal["approve", "deny"] = Field(
+        description="The review action to perform on the dismissal request."
+    )
+    message: str = Field(
+        max_length=2048, description="A message to include with the review."
+    )
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200(GitHubModel):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200"""
+model_rebuild(ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBody)
 
-    total_count: int = Field()
-    variables: list[ActionsVariable] = Field()
-
-
-model_rebuild(ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200)
-
-__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200",)
+__all__ = ("ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBody",)

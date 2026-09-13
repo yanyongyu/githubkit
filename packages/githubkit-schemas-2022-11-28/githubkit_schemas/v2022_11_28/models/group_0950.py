@@ -9,19 +9,110 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0207 import (
+    RepositoryRuleCreation,
+    RepositoryRuleDeletion,
+    RepositoryRuleNonFastForward,
+    RepositoryRuleRequiredSignatures,
+)
+from .group_0208 import RepositoryRuleUpdate
+from .group_0210 import RepositoryRuleRequiredLinearHistory
+from .group_0211 import RepositoryRuleMergeQueue
+from .group_0213 import RepositoryRuleRequiredDeployments
+from .group_0216 import RepositoryRulePullRequest
+from .group_0218 import RepositoryRuleRequiredStatusChecks
+from .group_0220 import RepositoryRuleCommitMessagePattern
+from .group_0222 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0224 import RepositoryRuleCommitterEmailPattern
+from .group_0226 import RepositoryRuleBranchNamePattern
+from .group_0228 import RepositoryRuleTagNamePattern
+from .group_0231 import RepositoryRuleWorkflows
+from .group_0233 import RepositoryRuleCodeScanning
+from .group_0235 import RepositoryRuleCopilotCodeReview
+from .group_0237 import RepositoryRuleLicenseComplianceScanning
+from .group_0238 import RepositoryRuleFilePathRestriction
+from .group_0240 import RepositoryRuleMaxFilePathLength
+from .group_0242 import RepositoryRuleFileExtensionRestriction
+from .group_0244 import RepositoryRuleMaxFileSize
+from .group_0951 import (
+    WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems,
+)
 
 
-class WebhookSecretScanningAlertLocationCreatedFormEncoded(GitHubModel):
-    """Secret Scanning Alert Location Created Event"""
+class WebhookRepositoryRulesetEditedPropChangesPropRules(GitHubModel):
+    """WebhookRepositoryRulesetEditedPropChangesPropRules"""
 
-    payload: str = Field(
-        description="A URL-encoded string of the secret_scanning_alert_location.created JSON payload. The decoded payload is a JSON object."
-    )
+    added: Missing[
+        list[
+            Union[
+                RepositoryRuleCreation,
+                RepositoryRuleUpdate,
+                RepositoryRuleDeletion,
+                RepositoryRuleRequiredLinearHistory,
+                RepositoryRuleMergeQueue,
+                RepositoryRuleRequiredDeployments,
+                RepositoryRuleRequiredSignatures,
+                RepositoryRulePullRequest,
+                RepositoryRuleRequiredStatusChecks,
+                RepositoryRuleNonFastForward,
+                RepositoryRuleCommitMessagePattern,
+                RepositoryRuleCommitAuthorEmailPattern,
+                RepositoryRuleCommitterEmailPattern,
+                RepositoryRuleBranchNamePattern,
+                RepositoryRuleTagNamePattern,
+                RepositoryRuleWorkflows,
+                RepositoryRuleCodeScanning,
+                RepositoryRuleCopilotCodeReview,
+                RepositoryRuleLicenseComplianceScanning,
+                RepositoryRuleFilePathRestriction,
+                RepositoryRuleMaxFilePathLength,
+                RepositoryRuleFileExtensionRestriction,
+                RepositoryRuleMaxFileSize,
+            ]
+        ]
+    ] = Field(default=UNSET)
+    deleted: Missing[
+        list[
+            Union[
+                RepositoryRuleCreation,
+                RepositoryRuleUpdate,
+                RepositoryRuleDeletion,
+                RepositoryRuleRequiredLinearHistory,
+                RepositoryRuleMergeQueue,
+                RepositoryRuleRequiredDeployments,
+                RepositoryRuleRequiredSignatures,
+                RepositoryRulePullRequest,
+                RepositoryRuleRequiredStatusChecks,
+                RepositoryRuleNonFastForward,
+                RepositoryRuleCommitMessagePattern,
+                RepositoryRuleCommitAuthorEmailPattern,
+                RepositoryRuleCommitterEmailPattern,
+                RepositoryRuleBranchNamePattern,
+                RepositoryRuleTagNamePattern,
+                RepositoryRuleWorkflows,
+                RepositoryRuleCodeScanning,
+                RepositoryRuleCopilotCodeReview,
+                RepositoryRuleLicenseComplianceScanning,
+                RepositoryRuleFilePathRestriction,
+                RepositoryRuleMaxFilePathLength,
+                RepositoryRuleFileExtensionRestriction,
+                RepositoryRuleMaxFileSize,
+            ]
+        ]
+    ] = Field(default=UNSET)
+    updated: Missing[
+        list[WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems]
+    ] = Field(default=UNSET)
 
 
-model_rebuild(WebhookSecretScanningAlertLocationCreatedFormEncoded)
+model_rebuild(WebhookRepositoryRulesetEditedPropChangesPropRules)
 
-__all__ = ("WebhookSecretScanningAlertLocationCreatedFormEncoded",)
+__all__ = ("WebhookRepositoryRulesetEditedPropChangesPropRules",)

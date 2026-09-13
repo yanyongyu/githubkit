@@ -12,34 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0049 import Label
-from .group_0059 import Issue
 
 
-class IssuesEvent(GitHubModel):
-    """IssuesEvent"""
+class MemberEvent(GitHubModel):
+    """MemberEvent"""
 
     action: str = Field()
-    issue: Issue = Field(
-        title="Issue",
-        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
-    )
-    assignee: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
-    assignees: Missing[list[SimpleUser]] = Field(default=UNSET)
-    label: Missing[Label] = Field(
-        default=UNSET,
-        title="Label",
-        description="Color-coded labels help you categorize and filter your issues (just like labels in Gmail).",
-    )
-    labels: Missing[list[Label]] = Field(default=UNSET)
+    member: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(IssuesEvent)
+model_rebuild(MemberEvent)
 
-__all__ = ("IssuesEvent",)
+__all__ = ("MemberEvent",)

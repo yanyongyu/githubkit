@@ -13,41 +13,31 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class GroupType(TypedDict):
-    """Group"""
+class MetaType(TypedDict):
+    """Meta
 
-    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:Group"]]
-    external_id: str
-    display_name: str
-    members: NotRequired[list[GroupPropMembersItemsType]]
+    The metadata associated with the creation/updates to the user.
+    """
 
-
-class GroupTypeForResponse(TypedDict):
-    """Group"""
-
-    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:Group"]]
-    external_id: str
-    display_name: str
-    members: NotRequired[list[GroupPropMembersItemsTypeForResponse]]
+    resource_type: Literal["User", "Group"]
+    created: NotRequired[str]
+    last_modified: NotRequired[str]
+    location: NotRequired[str]
 
 
-class GroupPropMembersItemsType(TypedDict):
-    """GroupPropMembersItems"""
+class MetaTypeForResponse(TypedDict):
+    """Meta
 
-    value: str
-    display_name: str
+    The metadata associated with the creation/updates to the user.
+    """
 
-
-class GroupPropMembersItemsTypeForResponse(TypedDict):
-    """GroupPropMembersItems"""
-
-    value: str
-    display_name: str
+    resource_type: Literal["User", "Group"]
+    created: NotRequired[str]
+    last_modified: NotRequired[str]
+    location: NotRequired[str]
 
 
 __all__ = (
-    "GroupPropMembersItemsType",
-    "GroupPropMembersItemsTypeForResponse",
-    "GroupType",
-    "GroupTypeForResponse",
+    "MetaType",
+    "MetaTypeForResponse",
 )

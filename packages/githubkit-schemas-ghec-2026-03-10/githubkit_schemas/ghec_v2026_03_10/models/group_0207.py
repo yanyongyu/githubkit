@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -19,25 +19,42 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UsageReportExportRequest(GitHubModel):
-    """UsageReportExportRequest"""
+class EnterpriseTeamWithMemberCount(GitHubModel):
+    """Enterprise Team
 
-    report_type: Literal["detailed", "summarized", "premium_request", "ai_credit"] = (
-        Field(description="The type of usage report to generate")
-    )
-    start_date: _dt.date = Field(
-        description="The start date for the report in YYYY-MM-DD format"
-    )
-    end_date: Missing[_dt.date] = Field(
+    Group of enterprise owners and/or members
+    """
+
+    id: int = Field()
+    name: str = Field()
+    description: Missing[str] = Field(default=UNSET)
+    slug: str = Field()
+    url: str = Field()
+    sync_to_organizations: Missing[str] = Field(
         default=UNSET,
-        description="The end date for the report in YYYY-MM-DD format. Defaults to today (UTC) if not provided.",
+        description="Retired: this field will not be returned with GHEC enterprise teams.",
     )
-    send_email: Missing[bool] = Field(
+    organization_selection_type: Missing[str] = Field(default=UNSET)
+    group_id: Union[str, None] = Field()
+    group_name: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="Whether to send an email notification to the requester when the report is ready. Defaults to false.",
+        description="Retired: this field will not be returned with GHEC enterprise teams.",
+    )
+    html_url: str = Field()
+    members_url: str = Field()
+    members_count: int = Field(
+        description="The number of members in the enterprise team."
+    )
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    notification_setting: Missing[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ] = Field(
+        default=UNSET,
+        description="Whether team members will receive notifications when the team is mentioned.",
     )
 
 
-model_rebuild(UsageReportExportRequest)
+model_rebuild(EnterpriseTeamWithMemberCount)
 
-__all__ = ("UsageReportExportRequest",)
+__all__ = ("EnterpriseTeamWithMemberCount",)

@@ -11,20 +11,25 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
+from .group_0261 import (
+    SecretScanningCustomPatternToCreateType,
+    SecretScanningCustomPatternToCreateTypeForResponse,
+)
 
-class ReposOwnerRepoStargazersCountGetResponse200Type(TypedDict):
-    """ReposOwnerRepoStargazersCountGetResponse200"""
 
-    count: int
+class ReposOwnerRepoSecretScanningCustomPatternsPostBodyType(TypedDict):
+    """ReposOwnerRepoSecretScanningCustomPatternsPostBody"""
+
+    patterns: list[SecretScanningCustomPatternToCreateType]
 
 
-class ReposOwnerRepoStargazersCountGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoStargazersCountGetResponse200"""
+class ReposOwnerRepoSecretScanningCustomPatternsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoSecretScanningCustomPatternsPostBody"""
 
-    count: int
+    patterns: list[SecretScanningCustomPatternToCreateTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoStargazersCountGetResponse200Type",
-    "ReposOwnerRepoStargazersCountGetResponse200TypeForResponse",
+    "ReposOwnerRepoSecretScanningCustomPatternsPostBodyType",
+    "ReposOwnerRepoSecretScanningCustomPatternsPostBodyTypeForResponse",
 )

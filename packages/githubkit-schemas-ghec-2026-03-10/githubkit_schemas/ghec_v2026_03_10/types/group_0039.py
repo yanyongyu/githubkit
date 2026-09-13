@@ -9,44 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsHostedRunnerLimitsType(TypedDict):
-    """ActionsHostedRunnerLimits"""
+class ActionsEnterprisePermissionsType(TypedDict):
+    """ActionsEnterprisePermissions"""
 
-    public_ips: ActionsHostedRunnerLimitsPropPublicIpsType
-
-
-class ActionsHostedRunnerLimitsTypeForResponse(TypedDict):
-    """ActionsHostedRunnerLimits"""
-
-    public_ips: ActionsHostedRunnerLimitsPropPublicIpsTypeForResponse
+    enabled_organizations: Literal["all", "none", "selected"]
+    selected_organizations_url: NotRequired[str]
+    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
+    selected_actions_url: NotRequired[str]
+    sha_pinning_required: NotRequired[bool]
 
 
-class ActionsHostedRunnerLimitsPropPublicIpsType(TypedDict):
-    """Static public IP Limits for GitHub-hosted Hosted Runners.
+class ActionsEnterprisePermissionsTypeForResponse(TypedDict):
+    """ActionsEnterprisePermissions"""
 
-    Provides details of static public IP limits for GitHub-hosted Hosted Runners
-    """
-
-    maximum: int
-    current_usage: int
-
-
-class ActionsHostedRunnerLimitsPropPublicIpsTypeForResponse(TypedDict):
-    """Static public IP Limits for GitHub-hosted Hosted Runners.
-
-    Provides details of static public IP limits for GitHub-hosted Hosted Runners
-    """
-
-    maximum: int
-    current_usage: int
+    enabled_organizations: Literal["all", "none", "selected"]
+    selected_organizations_url: NotRequired[str]
+    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
+    selected_actions_url: NotRequired[str]
+    sha_pinning_required: NotRequired[bool]
 
 
 __all__ = (
-    "ActionsHostedRunnerLimitsPropPublicIpsType",
-    "ActionsHostedRunnerLimitsPropPublicIpsTypeForResponse",
-    "ActionsHostedRunnerLimitsType",
-    "ActionsHostedRunnerLimitsTypeForResponse",
+    "ActionsEnterprisePermissionsType",
+    "ActionsEnterprisePermissionsTypeForResponse",
 )

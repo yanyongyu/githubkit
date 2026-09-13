@@ -9,56 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class BillingUsageReportUserType(TypedDict):
-    """BillingUsageReportUser"""
+class KeySimpleType(TypedDict):
+    """Key Simple
 
-    usage_items: NotRequired[list[BillingUsageReportUserPropUsageItemsItemsType]]
+    Key Simple
+    """
 
-
-class BillingUsageReportUserTypeForResponse(TypedDict):
-    """BillingUsageReportUser"""
-
-    usage_items: NotRequired[
-        list[BillingUsageReportUserPropUsageItemsItemsTypeForResponse]
-    ]
+    id: int
+    key: str
+    created_at: NotRequired[_dt.datetime]
+    last_used: NotRequired[Union[_dt.datetime, None]]
 
 
-class BillingUsageReportUserPropUsageItemsItemsType(TypedDict):
-    """BillingUsageReportUserPropUsageItemsItems"""
+class KeySimpleTypeForResponse(TypedDict):
+    """Key Simple
 
-    date: str
-    product: str
-    sku: str
-    quantity: int
-    unit_type: str
-    price_per_unit: float
-    gross_amount: float
-    discount_amount: float
-    net_amount: float
-    repository_name: NotRequired[str]
+    Key Simple
+    """
 
-
-class BillingUsageReportUserPropUsageItemsItemsTypeForResponse(TypedDict):
-    """BillingUsageReportUserPropUsageItemsItems"""
-
-    date: str
-    product: str
-    sku: str
-    quantity: int
-    unit_type: str
-    price_per_unit: float
-    gross_amount: float
-    discount_amount: float
-    net_amount: float
-    repository_name: NotRequired[str]
+    id: int
+    key: str
+    created_at: NotRequired[str]
+    last_used: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "BillingUsageReportUserPropUsageItemsItemsType",
-    "BillingUsageReportUserPropUsageItemsItemsTypeForResponse",
-    "BillingUsageReportUserType",
-    "BillingUsageReportUserTypeForResponse",
+    "KeySimpleType",
+    "KeySimpleTypeForResponse",
 )

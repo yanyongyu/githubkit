@@ -9,48 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0050 import DiscussionType, DiscussionTypeForResponse
-from .group_0538 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0539 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0540 import (
+from .group_0293 import DeploymentType, DeploymentTypeForResponse
+from .group_0452 import PullRequestType, PullRequestTypeForResponse
+from .group_0542 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0543 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0541 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0551 import WebhooksCommentType, WebhooksCommentTypeForResponse
+from .group_0544 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDiscussionCommentDeletedType(TypedDict):
-    """discussion_comment deleted event"""
+class WebhookDeploymentProtectionRuleRequestedType(TypedDict):
+    """deployment protection rule requested event"""
 
-    action: Literal["deleted"]
-    comment: WebhooksCommentType
-    discussion: DiscussionType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
+    action: Literal["requested"]
+    environment: NotRequired[str]
+    event: NotRequired[str]
+    sha: NotRequired[str]
+    ref: NotRequired[str]
+    deployment_callback_url: NotRequired[str]
+    deployment: NotRequired[Union[DeploymentType, None]]
+    pull_requests: NotRequired[list[PullRequestType]]
+    repository: NotRequired[RepositoryWebhooksType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    installation: NotRequired[SimpleInstallationType]
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookDiscussionCommentDeletedTypeForResponse(TypedDict):
-    """discussion_comment deleted event"""
+class WebhookDeploymentProtectionRuleRequestedTypeForResponse(TypedDict):
+    """deployment protection rule requested event"""
 
-    action: Literal["deleted"]
-    comment: WebhooksCommentTypeForResponse
-    discussion: DiscussionTypeForResponse
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
+    action: Literal["requested"]
+    environment: NotRequired[str]
+    event: NotRequired[str]
+    sha: NotRequired[str]
+    ref: NotRequired[str]
+    deployment_callback_url: NotRequired[str]
+    deployment: NotRequired[Union[DeploymentTypeForResponse, None]]
+    pull_requests: NotRequired[list[PullRequestTypeForResponse]]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookDiscussionCommentDeletedType",
-    "WebhookDiscussionCommentDeletedTypeForResponse",
+    "WebhookDeploymentProtectionRuleRequestedType",
+    "WebhookDeploymentProtectionRuleRequestedTypeForResponse",
 )

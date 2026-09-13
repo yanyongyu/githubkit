@@ -9,71 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class GetBudgetType(TypedDict):
-    """GetBudget"""
+class GetBudgetUserStatesType(TypedDict):
+    """GetBudgetUserStates"""
 
-    id: str
-    budget_scope: Literal[
-        "enterprise",
-        "organization",
-        "repository",
-        "cost_center",
-        "multi_user_customer",
-        "multi_user_cost_center",
-        "user",
-    ]
-    budget_entity_name: str
+    user_states: list[GetBudgetUserStatesPropUserStatesItemsType]
+    has_next_page: bool
+    total_count: int
+
+
+class GetBudgetUserStatesTypeForResponse(TypedDict):
+    """GetBudgetUserStates"""
+
+    user_states: list[GetBudgetUserStatesPropUserStatesItemsTypeForResponse]
+    has_next_page: bool
+    total_count: int
+
+
+class GetBudgetUserStatesPropUserStatesItemsType(TypedDict):
+    """GetBudgetUserStatesPropUserStatesItems"""
+
     user: NotRequired[str]
-    budget_amount: int
-    prevent_further_usage: bool
-    budget_product_sku: str
-    budget_type: Literal["ProductPricing", "SkuPricing", "BundlePricing"]
-    budget_alerting: GetBudgetPropBudgetAlertingType
+    consumed_amount: float
+    target_amount: float
+    override_budget_id: NotRequired[str]
 
 
-class GetBudgetTypeForResponse(TypedDict):
-    """GetBudget"""
+class GetBudgetUserStatesPropUserStatesItemsTypeForResponse(TypedDict):
+    """GetBudgetUserStatesPropUserStatesItems"""
 
-    id: str
-    budget_scope: Literal[
-        "enterprise",
-        "organization",
-        "repository",
-        "cost_center",
-        "multi_user_customer",
-        "multi_user_cost_center",
-        "user",
-    ]
-    budget_entity_name: str
     user: NotRequired[str]
-    budget_amount: int
-    prevent_further_usage: bool
-    budget_product_sku: str
-    budget_type: Literal["ProductPricing", "SkuPricing", "BundlePricing"]
-    budget_alerting: GetBudgetPropBudgetAlertingTypeForResponse
-
-
-class GetBudgetPropBudgetAlertingType(TypedDict):
-    """GetBudgetPropBudgetAlerting"""
-
-    will_alert: NotRequired[bool]
-    alert_recipients: NotRequired[list[str]]
-
-
-class GetBudgetPropBudgetAlertingTypeForResponse(TypedDict):
-    """GetBudgetPropBudgetAlerting"""
-
-    will_alert: NotRequired[bool]
-    alert_recipients: NotRequired[list[str]]
+    consumed_amount: float
+    target_amount: float
+    override_budget_id: NotRequired[str]
 
 
 __all__ = (
-    "GetBudgetPropBudgetAlertingType",
-    "GetBudgetPropBudgetAlertingTypeForResponse",
-    "GetBudgetType",
-    "GetBudgetTypeForResponse",
+    "GetBudgetUserStatesPropUserStatesItemsType",
+    "GetBudgetUserStatesPropUserStatesItemsTypeForResponse",
+    "GetBudgetUserStatesType",
+    "GetBudgetUserStatesTypeForResponse",
 )

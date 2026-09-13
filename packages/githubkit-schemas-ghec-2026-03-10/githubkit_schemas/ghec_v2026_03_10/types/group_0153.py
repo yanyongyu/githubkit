@@ -9,36 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0154 import (
-    RepositoryRuleTagNamePatternPropParametersType,
-    RepositoryRuleTagNamePatternPropParametersTypeForResponse,
-)
+from typing_extensions import TypedDict
 
 
-class RepositoryRuleTagNamePatternType(TypedDict):
-    """tag_name_pattern
+class RepositoryRuleFilePathRestrictionPropParametersType(TypedDict):
+    """RepositoryRuleFilePathRestrictionPropParameters"""
 
-    Parameters to be used for the tag_name_pattern rule
-    """
-
-    type: Literal["tag_name_pattern"]
-    parameters: NotRequired[RepositoryRuleTagNamePatternPropParametersType]
+    restricted_file_paths: list[str]
 
 
-class RepositoryRuleTagNamePatternTypeForResponse(TypedDict):
-    """tag_name_pattern
+class RepositoryRuleFilePathRestrictionPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleFilePathRestrictionPropParameters"""
 
-    Parameters to be used for the tag_name_pattern rule
-    """
-
-    type: Literal["tag_name_pattern"]
-    parameters: NotRequired[RepositoryRuleTagNamePatternPropParametersTypeForResponse]
+    restricted_file_paths: list[str]
 
 
 __all__ = (
-    "RepositoryRuleTagNamePatternType",
-    "RepositoryRuleTagNamePatternTypeForResponse",
+    "RepositoryRuleFilePathRestrictionPropParametersType",
+    "RepositoryRuleFilePathRestrictionPropParametersTypeForResponse",
 )

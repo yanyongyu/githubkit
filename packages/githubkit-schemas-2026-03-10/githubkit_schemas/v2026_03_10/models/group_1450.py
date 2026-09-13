@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,32 +18,15 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2(GitHubModel):
-    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2"""
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody"""
 
-    state: Missing[Literal["open", "resolved"]] = Field(
-        default=UNSET,
-        description="Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`.",
+    message: str = Field(
+        description="The message for the pull request review dismissal"
     )
-    resolution: Missing[
-        Union[Literal["false_positive", "wont_fix", "revoked", "used_in_tests"], None]
-    ] = Field(
-        default=UNSET,
-        description="**Required when the `state` is `resolved`.** The reason for resolving the alert.",
-    )
-    resolution_comment: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="An optional comment when closing or reopening an alert. Cannot be updated or deleted.",
-    )
-    assignee: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The username of the user to assign to the alert. Set to `null` to unassign the alert.",
-    )
-    validity: Union[Literal["active", "inactive"], None] = Field(
-        description="Sets the validity of the secret scanning alert. Can be `active`, `inactive`, or `null` to clear the override."
-    )
+    event: Missing[Literal["DISMISS"]] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2)
+model_rebuild(ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody)
 
-__all__ = ("ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2",)
+__all__ = ("ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody",)

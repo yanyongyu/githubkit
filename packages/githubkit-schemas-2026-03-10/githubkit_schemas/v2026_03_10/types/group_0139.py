@@ -10,73 +10,40 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0138 import (
-    CodeScanningAlertLocationType,
-    CodeScanningAlertLocationTypeForResponse,
-)
+from typing_extensions import TypedDict
 
 
-class CodeScanningAlertInstanceType(TypedDict):
-    """CodeScanningAlertInstance"""
+class CodespaceMachineType(TypedDict):
+    """Codespace machine
 
-    ref: NotRequired[str]
-    analysis_key: NotRequired[str]
-    environment: NotRequired[str]
-    category: NotRequired[str]
-    state: NotRequired[Union[Literal["open", "dismissed", "fixed"], None]]
-    commit_sha: NotRequired[str]
-    message: NotRequired[CodeScanningAlertInstancePropMessageType]
-    location: NotRequired[CodeScanningAlertLocationType]
-    html_url: NotRequired[str]
-    classifications: NotRequired[
-        list[
-            Union[
-                Literal["source", "generated", "test", "library", "documentation"], None
-            ]
-        ]
-    ]
+    A description of the machine powering a codespace.
+    """
+
+    name: str
+    display_name: str
+    operating_system: str
+    storage_in_bytes: int
+    memory_in_bytes: int
+    cpus: int
+    prebuild_availability: Union[Literal["none", "ready", "in_progress"], None]
 
 
-class CodeScanningAlertInstanceTypeForResponse(TypedDict):
-    """CodeScanningAlertInstance"""
+class CodespaceMachineTypeForResponse(TypedDict):
+    """Codespace machine
 
-    ref: NotRequired[str]
-    analysis_key: NotRequired[str]
-    environment: NotRequired[str]
-    category: NotRequired[str]
-    state: NotRequired[Union[Literal["open", "dismissed", "fixed"], None]]
-    commit_sha: NotRequired[str]
-    message: NotRequired[CodeScanningAlertInstancePropMessageTypeForResponse]
-    location: NotRequired[CodeScanningAlertLocationTypeForResponse]
-    html_url: NotRequired[str]
-    classifications: NotRequired[
-        list[
-            Union[
-                Literal["source", "generated", "test", "library", "documentation"], None
-            ]
-        ]
-    ]
+    A description of the machine powering a codespace.
+    """
 
-
-class CodeScanningAlertInstancePropMessageType(TypedDict):
-    """CodeScanningAlertInstancePropMessage"""
-
-    text: NotRequired[str]
-    markdown: NotRequired[str]
-
-
-class CodeScanningAlertInstancePropMessageTypeForResponse(TypedDict):
-    """CodeScanningAlertInstancePropMessage"""
-
-    text: NotRequired[str]
-    markdown: NotRequired[str]
+    name: str
+    display_name: str
+    operating_system: str
+    storage_in_bytes: int
+    memory_in_bytes: int
+    cpus: int
+    prebuild_availability: Union[Literal["none", "ready", "in_progress"], None]
 
 
 __all__ = (
-    "CodeScanningAlertInstancePropMessageType",
-    "CodeScanningAlertInstancePropMessageTypeForResponse",
-    "CodeScanningAlertInstanceType",
-    "CodeScanningAlertInstanceTypeForResponse",
+    "CodespaceMachineType",
+    "CodespaceMachineTypeForResponse",
 )

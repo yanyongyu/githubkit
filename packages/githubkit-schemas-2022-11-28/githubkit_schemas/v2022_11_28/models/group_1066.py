@@ -9,19 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBody(GitHubModel):
-    """EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBody"""
+class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBody(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBody"""
 
-    organization_slugs: list[str] = Field(
-        description="Organization slug to assign the team to."
+    scope: Literal["all", "all_without_configurations"] = Field(
+        description="The type of repositories to attach the configuration to."
     )
 
 
-model_rebuild(EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBody)
+model_rebuild(
+    EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBody
+)
 
-__all__ = ("EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBody",)
+__all__ = (
+    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBody",
+)

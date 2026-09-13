@@ -9,141 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class AzureBlobConfigType(TypedDict):
-    """AzureBlobConfig
+class BypassResponseType(TypedDict):
+    """Bypass response
 
-    Azure Blob Config for audit log streaming configuration.
+    A response made by a delegated bypasser to a bypass request.
     """
 
-    key_id: str
-    encrypted_sas_url: str
-    container: str
+    id: NotRequired[int]
+    reviewer: NotRequired[BypassResponsePropReviewerType]
+    status: NotRequired[Literal["approved", "denied", "dismissed"]]
+    created_at: NotRequired[_dt.datetime]
 
 
-class AzureBlobConfigTypeForResponse(TypedDict):
-    """AzureBlobConfig
+class BypassResponseTypeForResponse(TypedDict):
+    """Bypass response
 
-    Azure Blob Config for audit log streaming configuration.
+    A response made by a delegated bypasser to a bypass request.
     """
 
-    key_id: str
-    encrypted_sas_url: str
-    container: str
+    id: NotRequired[int]
+    reviewer: NotRequired[BypassResponsePropReviewerTypeForResponse]
+    status: NotRequired[Literal["approved", "denied", "dismissed"]]
+    created_at: NotRequired[str]
 
 
-class AzureHubConfigType(TypedDict):
-    """AzureHubConfig
+class BypassResponsePropReviewerType(TypedDict):
+    """BypassResponsePropReviewer
 
-    Azure Event Hubs Config for audit log streaming configuration.
+    The user who reviewed the bypass request.
     """
 
-    name: str
-    encrypted_connstring: str
-    key_id: str
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
 
 
-class AzureHubConfigTypeForResponse(TypedDict):
-    """AzureHubConfig
+class BypassResponsePropReviewerTypeForResponse(TypedDict):
+    """BypassResponsePropReviewer
 
-    Azure Event Hubs Config for audit log streaming configuration.
+    The user who reviewed the bypass request.
     """
 
-    name: str
-    encrypted_connstring: str
-    key_id: str
-
-
-class AmazonS3AccessKeysConfigType(TypedDict):
-    """AmazonS3AccessKeysConfig
-
-    Amazon S3 Access Keys Config for audit log streaming configuration.
-    """
-
-    bucket: str
-    region: str
-    key_id: str
-    authentication_type: Literal["access_keys"]
-    encrypted_secret_key: str
-    encrypted_access_key_id: str
-
-
-class AmazonS3AccessKeysConfigTypeForResponse(TypedDict):
-    """AmazonS3AccessKeysConfig
-
-    Amazon S3 Access Keys Config for audit log streaming configuration.
-    """
-
-    bucket: str
-    region: str
-    key_id: str
-    authentication_type: Literal["access_keys"]
-    encrypted_secret_key: str
-    encrypted_access_key_id: str
-
-
-class HecConfigType(TypedDict):
-    """HecConfig
-
-    Hec Config for Audit Log Stream Configuration
-    """
-
-    domain: str
-    port: int
-    key_id: str
-    encrypted_token: str
-    path: str
-    ssl_verify: bool
-
-
-class HecConfigTypeForResponse(TypedDict):
-    """HecConfig
-
-    Hec Config for Audit Log Stream Configuration
-    """
-
-    domain: str
-    port: int
-    key_id: str
-    encrypted_token: str
-    path: str
-    ssl_verify: bool
-
-
-class DatadogConfigType(TypedDict):
-    """DatadogConfig
-
-    Datadog Config for audit log streaming configuration.
-    """
-
-    encrypted_token: str
-    site: Literal["US", "US3", "US5", "EU1", "US1-FED", "AP1"]
-    key_id: str
-
-
-class DatadogConfigTypeForResponse(TypedDict):
-    """DatadogConfig
-
-    Datadog Config for audit log streaming configuration.
-    """
-
-    encrypted_token: str
-    site: Literal["US", "US3", "US5", "EU1", "US1-FED", "AP1"]
-    key_id: str
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
 
 
 __all__ = (
-    "AmazonS3AccessKeysConfigType",
-    "AmazonS3AccessKeysConfigTypeForResponse",
-    "AzureBlobConfigType",
-    "AzureBlobConfigTypeForResponse",
-    "AzureHubConfigType",
-    "AzureHubConfigTypeForResponse",
-    "DatadogConfigType",
-    "DatadogConfigTypeForResponse",
-    "HecConfigType",
-    "HecConfigTypeForResponse",
+    "BypassResponsePropReviewerType",
+    "BypassResponsePropReviewerTypeForResponse",
+    "BypassResponseType",
+    "BypassResponseTypeForResponse",
 )

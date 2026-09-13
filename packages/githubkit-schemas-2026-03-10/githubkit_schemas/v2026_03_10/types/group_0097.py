@@ -9,28 +9,94 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsCacheRetentionLimitForOrganizationType(TypedDict):
-    """Actions cache retention limit for an organization
+class CreateBudgetType(TypedDict):
+    """CreateBudget"""
 
-    GitHub Actions cache retention policy for an organization.
-    """
-
-    max_cache_retention_days: NotRequired[int]
+    message: str
+    budget: CreateBudgetPropBudgetType
 
 
-class ActionsCacheRetentionLimitForOrganizationTypeForResponse(TypedDict):
-    """Actions cache retention limit for an organization
+class CreateBudgetTypeForResponse(TypedDict):
+    """CreateBudget"""
 
-    GitHub Actions cache retention policy for an organization.
-    """
+    message: str
+    budget: CreateBudgetPropBudgetTypeForResponse
 
-    max_cache_retention_days: NotRequired[int]
+
+class CreateBudgetPropBudgetType(TypedDict):
+    """CreateBudgetPropBudget"""
+
+    id: NotRequired[str]
+    budget_scope: NotRequired[
+        Literal[
+            "enterprise",
+            "organization",
+            "repository",
+            "cost_center",
+            "multi_user_customer",
+            "multi_user_cost_center",
+            "user",
+        ]
+    ]
+    budget_entity_name: NotRequired[str]
+    budget_amount: NotRequired[int]
+    prevent_further_usage: NotRequired[bool]
+    budget_product_sku: NotRequired[str]
+    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing", "BundlePricing"]]
+    budget_alerting: NotRequired[CreateBudgetPropBudgetPropBudgetAlertingType]
+    expires_at: NotRequired[_dt.date]
+
+
+class CreateBudgetPropBudgetTypeForResponse(TypedDict):
+    """CreateBudgetPropBudget"""
+
+    id: NotRequired[str]
+    budget_scope: NotRequired[
+        Literal[
+            "enterprise",
+            "organization",
+            "repository",
+            "cost_center",
+            "multi_user_customer",
+            "multi_user_cost_center",
+            "user",
+        ]
+    ]
+    budget_entity_name: NotRequired[str]
+    budget_amount: NotRequired[int]
+    prevent_further_usage: NotRequired[bool]
+    budget_product_sku: NotRequired[str]
+    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing", "BundlePricing"]]
+    budget_alerting: NotRequired[
+        CreateBudgetPropBudgetPropBudgetAlertingTypeForResponse
+    ]
+    expires_at: NotRequired[str]
+
+
+class CreateBudgetPropBudgetPropBudgetAlertingType(TypedDict):
+    """CreateBudgetPropBudgetPropBudgetAlerting"""
+
+    will_alert: NotRequired[bool]
+    alert_recipients: NotRequired[list[str]]
+
+
+class CreateBudgetPropBudgetPropBudgetAlertingTypeForResponse(TypedDict):
+    """CreateBudgetPropBudgetPropBudgetAlerting"""
+
+    will_alert: NotRequired[bool]
+    alert_recipients: NotRequired[list[str]]
 
 
 __all__ = (
-    "ActionsCacheRetentionLimitForOrganizationType",
-    "ActionsCacheRetentionLimitForOrganizationTypeForResponse",
+    "CreateBudgetPropBudgetPropBudgetAlertingType",
+    "CreateBudgetPropBudgetPropBudgetAlertingTypeForResponse",
+    "CreateBudgetPropBudgetType",
+    "CreateBudgetPropBudgetTypeForResponse",
+    "CreateBudgetType",
+    "CreateBudgetTypeForResponse",
 )

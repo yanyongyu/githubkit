@@ -9,45 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0191 import CustomPropertyValue
 
 
-class CustomPropertySetPayload(GitHubModel):
-    """Custom Property Set Payload
+class OrgRepoCustomPropertyValues(GitHubModel):
+    """Organization Repository Custom Property Values
 
-    Custom property set payload
+    List of custom property values for a repository
     """
 
-    value_type: Literal[
-        "string", "single_select", "multi_select", "true_false", "url"
-    ] = Field(description="The type of the value for the property")
-    required: Missing[bool] = Field(
-        default=UNSET, description="Whether the property is required."
-    )
-    default_value: Missing[Union[str, list[str], None]] = Field(
-        default=UNSET, description="Default value of the property"
-    )
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Short description of the property"
-    )
-    allowed_values: Missing[Union[list[str], None]] = Field(
-        default=UNSET,
-        description="An ordered list of the allowed values of the property.\nThe property can have up to 200 allowed values.",
-    )
-    values_editable_by: Missing[
-        Union[Literal["org_actors", "org_and_repo_actors"], None]
-    ] = Field(default=UNSET, description="Who can edit the values of the property")
-    require_explicit_values: Missing[bool] = Field(
-        default=UNSET, description="Whether setting properties values is mandatory"
+    repository_id: int = Field()
+    repository_name: str = Field()
+    repository_full_name: str = Field()
+    properties: list[CustomPropertyValue] = Field(
+        description="List of custom property names and associated values"
     )
 
 
-model_rebuild(CustomPropertySetPayload)
+model_rebuild(OrgRepoCustomPropertyValues)
 
-__all__ = ("CustomPropertySetPayload",)
+__all__ = ("OrgRepoCustomPropertyValues",)

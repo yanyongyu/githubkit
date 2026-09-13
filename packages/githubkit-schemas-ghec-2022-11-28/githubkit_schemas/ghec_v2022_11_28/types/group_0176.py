@@ -9,35 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
 from typing_extensions import TypedDict
 
-
-class RepositoryRuleMergeQueuePropParametersType(TypedDict):
-    """RepositoryRuleMergeQueuePropParameters"""
-
-    check_response_timeout_minutes: int
-    grouping_strategy: Literal["ALLGREEN", "HEADGREEN"]
-    max_entries_to_build: int
-    max_entries_to_merge: int
-    merge_method: Literal["MERGE", "SQUASH", "REBASE"]
-    min_entries_to_merge: int
-    min_entries_to_merge_wait_minutes: int
+from .group_0177 import (
+    RulesetVersionPropActorType,
+    RulesetVersionPropActorTypeForResponse,
+)
 
 
-class RepositoryRuleMergeQueuePropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleMergeQueuePropParameters"""
+class RulesetVersionType(TypedDict):
+    """Ruleset version
 
-    check_response_timeout_minutes: int
-    grouping_strategy: Literal["ALLGREEN", "HEADGREEN"]
-    max_entries_to_build: int
-    max_entries_to_merge: int
-    merge_method: Literal["MERGE", "SQUASH", "REBASE"]
-    min_entries_to_merge: int
-    min_entries_to_merge_wait_minutes: int
+    The historical version of a ruleset
+    """
+
+    version_id: int
+    actor: RulesetVersionPropActorType
+    updated_at: _dt.datetime
+
+
+class RulesetVersionTypeForResponse(TypedDict):
+    """Ruleset version
+
+    The historical version of a ruleset
+    """
+
+    version_id: int
+    actor: RulesetVersionPropActorTypeForResponse
+    updated_at: str
 
 
 __all__ = (
-    "RepositoryRuleMergeQueuePropParametersType",
-    "RepositoryRuleMergeQueuePropParametersTypeForResponse",
+    "RulesetVersionType",
+    "RulesetVersionTypeForResponse",
 )

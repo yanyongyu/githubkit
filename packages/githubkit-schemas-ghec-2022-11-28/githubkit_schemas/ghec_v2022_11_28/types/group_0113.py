@@ -11,32 +11,33 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0112 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
+from .group_0114 import (
+    EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType,
+    EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameTypeForResponse,
+)
 
 
-class CustomPropertiesForOrgsGetEnterprisePropertyValuesType(TypedDict):
-    """Enterprise Organization Custom Property Values
+class EnterpriseRulesetConditionsOrganizationNameTargetType(TypedDict):
+    """Repository ruleset conditions for organization names
 
-    List of custom property values for an organization
+    Parameters for an organization name condition
     """
 
-    organization_id: int
-    organization_login: str
-    properties: list[CustomPropertyValueType]
+    organization_name: (
+        EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType
+    )
 
 
-class CustomPropertiesForOrgsGetEnterprisePropertyValuesTypeForResponse(TypedDict):
-    """Enterprise Organization Custom Property Values
+class EnterpriseRulesetConditionsOrganizationNameTargetTypeForResponse(TypedDict):
+    """Repository ruleset conditions for organization names
 
-    List of custom property values for an organization
+    Parameters for an organization name condition
     """
 
-    organization_id: int
-    organization_login: str
-    properties: list[CustomPropertyValueTypeForResponse]
+    organization_name: EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameTypeForResponse
 
 
 __all__ = (
-    "CustomPropertiesForOrgsGetEnterprisePropertyValuesType",
-    "CustomPropertiesForOrgsGetEnterprisePropertyValuesTypeForResponse",
+    "EnterpriseRulesetConditionsOrganizationNameTargetType",
+    "EnterpriseRulesetConditionsOrganizationNameTargetTypeForResponse",
 )

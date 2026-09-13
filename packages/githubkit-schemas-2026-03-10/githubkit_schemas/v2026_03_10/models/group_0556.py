@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,25 +18,36 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhooksChanges(GitHubModel):
-    """WebhooksChanges
+class WebhooksLabelPropArchivedBy(GitHubModel):
+    """WebhooksLabelPropArchivedBy
 
-    The changes to the comment.
+    The user who archived the label, or `null` if it has not been archived.
     """
 
-    body: Missing[WebhooksChangesPropBody] = Field(default=UNSET)
+    name: Missing[Union[str, None]] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    login: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    avatar_url: str = Field()
+    gravatar_id: Union[str, None] = Field()
+    url: str = Field()
+    html_url: str = Field()
+    followers_url: str = Field()
+    following_url: str = Field()
+    gists_url: str = Field()
+    starred_url: str = Field()
+    subscriptions_url: str = Field()
+    organizations_url: str = Field()
+    repos_url: str = Field()
+    events_url: str = Field()
+    received_events_url: str = Field()
+    type: str = Field()
+    site_admin: bool = Field()
+    starred_at: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhooksChangesPropBody(GitHubModel):
-    """WebhooksChangesPropBody"""
+model_rebuild(WebhooksLabelPropArchivedBy)
 
-    from_: str = Field(alias="from", description="The previous version of the body.")
-
-
-model_rebuild(WebhooksChanges)
-model_rebuild(WebhooksChangesPropBody)
-
-__all__ = (
-    "WebhooksChanges",
-    "WebhooksChangesPropBody",
-)
+__all__ = ("WebhooksLabelPropArchivedBy",)

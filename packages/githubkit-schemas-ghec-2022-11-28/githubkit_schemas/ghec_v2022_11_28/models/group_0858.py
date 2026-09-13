@@ -18,19 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0622 import EnterpriseWebhooks
-from .group_0623 import SimpleInstallation
-from .group_0624 import OrganizationSimpleWebhooks
-from .group_0625 import RepositoryWebhooks
-from .group_0645 import WebhooksIssue2
-from .group_0859 import WebhookIssuesTransferredPropChanges
+from .group_0625 import EnterpriseWebhooks
+from .group_0626 import SimpleInstallation
+from .group_0627 import OrganizationSimpleWebhooks
+from .group_0628 import RepositoryWebhooks
+from .group_0648 import WebhooksMilestone
+from .group_0859 import WebhookIssuesMilestonedPropIssue
 
 
-class WebhookIssuesTransferred(GitHubModel):
-    """issues transferred event"""
+class WebhookIssuesMilestoned(GitHubModel):
+    """issues milestoned event"""
 
-    action: Literal["transferred"] = Field()
-    changes: WebhookIssuesTransferredPropChanges = Field()
+    action: Literal["milestoned"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -41,9 +40,13 @@ class WebhookIssuesTransferred(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    issue: WebhooksIssue2 = Field(
+    issue: WebhookIssuesMilestonedPropIssue = Field(
         title="Issue",
         description="The [issue](https://docs.github.com/enterprise-cloud@latest/rest/issues/issues#get-an-issue) itself.",
+    )
+    milestone: WebhooksMilestone = Field(
+        title="Milestone",
+        description="A collection of related issues and pull requests.",
     )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
@@ -57,6 +60,6 @@ class WebhookIssuesTransferred(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookIssuesTransferred)
+model_rebuild(WebhookIssuesMilestoned)
 
-__all__ = ("WebhookIssuesTransferred",)
+__all__ = ("WebhookIssuesMilestoned",)

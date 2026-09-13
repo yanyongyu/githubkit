@@ -9,20 +9,72 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class DeleteBudget(GitHubModel):
-    """DeleteBudget"""
+class GetCostCenter(GitHubModel):
+    """GetCostCenter"""
 
-    message: str = Field(
-        description="A message indicating the result of the deletion operation"
+    id: str = Field(description="ID of the cost center.")
+    name: str = Field(description="Name of the cost center.")
+    azure_subscription: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="Azure subscription ID associated with the cost center. Only present for cost centers linked to Azure subscriptions.",
     )
-    id: str = Field(description="The ID of the deleted budget")
+    state: Missing[Literal["active", "deleted"]] = Field(
+        default=UNSET, description="State of the cost center."
+    )
+    resources: list[GetCostCenterPropResourcesItems] = Field()
+    has_next_page: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates if there are more resources available for pagination. Only present when pagination is used.",
+    )
+    ai_credit_pool_enabled: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether the cost center draws from the AI credit pool.\n\nThis can only be enabled for cost centers that contain only user or team resources.\n\n- `false` — no cap; the cost center draws from the shared enterprise pool.\n- `true` — the cost center is capped at an amount derived from its members' license entitlements.",
+    )
+    ai_credit_pool_state: Missing[GetCostCenterPropAiCreditPoolState] = Field(
+        default=UNSET,
+        description="Read-only cap-budget projection for the cost center. Only present when the cost center draws from the AI credit pool.",
+    )
 
 
-model_rebuild(DeleteBudget)
+class GetCostCenterPropResourcesItems(GitHubModel):
+    """GetCostCenterPropResourcesItems"""
 
-__all__ = ("DeleteBudget",)
+    type: str = Field(description="Type of the resource.")
+    name: str = Field(description="Name of the resource.")
+
+
+class GetCostCenterPropAiCreditPoolState(GitHubModel):
+    """GetCostCenterPropAiCreditPoolState
+
+    Read-only cap-budget projection for the cost center. Only present when the cost
+    center draws from the AI credit pool.
+    """
+
+    target_amount: Missing[Union[float, None]] = Field(
+        default=UNSET,
+        description="The AI credit pool cap target amount, in AI Credits. Null when the cap budget has not been materialized yet.",
+    )
+    current_amount: Missing[Union[float, None]] = Field(
+        default=UNSET,
+        description="The current-month applied amount against the AI credit pool cap, in AI Credits. Null when the cap budget has not been materialized yet.",
+    )
+
+
+model_rebuild(GetCostCenter)
+model_rebuild(GetCostCenterPropResourcesItems)
+model_rebuild(GetCostCenterPropAiCreditPoolState)
+
+__all__ = (
+    "GetCostCenter",
+    "GetCostCenterPropAiCreditPoolState",
+    "GetCostCenterPropResourcesItems",
+)

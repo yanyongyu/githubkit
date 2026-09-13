@@ -9,21 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody(GitHubModel):
-    """OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody"""
-
-    default_level: Literal["public", "internal"] = Field(
-        description="The default repository access level for Dependabot updates."
-    )
+from .group_0253 import MinimalRepository
 
 
-model_rebuild(OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody)
+class OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200(GitHubModel):
+    """OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200"""
 
-__all__ = ("OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody",)
+    total_count: int = Field()
+    repositories: list[MinimalRepository] = Field()
+
+
+model_rebuild(OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200)
+
+__all__ = ("OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200",)

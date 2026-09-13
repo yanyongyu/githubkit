@@ -9,35 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class Label(GitHubModel):
-    """Label
+class IssueType(GitHubModel):
+    """Issue Type
 
-    Color-coded labels help you categorize and filter your issues (just like labels
-    in Gmail).
+    The type assigned to the issue. This is only present for issues in repositories
+    where issue types are supported.
     """
 
-    id: int = Field(description="Unique identifier for the label.")
-    node_id: str = Field()
-    url: str = Field(description="URL for the label")
-    name: str = Field(description="The name of the label.")
+    id: int = Field(description="The unique identifier of the issue type.")
+    node_id: str = Field(description="The node identifier of the issue type.")
+    name: str = Field(description="The name of the issue type.")
     description: Union[str, None] = Field(
-        description="Optional description of the label, such as its purpose."
+        description="The description of the issue type."
     )
-    color: str = Field(
-        description="6-character hex code, without the leading #, identifying the color"
+    color: Missing[
+        Union[
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+            None,
+        ]
+    ] = Field(default=UNSET, description="The color of the issue type.")
+    created_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="The time the issue type created."
     )
-    default: bool = Field(
-        description="Whether this label comes by default in a new repository."
+    updated_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="The time the issue type last updated."
+    )
+    is_enabled: Missing[bool] = Field(
+        default=UNSET, description="The enabled state of the issue type."
     )
 
 
-model_rebuild(Label)
+model_rebuild(IssueType)
 
-__all__ = ("Label",)
+__all__ = ("IssueType",)

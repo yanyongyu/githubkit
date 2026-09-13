@@ -11,24 +11,41 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoSubscriptionPutBody(GitHubModel):
-    """ReposOwnerRepoSubscriptionPutBody"""
+class ReposOwnerRepoSecretScanningCustomPatternsPostResponse422(GitHubModel):
+    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse422"""
 
-    subscribed: Missing[bool] = Field(
-        default=UNSET,
-        description="Determines if notifications should be received from this repository.",
+    message: Missing[str] = Field(
+        default=UNSET, description="A summary message describing the error."
     )
-    ignored: Missing[bool] = Field(
+    validation_errors: Missing[
+        ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors
+    ] = Field(
         default=UNSET,
-        description="Determines if all notifications should be blocked from this repository.",
+        description="A map of validation errors keyed by the zero-based index of the pattern that failed.",
     )
 
 
-model_rebuild(ReposOwnerRepoSubscriptionPutBody)
+class ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors(
+    ExtraGitHubModel
+):
+    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors
 
-__all__ = ("ReposOwnerRepoSubscriptionPutBody",)
+    A map of validation errors keyed by the zero-based index of the pattern that
+    failed.
+    """
+
+
+model_rebuild(ReposOwnerRepoSecretScanningCustomPatternsPostResponse422)
+model_rebuild(
+    ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors
+)
+
+__all__ = (
+    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422",
+    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors",
+)

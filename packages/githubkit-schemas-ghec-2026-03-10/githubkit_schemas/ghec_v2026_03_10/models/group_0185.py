@@ -9,6 +9,9 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,79 +19,50 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class SecretScanningLocationIssueTitle(GitHubModel):
-    """SecretScanningLocationIssueTitle
+class SecretScanningCustomPattern(GitHubModel):
+    """Secret Scanning Custom Pattern
 
-    Represents an 'issue_title' secret scanning location type. This location type
-    shows that a secret was detected in the title of an issue.
+    A custom pattern for secret scanning.
     """
 
-    issue_title_url: str = Field(
-        description="The API URL to get the issue where the secret was detected."
+    id: int = Field(description="The ID of the custom pattern.")
+    name: str = Field(description="The name of the custom pattern.")
+    pattern: str = Field(description="The regular expression of the custom pattern.")
+    slug: str = Field(
+        description="A URL-friendly identifier for the custom pattern, derived from its name."
     )
-    html_url: Missing[str] = Field(
+    state: Literal["published", "unpublished"] = Field(
+        description="The state of the custom pattern."
+    )
+    push_protection_enabled: bool = Field(
+        description="Whether push protection is enabled for this custom pattern."
+    )
+    start_delimiter: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The start delimiter regex for the custom pattern."
+    )
+    end_delimiter: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The end delimiter regex for the custom pattern."
+    )
+    must_match: Missing[Union[list[str], None]] = Field(
+        default=UNSET, description="List of regexes that the secret must match."
+    )
+    must_not_match: Missing[Union[list[str], None]] = Field(
+        default=UNSET, description="List of regexes that the secret must not match."
+    )
+    custom_pattern_version: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The GitHub URL for the issue where the secret was detected.",
+        description="The version of the entity. This is used to confirm you're updating the current version of the entity and mitigate unintentionally overriding someone else's update.",
     )
-
-
-class SecretScanningLocationIssueComment(GitHubModel):
-    """SecretScanningLocationIssueComment
-
-    Represents an 'issue_comment' secret scanning location type. This location type
-    shows that a secret was detected in a comment on an issue.
-    """
-
-    issue_comment_url: str = Field(
-        description="The API URL to get the issue comment where the secret was detected."
-    )
-    html_url: Missing[str] = Field(
+    created_at: Missing[_dt.datetime] = Field(
         default=UNSET,
-        description="The GitHub URL for the issue comment where the secret was detected.",
+        description="The date and time the custom pattern was created in ISO 8601 format.",
     )
-
-
-class SecretScanningLocationPullRequestTitle(GitHubModel):
-    """SecretScanningLocationPullRequestTitle
-
-    Represents a 'pull_request_title' secret scanning location type. This location
-    type shows that a secret was detected in the title of a pull request.
-    """
-
-    pull_request_title_url: str = Field(
-        description="The API URL to get the pull request where the secret was detected."
-    )
-    html_url: Missing[str] = Field(
+    updated_at: Missing[_dt.datetime] = Field(
         default=UNSET,
-        description="The GitHub URL for the pull request where the secret was detected.",
+        description="The date and time the custom pattern was last updated in ISO 8601 format.",
     )
 
 
-class SecretScanningLocationPullRequestReviewComment(GitHubModel):
-    """SecretScanningLocationPullRequestReviewComment
+model_rebuild(SecretScanningCustomPattern)
 
-    Represents a 'pull_request_review_comment' secret scanning location type. This
-    location type shows that a secret was detected in a review comment on a pull
-    request.
-    """
-
-    pull_request_review_comment_url: str = Field(
-        description="The API URL to get the pull request review comment where the secret was detected."
-    )
-    html_url: Missing[str] = Field(
-        default=UNSET,
-        description="The GitHub URL for the pull request review comment where the secret was detected.",
-    )
-
-
-model_rebuild(SecretScanningLocationIssueTitle)
-model_rebuild(SecretScanningLocationIssueComment)
-model_rebuild(SecretScanningLocationPullRequestTitle)
-model_rebuild(SecretScanningLocationPullRequestReviewComment)
-
-__all__ = (
-    "SecretScanningLocationIssueComment",
-    "SecretScanningLocationIssueTitle",
-    "SecretScanningLocationPullRequestReviewComment",
-    "SecretScanningLocationPullRequestTitle",
-)
+__all__ = ("SecretScanningCustomPattern",)

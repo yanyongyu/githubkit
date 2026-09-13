@@ -12,27 +12,36 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0264 import (
-    SecretScanningCustomPatternToDeleteType,
-    SecretScanningCustomPatternToDeleteTypeForResponse,
-)
+
+class ReposOwnerRepoReleasesPostBodyType(TypedDict):
+    """ReposOwnerRepoReleasesPostBody"""
+
+    tag_name: str
+    target_commitish: NotRequired[str]
+    name: NotRequired[str]
+    body: NotRequired[str]
+    draft: NotRequired[bool]
+    prerelease: NotRequired[bool]
+    discussion_category_name: NotRequired[str]
+    generate_release_notes: NotRequired[bool]
+    make_latest: NotRequired[Literal["true", "false", "legacy"]]
 
 
-class ReposOwnerRepoSecretScanningCustomPatternsDeleteBodyType(TypedDict):
-    """ReposOwnerRepoSecretScanningCustomPatternsDeleteBody"""
+class ReposOwnerRepoReleasesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoReleasesPostBody"""
 
-    patterns: list[SecretScanningCustomPatternToDeleteType]
-    post_delete_action: NotRequired[Literal["delete_alerts", "resolve_alerts"]]
-
-
-class ReposOwnerRepoSecretScanningCustomPatternsDeleteBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoSecretScanningCustomPatternsDeleteBody"""
-
-    patterns: list[SecretScanningCustomPatternToDeleteTypeForResponse]
-    post_delete_action: NotRequired[Literal["delete_alerts", "resolve_alerts"]]
+    tag_name: str
+    target_commitish: NotRequired[str]
+    name: NotRequired[str]
+    body: NotRequired[str]
+    draft: NotRequired[bool]
+    prerelease: NotRequired[bool]
+    discussion_category_name: NotRequired[str]
+    generate_release_notes: NotRequired[bool]
+    make_latest: NotRequired[Literal["true", "false", "legacy"]]
 
 
 __all__ = (
-    "ReposOwnerRepoSecretScanningCustomPatternsDeleteBodyType",
-    "ReposOwnerRepoSecretScanningCustomPatternsDeleteBodyTypeForResponse",
+    "ReposOwnerRepoReleasesPostBodyType",
+    "ReposOwnerRepoReleasesPostBodyTypeForResponse",
 )

@@ -9,56 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing_extensions import TypedDict
-
-from .group_0499 import (
-    PullRequestStackPullRequestType,
-    PullRequestStackPullRequestTypeForResponse,
-)
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoStacksPostResponse201Type(TypedDict):
-    """ReposOwnerRepoStacksPostResponse201"""
+class ReposOwnerRepoReleasesReleaseIdPatchBodyType(TypedDict):
+    """ReposOwnerRepoReleasesReleaseIdPatchBody"""
 
-    id: int
-    number: int
-    node_id: str
-    url: str
-    base: ReposOwnerRepoStacksPostResponse201PropBaseType
-    open_: bool
-    created_at: _dt.datetime
-    pull_requests: list[PullRequestStackPullRequestType]
-
-
-class ReposOwnerRepoStacksPostResponse201TypeForResponse(TypedDict):
-    """ReposOwnerRepoStacksPostResponse201"""
-
-    id: int
-    number: int
-    node_id: str
-    url: str
-    base: ReposOwnerRepoStacksPostResponse201PropBaseTypeForResponse
-    open_: bool
-    created_at: str
-    pull_requests: list[PullRequestStackPullRequestTypeForResponse]
+    tag_name: NotRequired[str]
+    target_commitish: NotRequired[str]
+    name: NotRequired[str]
+    body: NotRequired[str]
+    draft: NotRequired[bool]
+    prerelease: NotRequired[bool]
+    make_latest: NotRequired[Literal["true", "false", "legacy"]]
+    discussion_category_name: NotRequired[str]
 
 
-class ReposOwnerRepoStacksPostResponse201PropBaseType(TypedDict):
-    """ReposOwnerRepoStacksPostResponse201PropBase"""
+class ReposOwnerRepoReleasesReleaseIdPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoReleasesReleaseIdPatchBody"""
 
-    ref: str
-
-
-class ReposOwnerRepoStacksPostResponse201PropBaseTypeForResponse(TypedDict):
-    """ReposOwnerRepoStacksPostResponse201PropBase"""
-
-    ref: str
+    tag_name: NotRequired[str]
+    target_commitish: NotRequired[str]
+    name: NotRequired[str]
+    body: NotRequired[str]
+    draft: NotRequired[bool]
+    prerelease: NotRequired[bool]
+    make_latest: NotRequired[Literal["true", "false", "legacy"]]
+    discussion_category_name: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoStacksPostResponse201PropBaseType",
-    "ReposOwnerRepoStacksPostResponse201PropBaseTypeForResponse",
-    "ReposOwnerRepoStacksPostResponse201Type",
-    "ReposOwnerRepoStacksPostResponse201TypeForResponse",
+    "ReposOwnerRepoReleasesReleaseIdPatchBodyType",
+    "ReposOwnerRepoReleasesReleaseIdPatchBodyTypeForResponse",
 )

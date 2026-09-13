@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,17 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0196 import FullRepository
-from .group_0538 import EnterpriseWebhooks
-from .group_0539 import SimpleInstallation
-from .group_0540 import OrganizationSimpleWebhooks
-from .group_0963 import WebhookSecurityAndAnalysisPropChanges
+from .group_0541 import EnterpriseWebhooks
+from .group_0542 import SimpleInstallation
+from .group_0543 import OrganizationSimpleWebhooks
+from .group_0544 import RepositoryWebhooks
+from .group_0590 import SecretScanningAlertWebhook
 
 
-class WebhookSecurityAndAnalysis(GitHubModel):
-    """security_and_analysis event"""
+class WebhookSecretScanningAlertMetadataRemoved(GitHubModel):
+    """secret_scanning_alert metadata removed event"""
 
-    changes: WebhookSecurityAndAnalysisPropChanges = Field()
+    action: Literal["metadata_removed"] = Field()
+    alert: SecretScanningAlertWebhook = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -42,14 +45,15 @@ class WebhookSecurityAndAnalysis(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: FullRepository = Field(
-        title="Full Repository", description="Full Repository"
+    repository: RepositoryWebhooks = Field(
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
     sender: Missing[SimpleUser] = Field(
         default=UNSET, title="Simple User", description="A GitHub user."
     )
 
 
-model_rebuild(WebhookSecurityAndAnalysis)
+model_rebuild(WebhookSecretScanningAlertMetadataRemoved)
 
-__all__ = ("WebhookSecurityAndAnalysis",)
+__all__ = ("WebhookSecretScanningAlertMetadataRemoved",)

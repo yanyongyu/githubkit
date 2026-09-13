@@ -9,22 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class CommitActivity(GitHubModel):
-    """Commit Activity
-
-    Commit Activity
-    """
-
-    days: list[int] = Field()
-    total: int = Field()
-    week: int = Field()
+from .group_0003 import SimpleUser
 
 
-model_rebuild(CommitActivity)
+class PullRequestStackPullRequestAllof1(GitHubModel):
+    """PullRequestStackPullRequestAllof1"""
 
-__all__ = ("CommitActivity",)
+    node_id: str = Field()
+    title: str = Field()
+    state: Literal["open", "closed"] = Field()
+    merged_at: Union[_dt.datetime, None] = Field()
+    draft: bool = Field()
+    html_url: str = Field()
+    user: Union[SimpleUser, None] = Field()
+
+
+model_rebuild(PullRequestStackPullRequestAllof1)
+
+__all__ = ("PullRequestStackPullRequestAllof1",)

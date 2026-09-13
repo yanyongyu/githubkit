@@ -9,49 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoCodespacesSecretsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoCodespacesSecretsGetResponse200"""
+class ReposOwnerRepoCheckSuitesPreferencesPatchBodyType(TypedDict):
+    """ReposOwnerRepoCheckSuitesPreferencesPatchBody"""
 
-    total_count: int
-    secrets: list[RepoCodespacesSecretType]
-
-
-class ReposOwnerRepoCodespacesSecretsGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoCodespacesSecretsGetResponse200"""
-
-    total_count: int
-    secrets: list[RepoCodespacesSecretTypeForResponse]
+    auto_trigger_checks: NotRequired[
+        list[
+            ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType
+        ]
+    ]
 
 
-class RepoCodespacesSecretType(TypedDict):
-    """Codespaces Secret
+class ReposOwnerRepoCheckSuitesPreferencesPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoCheckSuitesPreferencesPatchBody"""
 
-    Set repository secrets for GitHub Codespaces.
-    """
+    auto_trigger_checks: NotRequired[
+        list[
+            ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsTypeForResponse
+        ]
+    ]
 
-    name: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+
+class ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType(
+    TypedDict
+):
+    """ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems"""
+
+    app_id: int
+    setting: bool
 
 
-class RepoCodespacesSecretTypeForResponse(TypedDict):
-    """Codespaces Secret
+class ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems"""
 
-    Set repository secrets for GitHub Codespaces.
-    """
-
-    name: str
-    created_at: str
-    updated_at: str
+    app_id: int
+    setting: bool
 
 
 __all__ = (
-    "RepoCodespacesSecretType",
-    "RepoCodespacesSecretTypeForResponse",
-    "ReposOwnerRepoCodespacesSecretsGetResponse200Type",
-    "ReposOwnerRepoCodespacesSecretsGetResponse200TypeForResponse",
+    "ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType",
+    "ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsTypeForResponse",
+    "ReposOwnerRepoCheckSuitesPreferencesPatchBodyType",
+    "ReposOwnerRepoCheckSuitesPreferencesPatchBodyTypeForResponse",
 )

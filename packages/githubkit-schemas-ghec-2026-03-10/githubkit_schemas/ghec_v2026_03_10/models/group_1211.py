@@ -12,14 +12,16 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202(GitHubModel):
-    """EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202"""
+class EnterprisesEnterpriseCopilotContentExclusionPutResponse200(GitHubModel):
+    """EnterprisesEnterpriseCopilotContentExclusionPutResponse200"""
 
-    message: str = Field()
+    message: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202)
+model_rebuild(EnterprisesEnterpriseCopilotContentExclusionPutResponse200)
 
-__all__ = ("EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202",)
+__all__ = ("EnterprisesEnterpriseCopilotContentExclusionPutResponse200",)

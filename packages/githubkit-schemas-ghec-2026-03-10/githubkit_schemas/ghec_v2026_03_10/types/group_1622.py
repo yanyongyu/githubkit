@@ -9,24 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200Type(TypedDict):
-    """ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200"""
+class ReposOwnerRepoNotificationsPutResponse202Type(TypedDict):
+    """ReposOwnerRepoNotificationsPutResponse202"""
 
-    enabled: bool
+    message: NotRequired[str]
+    url: NotRequired[str]
 
 
-class ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200"""
+class ReposOwnerRepoNotificationsPutResponse202TypeForResponse(TypedDict):
+    """ReposOwnerRepoNotificationsPutResponse202"""
 
-    enabled: bool
+    message: NotRequired[str]
+    url: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200Type",
-    "ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200TypeForResponse",
+    "ReposOwnerRepoNotificationsPutResponse202Type",
+    "ReposOwnerRepoNotificationsPutResponse202TypeForResponse",
 )

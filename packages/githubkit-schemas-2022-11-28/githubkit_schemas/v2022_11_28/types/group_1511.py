@@ -9,39 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0145 import (
-    CopilotSpaceCollaboratorAnyof0Type,
-    CopilotSpaceCollaboratorAnyof0TypeForResponse,
-    CopilotSpaceCollaboratorAnyof1Type,
-    CopilotSpaceCollaboratorAnyof1TypeForResponse,
-)
+
+class UserSocialAccountsPostBodyType(TypedDict):
+    """UserSocialAccountsPostBody
+
+    Examples:
+        {'account_urls': ['https://www.linkedin.com/company/github/',
+    'https://twitter.com/github']}
+    """
+
+    account_urls: list[str]
 
 
-class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200Type(TypedDict):
-    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200"""
+class UserSocialAccountsPostBodyTypeForResponse(TypedDict):
+    """UserSocialAccountsPostBody
 
-    collaborators: list[
-        Union[CopilotSpaceCollaboratorAnyof0Type, CopilotSpaceCollaboratorAnyof1Type]
-    ]
+    Examples:
+        {'account_urls': ['https://www.linkedin.com/company/github/',
+    'https://twitter.com/github']}
+    """
 
-
-class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200TypeForResponse(
-    TypedDict
-):
-    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200"""
-
-    collaborators: list[
-        Union[
-            CopilotSpaceCollaboratorAnyof0TypeForResponse,
-            CopilotSpaceCollaboratorAnyof1TypeForResponse,
-        ]
-    ]
+    account_urls: list[str]
 
 
 __all__ = (
-    "UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200Type",
-    "UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200TypeForResponse",
+    "UserSocialAccountsPostBodyType",
+    "UserSocialAccountsPostBodyTypeForResponse",
 )

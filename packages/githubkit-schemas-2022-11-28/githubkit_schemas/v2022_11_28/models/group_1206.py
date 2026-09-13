@@ -12,21 +12,16 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgInteractionLimitsPullsCreationCapGetResponse200(GitHubModel):
-    """OrgsOrgInteractionLimitsPullsCreationCapGetResponse200"""
+class OrgsOrgCopilotContentExclusionPutResponse200(GitHubModel):
+    """OrgsOrgCopilotContentExclusionPutResponse200"""
 
-    enabled: bool = Field(
-        description="Whether the pull request creation cap is enabled"
-    )
-    max_open_pull_requests: int = Field(
-        le=1000.0,
-        ge=1.0,
-        description="The maximum number of open pull requests a user can have at one time",
-    )
+    message: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgInteractionLimitsPullsCreationCapGetResponse200)
+model_rebuild(OrgsOrgCopilotContentExclusionPutResponse200)
 
-__all__ = ("OrgsOrgInteractionLimitsPullsCreationCapGetResponse200",)
+__all__ = ("OrgsOrgCopilotContentExclusionPutResponse200",)

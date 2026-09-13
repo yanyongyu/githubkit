@@ -9,38 +9,87 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0129 import TeamSimpleType, TeamSimpleTypeForResponse
 
-class ActionsPublicKeyType(TypedDict):
-    """ActionsPublicKey
 
-    The public key used for setting Actions Secrets.
+class TeamType(TypedDict):
+    """Team
+
+    Groups of organization members that gives permissions on specified repositories.
     """
 
-    key_id: str
-    key: str
-    id: NotRequired[int]
-    url: NotRequired[str]
-    title: NotRequired[str]
-    created_at: NotRequired[str]
+    id: int
+    node_id: str
+    name: str
+    slug: str
+    description: Union[str, None]
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    permission: str
+    permissions: NotRequired[TeamPropPermissionsType]
+    url: str
+    html_url: str
+    members_url: str
+    repositories_url: str
+    type: Literal["enterprise", "organization"]
+    access_source: NotRequired[Literal["direct", "organization", "enterprise"]]
+    organization_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
+    parent: Union[TeamSimpleType, None]
 
 
-class ActionsPublicKeyTypeForResponse(TypedDict):
-    """ActionsPublicKey
+class TeamTypeForResponse(TypedDict):
+    """Team
 
-    The public key used for setting Actions Secrets.
+    Groups of organization members that gives permissions on specified repositories.
     """
 
-    key_id: str
-    key: str
-    id: NotRequired[int]
-    url: NotRequired[str]
-    title: NotRequired[str]
-    created_at: NotRequired[str]
+    id: int
+    node_id: str
+    name: str
+    slug: str
+    description: Union[str, None]
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    permission: str
+    permissions: NotRequired[TeamPropPermissionsTypeForResponse]
+    url: str
+    html_url: str
+    members_url: str
+    repositories_url: str
+    type: Literal["enterprise", "organization"]
+    access_source: NotRequired[Literal["direct", "organization", "enterprise"]]
+    organization_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
+    parent: Union[TeamSimpleTypeForResponse, None]
+
+
+class TeamPropPermissionsType(TypedDict):
+    """TeamPropPermissions"""
+
+    pull: bool
+    triage: bool
+    push: bool
+    maintain: bool
+    admin: bool
+
+
+class TeamPropPermissionsTypeForResponse(TypedDict):
+    """TeamPropPermissions"""
+
+    pull: bool
+    triage: bool
+    push: bool
+    maintain: bool
+    admin: bool
 
 
 __all__ = (
-    "ActionsPublicKeyType",
-    "ActionsPublicKeyTypeForResponse",
+    "TeamPropPermissionsType",
+    "TeamPropPermissionsTypeForResponse",
+    "TeamType",
+    "TeamTypeForResponse",
 )

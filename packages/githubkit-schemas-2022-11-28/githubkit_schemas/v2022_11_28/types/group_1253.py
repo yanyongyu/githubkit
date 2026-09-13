@@ -9,22 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0263 import (
+    SecretScanningCustomPatternToDeleteType,
+    SecretScanningCustomPatternToDeleteTypeForResponse,
+)
 
-class OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType(TypedDict):
-    """OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody"""
 
-    permission: NotRequired[str]
+class OrgsOrgSecretScanningCustomPatternsDeleteBodyType(TypedDict):
+    """OrgsOrgSecretScanningCustomPatternsDeleteBody"""
+
+    patterns: list[SecretScanningCustomPatternToDeleteType]
+    post_delete_action: NotRequired[Literal["delete_alerts", "resolve_alerts"]]
 
 
-class OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody"""
+class OrgsOrgSecretScanningCustomPatternsDeleteBodyTypeForResponse(TypedDict):
+    """OrgsOrgSecretScanningCustomPatternsDeleteBody"""
 
-    permission: NotRequired[str]
+    patterns: list[SecretScanningCustomPatternToDeleteTypeForResponse]
+    post_delete_action: NotRequired[Literal["delete_alerts", "resolve_alerts"]]
 
 
 __all__ = (
-    "OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType",
-    "OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyTypeForResponse",
+    "OrgsOrgSecretScanningCustomPatternsDeleteBodyType",
+    "OrgsOrgSecretScanningCustomPatternsDeleteBodyTypeForResponse",
 )

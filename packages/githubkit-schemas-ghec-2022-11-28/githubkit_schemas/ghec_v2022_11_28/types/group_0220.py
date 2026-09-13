@@ -9,91 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0221 import (
+    PullRequestMinimalPropBaseType,
+    PullRequestMinimalPropBaseTypeForResponse,
+    PullRequestMinimalPropHeadType,
+    PullRequestMinimalPropHeadTypeForResponse,
+)
 
 
-class IssueFieldValueType(TypedDict):
-    """Issue Field Value
-
-    A value assigned to an issue field
-    """
-
-    issue_field_id: int
-    issue_field_name: NotRequired[str]
-    node_id: str
-    data_type: Literal["text", "single_select", "multi_select", "number", "date"]
-    value: Union[str, float, int, None]
-    single_select_option: NotRequired[
-        Union[IssueFieldValuePropSingleSelectOptionType, None]
-    ]
-    multi_select_options: NotRequired[
-        Union[list[IssueFieldValuePropMultiSelectOptionsItemsType], None]
-    ]
-
-
-class IssueFieldValueTypeForResponse(TypedDict):
-    """Issue Field Value
-
-    A value assigned to an issue field
-    """
-
-    issue_field_id: int
-    issue_field_name: NotRequired[str]
-    node_id: str
-    data_type: Literal["text", "single_select", "multi_select", "number", "date"]
-    value: Union[str, float, int, None]
-    single_select_option: NotRequired[
-        Union[IssueFieldValuePropSingleSelectOptionTypeForResponse, None]
-    ]
-    multi_select_options: NotRequired[
-        Union[list[IssueFieldValuePropMultiSelectOptionsItemsTypeForResponse], None]
-    ]
-
-
-class IssueFieldValuePropSingleSelectOptionType(TypedDict):
-    """IssueFieldValuePropSingleSelectOption
-
-    Details about the selected option (only present for single_select fields)
-    """
+class PullRequestMinimalType(TypedDict):
+    """Pull Request Minimal"""
 
     id: int
-    name: str
-    color: str
+    number: int
+    url: str
+    head: PullRequestMinimalPropHeadType
+    base: PullRequestMinimalPropBaseType
 
 
-class IssueFieldValuePropSingleSelectOptionTypeForResponse(TypedDict):
-    """IssueFieldValuePropSingleSelectOption
-
-    Details about the selected option (only present for single_select fields)
-    """
-
-    id: int
-    name: str
-    color: str
-
-
-class IssueFieldValuePropMultiSelectOptionsItemsType(TypedDict):
-    """IssueFieldValuePropMultiSelectOptionsItems"""
+class PullRequestMinimalTypeForResponse(TypedDict):
+    """Pull Request Minimal"""
 
     id: int
-    name: str
-    color: str
-
-
-class IssueFieldValuePropMultiSelectOptionsItemsTypeForResponse(TypedDict):
-    """IssueFieldValuePropMultiSelectOptionsItems"""
-
-    id: int
-    name: str
-    color: str
+    number: int
+    url: str
+    head: PullRequestMinimalPropHeadTypeForResponse
+    base: PullRequestMinimalPropBaseTypeForResponse
 
 
 __all__ = (
-    "IssueFieldValuePropMultiSelectOptionsItemsType",
-    "IssueFieldValuePropMultiSelectOptionsItemsTypeForResponse",
-    "IssueFieldValuePropSingleSelectOptionType",
-    "IssueFieldValuePropSingleSelectOptionTypeForResponse",
-    "IssueFieldValueType",
-    "IssueFieldValueTypeForResponse",
+    "PullRequestMinimalType",
+    "PullRequestMinimalTypeForResponse",
 )

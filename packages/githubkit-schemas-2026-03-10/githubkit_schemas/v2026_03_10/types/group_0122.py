@@ -9,25 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class SelfHostedRunnersSettingsType(TypedDict):
-    """SelfHostedRunnersSettings"""
-
-    enabled_repositories: Literal["all", "selected", "none"]
-    selected_repositories_url: NotRequired[str]
+from .group_0121 import RunnerLabelType, RunnerLabelTypeForResponse
 
 
-class SelfHostedRunnersSettingsTypeForResponse(TypedDict):
-    """SelfHostedRunnersSettings"""
+class RunnerType(TypedDict):
+    """Self hosted runners
 
-    enabled_repositories: Literal["all", "selected", "none"]
-    selected_repositories_url: NotRequired[str]
+    A self hosted runner
+    """
+
+    id: int
+    runner_group_id: NotRequired[int]
+    name: str
+    os: str
+    status: str
+    busy: bool
+    labels: list[RunnerLabelType]
+    ephemeral: NotRequired[bool]
+    version: NotRequired[Union[str, None]]
+
+
+class RunnerTypeForResponse(TypedDict):
+    """Self hosted runners
+
+    A self hosted runner
+    """
+
+    id: int
+    runner_group_id: NotRequired[int]
+    name: str
+    os: str
+    status: str
+    busy: bool
+    labels: list[RunnerLabelTypeForResponse]
+    ephemeral: NotRequired[bool]
+    version: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "SelfHostedRunnersSettingsType",
-    "SelfHostedRunnersSettingsTypeForResponse",
+    "RunnerType",
+    "RunnerTypeForResponse",
 )

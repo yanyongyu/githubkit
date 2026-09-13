@@ -9,20 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0106 import NetworkConfiguration
-
-
-class EnterprisesEnterpriseNetworkConfigurationsGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseNetworkConfigurationsGetResponse200"""
-
-    total_count: int = Field()
-    network_configurations: list[NetworkConfiguration] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(EnterprisesEnterpriseNetworkConfigurationsGetResponse200)
+class EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBody(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBody"""
 
-__all__ = ("EnterprisesEnterpriseNetworkConfigurationsGetResponse200",)
+    credential_type: Literal[
+        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
+    ] = Field(description="The type of credential to revoke across the enterprise.")
+    revoke_credentials: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to also destroy the actual credentials of this type owned by\nenterprise members. This option is only available for Enterprise Managed\nUser (EMU) enterprises. When set to `true`, all credentials of the given\ntype owned by enterprise members will be destroyed in addition to the\ncredential authorizations. Note that `oauth_app_token` credentials cannot\nbe destroyed; for that type only the credential authorizations are revoked.",
+    )
+
+
+model_rebuild(EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBody)
+
+__all__ = ("EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBody",)

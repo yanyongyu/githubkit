@@ -9,87 +9,96 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0133 import TeamSimpleType, TeamSimpleTypeForResponse
 
+class PackageVersionType(TypedDict):
+    """Package Version
 
-class TeamRoleAssignmentType(TypedDict):
-    """A Role Assignment for a Team
-
-    The Relationship a Team has with a role.
+    A version of a software package
     """
 
-    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
     id: int
-    node_id: str
     name: str
-    slug: str
-    description: Union[str, None]
-    privacy: NotRequired[str]
-    notification_setting: NotRequired[str]
-    permission: str
-    permissions: NotRequired[TeamRoleAssignmentPropPermissionsType]
     url: str
-    html_url: str
-    members_url: str
-    repositories_url: str
-    parent: Union[TeamSimpleType, None]
-    type: Literal["enterprise", "organization"]
-    organization_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
+    package_html_url: str
+    html_url: NotRequired[str]
+    license_: NotRequired[str]
+    description: NotRequired[str]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    deleted_at: NotRequired[_dt.datetime]
+    metadata: NotRequired[PackageVersionPropMetadataType]
 
 
-class TeamRoleAssignmentTypeForResponse(TypedDict):
-    """A Role Assignment for a Team
+class PackageVersionTypeForResponse(TypedDict):
+    """Package Version
 
-    The Relationship a Team has with a role.
+    A version of a software package
     """
 
-    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
     id: int
-    node_id: str
     name: str
-    slug: str
-    description: Union[str, None]
-    privacy: NotRequired[str]
-    notification_setting: NotRequired[str]
-    permission: str
-    permissions: NotRequired[TeamRoleAssignmentPropPermissionsTypeForResponse]
     url: str
-    html_url: str
-    members_url: str
-    repositories_url: str
-    parent: Union[TeamSimpleTypeForResponse, None]
-    type: Literal["enterprise", "organization"]
-    organization_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
+    package_html_url: str
+    html_url: NotRequired[str]
+    license_: NotRequired[str]
+    description: NotRequired[str]
+    created_at: str
+    updated_at: str
+    deleted_at: NotRequired[str]
+    metadata: NotRequired[PackageVersionPropMetadataTypeForResponse]
 
 
-class TeamRoleAssignmentPropPermissionsType(TypedDict):
-    """TeamRoleAssignmentPropPermissions"""
+class PackageVersionPropMetadataType(TypedDict):
+    """Package Version Metadata"""
 
-    pull: bool
-    triage: bool
-    push: bool
-    maintain: bool
-    admin: bool
+    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
+    container: NotRequired[PackageVersionPropMetadataPropContainerType]
+    docker: NotRequired[PackageVersionPropMetadataPropDockerType]
 
 
-class TeamRoleAssignmentPropPermissionsTypeForResponse(TypedDict):
-    """TeamRoleAssignmentPropPermissions"""
+class PackageVersionPropMetadataTypeForResponse(TypedDict):
+    """Package Version Metadata"""
 
-    pull: bool
-    triage: bool
-    push: bool
-    maintain: bool
-    admin: bool
+    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
+    container: NotRequired[PackageVersionPropMetadataPropContainerTypeForResponse]
+    docker: NotRequired[PackageVersionPropMetadataPropDockerTypeForResponse]
+
+
+class PackageVersionPropMetadataPropContainerType(TypedDict):
+    """Container Metadata"""
+
+    tags: list[str]
+
+
+class PackageVersionPropMetadataPropContainerTypeForResponse(TypedDict):
+    """Container Metadata"""
+
+    tags: list[str]
+
+
+class PackageVersionPropMetadataPropDockerType(TypedDict):
+    """Docker Metadata"""
+
+    tag: NotRequired[list[str]]
+
+
+class PackageVersionPropMetadataPropDockerTypeForResponse(TypedDict):
+    """Docker Metadata"""
+
+    tag: NotRequired[list[str]]
 
 
 __all__ = (
-    "TeamRoleAssignmentPropPermissionsType",
-    "TeamRoleAssignmentPropPermissionsTypeForResponse",
-    "TeamRoleAssignmentType",
-    "TeamRoleAssignmentTypeForResponse",
+    "PackageVersionPropMetadataPropContainerType",
+    "PackageVersionPropMetadataPropContainerTypeForResponse",
+    "PackageVersionPropMetadataPropDockerType",
+    "PackageVersionPropMetadataPropDockerTypeForResponse",
+    "PackageVersionPropMetadataType",
+    "PackageVersionPropMetadataTypeForResponse",
+    "PackageVersionType",
+    "PackageVersionTypeForResponse",
 )

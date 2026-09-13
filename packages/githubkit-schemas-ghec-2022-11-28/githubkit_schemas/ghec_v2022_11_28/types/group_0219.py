@@ -10,87 +10,59 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0215 import ReactionRollupType, ReactionRollupTypeForResponse
-from .group_0217 import PinnedIssueCommentType, PinnedIssueCommentTypeForResponse
-from .group_0218 import IssueCommentMinimizedType, IssueCommentMinimizedTypeForResponse
+
+class IssuePropLabelsItemsOneof1Type(TypedDict):
+    """IssuePropLabelsItemsOneof1"""
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    url: NotRequired[str]
+    name: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[Union[str, None]]
+    default: NotRequired[bool]
+    archived_by: NotRequired[None]
 
 
-class IssueCommentType(TypedDict):
-    """Issue Comment
+class IssuePropLabelsItemsOneof1TypeForResponse(TypedDict):
+    """IssuePropLabelsItemsOneof1"""
 
-    Comments provide a way for people to collaborate on an issue.
-    """
-
-    id: int
-    node_id: str
-    url: str
-    body: NotRequired[str]
-    body_text: NotRequired[str]
-    body_html: NotRequired[str]
-    html_url: str
-    user: Union[SimpleUserType, None]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    issue_url: str
-    author_association: NotRequired[
-        Literal[
-            "COLLABORATOR",
-            "CONTRIBUTOR",
-            "FIRST_TIMER",
-            "FIRST_TIME_CONTRIBUTOR",
-            "MANNEQUIN",
-            "MEMBER",
-            "NONE",
-            "OWNER",
-        ]
-    ]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
-    reactions: NotRequired[ReactionRollupType]
-    pin: NotRequired[Union[PinnedIssueCommentType, None]]
-    minimized: NotRequired[Union[IssueCommentMinimizedType, None]]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    url: NotRequired[str]
+    name: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[Union[str, None]]
+    default: NotRequired[bool]
+    archived_by: NotRequired[None]
 
 
-class IssueCommentTypeForResponse(TypedDict):
-    """Issue Comment
+class IssuePropPullRequestType(TypedDict):
+    """IssuePropPullRequest"""
 
-    Comments provide a way for people to collaborate on an issue.
-    """
+    merged_at: NotRequired[Union[_dt.datetime, None]]
+    diff_url: Union[str, None]
+    html_url: Union[str, None]
+    patch_url: Union[str, None]
+    url: Union[str, None]
 
-    id: int
-    node_id: str
-    url: str
-    body: NotRequired[str]
-    body_text: NotRequired[str]
-    body_html: NotRequired[str]
-    html_url: str
-    user: Union[SimpleUserTypeForResponse, None]
-    created_at: str
-    updated_at: str
-    issue_url: str
-    author_association: NotRequired[
-        Literal[
-            "COLLABORATOR",
-            "CONTRIBUTOR",
-            "FIRST_TIMER",
-            "FIRST_TIME_CONTRIBUTOR",
-            "MANNEQUIN",
-            "MEMBER",
-            "NONE",
-            "OWNER",
-        ]
-    ]
-    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
-    reactions: NotRequired[ReactionRollupTypeForResponse]
-    pin: NotRequired[Union[PinnedIssueCommentTypeForResponse, None]]
-    minimized: NotRequired[Union[IssueCommentMinimizedTypeForResponse, None]]
+
+class IssuePropPullRequestTypeForResponse(TypedDict):
+    """IssuePropPullRequest"""
+
+    merged_at: NotRequired[Union[str, None]]
+    diff_url: Union[str, None]
+    html_url: Union[str, None]
+    patch_url: Union[str, None]
+    url: Union[str, None]
 
 
 __all__ = (
-    "IssueCommentType",
-    "IssueCommentTypeForResponse",
+    "IssuePropLabelsItemsOneof1Type",
+    "IssuePropLabelsItemsOneof1TypeForResponse",
+    "IssuePropPullRequestType",
+    "IssuePropPullRequestTypeForResponse",
 )

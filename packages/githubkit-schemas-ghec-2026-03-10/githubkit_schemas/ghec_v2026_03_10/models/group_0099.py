@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,54 +17,45 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0008 import Enterprise
 
+class ExternalVulnerabilitySyncResult(GitHubModel):
+    """External Vulnerability Sync Result
 
-class EnterpriseRole(GitHubModel):
-    """Enterprise Role
-
-    Enterprise custom roles
+    Result of an external vulnerability synchronization operation
     """
 
-    id: int = Field(description="The unique identifier of the role.")
-    name: str = Field(description="The name of the role.")
-    description: Missing[Union[str, None]] = Field(
+    processed: int = Field(description="Total number of vulnerabilities processed")
+    created: int = Field(description="Number of new vulnerabilities created")
+    updated: int = Field(description="Number of existing vulnerabilities updated")
+    withdrawn: int = Field(description="Number of vulnerabilities marked as withdrawn")
+    errors: int = Field(description="Number of vulnerabilities that failed to process")
+    results: list[ExternalVulnerabilitySyncResultPropResultsItems] = Field(
+        description="Detailed result for each processed vulnerability"
+    )
+
+
+class ExternalVulnerabilitySyncResultPropResultsItems(GitHubModel):
+    """ExternalVulnerabilitySyncResultPropResultsItems"""
+
+    external_id: str = Field(
+        description="The external ID of the vulnerability (corresponds to the `id` field in the request payload)"
+    )
+    status: Literal["created", "updated", "withdrawn", "error"] = Field(
+        description="The processing status"
+    )
+    ghsa_id: Missing[str] = Field(
         default=UNSET,
-        description="A short description about who this role is for or what permissions it grants.",
+        description="The advisory ID assigned to the vulnerability. For innersource vulnerabilities this is a GHIS ID. Present for successful operations.",
     )
-    source: Missing[Union[Literal["Enterprise", "Predefined"], None]] = Field(
-        default=UNSET,
-        description='Source answers the question, "where did this role come from?"',
-    )
-    permissions: list[str] = Field(
-        description="A list of permissions included in this role."
-    )
-    enterprise: Union[Enterprise, None] = Field()
-    created_at: _dt.datetime = Field(
-        description="The date and time the role was created."
-    )
-    updated_at: _dt.datetime = Field(
-        description="The date and time the role was last updated."
+    error: Missing[str] = Field(
+        default=UNSET, description="Error message (present only when status is 'error')"
     )
 
 
-class EnterprisesEnterpriseEnterpriseRolesGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseEnterpriseRolesGetResponse200"""
-
-    total_count: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of enterprise roles available to the enterprise.",
-    )
-    roles: Missing[list[EnterpriseRole]] = Field(
-        default=UNSET,
-        description="The list of enterprise roles available to the enterprise.",
-    )
-
-
-model_rebuild(EnterpriseRole)
-model_rebuild(EnterprisesEnterpriseEnterpriseRolesGetResponse200)
+model_rebuild(ExternalVulnerabilitySyncResult)
+model_rebuild(ExternalVulnerabilitySyncResultPropResultsItems)
 
 __all__ = (
-    "EnterpriseRole",
-    "EnterprisesEnterpriseEnterpriseRolesGetResponse200",
+    "ExternalVulnerabilitySyncResult",
+    "ExternalVulnerabilitySyncResultPropResultsItems",
 )

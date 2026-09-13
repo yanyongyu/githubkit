@@ -11,42 +11,23 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0083 import CopilotSeatDetails
 
-class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422(GitHubModel):
-    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422"""
 
-    message: Missing[str] = Field(
-        default=UNSET, description="A summary message describing the error."
-    )
-    validation_errors: Missing[
-        EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrors
-    ] = Field(
+class EnterprisesEnterpriseMembersUsernameCopilotGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseMembersUsernameCopilotGetResponse200"""
+
+    total_seats: Missing[int] = Field(
         default=UNSET,
-        description="A map of validation errors keyed by the zero-based index of the pattern that failed.",
+        description="The total number of Copilot seats the enterprise is being billed for. Users with access through enterprise, enterprise teams or multiple organizations are only counted once.",
     )
+    seats: Missing[list[CopilotSeatDetails]] = Field(default=UNSET)
 
 
-class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrors(
-    ExtraGitHubModel
-):
-    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationEr
-    rors
+model_rebuild(EnterprisesEnterpriseMembersUsernameCopilotGetResponse200)
 
-    A map of validation errors keyed by the zero-based index of the pattern that
-    failed.
-    """
-
-
-model_rebuild(EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422)
-model_rebuild(
-    EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrors
-)
-
-__all__ = (
-    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422",
-    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrors",
-)
+__all__ = ("EnterprisesEnterpriseMembersUsernameCopilotGetResponse200",)

@@ -9,40 +9,87 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksProjectChangesType(TypedDict):
-    """WebhooksProjectChanges"""
+class WebhooksPreviousMarketplacePurchaseType(TypedDict):
+    """Marketplace Purchase"""
 
-    archived_at: NotRequired[WebhooksProjectChangesPropArchivedAtType]
-
-
-class WebhooksProjectChangesTypeForResponse(TypedDict):
-    """WebhooksProjectChanges"""
-
-    archived_at: NotRequired[WebhooksProjectChangesPropArchivedAtTypeForResponse]
-
-
-class WebhooksProjectChangesPropArchivedAtType(TypedDict):
-    """WebhooksProjectChangesPropArchivedAt"""
-
-    from_: NotRequired[Union[_dt.datetime, None]]
-    to: NotRequired[Union[_dt.datetime, None]]
+    account: WebhooksPreviousMarketplacePurchasePropAccountType
+    billing_cycle: str
+    free_trial_ends_on: None
+    next_billing_date: NotRequired[Union[str, None]]
+    on_free_trial: bool
+    plan: WebhooksPreviousMarketplacePurchasePropPlanType
+    unit_count: int
 
 
-class WebhooksProjectChangesPropArchivedAtTypeForResponse(TypedDict):
-    """WebhooksProjectChangesPropArchivedAt"""
+class WebhooksPreviousMarketplacePurchaseTypeForResponse(TypedDict):
+    """Marketplace Purchase"""
 
-    from_: NotRequired[Union[str, None]]
-    to: NotRequired[Union[str, None]]
+    account: WebhooksPreviousMarketplacePurchasePropAccountTypeForResponse
+    billing_cycle: str
+    free_trial_ends_on: None
+    next_billing_date: NotRequired[Union[str, None]]
+    on_free_trial: bool
+    plan: WebhooksPreviousMarketplacePurchasePropPlanTypeForResponse
+    unit_count: int
+
+
+class WebhooksPreviousMarketplacePurchasePropAccountType(TypedDict):
+    """WebhooksPreviousMarketplacePurchasePropAccount"""
+
+    id: int
+    login: str
+    node_id: str
+    organization_billing_email: Union[str, None]
+    type: str
+
+
+class WebhooksPreviousMarketplacePurchasePropAccountTypeForResponse(TypedDict):
+    """WebhooksPreviousMarketplacePurchasePropAccount"""
+
+    id: int
+    login: str
+    node_id: str
+    organization_billing_email: Union[str, None]
+    type: str
+
+
+class WebhooksPreviousMarketplacePurchasePropPlanType(TypedDict):
+    """WebhooksPreviousMarketplacePurchasePropPlan"""
+
+    bullets: list[str]
+    description: str
+    has_free_trial: bool
+    id: int
+    monthly_price_in_cents: int
+    name: str
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
+    unit_name: Union[str, None]
+    yearly_price_in_cents: int
+
+
+class WebhooksPreviousMarketplacePurchasePropPlanTypeForResponse(TypedDict):
+    """WebhooksPreviousMarketplacePurchasePropPlan"""
+
+    bullets: list[str]
+    description: str
+    has_free_trial: bool
+    id: int
+    monthly_price_in_cents: int
+    name: str
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
+    unit_name: Union[str, None]
+    yearly_price_in_cents: int
 
 
 __all__ = (
-    "WebhooksProjectChangesPropArchivedAtType",
-    "WebhooksProjectChangesPropArchivedAtTypeForResponse",
-    "WebhooksProjectChangesType",
-    "WebhooksProjectChangesTypeForResponse",
+    "WebhooksPreviousMarketplacePurchasePropAccountType",
+    "WebhooksPreviousMarketplacePurchasePropAccountTypeForResponse",
+    "WebhooksPreviousMarketplacePurchasePropPlanType",
+    "WebhooksPreviousMarketplacePurchasePropPlanTypeForResponse",
+    "WebhooksPreviousMarketplacePurchaseType",
+    "WebhooksPreviousMarketplacePurchaseTypeForResponse",
 )

@@ -9,88 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0053 import ReactionRollupType, ReactionRollupTypeForResponse
-from .group_0055 import PinnedIssueCommentType, PinnedIssueCommentTypeForResponse
-from .group_0056 import IssueCommentMinimizedType, IssueCommentMinimizedTypeForResponse
+from .group_0058 import (
+    PullRequestMinimalPropBaseType,
+    PullRequestMinimalPropBaseTypeForResponse,
+    PullRequestMinimalPropHeadType,
+    PullRequestMinimalPropHeadTypeForResponse,
+)
 
 
-class IssueCommentType(TypedDict):
-    """Issue Comment
-
-    Comments provide a way for people to collaborate on an issue.
-    """
+class PullRequestMinimalType(TypedDict):
+    """Pull Request Minimal"""
 
     id: int
-    node_id: str
+    number: int
     url: str
-    body: NotRequired[str]
-    body_text: NotRequired[str]
-    body_html: NotRequired[str]
-    html_url: str
-    user: Union[SimpleUserType, None]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    issue_url: str
-    author_association: NotRequired[
-        Literal[
-            "COLLABORATOR",
-            "CONTRIBUTOR",
-            "FIRST_TIMER",
-            "FIRST_TIME_CONTRIBUTOR",
-            "MANNEQUIN",
-            "MEMBER",
-            "NONE",
-            "OWNER",
-        ]
-    ]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
-    reactions: NotRequired[ReactionRollupType]
-    pin: NotRequired[Union[PinnedIssueCommentType, None]]
-    minimized: NotRequired[Union[IssueCommentMinimizedType, None]]
+    head: PullRequestMinimalPropHeadType
+    base: PullRequestMinimalPropBaseType
 
 
-class IssueCommentTypeForResponse(TypedDict):
-    """Issue Comment
-
-    Comments provide a way for people to collaborate on an issue.
-    """
+class PullRequestMinimalTypeForResponse(TypedDict):
+    """Pull Request Minimal"""
 
     id: int
-    node_id: str
+    number: int
     url: str
-    body: NotRequired[str]
-    body_text: NotRequired[str]
-    body_html: NotRequired[str]
-    html_url: str
-    user: Union[SimpleUserTypeForResponse, None]
-    created_at: str
-    updated_at: str
-    issue_url: str
-    author_association: NotRequired[
-        Literal[
-            "COLLABORATOR",
-            "CONTRIBUTOR",
-            "FIRST_TIMER",
-            "FIRST_TIME_CONTRIBUTOR",
-            "MANNEQUIN",
-            "MEMBER",
-            "NONE",
-            "OWNER",
-        ]
-    ]
-    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
-    reactions: NotRequired[ReactionRollupTypeForResponse]
-    pin: NotRequired[Union[PinnedIssueCommentTypeForResponse, None]]
-    minimized: NotRequired[Union[IssueCommentMinimizedTypeForResponse, None]]
+    head: PullRequestMinimalPropHeadTypeForResponse
+    base: PullRequestMinimalPropBaseTypeForResponse
 
 
 __all__ = (
-    "IssueCommentType",
-    "IssueCommentTypeForResponse",
+    "PullRequestMinimalType",
+    "PullRequestMinimalTypeForResponse",
 )

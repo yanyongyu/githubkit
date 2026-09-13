@@ -13,13 +13,21 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel
 
-from ..models import WebhookLabelCreated, WebhookLabelDeleted, WebhookLabelEdited
+from ..models import (
+    WebhookLabelArchived,
+    WebhookLabelCreated,
+    WebhookLabelDeleted,
+    WebhookLabelEdited,
+    WebhookLabelUnarchived,
+)
 
 Event: TypeAlias = Annotated[
     Union[
+        WebhookLabelArchived,
         WebhookLabelCreated,
         WebhookLabelDeleted,
         WebhookLabelEdited,
+        WebhookLabelUnarchived,
     ],
     Field(discriminator="action"),
 ]
@@ -27,9 +35,11 @@ Event: TypeAlias = Annotated[
 LabelEvent: TypeAlias = Event
 
 action_types: dict[str, type[GitHubModel]] = {
+    "archived": WebhookLabelArchived,
     "created": WebhookLabelCreated,
     "deleted": WebhookLabelDeleted,
     "edited": WebhookLabelEdited,
+    "unarchived": WebhookLabelUnarchived,
 }  # pyright: ignore[reportAssignmentType]
 
 label_action_types = action_types

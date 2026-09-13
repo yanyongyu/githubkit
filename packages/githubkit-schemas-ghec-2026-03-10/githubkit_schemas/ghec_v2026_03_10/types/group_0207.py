@@ -10,29 +10,61 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class UsageReportExportRequestType(TypedDict):
-    """UsageReportExportRequest"""
+class EnterpriseTeamWithMemberCountType(TypedDict):
+    """Enterprise Team
 
-    report_type: Literal["detailed", "summarized", "premium_request", "ai_credit"]
-    start_date: _dt.date
-    end_date: NotRequired[_dt.date]
-    send_email: NotRequired[bool]
+    Group of enterprise owners and/or members
+    """
+
+    id: int
+    name: str
+    description: NotRequired[str]
+    slug: str
+    url: str
+    sync_to_organizations: NotRequired[str]
+    organization_selection_type: NotRequired[str]
+    group_id: Union[str, None]
+    group_name: NotRequired[Union[str, None]]
+    html_url: str
+    members_url: str
+    members_count: int
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
 
 
-class UsageReportExportRequestTypeForResponse(TypedDict):
-    """UsageReportExportRequest"""
+class EnterpriseTeamWithMemberCountTypeForResponse(TypedDict):
+    """Enterprise Team
 
-    report_type: Literal["detailed", "summarized", "premium_request", "ai_credit"]
-    start_date: str
-    end_date: NotRequired[str]
-    send_email: NotRequired[bool]
+    Group of enterprise owners and/or members
+    """
+
+    id: int
+    name: str
+    description: NotRequired[str]
+    slug: str
+    url: str
+    sync_to_organizations: NotRequired[str]
+    organization_selection_type: NotRequired[str]
+    group_id: Union[str, None]
+    group_name: NotRequired[Union[str, None]]
+    html_url: str
+    members_url: str
+    members_count: int
+    created_at: str
+    updated_at: str
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
 
 
 __all__ = (
-    "UsageReportExportRequestType",
-    "UsageReportExportRequestTypeForResponse",
+    "EnterpriseTeamWithMemberCountType",
+    "EnterpriseTeamWithMemberCountTypeForResponse",
 )

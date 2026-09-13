@@ -9,49 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0020 import Repository
 
 
-class AuthenticationToken(GitHubModel):
-    """Authentication Token
+class AccessibleRepository(GitHubModel):
+    """Accessible Repository
 
-    Authentication Token
+    A repository that may be made accessible to a GitHub App.
     """
 
-    token: str = Field(description="The token used for authentication")
-    expires_at: _dt.datetime = Field(description="The time this token expires")
-    permissions: Missing[AuthenticationTokenPropPermissions] = Field(default=UNSET)
-    repositories: Missing[list[Repository]] = Field(
-        default=UNSET, description="The repositories this token has access to"
-    )
-    single_file: Missing[Union[str, None]] = Field(default=UNSET)
-    repository_selection: Missing[Literal["all", "selected"]] = Field(
-        default=UNSET,
-        description="Describe whether all repositories have been selected or there's a selection involved",
-    )
+    id: int = Field(description="Unique identifier of the repository")
+    name: str = Field(description="The name of the repository.")
+    full_name: str = Field()
 
 
-class AuthenticationTokenPropPermissions(GitHubModel):
-    """AuthenticationTokenPropPermissions
+model_rebuild(AccessibleRepository)
 
-    Examples:
-        {'issues': 'read', 'deployments': 'write'}
-    """
-
-
-model_rebuild(AuthenticationToken)
-model_rebuild(AuthenticationTokenPropPermissions)
-
-__all__ = (
-    "AuthenticationToken",
-    "AuthenticationTokenPropPermissions",
-)
+__all__ = ("AccessibleRepository",)

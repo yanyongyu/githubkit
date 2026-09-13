@@ -9,30 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ActionsHostedRunnerCuratedImage(GitHubModel):
-    """GitHub-hosted runner image details.
+class OidcCustomPropertyInclusionInput(GitHubModel):
+    """Actions OIDC Custom Property Inclusion Input
 
-    Provides details of a hosted runner image
+    Input for creating an OIDC custom property inclusion
     """
 
-    id: str = Field(
-        description="The ID of the image. Use this ID for the `image` parameter when creating a new larger runner."
-    )
-    platform: str = Field(description="The operating system of the image.")
-    size_gb: int = Field(description="Image size in GB.")
-    display_name: str = Field(description="Display name for this image.")
-    source: Literal["github", "partner", "custom"] = Field(
-        description="The image provider."
+    custom_property_name: str = Field(
+        description="The name of the custom property to include in the OIDC token"
     )
 
 
-model_rebuild(ActionsHostedRunnerCuratedImage)
+model_rebuild(OidcCustomPropertyInclusionInput)
 
-__all__ = ("ActionsHostedRunnerCuratedImage",)
+__all__ = ("OidcCustomPropertyInclusionInput",)

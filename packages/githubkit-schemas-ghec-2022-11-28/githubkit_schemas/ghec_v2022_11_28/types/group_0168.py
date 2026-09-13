@@ -9,42 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0169 import (
-    RepositoryRuleCopilotCodeReviewPropParametersType,
-    RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse,
-)
+
+class RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType(TypedDict):
+    """RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId"""
+
+    repository_ids: NotRequired[list[int]]
 
 
-class RepositoryRuleCopilotCodeReviewType(TypedDict):
-    """copilot_code_review
+class RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdTypeForResponse(
+    TypedDict
+):
+    """RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId"""
 
-    Request Copilot code review for new pull requests automatically if the author
-    has access to Copilot code review and their premium requests quota has not
-    reached the limit.
-    """
-
-    type: Literal["copilot_code_review"]
-    parameters: NotRequired[RepositoryRuleCopilotCodeReviewPropParametersType]
-
-
-class RepositoryRuleCopilotCodeReviewTypeForResponse(TypedDict):
-    """copilot_code_review
-
-    Request Copilot code review for new pull requests automatically if the author
-    has access to Copilot code review and their premium requests quota has not
-    reached the limit.
-    """
-
-    type: Literal["copilot_code_review"]
-    parameters: NotRequired[
-        RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse
-    ]
+    repository_ids: NotRequired[list[int]]
 
 
 __all__ = (
-    "RepositoryRuleCopilotCodeReviewType",
-    "RepositoryRuleCopilotCodeReviewTypeForResponse",
+    "RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType",
+    "RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdTypeForResponse",
 )

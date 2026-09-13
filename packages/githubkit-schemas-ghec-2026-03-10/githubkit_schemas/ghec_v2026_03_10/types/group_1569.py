@@ -9,32 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0011 import WebhookConfigType, WebhookConfigTypeForResponse
-
-
-class ReposOwnerRepoHooksHookIdPatchBodyType(TypedDict):
-    """ReposOwnerRepoHooksHookIdPatchBody"""
-
-    config: NotRequired[WebhookConfigType]
-    events: NotRequired[list[str]]
-    add_events: NotRequired[list[str]]
-    remove_events: NotRequired[list[str]]
-    active: NotRequired[bool]
+from .group_0356 import ActionsVariableType, ActionsVariableTypeForResponse
 
 
-class ReposOwnerRepoHooksHookIdPatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoHooksHookIdPatchBody"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200Type(TypedDict):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200"""
 
-    config: NotRequired[WebhookConfigTypeForResponse]
-    events: NotRequired[list[str]]
-    add_events: NotRequired[list[str]]
-    remove_events: NotRequired[list[str]]
-    active: NotRequired[bool]
+    total_count: int
+    variables: list[ActionsVariableType]
+
+
+class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200"""
+
+    total_count: int
+    variables: list[ActionsVariableTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoHooksHookIdPatchBodyType",
-    "ReposOwnerRepoHooksHookIdPatchBodyTypeForResponse",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200Type",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200TypeForResponse",
 )

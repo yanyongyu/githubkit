@@ -9,43 +9,60 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class LabelType(TypedDict):
-    """Label
+class IssueTypeType(TypedDict):
+    """Issue Type
 
-    Color-coded labels help you categorize and filter your issues (just like labels
-    in Gmail).
+    The type assigned to the issue. This is only present for issues in repositories
+    where issue types are supported.
     """
 
     id: int
     node_id: str
-    url: str
     name: str
     description: Union[str, None]
-    color: str
-    default: bool
+    color: NotRequired[
+        Union[
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+            None,
+        ]
+    ]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
+    is_enabled: NotRequired[bool]
 
 
-class LabelTypeForResponse(TypedDict):
-    """Label
+class IssueTypeTypeForResponse(TypedDict):
+    """Issue Type
 
-    Color-coded labels help you categorize and filter your issues (just like labels
-    in Gmail).
+    The type assigned to the issue. This is only present for issues in repositories
+    where issue types are supported.
     """
 
     id: int
     node_id: str
-    url: str
     name: str
     description: Union[str, None]
-    color: str
-    default: bool
+    color: NotRequired[
+        Union[
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+            None,
+        ]
+    ]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    is_enabled: NotRequired[bool]
 
 
 __all__ = (
-    "LabelType",
-    "LabelTypeForResponse",
+    "IssueTypeType",
+    "IssueTypeTypeForResponse",
 )

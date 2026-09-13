@@ -9,56 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class BillingUsageReportType(TypedDict):
-    """BillingUsageReport"""
+class LabelType(TypedDict):
+    """Label
 
-    usage_items: NotRequired[list[BillingUsageReportPropUsageItemsItemsType]]
+    Color-coded labels help you categorize and filter your issues (just like labels
+    in Gmail).
+    """
 
-
-class BillingUsageReportTypeForResponse(TypedDict):
-    """BillingUsageReport"""
-
-    usage_items: NotRequired[list[BillingUsageReportPropUsageItemsItemsTypeForResponse]]
-
-
-class BillingUsageReportPropUsageItemsItemsType(TypedDict):
-    """BillingUsageReportPropUsageItemsItems"""
-
-    date: str
-    product: str
-    sku: str
-    quantity: int
-    unit_type: str
-    price_per_unit: float
-    gross_amount: float
-    discount_amount: float
-    net_amount: float
-    organization_name: str
-    repository_name: NotRequired[str]
+    id: int
+    node_id: str
+    url: str
+    name: str
+    description: Union[str, None]
+    color: str
+    default: bool
+    archived_at: Union[_dt.datetime, None]
+    archived_by: None
 
 
-class BillingUsageReportPropUsageItemsItemsTypeForResponse(TypedDict):
-    """BillingUsageReportPropUsageItemsItems"""
+class LabelTypeForResponse(TypedDict):
+    """Label
 
-    date: str
-    product: str
-    sku: str
-    quantity: int
-    unit_type: str
-    price_per_unit: float
-    gross_amount: float
-    discount_amount: float
-    net_amount: float
-    organization_name: str
-    repository_name: NotRequired[str]
+    Color-coded labels help you categorize and filter your issues (just like labels
+    in Gmail).
+    """
+
+    id: int
+    node_id: str
+    url: str
+    name: str
+    description: Union[str, None]
+    color: str
+    default: bool
+    archived_at: Union[str, None]
+    archived_by: None
 
 
 __all__ = (
-    "BillingUsageReportPropUsageItemsItemsType",
-    "BillingUsageReportPropUsageItemsItemsTypeForResponse",
-    "BillingUsageReportType",
-    "BillingUsageReportTypeForResponse",
+    "LabelType",
+    "LabelTypeForResponse",
 )

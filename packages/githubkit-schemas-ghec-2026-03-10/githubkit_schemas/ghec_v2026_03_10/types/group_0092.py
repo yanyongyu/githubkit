@@ -10,65 +10,43 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0091 import (
+from .group_0087 import (
     DependabotAlertPackageType,
     DependabotAlertPackageTypeForResponse,
 )
 
 
-class DependabotAlertSecurityVulnerabilityType(TypedDict):
-    """DependabotAlertSecurityVulnerability
+class DependabotAlertWithRepositoryPropDependencyType(TypedDict):
+    """DependabotAlertWithRepositoryPropDependency
 
-    Details pertaining to one vulnerable version range for the advisory.
+    Details for the vulnerable dependency.
     """
 
-    package: DependabotAlertPackageType
-    severity: Literal["low", "medium", "high", "critical"]
-    vulnerable_version_range: str
-    first_patched_version: Union[
-        DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType, None
+    package: NotRequired[DependabotAlertPackageType]
+    manifest_path: NotRequired[str]
+    scope: NotRequired[Union[Literal["development", "runtime"], None]]
+    relationship: NotRequired[
+        Union[Literal["unknown", "direct", "transitive", "inconclusive"], None]
     ]
 
 
-class DependabotAlertSecurityVulnerabilityTypeForResponse(TypedDict):
-    """DependabotAlertSecurityVulnerability
+class DependabotAlertWithRepositoryPropDependencyTypeForResponse(TypedDict):
+    """DependabotAlertWithRepositoryPropDependency
 
-    Details pertaining to one vulnerable version range for the advisory.
+    Details for the vulnerable dependency.
     """
 
-    package: DependabotAlertPackageTypeForResponse
-    severity: Literal["low", "medium", "high", "critical"]
-    vulnerable_version_range: str
-    first_patched_version: Union[
-        DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionTypeForResponse, None
+    package: NotRequired[DependabotAlertPackageTypeForResponse]
+    manifest_path: NotRequired[str]
+    scope: NotRequired[Union[Literal["development", "runtime"], None]]
+    relationship: NotRequired[
+        Union[Literal["unknown", "direct", "transitive", "inconclusive"], None]
     ]
-
-
-class DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType(TypedDict):
-    """DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion
-
-    Details pertaining to the package version that patches this vulnerability.
-    """
-
-    identifier: str
-
-
-class DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionTypeForResponse(
-    TypedDict
-):
-    """DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion
-
-    Details pertaining to the package version that patches this vulnerability.
-    """
-
-    identifier: str
 
 
 __all__ = (
-    "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType",
-    "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionTypeForResponse",
-    "DependabotAlertSecurityVulnerabilityType",
-    "DependabotAlertSecurityVulnerabilityTypeForResponse",
+    "DependabotAlertWithRepositoryPropDependencyType",
+    "DependabotAlertWithRepositoryPropDependencyTypeForResponse",
 )

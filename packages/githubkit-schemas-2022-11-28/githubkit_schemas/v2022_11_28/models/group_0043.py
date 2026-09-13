@@ -9,59 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class DependabotAlertDismissalRequestSimple(GitHubModel):
-    """Dependabot alert dismissal request
+class OrganizationSimple(GitHubModel):
+    """Organization Simple
 
-    Information about an active dismissal request for this Dependabot alert.
+    A GitHub organization.
     """
 
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the dismissal request."
-    )
-    status: Missing[Literal["pending", "approved", "rejected", "cancelled"]] = Field(
-        default=UNSET, description="The current status of the dismissal request."
-    )
-    requester: Missing[DependabotAlertDismissalRequestSimplePropRequester] = Field(
-        default=UNSET, description="The user who requested the dismissal."
-    )
-    created_at: Missing[_dt.datetime] = Field(
-        default=UNSET,
-        description="The date and time when the dismissal request was created.",
-    )
-    url: Missing[str] = Field(
-        default=UNSET,
-        description="The API URL to get more information about this dismissal request.",
-    )
+    login: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    repos_url: str = Field()
+    events_url: str = Field()
+    hooks_url: str = Field()
+    issues_url: str = Field()
+    members_url: str = Field()
+    public_members_url: str = Field()
+    avatar_url: str = Field()
+    description: Union[str, None] = Field()
 
 
-class DependabotAlertDismissalRequestSimplePropRequester(GitHubModel):
-    """DependabotAlertDismissalRequestSimplePropRequester
+model_rebuild(OrganizationSimple)
 
-    The user who requested the dismissal.
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the user."
-    )
-    login: Missing[str] = Field(
-        default=UNSET, description="The login name of the user."
-    )
-
-
-model_rebuild(DependabotAlertDismissalRequestSimple)
-model_rebuild(DependabotAlertDismissalRequestSimplePropRequester)
-
-__all__ = (
-    "DependabotAlertDismissalRequestSimple",
-    "DependabotAlertDismissalRequestSimplePropRequester",
-)
+__all__ = ("OrganizationSimple",)

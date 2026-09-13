@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,41 +17,85 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
 
+class WebhooksTeam(GitHubModel):
+    """Team
 
-class ProjectsV2Item(GitHubModel):
-    """Projects v2 Item
-
-    An item belonging to a project
+    Groups of organization members that gives permissions on specified repositories.
     """
 
-    id: float = Field(description="The unique identifier of the project item.")
-    node_id: Missing[str] = Field(
-        default=UNSET, description="The node ID of the project item."
+    deleted: Missing[bool] = Field(default=UNSET)
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Description of the team"
     )
-    project_node_id: Missing[str] = Field(
-        default=UNSET, description="The node ID of the project that contains this item."
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field(description="Unique identifier of the team")
+    members_url: Missing[str] = Field(default=UNSET)
+    name: str = Field(description="Name of the team")
+    node_id: Missing[str] = Field(default=UNSET)
+    parent: Missing[Union[WebhooksTeamPropParent, None]] = Field(default=UNSET)
+    permission: Missing[str] = Field(
+        default=UNSET,
+        description="Permission that the team will have for its repositories",
     )
-    content_node_id: str = Field(
-        description="The node ID of the content represented by this item."
+    privacy: Missing[Literal["open", "closed", "secret"]] = Field(default=UNSET)
+    notification_setting: Missing[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ] = Field(default=UNSET)
+    repositories_url: Missing[str] = Field(default=UNSET)
+    slug: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET, description="URL for the team")
+    type: Missing[Literal["enterprise", "organization"]] = Field(
+        default=UNSET, description="The ownership type of the team"
     )
-    content_type: Literal["Issue", "PullRequest", "DraftIssue"] = Field(
-        title="Projects v2 Item Content Type",
-        description="The type of content tracked in a project item",
+    organization_id: Missing[int] = Field(
+        default=UNSET,
+        description="Unique identifier of the organization to which this team belongs",
     )
-    creator: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
-    created_at: _dt.datetime = Field(description="The time when the item was created.")
-    updated_at: _dt.datetime = Field(
-        description="The time when the item was last updated."
-    )
-    archived_at: Union[_dt.datetime, None] = Field(
-        description="The time when the item was archived."
+    enterprise_id: Missing[int] = Field(
+        default=UNSET,
+        description="Unique identifier of the enterprise to which this team belongs",
     )
 
 
-model_rebuild(ProjectsV2Item)
+class WebhooksTeamPropParent(GitHubModel):
+    """WebhooksTeamPropParent"""
 
-__all__ = ("ProjectsV2Item",)
+    description: Union[str, None] = Field(description="Description of the team")
+    html_url: str = Field()
+    id: int = Field(description="Unique identifier of the team")
+    members_url: str = Field()
+    name: str = Field(description="Name of the team")
+    node_id: str = Field()
+    permission: str = Field(
+        description="Permission that the team will have for its repositories"
+    )
+    privacy: Literal["open", "closed", "secret"] = Field()
+    notification_setting: Literal["notifications_enabled", "notifications_disabled"] = (
+        Field(
+            description="Whether team members will receive notifications when their team is @mentioned"
+        )
+    )
+    repositories_url: str = Field()
+    slug: str = Field()
+    url: str = Field(description="URL for the team")
+    type: Literal["enterprise", "organization"] = Field(
+        description="The ownership type of the team"
+    )
+    organization_id: Missing[int] = Field(
+        default=UNSET,
+        description="Unique identifier of the organization to which this team belongs",
+    )
+    enterprise_id: Missing[int] = Field(
+        default=UNSET,
+        description="Unique identifier of the enterprise to which this team belongs",
+    )
+
+
+model_rebuild(WebhooksTeam)
+model_rebuild(WebhooksTeamPropParent)
+
+__all__ = (
+    "WebhooksTeam",
+    "WebhooksTeamPropParent",
+)

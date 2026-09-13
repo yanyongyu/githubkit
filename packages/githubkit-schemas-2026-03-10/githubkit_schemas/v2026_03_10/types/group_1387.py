@@ -9,24 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody"""
+class ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBodyType(TypedDict):
+    """ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody"""
 
-    issue_id: int
+    enabled: bool
+    max_open_pull_requests: NotRequired[int]
 
 
-class ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyTypeForResponse(
+class ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBodyTypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody"""
+    """ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody"""
 
-    issue_id: int
+    enabled: bool
+    max_open_pull_requests: NotRequired[int]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyType",
-    "ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyTypeForResponse",
+    "ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBodyType",
+    "ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBodyTypeForResponse",
 )

@@ -10,121 +10,65 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodeQualityFindingType(TypedDict):
-    """CodeQualityFinding
+class CodeQualitySetupType(TypedDict):
+    """CodeQualitySetup
 
-    Code quality finding
+    Configuration for code quality setup.
     """
 
-    number: int
-    state: Literal["open", "dismissed"]
-    url: str
-    rule: CodeQualityFindingRuleType
-    location: CodeQualityFindingLocationType
-    message: CodeQualityFindingMessageType
-    created_at: NotRequired[_dt.datetime]
+    state: NotRequired[Literal["configured", "not-configured"]]
+    languages: NotRequired[
+        list[
+            Literal[
+                "csharp",
+                "go",
+                "java-kotlin",
+                "javascript-typescript",
+                "python",
+                "ruby",
+                "rust",
+            ]
+        ]
+    ]
+    runner_type: NotRequired[Union[Literal["standard", "labeled"], None]]
+    runner_label: NotRequired[Union[str, None]]
+    updated_at: NotRequired[Union[_dt.datetime, None]]
+    schedule: NotRequired[Union[Literal["weekly"], None]]
+    ai_findings_option: NotRequired[Union[Literal["disabled", "on_push"], None]]
 
 
-class CodeQualityFindingTypeForResponse(TypedDict):
-    """CodeQualityFinding
+class CodeQualitySetupTypeForResponse(TypedDict):
+    """CodeQualitySetup
 
-    Code quality finding
+    Configuration for code quality setup.
     """
 
-    number: int
-    state: Literal["open", "dismissed"]
-    url: str
-    rule: CodeQualityFindingRuleTypeForResponse
-    location: CodeQualityFindingLocationTypeForResponse
-    message: CodeQualityFindingMessageTypeForResponse
-    created_at: NotRequired[str]
-
-
-class CodeQualityFindingRuleType(TypedDict):
-    """CodeQualityFindingRule
-
-    Code quality rule
-    """
-
-    id: str
-    title: str
-    description: str
-    help_: NotRequired[str]
-    severity: Literal["error", "warning", "note", "none"]
-    category: Literal["none", "maintainability", "reliability"]
-
-
-class CodeQualityFindingRuleTypeForResponse(TypedDict):
-    """CodeQualityFindingRule
-
-    Code quality rule
-    """
-
-    id: str
-    title: str
-    description: str
-    help_: NotRequired[str]
-    severity: Literal["error", "warning", "note", "none"]
-    category: Literal["none", "maintainability", "reliability"]
-
-
-class CodeQualityFindingLocationType(TypedDict):
-    """CodeQualityFindingLocation
-
-    Code quality file location
-    """
-
-    path: str
-    start_line: NotRequired[int]
-    start_column: NotRequired[int]
-    end_line: NotRequired[int]
-    end_column: NotRequired[int]
-
-
-class CodeQualityFindingLocationTypeForResponse(TypedDict):
-    """CodeQualityFindingLocation
-
-    Code quality file location
-    """
-
-    path: str
-    start_line: NotRequired[int]
-    start_column: NotRequired[int]
-    end_line: NotRequired[int]
-    end_column: NotRequired[int]
-
-
-class CodeQualityFindingMessageType(TypedDict):
-    """CodeQualityFindingMessage
-
-    Code quality finding message
-    """
-
-    text: str
-    markdown: str
-
-
-class CodeQualityFindingMessageTypeForResponse(TypedDict):
-    """CodeQualityFindingMessage
-
-    Code quality finding message
-    """
-
-    text: str
-    markdown: str
+    state: NotRequired[Literal["configured", "not-configured"]]
+    languages: NotRequired[
+        list[
+            Literal[
+                "csharp",
+                "go",
+                "java-kotlin",
+                "javascript-typescript",
+                "python",
+                "ruby",
+                "rust",
+            ]
+        ]
+    ]
+    runner_type: NotRequired[Union[Literal["standard", "labeled"], None]]
+    runner_label: NotRequired[Union[str, None]]
+    updated_at: NotRequired[Union[str, None]]
+    schedule: NotRequired[Union[Literal["weekly"], None]]
+    ai_findings_option: NotRequired[Union[Literal["disabled", "on_push"], None]]
 
 
 __all__ = (
-    "CodeQualityFindingLocationType",
-    "CodeQualityFindingLocationTypeForResponse",
-    "CodeQualityFindingMessageType",
-    "CodeQualityFindingMessageTypeForResponse",
-    "CodeQualityFindingRuleType",
-    "CodeQualityFindingRuleTypeForResponse",
-    "CodeQualityFindingType",
-    "CodeQualityFindingTypeForResponse",
+    "CodeQualitySetupType",
+    "CodeQualitySetupTypeForResponse",
 )

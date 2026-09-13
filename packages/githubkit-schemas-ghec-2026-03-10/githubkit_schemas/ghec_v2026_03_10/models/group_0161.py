@@ -17,20 +17,20 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0162 import RepositoryRuleMaxFileSizePropParameters
+from .group_0162 import RepositoryRuleWorkflowsPropParameters
 
 
-class RepositoryRuleMaxFileSize(GitHubModel):
-    """max_file_size
+class RepositoryRuleWorkflows(GitHubModel):
+    """workflows
 
-    Prevent commits with individual files that exceed the specified limit from being
-    pushed to the commit graph.
+    Require all changes made to a targeted branch to pass the specified workflows
+    before they can be merged.
     """
 
-    type: Literal["max_file_size"] = Field()
-    parameters: Missing[RepositoryRuleMaxFileSizePropParameters] = Field(default=UNSET)
+    type: Literal["workflows"] = Field()
+    parameters: Missing[RepositoryRuleWorkflowsPropParameters] = Field(default=UNSET)
 
 
-model_rebuild(RepositoryRuleMaxFileSize)
+model_rebuild(RepositoryRuleWorkflows)
 
-__all__ = ("RepositoryRuleMaxFileSize",)
+__all__ = ("RepositoryRuleWorkflows",)

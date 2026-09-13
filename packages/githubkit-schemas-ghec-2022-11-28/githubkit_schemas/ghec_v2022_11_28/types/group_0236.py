@@ -9,32 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0223 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
-from .group_0237 import (
-    PullRequestReviewEventPropReviewType,
-    PullRequestReviewEventPropReviewTypeForResponse,
-)
-
-
-class PullRequestReviewEventType(TypedDict):
-    """PullRequestReviewEvent"""
-
-    action: str
-    review: PullRequestReviewEventPropReviewType
-    pull_request: PullRequestMinimalType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0212 import ReactionRollupType, ReactionRollupTypeForResponse
 
 
-class PullRequestReviewEventTypeForResponse(TypedDict):
-    """PullRequestReviewEvent"""
+class CommitCommentEventPropCommentType(TypedDict):
+    """CommitCommentEventPropComment"""
 
-    action: str
-    review: PullRequestReviewEventPropReviewTypeForResponse
-    pull_request: PullRequestMinimalTypeForResponse
+    html_url: NotRequired[str]
+    url: NotRequired[str]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    body: NotRequired[str]
+    path: NotRequired[Union[str, None]]
+    position: NotRequired[Union[int, None]]
+    line: NotRequired[Union[int, None]]
+    commit_id: NotRequired[str]
+    user: NotRequired[Union[SimpleUserType, None]]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
+    reactions: NotRequired[ReactionRollupType]
+
+
+class CommitCommentEventPropCommentTypeForResponse(TypedDict):
+    """CommitCommentEventPropComment"""
+
+    html_url: NotRequired[str]
+    url: NotRequired[str]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    body: NotRequired[str]
+    path: NotRequired[Union[str, None]]
+    position: NotRequired[Union[int, None]]
+    line: NotRequired[Union[int, None]]
+    commit_id: NotRequired[str]
+    user: NotRequired[Union[SimpleUserTypeForResponse, None]]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    reactions: NotRequired[ReactionRollupTypeForResponse]
 
 
 __all__ = (
-    "PullRequestReviewEventType",
-    "PullRequestReviewEventTypeForResponse",
+    "CommitCommentEventPropCommentType",
+    "CommitCommentEventPropCommentTypeForResponse",
 )

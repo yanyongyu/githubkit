@@ -9,26 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200Type(TypedDict):
-    """ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200"""
+class ReposOwnerRepoGitRefsRefPatchBodyType(TypedDict):
+    """ReposOwnerRepoGitRefsRefPatchBody"""
 
-    enabled: bool
-    max_open_pull_requests: int
+    sha: str
+    force: NotRequired[bool]
 
 
-class ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200"""
+class ReposOwnerRepoGitRefsRefPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoGitRefsRefPatchBody"""
 
-    enabled: bool
-    max_open_pull_requests: int
+    sha: str
+    force: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200Type",
-    "ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200TypeForResponse",
+    "ReposOwnerRepoGitRefsRefPatchBodyType",
+    "ReposOwnerRepoGitRefsRefPatchBodyTypeForResponse",
 )

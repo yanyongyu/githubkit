@@ -13,59 +13,27 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberReviewsPostBodyType(TypedDict):
-    """ReposOwnerRepoPullsPullNumberReviewsPostBody"""
+class ReposOwnerRepoPullsPullNumberPatchBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberPatchBody"""
 
-    commit_id: NotRequired[str]
+    title: NotRequired[str]
     body: NotRequired[str]
-    event: NotRequired[Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]]
-    comments: NotRequired[
-        list[ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsType]
-    ]
+    state: NotRequired[Literal["open", "closed"]]
+    base: NotRequired[str]
+    maintainer_can_modify: NotRequired[bool]
 
 
-class ReposOwnerRepoPullsPullNumberReviewsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoPullsPullNumberReviewsPostBody"""
+class ReposOwnerRepoPullsPullNumberPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPullNumberPatchBody"""
 
-    commit_id: NotRequired[str]
+    title: NotRequired[str]
     body: NotRequired[str]
-    event: NotRequired[Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]]
-    comments: NotRequired[
-        list[
-            ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsTypeForResponse
-        ]
-    ]
-
-
-class ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsType(TypedDict):
-    """ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems"""
-
-    path: str
-    position: NotRequired[int]
-    body: str
-    line: NotRequired[int]
-    side: NotRequired[str]
-    start_line: NotRequired[int]
-    start_side: NotRequired[str]
-
-
-class ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems"""
-
-    path: str
-    position: NotRequired[int]
-    body: str
-    line: NotRequired[int]
-    side: NotRequired[str]
-    start_line: NotRequired[int]
-    start_side: NotRequired[str]
+    state: NotRequired[Literal["open", "closed"]]
+    base: NotRequired[str]
+    maintainer_can_modify: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsType",
-    "ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsTypeForResponse",
-    "ReposOwnerRepoPullsPullNumberReviewsPostBodyType",
-    "ReposOwnerRepoPullsPullNumberReviewsPostBodyTypeForResponse",
+    "ReposOwnerRepoPullsPullNumberPatchBodyType",
+    "ReposOwnerRepoPullsPullNumberPatchBodyTypeForResponse",
 )

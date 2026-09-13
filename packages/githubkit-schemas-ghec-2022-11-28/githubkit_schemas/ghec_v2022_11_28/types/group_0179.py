@@ -9,38 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing_extensions import TypedDict
 
 from .group_0180 import (
-    RulesetVersionPropActorType,
-    RulesetVersionPropActorTypeForResponse,
+    RulesetVersionWithStateAllof1PropStateType,
+    RulesetVersionWithStateAllof1PropStateTypeForResponse,
 )
 
 
-class RulesetVersionType(TypedDict):
-    """Ruleset version
+class RulesetVersionWithStateAllof1Type(TypedDict):
+    """RulesetVersionWithStateAllof1"""
 
-    The historical version of a ruleset
-    """
-
-    version_id: int
-    actor: RulesetVersionPropActorType
-    updated_at: _dt.datetime
+    state: RulesetVersionWithStateAllof1PropStateType
 
 
-class RulesetVersionTypeForResponse(TypedDict):
-    """Ruleset version
+class RulesetVersionWithStateAllof1TypeForResponse(TypedDict):
+    """RulesetVersionWithStateAllof1"""
 
-    The historical version of a ruleset
-    """
-
-    version_id: int
-    actor: RulesetVersionPropActorTypeForResponse
-    updated_at: str
+    state: RulesetVersionWithStateAllof1PropStateTypeForResponse
 
 
 __all__ = (
-    "RulesetVersionType",
-    "RulesetVersionTypeForResponse",
+    "RulesetVersionWithStateAllof1Type",
+    "RulesetVersionWithStateAllof1TypeForResponse",
 )

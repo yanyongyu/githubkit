@@ -9,37 +9,86 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0053 import ReactionRollup
+
+class Feed(GitHubModel):
+    """Feed
+
+    Feed
+    """
+
+    timeline_url: str = Field()
+    user_url: str = Field()
+    current_user_public_url: Missing[str] = Field(default=UNSET)
+    current_user_url: Missing[str] = Field(default=UNSET)
+    current_user_actor_url: Missing[str] = Field(default=UNSET)
+    current_user_organization_url: Missing[str] = Field(default=UNSET)
+    current_user_organization_urls: Missing[list[str]] = Field(default=UNSET)
+    security_advisories_url: Missing[str] = Field(default=UNSET)
+    repository_discussions_url: Missing[str] = Field(
+        default=UNSET, description="A feed of discussions for a given repository."
+    )
+    repository_discussions_category_url: Missing[str] = Field(
+        default=UNSET,
+        description="A feed of discussions for a given repository and category.",
+    )
+    links: FeedPropLinks = Field(alias="_links")
 
 
-class CommitCommentEventPropComment(GitHubModel):
-    """CommitCommentEventPropComment"""
+class FeedPropLinks(GitHubModel):
+    """FeedPropLinks"""
 
-    html_url: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    body: Missing[str] = Field(default=UNSET)
-    path: Missing[Union[str, None]] = Field(default=UNSET)
-    position: Missing[Union[int, None]] = Field(default=UNSET)
-    line: Missing[Union[int, None]] = Field(default=UNSET)
-    commit_id: Missing[str] = Field(default=UNSET)
-    user: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
-    created_at: Missing[_dt.datetime] = Field(default=UNSET)
-    updated_at: Missing[_dt.datetime] = Field(default=UNSET)
-    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
+    timeline: LinkWithType = Field(
+        title="Link With Type", description="Hypermedia Link with Type"
+    )
+    user: LinkWithType = Field(
+        title="Link With Type", description="Hypermedia Link with Type"
+    )
+    security_advisories: Missing[LinkWithType] = Field(
+        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
+    )
+    current_user: Missing[LinkWithType] = Field(
+        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
+    )
+    current_user_public: Missing[LinkWithType] = Field(
+        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
+    )
+    current_user_actor: Missing[LinkWithType] = Field(
+        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
+    )
+    current_user_organization: Missing[LinkWithType] = Field(
+        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
+    )
+    current_user_organizations: Missing[list[LinkWithType]] = Field(default=UNSET)
+    repository_discussions: Missing[LinkWithType] = Field(
+        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
+    )
+    repository_discussions_category: Missing[LinkWithType] = Field(
+        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
+    )
 
 
-model_rebuild(CommitCommentEventPropComment)
+class LinkWithType(GitHubModel):
+    """Link With Type
 
-__all__ = ("CommitCommentEventPropComment",)
+    Hypermedia Link with Type
+    """
+
+    href: str = Field()
+    type: str = Field()
+
+
+model_rebuild(Feed)
+model_rebuild(FeedPropLinks)
+model_rebuild(LinkWithType)
+
+__all__ = (
+    "Feed",
+    "FeedPropLinks",
+    "LinkWithType",
+)

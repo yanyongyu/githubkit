@@ -13,23 +13,19 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoActionsPermissionsPutBodyType(TypedDict):
-    """ReposOwnerRepoActionsPermissionsPutBody"""
+class OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType(TypedDict):
+    """OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody"""
 
-    enabled: bool
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    sha_pinning_required: NotRequired[bool]
+    role: NotRequired[Literal["member", "maintainer"]]
 
 
-class ReposOwnerRepoActionsPermissionsPutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsPermissionsPutBody"""
+class OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyTypeForResponse(TypedDict):
+    """OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody"""
 
-    enabled: bool
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    sha_pinning_required: NotRequired[bool]
+    role: NotRequired[Literal["member", "maintainer"]]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsPermissionsPutBodyType",
-    "ReposOwnerRepoActionsPermissionsPutBodyTypeForResponse",
+    "OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType",
+    "OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyTypeForResponse",
 )

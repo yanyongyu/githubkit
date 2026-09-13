@@ -13,22 +13,20 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0112 import CustomPropertyValue
+from .group_0114 import (
+    EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName,
+)
 
 
-class CustomPropertiesForOrgsGetEnterprisePropertyValues(GitHubModel):
-    """Enterprise Organization Custom Property Values
+class EnterpriseRulesetConditionsOrganizationNameTarget(GitHubModel):
+    """Repository ruleset conditions for organization names
 
-    List of custom property values for an organization
+    Parameters for an organization name condition
     """
 
-    organization_id: int = Field()
-    organization_login: str = Field()
-    properties: list[CustomPropertyValue] = Field(
-        description="List of custom property names and associated values"
-    )
+    organization_name: EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName = Field()
 
 
-model_rebuild(CustomPropertiesForOrgsGetEnterprisePropertyValues)
+model_rebuild(EnterpriseRulesetConditionsOrganizationNameTarget)
 
-__all__ = ("CustomPropertiesForOrgsGetEnterprisePropertyValues",)
+__all__ = ("EnterpriseRulesetConditionsOrganizationNameTarget",)

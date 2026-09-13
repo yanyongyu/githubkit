@@ -9,305 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class WebhookIssueCommentCreatedPropIssueAllof1Type(TypedDict):
-    """WebhookIssueCommentCreatedPropIssueAllof1"""
-
-    active_lock_reason: NotRequired[Union[str, None]]
-    assignee: Union[WebhookIssueCommentCreatedPropIssueAllof1PropAssigneeType, None]
-    assignees: NotRequired[
-        list[
-            Union[WebhookIssueCommentCreatedPropIssueAllof1PropAssigneesItemsType, None]
-        ]
-    ]
-    author_association: NotRequired[str]
-    body: NotRequired[Union[str, None]]
-    closed_at: NotRequired[Union[str, None]]
-    comments: NotRequired[int]
-    comments_url: NotRequired[str]
-    created_at: NotRequired[str]
-    events_url: NotRequired[str]
-    html_url: NotRequired[str]
-    id: NotRequired[int]
-    labels: list[WebhookIssueCommentCreatedPropIssueAllof1PropLabelsItemsType]
-    labels_url: NotRequired[str]
-    locked: bool
-    milestone: NotRequired[
-        Union[WebhookIssueCommentCreatedPropIssueAllof1PropMilestoneType, None]
-    ]
-    node_id: NotRequired[str]
-    number: NotRequired[int]
-    performed_via_github_app: NotRequired[
-        Union[
-            WebhookIssueCommentCreatedPropIssueAllof1PropPerformedViaGithubAppType, None
-        ]
-    ]
-    reactions: NotRequired[WebhookIssueCommentCreatedPropIssueAllof1PropReactionsType]
-    repository_url: NotRequired[str]
-    state: Literal["open", "closed"]
-    timeline_url: NotRequired[str]
-    title: NotRequired[str]
-    updated_at: NotRequired[str]
-    url: NotRequired[str]
-    user: NotRequired[WebhookIssueCommentCreatedPropIssueAllof1PropUserType]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0624 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0625 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0626 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0627 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0774 import (
+    WebhookIssueCommentCreatedPropCommentType,
+    WebhookIssueCommentCreatedPropCommentTypeForResponse,
+)
+from .group_0775 import (
+    WebhookIssueCommentCreatedPropIssueType,
+    WebhookIssueCommentCreatedPropIssueTypeForResponse,
+)
 
 
-class WebhookIssueCommentCreatedPropIssueAllof1TypeForResponse(TypedDict):
-    """WebhookIssueCommentCreatedPropIssueAllof1"""
+class WebhookIssueCommentCreatedType(TypedDict):
+    """issue_comment created event"""
 
-    active_lock_reason: NotRequired[Union[str, None]]
-    assignee: Union[
-        WebhookIssueCommentCreatedPropIssueAllof1PropAssigneeTypeForResponse, None
-    ]
-    assignees: NotRequired[
-        list[
-            Union[
-                WebhookIssueCommentCreatedPropIssueAllof1PropAssigneesItemsTypeForResponse,
-                None,
-            ]
-        ]
-    ]
-    author_association: NotRequired[str]
-    body: NotRequired[Union[str, None]]
-    closed_at: NotRequired[Union[str, None]]
-    comments: NotRequired[int]
-    comments_url: NotRequired[str]
-    created_at: NotRequired[str]
-    events_url: NotRequired[str]
-    html_url: NotRequired[str]
-    id: NotRequired[int]
-    labels: list[
-        WebhookIssueCommentCreatedPropIssueAllof1PropLabelsItemsTypeForResponse
-    ]
-    labels_url: NotRequired[str]
-    locked: bool
-    milestone: NotRequired[
-        Union[
-            WebhookIssueCommentCreatedPropIssueAllof1PropMilestoneTypeForResponse, None
-        ]
-    ]
-    node_id: NotRequired[str]
-    number: NotRequired[int]
-    performed_via_github_app: NotRequired[
-        Union[
-            WebhookIssueCommentCreatedPropIssueAllof1PropPerformedViaGithubAppTypeForResponse,
-            None,
-        ]
-    ]
-    reactions: NotRequired[
-        WebhookIssueCommentCreatedPropIssueAllof1PropReactionsTypeForResponse
-    ]
-    repository_url: NotRequired[str]
-    state: Literal["open", "closed"]
-    timeline_url: NotRequired[str]
-    title: NotRequired[str]
-    updated_at: NotRequired[str]
-    url: NotRequired[str]
-    user: NotRequired[WebhookIssueCommentCreatedPropIssueAllof1PropUserTypeForResponse]
+    action: Literal["created"]
+    comment: WebhookIssueCommentCreatedPropCommentType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    issue: WebhookIssueCommentCreatedPropIssueType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class WebhookIssueCommentCreatedPropIssueAllof1PropAssigneeType(TypedDict):
-    """User"""
+class WebhookIssueCommentCreatedTypeForResponse(TypedDict):
+    """issue_comment created event"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookIssueCommentCreatedPropIssueAllof1PropAssigneeTypeForResponse(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookIssueCommentCreatedPropIssueAllof1PropAssigneesItemsType(TypedDict):
-    """WebhookIssueCommentCreatedPropIssueAllof1PropAssigneesItems"""
-
-
-class WebhookIssueCommentCreatedPropIssueAllof1PropAssigneesItemsTypeForResponse(
-    TypedDict
-):
-    """WebhookIssueCommentCreatedPropIssueAllof1PropAssigneesItems"""
-
-
-class WebhookIssueCommentCreatedPropIssueAllof1PropLabelsItemsType(TypedDict):
-    """Label"""
-
-    color: str
-    default: bool
-    description: Union[str, None]
-    id: int
-    name: str
-    node_id: str
-    url: str
-
-
-class WebhookIssueCommentCreatedPropIssueAllof1PropLabelsItemsTypeForResponse(
-    TypedDict
-):
-    """Label"""
-
-    color: str
-    default: bool
-    description: Union[str, None]
-    id: int
-    name: str
-    node_id: str
-    url: str
-
-
-class WebhookIssueCommentCreatedPropIssueAllof1PropMilestoneType(TypedDict):
-    """WebhookIssueCommentCreatedPropIssueAllof1PropMilestone"""
-
-
-class WebhookIssueCommentCreatedPropIssueAllof1PropMilestoneTypeForResponse(TypedDict):
-    """WebhookIssueCommentCreatedPropIssueAllof1PropMilestone"""
-
-
-class WebhookIssueCommentCreatedPropIssueAllof1PropPerformedViaGithubAppType(TypedDict):
-    """WebhookIssueCommentCreatedPropIssueAllof1PropPerformedViaGithubApp"""
-
-
-class WebhookIssueCommentCreatedPropIssueAllof1PropPerformedViaGithubAppTypeForResponse(
-    TypedDict
-):
-    """WebhookIssueCommentCreatedPropIssueAllof1PropPerformedViaGithubApp"""
-
-
-class WebhookIssueCommentCreatedPropIssueAllof1PropReactionsType(TypedDict):
-    """WebhookIssueCommentCreatedPropIssueAllof1PropReactions"""
-
-    plus_one: NotRequired[int]
-    minus_one: NotRequired[int]
-    confused: NotRequired[int]
-    eyes: NotRequired[int]
-    heart: NotRequired[int]
-    hooray: NotRequired[int]
-    laugh: NotRequired[int]
-    rocket: NotRequired[int]
-    total_count: NotRequired[int]
-    url: NotRequired[str]
-
-
-class WebhookIssueCommentCreatedPropIssueAllof1PropReactionsTypeForResponse(TypedDict):
-    """WebhookIssueCommentCreatedPropIssueAllof1PropReactions"""
-
-    plus_one: NotRequired[int]
-    minus_one: NotRequired[int]
-    confused: NotRequired[int]
-    eyes: NotRequired[int]
-    heart: NotRequired[int]
-    hooray: NotRequired[int]
-    laugh: NotRequired[int]
-    rocket: NotRequired[int]
-    total_count: NotRequired[int]
-    url: NotRequired[str]
-
-
-class WebhookIssueCommentCreatedPropIssueAllof1PropUserType(TypedDict):
-    """WebhookIssueCommentCreatedPropIssueAllof1PropUser"""
-
-    avatar_url: NotRequired[str]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: NotRequired[int]
-    login: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[str]
-    url: NotRequired[str]
-
-
-class WebhookIssueCommentCreatedPropIssueAllof1PropUserTypeForResponse(TypedDict):
-    """WebhookIssueCommentCreatedPropIssueAllof1PropUser"""
-
-    avatar_url: NotRequired[str]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: NotRequired[int]
-    login: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[str]
-    url: NotRequired[str]
+    action: Literal["created"]
+    comment: WebhookIssueCommentCreatedPropCommentTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    issue: WebhookIssueCommentCreatedPropIssueTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookIssueCommentCreatedPropIssueAllof1PropAssigneeType",
-    "WebhookIssueCommentCreatedPropIssueAllof1PropAssigneeTypeForResponse",
-    "WebhookIssueCommentCreatedPropIssueAllof1PropAssigneesItemsType",
-    "WebhookIssueCommentCreatedPropIssueAllof1PropAssigneesItemsTypeForResponse",
-    "WebhookIssueCommentCreatedPropIssueAllof1PropLabelsItemsType",
-    "WebhookIssueCommentCreatedPropIssueAllof1PropLabelsItemsTypeForResponse",
-    "WebhookIssueCommentCreatedPropIssueAllof1PropMilestoneType",
-    "WebhookIssueCommentCreatedPropIssueAllof1PropMilestoneTypeForResponse",
-    "WebhookIssueCommentCreatedPropIssueAllof1PropPerformedViaGithubAppType",
-    "WebhookIssueCommentCreatedPropIssueAllof1PropPerformedViaGithubAppTypeForResponse",
-    "WebhookIssueCommentCreatedPropIssueAllof1PropReactionsType",
-    "WebhookIssueCommentCreatedPropIssueAllof1PropReactionsTypeForResponse",
-    "WebhookIssueCommentCreatedPropIssueAllof1PropUserType",
-    "WebhookIssueCommentCreatedPropIssueAllof1PropUserTypeForResponse",
-    "WebhookIssueCommentCreatedPropIssueAllof1Type",
-    "WebhookIssueCommentCreatedPropIssueAllof1TypeForResponse",
+    "WebhookIssueCommentCreatedType",
+    "WebhookIssueCommentCreatedTypeForResponse",
 )

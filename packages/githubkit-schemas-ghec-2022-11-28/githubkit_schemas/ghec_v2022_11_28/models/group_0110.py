@@ -18,14 +18,44 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrganizationCustomPropertyAllof1(GitHubModel):
-    """OrganizationCustomPropertyAllof1"""
+class CustomProperty(GitHubModel):
+    """Organization Custom Property
 
+    Custom property defined on an organization
+    """
+
+    property_name: str = Field(description="The name of the property")
+    url: Missing[str] = Field(
+        default=UNSET,
+        description="The URL that can be used to fetch, update, or delete info about this property via the API.",
+    )
+    source_type: Missing[Literal["organization", "enterprise"]] = Field(
+        default=UNSET, description="The source type of the property"
+    )
+    value_type: Literal[
+        "string", "single_select", "multi_select", "true_false", "url"
+    ] = Field(description="The type of the value for the property")
+    required: Missing[bool] = Field(
+        default=UNSET, description="Whether the property is required."
+    )
+    default_value: Missing[Union[str, list[str], None]] = Field(
+        default=UNSET, description="Default value of the property"
+    )
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Short description of the property"
+    )
+    allowed_values: Missing[Union[list[str], None]] = Field(
+        default=UNSET,
+        description="An ordered list of the allowed values of the property.\nThe property can have up to 200 allowed values.",
+    )
     values_editable_by: Missing[
-        Union[Literal["enterprise_actors", "enterprise_and_org_actors"], None]
+        Union[Literal["org_actors", "org_and_repo_actors"], None]
     ] = Field(default=UNSET, description="Who can edit the values of the property")
+    require_explicit_values: Missing[bool] = Field(
+        default=UNSET, description="Whether setting properties values is mandatory"
+    )
 
 
-model_rebuild(OrganizationCustomPropertyAllof1)
+model_rebuild(CustomProperty)
 
-__all__ = ("OrganizationCustomPropertyAllof1",)
+__all__ = ("CustomProperty",)

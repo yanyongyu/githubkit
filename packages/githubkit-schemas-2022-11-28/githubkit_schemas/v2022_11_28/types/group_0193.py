@@ -13,27 +13,31 @@ from typing import Union
 from typing_extensions import TypedDict
 
 
-class CustomPropertyValueType(TypedDict):
-    """Custom Property Value
+class CodeOfConductSimpleType(TypedDict):
+    """Code Of Conduct Simple
 
-    Custom property name and associated value
+    Code of Conduct Simple
     """
 
-    property_name: str
-    value: Union[str, list[str], None]
+    url: str
+    key: str
+    name: str
+    html_url: Union[str, None]
 
 
-class CustomPropertyValueTypeForResponse(TypedDict):
-    """Custom Property Value
+class CodeOfConductSimpleTypeForResponse(TypedDict):
+    """Code Of Conduct Simple
 
-    Custom property name and associated value
+    Code of Conduct Simple
     """
 
-    property_name: str
-    value: Union[str, list[str], None]
+    url: str
+    key: str
+    name: str
+    html_url: Union[str, None]
 
 
 __all__ = (
-    "CustomPropertyValueType",
-    "CustomPropertyValueTypeForResponse",
+    "CodeOfConductSimpleType",
+    "CodeOfConductSimpleTypeForResponse",
 )

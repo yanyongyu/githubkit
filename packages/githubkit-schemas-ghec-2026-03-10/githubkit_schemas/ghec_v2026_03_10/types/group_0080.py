@@ -9,30 +9,59 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0078 import (
-    CodeSecurityConfigurationType,
-    CodeSecurityConfigurationTypeForResponse,
-)
+
+class TeamSimpleType(TypedDict):
+    """Team Simple
+
+    Groups of organization members that gives permissions on specified repositories.
+    """
+
+    id: int
+    node_id: str
+    url: str
+    members_url: str
+    name: str
+    description: Union[str, None]
+    permission: str
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    html_url: str
+    repositories_url: str
+    slug: str
+    ldap_dn: NotRequired[str]
+    type: Literal["enterprise", "organization"]
+    organization_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
 
 
-class CodeSecurityDefaultConfigurationsItemsType(TypedDict):
-    """CodeSecurityDefaultConfigurationsItems"""
+class TeamSimpleTypeForResponse(TypedDict):
+    """Team Simple
 
-    default_for_new_repos: NotRequired[Literal["public", "private_and_internal", "all"]]
-    configuration: NotRequired[CodeSecurityConfigurationType]
+    Groups of organization members that gives permissions on specified repositories.
+    """
 
-
-class CodeSecurityDefaultConfigurationsItemsTypeForResponse(TypedDict):
-    """CodeSecurityDefaultConfigurationsItems"""
-
-    default_for_new_repos: NotRequired[Literal["public", "private_and_internal", "all"]]
-    configuration: NotRequired[CodeSecurityConfigurationTypeForResponse]
+    id: int
+    node_id: str
+    url: str
+    members_url: str
+    name: str
+    description: Union[str, None]
+    permission: str
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    html_url: str
+    repositories_url: str
+    slug: str
+    ldap_dn: NotRequired[str]
+    type: Literal["enterprise", "organization"]
+    organization_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
 
 
 __all__ = (
-    "CodeSecurityDefaultConfigurationsItemsType",
-    "CodeSecurityDefaultConfigurationsItemsTypeForResponse",
+    "TeamSimpleType",
+    "TeamSimpleTypeForResponse",
 )

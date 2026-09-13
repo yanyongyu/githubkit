@@ -9,25 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing_extensions import NotRequired, TypedDict
 
 
-class NotificationsPutBodyType(TypedDict):
-    """NotificationsPutBody"""
+class EventsGetResponse503Type(TypedDict):
+    """EventsGetResponse503"""
 
-    last_read_at: NotRequired[_dt.datetime]
-    read: NotRequired[bool]
+    code: NotRequired[str]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
-class NotificationsPutBodyTypeForResponse(TypedDict):
-    """NotificationsPutBody"""
+class EventsGetResponse503TypeForResponse(TypedDict):
+    """EventsGetResponse503"""
 
-    last_read_at: NotRequired[str]
-    read: NotRequired[bool]
+    code: NotRequired[str]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
 __all__ = (
-    "NotificationsPutBodyType",
-    "NotificationsPutBodyTypeForResponse",
+    "EventsGetResponse503Type",
+    "EventsGetResponse503TypeForResponse",
 )

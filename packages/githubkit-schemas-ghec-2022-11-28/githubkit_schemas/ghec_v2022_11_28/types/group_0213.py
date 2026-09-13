@@ -9,62 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+
+class SubIssuesSummaryType(TypedDict):
+    """Sub-issues Summary"""
+
+    total: int
+    completed: int
+    percent_completed: int
 
 
-class MilestoneType(TypedDict):
-    """Milestone
+class SubIssuesSummaryTypeForResponse(TypedDict):
+    """Sub-issues Summary"""
 
-    A collection of related issues and pull requests.
-    """
-
-    url: str
-    html_url: str
-    labels_url: str
-    id: int
-    node_id: str
-    number: int
-    state: Literal["open", "closed"]
-    title: str
-    description: Union[str, None]
-    creator: Union[SimpleUserType, None]
-    open_issues: int
-    closed_issues: int
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    closed_at: Union[_dt.datetime, None]
-    due_on: Union[_dt.datetime, None]
+    total: int
+    completed: int
+    percent_completed: int
 
 
-class MilestoneTypeForResponse(TypedDict):
-    """Milestone
+class IssueDependenciesSummaryType(TypedDict):
+    """Issue Dependencies Summary"""
 
-    A collection of related issues and pull requests.
-    """
+    blocked_by: int
+    blocking: int
+    total_blocked_by: int
+    total_blocking: int
 
-    url: str
-    html_url: str
-    labels_url: str
-    id: int
-    node_id: str
-    number: int
-    state: Literal["open", "closed"]
-    title: str
-    description: Union[str, None]
-    creator: Union[SimpleUserTypeForResponse, None]
-    open_issues: int
-    closed_issues: int
-    created_at: str
-    updated_at: str
-    closed_at: Union[str, None]
-    due_on: Union[str, None]
+
+class IssueDependenciesSummaryTypeForResponse(TypedDict):
+    """Issue Dependencies Summary"""
+
+    blocked_by: int
+    blocking: int
+    total_blocked_by: int
+    total_blocking: int
 
 
 __all__ = (
-    "MilestoneType",
-    "MilestoneTypeForResponse",
+    "IssueDependenciesSummaryType",
+    "IssueDependenciesSummaryTypeForResponse",
+    "SubIssuesSummaryType",
+    "SubIssuesSummaryTypeForResponse",
 )

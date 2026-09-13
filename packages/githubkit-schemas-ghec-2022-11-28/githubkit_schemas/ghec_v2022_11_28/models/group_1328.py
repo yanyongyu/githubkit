@@ -12,40 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0265 import OrganizationActionsVariable
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202(
-    GitHubModel
-):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202"""
+class OrgsOrgAgentsVariablesGetResponse200(GitHubModel):
+    """OrgsOrgAgentsVariablesGetResponse200"""
 
-    job_id: int = Field(description="The ID of the created job.")
-    errors: Missing[
-        list[
-            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202PropErrorsItems
-        ]
-    ] = Field(
-        default=UNSET,
-        description="Deployments that were rejected during authorization.",
-    )
+    total_count: int = Field()
+    variables: list[OrganizationActionsVariable] = Field()
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202PropErrorsItems(
-    GitHubModel
-):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202PropErr
-    orsItems
-    """
+model_rebuild(OrgsOrgAgentsVariablesGetResponse200)
 
-
-model_rebuild(OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202)
-model_rebuild(
-    OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202PropErrorsItems
-)
-
-__all__ = (
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202",
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202PropErrorsItems",
-)
+__all__ = ("OrgsOrgAgentsVariablesGetResponse200",)

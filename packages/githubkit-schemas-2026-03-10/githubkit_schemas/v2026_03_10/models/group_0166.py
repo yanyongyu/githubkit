@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Union
 
 from pydantic import Field
 
@@ -17,27 +18,41 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0032 import SimpleRepository
 
-class OrganizationUpdateIssueType(GitHubModel):
-    """OrganizationUpdateIssueType"""
 
-    name: str = Field(description="Name of the issue type.")
-    is_enabled: bool = Field(
-        description="Whether or not the issue type is enabled at the organization level."
+class Migration(GitHubModel):
+    """Migration
+
+    A migration.
+    """
+
+    id: int = Field()
+    owner: Union[SimpleUser, None] = Field()
+    guid: str = Field()
+    state: str = Field()
+    lock_repositories: bool = Field()
+    exclude_metadata: bool = Field()
+    exclude_git_data: bool = Field()
+    exclude_attachments: bool = Field()
+    exclude_releases: bool = Field()
+    exclude_owner_projects: bool = Field()
+    org_metadata_only: bool = Field()
+    repositories: list[SimpleRepository] = Field(
+        description="The repositories included in the migration. Only returned for export migrations."
     )
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Description of the issue type."
+    url: str = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    node_id: str = Field()
+    archive_url: Missing[str] = Field(default=UNSET)
+    exclude: Missing[list[str]] = Field(
+        default=UNSET,
+        description='Exclude related items from being returned in the response in order to improve performance of the request. The array can include any of: `"repositories"`.',
     )
-    color: Missing[
-        Union[
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-            None,
-        ]
-    ] = Field(default=UNSET, description="Color for the issue type.")
 
 
-model_rebuild(OrganizationUpdateIssueType)
+model_rebuild(Migration)
 
-__all__ = ("OrganizationUpdateIssueType",)
+__all__ = ("Migration",)

@@ -18,17 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0212 import Discussion
-from .group_0621 import EnterpriseWebhooks
-from .group_0622 import SimpleInstallation
-from .group_0623 import OrganizationSimpleWebhooks
-from .group_0624 import RepositoryWebhooks
+from .group_0209 import Discussion
+from .group_0624 import EnterpriseWebhooks
+from .group_0625 import SimpleInstallation
+from .group_0626 import OrganizationSimpleWebhooks
+from .group_0627 import RepositoryWebhooks
 
 
-class WebhookDiscussionUnlocked(GitHubModel):
-    """discussion unlocked event"""
+class WebhookDiscussionEdited(GitHubModel):
+    """discussion edited event"""
 
-    action: Literal["unlocked"] = Field()
+    action: Literal["edited"] = Field()
+    changes: Missing[WebhookDiscussionEditedPropChanges] = Field(default=UNSET)
     discussion: Discussion = Field(
         title="Discussion", description="A Discussion in a repository."
     )
@@ -54,6 +55,33 @@ class WebhookDiscussionUnlocked(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookDiscussionUnlocked)
+class WebhookDiscussionEditedPropChanges(GitHubModel):
+    """WebhookDiscussionEditedPropChanges"""
 
-__all__ = ("WebhookDiscussionUnlocked",)
+    body: Missing[WebhookDiscussionEditedPropChangesPropBody] = Field(default=UNSET)
+    title: Missing[WebhookDiscussionEditedPropChangesPropTitle] = Field(default=UNSET)
+
+
+class WebhookDiscussionEditedPropChangesPropBody(GitHubModel):
+    """WebhookDiscussionEditedPropChangesPropBody"""
+
+    from_: str = Field(alias="from")
+
+
+class WebhookDiscussionEditedPropChangesPropTitle(GitHubModel):
+    """WebhookDiscussionEditedPropChangesPropTitle"""
+
+    from_: str = Field(alias="from")
+
+
+model_rebuild(WebhookDiscussionEdited)
+model_rebuild(WebhookDiscussionEditedPropChanges)
+model_rebuild(WebhookDiscussionEditedPropChangesPropBody)
+model_rebuild(WebhookDiscussionEditedPropChangesPropTitle)
+
+__all__ = (
+    "WebhookDiscussionEdited",
+    "WebhookDiscussionEditedPropChanges",
+    "WebhookDiscussionEditedPropChangesPropBody",
+    "WebhookDiscussionEditedPropChangesPropTitle",
+)

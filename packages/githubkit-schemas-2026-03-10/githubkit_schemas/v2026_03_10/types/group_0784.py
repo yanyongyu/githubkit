@@ -13,54 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0538 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0539 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0540 import (
+from .group_0541 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0542 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0543 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0541 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0561 import (
-    WebhooksMarketplacePurchaseType,
-    WebhooksMarketplacePurchaseTypeForResponse,
-)
-from .group_0562 import (
-    WebhooksPreviousMarketplacePurchaseType,
-    WebhooksPreviousMarketplacePurchaseTypeForResponse,
-)
+from .group_0544 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0563 import WebhooksIssue2Type, WebhooksIssue2TypeForResponse
 
 
-class WebhookMarketplacePurchasePurchasedType(TypedDict):
-    """marketplace_purchase purchased event"""
+class WebhookIssuesUnpinnedType(TypedDict):
+    """issues unpinned event"""
 
-    action: Literal["purchased"]
-    effective_date: str
+    action: Literal["unpinned"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    marketplace_purchase: WebhooksMarketplacePurchaseType
+    issue: WebhooksIssue2Type
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    previous_marketplace_purchase: NotRequired[WebhooksPreviousMarketplacePurchaseType]
-    repository: NotRequired[RepositoryWebhooksType]
+    repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookMarketplacePurchasePurchasedTypeForResponse(TypedDict):
-    """marketplace_purchase purchased event"""
+class WebhookIssuesUnpinnedTypeForResponse(TypedDict):
+    """issues unpinned event"""
 
-    action: Literal["purchased"]
-    effective_date: str
+    action: Literal["unpinned"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    marketplace_purchase: WebhooksMarketplacePurchaseTypeForResponse
+    issue: WebhooksIssue2TypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    previous_marketplace_purchase: NotRequired[
-        WebhooksPreviousMarketplacePurchaseTypeForResponse
-    ]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookMarketplacePurchasePurchasedType",
-    "WebhookMarketplacePurchasePurchasedTypeForResponse",
+    "WebhookIssuesUnpinnedType",
+    "WebhookIssuesUnpinnedTypeForResponse",
 )

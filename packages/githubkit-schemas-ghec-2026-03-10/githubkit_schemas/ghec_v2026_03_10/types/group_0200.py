@@ -9,46 +9,77 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class GetBudgetUserStatesType(TypedDict):
-    """GetBudgetUserStates"""
+class UpdateCostCenterType(TypedDict):
+    """UpdateCostCenter"""
 
-    user_states: list[GetBudgetUserStatesPropUserStatesItemsType]
-    has_next_page: bool
-    total_count: int
-
-
-class GetBudgetUserStatesTypeForResponse(TypedDict):
-    """GetBudgetUserStates"""
-
-    user_states: list[GetBudgetUserStatesPropUserStatesItemsTypeForResponse]
-    has_next_page: bool
-    total_count: int
+    id: str
+    name: str
+    azure_subscription: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["active", "deleted"]]
+    resources: list[UpdateCostCenterPropResourcesItemsType]
+    ai_credit_pool_enabled: NotRequired[bool]
+    ai_credit_pool_state: NotRequired[UpdateCostCenterPropAiCreditPoolStateType]
 
 
-class GetBudgetUserStatesPropUserStatesItemsType(TypedDict):
-    """GetBudgetUserStatesPropUserStatesItems"""
+class UpdateCostCenterTypeForResponse(TypedDict):
+    """UpdateCostCenter"""
 
-    user: NotRequired[str]
-    consumed_amount: float
-    target_amount: float
-    override_budget_id: NotRequired[str]
+    id: str
+    name: str
+    azure_subscription: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["active", "deleted"]]
+    resources: list[UpdateCostCenterPropResourcesItemsTypeForResponse]
+    ai_credit_pool_enabled: NotRequired[bool]
+    ai_credit_pool_state: NotRequired[
+        UpdateCostCenterPropAiCreditPoolStateTypeForResponse
+    ]
 
 
-class GetBudgetUserStatesPropUserStatesItemsTypeForResponse(TypedDict):
-    """GetBudgetUserStatesPropUserStatesItems"""
+class UpdateCostCenterPropResourcesItemsType(TypedDict):
+    """UpdateCostCenterPropResourcesItems"""
 
-    user: NotRequired[str]
-    consumed_amount: float
-    target_amount: float
-    override_budget_id: NotRequired[str]
+    type: str
+    name: str
+
+
+class UpdateCostCenterPropResourcesItemsTypeForResponse(TypedDict):
+    """UpdateCostCenterPropResourcesItems"""
+
+    type: str
+    name: str
+
+
+class UpdateCostCenterPropAiCreditPoolStateType(TypedDict):
+    """UpdateCostCenterPropAiCreditPoolState
+
+    Read-only cap-budget projection for the cost center. Only present when the cost
+    center draws from the AI credit pool.
+    """
+
+    target_amount: NotRequired[Union[float, None]]
+    current_amount: NotRequired[Union[float, None]]
+
+
+class UpdateCostCenterPropAiCreditPoolStateTypeForResponse(TypedDict):
+    """UpdateCostCenterPropAiCreditPoolState
+
+    Read-only cap-budget projection for the cost center. Only present when the cost
+    center draws from the AI credit pool.
+    """
+
+    target_amount: NotRequired[Union[float, None]]
+    current_amount: NotRequired[Union[float, None]]
 
 
 __all__ = (
-    "GetBudgetUserStatesPropUserStatesItemsType",
-    "GetBudgetUserStatesPropUserStatesItemsTypeForResponse",
-    "GetBudgetUserStatesType",
-    "GetBudgetUserStatesTypeForResponse",
+    "UpdateCostCenterPropAiCreditPoolStateType",
+    "UpdateCostCenterPropAiCreditPoolStateTypeForResponse",
+    "UpdateCostCenterPropResourcesItemsType",
+    "UpdateCostCenterPropResourcesItemsTypeForResponse",
+    "UpdateCostCenterType",
+    "UpdateCostCenterTypeForResponse",
 )

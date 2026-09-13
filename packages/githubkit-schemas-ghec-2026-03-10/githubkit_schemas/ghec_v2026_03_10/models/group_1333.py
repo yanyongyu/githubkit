@@ -9,59 +9,116 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
-from githubkit.typing import Missing
+from githubkit.compat import PYDANTIC_V2, ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.typing import Missing, UniqueList
 from githubkit.utils import UNSET
 
 
-class OrgsOrgAttestationsBulkListPostResponse200(GitHubModel):
-    """OrgsOrgAttestationsBulkListPostResponse200"""
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody(GitHubModel):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody"""
 
-    attestations_subject_digests: Missing[
-        OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
-    ] = Field(default=UNSET, description="Mapping of subject digest to bundles.")
-    page_info: Missing[OrgsOrgAttestationsBulkListPostResponse200PropPageInfo] = Field(
-        default=UNSET, description="Information about the current page."
+    logical_environment: str = Field(
+        min_length=1, max_length=128, description="The stage of the deployment."
+    )
+    physical_environment: Missing[str] = Field(
+        max_length=128,
+        default=UNSET,
+        description="The physical region of the deployment.",
+    )
+    deployments: list[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItems
+    ] = Field(
+        max_length=1000 if PYDANTIC_V2 else None,
+        description="The list of deployments to record.",
+    )
+    partial_success: Missing[bool] = Field(
+        default=UNSET,
+        description="When enabled, deployments associated with repositories the actor can write to are processed\nwhile deployments associated with repositories that cannot be resolved or written to by the actor\nare skipped and reported in the `errors` array. When false (the default), the endpoint returns\nan error if any targeted repository cannot be resolved, the actor lacks write access, or no matching attestation can be found.\n",
+    )
+    return_records: Missing[bool] = Field(
+        default=UNSET,
+        description="If true, the endpoint will return the set records in the response body\n",
     )
 
 
-class OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests(
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItems(
+    GitHubModel
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsIte
+    ms
+    """
+
+    name: str = Field(
+        min_length=1, max_length=256, description="The name of the artifact."
+    )
+    digest: str = Field(
+        min_length=71,
+        max_length=71,
+        pattern="^sha256:[a-f0-9]{64}$",
+        description="The hex encoded digest of the artifact.",
+    )
+    version: Missing[str] = Field(
+        max_length=100, default=UNSET, description="The artifact version."
+    )
+    status: Missing[Literal["deployed", "decommissioned"]] = Field(
+        default=UNSET, description="The deployment status of the artifact."
+    )
+    deployment_name: str = Field(
+        min_length=1,
+        max_length=256,
+        description="The unique identifier for the deployment represented by the new record. To accommodate differing\ncontainers and namespaces within a record set, the following format is recommended:\n{namespaceName}-{deploymentName}-{containerName}.\nThe deployment_name must be unique across all entries in the deployments array.\n",
+    )
+    github_repository: Missing[str] = Field(
+        max_length=100,
+        pattern="^[A-Za-z0-9.\\-_]+$",
+        default=UNSET,
+        description="The name of the GitHub repository associated with the artifact. This should be used\nwhen there are no provenance attestations available for the artifact. The repository\nmust belong to the organization specified in the path parameter.\n\nIf a provenance attestation is available for the artifact, the API will use\nthe repository information from the attestation instead of this parameter.",
+    )
+    tags: Missing[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTags
+    ] = Field(
+        default=UNSET, description="Key-value pairs to tag the deployment record."
+    )
+    runtime_risks: Missing[
+        UniqueList[
+            Literal[
+                "critical-resource",
+                "internet-exposed",
+                "lateral-movement",
+                "sensitive-data",
+            ]
+        ]
+    ] = Field(
+        max_length=4 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="A list of runtime risks associated with the deployment.",
+    )
+
+
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTags(
     ExtraGitHubModel
 ):
-    """OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsIte
+    msPropTags
 
-    Mapping of subject digest to bundles.
+    Key-value pairs to tag the deployment record.
     """
 
 
-class OrgsOrgAttestationsBulkListPostResponse200PropPageInfo(GitHubModel):
-    """OrgsOrgAttestationsBulkListPostResponse200PropPageInfo
-
-    Information about the current page.
-    """
-
-    has_next: Missing[bool] = Field(
-        default=UNSET, description="Indicates whether there is a next page."
-    )
-    has_previous: Missing[bool] = Field(
-        default=UNSET, description="Indicates whether there is a previous page."
-    )
-    next_: Missing[str] = Field(
-        default=UNSET, alias="next", description="The cursor to the next page."
-    )
-    previous: Missing[str] = Field(
-        default=UNSET, description="The cursor to the previous page."
-    )
-
-
-model_rebuild(OrgsOrgAttestationsBulkListPostResponse200)
-model_rebuild(OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests)
-model_rebuild(OrgsOrgAttestationsBulkListPostResponse200PropPageInfo)
+model_rebuild(OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody)
+model_rebuild(
+    OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItems
+)
+model_rebuild(
+    OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTags
+)
 
 __all__ = (
-    "OrgsOrgAttestationsBulkListPostResponse200",
-    "OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests",
-    "OrgsOrgAttestationsBulkListPostResponse200PropPageInfo",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItems",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTags",
 )

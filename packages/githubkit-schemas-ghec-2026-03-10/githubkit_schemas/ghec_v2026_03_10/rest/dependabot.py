@@ -2369,6 +2369,7 @@ class DependabotClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
+                "410": BasicError,
             },
         )
 
@@ -2405,6 +2406,7 @@ class DependabotClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
+                "410": BasicError,
             },
         )
 
@@ -2545,6 +2547,7 @@ class DependabotClient:
                 "403": BasicError,
                 "404": BasicError,
                 "409": BasicError,
+                "410": BasicError,
                 "422": ValidationErrorSimple,
             },
         )
@@ -2686,6 +2689,7 @@ class DependabotClient:
                 "403": BasicError,
                 "404": BasicError,
                 "409": BasicError,
+                "410": BasicError,
                 "422": ValidationErrorSimple,
             },
         )

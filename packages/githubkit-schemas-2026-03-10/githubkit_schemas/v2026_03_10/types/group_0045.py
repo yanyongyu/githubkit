@@ -9,44 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0040 import (
-    DependabotAlertPackageType,
-    DependabotAlertPackageTypeForResponse,
-)
+import datetime as _dt
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class DependabotAlertWithRepositoryPropDependencyType(TypedDict):
-    """DependabotAlertWithRepositoryPropDependency
+class LabelType(TypedDict):
+    """Label
 
-    Details for the vulnerable dependency.
+    Color-coded labels help you categorize and filter your issues (just like labels
+    in Gmail).
     """
 
-    package: NotRequired[DependabotAlertPackageType]
-    manifest_path: NotRequired[str]
-    scope: NotRequired[Union[Literal["development", "runtime"], None]]
-    relationship: NotRequired[
-        Union[Literal["unknown", "direct", "transitive", "inconclusive"], None]
-    ]
+    id: int
+    node_id: str
+    url: str
+    name: str
+    description: Union[str, None]
+    color: str
+    default: bool
+    archived_at: Union[_dt.datetime, None]
+    archived_by: None
 
 
-class DependabotAlertWithRepositoryPropDependencyTypeForResponse(TypedDict):
-    """DependabotAlertWithRepositoryPropDependency
+class LabelTypeForResponse(TypedDict):
+    """Label
 
-    Details for the vulnerable dependency.
+    Color-coded labels help you categorize and filter your issues (just like labels
+    in Gmail).
     """
 
-    package: NotRequired[DependabotAlertPackageTypeForResponse]
-    manifest_path: NotRequired[str]
-    scope: NotRequired[Union[Literal["development", "runtime"], None]]
-    relationship: NotRequired[
-        Union[Literal["unknown", "direct", "transitive", "inconclusive"], None]
-    ]
+    id: int
+    node_id: str
+    url: str
+    name: str
+    description: Union[str, None]
+    color: str
+    default: bool
+    archived_at: Union[str, None]
+    archived_by: None
 
 
 __all__ = (
-    "DependabotAlertWithRepositoryPropDependencyType",
-    "DependabotAlertWithRepositoryPropDependencyTypeForResponse",
+    "LabelType",
+    "LabelTypeForResponse",
 )

@@ -13,34 +13,34 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0162 import (
-    RepositoryRuleMaxFileSizePropParametersType,
-    RepositoryRuleMaxFileSizePropParametersTypeForResponse,
+    RepositoryRuleWorkflowsPropParametersType,
+    RepositoryRuleWorkflowsPropParametersTypeForResponse,
 )
 
 
-class RepositoryRuleMaxFileSizeType(TypedDict):
-    """max_file_size
+class RepositoryRuleWorkflowsType(TypedDict):
+    """workflows
 
-    Prevent commits with individual files that exceed the specified limit from being
-    pushed to the commit graph.
+    Require all changes made to a targeted branch to pass the specified workflows
+    before they can be merged.
     """
 
-    type: Literal["max_file_size"]
-    parameters: NotRequired[RepositoryRuleMaxFileSizePropParametersType]
+    type: Literal["workflows"]
+    parameters: NotRequired[RepositoryRuleWorkflowsPropParametersType]
 
 
-class RepositoryRuleMaxFileSizeTypeForResponse(TypedDict):
-    """max_file_size
+class RepositoryRuleWorkflowsTypeForResponse(TypedDict):
+    """workflows
 
-    Prevent commits with individual files that exceed the specified limit from being
-    pushed to the commit graph.
+    Require all changes made to a targeted branch to pass the specified workflows
+    before they can be merged.
     """
 
-    type: Literal["max_file_size"]
-    parameters: NotRequired[RepositoryRuleMaxFileSizePropParametersTypeForResponse]
+    type: Literal["workflows"]
+    parameters: NotRequired[RepositoryRuleWorkflowsPropParametersTypeForResponse]
 
 
 __all__ = (
-    "RepositoryRuleMaxFileSizeType",
-    "RepositoryRuleMaxFileSizeTypeForResponse",
+    "RepositoryRuleWorkflowsType",
+    "RepositoryRuleWorkflowsTypeForResponse",
 )

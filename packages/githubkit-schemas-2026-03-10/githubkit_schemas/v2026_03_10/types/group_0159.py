@@ -9,39 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ApiInsightsUserStatsItemsType(TypedDict):
-    """ApiInsightsUserStatsItems"""
+class InteractionLimitType(TypedDict):
+    """Interaction Restrictions
 
-    actor_type: NotRequired[str]
-    actor_name: NotRequired[str]
-    actor_id: NotRequired[int]
-    integration_id: NotRequired[Union[int, None]]
-    oauth_application_id: NotRequired[Union[int, None]]
-    total_request_count: NotRequired[int]
-    rate_limited_request_count: NotRequired[int]
-    last_rate_limited_timestamp: NotRequired[Union[str, None]]
-    last_request_timestamp: NotRequired[str]
+    Limit interactions to a specific type of user for a specified duration
+    """
+
+    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
+    expiry: NotRequired[
+        Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
+    ]
 
 
-class ApiInsightsUserStatsItemsTypeForResponse(TypedDict):
-    """ApiInsightsUserStatsItems"""
+class InteractionLimitTypeForResponse(TypedDict):
+    """Interaction Restrictions
 
-    actor_type: NotRequired[str]
-    actor_name: NotRequired[str]
-    actor_id: NotRequired[int]
-    integration_id: NotRequired[Union[int, None]]
-    oauth_application_id: NotRequired[Union[int, None]]
-    total_request_count: NotRequired[int]
-    rate_limited_request_count: NotRequired[int]
-    last_rate_limited_timestamp: NotRequired[Union[str, None]]
-    last_request_timestamp: NotRequired[str]
+    Limit interactions to a specific type of user for a specified duration
+    """
+
+    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
+    expiry: NotRequired[
+        Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
+    ]
 
 
 __all__ = (
-    "ApiInsightsUserStatsItemsType",
-    "ApiInsightsUserStatsItemsTypeForResponse",
+    "InteractionLimitType",
+    "InteractionLimitTypeForResponse",
 )

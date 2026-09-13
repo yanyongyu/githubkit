@@ -9,48 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0052 import IssueTypeType, IssueTypeTypeForResponse
-from .group_0539 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0540 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0541 import (
+from .group_0542 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0543 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0544 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0542 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0558 import WebhooksIssueType, WebhooksIssueTypeForResponse
+from .group_0545 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0564 import WebhooksIssue2Type, WebhooksIssue2TypeForResponse
+from .group_0778 import (
+    WebhookIssuesTransferredPropChangesType,
+    WebhookIssuesTransferredPropChangesTypeForResponse,
+)
 
 
-class WebhookIssuesUntypedType(TypedDict):
-    """issues untyped event"""
+class WebhookIssuesTransferredType(TypedDict):
+    """issues transferred event"""
 
-    action: Literal["untyped"]
+    action: Literal["transferred"]
+    changes: WebhookIssuesTransferredPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhooksIssueType
-    type: Union[IssueTypeType, None]
+    issue: WebhooksIssue2Type
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookIssuesUntypedTypeForResponse(TypedDict):
-    """issues untyped event"""
+class WebhookIssuesTransferredTypeForResponse(TypedDict):
+    """issues transferred event"""
 
-    action: Literal["untyped"]
+    action: Literal["transferred"]
+    changes: WebhookIssuesTransferredPropChangesTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhooksIssueTypeForResponse
-    type: Union[IssueTypeTypeForResponse, None]
+    issue: WebhooksIssue2TypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookIssuesUntypedType",
-    "WebhookIssuesUntypedTypeForResponse",
+    "WebhookIssuesTransferredType",
+    "WebhookIssuesTransferredTypeForResponse",
 )

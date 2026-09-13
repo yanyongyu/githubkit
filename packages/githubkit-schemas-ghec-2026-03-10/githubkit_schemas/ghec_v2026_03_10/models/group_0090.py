@@ -10,30 +10,58 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class CopilotUsageMetrics28DayReport(GitHubModel):
-    """Copilot Metrics 28 Day Report
+class DependabotAlertDismissalRequestSimple(GitHubModel):
+    """Dependabot alert dismissal request
 
-    Links to download the latest Copilot usage metrics report for an
-    enterprise/organization.
+    Information about an active dismissal request for this Dependabot alert.
     """
 
-    download_links: list[str] = Field(
-        description="The URLs to download the latest Copilot usage metrics report for the enterprise/organization."
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the dismissal request."
     )
-    report_start_day: _dt.date = Field(
-        description="The start date of the report period in `YYYY-MM-DD` format."
+    status: Missing[Literal["pending", "approved", "rejected", "cancelled"]] = Field(
+        default=UNSET, description="The current status of the dismissal request."
     )
-    report_end_day: _dt.date = Field(
-        description="The end date of the report period in `YYYY-MM-DD` format."
+    requester: Missing[DependabotAlertDismissalRequestSimplePropRequester] = Field(
+        default=UNSET, description="The user who requested the dismissal."
+    )
+    created_at: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="The date and time when the dismissal request was created.",
+    )
+    url: Missing[str] = Field(
+        default=UNSET,
+        description="The API URL to get more information about this dismissal request.",
     )
 
 
-model_rebuild(CopilotUsageMetrics28DayReport)
+class DependabotAlertDismissalRequestSimplePropRequester(GitHubModel):
+    """DependabotAlertDismissalRequestSimplePropRequester
 
-__all__ = ("CopilotUsageMetrics28DayReport",)
+    The user who requested the dismissal.
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the user."
+    )
+    login: Missing[str] = Field(
+        default=UNSET, description="The login name of the user."
+    )
+
+
+model_rebuild(DependabotAlertDismissalRequestSimple)
+model_rebuild(DependabotAlertDismissalRequestSimplePropRequester)
+
+__all__ = (
+    "DependabotAlertDismissalRequestSimple",
+    "DependabotAlertDismissalRequestSimplePropRequester",
+)

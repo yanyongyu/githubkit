@@ -12,71 +12,48 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0074 import (
-    CodeScanningAlertLocationType,
-    CodeScanningAlertLocationTypeForResponse,
-)
+
+class CodeScanningOptionsType(TypedDict):
+    """CodeScanningOptions
+
+    Security Configuration feature options for code scanning
+    """
+
+    allow_advanced: NotRequired[Union[bool, None]]
 
 
-class CodeScanningAlertInstanceType(TypedDict):
-    """CodeScanningAlertInstance"""
+class CodeScanningOptionsTypeForResponse(TypedDict):
+    """CodeScanningOptions
 
-    ref: NotRequired[str]
-    analysis_key: NotRequired[str]
-    environment: NotRequired[str]
-    category: NotRequired[str]
-    state: NotRequired[Union[Literal["open", "dismissed", "fixed"], None]]
-    commit_sha: NotRequired[str]
-    message: NotRequired[CodeScanningAlertInstancePropMessageType]
-    location: NotRequired[CodeScanningAlertLocationType]
-    html_url: NotRequired[str]
-    classifications: NotRequired[
-        list[
-            Union[
-                Literal["source", "generated", "test", "library", "documentation"], None
-            ]
-        ]
-    ]
+    Security Configuration feature options for code scanning
+    """
+
+    allow_advanced: NotRequired[Union[bool, None]]
 
 
-class CodeScanningAlertInstanceTypeForResponse(TypedDict):
-    """CodeScanningAlertInstance"""
+class CodeScanningDefaultSetupOptionsType(TypedDict):
+    """CodeScanningDefaultSetupOptions
 
-    ref: NotRequired[str]
-    analysis_key: NotRequired[str]
-    environment: NotRequired[str]
-    category: NotRequired[str]
-    state: NotRequired[Union[Literal["open", "dismissed", "fixed"], None]]
-    commit_sha: NotRequired[str]
-    message: NotRequired[CodeScanningAlertInstancePropMessageTypeForResponse]
-    location: NotRequired[CodeScanningAlertLocationTypeForResponse]
-    html_url: NotRequired[str]
-    classifications: NotRequired[
-        list[
-            Union[
-                Literal["source", "generated", "test", "library", "documentation"], None
-            ]
-        ]
-    ]
+    Feature options for code scanning default setup
+    """
+
+    runner_type: NotRequired[Literal["standard", "labeled", "not_set"]]
+    runner_label: NotRequired[Union[str, None]]
 
 
-class CodeScanningAlertInstancePropMessageType(TypedDict):
-    """CodeScanningAlertInstancePropMessage"""
+class CodeScanningDefaultSetupOptionsTypeForResponse(TypedDict):
+    """CodeScanningDefaultSetupOptions
 
-    text: NotRequired[str]
-    markdown: NotRequired[str]
+    Feature options for code scanning default setup
+    """
 
-
-class CodeScanningAlertInstancePropMessageTypeForResponse(TypedDict):
-    """CodeScanningAlertInstancePropMessage"""
-
-    text: NotRequired[str]
-    markdown: NotRequired[str]
+    runner_type: NotRequired[Literal["standard", "labeled", "not_set"]]
+    runner_label: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "CodeScanningAlertInstancePropMessageType",
-    "CodeScanningAlertInstancePropMessageTypeForResponse",
-    "CodeScanningAlertInstanceType",
-    "CodeScanningAlertInstanceTypeForResponse",
+    "CodeScanningDefaultSetupOptionsType",
+    "CodeScanningDefaultSetupOptionsTypeForResponse",
+    "CodeScanningOptionsType",
+    "CodeScanningOptionsTypeForResponse",
 )

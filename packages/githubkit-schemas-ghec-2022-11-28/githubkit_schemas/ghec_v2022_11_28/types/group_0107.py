@@ -9,36 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class NetworkSettingsType(TypedDict):
-    """Hosted compute network settings resource
+class OrganizationCustomPropertyPayloadType(TypedDict):
+    """Organization Custom Property Payload
 
-    A hosted compute network settings resource.
+    Payload for creating or updating an organization custom property definition on
+    an enterprise.
     """
 
-    id: str
-    network_configuration_id: NotRequired[str]
-    name: str
-    subnet_id: str
-    region: str
+    value_type: Literal["string", "single_select", "multi_select", "true_false", "url"]
+    required: NotRequired[bool]
+    default_value: NotRequired[Union[str, list[str], None]]
+    description: NotRequired[Union[str, None]]
+    allowed_values: NotRequired[Union[list[str], None]]
+    values_editable_by: NotRequired[
+        Union[Literal["enterprise_actors", "enterprise_and_org_actors"], None]
+    ]
 
 
-class NetworkSettingsTypeForResponse(TypedDict):
-    """Hosted compute network settings resource
+class OrganizationCustomPropertyPayloadTypeForResponse(TypedDict):
+    """Organization Custom Property Payload
 
-    A hosted compute network settings resource.
+    Payload for creating or updating an organization custom property definition on
+    an enterprise.
     """
 
-    id: str
-    network_configuration_id: NotRequired[str]
-    name: str
-    subnet_id: str
-    region: str
+    value_type: Literal["string", "single_select", "multi_select", "true_false", "url"]
+    required: NotRequired[bool]
+    default_value: NotRequired[Union[str, list[str], None]]
+    description: NotRequired[Union[str, None]]
+    allowed_values: NotRequired[Union[list[str], None]]
+    values_editable_by: NotRequired[
+        Union[Literal["enterprise_actors", "enterprise_and_org_actors"], None]
+    ]
 
 
 __all__ = (
-    "NetworkSettingsType",
-    "NetworkSettingsTypeForResponse",
+    "OrganizationCustomPropertyPayloadType",
+    "OrganizationCustomPropertyPayloadTypeForResponse",
 )

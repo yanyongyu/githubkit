@@ -9,85 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoIssuesPostBodyType(TypedDict):
-    """ReposOwnerRepoIssuesPostBody"""
+class ReposOwnerRepoGitTreesPostBodyType(TypedDict):
+    """ReposOwnerRepoGitTreesPostBody"""
 
-    title: Union[str, int]
-    body: NotRequired[str]
-    assignee: NotRequired[Union[str, None]]
-    milestone: NotRequired[Union[str, int, None]]
-    labels: NotRequired[
-        list[Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type]]
-    ]
-    assignees: NotRequired[list[str]]
-    issue_field_values: NotRequired[
-        list[ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItemsType]
-    ]
-    type: NotRequired[Union[str, None]]
-    parent_issue_id: NotRequired[int]
+    tree: list[ReposOwnerRepoGitTreesPostBodyPropTreeItemsType]
+    base_tree: NotRequired[str]
 
 
-class ReposOwnerRepoIssuesPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesPostBody"""
+class ReposOwnerRepoGitTreesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoGitTreesPostBody"""
 
-    title: Union[str, int]
-    body: NotRequired[str]
-    assignee: NotRequired[Union[str, None]]
-    milestone: NotRequired[Union[str, int, None]]
-    labels: NotRequired[
-        list[
-            Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1TypeForResponse]
-        ]
-    ]
-    assignees: NotRequired[list[str]]
-    issue_field_values: NotRequired[
-        list[ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItemsTypeForResponse]
-    ]
-    type: NotRequired[Union[str, None]]
-    parent_issue_id: NotRequired[int]
+    tree: list[ReposOwnerRepoGitTreesPostBodyPropTreeItemsTypeForResponse]
+    base_tree: NotRequired[str]
 
 
-class ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type(TypedDict):
-    """ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1"""
+class ReposOwnerRepoGitTreesPostBodyPropTreeItemsType(TypedDict):
+    """ReposOwnerRepoGitTreesPostBodyPropTreeItems"""
 
-    id: NotRequired[int]
-    name: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    color: NotRequired[Union[str, None]]
-
-
-class ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1TypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1"""
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    color: NotRequired[Union[str, None]]
+    path: NotRequired[str]
+    mode: NotRequired[Literal["100644", "100755", "040000", "160000", "120000"]]
+    type: NotRequired[Literal["blob", "tree", "commit"]]
+    sha: NotRequired[Union[str, None]]
+    content: NotRequired[str]
 
 
-class ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItemsType(TypedDict):
-    """ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems"""
+class ReposOwnerRepoGitTreesPostBodyPropTreeItemsTypeForResponse(TypedDict):
+    """ReposOwnerRepoGitTreesPostBodyPropTreeItems"""
 
-    field_id: int
-    value: Union[str, float, list[str]]
-
-
-class ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItemsTypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems"""
-
-    field_id: int
-    value: Union[str, float, list[str]]
+    path: NotRequired[str]
+    mode: NotRequired[Literal["100644", "100755", "040000", "160000", "120000"]]
+    type: NotRequired[Literal["blob", "tree", "commit"]]
+    sha: NotRequired[Union[str, None]]
+    content: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItemsType",
-    "ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItemsTypeForResponse",
-    "ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type",
-    "ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1TypeForResponse",
-    "ReposOwnerRepoIssuesPostBodyType",
-    "ReposOwnerRepoIssuesPostBodyTypeForResponse",
+    "ReposOwnerRepoGitTreesPostBodyPropTreeItemsType",
+    "ReposOwnerRepoGitTreesPostBodyPropTreeItemsTypeForResponse",
+    "ReposOwnerRepoGitTreesPostBodyType",
+    "ReposOwnerRepoGitTreesPostBodyTypeForResponse",
 )

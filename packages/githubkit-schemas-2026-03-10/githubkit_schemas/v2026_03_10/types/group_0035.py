@@ -9,30 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0033 import (
-    CodeSecurityConfigurationType,
-    CodeSecurityConfigurationTypeForResponse,
-)
+import datetime as _dt
+from typing_extensions import TypedDict
 
 
-class CodeSecurityDefaultConfigurationsItemsType(TypedDict):
-    """CodeSecurityDefaultConfigurationsItems"""
+class CopilotUsageMetrics28DayReportType(TypedDict):
+    """Copilot Metrics 28 Day Report
 
-    default_for_new_repos: NotRequired[Literal["public", "private_and_internal", "all"]]
-    configuration: NotRequired[CodeSecurityConfigurationType]
+    Links to download the latest Copilot usage metrics report for an
+    enterprise/organization.
+    """
+
+    download_links: list[str]
+    report_start_day: _dt.date
+    report_end_day: _dt.date
 
 
-class CodeSecurityDefaultConfigurationsItemsTypeForResponse(TypedDict):
-    """CodeSecurityDefaultConfigurationsItems"""
+class CopilotUsageMetrics28DayReportTypeForResponse(TypedDict):
+    """Copilot Metrics 28 Day Report
 
-    default_for_new_repos: NotRequired[Literal["public", "private_and_internal", "all"]]
-    configuration: NotRequired[CodeSecurityConfigurationTypeForResponse]
+    Links to download the latest Copilot usage metrics report for an
+    enterprise/organization.
+    """
+
+    download_links: list[str]
+    report_start_day: str
+    report_end_day: str
 
 
 __all__ = (
-    "CodeSecurityDefaultConfigurationsItemsType",
-    "CodeSecurityDefaultConfigurationsItemsTypeForResponse",
+    "CopilotUsageMetrics28DayReportType",
+    "CopilotUsageMetrics28DayReportTypeForResponse",
 )

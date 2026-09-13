@@ -9,31 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberMergeAsyncPutBodyType(TypedDict):
-    """ReposOwnerRepoPullsPullNumberMergeAsyncPutBody"""
+class ReposOwnerRepoPagesDeploymentsPostBodyType(TypedDict):
+    """ReposOwnerRepoPagesDeploymentsPostBody
 
-    commit_title: NotRequired[str]
-    commit_message: NotRequired[str]
-    sha: NotRequired[str]
-    merge_method: NotRequired[Literal["merge", "squash", "rebase"]]
-    merge_action: NotRequired[Literal["default", "direct_merge", "merge_queue"]]
+    The object used to create GitHub Pages deployment
+    """
+
+    artifact_id: NotRequired[int]
+    artifact_url: NotRequired[str]
+    environment: NotRequired[str]
+    pages_build_version: str
+    oidc_token: str
 
 
-class ReposOwnerRepoPullsPullNumberMergeAsyncPutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoPullsPullNumberMergeAsyncPutBody"""
+class ReposOwnerRepoPagesDeploymentsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPagesDeploymentsPostBody
 
-    commit_title: NotRequired[str]
-    commit_message: NotRequired[str]
-    sha: NotRequired[str]
-    merge_method: NotRequired[Literal["merge", "squash", "rebase"]]
-    merge_action: NotRequired[Literal["default", "direct_merge", "merge_queue"]]
+    The object used to create GitHub Pages deployment
+    """
+
+    artifact_id: NotRequired[int]
+    artifact_url: NotRequired[str]
+    environment: NotRequired[str]
+    pages_build_version: str
+    oidc_token: str
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberMergeAsyncPutBodyType",
-    "ReposOwnerRepoPullsPullNumberMergeAsyncPutBodyTypeForResponse",
+    "ReposOwnerRepoPagesDeploymentsPostBodyType",
+    "ReposOwnerRepoPagesDeploymentsPostBodyTypeForResponse",
 )

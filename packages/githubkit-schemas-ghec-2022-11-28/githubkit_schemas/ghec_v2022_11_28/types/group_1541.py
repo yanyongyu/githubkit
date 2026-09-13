@@ -9,49 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoDependabotSecretsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoDependabotSecretsGetResponse200"""
+class ReposOwnerRepoCollaboratorsUsernamePutBodyType(TypedDict):
+    """ReposOwnerRepoCollaboratorsUsernamePutBody"""
 
-    total_count: int
-    secrets: list[DependabotSecretType]
-
-
-class ReposOwnerRepoDependabotSecretsGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoDependabotSecretsGetResponse200"""
-
-    total_count: int
-    secrets: list[DependabotSecretTypeForResponse]
+    permission: NotRequired[str]
 
 
-class DependabotSecretType(TypedDict):
-    """Dependabot Secret
+class ReposOwnerRepoCollaboratorsUsernamePutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoCollaboratorsUsernamePutBody"""
 
-    Set secrets for Dependabot.
-    """
-
-    name: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-
-
-class DependabotSecretTypeForResponse(TypedDict):
-    """Dependabot Secret
-
-    Set secrets for Dependabot.
-    """
-
-    name: str
-    created_at: str
-    updated_at: str
+    permission: NotRequired[str]
 
 
 __all__ = (
-    "DependabotSecretType",
-    "DependabotSecretTypeForResponse",
-    "ReposOwnerRepoDependabotSecretsGetResponse200Type",
-    "ReposOwnerRepoDependabotSecretsGetResponse200TypeForResponse",
+    "ReposOwnerRepoCollaboratorsUsernamePutBodyType",
+    "ReposOwnerRepoCollaboratorsUsernamePutBodyTypeForResponse",
 )

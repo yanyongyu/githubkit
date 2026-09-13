@@ -9,23 +9,59 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class TeamsTeamIdMembershipsUsernamePutBodyType(TypedDict):
-    """TeamsTeamIdMembershipsUsernamePutBody"""
+class ReposOwnerRepoStacksPostResponse422Type(TypedDict):
+    """Validation Error
 
-    role: NotRequired[Literal["member", "maintainer"]]
+    Validation Error
+    """
+
+    message: str
+    documentation_url: str
+    errors: NotRequired[list[ReposOwnerRepoStacksPostResponse422PropErrorsItemsType]]
 
 
-class TeamsTeamIdMembershipsUsernamePutBodyTypeForResponse(TypedDict):
-    """TeamsTeamIdMembershipsUsernamePutBody"""
+class ReposOwnerRepoStacksPostResponse422TypeForResponse(TypedDict):
+    """Validation Error
 
-    role: NotRequired[Literal["member", "maintainer"]]
+    Validation Error
+    """
+
+    message: str
+    documentation_url: str
+    errors: NotRequired[
+        list[ReposOwnerRepoStacksPostResponse422PropErrorsItemsTypeForResponse]
+    ]
+
+
+class ReposOwnerRepoStacksPostResponse422PropErrorsItemsType(TypedDict):
+    """ReposOwnerRepoStacksPostResponse422PropErrorsItems"""
+
+    resource: NotRequired[str]
+    field: NotRequired[str]
+    message: NotRequired[str]
+    code: str
+    index: NotRequired[int]
+    value: NotRequired[Union[str, None, int, None, list[Union[str, int]], None]]
+
+
+class ReposOwnerRepoStacksPostResponse422PropErrorsItemsTypeForResponse(TypedDict):
+    """ReposOwnerRepoStacksPostResponse422PropErrorsItems"""
+
+    resource: NotRequired[str]
+    field: NotRequired[str]
+    message: NotRequired[str]
+    code: str
+    index: NotRequired[int]
+    value: NotRequired[Union[str, None, int, None, list[Union[str, int]], None]]
 
 
 __all__ = (
-    "TeamsTeamIdMembershipsUsernamePutBodyType",
-    "TeamsTeamIdMembershipsUsernamePutBodyTypeForResponse",
+    "ReposOwnerRepoStacksPostResponse422PropErrorsItemsType",
+    "ReposOwnerRepoStacksPostResponse422PropErrorsItemsTypeForResponse",
+    "ReposOwnerRepoStacksPostResponse422Type",
+    "ReposOwnerRepoStacksPostResponse422TypeForResponse",
 )

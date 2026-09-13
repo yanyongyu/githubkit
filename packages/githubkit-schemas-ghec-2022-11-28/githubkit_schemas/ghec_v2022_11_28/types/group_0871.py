@@ -9,58 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0622 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0623 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0624 import (
+from .group_0625 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0626 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0627 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0625 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0647 import (
-    WebhooksMarketplacePurchaseType,
-    WebhooksMarketplacePurchaseTypeForResponse,
-)
-from .group_0648 import (
-    WebhooksPreviousMarketplacePurchaseType,
-    WebhooksPreviousMarketplacePurchaseTypeForResponse,
-)
+from .group_0628 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0647 import WebhooksIssueType, WebhooksIssueTypeForResponse
+from .group_0650 import WebhooksUserMannequinType, WebhooksUserMannequinTypeForResponse
 
 
-class WebhookMarketplacePurchaseCancelledType(TypedDict):
-    """marketplace_purchase cancelled event"""
+class WebhookIssuesUnassignedType(TypedDict):
+    """issues unassigned event"""
 
-    action: Literal["cancelled"]
-    effective_date: str
+    action: Literal["unassigned"]
+    assignee: NotRequired[Union[WebhooksUserMannequinType, None]]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    marketplace_purchase: WebhooksMarketplacePurchaseType
+    issue: WebhooksIssueType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    previous_marketplace_purchase: NotRequired[WebhooksPreviousMarketplacePurchaseType]
-    repository: NotRequired[RepositoryWebhooksType]
+    repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookMarketplacePurchaseCancelledTypeForResponse(TypedDict):
-    """marketplace_purchase cancelled event"""
+class WebhookIssuesUnassignedTypeForResponse(TypedDict):
+    """issues unassigned event"""
 
-    action: Literal["cancelled"]
-    effective_date: str
+    action: Literal["unassigned"]
+    assignee: NotRequired[Union[WebhooksUserMannequinTypeForResponse, None]]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    marketplace_purchase: WebhooksMarketplacePurchaseTypeForResponse
+    issue: WebhooksIssueTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    previous_marketplace_purchase: NotRequired[
-        WebhooksPreviousMarketplacePurchaseTypeForResponse
-    ]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookMarketplacePurchaseCancelledType",
-    "WebhookMarketplacePurchaseCancelledTypeForResponse",
+    "WebhookIssuesUnassignedType",
+    "WebhookIssuesUnassignedTypeForResponse",
 )

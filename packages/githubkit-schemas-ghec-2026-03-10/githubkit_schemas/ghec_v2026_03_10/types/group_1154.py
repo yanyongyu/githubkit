@@ -9,41 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBodyType(TypedDict):
-    """EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBody"""
-
-    name: NotRequired[str]
-    runner_group_id: NotRequired[int]
-    maximum_runners: NotRequired[int]
-    enable_static_ip: NotRequired[bool]
-    size: NotRequired[str]
-    image_source: NotRequired[Literal["github", "partner", "custom"]]
-    image_id: NotRequired[str]
-    image_version: NotRequired[Union[str, None]]
-    image_gen: NotRequired[bool]
+from .group_0017 import AppPermissionsType, AppPermissionsTypeForResponse
 
 
-class EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBodyTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBody"""
+class ApplicationsClientIdTokenScopedPostBodyType(TypedDict):
+    """ApplicationsClientIdTokenScopedPostBody"""
 
-    name: NotRequired[str]
-    runner_group_id: NotRequired[int]
-    maximum_runners: NotRequired[int]
-    enable_static_ip: NotRequired[bool]
-    size: NotRequired[str]
-    image_source: NotRequired[Literal["github", "partner", "custom"]]
-    image_id: NotRequired[str]
-    image_version: NotRequired[Union[str, None]]
-    image_gen: NotRequired[bool]
+    access_token: str
+    target: NotRequired[str]
+    target_id: NotRequired[int]
+    repositories: NotRequired[list[str]]
+    repository_ids: NotRequired[list[int]]
+    permissions: NotRequired[AppPermissionsType]
+
+
+class ApplicationsClientIdTokenScopedPostBodyTypeForResponse(TypedDict):
+    """ApplicationsClientIdTokenScopedPostBody"""
+
+    access_token: str
+    target: NotRequired[str]
+    target_id: NotRequired[int]
+    repositories: NotRequired[list[str]]
+    repository_ids: NotRequired[list[int]]
+    permissions: NotRequired[AppPermissionsTypeForResponse]
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBodyType",
-    "EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBodyTypeForResponse",
+    "ApplicationsClientIdTokenScopedPostBodyType",
+    "ApplicationsClientIdTokenScopedPostBodyTypeForResponse",
 )

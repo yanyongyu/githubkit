@@ -9,31 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
 
-class OidcCustomPropertyInclusionType(TypedDict):
-    """Actions OIDC Custom Property Inclusion
+class ActionsArtifactAndLogRetentionType(TypedDict):
+    """ActionsArtifactAndLogRetention"""
 
-    An OIDC custom property inclusion for repository properties
-    """
-
-    custom_property_name: str
-    inclusion_source: Literal["organization", "enterprise"]
+    days: int
 
 
-class OidcCustomPropertyInclusionTypeForResponse(TypedDict):
-    """Actions OIDC Custom Property Inclusion
+class ActionsArtifactAndLogRetentionTypeForResponse(TypedDict):
+    """ActionsArtifactAndLogRetention"""
 
-    An OIDC custom property inclusion for repository properties
-    """
-
-    custom_property_name: str
-    inclusion_source: Literal["organization", "enterprise"]
+    days: int
 
 
 __all__ = (
-    "OidcCustomPropertyInclusionType",
-    "OidcCustomPropertyInclusionTypeForResponse",
+    "ActionsArtifactAndLogRetentionType",
+    "ActionsArtifactAndLogRetentionTypeForResponse",
 )

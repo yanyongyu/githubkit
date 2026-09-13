@@ -14,17 +14,19 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ActionsCacheUsageOrgEnterprise(GitHubModel):
-    """ActionsCacheUsageOrgEnterprise"""
+class ActionsHostedRunnerCustomImageVersion(GitHubModel):
+    """GitHub-hosted runner custom image version details.
 
-    total_active_caches_count: int = Field(
-        description="The count of active caches across all repositories of an enterprise or an organization."
-    )
-    total_active_caches_size_in_bytes: int = Field(
-        description="The total size in bytes of all active cache items across all repositories of an enterprise or an organization."
-    )
+    Provides details of a hosted runner custom image version
+    """
+
+    version: str = Field(description="The version of image.")
+    state: str = Field(description="The state of image version.")
+    size_gb: int = Field(description="Image version size in GB.")
+    created_on: str = Field(description="The creation date time of the image version.")
+    state_details: str = Field(description="The image version status details.")
 
 
-model_rebuild(ActionsCacheUsageOrgEnterprise)
+model_rebuild(ActionsHostedRunnerCustomImageVersion)
 
-__all__ = ("ActionsCacheUsageOrgEnterprise",)
+__all__ = ("ActionsHostedRunnerCustomImageVersion",)

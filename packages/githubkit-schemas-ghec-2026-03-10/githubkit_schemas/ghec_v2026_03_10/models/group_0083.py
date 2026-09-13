@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,47 +18,54 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0045 import OrganizationSimple
+from .group_0081 import Team
+from .group_0082 import EnterpriseTeam
 
-class GetConsumedLicenses(GitHubModel):
-    """Enterprise Consumed Licenses
 
-    A breakdown of the licenses consumed by an enterprise.
+class CopilotSeatDetails(GitHubModel):
+    """Copilot Business Seat Detail
+
+    Information about a Copilot Business seat assignment for a user, team, or
+    organization.
     """
 
-    total_seats_consumed: Missing[int] = Field(default=UNSET)
-    total_seats_purchased: Missing[int] = Field(default=UNSET)
-    users: Missing[list[GetConsumedLicensesPropUsersItems]] = Field(default=UNSET)
-
-
-class GetConsumedLicensesPropUsersItems(GitHubModel):
-    """GetConsumedLicensesPropUsersItems"""
-
-    github_com_login: Missing[str] = Field(default=UNSET)
-    github_com_name: Missing[Union[str, None]] = Field(default=UNSET)
-    enterprise_server_user_ids: Missing[list[str]] = Field(default=UNSET)
-    github_com_user: Missing[bool] = Field(default=UNSET)
-    enterprise_server_user: Missing[Union[bool, None]] = Field(default=UNSET)
-    visual_studio_subscription_user: Missing[bool] = Field(default=UNSET)
-    license_type: Missing[str] = Field(default=UNSET)
-    github_com_profile: Missing[Union[str, None]] = Field(default=UNSET)
-    github_com_member_roles: Missing[list[str]] = Field(default=UNSET)
-    github_com_enterprise_roles: Missing[list[str]] = Field(
-        default=UNSET, description="All enterprise roles for a user."
+    assignee: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
+    organization: Missing[Union[OrganizationSimple, None]] = Field(default=UNSET)
+    assigning_team: Missing[Union[Team, EnterpriseTeam, None]] = Field(
+        default=UNSET,
+        description="The team through which the assignee is granted access to GitHub Copilot, if applicable.",
     )
-    github_com_verified_domain_emails: Missing[list[str]] = Field(default=UNSET)
-    github_com_saml_name_id: Missing[Union[str, None]] = Field(default=UNSET)
-    github_com_orgs_with_pending_invites: Missing[list[str]] = Field(default=UNSET)
-    github_com_two_factor_auth: Missing[Union[bool, None]] = Field(default=UNSET)
-    enterprise_server_emails: Missing[list[str]] = Field(default=UNSET)
-    visual_studio_license_status: Missing[Union[str, None]] = Field(default=UNSET)
-    visual_studio_subscription_email: Missing[Union[str, None]] = Field(default=UNSET)
-    total_user_accounts: Missing[int] = Field(default=UNSET)
+    pending_cancellation_date: Missing[Union[_dt.date, None]] = Field(
+        default=UNSET,
+        description="The pending cancellation date for the seat, in `YYYY-MM-DD` format. This will be null unless the assignee's Copilot access has been canceled during the current billing cycle. If the seat has been cancelled, this corresponds to the start of the organization's next billing cycle.",
+    )
+    last_activity_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="Timestamp of user's last GitHub Copilot activity, in ISO 8601 format.",
+    )
+    last_activity_editor: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="Last editor that was used by the user for a GitHub Copilot completion.",
+    )
+    last_authenticated_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="Timestamp of the last time the user authenticated with GitHub Copilot, in ISO 8601 format.",
+    )
+    created_at: _dt.datetime = Field(
+        description="Timestamp of when the assignee was last granted access to GitHub Copilot, in ISO 8601 format."
+    )
+    updated_at: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="**Closing down notice:** This field is no longer relevant and is closing down. Use the `created_at` field to determine when the assignee was last granted access to GitHub Copilot. Timestamp of when the assignee's GitHub Copilot access was last updated, in ISO 8601 format.",
+    )
+    plan_type: Missing[Literal["business", "enterprise", "unknown"]] = Field(
+        default=UNSET,
+        description="The Copilot plan of the organization, or the parent enterprise, when applicable.",
+    )
 
 
-model_rebuild(GetConsumedLicenses)
-model_rebuild(GetConsumedLicensesPropUsersItems)
+model_rebuild(CopilotSeatDetails)
 
-__all__ = (
-    "GetConsumedLicenses",
-    "GetConsumedLicensesPropUsersItems",
-)
+__all__ = ("CopilotSeatDetails",)

@@ -9,27 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0137 import RepositoryRuleUpdatePropParameters
 
 
-class RepositoryRuleUpdate(GitHubModel):
-    """update
+class RepositoryRuleRequiredDeploymentsPropParameters(GitHubModel):
+    """RepositoryRuleRequiredDeploymentsPropParameters"""
 
-    Only allow users with bypass permission to update matching refs.
-    """
-
-    type: Literal["update"] = Field()
-    parameters: Missing[RepositoryRuleUpdatePropParameters] = Field(default=UNSET)
+    required_deployment_environments: list[str] = Field(
+        description="The environments that must be successfully deployed to before branches can be merged."
+    )
 
 
-model_rebuild(RepositoryRuleUpdate)
+model_rebuild(RepositoryRuleRequiredDeploymentsPropParameters)
 
-__all__ = ("RepositoryRuleUpdate",)
+__all__ = ("RepositoryRuleRequiredDeploymentsPropParameters",)

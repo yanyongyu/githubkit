@@ -9,28 +9,71 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsCacheStorageLimitForOrganizationType(TypedDict):
-    """Actions cache storage limit for an organization
+class GetBudgetType(TypedDict):
+    """GetBudget"""
 
-    GitHub Actions cache storage policy for an organization.
-    """
+    id: str
+    budget_scope: Literal[
+        "enterprise",
+        "organization",
+        "repository",
+        "cost_center",
+        "multi_user_customer",
+        "multi_user_cost_center",
+        "user",
+    ]
+    budget_entity_name: str
+    user: NotRequired[str]
+    budget_amount: int
+    prevent_further_usage: bool
+    budget_product_sku: str
+    budget_type: Literal["ProductPricing", "SkuPricing", "BundlePricing"]
+    budget_alerting: GetBudgetPropBudgetAlertingType
 
-    max_cache_size_gb: NotRequired[int]
+
+class GetBudgetTypeForResponse(TypedDict):
+    """GetBudget"""
+
+    id: str
+    budget_scope: Literal[
+        "enterprise",
+        "organization",
+        "repository",
+        "cost_center",
+        "multi_user_customer",
+        "multi_user_cost_center",
+        "user",
+    ]
+    budget_entity_name: str
+    user: NotRequired[str]
+    budget_amount: int
+    prevent_further_usage: bool
+    budget_product_sku: str
+    budget_type: Literal["ProductPricing", "SkuPricing", "BundlePricing"]
+    budget_alerting: GetBudgetPropBudgetAlertingTypeForResponse
 
 
-class ActionsCacheStorageLimitForOrganizationTypeForResponse(TypedDict):
-    """Actions cache storage limit for an organization
+class GetBudgetPropBudgetAlertingType(TypedDict):
+    """GetBudgetPropBudgetAlerting"""
 
-    GitHub Actions cache storage policy for an organization.
-    """
+    will_alert: NotRequired[bool]
+    alert_recipients: NotRequired[list[str]]
 
-    max_cache_size_gb: NotRequired[int]
+
+class GetBudgetPropBudgetAlertingTypeForResponse(TypedDict):
+    """GetBudgetPropBudgetAlerting"""
+
+    will_alert: NotRequired[bool]
+    alert_recipients: NotRequired[list[str]]
 
 
 __all__ = (
-    "ActionsCacheStorageLimitForOrganizationType",
-    "ActionsCacheStorageLimitForOrganizationTypeForResponse",
+    "GetBudgetPropBudgetAlertingType",
+    "GetBudgetPropBudgetAlertingTypeForResponse",
+    "GetBudgetType",
+    "GetBudgetTypeForResponse",
 )

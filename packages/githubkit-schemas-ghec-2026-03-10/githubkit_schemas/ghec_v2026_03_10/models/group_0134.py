@@ -9,32 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0122 import RepositoryRulesetConditionsPropRefName
-from .group_0124 import (
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty,
-)
-from .group_0128 import (
-    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty,
-)
 
 
-class EnterpriseRulesetConditionsOneof5(GitHubModel):
-    """organization_property_and_repository_property
+class RepositoryRuleRequiredLinearHistory(GitHubModel):
+    """required_linear_history
 
-    Conditions to target organizations by property and repositories by property
+    Prevent merge commits from being pushed to matching refs.
     """
 
-    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty = Field()
-    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty = Field()
-    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
+    type: Literal["required_linear_history"] = Field()
 
 
-model_rebuild(EnterpriseRulesetConditionsOneof5)
+model_rebuild(RepositoryRuleRequiredLinearHistory)
 
-__all__ = ("EnterpriseRulesetConditionsOneof5",)
+__all__ = ("RepositoryRuleRequiredLinearHistory",)

@@ -16,18 +16,16 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgProjectsV2ProjectNumberDraftsPostBody(GitHubModel):
-    """OrgsOrgProjectsV2ProjectNumberDraftsPostBody"""
+class OrgsOrgOutsideCollaboratorsUsernamePutBody(GitHubModel):
+    """OrgsOrgOutsideCollaboratorsUsernamePutBody"""
 
-    title: str = Field(
-        description="The title of the draft issue item to create in the project."
-    )
-    body: Missing[str] = Field(
+    async_: Missing[bool] = Field(
         default=UNSET,
-        description="The body content of the draft issue item to create in the project.",
+        alias="async",
+        description="When set to `true`, the request will be performed asynchronously. Returns a 202 status code when the job is successfully queued.",
     )
 
 
-model_rebuild(OrgsOrgProjectsV2ProjectNumberDraftsPostBody)
+model_rebuild(OrgsOrgOutsideCollaboratorsUsernamePutBody)
 
-__all__ = ("OrgsOrgProjectsV2ProjectNumberDraftsPostBody",)
+__all__ = ("OrgsOrgOutsideCollaboratorsUsernamePutBody",)

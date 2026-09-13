@@ -16,20 +16,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgInteractionLimitsPullsCreationCapPatchBody(GitHubModel):
-    """OrgsOrgInteractionLimitsPullsCreationCapPatchBody"""
+class OrgsOrgDependabotRepositoryAccessPatchBody(GitHubModel):
+    """OrgsOrgDependabotRepositoryAccessPatchBody
 
-    enabled: bool = Field(
-        description="Whether the pull request creation cap is enabled"
+    Examples:
+        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
+    """
+
+    repository_ids_to_add: Missing[list[int]] = Field(
+        default=UNSET, description="List of repository IDs to add."
     )
-    max_open_pull_requests: Missing[int] = Field(
-        le=1000.0,
-        ge=1.0,
-        default=UNSET,
-        description="The maximum number of open pull requests a user can have at one time",
+    repository_ids_to_remove: Missing[list[int]] = Field(
+        default=UNSET, description="List of repository IDs to remove."
     )
 
 
-model_rebuild(OrgsOrgInteractionLimitsPullsCreationCapPatchBody)
+model_rebuild(OrgsOrgDependabotRepositoryAccessPatchBody)
 
-__all__ = ("OrgsOrgInteractionLimitsPullsCreationCapPatchBody",)
+__all__ = ("OrgsOrgDependabotRepositoryAccessPatchBody",)

@@ -9,34 +9,91 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class PinnedIssueCommentType(TypedDict):
-    """Pinned Issue Comment
+class IssueFieldValueType(TypedDict):
+    """Issue Field Value
 
-    Context around who pinned an issue comment and when it was pinned.
+    A value assigned to an issue field
     """
 
-    pinned_at: _dt.datetime
-    pinned_by: Union[SimpleUserType, None]
+    issue_field_id: int
+    issue_field_name: NotRequired[str]
+    node_id: str
+    data_type: Literal["text", "single_select", "multi_select", "number", "date"]
+    value: Union[str, float, int, None]
+    single_select_option: NotRequired[
+        Union[IssueFieldValuePropSingleSelectOptionType, None]
+    ]
+    multi_select_options: NotRequired[
+        Union[list[IssueFieldValuePropMultiSelectOptionsItemsType], None]
+    ]
 
 
-class PinnedIssueCommentTypeForResponse(TypedDict):
-    """Pinned Issue Comment
+class IssueFieldValueTypeForResponse(TypedDict):
+    """Issue Field Value
 
-    Context around who pinned an issue comment and when it was pinned.
+    A value assigned to an issue field
     """
 
-    pinned_at: str
-    pinned_by: Union[SimpleUserTypeForResponse, None]
+    issue_field_id: int
+    issue_field_name: NotRequired[str]
+    node_id: str
+    data_type: Literal["text", "single_select", "multi_select", "number", "date"]
+    value: Union[str, float, int, None]
+    single_select_option: NotRequired[
+        Union[IssueFieldValuePropSingleSelectOptionTypeForResponse, None]
+    ]
+    multi_select_options: NotRequired[
+        Union[list[IssueFieldValuePropMultiSelectOptionsItemsTypeForResponse], None]
+    ]
+
+
+class IssueFieldValuePropSingleSelectOptionType(TypedDict):
+    """IssueFieldValuePropSingleSelectOption
+
+    Details about the selected option (only present for single_select fields)
+    """
+
+    id: int
+    name: str
+    color: str
+
+
+class IssueFieldValuePropSingleSelectOptionTypeForResponse(TypedDict):
+    """IssueFieldValuePropSingleSelectOption
+
+    Details about the selected option (only present for single_select fields)
+    """
+
+    id: int
+    name: str
+    color: str
+
+
+class IssueFieldValuePropMultiSelectOptionsItemsType(TypedDict):
+    """IssueFieldValuePropMultiSelectOptionsItems"""
+
+    id: int
+    name: str
+    color: str
+
+
+class IssueFieldValuePropMultiSelectOptionsItemsTypeForResponse(TypedDict):
+    """IssueFieldValuePropMultiSelectOptionsItems"""
+
+    id: int
+    name: str
+    color: str
 
 
 __all__ = (
-    "PinnedIssueCommentType",
-    "PinnedIssueCommentTypeForResponse",
+    "IssueFieldValuePropMultiSelectOptionsItemsType",
+    "IssueFieldValuePropMultiSelectOptionsItemsTypeForResponse",
+    "IssueFieldValuePropSingleSelectOptionType",
+    "IssueFieldValuePropSingleSelectOptionTypeForResponse",
+    "IssueFieldValueType",
+    "IssueFieldValueTypeForResponse",
 )

@@ -9,38 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0049 import LabelType, LabelTypeForResponse
-from .group_0061 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
-
-
-class PullRequestEventType(TypedDict):
-    """PullRequestEvent"""
-
-    action: str
-    number: int
-    pull_request: PullRequestMinimalType
-    assignee: NotRequired[SimpleUserType]
-    assignees: NotRequired[list[SimpleUserType]]
-    label: NotRequired[LabelType]
-    labels: NotRequired[list[LabelType]]
+from .group_0073 import (
+    CommitCommentEventPropCommentType,
+    CommitCommentEventPropCommentTypeForResponse,
+)
 
 
-class PullRequestEventTypeForResponse(TypedDict):
-    """PullRequestEvent"""
+class CommitCommentEventType(TypedDict):
+    """CommitCommentEvent"""
 
     action: str
-    number: int
-    pull_request: PullRequestMinimalTypeForResponse
-    assignee: NotRequired[SimpleUserTypeForResponse]
-    assignees: NotRequired[list[SimpleUserTypeForResponse]]
-    label: NotRequired[LabelTypeForResponse]
-    labels: NotRequired[list[LabelTypeForResponse]]
+    comment: CommitCommentEventPropCommentType
+
+
+class CommitCommentEventTypeForResponse(TypedDict):
+    """CommitCommentEvent"""
+
+    action: str
+    comment: CommitCommentEventPropCommentTypeForResponse
 
 
 __all__ = (
-    "PullRequestEventType",
-    "PullRequestEventTypeForResponse",
+    "CommitCommentEventType",
+    "CommitCommentEventTypeForResponse",
 )

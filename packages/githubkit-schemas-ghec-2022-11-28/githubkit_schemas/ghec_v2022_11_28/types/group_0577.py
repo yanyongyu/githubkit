@@ -12,21 +12,29 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ParticipationStatsType(TypedDict):
-    """Participation Stats"""
+class StargazerHistoryType(TypedDict):
+    """Stargazer History
 
-    all_: list[int]
-    owner: list[int]
+    Stargazer History
+    """
+
+    days: list[int]
+    total: int
+    week: int
 
 
-class ParticipationStatsTypeForResponse(TypedDict):
-    """Participation Stats"""
+class StargazerHistoryTypeForResponse(TypedDict):
+    """Stargazer History
 
-    all_: list[int]
-    owner: list[int]
+    Stargazer History
+    """
+
+    days: list[int]
+    total: int
+    week: int
 
 
 __all__ = (
-    "ParticipationStatsType",
-    "ParticipationStatsTypeForResponse",
+    "StargazerHistoryType",
+    "StargazerHistoryTypeForResponse",
 )

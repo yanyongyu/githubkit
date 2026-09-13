@@ -17,81 +17,95 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0112 import RepositoryRulesetBypassActor
+from .group_0125 import EnterpriseRulesetConditionsOneof0
+from .group_0126 import EnterpriseRulesetConditionsOneof1
+from .group_0127 import EnterpriseRulesetConditionsOneof2
+from .group_0128 import EnterpriseRulesetConditionsOneof3
+from .group_0129 import EnterpriseRulesetConditionsOneof4
+from .group_0130 import EnterpriseRulesetConditionsOneof5
+from .group_0131 import (
+    RepositoryRuleCreation,
+    RepositoryRuleDeletion,
+    RepositoryRuleNonFastForward,
+    RepositoryRuleRequiredSignatures,
+)
+from .group_0132 import RepositoryRuleUpdate
+from .group_0134 import RepositoryRuleRequiredLinearHistory
+from .group_0135 import RepositoryRuleRequiredDeployments
+from .group_0138 import RepositoryRulePullRequest
+from .group_0140 import RepositoryRuleRequiredStatusChecks
+from .group_0142 import RepositoryRuleCommitMessagePattern
+from .group_0144 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0146 import RepositoryRuleCommitterEmailPattern
+from .group_0148 import RepositoryRuleBranchNamePattern
+from .group_0150 import RepositoryRuleTagNamePattern
+from .group_0152 import RepositoryRuleFilePathRestriction
+from .group_0154 import RepositoryRuleMaxFilePathLength
+from .group_0156 import RepositoryRuleFileExtensionRestriction
+from .group_0158 import RepositoryRuleMaxFileSize
+from .group_0161 import RepositoryRuleWorkflows
+from .group_0163 import RepositoryRuleCodeScanning
+from .group_0165 import RepositoryRuleCopilotCodeReview
 
-class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200(GitHubModel):
-    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200"""
 
-    id: Missing[str] = Field(
-        default=UNSET, description="Unique identifier for the cost center"
+class EnterprisesEnterpriseRulesetsPostBody(GitHubModel):
+    """EnterprisesEnterpriseRulesetsPostBody"""
+
+    name: str = Field(description="The name of the ruleset.")
+    target: Missing[Literal["branch", "tag", "push", "repository"]] = Field(
+        default=UNSET, description="The target of the ruleset"
     )
-    name: Missing[str] = Field(default=UNSET, description="Name of the cost center")
-    azure_subscription: Missing[Union[str, None]] = Field(
+    enforcement: Literal["disabled", "active", "evaluate"] = Field(
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target."
+    )
+    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
         default=UNSET,
-        description="Azure subscription ID associated with the cost center. Only present for cost centers linked to Azure subscriptions.",
+        description="The actors that can bypass the rules in this ruleset",
     )
-    state: Missing[Literal["active", "deleted"]] = Field(
-        default=UNSET, description="State of the cost center."
-    )
-    resources: Missing[
-        list[
-            EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems
+    conditions: Missing[
+        Union[
+            EnterpriseRulesetConditionsOneof0,
+            EnterpriseRulesetConditionsOneof1,
+            EnterpriseRulesetConditionsOneof2,
+            EnterpriseRulesetConditionsOneof3,
+            EnterpriseRulesetConditionsOneof4,
+            EnterpriseRulesetConditionsOneof5,
         ]
     ] = Field(
-        default=UNSET, description="List of resources assigned to this cost center"
-    )
-    ai_credit_pool_enabled: Missing[bool] = Field(
         default=UNSET,
-        description="Whether the cost center draws from the AI credit pool (capped from member license entitlements).",
+        title="Enterprise ruleset conditions",
+        description="Conditions for an enterprise ruleset.\nThe `conditions` object supports either of the following combinations: - `organization_id` and `repository_name` - `organization_id` and `repository_property` - `organization_name` and `repository_name` - `organization_name` and `repository_property` - `organization_property` and `repository_name` - `organization_property` and `repository_property`\nFor branch and tag rulesets, the `conditions` object should also contain the `ref_name` property.",
     )
-    ai_credit_pool_state: Missing[
-        EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropAiCreditPoolState
-    ] = Field(
-        default=UNSET,
-        description="Read-only cap-budget projection for the cost center. Only present when the cost center draws from the AI credit pool.",
-    )
+    rules: Missing[
+        list[
+            Union[
+                RepositoryRuleCreation,
+                RepositoryRuleUpdate,
+                RepositoryRuleDeletion,
+                RepositoryRuleRequiredLinearHistory,
+                RepositoryRuleRequiredDeployments,
+                RepositoryRuleRequiredSignatures,
+                RepositoryRulePullRequest,
+                RepositoryRuleRequiredStatusChecks,
+                RepositoryRuleNonFastForward,
+                RepositoryRuleCommitMessagePattern,
+                RepositoryRuleCommitAuthorEmailPattern,
+                RepositoryRuleCommitterEmailPattern,
+                RepositoryRuleBranchNamePattern,
+                RepositoryRuleTagNamePattern,
+                RepositoryRuleFilePathRestriction,
+                RepositoryRuleMaxFilePathLength,
+                RepositoryRuleFileExtensionRestriction,
+                RepositoryRuleMaxFileSize,
+                RepositoryRuleWorkflows,
+                RepositoryRuleCodeScanning,
+                RepositoryRuleCopilotCodeReview,
+            ]
+        ]
+    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems(
-    GitHubModel
-):
-    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems"""
+model_rebuild(EnterprisesEnterpriseRulesetsPostBody)
 
-    type: Missing[str] = Field(
-        default=UNSET, description="Type of resource (User, Org, or Repo)"
-    )
-    name: Missing[str] = Field(default=UNSET, description="Name/login of the resource")
-
-
-class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropAiCreditPoolState(
-    GitHubModel
-):
-    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropAiCreditPoolSt
-    ate
-
-    Read-only cap-budget projection for the cost center. Only present when the cost
-    center draws from the AI credit pool.
-    """
-
-    target_amount: Missing[Union[float, None]] = Field(
-        default=UNSET,
-        description="The AI credit pool cap target amount, in AI Credits. Null when the cap budget has not been materialized yet.",
-    )
-    current_amount: Missing[Union[float, None]] = Field(
-        default=UNSET,
-        description="The current-month applied amount against the AI credit pool cap, in AI Credits. Null when the cap budget has not been materialized yet.",
-    )
-
-
-model_rebuild(EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200)
-model_rebuild(
-    EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems
-)
-model_rebuild(
-    EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropAiCreditPoolState
-)
-
-__all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200",
-    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropAiCreditPoolState",
-    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems",
-)
+__all__ = ("EnterprisesEnterpriseRulesetsPostBody",)

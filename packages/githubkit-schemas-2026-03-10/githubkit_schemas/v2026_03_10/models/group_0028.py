@@ -12,42 +12,19 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ClassroomAssignmentGrade(GitHubModel):
-    """Classroom Assignment Grade
+class OidcCustomPropertyInclusionInput(GitHubModel):
+    """Actions OIDC Custom Property Inclusion Input
 
-    Grade for a student or groups GitHub Classroom assignment
+    Input for creating an OIDC custom property inclusion
     """
 
-    assignment_name: str = Field(description="Name of the assignment")
-    assignment_url: str = Field(description="URL of the assignment")
-    starter_code_url: str = Field(
-        description="URL of the starter code for the assignment"
-    )
-    github_username: str = Field(description="GitHub username of the student")
-    roster_identifier: str = Field(description="Roster identifier of the student")
-    student_repository_name: str = Field(
-        description="Name of the student's assignment repository"
-    )
-    student_repository_url: str = Field(
-        description="URL of the student's assignment repository"
-    )
-    submission_timestamp: str = Field(
-        description="Timestamp of the student's assignment submission"
-    )
-    points_awarded: int = Field(description="Number of points awarded to the student")
-    points_available: int = Field(
-        description="Number of points available for the assignment"
-    )
-    group_name: Missing[str] = Field(
-        default=UNSET,
-        description="If a group assignment, name of the group the student is in",
+    custom_property_name: str = Field(
+        description="The name of the custom property to include in the OIDC token"
     )
 
 
-model_rebuild(ClassroomAssignmentGrade)
+model_rebuild(OidcCustomPropertyInclusionInput)
 
-__all__ = ("ClassroomAssignmentGrade",)
+__all__ = ("OidcCustomPropertyInclusionInput",)

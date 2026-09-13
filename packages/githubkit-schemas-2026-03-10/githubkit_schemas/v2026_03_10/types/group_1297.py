@@ -12,33 +12,21 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0Type(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneo
-    f0
+class ReposOwnerRepoAgentsSecretsSecretNamePutBodyType(TypedDict):
+    """ReposOwnerRepoAgentsSecretsSecretNamePutBody"""
 
-    Examples:
-        {'contexts': ['contexts']}
-    """
-
-    contexts: list[str]
+    encrypted_value: str
+    key_id: str
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneo
-    f0
+class ReposOwnerRepoAgentsSecretsSecretNamePutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoAgentsSecretsSecretNamePutBody"""
 
-    Examples:
-        {'contexts': ['contexts']}
-    """
-
-    contexts: list[str]
+    encrypted_value: str
+    key_id: str
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0Type",
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0TypeForResponse",
+    "ReposOwnerRepoAgentsSecretsSecretNamePutBodyType",
+    "ReposOwnerRepoAgentsSecretsSecretNamePutBodyTypeForResponse",
 )

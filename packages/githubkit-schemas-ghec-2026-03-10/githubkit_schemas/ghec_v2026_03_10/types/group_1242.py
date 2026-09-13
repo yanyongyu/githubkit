@@ -12,96 +12,204 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0112 import (
+    RepositoryRulesetBypassActorType,
+    RepositoryRulesetBypassActorTypeForResponse,
+)
+from .group_0125 import (
+    EnterpriseRulesetConditionsOneof0Type,
+    EnterpriseRulesetConditionsOneof0TypeForResponse,
+)
+from .group_0126 import (
+    EnterpriseRulesetConditionsOneof1Type,
+    EnterpriseRulesetConditionsOneof1TypeForResponse,
+)
+from .group_0127 import (
+    EnterpriseRulesetConditionsOneof2Type,
+    EnterpriseRulesetConditionsOneof2TypeForResponse,
+)
+from .group_0128 import (
+    EnterpriseRulesetConditionsOneof3Type,
+    EnterpriseRulesetConditionsOneof3TypeForResponse,
+)
+from .group_0129 import (
+    EnterpriseRulesetConditionsOneof4Type,
+    EnterpriseRulesetConditionsOneof4TypeForResponse,
+)
+from .group_0130 import (
+    EnterpriseRulesetConditionsOneof5Type,
+    EnterpriseRulesetConditionsOneof5TypeForResponse,
+)
+from .group_0131 import (
+    RepositoryRuleCreationType,
+    RepositoryRuleCreationTypeForResponse,
+    RepositoryRuleDeletionType,
+    RepositoryRuleDeletionTypeForResponse,
+    RepositoryRuleNonFastForwardType,
+    RepositoryRuleNonFastForwardTypeForResponse,
+    RepositoryRuleRequiredSignaturesType,
+    RepositoryRuleRequiredSignaturesTypeForResponse,
+)
+from .group_0132 import RepositoryRuleUpdateType, RepositoryRuleUpdateTypeForResponse
+from .group_0134 import (
+    RepositoryRuleRequiredLinearHistoryType,
+    RepositoryRuleRequiredLinearHistoryTypeForResponse,
+)
+from .group_0135 import (
+    RepositoryRuleRequiredDeploymentsType,
+    RepositoryRuleRequiredDeploymentsTypeForResponse,
+)
+from .group_0138 import (
+    RepositoryRulePullRequestType,
+    RepositoryRulePullRequestTypeForResponse,
+)
+from .group_0140 import (
+    RepositoryRuleRequiredStatusChecksType,
+    RepositoryRuleRequiredStatusChecksTypeForResponse,
+)
+from .group_0142 import (
+    RepositoryRuleCommitMessagePatternType,
+    RepositoryRuleCommitMessagePatternTypeForResponse,
+)
+from .group_0144 import (
+    RepositoryRuleCommitAuthorEmailPatternType,
+    RepositoryRuleCommitAuthorEmailPatternTypeForResponse,
+)
+from .group_0146 import (
+    RepositoryRuleCommitterEmailPatternType,
+    RepositoryRuleCommitterEmailPatternTypeForResponse,
+)
+from .group_0148 import (
+    RepositoryRuleBranchNamePatternType,
+    RepositoryRuleBranchNamePatternTypeForResponse,
+)
+from .group_0150 import (
+    RepositoryRuleTagNamePatternType,
+    RepositoryRuleTagNamePatternTypeForResponse,
+)
+from .group_0152 import (
+    RepositoryRuleFilePathRestrictionType,
+    RepositoryRuleFilePathRestrictionTypeForResponse,
+)
+from .group_0154 import (
+    RepositoryRuleMaxFilePathLengthType,
+    RepositoryRuleMaxFilePathLengthTypeForResponse,
+)
+from .group_0156 import (
+    RepositoryRuleFileExtensionRestrictionType,
+    RepositoryRuleFileExtensionRestrictionTypeForResponse,
+)
+from .group_0158 import (
+    RepositoryRuleMaxFileSizeType,
+    RepositoryRuleMaxFileSizeTypeForResponse,
+)
+from .group_0161 import (
+    RepositoryRuleWorkflowsType,
+    RepositoryRuleWorkflowsTypeForResponse,
+)
+from .group_0163 import (
+    RepositoryRuleCodeScanningType,
+    RepositoryRuleCodeScanningTypeForResponse,
+)
+from .group_0165 import (
+    RepositoryRuleCopilotCodeReviewType,
+    RepositoryRuleCopilotCodeReviewTypeForResponse,
+)
 
-class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200Type(TypedDict):
-    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200"""
 
-    id: NotRequired[str]
-    name: NotRequired[str]
-    azure_subscription: NotRequired[Union[str, None]]
-    state: NotRequired[Literal["active", "deleted"]]
-    resources: NotRequired[
-        list[
-            EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsType
+class EnterprisesEnterpriseRulesetsPostBodyType(TypedDict):
+    """EnterprisesEnterpriseRulesetsPostBody"""
+
+    name: str
+    target: NotRequired[Literal["branch", "tag", "push", "repository"]]
+    enforcement: Literal["disabled", "active", "evaluate"]
+    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorType]]
+    conditions: NotRequired[
+        Union[
+            EnterpriseRulesetConditionsOneof0Type,
+            EnterpriseRulesetConditionsOneof1Type,
+            EnterpriseRulesetConditionsOneof2Type,
+            EnterpriseRulesetConditionsOneof3Type,
+            EnterpriseRulesetConditionsOneof4Type,
+            EnterpriseRulesetConditionsOneof5Type,
         ]
     ]
-    ai_credit_pool_enabled: NotRequired[bool]
-    ai_credit_pool_state: NotRequired[
-        EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropAiCreditPoolStateType
-    ]
-
-
-class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200"""
-
-    id: NotRequired[str]
-    name: NotRequired[str]
-    azure_subscription: NotRequired[Union[str, None]]
-    state: NotRequired[Literal["active", "deleted"]]
-    resources: NotRequired[
+    rules: NotRequired[
         list[
-            EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsTypeForResponse
+            Union[
+                RepositoryRuleCreationType,
+                RepositoryRuleUpdateType,
+                RepositoryRuleDeletionType,
+                RepositoryRuleRequiredLinearHistoryType,
+                RepositoryRuleRequiredDeploymentsType,
+                RepositoryRuleRequiredSignaturesType,
+                RepositoryRulePullRequestType,
+                RepositoryRuleRequiredStatusChecksType,
+                RepositoryRuleNonFastForwardType,
+                RepositoryRuleCommitMessagePatternType,
+                RepositoryRuleCommitAuthorEmailPatternType,
+                RepositoryRuleCommitterEmailPatternType,
+                RepositoryRuleBranchNamePatternType,
+                RepositoryRuleTagNamePatternType,
+                RepositoryRuleFilePathRestrictionType,
+                RepositoryRuleMaxFilePathLengthType,
+                RepositoryRuleFileExtensionRestrictionType,
+                RepositoryRuleMaxFileSizeType,
+                RepositoryRuleWorkflowsType,
+                RepositoryRuleCodeScanningType,
+                RepositoryRuleCopilotCodeReviewType,
+            ]
         ]
     ]
-    ai_credit_pool_enabled: NotRequired[bool]
-    ai_credit_pool_state: NotRequired[
-        EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropAiCreditPoolStateTypeForResponse
+
+
+class EnterprisesEnterpriseRulesetsPostBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseRulesetsPostBody"""
+
+    name: str
+    target: NotRequired[Literal["branch", "tag", "push", "repository"]]
+    enforcement: Literal["disabled", "active", "evaluate"]
+    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorTypeForResponse]]
+    conditions: NotRequired[
+        Union[
+            EnterpriseRulesetConditionsOneof0TypeForResponse,
+            EnterpriseRulesetConditionsOneof1TypeForResponse,
+            EnterpriseRulesetConditionsOneof2TypeForResponse,
+            EnterpriseRulesetConditionsOneof3TypeForResponse,
+            EnterpriseRulesetConditionsOneof4TypeForResponse,
+            EnterpriseRulesetConditionsOneof5TypeForResponse,
+        ]
     ]
-
-
-class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsType(
-    TypedDict
-):
-    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems"""
-
-    type: NotRequired[str]
-    name: NotRequired[str]
-
-
-class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems"""
-
-    type: NotRequired[str]
-    name: NotRequired[str]
-
-
-class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropAiCreditPoolStateType(
-    TypedDict
-):
-    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropAiCreditPoolSt
-    ate
-
-    Read-only cap-budget projection for the cost center. Only present when the cost
-    center draws from the AI credit pool.
-    """
-
-    target_amount: NotRequired[Union[float, None]]
-    current_amount: NotRequired[Union[float, None]]
-
-
-class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropAiCreditPoolStateTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropAiCreditPoolSt
-    ate
-
-    Read-only cap-budget projection for the cost center. Only present when the cost
-    center draws from the AI credit pool.
-    """
-
-    target_amount: NotRequired[Union[float, None]]
-    current_amount: NotRequired[Union[float, None]]
+    rules: NotRequired[
+        list[
+            Union[
+                RepositoryRuleCreationTypeForResponse,
+                RepositoryRuleUpdateTypeForResponse,
+                RepositoryRuleDeletionTypeForResponse,
+                RepositoryRuleRequiredLinearHistoryTypeForResponse,
+                RepositoryRuleRequiredDeploymentsTypeForResponse,
+                RepositoryRuleRequiredSignaturesTypeForResponse,
+                RepositoryRulePullRequestTypeForResponse,
+                RepositoryRuleRequiredStatusChecksTypeForResponse,
+                RepositoryRuleNonFastForwardTypeForResponse,
+                RepositoryRuleCommitMessagePatternTypeForResponse,
+                RepositoryRuleCommitAuthorEmailPatternTypeForResponse,
+                RepositoryRuleCommitterEmailPatternTypeForResponse,
+                RepositoryRuleBranchNamePatternTypeForResponse,
+                RepositoryRuleTagNamePatternTypeForResponse,
+                RepositoryRuleFilePathRestrictionTypeForResponse,
+                RepositoryRuleMaxFilePathLengthTypeForResponse,
+                RepositoryRuleFileExtensionRestrictionTypeForResponse,
+                RepositoryRuleMaxFileSizeTypeForResponse,
+                RepositoryRuleWorkflowsTypeForResponse,
+                RepositoryRuleCodeScanningTypeForResponse,
+                RepositoryRuleCopilotCodeReviewTypeForResponse,
+            ]
+        ]
+    ]
 
 
 __all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropAiCreditPoolStateType",
-    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropAiCreditPoolStateTypeForResponse",
-    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsType",
-    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsTypeForResponse",
-    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200Type",
-    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200TypeForResponse",
+    "EnterprisesEnterpriseRulesetsPostBodyType",
+    "EnterprisesEnterpriseRulesetsPostBodyTypeForResponse",
 )

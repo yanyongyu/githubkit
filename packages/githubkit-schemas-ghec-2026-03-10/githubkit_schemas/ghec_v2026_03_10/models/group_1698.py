@@ -9,25 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from githubkit.compat import ExtraGitHubModel, model_rebuild
+from pydantic import Field
+
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties(
-    ExtraGitHubModel
-):
-    """UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAl
-    lof1PropCustomProperties
+class UserCodespacesSecretsSecretNameRepositoriesPutBody(GitHubModel):
+    """UserCodespacesSecretsSecretNameRepositoriesPutBody"""
 
-    The custom properties that were defined for the repository. The keys are the
-    custom property names, and the values are the corresponding custom property
-    values. Present for org repos only.
-    """
+    selected_repository_ids: list[int] = Field(
+        description="An array of repository ids for which a codespace can access the secret. You can manage the list of selected repositories using the [List selected repositories for a user secret](https://docs.github.com/enterprise-cloud@latest/rest/codespaces/secrets#list-selected-repositories-for-a-user-secret), [Add a selected repository to a user secret](https://docs.github.com/enterprise-cloud@latest/rest/codespaces/secrets#add-a-selected-repository-to-a-user-secret), and [Remove a selected repository from a user secret](https://docs.github.com/enterprise-cloud@latest/rest/codespaces/secrets#remove-a-selected-repository-from-a-user-secret) endpoints."
+    )
 
 
-model_rebuild(
-    UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties
-)
+model_rebuild(UserCodespacesSecretsSecretNameRepositoriesPutBody)
 
-__all__ = (
-    "UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties",
-)
+__all__ = ("UserCodespacesSecretsSecretNameRepositoriesPutBody",)

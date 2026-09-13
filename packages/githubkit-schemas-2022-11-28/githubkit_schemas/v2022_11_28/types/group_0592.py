@@ -9,48 +9,183 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0539 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0540 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0541 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0542 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0545 import (
-    CheckRunWithSimpleCheckSuiteType,
-    CheckRunWithSimpleCheckSuiteTypeForResponse,
-)
+from .group_0001 import CvssSeveritiesType, CvssSeveritiesTypeForResponse
 
 
-class WebhookCheckRunCompletedType(TypedDict):
-    """Check Run Completed Event"""
+class WebhooksSecurityAdvisoryType(TypedDict):
+    """WebhooksSecurityAdvisory
 
-    action: Literal["completed"]
-    check_run: CheckRunWithSimpleCheckSuiteType
-    installation: NotRequired[SimpleInstallationType]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    The details of the security advisory, including summary, description, and
+    severity.
+    """
+
+    cvss: WebhooksSecurityAdvisoryPropCvssType
+    cvss_severities: NotRequired[Union[CvssSeveritiesType, None]]
+    cwes: list[WebhooksSecurityAdvisoryPropCwesItemsType]
+    description: str
+    ghsa_id: str
+    identifiers: list[WebhooksSecurityAdvisoryPropIdentifiersItemsType]
+    published_at: str
+    references: list[WebhooksSecurityAdvisoryPropReferencesItemsType]
+    severity: str
+    summary: str
+    updated_at: str
+    vulnerabilities: list[WebhooksSecurityAdvisoryPropVulnerabilitiesItemsType]
+    withdrawn_at: Union[str, None]
 
 
-class WebhookCheckRunCompletedTypeForResponse(TypedDict):
-    """Check Run Completed Event"""
+class WebhooksSecurityAdvisoryTypeForResponse(TypedDict):
+    """WebhooksSecurityAdvisory
 
-    action: Literal["completed"]
-    check_run: CheckRunWithSimpleCheckSuiteTypeForResponse
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    The details of the security advisory, including summary, description, and
+    severity.
+    """
+
+    cvss: WebhooksSecurityAdvisoryPropCvssTypeForResponse
+    cvss_severities: NotRequired[Union[CvssSeveritiesTypeForResponse, None]]
+    cwes: list[WebhooksSecurityAdvisoryPropCwesItemsTypeForResponse]
+    description: str
+    ghsa_id: str
+    identifiers: list[WebhooksSecurityAdvisoryPropIdentifiersItemsTypeForResponse]
+    published_at: str
+    references: list[WebhooksSecurityAdvisoryPropReferencesItemsTypeForResponse]
+    severity: str
+    summary: str
+    updated_at: str
+    vulnerabilities: list[
+        WebhooksSecurityAdvisoryPropVulnerabilitiesItemsTypeForResponse
+    ]
+    withdrawn_at: Union[str, None]
+
+
+class WebhooksSecurityAdvisoryPropCvssType(TypedDict):
+    """WebhooksSecurityAdvisoryPropCvss"""
+
+    score: float
+    vector_string: Union[str, None]
+
+
+class WebhooksSecurityAdvisoryPropCvssTypeForResponse(TypedDict):
+    """WebhooksSecurityAdvisoryPropCvss"""
+
+    score: float
+    vector_string: Union[str, None]
+
+
+class WebhooksSecurityAdvisoryPropCwesItemsType(TypedDict):
+    """WebhooksSecurityAdvisoryPropCwesItems"""
+
+    cwe_id: str
+    name: str
+
+
+class WebhooksSecurityAdvisoryPropCwesItemsTypeForResponse(TypedDict):
+    """WebhooksSecurityAdvisoryPropCwesItems"""
+
+    cwe_id: str
+    name: str
+
+
+class WebhooksSecurityAdvisoryPropIdentifiersItemsType(TypedDict):
+    """WebhooksSecurityAdvisoryPropIdentifiersItems"""
+
+    type: str
+    value: str
+
+
+class WebhooksSecurityAdvisoryPropIdentifiersItemsTypeForResponse(TypedDict):
+    """WebhooksSecurityAdvisoryPropIdentifiersItems"""
+
+    type: str
+    value: str
+
+
+class WebhooksSecurityAdvisoryPropReferencesItemsType(TypedDict):
+    """WebhooksSecurityAdvisoryPropReferencesItems"""
+
+    url: str
+
+
+class WebhooksSecurityAdvisoryPropReferencesItemsTypeForResponse(TypedDict):
+    """WebhooksSecurityAdvisoryPropReferencesItems"""
+
+    url: str
+
+
+class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsType(TypedDict):
+    """WebhooksSecurityAdvisoryPropVulnerabilitiesItems"""
+
+    first_patched_version: Union[
+        WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType,
+        None,
+    ]
+    package: WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType
+    severity: str
+    vulnerable_version_range: str
+
+
+class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsTypeForResponse(TypedDict):
+    """WebhooksSecurityAdvisoryPropVulnerabilitiesItems"""
+
+    first_patched_version: Union[
+        WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionTypeForResponse,
+        None,
+    ]
+    package: WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageTypeForResponse
+    severity: str
+    vulnerable_version_range: str
+
+
+class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType(
+    TypedDict
+):
+    """WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion"""
+
+    identifier: str
+
+
+class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionTypeForResponse(
+    TypedDict
+):
+    """WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion"""
+
+    identifier: str
+
+
+class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType(TypedDict):
+    """WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage"""
+
+    ecosystem: str
+    name: str
+
+
+class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageTypeForResponse(
+    TypedDict
+):
+    """WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage"""
+
+    ecosystem: str
+    name: str
 
 
 __all__ = (
-    "WebhookCheckRunCompletedType",
-    "WebhookCheckRunCompletedTypeForResponse",
+    "WebhooksSecurityAdvisoryPropCvssType",
+    "WebhooksSecurityAdvisoryPropCvssTypeForResponse",
+    "WebhooksSecurityAdvisoryPropCwesItemsType",
+    "WebhooksSecurityAdvisoryPropCwesItemsTypeForResponse",
+    "WebhooksSecurityAdvisoryPropIdentifiersItemsType",
+    "WebhooksSecurityAdvisoryPropIdentifiersItemsTypeForResponse",
+    "WebhooksSecurityAdvisoryPropReferencesItemsType",
+    "WebhooksSecurityAdvisoryPropReferencesItemsTypeForResponse",
+    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType",
+    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionTypeForResponse",
+    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType",
+    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageTypeForResponse",
+    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsType",
+    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsTypeForResponse",
+    "WebhooksSecurityAdvisoryType",
+    "WebhooksSecurityAdvisoryTypeForResponse",
 )

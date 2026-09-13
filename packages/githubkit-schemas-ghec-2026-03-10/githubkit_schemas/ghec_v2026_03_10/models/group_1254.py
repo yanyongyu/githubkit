@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,37 +16,22 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseTeamsTeamSlugPatchBody(GitHubModel):
-    """EnterprisesEnterpriseTeamsTeamSlugPatchBody"""
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof0(
+    GitHubModel
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof0"""
 
-    name: Missing[Union[str, None]] = Field(
-        default=UNSET, description="A new name for the team."
-    )
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="A new description for the team."
-    )
-    sync_to_organizations: Missing[Literal["all", "disabled"]] = Field(
+    name: str = Field(description="The new name for the cost center")
+    ai_credit_pool_enabled: Missing[bool] = Field(
         default=UNSET,
-        description="Retired: this field is no longer supported.\nWhether the enterprise team should be reflected in each organization.\nThis value cannot be changed.\n",
-    )
-    organization_selection_type: Missing[Literal["disabled", "selected", "all"]] = (
-        Field(
-            default=UNSET,
-            description="Specifies which organizations in the enterprise should have access to this team. Can be one of `disabled`, `selected`, or `all`.\n`disabled`: The team is not assigned to any organizations. This is the default when you create a new team.\n`selected`: The team is assigned to specific organizations. You can then use the [add organization assignments API](https://docs.github.com/enterprise-cloud@latest/rest/enterprise-teams/enterprise-team-organizations#add-organization-assignments).\n`all`: The team is assigned to all current and future organizations in the enterprise.\n",
-        )
-    )
-    group_id: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The ID of the IdP group to assign team membership with. The new IdP group will replace the existing one, or replace existing direct members if the team isn't currently linked to an IdP group.",
-    )
-    notification_setting: Missing[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ] = Field(
-        default=UNSET,
-        description="The notification setting the team is set to. The options are:\n\n* `notifications_enabled` - team members receive notifications when the team is @mentioned.\n* `notifications_disabled` - no one receives notifications.\n",
+        description="Whether the cost center draws from the AI credit pool.\n\nThis can only be enabled for cost centers that contain only user or team resources.\n\n- `false` — no cap; the cost center draws from the shared enterprise pool.\n- `true` — the cost center is capped at an amount derived from its members' license entitlements.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseTeamsTeamSlugPatchBody)
+model_rebuild(
+    EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof0
+)
 
-__all__ = ("EnterprisesEnterpriseTeamsTeamSlugPatchBody",)
+__all__ = (
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof0",
+)

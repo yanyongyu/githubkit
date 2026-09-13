@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,15 +18,22 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoNotificationsPutBody(GitHubModel):
-    """ReposOwnerRepoNotificationsPutBody"""
+class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items"""
 
-    last_read_at: Missing[_dt.datetime] = Field(
+    name: str = Field()
+    rationale: Missing[str] = Field(
+        default=UNSET, description="Optional reasoning for adding this label."
+    )
+    suggest: Missing[bool] = Field(
         default=UNSET,
-        description="Describes the last point that notifications were checked. Anything updated since this time will not be marked as read. If you omit this parameter, all notifications are marked as read. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. Default: The current timestamp.",
+        description="If `true`, the label is stored as a pending suggestion for human review rather than applied directly.",
+    )
+    confidence: Missing[Literal["low", "medium", "high"]] = Field(
+        default=UNSET, description="The confidence level for this label choice."
     )
 
 
-model_rebuild(ReposOwnerRepoNotificationsPutBody)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items)
 
-__all__ = ("ReposOwnerRepoNotificationsPutBody",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items",)

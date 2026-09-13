@@ -9,30 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201Type(TypedDict):
-    """EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201
-
-    The total number of seats created for the specified user(s).
-    """
-
-    seats_created: int
-
-
-class EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201TypeForResponse(
+class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyType(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201
+    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBody"""
 
-    The total number of seats created for the specified user(s).
-    """
+    scope: Literal["all", "all_without_configurations"]
 
-    seats_created: int
+
+class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBody"""
+
+    scope: Literal["all", "all_without_configurations"]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201Type",
-    "EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201TypeForResponse",
+    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyType",
+    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyTypeForResponse",
 )

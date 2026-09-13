@@ -9,70 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0176 import (
-    ProjectsV2StatusUpdateType,
-    ProjectsV2StatusUpdateTypeForResponse,
-)
 
 
-class ProjectsV2Type(TypedDict):
-    """Projects v2 Project
+class AutoMergeType(TypedDict):
+    """Auto merge
 
-    A projects v2 project
+    The status of auto merging a pull request.
     """
 
-    id: float
-    node_id: str
-    owner: SimpleUserType
-    creator: SimpleUserType
-    title: str
-    description: Union[str, None]
-    public: bool
-    closed_at: Union[_dt.datetime, None]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    number: int
-    short_description: Union[str, None]
-    deleted_at: Union[_dt.datetime, None]
-    deleted_by: Union[SimpleUserType, None]
-    state: NotRequired[Literal["open", "closed"]]
-    latest_status_update: NotRequired[Union[ProjectsV2StatusUpdateType, None]]
-    is_template: NotRequired[bool]
+    enabled_by: SimpleUserType
+    merge_method: Literal["merge", "squash", "rebase"]
+    commit_title: Union[str, None]
+    commit_message: Union[str, None]
 
 
-class ProjectsV2TypeForResponse(TypedDict):
-    """Projects v2 Project
+class AutoMergeTypeForResponse(TypedDict):
+    """Auto merge
 
-    A projects v2 project
+    The status of auto merging a pull request.
     """
 
-    id: float
-    node_id: str
-    owner: SimpleUserTypeForResponse
-    creator: SimpleUserTypeForResponse
-    title: str
-    description: Union[str, None]
-    public: bool
-    closed_at: Union[str, None]
-    created_at: str
-    updated_at: str
-    number: int
-    short_description: Union[str, None]
-    deleted_at: Union[str, None]
-    deleted_by: Union[SimpleUserTypeForResponse, None]
-    state: NotRequired[Literal["open", "closed"]]
-    latest_status_update: NotRequired[
-        Union[ProjectsV2StatusUpdateTypeForResponse, None]
-    ]
-    is_template: NotRequired[bool]
+    enabled_by: SimpleUserTypeForResponse
+    merge_method: Literal["merge", "squash", "rebase"]
+    commit_title: Union[str, None]
+    commit_message: Union[str, None]
 
 
 __all__ = (
-    "ProjectsV2Type",
-    "ProjectsV2TypeForResponse",
+    "AutoMergeType",
+    "AutoMergeTypeForResponse",
 )

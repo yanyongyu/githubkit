@@ -9,25 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody(GitHubModel):
-    """ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody"""
+class ReposOwnerRepoActionsOidcCustomizationSubPutBody(GitHubModel):
+    """Actions OIDC subject customization for a repository
 
-    environment_ids: list[int] = Field(
-        description="The list of environment ids to approve or reject"
+    Actions OIDC subject customization for a repository
+    """
+
+    use_default: bool = Field(
+        description="Whether to use the default template or not. If `true`, the `include_claim_keys` field is ignored."
     )
-    state: Literal["approved", "rejected"] = Field(
-        description="Whether to approve or reject deployment to the specified environments."
+    include_claim_keys: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores.",
     )
-    comment: str = Field(description="A comment to accompany the deployment review")
+    use_immutable_subject: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to opt in to the immutable OIDC subject claim format for this repository. When `true`, OIDC tokens will use a stable, repository-ID-based `sub` claim.",
+    )
 
 
-model_rebuild(ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody)
+model_rebuild(ReposOwnerRepoActionsOidcCustomizationSubPutBody)
 
-__all__ = ("ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody",)
+__all__ = ("ReposOwnerRepoActionsOidcCustomizationSubPutBody",)

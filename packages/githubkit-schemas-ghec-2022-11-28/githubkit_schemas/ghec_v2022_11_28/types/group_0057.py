@@ -10,33 +10,47 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0017 import AppPermissionsType, AppPermissionsTypeForResponse
 
 
-class AnnouncementBannerType(TypedDict):
-    """Announcement Banner
+class EnterpriseOrganizationInstallationType(TypedDict):
+    """Enterprise Organization Installation
 
-    Announcement at either the repository, organization, or enterprise level
+    A GitHub App Installation on an enterprise-owned organization
     """
 
-    announcement: Union[str, None]
-    expires_at: Union[_dt.datetime, None]
-    user_dismissible: Union[bool, None]
+    id: int
+    app_slug: NotRequired[str]
+    client_id: str
+    repository_selection: Literal["all", "selected"]
+    repositories_url: str
+    permissions: AppPermissionsType
+    events: NotRequired[list[str]]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-class AnnouncementBannerTypeForResponse(TypedDict):
-    """Announcement Banner
+class EnterpriseOrganizationInstallationTypeForResponse(TypedDict):
+    """Enterprise Organization Installation
 
-    Announcement at either the repository, organization, or enterprise level
+    A GitHub App Installation on an enterprise-owned organization
     """
 
-    announcement: Union[str, None]
-    expires_at: Union[str, None]
-    user_dismissible: Union[bool, None]
+    id: int
+    app_slug: NotRequired[str]
+    client_id: str
+    repository_selection: Literal["all", "selected"]
+    repositories_url: str
+    permissions: AppPermissionsTypeForResponse
+    events: NotRequired[list[str]]
+    created_at: str
+    updated_at: str
 
 
 __all__ = (
-    "AnnouncementBannerType",
-    "AnnouncementBannerTypeForResponse",
+    "EnterpriseOrganizationInstallationType",
+    "EnterpriseOrganizationInstallationTypeForResponse",
 )

@@ -9,46 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBody(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBody"""
+class ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200(GitHubModel):
+    """ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200"""
 
-    issue_field_values: Missing[
-        list[
-            ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems
-        ]
-    ] = Field(
-        max_length=25 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="An array of issue field values to set for this issue. Each field value must include the field ID and the value to set. All existing field values will be replaced.",
+    enabled: bool = Field(
+        description="Whether the pull request creation cap is enabled"
+    )
+    max_open_pull_requests: int = Field(
+        le=1000.0,
+        ge=1.0,
+        description="The maximum number of open pull requests a user can have at one time",
     )
 
 
-class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems(
-    GitHubModel
-):
-    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems"""
+model_rebuild(ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200)
 
-    field_id: int = Field(description="The ID of the issue field to set")
-    value: Union[str, float] = Field(
-        description="The value to set for the field. The type depends on the field's data type:\n- For text fields: provide a string value\n- For single_select fields: provide the option name as a string (must match an existing option)\n- For number fields: provide a numeric value\n- For date fields: provide an ISO 8601 date string"
-    )
-
-
-model_rebuild(ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBody)
-model_rebuild(
-    ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems
-)
-
-__all__ = (
-    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBody",
-    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems",
-)
+__all__ = ("ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200",)

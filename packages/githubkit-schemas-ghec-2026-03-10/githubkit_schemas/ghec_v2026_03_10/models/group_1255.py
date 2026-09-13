@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,41 +16,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200"""
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof1(
+    GitHubModel
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof1"""
 
-    total_count: int = Field()
-    visual_studio_subscriptions: list[VisualStudioSubscriptionAssignment] = Field()
-
-
-class VisualStudioSubscriptionAssignment(GitHubModel):
-    """Visual Studio Subscription Assignment
-
-    Visual Studio Subscription Assignment
-    """
-
-    visual_studio_subscription_email: Missing[str] = Field(
-        default=UNSET,
-        description="The email associated with the Visual Studio subscription assignment in the visual studio portal.",
+    name: Missing[str] = Field(
+        default=UNSET, description="The new name for the cost center"
     )
-    subscription_id: Missing[str] = Field(
-        default=UNSET,
-        description="The ID of the Visual Studio Subscription. This is a GUID that comes from the Visual Studio management portal.",
-    )
-    username: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The GitHub username of the user associated with the Visual Studio subscription assignment.",
-    )
-    manual_match: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates if the Visual Studio subscription assignment was manually matched to a user.",
+    ai_credit_pool_enabled: bool = Field(
+        description="Whether the cost center draws from the AI credit pool.\n\nThis can only be enabled for cost centers that contain only user or team resources.\n\n- `false` — no cap; the cost center draws from the shared enterprise pool.\n- `true` — the cost center is capped at an amount derived from its members' license entitlements."
     )
 
 
-model_rebuild(EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200)
-model_rebuild(VisualStudioSubscriptionAssignment)
+model_rebuild(
+    EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof1
+)
 
 __all__ = (
-    "EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200",
-    "VisualStudioSubscriptionAssignment",
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof1",
 )

@@ -9,23 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberReactionsPostBody(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberReactionsPostBody"""
+class ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody"""
 
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ] = Field(
-        description="The [reaction type](https://docs.github.com/enterprise-cloud@latest/rest/reactions/reactions#about-reactions) to add to the issue."
+    assignees: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Usernames of assignees to remove from an issue. _NOTE: Only users with push access can remove assignees from an issue. Assignees are silently ignored otherwise._",
     )
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberReactionsPostBody)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody)
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberReactionsPostBody",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody",)

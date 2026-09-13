@@ -9,37 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0126 import (
-    EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType,
-    EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdTypeForResponse,
+from .group_0114 import (
+    EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType,
+    EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameTypeForResponse,
+)
+from .group_0116 import (
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse,
+)
+from .group_0118 import (
+    RepositoryRulesetConditionsPropRefNameType,
+    RepositoryRulesetConditionsPropRefNameTypeForResponse,
 )
 
 
-class EnterpriseRulesetConditionsOrganizationIdTargetType(TypedDict):
-    """Repository ruleset conditions for organization IDs
+class EnterpriseRulesetConditionsOneof0Type(TypedDict):
+    """organization_name_and_repository_name
 
-    Parameters for an organization ID condition
+    Conditions to target organizations by name and all repositories
     """
 
-    organization_id: (
-        EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType
+    organization_name: (
+        EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType
     )
+    repository_name: (
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
+    )
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
 
 
-class EnterpriseRulesetConditionsOrganizationIdTargetTypeForResponse(TypedDict):
-    """Repository ruleset conditions for organization IDs
+class EnterpriseRulesetConditionsOneof0TypeForResponse(TypedDict):
+    """organization_name_and_repository_name
 
-    Parameters for an organization ID condition
+    Conditions to target organizations by name and all repositories
     """
 
-    organization_id: (
-        EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdTypeForResponse
+    organization_name: EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameTypeForResponse
+    repository_name: (
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse
     )
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
 
 
 __all__ = (
-    "EnterpriseRulesetConditionsOrganizationIdTargetType",
-    "EnterpriseRulesetConditionsOrganizationIdTargetTypeForResponse",
+    "EnterpriseRulesetConditionsOneof0Type",
+    "EnterpriseRulesetConditionsOneof0TypeForResponse",
 )

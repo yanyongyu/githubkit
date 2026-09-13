@@ -9,39 +9,65 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class TeamsTeamIdPatchBodyType(TypedDict):
-    """TeamsTeamIdPatchBody"""
+class ReposOwnerRepoStacksStackNumberAddPostResponse422Type(TypedDict):
+    """Validation Error
 
-    name: str
-    description: NotRequired[str]
-    privacy: NotRequired[Literal["secret", "closed"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
+    Validation Error
+    """
+
+    message: str
+    documentation_url: str
+    errors: NotRequired[
+        list[ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItemsType]
     ]
-    permission: NotRequired[Literal["pull", "push", "admin"]]
-    parent_team_id: NotRequired[Union[int, None]]
-    parent_team_slug: NotRequired[Union[str, None]]
 
 
-class TeamsTeamIdPatchBodyTypeForResponse(TypedDict):
-    """TeamsTeamIdPatchBody"""
+class ReposOwnerRepoStacksStackNumberAddPostResponse422TypeForResponse(TypedDict):
+    """Validation Error
 
-    name: str
-    description: NotRequired[str]
-    privacy: NotRequired[Literal["secret", "closed"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
+    Validation Error
+    """
+
+    message: str
+    documentation_url: str
+    errors: NotRequired[
+        list[
+            ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItemsTypeForResponse
+        ]
     ]
-    permission: NotRequired[Literal["pull", "push", "admin"]]
-    parent_team_id: NotRequired[Union[int, None]]
-    parent_team_slug: NotRequired[Union[str, None]]
+
+
+class ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItemsType(TypedDict):
+    """ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems"""
+
+    resource: NotRequired[str]
+    field: NotRequired[str]
+    message: NotRequired[str]
+    code: str
+    index: NotRequired[int]
+    value: NotRequired[Union[str, None, int, None, list[Union[str, int]], None]]
+
+
+class ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItemsTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems"""
+
+    resource: NotRequired[str]
+    field: NotRequired[str]
+    message: NotRequired[str]
+    code: str
+    index: NotRequired[int]
+    value: NotRequired[Union[str, None, int, None, list[Union[str, int]], None]]
 
 
 __all__ = (
-    "TeamsTeamIdPatchBodyType",
-    "TeamsTeamIdPatchBodyTypeForResponse",
+    "ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItemsType",
+    "ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItemsTypeForResponse",
+    "ReposOwnerRepoStacksStackNumberAddPostResponse422Type",
+    "ReposOwnerRepoStacksStackNumberAddPostResponse422TypeForResponse",
 )

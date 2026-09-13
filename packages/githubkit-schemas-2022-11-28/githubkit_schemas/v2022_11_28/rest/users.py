@@ -97,7 +97,9 @@ class UsersClient:
 
         GET /user
 
-        OAuth app tokens and personal access tokens (classic) need the `user` scope in order for the response to include private profile information.
+        OAuth app tokens and personal access tokens (classic) need the `read:user` scope, or the broader `user` scope, for this endpoint to return the private user response. The private user response includes additional fields such as `private_gists`, `total_private_repos`, `owned_private_repos`, `disk_usage`, `collaborators`, and `two_factor_authentication`. Tokens without these scopes receive the public user response.
+
+        The private and public user response types are unrelated to the [private profile](https://docs.github.com/account-and-profile/concepts/personal-profile#private-profiles) setting. A token without scopes still authenticates as the token's owner, so values subject to private profile visibility, such as `followers` and `following`, may differ from an unauthenticated response.
 
         See also: https://docs.github.com/rest/users/users#get-the-authenticated-user
         """
@@ -135,7 +137,9 @@ class UsersClient:
 
         GET /user
 
-        OAuth app tokens and personal access tokens (classic) need the `user` scope in order for the response to include private profile information.
+        OAuth app tokens and personal access tokens (classic) need the `read:user` scope, or the broader `user` scope, for this endpoint to return the private user response. The private user response includes additional fields such as `private_gists`, `total_private_repos`, `owned_private_repos`, `disk_usage`, `collaborators`, and `two_factor_authentication`. Tokens without these scopes receive the public user response.
+
+        The private and public user response types are unrelated to the [private profile](https://docs.github.com/account-and-profile/concepts/personal-profile#private-profiles) setting. A token without scopes still authenticates as the token's owner, so values subject to private profile visibility, such as `followers` and `following`, may differ from an unauthenticated response.
 
         See also: https://docs.github.com/rest/users/users#get-the-authenticated-user
         """
@@ -3280,6 +3284,8 @@ class UsersClient:
 
         Provides publicly available information about someone with a GitHub account.
 
+        If the specified user has a [private profile](https://docs.github.com/account-and-profile/concepts/personal-profile#private-profiles), the `followers` and `following` values are `0` unless the request is authenticated as that user. A request authenticated as the specified user returns the actual values even if the token has no OAuth scopes.
+
         The `events_url` value is a URI template. Replace `{/privacy}` with `/public` to retrieve only public events. Omit it to retrieve public events and, when authenticated as the user, private events. For more information, see "[List events for the authenticated user](https://docs.github.com/rest/activity/events#list-events-for-the-authenticated-user)."
 
         If you are requesting information about an [Enterprise Managed User](https://docs.github.com/enterprise-cloud@latest/admin/managing-iam/understanding-iam-for-enterprises/about-enterprise-managed-users), or a GitHub App bot that is installed in an organization that uses Enterprise Managed Users, your requests must be authenticated as a user or GitHub App that has access to the organization to view that account's information. If you are not authorized, the request will return a `404 Not Found` status.
@@ -3325,6 +3331,8 @@ class UsersClient:
         GET /users/{username}
 
         Provides publicly available information about someone with a GitHub account.
+
+        If the specified user has a [private profile](https://docs.github.com/account-and-profile/concepts/personal-profile#private-profiles), the `followers` and `following` values are `0` unless the request is authenticated as that user. A request authenticated as the specified user returns the actual values even if the token has no OAuth scopes.
 
         The `events_url` value is a URI template. Replace `{/privacy}` with `/public` to retrieve only public events. Omit it to retrieve public events and, when authenticated as the user, private events. For more information, see "[List events for the authenticated user](https://docs.github.com/rest/activity/events#list-events-for-the-authenticated-user)."
 
@@ -4001,6 +4009,8 @@ class UsersClient:
 
         Lists the people following the specified user.
 
+        If the specified user has a [private profile](https://docs.github.com/account-and-profile/concepts/personal-profile#private-profiles), this endpoint returns an empty list unless the request is authenticated as that user. A request authenticated as the specified user returns the list even if the token has no OAuth scopes.
+
         See also: https://docs.github.com/rest/users/followers#list-followers-of-a-user
         """
 
@@ -4038,6 +4048,8 @@ class UsersClient:
         GET /users/{username}/followers
 
         Lists the people following the specified user.
+
+        If the specified user has a [private profile](https://docs.github.com/account-and-profile/concepts/personal-profile#private-profiles), this endpoint returns an empty list unless the request is authenticated as that user. A request authenticated as the specified user returns the list even if the token has no OAuth scopes.
 
         See also: https://docs.github.com/rest/users/followers#list-followers-of-a-user
         """
@@ -4077,6 +4089,8 @@ class UsersClient:
 
         Lists the people who the specified user follows.
 
+        If the specified user has a [private profile](https://docs.github.com/account-and-profile/concepts/personal-profile#private-profiles), this endpoint returns an empty list unless the request is authenticated as that user. A request authenticated as the specified user returns the list even if the token has no OAuth scopes.
+
         See also: https://docs.github.com/rest/users/followers#list-the-people-a-user-follows
         """
 
@@ -4114,6 +4128,8 @@ class UsersClient:
         GET /users/{username}/following
 
         Lists the people who the specified user follows.
+
+        If the specified user has a [private profile](https://docs.github.com/account-and-profile/concepts/personal-profile#private-profiles), this endpoint returns an empty list unless the request is authenticated as that user. A request authenticated as the specified user returns the list even if the token has no OAuth scopes.
 
         See also: https://docs.github.com/rest/users/followers#list-the-people-a-user-follows
         """

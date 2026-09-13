@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal
 
 from pydantic import Field
@@ -18,22 +19,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RunnerLabel(GitHubModel):
-    """Self hosted runner label
+class OrganizationActionsSecret(GitHubModel):
+    """Actions Secret for an Organization
 
-    A label for a self hosted runner
+    Secrets for GitHub Actions for an organization.
     """
 
-    id: Missing[int] = Field(
-        default=UNSET, description="Unique identifier of the label."
+    name: str = Field(description="The name of the secret.")
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="Visibility of a secret"
     )
-    name: str = Field(description="Name of the label.")
-    type: Missing[Literal["read-only", "custom"]] = Field(
-        default=UNSET,
-        description="The type of label. Read-only labels are applied automatically when the runner is configured.",
-    )
+    selected_repositories_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(RunnerLabel)
+model_rebuild(OrganizationActionsSecret)
 
-__all__ = ("RunnerLabel",)
+__all__ = ("OrganizationActionsSecret",)

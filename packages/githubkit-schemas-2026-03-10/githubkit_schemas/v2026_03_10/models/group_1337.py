@@ -9,88 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200(GitHubModel):
-    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200"""
+class ReposOwnerRepoCodespacesPostBody(GitHubModel):
+    """ReposOwnerRepoCodespacesPostBody"""
 
-    mcp_configuration: Union[
-        ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration,
-        None,
-    ] = Field(
-        description="The user-supplied MCP server configuration for the repository, as a free-form JSON object. This will be set to `null` if no configuration has been set.\n\nThe shape of a valid MCP configuration may evolve over time, so this property is intentionally not strictly typed. Clients should not assume a fixed schema."
+    ref: Missing[str] = Field(
+        default=UNSET,
+        description="Git ref (typically a branch name) for this codespace",
     )
-    enabled_tools: ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools = Field(
-        description="The enabled review tools for Copilot cloud agent."
+    location: Missing[str] = Field(
+        default=UNSET,
+        description="The requested location for a new codespace. Best efforts are made to respect this upon creation. Assigned by IP if not provided.",
     )
-    require_actions_workflow_approval: bool = Field(
-        description="Whether Actions workflow approval is required for Copilot cloud agent pull requests."
+    geo: Missing[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]] = Field(
+        default=UNSET,
+        description="The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is closing down.",
     )
-    is_firewall_enabled: bool = Field(description="Whether the firewall is enabled.")
-    is_firewall_recommended_allowlist_enabled: bool = Field(
-        description="Whether the firewall recommended allowlist is enabled."
+    client_ip: Missing[str] = Field(
+        default=UNSET,
+        description="IP for location auto-detection when proxying a request",
     )
-    custom_allowlist: list[str] = Field(
-        description="A list of custom allowlist entries, as hosts or URLs, that the firewall will allow the Copilot cloud agent to access."
+    machine: Missing[str] = Field(
+        default=UNSET, description="Machine type to use for this codespace"
     )
-    is_automations_enabled: bool = Field(
-        description="Whether automations are enabled in this repository. When true, users can create automations that automatically run agents on a schedule or in response to events like new issues or updated pull requests."
+    devcontainer_path: Missing[str] = Field(
+        default=UNSET,
+        description="Path to devcontainer.json config to use for this codespace",
     )
-    require_write_access_for_automation_triggers: bool = Field(
-        description="Whether write access is required for automation triggers. When true, automations will only run if the user triggering the event has write access to the repository. When false, users can create automations that listen for events triggered by users without write access."
+    multi_repo_permissions_opt_out: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to authorize requested permissions from devcontainer.json",
     )
-
-
-class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration(
-    ExtraGitHubModel
-):
-    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration
-
-    The user-supplied MCP server configuration for the repository, as a free-form
-    JSON object. This will be set to `null` if no configuration has been set.
-
-    The shape of a valid MCP configuration may evolve over time, so this property is
-    intentionally not strictly typed. Clients should not assume a fixed schema.
-    """
-
-
-class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools(
-    GitHubModel
-):
-    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools
-
-    The enabled review tools for Copilot cloud agent.
-    """
-
-    codeql: bool = Field(
-        description="Whether the CodeQL tool is enabled for the Copilot cloud agent."
+    working_directory: Missing[str] = Field(
+        default=UNSET, description="Working directory for this codespace"
     )
-    copilot_code_review: bool = Field(
-        description="Whether the Copilot code review tool is enabled for the Copilot cloud agent."
+    idle_timeout_minutes: Missing[int] = Field(
+        default=UNSET,
+        description="Time in minutes before codespace stops from inactivity",
     )
-    secret_scanning: bool = Field(
-        description="Whether the secret scanning tool is enabled for the Copilot cloud agent."
+    display_name: Missing[str] = Field(
+        default=UNSET, description="Display name for this codespace"
     )
-    dependency_vulnerability_checks: bool = Field(
-        description="Whether the dependency vulnerability checks tool is enabled for the Copilot cloud agent."
+    retention_period_minutes: Missing[int] = Field(
+        default=UNSET,
+        description="Duration in minutes after codespace has gone idle in which it will be deleted. Must be integer minutes between 0 and 43200 (30 days).",
     )
 
 
-model_rebuild(ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200)
-model_rebuild(
-    ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration
-)
-model_rebuild(
-    ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools
-)
+model_rebuild(ReposOwnerRepoCodespacesPostBody)
 
-__all__ = (
-    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200",
-    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools",
-    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration",
-)
+__all__ = ("ReposOwnerRepoCodespacesPostBody",)

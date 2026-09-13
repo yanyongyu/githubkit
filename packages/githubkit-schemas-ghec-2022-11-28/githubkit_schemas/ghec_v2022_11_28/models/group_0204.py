@@ -9,27 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class DeleteCostCenter(GitHubModel):
-    """DeleteCostCenter"""
+class UsageReportExportRequest(GitHubModel):
+    """UsageReportExportRequest"""
 
-    message: str = Field(
-        description="A message indicating the result of the deletion operation"
+    report_type: Literal["detailed", "summarized", "premium_request", "ai_credit"] = (
+        Field(description="The type of usage report to generate")
     )
-    id: str = Field(description="The unique identifier of the deleted cost center")
-    name: str = Field(description="The name of the deleted cost center")
-    cost_center_state: Literal["CostCenterArchived"] = Field(
-        alias="costCenterState",
-        description="The state of the cost center after deletion",
+    start_date: _dt.date = Field(
+        description="The start date for the report in YYYY-MM-DD format"
+    )
+    end_date: Missing[_dt.date] = Field(
+        default=UNSET,
+        description="The end date for the report in YYYY-MM-DD format. Defaults to today (UTC) if not provided.",
+    )
+    send_email: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to send an email notification to the requester when the report is ready. Defaults to false.",
     )
 
 
-model_rebuild(DeleteCostCenter)
+model_rebuild(UsageReportExportRequest)
 
-__all__ = ("DeleteCostCenter",)
+__all__ = ("UsageReportExportRequest",)

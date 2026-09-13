@@ -9,33 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyType(TypedDict):
-    """EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody"""
+class EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201Type(TypedDict):
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201
 
-    policy_state: Literal[
-        "enabled_for_all_orgs",
-        "disabled_for_all_orgs",
-        "enabled_for_selected_orgs",
-        "configured_by_org_admins",
-    ]
+    The total number of seats created for the specified user(s).
+    """
+
+    seats_created: int
 
 
-class EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody"""
+class EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201
 
-    policy_state: Literal[
-        "enabled_for_all_orgs",
-        "disabled_for_all_orgs",
-        "enabled_for_selected_orgs",
-        "configured_by_org_admins",
-    ]
+    The total number of seats created for the specified user(s).
+    """
+
+    seats_created: int
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyType",
-    "EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201Type",
+    "EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201TypeForResponse",
 )

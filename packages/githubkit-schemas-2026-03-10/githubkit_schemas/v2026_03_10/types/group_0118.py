@@ -10,30 +10,24 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsForkPrContributorApprovalType(TypedDict):
-    """ActionsForkPrContributorApproval"""
+class SelfHostedRunnersSettingsType(TypedDict):
+    """SelfHostedRunnersSettings"""
 
-    approval_policy: Literal[
-        "first_time_contributors_new_to_github",
-        "first_time_contributors",
-        "all_external_contributors",
-    ]
+    enabled_repositories: Literal["all", "selected", "none"]
+    selected_repositories_url: NotRequired[str]
 
 
-class ActionsForkPrContributorApprovalTypeForResponse(TypedDict):
-    """ActionsForkPrContributorApproval"""
+class SelfHostedRunnersSettingsTypeForResponse(TypedDict):
+    """SelfHostedRunnersSettings"""
 
-    approval_policy: Literal[
-        "first_time_contributors_new_to_github",
-        "first_time_contributors",
-        "all_external_contributors",
-    ]
+    enabled_repositories: Literal["all", "selected", "none"]
+    selected_repositories_url: NotRequired[str]
 
 
 __all__ = (
-    "ActionsForkPrContributorApprovalType",
-    "ActionsForkPrContributorApprovalTypeForResponse",
+    "SelfHostedRunnersSettingsType",
+    "SelfHostedRunnersSettingsTypeForResponse",
 )

@@ -9,52 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class TeamsTeamIdTeamSyncGroupMappingsPatchBodyType(TypedDict):
-    """TeamsTeamIdTeamSyncGroupMappingsPatchBody"""
+class ReposOwnerRepoStatusesShaPostBodyType(TypedDict):
+    """ReposOwnerRepoStatusesShaPostBody"""
 
-    groups: list[TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsType]
-    synced_at: NotRequired[str]
-
-
-class TeamsTeamIdTeamSyncGroupMappingsPatchBodyTypeForResponse(TypedDict):
-    """TeamsTeamIdTeamSyncGroupMappingsPatchBody"""
-
-    groups: list[
-        TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsTypeForResponse
-    ]
-    synced_at: NotRequired[str]
+    state: Literal["error", "failure", "pending", "success"]
+    target_url: NotRequired[Union[str, None]]
+    description: NotRequired[Union[str, None]]
+    context: NotRequired[str]
 
 
-class TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsType(TypedDict):
-    """TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems"""
+class ReposOwnerRepoStatusesShaPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoStatusesShaPostBody"""
 
-    group_id: str
-    group_name: str
-    group_description: str
-    id: NotRequired[str]
-    name: NotRequired[str]
-    description: NotRequired[str]
-
-
-class TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsTypeForResponse(
-    TypedDict
-):
-    """TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems"""
-
-    group_id: str
-    group_name: str
-    group_description: str
-    id: NotRequired[str]
-    name: NotRequired[str]
-    description: NotRequired[str]
+    state: Literal["error", "failure", "pending", "success"]
+    target_url: NotRequired[Union[str, None]]
+    description: NotRequired[Union[str, None]]
+    context: NotRequired[str]
 
 
 __all__ = (
-    "TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsType",
-    "TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsTypeForResponse",
-    "TeamsTeamIdTeamSyncGroupMappingsPatchBodyType",
-    "TeamsTeamIdTeamSyncGroupMappingsPatchBodyTypeForResponse",
+    "ReposOwnerRepoStatusesShaPostBodyType",
+    "ReposOwnerRepoStatusesShaPostBodyTypeForResponse",
 )

@@ -9,24 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0501 import PullRequestStackPullRequest
 
 
-class TeamsTeamIdReposOwnerRepoPutBody(GitHubModel):
-    """TeamsTeamIdReposOwnerRepoPutBody"""
+class ReposOwnerRepoStacksStackNumberGetResponse200(GitHubModel):
+    """ReposOwnerRepoStacksStackNumberGetResponse200"""
 
-    permission: Missing[Literal["pull", "push", "admin"]] = Field(
-        default=UNSET,
-        description="The permission to grant the team on this repository. If no permission is specified, the team's `permission` attribute will be used to determine what permission to grant the team on this repository.",
+    id: int = Field()
+    number: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    base: ReposOwnerRepoStacksStackNumberGetResponse200PropBase = Field()
+    open_: bool = Field(
+        alias="open",
+        description="Whether the stack has any open pull request. False when all pull requests are merged or closed.",
     )
+    created_at: _dt.datetime = Field()
+    pull_requests: list[PullRequestStackPullRequest] = Field()
 
 
-model_rebuild(TeamsTeamIdReposOwnerRepoPutBody)
+class ReposOwnerRepoStacksStackNumberGetResponse200PropBase(GitHubModel):
+    """ReposOwnerRepoStacksStackNumberGetResponse200PropBase"""
 
-__all__ = ("TeamsTeamIdReposOwnerRepoPutBody",)
+    ref: str = Field()
+
+
+model_rebuild(ReposOwnerRepoStacksStackNumberGetResponse200)
+model_rebuild(ReposOwnerRepoStacksStackNumberGetResponse200PropBase)
+
+__all__ = (
+    "ReposOwnerRepoStacksStackNumberGetResponse200",
+    "ReposOwnerRepoStacksStackNumberGetResponse200PropBase",
+)

@@ -12,34 +12,19 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ActionsHostedRunnerCustomImage(GitHubModel):
-    """GitHub-hosted runner custom image details
+class ActionsOidcCustomIssuerPolicyForEnterprise(GitHubModel):
+    """ActionsOidcCustomIssuerPolicyForEnterprise"""
 
-    Provides details of a custom runner image
-    """
-
-    id: int = Field(
-        description="The ID of the image. Use this ID for the `image` parameter when creating a new larger runner."
-    )
-    platform: str = Field(description="The operating system of the image.")
-    total_versions_size: int = Field(
-        description="Total size of all the image versions in GB."
-    )
-    name: str = Field(description="Display name for this image.")
-    source: str = Field(description="The image provider.")
-    versions_count: int = Field(
-        description="The number of image versions associated with the image."
-    )
-    latest_version: str = Field(
-        description="The latest image version associated with the image."
-    )
-    state: str = Field(
-        description="The number of image versions associated with the image."
+    include_enterprise_slug: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether the enterprise customer requested a custom issuer URL.",
     )
 
 
-model_rebuild(ActionsHostedRunnerCustomImage)
+model_rebuild(ActionsOidcCustomIssuerPolicyForEnterprise)
 
-__all__ = ("ActionsHostedRunnerCustomImage",)
+__all__ = ("ActionsOidcCustomIssuerPolicyForEnterprise",)

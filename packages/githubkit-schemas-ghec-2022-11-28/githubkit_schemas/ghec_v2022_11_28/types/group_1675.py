@@ -9,30 +9,59 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposTemplateOwnerTemplateRepoGeneratePostBodyType(TypedDict):
-    """ReposTemplateOwnerTemplateRepoGeneratePostBody"""
+class ReposOwnerRepoStacksPostResponse422Type(TypedDict):
+    """Validation Error
 
-    owner: NotRequired[str]
-    name: str
-    description: NotRequired[str]
-    include_all_branches: NotRequired[bool]
-    private: NotRequired[bool]
+    Validation Error
+    """
+
+    message: str
+    documentation_url: str
+    errors: NotRequired[list[ReposOwnerRepoStacksPostResponse422PropErrorsItemsType]]
 
 
-class ReposTemplateOwnerTemplateRepoGeneratePostBodyTypeForResponse(TypedDict):
-    """ReposTemplateOwnerTemplateRepoGeneratePostBody"""
+class ReposOwnerRepoStacksPostResponse422TypeForResponse(TypedDict):
+    """Validation Error
 
-    owner: NotRequired[str]
-    name: str
-    description: NotRequired[str]
-    include_all_branches: NotRequired[bool]
-    private: NotRequired[bool]
+    Validation Error
+    """
+
+    message: str
+    documentation_url: str
+    errors: NotRequired[
+        list[ReposOwnerRepoStacksPostResponse422PropErrorsItemsTypeForResponse]
+    ]
+
+
+class ReposOwnerRepoStacksPostResponse422PropErrorsItemsType(TypedDict):
+    """ReposOwnerRepoStacksPostResponse422PropErrorsItems"""
+
+    resource: NotRequired[str]
+    field: NotRequired[str]
+    message: NotRequired[str]
+    code: str
+    index: NotRequired[int]
+    value: NotRequired[Union[str, None, int, None, list[Union[str, int]], None]]
+
+
+class ReposOwnerRepoStacksPostResponse422PropErrorsItemsTypeForResponse(TypedDict):
+    """ReposOwnerRepoStacksPostResponse422PropErrorsItems"""
+
+    resource: NotRequired[str]
+    field: NotRequired[str]
+    message: NotRequired[str]
+    code: str
+    index: NotRequired[int]
+    value: NotRequired[Union[str, None, int, None, list[Union[str, int]], None]]
 
 
 __all__ = (
-    "ReposTemplateOwnerTemplateRepoGeneratePostBodyType",
-    "ReposTemplateOwnerTemplateRepoGeneratePostBodyTypeForResponse",
+    "ReposOwnerRepoStacksPostResponse422PropErrorsItemsType",
+    "ReposOwnerRepoStacksPostResponse422PropErrorsItemsTypeForResponse",
+    "ReposOwnerRepoStacksPostResponse422Type",
+    "ReposOwnerRepoStacksPostResponse422TypeForResponse",
 )

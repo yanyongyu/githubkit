@@ -12,25 +12,19 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202Type(
-    TypedDict
-):
-    """EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202"""
+class EnterprisesEnterpriseCopilotCustomAgentsGetResponse404Type(TypedDict):
+    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse404"""
 
     message: NotRequired[str]
-    warning: NotRequired[str]
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202"""
+class EnterprisesEnterpriseCopilotCustomAgentsGetResponse404TypeForResponse(TypedDict):
+    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse404"""
 
     message: NotRequired[str]
-    warning: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202Type",
-    "EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202TypeForResponse",
+    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse404Type",
+    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse404TypeForResponse",
 )

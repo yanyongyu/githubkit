@@ -9,20 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201(GitHubModel):
-    """EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201
+class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBody(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBody"""
 
-    The total number of seats created for the specified user(s).
-    """
+    scope: Literal["all", "all_without_configurations"] = Field(
+        description="The type of repositories to attach the configuration to."
+    )
 
-    seats_created: int = Field()
 
+model_rebuild(
+    EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBody
+)
 
-model_rebuild(EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201)
-
-__all__ = ("EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201",)
+__all__ = (
+    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBody",
+)

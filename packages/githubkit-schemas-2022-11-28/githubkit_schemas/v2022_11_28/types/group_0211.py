@@ -9,22 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0212 import (
+    RepositoryRuleMergeQueuePropParametersType,
+    RepositoryRuleMergeQueuePropParametersTypeForResponse,
+)
 
 
-class RepositoryRuleUpdatePropParametersType(TypedDict):
-    """RepositoryRuleUpdatePropParameters"""
+class RepositoryRuleMergeQueueType(TypedDict):
+    """merge_queue
 
-    update_allows_fetch_and_merge: bool
+    Merges must be performed via a merge queue.
+    """
+
+    type: Literal["merge_queue"]
+    parameters: NotRequired[RepositoryRuleMergeQueuePropParametersType]
 
 
-class RepositoryRuleUpdatePropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleUpdatePropParameters"""
+class RepositoryRuleMergeQueueTypeForResponse(TypedDict):
+    """merge_queue
 
-    update_allows_fetch_and_merge: bool
+    Merges must be performed via a merge queue.
+    """
+
+    type: Literal["merge_queue"]
+    parameters: NotRequired[RepositoryRuleMergeQueuePropParametersTypeForResponse]
 
 
 __all__ = (
-    "RepositoryRuleUpdatePropParametersType",
-    "RepositoryRuleUpdatePropParametersTypeForResponse",
+    "RepositoryRuleMergeQueueType",
+    "RepositoryRuleMergeQueueTypeForResponse",
 )

@@ -13,24 +13,24 @@ import datetime as _dt
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoDependabotSecretsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoDependabotSecretsGetResponse200"""
+class ReposOwnerRepoCodespacesSecretsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCodespacesSecretsGetResponse200"""
 
     total_count: int
-    secrets: list[DependabotSecretType]
+    secrets: list[RepoCodespacesSecretType]
 
 
-class ReposOwnerRepoDependabotSecretsGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoDependabotSecretsGetResponse200"""
+class ReposOwnerRepoCodespacesSecretsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoCodespacesSecretsGetResponse200"""
 
     total_count: int
-    secrets: list[DependabotSecretTypeForResponse]
+    secrets: list[RepoCodespacesSecretTypeForResponse]
 
 
-class DependabotSecretType(TypedDict):
-    """Dependabot Secret
+class RepoCodespacesSecretType(TypedDict):
+    """Codespaces Secret
 
-    Set secrets for Dependabot.
+    Set repository secrets for GitHub Codespaces.
     """
 
     name: str
@@ -38,10 +38,10 @@ class DependabotSecretType(TypedDict):
     updated_at: _dt.datetime
 
 
-class DependabotSecretTypeForResponse(TypedDict):
-    """Dependabot Secret
+class RepoCodespacesSecretTypeForResponse(TypedDict):
+    """Codespaces Secret
 
-    Set secrets for Dependabot.
+    Set repository secrets for GitHub Codespaces.
     """
 
     name: str
@@ -50,8 +50,8 @@ class DependabotSecretTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "DependabotSecretType",
-    "DependabotSecretTypeForResponse",
-    "ReposOwnerRepoDependabotSecretsGetResponse200Type",
-    "ReposOwnerRepoDependabotSecretsGetResponse200TypeForResponse",
+    "RepoCodespacesSecretType",
+    "RepoCodespacesSecretTypeForResponse",
+    "ReposOwnerRepoCodespacesSecretsGetResponse200Type",
+    "ReposOwnerRepoCodespacesSecretsGetResponse200TypeForResponse",
 )

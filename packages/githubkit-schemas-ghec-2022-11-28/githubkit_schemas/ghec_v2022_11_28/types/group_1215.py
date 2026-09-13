@@ -9,33 +9,81 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBodyType(
+class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200"""
+
+    organization: Union[
+        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganizationType,
+        None,
+    ]
+    repository: Union[
+        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepositoryType,
+        None,
+    ]
+
+
+class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBody"""
+    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200"""
 
-    credential_type: Literal[
-        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
+    organization: Union[
+        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganizationTypeForResponse,
+        None,
     ]
-    revoke_credentials: NotRequired[bool]
+    repository: Union[
+        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepositoryTypeForResponse,
+        None,
+    ]
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBodyTypeForResponse(
+class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganizationType(
     TypedDict
 ):
-    """EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBody"""
+    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization"""
 
-    credential_type: Literal[
-        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
-    ]
-    revoke_credentials: NotRequired[bool]
+    id: int
+    login: str
+
+
+class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganizationTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization"""
+
+    id: int
+    login: str
+
+
+class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepositoryType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository"""
+
+    id: int
+    name: str
+    full_name: str
+
+
+class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepositoryTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository"""
+
+    id: int
+    name: str
+    full_name: str
 
 
 __all__ = (
-    "EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBodyType",
-    "EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganizationType",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganizationTypeForResponse",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepositoryType",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepositoryTypeForResponse",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200Type",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200TypeForResponse",
 )

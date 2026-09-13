@@ -9,22 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyType(TypedDict):
-    """OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody"""
+class OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202Type(TypedDict):
+    """OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202"""
 
-    selected_repository_ids: list[int]
+    message: NotRequired[str]
+    warning: NotRequired[str]
 
 
-class OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody"""
+class OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202TypeForResponse(TypedDict):
+    """OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202"""
 
-    selected_repository_ids: list[int]
+    message: NotRequired[str]
+    warning: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyType",
-    "OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyTypeForResponse",
+    "OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202Type",
+    "OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202TypeForResponse",
 )

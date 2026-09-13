@@ -13,20 +13,20 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0201 import (
-    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName,
-)
+from .group_0201 import RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId
 
 
-class RepositoryRulesetConditionsRepositoryNameTarget(GitHubModel):
-    """Repository ruleset conditions for repository names
+class RepositoryRulesetConditionsRepositoryIdTarget(GitHubModel):
+    """Repository ruleset conditions for repository IDs
 
-    Parameters for a repository name condition
+    Parameters for a repository ID condition
     """
 
-    repository_name: RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName = Field()
+    repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId = (
+        Field()
+    )
 
 
-model_rebuild(RepositoryRulesetConditionsRepositoryNameTarget)
+model_rebuild(RepositoryRulesetConditionsRepositoryIdTarget)
 
-__all__ = ("RepositoryRulesetConditionsRepositoryNameTarget",)
+__all__ = ("RepositoryRulesetConditionsRepositoryIdTarget",)

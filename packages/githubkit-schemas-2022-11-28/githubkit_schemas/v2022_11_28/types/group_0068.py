@@ -9,29 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0057 import IssueCommentType, IssueCommentTypeForResponse
-from .group_0059 import IssueType, IssueTypeForResponse
-
-
-class IssueCommentEventType(TypedDict):
-    """IssueCommentEvent"""
-
-    action: str
-    issue: IssueType
-    comment: IssueCommentType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0045 import LabelType, LabelTypeForResponse
+from .group_0057 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
 
 
-class IssueCommentEventTypeForResponse(TypedDict):
-    """IssueCommentEvent"""
+class PullRequestEventType(TypedDict):
+    """PullRequestEvent"""
 
     action: str
-    issue: IssueTypeForResponse
-    comment: IssueCommentTypeForResponse
+    number: int
+    pull_request: PullRequestMinimalType
+    assignee: NotRequired[SimpleUserType]
+    assignees: NotRequired[list[SimpleUserType]]
+    label: NotRequired[LabelType]
+    labels: NotRequired[list[LabelType]]
+
+
+class PullRequestEventTypeForResponse(TypedDict):
+    """PullRequestEvent"""
+
+    action: str
+    number: int
+    pull_request: PullRequestMinimalTypeForResponse
+    assignee: NotRequired[SimpleUserTypeForResponse]
+    assignees: NotRequired[list[SimpleUserTypeForResponse]]
+    label: NotRequired[LabelTypeForResponse]
+    labels: NotRequired[list[LabelTypeForResponse]]
 
 
 __all__ = (
-    "IssueCommentEventType",
-    "IssueCommentEventTypeForResponse",
+    "PullRequestEventType",
+    "PullRequestEventTypeForResponse",
 )

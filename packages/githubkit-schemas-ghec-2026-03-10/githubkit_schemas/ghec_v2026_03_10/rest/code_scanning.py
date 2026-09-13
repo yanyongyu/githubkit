@@ -29,6 +29,8 @@ if TYPE_CHECKING:
     from githubkit.utils import UNSET
 
     from ..models import (
+        CodeScanningAiScanEnablement,
+        CodeScanningAiScanOrgSettings,
         CodeScanningAlert,
         CodeScanningAlertDismissalRequest,
         CodeScanningAlertInstanceList,
@@ -47,6 +49,10 @@ if TYPE_CHECKING:
         EmptyObject,
     )
     from ..types import (
+        CodeScanningAiScanEnablementTypeForResponse,
+        CodeScanningAiScanEnablementUpdateType,
+        CodeScanningAiScanOrgEnablementUpdateType,
+        CodeScanningAiScanOrgSettingsTypeForResponse,
         CodeScanningAlertDismissalRequestTypeForResponse,
         CodeScanningAlertInstanceListTypeForResponse,
         CodeScanningAlertItemsTypeForResponse,
@@ -225,6 +231,268 @@ class CodeScanningClient:
             error_models={
                 "404": BasicError,
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    def get_ai_scan_enablement_for_org(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        CodeScanningAiScanOrgSettings, CodeScanningAiScanOrgSettingsTypeForResponse
+    ]:
+        """code-scanning/get-ai-scan-enablement-for-org
+
+        GET /orgs/{org}/code-scanning/ai-scan
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Gets the AI Scan setting stored on an organization.
+
+        The response reports the value stored on the organization. Organization respects enterprise policy.
+
+        The authenticated user must be an owner or security manager for the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org`, `repo`, or `write:org` scope to use this endpoint. Organization owners can use `admin:org` or `repo`; security managers need `write:org`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/code-scanning#get-the-ai-scan-setting-for-an-organization
+        """
+
+        from ..models import BasicError, CodeScanningAiScanOrgSettings
+
+        url = f"/orgs/{org}/code-scanning/ai-scan"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CodeScanningAiScanOrgSettings,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_ai_scan_enablement_for_org(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        CodeScanningAiScanOrgSettings, CodeScanningAiScanOrgSettingsTypeForResponse
+    ]:
+        """code-scanning/get-ai-scan-enablement-for-org
+
+        GET /orgs/{org}/code-scanning/ai-scan
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Gets the AI Scan setting stored on an organization.
+
+        The response reports the value stored on the organization. Organization respects enterprise policy.
+
+        The authenticated user must be an owner or security manager for the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org`, `repo`, or `write:org` scope to use this endpoint. Organization owners can use `admin:org` or `repo`; security managers need `write:org`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/code-scanning#get-the-ai-scan-setting-for-an-organization
+        """
+
+        from ..models import BasicError, CodeScanningAiScanOrgSettings
+
+        url = f"/orgs/{org}/code-scanning/ai-scan"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CodeScanningAiScanOrgSettings,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def update_ai_scan_enablement_for_org(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: CodeScanningAiScanOrgEnablementUpdateType,
+    ) -> Response[
+        CodeScanningAiScanOrgSettings, CodeScanningAiScanOrgSettingsTypeForResponse
+    ]: ...
+
+    @overload
+    def update_ai_scan_enablement_for_org(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        pr_scan: Missing[Literal["enabled", "disabled"]] = UNSET,
+    ) -> Response[
+        CodeScanningAiScanOrgSettings, CodeScanningAiScanOrgSettingsTypeForResponse
+    ]: ...
+
+    def update_ai_scan_enablement_for_org(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[CodeScanningAiScanOrgEnablementUpdateType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        CodeScanningAiScanOrgSettings, CodeScanningAiScanOrgSettingsTypeForResponse
+    ]:
+        """code-scanning/update-ai-scan-enablement-for-org
+
+        PATCH /orgs/{org}/code-scanning/ai-scan
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Updates the AI Scan setting stored on an organization.
+
+        The organization respects the enterprise policy, so enabling is rejected when the enterprise disallows AI Scan.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org`, `repo`, or `write:org` scope to use this endpoint. Organization owners can use `admin:org` or `repo`; security managers need `write:org`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/code-scanning#update-the-ai-scan-setting-for-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            CodeScanningAiScanOrgEnablementUpdate,
+            CodeScanningAiScanOrgSettings,
+            ValidationError,
+        )
+
+        url = f"/orgs/{org}/code-scanning/ai-scan"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(CodeScanningAiScanOrgEnablementUpdate, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CodeScanningAiScanOrgSettings,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    async def async_update_ai_scan_enablement_for_org(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: CodeScanningAiScanOrgEnablementUpdateType,
+    ) -> Response[
+        CodeScanningAiScanOrgSettings, CodeScanningAiScanOrgSettingsTypeForResponse
+    ]: ...
+
+    @overload
+    async def async_update_ai_scan_enablement_for_org(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        pr_scan: Missing[Literal["enabled", "disabled"]] = UNSET,
+    ) -> Response[
+        CodeScanningAiScanOrgSettings, CodeScanningAiScanOrgSettingsTypeForResponse
+    ]: ...
+
+    async def async_update_ai_scan_enablement_for_org(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[CodeScanningAiScanOrgEnablementUpdateType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        CodeScanningAiScanOrgSettings, CodeScanningAiScanOrgSettingsTypeForResponse
+    ]:
+        """code-scanning/update-ai-scan-enablement-for-org
+
+        PATCH /orgs/{org}/code-scanning/ai-scan
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Updates the AI Scan setting stored on an organization.
+
+        The organization respects the enterprise policy, so enabling is rejected when the enterprise disallows AI Scan.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org`, `repo`, or `write:org` scope to use this endpoint. Organization owners can use `admin:org` or `repo`; security managers need `write:org`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/code-scanning#update-the-ai-scan-setting-for-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            CodeScanningAiScanOrgEnablementUpdate,
+            CodeScanningAiScanOrgSettings,
+            ValidationError,
+        )
+
+        url = f"/orgs/{org}/code-scanning/ai-scan"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(CodeScanningAiScanOrgEnablementUpdate, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CodeScanningAiScanOrgSettings,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
             },
         )
 
@@ -503,6 +771,264 @@ class CodeScanningClient:
                 "403": BasicError,
                 "422": ValidationError,
                 "500": BasicError,
+            },
+        )
+
+    def get_ai_scan_enablement(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        CodeScanningAiScanEnablement, CodeScanningAiScanEnablementTypeForResponse
+    ]:
+        """code-scanning/get-ai-scan-enablement
+
+        GET /repos/{owner}/{repo}/code-scanning/ai-scan
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Gets whether AI Scan is enabled for a repository.
+
+        OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/code-scanning#get-ai-scan-enablement-for-a-repository
+        """
+
+        from ..models import BasicError, CodeScanningAiScanEnablement
+
+        url = f"/repos/{owner}/{repo}/code-scanning/ai-scan"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CodeScanningAiScanEnablement,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_ai_scan_enablement(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        CodeScanningAiScanEnablement, CodeScanningAiScanEnablementTypeForResponse
+    ]:
+        """code-scanning/get-ai-scan-enablement
+
+        GET /repos/{owner}/{repo}/code-scanning/ai-scan
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Gets whether AI Scan is enabled for a repository.
+
+        OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/code-scanning#get-ai-scan-enablement-for-a-repository
+        """
+
+        from ..models import BasicError, CodeScanningAiScanEnablement
+
+        url = f"/repos/{owner}/{repo}/code-scanning/ai-scan"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CodeScanningAiScanEnablement,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def update_ai_scan_enablement(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: CodeScanningAiScanEnablementUpdateType,
+    ) -> Response[
+        CodeScanningAiScanEnablement, CodeScanningAiScanEnablementTypeForResponse
+    ]: ...
+
+    @overload
+    def update_ai_scan_enablement(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        pr_scan: Missing[Literal["enabled", "disabled"]] = UNSET,
+    ) -> Response[
+        CodeScanningAiScanEnablement, CodeScanningAiScanEnablementTypeForResponse
+    ]: ...
+
+    def update_ai_scan_enablement(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[CodeScanningAiScanEnablementUpdateType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        CodeScanningAiScanEnablement, CodeScanningAiScanEnablementTypeForResponse
+    ]:
+        """code-scanning/update-ai-scan-enablement
+
+        PATCH /repos/{owner}/{repo}/code-scanning/ai-scan
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Updates whether AI Scan is enabled for a repository.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/code-scanning#update-ai-scan-enablement-for-a-repository
+        """
+
+        from ..models import (
+            BasicError,
+            CodeScanningAiScanEnablement,
+            CodeScanningAiScanEnablementUpdate,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/code-scanning/ai-scan"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(CodeScanningAiScanEnablementUpdate, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CodeScanningAiScanEnablement,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    async def async_update_ai_scan_enablement(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: CodeScanningAiScanEnablementUpdateType,
+    ) -> Response[
+        CodeScanningAiScanEnablement, CodeScanningAiScanEnablementTypeForResponse
+    ]: ...
+
+    @overload
+    async def async_update_ai_scan_enablement(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        pr_scan: Missing[Literal["enabled", "disabled"]] = UNSET,
+    ) -> Response[
+        CodeScanningAiScanEnablement, CodeScanningAiScanEnablementTypeForResponse
+    ]: ...
+
+    async def async_update_ai_scan_enablement(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[CodeScanningAiScanEnablementUpdateType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        CodeScanningAiScanEnablement, CodeScanningAiScanEnablementTypeForResponse
+    ]:
+        """code-scanning/update-ai-scan-enablement
+
+        PATCH /repos/{owner}/{repo}/code-scanning/ai-scan
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Updates whether AI Scan is enabled for a repository.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/code-scanning#update-ai-scan-enablement-for-a-repository
+        """
+
+        from ..models import (
+            BasicError,
+            CodeScanningAiScanEnablement,
+            CodeScanningAiScanEnablementUpdate,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/code-scanning/ai-scan"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(CodeScanningAiScanEnablementUpdate, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CodeScanningAiScanEnablement,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
             },
         )
 

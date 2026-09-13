@@ -13,21 +13,20 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0621 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0622 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0623 import (
+from .group_0624 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0625 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0626 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0624 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0665 import WebhooksAlertType, WebhooksAlertTypeForResponse
+from .group_0627 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookRepositoryVulnerabilityAlertCreateType(TypedDict):
-    """repository_vulnerability_alert create event"""
+class WebhookRepositoryRenamedType(TypedDict):
+    """repository renamed event"""
 
-    action: Literal["create"]
-    alert: WebhooksAlertType
+    action: Literal["renamed"]
+    changes: WebhookRepositoryRenamedPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -35,11 +34,11 @@ class WebhookRepositoryVulnerabilityAlertCreateType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookRepositoryVulnerabilityAlertCreateTypeForResponse(TypedDict):
-    """repository_vulnerability_alert create event"""
+class WebhookRepositoryRenamedTypeForResponse(TypedDict):
+    """repository renamed event"""
 
-    action: Literal["create"]
-    alert: WebhooksAlertTypeForResponse
+    action: Literal["renamed"]
+    changes: WebhookRepositoryRenamedPropChangesTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
@@ -47,7 +46,51 @@ class WebhookRepositoryVulnerabilityAlertCreateTypeForResponse(TypedDict):
     sender: SimpleUserTypeForResponse
 
 
+class WebhookRepositoryRenamedPropChangesType(TypedDict):
+    """WebhookRepositoryRenamedPropChanges"""
+
+    repository: WebhookRepositoryRenamedPropChangesPropRepositoryType
+
+
+class WebhookRepositoryRenamedPropChangesTypeForResponse(TypedDict):
+    """WebhookRepositoryRenamedPropChanges"""
+
+    repository: WebhookRepositoryRenamedPropChangesPropRepositoryTypeForResponse
+
+
+class WebhookRepositoryRenamedPropChangesPropRepositoryType(TypedDict):
+    """WebhookRepositoryRenamedPropChangesPropRepository"""
+
+    name: WebhookRepositoryRenamedPropChangesPropRepositoryPropNameType
+
+
+class WebhookRepositoryRenamedPropChangesPropRepositoryTypeForResponse(TypedDict):
+    """WebhookRepositoryRenamedPropChangesPropRepository"""
+
+    name: WebhookRepositoryRenamedPropChangesPropRepositoryPropNameTypeForResponse
+
+
+class WebhookRepositoryRenamedPropChangesPropRepositoryPropNameType(TypedDict):
+    """WebhookRepositoryRenamedPropChangesPropRepositoryPropName"""
+
+    from_: str
+
+
+class WebhookRepositoryRenamedPropChangesPropRepositoryPropNameTypeForResponse(
+    TypedDict
+):
+    """WebhookRepositoryRenamedPropChangesPropRepositoryPropName"""
+
+    from_: str
+
+
 __all__ = (
-    "WebhookRepositoryVulnerabilityAlertCreateType",
-    "WebhookRepositoryVulnerabilityAlertCreateTypeForResponse",
+    "WebhookRepositoryRenamedPropChangesPropRepositoryPropNameType",
+    "WebhookRepositoryRenamedPropChangesPropRepositoryPropNameTypeForResponse",
+    "WebhookRepositoryRenamedPropChangesPropRepositoryType",
+    "WebhookRepositoryRenamedPropChangesPropRepositoryTypeForResponse",
+    "WebhookRepositoryRenamedPropChangesType",
+    "WebhookRepositoryRenamedPropChangesTypeForResponse",
+    "WebhookRepositoryRenamedType",
+    "WebhookRepositoryRenamedTypeForResponse",
 )

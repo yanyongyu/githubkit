@@ -9,23 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0188 import SecretScanningCustomPattern
+
+class EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneof1(
+    GitHubModel
+):
+    """EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneo
+    f1
+    """
+
+    status: Missing[Literal["error"]] = Field(default=UNSET)
+    error: Missing[str] = Field(default=UNSET)
 
 
-class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201(GitHubModel):
-    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201"""
+model_rebuild(
+    EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneof1
+)
 
-    created_patterns: Missing[list[SecretScanningCustomPattern]] = Field(
-        default=UNSET, description="The list of successfully created custom patterns."
-    )
-
-
-model_rebuild(EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201)
-
-__all__ = ("EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201",)
+__all__ = (
+    "EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneof1",
+)

@@ -12,24 +12,22 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class SimpleClassroomRepository(GitHubModel):
-    """Simple Classroom Repository
+class ActionsCacheRetentionLimitForEnterprise(GitHubModel):
+    """Actions cache retention limit for an enterprise
 
-    A GitHub repository view for Classroom
+    GitHub Actions cache retention policy for an enterprise.
     """
 
-    id: int = Field(description="A unique identifier of the repository.")
-    full_name: str = Field(
-        description="The full, globally unique name of the repository."
+    max_cache_retention_days: Missing[int] = Field(
+        default=UNSET,
+        description="For repositories & organizations in an enterprise, the maximum duration, in days, for which caches in a repository may be retained.",
     )
-    html_url: str = Field(description="The URL to view the repository on GitHub.com.")
-    node_id: str = Field(description="The GraphQL identifier of the repository.")
-    private: bool = Field(description="Whether the repository is private.")
-    default_branch: str = Field(description="The default branch for the repository.")
 
 
-model_rebuild(SimpleClassroomRepository)
+model_rebuild(ActionsCacheRetentionLimitForEnterprise)
 
-__all__ = ("SimpleClassroomRepository",)
+__all__ = ("ActionsCacheRetentionLimitForEnterprise",)

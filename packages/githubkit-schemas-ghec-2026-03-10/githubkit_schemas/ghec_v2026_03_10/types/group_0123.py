@@ -12,32 +12,30 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 from .group_0124 import (
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse,
+    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType,
+    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse,
 )
 
 
-class RepositoryRulesetConditionsRepositoryPropertyTargetType(TypedDict):
-    """Repository ruleset conditions for repository properties
+class EnterpriseRulesetConditionsOrganizationPropertyTargetType(TypedDict):
+    """Repository ruleset conditions for organization properties
 
-    Parameters for a repository property condition
+    Parameters for a organization property condition
     """
 
-    repository_property: (
-        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
-    )
+    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType
 
 
-class RepositoryRulesetConditionsRepositoryPropertyTargetTypeForResponse(TypedDict):
-    """Repository ruleset conditions for repository properties
+class EnterpriseRulesetConditionsOrganizationPropertyTargetTypeForResponse(TypedDict):
+    """Repository ruleset conditions for organization properties
 
-    Parameters for a repository property condition
+    Parameters for a organization property condition
     """
 
-    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse
+    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse
 
 
 __all__ = (
-    "RepositoryRulesetConditionsRepositoryPropertyTargetType",
-    "RepositoryRulesetConditionsRepositoryPropertyTargetTypeForResponse",
+    "EnterpriseRulesetConditionsOrganizationPropertyTargetType",
+    "EnterpriseRulesetConditionsOrganizationPropertyTargetTypeForResponse",
 )

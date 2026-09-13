@@ -9,32 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0191 import (
-    SecretScanningCustomPatternToDeleteType,
-    SecretScanningCustomPatternToDeleteTypeForResponse,
-)
+from .group_0102 import NetworkConfigurationType, NetworkConfigurationTypeForResponse
 
 
-class EnterprisesEnterpriseSecretScanningCustomPatternsDeleteBodyType(TypedDict):
-    """EnterprisesEnterpriseSecretScanningCustomPatternsDeleteBody"""
+class EnterprisesEnterpriseNetworkConfigurationsGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseNetworkConfigurationsGetResponse200"""
 
-    patterns: list[SecretScanningCustomPatternToDeleteType]
-    post_delete_action: NotRequired[Literal["delete_alerts", "resolve_alerts"]]
+    total_count: int
+    network_configurations: list[NetworkConfigurationType]
 
 
-class EnterprisesEnterpriseSecretScanningCustomPatternsDeleteBodyTypeForResponse(
+class EnterprisesEnterpriseNetworkConfigurationsGetResponse200TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseSecretScanningCustomPatternsDeleteBody"""
+    """EnterprisesEnterpriseNetworkConfigurationsGetResponse200"""
 
-    patterns: list[SecretScanningCustomPatternToDeleteTypeForResponse]
-    post_delete_action: NotRequired[Literal["delete_alerts", "resolve_alerts"]]
+    total_count: int
+    network_configurations: list[NetworkConfigurationTypeForResponse]
 
 
 __all__ = (
-    "EnterprisesEnterpriseSecretScanningCustomPatternsDeleteBodyType",
-    "EnterprisesEnterpriseSecretScanningCustomPatternsDeleteBodyTypeForResponse",
+    "EnterprisesEnterpriseNetworkConfigurationsGetResponse200Type",
+    "EnterprisesEnterpriseNetworkConfigurationsGetResponse200TypeForResponse",
 )

@@ -9,20 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Any, Union
+
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class ReleaseEventPropReleaseAllof1(GitHubModel):
-    """ReleaseEventPropReleaseAllof1"""
-
-    is_short_description_html_truncated: Missing[bool] = Field(default=UNSET)
-    short_description_html: Missing[str] = Field(default=UNSET)
+from .group_0003 import SimpleUser
 
 
-model_rebuild(ReleaseEventPropReleaseAllof1)
+class GistSimplePropForkOf(GitHubModel):
+    """Gist
 
-__all__ = ("ReleaseEventPropReleaseAllof1",)
+    Gist
+    """
+
+    url: str = Field()
+    forks_url: str = Field()
+    commits_url: str = Field()
+    id: str = Field()
+    node_id: str = Field()
+    git_pull_url: str = Field()
+    git_push_url: str = Field()
+    html_url: str = Field()
+    files: GistSimplePropForkOfPropFiles = Field()
+    public: bool = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    description: Union[str, None] = Field()
+    comments: int = Field()
+    comments_enabled: Missing[bool] = Field(default=UNSET)
+    user: Union[SimpleUser, None] = Field()
+    comments_url: str = Field()
+    owner: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
+    truncated: Missing[bool] = Field(default=UNSET)
+    forks: Missing[list[Any]] = Field(default=UNSET)
+    history: Missing[list[Any]] = Field(default=UNSET)
+
+
+class GistSimplePropForkOfPropFiles(ExtraGitHubModel):
+    """GistSimplePropForkOfPropFiles"""
+
+
+model_rebuild(GistSimplePropForkOf)
+model_rebuild(GistSimplePropForkOfPropFiles)
+
+__all__ = (
+    "GistSimplePropForkOf",
+    "GistSimplePropForkOfPropFiles",
+)

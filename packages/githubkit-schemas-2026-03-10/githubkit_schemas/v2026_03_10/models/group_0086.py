@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -18,34 +17,30 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
+from .group_0087 import (
+    MarketplacePurchasePropMarketplacePendingChange,
+    MarketplacePurchasePropMarketplacePurchase,
+)
 
 
-class GistCommit(GitHubModel):
-    """Gist Commit
+class MarketplacePurchase(GitHubModel):
+    """Marketplace Purchase
 
-    Gist Commit
+    Marketplace Purchase
     """
 
     url: str = Field()
-    version: str = Field()
-    user: Union[SimpleUser, None] = Field()
-    change_status: GistCommitPropChangeStatus = Field()
-    committed_at: _dt.datetime = Field()
+    type: str = Field()
+    id: int = Field()
+    login: str = Field()
+    organization_billing_email: Missing[str] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    marketplace_pending_change: Missing[
+        Union[MarketplacePurchasePropMarketplacePendingChange, None]
+    ] = Field(default=UNSET)
+    marketplace_purchase: MarketplacePurchasePropMarketplacePurchase = Field()
 
 
-class GistCommitPropChangeStatus(GitHubModel):
-    """GistCommitPropChangeStatus"""
+model_rebuild(MarketplacePurchase)
 
-    total: Missing[int] = Field(default=UNSET)
-    additions: Missing[int] = Field(default=UNSET)
-    deletions: Missing[int] = Field(default=UNSET)
-
-
-model_rebuild(GistCommit)
-model_rebuild(GistCommitPropChangeStatus)
-
-__all__ = (
-    "GistCommit",
-    "GistCommitPropChangeStatus",
-)
+__all__ = ("MarketplacePurchase",)

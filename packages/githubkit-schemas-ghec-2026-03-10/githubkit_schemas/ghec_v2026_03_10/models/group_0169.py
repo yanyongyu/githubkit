@@ -15,20 +15,22 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class RepositoryRuleCopilotCodeReviewPropParameters(GitHubModel):
-    """RepositoryRuleCopilotCodeReviewPropParameters"""
-
-    review_draft_pull_requests: Missing[bool] = Field(
-        default=UNSET,
-        description="Copilot automatically reviews draft pull requests before they are marked as ready for review.",
-    )
-    review_on_push: Missing[bool] = Field(
-        default=UNSET,
-        description="Copilot automatically reviews each new push to the pull request.",
-    )
+from .group_0116 import (
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName,
+)
+from .group_0118 import RepositoryRulesetConditionsPropRefName
 
 
-model_rebuild(RepositoryRuleCopilotCodeReviewPropParameters)
+class OrgRulesetConditionsOneof0(GitHubModel):
+    """repository_name_and_ref_name
 
-__all__ = ("RepositoryRuleCopilotCodeReviewPropParameters",)
+    Conditions to target repositories by name and refs by name
+    """
+
+    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
+    repository_name: RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName = Field()
+
+
+model_rebuild(OrgRulesetConditionsOneof0)
+
+__all__ = ("OrgRulesetConditionsOneof0",)

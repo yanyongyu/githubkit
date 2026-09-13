@@ -14,20 +14,22 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ActionsForkPrContributorApproval(GitHubModel):
-    """ActionsForkPrContributorApproval"""
+class SelfHostedRunnersSettings(GitHubModel):
+    """SelfHostedRunnersSettings"""
 
-    approval_policy: Literal[
-        "first_time_contributors_new_to_github",
-        "first_time_contributors",
-        "all_external_contributors",
-    ] = Field(
-        description="The policy that controls when fork PR workflows require approval from a maintainer."
+    enabled_repositories: Literal["all", "selected", "none"] = Field(
+        description="The policy that controls whether self-hosted runners can be used by repositories in the organization"
+    )
+    selected_repositories_url: Missing[str] = Field(
+        default=UNSET,
+        description="The URL to the endpoint for managing selected repositories for self-hosted runners in the organization",
     )
 
 
-model_rebuild(ActionsForkPrContributorApproval)
+model_rebuild(SelfHostedRunnersSettings)
 
-__all__ = ("ActionsForkPrContributorApproval",)
+__all__ = ("SelfHostedRunnersSettings",)

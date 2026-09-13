@@ -9,51 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
+
+from .group_0186 import (
+    ProjectsV2FieldIterationConfigurationType,
+    ProjectsV2FieldIterationConfigurationTypeForResponse,
+)
 
 
-class OrgsOrgSecretScanningCustomPatternsPostResponse422Type(TypedDict):
-    """OrgsOrgSecretScanningCustomPatternsPostResponse422"""
+class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3Type(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3"""
 
-    message: NotRequired[str]
-    validation_errors: NotRequired[
-        OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrorsType
-    ]
-
-
-class OrgsOrgSecretScanningCustomPatternsPostResponse422TypeForResponse(TypedDict):
-    """OrgsOrgSecretScanningCustomPatternsPostResponse422"""
-
-    message: NotRequired[str]
-    validation_errors: NotRequired[
-        OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse
-    ]
+    name: str
+    data_type: Literal["iteration"]
+    iteration_configuration: ProjectsV2FieldIterationConfigurationType
 
 
-OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrorsType: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors
+class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3TypeForResponse(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3"""
 
-A map of validation errors keyed by the zero-based index of the pattern that
-failed.
-"""
-
-
-OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors
-
-A map of validation errors keyed by the zero-based index of the pattern that
-failed.
-"""
+    name: str
+    data_type: Literal["iteration"]
+    iteration_configuration: ProjectsV2FieldIterationConfigurationTypeForResponse
 
 
 __all__ = (
-    "OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrorsType",
-    "OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse",
-    "OrgsOrgSecretScanningCustomPatternsPostResponse422Type",
-    "OrgsOrgSecretScanningCustomPatternsPostResponse422TypeForResponse",
+    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3Type",
+    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3TypeForResponse",
 )

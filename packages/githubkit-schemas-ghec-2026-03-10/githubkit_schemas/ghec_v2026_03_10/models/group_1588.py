@@ -16,15 +16,20 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody"""
+class ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody(GitHubModel):
+    """ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody"""
 
-    assignees: Missing[list[str]] = Field(
+    enabled: bool = Field(
+        description="Whether the pull request creation cap is enabled"
+    )
+    max_open_pull_requests: Missing[int] = Field(
+        le=1000.0,
+        ge=1.0,
         default=UNSET,
-        description="Usernames of assignees to remove from an issue. _NOTE: Only users with push access can remove assignees from an issue. Assignees are silently ignored otherwise._",
+        description="The maximum number of open pull requests a user can have at one time",
     )
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody)
+model_rebuild(ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody)
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody",)
+__all__ = ("ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody",)

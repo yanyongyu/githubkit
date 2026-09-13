@@ -12,16 +12,24 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody"""
+class ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody(GitHubModel):
+    """ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody"""
 
-    issue_id: int = Field(
-        description="The id of the issue that blocks the current issue"
+    enabled: bool = Field(
+        description="Whether the pull request creation cap is enabled"
+    )
+    max_open_pull_requests: Missing[int] = Field(
+        le=1000.0,
+        ge=1.0,
+        default=UNSET,
+        description="The maximum number of open pull requests a user can have at one time",
     )
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody)
+model_rebuild(ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody)
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody",)
+__all__ = ("ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody",)

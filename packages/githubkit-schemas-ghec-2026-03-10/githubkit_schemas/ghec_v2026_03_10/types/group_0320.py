@@ -9,37 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class AutoMergeType(TypedDict):
-    """Auto merge
+class PullRequestStackType(TypedDict):
+    """Pull Request Stack
 
-    The status of auto merging a pull request.
+    The stack information associated with a pull request.
     """
 
-    enabled_by: SimpleUserType
-    merge_method: Literal["merge", "squash", "rebase"]
-    commit_title: Union[str, None]
-    commit_message: Union[str, None]
+    base: PullRequestStackPropBaseType
+    size: NotRequired[int]
+    position: NotRequired[int]
+    id: NotRequired[int]
+    number: NotRequired[int]
 
 
-class AutoMergeTypeForResponse(TypedDict):
-    """Auto merge
+class PullRequestStackTypeForResponse(TypedDict):
+    """Pull Request Stack
 
-    The status of auto merging a pull request.
+    The stack information associated with a pull request.
     """
 
-    enabled_by: SimpleUserTypeForResponse
-    merge_method: Literal["merge", "squash", "rebase"]
-    commit_title: Union[str, None]
-    commit_message: Union[str, None]
+    base: PullRequestStackPropBaseTypeForResponse
+    size: NotRequired[int]
+    position: NotRequired[int]
+    id: NotRequired[int]
+    number: NotRequired[int]
+
+
+class PullRequestStackPropBaseType(TypedDict):
+    """PullRequestStackPropBase"""
+
+    ref: str
+    sha: str
+
+
+class PullRequestStackPropBaseTypeForResponse(TypedDict):
+    """PullRequestStackPropBase"""
+
+    ref: str
+    sha: str
 
 
 __all__ = (
-    "AutoMergeType",
-    "AutoMergeTypeForResponse",
+    "PullRequestStackPropBaseType",
+    "PullRequestStackPropBaseTypeForResponse",
+    "PullRequestStackType",
+    "PullRequestStackTypeForResponse",
 )

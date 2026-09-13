@@ -9,56 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
 
-class PullRequestSimplePropHeadType(TypedDict):
-    """PullRequestSimplePropHead"""
+class ProjectsV2DraftIssueType(TypedDict):
+    """Draft Issue
 
-    label: Union[str, None]
-    ref: str
-    repo: Union[RepositoryType, None]
-    sha: str
+    A draft issue in a project
+    """
+
+    id: float
+    node_id: str
+    title: str
+    body: NotRequired[Union[str, None]]
     user: Union[SimpleUserType, None]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-class PullRequestSimplePropHeadTypeForResponse(TypedDict):
-    """PullRequestSimplePropHead"""
+class ProjectsV2DraftIssueTypeForResponse(TypedDict):
+    """Draft Issue
 
-    label: Union[str, None]
-    ref: str
-    repo: Union[RepositoryTypeForResponse, None]
-    sha: str
+    A draft issue in a project
+    """
+
+    id: float
+    node_id: str
+    title: str
+    body: NotRequired[Union[str, None]]
     user: Union[SimpleUserTypeForResponse, None]
-
-
-class PullRequestSimplePropBaseType(TypedDict):
-    """PullRequestSimplePropBase"""
-
-    label: str
-    ref: str
-    repo: RepositoryType
-    sha: str
-    user: Union[SimpleUserType, None]
-
-
-class PullRequestSimplePropBaseTypeForResponse(TypedDict):
-    """PullRequestSimplePropBase"""
-
-    label: str
-    ref: str
-    repo: RepositoryTypeForResponse
-    sha: str
-    user: Union[SimpleUserTypeForResponse, None]
+    created_at: str
+    updated_at: str
 
 
 __all__ = (
-    "PullRequestSimplePropBaseType",
-    "PullRequestSimplePropBaseTypeForResponse",
-    "PullRequestSimplePropHeadType",
-    "PullRequestSimplePropHeadTypeForResponse",
+    "ProjectsV2DraftIssueType",
+    "ProjectsV2DraftIssueTypeForResponse",
 )

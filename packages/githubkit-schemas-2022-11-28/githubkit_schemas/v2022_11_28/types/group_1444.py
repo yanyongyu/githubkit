@@ -12,25 +12,21 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoReleasesGenerateNotesPostBodyType(TypedDict):
-    """ReposOwnerRepoReleasesGenerateNotesPostBody"""
+class ReposOwnerRepoPullsPullNumberMergePutResponse409Type(TypedDict):
+    """ReposOwnerRepoPullsPullNumberMergePutResponse409"""
 
-    tag_name: str
-    target_commitish: NotRequired[str]
-    previous_tag_name: NotRequired[str]
-    configuration_file_path: NotRequired[str]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
-class ReposOwnerRepoReleasesGenerateNotesPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoReleasesGenerateNotesPostBody"""
+class ReposOwnerRepoPullsPullNumberMergePutResponse409TypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPullNumberMergePutResponse409"""
 
-    tag_name: str
-    target_commitish: NotRequired[str]
-    previous_tag_name: NotRequired[str]
-    configuration_file_path: NotRequired[str]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoReleasesGenerateNotesPostBodyType",
-    "ReposOwnerRepoReleasesGenerateNotesPostBodyTypeForResponse",
+    "ReposOwnerRepoPullsPullNumberMergePutResponse409Type",
+    "ReposOwnerRepoPullsPullNumberMergePutResponse409TypeForResponse",
 )

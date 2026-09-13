@@ -9,23 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0188 import SecretScanningCustomPattern
+from .group_0328 import ProjectsV2FieldIterationConfiguration
 
 
-class OrgsOrgSecretScanningCustomPatternsPostResponse201(GitHubModel):
-    """OrgsOrgSecretScanningCustomPatternsPostResponse201"""
+class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3(GitHubModel):
+    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3"""
 
-    created_patterns: Missing[list[SecretScanningCustomPattern]] = Field(
-        default=UNSET, description="The list of successfully created custom patterns."
+    name: str = Field(description="The name of the field.")
+    data_type: Literal["iteration"] = Field(description="The field's data type.")
+    iteration_configuration: ProjectsV2FieldIterationConfiguration = Field(
+        description="The configuration for iteration fields."
     )
 
 
-model_rebuild(OrgsOrgSecretScanningCustomPatternsPostResponse201)
+model_rebuild(OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3)
 
-__all__ = ("OrgsOrgSecretScanningCustomPatternsPostResponse201",)
+__all__ = ("OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3",)

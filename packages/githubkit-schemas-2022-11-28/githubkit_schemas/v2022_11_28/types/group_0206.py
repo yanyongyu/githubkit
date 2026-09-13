@@ -11,41 +11,39 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0199 import (
+from .group_0197 import (
     RepositoryRulesetConditionsPropRefNameType,
     RepositoryRulesetConditionsPropRefNameTypeForResponse,
 )
-from .group_0201 import (
-    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
-    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse,
+from .group_0203 import (
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse,
 )
 
 
-class OrgRulesetConditionsOneof0Type(TypedDict):
-    """repository_name_and_ref_name
+class OrgRulesetConditionsOneof2Type(TypedDict):
+    """repository_property_and_ref_name
 
-    Conditions to target repositories by name and refs by name
+    Conditions to target repositories by property and refs by name
     """
 
     ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
-    repository_name: (
-        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
+    repository_property: (
+        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
     )
 
 
-class OrgRulesetConditionsOneof0TypeForResponse(TypedDict):
-    """repository_name_and_ref_name
+class OrgRulesetConditionsOneof2TypeForResponse(TypedDict):
+    """repository_property_and_ref_name
 
-    Conditions to target repositories by name and refs by name
+    Conditions to target repositories by property and refs by name
     """
 
     ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
-    repository_name: (
-        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse
-    )
+    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse
 
 
 __all__ = (
-    "OrgRulesetConditionsOneof0Type",
-    "OrgRulesetConditionsOneof0TypeForResponse",
+    "OrgRulesetConditionsOneof2Type",
+    "OrgRulesetConditionsOneof2TypeForResponse",
 )

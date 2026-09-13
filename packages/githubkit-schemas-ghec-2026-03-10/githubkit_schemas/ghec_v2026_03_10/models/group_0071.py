@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,143 +17,63 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0069 import BypassResponse
+from .group_0070 import CodeScanningAlertLocation
 
 
-class SecretScanningBypassRequest(GitHubModel):
-    """Secret scanning bypass request
+class CodeScanningAlertInstance(GitHubModel):
+    """CodeScanningAlertInstance"""
 
-    A bypass request made by a user asking to be exempted from push protection in
-    this repository.
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the bypass request."
-    )
-    number: Missing[int] = Field(
+    ref: Missing[str] = Field(
         default=UNSET,
-        description="The number uniquely identifying the bypass request within its repository.",
+        description="The Git reference, formatted as `refs/pull/<number>/merge`, `refs/pull/<number>/head`,\n`refs/heads/<branch name>` or simply `<branch name>`.",
     )
-    repository: Missing[SecretScanningBypassRequestPropRepository] = Field(
-        default=UNSET, description="The repository the bypass request is for."
-    )
-    organization: Missing[SecretScanningBypassRequestPropOrganization] = Field(
+    analysis_key: Missing[str] = Field(
         default=UNSET,
-        description="The organization associated with the repository the bypass request is for.",
+        description="Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name.",
     )
-    requester: Missing[SecretScanningBypassRequestPropRequester] = Field(
-        default=UNSET, description="The user who requested the bypass."
-    )
-    request_type: Missing[str] = Field(
-        default=UNSET, description="The type of request."
-    )
-    data: Missing[Union[list[SecretScanningBypassRequestPropDataItems], None]] = Field(
+    environment: Missing[str] = Field(
         default=UNSET,
-        description="Data describing the push rules that are being requested to be bypassed.",
+        description="Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed.",
     )
-    resource_identifier: Missing[str] = Field(
+    category: Missing[str] = Field(
         default=UNSET,
-        description="The unique identifier for the request type of the bypass request. For example, a commit SHA.",
+        description="Identifies the configuration under which the analysis was executed. Used to distinguish between multiple analyses for the same tool and commit, but performed on different languages or different parts of the code.",
     )
-    status: Missing[
-        Literal[
-            "pending", "denied", "approved", "cancelled", "completed", "expired", "open"
+    state: Missing[Union[Literal["open", "dismissed", "fixed"], None]] = Field(
+        default=UNSET, description="State of a code scanning alert."
+    )
+    commit_sha: Missing[str] = Field(default=UNSET)
+    message: Missing[CodeScanningAlertInstancePropMessage] = Field(default=UNSET)
+    location: Missing[CodeScanningAlertLocation] = Field(
+        default=UNSET, description="Describe a region within a file for the alert."
+    )
+    html_url: Missing[str] = Field(default=UNSET)
+    classifications: Missing[
+        list[
+            Union[
+                Literal["source", "generated", "test", "library", "documentation"], None
+            ]
         ]
-    ] = Field(default=UNSET, description="The status of the bypass request.")
-    requester_comment: Missing[Union[str, None]] = Field(
+    ] = Field(
         default=UNSET,
-        description="The comment the requester provided when creating the bypass request.",
-    )
-    expires_at: Missing[_dt.datetime] = Field(
-        default=UNSET, description="The date and time the bypass request will expire."
-    )
-    created_at: Missing[_dt.datetime] = Field(
-        default=UNSET, description="The date and time the bypass request was created."
-    )
-    responses: Missing[Union[list[BypassResponse], None]] = Field(
-        default=UNSET, description="The responses to the bypass request."
-    )
-    url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(
-        default=UNSET, description="The URL to view the bypass request in a browser."
+        description="Classifications that have been applied to the file that triggered the alert.\nFor example identifying it as documentation, or a generated file.",
     )
 
 
-class SecretScanningBypassRequestPropRepository(GitHubModel):
-    """SecretScanningBypassRequestPropRepository
+class CodeScanningAlertInstancePropMessage(GitHubModel):
+    """CodeScanningAlertInstancePropMessage"""
 
-    The repository the bypass request is for.
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The ID of the repository the bypass request is for."
-    )
-    name: Missing[str] = Field(
+    text: Missing[str] = Field(default=UNSET)
+    markdown: Missing[str] = Field(
         default=UNSET,
-        description="The name of the repository the bypass request is for.",
-    )
-    full_name: Missing[str] = Field(
-        default=UNSET,
-        description="The full name of the repository the bypass request is for.",
+        description="The message text as GitHub-flavored Markdown, with placeholder links for related locations replaced by links to the relevant code. Only populated when related locations are available for the alert instance.",
     )
 
 
-class SecretScanningBypassRequestPropOrganization(GitHubModel):
-    """SecretScanningBypassRequestPropOrganization
-
-    The organization associated with the repository the bypass request is for.
-    """
-
-    id: Missing[int] = Field(default=UNSET, description="The ID of the organization.")
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the organization."
-    )
-
-
-class SecretScanningBypassRequestPropRequester(GitHubModel):
-    """SecretScanningBypassRequestPropRequester
-
-    The user who requested the bypass.
-    """
-
-    actor_id: Missing[int] = Field(
-        default=UNSET, description="The ID of the GitHub user who requested the bypass."
-    )
-    actor_name: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the GitHub user who requested the bypass.",
-    )
-
-
-class SecretScanningBypassRequestPropDataItems(GitHubModel):
-    """SecretScanningBypassRequestPropDataItems"""
-
-    secret_type: Missing[str] = Field(
-        default=UNSET, description="The type of secret that secret scanning detected."
-    )
-    bypass_reason: Missing[Literal["used_in_tests", "false_positive", "fix_later"]] = (
-        Field(default=UNSET, description="The reason the bypass was requested.")
-    )
-    path: Missing[str] = Field(
-        default=UNSET,
-        description="The path in the repo where the secret was located during the request.",
-    )
-    branch: Missing[str] = Field(
-        default=UNSET,
-        description="The branch in the repo where the secret was located during the request.",
-    )
-
-
-model_rebuild(SecretScanningBypassRequest)
-model_rebuild(SecretScanningBypassRequestPropRepository)
-model_rebuild(SecretScanningBypassRequestPropOrganization)
-model_rebuild(SecretScanningBypassRequestPropRequester)
-model_rebuild(SecretScanningBypassRequestPropDataItems)
+model_rebuild(CodeScanningAlertInstance)
+model_rebuild(CodeScanningAlertInstancePropMessage)
 
 __all__ = (
-    "SecretScanningBypassRequest",
-    "SecretScanningBypassRequestPropDataItems",
-    "SecretScanningBypassRequestPropOrganization",
-    "SecretScanningBypassRequestPropRepository",
-    "SecretScanningBypassRequestPropRequester",
+    "CodeScanningAlertInstance",
+    "CodeScanningAlertInstancePropMessage",
 )

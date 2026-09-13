@@ -9,26 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class RepositoryRuleCopilotCodeReviewPropParameters(GitHubModel):
-    """RepositoryRuleCopilotCodeReviewPropParameters"""
+class RepositoryRuleLicenseComplianceScanning(GitHubModel):
+    """license_compliance_scanning
 
-    review_draft_pull_requests: Missing[bool] = Field(
-        default=UNSET,
-        description="Copilot automatically reviews draft pull requests before they are marked as ready for review.",
-    )
-    review_on_push: Missing[bool] = Field(
-        default=UNSET,
-        description="Copilot automatically reviews each new push to the pull request.",
-    )
+    Enforce any added or changed dependencies to comply with the organization's
+    license policy.
+    """
+
+    type: Literal["license_compliance_scanning"] = Field()
 
 
-model_rebuild(RepositoryRuleCopilotCodeReviewPropParameters)
+model_rebuild(RepositoryRuleLicenseComplianceScanning)
 
-__all__ = ("RepositoryRuleCopilotCodeReviewPropParameters",)
+__all__ = ("RepositoryRuleLicenseComplianceScanning",)

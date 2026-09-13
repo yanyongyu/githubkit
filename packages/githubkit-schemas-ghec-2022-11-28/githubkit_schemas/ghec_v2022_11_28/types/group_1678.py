@@ -9,115 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing_extensions import TypedDict
+
+from .group_0574 import (
+    PullRequestStackPullRequestType,
+    PullRequestStackPullRequestTypeForResponse,
+)
 
 
-class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyType(TypedDict):
-    """ScimV2OrganizationsOrgUsersScimUserIdPatchBody"""
+class ReposOwnerRepoStacksStackNumberAddPostResponse200Type(TypedDict):
+    """ReposOwnerRepoStacksStackNumberAddPostResponse200"""
 
-    schemas: NotRequired[list[str]]
-    operations: list[
-        ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsType
-    ]
-
-
-class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyTypeForResponse(TypedDict):
-    """ScimV2OrganizationsOrgUsersScimUserIdPatchBody"""
-
-    schemas: NotRequired[list[str]]
-    operations: list[
-        ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsTypeForResponse
-    ]
+    id: int
+    number: int
+    node_id: str
+    url: str
+    base: ReposOwnerRepoStacksStackNumberAddPostResponse200PropBaseType
+    open_: bool
+    created_at: _dt.datetime
+    pull_requests: list[PullRequestStackPullRequestType]
 
 
-class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsType(TypedDict):
-    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems"""
+class ReposOwnerRepoStacksStackNumberAddPostResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoStacksStackNumberAddPostResponse200"""
 
-    op: Literal["add", "remove", "replace"]
-    path: NotRequired[str]
-    value: NotRequired[
-        Union[
-            ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0Type,
-            list[
-                ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1ItemsType
-            ],
-            str,
-        ]
-    ]
+    id: int
+    number: int
+    node_id: str
+    url: str
+    base: ReposOwnerRepoStacksStackNumberAddPostResponse200PropBaseTypeForResponse
+    open_: bool
+    created_at: str
+    pull_requests: list[PullRequestStackPullRequestTypeForResponse]
 
 
-class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsTypeForResponse(
+class ReposOwnerRepoStacksStackNumberAddPostResponse200PropBaseType(TypedDict):
+    """ReposOwnerRepoStacksStackNumberAddPostResponse200PropBase"""
+
+    ref: str
+
+
+class ReposOwnerRepoStacksStackNumberAddPostResponse200PropBaseTypeForResponse(
     TypedDict
 ):
-    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems"""
+    """ReposOwnerRepoStacksStackNumberAddPostResponse200PropBase"""
 
-    op: Literal["add", "remove", "replace"]
-    path: NotRequired[str]
-    value: NotRequired[
-        Union[
-            ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0TypeForResponse,
-            list[
-                ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1ItemsTypeForResponse
-            ],
-            str,
-        ]
-    ]
-
-
-class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0Type(
-    TypedDict
-):
-    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0"""
-
-    active: NotRequired[Union[bool, None]]
-    user_name: NotRequired[Union[str, None]]
-    external_id: NotRequired[Union[str, None]]
-    given_name: NotRequired[Union[str, None]]
-    family_name: NotRequired[Union[str, None]]
-
-
-class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0TypeForResponse(
-    TypedDict
-):
-    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0"""
-
-    active: NotRequired[Union[bool, None]]
-    user_name: NotRequired[Union[str, None]]
-    external_id: NotRequired[Union[str, None]]
-    given_name: NotRequired[Union[str, None]]
-    family_name: NotRequired[Union[str, None]]
-
-
-class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1ItemsType(
-    TypedDict
-):
-    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1
-    Items
-    """
-
-    value: NotRequired[str]
-    primary: NotRequired[bool]
-
-
-class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1ItemsTypeForResponse(
-    TypedDict
-):
-    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1
-    Items
-    """
-
-    value: NotRequired[str]
-    primary: NotRequired[bool]
+    ref: str
 
 
 __all__ = (
-    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0Type",
-    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0TypeForResponse",
-    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1ItemsType",
-    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1ItemsTypeForResponse",
-    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsType",
-    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsTypeForResponse",
-    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyType",
-    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyTypeForResponse",
+    "ReposOwnerRepoStacksStackNumberAddPostResponse200PropBaseType",
+    "ReposOwnerRepoStacksStackNumberAddPostResponse200PropBaseTypeForResponse",
+    "ReposOwnerRepoStacksStackNumberAddPostResponse200Type",
+    "ReposOwnerRepoStacksStackNumberAddPostResponse200TypeForResponse",
 )

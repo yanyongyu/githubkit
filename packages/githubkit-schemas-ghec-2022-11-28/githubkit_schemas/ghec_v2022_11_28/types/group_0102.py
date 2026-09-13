@@ -9,35 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class ExternalVulnerabilitySyncAcceptedType(TypedDict):
-    """External Vulnerability Sync Accepted
+class NetworkConfigurationType(TypedDict):
+    """Hosted compute network configuration
 
-    Response when an external vulnerability sync request is accepted for
-    asynchronous processing
+    A hosted compute network configuration.
     """
 
     id: str
-    url: str
-    status: Literal["queued"]
+    name: str
+    compute_service: NotRequired[Literal["none", "actions", "codespaces"]]
+    network_settings_ids: NotRequired[list[str]]
+    failover_network_settings_ids: NotRequired[list[str]]
+    failover_network_enabled: NotRequired[bool]
+    created_on: Union[_dt.datetime, None]
 
 
-class ExternalVulnerabilitySyncAcceptedTypeForResponse(TypedDict):
-    """External Vulnerability Sync Accepted
+class NetworkConfigurationTypeForResponse(TypedDict):
+    """Hosted compute network configuration
 
-    Response when an external vulnerability sync request is accepted for
-    asynchronous processing
+    A hosted compute network configuration.
     """
 
     id: str
-    url: str
-    status: Literal["queued"]
+    name: str
+    compute_service: NotRequired[Literal["none", "actions", "codespaces"]]
+    network_settings_ids: NotRequired[list[str]]
+    failover_network_settings_ids: NotRequired[list[str]]
+    failover_network_enabled: NotRequired[bool]
+    created_on: Union[str, None]
 
 
 __all__ = (
-    "ExternalVulnerabilitySyncAcceptedType",
-    "ExternalVulnerabilitySyncAcceptedTypeForResponse",
+    "NetworkConfigurationType",
+    "NetworkConfigurationTypeForResponse",
 )

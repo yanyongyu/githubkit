@@ -9,63 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseActionsHostedRunnersPostBodyType(TypedDict):
-    """EnterprisesEnterpriseActionsHostedRunnersPostBody"""
+class AppHookConfigPatchBodyType(TypedDict):
+    """AppHookConfigPatchBody"""
 
-    name: str
-    image: EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImageType
-    size: str
-    runner_group_id: int
-    maximum_runners: NotRequired[int]
-    enable_static_ip: NotRequired[bool]
-    image_gen: NotRequired[bool]
+    url: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
 
 
-class EnterprisesEnterpriseActionsHostedRunnersPostBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseActionsHostedRunnersPostBody"""
+class AppHookConfigPatchBodyTypeForResponse(TypedDict):
+    """AppHookConfigPatchBody"""
 
-    name: str
-    image: EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImageTypeForResponse
-    size: str
-    runner_group_id: int
-    maximum_runners: NotRequired[int]
-    enable_static_ip: NotRequired[bool]
-    image_gen: NotRequired[bool]
-
-
-class EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImageType(TypedDict):
-    """EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImage
-
-    The image of runner. To list all available images, use `GET /actions/hosted-
-    runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`.
-    """
-
-    id: NotRequired[str]
-    source: NotRequired[Literal["github", "partner", "custom"]]
-    version: NotRequired[Union[str, None]]
-
-
-class EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImageTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImage
-
-    The image of runner. To list all available images, use `GET /actions/hosted-
-    runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`.
-    """
-
-    id: NotRequired[str]
-    source: NotRequired[Literal["github", "partner", "custom"]]
-    version: NotRequired[Union[str, None]]
+    url: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImageType",
-    "EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImageTypeForResponse",
-    "EnterprisesEnterpriseActionsHostedRunnersPostBodyType",
-    "EnterprisesEnterpriseActionsHostedRunnersPostBodyTypeForResponse",
+    "AppHookConfigPatchBodyType",
+    "AppHookConfigPatchBodyTypeForResponse",
 )

@@ -9,29 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody(GitHubModel):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody"""
+class OrgsOrgAttestationsDeleteRequestPostBodyOneof0(GitHubModel):
+    """OrgsOrgAttestationsDeleteRequestPostBodyOneof0"""
 
-    scope: Literal[
-        "all", "all_without_configurations", "public", "private_or_internal", "selected"
-    ] = Field(
-        description="The type of repositories to attach the configuration to. `selected` means the configuration will be attached to only the repositories specified by `selected_repository_ids`"
-    )
-    selected_repository_ids: Missing[list[int]] = Field(
-        default=UNSET,
-        description="An array of repository IDs to attach the configuration to. You can only provide a list of repository ids when the `scope` is set to `selected`.",
+    subject_digests: list[str] = Field(
+        max_length=1024 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="List of subject digests associated with the artifact attestations to delete.",
     )
 
 
-model_rebuild(OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody)
+model_rebuild(OrgsOrgAttestationsDeleteRequestPostBodyOneof0)
 
-__all__ = ("OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody",)
+__all__ = ("OrgsOrgAttestationsDeleteRequestPostBodyOneof0",)

@@ -9,531 +9,337 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0538 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0539 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0540 import (
+from .group_0541 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0542 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0543 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0541 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0544 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0545 import WebhooksRuleType, WebhooksRuleTypeForResponse
 
 
-class WebhookCheckSuiteCompletedType(TypedDict):
-    """check_suite completed event"""
+class WebhookBranchProtectionRuleEditedType(TypedDict):
+    """branch protection rule edited event"""
 
-    action: Literal["completed"]
-    check_suite: WebhookCheckSuiteCompletedPropCheckSuiteType
+    action: Literal["edited"]
+    changes: NotRequired[WebhookBranchProtectionRuleEditedPropChangesType]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
+    rule: WebhooksRuleType
     sender: SimpleUserType
 
 
-class WebhookCheckSuiteCompletedTypeForResponse(TypedDict):
-    """check_suite completed event"""
+class WebhookBranchProtectionRuleEditedTypeForResponse(TypedDict):
+    """branch protection rule edited event"""
 
-    action: Literal["completed"]
-    check_suite: WebhookCheckSuiteCompletedPropCheckSuiteTypeForResponse
+    action: Literal["edited"]
+    changes: NotRequired[WebhookBranchProtectionRuleEditedPropChangesTypeForResponse]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
+    rule: WebhooksRuleTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
-class WebhookCheckSuiteCompletedPropCheckSuiteType(TypedDict):
-    """WebhookCheckSuiteCompletedPropCheckSuite
+class WebhookBranchProtectionRuleEditedPropChangesType(TypedDict):
+    """WebhookBranchProtectionRuleEditedPropChanges
 
-    The [check_suite](https://docs.github.com/rest/checks/suites#get-a-check-suite).
+    If the action was `edited`, the changes to the rule.
     """
 
-    after: Union[str, None]
-    app: WebhookCheckSuiteCompletedPropCheckSuitePropAppType
-    before: Union[str, None]
-    check_runs_url: str
-    conclusion: Union[
-        Literal[
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "timed_out",
-            "action_required",
-            "stale",
-            "skipped",
-            "startup_failure",
-        ],
-        None,
+    admin_enforced: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforcedType
     ]
-    created_at: _dt.datetime
-    head_branch: Union[str, None]
-    head_commit: WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitType
-    head_sha: str
-    id: int
-    latest_check_runs_count: int
-    node_id: str
-    pull_requests: list[
-        WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsType
+    authorized_actor_names: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNamesType
     ]
-    rerequestable: NotRequired[bool]
-    runs_rerequestable: NotRequired[bool]
-    status: Union[
-        Literal["requested", "in_progress", "completed", "queued", "pending"], None
+    authorized_actors_only: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnlyType
     ]
-    updated_at: _dt.datetime
-    url: str
-
-
-class WebhookCheckSuiteCompletedPropCheckSuiteTypeForResponse(TypedDict):
-    """WebhookCheckSuiteCompletedPropCheckSuite
-
-    The [check_suite](https://docs.github.com/rest/checks/suites#get-a-check-suite).
-    """
-
-    after: Union[str, None]
-    app: WebhookCheckSuiteCompletedPropCheckSuitePropAppTypeForResponse
-    before: Union[str, None]
-    check_runs_url: str
-    conclusion: Union[
-        Literal[
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "timed_out",
-            "action_required",
-            "stale",
-            "skipped",
-            "startup_failure",
-        ],
-        None,
+    authorized_dismissal_actors_only: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnlyType
     ]
-    created_at: str
-    head_branch: Union[str, None]
-    head_commit: WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitTypeForResponse
-    head_sha: str
-    id: int
-    latest_check_runs_count: int
-    node_id: str
-    pull_requests: list[
-        WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsTypeForResponse
+    linear_history_requirement_enforcement_level: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevelType
     ]
-    rerequestable: NotRequired[bool]
-    runs_rerequestable: NotRequired[bool]
-    status: Union[
-        Literal["requested", "in_progress", "completed", "queued", "pending"], None
+    lock_branch_enforcement_level: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevelType
     ]
-    updated_at: str
-    url: str
-
-
-class WebhookCheckSuiteCompletedPropCheckSuitePropAppType(TypedDict):
-    """App
-
-    GitHub apps are a new way to extend GitHub. They can be installed directly on
-    organizations and user accounts and granted access to specific repositories.
-    They come with granular permissions and built-in webhooks. GitHub apps are first
-    class actors within GitHub.
-    """
-
-    created_at: Union[_dt.datetime, None]
-    description: Union[str, None]
-    events: NotRequired[list[str]]
-    external_url: Union[str, None]
-    html_url: str
-    id: Union[int, None]
-    client_id: NotRequired[Union[str, None]]
-    name: str
-    node_id: str
-    owner: Union[WebhookCheckSuiteCompletedPropCheckSuitePropAppPropOwnerType, None]
-    permissions: NotRequired[
-        WebhookCheckSuiteCompletedPropCheckSuitePropAppPropPermissionsType
+    lock_allows_fork_sync: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSyncType
     ]
-    slug: NotRequired[str]
-    updated_at: Union[_dt.datetime, None]
-
-
-class WebhookCheckSuiteCompletedPropCheckSuitePropAppTypeForResponse(TypedDict):
-    """App
-
-    GitHub apps are a new way to extend GitHub. They can be installed directly on
-    organizations and user accounts and granted access to specific repositories.
-    They come with granular permissions and built-in webhooks. GitHub apps are first
-    class actors within GitHub.
-    """
-
-    created_at: Union[str, None]
-    description: Union[str, None]
-    events: NotRequired[list[str]]
-    external_url: Union[str, None]
-    html_url: str
-    id: Union[int, None]
-    client_id: NotRequired[Union[str, None]]
-    name: str
-    node_id: str
-    owner: Union[
-        WebhookCheckSuiteCompletedPropCheckSuitePropAppPropOwnerTypeForResponse, None
+    pull_request_reviews_enforcement_level: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevelType
     ]
-    permissions: NotRequired[
-        WebhookCheckSuiteCompletedPropCheckSuitePropAppPropPermissionsTypeForResponse
+    require_last_push_approval: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApprovalType
     ]
-    slug: NotRequired[str]
-    updated_at: Union[str, None]
+    required_status_checks: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksType
+    ]
+    required_status_checks_enforcement_level: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevelType
+    ]
 
 
-class WebhookCheckSuiteCompletedPropCheckSuitePropAppPropOwnerType(TypedDict):
-    """User"""
+class WebhookBranchProtectionRuleEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookBranchProtectionRuleEditedPropChanges
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookCheckSuiteCompletedPropCheckSuitePropAppPropOwnerTypeForResponse(
-    TypedDict
-):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookCheckSuiteCompletedPropCheckSuitePropAppPropPermissionsType(TypedDict):
-    """WebhookCheckSuiteCompletedPropCheckSuitePropAppPropPermissions
-
-    The set of permissions for the GitHub app
+    If the action was `edited`, the changes to the rule.
     """
 
-    actions: NotRequired[Literal["read", "write"]]
-    administration: NotRequired[Literal["read", "write"]]
-    checks: NotRequired[Literal["read", "write"]]
-    content_references: NotRequired[Literal["read", "write"]]
-    contents: NotRequired[Literal["read", "write"]]
-    deployments: NotRequired[Literal["read", "write"]]
-    discussions: NotRequired[Literal["read", "write"]]
-    emails: NotRequired[Literal["read", "write"]]
-    environments: NotRequired[Literal["read", "write"]]
-    issues: NotRequired[Literal["read", "write"]]
-    keys: NotRequired[Literal["read", "write"]]
-    members: NotRequired[Literal["read", "write"]]
-    metadata: NotRequired[Literal["read", "write"]]
-    organization_administration: NotRequired[Literal["read", "write"]]
-    organization_hooks: NotRequired[Literal["read", "write"]]
-    organization_packages: NotRequired[Literal["read", "write"]]
-    organization_plan: NotRequired[Literal["read", "write"]]
-    organization_projects: NotRequired[Literal["read", "write", "admin"]]
-    organization_secrets: NotRequired[Literal["read", "write"]]
-    organization_self_hosted_runners: NotRequired[Literal["read", "write"]]
-    organization_user_blocking: NotRequired[Literal["read", "write"]]
-    packages: NotRequired[Literal["read", "write"]]
-    pages: NotRequired[Literal["read", "write"]]
-    pull_requests: NotRequired[Literal["read", "write"]]
-    repository_hooks: NotRequired[Literal["read", "write"]]
-    repository_projects: NotRequired[Literal["read", "write", "admin"]]
-    secret_scanning_alerts: NotRequired[Literal["read", "write"]]
-    secrets: NotRequired[Literal["read", "write"]]
-    security_events: NotRequired[Literal["read", "write"]]
-    security_scanning_alert: NotRequired[Literal["read", "write"]]
-    single_file: NotRequired[Literal["read", "write"]]
-    statuses: NotRequired[Literal["read", "write"]]
-    vulnerability_alerts: NotRequired[Literal["read", "write"]]
-    workflows: NotRequired[Literal["read", "write"]]
+    admin_enforced: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforcedTypeForResponse
+    ]
+    authorized_actor_names: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNamesTypeForResponse
+    ]
+    authorized_actors_only: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnlyTypeForResponse
+    ]
+    authorized_dismissal_actors_only: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnlyTypeForResponse
+    ]
+    linear_history_requirement_enforcement_level: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevelTypeForResponse
+    ]
+    lock_branch_enforcement_level: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevelTypeForResponse
+    ]
+    lock_allows_fork_sync: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSyncTypeForResponse
+    ]
+    pull_request_reviews_enforcement_level: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevelTypeForResponse
+    ]
+    require_last_push_approval: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApprovalTypeForResponse
+    ]
+    required_status_checks: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksTypeForResponse
+    ]
+    required_status_checks_enforcement_level: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevelTypeForResponse
+    ]
 
 
-class WebhookCheckSuiteCompletedPropCheckSuitePropAppPropPermissionsTypeForResponse(
+class WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforcedType(TypedDict):
+    """WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforced"""
+
+    from_: Union[bool, None]
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforcedTypeForResponse(
     TypedDict
 ):
-    """WebhookCheckSuiteCompletedPropCheckSuitePropAppPropPermissions
+    """WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforced"""
 
-    The set of permissions for the GitHub app
+    from_: Union[bool, None]
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNamesType(
+    TypedDict
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNames"""
+
+    from_: list[str]
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNamesTypeForResponse(
+    TypedDict
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNames"""
+
+    from_: list[str]
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnlyType(
+    TypedDict
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly"""
+
+    from_: Union[bool, None]
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnlyTypeForResponse(
+    TypedDict
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly"""
+
+    from_: Union[bool, None]
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnlyType(
+    TypedDict
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnly"""
+
+    from_: Union[bool, None]
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnlyTypeForResponse(
+    TypedDict
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnly"""
+
+    from_: Union[bool, None]
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevelType(
+    TypedDict
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcem
+    entLevel
     """
 
-    actions: NotRequired[Literal["read", "write"]]
-    administration: NotRequired[Literal["read", "write"]]
-    checks: NotRequired[Literal["read", "write"]]
-    content_references: NotRequired[Literal["read", "write"]]
-    contents: NotRequired[Literal["read", "write"]]
-    deployments: NotRequired[Literal["read", "write"]]
-    discussions: NotRequired[Literal["read", "write"]]
-    emails: NotRequired[Literal["read", "write"]]
-    environments: NotRequired[Literal["read", "write"]]
-    issues: NotRequired[Literal["read", "write"]]
-    keys: NotRequired[Literal["read", "write"]]
-    members: NotRequired[Literal["read", "write"]]
-    metadata: NotRequired[Literal["read", "write"]]
-    organization_administration: NotRequired[Literal["read", "write"]]
-    organization_hooks: NotRequired[Literal["read", "write"]]
-    organization_packages: NotRequired[Literal["read", "write"]]
-    organization_plan: NotRequired[Literal["read", "write"]]
-    organization_projects: NotRequired[Literal["read", "write", "admin"]]
-    organization_secrets: NotRequired[Literal["read", "write"]]
-    organization_self_hosted_runners: NotRequired[Literal["read", "write"]]
-    organization_user_blocking: NotRequired[Literal["read", "write"]]
-    packages: NotRequired[Literal["read", "write"]]
-    pages: NotRequired[Literal["read", "write"]]
-    pull_requests: NotRequired[Literal["read", "write"]]
-    repository_hooks: NotRequired[Literal["read", "write"]]
-    repository_projects: NotRequired[Literal["read", "write", "admin"]]
-    secret_scanning_alerts: NotRequired[Literal["read", "write"]]
-    secrets: NotRequired[Literal["read", "write"]]
-    security_events: NotRequired[Literal["read", "write"]]
-    security_scanning_alert: NotRequired[Literal["read", "write"]]
-    single_file: NotRequired[Literal["read", "write"]]
-    statuses: NotRequired[Literal["read", "write"]]
-    vulnerability_alerts: NotRequired[Literal["read", "write"]]
-    workflows: NotRequired[Literal["read", "write"]]
+    from_: Literal["off", "non_admins", "everyone"]
 
 
-class WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitType(TypedDict):
-    """SimpleCommit"""
-
-    author: WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitPropAuthorType
-    committer: WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitPropCommitterType
-    id: str
-    message: str
-    timestamp: str
-    tree_id: str
-
-
-class WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitTypeForResponse(TypedDict):
-    """SimpleCommit"""
-
-    author: (
-        WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitPropAuthorTypeForResponse
-    )
-    committer: WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitPropCommitterTypeForResponse
-    id: str
-    message: str
-    timestamp: str
-    tree_id: str
-
-
-class WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitPropAuthorType(TypedDict):
-    """Committer
-
-    Metaproperties for Git author/committer information.
+class WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevelTypeForResponse(
+    TypedDict
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcem
+    entLevel
     """
 
-    date: NotRequired[_dt.datetime]
-    email: Union[str, None]
-    name: str
-    username: NotRequired[str]
+    from_: Literal["off", "non_admins", "everyone"]
 
 
-class WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitPropAuthorTypeForResponse(
+class WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevelType(
     TypedDict
 ):
-    """Committer
+    """WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevel"""
 
-    Metaproperties for Git author/committer information.
+    from_: Literal["off", "non_admins", "everyone"]
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevelTypeForResponse(
+    TypedDict
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevel"""
+
+    from_: Literal["off", "non_admins", "everyone"]
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSyncType(TypedDict):
+    """WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSync"""
+
+    from_: Union[bool, None]
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSyncTypeForResponse(
+    TypedDict
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSync"""
+
+    from_: Union[bool, None]
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevelType(
+    TypedDict
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLev
+    el
     """
 
-    date: NotRequired[str]
-    email: Union[str, None]
-    name: str
-    username: NotRequired[str]
+    from_: Literal["off", "non_admins", "everyone"]
 
 
-class WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitPropCommitterType(
+class WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevelTypeForResponse(
     TypedDict
 ):
-    """Committer
-
-    Metaproperties for Git author/committer information.
+    """WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLev
+    el
     """
 
-    date: NotRequired[_dt.datetime]
-    email: Union[str, None]
-    name: str
-    username: NotRequired[str]
+    from_: Literal["off", "non_admins", "everyone"]
 
 
-class WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitPropCommitterTypeForResponse(
+class WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApprovalType(
     TypedDict
 ):
-    """Committer
+    """WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApproval"""
 
-    Metaproperties for Git author/committer information.
+    from_: Union[bool, None]
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApprovalTypeForResponse(
+    TypedDict
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApproval"""
+
+    from_: Union[bool, None]
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksType(
+    TypedDict
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecks"""
+
+    from_: list[str]
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksTypeForResponse(
+    TypedDict
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecks"""
+
+    from_: list[str]
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevelType(
+    TypedDict
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementL
+    evel
     """
 
-    date: NotRequired[str]
-    email: Union[str, None]
-    name: str
-    username: NotRequired[str]
+    from_: Literal["off", "non_admins", "everyone"]
 
 
-class WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsType(TypedDict):
-    """Check Run Pull Request"""
-
-    base: WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBaseType
-    head: WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHeadType
-    id: int
-    number: int
-    url: str
-
-
-class WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsTypeForResponse(
+class WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevelTypeForResponse(
     TypedDict
 ):
-    """Check Run Pull Request"""
+    """WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementL
+    evel
+    """
 
-    base: WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBaseTypeForResponse
-    head: WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHeadTypeForResponse
-    id: int
-    number: int
-    url: str
-
-
-class WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBaseType(
-    TypedDict
-):
-    """WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBase"""
-
-    ref: str
-    repo: WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBasePropRepoType
-    sha: str
-
-
-class WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBaseTypeForResponse(
-    TypedDict
-):
-    """WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBase"""
-
-    ref: str
-    repo: WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBasePropRepoTypeForResponse
-    sha: str
-
-
-class WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBasePropRepoType(
-    TypedDict
-):
-    """Repo Ref"""
-
-    id: int
-    name: str
-    url: str
-
-
-class WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBasePropRepoTypeForResponse(
-    TypedDict
-):
-    """Repo Ref"""
-
-    id: int
-    name: str
-    url: str
-
-
-class WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHeadType(
-    TypedDict
-):
-    """WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHead"""
-
-    ref: str
-    repo: WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHeadPropRepoType
-    sha: str
-
-
-class WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHeadTypeForResponse(
-    TypedDict
-):
-    """WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHead"""
-
-    ref: str
-    repo: WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHeadPropRepoTypeForResponse
-    sha: str
-
-
-class WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHeadPropRepoType(
-    TypedDict
-):
-    """Repo Ref"""
-
-    id: int
-    name: str
-    url: str
-
-
-class WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHeadPropRepoTypeForResponse(
-    TypedDict
-):
-    """Repo Ref"""
-
-    id: int
-    name: str
-    url: str
+    from_: Literal["off", "non_admins", "everyone"]
 
 
 __all__ = (
-    "WebhookCheckSuiteCompletedPropCheckSuitePropAppPropOwnerType",
-    "WebhookCheckSuiteCompletedPropCheckSuitePropAppPropOwnerTypeForResponse",
-    "WebhookCheckSuiteCompletedPropCheckSuitePropAppPropPermissionsType",
-    "WebhookCheckSuiteCompletedPropCheckSuitePropAppPropPermissionsTypeForResponse",
-    "WebhookCheckSuiteCompletedPropCheckSuitePropAppType",
-    "WebhookCheckSuiteCompletedPropCheckSuitePropAppTypeForResponse",
-    "WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitPropAuthorType",
-    "WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitPropAuthorTypeForResponse",
-    "WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitPropCommitterType",
-    "WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitPropCommitterTypeForResponse",
-    "WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitType",
-    "WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitTypeForResponse",
-    "WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBasePropRepoType",
-    "WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBasePropRepoTypeForResponse",
-    "WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBaseType",
-    "WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBaseTypeForResponse",
-    "WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHeadPropRepoType",
-    "WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHeadPropRepoTypeForResponse",
-    "WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHeadType",
-    "WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHeadTypeForResponse",
-    "WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsType",
-    "WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsTypeForResponse",
-    "WebhookCheckSuiteCompletedPropCheckSuiteType",
-    "WebhookCheckSuiteCompletedPropCheckSuiteTypeForResponse",
-    "WebhookCheckSuiteCompletedType",
-    "WebhookCheckSuiteCompletedTypeForResponse",
+    "WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforcedType",
+    "WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforcedTypeForResponse",
+    "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNamesType",
+    "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNamesTypeForResponse",
+    "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnlyType",
+    "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnlyTypeForResponse",
+    "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnlyType",
+    "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnlyTypeForResponse",
+    "WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevelType",
+    "WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevelTypeForResponse",
+    "WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSyncType",
+    "WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSyncTypeForResponse",
+    "WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevelType",
+    "WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevelTypeForResponse",
+    "WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevelType",
+    "WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevelTypeForResponse",
+    "WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApprovalType",
+    "WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApprovalTypeForResponse",
+    "WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevelType",
+    "WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevelTypeForResponse",
+    "WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksType",
+    "WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksTypeForResponse",
+    "WebhookBranchProtectionRuleEditedPropChangesType",
+    "WebhookBranchProtectionRuleEditedPropChangesTypeForResponse",
+    "WebhookBranchProtectionRuleEditedType",
+    "WebhookBranchProtectionRuleEditedTypeForResponse",
 )

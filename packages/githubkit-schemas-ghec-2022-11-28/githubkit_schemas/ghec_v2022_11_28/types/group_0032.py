@@ -9,28 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ActionsCacheStorageLimitForEnterpriseType(TypedDict):
-    """Actions cache storage limit for an enterprise
+class ActionsHostedRunnerCustomImageType(TypedDict):
+    """GitHub-hosted runner custom image details
 
-    GitHub Actions cache storage policy for an enterprise.
+    Provides details of a custom runner image
     """
 
-    max_cache_size_gb: NotRequired[int]
+    id: int
+    platform: str
+    total_versions_size: int
+    name: str
+    source: str
+    versions_count: int
+    latest_version: str
+    state: str
 
 
-class ActionsCacheStorageLimitForEnterpriseTypeForResponse(TypedDict):
-    """Actions cache storage limit for an enterprise
+class ActionsHostedRunnerCustomImageTypeForResponse(TypedDict):
+    """GitHub-hosted runner custom image details
 
-    GitHub Actions cache storage policy for an enterprise.
+    Provides details of a custom runner image
     """
 
-    max_cache_size_gb: NotRequired[int]
+    id: int
+    platform: str
+    total_versions_size: int
+    name: str
+    source: str
+    versions_count: int
+    latest_version: str
+    state: str
 
 
 __all__ = (
-    "ActionsCacheStorageLimitForEnterpriseType",
-    "ActionsCacheStorageLimitForEnterpriseTypeForResponse",
+    "ActionsHostedRunnerCustomImageType",
+    "ActionsHostedRunnerCustomImageTypeForResponse",
 )

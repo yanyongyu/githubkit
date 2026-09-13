@@ -13,20 +13,15 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0054 import Runner
 
+class EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBody(GitHubModel):
+    """EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBody"""
 
-class EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201(GitHubModel):
-    """EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201"""
-
-    runner: Runner = Field(
-        title="Self hosted runners", description="A self hosted runner"
-    )
-    encoded_jit_config: str = Field(
-        description="The base64 encoded runner configuration."
+    disable_self_hosted_runners_for_all_orgs: bool = Field(
+        description="When true, repository-level runners will be disabled across all organizations in the enterprise"
     )
 
 
-model_rebuild(EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201)
+model_rebuild(EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBody)
 
-__all__ = ("EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201",)
+__all__ = ("EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBody",)

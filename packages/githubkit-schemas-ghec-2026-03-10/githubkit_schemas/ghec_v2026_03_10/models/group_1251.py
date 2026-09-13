@@ -9,19 +9,87 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBody(GitHubModel):
-    """EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBody"""
+class EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBody(GitHubModel):
+    """EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBody"""
 
-    usernames: list[str] = Field(
-        description="The GitHub user handles to be removed from the team."
+    budget_amount: Missing[int] = Field(
+        default=UNSET,
+        description="The budget amount in whole dollars. For license-based products, this represents the number of licenses.",
+    )
+    prevent_further_usage: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to prevent additional spending once the budget is exceeded. For budgets with `user` or `multi_user_customer` scope, this must remain `true`.",
+    )
+    budget_alerting: Missing[
+        EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting
+    ] = Field(default=UNSET)
+    budget_scope: Missing[
+        Literal[
+            "enterprise",
+            "organization",
+            "repository",
+            "cost_center",
+            "multi_user_customer",
+            "multi_user_cost_center",
+            "user",
+        ]
+    ] = Field(
+        default=UNSET,
+        description="The scope of the budget.\n\n- `enterprise`: Apply the budget to the entire enterprise.\n- `organization`: Apply the budget to a specific organization in the enterprise.\n- `repository`: Apply the budget to a specific repository.\n- `cost_center`: Apply the budget to a specific cost center.\n- `multi_user_customer`: Apply a universal budget to all users in the enterprise.\n- `multi_user_cost_center`: Apply a universal budget to all users in a cost center.\n- `user`: Apply the budget to a single user.",
+    )
+    budget_entity_name: Missing[str] = Field(
+        default=UNSET, description="The name of the entity to apply the budget to"
+    )
+    budget_type: Missing[Literal["BundlePricing", "ProductPricing", "SkuPricing"]] = (
+        Field(
+            default=UNSET,
+            description="The type of pricing model used by the budget. Determines how `budget_product_sku` is interpreted.\n\n- `BundlePricing`: Covers all AI credit SKUs. Set `budget_product_sku` to `ai_credits`.\n- `ProductPricing`: Covers all SKUs that belong to a product. Set `budget_product_sku` to a product such as `actions` or `packages`.\n- `SkuPricing`: Covers a single, specific SKU. Set `budget_product_sku` to a SKU such as `actions_linux`.",
+        )
+    )
+    budget_product_sku: Missing[str] = Field(
+        default=UNSET,
+        description="A single product or SKU that will be covered in the budget",
+    )
+    user: Missing[str] = Field(
+        default=UNSET, description="The username of the user for `user` scope budgets."
+    )
+    expires_at: Missing[Union[_dt.date, Literal[0], None]] = Field(
+        default=UNSET,
+        description="The date the budget will expire in `YYYY-MM-DD` format. Only dates in the future are accepted.\nIf not set, the budget will not expire. Setting to `null` or `0` will remove the expiration date from a budget if set.\n\nOnly supported for budgets with `budget_scope` of `user`",
     )
 
 
-model_rebuild(EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBody)
+class EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting(
+    GitHubModel
+):
+    """EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting"""
 
-__all__ = ("EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBody",)
+    will_alert: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether alerts are enabled for this budget. Ignored for user-scope as alerting is always disabled for them.",
+    )
+    alert_recipients: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Array of user login names who will receive alerts. Ignored for user-scope as alerting is always disabled for them.",
+    )
+
+
+model_rebuild(EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBody)
+model_rebuild(
+    EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting
+)
+
+__all__ = (
+    "EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBody",
+    "EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting",
+)

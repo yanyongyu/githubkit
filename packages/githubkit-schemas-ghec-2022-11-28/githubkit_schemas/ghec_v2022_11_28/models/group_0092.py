@@ -14,47 +14,36 @@ from typing import Literal, Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0091 import DependabotAlertPackage
+from .group_0087 import DependabotAlertPackage
 
 
-class DependabotAlertSecurityVulnerability(GitHubModel):
-    """DependabotAlertSecurityVulnerability
+class DependabotAlertWithRepositoryPropDependency(GitHubModel):
+    """DependabotAlertWithRepositoryPropDependency
 
-    Details pertaining to one vulnerable version range for the advisory.
+    Details for the vulnerable dependency.
     """
 
-    package: DependabotAlertPackage = Field(
-        description="Details for the vulnerable package."
+    package: Missing[DependabotAlertPackage] = Field(
+        default=UNSET, description="Details for the vulnerable package."
     )
-    severity: Literal["low", "medium", "high", "critical"] = Field(
-        description="The severity of the vulnerability."
+    manifest_path: Missing[str] = Field(
+        default=UNSET,
+        description="The full path to the dependency manifest file, relative to the root of the repository.",
     )
-    vulnerable_version_range: str = Field(
-        description="Conditions that identify vulnerable versions of this vulnerability's package."
+    scope: Missing[Union[Literal["development", "runtime"], None]] = Field(
+        default=UNSET, description="The execution scope of the vulnerable dependency."
     )
-    first_patched_version: Union[
-        DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion, None
+    relationship: Missing[
+        Union[Literal["unknown", "direct", "transitive", "inconclusive"], None]
     ] = Field(
-        description="Details pertaining to the package version that patches this vulnerability."
+        default=UNSET,
+        description='The vulnerable dependency\'s relationship to your project.\n\n> [!NOTE]\n> We are rolling out support for dependency relationship across ecosystems. This value will be "unknown" for all dependencies in unsupported ecosystems.\n',
     )
 
 
-class DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion(GitHubModel):
-    """DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion
+model_rebuild(DependabotAlertWithRepositoryPropDependency)
 
-    Details pertaining to the package version that patches this vulnerability.
-    """
-
-    identifier: str = Field(
-        description="The package version that patches this vulnerability."
-    )
-
-
-model_rebuild(DependabotAlertSecurityVulnerability)
-model_rebuild(DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion)
-
-__all__ = (
-    "DependabotAlertSecurityVulnerability",
-    "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion",
-)
+__all__ = ("DependabotAlertWithRepositoryPropDependency",)

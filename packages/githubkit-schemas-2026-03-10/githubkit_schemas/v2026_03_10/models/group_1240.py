@@ -13,26 +13,29 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0264 import SecretScanningCustomPatternToDelete
 
+class OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0(GitHubModel):
+    """OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0"""
 
-class OrgsOrgSecretScanningCustomPatternsDeleteBody(GitHubModel):
-    """OrgsOrgSecretScanningCustomPatternsDeleteBody"""
-
-    patterns: list[SecretScanningCustomPatternToDelete] = Field(
-        max_length=500 if PYDANTIC_V2 else None,
-        description="The list of custom patterns to delete.",
+    type: Literal["Issue", "PullRequest"] = Field(
+        description="The type of item to add to the project. Must be either Issue or PullRequest."
     )
-    post_delete_action: Missing[Literal["delete_alerts", "resolve_alerts"]] = Field(
-        default=UNSET,
-        description='What to do with alerts associated with the deleted patterns.\n`delete_alerts` permanently removes the alerts.\n`resolve_alerts` resolves the alerts as "pattern deleted".\nDefaults to `delete_alerts` when not specified.',
+    id: int = Field(
+        description="The unique identifier of the issue or pull request to add to the project."
+    )
+    owner: Missing[str] = Field(
+        default=UNSET, description="The repository owner login."
+    )
+    repo: Missing[str] = Field(default=UNSET, description="The repository name.")
+    number: Missing[int] = Field(
+        default=UNSET, description="The issue or pull request number."
     )
 
 
-model_rebuild(OrgsOrgSecretScanningCustomPatternsDeleteBody)
+model_rebuild(OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0)
 
-__all__ = ("OrgsOrgSecretScanningCustomPatternsDeleteBody",)
+__all__ = ("OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0",)

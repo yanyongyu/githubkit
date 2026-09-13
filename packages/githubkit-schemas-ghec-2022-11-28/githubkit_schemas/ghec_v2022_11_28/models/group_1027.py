@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0178 import RepositoryRuleset
-from .group_0622 import EnterpriseWebhooks
-from .group_0623 import SimpleInstallation
-from .group_0624 import OrganizationSimpleWebhooks
-from .group_0625 import RepositoryWebhooks
+from .group_0339 import RepositoryAdvisory
+from .group_0625 import EnterpriseWebhooks
+from .group_0626 import SimpleInstallation
+from .group_0627 import OrganizationSimpleWebhooks
+from .group_0628 import RepositoryWebhooks
 
 
-class WebhookRepositoryRulesetCreated(GitHubModel):
-    """repository ruleset created event"""
+class WebhookRepositoryAdvisoryPublished(GitHubModel):
+    """Repository advisory published event"""
 
-    action: Literal["created"] = Field()
+    action: Literal["published"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -44,18 +44,18 @@ class WebhookRepositoryRulesetCreated(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
+    repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    repository_ruleset: RepositoryRuleset = Field(
-        title="Repository ruleset",
-        description="A set of rules to apply when specified conditions are met.",
+    repository_advisory: RepositoryAdvisory = Field(
+        description="A repository security advisory."
     )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
 
 
-model_rebuild(WebhookRepositoryRulesetCreated)
+model_rebuild(WebhookRepositoryAdvisoryPublished)
 
-__all__ = ("WebhookRepositoryRulesetCreated",)
+__all__ = ("WebhookRepositoryAdvisoryPublished",)

@@ -9,26 +9,63 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200Type(
+class EnterprisesEnterpriseActionsHostedRunnersPostBodyType(TypedDict):
+    """EnterprisesEnterpriseActionsHostedRunnersPostBody"""
+
+    name: str
+    image: EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImageType
+    size: str
+    runner_group_id: int
+    maximum_runners: NotRequired[int]
+    enable_static_ip: NotRequired[bool]
+    image_gen: NotRequired[bool]
+
+
+class EnterprisesEnterpriseActionsHostedRunnersPostBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseActionsHostedRunnersPostBody"""
+
+    name: str
+    image: EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImageTypeForResponse
+    size: str
+    runner_group_id: int
+    maximum_runners: NotRequired[int]
+    enable_static_ip: NotRequired[bool]
+    image_gen: NotRequired[bool]
+
+
+class EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImageType(TypedDict):
+    """EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImage
+
+    The image of runner. To list all available images, use `GET /actions/hosted-
+    runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`.
+    """
+
+    id: NotRequired[str]
+    source: NotRequired[Literal["github", "partner", "custom"]]
+    version: NotRequired[Union[str, None]]
+
+
+class EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImageTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200"""
+    """EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImage
 
-    disable_self_hosted_runners_for_all_orgs: bool
+    The image of runner. To list all available images, use `GET /actions/hosted-
+    runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`.
+    """
 
-
-class EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200"""
-
-    disable_self_hosted_runners_for_all_orgs: bool
+    id: NotRequired[str]
+    source: NotRequired[Literal["github", "partner", "custom"]]
+    version: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200Type",
-    "EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImageType",
+    "EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImageTypeForResponse",
+    "EnterprisesEnterpriseActionsHostedRunnersPostBodyType",
+    "EnterprisesEnterpriseActionsHostedRunnersPostBodyTypeForResponse",
 )

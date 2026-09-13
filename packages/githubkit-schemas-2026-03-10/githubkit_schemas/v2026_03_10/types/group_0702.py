@@ -10,69 +10,76 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0701 import (
-    WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreatorType,
-    WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
+    WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
+    WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
+    WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType,
+    WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse,
 )
 
 
-class WebhookIssueCommentEditedPropIssueAllof0PropMilestoneType(TypedDict):
-    """Milestone
+class WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppType(TypedDict):
+    """App
 
-    A collection of related issues and pull requests.
+    GitHub apps are a new way to extend GitHub. They can be installed directly on
+    organizations and user accounts and granted access to specific repositories.
+    They come with granular permissions and built-in webhooks. GitHub apps are first
+    class actors within GitHub.
     """
 
-    closed_at: Union[_dt.datetime, None]
-    closed_issues: int
-    created_at: _dt.datetime
-    creator: Union[
-        WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreatorType, None
-    ]
+    created_at: Union[_dt.datetime, None]
     description: Union[str, None]
-    due_on: Union[_dt.datetime, None]
+    events: NotRequired[list[str]]
+    external_url: Union[str, None]
     html_url: str
-    id: int
-    labels_url: str
+    id: Union[int, None]
+    name: str
     node_id: str
-    number: int
-    open_issues: int
-    state: Literal["open", "closed"]
-    title: str
-    updated_at: _dt.datetime
-    url: str
-
-
-class WebhookIssueCommentEditedPropIssueAllof0PropMilestoneTypeForResponse(TypedDict):
-    """Milestone
-
-    A collection of related issues and pull requests.
-    """
-
-    closed_at: Union[str, None]
-    closed_issues: int
-    created_at: str
-    creator: Union[
-        WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
+    owner: Union[
+        WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
         None,
     ]
+    permissions: NotRequired[
+        WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType
+    ]
+    slug: NotRequired[str]
+    updated_at: Union[_dt.datetime, None]
+
+
+class WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppTypeForResponse(
+    TypedDict
+):
+    """App
+
+    GitHub apps are a new way to extend GitHub. They can be installed directly on
+    organizations and user accounts and granted access to specific repositories.
+    They come with granular permissions and built-in webhooks. GitHub apps are first
+    class actors within GitHub.
+    """
+
+    created_at: Union[str, None]
     description: Union[str, None]
-    due_on: Union[str, None]
+    events: NotRequired[list[str]]
+    external_url: Union[str, None]
     html_url: str
-    id: int
-    labels_url: str
+    id: Union[int, None]
+    name: str
     node_id: str
-    number: int
-    open_issues: int
-    state: Literal["open", "closed"]
-    title: str
-    updated_at: str
-    url: str
+    owner: Union[
+        WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
+        None,
+    ]
+    permissions: NotRequired[
+        WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse
+    ]
+    slug: NotRequired[str]
+    updated_at: Union[str, None]
 
 
 __all__ = (
-    "WebhookIssueCommentEditedPropIssueAllof0PropMilestoneType",
-    "WebhookIssueCommentEditedPropIssueAllof0PropMilestoneTypeForResponse",
+    "WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppType",
+    "WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppTypeForResponse",
 )

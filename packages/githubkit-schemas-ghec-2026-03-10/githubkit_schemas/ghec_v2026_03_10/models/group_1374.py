@@ -13,23 +13,31 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 
 
-class OrgsOrgCopilotCodingAgentPermissionsGetResponse200(GitHubModel):
-    """OrgsOrgCopilotCodingAgentPermissionsGetResponse200"""
+class OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody(GitHubModel):
+    """OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody"""
 
-    enabled_repositories: Literal["all", "selected", "none"] = Field(
-        description="The policy for which repositories can use Copilot cloud agent. Can be one of `all`, `selected`, or `none`."
-    )
-    selected_repositories_url: Missing[str] = Field(
-        default=UNSET,
-        description="The URL for the selected repositories endpoint. Only present when `enabled_repositories` is `selected`.",
+    resource_type: Literal[
+        "repository", "github_file", "free_text", "github_issue", "github_pull_request"
+    ] = Field(description="The type of resource to create.")
+    metadata: OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata = Field(
+        description="Resource-specific metadata."
     )
 
 
-model_rebuild(OrgsOrgCopilotCodingAgentPermissionsGetResponse200)
+class OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata(ExtraGitHubModel):
+    """OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata
 
-__all__ = ("OrgsOrgCopilotCodingAgentPermissionsGetResponse200",)
+    Resource-specific metadata.
+    """
+
+
+model_rebuild(OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody)
+model_rebuild(OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata)
+
+__all__ = (
+    "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody",
+    "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata",
+)

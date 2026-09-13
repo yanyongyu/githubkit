@@ -12,25 +12,21 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType(TypedDict):
-    """RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName"""
+class RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType(TypedDict):
+    """RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId"""
 
-    include: NotRequired[list[str]]
-    exclude: NotRequired[list[str]]
-    protected: NotRequired[bool]
+    repository_ids: NotRequired[list[int]]
 
 
-class RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse(
+class RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdTypeForResponse(
     TypedDict
 ):
-    """RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName"""
+    """RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId"""
 
-    include: NotRequired[list[str]]
-    exclude: NotRequired[list[str]]
-    protected: NotRequired[bool]
+    repository_ids: NotRequired[list[int]]
 
 
 __all__ = (
-    "RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType",
-    "RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse",
+    "RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType",
+    "RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdTypeForResponse",
 )

@@ -14,16 +14,19 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class AuditLogStreamKey(GitHubModel):
-    """stream-key
+class GoogleCloudConfig(GitHubModel):
+    """GoogleCloudConfig
 
-    Audit Log Streaming Public Key
+    Google Cloud Config for audit log streaming configuration.
     """
 
-    key_id: str = Field()
-    key: str = Field()
+    bucket: str = Field(description="Google Cloud Bucket Name")
+    key_id: str = Field(
+        description="Key ID obtained from the audit log stream key endpoint used to encrypt secrets."
+    )
+    encrypted_json_credentials: str = Field()
 
 
-model_rebuild(AuditLogStreamKey)
+model_rebuild(GoogleCloudConfig)
 
-__all__ = ("AuditLogStreamKey",)
+__all__ = ("GoogleCloudConfig",)

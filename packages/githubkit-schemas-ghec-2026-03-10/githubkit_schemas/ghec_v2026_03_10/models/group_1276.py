@@ -9,26 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from pydantic import Field
-
-from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0037 import ActionsHostedRunnerCustomImageVersion
+from githubkit.compat import ExtraGitHubModel, model_rebuild
 
 
-class OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200(
-    GitHubModel
+class InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties(
+    ExtraGitHubModel
 ):
-    """OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200"""
+    """InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPrope
+    rties
 
-    total_count: int = Field()
-    image_versions: list[ActionsHostedRunnerCustomImageVersion] = Field()
+    The custom properties that were defined for the repository. The keys are the
+    custom property names, and the values are the corresponding custom property
+    values. Present for org repos only.
+    """
 
 
 model_rebuild(
-    OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200
+    InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties
 )
 
 __all__ = (
-    "OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200",
+    "InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties",
 )

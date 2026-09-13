@@ -11,31 +11,20 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0034 import (
-    ActionsHostedRunnerMachineSpecType,
-    ActionsHostedRunnerMachineSpecTypeForResponse,
-)
+
+class ApplicationsClientIdTokenDeleteBodyType(TypedDict):
+    """ApplicationsClientIdTokenDeleteBody"""
+
+    access_token: str
 
 
-class EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200Type(
-    TypedDict
-):
-    """EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200"""
+class ApplicationsClientIdTokenDeleteBodyTypeForResponse(TypedDict):
+    """ApplicationsClientIdTokenDeleteBody"""
 
-    total_count: int
-    machine_specs: list[ActionsHostedRunnerMachineSpecType]
-
-
-class EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200"""
-
-    total_count: int
-    machine_specs: list[ActionsHostedRunnerMachineSpecTypeForResponse]
+    access_token: str
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200Type",
-    "EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200TypeForResponse",
+    "ApplicationsClientIdTokenDeleteBodyType",
+    "ApplicationsClientIdTokenDeleteBodyTypeForResponse",
 )

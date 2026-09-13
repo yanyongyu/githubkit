@@ -12,25 +12,30 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0037 import ActionsHostedRunnerCustomImageVersion
-
-
-class EnterprisesEnterpriseActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200(
-    GitHubModel
-):
-    """EnterprisesEnterpriseActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGe
-    tResponse200
-    """
-
-    total_count: int = Field()
-    image_versions: list[ActionsHostedRunnerCustomImageVersion] = Field()
+from .group_0017 import AppPermissions
 
 
-model_rebuild(
-    EnterprisesEnterpriseActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200
-)
+class AppInstallationsInstallationIdAccessTokensPostBody(GitHubModel):
+    """AppInstallationsInstallationIdAccessTokensPostBody"""
 
-__all__ = (
-    "EnterprisesEnterpriseActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200",
-)
+    repositories: Missing[list[str]] = Field(
+        default=UNSET,
+        description="List of repository names that the token should have access to",
+    )
+    repository_ids: Missing[list[int]] = Field(
+        default=UNSET,
+        description="List of repository IDs that the token should have access to",
+    )
+    permissions: Missing[AppPermissions] = Field(
+        default=UNSET,
+        title="App Permissions",
+        description="The permissions granted to the fine-grained access token.",
+    )
+
+
+model_rebuild(AppInstallationsInstallationIdAccessTokensPostBody)
+
+__all__ = ("AppInstallationsInstallationIdAccessTokensPostBody",)

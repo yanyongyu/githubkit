@@ -9,91 +9,80 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class IssueFieldValueType(TypedDict):
-    """Issue Field Value
+class PullRequestMinimalPropHeadType(TypedDict):
+    """PullRequestMinimalPropHead"""
 
-    A value assigned to an issue field
-    """
-
-    issue_field_id: int
-    issue_field_name: NotRequired[str]
-    node_id: str
-    data_type: Literal["text", "single_select", "multi_select", "number", "date"]
-    value: Union[str, float, int, None]
-    single_select_option: NotRequired[
-        Union[IssueFieldValuePropSingleSelectOptionType, None]
-    ]
-    multi_select_options: NotRequired[
-        Union[list[IssueFieldValuePropMultiSelectOptionsItemsType], None]
-    ]
+    ref: str
+    sha: str
+    repo: PullRequestMinimalPropHeadPropRepoType
 
 
-class IssueFieldValueTypeForResponse(TypedDict):
-    """Issue Field Value
+class PullRequestMinimalPropHeadTypeForResponse(TypedDict):
+    """PullRequestMinimalPropHead"""
 
-    A value assigned to an issue field
-    """
-
-    issue_field_id: int
-    issue_field_name: NotRequired[str]
-    node_id: str
-    data_type: Literal["text", "single_select", "multi_select", "number", "date"]
-    value: Union[str, float, int, None]
-    single_select_option: NotRequired[
-        Union[IssueFieldValuePropSingleSelectOptionTypeForResponse, None]
-    ]
-    multi_select_options: NotRequired[
-        Union[list[IssueFieldValuePropMultiSelectOptionsItemsTypeForResponse], None]
-    ]
+    ref: str
+    sha: str
+    repo: PullRequestMinimalPropHeadPropRepoTypeForResponse
 
 
-class IssueFieldValuePropSingleSelectOptionType(TypedDict):
-    """IssueFieldValuePropSingleSelectOption
-
-    Details about the selected option (only present for single_select fields)
-    """
+class PullRequestMinimalPropHeadPropRepoType(TypedDict):
+    """PullRequestMinimalPropHeadPropRepo"""
 
     id: int
+    url: str
     name: str
-    color: str
 
 
-class IssueFieldValuePropSingleSelectOptionTypeForResponse(TypedDict):
-    """IssueFieldValuePropSingleSelectOption
-
-    Details about the selected option (only present for single_select fields)
-    """
+class PullRequestMinimalPropHeadPropRepoTypeForResponse(TypedDict):
+    """PullRequestMinimalPropHeadPropRepo"""
 
     id: int
+    url: str
     name: str
-    color: str
 
 
-class IssueFieldValuePropMultiSelectOptionsItemsType(TypedDict):
-    """IssueFieldValuePropMultiSelectOptionsItems"""
+class PullRequestMinimalPropBaseType(TypedDict):
+    """PullRequestMinimalPropBase"""
+
+    ref: str
+    sha: str
+    repo: PullRequestMinimalPropBasePropRepoType
+
+
+class PullRequestMinimalPropBaseTypeForResponse(TypedDict):
+    """PullRequestMinimalPropBase"""
+
+    ref: str
+    sha: str
+    repo: PullRequestMinimalPropBasePropRepoTypeForResponse
+
+
+class PullRequestMinimalPropBasePropRepoType(TypedDict):
+    """PullRequestMinimalPropBasePropRepo"""
 
     id: int
+    url: str
     name: str
-    color: str
 
 
-class IssueFieldValuePropMultiSelectOptionsItemsTypeForResponse(TypedDict):
-    """IssueFieldValuePropMultiSelectOptionsItems"""
+class PullRequestMinimalPropBasePropRepoTypeForResponse(TypedDict):
+    """PullRequestMinimalPropBasePropRepo"""
 
     id: int
+    url: str
     name: str
-    color: str
 
 
 __all__ = (
-    "IssueFieldValuePropMultiSelectOptionsItemsType",
-    "IssueFieldValuePropMultiSelectOptionsItemsTypeForResponse",
-    "IssueFieldValuePropSingleSelectOptionType",
-    "IssueFieldValuePropSingleSelectOptionTypeForResponse",
-    "IssueFieldValueType",
-    "IssueFieldValueTypeForResponse",
+    "PullRequestMinimalPropBasePropRepoType",
+    "PullRequestMinimalPropBasePropRepoTypeForResponse",
+    "PullRequestMinimalPropBaseType",
+    "PullRequestMinimalPropBaseTypeForResponse",
+    "PullRequestMinimalPropHeadPropRepoType",
+    "PullRequestMinimalPropHeadPropRepoTypeForResponse",
+    "PullRequestMinimalPropHeadType",
+    "PullRequestMinimalPropHeadTypeForResponse",
 )

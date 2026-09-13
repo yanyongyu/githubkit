@@ -9,24 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class RulesetVersionWithStateAllof1PropStateType(TypedDict):
-    """RulesetVersionWithStateAllof1PropState
+class SecretScanningLocationDiscussionBodyType(TypedDict):
+    """SecretScanningLocationDiscussionBody
 
-    The state of the ruleset version
+    Represents a 'discussion_body' secret scanning location type. This location type
+    shows that a secret was detected in the body of a discussion.
     """
 
+    discussion_body_url: str
 
-class RulesetVersionWithStateAllof1PropStateTypeForResponse(TypedDict):
-    """RulesetVersionWithStateAllof1PropState
 
-    The state of the ruleset version
+class SecretScanningLocationDiscussionBodyTypeForResponse(TypedDict):
+    """SecretScanningLocationDiscussionBody
+
+    Represents a 'discussion_body' secret scanning location type. This location type
+    shows that a secret was detected in the body of a discussion.
     """
+
+    discussion_body_url: str
+
+
+class SecretScanningLocationPullRequestCommentType(TypedDict):
+    """SecretScanningLocationPullRequestComment
+
+    Represents a 'pull_request_comment' secret scanning location type. This location
+    type shows that a secret was detected in a comment on a pull request.
+    """
+
+    pull_request_comment_url: str
+    html_url: NotRequired[str]
+
+
+class SecretScanningLocationPullRequestCommentTypeForResponse(TypedDict):
+    """SecretScanningLocationPullRequestComment
+
+    Represents a 'pull_request_comment' secret scanning location type. This location
+    type shows that a secret was detected in a comment on a pull request.
+    """
+
+    pull_request_comment_url: str
+    html_url: NotRequired[str]
 
 
 __all__ = (
-    "RulesetVersionWithStateAllof1PropStateType",
-    "RulesetVersionWithStateAllof1PropStateTypeForResponse",
+    "SecretScanningLocationDiscussionBodyType",
+    "SecretScanningLocationDiscussionBodyTypeForResponse",
+    "SecretScanningLocationPullRequestCommentType",
+    "SecretScanningLocationPullRequestCommentTypeForResponse",
 )

@@ -9,24 +9,84 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Any, TypeAlias, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class ReleaseEventPropReleaseAllof1Type(TypedDict):
-    """ReleaseEventPropReleaseAllof1"""
-
-    is_short_description_html_truncated: NotRequired[bool]
-    short_description_html: NotRequired[str]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class ReleaseEventPropReleaseAllof1TypeForResponse(TypedDict):
-    """ReleaseEventPropReleaseAllof1"""
+class GistSimplePropForkOfType(TypedDict):
+    """Gist
 
-    is_short_description_html_truncated: NotRequired[bool]
-    short_description_html: NotRequired[str]
+    Gist
+    """
+
+    url: str
+    forks_url: str
+    commits_url: str
+    id: str
+    node_id: str
+    git_pull_url: str
+    git_push_url: str
+    html_url: str
+    files: GistSimplePropForkOfPropFilesType
+    public: bool
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    description: Union[str, None]
+    comments: int
+    comments_enabled: NotRequired[bool]
+    user: Union[SimpleUserType, None]
+    comments_url: str
+    owner: NotRequired[Union[SimpleUserType, None]]
+    truncated: NotRequired[bool]
+    forks: NotRequired[list[Any]]
+    history: NotRequired[list[Any]]
+
+
+class GistSimplePropForkOfTypeForResponse(TypedDict):
+    """Gist
+
+    Gist
+    """
+
+    url: str
+    forks_url: str
+    commits_url: str
+    id: str
+    node_id: str
+    git_pull_url: str
+    git_push_url: str
+    html_url: str
+    files: GistSimplePropForkOfPropFilesTypeForResponse
+    public: bool
+    created_at: str
+    updated_at: str
+    description: Union[str, None]
+    comments: int
+    comments_enabled: NotRequired[bool]
+    user: Union[SimpleUserTypeForResponse, None]
+    comments_url: str
+    owner: NotRequired[Union[SimpleUserTypeForResponse, None]]
+    truncated: NotRequired[bool]
+    forks: NotRequired[list[Any]]
+    history: NotRequired[list[Any]]
+
+
+GistSimplePropForkOfPropFilesType: TypeAlias = dict[str, Any]
+"""GistSimplePropForkOfPropFiles
+"""
+
+
+GistSimplePropForkOfPropFilesTypeForResponse: TypeAlias = dict[str, Any]
+"""GistSimplePropForkOfPropFiles
+"""
 
 
 __all__ = (
-    "ReleaseEventPropReleaseAllof1Type",
-    "ReleaseEventPropReleaseAllof1TypeForResponse",
+    "GistSimplePropForkOfPropFilesType",
+    "GistSimplePropForkOfPropFilesTypeForResponse",
+    "GistSimplePropForkOfType",
+    "GistSimplePropForkOfTypeForResponse",
 )

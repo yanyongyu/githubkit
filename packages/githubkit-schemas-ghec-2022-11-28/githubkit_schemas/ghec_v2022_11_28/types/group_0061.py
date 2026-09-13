@@ -9,48 +9,141 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0017 import AppPermissionsType, AppPermissionsTypeForResponse
+from typing_extensions import TypedDict
 
 
-class EnterpriseOrganizationInstallationType(TypedDict):
-    """Enterprise Organization Installation
+class AzureBlobConfigType(TypedDict):
+    """AzureBlobConfig
 
-    A GitHub App Installation on an enterprise-owned organization
+    Azure Blob Config for audit log streaming configuration.
     """
 
-    id: int
-    app_slug: NotRequired[str]
-    client_id: str
-    repository_selection: Literal["all", "selected"]
-    repositories_url: str
-    permissions: AppPermissionsType
-    events: NotRequired[list[str]]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+    key_id: str
+    encrypted_sas_url: str
+    container: str
 
 
-class EnterpriseOrganizationInstallationTypeForResponse(TypedDict):
-    """Enterprise Organization Installation
+class AzureBlobConfigTypeForResponse(TypedDict):
+    """AzureBlobConfig
 
-    A GitHub App Installation on an enterprise-owned organization
+    Azure Blob Config for audit log streaming configuration.
     """
 
-    id: int
-    app_slug: NotRequired[str]
-    client_id: str
-    repository_selection: Literal["all", "selected"]
-    repositories_url: str
-    permissions: AppPermissionsTypeForResponse
-    events: NotRequired[list[str]]
-    created_at: str
-    updated_at: str
+    key_id: str
+    encrypted_sas_url: str
+    container: str
+
+
+class AzureHubConfigType(TypedDict):
+    """AzureHubConfig
+
+    Azure Event Hubs Config for audit log streaming configuration.
+    """
+
+    name: str
+    encrypted_connstring: str
+    key_id: str
+
+
+class AzureHubConfigTypeForResponse(TypedDict):
+    """AzureHubConfig
+
+    Azure Event Hubs Config for audit log streaming configuration.
+    """
+
+    name: str
+    encrypted_connstring: str
+    key_id: str
+
+
+class AmazonS3AccessKeysConfigType(TypedDict):
+    """AmazonS3AccessKeysConfig
+
+    Amazon S3 Access Keys Config for audit log streaming configuration.
+    """
+
+    bucket: str
+    region: str
+    key_id: str
+    authentication_type: Literal["access_keys"]
+    encrypted_secret_key: str
+    encrypted_access_key_id: str
+
+
+class AmazonS3AccessKeysConfigTypeForResponse(TypedDict):
+    """AmazonS3AccessKeysConfig
+
+    Amazon S3 Access Keys Config for audit log streaming configuration.
+    """
+
+    bucket: str
+    region: str
+    key_id: str
+    authentication_type: Literal["access_keys"]
+    encrypted_secret_key: str
+    encrypted_access_key_id: str
+
+
+class HecConfigType(TypedDict):
+    """HecConfig
+
+    Hec Config for Audit Log Stream Configuration
+    """
+
+    domain: str
+    port: int
+    key_id: str
+    encrypted_token: str
+    path: str
+    ssl_verify: bool
+
+
+class HecConfigTypeForResponse(TypedDict):
+    """HecConfig
+
+    Hec Config for Audit Log Stream Configuration
+    """
+
+    domain: str
+    port: int
+    key_id: str
+    encrypted_token: str
+    path: str
+    ssl_verify: bool
+
+
+class DatadogConfigType(TypedDict):
+    """DatadogConfig
+
+    Datadog Config for audit log streaming configuration.
+    """
+
+    encrypted_token: str
+    site: Literal["US", "US3", "US5", "EU1", "US1-FED", "AP1"]
+    key_id: str
+
+
+class DatadogConfigTypeForResponse(TypedDict):
+    """DatadogConfig
+
+    Datadog Config for audit log streaming configuration.
+    """
+
+    encrypted_token: str
+    site: Literal["US", "US3", "US5", "EU1", "US1-FED", "AP1"]
+    key_id: str
 
 
 __all__ = (
-    "EnterpriseOrganizationInstallationType",
-    "EnterpriseOrganizationInstallationTypeForResponse",
+    "AmazonS3AccessKeysConfigType",
+    "AmazonS3AccessKeysConfigTypeForResponse",
+    "AzureBlobConfigType",
+    "AzureBlobConfigTypeForResponse",
+    "AzureHubConfigType",
+    "AzureHubConfigTypeForResponse",
+    "DatadogConfigType",
+    "DatadogConfigTypeForResponse",
+    "HecConfigType",
+    "HecConfigTypeForResponse",
 )

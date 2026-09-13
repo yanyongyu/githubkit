@@ -9,19 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class RepositoryRuleUpdatePropParameters(GitHubModel):
-    """RepositoryRuleUpdatePropParameters"""
+class RepositoryRuleParamsProofOfPresence(GitHubModel):
+    """ProofOfPresence
 
-    update_allows_fetch_and_merge: bool = Field(
-        description="Branch can pull changes from its upstream repository"
+    Require a fresh authentication before a pull request can be merged.
+    """
+
+    required_authentication_level: Literal["reauth", "mfa"] = Field(
+        description="The level of authentication required before a pull request can be merged."
     )
 
 
-model_rebuild(RepositoryRuleUpdatePropParameters)
+model_rebuild(RepositoryRuleParamsProofOfPresence)
 
-__all__ = ("RepositoryRuleUpdatePropParameters",)
+__all__ = ("RepositoryRuleParamsProofOfPresence",)

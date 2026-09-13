@@ -9,57 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0049 import OrganizationSimpleType, OrganizationSimpleTypeForResponse
-from .group_0085 import TeamType, TeamTypeForResponse
-from .group_0086 import EnterpriseTeamType, EnterpriseTeamTypeForResponse
+from typing_extensions import TypedDict
 
 
-class CopilotSeatDetailsType(TypedDict):
-    """Copilot Business Seat Detail
+class DependabotAlertPackageType(TypedDict):
+    """DependabotAlertPackage
 
-    Information about a Copilot Business seat assignment for a user, team, or
-    organization.
+    Details for the vulnerable package.
     """
 
-    assignee: NotRequired[Union[SimpleUserType, None]]
-    organization: NotRequired[Union[OrganizationSimpleType, None]]
-    assigning_team: NotRequired[Union[TeamType, EnterpriseTeamType, None]]
-    pending_cancellation_date: NotRequired[Union[_dt.date, None]]
-    last_activity_at: NotRequired[Union[_dt.datetime, None]]
-    last_activity_editor: NotRequired[Union[str, None]]
-    last_authenticated_at: NotRequired[Union[_dt.datetime, None]]
-    created_at: _dt.datetime
-    updated_at: NotRequired[_dt.datetime]
-    plan_type: NotRequired[Literal["business", "enterprise", "unknown"]]
+    ecosystem: str
+    name: str
 
 
-class CopilotSeatDetailsTypeForResponse(TypedDict):
-    """Copilot Business Seat Detail
+class DependabotAlertPackageTypeForResponse(TypedDict):
+    """DependabotAlertPackage
 
-    Information about a Copilot Business seat assignment for a user, team, or
-    organization.
+    Details for the vulnerable package.
     """
 
-    assignee: NotRequired[Union[SimpleUserTypeForResponse, None]]
-    organization: NotRequired[Union[OrganizationSimpleTypeForResponse, None]]
-    assigning_team: NotRequired[
-        Union[TeamTypeForResponse, EnterpriseTeamTypeForResponse, None]
-    ]
-    pending_cancellation_date: NotRequired[Union[str, None]]
-    last_activity_at: NotRequired[Union[str, None]]
-    last_activity_editor: NotRequired[Union[str, None]]
-    last_authenticated_at: NotRequired[Union[str, None]]
-    created_at: str
-    updated_at: NotRequired[str]
-    plan_type: NotRequired[Literal["business", "enterprise", "unknown"]]
+    ecosystem: str
+    name: str
 
 
 __all__ = (
-    "CopilotSeatDetailsType",
-    "CopilotSeatDetailsTypeForResponse",
+    "DependabotAlertPackageType",
+    "DependabotAlertPackageTypeForResponse",
 )

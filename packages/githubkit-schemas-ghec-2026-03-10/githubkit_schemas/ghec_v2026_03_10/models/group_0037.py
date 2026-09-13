@@ -9,24 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ActionsHostedRunnerCustomImageVersion(GitHubModel):
-    """GitHub-hosted runner custom image version details.
+class OidcCustomPropertyInclusion(GitHubModel):
+    """Actions OIDC Custom Property Inclusion
 
-    Provides details of a hosted runner custom image version
+    An OIDC custom property inclusion for repository properties
     """
 
-    version: str = Field(description="The version of image.")
-    state: str = Field(description="The state of image version.")
-    size_gb: int = Field(description="Image version size in GB.")
-    created_on: str = Field(description="The creation date time of the image version.")
-    state_details: str = Field(description="The image version status details.")
+    custom_property_name: str = Field(
+        description="The name of the custom property that is included in the OIDC token"
+    )
+    inclusion_source: Literal["organization", "enterprise"] = Field(
+        description="Whether the inclusion was defined at the organization or enterprise level"
+    )
 
 
-model_rebuild(ActionsHostedRunnerCustomImageVersion)
+model_rebuild(OidcCustomPropertyInclusion)
 
-__all__ = ("ActionsHostedRunnerCustomImageVersion",)
+__all__ = ("OidcCustomPropertyInclusion",)

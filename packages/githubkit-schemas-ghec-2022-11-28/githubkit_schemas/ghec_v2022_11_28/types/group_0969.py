@@ -9,313 +9,145 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0622 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0623 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0624 import (
+from .group_0625 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0626 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0627 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0625 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0970 import (
-    WebhookPullRequestReviewCommentCreatedPropPullRequestType,
-    WebhookPullRequestReviewCommentCreatedPropPullRequestTypeForResponse,
-)
+from .group_0628 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0668 import PullRequestWebhookType, PullRequestWebhookTypeForResponse
 
 
-class WebhookPullRequestReviewCommentCreatedType(TypedDict):
-    """pull_request_review_comment created event"""
+class WebhookPullRequestEditedType(TypedDict):
+    """pull_request edited event"""
 
-    action: Literal["created"]
-    comment: WebhookPullRequestReviewCommentCreatedPropCommentType
+    action: Literal["edited"]
+    changes: WebhookPullRequestEditedPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
+    number: int
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    pull_request: WebhookPullRequestReviewCommentCreatedPropPullRequestType
+    pull_request: PullRequestWebhookType
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookPullRequestReviewCommentCreatedTypeForResponse(TypedDict):
-    """pull_request_review_comment created event"""
+class WebhookPullRequestEditedTypeForResponse(TypedDict):
+    """pull_request edited event"""
 
-    action: Literal["created"]
-    comment: WebhookPullRequestReviewCommentCreatedPropCommentTypeForResponse
+    action: Literal["edited"]
+    changes: WebhookPullRequestEditedPropChangesTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
+    number: int
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    pull_request: WebhookPullRequestReviewCommentCreatedPropPullRequestTypeForResponse
+    pull_request: PullRequestWebhookTypeForResponse
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
-class WebhookPullRequestReviewCommentCreatedPropCommentType(TypedDict):
-    """Pull Request Review Comment
+class WebhookPullRequestEditedPropChangesType(TypedDict):
+    """WebhookPullRequestEditedPropChanges
 
-    The [comment](https://docs.github.com/enterprise-
-    cloud@latest/rest/pulls/comments#get-a-review-comment-for-a-pull-request)
-    itself.
+    The changes to the comment if the action was `edited`.
     """
 
-    links: WebhookPullRequestReviewCommentCreatedPropCommentPropLinksType
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    body: str
-    commit_id: str
-    created_at: _dt.datetime
-    diff_hunk: str
-    html_url: str
-    id: int
-    in_reply_to_id: NotRequired[int]
-    line: Union[int, None]
-    node_id: str
-    original_commit_id: str
-    original_line: Union[int, None]
-    original_position: int
-    original_start_line: Union[int, None]
-    path: str
-    position: Union[int, None]
-    pull_request_review_id: Union[int, None]
-    pull_request_url: str
-    reactions: WebhookPullRequestReviewCommentCreatedPropCommentPropReactionsType
-    side: Literal["LEFT", "RIGHT"]
-    start_line: Union[int, None]
-    start_side: Union[Literal["LEFT", "RIGHT"], None]
-    subject_type: NotRequired[Literal["line", "file"]]
-    updated_at: _dt.datetime
-    url: str
-    user: Union[WebhookPullRequestReviewCommentCreatedPropCommentPropUserType, None]
+    base: NotRequired[WebhookPullRequestEditedPropChangesPropBaseType]
+    body: NotRequired[WebhookPullRequestEditedPropChangesPropBodyType]
+    title: NotRequired[WebhookPullRequestEditedPropChangesPropTitleType]
 
 
-class WebhookPullRequestReviewCommentCreatedPropCommentTypeForResponse(TypedDict):
-    """Pull Request Review Comment
+class WebhookPullRequestEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookPullRequestEditedPropChanges
 
-    The [comment](https://docs.github.com/enterprise-
-    cloud@latest/rest/pulls/comments#get-a-review-comment-for-a-pull-request)
-    itself.
+    The changes to the comment if the action was `edited`.
     """
 
-    links: WebhookPullRequestReviewCommentCreatedPropCommentPropLinksTypeForResponse
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    body: str
-    commit_id: str
-    created_at: str
-    diff_hunk: str
-    html_url: str
-    id: int
-    in_reply_to_id: NotRequired[int]
-    line: Union[int, None]
-    node_id: str
-    original_commit_id: str
-    original_line: Union[int, None]
-    original_position: int
-    original_start_line: Union[int, None]
-    path: str
-    position: Union[int, None]
-    pull_request_review_id: Union[int, None]
-    pull_request_url: str
-    reactions: (
-        WebhookPullRequestReviewCommentCreatedPropCommentPropReactionsTypeForResponse
-    )
-    side: Literal["LEFT", "RIGHT"]
-    start_line: Union[int, None]
-    start_side: Union[Literal["LEFT", "RIGHT"], None]
-    subject_type: NotRequired[Literal["line", "file"]]
-    updated_at: str
-    url: str
-    user: Union[
-        WebhookPullRequestReviewCommentCreatedPropCommentPropUserTypeForResponse, None
-    ]
+    base: NotRequired[WebhookPullRequestEditedPropChangesPropBaseTypeForResponse]
+    body: NotRequired[WebhookPullRequestEditedPropChangesPropBodyTypeForResponse]
+    title: NotRequired[WebhookPullRequestEditedPropChangesPropTitleTypeForResponse]
 
 
-class WebhookPullRequestReviewCommentCreatedPropCommentPropReactionsType(TypedDict):
-    """Reactions"""
+class WebhookPullRequestEditedPropChangesPropBodyType(TypedDict):
+    """WebhookPullRequestEditedPropChangesPropBody"""
 
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
+    from_: str
 
 
-class WebhookPullRequestReviewCommentCreatedPropCommentPropReactionsTypeForResponse(
-    TypedDict
-):
-    """Reactions"""
+class WebhookPullRequestEditedPropChangesPropBodyTypeForResponse(TypedDict):
+    """WebhookPullRequestEditedPropChangesPropBody"""
 
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
+    from_: str
 
 
-class WebhookPullRequestReviewCommentCreatedPropCommentPropUserType(TypedDict):
-    """User"""
+class WebhookPullRequestEditedPropChangesPropTitleType(TypedDict):
+    """WebhookPullRequestEditedPropChangesPropTitle"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    from_: str
 
 
-class WebhookPullRequestReviewCommentCreatedPropCommentPropUserTypeForResponse(
-    TypedDict
-):
-    """User"""
+class WebhookPullRequestEditedPropChangesPropTitleTypeForResponse(TypedDict):
+    """WebhookPullRequestEditedPropChangesPropTitle"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    from_: str
 
 
-class WebhookPullRequestReviewCommentCreatedPropCommentPropLinksType(TypedDict):
-    """WebhookPullRequestReviewCommentCreatedPropCommentPropLinks"""
+class WebhookPullRequestEditedPropChangesPropBaseType(TypedDict):
+    """WebhookPullRequestEditedPropChangesPropBase"""
 
-    html: WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropHtmlType
-    pull_request: (
-        WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropPullRequestType
-    )
-    self_: WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropSelfType
+    ref: WebhookPullRequestEditedPropChangesPropBasePropRefType
+    sha: WebhookPullRequestEditedPropChangesPropBasePropShaType
 
 
-class WebhookPullRequestReviewCommentCreatedPropCommentPropLinksTypeForResponse(
-    TypedDict
-):
-    """WebhookPullRequestReviewCommentCreatedPropCommentPropLinks"""
+class WebhookPullRequestEditedPropChangesPropBaseTypeForResponse(TypedDict):
+    """WebhookPullRequestEditedPropChangesPropBase"""
 
-    html: WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropHtmlTypeForResponse
-    pull_request: WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropPullRequestTypeForResponse
-    self_: WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropSelfTypeForResponse
+    ref: WebhookPullRequestEditedPropChangesPropBasePropRefTypeForResponse
+    sha: WebhookPullRequestEditedPropChangesPropBasePropShaTypeForResponse
 
 
-class WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropHtmlType(TypedDict):
-    """Link"""
+class WebhookPullRequestEditedPropChangesPropBasePropRefType(TypedDict):
+    """WebhookPullRequestEditedPropChangesPropBasePropRef"""
 
-    href: str
-
-
-class WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropHtmlTypeForResponse(
-    TypedDict
-):
-    """Link"""
-
-    href: str
+    from_: str
 
 
-class WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropPullRequestType(
-    TypedDict
-):
-    """Link"""
+class WebhookPullRequestEditedPropChangesPropBasePropRefTypeForResponse(TypedDict):
+    """WebhookPullRequestEditedPropChangesPropBasePropRef"""
 
-    href: str
+    from_: str
 
 
-class WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropPullRequestTypeForResponse(
-    TypedDict
-):
-    """Link"""
+class WebhookPullRequestEditedPropChangesPropBasePropShaType(TypedDict):
+    """WebhookPullRequestEditedPropChangesPropBasePropSha"""
 
-    href: str
+    from_: str
 
 
-class WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropSelfType(TypedDict):
-    """Link"""
+class WebhookPullRequestEditedPropChangesPropBasePropShaTypeForResponse(TypedDict):
+    """WebhookPullRequestEditedPropChangesPropBasePropSha"""
 
-    href: str
-
-
-class WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropSelfTypeForResponse(
-    TypedDict
-):
-    """Link"""
-
-    href: str
+    from_: str
 
 
 __all__ = (
-    "WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropHtmlType",
-    "WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropHtmlTypeForResponse",
-    "WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropPullRequestType",
-    "WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropPullRequestTypeForResponse",
-    "WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropSelfType",
-    "WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropSelfTypeForResponse",
-    "WebhookPullRequestReviewCommentCreatedPropCommentPropLinksType",
-    "WebhookPullRequestReviewCommentCreatedPropCommentPropLinksTypeForResponse",
-    "WebhookPullRequestReviewCommentCreatedPropCommentPropReactionsType",
-    "WebhookPullRequestReviewCommentCreatedPropCommentPropReactionsTypeForResponse",
-    "WebhookPullRequestReviewCommentCreatedPropCommentPropUserType",
-    "WebhookPullRequestReviewCommentCreatedPropCommentPropUserTypeForResponse",
-    "WebhookPullRequestReviewCommentCreatedPropCommentType",
-    "WebhookPullRequestReviewCommentCreatedPropCommentTypeForResponse",
-    "WebhookPullRequestReviewCommentCreatedType",
-    "WebhookPullRequestReviewCommentCreatedTypeForResponse",
+    "WebhookPullRequestEditedPropChangesPropBasePropRefType",
+    "WebhookPullRequestEditedPropChangesPropBasePropRefTypeForResponse",
+    "WebhookPullRequestEditedPropChangesPropBasePropShaType",
+    "WebhookPullRequestEditedPropChangesPropBasePropShaTypeForResponse",
+    "WebhookPullRequestEditedPropChangesPropBaseType",
+    "WebhookPullRequestEditedPropChangesPropBaseTypeForResponse",
+    "WebhookPullRequestEditedPropChangesPropBodyType",
+    "WebhookPullRequestEditedPropChangesPropBodyTypeForResponse",
+    "WebhookPullRequestEditedPropChangesPropTitleType",
+    "WebhookPullRequestEditedPropChangesPropTitleTypeForResponse",
+    "WebhookPullRequestEditedPropChangesType",
+    "WebhookPullRequestEditedPropChangesTypeForResponse",
+    "WebhookPullRequestEditedType",
+    "WebhookPullRequestEditedTypeForResponse",
 )

@@ -9,45 +9,76 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0622 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0623 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0624 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0625 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0628 import ExemptionRequestType, ExemptionRequestTypeForResponse
+
+class WebhooksChanges8Type(TypedDict):
+    """WebhooksChanges8"""
+
+    tier: WebhooksChanges8PropTierType
 
 
-class WebhookExemptionRequestCreatedType(TypedDict):
-    """Exemption request created event"""
+class WebhooksChanges8TypeForResponse(TypedDict):
+    """WebhooksChanges8"""
 
-    action: Literal["created"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    exemption_request: ExemptionRequestType
-    sender: SimpleUserType
+    tier: WebhooksChanges8PropTierTypeForResponse
 
 
-class WebhookExemptionRequestCreatedTypeForResponse(TypedDict):
-    """Exemption request created event"""
+class WebhooksChanges8PropTierType(TypedDict):
+    """WebhooksChanges8PropTier"""
 
-    action: Literal["created"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    exemption_request: ExemptionRequestTypeForResponse
-    sender: SimpleUserTypeForResponse
+    from_: WebhooksChanges8PropTierPropFromType
+
+
+class WebhooksChanges8PropTierTypeForResponse(TypedDict):
+    """WebhooksChanges8PropTier"""
+
+    from_: WebhooksChanges8PropTierPropFromTypeForResponse
+
+
+class WebhooksChanges8PropTierPropFromType(TypedDict):
+    """Sponsorship Tier
+
+    The `tier_changed` and `pending_tier_change` will include the original tier
+    before the change or pending change. For more information, see the pending tier
+    change payload.
+    """
+
+    created_at: str
+    description: str
+    is_custom_ammount: NotRequired[bool]
+    is_custom_amount: NotRequired[bool]
+    is_one_time: bool
+    monthly_price_in_cents: int
+    monthly_price_in_dollars: int
+    name: str
+    node_id: str
+
+
+class WebhooksChanges8PropTierPropFromTypeForResponse(TypedDict):
+    """Sponsorship Tier
+
+    The `tier_changed` and `pending_tier_change` will include the original tier
+    before the change or pending change. For more information, see the pending tier
+    change payload.
+    """
+
+    created_at: str
+    description: str
+    is_custom_ammount: NotRequired[bool]
+    is_custom_amount: NotRequired[bool]
+    is_one_time: bool
+    monthly_price_in_cents: int
+    monthly_price_in_dollars: int
+    name: str
+    node_id: str
 
 
 __all__ = (
-    "WebhookExemptionRequestCreatedType",
-    "WebhookExemptionRequestCreatedTypeForResponse",
+    "WebhooksChanges8PropTierPropFromType",
+    "WebhooksChanges8PropTierPropFromTypeForResponse",
+    "WebhooksChanges8PropTierType",
+    "WebhooksChanges8PropTierTypeForResponse",
+    "WebhooksChanges8Type",
+    "WebhooksChanges8TypeForResponse",
 )

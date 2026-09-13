@@ -12,27 +12,28 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0191 import (
-    SecretScanningCustomPatternToDeleteType,
-    SecretScanningCustomPatternToDeleteTypeForResponse,
-)
+
+class OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1Type(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1"""
+
+    type: Literal["Issue", "PullRequest"]
+    id: NotRequired[int]
+    owner: str
+    repo: str
+    number: int
 
 
-class OrgsOrgSecretScanningCustomPatternsDeleteBodyType(TypedDict):
-    """OrgsOrgSecretScanningCustomPatternsDeleteBody"""
+class OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1TypeForResponse(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1"""
 
-    patterns: list[SecretScanningCustomPatternToDeleteType]
-    post_delete_action: NotRequired[Literal["delete_alerts", "resolve_alerts"]]
-
-
-class OrgsOrgSecretScanningCustomPatternsDeleteBodyTypeForResponse(TypedDict):
-    """OrgsOrgSecretScanningCustomPatternsDeleteBody"""
-
-    patterns: list[SecretScanningCustomPatternToDeleteTypeForResponse]
-    post_delete_action: NotRequired[Literal["delete_alerts", "resolve_alerts"]]
+    type: Literal["Issue", "PullRequest"]
+    id: NotRequired[int]
+    owner: str
+    repo: str
+    number: int
 
 
 __all__ = (
-    "OrgsOrgSecretScanningCustomPatternsDeleteBodyType",
-    "OrgsOrgSecretScanningCustomPatternsDeleteBodyTypeForResponse",
+    "OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1Type",
+    "OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1TypeForResponse",
 )

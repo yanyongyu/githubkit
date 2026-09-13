@@ -9,43 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0120 import (
-    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
-    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse,
-)
-from .group_0122 import (
-    RepositoryRulesetConditionsPropRefNameType,
-    RepositoryRulesetConditionsPropRefNameTypeForResponse,
+from .group_0173 import (
+    RepositoryRuleMergeQueuePropParametersType,
+    RepositoryRuleMergeQueuePropParametersTypeForResponse,
 )
 
 
-class OrgRulesetConditionsOneof0Type(TypedDict):
-    """repository_name_and_ref_name
+class RepositoryRuleMergeQueueType(TypedDict):
+    """merge_queue
 
-    Conditions to target repositories by name and refs by name
+    Merges must be performed via a merge queue.
     """
 
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
-    repository_name: (
-        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
-    )
+    type: Literal["merge_queue"]
+    parameters: NotRequired[RepositoryRuleMergeQueuePropParametersType]
 
 
-class OrgRulesetConditionsOneof0TypeForResponse(TypedDict):
-    """repository_name_and_ref_name
+class RepositoryRuleMergeQueueTypeForResponse(TypedDict):
+    """merge_queue
 
-    Conditions to target repositories by name and refs by name
+    Merges must be performed via a merge queue.
     """
 
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
-    repository_name: (
-        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse
-    )
+    type: Literal["merge_queue"]
+    parameters: NotRequired[RepositoryRuleMergeQueuePropParametersTypeForResponse]
 
 
 __all__ = (
-    "OrgRulesetConditionsOneof0Type",
-    "OrgRulesetConditionsOneof0TypeForResponse",
+    "RepositoryRuleMergeQueueType",
+    "RepositoryRuleMergeQueueTypeForResponse",
 )

@@ -9,25 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgPersonalAccessTokensPostBodyType(TypedDict):
-    """OrgsOrgPersonalAccessTokensPostBody"""
+class OrgsOrgInteractionLimitsPullsCreationCapPatchBodyType(TypedDict):
+    """OrgsOrgInteractionLimitsPullsCreationCapPatchBody"""
 
-    action: Literal["revoke"]
-    pat_ids: list[int]
+    enabled: bool
+    max_open_pull_requests: NotRequired[int]
 
 
-class OrgsOrgPersonalAccessTokensPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgPersonalAccessTokensPostBody"""
+class OrgsOrgInteractionLimitsPullsCreationCapPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgInteractionLimitsPullsCreationCapPatchBody"""
 
-    action: Literal["revoke"]
-    pat_ids: list[int]
+    enabled: bool
+    max_open_pull_requests: NotRequired[int]
 
 
 __all__ = (
-    "OrgsOrgPersonalAccessTokensPostBodyType",
-    "OrgsOrgPersonalAccessTokensPostBodyTypeForResponse",
+    "OrgsOrgInteractionLimitsPullsCreationCapPatchBodyType",
+    "OrgsOrgInteractionLimitsPullsCreationCapPatchBodyTypeForResponse",
 )

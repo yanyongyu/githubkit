@@ -9,26 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0054 import RunnerType, RunnerTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoActionsRunnersGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsRunnersGetResponse200"""
+class OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType(TypedDict):
+    """OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody"""
 
-    total_count: int
-    runners: list[RunnerType]
+    permission: NotRequired[str]
 
 
-class ReposOwnerRepoActionsRunnersGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsRunnersGetResponse200"""
+class OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody"""
 
-    total_count: int
-    runners: list[RunnerTypeForResponse]
+    permission: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsRunnersGetResponse200Type",
-    "ReposOwnerRepoActionsRunnersGetResponse200TypeForResponse",
+    "OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType",
+    "OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyTypeForResponse",
 )

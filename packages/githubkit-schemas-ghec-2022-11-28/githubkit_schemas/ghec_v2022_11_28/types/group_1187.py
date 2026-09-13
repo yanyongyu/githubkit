@@ -13,27 +13,25 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType(
+class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBodyType(TypedDict):
+    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBody"""
+
+    client_id: str
+    repository_selection: Literal["all", "selected", "none"]
+    repositories: NotRequired[list[str]]
+
+
+class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBodyTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBody"""
+    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBody"""
 
-    default_for_new_repos: NotRequired[
-        Literal["all", "none", "private_and_internal", "public"]
-    ]
-
-
-class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBody"""
-
-    default_for_new_repos: NotRequired[
-        Literal["all", "none", "private_and_internal", "public"]
-    ]
+    client_id: str
+    repository_selection: Literal["all", "selected", "none"]
+    repositories: NotRequired[list[str]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType",
-    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyTypeForResponse",
+    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBodyType",
+    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBodyTypeForResponse",
 )

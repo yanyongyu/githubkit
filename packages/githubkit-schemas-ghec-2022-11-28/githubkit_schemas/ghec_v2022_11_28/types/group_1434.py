@@ -9,51 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgSecretScanningCustomPatternsPostResponse422Type(TypedDict):
-    """OrgsOrgSecretScanningCustomPatternsPostResponse422"""
+class OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0Type(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0"""
 
-    message: NotRequired[str]
-    validation_errors: NotRequired[
-        OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrorsType
-    ]
-
-
-class OrgsOrgSecretScanningCustomPatternsPostResponse422TypeForResponse(TypedDict):
-    """OrgsOrgSecretScanningCustomPatternsPostResponse422"""
-
-    message: NotRequired[str]
-    validation_errors: NotRequired[
-        OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse
-    ]
+    type: Literal["Issue", "PullRequest"]
+    id: int
+    owner: NotRequired[str]
+    repo: NotRequired[str]
+    number: NotRequired[int]
 
 
-OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrorsType: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors
+class OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0TypeForResponse(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0"""
 
-A map of validation errors keyed by the zero-based index of the pattern that
-failed.
-"""
-
-
-OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors
-
-A map of validation errors keyed by the zero-based index of the pattern that
-failed.
-"""
+    type: Literal["Issue", "PullRequest"]
+    id: int
+    owner: NotRequired[str]
+    repo: NotRequired[str]
+    number: NotRequired[int]
 
 
 __all__ = (
-    "OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrorsType",
-    "OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse",
-    "OrgsOrgSecretScanningCustomPatternsPostResponse422Type",
-    "OrgsOrgSecretScanningCustomPatternsPostResponse422TypeForResponse",
+    "OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0Type",
+    "OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0TypeForResponse",
 )

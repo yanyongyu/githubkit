@@ -11,22 +11,41 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0116 import (
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse,
+)
+from .group_0118 import (
+    RepositoryRulesetConditionsPropRefNameType,
+    RepositoryRulesetConditionsPropRefNameTypeForResponse,
+)
 
-class RepositoryRuleCopilotCodeReviewPropParametersType(TypedDict):
-    """RepositoryRuleCopilotCodeReviewPropParameters"""
 
-    review_draft_pull_requests: NotRequired[bool]
-    review_on_push: NotRequired[bool]
+class OrgRulesetConditionsOneof0Type(TypedDict):
+    """repository_name_and_ref_name
+
+    Conditions to target repositories by name and refs by name
+    """
+
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
+    repository_name: (
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
+    )
 
 
-class RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleCopilotCodeReviewPropParameters"""
+class OrgRulesetConditionsOneof0TypeForResponse(TypedDict):
+    """repository_name_and_ref_name
 
-    review_draft_pull_requests: NotRequired[bool]
-    review_on_push: NotRequired[bool]
+    Conditions to target repositories by name and refs by name
+    """
+
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
+    repository_name: (
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse
+    )
 
 
 __all__ = (
-    "RepositoryRuleCopilotCodeReviewPropParametersType",
-    "RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse",
+    "OrgRulesetConditionsOneof0Type",
+    "OrgRulesetConditionsOneof0TypeForResponse",
 )

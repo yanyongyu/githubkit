@@ -9,36 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ConcurrencyGroupList(GitHubModel):
-    """Concurrency Group List
+class ConcurrencyGroup(GitHubModel):
+    """Concurrency Group
 
-    A list of active concurrency groups for a repository.
+    A concurrency group with the workflow runs and jobs that are either currently
+    holding
+    or waiting for the concurrency group lease.
     """
-
-    total_count: int = Field()
-    concurrency_groups: list[ConcurrencyGroupListPropConcurrencyGroupsItems] = Field()
-
-
-class ConcurrencyGroupListPropConcurrencyGroupsItems(GitHubModel):
-    """ConcurrencyGroupListPropConcurrencyGroupsItems"""
 
     group_name: str = Field(description="The name of the concurrency group.")
     group_url: str = Field(description="API URL for this concurrency group.")
-    last_acquired_at: Union[_dt.datetime, None] = Field()
+    total_count: int = Field()
+    group_members: list[ConcurrencyGroupPropGroupMembersItems] = Field()
 
 
-model_rebuild(ConcurrencyGroupList)
-model_rebuild(ConcurrencyGroupListPropConcurrencyGroupsItems)
+class ConcurrencyGroupPropGroupMembersItems(GitHubModel):
+    """ConcurrencyGroupPropGroupMembersItems"""
+
+    run_id: int = Field(description="The ID of the workflow run.")
+    run_name: str = Field(description="The name of the workflow run.")
+    run_url: Union[str, None] = Field(description="API URL for the workflow run.")
+    run_html_url: Union[str, None] = Field(description="Web URL for the workflow run.")
+    job_id: Missing[int] = Field(
+        default=UNSET,
+        description="The ID of the job, when the item represents a job-level or reusable-workflow-level lease.",
+    )
+    job_name: Missing[str] = Field(
+        default=UNSET,
+        description="The display name of the job, when the item represents a job-level or reusable-workflow-level lease.",
+    )
+    job_url: Missing[Union[str, None]] = Field(
+        default=UNSET, description="API URL for the job."
+    )
+    job_html_url: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Web URL for the job."
+    )
+    status: Literal["in_progress", "pending"] = Field()
+
+
+model_rebuild(ConcurrencyGroup)
+model_rebuild(ConcurrencyGroupPropGroupMembersItems)
 
 __all__ = (
-    "ConcurrencyGroupList",
-    "ConcurrencyGroupListPropConcurrencyGroupsItems",
+    "ConcurrencyGroup",
+    "ConcurrencyGroupPropGroupMembersItems",
 )

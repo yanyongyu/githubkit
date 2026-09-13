@@ -9,27 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0189 import (
-    SecretScanningCustomPatternToCreateType,
-    SecretScanningCustomPatternToCreateTypeForResponse,
-)
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoSecretScanningCustomPatternsPostBodyType(TypedDict):
-    """ReposOwnerRepoSecretScanningCustomPatternsPostBody"""
+class ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Type(TypedDict):
+    """ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202"""
 
-    patterns: list[SecretScanningCustomPatternToCreateType]
+    message: NotRequired[str]
+    url: NotRequired[str]
 
 
-class ReposOwnerRepoSecretScanningCustomPatternsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoSecretScanningCustomPatternsPostBody"""
+class ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202TypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202"""
 
-    patterns: list[SecretScanningCustomPatternToCreateTypeForResponse]
+    message: NotRequired[str]
+    url: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoSecretScanningCustomPatternsPostBodyType",
-    "ReposOwnerRepoSecretScanningCustomPatternsPostBodyTypeForResponse",
+    "ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Type",
+    "ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202TypeForResponse",
 )

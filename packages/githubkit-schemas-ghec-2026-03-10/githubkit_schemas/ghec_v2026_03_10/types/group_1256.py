@@ -12,23 +12,29 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBodyType(
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBodyType(
     TypedDict
 ):
-    """EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBody"""
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody"""
 
-    user_identifier: NotRequired[str]
+    users: NotRequired[list[str]]
+    organizations: NotRequired[list[str]]
+    repositories: NotRequired[list[str]]
+    enterprise_teams: NotRequired[list[str]]
 
 
-class EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBodyTypeForResponse(
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBodyTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBody"""
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody"""
 
-    user_identifier: NotRequired[str]
+    users: NotRequired[list[str]]
+    organizations: NotRequired[list[str]]
+    repositories: NotRequired[list[str]]
+    enterprise_teams: NotRequired[list[str]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBodyType",
-    "EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBodyTypeForResponse",
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBodyType",
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBodyTypeForResponse",
 )

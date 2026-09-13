@@ -16,23 +16,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RunnerApplication(GitHubModel):
-    """Runner Application
+class InstallableOrganization(GitHubModel):
+    """Installable Organization
 
-    Runner Application
+    A GitHub organization on which a GitHub App can be installed.
     """
 
-    os: str = Field()
-    architecture: str = Field()
-    download_url: str = Field()
-    filename: str = Field()
-    temp_download_token: Missing[str] = Field(
-        default=UNSET,
-        description="A short lived bearer token used to download the runner, if needed.",
-    )
-    sha256_checksum: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    accessible_repositories_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(RunnerApplication)
+model_rebuild(InstallableOrganization)
 
-__all__ = ("RunnerApplication",)
+__all__ = ("InstallableOrganization",)

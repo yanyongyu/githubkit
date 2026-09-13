@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Annotated, Literal, Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,76 +18,54 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0076 import SimpleRepository
-from .group_0092 import DependabotAlertSecurityVulnerability
-from .group_0093 import DependabotAlertSecurityAdvisory
-from .group_0094 import DependabotAlertDismissalRequestSimple
-from .group_0096 import DependabotAlertWithRepositoryPropDependency
+from .group_0008 import Enterprise
 
 
-class DependabotAlertWithRepository(GitHubModel):
-    """DependabotAlertWithRepository
+class EnterpriseRole(GitHubModel):
+    """Enterprise Role
 
-    A Dependabot alert.
+    Enterprise custom roles
     """
 
-    number: int = Field(description="The security alert number.")
-    state: Literal["auto_dismissed", "dismissed", "fixed", "open"] = Field(
-        description="The state of the Dependabot alert."
+    id: int = Field(description="The unique identifier of the role.")
+    name: str = Field(description="The name of the role.")
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="A short description about who this role is for or what permissions it grants.",
     )
-    dependency: DependabotAlertWithRepositoryPropDependency = Field(
-        description="Details for the vulnerable dependency."
+    source: Missing[Union[Literal["Enterprise", "Predefined"], None]] = Field(
+        default=UNSET,
+        description='Source answers the question, "where did this role come from?"',
     )
-    security_advisory: DependabotAlertSecurityAdvisory = Field(
-        description="Details for the GitHub Security Advisory."
+    permissions: list[str] = Field(
+        description="A list of permissions included in this role."
     )
-    security_vulnerability: DependabotAlertSecurityVulnerability = Field(
-        description="Details pertaining to one vulnerable version range for the advisory."
-    )
-    url: str = Field(description="The REST API URL of the alert resource.")
-    html_url: str = Field(description="The GitHub URL of the alert resource.")
+    enterprise: Union[Enterprise, None] = Field()
     created_at: _dt.datetime = Field(
-        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+        description="The date and time the role was created."
     )
     updated_at: _dt.datetime = Field(
-        description="The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+        description="The date and time the role was last updated."
     )
-    dismissed_at: Union[_dt.datetime, None] = Field(
-        description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    dismissed_by: Union[SimpleUser, None] = Field()
-    dismissed_reason: Union[
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ],
-        None,
-    ] = Field(description="The reason that the alert was dismissed.")
-    dismissed_comment: Union[Annotated[str, Field(max_length=280)], None] = Field(
-        description="An optional comment associated with the alert's dismissal."
-    )
-    fixed_at: Union[_dt.datetime, None] = Field(
-        description="The time that the alert was no longer detected and was considered fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    auto_dismissed_at: Missing[Union[_dt.datetime, None]] = Field(
+
+
+class EnterprisesEnterpriseEnterpriseRolesGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseEnterpriseRolesGetResponse200"""
+
+    total_count: Missing[int] = Field(
         default=UNSET,
-        description="The time that the alert was auto-dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        description="The total number of enterprise roles available to the enterprise.",
     )
-    dismissal_request: Missing[Union[DependabotAlertDismissalRequestSimple, None]] = (
-        Field(
-            default=UNSET,
-            title="Dependabot alert dismissal request",
-            description="Information about an active dismissal request for this Dependabot alert.",
-        )
-    )
-    assignees: Missing[list[SimpleUser]] = Field(
-        default=UNSET, description="The users assigned to this alert."
-    )
-    repository: SimpleRepository = Field(
-        title="Simple Repository", description="A GitHub repository."
+    roles: Missing[list[EnterpriseRole]] = Field(
+        default=UNSET,
+        description="The list of enterprise roles available to the enterprise.",
     )
 
 
-model_rebuild(DependabotAlertWithRepository)
+model_rebuild(EnterpriseRole)
+model_rebuild(EnterprisesEnterpriseEnterpriseRolesGetResponse200)
 
-__all__ = ("DependabotAlertWithRepository",)
+__all__ = (
+    "EnterpriseRole",
+    "EnterprisesEnterpriseEnterpriseRolesGetResponse200",
+)

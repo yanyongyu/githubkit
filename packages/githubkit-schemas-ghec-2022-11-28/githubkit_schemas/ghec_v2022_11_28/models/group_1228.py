@@ -9,44 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBody(
-    GitHubModel
-):
-    """EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBody"""
+class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBody(GitHubModel):
+    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBody"""
 
-    name: Missing[str] = Field(
+    revoke_credentials: Missing[bool] = Field(
         default=UNSET,
-        description="Name of the network configuration. Must be between 1 and 100 characters and may only contain upper and lowercase letters a-z, numbers 0-9, `.`, `-`, and `_`.",
-    )
-    compute_service: Missing[Literal["none", "actions"]] = Field(
-        default=UNSET,
-        description="The hosted compute service to use for the network configuration.",
-    )
-    network_settings_ids: Missing[list[str]] = Field(
-        max_length=1 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="A list of identifiers of the network settings resources to use for the network configuration. Exactly one resource identifier must be specified in the list.",
-    )
-    failover_network_settings_ids: Missing[list[str]] = Field(
-        max_length=1 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="A list of identifiers of the failover network settings resources to use for the network configuration. Exactly one resource identifier must be specified in the list.",
-    )
-    failover_network_enabled: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether the failover network resource is enabled.",
+        description="Whether to also destroy the actual credentials (PATs and SSH keys) owned by\nthe user. This option is only available for Enterprise Managed User (EMU)\nenterprises. When set to `true`, all PATs (v1 and v2) and SSH keys owned\nby the user will be destroyed in addition to the credential authorizations.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBody)
+model_rebuild(EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBody)
 
-__all__ = ("EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBody",)
+__all__ = ("EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBody",)

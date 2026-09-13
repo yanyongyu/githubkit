@@ -9,42 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from pydantic import Field
-
 from githubkit.compat import ExtraGitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCopilotUsageRecordsGetResponse200Items(ExtraGitHubModel):
-    """EnterprisesEnterpriseCopilotUsageRecordsGetResponse200Items"""
-
-    type: Missing[str] = Field(
-        default=UNSET, description="The record type (request or response)."
-    )
-    user_id: Missing[int] = Field(
-        default=UNSET, description="The ID of the user who made the request."
-    )
-    enterprise_id: Missing[int] = Field(
-        default=UNSET, description="The ID of the enterprise."
-    )
-    github_request_id: Missing[str] = Field(
-        default=UNSET, description="The GitHub request ID."
-    )
-    endpoint: Missing[str] = Field(
-        default=UNSET, description="The API endpoint called."
-    )
-    body: Missing[str] = Field(
-        default=UNSET, description="The request or response body."
-    )
-    timestamp: Missing[int] = Field(
-        default=UNSET, alias="@timestamp", description="Milliseconds since Unix epoch."
-    )
-    event_id: Missing[str] = Field(
-        default=UNSET, description="The source-assigned event ID."
-    )
+class EnterprisesEnterpriseCopilotContentExclusionPutBody(ExtraGitHubModel):
+    """EnterprisesEnterpriseCopilotContentExclusionPutBody"""
 
 
-model_rebuild(EnterprisesEnterpriseCopilotUsageRecordsGetResponse200Items)
+model_rebuild(EnterprisesEnterpriseCopilotContentExclusionPutBody)
 
-__all__ = ("EnterprisesEnterpriseCopilotUsageRecordsGetResponse200Items",)
+__all__ = ("EnterprisesEnterpriseCopilotContentExclusionPutBody",)

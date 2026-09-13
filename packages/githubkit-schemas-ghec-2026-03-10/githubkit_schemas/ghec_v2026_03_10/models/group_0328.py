@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
 
 from pydantic import Field
 
@@ -18,20 +18,33 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ProjectsV2FieldSingleSelectOption(GitHubModel):
-    """ProjectsV2FieldSingleSelectOption"""
+class ProjectsV2FieldIterationConfiguration(GitHubModel):
+    """ProjectsV2FieldIterationConfiguration
 
-    name: Missing[str] = Field(
-        default=UNSET, description="The display name of the option."
+    The configuration for iteration fields.
+    """
+
+    start_date: _dt.date = Field(description="The start date of the first iteration.")
+    duration: int = Field(
+        description="The default duration for iterations in days. Individual iterations can override this value."
     )
-    color: Missing[
-        Literal["BLUE", "GRAY", "GREEN", "ORANGE", "PINK", "PURPLE", "RED", "YELLOW"]
-    ] = Field(default=UNSET, description="The color associated with the option.")
-    description: Missing[str] = Field(
-        default=UNSET, description="The description of the option."
-    )
+    iterations: Missing[
+        list[ProjectsV2FieldIterationConfigurationPropIterationsItems]
+    ] = Field(default=UNSET, description="Zero or more iterations for the field.")
 
 
-model_rebuild(ProjectsV2FieldSingleSelectOption)
+class ProjectsV2FieldIterationConfigurationPropIterationsItems(GitHubModel):
+    """ProjectsV2FieldIterationConfigurationPropIterationsItems"""
 
-__all__ = ("ProjectsV2FieldSingleSelectOption",)
+    title: str = Field(description="The title of the iteration.")
+    start_date: _dt.date = Field(description="The start date of the iteration.")
+    duration: int = Field(description="The duration of the iteration in days.")
+
+
+model_rebuild(ProjectsV2FieldIterationConfiguration)
+model_rebuild(ProjectsV2FieldIterationConfigurationPropIterationsItems)
+
+__all__ = (
+    "ProjectsV2FieldIterationConfiguration",
+    "ProjectsV2FieldIterationConfigurationPropIterationsItems",
+)

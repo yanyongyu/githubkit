@@ -9,35 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0118 import (
-    EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType,
-    EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameTypeForResponse,
+    RepositoryRulesetConditionsPropRefNameType,
+    RepositoryRulesetConditionsPropRefNameTypeForResponse,
 )
 
 
-class EnterpriseRulesetConditionsOrganizationNameTargetType(TypedDict):
-    """Repository ruleset conditions for organization names
+class RepositoryRulesetConditionsType(TypedDict):
+    """Repository ruleset conditions for ref names
 
-    Parameters for an organization name condition
+    Parameters for a repository ruleset ref name condition
     """
 
-    organization_name: (
-        EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType
-    )
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
 
 
-class EnterpriseRulesetConditionsOrganizationNameTargetTypeForResponse(TypedDict):
-    """Repository ruleset conditions for organization names
+class RepositoryRulesetConditionsTypeForResponse(TypedDict):
+    """Repository ruleset conditions for ref names
 
-    Parameters for an organization name condition
+    Parameters for a repository ruleset ref name condition
     """
 
-    organization_name: EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameTypeForResponse
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
 
 
 __all__ = (
-    "EnterpriseRulesetConditionsOrganizationNameTargetType",
-    "EnterpriseRulesetConditionsOrganizationNameTargetTypeForResponse",
+    "RepositoryRulesetConditionsType",
+    "RepositoryRulesetConditionsTypeForResponse",
 )

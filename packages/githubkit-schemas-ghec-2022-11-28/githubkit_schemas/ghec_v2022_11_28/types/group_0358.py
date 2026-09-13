@@ -13,29 +13,25 @@ import datetime as _dt
 from typing_extensions import TypedDict
 
 
-class ActionsSecretType(TypedDict):
-    """Actions Secret
-
-    Set secrets for GitHub Actions.
-    """
+class ActionsVariableType(TypedDict):
+    """Actions Variable"""
 
     name: str
+    value: str
     created_at: _dt.datetime
     updated_at: _dt.datetime
 
 
-class ActionsSecretTypeForResponse(TypedDict):
-    """Actions Secret
-
-    Set secrets for GitHub Actions.
-    """
+class ActionsVariableTypeForResponse(TypedDict):
+    """Actions Variable"""
 
     name: str
+    value: str
     created_at: str
     updated_at: str
 
 
 __all__ = (
-    "ActionsSecretType",
-    "ActionsSecretTypeForResponse",
+    "ActionsVariableType",
+    "ActionsVariableTypeForResponse",
 )

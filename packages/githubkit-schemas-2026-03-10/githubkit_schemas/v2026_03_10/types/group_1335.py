@@ -9,84 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoContentsPathPutBodyType(TypedDict):
-    """ReposOwnerRepoContentsPathPutBody"""
+class ReposOwnerRepoCodeScanningSarifsPostBodyType(TypedDict):
+    """ReposOwnerRepoCodeScanningSarifsPostBody"""
 
-    message: str
-    content: str
-    sha: NotRequired[str]
-    branch: NotRequired[str]
-    committer: NotRequired[ReposOwnerRepoContentsPathPutBodyPropCommitterType]
-    author: NotRequired[ReposOwnerRepoContentsPathPutBodyPropAuthorType]
-
-
-class ReposOwnerRepoContentsPathPutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoContentsPathPutBody"""
-
-    message: str
-    content: str
-    sha: NotRequired[str]
-    branch: NotRequired[str]
-    committer: NotRequired[
-        ReposOwnerRepoContentsPathPutBodyPropCommitterTypeForResponse
-    ]
-    author: NotRequired[ReposOwnerRepoContentsPathPutBodyPropAuthorTypeForResponse]
+    commit_sha: str
+    ref: str
+    sarif: str
+    checkout_uri: NotRequired[str]
+    started_at: NotRequired[_dt.datetime]
+    tool_name: NotRequired[str]
+    validate_: NotRequired[bool]
 
 
-class ReposOwnerRepoContentsPathPutBodyPropCommitterType(TypedDict):
-    """ReposOwnerRepoContentsPathPutBodyPropCommitter
+class ReposOwnerRepoCodeScanningSarifsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoCodeScanningSarifsPostBody"""
 
-    The person that committed the file. Default: the authenticated user.
-    """
-
-    name: str
-    email: str
-    date: NotRequired[str]
-
-
-class ReposOwnerRepoContentsPathPutBodyPropCommitterTypeForResponse(TypedDict):
-    """ReposOwnerRepoContentsPathPutBodyPropCommitter
-
-    The person that committed the file. Default: the authenticated user.
-    """
-
-    name: str
-    email: str
-    date: NotRequired[str]
-
-
-class ReposOwnerRepoContentsPathPutBodyPropAuthorType(TypedDict):
-    """ReposOwnerRepoContentsPathPutBodyPropAuthor
-
-    The author of the file. Default: The `committer` or the authenticated user if
-    you omit `committer`.
-    """
-
-    name: str
-    email: str
-    date: NotRequired[str]
-
-
-class ReposOwnerRepoContentsPathPutBodyPropAuthorTypeForResponse(TypedDict):
-    """ReposOwnerRepoContentsPathPutBodyPropAuthor
-
-    The author of the file. Default: The `committer` or the authenticated user if
-    you omit `committer`.
-    """
-
-    name: str
-    email: str
-    date: NotRequired[str]
+    commit_sha: str
+    ref: str
+    sarif: str
+    checkout_uri: NotRequired[str]
+    started_at: NotRequired[str]
+    tool_name: NotRequired[str]
+    validate_: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoContentsPathPutBodyPropAuthorType",
-    "ReposOwnerRepoContentsPathPutBodyPropAuthorTypeForResponse",
-    "ReposOwnerRepoContentsPathPutBodyPropCommitterType",
-    "ReposOwnerRepoContentsPathPutBodyPropCommitterTypeForResponse",
-    "ReposOwnerRepoContentsPathPutBodyType",
-    "ReposOwnerRepoContentsPathPutBodyTypeForResponse",
+    "ReposOwnerRepoCodeScanningSarifsPostBodyType",
+    "ReposOwnerRepoCodeScanningSarifsPostBodyTypeForResponse",
 )

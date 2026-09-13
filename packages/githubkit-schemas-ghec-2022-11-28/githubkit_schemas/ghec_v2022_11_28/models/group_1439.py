@@ -11,18 +11,24 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
-from .group_0256 import MinimalRepository
-
-
-class OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200(GitHubModel):
-    """OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200"""
-
-    total_count: int = Field()
-    repositories: list[MinimalRepository] = Field()
+from .group_0108 import CustomPropertyValue
 
 
-model_rebuild(OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200)
+class OrgsOrgPropertiesValuesPatchBody(GitHubModel):
+    """OrgsOrgPropertiesValuesPatchBody"""
 
-__all__ = ("OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200",)
+    repository_names: list[str] = Field(
+        max_length=30 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The names of repositories that the custom property values will be applied to.",
+    )
+    properties: list[CustomPropertyValue] = Field(
+        description="List of custom property names and associated values to apply to the repositories."
+    )
+
+
+model_rebuild(OrgsOrgPropertiesValuesPatchBody)
+
+__all__ = ("OrgsOrgPropertiesValuesPatchBody",)

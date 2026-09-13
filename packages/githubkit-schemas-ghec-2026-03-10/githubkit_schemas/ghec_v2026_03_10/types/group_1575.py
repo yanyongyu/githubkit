@@ -12,15 +12,21 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoInteractionLimitsGetResponse200Anyof1Type(TypedDict):
-    """ReposOwnerRepoInteractionLimitsGetResponse200Anyof1"""
+class ReposOwnerRepoGitRefsPostBodyType(TypedDict):
+    """ReposOwnerRepoGitRefsPostBody"""
+
+    ref: str
+    sha: str
 
 
-class ReposOwnerRepoInteractionLimitsGetResponse200Anyof1TypeForResponse(TypedDict):
-    """ReposOwnerRepoInteractionLimitsGetResponse200Anyof1"""
+class ReposOwnerRepoGitRefsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoGitRefsPostBody"""
+
+    ref: str
+    sha: str
 
 
 __all__ = (
-    "ReposOwnerRepoInteractionLimitsGetResponse200Anyof1Type",
-    "ReposOwnerRepoInteractionLimitsGetResponse200Anyof1TypeForResponse",
+    "ReposOwnerRepoGitRefsPostBodyType",
+    "ReposOwnerRepoGitRefsPostBodyTypeForResponse",
 )

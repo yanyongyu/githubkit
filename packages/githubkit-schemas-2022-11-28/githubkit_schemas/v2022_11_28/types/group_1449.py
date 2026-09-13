@@ -9,37 +9,63 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type(TypedDict):
-    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0"""
+class ReposOwnerRepoPullsPullNumberReviewsPostBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberReviewsPostBody"""
 
-    state: Literal["open", "resolved"]
-    resolution: NotRequired[
-        Union[Literal["false_positive", "wont_fix", "revoked", "used_in_tests"], None]
+    commit_id: NotRequired[str]
+    body: NotRequired[str]
+    event: NotRequired[Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]]
+    comments: NotRequired[
+        list[ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsType]
     ]
-    resolution_comment: NotRequired[Union[str, None]]
-    assignee: NotRequired[Union[str, None]]
-    validity: NotRequired[Union[Literal["active", "inactive"], None]]
 
 
-class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0TypeForResponse(
+class ReposOwnerRepoPullsPullNumberReviewsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPullNumberReviewsPostBody"""
+
+    commit_id: NotRequired[str]
+    body: NotRequired[str]
+    event: NotRequired[Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]]
+    comments: NotRequired[
+        list[
+            ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsTypeForResponse
+        ]
+    ]
+
+
+class ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems"""
+
+    path: str
+    position: NotRequired[int]
+    body: str
+    line: NotRequired[int]
+    side: NotRequired[str]
+    start_line: NotRequired[int]
+    start_side: NotRequired[str]
+
+
+class ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsTypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0"""
+    """ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems"""
 
-    state: Literal["open", "resolved"]
-    resolution: NotRequired[
-        Union[Literal["false_positive", "wont_fix", "revoked", "used_in_tests"], None]
-    ]
-    resolution_comment: NotRequired[Union[str, None]]
-    assignee: NotRequired[Union[str, None]]
-    validity: NotRequired[Union[Literal["active", "inactive"], None]]
+    path: str
+    position: NotRequired[int]
+    body: str
+    line: NotRequired[int]
+    side: NotRequired[str]
+    start_line: NotRequired[int]
+    start_side: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type",
-    "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0TypeForResponse",
+    "ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsType",
+    "ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsTypeForResponse",
+    "ReposOwnerRepoPullsPullNumberReviewsPostBodyType",
+    "ReposOwnerRepoPullsPullNumberReviewsPostBodyTypeForResponse",
 )

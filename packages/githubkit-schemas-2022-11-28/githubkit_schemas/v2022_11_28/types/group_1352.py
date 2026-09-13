@@ -12,23 +12,35 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType(
+class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentType(
     TypedDict
 ):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody"""
+    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment
 
-    integration_id: NotRequired[int]
+    Parameters for AI agent assignment. Only used when an agent bot login is
+    included in `assignees`. Ignored when no agent is being assigned.
+    """
+
+    custom_instructions: NotRequired[str]
+    custom_agent: NotRequired[str]
+    model: NotRequired[str]
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyTypeForResponse(
+class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentTypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody"""
+    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment
 
-    integration_id: NotRequired[int]
+    Parameters for AI agent assignment. Only used when an agent bot login is
+    included in `assignees`. Ignored when no agent is being assigned.
+    """
+
+    custom_instructions: NotRequired[str]
+    custom_agent: NotRequired[str]
+    model: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType",
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyTypeForResponse",
+    "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentType",
+    "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentTypeForResponse",
 )

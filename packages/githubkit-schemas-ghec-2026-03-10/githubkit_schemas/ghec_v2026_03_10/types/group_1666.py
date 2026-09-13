@@ -9,58 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0570 import (
-    PullRequestStackPullRequestType,
-    PullRequestStackPullRequestTypeForResponse,
+from .group_0185 import (
+    SecretScanningCustomPatternType,
+    SecretScanningCustomPatternTypeForResponse,
 )
 
 
-class ReposOwnerRepoStacksStackNumberUnstackPostResponse200Type(TypedDict):
-    """ReposOwnerRepoStacksStackNumberUnstackPostResponse200"""
+class ReposOwnerRepoSecretScanningCustomPatternsPostResponse201Type(TypedDict):
+    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse201"""
 
-    id: int
-    number: int
-    node_id: str
-    url: str
-    base: ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBaseType
-    open_: bool
-    created_at: _dt.datetime
-    pull_requests: list[PullRequestStackPullRequestType]
+    created_patterns: NotRequired[list[SecretScanningCustomPatternType]]
 
 
-class ReposOwnerRepoStacksStackNumberUnstackPostResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoStacksStackNumberUnstackPostResponse200"""
-
-    id: int
-    number: int
-    node_id: str
-    url: str
-    base: ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBaseTypeForResponse
-    open_: bool
-    created_at: str
-    pull_requests: list[PullRequestStackPullRequestTypeForResponse]
-
-
-class ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBaseType(TypedDict):
-    """ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase"""
-
-    ref: str
-
-
-class ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBaseTypeForResponse(
+class ReposOwnerRepoSecretScanningCustomPatternsPostResponse201TypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase"""
+    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse201"""
 
-    ref: str
+    created_patterns: NotRequired[list[SecretScanningCustomPatternTypeForResponse]]
 
 
 __all__ = (
-    "ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBaseType",
-    "ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBaseTypeForResponse",
-    "ReposOwnerRepoStacksStackNumberUnstackPostResponse200Type",
-    "ReposOwnerRepoStacksStackNumberUnstackPostResponse200TypeForResponse",
+    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse201Type",
+    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse201TypeForResponse",
 )

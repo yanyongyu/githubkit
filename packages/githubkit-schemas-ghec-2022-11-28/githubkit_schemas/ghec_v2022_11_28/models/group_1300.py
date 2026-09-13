@@ -9,30 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class OrgsOrgActionsRunnersDeprecationsVersionGetResponse200(GitHubModel):
-    """OrgsOrgActionsRunnersDeprecationsVersionGetResponse200"""
-
-    runner_version: str = Field(description="The runner version string.")
-    registration_deprecates_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET,
-        description="The date after which this runner version can no longer register. Null if no schedule is set.",
-    )
-    runtime_deprecates_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET,
-        description="The date after which jobs will no longer be dispatched to runners on this version.",
-    )
+from .group_0020 import Repository
 
 
-model_rebuild(OrgsOrgActionsRunnersDeprecationsVersionGetResponse200)
+class OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200(GitHubModel):
+    """OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200"""
 
-__all__ = ("OrgsOrgActionsRunnersDeprecationsVersionGetResponse200",)
+    total_count: Missing[int] = Field(default=UNSET)
+    repositories: Missing[list[Repository]] = Field(default=UNSET)
+
+
+model_rebuild(OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200)
+
+__all__ = ("OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200",)

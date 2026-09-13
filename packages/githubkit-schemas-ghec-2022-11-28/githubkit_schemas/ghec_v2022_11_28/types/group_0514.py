@@ -10,16 +10,17 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0477 import IssueEventIntentType, IssueEventIntentTypeForResponse
 
 
-class TimelineConnectedEventType(TypedDict):
-    """Timeline Connected Event
+class StateChangeIssueEventType(TypedDict):
+    """State Change Issue Event
 
-    Timeline Connected Event
+    State Change Issue Event
     """
 
     id: int
@@ -31,12 +32,14 @@ class TimelineConnectedEventType(TypedDict):
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
+    state_reason: NotRequired[Union[str, None]]
+    intent: NotRequired[Union[None, IssueEventIntentType, None]]
 
 
-class TimelineConnectedEventTypeForResponse(TypedDict):
-    """Timeline Connected Event
+class StateChangeIssueEventTypeForResponse(TypedDict):
+    """State Change Issue Event
 
-    Timeline Connected Event
+    State Change Issue Event
     """
 
     id: int
@@ -48,9 +51,11 @@ class TimelineConnectedEventTypeForResponse(TypedDict):
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
+    state_reason: NotRequired[Union[str, None]]
+    intent: NotRequired[Union[None, IssueEventIntentTypeForResponse, None]]
 
 
 __all__ = (
-    "TimelineConnectedEventType",
-    "TimelineConnectedEventTypeForResponse",
+    "StateChangeIssueEventType",
+    "StateChangeIssueEventTypeForResponse",
 )

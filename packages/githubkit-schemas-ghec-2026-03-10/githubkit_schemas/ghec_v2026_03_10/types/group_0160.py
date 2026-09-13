@@ -9,22 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRuleFileExtensionRestrictionPropParametersType(TypedDict):
-    """RepositoryRuleFileExtensionRestrictionPropParameters"""
+class RepositoryRuleParamsRestrictedCommitsType(TypedDict):
+    """RestrictedCommits
 
-    restricted_file_extensions: list[str]
+    Restricted commit
+    """
+
+    oid: str
+    reason: NotRequired[str]
 
 
-class RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleFileExtensionRestrictionPropParameters"""
+class RepositoryRuleParamsRestrictedCommitsTypeForResponse(TypedDict):
+    """RestrictedCommits
 
-    restricted_file_extensions: list[str]
+    Restricted commit
+    """
+
+    oid: str
+    reason: NotRequired[str]
 
 
 __all__ = (
-    "RepositoryRuleFileExtensionRestrictionPropParametersType",
-    "RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse",
+    "RepositoryRuleParamsRestrictedCommitsType",
+    "RepositoryRuleParamsRestrictedCommitsTypeForResponse",
 )

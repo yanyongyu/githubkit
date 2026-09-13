@@ -9,24 +9,82 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Any, TypeAlias, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class ReleaseEventPropReleaseAllof1Type(TypedDict):
-    """ReleaseEventPropReleaseAllof1"""
-
-    is_short_description_html_truncated: NotRequired[bool]
-    short_description_html: NotRequired[str]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0243 import GistSimplePropForkOfType, GistSimplePropForkOfTypeForResponse
 
 
-class ReleaseEventPropReleaseAllof1TypeForResponse(TypedDict):
-    """ReleaseEventPropReleaseAllof1"""
+class GistSimpleType(TypedDict):
+    """Gist Simple
 
-    is_short_description_html_truncated: NotRequired[bool]
-    short_description_html: NotRequired[str]
+    Gist Simple
+    """
+
+    fork_of: NotRequired[Union[GistSimplePropForkOfType, None]]
+    url: NotRequired[str]
+    forks_url: NotRequired[str]
+    commits_url: NotRequired[str]
+    id: NotRequired[str]
+    node_id: NotRequired[str]
+    git_pull_url: NotRequired[str]
+    git_push_url: NotRequired[str]
+    html_url: NotRequired[str]
+    files: NotRequired[GistSimplePropFilesType]
+    public: NotRequired[bool]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    comments: NotRequired[int]
+    comments_enabled: NotRequired[bool]
+    user: NotRequired[Union[str, None]]
+    comments_url: NotRequired[str]
+    owner: NotRequired[SimpleUserType]
+    truncated: NotRequired[bool]
+
+
+class GistSimpleTypeForResponse(TypedDict):
+    """Gist Simple
+
+    Gist Simple
+    """
+
+    fork_of: NotRequired[Union[GistSimplePropForkOfTypeForResponse, None]]
+    url: NotRequired[str]
+    forks_url: NotRequired[str]
+    commits_url: NotRequired[str]
+    id: NotRequired[str]
+    node_id: NotRequired[str]
+    git_pull_url: NotRequired[str]
+    git_push_url: NotRequired[str]
+    html_url: NotRequired[str]
+    files: NotRequired[GistSimplePropFilesTypeForResponse]
+    public: NotRequired[bool]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    comments: NotRequired[int]
+    comments_enabled: NotRequired[bool]
+    user: NotRequired[Union[str, None]]
+    comments_url: NotRequired[str]
+    owner: NotRequired[SimpleUserTypeForResponse]
+    truncated: NotRequired[bool]
+
+
+GistSimplePropFilesType: TypeAlias = dict[str, Any]
+"""GistSimplePropFiles
+"""
+
+
+GistSimplePropFilesTypeForResponse: TypeAlias = dict[str, Any]
+"""GistSimplePropFiles
+"""
 
 
 __all__ = (
-    "ReleaseEventPropReleaseAllof1Type",
-    "ReleaseEventPropReleaseAllof1TypeForResponse",
+    "GistSimplePropFilesType",
+    "GistSimplePropFilesTypeForResponse",
+    "GistSimpleType",
+    "GistSimpleTypeForResponse",
 )

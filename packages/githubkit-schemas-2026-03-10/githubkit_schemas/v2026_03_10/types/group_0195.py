@@ -9,35 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class CodeOfConductSimpleType(TypedDict):
-    """Code Of Conduct Simple
+class RepositoryRulesetBypassActorType(TypedDict):
+    """Repository Ruleset Bypass Actor
 
-    Code of Conduct Simple
+    An actor that can bypass rules in a ruleset
     """
 
-    url: str
-    key: str
-    name: str
-    html_url: Union[str, None]
+    actor_id: NotRequired[Union[int, None]]
+    actor_type: Literal[
+        "Integration",
+        "OrganizationAdmin",
+        "RepositoryRole",
+        "Team",
+        "DeployKey",
+        "User",
+    ]
+    bypass_mode: NotRequired[Literal["always", "pull_request", "exempt"]]
 
 
-class CodeOfConductSimpleTypeForResponse(TypedDict):
-    """Code Of Conduct Simple
+class RepositoryRulesetBypassActorTypeForResponse(TypedDict):
+    """Repository Ruleset Bypass Actor
 
-    Code of Conduct Simple
+    An actor that can bypass rules in a ruleset
     """
 
-    url: str
-    key: str
-    name: str
-    html_url: Union[str, None]
+    actor_id: NotRequired[Union[int, None]]
+    actor_type: Literal[
+        "Integration",
+        "OrganizationAdmin",
+        "RepositoryRole",
+        "Team",
+        "DeployKey",
+        "User",
+    ]
+    bypass_mode: NotRequired[Literal["always", "pull_request", "exempt"]]
 
 
 __all__ = (
-    "CodeOfConductSimpleType",
-    "CodeOfConductSimpleTypeForResponse",
+    "RepositoryRulesetBypassActorType",
+    "RepositoryRulesetBypassActorTypeForResponse",
 )

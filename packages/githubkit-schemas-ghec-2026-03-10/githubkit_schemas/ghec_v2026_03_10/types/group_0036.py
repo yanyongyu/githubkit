@@ -9,42 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsHostedRunnerCustomImageType(TypedDict):
-    """GitHub-hosted runner custom image details
+class ActionsOidcCustomIssuerPolicyForEnterpriseType(TypedDict):
+    """ActionsOidcCustomIssuerPolicyForEnterprise"""
 
-    Provides details of a custom runner image
-    """
-
-    id: int
-    platform: str
-    total_versions_size: int
-    name: str
-    source: str
-    versions_count: int
-    latest_version: str
-    state: str
+    include_enterprise_slug: NotRequired[bool]
 
 
-class ActionsHostedRunnerCustomImageTypeForResponse(TypedDict):
-    """GitHub-hosted runner custom image details
+class ActionsOidcCustomIssuerPolicyForEnterpriseTypeForResponse(TypedDict):
+    """ActionsOidcCustomIssuerPolicyForEnterprise"""
 
-    Provides details of a custom runner image
-    """
-
-    id: int
-    platform: str
-    total_versions_size: int
-    name: str
-    source: str
-    versions_count: int
-    latest_version: str
-    state: str
+    include_enterprise_slug: NotRequired[bool]
 
 
 __all__ = (
-    "ActionsHostedRunnerCustomImageType",
-    "ActionsHostedRunnerCustomImageTypeForResponse",
+    "ActionsOidcCustomIssuerPolicyForEnterpriseType",
+    "ActionsOidcCustomIssuerPolicyForEnterpriseTypeForResponse",
 )

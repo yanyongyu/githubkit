@@ -9,81 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import TypedDict
-
-from .group_0065 import (
-    AmazonS3AccessKeysConfigType,
-    AmazonS3AccessKeysConfigTypeForResponse,
-    AzureBlobConfigType,
-    AzureBlobConfigTypeForResponse,
-    AzureHubConfigType,
-    AzureHubConfigTypeForResponse,
-    DatadogConfigType,
-    DatadogConfigTypeForResponse,
-    HecConfigType,
-    HecConfigTypeForResponse,
-)
-from .group_0066 import (
-    AmazonS3OidcConfigType,
-    AmazonS3OidcConfigTypeForResponse,
-    SplunkConfigType,
-    SplunkConfigTypeForResponse,
-)
-from .group_0067 import GoogleCloudConfigType, GoogleCloudConfigTypeForResponse
+import datetime as _dt
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseAuditLogStreamsPostBodyType(TypedDict):
-    """EnterprisesEnterpriseAuditLogStreamsPostBody"""
+class EnterprisesEnterpriseActionsRunnersDeprecationsVersionGetResponse200Type(
+    TypedDict
+):
+    """EnterprisesEnterpriseActionsRunnersDeprecationsVersionGetResponse200"""
 
-    enabled: bool
-    stream_type: Literal[
-        "Azure Blob Storage",
-        "Azure Event Hubs",
-        "Amazon S3",
-        "Splunk",
-        "HTTPS Event Collector",
-        "Google Cloud Storage",
-        "Datadog",
-    ]
-    vendor_specific: Union[
-        AzureBlobConfigType,
-        AzureHubConfigType,
-        AmazonS3OidcConfigType,
-        AmazonS3AccessKeysConfigType,
-        SplunkConfigType,
-        HecConfigType,
-        GoogleCloudConfigType,
-        DatadogConfigType,
-    ]
+    runner_version: str
+    registration_deprecates_at: NotRequired[Union[_dt.datetime, None]]
+    runtime_deprecates_at: NotRequired[Union[_dt.datetime, None]]
 
 
-class EnterprisesEnterpriseAuditLogStreamsPostBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseAuditLogStreamsPostBody"""
+class EnterprisesEnterpriseActionsRunnersDeprecationsVersionGetResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseActionsRunnersDeprecationsVersionGetResponse200"""
 
-    enabled: bool
-    stream_type: Literal[
-        "Azure Blob Storage",
-        "Azure Event Hubs",
-        "Amazon S3",
-        "Splunk",
-        "HTTPS Event Collector",
-        "Google Cloud Storage",
-        "Datadog",
-    ]
-    vendor_specific: Union[
-        AzureBlobConfigTypeForResponse,
-        AzureHubConfigTypeForResponse,
-        AmazonS3OidcConfigTypeForResponse,
-        AmazonS3AccessKeysConfigTypeForResponse,
-        SplunkConfigTypeForResponse,
-        HecConfigTypeForResponse,
-        GoogleCloudConfigTypeForResponse,
-        DatadogConfigTypeForResponse,
-    ]
+    runner_version: str
+    registration_deprecates_at: NotRequired[Union[str, None]]
+    runtime_deprecates_at: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseAuditLogStreamsPostBodyType",
-    "EnterprisesEnterpriseAuditLogStreamsPostBodyTypeForResponse",
+    "EnterprisesEnterpriseActionsRunnersDeprecationsVersionGetResponse200Type",
+    "EnterprisesEnterpriseActionsRunnersDeprecationsVersionGetResponse200TypeForResponse",
 )

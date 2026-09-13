@@ -9,40 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
+from .group_0045 import Label
+from .group_0055 import Issue
 
 
-class ReleaseAsset(GitHubModel):
-    """Release Asset
+class IssuesEvent(GitHubModel):
+    """IssuesEvent"""
 
-    Data related to a release.
-    """
-
-    url: str = Field()
-    browser_download_url: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    name: str = Field(description="The file name of the asset.")
-    label: Union[str, None] = Field()
-    state: Literal["uploaded", "open"] = Field(
-        description="State of the release asset."
+    action: str = Field()
+    issue: Issue = Field(
+        title="Issue",
+        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
     )
-    content_type: str = Field()
-    size: int = Field()
-    digest: Union[str, None] = Field()
-    download_count: int = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    uploader: Union[SimpleUser, None] = Field()
+    assignee: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
+    assignees: Missing[list[SimpleUser]] = Field(default=UNSET)
+    label: Missing[Label] = Field(
+        default=UNSET,
+        title="Label",
+        description="Color-coded labels help you categorize and filter your issues (just like labels in Gmail).",
+    )
+    labels: Missing[list[Label]] = Field(default=UNSET)
 
 
-model_rebuild(ReleaseAsset)
+model_rebuild(IssuesEvent)
 
-__all__ = ("ReleaseAsset",)
+__all__ = ("IssuesEvent",)

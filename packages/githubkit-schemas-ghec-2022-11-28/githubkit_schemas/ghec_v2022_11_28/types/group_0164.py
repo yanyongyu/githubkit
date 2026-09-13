@@ -10,37 +10,50 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0165 import (
-    RepositoryRuleWorkflowsPropParametersType,
-    RepositoryRuleWorkflowsPropParametersTypeForResponse,
-)
+from typing_extensions import TypedDict
 
 
-class RepositoryRuleWorkflowsType(TypedDict):
-    """workflows
+class RepositoryRuleCodeScanningPropParametersType(TypedDict):
+    """RepositoryRuleCodeScanningPropParameters"""
 
-    Require all changes made to a targeted branch to pass the specified workflows
-    before they can be merged.
+    code_scanning_tools: list[RepositoryRuleParamsCodeScanningToolType]
+
+
+class RepositoryRuleCodeScanningPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleCodeScanningPropParameters"""
+
+    code_scanning_tools: list[RepositoryRuleParamsCodeScanningToolTypeForResponse]
+
+
+class RepositoryRuleParamsCodeScanningToolType(TypedDict):
+    """CodeScanningTool
+
+    A tool that must provide code scanning results for this rule to pass.
     """
 
-    type: Literal["workflows"]
-    parameters: NotRequired[RepositoryRuleWorkflowsPropParametersType]
+    alerts_threshold: Literal["none", "errors", "errors_and_warnings", "all"]
+    security_alerts_threshold: Literal[
+        "none", "critical", "high_or_higher", "medium_or_higher", "all"
+    ]
+    tool: str
 
 
-class RepositoryRuleWorkflowsTypeForResponse(TypedDict):
-    """workflows
+class RepositoryRuleParamsCodeScanningToolTypeForResponse(TypedDict):
+    """CodeScanningTool
 
-    Require all changes made to a targeted branch to pass the specified workflows
-    before they can be merged.
+    A tool that must provide code scanning results for this rule to pass.
     """
 
-    type: Literal["workflows"]
-    parameters: NotRequired[RepositoryRuleWorkflowsPropParametersTypeForResponse]
+    alerts_threshold: Literal["none", "errors", "errors_and_warnings", "all"]
+    security_alerts_threshold: Literal[
+        "none", "critical", "high_or_higher", "medium_or_higher", "all"
+    ]
+    tool: str
 
 
 __all__ = (
-    "RepositoryRuleWorkflowsType",
-    "RepositoryRuleWorkflowsTypeForResponse",
+    "RepositoryRuleCodeScanningPropParametersType",
+    "RepositoryRuleCodeScanningPropParametersTypeForResponse",
+    "RepositoryRuleParamsCodeScanningToolType",
+    "RepositoryRuleParamsCodeScanningToolTypeForResponse",
 )

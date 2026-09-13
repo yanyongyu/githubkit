@@ -9,28 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class OidcCustomPropertyInclusionInputType(TypedDict):
-    """Actions OIDC Custom Property Inclusion Input
+class ActionsForkPrContributorApprovalType(TypedDict):
+    """ActionsForkPrContributorApproval"""
 
-    Input for creating an OIDC custom property inclusion
-    """
+    approval_policy: Literal[
+        "first_time_contributors_new_to_github",
+        "first_time_contributors",
+        "all_external_contributors",
+    ]
 
-    custom_property_name: str
 
+class ActionsForkPrContributorApprovalTypeForResponse(TypedDict):
+    """ActionsForkPrContributorApproval"""
 
-class OidcCustomPropertyInclusionInputTypeForResponse(TypedDict):
-    """Actions OIDC Custom Property Inclusion Input
-
-    Input for creating an OIDC custom property inclusion
-    """
-
-    custom_property_name: str
+    approval_policy: Literal[
+        "first_time_contributors_new_to_github",
+        "first_time_contributors",
+        "all_external_contributors",
+    ]
 
 
 __all__ = (
-    "OidcCustomPropertyInclusionInputType",
-    "OidcCustomPropertyInclusionInputTypeForResponse",
+    "ActionsForkPrContributorApprovalType",
+    "ActionsForkPrContributorApprovalTypeForResponse",
 )

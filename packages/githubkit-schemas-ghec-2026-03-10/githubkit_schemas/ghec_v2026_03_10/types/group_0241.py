@@ -10,79 +10,77 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Any, TypeAlias, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0215 import ReactionRollupType, ReactionRollupTypeForResponse
-from .group_0225 import ReleaseAssetType, ReleaseAssetTypeForResponse
 
 
-class ReleaseEventPropReleaseType(TypedDict):
-    """ReleaseEventPropRelease"""
+class BaseGistType(TypedDict):
+    """Base Gist
+
+    Base Gist
+    """
 
     url: str
-    html_url: str
-    assets_url: str
-    upload_url: str
-    tarball_url: Union[str, None]
-    zipball_url: Union[str, None]
-    id: int
+    forks_url: str
+    commits_url: str
+    id: str
     node_id: str
-    tag_name: str
-    target_commitish: str
-    name: Union[str, None]
-    body: NotRequired[Union[str, None]]
-    draft: bool
-    prerelease: bool
-    immutable: NotRequired[bool]
+    git_pull_url: str
+    git_push_url: str
+    html_url: str
+    files: BaseGistPropFilesType
+    public: bool
     created_at: _dt.datetime
-    published_at: Union[_dt.datetime, None]
-    updated_at: NotRequired[Union[_dt.datetime, None]]
-    author: SimpleUserType
-    assets: list[ReleaseAssetType]
-    body_html: NotRequired[Union[str, None]]
-    body_text: NotRequired[Union[str, None]]
-    mentions_count: NotRequired[int]
-    discussion_url: NotRequired[str]
-    reactions: NotRequired[ReactionRollupType]
-    is_short_description_html_truncated: NotRequired[bool]
-    short_description_html: NotRequired[str]
+    updated_at: _dt.datetime
+    description: Union[str, None]
+    comments: int
+    comments_enabled: NotRequired[bool]
+    comments_url: str
+    owner: NotRequired[SimpleUserType]
+    truncated: NotRequired[bool]
 
 
-class ReleaseEventPropReleaseTypeForResponse(TypedDict):
-    """ReleaseEventPropRelease"""
+class BaseGistTypeForResponse(TypedDict):
+    """Base Gist
+
+    Base Gist
+    """
 
     url: str
-    html_url: str
-    assets_url: str
-    upload_url: str
-    tarball_url: Union[str, None]
-    zipball_url: Union[str, None]
-    id: int
+    forks_url: str
+    commits_url: str
+    id: str
     node_id: str
-    tag_name: str
-    target_commitish: str
-    name: Union[str, None]
-    body: NotRequired[Union[str, None]]
-    draft: bool
-    prerelease: bool
-    immutable: NotRequired[bool]
+    git_pull_url: str
+    git_push_url: str
+    html_url: str
+    files: BaseGistPropFilesTypeForResponse
+    public: bool
     created_at: str
-    published_at: Union[str, None]
-    updated_at: NotRequired[Union[str, None]]
-    author: SimpleUserTypeForResponse
-    assets: list[ReleaseAssetTypeForResponse]
-    body_html: NotRequired[Union[str, None]]
-    body_text: NotRequired[Union[str, None]]
-    mentions_count: NotRequired[int]
-    discussion_url: NotRequired[str]
-    reactions: NotRequired[ReactionRollupTypeForResponse]
-    is_short_description_html_truncated: NotRequired[bool]
-    short_description_html: NotRequired[str]
+    updated_at: str
+    description: Union[str, None]
+    comments: int
+    comments_enabled: NotRequired[bool]
+    comments_url: str
+    owner: NotRequired[SimpleUserTypeForResponse]
+    truncated: NotRequired[bool]
+
+
+BaseGistPropFilesType: TypeAlias = dict[str, Any]
+"""BaseGistPropFiles
+"""
+
+
+BaseGistPropFilesTypeForResponse: TypeAlias = dict[str, Any]
+"""BaseGistPropFiles
+"""
 
 
 __all__ = (
-    "ReleaseEventPropReleaseType",
-    "ReleaseEventPropReleaseTypeForResponse",
+    "BaseGistPropFilesType",
+    "BaseGistPropFilesTypeForResponse",
+    "BaseGistType",
+    "BaseGistTypeForResponse",
 )

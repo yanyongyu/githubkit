@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,44 +16,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CustomProperty(GitHubModel):
-    """Organization Custom Property
+class EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName(
+    GitHubModel
+):
+    """EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName"""
 
-    Custom property defined on an organization
-    """
-
-    property_name: str = Field(description="The name of the property")
-    url: Missing[str] = Field(
+    include: Missing[list[str]] = Field(
         default=UNSET,
-        description="The URL that can be used to fetch, update, or delete info about this property via the API.",
+        description="Array of organization names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~ALL` to include all organizations and ~EMUS to target all enterprise managed user accounts.",
     )
-    source_type: Missing[Literal["organization", "enterprise"]] = Field(
-        default=UNSET, description="The source type of the property"
-    )
-    value_type: Literal[
-        "string", "single_select", "multi_select", "true_false", "url"
-    ] = Field(description="The type of the value for the property")
-    required: Missing[bool] = Field(
-        default=UNSET, description="Whether the property is required."
-    )
-    default_value: Missing[Union[str, list[str], None]] = Field(
-        default=UNSET, description="Default value of the property"
-    )
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Short description of the property"
-    )
-    allowed_values: Missing[Union[list[str], None]] = Field(
+    exclude: Missing[list[str]] = Field(
         default=UNSET,
-        description="An ordered list of the allowed values of the property.\nThe property can have up to 200 allowed values.",
-    )
-    values_editable_by: Missing[
-        Union[Literal["org_actors", "org_and_repo_actors"], None]
-    ] = Field(default=UNSET, description="Who can edit the values of the property")
-    require_explicit_values: Missing[bool] = Field(
-        default=UNSET, description="Whether setting properties values is mandatory"
+        description="Array of organization names or patterns to exclude. The condition will not pass if any of these patterns match.",
     )
 
 
-model_rebuild(CustomProperty)
+model_rebuild(EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName)
 
-__all__ = ("CustomProperty",)
+__all__ = ("EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName",)

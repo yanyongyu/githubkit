@@ -9,34 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class ActionsHostedRunnerMachineSpecType(TypedDict):
-    """Github-owned VM details.
+class ActionsHostedRunnerCuratedImageType(TypedDict):
+    """GitHub-hosted runner image details.
 
-    Provides details of a particular machine spec.
+    Provides details of a hosted runner image
     """
 
     id: str
-    cpu_cores: int
-    memory_gb: int
-    storage_gb: int
+    platform: str
+    size_gb: int
+    display_name: str
+    source: Literal["github", "partner", "custom"]
 
 
-class ActionsHostedRunnerMachineSpecTypeForResponse(TypedDict):
-    """Github-owned VM details.
+class ActionsHostedRunnerCuratedImageTypeForResponse(TypedDict):
+    """GitHub-hosted runner image details.
 
-    Provides details of a particular machine spec.
+    Provides details of a hosted runner image
     """
 
     id: str
-    cpu_cores: int
-    memory_gb: int
-    storage_gb: int
+    platform: str
+    size_gb: int
+    display_name: str
+    source: Literal["github", "partner", "custom"]
 
 
 __all__ = (
-    "ActionsHostedRunnerMachineSpecType",
-    "ActionsHostedRunnerMachineSpecTypeForResponse",
+    "ActionsHostedRunnerCuratedImageType",
+    "ActionsHostedRunnerCuratedImageTypeForResponse",
 )

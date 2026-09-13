@@ -9,24 +9,77 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class DeleteBudgetType(TypedDict):
-    """DeleteBudget"""
+class GetCostCenterType(TypedDict):
+    """GetCostCenter"""
 
-    message: str
     id: str
+    name: str
+    azure_subscription: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["active", "deleted"]]
+    resources: list[GetCostCenterPropResourcesItemsType]
+    has_next_page: NotRequired[bool]
+    ai_credit_pool_enabled: NotRequired[bool]
+    ai_credit_pool_state: NotRequired[GetCostCenterPropAiCreditPoolStateType]
 
 
-class DeleteBudgetTypeForResponse(TypedDict):
-    """DeleteBudget"""
+class GetCostCenterTypeForResponse(TypedDict):
+    """GetCostCenter"""
 
-    message: str
     id: str
+    name: str
+    azure_subscription: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["active", "deleted"]]
+    resources: list[GetCostCenterPropResourcesItemsTypeForResponse]
+    has_next_page: NotRequired[bool]
+    ai_credit_pool_enabled: NotRequired[bool]
+    ai_credit_pool_state: NotRequired[GetCostCenterPropAiCreditPoolStateTypeForResponse]
+
+
+class GetCostCenterPropResourcesItemsType(TypedDict):
+    """GetCostCenterPropResourcesItems"""
+
+    type: str
+    name: str
+
+
+class GetCostCenterPropResourcesItemsTypeForResponse(TypedDict):
+    """GetCostCenterPropResourcesItems"""
+
+    type: str
+    name: str
+
+
+class GetCostCenterPropAiCreditPoolStateType(TypedDict):
+    """GetCostCenterPropAiCreditPoolState
+
+    Read-only cap-budget projection for the cost center. Only present when the cost
+    center draws from the AI credit pool.
+    """
+
+    target_amount: NotRequired[Union[float, None]]
+    current_amount: NotRequired[Union[float, None]]
+
+
+class GetCostCenterPropAiCreditPoolStateTypeForResponse(TypedDict):
+    """GetCostCenterPropAiCreditPoolState
+
+    Read-only cap-budget projection for the cost center. Only present when the cost
+    center draws from the AI credit pool.
+    """
+
+    target_amount: NotRequired[Union[float, None]]
+    current_amount: NotRequired[Union[float, None]]
 
 
 __all__ = (
-    "DeleteBudgetType",
-    "DeleteBudgetTypeForResponse",
+    "GetCostCenterPropAiCreditPoolStateType",
+    "GetCostCenterPropAiCreditPoolStateTypeForResponse",
+    "GetCostCenterPropResourcesItemsType",
+    "GetCostCenterPropResourcesItemsTypeForResponse",
+    "GetCostCenterType",
+    "GetCostCenterTypeForResponse",
 )

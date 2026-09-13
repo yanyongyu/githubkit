@@ -9,21 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0144 import CopilotSpace
 
+class UserMembershipsOrgsOrgPatchBody(GitHubModel):
+    """UserMembershipsOrgsOrgPatchBody"""
 
-class UsersUsernameCopilotSpacesGetResponse200(GitHubModel):
-    """UsersUsernameCopilotSpacesGetResponse200"""
-
-    spaces: list[CopilotSpace] = Field(
-        description="The list of Copilot Spaces on this page of results."
+    state: Literal["active"] = Field(
+        description='The state that the membership should be in. Only `"active"` will be accepted.'
     )
 
 
-model_rebuild(UsersUsernameCopilotSpacesGetResponse200)
+model_rebuild(UserMembershipsOrgsOrgPatchBody)
 
-__all__ = ("UsersUsernameCopilotSpacesGetResponse200",)
+__all__ = ("UserMembershipsOrgsOrgPatchBody",)

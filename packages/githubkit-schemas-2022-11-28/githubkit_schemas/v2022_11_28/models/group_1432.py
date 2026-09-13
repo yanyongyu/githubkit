@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,28 +16,33 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPullsPullNumberMergeAsyncPutBody(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberMergeAsyncPutBody"""
+class ReposOwnerRepoPagesDeploymentsPostBody(GitHubModel):
+    """ReposOwnerRepoPagesDeploymentsPostBody
 
-    commit_title: Missing[str] = Field(
-        default=UNSET, description="Title for the automatic commit message."
-    )
-    commit_message: Missing[str] = Field(
-        default=UNSET, description="Extra detail to append to automatic commit message."
-    )
-    sha: Missing[str] = Field(
+    The object used to create GitHub Pages deployment
+    """
+
+    artifact_id: Missing[int] = Field(
         default=UNSET,
-        description="SHA that pull request head must match to allow merge. If not provided, the current head of the PR at the time of the request will be used; if the PR is pushed in between the merge being requested and being executed, the merge will be cancelled.",
+        description="The ID of an artifact that contains the .zip or .tar of static assets to deploy. The artifact belongs to the repository. Either `artifact_id` or `artifact_url` are required.",
     )
-    merge_method: Missing[Literal["merge", "squash", "rebase"]] = Field(
-        default=UNSET, description="The merge method to use."
-    )
-    merge_action: Missing[Literal["default", "direct_merge", "merge_queue"]] = Field(
+    artifact_url: Missing[str] = Field(
         default=UNSET,
-        description="The action that will be taken to merge the pull request. `direct_merge` merges the pull request directly without using a merge queue; `merge_queue` adds the pull request to a merge queue; `default` selects the most appropriate option.",
+        description="The URL of an artifact that contains the .zip or .tar of static assets to deploy. The artifact belongs to the repository. Either `artifact_id` or `artifact_url` are required.",
+    )
+    environment: Missing[str] = Field(
+        default=UNSET,
+        description="The target environment for this GitHub Pages deployment.",
+    )
+    pages_build_version: str = Field(
+        default="GITHUB_SHA",
+        description="A unique string that represents the version of the build for this deployment.",
+    )
+    oidc_token: str = Field(
+        description="The OIDC token issued by GitHub Actions certifying the origin of the deployment."
     )
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberMergeAsyncPutBody)
+model_rebuild(ReposOwnerRepoPagesDeploymentsPostBody)
 
-__all__ = ("ReposOwnerRepoPullsPullNumberMergeAsyncPutBody",)
+__all__ = ("ReposOwnerRepoPagesDeploymentsPostBody",)

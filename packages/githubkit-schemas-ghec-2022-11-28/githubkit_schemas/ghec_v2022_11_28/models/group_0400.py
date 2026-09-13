@@ -18,8 +18,8 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CodeQualitySetupUpdateAnyof3(GitHubModel):
-    """CodeQualitySetupUpdateAnyof3"""
+class CodeQualitySetupUpdateAnyof4(GitHubModel):
+    """CodeQualitySetupUpdateAnyof4"""
 
     state: Missing[Literal["configured", "not-configured"]] = Field(
         default=UNSET, description="The desired state of code quality setup."
@@ -31,17 +31,18 @@ class CodeQualitySetupUpdateAnyof3(GitHubModel):
         default=UNSET,
         description="Runner label to be used if the runner type is labeled.",
     )
-    languages: list[
-        Literal[
-            "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
+    languages: Missing[
+        list[
+            Literal[
+                "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
+            ]
         ]
-    ] = Field(description="Languages to be analyzed.")
-    ai_findings_option: Missing[Literal["disabled", "on_push"]] = Field(
-        default=UNSET,
-        description="Whether AI findings run for Code Quality on this repository.",
+    ] = Field(default=UNSET, description="Languages to be analyzed.")
+    ai_findings_option: Literal["disabled", "on_push"] = Field(
+        description="Whether AI findings run for Code Quality on this repository."
     )
 
 
-model_rebuild(CodeQualitySetupUpdateAnyof3)
+model_rebuild(CodeQualitySetupUpdateAnyof4)
 
-__all__ = ("CodeQualitySetupUpdateAnyof3",)
+__all__ = ("CodeQualitySetupUpdateAnyof4",)

@@ -9,102 +9,64 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class FeedType(TypedDict):
-    """Feed
+class GistCommentType(TypedDict):
+    """Gist Comment
 
-    Feed
+    A comment made to a gist.
     """
 
-    timeline_url: str
-    user_url: str
-    current_user_public_url: NotRequired[str]
-    current_user_url: NotRequired[str]
-    current_user_actor_url: NotRequired[str]
-    current_user_organization_url: NotRequired[str]
-    current_user_organization_urls: NotRequired[list[str]]
-    security_advisories_url: NotRequired[str]
-    repository_discussions_url: NotRequired[str]
-    repository_discussions_category_url: NotRequired[str]
-    links: FeedPropLinksType
+    id: int
+    node_id: str
+    url: str
+    body: str
+    user: Union[SimpleUserType, None]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
 
 
-class FeedTypeForResponse(TypedDict):
-    """Feed
+class GistCommentTypeForResponse(TypedDict):
+    """Gist Comment
 
-    Feed
+    A comment made to a gist.
     """
 
-    timeline_url: str
-    user_url: str
-    current_user_public_url: NotRequired[str]
-    current_user_url: NotRequired[str]
-    current_user_actor_url: NotRequired[str]
-    current_user_organization_url: NotRequired[str]
-    current_user_organization_urls: NotRequired[list[str]]
-    security_advisories_url: NotRequired[str]
-    repository_discussions_url: NotRequired[str]
-    repository_discussions_category_url: NotRequired[str]
-    links: FeedPropLinksTypeForResponse
-
-
-class FeedPropLinksType(TypedDict):
-    """FeedPropLinks"""
-
-    timeline: LinkWithTypeType
-    user: LinkWithTypeType
-    security_advisories: NotRequired[LinkWithTypeType]
-    current_user: NotRequired[LinkWithTypeType]
-    current_user_public: NotRequired[LinkWithTypeType]
-    current_user_actor: NotRequired[LinkWithTypeType]
-    current_user_organization: NotRequired[LinkWithTypeType]
-    current_user_organizations: NotRequired[list[LinkWithTypeType]]
-    repository_discussions: NotRequired[LinkWithTypeType]
-    repository_discussions_category: NotRequired[LinkWithTypeType]
-
-
-class FeedPropLinksTypeForResponse(TypedDict):
-    """FeedPropLinks"""
-
-    timeline: LinkWithTypeTypeForResponse
-    user: LinkWithTypeTypeForResponse
-    security_advisories: NotRequired[LinkWithTypeTypeForResponse]
-    current_user: NotRequired[LinkWithTypeTypeForResponse]
-    current_user_public: NotRequired[LinkWithTypeTypeForResponse]
-    current_user_actor: NotRequired[LinkWithTypeTypeForResponse]
-    current_user_organization: NotRequired[LinkWithTypeTypeForResponse]
-    current_user_organizations: NotRequired[list[LinkWithTypeTypeForResponse]]
-    repository_discussions: NotRequired[LinkWithTypeTypeForResponse]
-    repository_discussions_category: NotRequired[LinkWithTypeTypeForResponse]
-
-
-class LinkWithTypeType(TypedDict):
-    """Link With Type
-
-    Hypermedia Link with Type
-    """
-
-    href: str
-    type: str
-
-
-class LinkWithTypeTypeForResponse(TypedDict):
-    """Link With Type
-
-    Hypermedia Link with Type
-    """
-
-    href: str
-    type: str
+    id: int
+    node_id: str
+    url: str
+    body: str
+    user: Union[SimpleUserTypeForResponse, None]
+    created_at: str
+    updated_at: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
 
 
 __all__ = (
-    "FeedPropLinksType",
-    "FeedPropLinksTypeForResponse",
-    "FeedType",
-    "FeedTypeForResponse",
-    "LinkWithTypeType",
-    "LinkWithTypeTypeForResponse",
+    "GistCommentType",
+    "GistCommentTypeForResponse",
 )

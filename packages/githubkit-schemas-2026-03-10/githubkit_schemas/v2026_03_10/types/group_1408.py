@@ -9,24 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoNotificationsPutResponse202Type(TypedDict):
-    """ReposOwnerRepoNotificationsPutResponse202"""
+class ReposOwnerRepoIssuesIssueNumberLockPutBodyType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberLockPutBody"""
 
-    message: NotRequired[str]
-    url: NotRequired[str]
+    lock_reason: NotRequired[Literal["off-topic", "too heated", "resolved", "spam"]]
 
 
-class ReposOwnerRepoNotificationsPutResponse202TypeForResponse(TypedDict):
-    """ReposOwnerRepoNotificationsPutResponse202"""
+class ReposOwnerRepoIssuesIssueNumberLockPutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberLockPutBody"""
 
-    message: NotRequired[str]
-    url: NotRequired[str]
+    lock_reason: NotRequired[Literal["off-topic", "too heated", "resolved", "spam"]]
 
 
 __all__ = (
-    "ReposOwnerRepoNotificationsPutResponse202Type",
-    "ReposOwnerRepoNotificationsPutResponse202TypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberLockPutBodyType",
+    "ReposOwnerRepoIssuesIssueNumberLockPutBodyTypeForResponse",
 )

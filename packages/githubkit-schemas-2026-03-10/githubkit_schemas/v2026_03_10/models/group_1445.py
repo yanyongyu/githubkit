@@ -9,21 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoReleasesReleaseIdReactionsPostBody(GitHubModel):
-    """ReposOwnerRepoReleasesReleaseIdReactionsPostBody"""
+class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0"""
 
-    content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"] = Field(
-        description="The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the release."
+    reviewers: list[str] = Field(
+        description="An array of user `login`s that will be requested."
+    )
+    team_reviewers: Missing[list[str]] = Field(
+        default=UNSET, description="An array of team `slug`s that will be requested."
     )
 
 
-model_rebuild(ReposOwnerRepoReleasesReleaseIdReactionsPostBody)
+model_rebuild(ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0)
 
-__all__ = ("ReposOwnerRepoReleasesReleaseIdReactionsPostBody",)
+__all__ = ("ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0",)

@@ -9,54 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class SecretScanningCustomPatternType(TypedDict):
-    """Secret Scanning Custom Pattern
+class SecretScanningCustomPatternToDeleteType(TypedDict):
+    """Secret Scanning Custom Pattern To Delete
 
-    A custom pattern for secret scanning.
+    A custom pattern to delete in a bulk operation.
     """
 
-    id: int
-    name: str
-    pattern: str
-    slug: str
-    state: Literal["published", "unpublished"]
-    push_protection_enabled: bool
-    start_delimiter: NotRequired[Union[str, None]]
-    end_delimiter: NotRequired[Union[str, None]]
-    must_match: NotRequired[Union[list[str], None]]
-    must_not_match: NotRequired[Union[list[str], None]]
+    pattern_id: int
     custom_pattern_version: NotRequired[Union[str, None]]
-    created_at: NotRequired[_dt.datetime]
-    updated_at: NotRequired[_dt.datetime]
 
 
-class SecretScanningCustomPatternTypeForResponse(TypedDict):
-    """Secret Scanning Custom Pattern
+class SecretScanningCustomPatternToDeleteTypeForResponse(TypedDict):
+    """Secret Scanning Custom Pattern To Delete
 
-    A custom pattern for secret scanning.
+    A custom pattern to delete in a bulk operation.
     """
 
-    id: int
-    name: str
-    pattern: str
-    slug: str
-    state: Literal["published", "unpublished"]
-    push_protection_enabled: bool
-    start_delimiter: NotRequired[Union[str, None]]
-    end_delimiter: NotRequired[Union[str, None]]
-    must_match: NotRequired[Union[list[str], None]]
-    must_not_match: NotRequired[Union[list[str], None]]
+    pattern_id: int
     custom_pattern_version: NotRequired[Union[str, None]]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
 
 
 __all__ = (
-    "SecretScanningCustomPatternType",
-    "SecretScanningCustomPatternTypeForResponse",
+    "SecretScanningCustomPatternToDeleteType",
+    "SecretScanningCustomPatternToDeleteTypeForResponse",
 )

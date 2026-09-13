@@ -697,16 +697,6 @@ if TYPE_CHECKING or is_lazy_disabled():
     from githubkit_schemas.v2026_03_10.models import (
         CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems as CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems,
     )
-    from githubkit_schemas.v2026_03_10.models import Classroom as Classroom
-    from githubkit_schemas.v2026_03_10.models import (
-        ClassroomAcceptedAssignment as ClassroomAcceptedAssignment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
-        ClassroomAssignment as ClassroomAssignment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
-        ClassroomAssignmentGrade as ClassroomAssignmentGrade,
-    )
     from githubkit_schemas.v2026_03_10.models import CloneTraffic as CloneTraffic
     from githubkit_schemas.v2026_03_10.models import CodeOfConduct as CodeOfConduct
     from githubkit_schemas.v2026_03_10.models import (
@@ -750,6 +740,18 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.models import (
         CodeQualitySetupUpdateResponse as CodeQualitySetupUpdateResponse,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        CodeScanningAiScanEnablement as CodeScanningAiScanEnablement,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        CodeScanningAiScanEnablementUpdate as CodeScanningAiScanEnablementUpdate,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        CodeScanningAiScanOrgEnablementUpdate as CodeScanningAiScanOrgEnablementUpdate,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        CodeScanningAiScanOrgSettings as CodeScanningAiScanOrgSettings,
     )
     from githubkit_schemas.v2026_03_10.models import (
         CodeScanningAlert as CodeScanningAlert,
@@ -1897,6 +1899,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody as OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody,
     )
     from githubkit_schemas.v2026_03_10.models import (
+        OrgsOrgActionsRunnersDeprecationsVersionGetResponse200 as OrgsOrgActionsRunnersDeprecationsVersionGetResponse200,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgActionsRunnersGenerateJitconfigPostBody as OrgsOrgActionsRunnersGenerateJitconfigPostBody,
     )
     from githubkit_schemas.v2026_03_10.models import (
@@ -2897,6 +2902,12 @@ if TYPE_CHECKING or is_lazy_disabled():
         RepositoryAdvisoryCredit as RepositoryAdvisoryCredit,
     )
     from githubkit_schemas.v2026_03_10.models import (
+        RepositoryAdvisoryDescriptionValidationError as RepositoryAdvisoryDescriptionValidationError,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        RepositoryAdvisoryDescriptionValidationErrorPropErrorsItems as RepositoryAdvisoryDescriptionValidationErrorPropErrorsItems,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
         RepositoryAdvisoryPropCreditsItems as RepositoryAdvisoryPropCreditsItems,
     )
     from githubkit_schemas.v2026_03_10.models import (
@@ -3098,6 +3109,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         RepositoryRuleParamsDismissalRestriction as RepositoryRuleParamsDismissalRestriction,
     )
     from githubkit_schemas.v2026_03_10.models import (
+        RepositoryRuleParamsProofOfPresence as RepositoryRuleParamsProofOfPresence,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleParamsRequiredReviewerConfiguration as RepositoryRuleParamsRequiredReviewerConfiguration,
     )
     from githubkit_schemas.v2026_03_10.models import (
@@ -3249,6 +3263,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoActionsPermissionsPutBody as ReposOwnerRepoActionsPermissionsPutBody,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200 as ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200,
     )
     from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody as ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody,
@@ -4348,19 +4365,6 @@ if TYPE_CHECKING or is_lazy_disabled():
     from githubkit_schemas.v2026_03_10.models import (
         SimpleCheckSuite as SimpleCheckSuite,
     )
-    from githubkit_schemas.v2026_03_10.models import SimpleClassroom as SimpleClassroom
-    from githubkit_schemas.v2026_03_10.models import (
-        SimpleClassroomAssignment as SimpleClassroomAssignment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
-        SimpleClassroomOrganization as SimpleClassroomOrganization,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
-        SimpleClassroomRepository as SimpleClassroomRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
-        SimpleClassroomUser as SimpleClassroomUser,
-    )
     from githubkit_schemas.v2026_03_10.models import SimpleCommit as SimpleCommit
     from githubkit_schemas.v2026_03_10.models import (
         SimpleCommitPropAuthor as SimpleCommitPropAuthor,
@@ -4389,6 +4393,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     from githubkit_schemas.v2026_03_10.models import SocialAccount as SocialAccount
     from githubkit_schemas.v2026_03_10.models import SshSigningKey as SshSigningKey
     from githubkit_schemas.v2026_03_10.models import Stargazer as Stargazer
+    from githubkit_schemas.v2026_03_10.models import (
+        StargazerHistory as StargazerHistory,
+    )
     from githubkit_schemas.v2026_03_10.models import (
         StarredRepository as StarredRepository,
     )
@@ -6325,6 +6332,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         WebhookIssuesLabeledPropIssuePropLabelsItems as WebhookIssuesLabeledPropIssuePropLabelsItems,
     )
     from githubkit_schemas.v2026_03_10.models import (
+        WebhookIssuesLabeledPropIssuePropLabelsItemsPropArchivedBy as WebhookIssuesLabeledPropIssuePropLabelsItemsPropArchivedBy,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesLabeledPropIssuePropMilestone as WebhookIssuesLabeledPropIssuePropMilestone,
     )
     from githubkit_schemas.v2026_03_10.models import (
@@ -6673,6 +6683,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         WebhookIssuesUntyped as WebhookIssuesUntyped,
     )
     from githubkit_schemas.v2026_03_10.models import (
+        WebhookLabelArchived as WebhookLabelArchived,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
         WebhookLabelCreated as WebhookLabelCreated,
     )
     from githubkit_schemas.v2026_03_10.models import (
@@ -6692,6 +6705,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.models import (
         WebhookLabelEditedPropChangesPropName as WebhookLabelEditedPropChangesPropName,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookLabelUnarchived as WebhookLabelUnarchived,
     )
     from githubkit_schemas.v2026_03_10.models import (
         WebhookMarketplacePurchaseCancelled as WebhookMarketplacePurchaseCancelled,
@@ -7858,6 +7874,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLabeledPropPullRequestPropLabelsItems as WebhookPullRequestLabeledPropPullRequestPropLabelsItems,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookPullRequestLabeledPropPullRequestPropLabelsItemsPropArchivedBy as WebhookPullRequestLabeledPropPullRequestPropLabelsItemsPropArchivedBy,
     )
     from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLabeledPropPullRequestPropLinks as WebhookPullRequestLabeledPropPullRequestPropLinks,
@@ -10592,6 +10611,27 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.models import WebhooksLabel as WebhooksLabel
     from githubkit_schemas.v2026_03_10.models import (
+        WebhooksLabelArchived as WebhooksLabelArchived,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhooksLabelArchivedAllof1 as WebhooksLabelArchivedAllof1,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhooksLabelArchivedAllof1PropArchivedBy as WebhooksLabelArchivedAllof1PropArchivedBy,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhooksLabelPropArchivedBy as WebhooksLabelPropArchivedBy,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhooksLabelUnarchived as WebhooksLabelUnarchived,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhooksLabelUnarchivedAllof1 as WebhooksLabelUnarchivedAllof1,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhooksLabelUnarchivedAllof1PropArchivedBy as WebhooksLabelUnarchivedAllof1PropArchivedBy,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
         WebhooksMarketplacePurchase as WebhooksMarketplacePurchase,
     )
     from githubkit_schemas.v2026_03_10.models import (
@@ -11392,15 +11432,6 @@ else:
             "ScopedInstallation",
             "Authorization",
             "AuthorizationPropApp",
-            "SimpleClassroomRepository",
-            "ClassroomAssignment",
-            "Classroom",
-            "SimpleClassroomOrganization",
-            "ClassroomAcceptedAssignment",
-            "SimpleClassroomUser",
-            "SimpleClassroomAssignment",
-            "SimpleClassroom",
-            "ClassroomAssignmentGrade",
             "ActionsCacheRetentionLimitForEnterprise",
             "ActionsCacheStorageLimitForEnterprise",
             "OidcCustomPropertyInclusion",
@@ -11599,6 +11630,8 @@ else:
             "TeamPropPermissions",
             "CampaignSummary",
             "CampaignSummaryPropAlertStats",
+            "CodeScanningAiScanOrgSettings",
+            "CodeScanningAiScanOrgEnablementUpdate",
             "CodeScanningAlertRuleSummary",
             "CodeScanningAnalysisTool",
             "CodeScanningAlertLocation",
@@ -11727,6 +11760,7 @@ else:
             "RepositoryRuleMergeQueuePropParameters",
             "RepositoryRuleRequiredDeployments",
             "RepositoryRuleRequiredDeploymentsPropParameters",
+            "RepositoryRuleParamsProofOfPresence",
             "RepositoryRulePullRequest",
             "RepositoryRulePullRequestPropParameters",
             "RepositoryRuleParamsDismissalRestriction",
@@ -11945,6 +11979,8 @@ else:
             "CodeQualitySetupUpdateAnyof3",
             "CodeQualitySetupUpdateAnyof4",
             "CodeQualitySetupUpdateResponse",
+            "CodeScanningAiScanEnablement",
+            "CodeScanningAiScanEnablementUpdate",
             "CodeScanningAlertItems",
             "CodeScanningAlert",
             "CodeScanningAlertRule",
@@ -12212,6 +12248,8 @@ else:
             "RepositoryAdvisoryCreatePropCreditsItems",
             "RepositoryAdvisoryCreatePropVulnerabilitiesItems",
             "RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage",
+            "RepositoryAdvisoryDescriptionValidationError",
+            "RepositoryAdvisoryDescriptionValidationErrorPropErrorsItems",
             "PrivateVulnerabilityReportCreate",
             "PrivateVulnerabilityReportCreatePropVulnerabilitiesItems",
             "PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage",
@@ -12226,6 +12264,7 @@ else:
             "PullRequestStackPullRequest",
             "PullRequestStackPullRequestAllof1",
             "Stargazer",
+            "StargazerHistory",
             "CommitActivity",
             "ContributorActivity",
             "ContributorActivityPropWeeksItems",
@@ -12327,6 +12366,7 @@ else:
             "WebhooksCommentPropReactions",
             "WebhooksCommentPropUser",
             "WebhooksLabel",
+            "WebhooksLabelPropArchivedBy",
             "WebhooksRepositoriesItems",
             "WebhooksRepositoriesAddedItems",
             "WebhooksIssueComment",
@@ -12361,6 +12401,12 @@ else:
             "WebhooksIssue2PropReactions",
             "WebhooksIssue2PropUser",
             "WebhooksUserMannequin",
+            "WebhooksLabelArchived",
+            "WebhooksLabelArchivedAllof1",
+            "WebhooksLabelArchivedAllof1PropArchivedBy",
+            "WebhooksLabelUnarchived",
+            "WebhooksLabelUnarchivedAllof1",
+            "WebhooksLabelUnarchivedAllof1PropArchivedBy",
             "WebhooksMarketplacePurchase",
             "WebhooksMarketplacePurchasePropAccount",
             "WebhooksMarketplacePurchasePropPlan",
@@ -13003,7 +13049,6 @@ else:
             "WebhookIssuesLabeledPropIssue",
             "WebhookIssuesLabeledPropIssuePropAssignee",
             "WebhookIssuesLabeledPropIssuePropAssigneesItems",
-            "WebhookIssuesLabeledPropIssuePropLabelsItems",
             "WebhookIssuesLabeledPropIssuePropMilestone",
             "WebhookIssuesLabeledPropIssuePropMilestonePropCreator",
             "WebhookIssuesLabeledPropIssuePropPerformedViaGithubApp",
@@ -13012,6 +13057,8 @@ else:
             "WebhookIssuesLabeledPropIssuePropPullRequest",
             "WebhookIssuesLabeledPropIssuePropReactions",
             "WebhookIssuesLabeledPropIssuePropUser",
+            "WebhookIssuesLabeledPropIssuePropLabelsItems",
+            "WebhookIssuesLabeledPropIssuePropLabelsItemsPropArchivedBy",
             "WebhookIssuesLocked",
             "WebhookIssuesLockedPropIssue",
             "WebhookIssuesLockedPropIssuePropAssignee",
@@ -13120,6 +13167,7 @@ else:
             "WebhookIssuesUnlockedPropIssuePropUser",
             "WebhookIssuesUnpinned",
             "WebhookIssuesUntyped",
+            "WebhookLabelArchived",
             "WebhookLabelCreated",
             "WebhookLabelDeleted",
             "WebhookLabelEdited",
@@ -13127,6 +13175,7 @@ else:
             "WebhookLabelEditedPropChangesPropColor",
             "WebhookLabelEditedPropChangesPropDescription",
             "WebhookLabelEditedPropChangesPropName",
+            "WebhookLabelUnarchived",
             "WebhookMarketplacePurchaseCancelled",
             "WebhookMarketplacePurchaseChanged",
             "WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchase",
@@ -13510,7 +13559,6 @@ else:
             "WebhookPullRequestLabeledPropPullRequestPropAssigneesItems",
             "WebhookPullRequestLabeledPropPullRequestPropAutoMerge",
             "WebhookPullRequestLabeledPropPullRequestPropAutoMergePropEnabledBy",
-            "WebhookPullRequestLabeledPropPullRequestPropLabelsItems",
             "WebhookPullRequestLabeledPropPullRequestPropMergedBy",
             "WebhookPullRequestLabeledPropPullRequestPropMilestone",
             "WebhookPullRequestLabeledPropPullRequestPropMilestonePropCreator",
@@ -13537,6 +13585,8 @@ else:
             "WebhookPullRequestLabeledPropPullRequestPropHeadPropRepoPropOwner",
             "WebhookPullRequestLabeledPropPullRequestPropHeadPropRepoPropPermissions",
             "WebhookPullRequestLabeledPropPullRequestPropHeadPropUser",
+            "WebhookPullRequestLabeledPropPullRequestPropLabelsItems",
+            "WebhookPullRequestLabeledPropPullRequestPropLabelsItemsPropArchivedBy",
             "WebhookPullRequestLabeledPropPullRequestPropRequestedReviewersItemsOneof1",
             "WebhookPullRequestLabeledPropPullRequestPropRequestedReviewersItemsOneof1PropParent",
             "WebhookPullRequestLabeledPropPullRequestPropRequestedTeamsItems",
@@ -14731,6 +14781,7 @@ else:
             "OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200",
             "OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody",
             "OrgsOrgActionsRunnersGetResponse200",
+            "OrgsOrgActionsRunnersDeprecationsVersionGetResponse200",
             "OrgsOrgActionsRunnersGenerateJitconfigPostBody",
             "OrgsOrgActionsRunnersGenerateJitconfigPostResponse201",
             "OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200",
@@ -14932,6 +14983,7 @@ else:
             "ReposOwnerRepoActionsOrganizationVariablesGetResponse200",
             "ReposOwnerRepoActionsPermissionsPutBody",
             "ReposOwnerRepoActionsRunnersGetResponse200",
+            "ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200",
             "ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody",
             "ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody",
             "ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody",

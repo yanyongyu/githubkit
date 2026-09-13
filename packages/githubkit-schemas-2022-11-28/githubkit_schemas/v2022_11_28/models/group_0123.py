@@ -9,24 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ActionsGetDefaultWorkflowPermissions(GitHubModel):
-    """ActionsGetDefaultWorkflowPermissions"""
+class RunnerApplication(GitHubModel):
+    """Runner Application
 
-    default_workflow_permissions: Literal["read", "write"] = Field(
-        description="The default workflow permissions granted to the GITHUB_TOKEN when running workflows."
+    Runner Application
+    """
+
+    os: str = Field()
+    architecture: str = Field()
+    download_url: str = Field()
+    filename: str = Field()
+    temp_download_token: Missing[str] = Field(
+        default=UNSET,
+        description="A short lived bearer token used to download the runner, if needed.",
     )
-    can_approve_pull_request_reviews: bool = Field(
-        description="Whether GitHub Actions can approve pull requests. Enabling this can be a security risk."
-    )
+    sha256_checksum: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(ActionsGetDefaultWorkflowPermissions)
+model_rebuild(RunnerApplication)
 
-__all__ = ("ActionsGetDefaultWorkflowPermissions",)
+__all__ = ("RunnerApplication",)

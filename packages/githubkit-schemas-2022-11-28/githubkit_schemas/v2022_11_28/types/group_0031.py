@@ -10,30 +10,29 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0029 import (
+    CodeSecurityConfigurationType,
+    CodeSecurityConfigurationTypeForResponse,
+)
 
 
-class OidcCustomPropertyInclusionType(TypedDict):
-    """Actions OIDC Custom Property Inclusion
+class CodeSecurityDefaultConfigurationsItemsType(TypedDict):
+    """CodeSecurityDefaultConfigurationsItems"""
 
-    An OIDC custom property inclusion for repository properties
-    """
-
-    custom_property_name: str
-    inclusion_source: Literal["organization", "enterprise"]
+    default_for_new_repos: NotRequired[Literal["public", "private_and_internal", "all"]]
+    configuration: NotRequired[CodeSecurityConfigurationType]
 
 
-class OidcCustomPropertyInclusionTypeForResponse(TypedDict):
-    """Actions OIDC Custom Property Inclusion
+class CodeSecurityDefaultConfigurationsItemsTypeForResponse(TypedDict):
+    """CodeSecurityDefaultConfigurationsItems"""
 
-    An OIDC custom property inclusion for repository properties
-    """
-
-    custom_property_name: str
-    inclusion_source: Literal["organization", "enterprise"]
+    default_for_new_repos: NotRequired[Literal["public", "private_and_internal", "all"]]
+    configuration: NotRequired[CodeSecurityConfigurationTypeForResponse]
 
 
 __all__ = (
-    "OidcCustomPropertyInclusionType",
-    "OidcCustomPropertyInclusionTypeForResponse",
+    "CodeSecurityDefaultConfigurationsItemsType",
+    "CodeSecurityDefaultConfigurationsItemsTypeForResponse",
 )

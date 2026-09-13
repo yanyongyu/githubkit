@@ -9,24 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class OrgsOrgInteractionLimitsPullsCreationCapPatchBodyType(TypedDict):
-    """OrgsOrgInteractionLimitsPullsCreationCapPatchBody"""
+class OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyType(TypedDict):
+    """OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody"""
 
-    enabled: bool
-    max_open_pull_requests: NotRequired[int]
+    default_level: Literal["public", "internal"]
 
 
-class OrgsOrgInteractionLimitsPullsCreationCapPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgInteractionLimitsPullsCreationCapPatchBody"""
+class OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody"""
 
-    enabled: bool
-    max_open_pull_requests: NotRequired[int]
+    default_level: Literal["public", "internal"]
 
 
 __all__ = (
-    "OrgsOrgInteractionLimitsPullsCreationCapPatchBodyType",
-    "OrgsOrgInteractionLimitsPullsCreationCapPatchBodyTypeForResponse",
+    "OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyType",
+    "OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyTypeForResponse",
 )

@@ -9,41 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import GitHubModel, model_rebuild
+
+from .group_0186 import ProjectsV2FieldIterationConfiguration
 
 
-class OrgsOrgSecretScanningCustomPatternsPostResponse422(GitHubModel):
-    """OrgsOrgSecretScanningCustomPatternsPostResponse422"""
+class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3(GitHubModel):
+    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3"""
 
-    message: Missing[str] = Field(
-        default=UNSET, description="A summary message describing the error."
-    )
-    validation_errors: Missing[
-        OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors
-    ] = Field(
-        default=UNSET,
-        description="A map of validation errors keyed by the zero-based index of the pattern that failed.",
+    name: str = Field(description="The name of the field.")
+    data_type: Literal["iteration"] = Field(description="The field's data type.")
+    iteration_configuration: ProjectsV2FieldIterationConfiguration = Field(
+        description="The configuration for iteration fields."
     )
 
 
-class OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors(
-    ExtraGitHubModel
-):
-    """OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors
+model_rebuild(OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3)
 
-    A map of validation errors keyed by the zero-based index of the pattern that
-    failed.
-    """
-
-
-model_rebuild(OrgsOrgSecretScanningCustomPatternsPostResponse422)
-model_rebuild(OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors)
-
-__all__ = (
-    "OrgsOrgSecretScanningCustomPatternsPostResponse422",
-    "OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors",
-)
+__all__ = ("OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3",)

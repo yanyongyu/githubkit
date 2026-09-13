@@ -9,250 +9,329 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Any, Literal, TypeAlias, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
-class WebhooksReviewCommentType(TypedDict):
-    """Pull Request Review Comment
 
-    The [comment](https://docs.github.com/rest/pulls/comments#get-a-review-comment-
-    for-a-pull-request) itself.
+class PersonalAccessTokenRequestType(TypedDict):
+    """Personal Access Token Request
+
+    Details of a Personal Access Token Request.
     """
 
-    links: WebhooksReviewCommentPropLinksType
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    body: str
-    commit_id: str
-    created_at: _dt.datetime
-    diff_hunk: str
-    html_url: str
     id: int
-    in_reply_to_id: NotRequired[int]
-    line: Union[int, None]
-    node_id: str
-    original_commit_id: str
-    original_line: int
-    original_position: int
-    original_start_line: Union[int, None]
-    path: str
-    position: Union[int, None]
-    pull_request_review_id: Union[int, None]
-    pull_request_url: str
-    reactions: WebhooksReviewCommentPropReactionsType
-    side: Literal["LEFT", "RIGHT"]
-    start_line: Union[int, None]
-    start_side: Union[Literal["LEFT", "RIGHT"], None]
-    subject_type: NotRequired[Literal["line", "file"]]
-    updated_at: _dt.datetime
-    url: str
-    user: Union[WebhooksReviewCommentPropUserType, None]
-
-
-class WebhooksReviewCommentTypeForResponse(TypedDict):
-    """Pull Request Review Comment
-
-    The [comment](https://docs.github.com/rest/pulls/comments#get-a-review-comment-
-    for-a-pull-request) itself.
-    """
-
-    links: WebhooksReviewCommentPropLinksTypeForResponse
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    body: str
-    commit_id: str
+    owner: SimpleUserType
+    permissions_added: PersonalAccessTokenRequestPropPermissionsAddedType
+    permissions_upgraded: PersonalAccessTokenRequestPropPermissionsUpgradedType
+    permissions_result: PersonalAccessTokenRequestPropPermissionsResultType
+    repository_selection: Literal["none", "all", "subset"]
+    repository_count: Union[int, None]
+    repositories: Union[list[PersonalAccessTokenRequestPropRepositoriesItemsType], None]
     created_at: str
-    diff_hunk: str
-    html_url: str
+    token_id: int
+    token_name: str
+    token_expired: bool
+    token_expires_at: Union[str, None]
+    token_last_used_at: Union[str, None]
+
+
+class PersonalAccessTokenRequestTypeForResponse(TypedDict):
+    """Personal Access Token Request
+
+    Details of a Personal Access Token Request.
+    """
+
     id: int
-    in_reply_to_id: NotRequired[int]
-    line: Union[int, None]
+    owner: SimpleUserTypeForResponse
+    permissions_added: PersonalAccessTokenRequestPropPermissionsAddedTypeForResponse
+    permissions_upgraded: (
+        PersonalAccessTokenRequestPropPermissionsUpgradedTypeForResponse
+    )
+    permissions_result: PersonalAccessTokenRequestPropPermissionsResultTypeForResponse
+    repository_selection: Literal["none", "all", "subset"]
+    repository_count: Union[int, None]
+    repositories: Union[
+        list[PersonalAccessTokenRequestPropRepositoriesItemsTypeForResponse], None
+    ]
+    created_at: str
+    token_id: int
+    token_name: str
+    token_expired: bool
+    token_expires_at: Union[str, None]
+    token_last_used_at: Union[str, None]
+
+
+class PersonalAccessTokenRequestPropRepositoriesItemsType(TypedDict):
+    """PersonalAccessTokenRequestPropRepositoriesItems"""
+
+    full_name: str
+    id: int
+    name: str
     node_id: str
-    original_commit_id: str
-    original_line: int
-    original_position: int
-    original_start_line: Union[int, None]
-    path: str
-    position: Union[int, None]
-    pull_request_review_id: Union[int, None]
-    pull_request_url: str
-    reactions: WebhooksReviewCommentPropReactionsTypeForResponse
-    side: Literal["LEFT", "RIGHT"]
-    start_line: Union[int, None]
-    start_side: Union[Literal["LEFT", "RIGHT"], None]
-    subject_type: NotRequired[Literal["line", "file"]]
-    updated_at: str
-    url: str
-    user: Union[WebhooksReviewCommentPropUserTypeForResponse, None]
+    private: bool
 
 
-class WebhooksReviewCommentPropReactionsType(TypedDict):
-    """Reactions"""
+class PersonalAccessTokenRequestPropRepositoriesItemsTypeForResponse(TypedDict):
+    """PersonalAccessTokenRequestPropRepositoriesItems"""
 
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
-
-
-class WebhooksReviewCommentPropReactionsTypeForResponse(TypedDict):
-    """Reactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
-
-
-class WebhooksReviewCommentPropUserType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
+    full_name: str
     id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    name: str
+    node_id: str
+    private: bool
 
 
-class WebhooksReviewCommentPropUserTypeForResponse(TypedDict):
-    """User"""
+class PersonalAccessTokenRequestPropPermissionsAddedType(TypedDict):
+    """PersonalAccessTokenRequestPropPermissionsAdded
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    New requested permissions, categorized by type of permission.
+    """
+
+    organization: NotRequired[
+        PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationType
+    ]
+    repository: NotRequired[
+        PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryType
+    ]
+    other: NotRequired[PersonalAccessTokenRequestPropPermissionsAddedPropOtherType]
 
 
-class WebhooksReviewCommentPropLinksType(TypedDict):
-    """WebhooksReviewCommentPropLinks"""
+class PersonalAccessTokenRequestPropPermissionsAddedTypeForResponse(TypedDict):
+    """PersonalAccessTokenRequestPropPermissionsAdded
 
-    html: WebhooksReviewCommentPropLinksPropHtmlType
-    pull_request: WebhooksReviewCommentPropLinksPropPullRequestType
-    self_: WebhooksReviewCommentPropLinksPropSelfType
+    New requested permissions, categorized by type of permission.
+    """
 
-
-class WebhooksReviewCommentPropLinksTypeForResponse(TypedDict):
-    """WebhooksReviewCommentPropLinks"""
-
-    html: WebhooksReviewCommentPropLinksPropHtmlTypeForResponse
-    pull_request: WebhooksReviewCommentPropLinksPropPullRequestTypeForResponse
-    self_: WebhooksReviewCommentPropLinksPropSelfTypeForResponse
-
-
-class WebhooksReviewCommentPropLinksPropHtmlType(TypedDict):
-    """Link"""
-
-    href: str
+    organization: NotRequired[
+        PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationTypeForResponse
+    ]
+    repository: NotRequired[
+        PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryTypeForResponse
+    ]
+    other: NotRequired[
+        PersonalAccessTokenRequestPropPermissionsAddedPropOtherTypeForResponse
+    ]
 
 
-class WebhooksReviewCommentPropLinksPropHtmlTypeForResponse(TypedDict):
-    """Link"""
-
-    href: str
-
-
-class WebhooksReviewCommentPropLinksPropPullRequestType(TypedDict):
-    """Link"""
-
-    href: str
+PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationType: TypeAlias = dict[
+    str, Any
+]
+"""PersonalAccessTokenRequestPropPermissionsAddedPropOrganization
+"""
 
 
-class WebhooksReviewCommentPropLinksPropPullRequestTypeForResponse(TypedDict):
-    """Link"""
-
-    href: str
-
-
-class WebhooksReviewCommentPropLinksPropSelfType(TypedDict):
-    """Link"""
-
-    href: str
+PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""PersonalAccessTokenRequestPropPermissionsAddedPropOrganization
+"""
 
 
-class WebhooksReviewCommentPropLinksPropSelfTypeForResponse(TypedDict):
-    """Link"""
+PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryType: TypeAlias = dict[
+    str, Any
+]
+"""PersonalAccessTokenRequestPropPermissionsAddedPropRepository
+"""
 
-    href: str
+
+PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""PersonalAccessTokenRequestPropPermissionsAddedPropRepository
+"""
+
+
+PersonalAccessTokenRequestPropPermissionsAddedPropOtherType: TypeAlias = dict[str, Any]
+"""PersonalAccessTokenRequestPropPermissionsAddedPropOther
+"""
+
+
+PersonalAccessTokenRequestPropPermissionsAddedPropOtherTypeForResponse: TypeAlias = (
+    dict[str, Any]
+)
+"""PersonalAccessTokenRequestPropPermissionsAddedPropOther
+"""
+
+
+class PersonalAccessTokenRequestPropPermissionsUpgradedType(TypedDict):
+    """PersonalAccessTokenRequestPropPermissionsUpgraded
+
+    Requested permissions that elevate access for a previously approved request for
+    access, categorized by type of permission.
+    """
+
+    organization: NotRequired[
+        PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationType
+    ]
+    repository: NotRequired[
+        PersonalAccessTokenRequestPropPermissionsUpgradedPropRepositoryType
+    ]
+    other: NotRequired[PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherType]
+
+
+class PersonalAccessTokenRequestPropPermissionsUpgradedTypeForResponse(TypedDict):
+    """PersonalAccessTokenRequestPropPermissionsUpgraded
+
+    Requested permissions that elevate access for a previously approved request for
+    access, categorized by type of permission.
+    """
+
+    organization: NotRequired[
+        PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationTypeForResponse
+    ]
+    repository: NotRequired[
+        PersonalAccessTokenRequestPropPermissionsUpgradedPropRepositoryTypeForResponse
+    ]
+    other: NotRequired[
+        PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherTypeForResponse
+    ]
+
+
+PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationType: TypeAlias = dict[
+    str, Any
+]
+"""PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization
+"""
+
+
+PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization
+"""
+
+
+PersonalAccessTokenRequestPropPermissionsUpgradedPropRepositoryType: TypeAlias = dict[
+    str, Any
+]
+"""PersonalAccessTokenRequestPropPermissionsUpgradedPropRepository
+"""
+
+
+PersonalAccessTokenRequestPropPermissionsUpgradedPropRepositoryTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""PersonalAccessTokenRequestPropPermissionsUpgradedPropRepository
+"""
+
+
+PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherType: TypeAlias = dict[
+    str, Any
+]
+"""PersonalAccessTokenRequestPropPermissionsUpgradedPropOther
+"""
+
+
+PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherTypeForResponse: TypeAlias = (
+    dict[str, Any]
+)
+"""PersonalAccessTokenRequestPropPermissionsUpgradedPropOther
+"""
+
+
+class PersonalAccessTokenRequestPropPermissionsResultType(TypedDict):
+    """PersonalAccessTokenRequestPropPermissionsResult
+
+    Permissions requested, categorized by type of permission. This field
+    incorporates `permissions_added` and `permissions_upgraded`.
+    """
+
+    organization: NotRequired[
+        PersonalAccessTokenRequestPropPermissionsResultPropOrganizationType
+    ]
+    repository: NotRequired[
+        PersonalAccessTokenRequestPropPermissionsResultPropRepositoryType
+    ]
+    other: NotRequired[PersonalAccessTokenRequestPropPermissionsResultPropOtherType]
+
+
+class PersonalAccessTokenRequestPropPermissionsResultTypeForResponse(TypedDict):
+    """PersonalAccessTokenRequestPropPermissionsResult
+
+    Permissions requested, categorized by type of permission. This field
+    incorporates `permissions_added` and `permissions_upgraded`.
+    """
+
+    organization: NotRequired[
+        PersonalAccessTokenRequestPropPermissionsResultPropOrganizationTypeForResponse
+    ]
+    repository: NotRequired[
+        PersonalAccessTokenRequestPropPermissionsResultPropRepositoryTypeForResponse
+    ]
+    other: NotRequired[
+        PersonalAccessTokenRequestPropPermissionsResultPropOtherTypeForResponse
+    ]
+
+
+PersonalAccessTokenRequestPropPermissionsResultPropOrganizationType: TypeAlias = dict[
+    str, Any
+]
+"""PersonalAccessTokenRequestPropPermissionsResultPropOrganization
+"""
+
+
+PersonalAccessTokenRequestPropPermissionsResultPropOrganizationTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""PersonalAccessTokenRequestPropPermissionsResultPropOrganization
+"""
+
+
+PersonalAccessTokenRequestPropPermissionsResultPropRepositoryType: TypeAlias = dict[
+    str, Any
+]
+"""PersonalAccessTokenRequestPropPermissionsResultPropRepository
+"""
+
+
+PersonalAccessTokenRequestPropPermissionsResultPropRepositoryTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""PersonalAccessTokenRequestPropPermissionsResultPropRepository
+"""
+
+
+PersonalAccessTokenRequestPropPermissionsResultPropOtherType: TypeAlias = dict[str, Any]
+"""PersonalAccessTokenRequestPropPermissionsResultPropOther
+"""
+
+
+PersonalAccessTokenRequestPropPermissionsResultPropOtherTypeForResponse: TypeAlias = (
+    dict[str, Any]
+)
+"""PersonalAccessTokenRequestPropPermissionsResultPropOther
+"""
 
 
 __all__ = (
-    "WebhooksReviewCommentPropLinksPropHtmlType",
-    "WebhooksReviewCommentPropLinksPropHtmlTypeForResponse",
-    "WebhooksReviewCommentPropLinksPropPullRequestType",
-    "WebhooksReviewCommentPropLinksPropPullRequestTypeForResponse",
-    "WebhooksReviewCommentPropLinksPropSelfType",
-    "WebhooksReviewCommentPropLinksPropSelfTypeForResponse",
-    "WebhooksReviewCommentPropLinksType",
-    "WebhooksReviewCommentPropLinksTypeForResponse",
-    "WebhooksReviewCommentPropReactionsType",
-    "WebhooksReviewCommentPropReactionsTypeForResponse",
-    "WebhooksReviewCommentPropUserType",
-    "WebhooksReviewCommentPropUserTypeForResponse",
-    "WebhooksReviewCommentType",
-    "WebhooksReviewCommentTypeForResponse",
+    "PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationType",
+    "PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationTypeForResponse",
+    "PersonalAccessTokenRequestPropPermissionsAddedPropOtherType",
+    "PersonalAccessTokenRequestPropPermissionsAddedPropOtherTypeForResponse",
+    "PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryType",
+    "PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryTypeForResponse",
+    "PersonalAccessTokenRequestPropPermissionsAddedType",
+    "PersonalAccessTokenRequestPropPermissionsAddedTypeForResponse",
+    "PersonalAccessTokenRequestPropPermissionsResultPropOrganizationType",
+    "PersonalAccessTokenRequestPropPermissionsResultPropOrganizationTypeForResponse",
+    "PersonalAccessTokenRequestPropPermissionsResultPropOtherType",
+    "PersonalAccessTokenRequestPropPermissionsResultPropOtherTypeForResponse",
+    "PersonalAccessTokenRequestPropPermissionsResultPropRepositoryType",
+    "PersonalAccessTokenRequestPropPermissionsResultPropRepositoryTypeForResponse",
+    "PersonalAccessTokenRequestPropPermissionsResultType",
+    "PersonalAccessTokenRequestPropPermissionsResultTypeForResponse",
+    "PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationType",
+    "PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationTypeForResponse",
+    "PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherType",
+    "PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherTypeForResponse",
+    "PersonalAccessTokenRequestPropPermissionsUpgradedPropRepositoryType",
+    "PersonalAccessTokenRequestPropPermissionsUpgradedPropRepositoryTypeForResponse",
+    "PersonalAccessTokenRequestPropPermissionsUpgradedType",
+    "PersonalAccessTokenRequestPropPermissionsUpgradedTypeForResponse",
+    "PersonalAccessTokenRequestPropRepositoriesItemsType",
+    "PersonalAccessTokenRequestPropRepositoriesItemsTypeForResponse",
+    "PersonalAccessTokenRequestType",
+    "PersonalAccessTokenRequestTypeForResponse",
 )

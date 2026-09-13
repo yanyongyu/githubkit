@@ -9,41 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0040 import DependabotAlertPackage
 
 
-class DependabotAlertWithRepositoryPropDependency(GitHubModel):
-    """DependabotAlertWithRepositoryPropDependency
+class Label(GitHubModel):
+    """Label
 
-    Details for the vulnerable dependency.
+    Color-coded labels help you categorize and filter your issues (just like labels
+    in Gmail).
     """
 
-    package: Missing[DependabotAlertPackage] = Field(
-        default=UNSET, description="Details for the vulnerable package."
+    id: int = Field(description="Unique identifier for the label.")
+    node_id: str = Field()
+    url: str = Field(description="URL for the label")
+    name: str = Field(description="The name of the label.")
+    description: Union[str, None] = Field(
+        description="Optional description of the label, such as its purpose."
     )
-    manifest_path: Missing[str] = Field(
-        default=UNSET,
-        description="The full path to the dependency manifest file, relative to the root of the repository.",
+    color: str = Field(
+        description="6-character hex code, without the leading #, identifying the color"
     )
-    scope: Missing[Union[Literal["development", "runtime"], None]] = Field(
-        default=UNSET, description="The execution scope of the vulnerable dependency."
+    default: bool = Field(
+        description="Whether this label comes by default in a new repository."
     )
-    relationship: Missing[
-        Union[Literal["unknown", "direct", "transitive", "inconclusive"], None]
-    ] = Field(
-        default=UNSET,
-        description='The vulnerable dependency\'s relationship to your project.\n\n> [!NOTE]\n> We are rolling out support for dependency relationship across ecosystems. This value will be "unknown" for all dependencies in unsupported ecosystems.\n',
+    archived_at: Union[_dt.datetime, None] = Field(
+        description="Timestamp indicating when the label was archived, or `null` if it has not been archived."
+    )
+    archived_by: None = Field(
+        description="The user who archived the label, or `null` if it has not been archived."
     )
 
 
-model_rebuild(DependabotAlertWithRepositoryPropDependency)
+model_rebuild(Label)
 
-__all__ = ("DependabotAlertWithRepositoryPropDependency",)
+__all__ = ("Label",)

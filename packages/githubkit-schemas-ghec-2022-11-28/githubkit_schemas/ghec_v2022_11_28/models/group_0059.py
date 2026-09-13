@@ -12,21 +12,18 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class InstallableOrganization(GitHubModel):
-    """Installable Organization
+class AuditLogStreamKey(GitHubModel):
+    """stream-key
 
-    A GitHub organization on which a GitHub App can be installed.
+    Audit Log Streaming Public Key
     """
 
-    id: int = Field()
-    login: str = Field()
-    accessible_repositories_url: Missing[str] = Field(default=UNSET)
+    key_id: str = Field()
+    key: str = Field()
 
 
-model_rebuild(InstallableOrganization)
+model_rebuild(AuditLogStreamKey)
 
-__all__ = ("InstallableOrganization",)
+__all__ = ("AuditLogStreamKey",)

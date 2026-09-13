@@ -13,44 +13,38 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0622 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0623 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0624 import (
+from .group_0625 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0626 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0627 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0625 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0627 import ExemptionResponseType, ExemptionResponseTypeForResponse
-from .group_0628 import ExemptionRequestType, ExemptionRequestTypeForResponse
+from .group_0628 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookExemptionRequestResponseSubmittedType(TypedDict):
-    """Exemption response submitted event"""
+class WebhookBranchProtectionConfigurationDisabledType(TypedDict):
+    """branch protection configuration disabled event"""
 
-    action: Literal["response_submitted"]
+    action: Literal["disabled"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    exemption_request: ExemptionRequestType
-    exemption_response: ExemptionResponseType
+    repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookExemptionRequestResponseSubmittedTypeForResponse(TypedDict):
-    """Exemption response submitted event"""
+class WebhookBranchProtectionConfigurationDisabledTypeForResponse(TypedDict):
+    """branch protection configuration disabled event"""
 
-    action: Literal["response_submitted"]
+    action: Literal["disabled"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    exemption_request: ExemptionRequestTypeForResponse
-    exemption_response: ExemptionResponseTypeForResponse
+    repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookExemptionRequestResponseSubmittedType",
-    "WebhookExemptionRequestResponseSubmittedTypeForResponse",
+    "WebhookBranchProtectionConfigurationDisabledType",
+    "WebhookBranchProtectionConfigurationDisabledTypeForResponse",
 )

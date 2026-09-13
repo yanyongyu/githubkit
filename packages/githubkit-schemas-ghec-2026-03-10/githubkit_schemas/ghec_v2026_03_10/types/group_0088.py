@@ -9,23 +9,66 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
-CopilotEnterpriseContentExclusionDetailsType: TypeAlias = dict[str, Any]
-"""Copilot Enterprise Content Exclusion Details
+from .group_0087 import (
+    DependabotAlertPackageType,
+    DependabotAlertPackageTypeForResponse,
+)
 
-List all Copilot Content Exclusion rules for an enterprise.
-"""
+
+class DependabotAlertSecurityVulnerabilityType(TypedDict):
+    """DependabotAlertSecurityVulnerability
+
+    Details pertaining to one vulnerable version range for the advisory.
+    """
+
+    package: DependabotAlertPackageType
+    severity: Literal["low", "medium", "high", "critical"]
+    vulnerable_version_range: str
+    first_patched_version: Union[
+        DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType, None
+    ]
 
 
-CopilotEnterpriseContentExclusionDetailsTypeForResponse: TypeAlias = dict[str, Any]
-"""Copilot Enterprise Content Exclusion Details
+class DependabotAlertSecurityVulnerabilityTypeForResponse(TypedDict):
+    """DependabotAlertSecurityVulnerability
 
-List all Copilot Content Exclusion rules for an enterprise.
-"""
+    Details pertaining to one vulnerable version range for the advisory.
+    """
+
+    package: DependabotAlertPackageTypeForResponse
+    severity: Literal["low", "medium", "high", "critical"]
+    vulnerable_version_range: str
+    first_patched_version: Union[
+        DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionTypeForResponse, None
+    ]
+
+
+class DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType(TypedDict):
+    """DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion
+
+    Details pertaining to the package version that patches this vulnerability.
+    """
+
+    identifier: str
+
+
+class DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionTypeForResponse(
+    TypedDict
+):
+    """DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion
+
+    Details pertaining to the package version that patches this vulnerability.
+    """
+
+    identifier: str
 
 
 __all__ = (
-    "CopilotEnterpriseContentExclusionDetailsType",
-    "CopilotEnterpriseContentExclusionDetailsTypeForResponse",
+    "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType",
+    "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionTypeForResponse",
+    "DependabotAlertSecurityVulnerabilityType",
+    "DependabotAlertSecurityVulnerabilityTypeForResponse",
 )

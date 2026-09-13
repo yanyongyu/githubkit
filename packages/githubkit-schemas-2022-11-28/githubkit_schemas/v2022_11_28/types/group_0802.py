@@ -13,41 +13,38 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0539 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0540 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0541 import (
+from .group_0543 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0544 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0542 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0567 import WebhooksMembershipType, WebhooksMembershipTypeForResponse
+from .group_0545 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0574 import MergeGroupType, MergeGroupTypeForResponse
 
 
-class WebhookOrganizationMemberAddedType(TypedDict):
-    """organization member_added event"""
+class WebhookMergeGroupChecksRequestedType(TypedDict):
+    """WebhookMergeGroupChecksRequested"""
 
-    action: Literal["member_added"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["checks_requested"]
     installation: NotRequired[SimpleInstallationType]
-    membership: WebhooksMembershipType
-    organization: OrganizationSimpleWebhooksType
+    merge_group: MergeGroupType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserType
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookOrganizationMemberAddedTypeForResponse(TypedDict):
-    """organization member_added event"""
+class WebhookMergeGroupChecksRequestedTypeForResponse(TypedDict):
+    """WebhookMergeGroupChecksRequested"""
 
-    action: Literal["member_added"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    action: Literal["checks_requested"]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    membership: WebhooksMembershipTypeForResponse
-    organization: OrganizationSimpleWebhooksTypeForResponse
+    merge_group: MergeGroupTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    sender: SimpleUserTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookOrganizationMemberAddedType",
-    "WebhookOrganizationMemberAddedTypeForResponse",
+    "WebhookMergeGroupChecksRequestedType",
+    "WebhookMergeGroupChecksRequestedTypeForResponse",
 )

@@ -9,68 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0084 import TeamSimple
 
 
-class Team(GitHubModel):
-    """Team
+class CopilotUsageMetrics1DayReport(GitHubModel):
+    """Copilot Metrics 1 Day Report
 
-    Groups of organization members that gives permissions on specified repositories.
+    Links to download the Copilot usage metrics report for an
+    enterprise/organization for a specific day.
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    name: str = Field()
-    slug: str = Field()
-    description: Union[str, None] = Field()
-    privacy: Missing[str] = Field(default=UNSET)
-    notification_setting: Missing[str] = Field(default=UNSET)
-    permission: str = Field()
-    permissions: Missing[TeamPropPermissions] = Field(default=UNSET)
-    url: str = Field()
-    html_url: str = Field()
-    members_url: str = Field()
-    repositories_url: str = Field()
-    type: Literal["enterprise", "organization"] = Field(
-        description="The ownership type of the team"
+    download_links: list[str] = Field(
+        description="The URLs to download the Copilot usage metrics report for the enterprise/organization for the specified day."
     )
-    access_source: Missing[Literal["direct", "organization", "enterprise"]] = Field(
-        default=UNSET,
-        description="How the team's access to the repository was granted. This property is only\npresent when the team is returned in a repository context, such as\n`GET /repos/{owner}/{repo}/teams`.",
+    report_day: _dt.date = Field(
+        description="The day of the report in `YYYY-MM-DD` format."
     )
-    organization_id: Missing[int] = Field(
-        default=UNSET,
-        description="Unique identifier of the organization to which this team belongs",
-    )
-    enterprise_id: Missing[int] = Field(
-        default=UNSET,
-        description="Unique identifier of the enterprise to which this team belongs",
-    )
-    parent: Union[TeamSimple, None] = Field()
 
 
-class TeamPropPermissions(GitHubModel):
-    """TeamPropPermissions"""
+model_rebuild(CopilotUsageMetrics1DayReport)
 
-    pull: bool = Field()
-    triage: bool = Field()
-    push: bool = Field()
-    maintain: bool = Field()
-    admin: bool = Field()
-
-
-model_rebuild(Team)
-model_rebuild(TeamPropPermissions)
-
-__all__ = (
-    "Team",
-    "TeamPropPermissions",
-)
+__all__ = ("CopilotUsageMetrics1DayReport",)

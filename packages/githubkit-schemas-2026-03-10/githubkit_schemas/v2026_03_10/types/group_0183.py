@@ -9,38 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0178 import LinkType, LinkTypeForResponse
-
-
-class PullRequestSimplePropLinksType(TypedDict):
-    """PullRequestSimplePropLinks"""
-
-    comments: LinkType
-    commits: LinkType
-    statuses: LinkType
-    html: LinkType
-    issue: LinkType
-    review_comments: LinkType
-    review_comment: LinkType
-    self_: LinkType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0055 import IssueType, IssueTypeForResponse
+from .group_0179 import PullRequestSimpleType, PullRequestSimpleTypeForResponse
+from .group_0182 import ProjectsV2DraftIssueType, ProjectsV2DraftIssueTypeForResponse
 
 
-class PullRequestSimplePropLinksTypeForResponse(TypedDict):
-    """PullRequestSimplePropLinks"""
+class ProjectsV2ItemSimpleType(TypedDict):
+    """Projects v2 Item
 
-    comments: LinkTypeForResponse
-    commits: LinkTypeForResponse
-    statuses: LinkTypeForResponse
-    html: LinkTypeForResponse
-    issue: LinkTypeForResponse
-    review_comments: LinkTypeForResponse
-    review_comment: LinkTypeForResponse
-    self_: LinkTypeForResponse
+    An item belonging to a project
+    """
+
+    id: float
+    node_id: NotRequired[str]
+    content: NotRequired[
+        Union[IssueType, PullRequestSimpleType, ProjectsV2DraftIssueType]
+    ]
+    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
+    creator: NotRequired[SimpleUserType]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    archived_at: Union[_dt.datetime, None]
+    project_url: NotRequired[str]
+    item_url: NotRequired[str]
+
+
+class ProjectsV2ItemSimpleTypeForResponse(TypedDict):
+    """Projects v2 Item
+
+    An item belonging to a project
+    """
+
+    id: float
+    node_id: NotRequired[str]
+    content: NotRequired[
+        Union[
+            IssueTypeForResponse,
+            PullRequestSimpleTypeForResponse,
+            ProjectsV2DraftIssueTypeForResponse,
+        ]
+    ]
+    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
+    creator: NotRequired[SimpleUserTypeForResponse]
+    created_at: str
+    updated_at: str
+    archived_at: Union[str, None]
+    project_url: NotRequired[str]
+    item_url: NotRequired[str]
 
 
 __all__ = (
-    "PullRequestSimplePropLinksType",
-    "PullRequestSimplePropLinksTypeForResponse",
+    "ProjectsV2ItemSimpleType",
+    "ProjectsV2ItemSimpleTypeForResponse",
 )

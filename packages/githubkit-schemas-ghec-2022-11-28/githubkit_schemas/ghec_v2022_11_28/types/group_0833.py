@@ -9,32 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
+from .group_0218 import IssueType, IssueTypeForResponse
+from .group_0626 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0627 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0628 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
-class WebhookIssuesClosedPropIssueAllof0PropPullRequestType(TypedDict):
-    """WebhookIssuesClosedPropIssueAllof0PropPullRequest"""
 
-    diff_url: NotRequired[str]
-    html_url: NotRequired[str]
-    merged_at: NotRequired[Union[_dt.datetime, None]]
-    patch_url: NotRequired[str]
-    url: NotRequired[str]
+class WebhookIssueDependenciesBlockingRemovedType(TypedDict):
+    """blocking issue removed event"""
+
+    action: Literal["blocking_removed"]
+    blocked_issue_id: NotRequired[float]
+    blocked_issue: NotRequired[IssueType]
+    blocked_issue_repo: NotRequired[RepositoryType]
+    blocking_issue_id: NotRequired[float]
+    blocking_issue: NotRequired[IssueType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: OrganizationSimpleWebhooksType
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class WebhookIssuesClosedPropIssueAllof0PropPullRequestTypeForResponse(TypedDict):
-    """WebhookIssuesClosedPropIssueAllof0PropPullRequest"""
+class WebhookIssueDependenciesBlockingRemovedTypeForResponse(TypedDict):
+    """blocking issue removed event"""
 
-    diff_url: NotRequired[str]
-    html_url: NotRequired[str]
-    merged_at: NotRequired[Union[str, None]]
-    patch_url: NotRequired[str]
-    url: NotRequired[str]
+    action: Literal["blocking_removed"]
+    blocked_issue_id: NotRequired[float]
+    blocked_issue: NotRequired[IssueTypeForResponse]
+    blocked_issue_repo: NotRequired[RepositoryTypeForResponse]
+    blocking_issue_id: NotRequired[float]
+    blocking_issue: NotRequired[IssueTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookIssuesClosedPropIssueAllof0PropPullRequestType",
-    "WebhookIssuesClosedPropIssueAllof0PropPullRequestTypeForResponse",
+    "WebhookIssueDependenciesBlockingRemovedType",
+    "WebhookIssueDependenciesBlockingRemovedTypeForResponse",
 )

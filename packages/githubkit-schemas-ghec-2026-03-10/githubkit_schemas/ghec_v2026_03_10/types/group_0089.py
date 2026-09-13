@@ -10,32 +10,130 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0001 import CvssSeveritiesType, CvssSeveritiesTypeForResponse
+from .group_0002 import SecurityAdvisoryEpssType, SecurityAdvisoryEpssTypeForResponse
+from .group_0088 import (
+    DependabotAlertSecurityVulnerabilityType,
+    DependabotAlertSecurityVulnerabilityTypeForResponse,
+)
 
 
-class CopilotUsageMetrics1DayReportType(TypedDict):
-    """Copilot Metrics 1 Day Report
+class DependabotAlertSecurityAdvisoryType(TypedDict):
+    """DependabotAlertSecurityAdvisory
 
-    Links to download the Copilot usage metrics report for an
-    enterprise/organization for a specific day.
+    Details for the GitHub Security Advisory.
     """
 
-    download_links: list[str]
-    report_day: _dt.date
+    ghsa_id: str
+    cve_id: Union[str, None]
+    summary: str
+    description: str
+    vulnerabilities: list[DependabotAlertSecurityVulnerabilityType]
+    severity: Literal["low", "medium", "high", "critical"]
+    classification: NotRequired[Literal["general", "malware"]]
+    cvss_severities: NotRequired[Union[CvssSeveritiesType, None]]
+    epss: NotRequired[Union[SecurityAdvisoryEpssType, None]]
+    cwes: list[DependabotAlertSecurityAdvisoryPropCwesItemsType]
+    identifiers: list[DependabotAlertSecurityAdvisoryPropIdentifiersItemsType]
+    references: list[DependabotAlertSecurityAdvisoryPropReferencesItemsType]
+    published_at: _dt.datetime
+    updated_at: _dt.datetime
+    withdrawn_at: Union[_dt.datetime, None]
 
 
-class CopilotUsageMetrics1DayReportTypeForResponse(TypedDict):
-    """Copilot Metrics 1 Day Report
+class DependabotAlertSecurityAdvisoryTypeForResponse(TypedDict):
+    """DependabotAlertSecurityAdvisory
 
-    Links to download the Copilot usage metrics report for an
-    enterprise/organization for a specific day.
+    Details for the GitHub Security Advisory.
     """
 
-    download_links: list[str]
-    report_day: str
+    ghsa_id: str
+    cve_id: Union[str, None]
+    summary: str
+    description: str
+    vulnerabilities: list[DependabotAlertSecurityVulnerabilityTypeForResponse]
+    severity: Literal["low", "medium", "high", "critical"]
+    classification: NotRequired[Literal["general", "malware"]]
+    cvss_severities: NotRequired[Union[CvssSeveritiesTypeForResponse, None]]
+    epss: NotRequired[Union[SecurityAdvisoryEpssTypeForResponse, None]]
+    cwes: list[DependabotAlertSecurityAdvisoryPropCwesItemsTypeForResponse]
+    identifiers: list[
+        DependabotAlertSecurityAdvisoryPropIdentifiersItemsTypeForResponse
+    ]
+    references: list[DependabotAlertSecurityAdvisoryPropReferencesItemsTypeForResponse]
+    published_at: str
+    updated_at: str
+    withdrawn_at: Union[str, None]
+
+
+class DependabotAlertSecurityAdvisoryPropCwesItemsType(TypedDict):
+    """DependabotAlertSecurityAdvisoryPropCwesItems
+
+    A CWE weakness assigned to the advisory.
+    """
+
+    cwe_id: str
+    name: str
+
+
+class DependabotAlertSecurityAdvisoryPropCwesItemsTypeForResponse(TypedDict):
+    """DependabotAlertSecurityAdvisoryPropCwesItems
+
+    A CWE weakness assigned to the advisory.
+    """
+
+    cwe_id: str
+    name: str
+
+
+class DependabotAlertSecurityAdvisoryPropIdentifiersItemsType(TypedDict):
+    """DependabotAlertSecurityAdvisoryPropIdentifiersItems
+
+    An advisory identifier.
+    """
+
+    type: Literal["CVE", "GHSA"]
+    value: str
+
+
+class DependabotAlertSecurityAdvisoryPropIdentifiersItemsTypeForResponse(TypedDict):
+    """DependabotAlertSecurityAdvisoryPropIdentifiersItems
+
+    An advisory identifier.
+    """
+
+    type: Literal["CVE", "GHSA"]
+    value: str
+
+
+class DependabotAlertSecurityAdvisoryPropReferencesItemsType(TypedDict):
+    """DependabotAlertSecurityAdvisoryPropReferencesItems
+
+    A link to additional advisory information.
+    """
+
+    url: str
+
+
+class DependabotAlertSecurityAdvisoryPropReferencesItemsTypeForResponse(TypedDict):
+    """DependabotAlertSecurityAdvisoryPropReferencesItems
+
+    A link to additional advisory information.
+    """
+
+    url: str
 
 
 __all__ = (
-    "CopilotUsageMetrics1DayReportType",
-    "CopilotUsageMetrics1DayReportTypeForResponse",
+    "DependabotAlertSecurityAdvisoryPropCwesItemsType",
+    "DependabotAlertSecurityAdvisoryPropCwesItemsTypeForResponse",
+    "DependabotAlertSecurityAdvisoryPropIdentifiersItemsType",
+    "DependabotAlertSecurityAdvisoryPropIdentifiersItemsTypeForResponse",
+    "DependabotAlertSecurityAdvisoryPropReferencesItemsType",
+    "DependabotAlertSecurityAdvisoryPropReferencesItemsTypeForResponse",
+    "DependabotAlertSecurityAdvisoryType",
+    "DependabotAlertSecurityAdvisoryTypeForResponse",
 )

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,62 +18,45 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesPostBody(GitHubModel):
-    """ReposOwnerRepoIssuesPostBody"""
+class ReposOwnerRepoGitTreesPostBody(GitHubModel):
+    """ReposOwnerRepoGitTreesPostBody"""
 
-    title: Union[str, int] = Field(description="The title of the issue.")
-    body: Missing[str] = Field(default=UNSET, description="The contents of the issue.")
-    milestone: Missing[Union[str, int, None]] = Field(default=UNSET)
-    labels: Missing[
-        list[Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1]]
-    ] = Field(
+    tree: list[ReposOwnerRepoGitTreesPostBodyPropTreeItems] = Field(
+        description="Objects (of `path`, `mode`, `type`, and `sha`) specifying a tree structure."
+    )
+    base_tree: Missing[str] = Field(
         default=UNSET,
-        description="Labels to associate with this issue. _NOTE: Only users with push access can set labels for new issues. Labels are silently dropped otherwise._",
+        description="The SHA1 of an existing Git tree object which will be used as the base for the new tree. If provided, a new Git tree object will be created from entries in the Git tree object pointed to by `base_tree` and entries defined in the `tree` parameter. Entries defined in the `tree` parameter will overwrite items from `base_tree` with the same `path`. If you're creating new changes on a branch, then normally you'd set `base_tree` to the SHA1 of the Git tree object of the current latest commit on the branch you're working on.\nIf not provided, GitHub will create a new Git tree object from only the entries defined in the `tree` parameter. If you create a new commit pointing to such a tree, then all files which were a part of the parent commit's tree and were not defined in the `tree` parameter will be listed as deleted by the new commit.",
     )
-    assignees: Missing[list[str]] = Field(
+
+
+class ReposOwnerRepoGitTreesPostBodyPropTreeItems(GitHubModel):
+    """ReposOwnerRepoGitTreesPostBodyPropTreeItems"""
+
+    path: Missing[str] = Field(
+        default=UNSET, description="The file referenced in the tree."
+    )
+    mode: Missing[Literal["100644", "100755", "040000", "160000", "120000"]] = Field(
         default=UNSET,
-        description="Logins for Users to assign to this issue. _NOTE: Only users with push access can set assignees for new issues. Assignees are silently dropped otherwise._",
+        description="The file mode; one of `100644` for file (blob), `100755` for executable (blob), `040000` for subdirectory (tree), `160000` for submodule (commit), or `120000` for a blob that specifies the path of a symlink.",
     )
-    issue_field_values: Missing[
-        list[ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems]
-    ] = Field(
+    type: Missing[Literal["blob", "tree", "commit"]] = Field(
+        default=UNSET, description="Either `blob`, `tree`, or `commit`."
+    )
+    sha: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="An array of issue field values to set on this issue. Each field value must include the field ID and the value to set. Issue fields are only available for organization-owned repositories with the feature enabled. Field values are silently dropped otherwise.",
+        description="The SHA1 checksum ID of the object in the tree. Also called `tree.sha`. If the value is `null` then the file will be deleted.  \n  \n**Note:** Use either `tree.sha` or `content` to specify the contents of the entry. Using both `tree.sha` and `content` will return an error.",
     )
-    type: Missing[Union[str, None]] = Field(
+    content: Missing[str] = Field(
         default=UNSET,
-        description="The name of the issue type to associate with this issue. _NOTE: Only users with push access can set the type for new issues. The type is silently dropped otherwise._",
-    )
-    parent_issue_id: Missing[int] = Field(
-        default=UNSET,
-        description="The id of the parent issue to add this issue to as a sub-issue. _NOTE: Only users with triage access to both the parent issue's repository and this repository can set the parent issue._",
+        description="The content you want this file to have. GitHub will write this blob out and use that SHA for this entry. Use either this, or `tree.sha`.  \n  \n**Note:** Use either `tree.sha` or `content` to specify the contents of the entry. Using both `tree.sha` and `content` will return an error.",
     )
 
 
-class ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1(GitHubModel):
-    """ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1"""
-
-    id: Missing[int] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    description: Missing[Union[str, None]] = Field(default=UNSET)
-    color: Missing[Union[str, None]] = Field(default=UNSET)
-
-
-class ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems(GitHubModel):
-    """ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems"""
-
-    field_id: int = Field(description="The ID of the issue field to set")
-    value: Union[str, float, list[str]] = Field(
-        description="The value to set for the field. For multi-select fields, provide an array of option names."
-    )
-
-
-model_rebuild(ReposOwnerRepoIssuesPostBody)
-model_rebuild(ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1)
-model_rebuild(ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems)
+model_rebuild(ReposOwnerRepoGitTreesPostBody)
+model_rebuild(ReposOwnerRepoGitTreesPostBodyPropTreeItems)
 
 __all__ = (
-    "ReposOwnerRepoIssuesPostBody",
-    "ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems",
-    "ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1",
+    "ReposOwnerRepoGitTreesPostBody",
+    "ReposOwnerRepoGitTreesPostBodyPropTreeItems",
 )

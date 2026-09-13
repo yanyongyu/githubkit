@@ -16,13 +16,16 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoImportAuthorsAuthorIdPatchBody(GitHubModel):
-    """ReposOwnerRepoImportAuthorsAuthorIdPatchBody"""
+class ReposOwnerRepoGitBlobsPostBody(GitHubModel):
+    """ReposOwnerRepoGitBlobsPostBody"""
 
-    email: Missing[str] = Field(default=UNSET, description="The new Git author email.")
-    name: Missing[str] = Field(default=UNSET, description="The new Git author name.")
+    content: str = Field(description="The new blob's content.")
+    encoding: Missing[str] = Field(
+        default=UNSET,
+        description='The encoding used for `content`. Currently, `"utf-8"` and `"base64"` are supported.',
+    )
 
 
-model_rebuild(ReposOwnerRepoImportAuthorsAuthorIdPatchBody)
+model_rebuild(ReposOwnerRepoGitBlobsPostBody)
 
-__all__ = ("ReposOwnerRepoImportAuthorsAuthorIdPatchBody",)
+__all__ = ("ReposOwnerRepoGitBlobsPostBody",)

@@ -12,16 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200(GitHubModel):
-    """ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200"""
+class ReposOwnerRepoNotificationsPutResponse202(GitHubModel):
+    """ReposOwnerRepoNotificationsPutResponse202"""
 
-    enabled: bool = Field(
-        description="Whether or not private vulnerability reporting is enabled for the repository."
-    )
+    message: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200)
+model_rebuild(ReposOwnerRepoNotificationsPutResponse202)
 
-__all__ = ("ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200",)
+__all__ = ("ReposOwnerRepoNotificationsPutResponse202",)

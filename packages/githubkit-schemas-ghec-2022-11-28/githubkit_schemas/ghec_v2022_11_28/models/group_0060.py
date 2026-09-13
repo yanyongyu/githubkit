@@ -9,22 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class AccessibleRepository(GitHubModel):
-    """Accessible Repository
+class GetAuditLogStreamConfigsItems(GitHubModel):
+    """GetAuditLogStreamConfigsItems"""
 
-    A repository that may be made accessible to a GitHub App.
-    """
+    id: Missing[int] = Field(default=UNSET)
+    stream_type: Missing[str] = Field(default=UNSET)
+    stream_details: Missing[str] = Field(default=UNSET)
+    enabled: Missing[bool] = Field(default=UNSET)
+    created_at: Missing[_dt.datetime] = Field(default=UNSET)
+    updated_at: Missing[_dt.datetime] = Field(default=UNSET)
+    paused_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
 
-    id: int = Field(description="Unique identifier of the repository")
-    name: str = Field(description="The name of the repository.")
-    full_name: str = Field()
 
+model_rebuild(GetAuditLogStreamConfigsItems)
 
-model_rebuild(AccessibleRepository)
-
-__all__ = ("AccessibleRepository",)
+__all__ = ("GetAuditLogStreamConfigsItems",)

@@ -11,22 +11,31 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
+from .group_0032 import (
+    ActionsHostedRunnerCustomImageType,
+    ActionsHostedRunnerCustomImageTypeForResponse,
+)
 
-class EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBodyType(TypedDict):
-    """EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBody"""
 
-    disable_self_hosted_runners_for_all_orgs: bool
-
-
-class EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBodyTypeForResponse(
+class EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200Type(
     TypedDict
 ):
-    """EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBody"""
+    """EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200"""
 
-    disable_self_hosted_runners_for_all_orgs: bool
+    total_count: int
+    images: list[ActionsHostedRunnerCustomImageType]
+
+
+class EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200"""
+
+    total_count: int
+    images: list[ActionsHostedRunnerCustomImageTypeForResponse]
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBodyType",
-    "EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBodyTypeForResponse",
+    "EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200Type",
+    "EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200TypeForResponse",
 )

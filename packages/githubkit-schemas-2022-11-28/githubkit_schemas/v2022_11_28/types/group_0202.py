@@ -12,32 +12,32 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 from .group_0203 import (
-    RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType,
-    RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdTypeForResponse,
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse,
 )
 
 
-class RepositoryRulesetConditionsRepositoryIdTargetType(TypedDict):
-    """Repository ruleset conditions for repository IDs
+class RepositoryRulesetConditionsRepositoryPropertyTargetType(TypedDict):
+    """Repository ruleset conditions for repository properties
 
-    Parameters for a repository ID condition
+    Parameters for a repository property condition
     """
 
-    repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType
-
-
-class RepositoryRulesetConditionsRepositoryIdTargetTypeForResponse(TypedDict):
-    """Repository ruleset conditions for repository IDs
-
-    Parameters for a repository ID condition
-    """
-
-    repository_id: (
-        RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdTypeForResponse
+    repository_property: (
+        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
     )
 
 
+class RepositoryRulesetConditionsRepositoryPropertyTargetTypeForResponse(TypedDict):
+    """Repository ruleset conditions for repository properties
+
+    Parameters for a repository property condition
+    """
+
+    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse
+
+
 __all__ = (
-    "RepositoryRulesetConditionsRepositoryIdTargetType",
-    "RepositoryRulesetConditionsRepositoryIdTargetTypeForResponse",
+    "RepositoryRulesetConditionsRepositoryPropertyTargetType",
+    "RepositoryRulesetConditionsRepositoryPropertyTargetTypeForResponse",
 )

@@ -12,19 +12,23 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberCommentsPostBody"""
+class ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200Type(TypedDict):
+    """ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200"""
 
-    body: str
+    enabled: bool
+    max_open_pull_requests: int
 
 
-class ReposOwnerRepoIssuesIssueNumberCommentsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberCommentsPostBody"""
+class ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200"""
 
-    body: str
+    enabled: bool
+    max_open_pull_requests: int
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType",
-    "ReposOwnerRepoIssuesIssueNumberCommentsPostBodyTypeForResponse",
+    "ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200Type",
+    "ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200TypeForResponse",
 )

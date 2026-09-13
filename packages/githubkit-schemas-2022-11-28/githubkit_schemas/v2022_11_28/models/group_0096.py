@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -19,21 +19,108 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ThreadSubscription(GitHubModel):
-    """Thread Subscription
+class GetAllBudgets(GitHubModel):
+    """GetAllBudgets"""
 
-    Thread Subscription
+    budgets: list[Budget] = Field(
+        description="Array of budget objects for the enterprise"
+    )
+    user: Missing[str] = Field(
+        default=UNSET,
+        description="User login included when the response is scoped with the `user` query parameter.",
+    )
+    effective_budget: Missing[GetAllBudgetsPropEffectiveBudget] = Field(
+        default=UNSET,
+        description="Effective user-level budget details returned when the response is scoped with the `user` query parameter.",
+    )
+    has_next_page: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates if there are more pages of results available (maps to hasNextPage from billing platform)",
+    )
+    total_count: Missing[int] = Field(
+        default=UNSET, description="Total number of budgets matching the query"
+    )
+
+
+class GetAllBudgetsPropEffectiveBudget(GitHubModel):
+    """GetAllBudgetsPropEffectiveBudget
+
+    Effective user-level budget details returned when the response is scoped with
+    the `user` query parameter.
     """
 
-    subscribed: bool = Field()
-    ignored: bool = Field()
-    reason: Union[str, None] = Field()
-    created_at: Union[_dt.datetime, None] = Field()
-    url: str = Field()
-    thread_url: Missing[str] = Field(default=UNSET)
-    repository_url: Missing[str] = Field(default=UNSET)
+    id: str = Field(description="The unique identifier of the effective budget.")
+    budget_amount: int = Field(
+        description="The budget amount for the effective budget."
+    )
+    consumed_amount: float = Field(
+        description="The consumed amount for the specified user within the effective budget."
+    )
 
 
-model_rebuild(ThreadSubscription)
+class Budget(GitHubModel):
+    """Budget"""
 
-__all__ = ("ThreadSubscription",)
+    id: str = Field(description="The unique identifier for the budget")
+    budget_type: Literal["SkuPricing", "ProductPricing", "BundlePricing"] = Field(
+        description="The type of pricing for the budget"
+    )
+    budget_amount: int = Field(
+        description="The budget amount limit in whole dollars. For license-based products, this represents the number of licenses."
+    )
+    prevent_further_usage: bool = Field(
+        description="The type of limit enforcement for the budget"
+    )
+    budget_scope: Literal[
+        "enterprise",
+        "organization",
+        "repository",
+        "cost_center",
+        "multi_user_customer",
+        "multi_user_cost_center",
+        "user",
+    ] = Field(description="The scope of the budget")
+    budget_entity_name: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the entity for the budget (enterprise does not require a name).",
+    )
+    user: Missing[str] = Field(
+        default=UNSET,
+        description="The user login when the budget is scoped to a single user (`user` scope).",
+    )
+    consumed_amount: Missing[float] = Field(
+        default=UNSET,
+        description="The amount consumed for a user-scoped budget, or for a multi-user budget when filtering by user.",
+    )
+    budget_product_sku: str = Field(
+        description="A single product or sku to apply the budget to."
+    )
+    budget_alerting: BudgetPropBudgetAlerting = Field()
+    expires_at: Missing[_dt.date] = Field(
+        default=UNSET,
+        description="The date the budget will expire in `YYYY-MM-DD` format. Only dates in the future are accepted.\nIf not provided, the budget will not expire.\n\nOnly supported for budgets with `budget_scope` of `user`",
+    )
+
+
+class BudgetPropBudgetAlerting(GitHubModel):
+    """BudgetPropBudgetAlerting"""
+
+    will_alert: bool = Field(
+        description="Whether alerts are enabled for this budget. Ignored for user-scope as alerting is disabled for them."
+    )
+    alert_recipients: list[str] = Field(
+        description="Array of user login names who will receive alerts. Ignored for user-scope as alerting is disabled for them."
+    )
+
+
+model_rebuild(GetAllBudgets)
+model_rebuild(GetAllBudgetsPropEffectiveBudget)
+model_rebuild(Budget)
+model_rebuild(BudgetPropBudgetAlerting)
+
+__all__ = (
+    "Budget",
+    "BudgetPropBudgetAlerting",
+    "GetAllBudgets",
+    "GetAllBudgetsPropEffectiveBudget",
+)

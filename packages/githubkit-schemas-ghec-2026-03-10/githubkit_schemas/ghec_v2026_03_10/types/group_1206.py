@@ -9,24 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422Type(TypedDict):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422"""
+class EnterprisesEnterpriseCopilotBillingSelectedUsersPostBodyType(TypedDict):
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersPostBody"""
 
-    message: NotRequired[str]
+    selected_usernames: list[str]
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422TypeForResponse(
+class EnterprisesEnterpriseCopilotBillingSelectedUsersPostBodyTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422"""
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersPostBody"""
 
-    message: NotRequired[str]
+    selected_usernames: list[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422Type",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422TypeForResponse",
+    "EnterprisesEnterpriseCopilotBillingSelectedUsersPostBodyType",
+    "EnterprisesEnterpriseCopilotBillingSelectedUsersPostBodyTypeForResponse",
 )

@@ -12,35 +12,29 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class RunnerApplicationType(TypedDict):
-    """Runner Application
+class InstallableOrganizationType(TypedDict):
+    """Installable Organization
 
-    Runner Application
+    A GitHub organization on which a GitHub App can be installed.
     """
 
-    os: str
-    architecture: str
-    download_url: str
-    filename: str
-    temp_download_token: NotRequired[str]
-    sha256_checksum: NotRequired[str]
+    id: int
+    login: str
+    accessible_repositories_url: NotRequired[str]
 
 
-class RunnerApplicationTypeForResponse(TypedDict):
-    """Runner Application
+class InstallableOrganizationTypeForResponse(TypedDict):
+    """Installable Organization
 
-    Runner Application
+    A GitHub organization on which a GitHub App can be installed.
     """
 
-    os: str
-    architecture: str
-    download_url: str
-    filename: str
-    temp_download_token: NotRequired[str]
-    sha256_checksum: NotRequired[str]
+    id: int
+    login: str
+    accessible_repositories_url: NotRequired[str]
 
 
 __all__ = (
-    "RunnerApplicationType",
-    "RunnerApplicationTypeForResponse",
+    "InstallableOrganizationType",
+    "InstallableOrganizationTypeForResponse",
 )

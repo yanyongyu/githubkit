@@ -14,66 +14,31 @@ from typing import Literal, Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0138 import CodeScanningAlertLocation
 
 
-class CodeScanningAlertInstance(GitHubModel):
-    """CodeScanningAlertInstance"""
+class CodespaceMachine(GitHubModel):
+    """Codespace machine
 
-    ref: Missing[str] = Field(
-        default=UNSET,
-        description="The Git reference, formatted as `refs/pull/<number>/merge`, `refs/pull/<number>/head`,\n`refs/heads/<branch name>` or simply `<branch name>`.",
+    A description of the machine powering a codespace.
+    """
+
+    name: str = Field(description="The name of the machine.")
+    display_name: str = Field(
+        description="The display name of the machine includes cores, memory, and storage."
     )
-    analysis_key: Missing[str] = Field(
-        default=UNSET,
-        description="Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name.",
+    operating_system: str = Field(description="The operating system of the machine.")
+    storage_in_bytes: int = Field(
+        description="How much storage is available to the codespace."
     )
-    environment: Missing[str] = Field(
-        default=UNSET,
-        description="Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed.",
+    memory_in_bytes: int = Field(
+        description="How much memory is available to the codespace."
     )
-    category: Missing[str] = Field(
-        default=UNSET,
-        description="Identifies the configuration under which the analysis was executed. Used to distinguish between multiple analyses for the same tool and commit, but performed on different languages or different parts of the code.",
-    )
-    state: Missing[Union[Literal["open", "dismissed", "fixed"], None]] = Field(
-        default=UNSET, description="State of a code scanning alert."
-    )
-    commit_sha: Missing[str] = Field(default=UNSET)
-    message: Missing[CodeScanningAlertInstancePropMessage] = Field(default=UNSET)
-    location: Missing[CodeScanningAlertLocation] = Field(
-        default=UNSET, description="Describe a region within a file for the alert."
-    )
-    html_url: Missing[str] = Field(default=UNSET)
-    classifications: Missing[
-        list[
-            Union[
-                Literal["source", "generated", "test", "library", "documentation"], None
-            ]
-        ]
-    ] = Field(
-        default=UNSET,
-        description="Classifications that have been applied to the file that triggered the alert.\nFor example identifying it as documentation, or a generated file.",
+    cpus: int = Field(description="How many cores are available to the codespace.")
+    prebuild_availability: Union[Literal["none", "ready", "in_progress"], None] = Field(
+        description='Whether a prebuild is currently available when creating a codespace for this machine and repository. If a branch was not specified as a ref, the default branch will be assumed. Value will be "null" if prebuilds are not supported or prebuild availability could not be determined. Value will be "none" if no prebuild is available. Latest values "ready" and "in_progress" indicate the prebuild availability status.'
     )
 
 
-class CodeScanningAlertInstancePropMessage(GitHubModel):
-    """CodeScanningAlertInstancePropMessage"""
+model_rebuild(CodespaceMachine)
 
-    text: Missing[str] = Field(default=UNSET)
-    markdown: Missing[str] = Field(
-        default=UNSET,
-        description="The message text as GitHub-flavored Markdown, with placeholder links for related locations replaced by links to the relevant code. Only populated when related locations are available for the alert instance.",
-    )
-
-
-model_rebuild(CodeScanningAlertInstance)
-model_rebuild(CodeScanningAlertInstancePropMessage)
-
-__all__ = (
-    "CodeScanningAlertInstance",
-    "CodeScanningAlertInstancePropMessage",
-)
+__all__ = ("CodespaceMachine",)

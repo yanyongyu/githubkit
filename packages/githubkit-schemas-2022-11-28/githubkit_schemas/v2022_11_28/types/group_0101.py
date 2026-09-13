@@ -9,94 +9,86 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class CreateBudgetType(TypedDict):
-    """CreateBudget"""
+class BillingPremiumRequestUsageReportOrgType(TypedDict):
+    """BillingPremiumRequestUsageReportOrg"""
 
-    message: str
-    budget: CreateBudgetPropBudgetType
-
-
-class CreateBudgetTypeForResponse(TypedDict):
-    """CreateBudget"""
-
-    message: str
-    budget: CreateBudgetPropBudgetTypeForResponse
+    time_period: BillingPremiumRequestUsageReportOrgPropTimePeriodType
+    organization: str
+    user: NotRequired[str]
+    product: NotRequired[str]
+    model: NotRequired[str]
+    usage_items: list[BillingPremiumRequestUsageReportOrgPropUsageItemsItemsType]
 
 
-class CreateBudgetPropBudgetType(TypedDict):
-    """CreateBudgetPropBudget"""
+class BillingPremiumRequestUsageReportOrgTypeForResponse(TypedDict):
+    """BillingPremiumRequestUsageReportOrg"""
 
-    id: NotRequired[str]
-    budget_scope: NotRequired[
-        Literal[
-            "enterprise",
-            "organization",
-            "repository",
-            "cost_center",
-            "multi_user_customer",
-            "multi_user_cost_center",
-            "user",
-        ]
+    time_period: BillingPremiumRequestUsageReportOrgPropTimePeriodTypeForResponse
+    organization: str
+    user: NotRequired[str]
+    product: NotRequired[str]
+    model: NotRequired[str]
+    usage_items: list[
+        BillingPremiumRequestUsageReportOrgPropUsageItemsItemsTypeForResponse
     ]
-    budget_entity_name: NotRequired[str]
-    budget_amount: NotRequired[int]
-    prevent_further_usage: NotRequired[bool]
-    budget_product_sku: NotRequired[str]
-    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing", "BundlePricing"]]
-    budget_alerting: NotRequired[CreateBudgetPropBudgetPropBudgetAlertingType]
-    expires_at: NotRequired[_dt.date]
 
 
-class CreateBudgetPropBudgetTypeForResponse(TypedDict):
-    """CreateBudgetPropBudget"""
+class BillingPremiumRequestUsageReportOrgPropTimePeriodType(TypedDict):
+    """BillingPremiumRequestUsageReportOrgPropTimePeriod"""
 
-    id: NotRequired[str]
-    budget_scope: NotRequired[
-        Literal[
-            "enterprise",
-            "organization",
-            "repository",
-            "cost_center",
-            "multi_user_customer",
-            "multi_user_cost_center",
-            "user",
-        ]
-    ]
-    budget_entity_name: NotRequired[str]
-    budget_amount: NotRequired[int]
-    prevent_further_usage: NotRequired[bool]
-    budget_product_sku: NotRequired[str]
-    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing", "BundlePricing"]]
-    budget_alerting: NotRequired[
-        CreateBudgetPropBudgetPropBudgetAlertingTypeForResponse
-    ]
-    expires_at: NotRequired[str]
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
 
 
-class CreateBudgetPropBudgetPropBudgetAlertingType(TypedDict):
-    """CreateBudgetPropBudgetPropBudgetAlerting"""
+class BillingPremiumRequestUsageReportOrgPropTimePeriodTypeForResponse(TypedDict):
+    """BillingPremiumRequestUsageReportOrgPropTimePeriod"""
 
-    will_alert: NotRequired[bool]
-    alert_recipients: NotRequired[list[str]]
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
 
 
-class CreateBudgetPropBudgetPropBudgetAlertingTypeForResponse(TypedDict):
-    """CreateBudgetPropBudgetPropBudgetAlerting"""
+class BillingPremiumRequestUsageReportOrgPropUsageItemsItemsType(TypedDict):
+    """BillingPremiumRequestUsageReportOrgPropUsageItemsItems"""
 
-    will_alert: NotRequired[bool]
-    alert_recipients: NotRequired[list[str]]
+    product: str
+    sku: str
+    model: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: float
+    gross_amount: float
+    discount_quantity: float
+    discount_amount: float
+    net_quantity: float
+    net_amount: float
+
+
+class BillingPremiumRequestUsageReportOrgPropUsageItemsItemsTypeForResponse(TypedDict):
+    """BillingPremiumRequestUsageReportOrgPropUsageItemsItems"""
+
+    product: str
+    sku: str
+    model: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: float
+    gross_amount: float
+    discount_quantity: float
+    discount_amount: float
+    net_quantity: float
+    net_amount: float
 
 
 __all__ = (
-    "CreateBudgetPropBudgetPropBudgetAlertingType",
-    "CreateBudgetPropBudgetPropBudgetAlertingTypeForResponse",
-    "CreateBudgetPropBudgetType",
-    "CreateBudgetPropBudgetTypeForResponse",
-    "CreateBudgetType",
-    "CreateBudgetTypeForResponse",
+    "BillingPremiumRequestUsageReportOrgPropTimePeriodType",
+    "BillingPremiumRequestUsageReportOrgPropTimePeriodTypeForResponse",
+    "BillingPremiumRequestUsageReportOrgPropUsageItemsItemsType",
+    "BillingPremiumRequestUsageReportOrgPropUsageItemsItemsTypeForResponse",
+    "BillingPremiumRequestUsageReportOrgType",
+    "BillingPremiumRequestUsageReportOrgTypeForResponse",
 )

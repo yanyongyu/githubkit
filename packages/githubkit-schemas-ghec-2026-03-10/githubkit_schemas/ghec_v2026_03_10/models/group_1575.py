@@ -9,13 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from pydantic import Field
+
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoInteractionLimitsGetResponse200Anyof1(GitHubModel):
-    """ReposOwnerRepoInteractionLimitsGetResponse200Anyof1"""
+class ReposOwnerRepoGitRefsPostBody(GitHubModel):
+    """ReposOwnerRepoGitRefsPostBody"""
+
+    ref: str = Field(
+        description="The name of the fully qualified reference (ie: `refs/heads/master`). If it doesn't start with 'refs' and have at least two slashes, it will be rejected."
+    )
+    sha: str = Field(description="The SHA1 value for this reference.")
 
 
-model_rebuild(ReposOwnerRepoInteractionLimitsGetResponse200Anyof1)
+model_rebuild(ReposOwnerRepoGitRefsPostBody)
 
-__all__ = ("ReposOwnerRepoInteractionLimitsGetResponse200Anyof1",)
+__all__ = ("ReposOwnerRepoGitRefsPostBody",)

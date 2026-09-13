@@ -9,46 +9,88 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0212 import ReactionRollupType, ReactionRollupTypeForResponse
+from .group_0214 import PinnedIssueCommentType, PinnedIssueCommentTypeForResponse
+from .group_0215 import IssueCommentMinimizedType, IssueCommentMinimizedTypeForResponse
 
 
-class SubIssuesSummaryType(TypedDict):
-    """Sub-issues Summary"""
+class IssueCommentType(TypedDict):
+    """Issue Comment
 
-    total: int
-    completed: int
-    percent_completed: int
+    Comments provide a way for people to collaborate on an issue.
+    """
+
+    id: int
+    node_id: str
+    url: str
+    body: NotRequired[str]
+    body_text: NotRequired[str]
+    body_html: NotRequired[str]
+    html_url: str
+    user: Union[SimpleUserType, None]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    issue_url: str
+    author_association: NotRequired[
+        Literal[
+            "COLLABORATOR",
+            "CONTRIBUTOR",
+            "FIRST_TIMER",
+            "FIRST_TIME_CONTRIBUTOR",
+            "MANNEQUIN",
+            "MEMBER",
+            "NONE",
+            "OWNER",
+        ]
+    ]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    reactions: NotRequired[ReactionRollupType]
+    pin: NotRequired[Union[PinnedIssueCommentType, None]]
+    minimized: NotRequired[Union[IssueCommentMinimizedType, None]]
 
 
-class SubIssuesSummaryTypeForResponse(TypedDict):
-    """Sub-issues Summary"""
+class IssueCommentTypeForResponse(TypedDict):
+    """Issue Comment
 
-    total: int
-    completed: int
-    percent_completed: int
+    Comments provide a way for people to collaborate on an issue.
+    """
 
-
-class IssueDependenciesSummaryType(TypedDict):
-    """Issue Dependencies Summary"""
-
-    blocked_by: int
-    blocking: int
-    total_blocked_by: int
-    total_blocking: int
-
-
-class IssueDependenciesSummaryTypeForResponse(TypedDict):
-    """Issue Dependencies Summary"""
-
-    blocked_by: int
-    blocking: int
-    total_blocked_by: int
-    total_blocking: int
+    id: int
+    node_id: str
+    url: str
+    body: NotRequired[str]
+    body_text: NotRequired[str]
+    body_html: NotRequired[str]
+    html_url: str
+    user: Union[SimpleUserTypeForResponse, None]
+    created_at: str
+    updated_at: str
+    issue_url: str
+    author_association: NotRequired[
+        Literal[
+            "COLLABORATOR",
+            "CONTRIBUTOR",
+            "FIRST_TIMER",
+            "FIRST_TIME_CONTRIBUTOR",
+            "MANNEQUIN",
+            "MEMBER",
+            "NONE",
+            "OWNER",
+        ]
+    ]
+    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
+    reactions: NotRequired[ReactionRollupTypeForResponse]
+    pin: NotRequired[Union[PinnedIssueCommentTypeForResponse, None]]
+    minimized: NotRequired[Union[IssueCommentMinimizedTypeForResponse, None]]
 
 
 __all__ = (
-    "IssueDependenciesSummaryType",
-    "IssueDependenciesSummaryTypeForResponse",
-    "SubIssuesSummaryType",
-    "SubIssuesSummaryTypeForResponse",
+    "IssueCommentType",
+    "IssueCommentTypeForResponse",
 )

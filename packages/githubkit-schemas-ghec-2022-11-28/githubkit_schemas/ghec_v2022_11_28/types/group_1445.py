@@ -9,39 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Any, TypeAlias
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgTeamsTeamSlugPatchBodyType(TypedDict):
-    """OrgsOrgTeamsTeamSlugPatchBody"""
+class OrgsOrgSecretScanningCustomPatternsPostResponse422Type(TypedDict):
+    """OrgsOrgSecretScanningCustomPatternsPostResponse422"""
 
-    name: NotRequired[str]
-    description: NotRequired[str]
-    privacy: NotRequired[Literal["secret", "closed"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
+    message: NotRequired[str]
+    validation_errors: NotRequired[
+        OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrorsType
     ]
-    permission: NotRequired[Literal["pull", "push", "admin"]]
-    parent_team_id: NotRequired[Union[int, None]]
-    parent_team_slug: NotRequired[Union[str, None]]
 
 
-class OrgsOrgTeamsTeamSlugPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgTeamsTeamSlugPatchBody"""
+class OrgsOrgSecretScanningCustomPatternsPostResponse422TypeForResponse(TypedDict):
+    """OrgsOrgSecretScanningCustomPatternsPostResponse422"""
 
-    name: NotRequired[str]
-    description: NotRequired[str]
-    privacy: NotRequired[Literal["secret", "closed"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
+    message: NotRequired[str]
+    validation_errors: NotRequired[
+        OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse
     ]
-    permission: NotRequired[Literal["pull", "push", "admin"]]
-    parent_team_id: NotRequired[Union[int, None]]
-    parent_team_slug: NotRequired[Union[str, None]]
+
+
+OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrorsType: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors
+
+A map of validation errors keyed by the zero-based index of the pattern that
+failed.
+"""
+
+
+OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors
+
+A map of validation errors keyed by the zero-based index of the pattern that
+failed.
+"""
 
 
 __all__ = (
-    "OrgsOrgTeamsTeamSlugPatchBodyType",
-    "OrgsOrgTeamsTeamSlugPatchBodyTypeForResponse",
+    "OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrorsType",
+    "OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse",
+    "OrgsOrgSecretScanningCustomPatternsPostResponse422Type",
+    "OrgsOrgSecretScanningCustomPatternsPostResponse422TypeForResponse",
 )

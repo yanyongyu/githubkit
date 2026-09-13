@@ -9,82 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0215 import ReactionRollupType, ReactionRollupTypeForResponse
-from .group_0225 import ReleaseAssetType, ReleaseAssetTypeForResponse
+from .group_0208 import LabelType, LabelTypeForResponse
+from .group_0218 import IssueType, IssueTypeForResponse
 
 
-class ReleaseType(TypedDict):
-    """Release
+class IssuesEventType(TypedDict):
+    """IssuesEvent"""
 
-    A release.
-    """
-
-    url: str
-    html_url: str
-    assets_url: str
-    upload_url: str
-    tarball_url: Union[str, None]
-    zipball_url: Union[str, None]
-    id: int
-    node_id: str
-    tag_name: str
-    target_commitish: str
-    name: Union[str, None]
-    body: NotRequired[Union[str, None]]
-    draft: bool
-    prerelease: bool
-    immutable: NotRequired[bool]
-    created_at: _dt.datetime
-    published_at: Union[_dt.datetime, None]
-    updated_at: NotRequired[Union[_dt.datetime, None]]
-    author: SimpleUserType
-    assets: list[ReleaseAssetType]
-    body_html: NotRequired[Union[str, None]]
-    body_text: NotRequired[Union[str, None]]
-    mentions_count: NotRequired[int]
-    discussion_url: NotRequired[str]
-    reactions: NotRequired[ReactionRollupType]
+    action: str
+    issue: IssueType
+    assignee: NotRequired[SimpleUserType]
+    assignees: NotRequired[list[SimpleUserType]]
+    label: NotRequired[LabelType]
+    labels: NotRequired[list[LabelType]]
 
 
-class ReleaseTypeForResponse(TypedDict):
-    """Release
+class IssuesEventTypeForResponse(TypedDict):
+    """IssuesEvent"""
 
-    A release.
-    """
-
-    url: str
-    html_url: str
-    assets_url: str
-    upload_url: str
-    tarball_url: Union[str, None]
-    zipball_url: Union[str, None]
-    id: int
-    node_id: str
-    tag_name: str
-    target_commitish: str
-    name: Union[str, None]
-    body: NotRequired[Union[str, None]]
-    draft: bool
-    prerelease: bool
-    immutable: NotRequired[bool]
-    created_at: str
-    published_at: Union[str, None]
-    updated_at: NotRequired[Union[str, None]]
-    author: SimpleUserTypeForResponse
-    assets: list[ReleaseAssetTypeForResponse]
-    body_html: NotRequired[Union[str, None]]
-    body_text: NotRequired[Union[str, None]]
-    mentions_count: NotRequired[int]
-    discussion_url: NotRequired[str]
-    reactions: NotRequired[ReactionRollupTypeForResponse]
+    action: str
+    issue: IssueTypeForResponse
+    assignee: NotRequired[SimpleUserTypeForResponse]
+    assignees: NotRequired[list[SimpleUserTypeForResponse]]
+    label: NotRequired[LabelTypeForResponse]
+    labels: NotRequired[list[LabelTypeForResponse]]
 
 
 __all__ = (
-    "ReleaseType",
-    "ReleaseTypeForResponse",
+    "IssuesEventType",
+    "IssuesEventTypeForResponse",
 )

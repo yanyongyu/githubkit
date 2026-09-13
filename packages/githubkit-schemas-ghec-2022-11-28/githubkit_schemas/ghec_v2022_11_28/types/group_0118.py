@@ -12,25 +12,21 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType(
-    TypedDict
-):
-    """EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName"""
+class RepositoryRulesetConditionsPropRefNameType(TypedDict):
+    """RepositoryRulesetConditionsPropRefName"""
 
     include: NotRequired[list[str]]
     exclude: NotRequired[list[str]]
 
 
-class EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameTypeForResponse(
-    TypedDict
-):
-    """EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName"""
+class RepositoryRulesetConditionsPropRefNameTypeForResponse(TypedDict):
+    """RepositoryRulesetConditionsPropRefName"""
 
     include: NotRequired[list[str]]
     exclude: NotRequired[list[str]]
 
 
 __all__ = (
-    "EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType",
-    "EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameTypeForResponse",
+    "RepositoryRulesetConditionsPropRefNameType",
+    "RepositoryRulesetConditionsPropRefNameTypeForResponse",
 )

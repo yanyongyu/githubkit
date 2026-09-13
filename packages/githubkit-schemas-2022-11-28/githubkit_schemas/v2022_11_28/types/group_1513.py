@@ -9,31 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBodyType(
-    TypedDict
-):
-    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBod
-    y
-    """
+class UserSshSigningKeysPostBodyType(TypedDict):
+    """UserSshSigningKeysPostBody"""
 
-    role: Literal["reader", "writer", "admin", "no_access"]
+    title: NotRequired[str]
+    key: str
 
 
-class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBodyTypeForResponse(
-    TypedDict
-):
-    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBod
-    y
-    """
+class UserSshSigningKeysPostBodyTypeForResponse(TypedDict):
+    """UserSshSigningKeysPostBody"""
 
-    role: Literal["reader", "writer", "admin", "no_access"]
+    title: NotRequired[str]
+    key: str
 
 
 __all__ = (
-    "UsersUsernameCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBodyType",
-    "UsersUsernameCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBodyTypeForResponse",
+    "UserSshSigningKeysPostBodyType",
+    "UserSshSigningKeysPostBodyTypeForResponse",
 )

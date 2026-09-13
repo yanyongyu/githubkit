@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,43 +19,39 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterpriseSecurityAnalysisSettings(GitHubModel):
-    """Enterprise Security Analysis Settings"""
+class EnterpriseTeam(GitHubModel):
+    """Enterprise Team
 
-    advanced_security_enabled_for_new_repositories: bool = Field(
-        description="Whether GitHub advanced security is automatically enabled for new repositories and repositories transferred to\nthis enterprise."
-    )
-    advanced_security_enabled_for_new_user_namespace_repositories: Missing[bool] = (
-        Field(
-            default=UNSET,
-            description="Whether GitHub Advanced Security is automatically enabled for new user namespace repositories.",
-        )
-    )
-    dependabot_alerts_enabled_for_new_repositories: bool = Field(
-        description="Whether Dependabot alerts are automatically enabled for new repositories and repositories transferred to this\nenterprise."
-    )
-    secret_scanning_enabled_for_new_repositories: bool = Field(
-        description="Whether secret scanning is automatically enabled for new repositories and repositories transferred to this\nenterprise."
-    )
-    secret_scanning_push_protection_enabled_for_new_repositories: bool = Field(
-        description="Whether secret scanning push protection is automatically enabled for new repositories and repositories\ntransferred to this enterprise."
-    )
-    secret_scanning_push_protection_custom_link: Missing[Union[str, None]] = Field(
+    Group of enterprise owners and/or members
+    """
+
+    id: int = Field()
+    name: str = Field()
+    description: Missing[str] = Field(default=UNSET)
+    slug: str = Field()
+    url: str = Field()
+    sync_to_organizations: Missing[str] = Field(
         default=UNSET,
-        description="An optional URL string to display to contributors who are blocked from pushing a secret.",
+        description="Retired: this field will not be returned with GHEC enterprise teams.",
     )
-    secret_scanning_non_provider_patterns_enabled_for_new_repositories: Missing[
-        bool
+    organization_selection_type: Missing[str] = Field(default=UNSET)
+    group_id: Union[str, None] = Field()
+    group_name: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="Retired: this field will not be returned with GHEC enterprise teams.",
+    )
+    html_url: str = Field()
+    members_url: str = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    notification_setting: Missing[
+        Literal["notifications_enabled", "notifications_disabled"]
     ] = Field(
         default=UNSET,
-        description="Whether secret scanning of non-provider patterns is enabled for new repositories under this enterprise.",
-    )
-    secret_scanning_validity_checks_enabled: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether secret scanning automatic validity checks on supported partner tokens is enabled for all repositories under this enterprise.",
+        description="Whether team members will receive notifications when the team is mentioned.",
     )
 
 
-model_rebuild(EnterpriseSecurityAnalysisSettings)
+model_rebuild(EnterpriseTeam)
 
-__all__ = ("EnterpriseSecurityAnalysisSettings",)
+__all__ = ("EnterpriseTeam",)

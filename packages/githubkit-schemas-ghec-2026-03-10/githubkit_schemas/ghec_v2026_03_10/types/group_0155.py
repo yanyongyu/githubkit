@@ -9,42 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0156 import (
-    RepositoryRuleFilePathRestrictionPropParametersType,
-    RepositoryRuleFilePathRestrictionPropParametersTypeForResponse,
-)
+from typing_extensions import TypedDict
 
 
-class RepositoryRuleFilePathRestrictionType(TypedDict):
-    """file_path_restriction
+class RepositoryRuleMaxFilePathLengthPropParametersType(TypedDict):
+    """RepositoryRuleMaxFilePathLengthPropParameters"""
 
-    Prevent commits that include changes in specified file and folder paths from
-    being pushed to the commit graph. This includes absolute paths that contain file
-    names.
-    """
-
-    type: Literal["file_path_restriction"]
-    parameters: NotRequired[RepositoryRuleFilePathRestrictionPropParametersType]
+    max_file_path_length: int
 
 
-class RepositoryRuleFilePathRestrictionTypeForResponse(TypedDict):
-    """file_path_restriction
+class RepositoryRuleMaxFilePathLengthPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleMaxFilePathLengthPropParameters"""
 
-    Prevent commits that include changes in specified file and folder paths from
-    being pushed to the commit graph. This includes absolute paths that contain file
-    names.
-    """
-
-    type: Literal["file_path_restriction"]
-    parameters: NotRequired[
-        RepositoryRuleFilePathRestrictionPropParametersTypeForResponse
-    ]
+    max_file_path_length: int
 
 
 __all__ = (
-    "RepositoryRuleFilePathRestrictionType",
-    "RepositoryRuleFilePathRestrictionTypeForResponse",
+    "RepositoryRuleMaxFilePathLengthPropParametersType",
+    "RepositoryRuleMaxFilePathLengthPropParametersTypeForResponse",
 )

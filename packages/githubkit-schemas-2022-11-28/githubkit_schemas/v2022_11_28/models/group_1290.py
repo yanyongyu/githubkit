@@ -12,16 +12,15 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoAttestationsPostResponse201(GitHubModel):
-    """ReposOwnerRepoAttestationsPostResponse201"""
+class ReposOwnerRepoActionsVariablesPostBody(GitHubModel):
+    """ReposOwnerRepoActionsVariablesPostBody"""
 
-    id: Missing[int] = Field(default=UNSET, description="The ID of the attestation.")
+    name: str = Field(description="The name of the variable.")
+    value: str = Field(description="The value of the variable.")
 
 
-model_rebuild(ReposOwnerRepoAttestationsPostResponse201)
+model_rebuild(ReposOwnerRepoActionsVariablesPostBody)
 
-__all__ = ("ReposOwnerRepoAttestationsPostResponse201",)
+__all__ = ("ReposOwnerRepoActionsVariablesPostBody",)

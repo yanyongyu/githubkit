@@ -9,59 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200(
-    GitHubModel
+class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422(GitHubModel):
+    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422"""
+
+    message: Missing[str] = Field(
+        default=UNSET, description="A summary message describing the error."
+    )
+    validation_errors: Missing[
+        EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrors
+    ] = Field(
+        default=UNSET,
+        description="A map of validation errors keyed by the zero-based index of the pattern that failed.",
+    )
+
+
+class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrors(
+    ExtraGitHubModel
 ):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse2
-    00
+    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationEr
+    rors
+
+    A map of validation errors keyed by the zero-based index of the pattern that
+    failed.
     """
 
-    message: Missing[str] = Field(default=UNSET)
-    reassigned_resources: Missing[
-        Union[
-            list[
-                EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItems
-            ],
-            None,
-        ]
-    ] = Field(default=UNSET)
 
-
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItems(
-    GitHubModel
-):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse2
-    00PropReassignedResourcesItems
-    """
-
-    resource_type: Missing[str] = Field(
-        default=UNSET, description="The type of resource that was reassigned."
-    )
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the resource that was reassigned."
-    )
-    previous_cost_center: Missing[str] = Field(
-        default=UNSET, description="The previous cost center of the resource."
-    )
-
-
+model_rebuild(EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422)
 model_rebuild(
-    EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200
-)
-model_rebuild(
-    EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItems
+    EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrors
 )
 
 __all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200",
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItems",
+    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422",
+    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrors",
 )

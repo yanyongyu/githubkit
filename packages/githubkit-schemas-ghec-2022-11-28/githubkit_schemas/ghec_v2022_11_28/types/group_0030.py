@@ -12,29 +12,31 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class EnterpriseAccessRestrictionsType(TypedDict):
-    """Enterprise Access Restrictions
+class ActionsHostedRunnerMachineSpecType(TypedDict):
+    """Github-owned VM details.
 
-    Information about the enterprise access restrictions proxy header.
+    Provides details of a particular machine spec.
     """
 
-    message: str
-    header_name: str
-    header_value: str
+    id: str
+    cpu_cores: int
+    memory_gb: int
+    storage_gb: int
 
 
-class EnterpriseAccessRestrictionsTypeForResponse(TypedDict):
-    """Enterprise Access Restrictions
+class ActionsHostedRunnerMachineSpecTypeForResponse(TypedDict):
+    """Github-owned VM details.
 
-    Information about the enterprise access restrictions proxy header.
+    Provides details of a particular machine spec.
     """
 
-    message: str
-    header_name: str
-    header_value: str
+    id: str
+    cpu_cores: int
+    memory_gb: int
+    storage_gb: int
 
 
 __all__ = (
-    "EnterpriseAccessRestrictionsType",
-    "EnterpriseAccessRestrictionsTypeForResponse",
+    "ActionsHostedRunnerMachineSpecType",
+    "ActionsHostedRunnerMachineSpecTypeForResponse",
 )

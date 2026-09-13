@@ -13,93 +13,58 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0076 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
-from .group_0092 import (
-    DependabotAlertSecurityVulnerabilityType,
-    DependabotAlertSecurityVulnerabilityTypeForResponse,
-)
-from .group_0093 import (
-    DependabotAlertSecurityAdvisoryType,
-    DependabotAlertSecurityAdvisoryTypeForResponse,
-)
-from .group_0094 import (
-    DependabotAlertDismissalRequestSimpleType,
-    DependabotAlertDismissalRequestSimpleTypeForResponse,
-)
-from .group_0096 import (
-    DependabotAlertWithRepositoryPropDependencyType,
-    DependabotAlertWithRepositoryPropDependencyTypeForResponse,
-)
+from .group_0008 import EnterpriseType, EnterpriseTypeForResponse
 
 
-class DependabotAlertWithRepositoryType(TypedDict):
-    """DependabotAlertWithRepository
+class EnterpriseRoleType(TypedDict):
+    """Enterprise Role
 
-    A Dependabot alert.
+    Enterprise custom roles
     """
 
-    number: int
-    state: Literal["auto_dismissed", "dismissed", "fixed", "open"]
-    dependency: DependabotAlertWithRepositoryPropDependencyType
-    security_advisory: DependabotAlertSecurityAdvisoryType
-    security_vulnerability: DependabotAlertSecurityVulnerabilityType
-    url: str
-    html_url: str
+    id: int
+    name: str
+    description: NotRequired[Union[str, None]]
+    source: NotRequired[Union[Literal["Enterprise", "Predefined"], None]]
+    permissions: list[str]
+    enterprise: Union[EnterpriseType, None]
     created_at: _dt.datetime
     updated_at: _dt.datetime
-    dismissed_at: Union[_dt.datetime, None]
-    dismissed_by: Union[SimpleUserType, None]
-    dismissed_reason: Union[
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ],
-        None,
-    ]
-    dismissed_comment: Union[str, None]
-    fixed_at: Union[_dt.datetime, None]
-    auto_dismissed_at: NotRequired[Union[_dt.datetime, None]]
-    dismissal_request: NotRequired[
-        Union[DependabotAlertDismissalRequestSimpleType, None]
-    ]
-    assignees: NotRequired[list[SimpleUserType]]
-    repository: SimpleRepositoryType
 
 
-class DependabotAlertWithRepositoryTypeForResponse(TypedDict):
-    """DependabotAlertWithRepository
+class EnterpriseRoleTypeForResponse(TypedDict):
+    """Enterprise Role
 
-    A Dependabot alert.
+    Enterprise custom roles
     """
 
-    number: int
-    state: Literal["auto_dismissed", "dismissed", "fixed", "open"]
-    dependency: DependabotAlertWithRepositoryPropDependencyTypeForResponse
-    security_advisory: DependabotAlertSecurityAdvisoryTypeForResponse
-    security_vulnerability: DependabotAlertSecurityVulnerabilityTypeForResponse
-    url: str
-    html_url: str
+    id: int
+    name: str
+    description: NotRequired[Union[str, None]]
+    source: NotRequired[Union[Literal["Enterprise", "Predefined"], None]]
+    permissions: list[str]
+    enterprise: Union[EnterpriseTypeForResponse, None]
     created_at: str
     updated_at: str
-    dismissed_at: Union[str, None]
-    dismissed_by: Union[SimpleUserTypeForResponse, None]
-    dismissed_reason: Union[
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ],
-        None,
-    ]
-    dismissed_comment: Union[str, None]
-    fixed_at: Union[str, None]
-    auto_dismissed_at: NotRequired[Union[str, None]]
-    dismissal_request: NotRequired[
-        Union[DependabotAlertDismissalRequestSimpleTypeForResponse, None]
-    ]
-    assignees: NotRequired[list[SimpleUserTypeForResponse]]
-    repository: SimpleRepositoryTypeForResponse
+
+
+class EnterprisesEnterpriseEnterpriseRolesGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseEnterpriseRolesGetResponse200"""
+
+    total_count: NotRequired[int]
+    roles: NotRequired[list[EnterpriseRoleType]]
+
+
+class EnterprisesEnterpriseEnterpriseRolesGetResponse200TypeForResponse(TypedDict):
+    """EnterprisesEnterpriseEnterpriseRolesGetResponse200"""
+
+    total_count: NotRequired[int]
+    roles: NotRequired[list[EnterpriseRoleTypeForResponse]]
 
 
 __all__ = (
-    "DependabotAlertWithRepositoryType",
-    "DependabotAlertWithRepositoryTypeForResponse",
+    "EnterpriseRoleType",
+    "EnterpriseRoleTypeForResponse",
+    "EnterprisesEnterpriseEnterpriseRolesGetResponse200Type",
+    "EnterprisesEnterpriseEnterpriseRolesGetResponse200TypeForResponse",
 )

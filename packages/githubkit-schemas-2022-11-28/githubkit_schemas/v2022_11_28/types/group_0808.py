@@ -9,138 +9,115 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0809 import (
-    WebhookPackagePublishedPropPackagePropPackageVersionType,
-    WebhookPackagePublishedPropPackagePropPackageVersionTypeForResponse,
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0542 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0543 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0544 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
 )
+from .group_0545 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0563 import WebhooksMilestoneType, WebhooksMilestoneTypeForResponse
 
 
-class WebhookPackagePublishedPropPackageType(TypedDict):
-    """WebhookPackagePublishedPropPackage
+class WebhookMilestoneEditedType(TypedDict):
+    """milestone edited event"""
 
-    Information about the package.
+    action: Literal["edited"]
+    changes: WebhookMilestoneEditedPropChangesType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    milestone: WebhooksMilestoneType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
+
+
+class WebhookMilestoneEditedTypeForResponse(TypedDict):
+    """milestone edited event"""
+
+    action: Literal["edited"]
+    changes: WebhookMilestoneEditedPropChangesTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    milestone: WebhooksMilestoneTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+
+
+class WebhookMilestoneEditedPropChangesType(TypedDict):
+    """WebhookMilestoneEditedPropChanges
+
+    The changes to the milestone if the action was `edited`.
     """
 
-    created_at: Union[str, None]
-    description: Union[str, None]
-    ecosystem: str
-    html_url: str
-    id: int
-    name: str
-    namespace: str
-    owner: Union[WebhookPackagePublishedPropPackagePropOwnerType, None]
-    package_type: str
-    package_version: Union[
-        WebhookPackagePublishedPropPackagePropPackageVersionType, None
-    ]
-    registry: Union[WebhookPackagePublishedPropPackagePropRegistryType, None]
-    updated_at: Union[str, None]
+    description: NotRequired[WebhookMilestoneEditedPropChangesPropDescriptionType]
+    due_on: NotRequired[WebhookMilestoneEditedPropChangesPropDueOnType]
+    title: NotRequired[WebhookMilestoneEditedPropChangesPropTitleType]
 
 
-class WebhookPackagePublishedPropPackageTypeForResponse(TypedDict):
-    """WebhookPackagePublishedPropPackage
+class WebhookMilestoneEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookMilestoneEditedPropChanges
 
-    Information about the package.
+    The changes to the milestone if the action was `edited`.
     """
 
-    created_at: Union[str, None]
-    description: Union[str, None]
-    ecosystem: str
-    html_url: str
-    id: int
-    name: str
-    namespace: str
-    owner: Union[WebhookPackagePublishedPropPackagePropOwnerTypeForResponse, None]
-    package_type: str
-    package_version: Union[
-        WebhookPackagePublishedPropPackagePropPackageVersionTypeForResponse, None
+    description: NotRequired[
+        WebhookMilestoneEditedPropChangesPropDescriptionTypeForResponse
     ]
-    registry: Union[WebhookPackagePublishedPropPackagePropRegistryTypeForResponse, None]
-    updated_at: Union[str, None]
+    due_on: NotRequired[WebhookMilestoneEditedPropChangesPropDueOnTypeForResponse]
+    title: NotRequired[WebhookMilestoneEditedPropChangesPropTitleTypeForResponse]
 
 
-class WebhookPackagePublishedPropPackagePropOwnerType(TypedDict):
-    """User"""
+class WebhookMilestoneEditedPropChangesPropDescriptionType(TypedDict):
+    """WebhookMilestoneEditedPropChangesPropDescription"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    from_: str
 
 
-class WebhookPackagePublishedPropPackagePropOwnerTypeForResponse(TypedDict):
-    """User"""
+class WebhookMilestoneEditedPropChangesPropDescriptionTypeForResponse(TypedDict):
+    """WebhookMilestoneEditedPropChangesPropDescription"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    from_: str
 
 
-class WebhookPackagePublishedPropPackagePropRegistryType(TypedDict):
-    """WebhookPackagePublishedPropPackagePropRegistry"""
+class WebhookMilestoneEditedPropChangesPropDueOnType(TypedDict):
+    """WebhookMilestoneEditedPropChangesPropDueOn"""
 
-    about_url: str
-    name: str
-    type: str
-    url: str
-    vendor: str
+    from_: str
 
 
-class WebhookPackagePublishedPropPackagePropRegistryTypeForResponse(TypedDict):
-    """WebhookPackagePublishedPropPackagePropRegistry"""
+class WebhookMilestoneEditedPropChangesPropDueOnTypeForResponse(TypedDict):
+    """WebhookMilestoneEditedPropChangesPropDueOn"""
 
-    about_url: str
-    name: str
-    type: str
-    url: str
-    vendor: str
+    from_: str
+
+
+class WebhookMilestoneEditedPropChangesPropTitleType(TypedDict):
+    """WebhookMilestoneEditedPropChangesPropTitle"""
+
+    from_: str
+
+
+class WebhookMilestoneEditedPropChangesPropTitleTypeForResponse(TypedDict):
+    """WebhookMilestoneEditedPropChangesPropTitle"""
+
+    from_: str
 
 
 __all__ = (
-    "WebhookPackagePublishedPropPackagePropOwnerType",
-    "WebhookPackagePublishedPropPackagePropOwnerTypeForResponse",
-    "WebhookPackagePublishedPropPackagePropRegistryType",
-    "WebhookPackagePublishedPropPackagePropRegistryTypeForResponse",
-    "WebhookPackagePublishedPropPackageType",
-    "WebhookPackagePublishedPropPackageTypeForResponse",
+    "WebhookMilestoneEditedPropChangesPropDescriptionType",
+    "WebhookMilestoneEditedPropChangesPropDescriptionTypeForResponse",
+    "WebhookMilestoneEditedPropChangesPropDueOnType",
+    "WebhookMilestoneEditedPropChangesPropDueOnTypeForResponse",
+    "WebhookMilestoneEditedPropChangesPropTitleType",
+    "WebhookMilestoneEditedPropChangesPropTitleTypeForResponse",
+    "WebhookMilestoneEditedPropChangesType",
+    "WebhookMilestoneEditedPropChangesTypeForResponse",
+    "WebhookMilestoneEditedType",
+    "WebhookMilestoneEditedTypeForResponse",
 )

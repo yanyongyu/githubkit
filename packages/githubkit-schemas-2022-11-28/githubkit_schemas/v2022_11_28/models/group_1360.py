@@ -16,16 +16,12 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoGitBlobsPostBody(GitHubModel):
-    """ReposOwnerRepoGitBlobsPostBody"""
+class ReposOwnerRepoDeploymentsPostResponse202(GitHubModel):
+    """ReposOwnerRepoDeploymentsPostResponse202"""
 
-    content: str = Field(description="The new blob's content.")
-    encoding: Missing[str] = Field(
-        default=UNSET,
-        description='The encoding used for `content`. Currently, `"utf-8"` and `"base64"` are supported.',
-    )
+    message: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoGitBlobsPostBody)
+model_rebuild(ReposOwnerRepoDeploymentsPostResponse202)
 
-__all__ = ("ReposOwnerRepoGitBlobsPostBody",)
+__all__ = ("ReposOwnerRepoDeploymentsPostResponse202",)

@@ -9,50 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0065 import (
-    AmazonS3AccessKeysConfig,
-    AzureBlobConfig,
-    AzureHubConfig,
-    DatadogConfig,
-    HecConfig,
-)
-from .group_0066 import AmazonS3OidcConfig, SplunkConfig
-from .group_0067 import GoogleCloudConfig
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseAuditLogStreamsPostBody(GitHubModel):
-    """EnterprisesEnterpriseAuditLogStreamsPostBody"""
+class EnterprisesEnterpriseActionsRunnersDeprecationsVersionGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseActionsRunnersDeprecationsVersionGetResponse200"""
 
-    enabled: bool = Field(description="This setting pauses or resumes a stream.")
-    stream_type: Literal[
-        "Azure Blob Storage",
-        "Azure Event Hubs",
-        "Amazon S3",
-        "Splunk",
-        "HTTPS Event Collector",
-        "Google Cloud Storage",
-        "Datadog",
-    ] = Field(
-        description="The audit log streaming provider. The name is case sensitive."
+    runner_version: str = Field(description="The runner version string.")
+    registration_deprecates_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="The date after which this runner version can no longer register. Null if no schedule is set.",
     )
-    vendor_specific: Union[
-        AzureBlobConfig,
-        AzureHubConfig,
-        AmazonS3OidcConfig,
-        AmazonS3AccessKeysConfig,
-        SplunkConfig,
-        HecConfig,
-        GoogleCloudConfig,
-        DatadogConfig,
-    ] = Field()
+    runtime_deprecates_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="The date after which jobs will no longer be dispatched to runners on this version.",
+    )
 
 
-model_rebuild(EnterprisesEnterpriseAuditLogStreamsPostBody)
+model_rebuild(EnterprisesEnterpriseActionsRunnersDeprecationsVersionGetResponse200)
 
-__all__ = ("EnterprisesEnterpriseAuditLogStreamsPostBody",)
+__all__ = ("EnterprisesEnterpriseActionsRunnersDeprecationsVersionGetResponse200",)

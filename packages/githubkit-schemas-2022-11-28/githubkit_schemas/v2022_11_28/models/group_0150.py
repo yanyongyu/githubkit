@@ -9,16 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from githubkit.compat import ExtraGitHubModel, model_rebuild
+import datetime as _dt
+from typing import Literal, Union
+
+from pydantic import Field
+
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0003 import SimpleUser
+from .group_0090 import MinimalRepository
 
 
-class CopilotOrganizationContentExclusionDetails(ExtraGitHubModel):
-    """Copilot Organization Content Exclusion Details
+class Package(GitHubModel):
+    """Package
 
-    List all Copilot Content Exclusion rules for an organization.
+    A software package
     """
 
+    id: int = Field(description="Unique identifier of the package.")
+    name: str = Field(description="The name of the package.")
+    package_type: Literal[
+        "npm", "maven", "rubygems", "docker", "nuget", "container"
+    ] = Field()
+    url: str = Field()
+    html_url: str = Field()
+    version_count: int = Field(description="The number of versions of the package.")
+    visibility: Literal["private", "public"] = Field()
+    owner: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
+    repository: Missing[Union[MinimalRepository, None]] = Field(default=UNSET)
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
 
-model_rebuild(CopilotOrganizationContentExclusionDetails)
 
-__all__ = ("CopilotOrganizationContentExclusionDetails",)
+model_rebuild(Package)
+
+__all__ = ("Package",)

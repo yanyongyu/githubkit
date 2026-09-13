@@ -12,32 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0049 import Label
-from .group_0061 import PullRequestMinimal
+from .group_0073 import CommitCommentEventPropComment
 
 
-class PullRequestEvent(GitHubModel):
-    """PullRequestEvent"""
+class CommitCommentEvent(GitHubModel):
+    """CommitCommentEvent"""
 
     action: str = Field()
-    number: int = Field()
-    pull_request: PullRequestMinimal = Field(title="Pull Request Minimal")
-    assignee: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
-    assignees: Missing[list[SimpleUser]] = Field(default=UNSET)
-    label: Missing[Label] = Field(
-        default=UNSET,
-        title="Label",
-        description="Color-coded labels help you categorize and filter your issues (just like labels in Gmail).",
-    )
-    labels: Missing[list[Label]] = Field(default=UNSET)
+    comment: CommitCommentEventPropComment = Field()
 
 
-model_rebuild(PullRequestEvent)
+model_rebuild(CommitCommentEvent)
 
-__all__ = ("PullRequestEvent",)
+__all__ = ("CommitCommentEvent",)

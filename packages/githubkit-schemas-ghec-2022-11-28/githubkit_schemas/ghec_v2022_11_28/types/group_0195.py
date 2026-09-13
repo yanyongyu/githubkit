@@ -14,119 +14,93 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class GetAllBudgetsType(TypedDict):
-    """GetAllBudgets"""
+class UpdateBudgetType(TypedDict):
+    """UpdateBudget"""
 
-    budgets: list[BudgetType]
-    user: NotRequired[str]
-    effective_budget: NotRequired[GetAllBudgetsPropEffectiveBudgetType]
-    has_next_page: NotRequired[bool]
-    total_count: NotRequired[int]
+    message: str
+    budget: UpdateBudgetPropBudgetType
 
 
-class GetAllBudgetsTypeForResponse(TypedDict):
-    """GetAllBudgets"""
+class UpdateBudgetTypeForResponse(TypedDict):
+    """UpdateBudget"""
 
-    budgets: list[BudgetTypeForResponse]
-    user: NotRequired[str]
-    effective_budget: NotRequired[GetAllBudgetsPropEffectiveBudgetTypeForResponse]
-    has_next_page: NotRequired[bool]
-    total_count: NotRequired[int]
+    message: str
+    budget: UpdateBudgetPropBudgetTypeForResponse
 
 
-class GetAllBudgetsPropEffectiveBudgetType(TypedDict):
-    """GetAllBudgetsPropEffectiveBudget
+class UpdateBudgetPropBudgetType(TypedDict):
+    """UpdateBudgetPropBudget"""
 
-    Effective user-level budget details returned when the response is scoped with
-    the `user` query parameter.
-    """
-
-    id: str
-    budget_amount: int
-    consumed_amount: float
-
-
-class GetAllBudgetsPropEffectiveBudgetTypeForResponse(TypedDict):
-    """GetAllBudgetsPropEffectiveBudget
-
-    Effective user-level budget details returned when the response is scoped with
-    the `user` query parameter.
-    """
-
-    id: str
-    budget_amount: int
-    consumed_amount: float
-
-
-class BudgetType(TypedDict):
-    """Budget"""
-
-    id: str
-    budget_type: Literal["SkuPricing", "ProductPricing", "BundlePricing"]
-    budget_amount: int
-    prevent_further_usage: bool
-    budget_scope: Literal[
-        "enterprise",
-        "organization",
-        "repository",
-        "cost_center",
-        "multi_user_customer",
-        "multi_user_cost_center",
-        "user",
+    id: NotRequired[str]
+    budget_scope: NotRequired[
+        Literal[
+            "enterprise",
+            "organization",
+            "repository",
+            "cost_center",
+            "multi_user_customer",
+            "multi_user_cost_center",
+            "user",
+        ]
     ]
     budget_entity_name: NotRequired[str]
     user: NotRequired[str]
     consumed_amount: NotRequired[float]
-    budget_product_sku: str
-    budget_alerting: BudgetPropBudgetAlertingType
+    budget_amount: NotRequired[int]
+    prevent_further_usage: NotRequired[bool]
+    budget_product_sku: NotRequired[str]
+    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing", "BundlePricing"]]
+    budget_alerting: NotRequired[UpdateBudgetPropBudgetPropBudgetAlertingType]
     expires_at: NotRequired[_dt.date]
 
 
-class BudgetTypeForResponse(TypedDict):
-    """Budget"""
+class UpdateBudgetPropBudgetTypeForResponse(TypedDict):
+    """UpdateBudgetPropBudget"""
 
-    id: str
-    budget_type: Literal["SkuPricing", "ProductPricing", "BundlePricing"]
-    budget_amount: int
-    prevent_further_usage: bool
-    budget_scope: Literal[
-        "enterprise",
-        "organization",
-        "repository",
-        "cost_center",
-        "multi_user_customer",
-        "multi_user_cost_center",
-        "user",
+    id: NotRequired[str]
+    budget_scope: NotRequired[
+        Literal[
+            "enterprise",
+            "organization",
+            "repository",
+            "cost_center",
+            "multi_user_customer",
+            "multi_user_cost_center",
+            "user",
+        ]
     ]
     budget_entity_name: NotRequired[str]
     user: NotRequired[str]
     consumed_amount: NotRequired[float]
-    budget_product_sku: str
-    budget_alerting: BudgetPropBudgetAlertingTypeForResponse
+    budget_amount: NotRequired[int]
+    prevent_further_usage: NotRequired[bool]
+    budget_product_sku: NotRequired[str]
+    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing", "BundlePricing"]]
+    budget_alerting: NotRequired[
+        UpdateBudgetPropBudgetPropBudgetAlertingTypeForResponse
+    ]
     expires_at: NotRequired[str]
 
 
-class BudgetPropBudgetAlertingType(TypedDict):
-    """BudgetPropBudgetAlerting"""
+class UpdateBudgetPropBudgetPropBudgetAlertingType(TypedDict):
+    """UpdateBudgetPropBudgetPropBudgetAlerting"""
 
-    will_alert: bool
-    alert_recipients: list[str]
+    will_alert: NotRequired[bool]
+    alert_recipients: NotRequired[list[str]]
 
 
-class BudgetPropBudgetAlertingTypeForResponse(TypedDict):
-    """BudgetPropBudgetAlerting"""
+class UpdateBudgetPropBudgetPropBudgetAlertingTypeForResponse(TypedDict):
+    """UpdateBudgetPropBudgetPropBudgetAlerting"""
 
-    will_alert: bool
-    alert_recipients: list[str]
+    will_alert: NotRequired[bool]
+    alert_recipients: NotRequired[list[str]]
 
 
 __all__ = (
-    "BudgetPropBudgetAlertingType",
-    "BudgetPropBudgetAlertingTypeForResponse",
-    "BudgetType",
-    "BudgetTypeForResponse",
-    "GetAllBudgetsPropEffectiveBudgetType",
-    "GetAllBudgetsPropEffectiveBudgetTypeForResponse",
-    "GetAllBudgetsType",
-    "GetAllBudgetsTypeForResponse",
+    "UpdateBudgetPropBudgetPropBudgetAlertingType",
+    "UpdateBudgetPropBudgetPropBudgetAlertingTypeForResponse",
+    "UpdateBudgetPropBudgetType",
+    "UpdateBudgetPropBudgetTypeForResponse",
+    "UpdateBudgetType",
+    "UpdateBudgetTypeForResponse",
 )

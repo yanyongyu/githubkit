@@ -13,48 +13,35 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0538 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0539 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0540 import (
+from .group_0542 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0543 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0541 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0855 import (
-    WebhookPullRequestAutoMergeDisabledPropPullRequestType,
-    WebhookPullRequestAutoMergeDisabledPropPullRequestTypeForResponse,
-)
+from .group_0581 import ProjectsV2ItemType, ProjectsV2ItemTypeForResponse
 
 
-class WebhookPullRequestAutoMergeDisabledType(TypedDict):
-    """pull_request auto_merge_disabled event"""
+class WebhookProjectsV2ItemDeletedType(TypedDict):
+    """Projects v2 Item Deleted Event"""
 
-    action: Literal["auto_merge_disabled"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["deleted"]
     installation: NotRequired[SimpleInstallationType]
-    number: int
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    pull_request: WebhookPullRequestAutoMergeDisabledPropPullRequestType
-    reason: str
-    repository: RepositoryWebhooksType
+    organization: OrganizationSimpleWebhooksType
+    projects_v2_item: ProjectsV2ItemType
     sender: SimpleUserType
 
 
-class WebhookPullRequestAutoMergeDisabledTypeForResponse(TypedDict):
-    """pull_request auto_merge_disabled event"""
+class WebhookProjectsV2ItemDeletedTypeForResponse(TypedDict):
+    """Projects v2 Item Deleted Event"""
 
-    action: Literal["auto_merge_disabled"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    action: Literal["deleted"]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    number: int
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    pull_request: WebhookPullRequestAutoMergeDisabledPropPullRequestTypeForResponse
-    reason: str
-    repository: RepositoryWebhooksTypeForResponse
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    projects_v2_item: ProjectsV2ItemTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookPullRequestAutoMergeDisabledType",
-    "WebhookPullRequestAutoMergeDisabledTypeForResponse",
+    "WebhookProjectsV2ItemDeletedType",
+    "WebhookProjectsV2ItemDeletedTypeForResponse",
 )

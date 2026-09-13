@@ -10,10 +10,10 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Literal, overload
+from typing import TYPE_CHECKING, Annotated, Literal, overload
 from weakref import ref
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 from githubkit.compat import model_dump, type_validate_python
 from githubkit.typing import Missing, UnsetType
@@ -24,6 +24,7 @@ if TYPE_CHECKING:
     from typing import Literal, Union
 
     from githubkit import GitHubCore
+    from githubkit.compat import PYDANTIC_V2
     from githubkit.response import Response
     from githubkit.typing import Missing
     from githubkit.utils import UNSET
@@ -39,6 +40,7 @@ if TYPE_CHECKING:
         ReposOwnerRepoStargazersCountGetResponse200,
         SimpleUser,
         Stargazer,
+        StargazerHistory,
         StarredRepository,
         Thread,
         ThreadSubscription,
@@ -57,6 +59,7 @@ if TYPE_CHECKING:
         ReposOwnerRepoStargazersCountGetResponse200TypeForResponse,
         ReposOwnerRepoSubscriptionPutBodyType,
         SimpleUserTypeForResponse,
+        StargazerHistoryTypeForResponse,
         StargazerTypeForResponse,
         StarredRepositoryTypeForResponse,
         ThreadSubscriptionTypeForResponse,
@@ -1655,6 +1658,108 @@ class ActivityClient:
             },
         )
 
+    def get_stargazer_history_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        Annotated[
+            list[StargazerHistory], Field(max_length=30 if PYDANTIC_V2 else None)
+        ],
+        list[StargazerHistoryTypeForResponse],
+    ]:
+        """activity/get-stargazer-history-for-repo
+
+        GET /repos/{owner}/{repo}/stargazers/history
+
+        Returns repository stars grouped by calendar weeks, most recent first. Pages move backward toward the repository's creation week, and weeks within a page are ordered newest to oldest, so concatenating pages produces one continuous series. Weeks without stars contain zero counts. Week and day boundaries are not guaranteed to align with UTC. The `days` array contains the number of stars created on each day of the week, starting on Sunday.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/starring#get-repository-star-history
+        """
+
+        from githubkit.compat import PYDANTIC_V2
+
+        from ..models import StargazerHistory, ValidationError
+
+        url = f"/repos/{owner}/{repo}/stargazers/history"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=Annotated[
+                list[StargazerHistory], Field(max_length=30 if PYDANTIC_V2 else None)
+            ],
+            error_models={
+                "422": ValidationError,
+            },
+        )
+
+    async def async_get_stargazer_history_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        Annotated[
+            list[StargazerHistory], Field(max_length=30 if PYDANTIC_V2 else None)
+        ],
+        list[StargazerHistoryTypeForResponse],
+    ]:
+        """activity/get-stargazer-history-for-repo
+
+        GET /repos/{owner}/{repo}/stargazers/history
+
+        Returns repository stars grouped by calendar weeks, most recent first. Pages move backward toward the repository's creation week, and weeks within a page are ordered newest to oldest, so concatenating pages produces one continuous series. Weeks without stars contain zero counts. Week and day boundaries are not guaranteed to align with UTC. The `days` array contains the number of stars created on each day of the week, starting on Sunday.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/starring#get-repository-star-history
+        """
+
+        from githubkit.compat import PYDANTIC_V2
+
+        from ..models import StargazerHistory, ValidationError
+
+        url = f"/repos/{owner}/{repo}/stargazers/history"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=Annotated[
+                list[StargazerHistory], Field(max_length=30 if PYDANTIC_V2 else None)
+            ],
+            error_models={
+                "422": ValidationError,
+            },
+        )
+
     def list_watchers_for_repo(
         self,
         owner: str,
@@ -2807,6 +2912,8 @@ class ActivityClient:
 
         Lists repositories a user has starred.
 
+        If the specified user has a [private profile](https://docs.github.com/enterprise-cloud@latest/account-and-profile/concepts/personal-profile#private-profiles), this endpoint returns an empty list unless the request is authenticated as that user. A request authenticated as the specified user returns starred repositories visible to the token even if the token has no OAuth scopes.
+
         This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.star+json`**: Includes a timestamp of when the star was created.
@@ -2857,6 +2964,8 @@ class ActivityClient:
         GET /users/{username}/starred
 
         Lists repositories a user has starred.
+
+        If the specified user has a [private profile](https://docs.github.com/enterprise-cloud@latest/account-and-profile/concepts/personal-profile#private-profiles), this endpoint returns an empty list unless the request is authenticated as that user. A request authenticated as the specified user returns starred repositories visible to the token even if the token has no OAuth scopes.
 
         This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 

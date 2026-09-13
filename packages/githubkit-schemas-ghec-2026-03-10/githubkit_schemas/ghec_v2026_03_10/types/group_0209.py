@@ -9,102 +9,274 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class BillingUsageSummaryReportGheType(TypedDict):
-    """BillingUsageSummaryReportGhe"""
-
-    time_period: BillingUsageSummaryReportGhePropTimePeriodType
-    enterprise: str
-    organization: NotRequired[str]
-    repository: NotRequired[str]
-    product: NotRequired[str]
-    sku: NotRequired[str]
-    cost_center: NotRequired[BillingUsageSummaryReportGhePropCostCenterType]
-    usage_items: list[BillingUsageSummaryReportGhePropUsageItemsItemsType]
+from .group_0208 import LabelType, LabelTypeForResponse
 
 
-class BillingUsageSummaryReportGheTypeForResponse(TypedDict):
-    """BillingUsageSummaryReportGhe"""
+class DiscussionType(TypedDict):
+    """Discussion
 
-    time_period: BillingUsageSummaryReportGhePropTimePeriodTypeForResponse
-    enterprise: str
-    organization: NotRequired[str]
-    repository: NotRequired[str]
-    product: NotRequired[str]
-    sku: NotRequired[str]
-    cost_center: NotRequired[BillingUsageSummaryReportGhePropCostCenterTypeForResponse]
-    usage_items: list[BillingUsageSummaryReportGhePropUsageItemsItemsTypeForResponse]
+    A Discussion in a repository.
+    """
+
+    active_lock_reason: Union[str, None]
+    answer_chosen_at: Union[str, None]
+    answer_chosen_by: Union[DiscussionPropAnswerChosenByType, None]
+    answer_html_url: Union[str, None]
+    author_association: NotRequired[
+        Literal[
+            "COLLABORATOR",
+            "CONTRIBUTOR",
+            "FIRST_TIMER",
+            "FIRST_TIME_CONTRIBUTOR",
+            "MANNEQUIN",
+            "MEMBER",
+            "NONE",
+            "OWNER",
+        ]
+    ]
+    body: str
+    category: DiscussionPropCategoryType
+    comments: int
+    created_at: _dt.datetime
+    html_url: str
+    id: int
+    locked: bool
+    node_id: str
+    number: int
+    reactions: NotRequired[DiscussionPropReactionsType]
+    repository_url: str
+    state: Literal["open", "closed", "locked", "converting", "transferring"]
+    state_reason: Union[Literal["resolved", "outdated", "duplicate", "reopened"], None]
+    timeline_url: NotRequired[str]
+    title: str
+    updated_at: _dt.datetime
+    user: Union[DiscussionPropUserType, None]
+    labels: NotRequired[list[LabelType]]
 
 
-class BillingUsageSummaryReportGhePropTimePeriodType(TypedDict):
-    """BillingUsageSummaryReportGhePropTimePeriod"""
+class DiscussionTypeForResponse(TypedDict):
+    """Discussion
 
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
+    A Discussion in a repository.
+    """
+
+    active_lock_reason: Union[str, None]
+    answer_chosen_at: Union[str, None]
+    answer_chosen_by: Union[DiscussionPropAnswerChosenByTypeForResponse, None]
+    answer_html_url: Union[str, None]
+    author_association: NotRequired[
+        Literal[
+            "COLLABORATOR",
+            "CONTRIBUTOR",
+            "FIRST_TIMER",
+            "FIRST_TIME_CONTRIBUTOR",
+            "MANNEQUIN",
+            "MEMBER",
+            "NONE",
+            "OWNER",
+        ]
+    ]
+    body: str
+    category: DiscussionPropCategoryTypeForResponse
+    comments: int
+    created_at: str
+    html_url: str
+    id: int
+    locked: bool
+    node_id: str
+    number: int
+    reactions: NotRequired[DiscussionPropReactionsTypeForResponse]
+    repository_url: str
+    state: Literal["open", "closed", "locked", "converting", "transferring"]
+    state_reason: Union[Literal["resolved", "outdated", "duplicate", "reopened"], None]
+    timeline_url: NotRequired[str]
+    title: str
+    updated_at: str
+    user: Union[DiscussionPropUserTypeForResponse, None]
+    labels: NotRequired[list[LabelTypeForResponse]]
 
 
-class BillingUsageSummaryReportGhePropTimePeriodTypeForResponse(TypedDict):
-    """BillingUsageSummaryReportGhePropTimePeriod"""
+class DiscussionPropAnswerChosenByType(TypedDict):
+    """User"""
 
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-class BillingUsageSummaryReportGhePropCostCenterType(TypedDict):
-    """BillingUsageSummaryReportGhePropCostCenter"""
+class DiscussionPropAnswerChosenByTypeForResponse(TypedDict):
+    """User"""
 
-    id: str
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class DiscussionPropCategoryType(TypedDict):
+    """DiscussionPropCategory"""
+
+    created_at: _dt.datetime
+    description: str
+    emoji: str
+    id: int
+    is_answerable: bool
     name: str
+    node_id: NotRequired[str]
+    repository_id: int
+    slug: str
+    updated_at: str
 
 
-class BillingUsageSummaryReportGhePropCostCenterTypeForResponse(TypedDict):
-    """BillingUsageSummaryReportGhePropCostCenter"""
+class DiscussionPropCategoryTypeForResponse(TypedDict):
+    """DiscussionPropCategory"""
 
-    id: str
+    created_at: str
+    description: str
+    emoji: str
+    id: int
+    is_answerable: bool
     name: str
+    node_id: NotRequired[str]
+    repository_id: int
+    slug: str
+    updated_at: str
 
 
-class BillingUsageSummaryReportGhePropUsageItemsItemsType(TypedDict):
-    """BillingUsageSummaryReportGhePropUsageItemsItems"""
+class DiscussionPropReactionsType(TypedDict):
+    """Reactions"""
 
-    product: str
-    sku: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
+    url: str
 
 
-class BillingUsageSummaryReportGhePropUsageItemsItemsTypeForResponse(TypedDict):
-    """BillingUsageSummaryReportGhePropUsageItemsItems"""
+class DiscussionPropReactionsTypeForResponse(TypedDict):
+    """Reactions"""
 
-    product: str
-    sku: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
+    url: str
+
+
+class DiscussionPropUserType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class DiscussionPropUserTypeForResponse(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "BillingUsageSummaryReportGhePropCostCenterType",
-    "BillingUsageSummaryReportGhePropCostCenterTypeForResponse",
-    "BillingUsageSummaryReportGhePropTimePeriodType",
-    "BillingUsageSummaryReportGhePropTimePeriodTypeForResponse",
-    "BillingUsageSummaryReportGhePropUsageItemsItemsType",
-    "BillingUsageSummaryReportGhePropUsageItemsItemsTypeForResponse",
-    "BillingUsageSummaryReportGheType",
-    "BillingUsageSummaryReportGheTypeForResponse",
+    "DiscussionPropAnswerChosenByType",
+    "DiscussionPropAnswerChosenByTypeForResponse",
+    "DiscussionPropCategoryType",
+    "DiscussionPropCategoryTypeForResponse",
+    "DiscussionPropReactionsType",
+    "DiscussionPropReactionsTypeForResponse",
+    "DiscussionPropUserType",
+    "DiscussionPropUserTypeForResponse",
+    "DiscussionType",
+    "DiscussionTypeForResponse",
 )

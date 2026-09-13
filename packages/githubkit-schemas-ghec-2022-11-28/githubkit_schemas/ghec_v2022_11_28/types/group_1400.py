@@ -9,24 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgInteractionLimitsPullsCreationCapGetResponse200Type(TypedDict):
-    """OrgsOrgInteractionLimitsPullsCreationCapGetResponse200"""
+class OrgsOrgDependabotRepositoryAccessPatchBodyType(TypedDict):
+    """OrgsOrgDependabotRepositoryAccessPatchBody
 
-    enabled: bool
-    max_open_pull_requests: int
+    Examples:
+        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
+    """
+
+    repository_ids_to_add: NotRequired[list[int]]
+    repository_ids_to_remove: NotRequired[list[int]]
 
 
-class OrgsOrgInteractionLimitsPullsCreationCapGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgInteractionLimitsPullsCreationCapGetResponse200"""
+class OrgsOrgDependabotRepositoryAccessPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgDependabotRepositoryAccessPatchBody
 
-    enabled: bool
-    max_open_pull_requests: int
+    Examples:
+        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
+    """
+
+    repository_ids_to_add: NotRequired[list[int]]
+    repository_ids_to_remove: NotRequired[list[int]]
 
 
 __all__ = (
-    "OrgsOrgInteractionLimitsPullsCreationCapGetResponse200Type",
-    "OrgsOrgInteractionLimitsPullsCreationCapGetResponse200TypeForResponse",
+    "OrgsOrgDependabotRepositoryAccessPatchBodyType",
+    "OrgsOrgDependabotRepositoryAccessPatchBodyTypeForResponse",
 )

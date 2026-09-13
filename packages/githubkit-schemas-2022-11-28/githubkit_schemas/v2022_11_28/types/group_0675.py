@@ -9,54 +9,66 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0539 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0540 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0541 import (
+from .group_0542 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0543 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0544 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0542 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0676 import (
-    WebhookIssueCommentCreatedPropCommentType,
-    WebhookIssueCommentCreatedPropCommentTypeForResponse,
-)
-from .group_0677 import (
-    WebhookIssueCommentCreatedPropIssueType,
-    WebhookIssueCommentCreatedPropIssueTypeForResponse,
-)
+from .group_0545 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookIssueCommentCreatedType(TypedDict):
-    """issue_comment created event"""
+class WebhookGollumType(TypedDict):
+    """gollum event"""
 
-    action: Literal["created"]
-    comment: WebhookIssueCommentCreatedPropCommentType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssueCommentCreatedPropIssueType
     organization: NotRequired[OrganizationSimpleWebhooksType]
+    pages: list[WebhookGollumPropPagesItemsType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookIssueCommentCreatedTypeForResponse(TypedDict):
-    """issue_comment created event"""
+class WebhookGollumTypeForResponse(TypedDict):
+    """gollum event"""
 
-    action: Literal["created"]
-    comment: WebhookIssueCommentCreatedPropCommentTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhookIssueCommentCreatedPropIssueTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    pages: list[WebhookGollumPropPagesItemsTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
+class WebhookGollumPropPagesItemsType(TypedDict):
+    """WebhookGollumPropPagesItems"""
+
+    action: Literal["created", "edited"]
+    html_url: str
+    page_name: str
+    sha: str
+    summary: Union[str, None]
+    title: str
+
+
+class WebhookGollumPropPagesItemsTypeForResponse(TypedDict):
+    """WebhookGollumPropPagesItems"""
+
+    action: Literal["created", "edited"]
+    html_url: str
+    page_name: str
+    sha: str
+    summary: Union[str, None]
+    title: str
+
+
 __all__ = (
-    "WebhookIssueCommentCreatedType",
-    "WebhookIssueCommentCreatedTypeForResponse",
+    "WebhookGollumPropPagesItemsType",
+    "WebhookGollumPropPagesItemsTypeForResponse",
+    "WebhookGollumType",
+    "WebhookGollumTypeForResponse",
 )

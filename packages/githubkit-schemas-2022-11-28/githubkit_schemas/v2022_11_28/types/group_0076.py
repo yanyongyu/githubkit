@@ -9,29 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0077 import (
-    CommitCommentEventPropCommentType,
-    CommitCommentEventPropCommentTypeForResponse,
-)
+from typing_extensions import NotRequired, TypedDict
 
 
-class CommitCommentEventType(TypedDict):
-    """CommitCommentEvent"""
+class ReleaseEventPropReleaseAllof1Type(TypedDict):
+    """ReleaseEventPropReleaseAllof1"""
 
-    action: str
-    comment: CommitCommentEventPropCommentType
+    is_short_description_html_truncated: NotRequired[bool]
+    short_description_html: NotRequired[str]
 
 
-class CommitCommentEventTypeForResponse(TypedDict):
-    """CommitCommentEvent"""
+class ReleaseEventPropReleaseAllof1TypeForResponse(TypedDict):
+    """ReleaseEventPropReleaseAllof1"""
 
-    action: str
-    comment: CommitCommentEventPropCommentTypeForResponse
+    is_short_description_html_truncated: NotRequired[bool]
+    short_description_html: NotRequired[str]
 
 
 __all__ = (
-    "CommitCommentEventType",
-    "CommitCommentEventTypeForResponse",
+    "ReleaseEventPropReleaseAllof1Type",
+    "ReleaseEventPropReleaseAllof1TypeForResponse",
 )

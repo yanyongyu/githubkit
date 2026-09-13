@@ -16,46 +16,46 @@ from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
 
-class ConvertedNoteToIssueIssueEventType(TypedDict):
-    """Converted Note to Issue Issue Event
+class RemovedFromProjectIssueEventType(TypedDict):
+    """Removed from Project Issue Event
 
-    Converted Note to Issue Issue Event
+    Removed from Project Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["converted_note_to_issue"]
+    event: Literal["removed_from_project"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
-    performed_via_github_app: Union[IntegrationType, None]
-    project_card: NotRequired[ConvertedNoteToIssueIssueEventPropProjectCardType]
+    performed_via_github_app: Union[None, IntegrationType, None]
+    project_card: NotRequired[RemovedFromProjectIssueEventPropProjectCardType]
 
 
-class ConvertedNoteToIssueIssueEventTypeForResponse(TypedDict):
-    """Converted Note to Issue Issue Event
+class RemovedFromProjectIssueEventTypeForResponse(TypedDict):
+    """Removed from Project Issue Event
 
-    Converted Note to Issue Issue Event
+    Removed from Project Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserTypeForResponse
-    event: Literal["converted_note_to_issue"]
+    event: Literal["removed_from_project"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
-    performed_via_github_app: Union[IntegrationTypeForResponse, None]
+    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
     project_card: NotRequired[
-        ConvertedNoteToIssueIssueEventPropProjectCardTypeForResponse
+        RemovedFromProjectIssueEventPropProjectCardTypeForResponse
     ]
 
 
-class ConvertedNoteToIssueIssueEventPropProjectCardType(TypedDict):
-    """ConvertedNoteToIssueIssueEventPropProjectCard"""
+class RemovedFromProjectIssueEventPropProjectCardType(TypedDict):
+    """RemovedFromProjectIssueEventPropProjectCard"""
 
     id: int
     url: str
@@ -65,8 +65,8 @@ class ConvertedNoteToIssueIssueEventPropProjectCardType(TypedDict):
     previous_column_name: NotRequired[str]
 
 
-class ConvertedNoteToIssueIssueEventPropProjectCardTypeForResponse(TypedDict):
-    """ConvertedNoteToIssueIssueEventPropProjectCard"""
+class RemovedFromProjectIssueEventPropProjectCardTypeForResponse(TypedDict):
+    """RemovedFromProjectIssueEventPropProjectCard"""
 
     id: int
     url: str
@@ -77,8 +77,8 @@ class ConvertedNoteToIssueIssueEventPropProjectCardTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "ConvertedNoteToIssueIssueEventPropProjectCardType",
-    "ConvertedNoteToIssueIssueEventPropProjectCardTypeForResponse",
-    "ConvertedNoteToIssueIssueEventType",
-    "ConvertedNoteToIssueIssueEventTypeForResponse",
+    "RemovedFromProjectIssueEventPropProjectCardType",
+    "RemovedFromProjectIssueEventPropProjectCardTypeForResponse",
+    "RemovedFromProjectIssueEventType",
+    "RemovedFromProjectIssueEventTypeForResponse",
 )

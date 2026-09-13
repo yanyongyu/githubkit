@@ -11,26 +11,20 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0391 import CheckRunType, CheckRunTypeForResponse
+
+class ReposOwnerRepoBranchesBranchRenamePostBodyType(TypedDict):
+    """ReposOwnerRepoBranchesBranchRenamePostBody"""
+
+    new_name: str
 
 
-class ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200"""
+class ReposOwnerRepoBranchesBranchRenamePostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoBranchesBranchRenamePostBody"""
 
-    total_count: int
-    check_runs: list[CheckRunType]
-
-
-class ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200"""
-
-    total_count: int
-    check_runs: list[CheckRunTypeForResponse]
+    new_name: str
 
 
 __all__ = (
-    "ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Type",
-    "ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200TypeForResponse",
+    "ReposOwnerRepoBranchesBranchRenamePostBodyType",
+    "ReposOwnerRepoBranchesBranchRenamePostBodyTypeForResponse",
 )

@@ -9,31 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBodyType(TypedDict):
-    """ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBody"""
-
-    dismissed_reason: Literal[
-        "fix_started", "no_bandwidth", "tolerable_risk", "inaccurate", "not_used"
-    ]
-    dismissed_comment: NotRequired[str]
-
-
-class ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBodyTypeForResponse(
+class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentType(
     TypedDict
 ):
-    """ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBody"""
+    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment
 
-    dismissed_reason: Literal[
-        "fix_started", "no_bandwidth", "tolerable_risk", "inaccurate", "not_used"
-    ]
-    dismissed_comment: NotRequired[str]
+    Parameters for AI agent assignment. Only used when an agent bot login is
+    included in `assignees`. Ignored when no agent is being assigned.
+    """
+
+    custom_instructions: NotRequired[str]
+    custom_agent: NotRequired[str]
+    model: NotRequired[str]
+
+
+class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment
+
+    Parameters for AI agent assignment. Only used when an agent bot login is
+    included in `assignees`. Ignored when no agent is being assigned.
+    """
+
+    custom_instructions: NotRequired[str]
+    custom_agent: NotRequired[str]
+    model: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBodyType",
-    "ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBodyTypeForResponse",
+    "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentType",
+    "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentTypeForResponse",
 )

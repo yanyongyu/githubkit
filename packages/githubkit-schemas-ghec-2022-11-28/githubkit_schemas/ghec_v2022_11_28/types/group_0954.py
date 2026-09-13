@@ -13,43 +13,38 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0622 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0623 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0624 import (
+from .group_0316 import (
+    ProjectsV2StatusUpdateType,
+    ProjectsV2StatusUpdateTypeForResponse,
+)
+from .group_0626 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0627 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0625 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0659 import PullRequestWebhookType, PullRequestWebhookTypeForResponse
 
 
-class WebhookPullRequestConvertedToDraftType(TypedDict):
-    """pull_request converted_to_draft event"""
+class WebhookProjectsV2StatusUpdateCreatedType(TypedDict):
+    """Projects v2 Status Update Created Event"""
 
-    action: Literal["converted_to_draft"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["created"]
     installation: NotRequired[SimpleInstallationType]
-    number: int
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    pull_request: PullRequestWebhookType
-    repository: RepositoryWebhooksType
+    organization: OrganizationSimpleWebhooksType
+    projects_v2_status_update: ProjectsV2StatusUpdateType
     sender: SimpleUserType
 
 
-class WebhookPullRequestConvertedToDraftTypeForResponse(TypedDict):
-    """pull_request converted_to_draft event"""
+class WebhookProjectsV2StatusUpdateCreatedTypeForResponse(TypedDict):
+    """Projects v2 Status Update Created Event"""
 
-    action: Literal["converted_to_draft"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    action: Literal["created"]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    number: int
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    pull_request: PullRequestWebhookTypeForResponse
-    repository: RepositoryWebhooksTypeForResponse
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    projects_v2_status_update: ProjectsV2StatusUpdateTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookPullRequestConvertedToDraftType",
-    "WebhookPullRequestConvertedToDraftTypeForResponse",
+    "WebhookProjectsV2StatusUpdateCreatedType",
+    "WebhookProjectsV2StatusUpdateCreatedTypeForResponse",
 )

@@ -9,55 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0017 import AppPermissions
 
-class EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBody(GitHubModel):
-    """EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBody"""
 
-    name: Missing[str] = Field(
-        default=UNSET,
-        description="Name of the runner. Must be between 1 and 64 characters and may only contain upper and lowercase letters a-z, numbers 0-9, '.', '-', and '_'.",
+class ApplicationsClientIdTokenScopedPostBody(GitHubModel):
+    """ApplicationsClientIdTokenScopedPostBody"""
+
+    access_token: str = Field(
+        description="The access token used to authenticate to the GitHub API."
     )
-    runner_group_id: Missing[int] = Field(
-        default=UNSET, description="The existing runner group to add this runner to."
-    )
-    maximum_runners: Missing[int] = Field(
+    target: Missing[str] = Field(
         default=UNSET,
-        description="The maximum amount of runners to scale up to. Runners will not auto-scale above this number. Use this setting to limit your cost.",
+        description="The name of the user or organization to scope the user access token to. **Required** unless `target_id` is specified.",
     )
-    enable_static_ip: Missing[bool] = Field(
+    target_id: Missing[int] = Field(
         default=UNSET,
-        description="Whether this runner should be updated with a static public IP. Note limit on account. To list limits on account, use `GET actions/hosted-runners/limits`",
+        description="The ID of the user or organization to scope the user access token to. **Required** unless `target` is specified.",
     )
-    size: Missing[str] = Field(
+    repositories: Missing[list[str]] = Field(
         default=UNSET,
-        description="The machine size of the runner. To list available sizes, use `GET actions/hosted-runners/machine-sizes`",
+        description="The list of repository names to scope the user access token to. `repositories` may not be specified if `repository_ids` is specified.",
     )
-    image_source: Missing[Literal["github", "partner", "custom"]] = Field(
+    repository_ids: Missing[list[int]] = Field(
         default=UNSET,
-        description="The source type of the runner image to use. Must match the source of the image specified by `image_id`. Can be one of `github`, `partner`, or `custom`.",
+        description="The list of repository IDs to scope the user access token to. `repository_ids` may not be specified if `repositories` is specified.",
     )
-    image_id: Missing[str] = Field(
+    permissions: Missing[AppPermissions] = Field(
         default=UNSET,
-        description="The unique identifier of the runner image. To list available images, use `GET /actions/hosted-runners/images/github-owned`, `GET /actions/hosted-runners/images/partner`, or `GET /actions/hosted-runners/images/custom`.",
-    )
-    image_version: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The version of the runner image to deploy. This is relevant only for runners using custom images.",
-    )
-    image_gen: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to enable image generation for this runner pool. When enabled, the runner pool is used to build and publish custom runner images.",
+        title="App Permissions",
+        description="The permissions granted to the fine-grained access token.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBody)
+model_rebuild(ApplicationsClientIdTokenScopedPostBody)
 
-__all__ = ("EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBody",)
+__all__ = ("ApplicationsClientIdTokenScopedPostBody",)

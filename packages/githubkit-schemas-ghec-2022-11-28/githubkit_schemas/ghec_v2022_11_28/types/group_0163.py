@@ -9,30 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0164 import (
+    RepositoryRuleCodeScanningPropParametersType,
+    RepositoryRuleCodeScanningPropParametersTypeForResponse,
+)
 
-class RepositoryRuleParamsRestrictedCommitsType(TypedDict):
-    """RestrictedCommits
 
-    Restricted commit
+class RepositoryRuleCodeScanningType(TypedDict):
+    """code_scanning
+
+    Choose which tools must provide code scanning results before the reference is
+    updated. When configured, code scanning must be enabled and have results for
+    both the commit and the reference being updated.
     """
 
-    oid: str
-    reason: NotRequired[str]
+    type: Literal["code_scanning"]
+    parameters: NotRequired[RepositoryRuleCodeScanningPropParametersType]
 
 
-class RepositoryRuleParamsRestrictedCommitsTypeForResponse(TypedDict):
-    """RestrictedCommits
+class RepositoryRuleCodeScanningTypeForResponse(TypedDict):
+    """code_scanning
 
-    Restricted commit
+    Choose which tools must provide code scanning results before the reference is
+    updated. When configured, code scanning must be enabled and have results for
+    both the commit and the reference being updated.
     """
 
-    oid: str
-    reason: NotRequired[str]
+    type: Literal["code_scanning"]
+    parameters: NotRequired[RepositoryRuleCodeScanningPropParametersTypeForResponse]
 
 
 __all__ = (
-    "RepositoryRuleParamsRestrictedCommitsType",
-    "RepositoryRuleParamsRestrictedCommitsTypeForResponse",
+    "RepositoryRuleCodeScanningType",
+    "RepositoryRuleCodeScanningTypeForResponse",
 )

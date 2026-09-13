@@ -11,60 +11,60 @@ from __future__ import annotations
 
 import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class EnterpriseTeamWithMemberCountType(TypedDict):
-    """Enterprise Team
+class MilestoneType(TypedDict):
+    """Milestone
 
-    Group of enterprise owners and/or members
+    A collection of related issues and pull requests.
     """
 
-    id: int
-    name: str
-    description: NotRequired[str]
-    slug: str
     url: str
-    sync_to_organizations: NotRequired[str]
-    organization_selection_type: NotRequired[str]
-    group_id: Union[str, None]
-    group_name: NotRequired[Union[str, None]]
     html_url: str
-    members_url: str
-    members_count: int
+    labels_url: str
+    id: int
+    node_id: str
+    number: int
+    state: Literal["open", "closed"]
+    title: str
+    description: Union[str, None]
+    creator: Union[SimpleUserType, None]
+    open_issues: int
+    closed_issues: int
     created_at: _dt.datetime
     updated_at: _dt.datetime
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ]
+    closed_at: Union[_dt.datetime, None]
+    due_on: Union[_dt.datetime, None]
 
 
-class EnterpriseTeamWithMemberCountTypeForResponse(TypedDict):
-    """Enterprise Team
+class MilestoneTypeForResponse(TypedDict):
+    """Milestone
 
-    Group of enterprise owners and/or members
+    A collection of related issues and pull requests.
     """
 
-    id: int
-    name: str
-    description: NotRequired[str]
-    slug: str
     url: str
-    sync_to_organizations: NotRequired[str]
-    organization_selection_type: NotRequired[str]
-    group_id: Union[str, None]
-    group_name: NotRequired[Union[str, None]]
     html_url: str
-    members_url: str
-    members_count: int
+    labels_url: str
+    id: int
+    node_id: str
+    number: int
+    state: Literal["open", "closed"]
+    title: str
+    description: Union[str, None]
+    creator: Union[SimpleUserTypeForResponse, None]
+    open_issues: int
+    closed_issues: int
     created_at: str
     updated_at: str
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ]
+    closed_at: Union[str, None]
+    due_on: Union[str, None]
 
 
 __all__ = (
-    "EnterpriseTeamWithMemberCountType",
-    "EnterpriseTeamWithMemberCountTypeForResponse",
+    "MilestoneType",
+    "MilestoneTypeForResponse",
 )

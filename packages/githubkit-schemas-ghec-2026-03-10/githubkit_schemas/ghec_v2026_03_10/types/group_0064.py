@@ -14,31 +14,37 @@ from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class GetAuditLogStreamConfigsItemsType(TypedDict):
-    """GetAuditLogStreamConfigsItems"""
+class GetAuditLogStreamConfigType(TypedDict):
+    """Get an audit log streaming configuration
 
-    id: NotRequired[int]
-    stream_type: NotRequired[str]
-    stream_details: NotRequired[str]
-    enabled: NotRequired[bool]
-    created_at: NotRequired[_dt.datetime]
-    updated_at: NotRequired[_dt.datetime]
+    Get an audit log streaming configuration for an enterprise.
+    """
+
+    id: int
+    stream_type: str
+    stream_details: str
+    enabled: bool
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
     paused_at: NotRequired[Union[_dt.datetime, None]]
 
 
-class GetAuditLogStreamConfigsItemsTypeForResponse(TypedDict):
-    """GetAuditLogStreamConfigsItems"""
+class GetAuditLogStreamConfigTypeForResponse(TypedDict):
+    """Get an audit log streaming configuration
 
-    id: NotRequired[int]
-    stream_type: NotRequired[str]
-    stream_details: NotRequired[str]
-    enabled: NotRequired[bool]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
+    Get an audit log streaming configuration for an enterprise.
+    """
+
+    id: int
+    stream_type: str
+    stream_details: str
+    enabled: bool
+    created_at: str
+    updated_at: str
     paused_at: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "GetAuditLogStreamConfigsItemsType",
-    "GetAuditLogStreamConfigsItemsTypeForResponse",
+    "GetAuditLogStreamConfigType",
+    "GetAuditLogStreamConfigTypeForResponse",
 )

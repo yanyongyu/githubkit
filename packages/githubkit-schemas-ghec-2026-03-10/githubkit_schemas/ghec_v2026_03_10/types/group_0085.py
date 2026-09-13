@@ -9,87 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0084 import TeamSimpleType, TeamSimpleTypeForResponse
+import datetime as _dt
+from typing_extensions import TypedDict
 
 
-class TeamType(TypedDict):
-    """Team
+class CopilotUsageMetrics1DayReportType(TypedDict):
+    """Copilot Metrics 1 Day Report
 
-    Groups of organization members that gives permissions on specified repositories.
+    Links to download the Copilot usage metrics report for an
+    enterprise/organization for a specific day.
     """
 
-    id: int
-    node_id: str
-    name: str
-    slug: str
-    description: Union[str, None]
-    privacy: NotRequired[str]
-    notification_setting: NotRequired[str]
-    permission: str
-    permissions: NotRequired[TeamPropPermissionsType]
-    url: str
-    html_url: str
-    members_url: str
-    repositories_url: str
-    type: Literal["enterprise", "organization"]
-    access_source: NotRequired[Literal["direct", "organization", "enterprise"]]
-    organization_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
-    parent: Union[TeamSimpleType, None]
+    download_links: list[str]
+    report_day: _dt.date
 
 
-class TeamTypeForResponse(TypedDict):
-    """Team
+class CopilotUsageMetrics1DayReportTypeForResponse(TypedDict):
+    """Copilot Metrics 1 Day Report
 
-    Groups of organization members that gives permissions on specified repositories.
+    Links to download the Copilot usage metrics report for an
+    enterprise/organization for a specific day.
     """
 
-    id: int
-    node_id: str
-    name: str
-    slug: str
-    description: Union[str, None]
-    privacy: NotRequired[str]
-    notification_setting: NotRequired[str]
-    permission: str
-    permissions: NotRequired[TeamPropPermissionsTypeForResponse]
-    url: str
-    html_url: str
-    members_url: str
-    repositories_url: str
-    type: Literal["enterprise", "organization"]
-    access_source: NotRequired[Literal["direct", "organization", "enterprise"]]
-    organization_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
-    parent: Union[TeamSimpleTypeForResponse, None]
-
-
-class TeamPropPermissionsType(TypedDict):
-    """TeamPropPermissions"""
-
-    pull: bool
-    triage: bool
-    push: bool
-    maintain: bool
-    admin: bool
-
-
-class TeamPropPermissionsTypeForResponse(TypedDict):
-    """TeamPropPermissions"""
-
-    pull: bool
-    triage: bool
-    push: bool
-    maintain: bool
-    admin: bool
+    download_links: list[str]
+    report_day: str
 
 
 __all__ = (
-    "TeamPropPermissionsType",
-    "TeamPropPermissionsTypeForResponse",
-    "TeamType",
-    "TeamTypeForResponse",
+    "CopilotUsageMetrics1DayReportType",
+    "CopilotUsageMetrics1DayReportTypeForResponse",
 )

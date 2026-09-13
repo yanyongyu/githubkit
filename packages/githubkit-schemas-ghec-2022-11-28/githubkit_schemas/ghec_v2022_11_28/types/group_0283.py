@@ -9,30 +9,60 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class DependabotPublicKeyType(TypedDict):
-    """DependabotPublicKey
+class DismissalRequestResponseType(TypedDict):
+    """Dismissal request response
 
-    The public key used for setting Dependabot Secrets.
+    A response made by a requester to dismiss the request.
     """
 
-    key_id: str
-    key: str
+    id: NotRequired[int]
+    reviewer: NotRequired[DismissalRequestResponsePropReviewerType]
+    message: NotRequired[Union[str, None]]
+    status: NotRequired[Literal["approved", "denied", "dismissed"]]
+    created_at: NotRequired[_dt.datetime]
 
 
-class DependabotPublicKeyTypeForResponse(TypedDict):
-    """DependabotPublicKey
+class DismissalRequestResponseTypeForResponse(TypedDict):
+    """Dismissal request response
 
-    The public key used for setting Dependabot Secrets.
+    A response made by a requester to dismiss the request.
     """
 
-    key_id: str
-    key: str
+    id: NotRequired[int]
+    reviewer: NotRequired[DismissalRequestResponsePropReviewerTypeForResponse]
+    message: NotRequired[Union[str, None]]
+    status: NotRequired[Literal["approved", "denied", "dismissed"]]
+    created_at: NotRequired[str]
+
+
+class DismissalRequestResponsePropReviewerType(TypedDict):
+    """DismissalRequestResponsePropReviewer
+
+    The user who reviewed the dismissal request.
+    """
+
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
+
+
+class DismissalRequestResponsePropReviewerTypeForResponse(TypedDict):
+    """DismissalRequestResponsePropReviewer
+
+    The user who reviewed the dismissal request.
+    """
+
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
 
 
 __all__ = (
-    "DependabotPublicKeyType",
-    "DependabotPublicKeyTypeForResponse",
+    "DismissalRequestResponsePropReviewerType",
+    "DismissalRequestResponsePropReviewerTypeForResponse",
+    "DismissalRequestResponseType",
+    "DismissalRequestResponseTypeForResponse",
 )

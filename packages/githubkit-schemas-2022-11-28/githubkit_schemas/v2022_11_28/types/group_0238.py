@@ -10,30 +10,41 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0239 import (
+    RepositoryRuleFilePathRestrictionPropParametersType,
+    RepositoryRuleFilePathRestrictionPropParametersTypeForResponse,
+)
 
 
-class RepositoryRuleLicenseComplianceScanningType(TypedDict):
-    """license_compliance_scanning
+class RepositoryRuleFilePathRestrictionType(TypedDict):
+    """file_path_restriction
 
-    Enforce any added or changed dependencies to comply with the organization's
-    license policy.
+    Prevent commits that include changes in specified file and folder paths from
+    being pushed to the commit graph. This includes absolute paths that contain file
+    names.
     """
 
-    type: Literal["license_compliance_scanning"]
+    type: Literal["file_path_restriction"]
+    parameters: NotRequired[RepositoryRuleFilePathRestrictionPropParametersType]
 
 
-class RepositoryRuleLicenseComplianceScanningTypeForResponse(TypedDict):
-    """license_compliance_scanning
+class RepositoryRuleFilePathRestrictionTypeForResponse(TypedDict):
+    """file_path_restriction
 
-    Enforce any added or changed dependencies to comply with the organization's
-    license policy.
+    Prevent commits that include changes in specified file and folder paths from
+    being pushed to the commit graph. This includes absolute paths that contain file
+    names.
     """
 
-    type: Literal["license_compliance_scanning"]
+    type: Literal["file_path_restriction"]
+    parameters: NotRequired[
+        RepositoryRuleFilePathRestrictionPropParametersTypeForResponse
+    ]
 
 
 __all__ = (
-    "RepositoryRuleLicenseComplianceScanningType",
-    "RepositoryRuleLicenseComplianceScanningTypeForResponse",
+    "RepositoryRuleFilePathRestrictionType",
+    "RepositoryRuleFilePathRestrictionTypeForResponse",
 )

@@ -9,60 +9,81 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Any, Literal, TypeAlias, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
+from githubkit.typing import UniqueList
 
 
-class AuthenticationTokenType(TypedDict):
-    """Authentication Token
+class ArtifactDeploymentRecordType(TypedDict):
+    """Artifact Deployment Record
 
-    Authentication Token
+    Artifact Metadata Deployment Record
     """
 
-    token: str
-    expires_at: _dt.datetime
-    permissions: NotRequired[AuthenticationTokenPropPermissionsType]
-    repositories: NotRequired[list[RepositoryType]]
-    single_file: NotRequired[Union[str, None]]
-    repository_selection: NotRequired[Literal["all", "selected"]]
+    id: NotRequired[int]
+    digest: NotRequired[str]
+    logical_environment: NotRequired[str]
+    physical_environment: NotRequired[str]
+    cluster: NotRequired[str]
+    deployment_name: NotRequired[str]
+    tags: NotRequired[ArtifactDeploymentRecordPropTagsType]
+    runtime_risks: NotRequired[
+        UniqueList[
+            Literal[
+                "critical-resource",
+                "internet-exposed",
+                "lateral-movement",
+                "sensitive-data",
+            ]
+        ]
+    ]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    attestation_id: NotRequired[Union[int, None]]
 
 
-class AuthenticationTokenTypeForResponse(TypedDict):
-    """Authentication Token
+class ArtifactDeploymentRecordTypeForResponse(TypedDict):
+    """Artifact Deployment Record
 
-    Authentication Token
+    Artifact Metadata Deployment Record
     """
 
-    token: str
-    expires_at: str
-    permissions: NotRequired[AuthenticationTokenPropPermissionsTypeForResponse]
-    repositories: NotRequired[list[RepositoryTypeForResponse]]
-    single_file: NotRequired[Union[str, None]]
-    repository_selection: NotRequired[Literal["all", "selected"]]
+    id: NotRequired[int]
+    digest: NotRequired[str]
+    logical_environment: NotRequired[str]
+    physical_environment: NotRequired[str]
+    cluster: NotRequired[str]
+    deployment_name: NotRequired[str]
+    tags: NotRequired[ArtifactDeploymentRecordPropTagsTypeForResponse]
+    runtime_risks: NotRequired[
+        UniqueList[
+            Literal[
+                "critical-resource",
+                "internet-exposed",
+                "lateral-movement",
+                "sensitive-data",
+            ]
+        ]
+    ]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    attestation_id: NotRequired[Union[int, None]]
 
 
-class AuthenticationTokenPropPermissionsType(TypedDict):
-    """AuthenticationTokenPropPermissions
-
-    Examples:
-        {'issues': 'read', 'deployments': 'write'}
-    """
+ArtifactDeploymentRecordPropTagsType: TypeAlias = dict[str, Any]
+"""ArtifactDeploymentRecordPropTags
+"""
 
 
-class AuthenticationTokenPropPermissionsTypeForResponse(TypedDict):
-    """AuthenticationTokenPropPermissions
-
-    Examples:
-        {'issues': 'read', 'deployments': 'write'}
-    """
+ArtifactDeploymentRecordPropTagsTypeForResponse: TypeAlias = dict[str, Any]
+"""ArtifactDeploymentRecordPropTags
+"""
 
 
 __all__ = (
-    "AuthenticationTokenPropPermissionsType",
-    "AuthenticationTokenPropPermissionsTypeForResponse",
-    "AuthenticationTokenType",
-    "AuthenticationTokenTypeForResponse",
+    "ArtifactDeploymentRecordPropTagsType",
+    "ArtifactDeploymentRecordPropTagsTypeForResponse",
+    "ArtifactDeploymentRecordType",
+    "ArtifactDeploymentRecordTypeForResponse",
 )

@@ -16,14 +16,14 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ContentSubmodule(GitHubModel):
-    """Submodule Content
+class ContentSymlink(GitHubModel):
+    """Symlink Content
 
-    An object describing a submodule
+    An object describing a symlink
     """
 
-    type: Literal["submodule"] = Field()
-    submodule_git_url: str = Field()
+    type: Literal["symlink"] = Field()
+    target: str = Field()
     size: int = Field()
     name: str = Field()
     path: str = Field()
@@ -32,21 +32,21 @@ class ContentSubmodule(GitHubModel):
     git_url: Union[str, None] = Field()
     html_url: Union[str, None] = Field()
     download_url: Union[str, None] = Field()
-    links: ContentSubmodulePropLinks = Field(alias="_links")
+    links: ContentSymlinkPropLinks = Field(alias="_links")
 
 
-class ContentSubmodulePropLinks(GitHubModel):
-    """ContentSubmodulePropLinks"""
+class ContentSymlinkPropLinks(GitHubModel):
+    """ContentSymlinkPropLinks"""
 
     git: Union[str, None] = Field()
     html: Union[str, None] = Field()
     self_: str = Field(alias="self")
 
 
-model_rebuild(ContentSubmodule)
-model_rebuild(ContentSubmodulePropLinks)
+model_rebuild(ContentSymlink)
+model_rebuild(ContentSymlinkPropLinks)
 
 __all__ = (
-    "ContentSubmodule",
-    "ContentSubmodulePropLinks",
+    "ContentSymlink",
+    "ContentSymlinkPropLinks",
 )

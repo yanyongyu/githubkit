@@ -12,41 +12,19 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ActionsHostedRunnerLimitsType(TypedDict):
-    """ActionsHostedRunnerLimits"""
+class ActionsArtifactAndLogRetentionType(TypedDict):
+    """ActionsArtifactAndLogRetention"""
 
-    public_ips: ActionsHostedRunnerLimitsPropPublicIpsType
-
-
-class ActionsHostedRunnerLimitsTypeForResponse(TypedDict):
-    """ActionsHostedRunnerLimits"""
-
-    public_ips: ActionsHostedRunnerLimitsPropPublicIpsTypeForResponse
+    days: int
 
 
-class ActionsHostedRunnerLimitsPropPublicIpsType(TypedDict):
-    """Static public IP Limits for GitHub-hosted Hosted Runners.
+class ActionsArtifactAndLogRetentionTypeForResponse(TypedDict):
+    """ActionsArtifactAndLogRetention"""
 
-    Provides details of static public IP limits for GitHub-hosted Hosted Runners
-    """
-
-    maximum: int
-    current_usage: int
-
-
-class ActionsHostedRunnerLimitsPropPublicIpsTypeForResponse(TypedDict):
-    """Static public IP Limits for GitHub-hosted Hosted Runners.
-
-    Provides details of static public IP limits for GitHub-hosted Hosted Runners
-    """
-
-    maximum: int
-    current_usage: int
+    days: int
 
 
 __all__ = (
-    "ActionsHostedRunnerLimitsPropPublicIpsType",
-    "ActionsHostedRunnerLimitsPropPublicIpsTypeForResponse",
-    "ActionsHostedRunnerLimitsType",
-    "ActionsHostedRunnerLimitsTypeForResponse",
+    "ActionsArtifactAndLogRetentionType",
+    "ActionsArtifactAndLogRetentionTypeForResponse",
 )

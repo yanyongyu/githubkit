@@ -9,161 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0622 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0623 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0624 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
+from .group_0838 import (
+    WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreatorType,
+    WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
 )
-from .group_0625 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0643 import WebhooksIssueType, WebhooksIssueTypeForResponse
 
 
-class WebhookIssuesFieldRemovedType(TypedDict):
-    """issues field_removed event"""
+class WebhookIssuesClosedPropIssueMergedMilestoneType(TypedDict):
+    """WebhookIssuesClosedPropIssueMergedMilestone"""
 
-    action: Literal["field_removed"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    issue: WebhooksIssueType
-    issue_field: WebhookIssuesFieldRemovedPropIssueFieldType
-    issue_field_value: NotRequired[WebhookIssuesFieldRemovedPropIssueFieldValueType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
-
-
-class WebhookIssuesFieldRemovedTypeForResponse(TypedDict):
-    """issues field_removed event"""
-
-    action: Literal["field_removed"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhooksIssueTypeForResponse
-    issue_field: WebhookIssuesFieldRemovedPropIssueFieldTypeForResponse
-    issue_field_value: NotRequired[
-        WebhookIssuesFieldRemovedPropIssueFieldValueTypeForResponse
-    ]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
-
-
-class WebhookIssuesFieldRemovedPropIssueFieldType(TypedDict):
-    """WebhookIssuesFieldRemovedPropIssueField
-
-    The issue field whose value was cleared from the issue.
-    """
-
+    closed_at: Union[_dt.datetime, None]
+    closed_issues: int
+    created_at: _dt.datetime
+    creator: Union[WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreatorType, None]
+    description: Union[str, None]
+    due_on: Union[_dt.datetime, None]
+    html_url: str
     id: int
-    name: str
-    field_type: Literal["text", "date", "single_select", "multi_select", "number"]
+    labels_url: str
+    node_id: str
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: _dt.datetime
+    url: str
 
 
-class WebhookIssuesFieldRemovedPropIssueFieldTypeForResponse(TypedDict):
-    """WebhookIssuesFieldRemovedPropIssueField
+class WebhookIssuesClosedPropIssueMergedMilestoneTypeForResponse(TypedDict):
+    """WebhookIssuesClosedPropIssueMergedMilestone"""
 
-    The issue field whose value was cleared from the issue.
-    """
-
-    id: int
-    name: str
-    field_type: Literal["text", "date", "single_select", "multi_select", "number"]
-
-
-class WebhookIssuesFieldRemovedPropIssueFieldValueType(TypedDict):
-    """WebhookIssuesFieldRemovedPropIssueFieldValue
-
-    The value that was cleared from the issue field.
-    """
-
-    id: int
-    value: NotRequired[Union[str, float, int, None]]
-    value_id: NotRequired[int]
-    option: NotRequired[WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionType]
-    value_ids: NotRequired[list[int]]
-    options: NotRequired[
-        list[WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItemsType]
+    closed_at: Union[str, None]
+    closed_issues: int
+    created_at: str
+    creator: Union[
+        WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreatorTypeForResponse, None
     ]
-
-
-class WebhookIssuesFieldRemovedPropIssueFieldValueTypeForResponse(TypedDict):
-    """WebhookIssuesFieldRemovedPropIssueFieldValue
-
-    The value that was cleared from the issue field.
-    """
-
+    description: Union[str, None]
+    due_on: Union[str, None]
+    html_url: str
     id: int
-    value: NotRequired[Union[str, float, int, None]]
-    value_id: NotRequired[int]
-    option: NotRequired[
-        WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionTypeForResponse
-    ]
-    value_ids: NotRequired[list[int]]
-    options: NotRequired[
-        list[
-            WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItemsTypeForResponse
-        ]
-    ]
-
-
-class WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionType(TypedDict):
-    """WebhookIssuesFieldRemovedPropIssueFieldValuePropOption
-
-    The selected option details. Present for single_select field types.
-    """
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    color: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-
-
-class WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionTypeForResponse(TypedDict):
-    """WebhookIssuesFieldRemovedPropIssueFieldValuePropOption
-
-    The selected option details. Present for single_select field types.
-    """
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    color: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-
-
-class WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItemsType(TypedDict):
-    """WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItems"""
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    color: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-
-
-class WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItemsTypeForResponse(
-    TypedDict
-):
-    """WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItems"""
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    color: NotRequired[str]
-    description: NotRequired[Union[str, None]]
+    labels_url: str
+    node_id: str
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: str
+    url: str
 
 
 __all__ = (
-    "WebhookIssuesFieldRemovedPropIssueFieldType",
-    "WebhookIssuesFieldRemovedPropIssueFieldTypeForResponse",
-    "WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionType",
-    "WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionTypeForResponse",
-    "WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItemsType",
-    "WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItemsTypeForResponse",
-    "WebhookIssuesFieldRemovedPropIssueFieldValueType",
-    "WebhookIssuesFieldRemovedPropIssueFieldValueTypeForResponse",
-    "WebhookIssuesFieldRemovedType",
-    "WebhookIssuesFieldRemovedTypeForResponse",
+    "WebhookIssuesClosedPropIssueMergedMilestoneType",
+    "WebhookIssuesClosedPropIssueMergedMilestoneTypeForResponse",
 )

@@ -12,27 +12,29 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class AuditLogStreamKeyType(TypedDict):
-    """stream-key
+class GoogleCloudConfigType(TypedDict):
+    """GoogleCloudConfig
 
-    Audit Log Streaming Public Key
+    Google Cloud Config for audit log streaming configuration.
     """
 
+    bucket: str
     key_id: str
-    key: str
+    encrypted_json_credentials: str
 
 
-class AuditLogStreamKeyTypeForResponse(TypedDict):
-    """stream-key
+class GoogleCloudConfigTypeForResponse(TypedDict):
+    """GoogleCloudConfig
 
-    Audit Log Streaming Public Key
+    Google Cloud Config for audit log streaming configuration.
     """
 
+    bucket: str
     key_id: str
-    key: str
+    encrypted_json_credentials: str
 
 
 __all__ = (
-    "AuditLogStreamKeyType",
-    "AuditLogStreamKeyTypeForResponse",
+    "GoogleCloudConfigType",
+    "GoogleCloudConfigTypeForResponse",
 )

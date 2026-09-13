@@ -11,30 +11,27 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0185 import (
+    SecretScanningCustomPatternType,
+    SecretScanningCustomPatternTypeForResponse,
+)
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBodyType(
+
+class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201Type(TypedDict):
+    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201"""
+
+    created_patterns: NotRequired[list[SecretScanningCustomPatternType]]
+
+
+class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody"""
+    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201"""
 
-    users: NotRequired[list[str]]
-    organizations: NotRequired[list[str]]
-    repositories: NotRequired[list[str]]
-    enterprise_teams: NotRequired[list[str]]
-
-
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBodyTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody"""
-
-    users: NotRequired[list[str]]
-    organizations: NotRequired[list[str]]
-    repositories: NotRequired[list[str]]
-    enterprise_teams: NotRequired[list[str]]
+    created_patterns: NotRequired[list[SecretScanningCustomPatternTypeForResponse]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBodyType",
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBodyTypeForResponse",
+    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201Type",
+    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201TypeForResponse",
 )

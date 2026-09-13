@@ -9,30 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0191 import SecretScanningCustomPatternToDelete
 
+class ReposOwnerRepoReleasesGenerateNotesPostBody(GitHubModel):
+    """ReposOwnerRepoReleasesGenerateNotesPostBody"""
 
-class ReposOwnerRepoSecretScanningCustomPatternsDeleteBody(GitHubModel):
-    """ReposOwnerRepoSecretScanningCustomPatternsDeleteBody"""
-
-    patterns: list[SecretScanningCustomPatternToDelete] = Field(
-        max_length=500 if PYDANTIC_V2 else None,
-        description="The list of custom patterns to delete.",
+    tag_name: str = Field(
+        description="The tag name for the release. This can be an existing tag or a new one."
     )
-    post_delete_action: Missing[Literal["delete_alerts", "resolve_alerts"]] = Field(
+    target_commitish: Missing[str] = Field(
         default=UNSET,
-        description='What to do with alerts associated with the deleted patterns.\n`delete_alerts` permanently removes the alerts.\n`resolve_alerts` resolves the alerts as "pattern deleted".\nDefaults to `delete_alerts` when not specified.',
+        description="Specifies the commitish value that will be the target for the release's tag. Required if the supplied tag_name does not reference an existing tag. Ignored if the tag_name already exists.",
+    )
+    previous_tag_name: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the previous tag to use as the starting point for the release notes. Use to manually specify the range for the set of changes considered as part this release.",
+    )
+    configuration_file_path: Missing[str] = Field(
+        default=UNSET,
+        description="Specifies a path to a file in the repository containing configuration settings used for generating the release notes. If unspecified, the configuration file located in the repository at '.github/release.yml' or '.github/release.yaml' will be used. If that is not present, the default configuration will be used.",
     )
 
 
-model_rebuild(ReposOwnerRepoSecretScanningCustomPatternsDeleteBody)
+model_rebuild(ReposOwnerRepoReleasesGenerateNotesPostBody)
 
-__all__ = ("ReposOwnerRepoSecretScanningCustomPatternsDeleteBody",)
+__all__ = ("ReposOwnerRepoReleasesGenerateNotesPostBody",)

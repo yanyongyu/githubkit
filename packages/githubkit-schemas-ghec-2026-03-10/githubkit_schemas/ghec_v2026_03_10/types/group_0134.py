@@ -9,47 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0122 import (
-    RepositoryRulesetConditionsPropRefNameType,
-    RepositoryRulesetConditionsPropRefNameTypeForResponse,
-)
-from .group_0124 import (
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse,
-)
-from .group_0128 import (
-    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType,
-    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse,
-)
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class EnterpriseRulesetConditionsOneof5Type(TypedDict):
-    """organization_property_and_repository_property
+class RepositoryRuleRequiredLinearHistoryType(TypedDict):
+    """required_linear_history
 
-    Conditions to target organizations by property and repositories by property
+    Prevent merge commits from being pushed to matching refs.
     """
 
-    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType
-    repository_property: (
-        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
-    )
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
+    type: Literal["required_linear_history"]
 
 
-class EnterpriseRulesetConditionsOneof5TypeForResponse(TypedDict):
-    """organization_property_and_repository_property
+class RepositoryRuleRequiredLinearHistoryTypeForResponse(TypedDict):
+    """required_linear_history
 
-    Conditions to target organizations by property and repositories by property
+    Prevent merge commits from being pushed to matching refs.
     """
 
-    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse
-    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
+    type: Literal["required_linear_history"]
 
 
 __all__ = (
-    "EnterpriseRulesetConditionsOneof5Type",
-    "EnterpriseRulesetConditionsOneof5TypeForResponse",
+    "RepositoryRuleRequiredLinearHistoryType",
+    "RepositoryRuleRequiredLinearHistoryTypeForResponse",
 )

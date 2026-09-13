@@ -493,17 +493,18 @@ target_descriptions = ["ghec-2022-11-28", "ghec-2026-03-10"]
 "/components/parameters/created/schema" = { format = "<unset>" }
 
 # https://github.com/yanyongyu/githubkit/issues/144
-"/components/schemas/simple-classroom-assignment/properties/editor" = { type = [
-  "string",
-  "null",
-] }
-"/components/schemas/simple-classroom-assignment/properties/language" = { type = [
-  "string",
-  "null",
-] }
-"/components/schemas/simple-classroom-assignment/required" = { "<remove>" = [
-  "submitted",
-] }
+# [REMOVED] github classroom closed
+# "/components/schemas/simple-classroom-assignment/properties/editor" = { type = [
+#   "string",
+#   "null",
+# ] }
+# "/components/schemas/simple-classroom-assignment/properties/language" = { type = [
+#   "string",
+#   "null",
+# ] }
+# "/components/schemas/simple-classroom-assignment/required" = { "<remove>" = [
+#   "submitted",
+# ] }
 
 # https://github.com/yanyongyu/githubkit/issues/148
 "/paths/~1repos~1{owner}~1{repo}~1check-runs/post/requestBody/content/application~1json/schema" = { discriminator = "<unset>" }
@@ -577,6 +578,12 @@ target_descriptions = ["ghec-2022-11-28", "ghec-2026-03-10"]
   { type = "string" },
   { type = "object", additionalProperties = true },
 ] }
+
+# webhook label archived_by user should be null or object
+"/components/schemas/webhooks_label/properties/archived_by" = { type = ["null", "object"] }
+"/components/schemas/webhooks_label_unarchived/allOf/1/properties/archived_by" = { type = ["null", "object"] }
+"/components/schemas/webhook-issues-labeled/properties/issue/properties/labels/items/properties/archived_by" = { type = ["null", "object"] }
+"/components/schemas/webhook-pull-request-labeled/properties/pull_request/properties/labels/items/properties/archived_by" = { type = ["null", "object"] }
 
 # webhook deployment protection rule action is required
 "/components/schemas/webhook-deployment-protection-rule-requested" = { required = [

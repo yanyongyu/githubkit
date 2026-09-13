@@ -9,53 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoSecretScanningCustomPatternsPostResponse422Type(TypedDict):
-    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse422"""
+class ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType(TypedDict):
+    """ReposOwnerRepoReleasesAssetsAssetIdPatchBody"""
 
-    message: NotRequired[str]
-    validation_errors: NotRequired[
-        ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsType
-    ]
-
-
-class ReposOwnerRepoSecretScanningCustomPatternsPostResponse422TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse422"""
-
-    message: NotRequired[str]
-    validation_errors: NotRequired[
-        ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse
-    ]
+    name: NotRequired[str]
+    label: NotRequired[str]
+    state: NotRequired[str]
 
 
-ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsType: TypeAlias = dict[
-    str, Any
-]
-"""ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors
+class ReposOwnerRepoReleasesAssetsAssetIdPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoReleasesAssetsAssetIdPatchBody"""
 
-A map of validation errors keyed by the zero-based index of the pattern that
-failed.
-"""
-
-
-ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors
-
-A map of validation errors keyed by the zero-based index of the pattern that
-failed.
-"""
+    name: NotRequired[str]
+    label: NotRequired[str]
+    state: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsType",
-    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse",
-    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422Type",
-    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422TypeForResponse",
+    "ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType",
+    "ReposOwnerRepoReleasesAssetsAssetIdPatchBodyTypeForResponse",
 )

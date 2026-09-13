@@ -9,27 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0109 import (
-    OrganizationCustomPropertyType,
-    OrganizationCustomPropertyTypeForResponse,
-)
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseOrgPropertiesSchemaPatchBodyType(TypedDict):
-    """EnterprisesEnterpriseOrgPropertiesSchemaPatchBody"""
+class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202Type(
+    TypedDict
+):
+    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202"""
 
-    properties: list[OrganizationCustomPropertyType]
+    message: NotRequired[str]
+    warning: NotRequired[str]
 
 
-class EnterprisesEnterpriseOrgPropertiesSchemaPatchBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseOrgPropertiesSchemaPatchBody"""
+class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202"""
 
-    properties: list[OrganizationCustomPropertyTypeForResponse]
+    message: NotRequired[str]
+    warning: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseOrgPropertiesSchemaPatchBodyType",
-    "EnterprisesEnterpriseOrgPropertiesSchemaPatchBodyTypeForResponse",
+    "EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202Type",
+    "EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202TypeForResponse",
 )

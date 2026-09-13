@@ -9,32 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class AccessibleRepositoryType(TypedDict):
-    """Accessible Repository
+class GetAuditLogStreamConfigsItemsType(TypedDict):
+    """GetAuditLogStreamConfigsItems"""
 
-    A repository that may be made accessible to a GitHub App.
-    """
+    id: NotRequired[int]
+    stream_type: NotRequired[str]
+    stream_details: NotRequired[str]
+    enabled: NotRequired[bool]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
+    paused_at: NotRequired[Union[_dt.datetime, None]]
 
-    id: int
-    name: str
-    full_name: str
 
+class GetAuditLogStreamConfigsItemsTypeForResponse(TypedDict):
+    """GetAuditLogStreamConfigsItems"""
 
-class AccessibleRepositoryTypeForResponse(TypedDict):
-    """Accessible Repository
-
-    A repository that may be made accessible to a GitHub App.
-    """
-
-    id: int
-    name: str
-    full_name: str
+    id: NotRequired[int]
+    stream_type: NotRequired[str]
+    stream_details: NotRequired[str]
+    enabled: NotRequired[bool]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    paused_at: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "AccessibleRepositoryType",
-    "AccessibleRepositoryTypeForResponse",
+    "GetAuditLogStreamConfigsItemsType",
+    "GetAuditLogStreamConfigsItemsTypeForResponse",
 )

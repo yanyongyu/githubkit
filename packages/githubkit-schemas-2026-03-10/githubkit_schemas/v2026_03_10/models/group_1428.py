@@ -18,24 +18,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPullsPullNumberMergePutBody(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberMergePutBody"""
+class ReposOwnerRepoPagesPostBodyPropSource(GitHubModel):
+    """ReposOwnerRepoPagesPostBodyPropSource
 
-    commit_title: Missing[str] = Field(
-        default=UNSET, description="Title for the automatic commit message."
+    The source branch and directory used to publish your Pages site.
+    """
+
+    branch: str = Field(
+        description="The repository branch used to publish your site's source files."
     )
-    commit_message: Missing[str] = Field(
-        default=UNSET, description="Extra detail to append to automatic commit message."
-    )
-    sha: Missing[str] = Field(
+    path: Missing[Literal["/", "/docs"]] = Field(
         default=UNSET,
-        description="SHA that pull request head must match to allow merge.",
-    )
-    merge_method: Missing[Literal["merge", "squash", "rebase"]] = Field(
-        default=UNSET, description="The merge method to use."
+        description="The repository directory that includes the source files for the Pages site. Allowed paths are `/` or `/docs`. Default: `/`",
     )
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberMergePutBody)
+model_rebuild(ReposOwnerRepoPagesPostBodyPropSource)
 
-__all__ = ("ReposOwnerRepoPullsPullNumberMergePutBody",)
+__all__ = ("ReposOwnerRepoPagesPostBodyPropSource",)

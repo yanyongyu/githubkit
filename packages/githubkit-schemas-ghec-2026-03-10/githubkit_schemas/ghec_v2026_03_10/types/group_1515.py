@@ -9,41 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1Type(TypedDict):
-    """ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1"""
-
-    state: NotRequired[Literal["open", "dismissed"]]
-    dismissed_reason: NotRequired[
-        Union[
-            Literal["false positive", "won't fix", "used in tests", "mitigated"], None
-        ]
-    ]
-    dismissed_comment: NotRequired[Union[str, None]]
-    create_request: NotRequired[bool]
-    assignees: list[str]
-
-
-class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1TypeForResponse(
+class ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200Type(
     TypedDict
 ):
-    """ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1"""
+    """ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200"""
 
-    state: NotRequired[Literal["open", "dismissed"]]
-    dismissed_reason: NotRequired[
-        Union[
-            Literal["false positive", "won't fix", "used in tests", "mitigated"], None
-        ]
-    ]
-    dismissed_comment: NotRequired[Union[str, None]]
-    create_request: NotRequired[bool]
-    assignees: list[str]
+    bypass_review_id: NotRequired[int]
+
+
+class ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200"""
+
+    bypass_review_id: NotRequired[int]
 
 
 __all__ = (
-    "ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1Type",
-    "ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1TypeForResponse",
+    "ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200Type",
+    "ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200TypeForResponse",
 )

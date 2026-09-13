@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Union
 
 from pydantic import Field
 
@@ -18,20 +19,20 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsVariablesPostBody(GitHubModel):
-    """OrgsOrgActionsVariablesPostBody"""
+class OrgsOrgActionsRunnersDeprecationsVersionGetResponse200(GitHubModel):
+    """OrgsOrgActionsRunnersDeprecationsVersionGetResponse200"""
 
-    name: str = Field(description="The name of the variable.")
-    value: str = Field(description="The value of the variable.")
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="The type of repositories in the organization that can access the variable. `selected` means only the repositories specified by `selected_repository_ids` can access the variable."
-    )
-    selected_repository_ids: Missing[list[int]] = Field(
+    runner_version: str = Field(description="The runner version string.")
+    registration_deprecates_at: Missing[Union[_dt.datetime, None]] = Field(
         default=UNSET,
-        description="An array of repository ids that can access the organization variable. You can only provide a list of repository ids when the `visibility` is set to `selected`.",
+        description="The date after which this runner version can no longer register. Null if no schedule is set.",
+    )
+    runtime_deprecates_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="The date after which jobs will no longer be dispatched to runners on this version.",
     )
 
 
-model_rebuild(OrgsOrgActionsVariablesPostBody)
+model_rebuild(OrgsOrgActionsRunnersDeprecationsVersionGetResponse200)
 
-__all__ = ("OrgsOrgActionsVariablesPostBody",)
+__all__ = ("OrgsOrgActionsRunnersDeprecationsVersionGetResponse200",)

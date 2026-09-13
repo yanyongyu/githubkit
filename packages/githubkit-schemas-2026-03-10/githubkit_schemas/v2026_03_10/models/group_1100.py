@@ -12,19 +12,36 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0020 import Repository
 
 
-class OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200(GitHubModel):
-    """OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200"""
+class OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200(
+    GitHubModel
+):
+    """OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200"""
 
-    total_count: Missing[int] = Field(default=UNSET)
-    repositories: Missing[list[Repository]] = Field(default=UNSET)
+    total_count: int = Field()
+    image_versions: list[ActionsHostedRunnerCustomImageVersion] = Field()
 
 
-model_rebuild(OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200)
+class ActionsHostedRunnerCustomImageVersion(GitHubModel):
+    """GitHub-hosted runner custom image version details.
 
-__all__ = ("OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200",)
+    Provides details of a hosted runner custom image version
+    """
+
+    version: str = Field(description="The version of image.")
+    state: str = Field(description="The state of image version.")
+    size_gb: int = Field(description="Image version size in GB.")
+    created_on: str = Field(description="The creation date time of the image version.")
+    state_details: str = Field(description="The image version status details.")
+
+
+model_rebuild(
+    OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200
+)
+model_rebuild(ActionsHostedRunnerCustomImageVersion)
+
+__all__ = (
+    "ActionsHostedRunnerCustomImageVersion",
+    "OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200",
+)

@@ -709,16 +709,6 @@ if TYPE_CHECKING or is_lazy_disabled():
         CheckSuitePreferenceType as CheckSuitePreferenceType,
     )
     from githubkit_schemas.v2026_03_10.types import CheckSuiteType as CheckSuiteType
-    from githubkit_schemas.v2026_03_10.types import (
-        ClassroomAcceptedAssignmentType as ClassroomAcceptedAssignmentType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        ClassroomAssignmentGradeType as ClassroomAssignmentGradeType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        ClassroomAssignmentType as ClassroomAssignmentType,
-    )
-    from githubkit_schemas.v2026_03_10.types import ClassroomType as ClassroomType
     from githubkit_schemas.v2026_03_10.types import CloneTrafficType as CloneTrafficType
     from githubkit_schemas.v2026_03_10.types import (
         CodeOfConductSimpleType as CodeOfConductSimpleType,
@@ -764,6 +754,18 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.types import (
         CodeQualitySetupUpdateResponseType as CodeQualitySetupUpdateResponseType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        CodeScanningAiScanEnablementType as CodeScanningAiScanEnablementType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        CodeScanningAiScanEnablementUpdateType as CodeScanningAiScanEnablementUpdateType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        CodeScanningAiScanOrgEnablementUpdateType as CodeScanningAiScanOrgEnablementUpdateType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        CodeScanningAiScanOrgSettingsType as CodeScanningAiScanOrgSettingsType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         CodeScanningAlertInstanceListPropMessageType as CodeScanningAlertInstanceListPropMessageType,
@@ -1963,6 +1965,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType as OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        OrgsOrgActionsRunnersDeprecationsVersionGetResponse200Type as OrgsOrgActionsRunnersDeprecationsVersionGetResponse200Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         OrgsOrgActionsRunnersGenerateJitconfigPostBodyType as OrgsOrgActionsRunnersGenerateJitconfigPostBodyType,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -2981,6 +2986,12 @@ if TYPE_CHECKING or is_lazy_disabled():
         RepositoryAdvisoryCreditType as RepositoryAdvisoryCreditType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        RepositoryAdvisoryDescriptionValidationErrorPropErrorsItemsType as RepositoryAdvisoryDescriptionValidationErrorPropErrorsItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        RepositoryAdvisoryDescriptionValidationErrorType as RepositoryAdvisoryDescriptionValidationErrorType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         RepositoryAdvisoryPropCreditsItemsType as RepositoryAdvisoryPropCreditsItemsType,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -3185,6 +3196,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         RepositoryRuleParamsDismissalRestrictionType as RepositoryRuleParamsDismissalRestrictionType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        RepositoryRuleParamsProofOfPresenceType as RepositoryRuleParamsProofOfPresenceType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         RepositoryRuleParamsRequiredReviewerConfigurationType as RepositoryRuleParamsRequiredReviewerConfigurationType,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -3337,6 +3351,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.types import (
         ReposOwnerRepoActionsPermissionsPutBodyType as ReposOwnerRepoActionsPermissionsPutBodyType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200Type as ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200Type,
     )
     from githubkit_schemas.v2026_03_10.types import (
         ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType as ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType,
@@ -4447,21 +4464,6 @@ if TYPE_CHECKING or is_lazy_disabled():
         SimpleCheckSuiteType as SimpleCheckSuiteType,
     )
     from githubkit_schemas.v2026_03_10.types import (
-        SimpleClassroomAssignmentType as SimpleClassroomAssignmentType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        SimpleClassroomOrganizationType as SimpleClassroomOrganizationType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        SimpleClassroomRepositoryType as SimpleClassroomRepositoryType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        SimpleClassroomType as SimpleClassroomType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        SimpleClassroomUserType as SimpleClassroomUserType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
         SimpleCommitPropAuthorType as SimpleCommitPropAuthorType,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -4493,6 +4495,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.types import (
         SshSigningKeyType as SshSigningKeyType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        StargazerHistoryType as StargazerHistoryType,
     )
     from githubkit_schemas.v2026_03_10.types import StargazerType as StargazerType
     from githubkit_schemas.v2026_03_10.types import (
@@ -6442,6 +6447,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         WebhookIssuesLabeledPropIssuePropAssigneeType as WebhookIssuesLabeledPropIssuePropAssigneeType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        WebhookIssuesLabeledPropIssuePropLabelsItemsPropArchivedByType as WebhookIssuesLabeledPropIssuePropLabelsItemsPropArchivedByType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         WebhookIssuesLabeledPropIssuePropLabelsItemsType as WebhookIssuesLabeledPropIssuePropLabelsItemsType,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -6799,6 +6807,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         WebhookIssuesUntypedType as WebhookIssuesUntypedType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        WebhookLabelArchivedType as WebhookLabelArchivedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         WebhookLabelCreatedType as WebhookLabelCreatedType,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -6818,6 +6829,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.types import (
         WebhookLabelEditedType as WebhookLabelEditedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        WebhookLabelUnarchivedType as WebhookLabelUnarchivedType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         WebhookMarketplacePurchaseCancelledType as WebhookMarketplacePurchaseCancelledType,
@@ -7977,6 +7991,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.types import (
         WebhookPullRequestLabeledPropPullRequestPropHeadType as WebhookPullRequestLabeledPropPullRequestPropHeadType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        WebhookPullRequestLabeledPropPullRequestPropLabelsItemsPropArchivedByType as WebhookPullRequestLabeledPropPullRequestPropLabelsItemsPropArchivedByType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         WebhookPullRequestLabeledPropPullRequestPropLabelsItemsType as WebhookPullRequestLabeledPropPullRequestPropLabelsItemsType,
@@ -10731,7 +10748,28 @@ if TYPE_CHECKING or is_lazy_disabled():
         WebhooksIssueType as WebhooksIssueType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        WebhooksLabelArchivedAllof1PropArchivedByType as WebhooksLabelArchivedAllof1PropArchivedByType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        WebhooksLabelArchivedAllof1Type as WebhooksLabelArchivedAllof1Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        WebhooksLabelArchivedType as WebhooksLabelArchivedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        WebhooksLabelPropArchivedByType as WebhooksLabelPropArchivedByType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         WebhooksLabelType as WebhooksLabelType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        WebhooksLabelUnarchivedAllof1PropArchivedByType as WebhooksLabelUnarchivedAllof1PropArchivedByType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        WebhooksLabelUnarchivedAllof1Type as WebhooksLabelUnarchivedAllof1Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        WebhooksLabelUnarchivedType as WebhooksLabelUnarchivedType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         WebhooksMarketplacePurchasePropAccountType as WebhooksMarketplacePurchasePropAccountType,
@@ -11548,15 +11586,6 @@ else:
             "ScopedInstallationType",
             "AuthorizationType",
             "AuthorizationPropAppType",
-            "SimpleClassroomRepositoryType",
-            "ClassroomAssignmentType",
-            "ClassroomType",
-            "SimpleClassroomOrganizationType",
-            "ClassroomAcceptedAssignmentType",
-            "SimpleClassroomUserType",
-            "SimpleClassroomAssignmentType",
-            "SimpleClassroomType",
-            "ClassroomAssignmentGradeType",
             "ActionsCacheRetentionLimitForEnterpriseType",
             "ActionsCacheStorageLimitForEnterpriseType",
             "OidcCustomPropertyInclusionType",
@@ -11755,6 +11784,8 @@ else:
             "TeamPropPermissionsType",
             "CampaignSummaryType",
             "CampaignSummaryPropAlertStatsType",
+            "CodeScanningAiScanOrgSettingsType",
+            "CodeScanningAiScanOrgEnablementUpdateType",
             "CodeScanningAlertRuleSummaryType",
             "CodeScanningAnalysisToolType",
             "CodeScanningAlertLocationType",
@@ -11883,6 +11914,7 @@ else:
             "RepositoryRuleMergeQueuePropParametersType",
             "RepositoryRuleRequiredDeploymentsType",
             "RepositoryRuleRequiredDeploymentsPropParametersType",
+            "RepositoryRuleParamsProofOfPresenceType",
             "RepositoryRulePullRequestType",
             "RepositoryRulePullRequestPropParametersType",
             "RepositoryRuleParamsDismissalRestrictionType",
@@ -12101,6 +12133,8 @@ else:
             "CodeQualitySetupUpdateAnyof3Type",
             "CodeQualitySetupUpdateAnyof4Type",
             "CodeQualitySetupUpdateResponseType",
+            "CodeScanningAiScanEnablementType",
+            "CodeScanningAiScanEnablementUpdateType",
             "CodeScanningAlertItemsType",
             "CodeScanningAlertType",
             "CodeScanningAlertRuleType",
@@ -12368,6 +12402,8 @@ else:
             "RepositoryAdvisoryCreatePropCreditsItemsType",
             "RepositoryAdvisoryCreatePropVulnerabilitiesItemsType",
             "RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackageType",
+            "RepositoryAdvisoryDescriptionValidationErrorType",
+            "RepositoryAdvisoryDescriptionValidationErrorPropErrorsItemsType",
             "PrivateVulnerabilityReportCreateType",
             "PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsType",
             "PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageType",
@@ -12382,6 +12418,7 @@ else:
             "PullRequestStackPullRequestType",
             "PullRequestStackPullRequestAllof1Type",
             "StargazerType",
+            "StargazerHistoryType",
             "CommitActivityType",
             "ContributorActivityType",
             "ContributorActivityPropWeeksItemsType",
@@ -12483,6 +12520,7 @@ else:
             "WebhooksCommentPropReactionsType",
             "WebhooksCommentPropUserType",
             "WebhooksLabelType",
+            "WebhooksLabelPropArchivedByType",
             "WebhooksRepositoriesItemsType",
             "WebhooksRepositoriesAddedItemsType",
             "WebhooksIssueCommentType",
@@ -12517,6 +12555,12 @@ else:
             "WebhooksIssue2PropReactionsType",
             "WebhooksIssue2PropUserType",
             "WebhooksUserMannequinType",
+            "WebhooksLabelArchivedType",
+            "WebhooksLabelArchivedAllof1Type",
+            "WebhooksLabelArchivedAllof1PropArchivedByType",
+            "WebhooksLabelUnarchivedType",
+            "WebhooksLabelUnarchivedAllof1Type",
+            "WebhooksLabelUnarchivedAllof1PropArchivedByType",
             "WebhooksMarketplacePurchaseType",
             "WebhooksMarketplacePurchasePropAccountType",
             "WebhooksMarketplacePurchasePropPlanType",
@@ -13159,7 +13203,6 @@ else:
             "WebhookIssuesLabeledPropIssueType",
             "WebhookIssuesLabeledPropIssuePropAssigneeType",
             "WebhookIssuesLabeledPropIssuePropAssigneesItemsType",
-            "WebhookIssuesLabeledPropIssuePropLabelsItemsType",
             "WebhookIssuesLabeledPropIssuePropMilestoneType",
             "WebhookIssuesLabeledPropIssuePropMilestonePropCreatorType",
             "WebhookIssuesLabeledPropIssuePropPerformedViaGithubAppType",
@@ -13168,6 +13211,8 @@ else:
             "WebhookIssuesLabeledPropIssuePropPullRequestType",
             "WebhookIssuesLabeledPropIssuePropReactionsType",
             "WebhookIssuesLabeledPropIssuePropUserType",
+            "WebhookIssuesLabeledPropIssuePropLabelsItemsType",
+            "WebhookIssuesLabeledPropIssuePropLabelsItemsPropArchivedByType",
             "WebhookIssuesLockedType",
             "WebhookIssuesLockedPropIssueType",
             "WebhookIssuesLockedPropIssuePropAssigneeType",
@@ -13276,6 +13321,7 @@ else:
             "WebhookIssuesUnlockedPropIssuePropUserType",
             "WebhookIssuesUnpinnedType",
             "WebhookIssuesUntypedType",
+            "WebhookLabelArchivedType",
             "WebhookLabelCreatedType",
             "WebhookLabelDeletedType",
             "WebhookLabelEditedType",
@@ -13283,6 +13329,7 @@ else:
             "WebhookLabelEditedPropChangesPropColorType",
             "WebhookLabelEditedPropChangesPropDescriptionType",
             "WebhookLabelEditedPropChangesPropNameType",
+            "WebhookLabelUnarchivedType",
             "WebhookMarketplacePurchaseCancelledType",
             "WebhookMarketplacePurchaseChangedType",
             "WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchaseType",
@@ -13666,7 +13713,6 @@ else:
             "WebhookPullRequestLabeledPropPullRequestPropAssigneesItemsType",
             "WebhookPullRequestLabeledPropPullRequestPropAutoMergeType",
             "WebhookPullRequestLabeledPropPullRequestPropAutoMergePropEnabledByType",
-            "WebhookPullRequestLabeledPropPullRequestPropLabelsItemsType",
             "WebhookPullRequestLabeledPropPullRequestPropMergedByType",
             "WebhookPullRequestLabeledPropPullRequestPropMilestoneType",
             "WebhookPullRequestLabeledPropPullRequestPropMilestonePropCreatorType",
@@ -13693,6 +13739,8 @@ else:
             "WebhookPullRequestLabeledPropPullRequestPropHeadPropRepoPropOwnerType",
             "WebhookPullRequestLabeledPropPullRequestPropHeadPropRepoPropPermissionsType",
             "WebhookPullRequestLabeledPropPullRequestPropHeadPropUserType",
+            "WebhookPullRequestLabeledPropPullRequestPropLabelsItemsType",
+            "WebhookPullRequestLabeledPropPullRequestPropLabelsItemsPropArchivedByType",
             "WebhookPullRequestLabeledPropPullRequestPropRequestedReviewersItemsOneof1Type",
             "WebhookPullRequestLabeledPropPullRequestPropRequestedReviewersItemsOneof1PropParentType",
             "WebhookPullRequestLabeledPropPullRequestPropRequestedTeamsItemsType",
@@ -14887,6 +14935,7 @@ else:
             "OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type",
             "OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType",
             "OrgsOrgActionsRunnersGetResponse200Type",
+            "OrgsOrgActionsRunnersDeprecationsVersionGetResponse200Type",
             "OrgsOrgActionsRunnersGenerateJitconfigPostBodyType",
             "OrgsOrgActionsRunnersGenerateJitconfigPostResponse201Type",
             "OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200Type",
@@ -15088,6 +15137,7 @@ else:
             "ReposOwnerRepoActionsOrganizationVariablesGetResponse200Type",
             "ReposOwnerRepoActionsPermissionsPutBodyType",
             "ReposOwnerRepoActionsRunnersGetResponse200Type",
+            "ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200Type",
             "ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType",
             "ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType",
             "ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType",

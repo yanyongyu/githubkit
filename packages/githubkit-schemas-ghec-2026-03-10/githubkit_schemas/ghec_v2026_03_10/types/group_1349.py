@@ -9,35 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class OrgsOrgCodespacesAccessPutBodyType(TypedDict):
-    """OrgsOrgCodespacesAccessPutBody"""
+class OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType(TypedDict):
+    """OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems"""
 
-    visibility: Literal[
-        "disabled",
-        "selected_members",
-        "all_members",
-        "all_members_and_outside_collaborators",
-    ]
-    selected_usernames: NotRequired[list[str]]
+    repository_id: int
+    alert_numbers: list[int]
 
 
-class OrgsOrgCodespacesAccessPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgCodespacesAccessPutBody"""
+class OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsTypeForResponse(TypedDict):
+    """OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems"""
 
-    visibility: Literal[
-        "disabled",
-        "selected_members",
-        "all_members",
-        "all_members_and_outside_collaborators",
-    ]
-    selected_usernames: NotRequired[list[str]]
+    repository_id: int
+    alert_numbers: list[int]
 
 
 __all__ = (
-    "OrgsOrgCodespacesAccessPutBodyType",
-    "OrgsOrgCodespacesAccessPutBodyTypeForResponse",
+    "OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType",
+    "OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsTypeForResponse",
 )

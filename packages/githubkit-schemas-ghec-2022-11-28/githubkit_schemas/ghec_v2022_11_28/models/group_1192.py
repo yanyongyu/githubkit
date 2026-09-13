@@ -9,23 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201(
-    GitHubModel
-):
-    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201
-
-    The total number of seats created for the members of the specified enterprise
-    team(s).
-    """
-
-    seats_created: int = Field()
+from .group_0061 import (
+    AmazonS3AccessKeysConfig,
+    AzureBlobConfig,
+    AzureHubConfig,
+    DatadogConfig,
+    HecConfig,
+)
+from .group_0062 import AmazonS3OidcConfig, SplunkConfig
+from .group_0063 import GoogleCloudConfig
 
 
-model_rebuild(EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201)
+class EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody(GitHubModel):
+    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody"""
 
-__all__ = ("EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201",)
+    enabled: bool = Field(description="This setting pauses or resumes a stream.")
+    stream_type: Literal[
+        "Azure Blob Storage",
+        "Azure Event Hubs",
+        "Amazon S3",
+        "Splunk",
+        "HTTPS Event Collector",
+        "Google Cloud Storage",
+        "Datadog",
+    ] = Field(
+        description="The audit log streaming provider. The name is case sensitive."
+    )
+    vendor_specific: Union[
+        AzureBlobConfig,
+        AzureHubConfig,
+        AmazonS3OidcConfig,
+        AmazonS3AccessKeysConfig,
+        SplunkConfig,
+        HecConfig,
+        GoogleCloudConfig,
+        DatadogConfig,
+    ] = Field()
+
+
+model_rebuild(EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody)
+
+__all__ = ("EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody",)

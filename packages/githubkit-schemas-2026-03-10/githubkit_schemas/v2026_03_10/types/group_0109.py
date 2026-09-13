@@ -12,21 +12,41 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ActionsCacheUsageOrgEnterpriseType(TypedDict):
-    """ActionsCacheUsageOrgEnterprise"""
+class ActionsHostedRunnerLimitsType(TypedDict):
+    """ActionsHostedRunnerLimits"""
 
-    total_active_caches_count: int
-    total_active_caches_size_in_bytes: int
+    public_ips: ActionsHostedRunnerLimitsPropPublicIpsType
 
 
-class ActionsCacheUsageOrgEnterpriseTypeForResponse(TypedDict):
-    """ActionsCacheUsageOrgEnterprise"""
+class ActionsHostedRunnerLimitsTypeForResponse(TypedDict):
+    """ActionsHostedRunnerLimits"""
 
-    total_active_caches_count: int
-    total_active_caches_size_in_bytes: int
+    public_ips: ActionsHostedRunnerLimitsPropPublicIpsTypeForResponse
+
+
+class ActionsHostedRunnerLimitsPropPublicIpsType(TypedDict):
+    """Static public IP Limits for GitHub-hosted Hosted Runners.
+
+    Provides details of static public IP limits for GitHub-hosted Hosted Runners
+    """
+
+    maximum: int
+    current_usage: int
+
+
+class ActionsHostedRunnerLimitsPropPublicIpsTypeForResponse(TypedDict):
+    """Static public IP Limits for GitHub-hosted Hosted Runners.
+
+    Provides details of static public IP limits for GitHub-hosted Hosted Runners
+    """
+
+    maximum: int
+    current_usage: int
 
 
 __all__ = (
-    "ActionsCacheUsageOrgEnterpriseType",
-    "ActionsCacheUsageOrgEnterpriseTypeForResponse",
+    "ActionsHostedRunnerLimitsPropPublicIpsType",
+    "ActionsHostedRunnerLimitsPropPublicIpsTypeForResponse",
+    "ActionsHostedRunnerLimitsType",
+    "ActionsHostedRunnerLimitsTypeForResponse",
 )

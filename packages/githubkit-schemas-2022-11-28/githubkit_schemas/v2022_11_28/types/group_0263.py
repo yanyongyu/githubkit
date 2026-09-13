@@ -9,53 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class SecretScanningCustomPatternValidationErrorType(TypedDict):
-    """Secret Scanning Custom Pattern Validation Error
+class SecretScanningCustomPatternToDeleteType(TypedDict):
+    """Secret Scanning Custom Pattern To Delete
 
-    A validation error for a custom pattern in a batch operation.
+    A custom pattern to delete in a bulk operation.
     """
 
-    code: NotRequired[
-        Literal[
-            "invalid",
-            "unprocessable",
-            "start_delimiter",
-            "end_delimiter",
-            "name",
-            "must_match",
-            "must_not_match",
-            "custom_pattern_version_mismatch",
-        ]
-    ]
-    message: NotRequired[str]
+    pattern_id: int
+    custom_pattern_version: NotRequired[Union[str, None]]
 
 
-class SecretScanningCustomPatternValidationErrorTypeForResponse(TypedDict):
-    """Secret Scanning Custom Pattern Validation Error
+class SecretScanningCustomPatternToDeleteTypeForResponse(TypedDict):
+    """Secret Scanning Custom Pattern To Delete
 
-    A validation error for a custom pattern in a batch operation.
+    A custom pattern to delete in a bulk operation.
     """
 
-    code: NotRequired[
-        Literal[
-            "invalid",
-            "unprocessable",
-            "start_delimiter",
-            "end_delimiter",
-            "name",
-            "must_match",
-            "must_not_match",
-            "custom_pattern_version_mismatch",
-        ]
-    ]
-    message: NotRequired[str]
+    pattern_id: int
+    custom_pattern_version: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "SecretScanningCustomPatternValidationErrorType",
-    "SecretScanningCustomPatternValidationErrorTypeForResponse",
+    "SecretScanningCustomPatternToDeleteType",
+    "SecretScanningCustomPatternToDeleteTypeForResponse",
 )
